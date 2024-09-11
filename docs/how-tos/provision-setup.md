@@ -56,6 +56,92 @@ You can get the machine cloud credentials by clicking the copy icon next to **Ma
 
 {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
+{{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
+
+You can use the [Fleet Management API](/appendix/apis/fleet/) to create machines, and obtain their machine cloud credentials:
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import requests
+
+from viam.rpc.dial import DialOptions, Credentials
+from viam.app.viam_client import ViamClient
+from viam.app.app_client import APIKeyAuthorization
+
+# Replace "<API-KEY>" (including brackets) with your API key
+API_KEY = "<API-KEY>"
+# Replace "<API-KEY-ID>" (including brackets) with your API key ID
+API_KEY_ID = "<API-KEY-ID>"
+# The id of the location to create the machine in
+LOCATION_ID = ""
+# The name for the machine to create
+MACHINE_NAME = ""
+
+
+async def connect() -> ViamClient:
+    dial_options = DialOptions(
+      credentials=Credentials(
+        type="api-key",
+        payload=API_KEY,
+      ),
+      auth_entity=API_KEY_ID
+    )
+    return await ViamClient.create_from_dial_options(dial_options)
+
+
+async def main():
+
+    # Make a ViamClient
+    viam_client = await connect()
+    # Instantiate an AppClient called "cloud"
+    # to run fleet management API methods on
+    cloud = viam_client.app_client
+    new_machine_id = await cloud.new_robot(
+        name=MACHINE_NAME, location_id=LOCATION_ID)
+    print("Machine created: " + new_machine_id)
+    list_of_parts = await cloud.get_robot_parts(
+        robot_id=new_machine_id)
+    print("Part id: " + list_of_parts[0].id)
+
+    org_list = await cloud.list_organizations()
+    print(org_list[0].id)
+
+    auth = APIKeyAuthorization(
+        role="owner",
+        resource_type="robot",
+        resource_id=new_machine_id
+    )
+    api_key, api_key_id = await cloud.create_key(
+        org_list[0].id, [auth], "test_provisioning_key")
+    print(api_key, api_key_id)
+
+    headers = {
+        'key_id': api_key_id,
+        'key': api_key
+    }
+    params = {
+        "client": 'true',
+        "id": list_of_parts[0].id
+    }
+    res = requests.get(
+        'https://app.viam.com/api/json1/config',
+        params=params,
+        headers=headers,
+        timeout=10
+    )
+    print(res.text)
+
+    with open("viam.json", "w") as text_file:
+        text_file.write(res.text)
+
+    viam_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /expand%}}
+
 ## Configure `agent-provisioning`
 
 {{< table >}}
