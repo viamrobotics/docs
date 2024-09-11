@@ -18,11 +18,7 @@ async def connect() -> ViamClient:
     )
     return await ViamClient.create_from_dial_options(dial_options)
 
-# ModelType is an enum and defined to render as int, convert back to string through this
-# as an alternative to this we could change in the python SDK like the below
-#   def __str__(self):
-#        return self.name
-# but then it wouldn't look pretty 
+# ModelType is an enum and defined to render as int, convert back to string through this 
 def model_type_to_str(model_type: int) -> str:
     model_type_map = {
         0: "Unspecified",

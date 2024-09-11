@@ -146,9 +146,9 @@ You can search the available ML models from the Viam registry here:
 <div class="mr-model" id="">
   <div class="modellistheader">
     <div class="name">Model</div>
+    <div class="type">Type</div>
+    <div class="framework">Framework</div>
     <div>Description</div>
-    <div>Type</div>
-    <div>Framework</div>
   </div>
 <div id="hitsML" class="modellist">
 </div>

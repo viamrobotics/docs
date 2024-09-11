@@ -1698,9 +1698,9 @@ a.ais-Pagination-link:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.modellistheader > .name, .modellist * .name, .modellistheader > .type, .modellist * .type {
-  min-width: 25%;
-  max-width: 25%;
+.modellistheader > .name, .modellist * .name, .modellistheader > .type, .modellist * .type, .modellistheader > .framework, .modellist * .framework {
+  min-width: 15%;
+  max-width: 15%;
 }
 
 .modellistheader {
