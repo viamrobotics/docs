@@ -15,25 +15,43 @@ aliases:
 When {{< glossary_tooltip term_id="machine" text="smart machines" >}} communicate with each other, they can share resources and operate collaboratively.
 This document explains how to establish secure connections between machines.
 
-### Machine parts
+## Machine parts
 
-Machines are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) running [`viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Machines are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) running [`viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other {{< glossary_tooltip term_id="resource" text="resources" >}} running on it.
 
 Every smart machine has a main part which is automatically created when you create the machine.
 Multi-part machines also have one or more _sub-parts_ representing additional computers running `viam-server`.
 
 There are two ways to link machine parts:
 
-- **Sub-part**: If you have two computers within the _same machine_, use one as the main part and [connect the other to it as a sub-part](#configure-a-sub-part).
+- **Sub-part**: If you have multiple computers within the _same machine_, use one as the main part and [connect each additional part to it as a sub-part](#configure-a-sub-part).
+  Any given part can only be a sub-part of one main part.
 
-- **Remote part**: To connect two computers that are parts of _different machines_ in the same or different organizations, [add one machine part as a remote part of the other machine](#configure-a-remote-part).
+  <details>
+    <summary>Click for an example.</summary>
+   Imagine you have a system of five cameras in different places along an assembly line, each attached to its own single-board computer, and you want to run an object detector on the streams from all of them.
+   You have one main computer with greater compute power set up as the main part.
+   You set up each of the single-board computers as a sub-part.
+   This allows the main part to access all the camera streams and run object detection on all of them.<br><br>
+   You could also set this up with each single-board computer being a remote part instead of a sub-part, but it is slightly easier to configure sub-parts because you do not need to add the address of each part to your machine's config.
+   Additionally, configuring a discrete system of parts as one multi-part machine helps keep your fleet more clearly organized in the Viam app.
+  </details><br>
 
-  - For example, if you have 1 camera connected to a computer in a warehouse that many machines should be able to share, you can configure the camera as a remote part of each machine that needs it.
+- **Remote part**: To connect multiple computers that are parts of _different machines_ in the same or different organizations, [add one machine part as a remote part of the other machine or machines](#configure-a-remote-part).
+  A part can be a remote part of any number of other parts.
+
+  <details>
+    <summary>Click for an example.</summary>
+    If you have one camera connected to a computer in a warehouse that many machines should be able to share, you can configure the camera as a remote part of each machine that needs it.
+  </details>
 
 Connections between machines are established using the best network path available.
 
 When you configure a remote part or a sub-part, the main machine part can access all the components and services configured on the remote machine part as though they were entities of the main machine part.
 This is a one-way connection: the main machine part can access the resources of the remote machine part, but the remote machine cannot access the resources of the machine part remoting into it.
+
+When a part starts up, it attempts to connect to any remotes and sub-parts.
+If it cannot connect to them, the part will still successfully start up.
 
 ![Example of a remote and a two part machine where the main (and only) part of machine 1 remotes into the main part of machine 2, and thus has access to all resources of machine 2.](/build/configure/parts/remotes-diagram.png)
 
