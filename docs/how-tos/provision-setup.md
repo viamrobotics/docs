@@ -35,7 +35,9 @@ This guide will show you how to install and configure `viam-agent`.
 
 To find out more about supported systems, see [Compatibility](/installation/#compatibility).
 
-If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and customize at least the hostname when prompted.
+If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and customize at least the hostname when prompted by the Raspberry Pi Imager.
+
+When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
 
 Eject and reinsert the card to make sure it's mounted with the newly written contents.
 
@@ -209,6 +211,16 @@ Follow the instructions.
 If you created a <FILE>viam-provisioning.json</FILE>, specify its location when prompted.
 
 {{% expand "Using a Raspberry Pi?" %}}
+
+{{< alert title="Important" color="note" >}}
+
+You must have flashed a 64-bit image to your SD card and customized at least the hostname when prompted by the Raspberry Pi Imager.
+
+When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
+
+If you do not customize anything, `firstrun.sh` is not present on the device and the `preinstall.sh` script fails.
+
+{{< /alert >}}
 
 For Raspberry Pis, the script will automatically perform the required next steps, it will:
 
