@@ -33,7 +33,8 @@ There are two ways to link machine parts:
    You have one main computer with greater compute power set up as the main part.
    You set up each of the single-board computers as a sub-part.
    This allows the main part to access all the camera streams and run object detection on all of them.<br><br>
-   You could also set this up with each single-board computer being a remote part instead of a sub-part, but if you consider them all to be part of one system, it can be easier to configure the connections this way.
+   You could also set this up with each single-board computer being a remote part instead of a sub-part, but it is slightly easier to configure sub-parts because you do not need to add the address of each part to your machine's config.
+   Additionally, configuring a discrete system of parts as one multi-part machine helps keep your fleet more clearly organized in the Viam app.
   </details><br>
 
 - **Remote part**: To connect multiple computers that are parts of _different machines_ in the same or different organizations, [add one machine part as a remote part of the other machine or machines](#configure-a-remote-part).
