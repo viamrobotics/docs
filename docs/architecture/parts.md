@@ -22,7 +22,7 @@ Machines are organized into _parts_, where each part represents a computer (a si
 Every smart machine has a main part which is automatically created when you create the machine.
 Multi-part machines also have one or more _sub-parts_ representing additional computers running `viam-server`.
 
-There are two ways to link machine parts, depending on whether you want to think of your parts as all part of one machine, or be able to share resources across multiple machines:
+There are two ways to link machine parts:
 
 - **Sub-part**: If you have multiple computers within the _same machine_, use one as the main part and [connect each additional part to it as a sub-part](#configure-a-sub-part).
   Any given part can only be a sub-part of one main part.
