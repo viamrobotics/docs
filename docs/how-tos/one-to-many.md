@@ -87,7 +87,8 @@ In this way, you can keep all your machines up to date whenever you change the f
 
 ## Add a fragment to multiple machines
 
-With your fragment created, you can add it to as many machines as you'd like:
+With your fragment created, you can add it to as many machines as you'd like.
+You can do this manually, as described here, or using [provisioning](/fleet/provision/).
 
 {{< table >}}
 {{% tablestep %}}
