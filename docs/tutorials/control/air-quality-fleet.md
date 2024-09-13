@@ -10,6 +10,7 @@ authors: ["Jessamy Taylor"]
 languages: ["typescript"]
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "fleet"]
+emailform: true
 level: "Intermediate"
 date: "2024-05-07"
 # updated: ""  # When the tutorial was last entirely checked
@@ -801,6 +802,8 @@ You can find all the code in the [GitHub repo for this tutorial](https://github.
 
    Great work.
    You've learned how to configure a fleet of machines, sync their data to one place, and pull that data into a custom dashboard using TypeScript.
+
+<div id="emailform"></div>
 
 ## Next steps
 

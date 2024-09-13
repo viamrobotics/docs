@@ -17,6 +17,20 @@
 <script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
 {{ end }}
 
+<!-- JS for email newsletter sign up form -->
+{{ if .Page.Params.emailform }}
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    region: "na1",
+    portalId: "21390457",
+    formId: "30bcfea3-2a4f-4e20-8a38-eb056af9e2e1",
+    target: "#emailform",
+    css: ""
+  });
+</script>
+{{ end }}
+
 <!-- START script for lazy loading -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 {{ $jsLozad := resources.Get "js/lozad.js" }}
