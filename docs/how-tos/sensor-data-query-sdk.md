@@ -4,6 +4,7 @@ linkTitle: "Query sensor data with an SDK"
 weight: 31
 type: "docs"
 images: ["/services/icons/data-query.svg"]
+icon: true
 description: "Retrieve and query sensor data that you have synced to the Viam app using Python SDK."
 aliases:
   - /use-cases/sensor-data-query-sdk/

@@ -4,6 +4,7 @@ linkTitle: "Visualize and analyze sensor data"
 weight: 32
 type: "docs"
 images: ["/services/icons/data-visualization.svg"]
+icon: true
 description: "Visualize sensor data from the Viam app using popular tools like Grafana."
 aliases:
   - /data/visualize/

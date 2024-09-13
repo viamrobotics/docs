@@ -4,6 +4,7 @@ linkTitle: "Query sensor data"
 weight: 30
 type: "docs"
 images: ["/services/icons/data-query.svg"]
+icon: true
 description: "Query sensor data that you have synced to the Viam app using the Viam app with SQL or MQL."
 aliases:
   - /manage/data/query/

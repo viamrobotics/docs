@@ -4,6 +4,7 @@ linkTitle: "Upload a module"
 type: "docs"
 weight: 26
 images: ["/registry/module-puzzle-piece.svg"]
+icon: true
 tags: ["modular resources", "components", "services", "registry"]
 description: "Make your module available to others by uploading it to the modular resource registry."
 aliases:

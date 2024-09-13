@@ -5,9 +5,9 @@ weight: 90
 type: "docs"
 tags: ["data management", "ml", "model training"]
 description: "How to write and upload a custom machine learning model training script to the Viam registry and use it to submit training jobs."
-no_service: true
 # SME: Tahiya S.
 images: ["/services/icons/ml.svg"]
+icon: true
 aliases:
   - /services/ml/upload-training-script/
 languages: ["python"]
