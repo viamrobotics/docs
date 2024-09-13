@@ -57,9 +57,9 @@ In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 {{% tablestep link="/fleet/fragments/" %}}
 **3. Create a fragment**
 
-Go to [app.viam.com/fragments](https://app.viam.com/fragments).
+On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
 
-Add a fragment, and paste the copied JSON configuration into it.
+Click **Create fragment**, and paste the copied JSON configuration into it.
 
 Set your privacy settings.
 There are three options for this:

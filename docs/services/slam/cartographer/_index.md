@@ -205,7 +205,7 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
    1. Select the Mapping mode dropdown and choose the **Update existing map** option.
    2. Configure **Select map** and **Map version** with the name and version of the map you would like to update.
       For the other attributes, review the information in [Create a new map](#create-a-new-map).
-      You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
+      You can see more details about the available maps from your machine's **Location** page by clicking **View SLAM library**.
 
    {{% /tab %}}
    {{% tab name="JSON Example" %}}
@@ -308,7 +308,7 @@ In this mode, the `cartographer` module on your machine executes the Cartographe
 1.  Select the Mapping mode dropdown and choose the **Update existing map** option.
 1.  Configure **Select map** and **Map version** with the name and version of the map you would like to localize on.
     For the other attributes, review the information in [Create a new map](#create-a-new-map).
-    You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
+    You can see more details about the available maps from your machine's **Location** page by clicking **View SLAM library**.
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
@@ -417,7 +417,8 @@ If you move your machine, it will appear to be moving in a trajectory from the m
 
 ### Using locally built maps
 
-If you do not have any maps on your **Location** page's **SLAM library** tab, and you do not wish to use [cloudslam](../cloudslam/), but you still want to use localizing and updating modes with cartographer, you can take the following steps.
+You can see details about the available maps from your machine's **Location** page by clicking **View SLAM library**.
+If you do not have any maps, and you do not wish to use [cloudslam](../cloudslam/), but you still want to use localizing and updating modes with cartographer, you can take the following steps.
 
 1. Save a `.pbstream` file by using the [GetInternalState or InternalStateFull APIs](../#api) by using one of the SDKs. Note, `InternalStateFull` is currently only implemented in Go.
 2. Ensure the `.pbstream` file is located somewhere on the machine, and note the directory path to that file.

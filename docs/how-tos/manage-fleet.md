@@ -75,10 +75,10 @@ If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Se
 1. Click **FLEET** in the upper-left corner of the page.
    A new location called `First Location` is automatically generated for you.
 
-   Click the pencil icon next to the location name and give it a name for what it represents for your use case.
+   Click on the location and use the **...** menu next to edit the location name to what it represents for your use case.
    Then click **Save**.
 
-1. Create additional locations as needed using **New location** interface, on the left of the **FLEET** page.
+1. Create additional locations as needed using **Add location** button, on the left of the **FLEET** page.
 
 {{% /tablestep %}}
 {{% tablestep link="/cloud/locations/" %}}
@@ -88,7 +88,7 @@ If needed, you can add further sub-locations to, for example, differentiate grou
 
 To add a sub-location:
 
-1. Add a new location using the same **New location** interface.
+1. Add a new location using the same **Add location** button.
 
 1. At the bottom of the location’s page, use the **New parent location** dropdown to choose a parent location.
    Click **Change**.
