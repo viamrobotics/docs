@@ -18,8 +18,8 @@ Create a new dataset.
 
 ```python {class="line-numbers linkable-line-numbers"}
 name = await data_client.create_dataset(
-    name="<dataset-name>",
-    organization_id="<your-org-id>"
+    name="<DATASET-NAME>",
+    organization_id="<YOUR-ORG-ID>"
 )
 print(name)
 ```
@@ -38,7 +38,7 @@ Delete a dataset.
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset.
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. You can retrieve this by navigating to the **DATASETS** sub-tab of the **DATA** tab, clicking on the dataset, clicking the **...** menu and selecting **Copy dataset ID**.
 
 **Returns:**
 
@@ -48,7 +48,7 @@ Delete a dataset.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await data_client.delete_dataset(
-    id="abcd-1234xyz-8765z-123abc"
+    id="<YOUR-DATASET-ID>"
 )
 ```
 
@@ -77,8 +77,8 @@ Rename a dataset specified by the dataset ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await data_client.rename_dataset(
-    id="abcd-1234xyz-8765z-123abc",
-    name="<dataset-name>"
+    id="<YOUR-DATASET-ID>",
+    name="MyDataset"
 )
 ```
 
@@ -105,8 +105,8 @@ Get the datasets in an organization.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-datasets = await data_client.list_dataset_by_organization_id(
-    organization_id=[""a12b3c4e-1234-1abc-ab1c-ab1c2d345abc""]
+datasets = await data_client.list_datasets_by_organization_id(
+    organization_id="<YOUR-ORG-ID>"
 )
 print(datasets)
 ```
@@ -135,7 +135,7 @@ Get a list of datasets using their IDs.
 
 ```python {class="line-numbers linkable-line-numbers"}
 datasets = await data_client.list_dataset_by_ids(
-    ids=["abcd-1234xyz-8765z-123abc"]
+    ids=["<YOUR-DATASET-ID-1>, <YOUR-DATASET-ID-2>"]
 )
 print(datasets)
 ```
