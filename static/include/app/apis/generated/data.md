@@ -157,18 +157,37 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.utils import create_filter
+from viam.proto.app.data import Filter, TagsFilter, TagsFilterType
 
+# Get data captured from camera components
 camera_filter = create_filter(
     component_name="camera-1"
     )
-
+    
 data, count, last = await data_client.binary_data_by_filter(
     filter=camera_filter, 
     limit=1, 
     include_binary_data=True
-    )
+)
 for binary in data:
     print(binary)
+
+# Get untagged data from a dataset
+
+my_untagged_data = []
+last = None
+tags_filter = TagsFilter(type=TagsFilterType.TAGS_FILTER_TYPE_UNTAGGED)
+my_filter = Filter(
+    dataset_id="66db6fe7d93d1ade24cd1dc3",
+    tags_filter=tags_filter
+)
+
+while True:
+    data, count, last = await data_client.binary_data_by_filter(
+        my_filter, last=last, include_binary_data=False)
+    if not data:
+        break
+    my_untagged_data.extend(data)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter).
@@ -208,7 +227,7 @@ binary_metadata = await data_client.binary_data_by_filter(
     filter=my_filter,
     limit=20,
     include_binary_data=False
-    )
+)
 
 my_ids = []
 
@@ -372,7 +391,8 @@ binary_metadata = await data_client.binary_data_by_filter(
     filter=my_filter,
     limit=20,
     include_binary_data=False
-    )
+)
+
 
 my_ids = []
 
@@ -750,7 +770,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 from viam.proto.app.data import BinaryID
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_binary_ids = []
@@ -798,7 +818,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 from viam.proto.app.data import BinaryID
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_binary_ids = []

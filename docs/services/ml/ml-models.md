@@ -43,6 +43,8 @@ You can search the machine learning models that are available to deploy on this 
 <div class="mr-model" id="">
   <div class="modellistheader">
     <div class="name">Model</div>
+    <div class="type">Type</div>
+    <div class="framework">Framework</div>
     <div>Description</div>
   </div>
 <div id="hitsML" class="modellist">

@@ -122,7 +122,7 @@ if (mlmodels.length !== 0) {
     //  So you can pass any parameters supported by the search endpoint below.
     //  query_by is required.
     additionalSearchParameters: {
-      query_by: "model_id,description",
+      query_by: "model_id,description,framework,type",
       sort_by: "total_organization_usage:desc,total_robot_usage:desc",
       infix: "always",
     },
@@ -142,6 +142,8 @@ if (mlmodels.length !== 0) {
   };
   itemtemplateML = `
   <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="type">{{#helpers.highlight}}{ "attribute": "type" }{{/helpers.highlight}}</div>
+  <div class="framework">{{#helpers.highlight}}{ "attribute": "framework" }{{/helpers.highlight}}</div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 

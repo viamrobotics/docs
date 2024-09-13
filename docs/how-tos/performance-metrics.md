@@ -37,17 +37,17 @@ You can use the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-t
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
-
-{{% snippet "setup.md" %}}
-
-{{% /expand%}}
-
 {{% expand "Install telegraf. Click to see instructions." %}}
 
 On macOS, you must also install telegraf by running `brew install telegraf` in your terminal before using this module.
 
 If you are on another operating system, telegraf will be installed automatically for you.
+
+{{% /expand%}}
+
+{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+
+{{% snippet "setup.md" %}}
 
 {{% /expand%}}
 
@@ -64,8 +64,6 @@ You must run `viam-server` with `sudo` to monitor machine performance metrics.
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 
 Search for and add the `viam:viam-sensor:telegrafsensor` model provided by the [`viam-telegraf-sensor` module](https://app.viam.com/module/viam/viam-telegraf-sensor).
-
-Save the configuration.
 
 {{% /tablestep %}}
 
@@ -84,13 +82,13 @@ For example:
 }
 ```
 
-Save the configuration.
-
 {{% /tablestep %}}
 {{% tablestep  %}}
 **3. Test the sensor**
 
-After you configure your sensor, click **Test** at the bottom of the sensor configuration card to view the readings.
+**Save the configuration.**
+
+Now, click **Test** at the bottom of the sensor configuration card to view the readings.
 You can also see readings on the **CONTROL** tab.
 
 ![Test panel with readings displayed.](/how-tos/telegraf-test.png)

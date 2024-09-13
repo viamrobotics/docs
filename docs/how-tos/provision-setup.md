@@ -35,7 +35,9 @@ This guide will show you how to install and configure `viam-agent`.
 
 To find out more about supported systems, see [Compatibility](/installation/#compatibility).
 
-If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and customize at least the hostname when prompted.
+If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and customize at least the hostname when prompted by the Raspberry Pi Imager.
+
+When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
 
 Eject and reinsert the card to make sure it's mounted with the newly written contents.
 
@@ -55,6 +57,92 @@ If you choose to use the captive web portal, you can optionally create a machine
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 
 {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+
+{{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
+
+You can use the [Fleet Management API](/appendix/apis/fleet/) to create machines, and obtain their machine cloud credentials:
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import requests
+
+from viam.rpc.dial import DialOptions, Credentials
+from viam.app.viam_client import ViamClient
+from viam.app.app_client import APIKeyAuthorization
+
+# Replace "<API-KEY>" (including brackets) with your API key
+API_KEY = "<API-KEY>"
+# Replace "<API-KEY-ID>" (including brackets) with your API key ID
+API_KEY_ID = "<API-KEY-ID>"
+# The id of the location to create the machine in
+LOCATION_ID = ""
+# The name for the machine to create
+MACHINE_NAME = ""
+
+
+async def connect() -> ViamClient:
+    dial_options = DialOptions(
+      credentials=Credentials(
+        type="api-key",
+        payload=API_KEY,
+      ),
+      auth_entity=API_KEY_ID
+    )
+    return await ViamClient.create_from_dial_options(dial_options)
+
+
+async def main():
+
+    # Make a ViamClient
+    viam_client = await connect()
+    # Instantiate an AppClient called "cloud"
+    # to run fleet management API methods on
+    cloud = viam_client.app_client
+    new_machine_id = await cloud.new_robot(
+        name=MACHINE_NAME, location_id=LOCATION_ID)
+    print("Machine created: " + new_machine_id)
+    list_of_parts = await cloud.get_robot_parts(
+        robot_id=new_machine_id)
+    print("Part id: " + list_of_parts[0].id)
+
+    org_list = await cloud.list_organizations()
+    print(org_list[0].id)
+
+    auth = APIKeyAuthorization(
+        role="owner",
+        resource_type="robot",
+        resource_id=new_machine_id
+    )
+    api_key, api_key_id = await cloud.create_key(
+        org_list[0].id, [auth], "test_provisioning_key")
+    print(api_key, api_key_id)
+
+    headers = {
+        'key_id': api_key_id,
+        'key': api_key
+    }
+    params = {
+        "client": 'true',
+        "id": list_of_parts[0].id
+    }
+    res = requests.get(
+        'https://app.viam.com/api/json1/config',
+        params=params,
+        headers=headers,
+        timeout=10
+    )
+    print(res.text)
+
+    with open("viam.json", "w") as text_file:
+        text_file.write(res.text)
+
+    viam_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /expand%}}
 
 ## Configure `agent-provisioning`
 
@@ -123,6 +211,16 @@ Follow the instructions.
 If you created a <FILE>viam-provisioning.json</FILE>, specify its location when prompted.
 
 {{% expand "Using a Raspberry Pi?" %}}
+
+{{< alert title="Important" color="note" >}}
+
+You must have flashed a 64-bit image to your SD card and customized at least the hostname when prompted by the Raspberry Pi Imager.
+
+When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
+
+If you do not customize anything, `firstrun.sh` is not present on the device and the `preinstall.sh` script fails.
+
+{{< /alert >}}
 
 For Raspberry Pis, the script will automatically perform the required next steps, it will:
 

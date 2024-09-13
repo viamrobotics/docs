@@ -491,7 +491,7 @@ END MARKETING CSS
 
 // Hover animations and colors
 
-.hover-card a {
+.hover-card > a, .hover-card > .hovercardcontainer {
   border: 1px solid #000;
   box-shadow: 5px 5px 0 0 #000;
   padding: 1rem;
@@ -502,30 +502,30 @@ END MARKETING CSS
   margin: 0.5rem 1rem;
 }
 
-.hover-card.link-with-icon a {
+.hover-card.link-with-icon > a, .hover-card.link-with-ico > .hovercardcontainer {
   padding: 0.5rem 1rem;
 }
 
-.hover-card:hover a {
+.hover-card:hover > a, .hover-card:hover > .hovercardcontainer  {
   -webkit-transform: translate(-3px,-3px);
   -ms-transform: translate(-3px,-3px);
   transform: translate(-3px,-3px);
   box-shadow: 8px 8px 0 0 #000;
 }
 
-.hover-card.yellow:hover a {
+.hover-card.yellow:hover > a {
   box-shadow: 8px 8px 0 0 #FFD400;
 }
-.hover-card.green:hover  a {
+.hover-card.green:hover > a {
   box-shadow: 8px 8px 0 0 #00ef83;
 }
-.hover-card.purple:hover a {
+.hover-card.purple:hover > a {
   box-shadow: 8px 8px 0 0 #a51aff;
 }
-.hover-card.teal:hover a {
+.hover-card.teal:hover > a {
   box-shadow: 8px 8px 0 0 #00e8e8;
 }
-.hover-card.pink:hover a {
+.hover-card.pink:hover > a {
   box-shadow: 8px 8px 0 0 #ff79ff;
 }
 
@@ -644,7 +644,6 @@ END MARKETING CSS
 
 .hover-card.small a {
   flex-direction: column;
-  padding-right: 0;
 }
 
 .hover-card.small a > .hover-card-img {
@@ -1704,9 +1703,9 @@ a.ais-Pagination-link:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.modellistheader > .name, .modellist * .name, .modellistheader > .type, .modellist * .type {
-  min-width: 25%;
-  max-width: 25%;
+.modellistheader > .name, .modellist * .name, .modellistheader > .type, .modellist * .type, .modellistheader > .framework, .modellist * .framework {
+  min-width: 15%;
+  max-width: 15%;
 }
 
 .modellistheader {
@@ -1919,4 +1918,42 @@ details summary::-webkit-details-marker {
 
 .center-text {
   text-align: center;
+}
+
+// Styling for email newsletter
+
+h3.body-header[style] {
+  font-family: space grotesk, sans-serif !important;
+  font-size: 2.0rem !important;
+  line-height: 2.667rem !important;
+  font-weight: 400 !important;
+  clear: both !important;
+};
+
+.actions .hs-button.primary.large {
+  border: 1px solid black;
+  color: black;
+  border-radius: 0;
+  background-color: whitesmoke;
+  padding: 0.25rem 0.5rem;
+  i {
+    color: black;
+  }
+}
+
+.legal-consent-container {
+  margin-top: 1rem;
+}
+
+
+.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field {
+  display: flex;
+}
+
+.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label::after {
+  content: ":";
+}
+
+.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label, .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field .input {
+  margin-right: 1rem;
 }
