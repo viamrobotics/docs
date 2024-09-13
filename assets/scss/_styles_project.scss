@@ -1919,3 +1919,41 @@ details summary::-webkit-details-marker {
 .center-text {
   text-align: center;
 }
+
+// Styling for email newsletter
+
+h3.body-header[style] {
+  font-family: space grotesk, sans-serif !important;
+  font-size: 2.0rem !important;
+  line-height: 2.667rem !important;
+  font-weight: 400 !important;
+  clear: both !important;
+};
+
+.actions .hs-button.primary.large {
+  border: 1px solid black;
+  color: black;
+  border-radius: 0;
+  background-color: whitesmoke;
+  padding: 0.25rem 0.5rem;
+  i {
+    color: black;
+  }
+}
+
+.legal-consent-container {
+  margin-top: 1rem;
+}
+
+
+.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field {
+  display: flex;
+}
+
+.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label::after {
+  content: ":";
+}
+
+.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label, .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field .input {
+  margin-right: 1rem;
+}

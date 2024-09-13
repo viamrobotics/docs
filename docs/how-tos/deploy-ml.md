@@ -20,6 +20,7 @@ aliases:
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 platformarea: ["ml", "data"]
+emailform: true
 level: "Beginner"
 date: "2024-06-21"
 # updated: ""  # When the tutorial was last entirely checked
@@ -483,6 +484,8 @@ The model package config looks like this:
   }
 ]
 ```
+
+<div id="emailform"></div>
 
 ## Next steps
 
