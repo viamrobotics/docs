@@ -7,20 +7,23 @@
     },{
         "url": "https://docs.viam.com/how-tos/",
         "tags": ["guide"],
-        "page_rank": 10
+        "page_rank": 20
     },{
         "url": "https://docs.viam.com/tutorials/",
         "tags": ["tutorial"],
-        "page_rank": 5
+        "page_rank": 10
     },{
         "url": "https://docs.viam.com/appendix/glossary/",
         "tags": ["glossary"],
         "page_rank": 1
-    }
-    ,{
+    },{
+        "url": "https://docs.viam.com/appendix/changelog/",
+        "tags": ["changelog"],
+        "page_rank": 1
+    },{
         "url": "https://docs.viam.com/",
         "tags": [],
-        "page_rank": 5
+        "page_rank": 10
     }],
     "sitemap_urls": ["https://docs.viam.com/sitemap.xml"],
     "use_anchors": true,
