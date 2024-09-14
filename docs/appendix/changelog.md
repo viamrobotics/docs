@@ -33,9 +33,9 @@ For more information, see [Configure an esp32-camera](/components/camera/esp32-c
 
 {{% /changelog %}}
 
-{{% changelog date="2024-08-26" color="changed" title="Micro-RDK now viam-micro-server" %}}
+{{% changelog date="2024-08-26" color="changed" title="Micro-RDK now called viam-micro-server" %}}
 
-The Micro-RDK is now `viam-micro-server`.
+The micro-RDK is now referred to as `viam-micro-server`.
 For more information, see [viam-micro-server](/architecture/viam-micro-server/).
 
 {{% /changelog %}}
