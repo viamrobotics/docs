@@ -58,19 +58,26 @@ If you intend to make frequent code changes to your module, want to support a va
    Other languages can proceed to the next step to upload their module directly.
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
+   {{< tabs >}}
+   {{% tab name="Packaged executable" %}}
+
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -czf module.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
    where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/how-tos/create-module/#compile-or-package-your-module).
 
-   For a Python module built using the `venv` approach, the command might look like this:
+   {{% /tab %}}
+   {{% tab name="Using venv" %}}
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [entrypoint file](/how-tos/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/how-tos/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
+   Where `run.sh` is your [executable file](/how-tos/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/how-tos/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
+
+   {{% /tab %}}
+   {{< /tabs >}}
 
    Supply the path to the resulting archive file in the next step.
 
