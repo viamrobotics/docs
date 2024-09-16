@@ -25,6 +25,7 @@ Once added to the [Viam Registry](https://app.viam.com/registry?type=Training+Sc
 {{< alert title="In this page" color="tip" >}}
 
 1. [Create a training script](#create-a-training-script) from a template.
+1. [Test your training script locally](#test-your-training-script-locally) with a downloaded dataset.
 1. [Upload your training script](#upload-your-training-script).
 1. [Submit a training job](#submit-a-training-job) that uses the training script on a dataset to train a new ML model.
 
@@ -425,6 +426,36 @@ async def connect() -> ViamClient:
         os.environ.get("API_KEY"), os.environ.get("API_KEY_ID")
     )
     return await ViamClient.create_from_dial_options(dial_options)
+```
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Test your training script locally
+
+You can export one of your Viam datasets to test your training script locally.
+
+{{< table >}}
+{{% tablestep %}}
+**1. Export your dataset**
+
+You can get the dataset id from the dataset page or using the [`viam dataset list`](/cli/#dataset) command:
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+viam dataset export --destination=<destination> --dataset-id=<dataset-id> --include-jsonl=true
+```
+
+The dataset will be formatted like the one Viam produces for the training.
+Use the `parse_filenames_and_labels_from_json` and `parse_filenames_and_bboxes_from_json` functions to get the images and annotations from your dataset file.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Run your training script locally**
+
+Install any required dependencies and run your training script specifying the path to the <dataset.jsonl> file from your exported dataset:
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+python3 -m model.training --dataset_file=/path/to/dataset.jsonl --model_output_directory=.
 ```
 
 {{% /tablestep %}}
