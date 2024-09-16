@@ -23,7 +23,6 @@ aliases:
 icon: true
 images: ["/services/icons/data-management.svg"]
 no_service: true
-# SME: Alexa Greenberg
 ---
 
 The data management service is a robust solution for smart machine data handling, [data capture](/services/data/capture/), and [cloud synchronization](/services/data/cloud-sync/).
