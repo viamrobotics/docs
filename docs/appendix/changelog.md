@@ -49,7 +49,7 @@ For more information, see [Supported components and services](/services/data/cap
 
 {{% changelog date="2024-08-01" color="added" title="Create custom training scripts" %}}
 
-You can now create, upload and submit custom training scripts to the Viam Registry.
+You can now upload custom training scripts to the Viam Registry and use them to train machine learning models.
 For more information, see [Create custom training scripts](/how-tos/create-custom-training-scripts/).
 
 {{% /changelog %}}
@@ -57,7 +57,7 @@ For more information, see [Create custom training scripts](/how-tos/create-custo
 {{% changelog date="2024-07-19" color="changed" title="Operators can now view data" %}}
 
 The operator role now has view permissions for the data in the respective resource a user has access to.
-For more information, see [Data and machine learning](/cloud/rbac/#data-and-machine-learning).
+For more information, see [Data and machine learning permissions](/cloud/rbac/#data-and-machine-learning).
 
 {{% /changelog %}}
 
