@@ -1,7 +1,7 @@
 ---
 title: "How to export data"
 linkTitle: "Export Data"
-description: "Download data from the Viam app to your local computer using the data client API or the Viam CLI."
+description: "Download data from the Viam app using the data client API or the Viam CLI."
 weight: 45
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -36,7 +36,7 @@ You can download machine data from cloud storage to your computer with the Viam 
 
 ## Export data with the Viam CLI
 
-To export your synced data using the Viam CLI:
+To export your data from the cloud using the Viam CLI:
 
 {{< table >}}
 {{% tablestep %}}
@@ -65,7 +65,7 @@ Run the copied command in a terminal:
 viam data export --org-ids=<org-id> --data-type=<binary|tabular> --mime-types=<mime types> --destination=.
 ```
 
-This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
+This command uses the Viam CLI to download the data onto your computer based on the search criteria you select in the Viam app.
 
 By default, the command creates two new directories named `data` and `metadata` in the current directory and downloads the specified data into the `data` folder and metadata, like bounding box information and labels, in JSON format into the `metadata` folder.
 If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/cli/#named-arguments).
@@ -90,8 +90,7 @@ This API includes a set of methods for managing data, including export, batch de
 Other how-to guides for using and querying data include:
 
 {{< cards >}}
-{{% card link="/how-tos/image-data/" %}}
 {{% card link="/how-tos/deploy-ml/" %}}
-{{% card link="/how-tos/sensor-data-query-sdk/" %}}
+{{% card link="/how-tos/sensor-data-visualize/" %}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
 {{< /cards >}}
