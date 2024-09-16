@@ -1,28 +1,30 @@
 ---
-title: "Configure Data Capture"
-linkTitle: "Data Capture"
-description: "Configure data capture to save data from components, services, or remote parts."
+title: "Configure Data Capture and Sync"
+linkTitle: "Data Capture and Sync"
+description: "Configure the data manager to capture and sync data from your components and services."
 weight: 10
 type: "docs"
-tags: ["data management", "cloud", "sync"]
+tags: ["data management", "cloud", "sync", "capture"]
 icon: true
 images: ["/services/icons/data-capture.svg"]
 no_list: true
 aliases:
-  - "/services/data/capture/"
-  - "/data/capture/"
-  - "/build/micro-rdk/data_management/"
-# SME: Alexa Greenberg
+  - /services/data/capture/
+  - /data/capture/
+  - /build/micro-rdk/data_management/
+  - /services/data/capture/
 no_service: true
 ---
 
-The data management service captures data from one or more resources.
+The data management service captures data from one or more {{< glossary_tooltip term_id="resource" text="resources" >}}, and syncs it to cloud storage when available.
 
 Get started with a quickstart guide or keep reading for more details.
 
 {{< cards >}}
 {{< card link="/get-started/collect-data/" class="green">}}
 {{< /cards >}}
+
+## Data capture
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -52,26 +54,39 @@ However, in practice, high frequency data collection (> 100Hz) requires special 
 You can change the frequency of data capture at any time for individual resources.
 If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all machines in a fleet at the resource or machine level.
 
-For example, consider a tomato picking robot with a 3D camera and an arm.
-When you configure the robot, you may set the camera to capture point cloud data at a frequency of 30Hz.
-For the arm, you may want to capture joint positions at 1Hz.
-If your requirements change and you want to capture data from both components at 10Hz, you can change the configurations at any time by changing the number.
+{{< expand "Click for an example." >}}
+Consider a tomato picking robot with a 3D camera and an arm.
+When you configure the robot, you might set the camera to capture point cloud data at a frequency of 30Hz.
+For the arm, you might capture joint positions at 1Hz.
+
+If your requirements change and you want to capture data from both components at 10Hz, you can change the capture rate at any time in each component's data capture configuration.
+{{< /expand >}}
 
 Data capture is frequently used with [Cloud Sync](/services/data/cloud-sync/).
 However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
 
-## Add the data management service
+## Cloud sync
+
+## Configure data capture and sync
+
+{{< expand "Step 1: Add the data management service" >}}
+
+### Add the data management service
 
 To capture data from one or more machines, you must first add the [data management service](../):
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 3. Select the `data management` type, then either use the suggested name or specify a name for your data management service, for example `data-manager`.
 4. Click **Create**.
 5. On the panel that appears, you can manage the capturing and syncing functions.
-   {{< tabs >}}
-   {{% tab name="viam-server" %}}
-   Specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
+
+{{< tabs >}}
+{{% tab name="viam-server" %}}
+Specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
 
 If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
@@ -79,17 +94,32 @@ If the sync **Interval** or the **Directory** is not specified, the data managem
 If you change the directory for data capture only new data is stored in the new directory.
 Existing data remains in the directory where it was stored.
 {{< /alert >}}
+
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
+
 Specify the sync **Interval**.
 
 {{< alert title="Info" color="info" >}}
 With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
 {{< /alert >}}
+
 {{% /tab %}}
 {{< /tabs >}}
 
-{{%expand "Click to view the JSON configuration for the data management service" %}}
+6. Click the **Save** button in the top right corner of the page.
+
+![data capture configuration](/tutorials/data-management/data-management-conf.png)
+
+When your machine is capturing data, there is a **Capturing** indicator in your machine's status bar.
+
+![data capture indicator on the machine's page](/tutorials/data-management/capturing.png)
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+If you prefer to write raw JSON, here is an example:
+
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 
@@ -142,15 +172,11 @@ With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /expand%}}
+{{% /tab %}}
+{{< /tabs >}}
 
-6. Click the **Save** button in the top right corner of the page.
-
-![data capture configuration](/tutorials/data-management/data-management-conf.png)
-
-When your machine is capturing data, there is a **Capturing** indication in your machine's status bar.
-
-![data capture indicator on the machine's page](/tutorials/data-management/capturing.png)
+{{< /expand >}}
+{{< expand "Step 2: Configure data capture for your resources" >}}
 
 ## Configure data capture for individual resources
 
@@ -169,10 +195,10 @@ The following components and services support data capture:
 - Encoder
 - Gantry
 - Motor
-- Movement Sensor (includes GPS)
+- Movement sensor (includes GPS)
 - Sensor
 - Servo
-- Vision Service
+- Vision service
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
@@ -429,6 +455,8 @@ You may capture data from one or more resource methods:
 After adding configuration for the methods, click the **Save** button in the top right corner of the page.
 
 If you want to remove a capture method from the configuration, click the `delete` icon.
+
+{{< /expand >}}
 
 ## Configure data capture for remote parts
 

@@ -11,7 +11,6 @@ aliases:
   - "/services/data/cloud-sync/"
   - "/data/cloud-sync/"
 no_service: true
-# SME: Alexa Greenberg
 ---
 
 The data management service securely syncs the specified data to the cloud at the user-defined frequency.
@@ -106,8 +105,8 @@ The default value of `1000` concurrent threads is sufficient for most use cases,
 
 ### Pause sync
 
-You can pause Cloud Sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
-If you have captured data that you do not want to sync, delete the data on the machine before resuming Cloud Sync.
+You can pause cloud sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
+If you have captured data that you do not want to sync, delete the data on the machine before resuming cloud sync.
 To delete the data locally, `ssh` into your machine and delete the data in the directory where you capture data.
 
 ## Sync files from another directory

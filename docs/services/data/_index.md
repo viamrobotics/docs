@@ -29,7 +29,7 @@ The data management service is a robust solution for smart machine data handling
 Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
 Once collected, you can configure which data to securely sync to the cloud, and view, sort, or manage it directly in the cloud without needing to manually gather data from each machine.
 
-![Data is captured on the machine, uploaded to the cloud, and then deleted off local storage.](/services/data/data_management.png)
+{{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/J0NNiQD0ocQ">}}
 
@@ -43,41 +43,47 @@ Or learn more about Viam's data management features, which can be broken down in
 
 ## On-device data management
 
-Manage data directly on your robot, with configurable data capture from various components, automated recovery after interruptions, and secure cloud synchronization for efficient data storage and management.
+The data management service:
+
+- Automatically resumes capturing data after your machine restarts.
+- Securely transfers data to the cloud at the frequency you define.
+- Automatically deletes local data after syncing for space management.
 
 {{< cards >}}
 {{% manualcard link="/services/data/capture/" %}}
 
-### Data capture
+### Data capture and cloud sync
 
-Configurable for various robot components like cameras, sensors, and motors, with configurable capture frequency.
-Automatically resumes after robot restarts.
-
-{{% /manualcard %}}
-{{% manualcard link="/services/data/cloud-sync/" %}}
-
-### Cloud sync
-
-Securely transfer data to the cloud at the frequency you define.
-Resilient to interruptions, and deletes local data post-sync for space management.
+More details and how to configure capture and sync.
 
 {{% /manualcard %}}
 {{< /cards >}}
 
+You can configure the frequency of data capture individually for each supported component:
+
+{{< cards >}}
+{{< relatedcard link="/components/arm/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< relatedcard link="/components/encoder/">}}
+{{< relatedcard link="/components/gantry/">}}
+{{< relatedcard link="/components/motor/">}}
+{{< relatedcard link="/components/movement-sensor/">}}
+{{< relatedcard link="/components/sensor/">}}
+{{< relatedcard link="/components/servo/">}}
+{{< /cards >}}
+
 ## Cloud data management
+
+<br>
+{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
+<br><br>
 
 Experience streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
 
-{{< cards >}}
-{{% manualcard link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
-
-### Query data
-
-Make SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
-
 <!-- markdownlint-disable-file MD034 -->
 
-{{% /manualcard %}}
+{{< cards >}}
 {{% manualcard link="https://app.viam.com/data/view" %}}
 
 ### View and filter data
@@ -108,28 +114,17 @@ Upload data to the Viam app from your local computer or mobile device using the 
 {{% /manualcard %}}
 {{< /cards >}}
 
-#### Used with
-
-You can configure the frequency of data capture individually for each supported component:
-
-{{< cards >}}
-{{< relatedcard link="/components/arm/">}}
-{{< relatedcard link="/components/board/">}}
-{{< relatedcard link="/components/camera/">}}
-{{< relatedcard link="/components/encoder/">}}
-{{< relatedcard link="/components/gantry/">}}
-{{< relatedcard link="/components/motor/">}}
-{{< relatedcard link="/components/movement-sensor/">}}
-{{< relatedcard link="/components/sensor/">}}
-{{< relatedcard link="/components/servo/">}}
-{{< /cards >}}
-
-## Query your data
+### Query your data
 
 Once you have [synced](/services/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/how-tos/sensor-data-query-with-third-party-tools/).
 For _tabular_ sensor data, you can [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/how-tos/sensor-data-query-sdk/) against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
-## Permissions
+{{< cards >}}
+{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
+{{% card link="/how-tos/sensor-data-query-sdk/" %}}
+{{< /cards >}}
+
+### Permissions
 
 Data management permissions vary between owners and operators.
 For more information about who can do what with data, see [Data Permissions](/cloud/rbac/#data-and-machine-learning).
@@ -152,7 +147,7 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 
 {{< readfile "/static/include/services/apis/generated/data_manager.md" >}}
 
-## Next steps: train and deploy machine learning
+## Next steps: Train and deploy machine learning
 
 You can use data synced to the cloud to [train machine learning models and deploy them to your machines](/how-tos/deploy-ml/) from the Viam app.
 
