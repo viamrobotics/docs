@@ -25,15 +25,16 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.utils import create_filter
 
-left_motor_filter = create_filter(
-    component_name="motor-1"
-      )
+my_data = []
+my_filter = create_filter(component_name="motor-1")
+last = None
+while True:
+    tabular_data, count, last = await data_client.tabular_data_by_filter(my_filter, last=last)
+    if not tabular_data:
+        break
+    my_data.extend(tabular_data)
 
-    data, count, last = await data_client.tabular_data_by_filter(
-        filter=left_motor_filter
-    )
-    for tab in data:
-        print(tab)
+print(f"My data: {my_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_filter).
@@ -112,7 +113,7 @@ binary_pipeline = mql_to_binary(mql_pipeline)
 tabular_data = await data_client.tabular_data_by_mql(
     organization_id="<YOUR-ORG-ID>",
     mql_binary=binary_pipeline
-    )
+)
 
 print(f"Tabular Data 1: {tabular_data}")
 
@@ -160,17 +161,17 @@ from viam.utils import create_filter
 from viam.proto.app.data import Filter, TagsFilter, TagsFilterType
 
 # Get data captured from camera components
-camera_filter = create_filter(
-    component_name="camera-1"
-    )
-    
-data, count, last = await data_client.binary_data_by_filter(
-    filter=camera_filter, 
-    limit=1, 
-    include_binary_data=True
-)
-for binary in data:
-    print(binary)
+my_data = []
+last = None
+my_filter = create_filter(component_name="camera-1")
+
+while True:
+    data, count, last = await data_client.binary_data_by_filter(my_filter, limit=1, last=last)
+    if not data:
+        break
+    my_data.extend(data)
+
+print(f"My data: {my_data}")
 
 # Get untagged data from a dataset
 
@@ -223,7 +224,7 @@ from viam.proto.app.data import BinaryID
 from viam.utils import create_filter
 
 my_filter = create_filter(component_name="camera-1", organization_ids=["<YOUR-ORG-ID>"])
-binary_metadata = await data_client.binary_data_by_filter(
+binary_metadata, count, last = await data_client.binary_data_by_filter(
     filter=my_filter,
     limit=20,
     include_binary_data=False
@@ -231,7 +232,7 @@ binary_metadata = await data_client.binary_data_by_filter(
 
 my_ids = []
 
-for obj in binary_metadata[0]:
+for obj in binary_metadata:
     my_ids.append(
         BinaryID(
             file_id=obj.metadata.id,
@@ -270,7 +271,7 @@ Delete tabular data older than a specified number of days.
 tabular_data = await data_client.delete_tabular_data(
     organization_id="<YOUR-ORG-ID>", 
     delete_older_than_days=150
-    )
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
@@ -332,23 +333,23 @@ Filter and delete binary data by ids.
 from viam.proto.app.data import BinaryID
 from viam.utils import create_filter
 
- my_filter = create_filter(component_name="objectfilter-cam", organization_ids=["<YOUR-ORG-ID>"])
-    binary_metadata = await data_client.binary_data_by_filter(
-      filter=my_filter,
-      limit=20,
-      include_binary_data=False
-      )
+my_filter = create_filter(component_name="camera-1", organization_ids=["<YOUR-ORG-ID>"])
+binary_metadata, count, last = await data_client.binary_data_by_filter(
+    filter=my_filter,
+    limit=20,
+    include_binary_data=False
+)
 
-    my_ids = []
+my_ids = []
 
-    for obj in binary_metadata[0]:
-        my_ids.append(
-            BinaryID(
-                file_id=obj.metadata.id,
-                organization_id=obj.metadata.capture_metadata.organization_id,
-                location_id=obj.metadata.capture_metadata.location_id
-            )
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
         )
+    )
 
 binary_data = await data_client.delete_binary_data_by_ids(my_ids)
 ```
@@ -387,7 +388,7 @@ from viam.utils import create_filter
 tags = ["tag1", "tag2"]
 
 my_filter = create_filter(component_name="camera-1", organization_ids=["<YOUR-ORG-ID>"])
-binary_metadata = await data_client.binary_data_by_filter(
+binary_metadata, count, last = await data_client.binary_data_by_filter(
     filter=my_filter,
     limit=20,
     include_binary_data=False
@@ -396,7 +397,7 @@ binary_metadata = await data_client.binary_data_by_filter(
 
 my_ids = []
 
-for obj in binary_metadata[0]:
+for obj in binary_metadata:
     my_ids.append(
         BinaryID(
             file_id=obj.metadata.id,
@@ -478,7 +479,7 @@ tags = ["tag1", "tag2"]
 
 my_filter = create_filter(component_name="camera-1")
 
-binary_metadata = await data_client.binary_data_by_filter(
+binary_metadata, count, last = await data_client.binary_data_by_filter(
     filter=my_filter,
     limit=50,
     include_binary_data=False
@@ -486,7 +487,7 @@ binary_metadata = await data_client.binary_data_by_filter(
 
 my_ids = []
 
-for obj in binary_metadata[0]:
+for obj in binary_metadata:
     my_ids.append(
         BinaryID(
             file_id=obj.metadata.id,
@@ -769,13 +770,13 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
 
-binary_metadata = await data_client.binary_data_by_filter(
+binary_metadata, count, last = await data_client.binary_data_by_filter(
     include_file_data=False
 )
 
 my_binary_ids = []
 
-for obj in binary_metadata[0]:
+for obj in binary_metadata:
     my_binary_ids.append(
         BinaryID(
             file_id=obj.metadata.id,
