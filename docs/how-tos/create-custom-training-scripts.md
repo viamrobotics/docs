@@ -445,6 +445,9 @@ You can get the dataset id from the dataset page or using the [`viam dataset lis
 viam dataset export --destination=<destination> --dataset-id=<dataset-id> --include-jsonl=true
 ```
 
+The dataset will be formatted like the one Viam produces for the training.
+Use the `parse_filenames_and_labels_from_json` and `parse_filenames_and_bboxes_from_json` functions to get the images and annotations from your dataset file.
+
 {{% /tablestep %}}
 {{% tablestep %}}
 **2. Run your training script locally**
