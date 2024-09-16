@@ -19,13 +19,6 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-{{% changelog date="2024-09-06" color="added" title="Sample datasets" %}}
-
-You can now get a sample dataset from the docs.
-For more information, see [Sample dataset](/services/data/dataset/#sample-dataset).
-
-{{% /changelog %}}
-
 {{% changelog date="2024-08-26" color="added" title="ESP32 cameras" %}}
 
 `viam-micro-server` now supports cameras on ESP32s.
