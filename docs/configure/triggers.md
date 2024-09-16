@@ -331,14 +331,14 @@ The request body includes the following data:
 | -------- | ----------- | ------------- |
 | `component_name` | The name of the component for which data was ingested. | `part_data_ingested` |
 | `component_type` | The type of component for which data was ingested. | `part_data_ingested` |
-| `method_name` | The name of the method from which data was ingested. Only for `part_data_ingested` triggers. | `part_data_ingested` |
+| `method_name` | The name of the method from which data was ingested. | `part_data_ingested` |
 | `min_time_received` | Indicates the earliest time a piece of data was received. | `part_data_ingested` |
 | `max_time_received` | Indicates the latest time a piece of data was received. | `part_data_ingested` |
 | `machine_name` | The name of the machine that triggered the request. | `part_data_ingested` |
 | `location_name` | The location of the machine that triggered the request. | `part_data_ingested` |
 | `org_name` | The name of the organization that triggered the request. | `part_data_ingested` |
 | `file_id` | The id of the file that was ingested. | `part_data_ingested` |
-| `data` | The ingested sensor data. | `part_data_ingested` (sensor data) |
+| `data` | The ingested sensor data. Includes `metadata` with `received_at` and `requested_at` timestamps and `data` in the form `map[string]any`. | `part_data_ingested` (sensor data) |
 
 ## Next steps
 
