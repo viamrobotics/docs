@@ -338,7 +338,7 @@ The request body includes the following data:
 | `location_name` | The location of the machine that triggered the request. | `part_data_ingested` |
 | `org_name` | The name of the organization that triggered the request. | `part_data_ingested` |
 | `file_id` | The id of the file that was ingested. | `part_data_ingested` |
-| `data` | The ingested sensor data. Includes `metadata` with `"received_at"` and `"requested_at"` timestamps and `data` in the form `map[string]any`. | `part_data_ingested` (sensor data) |
+| `data` | The ingested sensor data. Includes `metadata` with `received_at` and `requested_at` timestamps and `data` in the form `map[string]any`. | `part_data_ingested` (sensor data) |
 
 ## Next steps
 
