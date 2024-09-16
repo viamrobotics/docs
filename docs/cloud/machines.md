@@ -19,7 +19,7 @@ A machine always has a main part that receives client requests, and any number o
 
 ## Add a new machine
 
-Add a new machine in the [Viam app](https://app.viam.com) by providing a name in the **New machine** field and clicking **Add machine**.
+Add a new machine in the [Viam app](https://app.viam.com) by clicking **+ Add machine**, providing a name in the **New machine** field and clicking **Add machine** again.
 
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add Machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 

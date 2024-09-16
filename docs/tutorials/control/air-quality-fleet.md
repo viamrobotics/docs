@@ -104,16 +104,16 @@ You can choose to manage your fleet of machines differently based on what makes 
    A new location called `First Location` is automatically generated for you.
    Rename it so you can use it for Antonia's machines:
 
-   Click the pencil icon next to the location name, change it to `Antonia's Home`, then click **Save**.
+   Click on the location and use the **...** menu next to edit the location name to `Antonia's Home`, then click **Save**.
 
 1. Now, create a separate location for RobotsRUs:
 
-   On the left side of the **FLEET** page, find the **New location** interface.
+   On the left side of the **FLEET** page, click the **Add location** button.
    Type in `RobotsRUs` and click **Add**.
 
 1. Add sub-locations to the RobotsRUs location to group the machines at each of their offices:
 
-   Add a new location called `Oregon Office` using the same **New location** interface.
+   Add a new location called `Oregon Office` using the same **Add location** button.
    Then, find the **New parent location** dropdown on the Oregon Office page.
    Select **RobotsRUs** and click **Change**.
 
@@ -275,10 +275,10 @@ You can manually edit this file instead of using the builder UI if you are famil
 In any case, now that the JSON is generated, you are ready to create a {{< glossary_tooltip term_id="fragment" text="fragment" >}}:
 
 1. Select and copy the entire contents of the JSON config.
-2. Navigate to the **FLEET** page and click [**Fragments**](https://app.viam.com/fragments) at the bottom of the left nav.
-3. Type in a name for your fragment, such as `air-sensing-machine` and click **Add fragment**.
+2. Navigate to the **FLEET** page and go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
+3. Click **Create fragment** and change your fragment's name by clicking on it. We used the name `air-sensing-machine`.
 4. Replace the empty curly braces `{}` with the config you copied from your machine.
-5. Click **Save fragment**.
+5. Click **Save**.
 6. Now, you can actually delete the entire config from your machine!
    In the next section, you will replace it with the fragment you just created so that it gets updated alongside all your other machines when you update the fragment in the future.
 

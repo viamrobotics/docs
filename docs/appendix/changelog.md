@@ -288,7 +288,7 @@ This enhancement allows you to:
 
 - Generate larger maps without encountering session timeouts
 - Provide IMU input to improve map quality
-- Save maps to the **SLAM library** tab
+- Save maps to the **SLAM library**
 - Create or update maps using previously captured LiDAR and IMU data
 - Deploy maps to machines
 

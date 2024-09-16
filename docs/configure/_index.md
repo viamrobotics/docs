@@ -262,7 +262,7 @@ Find more information in our [machine parts documentation](/architecture/parts/)
 You can use fragments to share similar {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines in your fleet.
 For example, if you have multiple machines with the same motor hardware, wired the same way, you can create a fragment to configure that motor and share it easily across all of your machines, without needing to individually configure the motor component for each machine.
 
-To configure a fragment, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert fragment**.
+To use a fragment, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert fragment**.
 See [Use Fragments to Configure a Fleet](/fleet/fragments/) for more information on creating and deploying fragments.
 
 ### Frames
