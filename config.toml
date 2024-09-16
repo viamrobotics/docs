@@ -31,7 +31,6 @@ anchor = "smart"
 [languages]
 [languages.en]
 title = "Viam Documentation"
-description = "Viam Documentation"
 languageName ="English"
 weight = 1
 

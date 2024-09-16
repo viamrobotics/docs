@@ -18,6 +18,9 @@ build-prod: clean setup
 build-pr: clean setup
 	hugo $(PR_OPTIONS)
 
+build-pr-no-clean: setup
+	hugo $(PR_OPTIONS)
+
 serve-prod: setup
 	hugo server $(PROD_OPTIONS) $(SERVE_OPTIONS)
 
