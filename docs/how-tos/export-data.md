@@ -19,19 +19,46 @@ date: "2024-09-13"
 cost: "0"
 ---
 
-You can download machine data from cloud storage to your computer with the Viam CLI or data client API.
+You can download machine data from cloud storage to your computer with the Viam CLI.
+
+If you prefer to manage your data with SDK code, see the [data client API documentation](/appendix/apis/data-client).
 
 {{% alert title="In this page" color="tip" %}}
 
 - [Export data with the Viam CLI](#export-data-with-the-viam-cli)
-- [Manage data with the data client API](#manage-data-with-the-data-client-api)
 
 {{% /alert %}}
 
 ## Prerequisites
 
 {{< expand "Install the Viam CLI and authenticate." >}}
-[Install the Viam CLI](/cli/#install), then [authenticate your session with Viam](/cli/#authenticate).
+Install the Viam CLI using the option below that matches your system architecture:
+
+{{< readfile "/static/include/how-to/install-cli.md" >}}
+
+Then authenticate your CLI session with Viam using one of the following options:
+
+{{< tabs >}}
+{{% tab name="Personal access token" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam login
+```
+
+This will open a new browser window with a prompt to start the authentication process. If a browser window does not open, the CLI will present a URL for you to manually open in your browser. Follow the instructions to complete the authentication process.
+
+{{% /tab %}}
+{{% tab name="API key" %}}
+
+Use your organization, location, or machine part API key and corresponding API key ID in the following command:
+
+```sh {class="command-line" data-prompt="$"}
+viam login api-key --key-id <api-key-id> --key <organization-api-key-secret>
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 {{< /expand >}}
 
 ## Export data with the Viam CLI
@@ -79,11 +106,6 @@ Sort your folder by filename in order to see them in chronological order.
 {{< /table >}}<br>
 
 You can see more information about exporting data in the [Viam CLI documentation](/cli/#data).
-
-## Manage data with the data client API
-
-You can also use the [data client API](/appendix/apis/data-client/) to upload and export data to and from the Viam app.
-This API includes a set of methods for managing data, including export, batch delete, tag, upload, and many more.
 
 ## Next steps
 

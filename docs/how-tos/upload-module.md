@@ -49,9 +49,32 @@ See [Create a Module](/how-tos/create-module/) or [Create a Sensor Module with P
 {{% tablestep %}}
 **1. Install the CLI**
 
-First, install the Viam CLI and [authenticate](/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
+First, install the Viam CLI and authenticate to Viam, from the same machine that you intend to upload your module from.
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
+
+Authenticate your CLI session with Viam using one of the following options:
+
+{{< tabs >}}
+{{% tab name="Personal access token" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam login
+```
+
+This will open a new browser window with a prompt to start the authentication process. If a browser window does not open, the CLI will present a URL for you to manually open in your browser. Follow the instructions to complete the authentication process.
+
+{{% /tab %}}
+{{% tab name="API key" %}}
+
+Use your organization, location, or machine part API key and corresponding API key ID in the following command:
+
+```sh {class="command-line" data-prompt="$"}
+viam login api-key --key-id <api-key-id> --key <organization-api-key-secret>
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
