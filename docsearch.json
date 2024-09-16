@@ -3,19 +3,27 @@
     "start_urls": [{
         "url": "https://docs.viam.com/get-started/",
         "tags": ["guide"],
-        "page_rank": 2
+        "page_rank": 10
     },{
         "url": "https://docs.viam.com/how-tos/",
         "tags": ["guide"],
-        "page_rank": 2
+        "page_rank": 20
     },{
         "url": "https://docs.viam.com/tutorials/",
         "tags": ["tutorial"],
+        "page_rank": 10
+    },{
+        "url": "https://docs.viam.com/appendix/glossary/",
+        "tags": ["glossary"],
+        "page_rank": 1
+    },{
+        "url": "https://docs.viam.com/appendix/changelog/",
+        "tags": ["changelog"],
         "page_rank": 1
     },{
         "url": "https://docs.viam.com/",
         "tags": [],
-        "page_rank": 2
+        "page_rank": 10
     }],
     "sitemap_urls": ["https://docs.viam.com/sitemap.xml"],
     "use_anchors": true,
@@ -25,13 +33,14 @@
         "lvl2": ".td-content h2",
         "lvl3": ".td-content h3",
         "lvl4": ".td-content h4",
-        "lvl5": ".td-content h5",
+        "lvl5": ".td-content h5, .td-content .expand summary",
         "text": ".td-content p, .td-content div, .td-content ul li, .td-content ol li, .td-content table tbody tr"
     },
     "selectors_exclude": [
         ".footer",
         "#edit-on-github",
         ".d-print-none.feedback",
-        "#emailform"
+        "#emailform",
+        ".td-content .card-container"
     ]
 }
