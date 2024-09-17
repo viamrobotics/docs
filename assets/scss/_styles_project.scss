@@ -353,7 +353,6 @@ END MARKETING CSS
   background-color: whitesmoke;
   color: black;
   border: 1px solid black;
-  box-shadow: 5px 5px 0 0 #000;
   margin-right: 5px;
 
   @each $color, $value in $theme-colors {
@@ -421,17 +420,25 @@ END MARKETING CSS
 }
 
 
-.alert-warning {
-  box-shadow: 5px 5px 0 0 red;
+.alert.alert-warning {
+  border-color: red;
+  border-left: 3px solid red;
+  background-color: rgb(249, 237, 234);
 }
-.alert-note {
-  box-shadow: 5px 5px 0 0 blue;
+.alert.alert-note {
+  border-color: blue;
+  border-left: 3px solid blue;
+  background-color: rgb(229, 242, 254);
 }
-.alert-caution {
-  box-shadow: 5px 5px 0 0 #f0b93f;
+.alert.alert-caution {
+  border-color: #f0b93f;
+  border-left: 3px solid #f0b93f;
+  background-color: rgb(252, 244, 225);
 }
-.alert-tip, .alert-info {
-  box-shadow: 5px 5px 0 0 #1be020;
+.alert.alert-tip, .alert.alert-info {
+  border-color: #1be020;
+  border-left: 3px solid #1be020;
+  background-color: rgb(229, 249, 228);
 }
 
 // Overwrite default
@@ -493,7 +500,6 @@ END MARKETING CSS
 
 .hover-card > a, .hover-card > .hovercardcontainer {
   border: 1px solid #000;
-  box-shadow: 5px 5px 0 0 #000;
   padding: 1rem;
   margin: 0px
 }
