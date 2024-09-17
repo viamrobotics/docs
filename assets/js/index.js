@@ -78,9 +78,15 @@ docsearch({
         protocol: 'https'
       }],
       apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
-    }
+    },
+    typesenseSearchParameters: {
+        group_by: "url_without_anchor",
+        group_limit: 1
+    },
+    // unclear what if anything this achieves.
+    contextualSearch: true
   });
-  docsearch({
+docsearch({
     inputSelector: '.td-sidebar__search .td-search-input',
     typesenseCollectionName: 'docsearch',
     typesenseServerConfig: {
@@ -90,7 +96,13 @@ docsearch({
         protocol: 'https'
       }],
       apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
-    }
+    },
+    typesenseSearchParameters: {
+        group_by: "url_without_anchor",
+        group_limit: 1
+    },
+    // unclear what if anything this achieves.
+    contextualSearch: true
 });
 
 // Userflow START
