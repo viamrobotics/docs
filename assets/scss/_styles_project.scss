@@ -776,13 +776,13 @@ END MARKETING CSS
   margin-bottom: 0.5rem !important;
 }
 
-.hover-card.tutorial * .pills {
+.hover-card * .pills {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.hover-card.tutorial * .pill {
+.hover-card * .pill {
  background-color: whitesmoke;
  padding: 0.1rem 0.25rem;
  border: 1px solid black;
@@ -791,16 +791,16 @@ END MARKETING CSS
  font-weight: 400 !important;
 }
 
-.hover-card.tutorial * .pills > .pill.pill-highlight {
+.hover-card * .pills > .pill.pill-highlight {
   background-color: #000;
   color: white;
 }
 
-.hover-card.tutorial * .pill.pill-lang {
+.hover-card * .pill.pill-lang {
   border-color: #00e8e8;
 }
 
-.hover-card.tutorial * .pill.pill-component {
+.hover-card * .pill.pill-component {
   border-color: #a51aff;
 }
 

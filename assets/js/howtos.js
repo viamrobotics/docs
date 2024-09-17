@@ -98,13 +98,14 @@ search.addWidgets([
 <div class="col hover-card">
     <a href="{{relpermalink}}" target="_blank">
     <div class="small-hover-card-div">
-        <div>
             <div class="title">{{title}}</div>
             <div class="description">
                 {{#description}}<p>{{description}}</p>{{/description}}
             </div>
+            <div class="pills">
+                {{#platformarea}}<div class="pill pill-component">{{.}}</div>{{/platformarea}}
+            </div>
         </div>
-    </div>
     </a>
 </div>
 `,
