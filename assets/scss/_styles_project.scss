@@ -1450,6 +1450,8 @@ ul.sectionlist > li:hover {
   padding: 0.2rem 1rem;
   margin: 0.2rem;
   border: 1px solid black;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
 }
 
 #platformarea-list .filterbutton {
