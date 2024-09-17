@@ -652,6 +652,10 @@ END MARKETING CSS
   flex-direction: column;
 }
 
+.hover-card.small a:hover, li .hover-card a:hover{
+  text-decoration: none;
+}
+
 .hover-card.small a > .hover-card-img {
   padding-right: 0;
   max-width: 100%;
@@ -665,6 +669,10 @@ END MARKETING CSS
   margin-top: 0.5rem;
   width: 100%;
   text-align: center;
+}
+
+.hover-card.small a div.small-hover-card-div .title {
+  font-size: 1.125rem;
 }
 
 // Hover card which turns into a small one on mobile with image on the left
@@ -982,7 +990,7 @@ td > ul, td > ol {
 
 /* START cookie consent message */
 .alert.cookieconsent-optout-marketing {
-  box-shadow: 5px 5px 0 0 #a51aff;
+  border-color: #a51aff;
   display: block;
 }
 
@@ -1494,11 +1502,14 @@ ul.sectionlist > li:hover {
   background-color: #FF7D80;
 }
 
-.ais-Hits-item .title:after {
+.ais-Hits-item > .tutorial .title:after {
   content: "Tutorial";
+  background-color: #00ef83;
+}
+
+.ais-Hits-item .title:after {
   padding: 0.1rem 0.2rem;
   margin-left: 0.5rem;
-  background-color: #00ef83;
   font-size: 0.833rem;
   font-weight: 400;
   text-transform: uppercase;

@@ -95,31 +95,13 @@ search.addWidgets([
     container: "#hits",
     templates: {
       item: `
-<div class="col tutorial hover-card {{resource}}">
+<div class="col hover-card">
     <a href="{{relpermalink}}" target="_blank">
-    {{#webm}}
-        <div class="hover-card-video">
-            <div>
-            <video autoplay loop muted playsinline alt="{{videoAlt}}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
-                <source data-src="{{webm}}" type="video/webm">
-                <source data-src="{{mp4}}" type="video/mp4">
-                There should have been a video here but your browser does not seem to support it.
-            </video>
-            </div>
-        </div>
-    {{/webm}}
-    {{#image}}
-        <div class="hover-card-img">
-        <picture>
-            <img src="{{image}}" alt="{{imageAlt}}" loading="lazy">
-        </picture>
-        </div>
-    {{/image}}
     <div class="small-hover-card-div">
         <div>
             <div class="title">{{title}}</div>
-            <div class="pills">
-                {{#platformarea}}<div class="pill pill-component">{{.}}</div>{{/platformarea}}
+            <div class="description">
+                {{#description}}<p>{{description}}</p>{{/description}}
             </div>
         </div>
     </div>
