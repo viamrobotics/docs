@@ -13,20 +13,6 @@ aliases:
 no_service: true
 ---
 
-The data management service securely syncs the specified data to the cloud at the user-defined frequency.
-Viam does not impose a minimum or maximum on the frequency of data syncing.
-However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
-
-If the internet becomes unavailable or the machine needs to restart during the sync process, the service will try to resume sync indefinitely.
-When the connection is restored, the service resumes the syncing process where it left off without duplicating data.
-For more detailed information, see [Considerations](#considerations).
-
-Once the service syncs a file to Viam's cloud, the service deletes the file locally from the machine's configured capture location.
-
-As before, consider the example of a tomato picking robot.
-When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
-If you change your mind and want your machine to sync less frequently, you can change the sync frequency, for example, to once a day.
-
 ## Configuration
 
 Before you can configure [cloud sync](/services/data/cloud-sync/), you must [add the data management service](/services/data/capture/#add-the-data-management-service).
@@ -154,31 +140,6 @@ In the example pictured here, the data management service syncs the configured c
 {{% /expand%}}
 
 ## Considerations
-
-- **Security**: The data management service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
-  When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.
-
-- **Data Integrity**: Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
-
-  If the internet becomes unavailable or the machine needs to restart during the sync process, the sync is interrupted.
-  If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
-  When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
-
-  For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
-  Once the service retries and successfully connects, data synchronization resumes at 33%.
-
-- **Storage** Data that is successfully synced to the cloud is automatically deleted from local storage.
-
-  When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
-
-  To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
-
-  {{< alert title="Warning" color="warning" >}}
-
-  If your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
-  See [automatic data deletion](/services/data/capture/#automatic-data-deletion) for configuration options.
-
-  {{< /alert >}}
 
 ## Next steps
 

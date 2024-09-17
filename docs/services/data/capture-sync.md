@@ -1,5 +1,5 @@
 ---
-title: "Configure Data Capture and Sync"
+title: "Data Capture and Sync"
 linkTitle: "Data Capture and Sync"
 description: "Configure the data manager to capture and sync data from your components and services."
 weight: 10
@@ -16,7 +16,11 @@ aliases:
 no_service: true
 ---
 
-The data management service captures data from one or more {{< glossary_tooltip term_id="resource" text="resources" >}}, and syncs it to cloud storage when available.
+The data management service captures data from one or more {{< glossary_tooltip term_id="resource" text="resources" >}} locally, and syncs it to cloud storage when a connection to the cloud is available.
+You can configure which data you want to capture, as well as the capture rate and the sync frequency.
+
+Data capture is frequently used with cloud sync.
+However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
 
 Get started with a quickstart guide or keep reading for more details.
 
@@ -24,7 +28,7 @@ Get started with a quickstart guide or keep reading for more details.
 {{< card link="/get-started/collect-data/" class="green">}}
 {{< /cards >}}
 
-## Data capture
+## Data capture details
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -51,9 +55,6 @@ However, in practice, high frequency data collection (> 100Hz) requires special 
 {{% /tab %}}
 {{< /tabs >}}
 
-You can change the frequency of data capture at any time for individual resources.
-If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all machines in a fleet at the resource or machine level.
-
 {{< expand "Click for an example." >}}
 Consider a tomato picking robot with a 3D camera and an arm.
 When you configure the robot, you might set the camera to capture point cloud data at a frequency of 30Hz.
@@ -62,16 +63,109 @@ For the arm, you might capture joint positions at 1Hz.
 If your requirements change and you want to capture data from both components at 10Hz, you can change the capture rate at any time in each component's data capture configuration.
 {{< /expand >}}
 
-Data capture is frequently used with [Cloud Sync](/services/data/cloud-sync/).
-However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
+### Supported components and services
 
-## Cloud sync
+The following components and services support data capture:
+
+{{< tabs >}}
+{{% tab name="viam-server" %}}
+
+| Type                           |
+| ------------------------------ |
+| Arm                            |
+| Board                          |
+| Camera                         |
+| Encoder                        |
+| Gantry                         |
+| Motor                          |
+| Movement sensor (includes GPS) |
+| Sensor                         |
+| Servo                          |
+| Vision service                 |
+
+{{% /tab %}}
+{{% tab name="viam-micro-server" %}}
+
+<!-- prettier-ignore -->
+| Type | Method |
+| ---- | ------ |
+| [Movement Sensor](/components/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
+| [Sensor](/components/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Cloud sync details
+
+### Frequency
+
+The data management service securely syncs the specified data to the cloud at the user-defined frequency.
+Viam does not impose a minimum or maximum on the frequency of data syncing.
+However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
+
+{{< expand "Click for an example" >}}
+Imagine you want your tomato picking robot to sync captured data to the cloud every five minutes.
+If you change your mind and want your machine to sync less frequently, you can change the sync frequency to once a day, for example.
+{{< /expand >}}
+
+### Security
+
+The data management service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
+When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.
+
+### Data Integrity
+
+Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
+
+If the internet becomes unavailable or the machine needs to restart during the sync process, the sync is interrupted.
+If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
+When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
+
+For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
+Once the service retries and successfully connects, data synchronization resumes at 33%.
+
+### Storage
+
+Data that is successfully synced to the cloud is automatically deleted from local storage.
+
+When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
+
+To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
+
+#### Automatic data deletion
+
+{{< alert title="Warning" color="warning" >}}
+
+If your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
+
+{{< /alert >}}
+
+If cloud sync is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
+
+With `viam-server`, the data management service will also automatically delete local data in the event your machine's local storage fills up.
+Local data is automatically deleted when _all_ of the following conditions are met:
+
+- Data capture is enabled on the data manager service
+- Local disk usage percentage is greater than or equal to 90%
+- The Viam capture directory is at least 50% of the current local disk usage
+
+If local disk usage is greater than or equal to 90%, but the Viam capture directory is not at least 50% of that usage, a warning log message will be emitted instead and no action will be taken.
+
+Automatic file deletion only applies to files in the specified Viam capture directory, which is set to `~/.viam/capture` by default.
+Data outside of this directory is not touched by automatic data deletion.
+
+If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available. You can change the capture directory using the `capture_dir` attribute.
+
+You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` attribute:
+
+- The `delete_every_nth_when_disk_full` attribute controls how many files to delete when local storage meets the above fullness criteria.
+  The data management service will delete every Nth file that has been captured upon reaching this threshold.
+  The default value is `5`, meaning that every fifth captured file will be deleted.
+  This value should be suitable for most cases.
 
 ## Configure data capture and sync
 
 {{< expand "Step 1: Add the data management service" >}}
-
-### Add the data management service
 
 To capture data from one or more machines, you must first add the [data management service](../):
 
@@ -176,46 +270,23 @@ With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`
 {{< /tabs >}}
 
 {{< /expand >}}
-{{< expand "Step 2: Configure data capture for your resources" >}}
 
-## Configure data capture for individual resources
+{{< expand "Step 2: Configure data capture for your resources" >}}
 
 Once you have added the data capture service, you can specify the data you want to capture at a resource level.
 
-### Supported components and services
-
-The following components and services support data capture:
-
 {{< tabs >}}
-{{% tab name="viam-server" %}}
-
-- Arm
-- Board
-- Camera
-- Encoder
-- Gantry
-- Motor
-- Movement sensor (includes GPS)
-- Sensor
-- Servo
-- Vision service
-
-{{% /tab %}}
-{{% tab name="viam-micro-server" %}}
-
-<!-- prettier-ignore -->
-| Type | Method |
-| ---- | ------ |
-| [Sensor](/components/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
-| [Movement Sensor](/components/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
-
-{{% /tab %}}
-{{< /tabs >}}
+{{% tab name="Config builder" %}}
 
 To add data capture for a component or service, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
-For each resource you can capture data for, there is a `Data capture` section in its panel.
-Click `Add Method` and then select the **Method** type and the capture **Frequency**.
+For each resource you can capture data for, there is a **Data capture** section in its panel.
+Click **Add method** and then select the **Method** and specify a capture **Frequency** in hertz.
+For example, if you want to capture a reading every 2 seconds, enter `0.5`.
+
+For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
+
+![component config example](/services/data/data-service-component-config.png)
 
 {{< alert title="Caution" color="caution" >}}
 
@@ -225,15 +296,13 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Click the **Save** button in the top right corner of the page.
 
-Now, using `viam-server`, your data will be saved locally on your machine to the directory specified in the data management service.
-If you are using `viam-micro-server`, data will be captured at the configured capture frequency and saved in flash memory and synced to Viam app at the selected interval. Additionally, with `viam-micro-server` you can set `cache_size_kb` to configure the maximum amount of storage bytes allocated to a data collector.
+`viam-server` will save your data locally on your machine in the directory specified in the data management service config.
+If you are using `viam-micro-server`, data will be saved in flash memory until it is synced to the cloud.
+Additionally, with `viam-micro-server` you can set `cache_size_kb` to configure the maximum amount of storage bytes allocated to a data collector.
 If not supplied, this defaults to 1 KB.
 
-For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
-
-![component config example](/services/data/data-service-component-config.png)
-
-{{%expand "Click to view an example JSON configuration for data capture on a camera component" %}}
+{{% /tab %}}
+{{% tab name="Raw JSON example" %}}
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -374,9 +443,10 @@ This example configuration captures data from the GetReadings method of a temper
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /expand%}}
+{{% /tab %}}
+{{< /tabs >}}
 
-{{%expand "Click to view an example JSON configuration for data capture on the vision service" %}}
+{{% tab name="Raw JSON example for vision service" %}}
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -445,8 +515,6 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /expand%}}
-
 You may capture data from one or more resource methods:
 
 - To enable or disable data capture for a configured resource or method, use the `on/off` toggle on the resource's configuration pane in the Viam app.
@@ -456,6 +524,12 @@ After adding configuration for the methods, click the **Save** button in the top
 
 If you want to remove a capture method from the configuration, click the `delete` icon.
 
+{{< /tabs >}}
+
+{{< /expand >}}
+
+{{< expand "Step 3: Configure data sync" >}}
+TODO
 {{< /expand >}}
 
 ## Configure data capture for remote parts
@@ -656,46 +730,33 @@ The following example captures data from the `ReadImage` method of a camera:
 
 See the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
 
-## Automatic data deletion
-
-If [cloud sync](/services/data/cloud-sync/) is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
-
-With `viam-server`, the data management service will also automatically delete local data in the event your machine's local storage fills up.
-Local data is automatically deleted when _all_ of the following conditions are met:
-
-- Data capture is enabled on the data manager service
-- Local disk usage percentage is greater than or equal to 90%
-- The Viam capture directory is at least 50% of the current local disk usage
-
-If local disk usage is greater than or equal to 90%, but the Viam capture directory is not at least 50% of that usage, a warning log message will be emitted instead and no action will be taken.
-
-Automatic file deletion only applies to files in the specified Viam capture directory, which is set to `~/.viam/capture` by default.
-Data outside of this directory is not touched by automatic data deletion.
-
-If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available. You can change the capture directory using the `capture_dir` attribute.
-
-You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` attribute:
-
-- The `delete_every_nth_when_disk_full` attribute controls how many files to delete when local storage meets the above fullness criteria.
-  The data management service will delete every Nth file that has been captured upon reaching this threshold.
-  The default value is `5`, meaning that every fifth captured file will be deleted.
-  This value should be suitable for most cases.
-
 ## View captured data
 
-To view captured data for a machine, click on the data icon next to the **Save** button on the top right of the app.
-
-{{<imgproc src="/services/data/data-icon.png" resize="300x" declaredimensions=true alt="Data icon">}}
-
-To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the menu in the top right of its card or the menu in the machine resources list in the **Builder** menu and select **View captured data**.
-
-{{<imgproc src="/services/data/part-menu.png" resize="300x" declaredimensions=true alt="Machine menu with the options Rename, Restart part, View captured data, View setup instructions, View history, View debug configuration, and Delete machine">}}
+{{< tabs >}}
+{{% tab name="One resource" %}}
 
 To view captured data for a component or service, click on the menu in the top right of its card and select **View captured data**.
 
 ![Resource menu with the options Rename, Duplicate, View captured data, and Delete](/services/data/resource-menu.png)
 
-To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view).
+{{% /tab %}}
+{{% tab name="Machine part" %}}
+
+To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the menu in the top right of its card or the menu in the machine resources list in the **Builder** menu and select **View captured data**.
+
+{{<imgproc src="/services/data/part-menu.png" resize="220x" declaredimensions=true alt="Machine menu with the options Rename, Restart part, View captured data, View setup instructions, View history, View debug configuration, and Delete machine">}}
+
+{{% /tab %}}
+{{% tab name="Whole machine" %}}
+
+To view captured data for a {{< glossary_tooltip term_id="machine" text="machine" >}} (including data from all parts of a multi-part machine), click on the data icon next to the **Save** button on the top right of the app.
+
+{{<imgproc src="/services/data/data-icon.png" resize="200x" declaredimensions=true alt="Data icon">}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can also filter by location, type of data, and more.
 
 ## Troubleshooting
 
@@ -711,17 +772,11 @@ To sync your captured data with the cloud, [configure cloud sync](/services/data
 If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/how-tos/deploy-ml/) within the Viam app.
 
-For comprehensive guides on using data capture and synchronization together with the ML model service, see:
+Or check out the following guides and tutorials:
 
 {{< cards >}}
 {{% card link="/how-tos/image-data/" %}}
 {{% card link="/how-tos/deploy-ml/" %}}
-{{< /cards >}}
-
-To capture performance metric data for machines, filter, or visualize data, see:
-
-{{< cards >}}
 {{% card link="/how-tos/performance-metrics/" %}}
-{{% card link="/how-tos/image-data/" %}}
 {{% card link="/tutorials/control/air-quality-fleet/" %}}
 {{< /cards >}}
