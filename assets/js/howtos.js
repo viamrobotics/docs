@@ -102,9 +102,6 @@ search.addWidgets([
             <div class="description">
                 {{#description}}<p>{{description}}</p>{{/description}}
             </div>
-            <div class="pills">
-                {{#platformarea}}<div class="pill pill-component">{{.}}</div>{{/platformarea}}
-            </div>
         </div>
     </a>
 </div>
