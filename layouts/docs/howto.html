@@ -27,7 +27,7 @@
                         Click on one of the following guides that provide solutions for common tasks and workflows.
                     </p>
                     <p>
-                        You can filter these guides by language, component, or service that you're interested in.
+                        What area would you like to explore?
                     </p>
 
                     {{ if not hugo.IsProduction }}
@@ -46,24 +46,10 @@
                       </div>
                     </div>
                     {{ else }}
-
-                        <div id="tutorial-menu" class="lozad">
-                            <div id="tutorial-filters">
-                                <div class="filter" id="filter-languages" aria-expanded="false" data-toggle="collapse" data-target="#languages-list">Languages</div>
-                                <div class="filter" id="filter-components" aria-expanded="false" data-toggle="collapse" data-target="#components-list">Components</div>
-                                <div class="filter" id="filter-services" aria-expanded="false" data-toggle="collapse" data-target="#services-list">Services</div>
-                                <div class="filter" id="filter-level" aria-expanded="false" data-toggle="collapse" data-target="#level-list">Level</div>
-                                <div class="filter" id="filter-resources" aria-expanded="false" data-toggle="collapse" data-target="#resource-list">Content Type</div>
-                            </div>
-                            <div class="accordion-group search-panel__filters show-on-wide lozad" id="tutorial-filter-items">
-                                <div id="languages-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
-                                <div id="components-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
-                                <div id="services-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
-                                <div id="level-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
-                                <div id="resource-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
-                            </div>
-                        </div>
-
+                    <div id="tutorial-menu" class="lozad">
+                      <div id="resource-list" style="display:none;"></div>
+                      <div id="platformarea-list" data-parent="#tutorial-menu"></div>
+                    </div>
                     <div class="search-panel__results card-container lozad">
                         <div id="hits" class="row-no-margin"></div>
                         <div id="pagination"></div>
