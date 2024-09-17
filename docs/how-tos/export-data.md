@@ -17,6 +17,7 @@ level: "Beginner"
 date: "2024-09-13"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
+languages: []
 ---
 
 You can download machine data from cloud storage to your computer with the Viam CLI.
