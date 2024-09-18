@@ -25,9 +25,9 @@ images: ["/services/icons/data-management.svg"]
 no_service: true
 ---
 
-The data management service is a robust solution for smart machine data handling, [data capture, and cloud synchronization](/services/data/capture-sync/).
+The data management service is a robust solution for handling machine data, allowing you to capture data, sync it to the cloud, and query it.
 Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
-Once collected, you can configure which data to securely sync to the cloud, and view, sort, or manage it directly in the cloud without needing to manually gather data from each machine.
+Once collected, you can configure which data to securely sync to the cloud, and view, query, or manage it directly in the cloud without needing to manually gather data from each machine.
 
 {{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
 
@@ -122,6 +122,7 @@ For _tabular_ sensor data, you can [run {{< glossary_tooltip term_id="sql" text=
 {{< cards >}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
 {{% card link="/how-tos/sensor-data-query-sdk/" %}}
+{{% card link="/appendix/apis/data-client/" %}}
 {{< /cards >}}
 
 ### Permissions

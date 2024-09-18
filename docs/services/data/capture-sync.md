@@ -1,7 +1,7 @@
 ---
 title: "Data Capture and Sync"
 linkTitle: "Data Capture and Sync"
-description: "Configure the data manager to capture data from your components and services and sync it to the cloud."
+description: "Configure the data management service to capture data from your components and services and sync it to the cloud."
 weight: 10
 type: "docs"
 tags: ["data management", "cloud", "sync", "capture"]
