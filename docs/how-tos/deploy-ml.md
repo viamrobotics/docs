@@ -1,5 +1,5 @@
 ---
-title: "How to train and deploy ML/computer vision models"
+title: "Train and deploy ML/computer vision models"
 linkTitle: "Train computer vision models"
 weight: 20
 type: "docs"

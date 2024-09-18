@@ -1,5 +1,5 @@
 ---
-title: "How to upload a module to the Viam Registry"
+title: "Upload a module to the Viam Registry"
 linkTitle: "Upload a module"
 type: "docs"
 weight: 26

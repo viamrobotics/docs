@@ -1,5 +1,5 @@
 ---
-title: "How to create a new module"
+title: "Create a new module"
 linkTitle: "Create a module"
 type: "docs"
 weight: 25
