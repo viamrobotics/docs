@@ -39,8 +39,12 @@ Follow the appropriate instructions for your machine's architecture.
 The setup steps copy your machine's credentials to your machine.
 When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its full config from the [Viam app](https://app.viam.com).
 Once the machine has a configuration, it caches it locally and can use the configuration for up to 60 days.
-The machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
+Since the configuration is cached locally, your machine does not need to stay connected to the Viam app after it has obtained its configuration file.
+
+If it is online, the machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 All communication happens securely over HTTPS using secret tokens that are in a machine's configuration.
+
+If your machine will never connect to the internet, you can also create a [local configuration file](/internals/local-configuration-file/) on the machine itself.
 
 {{< alert title="Tip" color="tip" >}}
 On Linux, the configuration is stored at <FILE>/etc/viam.json</FILE> by default and `viam-server` uses this configuration if no configuration is specified on startup.
@@ -50,13 +54,6 @@ See [Run `viam-server`](/installation/manage-viam-server/#run-viam-server) for m
 {{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your machine, go to the **CONFIGURE** tab to start adding to the configuration.
-
-{{% alert title="Info" color="info" %}}
-
-Your machine does not need to stay connected to the Viam app after it has obtained its configuration file.
-The configuration is cached locally.
-If your machine will never connect to the internet, you can also create a [local configuration file](/internals/local-configuration-file/) on the machine itself.
-{{% /alert %}}
 
 ## The CONFIGURE tab
 
@@ -175,26 +172,20 @@ You must configure each component with a type, a model, a name, attributes, and 
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
+For specific information on how to configure each supported component type, see the [components documentation](/components/).
+
 Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the component.
 You must be running `viam-server` and connected to your machine to use this feature.
 
 {{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
 
-You can disable a component without removing it from the configuration by selecting the **...** menu in the upper right corner and selecting **Disable**.
+On the **...** menu in the upper right corner of each resource you can **Duplicate**, **Delete**, and **Disable** or **Enable** it.
 
 {{<imgproc src="/configure/component-menu.png" resize="600x" declaredimensions=true alt="menu on a component card" class="aligncenter imgzoom">}}
 
-If you are configuring several similar components, you can click **...** in the upper-right of a component's configuration pane, then select the **Duplicate** button to create a new identical component beneath your existing one.
-Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name and pins.
-
-To delete a component, click **...** in the upper-right of the component's configuration pane, then select the trash can icon.
-Confirm that you are sure.
-
-For specific information on how to configure each supported component type, see the [components documentation](/components/).
-
 {{% alert title="Tip" color="tip" %}}
 
-When you configure a component on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
+When you configure a component on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to interact with it.
 The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/appendix/apis/).
 
 {{% /alert %}}
@@ -237,7 +228,7 @@ Find more information in the [processes documentation](/configure/processes/).
 
 ### Modules
 
-[Modular resources](/registry/) are a way to add resource types or models that are not built into Viam.
+Modules allow you to add [modular resources](/registry/) to your machines which add resource types or models that are not built into Viam.
 Many models are available in the [registry](https://app.viam.com/registry) and you are able to add them as components or services.
 
 To add a module that is not in the registry and is local to your machine, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Local module**.
