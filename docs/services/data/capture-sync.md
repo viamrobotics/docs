@@ -271,7 +271,6 @@ With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`
 {{< /tabs >}}
 
 {{< /expand >}}
-
 {{< expand "Step 2: Configure data capture for your resources" >}}
 
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
@@ -311,10 +310,12 @@ If not supplied, this defaults to 1 KB.
 {{% /tab %}}
 {{% tab name="Raw JSON example" %}}
 
+{{< expand "Example for a camera component" >}}
+
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 
-This example configuration captures data from the ReadImage method of a camera:
+This example configuration captures data from the `ReadImage` method of a camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -377,7 +378,7 @@ This example configuration captures data from the ReadImage method of a camera:
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
 
-This example configuration captures data from the GetReadings method of a temperature sensor and wifi signal sensor:
+This example configuration captures data from the `GetReadings` method of a temperature sensor and wifi signal sensor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -450,10 +451,9 @@ This example configuration captures data from the GetReadings method of a temper
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /tab %}}
-{{< /tabs >}}
+{{< /expand >}}
 
-{{% tab name="Raw JSON example for vision service" %}}
+{{< expand "Example for a vision service" >}}
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -522,15 +522,9 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
 {{% /tab %}}
 {{< /tabs >}}
 
-You may capture data from one or more resource methods:
+{{< /expand >}}
 
-- To enable or disable data capture for a configured resource or method, use the `on/off` toggle on the resource's configuration pane in the Viam app.
-- To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field on the resource's configuration pane in the Viam app.
-
-After adding configuration for the methods, click the **Save** button in the top right corner of the page.
-
-If you want to remove a capture method from the configuration, click the `delete` icon.
-
+{{% /tab %}}
 {{< /tabs >}}
 
 {{% /tab %}}
@@ -550,7 +544,7 @@ To add them to your JSON configuration you must explicitly add the remote resour
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
-{{%expand "Click to view example JSON configuration for an ESP32 board" %}}
+{{< expand "Click to view example JSON configuration for an ESP32 board" >}}
 
 The following example shows the configuration of the remote part, in this case an [ESP32 board](/components/board/esp32/).
 This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
@@ -606,9 +600,9 @@ This config is just like that of a non-remote part; the remote connection is est
 }
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 
-{{%expand "Click to view the JSON configuration for capturing data from two analog readers and a pin of the board's GPIO" %}}
+{{< expand "Click to view the JSON configuration for capturing data from two analog readers and a pin of the board's GPIO" >}}
 
 The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
 
@@ -676,9 +670,9 @@ The following example captures data from two analog readers that provide a volta
 }
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 
-{{%expand "Click to view the JSON configuration for capturing data from a camera" %}}
+{{< expand "Click to view the JSON configuration for capturing data from a camera" >}}
 
 The following example captures data from the `ReadImage` method of a camera:
 
@@ -726,13 +720,12 @@ The following example captures data from the `ReadImage` method of a camera:
 }
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 
 {{% /tab %}}
 {{< /tabs >}}
 
 {{< /expand >}}
-
 {{< expand "Step 3: Configure data sync" >}}
 
 {{< tabs >}}
@@ -773,8 +766,8 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 {{% /tab %}}
 {{< /tabs >}}
-{{< /expand >}}
 
+{{< /expand >}}
 {{< expand "Step 4: (Optional) View captured data" >}}
 
 To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can also filter by location, type of data, and more.
@@ -806,7 +799,6 @@ To view captured data for a {{< glossary_tooltip term_id="machine" text="machine
 {{< /tabs >}}
 
 {{< /expand >}}
-
 {{< expand "Step 5: (Optional) Pause sync" >}}
 
 You can pause cloud sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
@@ -886,7 +878,7 @@ You can adjust the permitted thread count with the `maximum_num_sync_threads` at
 
 The default value of `1000` concurrent threads is sufficient for most use cases, but if you are using limited hardware, are operating under heavy CPU load, or are syncing a large amount of data at once, consider lowering this value as needed.
 
-{{%expand "Click to view the JSON configuration with 250 threads configured" %}}
+{{< expand "Click to view the JSON configuration with 250 threads configured" >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -905,7 +897,7 @@ The default value of `1000` concurrent threads is sufficient for most use cases,
 }
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 
 ## Troubleshooting
 
