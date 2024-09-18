@@ -55,7 +55,8 @@ Fill in the attributes as applicable to your servo, according to the table below
         "frequency_hz": <int>
       }
     }
-  }
+  ]
+}
 ```
 
 {{% /tab %}}
