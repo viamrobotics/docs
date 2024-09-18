@@ -1,5 +1,5 @@
 ---
-title: "How to trigger cloud sync conditionally"
+title: "Trigger cloud sync conditionally"
 linkTitle: "Trigger data sync conditionally"
 description: "Trigger cloud sync to sync captured data when custom conditions are met."
 weight: 44

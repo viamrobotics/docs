@@ -1,5 +1,5 @@
 ---
-title: "How to create a sensor module with Python"
+title: "Create a sensor module with Python"
 linkTitle: "Create a sensor module"
 type: "docs"
 weight: 26

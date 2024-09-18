@@ -1,5 +1,5 @@
 ---
-title: "How to configure multiple similar machines"
+title: "Configure multiple similar machines"
 linkTitle: "Configure many machines"
 weight: 40
 type: "docs"
