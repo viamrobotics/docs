@@ -45,7 +45,7 @@ For an overview of the Viam software platform, see [Learn about Viam](/get-start
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 
-`viam-server` can run on any SBC that runs a supported operating system:
+`viam-server` can run on any computer that runs a supported operating system:
 
 - Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures
 - Windows Subsystem for Linux (WSL)
