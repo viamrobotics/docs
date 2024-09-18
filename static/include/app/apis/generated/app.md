@@ -111,7 +111,7 @@ List the organizations a user belongs to.
 
 **Parameters:**
 
-- `user_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the user.
+- `user_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the user. You can retrieve this with the get_user_id_by_email() method.
 
 **Returns:**
 
@@ -120,7 +120,7 @@ List the organizations a user belongs to.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-org_list = await cloud.list_organizations_by_user("user-id")
+org_list = await cloud.list_organizations_by_user("<YOUR-USER-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organizations_by_user).
@@ -137,7 +137,7 @@ Return details about the requested organization.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to query.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to query. You can retrieve this from the organization settings page.
 
 **Returns:**
 
@@ -148,6 +148,12 @@ Return details about the requested organization.
 - (GRPCError): If the provided org_id is invalid, or not currently authed to.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization).
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+org = await cloud.get_organization("<YOUR-ORG-ID>")
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -206,6 +212,16 @@ Updates organization details.
 
 - (GRPCError): If the org’s namespace has already been set, or if the provided namespace is already taken.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+organization = await cloud.update_organization(
+    org_id="<YOUR-ORG-ID>",
+    name="Artoo's Org",
+    public_namespace="artoo"
+)
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization).
 
 {{% /tab %}}
@@ -254,7 +270,7 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-member_list, invite_list = await cloud.list_organization_members("org-id")
+member_list, invite_list = await cloud.list_organization_members("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organization_members).
@@ -287,7 +303,7 @@ Create an {{< glossary_tooltip term_id="organization" text="organization" >}} in
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.create_organization_invite("org-id", "youremail@email.com")
+await cloud.create_organization_invite("<YOUR-ORG-ID>", "youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite).
@@ -323,19 +339,21 @@ If an invitation has only one authorization and you want to remove it, delete th
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app import Authorization
 
-authorization_to_add = Authorization(
-    authorization_type="some type of auth",
-    authorization_id="identifier",
-    resource_type="abc",
-    resource_id="resource-identifier123",
-    identity_id="id12345",
-    organization_id="org_id_123"
+auth = Authorization(
+    authorization_type="role",
+    authorization_id="location_owner",
+    resource_type="location", # "robot", "location", or "organization"
+    # machine id, location id or org id
+    resource_id="012456lni0",
+    identity_id="",
+    organization_id="<YOUR-ORG-ID>",
+    identity_type=""
 )
 
 update_invite = await cloud.update_organization_invite_authorizations(
-    org_id="org_id_123",
+    org_id="<YOUR-ORG-ID>",
     email="notarealemail@viam.com",
-    add_authorizations =[authorization_to_add]
+    add_authorizations=[auth]
 )
 ```
 
@@ -363,7 +381,7 @@ Remove a member from the {{< glossary_tooltip term_id="organization" text="organ
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-member_list, invite_list = await cloud.list_organization_members()
+member_list, invite_list = await cloud.list_organization_members(org_id="<YOUR-ORG-ID>")
 first_user_id = member_list[0].user_id
 
 await cloud.delete_organization_member(org_id="org_id", user_id=first_user_id)
@@ -397,7 +415,7 @@ Delete a pending organization invite to the organization you are currently authe
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_organization_invite("org-id", "youremail@email.com")
+await cloud.delete_organization_invite("<YOUR-ORG-ID>", "youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_invite).
@@ -428,7 +446,7 @@ Resend a pending organization invite email.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-org_invite = await cloud.resend_organization_invite("org-id", "youremail@email.com")
+org_invite = await cloud.resend_organization_invite("<YOUR-ORG-ID>", "youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.resend_organization_invite).
@@ -461,7 +479,7 @@ Optionally, put the new location under a specified parent location.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_new_location = await cloud.create_location(org_id="org-id", name="Robotville", parent_location_id="111ab12345")
+my_new_location = await cloud.create_location(org_id="<YOUR-ORG-ID>", name="Robotville", parent_location_id="111ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location).
@@ -598,7 +616,7 @@ Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} u
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-locations = await cloud.list_locations("org-id")
+locations = await cloud.list_locations("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_locations).
@@ -624,8 +642,8 @@ Share a location with an organization.
 
 **Example:**
 
-```python {class="line-numbers linkable-line-numbers"}
-await cloud.share_location("organization-id", "location-id")
+```python {class="line-numbers linkable-line-<numbers"}
+await cloud.share_location("<YOUR-ORG-ID>", "<YOUR-LOCATION-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.share_location).
@@ -652,7 +670,7 @@ Stop sharing a location with an organization.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.unshare_location("organization-id", "location-id")
+await cloud.unshare_location("<YOUR-ORG-ID>", "<YOUR-LOCATION-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.unshare_location).
@@ -712,7 +730,7 @@ Create a new location secret.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_loc_auth = await cloud.create_location_secret()
+new_loc_auth = await cloud.create_location_secret(location_id="123xy12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location_secret).
@@ -744,7 +762,9 @@ Delete a location secret.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_location_secret(
-    secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
+    secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz",
+    location_id="123xy12345"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location_secret).
@@ -761,20 +781,20 @@ Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot to get.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to get. You can copy this value from the URL of the machine's page.
 
 **Returns:**
 
-- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The robot.
+- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The machine.
 
 **Raises:**
 
-- (GRPCError): If an invalid robot ID is passed.
+- (GRPCError): If an invalid machine ID is passed.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-robot = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
+machine = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot).
@@ -791,7 +811,7 @@ Gets the [API keys](/cloud/rbac/#api-keys) for the machine.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the machine.
 
 **Returns:**
 
@@ -800,7 +820,7 @@ Gets the [API keys](/cloud/rbac/#api-keys) for the machine.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.get_robot_api_keys(robot_id="robot-id")
+api_keys = await cloud.get_robot_api_keys(robot_id="robot-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_api_keys).
@@ -817,21 +837,22 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot to get parts from.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to get parts from.
 
 **Returns:**
 
-- ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of robot parts.
+- ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of machine parts.
 
 **Raises:**
 
-- (GRPCError): If an invalid robot ID is passed.
+- (GRPCError): If an invalid machine ID is passed.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 list_of_parts = await cloud.get_robot_parts(
-    robot_id="1a123456-x1yz-0ab0-a12xyzabc")
+    robot_id="1a123456-x1yz-0ab0-a12xyzabc"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_parts).
@@ -848,13 +869,13 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to get.
-- `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the robot part’s config file in JSON format to.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to get. You can retrieve this value by navigating to the machine's page, clicking on the part status dropdown, and clicking the copy icon next to **Part ID**.
+- `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the machine part’s config file in JSON format to.
 - `indent` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Size (in number of spaces) of indent when writing config to dest. Defaults to 4.
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The machine part.
 
 **Raises:**
 
@@ -864,7 +885,8 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_robot_part = await cloud.get_robot_part(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part).
@@ -881,7 +903,7 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to get logs from.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to get logs from.
 - `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the log entries to.
 - `log_levels` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of log levels for which entries should be returned. Defaults to empty list, which returns all logs.
@@ -899,7 +921,8 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_logs = await cloud.get_robot_part_logs(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22", num_log_entries=20)
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22", num_log_entries=20
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_logs).
@@ -916,19 +939,20 @@ Get an asynchronous iterator that receives live machine part logs.
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to retrieve logs from.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to retrieve logs from.
 - `errors_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether or not to only include error logs. Defaults to True.
 - `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
 
 **Returns:**
 
-- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
+- ([viam.app.\_logs.\_LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 logs_stream = await cloud.tail_robot_part_logs(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.tail_robot_part_logs).
@@ -945,11 +969,11 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to retrieve history from.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to retrieve history from.
 
 **Returns:**
 
-- ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the robot part’s history.
+- ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the machine part’s history.
 
 **Raises:**
 
@@ -959,7 +983,8 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_history = await cloud.get_robot_part_history(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_history).
@@ -992,7 +1017,8 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_robot_part = await cloud.update_robot_part(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_part).
@@ -1024,7 +1050,8 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 ```python {class="line-numbers linkable-line-numbers"}
 new_part_id = await cloud.new_robot_part(
-    robot_id="1a123456-x1yz-0ab0-a12xyzabc", part_name="myNewSubPart")
+    robot_id="1a123456-x1yz-0ab0-a12xyzabc", part_name="myNewSubPart"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot_part).
@@ -1055,7 +1082,8 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_robot_part(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part).
@@ -1072,7 +1100,7 @@ Mark a machine part as the [_main_ part](/architecture/parts/#machine-parts) of 
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to mark as main.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to mark as main.
 
 **Returns:**
 
@@ -1080,13 +1108,14 @@ Mark a machine part as the [_main_ part](/architecture/parts/#machine-parts) of 
 
 **Raises:**
 
-- (GRPCError): If an invalid robot part ID is passed.
+- (GRPCError): If an invalid machine part ID is passed.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.mark_part_as_main(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_as_main).
@@ -1103,7 +1132,7 @@ Mark a specified machine part for restart.
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to mark for restart.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to mark for restart.
 
 **Returns:**
 
@@ -1117,7 +1146,8 @@ Mark a specified machine part for restart.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.mark_part_for_restart(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_for_restart).
@@ -1148,7 +1178,8 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_with_new_secret = await cloud.create_robot_part_secret(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_robot_part_secret).
@@ -1181,7 +1212,8 @@ Delete a machine part secret.
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_robot_part_secret(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22",
-    secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy")
+    secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part_secret).
@@ -1242,7 +1274,7 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_machine_id = await cloud.new_robot(name="beepboop")
+new_machine_id = await cloud.new_robot(name="beepboop", location_id="23ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
@@ -1276,7 +1308,9 @@ Change the name of an existing machine.
 ```python {class="line-numbers linkable-line-numbers"}
 updated_robot = await cloud.update_robot(
     robot_id="1a123456-x1yz-0ab0-a12xyzabc",
-    name="Orange-Robot")
+    name="Orange-Robot",
+    location_id="23ab12345"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot).
@@ -1324,7 +1358,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from the Viam app’s organization settings page.
-- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True.  Deprecated since version 0.25.0: Use visibilities instead.
+- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True. Deprecated since version 0.25.0: Use visibilities instead.
 - `visibilities` ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): List of FragmentVisibilities specifying which types of fragments to include in the results. If empty, by default only public fragments will be returned.
 
 **Returns:**
@@ -1419,7 +1453,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - `fragment_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the fragment to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to associate with the fragment.
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
-- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.  Deprecated since version 0.25.0: Use visibility instead.
+- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created. Deprecated since version 0.25.0: Use visibility instead.
 - `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.FragmentVisibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
 
 **Returns:**
@@ -1575,11 +1609,12 @@ Remove a role under the organization you are currently authenticated to.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.remove_role(
-    org_id="org-id",
+    org_id="<YOUR-ORG-ID>",
     identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
     role="owner",
     resource_type="location",
-    resource_id="111ab12345")
+    resource_id="111ab12345"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.remove_role).
@@ -1601,7 +1636,7 @@ Changes an existing role to a new role.
 - `old_role` (Literal['owner'] | Literal['operator']) (required): The role to be changed.
 - `old_resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource the role is added to. Must match old_resource_id.
 - `old_resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
-- `new_identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New ID of the entity the role blongs to (for example, a user ID).
+- `new_identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New ID of the entity the role belongs to (for example, a user ID).
 - `new_role` (Literal['owner'] | Literal['operator']) (required): The new role.
 - `new_resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource to add role to. Must match new_resource_id.
 - `new_resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New ID of the resource the role applies to (that is, either an organization, location, or robot ID).
@@ -1614,15 +1649,16 @@ Changes an existing role to a new role.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.change_role(
-    organization_id="organization-id",
+    organization_id="<YOUR-ORG-ID>",
     old_identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
     old_role="operator",
     old_resource_type="location",
     old_resource_id="111ab12345",
     new_identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
-    new_role="owner",s
+    new_role="owner",
     new_resource_type="organization",
-    new_resource_id="abc12345")
+    new_resource_id="abc12345"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.change_role).
@@ -1655,8 +1691,9 @@ If no resource IDs are provided, all resource authorizations within the organiza
 
 ```python {class="line-numbers linkable-line-numbers"}
 list_of_auths = await cloud.list_authorizations(
-    org_id="org-id",
-    resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"])
+    org_id="<YOUR-ORG-ID>",
+    resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"]
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_authorizations).
@@ -1691,7 +1728,7 @@ from viam.proto.app import AuthorizedPermissions
 # Check whether the entity you're currently authenticated to has permission to control and/or
 # read logs from robots in the "organization-identifier123" org
 permissions = [AuthorizedPermissions(resource_type="organization",
-                                     resource_id="organization-identifier123",
+                                     resource_id="<YOUR-ORG-ID>",
                                      permissions=["control_robot",
                                                   "read_robot_logs"])]
 
@@ -1770,7 +1807,7 @@ Get registry item by ID.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item.
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:name`. For example, [Viam's `csi-cam-pi` module's](https://app.viam.com/module/viam/csi-cam-pi) item ID would be `viam:csi-cam-pi`.
 
 **Returns:**
 
@@ -1779,7 +1816,7 @@ Get registry item by ID.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-item = await cloud.get_registry_item("item-id")
+item = await cloud.get_registry_item("your-namespace:your-name")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_registry_item).
@@ -1807,7 +1844,9 @@ Create a registry item.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.create_registry_item("org-id", "name", PackageType.PACKAGE_TYPE_ML_MODEL)
+from viam.proto.app.packages import PackageType
+
+await cloud.create_registry_item("<YOUR-ORG-ID>", "name", PackageType.PACKAGE_TYPE_ML_MODEL)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_registry_item).
@@ -1824,7 +1863,7 @@ Update a registry item.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item.
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:reponame`.
 - `type` (viam.proto.app.packages.PackageType.ValueType) (required): The type of the item in the registry.
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The description of the registry item.
 - `visibility` (viam.proto.app.Visibility.ValueType) (required): The visibility of the registry item.
@@ -1836,6 +1875,9 @@ Update a registry item.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.packages import PackageType
+from viam.proto.app import Visibility
+
 await cloud.update_registry_item("item-id", PackageType.PACKAGE_TYPE_ML_TRAINING, "description", Visibility.VISIBILITY_PUBLIC)
 ```
 
@@ -1865,6 +1907,31 @@ List the registry items in an organization.
 
 - ([List[viam.proto.app.RegistryItem]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): The list of registry items.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.packages import PackageType
+from viam.proto.app import Visibility, RegistryItemStatus
+
+# List private, published ml training scripts in your organization
+registry_items = await cloud.list_registry_items(
+    organization_id="<YOUR-ORG-ID>",
+    types=[PackageType.PACKAGE_TYPE_ML_TRAINING],
+    visibilities=[Visibility.VISIBILITY_PRIVATE],
+    platforms=[""],
+    statuses=[RegistryItemStatus.REGISTRY_ITEM_STATUS_PUBLISHED]
+)
+
+# list public, published linux modules in all organizations
+registry_items = await cloud.list_registry_items(
+    organization_id="",
+    types=[PackageType.PACKAGE_TYPE_MODULE],
+    visibilities=[Visibility.VISIBILITY_PUBLIC],
+    platforms=["linux/any"],
+    statuses=[RegistryItemStatus.REGISTRY_ITEM_STATUS_PUBLISHED]
+
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_registry_items).
 
 {{% /tab %}}
@@ -1879,7 +1946,7 @@ Delete a registry item.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item.
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:name`.
 
 **Returns:**
 
@@ -1940,7 +2007,7 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 - `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing module name (for example, “my-module”) or namespace and module name (for example, “my-org:my-module”).
 - `url` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The url to reference for documentation and code (NOT the url of the module itself).
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A short description of the module that explains its purpose.
-- `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)) (optional): list of models that are available in the module.
+- `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)): list of models that are available in the module.
 - `entrypoint` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The executable to run to start the module program.
 - `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): The visibility that should be set for the module. Defaults to False (private).
 
@@ -1955,11 +2022,20 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app import Model
+
+model = Model(
+    api="rdk:component:base",
+    model="my-group:cool_new_hoverboard_module:wheeled"
+)
+
 url_of_my_module = await cloud.update_module(
     module_id="my-group:cool_new_hoverboard_module",
     url="https://docsformymodule.viam.com",
+    models=[model],
     description="A base to support hoverboards.",
-    entrypoint="exec")
+    entrypoint="exec"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_module).
@@ -1981,12 +2057,23 @@ Upload a {{< glossary_tooltip term_id="module" text="module" >}} file.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of uploaded file.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): URL of uploaded file.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-file_id = await cloud.upload_module_file(file=b"<file>")
+from viam.proto.app import ModuleFileInfo
+
+module_file_info = ModuleFileInfo(
+    module_id = "sierra:cool_new_hoverboard_module",
+    version = "1.0.0",
+    platform = "darwin/arm64"
+)
+
+file_id = await cloud.upload_module_file(
+    module_file_info=module_file_info,
+    file=b"<file>"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.upload_module_file).
@@ -2003,7 +2090,7 @@ Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
 
 **Parameters:**
 
-- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being retrieved, containing module name or namespace and module name.
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being retrieved, containing namespace and module name.
 
 **Returns:**
 
@@ -2016,7 +2103,7 @@ Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-the_module = await cloud.get_module(module_id="my-cool-modular-base")
+the_module = await cloud.get_module(module_id="my-group:my-cool-modular-base")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_module).
@@ -2042,7 +2129,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-modules_list = await cloud.list_modules("org-id")
+modules_list = await cloud.list_modules("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).
@@ -2077,12 +2164,16 @@ Create a new [API key](/cloud/rbac/#api-keys).
 from viam.app.app_client import APIKeyAuthorization
 
 auth = APIKeyAuthorization(
-role="owner",
-resource_type="robot",
-resource_id="your-robot-id123"
+    role="owner",
+    resource_type="robot",
+    resource_id="your-machine-id123"
 )
 
-api_key, api_key_id = cloud.create_key([auth], "my_key")
+api_key, api_key_id = cloud.create_key(
+    org_id="<YOUR-ORG-ID>",
+    authorizations=[auth],
+    name="my_key"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key).
@@ -2160,7 +2251,7 @@ List all keys for the {{< glossary_tooltip term_id="organization" text="organiza
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-keys = await cloud.list_keys()
+keys = await cloud.list_keys(org_id="<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_keys).
