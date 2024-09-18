@@ -74,10 +74,10 @@ Proceed to [install `viam-micro-server`](/installation/#install-viam-micro-serve
 
 ### Operating System installation
 
-`viam-server` can run on **any SBC that runs a [supported operating system](#platform-requirements)**.
+`viam-server` can run on **any computer that runs a [supported operating system](#platform-requirements)**, including single-board computers (SBCs) that provide access to GPIO pins and can be configured as [board](/components/board/) components.
 
-For convenience, we provide operating system installation instructions for some popular boards.
-If you use another board or computer, proceed to [install `viam-server`](/installation/#install-viam-server).
+For convenience, we provide operating system installation instructions for some popular SBCs.
+If you want to use another board or computer which already has a supported operating system installed, proceed to [install `viam-server`](/installation/#install-viam-server).
 
 {{< cards >}}
 {{% card link="/installation/prepare/rpi-setup/" class="small" %}}
