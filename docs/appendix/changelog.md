@@ -238,7 +238,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/how-tos/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
+You can visualize any data, such as sensor readings, that you have [synced](/services/data/capture-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -360,7 +360,7 @@ You now have the capability to use a [power sensor component](/components/power-
 {{% /changelog %}}
 
 {{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/cloud-sync/).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/capture-sync/).
 It equips machines to:
 
 - Remove data that is not of interest

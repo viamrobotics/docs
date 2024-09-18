@@ -41,7 +41,7 @@ Whenever data of the specified data types is ingested, a `POST` request will be 
 
 {{% alert title="Note" color="note" %}}
 
-You must have [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) configured for the relevant components to use this trigger and the component must return the type of data you configure in the trigger's **Data Types**.
+You must have [data capture](/services/data/capture/) and [cloud sync](/services/data/capture-sync/) configured for the relevant components to use this trigger and the component must return the type of data you configure in the trigger's **Data Types**.
 For example, if you want to trigger a trigger on temperature readings, configure data capture and sync on your temperature sensor.
 {{% /alert %}}
 

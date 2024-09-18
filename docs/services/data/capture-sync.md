@@ -1,7 +1,7 @@
 ---
 title: "Data Capture and Sync"
 linkTitle: "Data Capture and Sync"
-description: "Configure the data manager to capture and sync data from your components and services."
+description: "Configure the data manager to capture data from your components and services and sync it to the cloud."
 weight: 10
 type: "docs"
 tags: ["data management", "cloud", "sync", "capture"]
@@ -13,6 +13,8 @@ aliases:
   - /data/capture/
   - /build/micro-rdk/data_management/
   - /services/data/capture/
+  - /services/data/cloud-sync/
+  - /data/cloud-sync/
 no_service: true
 ---
 
@@ -132,13 +134,13 @@ When a machine loses its internet connection, it cannot resume cloud sync until 
 
 To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
 
-#### Automatic data deletion
-
 {{< alert title="Warning" color="warning" >}}
 
 If your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
 
 {{< /alert >}}
+
+{{< expand "Automatic data deletion details" >}}
 
 If cloud sync is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
 
@@ -163,6 +165,8 @@ You can also control how local data is deleted if your machine's local storage b
   The default value is `5`, meaning that every fifth captured file will be deleted.
   This value should be suitable for most cases.
 
+{{< /expand >}}
+
 ## Configure data capture and sync
 
 {{< expand "Step 1: Add the data management service" >}}
@@ -182,10 +186,10 @@ To capture data from one or more machines, you must first add the [data manageme
 {{% tab name="viam-server" %}}
 Specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
 
-If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
+If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency of once every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
 {{< alert title="Info" color="info" >}}
-If you change the directory for data capture only new data is stored in the new directory.
+If you change the directory for data capture, only new data is stored in the new directory.
 Existing data remains in the directory where it was stored.
 {{< /alert >}}
 
@@ -203,11 +207,8 @@ With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`
 
 6. Click the **Save** button in the top right corner of the page.
 
-![data capture configuration](/tutorials/data-management/data-management-conf.png)
-
-When your machine is capturing data, there is a **Capturing** indicator in your machine's status bar.
-
-![data capture indicator on the machine's page](/tutorials/data-management/capturing.png)
+Now the data management service is enabled.
+However, no data is being captured until you configure capture on one or more {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -272,6 +273,12 @@ With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`
 {{< /expand >}}
 
 {{< expand "Step 2: Configure data capture for your resources" >}}
+
+You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
+
+{{< tabs >}}
+
+{{% tab name="Regular" %}}
 
 Once you have added the data capture service, you can specify the data you want to capture at a resource level.
 
@@ -526,13 +533,8 @@ If you want to remove a capture method from the configuration, click the `delete
 
 {{< /tabs >}}
 
-{{< /expand >}}
-
-{{< expand "Step 3: Configure data sync" >}}
-TODO
-{{< /expand >}}
-
-## Configure data capture for remote parts
+{{% /tab %}}
+{{% tab name="Remote parts" %}}
 
 Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's resources by adding it as a remote part.
@@ -726,11 +728,58 @@ The following example captures data from the `ReadImage` method of a camera:
 
 {{% /expand%}}
 
-## Capture data selectively with filtering
+{{% /tab %}}
+{{< /tabs >}}
 
-See the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
+{{< /expand >}}
 
-## View captured data
+{{< expand "Step 3: Configure data sync" >}}
+
+{{< tabs >}}
+{{% tab name="Config builder" %}}
+
+To enable cloud sync, navigate to your machine's **CONFIGURE** tab, find your data management service config card (created in step 1) and enable **Syncing**.
+Click the **Save** button in the top right corner of the page.
+
+Now the data that you capture will sync automatically with the Viam app in the cloud.
+
+![Data capture configuration](/tutorials/data-management/data-management-conf.png)
+
+By default, the data management service syncs data to Viam's cloud every 0.1 minutes, that is every 6 seconds.
+To change the sync interval, specify an interval in minutes in the interval field.
+
+{{% /tab %}}
+{{% tab name="Raw JSON example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [],
+  "services": [
+    {
+      "name": "data_manager",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": ""
+      }
+    }
+  ]
+}
+```
+
+{{< alert title="Info" color="info" >}}
+If `capture_dir` is unspecified, `viam-server` will use the default directory at <file>~/.viam/capture</file>.
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+{{< /expand >}}
+
+{{< expand "Step 4: (Optional) View captured data" >}}
+
+To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can also filter by location, type of data, and more.
+
+Or, you can navigate to the **DATA** tab from an individual resource, part, or machine's configuration card to automatically apply relevant filters:
 
 {{< tabs >}}
 {{% tab name="One resource" %}}
@@ -756,7 +805,107 @@ To view captured data for a {{< glossary_tooltip term_id="machine" text="machine
 {{% /tab %}}
 {{< /tabs >}}
 
-To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can also filter by location, type of data, and more.
+{{< /expand >}}
+
+{{< expand "Step 5: (Optional) Pause sync" >}}
+
+You can pause cloud sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
+
+If you have captured data that you do not want to sync, delete the data on the machine before resuming cloud sync.
+To delete the data locally, `ssh` into your machine and delete the data in the directory where you capture data.
+
+{{< /expand >}}
+
+### Capture data selectively with filtering
+
+See the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
+
+### Sync files from another directory
+
+You may have additional files you want to sync to the cloud from your machine.
+For example, there may be components on your machine which are not controlled by Viam that are collecting data locally on your machine.
+Or there may be a set of logs indicating the status of the machine at different points in time.
+
+To include these types of files in cloud sync, in the **Additional paths** field of the data manager config, specify the directory where your files are located on your machine and click **Save**.
+To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
+
+{{< alert title="Caution" color="caution" >}}
+If a machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it from the machine.
+{{< /alert >}}
+
+Currently, if the internet becomes unavailable and the sync is interrupted mid-file, the service resumes sync from the beginning of the file.
+This is only applicable for files in a directory added as an additional sync path.
+
+{{< tabs >}}
+{{% tab name="Config builder example" %}}
+
+In the example below, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 0.1 minutes (6 seconds).
+
+{{<imgproc src="/services/data/data-service-config.png" resize="x1100" declaredimensions=true alt="Service config example" style="max-width:500px" >}}
+
+{{% /tab %}}
+{{% tab name="Raw JSON example" %}}
+
+In the example below, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 0.1 minutes (6 seconds).
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [],
+  "services": [
+    {
+      "name": "data_manager",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "sync_disabled": false,
+        "additional_sync_paths": ["/logs"]
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Sync data conditionally
+
+You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
+For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+To set up triggers for syncing see:
+
+{{< cards >}}
+{{% card link="/how-tos/trigger-sync/" %}}
+{{< /cards >}}
+
+### Configure sync threads
+
+When cloud sync is enabled, the data management service will use up to `1000` concurrent CPU threads by default to sync data to the Viam cloud, depending on how much data is being synced.
+You can adjust the permitted thread count with the `maximum_num_sync_threads` attribute.
+
+The default value of `1000` concurrent threads is sufficient for most use cases, but if you are using limited hardware, are operating under heavy CPU load, or are syncing a large amount of data at once, consider lowering this value as needed.
+
+{{%expand "Click to view the JSON configuration with 250 threads configured" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [],
+  "services": [
+    {
+      "name": "data_manager",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "maximum_num_sync_threads": 250
+      }
+    }
+  ]
+}
+```
+
+{{% /expand%}}
 
 ## Troubleshooting
 
@@ -766,8 +915,6 @@ If you are capturing camera data, it can happen that the camera captures and syn
 Wait for a few seconds and you should see correctly colored images.
 
 ## Next steps
-
-To sync your captured data with the cloud, [configure cloud sync](/services/data/cloud-sync/).
 
 If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/how-tos/deploy-ml/) within the Viam app.
