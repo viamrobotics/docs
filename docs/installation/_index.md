@@ -40,35 +40,25 @@ For an overview of the Viam software platform, see [Learn about Viam](/get-start
 {{% toc %}}
 {{< /alert >}}
 
-## Compatibility
+## Platform requirements
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 
-`viam-server` supports:
+`viam-server` can run on any SBC that runs a supported operating system:
 
 - Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures
 - Windows Subsystem for Linux (WSL)
 - macOS
 
-{{< readfile "/static/include/install/windows-support.md" >}}
+{{% alert title="Windows Support Notice" color="note" %}}
 
-If you are using one of the following boards, click on the card to follow the guide to install a supported operating system for that board.
-Otherwise proceed to [install `viam-server`](/installation/#install-viam-server).
+WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
+This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
 
-{{< cards >}}
-{{% card link="/installation/prepare/rpi-setup/" class="small" %}}
-{{% card link="/installation/prepare/odroid-c4-setup/" class="small" %}}
-{{% card link="/installation/prepare/orange-pi-3-lts/" class="small" %}}
-{{% card link="/installation/prepare/orange-pi-zero2/" class="small" %}}
-{{% card link="/installation/prepare/beaglebone-setup/" class="small" %}}
-{{% card link="/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
-{{% card link="/installation/prepare/jetson-nano-setup/" class="small" %}}
-{{% card link="/installation/prepare/pumpkin/" class="small" %}}
-{{% card link="/installation/prepare/sk-tda4vm/" class="small" %}}
-{{< /cards >}}
+Although you cannot access all hardware if you run `viam-server` on your personal computer with WSL, you can [run code to control a machine](/sdks/#run-code) on your personal computer with WSL if you install `viam-server` on a single-board computer running Linux.
 
-Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
+{{% /alert %}}
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
@@ -82,9 +72,28 @@ Proceed to [install `viam-micro-server`](/installation/#install-viam-micro-serve
 {{% /tab %}}
 {{< /tabs >}}
 
+### Operating System installation
+
+`viam-server` can run on **any SBC that runs a [supported operating system](#platform-requirements)**.
+
+For convenience, we provide operating system installation instructions for some popular boards.
+If you use another board or computer, proceed to [install `viam-server`](/installation/#install-viam-server).
+
+{{< cards >}}
+{{% card link="/installation/prepare/rpi-setup/" class="small" %}}
+{{% card link="/installation/prepare/odroid-c4-setup/" class="small" %}}
+{{% card link="/installation/prepare/orange-pi-3-lts/" class="small" %}}
+{{% card link="/installation/prepare/orange-pi-zero2/" class="small" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" class="small" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" class="small" %}}
+{{% card link="/installation/prepare/pumpkin/" class="small" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" class="small" %}}
+{{< /cards >}}
+
 ## Install `viam-server`
 
-If you have a [compatible operating system](/installation/#compatibility), follow along with the steps outlined below to install `viam-server`:
+If you have a [compatible operating system](/installation/#platform-requirements), follow along with the steps outlined below to install `viam-server`:
 
 1. Go to the [Viam app](https://app.viam.com). Create an account if you haven't already.
 
@@ -150,7 +159,7 @@ If you want to program the chip directly, follow the setup instructions in [`via
 
 ### Flash your ESP32 with the `viam-micro-server` installer
 
-If you have a [compatible microcontroller](/installation/#compatibility), follow along with the steps outlined below to install `viam-server`:
+If you have a [compatible microcontroller](/installation/#platform-requirements), follow along with the steps outlined below to install `viam-server`:
 
 1. Go to the [Viam app](https://app.viam.com). Create an account if you haven't already.
 
