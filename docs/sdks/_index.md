@@ -370,6 +370,26 @@ As long as that computer is able to establish a network connection with the mach
 If the internet becomes unavailable to the machine or to your computer but a local network is available, your code will continue to run as described in the next section:
 
 {{< tabs >}}
+{{% tab name="Deploy and run as a module" %}}
+
+You can wrap SDK code by [creating a module](/how-tos/create-module/).
+In wrapping your code into a module, you will be able to:
+
+- deploy it across one or more machines
+- use it in {{< glossary_tooltip term_id="fragment" text="fragments" >}}
+- version it
+
+You can package any files, code, or executable into a module.
+When you add a module to your machine's configuration, the entrypoint defined for the module is run which can start your code.
+
+If your SDK code augments what a component does, such as, for example, adding an overlay to a camera stream, you can create your own camera model inside your module and amend the API methods to have your custom functionality.
+For an example of this, see the [facial-detection module](https://github.com/viam-labs/facial-detection) which wraps its logic into a custom vision service.
+
+If your functionality does not conform to existing API types such as the motor or camera API, you can [use a generic API to wrap your code](https://docs.viam.com/how-tos/create-module/#choose-an-api-to-implement-in-your-model).
+
+For more information, see [How to create and deploy a new module](/how-tos/create-module/).
+
+{{% /tab %}}
 {{% tab name="Run on local network" %}}
 
 Your machines do not need to be connected to the Internet for you to be able to run code.
