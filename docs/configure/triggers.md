@@ -71,9 +71,9 @@ You can also configure a trigger for a resource in **Builder** mode on the **CON
 This creates a trigger that's configured to fire on an event occurring from a specific resource.
 You must configure the method of activation and any relevant **Conditions**, as well as any **Webhooks** and **Emails** for notifications.
 
-For example, the following triggers when data is ingested from the camera's `GetImages` method:
+For example, the following triggers when data is ingested from the sensor's `Readings` method:
 
-{{<imgproc src="/build/configure/camera-trigger.png" resize="x400" declaredimensions=true alt="A conditional data ingestion trigger for a camera called camera-1 with GetImages selected as the method." >}}
+{{<imgproc src="/build/configure/sensor-trigger.png" resize="x400" declaredimensions=true alt="A conditional data ingestion trigger for a sensor called sensor-1 with Readings selected as the method." >}}
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}
