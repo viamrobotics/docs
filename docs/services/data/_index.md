@@ -50,7 +50,7 @@ The data management service:
 - Automatically deletes local data after syncing for space management.
 
 {{< cards >}}
-{{% manualcard link="/services/data/capture/" %}}
+{{% manualcard link="/services/data/capture-sync/" %}}
 
 ### Data capture and cloud sync
 

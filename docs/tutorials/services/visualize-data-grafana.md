@@ -87,7 +87,7 @@ First, add the data management service to your machine to be able capture and sy
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
-For more information, see [Add the data management service](/services/data/capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/services/data/capture-sync/#configure-data-capture-and-sync).
 
 ### Configure data capture for a component
 
