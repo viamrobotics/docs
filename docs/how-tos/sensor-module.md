@@ -1,9 +1,10 @@
 ---
-title: "How to create a sensor module with Python"
+title: "Create a sensor module with Python"
 linkTitle: "Create a sensor module"
 type: "docs"
 weight: 26
 images: ["/icons/components/sensor.svg"]
+icon: true
 tags: ["modular resources", "components", "services", "registry"]
 description: "Add a custom resource by creating and deploying a module to your machine."
 languages: ["python"]

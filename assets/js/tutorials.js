@@ -192,6 +192,20 @@ search.addWidgets([
     ],
   }),
   customRefinementList({
+    container: "platformarea-list",
+    attribute: "platformarea",
+    operator: "or",
+    sortBy: ["name:asc"],
+    items: [
+      { label: "data" },
+      { label: "ml" },
+      { label: "core" },
+      { label: "fleet" },
+      { label: "registry" },
+      { label: "mobility" },
+    ],
+  }),
+  customRefinementList({
     container: "resource-list",
     attribute: "resource",
     operator: "or",
@@ -263,9 +277,21 @@ search.on("render", function () {
     document.getElementById("filter-level").textContent = "Level";
   }
   if (
+    search.helper.state.facetsRefinements.platformarea &&
+    search.helper.state.facetsRefinements.platformarea.length
+  ) {
+    document.getElementById("filter-platformarea").textContent =
+      "Areas (" +
+      search.helper.state.facetsRefinements.platformarea.length +
+      ")";
+  } else {
+    document.getElementById("filter-platformarea").textContent = "Platform Areas";
+  }
+  if (
     search.helper.state.facetsRefinements &&
     search.helper.state.disjunctiveFacetsRefinements.languages &&
-    search.helper.state.facetsRefinements.viamcomponents
+    search.helper.state.facetsRefinements.viamcomponents &&
+    search.helper.state.disjunctiveFacetsRefinements.platformarea
   ) {
     document
       .querySelectorAll(".pill-lang")

@@ -353,7 +353,6 @@ END MARKETING CSS
   background-color: whitesmoke;
   color: black;
   border: 1px solid black;
-  box-shadow: 5px 5px 0 0 #000;
   margin-right: 5px;
 
   @each $color, $value in $theme-colors {
@@ -421,17 +420,25 @@ END MARKETING CSS
 }
 
 
-.alert-warning {
-  box-shadow: 5px 5px 0 0 red;
+.alert.alert-warning {
+  border-color: red;
+  border-left: 3px solid red;
+  background-color: rgb(249, 237, 234);
 }
-.alert-note {
-  box-shadow: 5px 5px 0 0 blue;
+.alert.alert-note {
+  border-color: blue;
+  border-left: 3px solid blue;
+  background-color: rgb(229, 242, 254);
 }
-.alert-caution {
-  box-shadow: 5px 5px 0 0 #f0b93f;
+.alert.alert-caution {
+  border-color: #f0b93f;
+  border-left: 3px solid #f0b93f;
+  background-color: rgb(252, 244, 225);
 }
-.alert-tip, .alert-info {
-  box-shadow: 5px 5px 0 0 #1be020;
+.alert.alert-tip, .alert.alert-info {
+  border-color: #1be020;
+  border-left: 3px solid #1be020;
+  background-color: rgb(229, 249, 228);
 }
 
 // Overwrite default
@@ -493,7 +500,6 @@ END MARKETING CSS
 
 .hover-card > a, .hover-card > .hovercardcontainer {
   border: 1px solid #000;
-  box-shadow: 5px 5px 0 0 #000;
   padding: 1rem;
   margin: 0px
 }
@@ -538,8 +544,8 @@ END MARKETING CSS
 
 .hover-card a div > div, .hover-card div > div {
   font-family: space grotesk, sans-serif;
-  font-size: 1.0625rem!important;
-  font-weight: 600;
+  font-size: 1.24rem!important;
+  font-weight: 450;
   line-height: 1.4375em;
   color: black;
 }
@@ -646,6 +652,10 @@ END MARKETING CSS
   flex-direction: column;
 }
 
+.hover-card.small a:hover, li .hover-card a:hover{
+  text-decoration: none;
+}
+
 .hover-card.small a > .hover-card-img {
   padding-right: 0;
   max-width: 100%;
@@ -659,6 +669,10 @@ END MARKETING CSS
   margin-top: 0.5rem;
   width: 100%;
   text-align: center;
+}
+
+.hover-card.small a div.small-hover-card-div .title {
+  font-size: 1.125rem;
 }
 
 // Hover card which turns into a small one on mobile with image on the left
@@ -762,13 +776,13 @@ END MARKETING CSS
   margin-bottom: 0.5rem !important;
 }
 
-.hover-card.tutorial * .pills {
+.hover-card * .pills {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.hover-card.tutorial * .pill {
+.hover-card * .pill {
  background-color: whitesmoke;
  padding: 0.1rem 0.25rem;
  border: 1px solid black;
@@ -777,16 +791,16 @@ END MARKETING CSS
  font-weight: 400 !important;
 }
 
-.hover-card.tutorial * .pills > .pill.pill-highlight {
+.hover-card * .pills > .pill.pill-highlight {
   background-color: #000;
   color: white;
 }
 
-.hover-card.tutorial * .pill.pill-lang {
+.hover-card * .pill.pill-lang {
   border-color: #00e8e8;
 }
 
-.hover-card.tutorial * .pill.pill-component {
+.hover-card * .pill.pill-component {
   border-color: #a51aff;
 }
 
@@ -976,7 +990,7 @@ td > ul, td > ol {
 
 /* START cookie consent message */
 .alert.cookieconsent-optout-marketing {
-  box-shadow: 5px 5px 0 0 #a51aff;
+  border-color: #a51aff;
   display: block;
 }
 
@@ -1413,7 +1427,7 @@ ul.sectionlist > li:hover {
 #tutorial-menu {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 850px;
 }
 
 .pill-explainer {
@@ -1430,12 +1444,31 @@ ul.sectionlist > li:hover {
   flex-wrap: wrap;
 }
 
-#tutorial-filters > .filter {
+#tutorial-filters > .filter, #platformarea-list .filterbutton {
   text-decoration: none;
   color: black;
   padding: 0.2rem 1rem;
   margin: 0.2rem;
   border: 1px solid black;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
+#platformarea-list .filterbutton {
+  background-color: white;
+}
+
+#platformarea-list .filterbutton.refined {
+  background-color: black;
+  color: white;
+}
+
+#platformarea-list ul {
+  display: flex;
+  list-style-type: none;
+  padding-inline-start: 0;
+  flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
 #tutorial-filters > .filter:hover {
@@ -1471,11 +1504,14 @@ ul.sectionlist > li:hover {
   background-color: #FF7D80;
 }
 
-.ais-Hits-item .title:after {
+.ais-Hits-item > .tutorial .title:after {
   content: "Tutorial";
+  background-color: #00ef83;
+}
+
+.ais-Hits-item .title:after {
   padding: 0.1rem 0.2rem;
   margin-left: 0.5rem;
-  background-color: #00ef83;
   font-size: 0.833rem;
   font-weight: 400;
   text-transform: uppercase;

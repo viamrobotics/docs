@@ -30,13 +30,12 @@ The motion service can:
 
 {{< cards >}}
 {{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/components/movement-sensor/" required="yes">}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/components/movement-sensor/">}}
 {{< relatedcard link="/components/base/" >}}
 {{< relatedcard link="/components/arm/" >}}
 {{< relatedcard link="/components/gripper/" >}}
 {{< /cards >}}
-
-{{% snippet "required-legend.md" %}}
 
 ## Configuration
 

@@ -1,9 +1,10 @@
 ---
-title: "How to update and manage modules you created"
+title: "Update and manage modules you created"
 linkTitle: "Update and manage modules"
 type: "docs"
 weight: 27
 images: ["/registry/create-module.svg"]
+icon: true
 tags: ["modular resources", "components", "services", "registry"]
 description: "Update or delete your existing modules, or change their privacy settings."
 aliases:

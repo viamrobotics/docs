@@ -27,10 +27,8 @@ It is a mostly static system for storing the "reference frame" of each component
 {{< cards >}}
 {{< relatedcard link="/components/arm/">}}
 {{< relatedcard link="/components/base/">}}
-{{< relatedcard link="/components/board/">}}
 {{< relatedcard link="/components/camera/">}}
 {{< relatedcard link="/components/gantry/">}}
-{{< relatedcard link="/components/motor/">}}
 {{< /cards >}}
 
 ## Configuration

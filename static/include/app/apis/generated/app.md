@@ -167,7 +167,7 @@ Check the availability of an {{< glossary_tooltip term_id="organization" text="o
 
 **Parameters:**
 
-- `public_namespace` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Organization namespace to check. Namespaces can only contain lowercase lowercase alphanumeric and dash characters.
+- `public_namespace` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Organization namespace to check. Namespaces can only contain lowercase alphanumeric and dash characters.
 
 **Returns:**
 

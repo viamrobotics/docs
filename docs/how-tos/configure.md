@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Create a machine in a few steps using Viam's modular system of components and services without writing much or any code."
 images: ["/platform/build.svg", "/services/ml/configure.svg"]
+icon: true
 tags: ["components", "configuration"]
 aliases:
   - /use-cases/configure/

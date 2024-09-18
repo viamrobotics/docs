@@ -1,5 +1,5 @@
 ---
-title: "How to monitor machine performance metrics"
+title: "Monitor machine performance metrics"
 linkTitle: "Monitor Performance"
 description: "Capture and sync data about your machines' performance."
 weight: 100

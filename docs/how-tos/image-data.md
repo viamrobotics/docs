@@ -1,5 +1,5 @@
 ---
-title: "How to capture, filter, and sync image data"
+title: "Capture, filter, and sync image data"
 linkTitle: "Capture and sync image data"
 weight: 20
 type: "docs"

@@ -4,6 +4,7 @@ linkTitle: "Collect sensor data"
 weight: 29
 type: "docs"
 images: ["/services/icons/data-capture.svg"]
+icon: true
 description: "Gather sensor data, sync it to the cloud, and view it in the Viam app."
 aliases:
   - /use-cases/collect-sensor-data/
