@@ -161,7 +161,7 @@ Check the availability of an {{< glossary_tooltip term_id="organization" text="o
 
 **Parameters:**
 
-- `public_namespace` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Organization namespace to check. Namespaces can only contain lowercase lowercase alphanumeric and dash characters.
+- `public_namespace` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Organization namespace to check. Namespaces can only contain lowercase alphanumeric and dash characters.
 
 **Returns:**
 
@@ -1242,7 +1242,7 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_machine_id = await cloud.new_robot(name="beepboop")
+new_machine_id = await cloud.new_robot(name="beepboop", location_id="my-location-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
@@ -2077,12 +2077,12 @@ Create a new [API key](/cloud/rbac/#api-keys).
 from viam.app.app_client import APIKeyAuthorization
 
 auth = APIKeyAuthorization(
-role="owner",
-resource_type="robot",
-resource_id="your-robot-id123"
+    role="owner",
+    resource_type="robot",
+    resource_id="your-robot-id123"
 )
 
-api_key, api_key_id = cloud.create_key([auth], "my_key")
+api_key, api_key_id = cloud.create_key("your-org-id", [auth], "my_key")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key).
