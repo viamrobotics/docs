@@ -17,11 +17,11 @@ Create a new dataset.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-name = await data_client.create_dataset(
+dataset_id = await data_client.create_dataset(
     name="<DATASET-NAME>",
     organization_id="<YOUR-ORG-ID>"
 )
-print(name)
+print(dataset_id)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_dataset).

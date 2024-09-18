@@ -19,24 +19,51 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-<!-- This isn't in the docs yet
-{{% changelog date="2024-06-14" color="changed" title="Python get_robot_part_logs parameters" %}}
+{{% changelog date="2024-08-26" color="added" title="ESP32 cameras" %}}
 
-The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/appendix/apis/fleet/#getrobotpartlogs) and replaced with `log_levels`.
+`viam-micro-server` now supports cameras on ESP32s.
+For more information, see [Configure an esp32-camera](/components/camera/esp32-camera/).
 
-{{% /changelog %}}-->
+{{% /changelog %}}
 
-<!-- This isn't in the docs yet
-{{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
+{{% changelog date="2024-08-26" color="changed" title="Micro-RDK now called viam-micro-server" %}}
 
-The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
+The lightweight version of `viam-server` that is built from the micro-RDK is now referred to as `viam-micro-server`.
+For more information, see [viam-micro-server](/architecture/viam-micro-server/).
 
-{{% /changelog %}}-->
+{{% /changelog %}}
+
+{{% changelog date="2024-08-26" color="added" title="Provisioning" %}}
+
+You can now configure provisioning for machines with the Viam Agent.
+For more information, see [Configure provisioning with viam-agent](/how-tos/provision-setup/).
+
+{{% /changelog %}}
+
+{{% changelog date="2024-08-16" color="added" title="Data capture for vision" %}}
+
+Data capture is now possible for the vision service.
+For more information, see [Supported components and services](/services/data/capture/#supported-components-and-services).
+
+{{% /changelog %}}
+
+{{% changelog date="2024-08-01" color="added" title="Create custom training scripts" %}}
+
+You can now upload custom training scripts to the Viam Registry and use them to train machine learning models.
+For more information, see [Create custom training scripts](/how-tos/create-custom-training-scripts/).
+
+{{% /changelog %}}
 
 {{% changelog date="2024-07-19" color="changed" title="Operators can now view data" %}}
 
 The operator role now has view permissions for the data in the respective resource a user has access to.
-For more information, see [/cloud/rbac/#data-and-machine-learning].
+For more information, see [Data and machine learning permissions](/cloud/rbac/#data-and-machine-learning).
+
+{{% /changelog %}}
+
+{{% changelog date="2024-06-14" color="changed" title="Python get_robot_part_logs parameters" %}}
+
+The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/appendix/apis/fleet/#getrobotpartlogs) and replaced with `log_levels`.
 
 {{% /changelog %}}
 
@@ -44,6 +71,12 @@ For more information, see [/cloud/rbac/#data-and-machine-learning].
 
 The board analog API [`Read()`](/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
 The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
+
+The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
 
 {{% /changelog %}}
 
@@ -288,7 +321,7 @@ This enhancement allows you to:
 
 - Generate larger maps without encountering session timeouts
 - Provide IMU input to improve map quality
-- Save maps to the **SLAM library** tab
+- Save maps to the **SLAM library**
 - Create or update maps using previously captured LiDAR and IMU data
 - Deploy maps to machines
 

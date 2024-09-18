@@ -33,7 +33,8 @@ Currently CloudSLAM only supports the [cartographer module](../cartographer/) as
 
 ## The SLAM library page
 
-On one of your location pages in the [Viam app](https://app.viam.com/robots), change the tab from **Machines** to **SLAM Library**. From here, you can find:
+You can see details about the available maps from your machine's **Location** page by clicking **View SLAM library**.
+From here, you can find:
 
 1.  A list of all maps generated in that location. The list shows the name and version of the map, which machine was used for mapping, and when the map was created. You can also view previous versions of a map, if a map has been updated multiple times.
     ![offline mapping available maps](/services/slam/offline-mapping-available-maps.png)
@@ -349,7 +350,7 @@ Example of previously captured IMU data:
 
 ### Create or update a map
 
-Navigate to the **SLAM library** tab on your location page, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
+From your machine's **Location** page, click **View SLAM library**, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
 
 1. Enter the **Machine name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
    If your machine has been deleted, you can alternatively specify the [**machine ID**](/appendix/apis/fleet/#find-machine-id).
@@ -361,8 +362,9 @@ Navigate to the **SLAM library** tab on your location page, and click **Make new
 
 ### End a session with previously captured data
 
-Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
-When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
+Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page by clicking **View SLAM library**.
+When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to yourlocation's **SLAM library**.
+You can see details about the it from your machine's **Location** page by clicking **View SLAM library**.
 
 ## Upload a locally built map
 

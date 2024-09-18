@@ -799,8 +799,8 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
 
-binary_metadata = await data_client.binary_data_by_filter(
-    include_file_data=False
+binary_metadata, _, _ = await data_client.binary_data_by_filter(
+    include_binary_data=False
 )
 
 my_binary_ids = []

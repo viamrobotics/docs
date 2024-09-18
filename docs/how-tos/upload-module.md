@@ -1,9 +1,10 @@
 ---
-title: "How to upload a module to the Viam Registry"
+title: "Upload a module to the Viam Registry"
 linkTitle: "Upload a module"
 type: "docs"
 weight: 26
 images: ["/registry/module-puzzle-piece.svg"]
+icon: true
 tags: ["modular resources", "components", "services", "registry"]
 description: "Make your module available to others by uploading it to the modular resource registry."
 aliases:
@@ -48,9 +49,13 @@ See [Create a Module](/how-tos/create-module/) or [Create a Sensor Module with P
 {{% tablestep %}}
 **1. Install the CLI**
 
-First, install the Viam CLI and [authenticate](/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
+First, install the Viam CLI and authenticate to Viam, from the same machine that you intend to upload your module from.
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
+
+Authenticate your CLI session with Viam using one of the following options:
+
+{{< readfile "/static/include/how-to/auth-cli.md" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}

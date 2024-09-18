@@ -168,7 +168,7 @@
                         {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
                   {{- else -}}
                         {{- $.Scratch.Set "permalink" .Permalink -}}
-                        {{- if eq .Parent.LinkTitle "Deploy Model" -}}
+                        {{- if eq .Parent.LinkTitle "ML Model Service" -}}
                               {{- $.Scratch.Set "relpermalink" (printf "../../..%s" .RelPermalink) -}}
                         {{- else -}}
                               {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
@@ -176,7 +176,7 @@
                   {{- end -}}
 
                   {{- $.Scratch.Set "id" (printf "builtin:rdk:service:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
-                  {{- if eq .Parent.LinkTitle "Deploy Model" -}}
+                  {{- if eq .Parent.LinkTitle "ML Model Service" -}}
                         {{- $.Scratch.Set "api" (printf "rdk:service:mlmodel" ) -}}
                   {{- else -}}
                         {{- if eq .Parent.LinkTitle "Generic Service" -}}
