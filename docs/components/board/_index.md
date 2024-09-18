@@ -39,8 +39,10 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 The board component allows you to use the pins on your board.
 If there is no board model for your board:
 
-- you can still run `viam-server` if your board [supports it](/installation/#compatibility)
+- you can still run `viam-server` if your board [supports it](/installation/#platform-requirements)
 - you can still access USB ports
+
+For some SBCs, for example the [RockPi S](https://wiki.radxa.com/RockpiS), you can use the pins on your board with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 
 {{< /alert >}}
 
