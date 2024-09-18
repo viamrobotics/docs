@@ -169,6 +169,9 @@ You can also control how local data is deleted if your machine's local storage b
 
 ## Configure data capture and sync
 
+The following steps are applicable to most situations.
+For other options, see the sections further down this page.
+
 {{< expand "Step 1: Add the data management service" >}}
 
 To capture data from one or more machines, you must first add the [data management service](../):
