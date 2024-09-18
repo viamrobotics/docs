@@ -11,12 +11,12 @@ Get the list of operations currently running on the machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.Operation]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)): The list of operations currently running on a given robot.
+- ([List[viam.proto.robot.Operation]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)): The list of operations currently running on a given machine.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-operations = await robot.get_operations()
+operations = await machine.get_operations()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_operations).
@@ -94,7 +94,7 @@ Cancel the specified operation on the machine.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await robot.cancel_operation("INSERT OPERATION ID")
+await machine.cancel_operation("INSERT OPERATION ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.cancel_operation).
@@ -121,7 +121,7 @@ This function will only return when the specific operation has finished or has b
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await robot.block_for_operation("INSERT OPERATION ID")
+await machine.block_for_operation("INSERT OPERATION ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
@@ -148,13 +148,13 @@ Get a list of discovered component configurations.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Define a new discovery query.
-q = robot.DiscoveryQuery(subtype=acme.API, model="some model")
+q = machine.DiscoveryQuery(subtype=acme.API, model="some model")
 
 # Define a list of discovery queries.
 qs = [q]
 
 # Get component configurations with these queries.
-component_configs = await robot.discover_components(qs)
+component_configs = await machine.discover_components(qs)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.discover_components).
@@ -227,13 +227,13 @@ Get the configuration of the frame system of a given machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.FrameSystemConfig]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)): The configuration of a given robot’s frame system.
+- ([List[viam.proto.robot.FrameSystemConfig]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)): The configuration of a given machine’s frame system.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get a list of each of the reference frames configured on the machine.
-frame_system = await robot.get_frame_system_config()
+frame_system = await machine.get_frame_system_config()
 print(f"frame system configuration: {frame_system}")
 ```
 
@@ -302,7 +302,7 @@ Transform a given source Pose from the original reference frame to a new destina
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-pose = await robot.transform_pose(PoseInFrame(), "origin")
+pose = await machine.transform_pose(PoseInFrame(), "origin")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
@@ -385,7 +385,7 @@ If no names are passed in, the status of every resource configured on the machin
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the status of the resources on the machine.
-statuses = await robot.get_status()
+statuses = await machine.get_status()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
@@ -452,7 +452,7 @@ Cancel all current and outstanding operations for the machine and stop all actua
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Cancel all current and outstanding operations for the machine and stop all actuators and movement.
-await robot.stop_all()
+await machine.stop_all()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.stop_all).
@@ -630,7 +630,7 @@ Return version information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): Robot version related information.
+- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): Machine version related information.
 
 **Example:**
 
@@ -691,7 +691,7 @@ api_key_id = '<API-KEY-ID>'
 
 opts = RobotClient.Options.with_api_key(api_key, api_key_id)
 
-robot = await RobotClient.at_address('<ADDRESS-FROM-THE-VIAM-APP>', opts)
+machine = await RobotClient.at_address('<ADDRESS-FROM-THE-VIAM-APP>', opts)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options.with_api_key).
@@ -731,7 +731,7 @@ async def connect():
 
 async def main():
     # Make a RobotClient
-    robot = await connect()
+    machine = await connect()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.at_address).
@@ -782,7 +782,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Parameters:**
 
-- `channel` ([grpclib.client.Channel | viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel)) (required): The channel that is connected to a robot, obtained by viam.rpc.dial.
+- `channel` ([grpclib.client.Channel | viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel)) (required): The channel that is connected to a machine, obtained by viam.rpc.dial.
 - `options` ([Options](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options)) (required): Options for refreshing. Any connection options will be ignored.
 
 **Returns:**
@@ -800,7 +800,7 @@ async def connect_with_channel() -> RobotClient:
     async with await dial('ADDRESS', DialOptions()) as channel:
         return await RobotClient.with_channel(channel, RobotClient.Options())
 
-robot = await connect_with_channel()
+machine = await connect_with_channel()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.with_channel).
@@ -826,7 +826,7 @@ Manually refresh the underlying parts of this machine.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await robot.refresh()
+await machine.refresh()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.refresh).
@@ -871,7 +871,13 @@ Supported by `viam-micro-server`.
 
 **Raises:**
 
-- (GRPCError): Raised with DeadlineExceeded status if shutdown request times out, or if robot server shuts down before having a chance to send a response. Raised with status Unavailable if server is unavailable, or if robot server is in the process of shutting down when response is ready.
+- (GRPCError): Raised with DeadlineExceeded status if shutdown request times out, or if the machine server shuts down before having a chance to send a response. Raised with status Unavailable if server is unavailable, or if machine server is in the process of shutting down when response is ready.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+machine.shutdown()
+```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.shutdown).
 
@@ -916,7 +922,7 @@ Close the underlying connections and stop any periodic tasks across all constitu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await robot.close()
+await machine.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.close).

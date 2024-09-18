@@ -12,7 +12,7 @@ Submit a training job.
 - `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model name.
 - `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The version of the ML model you're training. This string must be unique from any previous versions you've set.
 - `model_type` (viam.proto.app.mltraining.ModelType.ValueType) (required): The type of the ML model. Options: `ModelType.MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_MULTI_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_OBJECT_DETECTION`.
-- `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): the tags.
+- `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): the labels to train the model on.
 
 **Returns:**
 
@@ -46,26 +46,26 @@ Follow the guide to [Train a Model with a Custom Python Training Script](/how-to
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the org to submit the training job to.
-- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the dataset.
-- `registry_item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the registry item.
-- `registry_item_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the version of the registry item.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to submit the training job to.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the dataset to train the model on.
+- `registry_item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the training script from the registry.
+- `registry_item_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the version of the training script from the registry.
 - `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model name.
 - `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model version.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the id of the training job.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the ID of the training job.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 job_id = await ml_training_client.submit_custom_training_job(
-    organization_id=organization_id,
-    dataset_id=dataset_id,
-    registry_item_id="your-registry-item-id",
-    registry_item_version="your-registry-item-version",
-    model_name="your-model-name",
+    org_id="<organization-id>",
+    dataset_id="<dataset-id>",
+    registry_item_id="viam:classification-tflite",
+    registry_item_version="2024-08-13T12-11-54",
+    model_name="<your-model-name>",
     model_version="1"
 )
 ```
@@ -84,17 +84,17 @@ Get training job metadata.
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the requested training job.
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the requested training job.
 
 **Returns:**
 
-- ([viam.proto.app.mltraining.TrainingJobMetadata](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): training job data.
+- ([viam.proto.app.mltraining.TrainingJobMetadata](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): the training job data.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 job_metadata = await ml_training_client.get_training_job(
-    id="INSERT YOUR JOB ID")
+    id="<job-id>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.get_training_job).
@@ -111,18 +111,18 @@ Get training job metadata for all jobs within an organization.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the org to request training job data from.
-- `training_status` ([viam.proto.app.mltraining.TrainingStatus.ValueType](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus)) (optional): status of training jobs to filter the list by. If unspecified, all training jobs will be returned.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to request training job data from.
+- `training_status` ([viam.proto.app.mltraining.TrainingStatus.ValueType](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus)) (optional): the status to filter the training jobs list by. If unspecified, all training jobs will be returned.
 
 **Returns:**
 
-- ([List[viam.proto.app.mltraining.TrainingJobMetadata]](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): a list of training job data.
+- ([List[viam.proto.app.mltraining.TrainingJobMetadata]](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): the list of training job data.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 jobs_metadata = await ml_training_client.list_training_jobs(
-    org_id="INSERT YOUR ORG ID")
+    org_id="<org-id>")
 
 first_job_id = jobs_metadata[1].id
 ```
@@ -149,13 +149,13 @@ Cancel the specified training job.
 
 **Raises:**
 
-- (GRPCError): if no training job exists with the given id.
+- (GRPCError): if no training job exists with the given ID.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 await ml_training_client.cancel_training_job(
-    id="INSERT YOUR JOB ID")
+    id="<job-id>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.cancel_training_job).
@@ -172,7 +172,7 @@ Delete a completed training job from the database, whether the job succeeded or 
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the training job.
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the training job to delete.
 
 **Returns:**
 
@@ -182,7 +182,7 @@ Delete a completed training job from the database, whether the job succeeded or 
 
 ```python {class="line-numbers linkable-line-numbers"}
 await ml_training_client.delete_completed_training_job(
-    id="INSERT YOUR JOB ID")
+    id="<job-id>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.delete_completed_training_job).
