@@ -117,7 +117,7 @@ That's not going to be very helpful for interacting with your fleet of machines,
      flutter_dotenv: ^5.1.0
      image: ^4.0.17
      cupertino_icons: ^1.0.2
-     viam_sdk: ^0.0.9
+     viam_sdk: ^0.0.20
 
    dev_dependencies:
      flutter_test:
