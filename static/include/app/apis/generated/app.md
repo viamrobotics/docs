@@ -130,7 +130,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetOrganization
 
-Return details about the requested organization.
+Retrieve the organization object for the requested organization containing the organization's ID, name, public namespace, and more.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -343,8 +343,7 @@ auth = Authorization(
     authorization_type="role",
     authorization_id="location_owner",
     resource_type="location", # "robot", "location", or "organization"
-    # machine id, location id or org id
-    resource_id="012456lni0",
+    resource_id="012456lni0", # machine id, location id or org id
     identity_id="",
     organization_id="<YOUR-ORG-ID>",
     identity_type=""
@@ -921,7 +920,8 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_logs = await cloud.get_robot_part_logs(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22", num_log_entries=20
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22",
+    num_log_entries=20
 )
 ```
 
@@ -1807,7 +1807,7 @@ Get registry item by ID.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:name`. For example, [Viam's `csi-cam-pi` module's](https://app.viam.com/module/viam/csi-cam-pi) item ID would be `viam:csi-cam-pi`.
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:name`. For example, [Viam's `csi-cam-pi` module's](https://app.viam.com/module/viam/csi-cam-pi) item ID would be `viam:csi-cam-pi`. You can also use `org-id:name`. For example, `abc01234-0123-4567-ab12-a11a00a2aa22:training-script`.
 
 **Returns:**
 
@@ -1863,7 +1863,7 @@ Update a registry item.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:reponame`.
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
 - `type` (viam.proto.app.packages.PackageType.ValueType) (required): The type of the item in the registry.
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The description of the registry item.
 - `visibility` (viam.proto.app.Visibility.ValueType) (required): The visibility of the registry item.
@@ -1878,7 +1878,12 @@ Update a registry item.
 from viam.proto.app.packages import PackageType
 from viam.proto.app import Visibility
 
-await cloud.update_registry_item("item-id", PackageType.PACKAGE_TYPE_ML_TRAINING, "description", Visibility.VISIBILITY_PUBLIC)
+await cloud.update_registry_item(
+    "your-namespace:your-name",
+    PackageType.PACKAGE_TYPE_ML_TRAINING,
+    "description",
+    Visibility.VISIBILITY_PUBLIC
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_registry_item).
@@ -1929,7 +1934,6 @@ registry_items = await cloud.list_registry_items(
     visibilities=[Visibility.VISIBILITY_PUBLIC],
     platforms=["linux/any"],
     statuses=[RegistryItemStatus.REGISTRY_ITEM_STATUS_PUBLISHED]
-
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_registry_items).
@@ -1946,7 +1950,7 @@ Delete a registry item.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:name`.
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
 
 **Returns:**
 
@@ -1955,7 +1959,7 @@ Delete a registry item.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_registry_item("item-id")
+await cloud.delete_registry_item("your-namespace:your-name")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_registry_item).
@@ -2004,7 +2008,7 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 
 **Parameters:**
 
-- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing module name (for example, “my-module”) or namespace and module name (for example, “my-org:my-module”).
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
 - `url` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The url to reference for documentation and code (NOT the url of the module itself).
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A short description of the module that explains its purpose.
 - `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)): list of models that are available in the module.
@@ -2090,7 +2094,7 @@ Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
 
 **Parameters:**
 
-- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being retrieved, containing namespace and module name.
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being retrieved, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
 
 **Returns:**
 
