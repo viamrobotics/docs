@@ -101,8 +101,8 @@ print(f"Tabular Data 1: {tabular_data}")
 
 # using pymongo package (pip install pymongo)
 tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_binary=[
-    bson.BSON.encode({ '$match': { 'location_id': '<YOUR-LOCATION-ID>' } }),
-    bson.BSON.encode({ "$limit": 5 })
+    bson.encode({ '$match': { 'location_id': '<YOUR-LOCATION-ID>' } }),
+    bson.encode({ "$limit": 5 })
 ])
 
 print(f"Tabular Data 2: {tabular_data}")
