@@ -18,7 +18,7 @@ no_service: true
 ---
 
 A dataset is a grouping of images that you use to train machine learning models.
-On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, you can create and manage datasets.
+You can create and manage datasets on the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, or using the [CLI `dataset` command](/cli/#dataset).
 
 {{< alert title="Info" color="info" >}}
 Filtered datasets are views and not materialized.

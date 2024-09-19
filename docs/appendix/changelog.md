@@ -51,7 +51,7 @@ For more information, see [Configure provisioning with viam-agent](/how-tos/prov
 {{% changelog date="2024-08-16" color="added" title="Data capture for vision" %}}
 
 Data capture is now possible for the vision service.
-For more information, see [Supported components and services](/services/data/capture/#supported-components-and-services).
+For more information, see [Supported components and services](/services/data/capture-sync/#supported-components-and-services).
 
 {{% /changelog %}}
 
