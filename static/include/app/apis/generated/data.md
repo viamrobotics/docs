@@ -88,7 +88,6 @@ Obtain unified tabular data and metadata, queried with MQL.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# using bson
 import bson
 
 # using bson package (pip install bson)
