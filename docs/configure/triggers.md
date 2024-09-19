@@ -21,7 +21,7 @@ Viam provides three trigger types depending on the event you want to trigger on:
 To configure a trigger:
 
 {{< tabs >}}
-{{% tab name="Builder mode" %}}
+{{% tab name="Builder mode: Create menu" %}}
 
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
@@ -61,6 +61,19 @@ Edit the **Time between notifications** attribute to set the interval at which t
 4. Replace the **URL** value with the URL of your cloud function or lambda.
 
    ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
+
+{{% /tab %}}
+{{% tab name="Builder mode: Resource card" %}}
+You can also configure a trigger for a resource in **Builder** mode on the **CONFIGURE** tab by navigating to the resource's configuration panel, selecting the **...** menu in the upper right corner, and selecting **Create trigger**.
+
+{{<imgproc src="/build/configure/resource-card-create.png" resize="x400" declaredimensions=true alt="The ... menu with Create trigger in the middle of the list of options." >}}
+
+This creates a trigger that's configured to fire on an event occurring from a specific resource.
+You must configure the method of activation and any relevant **Conditions**, as well as any **Webhooks** and **Emails** for notifications.
+
+For example, the following triggers when data is ingested from the sensor's `Readings` method:
+
+{{<imgproc src="/build/configure/sensor-trigger.png" resize="x400" declaredimensions=true alt="A conditional data ingestion trigger for a sensor called sensor-1 with Readings selected as the method." >}}
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}
