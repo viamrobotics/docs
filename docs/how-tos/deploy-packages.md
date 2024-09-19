@@ -235,6 +235,65 @@ Don't forget to **Save**.
 
 All machines configured with your fragment will update when they next check for configuration updates.
 
+To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/appendix/apis/robot/#getmachinestatus):
+
+```python {class="line-numbers linkable-line-numbers" data-line="5"}
+import asyncio
+
+from viam.rpc.dial import DialOptions
+from viam.app.viam_client import ViamClient
+from viam.robot.client import RobotClient
+
+
+# Replace "<API-KEY>" (including brackets) with your API key and "<API-KEY-ID>"
+# with your API key ID
+API_KEY = "<API-KEY>"
+API_KEY_ID = "<API-KEY-ID>"
+LOCATION_ID = "<LOCATION-ID>"
+
+
+async def connect() -> ViamClient:
+    dial_options = DialOptions.with_api_key(API_KEY, API_KEY_ID)
+    return await ViamClient.create_from_dial_options(dial_options)
+
+
+async def machine_connect(address):
+    opts = RobotClient.Options.with_api_key(
+        api_key=API_KEY,
+        api_key_id=API_KEY_ID
+    )
+    return await RobotClient.at_address(address, opts)
+
+
+async def main():
+    viam_client = await connect()
+    # Instantiate an AppClient called "cloud"
+    # to run fleet management API methods on
+    cloud = viam_client.app_client
+
+    machines = await cloud.list_robots(location_id=LOCATION_ID)
+    print("Found {} machines.".format(len(machines)))
+
+    for m in machines:
+        machine_addr = "{}-main.{}.viam.cloud".format(m.name, m.location)
+        print("Attempting to connect to {}...".format(m.name))
+
+        try:
+            machine = await machine_connect(machine_addr)
+            status = await machine.get_machine_status()
+            print(status.config)
+
+        except ConnectionError:
+            print("Unable to establish a connection to the machine.")
+        except Exception:
+            print("Other error")
+
+    viam_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
 ## Next steps
 
 If you are setting up a larger fleet, you can use fragments to configure many machines and you can use Viam's provisioning manager, Viam Agent, to automate the process of setting up machines with your fragments:
