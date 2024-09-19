@@ -69,6 +69,12 @@ For this walkthrough, you only need to install the following:
   - When prompted, do install Cocoapods.
     You need it to support the iOS simulator.
 
+{{% alert title="Flutter version" color="note" %}}
+We recommended using Flutter 3.19.6, as this sample app was tested with this version.
+`fvm` is a useful tool for targeting specific flutter versions.
+You can use `fvm use 3.19.6` to target Flutter 3.19.6.
+{{% /alert %}}
+
 ## Start creating code
 
 ### Create your Flutter project
@@ -318,7 +324,7 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       _viam = await Viam.withApiKey(dotenv.env['API_KEY_ID']?? '', dotenv.env['API_KEY']?? '');
       _organization = (await _viam.appClient.listOrganizations()).first;
-      _locations = await _viam.appClient.listLocations(_organization);
+      _locations = await _viam.appClient.listLocations(_organization.id);
 
       // in Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
@@ -522,7 +528,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Future<void> _initState() async {
     // Using the authenticated [Viam] client received as a parameter,
     // you can obtain a list of smart machines (robots) within this location.
-    final robots = await widget._viam.appClient.listRobots(widget.location);
+    final robots = await widget._viam.appClient.listRobots(widget.location.id);
     setState(() {
       // Once you have the list of robots, you can set the state.
       this.robots = robots;
@@ -714,7 +720,7 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       _viam = await Viam.withApiKey(dotenv.env['API_KEY_ID']?? '', dotenv.env['API_KEY']?? '');
       _organization = (await _viam.appClient.listOrganizations()).first;
-      _locations = await _viam.appClient.listLocations(_organization);
+      _locations = await _viam.appClient.listLocations(_organization.id);
 
       // In Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
