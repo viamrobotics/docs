@@ -12,8 +12,8 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 - `limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
 - `sort_order` ([viam.proto.app.data.Order.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Order)) (optional): The desired sort order of the data.
 - `last` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to `TabularDataByFilter` as the last value. If provided, the server will return the next data entries after the last object identifier.
-- `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return only the total count of entries.
-- `include_internal_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False.
+- `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to return only the total count of entries.
+- `include_internal_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath for writing retrieved data.
 
 **Returns:**
@@ -26,13 +26,15 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 from viam.utils import create_filter
 
 my_data = []
+my_filter = create_filter(component_name="motor-1")
 last = None
-my_filter = create_filter(component_name="left_motor")
 while True:
-    tabular_data, count, last = await data_client.tabular_data_by_filter(my_filter, last)
+    tabular_data, count, last = await data_client.tabular_data_by_filter(my_filter, last=last)
     if not tabular_data:
         break
     my_data.extend(tabular_data)
+
+print(f"My data: {my_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_filter).
@@ -86,19 +88,23 @@ Obtain unified tabular data and metadata, queried with MQL.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# using bson
 import bson
-tabular_data = await data_client.tabular_data_by_mql(org_id="<your-org-id>", mql_binary=[
-    bson.dumps({ '$match': { 'location_id': '<location-id>' } }),
-    bson.dumps({ "$limit": 5 })
+
+# using bson package (pip install bson)
+tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_binary=[
+    bson.dumps({ '$match': { 'location_id': '<YOUR-LOCATION-ID>' } }),
+    bson.dumps({ '$limit': 5 })
 ])
 
-# using pymongo
-import bson
-tabular_data = await data_client.tabular_data_by_mql(org_id="<your-org-id>", mql_binary=[
-    bson.encode({ '$match': { 'location_id': '<location-id>' } }),
+print(f"Tabular Data 1: {tabular_data}")
+
+# using pymongo package (pip install pymongo)
+tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_binary=[
+    bson.encode({ '$match': { 'location_id': '<YOUR-LOCATION-ID>' } }),
     bson.encode({ "$limit": 5 })
 ])
+
+print(f"Tabular Data 2: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_mql).
@@ -135,16 +141,18 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 from viam.utils import create_filter
 from viam.proto.app.data import Filter, TagsFilter, TagsFilterType
 
-
 # Get data captured from camera components
 my_data = []
 last = None
-my_filter = create_filter(component_name="camera")
+my_filter = create_filter(component_name="camera-1")
+
 while True:
-    data, count, last = await data_client.binary_data_by_filter(my_filter, last)
+    data, count, last = await data_client.binary_data_by_filter(my_filter, limit=1, last=last)
     if not data:
         break
     my_data.extend(data)
+
+print(f"My data: {my_data}")
 
 # Get untagged data from a dataset
 
@@ -194,8 +202,12 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
+from viam.utils import create_filter
 
-binary_metadata, _, _ = await data_client.binary_data_by_filter(
+my_filter = create_filter(component_name="camera-1", organization_ids=["<YOUR-ORG-ID>"])
+binary_metadata, count, last = await data_client.binary_data_by_filter(
+    filter=my_filter,
+    limit=20,
     include_binary_data=False
 )
 
@@ -237,12 +249,10 @@ Delete tabular data older than a specified number of days.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.utils import create_filter
-
-my_filter = create_filter(component_name="left_motor")
-days_of_data_to_delete = 10
 tabular_data = await data_client.delete_tabular_data(
-    org_id="a12b3c4e-1234-1abc-ab1c-ab1c2d345abc", days_of_data_to_delete)
+    organization_id="<YOUR-ORG-ID>",
+    delete_older_than_days=150
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
@@ -259,7 +269,7 @@ Filter and delete binary data.
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to all data being deleted. Exercise caution when using this option.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to all data being deleted. Exercise caution when using this option. You must specify any organization ID with "organization_ids" when using this option.
 
 **Returns:**
 
@@ -270,7 +280,7 @@ Filter and delete binary data.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.utils import create_filter
 
-my_filter = create_filter(component_name="left_motor")
+my_filter = create_filter(component_name="my-webcam", organization_ids=["<YOUR-ORG-ID>"])
 res = await data_client.delete_binary_data_by_filter(my_filter)
 ```
 
@@ -302,8 +312,12 @@ Filter and delete binary data by ids.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
+from viam.utils import create_filter
 
-binary_metadata, _, _ = await data_client.binary_data_by_filter(
+my_filter = create_filter(component_name="camera-1", organization_ids=["<YOUR-ORG-ID>"])
+binary_metadata, count, last = await data_client.binary_data_by_filter(
+    filter=my_filter,
+    limit=20,
     include_binary_data=False
 )
 
@@ -350,10 +364,14 @@ Add tags to binary data by ids.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
+from viam.utils import create_filter
 
 tags = ["tag1", "tag2"]
 
-binary_metadata, _, _ = await data_client.binary_data_by_filter(
+my_filter = create_filter(component_name="camera-1", organization_ids=["<YOUR-ORG-ID>"])
+binary_metadata, count, last = await data_client.binary_data_by_filter(
+    filter=my_filter,
+    limit=20,
     include_binary_data=False
 )
 
@@ -435,10 +453,15 @@ Remove tags from binary by ids.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
+from viam.utils import create_filter
 
 tags = ["tag1", "tag2"]
 
-binary_metadata, _, _ = await data_client.binary_data_by_filter(
+my_filter = create_filter(component_name="camera-1")
+
+binary_metadata, count, last = await data_client.binary_data_by_filter(
+    filter=my_filter,
+    limit=50,
     include_binary_data=False
 )
 
@@ -556,12 +579,12 @@ Add a bounding box to an image specified by its BinaryID.
 from viam.proto.app.data import BinaryID
 
 MY_BINARY_ID = BinaryID(
-    file_id=your-file_id,
-    organization_id=your-org-id,
-    location_id=your-location-id
+    file_id="<YOUR-FILE-ID>",
+    organization_id="<YOUR-ORG-ID>",
+    location_id="<YOUR-LOCATION-ID>"
 )
 
-bbox_label = await data_client.add_bounding_box_to_image_by_id(
+bbox_id = await data_client.add_bounding_box_to_image_by_id(
     binary_id=MY_BINARY_ID,
     label="label",
     x_min_normalized=0,
@@ -570,7 +593,7 @@ bbox_label = await data_client.add_bounding_box_to_image_by_id(
     y_max_normalized=.3
 )
 
-print(bbox_label)
+print(bbox_id)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_bounding_box_to_image_by_id).
@@ -639,6 +662,8 @@ from viam.utils import create_filter
 my_filter = create_filter(component_name="my_camera")
 bounding_box_labels = await data_client.bounding_box_labels_by_filter(
     my_filter)
+
+print(bounding_box_labels)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.bounding_box_labels_by_filter).
@@ -664,7 +689,7 @@ Get a connection to access a MongoDB Atlas Data federation instance.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-data_client.get_database_connection(org_id="a12b3c4e-1234-1abc-ab1c-ab1c2d345abc")
+hostname = await data_client.get_database_connection(organization_id="<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_database_connection).
@@ -693,8 +718,8 @@ It can also be used to reset the password of the existing database user.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await data_client.configure_database_user(
-    organization_id="<your-org-id>",
-    password="your_password"
+    organization_id="<YOUR-ORG-ID>",
+    password="Your_Password@1234"
 )
 ```
 
@@ -725,8 +750,8 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
 
-binary_metadata, _, _ = await data_client.binary_data_by_filter(
-    include_binary_data=False
+binary_metadata, count, last = await data_client.binary_data_by_filter(
+    include_file_data=False
 )
 
 my_binary_ids = []
