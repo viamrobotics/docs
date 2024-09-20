@@ -21,6 +21,8 @@ If you have configured a camera component, a window in the **CONTROL** tab displ
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the machine uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 For local communication between [parts](/architecture/parts/#machine-parts) Viam uses gRPC or WebRTC.
 
+{{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
+
 You can also switch between different machine parts and control the selected machine part directly from the **CONTROL** tab.
 
 {{< imgproc src="/fleet/app-usage/control-machine-part-dropdown.png" alt="The expanded Machine part dropdown menu with the main part selected on the Control tab." resize="650x" class="aligncenter" >}}
