@@ -142,7 +142,8 @@ If local disk usage is greater than or equal to 90%, but the Viam capture direct
 Automatic file deletion only applies to files in the specified Viam capture directory, which is set to `~/.viam/capture` by default.
 Data outside of this directory is not touched by automatic data deletion.
 
-If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available. You can change the capture directory using the `capture_dir` attribute.
+If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available.
+You can change the capture directory using the `capture_dir` attribute.
 
 You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` attribute.
 
@@ -244,7 +245,7 @@ The following attributes are available for the data management service:
 {{% tab name="viam-micro-server" %}}
 
 {{< alert title="Info" color="info" >}}
-With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
+With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`, and `delete_every_nth_when_disk_full` attributes are ignored and should not be configured.
 {{< /alert >}}
 
 <!-- prettier-ignore -->
@@ -253,7 +254,7 @@ With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`
 | `capture_disabled` | bool   | Optional | Toggle data capture on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. Note that even if capture is on for the whole part, but is not on for any individual {{< glossary_tooltip term_id="component" text="components" >}} (see Step 2), data is not being captured. <br> Default: `false` |
 | `sync_disabled` | bool | Optional | Toggle cloud sync on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. <br> Default: `false` |
 | `sync_interval_minutes` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing. <br> Default: `0.1`, meaning once every 6 seconds. |
-| `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/services/data/capture-sync/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |
+| `cache_size_kb` | float | Optional | The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -262,7 +263,7 @@ Now the data management service is enabled.
 However, no data is being captured until you configure capture on one or more {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 {{< /expand >}}
-< expand "Step 2: Configure data capture for your resources" >
+{{< expand "Step 2: Configure data capture for your resources" >}}
 
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
 
@@ -302,11 +303,6 @@ The following attributes are available for data capture configuration:
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
 Click the **Save** button in the top right corner of the page.
-
-`viam-server` will save your data locally on your machine in the directory specified in the data management service config.
-If you are using `viam-micro-server`, data will be saved in flash memory until it is synced to the cloud.
-Additionally, with `viam-micro-server` you can set `cache_size_kb` to configure the maximum amount of storage bytes allocated to a data collector.
-If not supplied, this defaults to 1 KB.
 
 {{% /tab %}}
 {{% tab name="Raw JSON example" %}}
@@ -726,7 +722,7 @@ The following example captures data from the `ReadImage` method of a camera:
 {{% /tab %}}
 {{< /tabs >}}
 
-< /expand >
+{{< /expand >}}
 {{< expand "Step 3: (Optional) Too much data? Capture only interesting data" >}}
 
 See the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
