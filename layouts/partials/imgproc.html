@@ -10,7 +10,7 @@
     {{ end }}
 <picture>
 {{if ne $image_ext "svg" }}
-  {{ $imgwebp := $img.Resize (printf "%s webp q100 Lanczos" .resize) }}
+  {{ $imgwebp := $img.Resize (printf "%s webp text q100 Lanczos" .resize) }}
   {{if .declaredimensions}}
 <source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}">
 <img src="{{ $img.RelPermalink }}" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
