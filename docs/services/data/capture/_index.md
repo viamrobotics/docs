@@ -201,7 +201,7 @@ Click the **Save** button in the top right corner of the page.
 
 Now, using `viam-server`, your data will be saved locally on your machine to the directory specified in the data management service.
 If you are using `viam-micro-server`, data will be captured at the configured capture frequency and saved in flash memory and synced to Viam app at the selected interval. Additionally, with `viam-micro-server` you can set `cache_size_kb` to configure the maximum amount of storage bytes allocated to a data collector.
-If not supplied, this defaults to `1`KB.
+If not supplied, this defaults to 1 KB.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
