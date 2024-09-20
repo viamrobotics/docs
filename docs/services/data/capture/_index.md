@@ -200,7 +200,8 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 Click the **Save** button in the top right corner of the page.
 
 Now, using `viam-server`, your data will be saved locally on your machine to the directory specified in the data management service.
-If you are using `viam-micro-server`, data will be captured at the configured capture frequency and saved in flash memory and synced to Viam app at the selected interval.
+If you are using `viam-micro-server`, data will be captured at the configured capture frequency and saved in flash memory and synced to Viam app at the selected interval. Additionally, with `viam-micro-server` you can set `cache_size_kb` to configure the maximum amount of storage bytes allocated to a data collector.
+If not supplied, this defaults to 1 KB.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
@@ -306,6 +307,7 @@ This example configuration captures data from the GetReadings method of a temper
             "capture_methods": [
               {
                 "capture_frequency_hz": 0.2,
+                "cache_size_kb": 10,
                 "additional_params": {},
                 "method": "Readings"
               }
@@ -329,7 +331,8 @@ This example configuration captures data from the GetReadings method of a temper
               {
                 "additional_params": {},
                 "method": "Readings",
-                "capture_frequency_hz": 0.1
+                "capture_frequency_hz": 0.1,
+                "cache_size_kb": 10
               }
             ]
           }
@@ -479,6 +482,7 @@ This config is just like that of a non-remote part; the remote connection is est
                 "additional_params": {
                   "reader_name": "A1"
                 },
+                "cache_size_kb": 10,
                 "capture_frequency_hz": 10
               },
               {
@@ -486,6 +490,7 @@ This config is just like that of a non-remote part; the remote connection is est
                 "additional_params": {
                   "reader_name": "A2"
                 },
+                "cache_size_kb": 10,
                 "capture_frequency_hz": 10
               }
             ]
@@ -533,6 +538,7 @@ The following example captures data from two analog readers that provide a volta
              {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
+                "cache_size_kb": 10,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": { "reader_name": "A1" },
                 "disabled": false
@@ -540,6 +546,7 @@ The following example captures data from two analog readers that provide a volta
              {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
+                "cache_size_kb": 10,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": { "reader_name": "A2" },
                 "disabled": false
@@ -548,6 +555,7 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Gpios",
                 "capture_frequency_hz": 1,
+                "cache_size_kb": 10,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": {
                   "pin_name": “27”
