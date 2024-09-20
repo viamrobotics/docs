@@ -169,7 +169,7 @@ Click the **Components** subtab.
 Click the **Create component** button in the lower-left corner.
 
 Add your [board](/components/board/) with type `board` and model `viam:raspberry-pi:rpi` if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
-If you are using a Raspberry Pi 5, user the `pi5` model.
+If you are using a Raspberry Pi 5, use the `pi5` model.
 Name your board `myBoard` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myBoard, type attribute filled as board and model attribute filled as pi.](/tutorials/claw-game/app-component-myboard.png)
