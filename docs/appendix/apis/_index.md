@@ -170,7 +170,7 @@ The [base remote control service](/services/base-rc/) supports the following met
 
 ### Data Management
 
-The [data management service](/services/data/) supports the following methods:
+The [data management service](/services/data/capture-sync/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 

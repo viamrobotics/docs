@@ -79,18 +79,12 @@ You can configure the frequency of data capture individually for each supported 
 {{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
 <br><br>
 
-Experience streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
+Once your data is synced to the cloud, you can view, filter, tag, label, create datasets, and delete it from your [Viam app **DATA** page](https://app.viam.com/data/view).
+You can also interact with your data using the [Viam CLI](/cli/#data), or with SDK code using the [data client API](/appendix/apis/data-client/).
 
 <!-- markdownlint-disable-file MD034 -->
 
 {{< cards >}}
-{{% manualcard link="https://app.viam.com/data/view" %}}
-
-### View and filter data
-
-View and filter different data types in the cloud, with the option to delete data on the Viam app.
-
-{{% /manualcard %}}
 {{% manualcard link="/services/data/dataset/" %}}
 
 ### Create datasets
@@ -98,7 +92,7 @@ View and filter different data types in the cloud, with the option to delete dat
 Label data for management and machine learning, with dynamic datasets that change with underlying data modifications.
 
 {{% /manualcard %}}
-{{% manualcard link="/cli/#data" %}}
+{{% manualcard link="/how-tos/export-data/" %}}
 
 ### Export data
 
@@ -132,12 +126,30 @@ For more information about who can do what with data, see [Data Permissions](/cl
 
 ## API
 
-The data management service supports the following methods:
+The [data client API](/appendix/apis/data-client/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
+{{< expand "Methods to upload data like images or sensor readings directly to the Viam app" >}}
 
-The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
-For information about that API, see [Data Client API](/appendix/apis/data-client/).
+{{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
+
+{{< /expand >}}
+
+{{< expand "Methods to download, filter, tag, or perform other tasks on data like images or sensor readings" >}}
+
+{{< readfile "/static/include/app/apis/generated/data-table.md" >}}
+
+{{< /expand >}}
+
+{{< expand "Methods to work with datasets" >}}
+
+{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
+
+{{< /expand >}}
+
+The data management API supports a separate set of methods that allow you to sync data to the Viam app.
+For information about that API, see [Data Management API](/appendix/apis/#data-management).
+
+For the command line interface `data` command, see [CLI](/cli/#data).
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -145,8 +157,6 @@ The following code examples assume that you have a machine configured with a dat
 Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for sample code to connect to your machine.
 
 {{% /alert %}}
-
-{{< readfile "/static/include/services/apis/generated/data_manager.md" >}}
 
 ## Next steps: Train and deploy machine learning
 

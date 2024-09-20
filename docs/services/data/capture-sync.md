@@ -21,9 +21,6 @@ no_service: true
 The data management service captures data from one or more {{< glossary_tooltip term_id="resource" text="resources" >}} locally, and syncs it to cloud storage when a connection to the cloud is available.
 You can configure which data you want to capture, as well as the capture rate and the sync frequency.
 
-Data capture is frequently used with cloud sync.
-However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
-
 Get started with a quickstart guide or keep reading for more details.
 
 {{< cards >}}
@@ -44,7 +41,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
-The data is captured in the ESP32's flash memory and periodically uploaded to the Viam cloud.
+The data is captured in the ESP32's flash memory until it is uploaded to the Viam cloud.
 
 If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
 
@@ -63,25 +60,29 @@ For the arm, you might capture joint positions at 1Hz.
 If your requirements change and you want to capture data from both components at 10Hz, you can change the capture rate at any time in each component's data capture configuration.
 {{< /expand >}}
 
+Data capture is frequently used with cloud sync.
+However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
+
 ## Supported components and services
 
-The following components and services support data capture:
+The following components and services support data capture, for the following methods:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 
-| Type                           |
-| ------------------------------ |
-| Arm                            |
-| Board                          |
-| Camera                         |
-| Encoder                        |
-| Gantry                         |
-| Motor                          |
-| Movement sensor (includes GPS) |
-| Sensor                         |
-| Servo                          |
-| Vision service                 |
+<!-- prettier-ignore -->
+| Type                                            | Method |
+| ----------------------------------------------- | ------ |
+| [Arm](/components/arm/)                         | `EndPosition`, `JointPositions` |
+| [Board](/components/board/)                     | `Analogs`, `Gpios` |
+| [Camera](/components/camera/)                   | `GetImages`, `ReadImage`, `NextPointCloud` |
+| [Encoder](/components/encoder/)                 | `TicksCount` |
+| [Gantry](/components/gantry/)                   | `Lengths`, `Position` |
+| [Motor](/components/motor/)                     | `Position`, `IsPowered` |
+| [Movement sensor](/components/movement-sensor/) | `AngularVelocity`, `CompassHeading`, `LinearAcceleration`, `LinearVelocity`, `Orientation`, `Position` |
+| [Sensor](/components/sensor/)                   | `Readings` |
+| [Servo](/components/servo/)                     | `Position` |
+| [Vision service](/services/vision/)             | `CaptureAllFromCamera` |
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
@@ -105,11 +106,11 @@ When data is stored in the cloud, it is encrypted at rest by the cloud storage p
 Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
 
 If the internet becomes unavailable or the machine needs to restart during the sync process, the sync is interrupted.
-If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
+If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour, at which point the service retries the sync every hour.
 When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
+If the interruption happens mid-file, sync resumes from the beginning of that file.
 
-For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
-Once the service retries and successfully connects, data synchronization resumes at 33%.
+To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
 
 ## Storage
 
@@ -149,7 +150,7 @@ You can also control how local data is deleted if your machine's local storage b
 
 ## Configure data capture and sync
 
-< expand "Step 1: Configure the data management service" >
+{{< expand "Step 1: Configure the data management service" >}}
 
 To capture data from one or more machines, you must first add the data management service:
 
@@ -186,7 +187,8 @@ If you prefer to write raw JSON, here is an example:
         "tags": [],
         "capture_disabled": false,
         "sync_disabled": true,
-        "delete_every_nth_when_disk_full": 5
+        "delete_every_nth_when_disk_full": 5,
+        "maximum_num_sync_threads": 250
       }
     }
   ]
@@ -236,6 +238,7 @@ The following attributes are available for the data management service:
 | `additional_sync_paths` | string array | Optional | Paths to any other directories on your machine from which you want to sync data to the cloud. Once data is synced from a directory, it is automatically deleted from your machine. |
 | `sync_interval_minutes` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing. <br> Default: `0.1`, meaning once every 6 seconds. |
 | `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/services/data/capture-sync/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |
+| `maximum_num_sync_threads` | int | Optional | Max number of CPU threads to use for syncing data to the Viam cloud. <br> Default: `1000` |
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
@@ -258,8 +261,8 @@ With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths`
 Now the data management service is enabled.
 However, no data is being captured until you configure capture on one or more {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
-< /expand >
-{{< expand "Step 2: Configure data capture for your resources" >}}
+{{< /expand >}}
+< expand "Step 2: Configure data capture for your resources" >
 
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
 
@@ -272,13 +275,14 @@ Once you have added the data capture service, you can specify the data you want 
 {{< tabs >}}
 {{% tab name="Config builder" %}}
 
-To add data capture for a component or service, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
-
 For each resource you can capture data for, there is a **Data capture** section in its panel.
-Click **Add method** and then select the **Method** and specify a capture **Frequency** in hertz.
-For example, if you want to capture a reading every 2 seconds, enter `0.5`.
+Select a **Method** and specify a capture **Frequency** in hertz.
+You can add multiple methods with different capture frequencies.
+Some methods will prompt you to add additional parameters.
 
-For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
+The available methods, and corresponding additional parameters, will depend on the component or service type.
+For example, a camera has the options `ReadImage` and `NextPointCloud`.
+Keep in mind that some models do not support all options, for example webcams do not capture point clouds, and choose the method accordingly.
 
 ![component config example](/services/data/data-service-component-config.png)
 
@@ -287,6 +291,15 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
 
 {{< /alert >}}
+
+The following attributes are available for data capture configuration:
+
+<!-- prettier-ignore -->
+| Name               | Type   | Required? | Description |
+| ------------------ | ------ | --------- | ----------- |
+| `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
+| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/services/data/capture-sync/#supported-components-and-services). |
+| `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
 Click the **Save** button in the top right corner of the page.
 
@@ -713,7 +726,7 @@ The following example captures data from the `ReadImage` method of a camera:
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< /expand >}}
+< /expand >
 {{< expand "Step 3: (Optional) Too much data? Capture only interesting data" >}}
 
 See the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
@@ -759,56 +772,7 @@ To delete the data locally, `ssh` into your machine and delete the data in the d
 
 {{< /expand >}}
 
-### Sync files from another directory
-
-You may have additional files you want to sync to the cloud from your machine.
-For example, there may be components on your machine which are not controlled by Viam that are collecting data locally on your machine.
-Or there may be a set of logs indicating the status of the machine at different points in time.
-
-To include these types of files in cloud sync, in the **Additional paths** field of the data manager config, specify the directory where your files are located on your machine and click **Save**.
-To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
-
-{{< alert title="Caution" color="caution" >}}
-If a machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it from the machine.
-{{< /alert >}}
-
-Currently, if the internet becomes unavailable and the sync is interrupted mid-file, the service resumes sync from the beginning of the file.
-This is only applicable for files in a directory added as an additional sync path.
-
-{{< tabs >}}
-{{% tab name="Config builder example" %}}
-
-In the example below, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 0.1 minutes (6 seconds).
-
-{{<imgproc src="/services/data/data-service-config.png" resize="x1100" declaredimensions=true alt="Service config example" style="max-width:500px" >}}
-
-{{% /tab %}}
-{{% tab name="Raw JSON example" %}}
-
-In the example below, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 0.1 minutes (6 seconds).
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [],
-  "services": [
-    {
-      "name": "data_manager",
-      "type": "data_manager",
-      "attributes": {
-        "sync_interval_mins": 0.1,
-        "capture_dir": "",
-        "sync_disabled": false,
-        "additional_sync_paths": ["/logs"]
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Sync data conditionally
+## Sync data conditionally
 
 You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
 For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
@@ -818,33 +782,23 @@ To set up triggers for syncing see:
 {{% card link="/how-tos/trigger-sync/" %}}
 {{< /cards >}}
 
-### Configure sync threads
+## API
 
-When cloud sync is enabled, the data management service will use up to `1000` concurrent CPU threads by default to sync data to the Viam cloud, depending on how much data is being synced.
-You can adjust the permitted thread count with the `maximum_num_sync_threads` attribute.
+The data management service supports the following methods:
 
-The default value of `1000` concurrent threads is sufficient for most use cases, but if you are using limited hardware, are operating under heavy CPU load, or are syncing a large amount of data at once, consider lowering this value as needed.
+{{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 
-{{< expand "Click to view the JSON configuration with 250 threads configured" >}}
+The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
+For information about that API, see [Data Client API](/appendix/apis/data-client/).
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [],
-  "services": [
-    {
-      "name": "data_manager",
-      "type": "data_manager",
-      "attributes": {
-        "sync_interval_mins": 0.1,
-        "capture_dir": "",
-        "maximum_num_sync_threads": 250
-      }
-    }
-  ]
-}
-```
+{{% alert title="Tip" color="tip" %}}
 
-{{< /expand >}}
+The following code examples assume that you have a machine configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for sample code to connect to your machine.
+
+{{% /alert %}}
+
+{{< readfile "/static/include/services/apis/generated/data_manager.md" >}}
 
 ## Troubleshooting
 
