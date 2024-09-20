@@ -119,38 +119,3 @@ async function initAndClick() {
 }
 
 // Userflow END
-
-// Open Anchor for expanders if hidden START
-const openDetailsIfAnchorHidden = (evt) => {
-    const target = evt.currentTarget.getAttribute("href"); // "#anchored"
-    const elTarget = document.querySelector(target);
-    console.log(target)
-    console.log(elTarget)
-
-    if (!elTarget) return; // No such element in DOM. Do nothing
-    console.log(elTarget.offsetHeight)
-
-    // Open all <details> ancestors
-    let elDetails = elTarget.closest("details");
-    console.log(elDetails)
-
-    while (elDetails) {
-      if (elDetails.matches("details")) elDetails.open = true;
-      elDetails = elDetails.parentElement;
-    }
-}
-
-document.querySelectorAll("[href^='#']").forEach((el) => {
-el.addEventListener("click", openDetailsIfAnchorHidden);
-});
-
-document.addEventListener("DOMContentLoaded", function(event) {
-    if (location.hash) {
-        hash = document.getElementById(location.hash.substr(1));
-        details = hash.closest("details")
-        bbox = details.getBoundingClientRect();
-        scrollTo(bbox.x, bbox.y - 120);
-    }
-});
-
-// Open Anchor for expanders if hidden END
