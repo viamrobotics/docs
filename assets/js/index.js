@@ -138,19 +138,19 @@ const openDetailsIfAnchorHidden = (evt) => {
       if (elDetails.matches("details")) elDetails.open = true;
       elDetails = elDetails.parentElement;
     }
-  }
-
-  document.querySelectorAll("[href^='#']").forEach((el) => {
-    el.addEventListener("click", openDetailsIfAnchorHidden);
-  });
-
-if (location.hash) {
-    console.log(location.hash)
-    element = document.getElementById(location.hash.substr(1));
-    console.log(element)
-    bbox = element.getBoundingClientRect();
-    console.log(bbox.x, bbox.y)
-    scrollTo(bbox.x, bbox.y - 0);
 }
 
-  // Open Anchor for expanders if hidden END
+document.querySelectorAll("[href^='#']").forEach((el) => {
+el.addEventListener("click", openDetailsIfAnchorHidden);
+});
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    if (location.hash) {
+        hash = document.getElementById(location.hash.substr(1));
+        details = hash.closest("details")
+        bbox = details.getBoundingClientRect();
+        scrollTo(bbox.x, bbox.y - 120);
+    }
+});
+
+// Open Anchor for expanders if hidden END
