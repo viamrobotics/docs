@@ -272,7 +272,7 @@ async def main():
     viam_client = await connect()
     cloud = viam_client.app_client
 
-    machines = await cloud.list_robots(location_id="vw3iu72d8n")
+    machines = await cloud.list_robots(location_id=LOCATION_ID)
     print("Found {} machines.".format(len(machines)))
 
     for m in machines:
