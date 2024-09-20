@@ -184,7 +184,8 @@ First, add your Pi as a [board component](/components/board/):
 {{% tab name="Config Builder" %}}
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `board` type, then select the `pi` model.
+Select the `board` type, then select the `viam:raspberry-pi:pi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
+If you are using a Raspberry Pi 5, user the `pi5` model.
 Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
 

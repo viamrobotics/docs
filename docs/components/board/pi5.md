@@ -19,7 +19,7 @@ Follow the [setup guide](/installation/prepare/rpi-setup/) to prepare your Pi fo
 
 Configure a `pi5` board to integrate a [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) into your machine.
 
-To configure a Raspberry Pi 4 or earlier, see [Configure a Raspberry Pi 4, 3, or Zero 2 W board](/components/board/pi/).
+To configure a Raspberry Pi 4 or earlier, see [`viam:raspberry-pi:rpi`](https://github.com/viam-modules/raspberry-pi).
 
 ### Enable hardware PWM
 
