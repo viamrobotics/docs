@@ -27,7 +27,7 @@ no_service: true
 
 The data management service is a robust solution for handling machine data, allowing you to capture data, sync it to the cloud, and query it.
 Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
-Once collected, you can configure which data to securely sync to the cloud, and view, query, or manage it directly in the cloud without needing to manually gather data from each machine.
+Once collected, you can securely sync data to the cloud, and view, query, or manage it directly in the cloud without needing to manually gather data from each machine.
 
 {{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
 
@@ -45,7 +45,8 @@ Or learn more about Viam's data management features, which can be broken down in
 
 The data management service:
 
-- Automatically resumes capturing data after your machine restarts.
+- Automatically captures data at the rate you specify.
+   If your machine restarts, data capture resumes automatically.
 - Securely transfers data to the cloud at the frequency you define.
 - Automatically deletes local data after syncing for space management.
 
@@ -59,7 +60,7 @@ More details and how to configure capture and sync.
 {{% /manualcard %}}
 {{< /cards >}}
 
-You can configure the frequency of data capture individually for each supported component:
+You can capture data from any of the following components and services:
 
 {{< cards >}}
 {{< relatedcard link="/components/arm/">}}
@@ -71,16 +72,17 @@ You can configure the frequency of data capture individually for each supported 
 {{< relatedcard link="/components/movement-sensor/">}}
 {{< relatedcard link="/components/sensor/">}}
 {{< relatedcard link="/components/servo/">}}
+{{< relatedcard link="/servicses/vision/">}}
 {{< /cards >}}
 
 ## Cloud data management
 
 <br>
-{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
+{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." class="imgzoom">}}
 <br><br>
 
-Once your data is synced to the cloud, you can view, filter, tag, label, create datasets, and delete it from your [Viam app **DATA** page](https://app.viam.com/data/view).
-You can also interact with your data using the [Viam CLI](/cli/#data), or with SDK code using the [data client API](/appendix/apis/data-client/).
+Once your data is synced to the cloud, you can view, filter, label, and assign it to datasets from your [Viam app **DATA** page](https://app.viam.com/data/view).
+You can also interact with your data using the [Viam CLI](/cli/#data), or using the [data client API](/appendix/apis/data-client/).
 
 <!-- markdownlint-disable-file MD034 -->
 
@@ -110,8 +112,8 @@ Upload data to the Viam app from your local computer or mobile device using the 
 
 ### Query your data
 
-Once you have [synced](/services/data/capture-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/how-tos/sensor-data-query-with-third-party-tools/).
-For _tabular_ sensor data, you can [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/how-tos/sensor-data-query-sdk/) against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
+Once your data has [synced](/services/data/capture-sync/), you can query it in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/how-tos/sensor-data-query-with-third-party-tools/).
+For _tabular_ sensor data, you can also [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/how-tos/sensor-data-query-sdk/) against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 {{< cards >}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
