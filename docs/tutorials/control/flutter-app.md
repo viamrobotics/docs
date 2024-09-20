@@ -72,7 +72,7 @@ For this walkthrough, you only need to install the following:
 {{% alert title="Flutter version" color="note" %}}
 We recommended using Flutter 3.19.6, as this sample app was tested with this version.
 `fvm` is a useful tool for targeting specific flutter versions.
-You can run `fvm use 3.19.6` to target Flutter 3.19.6.
+You can run `fvm use 3.19.6` in the terminal before building your sample app to target Flutter 3.19.6.
 {{% /alert %}}
 
 ## Start creating code
