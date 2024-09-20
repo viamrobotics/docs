@@ -235,7 +235,10 @@ Don't forget to **Save**.
 
 All machines configured with your fragment will update when they next check for configuration updates.
 
-To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/appendix/apis/robot/#getmachinestatus):
+To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/appendix/apis/robot/#getmachinestatus).
+
+The following example script iterates over all machines in a given location and if it can connect to the machines, it prints their status information.
+If it cannot connect to a machine, it prints the most recent log entries.
 
 ```python {class="line-numbers linkable-line-numbers" data-line="5"}
 import asyncio
@@ -267,26 +270,40 @@ async def machine_connect(address):
 
 async def main():
     viam_client = await connect()
-    # Instantiate an AppClient called "cloud"
-    # to run fleet management API methods on
     cloud = viam_client.app_client
 
-    machines = await cloud.list_robots(location_id=LOCATION_ID)
+    machines = await cloud.list_robots(location_id="vw3iu72d8n")
     print("Found {} machines.".format(len(machines)))
 
     for m in machines:
-        machine_addr = "{}-main.{}.viam.cloud".format(m.name, m.location)
-        print("Attempting to connect to {}...".format(m.name))
+        machine_parts = await cloud.get_robot_parts(m.id)
+        main_part = None
+        for p in machine_parts:
+            if p.main_part:
+                main_part = p
+
+        print("Attempting to connect to {}...".format(main_part.fqdn))
 
         try:
-            machine = await machine_connect(machine_addr)
+            machine = await machine_connect(main_part.fqdn)
             status = await machine.get_machine_status()
             print(status.config)
 
         except ConnectionError:
             print("Unable to establish a connection to the machine.")
-        except Exception:
-            print("Other error")
+            logs = await cloud.get_robot_part_logs(
+                robot_part_id=main_part.id,
+                num_log_entries=5
+            )
+            if not logs:
+                print("No logs available.")
+            else:
+                print("Most recent 5 log entries:")
+            for log in logs:
+                print("{}-{} {}: {}".format(
+                    log.logger_name, log.level, log.time, log.message))
+                if log.stack:
+                    print(log.stack)
 
     viam_client.close()
 
