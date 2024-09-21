@@ -180,8 +180,8 @@ Users can have access to different fleet management capabilities depending on wh
 In the next few pages we will guide you through the platform.
 You don't need to buy or own any hardware to follow along.
 
-Continue to the [Drive a rover](/get-started/drive-rover/) quickstart:
+Continue to the [Control a motor](/get-started/control-motor/) quickstart:
 
 {{< cards >}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/get-started/control-motor/" %}}
 {{< /cards >}}

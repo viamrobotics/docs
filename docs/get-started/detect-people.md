@@ -24,7 +24,7 @@ cost: "0"
 ---
 
 This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), and [controlled a motor](/get-started/control-motor/), we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/) and [controlled a motor](/get-started/control-motor/), we recommend you do so before continuing.
 
 In this guide you'll use machine learning to detect people in a camera stream.
 

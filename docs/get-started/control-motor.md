@@ -23,9 +23,9 @@ date: "2024-07-31"
 cost: "0" # Approximate cost in USD - Only specify number
 ---
 
-This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/) and [driven a rover](/get-started/drive-rover/), we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
 
+This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll configure and control a motor.
 
 {{< alert title="You will learn" color="tip" >}}
@@ -129,7 +129,6 @@ Choose your machine from the list and use the mobile interface to adjust the mot
 
 ### Option 3: Control programmatically
 
-If you have [driven a rover](/get-started/drive-rover/), you have already seen that a base has a standardized API.
 Each component has a standardized API.
 The following code shows you how to control the motor's speed and direction using the [Motor API](/components/motor/#api).
 

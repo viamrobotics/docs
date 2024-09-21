@@ -48,7 +48,7 @@ When using a rented Viam rover, adding [modules](/registry/) is disabled for sec
 ## Next steps
 
 {{< cards >}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/how-tos/drive-rover/" %}}
 {{% card link="/how-tos/detect-color/" %}}
 {{< /cards >}}
 
@@ -128,7 +128,7 @@ If you would like to, you can [extend your reservation](/appendix/try-viam/reser
 Yes! You can borrow the rover as many times as you’d like.
 Here are some tutorials which you can follow:
 
-- [Drive with the Viam SDK](/get-started/drive-rover/)
+- [Drive with the Viam SDK](/how-tos/drive-rover/)
 - [Detect a Color](/how-tos/detect-color/)
 
 If you want to get your own Viam Rover, [you can](https://viam.com/resources/rover).

@@ -42,7 +42,7 @@ See <a href="/appendix/try-viam/reserve-a-rover/">detailed instructions</a>.</p>
   <tr>
     <td>{{<imgproc src="/appendix/try-viam/try-viam-3.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="ALT">}}
       <b>3. Get started with Viam</b>
-      <p>Try a Viam Rover in our robotics lab. <a href="/cloud/machines/#control">Drive</a> or <a href="/get-started/drive-rover/">program</a> the rover to see how you can build a machine with Viam. You can also try services like <a href="/how-tos/detect-color/">computer vision.</a></p>
+      <p>Try a Viam Rover in our robotics lab. <a href="/cloud/machines/#control">Drive</a> or <a href="/how-tos/drive-rover/">program</a> the rover to see how you can build a machine with Viam. You can also try services like <a href="/how-tos/detect-color/">computer vision.</a></p>
     </td>
   </tr>
 </table>
@@ -50,7 +50,7 @@ See <a href="/appendix/try-viam/reserve-a-rover/">detailed instructions</a>.</p>
 ## Next steps
 
 {{< cards >}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/how-tos/drive-rover/" %}}
 {{% card link="/how-tos/detect-color/" %}}
 {{% card link="/appendix/try-viam/rover-resources/" %}}
 {{< /cards >}}

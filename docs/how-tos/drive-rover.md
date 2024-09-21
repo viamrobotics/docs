@@ -15,6 +15,7 @@ aliases:
   - "/try-viam/try-viam-tutorial/"
   - "/get-started/try-viam/try-viam-tutorial/"
   - "/get-started/quickstarts/drive-rover/"
+  - "/get-started/drive-rover/"
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 level: "Beginner"
 authors: []
@@ -34,7 +35,6 @@ cost: "0"
 
 If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
 
-This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll write code that makes a rover drive in a square.
 
 {{< alert title="You will learn" color="tip" >}}

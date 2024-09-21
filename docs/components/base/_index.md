@@ -117,6 +117,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< cards >}}
 {{% card link="/tutorials/configure/configure-rover/" %}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/how-tos/drive-rover/" %}}
 {{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
 {{< /cards >}}
