@@ -1484,6 +1484,11 @@ ul.sectionlist > li:hover {
   display: flex;
 }
 
+.ais-Hits-item > .tutorial .title:after {
+  content: "Tutorial";
+  background-color: #00ef83;
+}
+
 .ais-Hits-item > .blogpost .title:after {
   content: "Blogpost";
   background-color: #ffd400;
@@ -1502,11 +1507,6 @@ ul.sectionlist > li:hover {
 .ais-Hits-item > .codelab .title:after {
   content: "Codelab";
   background-color: #FF7D80;
-}
-
-.ais-Hits-item > .tutorial .title:after {
-  content: "Tutorial";
-  background-color: #00ef83;
 }
 
 .ais-Hits-item .title:after {
