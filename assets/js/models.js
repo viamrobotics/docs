@@ -102,10 +102,9 @@ if (document.getElementById("hits")) {
   search.start();
 }
 
-const mlmodels = document.getElementsByClassName("mr-model");
+const mlmodel = document.getElementById("mlmodels");
 
-if (mlmodels.length !== 0) {
-  const mlmodel = document.getElementsByClassName("mr-model")[0].id;
+if (mlmodel) {
   const typesenseInstantsearchAdapterML = new TypesenseInstantSearchAdapter({
     server: {
       apiKey: "Qhooem9HCRuFMVZPNQOhABAdEWJaSnlY", // Be sure to use an API key that only allows search operations
@@ -191,10 +190,9 @@ if (mlmodels.length !== 0) {
   searchML.start();
 }
 
-const scripts = document.getElementsByClassName("training-scripts");
+const scripts = document.getElementById("training-scripts");
 
-if (scripts.length !== 0) {
-  const scripts = document.getElementsByClassName("training-scripts")[0].id;
+if (scripts) {
   const typesenseInstantsearchAdapterScripts = new TypesenseInstantSearchAdapter({
     server: {
       apiKey: "2bRwauAYhbrdjti898D6RXSkwgyEihDk", // Be sure to use an API key that only allows search operations
