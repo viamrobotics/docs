@@ -452,14 +452,19 @@ END MARKETING CSS
 /* START CSS FOR EXPANDER */
 
 .expand-label {
-  font-family: Public Sans,system-ui;
-  font-weight:bold;
   background-color: whitesmoke;
   border: black solid 1px;
   padding: 0.5rem 1rem 0.5rem 1rem;
   i {
     font-size: inherit !important;
   }
+  display: flex;
+  justify-content: space-between;
+}
+
+.expand-label span h5 {
+  display: inline;
+  font-family: Public Sans,system-ui;
 }
 
 .expand-content {
@@ -480,6 +485,49 @@ END MARKETING CSS
 .expand-content ol li p {
   margin-bottom: 0;
 }
+
+// Expander styling
+
+details * i.fa-chevron-down {
+  display: none;
+}
+details * i.fa-chevron-right {
+  display: unset;
+}
+
+details[open] * i.fa-chevron-down {
+  display: unset;
+}
+details[open] * i.fa-chevron-right {
+  display: none;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+.center-text {
+  text-align: center;
+}
+
+// Expander anchor styling START
+.expander-anchor {
+  display: block;
+  position: relative;
+  top: -130px;
+  visibility: hidden;
+}
+
+.expand-link-icon {
+  float: right;
+  visibility: hidden;
+}
+
+.expand .expand-label:hover .expand-link-icon {
+  color: blue;
+  visibility: visible;
+}
+// Expander anchor styling END
 
 /* END CSS FOR EXPANDER */
 
@@ -1957,30 +2005,6 @@ div .filterable > p {
   border-top: 1px solid #dee2e6;
 }
 
-// Expander styling
-
-details * i.fa-chevron-down {
-  display: none;
-}
-details * i.fa-chevron-right {
-  display: unset;
-}
-
-details[open] * i.fa-chevron-down {
-  display: unset;
-}
-details[open] * i.fa-chevron-right {
-  display: none;
-}
-
-details summary::-webkit-details-marker {
-  display:none;
-}
-
-.center-text {
-  text-align: center;
-}
-
 // Styling for email newsletter
 
 h3.body-header[style] {
@@ -2018,22 +2042,3 @@ h3.body-header[style] {
 .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label, .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field .input {
   margin-right: 1rem;
 }
-
-// Expander anchor styling START
-.expander-anchor {
-  display: block;
-  position: relative;
-  top: -130px;
-  visibility: hidden;
-}
-
-.expand-link-icon {
-  float: right;
-  visibility: hidden;
-}
-
-.expand .expand-label:hover .expand-link-icon {
-  color: blue;
-  visibility: visible;
-}
-// Expander anchor styling END
