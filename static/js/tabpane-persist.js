@@ -133,8 +133,10 @@ window.addEventListener('DOMContentLoaded', () => {
     if (location.hash) {
         hash = document.getElementById(location.hash.substr(1));
         details = hash.closest("details")
-        bbox = details.getBoundingClientRect();
-        scrollTo(bbox.x, bbox.y - 120);
+        if (details) {
+          bbox = details.getBoundingClientRect();
+          scrollTo(bbox.x, bbox.y - 120);
+        }
     }
   });
 

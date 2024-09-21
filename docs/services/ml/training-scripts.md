@@ -15,24 +15,7 @@ You can upload your own training script by following the guide to [Create custom
 
 You can search the available ML training scripts from the Viam registry here:
 
-<div id="searchboxScripts"></div>
-<p>
-<div id="searchstatsScripts"></div></p>
-<div class="training-scripts" id="">
-  <div class="modellistheader">
-    <div class="name">Script</div>
-    <div>Description</div>
-  </div>
-<div id="hitsScripts" class="modellist">
-</div>
-<div id="paginationScripts"></div>
-</div>
-<noscript>
-    <div class="alert alert-caution" role="alert">
-        <h4 class="alert-heading">Javascript</h4>
-        <p>Please enable javascript to see and search ML custom training scripts.</p>
-    </div>
-</noscript>
+{{<trainingscripts>}}
 
 ## API
 

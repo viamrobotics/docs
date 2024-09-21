@@ -1694,16 +1694,27 @@ a.ais-Pagination-link:hover {
 
 // styling for model list from registry
 
-.mr-component {
+.searchhitsbox {
   margin-bottom: 1rem;
+  border: 1px solid rgb(209, 213, 219);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.mr-model {
+.searchhitsbox#modresources {
   min-height: 650px;
 }
 
-.training-scripts {
-  margin-bottom: 1rem;
+.mr-component {
+  min-height: 650px;
+}
+
+.searchhitsbox#mlmodels {
+  min-height: 650px;
+}
+
+.searchhitsbox#training-scripts {
   min-height: 500px;
 }
 

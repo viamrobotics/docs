@@ -34,19 +34,7 @@ To add a modular resource from a _local_ module, you must add the module first.
 
 You can search the available modular resources from the Viam Registry here:
 
-<div id="searchbox"></div>
-<p>
-<div id="searchstats"></div></p>
-<div class="mr-component" id="">
-  <div class="modellistheader">
-    <div class="type">API</div>
-    <div class="name">Model</div>
-    <div>Description</div>
-  </div>
-<div id="hits" class="modellist">
-</div>
-<div id="pagination"></div>
-</div>
+{{<all-modular-resources>}}
 
 You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its dedicated module page.
 You can integrate modules into any Viam-powered machine.

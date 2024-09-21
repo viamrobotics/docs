@@ -67,25 +67,7 @@ To configure a modular resource on your robot, [add new models that others have 
 
 You can search the available modular resources from the Viam registry here:
 
-<div id="searchbox"></div>
-<p>
-<div id="searchstats"></div></p>
-<div class="mr-component" id="">
-  <div class="modellistheader">
-    <div class="type">API</div>
-    <div class="name">Model</div>
-    <div>Description</div>
-  </div>
-<div id="hits" class="modellist">
-</div>
-<div id="pagination"></div>
-</div>
-<noscript>
-    <div class="alert alert-caution" role="alert">
-        <h4 class="alert-heading">Javascript</h4>
-        <p>Please enable javascript to see and search models.</p>
-    </div>
-</noscript>
+{{<all-modular-resources>}}
 
 You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its dedicated module page.
 You can integrate modules into any Viam-powered machine.
@@ -140,26 +122,7 @@ You can also upload your own model to the registry.
 
 You can search the available ML models from the Viam registry here:
 
-<div id="searchboxML"></div>
-<p>
-<div id="searchstatsML"></div></p>
-<div class="mr-model" id="">
-  <div class="modellistheader">
-    <div class="name">Model</div>
-    <div class="type">Type</div>
-    <div class="framework">Framework</div>
-    <div>Description</div>
-  </div>
-<div id="hitsML" class="modellist">
-</div>
-<div id="paginationML"></div>
-</div>
-<noscript>
-    <div class="alert alert-caution" role="alert">
-        <h4 class="alert-heading">Javascript</h4>
-        <p>Please enable javascript to see and search ML models.</p>
-    </div>
-</noscript>
+{{<mlmodels>}}
 
 To use an existing model from the registry, [deploy the ML model to your robot](/services/ml/deploy/) and use a [Vision service](/services/vision/) to make detections or classifications on-machine.
 
@@ -170,21 +133,4 @@ You can upload your own training script by following the guide to [Train a Model
 
 You can search the available ML training scripts from the Viam registry here:
 
-<div id="searchboxScripts"></div>
-<p>
-<div id="searchstatsScripts"></div></p>
-<div class="training-scripts" id="">
-  <div class="modellistheader">
-    <div class="name">Script</div>
-    <div>Description</div>
-  </div>
-<div id="hitsScripts" class="modellist">
-</div>
-<div id="paginationScripts"></div>
-</div>
-<noscript>
-    <div class="alert alert-caution" role="alert">
-        <h4 class="alert-heading">Javascript</h4>
-        <p>Please enable javascript to see and search ML custom training scripts.</p>
-    </div>
-</noscript>
+{{<trainingscripts>}}

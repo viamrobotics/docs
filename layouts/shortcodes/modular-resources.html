@@ -3,14 +3,15 @@
 <p>
 <p>For configuration information, click on the model name:</p>
 <div id="searchstats"></div></p>
-<div class="mr-component" id="{{ .Get "api" }}">
-  <div class="modellistheader">
-  <div class="name">Model</div>
-  <div>Description</div>
-</div>
-<div id="hits" class="modellist">
-</div>
-<div id="pagination"></div>
+<div class="searchhitsbox mr-component" id="{{ .Get "api" }}">
+  <span>
+    <div class="modellistheader">
+      <div class="name">Model</div>
+      <div>Description</div>
+    </div>
+    <div id="hits" class="modellist"></div>
+  </span>
+  <div id="pagination"></div>
 </div>
 <noscript>
   <div class="alert alert-caution" role="alert">
