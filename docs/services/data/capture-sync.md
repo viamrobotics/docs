@@ -39,8 +39,12 @@ The service does not impose a lower or upper limit on the frequency of data coll
 However, in practice, your hardware may impose limits on the frequency of data collection.
 Avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
+Data capture is frequently used with cloud sync.
+However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
+
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
+
 The data is captured in the ESP32's flash memory until it is uploaded to the Viam cloud.
 
 If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
@@ -59,9 +63,6 @@ For the arm, you might capture joint positions at 1Hz.
 
 If your requirements change and you want to capture data from both components at 10Hz, you can change the capture rate at any time in each component's data capture configuration.
 {{< /expand >}}
-
-Data capture is frequently used with cloud sync.
-However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
 
 ## Supported components and services
 

@@ -46,7 +46,7 @@ Or learn more about Viam's data management features, which can be broken down in
 The data management service:
 
 - Automatically captures data at the rate you specify.
-   If your machine restarts, data capture resumes automatically.
+  If your machine restarts, data capture resumes automatically.
 - Securely transfers data to the cloud at the frequency you define.
 - Automatically deletes local data after syncing for space management.
 
@@ -105,7 +105,7 @@ Export data with the Viam CLI and download your data for offline access.
 
 ### Upload a batch of data
 
-Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app.
+Upload data to the Viam app from your computer or mobile device using the data client API, Viam CLI, or Viam mobile app.
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -130,35 +130,30 @@ For more information about who can do what with data, see [Data Permissions](/cl
 
 The [data client API](/appendix/apis/data-client/) supports the following methods:
 
-{{< expand "Methods to upload data like images or sensor readings directly to the Viam app" >}}
+<br>
+
+Methods to upload data like images or sensor readings directly to the Viam app:
 
 {{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
 
-{{< /expand >}}
+<br>
 
-{{< expand "Methods to download, filter, tag, or perform other tasks on data like images or sensor readings" >}}
+Methods to download, filter, tag, or perform other tasks on data like images or sensor readings:
 
 {{< readfile "/static/include/app/apis/generated/data-table.md" >}}
 
-{{< /expand >}}
+<br>
 
-{{< expand "Methods to work with datasets" >}}
+Methods to work with datasets:
 
 {{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
 
-{{< /expand >}}
+<br>
 
 The data management API supports a separate set of methods that allow you to sync data to the Viam app.
 For information about that API, see [Data Management API](/appendix/apis/#data-management).
 
 For the command line interface `data` command, see [CLI](/cli/#data).
-
-{{% alert title="Tip" color="tip" %}}
-
-The following code examples assume that you have a machine configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for sample code to connect to your machine.
-
-{{% /alert %}}
 
 ## Next steps: Train and deploy machine learning
 
