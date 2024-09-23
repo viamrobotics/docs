@@ -18,17 +18,22 @@ hide_children: true
 # SMEs: Gautham, Rand
 ---
 
-A _board_ component on your machine communicates with the other [components](/components/) of the machine.
+A _board_ component represents your machine's general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
+
+In other words, the board of a machine is its signal wire hub.
+The board communicates with the other [components](/components/) of the machine.
+
+Many single-board computers (SBCs) have GPIO pins built into them.
+If you are running `viam-server` on an SBC but are not using any of its GPIO pins, you do not need to configure a board component.
+However, if you want to access the GPIO pins, you need to configure a board component.
 
 A board can be:
 
-- A single-board computer (SBC) with GPIO pins and a CPU capable of running `viam-server`.
+- The GPIO pins on a single-board computer (SBC).
 - A GPIO peripheral device that must connect to an external computer.
 - A PWM peripheral device that must connect to an SBC that has a CPU and GPIO pins.
 
-The board of a machine is also its signal wire hub that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
-
-Signaling is overseen by a computer running `viam-server` which allows you to control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
+Signaling is overseen by a computer running `viam-server` which allows you to control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
 {{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
