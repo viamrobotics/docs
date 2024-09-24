@@ -240,7 +240,7 @@ To check when your machines have last updated their configuration, iterate over 
 The following example script iterates over all machines in a given location and if it can connect to the machines, it prints their status information.
 If it cannot connect to a machine, it prints the most recent log entries.
 
-```python {class="line-numbers linkable-line-numbers" data-line="5"}
+```python {class="line-numbers linkable-line-numbers"}
 import asyncio
 
 from viam.rpc.dial import DialOptions
