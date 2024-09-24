@@ -74,6 +74,8 @@ Proceed to [install `viam-micro-server`](/installation/#install-viam-micro-serve
 
 ### Operating System installation
 
+`viam-server` can run on **any computer that runs a [supported operating system](#platform-requirements)**, including single-board computers (SBCs) running 64-bit Linux.
+
 For convenience, we provide operating system installation instructions for some popular single-board computeres (SBCs).
 If you want to use an SBC or other computer which already has a supported operating system installed, proceed to [install `viam-server`](/installation/#install-viam-server).
 
