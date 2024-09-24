@@ -2,7 +2,7 @@
 title: "Collect images or sensor data in 3 minutes"
 linkTitle: "Collect data (3 min)"
 type: "docs"
-images: ["/platform/data.svg"]
+images: ["/get-started/quickstarts/collect-data.png"]
 description: "Use Viam to gather images or sensor data from your machine."
 imageAlt: "The data icon"
 authors: []
@@ -28,7 +28,7 @@ cost: "0" # Approximate cost in USD - Only specify number
 ---
 
 This quickstart is the final part of a series.
-If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), [controlled a motor](/get-started/control-motor/), and [detected people](/get-started/detect-people/) we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/), [controlled a motor](/get-started/control-motor/), and [detected people](/get-started/detect-people/) we recommend you do so before continuing.
 
 In this guide you'll capture and sync sensor or image data from a machine.
 

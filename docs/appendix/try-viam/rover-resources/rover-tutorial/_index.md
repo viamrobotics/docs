@@ -404,7 +404,7 @@ Before you can use your Viam rover with the Viam platform you need to configure 
 After you have configured your rover, follow one of these tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/how-tos/drive-rover/" %}}
 {{% card link="/how-tos/detect-color/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

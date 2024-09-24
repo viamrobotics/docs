@@ -79,10 +79,10 @@ carouselscript: true
 
 <div class="cards max-page">
   <div class="row">
-    {{< card link="/tutorials/projects/helmet/" class="green">}}
-    {{< card link="/tutorials/services/plan-motion-with-arm-gripper/" class="pink">}}
-    {{< card link="/tutorials/services/navigate-with-rover-base/" class="purple">}}
-    {{< card link="/tutorials/projects/integrating-viam-with-openai/" class="yellow">}}
+    {{< card link="/get-started/" class="green">}}
+    {{< card link="/get-started/control-motor/" class="pink">}}
+    {{< card link="/get-started/detect-people/" class="purple">}}
+    {{< card link="/get-started/collect-data/" class="yellow">}}
   </div>
 </div>
 
