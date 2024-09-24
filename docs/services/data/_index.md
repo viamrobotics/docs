@@ -47,7 +47,7 @@ The data management service:
 
 - Automatically captures data at the rate you specify.
   If your machine restarts, data capture resumes automatically.
-- Securely transfers data to the cloud at the frequency you define.
+- Securely syncs data to the cloud at the frequency you define.
 - Automatically deletes local data after syncing for space management.
 
 {{< cards >}}
