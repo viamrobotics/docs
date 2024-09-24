@@ -24,7 +24,7 @@ date: "2024-09-19"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The data client API allows you to upload and retrieve [data](/services/data/) to and from the [Viam app](https://app.viam.com).
+The data client API allows you to upload and retrieve [data](/services/data/) to and from the Viam cloud.
 
 {{% alert title="Support Notice" color="note" %}}
 
