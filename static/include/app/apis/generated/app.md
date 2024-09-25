@@ -147,13 +147,13 @@ Retrieve the organization object for the requested organization containing the o
 
 - (GRPCError): If the provided org_id is invalid, or not currently authed to.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization).
-
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 org = await cloud.get_organization("<YOUR-ORG-ID>")
 ```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -244,7 +244,7 @@ Delete an organization.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_organization("org-id")
+await cloud.delete_organization("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization).
@@ -641,7 +641,7 @@ Share a location with an organization.
 
 **Example:**
 
-```python {class="line-numbers linkable-line-<numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 await cloud.share_location("<YOUR-ORG-ID>", "<YOUR-LOCATION-ID>")
 ```
 
@@ -780,7 +780,7 @@ Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to get. You can copy this value from the URL of the machine's page.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to get. You can copy this value from the URL of the machine’s page.
 
 **Returns:**
 
@@ -868,7 +868,7 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to get. You can retrieve this value by navigating to the machine's page, clicking on the part status dropdown, and clicking the copy icon next to **Part ID**.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to get. You can retrieve this value by navigating to the machine’s page, clicking on the part status dropdown, and clicking the copy icon next to Part ID.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the machine part’s config file in JSON format to.
 - `indent` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Size (in number of spaces) of indent when writing config to dest. Defaults to 4.
 
@@ -945,7 +945,7 @@ Get an asynchronous iterator that receives live machine part logs.
 
 **Returns:**
 
-- ([viam.app.\_logs.\_LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
+- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
 
 **Example:**
 
@@ -977,7 +977,7 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Raises:**
 
-- (GRPCError): If an invalid robot part ID is provided.
+- (GRPCError): If an invalid machine part ID is provided.
 
 **Example:**
 
@@ -1003,7 +1003,7 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot part.
-- `robot_config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional new config represented as a dictionary to be updated on the robot part. The robot part’s config will remain as is (no change) if one isn’t passed.
+- `robot_config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional new config represented as a dictionary to be updated on the machine part. The machine part’s config will remain as is (no change) if one isn’t passed.
 
 **Returns:**
 
@@ -1011,12 +1011,12 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 **Raises:**
 
-- (GRPCError): If either an invalid robot part ID, name, or config is passed.
+- (GRPCError): If either an invalid machine part ID, name, or config is passed.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_robot_part = await cloud.update_robot_part(
+my_machine_part = await cloud.update_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
 )
 ```
@@ -1040,11 +1040,11 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The new robot part’s ID.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The new machine part’s ID.
 
 **Raises:**
 
-- (GRPCError): If either an invalid robot ID or name is passed.
+- (GRPCError): If either an invalid machine ID or name is passed.
 
 **Example:**
 
@@ -1076,7 +1076,7 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 
 **Raises:**
 
-- (GRPCError): If an invalid robot part ID is passed.
+- (GRPCError): If an invalid machine part ID is passed.
 
 **Example:**
 
@@ -1114,8 +1114,7 @@ Mark a machine part as the [_main_ part](/architecture/parts/#machine-parts) of 
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.mark_part_as_main(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
-)
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_as_main).
@@ -1140,14 +1139,13 @@ Mark a specified machine part for restart.
 
 **Raises:**
 
-- (GRPCError): If an invalid robot part ID is passed.
+- (GRPCError): If an invalid machine part ID is passed.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.mark_part_for_restart(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
-)
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_for_restart).
@@ -1164,22 +1162,21 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to create a secret for.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to create a secret for.
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part the new secret was generated for.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The machine part the new secret was generated for.
 
 **Raises:**
 
-- (GRPCError): If an invalid robot part ID is passed.
+- (GRPCError): If an invalid machine part ID is passed.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_with_new_secret = await cloud.create_robot_part_secret(
-    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
-)
+    robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_robot_part_secret).
@@ -1196,7 +1193,7 @@ Delete a machine part secret.
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to delete the secret from.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to delete the secret from.
 - `secret_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the secret to delete.
 
 **Returns:**
@@ -1205,15 +1202,14 @@ Delete a machine part secret.
 
 **Raises:**
 
-- (GRPCError): If an invalid robot part ID or secret ID is passed.
+- (GRPCError): If an invalid machine part ID or secret ID is passed.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_robot_part_secret(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22",
-    secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy"
-)
+    secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part_secret).
@@ -1230,7 +1226,7 @@ Get a list of all machines in a specified location.
 
 **Parameters:**
 
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location to retrieve the robots from. Defaults to the location ID provided at AppClient instantiation.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location to retrieve the machines from. Defaults to the location ID provided at AppClient instantiation.
 
 **Returns:**
 
@@ -1260,8 +1256,8 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 **Parameters:**
 
-- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the new robot.
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which to create the robot. Defaults to the current authorized location.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the new machine.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which to create the machine. Defaults to the current authorized location.
 
 **Returns:**
 
@@ -1274,7 +1270,7 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_machine_id = await cloud.new_robot(name="beepboop", location_id="23ab12345")
+new_machine_id = await cloud.new_robot(name="beepboop", location_id="my-location-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
@@ -1292,16 +1288,16 @@ Change the name of an existing machine.
 **Parameters:**
 
 - `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to update. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
-- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot.
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which the robot exists. Defaults to the location ID provided at AppClient instantiation.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the machine.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which the machine exists. Defaults to the location ID provided at AppClient instantiation.
 
 **Returns:**
 
-- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The newly updated robot.
+- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The newly updated machine.
 
 **Raises:**
 
-- (GRPCError): If either an invalid robot ID, name, or location ID is passed or a location ID isn’t passed and there was no location ID provided at AppClient instantiation.
+- (GRPCError): If either an invalid machine ID, name, or location ID is passed or a location ID isn’t passed and there was no location ID provided at AppClient instantiation.
 
 **Example:**
 
@@ -1335,7 +1331,7 @@ Delete a specified machine.
 
 **Raises:**
 
-- (GRPCError): If an invalid robot ID is passed.
+- (GRPCError): If an invalid machine ID is passed.
 
 **Example:**
 
@@ -1358,7 +1354,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from the Viam app’s organization settings page.
-- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True. Deprecated since version 0.25.0: Use visibilities instead.
+- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True.  Deprecated since version 0.25.0: Use visibilities instead.
 - `visibilities` ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): List of FragmentVisibilities specifying which types of fragments to include in the results. If empty, by default only public fragments will be returned.
 
 **Returns:**
@@ -1453,7 +1449,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - `fragment_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the fragment to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to associate with the fragment.
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
-- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created. Deprecated since version 0.25.0: Use visibility instead.
+- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.  Deprecated since version 0.25.0: Use visibility instead.
 - `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.FragmentVisibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
 
 **Returns:**
@@ -1570,11 +1566,12 @@ Add a role under the organization you are currently authenticated to.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.add_role(
-    org_id="org-id",
+    org_id="<YOUR-ORG-ID>",
     identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
     role="owner",
     resource_type="location",
-    resource_id="111ab12345")
+    resource_id="111ab12345"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.add_role).
@@ -1692,8 +1689,7 @@ If no resource IDs are provided, all resource authorizations within the organiza
 ```python {class="line-numbers linkable-line-numbers"}
 list_of_auths = await cloud.list_authorizations(
     org_id="<YOUR-ORG-ID>",
-    resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"]
-)
+    resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"])
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_authorizations).
@@ -1807,7 +1803,7 @@ Get registry item by ID.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form `namespace:name`. For example, [Viam's `csi-cam-pi` module's](https://app.viam.com/module/viam/csi-cam-pi) item ID would be `viam:csi-cam-pi`. You can also use `org-id:name`. For example, `abc01234-0123-4567-ab12-a11a00a2aa22:training-script`.
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form namespace:name. For example, Viam’s csi-cam-pi module’s item ID would be viam:csi-cam-pi. You can also use org-id:name. For example, abc01234-0123-4567-ab12-a11a00a2aa22:training-script.
 
 **Returns:**
 
@@ -1816,7 +1812,7 @@ Get registry item by ID.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-item = await cloud.get_registry_item("your-namespace:your-name")
+item = await cloud.get_registry_item("item-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_registry_item).
@@ -1863,7 +1859,7 @@ Update a registry item.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
 - `type` (viam.proto.app.packages.PackageType.ValueType) (required): The type of the item in the registry.
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The description of the registry item.
 - `visibility` (viam.proto.app.Visibility.ValueType) (required): The visibility of the registry item.
@@ -1927,13 +1923,14 @@ registry_items = await cloud.list_registry_items(
     statuses=[RegistryItemStatus.REGISTRY_ITEM_STATUS_PUBLISHED]
 )
 
-# list public, published linux modules in all organizations
+# List public, published linux modules in all organizations
 registry_items = await cloud.list_registry_items(
     organization_id="",
     types=[PackageType.PACKAGE_TYPE_MODULE],
     visibilities=[Visibility.VISIBILITY_PUBLIC],
     platforms=["linux/any"],
     statuses=[RegistryItemStatus.REGISTRY_ITEM_STATUS_PUBLISHED]
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_registry_items).
@@ -1950,7 +1947,7 @@ Delete a registry item.
 
 **Parameters:**
 
-- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the deleted registry item, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
 
 **Returns:**
 
@@ -2008,10 +2005,10 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 
 **Parameters:**
 
-- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
 - `url` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The url to reference for documentation and code (NOT the url of the module itself).
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A short description of the module that explains its purpose.
-- `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)): list of models that are available in the module.
+- `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)) (optional): list of models that are available in the module.
 - `entrypoint` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The executable to run to start the module program.
 - `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): The visibility that should be set for the module. Defaults to False (private).
 
@@ -2094,7 +2091,7 @@ Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
 
 **Parameters:**
 
-- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being retrieved, containing either the namespace and module name (for example, `my-org:my-module`) or organization ID and module name (`org-id:my-module`).
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being retrieved, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
 
 **Returns:**
 

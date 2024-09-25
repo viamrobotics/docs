@@ -12,8 +12,8 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 - `limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
 - `sort_order` ([viam.proto.app.data.Order.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Order)) (optional): The desired sort order of the data.
 - `last` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to `TabularDataByFilter` as the last value. If provided, the server will return the next data entries after the last object identifier.
-- `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to return only the total count of entries.
-- `include_internal_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False.
+- `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return only the total count of entries.
+- `include_internal_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath for writing retrieved data.
 
 **Returns:**
@@ -61,7 +61,10 @@ Obtain unified tabular data and metadata, queried with SQL.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-data = await data_client.tabular_data_by_sql(organization_id="<your-org-id>", sql_query="SELECT * FROM readings LIMIT 5")
+data = await data_client.tabular_data_by_sql(
+    org_id="<YOUR-ORG-ID>",
+    sql_query="SELECT * FROM readings LIMIT 5"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_sql).
@@ -202,12 +205,8 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
-from viam.utils import create_filter
 
-my_filter = create_filter(component_name="camera-1", organization_ids=["<YOUR-ORG-ID>"])
 binary_metadata, count, last = await data_client.binary_data_by_filter(
-    filter=my_filter,
-    limit=20,
     include_binary_data=False
 )
 
@@ -269,7 +268,7 @@ Filter and delete binary data.
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to all data being deleted. Exercise caution when using this option. You must specify any organization ID with "organization_ids" when using this option.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to all data being deleted. Exercise caution when using this option. You must specify any organization ID with “organization_ids” when using this option.
 
 **Returns:**
 
@@ -280,7 +279,8 @@ Filter and delete binary data.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.utils import create_filter
 
-my_filter = create_filter(component_name="my-webcam", organization_ids=["<YOUR-ORG-ID>"])
+my_filter = create_filter(component_name="left_motor", organization_ids=["<YOUR-ORG-ID>"])
+
 res = await data_client.delete_binary_data_by_filter(my_filter)
 ```
 
@@ -751,7 +751,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 from viam.proto.app.data import BinaryID
 
 binary_metadata, count, last = await data_client.binary_data_by_filter(
-    include_file_data=False
+    include_binary_data=False
 )
 
 my_binary_ids = []
@@ -798,7 +798,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
 
-binary_metadata, _, _ = await data_client.binary_data_by_filter(
+binary_metadata, count, last = await data_client.binary_data_by_filter(
     include_binary_data=False
 )
 
