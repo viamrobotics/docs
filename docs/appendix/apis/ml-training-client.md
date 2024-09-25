@@ -20,6 +20,10 @@ ML training client API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
+The ML training client API supports the following methods:
+
+{{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
+
 ## Establish a connection
 
 To use the Viam ML training client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`MLTrainingClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient.ml_training_client).
@@ -64,9 +68,5 @@ if __name__ == '__main__':
 Once you have instantiated an `MLTrainingClient`, you can run the following [API methods](#api) against the `MLTrainingClient` object (named `ml_training_client` in the examples).
 
 ## API
-
-The ML training client API supports the following methods:
-
-{{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/mltraining.md" >}}

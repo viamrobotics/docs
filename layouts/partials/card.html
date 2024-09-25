@@ -3,6 +3,7 @@
 {{- $customDescription := .customDescription -}}
 {{- $customCanonicalLink := .customCanonicalLink -}}
 {{- $imageOverwrite := .imageOverwrite -}}
+{{- $noimage := .noimage -}}
 {{- $link := (path.Clean (.link)) -}}
 {{- $baseurl := .Site.BaseURL -}}
 {{- if (eq (substr .Site.BaseURL -1 1) "/" ) -}}
@@ -16,7 +17,8 @@
     {{- else -}}
     <a href="{{.RelPermalink}}">
     {{- end -}}
-    {{- if $imageOverwrite -}}
+    {{- if $noimage -}}
+    {{- else if $imageOverwrite -}}
       <div class="hover-card-img">
         {{- partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") -}}
       </div>

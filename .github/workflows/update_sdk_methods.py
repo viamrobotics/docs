@@ -1728,7 +1728,7 @@ def write_markdown(type, names, methods):
                         if type == 'component':
                             ## Replace underscores, and convert generic_component to just generic:
                             resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
-                            proto_anchor_link = '/' + type_filepath_name + '/' + resource_adjusted + '/#' + proto_link
+                            proto_anchor_link = '/appendix/apis/components/' + resource_adjusted + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam', 'vision']:
                             proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':

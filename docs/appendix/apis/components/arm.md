@@ -4,6 +4,8 @@ linkTitle: "Arm"
 weight: 20
 type: "docs"
 description: "The arm API allows you to give commands to your arm components with code instead of with the graphical interface of the Viam app"
+icon: true
+images: ["/icons/components/arm.svg"]
 ---
 
 The arm API allows you to give commands to your Arm components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).

@@ -5,6 +5,8 @@ titleMustBeLong: true
 weight: 20
 type: "docs"
 description: "The input controller API allows you to give commands to your input controller components with code instead of with the graphical interface of the Viam app"
+icon: true
+images: ["/icons/components/controller.svg"]
 ---
 
 The input controller API allows you to give commands to your input controller components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).

@@ -123,36 +123,7 @@ The `SessionsClient` that serves the session management API is automatically ena
 It is instantiated as part of your [`RobotClient`](/appendix/apis/#robot-api) instance (client of the Robot API).
 If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
 
-{{< tabs >}}
-{{% tab name="Python" %}}
 
-```python {class="line-numbers linkable-line-numbers"}
-async def main():
-    opts = RobotClient.Options(disable_sessions=True)
-    await RobotClient.at_address("my-machine-address", opts)
-    robot = await connect()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-robot, err := client.New(ctx, "my-machine-address", logger, client.WithDisableSessions(), ...)
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-```ts {class="line-numbers linkable-line-numbers"}
-const robot = await VIAM.createRobotClient({
-  // ...
-  disableSessions: true,
-  // ...
-});
-```
-
-{{% /tab %}}
-{{% /tabs %}}
 
 This option allows you to have full control over sessions management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.

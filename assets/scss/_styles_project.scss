@@ -1239,7 +1239,7 @@ img.frame {
 .relatedcard a {
   display: flex;
   text-decoration: none;
-  padding: 0.75rem;
+  padding: 0.5rem;
   text-align: left;
   min-width: 250px;
   max-width: 250px;
@@ -1247,6 +1247,7 @@ img.frame {
 
 .relatedcard a picture {
   width: 40px;
+  margin: 0 0.5rem;
   min-width: 40px;
   align-content: center;
 }

@@ -5,6 +5,8 @@ titleMustBeLong: true
 weight: 20
 type: "docs"
 description: "The movement sensor API allows you to give commands to your movement sensor components with code instead of with the graphical interface of the Viam app"
+icon: true
+images: ["/icons/components/imu.svg"]
 ---
 
 The movement sensor API allows you to give commands to your movement sensor components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).

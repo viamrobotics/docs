@@ -4,6 +4,8 @@ linkTitle: "Board"
 weight: 20
 type: "docs"
 description: "The board API allows you to give commands to your board components with code instead of with the graphical interface of the Viam app"
+icon: true
+images: ["/icons/components/board.svg"]
 ---
 
 The board API allows you to give commands to your board components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).

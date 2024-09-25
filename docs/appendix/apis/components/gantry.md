@@ -4,6 +4,8 @@ linkTitle: "Gantry"
 weight: 20
 type: "docs"
 description: "The gantry API allows you to give commands to your gantry components with code instead of with the graphical interface of the Viam app"
+icon: true
+images: ["/icons/components/gantry.svg"]
 ---
 
 The gantry API allows you to give commands to your gantry components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).

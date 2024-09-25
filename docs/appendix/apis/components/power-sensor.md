@@ -4,6 +4,8 @@ linkTitle: "Power Sensor"
 weight: 20
 type: "docs"
 description: "The power sensor API allows you to give commands to your power sensor components with code instead of with the graphical interface of the Viam app"
+icon: true
+images: ["/icons/components/power-sensor.svg"]
 ---
 
 The power sensor API allows you to give commands to your power sensor components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
