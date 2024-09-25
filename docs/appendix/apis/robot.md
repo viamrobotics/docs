@@ -1,23 +1,23 @@
 ---
-title: "Manage Machines with Viam's Robot API"
+title: "Manage Machines with Viam's Machine Management API"
 linkTitle: "Machine Management"
 weight: 20
 type: "docs"
-description: "How to use the Robot API to monitor and manage your machines."
+description: "How to use the Machine API to monitor and manage your machines."
 tags: ["robot state", "sdk", "apis", "robot api"]
 aliases:
   - /program/apis/robot/
   - /build/program/apis/robot/
 ---
 
-The _robot API_ is the application programming interface that manages each of your machines running `viam-server`.
-Use the robot API to connect to your machine from within a supported [Viam SDK](/appendix/apis/), and send commands remotely.
+The _machine API_ is the application programming interface that manages each of your machines running `viam-server`.
+Use the machien API to connect to your machine from within a supported [Viam SDK](/appendix/apis/), and send commands remotely.
 
-The robot API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
+The machine API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
 
 ## Establish a connection
 
-To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
+To interact with the machine API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
 To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/cloud/machines/#code-sample) tab.
 Toggle **Include API key**, and then copy and paste the API key ID and the API key into your environment variables or directly into the code:
@@ -32,21 +32,20 @@ from viam.rpc.dial import DialOptions, Credentials
 from viam.robot.client import RobotClient
 
 
-async def connect():
-    opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's
-        # API key
-        api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's
-        # API key ID
-        api_key_id='<API-KEY-ID>'
-    )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
-
+async def connect(address) -> RobotClient:
+    opts = RobotClient.Options(
+        disable_sessions=True, dial_options=DialOptions(timeout=10)).with_api_key(
+            # Replace "<API-KEY>" (including brackets) with your API key
+            api_key='<API-KEY>',
+            # Replace "<API-KEY-ID>" (including brackets) with your API key
+            # ID
+            api_key_id='<API-KEY-ID>'
+        )
+    return await RobotClient.at_address(address=address, options=opts)
 
 async def main():
     # Make a RobotClient
-    machine = await connect()
+    machine = await connect('ADDRESS FROM CODE SAMPLE TAB OF VIAM APP')
     print('Resources:')
     print(machine.resource_names)
     await machine.close()
@@ -117,11 +116,11 @@ To configure a timeout when using the robot API:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.DialOptions):
+Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.DialOptions) inside of `Options`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Add the timeout argument to DialOptions:
-dial_options = DialOptions(credentials=creds, timeout=10)
+dial_options=DialOptions(timeout=10)
 ```
 
 The example above shows a timeout of 10 seconds configured.

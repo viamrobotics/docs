@@ -147,8 +147,10 @@ Get a list of discovered component configurations.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.robot import DiscoveryQuery
+
 # Define a new discovery query.
-q = machine.DiscoveryQuery(subtype=acme.API, model="some model")
+q = DiscoveryQuery(subtype="camera", model="webcam")
 
 # Define a list of discovery queries.
 qs = [q]
@@ -255,7 +257,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Print the frame system configuration
-frameSystem, err := machine.FrameSystemConfig(context.Background(), nil)
+frameSystem, err := machine.FrameSystemConfig(context.Background())
 fmt.Println(frameSystem)
 ```
 
@@ -302,7 +304,24 @@ Transform a given source Pose from the original reference frame to a new destina
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-pose = await machine.transform_pose(PoseInFrame(), "origin")
+from viam.proto.common import Pose, PoseInFrame
+
+pose = Pose(
+    x=1.0,    # X coordinate in mm
+    y=2.0,    # Y coordinate in mm
+    z=3.0,    # Z coordinate in mm
+    o_x=0.0,  # Orientation quaternion X
+    o_y=0.0,  # Orientation quaternion Y
+    o_z=0.0,  # Orientation quaternion Z
+    theta=0.0 # Orientation angle in radians
+)
+
+pose_in_frame = PoseInFrame(
+    reference_frame="world",  # The reference frame in which this pose is expressed
+    pose=pose                # The pose in that reference frame
+)
+
+pose = await machine.transform_pose(pose_in_frame, "world")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
@@ -562,7 +581,7 @@ Get app-related information about the robot.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-metadata = machine.get_cloud_metadata()
+metadata = await machine.get_cloud_metadata()
 print(metadata.machine_id)
 print(metadata.machine_part_id)
 print(metadata.primary_org_id)
@@ -635,7 +654,7 @@ Return version information about the machine.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-result = machine.get_version()
+result = await machine.get_version()
 print(result.platform)
 print(result.version)
 print(result.api_version)
@@ -876,7 +895,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-machine.shutdown()
+await machine.shutdown()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.shutdown).
