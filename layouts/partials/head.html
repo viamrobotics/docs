@@ -47,7 +47,7 @@ hugo.IsProduction (ne $outputFormat "print") -}}
         {{- warnf "Last update more than 6 months ago (%s): %s" .Params.date .Path -}}
     {{- end -}}
 {{- else -}}
-<!-- {{- warnf "Missing date: %s" .Path -}} -->
+<!-- { {- warnf "Missing date: %s" .Path -} } -->
 {{- end -}}
 {{- end -}}
 <!-- START script for cookie dialogue -->
