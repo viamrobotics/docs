@@ -97,115 +97,12 @@ import (
 
 ## API
 
-The <COMPONENT> component supports the following methods:
+The COMPONENT component supports the following methods:
 
 _Writing Instructions: Use the method names in the [protobuf](https://github.com/viamrobotics/api/blob/main/component/board/v1/board_grpc.pb.go), not the Python or Go-specific method names._
 _Use an included snippet so you can add it to <file>/program/apis/</file>._
 
 {{< readfile "/static/include/components/apis/component.md" >}}
-
-### GetReadings
-
-Get the measurements or readings that this sensor provides.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- `readings` [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings) (INSERT RELEVANT LINK).
-
-```python
-my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
-
-# Get the readings provided by the sensor.
-readings = await my_sensor.get_readings()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- `readings` [(map\[string\]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
-
-```go
-mySensor, err := sensor.FromRobot(robot, "my_sensor")
-if err != nil {
-  logger.Fatalf("cannot get sensor: %v", err)
-}
-
-readings, err := mySensor.Readings(context.Background(), nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### MethodName2
-
-1-2 sentence description of what the method does.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/index.html#viam.components.sensor.Sensor.get_readings) (INSERT RELEVANT LINK).
-
-```python
-my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
-
-# Do the thing that the method does.
-await my_sensor.method_name_two()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
-
-```go
-mySensor, err := sensor.FromRobot(robot, "my_sensor")
-if err != nil {
-  logger.Fatalf("cannot get sensor: %v", err)
-}
-
-err := mySensor.MethodNameTwo(context.Background(), nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## Troubleshooting
 
