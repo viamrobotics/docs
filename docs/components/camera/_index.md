@@ -19,37 +19,23 @@ aliases:
 A camera component is a source of 2D and/or 3D images.
 You can use the component to configure a webcam, lidar, time-of-flight sensor, or another type of camera.
 
-The API for camera components allows you to:
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/iKCMo89oyfw">}}
 
-- Request single images or a stream in 2D color, or display z-depth.
+## Available models
 
-- Request a point cloud.
-  Each 3D point cloud image consists of a set of coordinates (x,y,z) representing depth in mm.
+To use a camera with your machine, you have to add it to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your camera.
 
-The configuration of your camera component depends on your camera model.
+The following list shows you the available camera models.
 You can use different models to:
 
 - Configure physical cameras that generate images or point clouds.
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/iKCMo89oyfw">}}
 
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/vision/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/slam/" >}}
-{{< relatedcard link="/services/ml/deploy/" alt_title="Machine Learning" >}}
-{{< /cards >}}
-
-## Available models
-
-To use your camera component, check whether one of the following models supports it.
-
-For configuration information, click on the model name:
+The configuration of your camera component depends on your camera model.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -71,6 +57,16 @@ For configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/vision/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< relatedcard link="/services/ml/deploy/" alt_title="Machine Learning" >}}
+{{< /cards >}}
 
 ## API
 

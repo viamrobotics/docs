@@ -18,26 +18,17 @@ hide_children: true
 # SMEs: Gautham, Rand
 ---
 
-A _board_ component represents your machine's general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
-
-In other words, the board of a machine is its signal wire hub.
-The board communicates with the other [components](/components/) of the machine.
-
-Many single-board computers (SBCs) have GPIO pins built into them.
-If you are running `viam-server` on an SBC but are not using any of its GPIO pins, you do not need to configure a board component.
-However, if you want to access the GPIO pins, you need to configure a board component.
-
-A board can be:
+A _board_ component can represent your machine's general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins.
+These can be present as:
 
 - The GPIO pins on a single-board computer (SBC).
 - A GPIO peripheral device that must connect to an external computer.
 - A PWM peripheral device that must connect to an SBC that has a CPU and GPIO pins.
 
-Signaling is overseen by a computer running `viam-server` which allows you to control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
+In other words, the board of a machine is its signal wire hub.
+Signaling controls the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
 {{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
-
-## Available models
 
 {{< alert title="Running viam-server" color="note" >}}
 
@@ -47,13 +38,18 @@ If there is no board model for your board:
 - you can still run `viam-server` if your board [supports it](/installation/#platform-requirements)
 - you can still access USB ports
 
-For some SBCs, for example the [RockPi S](https://wiki.radxa.com/RockpiS), you can use the pins on your board with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
-
 {{< /alert >}}
 
-To use your board component, check whether one of the following models supports it.
+## Available models
 
-For configuration information, click on the model name:
+To use GPIO pins, you have to add a board component to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your board.
+
+The following list shows you the available arm models.
+If your board is not among them, you may be able to to use the pins on your board with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
+This works for boards such as the [RockPi S](https://wiki.radxa.com/RockpiS).
+
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}

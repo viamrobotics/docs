@@ -18,45 +18,19 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-The servo component supports ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
+The _servo_ component represents ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
-
-As servos can use a lot of power, drawing voltage away from a [board](/components/board/), you should power your servo with its own power supply in most cases.
-The following shows an example wiring diagram for a hobby servo wired to a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi):
-
-![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/servo/servo-wiring.png)
-
-The colors of the servo wires in this diagram may not match your servo.
-Refer to your servo's data sheet for wiring specifications.
-
-Most machines with a servo need at least the following hardware:
-
-- A [board component](/components/board/) that can run `viam-server`
-- A servo
-- A power supply for the board
-- A power supply for the servo
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
-
-{{% alert title="Tip" color="tip" %}}
-
-The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
-
-If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should not configure it as a servo.
-Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/encoded-motor/).
-
-{{% /alert %}}
 
 ## Available models
 
-To use your servo component, check whether one of the following models supports it.
+To use a [hobby servo](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos), you have to add it, and its dependencies, such as a [board component](/components/board/), to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your servo.
+
+If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should configure it as an [encoded motor](/components/motor/encoded-motor/) instead.
+Check your device's data sheet for more information.
+
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -77,6 +51,13 @@ For configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< /cards >}}
 
 ## API
 

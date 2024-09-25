@@ -15,33 +15,22 @@ hide_children: true
 # SME: James
 ---
 
-You are likely already familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
+The _input controller_ component represents devices, such as keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers.
 
-Configuring an _input_ component allows you to use devices like these with your machine, enabling you to control your machine's actions by interacting with the device.
+This component supports devices like gamepads and joysticks that contain one or more [`Control`s](/appendix/apis/components/input-controller/#control-field) representing the individual axes and buttons on the device.
+To use the controller's inputs, you must [register callback functions](/appendix/apis/components/input-controller/#registercontrolcallback) to the [`Control`s](/appendix/apis/components/input-controller/#control-field) with the [`input` API](/appendix/apis/components/input-controller).
 
-This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
-To use the controller's inputs, you must [register callback functions](/components/input-controller/#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
-
-The callback functions can then handle the [Events](/components/input-controller/#getevents) that are sent when the Control is activated or moved.
+The callback functions can then handle the [Events](/appendix/apis/components/input-controller/#getevents) that are sent when the `Control` is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
-
-Most machines with an input controller need at least the following hardware:
-
-- A computer capable of running `viam-server`.
-- A power supply cable or batteries for the input device and the machine.
-- A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/base-rc/" >}}
-{{< /cards >}}
 
 ## Available models
 
-To use your input controller component, check whether one of the following models supports it.
+To use an input controller to control your machine's actions, you have to add it as well as any components you are trying to control, to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your input controller.
+
+The following list shows you the available input controller models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -61,6 +50,12 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< /cards >}}
 
 ## API
 

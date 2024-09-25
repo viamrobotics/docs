@@ -18,7 +18,7 @@ hide_children: true
 # SME: Rand
 ---
 
-An encoder is a type of sensor that can detect speed and direction of rotation of a motor or a joint.
+The _encoder_ component represents a type of sensor that can detect speed and direction of rotation of a motor or a joint.
 It is often used in conjunction with a motor, and is sometimes even built into a motor.
 An encoder could also be mounted on a passive joint or other rotating object to keep track of the joint angle.
 
@@ -31,26 +31,14 @@ The encoder component supports:
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
 
-Most machines with an encoder need at least the following hardware:
-
-- A [board component](/components/board/) that can run a `viam-server` instance.
-  For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-- Some sort of rotary machine part (like a motor, joint or dial) for which you want to measure movement.
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< /cards >}}
-
 ## Available models
 
-To use your encoder component, check whether one of the following models supports it.
+To use an encoder, you have to add it as well as any dependencies, such as a [board component](/components/board/) with a configured analog-to-digital converter (ADC) and a [motor component](/components/motor/), to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
+
+The following list shows you the available sensor models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -72,6 +60,15 @@ For configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< /cards >}}
 
 ## API
 

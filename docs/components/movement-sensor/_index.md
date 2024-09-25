@@ -26,19 +26,14 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 {{% /alert %}}
 
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/slam/" >}}
-{{< /cards >}}
-
 ## Available models
 
-To use your movement sensor component, check whether one of the following models supports it.
+To use a movement sensor and get its measurements, you have to add it as well as any dependencies, such as a board and a configured analog-to-digital converter (ADC), to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
+
+The following list shows you the available sensor models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -60,6 +55,14 @@ For configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< /cards >}}
 
 ## API
 

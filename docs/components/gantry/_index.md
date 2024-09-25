@@ -16,40 +16,26 @@ hide_children: true
 # SME: Rand
 ---
 
-A robotic _gantry_ is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
+<div class="td-max-width-on-larger-screens text-center">
+<img src="/components/gantry/gantry-illustration.png" style="max-width:300px" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." class="alignright imgzoom">
+</div>
+
+A _gantry_ component represents a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
 
 This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multi-axis/).
 
-<div class="td-max-width-on-larger-screens text-center">
-{{<imgproc src="/components/gantry/gantry-illustration.png" resize="300x" declaredimensions=true alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry.">}}
-</div>
-
 Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.
 
-Most machines with a gantry need at least the following hardware:
-
-- A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
-- A [motor](/components/motor/) that can move linear rails
-  - Encoded motor: See [DC motor with encoder](/components/motor/encoded-motor/) and [encoder component](/components/encoder/).
-  - Stepper motor: See [Stepper motor](/components/motor/gpiostepper/).
-    Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
-- Limit switches, to attach to the ends of the gantry's axis
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< /cards >}}
-
 ## Available models
 
-To use your gantry component, check whether one of the following models supports it.
+To use a gantry, you have to add it, and any dependencies, such as a [board](/components/board/), [input controller](/components/input-controller/), or a [motor](/components/motor/), to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your gantry.
 
-For configuration information, click on the model name:
+The following list shows you the available gantry models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -69,6 +55,13 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< /cards >}}
 
 ## API
 

@@ -18,37 +18,18 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-A _sensor_ is a device that can measure information about the outside world.
-Add a sensor component to your machine to send the information the sensor measures to the computer controlling the machine.
-
-{{% alert title="Tip" color="tip" %}}
-
-Viam has three additional component types defined separately from _sensor_ that you can use to implement sensors with specific functions:
-
-1. [Movement sensors](/components/movement-sensor/) for Global Positioning System (GPS) units, inertial measurement units (IMUs), and other sensors that detect position, velocity, and acceleration.
-2. [Power sensors](/components/power-sensor/) for sensors that can detect voltage, current, and power consumption of connected hardware.
-3. [Encoders](/components/encoder/) for sensors that can detect speed and direction of rotation of a motor or a joint.
-
-{{% /alert %}}
-
-Most machines with a sensor need at least the following hardware:
-
-- A [board](/components/board/)
-- Depending on your sensor's output type (analog or digital), an analog-to-digital converter (ADC) may be necessary to allow the sensor to communicate with the board
+The _sensor_ component represents a device that can measure information about the outside world.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/0YfP-63OBh8">}}
 
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
-
 ## Available models
 
-To use your motor component, check whether one of the following models supports it.
+To use a sensor and get its measurements, you have to add it as well as any dependencies, such as a [board component](/components/board/) with a configured analog-to-digital converter (ADC), to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
+
+The following list shows you the available sensor models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -69,6 +50,20 @@ For configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+{{% expand "Measuring movement or power or working with a motor?" %}}
+
+- If your sensor measures GPS, IMU, position, velocity, or acceleration, use a [movement sensor](/components/movement-sensor/).
+- If your sensor measured voltage, current, or power consumption of connected hardware use a [power sensor](/components/power-sensor/).
+- If your sensor detects speed and direction of rotation of a motor or a joint, use an [encoders](/components/encoder/).
+
+{{% /expand%}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< /cards >}}
 
 ## API
 

@@ -8,6 +8,12 @@ description: "The camera API allows you to give commands to your camera componen
 
 The camera API allows you to give commands to your camera components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
+The API for camera components allows you to:
+
+- Request single images or a stream in 2D color, or display z-depth.
+- Request a point cloud.
+  Each 3D point cloud image consists of a set of coordinates (x,y,z) representing depth in mm.
+
 The camera component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/camera-table.md" >}}

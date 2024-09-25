@@ -4,7 +4,7 @@ linkTitle: "Base"
 weight: 10
 type: "docs"
 no_list: true
-description: "A moving platform that the other parts of a mobile robot attach to."
+description: "The base component allows your to move A moving platform together without needing to address individual components like wheels."
 tags: ["base", "components"]
 icon: true
 images: ["/icons/components/base.svg"]
@@ -17,11 +17,16 @@ hide_children: true
 # SMEs: Steve B
 ---
 
-A base is the platform that the other parts of a mobile robot attach to.
+A base is the platform of a robot with other components, such as wheels, attached to it.
+By using a base you can coordinate movement of the robot as a whole without needing to send commands to individual components.
 
-By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
+<p>
+<img src="/components/base/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." class="imgzoom aligncenter" style="max-width: 500px">
+</p>
 
-![A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component.](/components/base/base-trk-rover-w-arm.png)
+## Available models
+
+To use a rover or other base, you have to add it to your machine's configuration.
 
 Most mobile robots with a base need at least the following hardware:
 
@@ -32,19 +37,11 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-## Related services
+Go to your machine's **CONFIGURE** page, and add your individual a model that supports your base.
+Then add your base.
 
-{{< cards >}}
-{{< relatedcard link="/services/base-rc/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< /cards >}}
-
-## Available models
-
-To use your base component, check whether one of the following models supports it.
-
-For configuration information, click on the model name:
+The following list shows you the available arm models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -65,6 +62,16 @@ For configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+The base component is often used with the following services:
+
+{{< cards >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< /cards >}}
 
 ## API
 

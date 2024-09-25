@@ -16,21 +16,15 @@ hide_children: true
 # SMEs: Bucket Team
 ---
 
-A _gripper_ is a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< /cards >}}
+A _gripper_ component represents a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
 
 ## Available models
 
-To use your gripper component, check whether one of the following models supports it.
+To use a robotic gripper, you have to add it to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your gripper.
 
-For configuration information, click on the model name:
+The following list shows you the available gripper models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -50,6 +44,14 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< /cards >}}
 
 ## API
 

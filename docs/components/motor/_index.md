@@ -18,39 +18,23 @@ hide_children: true
 # SME: Rand
 ---
 
-Electric motors are machines that convert electricity into rotary motion.
-They are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
-The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
+The _motor_ component represents electric motors that convert electricity into rotary motion.
 
-Most machines with a motor need at least the following hardware:
-
-- The motor itself.
-- A compatible motor driver.
-  This takes signals from the computer and sends the corresponding signals and power to the motor.
-  Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
-- A [board component](/components/board/) to send signals to the motor driver[^dmcboard].
-  For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-
-[^dmcboard]: The `DMC4000` model does not require a board.
+For a guided introduction, see:
 
 {{< cards >}}
-{{< card link="/get-started/control-motor/" class="green">}}
-{{< /cards >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/slam/" >}}
+{{< card link="/get-started/control-motor/" class="green" noimage="true">}}
 {{< /cards >}}
 
 ## Available models
 
-To use your motor component, check whether one of the following models supports it.
+To use a motor, you have to add it, as well as any dependencies, such as a [board component](/components/board/), to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your motor.
 
-For configuration information, click on the model name:
+The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
+
+The following list shows you the available arm models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -71,6 +55,15 @@ For configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< /cards >}}
 
 ## API
 

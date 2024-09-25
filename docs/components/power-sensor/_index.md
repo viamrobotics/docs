@@ -16,20 +16,16 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-A power sensor is a device that reports measurements of the voltage, current, and power consumption in your machine's system.
-Integrate this component to monitor your power levels.
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
+A power sensor component represents a device that reports measurements of the voltage, current, and power consumption of connected hardware.
 
 ## Available models
 
-To use your power sensor component, check whether one of the following models supports it.
+To use a power sensor and get its measurements, you have to add it as well as any dependencies, such as a board and a configured analog-to-digital converter (ADC), to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
+
+The following list shows you the available sensor models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -49,6 +45,12 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Related services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< /cards >}}
 
 ## API
 

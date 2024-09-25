@@ -1234,15 +1234,25 @@ img.frame {
 
 .relatedcard {
   display: flex;
-  flex-direction: column;
-  min-height: 13rem;
 }
 
 .relatedcard a {
-  width: 8rem;
+  display: flex;
   text-decoration: none;
   padding: 0.75rem;
-  text-align: center;
+  text-align: left;
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.relatedcard a picture {
+  width: 40px;
+  min-width: 40px;
+  align-content: center;
+}
+
+.relatedcard a picture img {
+  margin-bottom: unset;
 }
 
 .relatedcard a:hover {
@@ -1254,7 +1264,8 @@ img.frame {
 }
 
 .relatedcard p {
-  vertical-align: middle;
+  align-content: center;
+  margin-bottom: unset;
 }
 
 @media (max-width: 800px) {
