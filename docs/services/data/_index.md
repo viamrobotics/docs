@@ -26,8 +26,7 @@ no_service: true
 ---
 
 The data management service is a robust solution for handling machine data, allowing you to capture data, sync it to the cloud, and query it.
-Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
-Once collected, you can securely sync data to the cloud, and view, query, or manage it directly in the cloud without needing to manually gather data from each machine.
+You can collect data from your robots, IoT devices, or any other machines, and sync all the data to one place in the cloud without needing to manually gather data from each machine.
 
 {{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
 
@@ -46,7 +45,6 @@ Or learn more about Viam's data management features, which can be broken down in
 The data management service:
 
 - Automatically captures data at the rate you specify.
-  If your machine restarts, data capture resumes automatically.
 - Securely syncs data to the cloud at the frequency you define.
 - Automatically deletes local data after syncing for space management.
 
@@ -81,7 +79,7 @@ You can capture data from any of the following components and services:
 {{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." class="imgzoom">}}
 <br><br>
 
-Once your data is synced to the cloud, you can view, filter, label, and assign it to datasets from your [Viam app **DATA** page](https://app.viam.com/data/view).
+Once your data is synced to the cloud, you can view, filter, and label data, and assign data to datasets, from your [Viam app **DATA** page](https://app.viam.com/data/view).
 You can also interact with your data using the [Viam CLI](/cli/#data), or using the [data client API](/appendix/apis/data-client/).
 
 <!-- markdownlint-disable-file MD034 -->
@@ -105,7 +103,7 @@ Export data with the Viam CLI and download your data for offline access.
 
 ### Upload a batch of data
 
-Upload data to the Viam app from your computer or mobile device using the data client API, Viam CLI, or Viam mobile app.
+Upload data to the Viam cloud from your computer or mobile device using the data client API, the Viam CLI, or the Viam mobile app.
 
 {{% /manualcard %}}
 {{< /cards >}}
