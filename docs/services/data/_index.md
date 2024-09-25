@@ -132,7 +132,7 @@ The [data client API](/appendix/apis/data-client/) supports the following method
 
 <br>
 
-Methods to upload data like images or sensor readings directly to the Viam app:
+Methods to upload data like images or sensor readings directly to the Viam cloud:
 
 {{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
 
