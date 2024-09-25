@@ -12,6 +12,8 @@ sitemap:
 outputs:
   - html
 carouselscript: true
+date: "2024-09-17"
+# updated: ""  # When the content was last entirely checked
 ---
 
 <div class="max-page">

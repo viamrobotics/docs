@@ -8,6 +8,8 @@ images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with `viam-micro-server`."
 # SMEs: Nicolas M., Gautham V., Andrew M.
+date: "2024-08-16"
+# updated: ""  # When the content was last entirely checked
 aliases:
   - /installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/prepare/microcontrollers/development-setup/

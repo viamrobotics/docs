@@ -29,7 +29,7 @@ viamresources: ["base"]
 platformarea: ["core"]
 level: "Beginner"
 date: "2022-12-08"
-# updated: ""
+updated: "2024-08-06"
 cost: "0"
 ---
 

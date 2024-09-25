@@ -8,6 +8,8 @@ no_list: true
 icon: true
 images: ["/services/icons/ml.svg"]
 modulescript: true
+date: "2024-09-03"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The Viam registry hosts custom Python ML training scripts, which you can use to train machine learning models.

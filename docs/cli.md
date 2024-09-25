@@ -11,6 +11,8 @@ aliases:
   - /fleet/cli/
 menuindent: true
 images: ["/platform/cli.png"]
+date: "2024-08-23"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
