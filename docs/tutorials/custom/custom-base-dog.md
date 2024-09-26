@@ -255,7 +255,7 @@ This is the file you will modify in the next steps.
 
 ### Connect the module to the Freenove server
 
-When you send a command to the robot using the Viam [base API](/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
+When you send a command to the robot using the Viam [base API](/appendix/apis/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
 In your code, establish a socket and then create a `send_data` helper method to send the command from `viam-server` to the Freenove server.
 
 Start by importing socket:
@@ -324,7 +324,7 @@ class robotdog(Base, Reconfigurable):
 To create a custom base model, you need a script that defines what each base component method (for example `set_power`) makes the robot dog do.
 
 Open your newly created <file>robotdog.py</file> file.
-It contains stubs of all the [base API methods](/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
+It contains stubs of all the [base API methods](/appendix/apis/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
 
 Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-module/blob/main/robotdog/src/robotdog.py).
 
@@ -340,7 +340,7 @@ async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
 ```
 
 Copy and paste that code into your <file>robotdog.py</file> file.
-Feel free to tweak the specific contents of each of the [base method definitions](/components/base/#api) to do things like make the dog move faster.
+Feel free to tweak the specific contents of each of the [base method definitions](/appendix/apis/components/base/#api) to do things like make the dog move faster.
 Don't forget to save.
 
 ### Make your module executable

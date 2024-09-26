@@ -99,7 +99,7 @@ If you are using different hardware, configure them according to the instruction
 
 First, configure the [board](/components/board/) local to your rover.
 Follow [these instructions](/components/board/#available-models) to configure your board model.
-We used a [`jetson` board](/components/board/jetson/), but you can use any model of board you have on hand, as the [resource's API](/components/board/#api) is hardware agnostic.
+We used a [`jetson` board](/components/board/jetson/), but you can use any model of board you have on hand, as the [resource's API](/appendix/apis/components/board/#api) is hardware agnostic.
 
 1. Configure a board named `local` as shown below:
 

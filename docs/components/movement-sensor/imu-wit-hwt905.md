@@ -12,8 +12,8 @@ aliases:
 # SMEs: Susmita, Bucket Team
 ---
 
-An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`Orientation`](/components/movement-sensor/#getorientation), [`CompassHeading`](/components/movement-sensor/#getcompassheading), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
-To get all the raw sensor data, you can use the [sensor](/components/sensor/) [`GetReadings`](/components/sensor/#getreadings) method, which movement sensors inherit from the general sensor API.
+An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/appendix/apis/components/movement-sensor/#getangularvelocity), [`Orientation`](/appendix/apis/components/movement-sensor/#getorientation), [`CompassHeading`](/appendix/apis/components/movement-sensor/#getcompassheading), [`LinearAcceleration`](/appendix/apis/components/movement-sensor/#getlinearacceleration), and [`GetAccuracy`](/appendix/apis/components/movement-sensor/#getaccuracy) methods.
+To get all the raw sensor data, you can use the [sensor](/components/sensor/) [`GetReadings`](/appendix/apis/components/sensor/#getreadings) method, which movement sensors inherit from the general sensor API.
 
 The `imu-wit-hwt905` movement sensor model supports the [HWT905-TTL IMU](https://www.wit-motion.com/proztgjd/39.html) manufactured by WitMotion.
 

@@ -64,14 +64,14 @@ Each `Event` object represents a singular event from the input device, and has f
 
 1. `Time`: `time.Time` the event occurred.
 2. `Event`: `EventType` indicating the type of event (for example, a specific button press or axis movement).
-3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
-4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
+3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](/appendix/apis/components/input-control/#button-controls), or Pedal on the controller has been changed.
+4. `Value`: `float64` indicating the position of an [Axis](/appendix/apis/components/input-control/#axis-controls) or the state of a [Button](/appendix/apis/components/input-control/#button-controls) on the specified control.
 
 #### EventType field
 
 A string-like type indicating the specific type of input event, such as a button press or axis movement.
 
-- To select for events of all type when registering callback function with [RegisterControlCallback](/components/input-controller/#registercontrolcallback), you can use `AllEvents` as your `EventType`.
+- To select for events of all type when registering callback function with [RegisterControlCallback](/appendix/apis/components/input-controller/#registercontrolcallback), you can use `AllEvents` as your `EventType`.
 - The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
   This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
 

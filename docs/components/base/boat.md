@@ -55,7 +55,7 @@ The following attributes are available for `boat` bases:
 | ---- | ---- | --------- | ----------- |
 | `length_mm` | int | **Required** | Length of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left motors. Can be an approximation. |
-| `IMU` | string | **Required** | Name of the [Inertial Measurement Unit](/components/movement-sensor/#imu-configuration) in the boat. |
+| `IMU` | string | **Required** | Name of the [Inertial Measurement Unit](/appendix/apis/components/movement-sensor/#imu-configuration) in the boat. |
 | `Motors` | string[] | **Required** | JSON struct containing the configuration attributes for each motor attached to the boat. |
 
 Each [motor](/components/motor/) inside of `Motors` has the following attributes available:

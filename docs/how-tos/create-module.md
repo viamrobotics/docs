@@ -189,10 +189,10 @@ Browse additional example modules by language:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
+| [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/appendix/apis/components/movement-sensor/#api) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
 | [oak](https://app.viam.com/module/viam/oak) | [viam-modules/viam-camera-oak](https://github.com/viam-modules/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
 | [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
-| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
+| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/appendix/apis/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
 
 For more Python module examples:
 
@@ -207,7 +207,7 @@ For more Python module examples:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/components/base/#api) to support the Agilex Limo base. |
+| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/appendix/apis/components/base/#api) to support the Agilex Limo base. |
 | [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/components/camera/#api) to support several models of the SLAMTEC RPlidar. |
 | [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/components/camera/#api) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/how-tos/image-data/) for more information. |
 
@@ -451,7 +451,7 @@ For example, the `is_moving()` implementation in the example code above returns 
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
-- [Base API methods](/components/base/#api)
+- [Base API methods](/appendix/apis/components/base/#api)
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -695,7 +695,7 @@ This matches the `error` return type of the built-in `SetPower()` method as defi
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
-- [Base API methods](/components/base/#api)
+- [Base API methods](/appendix/apis/components/base/#api)
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -930,7 +930,7 @@ For example, the `set_power()` implementation in the example code above returns 
 For more information on the base component API methods used in these examples, see the following resources:
 
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
-- [Base API methods](/components/base/#api)
+- [Base API methods](/appendix/apis/components/base/#api)
 
 For more C++ module examples of varying complexity,see the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
 

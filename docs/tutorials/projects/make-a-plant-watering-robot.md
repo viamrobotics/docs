@@ -321,7 +321,7 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [board](/components/board/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods to read from the moisture sensor and control the pump's voltage with PWM as a GPIO pin.
+Use the Viam [board](/appendix/apis/components/board/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods to read from the moisture sensor and control the pump's voltage with PWM as a GPIO pin.
 
 You can get your components from the robot like this:
 

@@ -38,7 +38,7 @@ For example, if you are building a pet-feeding machine you might install `viam-m
 ### Standard APIs
 
 Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a **standardized API** that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
-For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
+For example, you can send the same [`SetPower` command](/appendix/apis/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

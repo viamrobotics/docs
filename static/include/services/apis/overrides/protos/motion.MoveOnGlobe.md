@@ -16,7 +16,7 @@ You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()`
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the machine.
 
-Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/components/movement-sensor/#api).
+Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/appendix/apis/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the machine's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the machine is facing.

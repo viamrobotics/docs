@@ -124,7 +124,7 @@ You can run this code directly on the machine or from a separate computer.
 Viam's APIs are standardized across all models of a given component or service.
 This means that regardless of the configured hardware, you use the same APIs.
 
-For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
+For example, you can send the same [`SetPower` command](/appendix/apis/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

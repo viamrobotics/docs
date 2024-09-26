@@ -90,7 +90,7 @@ In this step, you'll fetch data about the robotic arm's current position.
 {{< tabs >}}
 {{% tab name="Python" %}}
 Your script will resemble the following lines from the [full **Python** tutorial code](#full-tutorial-code) which enable you to use the `myArm` component you configured earlier.
-The code then calls the [`get_end_position`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`get_end_position`](/appendix/apis/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
@@ -118,7 +118,7 @@ The `x`, `y`, and `z` values correspond to the `position` element of the pose, w
 {{% /tab %}}
 {{% tab name="Go" %}}
 Your script will resemble the following lines from the [full **Go** tutorial code](#full-tutorial-code) which enable you to use the `myArm` component you configured earlier.
-The code then calls the [`EndPosition`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`EndPosition`](/appendix/apis/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
@@ -230,7 +230,7 @@ Add the following line to your import list to be able to assign values to a `Joi
 from viam.proto.component.arm import JointPositions
 ```
 
-See the [arm reference document](/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
+See the [arm reference document](/appendix/apis/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Command a joint position move: move the forearm of the arm slightly up
@@ -243,7 +243,7 @@ await my_arm.move_to_joint_positions(positions=cmd_joint_positions)
 You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next.
 
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able to assign values to an `armapi.JointPositions` data structure.
-See the [arm reference document](/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
+See the [arm reference document](/appendix/apis/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Command a joint position move: move the forearm of the arm slightly up
@@ -274,7 +274,7 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Add the sample code below to your own client script to try using the arm component's [`move_to_position`](/components/arm/#movetoposition) command.
+Add the sample code below to your own client script to try using the arm component's [`move_to_position`](/appendix/apis/components/arm/#movetoposition) command.
 This example gets a `Pose` from `get_end_position()` so no additional imports are required.
 If you want to synthesize new poses directly, note that you must import an additional Python package by adding `from viam.proto.common import Pose` to your import list.
 
@@ -287,7 +287,7 @@ await my_arm.move_to_position(pose=cmd_arm_pose)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](/components/arm/#movetoposition) command.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](/appendix/apis/components/arm/#movetoposition) command.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}

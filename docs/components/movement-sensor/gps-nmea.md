@@ -13,8 +13,8 @@ component_description: "NMEA-based GPS models."
 ---
 
 A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
-All supported GPS models provide data for the [`Position`](/components/movement-sensor/#getposition), [`CompassHeading`](/components/movement-sensor/#getcompassheading), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
-You can obtain fix and correction data by using the sensor [`GetReadings`](/components/sensor/#getreadings) method, which is available because GPSes wrap the [sensor component](/components/sensor/).
+All supported GPS models provide data for the [`Position`](/appendix/apis/components/movement-sensor/#getposition), [`CompassHeading`](/appendix/apis/components/movement-sensor/#getcompassheading), [`LinearVelocity`](/appendix/apis/components/movement-sensor/#getlinearvelocity), and [`GetAccuracy`](/appendix/apis/components/movement-sensor/#getaccuracy) methods.
+You can obtain fix and correction data by using the sensor [`GetReadings`](/appendix/apis/components/sensor/#getreadings) method, which is available because GPSes wrap the [sensor component](/components/sensor/).
 
 The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units and RTCM versions up to 3.3.
 
