@@ -218,7 +218,7 @@ The following attributes are available for triggers:
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
 | `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `"part_online"`, `"part_offline"`, `"part_data_ingested"`.</li><li>`data_types`: Required with `type` `"part_data_ingested"`. The data types that trigger the event. Options: `"binary"`, `"tabular"`, `"file"`, `"unspecified"`.</li></ul> |
-| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `"webhook"`.</li><li>`value`: The URL to send the request to.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
+| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `"webhook"`, `"email"`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
 
 5. Write your cloud function or lambda to process the request from `viam-server`.
    You can use your cloud function or lambda to interact with any external API such as, for example, Twilio, PagerDuty, or Zapier.
