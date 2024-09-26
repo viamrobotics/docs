@@ -76,7 +76,7 @@ The arm component is often used with the following services:
 
 ## API
 
-The arm component supports the following methods:
+To get started using your arm, see the [arm API](/appendix/apis/components/arm/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/arm-table.md" >}}
 
@@ -109,7 +109,10 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
-{{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" noimage="true" %}}
 {{< /cards >}}

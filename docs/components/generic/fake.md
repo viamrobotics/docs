@@ -42,3 +42,14 @@ No attributes are available for the `fake` generic component.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/generic/fake/generic.go) for API call return specifications.
 
 {{< readfile "/static/include/components/test-control/generic-control.md" >}}
+
+## Next steps
+
+To get started using your generic, see the [generic API](/appendix/apis/components/generic/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/generic/" customTitle="Generic API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

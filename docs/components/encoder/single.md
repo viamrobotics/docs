@@ -58,3 +58,14 @@ The following attributes are available for `single` encoders:
 Viam also supports a model of encoder called [`"incremental"`](../incremental/) which uses two pins.
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}
+
+## Next steps
+
+To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

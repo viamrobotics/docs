@@ -79,3 +79,14 @@ The following attributes are available for `fake` arms:
 | `model-path` | string | Optional | The path to the [kinematic configuration file](/internals/kinematic-chain-config/) of the arm driver you want your fake arm to act as. This path should point to the exact location where the file is located on your computer running `viam-server`. |
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
+
+## Next steps
+
+To get started using your arm, see the [arm API](/appendix/apis/components/arm/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm/" noimage="true" %}}
+{{< /cards >}}

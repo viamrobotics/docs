@@ -61,7 +61,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The servo component supports the following methods:
+To get started using your servo, see the [servo API](/appendix/apis/components/servo/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/servo-table.md" >}}
 
@@ -73,8 +73,9 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
+For general configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/projects/guardian" %}}
-{{% card link="/tutorials/configure/configure-rover" %}}
-{{% card link="/tutorials/projects/integrating-viam-with-openai" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

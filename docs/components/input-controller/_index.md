@@ -59,7 +59,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The input controller component supports the following methods:
+To get started using your input controller, see the [input controller API](/appendix/apis/components/input-controller/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/input_controller-table.md" >}}
 
@@ -71,7 +71,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/configure/configure-rover" %}}
-{{% card link="/tutorials/control/gamepad" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
 {{< /cards >}}

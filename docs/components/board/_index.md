@@ -73,7 +73,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The board component supports the following methods:
+To get started using your board, see the [board API](/appendix/apis/components/board/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 
@@ -85,7 +85,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
+For general configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/get-started/blink-an-led" %}}
-{{% card link="/tutorials/projects/guardian" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led" noimage="true" %}}
 {{< /cards >}}

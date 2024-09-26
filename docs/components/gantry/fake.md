@@ -45,3 +45,14 @@ No attributes are available for fake gantries.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gantry/fake/gantry.go) for API call return specifications.
 
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}
+
+## Next steps
+
+To get started using your gantry, see the [gantry API](/appendix/apis/components/gantry/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

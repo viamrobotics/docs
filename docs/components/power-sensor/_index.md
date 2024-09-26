@@ -54,7 +54,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The power sensor component supports the following methods:
+To get started using your power sensor, see the [power sensor API](/appendix/apis/components/power-sensor/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/power_sensor-table.md" >}}
 
@@ -63,3 +63,13 @@ The power sensor component supports the following methods:
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{< /cards >}}

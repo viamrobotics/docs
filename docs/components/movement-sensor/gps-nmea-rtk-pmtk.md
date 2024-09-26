@@ -129,3 +129,14 @@ If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from S
 {{% /alert %}}
 
 {{< readfile "/static/include/components/test-control/movement-sensor-gps-control.md" >}}
+
+## Next steps
+
+To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

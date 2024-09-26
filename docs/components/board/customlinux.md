@@ -397,3 +397,14 @@ The following attributes are available for `customlinux` boards:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a board definitions file](#create-a-board-definitions-file). |
+
+## Next steps
+
+To get started using your board, see the [board API](/appendix/apis/components/board/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

@@ -102,3 +102,14 @@ The following attributes are available for `xArm7` arms:
 See [the frame system service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
+
+## Next steps
+
+To get started using your arm, see the [arm API](/appendix/apis/components/arm/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm/" noimage="true" %}}
+{{< /cards >}}

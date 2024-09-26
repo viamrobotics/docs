@@ -109,8 +109,11 @@ The following is a full example config:
 
 ## Next steps
 
+To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
+For more configuration and development info, see
+
 {{< cards >}}
-{{% card link="/components/camera/transform/" %}}
-{{% card link="/services/vision" %}}
-{{% card link="/how-tos/detect-color/" %}}
+  {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+  {{% card link="/how-tos/image-data/" noimage="true" %}}
+  {{% card link="/get-started/detect-people/" noimage="true" %}}
 {{< /cards >}}

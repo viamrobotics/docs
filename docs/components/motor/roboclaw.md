@@ -104,3 +104,13 @@ Refer to your motor and motor driver data sheets for specifics.
 ## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+## Next steps
+
+To get started using your motor, see the [motor API](/appendix/apis/components/motor/) or check out one of these guides:
+
+{{< cards >}}
+{{% card link="/get-started/control-motor/" %}}
+{{% card link="/tutorials/configure/configure-rover/" %}}
+{{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
+{{< /cards >}}

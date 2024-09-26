@@ -66,6 +66,8 @@ For additional configuration information, click on the model name:
 
 ## API
 
+To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/power-sensor/), which supports the following methods:
+
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 
 {{< alert title="Tip" color="tip" >}}
@@ -85,8 +87,10 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
-Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/appendix/apis/) to implement closed-loop movement control for your machine.
+For general configuration and development info, see:
 
-Or, try configuring [data capture](/services/data/) on your movement sensor.
-
-{{< snippet "social.md" >}}
+{{< cards >}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{< /cards >}}

@@ -64,7 +64,7 @@ Add services commonly used with the component.
 
 ## API
 
-The COMPONENT component supports the following methods:
+To get started using your COMPONENT, see the [COMPONENT API](/appendix/apis/components/encoder/), which supports the following methods:
 
 _Writing Instructions: Use the method names in the [protobuf](https://github.com/viamrobotics/api/blob/main/component/board/v1/board_grpc.pb.go), not the Python or Go-specific method names._
 _Use an included snippet so you can add it to <file>/program/apis/</file>._
@@ -81,5 +81,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
-{{< cards >}}
-{{< /cards >}}
+To get started using your COMPONENT, see the [COMPONENT API](/appendix/apis/components/camera/) or check out one of these guides:
+
+<!-- ADD CARDS -->

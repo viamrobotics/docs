@@ -65,7 +65,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The gantry component supports the following methods:
+To get started using your gantry, see the [gantry API](/appendix/apis/components/gantry/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gantry-table.md" >}}
 
@@ -74,3 +74,12 @@ The gantry component supports the following methods:
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

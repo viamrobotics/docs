@@ -67,6 +67,8 @@ For additional configuration information, click on the model name:
 
 ## API
 
+To get started using your motor, see the [motor API](/appendix/apis/components/motor/), which supports the following methods:
+
 The motor component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/motor-table.md" >}}
@@ -79,8 +81,10 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
+For general configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/get-started/confetti-bot/" %}}
-{{% card link="/tutorials/get-started/lazy-susan/" %}}
-{{% card link="/tutorials/configure/configure-rover" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/get-started/control-motor/" noimage="true" %}}
 {{< /cards >}}

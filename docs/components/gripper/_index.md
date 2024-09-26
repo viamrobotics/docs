@@ -55,7 +55,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The gripper component supports the following methods:
+To get started using your gripper, see the [gripper API](/appendix/apis/components/gripper/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gripper-table.md" >}}
 
@@ -67,6 +67,10 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" noimage="true" %}}
 {{< /cards >}}

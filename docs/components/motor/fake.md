@@ -115,3 +115,14 @@ Once your motor is configured and your machine is connected, go to the [**CONTRO
 Use the buttons to try turning your motor forwards or backwards at different power levels and notice how the **Position** number changes.
 
 ![Motor control panel.](/components/motor/control.png)
+
+## Next steps
+
+To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/get-started/control-motor/" noimage="true" %}}
+{{< /cards >}}

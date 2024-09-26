@@ -36,7 +36,9 @@ For additional configuration information, click on the model name:
 
 {{<resources api="rdk:component:sensor" type="sensor" no-intro="true">}}
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
+{{< alert title="Add support for other models" color="tip" >}}
+If none of the existing models fit your use case, you can [create a modular resource](/how-tos/sensor-module/) to add support for it.
+{{< /alert >}}
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
@@ -67,7 +69,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The sensor component supports the following methods:
+To get started using your sensor, see the [sensor API](/appendix/apis/components/sensor/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/sensor-table.md" >}}
 
@@ -79,7 +81,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
+For general configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
-{{% card link="/tutorials/projects/tipsy/" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{< /cards >}}

@@ -90,3 +90,14 @@ This panel presents the data collected by the movement sensor.
 The sections in the panel include the position, compass heading, and accuracy.
 
 {{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-dual.png" resize="800x" declaredimensions=true alt="The dual GPS movement sensor component in the control tab">}}
+
+## Next steps
+
+To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

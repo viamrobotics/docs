@@ -72,3 +72,14 @@ Each [motor](/components/motor/) inside of `Motors` has the following attributes
 ## Test the base
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
+
+## Next steps
+
+To get started using your base, see the [base API](/appendix/apis/components/base/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}
+  {{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
+  {{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{< /cards >}}

@@ -92,3 +92,15 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 | `polling_frequency_hz` | int | **Required** | How many times per second the sensor is polled. |
 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
+
+## Next steps
+
+To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}
+

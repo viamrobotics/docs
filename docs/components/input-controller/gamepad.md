@@ -78,3 +78,14 @@ If you have another controller that you want to use to control your machine, fee
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next steps
+
+To get started using your input controller, see the [input controller API](/appendix/apis/components/input-controller/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
+{{< /cards >}}

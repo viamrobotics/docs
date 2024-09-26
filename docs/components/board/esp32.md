@@ -182,3 +182,14 @@ Then, follow these requirements to change the PWM frequencies of a pin:
 2. If one or more pins are sharing the old frequency (for example, pins 12 and 33):
    1. If there are less than 4 active frequencies, you can change the PWM frequency freely because there will be a timer available.
    2. If there are already 4 active frequencies, changing the PWM frequency of the pin will raise an error because there are no timers available. Free a timer by setting the PWM frequencies of all of the pins to 0.
+
+## Next steps
+
+To get started using your board, see the [board API](/appendix/apis/components/board/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

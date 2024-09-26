@@ -87,4 +87,11 @@ If you then also configure a `pointcloud_file_path` on your camera, Viam will tr
 
 ## Next steps
 
-{{< readfile "/static/include/components/camera-model-next-steps.md" >}}
+To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+  {{% card link="/how-tos/image-data/" noimage="true" %}}
+  {{% card link="/get-started/detect-people/" noimage="true" %}}
+{{< /cards >}}

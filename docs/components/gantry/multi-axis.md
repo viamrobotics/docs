@@ -211,3 +211,14 @@ The following attributes are available for `multi-axis` gantries:
 | `move_simultaneously` | boolean | Optional | A boolean indicating if the sub-axes should move together, or one at a time when `MoveToPosition` is called. <br> Default:  `false` |
 
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}
+
+## Next steps
+
+To get started using your gantry, see the [gantry API](/appendix/apis/components/gantry/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

@@ -75,7 +75,7 @@ The base component is often used with the following services:
 
 ## API
 
-The base component supports the following methods:
+To get started using your base, see the [base API](/appendix/apis/components/base/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 
@@ -87,8 +87,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/configure/configure-rover/" %}}
-{{% card link="/how-tos/drive-rover/" %}}
-{{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
+  {{% card link="/how-tos/drive-rover/" noimage="true" %}}
 {{< /cards >}}

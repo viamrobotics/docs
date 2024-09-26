@@ -95,4 +95,11 @@ The following attributes are available for `ffmpeg` cameras:
 
 ## Next steps
 
-{{< readfile "/static/include/components/camera-model-next-steps.md" >}}
+To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+  {{% card link="/how-tos/image-data/" noimage="true" %}}
+  {{% card link="/get-started/detect-people/" noimage="true" %}}
+{{< /cards >}}

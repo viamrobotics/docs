@@ -69,7 +69,7 @@ You will need to [recompile and flash your ESP32 yourself](/installation/#instal
 
 ## API
 
-The generic component supports the following methods:
+To get started using your generic, see the [generic API](/appendix/apis/components/generic/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 
@@ -78,3 +78,12 @@ The generic component supports the following methods:
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

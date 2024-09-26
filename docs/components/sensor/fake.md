@@ -52,3 +52,13 @@ A call to [`Readings()`](../#getreadings) on a `fake` sensor always returns read
 ## Test the sensor
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
+
+## Next steps
+
+To get started using your sensor, see the [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{< /cards >}}

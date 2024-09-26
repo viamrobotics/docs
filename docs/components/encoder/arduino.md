@@ -54,3 +54,14 @@ The following attributes are available for `arduino` encoders:
 | `board` | string | **Required** | The `name` of the board to which the encoder is wired. |
 | `motor_name` | string | **Required** | The `name` of the motor. |
 | `pins` | **Required** | object | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: Required for two phase encoder. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} for the second board pin to which the encoder is wired. </li> </ul> |
+
+## Next steps
+
+To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

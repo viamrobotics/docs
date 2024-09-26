@@ -99,3 +99,14 @@ The following attributes are available for `softrobotics` grippers:
 | `analog_reader` | **Required** | string | Must be called `"psi"`. You must configure an analog on your [board](/components/board/) and name it `"psi"`.                                                                                |
 
 {{< readfile "/static/include/components/test-control/gripper-control.md" >}}
+
+## Next steps
+
+To get started using your gripper, see the [gripper API](/appendix/apis/components/gripper/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper/" noimage="true" %}}
+{{< /cards >}}

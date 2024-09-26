@@ -61,3 +61,14 @@ The following attributes are available for `AMS-AS5048` encoders:
 | `i2c_attributes` | object | **Required** | The attributes to configure the I<sup>2</sup>C connection: <ul> <li> <code>i2c_bus</code>: The index of the I<sup>2</sup>C bus on the [board](/components/board/) wired to this encoder. <br> Example: `"1"` </li> <li> <code>i2c_addr</code>: The address of the bus. <br> Example: `64` </li> </ul> |
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}
+
+## Next steps
+
+To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

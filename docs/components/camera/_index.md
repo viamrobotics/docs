@@ -69,16 +69,16 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The camera component supports the following methods:
+To get started using your camera, see the [camera API](/appendix/apis/components/camera/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/camera-table.md" >}}
 
 ## Next steps
 
-{{< cards >}}
-{{% card link="/services/vision" %}}
-{{% card link="/how-tos/detect-color/" %}}
-{{% card link="/tutorials/services/color-detection-scuttle" %}}
-{{< /cards >}}
+For general configuration, development, and usage info, see:
 
-{{< snippet "social.md" >}}
+{{< cards >}}
+  {{% card link="/how-tos/image-data/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/get-started/detect-people/" noimage="true" %}}
+{{< /cards >}}

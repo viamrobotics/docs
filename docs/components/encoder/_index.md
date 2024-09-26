@@ -72,7 +72,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The encoder component supports the following methods:
+To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
 
@@ -84,7 +84,10 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/configure/configure-rover/" %}}
-{{% card link="/components/motor/encoded-motor/" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/components/motor/encoded-motor/" noimage="true" %}}
 {{< /cards >}}

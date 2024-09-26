@@ -79,3 +79,14 @@ The following attributes are available for `ur5e` arms:
 | `host` | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
+
+## Next steps
+
+To get started using your arm, see the [arm API](/appendix/apis/components/arm/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm/" noimage="true" %}}
+{{< /cards >}}

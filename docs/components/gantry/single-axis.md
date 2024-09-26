@@ -68,3 +68,14 @@ The following attributes are available for `single-axis` gantries:
 | `gantry_mm_per_sec` | int | Optional | The speed at which the gantry moves in millimeters per second. Used to calculate the gantry `motor`'s revolutions per minute (RPM). <br> Default: `100` RPM |
 
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}
+
+## Next steps
+
+To get started using your gantry, see the [gantry API](/appendix/apis/components/gantry/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

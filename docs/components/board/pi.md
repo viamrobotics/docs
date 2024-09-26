@@ -163,3 +163,14 @@ The following properties are available for `digital_interrupts`:
 #### Test `digital_interrupts`
 
 {{< readfile "/static/include/components/board/test-board-digital-interrupts.md" >}}
+
+## Next steps
+
+To get started using your board, see the [board API](/appendix/apis/components/board/).
+For more configuration and development info, see
+
+{{< cards >}}
+  {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+  {{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}
