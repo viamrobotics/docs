@@ -194,7 +194,7 @@ To see all the images that have bounding boxes, you can filter your dataset by s
 
 A [dataset](/services/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
 
-Use the interface on the **DATA** tab (or the [`viam data dataset add` command](/cli/#data)) to add all images you want to train the model on to a dataset.
+Use the interface on the **DATA** tab (or the [`viam dataset data add` command](/cli/#dataset)) to add all images you want to train the model on to a dataset.
 
 Click on an image you want to train your ML model.
 In the **Actions** pane on the right-hand side, enter a dataset name under **Datasets**, then press return.
