@@ -11,7 +11,7 @@ aliases:
 ---
 
 The _machine API_ is the application programming interface that manages each of your machines running `viam-server`.
-Use the machien API to connect to your machine from within a supported [Viam SDK](/appendix/apis/), and send commands remotely.
+Use the machine API to connect to your machine from within a supported [Viam SDK](/appendix/apis/), and send commands remotely.
 
 The machine API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
 
