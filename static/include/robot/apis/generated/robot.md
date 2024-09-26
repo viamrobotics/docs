@@ -425,7 +425,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-status, err := machine.Status(ctx)
+status, err := machine.Status(ctx, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -492,7 +492,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cancel all current and outstanding operations for the machine and stop all actuators and movement.
-err := machine.StopAll(ctx)
+err := machine.StopAll(ctx, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -605,11 +605,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-metadata, err := machine.CloudMetadata()
-machine_id = metadata.MachineID
-machine_part_id = metadata.MachinePartID
-primary_org_id = metadata.PrimaryOrgID
-location_id = metadata.LocationID
+metadata, err := machine.CloudMetadata(ctx)
+primary_org_id := metadata.PrimaryOrgID
+location_id := metadata.LocationID
+machine_id := metadata.MachineID
+machine_part_id := metadata.MachinePartID
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -915,7 +915,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Shut down the robot.
-err := machine.Shutdown()
+err := machine.Shutdown(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
