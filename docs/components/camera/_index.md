@@ -33,7 +33,6 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
-
 The configuration of your camera component depends on your camera model.
 For additional configuration information, click on the model name:
 

@@ -123,8 +123,6 @@ The `SessionsClient` that serves the session management API is automatically ena
 It is instantiated as part of your [`RobotClient`](/appendix/apis/#robot-api) instance (client of the Robot API).
 If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
 
-
-
 This option allows you to have full control over sessions management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
 You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/session).
