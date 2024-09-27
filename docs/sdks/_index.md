@@ -16,14 +16,14 @@ aliases:
   - /program/debug/
 ---
 
-Viam's SDK libraries wrap Viam's [gRPC APIs](https://github.com/viamrobotics/api) for interacting with a machine's [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as for [cloud capabilities](/appendix/apis/robot/), such as [data management](/appendix/apis/#data-client-api) and [fleet management](/appendix/apis/#fleet-management-api).
+Viam's SDK libraries wrap Viam's [gRPC APIs](https://github.com/viamrobotics/api) for interacting with a machine's [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as for [cloud capabilities](/appendix/apis/robot/), such as [data management](/appendix/apis/data-client/) and [fleet management](/appendix/apis/fleet/).
 You can run SDK code from anywhere; it does not necessarily have to be run on the same machine that runs `viam-server`.
 
 ![Diagram showing how a client connects to a machine with Viam. Diagram shows a client as a computer sending commands to a machine. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/build/program/sdks/robot-client.png)
 
 ## Backend SDKs
 
-Use the backend SDK to build business logic to control [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as manage your [fleet](/appendix/apis/#fleet-management-api) and [data](/appendix/apis/data-client/), and [billing information](/appendix/apis/billing-client/), or [provision](/fleet/provision/) machines.
+Use the backend SDK to build business logic to control [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as manage your [fleet](/appendix/apis/fleet/) and [data](/appendix/apis/data-client/), and [billing information](/appendix/apis/billing-client/), or [provision](/fleet/provision/) machines.
 With the backend SDKs you can also create custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 
 {{< sectionlist-custom >}}
@@ -42,7 +42,7 @@ Use the frontend SDK to control your machine's [components](/appendix/apis/#comp
 
 ## Mobile SDK
 
-Use the mobile SDK to build iOS and Android apps to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [fleet](/appendix/apis/#fleet-management-api) and [data](/appendix/apis/data-client/), or [provision](/fleet/provision/) machines.
+Use the mobile SDK to build iOS and Android apps to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [fleet](/appendix/apis/fleet/) and [data](/appendix/apis/data-client/), or [provision](/fleet/provision/) machines.
 
 {{< sectionlist-custom >}}
 {{% sectionlist-custom-item link="/sdks/flutter/" %}}

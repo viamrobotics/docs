@@ -1,5 +1,5 @@
 ---
-title: "Control your motor with the motor API"
+title: "Motor API"
 linkTitle: "Motor"
 weight: 20
 type: "docs"

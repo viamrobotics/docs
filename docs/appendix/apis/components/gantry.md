@@ -1,5 +1,5 @@
 ---
-title: "Control your gantry with the gantry API"
+title: "Gantry API"
 linkTitle: "Gantry"
 weight: 20
 type: "docs"

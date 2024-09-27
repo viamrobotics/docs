@@ -1,5 +1,5 @@
 ---
-title: "Control your base with the base API"
+title: "Base API"
 linkTitle: "Base"
 weight: 20
 type: "docs"

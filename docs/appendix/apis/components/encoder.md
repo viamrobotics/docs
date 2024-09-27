@@ -1,5 +1,5 @@
 ---
-title: "Control your encoder with the encoder API"
+title: "Encoder API"
 linkTitle: "Encoder"
 weight: 20
 type: "docs"

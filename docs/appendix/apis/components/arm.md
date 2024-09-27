@@ -1,5 +1,5 @@
 ---
-title: "Control your arm with the arm API"
+title: "Arm API"
 linkTitle: "Arm"
 weight: 20
 type: "docs"

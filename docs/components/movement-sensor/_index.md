@@ -58,7 +58,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/power-sensor/), which supports the following methods:
+To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/), which supports the following methods:
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 

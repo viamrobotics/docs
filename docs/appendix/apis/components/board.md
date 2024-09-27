@@ -1,5 +1,5 @@
 ---
-title: "Control your board with the board API"
+title: "Board API"
 linkTitle: "Board"
 weight: 20
 type: "docs"

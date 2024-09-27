@@ -1,5 +1,5 @@
 ---
-title: "Control your input controller with the input controller API"
+title: "Input controller API"
 linkTitle: "Input Controller"
 titleMustBeLong: true
 weight: 20

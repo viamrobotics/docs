@@ -1,5 +1,5 @@
 ---
-title: "Control your servo with the servo API"
+title: "Servo API"
 linkTitle: "Servo"
 weight: 20
 type: "docs"

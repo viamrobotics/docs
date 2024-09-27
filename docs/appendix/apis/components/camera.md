@@ -1,5 +1,5 @@
 ---
-title: "Control your camera with the camera API"
+title: "Camera API"
 linkTitle: "Camera"
 weight: 20
 type: "docs"

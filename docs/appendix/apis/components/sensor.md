@@ -1,5 +1,5 @@
 ---
-title: "Control your sensor with the sensor API"
+title: "Sensor API"
 linkTitle: "Sensor"
 weight: 20
 type: "docs"

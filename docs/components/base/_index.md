@@ -22,7 +22,7 @@ If you have a platform for a robot with other components, such as wheels or legs
 A base component allows you to move all configured components as a whole without needing to send commands to individual components.
 
 <p>
-<img src="/components/base/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." class="imgzoom aligncenter" style="max-width: 500px">
+<img src="../../components/base/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." class="imgzoom aligncenter" style="max-width: 500px">
 </p>
 
 The base component is often used with the following services:

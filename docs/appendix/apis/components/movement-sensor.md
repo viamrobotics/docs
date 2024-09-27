@@ -1,5 +1,5 @@
 ---
-title: "Control your movement sensor with the movement sensor API"
+title: "Movement sensor API"
 linkTitle: "Movement Sensor"
 titleMustBeLong: true
 weight: 20
