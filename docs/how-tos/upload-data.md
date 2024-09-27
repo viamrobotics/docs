@@ -19,7 +19,7 @@ aliases:
   - /services/data/upload/
 ---
 
-If you configured [data capture](/services/data/capture/) on your machine, Viam automatically uploads data to the cloud from the directory you specified, at the interval you specified.
+If you configured [cloud sync](/services/data/capture-sync/), Viam automatically uploads data from the specified directory to the cloud, at the interval you specified.
 However, if you want to upload a batch of data once from somewhere else, either from a different directory on your machine or from your personal computer or mobile device, you have several options using the Viam app, the data client API, or the Viam mobile app.
 
 {{% alert title="In this page" color="tip" %}}

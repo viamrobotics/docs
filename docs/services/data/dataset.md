@@ -18,7 +18,7 @@ no_service: true
 ---
 
 A dataset is a grouping of images that you use to train machine learning models.
-On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, you can create and manage datasets.
+You can create and manage datasets using the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, using the [data client API](/appendix/apis/data-client/), or using the [CLI `dataset` command](/cli/#dataset).
 
 {{< alert title="Info" color="info" >}}
 Filtered datasets are views and not materialized.
@@ -41,26 +41,7 @@ To interact with datasets programmatically, use the [data client API](/appendix/
 
 {{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
 
-## Sample dataset
-
-If you are testing, you can use one of two provided sample dataset, one of shapes and the other of a wooden figure:
-
-{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="max-width:400px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
-
-{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" style="max-width:400px" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" class="imgzoom fill aligncenter" resize="1400x" >}}
-
-1. [Download the shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip) or [download the wooden figure dataset](https://storage.googleapis.com/docs-blog/dataset-figure.zip).
-1. Unzip the download.
-1. Open a terminal and go to the dataset folder.
-1. In it you will find a Python script to upload the data to the Viam app.
-1. Open the script and fill in the constants at the top of the file.
-1. Run the script to upload the data into a dataset in Viam app:
-
-   ```sh {class="command-line" data-prompt="$" }
-   python3 upload_data.py
-   ```
-
-## Next steps
+## How-to guide
 
 The following how-to guide contains instructions on creating datasets as well as on how to train a model on a dataset:
 
