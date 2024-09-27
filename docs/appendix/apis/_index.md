@@ -80,6 +80,16 @@ These APIs provide interfaces for controlling and getting information from vario
 {{< relatedcard link="/appendix/apis/components/servo/" >}}
 {{< /cards >}}
 
-<!-- ## Service APIs
+## Service APIs
 
-These APIs provide interfaces for controlling and getting information from the services you configured on a machine. -->
+These APIs provide interfaces for controlling and getting information from the services you configured on a machine.
+
+{{< cards >}}
+{{% relatedcard link="/services/data/api/" %}}
+{{% relatedcard link="/services/ml/deploy/api/" alt_title="Machine Learning" %}}
+{{% relatedcard link="/services/motion/api/" %}}
+{{% relatedcard link="/services/navigation/api/" %}}
+{{% relatedcard link="/services/slam/api/" %}}
+{{% relatedcard link="/services/vision/api/" %}}
+{{< /cards >}}
+

@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/controller.svg"]
 ---
 
-The input controller API allows you to give commands to your input controller components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The input controller API allows you to give commands to your [input controller components](/components/input-controller/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The input controller component supports the following methods:
 
@@ -64,8 +64,8 @@ Each `Event` object represents a singular event from the input device, and has f
 
 1. `Time`: `time.Time` the event occurred.
 2. `Event`: `EventType` indicating the type of event (for example, a specific button press or axis movement).
-3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](/appendix/apis/components/input-control/#button-controls), or Pedal on the controller has been changed.
-4. `Value`: `float64` indicating the position of an [Axis](/appendix/apis/components/input-control/#axis-controls) or the state of a [Button](/appendix/apis/components/input-control/#button-controls) on the specified control.
+3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](/appendix/apis/components/input-controller/#button-controls), or Pedal on the controller has been changed.
+4. `Value`: `float64` indicating the position of an [Axis](/appendix/apis/components/input-controller/#axis-controls) or the state of a [Button](/appendix/apis/components/input-controller/#button-controls) on the specified control.
 
 #### EventType field
 

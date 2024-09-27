@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/imu.svg"]
 ---
 
-The movement sensor API allows you to give commands to your movement sensor components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The movement sensor API allows you to give commands to your [movement sensor components](/components/movement-sensor/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 

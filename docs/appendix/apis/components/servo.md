@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 ---
 
-The servo API allows you to give commands to your servo components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The servo API allows you to give commands to your [servo components](/components/servo/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The servo component supports the following methods:
 

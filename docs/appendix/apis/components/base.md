@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/base.svg"]
 ---
 
-The base API allows you to give commands to your base components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The base API allows you to give commands to your [base components](/components/base/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The base component supports the following methods:
 

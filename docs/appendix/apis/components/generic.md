@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/generic.svg"]
 ---
 
-The generic API allows you to give commands to your generic components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The generic API allows you to give commands to your [generic components](/components/generic/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The generic component supports the following method:
 

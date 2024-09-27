@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/encoder.svg"]
 ---
 
-The encoder API allows you to give commands to your encoder components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The encoder API allows you to give commands to your [encoder components](/components/encoder/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The encoder component supports the following methods:
 

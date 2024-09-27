@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 ---
 
-The sensor API allows you to give commands to your sensor components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The sensor API allows you to give commands to your [sensor components](/components/sensor/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The sensor component supports the following methods:
 

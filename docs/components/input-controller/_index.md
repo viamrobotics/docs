@@ -18,7 +18,7 @@ hide_children: true
 The _input controller_ component represents devices, such as keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers.
 
 This component supports devices like gamepads and joysticks that contain one or more [`Control`s](/appendix/apis/components/input-controller/#control-field) representing the individual axes and buttons on the device.
-To use the controller's inputs, you must [register callback functions](/appendix/apis/components/input-controller/#registercontrolcallback) to the [`Control`s](/appendix/apis/components/input-controller/#control-field) with the [`input` API](/appendix/apis/components/input-controller).
+To use the controller's inputs, you must [register callback functions](/appendix/apis/components/input-controller/#registercontrolcallback) to the [`Control`s](/appendix/apis/components/input-controller/#control-field) with the [`input` API](/appendix/apis/components/input-controller/).
 
 The callback functions can then handle the [Events](/appendix/apis/components/input-controller/#getevents) that are sent when the `Control` is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.

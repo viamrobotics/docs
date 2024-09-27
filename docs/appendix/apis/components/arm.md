@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/arm.svg"]
 ---
 
-The arm API allows you to give commands to your Arm components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The arm API allows you to give commands to your [arm components](/components/arm/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The arm component supports the following methods:
 

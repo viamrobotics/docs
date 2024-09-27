@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/motor.svg"]
 ---
 
-The motor API allows you to give commands to your motor components with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The motor API allows you to give commands to your [motor components](/components/motor/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 
 The motor component supports the following methods:
 
