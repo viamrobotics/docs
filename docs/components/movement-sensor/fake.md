@@ -8,7 +8,7 @@ images: ["/icons/components/imu.svg"]
 toc_hide: true
 aliases:
   - "/components/movement-sensor/fake/"
-component_description: "Used to test code without hardware."
+component_description: "A model for testing, with no physical hardware."
 # SMEs: Rand
 ---
 

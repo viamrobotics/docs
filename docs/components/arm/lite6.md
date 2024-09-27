@@ -7,7 +7,7 @@ description: "Configure a UFACTORY Lite 6 arm for your machine."
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/xarmlite/"
-component_description: "UFACTORY Lite 6"
+component_description: "Supports UFACTORY Lite 6."
 # SMEs: Bucket, Motion
 ---
 

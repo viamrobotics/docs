@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure an Orange Pi board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components", "orangepi"]
-component_description: "Orange Pi Zero2, Orange Pi Zero 2W or OrangePi 3 LTS."
+component_description: "Supports Orange Pi Zero2, Orange Pi Zero 2W or OrangePi 3 LTS."
 # SMEs: Olivia Miller, Steve Briskin
 ---
 

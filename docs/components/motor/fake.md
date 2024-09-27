@@ -7,7 +7,7 @@ description: "Configure a fake motor to test software without any hardware."
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/fake/"
-component_description: "Used to test code without hardware."
+component_description: "A model for testing, with no physical hardware."
 # SMEs: Rand, James
 ---
 

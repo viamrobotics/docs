@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/ti/"
-component_description: "Texas Instruments TDA4VM."
+component_description: "Supports Texas Instruments TDA4VM."
 # SMEs: Gautham, Rand
 ---
 

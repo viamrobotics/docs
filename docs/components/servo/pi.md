@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/pi/"
-component_description: "A hobby servo wired to a Raspberry Pi board."
+component_description: "Supports hobby servos wired to a Raspberry Pi 2W, 3 or 4 board."
 # SME: Rand
 ---
 

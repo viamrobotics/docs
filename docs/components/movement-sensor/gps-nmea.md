@@ -8,7 +8,7 @@ images: ["/icons/components/imu.svg"]
 toc_hide: true
 aliases:
   - /components/movement-sensor/gps/gps-nmea/
-component_description: "NMEA-based GPS models."
+component_description: "Supports NMEA-based GPS models."
 # SMEs: Rand
 ---
 

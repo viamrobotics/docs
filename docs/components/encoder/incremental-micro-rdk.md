@@ -3,7 +3,7 @@ title: "Configure an Incremental Encoder (viam-micro-server)"
 linkTitle: "incremental"
 titleMustBeLong: true
 type: "docs"
-description: "Configure an incremental encoder with a microcontroller."
+description: "Configure an incremental encoder."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:

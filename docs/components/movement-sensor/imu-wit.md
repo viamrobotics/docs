@@ -8,7 +8,7 @@ images: ["/icons/components/imu.svg"]
 toc_hide: true
 aliases:
   - "/components/movement-sensor/imu/imu-wit/"
-component_description: "Other IMUs manufactured by WitMotion: BWT61CL, BWT901CL, and HWT901B-TTL."
+component_description: "Supports other IMUs manufactured by WitMotion: BWT61CL, BWT901CL, and HWT901B-TTL."
 aliases:
   - "/components/movement-sensor/imu/imu-wit/"
 # SMEs: Rand

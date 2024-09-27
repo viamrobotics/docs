@@ -9,7 +9,7 @@ toc_hide: true
 aliases:
   - "/components/movement-sensor/gps/gps-rtk/"
   - "/components/movement-sensor/gps/gps-nmea-rtk-serial/"
-component_description: "NTRIP-based RTK GPS models using serial communication (experimental)."
+component_description: "Supports NTRIP-based RTK GPS models using serial communication (experimental)."
 # SMEs: Susmita
 ---
 

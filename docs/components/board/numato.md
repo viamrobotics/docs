@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/numato/"
-component_description: "Numato GPIO Modules, peripherals for adding GPIO pins."
+component_description: "Supports Numato GPIO Modules and peripherals for adding GPIO pins."
 # SMEs: Gautham, Rand
 ---
 

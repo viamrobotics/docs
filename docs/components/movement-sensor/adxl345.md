@@ -7,7 +7,7 @@ description: "Configure an ADXL345 digital accelerometer."
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/adxl345/"
-component_description: "The Analog Devices ADXL345 digital accelerometer."
+component_description: "Supports the Analog Devices ADXL345 digital accelerometer."
 toc_hide: true
 # SMEs: Rand, Kim Mishra
 ---
