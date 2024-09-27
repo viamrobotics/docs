@@ -3,7 +3,7 @@ title: "Provision machines using viam-agent"
 linkTitle: "Provisioning Machines"
 weight: 70
 type: "docs"
-description: "Flexibly provision new machines using viam-agent."
+description: "Provision a machine as it first comes online with a pre-defined configuration - in the factory or when the machine is taken into service."
 images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 tags: ["fleet management", "viam-server", "viam-agent"]
@@ -11,6 +11,8 @@ tags: ["fleet management", "viam-server", "viam-agent"]
 aliases:
   - "/build/provision/"
   - "/fleet/provision/"
+date: "2024-08-16"
+# updated: ""  # When the content was last entirely checked
 ---
 
 You can use Viam's software provisioning manager (`agent-provisioning`), to provision a machine as it first comes online with a pre-defined configuration.

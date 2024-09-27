@@ -20,6 +20,8 @@ tags:
 aliases:
   - /program/apis/data-client/
   - /build/program/apis/data-client/
+date: "2024-09-19"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The data client API allows you to upload and retrieve data to and from the [Viam app](https://app.viam.com).

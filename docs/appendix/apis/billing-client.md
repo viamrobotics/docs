@@ -8,6 +8,8 @@ tags: ["cloud", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - /program/apis/billing-client/
   - /build/program/apis/billing-client/
+date: "2024-09-18"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The billing client API allows you to retrieve billing information from the [Viam app](https://app.viam.com).

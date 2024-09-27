@@ -15,6 +15,8 @@ layout: "changelog"
 outputs:
   - rss
   - html
+date: "2024-09-18"
+# updated: ""  # When the content was last entirely checked
 ---
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->

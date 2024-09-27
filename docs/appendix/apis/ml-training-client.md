@@ -8,6 +8,8 @@ tags: ["cloud", "sdk", "viam-server", "networking", "apis", "ml model", "ml"]
 aliases:
   - /program/apis/ml_training-client/
   - /build/program/apis/ml-training-client/
+date: "2024-09-18"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com).
