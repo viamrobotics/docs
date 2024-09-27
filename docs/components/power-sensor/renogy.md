@@ -89,7 +89,6 @@ The following attributes are available for `renogy` sensors:
 
 ## Next steps
 
-To get started using your power sensor, see the [power sensor API](/appendix/apis/components/power-sensor/).
 For general configuration and development info, see:
 
 {{< cards >}}

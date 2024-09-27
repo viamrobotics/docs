@@ -48,7 +48,6 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gripper/fa
 
 ## Next steps
 
-To get started using your gripper, see the [gripper API](/appendix/apis/components/gripper/).
 For more configuration and development info, see:
 
 {{< cards >}}

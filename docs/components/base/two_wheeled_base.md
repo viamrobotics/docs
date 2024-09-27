@@ -83,7 +83,6 @@ The following attributes are available for `two_wheeled_base` bases:
 
 ## Next steps
 
-To get started using your base, see the [base API](/appendix/apis/components/base/).
 For more configuration and development info, see:
 
 {{< cards >}}

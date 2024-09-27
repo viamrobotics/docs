@@ -201,7 +201,6 @@ Only the output side of the driver board is different in that more wires connect
 
 ## Next steps
 
-To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
 For more configuration and development info, see:
 
 {{< cards >}}

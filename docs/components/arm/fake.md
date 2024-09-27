@@ -82,7 +82,6 @@ The following attributes are available for `fake` arms:
 
 ## Next steps
 
-To get started using your arm, see the [arm API](/appendix/apis/components/arm/).
 For more configuration and development info, see:
 
 {{< cards >}}

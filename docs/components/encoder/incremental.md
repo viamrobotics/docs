@@ -94,7 +94,6 @@ Viam also supports a model of encoder called [`"single"`](../single/) which requ
 
 ## Next steps
 
-To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/).
 For more configuration and development info, see:
 
 {{< cards >}}

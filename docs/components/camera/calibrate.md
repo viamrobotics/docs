@@ -109,7 +109,6 @@ The following is a full example config:
 
 ## Next steps
 
-To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
 For more configuration and development info, see:
 
 {{< cards >}}

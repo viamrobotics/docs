@@ -57,7 +57,6 @@ The following attributes are available for `arduino` encoders:
 
 ## Next steps
 
-To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/).
 For more configuration and development info, see:
 
 {{< cards >}}

@@ -166,7 +166,6 @@ The following properties are available for `digital_interrupts`:
 
 ## Next steps
 
-To get started using your board, see the [board API](/appendix/apis/components/board/).
 For more configuration and development info, see:
 
 {{< cards >}}

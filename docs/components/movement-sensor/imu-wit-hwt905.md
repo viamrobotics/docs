@@ -89,7 +89,6 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 
 ## Next steps
 
-To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/).
 For more configuration and development info, see:
 
 {{< cards >}}

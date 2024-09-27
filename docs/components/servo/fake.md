@@ -48,7 +48,6 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/servo/fake
 
 ## Next steps
 
-To get started using your servo, see the [servo API](/appendix/apis/components/servo/).
 For general configuration and development info, see:
 
 {{< cards >}}

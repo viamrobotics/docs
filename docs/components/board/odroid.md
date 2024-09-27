@@ -74,7 +74,6 @@ Configuring these attributes on your board allows you to integrate [digital inte
 
 ## Next steps
 
-To get started using your board, see the [board API](/appendix/apis/components/board/).
 For more configuration and development info, see:
 
 {{< cards >}}

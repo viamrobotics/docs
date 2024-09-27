@@ -133,7 +133,6 @@ The sections in the panel include the angular velocity and linear acceleration.
 
 ## Next steps
 
-To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/).
 For more configuration and development info, see:
 
 {{< cards >}}

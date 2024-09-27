@@ -114,7 +114,6 @@ Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs
 
 ## Next steps
 
-To get started using your servo, see the [servo API](/appendix/apis/components/servo/).
 For general configuration and development info, see:
 
 {{< cards >}}

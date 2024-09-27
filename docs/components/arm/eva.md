@@ -34,7 +34,6 @@ Configure an `eva` arm to integrate a [Automata Eva](https://automata.tech/produ
 
 ## Next steps
 
-To get started using your arm, see the [arm API](/appendix/apis/components/arm/).
 For more configuration and development info, see:
 
 {{< cards >}}

@@ -214,7 +214,6 @@ The following attributes are available for `multi-axis` gantries:
 
 ## Next steps
 
-To get started using your gantry, see the [gantry API](/appendix/apis/components/gantry/).
 For more configuration and development info, see:
 
 {{< cards >}}

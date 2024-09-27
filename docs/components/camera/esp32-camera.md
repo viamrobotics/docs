@@ -197,7 +197,6 @@ If you need to capture image data and sync it to the cloud, see:
 
 ## Next steps
 
-To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
 For more configuration and development info, see:
 
 {{< cards >}}

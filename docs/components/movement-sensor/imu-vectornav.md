@@ -95,7 +95,6 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 
 ## Next steps
 
-To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/).
 For more configuration and development info, see:
 
 {{< cards >}}

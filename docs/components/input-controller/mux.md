@@ -128,7 +128,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
-To get started using your input controller, see the [input controller API](/appendix/apis/components/input-controller/).
 For more configuration and development info, see:
 
 {{< cards >}}

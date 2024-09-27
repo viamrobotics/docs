@@ -418,7 +418,6 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 ## Next steps
 
-To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
 For more configuration and development info, see:
 
 {{< cards >}}

@@ -105,7 +105,6 @@ See [the frame system Service](/services/frame-system/) for more information on 
 
 ## Next steps
 
-To get started using your arm, see the [arm API](/appendix/apis/components/arm/).
 For more configuration and development info, see:
 
 {{< cards >}}
