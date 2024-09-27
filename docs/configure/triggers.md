@@ -39,7 +39,6 @@ To configure a trigger:
 Select the data types for which the Trigger should send requests.
 Whenever data of the specified data types is ingested, a `POST` request will be sent.
 
-You must have [data capture and cloud sync](/services/data/capture-sync/) configured for the relevant components to use this trigger and the component must return the type of data you configure in the trigger's **Data Types**.
 {{% /tab %}}
 {{% tab name="Part is online" %}}
 
