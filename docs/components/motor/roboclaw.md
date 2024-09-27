@@ -107,10 +107,11 @@ Refer to your motor and motor driver data sheets for specifics.
 
 ## Next steps
 
-To get started using your motor, see the [motor API](/appendix/apis/components/motor/) or check out one of these guides:
+To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
+For more configuration and development info, see
 
 {{< cards >}}
-{{% card link="/get-started/control-motor/" %}}
-{{% card link="/tutorials/configure/configure-rover/" %}}
-{{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
+  {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+  {{% card link="/how-tos/configure/" noimage="true" %}}
+  {{% card link="/get-started/control-motor/" noimage="true" %}}
 {{< /cards >}}

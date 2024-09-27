@@ -18,9 +18,10 @@ hide_children: true
 # SME: Rand
 ---
 
-The _encoder_ component represents a type of sensor that can detect speed and direction of rotation of a motor or a joint.
-It is often used in conjunction with a motor, and is sometimes even built into a motor.
-An encoder could also be mounted on a passive joint or other rotating object to keep track of the joint angle.
+If you have a type of sensor that can detect speed and direction of rotation of a motor or a joint, use an _encoder_ component.
+
+Encoder components are often used in conjunction with a motor, and are sometimes even built directly into motors.
+Encoder can also be mounted on a passive joint or other rotating object to keep track of the joint angle.
 
 The encoder component supports:
 
@@ -30,6 +31,12 @@ The encoder component supports:
   Each phase output goes to a different pin on the board.
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
+
+The encoder component is often used with the following services:
+
+- [data management service](/services/data/): to capture and sync the sensor's data
+- [motion service](/services/motion/): to move machines or components of machines
+- [navigation service](/services/navigation/): to navigate with GPS
 
 ## Available models
 
@@ -60,15 +67,6 @@ For additional configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< /cards >}}
 
 ## API
 

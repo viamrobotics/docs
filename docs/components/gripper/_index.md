@@ -16,7 +16,12 @@ hide_children: true
 # SMEs: Bucket Team
 ---
 
-A _gripper_ component represents a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
+If you have a physical robotic grasping device that can open and close, use a _gripper_ component.
+
+The gripper component is often used with the following services:
+
+- [motion service](/services/slam/): to move machines or components of machines
+- [frame system service](/services/navigation/): to configure the positions of your components
 
 ## Available models
 
@@ -44,14 +49,6 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< /cards >}}
 
 ## API
 

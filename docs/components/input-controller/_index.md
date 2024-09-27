@@ -15,13 +15,15 @@ hide_children: true
 # SME: James
 ---
 
-The _input controller_ component represents devices, such as keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers.
+If you have a keyboards, mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers with which you want to control a robotic base, use an _input controller_ component.
 
 This component supports devices like gamepads and joysticks that contain one or more [`Control`s](/appendix/apis/components/input-controller/#control-field) representing the individual axes and buttons on the device.
 To use the controller's inputs, you must [register callback functions](/appendix/apis/components/input-controller/#registercontrolcallback) to the [`Control`s](/appendix/apis/components/input-controller/#control-field) with the [`input` API](/appendix/apis/components/input-controller/).
 
 The callback functions can then handle the [Events](/appendix/apis/components/input-controller/#getevents) that are sent when the `Control` is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
+
+The [base remote control service](/services/base-rc/) implements an input controller as a remote control for a base.
 
 ## Available models
 
@@ -50,12 +52,6 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/base-rc/" >}}
-{{< /cards >}}
 
 ## API
 

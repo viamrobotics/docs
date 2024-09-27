@@ -16,7 +16,9 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-A power sensor component represents a device that reports measurements of the voltage, current, and power consumption of connected hardware.
+If you have a physical power sensor, an API endpoint, or anything else that provides measurements of voltage, current, and power consumption, use a _power sensor_ component.
+
+The sensor component is often used alongside the [data management service](/services/data/), which allows you to capture and sync the sensor's data.
 
 ## Available models
 
@@ -45,12 +47,6 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
 
 ## API
 

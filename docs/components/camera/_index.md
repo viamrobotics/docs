@@ -16,10 +16,18 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-A camera component is a source of 2D and/or 3D images.
-You can use the component to configure a webcam, lidar, time-of-flight sensor, or another type of camera.
+If you have a physical camera that generates 2D images or 3D point clouds, or one or multiple video streams, use a _camera_ component.
+
+You can use the camera component to configure a webcam, lidar, time-of-flight sensor, or another type of camera.
+You can also use camera models to manipulate the output of other cameras to transform, crop, or otherwise change the output.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/iKCMo89oyfw">}}
+
+The camera component is often used with the following services:
+
+- [data management service](/services/data/): to capture and sync the camera's data
+- [vision service](/services/vision/): to use computer vision to interpret the camera stream
+- [SLAM service](/services/slam/): for mapping
 
 ## Available models
 
@@ -27,12 +35,6 @@ To use a camera with your machine, you have to add it to your machine's configur
 Go to your machine's **CONFIGURE** page, and add a model that supports your camera.
 
 The following list shows you the available camera models.
-You can use different models to:
-
-- Configure physical cameras that generate images or point clouds.
-- Combine streams from multiple cameras into one.
-- Transform and process images.
-
 The configuration of your camera component depends on your camera model.
 For additional configuration information, click on the model name:
 
@@ -56,16 +58,6 @@ For additional configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/vision/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/slam/" >}}
-{{< relatedcard link="/services/ml/deploy/" alt_title="Machine Learning" >}}
-{{< /cards >}}
 
 ## API
 

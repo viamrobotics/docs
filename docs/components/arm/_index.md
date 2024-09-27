@@ -19,10 +19,9 @@ outputs:
 # SME: Peter L
 ---
 
-The _arm_ component represents a robotic arm consisting of a serial chain of joints and links, with a fixed end and an end effector end.
-Joints may rotate, translate, or both, while a link is a rigid connector between joints.
+If you have a physical robotic arm, consisting of a serial chain of joints and links, with a fixed end and an end effector end, use an _arm_ component.
 
-In simple terms, an _arm_ has two ends: one fixed in place, and one with a device you can position.
+Typically, arms have two ends: one fixed in place, and one with a device you can position.
 When operating an arm you can place the its end effector at arbitrary cartesian positions relative to the base of the arm.
 
 When controlling an arm component, the following features are available:
@@ -30,6 +29,11 @@ When controlling an arm component, the following features are available:
 - Linear motion planning
 - Self-collision prevention
 - Obstacle avoidance
+
+The arm component is often used with the following services:
+
+- [motion service](/services/slam/): to move machines or components of machines
+- [frame system service](/services/navigation/): to configure the positions of your components
 
 ## Available models
 
@@ -63,16 +67,6 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-The arm component is often used with the following services:
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
 
 ## API
 

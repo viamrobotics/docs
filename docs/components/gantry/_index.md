@@ -20,14 +20,19 @@ hide_children: true
 <img src="/components/gantry/gantry-illustration.png" style="max-width:300px" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." class="alignright imgzoom">
 </div>
 
-A _gantry_ component represents a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
-A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
-The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
+If you have a physical gantry, that is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector), use a _gantry_ component.
 
-This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multi-axis/).
+A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
+
+The gantry component abstracts the hardware to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multi-axis/).
 
 Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.
+
+The movement sensor component is often used with the following services:
+
+- [motion service](/services/slam/): to move machines or components of machines
+- [frame system service](/services/navigation/): to configure the positions of your components
 
 ## Available models
 
@@ -55,13 +60,6 @@ There is currently no support for this component in `viam-micro-server`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< /cards >}}
 
 ## API
 

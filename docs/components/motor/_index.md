@@ -18,13 +18,13 @@ hide_children: true
 # SME: Rand
 ---
 
-The _motor_ component represents electric motors that convert electricity into rotary motion.
+If you have a physical motor that convert electricity into rotary motion, configure it as a _motor_ component.
 
-For a guided introduction, see:
+The motor component is often used with the following services:
 
-{{< cards >}}
-{{< card link="/get-started/control-motor/" class="green" noimage="true">}}
-{{< /cards >}}
+- [motion service](/services/slam/): to move machines or components of machines
+- [navigation service](/services/navigation/): to navigate with GPS
+- [SLAM service](/services/slam/): for mapping
 
 ## Available models
 
@@ -55,15 +55,6 @@ For additional configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/slam/" >}}
-{{< /cards >}}
 
 ## API
 

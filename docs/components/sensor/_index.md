@@ -18,13 +18,17 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-The _sensor_ component represents a device that can measure information about the outside world.
+If you have a physical sensor, an API endpoint, or anything else that provides measurements, use a _sensor_ component.
+
+The sensor component is often used alongside the [data management service](/services/data/), which allows you to capture and sync the sensor's data.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/0YfP-63OBh8">}}
 
 ## Available models
 
-To use a sensor and get its measurements, you have to add it as well as any dependencies, such as a [board component](/components/board/) with a configured analog-to-digital converter (ADC), to your machine's configuration.
+To use a sensor and get its measurements, you have to add it and its dependencies, to your machine's configuration.
+Physical sensors often require a [board component](/components/board/) with a configured analog-to-digital converter (ADC).
+Virtual sensors often function without additional dependecies.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -60,12 +64,6 @@ If none of the existing models fit your use case, you can [create a modular reso
 - If your sensor detects speed and direction of rotation of a motor or a joint, use an [encoders](/components/encoder/).
 
 {{% /expand%}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
 
 ## API
 

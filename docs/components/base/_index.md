@@ -17,12 +17,18 @@ hide_children: true
 # SMEs: Steve B
 ---
 
-A base is the platform of a robot with other components, such as wheels, attached to it.
-By using a base you can coordinate movement of the robot as a whole without needing to send commands to individual components.
+If you have a platform for a robot with other components, such as wheels or legs, attached to it, use a _base_ component.
+
+A base component allows you to move all configured components as a whole without needing to send commands to individual components.
 
 <p>
 <img src="/components/base/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." class="imgzoom aligncenter" style="max-width: 500px">
 </p>
+
+The base component is often used with the following services:
+
+- [navigation service](/services/navigation/): to navigate with GPS
+- [SLAM service](/services/slam/): for mapping
 
 ## Available models
 
@@ -62,16 +68,6 @@ For additional configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-The base component is often used with the following services:
-
-{{< cards >}}
-{{< relatedcard link="/services/base-rc/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< /cards >}}
 
 ## API
 

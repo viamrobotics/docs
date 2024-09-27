@@ -17,14 +17,14 @@ aliases:
 # SME: Rand
 ---
 
-A movement sensor component is a sensor that gives data on where a machine is and how fast it is moving.
-Examples of movement sensors include global positioning systems (GPS), inertial measurement units (IMUs), accelerometers and gyroscopes.
+If you have a physical sensor such as a GPS, IMU, accelerometer, or gyroscope, or anything else that provides similar measurements, use a _movement sensor_ component.
 
-{{% alert title="Tip" color="tip" %}}
+The movement sensor component is often used with the following services:
 
-Viam also supports generic [sensors](/components/sensor/) and [encoders](/components/encoder/).
-
-{{% /alert %}}
+- [data management service](/services/data/): to capture and sync the sensor's data
+- [motion service](/services/motion/): to move machines or components of machines
+- [navigation service](/services/navigation/): to navigate with GPS
+- [SLAM service](/services/slam/): for mapping
 
 ## Available models
 
@@ -55,14 +55,6 @@ For additional configuration information, click on the model name:
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/slam/" >}}
-{{< /cards >}}
 
 ## API
 

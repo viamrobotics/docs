@@ -18,8 +18,9 @@ hide_children: true
 # SMEs: Gautham, Rand
 ---
 
-A _board_ component can represent your machine's general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins.
-These can be present as:
+If you have general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins you wish to control, use a _board_ component.
+
+Your GPIO pins can be present as:
 
 - The GPIO pins on a single-board computer (SBC).
 - A GPIO peripheral device that must connect to an external computer.
