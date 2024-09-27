@@ -967,7 +967,7 @@ def parse(type, names):
 
                     id = tag.find("dt", class_="sig sig-object py").get("id")
 
-                    if not id.endswith(".from_robot") and not id.endswith(".get_operation") \
+                    if not id.endswith(".get_operation") \
                     and not id.endswith(".from_proto") and not id.endswith(".to_proto") \
                     and not id.endswith(".from_string") and not id.endswith("__") \
                     and not id.endswith("HasField") and not id.endswith("WhichOneof") \

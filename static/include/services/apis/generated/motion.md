@@ -785,6 +785,45 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
+### FromRobot
+
+Get the resource from the provided robot with the given name.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot` ([viam.robot.client.RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)) (required): The robot.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the service.
+
+**Returns:**
+
+- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): The service, if it exists on the robot.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+async def connect() -> RobotClient:
+    # Replace "<API-KEY>" (including brackets) with your API key and "<API-KEY-ID>" with your API key ID
+    options = RobotClient.Options.with_api_key("<API-KEY>", "<API-KEY-ID>")
+    # Replace "<MACHINE-URL>" (included brackets) with your machine's connection URL or FQDN
+    return await RobotClient.at_address("<MACHINE-URL>", options)
+
+async def main():
+    robot = await connect()
+
+    # Can be used with any resource, using the motion service as an example
+    motion = MotionClient.from_robot(robot=robot, name="builtin")
+
+    robot.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.from_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
