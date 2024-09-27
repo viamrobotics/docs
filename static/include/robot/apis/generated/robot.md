@@ -131,18 +131,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### DiscoverComponents
 
-Get a list of discovered component configurations.
+Get a list of discovered potential component configurations. Only implemented for webcam cameras in builtin components. Returns module names for modules.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `queries` ([List[viam.proto.robot.DiscoveryQuery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)) (required): The list of component models to lookup configurations for.
+- `queries` ([List[viam.proto.robot.DiscoveryQuery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)) (required): The list of component models to lookup potential component configurations for.
 
 **Returns:**
 
-- ([List[viam.proto.robot.Discovery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery)): A list of discovered component configurations.
+- ([List[viam.proto.robot.Discovery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery)): A list of discovered potential component configurations.
 
 **Example:**
 
@@ -155,8 +155,9 @@ q = DiscoveryQuery(subtype="camera", model="webcam")
 # Define a list of discovery queries.
 qs = [q]
 
-# Get component configurations with these queries.
+# # Get component configurations with these queries.
 component_configs = await machine.discover_components(qs)
+print(component_configs)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.discover_components).
@@ -167,24 +168,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
+- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the potential component configurations corresponding to.
 
 **Returns:**
 
-- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`. `Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
+- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery): The search query `qs` and the corresponding list of discovered potential component configurations as an interface called `Results`. `Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Define a new discovery query.
-q := resource.NewDiscoveryQuery(acme.API, resource.Model{Name: "some model"})
+q := resource.NewDiscoveryQuery(camera.API, resource.Model{Name: "webcam", Family: resource.DefaultModelFamily})
 
-// Define a list of discovery queries.
-qs := []resource.DiscoverQuery{q}
-
-// Get component configurations with these queries.
-component_configs, err := machine.DiscoverComponents(ctx.Background(), qs)
+// Define a list of discovery queries and get potential component configurations with these queries.
+out, err := machine.DiscoverComponents(context.Background(), []resource.DiscoveryQuery{q})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
