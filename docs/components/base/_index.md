@@ -4,7 +4,7 @@ linkTitle: "Base"
 weight: 10
 type: "docs"
 no_list: true
-description: "The base component allows your to move A moving platform together without needing to address individual components like wheels."
+description: "The base component allows you to move a mobile robot without needing to address individual components like motors."
 tags: ["base", "components"]
 icon: true
 images: ["/icons/components/base.svg"]
@@ -38,10 +38,9 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-Go to your machine's **CONFIGURE** page, and add your individual a model that supports your base.
-Then add your base.
+Go to your machine's **CONFIGURE** page, and add a model that supports your base.
 
-The following list shows you the available arm models.
+The following list shows you the available base models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -88,5 +87,5 @@ For general configuration, development, and usage info, see:
 
 You can also use the base component with the following services:
 
-- [navigation service](/services/navigation/): to navigate with GPS
+- [Navigation service](/services/navigation/): to navigate with GPS
 - [SLAM service](/services/slam/): for mapping

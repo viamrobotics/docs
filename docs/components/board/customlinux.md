@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/customlinux/"
-component_description: "Supports boards that run Linux operating systems by allowing you to provide board definitions."
+component_description: "Supports boards that run Linux operating systems by allowing you to provide board pin mapping definitions."
 # SMEs: Alan, Olivia, Susmita
 ---
 
