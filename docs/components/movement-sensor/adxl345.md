@@ -140,8 +140,7 @@ To get started using your movement sensor, see the [movement sensor API](/append
 For more configuration and development info, see
 
 {{< cards >}}
-  {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}
-

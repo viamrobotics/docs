@@ -52,7 +52,7 @@ To get started using your gripper, see the [gripper API](/appendix/apis/componen
 For more configuration and development info, see
 
 {{< cards >}}
-  {{% card link="/appendix/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper/" noimage="true" %}}
+{{% card link="/appendix/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper/" noimage="true" %}}
 {{< /cards >}}

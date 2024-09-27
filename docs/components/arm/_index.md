@@ -106,7 +106,7 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
-  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/services/accessing-and-moving-robot-arm" noimage="true" %}}
 {{< /cards >}}

@@ -52,7 +52,7 @@ To get started using your gantry, see the [gantry API](/appendix/apis/components
 For more configuration and development info, see
 
 {{< cards >}}
-  {{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

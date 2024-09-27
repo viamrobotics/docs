@@ -128,7 +128,7 @@ To get started using your board, see the [board API](/appendix/apis/components/b
 For more configuration and development info, see
 
 {{< cards >}}
-  {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
-  {{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
 {{< /cards >}}

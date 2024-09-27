@@ -70,7 +70,7 @@ To get started using your camera, see the [camera API](/appendix/apis/components
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/image-data/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
-  {{% card link="/get-started/detect-people/" noimage="true" %}}
+{{% card link="/how-tos/image-data/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
 {{< /cards >}}

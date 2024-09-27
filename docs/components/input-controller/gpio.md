@@ -225,7 +225,7 @@ To get started using your input controller, see the [input controller API](/appe
 For more configuration and development info, see
 
 {{< cards >}}
-  {{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
+{{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/control/gamepad/" noimage="true" %}}
 {{< /cards >}}

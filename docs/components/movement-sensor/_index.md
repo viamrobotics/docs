@@ -82,7 +82,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 For general configuration and development info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
-  {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{< /cards >}}

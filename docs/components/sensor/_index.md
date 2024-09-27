@@ -28,7 +28,7 @@ The sensor component is often used alongside the [data management service](/serv
 
 To use a sensor and get its measurements, you have to add it and its dependencies, to your machine's configuration.
 Physical sensors often require a [board component](/components/board/) with a configured analog-to-digital converter (ADC).
-Virtual sensors often function without additional dependecies.
+Virtual sensors often function without additional dependencies.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -82,7 +82,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 For general configuration and development info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
-  {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{< /cards >}}

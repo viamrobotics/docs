@@ -19,7 +19,7 @@ hide_children: true
 # SMEs:
 ---
 
-If you have a physical device or a program that does not fit into any of the provided  [components APIs](/appendix/apis/#component-apis), use a _generic_ component.
+If you have a physical device or a program that does not fit into any of the provided [components APIs](/appendix/apis/#component-apis), use a _generic_ component.
 
 For example, if you want to use an LED display, you need functionality that isn't currently exposed in an existing API.
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
@@ -81,6 +81,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 For general configuration and development info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

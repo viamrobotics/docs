@@ -61,7 +61,7 @@ To get started using your encoder, see the [encoder API](/appendix/apis/componen
 For more configuration and development info, see
 
 {{< cards >}}
-  {{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

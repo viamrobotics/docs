@@ -85,7 +85,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
-  {{% card link="/components/motor/encoded-motor/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/components/motor/encoded-motor/" noimage="true" %}}
 {{< /cards >}}

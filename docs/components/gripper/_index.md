@@ -67,7 +67,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/how-tos/develop-app/" noimage="true" %}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper" noimage="true" %}}
 {{< /cards >}}

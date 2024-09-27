@@ -86,7 +86,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-  {{% card link="/how-tos/configure/" noimage="true" %}}
-  {{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
-  {{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
+{{% card link="/how-tos/drive-rover/" noimage="true" %}}
 {{< /cards >}}
