@@ -25,7 +25,7 @@ images: ["/services/icons/data-management.svg"]
 no_service: true
 ---
 
-The data management service is a robust solution for handling machine data, allowing you to capture data, sync it to the cloud, and query it.
+The data management service allows you to reliably capture and sync data to the cloud where you can query data from all your machines.
 You can collect data from your robots, IoT devices, or any other machines, and sync all the data to one place in the cloud without needing to manually gather data from each machine.
 
 {{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
@@ -110,8 +110,8 @@ Upload data to the Viam cloud from your computer or mobile device using the data
 
 ### Query your data
 
-Once your data has [synced](/services/data/capture-sync/), you can query it in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/how-tos/sensor-data-query-with-third-party-tools/).
-For _tabular_ sensor data, you can also [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/how-tos/sensor-data-query-sdk/) against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
+Once your data has [synced](/services/data/capture-sync/), you can query it using the [data client API](/appendix/apis/data-client/).
+For _tabular_ sensor data, you can also [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/how-tos/sensor-data-query-sdk/) from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 {{< cards >}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
