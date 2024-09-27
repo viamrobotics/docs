@@ -103,7 +103,7 @@ The following attributes are available for `softrobotics` grippers:
 ## Next steps
 
 To get started using your gripper, see the [gripper API](/appendix/apis/components/gripper/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}

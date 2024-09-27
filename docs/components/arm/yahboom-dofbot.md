@@ -73,7 +73,7 @@ Edit and fill in the attributes as applicable.
 ## Next steps
 
 To get started using your arm, see the [arm API](/appendix/apis/components/arm/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}

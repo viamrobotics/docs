@@ -194,7 +194,7 @@ If the motor does not appear on the **CONTROL** tab, or if you notice unexpected
 ## Next steps
 
 To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}

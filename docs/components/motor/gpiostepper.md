@@ -140,7 +140,7 @@ See the data sheet of your stepper motor and stepper motor driver for informatio
 ## Next steps
 
 To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}

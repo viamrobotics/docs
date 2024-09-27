@@ -158,7 +158,7 @@ See [PWM signals on `esp32` pins](/components/board/esp32/#pwm-signals-on-esp32-
 ## Next steps
 
 To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}

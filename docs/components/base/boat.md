@@ -76,7 +76,7 @@ Each [motor](/components/motor/) inside of `Motors` has the following attributes
 ## Next steps
 
 To get started using your base, see the [base API](/appendix/apis/components/base/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}

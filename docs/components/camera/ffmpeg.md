@@ -96,7 +96,7 @@ The following attributes are available for `ffmpeg` cameras:
 ## Next steps
 
 To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

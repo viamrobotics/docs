@@ -168,7 +168,7 @@ For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attr
 ## Next steps
 
 To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

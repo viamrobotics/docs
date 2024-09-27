@@ -65,7 +65,7 @@ The following attributes are available for `AMS-AS5048` encoders:
 ## Next steps
 
 To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}

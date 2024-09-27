@@ -119,7 +119,7 @@ Use the buttons to try turning your motor forwards or backwards at different pow
 ## Next steps
 
 To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}

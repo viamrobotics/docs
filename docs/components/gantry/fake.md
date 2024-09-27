@@ -49,7 +49,7 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gantry/fak
 ## Next steps
 
 To get started using your gantry, see the [gantry API](/appendix/apis/components/gantry/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}

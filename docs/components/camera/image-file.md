@@ -88,7 +88,7 @@ If you then also configure a `pointcloud_file_path` on your camera, Viam will tr
 ## Next steps
 
 To get started using your camera, see the [camera API](/appendix/apis/components/camera/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

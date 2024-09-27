@@ -108,7 +108,7 @@ Refer to your motor and motor driver data sheets for specifics.
 ## Next steps
 
 To get started using your motor, see the [motor API](/appendix/apis/components/motor/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

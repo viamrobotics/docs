@@ -46,7 +46,7 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/generic/fa
 ## Next steps
 
 To get started using your generic, see the [generic API](/appendix/apis/components/generic/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/generic/" customTitle="Generic API" noimage="true" %}}

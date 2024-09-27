@@ -125,7 +125,7 @@ Configure these attributes on your board to integrate [analog-to-digital convert
 ## Next steps
 
 To get started using your board, see the [board API](/appendix/apis/components/board/).
-For more configuration and development info, see
+For more configuration and development info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
