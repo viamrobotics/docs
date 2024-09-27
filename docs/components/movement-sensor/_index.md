@@ -17,18 +17,13 @@ aliases:
 # SME: Rand
 ---
 
-If you have a physical sensor such as a GPS, IMU, accelerometer, or gyroscope, or anything else that provides similar measurements, use a _movement sensor_ component.
+Movement sensors provide an API for gps location, linear velocity and acceleration, angular velocity and acceleration and heading.
 
-The movement sensor component is often used with the following services:
-
-- [data management service](/services/data/): to capture and sync the sensor's data
-- [motion service](/services/motion/): to move machines or components of machines
-- [navigation service](/services/navigation/): to navigate with GPS
-- [SLAM service](/services/slam/): for mapping
+If you have hardware or software that provides such measurements, use a _movement sensor_ component.
 
 ## Available models
 
-To use a movement sensor and get its measurements, you have to add it as well as any dependencies, such as a board and a configured analog-to-digital converter (ADC), to your machine's configuration.
+To use a movement sensor and get its measurements, you have to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -86,3 +81,10 @@ For general configuration and development info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{< /cards >}}
+
+To capture data from the sensor or use it for motion, see the following services:
+
+- [data management service](/services/data/): to capture and sync the sensor's data
+- [motion service](/services/motion/): to move machines or components of machines
+- [navigation service](/services/navigation/): to navigate with GPS
+- [SLAM service](/services/slam/): for mapping

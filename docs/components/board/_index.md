@@ -18,7 +18,9 @@ hide_children: true
 # SMEs: Gautham, Rand
 ---
 
-If you have general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins you wish to control, use a _board_ component.
+Boards provide an API for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
+
+If you have GPIO pins you wish to control, use a _board_ component.
 
 Your GPIO pins can be present as:
 
@@ -46,7 +48,7 @@ If there is no board model for your board:
 To use GPIO pins, you have to add a board component to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your board.
 
-The following list shows you the available arm models.
+The following list shows you the available board models.
 If your board is not among them, you may be able to use the pins on your board with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 This works for boards such as the [RockPi S](https://wiki.radxa.com/RockpiS).
 

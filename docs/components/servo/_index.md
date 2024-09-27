@@ -18,15 +18,16 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-If you have a physical ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos), configure it as a _servo_ component.
-Servos are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
+Servo components provide an API for controlling the angular position of a servo precisely or getting its current status.
+
+If you have a physical ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos) with built-in potentiometer position sensors, configure it as a _servo_ component.
 
 If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should configure it as an [encoded motor](/components/motor/encoded-motor/) instead.
 Check your device's data sheet for more information.
 
 ## Available models
 
-To use a hobby servo, you have to add it, and its dependencies, to your machine's configuration.
+To use a hobby servo, you have to add it to your machine's configuration.
 Generally servo's depend on a [board component](/components/board/).
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your servo.

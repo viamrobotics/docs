@@ -16,13 +16,13 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-If you have a physical power sensor, an API endpoint, or anything else that provides measurements of voltage, current, and power consumption, use a _power sensor_ component.
+Power sensor components provide an API for getting measurements of voltage, current, and power consumption.
 
-The sensor component is often used alongside the [data management service](/services/data/), which allows you to capture and sync the sensor's data.
+If you have a physical power sensor, an API endpoint, or anything else that provides such measurements, use a _power sensor_ component.
 
 ## Available models
 
-To use a power sensor and get its measurements, you have to add it as well as any dependencies, such as a board and a configured analog-to-digital converter (ADC), to your machine's configuration.
+To use a power sensor and get its measurements, you have to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -69,3 +69,5 @@ For general configuration and development info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{< /cards >}}
+
+To capture data from the power sensor or use it for motion, see the [data management service](/services/data/).

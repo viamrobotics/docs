@@ -16,12 +16,9 @@ hide_children: true
 # SMEs: Bucket Team
 ---
 
-If you have a physical robotic grasping device that can open and close, use a _gripper_ component.
+Grippers provide an API for opening and closing a device.
 
-The gripper component is often used with the following services:
-
-- [motion service](/services/slam/): to move machines or components of machines
-- [frame system service](/services/navigation/): to configure the positions of your components
+If you have a robotic grasping device that can open and close, use a _gripper_ component.
 
 ## Available models
 
@@ -71,3 +68,8 @@ For general configuration, development, and usage info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/tutorials/services/plan-motion-with-arm-gripper" noimage="true" %}}
 {{< /cards >}}
+
+You can also use the gripper component with the following services:
+
+- [motion service](/services/slam/): to move machines or components of machines
+- [frame system service](/services/navigation/): to configure the positions of your components

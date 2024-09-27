@@ -18,7 +18,9 @@ hide_children: true
 # SME: Rand
 ---
 
-If you have a type of sensor that can detect speed and direction of rotation of a motor or a joint, use an _encoder_ component.
+Encoders provide an API for getting the position of a motor or a joint in ticks or degrees.
+
+If you have hardware or software that provides the position of a motor, use an _encoder_ component.
 
 Encoder components are often used in conjunction with a motor, and are sometimes even built directly into motors.
 Encoder can also be mounted on a passive joint or other rotating object to keep track of the joint angle.
@@ -32,15 +34,9 @@ The encoder component supports:
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
 
-The encoder component is often used with the following services:
-
-- [data management service](/services/data/): to capture and sync the sensor's data
-- [motion service](/services/motion/): to move machines or components of machines
-- [navigation service](/services/navigation/): to navigate with GPS
-
 ## Available models
 
-To use an encoder, you have to add it as well as any dependencies, such as a [board component](/components/board/) with a configured analog-to-digital converter (ADC) and a [motor component](/components/motor/), to your machine's configuration.
+To use an encoder, you have to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -89,3 +85,9 @@ For general configuration, development, and usage info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/components/motor/encoded-motor/" noimage="true" %}}
 {{< /cards >}}
+
+You can also use the encoder component with the following services:
+
+- [data management service](/services/data/): to capture and sync the sensor's data
+- [motion service](/services/motion/): to move machines or components of machines
+- [navigation service](/services/navigation/): to navigate with GPS

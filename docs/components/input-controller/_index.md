@@ -15,6 +15,8 @@ hide_children: true
 # SME: James
 ---
 
+Input controllers provide an API for configuring callbacks for events, allowing you to configure input devices to control your machines.
+
 If you have a keyboards, mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers with which you want to control a robotic base, use an _input controller_ component.
 
 This component supports devices like gamepads and joysticks that contain one or more [`Control`s](/appendix/apis/components/input-controller/#control-field) representing the individual axes and buttons on the device.
@@ -27,7 +29,7 @@ The [base remote control service](/services/base-rc/) implements an input contro
 
 ## Available models
 
-To use an input controller to control your machine's actions, you have to add it as well as any components you are trying to control, to your machine's configuration.
+To use an input controller to control your machine's actions, you have to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your input controller.
 

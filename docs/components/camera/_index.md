@@ -16,18 +16,14 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-If you have a physical camera that generates 2D images or 3D point clouds, or one or multiple video streams, use a _camera_ component.
+Cameras provide an API for getting images or point clouds.
+
+If you have a physical camera or software that generates 2D images or 3D point clouds, use a _camera_ component.
 
 You can use the camera component to configure a webcam, lidar, time-of-flight sensor, or another type of camera.
 You can also use camera models to manipulate the output of other cameras to transform, crop, or otherwise change the output.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/iKCMo89oyfw">}}
-
-The camera component is often used with the following services:
-
-- [data management service](/services/data/): to capture and sync the camera's data
-- [vision service](/services/vision/): to use computer vision to interpret the camera stream
-- [SLAM service](/services/slam/): for mapping
 
 ## Available models
 
@@ -74,3 +70,9 @@ For general configuration, development, and usage info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/get-started/detect-people/" noimage="true" %}}
 {{< /cards >}}
+
+You can also use the camera component with the following services:
+
+- [data management service](/services/data/): to capture and sync the camera's data
+- [vision service](/services/vision/): to use computer vision to interpret the camera stream
+- [SLAM service](/services/slam/): for mapping

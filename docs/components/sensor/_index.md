@@ -18,15 +18,15 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-If you have a physical sensor, an API endpoint, or anything else that provides measurements, use a _sensor_ component.
+Sensor components provide an API for getting measurements.
 
-The sensor component is often used alongside the [data management service](/services/data/), which allows you to capture and sync the sensor's data.
+If you have a physical sensor, an API endpoint, or anything else that provides measurements, use a _sensor_ component.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/0YfP-63OBh8">}}
 
 ## Available models
 
-To use a sensor and get its measurements, you have to add it and its dependencies, to your machine's configuration.
+To use a sensor and get its measurements, you have to add it to your machine's configuration.
 Physical sensors often require a [board component](/components/board/) with a configured analog-to-digital converter (ADC).
 Virtual sensors often function without additional dependencies.
 
@@ -86,3 +86,5 @@ For general configuration and development info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{< /cards >}}
+
+To capture data from the sensor, see the [data management service](/services/data/).

@@ -19,6 +19,8 @@ hide_children: true
 # SMEs:
 ---
 
+Generic components provide an API for running model-specific commands using [`DoCommand`](/appendix/apis/components/generic/#docommand).
+
 If you have a physical device or a program that does not fit into any of the provided [components APIs](/appendix/apis/#component-apis), use a _generic_ component.
 
 For example, if you want to use an LED display, you need functionality that isn't currently exposed in an existing API.

@@ -19,21 +19,12 @@ outputs:
 # SME: Peter L
 ---
 
+Arms provide an API for linear motion planning, including self-collision prevention and obstacle avoidance.
+
 If you have a physical robotic arm, consisting of a serial chain of joints and links, with a fixed end and an end effector end, use an _arm_ component.
 
 Typically, arms have two ends: one fixed in place, and one with a device you can position.
 When operating an arm you can place the its end effector at arbitrary cartesian positions relative to the base of the arm.
-
-When controlling an arm component, the following features are available:
-
-- Linear motion planning
-- Self-collision prevention
-- Obstacle avoidance
-
-The arm component is often used with the following services:
-
-- [motion service](/services/slam/): to move machines or components of machines
-- [frame system service](/services/navigation/): to configure the positions of your components
 
 ## Available models
 
@@ -110,3 +101,8 @@ For general configuration, development, and usage info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/tutorials/services/accessing-and-moving-robot-arm" noimage="true" %}}
 {{< /cards >}}
+
+You can also use the arm component with the following services:
+
+- [motion service](/services/slam/): to move machines or components of machines
+- [frame system service](/services/navigation/): to configure the positions of your components
