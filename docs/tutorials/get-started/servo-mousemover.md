@@ -190,8 +190,7 @@ Create a [servo component](/components/servo/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-1. Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model if you are using a Raspberry Pi 3, 4 or Zero 2 W.
-   If you are using a Raspberry Pi 5, use the `gpio` model.
+1. Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 1. Enter the name `fs90f` for your servo and click **Create**.
 
 After clicking **Create**, you see where you can put in attributes for the servo.
