@@ -77,15 +77,6 @@ Configuring these attributes on your board allows you to integrate [digital inte
 
 ## Next steps
 
-To get started using your board, see the [board API](/appendix/apis/components/board/) or check out one of these guides:
-
-{{< cards >}}
-{{% card link="/tutorials/get-started/blink-an-led" %}}
-{{% card link="/tutorials/projects/guardian" %}}
-{{< /cards >}}
-
-## Next steps
-
 For more configuration and development info, see:
 
 {{< cards >}}
