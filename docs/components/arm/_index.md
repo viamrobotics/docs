@@ -24,7 +24,7 @@ Arms provide an API for linear motion planning, including self-collision prevent
 If you have a physical robotic arm, consisting of a serial chain of joints and links, with a fixed end and an end effector end, use an _arm_ component.
 
 Typically, arms have two ends: one fixed in place, and one with a device you can position.
-When operating an arm you can place the its end effector at arbitrary cartesian positions relative to the base of the arm.
+When operating an arm you can place its end effector at arbitrary cartesian positions relative to the base of the arm.
 
 ## Available models
 
@@ -82,7 +82,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 
-- When an arm is moved with a `move_to_position` call, the movement will follow a straight line, and not deviate from the start or end orientations more than the start and orientations differ from one another
+- When an arm is moved with a `move_to_position` call, the movement will follow a straight line, and not deviate from the start or end orientations more than the start and orientations differ from one another.
 
 - If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
 
