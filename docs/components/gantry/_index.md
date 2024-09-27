@@ -17,7 +17,7 @@ hide_children: true
 ---
 
 <div class="td-max-width-on-larger-screens text-center">
-<img src="../../components/gantry/gantry-illustration.png" style="max-width:300px" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." class="alignright imgzoom">
+<img src="gantry-illustration.png" style="max-width:300px" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." class="alignright imgzoom">
 </div>
 
 If you have a physical gantry, that is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector), use a _gantry_ component.
