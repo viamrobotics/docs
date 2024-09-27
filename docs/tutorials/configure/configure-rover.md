@@ -53,7 +53,7 @@ In the following, you can see two popular examples with components that are pres
 The first component you will add is the [board](/components/board/) which represents the Raspberry Pi to which the other components are wired.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `board` type, then select the `pi` model.
+Select the `board` type, then select the `viam:raspberry-pi:rpi` model.
 Enter `local` as the name and click **Create**.
 You can use a different name but will then need to adjust the name in the following steps to the name you choose.
 
@@ -366,14 +366,14 @@ If you click on the **Video Path** field while your robot is live, a dropdown au
 If your rover has its camera mounted on a pair of [servos](/components/servo/), like the Yahboom rover, you can use these to control the pan and tilt of the camera.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `servo` type, then select the `pi` model.
+Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 Enter `pan` as the name and click **Create**.
 
 Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`23` for the Yahboom rover).
 
 Finally, add the tilt `servo` as well.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `servo` type, then select the `pi` model.
+Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 Enter `tilt` as the name and click **Create**.
 
 Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`21` for the Yahboom rover).

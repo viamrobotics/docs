@@ -22,7 +22,7 @@ The servo component supports ["RC" or "hobby" servo motors](https://learn.adafru
 These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
 
 As servos can use a lot of power, drawing voltage away from a [board](/components/board/), you should power your servo with its own power supply in most cases.
-The following shows an example wiring diagram for a hobby servo wired to a [`pi` board](/components/board/pi/):
+The following shows an example wiring diagram for a hobby servo wired to a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi):
 
 ![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/servo/servo-wiring.png)
 

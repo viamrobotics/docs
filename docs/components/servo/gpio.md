@@ -13,7 +13,7 @@ component_description: "A hobby servo wired to any model of board besides pi."
 # SME: Rand
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`pi` model [board](/components/board/) into your machine:
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`viam:raspberry-pi:rpi` model [board](/components/board/) into your machine:
 
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}

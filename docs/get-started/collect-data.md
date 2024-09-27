@@ -173,12 +173,12 @@ Wait for your device to connect to the Viam app.
 {{% /expand%}}
 {{< expand "Step 3: Configure a board" >}}
 
-Most sensors need to be wired to the pins of a SBC such as a [Raspberry Pi](/components/board/pi/).
+Most sensors need to be wired to the pins of a SBC such as a Raspberry Pi.
 
 If you are not using a single-board computer (SBC), move on to step 4.
 
 If you are using a SBC, make sure you have installed `viam-server` on the SBC.
-Then add a board component to your config for your SBC.
+Then add a [board component](/components/board/#available-models) to your config for your SBC.
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 

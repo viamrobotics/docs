@@ -317,7 +317,7 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 
 ### What is a sub-part?
 
-Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
+Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](https://github.com/viam-modules/raspberry-pi).
 You follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your [board](/components/board/), and you start operating your machine with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
 
 By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:
