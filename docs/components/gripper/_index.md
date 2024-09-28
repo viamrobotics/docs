@@ -71,5 +71,5 @@ For general configuration, development, and usage info, see:
 
 You can also use the gripper component with the following services:
 
-- [motion service](/services/slam/): to move machines or components of machines
-- [frame system service](/services/navigation/): to configure the positions of your components
+- [Motion service](/services/slam/): To move machines or components of machines
+- [Frame system service](/services/navigation/): To configure the positions of your components

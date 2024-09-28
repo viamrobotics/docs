@@ -73,6 +73,6 @@ For general configuration, development, and usage info, see:
 
 You can also use the camera component with the following services:
 
-- [data management service](/services/data/): to capture and sync the camera's data
-- [vision service](/services/vision/): to use computer vision to interpret the camera stream
+- [Data management service](/services/data/): To capture and sync the camera's data
+- [Vision service](/services/vision/): To use computer vision to interpret the camera stream
 - [SLAM service](/services/slam/): for mapping
