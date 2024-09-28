@@ -26,7 +26,7 @@ To use a power sensor and get its measurements, you need to add it to your machi
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
-The following list shows you the available sensor models.
+The following list shows the available sensor models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -50,7 +50,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [power sensor API](/appendix/apis/components/power-sensor/), which supports the following methods:
+The [power sensor API](/appendix/apis/components/power-sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/power_sensor-table.md" >}}
 

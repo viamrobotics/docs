@@ -68,7 +68,7 @@ You will need to [recompile and flash your ESP32 yourself](/installation/#instal
 
 ## API
 
-The [generic API](/appendix/apis/components/generic/), which supports the following methods:
+The [generic API](/appendix/apis/components/generic/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 

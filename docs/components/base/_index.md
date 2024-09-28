@@ -40,7 +40,7 @@ Most mobile robots with a base need at least the following hardware:
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your base.
 
-The following list shows you the available base models.
+The following list shows the available base models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -65,7 +65,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [base API](/appendix/apis/components/base/), which supports the following methods:
+The [base API](/appendix/apis/components/base/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 

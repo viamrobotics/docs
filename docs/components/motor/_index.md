@@ -31,7 +31,7 @@ Go to your machine's **CONFIGURE** page, and add a model that supports your moto
 
 Because your machine controls your motor using a [motor driver](https://www.wellpcb.com/what-is-motor-driver.html), you technically need to select a motor model that supports your motor driver rather than the motor itself.
 
-The following list shows you the available motor models.
+The following list shows the available motor models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -56,7 +56,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [motor API](/appendix/apis/components/motor/), which supports the following methods:
+The [motor API](/appendix/apis/components/motor/) supports the following methods:
 
 The motor component supports the following methods:
 

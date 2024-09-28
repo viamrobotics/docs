@@ -23,7 +23,7 @@ To get started using Viam's SDKs to connect to and control your machine, go to y
 When executed, this sample code will create a connection to your machine as a client.
 Then control your machine programmatically by getting your `generic` component from the machine with `FromRobot` and adding API method calls, as shown in the following examples.
 
-These examples assume you have a board called "my_board" configured as a component of your machine.
+The following examples assume you have a board called "my_board" configured as a component of your machine.
 If your board has a different name, change the `name` in the code.
 
 Be sure to import the generic component package for the SDK you are using:

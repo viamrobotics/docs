@@ -20,10 +20,9 @@ To get started using Viam's SDKs to connect to and control your machine, go to y
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code creates a connection to your machine as a client.
 
-These examples assume you have a gantry called `"my_gantry"` configured as a component of your machine.
+The following examples assume you have a gantry called `"my_gantry"` configured as a component of your machine.
 If your gantry has a different name, change the `name` in the code.
 
 Be sure to import the gantry package for the SDK you are using:

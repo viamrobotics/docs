@@ -25,7 +25,7 @@ If you have a robotic grasping device that can open and close, use a gripper com
 To use a robotic gripper, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your gripper.
 
-The following list shows you the available gripper models.
+The following list shows the available gripper models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -49,7 +49,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [gripper API](/appendix/apis/components/gripper/), which supports the following methods:
+The [gripper API](/appendix/apis/components/gripper/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gripper-table.md" >}}
 

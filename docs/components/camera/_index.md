@@ -30,7 +30,7 @@ You can also use camera models to manipulate the output of other cameras to tran
 To use a camera with your machine, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your camera.
 
-The following list shows you the available camera models.
+The following list shows the available camera models.
 The configuration of your camera component depends on your camera model.
 For additional configuration information, click on the model name:
 
@@ -57,7 +57,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [camera API](/appendix/apis/components/camera/), which supports the following methods:
+The [camera API](/appendix/apis/components/camera/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/camera-table.md" >}}
 

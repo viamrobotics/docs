@@ -31,7 +31,7 @@ When operating an arm you can place its end effector at arbitrary cartesian posi
 To use a robotic arm, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your arm.
 
-The following list shows you the available arm models.
+The following list shows the available arm models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -61,7 +61,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [arm API](/appendix/apis/components/arm/), which supports the following methods:
+The [arm API](/appendix/apis/components/arm/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/arm-table.md" >}}
 

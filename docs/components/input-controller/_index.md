@@ -17,7 +17,7 @@ hide_children: true
 
 Input controllers provide an API for configuring callbacks for events, allowing you to configure input devices to control your machines.
 
-If you have a keyboards, mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers with which you want to control a robotic base, use an _input controller_ component.
+If you have a keyboard, mouse, elevator button panel, light power switch, joystick, gamepad, or video game controllers with which you want to control a robotic base, use an input controller component.
 
 This component supports devices like gamepads and joysticks that contain one or more [`Control`s](/appendix/apis/components/input-controller/#control-field) representing the individual axes and buttons on the device.
 To use the controller's inputs, you must [register callback functions](/appendix/apis/components/input-controller/#registercontrolcallback) to the [`Control`s](/appendix/apis/components/input-controller/#control-field) with the [`input` API](/appendix/apis/components/input-controller/).
@@ -33,7 +33,7 @@ To use an input controller to control your machine's actions, you need to add it
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your input controller.
 
-The following list shows you the available input controller models.
+The following list shows the available input controller models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -57,7 +57,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [input controller API](/appendix/apis/components/input-controller/), which supports the following methods:
+The [input controller API](/appendix/apis/components/input-controller/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/input_controller-table.md" >}}
 

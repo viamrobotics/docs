@@ -34,7 +34,7 @@ Each gantry can only move in one axis within the limits of the length of the lin
 To use a gantry, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your gantry.
 
-The following list shows you the available gantry models.
+The following list shows the available gantry models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -58,7 +58,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [gantry API](/appendix/apis/components/gantry/), which supports the following methods:
+The [gantry API](/appendix/apis/components/gantry/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gantry-table.md" >}}
 

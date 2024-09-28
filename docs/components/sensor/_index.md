@@ -32,7 +32,7 @@ Virtual sensors often function without additional dependencies.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
-The following list shows you the available sensor models.
+The following list shows the available sensor models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -67,7 +67,7 @@ If none of the existing models fit your use case, you can [create a modular reso
 
 ## API
 
-The [sensor API](/appendix/apis/components/sensor/), which supports the following methods:
+The [sensor API](/appendix/apis/components/sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/sensor-table.md" >}}
 

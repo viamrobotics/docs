@@ -27,7 +27,7 @@ To use a movement sensor and get its measurements, you need to add it to your ma
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
-The following list shows you the available sensor models.
+The following list shows the available sensor models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -53,7 +53,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [movement sensor API](/appendix/apis/components/movement-sensor/), which supports the following methods:
+The [movement sensor API](/appendix/apis/components/movement-sensor/) supports the following methods:
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 

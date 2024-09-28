@@ -48,7 +48,7 @@ If there is no board model for your board:
 To use GPIO pins, you need to add a board component to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your board.
 
-The following list shows you the available board models.
+The following list shows the available board models.
 If your board is not among them, you may be able to use the pins on your board with an experimental [periph.io](https://periph.io/)-based [modular component](https://github.com/viam-labs/periph_board).
 This works for boards such as the [RockPi S](https://wiki.radxa.com/RockpiS).
 
@@ -76,7 +76,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [board API](/appendix/apis/components/board/), which supports the following methods:
+The [board API](/appendix/apis/components/board/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 
