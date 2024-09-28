@@ -20,16 +20,18 @@ hide_children: true
 
 Motor components provide an API for operating a motor or getting its current status.
 
-If you have a physical motor that convert electricity into rotary motion, configure it as a _motor_ component.
+If you have a device that converts electricity into rotary motion, such as a brushed DC motor, a brushless DC motor, or a stepper motor, configure it as a _motor_ component.
+
+For a hobby servo, configure it as a [servo component](/components/servo/) instead.
 
 ## Available models
 
 To use a motor, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your motor.
 
-The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
+Because your machine controls your motor using a [motor driver](https://www.wellpcb.com/what-is-motor-driver.html), you technically need to select a motor model that supports your motor driver rather than the motor itself.
 
-The following list shows you the available arm models.
+The following list shows you the available motor models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -75,9 +77,3 @@ For general configuration and development info, see:
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/get-started/control-motor/" noimage="true" %}}
 {{< /cards >}}
-
-You can also use the motor component with the following services:
-
-- [motion service](/services/slam/): to move machines or components of machines
-- [navigation service](/services/navigation/): to navigate with GPS
-- [SLAM service](/services/slam/): for mapping
