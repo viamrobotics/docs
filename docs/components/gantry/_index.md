@@ -22,7 +22,7 @@ hide_children: true
 
 Gantrys provide an API for coordinated control of one or more linear actuators.
 
-If you have a physical gantry, that is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector), use a _gantry_ component.
+If you have a physical gantry, that is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector), use a gantry component.
 
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 
@@ -31,7 +31,7 @@ Each gantry can only move in one axis within the limits of the length of the lin
 
 ## Available models
 
-To use a gantry, you have to add it to your machine's configuration.
+To use a gantry, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your gantry.
 
 The following list shows you the available gantry models.
@@ -58,7 +58,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-To get started using your gantry, see the [gantry API](/appendix/apis/components/gantry/), which supports the following methods:
+The [gantry API](/appendix/apis/components/gantry/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gantry-table.md" >}}
 

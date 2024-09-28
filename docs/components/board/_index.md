@@ -20,7 +20,7 @@ hide_children: true
 
 Boards provide an API for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
 
-If you have GPIO pins you wish to control, use a _board_ component.
+If you have GPIO pins you wish to control, use a board component.
 
 Your GPIO pins can be present as:
 
@@ -76,7 +76,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your board, see the [board API](/appendix/apis/components/board/), which supports the following methods:
+The [board API](/appendix/apis/components/board/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 

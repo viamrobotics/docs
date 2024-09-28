@@ -19,11 +19,11 @@ aliases:
 
 Movement sensors provide an API for gps location, linear velocity and acceleration, angular velocity and acceleration and heading.
 
-If you have hardware or software that provides such measurements, use a _movement sensor_ component.
+If you have hardware or software that provides such measurements, use a movement sensor component.
 
 ## Available models
 
-To use a movement sensor and get its measurements, you have to add it to your machine's configuration.
+To use a movement sensor and get its measurements, you need to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -53,7 +53,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your movement sensor, see the [movement sensor API](/appendix/apis/components/movement-sensor/), which supports the following methods:
+The [movement sensor API](/appendix/apis/components/movement-sensor/), which supports the following methods:
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 

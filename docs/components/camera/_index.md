@@ -18,7 +18,7 @@ aliases:
 
 Cameras provide an API for getting images or point clouds.
 
-If you have a physical camera or software that generates 2D images or 3D point clouds, use a _camera_ component.
+If you have a physical camera or software that generates 2D images or 3D point clouds, use a camera component.
 
 You can use the camera component to configure a webcam, lidar, time-of-flight sensor, or another type of camera.
 You can also use camera models to manipulate the output of other cameras to transform, crop, or otherwise change the output.
@@ -27,7 +27,7 @@ You can also use camera models to manipulate the output of other cameras to tran
 
 ## Available models
 
-To use a camera with your machine, you have to add it to your machine's configuration.
+To use a camera with your machine, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your camera.
 
 The following list shows you the available camera models.
@@ -57,7 +57,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your camera, see the [camera API](/appendix/apis/components/camera/), which supports the following methods:
+The [camera API](/appendix/apis/components/camera/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/camera-table.md" >}}
 

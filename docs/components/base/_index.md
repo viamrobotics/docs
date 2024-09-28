@@ -19,7 +19,7 @@ hide_children: true
 
 Bases provide an API for moving all configured components attached to a platform as a whole without needing to send commands to individual components.
 
-If you have a platform for a robot with other components, such as wheels or legs, attached to it, use a _base_ component.
+If you have a mobile robot, use a base component to coordinate the motion of its motor components.
 
 <p>
 <img src="base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." class="imgzoom aligncenter" style="max-width: 500px">
@@ -27,7 +27,7 @@ If you have a platform for a robot with other components, such as wheels or legs
 
 ## Available models
 
-To use a rover or other base, you have to add it to your machine's configuration.
+To use a rover or other base, you need to add it to your machine's configuration.
 
 Most mobile robots with a base need at least the following hardware:
 
@@ -65,7 +65,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your base, see the [base API](/appendix/apis/components/base/), which supports the following methods:
+The [base API](/appendix/apis/components/base/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 

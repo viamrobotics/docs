@@ -24,7 +24,7 @@ If you have a physical motor that convert electricity into rotary motion, config
 
 ## Available models
 
-To use a motor, you have to add it to your machine's configuration.
+To use a motor, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your motor.
 
 The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
@@ -54,7 +54,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your motor, see the [motor API](/appendix/apis/components/motor/), which supports the following methods:
+The [motor API](/appendix/apis/components/motor/), which supports the following methods:
 
 The motor component supports the following methods:
 

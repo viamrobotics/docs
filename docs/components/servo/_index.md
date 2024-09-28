@@ -27,7 +27,7 @@ Check your device's data sheet for more information.
 
 ## Available models
 
-To use a hobby servo, you have to add it to your machine's configuration.
+To use a hobby servo, you need to add it to your machine's configuration.
 Generally servo's depend on a [board component](/components/board/).
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your servo.
@@ -56,7 +56,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your servo, see the [servo API](/appendix/apis/components/servo/), which supports the following methods:
+The [servo API](/appendix/apis/components/servo/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/servo-table.md" >}}
 

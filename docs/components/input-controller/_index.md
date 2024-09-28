@@ -29,7 +29,7 @@ The [base remote control service](/services/base-rc/) implements an input contro
 
 ## Available models
 
-To use an input controller to control your machine's actions, you have to add it to your machine's configuration.
+To use an input controller to control your machine's actions, you need to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your input controller.
 
@@ -57,7 +57,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-To get started using your input controller, see the [input controller API](/appendix/apis/components/input-controller/), which supports the following methods:
+The [input controller API](/appendix/apis/components/input-controller/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/input_controller-table.md" >}}
 

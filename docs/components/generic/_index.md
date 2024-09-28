@@ -21,7 +21,7 @@ hide_children: true
 
 Generic components provide an API for running model-specific commands using [`DoCommand`](/appendix/apis/components/generic/#docommand).
 
-If you have a physical device or a program that does not fit into any of the provided [components APIs](/appendix/apis/#component-apis), use a _generic_ component.
+If you have a physical device or a program that does not fit into any of the provided [components APIs](/appendix/apis/#component-apis), use a generic component.
 
 For example, if you want to use an LED display, you need functionality that isn't currently exposed in an existing API.
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
@@ -68,7 +68,7 @@ You will need to [recompile and flash your ESP32 yourself](/installation/#instal
 
 ## API
 
-To get started using your generic, see the [generic API](/appendix/apis/components/generic/), which supports the following methods:
+The [generic API](/appendix/apis/components/generic/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 

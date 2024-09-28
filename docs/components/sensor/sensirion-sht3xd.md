@@ -65,7 +65,7 @@ The following attributes are available for `sensirion-sht3xd` sensors:
 
 ## Next steps
 
-To get started using your sensor, see the [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:
+The [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}

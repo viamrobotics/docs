@@ -18,11 +18,11 @@ hide_children: true
 
 Grippers provide an API for opening and closing a device.
 
-If you have a robotic grasping device that can open and close, use a _gripper_ component.
+If you have a robotic grasping device that can open and close, use a gripper component.
 
 ## Available models
 
-To use a robotic gripper, you have to add it to your machine's configuration.
+To use a robotic gripper, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your gripper.
 
 The following list shows you the available gripper models.
@@ -49,7 +49,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-To get started using your gripper, see the [gripper API](/appendix/apis/components/gripper/), which supports the following methods:
+The [gripper API](/appendix/apis/components/gripper/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gripper-table.md" >}}
 

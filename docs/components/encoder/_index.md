@@ -36,7 +36,7 @@ The encoder component supports:
 
 ## Available models
 
-To use an encoder, you have to add it to your machine's configuration.
+To use an encoder, you need to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -66,7 +66,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-To get started using your encoder, see the [encoder API](/appendix/apis/components/encoder/), which supports the following methods:
+The [encoder API](/appendix/apis/components/encoder/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
 

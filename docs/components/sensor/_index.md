@@ -20,13 +20,13 @@ hide_children: true
 
 Sensor components provide an API for getting measurements.
 
-If you have a physical sensor, an API endpoint, or anything else that provides measurements, use a _sensor_ component.
+If you have a physical sensor, an API endpoint, or anything else that provides measurements, use a sensor component.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/0YfP-63OBh8">}}
 
 ## Available models
 
-To use a sensor and get its measurements, you have to add it to your machine's configuration.
+To use a sensor and get its measurements, you need to add it to your machine's configuration.
 Physical sensors often require a [board component](/components/board/) with a configured analog-to-digital converter (ADC).
 Virtual sensors often function without additional dependencies.
 
@@ -67,7 +67,7 @@ If none of the existing models fit your use case, you can [create a modular reso
 
 ## API
 
-To get started using your sensor, see the [sensor API](/appendix/apis/components/sensor/), which supports the following methods:
+The [sensor API](/appendix/apis/components/sensor/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/sensor-table.md" >}}
 

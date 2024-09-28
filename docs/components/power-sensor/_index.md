@@ -18,11 +18,11 @@ hide_children: true
 
 Power sensor components provide an API for getting measurements of voltage, current, and power consumption.
 
-If you have a physical power sensor, an API endpoint, or anything else that provides such measurements, use a _power sensor_ component.
+If you have a physical power sensor, an API endpoint, or anything else that provides such measurements, use a power sensor component.
 
 ## Available models
 
-To use a power sensor and get its measurements, you have to add it to your machine's configuration.
+To use a power sensor and get its measurements, you need to add it to your machine's configuration.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
 
@@ -50,7 +50,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-To get started using your power sensor, see the [power sensor API](/appendix/apis/components/power-sensor/), which supports the following methods:
+The [power sensor API](/appendix/apis/components/power-sensor/), which supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/power_sensor-table.md" >}}
 
