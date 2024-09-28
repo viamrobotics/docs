@@ -3,12 +3,12 @@ title: "Arm API"
 linkTitle: "Arm"
 weight: 20
 type: "docs"
-description: "The arm API allows you to give commands to your arm components with code instead of with the graphical interface of the Viam app"
+description: "The arm API allows you to give commands to your arm components for linear motion planning, including self-collision prevention and obstacle avoidance."
 icon: true
 images: ["/icons/components/arm.svg"]
 ---
 
-The arm API allows you to give commands to your [arm components](/components/arm/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The arm API allows you to give commands to your [arm components](/components/arm/) for linear motion planning, including self-collision prevention and obstacle avoidance.
 
 The arm component supports the following methods:
 

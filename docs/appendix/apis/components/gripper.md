@@ -3,12 +3,12 @@ title: "Control your gripper with the gripper API"
 linkTitle: "Gripper"
 weight: 20
 type: "docs"
-description: "The gripper API allows you to give commands to your gripper components with code instead of with the graphical interface of the Viam app"
+description: "The gripper API allows you to give commands to your gripper components for opening and closing a device."
 icon: true
 images: ["/icons/components/gripper.svg"]
 ---
 
-The gripper API allows you to give commands to your [gripper components](/components/gripper/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The gripper API allows you to give commands to your [gripper components](/components/gripper/) for opening and closing a device.
 
 The gripper component supports the following methods:
 

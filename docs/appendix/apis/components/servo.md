@@ -3,12 +3,12 @@ title: "Servo API"
 linkTitle: "Servo"
 weight: 20
 type: "docs"
-description: "The servo API allows you to give commands to your servo components with code instead of with the graphical interface of the Viam app"
+description: "The servo API allows you to give commands to your servo components for controlling the angular position of a servo precisely or getting its current status."
 icon: true
 images: ["/icons/components/servo.svg"]
 ---
 
-The servo API allows you to give commands to your [servo components](/components/servo/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The servo API allows you to give commands to your [servo components](/components/servo/) for controlling the angular position of a servo precisely or getting its current status.
 
 The servo component supports the following methods:
 

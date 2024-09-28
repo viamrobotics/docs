@@ -3,12 +3,12 @@ title: "Gantry API"
 linkTitle: "Gantry"
 weight: 20
 type: "docs"
-description: "The gantry API allows you to give commands to your gantry components with code instead of with the graphical interface of the Viam app"
+description: "The gantry API allows you to give commands to your gantry components for coordinated control of one or more linear actuators."
 icon: true
 images: ["/icons/components/gantry.svg"]
 ---
 
-The gantry API allows you to give commands to your [gantry components](/components/gantry/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The gantry API allows you to give commands to your [gantry components](/components/gantry/) for coordinated control of one or more linear actuators.
 
 The gantry component supports the following methods:
 

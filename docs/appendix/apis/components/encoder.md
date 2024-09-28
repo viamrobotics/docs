@@ -3,12 +3,12 @@ title: "Encoder API"
 linkTitle: "Encoder"
 weight: 20
 type: "docs"
-description: "The encoder API allows you to give commands to your encoder components with code instead of with the graphical interface of the Viam app"
+description: "The encoder API allows you to give commands to your encoder components for getting the position of a motor or a joint in ticks or degrees."
 icon: true
 images: ["/icons/components/encoder.svg"]
 ---
 
-The encoder API allows you to give commands to your [encoder components](/components/encoder/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The encoder API allows you to give commands to your [encoder components](/components/encoder/) for getting the position of a motor or a joint in ticks or degrees.
 
 The encoder component supports the following methods:
 

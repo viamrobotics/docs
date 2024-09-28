@@ -4,12 +4,12 @@ linkTitle: "Movement Sensor"
 titleMustBeLong: true
 weight: 20
 type: "docs"
-description: "The movement sensor API allows you to give commands to your movement sensor components with code instead of with the graphical interface of the Viam app"
+description: "The movement sensor API allows you to give commands to your movement sensor components for getting a GPS location, linear velocity and acceleration, angular velocity and acceleration and heading."
 icon: true
 images: ["/icons/components/imu.svg"]
 ---
 
-The movement sensor API allows you to give commands to your [movement sensor components](/components/movement-sensor/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The movement sensor API allows you to give commands to your [movement sensor components](/components/movement-sensor/) for getting a GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 

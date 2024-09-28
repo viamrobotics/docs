@@ -3,12 +3,12 @@ title: "Camera API"
 linkTitle: "Camera"
 weight: 20
 type: "docs"
-description: "The camera API allows you to give commands to your camera components with code instead of with the graphical interface of the Viam app"
+description: "The camera API allows you to give commands to your camera components for getting images or point clouds."
 icon: true
 images: ["/icons/components/camera.svg"]
 ---
 
-The camera API allows you to give commands to your [camera components](/components/camera/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The camera API allows you to give commands to your [camera components](/components/camera/) for getting images or point clouds.
 
 The API for camera components allows you to:
 

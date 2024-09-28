@@ -3,12 +3,12 @@ title: "Base API"
 linkTitle: "Base"
 weight: 20
 type: "docs"
-description: "The base API allows you to give commands to your base components with code instead of with the graphical interface of the Viam app"
+description: "The base API allows you to give commands to your base components for moving all configured components attached to a platform as a whole without needing to send commands to individual components."
 icon: true
 images: ["/icons/components/base.svg"]
 ---
 
-The base API allows you to give commands to your [base components](/components/base/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The base API allows you to give commands to your [base components](/components/base/) for moving all configured components attached to a platform as a whole without needing to send commands to individual components.
 
 The base component supports the following methods:
 

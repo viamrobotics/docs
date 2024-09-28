@@ -3,12 +3,12 @@ title: "Motor API"
 linkTitle: "Motor"
 weight: 20
 type: "docs"
-description: "The motor API allows you to give commands to your motor components with code instead of with the graphical interface of the Viam app"
+description: "The motor API allows you to give commands to your motor components for operating a motor or getting its current status."
 icon: true
 images: ["/icons/components/motor.svg"]
 ---
 
-The motor API allows you to give commands to your [motor components](/components/motor/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The motor API allows you to give commands to your [motor components](/components/motor/) for operating a motor or getting its current status.
 
 The motor component supports the following methods:
 

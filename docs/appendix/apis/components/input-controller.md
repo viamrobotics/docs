@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/controller.svg"]
 ---
 
-The input controller API allows you to give commands to your [input controller components](/components/input-controller/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The input controller API allows you to give commands to your [input controller components](/components/input-controller/) for configuring callbacks for events, allowing you to configure input devices to control your machines.
 
 The input controller component supports the following methods:
 

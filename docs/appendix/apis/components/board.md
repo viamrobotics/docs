@@ -3,12 +3,12 @@ title: "Board API"
 linkTitle: "Board"
 weight: 20
 type: "docs"
-description: "The board API allows you to give commands to your board components with code instead of with the graphical interface of the Viam app"
+description: "The board API allows you to give commands to your board components for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts."
 icon: true
 images: ["/icons/components/board.svg"]
 ---
 
-The board API allows you to give commands to your [board components](/components/board/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The board API allows you to give commands to your [board components](/components/board/) for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
 
 The board component supports the following methods:
 
