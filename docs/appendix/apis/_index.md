@@ -1,5 +1,5 @@
 ---
-title: "Interact with Resources with Viam's Client SDKs"
+title: "Viam's Client APIs"
 linkTitle: "APIs"
 weight: 20
 type: "docs"
@@ -54,20 +54,20 @@ Retrieve billing information from the Viam app.
 These APIs provide interfaces for controlling and getting information from various components of a machine:
 
 {{< cards >}}
-{{< card link="/appendix/apis/components/arm/" noimage="True" >}}
-{{< card link="/appendix/apis/components/base/" noimage="True" >}}
-{{< card link="/appendix/apis/components/board/" noimage="True" >}}
-{{< card link="/appendix/apis/components/camera/" noimage="True" >}}
-{{< card link="/appendix/apis/components/encoder/" noimage="True" >}}
-{{< card link="/appendix/apis/components/gantry/" noimage="True" >}}
-{{< card link="/appendix/apis/components/generic/" noimage="True" >}}
-{{< card link="/appendix/apis/components/gripper/" noimage="True" >}}
-{{< card link="/appendix/apis/components/input-controller/" noimage="True" >}}
-{{< card link="/appendix/apis/components/motor/" noimage="True" >}}
-{{< card link="/appendix/apis/components/movement-sensor/" noimage="True" >}}
-{{< card link="/appendix/apis/components/power-sensor/" noimage="True" >}}
-{{< card link="/appendix/apis/components/sensor/" noimage="True" >}}
-{{< card link="/appendix/apis/components/servo/" noimage="True" >}}
+{{< card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="True" >}}
+{{< card link="/appendix/apis/components/base/" customTitle="Base API" noimage="True" >}}
+{{< card link="/appendix/apis/components/board/" customTitle="Board API" noimage="True" >}}
+{{< card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="True" >}}
+{{< card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="True" >}}
+{{< card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="True" >}}
+{{< card link="/appendix/apis/components/generic/" customTitle="Generic API" noimage="True" >}}
+{{< card link="/appendix/apis/components/gripper/" customTitle="Gripper API" noimage="True" >}}
+{{< card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="True" >}}
+{{< card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="True" >}}
+{{< card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="True" >}}
+{{< card link="/appendix/apis/components/power-sensor/" customTitle="Power sensor API" noimage="True" >}}
+{{< card link="/appendix/apis/components/sensor/" customTitle="Sensor API" noimage="True" >}}
+{{< card link="/appendix/apis/components/servo/" customTitle="Servo API" noimage="True" >}}
 {{< /cards >}}
 
 ## Service APIs
@@ -77,10 +77,10 @@ These APIs provide interfaces for controlling and getting information from the s
 <!-- TODO: move to APIS folder and change links -->
 
 {{< cards >}}
-{{% card link="/services/data/" noimage="True" %}}
-{{% card link="/services/ml/deploy/" customTitle="Machine Learning" noimage="True" %}}
-{{% card link="/services/motion/" noimage="True" %}}
-{{% card link="/services/navigation/" noimage="True" %}}
-{{% card link="/services/slam/" noimage="True" %}}
-{{% card link="/services/vision/" noimage="True" %}}
+{{% card link="/services/data/" customTitle="Data management service API" noimage="True" %}}
+{{% card link="/services/ml/deploy/" customTitle="ML service API" noimage="True" %}}
+{{% card link="/services/motion/" customTitle="Motion service API" noimage="True" %}}
+{{% card link="/services/navigation/" customTitle="Navigation service API" noimage="True" %}}
+{{% card link="/services/slam/" customTitle="SLAM service API" noimage="True" %}}
+{{% card link="/services/vision/" customTitle="Vision service API" noimage="True" %}}
 {{< /cards >}}
