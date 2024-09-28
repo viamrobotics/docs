@@ -20,7 +20,7 @@ hide_children: true
 
 Servo components provide an API for controlling the angular position of a servo precisely or getting its current status.
 
-If you have a physical ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos) with built-in potentiometer position sensors, configure it as a _servo_ component.
+If you have a physical ["RC" or "hobby" servo motor](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos) with built-in potentiometer position sensors, configure it as a servo component.
 
 If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should configure it as an [encoded motor](/components/motor/encoded-motor/) instead.
 

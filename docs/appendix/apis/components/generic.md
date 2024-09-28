@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/generic.svg"]
 ---
 
-The generic API allows you to give commands to your [generic components](/components/generic/) for running model-specific commands using [`DoCommand`](#docommand).
+The generic API allows you to give commands to your [generic components](/components/generic/) for running model-specific commands using [`DoCommand`](/appendix/apis/components/generic/#docommand).
 
 The generic component supports the following method:
 
