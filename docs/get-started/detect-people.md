@@ -121,7 +121,7 @@ Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
-Click on **Select model** and select the `ml-models-scuttle:people` model from the registry (the **people** model by **ml-models-scuttle**) to deploy an object detection TFLite model that has been trained to be able to detect a person.
+Click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy an object detection TFLite model that has been trained to be able to detect a person.
 
 For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/deploy/tflite_cpu/).
 
@@ -134,10 +134,11 @@ This service applies the ML model to the camera input stream.
 Add a `vision` **Service** and select the `ML model` model.
 
 Select the ML model service your person detector model is deployed on (which you created in step 4) from the **ML Model** dropdown.
-Click the **Save** button in the top right corner of the page to save your vision service configuration.
 
 {{% /expand%}}
 {{%expand "Step 6: Test person detection" %}}
+
+Click the **Save** button in the top right corner of the page to save your configuration.
 
 Now, test your person detection in the **Test** section of the computer vision service's configuration panel or on the **CONTROL** tab.
 
