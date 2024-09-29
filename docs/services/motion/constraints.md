@@ -11,7 +11,7 @@ no_service: true
 ---
 
 You can constrain the motion of your machine using the motion service's built-in constraint options.
-Constraints are passed as arguments to the [`Move`](../#move) method.
+Constraints are passed as arguments to the [`Move`](/appendix/apis/services/motion/#move) method.
 
 The following constraints are available:
 

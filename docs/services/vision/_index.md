@@ -25,17 +25,11 @@ While the camera component lets you access what your machine's camera sees, the 
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/UxQbUT4eYnw">}}
 
-Currently, the vision service supports the following kinds of operations:
+The vision service supports the following kinds of operations:
 
 - [Detections](#detections)
 - [Classifications](#classifications)
 - [Segmentations](#segmentations)
-
-To get started with a mini project, see this quickstart guide:
-
-{{< cards >}}
-{{< card link="/get-started/detect-people/" class="green">}}
-{{< /cards >}}
 
 ## Detections
 
@@ -59,8 +53,8 @@ The returned detections consist of the bounding box around the identified object
 
 **Supported API methods:**
 
-- [GetDetections()](/services/vision/#getdetections)
-- [GetDetectionsFromCamera()](/services/vision/#getdetectionsfromcamera)
+- [GetDetections()](/appendix/apis/services/vision/#getdetections)
+- [GetDetectionsFromCamera()](/appendix/apis/services/vision/#getdetectionsfromcamera)
 
 ## Classifications
 
@@ -77,8 +71,8 @@ The returned classifications consist of the image's class label and confidence s
 
 **Supported API methods:**
 
-- [GetClassifications()](/services/vision/#getclassifications)
-- [GetClassificationsFromCamera()](/services/vision/#getclassificationsfromcamera)
+- [GetClassifications()](/appendix/apis/services/vision/#getclassifications)
+- [GetClassificationsFromCamera()](/appendix/apis/services/vision/#getclassificationsfromcamera)
 
 ## Segmentations
 
@@ -92,7 +86,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 **Supported API methods:**
 
-- [GetObjectPointClouds()](/services/vision/#getobjectpointclouds)
+- [GetObjectPointClouds()](/appendix/apis/services/vision/#getobjectpointclouds)
 
 ## Available models
 
@@ -100,23 +94,18 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-## Used with
-
-{{< cards >}}
-{{< relatedcard link="/services/ml/deploy/" alt_title="Machine Learning" >}}
-{{< /cards >}}
-
 ## API
 
-Different vision service models support different methods:
+The vision service supports the following [Vision service API](/appendix/apis/services/vision/) methods:
 
 {{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
 
-{{% alert title="Tip" color="tip" %}}
+## Next Steps
 
-The following code examples assume that you have a machine configured with a [camera](/components/camera/) and a vision service [detector](/services/vision/#detections), [classifier](/services/vision/#classifications) or [segmenter](/services/vision/#segmentations), as applicable, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+For general configuration and development info, see:
 
-{{% /alert %}}
-
-{{< readfile "/static/include/services/apis/generated/vision.md" >}}
+{{< cards >}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{< /cards >}}

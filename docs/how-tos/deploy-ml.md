@@ -1,11 +1,11 @@
 ---
 title: "Train and deploy ML/computer vision models"
-linkTitle: "Train computer vision models"
+linkTitle: "Train and deploy computer vision models"
 weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
-description: "Use your image data to create and label a dataset and train a computer vision ML model."
+description: "Use your image data to create and label a dataset and train and deploy a computer vision ML model."
 aliases:
   - /use-cases/deploy-ml/
   - /manage/ml/train-model/

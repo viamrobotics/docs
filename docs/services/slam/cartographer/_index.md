@@ -298,7 +298,7 @@ In the meantime, your machine will show up at the map's origin (with the `(x,y)`
 
 ### Localize only
 
-In this mode, the `cartographer` module on your machine executes the Cartographer algorithm to find its position on a map. This mode is better when using [motion planning's MoveOnMap](/services/motion/#moveonmap) because the map will not be modified.
+In this mode, the `cartographer` module on your machine executes the Cartographer algorithm to find its position on a map. This mode is better when using [motion planning's MoveOnMap](/appendix/apis/services/motion/#moveonmap) because the map will not be modified.
 
 1.  Configure your `cartographer` SLAM service:
 

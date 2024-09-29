@@ -132,7 +132,7 @@ Click the **Save** button in the top right corner of the page and proceed to [te
 
 ## Test your segmenter
 
-The following code uses the [`GetObjectPointClouds`](/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
+The following code uses the [`GetObjectPointClouds`](/appendix/apis/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -188,3 +188,13 @@ To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.g
 {{% alert title="Tip" color="tip" %}}
 To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
+
+## Next Steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/services/navigate-with-rover-base/" noimage="true" %}}
+{{< /cards >}}

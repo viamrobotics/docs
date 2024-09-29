@@ -1,5 +1,5 @@
 ---
-title: "Configure a tflite_cpu"
+title: "Configure a tflite_cpu ML model service"
 linkTitle: "tflite_cpu"
 weight: 60
 type: "docs"
@@ -158,25 +158,17 @@ You can use one of these architectures or build your own.
 
 ## Next steps
 
-To use your model with your machine, add a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
+The ML model service only runs your model on the machine.
+To use the inferences from the model, you must use an additional service such as a [vision service](/services/vision/):
 
 {{< cards >}}
 
-{{% manualcard link="/services/vision/mlmodel/"%}}
+{{% manualcard link="/services/vision/mlmodel/" title="Create a visual detector or classifier" noimage="True" %}}
 
-<h4>Create a detector with your model</h4>
-
-Configure an `mlmodel detector`.
+Use your model deployed with the ML model service by adding a vision service that can provide detections or classifications depending on your ML model.
 
 {{% /manualcard %}}
-{{% manualcard link="/services/vision/mlmodel/"%}}
-
-<h4>Create a classifier with your model</h4>
-
-Configure your `mlmodel classifier`.
-
-{{% /manualcard %}}
-
-{{% card link="/registry/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
+{{% card link="/how-tos/deploy-ml/" noimage="True" %}}
+{{% card link="/get-started/detect-people/" customTitle="Detect people" noimage="true" %}}
 
 {{< /cards >}}

@@ -183,7 +183,7 @@ For more detailed information, including optional attribute configuration, see t
 ## Next steps
 
 You can now detect people on a camera stream.
-Of course these detections are not just accessible from the Viam app, but you can also use the [vision service API](/services/vision/#api).
+Of course these detections are not just accessible from the Viam app, but you can also use the [vision service API](/appendix/apis/services/vision/#api).
 
 Next, you'll learn how to collect data from sensors or cameras using the data management service:
 
