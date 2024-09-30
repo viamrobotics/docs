@@ -70,4 +70,4 @@ For general configuration and development info, see:
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{< /cards >}}
 
-To capture data from the power sensor or use it for motion, see the [data management service](/services/data/).
+To capture data from the power sensor and sync it in the cloud, see the [data management service](/services/data/).
