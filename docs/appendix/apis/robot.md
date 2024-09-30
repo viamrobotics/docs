@@ -42,7 +42,10 @@ async def connect() -> RobotClient:
             # ID
             api_key_id='<API-KEY-ID>'
         )
-    return await RobotClient.at_address(address='ADDRESS FROM CODE SAMPLE TAB OF VIAM APP', options=opts)
+    return await RobotClient.at_address(
+      address='ADDRESS FROM CODE SAMPLE TAB OF VIAM APP',
+      options=opts
+    )
 
 
 async def main():
