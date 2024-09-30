@@ -38,9 +38,9 @@ The encoder component supports:
 
 To use an encoder, you need to add it to your machine's configuration.
 
-Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
+Go to your machine's **CONFIGURE** page, and add a model that supports your encoder.
 
-The following list shows the available sensor models.
+The following list shows the available encoder models.
 For additional configuration information, click on the model name:
 
 {{< tabs >}}
@@ -88,6 +88,6 @@ For general configuration, development, and usage info, see:
 
 You can also use the encoder component with the following services:
 
-- [Data management service](/services/data/): To capture and sync the sensor's data
+- [Data management service](/services/data/): To capture and sync the encoder's data
 - [Motion service](/services/motion/): To move machines or components of machines
 - [Navigation service](/services/navigation/): To navigate with GPS
