@@ -32,20 +32,22 @@ from viam.rpc.dial import DialOptions, Credentials
 from viam.robot.client import RobotClient
 
 
-async def connect(address) -> RobotClient:
+async def connect() -> RobotClient:
     opts = RobotClient.Options(
-        disable_sessions=True, dial_options=DialOptions(timeout=10)).with_api_key(
+        disable_sessions=True,
+        dial_options=DialOptions(timeout=10)).with_api_key(
             # Replace "<API-KEY>" (including brackets) with your API key
             api_key='<API-KEY>',
             # Replace "<API-KEY-ID>" (including brackets) with your API key
             # ID
             api_key_id='<API-KEY-ID>'
         )
-    return await RobotClient.at_address(address=address, options=opts)
+    return await RobotClient.at_address(address='ADDRESS FROM CODE SAMPLE TAB OF VIAM APP', options=opts)
+
 
 async def main():
     # Make a RobotClient
-    machine = await connect('ADDRESS FROM CODE SAMPLE TAB OF VIAM APP')
+    machine = await connect()
     print('Resources:')
     print(machine.resource_names)
     await machine.close()
@@ -120,7 +122,7 @@ Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Add the timeout argument to DialOptions:
-dial_options=DialOptions(timeout=10)
+dial_options = DialOptions(timeout=10)
 ```
 
 The example above shows a timeout of 10 seconds configured.

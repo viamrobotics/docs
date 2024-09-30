@@ -315,11 +315,11 @@ pose = Pose(
 )
 
 pose_in_frame = PoseInFrame(
-    reference_frame="world",  # The reference frame in which this pose is expressed
-    pose=pose                # The pose in that reference frame
+    reference_frame="world",
+    pose=pose
 )
 
-pose = await machine.transform_pose(pose_in_frame, "world")
+transformed_pose = await machine.transform_pose(pose_in_frame, "world")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
