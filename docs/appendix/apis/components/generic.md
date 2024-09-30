@@ -3,7 +3,7 @@ title: "Control your generic component with the generic API"
 linkTitle: "Generic"
 weight: 20
 type: "docs"
-description: "The generic API allows you to give commands to your generic components for running model-specific commands using DoCommand."
+description: "Give commands for running custom model-specific commands using DoCommand on your generic components."
 icon: true
 images: ["/icons/components/generic.svg"]
 ---

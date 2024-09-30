@@ -3,7 +3,7 @@ title: "Servo API"
 linkTitle: "Servo"
 weight: 20
 type: "docs"
-description: "The servo API allows you to give commands to your servo components for controlling the angular position of a servo precisely or getting its current status."
+description: "Commands for controlling the angular position of a servo precisely or getting its current status."
 icon: true
 images: ["/icons/components/servo.svg"]
 ---

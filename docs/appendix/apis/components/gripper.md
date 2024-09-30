@@ -3,7 +3,7 @@ title: "Control your gripper with the gripper API"
 linkTitle: "Gripper"
 weight: 20
 type: "docs"
-description: "The gripper API allows you to give commands to your gripper components for opening and closing a device."
+description: "Give commands for opening and closing a gripper device."
 icon: true
 images: ["/icons/components/gripper.svg"]
 ---

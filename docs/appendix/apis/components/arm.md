@@ -3,7 +3,7 @@ title: "Arm API"
 linkTitle: "Arm"
 weight: 20
 type: "docs"
-description: "The arm API allows you to give commands to your arm components for linear motion planning, including self-collision prevention and obstacle avoidance."
+description: "Give commands to your arm components for linear motion planning, including self-collision prevention and obstacle avoidance."
 icon: true
 images: ["/icons/components/arm.svg"]
 ---

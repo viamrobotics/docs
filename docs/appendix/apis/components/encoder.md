@@ -3,7 +3,7 @@ title: "Encoder API"
 linkTitle: "Encoder"
 weight: 20
 type: "docs"
-description: "The encoder API allows you to give commands to your encoder components for getting the position of a motor or a joint in ticks or degrees."
+description: "Give commands for getting the position of a motor or a joint in ticks or degrees."
 icon: true
 images: ["/icons/components/encoder.svg"]
 ---

@@ -3,7 +3,7 @@ title: "Power sensor API"
 linkTitle: "Power Sensor"
 weight: 20
 type: "docs"
-description: "The power sensor API allows you to give commands to your power sensor components for getting measurements of voltage, current, and power consumption."
+description: "Commands for getting measurements of voltage, current, and power consumption."
 icon: true
 images: ["/icons/components/power-sensor.svg"]
 ---

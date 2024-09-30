@@ -4,7 +4,7 @@ linkTitle: "Input Controller"
 titleMustBeLong: true
 weight: 20
 type: "docs"
-description: "The input controller API allows you to give commands to your input controller components with code instead of with the graphical interface of the Viam app"
+description: "Give commands to register callbacks for events, allowing you to use input devices to control your machines."
 icon: true
 images: ["/icons/components/controller.svg"]
 ---

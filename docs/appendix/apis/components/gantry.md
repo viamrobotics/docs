@@ -3,7 +3,7 @@ title: "Gantry API"
 linkTitle: "Gantry"
 weight: 20
 type: "docs"
-description: "The gantry API allows you to give commands to your gantry components for coordinated control of one or more linear actuators."
+description: "Give commands for coordinated control of one or more linear actuators."
 icon: true
 images: ["/icons/components/gantry.svg"]
 ---

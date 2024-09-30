@@ -3,12 +3,12 @@ title: "Sensor API"
 linkTitle: "Sensor"
 weight: 20
 type: "docs"
-description: "The sensor API allows you to give commands to your sensor components for getting measurements."
+description: "Commands for getting sensor readings."
 icon: true
 images: ["/icons/components/sensor.svg"]
 ---
 
-The sensor API allows you to give commands to your [sensor components](/components/sensor/) for getting measurements.
+The sensor API allows you to get measurements from your [sensor components](/components/sensor/).
 
 The sensor component supports the following methods:
 

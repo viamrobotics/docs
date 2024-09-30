@@ -3,7 +3,7 @@ title: "Camera API"
 linkTitle: "Camera"
 weight: 20
 type: "docs"
-description: "The camera API allows you to give commands to your camera components for getting images or point clouds."
+description: "Give commands for getting images or point clouds."
 icon: true
 images: ["/icons/components/camera.svg"]
 ---
