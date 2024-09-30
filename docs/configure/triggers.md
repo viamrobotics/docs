@@ -46,22 +46,28 @@ For example, if you want to trigger a trigger on temperature readings, configure
 {{% /alert %}}
 
 {{% /tab %}}
-{{% tab name="Part is online" %}}
+{{< /tabs >}}
 
-Edit the **Time between notifications** attribute to set the interval at which this trigger will send `GET` requests when the part is online.
+4. Add **Webhooks** or **Emails**.
+
+{{< tabs name="Notifications types" >}}
+{{% tab name="Webhooks" %}}
+
+Replace the **URL** value with the URL of your cloud function or lambda.
+Configure the time between notifications.
+
+![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
 
 {{% /tab %}}
-{{% tab name="Part is offline" %}}
+{{% tab name="Emails" %}}
 
-Edit the **Time between notifications** attribute to set the interval at which this trigger will send `GET` requests when the part is offline.
+Add the email you wish to be notified whenever this trigger is triggered.
+Configure the time between notifications.
+
+![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured-email.png)
 
 {{% /tab %}}
 {{< /tabs >}}
-
-4. Replace the **URL** value with the URL of your cloud function or lambda.
-
-   ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
-
 {{% /tab %}}
 {{% tab name="Builder mode: Resource card" %}}
 You can also configure a trigger for a resource in **Builder** mode on the **CONFIGURE** tab by navigating to the resource's configuration panel, selecting the **...** menu in the upper right corner, and selecting **Create trigger**.
