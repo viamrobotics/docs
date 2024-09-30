@@ -7,7 +7,7 @@ description: "Configure a bipolar stepper motor with current regulation and 1/32
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpiostepper/"
-component_description: "Supoprts stepper motors driven by a basic GPIO-controlled stepper driver chip."
+component_description: "Supports stepper motors driven by basic GPIO-controlled stepper driver chips."
 usage: 900000
 # SMEs: Rand, James
 ---
