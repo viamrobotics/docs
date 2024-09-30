@@ -307,9 +307,9 @@ pose = Pose(
     x=1.0,    # X coordinate in mm
     y=2.0,    # Y coordinate in mm
     z=3.0,    # Z coordinate in mm
-    o_x=0.0,  # Orientation unit vector X
-    o_y=1.0,  # Orientation unit vector Y
-    o_z=0.0,  # Orientation unit vector Z
+    o_x=0.0,  # X component of orientation vector
+    o_y=1.0,  # Y component of orientation vector
+    o_z=0.0,  # Z component of orientation vector
     theta=25.0 # Orientation angle in degrees
 )
 
@@ -346,8 +346,8 @@ import (
   "go.viam.com/rdk/spatialmath"
 )
 
-baseOrigin := referenceframe.NewPoseInFrame("test-base", spatialmath.NewZeroPose())
-movementSensorToBase, err := machine.TransformPose(ctx, baseOrigin, "my-movement-sensor", nil)
+baseOrigin := referenceframe.NewPoseInFrame("base-1", spatialmath.NewZeroPose())
+cameraToBase, err := machine.TransformPose(context.Background(), baseOrigin, "camera-1", nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
