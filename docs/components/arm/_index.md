@@ -19,7 +19,7 @@ outputs:
 # SME: Peter L
 ---
 
-Arms provide an API for linear motion planning, including self-collision prevention and obstacle avoidance.
+The arm component provides an API for linear motion planning, including self-collision prevention and obstacle avoidance.
 
 If you have a physical robotic arm, consisting of a serial chain of joints and links, with a fixed end and an end effector end, use an arm component.
 
