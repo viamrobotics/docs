@@ -18,12 +18,12 @@ Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes a
 
 The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the machine when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/configure/) on your machine.
 
-## Machine and fleet APIs
+## Platform APIs
 
 {{< cards >}}
 {{% manualcard link="/appendix/apis/fleet/" title="Fleet Management API" %}}
 
-Create and manage organizations, locations, and individual machines, fragments and permissions.
+Create and manage organizations, locations, and machines, get logs from individual machines, and manage fragments and permissions.
 
 {{% /manualcard %}}
 {{% manualcard link="/appendix/apis/data-client/" title="Data Client API" %}}
