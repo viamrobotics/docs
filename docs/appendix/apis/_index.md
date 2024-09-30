@@ -51,7 +51,7 @@ Retrieve billing information from the Viam app.
 
 ## Component APIs
 
-These APIs provide interfaces for controlling and getting information from various components of a machine:
+These APIs provide interfaces for controlling and getting information from the {{< glossary_tooltip term_id="component" text="components" >}} of a machine:
 
 {{< cards >}}
 {{< card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="True" >}}
