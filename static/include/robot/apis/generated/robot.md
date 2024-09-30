@@ -157,7 +157,6 @@ qs = [q]
 
 # # Get component configurations with these queries.
 component_configs = await machine.discover_components(qs)
-print(component_configs)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.discover_components).
