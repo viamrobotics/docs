@@ -4,7 +4,7 @@ linkTitle: "Base"
 weight: 10
 type: "docs"
 no_list: true
-description: "The base component allows you to move a mobile robot without needing to address individual components like motors."
+description: "The base component allows you to move a mobile robot without needing to send commands to individual components like motors."
 tags: ["base", "components"]
 icon: true
 images: ["/icons/components/base.svg"]
