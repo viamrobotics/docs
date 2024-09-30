@@ -23,7 +23,7 @@ Arms provide an API for linear motion planning, including self-collision prevent
 
 If you have a physical robotic arm, consisting of a serial chain of joints and links, with a fixed end and an end effector end, use an arm component.
 
-Typically, arms have two ends: one fixed in place, and one with a device you can position.
+Arms have two ends: one fixed in place, and one with a device you can position.
 When controlling an arm, you can place its end effector at arbitrary cartesian positions relative to the base of the arm.
 
 ## Available models
