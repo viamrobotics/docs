@@ -16,18 +16,20 @@ Submit a training job.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the id of the training job.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the ID of the training job.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.mltraining import ModelType
+
 job_id = await ml_training_client.submit_training_job(
-    organization_id=organization_id,
-    dataset_id=dataset_id,
-    model_name="your-model-name",
+    org_id="<organization-id>",
+    dataset_id="<dataset-id>",
+    model_name="<your-model-name>",
     model_version="1",
-    model_type="ModelType.MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION",
-    tags=tags
+    model_type=ModelType.MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION,
+    tags=["tag1", "tag2"]
 )
 ```
 

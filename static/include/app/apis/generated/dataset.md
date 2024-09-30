@@ -38,7 +38,7 @@ Delete a dataset.
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. You can retrieve this by navigating to the **DATASETS** sub-tab of the **DATA** tab, clicking on the dataset, clicking the **...** menu and selecting **Copy dataset ID**.
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. You can retrieve this by navigating to the DATASETS sub-tab of the DATA tab, clicking on the dataset, clicking the … menu and selecting Copy dataset ID.
 
 **Returns:**
 
@@ -66,7 +66,7 @@ Rename a dataset specified by the dataset ID.
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset.
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. You can retrieve this by navigating to the DATASETS sub-tab of the DATA tab, clicking on the dataset, clicking the … menu and selecting Copy dataset ID.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The new name of the dataset.
 
 **Returns:**

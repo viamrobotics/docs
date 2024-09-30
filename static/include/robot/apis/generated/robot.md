@@ -26,7 +26,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetMachineStatus
 
-Get status information about the machines resources and configuration.
+Get status information about the machine.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
