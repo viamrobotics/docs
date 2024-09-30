@@ -55,7 +55,7 @@ A call to [`Readings()`](/appendix/apis/components/sensor/#getreadings) on a `fa
 
 ## Next steps
 
-The [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:
+Check out the [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}
