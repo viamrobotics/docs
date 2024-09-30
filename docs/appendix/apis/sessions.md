@@ -120,7 +120,7 @@ To manage your session with the session management API:
 ### Disable default session management
 
 The `SessionsClient` that serves the session management API is automatically enabled on your machine.
-It is instantiated as part of your [`RobotClient`](/appendix/apis/robot/) instance (client of the Robot API).
+It is instantiated as part of your [`RobotClient`](/appendix/apis/robot/) instance (client of the Machine API).
 If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
 
 This option allows you to have full control over sessions management.
