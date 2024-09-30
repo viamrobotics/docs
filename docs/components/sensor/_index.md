@@ -61,7 +61,7 @@ If none of the existing models fit your use case, you can [create a modular reso
 
 - If your sensor measures GPS, IMU, position, velocity, or acceleration, use a [movement sensor](/components/movement-sensor/).
 - If your sensor measured voltage, current, or power consumption of connected hardware use a [power sensor](/components/power-sensor/).
-- If your sensor detects speed and direction of rotation of a motor or a joint, use an [encoders](/components/encoder/).
+- If your sensor detects speed and direction of rotation of a motor or a joint, use an [encoder](/components/encoder/).
 
 {{% /expand%}}
 
