@@ -633,10 +633,12 @@ To learn more about how to use classification, see the [Go SDK docs](https://pkg
 To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
 
-## Next steps
+## Next Steps
+
+For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/how-tos/detect-color/" %}}
-{{% card link="/tutorials/services/color-detection-scuttle/" %}}
-{{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
 {{< /cards >}}

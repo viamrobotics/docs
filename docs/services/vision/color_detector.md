@@ -330,8 +330,10 @@ To see more code examples of how to use Viam's Vision Service, see [our example 
 
 ## Next steps
 
+For general configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/how-tos/detect-color/" %}}
-{{% card link="/tutorials/services/color-detection-scuttle/" %}}
-{{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/how-tos/detect-color/" noimage="true" %}}
 {{< /cards >}}

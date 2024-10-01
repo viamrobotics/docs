@@ -18,17 +18,7 @@ no_service: true
 The navigation service is the stateful definition of Viam's [motion service](/services/motion/).
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user-defined waypoints.
 
-Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](/services/navigation/#setmode) to move your rover along a defined path at your desired motion configuration.
-
-## Used with
-
-{{< cards >}}
-{{< relatedcard link="/components/base/" required="yes" >}}
-{{< relatedcard link="/components/movement-sensor/" required="yes" >}}
-{{< relatedcard link="/components/camera/" >}}
-{{< /cards >}}
-
-{{% snippet "required-legend.md" %}}
+Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](/appendix/apis/services/navigation/#setmode) to move your rover along a defined path at your desired motion configuration.
 
 ## Requirements
 
@@ -224,18 +214,9 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
 
 ## API
 
-The navigation service supports the following methods:
+The [navigation service API](/appendix/apis/services/navigation/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/navigation-table.md" >}}
-
-{{% alert title="Tip" color="tip" %}}
-
-The following code examples assume that you have a machine configured with a `Navigation` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for sample code to connect to your machine.
-
-{{% /alert %}}
-
-{{< readfile "/static/include/services/apis/generated/navigation.md" >}}
 
 ## Control tab usage
 

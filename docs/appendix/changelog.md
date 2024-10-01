@@ -84,21 +84,21 @@ The struct contains an int representing the value of the reading, min and max ra
 
 {{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
 
-The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
+The vision service now supports two new methods: [`CaptureAllFromCamera`](/appendix/apis/services/vision/#captureallfromcamera) and [`GetProperties`](/appendix/apis/services/vision/#getproperties).
 
 {{% /changelog %}}
 
 {{% changelog date="2024-05-14" color="changed" title="Renamed GeoObstacle to GeoGeometry" %}}
 
 The motion service API parameter `GeoObstacle` has been renamed to `GeoGeometry`.
-This affects users of the [`MoveOnGlobe()`](/services/motion/#moveonglobe) method.
+This affects users of the [`MoveOnGlobe()`](/appendix/apis/services/motion/#moveonglobe) method.
 
 {{% /changelog %}}
 
 {{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera component's [`GetImage()`](/appendix/apis/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
+The camera component's [`GetImage()`](/appendix/apis/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/appendix/apis/services/vision/#getdetections) and [`GetClassifications()`](/appendix/apis/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
@@ -924,7 +924,7 @@ For more information on using data synced to the cloud to train machine learning
 
 {{% changelog date="2023-03-31" color="added" title="Motion planning with new `constraint` parameter" %}}
 
-A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/services/motion/#api), allowing you to define restrictions on the machine's movement.
+A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/appendix/apis/services/motion/#api), allowing you to define restrictions on the machine's movement.
 The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a machine.
 
 {{% /changelog %}}

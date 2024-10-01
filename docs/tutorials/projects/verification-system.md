@@ -316,9 +316,9 @@ To add a transform camera to your machine:
 
 {{% alert title="Note" color="note" %}}
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
-To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/services/vision/#getclassificationsfromcamera).
+To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/appendix/apis/services/vision/#getclassificationsfromcamera).
 
-See [2D Image Classification](/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/services/vision/#api) for usage of the Computer Vision API this module implements.
+See [2D Image Classification](/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/appendix/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}
 
 With everything configured, you are now ready to see your facial recognition machine in action by watching the transform camera as a person passes in front of the camera.
@@ -338,7 +338,7 @@ Now that you've got the verification aspect of your system working, you can use 
 For example:
 
 - Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
-  For example, you could use [`GetClassificationsFromCamera()`](/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an Email with the captured image of the trespasser!
+  For example, you could use [`GetClassificationsFromCamera()`](/appendix/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
 - Try changing the type of [detectors](/services/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
 - Add the [filtered camera module](/how-tos/image-data/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam cloud only when the system enters into specific states.
   This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.

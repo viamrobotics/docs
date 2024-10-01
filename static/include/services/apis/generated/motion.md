@@ -16,7 +16,7 @@ The motion service takes the volumes associated with all configured machine comp
 **Parameters:**
 
 - `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)) (required): The `ResourceName` of the piece of the robot that should arrive at the destination. Note that `move` moves the distal end of the component to the destination. For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
-- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
+- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](/services/frame-system/).
 - `world_state` ([viam.proto.common.WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (optional): Data structure specifying information about the world around the machine.
   Used to augment the motion solving process.
   `world_state` includes obstacles and transforms:
@@ -37,7 +37,7 @@ The motion service takes the volumes associated with all configured machine comp
     Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
     For example, you could use a transform to represent the volume of a marker held in your machine's gripper.
     Transforms are not added to the config or carried into later processes.
-- `constraints` ([viam.proto.service.motion.Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (optional): Pass in [motion constraints](./constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
+- `constraints` ([viam.proto.service.motion.Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (optional): Pass in [motion constraints](/services/motion/constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -74,7 +74,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the piece of the robot that should arrive at the destination. Note that `Move` moves the distal end of the component to the destination. For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
-- `destination` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Describes where the `component_name` should end up. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/). Note that the destination pose is relative to the distal end of the specified frame. This means that if the `destination` is the same as the `component_name` frame, for example an arm's frame, then a pose of `{X: 10, Y: 0, Z: 0}` will move that arm’s end effector by 10 mm in the local `X` direction.
+- `destination` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Describes where the `component_name` should end up. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](/services/frame-system/). Note that the destination pose is relative to the distal end of the specified frame. This means that if the `destination` is the same as the `component_name` frame, for example an arm's frame, then a pose of `{X: 10, Y: 0, Z: 0}` will move that arm’s end effector by 10 mm in the local `X` direction.
 - `worldState` [(*referenceframe.WorldState)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState): Data structure specifying information about the world around the machine.
   Used to augment the motion solving process.
   `worldState` includes obstacles and transforms:
@@ -95,7 +95,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
     Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
     For example, you could use a transform to represent the volume of a marker held in your machine's gripper.
     Transforms are not added to the config or carried into later processes.
-- `constraints` [(*motionplan.Constraints)](https://pkg.go.dev/go.viam.com/rdk/motionplan#Constraints): Pass in optional [motion constraints](./constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
+- `constraints` [(*motionplan.Constraints)](https://pkg.go.dev/go.viam.com/rdk/motionplan#Constraints): Pass in optional [motion constraints](/services/motion/constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -161,7 +161,7 @@ Use the machine's position reported by the {{< glossary_tooltip term_id="slam" t
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnMap()`, your [SLAM service](/services/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
 
-Make sure the [SLAM service](/services/slam/) you use alongside the this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/services/slam/#api):
+Make sure the [SLAM service](/services/slam/) you use alongside the motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/appendix/apis/services/slam/#api):
 
 - It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
 - It must support `GetPosition()` to report the machine's current location on the SLAM map.
@@ -416,7 +416,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### GetPose
 
-`GetPose` gets the location and orientation of a component within the [frame system](../frame-system/).
+`GetPose` gets the location and orientation of a component within the [frame system](/services/frame-system/).
 The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
 You can use the `supplemental_transforms` argument to augment the machine's existing frame system with supplemental frames.
 
@@ -560,7 +560,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### StopPlan
 
-Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/services/motion/#moveonglobe) or [`MoveOnMap`](/services/motion/#moveonmap) call.
+Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/appendix/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/appendix/apis/services/motion/#moveonmap) call.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -624,7 +624,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### ListPlanStatuses
 
-Returns the statuses of plans created by [`MoveOnGlobe`](/services/motion/#moveonglobe) or [`MoveOnMap`](/services/motion/#moveonmap) calls that meet at least one of the following conditions since the motion service initialized:
+Returns the statuses of plans created by [`MoveOnGlobe`](/appendix/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/appendix/apis/services/motion/#moveonmap) calls that meet at least one of the following conditions since the motion service initialized:
 
 - the plan's status is in progress
 - the plan's status changed state within the last 24 hours
@@ -685,7 +685,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### GetPlan
 
-By default, returns the plan history of the most recent [`MoveOnGlobe`](/services/motion/#moveonglobe) or [`MoveOnMap`](/services/motion/#moveonmap) call to move a [base](/components/base/) component.
+By default, returns the plan history of the most recent [`MoveOnGlobe`](/appendix/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/appendix/apis/services/motion/#moveonmap) call to move a [base](/components/base/) component.
 
 The plan history for executions before the most recent can be requested by providing an `ExecutionID` in the request.
 

@@ -54,7 +54,7 @@ Then, [configure the navigation service](/services/navigation/) on your machine.
 {{<imgproc src="/how-tos/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
 **4. Navigate autonomously**
 
-Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/services/navigation/#api).
+Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/appendix/apis/services/navigation/#api).
 
 {{% /tablestep %}}
 {{< /table >}}

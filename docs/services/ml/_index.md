@@ -43,16 +43,16 @@ Currently Viam supports TensorFlow Lite, TensorFlow, ONNX, and PyTorch.
 For more information, see [ML Models](/services/ml/ml-models/) and [Training Scripts](/services/ml/training-scripts/).
 
 {{< cards >}}
-{{% card link="/services/ml/ml-models/" %}}
-{{% card link="/services/ml/training-scripts/" %}}
+{{% card link="/services/ml/ml-models/" noimage="True" %}}
+{{% card link="/services/ml/training-scripts/" noimage="True" %}}
 {{< /cards >}}
 
 ## ML Model service
 
-The ML model service deploys and runs a machine learning model, such as a TensorFlow or ONNX model, on your machine and makes its output accessible to other services.
+The [ML model service](/services/ml/deploy/) deploys and runs a machine learning model, such as a TensorFlow or ONNX model, on your machine and makes its output accessible to other services.
 For example, the [Computer Vision](/services/vision/mlmodel/) `mlmodel` service, which can detect or classify objects, is built to work with the inferences from an ML model service.
 As a detector, the service uses these inferences to interpret image data from images on your computer or a [camera](/components/camera/), drawing bounding boxes around objects.
-As a classifier, the service returns class labels and confidence score based off the [inferences](/services/ml/deploy/#infer) the underlying ML model makes from image data.
+As a classifier, the service returns class labels and confidence score based off the [inferences](/appendix/apis/services/ml/#infer) the underlying ML model makes from image data.
 
 ## Next steps
 

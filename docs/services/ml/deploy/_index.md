@@ -48,14 +48,6 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
 {{< /alert >}}
 
-## Used with
-
-{{< cards >}}
-{{< relatedcard link="/services/vision/">}}
-{{< relatedcard link="/components/board/">}}
-{{< relatedcard link="/components/camera/">}}
-{{< /cards >}}
-
 ## Machine learning models from registry
 
 You can search the machine learning models that are available to deploy on this service from the registry here:
@@ -64,43 +56,23 @@ You can search the machine learning models that are available to deploy on this 
 
 ## API
 
-{{< alert title="Viam Python SDK Support" color="note" >}}
-
-To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), install the Python SDK using the `mlmodel` extra:
-
-```sh {class="command-line" data-prompt="$"}
-pip install 'viam-sdk[mlmodel]'
-```
-
-{{< /alert >}}
-
-The MLModel service supports the following methods:
+The [ML model service API](/appendix/apis/services/ml/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/mlmodel-table.md" >}}
-
-{{% alert title="Tip" color="tip" %}}
-
-The following code examples assume that you have a machine configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for sample code to connect to your machine.
-
-{{% /alert %}}
-
-{{< readfile "/static/include/services/apis/generated/mlmodel.md" >}}
 
 ## Next steps
 
 The ML model service only runs your model on the machine.
-To use the inferences from the model, you must use an additional service such as a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
+To use the inferences from the model, you must use an additional service such as a [vision service](/services/vision/):
 
 {{< cards >}}
 
-{{% manualcard link="/services/vision/mlmodel/" img="/services/icons/ml.svg" alt="Machine Learning" %}}
-**Create a visual detector or classifier**
+{{% manualcard link="/services/vision/mlmodel/" title="Create a visual detector or classifier" noimage="True" %}}
 
 Use your model deployed with the ML model service by adding a vision service that can provide detections or classifications depending on your ML model.
 
 {{% /manualcard %}}
-
-{{% card link="/registry/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
+{{% card link="/how-tos/deploy-ml/" noimage="True" %}}
+{{% card link="/get-started/detect-people/" customTitle="Detect people" noimage="true" %}}
 
 {{< /cards >}}

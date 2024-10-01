@@ -77,10 +77,10 @@ These APIs provide interfaces for controlling and getting information from the s
 <!-- TODO: move to APIS folder and change links -->
 
 {{< cards >}}
-{{% card link="/services/data/" customTitle="Data management service API" noimage="True" %}}
-{{% card link="/services/ml/deploy/" customTitle="ML service API" noimage="True" %}}
-{{% card link="/services/motion/" customTitle="Motion service API" noimage="True" %}}
-{{% card link="/services/navigation/" customTitle="Navigation service API" noimage="True" %}}
-{{% card link="/services/slam/" customTitle="SLAM service API" noimage="True" %}}
-{{% card link="/services/vision/" customTitle="Vision service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/data/" customTitle="Data management service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/ml/" customTitle="ML model service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/motion/" customTitle="Motion service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/navigation/" customTitle="Navigation service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/slam/" customTitle="SLAM service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/vision/" customTitle="Vision service API" noimage="True" %}}
 {{< /cards >}}

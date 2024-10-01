@@ -1730,13 +1730,13 @@ def write_markdown(type, names, methods):
                             resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
                             proto_anchor_link = '/appendix/apis/components/' + resource_adjusted + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam', 'vision']:
-                            proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
+                            proto_anchor_link = '/appendix/apis/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
-                            proto_anchor_link = '/services/data/#' + proto_link
+                            proto_anchor_link = '/appendix/apis/services/data/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
-                            proto_anchor_link = '/services/generic/#' + proto_link
+                            proto_anchor_link = '/appendix/apis/services/generic/#' + proto_link
                         elif type == 'service' and resource == 'mlmodel':
-                            proto_anchor_link = '/services/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto_link
+                            proto_anchor_link = '/appendix/apis/services/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto_link
                         elif type == 'app' and resource == 'app':
                             proto_anchor_link = '/appendix/apis/fleet/#' + proto_link
                         elif type == 'app' and resource in ["billing", "mltraining"]:

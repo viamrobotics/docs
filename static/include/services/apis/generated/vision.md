@@ -1,6 +1,6 @@
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a configured [detector](./#detections).
+Get a list of detections from the next image from a specified camera using a configured [detector](/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -88,7 +88,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDetections
 
-Get a list of detections from a given image using a configured [detector](#detections).
+Get a list of detections from a given image using a configured [detector](/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -188,7 +188,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured [classifier](#classifications).
+Get a list of classifications from the next image from a specified camera using a configured [classifier](/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -276,7 +276,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured [classifier](#classifications).
+Get a list of classifications from a given image using a configured [classifier](/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -379,7 +379,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](#segmentations)).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/services/vision/#segmentations)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

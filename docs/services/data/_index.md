@@ -49,9 +49,7 @@ The data management service:
 - Automatically deletes local data after syncing for space management.
 
 {{< cards >}}
-{{% manualcard link="/services/data/capture-sync/" %}}
-
-### Data capture and cloud sync
+{{% manualcard link="/services/data/capture-sync/" title="Data capture and cloud sync" %}}
 
 More details and how to configure capture and sync.
 
@@ -85,23 +83,17 @@ You can also interact with your data using the [Viam CLI](/cli/#data), or using 
 <!-- markdownlint-disable-file MD034 -->
 
 {{< cards >}}
-{{% manualcard link="/services/data/dataset/" %}}
-
-### Create datasets
+{{% manualcard title="Create datasets" link="/services/data/dataset/" %}}
 
 Label data for management and machine learning, with dynamic datasets that change with underlying data modifications.
 
 {{% /manualcard %}}
-{{% manualcard link="/how-tos/export-data/" %}}
-
-### Export data
+{{% manualcard title="Export data" link="/how-tos/export-data/" %}}
 
 Export data with the Viam CLI and download your data for offline access.
 
 {{% /manualcard %}}
-{{% manualcard link="/how-tos/upload-data/" %}}
-
-### Upload a batch of data
+{{% manualcard title="Upload a batch of data" link="/how-tos/upload-data/" %}}
 
 Upload data to the Viam cloud from your computer or mobile device using the data client API, the Viam CLI, or the Viam mobile app.
 
@@ -114,9 +106,9 @@ Once your data has [synced](/services/data/capture-sync/), you can query it usin
 For _tabular_ sensor data, you can also [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/how-tos/sensor-data-query-sdk/) from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 {{< cards >}}
-{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
-{{% card link="/how-tos/sensor-data-query-sdk/" %}}
-{{% card link="/appendix/apis/data-client/" %}}
+{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" noimage="True" %}}
+{{% card link="/how-tos/sensor-data-query-sdk/" noimage="True" %}}
+{{% card link="/appendix/apis/data-client/" noimage="True" %}}
 {{< /cards >}}
 
 ### Permissions
@@ -149,7 +141,7 @@ Methods to work with datasets:
 <br>
 
 The data management API supports a separate set of methods that allow you to sync data to the Viam app.
-For information about that API, see [Data Management API](/services/data/capture-sync/#api).
+For information about that API, see [Data Management API](/appendix/apis/services/data/).
 
 For the command line interface `data` command, see [CLI](/cli/#data).
 
