@@ -8,7 +8,7 @@ description: "Detect people using a webcam and the Viam vision service. Without 
 images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []
-weight: 30
+weight: 10
 no_list: true
 cost: "0"
 resource: "quickstart"
@@ -24,8 +24,9 @@ cost: "0"
 ---
 
 This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/) and [controlled a motor](/get-started/control-motor/), we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/), we recommend you do so before continuing.
 
+This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll use machine learning to detect people in a camera stream.
 
 {{< alert title="You will learn" color="tip" >}}
