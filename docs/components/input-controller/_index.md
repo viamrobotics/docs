@@ -15,7 +15,7 @@ hide_children: true
 # SME: James
 ---
 
-Input controllers provide an API for configuring callbacks for events, allowing you to configure input devices to control your machines.
+The input controller API provides an API for configuring callbacks for events, allowing you to configure input devices to control your machines.
 
 If you have a keyboard, mouse, elevator button panel, light power switch, joystick, gamepad, or video game controllers with which you want to control a robotic base, use an input controller component.
 
