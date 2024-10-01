@@ -18,7 +18,7 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-Servo components provide an API for controlling the angular position of a servo precisely or getting its current status.
+The servo component provides an API for controlling the angular position of a servo precisely or getting its current status.
 
 If you have a physical ["RC" or "hobby" servo motor](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos) with built-in potentiometer position sensors, configure it as a servo component.
 
