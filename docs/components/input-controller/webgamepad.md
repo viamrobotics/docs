@@ -8,7 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/webgamepad/"
-component_description: "A remote, web based gamepad."
+component_description: "Supports a remote, web based gamepad."
 # SMEs: James
 ---
 
@@ -66,3 +66,13 @@ For your security, the browser won't report a gamepad until an input has been se
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/control/gamepad/" noimage="true" %}}
+{{< /cards >}}

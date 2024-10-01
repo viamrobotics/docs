@@ -290,7 +290,7 @@ You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()`
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the machine.
 
-Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/components/movement-sensor/#api).
+Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/appendix/apis/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the machine's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the machine is facing.
@@ -781,6 +781,45 @@ Reconfigure must reconfigure the resource atomically and in place.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### FromRobot
+
+Get the resource from the provided robot with the given name.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot` ([viam.robot.client.RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)) (required): The robot.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the service.
+
+**Returns:**
+
+- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): The service, if it exists on the robot.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+async def connect() -> RobotClient:
+    # Replace "<API-KEY>" (including brackets) with your API key and "<API-KEY-ID>" with your API key ID
+    options = RobotClient.Options.with_api_key("<API-KEY>", "<API-KEY-ID>")
+    # Replace "<MACHINE-URL>" (included brackets) with your machine's connection URL or FQDN
+    return await RobotClient.at_address("<MACHINE-URL>", options)
+
+async def main():
+    robot = await connect()
+
+    # Can be used with any resource, using the motion service as an example
+    motion = MotionClient.from_robot(robot=robot, name="builtin")
+
+    robot.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.from_robot).
 
 {{% /tab %}}
 {{< /tabs >}}

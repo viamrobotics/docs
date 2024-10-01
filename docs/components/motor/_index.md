@@ -18,39 +18,21 @@ hide_children: true
 # SME: Rand
 ---
 
-Electric motors are machines that convert electricity into rotary motion.
-They are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
-The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
+The motor component provides an API for operating a motor or getting its current status.
 
-Most machines with a motor need at least the following hardware:
+If you have a device that converts electricity into rotary motion, such as a brushed DC motor, a brushless DC motor, or a stepper motor, configure it as a motor component.
 
-- The motor itself.
-- A compatible motor driver.
-  This takes signals from the computer and sends the corresponding signals and power to the motor.
-  Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
-- A [board component](/components/board/) to send signals to the motor driver[^dmcboard].
-  For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-
-[^dmcboard]: The `DMC4000` model does not require a board.
-
-{{< cards >}}
-{{< card link="/get-started/control-motor/" class="green">}}
-{{< /cards >}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/slam/" >}}
-{{< /cards >}}
+If you have a hobby servo, configure it as a [servo component](/components/servo/) instead.
 
 ## Available models
 
-To use your motor component, check whether one of the following models supports it.
+To use a motor, you need to add it to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your motor.
 
-For configuration information, click on the model name:
+Because your machine controls your motor using a [motor driver](https://www.wellpcb.com/what-is-motor-driver.html), you technically need to select a motor model that supports your motor driver rather than the motor itself.
+
+The following list shows the available motor models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -72,46 +54,13 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your motor with Viam's client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by adding API method calls as shown in the following examples.
-
-These examples assume you have a motor called `"my_motor"` configured as a component of your machine.
-If your motor has a different name, change the `name` in the code.
-
-Be sure to import the motor package for the SDK you are using:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.motor import Motor
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/motor"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
+
+The [motor API](/appendix/apis/components/motor/) supports the following methods:
 
 The motor component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/motor-table.md" >}}
-
-{{< readfile "/static/include/components/apis/generated/motor.md" >}}
 
 ## Troubleshooting
 
@@ -121,8 +70,10 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
+For general configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/get-started/confetti-bot/" %}}
-{{% card link="/tutorials/get-started/lazy-susan/" %}}
-{{% card link="/tutorials/configure/configure-rover" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/get-started/control-motor/" noimage="true" %}}
 {{< /cards >}}

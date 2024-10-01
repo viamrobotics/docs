@@ -27,7 +27,7 @@ The period of time during which a client is connected to a machine is called a _
 _Session management_ is a safety precaution that allows you to manage the clients that are authenticated and communicating with a machine's `viam-server` instance.
 The default session management configuration checks for presence to ensures that a machine only moves when a client is actively connected and stops any components that remain running when a client disconnects.
 This is especially important for machines that physically move.
-For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the machine is interrupted.
+For example, imagine a wheeled rover gets a [`SetPower()`](/appendix/apis/components/base/#setpower) command as the last input from a client before the connection to the machine is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the machine to continue driving forever and potentially colliding with objects and people.
 
 For more information, see [Client Sessions and Machine Network Connectivity](/sdks/connectivity/).
@@ -120,39 +120,8 @@ To manage your session with the session management API:
 ### Disable default session management
 
 The `SessionsClient` that serves the session management API is automatically enabled on your machine.
-It is instantiated as part of your [`RobotClient`](/appendix/apis/#robot-api) instance (client of the Robot API).
+It is instantiated as part of your [`RobotClient`](/appendix/apis/robot/) instance (client of the Machine API).
 If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-async def main():
-    opts = RobotClient.Options(disable_sessions=True)
-    await RobotClient.at_address("my-machine-address", opts)
-    robot = await connect()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-robot, err := client.New(ctx, "my-machine-address", logger, client.WithDisableSessions(), ...)
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-```ts {class="line-numbers linkable-line-numbers"}
-const robot = await VIAM.createRobotClient({
-  // ...
-  disableSessions: true,
-  // ...
-});
-```
-
-{{% /tab %}}
-{{% /tabs %}}
 
 This option allows you to have full control over sessions management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
@@ -160,6 +129,6 @@ You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/ses
 
 ### Use the session management API to manually manage sessions
 
-Use your [`RobotClient()`](/appendix/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
+Use your [`RobotClient()`](/appendix/apis/robot/) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
 This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
 Then, define your own [`SessionsClient`](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).

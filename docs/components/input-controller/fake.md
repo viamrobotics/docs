@@ -14,8 +14,8 @@ component_description: "A model for testing, with no physical hardware."
 
 Configuring a `fake` input controller allows you to test an input controller communicating with your machine, without any physical hardware.
 
-This controller can have [Controls](../#control-field) defined in `attributes`, as seen in the "JSON Template" tab below.
-However, these Controls only ever return a single `PositionChangeAbs` event on the X axis, with the [Event.value](../#event-object) stuck at 0.7.
+This controller can have [Controls](/appendix/apis/components/input-controller/#control-field) defined in `attributes`, as seen in the "JSON Template" tab below.
+However, these Controls only ever return a single `PositionChangeAbs` event on the X axis, with the [Event.value](/appendix/apis/components/input-controller/#event-object) stuck at 0.7.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -63,7 +63,7 @@ The following attributes are available for `fake` input controllers:
 | ---- | ---- | --------- | ----------- |
 | `callback_delay_sec` | float | **Required** | The number of seconds between callbacks getting triggered. Random between 1 and 2 if not specified. `0` is not valid and will be overwritten by a random delay. |
 | `event_value` | float | Optional | Set the value of events returned. Random between -1 and 1 if not specified. |
-| `controls` | array | Optional | Set the [Controls](../#control-field) that are present on the controller. |
+| `controls` | array | Optional | Set the [Controls](/appendix/apis/components/input-controller/#control-field) that are present on the controller. |
 
 {{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 
@@ -72,3 +72,13 @@ The following attributes are available for `fake` input controllers:
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/control/gamepad/" noimage="true" %}}
+{{< /cards >}}

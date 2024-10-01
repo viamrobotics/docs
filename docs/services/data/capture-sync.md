@@ -91,8 +91,8 @@ The following components and services support data capture, for the following me
 <!-- prettier-ignore -->
 | Type | Method |
 | ---- | ------ |
-| [Movement Sensor](/components/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
-| [Sensor](/components/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
+| [Movement Sensor](/components/movement-sensor/) | [`AngularVelocity`](/appendix/apis/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/appendix/apis/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/appendix/apis/components/movement-sensor/#getlinearvelocity) |
+| [Sensor](/components/sensor/) | [`GetReadings`](/appendix/apis/components/sensor/#getreadings) |
 
 {{% /tab %}}
 {{< /tabs >}}

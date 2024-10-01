@@ -32,6 +32,20 @@ Data client API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
+The data client API supports the following methods:
+
+Methods to upload data like images or sensor readings directly to the [Viam app](https://app.viam.com):
+
+{{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
+
+Methods to download, filter, tag, or perform other tasks on data like images or sensor readings:
+
+{{< readfile "/static/include/app/apis/generated/data-table.md" >}}
+
+Methods to work with datasets:
+
+{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
+
 ## Establish a connection
 
 To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate a [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
@@ -80,20 +94,6 @@ if __name__ == '__main__':
 Once you have instantiated a `DataClient`, you can run [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
 
 ## API
-
-The data client API supports the following methods:
-
-Methods to upload data like images or sensor readings directly to the [Viam app](https://app.viam.com):
-
-{{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
-
-Methods to download, filter, tag, or perform other tasks on data like images or sensor readings:
-
-{{< readfile "/static/include/app/apis/generated/data-table.md" >}}
-
-Methods to work with datasets:
-
-{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/data_sync.md" >}}
 

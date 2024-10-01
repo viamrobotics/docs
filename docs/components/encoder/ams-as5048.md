@@ -7,7 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/ams-as5048/"
-component_description: "The AMS-AS5048 encoder is an absolute encoder that which can connect using an I2C interface."
+component_description: "Supports the AMS-AS5048 encoder, an absolute encoder that you can connect to using an I2C interface."
 # SMEs: Rand
 ---
 
@@ -61,3 +61,13 @@ The following attributes are available for `AMS-AS5048` encoders:
 | `i2c_attributes` | object | **Required** | The attributes to configure the I<sup>2</sup>C connection: <ul> <li> <code>i2c_bus</code>: The index of the I<sup>2</sup>C bus on the [board](/components/board/) wired to this encoder. <br> Example: `"1"` </li> <li> <code>i2c_addr</code>: The address of the bus. <br> Example: `64` </li> </ul> |
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

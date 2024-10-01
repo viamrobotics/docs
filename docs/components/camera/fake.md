@@ -70,4 +70,10 @@ You can change the refresh frequency as needed to change bandwidth.
 
 ## Next steps
 
-{{< readfile "/static/include/components/camera-model-next-steps.md" >}}
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/how-tos/image-data/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{< /cards >}}

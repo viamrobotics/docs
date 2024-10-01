@@ -497,7 +497,7 @@ The `attributes` available vary depending on your implementation.
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
 The custom model is configured as a component with the name "my-custom-base-1".
-You can send commands to the base according to the Viam [base API](/components/base/#api):
+You can send commands to the base according to the Viam [base API](/appendix/apis/components/base/#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

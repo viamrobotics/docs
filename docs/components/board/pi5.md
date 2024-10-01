@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a Raspberry Pi 5 board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
-component_description: "Raspberry Pi 5."
+component_description: "Supports Raspberry Pi 5."
 usage: 999999
 # SMEs: Bucket, Alan
 ---
@@ -103,3 +103,13 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

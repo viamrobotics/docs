@@ -109,10 +109,10 @@ The following attributes are available for `esp32` boards:
 | `analogs` | array | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `i2cs` | array | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
 | `digital_interrupts` | array | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
-| `pins` | array | Optional | The GPIO number of any GPIO pins you wish to use as input/output with the [board API](/components/board/#api). |
+| `pins` | array | Optional | The GPIO number of any GPIO pins you wish to use as input/output with the [board API](/appendix/apis/components/board/#api). |
 
-Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
-Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
+Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/appendix/apis/components/board/#api).
+Interaction with digital interrupts is only supported with the [board API](/appendix/apis/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
 
 ### `analogs`
 
@@ -149,7 +149,7 @@ The following properties are available for `digital_interrupts`:
 
 ### PWM signals on `esp32` pins
 
-You can set PWM frequencies with Viam through the [`GPIOPin` API](/components/board/#api).
+You can set PWM frequencies with Viam through the [`GPIOPin` API](/appendix/apis/components/board/#api).
 Refer to the [Espressif documentation for valid frequencies and duty resolutions](https://docs.espressif.com/projects/esp-idf/en/v4.4/esp32/api-reference/peripherals/ledc.html?#supported-range-of-frequency-and-duty-resolutions).
 A configured `esp32` board can support a maximum of four different PWM frequencies simultaneously, as the boards only have four available timers.
 
@@ -182,3 +182,13 @@ Then, follow these requirements to change the PWM frequencies of a pin:
 2. If one or more pins are sharing the old frequency (for example, pins 12 and 33):
    1. If there are less than 4 active frequencies, you can change the PWM frequency freely because there will be a timer available.
    2. If there are already 4 active frequencies, changing the PWM frequency of the pin will raise an error because there are no timers available. Free a timer by setting the PWM frequencies of all of the pins to 0.
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

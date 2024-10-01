@@ -20,6 +20,10 @@ Billing client API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
+The billing client API supports the following methods:
+
+{{< readfile "/static/include/app/apis/generated/billing-table.md" >}}
+
 ## Establish a connection
 
 To use the Viam billing client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate a [`BillingClient`](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient).
@@ -70,9 +74,5 @@ if __name__ == '__main__':
 Once you have instantiated a `BillingClient`, you can run [API methods](#api) against the `BillingClient` object (named `billing_client` in the examples).
 
 ## API
-
-The billing client API supports the following methods:
-
-{{< readfile "/static/include/app/apis/generated/billing-table.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/billing.md" >}}

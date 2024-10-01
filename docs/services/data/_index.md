@@ -149,7 +149,7 @@ Methods to work with datasets:
 <br>
 
 The data management API supports a separate set of methods that allow you to sync data to the Viam app.
-For information about that API, see [Data Management API](/appendix/apis/#data-management).
+For information about that API, see [Data Management API](/services/data/capture-sync/#api).
 
 For the command line interface `data` command, see [CLI](/cli/#data).
 

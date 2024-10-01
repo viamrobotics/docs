@@ -10,10 +10,13 @@ aliases:
   - /build/program/apis/robot/
 ---
 
-The _robot API_ is the application programming interface that manages each of your machines running `viam-server`.
-Use the robot API to connect to your machine from within a supported [Viam SDK](/appendix/apis/), and send commands remotely.
+The _machine API_ allows you to connect to your machine from within a supported [Viam SDK](/appendix/apis/), retrieve status information, and send commands remotely.
 
-The robot API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
+The machine API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
+
+The machine API supports the following methods:
+
+{{< readfile "/static/include/robot/apis/generated/robot-table.md" >}}
 
 ## Establish a connection
 
@@ -167,10 +170,5 @@ The example above shows a timeout of 10 seconds configured.
 {{< /tabs >}}
 
 ## API
-
-The robot API support the following selected methods.
-For the full list of methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [Viam Go SDK documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
-
-{{< readfile "/static/include/robot/apis/generated/robot-table.md" >}}
 
 {{< readfile "/static/include/robot/apis/generated/robot.md" >}}

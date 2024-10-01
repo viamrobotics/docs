@@ -2,6 +2,7 @@
 {{- $webm_src := (.Get "webm_src") -}}
 {{- $mp4_src := (.Get "mp4_src") -}}
 {{- $alt := (.Get "alt") -}}
+{{- $title := (.Get "title") -}}
 
 <div class="col hover-card">
   {{ if .Get "link" }}
@@ -29,6 +30,9 @@
         </div>
         {{ end }}
         <div {{ if .Get "img" }}class="small-hover-card-div"{{ end }}>
+        {{- if $title -}}
+        <div> {{- $title -}}</div>
+        {{- end -}}
         {{ with $.Inner }}
           {{ if eq $.Page.File.Ext "md" }}
             {{ $.Inner | markdownify }}

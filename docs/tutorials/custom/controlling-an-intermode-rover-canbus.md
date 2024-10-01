@@ -46,7 +46,7 @@ Once you specify the circumference of the wheels and how far they are apart, you
 
 However, some rovers or other mobile robots do not expose direct motor control.
 For these types of machines, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/components/base/#api) as you would with builtin Viam components.
+Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/appendix/apis/components/base/#api) as you would with builtin Viam components.
 Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/appendix/apis/).
 Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK to issue commands.
 
@@ -184,7 +184,7 @@ The complete triplet is:
 
 The entry point code defines the model name and then registers it with `viam-server`.
 When registering it, the code also provides the API that the new model supports.
-That means in this case that the base should support the default [base API](/components/base/#api) with methods such as `MoveStraight` and `Spin`.
+That means in this case that the base should support the default [base API](/appendix/apis/components/base/#api) with methods such as `MoveStraight` and `Spin`.
 
 The **API** of any Viam resource is also represented as colon-separated triplets where the first element is a namespace.
 Since you are using the default Viam API for a [base](/components/base/), the [API](/how-tos/create-module/#valid-api-identifiers) you are using is:

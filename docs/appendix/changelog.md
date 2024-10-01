@@ -77,7 +77,7 @@ The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/app
 
 {{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
 
-The board analog API [`Read()`](/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
+The board analog API [`Read()`](/appendix/apis/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
 The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
 
 {{% /changelog %}}
@@ -98,7 +98,7 @@ This affects users of the [`MoveOnGlobe()`](/services/motion/#moveonglobe) metho
 {{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera component's [`GetImage()`](/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
+The camera component's [`GetImage()`](/appendix/apis/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
@@ -132,7 +132,7 @@ detections = await detector.get_detections(cropped_frame)
 {{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
 
 The `WriteAnalog()` method has been removed from the Go SDK.
-Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](/components/board/#write) instead.
+Use [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) followed by [`Write()`](/appendix/apis/components/board/#write) instead.
 
 {{% /changelog %}}
 
@@ -146,7 +146,7 @@ Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](
 
 `AnalogReader` has been renamed to `Analog`.
 The functionality remains the same, but code that uses analogs must be updated.
-`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/components/board/#analogbyname) and [`AnalogNames()`](/components/board/#analognames), respectively.
+`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) and [`AnalogNames()`](/appendix/apis/components/board/#analognames), respectively.
 
 {{% /changelog %}}
 
@@ -412,7 +412,7 @@ Note that currently, accounts from different SSO providers are treated separatel
 
 {{% changelog date="2023-07-31" color="improved" title="Arm component API" %}}
 
-Arm models now support the [`GetKinematics` method](/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
+Arm models now support the [`GetKinematics` method](/appendix/apis/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
 
 {{% /changelog %}}
 
@@ -443,7 +443,7 @@ See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn 
 {{% changelog date="2023-06-30" color="added" title="Implement custom robotic arms as Viam modules" %}}
 
 When prototyping a robotic arm, you can now facilitate movement without creating your own motion planning.
-This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/components/arm/#api):
+This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/appendix/apis/components/arm/#api):
 
 - `getJointPositions`
 - `movetoJointPositions`
@@ -1011,7 +1011,7 @@ The [AMS AS5048](/components/encoder/ams-as5048/) is now supported.
 
 {{% changelog date="2023-01-31" color="added" title="GetLinearAcceleration method" %}}
 
-The movement sensor API now includes a [GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) method.
+The movement sensor API now includes a [GetLinearAcceleration](/appendix/apis/components/movement-sensor/#getlinearacceleration) method.
 
 {{% /changelog %}}
 
@@ -1147,7 +1147,7 @@ Other service configurations are not affected.
 
 {{% changelog date="2022-11-15" color="removed" title="Width and height fields from camera API" %}}
 
-Removed `width` and `height` from the response of the [`GetImage`](/components/camera/#getimage) method in the camera API.
+Removed `width` and `height` from the response of the [`GetImage`](/appendix/apis/components/camera/#getimage) method in the camera API.
 This does not impact any existing camera models.
 If you write a custom camera model, you no longer need to implement the `width` and `height` fields.
 

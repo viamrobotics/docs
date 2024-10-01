@@ -8,22 +8,23 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/sensor-controlled/"
-component_description: "A model that wraps other base models with feedback control from a movement sensor"
+component_description: "Wrap other base models and add feedback control using a movement sensor."
 # SMEs: Rand H., Martha J.
 ---
 
 A `sensor-controlled` base supports a robotic base with feedback control from a movement sensor.
 
 {{% alert title="Requirements" color="note" %}}
-In order to use feedback control, you must provide a movement sensor that implements [AngularVelocity()](/components/movement-sensor/#getangularvelocity) and [LinearVelocity()](/components/movement-sensor/#getlinearvelocity). This will enable feedback control for [SetVelocity()](/components/base/#setvelocity).
+In order to use feedback control, you must provide a movement sensor that implements [AngularVelocity()](/appendix/apis/components/movement-sensor/#getangularvelocity) and [LinearVelocity()](/appendix/apis/components/movement-sensor/#getlinearvelocity). This will enable feedback control for [SetVelocity()](/appendix/apis/components/base/#setvelocity).
 
-In order to use feedback control for [Spin()](/components/base/#spin), you must also provide a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation).
+In order to use feedback control for [Spin()](/appendix/apis/components/base/#spin), you must also provide a movement sensor that implements [Orientation()](/appendix/apis/components/movement-sensor/#getorientation).
 
-In order to use feedback control for [MoveStraight()](/components/base/#spin), you must also provide a movement sensor that implements [Position()](/components/movement-sensor/#getposition). Additionally, heading feedback control while moving straight can be used by providing a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation) or [CompassHeading()](/components/movement-sensor/#getcompassheading).
+In order to use feedback control for [MoveStraight()](/appendix/apis/components/base/#spin), you must also provide a movement sensor that implements [Position()](/appendix/apis/components/movement-sensor/#getposition).
+Additionally, heading feedback control while moving straight can be used by providing a movement sensor that implements [Orientation()](/appendix/apis/components/movement-sensor/#getorientation) or [CompassHeading()](/appendix/apis/components/movement-sensor/#getcompassheading).
 {{% /alert %}}
 
 To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/components/base/) you want to wrap with feedback control and each required [movement sensor](/components/movement-sensor/).
-To see what models of movement sensor report which feedback, reference the appropriate column in [Movement Sensor API](/components/movement-sensor/#api).
+To see what models of movement sensor report which feedback, reference the appropriate column in [Movement Sensor API](/appendix/apis/components/movement-sensor/#api).
 
 Configure a `sensor-controlled` base as follows:
 
@@ -98,14 +99,24 @@ When `control_parameters` is set, `MoveStraight` calculates the required velocit
 
 The following base control API methods are available on a `sensor-controlled` base:
 
-- [SetVelocity()](/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
-- [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
-- [MoveStraight()](/components/base/#movestraight): available if base is configured to receive position feedback.
+- [SetVelocity()](/appendix/apis/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
+- [Spin()](/appendix/apis/components/base/#spin): available if base is configured to receive orientation feedback.
+- [MoveStraight()](/appendix/apis/components/base/#movestraight): available if base is configured to receive position feedback.
 
-For example, a [Viam Rover](/appendix/try-viam/rover-resources/) using `sensor-controlled` base following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+For example, a [Viam Rover](/appendix/try-viam/rover-resources/) using `sensor-controlled` base following both an [angular](/appendix/apis/components/base/#spin) and [linear](/appendix/apis/components/base/#movestraight) velocity command:
 
 {{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
 
 The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
 
 {{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}
+{{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
+{{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{< /cards >}}

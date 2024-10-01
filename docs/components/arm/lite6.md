@@ -7,7 +7,7 @@ description: "Configure a UFACTORY Lite 6 arm for your machine."
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/xarmlite/"
-component_description: "UFACTORY Lite 6"
+component_description: "Supports UFACTORY Lite 6."
 # SMEs: Bucket, Motion
 ---
 
@@ -101,3 +101,13 @@ The following attributes are available for `lite6` arms:
 See [the frame system service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/services/accessing-and-moving-robot-arm/" noimage="true" %}}
+{{< /cards >}}

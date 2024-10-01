@@ -7,7 +7,7 @@ description: "Configure a bipolar stepper motor with current regulation and 1/32
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpiostepper/"
-component_description: "Stepper motor driven by a basic GPIO-controlled stepper driver chip."
+component_description: "Supports stepper motors driven by basic GPIO-controlled stepper driver chips."
 usage: 900000
 # SMEs: Rand, James
 ---
@@ -136,3 +136,13 @@ See the data sheet of your stepper motor and stepper motor driver for informatio
 ## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/get-started/control-motor/" noimage="true" %}}
+{{< /cards >}}

@@ -8,7 +8,7 @@ images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/xarm6/"
-component_description: "UFACTORY xArm 6."
+component_description: "Supports UFACTORY xArm 6."
 # SMEs: Bucket, Motion
 ---
 
@@ -102,3 +102,13 @@ The following attributes are available for `xArm6` arms:
 See [the frame system Service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/services/accessing-and-moving-robot-arm/" noimage="true" %}}
+{{< /cards >}}

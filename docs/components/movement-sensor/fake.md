@@ -8,7 +8,7 @@ images: ["/icons/components/imu.svg"]
 toc_hide: true
 aliases:
   - "/components/movement-sensor/fake/"
-component_description: "Used to test code without hardware."
+component_description: "A model for testing, with no physical hardware."
 # SMEs: Rand
 ---
 
@@ -73,3 +73,13 @@ This panel presents the data collected by the movement sensor.
 The sections in the panel include the position, orientation, angular velocity, linear velocity, and linear acceleration.
 
 {{<imgproc src="/components/movement-sensor/movement-sensor-control-tab.png" resize="800x" declaredimensions=true alt="The movement sensor component in the control tab">}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

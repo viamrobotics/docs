@@ -28,14 +28,14 @@ Depending on your needs, you may wish to define a new API subtype, deploy a cust
 The [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
 If your use case aligns closely with an existing API, you should use that API to program your new resource.
 
-If you want to use most of an existing API but need just a few other functions, you can use the [`DoCommand`](/appendix/apis/#docommand) endpoint together with [extra parameters](/sdks/use-extra-params/) to add custom functionality to an existing resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
+If you want to use most of an existing API but need just a few other functions, you can use the `DoCommand` endpoint together with [extra parameters](/sdks/use-extra-params/) to add custom functionality to an existing resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
 
 Or, if your resource does not fit into an existing resource subtype, you can use one of the following:
 
 - If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
 - If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
 
-Both generic resources use the [`DoCommand`](/appendix/apis/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
+Both generic resources use the [`DoCommand`](/appendix/apis/components/generic/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
 
 Alternatively, you can also [define a new resource subtype and an API for that subtype](/registry/advanced/create-subtype/) if none of the above options are a good fit for your use case.
 
