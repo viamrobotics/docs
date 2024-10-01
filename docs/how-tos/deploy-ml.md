@@ -460,32 +460,25 @@ Click **Next steps**.
 {{% tablestep %}}
 **3. Wait for your model to train**
 
-The model now starts training and you can follow its process in the **Training** section of the **Models** page.
+The model now starts training and you can follow its process on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
 
-![The models tab on the data page showing a model named my-classifier-model being trained](/tutorials/data-management/model-training-progress.png)
+Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
 
-Once the model has finished training, it becomes visible in the **Models** section of the page.
 You will receive an email when your model finishes training.
-
-![The trained model](/tutorials/data-management/trained-model.png)
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **4. Debug your training job**
 
-If your training job failed you can check your job's logs with the [CLI](/cli/).
+From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
 
-You can obtain the job's id by listing the jobs:
+{{< alert title="Note" color="note" >}}
 
-```sh {class="command-line" data-prompt="$"}
-viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
-```
+Your training script may output logs at the error level but still succeed.
 
-Then use the job id to get your training job's logs:
+{{< /alert >}}
 
-```sh {class="command-line" data-prompt="$"}
-viam train logs --job-id=<JOB ID>
-```
+You can also view your training jobs' logs with the [`viam train logs`](/cli/#train) command.
 
 {{% /tablestep %}}
 {{< /table >}}
