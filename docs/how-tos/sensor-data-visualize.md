@@ -70,7 +70,7 @@ Select a tab below to learn how to configure your visualization tool for use wit
 **1. Choose Grafana instance**
 
 [Install](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) or set up Grafana.
-You can use either a local instance of Grafana or Grafana Cloud, and can use the free trial version of Grafana if desired.
+You can use either a local instance of Grafana Enterprise or Grafana Cloud, and can use the free trial version of Grafana Cloud if desired.
 
 {{% /tablestep %}}
 {{% tablestep %}}
