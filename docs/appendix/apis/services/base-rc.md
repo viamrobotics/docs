@@ -9,7 +9,7 @@ icon: true
 images: ["/services/icons/slam.svg"]
 ---
 
-The Base Remote Control service API allows you to get a list of inputs from the controller that are being monitored for that control mode.
+The base remote control service API allows you to get a list of inputs from the controller that are being monitored for that control mode.
 
 The [SLAM service](/services/slam/) supports the following methods:
 
