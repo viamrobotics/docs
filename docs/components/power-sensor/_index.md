@@ -16,7 +16,7 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-Power sensor components provide an API for getting measurements of voltage, current, and power consumption.
+The power sensor component provides an API for getting measurements of voltage, current, and power consumption.
 
 If you have a physical power sensor, an API endpoint, or anything else that provides such measurements, use a power sensor component.
 

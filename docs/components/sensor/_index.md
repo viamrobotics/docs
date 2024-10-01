@@ -18,7 +18,7 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-Sensor components provide an API for getting measurements.
+The sensor component provides an API for getting measurements.
 
 If you have a physical sensor, an API endpoint, or anything else that provides measurements, use a sensor component.
 

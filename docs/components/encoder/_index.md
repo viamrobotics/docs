@@ -18,12 +18,12 @@ hide_children: true
 # SME: Rand
 ---
 
-Encoders provide an API for getting the position of a motor or a joint in ticks or degrees.
+The encoder component provides an API for getting the position of a motor or a joint in ticks or degrees.
 
-If you have hardware or software that provides the position of a motor, use an encoder component.
+If you have hardware or software that provides the position of a motor or joint, use an encoder component.
 
 Encoder components are often used in conjunction with a motor, and are sometimes even built directly into motors.
-Encoder can also be mounted on a passive joint or other rotating object to keep track of the joint angle.
+Encoders can also be mounted on a passive joint or other rotating object to keep track of the joint angle.
 
 The encoder component supports:
 

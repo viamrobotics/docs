@@ -18,11 +18,11 @@ hide_children: true
 # SME: Rand
 ---
 
-Motor components provide an API for operating a motor or getting its current status.
+The motor component provides an API for operating a motor or getting its current status.
 
 If you have a device that converts electricity into rotary motion, such as a brushed DC motor, a brushless DC motor, or a stepper motor, configure it as a motor component.
 
-For a hobby servo, configure it as a [servo component](/components/servo/) instead.
+If you have a hobby servo, configure it as a [servo component](/components/servo/) instead.
 
 ## Available models
 

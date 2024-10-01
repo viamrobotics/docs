@@ -17,7 +17,7 @@ aliases:
 # SME: Rand
 ---
 
-Movement sensors provide an API for GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.
+The movement sensor component provides an API for GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.
 
 If you have hardware or software that provides such measurements, use a movement sensor component.
 
