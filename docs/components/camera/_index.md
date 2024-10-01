@@ -16,7 +16,7 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-Cameras provide an API for getting images or point clouds.
+The camera component provides an API for getting images or point clouds.
 
 If you have a physical camera or software that generates 2D images or 3D point clouds, use a camera component.
 
