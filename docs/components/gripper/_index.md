@@ -16,7 +16,7 @@ hide_children: true
 # SMEs: Bucket Team
 ---
 
-Grippers provide an API for opening and closing a device.
+The gripper component provides an API for opening and closing a device.
 
 If you have a robotic grasping device that can open and close, use a gripper component.
 
