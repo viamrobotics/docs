@@ -20,7 +20,7 @@ hide_children: true
 <img src="gantry-illustration.png" style="max-width:300px" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." class="alignright imgzoom">
 </div>
 
-Gantrys provide an API for coordinated control of one or more linear actuators.
+The gantry component provides an API for coordinated control of one or more linear actuators.
 
 If you have a physical gantry, that is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector), use a gantry component.
 
