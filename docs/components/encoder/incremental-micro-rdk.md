@@ -3,7 +3,7 @@ title: "Configure an Incremental Encoder (viam-micro-server)"
 linkTitle: "incremental"
 titleMustBeLong: true
 type: "docs"
-description: "Configure an incremental encoder with a microcontroller."
+description: "Configure an incremental encoder."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
@@ -81,3 +81,13 @@ The following attributes are available for `incremental` encoders:
 | `b` | string | **Required** | GPIO number of the second board pin to which the encoder is wired |
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

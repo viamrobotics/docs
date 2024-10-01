@@ -545,7 +545,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every analog pin [configured](#available-models) on the board.
+- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every analog pin [configured](/components/board/#available-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -1131,7 +1131,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every interrupt [configured](#available-models) on the board.
+- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every interrupt [configured](/components/board/#available-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -1169,7 +1169,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](#available-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](/components/board/#available-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 

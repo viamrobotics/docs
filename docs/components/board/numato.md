@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/numato/"
-component_description: "Numato GPIO Modules, peripherals for adding GPIO pins."
+component_description: "Supports Numato GPIO Modules and peripherals for adding GPIO pins."
 # SMEs: Gautham, Rand
 ---
 
@@ -76,3 +76,13 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 ### `analogs`
 
 {{< readfile "/static/include/components/board/board-analogs.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

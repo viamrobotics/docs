@@ -8,7 +8,7 @@ images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpio/"
 no_list: true
-component_description: "Standard brushed or brushless DC motor."
+component_description: "Supports standard brushed or brushless DC motors."
 usage: 999999
 # SMEs: Rand, James
 ---
@@ -122,7 +122,7 @@ The following attributes are available for `gpio` motors:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
-| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/components/motor/encoded-motor/) `gpio` motors.* |
+| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/appendix/apis/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/components/motor/encoded-motor/) `gpio` motors.* |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
 | `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
 | `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
@@ -198,3 +198,13 @@ Only the output side of the driver board is different in that more wires connect
 ## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/get-started/control-motor/" noimage="true" %}}
+{{< /cards >}}

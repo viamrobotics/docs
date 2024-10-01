@@ -7,7 +7,7 @@ description: "Configure a brushed DC motor driven by a roboclaw motor controller
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/roboclaw/"
-component_description: "Standard brushed DC motor driven by Basicmicro’s RoboClaw motor controller."
+component_description: "Supports a standard brushed DC motor driven by Basicmicro’s RoboClaw motor controller."
 # SMEs: Olivia, Rand
 ---
 
@@ -104,3 +104,13 @@ Refer to your motor and motor driver data sheets for specifics.
 ## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/get-started/control-motor/" noimage="true" %}}
+{{< /cards >}}

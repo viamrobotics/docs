@@ -592,11 +592,13 @@ Find **Organization ID** and click the copy icon.
 {{% tablestep %}}
 **2. Check on training job process**
 
-Once submitted, you can view your training job on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
+Once submitted, you can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
 
-You will receive an email when your training job completed.
+Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
 
-You can also list your training jobs and their status from the CLI:
+You will receive an email when your training job completes.
+
+You can also check your training jobs and their status from the CLI:
 
 ```sh {class="command-line" data-prompt="$"}
 viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
@@ -606,13 +608,15 @@ viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
 {{% tablestep %}}
 **3. Debug your training job**
 
-If your training job failed you can check your job's logs with the CLI:
+From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
 
-```sh {class="command-line" data-prompt="$"}
-viam train logs --job-id=<JOB ID>
-```
+{{< alert title="Note" color="note" >}}
 
-You can obtain the job's id by listing the jobs as in step 2.
+Your training script may output logs at the error level but still succeed.
+
+{{< /alert >}}
+
+You can also view your training jobs' logs with the [`viam train logs`](/cli/#train) command.
 
 {{% /tablestep %}}
 {{< /table >}}

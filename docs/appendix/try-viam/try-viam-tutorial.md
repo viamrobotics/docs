@@ -147,7 +147,7 @@ There you can view the configuration for each component in the machine: attribut
 
 The [board component](/components/board/) is the signal wire hub of a machine.
 Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
-For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
+For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `viam:raspberry-pi:rpi`.
 
 ### Encoder configuration
 
@@ -227,7 +227,7 @@ You can [copy this `JSON` config between rental rovers](/appendix/try-viam/reser
 If you have questions, check out our [FAQ](/appendix/try-viam/reserve-a-rover/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
 
 {{< cards >}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/how-tos/drive-rover/" %}}
 {{% card link="/how-tos/detect-color/" %}}
 {{% card link="/appendix/try-viam/rover-resources/" %}}
 {{< /cards >}}

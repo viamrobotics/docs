@@ -26,7 +26,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetMachineStatus
 
-Get status information about the machine.
+Get status information about the machines resources and configuration.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -36,13 +36,14 @@ Get status information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the resources (List[ResourceStatus]) of the machine.
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the resources (List[ResourceStatus]) and config of the machine.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 machine_status = await machine.get_machine_status()
 resource_statuses = machine_status.resources
+config_status = machine_status.config
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).

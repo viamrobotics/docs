@@ -8,6 +8,8 @@ tags: ["cloud", "sdk", "viam-server", "networking", "apis", "ml model", "ml"]
 aliases:
   - /program/apis/ml_training-client/
   - /build/program/apis/ml-training-client/
+date: "2024-09-18"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com).
@@ -17,6 +19,10 @@ The ML training API allows you to get information about and cancel ML training j
 ML training client API methods are only available in the Python SDK.
 
 {{% /alert %}}
+
+The ML training client API supports the following methods:
+
+{{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
 ## Establish a connection
 
@@ -62,9 +68,5 @@ if __name__ == '__main__':
 Once you have instantiated an `MLTrainingClient`, you can run the following [API methods](#api) against the `MLTrainingClient` object (named `ml_training_client` in the examples).
 
 ## API
-
-The ML training client API supports the following methods:
-
-{{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/mltraining.md" >}}

@@ -125,7 +125,7 @@ To add the [data management service](/services/data/) and configure data capture
 5. Scroll to the panel of the camera you just configured.
    Find the **Data capture** section.
    Click **Add Method**.
-   If you're using a webcam, select the **Method** type [`ReadImage`](/components/camera/#getimage).
+   If you're using a webcam, select the **Method** type [`ReadImage`](/appendix/apis/components/camera/#getimage).
    Set the **Frequency** to `0.333`.
    This will capture an image from the camera once every 3 seconds.
    Set the **MIME type** to `image/jpeg`.
@@ -138,11 +138,11 @@ To add the [data management service](/services/data/) and configure data capture
    Here you can view the images captured so far from the camera on your machine.
    You should see new images appearing steadily as cloud sync uploads them from your machine.
 
-For more information, see [configure data capture for individual components](/services/data/capture/#configure-data-capture-for-individual-resources).
+For more information, see [configure data capture for individual components](/services/data/capture-sync/#configure-data-capture-and-sync).
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different method **Type** in your data capture configuration.
-For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/components/camera/#getimages).
+For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/appendix/apis/components/camera/#getimages).
 {{% /alert %}}
 
 Next, position your camera to capture a variety of images of people.

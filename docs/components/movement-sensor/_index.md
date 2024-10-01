@@ -17,28 +17,18 @@ aliases:
 # SME: Rand
 ---
 
-A movement sensor component is a sensor that gives data on where a machine is and how fast it is moving.
-Examples of movement sensors include global positioning systems (GPS), inertial measurement units (IMUs), accelerometers and gyroscopes.
+The movement sensor component provides an API for GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.
 
-{{% alert title="Tip" color="tip" %}}
-
-Viam also supports generic [sensors](/components/sensor/) and [encoders](/components/encoder/).
-
-{{% /alert %}}
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/slam/" >}}
-{{< /cards >}}
+If you have hardware or software that provides such measurements, use a movement sensor component.
 
 ## Available models
 
-To use your movement sensor component, check whether one of the following models supports it.
+To use a movement sensor and get its measurements, you need to add it to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
+
+The following list shows the available sensor models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -61,40 +51,9 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your movement sensor with Viam's client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by adding API method calls as shown in the following examples.
-
-These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your machine.
-If your movement sensor has a different name, change the `name` in the code.
-
-Be sure to import the movement sensor package for the SDK you are using:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.movement_sensor import MovementSensor
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/movementsensor"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
+
+The [movement sensor API](/appendix/apis/components/movement-sensor/) supports the following methods:
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 
@@ -107,8 +66,6 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
-{{< readfile "/static/include/components/apis/generated/movement_sensor.md" >}}
-
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
@@ -117,8 +74,17 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
-Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/appendix/apis/) to implement closed-loop movement control for your machine.
+For general configuration and development info, see:
 
-Or, try configuring [data capture](/services/data/) on your movement sensor.
+{{< cards >}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{< /cards >}}
 
-{{< snippet "social.md" >}}
+To capture data from the movement sensor or use it for motion, see the following services:
+
+- [data management service](/services/data/): to capture and sync the movement sensor's data
+- [motion service](/services/motion/): to move machines or components of machines
+- [navigation service](/services/navigation/): to navigate with GPS
+- [SLAM service](/services/slam/): for mapping

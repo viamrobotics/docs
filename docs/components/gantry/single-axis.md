@@ -9,7 +9,7 @@ tags: ["gantry", "components"]
 aliases:
   - "/components/gantry/oneaxis/"
   - "/components/gantry/single-axis/"
-component_description: "A gantry with a singular linear rail."
+component_description: "Supports a gantry with a singular linear rail."
 # SME: Rand, Martha
 ---
 
@@ -68,3 +68,13 @@ The following attributes are available for `single-axis` gantries:
 | `gantry_mm_per_sec` | int | Optional | The speed at which the gantry moves in millimeters per second. Used to calculate the gantry `motor`'s revolutions per minute (RPM). <br> Default: `100` RPM |
 
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

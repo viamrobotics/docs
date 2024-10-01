@@ -3,7 +3,7 @@ title: "Drive a rover using TypeScript"
 linkTitle: "Drive a rover using TypeScript"
 type: "docs"
 layout: "empty"
-canonical: "https://codelabs.viam.com/guide/air-quality/index.html"
+canonical: "https://codelabs.viam.com/guide/drive-rover-ts/"
 tags: ["APIs", "python"]
 description: "Drive a rover in a square using the Viam TypeScript SDK."
 images:

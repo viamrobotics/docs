@@ -6,14 +6,14 @@ type: "docs"
 description: "Configure a WitMotion HWT905-TTL IMU on your machine. Once configured, use the API to obtain the AngularVelocity, Orientation, CompassHeading and LinearAcceleration."
 images: ["/icons/components/imu.svg"]
 toc_hide: true
-component_description: "The HWT905-TTL IMU manufactured by WitMotion."
+component_description: "Supports the HWT905-TTL IMU manufactured by WitMotion."
 aliases:
   - "/components/movement-sensor/imu/imu-wit-hwt905/"
 # SMEs: Susmita, Bucket Team
 ---
 
-An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`Orientation`](/components/movement-sensor/#getorientation), [`CompassHeading`](/components/movement-sensor/#getcompassheading), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
-To get all the raw sensor data, you can use the [sensor](/components/sensor/) [`GetReadings`](/components/sensor/#getreadings) method, which movement sensors inherit from the general sensor API.
+An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/appendix/apis/components/movement-sensor/#getangularvelocity), [`Orientation`](/appendix/apis/components/movement-sensor/#getorientation), [`CompassHeading`](/appendix/apis/components/movement-sensor/#getcompassheading), [`LinearAcceleration`](/appendix/apis/components/movement-sensor/#getlinearacceleration), and [`GetAccuracy`](/appendix/apis/components/movement-sensor/#getaccuracy) methods.
+To get all the raw sensor data, you can use the [sensor](/components/sensor/) [`GetReadings`](/appendix/apis/components/sensor/#getreadings) method, which movement sensors inherit from the general sensor API.
 
 The `imu-wit-hwt905` movement sensor model supports the [HWT905-TTL IMU](https://www.wit-motion.com/proztgjd/39.html) manufactured by WitMotion.
 
@@ -86,3 +86,13 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 | `serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor over the serial connection. Valid rates are `9600` and `115200`.<br>Default: `115200` |
 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

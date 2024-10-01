@@ -9,11 +9,11 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/gpio/"
-component_description: "A hobby servo wired to any model of board besides pi."
+component_description: "Supports hobby servos wired to any model of board besides pi."
 # SME: Rand
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`pi` model [board](/components/board/) into your machine:
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`viam:raspberry-pi:rpi` model [board](/components/board/) into your machine:
 
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}
@@ -104,3 +104,13 @@ Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs
 {{% /alert %}}
 
 {{< readfile "/static/include/components/test-control/servo-control.md" >}}
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/servo/" customTitle="Servo API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

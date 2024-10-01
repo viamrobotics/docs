@@ -7,7 +7,7 @@ description: "Configure an ADXL345 digital accelerometer."
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/adxl345/"
-component_description: "The Analog Devices ADXL345 digital accelerometer."
+component_description: "Supports the Analog Devices ADXL345 digital accelerometer."
 toc_hide: true
 # SMEs: Rand, Kim Mishra
 ---
@@ -133,3 +133,13 @@ After you configure your movement sensor, navigate to the [Control tab](/fleet/c
 This panel presents the data collected by the movement sensor.
 
 {{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

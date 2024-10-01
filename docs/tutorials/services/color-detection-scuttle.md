@@ -31,19 +31,31 @@ After following this tutorial, you will understand how the ML model service and 
 In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/appendix/try-viam/rover-resources/).
 
+{{< alert title="You will learn" color="tip" >}}
+
+- How to run SDK code
+- How to use the base API and the vision API to follow a line with a rover
+
+{{< /alert >}}
+
 <div class="aligncenter">
 {{<video webm_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 </div>
 
-You can see the [full code](#full-code) at the bottom of the page.
+You can see the [full code](#full-code) at the end of the tutorial.
 
 ## Requirements
 
+You don't need to buy or own any hardware to complete this tutorial.
+
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
-  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or an entirely different rover.
-  - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
+- A wheeled rover, configured with a base component.
+  If you have your own Viam rover [follow the Viam Rover configuration instructions](/appendix/try-viam/rover-resources/).
+  If you own another mobile robot [follow the general configuration instructions](/tutorials/configure/configure-rover/).
+
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or any other wheeled robot that can be configured as a [base component](/components/base/wheeled/).
+
 - An attached and configured [webcam camera](/components/camera/webcam/).
 
 ## Set up the hardware
@@ -300,7 +312,7 @@ Use something like a red sports ball or book cover as a target to follow to test
 ## Next steps
 
 Congratulations! If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your rover move in a square](/get-started/drive-rover/).
+You could also write some code with a Viam SDK to [make your rover move in a square](/how-tos/drive-rover/).
 
 {{< snippet "social.md" >}}
 

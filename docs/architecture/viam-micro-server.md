@@ -6,6 +6,8 @@ type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with `viam-micro-server`."
+date: "2024-09-03"
+# updated: ""  # When the content was last entirely checked
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
@@ -30,7 +32,7 @@ description: "Set up the Espressif ESP32 for development with `viam-micro-server
 {{% relatedcard link="/components/sensor/" %}}
 {{% relatedcard link="/components/servo/" %}}
 {{% relatedcard link="/components/generic/" %}}
-{{% relatedcard link="/services/data/capture/" %}}
+{{% relatedcard link="/services/data/capture-sync/" %}}
 {{< /cards >}}
 
 Click on each supported resource to see available models, API methods, and configuration info.

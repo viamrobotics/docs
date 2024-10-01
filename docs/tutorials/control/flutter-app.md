@@ -70,6 +70,12 @@ For this walkthrough, you only need to install the following:
   - When prompted, do install Cocoapods.
     You need it to support the iOS simulator.
 
+{{% alert title="Flutter version" color="note" %}}
+We recommend using Flutter 3.19.6, as this sample app was tested with this version.
+`fvm` is a useful tool for targeting specific flutter versions.
+You can run `fvm use 3.19.6` in the terminal before building your sample app to target Flutter 3.19.6.
+{{% /alert %}}
+
 ## Start creating code
 
 ### Create your Flutter project
@@ -118,7 +124,7 @@ That's not going to be very helpful for interacting with your fleet of machines,
      flutter_dotenv: ^5.1.0
      image: ^4.0.17
      cupertino_icons: ^1.0.2
-     viam_sdk: ^0.0.9
+     viam_sdk: ^0.0.20
 
    dev_dependencies:
      flutter_test:
@@ -614,8 +620,10 @@ class _RobotScreenState extends State<RobotScreen> {
   void dispose() {
     // You should always close the [RobotClient] to free up resources.
     // Calling [RobotClient.close] will clean up any tasks and
-    // resources created by Viam.
-    client.close();
+    // resources created by Viam
+    if (_isLoading == false) {
+      client.close();
+    }
     super.dispose();
   }
 

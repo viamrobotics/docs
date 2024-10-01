@@ -12,6 +12,8 @@ sitemap:
 outputs:
   - html
 carouselscript: true
+date: "2024-09-17"
+# updated: ""  # When the content was last entirely checked
 ---
 
 <div class="max-page">
@@ -75,14 +77,14 @@ carouselscript: true
   </div>
 </div>
 
-<h2 class="frontpage-headers">Follow popular tutorials</h2>
+<h2 class="frontpage-headers">Learn about Viam</h2>
 
 <div class="cards max-page">
   <div class="row">
-    {{< card link="/tutorials/projects/helmet/" class="green">}}
-    {{< card link="/tutorials/services/plan-motion-with-arm-gripper/" class="pink">}}
-    {{< card link="/tutorials/services/navigate-with-rover-base/" class="purple">}}
-    {{< card link="/tutorials/projects/integrating-viam-with-openai/" class="yellow">}}
+    {{< card link="/get-started/" class="green">}}
+    {{< card link="/get-started/control-motor/" class="pink">}}
+    {{< card link="/get-started/detect-people/" class="purple">}}
+    {{< card link="/get-started/collect-data/" class="yellow">}}
   </div>
 </div>
 

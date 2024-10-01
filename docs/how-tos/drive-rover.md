@@ -15,6 +15,7 @@ aliases:
   - "/try-viam/try-viam-tutorial/"
   - "/get-started/try-viam/try-viam-tutorial/"
   - "/get-started/quickstarts/drive-rover/"
+  - "/get-started/drive-rover/"
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 level: "Beginner"
 authors: []
@@ -28,13 +29,12 @@ viamresources: ["base"]
 platformarea: ["core"]
 level: "Beginner"
 date: "2022-12-08"
-# updated: ""
+updated: "2024-08-06"
 cost: "0"
 ---
 
 If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
 
-This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll write code that makes a rover drive in a square.
 
 {{< alert title="You will learn" color="tip" >}}
@@ -647,7 +647,9 @@ class _RobotScreenState extends State<RobotScreen> {
     // You should always close the [RobotClient] to free up resources.
     // Calling [RobotClient.close] will clean up any tasks and
     // resources created by Viam.
-    client.close();
+    if (_isLoading == false) {
+      client.close();
+    }
     super.dispose();
   }
 
@@ -813,7 +815,7 @@ Then run your code and watch your rover move in a square.
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are interested to learn about what other commands you can give to a base, see the standardized [base API](/components/base/#api) for a full list of available API methods.
+If you are interested to learn about what other commands you can give to a base, see the standardized [base API](/appendix/apis/components/base/#api) for a full list of available API methods.
 {{% /alert %}}
 
 {{< /expand>}}

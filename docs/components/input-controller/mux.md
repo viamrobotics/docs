@@ -8,7 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/mux/"
-component_description: "Multiplexed controller, combining multiple sources of input."
+component_description: "Supports multiplexed controllers, combining multiple sources of input."
 # SMEs: James
 ---
 
@@ -125,3 +125,13 @@ This tells the program loading the config to fully load the source components fi
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/control/gamepad/" noimage="true" %}}
+{{< /cards >}}

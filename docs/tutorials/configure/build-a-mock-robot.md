@@ -304,7 +304,7 @@ func main() {
 Now when you run this code, you should see the new mock arm positions listed in the command line.
 
 Verify that your mock robotic arm is working in the **CONTROL** tab of the [Viam app](https://app.viam.com).
-Watch the robotic arm's [`JointPositions()`](/components/arm/#getjointpositions) changing in real-time along with the code on your development machine.
+Watch the robotic arm's [`JointPositions()`](/appendix/apis/components/arm/#getjointpositions) changing in real-time along with the code on your development machine.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="/tutorials/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the CONTROL tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
@@ -317,7 +317,7 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 
 ### What is a sub-part?
 
-Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
+Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](https://github.com/viam-modules/raspberry-pi).
 You follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your [board](/components/board/), and you start operating your machine with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
 
 By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:

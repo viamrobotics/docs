@@ -19,16 +19,15 @@ hide_children: true
 # SMEs:
 ---
 
-The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/appendix/apis/#component-apis) defined for them.
+Generic components provide an API for running model-specific commands using [`DoCommand`](/appendix/apis/components/generic/#docommand).
 
-For example, when using an [arm component](/components/arm/), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
-However, if you want to use an LED display for example, you need very different functionality that isn't currently exposed in any API.
+If you have a physical device or a program that does not fit into any of the provided [components APIs](/appendix/apis/#component-apis), use a generic component.
+
+For example, if you want to use an LED display, you need functionality that isn't currently exposed in an existing API.
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
 
-Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
+You should use the generic component for {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that represent a unique type of hardware.
 If you are adding new high-level software functionality, rather than supporting new hardware components, use the [generic service](/services/generic/) instead.
-
-There are no built-in generic component models (other than `fake`).
 
 {{% alert title="Important" color="note" %}}
 
@@ -42,7 +41,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ## Available models
 
-To use your generic component, check whether one of the following models supports it.
+To use a generic component, check whether one of the following models supports it.
 
 For configuration information, click on the model name:
 
@@ -67,56 +66,23 @@ You will need to [recompile and flash your ESP32 yourself](/installation/#instal
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your board with Viam's client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by getting your `generic` component from the machine with `FromRobot` and adding API method calls, as shown in the following examples.
-
-These examples assume you have a board called "my_board" configured as a component of your machine.
-If your board has a different name, change the `name` in the code.
-
-Be sure to import the generic component package for the SDK you are using:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.generic import Generic
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/generic"
-)
-```
-
-{{% /tab %}}
-{{% tab name="C++" %}}
-
-```cpp
-#include <viam/sdk/components/generic/generic.hpp>
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
 
-The generic component supports the following method:
+The [generic API](/appendix/apis/components/generic/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
-
-{{< readfile "/static/include/components/apis/generated/generic_component.md" >}}
 
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

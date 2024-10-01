@@ -8,6 +8,8 @@ tags: ["cloud", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - /program/apis/billing-client/
   - /build/program/apis/billing-client/
+date: "2024-09-18"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The billing client API allows you to retrieve billing information from the [Viam app](https://app.viam.com).
@@ -17,6 +19,10 @@ The billing client API allows you to retrieve billing information from the [Viam
 Billing client API methods are only available in the Python SDK.
 
 {{% /alert %}}
+
+The billing client API supports the following methods:
+
+{{< readfile "/static/include/app/apis/generated/billing-table.md" >}}
 
 ## Establish a connection
 
@@ -68,9 +74,5 @@ if __name__ == '__main__':
 Once you have instantiated a `BillingClient`, you can run [API methods](#api) against the `BillingClient` object (named `billing_client` in the examples).
 
 ## API
-
-The billing client API supports the following methods:
-
-{{< readfile "/static/include/app/apis/generated/billing-table.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/billing.md" >}}

@@ -2,7 +2,7 @@
 title: "Collect images or sensor data in 3 minutes"
 linkTitle: "Collect data (3 min)"
 type: "docs"
-images: ["/platform/data.svg"]
+images: ["/get-started/quickstarts/collect-data.png"]
 description: "Use Viam to gather images or sensor data from your machine."
 imageAlt: "The data icon"
 authors: []
@@ -28,7 +28,7 @@ cost: "0" # Approximate cost in USD - Only specify number
 ---
 
 This quickstart is the final part of a series.
-If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), [controlled a motor](/get-started/control-motor/), and [detected people](/get-started/detect-people/) we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/), [controlled a motor](/get-started/control-motor/), and [detected people](/get-started/detect-people/) we recommend you do so before continuing.
 
 In this guide you'll capture and sync sensor or image data from a machine.
 
@@ -127,7 +127,7 @@ For more detailed information, including optional attribute configuration, see t
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture/).
+For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
 
 {{< /expand >}}
 {{< expand "Step 5: View the captured image data" >}}
@@ -173,12 +173,12 @@ Wait for your device to connect to the Viam app.
 {{% /expand%}}
 {{< expand "Step 3: Configure a board" >}}
 
-Most sensors need to be wired to the pins of a SBC such as a [Raspberry Pi](/components/board/pi/).
+Most sensors need to be wired to the pins of a SBC such as a Raspberry Pi.
 
 If you are not using a single-board computer (SBC), move on to step 4.
 
 If you are using a SBC, make sure you have installed `viam-server` on the SBC.
-Then add a board component to your config for your SBC.
+Then add a [board component](/components/board/#available-models) to your config for your SBC.
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 
@@ -234,7 +234,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture/).
+For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
 
 {{< /expand >}}
 {{< expand "Step 6: View the captured sensor data" >}}

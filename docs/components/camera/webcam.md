@@ -8,7 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/webcam/"
-component_description: "A standard camera that streams camera data."
+component_description: "A standard USB camera or other webcam that streams camera data."
 usage: 999999
 toc_hide: true
 # SMEs: Bijan, vision team
@@ -203,9 +203,10 @@ Restart the Pi to complete the configuration.
 
 ## Next steps
 
-Complete a quick mini-project using your webcam with computer vision:
+For more configuration and development info, see:
 
 {{< cards >}}
-{{< card link="/get-started/detect-people/" >}}
-{{< card link="/how-tos/detect-color/" >}}
+{{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/how-tos/image-data/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
 {{< /cards >}}

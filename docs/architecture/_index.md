@@ -19,6 +19,8 @@ This page provides an overview of how a machine is structured, including on-devi
 - [Basic machine example](#basic-machine-example)
 - [Structure of more complex machines](#complex-machines-with-multiple-parts)
 
+{{<imgproc class="imgzoom" src="/architecture/architecture-diagram.svg" resize="x1100" declaredimensions=true alt="Viam-server runs on your machine and communicates with processes running on your machine, with the Viam cloud, with API clients, and with other machines running viam-server." >}}
+
 ## `viam-server` and `viam-micro-server`
 
 `viam-server` is the open-source executable binary that runs on your machine's SBC or other computer.

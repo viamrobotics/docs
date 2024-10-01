@@ -154,3 +154,13 @@ See [PWM signals on `esp32` pins](/components/board/esp32/#pwm-signals-on-esp32-
 ## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/get-started/control-motor/" noimage="true" %}}
+{{< /cards >}}

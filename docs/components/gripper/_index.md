@@ -16,21 +16,17 @@ hide_children: true
 # SMEs: Bucket Team
 ---
 
-A _gripper_ is a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
+The gripper component provides an API for opening and closing a device.
 
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< /cards >}}
+If you have a robotic grasping device that can open and close, use a gripper component.
 
 ## Available models
 
-To use your gripper component, check whether one of the following models supports it.
+To use a robotic gripper, you need to add it to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your gripper.
 
-For configuration information, click on the model name:
+The following list shows the available gripper models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -51,46 +47,11 @@ There is currently no support for this component in `viam-micro-server`.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your gripper with Viam's client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by adding API method calls as shown in the following examples.
-
-These examples assume you have a gripper called `"my_gripper"` configured as a component of your machine.
-If your gripper has a different name, change the `name` in the code.
-
-Be sure to import the gripper package for the SDK you are using:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.gripper import Gripper
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/gripper"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
 
-The gripper component supports the following methods:
+The [gripper API](/appendix/apis/components/gripper/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gripper-table.md" >}}
-
-{{< readfile "/static/include/components/apis/generated/gripper.md" >}}
 
 ## Troubleshooting
 
@@ -100,6 +61,15 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper" noimage="true" %}}
 {{< /cards >}}
+
+You can also use the gripper component with the following services:
+
+- [Motion service](/services/slam/): To move machines or components of machines
+- [Frame system service](/services/navigation/): To configure the positions of your components

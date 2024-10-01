@@ -16,20 +16,18 @@ hide_children: true
 # SME: #team-bucket
 ---
 
-A power sensor is a device that reports measurements of the voltage, current, and power consumption in your machine's system.
-Integrate this component to monitor your power levels.
+The power sensor component provides an API for getting measurements of voltage, current, and power consumption.
 
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
+If you have a physical power sensor, an API endpoint, or anything else that provides such measurements, use a power sensor component.
 
 ## Available models
 
-To use your power sensor component, check whether one of the following models supports it.
+To use a power sensor and get its measurements, you need to add it to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
+
+The following list shows the available sensor models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -50,48 +48,26 @@ There is currently no support for this component in `viam-micro-server`.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your power sensor with Viam’s client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Once connected, you can control your machine programmatically by adding API method calls as shown in the following examples.
-
-These examples assume you have a power sensor called `"my_power_sensor"` configured as a component of your machine.
-If your power sensor has a different name, change the `name` in the code.
-
-Import the power sensor package for the SDK you are using:
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.power_sensor import PowerSensor
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/powersensor"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
 
-The power sensor component supports the following methods:
+The [power sensor API](/appendix/apis/components/power-sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/power_sensor-table.md" >}}
-
-{{< readfile "/static/include/components/apis/generated/power_sensor.md" >}}
 
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{< /cards >}}
+
+To capture data from the power sensor and sync it in the cloud, see the [data management service](/services/data/).

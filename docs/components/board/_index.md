@@ -18,21 +18,20 @@ hide_children: true
 # SMEs: Gautham, Rand
 ---
 
-A _board_ component on your machine communicates with the other [components](/components/) of the machine.
+The board component provides an API for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
 
-A board can be:
+If you have GPIO pins you wish to control, use a board component.
 
-- A single-board computer (SBC) with GPIO pins and a CPU capable of running `viam-server`.
+Your GPIO pins can be present as:
+
+- The GPIO pins on a single-board computer (SBC).
 - A GPIO peripheral device that must connect to an external computer.
 - A PWM peripheral device that must connect to an SBC that has a CPU and GPIO pins.
 
-The board of a machine is also its signal wire hub that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
-
-Signaling is overseen by a computer running `viam-server` which allows you to control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
+In other words, the board of a machine is its signal wire hub.
+Signaling controls the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
 {{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
-
-## Available models
 
 {{< alert title="Running viam-server" color="note" >}}
 
@@ -42,13 +41,18 @@ If there is no board model for your board:
 - you can still run `viam-server` if your board [supports it](/installation/#platform-requirements)
 - you can still access USB ports
 
-For some SBCs, for example the [RockPi S](https://wiki.radxa.com/RockpiS), you can use the pins on your board with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
-
 {{< /alert >}}
 
-To use your board component, check whether one of the following models supports it.
+## Available models
 
-For configuration information, click on the model name:
+To use GPIO pins, you need to add a board component to your machine's configuration.
+Go to your machine's **CONFIGURE** page, and add a model that supports your board.
+
+The following list shows the available board models.
+If your board is not among them, you may be able to use the pins on your board with an experimental [periph.io](https://periph.io/)-based [modular component](https://github.com/viam-labs/periph_board).
+This works for boards such as the [RockPi S](https://wiki.radxa.com/RockpiS).
+
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -70,46 +74,11 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your board with Viam's client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by getting your `board` component from the machine with `FromRobot` and adding API method calls, as shown in the following examples.
-
-These examples assume you have a board called "my_board" configured as a component of your machine.
-If your board has a different name, change the `name` in the code.
-
-Be sure to import the board package for the SDK you are using:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.board import Board
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/board"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
 
-The board component supports the following methods:
+The [board API](/appendix/apis/components/board/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
-
-{{< readfile "/static/include/components/apis/generated/board.md" >}}
 
 ## Troubleshooting
 
@@ -119,7 +88,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
+For general configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/get-started/blink-an-led" %}}
-{{% card link="/tutorials/projects/guardian" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led" noimage="true" %}}
 {{< /cards >}}

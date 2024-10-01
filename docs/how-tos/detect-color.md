@@ -197,8 +197,8 @@ You can also use the vision service with Machine Learning models:
 {{% card link="/tutorials/projects/send-security-photo/" %}}
 {{< /cards >}}
 
-To learn about coding with Viam's SDKs, try [making a rover move in a square](/get-started/drive-rover/).
+To learn about coding with Viam's SDKs, try [making a rover move in a square](/how-tos/drive-rover/).
 
 {{< cards >}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/how-tos/drive-rover/" %}}
 {{< /cards >}}

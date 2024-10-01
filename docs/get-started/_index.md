@@ -38,7 +38,7 @@ For example, if you are building a pet-feeding machine you might install `viam-m
 ### Standard APIs
 
 Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a **standardized API** that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
-For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
+For example, you can send the same [`SetPower` command](/appendix/apis/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -112,7 +112,7 @@ Or you can use Viam's SDKs to build your own apps.
 The `viam-server` executable runs on **any computer that runs on 64-bit Linux OS, macOS, or Windows Subsystem for Linux**.
 Viam also supports microcontrollers with [`viam-micro-server`](/installation/#install-viam-micro-server).
 
-Here are some of the boards Viam supports:
+Here are some of the systems Viam runs on:
 
 {{< board-carousel >}}
 <br>
@@ -180,8 +180,8 @@ Users can have access to different fleet management capabilities depending on wh
 In the next few pages we will guide you through the platform.
 You don't need to buy or own any hardware to follow along.
 
-Continue to the [Drive a rover](/get-started/drive-rover/) quickstart:
+Continue to the [Control a motor](/get-started/control-motor/) quickstart:
 
 {{< cards >}}
-{{% card link="/get-started/drive-rover/" %}}
+{{% card link="/get-started/control-motor/" %}}
 {{< /cards >}}

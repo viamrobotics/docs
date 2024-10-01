@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/sensirion-sht3xd/"
-component_description: "Sensirion SHT3x-DIS temperature and humidity sensor."
+component_description: "Supports the Sensirion SHT3x-DIS temperature and humidity sensor."
 # SME: #team-bucket
 ---
 
@@ -62,3 +62,13 @@ The following attributes are available for `sensirion-sht3xd` sensors:
 ## Test the sensor
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
+
+## Next steps
+
+Check out the [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{< /cards >}}

@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/customlinux/"
-component_description: "A model for other Linux boards."
+component_description: "Supports boards that run Linux operating systems by allowing you to provide board pin mapping definitions."
 # SMEs: Alan, Olivia, Susmita
 ---
 
@@ -397,3 +397,13 @@ The following attributes are available for `customlinux` boards:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a board definitions file](#create-a-board-definitions-file). |
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

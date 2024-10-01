@@ -23,9 +23,9 @@ date: "2024-07-31"
 cost: "0" # Approximate cost in USD - Only specify number
 ---
 
-This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/) and [driven a rover](/get-started/drive-rover/), we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
 
+This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll configure and control a motor.
 
 {{< alert title="You will learn" color="tip" >}}
@@ -78,7 +78,7 @@ On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
 
 If you are using a physical board to follow along, look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
-For example, configure a [`pi` board](/components/board/pi/) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
+For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
 
@@ -129,7 +129,6 @@ Choose your machine from the list and use the mobile interface to adjust the mot
 
 ### Option 3: Control programmatically
 
-If you have [driven a rover](/get-started/drive-rover/), you have already seen that a base has a standardized API.
 Each component has a standardized API.
 The following code shows you how to control the motor's speed and direction using the [Motor API](/components/motor/#api).
 

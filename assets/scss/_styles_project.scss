@@ -452,14 +452,19 @@ END MARKETING CSS
 /* START CSS FOR EXPANDER */
 
 .expand-label {
-  font-family: Public Sans,system-ui;
-  font-weight:bold;
   background-color: whitesmoke;
   border: black solid 1px;
   padding: 0.5rem 1rem 0.5rem 1rem;
   i {
     font-size: inherit !important;
   }
+  display: flex;
+  justify-content: space-between;
+}
+
+.expand-label span h5 {
+  display: inline;
+  font-family: Public Sans,system-ui;
 }
 
 .expand-content {
@@ -480,6 +485,49 @@ END MARKETING CSS
 .expand-content ol li p {
   margin-bottom: 0;
 }
+
+// Expander styling
+
+details * i.fa-chevron-down {
+  display: none;
+}
+details * i.fa-chevron-right {
+  display: unset;
+}
+
+details[open] * i.fa-chevron-down {
+  display: unset;
+}
+details[open] * i.fa-chevron-right {
+  display: none;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+.center-text {
+  text-align: center;
+}
+
+// Expander anchor styling START
+.expander-anchor {
+  display: block;
+  position: relative;
+  top: -130px;
+  visibility: hidden;
+}
+
+.expand-link-icon {
+  float: right;
+  visibility: hidden;
+}
+
+.expand .expand-label:hover .expand-link-icon {
+  color: blue;
+  visibility: visible;
+}
+// Expander anchor styling END
 
 /* END CSS FOR EXPANDER */
 
@@ -1186,15 +1234,26 @@ img.frame {
 
 .relatedcard {
   display: flex;
-  flex-direction: column;
-  min-height: 13rem;
 }
 
 .relatedcard a {
-  width: 8rem;
+  display: flex;
   text-decoration: none;
-  padding: 0.75rem;
-  text-align: center;
+  padding: 0.5rem;
+  text-align: left;
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.relatedcard a picture {
+  width: 40px;
+  margin: 0 0.5rem;
+  min-width: 40px;
+  align-content: center;
+}
+
+.relatedcard a picture img {
+  margin-bottom: unset;
 }
 
 .relatedcard a:hover {
@@ -1206,7 +1265,8 @@ img.frame {
 }
 
 .relatedcard p {
-  vertical-align: middle;
+  align-content: center;
+  margin-bottom: unset;
 }
 
 @media (max-width: 800px) {
@@ -1484,6 +1544,11 @@ ul.sectionlist > li:hover {
   display: flex;
 }
 
+.ais-Hits-item > .tutorial .title:after {
+  content: "Tutorial";
+  background-color: #00ef83;
+}
+
 .ais-Hits-item > .blogpost .title:after {
   content: "Blogpost";
   background-color: #ffd400;
@@ -1502,11 +1567,6 @@ ul.sectionlist > li:hover {
 .ais-Hits-item > .codelab .title:after {
   content: "Codelab";
   background-color: #FF7D80;
-}
-
-.ais-Hits-item > .tutorial .title:after {
-  content: "Tutorial";
-  background-color: #00ef83;
 }
 
 .ais-Hits-item .title:after {
@@ -1694,8 +1754,28 @@ a.ais-Pagination-link:hover {
 
 // styling for model list from registry
 
-.mr-component, mr-model {
+.searchhitsbox {
   margin-bottom: 1rem;
+  border: 1px solid rgb(209, 213, 219);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.searchhitsbox#modresources {
+  min-height: 650px;
+}
+
+.mr-component {
+  min-height: 650px;
+}
+
+.searchhitsbox#mlmodels {
+  min-height: 650px;
+}
+
+.searchhitsbox#training-scripts {
+  min-height: 500px;
 }
 
 .modellist > div {
@@ -1757,8 +1837,13 @@ a.ais-Pagination-link:hover {
   overflow-wrap: anywhere;
 }
 
-#searchbox {
+#searchbox, #searchboxScripts, #searchboxML {
   margin: 1rem 0rem 2rem 0rem;
+  min-height: 34px;
+}
+
+#searchstats, #searchstatsScripts, #searchstatsML {
+  min-height: 24px;
 }
 
 .ais-SearchBox-input {
@@ -1930,30 +2015,6 @@ div .filterable > p {
 .usecase-table .tablestep:nth-of-type(even) {
   background-color: white;
   border-top: 1px solid #dee2e6;
-}
-
-// Expander styling
-
-details * i.fa-chevron-down {
-  display: none;
-}
-details * i.fa-chevron-right {
-  display: unset;
-}
-
-details[open] * i.fa-chevron-down {
-  display: unset;
-}
-details[open] * i.fa-chevron-right {
-  display: none;
-}
-
-details summary::-webkit-details-marker {
-  display:none;
-}
-
-.center-text {
-  text-align: center;
 }
 
 // Styling for email newsletter

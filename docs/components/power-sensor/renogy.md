@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/power-sensor/renogy/"
-component_description: "Solar charge controller."
+component_description: "Supports the renogy power sensor - a solar charge controller."
 # SME: #team-bucket
 ---
 
@@ -86,3 +86,13 @@ The following attributes are available for `renogy` sensors:
 | `modbus_id`  | integer | Optional | Controller MODBUS address. <br> Default: `1` |
 
 {{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/power-sensor/" customTitle="Power sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

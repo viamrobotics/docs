@@ -94,7 +94,7 @@ If `extra` information must be passed to a resource, it is handled within a new,
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
 Follow the steps in the [Modular Resources documentation](/how-tos/create-module/) to do so.
 
-For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/appendix/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/appendix/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/appendix/apis/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
 
 {{< tabs >}}
 {{% tab name="Python" %}}

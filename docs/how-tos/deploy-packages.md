@@ -235,6 +235,82 @@ Don't forget to **Save**.
 
 All machines configured with your fragment will update when they next check for configuration updates.
 
+To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/appendix/apis/robot/#getmachinestatus).
+
+The following example script iterates over all machines in a given location and if it can connect to the machines, it prints their status information.
+If it cannot connect to a machine, it prints the most recent log entries.
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+
+from viam.rpc.dial import DialOptions
+from viam.app.viam_client import ViamClient
+from viam.robot.client import RobotClient
+
+
+# Replace "<API-KEY>" (including brackets) with your API key and "<API-KEY-ID>"
+# with your API key ID
+API_KEY = "<API-KEY>"
+API_KEY_ID = "<API-KEY-ID>"
+LOCATION_ID = "<LOCATION-ID>"
+
+
+async def connect() -> ViamClient:
+    dial_options = DialOptions.with_api_key(API_KEY, API_KEY_ID)
+    return await ViamClient.create_from_dial_options(dial_options)
+
+
+async def machine_connect(address):
+    opts = RobotClient.Options.with_api_key(
+        api_key=API_KEY,
+        api_key_id=API_KEY_ID
+    )
+    return await RobotClient.at_address(address, opts)
+
+
+async def main():
+    viam_client = await connect()
+    cloud = viam_client.app_client
+
+    machines = await cloud.list_robots(location_id=LOCATION_ID)
+    print("Found {} machines.".format(len(machines)))
+
+    for m in machines:
+        machine_parts = await cloud.get_robot_parts(m.id)
+        main_part = None
+        for p in machine_parts:
+            if p.main_part:
+                main_part = p
+
+        print("Attempting to connect to {}...".format(main_part.fqdn))
+
+        try:
+            machine = await machine_connect(main_part.fqdn)
+            status = await machine.get_machine_status()
+            print(status.config)
+
+        except ConnectionError:
+            print("Unable to establish a connection to the machine.")
+            logs = await cloud.get_robot_part_logs(
+                robot_part_id=main_part.id,
+                num_log_entries=5
+            )
+            if not logs:
+                print("No logs available.")
+            else:
+                print("Most recent 5 log entries:")
+            for log in logs:
+                print("{}-{} {}: {}".format(
+                    log.logger_name, log.level, log.time, log.message))
+                if log.stack:
+                    print(log.stack)
+
+    viam_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
 ## Next steps
 
 If you are setting up a larger fleet, you can use fragments to configure many machines and you can use Viam's provisioning manager, Viam Agent, to automate the process of setting up machines with your fragments:

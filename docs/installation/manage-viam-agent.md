@@ -7,7 +7,9 @@ type: docs
 draft: false
 images: ["/installation/thumbnails/manage.png"]
 imageAlt: "Manage viam-agent"
-description: "Control and troubleshoot viam-agent."
+description: "Control and manage the viam-agent systemd service."
+date: "2024-08-16"
+# updated: ""  # When the content was last entirely checked
 ---
 
 [`viam-agent`](/configure/agent/) is installed as a `systemd` service named `viam-agent`.

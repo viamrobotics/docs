@@ -214,7 +214,7 @@ Now, configure your rover to:
 To configure your [servo](/components/servo/), go to your rover's **CONFIGURE** tab.
 
 - Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-- Select the `servo` type, then select the `pi` model (since you've attached your servo to a Raspberry Pi).
+- Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 - Enter the name `servo1` for your servo and click **Create**.
 
 Now, in the panel for `servo1`, add the following attribute configuration:

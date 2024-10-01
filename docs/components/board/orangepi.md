@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure an Orange Pi board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components", "orangepi"]
-component_description: "Orange Pi Zero2, Orange Pi Zero 2W or OrangePi 3 LTS."
+component_description: "Supports Orange Pi Zero2, Orange Pi Zero 2W or OrangePi 3 LTS."
 # SMEs: Olivia Miller, Steve Briskin
 ---
 
@@ -121,3 +121,13 @@ Configure these attributes on your board to integrate [analog-to-digital convert
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

@@ -258,6 +258,7 @@ motion,ListPlanStatuses,,list_plan_statuses,ListPlanStatuses,
 motion,GetPlan,,get_plan,PlanHistory,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 motion,Reconfigure,,,Reconfigure,
+motion,FromRobot,,from_robot,,
 motion,DoCommand,,do_command,DoCommand,
 motion,GetResourceName,,get_resource_name,,
 motion,Close,,close,Close,
