@@ -51,9 +51,9 @@ Before following this tutorial, ensure you have:
 
 - A Grafana instance.
 
-  - You can use the free trial version for this tutorial.
-  - You can use either a local instance of Grafana, or Grafana Cloud.
+  - You can use either a local instance of Grafana Enterprise, or Grafana Cloud.
     This tutorial will use Grafana Cloud.
+  - You can use the free trial version of Grafana Cloud.
 
 ## The data management service
 
