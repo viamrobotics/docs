@@ -96,7 +96,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 ## API
 
-The vision service supports the following [Vision service API](/appendix/apis/services/vision/) methods:
+The vision service supports the following [vision service API](/appendix/apis/services/vision/) methods:
 
 {{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
 
