@@ -74,13 +74,13 @@ These APIs provide interfaces for controlling and getting information from the {
 
 These APIs provide interfaces for controlling and getting information from the services you configured on a machine.
 
-<!-- TODO: move to APIS folder and change links -->
-
 {{< cards >}}
 {{% card link="/appendix/apis/services/data/" customTitle="Data management service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/vision/" customTitle="Vision service API" noimage="True" %}}
 {{% card link="/appendix/apis/services/ml/" customTitle="ML model service API" noimage="True" %}}
 {{% card link="/appendix/apis/services/motion/" customTitle="Motion service API" noimage="True" %}}
 {{% card link="/appendix/apis/services/navigation/" customTitle="Navigation service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/generic/" customTitle="Generic service API" noimage="True" %}}
 {{% card link="/appendix/apis/services/slam/" customTitle="SLAM service API" noimage="True" %}}
-{{% card link="/appendix/apis/services/vision/" customTitle="Vision service API" noimage="True" %}}
+{{% card link="/appendix/apis/services/base-rc/" customTitle="Base Remote Control service API" noimage="True" %}}
 {{< /cards >}}
