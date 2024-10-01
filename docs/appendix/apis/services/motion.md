@@ -8,7 +8,7 @@ icon: true
 images: ["/icons/components/arm.svg"]
 ---
 
-The motion service API allows you to give commands to your [motion service](/services/motion/) for moving a machine based on a SLAM map or GPS coordinates or for moving a machine's components form one location to another.
+The motion service API allows you to give commands to your [motion service](/services/motion/) for moving a machine based on a SLAM map or GPS coordinates or for moving a machine's components from one location to another.
 
 The motion service supports the following methods:
 
