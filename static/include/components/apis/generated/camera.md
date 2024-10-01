@@ -52,7 +52,7 @@ x, y = pil_frame.size[0], pil_frame.size[1]
 cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
 
 # Convert back to ViamImage.
-cropped_frame = pil_to_viam_image(cropped_pil_frame)
+cropped_frame = pil_to_viam_image(cropped_pil_frame, frame.mime_type)
 ```
 
 {{% alert title="Tip" color="tip" %}}
