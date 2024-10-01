@@ -18,7 +18,7 @@ hide_children: true
 # SMEs: Gautham, Rand
 ---
 
-Boards provide an API for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
+The board component provides an API for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
 
 If you have GPIO pins you wish to control, use a board component.
 
