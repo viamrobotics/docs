@@ -9,7 +9,7 @@ icon: true
 images: ["/services/icons/slam.svg"]
 ---
 
-The SLAM service API allows you to get machine's position within a map.
+The SLAM service API allows you to get a machine's position within a map.
 
 The [SLAM service](/services/slam/) supports the following methods:
 
