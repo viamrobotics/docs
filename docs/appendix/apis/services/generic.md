@@ -4,7 +4,7 @@ linkTitle: "Generic"
 weight: 60
 type: "docs"
 tags: ["generic", "services"]
-description: "The generic service API allows you to give commands to your generic components for running model-specific commands using DoCommand."
+description: "Give commands to your generic components for running model-specific commands using DoCommand."
 icon: true
 images: ["/icons/components/generic.svg"]
 ---

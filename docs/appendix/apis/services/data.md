@@ -3,7 +3,7 @@ title: "Data Management Service API"
 linkTitle: "Data Management"
 weight: 10
 type: "docs"
-description: "The data management service API allows you to give commands to your data management service to sync data stored on the machine it is deployed on to the cloud."
+description: "Give commands to your data management service to sync data stored on the machine it is deployed on to the cloud."
 icon: true
 images: ["/icons/components/arm.svg"]
 ---

@@ -3,7 +3,7 @@ title: "Motion Service API"
 linkTitle: "Motion"
 weight: 40
 type: "docs"
-description: "The motion service API allows you to move a machine based on a SLAM map or GPS coordinates or to move a machine's components form one location to another."
+description: "Give commands to move a machine based on a SLAM map or GPS coordinates or to move a machine's components form one location to another."
 icon: true
 images: ["/icons/components/arm.svg"]
 ---

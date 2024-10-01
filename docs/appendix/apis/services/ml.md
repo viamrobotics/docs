@@ -4,7 +4,7 @@ linkTitle: "ML Model"
 weight: 30
 type: "docs"
 tags: ["data management", "ml", "model training"]
-description: "The  ML model service API allows you to give commands to your ML model service to make inferences based on a provided ML model."
+description: "Give commands to your ML model service to make inferences based on a provided ML model."
 icon: true
 images: ["/services/icons/ml.svg"]
 ---

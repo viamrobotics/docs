@@ -4,7 +4,7 @@ linkTitle: "Base Remote Control"
 weight: 70
 type: "docs"
 tags: ["base", "services", "rover", "input controller", "remote control"]
-description: "The Base Remote Control service API allows you to get a list of inputs from the controller that are being monitored for that control mode."
+description: "Give commands to get a list of inputs from the controller that are being monitored for that control mode."
 icon: true
 images: ["/services/icons/slam.svg"]
 ---

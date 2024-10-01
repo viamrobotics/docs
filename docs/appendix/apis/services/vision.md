@@ -4,7 +4,7 @@ linkTitle: "Vision"
 weight: 20
 type: "docs"
 tags: ["vision", "computer vision", "CV", "services"]
-description: "The vision service API allows you to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using."
+description: "Give commands to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using."
 icon: true
 images: ["/services/icons/vision.svg"]
 tags: ["vision", "computer vision", "CV", "services"]

@@ -4,7 +4,7 @@ linkTitle: "SLAM"
 weight: 60
 type: "docs"
 tags: ["slam", "services"]
-description: "The SLAM service API allows you to get machine's position within a map."
+description: "Give commands to get a machine's position within a map."
 icon: true
 images: ["/services/icons/slam.svg"]
 ---

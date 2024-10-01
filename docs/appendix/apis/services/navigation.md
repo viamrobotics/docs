@@ -4,7 +4,7 @@ linkTitle: "Navigation"
 weight: 50
 type: "docs"
 tags: ["navigation", "services", "base", "rover"]
-description: "The navigation service API allows you to define waypoints and move your machine along those waypoints while avoiding obstacles."
+description: "Give commands to define waypoints and move your machine along those waypoints while avoiding obstacles."
 icon: true
 images: ["/services/icons/navigation.svg"]
 ---
