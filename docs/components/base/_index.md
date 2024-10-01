@@ -17,7 +17,7 @@ hide_children: true
 # SMEs: Steve B
 ---
 
-Bases provide an API for moving all configured components attached to a platform as a whole without needing to send commands to individual components.
+The base component provides an API for moving all configured components attached to a mobile robot platform as a whole without needing to send commands to individual components.
 
 If you have a mobile robot, use a base component to coordinate the motion of its motor components.
 
