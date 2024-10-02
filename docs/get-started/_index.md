@@ -33,8 +33,8 @@ At the core of Viam is the open-source `viam-server` executable which runs on a 
 If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems.
 
 - **Modularity**: `viam-server` runs hardware drivers and software to operate your machine.
-  A machine consists of {{< glossary_tooltip term_id="component" text="components" >}} and higher-level software {{< glossary_tooltip term_id="service" text="services" >}}.
-- **Standard APIs**: Each {{< glossary_tooltip term_id="resource" text="resource" >}} type has a standard, hardware-agnostic API.
+  A machine consists of {{< glossary_tooltip term_id="resource" text="resource" >}}: {{< glossary_tooltip term_id="component" text="components" >}} and higher-level software {{< glossary_tooltip term_id="service" text="services" >}}.
+- **Standard APIs**: Each resource type has a standard, hardware-agnostic API.
 
   {{< tabs >}}
   {{% tab name="Python" %}}
@@ -85,7 +85,7 @@ motor->set_power(0.4);
 {{< /tabs >}}
 
 - **Remote control**: You can use the Viam app, the Viam mobile app, or your own custom apps, to control and monitor your machines securely **from anywhere in the world**.
-- **Local control**: In factory settings or remote environments, you can operate and monitor your machines over a local area network (LAN).
+- **Offline use**: In factory settings or remote environments, you can operate and monitor your machines over a local area network (LAN).
 
 ## Viam Cloud
 
