@@ -854,7 +854,6 @@ def parse(type, names):
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "DoCommand example:" in code_sample_tag.text)
                                 if code_sample:
                                     go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'
-                                    print(go_methods[type][resource]['DoCommand']['code_sample'])
 
                                 go_methods[type][resource]['Close'] = {'proto': 'Close', \
                                     'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
@@ -954,7 +953,6 @@ def parse(type, names):
                                     'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
                                     'code_sample': 'my' + resource.replace("_", "").title() + ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.replace("_", "").title() + '.DoCommand(context.Background(), command)\n'}
-                print(go_methods[type][resource]['DoCommand']['code_sample'])
 
                 all_methods["go"] = go_methods
 

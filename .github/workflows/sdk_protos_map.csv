@@ -142,12 +142,12 @@ motor,ResetZeroPosition,No,reset_zero_position,ResetZeroPosition,resetZeroPositi
 motor,GetPosition,Yes,get_position,Position,position
 motor,GetProperties,Yes,get_properties,Properties,properties
 motor,IsPowered,No,is_powered,IsPowered,powerState
-motor,GetGeometries,No,get_geometries,,
+# NOT implemented motor,GetGeometries,No,get_geometries,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 motor,IsMoving,Yes,is_moving,IsMoving,isMoving
 motor,Stop,Yes,stop,Stop,stop
 motor,Reconfigure,No,,Reconfigure,
-motor,DoCommand,No,do_command,DoCommand,doCommand
+# NOT implemented motor,DoCommand,No,do_command,DoCommand,doCommand
 motor,GetResourceName,No,get_resource_name,,getResourceName
 motor,Close,No,close,Close,
 
@@ -161,7 +161,7 @@ movement_sensor,GetProperties,Yes,get_properties,Properties,properties
 movement_sensor,GetAccuracy,No,get_accuracy,Accuracy,accuracy
 movement_sensor,GetLinearAcceleration,Yes,get_linear_acceleration,LinearAcceleration,linearAcceleration
 ## NOTED: Go SDK doesn't appear to implement this:
-movement_sensor,GetGeometries,No,get_geometries,,
+# NOT implemented movement_sensor,GetGeometries,No,get_geometries,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 movement_sensor,GetReadings,Yes,get_readings,Readings,readings
 movement_sensor,Reconfigure,No,,Reconfigure,
@@ -176,7 +176,7 @@ power_sensor,GetPower,,get_power,Power,power
 power_sensor,GetReadings,,get_readings,Readings,readings
 ## HACK:  GetGeometries proto for power sensor component, adding 1 pseudo-entry:
 ## TED: But t for Go SDK:
-power_sensor,GetGeometries,,get_geometries,,
+# NOT implemented power_sensor,GetGeometries,,get_geometries,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 power_sensor,Reconfigure,,,Reconfigure,
 power_sensor,DoCommand,,do_command,DoCommand,doCommand
@@ -185,22 +185,22 @@ power_sensor,Close,,close,Close,
 
 ## Sensor
 sensor,GetReadings,Yes,get_readings,Readings,readings
-sensor,GetGeometries,No,get_geometries,,
+# NOT implemented sensor,GetGeometries,No,get_geometries,,
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
 sensor,Reconfigure,No,,Reconfigure,
-sensor,DoCommand,Yes,do_command,DoCommand,doCommand
+# NOT implemented sensor,DoCommand,Yes,do_command,DoCommand,doCommand
 sensor,GetResourceName,No,get_resource_name,,getResourceName
 sensor,Close,No,close,Close,
 
 ## Servo
 servo,Move,Yes,move,Move,move
 servo,GetPosition,Yes,get_position,Position,position
-servo,GetGeometries,No,get_geometries,,
+# NOT implemented servo,GetGeometries,No,get_geometries,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 servo,IsMoving,No,is_moving,IsMoving,isMoving
 servo,Stop,Yes,stop,Stop,stop
 servo,Reconfigure,No,,Reconfigure,
-servo,DoCommand,Yes,do_command,DoCommand,doCommand
+# NOT implemented servo,DoCommand,Yes,do_command,DoCommand,doCommand
 servo,GetResourceName,No,get_resource_name,,getResourceName
 servo,Close,No,close,Close,
 

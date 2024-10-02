@@ -10,6 +10,5 @@
 | [`GetProperties`](/appendix/apis/components/movement-sensor/#getproperties) | Get the supported properties of this sensor. | all models | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetAccuracy`](/appendix/apis/components/movement-sensor/#getaccuracy) | Get the accuracy of the various sensors. | GPS models | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GetReadings`](/appendix/apis/components/movement-sensor/#getreadings) | Obtain the measurements/data specific to this sensor. | all models | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`GetGeometries`](/appendix/apis/components/movement-sensor/#getgeometries) | Get all the geometries associated with the movement sensor in its current configuration, in the frame of the movement sensor. | all models | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`DoCommand`](/appendix/apis/components/movement-sensor/#docommand) | Send or receive model-specific commands. | all models | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Close`](/appendix/apis/components/movement-sensor/#close) | Safely shut down the resource and prevent further use. | all models | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
