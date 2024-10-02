@@ -327,7 +327,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### Reconfigure
 
 Reconfigure this resource.
-Reconfigure must reconfigure the resource automatically and in place.
+Reconfigure must reconfigure the resource atomically and in place.
 
 {{< tabs >}}
 {{% tab name="Go" %}}

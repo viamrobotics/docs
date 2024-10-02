@@ -841,7 +841,7 @@ def parse(type, names):
                             ## and no app or robot interfaces do), then add the three inherited methods manually: Reconfigure(), DoCommand(), Close()
                             if '\tresource.Resource' in resource_interface.text:
                                 go_methods[type][resource]['Reconfigure'] = {'proto': 'Reconfigure', \
-                                    'description': 'Reconfigure must reconfigure the resource automatically and in place. If this cannot be guaranteed, then usage of AlwaysRebuild or TriviallyReconfigurable is permissible.', \
+                                    'description': 'Reconfigure must reconfigure the resource atomically and in place. If this cannot be guaranteed, then usage of AlwaysRebuild or TriviallyReconfigurable is permissible.', \
                                     'usage': 'Reconfigure(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, deps <a href="#Dependencies">Dependencies</a>, conf <a href="#Config">Config</a>) <a href="/builtin#error">error</a>', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Reconfigure example:" in code_sample_tag.text)

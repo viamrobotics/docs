@@ -817,7 +817,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Reconfigure
 
 Reconfigure this resource.
-Reconfigure must reconfigure the resource automatically and in place.
+Reconfigure must reconfigure the resource atomically and in place.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
