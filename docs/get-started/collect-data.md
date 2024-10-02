@@ -75,7 +75,11 @@ Select a tab below to collect images from a camera or readings from a sensor:
 
 {{< expand "Step 1: Create a machine" >}}
 
-Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
+{{< alert title="Tip" color="tip" >}}
+If you followed the [Detect people](/get-started/detect-people/) quickstart and have installed `viam-server` already on a machine that has a webcam, you can use the same machine and skip to step 4.
+{{< /alert >}}
+
+Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
 
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 

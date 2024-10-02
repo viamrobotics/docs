@@ -107,11 +107,11 @@ The [Viam app](https://app.viam.com) is the ecosystem for configuring and managi
 
 ### Fleet management
 
-The [Viam app](https://app.viam.com)'s **fleet management** capabilities enable you to:
+The [Viam app](https://app.viam.com) enables the following **fleet management** capabilities:
 
 - **Deployment**: Configure and update hardware, software, and machine learning models for groups of machines in one go.
-- **Management** Manage deployment and permissions using RBAC.
-- **Observability & Teleoperation**: Control and debug machines.
+- **Management** Manage deployments and permissions using RBAC.
+- **Observability & Teleoperation**: Control and debug machines from anywhere.
 
 ## Next steps
 

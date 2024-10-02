@@ -77,7 +77,7 @@ Wait for your device to connect to the Viam app.
 On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
 
-If you are using a physical board to follow along, look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
+If you are using a physical board to follow along, look through the [**Supported Models**](/components/board/#available-models) to determine the model of component to configure.
 For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
