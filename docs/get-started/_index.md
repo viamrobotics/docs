@@ -85,7 +85,7 @@ motor->set_power(0.4);
 {{< /tabs >}}
 
 - **Remote control**: You can use the Viam app, the Viam mobile app, or your own custom apps, to control and monitor your machines securely **from anywhere in the world**.
-- **Local control**: In factory settings or remote environments, you can operate and monitor your machines over a local area network (LAN).
+- **Offline use**: In factory settings or remote environments, you can operate and monitor your machines over a local area network (LAN).
 
 ## Viam Cloud
 
