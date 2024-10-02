@@ -17,7 +17,7 @@ Get the current position of the arm as a [pose](/internals/orientation-vector/).
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 
 # Get the end position of the arm as a Pose.
 pos = await my_arm.get_end_position()
@@ -90,7 +90,7 @@ Move the end of the arm to the desired [pose](/internals/orientation-vector/), r
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 
 # Create a Pose for the arm.
 examplePose = Pose(x=5, y=5, z=5, o_x=5, o_y=5, o_z=5, theta=20)
@@ -121,7 +121,7 @@ myArm, err := arm.FromRobot(machine, "my_arm")
 // Create a Pose for the arm.
 examplePose := spatialmath.NewPose(
         r3.Vector{X: 5, Y: 5, Z: 5},
-        &spatialmath.OrientationVectorDegrees{0X: 5, 0Y: 5, Theta: 20}
+        &spatialmath.OrientationVectorDegrees{OX: 5, OY: 5, Theta: 20},
 )
 
 // Move your arm to the Pose.
@@ -183,15 +183,14 @@ Collision checks are not enabled when doing direct joint control with MoveToJoin
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 
 # Declare a list of values with your desired rotational value for each joint on
-# the arm.
+# the arm. This example is for a 5dof arm.
 degrees = [0.0, 45.0, 0.0, 0.0, 0.0]
 
 # Declare a new JointPositions with these values.
-jointPos = arm.move_to_joint_positions(
-    JointPositions(values=[0.0, 45.0, 0.0, 0.0, 0.0]))
+jointPos = JointPositions(values=degrees)
 
 # Move each joint of the arm to the position these values specify.
 await my_arm.move_to_joint_positions(positions=jointPos)
@@ -276,7 +275,7 @@ Get the current position of each joint on the arm.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 
 # Get the current position of each joint on the arm as JointPositions.
 pos = await my_arm.get_joint_positions()
@@ -353,7 +352,7 @@ Get the kinematics information associated with the arm as the format and byte co
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 
 # Get the kinematics information associated with the arm.
 kinematics = await my_arm.get_kinematics()
@@ -388,13 +387,13 @@ Get if the arm is currently moving.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
 await my_arm.stop()
 
 # Print if the arm is currently moving.
-print(my_arm.is_moving())
+print(await my_arm.is_moving())
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.is_moving).
@@ -468,7 +467,7 @@ Stop all motion of the arm.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 
 # Stop all motion of the arm. It is assumed that the arm stops immediately.
 await my_arm.stop()
@@ -575,7 +574,7 @@ geometries, err := myArm.Geometries(context.Background(), nil)
 if len(geometries) > 0 {
    // Get the center of the first geometry
    elem := geometries[0]
-   fmt.Println("Pose of the first geometry's center point:", elem.center)
+   fmt.Println("Pose of the first geometry's center point:", elem.Pose())
 }
 ```
 
@@ -633,7 +632,7 @@ If you are implementing your own arm and add features that have no built-in API 
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = component.do(command)
+result = await component.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.do_command).
@@ -706,7 +705,7 @@ Get the `ResourceName` for this arm with the given name.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_resource_name).
@@ -767,7 +766,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
