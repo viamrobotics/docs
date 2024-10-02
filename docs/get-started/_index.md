@@ -32,7 +32,8 @@ Viam runs on microcontrollers and 64-bit Linux OS, macOS, or Windows Subsystem f
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and provides drivers for hardware and manages software and data for a machine.
 If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems.
 
-- **Configuration**: Create a configuration file specifying which hardware {{< glossary_tooltip term_id="component" text="components" >}} and software {{< glossary_tooltip term_id="service" text="services" >}} the machine consists of and `viam-server` runs the hardware drivers and software to operate your machine.
+- **Modularity**: `viam-server` runs hardware drivers and software to operate your machine.
+  A machine consists of {{< glossary_tooltip term_id="component" text="components" >}} and higher-level software {{< glossary_tooltip term_id="service" text="services" >}}.
 - **Standard APIs**: Each {{< glossary_tooltip term_id="resource" text="resource" >}} type has a standard, hardware-agnostic API.
 
   {{< tabs >}}
