@@ -107,7 +107,7 @@ The [Viam app](https://app.viam.com) is the ecosystem for configuring and managi
 
 ### Fleet management
 
-The [Viam app](https://app.viam.com) enables you to build your first prototype, and to scale from 1 to 1000 with the following **fleet management** capabilities:
+The [Viam app](https://app.viam.com) enables you to build your first prototype, and to scale from 1 machine to 1000 or more machines with the following **fleet management** capabilities:
 
 - **Deployment**: Configure and update hardware, software, and machine learning models for groups of machines in one go.
 - **Management** Manage deployments and permissions using RBAC.
