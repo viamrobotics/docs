@@ -122,7 +122,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Set the motor's RPM to 50
-myMotorComponent.SetRPM(context.Background(), 50)
+myMotorComponent.SetRPM(context.Background(), 50, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
@@ -817,7 +817,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Reconfigure
 
 Reconfigure this resource.
-Reconfigure must reconfigure the resource atomically and in place.
+Reconfigure must reconfigure the resource automatically and in place.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -1024,7 +1024,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

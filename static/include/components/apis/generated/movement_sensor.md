@@ -282,9 +282,9 @@ sensorOrientation, err := myMovementSensor.Orientation(context.Background(), nil
 orientation := sensorOrientation.OrientationVectorDegrees()
 
 // Print out the orientation vector.
-logger.Info("The x component of the orientation vector: ", orientation.0X)
-logger.Info("The y component of the orientation vector: ", orientation.0Y)
-logger.Info("The z component of the orientation vector: ", orientation.0Z)
+logger.Info("The x component of the orientation vector: ", orientation.OX)
+logger.Info("The y component of the orientation vector: ", orientation.OY)
+logger.Info("The z component of the orientation vector: ", orientation.OZ)
 logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", orientation.Theta)
 ```
 
@@ -382,6 +382,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```dart {class="line-numbers linkable-line-numbers"}
 var position = await myMovementSensor.position();
+var altitude = position.altitude;
+var coordinates = position.coordinates;
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/position.html).
@@ -602,7 +604,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the current linear acceleration of the movement sensor.
-linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
+linAcc, err := myMovementSensor.LinearAcceleration(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -739,7 +741,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Reconfigure
 
 Reconfigure this resource.
-Reconfigure must reconfigure the resource atomically and in place.
+Reconfigure must reconfigure the resource automatically and in place.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -940,7 +942,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

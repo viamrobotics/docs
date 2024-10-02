@@ -77,6 +77,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Move the servo from its origin to the desired angle of 30 degrees.
+await myServo.move(30);
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Servo/move.html).
 
 {{% /tab %}}
@@ -224,7 +231,7 @@ Returns whether the servo is actively moving (or attempting to move) under its o
 ```python {class="line-numbers linkable-line-numbers"}
 my_servo = Servo.from_robot(robot=robot, name="my_servo")
 
-print(my_servo.is_moving())
+print(await my_servo.is_moving())
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.is_moving).
@@ -359,7 +366,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Reconfigure
 
 Reconfigure this resource.
-Reconfigure must reconfigure the resource atomically and in place.
+Reconfigure must reconfigure the resource automatically and in place.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -406,7 +413,7 @@ Supported by `viam-micro-server`.
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = component.do(command)
+result = await component.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.do_command).
@@ -568,7 +575,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
