@@ -19,7 +19,7 @@ Move the base in a straight line across the given distance (mm) at the given vel
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = Base.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=machine, name="my_base")
 
 # Move the base 40 mm at a velocity of 90 mm/s, forward.
 await my_base.move_straight(distance=40, velocity=90)
@@ -103,7 +103,7 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = Base.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=machine, name="my_base")
 
 # Spin the base 10 degrees at an angular velocity of 15 deg/sec.
 await my_base.spin(angle=10, velocity=15)
@@ -183,7 +183,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = Base.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=machine, name="my_base")
 
 # Make your wheeled base move forward. Set linear power to 75%.
 print("move forward")
@@ -245,7 +245,7 @@ err = myBase.SetPower(context.Background(), r3.Vector{}, r3.Vector{Z: 1}, nil)
 
 // Make your wheeled base spin right. Set angular power to -75%.
 logger.Info("spin right")
-err = mybase.SetPower(context.Background(), r3.Vector{}, r3.Vector{Z: -.75}, nil)
+err = myBase.SetPower(context.Background(), r3.Vector{}, r3.Vector{Z: -.75}, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
@@ -305,7 +305,7 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = Base.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=machine, name="my_base")
 
 # Set the linear velocity to 50 mm/sec and the angular velocity to
 # 15 degree/sec.
@@ -386,7 +386,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = Base.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=machine, name="my_base")
 
 # Get the width and turning radius of the base
 properties = await my_base.get_properties()
@@ -457,7 +457,7 @@ Returns whether the base is actively moving (or attempting to move) under its ow
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = Base.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=machine, name="my_base")
 
 # Check whether the base is currently moving.
 moving = await my_base.is_moving()
@@ -536,7 +536,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_base = Base.from_robot(robot=robot, name="my_base")
+my_base = Base.from_robot(robot=machine, name="my_base")
 
 # Move the base forward 10 mm at a velocity of 50 mm/s.
 await my_base.move_straight(distance=10, velocity=50)
@@ -646,7 +646,7 @@ geometries, err := myArm.Geometries(context.Background(), nil)
 if len(geometries) > 0 {
    // Get the center of the first geometry
    elem := geometries[0]
-   fmt.Println("Pose of the first geometry's center point:", elem.center)
+   fmt.Println("Pose of the first geometry's center point:", elem.Pose())
 }
 ```
 
@@ -705,7 +705,7 @@ Supported by `viam-micro-server`.
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = component.do(command)
+result = await component.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.do_command).
@@ -759,27 +759,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### FromRobot
-
-Get the resource from the provided robot with the given name.
-
-{{< tabs >}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
-- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-
-**Returns:**
-
-- [Base](https://flutter.viam.dev/viam_sdk/Base-class.html)
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Base/fromRobot.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetResourceName
 
 Get the `ResourceName` for this base with the given name.
@@ -799,7 +778,7 @@ Get the `ResourceName` for this base with the given name.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_resource_name).
@@ -860,7 +839,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

@@ -20,7 +20,6 @@
 | [`GPIOPinByName`](/appendix/apis/components/board/#gpiopinbyname) | Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Reconfigure`](/appendix/apis/components/board/#reconfigure) | Reconfigure this resource. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`DoCommand`](/appendix/apis/components/board/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`FromRobot`](/appendix/apis/components/board/#fromrobot) | Get the resource from the provided robot with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Name`](/appendix/apis/components/board/#name) | Get the name of the digital interrupt. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GetResourceName`](/appendix/apis/components/board/#getresourcename) | Get the `ResourceName` for this board with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Close`](/appendix/apis/components/board/#close) | Safely shut down the resource and prevent further use. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |

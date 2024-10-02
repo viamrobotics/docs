@@ -10,6 +10,5 @@
 | [`Stop`](/appendix/apis/components/gantry/#stop) | Stop all motion of the gantry. |
 | [`Reconfigure`](/appendix/apis/components/gantry/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/appendix/apis/components/gantry/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
-| [`FromRobot`](/appendix/apis/components/gantry/#fromrobot) | Get the resource from the provided robot with the given name. |
 | [`GetResourceName`](/appendix/apis/components/gantry/#getresourcename) | Get the `ResourceName` for this gantry with the given name. |
 | [`Close`](/appendix/apis/components/gantry/#close) | Safely shut down the resource and prevent further use. |

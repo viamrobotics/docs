@@ -152,7 +152,7 @@ Supported by `viam-micro-server`.
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = component.do(command)
+result = await component.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.do_command).
@@ -206,27 +206,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### FromRobot
-
-Get the resource from the provided robot with the given name.
-
-{{< tabs >}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
-- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-
-**Returns:**
-
-- [Sensor](https://flutter.viam.dev/viam_sdk/Sensor-class.html)
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Sensor/fromRobot.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetResourceName
 
 Get the `ResourceName` for this sensor with the given name.
@@ -246,7 +225,7 @@ Get the `ResourceName` for this sensor with the given name.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.get_resource_name).
@@ -307,7 +286,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

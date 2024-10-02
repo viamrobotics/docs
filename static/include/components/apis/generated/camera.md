@@ -20,14 +20,16 @@ If the server does not know how to return the specified MIME type, the server re
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_camera = Camera.from_robot(robot=robot, name="my_camera")
+from viam.media.video import CameraMimeType
 
-# Assume "frame" has a mime_type of "image/vnd.viam.dep"
-frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
+ my_camera = Camera.from_robot(robot=machine, name="my_camera")
 
-# Convert "frame" to a standard 2D image representation.
-# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
-standard_frame = frame.bytes_to_depth_array()
+ # Assume "frame" has a mime_type of "image/vnd.viam.dep"
+ frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
+
+ # Convert "frame" to a standard 2D image representation.
+ # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
+ standard_frame = frame.bytes_to_depth_array()
 ```
 
 If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`ViamImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
@@ -147,10 +149,10 @@ The multiple images returned from `GetImages()` do not represent a time series o
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_camera = Camera.from_robot(robot=robot, name="my_camera")
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
 
 images, metadata = await my_camera.get_images()
-img0 = images[0].image
+first_image = images[0]
 timestamp = metadata.captured_at
 ```
 
@@ -205,7 +207,7 @@ The consumer of this call should decode the bytes into the format suggested by t
 import numpy as np
 import open3d as o3d
 
-data, _ = await camera.get_point_cloud()
+data, _ = await my_camera.get_point_cloud()
 
 # write the point cloud into a temporary file
 with open("/tmp/pointcloud_data.pcd", "wb") as f:
@@ -233,8 +235,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(machine, "my_camera")
 
-// gets the properties from a camera
-properties, err := myCamera.Properties(context.Background())
+// gets the next point cloud from a camera
+pointCloud, err := myCamera.NextPointCloud(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
@@ -279,7 +281,7 @@ Get the camera intrinsic parameters and camera distortion, as well as whether th
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_camera = Camera.from_robot(robot=robot, name="my_camera")
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
 
 properties = await my_camera.get_properties()
 ```
@@ -348,7 +350,7 @@ If you are implementing your own camera and adding features that have no native 
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = component.do(command)
+result = await component.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.do_command).
@@ -409,27 +411,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
-### FromRobot
-
-Get the resource from the provided robot with the given name.
-
-{{< tabs >}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
-- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-
-**Returns:**
-
-- [Camera](https://flutter.viam.dev/viam_sdk/Camera-class.html)
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Camera/fromRobot.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetResourceName
 
 Get the `ResourceName` for this camera with the given name.
@@ -449,7 +430,7 @@ Get the `ResourceName` for this camera with the given name.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_resource_name).
@@ -509,7 +490,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(machine, "my_camera")
 
-err = myCamera.Close(ctx)
+err = myCamera.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).

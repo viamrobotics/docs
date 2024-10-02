@@ -878,7 +878,7 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Raises:**
 
-- (GRPCError): If an invalid robot part ID is passed.
+- (GRPCError): If an invalid machine part ID is passed.
 
 **Example:**
 

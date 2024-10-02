@@ -1,1 +1,1 @@
-Get a list of the [Controls](/appendix/apis/components/input-control/#control-field) that your controller provides.
+Get a list of the [Controls](/appendix/apis/components/input-controller/#control-field) that your controller provides.

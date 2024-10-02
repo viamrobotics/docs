@@ -8,6 +8,5 @@
 | [`Stop`](/appendix/apis/components/servo/#stop) | Stop the servo from moving. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Reconfigure`](/appendix/apis/components/servo/#reconfigure) | Reconfigure this resource. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`DoCommand`](/appendix/apis/components/servo/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`FromRobot`](/appendix/apis/components/servo/#fromrobot) | Get the resource from the provided robot with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GetResourceName`](/appendix/apis/components/servo/#getresourcename) | Get the `ResourceName` for this servo with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Close`](/appendix/apis/components/servo/#close) | Safely shut down the resource and prevent further use. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |

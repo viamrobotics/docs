@@ -12,7 +12,6 @@ arm,Stop,,stop,Stop,stop
 arm,GetGeometries,,get_geometries,Geometries,
 arm,Reconfigure,,,Reconfigure,
 arm,DoCommand,,do_command,DoCommand,doCommand
-arm,FromRobot,,,,fromRobot
 arm,GetResourceName,,get_resource_name,,getResourceName
 arm,Close,,close,Close,
 
@@ -28,7 +27,6 @@ base,Stop,Yes,stop,Stop,stop
 base,GetGeometries,No,get_geometries,Geometries,
 base,Reconfigure,No,,Reconfigure,
 base,DoCommand,Yes,do_command,DoCommand,doCommand
-base,FromRobot,No,,,fromRobot
 base,GetResourceName,No,get_resource_name,,getResourceName
 base,Close,No,close,Close,
 
@@ -56,7 +54,6 @@ board,GPIOPinByName,No,gpio_pin_by_name,GPIOPinByName,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 board,Reconfigure,No,,Reconfigure,
 board,DoCommand,Yes,do_command,DoCommand,doCommand
-board,FromRobot,No,,,fromRobot
 board,Name,No,,Name,
 board,GetResourceName,No,get_resource_name,,getResourceName
 board,Close,No,close,Close,
@@ -71,7 +68,6 @@ camera,GetProperties,,get_properties,Properties,properties
 camera,DoCommand,,do_command,,doCommand
 camera,GetGeometries,,get_geometries,,
 ## HACK:  proto for close, manually mapping:
-camera,FromRobot,,,,fromRobot
 camera,GetResourceName,,get_resource_name,,getResourceName
 camera,Close,,close,Close,
 
@@ -98,7 +94,6 @@ gantry,IsMoving,,is_moving,IsMoving,isMoving
 gantry,Stop,,stop,Stop,stop
 gantry,Reconfigure,,,Reconfigure,
 gantry,DoCommand,,do_command,DoCommand,doCommand
-gantry,FromRobot,,,,fromRobot
 gantry,GetResourceName,,get_resource_name,,getResourceName
 gantry,Close,,close,Close,
 
@@ -108,7 +103,6 @@ generic_component,DoCommand,Yes,do_command,DoCommand,doCommand
 generic_component,GetGeometries,No,get_geometries,,
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
-generic_component,FromRobot,No,,,fromRobot
 generic_component,GetResourceName,No,get_resource_name,,getResourceName
 generic_component,Close,No,close,,
 
@@ -121,7 +115,6 @@ gripper,Stop,,stop,Stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,
 gripper,Reconfigure,,,Reconfigure,
 gripper,DoCommand,,do_command,DoCommand,doCommand
-gripper,FromRobot,,,,fromRobot
 gripper,GetResourceName,,get_resource_name,,getResourceName
 gripper,Close,,close,Close,
 
@@ -155,7 +148,6 @@ motor,IsMoving,Yes,is_moving,IsMoving,isMoving
 motor,Stop,Yes,stop,Stop,stop
 motor,Reconfigure,No,,Reconfigure,
 motor,DoCommand,No,do_command,DoCommand,doCommand
-motor,FromRobot,No,,,fromRobot
 motor,GetResourceName,No,get_resource_name,,getResourceName
 motor,Close,No,close,Close,
 
@@ -174,7 +166,6 @@ movement_sensor,GetGeometries,No,get_geometries,,
 movement_sensor,GetReadings,Yes,get_readings,Readings,readings
 movement_sensor,Reconfigure,No,,Reconfigure,
 movement_sensor,DoCommand,Yes,do_command,DoCommand,doCommand
-movement_sensor,FromRobot,No,,,fromRobot
 movement_sensor,GetResourceName,No,get_resource_name,,getResourceName
 movement_sensor,Close,No,close,Close,
 
@@ -189,7 +180,6 @@ power_sensor,GetGeometries,,get_geometries,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 power_sensor,Reconfigure,,,Reconfigure,
 power_sensor,DoCommand,,do_command,DoCommand,doCommand
-power_sensor,FromRobot,,,,fromRobot
 power_sensor,GetResourceName,,get_resource_name,,getResourceName
 power_sensor,Close,,close,Close,
 
@@ -199,7 +189,6 @@ sensor,GetGeometries,No,get_geometries,,
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
 sensor,Reconfigure,No,,Reconfigure,
 sensor,DoCommand,Yes,do_command,DoCommand,doCommand
-sensor,FromRobot,No,,,fromRobot
 sensor,GetResourceName,No,get_resource_name,,getResourceName
 sensor,Close,No,close,Close,
 
@@ -212,7 +201,6 @@ servo,IsMoving,No,is_moving,IsMoving,isMoving
 servo,Stop,Yes,stop,Stop,stop
 servo,Reconfigure,No,,Reconfigure,
 servo,DoCommand,Yes,do_command,DoCommand,doCommand
-servo,FromRobot,No,,,fromRobot
 servo,GetResourceName,No,get_resource_name,,getResourceName
 servo,Close,No,close,Close,
 
@@ -305,7 +293,6 @@ vision,CaptureAllFromCamera,,capture_all_from_camera,CaptureAllFromCamera,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 vision,Reconfigure,,,Reconfigure,
 vision,DoCommand,,do_command,DoCommand,doCommand
-vision,FromRobot,,,,fromRobot
 vision,GetResourceName,,get_resource_name,,getResourceName
 vision,GetProperties,,get_properties,GetProperties,
 vision,Close,,close,Close,

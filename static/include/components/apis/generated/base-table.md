@@ -11,6 +11,5 @@
 | [`GetGeometries`](/appendix/apis/components/base/#getgeometries) | Get all the geometries associated with the base in its current configuration, in the frame of the base. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Reconfigure`](/appendix/apis/components/base/#reconfigure) | Reconfigure this resource. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`DoCommand`](/appendix/apis/components/base/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`FromRobot`](/appendix/apis/components/base/#fromrobot) | Get the resource from the provided robot with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GetResourceName`](/appendix/apis/components/base/#getresourcename) | Get the `ResourceName` for this base with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Close`](/appendix/apis/components/base/#close) | Safely shut down the resource and prevent further use. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |

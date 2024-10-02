@@ -8,6 +8,5 @@
 | [`GetGeometries`](/appendix/apis/components/gripper/#getgeometries) | Get all the geometries associated with the gripper in its current configuration, in the frame of the gripper. |
 | [`Reconfigure`](/appendix/apis/components/gripper/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/appendix/apis/components/gripper/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
-| [`FromRobot`](/appendix/apis/components/gripper/#fromrobot) | Get the resource from the provided robot with the given name. |
 | [`GetResourceName`](/appendix/apis/components/gripper/#getresourcename) | Get the `ResourceName` for this gripper with the given name. |
 | [`Close`](/appendix/apis/components/gripper/#close) | Safely shut down the resource and prevent further use. |

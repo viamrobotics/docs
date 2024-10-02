@@ -1736,7 +1736,7 @@ def write_markdown(type, names, methods):
                         elif type == 'service' and resource == 'generic_service':
                             proto_anchor_link = '/appendix/apis/services/generic/#' + proto_link
                         elif type == 'service' and resource == 'mlmodel':
-                            proto_anchor_link = '/appendix/apis/services/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto_link
+                            proto_anchor_link = '/appendix/apis/services/ml/#' + proto_link
                         elif type == 'app' and resource == 'app':
                             proto_anchor_link = '/appendix/apis/fleet/#' + proto_link
                         elif type == 'app' and resource in ["billing", "mltraining"]:
