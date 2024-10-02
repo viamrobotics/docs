@@ -11,7 +11,7 @@ date: "2024-09-03"
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
-`viam-micro-server` is the lightweight version of [`viam-server`](/get-started/#viam-server) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
+`viam-micro-server` is the lightweight version of [`viam-server`](/architecture/rdk/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
 `viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/tree/main).
 
 ## Hardware requirements

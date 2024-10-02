@@ -5,7 +5,7 @@ type: "docs"
 images: ["/icons/components/motor.svg"]
 description: "Use Viam to control a motor's speed and direction in just a few steps."
 authors: []
-weight: 20
+weight: 30
 viamresources: ["motor"]
 platformarea: ["core"]
 no_list: true
@@ -23,9 +23,9 @@ date: "2024-07-31"
 cost: "0" # Approximate cost in USD - Only specify number
 ---
 
-If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
+If you haven't read through [Learn Viam](/get-started/), [detect people](/get-started/detect-people/), and [collect data](/get-started/collect-data/), we recommend you do so, to get an overview of the Viam platform.
 
-This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
+This is the final part of the series.
 In this guide you'll configure and control a motor.
 
 {{< alert title="You will learn" color="tip" >}}
@@ -77,7 +77,7 @@ Wait for your device to connect to the Viam app.
 On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
 
-If you are using a physical board to follow along, look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
+If you are using a physical board to follow along, look through the [**Supported Models**](/components/board/#available-models) to determine the model of component to configure.
 For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
@@ -587,8 +587,12 @@ int main() {
 
 ## Next steps
 
-Now that you have configured and controlled a motor, the next quickstart will introduce you to your first service:
+This concludes our guided path for getting to know the Viam platform.
+
+To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
 {{< cards >}}
-{{% card link="/get-started/detect-people/" %}}
+{{% card link="/how-tos/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/platform/" %}}
 {{< /cards >}}
