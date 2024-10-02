@@ -92,7 +92,7 @@ The [Viam app](https://app.viam.com) is the ecosystem for configuring and managi
 
 - **Configuration**: As you configure your machine, you can test each resource to confirm it is working. as expected in the same UI you use for configuration.
 - **Extensibility**: To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [Viam Registry](/registry/) or create your own for custom needs.
-- **Intelligence**: Make your machines smarter and better with [Data Management](/services/data/), [Machine Learning](/services/ml/), [SLAM](/services/slam/) and more.
+- **Intelligence**: Make your machines smarter and better with [data management](/services/data/), [machine learning](/services/ml/), [SLAM](/services/slam/) and more.
 
 {{% expand "Click here to see example projects you can build with this" %}}
 
