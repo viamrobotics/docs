@@ -22,18 +22,18 @@ Viam is a software platform that makes it easy to combine and integrate hardware
 
 ## Support
 
-Viam runs on **microcontrollers** and **64-bit Linux OS, macOS, or Windows Subsystem for Linux**.
+Viam runs on microcontrollers and 64-bit Linux OS, macOS, or Windows Subsystem for Linux.
 
 {{< board-carousel >}}
 <br>
 
-## Install Viam on your machine
+## Viam on your machine
 
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and provides drivers for hardware and manages software and data for a machine.
 If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems.
 
-- **Configuration**: create a configuration specifying which hardware {{< glossary_tooltip term_id="component" text="components" >}} and software {{< glossary_tooltip term_id="service" text="services" >}} the machine consists of and `viam-server` turns that into reality.
-- **Standard APIs**: Each {{< glossary_tooltip term_id="resource" text="resource" >}} type has a **standard API** that you can access with any [SDK](/sdks/).
+- **Configuration**: Create a configuration file specifying which hardware {{< glossary_tooltip term_id="component" text="components" >}} and software {{< glossary_tooltip term_id="service" text="services" >}} the machine consists of and `viam-server` runs the hardware drivers and software to operate your machine.
+- **Standard APIs**: Each {{< glossary_tooltip term_id="resource" text="resource" >}} type has a standard, hardware-agnostic API.
 
   {{< tabs >}}
   {{% tab name="Python" %}}
