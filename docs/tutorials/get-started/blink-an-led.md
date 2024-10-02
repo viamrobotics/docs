@@ -22,7 +22,6 @@ date: "2022-10-04"
 # updated: ""
 cost: 70
 no_list: true
-weight: 1
 ---
 
 <!-- LEARNING GOALS:
