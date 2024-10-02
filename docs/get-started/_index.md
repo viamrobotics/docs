@@ -98,7 +98,7 @@ The [Viam app](https://app.viam.com) is the ecosystem for configuring and managi
 
 - Capture sensor data on 100s of boats and sync it to the cloud when machines have internet connectivity.
 
-- Use Machine Learning to detect wildlife and when detected start data capture and send alerts.
+- Use machine learning to detect wildlife and when detected start data capture and send alerts.
 
 - Allow delivery robots to use their location and SLAM to navigate intelligently between GPS coordinates.
 
