@@ -18,7 +18,7 @@ If you are implementing your own generic service and add features that have no b
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = SERVICE.from_robot(robot, "builtin")  # replace SERVICE with the appropriate class
+service = generic_service.from_robot(robot, "my_generic_service")
 
 my_command = {
   "cmnd": "dosomething",

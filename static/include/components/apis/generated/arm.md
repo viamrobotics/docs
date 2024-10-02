@@ -632,7 +632,7 @@ If you are implementing your own arm and add features that have no built-in API 
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = await component.do_command(command)
+result = await my_arm.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.do_command).
@@ -653,7 +653,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}

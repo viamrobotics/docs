@@ -853,7 +853,8 @@ def parse(type, names):
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "DoCommand example:" in code_sample_tag.text)
                                 if code_sample:
-                                    go_methods[type][resource]['DoCommand']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                    go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'
+
                                 go_methods[type][resource]['Close'] = {'proto': 'Close', \
                                     'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
                                     'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
@@ -929,6 +930,14 @@ def parse(type, names):
                     go_methods[type][resource]['InternalStateFull']['usage'] = str(internalstatefull_method_raw[0].pre).removeprefix('<pre>func ').removesuffix('</pre>')
                     go_methods[type][resource]['InternalStateFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#InternalStateFull'
 
+
+                go_methods[type][resource]['DoCommand'] = {}
+                go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
+                                    'description': 'DoCommand sends/receives arbitrary data.', \
+                                    'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
+                                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'}
+
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
                 all_methods["go"] = go_methods
@@ -943,7 +952,7 @@ def parse(type, names):
                                     'description': 'DoCommand sends/receives arbitrary data.', \
                                     'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
-                                    'code_sample': '// This example shows using DoCommand with an arm component.\nmyArm, err := arm.FromRobot(machine, "my_arm")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myArm.DoCommand(context.Background(), command)\n'}
+                                    'code_sample': 'my' + resource.replace("_", "").title() + ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.replace("_", "").title() + '.DoCommand(context.Background(), command)\n'}
 
                 all_methods["go"] = go_methods
 
@@ -1256,9 +1265,20 @@ def parse(type, names):
                             ## This string should be suitable for feeding into any python formatter to get proper form:
                             this_method_dict["code_sample"] = tag.find('div', class_="highlight").pre.text
 
+                        # For do_command, update the code sample to be more specific:
+                        if method_name == "do_command":
+                            if type == "service":
+                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("  # replace SERVICE with the appropriate class", "")
+                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("SERVICE", resource)
+                                if not resource in ["motion"]:
+                                    this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("builtin", "my_{}".format(resource))
+                            else:
+                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
+
                         ## We have finished collecting all data for this method. Write the this_method_dict dictionary
                         ## in its entirety to the python_methods dictionary by type (like 'component'), by resource (like 'arm'),
                         ## using the method_name as key:
+
                         python_methods[type][resource][method_name] = this_method_dict
 
                 ## We have finished looping through all scraped Python methods. Write the python_methods dictionary
