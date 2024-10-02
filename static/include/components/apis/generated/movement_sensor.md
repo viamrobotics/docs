@@ -785,7 +785,7 @@ Supported by `viam-micro-server`.
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = await component.do_command(command)
+result = await my_movement_sensor.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.do_command).
@@ -806,11 +806,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myMovementSensor, err := movement_sensor.FromRobot(machine, "my_movement_sensor")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myMovementSensor.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

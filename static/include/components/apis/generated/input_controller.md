@@ -359,7 +359,7 @@ If you are implementing your own input controller and add features that have no 
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = await component.do_command(command)
+result = await my_input_controller.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.do_command).
@@ -380,11 +380,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myInputController, err := input_controller.FromRobot(machine, "my_input_controller")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myInputController.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

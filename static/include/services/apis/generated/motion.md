@@ -16,7 +16,7 @@ The motion service takes the volumes associated with all configured machine comp
 **Parameters:**
 
 - `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)) (required): The `ResourceName` of the piece of the robot that should arrive at the destination. Note that `move` moves the distal end of the component to the destination. For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
-- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
+- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](/services/frame-system/).
 - `world_state` ([viam.proto.common.WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (optional): Data structure specifying information about the world around the machine.
   Used to augment the motion solving process.
   `world_state` includes obstacles and transforms:
@@ -845,7 +845,7 @@ If you are implementing your own motion service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = SERVICE.from_robot(robot, "builtin")  # replace SERVICE with the appropriate class
+service = motion.from_robot(robot, "builtin")
 
 my_command = {
   "cmnd": "dosomething",
@@ -874,11 +874,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myMotion, err := motion.FromRobot(machine, "my_motion")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myMotion.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

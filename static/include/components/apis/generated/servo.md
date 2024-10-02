@@ -406,7 +406,7 @@ Supported by `viam-micro-server`.
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = await component.do_command(command)
+result = await my_servo.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.do_command).
@@ -427,11 +427,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myServo, err := servo.FromRobot(machine, "my_servo")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myServo.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
