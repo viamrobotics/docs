@@ -12,11 +12,12 @@ aliases:
 
 Triggers allow you to trigger webhooks when certain types of data are sent from your machine to the cloud, or when the your machine parts connect to Viam.
 For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
-Viam provides three trigger types depending on the event you want to trigger on:
+Viam provides four trigger types depending on the event you want to trigger on:
 
 - **Data has been synced to the cloud**: trigger when data from the machine is synced
 - **Part is online**: trigger continuously at a specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
 - **Part is offline**: trigger continuously at a specified interval while the machine part is offline
+- **Conditional data ingestion**: trigger any time data is captured from a specified component with a specified method
 
 To configure a trigger:
 
@@ -38,6 +39,23 @@ To configure a trigger:
 
 Select the data types for which the Trigger should send requests.
 Whenever data of the specified data types is ingested, a `POST` request will be sent.
+
+{{% /tab %}}
+{{% tab name="Conditional data ingestion" %}}
+
+Select the component you want to capture data from and the method you want to capture data from.
+Then, add any conditions.
+
+These can include a key, a value, and a logical operator.
+For example, a trigger configured to fire when data is captured from the motor `motor-1`'s `IsPowered` method when `is_on` is equal to `True`:
+
+{{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." >}}
+
+For more information, see [Conditions](#conditions).
+
+{{% alert title="Note" color="note" %}}
+You must [configure data capture](/services/data/capture-sync/) for your component to use this trigger.
+{{% /alert %}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -135,6 +153,39 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
 ```
 
 {{% /tab %}}
+{{% tab name="JSON Template: Conditional Data Ingestion" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"triggers": [
+    {
+      "name": "<trigger name>",
+      "event": {
+        "type": "conditional_data_ingested",
+        "conditional": {
+          "data_capture_method": "<component>:<name-of-component>:<method>",
+          "condition": {
+            "evals": [
+              {
+                "operator": "<operator>",
+                "value": <object, string, or int>
+              }
+            ]
+          }
+        }
+      },
+      "notifications": [
+        {
+          "type": "email",
+          "value": "<fill-in-email-here>",
+          "seconds_between_notifications": <number of seconds>
+        }
+      ]
+    }
+]
+
+```
+
+{{% /tab %}}
 {{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -204,8 +255,113 @@ The following attributes are available for triggers:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
-| `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `"part_online"`, `"part_offline"`, `"part_data_ingested"`.</li><li>`data_types`: Required with `type` `"part_data_ingested"`. The data types that trigger the event. Options: `"binary"`, `"tabular"`, `"file"`, `"unspecified"`.</li></ul> |
-| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `"webhook"`, `"email"`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
+| `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `part_online`, `part_offline`, `part_data_ingested`, `conditional_data_ingested`.</li><li>`data_types`: Required with `type` `part_data_ingested`. The data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required with `type` `conditional_data_ingested`. See [Conditions](#conditions) for more information. </li></ul> |
+| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
+
+#### Conditions
+
+The `conditional` object for the `conditional_data_ingested` trigger includes the following options:
+
+| Name                  | Type   | Required?    | Description                                                                                                                                                                                                                                                                                                                                                                       |
+| --------------------- | ------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data_capture_method` | string | **Required** | The method of data capture to trigger on. <br> Example: `sensor:<name-of-component>:Readings`.                                                                                                                                                                                                                                                                                    |
+| `condition`           | object | Optional     | Any additional conditions for the method to fire the trigger. Leave out this object for the trigger to fire any time there is data synced. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: Can be a number, string or another object like a key-value pair that specifies the shape of the readings. </li></ul></li></ul> |
+
+Options for `operator`:
+
+| Name  | Description              |
+| ----- | ------------------------ |
+| `lt`  | Less than                |
+| `gt`  | Greater than             |
+| `lte` | Less than or equal to    |
+| `gte` | Greater than or equal to |
+| `eq`  | Equals                   |
+| `neq` | Does not equal           |
+
+Examples:
+
+{{< tabs >}}
+{{% tab name="No nesting" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"condition": {
+  "evals": [
+    {
+      "operator": "lt",
+      "value": 20
+    }
+  ]
+}
+```
+
+This eval would trigger for the following sensor reading:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "readings": {
+    "key": 10
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="1 level of nesting" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"condition": {
+  "evals": [
+    {
+      "operator": "lt",
+      "value": {
+        "Line-Neutral AC RMS Voltage": 130
+      }
+    }
+  ]
+}
+```
+
+This eval would trigger for the following sensor reading:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "readings": {
+    "Line-Neutral AC RMS Voltage": 100
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="2 levels of nesting" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"condition": {
+  "evals": [
+    {
+      "operator": "lt",
+      "value": {
+        “level_1_of_object”: {
+          “level_2_of_object”: 50
+        }
+      }
+    }
+  ]
+}
+```
+
+This eval would trigger for the following sensor reading:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "readings": {
+    "level_1_of_object": {
+      "level_two_of_object": 40
+    }
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 5. Write your cloud function or lambda to process the request from `viam-server`.
    You can use your cloud function or lambda to interact with any external API such as, for example, Twilio, PagerDuty, or Zapier.
@@ -329,16 +485,18 @@ The request body includes the following data:
 <!-- prettier-ignore -->
 | Data Key | Description | Trigger types |
 | -------- | ----------- | ------------- |
-| `component_name` | The name of the component for which data was ingested. | `part_data_ingested` |
-| `component_type` | The type of component for which data was ingested. | `part_data_ingested` |
-| `method_name` | The name of the method from which data was ingested. | `part_data_ingested` |
+| `component_name` | The name of the component for which data was ingested. | `part_data_ingested`, `conditional_data_ingested` |
+| `component_type` | The type of component for which data was ingested. | `part_data_ingested`, `conditional_data_ingested` |
+| `method_name` | The name of the method from which data was ingested. | `part_data_ingested`, `conditional_data_ingested` |
 | `min_time_received` | Indicates the earliest time a piece of data was received. | `part_data_ingested` |
 | `max_time_received` | Indicates the latest time a piece of data was received. | `part_data_ingested` |
-| `machine_name` | The name of the machine that triggered the request. | `part_data_ingested` |
-| `location_name` | The location of the machine that triggered the request. | `part_data_ingested` |
-| `org_name` | The name of the organization that triggered the request. | `part_data_ingested` |
+| `method_name` | The name of the method that triggered the request. | `conditional_data_ingested` |
+| `machine_name` | The name of the machine that triggered the request. | `part_data_ingested`, `conditional_data_ingested` |
+| `location_name` | The location of the machine that triggered the request. | `part_data_ingested`, `conditional_data_ingested` |
+| `org_name` | The name of the organization that triggered the request. | `part_data_ingested`, `conditional_data_ingested` |
 | `file_id` | The id of the file that was ingested. | `part_data_ingested` |
-| `data` | The ingested sensor data. Includes `metadata` with `received_at` and `requested_at` timestamps and `data` in the form `map[string]any`. | `part_data_ingested` (sensor data) |
+| `trigger_condition` | The condition that triggered the request. | `conditional_data_ingested` |
+| `data` | The ingested sensor data. Includes `metadata` with `received_at` and `requested_at` timestamps and `data` in the form `map[string]any`. | `part_data_ingested`, `conditional_data_ingested` (sensor data) |
 
 ## Next steps
 
