@@ -106,10 +106,9 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+data, err := datamanager.FromRobot(machine, "my_data_manager")
 
-err = myArm.Close(context.Background())
+err := data.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

@@ -588,7 +588,7 @@ If you are implementing your own vision service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = vision.from_robot(robot, "my_vision")
+service = VisionClient.from_robot(robot, "my_vision_svc")
 
 my_command = {
   "cmnd": "dosomething",
@@ -667,8 +667,7 @@ Get the `ResourceName` for this instance of the vision service with the given na
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_vision_svc_name = VisionClient.get_resource_name("my_vision_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_resource_name).
@@ -753,7 +752,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_vision_svc.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.close).
@@ -772,10 +771,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myVisionSvc, err := vision.FromRobot(machine, "my_vision_svc")
 
-err = myArm.Close(context.Background())
+err = myVisionSvc.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

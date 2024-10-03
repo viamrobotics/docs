@@ -399,7 +399,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-geometries = await component.get_geometries()
+geometries = await my_camera.get_geometries()
 
 if geometries:
     # Get the center of the first geometry
@@ -429,8 +429,7 @@ Get the `ResourceName` for this camera with the given name.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_camera_name = Camera.get_resource_name("my_camera")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_resource_name).
@@ -469,7 +468,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_camera.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.close).

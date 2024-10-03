@@ -326,7 +326,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-geometries = await component.get_geometries()
+geometries = await my_gantry.get_geometries()
 
 if geometries:
     # Get the center of the first geometry
@@ -612,8 +612,7 @@ Get the `ResourceName` for this gantry with the given name.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_gantry_name = Gantry.get_resource_name("my_gantry")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_resource_name).
@@ -652,7 +651,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_gantry.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.close).
@@ -671,10 +670,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
-err = myArm.Close(context.Background())
+err = myGantry.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

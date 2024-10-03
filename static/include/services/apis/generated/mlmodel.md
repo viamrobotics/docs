@@ -147,7 +147,7 @@ If you are implementing your own ML model service and add features that have no 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = mlmodel.from_robot(robot, "my_mlmodel")
+service = MLModelClient.from_robot(robot, "my_mlmodel_svc")
 
 my_command = {
   "cmnd": "dosomething",
@@ -205,8 +205,7 @@ Get the `ResourceName` for this instance of the ML model service with the given 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_mlmodel_svc_name = MLModelClient.get_resource_name("my_mlmodel_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.get_resource_name).
@@ -232,7 +231,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_mlmodel_svc.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.close).
@@ -251,10 +250,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")
 
-err = myArm.Close(context.Background())
+err := my_mlmodel.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

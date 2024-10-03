@@ -541,7 +541,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-geometries = await component.get_geometries()
+geometries = await my_arm.get_geometries()
 
 if geometries:
     # Get the center of the first geometry
@@ -703,7 +703,6 @@ Get the `ResourceName` for this arm with the given name.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
 my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
@@ -743,7 +742,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_arm.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.close).
@@ -762,7 +761,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
 err = myArm.Close(context.Background())

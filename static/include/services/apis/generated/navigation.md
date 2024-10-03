@@ -531,7 +531,7 @@ If you are implementing your own navigation service and add features that have n
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = navigation.from_robot(robot, "my_navigation")
+service = NavigationClient.from_robot(robot, "my_navigation_svc")
 
 my_command = {
   "cmnd": "dosomething",
@@ -589,8 +589,7 @@ Get the `ResourceName` for this instance of the navigation service with the give
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_navigation_svc_name = NavigationClient.get_resource_name("my_navigation_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_resource_name).
@@ -616,7 +615,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_navigation_svc.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.close).
@@ -635,10 +634,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+my_nav, err := navigation.FromRobot(machine, "my_nav_svc")
 
-err = myArm.Close(context.Background())
+err := my_nav.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

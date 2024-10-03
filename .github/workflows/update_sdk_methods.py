@@ -853,7 +853,14 @@ def parse(type, names):
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "DoCommand example:" in code_sample_tag.text)
                                 if code_sample:
-                                    go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'
+                                    if type == "component":
+                                        go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ ', err := ' + resource + '.FromRobot(machine, "my_' + resource.title().replace("_", "") + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'
+                                        if resource == "generic_component":
+                                            go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericComponent, err := generic.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericComponent.DoCommand(context.Background(), command)\n'
+                                    else:
+                                        go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + 'Svc.DoCommand(context.Background(), command)\n'
+                                        if resource == "slam":
+                                            go_methods[type][resource]['DoCommand']['code_sample'] = 'mySLAMService, err := slam.FromRobot(machine, "my_slam_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := mySLAMService.DoCommand(context.Background(), command)\n'
 
                                 go_methods[type][resource]['Close'] = {'proto': 'Close', \
                                     'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
@@ -861,7 +868,19 @@ def parse(type, names):
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Close example:" in code_sample_tag.text)
                                 if code_sample:
-                                    go_methods[type][resource]['Close']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                    if type == "component":
+                                        go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromRobot(machine, "my_' + resource + '")\n\nerr = my' + resource.title().replace("_", "") + '.Close(context.Background())\n'
+                                    else:
+                                        if resource == "base_remote_control":
+                                            go_methods[type][resource]['Close']['code_sample'] = 'baseRCService, err := baseremotecontrol.FromRobot(machine, "my_baseRCService_svc")\n\nerr := baseRCService.Close(context.Background())\n'
+                                        elif resource == "data_manager":
+                                            go_methods[type][resource]['Close']['code_sample'] = 'data, err := datamanager.FromRobot(machine, "my_data_manager")\n\nerr := data.Close(context.Background())\n'
+                                        elif resource == "navigation":
+                                            go_methods[type][resource]['Close']['code_sample'] = 'my_nav, err := navigation.FromRobot(machine, "my_nav_svc")\n\nerr := my_nav.Close(context.Background())\n'
+                                        elif resource == "mlmodel":
+                                            go_methods[type][resource]['Close']['code_sample'] = 'my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")\n\nerr := my_mlmodel.Close(context.Background())\n'
+                                        else:
+                                            go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
 
                             ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
                             ## then add the two inherited methods manually: IsMoving() and Stop():
@@ -890,7 +909,7 @@ def parse(type, names):
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Shaped'}
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Geometries example:" in code_sample_tag.text)
                                 if code_sample:
-                                    go_methods[type][resource]['Geometries']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                    go_methods[type][resource]['Geometries']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ").replace('myArm', 'my{}'.format(resource.title().replace('_', ''))).replace('my_arm', 'my_{}'.format(resource)).replace('arm', resource)
 
                             ## Similarly, if the resource being considered inherits from resource.Sensor (Movement Sensor, for example),
                             ## then add the one inherited method manually: Readings():
@@ -953,6 +972,8 @@ def parse(type, names):
                                     'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
                                     'code_sample': 'my' + resource.replace("_", "").title() + ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.replace("_", "").title() + '.DoCommand(context.Background(), command)\n'}
+                if resource == "generic_service":
+                    go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromRobot(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
 
                 all_methods["go"] = go_methods
 
@@ -1269,11 +1290,54 @@ def parse(type, names):
                         if method_name == "do_command":
                             if type == "service":
                                 this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("  # replace SERVICE with the appropriate class", "")
-                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("SERVICE", resource)
+                                service_class = resource.title() + "Client"
+                                if resource == "mlmodel":
+                                    service_class = "MLModelClient"
+                                elif resource == "generic_service":
+                                    service_class = "Generic"
+                                elif resource == "slam":
+                                    service_class = "SLAMClient"
+                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("SERVICE", service_class)
                                 if not resource in ["motion"]:
-                                    this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("builtin", "my_{}".format(resource))
+                                    this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("builtin", "my_{}_svc".format(resource))
                             else:
                                 this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
+
+                        # For get_geometries, update the code sample to be more specific:
+                        if method_name == "get_geometries":
+                            if type == "service":
+                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("component", "my_{}_svc".format(resource))
+                            else:
+                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
+
+                        # For close, update the code sample to be more specific:
+                        if method_name == "close":
+                            if type == "service":
+                                if resource == "generic_service":
+                                    this_method_dict["code_sample"] = "await my_{}.close()\n".format(resource)
+                                else:
+                                    this_method_dict["code_sample"] = "await my_{}_svc.close()\n".format(resource)
+                            elif type == "component":
+                                this_method_dict["code_sample"] = "await my_{}.close()\n".format(resource)
+
+                        # For get_resource_name, update the code sample to be more specific:
+                        if method_name == "get_resource_name":
+                            if type == "service":
+                                service_class = resource.title().replace('_','') + "Client"
+                                if resource == "mlmodel":
+                                    service_class = "MLModelClient"
+                                elif resource == "generic_service":
+                                    service_class = "Generic"
+                                elif resource == "slam":
+                                    service_class = "SLAMClient"
+                                this_method_dict["code_sample"] = 'my_{}_svc_name = {}.get_resource_name("my_{}_svc")\n'.format(resource, service_class ,resource)
+                            else:
+                                if resource == "input_controller":
+                                    this_method_dict["code_sample"] = 'my_input_controller_name = Controller.get_resource_name("my_input_controller")\n'
+                                elif resource == "generic_component":
+                                    this_method_dict["code_sample"] = 'my_generic_component_name = Generic.get_resource_name("my_generic_component")\n'
+                                else:
+                                    this_method_dict["code_sample"] = 'my_{}_name = {}.get_resource_name("my_{}")\n'.format(resource, resource.title().replace('_','') ,resource)
 
                         ## We have finished collecting all data for this method. Write the this_method_dict dictionary
                         ## in its entirety to the python_methods dictionary by type (like 'component'), by resource (like 'arm'),

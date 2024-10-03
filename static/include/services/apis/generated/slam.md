@@ -143,14 +143,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): Information about the current SLAM session.
-  An object containing four fields:
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): 
+Information about the current SLAM session.
+An object containing four fields:
 
-  - `SensorInfo` [(SensorInfo[])](https://pkg.go.dev/go.viam.com/api/service/slam/v1#SensorInfo): Information about the sensors (camera and movement sensor) configured for your SLAM service, including the name and type of sensor.
-  - `CloudSlam` [(bool)](https://pkg.go.dev/builtin#bool): A boolean which indicates whether the session is being run in the cloud.
-  - `MappingMode` [(MappingMode)](https://pkg.go.dev/go.viam.com/rdk/services/slam#MappingMode): Represents the [form of mapping and localizing the current session is performing](/services/slam/cartographer/#using-cartographer). This includes creating a new map, localizing on an existing map and updating an existing map.
-  - `InternalStateFileType` [(string)](https://pkg.go.dev/builtin#string): The file type the service's internal state algorithm is stored in.
-
+- `SensorInfo` [(SensorInfo[])](https://pkg.go.dev/go.viam.com/api/service/slam/v1#SensorInfo): Information about the sensors (camera and movement sensor) configured for your SLAM service, including the name and type of sensor.
+- `CloudSlam` [(bool)](https://pkg.go.dev/builtin#bool): A boolean which indicates whether the session is being run in the cloud.
+- `MappingMode` [(MappingMode)](https://pkg.go.dev/go.viam.com/rdk/services/slam#MappingMode): Represents the [form of mapping and localizing the current session is performing](/services/slam/cartographer/#using-cartographer). This includes creating a new map, localizing on an existing map and updating an existing map.
+- `InternalStateFileType` [(string)](https://pkg.go.dev/builtin#string): The file type the service's internal state algorithm is stored in.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -254,7 +254,7 @@ If you are implementing your own SLAM service and add features that have no buil
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = slam.from_robot(robot, "my_slam")
+service = SLAMClient.from_robot(robot, "my_slam_svc")
 
 my_command = {
   "cmnd": "dosomething",
@@ -312,8 +312,7 @@ Get the `ResourceName` for this instance of the SLAM service with the given name
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_slam_svc_name = SLAMClient.get_resource_name("my_slam_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_resource_name).
@@ -339,7 +338,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_slam_svc.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.close).
@@ -358,10 +357,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+mySlamSvc, err := slam.FromRobot(machine, "my_slam_svc")
 
-err = myArm.Close(context.Background())
+err = mySlamSvc.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
