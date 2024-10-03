@@ -18,9 +18,12 @@ hide_children: true
 # SME: Rand
 ---
 
-An encoder is a type of sensor that can detect speed and direction of rotation of a motor or a joint.
-It is often used in conjunction with a motor, and is sometimes even built into a motor.
-An encoder could also be mounted on a passive joint or other rotating object to keep track of the joint angle.
+The encoder component provides an API for getting the position of a motor or a joint in ticks or degrees.
+
+If you have hardware or software that provides the position of a motor or joint, use an encoder component.
+
+Encoder components are often used in conjunction with a motor, and are sometimes even built directly into motors.
+Encoders can also be mounted on a passive joint or other rotating object to keep track of the joint angle.
 
 The encoder component supports:
 
@@ -31,26 +34,14 @@ The encoder component supports:
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
 
-Most machines with an encoder need at least the following hardware:
-
-- A [board component](/components/board/) that can run a `viam-server` instance.
-  For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-- Some sort of rotary machine part (like a motor, joint or dial) for which you want to measure movement.
-
-## Related services
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< /cards >}}
-
 ## Available models
 
-To use your encoder component, check whether one of the following models supports it.
+To use an encoder, you need to add it to your machine's configuration.
 
-For configuration information, click on the model name:
+Go to your machine's **CONFIGURE** page, and add a model that supports your encoder.
+
+The following list shows the available encoder models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -73,46 +64,11 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your encoder with Viam's client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by adding API method calls as shown in the following examples.
-
-These examples assume you have an encoder called `"my_encoder"` configured as a component of your machine.
-If your encoder has a different name, change the `name` in the code.
-
-Be sure to import the encoder package for the SDK you are using:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.encoder import Encoder
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/encoder"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
 
-The encoder component supports the following methods:
+The [encoder API](/appendix/apis/components/encoder/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
-
-{{< readfile "/static/include/components/apis/generated/encoder.md" >}}
 
 ## Troubleshooting
 
@@ -122,7 +78,16 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/configure/configure-rover/" %}}
-{{% card link="/components/motor/encoded-motor/" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/components/motor/encoded-motor/" noimage="true" %}}
 {{< /cards >}}
+
+You can also use the encoder component with the following services:
+
+- [Data management service](/services/data/): To capture and sync the encoder's data
+- [Motion service](/services/motion/): To move machines or components of machines
+- [Navigation service](/services/navigation/): To navigate with GPS

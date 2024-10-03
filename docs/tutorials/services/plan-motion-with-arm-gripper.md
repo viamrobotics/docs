@@ -110,8 +110,8 @@ The `GetPose` method provided by the motion service serves a similar function to
 
 ### Get the `ResourceName`
 
-When you use the [arm API](/components/arm/#api), you call methods on your arm component itself.
-To use the [motion service API](/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
+When you use the [arm API](/appendix/apis/components/arm/#api), you call methods on your arm component itself.
+To use the [motion service API](/appendix/apis/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
 
 Add the following to the section of your code where you access the arm:
 
@@ -238,7 +238,7 @@ Within the app, the **Frame** subtab of your machine's **CONFIGURE** tab gives y
 
 In previous examples you controlled motion of individual components.
 Now you will use the motion service to control the motion of the robot as a whole.
-You will use the motion service's [`Move`](/services/motion/#move) method to execute more general robotic motion.
+You will use the motion service's [`Move`](/appendix/apis/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the motion service takes that information into account when planning.
 

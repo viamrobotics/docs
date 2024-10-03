@@ -34,6 +34,10 @@ Fleet management API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
+The fleet management API supports the following methods:
+
+{{< readfile "/static/include/app/apis/generated/app-table.md" >}}
+
 ## Establish a connection
 
 To use the Viam fleet management API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
@@ -79,10 +83,6 @@ if __name__ == '__main__':
 Once you have instantiated an `AppClient`, you can run the following [API methods](#api) against the `AppClient` object (named `fleet` in the examples).
 
 ## API
-
-The fleet management API supports the following methods (among [others](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient)):
-
-{{< readfile "/static/include/app/apis/generated/app-table.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/app.md" >}}
 

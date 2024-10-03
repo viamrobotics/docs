@@ -8,7 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/ffmpeg/"
-component_description: "Uses a camera, a video file, or a stream as a camera."
+component_description: "Use a camera, a video file, or a stream as a camera component."
 toc_hide: true
 # SMEs: Sean Yu, audio/video team
 ---
@@ -95,4 +95,10 @@ The following attributes are available for `ffmpeg` cameras:
 
 ## Next steps
 
-{{< readfile "/static/include/components/camera-model-next-steps.md" >}}
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/how-tos/image-data/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{< /cards >}}

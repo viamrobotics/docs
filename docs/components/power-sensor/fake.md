@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/power-sensor/fake/"
-component_description: "A digital power sensor for testing."
+component_description: "A model for testing, with no physical hardware."
 # SME: #team-bucket
 ---
 
@@ -44,3 +44,13 @@ Enter a name or use the suggested name for your power sensor and click **Create*
 No attributes are available for `fake` power sensors.
 
 {{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}
+
+## Next steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/power-sensor/" customTitle="Power sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

@@ -15,9 +15,17 @@ layout: "changelog"
 outputs:
   - rss
   - html
+date: "2024-09-18"
+# updated: ""  # When the content was last entirely checked
 ---
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
+
+{{% changelog date="2024-09-20" color="added" title="Pi models moved to module" %}}
+
+The Raspberry Pi 4, 3, and Zero 2 W boards are now supported by [`viam:raspberry-pi:rpi`](https://github.com/viam-modules/raspberry-pi).
+
+{{% /changelog %}}
 
 {{% changelog date="2024-08-26" color="added" title="ESP32 cameras" %}}
 
@@ -43,7 +51,7 @@ For more information, see [Configure provisioning with viam-agent](/how-tos/prov
 {{% changelog date="2024-08-16" color="added" title="Data capture for vision" %}}
 
 Data capture is now possible for the vision service.
-For more information, see [Supported components and services](/services/data/capture/#supported-components-and-services).
+For more information, see [Supported components and services](/services/data/capture-sync/#supported-components-and-services).
 
 {{% /changelog %}}
 
@@ -69,36 +77,35 @@ The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/app
 
 {{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
 
-The board analog API [`Read()`](/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
+The board analog API [`Read()`](/appendix/apis/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
 The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
 
 {{% /changelog %}}
 
 {{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
 
-The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
+The vision service now supports two new methods: [`CaptureAllFromCamera`](/appendix/apis/services/vision/#captureallfromcamera) and [`GetProperties`](/appendix/apis/services/vision/#getproperties).
 
 {{% /changelog %}}
 
 {{% changelog date="2024-05-14" color="changed" title="Renamed GeoObstacle to GeoGeometry" %}}
 
 The motion service API parameter `GeoObstacle` has been renamed to `GeoGeometry`.
-This affects users of the [`MoveOnGlobe()`](/services/motion/#moveonglobe) method.
+This affects users of the [`MoveOnGlobe()`](/appendix/apis/services/motion/#moveonglobe) method.
 
 {{% /changelog %}}
 
 {{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera component's [`GetImage()`](/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
+The camera component's [`GetImage()`](/appendix/apis/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/appendix/apis/services/vision/#getdetections) and [`GetClassifications()`](/appendix/apis/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
 {{< expand "Click for an example of using the ViamImage -> PIL Image helper functions." >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-# from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
-# < ADD ABOVE IMPORT TO BEGINNING OF PROGRAM >
+from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
 # Get the ViamImage from your camera.
 frame = await my_camera.get_image()
@@ -124,7 +131,7 @@ detections = await detector.get_detections(cropped_frame)
 {{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
 
 The `WriteAnalog()` method has been removed from the Go SDK.
-Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](/components/board/#write) instead.
+Use [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) followed by [`Write()`](/appendix/apis/components/board/#write) instead.
 
 {{% /changelog %}}
 
@@ -138,7 +145,7 @@ Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](
 
 `AnalogReader` has been renamed to `Analog`.
 The functionality remains the same, but code that uses analogs must be updated.
-`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/components/board/#analogbyname) and [`AnalogNames()`](/components/board/#analognames), respectively.
+`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) and [`AnalogNames()`](/appendix/apis/components/board/#analognames), respectively.
 
 {{% /changelog %}}
 
@@ -230,7 +237,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/how-tos/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
+You can visualize any data, such as sensor readings, that you have [synced](/services/data/capture-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -352,7 +359,7 @@ You now have the capability to use a [power sensor component](/components/power-
 {{% /changelog %}}
 
 {{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/cloud-sync/).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/capture-sync/).
 It equips machines to:
 
 - Remove data that is not of interest
@@ -404,7 +411,7 @@ Note that currently, accounts from different SSO providers are treated separatel
 
 {{% changelog date="2023-07-31" color="improved" title="Arm component API" %}}
 
-Arm models now support the [`GetKinematics` method](/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
+Arm models now support the [`GetKinematics` method](/appendix/apis/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
 
 {{% /changelog %}}
 
@@ -435,7 +442,7 @@ See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn 
 {{% changelog date="2023-06-30" color="added" title="Implement custom robotic arms as Viam modules" %}}
 
 When prototyping a robotic arm, you can now facilitate movement without creating your own motion planning.
-This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/components/arm/#api):
+This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/appendix/apis/components/arm/#api):
 
 - `getJointPositions`
 - `movetoJointPositions`
@@ -916,7 +923,7 @@ For more information on using data synced to the cloud to train machine learning
 
 {{% changelog date="2023-03-31" color="added" title="Motion planning with new `constraint` parameter" %}}
 
-A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/services/motion/#api), allowing you to define restrictions on the machine's movement.
+A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/appendix/apis/services/motion/#api), allowing you to define restrictions on the machine's movement.
 The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a machine.
 
 {{% /changelog %}}
@@ -1003,7 +1010,7 @@ The [AMS AS5048](/components/encoder/ams-as5048/) is now supported.
 
 {{% changelog date="2023-01-31" color="added" title="GetLinearAcceleration method" %}}
 
-The movement sensor API now includes a [GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) method.
+The movement sensor API now includes a [GetLinearAcceleration](/appendix/apis/components/movement-sensor/#getlinearacceleration) method.
 
 {{% /changelog %}}
 
@@ -1139,7 +1146,7 @@ Other service configurations are not affected.
 
 {{% changelog date="2022-11-15" color="removed" title="Width and height fields from camera API" %}}
 
-Removed `width` and `height` from the response of the [`GetImage`](/components/camera/#getimage) method in the camera API.
+Removed `width` and `height` from the response of the [`GetImage`](/appendix/apis/components/camera/#getimage) method in the camera API.
 This does not impact any existing camera models.
 If you write a custom camera model, you no longer need to implement the `width` and `height` fields.
 

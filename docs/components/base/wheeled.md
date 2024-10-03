@@ -8,11 +8,11 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/wheeled/"
-component_description: "Mobile wheeled robot."
+component_description: "Supports mobile wheeled robotic bases with motors on both sides for differential steering."
 # SMEs: Steve B
 ---
 
-A `wheeled` base supports mobile robotic bases with drive motors on both sides (differential steering).
+A `wheeled` base supports mobile robotic bases with motors on both sides (differential steering).
 To configure a `wheeled` base as a component of your machine, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
 Configure a `wheeled` base as follows:
@@ -155,3 +155,13 @@ Note that your base's wiring will vary depending on your choice of board, motors
 ## Test the base
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}
+{{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
+{{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{< /cards >}}

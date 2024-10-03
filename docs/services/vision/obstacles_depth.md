@@ -125,14 +125,14 @@ If you want to identify multiple boxes over the flat plane with your segmenter:
 
 - First, [configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your machine, including your [camera](/components/camera/), within Viam's [frame system service](/services/frame-system/).
   - After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
-  - You can get those parameters from your camera through the [camera API](/components/camera/#getproperties).
+  - You can get those parameters from your camera through the [camera API](/appendix/apis/components/camera/#getproperties).
 - The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
 
 Click the **Save** button in the top right corner of the page and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Test your segmenter
 
-The following code uses the [`GetObjectPointClouds`](/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
+The following code uses the [`GetObjectPointClouds`](/appendix/apis/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -188,3 +188,13 @@ To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.g
 {{% alert title="Tip" color="tip" %}}
 To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
+
+## Next Steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/services/navigate-with-rover-base/" noimage="true" %}}
+{{< /cards >}}

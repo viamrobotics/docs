@@ -21,7 +21,7 @@ Viam provides three trigger types depending on the event you want to trigger on:
 To configure a trigger:
 
 {{< tabs >}}
-{{% tab name="Builder mode: Create menu" %}}
+{{% tab name="Builder mode" %}}
 
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
@@ -39,42 +39,29 @@ To configure a trigger:
 Select the data types for which the Trigger should send requests.
 Whenever data of the specified data types is ingested, a `POST` request will be sent.
 
-{{% alert title="Note" color="note" %}}
-
-You must have [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) configured for the relevant components to use this trigger and the component must return the type of data you configure in the trigger's **Data Types**.
-For example, if you want to trigger a trigger on temperature readings, configure data capture and sync on your temperature sensor.
-{{% /alert %}}
-
-{{% /tab %}}
-{{% tab name="Part is online" %}}
-
-Edit the **Time between notifications** attribute to set the interval at which this trigger will send `GET` requests when the part is online.
-
-{{% /tab %}}
-{{% tab name="Part is offline" %}}
-
-Edit the **Time between notifications** attribute to set the interval at which this trigger will send `GET` requests when the part is offline.
-
 {{% /tab %}}
 {{< /tabs >}}
 
-4. Replace the **URL** value with the URL of your cloud function or lambda.
+4. Add **Webhooks** or **Emails**.
 
-   ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
+{{< tabs name="Notifications types" >}}
+{{% tab name="Webhooks" %}}
+
+Replace the **URL** value with the URL of your cloud function or lambda.
+Configure the time between notifications.
+
+![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
 
 {{% /tab %}}
-{{% tab name="Builder mode: Resource card" %}}
-You can also configure a trigger for a resource in **Builder** mode on the **CONFIGURE** tab by navigating to the resource's configuration panel, selecting the **...** menu in the upper right corner, and selecting **Create trigger**.
+{{% tab name="Emails" %}}
 
-{{<imgproc src="/build/configure/resource-card-create.png" resize="x400" declaredimensions=true alt="The ... menu with Create trigger in the middle of the list of options." >}}
+Add the email you wish to be notified whenever this trigger is triggered.
+Configure the time between notifications.
 
-This creates a trigger that's configured to fire on an event occurring from a specific resource.
-You must configure the method of activation and any relevant **Conditions**, as well as any **Webhooks** and **Emails** for notifications.
+![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured-email.png)
 
-For example, the following triggers when data is ingested from the sensor's `Readings` method:
-
-{{<imgproc src="/build/configure/sensor-trigger.png" resize="x400" declaredimensions=true alt="A conditional data ingestion trigger for a sensor called sensor-1 with Readings selected as the method." >}}
-
+{{% /tab %}}
+{{< /tabs >}}
 {{% /tab %}}
 {{% tab name="JSON mode" %}}
 
@@ -218,7 +205,7 @@ The following attributes are available for triggers:
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
 | `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `"part_online"`, `"part_offline"`, `"part_data_ingested"`.</li><li>`data_types`: Required with `type` `"part_data_ingested"`. The data types that trigger the event. Options: `"binary"`, `"tabular"`, `"file"`, `"unspecified"`.</li></ul> |
-| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `"webhook"`.</li><li>`value`: The URL to send the request to.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
+| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `"webhook"`, `"email"`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
 
 5. Write your cloud function or lambda to process the request from `viam-server`.
    You can use your cloud function or lambda to interact with any external API such as, for example, Twilio, PagerDuty, or Zapier.

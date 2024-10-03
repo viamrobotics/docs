@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/ti/"
-component_description: "Texas Instruments TDA4VM."
+component_description: "Supports Texas Instruments TDA4VM."
 # SMEs: Gautham, Rand
 ---
 
@@ -72,3 +72,13 @@ Configuring these attributes on your board allows you to integrate [digital inte
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

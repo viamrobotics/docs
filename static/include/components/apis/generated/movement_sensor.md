@@ -631,38 +631,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetGeometries
-
-Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/services/frame-system/) of the movement sensor.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-geometries = await component.get_geometries()
-
-if geometries:
-    # Get the center of the first geometry
-    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_geometries).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetReadings
 
 Get all the measurements/data from the sensor.
@@ -787,7 +755,7 @@ Supported by `viam-micro-server`.
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = await component.do_command(command)
+result = await my_movement_sensor.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.do_command).
@@ -808,11 +776,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myMovementSensor, err := movement_sensor.FromRobot(machine, "my_movement_sensor")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myMovementSensor.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -841,27 +808,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### FromRobot
-
-Get the resource from the provided robot with the given name.
-
-{{< tabs >}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
-- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-
-**Returns:**
-
-- [MovementSensor](https://flutter.viam.dev/viam_sdk/MovementSensor-class.html)
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/fromRobot.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetResourceName
 
 Get the `ResourceName` for this movement sensor with the given name.
@@ -881,7 +827,7 @@ Get the `ResourceName` for this movement sensor with the given name.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_resource_name).

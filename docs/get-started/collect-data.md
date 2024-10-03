@@ -6,7 +6,7 @@ images: ["/get-started/quickstarts/collect-data.png"]
 description: "Use Viam to gather images or sensor data from your machine."
 imageAlt: "The data icon"
 authors: []
-weight: 40
+weight: 20
 languages: []
 viamresources: ["data_manager", "sensor"]
 platformarea: ["data"]
@@ -27,8 +27,8 @@ date: "2024-07-31"
 cost: "0" # Approximate cost in USD - Only specify number
 ---
 
-This quickstart is the final part of a series.
-If you haven't read through [Learn Viam](/get-started/), [controlled a motor](/get-started/control-motor/), and [detected people](/get-started/detect-people/) we recommend you do so before continuing.
+This quickstart is the second part of a series.
+If you haven't read through [Learn Viam](/get-started/) and [detect people](/get-started/detect-people/), we recommend you do so before continuing.
 
 In this guide you'll capture and sync sensor or image data from a machine.
 
@@ -75,7 +75,11 @@ Select a tab below to collect images from a camera or readings from a sensor:
 
 {{< expand "Step 1: Create a machine" >}}
 
-Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
+{{< alert title="Tip" color="tip" >}}
+If you followed the [Detect people](/get-started/detect-people/) quickstart and have installed `viam-server` already on a machine that has a webcam, you can use the same machine and skip to step 4.
+{{< /alert >}}
+
+Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
 
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
@@ -127,7 +131,7 @@ For more detailed information, including optional attribute configuration, see t
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture/).
+For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
 
 {{< /expand >}}
 {{< expand "Step 5: View the captured image data" >}}
@@ -173,12 +177,12 @@ Wait for your device to connect to the Viam app.
 {{% /expand%}}
 {{< expand "Step 3: Configure a board" >}}
 
-Most sensors need to be wired to the pins of a SBC such as a [Raspberry Pi](/components/board/pi/).
+Most sensors need to be wired to the pins of a SBC such as a Raspberry Pi.
 
 If you are not using a single-board computer (SBC), move on to step 4.
 
 If you are using a SBC, make sure you have installed `viam-server` on the SBC.
-Then add a board component to your config for your SBC.
+Then add a [board component](/components/board/#available-models) to your config for your SBC.
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 
@@ -234,7 +238,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture/).
+For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
 
 {{< /expand >}}
 {{< expand "Step 6: View the captured sensor data" >}}
@@ -264,12 +268,8 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/deploy-ml/) with the Viam platform.
 
-This concludes our guided path for getting to know the Viam platform.
-
-To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
+The next quickstart will introduce you to configuring and controlling hardware:
 
 {{< cards >}}
-{{% card link="/how-tos/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/platform/" %}}
+{{% card link="/get-started/control-motor/" %}}
 {{< /cards >}}

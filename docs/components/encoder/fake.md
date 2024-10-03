@@ -61,3 +61,13 @@ Once your encoder is configured and your machine is connected, go to the [**CONT
 The ticks count is displayed.
 
 ![Encoder control panel.](/components/encoder/control.png)
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

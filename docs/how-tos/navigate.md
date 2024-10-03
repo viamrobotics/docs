@@ -37,7 +37,7 @@ You can also view live feeds from any cameras you configure.
 {{<imgproc src="/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
 **2. Program to move**
 
-Remotely control your rover base programmatically with a [Viam SDK](/sdks/) by making calls to the [base API](/components/base/#api).
+Remotely control your rover base programmatically with a [Viam SDK](/sdks/) by making calls to the [base API](/appendix/apis/components/base/#api).
 Or, [configure the base remote control service](/services/base-rc/) to teleoperate your base with an [input controller.](/components/input-controller/)
 
 {{% /tablestep %}}
@@ -54,7 +54,7 @@ Then, [configure the navigation service](/services/navigation/) on your machine.
 {{<imgproc src="/how-tos/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
 **4. Navigate autonomously**
 
-Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/services/navigation/#api).
+Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/appendix/apis/services/navigation/#api).
 
 {{% /tablestep %}}
 {{< /table >}}

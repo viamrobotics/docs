@@ -62,17 +62,17 @@ While you can certainly combine the resource model definition and the main progr
 
 ### Choose an API to implement in your model
 
-Look through the [component API](/appendix/apis/#component-apis) and [service API](/appendix/apis/#service-apis) and find the API that best fits your use case.
+Look through the [component APIs](/appendix/apis/#component-apis) and [service API](/appendix/apis/#service-apis) and find the API that best fits your use case.
 Each API contains various methods which you will need to define in your module:
 
 - One or more methods specific to that API, such as the servo component's `Move` and `GetPosition` methods.
-- Inherited [ResourceBase methods](/appendix/apis/#resourcebase-methods) such as `DoCommand` and `Close`, common to all Viam {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
+- Inherited `ResourceBase` methods such as `DoCommand` and `Close`, common to all Viam {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
 - (For some APIs) Other inherited methods, for example all actuator APIs such as the motor API and servo API inherit `IsMoving` and `Stop`.
 
 {{< expand "Click for more guidance" >}}
 Think about what functionality you want your module to provide, what methods you need, and choose an API to implement accordingly.
-For example, the [sensor API](/appendix/apis/#sensor) has a `GetReadings` method, so if you create a module for a model of sensor, you'll need to write code to provide a response to the `GetReadings` method.
-If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/appendix/apis/#encoder) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
+For example, the [sensor API](/appendix/apis/components/sensor/) has a `GetReadings` method, so if you create a module for a model of sensor, you'll need to write code to provide a response to the `GetReadings` method.
+If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/appendix/apis/components/encoder/) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
 
 In addition to the list of methods, another reason to choose one API over another is how certain APIs fit into the Viam ecosystem.
 For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/services/navigation/).
@@ -189,10 +189,10 @@ Browse additional example modules by language:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
-| [oak](https://app.viam.com/module/viam/oak) | [viam-modules/viam-camera-oak](https://github.com/viam-modules/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
+| [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/appendix/apis/components/movement-sensor/) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
+| [oak](https://app.viam.com/module/viam/oak) | [viam-modules/viam-camera-oak](https://github.com/viam-modules/viam-camera-oak) | Extends the built-in [camera API](/appendix/apis/components/camera/) to support OAK cameras. |
 | [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
-| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
+| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/appendix/apis/components/arm/) and [gripper API](/appendix/apis/components/gripper/) to support the Yahboom Dofbot robotic arm. |
 
 For more Python module examples:
 
@@ -207,9 +207,9 @@ For more Python module examples:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/components/base/#api) to support the Agilex Limo base. |
-| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/components/camera/#api) to support several models of the SLAMTEC RPlidar. |
-| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/components/camera/#api) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/how-tos/image-data/) for more information. |
+| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/appendix/apis/components/base/) to support the Agilex Limo base. |
+| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/appendix/apis/components/camera/) to support several models of the SLAMTEC RPlidar. |
+| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/appendix/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/how-tos/image-data/) for more information. |
 
 For more Go module examples:
 
@@ -222,7 +222,7 @@ For more Go module examples:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/components/camera/#api) to support the Intel CSI camera. |
+| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/appendix/apis/components/camera/) to support the Intel CSI camera. |
 <!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](/components/sensor/#api) to report wifi statistics. | -->
 
 {{% /tab %}}
@@ -451,7 +451,7 @@ For example, the `is_moving()` implementation in the example code above returns 
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
-- [Base API methods](/components/base/#api)
+- [Base API methods](/appendix/apis/components/base/)
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -695,7 +695,7 @@ This matches the `error` return type of the built-in `SetPower()` method as defi
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
-- [Base API methods](/components/base/#api)
+- [Base API methods](/appendix/apis/components/base/)
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -930,7 +930,7 @@ For example, the `set_power()` implementation in the example code above returns 
 For more information on the base component API methods used in these examples, see the following resources:
 
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
-- [Base API methods](/components/base/#api)
+- [Base API methods](/appendix/apis/components/base/)
 
 For more C++ module examples of varying complexity,see the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
 
@@ -1538,7 +1538,7 @@ _Add troubleshooting notes here._
 ````md
 # [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
 
-This module implements the [`rdk:component:base` API](https://docs.viam.com/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with `viam-server`.
+This module implements the [`rdk:component:base` API](https://docs.viam.com/appendix/apis/components/base/) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with `viam-server`.
 This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
 ## Configure your `agilex-limo` base

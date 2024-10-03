@@ -6,7 +6,7 @@
 | [`ListOrganizations`](/appendix/apis/fleet/#listorganizations) | List the {{< glossary_tooltip term_id="organization" text="organizations" >}} the user is an authorized user of. |
 | [`GetOrganizationsWithAccessToLocation`](/appendix/apis/fleet/#getorganizationswithaccesstolocation) | Get all organizations that have access to a location. |
 | [`ListOrganizationsByUser`](/appendix/apis/fleet/#listorganizationsbyuser) | List the organizations a user belongs to. |
-| [`GetOrganization`](/appendix/apis/fleet/#getorganization) | Return details about the requested organization. |
+| [`GetOrganization`](/appendix/apis/fleet/#getorganization) | Retrieve the organization object for the requested organization containing the organization's ID, name, public namespace, and more. |
 | [`GetOrganizationNamespaceAvailability`](/appendix/apis/fleet/#getorganizationnamespaceavailability) | Check the availability of an {{< glossary_tooltip term_id="organization" text="organization" >}} namespace. |
 | [`UpdateOrganization`](/appendix/apis/fleet/#updateorganization) | Updates organization details. |
 | [`DeleteOrganization`](/appendix/apis/fleet/#deleteorganization) | Delete an organization. |

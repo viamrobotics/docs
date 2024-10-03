@@ -94,7 +94,7 @@ For example:
 Configure an array of the `name` of each movement sensor you want to add to your machine as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that the particular movement sensor supports, or the type of reading or measurement that it takes.
-- Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#available-models), or by calling [`GetProperties()`](/components/movement-sensor/#getproperties) on the sensor.
+- Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#available-models), or by calling [`GetProperties()`](/appendix/apis/components/movement-sensor/#getproperties) on the sensor.
 - Put the `name` of each movement sensor into the attribute array for the type of reading it supports.
   You can use the same sensor for multiple attributes if it supports multiple properties.
 
@@ -116,3 +116,13 @@ For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"`
 
 After you configure your movement sensor, navigate to the [Control tab](/fleet/control/) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

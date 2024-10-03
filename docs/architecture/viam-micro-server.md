@@ -6,10 +6,12 @@ type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with `viam-micro-server`."
+date: "2024-09-03"
+# updated: ""  # When the content was last entirely checked
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
-`viam-micro-server` is the lightweight version of [`viam-server`](/get-started/#viam-server) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
+`viam-micro-server` is the lightweight version of [`viam-server`](/architecture/rdk/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
 `viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/tree/main).
 
 ## Hardware requirements
@@ -30,7 +32,7 @@ description: "Set up the Espressif ESP32 for development with `viam-micro-server
 {{% relatedcard link="/components/sensor/" %}}
 {{% relatedcard link="/components/servo/" %}}
 {{% relatedcard link="/components/generic/" %}}
-{{% relatedcard link="/services/data/capture/" %}}
+{{% relatedcard link="/services/data/capture-sync/" %}}
 {{< /cards >}}
 
 Click on each supported resource to see available models, API methods, and configuration info.

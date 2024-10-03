@@ -8,7 +8,7 @@ description: "Detect people using a webcam and the Viam vision service. Without 
 images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []
-weight: 30
+weight: 10
 no_list: true
 cost: "0"
 resource: "quickstart"
@@ -24,12 +24,14 @@ cost: "0"
 ---
 
 This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/) and [controlled a motor](/get-started/control-motor/), we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/), we recommend you do so before continuing.
 
+This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll use machine learning to detect people in a camera stream.
 
 {{< alert title="You will learn" color="tip" >}}
 
+- How to create a machine and install `viam-server`
 - How to configure a webcam
 - How to deploy a machine learning model
 - How to use the machine learning model with a vision service
@@ -69,28 +71,17 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 {{% /expand%}}
 
-{{% expand "Have your own rover?" %}}
-
-If you are running this tutorial on [your own Viam Rover](/appendix/try-viam/rover-resources/), make sure you have [configured your rover](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
-Go to the **CONFIGURE** tab of the machine, find the camera and click on the **Test** panel at the bottom of the camera's configuration panel to test the camera stream.
-
-{{% /expand%}}
-
 ## Instructions
 
 Follow these instructions to configure your machine and test detecting people:
 
 {{%expand "Step 1: Create a new machine" %}}
 
-{{< alert title="Tip" color="tip" >}}
-If you followed the [Control a motor](/get-started/control-motor/) quickstart and have installed `viam-server` already on a machine that has a webcam, you can use the same machine and skip to step 3.
-{{< /alert >}}
+Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
 
-Add a new machine in the [Viam app](https://app.viam.com) by providing a name in the **New machine** field and clicking **Add machine**.
+![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
-![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add Machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
-
-Click the name of a machine to go to that machine's page, where you'll find a variety of tools for working with your machine.
+Click the name of a machine to go to that machine's page, where you'll be able to connect, configure, and control your machine.
 
 {{% /expand%}}
 {{%expand "Step 2: Install viam-server" %}}
@@ -121,7 +112,7 @@ Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
-Click on **Select model** and select the `ml-models-scuttle:people` model from the registry (the **people** model by **ml-models-scuttle**) to deploy an object detection TFLite model that has been trained to be able to detect a person.
+Click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy an object detection TFLite model that has been trained to be able to detect a person.
 
 For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/deploy/tflite_cpu/).
 
@@ -133,11 +124,12 @@ This service applies the ML model to the camera input stream.
 
 Add a `vision` **Service** and select the `ML model` model.
 
-Select the ML model service your person detector model is deployed on (which you created in step 4) from the **ML Model** dropdown.
-Click the **Save** button in the top right corner of the page to save your vision service configuration.
+Select the ML model service your person detector model is deployed with (which you created in step 4) from the **ML Model** dropdown.
 
 {{% /expand%}}
 {{%expand "Step 6: Test person detection" %}}
+
+Click the **Save** button in the top right corner of the page to save your configuration.
 
 Now, test your person detection in the **Test** section of the computer vision service's configuration panel or on the **CONTROL** tab.
 
@@ -182,7 +174,7 @@ For more detailed information, including optional attribute configuration, see t
 ## Next steps
 
 You can now detect people on a camera stream.
-Of course these detections are not just accessible from the Viam app, but you can also use the [vision service API](/services/vision/#api).
+These detections are also accessible using the [vision service API](/appendix/apis/services/vision/).
 
 Next, you'll learn how to collect data from sensors or cameras using the data management service:
 

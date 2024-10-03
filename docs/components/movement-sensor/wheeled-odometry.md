@@ -28,7 +28,7 @@ Because of this method of estimation, you don't have to have a specific piece of
 This model uses [encoders](/components/encoder/) from [position reporting motors](/components/motor/) to get an odometry estimate of a wheeled base as it moves.
 
 With a configured `wheeled-odometry` movement sensor, your machine calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base each time `time_interval_msec` elapses during a [session](/appendix/apis/sessions/).
-You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
+You can access these readings through the [movement sensor API](/appendix/apis/components/movement-sensor/#api).
 For the best accuracy with odometry calculations, it is recommended you configure a time interval of less than `1000` milliseconds.
 
 After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
@@ -38,7 +38,7 @@ After configuring a `wheeled-odometry` movement sensor, you can operate your bas
 To prepare your machine, attach [encoders](/components/encoder/) to each of the position-reporting motors on your base to measure their rotation.
 
 - Select motors that can report their own position, like an encoded [`roboclaw`](/components/motor/roboclaw/) or [`gpio` motors](/components/motor/gpio/) with [encoders](/components/encoder/#available-models), or the [`odrive` module](https://github.com/viamrobotics/odrive).
-  You can access this property of a configured motor through the [motor API's `GetProperties()`](/components/motor/#getproperties).
+  You can access this property of a configured motor through the [motor API's `GetProperties()`](/appendix/apis/components/motor/#getproperties).
 - Configure your rover as a [wheeled base component](/components/base/wheeled/).
   Make sure to configure the base width and circumference, as these measurements as a property of the base are vital for accurate odometry estimations by your movement sensor.
   This movement sensor accesses these values through the base's `GetProperties()` API method.
@@ -121,3 +121,13 @@ The following attributes are available for `wheeled-odometry` movement sensors:
 
 After you configure your movement sensor, navigate to the [Control tab](/fleet/control/) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

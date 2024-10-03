@@ -545,7 +545,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every analog pin [configured](#available-models) on the board.
+- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every analog pin [configured](/components/board/#available-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -1131,7 +1131,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every interrupt [configured](#available-models) on the board.
+- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every interrupt [configured](/components/board/#available-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -1169,7 +1169,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](#available-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](/components/board/#available-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -1240,7 +1240,7 @@ Supported by `viam-micro-server`.
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = component.do(command)
+result = await my_board.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.do_command).
@@ -1261,11 +1261,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myBoard, err := board.FromRobot(machine, "my_board")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myBoard.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -1290,27 +1289,6 @@ var result = myArm.doCommand(command);
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### FromRobot
-
-Get the resource from the provided robot with the given name.
-
-{{< tabs >}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
-- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-
-**Returns:**
-
-- [Board](https://flutter.viam.dev/viam_sdk/Board-class.html)
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Board/fromRobot.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1354,7 +1332,7 @@ Get the `ResourceName` for this board with the given name.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_resource_name).
@@ -1415,7 +1393,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

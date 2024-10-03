@@ -188,7 +188,7 @@ You must close and reopen the panel for the new configuration to take effect.
 ## Next steps
 
 You can now detect colors on a camera stream.
-Of course these detections are not just accessible from the Viam app, but you can also use the [vision service API](/services/vision/#api).
+Of course these detections are not just accessible from the Viam app, but you can also use the [vision service API](/appendix/apis/services/vision/#api).
 
 You can also use the vision service with Machine Learning models:
 

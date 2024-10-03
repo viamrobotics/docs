@@ -1,6 +1,6 @@
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a configured [detector](./#detections).
+Get a list of detections from the next image from a specified camera using a configured [detector](/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -88,7 +88,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDetections
 
-Get a list of detections from a given image using a configured [detector](#detections).
+Get a list of detections from a given image using a configured [detector](/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -188,7 +188,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured [classifier](#classifications).
+Get a list of classifications from the next image from a specified camera using a configured [classifier](/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -276,7 +276,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured [classifier](#classifications).
+Get a list of classifications from a given image using a configured [classifier](/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -379,7 +379,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](#segmentations)).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/services/vision/#segmentations)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -588,7 +588,7 @@ If you are implementing your own vision service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = SERVICE.from_robot(robot, "builtin")  # replace SERVICE with the appropriate class
+service = vision.from_robot(robot, "my_vision")
 
 my_command = {
   "cmnd": "dosomething",
@@ -617,11 +617,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myVision, err := vision.FromRobot(machine, "my_vision")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myVision.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -650,30 +649,9 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### FromRobot
-
-Get the resource from the provided robot with the given name.
-
-{{< tabs >}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
-- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-
-**Returns:**
-
-- [VisionClient](https://flutter.viam.dev/viam_sdk/VisionClient-class.html)
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/fromRobot.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetResourceName
 
-Get the `ResourceName` for this instance of the Vision service with the given name.
+Get the `ResourceName` for this instance of the vision service with the given name.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -690,7 +668,7 @@ Get the `ResourceName` for this instance of the Vision service with the given na
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_resource_name).
@@ -797,7 +775,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

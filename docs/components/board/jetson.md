@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/jetson/"
-component_description: "NVIDIA Jetson AGX Orin, NVIDIA Jetson Orin Nano, NVIDIA Jetson Xavier NX, NVIDIA Jetson Nano."
+component_description: "Supports NVIDIA Jetson AGX Orin, NVIDIA Jetson Orin Nano, NVIDIA Jetson Xavier NX, NVIDIA Jetson Nano."
 usage: 999999
 # SMEs: Gautham, Rand
 ---
@@ -87,3 +87,13 @@ Configuring these attributes on your board allows you to integrate [digital inte
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
+{{< /cards >}}

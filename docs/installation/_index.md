@@ -8,6 +8,8 @@ type: docs
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
 description: "To use Viam, install and run viam-server or viam-micro-server on the computer or microcontroller that will run your machine and is connected to your hardware."
+date: "2024-08-19"
+# updated: ""  # When the content was last entirely checked
 aliases:
   - /installation/prepare/
   - /installation/macos-install/

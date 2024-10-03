@@ -39,7 +39,7 @@ See [Arm Configuration](/components/arm/#available-models) for the current list 
 
 {{% /alert %}}
 
-If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/sdks/) and control it with the [arm API](/components/arm/#api), or use it with [services](/services/) like [Motion](/services/motion/), just as you would with a built-in model.
+If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/sdks/) and control it with the [arm API](/appendix/apis/components/arm/#api), or use it with [services](/services/) like [Motion](/services/motion/), just as you would with a built-in model.
 
 See [Modular Resources](/registry/) for more information.
 
@@ -90,7 +90,7 @@ Follow [How to create a module](/how-tos/create-module/) and select **Go** on th
 
 Save the following two files, <file>my_modular_arm.py</file> and <file>\_\_init\_\_.py</file>, on your computer and edit the code as applicable.
 
-This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) (`rdk:service:arm`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"myarm"`:
+This module template registers a modular resource implementing Viam's built-in [Arm API](/appendix/apis/components/arm/#api) (`rdk:service:arm`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"myarm"`:
 
 - <file>my_modular_arm.py</file> implements a custom model of the arm component built-in resource, `"myarm"`.
 

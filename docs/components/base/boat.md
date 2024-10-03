@@ -55,7 +55,7 @@ The following attributes are available for `boat` bases:
 | ---- | ---- | --------- | ----------- |
 | `length_mm` | int | **Required** | Length of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left motors. Can be an approximation. |
-| `IMU` | string | **Required** | Name of the [Inertial Measurement Unit](/components/movement-sensor/#imu-configuration) in the boat. |
+| `IMU` | string | **Required** | Name of the [Inertial Measurement Unit](/appendix/apis/components/movement-sensor/#imu-configuration) in the boat. |
 | `Motors` | string[] | **Required** | JSON struct containing the configuration attributes for each motor attached to the boat. |
 
 Each [motor](/components/motor/) inside of `Motors` has the following attributes available:
@@ -72,3 +72,13 @@ Each [motor](/components/motor/) inside of `Motors` has the following attributes
 ## Test the base
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}
+{{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
+{{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{< /cards >}}

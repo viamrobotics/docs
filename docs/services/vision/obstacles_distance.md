@@ -79,11 +79,11 @@ The following parameters are available for a `obstacles_distance` segmenter:
 <!-- prettier-ignore -->
 | Parameter | Required? | Description |
 | --------- | --------- | ----------- |
-| `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
+| `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/appendix/apis/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
 
 ## Test your segmenter
 
-The following code uses the [`GetObjectPointClouds`](/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
+The following code uses the [`GetObjectPointClouds`](/appendix/apis/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -139,3 +139,13 @@ To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.g
 {{% alert title="Tip" color="tip" %}}
 To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
+
+## Next Steps
+
+For general configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/tutorials/services/navigate-with-rover-base/" noimage="true" %}}
+{{< /cards >}}

@@ -8,7 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/transform/"
-component_description: "A pipeline for applying transformations to an input image source."
+component_description: "Use pipelines for applying transformations to an input image source."
 toc_hide: true
 # SMEs: Bijan, vision team
 ---
@@ -418,8 +418,10 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 ## Next steps
 
+For more configuration and development info, see:
+
 {{< cards >}}
-{{% card link="/services/vision" %}}
-{{% card link="/how-tos/detect-color/" %}}
-{{% card link="/tutorials/services/color-detection-scuttle" %}}
+{{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/how-tos/image-data/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
 {{< /cards >}}

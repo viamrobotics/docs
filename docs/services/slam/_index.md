@@ -53,18 +53,9 @@ Click the model name for configuration instructions.
 
 ## API
 
-The SLAM service supports the following methods:
+The [SLAM service API](/appendix/apis/services/slam/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/slam-table.md" >}}
-
-{{% alert title="Tip" color="tip" %}}
-
-The following code examples assume that you have a machine configured with a SLAM service called `"my_slam_service"`, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for sample code to connect to your machine.
-
-{{% /alert %}}
-
-{{< readfile "/static/include/services/apis/generated/slam.md" >}}
 
 ## SLAM mapping best practices
 

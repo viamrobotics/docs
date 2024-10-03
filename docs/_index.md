@@ -12,6 +12,8 @@ sitemap:
 outputs:
   - html
 carouselscript: true
+date: "2024-09-17"
+# updated: ""  # When the content was last entirely checked
 ---
 
 <div class="max-page">
@@ -75,7 +77,7 @@ carouselscript: true
   </div>
 </div>
 
-<h2 class="frontpage-headers">Follow popular tutorials</h2>
+<h2 class="frontpage-headers">Learn about Viam</h2>
 
 <div class="cards max-page">
   <div class="row">

@@ -7,7 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/incremental/"
-component_description: "A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point."
+component_description: "Supports a two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point."
 # SMEs: Rand
 ---
 
@@ -91,3 +91,13 @@ The following attributes are available for `incremental` encoders:
 Viam also supports a model of encoder called [`"single"`](../single/) which requires only one pin (`i`).
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

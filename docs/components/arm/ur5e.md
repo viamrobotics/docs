@@ -8,7 +8,7 @@ images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/ur5e/"
-component_description: "Universal Robots UR5e"
+component_description: "Supports Universal Robots UR5e."
 ---
 
 Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine:
@@ -79,3 +79,13 @@ The following attributes are available for `ur5e` arms:
 | `host` | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/services/accessing-and-moving-robot-arm/" noimage="true" %}}
+{{< /cards >}}

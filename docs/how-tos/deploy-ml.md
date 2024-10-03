@@ -1,11 +1,11 @@
 ---
 title: "Train and deploy ML/computer vision models"
-linkTitle: "Train computer vision models"
+linkTitle: "Train and deploy computer vision models"
 weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
-description: "Use your image data to create and label a dataset and train a computer vision ML model."
+description: "Use your image data to create and label a dataset and train and deploy a computer vision ML model."
 aliases:
   - /use-cases/deploy-ml/
   - /manage/ml/train-model/
@@ -101,12 +101,132 @@ We have two datasets you can use for testing, one with shapes and the other with
 1. [Download the shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip) or [download the wooden figure dataset](https://storage.googleapis.com/docs-blog/dataset-figure.zip).
 1. Unzip the download.
 1. Open a terminal and go to the dataset folder.
-1. In it you will find a Python script to upload the data to the Viam app.
-1. Open the script and fill in the constants at the top of the file.
-1. Run the script to upload the data into a dataset in Viam app:
+1. Create a python script in the dataset's folder with the following contents:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   # Assumption: The dataset was exported using the `viam dataset export` command.
+   # This script is being run from the `destination` directory.
+
+   import asyncio
+   import os
+   import json
+   import argparse
+
+   from viam.rpc.dial import DialOptions, Credentials
+   from viam.app.viam_client import ViamClient
+   from viam.proto.app.data import BinaryID
+
+   async def connect(args) -> ViamClient:
+       dial_options = DialOptions(
+           credentials=Credentials(
+               type="api-key",
+               payload=args.api_key,
+           ),
+           auth_entity=args.api_key_id
+       )
+       return await ViamClient.create_from_dial_options(dial_options)
+
+
+   async def main():
+       parser = argparse.ArgumentParser(
+           description='Upload images, metadata, and tags to a new dataset')
+       parser.add_argument('-org-id', dest='org_id', action='store',
+                           required=True, help='Org Id')
+       parser.add_argument('-api-key', dest='api_key', action='store',
+                           required=True, help='API KEY with org admin access')
+       parser.add_argument('-api-key-id', dest='api_key_id', action='store',
+                           required=True, help='API KEY ID with org admin access')
+       parser.add_argument('-machine-part-id', dest='machine_part_id',
+                           action='store', required=True,
+                           help='Machine part id for image metadata')
+       parser.add_argument('-location-id', dest='location_id', action='store',
+                           required=True, help='Location id for image metadata')
+       parser.add_argument('-dataset-name', dest='dataset_name', action='store',
+                           required=True,
+                           help='Name of the data to create and upload to')
+       args = parser.parse_args()
+
+
+       # Make a ViamClient
+       viam_client = await connect(args)
+       # Instantiate a DataClient to run data client API methods on
+       data_client = viam_client.data_client
+
+       # Create dataset
+       try:
+           dataset_id = await data_client.create_dataset(
+               name=args.dataset_name,
+               organization_id=args.org_id
+           )
+           print("Created dataset: " + dataset_id)
+       except Exception:
+           print("Error. Check that the dataset name does not already exist.")
+           print("See: https://app.viam.com/data/datasets")
+           return 1
+
+       file_ids = []
+
+       for file_name in os.listdir("metadata/"):
+           with open("metadata/" + file_name) as f:
+               data = json.load(f)
+               tags = None
+               if "tags" in data["captureMetadata"].keys():
+                   tags = data["captureMetadata"]["tags"]
+
+               annotations = None
+               if "annotations" in data.keys():
+                   annotations = data["annotations"]
+
+               image_file = data["fileName"]
+
+               print("Uploading: " + image_file)
+
+               id = await data_client.file_upload_from_path(
+                   part_id=args.machine_part_id,
+                   tags=tags,
+                   filepath=os.path.join("data/", image_file)
+               )
+               print("FileID: " + id)
+
+               binary_id = BinaryID(
+                   file_id=id,
+                   organization_id=args.org_id,
+                   location_id=args.location_id
+               )
+
+               if annotations:
+                   bboxes = annotations["bboxes"]
+                   for box in bboxes:
+                       await data_client.add_bounding_box_to_image_by_id(
+                           binary_id=binary_id,
+                           label=box["label"],
+                           x_min_normalized=box["xMinNormalized"],
+                           y_min_normalized=box["yMinNormalized"],
+                           x_max_normalized=box["xMaxNormalized"],
+                           y_max_normalized=box["yMaxNormalized"]
+                       )
+
+               file_ids.append(binary_id)
+
+       await data_client.add_binary_data_to_dataset_by_ids(
+           binary_ids=file_ids,
+           dataset_id=dataset_id
+       )
+       print("Added files to dataset.")
+       print("https://app.viam.com/data/datasets?id=" + dataset_id)
+
+       viam_client.close()
+
+   if __name__ == '__main__':
+       asyncio.run(main())
+   ```
+
+1. Run the script to upload the data into a dataset in Viam app providing the following input:
 
    ```sh {class="command-line" data-prompt="$" }
-   python3 upload_data.py
+   python upload_data.py -org-id <ORG-ID> -api-key <API-KEY> \
+      -api-key-id <API-KEY-ID> -machine-part-id <MACHINE-PART-ID> \
+      -location-id <LOCATION-ID> -dataset-name <NAME>
    ```
 
 1. Continue to [Train a machine learning model](#train-a-machine-learning-ml-model).
@@ -194,7 +314,7 @@ To see all the images that have bounding boxes, you can filter your dataset by s
 
 A [dataset](/services/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
 
-Use the interface on the **DATA** tab (or the [`viam data dataset add` command](/cli/#data)) to add all images you want to train the model on to a dataset.
+Use the interface on the **DATA** tab (or the [`viam dataset data add` command](/cli/#dataset)) to add all images you want to train the model on to a dataset.
 
 Click on an image you want to train your ML model.
 In the **Actions** pane on the right-hand side, enter a dataset name under **Datasets**, then press return.
@@ -340,32 +460,25 @@ Click **Next steps**.
 {{% tablestep %}}
 **3. Wait for your model to train**
 
-The model now starts training and you can follow its process in the **Training** section of the **Models** page.
+The model now starts training and you can follow its process on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
 
-![The models tab on the data page showing a model named my-classifier-model being trained](/tutorials/data-management/model-training-progress.png)
+Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
 
-Once the model has finished training, it becomes visible in the **Models** section of the page.
 You will receive an email when your model finishes training.
-
-![The trained model](/tutorials/data-management/trained-model.png)
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **4. Debug your training job**
 
-If your training job failed you can check your job's logs with the [CLI](/cli/).
+From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
 
-You can obtain the job's id by listing the jobs:
+{{< alert title="Note" color="note" >}}
 
-```sh {class="command-line" data-prompt="$"}
-viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
-```
+Your training script may output logs at the error level but still succeed.
 
-Then use the job id to get your training job's logs:
+{{< /alert >}}
 
-```sh {class="command-line" data-prompt="$"}
-viam train logs --job-id=<JOB ID>
-```
+You can also view your training jobs' logs with the [`viam train logs`](/cli/#train) command.
 
 {{% /tablestep %}}
 {{< /table >}}

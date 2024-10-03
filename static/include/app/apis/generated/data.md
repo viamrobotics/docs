@@ -150,7 +150,8 @@ last = None
 my_filter = create_filter(component_name="camera-1")
 
 while True:
-    data, count, last = await data_client.binary_data_by_filter(my_filter, limit=1, last=last)
+    data, count, last = await data_client.binary_data_by_filter(
+        my_filter, limit=1, last=last)
     if not data:
         break
     my_data.extend(data)
@@ -268,7 +269,7 @@ Filter and delete binary data.
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to all data being deleted. Exercise caution when using this option. You must specify any organization ID with “organization_ids” when using this option.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to all data being deleted. Exercise caution when using this option. You must specify an organization ID with “organization_ids” when using this option.
 
 **Returns:**
 

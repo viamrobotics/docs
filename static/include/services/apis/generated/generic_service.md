@@ -18,7 +18,7 @@ If you are implementing your own generic service and add features that have no b
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = SERVICE.from_robot(robot, "builtin")  # replace SERVICE with the appropriate class
+service = generic_service.from_robot(robot, "my_generic_service")
 
 my_command = {
   "cmnd": "dosomething",
@@ -100,7 +100,7 @@ Get the `ResourceName` for this instance of the generic service with the given n
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Can be used with any resource, using an arm as an example
-my_arm_name = my_arm.get_resource_name("my_arm")
+my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/generic/client/index.html#viam.services.generic.client.GenericClient.get_resource_name).

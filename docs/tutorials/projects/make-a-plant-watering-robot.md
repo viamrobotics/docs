@@ -184,7 +184,8 @@ First, add your Pi as a [board component](/components/board/):
 {{% tab name="Config Builder" %}}
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `board` type, then select the `pi` model.
+Select the `board` type, then select the `viam:raspberry-pi:pi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
+If you are using a Raspberry Pi 5, use the `pi5` model.
 Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
 
@@ -320,7 +321,7 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [board](/components/board/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods to read from the moisture sensor and control the pump's voltage with PWM as a GPIO pin.
+Use the Viam [board](/appendix/apis/components/board/) and [sensor](/appendix/apis/components/sensor/) API methods to read from the moisture sensor and control the pump's voltage with PWM as a GPIO pin.
 
 You can get your components from the robot like this:
 

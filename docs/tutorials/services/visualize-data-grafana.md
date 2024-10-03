@@ -51,15 +51,15 @@ Before following this tutorial, ensure you have:
 
 - A Grafana instance.
 
-  - You can use the free trial version for this tutorial.
-  - You can use either a local instance of Grafana, or Grafana Cloud.
+  - You can use either a local instance of Grafana Enterprise, or Grafana Cloud.
     This tutorial will use Grafana Cloud.
+  - You can use the free trial version of Grafana Cloud.
 
 ## The data management service
 
 You can manage how your machine works with data by using the [data management service](/services/data/).
 
-The data management service has two parts: [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/).
+The data management service has two parts: [data capture, and cloud sync](/services/data/capture-sync/).
 
 - **Data capture** allows you to capture data locally from specific components on your machine running Viam.
   You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
@@ -87,7 +87,7 @@ First, add the data management service to your machine to be able capture and sy
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
-For more information, see [Add the data management service](/services/data/capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/services/data/capture-sync/#configure-data-capture-and-sync).
 
 ### Configure data capture for a component
 
@@ -112,7 +112,7 @@ To enable data capture for a sensor component:
 After a short while, your sensor will begin capturing live readings, and syncing those readings to the Viam app.
 You can check that data is being captured and synced by clicking on the menu icon on the sensor configuration pane. and selecting **View captured data**.
 
-For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-resources) and [Configure cloud sync](/services/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture-sync/#configure-data-capture-and-sync).
 
 ### Configure data query
 

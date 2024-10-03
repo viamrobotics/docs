@@ -4,7 +4,7 @@ linkTitle: "Base"
 weight: 10
 type: "docs"
 no_list: true
-description: "A moving platform that the other parts of a mobile robot attach to."
+description: "The base component allows you to move a mobile robot without needing to send commands to individual components like motors."
 tags: ["base", "components"]
 icon: true
 images: ["/icons/components/base.svg"]
@@ -17,11 +17,17 @@ hide_children: true
 # SMEs: Steve B
 ---
 
-A base is the platform that the other parts of a mobile robot attach to.
+The base component provides an API for moving all configured components attached to a mobile robot platform as a whole without needing to send commands to individual components.
 
-By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
+If you have a mobile robot, use a base component to coordinate the motion of its motor components.
 
-![A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component.](/components/base/base-trk-rover-w-arm.png)
+<p>
+<img src="base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." class="imgzoom aligncenter" style="max-width: 500px">
+</p>
+
+## Available models
+
+To use a rover or other base, you need to add it to your machine's configuration.
 
 Most mobile robots with a base need at least the following hardware:
 
@@ -32,19 +38,10 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-## Related services
+Go to your machine's **CONFIGURE** page, and add a model that supports your base.
 
-{{< cards >}}
-{{< relatedcard link="/services/base-rc/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/navigation/" >}}
-{{< /cards >}}
-
-## Available models
-
-To use your base component, check whether one of the following models supports it.
-
-For configuration information, click on the model name:
+The following list shows the available base models.
+For additional configuration information, click on the model name:
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -66,46 +63,11 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control your base with Viam's client SDK libraries
-
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
-
-{{% snippet "show-secret.md" %}}
-
-When executed, this sample code will create a connection to your machine as a client.
-Then control your machine programmatically by adding API method calls as shown in the following examples.
-
-These examples assume you have a wheeled base called `"my_base"` configured as a component of your machine.
-If your base has a different name, change the `name` in the code.
-
-Be sure to import the base package for the SDK you are using:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.base import Base
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-  "go.viam.com/rdk/components/base"
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## API
 
-The base component supports the following methods:
+The [base API](/appendix/apis/components/base/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/base-table.md" >}}
-
-{{< readfile "/static/include/components/apis/generated/base.md" >}}
 
 ## Troubleshooting
 
@@ -115,8 +77,15 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 ## Next steps
 
+For general configuration, development, and usage info, see:
+
 {{< cards >}}
-{{% card link="/tutorials/configure/configure-rover/" %}}
-{{% card link="/how-tos/drive-rover/" %}}
-{{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
+{{% card link="/how-tos/drive-rover/" noimage="true" %}}
 {{< /cards >}}
+
+You can also use the base component with the following services:
+
+- [Navigation service](/services/navigation/): to navigate with GPS
+- [SLAM service](/services/slam/): for mapping

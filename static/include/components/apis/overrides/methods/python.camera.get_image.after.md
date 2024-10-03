@@ -5,8 +5,7 @@ In addition, the Python SDK provides the helper functions `viam_to_pil_image` an
 For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
-# from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
-# < ADD ABOVE IMPORT TO BEGINNING OF PROGRAM >
+from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
 # Get the ViamImage from your camera.
 frame = await my_camera.get_image()
@@ -20,7 +19,7 @@ x, y = pil_frame.size[0], pil_frame.size[1]
 cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
 
 # Convert back to ViamImage.
-cropped_frame = pil_to_viam_image(cropped_pil_frame)
+cropped_frame = pil_to_viam_image(cropped_pil_frame, frame.mime_type)
 ```
 
 {{% alert title="Tip" color="tip" %}}

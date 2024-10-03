@@ -45,10 +45,20 @@ No attributes are available for `fake` sensors.
 
 {{% alert title="Info" color="info" %}}
 
-A call to [`Readings()`](../#getreadings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
+A call to [`Readings()`](/appendix/apis/components/sensor/#getreadings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
 
 {{% /alert %}}
 
 ## Test the sensor
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
+
+## Next steps
+
+Check out the [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{< /cards >}}

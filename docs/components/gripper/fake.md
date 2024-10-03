@@ -45,3 +45,13 @@ No attributes are available for fake grippers.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gripper/fake/gripper.go) for API call return specifications.
 
 {{< readfile "/static/include/components/test-control/gripper-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper/" noimage="true" %}}
+{{< /cards >}}

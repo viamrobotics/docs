@@ -69,3 +69,13 @@ Edit and fill in the attributes as applicable.
 {{< /tabs >}}
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/tutorials/services/accessing-and-moving-robot-arm/" noimage="true" %}}
+{{< /cards >}}

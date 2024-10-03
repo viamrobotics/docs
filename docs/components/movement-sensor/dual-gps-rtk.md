@@ -13,7 +13,7 @@ aliases:
 ---
 
 The `dual-gps-rtk` model of movement sensor calculates a compass heading from two GPS movement sensors, and returns the midpoint position between the first and second GPS devices as its position.
-In addition to [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading), this model provides data for [`GetPosition()`](/components/movement-sensor/#getposition) and [`GetAccuracy()`](/components/movement-sensor/#getaccuracy).
+In addition to [`GetCompassHeading()`](/appendix/apis/components/movement-sensor/#getcompassheading), this model provides data for [`GetPosition()`](/appendix/apis/components/movement-sensor/#getposition) and [`GetAccuracy()`](/appendix/apis/components/movement-sensor/#getaccuracy).
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -90,3 +90,13 @@ This panel presents the data collected by the movement sensor.
 The sections in the panel include the position, compass heading, and accuracy.
 
 {{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-dual.png" resize="800x" declaredimensions=true alt="The dual GPS movement sensor component in the control tab">}}
+
+## Next steps
+
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{< /cards >}}

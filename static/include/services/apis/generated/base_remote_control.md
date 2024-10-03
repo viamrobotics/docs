@@ -70,11 +70,10 @@ If you are implementing your own base remote control service and add features th
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myBaseRemoteControl, err := base_remote_control.FromRobot(machine, "my_base_remote_control")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myBaseRemoteControl.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -103,7 +102,7 @@ Close out of all remote control related systems.
 // This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err = myArm.Close(ctx)
+err = myArm.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

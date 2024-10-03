@@ -8,7 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/image-file/"
-component_description: "Gets color and depth images frames from a file path."
+component_description: "Gets color and depth image frames from a file path."
 toc_hide: true
 # SMEs: Bijan, vision team
 ---
@@ -87,4 +87,10 @@ If you then also configure a `pointcloud_file_path` on your camera, Viam will tr
 
 ## Next steps
 
-{{< readfile "/static/include/components/camera-model-next-steps.md" >}}
+For more configuration and development info, see:
+
+{{< cards >}}
+{{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/how-tos/image-data/" noimage="true" %}}
+{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{< /cards >}}

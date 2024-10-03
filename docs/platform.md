@@ -6,6 +6,8 @@ weight: 400
 type: docs
 images: ["/platform/build.svg", "/services/ml/configure.svg"]
 carouselscript: true
+date: "2024-08-15"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Viam is a complete software platform for {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} that runs on **any 64bit Linux or macOS**, supporting a wide variety of popular systems, including:
