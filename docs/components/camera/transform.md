@@ -329,19 +329,21 @@ The Resize transform resizes the image to the specified height and width.
 
 {{% tab name="Rotate" %}}
 
-The Rotate transformation rotates the image by 180 degrees.
-This feature is useful for when the camera is installed upside down on your machine.
+The Rotate transformation rotates the image by the angle specified in `angle_deg`. Default: 180 degrees.
+This feature is useful for when the camera is installed upside down or sideways on your machine.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "type": "rotate",
-  "attributes": {}
+  "attributes": {
+    "angle_degs": <float>
+  }
 }
 ```
 
 **Attributes:**
 
-- None
+- `angle_deg`: Rotate the image by a specific angle in degrees.
 
 {{% /tab %}}
 
