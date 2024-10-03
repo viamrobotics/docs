@@ -77,6 +77,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Move the servo from its origin to the desired angle of 30 degrees.
+await myServo.move(30);
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Servo/move.html).
 
 {{% /tab %}}
