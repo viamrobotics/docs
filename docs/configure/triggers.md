@@ -17,7 +17,7 @@ Viam provides four trigger types depending on the event you want to trigger on:
 - **Data has been synced to the cloud**: trigger when data from the machine is synced
 - **Part is online**: trigger continuously at a specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
 - **Part is offline**: trigger continuously at a specified interval while the machine part is offline
-- **Conditional data ingestion**: trigger any time data is captured from a specified component with a specified method
+- **Conditional data ingestion**: trigger any time data is captured from a specified component with a specified method and condition
 
 To configure a trigger:
 
@@ -262,10 +262,11 @@ The following attributes are available for triggers:
 
 The `conditional` object for the `conditional_data_ingested` trigger includes the following options:
 
-| Name                  | Type   | Required?    | Description                                                                                                                                                                                                                                                                                                                                                                       |
-| --------------------- | ------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data_capture_method` | string | **Required** | The method of data capture to trigger on. <br> Example: `sensor:<name-of-component>:Readings`.                                                                                                                                                                                                                                                                                    |
-| `condition`           | object | Optional     | Any additional conditions for the method to fire the trigger. Leave out this object for the trigger to fire any time there is data synced. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: Can be a number, string or another object like a key-value pair that specifies the shape of the readings. </li></ul></li></ul> |
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `data_capture_method` | string | **Required** | The method of data capture to trigger on. <br> Example: `sensor:<name-of-component>:Readings`. |
+| `condition` | object | Optional | Any additional conditions for the method to fire the trigger. Leave out this object for the trigger to fire any time there is data synced. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: Can be a number, string or another object like a key-value pair that specifies the shape of the readings. </li></ul></li></ul> |
 
 Options for `operator`:
 
@@ -401,6 +402,7 @@ def trigger():
         "Max-Time-Received": data.get('max_time_received', 'no value'),
         "Data-Type": data.get('data_type', 'no value'),
         "File-Id": data.get('file_id', 'no value'),
+        "Trigger-Condition": data.get("trigger_condition", 'no value'),
         "Data": data.get('data', 'no value')
     }
     print(payload)
@@ -445,8 +447,9 @@ def hello_http(request):
         "Min-Time-Received": data.get("min_time_received", "no value"),
         "Max-Time-Received": data.get("max_time_received", "no value"),
         "Data-Type": data.get("data_type", "no value"),
-        "File-Id": data.get('file_id', 'no value'),
-        "Data": data.get('data', 'no value')
+        "File-Id": data.get('file_id', "no value"),
+        "Trigger-Condition": data.get("trigger_condition", "no value"),
+        "Data": data.get('data', "no value")
     }
     print(payload)
 
@@ -464,6 +467,7 @@ When a trigger occurs, Viam sends a HTTP request to the URL you specified for th
 | Trigger type | HTTP Method |
 | ------------ | ----------- |
 | `part_data_ingested` | POST |
+| `conditional_data_ingested` | POST |
 | `part_online` | GET |
 | `part_offline` | GET |
 
