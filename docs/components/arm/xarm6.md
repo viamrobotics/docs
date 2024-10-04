@@ -103,6 +103,41 @@ See [the frame system Service](/services/frame-system/) for more information on 
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
 
+### DoCommand
+
+Execute the model-specific commands `set_speed` and `set_acceleration` that are not otherwise defined by the component API.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+cmd := map[string]interface{}{
+    "set_speed": 45.0, // Set speed to 45.0 degrees per second
+    "set_acceleration": 10.0  // Set acceleration to 10.0 degrees per second per second
+}
+
+result, err := myArm.DoCommand(context.Background(), cmd)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Next steps
 
 For more configuration and development info, see:
