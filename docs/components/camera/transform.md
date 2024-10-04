@@ -130,15 +130,17 @@ The following are the transformation objects available for the `pipeline`:
 Classifications overlay text from the `GetClassifications` method of the [vision service](/services/vision/) onto the image.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "classifications",
-  "attributes": {
-    "classifier_name": "<name>",
-    "confidence_threshold": <float>,
-    "max_classifications": <int>,
-    "valid_labels": [ "<label>" ]
+"pipeline": [
+  {
+    "type": "classifications",
+    "attributes": {
+      "classifier_name": "<name>",
+      "confidence_threshold": <float>,
+      "max_classifications": <int>,
+      "valid_labels": [ "<label>" ]
+    }
   }
-}
+]
 ```
 
 **Attributes:**
@@ -155,16 +157,17 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`).
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "crop",
-  "attributes": {
-    "x_min_px": <int>,
-    "y_min_px": <int>,
-    "x_max_px": <int>,
-    "y_max_px": <int>
+"pipeline": [
+  {
+    "type": "crop",
+    "attributes": {
+      "x_min_px": <int>,
+      "y_min_px": <int>,
+      "x_max_px": <int>,
+      "y_max_px": <int>
+    }
   }
-}
-
+]
 ```
 
 **Attributes:**
@@ -181,14 +184,16 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "depth_edges",
-  "attributes": {
-    "high_threshold_pct": <float>,
-    "low_threshold_pct": <float>,
-    "blur_radius_px": <float>
+"pipeline": [
+  {
+    "type": "depth_edges",
+    "attributes": {
+      "high_threshold_pct": <float>,
+      "low_threshold_pct": <float>,
+      "blur_radius_px": <float>
+    }
   }
-}
+]
 ```
 
 **Attributes:**
@@ -203,10 +208,12 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "depth_preprocess",
-  "attributes": {}
-}
+"pipeline": [
+  {
+    "type": "depth_preprocess",
+    "attributes": {}
+  }
+]
 ```
 
 **Attributes:**
@@ -221,10 +228,12 @@ The Depth-to-Pretty transform takes a depth image and turns it into a colorful i
 The actual depth information is lost in the transform.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "depth_to_pretty",
-  "attributes": {}
-}
+"pipeline": [
+  {
+    "type": "depth_to_pretty",
+    "attributes": {}
+  }
+]
 ```
 
 **Attributes:**
@@ -238,14 +247,16 @@ The actual depth information is lost in the transform.
 The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/services/vision/).
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "detections",
-  "attributes": {
-    "detector_name": string,
-    "confidence_threshold": <float>,
-    "valid_labels": ["<label>"]
+"pipeline": [
+  {
+    "type": "detections",
+    "attributes": {
+      "detector_name": string,
+      "confidence_threshold": <float>,
+      "valid_labels": ["<label>"]
+    }
   }
-}
+]
 ```
 
 **Attributes:**
@@ -262,9 +273,11 @@ The Identity transform does nothing to the image.
 You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "identity"
-}
+"pipeline": [
+  {
+    "type": "identity"
+  }
+]
 ```
 
 **Attributes:**
@@ -279,19 +292,21 @@ Overlays the depth and the color 2D images.
 Useful to debug the alignment of the two images.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "overlay",
-  "attributes": {
-    "intrinsic_parameters": {
-      "width_px": <int>,
-      "height_px": <int>,
-      "ppx": <float>,
-      "ppy": <float>,
-      "fx": <float>,
-      "fy": <float>,
+"pipeline": [
+  {
+    "type": "overlay",
+    "attributes": {
+      "intrinsic_parameters": {
+        "width_px": <int>,
+        "height_px": <int>,
+        "ppx": <float>,
+        "ppy": <float>,
+        "fx": <float>,
+        "fy": <float>,
+      }
     }
   }
-}
+]
 ```
 
 **Attributes:**
@@ -311,13 +326,15 @@ Useful to debug the alignment of the two images.
 The Resize transform resizes the image to the specified height and width.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "resize",
-  "attributes": {
-    "width_px": <int>,
-    "height_px": <int>
+"pipeline": [
+  {
+    "type": "resize",
+    "attributes": {
+      "width_px": <int>,
+      "height_px": <int>
+    }
   }
-}
+]
 ```
 
 **Attributes:**
@@ -333,12 +350,14 @@ The Rotate transformation rotates the image by the angle specified in `angle_deg
 This feature is useful for when the camera is installed upside down or sideways on your machine.
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "rotate",
-  "attributes": {
-    "angle_degs": <float>
+"pipeline": [
+  {
+    "type": "rotate",
+    "attributes": {
+      "angle_degs": <float>
+    }
   }
-}
+]
 ```
 
 **Attributes:**
@@ -354,26 +373,28 @@ Currently only supports a Brown-Conrady model of distortion (20 September 2022).
 For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
 
 ```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "undistort",
-  "attributes": {
-    "intrinsic_parameters": {
-     "width_px": <int>,
-      "height_px": <int>,
-      "ppx": <float>,
-      "ppy": <float>,
-      "fx": <float>,
-      "fy": <float>
-    },
-    "distortion_parameters": {
-      "rk1": <float>,
-      "rk2": <float>,
-      "rk3": <float>,
-      "tp1": <float>,
-      "tp2": <float>
+"pipeline": [
+  {
+    "type": "undistort",
+    "attributes": {
+      "intrinsic_parameters": {
+      "width_px": <int>,
+        "height_px": <int>,
+        "ppx": <float>,
+        "ppy": <float>,
+        "fx": <float>,
+        "fy": <float>
+      },
+      "distortion_parameters": {
+        "rk1": <float>,
+        "rk2": <float>,
+        "rk3": <float>,
+        "tp1": <float>,
+        "tp2": <float>
+      }
     }
   }
-}
+]
 ```
 
 **Attributes:**
