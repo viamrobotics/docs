@@ -613,7 +613,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-geometries = await component.get_geometries()
+geometries = await my_base.get_geometries()
 
 if geometries:
     # Get the center of the first geometry
@@ -638,10 +638,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Geometries with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+// This example shows using Geometries with an base component.
+myBase, err := base.FromRobot(machine, "my_base")
 
-geometries, err := myArm.Geometries(context.Background(), nil)
+geometries, err := myBase.Geometries(context.Background(), nil)
 
 if len(geometries) > 0 {
    // Get the center of the first geometry
@@ -776,8 +776,7 @@ Get the `ResourceName` for this base with the given name.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_base_name = Base.get_resource_name("my_base")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_resource_name).
@@ -816,7 +815,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_base.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.close).
@@ -835,10 +834,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myBase, err := base.FromRobot(machine, "my_base")
 
-err = myArm.Close(context.Background())
+err = myBase.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

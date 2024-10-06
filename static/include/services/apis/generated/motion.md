@@ -132,7 +132,12 @@ transforms := []*referenceframe.LinkInFrame{transform}
 worldState, err := referenceframe.NewWorldState(obstacles, transforms)
 
 // Move gripper component
-moved, err := motionService.Move(context.Background(), gripperName, destination, worldState, nil, nil)
+
+moved, err := motionService.Move(context.Background(), motion.MoveReq{
+  ComponentName: gripperName,
+  Destination: destination,
+  WorldState: WorldState
+})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
@@ -845,7 +850,7 @@ If you are implementing your own motion service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = motion.from_robot(robot, "builtin")
+service = MotionClient.from_robot(robot, "builtin")
 
 my_command = {
   "cmnd": "dosomething",
@@ -903,8 +908,7 @@ Get the `ResourceName` for this instance of the motion service with the given na
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_motion_svc_name = MotionClient.get_resource_name("my_motion_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.get_resource_name).
@@ -930,7 +934,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_motion_svc.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.close).
@@ -949,10 +953,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myMotionSvc, err := motion.FromRobot(machine, "my_motion_svc")
 
-err = myArm.Close(context.Background())
+err = myMotionSvc.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

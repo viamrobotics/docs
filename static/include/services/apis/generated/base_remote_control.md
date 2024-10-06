@@ -99,10 +99,9 @@ Close out of all remote control related systems.
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Close with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+baseRCService, err := baseremotecontrol.FromRobot(machine, "my_baseRCService_svc")
 
-err = myArm.Close(context.Background())
+err := baseRCService.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

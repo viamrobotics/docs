@@ -18,7 +18,7 @@ If you are implementing your own generic service and add features that have no b
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = generic_service.from_robot(robot, "my_generic_service")
+service = Generic.from_robot(robot, "my_generic_service_svc")
 
 my_command = {
   "cmnd": "dosomething",
@@ -47,11 +47,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using DoCommand with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myGenericService, err := generic.FromRobot(machine, "my_generic_service")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myArm.DoCommand(context.Background(), command)
+result, err := myGenericService.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -99,8 +98,7 @@ Get the `ResourceName` for this instance of the generic service with the given n
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Can be used with any resource, using an arm as an example
-my_arm_name = Arm.get_resource_name("my_arm")
+my_generic_service_svc_name = Generic.get_resource_name("my_generic_service_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/generic/client/index.html#viam.services.generic.client.GenericClient.get_resource_name).
@@ -126,7 +124,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await component.close()
+await my_generic_service.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/generic/client/index.html#viam.services.generic.client.GenericClient.close).
