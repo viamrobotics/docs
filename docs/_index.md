@@ -82,9 +82,9 @@ date: "2024-09-17"
 <div class="cards max-page">
   <div class="row">
     {{< card link="/get-started/" class="green">}}
-    {{< card link="/get-started/control-motor/" class="pink">}}
-    {{< card link="/get-started/detect-people/" class="purple">}}
-    {{< card link="/get-started/collect-data/" class="yellow">}}
+    {{< card link="/how-tos/control-motor/" class="pink">}}
+    {{< card link="/how-tos/detect-people/" class="purple">}}
+    {{< card link="/how-tos/collect-data/" class="yellow">}}
   </div>
 </div>
 

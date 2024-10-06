@@ -14,6 +14,7 @@ cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/detect-people/
+  - /get-started/detect-people/
 languages: []
 viamresources: ["camera", "mlmodel", "vision"]
 platformarea: ["ml"]
@@ -179,5 +180,5 @@ These detections are also accessible using the [vision service API](/appendix/ap
 Next, you'll learn how to collect data from sensors or cameras using the data management service:
 
 {{< cards >}}
-{{% card link="/get-started/collect-data/" %}}
+{{% card link="/how-tos/collect-data/" %}}
 {{< /cards >}}

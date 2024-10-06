@@ -15,6 +15,7 @@ cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/collect-data/
+  - /get-started/collect-data/
 languages: []
 viamresources: [
     "camera",
@@ -28,7 +29,7 @@ cost: "0" # Approximate cost in USD - Only specify number
 ---
 
 This quickstart is the second part of a series.
-If you haven't read through [Learn Viam](/get-started/) and [detect people](/get-started/detect-people/), we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/) and [detect people](/how-tos/detect-people/), we recommend you do so before continuing.
 
 In this guide you'll capture and sync sensor or image data from a machine.
 
@@ -76,7 +77,7 @@ Select a tab below to collect images from a camera or readings from a sensor:
 {{< expand "Step 1: Create a machine" >}}
 
 {{< alert title="Tip" color="tip" >}}
-If you followed the [Detect people](/get-started/detect-people/) quickstart and have installed `viam-server` already on a machine that has a webcam, you can use the same machine and skip to step 4.
+If you followed the [Detect people](/how-tos/detect-people/) quickstart and have installed `viam-server` already on a machine that has a webcam, you can use the same machine and skip to step 4.
 {{< /alert >}}
 
 Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
@@ -271,5 +272,5 @@ Now that you have captured data, you could use this data to [train your own Mach
 The next quickstart will introduce you to configuring and controlling hardware:
 
 {{< cards >}}
-{{% card link="/get-started/control-motor/" %}}
+{{% card link="/how-tos/control-motor/" %}}
 {{< /cards >}}
