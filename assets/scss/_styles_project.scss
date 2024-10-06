@@ -2066,3 +2066,97 @@ h3.body-header[style] {
 .algolia-autocomplete .typesense-docsearch-suggestion--content {
   width: 100% !important;
 }
+
+// Front page styling START
+
+.front-card-container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.front-card-container > .hover-card, .front-card-container > .hover-card > a {
+  min-width: unset;
+  max-width: unset;
+  text-align: center;
+  vertical-align: center;
+}
+
+.front-card-container > .hover-card > a > div {
+  margin: auto;
+}
+
+.table.front-page {
+  display: flex;
+  // border: 1px solid black;
+}
+
+.table.front-page > ul {
+  min-width: 150px;
+  max-width: 150px;
+  align-content: flex-start;
+  border-left: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
+}
+
+.table.front-page > ul * .nav-link {
+  width: 100%;
+  background-color: white;
+  color: black;
+  border: 1px solid #d7d7d9;
+  border-left: unset;
+  border-right: unset;
+}
+
+.table.front-page > ul > li {
+  width: 100%;
+}
+
+.table.front-page > ul * .nav-link.active {
+  background-color: black;
+  color: white;
+}
+
+.table.front-page > div {
+  width: 90%;
+}
+
+#tab-content-tabset--program > div.active > span {
+  display: flex;
+  flex-direction: row;
+}
+
+#tab-content-tabset--program > div.active > p {
+  text-align: right;
+}
+
+#tab-content-tabset--program > div.active > div {
+  flex-grow: 1;
+}
+
+#tab-content-tabset--program > div.active * div.table {
+  margin: 0;
+}
+
+
+#tab-content-tabset--program > div.active div.gif {
+  min-width: 300px;
+  max-width: 300px;
+  align-content: flex-end;
+  margin: 0;
+}
+
+#tab-content-tabset--program * .tab-content {
+  margin: 0;
+  padding: 0;
+}
+
+
+#tab-content-tabset--program * .tab-content .code-toolbar {
+  margin: 0;
+  padding: 0;
+  border: unset;
+}
+
+// Front page styling END
+

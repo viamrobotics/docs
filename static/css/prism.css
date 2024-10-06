@@ -156,6 +156,24 @@ div.code-toolbar.code-terminal > .toolbar > .toolbar-item > span {
     box-shadow: 0 2px 0 0 rgba(256, 256, 256, 0.8);
 }
 
+.code-toolbar > pre[class*="language-"].dark {
+  background-color: #333;
+}
+
+.code-toolbar > pre[class*="language-"].dark > code {
+  text-shadow: none;
+}
+
+.code-toolbar > pre[class*="language-"].dark > code .token.class-name,
+.code-toolbar > pre[class*="language-"].dark > code .token.function,
+.code-toolbar > pre[class*="language-"].dark > code .token.punctuation,
+.code-toolbar > pre[class*="language-"].dark > code .token.important,
+.code-toolbar > pre[class*="language-"].dark > code .token.regex,
+.code-toolbar > pre[class*="language-"].dark > code .token.variable,
+.code-toolbar > pre[class*="language-"].dark > code {
+    color: white !important;
+}
+
 .code-terminal > pre[class*="language-sh"] > code {
   background-color: #333 !important;
   color: white !important;
