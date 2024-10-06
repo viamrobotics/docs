@@ -13,6 +13,7 @@ cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/control-motor/
+  - /get-started/control-motor/
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: [
     "motor",
@@ -23,7 +24,7 @@ date: "2024-07-31"
 cost: "0" # Approximate cost in USD - Only specify number
 ---
 
-If you haven't read through [Learn Viam](/get-started/), [detect people](/get-started/detect-people/), and [collect data](/get-started/collect-data/), we recommend you do so, to get an overview of the Viam platform.
+If you haven't read through [Learn Viam](/get-started/), [detect people](/how-tos/detect-people/), and [collect data](/how-tos/collect-data/), we recommend you do so, to get an overview of the Viam platform.
 
 This is the final part of the series.
 In this guide you'll configure and control a motor.

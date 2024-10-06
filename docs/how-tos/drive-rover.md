@@ -1264,5 +1264,5 @@ int main() {
 Now that you have run your first code to control a machine running Viam code to control your machine, move to the next quickstart to learn how to configure and control a motor:
 
 {{< cards >}}
-{{% card link="/get-started/control-motor/" %}}
+{{% card link="/how-tos/control-motor/" %}}
 {{< /cards >}}

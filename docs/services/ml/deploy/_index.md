@@ -73,6 +73,6 @@ Use your model deployed with the ML model service by adding a vision service tha
 
 {{% /manualcard %}}
 {{% card link="/how-tos/deploy-ml/" noimage="True" %}}
-{{% card link="/get-started/detect-people/" customTitle="Detect people" noimage="true" %}}
+{{% card link="/how-tos/detect-people/" customTitle="Detect people" noimage="true" %}}
 
 {{< /cards >}}

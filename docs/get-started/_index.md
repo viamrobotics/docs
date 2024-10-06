@@ -14,6 +14,7 @@ aliases:
 imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
 carouselscript: true
+draft: true
 ---
 
 Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
@@ -118,8 +119,8 @@ The [Viam app](https://app.viam.com) enables you to build your first prototype, 
 In the next few pages we will guide you through the platform.
 You don't need to buy or own any hardware to follow along.
 
-Continue to the [Detect people](/get-started/detect-people/) quickstart:
+Continue to the [Detect people](/how-tos/detect-people/) quickstart:
 
 {{< cards >}}
-{{% card link="/get-started/detect-people/" %}}
+{{% card link="/how-tos/detect-people/" %}}
 {{< /cards >}}
