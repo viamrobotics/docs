@@ -1,7 +1,7 @@
 ---
 title: "viam-micro-server Development Setup"
 linkTitle: "viam-micro-server dev setup"
-weight: 5
+weight: 12
 no_list: true
 type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
