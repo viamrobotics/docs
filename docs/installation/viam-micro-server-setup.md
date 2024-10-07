@@ -1,32 +1,21 @@
 ---
-title: "Installation Guide"
-linkTitle: "Installation Guide"
+title: "viam-micro-server Installation Guide"
+linkTitle: "viam-micro server Installation Guide"
 childTitleEndOverwrite: "Try Viam"
-weight: 100
+weight: 10
 no_list: true
 type: docs
 images: ["/installation/thumbnails/install.png"]
-imageAlt: "Install Viam"
-description: "To use Viam, install and run viam-server or viam-micro-server on the computer or microcontroller that will run your machine and is connected to your hardware."
-date: "2024-08-19"
+imageAlt: "Install viam-micro-server"
+description: "To use Viam with a microcontroller, install and run viam-micro-server on the microcontroller that will run your machine and is connected to your hardware."
+date: "2024-10-07"
 # updated: ""  # When the content was last entirely checked
 aliases:
-  - /installation/prepare/
-  - /installation/macos-install/
-  - /installation/linux-install/
-  - /installation/install/
-  - /installation/install/linux-install/
-  - /installation/install/macos-install
-  - /getting-started/installation/
-  - /getting-started/macos-install/
-  - /getting-started/linux-install/
-  - /installation/
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
   - /installation/prepare/microcontrollers/
   - /build/micro-rdk/
   - /get-started/installation/microcontrollers/
-  - /get-started/installation/
 ---
 
 To use Viam, you need to install either the `viam-server` binary or `viam-micro-server`.
