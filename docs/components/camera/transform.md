@@ -84,7 +84,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
   "type": "camera",
   "namespace": "rdk",
   "attributes" : {
-    "source" : "<your-camera-name>",
+    "source" : "<your-source-camera-name>",
     "pipeline": [
       { "type": "<transformation-type>", "attributes": { ... } },
     ],
@@ -131,13 +131,18 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "classifications",
-  "attributes": {
-    "classifier_name": "<name>",
-    "confidence_threshold": <float>,
-    "max_classifications": <int>,
-    "valid_labels": [ "<label>" ]
-  }
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "classifications",
+      "attributes": {
+        "classifier_name": "<name>",
+        "confidence_threshold": <float>,
+        "max_classifications": <int>,
+        "valid_labels": [ "<label>" ]
+      }
+    }
+  ]
 }
 ```
 
@@ -156,15 +161,19 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "crop",
-  "attributes": {
-    "x_min_px": <int>,
-    "y_min_px": <int>,
-    "x_max_px": <int>,
-    "y_max_px": <int>
-  }
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "crop",
+      "attributes": {
+        "x_min_px": <int>,
+        "y_min_px": <int>,
+        "x_max_px": <int>,
+        "y_max_px": <int>
+      }
+    }
+  ]
 }
-
 ```
 
 **Attributes:**
@@ -182,12 +191,17 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "depth_edges",
-  "attributes": {
-    "high_threshold_pct": <float>,
-    "low_threshold_pct": <float>,
-    "blur_radius_px": <float>
-  }
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "depth_edges",
+      "attributes": {
+        "high_threshold_pct": <float>,
+        "low_threshold_pct": <float>,
+        "blur_radius_px": <float>
+      }
+    }
+  ]
 }
 ```
 
@@ -204,8 +218,13 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "depth_preprocess",
-  "attributes": {}
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "depth_preprocess",
+      "attributes": {}
+    }
+  ]
 }
 ```
 
@@ -222,8 +241,13 @@ The actual depth information is lost in the transform.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "depth_to_pretty",
-  "attributes": {}
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "depth_to_pretty",
+      "attributes": {}
+    }
+  ]
 }
 ```
 
@@ -239,12 +263,17 @@ The Detections transform takes the input image and overlays the detections from 
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "detections",
-  "attributes": {
-    "detector_name": string,
-    "confidence_threshold": <float>,
-    "valid_labels": ["<label>"]
-  }
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "detections",
+      "attributes": {
+        "detector_name": string,
+        "confidence_threshold": <float>,
+        "valid_labels": ["<label>"]
+      }
+    }
+  ]
 }
 ```
 
@@ -263,7 +292,12 @@ You can use this transform to change the underlying camera source's intrinsic pa
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "identity"
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "identity"
+    }
+  ]
 }
 ```
 
@@ -280,17 +314,22 @@ Useful to debug the alignment of the two images.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "overlay",
-  "attributes": {
-    "intrinsic_parameters": {
-      "width_px": <int>,
-      "height_px": <int>,
-      "ppx": <float>,
-      "ppy": <float>,
-      "fx": <float>,
-      "fy": <float>,
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "overlay",
+      "attributes": {
+        "intrinsic_parameters": {
+          "width_px": <int>,
+          "height_px": <int>,
+          "ppx": <float>,
+          "ppy": <float>,
+          "fx": <float>,
+          "fy": <float>,
+        }
+      }
     }
-  }
+  ]
 }
 ```
 
@@ -312,11 +351,16 @@ The Resize transform resizes the image to the specified height and width.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "resize",
-  "attributes": {
-    "width_px": <int>,
-    "height_px": <int>
-  }
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "resize",
+      "attributes": {
+        "width_px": <int>,
+        "height_px": <int>
+      }
+    }
+  ]
 }
 ```
 
@@ -334,10 +378,15 @@ This feature is useful for when the camera is installed upside down or sideways 
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "rotate",
-  "attributes": {
-    "angle_degs": <float>
-  }
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "rotate",
+      "attributes": {
+        "angle_degs": <float>
+      }
+    }
+  ]
 }
 ```
 
@@ -355,24 +404,29 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "undistort",
-  "attributes": {
-    "intrinsic_parameters": {
-     "width_px": <int>,
-      "height_px": <int>,
-      "ppx": <float>,
-      "ppy": <float>,
-      "fx": <float>,
-      "fy": <float>
-    },
-    "distortion_parameters": {
-      "rk1": <float>,
-      "rk2": <float>,
-      "rk3": <float>,
-      "tp1": <float>,
-      "tp2": <float>
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "undistort",
+      "attributes": {
+        "intrinsic_parameters": {
+        "width_px": <int>,
+          "height_px": <int>,
+          "ppx": <float>,
+          "ppy": <float>,
+          "fx": <float>,
+          "fy": <float>
+        },
+        "distortion_parameters": {
+          "rk1": <float>,
+          "rk2": <float>,
+          "rk3": <float>,
+          "tp1": <float>,
+          "tp2": <float>
+        }
+      }
     }
-  }
+  ]
 }
 ```
 
