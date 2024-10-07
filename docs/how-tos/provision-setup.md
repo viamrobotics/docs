@@ -33,7 +33,7 @@ This guide will show you how to install and configure `viam-agent`.
 
 {{% expand "One or more physical devices with supported operating system" %}}
 
-To find out more about supported systems, see [Compatibility](/installation/#platform-requirements).
+To find out more about supported systems, see [`viam-server` Platform requirements](/installation/viam-server-setup/#platform-requirements) and [`viam-micro-server` Platform requirements](/installation/viam-micro-server-setup/#platform-requirements).
 
 If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and customize at least the hostname when prompted by the Raspberry Pi Imager.
 

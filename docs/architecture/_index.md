@@ -43,7 +43,7 @@ When `viam-server` can connect to the cloud, it also:
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
 
-[`viam-micro-server`](/installation/#install-viam-micro-server) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
+[`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
 It supports a limited set of {{< glossary_tooltip term_id="resource" text="resources" >}} and can connect with the cloud as well as with devices running `viam-server`.
 
 ## Components, services, modules

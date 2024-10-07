@@ -59,7 +59,7 @@ Although you cannot access all hardware if you run `viam-server` on your persona
 `viam-server` can run on **any computer that runs a [supported operating system](#platform-requirements)**, including single-board computers (SBCs) running 64-bit Linux.
 
 For convenience, we provide operating system installation instructions for some popular SBCs.
-If you want to use an SBC or other computer which already has a supported operating system installed, proceed to [install `viam-server`](/installation/#install-viam-server).
+If you want to use an SBC or other computer which already has a supported operating system installed, proceed to [install `viam-server`](/installation/viam-server-setup/#install-viam-server).
 
 {{< cards >}}
 {{% card link="/installation/prepare/rpi-setup/" class="small" %}}
@@ -75,7 +75,7 @@ If you want to use an SBC or other computer which already has a supported operat
 
 ## Install `viam-server`
 
-If you have a [compatible operating system](/installation/#platform-requirements), follow along with the steps outlined below to install `viam-server`:
+If you have a [compatible operating system](#platform-requirements), follow along with the steps outlined below to install `viam-server`:
 
 1. Go to the [Viam app](https://app.viam.com). Create an account if you haven't already.
 

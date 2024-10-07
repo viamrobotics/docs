@@ -35,7 +35,7 @@ The only microcontroller `viam-micro-server` currently supports is the [ESP32](h
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
-Proceed to [install `viam-micro-server`](/installation/#install-viam-micro-server).
+Proceed to [install `viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server).
 
 ## Install `viam-micro-server`
 
@@ -50,11 +50,11 @@ Breaking changes are likely to occur, and occur often.
 The `viam-micro-server` installer is a CLI that allows you to flash a build of `viam-micro-server`, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
-If you want to program the chip directly, follow the setup instructions in [`viam-micro-server` Development Setup](/installation/#install-viam-micro-server) instead.
+If you want to program the chip directly, follow the setup instructions in [`viam-micro-server` Development Setup](/installation/viam-micro-server-setup/#install-viam-micro-server) instead.
 
 ### Flash your ESP32 with the `viam-micro-server` installer
 
-If you have a [compatible microcontroller](/installation/#platform-requirements), follow along with the steps outlined below to install `viam-server`:
+If you have a [compatible microcontroller](#platform-requirements), follow along with the steps outlined below to install `viam-server`:
 
 1. Go to the [Viam app](https://app.viam.com). Create an account if you haven't already.
 
@@ -79,7 +79,7 @@ If you have a [compatible microcontroller](/installation/#platform-requirements)
    Wait for confirmation that your microcontroller has successfully connected.
 
    On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
-   If something is not working, see [Troubleshooting](/installation/#troubleshooting).
+   If something is not working, see [Troubleshooting](/installation/viam-micro-server-setup/#troubleshooting).
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
