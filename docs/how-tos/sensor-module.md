@@ -384,6 +384,7 @@ sudo chmod +x <your-file-path-to>/run.sh
 {{% expand "Prerequisite: A running machine connected to the Viam app." %}}
 
 You can write a module without a machine, but to test your module you'll need a machine.
+Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
 
 {{% snippet "setup.md" %}}
 
