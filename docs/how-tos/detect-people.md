@@ -24,10 +24,6 @@ date: "2024-07-31"
 cost: "0"
 ---
 
-This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/), we recommend you do so before continuing.
-
-This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll use machine learning to detect people in a camera stream.
 
 {{< alert title="You will learn" color="tip" >}}
@@ -177,8 +173,10 @@ For more detailed information, including optional attribute configuration, see t
 You can now detect people on a camera stream.
 These detections are also accessible using the [vision service API](/appendix/apis/services/vision/).
 
-Next, you'll learn how to collect data from sensors or cameras using the data management service:
+To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
 {{< cards >}}
-{{% card link="/how-tos/collect-data/" %}}
+{{% card link="/how-tos/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/platform/" %}}
 {{< /cards >}}
