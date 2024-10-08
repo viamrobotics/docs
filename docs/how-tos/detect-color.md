@@ -89,7 +89,7 @@ Select the Platform you want to install `viam-server` on.
 {{% /expand%}}
 {{% expand "Step 3: Configure your webcam" %}}
 
-First, make sure to connect your webcam to your machine if it's not already connected (like with an inbuilt webcam on a Macbook).
+First, make sure to connect your webcam to your machine if it's not already connected (like with an inbuilt laptop webcam).
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `webcam` model.
