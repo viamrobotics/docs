@@ -2086,6 +2086,12 @@ h3.body-header[style] {
   margin: auto;
 }
 
+@media (max-width: 650px) {
+.front-card-container > .hover-card {
+  width: unset;
+}
+}
+
 .table.front-page {
   display: flex;
   // border: 1px solid black;
@@ -2118,12 +2124,8 @@ h3.body-header[style] {
 }
 
 .table.front-page > div {
-  width: 90%;
-}
-
-#tab-content-tabset--program > div.active > span {
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  max-width: 1000px;
 }
 
 #tab-content-tabset--program > div.active > p {
@@ -2138,12 +2140,48 @@ h3.body-header[style] {
   margin: 0;
 }
 
+#tab-content-tabset--program > div.active div.explanation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid #d7d7d9;
+  border-top: none;
+}
 
-#tab-content-tabset--program > div.active div.gif {
+#tab-content-tabset--program > div.active div.explanation .explanationtext {
+  flex: 2 1 auto;
   min-width: 300px;
-  max-width: 300px;
-  align-content: flex-end;
-  margin: 0;
+  margin: 0.5rem 1rem 0 1rem;
+}
+
+#tab-content-tabset--program > div.active div.explanation > .explanationvideo * video {
+  min-width: 250px;
+  max-width: 250px;
+}
+
+@media (max-width: 952px) {
+  #tab-content-tabset--program > div.active div.explanation > .explanationvideo {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #tab-content-tabset--program > div.active div.explanation > .explanationvideo {
+    flex-grow: unset;
+    display: unset;
+    justify-content: unsafe;
+  }
+}
+
+@media (max-width: 685px) {
+  #tab-content-tabset--program > div.active div.explanation > .explanationvideo {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 #tab-content-tabset--program * .tab-content {
@@ -2156,6 +2194,19 @@ h3.body-header[style] {
   margin: 0;
   padding: 0;
   border: unset;
+}
+
+.custom-select {
+  max-width: 250px;
+  margin: 0.25rem;
+}
+
+.custom-select.lang {
+  max-width: 150px;
+}
+
+.table.front-page .code-toolbar > pre {
+  margin-top: unset;
 }
 
 // Front page styling END
