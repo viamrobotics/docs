@@ -156,7 +156,7 @@ div.code-toolbar.code-terminal > .toolbar > .toolbar-item > span {
     box-shadow: 0 2px 0 0 rgba(256, 256, 256, 0.8);
 }
 
-.code-toolbar > pre[class*="language-"].dark {
+/* .code-toolbar > pre[class*="language-"].dark {
   background-color: #333;
 }
 
@@ -172,7 +172,7 @@ div.code-toolbar.code-terminal > .toolbar > .toolbar-item > span {
 .code-toolbar > pre[class*="language-"].dark > code .token.variable,
 .code-toolbar > pre[class*="language-"].dark > code {
     color: white !important;
-}
+} */
 
 .code-terminal > pre[class*="language-sh"] > code {
   background-color: #333 !important;
