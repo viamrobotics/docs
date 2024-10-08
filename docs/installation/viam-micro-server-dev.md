@@ -248,11 +248,11 @@ There are three main types of development tasks relevant for `viam-micro-server`
    different directory, and register your module in the
    `[dependencies]` section of the project's `Cargo.toml` file, then
    build and flash the project. The module will now be available for
-   use by adding it to your machine configuration on `app.viam.com`.
+   use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
 
 {{% /tab %}}
 
-{{% tab name="Viam Micro Server Development" %}}
+{{% tab name="viam-micro-server Development" %}}
 
 1. If you have not done so before, clone the `viamrobotics/micro-rdk`
    git repository (optionally specifying a path for the new clone) and `cd` into the clone:
@@ -262,14 +262,14 @@ There are three main types of development tasks relevant for `viam-micro-server`
    cd <your-path-to/your-viam-micro-server-clone>
    ```
 
-1. Compile and run the project
+1. Compile and run the project:
 
    The `viam-micro-server` can be built either for ESP32, or a native version can be built for testing purposes.
 
    {{< tabs >}}
    {{% tab name="Build and Flash an ESP32" %}}
 
-   Compile the project for ESP32
+   Compile the project for ESP32:
 
    ```sh { class="command-line" data-prompt="$"}
    make build-esp32-bin
@@ -295,7 +295,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
    {{% /tab %}}
    {{% tab name="Run Natively" %}}
 
-   The native server can be built and run with one command
+   The native server can be built and run with one command:
 
    ```sh { class="command-line" data-prompt="$"}
    make native
