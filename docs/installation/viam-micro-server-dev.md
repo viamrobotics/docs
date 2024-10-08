@@ -18,10 +18,7 @@ aliases:
   - /installation/viam-micro-server-dev/
 ---
 
-`viam-micro-server` is the lightweight version of
-[`viam-server`](/architecture/rdk/) which can run on resource-limited
-embedded systems (ESP32) that cannot run the fully-featured
-`viam-server`.
+`viam-micro-server` is the lightweight version of [`viam-server`](/architecture/rdk/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
 
 This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
 
@@ -29,6 +26,7 @@ This page provides instructions for configuring a development environment for wo
 
 If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/#install-viam-micro-server) instead.
 The instructions below are for configuring a development environment in order to:
+
  - Develop custom firmware which combines `viam-micro-server` with one or more modules.
  - Develop modules for `viam-micro-server`.
  - Develop `viam-micro-server` itself.
@@ -110,23 +108,18 @@ There are three main types of development tasks relevant for `viam-micro-server`
 {{% tab name="Create a New Project" %}}
 1. Create a new machine and obtain its credentials
 
-   - Navigate to [the Viam app](https://app.viam.com) and [add a new
-     machine](/cloud/machines/#add-a-new-machine) in your desired
-     location.
+   - Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
-   - Click on the name of the machine to go to the machine's page,
-     then select the **CONFIGURE** tab.
+   - Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
 
-   - Select the part status dropdown to the right of your machine's
-     name on the top of the page:
-        {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+   - Select the part status dropdown to the right of your machine's name on the top of the page:
+
+         {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
    - Click the copy icon underneath **Machine cloud credentials**.
-     `viam-micro-server` needs this JSON, which contains your machine
-     part secret key and cloud app address, to connect to the [Viam
-     app](https://app.viam.com).
+     `viam-micro-server` needs this JSON, which contains your machine  part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
-   {{% snippet "secret-share.md" %}}
+           {{% snippet "secret-share.md" %}}
 
 1. Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
@@ -134,16 +127,12 @@ There are three main types of development tasks relevant for `viam-micro-server`
    cargo generate --git https://github.com/viamrobotics/micro-rdk.git
    ```
 
-   Select `templates/project` when prompted. Give the project a name
-   of your choice. Select `esp32` for **MCU**. If you wish to
-   configure an `esp32-camera` or a `fake` camera as a component of
-   your machine, select **true** for **include camera module and
-   traits**.
+   Select `templates/project` when prompted. Give the project a name of your choice.
+   Select `esp32` for **MCU**.
+   If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
 
-   You will be prompted to paste your machine's `viam-server` robot
-   JSON configuration into the terminal, which is the same thing as
-   its machine cloud credentials. Paste in the credentials you
-   obtained in step 1.
+   You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
+   Paste in the credentials you obtained in step 1.
 
 1. Change directories into the generated project:
 
@@ -151,10 +140,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
    cd <your-path-to/your-project-directory>
    ```
 
-1. If you wish to use revision control for this project, this is the
-   best time to initialize a git repository and commit all the
-   generated files, but being sure to exclude the generated
-   `viam.json` file, which includes secrets:
+1. If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but being sure to exclude the generated `viam.json` file, which includes secrets:
 
    ```sh { class="command-line" data-prompt="$"}
    git add .
@@ -168,28 +154,22 @@ There are three main types of development tasks relevant for `viam-micro-server`
    make build-esp32-bin
    ```
 
-   Please note that the first build may be fairly time consuming, as
-   ESP-IDF must be cloned and built, and all dependent Rust crates
-   must be fetched and built as well. Subsequent builds will be
-   faster.
+   Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
+   Subsequent builds will be faster.
 
 1. Upload the generated firmware to your ESP32:
 
-   Connect the ESP32 board you wish to flash to a USB port on your
-   development machine, and run:
+   Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
 
    ```sh { class="command-line" data-prompt="$"}
    make flash-esp32-bin
    ```
 
-    When prompted, select the serial port that your ESP32 is connected
-    to through a data cable.
+   When prompted, select the serial port that your ESP32 is connected to through a data cable.
 
-    If successful, you will retain a serial connection to the board
-    until you press `Ctrl-C`.  To manage this connection, consider
-    running it within a dedicated terminal session, or under `tmux` or
-    `screen`.  While the serial connection is live, you can also
-    restart the currently flashed image with `Ctrl-R`.
+   If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
+   To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
+   While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
    {{< alert title="Note" color="tip" >}} The above build and flash steps may be combined by using the `upload` target:
 
@@ -201,19 +181,13 @@ There are three main types of development tasks relevant for `viam-micro-server`
 7. Navigate to your new machine's page on [the Viam app](https://app.viam.com).
    If successful, **Live** should be displayed underneath **Last online**.
 
-7. You may now add any desired modules to the project by including
-   them in the `[dependencies]` section of the `Cargo.toml` for the
-   generated project. After adding (or removing) a module or changing
-   the version of a module, you must rerun steps 5-6 above in order to
-   rebuild the firmware and reflash the device.
+7. You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
+   After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
 
 {{% /tab %}}
 {{% tab name="Create a New Module" %}}
 
-1. If you have not previously developed a module for
-   `viam-micro-server`, please review the [module template README](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module)
-   and the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md)
-   before continuing.
+1. If you have not previously developed a module for `viam-micro-server`, please review the [module template README](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) and the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md) before continuing.
 
 1. Generate a new module skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module):
 
@@ -221,8 +195,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
    cargo generate --git https://github.com/viamrobotics/micro-rdk.git
    ```
 
-   Select `templates/module` when prompted, give the module a name of
-   your choice, and answer any additional prompts.
+   Select `templates/module` when prompted, give the module a name of your choice, and answer any additional prompts.
 
 1. Change directories into the generated tree:
 
@@ -230,32 +203,24 @@ There are three main types of development tasks relevant for `viam-micro-server`
    cd <your-path-to/your-module-directory>
    ```
 
-1. If you wish to use revision control for the module, this is the
-   best time to initialize a git repository and commit all the
-   generated files. There are no secrets in a newly generated module
-   repository:
+1. If you wish to use revision control for the module, this is the best time to initialize a git repository and commit all the generated files.
+   There are no secrets in a newly generated module repository:
 
    ```sh { class="command-line" data-prompt="$"}
    git add .
    git commit -m "initial commit"
    ```
 
-1. Develop the module by defining `structs` which implement the
-   necessary `traits` and adding tests and registration hooks for
-   them, per the walkthrough.
+1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
 
-1. To consume the module, follow the "Create a Project" workflow in a
-   different directory, and register your module in the
-   `[dependencies]` section of the project's `Cargo.toml` file, then
-   build and flash the project. The module will now be available for
-   use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
+1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `[dependencies]` section of the project's `Cargo.toml` file, then build and flash the project. 
+   The module will now be available for use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
 
 {{% /tab %}}
 
 {{% tab name="viam-micro-server Development" %}}
 
-1. If you have not done so before, clone the `viamrobotics/micro-rdk`
-   git repository (optionally specifying a path for the new clone) and `cd` into the clone:
+1. If you have not done so before, clone the `viamrobotics/micro-rdk` git repository (optionally specifying a path for the new clone) and `cd` into the clone:
 
    ```sh { class="command-line" data-prompt="$"}
    git clone https://github.com/viamrobotics/micro-rdk [path-to-new-clone]
@@ -275,22 +240,18 @@ There are three main types of development tasks relevant for `viam-micro-server`
    make build-esp32-bin
    ```
 
-   Please note that the first build may be fairly time consuming, as
-   ESP-IDF must be cloned and built, and all dependent Rust crates
-   must be fetched and built as well. Subsequent builds will be
-   faster.
+   Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
+   Subsequent builds will be faster.
 
    Next, flash the generated firmware to your ESP32.
 
-   Connect the ESP32 board you wish to flash to a USB port on your
-   development machine, and run:
+   Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
 
    ```sh { class="command-line" data-prompt="$"}
    make flash-esp32-bin
    ```
 
-   When prompted, select the serial port that your ESP32 is connected
-   to through a data cable.
+   When prompted, select the serial port that your ESP32 is connected to through a data cable.
 
    {{% /tab %}}
    {{% tab name="Run Natively" %}}
@@ -307,17 +268,14 @@ There are three main types of development tasks relevant for `viam-micro-server`
 {{% /tab %}}
 {{% /tabs %}}
 
-For further details on `viam-micro-server` development, including
-credentials management and developer productivity suggestions, please
-see the (development technical notes page on GitHub)[TBD].
+For further details on `viam-micro-server` development, including credentials management and developer productivity suggestions, please see the (development technical notes page on GitHub)[TBD].
 
 ## Troubleshooting
 
 ### Error: `xtensa-esp32-elf-gcc: error: unrecognized command line option '--target=xtensa-esp32-espidf'` when building on macOS
 
 This is caused by an [upstream bug](https://github.com/esp-rs/esp-idf-template/issues/174).
-To work around this issue, ensure that `CRATE_CC_NO_DEFAULTS=1` is set in the
-environment when building.
+To work around this issue, ensure that `CRATE_CC_NO_DEFAULTS=1` is set in the environment when building.
 
 ### Error: Failed to open serial port
 
