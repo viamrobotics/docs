@@ -266,7 +266,7 @@ The `conditional` object for the `conditional_data_ingested` trigger includes th
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `data_capture_method` | string | **Required** | The method of data capture to trigger on. <br> Example: `sensor:<name-of-component>:Readings`. |
-| `condition` | object | Optional | Any additional conditions for the method to fire the trigger. Leave out this object for the trigger to fire any time there is data synced. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: Can be a number, string or another object like a key-value pair that specifies the shape of the readings. </li></ul></li></ul> |
+| `condition` | object | Optional | Any additional conditions for the method to fire the trigger. Leave out this object for the trigger to fire any time there is data synced. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: An object that specifies the key or nested keys of the measurements in data capture and the value of the key in the condition. </li></ul></li></ul> |
 
 Options for `operator`:
 
@@ -282,30 +282,6 @@ Options for `operator`:
 Examples:
 
 {{< tabs >}}
-{{% tab name="No nesting" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"condition": {
-  "evals": [
-    {
-      "operator": "lt",
-      "value": 20
-    }
-  ]
-}
-```
-
-This eval would trigger for the following sensor reading:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "readings": {
-    "key": 10
-  }
-}
-```
-
-{{% /tab %}}
 {{% tab name="1 level of nesting" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -340,8 +316,8 @@ This eval would trigger for the following sensor reading:
     {
       "operator": "lt",
       "value": {
-        "level_1_of_object": {
-          "level_2_of_object": 50
+        "coordinate": {
+          "latitude": 50
         }
       }
     }
@@ -354,8 +330,8 @@ This eval would trigger for the following sensor reading:
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "readings": {
-    "level_1_of_object": {
-      "level_two_of_object": 40
+    "coordinate": {
+      "latitude": 40
     }
   }
 }
