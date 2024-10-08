@@ -111,12 +111,12 @@ function handleSearch(inputSelector) {
     search.autocomplete.on('autocomplete:cursorchanged', (event, suggestion) => {
         cursorUsed = true;
     });
-    search.autocomplete.on('keydown', (e) => {
-        if (opened && !cursorUsed && e.key === 'Enter' && search.input[0].value !== '') {
-            const query = encodeURIComponent(search.input[0].value);
-            window.location = `${window.location.origin}/search?query=${query}`;
-        }
-    });
+    // search.autocomplete.on('keydown', (e) => {
+    //     if (opened && !cursorUsed && e.key === 'Enter' && search.input[0].value !== '') {
+    //         const query = encodeURIComponent(search.input[0].value);
+    //         window.location = `${window.location.origin}/search?query=${query}`;
+    //     }
+    // });
 }
 
 handleSearch('.navbar-nav .td-search-input');
