@@ -93,7 +93,7 @@ The above command redirects `espup`'s production of the setup script to `/dev/nu
 If you would like to instead retain the setup script, replace `/dev/null` in the above command with the location where you would like the script to be written, or remove the `-f /dev/null` entirely and the file will be written to `$HOME/export-esp.sh` by default.
 {{< /alert >}}
 
-## Development Tasks
+## Development tasks
 
 There are three main types of development tasks relevant for `viam-micro-server`:
 
