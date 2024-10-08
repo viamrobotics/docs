@@ -282,30 +282,6 @@ Options for `operator`:
 Examples:
 
 {{< tabs >}}
-{{% tab name="No nesting" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"condition": {
-  "evals": [
-    {
-      "operator": "lt",
-      "value": 20
-    }
-  ]
-}
-```
-
-This eval would trigger for the following sensor reading:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "readings": {
-    "key": 10
-  }
-}
-```
-
-{{% /tab %}}
 {{% tab name="1 level of nesting" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
