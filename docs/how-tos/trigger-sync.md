@@ -58,7 +58,8 @@ Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{% expand "Create a sensor module. Click to see instructions." %}}
 
-Start by [creating a sensor module](/how-tos/sensor-module/). Your sensor should have access to the information you need to determine if your machine should sync or not.
+Start by [creating a sensor module](/how-tos/sensor-module/).
+Your sensor should have access to the information you need to determine if your machine should sync or not.
 Based on that data, make the sensor return true when the machine should sync and false when it should not.
 For example, if your want your machine to return data only during a specific time interval, your sensor needs to be able to access the time as well as be configured with the time interval during which you would like to sync data.
 It can then return true during the specified sync time interval and false otherwise.
@@ -115,7 +116,8 @@ For additional examples, see the `Readings` function of the [time-interval-trigg
 
 ## Add your sensor to determine when to sync
 
-Add your module to your machine and configure it. In this example we will continue to use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
+Add your module to your machine and configure it.
+In this example we will continue to use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
 You will need to follow the same steps with your module:
 
 {{< table >}}
@@ -286,6 +288,7 @@ You have now configured sync to happen during a specific time slot.
 ## Test your sync configuration
 
 To test your setup, [configure a webcam](/components/camera/webcam/) or another component and [enable data capture on the component](/services/data/capture-sync/#configure-data-capture-and-sync).
+Make sure to physically connect any hardware parts to the computer controlling your machine.
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
 Go to the [**CONTROL** tab](/fleet/control/).

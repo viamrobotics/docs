@@ -49,6 +49,8 @@ Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a sensor model](/components/sensor/) that supports your sensor.
 
+If you have a physical sensor, make sure to connect it physically to your computer.
+
 If you do not have a physical sensor or if you're not sure which sensor model to choose, add the `viam:viam-sensor:telegrafsensor` which captures performance data (CPU, memory usage, and more) from your machine. After adding the component, use the following attribute configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
