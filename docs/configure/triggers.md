@@ -32,7 +32,7 @@ To configure a trigger:
 2. Name the trigger and click **Create**.
 
 3. Select trigger **Type**.
-   For the respective type, configure the respective attributes:
+   For some types you can configure additional attributes:
 
 {{< tabs name="Types of Triggers" >}}
 {{% tab name="Data synced to cloud" %}}
