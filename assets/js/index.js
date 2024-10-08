@@ -81,8 +81,9 @@ function handleSearch(inputSelector) {
             apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
         },
         typesenseSearchParams: {
-            query_by: 'hierarchy.lvl0,url_without_anchor',
-            sort_by: 'item_priority:desc,_text_match:desc',
+            query_by: 'hierarchy.lvl0,hierarchy.lvl1,url_without_anchor',
+            query_by_weight: '100,50,1',
+            sort_by: "_text_match:desc,item_priority:desc",
             prioritize_token_position: true,
             group_by: "url_without_anchor",
             group_limit: 1
