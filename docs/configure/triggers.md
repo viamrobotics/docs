@@ -167,7 +167,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
             "evals": [
               {
                 "operator": "<lt|gt|lte|gte|eq|neq>",
-                "value": <object, string, or int>
+                "value": <object>
               }
             ]
           }
