@@ -46,7 +46,7 @@ date: "2024-09-17"
   </p>
 <p>
 You can, for example,
-<select class="custom-select" id="program-action" >
+<select class="custom-select" id="program-action" on onclick="showTab('program');">
     <option value="program-base" onclick="showTab('program');">drive any robotic base</option>
     <option value="program-motor" onclick="showTab('program');">control any motor</option>
     <option value="program-camera" onclick="showTab('program');">get photos from any camera</option>
@@ -55,7 +55,7 @@ You can, for example,
     <option value="program-other" onclick="showTab('program');">operate custom hardware</option>
 </select>
 with
-<select class="custom-select lang" id="program-lang">
+<select class="custom-select lang" id="program-lang" onclick="showTab('program');">
     <option value="lang-py" onclick="showTab('program');">Python</option>
     <option value="lang-go" onclick="showTab('program');">Go</option>
     <option value="lang-ts" onclick="showTab('program');">TypeScript</option>
@@ -66,6 +66,7 @@ with
 
 <script>
 function showTab(set) {
+  alert(set)
   let action = document.getElementById(set + "-action").value;
   let lang = document.getElementById(set + "-lang").value;
 
