@@ -14,7 +14,9 @@ aliases:
 Viam supports the [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) arm as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 You can explore the source code on the [Viam-labs Yahboom GitHub repository](https://github.com/viam-labs/yahboom).
 
-Configure a `dofbot` arm to add it to your machine:
+Configure a `dofbot` arm to add it to your machine.
+Make sure to first physically assemble the DOFBOT, connect it to your machine's computer, and turn it on.
+Then, configure the arm:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

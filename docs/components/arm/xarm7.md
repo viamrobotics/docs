@@ -12,7 +12,9 @@ component_description: "Supports UFACTORY xArm 7."
 # SMEs: Bucket, Motion
 ---
 
-Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your machine:
+Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your machine.
+Make sure to first physically assemble the xArm 7, connect it to your machine's computer, and turn it on.
+Then, configure the arm:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

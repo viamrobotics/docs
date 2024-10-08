@@ -12,7 +12,9 @@ aliases:
 # SMEs: Bucket, Motion
 ---
 
-Configure an `eva` arm to integrate a [Automata Eva](https://automata.tech/products/hardware/about-eva/) robotic arm into your machine:
+Configure an `eva` arm to integrate a [Automata Eva](https://automata.tech/products/hardware/about-eva/) robotic arm into your machine.
+Make sure to first physically assemble the Eva, connect it to your machine's computer, and turn it on.
+Then, configure the arm:
 
 {{< tabs name="Configure an eva Arm" >}}
 {{% tab name="JSON Template" %}}
