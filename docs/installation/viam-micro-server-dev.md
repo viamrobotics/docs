@@ -23,27 +23,21 @@ aliases:
 embedded systems (ESP32) that cannot run the fully-featured
 `viam-server`.
 
-This page provides instructions for configuring a development
-environment for working with `viam-micro-server`, outlines the steps
-for performing various development tasks, and provides troubleshooting
-and development tips to help organize and streamline work.
+This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
 
-If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/#install-viam-micro-server)
-instead. The instructions below are for configuring a development
-environment in order to:
+If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/#install-viam-micro-server) instead.
+The instructions below are for configuring a development environment in order to:
  - Develop custom firmware which combines `viam-micro-server` with one or more modules.
  - Develop modules for `viam-micro-server`.
  - Develop `viam-micro-server` itself.
 
 {{< /alert >}}
 
-## Required Software
+## Required software
 
-`viam-micro-server` is written in Rust. To be able to develop for
-`viam-micro-server` on macOS and Linux systems, you must install the
-following software on your development machine:
+`viam-micro-server` is written in Rust. To be able to develop for `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
 
 1. Install dependencies:
 
@@ -94,35 +88,23 @@ brew install cmake dfu-util ninja
    espup install -s -f /dev/null -v 1.76.0
    ```
 
-    {{< alert title="Note" color="tip" >}} Prior versions of the
-    above `espup` instructions created a file called `export-rs.sh`
-    which needed to be sourced before proceeding. That requirement [no
-    longer
-    applies](https://github.com/esp-rs/esp-idf-hal/issues/319#issuecomment-1785168921)
-    for `viam-micro-server` development. The above command redirects
-    `espup`'s production of the setup script to `/dev/null` to avoid
-    cluttering the home directory. If you would like to instead retain
-    the setup script, replace `/dev/null` in the above command with
-    the location where you would like the script to be written, or
-    remove the `-f /dev/null` entirely and the file will be written to
-    `$HOME/export-esp.sh` by default.
-
-    {{< /alert >}}
+{{< alert title="Note" color="tip" >}}
+Prior versions of the above `espup` instructions created a file called `export-rs.sh` which needed to be sourced before proceeding.
+That requirement [no longer applies](https://github.com/esp-rs/esp-idf-hal/issues/319#issuecomment-1785168921) for `viam-micro-server` development.
+The above command redirects `espup`'s production of the setup script to `/dev/null` to avoid cluttering the home directory.
+If you would like to instead retain the setup script, replace `/dev/null` in the above command with the location where you would like the script to be written, or remove the `-f /dev/null` entirely and the file will be written to `$HOME/export-esp.sh` by default.
+{{< /alert >}}
 
 
 ## Development Tasks
 
 There are three main types of development tasks relevant for `viam-micro-server`:
 
-- Creating a project that combines `viam-micro-server` with one or
-  more modules to produce a new firmware instance with expanded functionality.
+- Creating a project that combines `viam-micro-server` with one or more modules to produce a new firmware instance with expanded functionality.
 
-- Creating modules that can integrate with `viam-micro-server` to
-  deliver new opt-in functionality or device support.
+- Creating modules that can integrate with `viam-micro-server` to deliver new opt-in functionality or device support.
 
-- Working on `viam-micro-server` itself, to add features and fix bugs,
-  or to produce a build for a specific ESP-IDF version or platform for
-  which Viam does not offer a pre-built solution.
+- Working on `viam-micro-server` itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution.
 
 {{< tabs >}}
 {{% tab name="Create a New Project" %}}
