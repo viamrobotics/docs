@@ -12,6 +12,10 @@ While many common issues and their possible resolutions are presented here, this
 If you have encountered an error that is not listed here, we'd love to hear from you on our [Community Discord](https://discord.gg/viam)!
 Please post the error message you received along with how you were able to trigger it and we'll see if we can help.
 
+## Status
+
+For information on the status of [app.viam.com](https://app.viam.com), visit [status.viam.com](https://status.viam.com/).
+
 ## Common installation errors
 
 ### The authenticity of host 'hostname.local' can't be established
