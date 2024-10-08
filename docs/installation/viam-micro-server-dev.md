@@ -27,9 +27,9 @@ This page provides instructions for configuring a development environment for wo
 If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/#install-viam-micro-server) instead.
 The instructions below are for configuring a development environment in order to:
 
- - Develop custom firmware which combines `viam-micro-server` with one or more modules.
- - Develop modules for `viam-micro-server`.
- - Develop `viam-micro-server` itself.
+- Develop custom firmware which combines `viam-micro-server` with one or more modules.
+- Develop modules for `viam-micro-server`.
+- Develop `viam-micro-server` itself.
 
 {{< /alert >}}
 
@@ -93,7 +93,6 @@ The above command redirects `espup`'s production of the setup script to `/dev/nu
 If you would like to instead retain the setup script, replace `/dev/null` in the above command with the location where you would like the script to be written, or remove the `-f /dev/null` entirely and the file will be written to `$HOME/export-esp.sh` by default.
 {{< /alert >}}
 
-
 ## Development Tasks
 
 There are three main types of development tasks relevant for `viam-micro-server`:
@@ -106,83 +105,85 @@ There are three main types of development tasks relevant for `viam-micro-server`
 
 {{< tabs >}}
 {{% tab name="Create a New Project" %}}
-1. Create a new machine and obtain its credentials
 
-   - Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
+1.  Create a new machine and obtain its credentials
 
-   - Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
+    - Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
-   - Select the part status dropdown to the right of your machine's name on the top of the page:
+    - Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
 
-         {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+    - Select the part status dropdown to the right of your machine's name on the top of the page:
 
-   - Click the copy icon underneath **Machine cloud credentials**.
-     `viam-micro-server` needs this JSON, which contains your machine  part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+          {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
-           {{% snippet "secret-share.md" %}}
+    - Click the copy icon underneath **Machine cloud credentials**.
+      `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
-1. Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
+            {{% snippet "secret-share.md" %}}
 
-   ```sh { class="command-line" data-prompt="$"}
-   cargo generate --git https://github.com/viamrobotics/micro-rdk.git
-   ```
+1.  Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
-   Select `templates/project` when prompted. Give the project a name of your choice.
-   Select `esp32` for **MCU**.
-   If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
+    ```sh { class="command-line" data-prompt="$"}
+    cargo generate --git https://github.com/viamrobotics/micro-rdk.git
+    ```
 
-   You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
-   Paste in the credentials you obtained in step 1.
+    Select `templates/project` when prompted. Give the project a name of your choice.
+    Select `esp32` for **MCU**.
+    If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
 
-1. Change directories into the generated project:
+    You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
+    Paste in the credentials you obtained in step 1.
 
-   ```sh { class="command-line" data-prompt="$"}
-   cd <your-path-to/your-project-directory>
-   ```
+1.  Change directories into the generated project:
 
-1. If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but being sure to exclude the generated `viam.json` file, which includes secrets:
+    ```sh { class="command-line" data-prompt="$"}
+    cd <your-path-to/your-project-directory>
+    ```
 
-   ```sh { class="command-line" data-prompt="$"}
-   git add .
-   git restore viam.json
-   git commit -m "initial commit"
-   ```
+1.  If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but being sure to exclude the generated `viam.json` file, which includes secrets:
 
-1. Compile the project:
+    ```sh { class="command-line" data-prompt="$"}
+    git add .
+    git restore viam.json
+    git commit -m "initial commit"
+    ```
 
-   ```sh { class="command-line" data-prompt="$"}
-   make build-esp32-bin
-   ```
+1.  Compile the project:
 
-   Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
-   Subsequent builds will be faster.
+    ```sh { class="command-line" data-prompt="$"}
+    make build-esp32-bin
+    ```
 
-1. Upload the generated firmware to your ESP32:
+    Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
+    Subsequent builds will be faster.
 
-   Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
+1.  Upload the generated firmware to your ESP32:
 
-   ```sh { class="command-line" data-prompt="$"}
-   make flash-esp32-bin
-   ```
+    Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
 
-   When prompted, select the serial port that your ESP32 is connected to through a data cable.
+    ```sh { class="command-line" data-prompt="$"}
+    make flash-esp32-bin
+    ```
 
-   If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
-   To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
-   While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
+    When prompted, select the serial port that your ESP32 is connected to through a data cable.
 
-   {{< alert title="Note" color="tip" >}} The above build and flash steps may be combined by using the `upload` target:
+    If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
+    To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
+    While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-   ```sh { class="command-line" data-prompt="$"}
-   make upload
-   ```
-   {{< /alert >}}
+    {{< alert title="Note" color="tip" >}} The above build and flash steps may be combined by using the `upload` target:
 
-7. Navigate to your new machine's page on [the Viam app](https://app.viam.com).
-   If successful, **Live** should be displayed underneath **Last online**.
+    ```sh { class="command-line" data-prompt="$"}
+    make upload
+    ```
 
-7. You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
-   After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
+    {{< /alert >}}
+
+1.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
+    If successful, **Live** should be displayed underneath **Last online**.
+
+1.  You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
+    After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
 
 {{% /tab %}}
 {{% tab name="Create a New Module" %}}
@@ -213,7 +214,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
 
 1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
 
-1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `[dependencies]` section of the project's `Cargo.toml` file, then build and flash the project. 
+1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `[dependencies]` section of the project's `Cargo.toml` file, then build and flash the project.
    The module will now be available for use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
 
 {{% /tab %}}
