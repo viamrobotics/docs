@@ -156,7 +156,7 @@ q = DiscoveryQuery(subtype="camera", model="webcam")
 # Define a list of discovery queries.
 qs = [q]
 
-# # Get component configurations with these queries.
+# Get component configurations with these queries.
 component_configs = await machine.discover_components(qs)
 ```
 
@@ -490,7 +490,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cancel all current and outstanding operations for the machine and stop all actuators and movement.
-err := machine.StopAll(ctx, nil)
+err := machine.StopAll(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -603,7 +603,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-metadata, err := machine.CloudMetadata(ctx)
+metadata, err := machine.CloudMetadata(context.Background())
 primary_org_id := metadata.PrimaryOrgID
 location_id := metadata.LocationID
 machine_id := metadata.MachineID
@@ -913,7 +913,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Shut down the robot.
-err := machine.Shutdown(ctx)
+err := machine.Shutdown(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
