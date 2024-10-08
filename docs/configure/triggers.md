@@ -12,7 +12,7 @@ aliases:
 
 Triggers allow you to trigger webhooks when certain types of data are sent from your machine to the cloud, or when the your machine parts connect to Viam.
 For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
-Viam provides four trigger types depending on the event you want to trigger on:
+Viam provides the following trigger types depending on the event you want to trigger on:
 
 - **Data has been synced to the cloud**: trigger when data from the machine is synced
 - **Part is online**: trigger continuously at a specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
@@ -166,7 +166,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
           "condition": {
             "evals": [
               {
-                "operator": "<operator>",
+                "operator": "<lt|gt|lte|gte|eq|neq>",
                 "value": <object, string, or int>
               }
             ]
@@ -340,8 +340,8 @@ This eval would trigger for the following sensor reading:
     {
       "operator": "lt",
       "value": {
-        “level_1_of_object”: {
-          “level_2_of_object”: 50
+        "level_1_of_object": {
+          "level_2_of_object": 50
         }
       }
     }
