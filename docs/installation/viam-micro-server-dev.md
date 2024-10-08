@@ -42,27 +42,27 @@ The instructions below are for configuring a development environment in order to
    {{< tabs >}}
    {{% tab name="Linux" %}}
 
-```sh { class="command-line" data-prompt="$"}
-sudo apt-get install bison ccache cmake curl dfu-util flex git gperf libffi-dev libssl-dev libudev-dev libusb-1.0-0 ninja-build python3 python3-pip python3-venv wget
-```
+   ```sh { class="command-line" data-prompt="$"}
+   sudo apt-get install bison ccache cmake curl dfu-util flex git gperf libffi-dev libssl-dev libudev-dev libusb-1.0-0 ninja-build python3 python3-pip python3-venv wget
+   ```
 
-    {{% /tab %}}
-    {{% tab name="macOS" %}}
+   {{% /tab %}}
+   {{% tab name="macOS" %}}
 
-If you haven't already, install Homebrew:
+   If you haven't already, install Homebrew:
 
-```sh { class="command-line" data-prompt="$"}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+   ```sh { class="command-line" data-prompt="$"}
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 
-Then, install dependencies:
+   Then, install dependencies:
 
-```sh { class="command-line" data-prompt="$"}
-brew install cmake dfu-util ninja
-```
+   ```sh { class="command-line" data-prompt="$"}
+   brew install cmake dfu-util ninja
+   ```
 
-    {{% /tab %}}
-    {{% /tabs %}}
+   {{% /tab %}}
+   {{< /tabs >}}
 
 1. If you do not yet have a Rust environment installed, install it with `rustup`.
 
@@ -98,9 +98,7 @@ If you would like to instead retain the setup script, replace `/dev/null` in the
 There are three main types of development tasks relevant for `viam-micro-server`:
 
 - Creating a project that combines `viam-micro-server` with one or more modules to produce a new firmware instance with expanded functionality.
-
 - Creating modules that can integrate with `viam-micro-server` to deliver new opt-in functionality or device support.
-
 - Working on `viam-micro-server` itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution.
 
 {{< tabs >}}
@@ -108,18 +106,16 @@ There are three main types of development tasks relevant for `viam-micro-server`
 
 1.  Create a new machine and obtain its credentials
 
-    - Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
+- Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
+- Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
+- Select the part status dropdown to the right of your machine's name on the top of the page:
 
-    - Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
+   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
-    - Select the part status dropdown to the right of your machine's name on the top of the page:
+- Click the copy icon underneath **Machine cloud credentials**.
+   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
-          {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
-
-    - Click the copy icon underneath **Machine cloud credentials**.
-      `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-
-            {{% snippet "secret-share.md" %}}
+{{% snippet "secret-share.md" %}}
 
 1.  Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
@@ -134,13 +130,13 @@ There are three main types of development tasks relevant for `viam-micro-server`
     You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
     Paste in the credentials you obtained in step 1.
 
-1.  Change directories into the generated project:
+2.  Change directories into the generated project:
 
     ```sh { class="command-line" data-prompt="$"}
     cd <your-path-to/your-project-directory>
     ```
 
-1.  If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but being sure to exclude the generated `viam.json` file, which includes secrets:
+3.  If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but being sure to exclude the generated `viam.json` file, which includes secrets:
 
     ```sh { class="command-line" data-prompt="$"}
     git add .
@@ -148,7 +144,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
     git commit -m "initial commit"
     ```
 
-1.  Compile the project:
+4.  Compile the project:
 
     ```sh { class="command-line" data-prompt="$"}
     make build-esp32-bin
@@ -157,7 +153,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
     Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
     Subsequent builds will be faster.
 
-1.  Upload the generated firmware to your ESP32:
+5.  Upload the generated firmware to your ESP32:
 
     Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
 
@@ -171,18 +167,20 @@ There are three main types of development tasks relevant for `viam-micro-server`
     To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
     While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-    {{< alert title="Note" color="tip" >}} The above build and flash steps may be combined by using the `upload` target:
+{{< alert title="Note" color="tip" >}}
 
-    ```sh { class="command-line" data-prompt="$"}
-    make upload
-    ```
+The above build and flash steps may be combined by using the `upload` target:
 
-    {{< /alert >}}
+```sh { class="command-line" data-prompt="$"}
+make upload
+```
 
-1.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
+{{< /alert >}}
+
+6.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
     If successful, **Live** should be displayed underneath **Last online**.
 
-1.  You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
+7.  You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
     After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
 
 {{% /tab %}}
@@ -218,7 +216,6 @@ There are three main types of development tasks relevant for `viam-micro-server`
    The module will now be available for use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
 
 {{% /tab %}}
-
 {{% tab name="viam-micro-server Development" %}}
 
 1. If you have not done so before, clone the `viamrobotics/micro-rdk` git repository (optionally specifying a path for the new clone) and `cd` into the clone:
@@ -264,12 +261,12 @@ There are three main types of development tasks relevant for `viam-micro-server`
    ```
 
    {{% /tab %}}
-   {{% /tabs %}}
+   {{< /tabs >}}
 
 {{% /tab %}}
-{{% /tabs %}}
+{{< /tabs >}}
 
-For further details on `viam-micro-server` development, including credentials management and developer productivity suggestions, please see the (development technical notes page on GitHub)[TBD].
+For further details on `viam-micro-server` development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](TBD).
 
 ## Troubleshooting
 
