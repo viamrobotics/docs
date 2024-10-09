@@ -45,7 +45,7 @@ date: "2024-09-17"
     Viam integrates with hardware and software on <b>any device</b>. Once installed, you can control your devices and any attached physical hardware like this:
   </p>
 
-{{< tabs class="horizontalheaders">}}
+{{< tabs class="horizontalheaders program">}}
 {{% tab name="Drive any base" %}}
 
 <div class="tabcontent">
@@ -231,27 +231,6 @@ Try it yourself, [control a motor](/how-tos/control-motor/).
 </div>
 </div>
 {{% /tab %}}
-{{% tab name="Get image from camera" %}}
-<div class="tabcontent">
-
-```python
-TODO
-```
-
-<div class="explanation">
-  <div class="explanationtext">
-
-  TODO
-
-  </div>
-  <div class="explanationvisual">
-
-  TODO
-
-  </div>
-</div>
-</div>
-{{% /tab %}}
 {{% tab name="Get sensor reading" %}}
 <div class="tabcontent">
 
@@ -324,7 +303,7 @@ TODO
   </p>
 </div>
 
-{{< tabs class="horizontalheaders">}}
+{{< tabs class="horizontalheaders services">}}
 {{% tab name="Computer Vision" %}}
 
 <div class="tabcontent">
@@ -404,6 +383,8 @@ for d in detections:
   <div class="explanationtext">
 
 Sync sensor, image, and any other data from all your machines to the cloud, where you can manage and query it.
+
+Also triggers
 
 For more information, see [Data Management](/services/data/).
 
@@ -500,7 +481,7 @@ TODO
   </div>
   <div class="explanationvisual">
 
-  TODO
+  /how-tos/develop-app/
 
   </div>
 </div>
@@ -515,25 +496,31 @@ TODO
   </p>
 </div>
 
-{{< tabs class="horizontalheaders">}}
+{{< tabs class="horizontalheaders platform">}}
 {{% tab name="Deployment" %}}
 
 <div class="tabcontent">
 
 ```json
+// Configuration for using a software package
 {
-  "services": [ {
+  "services": [
+    {
       "name": "speech-1",
       "namespace": "viam-labs",
       "type": "speech",
       "model": "viam-labs:speech:speechio",
-    } ],
-  "modules": [ {
+    }
+  ],
+  "modules": [
+    {
       "type": "registry",
       "name": "viam-labs_speech",
       "module_id": "viam-labs:speech",
+      // specific version to deploy
       "version": "0.5.2"
-    } ]
+    }
+  ]
 }
 ```
 
@@ -553,13 +540,15 @@ For more information, see [Deploy and update packages across devices](/how-tos/d
 
 <div class="tabcontent">
 
-```sh {class="command-line" data-prompt="$" data-output="2-5"}
+```sh {class="command-line" data-prompt="$" data-output="3-5,6,7"}
+# Create configuration for provisioning machines with a fragment
 echo "{
   "manufacturer": "Company",
   "model": "SmartRover",
   "fragment_id": "11d1059b-eaed-4ad8-9fd8-d60ad7386aa2"
 }" >> viam-provisioning.json
 
+# Get and run the script to install viam on a board.
 wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
 chmod 755 preinstall.sh
 sudo ./preinstall.sh
@@ -594,17 +583,14 @@ for m in machines:
     print("Attempting to connect to {}...".format(main_part.fqdn))
 
     try:
+        # Get status for machine
         machine = await connect(main_part.fqdn)
         status = await machine.get_machine_status()
-        print(status)
 
     except ConnectionError:
-        print("Unable to establish a connection to the machine.")
+        # If no connection can be made, get last logs
         logs = await cloud.get_robot_part_logs(
             robot_part_id=main_part.id, num_log_entries=5)
-        for log in logs:
-            print("{}-{} {}: {}".format(
-                log.logger_name, log.level, log.time, log.message))
 ```
 
 <div class="explanation">
@@ -624,11 +610,28 @@ For more information, see [Fleet Management API](/appendix/apis/fleet/) and [Mac
 <div class="tabcontent">
 
 ```python
-# Query sensor data
-data = await data_client.tabular_data_by_sql(
-    org_id="<YOUR-ORG-ID>",
+# Tag data from the my_camera component
+my_filter = create_filter(component_name="my_camera")
+tags = ["frontview", "trainingdata"]
+res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
+
+# Query sensor data by filter
+my_data = []
+my_filter = create_filter(component_name="sensor-1",
+    start_time=Timestamp().FromJsonString("2024-10-01T00:00:00Z"),
+    end_time=Timestamp().FromJsonString("2024-10-08T00:00:00Z"))
+last = None
+while True:
+    tabular_data, count, last = await data_client.tabular_data_by_filter(my_filter, last=last)
+    if not tabular_data:
+        break
+    my_data.extend(tabular_data)
+
+# Query sensor data for a location with SQL
+tabular_data_sql = await data_client.tabular_data_by_sql(
+    org_id="bccf8f8f-e3c4-4f72-ab9a-fc547757f352",
     sql_query="select count(*) as numStanding from readings \
-      where robot_id = 'abcdef12-abcd-abcd-abcd-abcdef123456' and \
+      where location_id = 'gjmjt2xntj' and \
       component_name = 'my-ultrasonic-sensor' and \
       (CAST (data.readings.distance AS DOUBLE)) > 0.2"
 )
@@ -652,6 +655,7 @@ For more information, see [Data Management](/services/data/).
 <div class="tabcontent">
 
 ```python
+# Start a training job to create a classification model based on the dataset
 job_id = await ml_training_client.submit_training_job(
   org_id="bccf8f8f-e3c4-4f72-ab9a-fc547757f352",
   dataset_id="66db6fe7d93d1ade24cd1dc3",
@@ -661,6 +665,7 @@ job_id = await ml_training_client.submit_training_job(
   tags=["follow", "stop"]
 )
 
+# Get status information for training job
 job_metadata = await ml_training_client.get_training_job(
   id=job_id)
 ```
@@ -676,6 +681,44 @@ For more information, see [Train and deploy ML models](/how-tos/deploy-ml/) and 
   <div class="explanationvisual">
 
 {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" resize="1200x" class="imgzoom" >}}
+
+  </div>
+</div>
+</div>
+
+{{% /tab %}}
+{{% tab name="Collaboration" %}}
+
+<div class="tabcontent">
+
+```python
+# Create a new machine
+new_machine_id = await cloud.new_robot(
+    name="new-machine", location_id="gjmjt2xntj")
+
+# Get organization associated with authenticated user / API key
+org_list = await cloud.list_organizations()
+
+# Create a new API key with owner access for the new machine
+auth = APIKeyAuthorization(
+    role="owner",
+    resource_type="robot",
+    resource_id=new_machine_id
+)
+api_key, api_key_id = await cloud.create_key(
+    org_list[0].id, [auth], "key_for_new_machine")
+
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+Viam allows you to organize and manage any number of machines in collaboration with others using Role-Based Access Control (RBAC). You can manage and control your fleet of smart machines from the Viam app, using the [CLI](/cli/#authenticate), or using the [fleet management API](/appendix/apis/fleet/).
+
+  </div>
+  <div class="explanationvisual">
+
+{{<imgproc src="/cloud/rbac.png" resize="1000x" declaredimensions=true alt="Organization page" class="imgzoom">}}
 
   </div>
 </div>

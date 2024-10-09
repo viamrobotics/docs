@@ -60,12 +60,8 @@ function tdPersistActiveTab(activeTabKey) {
 // Handlers
 
 function tdGetAndActivatePersistedTabs(tabs) {
-  // Get unique persistence keys of tabs in this page
-  var keyOfTabsInThisPage = [
-    ...new Set(
-      Array.from(tabs).map((el) => el.getAttribute("data-td-tp-persist"))
-    ),
-  ];
+  // Only switch tabs for programming languages
+  var keyOfTabsInThisPage = ["Python", "Go", "C++", "TypeScript", "Flutter"];
 
   // Create a list of active tabs with their age:
   let key_ageList = keyOfTabsInThisPage
@@ -89,11 +85,13 @@ function tdGetAndActivatePersistedTabs(tabs) {
 
 function tdRegisterTabClickHandler(tabs) {
   tabs.forEach((tab) => {
-    tab.addEventListener('click', (event) => {
-      const activeTabKey = tab.getAttribute("data-td-tp-persist");
-      tdPersistActiveTab(activeTabKey);
-      tdActivateTabsWithKey(activeTabKey, event.srcElement, event.srcElement.getBoundingClientRect())
-    });
+    if (["Python", "Go", "C++", "TypeScript", "Flutter"].includes(tab.text)) {
+      tab.addEventListener('click', (event) => {
+        const activeTabKey = tab.getAttribute("data-td-tp-persist");
+        tdPersistActiveTab(activeTabKey);
+        tdActivateTabsWithKey(activeTabKey, event.srcElement, event.srcElement.getBoundingClientRect())
+      });
+    }
   });
 }
 
@@ -109,15 +107,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const openDetailsIfAnchorHidden = (evt) => {
     const target = evt.currentTarget.getAttribute("href"); // "#anchored"
     const elTarget = document.querySelector(target);
-    console.log(target)
-    console.log(elTarget)
 
     if (!elTarget) return; // No such element in DOM. Do nothing
-    console.log(elTarget.offsetHeight)
 
     // Open all <details> ancestors
     let elDetails = elTarget.closest("details");
-    console.log(elDetails)
 
     while (elDetails) {
       if (elDetails.matches("details")) elDetails.open = true;
