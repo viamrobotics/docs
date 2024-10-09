@@ -110,10 +110,10 @@ There are three main types of development tasks relevant for `viam-micro-server`
 - Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
 - Select the part status dropdown to the right of your machine's name on the top of the page:
 
-   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+  {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
 - Click the copy icon underneath **Machine cloud credentials**.
-   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+  `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
 {{% snippet "secret-share.md" %}}
 
@@ -225,43 +225,42 @@ make upload
    cd <your-path-to/your-viam-micro-server-clone>
    ```
 
-1. Compile and run the project:
+1. Compile and run the project.
+   The `viam-micro-server` can either be built for ESP32, or as a native version for testing purposes:
 
-   The `viam-micro-server` can be built either for ESP32, or a native version can be built for testing purposes.
+{{< tabs >}}
+{{% tab name="Build and Flash an ESP32" %}}
 
-   {{< tabs >}}
-   {{% tab name="Build and Flash an ESP32" %}}
+Compile the project for ESP32:
 
-   Compile the project for ESP32:
+```sh { class="command-line" data-prompt="$"}
+make build-esp32-bin
+```
 
-   ```sh { class="command-line" data-prompt="$"}
-   make build-esp32-bin
-   ```
+Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
+Subsequent builds will be faster.
 
-   Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
-   Subsequent builds will be faster.
+Next, flash the generated firmware to your ESP32.
 
-   Next, flash the generated firmware to your ESP32.
+Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
 
-   Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
+```sh { class="command-line" data-prompt="$"}
+make flash-esp32-bin
+```
 
-   ```sh { class="command-line" data-prompt="$"}
-   make flash-esp32-bin
-   ```
+When prompted, select the serial port that your ESP32 is connected to through a data cable.
 
-   When prompted, select the serial port that your ESP32 is connected to through a data cable.
+{{% /tab %}}
+{{% tab name="Run Natively" %}}
 
-   {{% /tab %}}
-   {{% tab name="Run Natively" %}}
+The native server can be built and run with one command:
 
-   The native server can be built and run with one command:
+```sh { class="command-line" data-prompt="$"}
+make native
+```
 
-   ```sh { class="command-line" data-prompt="$"}
-   make native
-   ```
-
-   {{% /tab %}}
-   {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
