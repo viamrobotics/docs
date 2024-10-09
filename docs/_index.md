@@ -44,74 +44,16 @@ date: "2024-09-17"
   <p>
     Viam integrates with hardware and software on <b>any device</b>. Once installed, you can control your devices and any attached physical hardware like this:
   </p>
-<p>
-You can, for example,
-<select class="custom-select" id="program-action" on onclick="showTab('program');">
-    <option value="program-base" onclick="showTab('program');">drive any robotic base</option>
-    <option value="program-motor" onclick="showTab('program');">control any motor</option>
-    <option value="program-camera" onclick="showTab('program');">get photos from any camera</option>
-    <option value="program-sensor" onclick="showTab('program');">get readings from any sensor</option>
-    <option value="program-arm" onclick="showTab('program');">move any arm</option>
-    <option value="program-other" onclick="showTab('program');">operate custom hardware</option>
-</select>
-with
-<select class="custom-select lang" id="program-lang" onclick="showTab('program');">
-    <option value="lang-py" onclick="showTab('program');">Python</option>
-    <option value="lang-go" onclick="showTab('program');">Go</option>
-    <option value="lang-ts" onclick="showTab('program');">TypeScript</option>
-    <option value="lang-dart" onclick="showTab('program');">Flutter</option>
-    <option value="lang-cpp" onclick="showTab('program');">C++</option>
-</select>
-:</p>
 
-<script>
-function showTab(set) {
-  alert(set)
-  let action = document.getElementById(set + "-action").value;
-  let lang = document.getElementById(set + "-lang").value;
+{{< tabs class="horizontalheaders">}}
+{{% tab name="Drive any base" %}}
 
-  console.log(action, lang);
+<div class="tabcontent">
 
-  // active parent tab
-  let parentTab = document.getElementById("tabset--" + action)
-  let parentChildren = parentTab.parentElement.children;
-  for (let i=0; i<parentChildren.length; i++) {
-    console.log(parentChildren[i]);
-    if (parentChildren[i].id == "tabset--" + action) {
-      new bootstrap.Tab(parentChildren[i]).show();
-      console.log("show")
-    } else {
-      new bootstrap.Tab(parentChildren[i]).dispose();
-      parentChildren[i].classList.remove("active");
-      console.log("hide")
-    }
-  }
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-  // activate language tab
-  let languageTab = document.getElementById("tabset--" + action + '-' + lang)
-  let allLanguageTabs = languageTab.parentElement.children;
-  for (let i=0; i<allLanguageTabs.length; i++) {
-    console.log(allLanguageTabs[i]);
-    if (allLanguageTabs[i].id == "tabset--" + action + '-' + lang) {
-      new bootstrap.Tab(allLanguageTabs[i]).show();
-      console.log("show")
-    } else {
-      new bootstrap.Tab(allLanguageTabs[i]).dispose();
-      allLanguageTabs[i].classList.remove("active");
-      console.log("hide")
-    }
-  }
-
-}
-</script>
-
-<div class="table front-page">
-  <div class="tab-content" id="tab-content-tabset--program">
-    <div id="tabset--program-base" class="tab-pane show active" role="tabpanel" aria-labelledby="tabset--program-base">
-      <div>
-<div class="tab-content" id="tab-content-tabset--program-lang"><div id="tabset--program-base-lang-py" class="tab-pane show active" role="tabpanel" aria-labelledby="tabset--program-base-lang-py">
-
-```python {class="dark"}
+```python
 async def moveInSquare(base):
     for _ in range(4):
         # move forward 500mm at 500mm/s
@@ -120,10 +62,10 @@ async def moveInSquare(base):
         await base.spin(velocity=100, angle=90)
 ```
 
-</div>
-<div id="tabset--program-base-lang-go" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program=base-lang-go">
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-```go {class="dark"}
+```go
 func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
         // move forward 500mm at 500mm/s
@@ -134,10 +76,10 @@ func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
 }
 ```
 
-</div>
-<div id="tabset--program-base-lang-ts" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-base-lang-ts">
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
 
-```ts {class="dark"}
+```ts
 async function moveInSquare(baseClient: VIAM.BaseClient) {
   for (let i = 0; i < 4; i++) {
     // move forward 500mm at 500mm/s
@@ -148,10 +90,11 @@ async function moveInSquare(baseClient: VIAM.BaseClient) {
 }
 ```
 
-</div>
-<div id="tabset--program-base-lang-dart" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-base-lang-dart">
 
-```dart {class="dark"}
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart
 Future<void> moveSquare() async {
   for (var i=0; i<4; i++) {
     // move forward 500mm at 500mm/s
@@ -161,10 +104,11 @@ Future<void> moveSquare() async {
   }
 }
 ```
-</div>
-<div id="tabset--program-base-lang-cpp" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-base-lang-cpp">
 
-```cpp {class="dark"}
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp
 void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
   for (int i = 0; i < 4; ++i) {
     // move forward 500mm at 500mm/s
@@ -175,24 +119,31 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 ```
 
-</div></div>
-</div>
+{{% /tab %}}
+{{< /tabs >}}
+
 <div class="explanation">
   <div class="explanationtext">
 
 Try it yourself, [drive a rover](/how-tos/drive-rover/).
 
   </div>
-  <div class="explanationvideo">
-    {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
+  <div class="explanationvisual">
+
+{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
+
   </div>
 </div>
 </div>
-    <div id="tabset--program-motor" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-motor">
-      <div>
-<div class="tab-content" id="tab-content-tabset--program-lang"><div id="tabset--program-motor-lang-py" class="tab-pane show active" role="tabpanel" aria-labelledby="tabset--program-motor-lang-py">
 
-```python {class="dark"}
+{{% /tab %}}
+{{% tab name="Control motor" %}}
+<div class="tabcontent">
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
 async def spin_motor(motor):
     # turn the motor at 35% power forwards
     await motor.set_power(power=0.35)
@@ -202,10 +153,10 @@ async def spin_motor(motor):
     await await motor_1.stop()
 ```
 
-</div>
-<div id="tabset--program-motor-lang-go" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-motor-lang-go">
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-```go {class="dark"}
+```go
 func spinMotor(ctx context.Context, motor motor.Motor, logger logging.Logger) {
   // turn the motor at 35% power forwards
   err = motor1Component.SetPower(context.Background(), 0.35, nil)
@@ -216,10 +167,10 @@ func spinMotor(ctx context.Context, motor motor.Motor, logger logging.Logger) {
 }
 ```
 
-</div>
-<div id="tabset--program-motor-lang-ts" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-motor-lang-ts">
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
 
-```ts {class="dark"}
+```ts
 async function spinMotor(motorClient: VIAM.MotorClient) {
   // turn the motor at 35% power forwards
   await motor.setPower(0.35);
@@ -232,10 +183,11 @@ async function spinMotor(motorClient: VIAM.MotorClient) {
 }
 ```
 
-</div>
-<div id="tabset--program-motor-lang-dart" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-motor-lang-dart">
 
-```dart {class="dark"}
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart
 Future<void> spinMotor() async {
   // turn the motor at 35% power forwards
   await motorClient.setPower(0.35);
@@ -247,10 +199,10 @@ Future<void> spinMotor() async {
 }
 ```
 
-</div>
-<div id="tabset--program-motor-lang-cpp" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-motor-lang-cpp">
+{{% /tab %}}
+{{% tab name="C++" %}}
 
-```cpp {class="dark"}
+```cpp
 void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
   // turn the motor at 35% power forwards
   motor->set_power(0.35);
@@ -261,76 +213,420 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 }
 ```
 
-</div></div>
-</div>
+
+{{% /tab %}}
+{{< /tabs >}}
+
 <div class="explanation">
   <div class="explanationtext">
 
 Try it yourself, [control a motor](/how-tos/control-motor/).
+
   </div>
-  <div class="explanationvideo">
-    {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the Viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servo's direction as being counterclockwise. Below this is a gif of the Raspberry Pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
-  </div>
-</div>
-    </div>
-    <div id="tabset--program-camera" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-camera">
-      <p>TODO: Camera</p>
-    </div>
-    <div id="tabset--program-sensor" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-sensor">
-      <p>TODO: Sensor</p>
-    </div>
-    <div id="tabset--program-arm" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-arm">
-      <p>TODO: Arm</p>
-    </div>
-    <div id="tabset--program-other" class="tab-pane" role="tabpanel" aria-labelledby="tabset--program-other">
-      <p>TODO: Other</p>
-    </div>
+  <div class="explanationvisual">
+
+{{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the Viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servo's direction as being counterclockwise. Below this is a gif of the Raspberry Pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
+
   </div>
 </div>
 </div>
+{{% /tab %}}
+{{% tab name="Get image from camera" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{% tab name="Get sensor reading" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{% tab name="Move an arm" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{% tab name="Operate custom hardware" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{< /tabs >}}
+
 <div class="max-page">
-  <h2 class="frontpage-headers">Make your devices smarter and better</h2>
+  <h2 class="frontpage-headers">Make your devices better and smarter</h2>
   <p>
     You can pick and choose from additional tools to make your devices understand their environment, interact with it, and collect information:
   </p>
-<p>
-You can, for example, add
-<select class="custom-select" id="smarter-action" >
-    <option value="smarter-cv" onclick="showTab('smarter');">Computer Vision</option>
-    <option value="smarter-ml" onclick="showTab('smarter');">Machine Learning</option>
-    <option value="smarter-data" onclick="showTab('smarter');">Data Management</option>
-    <option value="smarter-motion" onclick="showTab('smarter');">Motion</option>
-    <option value="smarter-nav" onclick="showTab('smarter');">Navigation</option>
-    <option value="smarter-custom" onclick="showTab('smarter');">Custom Logic</option>
-</select>
-and use it with
-<select class="custom-select lang" id="smarter-lang">
-    <option value="lang-py" onclick="showTab('smarter');">Python</option>
-    <option value="lang-go" onclick="showTab('smarter');">Go</option>
-    <option value="lang-ts" onclick="showTab('smarter');">TypeScript</option>
-    <option value="lang-dart" onclick="showTab('smarter');">Flutter</option>
-    <option value="lang-cpp" onclick="showTab('smarter');">C++</option>
-</select>
-:</p>
 </div>
+
+{{< tabs class="horizontalheaders">}}
+{{% tab name="Computer Vision" %}}
+
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+
+{{% /tab %}}
+{{% tab name="Machine Learning" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{% tab name="Data Management" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{% tab name="Motion" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{% tab name="Navigation" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{% tab name="Custom Logic" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+  TODO
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+
+  </div>
+</div>
+</div>
+{{% /tab %}}
+{{< /tabs >}}
+
 <div class="max-page">
   <h2 class="frontpage-headers">Go from one machine to thousands</h2>
   <p>
     When you connect machines to the cloud you get fleet management tools that let you scale from one prototype to thousands of machines you can manage and operate from one place.
   </p>
-<p>
-<select class="custom-select" id="scale-action" >
-    <option value="scale-deployment" onclick="showTab('scale');">Deployment</option>
-    <option value="scale-provisioning" onclick="showTab('scale');">Provisioning</option>
-    <option value="scale-diagnostics" onclick="showTab('scale');">Remote Diagnostics</option>
-    <option value="scale-data" onclick="showTab('scale');">Data Management</option>
-    <option value="scale-ml" onclick="showTab('scale');">ML Training</option>
-    <option value="scale-billing" onclick="showTab('scale');">Billing</option>
-</select>
-for all your machines with
-<select class="custom-select lang" id="scale-lang">
-    <option value="lang-py" onclick="showTab('scale');">Code</option>
-    <option value="lang-go" onclick="showTab('scale');">Viam App</option>
-</select>
-:</p>
 </div>
+
+{{< tabs class="horizontalheaders">}}
+{{% tab name="Deployment" %}}
+
+<div class="tabcontent">
+
+```json
+{
+  "services": [ {
+      "name": "speech-1",
+      "namespace": "viam-labs",
+      "type": "speech",
+      "model": "viam-labs:speech:speechio",
+    } ],
+  "modules": [ {
+      "type": "registry",
+      "name": "viam-labs_speech",
+      "module_id": "viam-labs:speech",
+      "version": "0.5.2"
+    } ]
+}
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+You can deploy software packages to many machines and keep those software packages versioned. Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
+
+For more information, see [Deploy and update packages across devices](/how-tos/deploy-packages/).
+
+  </div>
+</div>
+</div>
+
+{{% /tab %}}
+{{% tab name="Provisioning" %}}
+
+<div class="tabcontent">
+
+```sh {class="command-line" data-prompt="$" data-output="2-5"}
+echo "{
+  "manufacturer": "Company",
+  "model": "SmartRover",
+  "fragment_id": "11d1059b-eaed-4ad8-9fd8-d60ad7386aa2"
+}" >> viam-provisioning.json
+
+wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
+chmod 755 preinstall.sh
+sudo ./preinstall.sh
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+Provisioning allows you to complete part of the machine setup during the manufacturing process and perform the rest of the first-time setup once the machine is taken into operation.
+When the machine is taken into operation, it will automatically get the latest configuration and updates.
+
+For more information, see [Provisioning](/fleet/provision/).
+
+  </div>
+</div>
+</div>
+
+{{% /tab %}}
+{{% tab name="Remote Diagnostics" %}}
+
+<div class="tabcontent">
+
+```python
+# Get all machines in a location
+machines = await cloud.list_robots(location_id="gjmjt2xntj")
+print("Found {} machines.".format(len(machines)))
+
+for m in machines:
+    # Connect and get status information or latest logs
+    machine_parts = await cloud.get_robot_parts(m.id)
+    main_part = next(filter(lambda part: part.main_part, machine_parts), None)
+    print("Attempting to connect to {}...".format(main_part.fqdn))
+
+    try:
+        machine = await connect(main_part.fqdn)
+        status = await machine.get_machine_status()
+        print(status)
+
+    except ConnectionError:
+        print("Unable to establish a connection to the machine.")
+        logs = await cloud.get_robot_part_logs(
+            robot_part_id=main_part.id, num_log_entries=5)
+        for log in logs:
+            print("{}-{} {}: {}".format(
+                log.logger_name, log.level, log.time, log.message))
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+Get status information and logs fromo all your deployed machines.
+
+For more information, see [Fleet Management API](/appendix/apis/fleet/) and [Machine Management API](/appendix/apis/robot/).
+
+  </div>
+</div>
+</div>
+
+{{% /tab %}}
+{{% tab name="Data Management" %}}
+
+<div class="tabcontent">
+
+```python
+# Query sensor data
+data = await data_client.tabular_data_by_sql(
+    org_id="<YOUR-ORG-ID>",
+    sql_query="select count(*) as numStanding from readings \
+      where robot_id = 'abcdef12-abcd-abcd-abcd-abcdef123456' and \
+      component_name = 'my-ultrasonic-sensor' and \
+      (CAST (data.readings.distance AS DOUBLE)) > 0.2"
+)
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+
+Data from your devices is synced to the cloud, where you can query and visualize it.
+
+For more information, see [Data Management](/services/data/).
+
+  </div>
+</div>
+</div>
+
+{{% /tab %}}
+{{% tab name="ML Training" %}}
+
+<div class="tabcontent">
+
+```python
+job_id = await ml_training_client.submit_training_job(
+  org_id="bccf8f8f-e3c4-4f72-ab9a-fc547757f352",
+  dataset_id="66db6fe7d93d1ade24cd1dc3",
+  model_name="recognize_gestures",
+  model_version="1",
+  model_type=ModelType.MODEL_TYPE_MULTI_LABEL_CLASSIFICATION,
+  tags=["follow", "stop"]
+)
+
+job_metadata = await ml_training_client.get_training_job(
+  id=job_id)
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+You can build machine learning models based on your machines' data using Viam's training algorithms or your own.
+
+For more information, see [Train and deploy ML models](/how-tos/deploy-ml/) and [Create custom training scripts](/how-tos/create-custom-training-scripts/).
+
+  </div>
+  <div class="explanationvisual">
+
+{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" resize="1200x" class="imgzoom" >}}
+
+  </div>
+</div>
+</div>
+
+{{% /tab %}}
+{{< /tabs >}}

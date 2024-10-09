@@ -947,7 +947,7 @@ td > ul, td > ol {
   border-left: 1px solid rgb(209, 213, 219);
   border-bottom: 1px solid rgb(209, 213, 219);
   border-radius: 0;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0.75rem;
   color: rgb(78, 79, 82);
   background-color: rgb(241, 241, 244)
 }
@@ -956,7 +956,7 @@ td > ul, td > ol {
   margin-bottom: 0;
 }
 
-.nav-tabs .nav-item:last-child {
+.nav-tabs > .nav-item:last-child {
   border-right: 1px solid rgb(209, 213, 219);
 }
 
@@ -2136,7 +2136,7 @@ h3.body-header[style] {
   flex-grow: 1;
 }
 
-#tab-content-tabset--program > div.active * div.table {
+#tab-content-tabset--program * div.table {
   margin: 0;
 }
 
@@ -2207,6 +2207,152 @@ h3.body-header[style] {
 
 .table.front-page .code-toolbar > pre {
   margin-top: unset;
+}
+
+.table.horizontalheaders {
+  display: flex;
+  max-width: 1000px;
+  min-height: 400px;
+}
+
+.table.horizontalheaders > ul {
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d7d7d9;
+  border-right: unset;
+  padding: 0.5rem 0;
+}
+
+.table.horizontalheaders > ul > li {
+  border: unset;
+  justify-content: flex-start;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item {
+  border-right: unset;
+}
+
+.table.horizontalheaders * .tabcontent > .table > ul > li.nav-item:first-child > a {
+  border-left: unset;
+}
+
+.table.horizontalheaders > ul > li > a {
+  margin: 0.125rem 0.5rem;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.table.horizontalheaders > ul > li a:hover {
+  border: 1px solid white;
+}
+
+.table.horizontalheaders > ul > li > a.active, .table.horizontalheaders > ul > li > a.active:hover {
+  border: 1px solid black;
+}
+
+.table.horizontalheaders .tab-content {
+  width: 100%;
+}
+
+div.explanation {
+  display: flex;
+  flex-direction: row;
+  border-top: none;
+}
+
+div.explanation > .explanationtext {
+  min-width: 300px;
+  margin: 0.5rem 1rem 0 1rem;
+  width: 100%;
+}
+
+div.explanation > .explanationvisual {
+  flex-grow: 1;
+  display: flex-inline;
+  justify-content: center;
+  min-width: 250px;
+  max-width: 250px;
+  width: 250px;
+  border-left: 1px solid #d7d7d9;
+}
+
+div.explanation > .explanationvisual * video, div.explanation > .explanationvisual > picture > img {
+  min-width: 250px;
+  max-width: 250px;
+}
+
+div.explanation > .explanationvisual > .gif {
+  margin-bottom: -0.35rem;
+}
+
+@media (max-width: 952px) {
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  div.explanation > .explanationvisual {
+    flex-grow: unset;
+    display: unset;
+    justify-content: unsafe;
+  }
+}
+
+@media (max-width: 685px) {
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.table.horizontalheaders > .tab-content, .table.horizontalheaders * .tab-content {
+  padding: 0;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent > .table {
+  margin-top: unset;
+  margin-bottom: unset;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent > .table > .tab-content {
+  border-left: unset;
+  border-right: unset;
+  border-bottom: unset;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.table.horizontalheaders > .tab-content > div {
+  height: 100%;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar {
+  margin: 0;
+  padding: 0;
+  padding-top: 0.25rem;
+  border: unset;
+  border-bottom: 1px solid #d7d7d9;
+  min-height: 400px;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre {
+  min-height: 400px;
+}
+
+.td-content > div.max-page {
+  max-width: 1000px !important;
 }
 
 // Front page styling END
