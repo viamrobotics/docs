@@ -102,11 +102,54 @@ See [the frame system service](/services/frame-system/) for more information on 
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
 
-### DoCommand
+### Additional commands
 
-Execute the model-specific commands `set_speed` and `set_acceleration` that are not otherwise defined by the component API.
+In addition to the [Arm API](/appendix/apis/components/arm/), the `lite6` arm supports some model-specific commands that allow you to set the speed and the acceleration of the arm.
+You can invoke these commands by passing the following JSON document to the [`DoCommand()`](/appendix/apis/components/arm/#docommand) method:
+
+```json
+{
+  "set_speed": 45.0,
+  "set_acceleration": 10.0
+}
+```
+
+| Key                | Type  | Description                                    |
+| ------------------ | ----- | ---------------------------------------------- |
+| `set_speed`        | float | Speed in degrees per second.                   |
+| `set_acceleration` | float | Acceleration in degrees per second per second. |
+
+For example:
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+command = {
+  "set_speed": 45.0, # Set speed to 45.0 degrees per second
+  "set_acceleration": 10.0 # Set acceleration to 10.0 degrees per second squared
+}
+result = await my_arm.do_command(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.do_command).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -126,13 +169,37 @@ myArm, err := arm.FromRobot(machine, "my_arm")
 
 cmd := map[string]interface{}{
     "set_speed": 45.0, // Set speed to 45.0 degrees per second
-    "set_acceleration": 10.0  // Set acceleration to 10.0 degrees per second per second
+    "set_acceleration": 10.0  // Set acceleration to 10.0 degrees per second squared
 }
 
 result, err := myArm.DoCommand(context.Background(), cmd)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+const command = {
+  'set_speed': 45.0, // Set speed to 45.0 degrees per second
+  'set_acceleration': 10.0 // Set acceleration to 10.0 degrees per second squared
+};
+
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
 
 {{% /tab %}}
 {{< /tabs >}}
