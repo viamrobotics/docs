@@ -262,12 +262,12 @@ TODO
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO
+  TODO: figure out zoom on video
 
   </div>
   <div class="explanationvisual">
 
-  TODO
+{{<gif webm_src="/services/data/monitor.webm" mp4_src="/services/data/monitor.mp4" alt="Getting performance metrics">}}
 
   </div>
 </div>
@@ -330,61 +330,87 @@ TODO
 <div class="tabcontent">
 
 ```python
-TODO
+# get image from camera stream
+camera_name = "construction-site1"
+cam = Camera.from_robot(machine, camera_name)
+img = await cam.get_image()
+
+# use machine learning model to gather information from the image
+hardhat_detector = VisionClient.from_robot(machine, "hardhat_detector")
+detections = await hardhat_detector.get_detections(img)
+
+# check whether a person is detected not wearing a hardhat
+for d in detections:
+  if d.confidence > 0.8 and d.class_name == "NO-Hardhat":
+    print("Violation detected.")
 ```
 
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO
+  To find out more, see or check out [Monitor Job Site Helmet Usage with Computer Vision](/tutorials/projects/helmet/).
 
   </div>
   <div class="explanationvisual">
 
-  TODO
+{{<gif webm_src="/tutorials/helmet/hardhat.webm" mp4_src="/tutorials/helmet/hardhat.mp4" alt="A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera.">}}
 
   </div>
 </div>
 </div>
 
-{{% /tab %}}
-{{% tab name="Machine Learning" %}}
-<div class="tabcontent">
-
-```python
-TODO
-```
-
-<div class="explanation">
-  <div class="explanationtext">
-
-  TODO
-
-  </div>
-  <div class="explanationvisual">
-
-  TODO
-
-  </div>
-</div>
-</div>
 {{% /tab %}}
 {{% tab name="Data Management" %}}
 <div class="tabcontent">
 
-```python
-TODO
+```json
+// Configuration for capturing and syncing image data
+{
+  "components": [ {
+      "name": "camera-1",
+      "namespace": "rdk",
+      "type": "camera",
+      "model": "webcam",
+      "attributes": {},
+      "service_configs": [ {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [ {
+                "method": "ReadImage",
+                "capture_frequency_hz": 0.2,
+                "additional_params": {
+                  "mime_type": "image/png"
+                }
+            } ]
+          }
+      } ]
+  } ],
+  "services": [ {
+      "name": "data_manager-1",
+      "namespace": "rdk",
+      "type": "data_manager",
+      "attributes": {
+        "capture_dir": "",
+        "tags": [],
+        "additional_sync_paths": [],
+        "sync_interval_mins": 0.1
+      }
+  } ]
+}
+
 ```
 
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO
+Sync sensor, image, and any other data from all your machines to the cloud, where you can manage and query it.
+
+For more information, see [Data Management](/services/data/).
 
   </div>
   <div class="explanationvisual">
 
-  TODO
+{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" alt="A sample dataset." class="imgzoom fill aligncenter">}}
 
   </div>
 </div>
@@ -393,40 +419,67 @@ TODO
 {{% tab name="Motion" %}}
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 ```python
-TODO
+my_gripper_resource = Gripper.get_resource_name("gripper")
+
+# Move the gripper in the -Z direction with respect to its own reference frame
+gripper_pose_rev = Pose(x=0.0,
+                        y=0.0,
+                        z=-100.0,
+                        o_x=0.0,
+                        o_y=0.0,
+                        o_z=1.0,
+                        theta=0.0)
+# Note the change in frame name
+gripper_pose_rev_in_frame = PoseInFrame(
+    reference_frame=my_gripper_resource.name,
+    pose=gripper_pose_rev)
+
+motion_service = MotionClient.from_robot(robot, "builtin")
+await motion_service.move(component_name=my_gripper_resource,
+                          destination=gripper_pose_rev_in_frame,
+                          world_state=world_state)
 ```
 
-<div class="explanation">
-  <div class="explanationtext">
-
-  TODO
-
-  </div>
-  <div class="explanationvisual">
-
-  TODO
-
-  </div>
-</div>
-</div>
 {{% /tab %}}
-{{% tab name="Navigation" %}}
-<div class="tabcontent">
+{{% tab name="Go" %}}
 
-```python
-TODO
+```go
+gripperName := "myGripper"
+gripperResource := gripper.Named(gripperName)
+
+// This will move the gripper in the -Z direction with respect to its own reference frame
+gripperPoseRev := spatialmath.NewPose(
+  r3.Vector{X: 0.0, Y: 0.0, Z: -100.0},
+  &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
+)
+gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
+
+motionService, err := motion.FromRobot(robot, "builtin")
+_, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, nil)
+if err != nil {
+  logger.Fatal(err)
+}
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO
+The builtin motion service enables your machine to plan and move itself or its components relative to itself, other machines, and the world.
+
+For more information, see [motion service](/services/motion/).
 
   </div>
   <div class="explanationvisual">
 
-  TODO
+{{<gif webm_src="/tutorials/videos/motion_armmoving.webm" mp4_src="/tutorials/videos/motion_armmoving.mp4" alt="An arm moving with the motion service">}}
 
   </div>
 </div>

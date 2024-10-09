@@ -2094,7 +2094,6 @@ h3.body-header[style] {
 
 .table.front-page {
   display: flex;
-  // border: 1px solid black;
 }
 
 .table.front-page > ul {
@@ -2217,6 +2216,7 @@ h3.body-header[style] {
 
 .table.horizontalheaders > ul {
   max-width: 150px;
+  min-width: 150px;
   display: flex;
   flex-direction: column;
   border: 1px solid #d7d7d9;
@@ -2262,7 +2262,7 @@ div.explanation {
 }
 
 div.explanation > .explanationtext {
-  min-width: 300px;
+  min-width: 250px;
   margin: 0.5rem 1rem 0 1rem;
   width: 100%;
 }
@@ -2271,9 +2271,6 @@ div.explanation > .explanationvisual {
   flex-grow: 1;
   display: flex-inline;
   justify-content: center;
-  min-width: 250px;
-  max-width: 250px;
-  width: 250px;
   border-left: 1px solid #d7d7d9;
 }
 
@@ -2286,30 +2283,6 @@ div.explanation > .explanationvisual > .gif {
   margin-bottom: -0.35rem;
 }
 
-@media (max-width: 952px) {
-  div.explanation > .explanationvisual {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  div.explanation > .explanationvisual {
-    flex-grow: unset;
-    display: unset;
-    justify-content: unsafe;
-  }
-}
-
-@media (max-width: 685px) {
-  div.explanation > .explanationvisual {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-  }
-}
 
 .table.horizontalheaders > .tab-content, .table.horizontalheaders * .tab-content {
   padding: 0;
@@ -2318,6 +2291,8 @@ div.explanation > .explanationvisual > .gif {
 .table.horizontalheaders > .tab-content > div > .tabcontent > .table {
   margin-top: unset;
   margin-bottom: unset;
+  flex: 1;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > .table > .tab-content {
@@ -2332,10 +2307,19 @@ div.explanation > .explanationvisual > .gif {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: baseline;
 }
 
 .table.horizontalheaders > .tab-content > div {
   height: 100%;
+}
+
+.table.horizontalheaders {
+  max-width: 100%;
+}
+
+.table.horizontalheaders > .tab-content {
+  max-width: calc(100% - 150px);
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar {
@@ -2343,16 +2327,57 @@ div.explanation > .explanationvisual > .gif {
   padding: 0;
   padding-top: 0.25rem;
   border: unset;
-  border-bottom: 1px solid #d7d7d9;
-  min-height: 400px;
+  // min-height: 400px;
+  flex-grow: 1;
 }
 
-.table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre {
-  min-height: 400px;
+.table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar {
+  border-bottom: 1px solid #d7d7d9;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar > pre {
+  // min-height: 400px;
 }
 
 .td-content > div.max-page {
   max-width: 1000px !important;
+}
+
+@media (max-width: 1140px) {
+  // image fold over
+  div.explanation {
+    flex-wrap: wrap;
+  }
+
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .table.horizontalheaders {
+    flex-direction: column;
+  }
+
+  .table.horizontalheaders > ul {
+    max-width: unset;
+    border-right: 1px solid #d7d7d9;
+    border-bottom: unset;
+  }
+
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .table.horizontalheaders > .tab-content {
+    max-width: 100%;
+  }
 }
 
 // Front page styling END
