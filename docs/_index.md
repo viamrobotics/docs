@@ -1,7 +1,7 @@
 ---
 title: "Viam Documentation"
 linkTitle: "Viam Documentation"
-description: "Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning."
+description: "Viam is a software platform that makes it easy to integrate hardware and software to build machines, connect them with the cloud, and make them smarter."
 weight: 1
 no_list: true
 type: "docs"
@@ -11,6 +11,14 @@ sitemap:
   priority: 1.0
 outputs:
   - html
+aliases:
+  - "/getting-started/"
+  - "/getting-started/high-level-overview"
+  - "/product-overviews/"
+  - "/viam/"
+  - "/viam/app.viam.com/"
+imageAlt: "/general/understand.png"
+images: ["/general/understand.png"]
 noedit: true
 date: "2024-09-17"
 # updated: ""  # When the content was last entirely checked
@@ -51,7 +59,9 @@ date: "2024-09-17"
 <br>
   <h2 class="frontpage-headers">Program any device</h2>
   <p>
-    Viam integrates with hardware and software on <b>any device</b>. Once installed, you can control your devices and any attached physical hardware like this:
+
+Viam integrates with hardware and software on **any device**. To get started, install Viam and create a configuration that describes your machine's {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your devices and any attached physical hardware **from anywhere in the world** as well as from local networks:
+
   </p>
 
 {{< tabs class="horizontalheaders program">}}
@@ -292,7 +302,7 @@ TODO
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO
+  To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [Viam Registry](/registry/) or create your own for custom needs.
 
   </div>
   <div class="explanationvisual">
@@ -395,6 +405,12 @@ for d in detections:
 
 Sync sensor, image, and any other data from all your machines to the cloud, where you can manage and query it.
 
+Example use cases:
+
+- Capture sensor data on 100s of boats and sync it to the cloud when machines have internet connectivity.
+
+- Use machine learning to detect wildlife and when detected start data capture and send alerts.
+
 Also triggers
 
 For more information, see [Data Management](/services/data/).
@@ -477,6 +493,28 @@ For more information, see [motion service](/services/motion/).
 </div>
 </div>
 {{% /tab %}}
+{{% tab name="Navigation" %}}
+<div class="tabcontent">
+
+```python
+TODO
+```
+
+<div class="explanation">
+  <div class="explanationtext">
+
+Example use case:
+
+- Allow delivery robots to use their location and SLAM to navigate intelligently between GPS coordinates.
+
+  </div>
+  <div class="explanationvisual">
+
+  TODO
+  </div>
+</div>
+</div>
+{{% /tab %}}
 {{% tab name="Custom Logic" %}}
 <div class="tabcontent">
 
@@ -505,7 +543,7 @@ TODO
 <br>
   <h2 class="frontpage-headers">Go from one machine to thousands</h2>
   <p>
-    When you connect machines to the cloud you get fleet management tools that let you scale from one prototype to thousands of machines you can manage and operate from one place.
+    When you connect machines to the cloud you get fleet management tools that let you scale from one prototype to thousands of machines you can manage and operate from one place using the Viam Cloud.
   </p>
 </div>
 
@@ -540,7 +578,8 @@ TODO
 <div class="explanation">
   <div class="explanationtext">
 
-You can deploy software packages to many machines and keep those software packages versioned. Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
+Configure and update hardware, software, and machine learning models for groups of machines in one go.
+Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
 
 For more information, see [Deploy and update packages across devices](/how-tos/deploy-packages/).
 
@@ -580,7 +619,7 @@ For more information, see [Provisioning](/fleet/provision/).
 </div>
 
 {{% /tab %}}
-{{% tab name="Remote Diagnostics" %}}
+{{% tab name="Observability" %}}
 
 <div class="tabcontent">
 
