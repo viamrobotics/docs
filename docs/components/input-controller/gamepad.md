@@ -15,6 +15,9 @@ component_description: "Supports X-box, Playstation, and similar controllers wit
 Configuring a `gamepad` input controller allows you to use a Linux-supported gamepad as a device to communicate with your machine.
 Linux supports most standard gamepads, such as PlayStation or Xbox type game controllers, as well as many joysticks, racing wheels, and more.
 
+Make sure to physically connect your gamepad to your machine's computer and turn it on.
+Then, configure the controller:
+
 {{< tabs name="Configure a `gamepad` input controller" >}}
 {{% tab name="Config Builder" %}}
 

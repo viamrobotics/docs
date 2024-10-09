@@ -21,6 +21,7 @@ Find more information in the [encoded motor documentation](/components/motor/enc
 {{< /alert >}}
 
 To configure a DC motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
+Make sure to physically connect your motor to your board and turn it on.
 Then add your motor:
 
 {{< tabs name="gpio-config">}}

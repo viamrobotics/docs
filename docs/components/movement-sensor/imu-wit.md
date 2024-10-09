@@ -31,6 +31,9 @@ If you are using WitMotion's HWT905 IMU, configure an [`imu-wit-hwt905`](../imu-
 
 {{% /alert %}}
 
+Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Then, configure the movement sensor:
+
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
