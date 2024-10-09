@@ -76,7 +76,7 @@ The tutorial uses the following hardware:
 
 Before you can use Viam on your device, you must ensure it has a supported operating system.
 If you are using a Raspberry Pi, start by [setting up your Raspberry Pi](/installation/prepare/rpi-setup/).
-For other single-board computers, see the [installation guide](/installation/#platform-requirements).
+For other single-board computers, see the [installation guide](/installation/viam-server-setup/#platform-requirements).
 
 {{% snippet "setup.md" %}}
 

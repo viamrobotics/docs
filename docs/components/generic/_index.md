@@ -60,7 +60,7 @@ If your `viam-micro-server` machine includes a resource that isn't a [base](/com
 {{< alert title="Important" color="note" >}}
 `viam-micro-server` works differently from the RDK, so creating modular resources for it is different.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
-You will need to [recompile and flash your ESP32 yourself](/installation/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/installation/viam-micro-server-setup/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 {{% /tab %}}
