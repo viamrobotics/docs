@@ -265,9 +265,7 @@ make native
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- TODO: add back in once notes page https://github.com/viamrobotics/micro-rdk/pull/320 is merged
-
-For further details on `viam-micro-server` development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](TBD). -->
+For further details on `viam-micro-server` development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
 ## Troubleshooting
 
