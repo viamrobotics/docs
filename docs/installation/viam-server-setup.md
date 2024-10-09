@@ -6,7 +6,7 @@ no_list: true
 type: docs
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
-description: "To use Viam, install and run viam-server or viam-micro-server on the computer or microcontroller that will run your machine and is connected to your hardware."
+description: "To use Viam, install and run viam-server on the computer that will run your machine and is connected to your hardware."
 date: "2024-08-19"
 # updated: ""  # When the content was last entirely checked
 aliases:
@@ -28,7 +28,7 @@ To use Viam, you need to install either the `viam-server` binary or `viam-micro-
 [`viam-server`](/architecture/rdk/) is the binary built from the [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
 
 `viam-micro-server` is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
-To install `viam-micro-server`, see [`viam-micro-server` Installation Guide](/installation/viam-micro-server-setup/).
+To install `viam-micro-server`, see [`viam-micro-server` Installation Guide](/installation/viam-micro-server-setup/) instead.
 
 For an overview of the Viam software platform, see [Learn about Viam](/get-started/).
 
