@@ -18,3 +18,4 @@ bin
 .frontmatter
 frontmatter.json
 Pipfile
+typesense.env
