@@ -122,7 +122,7 @@ For a full list of available API methods, see [Component APIs](/appendix/apis/#c
 {{% card link="/appendix/apis" customDescription="Usage examples for each API method." %}}
 {{< /cards >}}
 
-{{%expand "Click this to see example boilerplate code" %}}
+{{%expand "Click this to see example connection code" %}}
 {{< tabs >}}
 {{< tab name="Python" >}}
 
