@@ -21,12 +21,6 @@ no_service: true
 The data management service captures data from one or more {{< glossary_tooltip term_id="resource" text="resources" >}} locally, and syncs it to cloud storage when a connection to the cloud is available.
 You can configure which data you want to capture, as well as the capture rate and the sync frequency.
 
-Get started with a quickstart guide or keep reading for more details.
-
-{{< cards >}}
-{{< card link="/get-started/collect-data/" class="green">}}
-{{< /cards >}}
-
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 
@@ -768,6 +762,8 @@ If you have captured data that you do not want to sync, delete the data on the m
 To delete the data locally, `ssh` into your machine and delete the data in the directory where you capture data.
 
 {{< /expand >}}
+
+{{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
 
 ## Sync data conditionally
 
