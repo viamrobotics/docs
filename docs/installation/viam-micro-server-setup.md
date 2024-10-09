@@ -1,7 +1,6 @@
 ---
 title: "viam-micro-server Installation Guide"
-linkTitle: "viam-micro-server quick setup"
-childTitleEndOverwrite: "Try Viam"
+linkTitle: "viam-micro-server setup"
 weight: 10
 no_list: true
 type: docs

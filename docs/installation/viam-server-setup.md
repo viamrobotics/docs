@@ -1,7 +1,6 @@
 ---
 title: "viam-server Installation Guide"
 linkTitle: "viam-server setup"
-childTitleEndOverwrite: "Try Viam"
 weight: 9
 no_list: true
 type: docs
