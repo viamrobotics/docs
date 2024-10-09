@@ -74,7 +74,7 @@ The `sync-at-time` sensor does not sense time despite being named a time sensor.
 It _senses_ whether the data manager should sync or not and determines this based on the time of day.
 During the configured time of the day, the code will pass `true` to the [CreateShouldSyncReading function](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#CreateShouldSyncReading) which will enable syncing:
 
-```go {class="line-numbers linkable-line-numbers" data-line="7,12"}
+```go {class="line-numbers linkable-line-numbers" data-line="7,12,28"}
 func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
     currentTime := time.Now()
     var hStart, mStart, sStart, hEnd, mEnd, sEnd int
