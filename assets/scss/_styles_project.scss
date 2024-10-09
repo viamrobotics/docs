@@ -2073,6 +2073,7 @@ h3.body-header[style] {
   margin: auto;
   display: flex;
   justify-content: flex-start;
+  gap: 1rem;
 }
 
 .front-card-container > .hover-card, .front-card-container > .hover-card > a {
@@ -2086,11 +2087,12 @@ h3.body-header[style] {
 .front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
   text-transform: uppercase;
   font-family: "Space Mono",sans-serif;
+  margin-right: 0;
 }
 
 .front-card-container > .cta.secondary {
   align-content: center;
-  margin: 1rem 1rem 1rem 0rem;
+  margin: 1rem 0rem 1rem 0rem;
   display: flex;
 }
 
@@ -2118,6 +2120,7 @@ h3.body-header[style] {
 }
 
 .hero-container .hero {
+  margin-top: 3rem;
   max-width: 40%;
 }
 
@@ -2130,6 +2133,13 @@ h3.body-header[style] {
 .hero-text {
   max-width: 100%;
 }
+
+.hero-text > h1 {
+  margin-top: 2rem;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
 }
 
 
@@ -2139,6 +2149,7 @@ h3.body-header[style] {
 
 .front-card-container > .hover-card > a > div {
   margin: auto;
+  padding: 0 0.75rem
 }
 
 @media (max-width: 650px) {
@@ -2364,7 +2375,7 @@ hr {
 }
 
 .front-card-container > .hover-card > a {
-  padding: 0.75rem;
+  padding: unset;
 }
 
 .horizontalheaders.program {

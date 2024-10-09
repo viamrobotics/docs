@@ -30,14 +30,6 @@ You can collect data from your robots, IoT devices, or any other machines, and s
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/J0NNiQD0ocQ">}}
 
-Get started now with a quickstart guide:
-
-{{< cards >}}
-{{< card link="/how-tos/collect-data/" class="green">}}
-{{< /cards >}}
-
-Or learn more about Viam's data management features, which can be broken down into on-device and cloud data capabilities:
-
 ## On-device data management
 
 The data management service:
