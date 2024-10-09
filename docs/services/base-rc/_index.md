@@ -43,6 +43,9 @@ You can monitor the input from these controls in the **CONTROL** tab of the [Via
 
 You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your machine to be able to use a base remote control service.
 
+First, make sure your base is physically assembled and powered on.
+Then, configure the service:
+
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
