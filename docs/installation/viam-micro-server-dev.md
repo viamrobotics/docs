@@ -1,7 +1,7 @@
 ---
 title: "viam-micro-server Development Setup"
 linkTitle: "viam-micro-server dev setup"
-weight: 5
+weight: 12
 no_list: true
 type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
@@ -23,7 +23,7 @@ aliases:
 This page provides instructions for you to customize `viam-micro-server` and create modules.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
-If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/#install-viam-micro-server) instead.
+If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) instead.
 {{< /alert >}}
 
 Follow these steps to install and build `viam-micro-server` on your ESP32 for development:

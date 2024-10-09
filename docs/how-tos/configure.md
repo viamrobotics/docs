@@ -33,7 +33,7 @@ Viam's modular system of {{< glossary_tooltip term_id="component" text="componen
 
 {{% expand "A device that can run viam-server or viam-micro-server" %}}
 
-See [Compatibility](/installation/#platform-requirements) for more information on if your device is suitable.
+See [`viam-server` Platform requirements](/installation/viam-server-setup/#platform-requirements) and [`viam-micro-server` Platform requirements](/installation/viam-micro-server-setup/#platform-requirements) for more information on if your device is suitable.
 
 {{% /expand%}}
 

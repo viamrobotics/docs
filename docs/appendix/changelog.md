@@ -189,7 +189,7 @@ You can now upload your own ML model(/services/ml/ml-models/) using any of these
 
 {{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for `viam-micro-server`" %}}
 
-You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/installation/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
+You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
 
 {{% /changelog %}}
 
@@ -991,7 +991,7 @@ When adding [frames](/services/frame-system/) to your machine's config in the Vi
 {{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
 `viam-micro-server` is a lightweight version of `viam-server` that can run on an ESP32.
-Find more information in the [`viam-micro-server` installation docs](/installation/#install-viam-micro-server).
+Find more information in the [`viam-micro-server` installation docs](/installation/viam-micro-server-setup/#install-viam-micro-server).
 
 {{% /changelog %}}
 
