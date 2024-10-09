@@ -136,7 +136,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
     cd <your-path-to/your-project-directory>
     ```
 
-3.  If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but being sure to exclude the generated `viam.json` file, which includes secrets:
+3.  If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but be sure to exclude the generated `viam.json` file, which includes secrets:
 
     ```sh { class="command-line" data-prompt="$"}
     git add .
@@ -224,6 +224,8 @@ make upload
    git clone https://github.com/viamrobotics/micro-rdk [path-to-new-clone]
    cd <your-path-to/your-viam-micro-server-clone>
    ```
+
+1. Make any necessary additions or fixes.
 
 1. Compile and run the project.
    The `viam-micro-server` can either be built for ESP32, or as a native version for testing purposes:
