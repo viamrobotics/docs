@@ -80,7 +80,7 @@ h2, .h2 {
   font-family: space grotesk, sans-serif;
   font-size: 2.0rem !important; // 24pt
   line-height: 2.667rem;
-  font-weight: 400;
+  font-weight: 600;
   clear: both;
 }
 
@@ -2072,14 +2072,69 @@ h3.body-header[style] {
 .front-card-container {
   margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .front-card-container > .hover-card, .front-card-container > .hover-card > a {
   min-width: unset;
   max-width: unset;
   text-align: center;
-  vertical-align: center;
+  margin-left: unset;
+  align-content: center;
+}
+
+.front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
+  text-transform: uppercase;
+  font-family: "Space Mono",sans-serif;
+}
+
+.front-card-container > .cta.secondary {
+  align-content: center;
+  margin: 1rem 1rem 1rem 0rem;
+  display: flex;
+}
+
+.front-card-container > .cta.secondary > a {
+  padding: 0.75rem;
+  display: flex;
+  align-content: center;
+  text-decoration: underline;
+  color: black;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-text {
+  min-width: 50%;
+  max-width: 50%;
+}
+
+.hero-text > h1 {
+  margin-top: 7rem;
+  font-weight: 600;
+}
+
+.hero-container .hero {
+  max-width: 40%;
+}
+
+@media (max-width: 950px) {
+.hero-container .hero {
+  display: none;
+  max-width: 0;
+}
+
+.hero-text {
+  max-width: 100%;
+}
+}
+
+
+.front-card-container > .cta.secondary > a * p {
+  margin-bottom: unset;
 }
 
 .front-card-container > .hover-card > a > div {
@@ -2263,8 +2318,12 @@ div.explanation > .explanationvisual > .gif {
   height: calc(100% - 10px);
 }
 
-.td-content > div.max-page {
+.td-content > div.max-page, hr {
   max-width: 1000px !important;
+}
+
+hr {
+  margin-left:0;
 }
 
 @media (max-width: 1140px) {

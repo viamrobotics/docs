@@ -1,7 +1,7 @@
 ---
 title: "Viam Documentation"
 linkTitle: "Viam Documentation"
-description: "Viam is a complete software platform for smart machines that runs on any 64-bit Linux OS and macOS."
+description: "Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning."
 weight: 1
 no_list: true
 type: "docs"
@@ -11,35 +11,44 @@ sitemap:
   priority: 1.0
 outputs:
   - html
-carouselscript: true
+noedit: true
 date: "2024-09-17"
 # updated: ""  # When the content was last entirely checked
 ---
 
 <div class="max-page">
-  <p>
-    Welcome to the Viam Documentation!
-    Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
-  </p>
-  <div class="cards max-page use-cases aligncenter">
-    <div class="front-card-container">
-      <div class="hover-card primary">
-        <a href="how-tos/" class="noanchor">
-        <div>
-          <p>How-to Guides</p>
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1>Viam Documentation</h1>
+      <p>
+        Welcome to the Viam Documentation!
+        Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
+      </p>
+      <div class="cards max-page">
+        <div class="front-card-container">
+          <div class="hover-card primary">
+            <a href="how-tos/" class="noanchor">
+            <div>
+              <p>How-to Guides</p>
+            </div>
+          </a>
+          </div>
+          <div class="cta secondary">
+            <a href="platform/" class="noanchor"><div>
+            <p>Platform Reference →</p></div>
+            </a>
+          </div>
         </div>
-      </a>
-      </div>
-      <div class="hover-card">
-        <a href="platform/" class="noanchor"><div>
-        <p>Platform Reference</p></div>
-        </a>
       </div>
     </div>
+    <img src=viam.svg class="hero">
   </div>
 </div>
 <br>
+<hr>
 <div class="max-page">
+<br>
+<br>
   <h2 class="frontpage-headers">Program any device</h2>
   <p>
     Viam integrates with hardware and software on <b>any device</b>. Once installed, you can control your devices and any attached physical hardware like this:
@@ -297,6 +306,8 @@ TODO
 {{< /tabs >}}
 
 <div class="max-page">
+<br>
+<br>
   <h2 class="frontpage-headers">Make your devices better and smarter</h2>
   <p>
     You can pick and choose from additional tools to make your devices understand their environment, interact with it, and collect information:
@@ -490,6 +501,8 @@ TODO
 {{< /tabs >}}
 
 <div class="max-page">
+<br>
+<br>
   <h2 class="frontpage-headers">Go from one machine to thousands</h2>
   <p>
     When you connect machines to the cloud you get fleet management tools that let you scale from one prototype to thousands of machines you can manage and operate from one place.
