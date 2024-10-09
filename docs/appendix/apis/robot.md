@@ -1,9 +1,9 @@
 ---
-title: "Manage Machines with Viam's Robot API"
+title: "Manage Machines with Viam's Machine Management API"
 linkTitle: "Machine Management"
 weight: 20
 type: "docs"
-description: "How to use the Robot API to monitor and manage your machines."
+description: "How to use the Machine API to monitor and manage your machines."
 tags: ["robot state", "sdk", "apis", "robot api"]
 aliases:
   - /program/apis/robot/
@@ -20,7 +20,7 @@ The machine API supports the following methods:
 
 ## Establish a connection
 
-To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
+To interact with the machine API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
 To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/cloud/machines/#code-sample) tab.
 Toggle **Include API key**, and then copy and paste the API key ID and the API key into your environment variables or directly into the code:
@@ -35,16 +35,20 @@ from viam.rpc.dial import DialOptions, Credentials
 from viam.robot.client import RobotClient
 
 
-async def connect():
-    opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's
-        # API key
-        api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's
-        # API key ID
-        api_key_id='<API-KEY-ID>'
+async def connect() -> RobotClient:
+    opts = RobotClient.Options(
+        disable_sessions=True,
+        dial_options=DialOptions(timeout=10)).with_api_key(
+            # Replace "<API-KEY>" (including brackets) with your API key
+            api_key='<API-KEY>',
+            # Replace "<API-KEY-ID>" (including brackets) with your API key
+            # ID
+            api_key_id='<API-KEY-ID>'
+        )
+    return await RobotClient.at_address(
+      address='ADDRESS FROM CONNECT TAB OF VIAM APP',
+      options=opts
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def main():
@@ -120,11 +124,11 @@ To configure a timeout when using the robot API:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.DialOptions):
+Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.DialOptions) inside of `Options`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Add the timeout argument to DialOptions:
-dial_options = DialOptions(credentials=creds, timeout=10)
+dial_options = DialOptions(timeout=10)
 ```
 
 The example above shows a timeout of 10 seconds configured.
