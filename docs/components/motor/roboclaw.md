@@ -22,7 +22,8 @@ Follow [this guide](https://resources.basicmicro.com/roboclaw-motor-controllers-
 
 {{< /alert >}}
 
-To configure a `roboclaw` motor as a component of your machine:
+Make sure to physically connect your motor to your machine's computer and turn it on.
+Then, configure the motor:
 
 {{< tabs name="Configure your roboclaw motor">}}
 {{% tab name="Config Builder" %}}

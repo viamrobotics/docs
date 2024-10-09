@@ -19,6 +19,7 @@ Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072
 {{< /alert >}}
 
 To configure a `gpiostepper` motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
+Make sure to physically connect your motor to your board and turn it on.
 Then, add the motor:
 
 {{< tabs name="gpiostepper-config">}}

@@ -13,7 +13,9 @@ component_description: "Supports hobby servos wired to any model of board beside
 # SME: Rand
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`viam:raspberry-pi:rpi` model [board](/components/board/) into your machine:
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`viam:raspberry-pi:rpi` model [board](/components/board/) into your machine.
+Make sure to physically connect your sensor to your board and turn it on.
+Then, configure the servo:
 
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}

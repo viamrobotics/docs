@@ -12,6 +12,9 @@ component_description: "Supports the mGrip soft gripper by Soft Robotics."
 
 The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softroboticsinc.com/uploads/2021/03/Soft_Robotics_ModularGripping_800129_RevD_LR.pdf) gripper controlled by the [Soft Robotics *co*Drive Control Unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf).
 
+First, connect the gripper to your machine's computer and turn it on.
+Then, configure the gripper:
+
 {{< tabs name="Configure a softrobotics gripper" >}}
 {{% tab name="Config Builder" %}}
 
