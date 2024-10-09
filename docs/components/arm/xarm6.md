@@ -142,8 +142,9 @@ For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {
-  "set_speed": 45.0, # Set speed to 45.0 degrees per second
-  "set_acceleration": 10.0 # Set acceleration to 10.0 degrees per second squared
+  "set_speed": 45.0,  # Set speed to 45.0 degrees per second
+  "set_acceleration": 10.0  # Set acceleration to 10.0 degrees
+                            # per second squared
 }
 result = await my_arm.do_command(command)
 ```
