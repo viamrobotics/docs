@@ -93,18 +93,18 @@ The above command redirects `espup`'s production of the setup script to `/dev/nu
 If you would like to instead retain the setup script, replace `/dev/null` in the above command with the location where you would like the script to be written, or remove the `-f /dev/null` entirely and the file will be written to `$HOME/export-esp.sh` by default.
 {{< /alert >}}
 
-## Development tasks
+## Creating a project or module
 
-There are three main types of development tasks relevant for `viam-micro-server`:
+With the dev setup for `viam-micro-server`, you can:
 
 - Creating a project that combines `viam-micro-server` with one or more modules to produce a new firmware instance with expanded functionality.
-- Creating modules that can integrate with `viam-micro-server` to deliver new opt-in functionality or device support.
-- Working on `viam-micro-server` itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution.
+- Create modules that can integrate with `viam-micro-server` to deliver new opt-in functionality or device support.
+- Work on `viam-micro-server` itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution.
 
 {{< tabs >}}
 {{% tab name="Create a New Project" %}}
 
-1.  Create a new machine and obtain its credentials
+1.  Create a new machine and obtain its credentials:
 
 - Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 - Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
@@ -113,7 +113,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
 - Click the copy icon underneath **Machine cloud credentials**.
-  `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+  `viam-micro-server` needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
 {{% snippet "secret-share.md" %}}
 
@@ -136,7 +136,7 @@ There are three main types of development tasks relevant for `viam-micro-server`
     cd <your-path-to/your-project-directory>
     ```
 
-3.  If you wish to use revision control for this project, this is the best time to initialize a git repository and commit all the generated files, but be sure to exclude the generated `viam.json` file, which includes secrets:
+3.  If you wish to use version control for this project, this is the best time to initialize a git repository and commit all the generated files, but be sure to exclude the generated `viam.json` file, which includes secrets:
 
     ```sh { class="command-line" data-prompt="$"}
     git add .
@@ -202,7 +202,7 @@ make upload
    cd <your-path-to/your-module-directory>
    ```
 
-1. If you wish to use revision control for the module, this is the best time to initialize a git repository and commit all the generated files.
+1. If you wish to use version control for the module, this is the best time to initialize a git repository and commit all the generated files.
    There are no secrets in a newly generated module repository:
 
    ```sh { class="command-line" data-prompt="$"}
@@ -218,7 +218,7 @@ make upload
 {{% /tab %}}
 {{% tab name="viam-micro-server Development" %}}
 
-1. If you have not done so before, clone the `viamrobotics/micro-rdk` git repository (optionally specifying a path for the new clone) and `cd` into the clone:
+1. Clone the `viamrobotics/micro-rdk` repository (optionally specifying a path for the new clone) and `cd` into the clone:
 
    ```sh { class="command-line" data-prompt="$"}
    git clone https://github.com/viamrobotics/micro-rdk [path-to-new-clone]
