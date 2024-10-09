@@ -2054,3 +2054,15 @@ h3.body-header[style] {
 .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label, .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field .input {
   margin-right: 1rem;
 }
+
+.algolia-autocomplete .typesense-docsearch-suggestion--subcategory-column {
+  display: none !important;
+  float:left;
+  width:0 !important;
+  padding-left:0;
+  padding:0px;
+}
+
+.algolia-autocomplete .typesense-docsearch-suggestion--content {
+  width: 100% !important;
+}

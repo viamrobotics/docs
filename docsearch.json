@@ -21,15 +21,23 @@
         "tags": ["changelog"],
         "page_rank": 1
     },{
+        "url": "https://docs.viam.com/appendix/apis/",
+        "tags": ["apis"],
+        "page_rank": 2
+    },{
+        "url": "https://docs.viam.com/registry/examples/",
+        "tags": ["apis"],
+        "page_rank": 30
+    },{
         "url": "https://docs.viam.com/",
         "tags": [],
-        "page_rank": 10
+        "page_rank": 40
     }],
     "sitemap_urls": ["https://docs.viam.com/sitemap.xml"],
     "use_anchors": true,
     "selectors": {
         "lvl0": ".td-content h1",
-        "lvl1": ".td-content .lead",
+        "lvl1": ".td-content p:first-of-type",
         "lvl2": ".td-content h2",
         "lvl3": ".td-content h3",
         "lvl4": ".td-content h4",

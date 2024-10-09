@@ -1613,7 +1613,8 @@ If you would like to test your module locally against a target platform other th
 
 {{% /alert %}}
 
-To use a local module on your machine, first add its module to your machine's config, then add the component or service it implements:
+To use a local module on your machine, first make sure any physical hardware implemented in your module is connected to your machine's computer.
+Add the module to your machine's config, then add the component or service it implements:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 
