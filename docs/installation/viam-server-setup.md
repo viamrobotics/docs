@@ -1,6 +1,6 @@
 ---
 title: "viam-server Installation Guide"
-linkTitle: "viam-server setup"
+linkTitle: "Installation"
 weight: 9
 no_list: true
 type: docs
@@ -8,7 +8,7 @@ images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
 description: "To use Viam, install and run viam-server on the computer that will run your machine and is connected to your hardware."
 date: "2024-08-19"
-# updated: ""  # When the content was last entirely checked
+# updated: "2024-10-09"  # When the content was last entirely checked
 aliases:
   - /installation/prepare/
   - /installation/macos-install/

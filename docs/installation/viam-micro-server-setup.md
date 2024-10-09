@@ -1,6 +1,6 @@
 ---
 title: "viam-micro-server Installation Guide"
-linkTitle: "viam-micro-server setup"
+linkTitle: "Installation (Microcontrollers)"
 weight: 10
 no_list: true
 type: docs
