@@ -106,18 +106,18 @@ With the dev setup for `viam-micro-server`, you can:
 
 1.  Create a new machine and obtain its credentials:
 
-- Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
-- Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
-- Select the part status dropdown to the right of your machine's name on the top of the page:
+    Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
+    Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
+    Select the part status dropdown to the right of your machine's name on the top of the page:
 
-  {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+    {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
-- Click the copy icon underneath **Machine cloud credentials**.
-  `viam-micro-server` needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+    Click the copy icon underneath **Machine cloud credentials**.
+    `viam-micro-server` needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
 {{% snippet "secret-share.md" %}}
 
-1.  Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
+2.  Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
     ```sh { class="command-line" data-prompt="$"}
     cargo generate --git https://github.com/viamrobotics/micro-rdk.git
@@ -130,13 +130,13 @@ With the dev setup for `viam-micro-server`, you can:
     You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
     Paste in the credentials you obtained in step 1.
 
-2.  Change directories into the generated project:
+3.  Change directories into the generated project:
 
     ```sh { class="command-line" data-prompt="$"}
     cd <your-path-to/your-project-directory>
     ```
 
-3.  If you wish to use version control for this project, this is the best time to initialize a git repository and commit all the generated files, but be sure to exclude the generated `viam.json` file, which includes secrets:
+4.  If you wish to use version control for this project, this is the best time to initialize a git repository and commit all the generated files, but be sure to exclude the generated `viam.json` file, which includes secrets:
 
     ```sh { class="command-line" data-prompt="$"}
     git add .
@@ -144,7 +144,7 @@ With the dev setup for `viam-micro-server`, you can:
     git commit -m "initial commit"
     ```
 
-4.  Compile the project:
+5.  Compile the project:
 
     ```sh { class="command-line" data-prompt="$"}
     make build-esp32-bin
@@ -153,7 +153,7 @@ With the dev setup for `viam-micro-server`, you can:
     Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
     Subsequent builds will be faster.
 
-5.  Upload the generated firmware to your ESP32:
+6.  Upload the generated firmware to your ESP32:
 
     Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
 
@@ -177,10 +177,10 @@ make upload
 
 {{< /alert >}}
 
-6.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
+7.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
     If successful, **Live** should be displayed underneath **Last online**.
 
-7.  You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
+8.  You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
     After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
 
 {{% /tab %}}

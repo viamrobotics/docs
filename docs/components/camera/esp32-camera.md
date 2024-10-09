@@ -30,7 +30,7 @@ For example, the `OV2640` with a ribbon cable connected to an ESP32:
 
 {{< alert title="Software requirements" color="note" >}}
 To use this model, you must follow the [`viam-micro-server` Development Setup](/installation/viam-micro-server-dev/), which enables you to install and activate the ESP-IDF.
-At the step [Generate a new project from a template](/installation/viam-micro-server-dev/#development-tasks) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
+At the step [Generate a new project from a template](/installation/viam-micro-server-dev/#creating-a-project-or-module) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
 Finish the [`viam-micro-server` Development Setup](/installation/viam-micro-server-dev/) and return to this guide.
 {{< /alert >}}
 
