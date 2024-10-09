@@ -18,6 +18,9 @@ Use the `incremental` encoder model to configure [a quadrature encoder](https://
 Configuring an `incremental` encoder requires specifying the {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} of the two pins on the board to which the encoder is wired.
 These two pins provide the phase outputs used to measure the speed and direction of rotation in relation to a given reference point.
 
+First, be sure to connect the encoder to your machine's microcontroller.
+Then, configure the encoder:
+
 {{< tabs name="Configure an incremental encoder" >}}
 {{% tab name="Config Builder" %}}
 

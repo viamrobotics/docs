@@ -18,6 +18,7 @@ Complete the following setup requirements, then move on to configuring your boar
 
 ## Setup requirements
 
+First, physically assemble and turn on your board.
 You must flash your Intel-based board with:
 
 1. The Ubuntu `"Server install image"` version of the operating system.
