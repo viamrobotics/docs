@@ -2127,83 +2127,6 @@ h3.body-header[style] {
   max-width: 1000px;
 }
 
-#tab-content-tabset--program > div.active > p {
-  text-align: right;
-}
-
-#tab-content-tabset--program > div.active > div {
-  flex-grow: 1;
-}
-
-#tab-content-tabset--program * div.table {
-  margin: 0;
-}
-
-#tab-content-tabset--program > div.active div.explanation {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid #d7d7d9;
-  border-top: none;
-}
-
-#tab-content-tabset--program > div.active div.explanation .explanationtext {
-  flex: 2 1 auto;
-  min-width: 300px;
-  margin: 0.5rem 1rem 0 1rem;
-}
-
-#tab-content-tabset--program > div.active div.explanation > .explanationvideo * video {
-  min-width: 250px;
-  max-width: 250px;
-}
-
-@media (max-width: 952px) {
-  #tab-content-tabset--program > div.active div.explanation > .explanationvideo {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  #tab-content-tabset--program > div.active div.explanation > .explanationvideo {
-    flex-grow: unset;
-    display: unset;
-    justify-content: unsafe;
-  }
-}
-
-@media (max-width: 685px) {
-  #tab-content-tabset--program > div.active div.explanation > .explanationvideo {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-  }
-}
-
-#tab-content-tabset--program * .tab-content {
-  margin: 0;
-  padding: 0;
-}
-
-
-#tab-content-tabset--program * .tab-content .code-toolbar {
-  margin: 0;
-  padding: 0;
-  border: unset;
-}
-
-.custom-select {
-  max-width: 250px;
-  margin: 0.25rem;
-}
-
-.custom-select.lang {
-  max-width: 150px;
-}
-
 .table.front-page .code-toolbar > pre {
   margin-top: unset;
 }
@@ -2277,6 +2200,7 @@ div.explanation > .explanationvisual {
 div.explanation > .explanationvisual * video, div.explanation > .explanationvisual > picture > img {
   min-width: 250px;
   max-width: 250px;
+  margin-bottom: unset;
 }
 
 div.explanation > .explanationvisual > .gif {
@@ -2336,7 +2260,7 @@ div.explanation > .explanationvisual > .gif {
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar > pre {
-  // min-height: 400px;
+  height: calc(100% - 10px);
 }
 
 .td-content > div.max-page {
@@ -2378,6 +2302,22 @@ div.explanation > .explanationvisual > .gif {
   .table.horizontalheaders > .tab-content {
     max-width: 100%;
   }
+}
+
+.front-card-container > .hover-card > a {
+  padding: 0.75rem;
+}
+
+.horizontalheaders.program {
+  min-height: 450px;
+}
+
+.horizontalheaders.services {
+  min-height: 580px;
+}
+
+.horizontalheaders.platform {
+  min-height: 650px;
 }
 
 // Front page styling END
