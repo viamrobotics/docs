@@ -1,0 +1,28 @@
+name: smart_machine_app
+description: "A Flutter app that integrates with Viam."
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.2.3 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.1.0
+  image: ^4.0.17
+  cupertino_icons: ^1.0.2
+  viam_sdk: ^0.0.20
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - .env
+  uses-material-design: true
