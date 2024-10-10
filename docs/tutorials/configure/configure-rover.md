@@ -23,7 +23,7 @@ cost: 540
 
 This tutorial will guide you through configuring a rover.
 
-<!-- LEARNIGN GOAL: After following this tutorial, you will be able to configure any rover using existing built-in or modular components. -->
+<!-- LEARNING GOAL: After following this tutorial, you will be able to configure any rover using existing built-in or modular components. -->
 
 If you are using a SCUTTLE, a Yahboom rover, or a different rover, this tutorial covers instructions for your rover model.
 
@@ -45,7 +45,7 @@ Once connected, navigate to the machine's **CONFIGURE** tab.
 
 ![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
 
-The configuration for each rover is different depending on which {{< glossary_tooltip term_id="component" text="components" >}} your rover is componsed of.
+The configuration for each rover is different depending on which {{< glossary_tooltip term_id="component" text="components" >}} your rover is composed of.
 In the following, you can see two popular examples with components that are present on most rovers:
 
 ## Configure the board
