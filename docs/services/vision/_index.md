@@ -107,5 +107,5 @@ For general configuration and development info, see:
 {{< cards >}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
-{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}

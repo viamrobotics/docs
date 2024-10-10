@@ -75,5 +75,5 @@ For general configuration and development info, see:
 {{< cards >}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
-{{% card link="/get-started/control-motor/" noimage="true" %}}
+{{% card link="/how-tos/control-motor/" noimage="true" %}}
 {{< /cards >}}
