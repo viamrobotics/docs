@@ -172,7 +172,7 @@ Any brand is suitable as long as you comply with the battery safety requirements
 {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/RC-mount.png" resize="400x" declaredimensions=true alt="RC battery mount" >}}
 
 You can mount a larger capacity RC-type battery into the rover.
-You must wire the appropriate connecter into the switch circuit.
+You must wire the appropriate connector into the switch circuit.
 
 RC-batteries are lithium-ion rechargeable batteries.
 Caution should always be taken when using such batteries, always comply with the battery safety requirements.

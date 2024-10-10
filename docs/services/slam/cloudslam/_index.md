@@ -363,7 +363,7 @@ From your machine's **Location** page, click **View SLAM library**, and click **
 ### End a session with previously captured data
 
 Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page by clicking **View SLAM library**.
-When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to yourlocation's **SLAM library**.
+When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your location's **SLAM library**.
 You can see details about the it from your machine's **Location** page by clicking **View SLAM library**.
 
 ## Upload a locally built map

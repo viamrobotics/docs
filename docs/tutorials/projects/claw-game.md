@@ -793,7 +793,7 @@ We tested with different Viam swag items such as t-shirts and hats, but found th
 
 In order to house the prizes, you’ll need to enclose three of the sides (front, left, and right sides) of the upper cabinet with plexiglass.
 
-1. Have someone hold the plexiglas in place while you carefully pre-drill holes for the wood screws.
+1. Have someone hold the plexiglass in place while you carefully pre-drill holes for the wood screws.
 1. Carefully screw the wood screws in place, being sure not to tighten excessively, as this can crack the plexiglass.
 1. Add a short barrier in the back to stop the prizes from falling out.
    We used the remaining 2x4 section for this.

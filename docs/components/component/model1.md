@@ -127,7 +127,7 @@ The following attributes are available for `model1` arms:
 | ------------ | --------- | ------ | ------------- | ----------- |
 | `board`      | **Required** | string | -             | The name of the board to which the device is wired.                                                                                                                                              |
 | `i2c_bus`    | **Required** | string | -             | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component. |
-| `attribute3` | Optional     | int    | 300           | Insert useful description here.                                                                                                                                                                  |
+| `attributes` | Optional     | int    | 300           | Insert useful description here.                                                                                                                                                                  |
 
 ## Test the component
 

@@ -58,7 +58,7 @@ You can capture data from any of the following components and services:
 {{< relatedcard link="/components/movement-sensor/">}}
 {{< relatedcard link="/components/sensor/">}}
 {{< relatedcard link="/components/servo/">}}
-{{< relatedcard link="/servicses/vision/">}}
+{{< relatedcard link="/services/vision/">}}
 {{< /cards >}}
 
 ## Cloud data management
