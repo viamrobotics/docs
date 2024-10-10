@@ -14,6 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.8
+      - name: Upgrade pip
+        run:
+          pip install --upgrade pip
+      - name: Create virtual environment
+        run:
+          python3 -m venv env
+      - name: Use virtual environment
+        run:
+          source env/bin/activate
       - uses: errata-ai/vale-action@reviewdog
         with:
           version: 2.30.0

@@ -15,9 +15,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.8
+      - name: Upgrade pip
+        run:
+          pip install --upgrade pip
+      - name: Create virtual environment
+        run:
+          python3 -m venv env
+      - name: Use virtual environment
+        run:
+          source env/bin/activate
       - name: Install Flake8 Markdown linter
-        run: pip3 install flake8-markdown
-
+        run:
+          pip install flake8-markdown
       - name: Markdown Lint
         run: flake8-markdown "docs/**/*.md"
