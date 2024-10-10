@@ -29,7 +29,6 @@ date: "2024-09-17"
     <div class="hero-text">
       <h1>Viam Documentation</h1>
       <p>
-        Welcome to the Viam Documentation!
         Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
       </p>
       <div class="cards max-page">
@@ -49,7 +48,7 @@ date: "2024-09-17"
         </div>
       </div>
     </div>
-    <img src=viam.svg class="hero">
+    <img src=viam.svg alt="Robot illustration" class="hero">
   </div>
 </div>
 <br>
@@ -65,7 +64,7 @@ Viam integrates with hardware and software on **any device**. To get started, in
   </p>
 
 {{< tabs class="horizontalheaders program">}}
-{{% tab name="Drive any base" %}}
+{{% tab name="Drive a base" %}}
 
 <div class="tabcontent">
 
@@ -109,7 +108,6 @@ async function moveInSquare(baseClient: VIAM.BaseClient) {
 }
 ```
 
-
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
@@ -144,7 +142,10 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 <div class="explanation">
   <div class="explanationtext">
 
+You can use any robotic base with Viam and once configured as a [base component](/components/base/), you can drive it using the [base API](/appendix/apis/components/base/).
+
 Try it yourself, [drive a rover](/how-tos/drive-rover/).
+You don't need to buy a rover, you can borrow one of ours to [try viam](https://app.viam.com/try).
 
   </div>
   <div class="explanationvisual">
@@ -157,6 +158,7 @@ Try it yourself, [drive a rover](/how-tos/drive-rover/).
 
 {{% /tab %}}
 {{% tab name="Control motor" %}}
+
 <div class="tabcontent">
 
 {{< tabs >}}
@@ -169,7 +171,7 @@ async def spin_motor(motor):
     # let the motor spin for 3 seconds
     time.sleep(3)
     # stop the motor
-    await await motor_1.stop()
+    await motor.stop()
 ```
 
 {{% /tab %}}
@@ -202,7 +204,6 @@ async function spinMotor(motorClient: VIAM.MotorClient) {
 }
 ```
 
-
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
@@ -232,19 +233,20 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 }
 ```
 
-
 {{% /tab %}}
 {{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
 
-Try it yourself, [control a motor](/how-tos/control-motor/).
+You can use any motor with Viam and, once configured as a [motor component](/components/motor/), you can operate the it using the [motor API](/appendix/apis/components/motor/).
+
+Find more information in the guide [Control a motor](/how-tos/control-motor/).
 
   </div>
   <div class="explanationvisual">
 
-{{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the Viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servo's direction as being counterclockwise. Below this is a gif of the Raspberry Pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
+{{<gif webm_src="/motor.webm" mp4_src="/motor.mp4" alt="A moving motor">}}
 
   </div>
 </div>
@@ -253,19 +255,66 @@ Try it yourself, [control a motor](/how-tos/control-motor/).
 {{% tab name="Get sensor reading" %}}
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 ```python
-TODO
+# Get the readings provided by the sensor.
+co_2_monitor = Sensor.from_robot(machine, "co2-monitor")
+co_2_monitor_return_value = await co_2_monitor.get_readings()
+print(f"co2-monitor get_readings return value: {co_2_monitor_return_value}")
 ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+// Get the readings provided by the sensor.
+co2Monitor, err := sensor.FromRobot(machine, "co2-monitor")
+co2MonitorReturnValue, err := co2Monitor.Readings(
+  context.Background(), map[string]interface{}{})
+logger.Infof("co2-monitor return value: %+v", co2MonitorReturnValue)
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts
+// Get the readings provided by the sensor.
+const co2MonitorClient = new VIAM.SensorClient(machine, "co2-monitor");
+const co2MonitorReturnValue = await co2MonitorClient.getReadings();
+console.log("co2-monitor return value:", co2MonitorReturnValue);
+```
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart
+// Get the readings provided by the sensor.
+final co2Monitor = Sensor.fromRobot(client, "co2-monitor");
+var readings = await co2Monitor.readings();
+print(readings);
+```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp
+// Get the readings provided by the sensor.
+auto co2-monitor = machine->resource_by_name<Sensor>("co2-monitor");
+auto co2-monitor_get_readings_return_value = co2-monitor->get_readings();
+std::cout << "co2-monitor get_readings return value " << co2-monitor_get_readings_return_value << "\n";
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO: figure out zoom on video
+You can use any physical sensor or anything else that provides measurements with Viam and, once configured as a [sensor component](/components/sensor/), you can get sensor readings using the [sensor API](/appendix/apis/components/sensor/).
 
-  </div>
-  <div class="explanationvisual">
-
-{{<gif webm_src="/services/data/monitor.webm" mp4_src="/services/data/monitor.mp4" alt="Getting performance metrics">}}
+Find more information in the guide [Collect and view sensor data](/how-tos/collect-sensor-data/).
 
   </div>
 </div>
@@ -274,19 +323,47 @@ TODO
 {{% tab name="Move an arm" %}}
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 ```python
-TODO
+# Command a joint position move: move the forearm of the arm slightly up
+cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
+await my_arm_component.move_to_joint_positions(
+    positions=cmd_joint_positions)
+
+# Generate a simple pose move +100mm in the +Z direction of the arm
+cmd_arm_pose = await my_arm_component.get_end_position()
+cmd_arm_pose.z += 100.0
+await my_arm_component.move_to_position(pose=cmd_arm_pose)
 ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+// Command a joint position move: move the forearm of the arm slightly up
+cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
+err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
+
+// Generate a simple pose move +100mm in the +Z direction of the arm
+currentArmPose, err := myArmComponent.EndPosition(context.Background(), nil)
+adjustedArmPoint := currentArmPose.Point()
+adjustedArmPoint.Z += 100.0
+cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
+
+err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referenceframe.NewEmptyWorldState(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO
+Once you configure an [arm component](/components/arm/), you can move any arm using the [arm API](/appendix/apis/components/arm/).
 
-  </div>
-  <div class="explanationvisual">
-
-  TODO
+Find more information in our guide on [moving an arm](/tutorials/services/accessing-and-moving-robot-arm/).
 
   </div>
 </div>
@@ -295,19 +372,35 @@ TODO
 {{% tab name="Operate custom hardware" %}}
 <div class="tabcontent">
 
-```python
-TODO
+```sh {class="command-line" data-prompt="$" data-output="3-20"}
+yo viam-module
+? Create module structure within current directory?  If no, will create a new directory with current directory matching the module name
+you select No
+? Your model triplet in the format namespace:family:modelname acme:rovers:base
+? The language your module will be written in, must match Viam SDK language selected (python currently supported) python
+? The API triplet this module uses (for example: rdk:component:motor). Expectation is that the second element is 'component' or 'service'.
+ rdk:component:base
+? Is this a viam-sdk built-in API? Yes
+Will create module scaffolding for module -  base
+API -  rdk:component:base
+Model - acme:rovers:base
+   create base-base/run.sh
+   create base-base/requirements.txt
+   create base-base/src/__main__.py
+   create base-base/src/__init__.py
+   create base-base/src/base.py
+   create base-base/README.md
 ```
 
 <div class="explanation">
   <div class="explanationtext">
 
-  To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [Viam Registry](/registry/) or create your own for custom needs.
+To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [Viam Registry](/registry/) or create your own for custom needs.
 
-  </div>
-  <div class="explanationvisual">
+Using the [Viam Registry](/registry/) you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
+There are also a variety of community-supplied resources you can use.
 
-  TODO
+For more information, see [Create a module](/how-tos/create-module/).
 
   </div>
 </div>
@@ -329,6 +422,9 @@ TODO
 
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 ```python
 # get image from camera stream on construction site
 cam = Camera.from_robot(machine, "construction-site-cam")
@@ -340,17 +436,42 @@ detections = await hardhat_detector.get_detections(img)
 
 # check whether a person is detected not wearing a hardhat
 for d in detections:
-  if d.confidence > 0.8 and d.class_name == "NO-Hardhat":
-    print("Violation detected.")
+    if d.confidence > 0.8 and d.class_name == "NO-Hardhat":
+        print("Violation detected.")
 ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+// get image from camera stream on construction site
+myCamera, err := camera.FromRobot(machine, "construction-site-cam")
+camStream, err := myCamera.Stream(context.Background())
+img, release, err := camStream.Next(context.Background())
+defer release()
+
+// use machine learning model to gather information from the image
+visService, err := vision.FromRobot(machine, "hardhat_detector")
+detections, err := visService.Detections(context.Background(), img, nil)
+
+// check whether a person is detected not wearing a hardhat
+for i := 0; i < len(detections); i++ {
+  if (detection[i].confidence > 0.8) && (detection[i].class_name == "NO-Hardhat")  {
+    logger.Info("Violation detected.")
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
 
-  Computer vision enables your machine to use connected cameras to sense and interpret the world around them.
-  With inferences about a machine's surroundings, you can program machine behavior to adapt to change accordingly.
+Computer vision enables your machine to use connected cameras to sense and interpret the world around them.
+With inferences about a machine's surroundings, you can program machine behavior to adapt to change accordingly.
 
-  To find out more, see [vision service](/services/vision/) or check out the tutorial [Monitor Job Site Helmet Usage with Computer Vision](/tutorials/projects/helmet/).
+To find out more, see [vision service](/services/vision/) or check out the tutorial [Monitor Job Site Helmet Usage with Computer Vision](/tutorials/projects/helmet/).
 
   </div>
   <div class="explanationvisual">
@@ -363,9 +484,10 @@ for d in detections:
 
 {{% /tab %}}
 {{% tab name="Data Capture & Sync" %}}
+
 <div class="tabcontent">
 
-{{<imgproc src="/services/data/data-capture-sync.png" resize="1200x" declaredimensions=true alt="Configuration to capture data for a camera" class="imgzoom aligncenter" style="max-width:500px">}}
+<img src="services/data/data-capture-sync.png" alt="Configuration to capture data from an air quality sensor" class="imgzoom aligncenter">
 
 <div class="explanation">
   <div class="explanationtext">
@@ -378,7 +500,7 @@ For more information, see [Data Management](/services/data/).
   </div>
   <div class="explanationvisual">
 
-{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" alt="A sample dataset." class="imgzoom fill aligncenter">}}
+{{<imgproc src="/services/data/air-quality-data.png" resize="1200x" alt="Captured air quality data" class="imgzoom fill aligncenter">}}
 
   </div>
 </div>
@@ -391,51 +513,58 @@ For more information, see [Data Management](/services/data/).
 {{% tab name="Python" %}}
 
 ```python
-my_gripper_resource = Gripper.get_resource_name("gripper")
+# Add a table obstacle to a WorldState
+table_origin = Pose(x=-202.5, y=-546.5, z=-19.0)
+table_dimensions = Vector3(x=635.0, y=1271.0, z=38.0)
+table_object = Geometry(center=table_origin,
+                        box=RectangularPrism(dims_mm=table_dimensions))
+obstacles_in_frame = GeometriesInFrame(reference_frame="world",
+                                       geometries=[table_object])
+world_state = WorldState(obstacles=[obstacles_in_frame])
 
-# Move the gripper in the -Z direction with respect to its own reference frame
-gripper_pose_rev = Pose(x=0.0,
-                        y=0.0,
-                        z=-100.0,
-                        o_x=0.0,
-                        o_y=0.0,
-                        o_z=1.0,
-                        theta=0.0)
-# Note the change in frame name
-gripper_pose_rev_in_frame = PoseInFrame(
-    reference_frame=my_gripper_resource.name,
-    pose=gripper_pose_rev)
+# Destination pose to move to
+dest_in_frame = PoseInFrame(
+    reference_frame="world",
+    pose=Pose(x=510.0, y=0.0, z=526.0, o_x=0.7, o_y=0.0, o_z=-0.7, theta=0.0))
 
+# Move arm to destination pose
 motion_service = MotionClient.from_robot(robot, "builtin")
-await motion_service.move(component_name=my_gripper_resource,
-                          destination=gripper_pose_rev_in_frame,
-                          world_state=world_state)
+await motion_service.move(
+    component_name=Arm.get_resource_name("myArm"),
+    destination=dest_in_frame, world_state=world_state)
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
-gripperName := "myGripper"
-gripperResource := gripper.Named(gripperName)
-
-// This will move the gripper in the -Z direction with respect to its own reference frame
-gripperPoseRev := spatialmath.NewPose(
-  r3.Vector{X: 0.0, Y: 0.0, Z: -100.0},
+// Add a table obstacle to a WorldState
+obstacles := make([]spatialmath.Geometry, 0)
+tableOrigin := spatialmath.NewPose(
+  r3.Vector{X: 0.0, Y: 0.0, Z: -10.0},
   &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
 )
-gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
+tableDimensions := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
+tableObj, err := spatialmath.NewBox(tableOrigin, tableDimensions, "table")
+obstacles = append(obstacles, tableObj)
+obstaclesInFrame := referenceframe.NewGeometriesInFrame(referenceframe.World, obstacles)
+worldState, err := referenceframe.NewWorldState([]*referenceframe.GeometriesInFrame{obstaclesInFrame}, nil)
 
+// Destination pose to move to
+destinationPose := spatialmath.NewPose(
+  r3.Vector{X: 510.0, Y: 0.0, Z: 526.0},
+  &spatialmath.OrientationVectorDegrees{OX: 0.7071, OY: 0.0, OZ: -0.7071, Theta: 0.0},
+)
+destPoseInFrame := referenceframe.NewPoseInFrame(
+  referenceframe.World, destinationPose)
+
+// Move arm to destination pose
 motionService, err := motion.FromRobot(robot, "builtin")
-_, err = motionService.Move(context.Background(), gripperResource, gripperPoseRevInFrame, worldState, nil, nil)
-if err != nil {
-  logger.Fatal(err)
-}
+_, err = motionService.Move(context.Background(), arm.Named("myArm"), destPoseInFrame, worldState, nil, nil)
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
 
 <div class="explanation">
   <div class="explanationtext">
@@ -456,21 +585,57 @@ For more information, see [motion service](/services/motion/).
 {{% tab name="Navigation" %}}
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 ```python
-TODO
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Create a new waypoint at the specified latitude and longitude
+location = GeoPoint(latitude=40.76275, longitude=-73.96)
+
+# Add waypoint to the service's data storage
+await my_nav.add_waypoint(point=location)
+
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Set the service to operate in waypoint mode and begin navigation
+await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Create a new waypoint at the specified latitude and longitude
+location = geo.NewPoint(40.76275, -73.96)
+
+// Add waypoint to the service's data storage
+err := myNav.AddWaypoint(context.Background(), location, nil)
+
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Set the service to operate in waypoint mode and begin navigation
+mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
 
-Example use case:
+Use the navigation service to autonomously navigate a machine to defined waypoints.
 
-- Allow delivery robots to use their location and SLAM to navigate intelligently between GPS coordinates.
+For more information, see [navigation service](/services/navigation).
 
   </div>
   <div class="explanationvisual">
 
-  TODO
+{{< imgproc src="/services/navigation/navigation-control-card.png" alt="An example control interface for a navigation service in the Viam app Control Tab." resize="1200x" class="imgzoom" >}}
+
   </div>
 </div>
 </div>
@@ -478,19 +643,34 @@ Example use case:
 {{% tab name="Custom Logic" %}}
 <div class="tabcontent">
 
-```python
-TODO
+```sh {class="command-line" data-prompt="$" data-output="3-20"}
+npm install -g generator-viam-module
+yo viam-module
+? Create module structure within current directory?  If no, will create a new directory with current directory matching the module name
+you select No
+? Your model triplet in the format namespace:family:modelname acme:services:slam
+? The language your module will be written in, must match Viam SDK language selected (python currently supported) python
+? The API triplet this module uses (for example: rdk:component:motor). Expectation is that the second element is 'component' or 'service'.
+ rdk:services:slam
+? Is this a viam-sdk built-in API? No
+? Is this an new API you will define now? No
+Will create module scaffolding for module -  slam
+API -  rdk:services:slam
+Model - acme:services:slam
+   create slam-slam/run.sh
+   create slam-slam/requirements.txt
+   create slam-slam/src/__main__.py
+   create slam-slam/src/slam/__init__.py
+   create slam-slam/src/slam/slam.py
+   create slam-slam/README.md
 ```
 
 <div class="explanation">
   <div class="explanationtext">
 
-  TODO
+Using the [Viam Registry](/registry/) you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_ that you can then deploy to your machines.
 
-  </div>
-  <div class="explanationvisual">
-
-  /how-tos/develop-app/
+For more information, see [Create a module](/how-tos/create-module/).
 
   </div>
 </div>
@@ -520,7 +700,7 @@ TODO
       "name": "speech-1",
       "namespace": "viam-labs",
       "type": "speech",
-      "model": "viam-labs:speech:speechio",
+      "model": "viam-labs:speech:speechio"
     }
   ],
   "modules": [
@@ -586,19 +766,16 @@ For more information, see [Provisioning](/fleet/provision/).
 ```python
 # Get all machines in a location
 machines = await cloud.list_robots(location_id="abcde1fghi")
-print("Found {} machines.".format(len(machines)))
 
 for m in machines:
     # Connect and get status information or latest logs
     machine_parts = await cloud.get_robot_parts(m.id)
     main_part = next(filter(lambda part: part.main_part, machine_parts), None)
-    print("Attempting to connect to {}...".format(main_part.fqdn))
 
     try:
         # Get status for machine
         machine = await connect(main_part.fqdn)
         status = await machine.get_machine_status()
-
     except ConnectionError:
         # If no connection can be made, get last logs
         logs = await cloud.get_robot_part_logs(
@@ -634,30 +811,17 @@ res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 
 # Query sensor data by filter
 my_data = []
-my_filter = create_filter(component_name="sensor-1",
+my_filter = create_filter(
+    component_name="sensor-1",
     start_time=Timestamp('2024-10-01 10:00:00', tz='US/Pacific'),
-    end_time=Timestamp('2024-10-12 18:00:00', tz='US/Pacific'))
-last = None
-while True:
-    tabular_data, count, last = await data_client.tabular_data_by_filter(
-        my_filter, last=last)
-    if not tabular_data:
-        break
-    my_data.extend(tabular_data)
-
-# Query sensor data for a location with SQL
-tabular_data_sql = await data_client.tabular_data_by_sql(
-    organization_id="abbc1c1c-d2e3-5f67-ab8c-de912345f678",
-    sql_query="select count(*) as numStanding from readings \
-      where location_id = 'abcde1fghi' and \
-      component_name = 'my-ultrasonic-sensor' and \
-      (CAST (data.readings.distance AS DOUBLE)) > 0.2"
+    end_time=Timestamp('2024-10-12 18:00:00', tz='US/Pacific')
 )
+tabular_data, count, last = await data_client.tabular_data_by_filter(
+    my_filter, last=None)
 ```
 
 <div class="explanation">
   <div class="explanationtext">
-
 
 Data from your devices is synced to the cloud, where you can query and visualize it.
 
@@ -725,7 +889,6 @@ auth = APIKeyAuthorization(
 )
 api_key, api_key_id = await cloud.create_key(
     org_list[0].id, [auth], "key_for_new_machine")
-
 ```
 
 <div class="explanation">
