@@ -18,9 +18,9 @@ The `gpiostepper` model of the motor component supports bipolar [stepper motors]
 Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072/), [DMC4000](../dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
 {{< /alert >}}
 
-To configure a `gpiostepper` motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
-Make sure to physically connect your motor to your board and turn it on.
-Then, add the motor:
+To use a `gpiostepper` motor as a component of your machine, first wire your motor to a suitable stepper motor driver, which is in turn wired to a board.
+Configure the [board](/components/board/) to which the motor driver is wired.
+Then configure the motor:
 
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Config Builder" %}}
