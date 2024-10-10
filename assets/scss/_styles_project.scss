@@ -2104,6 +2104,10 @@ h3.body-header[style] {
   color: black;
 }
 
+.front-card-container > .cta.secondary > a:hover {
+  font-style: italic;
+}
+
 .hero-container {
   display: flex;
   justify-content: space-between;
@@ -2115,7 +2119,7 @@ h3.body-header[style] {
 }
 
 .hero-text > h1 {
-  margin-top: 7rem;
+  margin-top: 12rem;
   font-weight: 600;
 }
 
