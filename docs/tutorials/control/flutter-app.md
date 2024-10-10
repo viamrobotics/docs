@@ -47,7 +47,7 @@ This tutorial assumes you already have a machine [configured](/configure/) on th
 
 ## Set up your Flutter development environment
 
-This tutorial uses [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) as the development environment (IDE), and uses the VS Code [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to generate necessary starter code.
+This tutorial uses [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) as the development environment (IDE), and uses the VS Code [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to generate sample project code.
 You can use a different editor, but it will be much easier to follow along using VS Code.
 
 ### Platform compatibility
@@ -94,7 +94,7 @@ You can run `fvm use 3.19.6` in the terminal before building your sample app to 
 
 {{<imgproc src="/tutorials/flutter-app/project-name.png" resize="1000x" declared-dimensions="true" alt="Entering the name for the project in VS Code: 'smart_machine_app'.">}}
 
-When you hit **Enter**, Flutter auto-generates a project folder with lots of useful starter code.
+When you hit **Enter**, Flutter auto-generates a project folder with a useful starter project.
 VS Code automatically opens it.
 
 If you don't change any of the code files, you'll have a counter app with a button that adds one to the total each time you press it.
