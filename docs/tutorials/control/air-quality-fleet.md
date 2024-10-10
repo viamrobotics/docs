@@ -49,6 +49,8 @@ For each machine, you will need the following hardware:
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
+Make sure all of your sensors are wired to your SBC before starting this tutorial.
+
 In addition to `viam-server`, this tutorial uses the following software:
 
 - [`sds0011` sensor module](https://github.com/zaporter/viam-sds011)

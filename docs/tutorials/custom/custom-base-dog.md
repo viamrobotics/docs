@@ -185,6 +185,7 @@ Save the file.
 ### Test the connection
 
 Place the robot dog on a flat, open surface where it has room to take a few steps.
+Make sure it is powered on.
 
 Now you are ready to run the connection test file.
 

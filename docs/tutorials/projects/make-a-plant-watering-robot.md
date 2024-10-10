@@ -67,6 +67,7 @@ You will set up the robot to receive signals from the resistive soil moisture se
 ### Full wiring diagram
 
 Refer back to this diagram as you complete the steps to wire your hardware.
+Turn your Pi off while you are wiring the hardware.
 
 <p><img src="../../plant-watering-pi/full-wiring.png" class="imgzoom" alt="The full wiring diagram for all the hardware for the Plant Watering Robot."></p>
 
@@ -151,6 +152,7 @@ To complete the steps, insert the ends of the jumper wires into the pin gates on
 Now that you have wired your ADC and moisture sensor, make sure that the Serial Peripheral Interface (SPI) is enabled on your Pi.
 Enabling this protocol is necessary to allow the Pi to communicate with the moisture sensor peripheral.
 
+Turn your Pi back on.
 SSH into your Pi and run the following command:
 
 ```shell

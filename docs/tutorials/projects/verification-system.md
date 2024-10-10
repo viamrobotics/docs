@@ -57,6 +57,7 @@ Before following this tutorial, you should:
 1. [Install `viam-server`](/installation/) on your new machine.
 
 Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/).
+Make sure to connect your camera to your machine's computer (if it isn't built-in) before starting the project and power it on.
 
 ## Configure a camera
 
