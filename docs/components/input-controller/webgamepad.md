@@ -19,6 +19,9 @@ You **must** use "WebGamepad" as the `name` of the web gamepad controller.
 This restriction will be removed in the future.
 {{% /alert %}}
 
+Make sure to connect your gamepad to your machine's computer and turn it on.
+Then, configure the controller.
+
 ## Configuration
 
 Use the following configuration for an input controller of model `webgamepad`:

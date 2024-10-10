@@ -23,7 +23,8 @@ The`two_wheeled_base` base model is not currently available as a built-in option
 
 {{< /alert >}}
 
-Configure a `two_wheeled_base` base as follows:
+Make sure to first physically assemble the base, connect it to your machine's computer, and turn it on.
+Then, configure a `two_wheeled_base` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="JSON Template" %}}

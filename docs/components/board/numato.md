@@ -14,7 +14,9 @@ component_description: "Supports Numato GPIO Modules and peripherals for adding 
 
 <!-- TODO: section on why configuring this one WITH another board is necessary & why the module is useful. -->
 
-Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) into your machine:
+Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) into your machine.
+Make sure to first physically assemble the board and turn it on.
+Then, configure the board:
 
 {{< tabs name="Configure an numato Board" >}}
 {{% tab name="Config Builder" %}}

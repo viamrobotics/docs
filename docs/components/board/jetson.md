@@ -31,7 +31,9 @@ For the Jetson Nano, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expa
 
 {{% /alert %}}
 
-Configure a `jetson` board to integrate an [NVIDIA Jetson Orin Module and Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson AGX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your machine:
+Configure a `jetson` board to integrate an [NVIDIA Jetson Orin Module and Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson AGX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your machine.
+Make sure to first physically assemble the board and turn it on.
+Then, configure the board:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

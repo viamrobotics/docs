@@ -35,6 +35,9 @@ If you do not enable hardware PWM, these pins will have no function.
 
 ### Configuration
 
+Make sure to first physically assemble the board and turn it on.
+Then, configure the board:
+
 {{< tabs name="Configure a pi5 Board" >}}
 {{% tab name="Config Builder" %}}
 

@@ -14,6 +14,9 @@ component_description: "Customizable GPIO/ADC based device using a board compone
 
 Configure a `gpio` input controller to use a GPIO- or ADC-based device to communicate with your machine.
 
+Make sure to physically connect your controller to your machine's computer and turn it on.
+Then, configure the controller:
+
 {{< tabs name="Configure a `gpio` input controller" >}}
 {{% tab name="Config Builder" %}}
 

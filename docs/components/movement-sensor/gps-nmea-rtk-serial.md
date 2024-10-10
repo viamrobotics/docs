@@ -38,6 +38,9 @@ If your movement sensor uses I<sup>2</sup>C communication instead of serial, use
 
 {{% /alert %}}
 
+Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Then, configure the movement sensor:
+
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 

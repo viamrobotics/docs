@@ -19,7 +19,10 @@ You can obtain fix and correction data by using the sensor [`GetReadings`](/appe
 The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units and RTCM versions up to 3.3.
 
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
-The `gps-nmea` model can be connected using USB and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
+The `gps-nmea` model can be connected using USB and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board.
+
+Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Then, configure the movement sensor:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

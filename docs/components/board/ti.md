@@ -18,7 +18,9 @@ Follow the [setup guide](/installation/prepare/sk-tda4vm/) to prepare your TDA4V
 
 {{% /alert %}}
 
-Configure a `ti` board to integrate a [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) into your machine:
+Configure a `ti` board to integrate a [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) into your machine.
+Make sure to first physically assemble the board and turn it on.
+Then, configure the board:
 
 {{< tabs name="Configure an ti Board" >}}
 {{% tab name="Config Builder" %}}

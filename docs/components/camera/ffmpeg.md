@@ -21,6 +21,9 @@ When used with a streaming camera, the `ffmpeg` camera model supports any stream
 The [`ffmpeg` program](https://ffmpeg.org/) program must be installed separately from `viam-server` on your system for this driver to work.
 {{< /alert >}}
 
+First, connect your camera to your machine's computer and turn it on.
+Then, configure your camera:
+
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
 
