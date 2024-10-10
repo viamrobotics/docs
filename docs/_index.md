@@ -320,7 +320,7 @@ TODO
 <br>
   <h2 class="frontpage-headers">Make your devices better and smarter</h2>
   <p>
-    You can pick and choose from additional tools to make your devices understand their environment, interact with it, and collect information:
+    You can pick and choose from additional services to make your devices understand their environment, interact with it, collect information, and more:
   </p>
 </div>
 
@@ -330,9 +330,8 @@ TODO
 <div class="tabcontent">
 
 ```python
-# get image from camera stream
-camera_name = "construction-site1"
-cam = Camera.from_robot(machine, camera_name)
+# get image from camera stream on construction site
+cam = Camera.from_robot(machine, "construction-site-cam")
 img = await cam.get_image()
 
 # use machine learning model to gather information from the image
@@ -348,7 +347,10 @@ for d in detections:
 <div class="explanation">
   <div class="explanationtext">
 
-  To find out more, see or check out [Monitor Job Site Helmet Usage with Computer Vision](/tutorials/projects/helmet/).
+  Computer vision enables your machine to use connected cameras to sense and interpret the world around them.
+  With inferences about a machine's surroundings, you can program machine behavior to adapt to change accordingly.
+
+  To find out more, see [vision service](/services/vision/) or check out the tutorial [Monitor Job Site Helmet Usage with Computer Vision](/tutorials/projects/helmet/).
 
   </div>
   <div class="explanationvisual">
@@ -360,59 +362,17 @@ for d in detections:
 </div>
 
 {{% /tab %}}
-{{% tab name="Data Management" %}}
+{{% tab name="Data Capture & Sync" %}}
 <div class="tabcontent">
 
-```json
-// Configuration for capturing and syncing image data
-{
-  "components": [ {
-      "name": "camera-1",
-      "namespace": "rdk",
-      "type": "camera",
-      "model": "webcam",
-      "attributes": {},
-      "service_configs": [ {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [ {
-                "method": "ReadImage",
-                "capture_frequency_hz": 0.2,
-                "additional_params": {
-                  "mime_type": "image/png"
-                }
-            } ]
-          }
-      } ]
-  } ],
-  "services": [ {
-      "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
-      "attributes": {
-        "capture_dir": "",
-        "tags": [],
-        "additional_sync_paths": [],
-        "sync_interval_mins": 0.1
-      }
-  } ]
-}
-
-```
+{{<imgproc src="/services/data/data-capture-sync.png" resize="1200x" declaredimensions=true alt="Configuration to capture data for a camera" class="imgzoom aligncenter" style="max-width:500px">}}
 
 <div class="explanation">
   <div class="explanationtext">
 
-Sync sensor, image, and any other data from all your machines to the cloud, where you can manage and query it.
+Sync sensor data, images, and any other binary or timeseries data from all your machines to the cloud, where you can manage and query it.
 
-Example use cases:
-
-- Capture sensor data on 100s of boats and sync it to the cloud when machines have internet connectivity.
-
-- Use machine learning to detect wildlife and when detected start data capture and send alerts.
-
-Also triggers
-
+If you have machines with intermittent internet connectivity, your data will sync whenever internet is available.
 For more information, see [Data Management](/services/data/).
 
   </div>
@@ -553,7 +513,7 @@ TODO
 <div class="tabcontent">
 
 ```json
-// Configuration for using a software package
+// Reusable configuration for using a software package
 {
   "services": [
     {
@@ -625,7 +585,7 @@ For more information, see [Provisioning](/fleet/provision/).
 
 ```python
 # Get all machines in a location
-machines = await cloud.list_robots(location_id="gjmjt2xntj")
+machines = await cloud.list_robots(location_id="abcde1fghi")
 print("Found {} machines.".format(len(machines)))
 
 for m in machines:
@@ -653,6 +613,11 @@ Get status information and logs fromo all your deployed machines.
 For more information, see [Fleet Management API](/appendix/apis/fleet/) and [Machine Management API](/appendix/apis/robot/).
 
   </div>
+  <div class="explanationvisual">
+
+{{< imgproc src="/fleet/dashboard.png" alt="Dashboard view of machine status information" resize="1200x" class="imgzoom" >}}
+
+  </div>
 </div>
 </div>
 
@@ -670,20 +635,21 @@ res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 # Query sensor data by filter
 my_data = []
 my_filter = create_filter(component_name="sensor-1",
-    start_time=Timestamp().FromJsonString("2024-10-01T00:00:00Z"),
-    end_time=Timestamp().FromJsonString("2024-10-08T00:00:00Z"))
+    start_time=Timestamp('2024-10-01 10:00:00', tz='US/Pacific'),
+    end_time=Timestamp('2024-10-12 18:00:00', tz='US/Pacific'))
 last = None
 while True:
-    tabular_data, count, last = await data_client.tabular_data_by_filter(my_filter, last=last)
+    tabular_data, count, last = await data_client.tabular_data_by_filter(
+        my_filter, last=last)
     if not tabular_data:
         break
     my_data.extend(tabular_data)
 
 # Query sensor data for a location with SQL
 tabular_data_sql = await data_client.tabular_data_by_sql(
-    org_id="bccf8f8f-e3c4-4f72-ab9a-fc547757f352",
+    organization_id="abbc1c1c-d2e3-5f67-ab8c-de912345f678",
     sql_query="select count(*) as numStanding from readings \
-      where location_id = 'gjmjt2xntj' and \
+      where location_id = 'abcde1fghi' and \
       component_name = 'my-ultrasonic-sensor' and \
       (CAST (data.readings.distance AS DOUBLE)) > 0.2"
 )
@@ -709,17 +675,17 @@ For more information, see [Data Management](/services/data/).
 ```python
 # Start a training job to create a classification model based on the dataset
 job_id = await ml_training_client.submit_training_job(
-  org_id="bccf8f8f-e3c4-4f72-ab9a-fc547757f352",
-  dataset_id="66db6fe7d93d1ade24cd1dc3",
-  model_name="recognize_gestures",
-  model_version="1",
-  model_type=ModelType.MODEL_TYPE_MULTI_LABEL_CLASSIFICATION,
-  tags=["follow", "stop"]
+    org_id="abbc1c1c-d2e3-5f67-ab8c-de912345f678",
+    dataset_id="12ab3cd4e56f7abc89de1fa2",
+    model_name="recognize_gestures",
+    model_version="1",
+    model_type=ModelType.MODEL_TYPE_MULTI_LABEL_CLASSIFICATION,
+    tags=["follow", "stop"]
 )
 
 # Get status information for training job
 job_metadata = await ml_training_client.get_training_job(
-  id=job_id)
+    id=job_id)
 ```
 
 <div class="explanation">
@@ -746,7 +712,7 @@ For more information, see [Train and deploy ML models](/how-tos/deploy-ml/) and 
 ```python
 # Create a new machine
 new_machine_id = await cloud.new_robot(
-    name="new-machine", location_id="gjmjt2xntj")
+    name="new-machine", location_id="abcde1fghi")
 
 # Get organization associated with authenticated user / API key
 org_list = await cloud.list_organizations()
@@ -765,7 +731,9 @@ api_key, api_key_id = await cloud.create_key(
 <div class="explanation">
   <div class="explanationtext">
 
-Viam allows you to organize and manage any number of machines in collaboration with others using Role-Based Access Control (RBAC). You can manage and control your fleet of smart machines from the Viam app, using the [CLI](/cli/#authenticate), or using the [fleet management API](/appendix/apis/fleet/).
+Viam allows you to organize and manage any number of machines in collaboration with others using Role-Based Access Control (RBAC).
+
+You can manage your fleet of machines and the access to them from the [Viam app](https://app.viam.com), using the [CLI](/cli/#authenticate), or using the [fleet management API](/appendix/apis/fleet/).
 
   </div>
   <div class="explanationvisual">

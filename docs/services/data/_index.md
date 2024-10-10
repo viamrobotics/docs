@@ -144,5 +144,5 @@ For comprehensive guides on using data capture and synchronization together with
 {{< cards >}}
 {{% card link="/how-tos/image-data/" %}}
 {{% card link="/how-tos/deploy-ml/" %}}
-{{< card link="/get-started/collect-data/">}}
+{{< card link="/how-tos/collect-data/">}}
 {{< /cards >}}
