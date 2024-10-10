@@ -78,7 +78,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
    {{% snippet "show-secret.md" %}}
 
-   Then, copy and paste the boilerplate code into a file and run the resulting script to verify you can connect to your machine.
+   Then, copy and paste the sample code into a file and run the resulting script to verify you can connect to your machine.
    Throughout the rest of this tutorial, you will replace and amend this code.
    The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 

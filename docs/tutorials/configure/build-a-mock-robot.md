@@ -116,14 +116,14 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 ### Connect to your mock robot with your code
 
-The easiest way to get started writing an application with Viam's SDKs is to use the boilerplate code on the **CONNECT** tab.
+The easiest way to get started writing an application with Viam's SDKs is to use the sample code on the **CONNECT** tab.
 
-Navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** page on the **CONNECT** tab, select your SDK language (this tutorial uses Python or Go), and copy the boilerplate code.
+Navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** page on the **CONNECT** tab, select your SDK language (this tutorial uses Python or Go), and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries, is pre-populated with your machine cloud credentials, and sets up a connection with the Viam app in the cloud.
-Next, paste that boilerplate code into a file named <file>index.py</file> or <file>index.go</file> in your code editor, and save your file locally.
+Next, paste that sample code into a file named <file>index.py</file> or <file>index.go</file> in your code editor, and save your file locally.
 
 You can now run the code.
 Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your machine is live, and that the computer running the program is able to connect to that instance.
