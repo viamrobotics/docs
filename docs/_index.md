@@ -29,7 +29,7 @@ date: "2024-09-17"
     <div class="hero-text">
       <h1>Viam Documentation</h1>
       <p>
-        Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
+        Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with AI, machine learning, and more.
       </p>
       <div class="cards max-page">
         <div class="front-card-container">
@@ -59,7 +59,7 @@ date: "2024-09-17"
   <h2 class="frontpage-headers">Program any device</h2>
   <p>
 
-Viam integrates with hardware and software on **any device**. To get started, install Viam and create a configuration that describes your machine's {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your devices and any attached physical hardware **from anywhere in the world** as well as from local networks:
+Viam integrates with hardware and software on **any device**. To get started, install Viam and create a configuration that describes your machine's {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your devices and any attached physical hardware securely **from anywhere in the world** as well as from local networks:
 
   </p>
 
@@ -142,7 +142,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any robotic base with Viam and once configured as a [base component](/components/base/), you can drive it using the [base API](/appendix/apis/components/base/).
+You can use any robotic base with Viam and once configured as a [base component](/components/base/), you can drive it using the standardized [base API](/appendix/apis/components/base/).
 
 Try it yourself, [drive a rover](/how-tos/drive-rover/).
 You don't need to buy a rover, you can borrow one of ours to [try viam](https://app.viam.com/try).
@@ -239,7 +239,7 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any motor with Viam and, once configured as a [motor component](/components/motor/), you can operate the it using the [motor API](/appendix/apis/components/motor/).
+You can use any motor with Viam and, once configured as a [motor component](/components/motor/), you can operate the it using the standardized [motor API](/appendix/apis/components/motor/).
 
 Find more information in the guide [Control a motor](/how-tos/control-motor/).
 
@@ -312,7 +312,7 @@ std::cout << "co2-monitor get_readings return value " << co2-monitor_get_reading
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any physical sensor or anything else that provides measurements with Viam and, once configured as a [sensor component](/components/sensor/), you can get sensor readings using the [sensor API](/appendix/apis/components/sensor/).
+You can use any physical sensor or anything else that provides measurements with Viam and, once configured as a [sensor component](/components/sensor/), you can get sensor readings using the standardized [sensor API](/appendix/apis/components/sensor/).
 
 Find more information in the guide [Collect and view sensor data](/how-tos/collect-sensor-data/).
 
@@ -361,7 +361,7 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referencef
 <div class="explanation">
   <div class="explanationtext">
 
-Once you configure an [arm component](/components/arm/), you can move any arm using the [arm API](/appendix/apis/components/arm/).
+Once you configure an [arm component](/components/arm/), you can move any arm using the standardized [arm API](/appendix/apis/components/arm/).
 
 Find more information in our guide on [moving an arm](/tutorials/services/accessing-and-moving-robot-arm/).
 

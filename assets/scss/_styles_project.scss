@@ -941,15 +941,27 @@ td > ul, td > ol {
   border-bottom: 1px solid white;
 }
 
+.horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
+  background-color: rgb(247, 247, 248);
+  border-top: unset;
+  border-bottom: 1px solid rgb(241, 241, 244);
+}
+
 .nav-tabs .nav-link, .nav-tabs .nav-link:hover {
   border: 0px;
   border-style: solid;
   border-left: 1px solid rgb(209, 213, 219);
   border-bottom: 1px solid rgb(209, 213, 219);
+  border-top: 1px solid rgb(209, 213, 219);
   border-radius: 0;
   padding: 0.25rem 0.75rem;
   color: rgb(78, 79, 82);
-  background-color: rgb(241, 241, 244)
+  background-color: rgb(241, 241, 244);
+}
+
+.horizontalheaders * .nav-tabs .nav-link, .horizontalheaders * .nav-tabs .nav-link:hover {
+  border-top: unset;
+  background-color: white;
 }
 
 .nav-tabs .nav-item {
@@ -2174,6 +2186,7 @@ h3.body-header[style] {
 
 .table.front-page .code-toolbar > pre {
   margin-top: unset;
+  border-bottom: unset;
 }
 
 .table.horizontalheaders {
@@ -2261,7 +2274,6 @@ div.explanation > .explanationvisual > .gif {
   margin-top: unset;
   margin-bottom: unset;
   flex: 1;
-  border-bottom: 1px solid #d7d7d9;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > .table > .tab-content {
