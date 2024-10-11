@@ -506,8 +506,7 @@ my_filter = create_filter(component_name="my_camera")
 tags = ["frontview", "trainingdata"]
 res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 
-# Query sensor data by filter
-my_data = []
+# Query sensor data for the beginning of october
 my_filter = create_filter(
     component_name="sensor-1",
     start_time=Timestamp('2024-10-01 10:00:00', tz='US/Pacific'),
