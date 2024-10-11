@@ -145,13 +145,13 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 
    - **Connection string**: Enter the following connection string, substituting the hostname returned from the previous section for `<MONGODB-ATLAS-DF-HOSTNAME>` and the desired database name to query for `<DATABASE-NAME>`:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
      ```
 
      For example, to use the `sensorData` database, the default name for uploaded sensor data, your connection string would resemble:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      mongodb://data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?directConnection=true&authSource=admin&tls=true
      ```
 
@@ -160,13 +160,13 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 
    - **Credentials: User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      db-user-<YOUR-ORG-ID>
      ```
 
      For example, using the organization ID from the previous example, your connection string would resemble:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      db-user-abcdef12-abcd-abcd-abcd-abcdef123456
      ```
 

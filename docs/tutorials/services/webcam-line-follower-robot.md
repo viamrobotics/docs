@@ -24,7 +24,7 @@ no_list: true
 ---
 
 <div class="td-max-width-on-larger-screens">
- <div class="alignright" style="max-width:150px;">
+ <div class="alignright" style="width:150px;">
   {{<gif webm_src="/tutorials/webcam-line-follower/lf-following1.webm" mp4_src="/tutorials/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
   </div>
 </div>

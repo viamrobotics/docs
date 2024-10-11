@@ -199,7 +199,7 @@ Once you determine which model to use, add it to your machine's configuration:
 1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
    Select the `sensor` type and add your sensor model.
 
-   {{<imgproc src="/get-started/quickstarts/collect-data/config-sensor.png" resize="x1100" declaredimensions=true alt="The dropdown showing all sensor models." style="max-width:550px" >}}
+   {{<imgproc src="/get-started/quickstarts/collect-data/config-sensor.png" resize="x1100" declaredimensions=true alt="The dropdown showing all sensor models." style="width:550px" >}}
 
 1. Add required attributes, such as information about how the sensor is connected to the board.
    You can find information on these attributes by clicking the name of your sensor model in the [available models list](/components/sensor/#available-models).

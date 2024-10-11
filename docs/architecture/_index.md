@@ -57,7 +57,7 @@ Viam has many built-in components and services that run within `viam-server`.
 A [_modular resource_](/registry/) is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
 A module runs as a process managed by `viam-server` on your machine, communicating over UNIX sockets, and `viam-server` manages its lifecycle.
 
-{{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="max-width:600px" >}}
+{{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="width:600px" >}}
 
 {{< expand "Click for an example" >}}
 
@@ -81,7 +81,7 @@ If you want to add some other high-level software functionality beyond the built
 
 ## Communication
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="width:270px;"></img>
 
 Viam uses peer-to-peer communication, where all machines running `viam-server` or [`viam-micro-server`](/installation/viam-micro-server-dev/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
 This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
@@ -134,7 +134,7 @@ For more information, see [Data Management](/services/data/).
 ## Basic machine example
 
 <p>
-{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="max-width:400px" >}}
+{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="width:400px" >}}
 </p>
 
 Imagine you have a simple device consisting of a temperature sensor connected to the GPIO pins of a single-board computer (SBC).

@@ -1,4 +1,4 @@
 Once you have configured your digital interrupts, open the board's **TEST** panel on the [**CONFIGURE**](/configure/) or [**CONTROL**](/fleet/control/) tabs to monitor interrupt activity.
 The value displayed next to each interrupt name represents the total count of interrupts triggered by the corresponding digital interrupt.
 
-{{<imgproc src="/components/board/digital-interrupts-control-tab.png" alt="Digital interrupts in the test panel." resize="800x" style="max-width:500px" class="imgzoom">}}
+{{<imgproc src="/components/board/digital-interrupts-control-tab.png" alt="Digital interrupts in the test panel." resize="800x" style="width:500px" class="imgzoom">}}

@@ -55,7 +55,7 @@ These groupings allow you to manage permissions; you can grant a user access to 
 You choose how to group your machines.
 You cannot move machines to other locations once created.
 
-{{<imgproc src="/fleet/fleet.svg" class="fill aligncenter" resize="800x" style="max-width: 600px" declaredimensions=true alt="Two locations within an organization">}}
+{{<imgproc src="/fleet/fleet.svg" class="fill aligncenter" resize="800x" style="width: 600px" declaredimensions=true alt="Two locations within an organization">}}
 
 If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/#example).
 
@@ -112,7 +112,7 @@ You can do this on the organization settings page, which you can navigate to by 
 If you have the **Owner** role, in the **Members** section of the organization settings page you can click on **Grant access** to invite new users to an organization or a location to [share access](/cloud/#use-viam-for-collaboration) to the machines within it.
 Assign each user a role (owner or operator) to manage permissions.
 
-{{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="max-width: 600px" class="aligncenter" declaredimensions=true alt="Limit user access">}}
+{{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="aligncenter" declaredimensions=true alt="Limit user access">}}
 
 Users with owner access to a location or organization, can collaborate on the [machines](/cloud/machines/) within it.
 

@@ -42,7 +42,7 @@ You can configure a reference frame within the frame system for each of your mac
 2. From the left-hand menu, select your component.
    If you haven't adjusted any parameters yet, the default reference frame will be shown for the component:
 
-   {{<imgproc src="/services/frame-system/frame_card.png" resize="300x" style="max-width: 500px" alt="Frame card for a camera with the default reference frame settings">}}
+   {{<imgproc src="/services/frame-system/frame_card.png" resize="300x" style="width: 500px" alt="Frame card for a camera with the default reference frame settings">}}
 
 3. To adjust the frame from its default configuration, change the parameters as needed for your machine before saving.
    Select a **Parent** frame and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_, _rad_, or _q_), according to the position and orientation of your component in relation to the **Parent** frame.

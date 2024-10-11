@@ -462,14 +462,14 @@ If your enclosure is sufficiently different from ours, these values may be diffe
 
 For our enclosure, the hole pose and dimensions are as follows:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 hole_origin = Pose(x=470, y=125, z=0, o_x=0, o_y=0, o_z=1, theta=15)
 hole_dims = Vector3(x=250, y=400, z=300)
 ```
 
 Additionally, the home position origin and dimensions where the arm needs to be in order to drop the prize are as follows:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 home_pose = Pose(x=390.0, y=105.0, z=500.0, o_x=0, o_y=0, o_z=-1, theta=0)
 home_pose_in_frame = PoseInFrame(reference_frame="world", pose=home_pose)
 ```

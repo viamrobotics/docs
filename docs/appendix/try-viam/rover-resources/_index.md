@@ -23,7 +23,7 @@ If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%
 <div class="row">
     <div class="col">
         <a href="https://www.viam.com/resources/rover" target="_blank">
-            {{<imgproc src="appendix/try-viam/rover-resources/viam-rover/rover-front.jpg" resize="400x" alt="The front of the assembled Viam Rover" style="max-width:400px; min-width:300px; float: left" >}}
+            {{<imgproc src="appendix/try-viam/rover-resources/viam-rover/rover-front.jpg" resize="400x" alt="The front of the assembled Viam Rover" style="width:400px; min-width:300px; float: left" >}}
     </div>
     <div class="col" style= "min-width:300px;">
         <p>

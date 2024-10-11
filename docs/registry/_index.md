@@ -49,7 +49,7 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 ## Modular resources
 
 <p>
-{{<imgproc src="/platform/registry.svg" class="alignright" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." style="max-width:350px" >}}
+{{<imgproc src="/platform/registry.svg" class="alignright" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." style="width:350px" >}}
 </p>
 
 Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
