@@ -10,7 +10,7 @@ To authenticate yourself to your machine, you need
    {{< tabs >}}
    {{% tab name="Python" %}}
 
-```python {class="line-numbers linkable-line-numbers" data-line="3,5,9,11"}
+```python {class="line-numbers linkable-line-numbers" data-line="4,7,9"}
 async def connect():
     opts = RobotClient.Options.with_api_key(
         # Replace "<API-KEY>" (including brackets) with your machine's API key
@@ -25,7 +25,7 @@ async def connect():
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go {class="line-numbers linkable-line-numbers" data-line="3,8"}
+```go {class="line-numbers linkable-line-numbers" data-line="3,7,11"}
 robot, err := client.New(
     context.Background(),
     "ADDRESS FROM THE VIAM APP",
@@ -44,7 +44,7 @@ robot, err := client.New(
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-```ts {class="line-numbers linkable-line-numbers" data-line="1,6,8,11"}
+```ts {class="line-numbers linkable-line-numbers" data-line="2,9,12"}
 // Replace with the host of your actual machine running Viam.
 const host = "ADDRESS FROM THE VIAM APP";
 
@@ -64,7 +64,7 @@ const robot = await VIAM.createRobotClient({
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-```cpp {class="line-numbers linkable-line-numbers" data-line="1,3,5,7"}
+```cpp {class="line-numbers linkable-line-numbers" data-line="1,5,7"}
 std::string host("ADDRESS FROM THE VIAM APP");
 DialOptions dial_opts;
 dial_opts.set_type("api-key");
@@ -82,7 +82,7 @@ auto robot = RobotClient::at_address(host, options);
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-```dart {class="line-numbers linkable-line-numbers" data-line="2,4,6,10"}
+```dart {class="line-numbers linkable-line-numbers" data-line="2,4,6"}
 Future<void> connectToViam() async {
   const host = 'ADDRESS FROM THE VIAM APP';
   // Replace '<API-KEY-ID>' (including brackets) with your API key ID
@@ -101,18 +101,18 @@ Future<void> connectToViam() async {
 {{% /tab %}}
 {{< /tabs >}}
 
-   {{< alert title="Caution" color="caution" >}}
+{{< alert title="Caution" color="caution" >}}
 Do not share your machine part API key or machine address publicly.
 Sharing this information could compromise your system security by allowing unauthorized access to your machine, or to the computer running your machine.
-   {{< /alert >}}
+{{< /alert >}}
 
-   {{< alert title="Location secret (deprecated)" color="note" >}}
+{{< alert title="Location secret (deprecated)" color="note" >}}
 
 Prior to API keys, Viam used location secrets for authentication.
 Location secrets are now deprecated.
 To avoid connection issues, start using API keys.
 
-   {{< /alert >}}
+{{< /alert >}}
 
 2. The machine's remote address:
 
