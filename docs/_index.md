@@ -63,7 +63,7 @@ Viam integrates with hardware and software on **any device**. To get started, in
 
   </p>
 
-{{< tabs class="horizontalheaders program">}}
+{{< tabs class="horizontalheaders program" navheader="Examples">}}
 {{% tab name="Drive a base" %}}
 
 <div class="tabcontent">
@@ -144,7 +144,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 
 You can use any robotic base with Viam and once configured as a base component, you can drive it using the standardized base.
 
-[Try it →](/how-tos/drive-rover/)
+[Drive a base →](/how-tos/drive-rover/)
 
   </div>
   <div class="explanationvisual">
@@ -240,7 +240,7 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 
 You can use any motor with Viam and, once configured as a motor component, you can operate the it using the standardized motor API.
 
-[Try it →](/how-tos/control-motor/)
+[Control a motor →](/how-tos/control-motor/)
 
   </div>
   <div class="explanationvisual">
@@ -313,7 +313,7 @@ std::cout << "co2-monitor get_readings return value " << co2-monitor_get_reading
 
 You can use any physical sensor or anything else that provides measurements with Viam and, once configured as a sensor component, you can get sensor readings using the standardized sensor API.
 
-[Try it →](/how-tos/collect-sensor-data/)
+[Collect sensor data →](/how-tos/collect-sensor-data/)
 
   </div>
 </div>
@@ -362,7 +362,7 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referencef
 
 Once you configure an arm component, you can move any arm using the standardized arm API.
 
-[Try it →](/tutorials/services/accessing-and-moving-robot-arm/)
+[Move a robotic arm →](/tutorials/services/accessing-and-moving-robot-arm/)
 
   </div>
 </div>
@@ -416,7 +416,7 @@ There are also a variety of community-supplied resources you can use.
   </p>
 </div>
 
-{{< tabs class="horizontalheaders services">}}
+{{< tabs class="horizontalheaders services" navheader="Services">}}
 {{% tab name="Computer Vision" %}}
 
 <div class="tabcontent">
@@ -470,7 +470,7 @@ for i := 0; i < len(detections); i++ {
 Computer vision enables your machine to use connected cameras to sense and interpret the world around them.
 With inferences about a machine's surroundings, you can program machine behavior to adapt to change accordingly.
 
-To find out more, see [vision service](/services/vision/) or check out the tutorial [Monitor Job Site Helmet Usage with Computer Vision](/tutorials/projects/helmet/).
+[Try the vision service →](/tutorials/projects/helmet/)
 
   </div>
   <div class="explanationvisual">
@@ -520,7 +520,8 @@ tabular_data, count, last = await data_client.tabular_data_by_filter(
 Sync sensor data, images, and any other binary or timeseries data from all your machines to the cloud, where you can query and visualize it.
 
 If you have machines with intermittent internet connectivity, your data will sync whenever internet is available.
-For more information, see [Data Management](/services/data/).
+
+[Learn about Data Management →](/services/data/)
 
   </div>
 </div>
@@ -591,7 +592,7 @@ _, err = motionService.Move(context.Background(), arm.Named("myArm"), destPoseIn
 
 The builtin motion service enables your machine to plan and move itself or its components relative to itself, other machines, and the world.
 
-For more information, see [motion service](/services/motion/).
+[Try the motion service →](/tutorials/services/plan-motion-with-arm-gripper/)
 
   </div>
   <div class="explanationvisual">
@@ -654,7 +655,7 @@ mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
 
 Use the navigation service to autonomously navigate a machine to defined waypoints.
 
-For more information, see [navigation service](/services/navigation).
+[Try the navigation service →](/tutorials/services/navigate-with-rover-base/)
 
   </div>
 </div>
@@ -707,7 +708,7 @@ Using the [Viam Registry](/registry/) you can turn your own custom business logi
   </p>
 </div>
 
-{{< tabs class="horizontalheaders platform">}}
+{{< tabs class="horizontalheaders platform" navheader="Capabilities">}}
 {{% tab name="Deployment" %}}
 
 <div class="tabcontent">
@@ -741,7 +742,7 @@ Using the [Viam Registry](/registry/) you can turn your own custom business logi
 Configure and update hardware, software, and machine learning models for groups of machines in one go.
 Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
 
-For more information, see [Deploy and update packages across devices](/how-tos/deploy-packages/).
+[Deploy packages across devices →](/how-tos/deploy-packages/)
 
   </div>
 </div>
@@ -772,7 +773,7 @@ sudo ./preinstall.sh
 Provisioning allows you to complete part of the machine setup during the manufacturing process and perform the rest of the first-time setup once the machine is taken into operation.
 When the machine is taken into operation, it will automatically get the latest configuration and updates.
 
-For more information, see [Provisioning](/fleet/provision/).
+[Learn about provisioning →](/fleet/provision/)
 
   </div>
 </div>
@@ -818,7 +819,7 @@ for m in machines:
 
 Get status information and logs fromo all your deployed machines.
 
-For more information, see [Fleet Management API](/appendix/apis/fleet/) and [Machine Management API](/appendix/apis/robot/).
+[Learn about Platform APIs →](/appendix/apis/#platform-apis)
 
   </div>
 </div>
@@ -861,7 +862,7 @@ job_metadata = await ml_training_client.get_training_job(
 
 You can build machine learning models based on your machines' data using Viam's training algorithms or your own.
 
-For more information, see [Train and deploy ML models](/how-tos/deploy-ml/) and [Create custom training scripts](/how-tos/create-custom-training-scripts/).
+[Train and deploy ML models →](/how-tos/deploy-ml/)
 
   </div>
 </div>
@@ -906,7 +907,7 @@ api_key, api_key_id = await cloud.create_key(
 
 Viam allows you to organize and manage any number of machines in collaboration with others using Role-Based Access Control (RBAC).
 
-You can manage your fleet of machines and the access to them from the [Viam app](https://app.viam.com), using the [CLI](/cli/#authenticate), or using the [fleet management API](/appendix/apis/fleet/).
+[Learn about access control →](/cloud/rbac/)
 
   </div>
 </div>

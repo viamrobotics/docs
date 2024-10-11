@@ -5,6 +5,9 @@
 {{- if .Inner -}}{{- /* We don't use the inner content, but Hugo will complain if we don't reference it. */ -}}{{- end -}}
 <div class="table {{ $class }}">
 <ul class="nav nav-tabs" id="tab-{{ $tab_set_id }}" role="tablist">
+{{- if .Get "navheader" -}}
+<span class="navheader">{{.Get "navheader"}}</span>
+{{- end -}}
 		{{- range $i, $e := $tabs -}}
 		{{- $id := printf "%s-%d" $tab_set_id $i -}}
 		{{- if (eq $i 0) -}}
