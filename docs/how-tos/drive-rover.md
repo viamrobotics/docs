@@ -33,8 +33,6 @@ updated: "2024-08-06"
 cost: "0"
 ---
 
-If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
-
 In this guide you'll write code that makes a rover drive in a square.
 
 {{< alert title="You will learn" color="tip" >}}

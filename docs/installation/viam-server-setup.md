@@ -30,8 +30,6 @@ To use Viam, you need to install either the `viam-server` binary or `viam-micro-
 `viam-micro-server` is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 To install `viam-micro-server`, see [`viam-micro-server` Installation Guide](/installation/viam-micro-server-setup/) instead.
 
-For an overview of the Viam software platform, see [Learn about Viam](/get-started/).
-
 {{< alert title="In this page" color="note" >}}
 {{% toc %}}
 {{< /alert >}}
