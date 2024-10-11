@@ -51,11 +51,6 @@ For each machine, you will need the following hardware:
 
 Make sure all of your sensors are wired to your SBC before starting this tutorial.
 
-In addition to `viam-server`, this tutorial uses the following software:
-
-- [`sds0011` sensor module](https://github.com/zaporter/viam-sds011)
-- The [Viam TypeScript SDK](https://ts.viam.dev/)
-
 ## Decide how you will organize your fleet
 
 Before you start connecting your devices to the Viam app, you'll need to decide how you want to group your devices.
