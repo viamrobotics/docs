@@ -32,7 +32,6 @@ The instructions below are for configuring a development environment in order to
 - Develop modules for `viam-micro-server`.
 - Develop `viam-micro-server` itself.
 
-
 ## Required software
 
 `viam-micro-server` is written in Rust. To be able to develop for `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
