@@ -55,7 +55,7 @@ Go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 Add a fragment, and paste the copied JSON configuration into it.
 
-{{<imgproc src="/how-tos/deploy-packages/fragment.png" resize="800x" class="fill aligncenter" style="max-width: 600px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/fragment.png" resize="1000x" alt="Configuration builder UI">}}
 
 Set your privacy settings.
 There are three options for this:

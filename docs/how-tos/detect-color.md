@@ -195,7 +195,7 @@ Of course these detections are not just accessible from the Viam app, but you ca
 You can also use the vision service with Machine Learning models:
 
 {{< cards >}}
-{{% card link="/get-started/detect-people/" %}}
+{{% card link="/how-tos/detect-people/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
 {{< /cards >}}
 

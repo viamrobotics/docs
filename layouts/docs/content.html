@@ -34,7 +34,9 @@
 			{{ partial "reading-time.html" . }}
 		{{ end }}
 	</header> -->
+	{{ if not .IsHome }}
 	<h1>{{ .Title }}</h1>
+	{{ end }}
 
 	{{ if .Draft }}
 	<div class="alert alert-caution" role="alert">

@@ -422,7 +422,7 @@ from viam.utils import create_filter
 
 my_filter = create_filter(component_name="my_camera")
 tags = ["tag1", "tag2"]
-res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
+await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter).

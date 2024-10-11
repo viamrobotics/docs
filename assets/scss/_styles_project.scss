@@ -80,7 +80,7 @@ h2, .h2 {
   font-family: space grotesk, sans-serif;
   font-size: 2.0rem !important; // 24pt
   line-height: 2.667rem;
-  font-weight: 400;
+  font-weight: 600;
   clear: both;
 }
 
@@ -941,22 +941,46 @@ td > ul, td > ol {
   border-bottom: 1px solid white;
 }
 
+.horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
+  background-color: rgb(247, 247, 248);
+  border-bottom: 1px solid #d7d7d9;
+}
+
+.horizontalheaders > .nav-tabs * .nav-link {
+  background-color: rgb(247, 247, 248);
+}
+
+.horizontalheaders > .nav-tabs .nav-link:hover {
+  background-color: #d7d7d9;
+}
+
+.horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
+  background-color: white;
+  border-top: unset;
+  border-bottom: 1px solid white;
+}
+
 .nav-tabs .nav-link, .nav-tabs .nav-link:hover {
   border: 0px;
   border-style: solid;
+  border-radius: 0;
+  padding: 0.25rem 0.75rem;
+  color: rgb(78, 79, 82);
+  background-color: rgb(241, 241, 244);
+}
+
+.horizontalheaders * .nav-tabs .nav-link, .horizontalheaders * .nav-tabs .nav-link:hover {
+  border-top: unset;
+  background-color: rgb(247, 247, 248);
   border-left: 1px solid rgb(209, 213, 219);
   border-bottom: 1px solid rgb(209, 213, 219);
-  border-radius: 0;
-  padding: 0.25rem 1rem;
-  color: rgb(78, 79, 82);
-  background-color: rgb(241, 241, 244)
 }
 
 .nav-tabs .nav-item {
   margin-bottom: 0;
 }
 
-.nav-tabs .nav-item:last-child {
+.nav-tabs > .nav-item:last-child {
   border-right: 1px solid rgb(209, 213, 219);
 }
 
@@ -1780,7 +1804,7 @@ a.ais-Pagination-link:hover {
 
 .modellist > div {
   display: flex;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .modellist * .ais-Hits-list {
@@ -1800,7 +1824,7 @@ a.ais-Pagination-link:hover {
 .modellist * .ais-Hits-list > .ais-Hits-item {
   width: 100%;
   display: flex;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 .modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
@@ -1825,8 +1849,8 @@ a.ais-Pagination-link:hover {
 }
 
 .modellistheader {
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .modellistheader > div {
@@ -2009,12 +2033,12 @@ div .filterable > p {
 
 .usecase-table .tablestep:nth-of-type(odd) {
   background-color: whitesmoke;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 .usecase-table .tablestep:nth-of-type(even) {
   background-color: white;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 // Styling for email newsletter
@@ -2066,3 +2090,361 @@ h3.body-header[style] {
 .algolia-autocomplete .typesense-docsearch-suggestion--content {
   width: 100% !important;
 }
+
+// Front page styling START
+
+.front-card-container {
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.front-card-container > .hover-card, .front-card-container > .hover-card > a {
+  min-width: unset;
+  max-width: unset;
+  text-align: center;
+  margin-left: unset;
+  align-content: center;
+}
+
+.front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
+  text-transform: uppercase;
+  font-family: "Space Mono",sans-serif;
+  margin-right: 0;
+}
+
+.front-card-container > .cta.secondary {
+  align-content: center;
+  margin: 1rem 0rem 1rem 0rem;
+  display: flex;
+}
+
+.front-card-container > .cta.secondary > a {
+  padding: 0.75rem;
+  display: flex;
+  align-content: center;
+  text-decoration: underline;
+  color: black;
+}
+
+.front-card-container > .cta.secondary > a:hover {
+  font-style: italic;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-text {
+  min-width: 50%;
+  max-width: 50%;
+}
+
+.hero-text > h1 {
+  margin-top: 12rem;
+  font-weight: 600;
+}
+
+.hero-container .hero {
+  margin-top: 3rem;
+  max-width: 40%;
+}
+
+@media (max-width: 950px) {
+.hero-container .hero {
+  display: none;
+  max-width: 0;
+}
+
+.hero-text {
+  max-width: 100%;
+}
+
+.hero-text > h1 {
+  margin-top: 2rem;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+}
+
+
+.front-card-container > .cta.secondary > a * p {
+  margin-bottom: unset;
+}
+
+.front-card-container > .hover-card > a > div {
+  margin: auto;
+  padding: 0 0.75rem
+}
+
+@media (max-width: 650px) {
+.front-card-container > .hover-card {
+  width: unset;
+}
+}
+
+.table.horizontalheaders > ul.nav-tabs > .nav-item > .nav-link.active {
+  background-color: #d7d7d9;
+  color: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
+  border-top: 1px solid #d7d7d9;
+}
+
+.table.front-page > div {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.table.front-page .code-toolbar > pre {
+  margin-top: unset;
+  border-bottom: unset;
+}
+
+.table.horizontalheaders {
+  display: flex;
+  max-width: 1000px;
+  min-height: 400px;
+}
+
+.table.horizontalheaders > ul {
+  max-width: 170px;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d7d7d9;
+  border-right: unset;
+}
+
+.table.horizontalheaders > ul > li {
+  border: unset;
+  justify-content: flex-start;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item {
+  border-right: unset;
+}
+
+.table.horizontalheaders * .tabcontent > .table > ul > li.nav-item:first-child > a {
+  border-left: unset;
+}
+
+.table.horizontalheaders > ul > li > a {
+  background-color: white;
+}
+
+.table.horizontalheaders > ul > li > a.active, .table.horizontalheaders > ul > li > a.active:hover {
+  border: unset;
+  background-color: #d7d7d9;
+}
+
+.table.horizontalheaders .tab-content {
+  width: 100%;
+}
+
+div.explanation {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #d7d7d9;
+  background-color: rgb(247, 247, 248);
+}
+
+div.explanation > .explanationtext {
+  min-width: 250px;
+  margin: 0.5rem 1rem 0 1rem;
+  width: 100%;
+}
+
+div.explanation > .explanationvisual {
+  flex-grow: 1;
+  display: flex-inline;
+  justify-content: center;
+  border-left: 1px solid #d7d7d9;
+}
+
+div.explanation > .explanationvisual * video, div.explanation > .explanationvisual > picture > img {
+  min-width: 250px;
+  max-width: 250px;
+  aspect-ratio: 4/3;
+  margin-bottom: unset;
+}
+
+div.explanation > .explanationvisual > .gif {
+  margin-bottom: -0.35rem;
+}
+
+
+.table.horizontalheaders > .tab-content, .table.horizontalheaders * .tab-content {
+  padding: 0;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent > .table {
+  margin-top: unset;
+  margin-bottom: unset;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent > .table > .tab-content {
+  border: unset;
+  flex-grow: 1;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  max-width: 100%;
+  width: 100%;
+}
+
+.table.horizontalheaders > .tab-content > div {
+  height: 100%;
+}
+
+.table.horizontalheaders {
+  max-width: 100%;
+}
+
+.table.horizontalheaders > .tab-content {
+  max-width: calc(100% - 150px);
+  min-height: 100%;
+  width: 100%;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar, .table.horizontalheaders > .tab-content * .code-toolbar {
+  margin: 0;
+  padding: 0;
+  padding-top: 0.25rem;
+  border: unset;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.table.horizontalheaders > .tab-content .tab-pane.active {
+  min-height: 100%;
+  display: flex;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent img {
+  flex-grow: 1;
+  margin-bottom: 0;
+  max-width: 100%;
+  max-height: 450px;
+  width: auto;
+  flex: 1;
+  align-content: center;
+  margin-top: 0.3rem;
+}
+
+.table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar > pre {
+  height: calc(100% - 10px);
+}
+
+.td-content > div.max-page, hr {
+  max-width: 1000px !important;
+}
+
+hr {
+  margin-left:0;
+}
+
+@media (max-width: 1140px) {
+  // image fold over
+  div.explanation {
+    flex-wrap: wrap;
+  }
+
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .table.horizontalheaders {
+    flex-direction: column;
+  }
+
+  .table.horizontalheaders > ul {
+    max-width: unset;
+    border-right: 1px solid #d7d7d9;
+    border-bottom: unset;
+  }
+
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .table.horizontalheaders > .tab-content {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.front-card-container > .hover-card > a {
+  padding: unset;
+}
+
+@media (min-width: 900px) {
+
+  .horizontalheaders.program {
+    min-height: 450px;
+  }
+
+  .horizontalheaders.program * .table {
+    min-height: 260px;
+  }
+
+  .horizontalheaders.program * .explanation {
+    min-height: 187.5px;
+  }
+
+  .horizontalheaders.services {
+    min-height: 580px;
+  }
+
+  .horizontalheaders.services * .table {
+    min-height: 450px;
+  }
+
+  .horizontalheaders.services * .explanation {
+    min-height: 190px;
+  }
+
+  .horizontalheaders.platform {
+    min-height: 650px;
+  }
+
+  .horizontalheaders.platform * .table {
+    min-height: 480px;
+  }
+
+  .horizontalheaders.platform * .explanation {
+    min-height: 160px;
+  }
+}
+
+.horizontalheaders * .navheader {
+  text-transform: uppercase;
+  color: #AAA;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-family: Space Mono, sans-serif;
+}
+
+// Front page styling END
+
