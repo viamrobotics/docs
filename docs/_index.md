@@ -142,10 +142,9 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any robotic base with Viam and once configured as a [base component](/components/base/), you can drive it using the standardized [base API](/appendix/apis/components/base/).
+You can use any robotic base with Viam and once configured as a base component, you can drive it using the standardized base.
 
-Try it yourself, [drive a rover](/how-tos/drive-rover/).
-You don't need to buy a rover, you can borrow one of ours to [try viam](https://app.viam.com/try).
+[Try it →](/how-tos/drive-rover/)
 
   </div>
   <div class="explanationvisual">
@@ -239,9 +238,9 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any motor with Viam and, once configured as a [motor component](/components/motor/), you can operate the it using the standardized [motor API](/appendix/apis/components/motor/).
+You can use any motor with Viam and, once configured as a motor component, you can operate the it using the standardized motor API.
 
-Find more information in the guide [Control a motor](/how-tos/control-motor/).
+[Try it →](/how-tos/control-motor/)
 
   </div>
   <div class="explanationvisual">
@@ -312,9 +311,9 @@ std::cout << "co2-monitor get_readings return value " << co2-monitor_get_reading
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any physical sensor or anything else that provides measurements with Viam and, once configured as a [sensor component](/components/sensor/), you can get sensor readings using the standardized [sensor API](/appendix/apis/components/sensor/).
+You can use any physical sensor or anything else that provides measurements with Viam and, once configured as a sensor component, you can get sensor readings using the standardized sensor API.
 
-Find more information in the guide [Collect and view sensor data](/how-tos/collect-sensor-data/).
+[Try it →](/how-tos/collect-sensor-data/)
 
   </div>
 </div>
@@ -361,9 +360,9 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referencef
 <div class="explanation">
   <div class="explanationtext">
 
-Once you configure an [arm component](/components/arm/), you can move any arm using the standardized [arm API](/appendix/apis/components/arm/).
+Once you configure an arm component, you can move any arm using the standardized arm API.
 
-Find more information in our guide on [moving an arm](/tutorials/services/accessing-and-moving-robot-arm/).
+[Try it →](/tutorials/services/accessing-and-moving-robot-arm/)
 
   </div>
 </div>
@@ -395,12 +394,12 @@ Model - acme:rovers:base
 <div class="explanation">
   <div class="explanationtext">
 
-To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [Viam Registry](/registry/) or create your own for custom needs.
+To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the Viam Registry or create your own for custom needs.
 
-Using the [Viam Registry](/registry/) you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
+Using the Viam Registry you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
 There are also a variety of community-supplied resources you can use.
 
-For more information, see [Create a module](/how-tos/create-module/).
+[Create a module →](/how-tos/create-module/)
 
   </div>
 </div>
@@ -691,7 +690,7 @@ Model - acme:services:slam
 
 Using the [Viam Registry](/registry/) you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_ that you can then deploy to your machines.
 
-For more information, see [Create a module](/how-tos/create-module/).
+[Create a module →](/how-tos/create-module/)
 
   </div>
 </div>
@@ -828,6 +827,8 @@ For more information, see [Fleet Management API](/appendix/apis/fleet/) and [Mac
 {{% /tab %}}
 {{% tab name="ML Training" %}}
 
+<div class="tabcontent">
+
 {{< tabs >}}
 {{% tab name="Viam app" %}}
 
@@ -855,8 +856,6 @@ job_metadata = await ml_training_client.get_training_job(
 {{% /tab %}}
 {{< /tabs >}}
 
-<div class="tabcontent">
-
 <div class="explanation">
   <div class="explanationtext">
 
@@ -876,7 +875,7 @@ For more information, see [Train and deploy ML models](/how-tos/deploy-ml/) and 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
 
-{{<imgproc src="/cloud/rbac.png" resize="1000x" declaredimensions=true alt="Organization page" class="imgzoom aligncenter">}}
+{{<imgproc src="/cloud/rbac.png" resize="1000x" declaredimensions=true alt="Organization page" class="imgzoom fill aligncenter">}}
 
 
 {{% /tab %}}

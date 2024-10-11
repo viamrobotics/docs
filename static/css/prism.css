@@ -25,7 +25,7 @@ pre[class*="language-"]::selection {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background-color: rgb(247, 247, 248) !important;
+  background-color: white !important;
   padding-top: 0;
   margin-bottom: 0;
   padding-bottom: 12px;
@@ -117,7 +117,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
 
   .code-toolbar {
     border: 1px solid black;
-    background-color: rgb(247, 247, 248) !important;
+    background-color: white !important;
     margin-bottom: 1rem;
   }
 

@@ -941,18 +941,28 @@ td > ul, td > ol {
   border-bottom: 1px solid white;
 }
 
-.horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
+.horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
   background-color: rgb(247, 247, 248);
+  border-bottom: 1px solid #d7d7d9;
+}
+
+.horizontalheaders > .nav-tabs * .nav-link {
+  background-color: rgb(247, 247, 248);
+}
+
+.horizontalheaders > .nav-tabs .nav-link:hover {
+  background-color: #d7d7d9;
+}
+
+.horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
+  background-color: white;
   border-top: unset;
-  border-bottom: 1px solid rgb(247, 247, 248);
+  border-bottom: 1px solid white;
 }
 
 .nav-tabs .nav-link, .nav-tabs .nav-link:hover {
   border: 0px;
   border-style: solid;
-  border-left: 1px solid rgb(209, 213, 219);
-  border-bottom: 1px solid rgb(209, 213, 219);
-  border-top: 1px solid rgb(209, 213, 219);
   border-radius: 0;
   padding: 0.25rem 0.75rem;
   color: rgb(78, 79, 82);
@@ -961,7 +971,9 @@ td > ul, td > ol {
 
 .horizontalheaders * .nav-tabs .nav-link, .horizontalheaders * .nav-tabs .nav-link:hover {
   border-top: unset;
-  background-color: white;
+  background-color: rgb(247, 247, 248);
+  border-left: 1px solid rgb(209, 213, 219);
+  border-bottom: 1px solid rgb(209, 213, 219);
 }
 
 .nav-tabs .nav-item {
@@ -1792,7 +1804,7 @@ a.ais-Pagination-link:hover {
 
 .modellist > div {
   display: flex;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .modellist * .ais-Hits-list {
@@ -1812,7 +1824,7 @@ a.ais-Pagination-link:hover {
 .modellist * .ais-Hits-list > .ais-Hits-item {
   width: 100%;
   display: flex;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 .modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
@@ -1837,8 +1849,8 @@ a.ais-Pagination-link:hover {
 }
 
 .modellistheader {
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .modellistheader > div {
@@ -2021,12 +2033,12 @@ div .filterable > p {
 
 .usecase-table .tablestep:nth-of-type(odd) {
   background-color: whitesmoke;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 .usecase-table .tablestep:nth-of-type(even) {
   background-color: white;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 // Styling for email newsletter
@@ -2175,8 +2187,10 @@ h3.body-header[style] {
 }
 
 .table.horizontalheaders > ul.nav-tabs > .nav-item > .nav-link.active {
-  background-color: whitesmoke;
+  background-color: #d7d7d9;
   color: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
+  border-top: 1px solid #d7d7d9;
 }
 
 .table.front-page > div {
@@ -2202,7 +2216,6 @@ h3.body-header[style] {
   flex-direction: column;
   border: 1px solid #d7d7d9;
   border-right: unset;
-  padding: 0.5rem 0;
 }
 
 .table.horizontalheaders > ul > li {
@@ -2219,17 +2232,12 @@ h3.body-header[style] {
 }
 
 .table.horizontalheaders > ul > li > a {
-  margin: 0.125rem 0.5rem;
-  border: 1px solid white;
   background-color: white;
 }
 
-.table.horizontalheaders > ul > li a:hover {
-  border: 1px solid white;
-}
-
 .table.horizontalheaders > ul > li > a.active, .table.horizontalheaders > ul > li > a.active:hover {
-  border: 1px solid black;
+  border: unset;
+  background-color: #d7d7d9;
 }
 
 .table.horizontalheaders .tab-content {
@@ -2240,6 +2248,7 @@ div.explanation {
   display: flex;
   flex-direction: row;
   border-top: 1px solid #d7d7d9;
+  background-color: rgb(247, 247, 248);
 }
 
 div.explanation > .explanationtext {
@@ -2279,9 +2288,7 @@ div.explanation > .explanationvisual > .gif {
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > .table > .tab-content {
-  border-left: unset;
-  border-right: unset;
-  border-bottom: unset;
+  border: unset;
   flex-grow: 1;
 }
 
@@ -2292,6 +2299,7 @@ div.explanation > .explanationvisual > .gif {
   display: flex;
   flex-direction: column;
   justify-content: baseline;
+  max-width: 100%;
 }
 
 .table.horizontalheaders > .tab-content > div {
@@ -2313,12 +2321,13 @@ div.explanation > .explanationvisual > .gif {
   padding-top: 0.25rem;
   border: unset;
   flex-grow: 1;
-  min-height: 100%;
+  max-width: 100%;
 }
 
 .table.horizontalheaders > .tab-content .tab-pane.active {
   min-height: 100%;
   display: flex;
+  max-width: 100%;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent img {
