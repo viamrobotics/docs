@@ -15,7 +15,6 @@
 | [`GetGeometries`](/appendix/apis/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the frame of the board. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Read`](/appendix/apis/components/board/#read) | Read the current integer value of the digital signal output by the ADC. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Value`](/appendix/apis/components/board/#value) | Get the current value of this interrupt. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
-| [`DigitalInterruptNames`](/appendix/apis/components/board/#digitalinterruptnames) | Get the name of every configured `DigitalInterrupt` on the board. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GPIOPinByName`](/appendix/apis/components/board/#gpiopinbyname) | Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Reconfigure`](/appendix/apis/components/board/#reconfigure) | Reconfigure this resource. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`DoCommand`](/appendix/apis/components/board/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |

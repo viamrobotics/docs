@@ -1054,48 +1054,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### DigitalInterruptNames
-
-Get the name of every configured `DigitalInterrupt` on the board.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None.
-
-**Returns:**
-
-- (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The names of the digital interrupts.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the name of every DigitalInterrupt configured on the board.
-names = await my_board.digital_interrupt_names()
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.digital_interrupt_names).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None.
-
-**Returns:**
-
-- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every interrupt [configured](/components/board/#available-models) on the board.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GPIOPinByName
 
 Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
