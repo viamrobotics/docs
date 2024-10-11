@@ -2267,6 +2267,7 @@ div.explanation > .explanationvisual {
 div.explanation > .explanationvisual * video, div.explanation > .explanationvisual > picture > img {
   min-width: 250px;
   max-width: 250px;
+  aspect-ratio: 4/3;
   margin-bottom: unset;
 }
 
@@ -2300,6 +2301,7 @@ div.explanation > .explanationvisual > .gif {
   flex-direction: column;
   justify-content: baseline;
   max-width: 100%;
+  width: 100%;
 }
 
 .table.horizontalheaders > .tab-content > div {
@@ -2313,6 +2315,7 @@ div.explanation > .explanationvisual > .gif {
 .table.horizontalheaders > .tab-content {
   max-width: calc(100% - 150px);
   min-height: 100%;
+  width: 100%;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar, .table.horizontalheaders > .tab-content * .code-toolbar {
@@ -2328,13 +2331,17 @@ div.explanation > .explanationvisual > .gif {
   min-height: 100%;
   display: flex;
   max-width: 100%;
+  justify-content: center;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent img {
   flex-grow: 1;
   margin-bottom: 0;
-  width: 600px;
   max-width: 100%;
+  height: 500px;
+  width: auto;
+  flex: 1;
+  align-content: center;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar > pre {
@@ -2383,6 +2390,7 @@ hr {
 
   .table.horizontalheaders > .tab-content {
     max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -2390,16 +2398,43 @@ hr {
   padding: unset;
 }
 
-.horizontalheaders.program {
-  min-height: 450px;
-}
+@media (min-width: 900px) {
 
-.horizontalheaders.services {
-  min-height: 580px;
-}
+  .horizontalheaders.program {
+    min-height: 450px;
+  }
 
-.horizontalheaders.platform {
-  min-height: 650px;
+  .horizontalheaders.program * .table {
+    min-height: 380px;
+  }
+
+  .horizontalheaders.program * .explanation {
+    min-height: 187.5px;
+  }
+
+  .horizontalheaders.services {
+    min-height: 580px;
+  }
+
+  .horizontalheaders.services * .table {
+    min-height: 550px;
+  }
+
+  .horizontalheaders.services * .explanation {
+    min-height: 190px;
+  }
+
+  .horizontalheaders.platform {
+    min-height: 650px;
+  }
+
+  .horizontalheaders.platform * .table {
+    min-height: 550px;
+  }
+
+  .horizontalheaders.platform * .explanation {
+    min-height: 160px;
+  }
 }
 
 .horizontalheaders * .navheader {

@@ -371,6 +371,9 @@ Once you configure an arm component, you can move any arm using the standardized
 {{% tab name="Operate custom hardware" %}}
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Shell" %}}
+
 ```sh {class="command-line" data-prompt="$" data-output="3-20"}
 yo viam-module
 ? Create module structure within current directory?  If no, will create a new directory with current directory matching the module name
@@ -390,6 +393,9 @@ Model - acme:rovers:base
    create base-base/src/base.py
    create base-base/README.md
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
@@ -664,6 +670,9 @@ Use the navigation service to autonomously navigate a machine to defined waypoin
 {{% tab name="Custom Logic" %}}
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Shell" %}}
+
 ```sh {class="command-line" data-prompt="$" data-output="3-20"}
 npm install -g generator-viam-module
 yo viam-module
@@ -686,10 +695,13 @@ Model - acme:services:slam
    create slam-slam/README.md
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
 <div class="explanation">
   <div class="explanationtext">
 
-Using the [Viam Registry](/registry/) you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_ that you can then deploy to your machines.
+Using the Viam Registry you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_ that you can then deploy to your machines.
 
 [Create a module →](/how-tos/create-module/)
 
@@ -712,6 +724,9 @@ Using the [Viam Registry](/registry/) you can turn your own custom business logi
 {{% tab name="Deployment" %}}
 
 <div class="tabcontent">
+
+{{< tabs >}}
+{{% tab name="Fragment" %}}
 
 ```json
 // Reusable configuration for using a software package
@@ -736,6 +751,9 @@ Using the [Viam Registry](/registry/) you can turn your own custom business logi
 }
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
 <div class="explanation">
   <div class="explanationtext">
 
@@ -753,6 +771,9 @@ Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="f
 
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Shell" %}}
+
 ```sh {class="command-line" data-prompt="$" data-output="3-5,6,7"}
 # Create configuration for provisioning machines with a fragment
 echo "{
@@ -766,6 +787,9 @@ wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall
 chmod 755 preinstall.sh
 sudo ./preinstall.sh
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
@@ -878,7 +902,6 @@ You can build machine learning models based on your machines' data using Viam's 
 
 {{<imgproc src="/cloud/rbac.png" resize="1000x" declaredimensions=true alt="Organization page" class="imgzoom fill aligncenter">}}
 
-
 {{% /tab %}}
 {{% tab name="Python" %}}
 
@@ -902,6 +925,7 @@ api_key, api_key_id = await cloud.create_key(
 
 {{% /tab %}}
 {{< /tabs >}}
+
 <div class="explanation">
   <div class="explanationtext">
 
