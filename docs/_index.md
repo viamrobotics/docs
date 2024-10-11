@@ -21,7 +21,7 @@ imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
 noedit: true
 date: "2024-09-17"
-# updated: ""  # When the content was last entirely checked
+updated: "2024-10-11"
 ---
 
 <div class="max-page">
@@ -74,9 +74,9 @@ Viam integrates with hardware and software on **any device**. To get started, in
 ```python
 async def moveInSquare(base):
     for _ in range(4):
-        # move forward 500mm at 500mm/s
+        # Move forward 500mm at 500mm/s
         await base.move_straight(velocity=500, distance=500)
-        # spin 90 degrees at 100 degrees/s
+        # Spin 90 degrees at 100 degrees/s
         await base.spin(velocity=100, angle=90)
 ```
 
@@ -86,9 +86,9 @@ async def moveInSquare(base):
 ```go
 func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
-        // move forward 500mm at 500mm/s
+        // Move forward 500mm at 500mm/s
         base.MoveStraight(ctx, 600, 500.0, nil)
-        // spin 90 degrees at 100 degrees/s
+        // Spin 90 degrees at 100 degrees/s
         base.Spin(ctx, 90, 100.0, nil)
     }
 }
@@ -100,9 +100,9 @@ func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
 ```ts
 async function moveInSquare(baseClient: VIAM.BaseClient) {
   for (let i = 0; i < 4; i++) {
-    // move forward 500mm at 500mm/s
+    // Move forward 500mm at 500mm/s
     await baseClient.moveStraight(500, 500);
-    // spin 90 degrees at 100 degrees/s
+    // Spin 90 degrees at 100 degrees/s
     await baseClient.spin(90, 100);
   }
 }
@@ -114,9 +114,9 @@ async function moveInSquare(baseClient: VIAM.BaseClient) {
 ```dart
 Future<void> moveSquare() async {
   for (var i=0; i<4; i++) {
-    // move forward 500mm at 500mm/s
+    // Move forward 500mm at 500mm/s
     await base.moveStraight(500, 500);
-    // spins the rover 90 degrees at 100 degrees/s
+    // Spins the rover 90 degrees at 100 degrees/s
     await base.spin(90, 100);
   }
 }
@@ -128,9 +128,9 @@ Future<void> moveSquare() async {
 ```cpp
 void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
   for (int i = 0; i < 4; ++i) {
-    // move forward 500mm at 500mm/s
+    // Move forward 500mm at 500mm/s
     base->move_straight(500, 500);
-    // spins the rover 90 degrees at 100 degrees/s
+    // Spins the rover 90 degrees at 100 degrees/s
     base->spin(90, 100);
   }
 }
@@ -165,11 +165,11 @@ You can use any robotic base with Viam and once configured as a base component, 
 
 ```python
 async def spin_motor(motor):
-    # turn the motor at 35% power forwards
+    # Turn the motor at 35% power forwards
     await motor.set_power(power=0.35)
-    # let the motor spin for 3 seconds
+    # Let the motor spin for 3 seconds
     time.sleep(3)
-    # stop the motor
+    # Stop the motor
     await motor.stop()
 ```
 
@@ -178,12 +178,12 @@ async def spin_motor(motor):
 
 ```go
 func spinMotor(ctx context.Context, motor motor.Motor, logger logging.Logger) {
-  // turn the motor at 35% power forwards
-  err = motor1Component.SetPower(context.Background(), 0.35, nil)
-  // let the motor spin for 3 seconds
+  // Turn the motor at 35% power forwards
+  err = motor.SetPower(context.Background(), 0.35, nil)
+  // Let the motor spin for 3 seconds
   time.Sleep(3 * time.Second)
-  // stop the motor
-  err = motor1Component.Stop(context.Background(), nil)
+  // Stop the motor
+  err = motor.Stop(context.Background(), nil)
 }
 ```
 
@@ -192,14 +192,14 @@ func spinMotor(ctx context.Context, motor motor.Motor, logger logging.Logger) {
 
 ```ts
 async function spinMotor(motorClient: VIAM.MotorClient) {
-  // turn the motor at 35% power forwards
-  await motor.setPower(0.35);
-  // let the motor spin for 3 seconds
+  // Turn the motor at 35% power forwards
+  await motorClient.setPower(0.35);
+  // Let the motor spin for 3 seconds
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   await sleep(3000);
-  // stop the motor
-  await motor.stop();
+  // Stop the motor
+  await motorClient.stop();
 }
 ```
 
@@ -208,12 +208,11 @@ async function spinMotor(motorClient: VIAM.MotorClient) {
 
 ```dart
 Future<void> spinMotor() async {
-  // turn the motor at 35% power forwards
+  // Turn the motor at 35% power forwards
   await motorClient.setPower(0.35);
-  // let the motor spin for 3 seconds
-  // TODO (also fix control-motor...)
-
-  // stop the motor
+  // Let the motor spin for 3 seconds
+  await Future.delayed(Duration(seconds: 3));
+  // Stop the motor
   await motorClient.stop();
 }
 ```
@@ -223,11 +222,11 @@ Future<void> spinMotor() async {
 
 ```cpp
 void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
-  // turn the motor at 35% power forwards
+  // Turn the motor at 35% power forwards
   motor->set_power(0.35);
-  // let the motor spin for 3 seconds
+  // Let the motor spin for 3 seconds
   sleep(3);
-  // stop the motor
+  // Stop the motor
   motor->stop();
 }
 ```
@@ -300,9 +299,9 @@ print(readings);
 
 ```cpp
 // Get the readings provided by the sensor.
-auto co2-monitor = machine->resource_by_name<Sensor>("co2-monitor");
-auto co2-monitor_get_readings_return_value = co2-monitor->get_readings();
-std::cout << "co2-monitor get_readings return value " << co2-monitor_get_readings_return_value << "\n";
+auto co2monitor = machine->resource_by_name<Sensor>("co2-monitor");
+auto co2monitor_get_readings_return_value = co2monitor->get_readings();
+std::cout << "co2-monitor get_readings return value " << co2monitor_get_readings_return_value << "\n";
 ```
 
 {{% /tab %}}
@@ -431,15 +430,15 @@ There are also a variety of community-supplied resources you can use.
 {{% tab name="Python" %}}
 
 ```python
-# get image from camera stream on construction site
+# Get image from camera stream on construction site
 cam = Camera.from_robot(machine, "construction-site-cam")
 img = await cam.get_image()
 
-# use machine learning model to gather information from the image
+# Use machine learning model to gather information from the image
 hardhat_detector = VisionClient.from_robot(machine, "hardhat_detector")
 detections = await hardhat_detector.get_detections(img)
 
-# check whether a person is detected not wearing a hardhat
+# Check whether a person is detected not wearing a hardhat
 for d in detections:
     if d.confidence > 0.8 and d.class_name == "NO-Hardhat":
         print("Violation detected.")
@@ -449,17 +448,17 @@ for d in detections:
 {{% tab name="Go" %}}
 
 ```go
-// get image from camera stream on construction site
+// Get image from camera stream on construction site
 myCamera, err := camera.FromRobot(machine, "construction-site-cam")
 camStream, err := myCamera.Stream(context.Background())
 img, release, err := camStream.Next(context.Background())
 defer release()
 
-// use machine learning model to gather information from the image
+// Use machine learning model to gather information from the image
 visService, err := vision.FromRobot(machine, "hardhat_detector")
 detections, err := visService.Detections(context.Background(), img, nil)
 
-// check whether a person is detected not wearing a hardhat
+// Check whether a person is detected not wearing a hardhat
 for i := 0; i < len(detections); i++ {
   if (detection[i].confidence > 0.8) && (detection[i].class_name == "NO-Hardhat")  {
     logger.Info("Violation detected.")
@@ -744,7 +743,7 @@ Using the Viam Registry you can turn your own custom business logic into _{{< gl
       "type": "registry",
       "name": "viam-labs_speech",
       "module_id": "viam-labs:speech",
-      // specific version to deploy
+      // Specific version to deploy
       "version": "0.5.2"
     }
   ]

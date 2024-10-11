@@ -165,8 +165,8 @@ async def main():
     motor_1 = Motor.from_robot(machine, "motor-1")
     # Turn the motor at 35% power forwards
     await motor_1.set_power(power=0.35)
-    # Let the motor spin for 4 seconds
-    time.sleep(4)
+    # Let the motor spin for 3 seconds
+    time.sleep(3)
     # Stop the motor
     await motor_1.stop()
 
@@ -230,8 +230,8 @@ func main() {
     logger.Error(err)
     return
   }
-  // Let the motor spin for 4 seconds
-  time.Sleep(4 * time.Second)
+  // Let the motor spin for 3 seconds
+  time.Sleep(3 * time.Second)
   // Stop the motor
   err = motor1Component.Stop(context.Background(), nil)
   if err != nil {
@@ -512,10 +512,10 @@ const main = async () => {
 
     // Turn the motor at 35% power forwards
     await motorClient.setPower(0.35);
-    // Let the motor spin for 4 seconds, then stop the motor
+    // Let the motor spin for 3 seconds, then stop the motor
     const sleep = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));
-    await sleep(4000);
+    await sleep(3000);
     await motorClient.stop();
   };
   button().disabled = false;
@@ -566,7 +566,7 @@ int main() {
         motor = machine->resource_by_name<Motor>(motor_name);
         // Turn the motor at 35% power forwards
         motor->set_power(0.35);
-        // Let the motor spin for 4 seconds
+        // Let the motor spin for 3 seconds
         sleep(3);
         // Stop the motor
         motor->stop();
