@@ -12,6 +12,7 @@ sitemap:
 outputs:
   - html
 aliases:
+  - "/get-started/"
   - "/getting-started/"
   - "/getting-started/high-level-overview"
   - "/product-overviews/"
