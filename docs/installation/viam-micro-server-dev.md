@@ -97,7 +97,7 @@ If you would like to instead retain the setup script, replace `/dev/null` in the
 
 With the dev setup for `viam-micro-server`, you can:
 
-- Creating a project that combines `viam-micro-server` with one or more modules to produce a new firmware instance with expanded functionality.
+- Create a project that combines `viam-micro-server` with one or more modules to produce a new firmware instance with expanded functionality.
 - Create modules that can integrate with `viam-micro-server` to deliver new opt-in functionality or device support.
 - Work on `viam-micro-server` itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution.
 
@@ -108,11 +108,11 @@ With the dev setup for `viam-micro-server`, you can:
 
     Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
     Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
-    Select the part status dropdown to the right of your machine's name on the top of the page:
+
+    Then select the part status dropdown to the right of your machine's name on the top of the page and copy the **Machine cloud credentials**:
 
     {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
-    Click the copy icon underneath **Machine cloud credentials**.
     `viam-micro-server` needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
 {{% snippet "secret-share.md" %}}
@@ -180,7 +180,7 @@ make upload
 7.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
     If successful, **Live** should be displayed underneath **Last online**.
 
-8.  You may now add any desired modules to the project by including them in the `[dependencies]` section of the `Cargo.toml` for the generated project.
+8.  You may now add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project.
     After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
 
 {{% /tab %}}
@@ -212,7 +212,7 @@ make upload
 
 1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
 
-1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `[dependencies]` section of the project's `Cargo.toml` file, then build and flash the project.
+1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `dependencies` section of the project's `Cargo.toml` file, then build and flash the project.
    The module will now be available for use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
 
 {{% /tab %}}
