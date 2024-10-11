@@ -59,7 +59,7 @@ The webcam can be installed on a robot, or just held in your hand.
 
 First, follow these instructions to connect and calibrate your webcam as a component of your machine:
 
-1. [Connect and configure a webcam](/components/camera/webca/)
+1. [Connect and configure a webcam](/components/camera/webcam/)
 2. [Calibrate a camera](/components/camera/calibrate/)
 
 Now, add the `orbslamv3` service:
