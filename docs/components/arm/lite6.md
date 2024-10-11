@@ -12,7 +12,7 @@ component_description: "Supports UFACTORY Lite 6."
 ---
 
 Configure a `lite6` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your machine.
-Make sure to first connect the arm to your machine's computer and turn it on.
+Connect your arm to your machine and turn it on if you want to test your arm as you configure it.
 Then, configure the arm:
 
 {{< tabs >}}

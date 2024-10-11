@@ -19,7 +19,8 @@ Follow the [setup guide](/installation/prepare/beaglebone-setup/) to prepare you
 {{% /alert %}}
 
 Configure a `beaglebone` board to integrate [BeagleBoard's BeagleBone AI 64](https://www.beagleboard.org/boards/beaglebone-ai-64) into your machine.
-Make sure to first physically assemble the board and turn it on.
+To test your board as you configure it, power it on.
+If you plan to connect hardware to the board's pins, connect the hardware while it's powered off.
 Then, configure the board:
 
 {{< tabs name="Configure an beaglebone Board" >}}
