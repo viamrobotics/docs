@@ -964,6 +964,9 @@ td > ul, td > ol {
   border: 0px;
   border-style: solid;
   border-radius: 0;
+  border-left: 1px solid rgb(209, 213, 219);
+  border-bottom: 1px solid rgb(209, 213, 219);
+  border-top: 1px solid rgb(209, 213, 219);
   padding: 0.25rem 0.75rem;
   color: rgb(78, 79, 82);
   background-color: rgb(241, 241, 244);
@@ -2223,8 +2226,8 @@ h3.body-header[style] {
   justify-content: flex-start;
 }
 
-.table.horizontalheaders > ul.nav-tabs > li.nav-item {
-  border-right: unset;
+.table.horizontalheaders > ul.nav-tabs > li.nav-item, .table.horizontalheaders > ul.nav-tabs > li.nav-item > a {
+  border: unset;
 }
 
 .table.horizontalheaders * .tabcontent > .table > ul > li.nav-item:first-child > a {
