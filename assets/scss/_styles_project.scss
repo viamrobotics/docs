@@ -2302,7 +2302,8 @@ div.explanation > .explanationvisual > .gif {
 .table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent > img {
   flex-grow: 1;
   margin-bottom: 0;
-  max-width: 500px;
+  width: 500px;
+  max-width: 100%;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar > pre {
