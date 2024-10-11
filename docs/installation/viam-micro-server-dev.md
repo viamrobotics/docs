@@ -32,7 +32,6 @@ The instructions below are for configuring a development environment in order to
 - Develop modules for `viam-micro-server`.
 - Develop `viam-micro-server` itself.
 
-{{< /alert >}}
 
 ## Required software
 
