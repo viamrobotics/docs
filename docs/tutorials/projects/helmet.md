@@ -251,10 +251,12 @@ Now that you have verified that the detector and data sync are working, modify y
 [Triggers](/configure/triggers/) allow you to trigger actions by sending an HTML request when a certain event happens.
 In this case, you're going to set up a trigger to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
 
-Before you configure a trigger on your machine, you need to create a serverless function for the trigger to call.
+If you don't care to send a custom email, you can use the trigger's built-in email functionality.
+If you prefer that, skip this part and move on to [Configure a trigger on your machine](#configure-a-trigger-on-your-machine).
 
 ### Create a serverless function
 
+Before you configure a trigger on your machine, you need to create a serverless function for the trigger to call.
 A serverless function is a simple script that is hosted by a service such as [Google Cloud Functions](https://cloud.google.com/functions) or [AWS Lambda](https://aws.amazon.com/pm/lambda).
 You don't need to host it on your machine; instead, it is always available and runs only when an event triggers it.
 
@@ -425,20 +427,38 @@ Configure a trigger as follows:
    ```json {class="line-numbers linkable-line-numbers"}
      "triggers": [
        {
-         "url": "<Insert your own cloud function URL>",
          "event": {
            "attributes": {
              "data_types": ["binary"]
            },
            "type": "part_data_ingested"
+         },
+         "notifications": [
+         {
+          "type": "webhook",
+          "value": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email",
+          "seconds_between_notifications": 60
          }
-       }
-     ]
+        ]
+      }
+   ]
    ```
 
-3. Replace the `url` value with your cloud function URL.
+3. Replace the `value` in `notifications` with your cloud function URL.
    You can get this URL by copying it from the **TRIGGER** tab in the cloud function console.
-   Once you've done this, the `url` line should resemble, for example, `"url": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email"`.
+   Once you've done this, the `value` line should resemble, for example, `"value": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email"`.
+
+   If you skipped writing a custom cloud function in favor of the built-in email functionality, use this JSON for the `notifications` object instead:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "notifications": [
+      {
+         "type": "email",
+         "value": "<YOUR-EMAIL-HERE>",
+         "seconds_between_notifications": 60
+      }
+   ]
+   ```
 
 4. Click **Save** in the top right corner of the screen to save your changes.
 
