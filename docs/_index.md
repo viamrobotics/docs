@@ -808,7 +808,7 @@ When the machine is taken into operation, it will automatically get the latest c
 <div class="tabcontent">
 
 {{< tabs >}}
-{{% tab name="Viam App" %}}
+{{% tab name="Viam app" %}}
 
 {{< imgproc src="/fleet/dashboard.png" alt="Dashboard view of machine status information" resize="1200x" class="imgzoom aligncenter" >}}
 
