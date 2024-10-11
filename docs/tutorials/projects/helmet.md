@@ -436,7 +436,7 @@ Configure a trigger as follows:
          "notifications": [
          {
           "type": "webhook",
-          "value": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email",
+          "value": "<Insert your own cloud function URL>",
           "seconds_between_notifications": 60
          }
         ]
