@@ -33,7 +33,7 @@ Also pay attention to your surroundings, double-check your code for correctness,
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
 <div class="td-max-width-on-larger-screens">
-  {{<imgproc src="/tutorials/motion/access_01_xarm6.png" resize="500x" declaredimensions=true alt="A picture of the UFACTORY xArm 6." class="alignright" style="max-width: 400px" >}}
+  {{<imgproc src="/tutorials/motion/access_01_xarm6.png" resize="500x" declaredimensions=true alt="A picture of the UFACTORY xArm 6." class="alignright" style="width: 400px" >}}
 </div>
 
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
@@ -70,7 +70,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
    <!-- TODO -->
 
-   {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="1000x" declaredimensions=true alt="Sample machine arm configuration with several fields filled out." style="max-width: 600px" >}}
+   {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="1000x" declaredimensions=true alt="Sample machine arm configuration with several fields filled out." style="width: 600px" >}}
 
 1. Save your machine configuration.
 

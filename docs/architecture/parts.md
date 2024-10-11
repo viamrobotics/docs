@@ -69,11 +69,11 @@ To add a new sub-part:
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 2. Click the **+** (Create) icon next to the name of your main part, then click **Sub-part** from the menu:
 
-   {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the create part dropdown open." style="max-width:500px" >}}
+   {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the create part dropdown open." style="width:500px" >}}
 
 To rename or delete a sub-part, or to make it the main part, click the **...** icon to open the Actions menu:
 
-{{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="max-width:500px" >}}
+{{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="width:500px" >}}
 
 ### Configure a remote part
 
@@ -91,14 +91,14 @@ To establish a connection between a part of one machine and a part of a second m
    This is the machine part that will be able to access the resources of the other machine part.
 6. Navigate to the **CONFIGURE** tab, click the **+** (Create) icon next to the machine part's name in the left side menu.
 
-   {{<imgproc src="/build/configure/parts/remote-create.png" resize="x1100" declaredimensions=true alt="The create menu with options including remote part shown." style="max-width:500px" >}}
+   {{<imgproc src="/build/configure/parts/remote-create.png" resize="x1100" declaredimensions=true alt="The create menu with options including remote part shown." style="width:500px" >}}
 
 7. Click **Remote part**.
 8. Find the newly-created remote part in the left hand menu.
    Click it to navigate to its configuration card.
 9. Delete the auto-populated JSON from the new remote's config area and replace it by pasting the remote config you copied in step 4 into the empty field.
 
-   {{<imgproc src="/build/configure/parts/remote-config.png" resize="x1100" declaredimensions=true alt="The configured remote." style="max-width:700px" >}}
+   {{<imgproc src="/build/configure/parts/remote-config.png" resize="x1100" declaredimensions=true alt="The configured remote." style="width:700px" >}}
 
 10. Click **Save** in the upper right corner of the page to save your config.
 

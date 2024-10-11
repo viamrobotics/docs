@@ -16,7 +16,7 @@ date: "2024-03-05"
 cost: 120
 ---
 
-{{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
+{{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="width: 350px">}}
 
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
 Luckily, you can address this problem using Viam's integrated [data capture](/services/data/capture-sync/), [computer vision](/services/vision/), and [triggers](/configure/triggers/), along with a hard hat detection model.
@@ -404,7 +404,7 @@ Now you can test the script:
 
 3. Check your email inbox.
 
-   {{<imgproc src="/tutorials/helmet/email-received.png" resize="x600" declaredimensions=true alt="The email, opened in a web email client." style="max-width: 400px" >}}
+   {{<imgproc src="/tutorials/helmet/email-received.png" resize="x600" declaredimensions=true alt="The email, opened in a web email client." style="width: 400px" >}}
 
    If you don't see an email, check your spam folder.
    If you still don't see an email, make sure your SendGrid account is fully set up (2FA enabled, email confirmed) and that your email API key is [correctly configured](#configure-email-credentials).

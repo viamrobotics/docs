@@ -60,15 +60,15 @@ To add a modular [component](/components/) from the Viam registry to your machin
 2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
 3. Browse the list of available component types, and select the specific modular component you'd like to add.
 
-   {{<imgproc src="registry/configure/add-component-by-category.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the category 'camera'">}}
+   {{<imgproc src="registry/configure/add-component-by-category.png" resize="500x" style="width: 400px" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the category 'camera'">}}
 
    You can also start typing to search for a module by name or to narrow down your search results.
 
-   {{<imgproc src="registry/configure/add-component-by-name.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
+   {{<imgproc src="registry/configure/add-component-by-name.png" resize="500x" style="width: 400px" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
 4. After selecting the modular component, enter a name or use the suggested name for your modular component and click **Create** to add it to your machine's configuration.
 
-   {{<imgproc src="registry/configure/add-component-screen.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
+   {{<imgproc src="registry/configure/add-component-screen.png" resize="500x" style="width: 400px" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
    Be sure the modular component you select supports the [platform](/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
@@ -92,15 +92,15 @@ To add a modular [service](/services/) from the Viam registry to your machine:
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 3. Browse the list of available service types and select the specific modular service you'd like to add.
 
-   {{<imgproc src="registry/configure/add-service-by-category.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a service modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
+   {{<imgproc src="registry/configure/add-service-by-category.png" resize="500x" style="width: 400px" declaredimensions=true alt="The add a service modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
 
    You can also start typing to search for a module by name or to narrow down your search results.
 
-   {{<imgproc src="registry/configure/add-service-by-name.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a service modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
+   {{<imgproc src="registry/configure/add-service-by-name.png" resize="500x" style="width: 400px" declaredimensions=true alt="The add a service modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
 4. After selecting the modular service, enter a name or use the suggested name for your modular service and click **Create** to add it to your machine's configuration.
 
-   {{<imgproc src="registry/configure/add-service-screen.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a service modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
+   {{<imgproc src="registry/configure/add-service-screen.png" resize="500x" style="width: 400px" declaredimensions=true alt="The add a service modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
    Be sure the modular service you select supports the [platform](/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
@@ -216,7 +216,7 @@ You can also view and edit the configuration of a modular resource's underlying 
     This is the **Registry module** card, which lists the deployed version of the module and the latest version available.
     Here you can [configure how a module updates](#configure-version-update-management-for-a-registry-module).
 
-    {{<imgproc src="registry/configure/deployed-module-with-component.png" style="max-width: 400px" resize="500x" declaredimensions=true alt="The module card">}}
+    {{<imgproc src="registry/configure/deployed-module-with-component.png" style="width: 400px" resize="500x" declaredimensions=true alt="The module card">}}
 
     You can also use JSON mode to [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 

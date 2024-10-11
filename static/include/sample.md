@@ -16,7 +16,7 @@ You'll need to halt and restart the server to view the changes.
 
 This Markdown code:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 Markdown Table
 | id | name    |
 |----|---------|

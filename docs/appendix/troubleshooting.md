@@ -134,7 +134,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
-    ```sh
+    ```sh {class="command-line" data-prompt="$"}
     grep 'viam-server' /var/log/syslog | tail -50
     ```
 
@@ -181,7 +181,7 @@ In **JSON** mode, it will resemble the following:
       In the list of camera devices returned, find the entry for your camera.
       For example, the webcam on the [Viam Rover](/appendix/try-viam/) appears as follows:
 
-      ```sh
+      ```sh {class="command-line" data-prompt="$"}
       GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):
               /dev/video0
               /dev/video1

@@ -258,7 +258,7 @@ Rules for images:
 
 To ensure that you do not accidentally add `EXIF` data on images, please install [exiftool](https://exiftool.org/install.html) and add the following lines to the `.git/hooks/pre-commit` file in your local repository.
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 if [ "git diff --name-only | grep -EI '.*(png|jpg|jpeg)$' | wc -l" ];
 then
 list= $(git diff --diff-filter=d --name-only | grep -EI ".*(png|jpg|jpeg)$")
@@ -484,7 +484,7 @@ Link previews do not support `webm` and `mp4` but they do support gifs.
 
 If you'd like to use commands like `webm2mp4` add this to your `.zshrc`:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 function webm2gif() {
 vid=$1
 ext=${vid##*.}

@@ -23,7 +23,7 @@ Notes:
 -->
 
 <div class="td-max-width-on-larger-screens">
- <div class="alignleft center-if-small" style="max-width:250px">
+ <div class="alignleft center-if-small" style="width:250px">
   {{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine.">}}
   </div>
 </div>
@@ -281,7 +281,7 @@ Follow the steps below to build and preview the current state of your app.
 
    A window should open up, displaying a rendering of your smart machine app:
 
-   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1000x" style="max-width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a grayed-out login button.">}}
+   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1000x" style="width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a grayed-out login button.">}}
 
 ## Add app navigation
 

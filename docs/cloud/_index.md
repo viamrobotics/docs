@@ -47,7 +47,7 @@ Each machine resides in a location.
 
 <br>
 
-{{<imgproc src="/fleet/fleet.svg" resize="1400x" style="max-width: 1400px" declaredimensions=true alt="A diagram showing how organizations, locations, and machines are grouped by Viam's fleet management">}}
+{{<imgproc src="/fleet/fleet.svg" resize="1400x" style="width: 1400px" declaredimensions=true alt="A diagram showing how organizations, locations, and machines are grouped by Viam's fleet management">}}
 
 <br><br>
 

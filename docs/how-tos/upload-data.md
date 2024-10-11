@@ -68,7 +68,7 @@ If you do not want the data deleted from your machine, copy the data to a new fo
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-folder.svg" class="fill alignleft" style="max-width: 120px" declaredimensions=true alt="Folder" >}}
+{{<imgproc src="/services/icons/data-folder.svg" class="fill alignleft" style="width: 120px" declaredimensions=true alt="Folder" >}}
 **1. Organize your data**
 
 Put the data you want to sync in a directory on your machine.
@@ -249,7 +249,7 @@ if __name__ == "__main__":
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-cloud-sync.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Cloud connection">}}
+{{<imgproc src="/services/icons/data-cloud-sync.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Cloud connection">}}
 **3. Run your code**
 
 Save and run your code once.

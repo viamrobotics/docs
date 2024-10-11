@@ -965,6 +965,8 @@ td > ul, td > ol {
   border-style: solid;
   border-radius: 0;
   border-left: 1px solid rgb(209, 213, 219);
+  border-right: 1px solid rgb(209, 213, 219);
+  margin-right: -1px;
   border-bottom: 1px solid rgb(209, 213, 219);
   border-top: 1px solid rgb(209, 213, 219);
   padding: 0.25rem 0.75rem;
@@ -1082,7 +1084,11 @@ img.embed-responsive.embed-responsive-16by9 {
 /* START GIFs should have a max width */
 
 .td-content > video {
-  max-width: 600px;
+  max-width: 100%;
+}
+
+.gif > video {
+  max-width: 100%;
 }
 
 /* END GIFs should have a max width */
@@ -1233,6 +1239,9 @@ img.frame {
   @include media-breakpoint-up(lg) {
       max-width: 90%;
   }
+
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .gif {
@@ -2109,12 +2118,15 @@ h3.body-header[style] {
   text-align: center;
   margin-left: unset;
   align-content: center;
+  white-space: nowrap;
+  padding: 1rem 0rem !important;
 }
 
 .front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
   text-transform: uppercase;
   font-family: "Space Mono",sans-serif;
   margin-right: 0;
+  padding-top: 1rem;
 }
 
 .front-card-container > .cta.secondary {

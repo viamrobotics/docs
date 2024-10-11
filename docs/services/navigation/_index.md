@@ -176,7 +176,7 @@ Add a [nested reference frame](/services/frame-system/nested-frame-config/) conf
 - From the left-hand menu, select your base.
 - Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 
-  {{<imgproc src="/services/navigation/select-base-frame.png" resize="300x" style="max-width: 500px" alt="Frame card for a base with the default reference frame settings">}}
+  {{<imgproc src="/services/navigation/select-base-frame.png" resize="300x" style="width: 500px" alt="Frame card for a base with the default reference frame settings">}}
 
 - Keep the `parent` frame as `world`.
   Select the **Geometry** dropdown menu.
@@ -186,7 +186,7 @@ Add a [nested reference frame](/services/frame-system/nested-frame-config/) conf
 
   For example, you would configure a box-shaped base with dimensions of 100mm x 100mm x 100mm (l x h x w) as follows:
 
-  {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="300x" style="max-width: 500px" alt="The frame card for the base in the Viam app config builder.">}}
+  {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="300x" style="width: 500px" alt="The frame card for the base in the Viam app config builder.">}}
 
 - Next, select your movement sensor from the left-hand menu. Click on the **Parent** menu and select your base component.
 - Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
@@ -194,7 +194,7 @@ Add a [nested reference frame](/services/frame-system/nested-frame-config/) conf
 
   For example, you would configure a movement sensor mounted 200mm on top of your base as follows:
 
-  {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="300x" style="max-width: 500px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
+  {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="300x" style="width: 500px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
 
 You can also adjust the **Orientation** and **Geometry** of your movement sensor or base, if necessary.
 See [the frame system service](/services/frame-system/#configuration) for instructions.

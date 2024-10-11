@@ -27,7 +27,7 @@
 {{- if (.Get "poster") -}}
   {{- $img := resources.GetMatch (.Get "poster") -}}
   {{- if $img -}}
-<video class="video-shortcode lozad {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" data-poster="{{ $img.RelPermalink }}">
+<video class="video-shortcode lozad {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="width: {{ .Get "max-width" }}; {{ .Get "style"}}" data-poster="{{ $img.RelPermalink }}">
   {{- if not (hasPrefix $webmLink "http") -}}
     {{- $webmLink := relURL (substr (.Get "webm_src") 1) -}}
     <source data-src="{{ $webmLink }}" type="video/webm">
@@ -44,7 +44,7 @@
   to support it.
 </video>
 <noscript>
-  <video class="video-shortcode {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" poster="{{ $img.RelPermalink }}">
+  <video class="video-shortcode {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="width: {{ .Get "max-width" }}; {{ .Get "style"}}" poster="{{ $img.RelPermalink }}">
     {{- if not (hasPrefix $webmLink "http") -}}
     {{- $webmLink := relURL (substr (.Get "webm_src") 1) -}}
     <source data-src="{{ $webmLink }}" type="video/webm">

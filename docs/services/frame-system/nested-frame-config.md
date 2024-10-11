@@ -36,12 +36,12 @@ To configure your machine following this example:
 - From the left-hand menu, select your gantry.
 - Keep the **Parent** frame as `world` and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_) according to the position and orientation of the gantry in relation to the `world` frame's origin.
   For example, considering the point that the gantry itself is fixed to as the center of the `world` you would leave the gantry's frame at the default configuration:
-  {{<imgproc src="/services/frame-system/frame_card_dyn_gantry.png" resize="300x" style="max-width: 500px" alt="Gantry frame card example for this configuration">}}
+  {{<imgproc src="/services/frame-system/frame_card_dyn_gantry.png" resize="300x" style="width: 500px" alt="Gantry frame card example for this configuration">}}
 
 - Next, select your arm from the left hand menu.
 - Select the **Parent** frame as the gantry, and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_) of the arm in relation to the gantry's origin:
 
-  {{<imgproc src="/services/frame-system/frame_card_dyn_arm.png" resize="300x" style="max-width: 500px" alt="Arm frame card example for this configuration">}}
+  {{<imgproc src="/services/frame-system/frame_card_dyn_arm.png" resize="300x" style="width: 500px" alt="Arm frame card example for this configuration">}}
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}

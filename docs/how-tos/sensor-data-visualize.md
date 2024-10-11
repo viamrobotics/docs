@@ -95,13 +95,13 @@ Enter the following information in the configuration UI for the plugin:
 - **Connection string**: Enter the following connection string, and replace `<MONGODB-ATLAS-DF-HOSTNAME>` with your database hostname as configured with the `viam data database configure` command, and replace `<DATABASE-NAME>` with the desired database name to query.
   For most use cases with Viam, this database name will be `sensorData`:
 
-  ```sh
+  ```sh {class="command-line" data-prompt="$"}
   mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
   ```
 
 - **User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
 
-  ```sh
+  ```sh {class="command-line" data-prompt="$"}
   db-user-<YOUR-ORG-ID>
   ```
 
