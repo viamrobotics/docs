@@ -483,24 +483,45 @@ To find out more, see [vision service](/services/vision/) or check out the tutor
 </div>
 
 {{% /tab %}}
-{{% tab name="Data Capture & Sync" %}}
+{{% tab name="Data Management" %}}
 
 <div class="tabcontent">
 
-<img src="services/data/data-capture-sync.png" alt="Configuration to capture data from an air quality sensor" class="imgzoom aligncenter">
+{{< tabs >}}
+{{% tab name="Captured Data" %}}
+
+{{<imgproc src="/services/data/air-quality-data.png" resize="1200x" alt="Captured air quality data" class="imgzoom fill aligncenter">}}
+
+{{% /tab %}}
+{{% tab name="Query Data" %}}
+
+```python
+# Tag data from the my_camera component
+my_filter = create_filter(component_name="my_camera")
+tags = ["frontview", "trainingdata"]
+res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
+
+# Query sensor data by filter
+my_data = []
+my_filter = create_filter(
+    component_name="sensor-1",
+    start_time=Timestamp('2024-10-01 10:00:00', tz='US/Pacific'),
+    end_time=Timestamp('2024-10-12 18:00:00', tz='US/Pacific')
+)
+tabular_data, count, last = await data_client.tabular_data_by_filter(
+    my_filter, last=None)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <div class="explanation">
   <div class="explanationtext">
 
-Sync sensor data, images, and any other binary or timeseries data from all your machines to the cloud, where you can manage and query it.
+Sync sensor data, images, and any other binary or timeseries data from all your machines to the cloud, where you can query and visualize it.
 
 If you have machines with intermittent internet connectivity, your data will sync whenever internet is available.
 For more information, see [Data Management](/services/data/).
-
-  </div>
-  <div class="explanationvisual">
-
-{{<imgproc src="/services/data/air-quality-data.png" resize="1200x" alt="Captured air quality data" class="imgzoom fill aligncenter">}}
 
   </div>
 </div>
@@ -622,6 +643,11 @@ mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
 ```
 
 {{% /tab %}}
+{{% tab name="Viam app" %}}
+
+{{< imgproc src="/services/navigation/navigation-control-card.png" alt="An example control interface for a navigation service in the Viam app Control Tab." resize="1200x" class="imgzoom aligncenter" >}}
+
+{{% /tab %}}
 {{< /tabs >}}
 
 <div class="explanation">
@@ -630,11 +656,6 @@ mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
 Use the navigation service to autonomously navigate a machine to defined waypoints.
 
 For more information, see [navigation service](/services/navigation).
-
-  </div>
-  <div class="explanationvisual">
-
-{{< imgproc src="/services/navigation/navigation-control-card.png" alt="An example control interface for a navigation service in the Viam app Control Tab." resize="1200x" class="imgzoom" >}}
 
   </div>
 </div>
@@ -763,6 +784,14 @@ For more information, see [Provisioning](/fleet/provision/).
 
 <div class="tabcontent">
 
+{{< tabs >}}
+{{% tab name="Viam App" %}}
+
+{{< imgproc src="/fleet/dashboard.png" alt="Dashboard view of machine status information" resize="1200x" class="imgzoom aligncenter" >}}
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
 ```python
 # Get all machines in a location
 machines = await cloud.list_robots(location_id="abcde1fghi")
@@ -782,6 +811,9 @@ for m in machines:
             robot_part_id=main_part.id, num_log_entries=5)
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
 <div class="explanation">
   <div class="explanationtext">
 
@@ -790,51 +822,19 @@ Get status information and logs fromo all your deployed machines.
 For more information, see [Fleet Management API](/appendix/apis/fleet/) and [Machine Management API](/appendix/apis/robot/).
 
   </div>
-  <div class="explanationvisual">
-
-{{< imgproc src="/fleet/dashboard.png" alt="Dashboard view of machine status information" resize="1200x" class="imgzoom" >}}
-
-  </div>
-</div>
-</div>
-
-{{% /tab %}}
-{{% tab name="Data Management" %}}
-
-<div class="tabcontent">
-
-```python
-# Tag data from the my_camera component
-my_filter = create_filter(component_name="my_camera")
-tags = ["frontview", "trainingdata"]
-res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
-
-# Query sensor data by filter
-my_data = []
-my_filter = create_filter(
-    component_name="sensor-1",
-    start_time=Timestamp('2024-10-01 10:00:00', tz='US/Pacific'),
-    end_time=Timestamp('2024-10-12 18:00:00', tz='US/Pacific')
-)
-tabular_data, count, last = await data_client.tabular_data_by_filter(
-    my_filter, last=None)
-```
-
-<div class="explanation">
-  <div class="explanationtext">
-
-Data from your devices is synced to the cloud, where you can query and visualize it.
-
-For more information, see [Data Management](/services/data/).
-
-  </div>
 </div>
 </div>
 
 {{% /tab %}}
 {{% tab name="ML Training" %}}
 
-<div class="tabcontent">
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" resize="1200x" class="imgzoom" >}}
+
+{{% /tab %}}
+{{% tab name="Python" %}}
 
 ```python
 # Start a training job to create a classification model based on the dataset
@@ -852,17 +852,17 @@ job_metadata = await ml_training_client.get_training_job(
     id=job_id)
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
+<div class="tabcontent">
+
 <div class="explanation">
   <div class="explanationtext">
 
 You can build machine learning models based on your machines' data using Viam's training algorithms or your own.
 
 For more information, see [Train and deploy ML models](/how-tos/deploy-ml/) and [Create custom training scripts](/how-tos/create-custom-training-scripts/).
-
-  </div>
-  <div class="explanationvisual">
-
-{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" resize="1200x" class="imgzoom" >}}
 
   </div>
 </div>
@@ -872,6 +872,15 @@ For more information, see [Train and deploy ML models](/how-tos/deploy-ml/) and 
 {{% tab name="Collaboration" %}}
 
 <div class="tabcontent">
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+{{<imgproc src="/cloud/rbac.png" resize="1000x" declaredimensions=true alt="Organization page" class="imgzoom aligncenter">}}
+
+
+{{% /tab %}}
+{{% tab name="Python" %}}
 
 ```python
 # Create a new machine
@@ -891,17 +900,14 @@ api_key, api_key_id = await cloud.create_key(
     org_list[0].id, [auth], "key_for_new_machine")
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
 <div class="explanation">
   <div class="explanationtext">
 
 Viam allows you to organize and manage any number of machines in collaboration with others using Role-Based Access Control (RBAC).
 
 You can manage your fleet of machines and the access to them from the [Viam app](https://app.viam.com), using the [CLI](/cli/#authenticate), or using the [fleet management API](/appendix/apis/fleet/).
-
-  </div>
-  <div class="explanationvisual">
-
-{{<imgproc src="/cloud/rbac.png" resize="1000x" declaredimensions=true alt="Organization page" class="imgzoom">}}
 
   </div>
 </div>

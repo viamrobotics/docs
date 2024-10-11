@@ -944,7 +944,7 @@ td > ul, td > ol {
 .horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
   background-color: rgb(247, 247, 248);
   border-top: unset;
-  border-bottom: 1px solid rgb(241, 241, 244);
+  border-bottom: 1px solid rgb(247, 247, 248);
 }
 
 .nav-tabs .nav-link, .nav-tabs .nav-link:hover {
@@ -2303,7 +2303,7 @@ div.explanation > .explanationvisual > .gif {
   max-width: calc(100% - 150px);
 }
 
-.table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar {
+.table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar, .table.horizontalheaders > .tab-content * .code-toolbar {
   margin: 0;
   padding: 0;
   padding-top: 0.25rem;
@@ -2311,10 +2311,10 @@ div.explanation > .explanationvisual > .gif {
   flex-grow: 1;
 }
 
-.table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent > img {
+.table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent img {
   flex-grow: 1;
   margin-bottom: 0;
-  width: 500px;
+  width: 600px;
   max-width: 100%;
 }
 
