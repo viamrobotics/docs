@@ -2274,12 +2274,15 @@ div.explanation > .explanationvisual > .gif {
   margin-top: unset;
   margin-bottom: unset;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > .table > .tab-content {
   border-left: unset;
   border-right: unset;
   border-bottom: unset;
+  flex-grow: 1;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent {
@@ -2301,6 +2304,7 @@ div.explanation > .explanationvisual > .gif {
 
 .table.horizontalheaders > .tab-content {
   max-width: calc(100% - 150px);
+  min-height: 100%;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar, .table.horizontalheaders > .tab-content * .code-toolbar {
@@ -2309,6 +2313,12 @@ div.explanation > .explanationvisual > .gif {
   padding-top: 0.25rem;
   border: unset;
   flex-grow: 1;
+  min-height: 100%;
+}
+
+.table.horizontalheaders > .tab-content .tab-pane.active {
+  min-height: 100%;
+  display: flex;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent img {

@@ -101,7 +101,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   var allTabsInThisPage = document.querySelectorAll(".nav-tabs > .nav-item > a");
   tdRegisterTabClickHandler(allTabsInThisPage);
-  tdGetAndActivatePersistedTabs(allTabsInThisPage);
+  if (document.getElementsByTagName("h1") && document.getElementsByTagName("h1")[0].textContent != "Viam Documentation") {
+    tdGetAndActivatePersistedTabs(allTabsInThisPage);
+  }
 
   // Open Anchor for expanders if hidden START
   const openDetailsIfAnchorHidden = (evt) => {
