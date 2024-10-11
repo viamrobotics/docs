@@ -52,7 +52,7 @@ You will use the following hardware for this tutorial:
 
 Before you build your circuit, you need to set up the operating system on your Raspberry Pi and install `viam-server` on the Pi:
 
-Follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up the operating system.
+Power your Pi on and follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up the operating system.
 
 {{% snippet "setup.md" %}}
 
