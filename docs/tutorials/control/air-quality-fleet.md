@@ -49,10 +49,7 @@ For each machine, you will need the following hardware:
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
-In addition to `viam-server`, this tutorial uses the following software:
-
-- [`sds0011` sensor module](https://github.com/zaporter/viam-sds011)
-- The [Viam TypeScript SDK](https://ts.viam.dev/)
+Make sure all of your sensors are wired to your SBC before starting this tutorial.
 
 ## Decide how you will organize your fleet
 
@@ -129,7 +126,7 @@ With your organizational structure in place, let's add some machines:
 
 1. Connect your first single-board computer to power.
    For this tutorial, we'll treat this as the machine for our first customer, Antonia.
-   If the computer does not already have a Viam-compatible operating system installed, follow the [Platform Requirements section of the Installation Guide](/installation/#platform-requirements) to install a compatible operating system.
+   If the computer does not already have a Viam-compatible operating system installed, follow the [Platform Requirements section of the Installation Guide](/installation/viam-server-setup/#platform-requirements) to install a compatible operating system.
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.

@@ -36,9 +36,9 @@ Follow the instructions below to learn how to write a new module using your pref
 {{% /alert %}}
 
 {{< alert title="Note: viam-micro-server modules" color="note" >}}
-[`viam-micro-server`](/installation/#install-viam-micro-server) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
+[`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
-You will need to [recompile and flash your ESP32 yourself](/installation/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/installation/viam-micro-server-setup/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
@@ -1613,7 +1613,8 @@ If you would like to test your module locally against a target platform other th
 
 {{% /alert %}}
 
-To use a local module on your machine, first add its module to your machine's config, then add the component or service it implements:
+To use a local module on your machine, first make sure any physical hardware implemented in your module is connected to your machine's computer.
+Add the module to your machine's config, then add the component or service it implements:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 

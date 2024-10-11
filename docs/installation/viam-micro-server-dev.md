@@ -1,7 +1,7 @@
 ---
 title: "viam-micro-server Development Setup"
 linkTitle: "viam-micro-server dev setup"
-weight: 5
+weight: 12
 no_list: true
 type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
@@ -23,8 +23,9 @@ aliases:
 This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
+If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) instead.
+{{< /alert >}}
 
-If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/#install-viam-micro-server) instead.
 The instructions below are for configuring a development environment in order to:
 
 - Develop custom firmware which combines `viam-micro-server` with one or more modules.

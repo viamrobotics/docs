@@ -55,7 +55,9 @@ You could then use that knowledge to [give your dog treats](https://www.viam.com
 
 {{% expand "A configured camera. Click to see instructions." %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+First, connect the camera to your machine's computer if it's not already connected (like with an inbuilt laptop webcam).
+
+Then, navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a camera model](/components/camera/) that supports your camera.
 

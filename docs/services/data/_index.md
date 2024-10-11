@@ -28,17 +28,7 @@ no_service: true
 The data management service allows you to reliably capture and sync data to the cloud where you can query data from all your machines.
 You can collect data from your robots, IoT devices, or any other machines, and sync all the data to one place in the cloud without needing to manually gather data from each machine.
 
-{{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
-
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/J0NNiQD0ocQ">}}
-
-Get started now with a quickstart guide:
-
-{{< cards >}}
-{{< card link="/get-started/collect-data/" class="green">}}
-{{< /cards >}}
-
-Or learn more about Viam's data management features, which can be broken down into on-device and cloud data capabilities:
 
 ## On-device data management
 
@@ -68,7 +58,7 @@ You can capture data from any of the following components and services:
 {{< relatedcard link="/components/movement-sensor/">}}
 {{< relatedcard link="/components/sensor/">}}
 {{< relatedcard link="/components/servo/">}}
-{{< relatedcard link="/servicses/vision/">}}
+{{< relatedcard link="/services/vision/">}}
 {{< /cards >}}
 
 ## Cloud data management
@@ -154,4 +144,5 @@ For comprehensive guides on using data capture and synchronization together with
 {{< cards >}}
 {{% card link="/how-tos/image-data/" %}}
 {{% card link="/how-tos/deploy-ml/" %}}
+{{< card link="/get-started/collect-data/">}}
 {{< /cards >}}

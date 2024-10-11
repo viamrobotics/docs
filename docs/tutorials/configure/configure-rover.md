@@ -37,6 +37,8 @@ If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/appendix/
   See our [Installation Guide](/installation/) for instructions.
 - A rover like the [SCUTTLE robot](https://www.scuttlerobot.org/shop/) or the [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
 
+Make sure your rover is assembled before starting this tutorial.
+
 ## Start configuring your robot
 
 {{% snippet "setup.md" %}}
@@ -307,6 +309,7 @@ If you don't have enough space, consider holding your robot off the ground so it
 {{< /alert >}}
 
 Now that you have configured your motors, you can actuate them.
+Make sure your machine is turned on.
 Navigate to the **Control** tab.
 
 You'll see a panel for each configured component.

@@ -57,7 +57,7 @@ The following steps guide you through this process in more detail:
      - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/gizmo/api.py)
      - [Example service in Python](https://github.com/viam-labs/speech-service-api/blob/main/src/speech_service_api/api.py)
 
-1. In the root directory of your module, you need to generate some boilerplate files.
+1. In the root directory of your module, you need to generate some configuration files.
    You will typically need the following three files for most modules, though different files are required for some advanced use cases.
    See the [Buf documentation](https://buf.build/docs/generate/usage/) for instructions.
 

@@ -33,7 +33,7 @@ Viam's modular system of {{< glossary_tooltip term_id="component" text="componen
 
 {{% expand "A device that can run viam-server or viam-micro-server" %}}
 
-See [Compatibility](/installation/#platform-requirements) for more information on if your device is suitable.
+See [`viam-server` Platform requirements](/installation/viam-server-setup/#platform-requirements) and [`viam-micro-server` Platform requirements](/installation/viam-micro-server-setup/#platform-requirements) for more information on if your device is suitable.
 
 {{% /expand%}}
 
@@ -81,20 +81,21 @@ Each physical piece of your smart machine that is controlled by a computer is ca
 
 For each component that makes up your machine:
 
-1. Find an appropriate model for your hardware.
+1. Physically connect the hardware to your machine's computer.
+2. Find an appropriate model for your hardware.
    You can find the available models on the [component pages](/components/).
    For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
-2. You need to [_configure_](/configure/) your machine so that `viam-server` can interact with its hardware.
+3. You need to [_configure_](/configure/) your machine so that `viam-server` can interact with its hardware.
    Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.
    For example, if you have a DC motor, follow the [corresponding configuration instructions](/components/motor/gpio/) to tell the software which pins it is connected to.
-3. Add a suitable model to your machine on the **CONFIGURE** page:
+4. Add a suitable model to your machine on the **CONFIGURE** page:
 
    - Click the + icon next to your machine part in the left-hand menu and select Component.
    - Choose any component type (example: `camera`) and model (example: `webcam`). If a component you want to use for your project is not natively supported, you can [build your own modular resource](/how-tos/create-module/).
 
-4. When you add a component model, it will create a panel in the configuration builder tool. Fill in any required attributes, following the documentation for the specific model.
-5. Click the **TEST** area of the configuration panel to test your component, for example to view a camera feed or turn a motor.
-6. If any problems occur check the [**LOGS** tab](/cloud/machines/#logs). You can also review the [configuration history](/cloud/machines/#configure) and roll back changes if needed.
+5. When you add a component model, it will create a panel in the configuration builder tool. Fill in any required attributes, following the documentation for the specific model.
+6. Click the **TEST** area of the configuration panel to test your component, for example to view a camera feed or turn a motor.
+7. If any problems occur check the [**LOGS** tab](/cloud/machines/#logs). You can also review the [configuration history](/cloud/machines/#configure) and roll back changes if needed.
 
 {{% /tablestep %}}
 {{% tablestep %}}

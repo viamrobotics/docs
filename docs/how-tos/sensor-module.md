@@ -27,7 +27,7 @@ Making a module to support your sensor will allow you to use it with Viam's data
 {{% alert title="In this page" color="info" %}}
 
 1. [Start with a test script](#start-with-a-test-script)
-1. [Generate boilerplate module code](#generate-boilerplate-module-code)
+1. [Generate template module code](#generate-template-module-code)
 1. [Implement the sensor API](#implement-the-sensor-api)
 1. [Make the module executable](#make-the-module-executable)
 1. [Test your module locally](#test-your-module-locally)
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
 Run your test script from your terminal and make sure you are able to get readings from the sensor before proceeding.
 
-## Generate boilerplate module code
+## Generate template module code
 
 There are a few standardized files that must be part of any module.
 You can create these automatically using the Viam module generator:
@@ -384,6 +384,7 @@ sudo chmod +x <your-file-path-to>/run.sh
 {{% expand "Prerequisite: A running machine connected to the Viam app." %}}
 
 You can write a module without a machine, but to test your module you'll need a machine.
+Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
 
 {{% snippet "setup.md" %}}
 
@@ -409,7 +410,7 @@ Click the **+** button again, this time selecting **Local module** and then **Lo
 
 For **Type** choose **sensor**.
 
-Enter your {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-boilerplate-module-code), for example `jessamy:weather:meteo-PM`.
+Enter your {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
 Click **Create**.
 
 ![Configuring a local model after the local module is configured.](/how-tos/sensor-module-config.png)

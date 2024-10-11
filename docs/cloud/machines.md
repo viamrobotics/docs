@@ -45,10 +45,10 @@ Select your system's architecture and select the version of the {{< glossary_too
 Then, follow the instructions on the page to connect and set up your machine.
 
 {{% alert title="Tip" color="tip" %}}
-If your machine is controlled by a microcontroller, install the [**viam-micro-server**](/installation/#install-viam-micro-server) instead of full `viam-server`.
+If your machine is controlled by a microcontroller, install the [**viam-micro-server**](/installation/viam-micro-server-setup/#install-viam-micro-server) instead of full `viam-server`.
 {{% /alert %}}
 
-More in-depth information on installing `viam-server` can be found in our [Installation Guide](/installation/#install-viam-server).
+More in-depth information on installing `viam-server` can be found in our [Installation Guide](/installation/viam-server-setup/#install-viam-server).
 
 Once all parts of your machine are set up and connected to the app, the part status display at the top left corner of the page turns green.
 Now, you can manage your machine with one of four tabs: **CONFIGURE**, **CONTROL**, **LOGS**, and **CONNECT**:
@@ -108,7 +108,7 @@ To view logs in the Viam mobile app:
 #### Code sample
 
 To start programming your machine, go to the **CONNECT** tab and select the **Code sample** page.
-This has boilerplate code snippets you can copy and paste into your SDK code to connect to your machine.
+This has sample code snippets you can copy and paste into your SDK code to connect to your machine.
 
 {{% snippet "show-secret.md" %}}
 

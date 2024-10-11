@@ -23,6 +23,8 @@
           {{ if not .Site.Params.ui.footer_about_disable }}
           <small class="ml-2"> | </small>
           <small class="ml-2"> <a href="https://www.viam.com/about" target="_blank" rel="noopener">ABOUT US</a></small>
+          <small class="ml-2"> | </small>
+          <small class="ml-2"> <a href="https://status.viam.com/" target="_blank" rel="noopener">STATUS</a></small>
           {{ end }}
 
         {{ with .Site.Params.user_agreement }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "USER AGREEMENT" }}</a></small>{{ end }}

@@ -12,6 +12,10 @@ While many common issues and their possible resolutions are presented here, this
 If you have encountered an error that is not listed here, we'd love to hear from you on our [Community Discord](https://discord.gg/viam)!
 Please post the error message you received along with how you were able to trigger it and we'll see if we can help.
 
+## Status
+
+For information on the status of [app.viam.com](https://app.viam.com), visit [status.viam.com](https://status.viam.com/).
+
 ## Common installation errors
 
 ### The authenticity of host 'hostname.local' can't be established
@@ -126,7 +130,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/installation/#platform-requirements), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/installation/viam-server-setup/#platform-requirements), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 

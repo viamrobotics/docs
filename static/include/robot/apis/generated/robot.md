@@ -132,24 +132,26 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### DiscoverComponents
 
-Get a list of discovered component configurations.
+Get a list of discovered potential component configurations. Only implemented for webcam cameras in builtin components. Returns module names for modules.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `queries` ([List[viam.proto.robot.DiscoveryQuery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)) (required): The list of component models to lookup configurations for.
+- `queries` ([List[viam.proto.robot.DiscoveryQuery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)) (required): The list of component models to lookup potential component configurations for.
 
 **Returns:**
 
-- ([List[viam.proto.robot.Discovery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery)): A list of discovered component configurations.
+- ([List[viam.proto.robot.Discovery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery)): A list of discovered potential component configurations.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.robot import DiscoveryQuery
+
 # Define a new discovery query.
-q = machine.DiscoveryQuery(subtype=acme.API, model="some model")
+q = DiscoveryQuery(subtype="camera", model="webcam")
 
 # Define a list of discovery queries.
 qs = [q]
@@ -166,24 +168,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
+- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the potential component configurations corresponding to.
 
 **Returns:**
 
-- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`. `Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
+- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery): The search query `qs` and the corresponding list of discovered potential component configurations as an interface called `Results`. `Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Define a new discovery query.
-q := resource.NewDiscoveryQuery(acme.API, resource.Model{Name: "some model"})
+q := resource.NewDiscoveryQuery(camera.API, resource.Model{Name: "webcam", Family: resource.DefaultModelFamily})
 
-// Define a list of discovery queries.
-qs := []resource.DiscoverQuery{q}
-
-// Get component configurations with these queries.
-component_configs, err := machine.DiscoverComponents(ctx.Background(), qs)
+// Define a list of discovery queries and get potential component configurations with these queries.
+out, err := machine.DiscoverComponents(context.Background(), []resource.DiscoveryQuery{q})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -249,14 +248,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
+- [(\*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Print the frame system configuration
-frameSystem, err := machine.FrameSystemConfig(context.Background(), nil)
+frameSystem, err := machine.FrameSystemConfig(context.Background())
 fmt.Println(frameSystem)
 ```
 
@@ -303,7 +302,24 @@ Transform a given source Pose from the original reference frame to a new destina
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-pose = await machine.transform_pose(PoseInFrame(), "origin")
+from viam.proto.common import Pose, PoseInFrame
+
+pose = Pose(
+    x=1.0,    # X coordinate in mm
+    y=2.0,    # Y coordinate in mm
+    z=3.0,    # Z coordinate in mm
+    o_x=0.0,  # X component of orientation vector
+    o_y=1.0,  # Y component of orientation vector
+    o_z=0.0,  # Z component of orientation vector
+    theta=25.0 # Orientation angle in degrees
+)
+
+pose_in_frame = PoseInFrame(
+    reference_frame="world",
+    pose=pose
+)
+
+transformed_pose = await machine.transform_pose(pose_in_frame, "world")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
@@ -314,13 +330,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `pose` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
 - `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
+- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
 
 **Returns:**
 
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -331,8 +347,8 @@ import (
   "go.viam.com/rdk/spatialmath"
 )
 
-baseOrigin := referenceframe.NewPoseInFrame("test-base", spatialmath.NewZeroPose())
-movementSensorToBase, err := machine.TransformPose(ctx, baseOrigin, "my-movement-sensor", nil)
+baseOrigin := referenceframe.NewPoseInFrame("base-1", spatialmath.NewZeroPose())
+cameraToBase, err := machine.TransformPose(context.Background(), baseOrigin, "camera-1", nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -407,7 +423,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-status, err := machine.Status(ctx)
+status, err := machine.Status(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -474,7 +490,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cancel all current and outstanding operations for the machine and stop all actuators and movement.
-err := machine.StopAll(ctx)
+err := machine.StopAll(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -563,7 +579,7 @@ Get app-related information about the robot.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-metadata = machine.get_cloud_metadata()
+metadata = await machine.get_cloud_metadata()
 print(metadata.machine_id)
 print(metadata.machine_part_id)
 print(metadata.primary_org_id)
@@ -587,11 +603,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-metadata, err := machine.CloudMetadata()
-machine_id = metadata.MachineID
-machine_part_id = metadata.MachinePartID
-primary_org_id = metadata.PrimaryOrgID
-location_id = metadata.LocationID
+metadata, err := machine.CloudMetadata(context.Background())
+primary_org_id := metadata.PrimaryOrgID
+location_id := metadata.LocationID
+machine_id := metadata.MachineID
+machine_part_id := metadata.MachinePartID
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -636,7 +652,7 @@ Return version information about the machine.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-result = machine.get_version()
+result = await machine.get_version()
 print(result.platform)
 print(result.version)
 print(result.api_version)
@@ -877,7 +893,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-machine.shutdown()
+await machine.shutdown()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.shutdown).
@@ -897,7 +913,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Shut down the robot.
-err := machine.Shutdown()
+err := machine.Shutdown(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -943,7 +959,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cleanly close the underlying connections and stop any periodic tasks,
-err := machine.Close(ctx)
+err := machine.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
