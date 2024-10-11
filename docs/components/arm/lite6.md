@@ -124,7 +124,6 @@ For example:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-
 ```python {class="line-numbers linkable-line-numbers"}
 command = {
   "set_speed": 45.0,  # Set speed to 45.0 degrees per second
@@ -148,19 +147,8 @@ cmd := map[string]interface{}{
 result, err := myArm.DoCommand(context.Background(), cmd)
 ```
 
-
 {{% /tab %}}
 {{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
-
-**Returns:**
-
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
-
-**Example:**
 
 ```dart {class="line-numbers linkable-line-numbers"}
 const command = {
@@ -170,8 +158,6 @@ const command = {
 
 var result = myArm.doCommand(command);
 ```
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
 
 {{% /tab %}}
 {{< /tabs >}}
