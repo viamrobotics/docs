@@ -2118,12 +2118,15 @@ h3.body-header[style] {
   text-align: center;
   margin-left: unset;
   align-content: center;
+  white-space: nowrap;
+  padding: 1rem 0rem !important;
 }
 
 .front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
   text-transform: uppercase;
   font-family: "Space Mono",sans-serif;
   margin-right: 0;
+  padding-top: 1rem;
 }
 
 .front-card-container > .cta.secondary {
