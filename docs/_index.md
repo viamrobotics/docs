@@ -840,7 +840,7 @@ for m in machines:
 <div class="explanation">
   <div class="explanationtext">
 
-Get status information and logs fromo all your deployed machines.
+Get status information and logs from all your deployed machines.
 
 [Learn about Platform APIs →](/appendix/apis/#platform-apis)
 

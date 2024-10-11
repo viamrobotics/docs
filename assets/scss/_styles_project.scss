@@ -2338,10 +2338,11 @@ div.explanation > .explanationvisual > .gif {
   flex-grow: 1;
   margin-bottom: 0;
   max-width: 100%;
-  height: 450px;
+  max-height: 450px;
   width: auto;
   flex: 1;
   align-content: center;
+  margin-top: 0.3rem;
 }
 
 .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar > pre {
