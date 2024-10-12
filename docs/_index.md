@@ -67,7 +67,7 @@ Viam integrates with hardware and software on **any device**. To get started, in
 {{< tabs class="horizontalheaders program" navheader="Examples">}}
 {{% tab name="Drive a base" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -159,7 +159,7 @@ You can use any robotic base with Viam and once configured as a base component, 
 {{% /tab %}}
 {{% tab name="Control motor" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -252,7 +252,7 @@ You can use any motor with Viam and, once configured as a motor component, you c
 </div>
 {{% /tab %}}
 {{% tab name="Get sensor reading" %}}
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -320,7 +320,7 @@ You can use any physical sensor or anything else that provides measurements with
 </div>
 {{% /tab %}}
 {{% tab name="Move an arm" %}}
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -369,7 +369,7 @@ Once you configure an arm component, you can move any arm using the standardized
 </div>
 {{% /tab %}}
 {{% tab name="Operate custom hardware" %}}
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Shell" %}}
@@ -400,6 +400,8 @@ Model - acme:rovers:base
 <div class="explanation">
   <div class="explanationtext">
 
+To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the Viam Registry or create your own for custom needs.
+
 Using the Viam Registry you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
 There are also a variety of community-supplied resources you can use.
 
@@ -423,7 +425,7 @@ There are also a variety of community-supplied resources you can use.
 {{< tabs class="horizontalheaders services" navheader="Services">}}
 {{% tab name="Computer Vision" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -471,7 +473,7 @@ for i := 0; i < len(detections); i++ {
 <div class="explanation">
   <div class="explanationtext">
 
-Computer vision enables your machine to use connected cameras to sense and interpret the world around it.
+Computer vision enables your machine to use connected cameras to sense and interpret the world around them.
 With inferences about a machine's surroundings, you can program machine behavior to adapt to change accordingly.
 
 [Try the vision service →](/tutorials/projects/helmet/)
@@ -488,7 +490,7 @@ With inferences about a machine's surroundings, you can program machine behavior
 {{% /tab %}}
 {{% tab name="Data Management" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Captured Data" %}}
@@ -504,7 +506,8 @@ my_filter = create_filter(component_name="my_camera")
 tags = ["frontview", "trainingdata"]
 res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 
-# Query sensor data for the beginning of october
+# Query sensor data by filter
+my_data = []
 my_filter = create_filter(
     component_name="sensor-1",
     start_time=Timestamp('2024-10-01 10:00:00', tz='US/Pacific'),
@@ -531,7 +534,7 @@ If you have machines with intermittent internet connectivity, your data will syn
 </div>
 {{% /tab %}}
 {{% tab name="Motion" %}}
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -607,7 +610,7 @@ The builtin motion service enables your machine to plan and move itself or its c
 </div>
 {{% /tab %}}
 {{% tab name="Navigation" %}}
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -665,7 +668,7 @@ Use the navigation service to autonomously navigate a machine to defined waypoin
 </div>
 {{% /tab %}}
 {{% tab name="Custom Logic" %}}
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Shell" %}}
@@ -720,7 +723,7 @@ Using the Viam Registry you can turn your own custom business logic into _{{< gl
 {{< tabs class="horizontalheaders platform" navheader="Capabilities">}}
 {{% tab name="Deployment" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Fragment" %}}
@@ -766,7 +769,7 @@ Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="f
 {{% /tab %}}
 {{% tab name="Provisioning" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Shell" %}}
@@ -803,7 +806,7 @@ When the machine is taken into operation, it will automatically get the latest c
 {{% /tab %}}
 {{% tab name="Observability" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
@@ -849,7 +852,7 @@ Get status information and logs from all your deployed machines.
 {{% /tab %}}
 {{% tab name="ML Training" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
@@ -892,7 +895,7 @@ You can build machine learning models based on your machines' data using Viam's 
 {{% /tab %}}
 {{% tab name="Collaboration" %}}
 
-<div class="tabcontent">
+<div class="innertabcontentcontainer">
 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
