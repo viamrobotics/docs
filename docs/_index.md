@@ -471,7 +471,7 @@ for i := 0; i < len(detections); i++ {
 <div class="explanation">
   <div class="explanationtext">
 
-Computer vision enables your machine to use connected cameras to sense and interpret the world around them.
+Computer vision enables your machine to use connected cameras to sense and interpret the world around it.
 With inferences about a machine's surroundings, you can program machine behavior to adapt to change accordingly.
 
 [Try the vision service →](/tutorials/projects/helmet/)
