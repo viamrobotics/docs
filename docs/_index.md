@@ -400,8 +400,6 @@ Model - acme:rovers:base
 <div class="explanation">
   <div class="explanationtext">
 
-To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the Viam Registry or create your own for custom needs.
-
 Using the Viam Registry you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
 There are also a variety of community-supplied resources you can use.
 
