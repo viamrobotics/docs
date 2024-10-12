@@ -2164,14 +2164,18 @@ h3.body-header[style] {
   display: flex;
 }
 
-.front-card-container > .hover-card, .front-card-container > .hover-card > a {
+.front-card-container > .hover-card {
   min-width: unset;
   max-width: unset;
-  text-align: center;
   margin-left: unset;
-  align-content: center;
-  white-space: nowrap;
+}
+
+.front-card-container > .hover-card > a {
   padding: 1rem 0rem !important;
+  align-content: center;
+  text-align: center;
+  padding: unset;
+  white-space: nowrap;
   text-transform: uppercase;
   font-family: "Space Mono",sans-serif;
 }
@@ -2198,91 +2202,180 @@ h3.body-header[style] {
 }
 
 @media (max-width: 650px) {
-.front-card-container > .hover-card {
-  width: unset;
+  .front-card-container > .hover-card {
+    width: unset;
+  }
 }
+
+.td-content > div.max-page, hr {
+  max-width: 1000px !important;
+}
+
+hr {
+  margin-left:0;
 }
 
 // CTA buttons END
 
 // Image and text END
 
-.table.horizontalheaders > ul.nav-tabs > .nav-item > .nav-link.active {
+// Special front page tables START
+
+.table.horizontalheaders {
+  display: flex;
+  max-width: 100%;
+  min-height: 400px;
+}
+
+// top-level tabs nav items START
+
+.table.horizontalheaders > ul.nav-tabs {
+  min-width: 170px;
+  max-width: 170px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d7d7d9;
+  margin-right: -1px;
+}
+
+@media (max-width: 900px) {
+  .table.horizontalheaders {
+    flex-direction: column;
+  }
+
+  .table.horizontalheaders > ul.nav-tabs {
+    max-width: 100%;
+    border-right: 1px solid #d7d7d9;
+    border-bottom: unset;
+  }
+}
+
+.horizontalheaders > ul.nav-tabs > .navheader {
+  text-transform: uppercase;
+  color: #AAA;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-family: Space Mono, sans-serif;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item {
+  border: unset;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link {
+  border-top: 1px solid #f7f7f8;
+  border-bottom: 1px solid #f7f7f8;
+  border-left: unset;
+  background-color: #f7f7f8;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link.active {
   background-color: #d7d7d9;
   color: 1px solid #d7d7d9;
   border-bottom: 1px solid #d7d7d9;
   border-top: 1px solid #d7d7d9;
 }
 
-.table.front-page > div {
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link:hover {
+  border: unset;
+  background-color: #d7d7d9;
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
+}
+
+// top-level tabs nav items END
+
+// Tabs inside tabs START
+
+.table.horizontalheaders > .tab-content {
+  max-width: calc(100% - 150px);
+  min-height: 100%;
   width: 100%;
-  max-width: 1000px;
+  padding: 0;
 }
 
-.table.front-page .code-toolbar > pre {
-  margin-top: unset;
-  border-bottom: unset;
+.table.horizontalheaders * .tab-content {
+  padding: 0;
 }
 
-.table.horizontalheaders {
-  display: flex;
-  max-width: 1000px;
-  min-height: 400px;
+.table.horizontalheaders > .tab-content > div {
+  height: 100%;
 }
 
-.table.horizontalheaders > ul {
-  max-width: 170px;
-  min-width: 170px;
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid #d7d7d9;
-  border-right: unset;
-}
-
-.table.horizontalheaders > ul > li {
-  border: unset;
-  justify-content: flex-start;
-}
-
-.table.horizontalheaders > ul.nav-tabs > li.nav-item {
-
-}
-.table.horizontalheaders > ul.nav-tabs > li.nav-item > a {
-  border-top: 1px solid #f7f7f8;
-  border-bottom: 1px solid #f7f7f8;
-  border-left: unset;
-}
-
-.table.horizontalheaders > ul.nav-tabs > li.nav-item > a:active {
-  border-top: 1px solid #d7d7d9;
-  border-bottom: 1px solid #d7d7d9;
-}
-
-.table.horizontalheaders * .tabcontent > .table > ul > li.nav-item:first-child > a {
-  border-left: unset;
-}
-
-.table.horizontalheaders > ul > li > a {
-  background-color: white;
-}
-
-.table.horizontalheaders > ul.nav-tabs > li.nav-item > a:hover {
-  border: unset;
-  background-color: #d7d7d9;
-  border-top: 1px solid #d7d7d9;
-  border-bottom: 1px solid #d7d7d9;
-}
-
-.table.horizontalheaders > ul > li > a.active:hover, .table.horizontalheaders > ul > li > a.active:hover {
-  border: unset;
-  background-color: #d7d7d9;
-  border-top: 1px solid #d7d7d9;
-  border-bottom: 1px solid #d7d7d9;
-}
-
-.table.horizontalheaders .tab-content {
+  justify-content: baseline;
+  max-width: 100%;
   width: 100%;
 }
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .table {
+  margin-top: unset;
+  margin-bottom: unset;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// inner tabs navitems START
+
+// TODO
+
+.table.horizontalheaders * .innertabcontentcontainer > .table > ul > li.nav-item:first-child > a {
+  margin-left: -1px;
+}
+
+// .table.horizontalheaders > .tab-content .tab-pane.active {
+  // min-height: 100%;
+  // display: flex;
+  // max-width: 100%;
+  // justify-content: center;
+// }
+
+// inner tabs navitems END
+
+// innter tabs content START
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .table > .tab-content {
+  border: unset;
+  flex-grow: 1;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .code-toolbar, .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar, .table.horizontalheaders > .tab-content * .code-toolbar {
+  margin: 0;
+  padding: 0;
+  padding-top: 0.25rem;
+  border: unset;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer img {
+  flex-grow: 1;
+  margin-bottom: 0;
+  max-width: 100%;
+  max-height: 450px;
+  width: auto;
+  flex: 1;
+  align-content: center;
+  margin-top: 0.3rem;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .code-toolbar > pre {
+  height: calc(100% - 10px);
+}
+
+// TODO END
+
+// innter tabs content END
+
+// Tabs inside tabs END
+
+// Lower explanation text & visual START
 
 div.explanation {
   display: flex;
@@ -2315,88 +2408,6 @@ div.explanation > .explanationvisual > .gif {
   margin-bottom: -0.35rem;
 }
 
-
-.table.horizontalheaders > .tab-content, .table.horizontalheaders * .tab-content {
-  padding: 0;
-}
-
-.table.horizontalheaders > .tab-content > div > .tabcontent > .table {
-  margin-top: unset;
-  margin-bottom: unset;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.table.horizontalheaders > .tab-content > div > .tabcontent > .table > .tab-content {
-  border: unset;
-  flex-grow: 1;
-}
-
-.table.horizontalheaders > .tab-content > div > .tabcontent {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: baseline;
-  max-width: 100%;
-  width: 100%;
-}
-
-.table.horizontalheaders > .tab-content > div {
-  height: 100%;
-}
-
-.table.horizontalheaders {
-  max-width: 100%;
-}
-
-.table.horizontalheaders > .tab-content {
-  max-width: calc(100% - 150px);
-  min-height: 100%;
-  width: 100%;
-}
-
-.table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar, .table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar, .table.horizontalheaders > .tab-content * .code-toolbar {
-  margin: 0;
-  padding: 0;
-  padding-top: 0.25rem;
-  border: unset;
-  flex-grow: 1;
-  max-width: 100%;
-}
-
-.table.horizontalheaders > .tab-content .tab-pane.active {
-  min-height: 100%;
-  display: flex;
-  max-width: 100%;
-  justify-content: center;
-}
-
-.table.horizontalheaders > .tab-content > div > .tabcontent > picture > img, .table.horizontalheaders > .tab-content > div > .tabcontent img {
-  flex-grow: 1;
-  margin-bottom: 0;
-  max-width: 100%;
-  max-height: 450px;
-  width: auto;
-  flex: 1;
-  align-content: center;
-  margin-top: 0.3rem;
-}
-
-.table.horizontalheaders > .tab-content > div > .tabcontent * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .tabcontent > .code-toolbar > pre {
-  height: calc(100% - 10px);
-}
-
-.td-content > div.max-page, hr {
-  max-width: 1000px !important;
-}
-
-hr {
-  margin-left:0;
-}
-
 @media (max-width: 1140px) {
   // image fold over
   div.explanation {
@@ -2412,16 +2423,6 @@ hr {
 }
 
 @media (max-width: 900px) {
-  .table.horizontalheaders {
-    flex-direction: column;
-  }
-
-  .table.horizontalheaders > ul {
-    max-width: unset;
-    border-right: 1px solid #d7d7d9;
-    border-bottom: unset;
-  }
-
   div.explanation > .explanationvisual {
     flex-grow: 1;
     display: flex;
@@ -2435,9 +2436,9 @@ hr {
   }
 }
 
-.front-card-container > .hover-card > a {
-  padding: unset;
-}
+// Lower explanation text & visual END
+
+// Assign min-width to containers to reduce jumping (only on wide screens) START
 
 @media (min-width: 900px) {
 
@@ -2478,13 +2479,9 @@ hr {
   }
 }
 
-.horizontalheaders * .navheader {
-  text-transform: uppercase;
-  color: #AAA;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-family: Space Mono, sans-serif;
-}
+// Assign min-width to containers to reduce jumping (only on wide screens) END
+
+// Special front page tables END
 
 // Front page styling END
 
