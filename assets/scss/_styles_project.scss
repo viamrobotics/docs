@@ -2238,8 +2238,18 @@ h3.body-header[style] {
   justify-content: flex-start;
 }
 
-.table.horizontalheaders > ul.nav-tabs > li.nav-item, .table.horizontalheaders > ul.nav-tabs > li.nav-item > a {
-  border: unset;
+.table.horizontalheaders > ul.nav-tabs > li.nav-item {
+
+}
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a {
+  border-top: 1px solid #f7f7f8;
+  border-bottom: 1px solid #f7f7f8;
+  border-left: unset;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a:active {
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .table.horizontalheaders * .tabcontent > .table > ul > li.nav-item:first-child > a {
@@ -2250,9 +2260,18 @@ h3.body-header[style] {
   background-color: white;
 }
 
-.table.horizontalheaders > ul > li > a.active, .table.horizontalheaders > ul > li > a.active:hover {
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a:hover {
   border: unset;
   background-color: #d7d7d9;
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
+}
+
+.table.horizontalheaders > ul > li > a.active:hover, .table.horizontalheaders > ul > li > a.active:hover {
+  border: unset;
+  background-color: #d7d7d9;
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .table.horizontalheaders .tab-content {
