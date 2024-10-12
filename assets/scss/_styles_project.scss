@@ -2253,7 +2253,7 @@ hr {
 .horizontalheaders > ul.nav-tabs > .navheader {
   text-transform: uppercase;
   color: #AAA;
-  padding: 0.25rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   font-size: 0.75rem;
   font-family: Space Mono, sans-serif;
 }
@@ -2323,29 +2323,29 @@ hr {
 
 // inner tabs navitems START
 
-// TODO
-
 .table.horizontalheaders * .innertabcontentcontainer > .table > ul > li.nav-item:first-child > a {
   margin-left: -1px;
 }
 
-// .table.horizontalheaders > .tab-content .tab-pane.active {
-  // min-height: 100%;
-  // display: flex;
-  // max-width: 100%;
-  // justify-content: center;
-// }
-
 // inner tabs navitems END
 
 // innter tabs content START
+
+// Ensures code is max-height
+.table.horizontalheaders > .tab-content .tab-pane.active {
+  min-height: 100%;
+  display: flex;
+  max-width: 100%;
+  justify-content: center;
+}
+
 
 .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .table > .tab-content {
   border: unset;
   flex-grow: 1;
 }
 
-.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .code-toolbar, .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar, .table.horizontalheaders > .tab-content * .code-toolbar {
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar {
   margin: 0;
   padding: 0;
   padding-top: 0.25rem;
@@ -2365,11 +2365,9 @@ hr {
   margin-top: 0.3rem;
 }
 
-.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre, .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .code-toolbar > pre {
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
   height: calc(100% - 10px);
 }
-
-// TODO END
 
 // innter tabs content END
 
