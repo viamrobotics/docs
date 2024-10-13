@@ -51,9 +51,17 @@ You must have the Viam CLI installed to upload training scripts to the registry.
 
 {{< table >}}
 {{% tablestep %}}
-**1. Create folder structure**
+**1. Create file structure**
 
-Create a folder for the training-script, for example <file>my-training</file>.
+Create the following file structure:
+
+```treeview
+my-training/
+├── model/
+|   ├── training.py
+|   └── __init__.py
+└── setup.py
+```
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -83,7 +91,7 @@ Ensure you add additional required packages on line 11.
 {{% tablestep %}}
 **3. Create `__init__.py`**
 
-Inside the top level folder (in this example <file>my-training</file>), create a folder called <file>model</file> and create an empty file called <file>\_\_init\_\_.py</file> inside it.
+Inside the top level folder (in this example <file>my-training</file>), create a folder called <file>model</file> and create an empty file inside it called <file>\_\_init\_\_.py</file>.
 
 {{% /tablestep %}}
 {{< tablestep >}}

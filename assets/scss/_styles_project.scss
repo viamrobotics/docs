@@ -2349,7 +2349,6 @@ hr {
 .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar {
   margin: 0;
   padding: 0;
-  padding-top: 0.25rem;
   border: unset;
   flex-grow: 1;
   max-width: 100%;
@@ -2359,12 +2358,13 @@ hr {
   height: 350px;
   max-height: 350px;
   overflow: auto;
+  margin-top: 0;
+  padding-top: 12px;
 }
 
 .table.horizontalheaders.program > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
   height: 220px;
   max-height: 220px;
-  overflow: auto;
 }
 
 .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer img {
