@@ -143,7 +143,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any robotic base with Viam. Once configured as a base component, you can drive it using the standardized base API.
+You can use any robotic base with Viam. Configure it as a base. Then you can drive it using the base API.
 
 [Drive a base →](/how-tos/drive-rover/)
 
@@ -238,7 +238,7 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any motor with Viam. Once configured as a motor component, you can operate it using the motor API.
+You can use any motor with Viam. Configure it as a motor. Then you can operate it using the motor API.
 
 [Control a motor →](/how-tos/control-motor/)
 
@@ -311,7 +311,7 @@ std::cout << "co2-monitor get_readings return value " << co2monitor_get_readings
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any physical sensor or anything else that provides measurements with Viam. Once configured as a sensor component, you can get sensor readings using the standardized sensor API.
+You can use any physical sensor or anything else that provides measurements with Viam. Configure it as a sensor. Then you can get sensor readings using the sensor API.
 
 [Collect sensor data →](/how-tos/collect-sensor-data/)
 
@@ -361,7 +361,7 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referencef
   <div class="explanationtext">
 
 You can use any robotic arm with Viam.
-Once configured as an arm component, you can move it using the arm API.
+Configure it as an arm. Then you can move it using the arm API.
 
 [Move a robotic arm →](/tutorials/services/accessing-and-moving-robot-arm/)
 
