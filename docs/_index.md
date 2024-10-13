@@ -60,7 +60,7 @@ updated: "2024-10-11"
   <h2 class="frontpage-headers">Program any device</h2>
   <p>
 
-Viam integrates with hardware and software on **any device**. To get started, install Viam and create a configuration that describes your machine's {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your devices and any attached physical hardware securely **from anywhere in the world**. Or from local networks.
+Viam integrates with hardware and software on **any device**. To get started, install Viam and create a configuration that describes your machine's {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your device and any attached physical hardware securely **from anywhere in the world**. Or from local networks.
 
   </p>
 
