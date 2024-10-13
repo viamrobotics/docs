@@ -417,7 +417,7 @@ There are also a variety of community-supplied resources you can use.
 <br>
   <h2 class="frontpage-headers">Make your devices better and smarter</h2>
   <p>
-    You can pick and choose from additional services. Make your devices understand their environment, interact with it, collect data, and more:
+    Pick and choose from additional services. Make your devices understand their environment, interact with it, collect data, and more:
   </p>
 </div>
 
