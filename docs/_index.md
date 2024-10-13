@@ -794,7 +794,7 @@ sudo ./preinstall.sh
   <div class="explanationtext">
 
 Provisioning allows you to complete part of the machine setup during the manufacturing process. The rest of the first-time setup happens once the machine is taken into operation.
-This way machines will automatically get the latest updates.
+This way, machines automatically get the latest updates.
 
 [Learn about provisioning →](/fleet/provision/)
 
