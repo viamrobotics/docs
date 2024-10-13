@@ -700,7 +700,7 @@ Model - acme:services:slam
 <div class="explanation">
   <div class="explanationtext">
 
-Using the Viam Registry you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. you can then deploy your modules to your machines.
+Using the Viam Registry you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
 
 [Create a module →](/how-tos/create-module/)
 
