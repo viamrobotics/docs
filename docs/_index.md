@@ -1,7 +1,7 @@
 ---
 title: "Viam Documentation"
 linkTitle: "Viam Documentation"
-description: "Viam is a software platform that makes it easy to integrate hardware and software to build machines, connect them with the cloud, and make them smarter."
+description: "Viam integrates with hardware and software on any device. Use AI, machine learning, and more to make any machines smarter. And manage large numbers of machines with the cloud."
 weight: 1
 no_list: true
 type: "docs"
@@ -30,7 +30,7 @@ updated: "2024-10-11"
     <div class="hero-text">
       <h1>Viam Documentation</h1>
       <p>
-        Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with AI, machine learning, and more.
+        Viam integrates with hardware and software on <b>any device</b>. Use AI, machine learning, and more to make any machines smarter. And manage large numbers of machines with the cloud.
       </p>
       <div class="cards max-page">
         <div class="front-card-container">
@@ -60,7 +60,7 @@ updated: "2024-10-11"
   <h2 class="frontpage-headers">Program any device</h2>
   <p>
 
-Viam integrates with hardware and software on **any device**. To get started, install Viam and create a configuration that describes your machine's {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your devices and any attached physical hardware securely **from anywhere in the world** as well as from local networks:
+Viam integrates with hardware and software on **any device**. To get started, install Viam and create a configuration that describes your machine's {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your device and any attached physical hardware securely **from anywhere in the world**. Or from local networks.
 
   </p>
 
@@ -143,7 +143,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any robotic base with Viam and once configured as a base component, you can drive it using the standardized base.
+You can use any robotic base with Viam. Configure it as a base component. Then you can drive it using the base API.
 
 [Drive a base →](/how-tos/drive-rover/)
 
@@ -238,7 +238,7 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any motor with Viam and, once configured as a motor component, you can operate the it using the standardized motor API.
+You can use any motor with Viam. Configure it as a motor component. Then you can operate it using the motor API.
 
 [Control a motor →](/how-tos/control-motor/)
 
@@ -311,7 +311,7 @@ std::cout << "co2-monitor get_readings return value " << co2monitor_get_readings
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any physical sensor or anything else that provides measurements with Viam and, once configured as a sensor component, you can get sensor readings using the standardized sensor API.
+You can use any physical sensor or anything else that provides measurements with Viam. Configure it as a sensor component. Then you can get sensor readings using the sensor API.
 
 [Collect sensor data →](/how-tos/collect-sensor-data/)
 
@@ -360,7 +360,8 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referencef
 <div class="explanation">
   <div class="explanationtext">
 
-Once you configure an arm component, you can move any arm using the standardized arm API.
+You can use any robotic arm with Viam.
+Configure it as an arm component. Then you can move it using the arm API.
 
 [Move a robotic arm →](/tutorials/services/accessing-and-moving-robot-arm/)
 
@@ -400,8 +401,6 @@ Model - acme:rovers:base
 <div class="explanation">
   <div class="explanationtext">
 
-To support more hardware and software, you can use _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the Viam Registry or create your own for custom needs.
-
 Using the Viam Registry you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
 There are also a variety of community-supplied resources you can use.
 
@@ -418,7 +417,7 @@ There are also a variety of community-supplied resources you can use.
 <br>
   <h2 class="frontpage-headers">Make your devices better and smarter</h2>
   <p>
-    You can pick and choose from additional services to make your devices understand their environment, interact with it, collect information, and more:
+    Pick and choose from additional services. Make your devices understand their environment, interact with it, collect data, and more:
   </p>
 </div>
 
@@ -473,8 +472,8 @@ for i := 0; i < len(detections); i++ {
 <div class="explanation">
   <div class="explanationtext">
 
-Computer vision enables your machine to use connected cameras to sense and interpret the world around them.
-With inferences about a machine's surroundings, you can program machine behavior to adapt to change accordingly.
+Computer vision enables your machine to use connected cameras to interpret the world around it.
+With inferences about a machine's surroundings, you can program machines to act based on this input.
 
 [Try the vision service →](/tutorials/projects/helmet/)
 
@@ -523,9 +522,9 @@ tabular_data, count, last = await data_client.tabular_data_by_filter(
 <div class="explanation">
   <div class="explanationtext">
 
-Sync sensor data, images, and any other binary or timeseries data from all your machines to the cloud, where you can query and visualize it.
+Sync sensor data, images, and any other binary or timeseries data from all your machines to the cloud. There, you can query and visualize it.
 
-If you have machines with intermittent internet connectivity, your data will sync whenever internet is available.
+Intermittent internet connectivity? Your data will sync whenever internet is available.
 
 [Learn about Data Management →](/services/data/)
 
@@ -596,7 +595,7 @@ _, err = motionService.Move(context.Background(), arm.Named("myArm"), destPoseIn
 <div class="explanation">
   <div class="explanationtext">
 
-The builtin motion service enables your machine to plan and move itself or its components relative to itself, other machines, and the world.
+The motion service enables your machine to plan and move relative to itself, other machines, and the world.
 
 [Try the motion service →](/tutorials/services/plan-motion-with-arm-gripper/)
 
@@ -701,7 +700,7 @@ Model - acme:services:slam
 <div class="explanation">
   <div class="explanationtext">
 
-Using the Viam Registry you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_ that you can then deploy to your machines.
+Using the Viam Registry you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
 
 [Create a module →](/how-tos/create-module/)
 
@@ -716,7 +715,7 @@ Using the Viam Registry you can turn your own custom business logic into _{{< gl
 <br>
   <h2 class="frontpage-headers">Go from one machine to thousands</h2>
   <p>
-    When you connect machines to the cloud you get fleet management tools that let you scale from one prototype to thousands of machines you can manage and operate from one place using the Viam Cloud.
+    When you connect machines to the cloud you get fleet management tools that let you scale. Go from one prototype to thousands of machines you can manage and operate from one place using the Viam Cloud.
   </p>
 </div>
 
@@ -757,8 +756,8 @@ Using the Viam Registry you can turn your own custom business logic into _{{< gl
 <div class="explanation">
   <div class="explanationtext">
 
-Configure and update hardware, software, and machine learning models for groups of machines in one go.
-Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
+Manage hardware and software for multiple machines using a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_.
+You can make changes to some or all of your machines in one go.
 
 [Deploy packages across devices →](/how-tos/deploy-packages/)
 
@@ -794,8 +793,8 @@ sudo ./preinstall.sh
 <div class="explanation">
   <div class="explanationtext">
 
-Provisioning allows you to complete part of the machine setup during the manufacturing process and perform the rest of the first-time setup once the machine is taken into operation.
-When the machine is taken into operation, it will automatically get the latest configuration and updates.
+Provisioning allows you to complete part of the machine setup during the manufacturing process. The rest of the first-time setup happens once the machine is taken into operation.
+This way, machines automatically get the latest updates.
 
 [Learn about provisioning →](/fleet/provision/)
 
@@ -884,7 +883,7 @@ job_metadata = await ml_training_client.get_training_job(
 <div class="explanation">
   <div class="explanationtext">
 
-You can build machine learning models based on your machines' data using Viam's training algorithms or your own.
+Build machine learning models based on your machines' data. You can pick from different training algorithms or create your own.
 
 [Train and deploy ML models →](/how-tos/deploy-ml/)
 
@@ -929,7 +928,7 @@ api_key, api_key_id = await cloud.create_key(
 <div class="explanation">
   <div class="explanationtext">
 
-Viam allows you to organize and manage any number of machines in collaboration with others using Role-Based Access Control (RBAC).
+Viam allows you to organize and manage any number of machines. When collaborating with others, you can assign permissions using Role-Based Access Control (RBAC).
 
 [Learn about access control →](/cloud/rbac/)
 
