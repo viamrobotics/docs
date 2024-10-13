@@ -238,7 +238,7 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 <div class="explanation">
   <div class="explanationtext">
 
-You can use any motor with Viam. Once configured as a motor component, you can operate the it using the standardized motor API.
+You can use any motor with Viam. Once configured as a motor component, you can operate it using the motor API.
 
 [Control a motor →](/how-tos/control-motor/)
 
