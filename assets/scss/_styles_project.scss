@@ -2194,6 +2194,7 @@ h3.body-header[style] {
 
 .front-card-container > .cta.secondary > a * p {
   margin-bottom: unset;
+  margin-top: 5px;
 }
 
 .front-card-container > .hover-card > a > div {
@@ -2288,7 +2289,7 @@ hr {
 // Tabs inside tabs START
 
 .table.horizontalheaders > .tab-content {
-  max-width: calc(100% - 150px);
+  max-width: calc(100% - 170px);
   min-height: 100%;
   width: 100%;
   padding: 0;
@@ -2354,19 +2355,27 @@ hr {
   max-width: 100%;
 }
 
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
+  height: 350px;
+  max-height: 350px;
+  overflow: auto;
+}
+
+.table.horizontalheaders.program > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
+  height: 220px;
+  max-height: 220px;
+  overflow: auto;
+}
+
 .table.horizontalheaders > .tab-content > div > .innertabcontentcontainer img {
   flex-grow: 1;
   margin-bottom: 0;
   max-width: 100%;
-  max-height: 450px;
+  max-height: 350px;
   width: auto;
   flex: 1;
   align-content: center;
   margin-top: 0.3rem;
-}
-
-.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
-  height: calc(100% - 10px);
 }
 
 // innter tabs content END
@@ -2390,7 +2399,7 @@ div.explanation > .explanationtext {
 
 div.explanation > .explanationvisual {
   flex-grow: 1;
-  display: flex-inline;
+  display: flex;
   justify-content: center;
   border-left: 1px solid #d7d7d9;
 }
@@ -2403,7 +2412,10 @@ div.explanation > .explanationvisual * video, div.explanation > .explanationvisu
 }
 
 div.explanation > .explanationvisual > .gif {
-  margin-bottom: -0.35rem;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 @media (max-width: 1140px) {
@@ -2417,6 +2429,11 @@ div.explanation > .explanationvisual > .gif {
     display: flex;
     justify-content: center;
     margin-bottom: 0.5rem;
+  }
+  @media (min-width: 900px) {
+    .horizontalheaders.program * .explanation {
+      min-height: 310px;
+    }
   }
 }
 
@@ -2440,36 +2457,12 @@ div.explanation > .explanationvisual > .gif {
 
 @media (min-width: 900px) {
 
-  .horizontalheaders.program {
-    min-height: 450px;
-  }
-
-  .horizontalheaders.program * .table {
-    min-height: 260px;
-  }
-
   .horizontalheaders.program * .explanation {
-    min-height: 187.5px;
-  }
-
-  .horizontalheaders.services {
-    min-height: 580px;
-  }
-
-  .horizontalheaders.services * .table {
-    min-height: 450px;
-  }
-
-  .horizontalheaders.services * .explanation {
     min-height: 190px;
   }
 
-  .horizontalheaders.platform {
-    min-height: 650px;
-  }
-
-  .horizontalheaders.platform * .table {
-    min-height: 480px;
+  .horizontalheaders.services * .explanation {
+    min-height: 187.5px;
   }
 
   .horizontalheaders.platform * .explanation {
