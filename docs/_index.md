@@ -883,7 +883,7 @@ job_metadata = await ml_training_client.get_training_job(
 <div class="explanation">
   <div class="explanationtext">
 
-Build machine learning models based on your machines' data. You can pick from available training algorithms or create your own.
+Build machine learning models based on your machines' data. You can pick from different training algorithms or create your own.
 
 [Train and deploy ML models →](/how-tos/deploy-ml/)
 
