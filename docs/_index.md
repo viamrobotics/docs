@@ -928,7 +928,7 @@ api_key, api_key_id = await cloud.create_key(
 <div class="explanation">
   <div class="explanationtext">
 
-Viam allows you to organize and manage any number of machines. When collaborating with others you can assign permissions using Role-Based Access Control (RBAC).
+Viam allows you to organize and manage any number of machines. When collaborating with others, you can assign permissions using Role-Based Access Control (RBAC).
 
 [Learn about access control →](/cloud/rbac/)
 
