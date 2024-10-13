@@ -756,7 +756,7 @@ Using the Viam Registry you can turn your own custom business logic into _{{< gl
 <div class="explanation">
   <div class="explanationtext">
 
-Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for managing hardware and software for multiple machines.
+Manage hardware and software for multiple machines using a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_.
 You can make changes to some or all of your machines in one go.
 
 [Deploy packages across devices →](/how-tos/deploy-packages/)
