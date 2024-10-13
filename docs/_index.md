@@ -1,7 +1,7 @@
 ---
 title: "Viam Documentation"
 linkTitle: "Viam Documentation"
-description: "Viam is a software platform that makes it easy to integrate hardware and software to build machines, connect them with the cloud, and make them smarter."
+description: "Viam integrates with hardware and software on **any device**. Use AI, machine learning, and more to make any machines smarter. And manage large numbers of machines with the cloud."
 weight: 1
 no_list: true
 type: "docs"
@@ -30,7 +30,7 @@ updated: "2024-10-11"
     <div class="hero-text">
       <h1>Viam Documentation</h1>
       <p>
-        Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with AI, machine learning, and more.
+        Viam integrates with hardware and software on **any device**. Use AI, machine learning, and more to make any machines smarter. And manage large numbers of machines with the cloud.
       </p>
       <div class="cards max-page">
         <div class="front-card-container">
