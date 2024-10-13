@@ -60,7 +60,7 @@ updated: "2024-10-11"
   <h2 class="frontpage-headers">Program any device</h2>
   <p>
 
-To get started, install Viam on any edge device and create a configuration that describes connected hardware as {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your device and any attached physical hardware securely **from anywhere in the world**. Or from local networks.
+To get started, install Viam on any device and create a configuration that describes connected hardware as {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your device and any attached physical hardware securely **from anywhere in the world**. Or from local networks.
 
   </p>
 
