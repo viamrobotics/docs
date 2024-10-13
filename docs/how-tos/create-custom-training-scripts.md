@@ -51,9 +51,9 @@ You must have the Viam CLI installed to upload training scripts to the registry.
 
 {{< table >}}
 {{% tablestep %}}
-**1. Create file structure**
+**1. Create files**
 
-Create the following file structure:
+Create the following folders and empty files:
 
 ```treeview
 my-training/
@@ -65,9 +65,9 @@ my-training/
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Create `setup.py`**
+**2. Add `setup.py` code**
 
-Inside the top level folder (in this example <file>my-training</file>), create a file called `setup.py` with the following contents:
+Add the following code to `setup.py`:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
 from setuptools import find_packages, setup
@@ -91,13 +91,12 @@ Ensure you add additional required packages on line 11.
 {{% tablestep %}}
 **3. Create `__init__.py`**
 
-Inside the top level folder (in this example <file>my-training</file>), create a folder called <file>model</file> and create an empty file inside it called <file>\_\_init\_\_.py</file>.
+If you haven't already, create a folder called <file>model</file> and create an empty file inside it called <file>\_\_init\_\_.py</file>.
 
 {{% /tablestep %}}
 {{< tablestep >}}
-<b>4. Create `training.py`</b>
 
-<p>Inside the <file>model</file> folder, create a file called <file>training.py</file>.</p>
+<p><strong>4. Add <code>training.py</code> code</strong></p>
 
 <p>Copy this template into <file>training.py</file>:</p>
 
