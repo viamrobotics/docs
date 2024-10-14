@@ -249,10 +249,10 @@ Now that you have verified that the detector and data sync are working, modify y
 ## Set up email notifications
 
 [Triggers](/configure/triggers/) allow you to trigger actions by sending an HTML request when a certain event happens.
-In this case, you're going to set up a trigger to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
+In this case, you're going to set up a trigger to trigger a serverless function that sends you a customized email when an image of someone without a hard hat is uploaded to the cloud.
 
-If you don't care to send a custom email, you can use the trigger's built-in email functionality.
-If you prefer that, skip this part and move on to [Configure a trigger on your machine](#configure-a-trigger-on-your-machine).
+If you don't wish to customize the contents of the email, you can use Viam's built-in trigger email functionality which sends a generic email letting you know that data has been synced.
+If you prefer the generic email, you can skip creating a serverless function and move on to [Configure a trigger on your machine](#configure-a-trigger-on-your-machine).
 
 ### Create a serverless function
 
