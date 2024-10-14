@@ -51,6 +51,8 @@ If you do not have both a board and motor, install `viam-server` on your laptop 
 
 ## Instructions
 
+Make sure to wire your motor to your board before starting.
+Power the board on if you want to test your machine while configuring it.
 Follow these steps to control your motor:
 
 {{< expand "Step 1: Create a machine" >}}
