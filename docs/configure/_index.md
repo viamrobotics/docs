@@ -5,7 +5,7 @@ weight: 429
 type: "docs"
 description: "Before you can program a machine, you must configure its components and services as well as any modules, remotes, processes and frames."
 imageAlt: "Configure a Machine"
-images: ["/installation/thumbnails/configure.svg"]
+images: ["/viam.svg"]
 tags: ["manage", "components"]
 aliases:
   - /manage/configuration/
