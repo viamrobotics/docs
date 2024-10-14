@@ -21,8 +21,6 @@ no_list: true
 
 Once you have [configured data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/qwp6_ixp2OM">}}
-
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
 Only components that capture [sensor](/components/sensor/) readings or other time-series data support data visualization.
@@ -35,6 +33,8 @@ Follow the steps in this tutorial to learn how to collect data from your machine
 This tutorial focuses on using Grafana to visualize your captured data.
 For general guidance appropriate for any third-party visualization tool, see [Visualize data](/how-tos/sensor-data-visualize/).
 {{% /alert %}}
+
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CGq3XIRQjUQ">}}
 
 ## Prerequisites
 
