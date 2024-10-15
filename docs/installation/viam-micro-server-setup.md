@@ -84,8 +84,8 @@ For code examples and more information on `viam-micro-server`, see [GitHub](http
 
 ### Recommendations when using an SDK
 
-As you use the ESP32, if you write [SDK code](/sdks/), you may experience instability.
-If the connection to the ESP32 with an SDK is unstable, we recommend the following changes to the default settings in your SDK code when connecting to an ESP32.
+As you use the ESP32, if you write [control code](/sdks/), you may experience instability.
+If the connection to the ESP32 with an SDK is unstable, we recommend the following changes to the default settings in your connection code.
 This will disable the SDK background task that monitors the connection to `viam-micro-server`, saving bandwidth.
 
 {{< tabs >}}

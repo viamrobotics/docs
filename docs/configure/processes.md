@@ -13,7 +13,7 @@ To automatically run a specified command when your machine boots, configure a _{
 A process can be any command, for example one that executes a binary or a script.
 You can configure a process to run once when the machine first starts, or to run continuously alongside `viam-server`.
 
-## Set up dependencies for Viam SDK code run as a process
+## Set up dependencies for control code to run as a process
 
 If you are configuring a process to run a script that does not use Viam SDKs, skip this section and continue to [Configure a process](#configure-a-process).
 Due to the way processes are designed for stability, if you are configuring a process to run a [Viam SDK](/sdks/) script, you need to install the relevant SDK as well as other required dependencies in a specific way on your SBC:

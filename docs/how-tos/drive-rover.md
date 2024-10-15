@@ -37,7 +37,7 @@ In this guide you'll write code that makes a rover drive in a square.
 
 {{< alert title="You will learn" color="tip" >}}
 
-- How to run SDK code
+- How to run control code with Viam SDKs
 - How to use the base API to move a rover in a square
 
 {{< /alert >}}

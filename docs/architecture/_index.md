@@ -162,7 +162,7 @@ Now, imagine you want to change to a different model of temperature sensor from 
 - You power down your device, disconnect the old sensor from your SBC and connect the new one.
 - You update your configuration in the Viam app to indicate what model you are using, and how it's connected (imagine this one uses USB instead of GPIO pins).
 - You turn your device back on, and `viam-server` automatically fetches the config updates.
-- You do not need to change your SDK code, because the API is the same for all models of sensor.
+- You do not need to change your control code, because the API is the same for all models of sensor.
 
 ## Complex machines with multiple parts
 
@@ -178,7 +178,7 @@ These two options are very similar: in both cases, the parts communicate with ea
 Any given part can be a remote part of multiple machines, whereas a part can only be a sub-part of one machine.
 In other words, remote connections allow sharing of resources across multiple machines, whereas main parts and sub-parts are a way to hierarchically organize one machine.
 
-Connecting parts (either as main part and sub-part, or as part and remote part) means that you can write SDK code that establishes a connection with the main part and controls all parts in a coordinated way.
+Connecting parts (either as main part and sub-part, or as part and remote part) means that you can write control code that establishes a connection with the main part and controls all parts in a coordinated way.
 This streamlines authentication because you do not need to provide multiple sets of API keys as you would if you were using separate API clients.
 However, in some high-bandwidth cases it is better to establish a direct connection from an API client to a part, because connections to remotes and to sub-parts use the main part's bandwidth.
 
