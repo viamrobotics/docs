@@ -30,7 +30,7 @@ updated: "2024-10-11"
     <div class="hero-text">
       <h1>Viam Documentation</h1>
       <p>
-        Viam integrates with hardware and software on <b>any device</b>. Use AI, machine learning, and more to make any machines smarter. And manage large numbers of machines with the cloud - for one machine to thousands.
+        Viam integrates with hardware and software on <b>any device</b>. Use AI, machine learning, and more to make any machine smarter. And manage large numbers of machines with the cloud - for one machine to thousands.
       </p>
       <div class="cards max-page">
         <div class="front-card-container">
