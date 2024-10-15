@@ -90,7 +90,35 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
   },
 );
 
-search.addWidgets([
+let refinementLists = [customRefinementList({
+  container: "platformarea-list",
+  attribute: "platformarea",
+  operator: "or",
+  sortBy: ["name:asc"],
+  items: [
+    { label: "Data Management", value: "data" },
+    { label: "Machine Learning", value: "ml" },
+    { label: "Core", value: "core" },
+    { label: "Fleet Management", value: "fleet" },
+    { label: "Registry", value: "registry" },
+    { label: "Mobility", value: "mobility" },
+  ],
+}),
+customRefinementList({
+  container: "resource-list",
+  attribute: "resource",
+  operator: "or",
+  sortBy: ["name:asc"],
+  items: [
+    { label: "tutorial" },
+    { label: "how-to" },
+    { label: "quickstart" },
+    { label: "blogpost" },
+    { label: "codelab" },
+  ],
+})]
+
+let searchWidgets = [
   instantsearch.widgets.hits({
     container: "#hits",
     templates: {
@@ -111,48 +139,53 @@ search.addWidgets([
   instantsearch.widgets.configure({
     hitsPerPage: 12,
   }),
-
-  customRefinementList({
-    container: "platformarea-list",
-    attribute: "platformarea",
-    operator: "or",
-    sortBy: ["name:asc"],
-    items: [
-      { label: "Data Management", value: "data" },
-      { label: "Machine Learning", value: "ml" },
-      { label: "Core", value: "core" },
-      { label: "Fleet Management", value: "fleet" },
-      { label: "Registry", value: "registry" },
-      { label: "Mobility", value: "mobility" },
-    ],
-  }),
-  customRefinementList({
-    container: "resource-list",
-    attribute: "resource",
-    operator: "or",
-    sortBy: ["name:asc"],
-    items: [
-      { label: "tutorial" },
-      { label: "how-to" },
-      { label: "quickstart" },
-      { label: "blogpost" },
-      { label: "codelab" },
-    ],
-  }),
   instantsearch.widgets.pagination({
     container: "#pagination",
   }),
-]);
+];
+
+let paths = `<h3>test</h3>`
+/* THIS IS WHERE I WAS THINKING ONE COULD PULL IN THE OTHER HTML FILE CONTENTS
+`
+<details>
+  <summary>Get started with Viam basics</summary>
+    <p>Contents</p>
+</details>
+{{< expand "Click this to see what's inside" >}}
+This will be visible if the reader clicks on the expander
+{{< /expand >}}
+`*/
+
+search.addWidgets(refinementLists);
 
 search.start();
-// Only show tutorials and blogposts to begin with
-search.addWidgets([{
-  init: function(options) {
-    options.helper.toggleRefinement('resource', 'how-to');
-    options.helper.toggleRefinement('resource', 'quickstart');
-  }
-}]);
+
+let widgetsAdded = true;
+
 search.on("render", function () {
+  console.log(search.helper.state.disjunctiveFacetsRefinements.platformarea)
+
+  if (search.helper.state.disjunctiveFacetsRefinements.platformarea.length) {
+    if (!widgetsAdded) {
+      widgetsAdded = true;
+      document.getElementById("how-to-paths").innerHTML = ``
+      // Only show expanders to begin with
+      search.addWidgets(searchWidgets);
+      search.addWidgets([{
+        init: function(options) {
+          options.helper.toggleRefinement('resource', 'how-to');
+          options.helper.toggleRefinement('resource', 'quickstart');
+        }
+      }]);
+    }
+  } else {
+    if (widgetsAdded) {
+      widgetsAdded = false;
+      search.removeWidgets(searchWidgets);
+      document.getElementById("how-to-paths").innerHTML = paths;
+    }
+  }
+
 
   if (
     search.helper.state.facetsRefinements &&

@@ -515,6 +515,30 @@ details summary::-webkit-details-marker {
 
 /* END CSS FOR EXPANDER */
 
+/* START CSS for how-to paths */
+
+.expand.howtoexpand summary {
+  background-color: #d3fafa;
+}
+
+.expand.howtoexpand .expand-content {
+  background-color: #d3fafa;
+}
+
+[open].howtoexpand .expand-label {
+  border-bottom-style: hidden;
+}
+
+.howtoexpand .hover-card {
+  background-color: #fff;
+}
+
+.howtoexpand #tasks {
+  font-size: .95rem!important;
+  //font-weight: 300;
+}
+
+/* END CSS for how-to paths */
 
 /* START card styling */
 
