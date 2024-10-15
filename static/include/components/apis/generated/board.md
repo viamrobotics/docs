@@ -510,48 +510,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### AnalogNames
-
-Get the name of every configured `Analog` on the board.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None.
-
-**Returns:**
-
-- (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The list of names of all known analog readers/writers.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the name of every Analog configured on the board.
-names = await my_board.analog_names()
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.analog_names).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None.
-
-**Returns:**
-
-- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every analog pin [configured](/components/board/#available-models) on the board.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### AnalogByName
 
 Get a configured `Analog` by `name`.
@@ -871,7 +829,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(pb.PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
-- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
+- `duration` [(\*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
 
@@ -1092,48 +1050,6 @@ var interruptVal = await myBoard.digitalInterruptValue('my_example_digital_inter
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Board/digitalInterruptValue.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### DigitalInterruptNames
-
-Get the name of every configured `DigitalInterrupt` on the board.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None.
-
-**Returns:**
-
-- (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The names of the digital interrupts.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the name of every DigitalInterrupt configured on the board.
-names = await my_board.digital_interrupt_names()
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.digital_interrupt_names).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None.
-
-**Returns:**
-
-- [([]string)](https://pkg.go.dev/builtin#string): A slice containing the `"name"` of every interrupt [configured](/components/board/#available-models) on the board.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
 {{< /tabs >}}
