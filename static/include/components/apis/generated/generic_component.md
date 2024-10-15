@@ -75,28 +75,6 @@ var result = myArm.doCommand(command);
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
 
 {{% /tab %}}
-{{% tab name="C++" %}}
-
-**Parameters:**
-
-- `command` [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): The command to execute.
-
-**Returns:**
-
-- [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): Result of the executed command.
-
-```cpp {class="line-numbers linkable-line-numbers"}
-auto my_generic = robot->resource_by_name<GenericComponent>("my_generic_component");
-auto example = std::make_shared<ProtoType>(std::string("example"));
-AttributeMap command =
-    std::make_shared<std::unordered_map<std::string, std::shared_ptr<ProtoType>>>();
-command->insert({{std::string("command"), example}});
-auto resp = my_generic->do_command(command);
-```
-
-For more information, see the [C++ SDK Docs](https://cpp.viam.dev/classviam_1_1sdk_1_1GenericComponent.html)
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ### GetGeometries
