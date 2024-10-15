@@ -147,7 +147,8 @@ motor,IsPowered,No,is_powered,IsPowered,powerState
 motor,IsMoving,Yes,is_moving,IsMoving,isMoving
 motor,Stop,Yes,stop,Stop,stop
 motor,Reconfigure,No,,Reconfigure,
-# NOT implemented motor,DoCommand,No,do_command,DoCommand,doCommand
+# NOT implemented in other languages
+motor,DoCommand,,,,doCommand
 motor,GetResourceName,No,get_resource_name,,getResourceName
 motor,Close,No,close,Close,
 
@@ -188,7 +189,8 @@ sensor,GetReadings,Yes,get_readings,Readings,readings
 # NOT implemented sensor,GetGeometries,No,get_geometries,,
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
 sensor,Reconfigure,No,,Reconfigure,
-# NOT implemented sensor,DoCommand,Yes,do_command,DoCommand,doCommand
+# NOT implemented in other languages
+sensor,DoCommand,,,,doCommand
 sensor,GetResourceName,No,get_resource_name,,getResourceName
 sensor,Close,No,close,Close,
 
@@ -200,7 +202,8 @@ servo,GetPosition,Yes,get_position,Position,position
 servo,IsMoving,No,is_moving,IsMoving,isMoving
 servo,Stop,Yes,stop,Stop,stop
 servo,Reconfigure,No,,Reconfigure,
-# NOT implemented servo,DoCommand,Yes,do_command,DoCommand,doCommand
+# NOT implemented in other languages
+servo,DoCommand,,,,doCommand
 servo,GetResourceName,No,get_resource_name,,getResourceName
 servo,Close,No,close,Close,
 

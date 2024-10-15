@@ -354,6 +354,36 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+For built-in models, model-specific commands are covered with each model's documentation.
+If you are implementing your own servo and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetResourceName
 
 Get the `ResourceName` for this servo with the given name.

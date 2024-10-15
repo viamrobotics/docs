@@ -12,5 +12,6 @@
 | [`IsMoving`](/appendix/apis/components/motor/#ismoving) | Return whether the motor is actively moving (or attempting to move) under its own power. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Stop`](/appendix/apis/components/motor/#stop) | Cut the power to the motor immediately, without any gradual step down. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Reconfigure`](/appendix/apis/components/motor/#reconfigure) | Reconfigure this resource. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
+| [`DoCommand`](/appendix/apis/components/motor/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`GetResourceName`](/appendix/apis/components/motor/#getresourcename) | Get the `ResourceName` for this motor with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Close`](/appendix/apis/components/motor/#close) | Safely shut down the resource and prevent further use. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
