@@ -517,16 +517,27 @@ details summary::-webkit-details-marker {
 
 /* START CSS for how-to paths */
 
-.expand.howtoexpand summary {
-  background-color: #d3fafa;
+.expand.howtoexpand summary, .expand-content {
+  background-color: #eaf9fb;
 }
 
-.expand.howtoexpand .expand-content {
-  background-color: #d3fafa;
+.howtoexpand .expand-label, .expand-content {
+  border-radius: .7em;
+}
+
+.howtoexpand .expand-label {
+  padding-top: 1rem;
+}
+
+.howtoexpand .expand-content {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 [open].howtoexpand .expand-label {
   border-bottom-style: hidden;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .howtoexpand .hover-card {
@@ -534,8 +545,11 @@ details summary::-webkit-details-marker {
 }
 
 .howtoexpand #tasks {
-  font-size: .95rem!important;
-  //font-weight: 300;
+  font-size: .93rem!important;
+}
+
+.howtoexpand .hover-card {
+  margin: .8rem;
 }
 
 /* END CSS for how-to paths */

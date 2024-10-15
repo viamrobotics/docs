@@ -19,10 +19,7 @@ howtojs: true
 ---
 
 <p>
-    Click on one of the following guides that provide solutions for common tasks and workflows.
-</p>
-<p>
-    What area would you like to explore?
+    You can filter guides by product area:
 </p>
 
 <div id="tutorial-menu" class="lozad">
@@ -34,56 +31,58 @@ howtojs: true
     <div id="pagination"></div>
 </div>
 
+Or choose a common workflow:
+
 <div id="how-to-paths">
 
 {{< how-to-expand title="Get started with Viam basics" tasks="4" level="BEGINNER-FRIENDLY" >}}
 {{< cards >}}
-{{% card link="/how-tos/drive-rover/" %}}
-{{% card link="/how-tos/control-motor/" %}}
-{{% card link="/how-tos/detect-people/" %}}
-{{% card link="/how-tos/collect-data/" %}}
+{{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{% card link="/how-tos/control-motor/" noimage="true" %}}
+{{% card link="/how-tos/detect-people/" noimage="true" %}}
+{{% card link="/how-tos/collect-data/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
 {{< how-to-expand "Configure a fleet, starting with one machine" "4" "BEGINNER-FRIENDLY" >}}
 {{< cards >}}
-{{% card link="/how-tos/configure/" %}}
-{{% card link="/how-tos/one-to-many/" %}}
-{{% card link="/how-tos/provision-setup/" %}}
-{{% card link="/how-tos/provision/" %}}
+{{% card link="/how-tos/configure/" noimage="true" %}}
+{{% card link="/how-tos/one-to-many/" noimage="true" %}}
+{{% card link="/how-tos/provision-setup/" noimage="true" %}}
+{{% card link="/how-tos/provision/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
 {{< how-to-expand "Manage a large fleet of machines" "2" "INTERMEDIATE" >}}
 {{< cards >}}
-{{% card link="/how-tos/manage-fleet/" %}}
-{{% card link="/how-tos/deploy-packages/" %}}
+{{% card link="/how-tos/manage-fleet/" noimage="true" %}}
+{{% card link="/how-tos/deploy-packages/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
 {{< how-to-expand "Work with data across machines" "4" "INTERMEDIATE" >}}
 {{< cards >}}
-{{% card link="/how-tos/collect-sensor-data/" %}}
-{{% card link="/how-tos/sensor-data-visualize/" %}}
-{{% card link="/how-tos/sensor-data-query-sdk/" %}}
-{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
+{{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
+{{% card link="/how-tos/sensor-data-visualize/" noimage="true" %}}
+{{% card link="/how-tos/sensor-data-query-sdk/" noimage="true" %}}
+{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
 {{< how-to-expand "Create and manage modular resources" "4" "INTERMEDIATE" >}}
 {{< cards >}}
-{{% card link="/how-tos/sensor-module/" %}}
-{{% card link="/how-tos/create-module/" %}}
-{{% card link="/how-tos/upload-module/" %}}
-{{% card link="/how-tos/manage-modules/" %}}
+{{% card link="/how-tos/sensor-module/" noimage="true" %}}
+{{% card link="/how-tos/create-module/" noimage="true" %}}
+{{% card link="/how-tos/upload-module/" noimage="true" %}}
+{{% card link="/how-tos/manage-modules/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
 {{< how-to-expand "Collect images and train machine learning models" "3" "INTERMEDIATE" >}}
 {{< cards >}}
-{{% card link="/how-tos/collect-data/" %}}
-{{% card link="/how-tos/create-custom-training-scripts/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/collect-data/" noimage="true" %}}
+{{% card link="/how-tos/create-custom-training-scripts/" noimage="true" %}}
+{{% card link="/how-tos/deploy-ml/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

@@ -144,18 +144,6 @@ let searchWidgets = [
   }),
 ];
 
-// let paths = `<h3>test</h3>`
-/* THIS IS WHERE I WAS THINKING ONE COULD PULL IN THE OTHER HTML FILE CONTENTS
-`
-<details>
-  <summary>Get started with Viam basics</summary>
-    <p>Contents</p>
-</details>
-{{< expand "Click this to see what's inside" >}}
-This will be visible if the reader clicks on the expander
-{{< /expand >}}
-`*/
-
 search.addWidgets(refinementLists);
 
 search.start();
@@ -185,7 +173,6 @@ search.on("render", function () {
       document.getElementById("how-to-paths").classList.remove("isHidden");
     }
   }
-
 
   if (
     search.helper.state.facetsRefinements &&
