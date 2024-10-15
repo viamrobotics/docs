@@ -19,7 +19,7 @@ aliases:
   - /tutorials/projects/filtered-camera/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
-platformarea: ["ml", "data"]
+platformarea: ["ml"]
 emailform: true
 level: "Beginner"
 date: "2024-06-21"
