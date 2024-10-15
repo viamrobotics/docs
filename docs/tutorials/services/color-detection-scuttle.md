@@ -33,7 +33,7 @@ We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial b
 
 {{< alert title="You will learn" color="tip" >}}
 
-- How to run SDK code
+- How to run control code with Viam SDKs
 - How to use the base API and the vision API to follow a line with a rover
 
 {{< /alert >}}
