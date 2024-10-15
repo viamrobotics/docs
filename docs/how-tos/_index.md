@@ -14,6 +14,7 @@ sitemap:
 aliases:
   - /use-cases/
 date: "2024-09-17"
+howtojs: true
 # updated: ""  # When the content was last entirely checked
 ---
 
@@ -28,40 +29,10 @@ date: "2024-09-17"
   <div id="resource-list" style="display:none;"></div>
   <div id="platformarea-list" data-parent="#tutorial-menu"></div>
 </div>
-<div id="how-to-paths">
-</div>
 <div class="search-panel__results card-container lozad">
     <div id="hits" class="row-no-margin"></div>
     <div id="pagination"></div>
 </div>
-<!-- if no javascript show the how-tos -->
-<noscript>
-    <div class="alert alert-caution" role="alert">
-        <h4 class="alert-heading">Javascript</h4>
-        <p>Please enable javascript to see all how-to guides.</p>
-    </div>
-    <div class="card-container">
-        <div class="row-no-margin">
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/configure/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/develop-app/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/image-data/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/deploy-ml/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/collect-sensor-data/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-query-with-third-party-tools/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-query-sdk/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-visualize/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/create-module/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-module/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/upload-module/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/manage-modules/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/navigate/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/one-to-many/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/provision-setup/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/provision/") }}
-            {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/manage-fleet/") }}
-        </div>
-    </div>
-</noscript>
 
 <div id="how-to-paths">
 

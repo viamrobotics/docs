@@ -144,7 +144,7 @@ let searchWidgets = [
   }),
 ];
 
-let paths = `<h3>test</h3>`
+// let paths = `<h3>test</h3>`
 /* THIS IS WHERE I WAS THINKING ONE COULD PULL IN THE OTHER HTML FILE CONTENTS
 `
 <details>
@@ -168,7 +168,6 @@ search.on("render", function () {
   if (search.helper.state.disjunctiveFacetsRefinements.platformarea.length) {
     if (!widgetsAdded) {
       widgetsAdded = true;
-      document.getElementById("how-to-paths").innerHTML = ``
       // Only show expanders to begin with
       search.addWidgets(searchWidgets);
       search.addWidgets([{
@@ -177,12 +176,13 @@ search.on("render", function () {
           options.helper.toggleRefinement('resource', 'quickstart');
         }
       }]);
+      document.getElementById("how-to-paths").classList.add("isHidden");
     }
   } else {
     if (widgetsAdded) {
       widgetsAdded = false;
       search.removeWidgets(searchWidgets);
-      document.getElementById("how-to-paths").innerHTML = paths;
+      document.getElementById("how-to-paths").classList.remove("isHidden");
     }
   }
 
