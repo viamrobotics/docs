@@ -20,6 +20,7 @@ date: "2023-03-30"
 # updated: ""
 cost: 80
 no_list: true
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS

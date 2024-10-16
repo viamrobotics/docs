@@ -22,6 +22,7 @@ date: "2022-10-04"
 # updated: ""
 cost: 70
 no_list: true
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS:

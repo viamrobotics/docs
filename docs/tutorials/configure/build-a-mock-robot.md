@@ -22,6 +22,7 @@ level: "Beginner"
 date: "2022-10-11"
 # updated: ""
 cost: "0"
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS

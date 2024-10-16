@@ -15,6 +15,7 @@ date: "2023-09-17"
 # updated: "2024-04-19"
 cost: "0"
 no_list: true
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS

@@ -21,6 +21,7 @@ aliases:
   - "/extend/modular-resources/configure/"
   - "/modular-resources/configure/"
 modulescript: true
+toc_hide: true
 ---
 
 You can extend Viam by adding a module on your machine that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):

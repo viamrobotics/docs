@@ -7,6 +7,7 @@ description: "Explanation of how a machine and its parts interact at the communi
 aliases:
   - "/internals/robot-to-robot-comms/"
   - "/internals/machine-to-machine-comms/"
+toc_hide: true
 ---
 
 When building a smart machine application in the [Viam app](https://app.viam.com), a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.
