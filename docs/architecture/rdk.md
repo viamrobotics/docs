@@ -12,7 +12,7 @@ aliases:
 ---
 
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
-If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
+If you are working with microcontrollers, [`viam-micro-server`](/architecture/viam-micro-server/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
 Viam has many built-in {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} that run within `viam-server`.
@@ -69,5 +69,5 @@ During machine shutdown, `viam-server` handles modular resource instances simila
 {{< cards >}}
 {{% card link="/appendix/apis/" %}}
 {{% card link="/registry/" customTitle="Viam Registry" %}}
-{{% card link="/installation/" canonical="/installation/viam-micro-server-setup/#install-viam-micro-server" %}}
+{{% card link="/installation/viam-server-setup/" canonical="/installation/viam-micro-server-setup/#install-viam-micro-server" %}}
 {{< /cards >}}

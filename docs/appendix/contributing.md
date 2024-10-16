@@ -93,7 +93,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like instructions to sauté onions.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
-  For example, the [Installation page](/installation/) or the [Find module page](/registry/configure/).
+  For example, the [Installation page](/installation/viam-server-setup/) or the [Find module page](/registry/configure/).
 
   {{< expand "Click to view template" >}}
 

@@ -28,7 +28,7 @@ Learn more about the structure and configuration of machines:
 <!-- prettier-ignore -->
 |   | Structure... | Configuration... | Installation... |
 | - | ------------ | ---------------- | --------------- |
-| ...of one machine -> | [Architecture](/architecture/) | [Machine Configuration](/configure/) | [Installation](/installation/) |
+| ...of one machine -> | [Architecture](/architecture/) | [Machine Configuration](/configure/) | [Installation](/installation/viam-server-setup/) |
 | ...of many machines -> | [Cloud Organization Hierarchy](/cloud/) | [Deploy a Large Fleet](/fleet/) | [Provisioning](/fleet/provision/) |
 
 ## The things that make up a machine
