@@ -16,7 +16,6 @@ level: "Intermediate"
 date: "2024-07-30"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
-toc_hide: true
 ---
 
 {{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}
