@@ -722,7 +722,7 @@ The following example captures data from the `ReadImage` method of a camera:
 {{< /tabs >}}
 
 {{< /expand >}}
-{{< expand "Step 3: (Optional) Too much data? Configure a retention policy" >}}
+{{< expand "Step 3: (Optional) Too much data?" >}}
 
 Set a `retention_policy` attribute in your [data capture configuration](#configure-data-capture-and-sync) to avoid keeping data stored in the Viam cloud longer than a specified number of days.
 
