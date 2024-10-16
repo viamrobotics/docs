@@ -6,7 +6,6 @@ images: ["/get-started/quickstarts/collect-data.png"]
 description: "Use Viam to gather images or sensor data from your machine."
 imageAlt: "The data icon"
 authors: []
-weight: 20
 languages: []
 viamresources: ["data_manager", "sensor"]
 platformarea: ["data"]

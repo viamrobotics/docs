@@ -2,7 +2,6 @@
 title: "Export data"
 linkTitle: "Export Data"
 description: "Download data from the Viam app using the data client API or the Viam CLI."
-weight: 45
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true

@@ -1,7 +1,7 @@
 ---
 title: "Collect and view sensor data from any machines"
 linkTitle: "Collect sensor data"
-weight: 29
+weight: 10
 type: "docs"
 images: ["/services/icons/data-capture.svg"]
 icon: true

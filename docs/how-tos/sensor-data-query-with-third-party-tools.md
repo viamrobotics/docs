@@ -1,7 +1,6 @@
 ---
 title: "Query sensor data with third-party tools"
 linkTitle: "Query sensor data with third-party tools"
-weight: 30
 type: "docs"
 images: ["/services/icons/data-query.svg"]
 icon: true

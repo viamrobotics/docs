@@ -2,7 +2,6 @@
 title: "Upload a batch of data"
 linkTitle: "Upload a batch of data"
 description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
-weight: 100
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true

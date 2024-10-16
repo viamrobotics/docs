@@ -1,7 +1,7 @@
 ---
 title: "Capture, filter, and sync image data"
 linkTitle: "Capture and sync image data"
-weight: 20
+weight: 30
 type: "docs"
 tags: ["data management", "data", "services"]
 images: ["/services/ml/collect.svg"]
