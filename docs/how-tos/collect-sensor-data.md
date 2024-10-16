@@ -130,11 +130,11 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have collected sensor data, you can [query it](/how-tos/sensor-data-query-with-third-party-tools/), [access it programmatically](/how-tos/sensor-data-query-sdk/) or [visualize it](/how-tos/sensor-data-visualize/) with third-party tools.
+Now that you have collected sensor data, you can [query it](/how-tos/sensor-data-query-with-third-party-tools/), [access it programmatically](/appendix/apis/data-client/) or [visualize it](/how-tos/sensor-data-visualize/) with third-party tools.
 
 {{< cards >}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
-{{% card link="/how-tos/sensor-data-query-sdk/" %}}
+{{% card link="/appendix/apis/data-client/" %}}
 {{% card link="/how-tos/sensor-data-visualize/" %}}
 {{< /cards >}}
 

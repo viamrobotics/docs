@@ -17,6 +17,7 @@ level: "Beginner"
 date: "2024-08-23"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
+toc_hide: true
 ---
 
 You can use the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) {{< glossary_tooltip term_id="module" text="module" >}} to capture and monitor the following metrics about the performance of individual machines or your entire fleet:

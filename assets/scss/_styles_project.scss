@@ -466,6 +466,12 @@ END MARKETING CSS
   clear: both;
 }
 
+.expand i {
+  font-size: x-small;
+  margin-right: 0.3rem;
+  min-width: 16px;
+}
+
 .expand-content ol li p {
   margin-bottom: 0;
 }
@@ -528,11 +534,32 @@ details summary::-webkit-details-marker {
 
 .howtoexpand .expand-label > span > div {
   display: flex;
-  align-items:baseline;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .howtoexpand .expand-label > span > div > div {
   padding-right: 14px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.howtoexpand .expand-label > span > div > div > div {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.howtoexpand .expand-label i {
+  margin-right: 0.3rem;
+  min-width: 16px;
+  line-height: 1.4375em;
+  margin-top: 4px;
+}
+
+.howtoexpand .expand-label h4 {
+  margin-bottom: unset;
 }
 
 .howtoexpand .expand-content {

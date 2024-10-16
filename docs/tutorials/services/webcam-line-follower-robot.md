@@ -21,6 +21,7 @@ date: "2022-08-26"
 updated: "2024-05-01"
 cost: 570
 no_list: true
+toc_hide: true
 ---
 
 <div class="td-max-width-on-larger-screens">

@@ -175,7 +175,7 @@ Create a file called <FILE>viam-provisioning.json</FILE> with the following form
 `viam-agent` is a self-updating service manager that maintains the lifecycle for several Viam services and keeps them updated.
 If you intend to use `viam-agent` to keep your device's Viam software up-to-date or to use its provisioning plugin to let end users set up their own machines, you need to use `viam-agent` and install it on the machine before sending it to the user.
 
-You can [install `viam-agent` on live systems](/installation/) or preinstall it:
+You can [install `viam-agent` on live systems](/installation/viam-server-setup/) or preinstall it:
 
 {{< tabs >}}
 {{% tab name="Preinstall on an SD card (or other image)" %}}

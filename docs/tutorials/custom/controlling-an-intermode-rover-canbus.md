@@ -25,6 +25,7 @@ updated: "2024-04-18"
 cost: 1500
 no_list: true
 # SME: Matt Vella, James Otting
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS

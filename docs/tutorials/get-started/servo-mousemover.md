@@ -20,6 +20,7 @@ date: "2023-03-30"
 # updated: ""
 cost: 80
 no_list: true
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS
@@ -51,7 +52,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ### Hardware
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per our [installation guide](/installation/)
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per our [installation guide](/installation/viam-server-setup/)
 - microSD card reader
 - [Continuous rotation servo](https://a.co/d/2w0u6rK) (we used the FS90R servo)
 - Wheel or arm for the servo (this comes in some of the FS90R packages)

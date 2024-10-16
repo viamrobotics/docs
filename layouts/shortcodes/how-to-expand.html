@@ -3,6 +3,10 @@
     <span>
       <div>
         <div>
+          <div>
+            <i class="fas fa-chevron-right"></i>
+            <i class="fas fa-chevron-down"></i>
+          </div>
           <h4>
             {{- if .IsNamedParams -}}
             {{.Get "title" }}
@@ -10,24 +14,20 @@
             {{.Get 0 }}
             {{- end -}}
           </h4>
-          <p id="tasks">
-            {{- if .IsNamedParams -}}
-            {{.Get "tasks" }}
-            {{- else -}}
-            {{.Get 1 }}
-            {{- end -}}
-            &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp
-            {{- if .IsNamedParams -}}
-            {{.Get "level" }}
-            {{- else -}}
-            {{.Get 2 }}
-            {{- end -}}
-          </p>
         </div>
-        <div>
-          <i class="fas fa-chevron-right"></i>
-          <i class="fas fa-chevron-down"></i>
-        </div>
+        <p id="tasks">
+          {{- if .IsNamedParams -}}
+          {{.Get "tasks" }}
+          {{- else -}}
+          {{.Get 1 }}
+          {{- end -}}
+          &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp
+          {{- if .IsNamedParams -}}
+          {{.Get "level" }}
+          {{- else -}}
+          {{.Get 2 }}
+          {{- end -}}
+        </p>
       </div>
     </span>
     <a aria-hidden="false" class="expand-link-icon" href="#{{ urls.Anchorize (.Get 0) }}">

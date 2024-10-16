@@ -20,7 +20,7 @@ For information on the status of [app.viam.com](https://app.viam.com), visit [st
 
 ### The authenticity of host 'hostname.local' can't be established
 
-**Description:** When following our [installation guides](/installation/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
+**Description:** When following our [installation guides](/installation/viam-server-setup/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
 This is expected: `ssh` is advising you that it has not yet connected to this address, and prompts you for how to proceed.
 
 **Solution:** The message will ask `Are you sure you want to continue connecting?`.
@@ -38,7 +38,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 - Your `ssh` connection string should resemble the following: `ssh username@hostname.local`.
   Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
 - If you are still unable to connect, restart your board and try your `ssh` connection again after a few minutes.
-- If that fails, try re-imaging your board following the [installation guide](/installation/) appropriate for your board.
+- If that fails, try re-imaging your board following the [installation guide](/installation/viam-server-setup/) appropriate for your board.
   - If using the [Raspberry Pi installation guide](/installation/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
   - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
   - If you re-imaged your board and provided the same hostname, you may see an error message similar to `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`.
@@ -60,9 +60,9 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/installation/viam-server-setup/) or [update](/installation/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
-**Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
+**Solution:** Reinstall `viam-server` following the [installation instructions](/installation/viam-server-setup/).
 
 ### AppImages require FUSE to run
 

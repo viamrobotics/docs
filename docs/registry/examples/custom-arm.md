@@ -21,6 +21,7 @@ images: ["/registry/module-icon.svg"]
 aliases:
   - "/extend/modular-resources/examples/custom-arm/"
   - "/modular-resources/examples/custom-arm/"
+toc_hide: true
 # SMEs: Nicole Jung
 ---
 
