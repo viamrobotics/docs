@@ -47,6 +47,8 @@ If you have the following components, you can follow along on your own hardware:
 - A Linux, macOS or WSL computer which can run `viam-server` or an ESP32 which can run `viam-micro-server`.
 - A sensor or a webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
+Make sure to connect your sensor or webcam to your computer.
+
 {{% expand "No computer, camera, or sensor at hand?" %}}
 No problem.
 If you don't have a development machine or other computer that can run `viam-server`, use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
@@ -63,8 +65,6 @@ Now that you have seen that the cameras on your Try Viam rover work, **continue 
 
 If you have a computer that can run `viam-server` but no physical sensor, you can use the [`viam:viam-sensor:telegrafsensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) model which measures computer performance metrics.
 {{% /expand%}}
-
-Make sure to connect your sensor or webcam to your computer.
 
 ## Instructions
 
