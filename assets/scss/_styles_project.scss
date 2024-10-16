@@ -541,7 +541,7 @@ details summary::-webkit-details-marker {
 
 .howtoexpand .expand-label > span > div > div > div {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
@@ -549,6 +549,8 @@ details summary::-webkit-details-marker {
   font-size: x-small;
   margin-right: 0.3rem;
   min-width: 16px;
+  line-height: 1.4375em;
+  margin-top: 4px;
 }
 
 .howtoexpand .expand-label h4 {
