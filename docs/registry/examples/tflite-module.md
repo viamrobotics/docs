@@ -11,6 +11,7 @@ aliases:
   - "/extend/modular-resources/examples/tflite-module/"
   - "/modular-resources/examples/tflite-module/"
 # SMEs: Andrew Morrow
+toc_hide: true
 ---
 
 Viam provides an example {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.

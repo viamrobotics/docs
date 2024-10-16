@@ -21,6 +21,7 @@ aliases:
   - "/program/extend/modular-resources/examples/"
   - "/extend/modular-resources/examples/"
   - "/modular-resources/examples/"
+toc_hide: true
 ---
 
 To familiarize yourself with creating and using {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).

@@ -2,7 +2,7 @@
 {{- $section := $.Site.GetPage "section" .Section -}}
       {{- range .Site.AllPages -}}
       {{- if eq .Section $section.Section -}}
-            {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
+            {{- if or (and (.IsDescendant $section) (and (and (not .Draft) (not .Params.toc_hide)) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
                   {{- if or (or (eq .Section "tutorials") (eq .Section "get-started")) (eq .Section "how-tos") -}}
                         {{- $.Scratch.Set "latestDate" .Date.UTC.Unix -}}
                         {{- if .Params.updated -}}

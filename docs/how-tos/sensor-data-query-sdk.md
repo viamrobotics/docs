@@ -15,6 +15,7 @@ date: "2024-08-16"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 # SME: Devin Hilly
+toc_hide: true
 ---
 
 You can use the data management service to [capture sensor data](/how-tos/collect-sensor-data/) from any machine and sync that data to the cloud.
