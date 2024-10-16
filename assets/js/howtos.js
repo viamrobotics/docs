@@ -155,13 +155,12 @@ search.addWidgets([{
   }
 }]);
 
-let widgetsAdded = true;
+let widgetsAdded = false;
 
 search.on("render", function () {
   if (search.helper.state.disjunctiveFacetsRefinements.platformarea.length) {
     if (!widgetsAdded) {
       widgetsAdded = true;
-      // Only show expanders to begin with
       search.addWidgets(searchWidgets);
       document.getElementById("how-to-paths").classList.add("isHidden");
     }
