@@ -18,7 +18,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  query_by is required.
   additionalSearchParameters: {
     query_by: "resource,title,description",
-    sort_by: "featured:desc,date:desc",
+    sort_by: "featured:asc,date:desc",
   },
 });
 
