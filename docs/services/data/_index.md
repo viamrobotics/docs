@@ -98,7 +98,6 @@ For _tabular_ sensor data, you can also run {{< glossary_tooltip term_id="sql" t
 {{< cards >}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" noimage="True" %}}
 {{% card link="/appendix/apis/data-client/" noimage="True" %}}
-{{% card link="/appendix/apis/data-client/" noimage="True" %}}
 {{< /cards >}}
 
 ### Permissions
