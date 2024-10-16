@@ -295,12 +295,13 @@ The following attributes are available for data capture configuration:
 | ------------------ | ------ | --------- | ----------- |
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/services/data/capture-sync/#supported-components-and-services). |
+| `retention_policy` | object | Optional | Option to configure how long data collected by this component should remain stored in the Viam cloud. You must set this in JSON mode. See the JSON example for a camera component. Options: `"days": <int>`. |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
 Click the **Save** button in the top right corner of the page.
 
 {{% /tab %}}
-{{% tab name="Raw JSON example" %}}
+{{% tab name="JSON example" %}}
 
 {{< expand "Example for a camera component" >}}
 
@@ -348,7 +349,10 @@ This example configuration captures data from the `ReadImage` method of a camera
                   "mime_type": "image/jpeg"
                 }
               }
-            ]
+            ],
+            "retention_policy": {
+              "days": 5
+            }
           }
         }
       ],
@@ -718,9 +722,11 @@ The following example captures data from the `ReadImage` method of a camera:
 {{< /tabs >}}
 
 {{< /expand >}}
-{{< expand "Step 3: (Optional) Too much data? Capture only interesting data" >}}
+{{< expand "Step 3: (Optional) Too much data? Configure a retention policy" >}}
 
-See the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
+Set a `retention_policy` attribute in your [data capture configuration](#configure-data-capture-and-sync) to avoid keeping data stored in the Viam cloud longer than a specified number of days.
+
+You can also see the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide to capture only interesting data.
 
 {{< /expand >}}
 {{< expand "Step 4: (Optional) View captured data" >}}
