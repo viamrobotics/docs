@@ -152,7 +152,7 @@ Add an ML model service on your machine that is compatible with the ML model you
 {{<imgproc src="/services/icons/ml.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
-Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
+Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Upload a new model** to upload your own.
 If you're not sure which model to use, you can use [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
