@@ -249,10 +249,13 @@ Now that you have verified that the detector and data sync are working, modify y
 ## Set up email notifications
 
 [Triggers](/configure/triggers/) allow you to trigger actions by sending an HTML request when a certain event happens.
-In this case, you're going to set up a trigger to trigger a serverless function that sends you a customized email when an image of someone without a hard hat is uploaded to the cloud.
+
+You can set up a trigger to trigger a serverless function that sends you a customized email when an image of someone without a hard hat is uploaded to the cloud.
 
 If you don't wish to customize the contents of the email, you can use Viam's built-in trigger email functionality which sends a generic email letting you know that data has been synced.
-If you prefer the generic email, you can skip creating a serverless function and move on to [Configure a trigger on your machine](#configure-a-trigger-on-your-machine).
+If you prefer the generic email, you can skip creating a custom cloud function and begin configuring a trigger on your machine.
+
+{{%expand "Click to view instructions for creating a serverless function to send you custom emails" %}}
 
 ### Create a serverless function
 
@@ -411,56 +414,131 @@ Now you can test the script:
    If you don't see an email, check your spam folder.
    If you still don't see an email, make sure your SendGrid account is fully set up (2FA enabled, email confirmed) and that your email API key is [correctly configured](#configure-email-credentials).
 
+{{% /expand %}}
+
 ### Configure a trigger on your machine
 
-Now it's time to configure a [trigger](/configure/triggers/) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
+Now it's time to configure a [trigger](/configure/triggers/) on your machine to trigger the email when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the trigger to trigger each time an image is synced to the cloud will produce the desired result.
 
 Configure a trigger as follows:
 
-1. Navigate to the **CONFIGURE** tab of your machine.
-   Select **JSON** mode in the left-hand menu.
+{{< tabs >}}
+{{% tab name="Builder" %}}
 
-2. Paste the following JSON template into your JSON config.
-   `"triggers"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   ```json {class="line-numbers linkable-line-numbers"}
-     "triggers": [
-       {
-         "event": {
-           "attributes": {
-             "data_types": ["binary"]
-           },
-           "type": "part_data_ingested"
+Name the trigger and click **Create**.
+
+Select trigger **Type** as **Data has been synced to the cloud** and **Data Types** as **Binary (image)**.
+
+{{<imgproc src="/tutorials/helmet/trigger.png" resize="x400" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." >}}
+
+Next, configure notifications.
+Add **Emails** or add a **Webhook** for custom emails.
+If you created a cloud function to send you custom emails, follow these instructions:
+
+{{%expand "Click to view instructions for custom emails" %}}
+
+Replace the **URL** value with the URL of your custom cloud function.
+Configure the time between notifications.
+
+For example:
+
+![The trigger configured with an example URL in the Viam app.](/tutorials/helmet/trigger-webhook.png)
+
+{{% /expand %}}
+
+If you opted instead to use Viam's built-in email functionality, follow these instructions:
+
+{{%expand "Click to view instructions for generic emails" %}}
+
+Add the email you wish to be notified whenever this trigger is triggered.
+Configure the time between notifications.
+
+For example:
+
+![The trigger configured with an example email in the Viam app.](/tutorials/helmet/trigger-email.png)
+
+{{% /expand %}}
+
+Click **Save** in the top right corner of the screen to save your changes.
+
+{{% /tab %}}
+{{% tab name="JSON" %}}
+
+Navigate to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+Select **JSON** mode in the left-hand menu.
+
+If you created a cloud function to send you custom emails, follow these instructions:
+
+{{%expand "Click to view JSON template for custom emails" %}}
+
+Paste the following JSON template into your JSON config.
+`"triggers"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+
+```json {class="line-numbers linkable-line-numbers"}
+   "triggers": [
+      {
+      "event": {
+         "attributes": {
+            "data_types": ["binary"]
          },
-         "notifications": [
-         {
-          "type": "webhook",
-          "value": "<Insert your own cloud function URL>",
-          "seconds_between_notifications": 60
-         }
-        ]
+         "type": "part_data_ingested"
+      },
+      "notifications": [
+      {
+         "type": "webhook",
+         "value": "<Insert your own cloud function URL>",
+         "seconds_between_notifications": 60
       }
-   ]
-   ```
+      ]
+   }
+]
+```
 
-3. Replace the `value` in `notifications` with your cloud function URL.
-   You can get this URL by copying it from the **TRIGGER** tab in the cloud function console.
-   Once you've done this, the `value` line should resemble, for example, `"value": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email"`.
+Replace the `value` in `notifications` with your cloud function URL.
+You can get this URL by copying it from the **TRIGGER** tab in the cloud function console.
+Once you've done this, the `value` line should resemble, for example, `"value": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email"`.
 
-   If you skipped writing a custom cloud function in favor of the built-in email functionality, use this JSON for the `notifications` object instead:
+{{% /expand %}}
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   "notifications": [
+If you opted instead to use Viam's built-in email functionality, follow these instructions:
+
+{{%expand "Click to view JSON template for generic emails" %}}
+
+Paste the following JSON template into your JSON config.
+`"triggers"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+
+```json {class="line-numbers linkable-line-numbers"}
+   "triggers": [
+      {
+      "event": {
+         "attributes": {
+            "data_types": ["binary"]
+         },
+         "type": "part_data_ingested"
+      },
+      "notifications": [
       {
          "type": "email",
          "value": "<YOUR-EMAIL-HERE>",
          "seconds_between_notifications": 60
       }
-   ]
-   ```
+      ]
+   }
+]
+```
 
-4. Click **Save** in the top right corner of the screen to save your changes.
+Replace the `value` in `notifications` with your email.
+
+{{% /expand %}}
+
+Click **Save** in the top right corner of the screen to save your changes.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Test the whole system
 

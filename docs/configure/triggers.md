@@ -76,7 +76,7 @@ Configure the time between notifications.
 Add the email you wish to be notified whenever this trigger is triggered.
 Configure the time between notifications.
 
-![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured-email.png)
+![The trigger configured with an example email in the Viam app.](/build/configure/trigger-configured-email.png)
 
 {{% /tab %}}
 {{< /tabs >}}
