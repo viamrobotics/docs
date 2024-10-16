@@ -493,7 +493,7 @@ details[open] * i.fa-chevron-right {
 }
 
 details summary::-webkit-details-marker {
-  display:none;
+  display: none;
 }
 
 .center-text {
@@ -552,7 +552,6 @@ details summary::-webkit-details-marker {
 }
 
 .howtoexpand .expand-label i {
-  font-size: x-small;
   margin-right: 0.3rem;
   min-width: 16px;
   line-height: 1.4375em;
