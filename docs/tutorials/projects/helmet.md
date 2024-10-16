@@ -441,7 +441,7 @@ If you created a cloud function to send you custom emails, follow these instruct
 
 {{%expand "Click to view instructions for custom emails" %}}
 
-Replace the **URL** value with the URL of your custom cloud function.
+Click **Add Webhook** and enter the URL of your custom cloud function.
 Configure the time between notifications.
 
 For example:
@@ -454,7 +454,7 @@ If you opted instead to use Viam's built-in email functionality, follow these in
 
 {{%expand "Click to view instructions for generic emails" %}}
 
-Add the email you wish to be notified whenever this trigger is triggered.
+Click **Add Email** and enter the email address where trigger notifications will be sent.
 Configure the time between notifications.
 
 For example:
