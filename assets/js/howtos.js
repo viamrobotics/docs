@@ -147,23 +147,22 @@ let searchWidgets = [
 search.addWidgets(refinementLists);
 
 search.start();
+// Only show guide & howtos
+search.addWidgets([{
+  init: function(options) {
+    options.helper.toggleRefinement('resource', 'how-to');
+    options.helper.toggleRefinement('resource', 'quickstart');
+  }
+}]);
 
 let widgetsAdded = true;
 
 search.on("render", function () {
-  console.log(search.helper.state.disjunctiveFacetsRefinements.platformarea)
-
   if (search.helper.state.disjunctiveFacetsRefinements.platformarea.length) {
     if (!widgetsAdded) {
       widgetsAdded = true;
       // Only show expanders to begin with
       search.addWidgets(searchWidgets);
-      search.addWidgets([{
-        init: function(options) {
-          options.helper.toggleRefinement('resource', 'how-to');
-          options.helper.toggleRefinement('resource', 'quickstart');
-        }
-      }]);
       document.getElementById("how-to-paths").classList.add("isHidden");
     }
   } else {

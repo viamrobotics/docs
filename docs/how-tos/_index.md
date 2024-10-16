@@ -18,20 +18,19 @@ howtojs: true
 # updated: ""  # When the content was last entirely checked
 ---
 
+<div class="max-page">
 <p>
-    You can filter guides by product area:
+The guides on this page provide solutions for common tasks and workflows. Browse the guides on this page or filter by product area:
 </p>
 
 <div id="tutorial-menu" class="lozad">
   <div id="resource-list" style="display:none;"></div>
   <div id="platformarea-list" data-parent="#tutorial-menu"></div>
 </div>
-<div class="search-panel__results card-container lozad">
+<div class="search-panel__results guides card-container lozad">
     <div id="hits" class="row-no-margin"></div>
     <div id="pagination"></div>
 </div>
-
-Or choose a common workflow:
 
 <div id="how-to-paths">
 
@@ -53,19 +52,27 @@ Or choose a common workflow:
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Manage a large fleet of machines" "2" "INTERMEDIATE" >}}
-{{< cards >}}
-{{% card link="/how-tos/manage-fleet/" noimage="true" %}}
-{{% card link="/how-tos/deploy-packages/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
-
 {{< how-to-expand "Work with data across machines" "4" "INTERMEDIATE" >}}
 {{< cards >}}
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-visualize/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-query-sdk/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" noimage="true" %}}
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+{{< how-to-expand "Collect images and train machine learning models" "3" "INTERMEDIATE" >}}
+{{< cards >}}
+{{% card link="/how-tos/collect-data/" noimage="true" %}}
+{{% card link="/how-tos/deploy-ml/" noimage="true" %}}
+{{% card link="/how-tos/create-custom-training-scripts/" noimage="true" %}}
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+{{< how-to-expand "Manage a large fleet of machines" "2" "INTERMEDIATE" >}}
+{{< cards >}}
+{{% card link="/how-tos/manage-fleet/" noimage="true" %}}
+{{% card link="/how-tos/deploy-packages/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
@@ -77,15 +84,7 @@ Or choose a common workflow:
 {{% card link="/how-tos/manage-modules/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
-
-{{< how-to-expand "Collect images and train machine learning models" "3" "INTERMEDIATE" >}}
-{{< cards >}}
-{{% card link="/how-tos/collect-data/" noimage="true" %}}
-{{% card link="/how-tos/create-custom-training-scripts/" noimage="true" %}}
-{{% card link="/how-tos/deploy-ml/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
-
 </div>
 
 <p>If you're looking for examples of how Viam is being used in the world, have a look at <a href="https://www.viam.com/customers">customer stories</a>, follow our <a href="../tutorials/">step-by-step tutorials</a>, or browse our <a href="https://www.viam.com/blog?categories=Tutorials">blog posts</a>.</p>
+</div>
