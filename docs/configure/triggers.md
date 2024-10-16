@@ -65,7 +65,8 @@ You must [configure data capture](/services/data/capture-sync/) for your compone
 {{< tabs name="Notifications types" >}}
 {{% tab name="Webhooks" %}}
 
-Replace the **URL** value with the URL of your cloud function or lambda.
+Click **Add Webhook**.
+Add the URL of your cloud function or lambda.
 Configure the time between notifications.
 
 ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
@@ -73,6 +74,7 @@ Configure the time between notifications.
 {{% /tab %}}
 {{% tab name="Emails" %}}
 
+Click **Add Email**.
 Add the email you wish to be notified whenever this trigger is triggered.
 Configure the time between notifications.
 
