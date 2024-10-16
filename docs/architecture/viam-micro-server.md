@@ -43,6 +43,6 @@ To use `viam-micro-server`, follow the installation guide.
 If you want to access camera functionality, extend the functionality of `viam-micro-server, or customize it see the development setup guide.
 
 {{< cards >}}
-{{% card link="/installation/" %}}
+{{% card link="/installation/viam-server-setup/" %}}
 {{% card link="/installation/viam-micro-server-dev/" %}}
 {{< /cards >}}

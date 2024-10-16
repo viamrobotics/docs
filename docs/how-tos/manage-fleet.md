@@ -117,7 +117,7 @@ Assign each user a role (owner or operator) to manage permissions.
 Users with owner access to a location or organization, can collaborate on the [machines](/cloud/machines/) within it.
 
 {{% /tablestep %}}
-{{% tablestep link="/installation/" %}}
+{{% tablestep link="/installation/viam-server-setup/" %}}
 **2. Use API keys**
 
 You (and anyone with owner access) can create API keys for programmatic access to machines, locations, or organizations.

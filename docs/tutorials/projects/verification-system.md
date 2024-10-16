@@ -54,7 +54,7 @@ If you wanted to take this tutorial further, you could use these state transitio
 Before following this tutorial, you should:
 
 1. [Create a new machine](/cloud/machines/#add-a-new-machine) in the Viam app.
-1. [Install `viam-server`](/installation/) on your new machine.
+1. [Install `viam-server`](/installation/viam-server-setup/) on your new machine.
 
 Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/).
 Make sure to connect your camera to your machine's computer (if it isn't built-in) before starting the project and power it on.

@@ -46,7 +46,7 @@ After completing this tutorial, you will:
 
 - A camera such as a standard USB webcam.
   You can also test the hard hat detection system using the webcam built into your laptop.
-- A computer capable of running [`viam-server`](/installation/).
+- A computer capable of running [`viam-server`](/installation/viam-server-setup/).
   You can use a personal computer running macOS or Linux, or a single-board computer (SBC) running 64-bit Linux.
 
 ### Optional hardware
@@ -59,7 +59,7 @@ Note that your machine must be connected to the internet for data sync and email
 
 ### Required software
 
-- [`viam-server`](/installation/)
+- [`viam-server`](/installation/viam-server-setup/)
 - [Ultralytics YOLOv8](https://docs.ultralytics.com/), integrated with Viam using the [YOLOv8 modular service](https://github.com/viam-labs/YOLOv8)
 - [YOLOv8 Hard Hat Detection model](https://huggingface.co/keremberke/yolov8s-hard-hat-detection)
 - [`objectfilter-camera`](https://github.com/felixreichenbach/objectfilter-camera) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
