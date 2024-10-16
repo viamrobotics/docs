@@ -32,6 +32,7 @@ date: "2022-12-08"
 cost: "0"
 ---
 
+
 This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll write code that makes a rover drive in a square.
 
