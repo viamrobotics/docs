@@ -933,12 +933,6 @@ details summary::-webkit-details-marker {
 
 // TUTORIAL CARD STYLING END
 
-// On front page the normal hover-cards should take up more space
-
-.max-page * .hover-card {
-  min-width: 280px;
-  max-width: 400px;
-}
 
 // fit either all 4 cards, 2 by 2 or each card individually START
 
@@ -2151,6 +2145,10 @@ h3.body-header[style] {
 }
 
 // Front page styling START
+
+.frontpage h2 {
+  margin-bottom: 1rem;
+}
 
 // Image and text START
 
