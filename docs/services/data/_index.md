@@ -93,11 +93,11 @@ Upload data to the Viam cloud from your computer or mobile device using the data
 ### Query your data
 
 Once your data has [synced](/services/data/capture-sync/), you can query it using the [data client API](/appendix/apis/data-client/).
-For _tabular_ sensor data, you can also [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/appendix/apis/components/sensor/) from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
+For _tabular_ sensor data, you can also run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 {{< cards >}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" noimage="True" %}}
-{{% card link="/appendix/apis/components/sensor/" noimage="True" %}}
+{{% card link="/appendix/apis/data-client/" noimage="True" %}}
 {{% card link="/appendix/apis/data-client/" noimage="True" %}}
 {{< /cards >}}
 

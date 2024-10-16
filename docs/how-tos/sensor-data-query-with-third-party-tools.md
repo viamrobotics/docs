@@ -281,10 +281,10 @@ db.readings.aggregate(
 
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
-On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/appendix/apis/components/sensor/) or [visualize it](/how-tos/sensor-data-visualize/).
+On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/appendix/apis/data-client/) or [visualize it](/how-tos/sensor-data-visualize/).
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/sensor/" %}}
+{{% card link="/appendix/apis/data-client/" %}}
 {{% card link="/how-tos/sensor-data-visualize/" %}}
 {{< /cards >}}
 
