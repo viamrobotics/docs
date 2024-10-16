@@ -1,7 +1,6 @@
 ---
 title: "Query sensor data with the Python SDK"
 linkTitle: "Query sensor data with an SDK"
-weight: 31
 type: "docs"
 images: ["/services/icons/data-query.svg"]
 icon: true

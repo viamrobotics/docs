@@ -2,7 +2,6 @@
 title: "Trigger cloud sync conditionally"
 linkTitle: "Trigger data sync conditionally"
 description: "Trigger cloud sync to sync captured data when custom conditions are met."
-weight: 44
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 images: ["/services/icons/data-cloud-sync.svg"]

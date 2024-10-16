@@ -1,7 +1,7 @@
 ---
 title: "Visualize sensor data from any machines"
 linkTitle: "Visualize and analyze sensor data"
-weight: 32
+weight: 20
 type: "docs"
 images: ["/services/icons/data-visualization.svg"]
 icon: true
