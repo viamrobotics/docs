@@ -528,15 +528,31 @@ details summary::-webkit-details-marker {
 
 .howtoexpand .expand-label > span > div {
   display: flex;
-  align-items:baseline;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .howtoexpand .expand-label > span > div > div {
   padding-right: 14px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.howtoexpand .expand-label > span > div > div > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .howtoexpand .expand-label i {
   font-size: x-small;
+  margin-right: 0.3rem;
+  min-width: 16px;
+}
+
+.howtoexpand .expand-label h4 {
+  margin-bottom: unset;
 }
 
 .howtoexpand .expand-content {
