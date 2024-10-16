@@ -52,7 +52,7 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Work with data across machines" "4" "INTERMEDIATE" >}}
+{{< how-to-expand "Work with sensor data" "4" "INTERMEDIATE" >}}
 {{< cards >}}
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-visualize/" noimage="true" %}}
@@ -84,6 +84,7 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{% card link="/how-tos/manage-modules/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
+
 </div>
 
 <p>If you're looking for examples of how Viam is being used in the world, have a look at <a href="https://www.viam.com/customers">customer stories</a>, follow our <a href="../tutorials/">step-by-step tutorials</a>, or browse our <a href="https://www.viam.com/blog?categories=Tutorials">blog posts</a>.</p>
