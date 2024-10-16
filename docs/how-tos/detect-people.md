@@ -45,6 +45,8 @@ If you have the following components, you can follow along on your own hardware:
 - A Linux, macOS or WSL computer that can run `viam-server`.
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
+Make sure to connect the webcam to your computer (if it's not built-in) before starting this guide.
+
 {{% expand "No computer or webcam?" %}}
 No problem.
 

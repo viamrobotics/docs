@@ -44,6 +44,9 @@ If you have the following components, you can follow along on your own hardware:
 - A single-board computer or an ESP32.
 - A motor and compatible motor driver.
 
+Make sure to wire your motor to your board before starting.
+Power the board on if you want to test your machine while configuring it.
+
 {{% expand "No motor at hand?" %}}
 No problem.
 If you do not have both a board and motor, install `viam-server` on your laptop or computer and follow the instructions to use a _fake_ motor, which is a model that serves for testing.

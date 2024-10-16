@@ -47,6 +47,8 @@ If you have the following components, you can follow along on your own hardware:
 - A Linux, macOS or WSL computer which can run `viam-server` or an ESP32 which can run `viam-micro-server`.
 - A sensor or a webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
+Make sure to connect your sensor or webcam to your computer.
+
 {{% expand "No computer, camera, or sensor at hand?" %}}
 No problem.
 If you don't have a development machine or other computer that can run `viam-server`, use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
@@ -54,7 +56,7 @@ The rover already has `viam-server` installed and is configured with some compon
 
 Once you have borrowed a rover, go to the **CONFIGURE** tab of the machine, find the cameras and click on the **Test** panel at the bottom of each camera's configuration panel to test the camera stream.
 You should have a front-facing camera and an overhead view of your rover.
-Now you know what the rover can _perveive_.
+Now you know what the rover can _perceive_.
 
 If your rover is facing a wall, find the base configuration panel and click on its **Test** panel.
 Use the controls to drive your rover to a different location.
