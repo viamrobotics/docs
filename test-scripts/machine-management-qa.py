@@ -53,13 +53,13 @@ async def main():
     print(f"frame system configuration: {frame_system}")
 
     pose = Pose(
-        x=1.0,    # X coordinate in meters
-        y=2.0,    # Y coordinate in meters
-        z=3.0,    # Z coordinate in meters
-        o_x=0.0,  # Orientation quaternion X
-        o_y=0.0,  # Orientation quaternion Y
-        o_z=0.0,  # Orientation quaternion Z
-        theta=0.0 # Orientation angle in radians
+        x=1.0,    
+        y=2.0,    
+        z=3.0,    
+        o_x=0.0,  
+        o_y=0.0,  
+        o_z=0.0,  
+        theta=0.0 
     )
 
     pose_in_frame = PoseInFrame(

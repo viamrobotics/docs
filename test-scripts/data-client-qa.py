@@ -97,7 +97,6 @@ async def main():
     time_requested = datetime(2023, 6, 5, 11)
     time_received = datetime(2023, 6, 5, 11, 0, 3)
 
-    # will need to make edits here from the below
     file_id = await data_client.streaming_data_capture_upload(
         data=img_binary_data,
         part_id="<YOUR-PART-ID>",
@@ -255,7 +254,7 @@ async def main():
     print(f"Binary data {binary_data}")
 
     my_filter = create_filter(component_name="camera-2")
-    tags = ["TAGTEST"]
+    tags = ["TEST"]
     res = await data_client.remove_tags_from_binary_data_by_filter(tags, my_filter)
 
     print(f"response: {res}")

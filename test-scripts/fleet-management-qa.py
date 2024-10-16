@@ -31,7 +31,7 @@ async def main():
     cloud = viam_client.app_client
 
     # BUG: grpc error
-    id = await cloud.get_user_id_by_email("sierra.guequierre@viam.com")
+    id = await cloud.get_user_id_by_email("<YOUR-NAMESPACE>.guequierre@viam.com")
     print(f"USER ID: {id}")
 
     # BUG: grpc error
@@ -54,7 +54,7 @@ async def main():
     print(org)
 
     available = await cloud.get_organization_namespace_availability(
-    public_namespace="sierra")
+    public_namespace="<YOUR-NAMESPACE>")
     print(available)
 
     organization = await cloud.update_organization(
@@ -84,7 +84,7 @@ async def main():
 
     update_invite = await cloud.update_organization_invite_authorizations(
         org_id="<YOUR-ORG-ID>",
-        email="sguequierre@gmail.com",
+        email="<YOUR-EMAIL>",
         add_authorizations=[auth])
 
     print(update_invite)
@@ -111,7 +111,7 @@ async def main():
         name="Robotville 2",
         parent_location_id="<YOUR-LOCATION-ID-PARENT>",
     )
-    print(f"my updated location {my_updated_location}")
+    print(f"My updated location {my_updated_location}")
 
     await cloud.delete_location(location_id="<YOUR-LOCATION-ID-PARENT>")
 
@@ -132,9 +132,6 @@ async def main():
     await cloud.delete_location_secret(
         location_id="<YOUR-LOCATION-ID>",
         secret_id="<YOUR-LOCATION-SECRET-ID>")
-    
-    loc_auth = await cloud.location_auth(location_id="<YOUR-LOCATION-ID>")
-    print(loc_auth)
     
     robot = await cloud.get_robot(robot_id="<YOUR-MACHINE-ID>")
     print(robot)
@@ -308,20 +305,20 @@ async def main():
 
     await cloud.create_registry_item("<YOUR-ORG-ID>", "test-create", PackageType.PACKAGE_TYPE_ML_MODEL)
 
-    await cloud.update_registry_item("sierra:test-create", PackageType.PACKAGE_TYPE_ML_MODEL, "description", Visibility.VISIBILITY_PUBLIC)
+    await cloud.update_registry_item("<YOUR-NAMESPACE>:test-create", PackageType.PACKAGE_TYPE_ML_MODEL, "description", Visibility.VISIBILITY_PUBLIC)
 
-    await cloud.delete_registry_item("sierra:test-create")
+    await cloud.delete_registry_item("<YOUR-NAMESPACE>:test-create")
 
     new_module = await cloud.create_module(org_id="<YOUR-ORG-ID>", name="cool_new_hoverboard_module")
     print("Module ID:", new_module[0])
 
     model = Model(
         api="rdk:service:slam", 
-        model="sierra:cool_new_hoverboard_module:wheeled"
+        model="<YOUR-NAMESPACE>:cool_new_hoverboard_module:wheeled"
     )
 
     url_of_my_module = await cloud.update_module(
-      module_id="sierra:cool_new_hoverboard_module",
+      module_id="<YOUR-NAMESPACE>:cool_new_hoverboard_module",
       url="https://docsformymodule.viam.com",
       models=[model],
       description="A base to support hoverboards.",
@@ -338,7 +335,7 @@ async def main():
     print(registry_items)
 
     module_file_info = ModuleFileInfo(
-        module_id = "sierra:cool_new_hoverboard_module",
+        module_id = "<YOUR-NAMESPACE>:cool_new_hoverboard_module",
         version = "1.0.0",
         platform = "darwin/arm64"
     )
@@ -346,7 +343,7 @@ async def main():
     file_id = await cloud.upload_module_file(module_file_info=module_file_info, file=b"strain.png")
     print(file_id)
 
-    the_module = await cloud.get_module(module_id="e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb:aws-sagemaker")
+    the_module = await cloud.get_module(module_id="<ORG-ID>:aws-sagemaker")
     print(the_module)
 
     modules_list = await cloud.list_modules("<YOUR-ORG-ID>")
