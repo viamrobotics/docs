@@ -5,18 +5,6 @@
 <script type="text/javascript" src="{{$jsCarousel.RelPermalink}}" crossorigin="anonymous"></script>
 {{ end }}
 
-<!-- JS for listing models from modules -->
-{{ if .Page.Params.modulescript }}
-
-<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
-
-{{ $jsModels := resources.Get "js/models.js" }}
-{{ $jsModels := $jsModels | minify }}
-<script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
-{{ end }}
-
 <!-- JS for email newsletter sign up form -->
 {{ if .Page.Params.emailform }}
 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
@@ -37,6 +25,30 @@
 {{ $jsLozad := $jsLozad | minify }}
 <script src="{{ $jsLozad.RelPermalink }}" crossorigin="anonymous"></script>
 <!-- END script for lazy loading -->
+
+<!-- JS for listing models from modules -->
+{{ if .Page.Params.modulescript }}
+
+<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
+
+{{ $jsModels := resources.Get "js/models.js" }}
+{{ $jsModels := $jsModels | minify }}
+<script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
+{{ end }}
+
+<!-- JS for how to page -->
+{{ if .Page.Params.howtojs }}
+
+<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
+
+{{ $jsHowtos := resources.Get "js/howtos.js" }}
+{{ $jsHowtos := $jsHowtos | minify }}
+<script type="text/javascript" src="{{ $jsHowtos.RelPermalink }}" crossorigin="anonymous"></script>
+{{ end }}
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"

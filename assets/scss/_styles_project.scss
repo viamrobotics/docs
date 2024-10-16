@@ -515,8 +515,67 @@ details summary::-webkit-details-marker {
 
 /* END CSS FOR EXPANDER */
 
+/* START CSS for how-to paths */
 
-/* START card styling */
+.expand.howtoexpand summary, .expand-content {
+  background-color: #eaf9fb;
+}
+
+.howtoexpand .expand-label {
+  padding-top: 1rem;
+  padding-bottom: 0;
+}
+
+.howtoexpand .expand-label > span > div {
+  display: flex;
+  align-items:baseline;
+}
+
+.howtoexpand .expand-label > span > div > div {
+  padding-right: 14px;
+}
+
+.howtoexpand .expand-label i {
+  font-size: x-small;
+}
+
+.howtoexpand .expand-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.howtoexpand .expand-content .card-container {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 691px) {
+  .max-page .howtoexpand > .expand-content > .card-container > div > .hover-card {
+    max-width: 280px !important;
+  }
+  .search-panel__results.guides > #hits .hover-card {
+    max-width: 280px !important;
+  }
+}
+
+[open].howtoexpand .expand-label {
+  border-bottom: unset;
+}
+
+.howtoexpand .hover-card {
+  background-color: #fff;
+}
+
+.howtoexpand #tasks {
+  font-size: .93rem !important;
+}
+
+.howtoexpand .hover-card {
+  margin: .8rem;
+}
+
+/* END CSS for how-to paths */
+
+/* card styling START*/
 
 .hover-card {
   display: flex;
@@ -881,7 +940,7 @@ details summary::-webkit-details-marker {
   max-width: 400px;
 }
 
-// START fit either all 4 cards, 2 by 2 or each card individually
+// fit either all 4 cards, 2 by 2 or each card individually START
 
 // Between 1200 - 1650 we need to restrict the container to 850px to ensure
 // the cards go into 2 x 2 formation
@@ -897,24 +956,24 @@ details summary::-webkit-details-marker {
   }
 }
 
-// END fit either all 4 cards, 2 by 2 or each card individually
+// fit either all 4 cards, 2 by 2 or each card individually END
 
-/* END card styling */
+/* card styling END */
 
 
 .nav-link {
   text-decoration: none;
 }
 
-/* START CSS to ensure lists within columns of markdown aren't indented */
+/* CSS to ensure lists within columns of markdown aren't indented START */
 
 td > ul, td > ol {
   padding-inline-start: 1.5em;
 }
 
-/* END CSS to ensure lists within columns of markdown aren't indented */
+/* CSS to ensure lists within columns of markdown aren't indented END */
 
-/* START TAB CSS consistency */
+/* TAB CSS consistency START */
 
 .nav-tabs {
   border-bottom: none; // unset from inherited styles
@@ -979,9 +1038,9 @@ td > ul, td > ol {
   border: 1px solid rgb(215, 215, 217);
 }
 
-/* END TAB CSS consistency */
+/* TAB CSS consistency END */
 
-/* START scroll to top and github styling */
+/* scroll to top and github styling START */
 
 .docsbutton {
   border: 1px solid black;
@@ -1046,10 +1105,10 @@ td > ul, td > ol {
   }
 }
 
-/* END scroll to top and github styling */
+/* scroll to top and github styling END */
 
 
-/* START cookie consent message */
+/* cookie consent message START*/
 .alert.cookieconsent-optout-marketing {
   border-color: #a51aff;
   display: block;
@@ -1063,9 +1122,9 @@ img.embed-responsive.embed-responsive-16by9 {
   aspect-ratio: 16/9;
   padding: 2rem;
 }
-/* END cookie consent message */
+/* cookie consent message END */
 
-/* START GIFs should have a max width */
+/* GIFs should have a max width START */
 
 .td-content > video {
   max-width: 100%;
@@ -1075,7 +1134,7 @@ img.embed-responsive.embed-responsive-16by9 {
   max-width: 100%;
 }
 
-/* END GIFs should have a max width */
+/* GIFs should have a max width END */
 
 // Other styling
 
@@ -1502,12 +1561,16 @@ ul.sectionlist > li:hover {
 
 .search-panel__results.card-container {
   max-width: 100%;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
 }
 
 #tutorial-menu {
   display: flex;
   flex-direction: column;
   max-width: 850px;
+  min-height: 46px;
 }
 
 .pill-explainer {
@@ -2460,3 +2523,8 @@ div.explanation > .explanationvisual > .gif {
 
 // Front page styling END
 
+.isHidden {
+  display: hidden;
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}

@@ -21,6 +21,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     sort_by: "featured:asc,date:desc",
   },
 });
+
 const searchClient = typesenseInstantsearchAdapter.searchClient;
 
 const search = instantsearch({
@@ -28,8 +29,10 @@ const search = instantsearch({
   searchClient,
 });
 
+
 const customRefinementList = instantsearch.connectors.connectRefinementList(
   ({ items, refine, widgetParams }, isFirstRender) => {
+
     const container = document.getElementById(widgetParams.container);
 
     if (isFirstRender) {

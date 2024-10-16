@@ -90,7 +90,35 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
   },
 );
 
-search.addWidgets([
+let refinementLists = [customRefinementList({
+  container: "platformarea-list",
+  attribute: "platformarea",
+  operator: "or",
+  sortBy: ["name:asc"],
+  items: [
+    { label: "Data Management", value: "data" },
+    { label: "Machine Learning", value: "ml" },
+    { label: "Core", value: "core" },
+    { label: "Fleet Management", value: "fleet" },
+    { label: "Registry", value: "registry" },
+    { label: "Mobility", value: "mobility" },
+  ],
+}),
+customRefinementList({
+  container: "resource-list",
+  attribute: "resource",
+  operator: "or",
+  sortBy: ["name:asc"],
+  items: [
+    { label: "tutorial" },
+    { label: "how-to" },
+    { label: "quickstart" },
+    { label: "blogpost" },
+    { label: "codelab" },
+  ],
+})]
+
+let searchWidgets = [
   instantsearch.widgets.hits({
     container: "#hits",
     templates: {
@@ -111,48 +139,39 @@ search.addWidgets([
   instantsearch.widgets.configure({
     hitsPerPage: 12,
   }),
-
-  customRefinementList({
-    container: "platformarea-list",
-    attribute: "platformarea",
-    operator: "or",
-    sortBy: ["name:asc"],
-    items: [
-      { label: "Data Management", value: "data" },
-      { label: "Machine Learning", value: "ml" },
-      { label: "Core", value: "core" },
-      { label: "Fleet Management", value: "fleet" },
-      { label: "Registry", value: "registry" },
-      { label: "Mobility", value: "mobility" },
-    ],
-  }),
-  customRefinementList({
-    container: "resource-list",
-    attribute: "resource",
-    operator: "or",
-    sortBy: ["name:asc"],
-    items: [
-      { label: "tutorial" },
-      { label: "how-to" },
-      { label: "quickstart" },
-      { label: "blogpost" },
-      { label: "codelab" },
-    ],
-  }),
   instantsearch.widgets.pagination({
     container: "#pagination",
   }),
-]);
+];
+
+search.addWidgets(refinementLists);
 
 search.start();
-// Only show tutorials and blogposts to begin with
+// Only show guide & howtos
 search.addWidgets([{
   init: function(options) {
     options.helper.toggleRefinement('resource', 'how-to');
     options.helper.toggleRefinement('resource', 'quickstart');
   }
 }]);
+
+let widgetsAdded = true;
+
 search.on("render", function () {
+  if (search.helper.state.disjunctiveFacetsRefinements.platformarea.length) {
+    if (!widgetsAdded) {
+      widgetsAdded = true;
+      // Only show expanders to begin with
+      search.addWidgets(searchWidgets);
+      document.getElementById("how-to-paths").classList.add("isHidden");
+    }
+  } else {
+    if (widgetsAdded) {
+      widgetsAdded = false;
+      search.removeWidgets(searchWidgets);
+      document.getElementById("how-to-paths").classList.remove("isHidden");
+    }
+  }
 
   if (
     search.helper.state.facetsRefinements &&
