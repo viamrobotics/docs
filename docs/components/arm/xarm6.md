@@ -105,6 +105,66 @@ See [the frame system Service](/services/frame-system/) for more information on 
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
 
+### Additional commands
+
+In addition to the [Arm API](/appendix/apis/components/arm/), the `xArm6` arm supports some model-specific commands that allow you to set the speed and the acceleration of the arm.
+You can invoke these commands by passing the following JSON document to the [`DoCommand()`](/appendix/apis/components/arm/#docommand) method:
+
+```json
+{
+  "set_speed": 45.0,
+  "set_acceleration": 10.0
+}
+```
+
+| Key                | Type  | Description                                    |
+| ------------------ | ----- | ---------------------------------------------- |
+| `set_speed`        | float | Speed in degrees per second.                   |
+| `set_acceleration` | float | Acceleration in degrees per second per second. |
+
+For example:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+command = {
+  "set_speed": 45.0,  # Set speed to 45.0 degrees per second
+  "set_acceleration": 10.0  # Set acceleration to 10.0 degrees
+                            # per second squared
+}
+result = await my_arm.do_command(command)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+cmd := map[string]interface{}{
+    "set_speed": 45.0, // Set speed to 45.0 degrees per second
+    "set_acceleration": 10.0  // Set acceleration to 10.0 degrees per second squared
+}
+
+result, err := myArm.DoCommand(context.Background(), cmd)
+```
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart {class="line-numbers linkable-line-numbers"}
+const command = {
+  'set_speed': 45.0, // Set speed to 45.0 degrees per second
+  'set_acceleration': 10.0 // Set acceleration to 10.0 degrees per second squared
+};
+
+var result = myArm.doCommand(command);
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Next steps
 
 For more configuration and development info, see:

@@ -462,14 +462,14 @@ If your enclosure is sufficiently different from ours, these values may be diffe
 
 For our enclosure, the hole pose and dimensions are as follows:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 hole_origin = Pose(x=470, y=125, z=0, o_x=0, o_y=0, o_z=1, theta=15)
 hole_dims = Vector3(x=250, y=400, z=300)
 ```
 
 Additionally, the home position origin and dimensions where the arm needs to be in order to drop the prize are as follows:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 home_pose = Pose(x=390.0, y=105.0, z=500.0, o_x=0, o_y=0, o_z=-1, theta=0)
 home_pose_in_frame = PoseInFrame(reference_frame="world", pose=home_pose)
 ```
@@ -793,7 +793,7 @@ We tested with different Viam swag items such as t-shirts and hats, but found th
 
 In order to house the prizes, you’ll need to enclose three of the sides (front, left, and right sides) of the upper cabinet with plexiglass.
 
-1. Have someone hold the plexiglas in place while you carefully pre-drill holes for the wood screws.
+1. Have someone hold the plexiglass in place while you carefully pre-drill holes for the wood screws.
 1. Carefully screw the wood screws in place, being sure not to tighten excessively, as this can crack the plexiglass.
 1. Add a short barrier in the back to stop the prizes from falling out.
    We used the remaining 2x4 section for this.

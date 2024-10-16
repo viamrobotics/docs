@@ -6,7 +6,6 @@ images: ["/get-started/quickstarts/collect-data.png"]
 description: "Use Viam to gather images or sensor data from your machine."
 imageAlt: "The data icon"
 authors: []
-weight: 20
 languages: []
 viamresources: ["data_manager", "sensor"]
 platformarea: ["data"]
@@ -15,6 +14,7 @@ cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/collect-data/
+  - /get-started/collect-data/
 languages: []
 viamresources: [
     "camera",
@@ -26,9 +26,6 @@ date: "2024-07-31"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0" # Approximate cost in USD - Only specify number
 ---
-
-This quickstart is the second part of a series.
-If you haven't read through [Learn Viam](/get-started/) and [detect people](/get-started/detect-people/), we recommend you do so before continuing.
 
 In this guide you'll capture and sync sensor or image data from a machine.
 
@@ -49,6 +46,8 @@ If you have the following components, you can follow along on your own hardware:
 - A Linux, macOS or WSL computer which can run `viam-server` or an ESP32 which can run `viam-micro-server`.
 - A sensor or a webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
+Make sure to connect your sensor or webcam to your computer.
+
 {{% expand "No computer, camera, or sensor at hand?" %}}
 No problem.
 If you don't have a development machine or other computer that can run `viam-server`, use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
@@ -56,7 +55,7 @@ The rover already has `viam-server` installed and is configured with some compon
 
 Once you have borrowed a rover, go to the **CONFIGURE** tab of the machine, find the cameras and click on the **Test** panel at the bottom of each camera's configuration panel to test the camera stream.
 You should have a front-facing camera and an overhead view of your rover.
-Now you know what the rover can _perveive_.
+Now you know what the rover can _perceive_.
 
 If your rover is facing a wall, find the base configuration panel and click on its **Test** panel.
 Use the controls to drive your rover to a different location.
@@ -74,10 +73,6 @@ Select a tab below to collect images from a camera or readings from a sensor:
 {{% tab name="Collect camera images" %}}
 
 {{< expand "Step 1: Create a machine" >}}
-
-{{< alert title="Tip" color="tip" >}}
-If you followed the [Detect people](/get-started/detect-people/) quickstart and have installed `viam-server` already on a machine that has a webcam, you can use the same machine and skip to step 4.
-{{< /alert >}}
 
 Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
 
@@ -205,7 +200,7 @@ Once you determine which model to use, add it to your machine's configuration:
 1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
    Select the `sensor` type and add your sensor model.
 
-   {{<imgproc src="/get-started/quickstarts/collect-data/config-sensor.png" resize="x1100" declaredimensions=true alt="The dropdown showing all sensor models." style="max-width:550px" >}}
+   {{<imgproc src="/get-started/quickstarts/collect-data/config-sensor.png" resize="x1100" declaredimensions=true alt="The dropdown showing all sensor models." style="width:550px" >}}
 
 1. Add required attributes, such as information about how the sensor is connected to the board.
    You can find information on these attributes by clicking the name of your sensor model in the [available models list](/components/sensor/#available-models).
@@ -268,8 +263,10 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/deploy-ml/) with the Viam platform.
 
-The next quickstart will introduce you to configuring and controlling hardware:
+To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
 {{< cards >}}
-{{% card link="/get-started/control-motor/" %}}
+{{% card link="/how-tos/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/platform/" %}}
 {{< /cards >}}

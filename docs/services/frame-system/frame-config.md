@@ -31,9 +31,9 @@ To configure your machine following this example:
   If you don't have a physical arm, you can use a `fake` model.
 - Select the **Frame** mode.
 - From the left-hand menu, select your arm:
-  {{<imgproc src="/services/frame-system/arm_default_frame.png" resize="300x" style="max-width: 500px" alt="Frame card for a base with the default reference frame settings">}}
+  {{<imgproc src="/services/frame-system/arm_default_frame.png" resize="300x" style="width: 500px" alt="Frame card for a base with the default reference frame settings">}}
 - Keep the **Parent** frame as `world` and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_) according to the position and orientation of the arm in relation to the `world` frame's origin:
-  {{<imgproc src="/services/frame-system/arm_frame.png" resize="300x" style="max-width: 500px" alt="Frame card for an arm with a translation of 100 mm configured">}}
+  {{<imgproc src="/services/frame-system/arm_frame.png" resize="300x" style="width: 500px" alt="Frame card for an arm with a translation of 100 mm configured">}}
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}

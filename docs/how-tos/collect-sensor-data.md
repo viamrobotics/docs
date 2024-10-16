@@ -1,7 +1,7 @@
 ---
 title: "Collect and view sensor data from any machines"
 linkTitle: "Collect sensor data"
-weight: 29
+weight: 10
 type: "docs"
 images: ["/services/icons/data-capture.svg"]
 icon: true
@@ -78,7 +78,7 @@ Viam's [data management service](/services/data/) lets you capture data locally 
 
 {{< table >}}
 {{% tablestep link="/services/data/capture-sync/"%}}
-{{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
+{{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure the data management service">}}
 **1. Add the data management service**
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
@@ -89,7 +89,7 @@ Enable **Syncing** to ensure captured data is synced to the cloud and set the sy
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/icons/components/sensor.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
+{{<imgproc src="/icons/components/sensor.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="configure a camera component">}}
 **2. Capture data from sensor**
 
 On the **CONFIGURE** tab, go to the **sensor**'s card and find the **Data capture** section.
@@ -98,7 +98,7 @@ For example, setting a frequency of `0.05` will capture data once every 20 secon
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **3. Save to start capturing**
 
 Save the config.

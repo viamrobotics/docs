@@ -37,7 +37,7 @@ You do not need to follow the setup instructions.
 
 Use the **CONFIGURE** tab to add the component or service you want to deploy across your machines.
 
-{{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="fill aligncenter" style="max-width: 400px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -45,7 +45,7 @@ Use the **CONFIGURE** tab to add the component or service you want to deploy acr
 
 In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 
-{{<imgproc src="/how-tos/deploy-packages/json-config.png" resize="800x" class="fill aligncenter" style="max-width: 600px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/json-config.png" resize="800x" class="fill aligncenter" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
 {{% tablestep link="/fleet/fragments/" %}}
@@ -55,7 +55,7 @@ Go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 Add a fragment, and paste the copied JSON configuration into it.
 
-{{<imgproc src="/how-tos/deploy-packages/fragment.png" resize="800x" class="fill aligncenter" style="max-width: 600px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/fragment.png" resize="1000x" alt="Configuration builder UI">}}
 
 Set your privacy settings.
 There are three options for this:
@@ -70,7 +70,7 @@ If you want to edit the fragment later, do it from this screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/delete.png" class="fill alignleft" resize="500x" style="max-width: 200px" declaredimensions=true alt="Delete">}}
+{{<imgproc src="/how-tos/one-to-many/delete.png" class="fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete">}}
 **4. Delete the original machine configuration (optional)**
 
 Now that the configuration is saved as a fragment, you can delete the machine you created in step 1.
@@ -89,7 +89,7 @@ You can add multiple fragments to one machine.
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="fill alignleft imgzoom" style="max-width: 250px" declaredimensions=true alt="Add fragment">}}
+{{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
 **1. Add the fragment to one machine**
 
 On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
@@ -99,7 +99,7 @@ Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/repeat.svg" class="fill alignleft" style="max-width: 120px"  declaredimensions=true alt="Repeat">}}
+{{<imgproc src="/how-tos/one-to-many/repeat.svg" class="fill alignleft" style="width: 120px"  declaredimensions=true alt="Repeat">}}
 **2. Repeat for each machine**
 
 Repeat step 1 for each of the machines that you want to add and manage the package for.
@@ -186,7 +186,7 @@ You can overwrite parts of a fragment to use a new version of a package without 
 
 For each machine that you would like to test the new version of the package on, go to its **CONFIGURE** tab, find the package, and edit its version number.
 
-{{<imgproc src="/how-tos/deploy-packages/version-change.png" resize="800x" class="fill aligncenter" style="max-width: 600px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/version-change.png" resize="800x" class="fill aligncenter" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
 
 Click **Save** in the upper right corner of the screen.
 

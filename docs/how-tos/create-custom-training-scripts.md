@@ -12,7 +12,7 @@ aliases:
   - /services/ml/upload-training-script/
 languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
-platformarea: ["ml", "data", "registry"]
+platformarea: ["ml"]
 level: "Advanced"
 date: "2024-08-29"
 # updated: ""  # When the tutorial was last entirely checked
@@ -51,15 +51,23 @@ You must have the Viam CLI installed to upload training scripts to the registry.
 
 {{< table >}}
 {{% tablestep %}}
-**1. Create folder structure**
+**1. Create files**
 
-Create a folder for the training-script, for example <file>my-training</file>.
+Create the following folders and empty files:
+
+```treeview
+my-training/
+├── model/
+|   ├── training.py
+|   └── __init__.py
+└── setup.py
+```
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Create `setup.py`**
+**2. Add `setup.py` code**
 
-Inside the top level folder (in this example <file>my-training</file>), create a file called `setup.py` with the following contents:
+Add the following code to `setup.py`:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
 from setuptools import find_packages, setup
@@ -83,13 +91,12 @@ Ensure you add additional required packages on line 11.
 {{% tablestep %}}
 **3. Create `__init__.py`**
 
-Inside the top level folder (in this example <file>my-training</file>), create a folder called <file>model</file> and create an empty file called <file>\_\_init\_\_.py</file> inside it.
+If you haven't already, create a folder called <file>model</file> and create an empty file inside it called <file>\_\_init\_\_.py</file>.
 
 {{% /tablestep %}}
 {{< tablestep >}}
-<b>4. Create `training.py`</b>
 
-<p>Inside the <file>model</file> folder, create a file called <file>training.py</file>.</p>
+<p><strong>4. Add <code>training.py</code> code</strong></p>
 
 <p>Copy this template into <file>training.py</file>:</p>
 
@@ -538,7 +545,7 @@ After uploading the training script, you can run it by submitting a training job
 {{< tabs >}}
 {{% tab name="Viam app" min-height="150px" %}}
 
-{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 200px" declaredimensions=true alt="Train models">}}
 
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 

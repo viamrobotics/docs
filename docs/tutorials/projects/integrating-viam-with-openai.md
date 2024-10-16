@@ -46,7 +46,7 @@ When we think of robots, most of us tend to group them into categories:
 - good robots
 
 <div class="td-max-width-on-larger-screens">
-  {{<imgproc src="/tutorials/ai-integration/rosey.jpeg" resize="400x" declaredimensions=true alt="Rosey the robot, from the Jetsons." class="alignright" style="max-width: 350px">}}
+  {{<imgproc src="/tutorials/ai-integration/rosey.jpeg" resize="400x" declaredimensions=true alt="Rosey the robot, from the Jetsons." class="alignright" style="width: 350px">}}
 </div>
 
 One type of “good” robot is a companion robot - a robot created for the purposes of providing real or apparent companionship for human beings.
@@ -107,7 +107,7 @@ Attach the servo to the bracket.
 ### 3. Servo disc
 
 <div class="td-max-width-on-larger-screens">
-  {{<imgproc src="/tutorials/ai-integration/3emotion.png" resize="300x" declaredimensions=true alt="Emotion wheel." class="alignright" style="max-width: 220px">}}
+  {{<imgproc src="/tutorials/ai-integration/3emotion.png" resize="300x" declaredimensions=true alt="Emotion wheel." class="alignright" style="width: 220px">}}
 </div>
 
 If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) and print it.
@@ -133,7 +133,7 @@ You can also attach your speaker to the top of your rover with [double-sided foa
 
 The [git repository](https://github.com/viam-labs/tutorial-openai-integration) for this tutorial contains code that integrates with:
 
-- [viam-server](/get-started/)
+- [viam-server](/architecture/rdk/)
 - [Google text/speech tools](https://gtts.readthedocs.io/en/latest/)
 - [OpenAI](https://openai.com/api/)
 
@@ -283,7 +283,7 @@ Let's call her "Rosey", and bring her to life by running:
 ```
 
 Now, you can start talking to Rosey.
-{{<imgproc src="/tutorials/ai-integration/rosey_robot.jpg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignright" style="max-width: 350px">}}
+{{<imgproc src="/tutorials/ai-integration/rosey_robot.jpg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignright" style="width: 350px">}}
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
 For example, if you say _"Hello Rosey, what do you think will happen today?"_, the phrase _"what do you think will happen today"_ will be sent to OpenAI's chat completion API, and you'll get a response back similar to _"It is impossible to predict what will happen today.
 Every day is different and unpredictable!"_
@@ -292,7 +292,7 @@ If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-
 For example, there are a number of commands that will cause the rover to move - like _"move forward"_, _"turn left"_, _"spin"_.
 
 <div class="td-max-width-on-larger-screens">
-{{<imgproc src="/tutorials/ai-integration/yoda.jpeg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignleft" style="max-width: 300px">}}
+{{<imgproc src="/tutorials/ai-integration/yoda.jpeg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignleft" style="width: 300px">}}
 
 If you ask _"what do you see"_, it will use the rover's camera and a machine learning model to view the world, detect what it sees, and then read a ChatGPT-generated response about what it sees.
 Also, a "mood" will be selected at random, and the response will be generated with that mood.

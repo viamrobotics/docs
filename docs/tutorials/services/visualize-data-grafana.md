@@ -21,8 +21,6 @@ no_list: true
 
 Once you have [configured data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/qwp6_ixp2OM">}}
-
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
 Only components that capture [sensor](/components/sensor/) readings or other time-series data support data visualization.
@@ -36,13 +34,16 @@ This tutorial focuses on using Grafana to visualize your captured data.
 For general guidance appropriate for any third-party visualization tool, see [Visualize data](/how-tos/sensor-data-visualize/).
 {{% /alert %}}
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CGq3XIRQjUQ">}}
+
 ## Prerequisites
 
 Before following this tutorial, ensure you have:
 
-- A machine with [connected to the Viam app](/cloud/machines/#add-a-new-machine).
+- A machine that's [connected to the Viam app](/cloud/machines/#add-a-new-machine).
 
 - A configured [sensor component](/components/sensor/), such as the [`bme280`](https://docs.viam.com/components/sensor/bme280/) sensor, that reports data.
+  If it's a physical sensor, make sure to connect it to your machine's computer.
 
   - This tutorial uses a dataset of plant moisture measurements, originally captured for our [Plant watering tutorial](/tutorials/projects/make-a-plant-watering-robot/) using an analog resistive soil moisture sensor connected to an analog-to-digital-converter (ADC).
     The ADC functionality was provided by the [`mcp300x-adc-sensor` module](https://app.viam.com/module/hazalmestci/mcp300x-adc-sensor) from the [Viam registry](https://app.viam.com/registry).
@@ -144,13 +145,13 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 
    - **Connection string**: Enter the following connection string, substituting the hostname returned from the previous section for `<MONGODB-ATLAS-DF-HOSTNAME>` and the desired database name to query for `<DATABASE-NAME>`:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
      ```
 
      For example, to use the `sensorData` database, the default name for uploaded sensor data, your connection string would resemble:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      mongodb://data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?directConnection=true&authSource=admin&tls=true
      ```
 
@@ -159,13 +160,13 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 
    - **Credentials: User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      db-user-<YOUR-ORG-ID>
      ```
 
      For example, using the organization ID from the previous example, your connection string would resemble:
 
-     ```sh
+     ```sh {class="command-line" data-prompt="$"}
      db-user-abcdef12-abcd-abcd-abcd-abcdef123456
      ```
 

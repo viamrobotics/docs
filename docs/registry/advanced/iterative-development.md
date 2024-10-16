@@ -49,7 +49,7 @@ If you are developing a module for the same target architecture as your developm
 1. Check the **LOGS** tab for your machine in the Viam app to ensure that `viam-server` properly started your module.
    For example, the following log message indicates that `viam-server` was able to find and start the local module named `my-module` successfully:
 
-   ```sh
+   ```sh {class="command-line" data-prompt="$"}
    1/16/24, 4:44:25.085 PM   info robot_server   modmanager/manager.go:862   registering component from module   module my-module   API rdk:component:base   model acme:demo:mybase  
    ```
 
@@ -98,7 +98,7 @@ If you are developing a module for a different target architecture than your dev
 
       - To install Mutagen on macOS:
 
-        ```sh
+        ```sh {class="command-line" data-prompt="$"}
         brew install mutagen-io/mutagen/mutagen
         ```
 
@@ -182,7 +182,7 @@ If you are developing a module for a different target architecture than your dev
 1. Check the **LOGS** tab for your machine in the Viam app to ensure that `viam-server` properly started your module.
    For example, the following log message indicates that `viam-server` was able to find and start the local module named `my-module` successfully:
 
-   ```sh
+   ```sh {class="command-line" data-prompt="$"}
    1/16/24, 4:44:25.085 PM   info robot_server   modmanager/manager.go:862   registering component from module   module my-module   API rdk:component:base   model acme:demo:mybase  
    ```
 
@@ -242,7 +242,7 @@ If you are able to `ssh` to the remote system, but are still prompted for your p
 
 - Make sure that the `sshd` configuration for your remote system includes the following settings:
 
-  ```sh
+  ```sh {class="command-line" data-prompt="$"}
   PubkeyAuthentication yes
   ```
 

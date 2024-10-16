@@ -20,263 +20,145 @@ aliases:
 
 `viam-micro-server` is the lightweight version of [`viam-server`](/architecture/rdk/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
 
-This page provides instructions for you to customize `viam-micro-server` and create modules.
+This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
 If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) instead.
 {{< /alert >}}
 
-Follow these steps to install and build `viam-micro-server` on your ESP32 for development:
+The instructions below are for configuring a development environment in order to:
 
-1. Install the [required software](#software-requirements)
-2. [Set up your development environment](#set-up-your-development-environment) with Viam's Canon CLI utility _(recommended)_ or manually
-3. [Install `viam-micro-server`](#install-viam-micro-server)
+- Develop custom firmware which combines `viam-micro-server` with one or more modules.
+- Develop modules for `viam-micro-server`.
+- Develop `viam-micro-server` itself.
 
-## Software requirements
+## Required software
 
-`viam-micro-server` is written in Rust.
-To be able to develop `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
+`viam-micro-server` is written in Rust. To be able to develop for `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
 
 1. Install dependencies:
 
    {{< tabs >}}
    {{% tab name="Linux" %}}
 
-```sh { class="command-line" data-prompt="$"}
-sudo apt-get install git libssl-dev dfu-util libusb-1.0-0 libudev-dev
-```
+   ```sh { class="command-line" data-prompt="$"}
+   sudo apt-get install bison ccache cmake curl dfu-util flex git gperf libffi-dev libssl-dev libudev-dev libusb-1.0-0 ninja-build python3 python3-pip python3-venv wget
+   ```
 
-    {{% /tab %}}
-    {{% tab name="macOS" %}}
+   {{% /tab %}}
+   {{% tab name="macOS" %}}
 
-If you haven't already, install Homebrew:
+   If you haven't already, install Homebrew:
 
-```sh { class="command-line" data-prompt="$"}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+   ```sh { class="command-line" data-prompt="$"}
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 
-Then, install `dfu-util`:
+   Then, install dependencies:
 
-```sh { class="command-line" data-prompt="$"}
-brew install dfu-util
-```
+   ```sh { class="command-line" data-prompt="$"}
+   brew install cmake dfu-util ninja
+   ```
 
-    {{% /tab %}}
-    {{% /tabs %}}
+   {{% /tab %}}
+   {{< /tabs >}}
 
-2. Install `Rust` and `cargo`
+1. If you do not yet have a Rust environment installed, install it with `rustup`.
 
    ```sh { class="command-line" data-prompt="$"}
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
-   Once completed open a new tab on your terminal or run `. "$HOME/.cargo/env"`.
+   Once completed, start a new shell instance, or run `. "$HOME/.cargo/env"` in the current one.
 
    See the [Rust Installation guide](https://www.rust-lang.org/tools/install) for more information and other installation methods.
 
-3. Install `cargo-generate` with `cargo`
-
-   Run the following command to install `cargo-generate`:
+1. Install `espup` and ESP development utilities with `cargo`:
 
    ```sh { class="command-line" data-prompt="$"}
-   cargo install cargo-generate
+   cargo install cargo-espflash cargo-generate espflash espup ldproxy
    ```
 
-4. Install `espflash`
-
-   Run the following command to install `espflash`:
+1. Use `espup` to download and install the ESP Rust toolchain:
 
    ```sh { class="command-line" data-prompt="$"}
-   cargo install espflash
+   espup install -s -f /dev/null -v 1.76.0
    ```
 
-## Set up your development environment
+{{< alert title="Note" color="tip" >}}
+Prior versions of the above `espup` instructions created a file called `export-rs.sh` which needed to be sourced before proceeding.
+That requirement [no longer applies](https://github.com/esp-rs/esp-idf-hal/issues/319#issuecomment-1785168921) for `viam-micro-server` development.
+The above command redirects `espup`'s production of the setup script to `/dev/null` to avoid cluttering the home directory.
+If you would like to instead retain the setup script, replace `/dev/null` in the above command with the location where you would like the script to be written, or remove the `-f /dev/null` entirely and the file will be written to `$HOME/export-esp.sh` by default.
+{{< /alert >}}
+
+## Creating a project or module
+
+With the dev setup for `viam-micro-server`, you can:
+
+- Create a project that combines `viam-micro-server` with one or more modules to produce a new firmware instance with expanded functionality.
+- Create modules that can integrate with `viam-micro-server` to deliver new opt-in functionality or device support.
+- Work on `viam-micro-server` itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution.
 
 {{< tabs >}}
-{{% tab name="Canon CLI (recommended)" %}}
+{{% tab name="Create a New Project" %}}
 
-[Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker-based canonical environment.
+1.  Create a new machine and obtain its credentials:
 
-1. [Install Docker Engine](https://docs.docker.com/engine/install/). Canon requires a working installation of Docker Engine.
-2. If you are running Docker Engine on Linux, make sure that you go through the [post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to run Docker automatically on startup.
+    Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
+    Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
 
-{{< tabs >}}
-{{% tab name="Direct Go Install (Linux)" %}}
+    Then select the part status dropdown to the right of your machine's name on the top of the page and copy the **Machine cloud credentials**:
 
-3. Run `go version` to confirm your system has [Go 1.19](https://golangtutorial.dev/news/go-1.19-version-released/#major-changes-in-go-119-version) or later installed.
-4. Install canon:
+    {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
-   ```sh { class="command-line" data-prompt="$"}
-   go install github.com/viamrobotics/canon@latest
-   ```
+    `viam-micro-server` needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
-5. [Add the go binary folder to your `PATH`](https://go.dev/doc/gopath_code) by running:
+{{% snippet "secret-share.md" %}}
 
-   ```sh { class="command-line" data-prompt="$"}
-   export PATH=$PATH:$(go env GOPATH)/bin
-   ```
+2.  Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
-{{% /tab %}}
-{{% tab name="With Homebrew (Linux/MacOS)" %}}
+    ```sh { class="command-line" data-prompt="$"}
+    cargo generate --git https://github.com/viamrobotics/micro-rdk.git
+    ```
 
-3. Install canon:
+    Select `templates/project` when prompted. Give the project a name of your choice.
+    Select `esp32` for **MCU**.
+    If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
 
-   ```sh { class="command-line" data-prompt="$"}
-   brew install viamrobotics/brews/canon
-   ```
+    You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
+    Paste in the credentials you obtained in step 1.
 
-{{% /tab %}}
-{{% /tabs %}}
+3.  Change directories into the generated project:
 
-{{% /tab %}}
-{{% tab name="Manual" %}}
+    ```sh { class="command-line" data-prompt="$"}
+    cd <your-path-to/your-project-directory>
+    ```
 
-To set up the Docker development environment for ESP32 manually, complete the following instructions:
+4.  If you wish to use version control for this project, this is the best time to initialize a git repository and commit all the generated files, but be sure to exclude the generated `viam.json` file, which includes secrets:
 
-{{< alert title="Tip" color="tip" >}}
-You only need to follow these steps if you are not using Canon to build `viam-micro-server`.
+    ```sh { class="command-line" data-prompt="$"}
+    git add .
+    git restore viam.json
+    git commit -m "initial commit"
+    ```
 
-If you have completed your set up with Canon, skip this section and continue to [install `viam-micro-server`](#install-viam-micro-server).
+5.  Compile the project:
 
-{{< /alert >}}
+    ```sh { class="command-line" data-prompt="$"}
+    make build-esp32-bin
+    ```
 
-1. Install additional build dependencies:
+    Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
+    Subsequent builds will be faster.
 
-{{% tabs %}}
-{{% tab name="Linux" %}}
+6.  Upload the generated firmware to your ESP32:
 
-```sh { class="command-line" data-prompt="$"}
-sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
-```
+    Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
 
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh { class="command-line" data-prompt="$"}
-brew install cmake ninja dfu-util
-```
-
-{{% /tab %}}
-{{% /tabs %}}
-
-2. Install and activate the ESP-IDF
-
-   Clone the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
-
-   ```sh { class="command-line" data-prompt="$"}
-   mkdir -p ~/esp
-   cd ~/esp
-   git clone --depth 1 -b v4.4.8 --single-branch --recurse-submodules --shallow-submodules https://github.com/espressif/esp-idf
-   ```
-
-3. Then, install the required tools for ESP-IDF:
-
-   ```sh { class="command-line" data-prompt="$"}
-   cd ~/esp/esp-idf
-   ./install.sh esp32
-   ```
-
-4. To activate ESP-IDF, run the following command to source (`.`) the activation script `export.sh`:
-
-   ```sh { class="command-line" data-prompt="$"}
-   . $HOME/esp/esp-idf/export.sh
-   ```
-
-   {{< alert title="Tip" color="tip" >}}
-
-To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
-Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
-
-{{< /alert >}}
-
-5. Install the following tools with `cargo`:
-
-   ```sh { class="command-line" data-prompt="$"}
-   cargo install espup
-   cargo install cargo-espflash
-   cargo install ldproxy
-   ```
-
-6. Download and install the ESP-RS toolchain:
-
-   ```sh { class="command-line" data-prompt="$"}
-   espup install -s -f ~/esp/export-rs.sh -v 1.75.0
-   ```
-
-7. Activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
-
-   ```sh { class="command-line" data-prompt="$"}
-   . $HOME/esp/export-rs.sh
-   ```
-
-   {{< alert title="Tip" color="tip" >}}
-
-To avoid conflicts with other toolchains, adding this command to your .bashrc or .zshrc is not recommended.
-Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
-
-{{< /alert >}}
-
-{{% /tab %}}
-{{% /tabs %}}
-
-## Install `viam-micro-server`
-
-1. Create a new machine
-
-   Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
-
-   Click on the name of the machine to go to the machine's page.
-
-1. [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
-   If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
-
-1. Generate a new project from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new `viam-micro-server` project to upload to your ESP32 by running:
-
-   ```sh { class="command-line" data-prompt="$"}
-   cargo generate --git https://github.com/viamrobotics/micro-rdk.git
-   ```
-
-   Select `templates/project` when prompted.
-   Give the project a name of your choice.
-   Select `esp32` for **MCU**.
-   If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
-
-   You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
-
-   To obtain this:
-
-   - Navigate to your new machine's page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-   - Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
-   - Click the copy icon underneath **Machine cloud credentials**.
-     `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-   - Paste the machine cloud credentials into your terminal when prompted.
-
-   {{% snippet "secret-share.md" %}}
-
-1. Upload `viam-micro-server` to your ESP32
-
-   Now, flash the project to your ESP32 and it will connect to [the Viam app](https://app.viam.com) from which you can then remotely control it:
-
-   {{< tabs >}}
-   {{% tab name="Use Canon" %}}
-
-```sh { class="command-line" data-prompt="$"}
-cd <your-path-to/your-project-directory>
-canon bash -lc "make build-esp32-bin"
-make flash-esp32-bin
-```
-
-    {{% /tab %}}
-    {{% tab name="Local environment" %}}
-
-Make sure you have run `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` before running the following command:
-
-```sh { class="command-line" data-prompt="$"}
-make upload
-```
-
-    {{% /tab %}}
-    {{% /tabs %}}
+    ```sh { class="command-line" data-prompt="$"}
+    make flash-esp32-bin
+    ```
 
     When prompted, select the serial port that your ESP32 is connected to through a data cable.
 
@@ -284,10 +166,114 @@ make upload
     To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
     While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-1. Navigate to your new machine's page on [the Viam app](https://app.viam.com).
-   If successful, **Live** should be displayed underneath **Last online**.
+{{< alert title="Note" color="tip" >}}
+
+The above build and flash steps may be combined by using the `upload` target:
+
+```sh { class="command-line" data-prompt="$"}
+make upload
+```
+
+{{< /alert >}}
+
+7.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
+    If successful, **Live** should be displayed underneath **Last online**.
+
+8.  You may now add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project.
+    After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
+
+{{% /tab %}}
+{{% tab name="Create a New Module" %}}
+
+1. If you have not previously developed a module for `viam-micro-server`, please review the [module template README](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) and the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md) before continuing.
+
+1. Generate a new module skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module):
+
+   ```sh { class="command-line" data-prompt="$"}
+   cargo generate --git https://github.com/viamrobotics/micro-rdk.git
+   ```
+
+   Select `templates/module` when prompted, give the module a name of your choice, and answer any additional prompts.
+
+1. Change directories into the generated tree:
+
+   ```sh { class="command-line" data-prompt="$"}
+   cd <your-path-to/your-module-directory>
+   ```
+
+1. If you wish to use version control for the module, this is the best time to initialize a git repository and commit all the generated files.
+   There are no secrets in a newly generated module repository:
+
+   ```sh { class="command-line" data-prompt="$"}
+   git add .
+   git commit -m "initial commit"
+   ```
+
+1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
+
+1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `dependencies` section of the project's `Cargo.toml` file, then build and flash the project.
+   The module will now be available for use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
+
+{{% /tab %}}
+{{% tab name="viam-micro-server Development" %}}
+
+1. Clone the `viamrobotics/micro-rdk` repository (optionally specifying a path for the new clone) and `cd` into the clone:
+
+   ```sh { class="command-line" data-prompt="$"}
+   git clone https://github.com/viamrobotics/micro-rdk [path-to-new-clone]
+   cd <your-path-to/your-viam-micro-server-clone>
+   ```
+
+1. Make any necessary additions or fixes.
+
+1. Compile and run the project.
+   The `viam-micro-server` can either be built for ESP32, or as a native version for testing purposes:
+
+{{< tabs >}}
+{{% tab name="Build and Flash an ESP32" %}}
+
+Compile the project for ESP32:
+
+```sh { class="command-line" data-prompt="$"}
+make build-esp32-bin
+```
+
+Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
+Subsequent builds will be faster.
+
+Next, flash the generated firmware to your ESP32.
+
+Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
+
+```sh { class="command-line" data-prompt="$"}
+make flash-esp32-bin
+```
+
+When prompted, select the serial port that your ESP32 is connected to through a data cable.
+
+{{% /tab %}}
+{{% tab name="Run Natively" %}}
+
+The native server can be built and run with one command:
+
+```sh { class="command-line" data-prompt="$"}
+make native
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For further details on `viam-micro-server` development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
 ## Troubleshooting
+
+### Error: `xtensa-esp32-elf-gcc: error: unrecognized command line option '--target=xtensa-esp32-espidf'` when building on macOS
+
+This is caused by an [upstream bug](https://github.com/esp-rs/esp-idf-template/issues/174).
+To work around this issue, ensure that `CRATE_CC_NO_DEFAULTS=1` is set in the environment when building.
 
 ### Error: Failed to open serial port
 

@@ -23,7 +23,7 @@ Notes:
 -->
 
 <div class="td-max-width-on-larger-screens">
- <div class="alignleft center-if-small" style="max-width:250px">
+ <div class="alignleft center-if-small" style="width:250px">
   {{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine.">}}
   </div>
 </div>
@@ -47,7 +47,7 @@ This tutorial assumes you already have a machine [configured](/configure/) on th
 
 ## Set up your Flutter development environment
 
-This tutorial uses [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) as the development environment (IDE), and uses the VS Code [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to generate necessary boilerplate code.
+This tutorial uses [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) as the development environment (IDE), and uses the VS Code [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to generate sample project code.
 You can use a different editor, but it will be much easier to follow along using VS Code.
 
 ### Platform compatibility
@@ -94,10 +94,10 @@ You can run `fvm use 3.19.6` in the terminal before building your sample app to 
 
 {{<imgproc src="/tutorials/flutter-app/project-name.png" resize="1000x" declared-dimensions="true" alt="Entering the name for the project in VS Code: 'smart_machine_app'.">}}
 
-When you hit **Enter**, Flutter auto-generates a project folder with lots of useful boilerplate code.
+When you hit **Enter**, Flutter auto-generates a project folder with a useful starter project.
 VS Code automatically opens it.
 
-If you don't change any of the boilerplate files, you'll have a counter app with a button that adds one to the total each time you press it.
+If you don't change any of the code files, you'll have a counter app with a button that adds one to the total each time you press it.
 That's not going to be very helpful for interacting with your fleet of machines, so in the next steps, you'll edit three of these automatically-created files to start building out a Viam-integrated app.
 
 ### Edit the YAML configuration files
@@ -281,7 +281,7 @@ Follow the steps below to build and preview the current state of your app.
 
    A window should open up, displaying a rendering of your smart machine app:
 
-   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1000x" style="max-width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a grayed-out login button.">}}
+   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1000x" style="width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a grayed-out login button.">}}
 
 ## Add app navigation
 

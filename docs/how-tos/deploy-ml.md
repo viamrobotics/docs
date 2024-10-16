@@ -19,7 +19,7 @@ aliases:
   - /tutorials/projects/filtered-camera/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
-platformarea: ["ml", "data"]
+platformarea: ["ml"]
 emailform: true
 level: "Beginner"
 date: "2024-06-21"
@@ -96,9 +96,9 @@ Start by assembling the dataset to train your machine learning model on.
 
 We have two datasets you can use for testing, one with shapes and the other with a wooden figure:
 
-{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="max-width:400px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
+{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:400px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
 
-{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" style="max-width:400px" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" class="imgzoom fill aligncenter" resize="1400x" >}}
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" style="width:400px" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" class="imgzoom fill aligncenter" resize="1400x" >}}
 
 1. [Download the shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip) or [download the wooden figure dataset](https://storage.googleapis.com/docs-blog/dataset-figure.zip).
 1. Unzip the download.
@@ -248,7 +248,7 @@ For best results when training machine learning models:
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="Collect data">}}
+{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="width: 250px" declaredimensions=true alt="Collect data">}}
 **1. Collect images**
 
 Start by collecting images from your cameras and syncing it to the Viam app.
@@ -259,7 +259,7 @@ The more varied the provided data set, the more accurate the resulting model bec
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="Label data">}}
+{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="width: 250px" declaredimensions=true alt="Label data">}}
 **2. Label your images**
 
 Once you have enough images of the objects you'd like to identify captured and synced to the Viam app, use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your data.
@@ -440,7 +440,7 @@ You can train or update using **Built-in training** or using a [training script]
 
 Click **Next steps**.
 
-{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="max-width:500px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
+{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -456,7 +456,7 @@ Click **Next steps**.
 - For built-in classification training, select the tags you want to train your model on from the **Labels** section. Unselected tags will be ignored, and will not be part of the resulting model.
 - Click **Train model**.
 
-{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="max-width:500px" resize="1200x" class="imgzoom fill aligncenter" >}}
+{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill aligncenter" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -510,7 +510,7 @@ The ML model service will run the model and allow a vision service to use it:
 
 {{< table >}}
 {{% tablestep link="/services/ml/deploy/" %}}
-{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
+{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Train models">}}
 **1. Deploy your ML model**
 
 Navigate to the **CONFIGURE** tab of one of your machines in [the Viam app](https://app.viam.com).
@@ -520,7 +520,7 @@ This service will deploy and run the model.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/" %}}
-{{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure a service">}}
+{{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure a service">}}
 **2. Configure an <code>mlmodel</code> vision service**
 
 The vision service takes the ML model and applies it to the stream of images from your camera.
@@ -532,7 +532,7 @@ Click **Save** to save your changes.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/#test-your-detector-or-classifier" %}}
-{{<imgproc src="/services/ml/deploy.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Deploy your model">}}
+{{<imgproc src="/services/ml/deploy.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Deploy your model">}}
 **3. Use your detector or classifier**
 
 You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).

@@ -33,7 +33,7 @@ We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial b
 
 {{< alert title="You will learn" color="tip" >}}
 
-- How to run SDK code
+- How to run control code with Viam SDKs
 - How to use the base API and the vision API to follow a line with a rover
 
 {{< /alert >}}
@@ -157,7 +157,7 @@ Next, go to the **Code sample** page of the **CONNECT** tab on your [machine pag
 
 This code snippet imports all the necessary packages and sets up a connection with the Viam app.
 
-Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
+Next, create a file named <file>main.py</file> and paste the sample code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.

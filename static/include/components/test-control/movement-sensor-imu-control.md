@@ -4,4 +4,4 @@ After you configure your movement sensor, open the movement sensor's **TEST** pa
 This panel presents the data collected by the movement sensor.
 The sections in the panel include the orientation, angular velocity and linear acceleration.
 
-{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-imu.png" declaredimensions=true alt="The movement sensor component in the test panel" resize="800x" style="max-width:500px" class="imgzoom">}}
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-imu.png" declaredimensions=true alt="The movement sensor component in the test panel" resize="800x" style="width:500px" class="imgzoom">}}

@@ -12,7 +12,7 @@ component_description: "A model for testing, with no physical hardware."
 ---
 
 Configuring a `fake` motor can be convenient for testing software without using any hardware.
-For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base/)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your machine.
+For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base/)) won't fail to initialize, and your control code won't throw errors when it fails to find a physical motor connected to your machine.
 
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
@@ -123,5 +123,5 @@ For more configuration and development info, see:
 {{< cards >}}
 {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/get-started/control-motor/" noimage="true" %}}
+{{% card link="/how-tos/control-motor/" noimage="true" %}}
 {{< /cards >}}

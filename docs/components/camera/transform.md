@@ -398,7 +398,7 @@ This feature is useful for when the camera is installed upside down or sideways 
 
 {{% tab name="Undistort" %}}
 
-The Undistort transform undistorts the input image according to the intrinsics and distortion parameters specified within the camera parameters.
+The Undistort transform undistorts the input image according to the intrinsic and distortion parameters specified within the camera parameters.
 Currently only supports a Brown-Conrady model of distortion (20 September 2022).
 For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
 
@@ -479,5 +479,5 @@ For more configuration and development info, see:
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
 {{% card link="/how-tos/image-data/" noimage="true" %}}
-{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}

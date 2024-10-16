@@ -145,7 +145,7 @@ Use [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) followed b
 
 `AnalogReader` has been renamed to `Analog`.
 The functionality remains the same, but code that uses analogs must be updated.
-`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) and [`AnalogNames()`](/appendix/apis/components/board/#analognames), respectively.
+`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) and `AnalogNames()` (since deprecated), respectively.
 
 {{% /changelog %}}
 

@@ -108,11 +108,11 @@ To view logs in the Viam mobile app:
 #### Code sample
 
 To start programming your machine, go to the **CONNECT** tab and select the **Code sample** page.
-This has boilerplate code snippets you can copy and paste into your SDK code to connect to your machine.
+This has sample code snippets you can copy and paste into your control code to connect to your machine.
 
 {{% snippet "show-secret.md" %}}
 
-For more information on the SDKs, see [Program your Machine with Viam's SDKs](/appendix/apis/).
+For more information on the SDKs, see [Write control code with Viam's SDKs](/appendix/apis/).
 
 #### Configure as remote part
 

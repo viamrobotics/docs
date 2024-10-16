@@ -33,13 +33,11 @@ updated: "2024-08-06"
 cost: "0"
 ---
 
-If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
-
 In this guide you'll write code that makes a rover drive in a square.
 
 {{< alert title="You will learn" color="tip" >}}
 
-- How to run SDK code
+- How to run control code with Viam SDKs
 - How to use the base API to move a rover in a square
 
 {{< /alert >}}
@@ -1264,5 +1262,5 @@ int main() {
 Now that you have run your first code to control a machine running Viam code to control your machine, move to the next quickstart to learn how to configure and control a motor:
 
 {{< cards >}}
-{{% card link="/get-started/control-motor/" %}}
+{{% card link="/how-tos/control-motor/" %}}
 {{< /cards >}}

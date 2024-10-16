@@ -34,7 +34,7 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select [`ViamRover2-2024-rpi5`](https://app.viam.com/fragment/11d1059b-eaed-4ad8-9fd8-d60ad7386aa2/json) and click **Insert fragment** again to add the fragment to your machine configuration:
 
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your new configuration.
 
@@ -65,7 +65,7 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select [`ViamRover2-2024-rpi4-a`](https://app.viam.com/fragment/7c413f24-691d-4ae6-a759-df3654cfe4c8/json) and click **Insert fragment** again to add the fragment to your machine configuration:
 
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your new configuration.
 
@@ -96,7 +96,7 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select [`ViamRover202210b`](https://app.viam.com/fragment/3e8e0e1c-f515-4eac-8307-b6c9de7cfb84/json) and click **Insert fragment** again to add the fragment to your machine configuration:
 
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your configuration.
 
@@ -134,7 +134,7 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select [`ViamRover2-2024-jetson-nano-a`](https://app.viam.com/fragment/747e1f43-309b-4311-b1d9-1dfca45bd097/json) and click **Insert fragment** again to add the fragment to your machine configuration.
 
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your new configuration.
 
@@ -165,7 +165,7 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select [`ViamRover2-2024-nano-orin-a`](https://app.viam.com/fragment/6208e890-8400-4197-bf0f-e8ddeca4e157/json) and click **Insert fragment** again to add the fragment to your machine configuration:
 
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your new configuration.
 
@@ -194,7 +194,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 Adding a fragment to your machine adds the configuration to your machine.
 The components and services included in the fragment will now appear as cards on the **CONFIGURE** tab, along with a card for your fragment:
 
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_cards.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_cards.png" resize="400x" style="width: 500px" alt="List of available fragments">}}
 
 ## Modify the config
 

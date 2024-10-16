@@ -31,19 +31,6 @@ async def main():
             print("INSERTED")
             print(insert_resp)
 
-    # Get quickstarts from quickstarts/typesense.json
-    with open('quickstarts/typesense.json') as f:
-        resources = json.load(f)
-        for r in resources:
-            print("RESOURCE")
-            r["date"] = int(r["date"])
-            print(r)
-            r["last_updated"] = time_now
-            print(r)
-            insert_resp = typesense_client.collections['tutorials'].documents.upsert(r)
-            print("INSERTED")
-            print(insert_resp)
-
     # Get how-tos from how-tos/typesense.json
     with open('how-tos/typesense.json') as f:
         resources = json.load(f)

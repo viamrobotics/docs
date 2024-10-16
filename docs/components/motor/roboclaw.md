@@ -113,5 +113,5 @@ For more configuration and development info, see:
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/get-started/control-motor/" noimage="true" %}}
+{{% card link="/how-tos/control-motor/" noimage="true" %}}
 {{< /cards >}}

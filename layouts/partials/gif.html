@@ -34,7 +34,7 @@
 
 
 <div class="gif">
-  <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
+  <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
     {{- if not (hasPrefix $webmLink "http") -}}
     {{- $webmLink := relURL (substr (.webm_src) 1) -}}
     <source data-src="{{ $webmLink }}" type="video/webm">
@@ -50,7 +50,7 @@
     There should have been a video here but your browser does not seem to support it.
   </video>
   <noscript>
-    <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }}">
+    <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }}">
       {{- if not (hasPrefix $webmLink "http") -}}
       {{- $webmLink := relURL (substr (.webm_src) 1) -}}
       <source data-src="{{ $webmLink }}" type="video/webm">

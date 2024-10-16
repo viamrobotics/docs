@@ -57,7 +57,7 @@ Viam has many built-in components and services that run within `viam-server`.
 A [_modular resource_](/registry/) is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
 A module runs as a process managed by `viam-server` on your machine, communicating over UNIX sockets, and `viam-server` manages its lifecycle.
 
-{{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="max-width:600px" >}}
+{{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="width:600px" >}}
 
 {{< expand "Click for an example" >}}
 
@@ -81,7 +81,7 @@ If you want to add some other high-level software functionality beyond the built
 
 ## Communication
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="width:270px;"></img>
 
 Viam uses peer-to-peer communication, where all machines running `viam-server` or [`viam-micro-server`](/installation/viam-micro-server-dev/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
 This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
@@ -134,7 +134,7 @@ For more information, see [Data Management](/services/data/).
 ## Basic machine example
 
 <p>
-{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="max-width:400px" >}}
+{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="width:400px" >}}
 </p>
 
 Imagine you have a simple device consisting of a temperature sensor connected to the GPIO pins of a single-board computer (SBC).
@@ -162,7 +162,7 @@ Now, imagine you want to change to a different model of temperature sensor from 
 - You power down your device, disconnect the old sensor from your SBC and connect the new one.
 - You update your configuration in the Viam app to indicate what model you are using, and how it's connected (imagine this one uses USB instead of GPIO pins).
 - You turn your device back on, and `viam-server` automatically fetches the config updates.
-- You do not need to change your SDK code, because the API is the same for all models of sensor.
+- You do not need to change your control code, because the API is the same for all models of sensor.
 
 ## Complex machines with multiple parts
 
@@ -178,7 +178,7 @@ These two options are very similar: in both cases, the parts communicate with ea
 Any given part can be a remote part of multiple machines, whereas a part can only be a sub-part of one machine.
 In other words, remote connections allow sharing of resources across multiple machines, whereas main parts and sub-parts are a way to hierarchically organize one machine.
 
-Connecting parts (either as main part and sub-part, or as part and remote part) means that you can write SDK code that establishes a connection with the main part and controls all parts in a coordinated way.
+Connecting parts (either as main part and sub-part, or as part and remote part) means that you can write control code that establishes a connection with the main part and controls all parts in a coordinated way.
 This streamlines authentication because you do not need to provide multiple sets of API keys as you would if you were using separate API clients.
 However, in some high-bandwidth cases it is better to establish a direct connection from an API client to a part, because connections to remotes and to sub-parts use the main part's bandwidth.
 

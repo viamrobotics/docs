@@ -17,7 +17,7 @@ hide_children: true
 ---
 
 <div class="td-max-width-on-larger-screens text-center">
-<img src="gantry-illustration.png" style="max-width:300px" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." class="alignright imgzoom">
+<img src="gantry-illustration.png" style="width:300px" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." class="alignright imgzoom">
 </div>
 
 The gantry component provides an API for coordinated control of one or more linear actuators.

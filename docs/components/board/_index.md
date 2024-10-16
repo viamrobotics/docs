@@ -31,8 +31,6 @@ Your GPIO pins can be present as:
 In other words, the board of a machine is its signal wire hub.
 Signaling controls the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
-{{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
-
 {{< alert title="Running viam-server" color="note" >}}
 
 The board component allows you to use the pins on your board.

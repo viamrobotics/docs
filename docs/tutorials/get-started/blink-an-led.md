@@ -52,7 +52,7 @@ You will use the following hardware for this tutorial:
 
 Before you build your circuit, you need to set up the operating system on your Raspberry Pi and install `viam-server` on the Pi:
 
-Follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up the operating system.
+Power your Pi on and follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up the operating system.
 
 {{% snippet "setup.md" %}}
 
@@ -225,7 +225,7 @@ Select **Python** or **Golang** and follow the instructions to connect to your m
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 
 On your local computer, create a file called <file>blink.py</file> or <file>blink.go</file>.
-Paste the boilerplate code from the **Code sample** tab of the Viam app into the file in your code editor, and save the file.
+Paste the sample code from the **Code sample** tab of the Viam app into the file in your code editor, and save the file.
 
 You can now run the code.
 Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live.

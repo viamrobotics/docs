@@ -107,13 +107,13 @@ To list available `video_path`s use the following command:
 {{< tabs name="Find video devices" >}}
 {{% tab name="Linux" %}}
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 ls /dev/v4l/by-id/
 ```
 
 To find the `path`s of all connected video devices, run the following command:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 v4l2-ctl --list-devices
 ```
 
@@ -124,7 +124,7 @@ See [Camera troubleshooting](/appendix/troubleshooting/#error-failed-to-find-cam
 {{% /tab %}}
 {{% tab name="Mac" %}}
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 system_profiler SPCameraDataType
 ```
 
@@ -211,5 +211,5 @@ For more configuration and development info, see:
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
 {{% card link="/how-tos/image-data/" noimage="true" %}}
-{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}

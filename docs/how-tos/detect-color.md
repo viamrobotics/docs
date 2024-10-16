@@ -41,6 +41,8 @@ If you have the following components, you can follow along on your own hardware:
 - A Linux, macOS or WSL computer that can run `viam-server`.
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
+Make sure to connect the webcam to your computer (if it's not built-in) before starting this guide.
+
 {{% expand "No computer or webcam?" %}}
 No problem.
 Use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
@@ -63,7 +65,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 {{% expand "Have your own rover?" %}}
 
-If you are running this tutorial on [your own Viam Rover](/appendix/try-viam/rover-resources/), make sure you have [configured your rover](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
+If you are running this tutorial on [your own Viam Rover](/appendix/try-viam/rover-resources/), make sure you have physically set up and [configured your rover](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
 Go to the **CONFIGURE** tab of the machine, find the camera and click on the **Test** panel at the bottom of the camera's configuration panel to test the camera stream.
 
 {{% /expand%}}
@@ -195,7 +197,7 @@ Of course these detections are not just accessible from the Viam app, but you ca
 You can also use the vision service with Machine Learning models:
 
 {{< cards >}}
-{{% card link="/get-started/detect-people/" %}}
+{{% card link="/how-tos/detect-people/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
 {{< /cards >}}
 

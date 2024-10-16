@@ -14,6 +14,7 @@ cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/detect-people/
+  - /get-started/detect-people/
 languages: []
 viamresources: ["camera", "mlmodel", "vision"]
 platformarea: ["ml"]
@@ -23,10 +24,6 @@ date: "2024-07-31"
 cost: "0"
 ---
 
-This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/), we recommend you do so before continuing.
-
-This is the first of a few quickstarts which will guide you through the concepts you need to know to get started with Viam.
 In this guide you'll use machine learning to detect people in a camera stream.
 
 {{< alert title="You will learn" color="tip" >}}
@@ -47,6 +44,8 @@ If you have the following components, you can follow along on your own hardware:
 
 - A Linux, macOS or WSL computer that can run `viam-server`.
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
+
+Make sure to connect the webcam to your computer (if it's not built-in) before starting this guide.
 
 {{% expand "No computer or webcam?" %}}
 No problem.
@@ -176,8 +175,10 @@ For more detailed information, including optional attribute configuration, see t
 You can now detect people on a camera stream.
 These detections are also accessible using the [vision service API](/appendix/apis/services/vision/).
 
-Next, you'll learn how to collect data from sensors or cameras using the data management service:
+To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
 {{< cards >}}
-{{% card link="/get-started/collect-data/" %}}
+{{% card link="/how-tos/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/platform/" %}}
 {{< /cards >}}

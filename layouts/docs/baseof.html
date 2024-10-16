@@ -29,8 +29,12 @@
           {{ end }}
           <main class="col-12 col-md-9 {{ if .Params.noToc }}col-xl-10{{ else }}col-xl-8{{ end }} pl-md-5" role="main">
             {{ partial "version-banner.html" . }}
-            {{ partial "edit-on-github.html" . }}
+            {{ if ne .Params.noedit true }}
+              {{ partial "edit-on-github.html" . }}
+            {{ end }}
+            {{ if not .IsHome }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            {{ end }}
             {{ block "main" . }}{{ end }}
           </main>
           {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}

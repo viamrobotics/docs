@@ -5,7 +5,7 @@ weight: 429
 type: "docs"
 description: "Before you can program a machine, you must configure its components and services as well as any modules, remotes, processes and frames."
 imageAlt: "Configure a Machine"
-images: ["/installation/thumbnails/configure.svg"]
+images: ["/viam.svg"]
 tags: ["manage", "components"]
 aliases:
   - /manage/configuration/
@@ -274,7 +274,7 @@ See [Configure a Trigger](/configure/triggers/) for more information on triggers
 
 Expand a part's configuration card to open its network configuration interface:
 
-{{<imgproc src="/build/configure/network.png" resize="x400" style="max-width: 300px" declaredimensions=true alt="The network configuration interface on a part card of a machine.">}}
+{{<imgproc src="/build/configure/network.png" resize="x400" style="width: 300px" declaredimensions=true alt="The network configuration interface on a part card of a machine.">}}
 
 You can configure the address `viam-server` binds to for accepting connections.
 By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.

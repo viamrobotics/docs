@@ -47,12 +47,6 @@ jobs:
           name: tutorials-file
           path: ./public/tutorials/typesense.json
 
-      - name: Upload quickstarts search file
-        uses: actions/upload-artifact@v4
-        with:
-          name: quickstarts-file
-          path: ./public/get-started/typesense.json
-
       - name: Upload how-tos search file
         uses: actions/upload-artifact@v4
         with:
@@ -119,11 +113,6 @@ jobs:
         with:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
-      - name: Download the quickstarts file
-        uses: actions/download-artifact@v4
-        with:
-          name: quickstarts-file
-          path: "quickstarts"
       - name: Download the how-tos file
         uses: actions/download-artifact@v4
         with:

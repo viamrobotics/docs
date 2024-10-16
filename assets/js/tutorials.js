@@ -21,6 +21,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     sort_by: "featured:asc,date:desc",
   },
 });
+
 const searchClient = typesenseInstantsearchAdapter.searchClient;
 
 const search = instantsearch({
@@ -28,8 +29,10 @@ const search = instantsearch({
   searchClient,
 });
 
+
 const customRefinementList = instantsearch.connectors.connectRefinementList(
   ({ items, refine, widgetParams }, isFirstRender) => {
+
     const container = document.getElementById(widgetParams.container);
 
     if (isFirstRender) {
@@ -100,7 +103,7 @@ search.addWidgets([
     {{#webm}}
         <div class="hover-card-video">
             <div>
-            <video autoplay loop muted playsinline alt="{{videoAlt}}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
+            <video autoplay loop muted playsinline alt="{{videoAlt}}" width="100%" style="width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
                 <source data-src="{{webm}}" type="video/webm">
                 <source data-src="{{mp4}}" type="video/mp4">
                 There should have been a video here but your browser does not seem to support it.

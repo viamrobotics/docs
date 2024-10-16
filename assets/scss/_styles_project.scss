@@ -44,22 +44,6 @@ a.footnote-ref::after {
   }
 }
 
-.navbar-brand-links {
-  display: flex;
-  margin-top: 0.5rem;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.navbar-brand.navbar-brand-link {
-  margin: 0;
-  padding: 0;
-}
-
-.td-navbar .navbar-brand svg {
-  margin: 0;
-}
-
 .td-navbar .nav-link {
   font-family: Space Mono, sans-serif;
   font-weight: 400;
@@ -80,7 +64,7 @@ h2, .h2 {
   font-family: space grotesk, sans-serif;
   font-size: 2.0rem !important; // 24pt
   line-height: 2.667rem;
-  font-weight: 400;
+  font-weight: 600;
   clear: both;
 }
 
@@ -531,8 +515,67 @@ details summary::-webkit-details-marker {
 
 /* END CSS FOR EXPANDER */
 
+/* START CSS for how-to paths */
 
-/* START card styling */
+.expand.howtoexpand summary, .expand-content {
+  background-color: #eaf9fb;
+}
+
+.howtoexpand .expand-label {
+  padding-top: 1rem;
+  padding-bottom: 0;
+}
+
+.howtoexpand .expand-label > span > div {
+  display: flex;
+  align-items:baseline;
+}
+
+.howtoexpand .expand-label > span > div > div {
+  padding-right: 14px;
+}
+
+.howtoexpand .expand-label i {
+  font-size: x-small;
+}
+
+.howtoexpand .expand-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.howtoexpand .expand-content .card-container {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 691px) {
+  .max-page .howtoexpand > .expand-content > .card-container > div > .hover-card {
+    max-width: 280px !important;
+  }
+  .search-panel__results.guides > #hits .hover-card {
+    max-width: 280px !important;
+  }
+}
+
+[open].howtoexpand .expand-label {
+  border-bottom: unset;
+}
+
+.howtoexpand .hover-card {
+  background-color: #fff;
+}
+
+.howtoexpand #tasks {
+  font-size: .93rem !important;
+}
+
+.howtoexpand .hover-card {
+  margin: .8rem;
+}
+
+/* END CSS for how-to paths */
+
+/* card styling START*/
 
 .hover-card {
   display: flex;
@@ -897,7 +940,7 @@ details summary::-webkit-details-marker {
   max-width: 400px;
 }
 
-// START fit either all 4 cards, 2 by 2 or each card individually
+// fit either all 4 cards, 2 by 2 or each card individually START
 
 // Between 1200 - 1650 we need to restrict the container to 850px to ensure
 // the cards go into 2 x 2 formation
@@ -913,24 +956,24 @@ details summary::-webkit-details-marker {
   }
 }
 
-// END fit either all 4 cards, 2 by 2 or each card individually
+// fit either all 4 cards, 2 by 2 or each card individually END
 
-/* END card styling */
+/* card styling END */
 
 
 .nav-link {
   text-decoration: none;
 }
 
-/* START CSS to ensure lists within columns of markdown aren't indented */
+/* CSS to ensure lists within columns of markdown aren't indented START */
 
 td > ul, td > ol {
   padding-inline-start: 1.5em;
 }
 
-/* END CSS to ensure lists within columns of markdown aren't indented */
+/* CSS to ensure lists within columns of markdown aren't indented END */
 
-/* START TAB CSS consistency */
+/* TAB CSS consistency START */
 
 .nav-tabs {
   border-bottom: none; // unset from inherited styles
@@ -941,22 +984,51 @@ td > ul, td > ol {
   border-bottom: 1px solid white;
 }
 
+.horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
+  background-color: rgb(247, 247, 248);
+  border-bottom: 1px solid #d7d7d9;
+}
+
+.horizontalheaders > .nav-tabs * .nav-link {
+  background-color: rgb(247, 247, 248);
+}
+
+.horizontalheaders > .nav-tabs .nav-link:hover {
+  background-color: #d7d7d9;
+}
+
+.horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
+  background-color: white;
+  border-top: unset;
+  border-bottom: 1px solid white;
+}
+
 .nav-tabs .nav-link, .nav-tabs .nav-link:hover {
   border: 0px;
   border-style: solid;
+  border-radius: 0;
+  border-left: 1px solid rgb(209, 213, 219);
+  border-right: 1px solid rgb(209, 213, 219);
+  margin-right: -1px;
+  border-bottom: 1px solid rgb(209, 213, 219);
+  border-top: 1px solid rgb(209, 213, 219);
+  padding: 0.25rem 0.75rem;
+  color: rgb(78, 79, 82);
+  background-color: rgb(241, 241, 244);
+}
+
+.horizontalheaders * .nav-tabs .nav-link, .horizontalheaders * .nav-tabs .nav-link:hover {
+  border-top: unset;
+  background-color: rgb(247, 247, 248);
   border-left: 1px solid rgb(209, 213, 219);
   border-bottom: 1px solid rgb(209, 213, 219);
-  border-radius: 0;
-  padding: 0.25rem 1rem;
-  color: rgb(78, 79, 82);
-  background-color: rgb(241, 241, 244)
 }
 
 .nav-tabs .nav-item {
   margin-bottom: 0;
 }
 
-.nav-tabs .nav-item:last-child {
+.nav-tabs > .nav-item:last-child {
   border-right: 1px solid rgb(209, 213, 219);
 }
 
@@ -966,9 +1038,9 @@ td > ul, td > ol {
   border: 1px solid rgb(215, 215, 217);
 }
 
-/* END TAB CSS consistency */
+/* TAB CSS consistency END */
 
-/* START scroll to top and github styling */
+/* scroll to top and github styling START */
 
 .docsbutton {
   border: 1px solid black;
@@ -1033,10 +1105,10 @@ td > ul, td > ol {
   }
 }
 
-/* END scroll to top and github styling */
+/* scroll to top and github styling END */
 
 
-/* START cookie consent message */
+/* cookie consent message START*/
 .alert.cookieconsent-optout-marketing {
   border-color: #a51aff;
   display: block;
@@ -1050,15 +1122,19 @@ img.embed-responsive.embed-responsive-16by9 {
   aspect-ratio: 16/9;
   padding: 2rem;
 }
-/* END cookie consent message */
+/* cookie consent message END */
 
-/* START GIFs should have a max width */
+/* GIFs should have a max width START */
 
 .td-content > video {
-  max-width: 600px;
+  max-width: 100%;
 }
 
-/* END GIFs should have a max width */
+.gif > video {
+  max-width: 100%;
+}
+
+/* GIFs should have a max width END */
 
 // Other styling
 
@@ -1206,6 +1282,9 @@ img.frame {
   @include media-breakpoint-up(lg) {
       max-width: 90%;
   }
+
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .gif {
@@ -1482,12 +1561,16 @@ ul.sectionlist > li:hover {
 
 .search-panel__results.card-container {
   max-width: 100%;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
 }
 
 #tutorial-menu {
   display: flex;
   flex-direction: column;
   max-width: 850px;
+  min-height: 46px;
 }
 
 .pill-explainer {
@@ -1780,7 +1863,7 @@ a.ais-Pagination-link:hover {
 
 .modellist > div {
   display: flex;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .modellist * .ais-Hits-list {
@@ -1800,7 +1883,7 @@ a.ais-Pagination-link:hover {
 .modellist * .ais-Hits-list > .ais-Hits-item {
   width: 100%;
   display: flex;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 .modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
@@ -1825,8 +1908,8 @@ a.ais-Pagination-link:hover {
 }
 
 .modellistheader {
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
 }
 
 .modellistheader > div {
@@ -2009,12 +2092,12 @@ div .filterable > p {
 
 .usecase-table .tablestep:nth-of-type(odd) {
   background-color: whitesmoke;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 .usecase-table .tablestep:nth-of-type(even) {
   background-color: white;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #d7d7d9;
 }
 
 // Styling for email newsletter
@@ -2065,4 +2148,383 @@ h3.body-header[style] {
 
 .algolia-autocomplete .typesense-docsearch-suggestion--content {
   width: 100% !important;
+}
+
+// Front page styling START
+
+// Image and text START
+
+.front-card-container {
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-text {
+  min-width: 60%;
+  max-width: 60%;
+}
+
+.hero-text > h1 {
+  margin-top: 10rem;
+  font-weight: 600;
+}
+
+.hero-container .hero {
+  margin-top: 3rem;
+  max-width: 35%;
+}
+
+@media (max-width: 950px) {
+  .hero-container .hero {
+    display: none;
+    max-width: 0;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-text > h1 {
+    margin-top: 2rem;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}
+
+// CTA buttons START
+
+.front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
+  margin-right: 0;
+  padding-top: 1rem;
+}
+
+.front-card-container > .cta.secondary {
+  align-content: center;
+  margin: 1rem 0rem 1rem 0rem;
+  display: flex;
+}
+
+.front-card-container > .hover-card {
+  min-width: unset;
+  max-width: unset;
+  margin-left: unset;
+}
+
+.front-card-container > .hover-card > a {
+  padding: 1rem 0rem !important;
+  align-content: center;
+  text-align: center;
+  padding: unset;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-family: "Space Mono",sans-serif;
+}
+
+.front-card-container > .cta.secondary > a {
+  padding: 0.75rem;
+  display: flex;
+  align-content: center;
+  text-decoration: underline;
+  color: black;
+}
+
+.front-card-container > .cta.secondary > a:hover {
+  font-style: italic;
+}
+
+.front-card-container > .cta.secondary > a * p {
+  margin-bottom: unset;
+  margin-top: 5px;
+}
+
+.front-card-container > .hover-card > a > div {
+  margin: auto;
+  padding: 0 0.75rem
+}
+
+@media (max-width: 650px) {
+  .front-card-container > .hover-card {
+    width: unset;
+  }
+}
+
+.td-content > div.max-page, hr {
+  max-width: 1000px !important;
+}
+
+hr {
+  margin-left:0;
+}
+
+// CTA buttons END
+
+// Image and text END
+
+// Special front page tables START
+
+.table.horizontalheaders {
+  display: flex;
+  max-width: 100%;
+  min-height: 400px;
+}
+
+// top-level tabs nav items START
+
+.table.horizontalheaders > ul.nav-tabs {
+  min-width: 170px;
+  max-width: 170px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d7d7d9;
+  margin-right: -1px;
+}
+
+@media (max-width: 900px) {
+  .table.horizontalheaders {
+    flex-direction: column;
+  }
+
+  .table.horizontalheaders > ul.nav-tabs {
+    max-width: 100%;
+    border-right: 1px solid #d7d7d9;
+    border-bottom: unset;
+  }
+}
+
+.horizontalheaders > ul.nav-tabs > .navheader {
+  text-transform: uppercase;
+  color: #AAA;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.75rem;
+  font-family: Space Mono, sans-serif;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item {
+  border: unset;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link {
+  border-top: 1px solid #f7f7f8;
+  border-bottom: 1px solid #f7f7f8;
+  border-left: unset;
+  background-color: #f7f7f8;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link.active {
+  background-color: #d7d7d9;
+  color: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
+  border-top: 1px solid #d7d7d9;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link:hover {
+  border: unset;
+  background-color: #d7d7d9;
+  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #d7d7d9;
+}
+
+// top-level tabs nav items END
+
+// Tabs inside tabs START
+
+.table.horizontalheaders > .tab-content {
+  max-width: calc(100% - 170px);
+  min-height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.table.horizontalheaders * .tab-content {
+  padding: 0;
+}
+
+.table.horizontalheaders > .tab-content > div {
+  height: 100%;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  max-width: 100%;
+  width: 100%;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .table {
+  margin-top: unset;
+  margin-bottom: unset;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// inner tabs navitems START
+
+.table.horizontalheaders * .innertabcontentcontainer > .table > ul > li.nav-item:first-child > a {
+  margin-left: -1px;
+}
+
+// inner tabs navitems END
+
+// innter tabs content START
+
+// Ensures code is max-height
+.table.horizontalheaders > .tab-content .tab-pane.active {
+  min-height: 100%;
+  display: flex;
+  max-width: 100%;
+  justify-content: center;
+}
+
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .table > .tab-content {
+  border: unset;
+  flex-grow: 1;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar {
+  margin: 0;
+  padding: 0;
+  border: unset;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
+  height: 350px;
+  max-height: 350px;
+  overflow: auto;
+  margin-top: 0;
+  padding-top: 12px;
+}
+
+.table.horizontalheaders.program > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
+  height: 220px;
+  max-height: 220px;
+}
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer img {
+  flex-grow: 1;
+  margin-bottom: 0;
+  max-width: 100%;
+  max-height: 345px;
+  width: auto;
+  flex: 1;
+  align-content: center;
+  margin-top: 5px;
+}
+
+// innter tabs content END
+
+// Tabs inside tabs END
+
+// Lower explanation text & visual START
+
+div.explanation {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #d7d7d9;
+  background-color: rgb(247, 247, 248);
+}
+
+div.explanation > .explanationtext {
+  min-width: 250px;
+  margin: 0.5rem 1rem 0 1rem;
+  width: 100%;
+}
+
+div.explanation > .explanationvisual {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  border-left: 1px solid #d7d7d9;
+}
+
+div.explanation > .explanationvisual * video, div.explanation > .explanationvisual > picture > img {
+  min-width: 250px;
+  max-width: 250px;
+  aspect-ratio: 4/3;
+  margin-bottom: unset;
+}
+
+div.explanation > .explanationvisual > .gif {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+@media (max-width: 1140px) {
+  // image fold over
+  div.explanation {
+    flex-wrap: wrap;
+  }
+
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  @media (min-width: 900px) {
+    .horizontalheaders.program * .explanation {
+      min-height: 310px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  div.explanation > .explanationvisual {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .table.horizontalheaders > .tab-content {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+// Lower explanation text & visual END
+
+// Assign min-width to containers to reduce jumping (only on wide screens) START
+
+@media (min-width: 900px) {
+
+  .horizontalheaders.program * .explanation {
+    min-height: 190px;
+  }
+
+  .horizontalheaders.services * .explanation {
+    min-height: 187.5px;
+  }
+
+  .horizontalheaders.platform * .explanation {
+    min-height: 160px;
+  }
+}
+
+// Assign min-width to containers to reduce jumping (only on wide screens) END
+
+// Special front page tables END
+
+// Front page styling END
+
+.isHidden {
+  display: hidden;
+  opacity: 0;
+  transition: opacity 250ms ease-out;
 }

@@ -2,7 +2,6 @@
 title: "Export data"
 linkTitle: "Export Data"
 description: "Download data from the Viam app using the data client API or the Viam CLI."
-weight: 45
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
@@ -22,7 +21,7 @@ languages: []
 
 You can download machine data from cloud storage to your computer with the Viam CLI.
 
-If you prefer to manage your data with SDK code, see the [data client API documentation](/appendix/apis/data-client/).
+If you prefer to manage your data with code, see the [data client API documentation](/appendix/apis/data-client/).
 
 {{% alert title="In this page" color="tip" %}}
 

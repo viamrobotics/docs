@@ -11,10 +11,6 @@ aliases:
   - /internals/rdk/
 ---
 
-{{< alert title="Tip" color="tip" >}}
-For an overview of the Viam platform, see [Get started](/get-started/).
-{{< /alert >}}
-
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
 If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 

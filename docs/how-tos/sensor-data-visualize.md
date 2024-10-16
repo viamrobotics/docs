@@ -1,7 +1,7 @@
 ---
 title: "Visualize sensor data from any machines"
 linkTitle: "Visualize and analyze sensor data"
-weight: 32
+weight: 20
 type: "docs"
 images: ["/services/icons/data-visualization.svg"]
 icon: true
@@ -58,7 +58,10 @@ If you want to query data from third party tools, you have to configure data que
 ## Visualize data with third-party tools
 
 When you sync captured data to Viam, that data is stored in the Viam organization’s MongoDB Atlas Data Federation instance.
+You can use third-party visualization tools, such as Grafana, to visualize your data.
 Your chosen third-party visualization tool must be able to connect to a [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/query/sql/connect/) instance as its data store.
+
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CGq3XIRQjUQ">}}
 
 Select a tab below to learn how to configure your visualization tool for use with Viam:
 
@@ -95,13 +98,13 @@ Enter the following information in the configuration UI for the plugin:
 - **Connection string**: Enter the following connection string, and replace `<MONGODB-ATLAS-DF-HOSTNAME>` with your database hostname as configured with the `viam data database configure` command, and replace `<DATABASE-NAME>` with the desired database name to query.
   For most use cases with Viam, this database name will be `sensorData`:
 
-  ```sh
+  ```sh {class="command-line" data-prompt="$"}
   mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
   ```
 
 - **User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
 
-  ```sh
+  ```sh {class="command-line" data-prompt="$"}
   db-user-<YOUR-ORG-ID>
   ```
 

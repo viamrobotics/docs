@@ -68,7 +68,7 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/how-tos/image-data/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
-{{% card link="/get-started/detect-people/" noimage="true" %}}
+{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the camera component with the following services:

@@ -13,6 +13,7 @@ cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/control-motor/
+  - /get-started/control-motor/
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: [
     "motor",
@@ -23,9 +24,6 @@ date: "2024-07-31"
 cost: "0" # Approximate cost in USD - Only specify number
 ---
 
-If you haven't read through [Learn Viam](/get-started/), [detect people](/get-started/detect-people/), and [collect data](/get-started/collect-data/), we recommend you do so, to get an overview of the Viam platform.
-
-This is the final part of the series.
 In this guide you'll configure and control a motor.
 
 {{< alert title="You will learn" color="tip" >}}
@@ -45,6 +43,9 @@ If you have the following components, you can follow along on your own hardware:
 
 - A single-board computer or an ESP32.
 - A motor and compatible motor driver.
+
+Make sure to wire your motor to your board before starting.
+Power the board on if you want to test your machine while configuring it.
 
 {{% expand "No motor at hand?" %}}
 No problem.
@@ -167,8 +168,8 @@ async def main():
     motor_1 = Motor.from_robot(machine, "motor-1")
     # Turn the motor at 35% power forwards
     await motor_1.set_power(power=0.35)
-    # Let the motor spin for 4 seconds
-    time.sleep(4)
+    # Let the motor spin for 3 seconds
+    time.sleep(3)
     # Stop the motor
     await motor_1.stop()
 
@@ -232,8 +233,8 @@ func main() {
     logger.Error(err)
     return
   }
-  // Let the motor spin for 4 seconds
-  time.Sleep(4 * time.Second)
+  // Let the motor spin for 3 seconds
+  time.Sleep(3 * time.Second)
   // Stop the motor
   err = motor1Component.Stop(context.Background(), nil)
   if err != nil {
@@ -514,10 +515,10 @@ const main = async () => {
 
     // Turn the motor at 35% power forwards
     await motorClient.setPower(0.35);
-    // Let the motor spin for 4 seconds, then stop the motor
+    // Let the motor spin for 3 seconds, then stop the motor
     const sleep = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));
-    await sleep(4000);
+    await sleep(3000);
     await motorClient.stop();
   };
   button().disabled = false;
@@ -568,7 +569,7 @@ int main() {
         motor = machine->resource_by_name<Motor>(motor_name);
         // Turn the motor at 35% power forwards
         motor->set_power(0.35);
-        // Let the motor spin for 4 seconds
+        // Let the motor spin for 3 seconds
         sleep(3);
         // Stop the motor
         motor->stop();
@@ -586,8 +587,6 @@ int main() {
 {{< /expand >}}
 
 ## Next steps
-
-This concludes our guided path for getting to know the Viam platform.
 
 To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
