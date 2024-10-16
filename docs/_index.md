@@ -11,13 +11,6 @@ sitemap:
   priority: 1.0
 outputs:
   - html
-aliases:
-  - "/get-started/"
-  - "/getting-started/"
-  - "/getting-started/high-level-overview"
-  - "/product-overviews/"
-  - "/viam/"
-  - "/viam/app.viam.com/"
 imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
 noedit: true
@@ -30,7 +23,7 @@ updated: "2024-10-11"
     <div class="hero-text">
       <h1>Viam Documentation</h1>
       <p>
-        Viam integrates with hardware and software on <b>any device</b>. Use AI, machine learning, and more to make any machine smarter. And manage large numbers of machines with the cloud—for one machine to thousands.
+        Viam integrates with hardware and software on <b>any device</b>. Use AI, machine learning, and more to make any machine smarter—for one machine to thousands.
       </p>
       <div class="cards max-page">
         <div class="front-card-container">
@@ -53,16 +46,12 @@ updated: "2024-10-11"
   </div>
 </div>
 <br>
-<hr>
-<div class="max-page">
-<br>
-<br>
-  <h2 class="frontpage-headers">Program any device</h2>
-  <p>
+
+<div class="max-page frontpage">
+
+## Program any device
 
 To get started, install Viam on any device and create a configuration that describes connected hardware as {{< glossary_tooltip term_id="component" text="components" >}}. Then you can control your device and any attached physical hardware securely **from anywhere in the world**. Or from local networks.
-
-  </p>
 
 {{< tabs class="horizontalheaders program" navheader="Examples">}}
 {{% tab name="Drive a base" %}}
@@ -412,10 +401,12 @@ There are also a variety of community-supplied resources you can use.
 {{% /tab %}}
 {{< /tabs >}}
 
-<div class="max-page">
+<div class="max-page frontpage">
 <br>
 <br>
-  <h2 class="frontpage-headers">Make your devices better and smarter</h2>
+
+## Make your devices better and smarter
+
   <p>
     Pick and choose from additional services. Make your devices understand their environment, interact with it, collect data, and more:
   </p>
@@ -710,10 +701,12 @@ Using the Viam Registry you can turn your own custom business logic into _{{< gl
 {{% /tab %}}
 {{< /tabs >}}
 
-<div class="max-page">
+<div class="max-page frontpage">
 <br>
 <br>
-  <h2 class="frontpage-headers">Go from one machine to thousands</h2>
+
+## Go from one machine to thousands
+
   <p>
     When you connect machines to the cloud you get fleet management tools that let you scale. Go from one prototype to thousands of machines you can manage and operate from one place using the Viam Cloud.
   </p>
