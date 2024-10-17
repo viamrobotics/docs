@@ -523,7 +523,7 @@ details summary::-webkit-details-marker {
 
 /* START CSS for how-to paths */
 
-.expand.howtoexpand summary, .expand-content {
+.expand.howtoexpand summary, .expand.howtoexpand .expand-content {
   background-color: #eaf9fb;
 }
 
