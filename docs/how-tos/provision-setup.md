@@ -359,8 +359,8 @@ ln -s ../tmp/viam-agent-provisioning-stable-x86_64 agent-provisioning
 
 ```sh {class="command-line" data-prompt="$"}
 cd /opt/viam/bin
-ln -s ../tmp/viam-agent-stable-aarch64 bin/viam-agent
-ln -s ../tmp/viam-agent-provisioning-stable-aarch64 bin/agent-provisioning
+ln -s ../tmp/viam-agent-stable-aarch64 viam-agent
+ln -s ../tmp/viam-agent-provisioning-stable-aarch64 agent-provisioning
 ```
 
 {{% /tab %}}
