@@ -10,14 +10,14 @@ aliases:
   - /build/configure/triggers/
 ---
 
-Triggers allow you to trigger webhooks when certain types of data are sent from your machine to the cloud, or when the your machine parts connect to Viam.
-For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
-Viam provides the following trigger types depending on the event you want to trigger on:
+Triggers allow you to send webhook requests or emails for the following events:
 
 - **Data has been synced to the cloud**: trigger when data from the machine is synced
 - **Part is online**: trigger continuously at a specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
 - **Part is offline**: trigger continuously at a specified interval while the machine part is offline
 - **Conditional data ingestion**: trigger any time data is captured from a specified component with a specified method and condition
+
+For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
 To configure a trigger:
 
@@ -65,7 +65,8 @@ You must [configure data capture](/services/data/capture-sync/) for your compone
 {{< tabs name="Notifications types" >}}
 {{% tab name="Webhooks" %}}
 
-Replace the **URL** value with the URL of your cloud function or lambda.
+Click **Add Webhook**.
+Add the URL of your cloud function or lambda.
 Configure the time between notifications.
 
 ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
@@ -73,10 +74,11 @@ Configure the time between notifications.
 {{% /tab %}}
 {{% tab name="Emails" %}}
 
+Click **Add Email**.
 Add the email you wish to be notified whenever this trigger is triggered.
 Configure the time between notifications.
 
-![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured-email.png)
+![The trigger configured with an example email in the Viam app.](/build/configure/trigger-configured-email.png)
 
 {{% /tab %}}
 {{< /tabs >}}
