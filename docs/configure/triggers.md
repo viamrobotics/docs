@@ -10,14 +10,14 @@ aliases:
   - /build/configure/triggers/
 ---
 
-Triggers allow you to trigger webhooks when certain types of data are sent from your machine to the cloud, or when the your machine parts connect to Viam.
-For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
-Viam provides the following trigger types depending on the event you want to trigger on:
+Triggers allow you to send webhook requests or emails for the following events:
 
 - **Data has been synced to the cloud**: trigger when data from the machine is synced
 - **Part is online**: trigger continuously at a specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
 - **Part is offline**: trigger continuously at a specified interval while the machine part is offline
 - **Conditional data ingestion**: trigger any time data is captured from a specified component with a specified method and condition
+
+For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
 To configure a trigger:
 
