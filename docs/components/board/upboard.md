@@ -18,6 +18,8 @@ Complete the following setup requirements, then move on to configuring your boar
 
 ## Setup requirements
 
+To test your board as you configure it, power it on.
+If you plan to connect hardware to the board's pins, connect the hardware while it's powered off.
 You must flash your Intel-based board with:
 
 1. The Ubuntu `"Server install image"` version of the operating system.

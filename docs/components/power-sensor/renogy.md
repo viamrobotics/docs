@@ -13,7 +13,9 @@ component_description: "Supports the renogy power sensor - a solar charge contro
 # SME: #team-bucket
 ---
 
-Configure a `renogy` sensor to integrate a [Renogy charge controller](https://www.renogy.com/wanderer-10a-pwm-charge-controller/) into your machine:
+Configure a `renogy` sensor to integrate a [Renogy charge controller](https://www.renogy.com/wanderer-10a-pwm-charge-controller/) into your machine.
+Make sure to physically connect your power sensor to your machine's computer and turn it on.
+Then, configure the power sensor:
 
 {{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}

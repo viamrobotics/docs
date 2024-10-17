@@ -11,7 +11,9 @@ aliases:
 component_description: "Supports Universal Robots UR5e."
 ---
 
-Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine:
+Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine.
+Connect your arm to your machine and turn it on if you want to test your arm as you configure it.
+Then, configure the arm:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
