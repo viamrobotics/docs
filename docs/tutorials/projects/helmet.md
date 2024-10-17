@@ -250,7 +250,7 @@ Now that you have verified that the detector and data sync are working, modify y
 
 [Triggers](/configure/triggers/) allow you to trigger actions by sending an HTML request when a certain event happens.
 
-You can set up a trigger to trigger a serverless function that sends you a customized email when an image of someone without a hard hat is uploaded to the cloud.
+You can set up a trigger to send a webhook to a serverless function that sends you a customized email when an image of someone without a hard hat is uploaded to the cloud.
 
 If you don't wish to customize the contents of the email, you can use Viam's built-in trigger email functionality which sends a generic email letting you know that data has been synced.
 If you prefer the generic email, you can skip creating a custom cloud function and begin configuring a trigger on your machine.
@@ -418,7 +418,7 @@ Now you can test the script:
 
 ### Configure a trigger on your machine
 
-Now it's time to configure a [trigger](/configure/triggers/) on your machine to trigger the email when a person is not wearing a hard hat.
+Now it's time to configure a trigger so that you get an email when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the trigger to trigger each time an image is synced to the cloud will produce the desired result.
 
 Configure a trigger as follows:
