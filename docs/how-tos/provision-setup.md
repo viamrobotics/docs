@@ -379,6 +379,8 @@ curl -fsSL https://github.com/viamrobotics/agent/raw/main/subsystems/viamagent/v
 ln -s /etc/systemd/system/viam-agent.service /etc/systemd/system/multi-user.target.wants/viam-agent.service
 ```
 
+And when you're ready, start the service with `systemctl start viam-agent.service`.
+
 {{< /tablestep >}}
 {{< tablestep >}}
 **4. Ensure NetworkManager is installed**
