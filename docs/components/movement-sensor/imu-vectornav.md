@@ -95,7 +95,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

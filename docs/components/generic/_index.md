@@ -39,7 +39,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 {{% /alert %}}
 
-## Available models
+## Configuration
 
 To use a generic component, check whether one of the following models supports it.
 
@@ -74,9 +74,13 @@ The [generic API](/appendix/apis/components/generic/) supports the following met
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your generic component is not working as expected, follow these steps:
 
-{{< snippet "social.md" >}}
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your generic component model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the generic component there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

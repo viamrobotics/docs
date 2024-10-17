@@ -215,13 +215,11 @@ The following attributes are available for `gpio` input controllers:
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-{{< snippet "social.md" >}}
+{{< readfile "/static/include/components/troubleshoot/input-controller.md" >}}
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}

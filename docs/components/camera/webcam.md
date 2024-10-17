@@ -159,8 +159,9 @@ v4l2-ctl --list-formats-ext --device /dev/video0
 
 ## Troubleshooting
 
-### No visible live video feed
+{{< readfile "/static/include/components/troubleshoot/camera.md" >}}
 
+{{% expand "No visible live video feed" %}}
 If you're working on a Linux machine, `ssh` into it, then restart `viam-server` by running:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -173,21 +174,23 @@ If this doesn't work, you can reboot your machine by running:
 sudo reboot
 ```
 
-### Images are dim on start up
+{{% /expand%}}
 
+{{% expand "Images are dim on start up" %}}
 If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
+{{% /expand%}}
 
-### CSI Camera not working on a Raspberry Pi
-
+{{% expand "CSI Camera not working on a Raspberry Pi" %}}
 If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/installation/prepare/rpi-setup/#enable-communication-protocols).
 If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
+{{% /expand%}}
 
-### High CPU usage
-
+{{% expand "High CPU usage" %}}
 Each camera stream you add uses CPU on the device it is connected to and there is therefore a practical limit to the numbeof camera streams your device can simultaneously support.
 You can limit the CPU usage by reducing the image resolution.
+{{% /expand%}}
 
-### Timeout errors on a Raspberry Pi
+{{% expand "Timeout errors on a Raspberry Pi" %}}
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box).
 
@@ -201,9 +204,11 @@ Then, select: **Interface Options -> Camera -> Enable Camera**.
 
 Restart the Pi to complete the configuration.
 
+{{% /expand%}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

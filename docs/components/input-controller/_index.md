@@ -27,7 +27,7 @@ For example, when a specific button is pushed, the callback function registered 
 
 The [base remote control service](/services/base-rc/) implements an input controller as a remote control for a base.
 
-## Available models
+## Configuration
 
 To use an input controller to control your machine's actions, you need to add it to your machine's configuration.
 
@@ -63,9 +63,13 @@ The [input controller API](/appendix/apis/components/input-controller/) supports
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your input controller is not working as expected, follow these steps:
 
-{{< snippet "social.md" >}}
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your input controller model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the input controller there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

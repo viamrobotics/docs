@@ -136,3 +136,11 @@ After you configure your component, navigate to the [**CONTROL** tab](/fleet/con
 Then _explain how to interact with the panel_.
 
 {{<imgproc src="/components/sensor/sensor-control-tab.png" resize="800x" declaredimensions=true alt="Image or GIF of the control tab">}}
+
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/component.md" >}}
+
+## Next steps
+
+Text & Links

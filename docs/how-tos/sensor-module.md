@@ -20,7 +20,7 @@ A sensor is anything that collects data.
 
 A sensor could be something we typically think of as a sensor, like a temperature and humidity sensor, or it could be a "virtual," non-hardware sensor like a service that gets stock market data.
 
-Since a sensor can be so many different things, there's a good chance you're on this page because though there are various [built-in and modular sensor models available in Viam](/components/sensor/#available-models), you have a different, unsupported sort of sensor you'd like to use.
+Since a sensor can be so many different things, there's a good chance you're on this page because though there are various [built-in and modular sensor models available in Viam](/components/sensor/#configuration), you have a different, unsupported sort of sensor you'd like to use.
 
 Making a module to support your sensor will allow you to use it with Viam's data capture and sync tools, as well as using the sensor API (using any of the different programming language [SDKs](/sdks/)) to get readings from it.
 

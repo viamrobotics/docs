@@ -76,6 +76,7 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 
 {{% /tab %}}
 {{% /tabs %}}
+
 The following attributes are available for `renogy` sensors:
 
 <!-- prettier-ignore -->
@@ -86,6 +87,10 @@ The following attributes are available for `renogy` sensors:
 | `modbus_id`  | integer | Optional | Controller MODBUS address. <br> Default: `1` |
 
 {{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}
+
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/power-sensor.md" >}}
 
 ## Next steps
 

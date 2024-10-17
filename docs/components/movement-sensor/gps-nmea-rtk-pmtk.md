@@ -132,7 +132,7 @@ If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from S
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

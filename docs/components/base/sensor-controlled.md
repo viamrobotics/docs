@@ -111,9 +111,13 @@ The position, orientation, and linear and angular velocity of the rover changing
 
 {{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/base.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}

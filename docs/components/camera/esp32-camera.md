@@ -187,17 +187,13 @@ The following attributes are available for `esp32-camera` cameras:
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next steps
+## Troubleshooting
 
-If you need to capture image data and sync it to the cloud, see:
-
-{{< cards >}}
-{{% card link="/how-tos/image-data/" %}}
-{{< /cards >}}
+{{< readfile "/static/include/components/troubleshoot/camera.md" >}}
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

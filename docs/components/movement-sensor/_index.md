@@ -21,7 +21,7 @@ The movement sensor component provides an API for GPS location, linear velocity 
 
 If you have hardware or software that provides such measurements, use a movement sensor component.
 
-## Available models
+## Configuration
 
 To use a movement sensor and get its measurements, you need to add it to your machine's configuration.
 
@@ -68,9 +68,13 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your movement sensor is not working as expected, follow these steps:
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your movement sensor model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the movement sensor there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

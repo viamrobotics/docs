@@ -472,9 +472,13 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/camera.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

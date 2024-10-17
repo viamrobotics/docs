@@ -105,7 +105,7 @@ With the dev setup for `viam-micro-server`, you can:
 
 1.  Create a new machine and obtain its credentials:
 
-    Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
+    Navigate to [the Viam app](https://app.viam.com) and add a new machine.
     Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
 
     Then select the part status dropdown to the right of your machine's name on the top of the page and copy the **Machine cloud credentials**:

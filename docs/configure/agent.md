@@ -39,7 +39,7 @@ You can install `viam-agent` using either an existing machine's part ID and API 
 Your machine must have `curl` available in order to install `viam-agent`.
 {{< /alert >}}
 
-1. The first step is to [create a new machine in the Viam app](/cloud/machines/#add-a-new-machine).
+1. The first step is to add a new machine in the [Viam app](https://app.viam.com).
 2. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
 

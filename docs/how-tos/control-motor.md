@@ -58,8 +58,7 @@ Follow these steps to control your motor:
 
 {{< expand "Step 1: Create a machine" >}}
 
-Go to the Viam app.
-Select a location and [add a new machine](/cloud/machines/#add-a-new-machine).
+Add a new machine in the [Viam app](https://app.viam.com).
 
 ![The 'My Desk' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
 
@@ -78,7 +77,7 @@ Wait for your device to connect to the Viam app.
 On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
 
-If you are using a physical board to follow along, look through the [**Supported Models**](/components/board/#available-models) to determine the model of component to configure.
+If you are using a physical board to follow along, look through the [**Supported Models**](/components/board/#configuration) to determine the model of component to configure.
 For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
@@ -92,7 +91,7 @@ For the `fake` model, there are no required attributes.
 {{< expand "Step 4: Configure a motor" >}}
 
 Add a `motor` component that supports the type of motor and motor driver you're using.
-Look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
+Look through the [**Supported Models**](/components/motor/#configuration) to determine the model of component to configure.
 For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/components/motor/gpio/):
 
 ![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)

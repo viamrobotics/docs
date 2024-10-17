@@ -91,9 +91,13 @@ The sections in the panel include the position, compass heading, and accuracy.
 
 {{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-dual.png" resize="800x" declaredimensions=true alt="The dual GPS movement sensor component in the control tab">}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

@@ -22,7 +22,7 @@ There is no setup guide available for the Orange Pi Zero 2W.
 If you have one of these boards, you can image it with [an Ubuntu image](https://drive.google.com/drive/folders/1g806xyPnVFyM8Dz_6wAWeoTzaDg3PH4Z) to prepare it for running `viam-server`.
 {{% /alert %}}
 
-Once you have prepared your board, [add a new machine in your desired location](/cloud/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com) and follow your new machine part's {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your board and connect to the Viam app.
+Once you have prepared your board, add a new machine in the [Viam app](https://app.viam.com) and follow your new machine part's {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your board and connect to the Viam app.
 
 To use the GPIO pins on your board to [configure a smart machine](/configure/) with your Orange Pi computer, configure your board as a {{< glossary_tooltip term_id="component" text="component" >}} of your machine in [the Viam app](https://app.viam.com):
 
@@ -124,7 +124,7 @@ Configure these attributes on your board to integrate [analog-to-digital convert
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}

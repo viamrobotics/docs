@@ -45,6 +45,10 @@ No attributes are available for `fake` power sensors.
 
 {{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/power-sensor.md" >}}
+
 ## Next steps
 
 For general configuration and development info, see:

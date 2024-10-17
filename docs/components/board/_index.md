@@ -41,7 +41,7 @@ If there is no board model for your board:
 
 {{< /alert >}}
 
-## Available models
+## Configuration
 
 To use GPIO pins, you need to add a board component to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your board.
@@ -80,9 +80,14 @@ The [board API](/appendix/apis/components/board/) supports the following methods
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your board is not working as expected, follow these steps:
 
-{{< snippet "social.md" >}}
+1. Check your machine logs on the **LOGS** tab to check for errors.
+1. Review your board model's documentation to ensure you have configured all required attributes.
+1. Check that all wires are securely connected.
+1. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the board there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

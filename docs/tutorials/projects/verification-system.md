@@ -53,7 +53,7 @@ If you wanted to take this tutorial further, you could use these state transitio
 
 Before following this tutorial, you should:
 
-1. [Create a new machine](/cloud/machines/#add-a-new-machine) in the Viam app.
+1. Add a new machine in the [Viam app](https://app.viam.com).
 1. [Install `viam-server`](/installation/viam-server-setup/) on your new machine.
 
 Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/).
@@ -64,7 +64,7 @@ Make sure to connect your camera to your machine's computer (if it isn't built-i
 Navigate to the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com).
 Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
-Reference [these available models](/components/camera/#available-models).
+Reference [these available models](/components/camera/#configuration).
 
 To configure a `webcam`:
 

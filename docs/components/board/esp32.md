@@ -185,7 +185,7 @@ Then, follow these requirements to change the PWM frequencies of a pin:
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}

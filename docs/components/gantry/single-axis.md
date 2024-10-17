@@ -69,9 +69,13 @@ The following attributes are available for `single-axis` gantries:
 
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/gantry.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}

@@ -34,7 +34,7 @@ The encoder component supports:
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
 
-## Available models
+## Configuration
 
 To use an encoder, you need to add it to your machine's configuration.
 
@@ -72,9 +72,14 @@ The [encoder API](/appendix/apis/components/encoder/) supports the following met
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your encoder is not working as expected, follow these steps:
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+1. Check your machine logs on the **LOGS** tab to check for errors.
+1. Review your encoder model's documentation to ensure you have configured all required attributes.
+1. Check that all wires are securely attached to the correct pins.
+1. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the encoder there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

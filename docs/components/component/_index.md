@@ -28,7 +28,7 @@ Most machines with a COMPONENT need at least the following hardware (optional):
 - Board
 - ...
 
-## Available models
+## Configuration
 
 To use your <COMPONENT> component, check whether one of the following models supports it.
 
@@ -73,11 +73,13 @@ _Use an included snippet so you can add it to <file>/program/apis/</file>._
 
 ## Troubleshooting
 
-Troubleshooting information for configuration errors.
+If your COMPONENT is not working as expected, follow these steps:
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your COMPONENT model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the COMPONENT there.
 
-{{< snippet "social.md" >}}
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

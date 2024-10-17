@@ -57,9 +57,13 @@ You can change the refresh frequency as needed to change bandwidth.
 
 {{< imgproc src="/components/camera/fake-micro-server-view.png" alt="Fake Camera Micro Server View" resize="400x" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/camera.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
