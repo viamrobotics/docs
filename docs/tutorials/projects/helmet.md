@@ -2,7 +2,7 @@
 title: "Monitor Job Site Helmet Usage with Computer Vision"
 linkTitle: "Helmet Monitor"
 type: "docs"
-description: "Get an email alert if people are not wearing hard hats."
+description: "Use computer vision to detct problems such as people not wearing safety gear and get email alerts."
 videos: ["/tutorials/helmet/hardhat.webm", "/tutorials/helmet/hardhat.mp4"]
 images: ["/tutorials/helmet/hardhat.gif"]
 videoAlt: "A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera."
@@ -18,10 +18,12 @@ cost: 120
 
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
-We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/services/data/capture-sync/), [computer vision](/services/vision/), and [triggers](/configure/triggers/), along with a hard hat detection model.
+Personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
+If you want to monitor the usage of PPE equipment, you can address this problem using computer vision and a machine learning model that can detect if someone is wearing a hard.
 
-By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
+By following this tutorial you will build a system that can monitor camera feeds and detect situations that require review.
+In other words, this system performs anomaly detection.
+Whenever the system detects an anomaly, like someone not wearing a hard hat, it will send an email notification.
 
 {{<gif webm_src="/tutorials/helmet/hardhat.webm" mp4_src="/tutorials/helmet/hardhat.mp4" alt="A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera." class="alignleft" max-width="250px">}}
 
@@ -413,8 +415,6 @@ Now you can test the script:
 
    If you don't see an email, check your spam folder.
    If you still don't see an email, make sure your SendGrid account is fully set up (2FA enabled, email confirmed) and that your email API key is [correctly configured](#configure-email-credentials).
-
-{{% /expand %}}
 
 ### Configure a trigger on your machine
 
