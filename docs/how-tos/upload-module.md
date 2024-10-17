@@ -69,7 +69,7 @@ Select the private or public tab for instructions to upload your module with the
 {{< tabs >}}
 {{% tab name="Private" %}}
 
-Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="organization" >}} from your organization's **Settings** page in [the Viam App](https://app.viam.com/) and run the following command from the same directory as your custom module to generate metadata for your module:
+Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="organization" >}} from your organization's **Settings** page in [the Viam app](https://app.viam.com/) and run the following command from the same directory as your custom module to generate metadata for your module:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module create --name <your-module-name> --org-id <your-org-id>
