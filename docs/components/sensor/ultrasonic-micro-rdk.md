@@ -109,6 +109,10 @@ The following attributes are available for `ultrasonic` sensors:
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/sensor.md" >}}
+
 ## Next steps
 
 Check out the [sensor API](/appendix/apis/components/sensor/) or check out one of these guides:

@@ -25,7 +25,7 @@ If you have a mobile robot, use a base component to coordinate the motion of its
 <img src="base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." class="imgzoom aligncenter" style="width: 500px">
 </p>
 
-## Available models
+## Configuration
 
 To use a rover or other base, you need to add it to your machine's configuration.
 
@@ -71,9 +71,13 @@ The [base API](/appendix/apis/components/base/) supports the following methods:
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your base is not working as expected, follow these steps:
 
-{{< snippet "social.md" >}}
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your base model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the base there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

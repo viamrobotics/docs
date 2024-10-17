@@ -26,7 +26,7 @@ If you have a physical robotic arm, consisting of a serial chain of joints and l
 Arms have two ends: one fixed in place, and one with a device you can position.
 When controlling an arm, you can place its end effector at arbitrary cartesian positions relative to the base of the arm.
 
-## Available models
+## Configuration
 
 To use a robotic arm, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your arm.
@@ -88,9 +88,13 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your arm is not working as expected, follow these steps:
 
-You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your arm model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the arm there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

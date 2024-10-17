@@ -188,7 +188,7 @@ This example uses the `yamnet/classification` TensorFlow Lite model for audio cl
 
 Next, install `viam-server` on your machine, if you have not done so already:
 
-1. Navigate to [the Viam app](https://app.viam.com) in your browser and [add a new machine](/cloud/machines/#add-a-new-machine).
+1. Navigate to the [Viam app](https://app.viam.com) in your browser and add a new machine.
 
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**.

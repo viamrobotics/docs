@@ -47,9 +47,13 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/fake/
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/base.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}

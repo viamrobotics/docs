@@ -89,7 +89,7 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

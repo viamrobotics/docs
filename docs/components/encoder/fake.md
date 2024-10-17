@@ -62,9 +62,13 @@ The ticks count is displayed.
 
 ![Encoder control panel.](/components/encoder/control.png)
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/encoder.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}

@@ -43,9 +43,13 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/generic/fa
 
 {{< readfile "/static/include/components/test-control/generic-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/generic.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/generic/" customTitle="Generic API" noimage="true" %}}

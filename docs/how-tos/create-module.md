@@ -1544,7 +1544,7 @@ This driver supports differential, ackermann, and omni directional steering mode
 ## Configure your `agilex-limo` base
 
 > [!NOTE]
-> Before configuring your base, you must [create a machine](https://docs.viam.com/cloud/machines/#add-a-new-machine).
+> Before configuring your base, you must add a machine in the [Viam app](https://app.viam.com).
 
 Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
 [Add `base` / `agilex-limo` to your machine](https://docs.viam.com/configure/#components).

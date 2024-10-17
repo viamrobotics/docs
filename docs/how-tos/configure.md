@@ -84,7 +84,7 @@ For each component that makes up your machine:
 1. Physically connect the hardware to your machine's computer.
 2. Find an appropriate model for your hardware.
    You can find the available models on the [component pages](/components/).
-   For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
+   For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#configuration).
 3. You need to [_configure_](/configure/) your machine so that `viam-server` can interact with its hardware.
    Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.
    For example, if you have a DC motor, follow the [corresponding configuration instructions](/components/motor/gpio/) to tell the software which pins it is connected to.

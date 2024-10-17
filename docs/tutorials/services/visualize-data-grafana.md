@@ -40,8 +40,7 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 
 Before following this tutorial, ensure you have:
 
-- A machine that's [connected to the Viam app](/cloud/machines/#add-a-new-machine).
-
+- Added a new machine in the [Viam app](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
 - A configured [sensor component](/components/sensor/), such as the [`bme280`](https://docs.viam.com/components/sensor/bme280/) sensor, that reports data.
   If it's a physical sensor, make sure to connect it to your machine's computer.
 

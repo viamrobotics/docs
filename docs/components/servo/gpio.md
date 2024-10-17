@@ -105,6 +105,10 @@ Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs
 
 {{< readfile "/static/include/components/test-control/servo-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/servo.md" >}}
+
 ## Next steps
 
 For general configuration and development info, see:

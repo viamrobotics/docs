@@ -199,9 +199,13 @@ Only the output side of the driver board is different in that more wires connect
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/motor.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
