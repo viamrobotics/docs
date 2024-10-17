@@ -2,7 +2,7 @@
 title: "Monitor Job Site Helmet Usage with Computer Vision"
 linkTitle: "Helmet Monitor"
 type: "docs"
-description: "Use computer vision to detct problems such as people not wearing safety gear and get email alerts."
+description: "Use computer vision to detect problems such as people not wearing safety gear and get email alerts."
 videos: ["/tutorials/helmet/hardhat.webm", "/tutorials/helmet/hardhat.mp4"]
 images: ["/tutorials/helmet/hardhat.gif"]
 videoAlt: "A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera."
