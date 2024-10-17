@@ -314,15 +314,15 @@ sudo ./preinstall.sh /path/to/rootfs
 {{< tablestep >}}
 **1. Create and download files**
 
-Run the following commands to create directories for the provisioning binaries, then download the binaries and make them executable:
+As root on the target device, run the following commands to create directories for the provisioning binaries, then download the binaries and make them executable:
 
 {{< tabs >}}
 {{% tab name="x86_64" %}}
 
 ```sh {class="command-line" data-prompt="$"}
 mkdir -p /opt/viam/bin/ /opt/viam/tmp/
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-x86_64 -o /opt/viam/bin/viam-agent-stable-x86_64
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-x86_64 -o /opt/viam/bin/viam-agent-provisioning-stable-x86_64
+curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-x86_64 -o /opt/viam/tmp/viam-agent-stable-x86_64
+curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-x86_64 -o /opt/viam/tmp/viam-agent-provisioning-stable-x86_64
 chmod 755 /opt/viam/tmp/viam-agent*
 ```
 
@@ -331,8 +331,8 @@ chmod 755 /opt/viam/tmp/viam-agent*
 
 ```sh {class="command-line" data-prompt="$"}
 mkdir -p /opt/viam/bin/ /opt/viam/tmp/
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-aarch64 -o /opt/viam/bin/viam-agent-stable-aarch64
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-aarch64 -o /opt/viam/bin/viam-agent-provisioning-stable-aarch64
+curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-aarch64 -o /opt/viam/tmp/viam-agent-stable-aarch64
+curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-aarch64 -o /opt/viam/tmp/viam-agent-provisioning-stable-aarch64
 chmod 755 /opt/viam/tmp/viam-agent*
 ```
 
@@ -343,30 +343,28 @@ chmod 755 /opt/viam/tmp/viam-agent*
 {{< tablestep >}}
 **2. Symlink the binaries**
 
-Symlink the agent binary to `bin/viam-agent` and the provisioning binary to `bin/agent-provisioning`:
+Symlink the two binaries:
 
 {{< tabs >}}
 {{% tab name="x86_64" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-ln -s /opt/viam/bin/viam-agent-stable-x86_64 bin/viam-agent
-ln -s /opt/viam/bin/viam-agent-provisioning-stable-x86_64 bin/agent-provisioning
+cd /opt/viam/bin
+ln -s ../tmp/viam-agent-stable-x86_64 viam-agent
+ln -s ../tmp/viam-agent-provisioning-stable-x86_64 agent-provisioning
 ```
 
 {{% /tab %}}
 {{% tab name="aarch64" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-ln -s /opt/viam/bin/viam-agent-stable-aarch64 bin/viam-agent
-ln -s /opt/viam/bin/viam-agent-provisioning-stable-aarch64 bin/agent-provisioning
+cd /opt/viam/bin
+ln -s ../tmp/viam-agent-stable-aarch64 bin/viam-agent
+ln -s ../tmp/viam-agent-provisioning-stable-aarch64 bin/agent-provisioning
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-{{< alert title="Note" color="note" >}}
-Use relative symlinks, especially if working on a mounted image (that is not a booted system).
-{{< /alert >}}
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -380,10 +378,6 @@ Then, symlink the service file to <FILE>/etc/systemd/system/multi-user.target.wa
 curl -fsSL https://github.com/viamrobotics/agent/raw/main/subsystems/viamagent/viam-agent.service -o /etc/systemd/system/viam-agent.service
 ln -s /etc/systemd/system/viam-agent.service /etc/systemd/system/multi-user.target.wants/viam-agent.service
 ```
-
-{{< alert title="Note" color="note" >}}
-Use relative symlinks, especially if working on a mounted image (that is not a booted system).
-{{< /alert >}}
 
 {{< /tablestep >}}
 {{< tablestep >}}
