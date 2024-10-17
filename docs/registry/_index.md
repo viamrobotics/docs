@@ -34,17 +34,20 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 **Modular resources** that add capabilities to your machine beyond what is built into `viam-server`
 
 {{% /manualcard %}}
-{{% manualcard link="#ml-models" %}}
+{{% manualcard link="/registry/ml-models/" %}}
 
 **ML models** to deploy with machine applications like computer vision
 
 {{% /manualcard %}}
-{{% manualcard link="#ml-training-scripts" %}}
+{{% manualcard link="/registry/training-scripts/" %}}
 
 **Training scripts** to train and produce ML models in the Viam cloud for custom machine learning
 
 {{% /manualcard %}}
 {{< /cards >}}
+
+The registry contains contributions from Viam as well as from external contributors.
+If you don't find what you need in the registry, you can create your own integrations, and you can choose to share them to the registry.
 
 ## Modular resources
 
@@ -111,26 +114,3 @@ See the following how-to guide for full instructions, or one of our example tuto
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}
-
-## ML models
-
-Viam provides the ability to train, upload, and deploy [machine learning models](/services/ml/ml-models/) within the platform.
-See [Machine Learning](/services/ml/) for more information.
-
-The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
-You can also upload your own model to the registry.
-
-You can search the available ML models from the Viam registry here:
-
-{{<mlmodels>}}
-
-To use an existing model from the registry, [deploy the ML model to your robot](/services/ml/deploy/) and use a [Vision service](/services/vision/) to make detections or classifications on-machine.
-
-## ML training scripts
-
-The Viam registry hosts custom Python ML training scripts, which you can use to train custom machine learning models.
-You can upload your own training script by following the guide to [Train a Model with a Custom Python Training Script](/how-tos/create-custom-training-scripts/).
-
-You can search the available ML training scripts from the Viam registry here:
-
-{{<trainingscripts>}}
