@@ -15,6 +15,7 @@ Viam supports the [Yahboom DOFBOT](https://category.yahboom.net/collections/r-ro
 You can explore the source code on the [Viam-labs Yahboom GitHub repository](https://github.com/viam-labs/yahboom).
 
 Configure a `dofbot` arm to add it to your machine.
+
 Connect your arm to your machine and turn it on if you want to test your arm as you configure it.
 Then, configure the arm:
 
