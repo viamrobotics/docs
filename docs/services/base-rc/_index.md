@@ -19,12 +19,12 @@ This uses the [`input` API](/components/input-controller/#api) to make it easy t
 
 Add the base remote control service after configuring your machine with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
 
-Control mode is determined by the configuration attribute `"mode"`, for which there are five options:
+Control mode is determined by the configuration attribute `"control_mode"`, for which there are five options:
 
 1. `"arrowControl"`: Arrow buttons control speed and angle
 2. `"triggerSpeedControl"`: Trigger button controls speed and joystick controls angle
 3. `"buttonControl"`: Four buttons (usually X, Y, A, B) control speed and angle
-4. `"joyStickControl"`: One joystick controls speed and angle
+4. `"joystickControl"`: One joystick controls speed and angle
 5. `"droneControl"`: Two joysticks control speed and angle
 
 You can monitor the input from these controls in the **CONTROL** tab of the [Viam app](https://app.viam.com).
@@ -106,7 +106,7 @@ The following attributes are available for base remote control services:
 | ---- | ---- | --------- | ----------- |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
 | `input_controller` | string | **Required** | The `name` of the [input controller](/components/input-controller/) you have configured for the base you are operating with this service. |
-| `control_mode` | string | Optional | The mode of remote control you want to use. <br> Options: <ul><li>`"arrowControl"`</li><li>`"triggerSpeedControl"`</li><li>`"buttonControl"`</li><li>`"joyStickControl"`</li> <li>`"droneControl"`</li></ul> <br> Default: `"arrowControl"` |
+| `control_mode` | string | Optional | The mode of remote control you want to use. <br> Options: <ul><li>`"arrowControl"`</li><li>`"triggerSpeedControl"`</li><li>`"buttonControl"`</li><li>`"joystickControl"`</li> <li>`"droneControl"`</li></ul> <br> Default: `"arrowControl"` |
 | `max_angular_degs_per_sec` | float | Optional | The max angular velocity for the [base](/components/base/) in degrees per second. |
 | `max_linear_mm_per_sec` | float | Optional | The max linear velocity for the [base](/components/base/) in meters per second. |
 
