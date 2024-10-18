@@ -29,17 +29,17 @@ aliases:
 cost: "0"
 ---
 
-Many machines have access to data about their environment.
-With machine leaning, you can train models on patterns within that data.
-Using the created models, your machines can then make inferences about their environments.
-
-A common use case is **quality assurance**.
-Machines monitor their environment, for example using a camera.
+Many machines have cameras through which they can monitor their environment.
+With machine leaning, you can train models on patterns within that visual data.
 You can collect data from the camera stream and label any patterns within the images.
-If the camera is pointed at a food display, you can label data with `full` and `empty`, for example or label items such as individual `pizza_slice`s.
 
-Using a model trained on the data, machines can then make inferences and send alerts.
+If a camera is pointed at a food display, for example, you can label the image of the display with `full` or `empty`, or label items such as individual `pizza_slice`s.
+
+Using a model trained on the data, machines can make inferences about their environments.
+Your machines can then automatically trigger alerts or perform other actions.
 If a food display is empty, the machine could, for example, alert a supervisor to restock the display.
+
+Common use cases for this are **quality assurance** and **health and safety** applications.
 
 {{< alert title="In this page" color="tip" >}}
 
