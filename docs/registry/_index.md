@@ -1,5 +1,5 @@
 ---
-title: "Extend Viam with Models from the Viam Registry"
+title: "The Viam Registry"
 linkTitle: "Registry"
 weight: 600
 type: "docs"
@@ -25,14 +25,10 @@ aliases:
 menuindent: true
 ---
 
-<br>
-{{<imgproc src="/platform/registry.svg" class="aligncenter" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." style="width:350px" >}}
-<br>
-
 The [Viam registry](https://app.viam.com/registry) is the storage and distribution system for:
 
 {{< cards >}}
-{{% manualcard link="#modular-resources" %}}
+{{% manualcard link="/registry/configure/" %}}
 
 **Modular resources** that add capabilities to your machine beyond what is built into `viam-server`
 
