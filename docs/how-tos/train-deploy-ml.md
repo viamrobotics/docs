@@ -278,7 +278,7 @@ Set the MIME type to your desired image format, for example `image/jpeg`.
 
 Save the config.
 
-With cloud sync enabled, you machine automatically uploads captured data to the Viam app after a short delay.
+With cloud sync enabled, your machine automatically uploads captured data to the Viam app after a short delay.
 
 {{% /tablestep %}}
 {{% tablestep %}}
