@@ -17,7 +17,7 @@ func main() {
 	logger := logging.NewLogger("client")
 	machine, err := client.New(
 		context.Background(),
-		"cool-new-machine-main.0b2qnylnp0.viam.cloud",
+		"<YOUR-REMOTE-ADDRESS>",
 		logger,
 		client.WithDialOptions(utils.WithEntityCredentials(
 			// Replace "<API-KEY-ID>" (including brackets) with your machine's
