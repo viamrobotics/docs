@@ -580,26 +580,6 @@ You can also test your detector or classifier [with code](/services/vision/mlmod
 
 {{< /table >}}
 
-## Versioning for deployed models
-
-If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/configure/#the-configure-tab) of your machine.
-This array is automatically created when you deploy the model and is not embedded in your service configuration.
-
-You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
-The model package config looks like this:
-
-```json
-"packages": [
-  {
-    "package": "<model_id>/<model_name>",
-    "version": "YYYY-MM-DDThh-mm-ss",
-    "name": "<model_name>",
-    "type": "ml_model"
-  }
-]
-```
-
 <div id="emailform"></div>
 
 ## Next steps
