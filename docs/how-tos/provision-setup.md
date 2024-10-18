@@ -176,7 +176,8 @@ Create a file called <FILE>viam-provisioning.json</FILE> with the following form
 If you intend to use `viam-agent` to keep your device's Viam software up-to-date or to use its provisioning plugin to let end users set up their own machines, you need to use `viam-agent` and install it on the machine before sending it to the user.
 
 You can [install `viam-agent` on live systems](/installation/viam-server-setup/) or preinstall it.
-The following instructions will preinstall it using a preinstall script that adds `viam-agent` to images:
+The following instructions will preinstall it using a preinstall script that adds `viam-agent` to images.
+Only use the following method for offline pre-installs.
 
 {{< alert title="Support notice" color="note" >}}
 Please note this script works only under POSIX (MacOS and Linux) at the moment.
