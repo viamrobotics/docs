@@ -177,7 +177,8 @@ If you intend to use `viam-agent` to keep your device's Viam software up-to-date
 
 You can [install `viam-agent` on live systems](/installation/viam-server-setup/) or preinstall it.
 The following instructions will preinstall it using a preinstall script that adds `viam-agent` to images.
-Only use the following method for offline pre-installs.
+
+**Only use the following method for offline pre-installs.**
 
 {{< alert title="Support notice" color="note" >}}
 Please note this script works only under POSIX (MacOS and Linux) at the moment.
