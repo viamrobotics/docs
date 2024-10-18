@@ -263,7 +263,7 @@ You can leave the default data manager settings.
 {{% tablestep %}}
 **2. Capture data**
 
-With the data management service configured on your machine, configure how the camera component itself captures data:
+With the data management service configured on your machine, configure how the camera component captures data:
 
 In the **Data capture** panel of your camera's configuration, select `ReadImage` from the method selector.
 
