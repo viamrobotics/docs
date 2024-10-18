@@ -23,14 +23,31 @@ aliases:
 modulescript: true
 ---
 
-You can extend Viam by adding a module on your machine that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):
+Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
-1. Add a {{< glossary_tooltip term_id="module" text="module" >}}, either one [from the registry](#add-a-modular-resource-to-your-machine) or a [local module](#local-modules).
-   This makes the modular resource available to the machine.
-1. Then add the modular resource itself.
+- Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
+- High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
+
+You can extend Viam beyond the built-in component and service models by adding a _{{< glossary_tooltip term_id="module" text="module" >}}_ on your machine.
+A module provides one or more _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_, and is packaged to streamline deployment to a Viam machine.
+
+{{< expand "How modules and modular resources work" >}}
+
+To use a modular resource from the registry, add it from your machine's **CONFIGURE** tab in the Viam app, using the **+** button.
 
 When you add a modular resource _from the registry_, the underlying module that provides it is automatically added at the same time.
 To add a modular resource from a _local_ module, you must add the module first.
+
+After adding a module to your machine, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
+By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.
+
+Once you have added and configured the module and corresponding modular resource you would like to use in the Viam app, you can test the modular resource using the [**CONTROL** tab](/fleet/control/) and program it using [standardized APIs](/appendix/apis/).
+
+Modules run alongside [`viam-server`](/architecture/rdk/) as separate processes, communicating with `viam-server` over UNIX sockets.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
+`viam-server` manages the [dependencies](/architecture/rdk/#dependency-management), [start-up](/architecture/rdk/#start-up), [reconfiguration](/architecture/rdk/#reconfiguration), [data management](/services/data/capture-sync/#configure-data-capture-and-sync), and [shutdown](/architecture/rdk/#shutdown) behavior of your modular resource.
+
+{{< /expand >}}
 
 ## Browse existing modular resources
 
@@ -43,7 +60,9 @@ You can integrate modules into any Viam-powered machine.
 
 ## Create your own modular resources
 
-If none of the existing modular resources in the Viam registry support your use case, you can create your own modules to provide your own modular resources:
+If none of the existing modular resources in the Viam registry support your use case, you can create your own modules to provide your own modular resources.
+
+You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/appendix/apis/) as the built-in components and services.
 
 {{< cards >}}
 {{% card link="/how-tos/create-module/" class="fit-contain" %}}
