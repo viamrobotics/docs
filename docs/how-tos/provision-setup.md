@@ -163,7 +163,7 @@ Create a file called <FILE>viam-provisioning.json</FILE> with the following form
   "fragment_id": "<ID>", # the fragment id, required for mobile app
   "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
   "disable_dns_redirect": true, # disable if using a mobile app
-  "hotspot_password": "<PASSWORD>", # password for the hotspot
+  "hotspot_password": "<PASSWORD>" # password for the hotspot
 }
 ```
 
@@ -175,19 +175,16 @@ Create a file called <FILE>viam-provisioning.json</FILE> with the following form
 `viam-agent` is a self-updating service manager that maintains the lifecycle for several Viam services and keeps them updated.
 If you intend to use `viam-agent` to keep your device's Viam software up-to-date or to use its provisioning plugin to let end users set up their own machines, you need to use `viam-agent` and install it on the machine before sending it to the user.
 
-You can [install `viam-agent` on live systems](/installation/viam-server-setup/) or preinstall it:
+The following instructions will preinstall `viam-agent` into an image.
 
-{{< tabs >}}
-{{% tab name="Preinstall on an SD card (or other image)" %}}
-
-Viam provides a preinstall script that works with images to add `viam-agent`.
+**Only use the following method for offline pre-installs with images. For live systems, follow the instructions on a machine's setup tab to [install `viam-server` with `viam-agent`](/installation/viam-server-setup/).**
 
 {{< alert title="Support notice" color="note" >}}
 Please note this script works only under POSIX (MacOS and Linux) at the moment.
 {{< /alert >}}
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 **1. Download the preinstall script**
 
 Run the following commands to download the preinstall script and make the script executable:
@@ -197,8 +194,8 @@ wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall
 chmod 755 preinstall.sh
 ```
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **2. Run the preinstall script**
 
 Run the preinstall script without options and it will attempt to auto-detect a mounted root filesystem (or for Raspberry Pi, bootfs) and also automatically determine the architecture.
@@ -302,106 +299,10 @@ If your root file system cannot be detected, you can specify it directly:
 sudo ./preinstall.sh /path/to/rootfs
 ```
 
-{{% /expand%}}
+{{% /expand %}}
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
-
-{{% /tab %}}
-{{% tab name="Manual install" %}}
-
-{{< table >}}
-{{< tablestep >}}
-**1. Create and download files**
-
-Run the following commands to create directories for the provisioning binaries, then download the binaries and make them executable:
-
-{{< tabs >}}
-{{% tab name="x86_64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-mkdir -p /opt/viam/bin/ /opt/viam/tmp/
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-x86_64 -o /opt/viam/bin/viam-agent-stable-x86_64
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-x86_64 -o /opt/viam/bin/viam-agent-provisioning-stable-x86_64
-chmod 755 /opt/viam/tmp/viam-agent*
-```
-
-{{% /tab %}}
-{{% tab name="aarch64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-mkdir -p /opt/viam/bin/ /opt/viam/tmp/
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-aarch64 -o /opt/viam/bin/viam-agent-stable-aarch64
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-aarch64 -o /opt/viam/bin/viam-agent-provisioning-stable-aarch64
-chmod 755 /opt/viam/tmp/viam-agent*
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< /tablestep >}}
-{{< tablestep >}}
-**2. Symlink the binaries**
-
-Symlink the agent binary to `bin/viam-agent` and the provisioning binary to `bin/agent-provisioning`:
-
-{{< tabs >}}
-{{% tab name="x86_64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-ln -s /opt/viam/bin/viam-agent-stable-x86_64 bin/viam-agent
-ln -s /opt/viam/bin/viam-agent-provisioning-stable-x86_64 bin/agent-provisioning
-```
-
-{{% /tab %}}
-{{% tab name="aarch64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-ln -s /opt/viam/bin/viam-agent-stable-aarch64 bin/viam-agent
-ln -s /opt/viam/bin/viam-agent-provisioning-stable-aarch64 bin/agent-provisioning
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< alert title="Note" color="note" >}}
-Use relative symlinks, especially if working on a mounted image (that is not a booted system).
-{{< /alert >}}
-
-{{< /tablestep >}}
-{{< tablestep >}}
-**3. Create the systemd service file**
-
-Copy the systemd [service file](https://github.com/viamrobotics/agent/blob/main/subsystems/viamagent/viam-agent.service) from the agent repo to `/etc/systemd/system/viam-agent.service`.
-
-Then, symlink the service file to <FILE>/etc/systemd/system/multi-user.target.wants/viam-agent.service</FILE>
-
-```sh {class="command-line" data-prompt="$"}
-curl -fsSL https://github.com/viamrobotics/agent/raw/main/subsystems/viamagent/viam-agent.service -o /etc/systemd/system/viam-agent.service
-ln -s /etc/systemd/system/viam-agent.service /etc/systemd/system/multi-user.target.wants/viam-agent.service
-```
-
-{{< alert title="Note" color="note" >}}
-Use relative symlinks, especially if working on a mounted image (that is not a booted system).
-{{< /alert >}}
-
-{{< /tablestep >}}
-{{< tablestep >}}
-**4. Ensure NetworkManager is installed**
-
-Make sure NetworkManager version 1.42 or newer is installed and enabled in `systemd`.
-
-{{< /tablestep >}}
-{{< tablestep >}}
-
-If you create a provisioning file, the file must be at <file>/etc/viam-provisioning.json</file> on the machine that will be provisioned.
-If you follow the installation instructions in the next section
-
-{{< /tablestep >}}
-{{< /table >}}
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## Troubleshooting
 
