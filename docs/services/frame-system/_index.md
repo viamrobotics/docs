@@ -12,6 +12,7 @@ aliases:
   - /services/frame-system/
   - /mobility/frame-system/
 no_service: true
+updated: "2024-10-18"
 # SMEs: Peter L, Gautham, Bijan
 ---
 
@@ -42,10 +43,11 @@ You can configure a reference frame within the frame system for each of your mac
 2. From the left-hand menu, select your component.
    If you haven't adjusted any parameters yet, the default reference frame will be shown for the component:
 
-   {{<imgproc src="/services/frame-system/frame_card.png" resize="300x" style="width: 500px" alt="Frame card for a camera with the default reference frame settings">}}
+   {{<imgproc src="/services/frame-system/frame_card.png" resize="300x" style="width: 250px" alt="Frame card for a camera with the default reference frame settings">}}
 
 3. To adjust the frame from its default configuration, change the parameters as needed for your machine before saving.
-   Select a **Parent** frame and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_, _rad_, or _q_), according to the position and orientation of your component in relation to the **Parent** frame.
+   Select a **Parent** frame and fill in the coordinates for **Translation** (m) and **Orientation** (deg, rad, or q), according to the position and orientation of your component in relation to the **Parent** frame.
+   Optionally add a **Geometry**.
 
 4. Select **Save** in the top right corner of the page to save your config.
 
@@ -151,9 +153,9 @@ Configure the reference frame as follows:
 | Parameter | Required? | Required |
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
+| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: m in Frame Editor, mm in JSON. |
 | `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
-| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: _mm_ <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
+| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: m in Frame Editor, mm in JSON. <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
 
 {{% alert title="Info" color="info" %}}
 
@@ -189,70 +191,45 @@ On this tab, you can simultaneously view and edit the position, orientation, and
 
 For example:
 
-Consider a machine configured with a [`jetson` board](/components/board/), wired to a [`webcam` camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/) with two [motors](/components/motor/) driving its wheels.
+Consider a machine configured with a [board](/components/board/) wired to a [camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/).
 
-No reference frame configuration has been specified, so on the **Frame** subtab of the **CONFIGURE** tab, the components are shown to all be located on the default `world` origin point as follows:
+You have not specified any reference frame configuration, so on the **Frame** subtab of the **CONFIGURE** tab, the components are shown to all be located on the default `world` origin point as follows:
 
 ![Example machine's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](/services/frame-system/demo_base_unedited.png)
 
-The distance on the floor from the wheeled base to the board and camera setup is 200 millimeters.
+The distance on the floor from the wheeled base to the board and camera setup is 0.2 meters.
 
 Add this value to `"x"` in the base's reference frame `Translation` attribute, and the frame system readjusts to show the base's translation:
 
-![Base translated 200mm forwards shown in the Frame System Editor](/services/frame-system/demo_base_edited.png)
+![Base translated 0.2 m forwards shown in the Frame System Editor](/services/frame-system/demo_base_edited.png)
 
-The distance from the board to the camera mounted overhead is 50 millimeters.
+The distance from the board to the camera mounted overhead is 0.05 meters.
 
 Add this value to `"z"` in the camera's reference frame `Translation` attribute, and the frame system readjusts to show the camera's translation:
 
-![Camera translated 50 mm overhead shown in the Frame System Editor](/services/frame-system/demo_camera_edited_1.png)
+![Camera translated 0.05 m overhead shown in the Frame System Editor](/services/frame-system/demo_camera_edited_1.png)
 
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
 Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"ox"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
 
-![Camera oriented .5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
+![Camera oriented 0.5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
 
-Now that the frame system is accurately configured with the machine's spatial orientation, [motion service](/services/motion/) methods that take in reference frame information can be used.
-
-### Display options
-
-Click and drag on the **Frame** visualization to view the display from different angles, and pinch to zoom in and out:
-
-{{<gif webm_src="/services/frame-system/frame_system_demo.webm" mp4_src="/services/frame-system/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.">}}
-
-Click the grid icons below and to the right of the **Frame** button or press the **C** key to switch between the default **perspective** and the **orthographic** view:
-
-{{< tabs name="Toggle Camera Views" >}}
-{{% tab name="Perspective" %}}
-
-![Default Perspective Camera view shown in the Frame System Editor](/services/frame-system/demo_perspective.png)
-
-{{% /tab %}}
-{{% tab name="Orthographic" %}}
-
-![Orthographic Camera view shown in the Frame System Editor](/services/frame-system/demo_orthographic.png)
-
-{{% /tab %}}
-{{< /tabs >}}
+Now that you have configured the frame system with the machine's spatial orientation, you can use [motion service](/services/motion/) methods that take in reference frame information.
 
 ### Geometries
 
-To visualize a component's spatial constraints, add `geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame** subtab of the **CONFIGURE** tab of a machine's page on [the Viam app](https://app.viam.com).
+To visualize a component's spatial constraints, add `geometry` properties by selecting a component in the **Frame** editor and selecting a **Geometry**.
 
-By default, a **Geometry** is shown surrounding the origin point of a component.
+A **Geometry** is shown surrounding the origin point of a component.
 You can adjust the parameters of a **Geometry** to change its size.
-Parameters vary between **Geometry** types, but units are in _mm_.
+Parameters vary between **Geometry** types, but units are in meters in the editor.
 
 {{< tabs name="Visualize Adding Geometry Bounds" >}}
 {{% tab name="Box" %}}
 
 ![Demo robot with default box bounds added to the wheeled base, shown in the Frame System Editor](/services/frame-system/demo_bound_box.png)
-
-For example:
-
-![Demo robot with translated box bounds added to the wheeled base, shown in the Frame System Editor](/services/frame-system/demo_bound_box_translation.png)
 
 {{< /tab >}}
 {{% tab name="Sphere" %}}
@@ -288,127 +265,13 @@ The resulting tree of reference frames looks like:
 
 ## Access the frame system
 
-The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the frame system:
+The [Machine Management API](/appendix/apis/robot/) supplies the following methods to interact with the frame system:
 
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----- | ----------- |
-| [`TransformPose`](#transformpose) | Transform a pose measured in one reference frame to the same pose as it would have been measured in another. |
-<!-- | [`FrameSystemConfig`](#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. | -->
-
-<!--
-### FrameSystemConfig
-
-Returns a topologically sorted list of all the reference frames monitored by the frame system. Any [additional transforms](#additional-transforms) are also merged into the tree, sorted, and returned.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `additional_transforms` (Optional[List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#additional-transforms).
-
-**Returns:**
-
-- `frame_system` (List[[viam.proto.robot.FrameSystemConfig](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)]): The configuration of a given robot’s frame system.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
-
-```python {class="line-numbers linkable-line-numbers"}
-# Get a list of each of the reference frames configured on the machine.
-frame_system = await robot.get_frame_system_config()
-print(f"Frame System Configuration: {frame_system}")
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `additionalTransforms` (Optional[[referenceframe.LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `framesystemparts` [(`framesystemparts.Parts`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The individual parts that make up a machine's frame system.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
-
-```go {class="line-numbers linkable-line-numbers"}
-// Print the Frame System configuration
-frameSystem, err := robot.FrameSystemConfig(context.Background(), nil)
-fmt.Println(frameSystem)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
--->
-
-### TransformPose
-
-Transform a given source pose from the reference frame to a new specified destination reference frame.
-For example, if a 3D camera observes a point in space you can use this method to calculate where that point is relative to another object.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `query` [(`PoseInFrame`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose that should be transformed.
-- `destination` (str): The name of the reference frame to transform the given pose to.
-- `additional_transforms` (Optional[List[[Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]]): A list of [additional transforms](#additional-transforms).
-
-**Returns:**
-
-- `PoseInFrame` [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): Transformed pose in destination reference frame.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
-
-```python {class="line-numbers linkable-line-numbers"}
-# Transform a pose into the frame of myArm
-first_pose = Pose(x=0.0, y=0.0, z=0.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
-first_pif = PoseInFrame(reference_frame="world", pose=first_pose)
-transformed_pif = await robot.transform_pose(first_pif, "myArm")
-print("Position: (x:", transformed_pif.pose.x,
-      ", y:", transformed_pif.pose.y,
-      ", z:", transformed_pif.pose.z, ")")
-print("Orientation: (o_x:", transformed_pif.pose.o_x,
-      ", o_y:", transformed_pif.pose.o_y,
-      ", o_z:", transformed_pif.pose.o_z,
-      ", theta:", transformed_pif.pose.theta, ")")
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` ([[PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)]): The pose that should be transformed.
-- `dst` (string): The name of the reference frame to transform the given pose to.
-- `additionalTransforms` (Optional[[LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)]): A list of [additional transforms](#additional-transforms).
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `PoseInFrame` [(referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in destination reference frame.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot).
-
-```go {class="line-numbers linkable-line-numbers"}
-// Define a Pose coincident with the world reference frame
-firstPose := spatialmath.NewZeroPose
-
-// Establish the world as the reference for firstPose
-firstPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, firstPose)
-
-// Calculate firstPoseInFrame from the perspective of the origin frame of myArm
-transformedPoseInFrame, err := machine.TransformPose(context.Background(), firstPoseInFrame, "myArm", nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+| [`FrameSystemConfig`](/appendix/apis/robot/#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. |
+| [`TransformPose`](/appendix/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
 
 ## Additional transforms
 
@@ -430,6 +293,6 @@ For example:
 
 Usage:
 
-- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/appendix/apis/services/motion/#getpose) method.
+- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [GetPose](/appendix/apis/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
-- [`TransformPose`](#access-the-frame-system) has the option to take in these additional transforms.
+- [TransformPose](/appendix/apis/robot/#transformpose) has the option to take in these additional transforms.
