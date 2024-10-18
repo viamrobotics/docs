@@ -20,7 +20,8 @@ Follow the [setup guide](/installation/prepare/board1-setup) to prepare your <mo
 
 Configure a `<board-model>` board to integrate an [<board-series-model>](http://www.example.com), [<board-series-model-1>](http://example.com), or [<board-series-model-2>](http://example.com) board into your machine.
 
-First, make sure to physically assemble the board and turn it on.
+To test your board as you configure it, power it on.
+If you plan to connect hardware to the board's pins, connect the hardware while it's powered off.
 Then, configure the board:
 
 {{< tabs name="Configure a <board-model> Board" >}}

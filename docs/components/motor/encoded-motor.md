@@ -22,6 +22,7 @@ Viam supports `gpio` model motors with encoders.
 To configure an encoded motor, you must configure the encoder [per the encoder documentation](/components/encoder/) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
 
 Make sure to physically connect your motor to a suitable driver chip, and connect that to your board, as well as connecting the encoder.
+Configure the [board](/components/board/) and the [encoder](/components/encoder/).
 Then, configure the motor:
 
 <a id="encoder-config">
