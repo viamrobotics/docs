@@ -319,7 +319,8 @@ Generally most use cases fall into two categories:
 Once you have enough images, you can disable data capture.
 Then use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your data.
 
-To detect objects and their locations, add labels. For images that do not contain any of the objects you wish to identify, do not add labels.
+To detect objects and their locations, add labels.
+For images that do not contain any of the objects you wish to identify, do not add labels.
 
 {{< expand "For instructions to add labels, click here." >}}
 
