@@ -310,6 +310,6 @@ Now that you have a batch of data uploaded, you can train an ML model on it.
 Or, if you want to collect and upload data _not_ in a batch, see Capture and Sync Image Data.
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/image-data/" %}}
 {{< /cards >}}

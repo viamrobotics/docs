@@ -136,12 +136,12 @@ For the command line interface `data` command, see [CLI](/cli/#data).
 
 ## Next steps: Train and deploy machine learning
 
-You can use data synced to the cloud to [train machine learning models and deploy them to your machines](/how-tos/deploy-ml/) from the Viam app.
+You can use data synced to the cloud to [train machine learning models and deploy them to your machines](/how-tos/train-deploy-ml/) from the Viam app.
 
 For comprehensive guides on using data capture and synchronization together with the ML model service, see:
 
 {{< cards >}}
 {{% card link="/how-tos/image-data/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{< card link="/how-tos/collect-data/">}}
 {{< /cards >}}

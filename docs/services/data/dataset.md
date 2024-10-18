@@ -46,5 +46,5 @@ To interact with datasets programmatically, use the [data client API](/appendix/
 The following how-to guide contains instructions on creating datasets as well as on how to train a model on a dataset:
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{< /cards >}}

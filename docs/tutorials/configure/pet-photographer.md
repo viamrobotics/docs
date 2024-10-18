@@ -1005,5 +1005,5 @@ Try these other tutorials for more on working with the data management and visio
 {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
 {{% card link="/tutorials/projects/guardian/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/how-tos/deploy-ml/"  %}}
+{{% card link="/how-tos/train-deploy-ml/"  %}}
 {{< /cards >}}

@@ -177,6 +177,6 @@ With your machines set up on Viam, you can now manage data across all your machi
 
 {{< cards >}}
 {{% card link="/how-tos/collect-sensor-data/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/navigate/" %}}
 {{< /cards >}}
