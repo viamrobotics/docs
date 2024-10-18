@@ -335,7 +335,8 @@ Repeat this with all images.
 You can add one or more bounding boxes for objects in each image.
 {{< /expand >}}
 
-Determining a descriptive state about an image.
+- Classifying an image as a whole.
+  In other words, determining a descriptive state about an image.
 For example, you may wish to know whether an image of a food display is `full`, `empty`, or `average` or whether the quality of manufacturing output is `good` or `bad`.
 In this case, add tags to describe your images.
 
