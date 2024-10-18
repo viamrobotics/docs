@@ -13,6 +13,7 @@ component_description: "Supports UFACTORY xArm 7."
 ---
 
 Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your machine.
+
 Connect your arm to your machine and turn it on if you want to test your arm as you configure it.
 Then, configure the arm:
 
