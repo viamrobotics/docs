@@ -337,8 +337,8 @@ You can add one or more bounding boxes for objects in each image.
 
 - Classifying an image as a whole.
   In other words, determining a descriptive state about an image.
-For example, you may wish to know whether an image of a food display is `full`, `empty`, or `average` or whether the quality of manufacturing output is `good` or `bad`.
-In this case, add tags to describe your images.
+  For example, you may wish to know whether an image of a food display is `full`, `empty`, or `average` or whether the quality of manufacturing output is `good` or `bad`.
+  In this case, add tags to describe your images.
 
 {{< expand "For instructions to add tags, click here." >}}
 To tag an image, click on an image and select the **Image tags** mode in the menu that opens.
