@@ -35,7 +35,7 @@ You can collect data from the camera stream and label any patterns within the im
 
 If a camera is pointed at a food display, for example, you can label the image of the display with `full` or `empty`, or label items such as individual `pizza_slice`s.
 
-Using a model trained on the data, machines can make inferences about their environments.
+Using a model trained on such images, machines can make inferences about their environments.
 Your machines can then automatically trigger alerts or perform other actions.
 If a food display is empty, the machine could, for example, alert a supervisor to restock the display.
 
@@ -99,10 +99,10 @@ Be aware that if you are running out of time during your rental, you can [extend
 ## Create a dataset and label data
 
 You will start by collecting images from your machine as it monitors its environment and add these images to a dataset.
-By creating a dataset from your images, you can then train a machine learning model. 
+By creating a dataset from your images, you can then train a machine learning model.
 To ensure the model you create performs well, you need to train it on a variety of images that cover the range of things your machine should be able to recognize.
 
-To capture data from a machine, you will use the data management service.
+To capture image data from a machine, you will use the data management service.
 
 {{% expand "Just testing and want a dataset to get started with? Click here." %}}
 
@@ -235,7 +235,7 @@ We have two datasets you can use for testing, one with shapes and the other with
        asyncio.run(main())
    ```
 
-1. Run the script to upload the data into a dataset in Viam app providing the following input:
+1. Run the script to upload the images and their metadata into a dataset in Viam app providing the following input:
 
    ```sh {class="command-line" data-prompt="$" }
    python upload_data.py -org-id <ORG-ID> -api-key <API-KEY> \
@@ -298,33 +298,28 @@ If no data appears after the sync interval, check the **LOGS** tab for errors.
 **5. Capture a variety of data**
 
 Your camera now saves images at the configured time interval.
-When training machine learning models, it is important to supply a variety of different data. The more varied the provided data set, the more accurate the resulting model becomes.
+When training machine learning models, it is important to supply a variety of images.
+The dataset you create should represent the possible range of visual input.
+This may include capturing images of different angles, different configurations of objects and different lighting conditions
+The more varied the provided dataset, the more accurate the resulting model becomes.
 
-Most use cases fall into one of two categories:
-
-- Detecting certain objects and getting their location within an image.
-  Each object gets a `label`.
-
-  - **Examples**: A `pizza`, `dog`, or `person` and their coordinates.
-  - **Instructions**: Capture at least 10 images of the same object, taken from different angles and in different lighting situations. Also capture some images that do not contain any of the objects you wish to detect.
-
-- Describing an image. This is returned as something called a `tag`.
-
-  - **Example**: A `full`, `empty`, or `average` food display, `good` or `bad` quality manufacturing output.
-  - **Instructions**: Capture a variety of images that represent the possible range of visual input that should result in each `tag`.
+Capture at least 10 images of anything you want your machine to recognize.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **6. Label your images**
 
-Once you have enough images, you can disable data capture.
-Then use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your data.
+Once you have enough images, you can disable data capture to [avoid incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of training data.
 
-To detect objects and their locations, add labels.
-For images that do not contain any of the objects you wish to identify, do not add labels.
+Then use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your images.
+
+Most use cases fall into one of two categories:
+
+Detecting certain objects and their location within an image.
+For example, you may wish to know where and how many `pizzas` there are in an image.
+In this case, add a label for each object you would like to detect.
 
 {{< expand "For instructions to add labels, click here." >}}
-
 To add a label, click on an image and select the **Bounding box** mode in the menu that opens.
 Choose an existing label or create a new label.
 Click on the image where you would like to add the bounding box and drag to where the bounding box should end.
@@ -338,13 +333,13 @@ To expand the image, click on the expand side menu arrow in the corner of the im
 Repeat this with all images.
 
 You can add one or more bounding boxes for objects in each image.
-
 {{< /expand >}}
 
-To determine a descriptive state about an image, add tags.
+Determining a descriptive state about an image.
+For example, you may wish to know whether an image of a food display is `full`, `empty`, or `average` or whether the quality of manufacturing output is `good` or `bad`.
+In this case, add tags to describe your images.
 
 {{< expand "For instructions to add tags, click here." >}}
-
 To tag an image, click on an image and select the **Image tags** mode in the menu that opens.
 Add one or more tags to your image.
 
@@ -353,7 +348,6 @@ Add one or more tags to your image.
 If you want to expand the image, click on the expand side menu arrow in the corner of the image.
 
 Repeat this with all images.
-
 {{< /expand >}}
 
 {{% /tablestep %}}
@@ -372,7 +366,7 @@ If you have 25 images in your dataset, at least 20 of those must be labelled.
 
 {{< expand "Want to add images to a dataset programmatically? Click here." >}}
 
-You can also add all data with a certain label to a dataset using the [`viam dataset data add` command](/cli/#dataset) or the [Data Client API](/appendix/apis/data-client/#addtagstobinarydatabyfilter):
+You can also add all images with a certain label to a dataset using the [`viam dataset data add` command](/cli/#dataset) or the [Data Client API](/appendix/apis/data-client/#addtagstobinarydatabyfilter):
 
 {{< tabs >}}
 {{% tab name="CLI" %}}
@@ -385,7 +379,7 @@ viam dataset data add filter --dataset-id=<dataset-id> --tags=red_star,blue_squa
 {{% /tab %}}
 {{< tab name="Data Client API" >}}
 
-You can run this script to add all data from your machine to a dataset:
+You can run this script to add all images from your machine to a dataset:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="14,18,30" }
 import asyncio
@@ -471,7 +465,7 @@ if __name__ == '__main__':
 
 ## Train a machine learning (ML) model
 
-Now that you have a dataset with your labeled data, you are ready to train a machine learning model.
+Now that you have a dataset with your labeled images, you are ready to train a machine learning model.
 
 {{< table >}}
 {{% tablestep %}}
