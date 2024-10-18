@@ -22,7 +22,10 @@ Follow [this guide](https://resources.basicmicro.com/roboclaw-motor-controllers-
 
 {{< /alert >}}
 
-To configure a `roboclaw` motor as a component of your machine:
+To use a `roboclaw` motor as a component of your machine, first wire your DC motor to the RoboClaw motor driver, and wire the driver to a board.
+Connect the system to power if you want to test it while configuring.
+Configure the [board](/components/board/) to which the motor driver is wired.
+Then configure the motor:
 
 {{< tabs name="Configure your roboclaw motor">}}
 {{% tab name="Config Builder" %}}
