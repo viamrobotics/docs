@@ -315,7 +315,7 @@ Then use the interface on the [**DATA** tab](https://app.viam.com/data/view) to 
 
 Most use cases fall into one of two categories:
 
-Detecting certain objects and their location within an image.
+- Detecting certain objects and their location within an image.
 For example, you may wish to know where and how many `pizzas` there are in an image.
 In this case, add a label for each object you would like to detect.
 
