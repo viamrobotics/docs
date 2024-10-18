@@ -298,7 +298,10 @@ class MotorScreen extends StatelessWidget {
           ),
           const SizedBox(width: 16), // Padding between widgets
           ElevatedButton(
-            onPressed: () => {motor.goFor(100, 10)},
+            onPressed: () async {
+              motor.setPower(0.35);
+              await Future.delayed(Duration(seconds: 3)); // Wait for 3 seconds
+            },
             style: ElevatedButton.styleFrom(
             minimumSize: Size(80, 20), // Adjusts width and height of the button
             padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
