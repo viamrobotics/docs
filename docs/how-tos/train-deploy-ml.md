@@ -316,8 +316,8 @@ Then use the interface on the [**DATA** tab](https://app.viam.com/data/view) to 
 Most use cases fall into one of two categories:
 
 - Detecting certain objects and their location within an image.
-For example, you may wish to know where and how many `pizzas` there are in an image.
-In this case, add a label for each object you would like to detect.
+  For example, you may wish to know where and how many `pizzas` there are in an image.
+  In this case, add a label for each object you would like to detect.
 
 {{< expand "For instructions to add labels, click here." >}}
 To add a label, click on an image and select the **Bounding box** mode in the menu that opens.
