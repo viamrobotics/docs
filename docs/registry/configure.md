@@ -24,7 +24,7 @@ modulescript: true
 toc_hide: true
 ---
 
-You can extend Viam by adding a module on your machine that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):
+You can extend Viam by adding a module on your machine that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} (components or services):
 
 1. Add a {{< glossary_tooltip term_id="module" text="module" >}}, either one [from the registry](#add-a-modular-resource-from-the-viam-registry) or a [local module](#local-modules).
    This makes the modular resource available to the machine.
@@ -44,7 +44,7 @@ You can integrate modules into any Viam-powered machine.
 
 The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your machine.
 
-A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} (either a [component](/components/) or [service](/services/)).
+A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}}.
 
 Follow the instructions below depending on the type of modular resource you would like to add to your machine:
 
@@ -55,7 +55,7 @@ If you are using a [rented Viam rover](/appendix/try-viam/), adding modules is d
 {{< tabs >}}
 {{% tab name="Add a modular component" %}}
 
-To add a modular [component](/components/) from the Viam registry to your machine:
+To add a modular {{< glossary_tooltip term_id="component" text="component" >}} from the Viam registry to your machine:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
@@ -87,7 +87,7 @@ Confirm your selection.
 
 {{% tab name="Add a modular service" %}}
 
-To add a modular [service](/services/) from the Viam registry to your machine:
+To add a modular {{< glossary_tooltip term_id="service" text="service" >}} from the Viam registry to your machine:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.

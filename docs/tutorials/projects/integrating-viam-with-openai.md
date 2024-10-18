@@ -82,8 +82,8 @@ If not, first follow the Viam Rover [setup instructions](/appendix/try-viam/rove
 If you are not using a Viam Rover, add a new machine in the [Viam app](https://app.viam.com).
 Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
 Wait until your machine has successfully connected.
-Then configure your machine with the [appropriate components](/components/).
-If you are using a different rover, the [Viam Rover setup instructions](/appendix/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
+Then configure your machine with the {{< glossary_tooltip term_id="component" text="hardware components" >}}.
+If you are using a different rover, the [Configure a Rover like Yahboom or SCUTTLE](/tutorials/configure/configure-rover/) may help you configure your rover.
 
 ### 1. Connect the servo
 
@@ -326,7 +326,7 @@ This opens up some really interesting possibilities, like having your robot talk
 
 ## Alternative option: configure Viam Labs speech module
 
-As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular [service](/services/) providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
+As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular {{< glossary_tooltip term_id="service" text="service" >}} providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
 Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).
 
 ### Configuration

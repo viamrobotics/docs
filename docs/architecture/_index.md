@@ -48,9 +48,9 @@ It supports a limited set of {{< glossary_tooltip term_id="resource" text="resou
 
 ## Components, services, modules
 
-A [_component_](/components/) represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
+A {{< glossary_tooltip term_id="component" text="component" >}} represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
 
-A [_service_](/services/) is a software package that adds complex capabilities such as motion planning or object detection to your machine.
+A {{< glossary_tooltip term_id="service" text="service" >}} is a software package that adds complex capabilities such as motion planning or object detection to your machine.
 
 Viam has many built-in components and services that run within `viam-server`.
 

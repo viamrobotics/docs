@@ -3,26 +3,9 @@ title: "Components"
 linkTitle: "Components"
 weight: 410
 type: docs
-description: "Components are software packages that drive hardware such as sensors, motors, cameras, and robotic arms."
-images: ["/icons/components.png"]
-aliases:
-  - "/components/"
+layout: "empty"
+canonical: "/configure/#components"
 no_component: true
 menuindent: true
+empty_node: true
 ---
-
-Viam provides support for a wide variety of hardware.
-A _component_ represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
-
-{{< imgproc src="/viam/machine-components.png" alt="Diagram with various components and services on a smart machine. This machine employs the vision, navigation, and data capture services, which run within viam-server on the machine's single-board computer." resize="650x" class="aligncenter" >}}
-<br>
-
-Viam groups categories of hardware together, with a [standardized API](/appendix/apis/#component-apis) for all _{{< glossary_tooltip term_id="model" text="models" >}}_ in each grouping.
-For example, [`xarm7`](/components/arm/xarm7/) and [`ur5e`](/components/arm/ur5e/) are different arm models, which provide software support for xArm7 arms and UR5e arms, respectively.
-Though the hardware is different, you use the same Viam SDK commands to control both models, for example [`MoveToPosition`](/appendix/apis/components/arm/#movetoposition).
-
-You need to [configure](/configure/#components) a component to represent each piece of hardware your machine controls.
-Configuration is the process of editing the file that indicates to `viam-server` what hardware is available to it, how to communicate with that hardware, and how the pieces of hardware relate to each other (for example, which board a motor is connected to).
-
-Viam provides built-in support for the following component types.
-You can also add support for additional component types using [{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}](/registry/).

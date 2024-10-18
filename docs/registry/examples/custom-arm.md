@@ -40,13 +40,14 @@ See [Arm Configuration](/components/arm/#configuration) for the current list of 
 
 {{% /alert %}}
 
-If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/sdks/) and control it with the [arm API](/appendix/apis/components/arm/#api), or use it with [services](/services/) like [Motion](/services/motion/), just as you would with a built-in model.
+If you have a robot arm that is not already supported by an existing arm model, create a module that provides a customized model for your arm to [program](/sdks/).
+Then you can control it with the [arm API](/appendix/apis/components/arm/#api), or use it with {{< glossary_tooltip term_id="service" text="services" >}} like [Motion](/services/motion/), just as you would with a built-in model.
 
 See [Modular Resources](/registry/) for more information.
 
 ## Get your arm's kinematics file
 
-The way arms move through space is more complicated than Viam's other [components](/components/).
+The way arms move through space is more complicated than Viam's other {{< glossary_tooltip term_id="component" text="components" >}}.
 Because of this, an arm, unlike other components, requires a [kinematic configuration file](/internals/kinematic-chain-config/) describing its geometry.
 This provides the necessary information for the [frame system service](/services/frame-system/) and built-in [motion service](/services/motion/) to work with the arm.
 

@@ -9,7 +9,7 @@ images: ["/installation/thumbnails/manage.png"]
 description: "Building a local machine configuration file for use with viam-server."
 ---
 
-The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
+The `viam-server` binary uses a JSON-formatted configuration file to define all {{< glossary_tooltip term_id="resource" text="resources" >}} it has access to, as well as any relevant parameters for those resources.
 
 When you [install `viam-server`](/installation/viam-server-setup/) from [the Viam app](https://app.viam.com), you configure your machine directly in the app, and the app will automatically sync your configuration to your machine.
 
@@ -65,8 +65,8 @@ If your machine temporarily disconnects from the internet, its configuration is 
 
 ## Example JSON configuration file
 
-If you want to create your own JSON configuration file without using [the Viam app](https://app.viam.com), you can start with the following example file.
-This file contains some basic example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
+If you want to create your own JSON configuration file without using the [Viam app](https://app.viam.com), you can start with the following example file.
+The following file contains some example {{< glossary_tooltip term_id="component" text="component" >}} and {{< glossary_tooltip term_id="service" text="service" >}} configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
