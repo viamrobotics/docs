@@ -175,10 +175,13 @@ Create a file called <FILE>viam-provisioning.json</FILE> with the following form
 `viam-agent` is a self-updating service manager that maintains the lifecycle for several Viam services and keeps them updated.
 If you intend to use `viam-agent` to keep your device's Viam software up-to-date or to use its provisioning plugin to let end users set up their own machines, you need to use `viam-agent` and install it on the machine before sending it to the user.
 
-You can [install `viam-agent` on live systems](/installation/viam-server-setup/) or preinstall it.
-The following instructions will preinstall it using a preinstall script that adds `viam-agent` to images.
+The following instructions will preinstall `viam-agent` into an image.
 
-**Only use the following method for offline pre-installs.**
+**Only use the following method for offline pre-installs with images. For live systems, follow the instructions on a machine's setup tab to [install `viam-server` with `viam-agent`](/installation/viam-server-setup/).**
+
+```suggestion
+**Only use the following method for offline pre-installs. For live systems, **
+```
 
 {{< alert title="Support notice" color="note" >}}
 Please note this script works only under POSIX (MacOS and Linux) at the moment.
