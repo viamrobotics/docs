@@ -302,7 +302,8 @@ When training machine learning models, it is important to supply a variety of di
 
 Most use cases fall into one of two categories:
 
-- Detecting certain objects and getting their location within an image. Each object gets a `label`.
+- Detecting certain objects and getting their location within an image.
+  Each object gets a `label`.
 
   - **Examples**: A `pizza`, `dog`, or `person` and their coordinates.
   - **Instructions**: Capture at least 10 images of the same object, taken from different angles and in different lighting situations. Also capture some images that do not contain any of the objects you wish to detect.
