@@ -85,11 +85,8 @@ Also, make sure to physically connect your components together to your machine's
 
 ## Configure the components you need
 
-First, configure the components of your robot.
-
-{{< alert title="Info" color="info" >}}
-If you are using different hardware, configure them according to the instructions for each [component](/components/).
-{{< /alert >}}
+First, configure the {{< glossary_tooltip term_id="component" text="components" >}} of your robot.
+If you are using different hardware, configure them according to the instructions for the component model that supports your hardware.
 
 {{% expand "Click to see how we configured our LEO rover" %}}
 
@@ -141,7 +138,7 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 Configure your rover base to act as the moving platform of the navigating robot.
 Start by configuring the [encoders](/components/encoder/) and [motors](/components/motor/) of your encoded motor.
 
-1. Follow [these instructions](/components/) to configure the left and right encoders of the wheeled base.
+1. Follow the [encoder configuration instructions](/components/encoder/#configuration) to configure the left and right encoders of the wheeled base.
    We configured ours as [`incremental` encoders](/components/encoder/incremental/), as shown below:
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="1000x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}

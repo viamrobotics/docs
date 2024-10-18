@@ -34,8 +34,8 @@ If you are adding new high-level software functionality, rather than supporting 
 The generic component API only supports the `DoCommand` method.
 If you use the generic subtype, your module needs to define any and all component functionality and pass it through `DoCommand`.
 
-Whenever possible, it is best to use an [existing component API](/components/) instead of generic so that you do not have to replicate code.
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an [existing subtype](/components/), instead of using the generic component.
+Whenever possible, it is best to use an [existing component API](/appendix/apis/#component-apis) instead of generic so that you do not have to replicate code.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing {{< glossary_tooltip term_id="subtype" text="subtype" >}}, instead of using the generic component.
 
 {{% /alert %}}
 

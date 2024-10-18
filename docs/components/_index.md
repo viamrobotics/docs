@@ -4,7 +4,7 @@ linkTitle: "Components"
 weight: 410
 type: docs
 layout: "empty"
-canonical: "/platform/"
+canonical: "/configure/#components"
 no_component: true
 menuindent: true
 empty_node: true
