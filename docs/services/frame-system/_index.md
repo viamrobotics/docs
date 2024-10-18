@@ -293,6 +293,6 @@ For example:
 
 Usage:
 
-- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [GetPose](/appendix/apis/services/motion/#getpose) method.
+- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/appendix/apis/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
-- [TransformPose](/appendix/apis/robot/#transformpose) has the option to take in these additional transforms.
+- [`TransformPose`](/appendix/apis/robot/#transformpose) has the option to take in these additional transforms.
