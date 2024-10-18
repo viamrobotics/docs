@@ -483,7 +483,7 @@ To better control gantries with Viam, you can now:
 
 {{% changelog date="2023-06-30" color="improved" title="Optimized Viam-trained object detection models" %}}
 
-This update for object detection models [trained with the machine learning service](/how-tos/deploy-ml/) brings significant improvements, including:
+This update for object detection models [trained with the machine learning service](/how-tos/train-deploy-ml/) brings significant improvements, including:
 
 - 76% faster model inference for camera streams
 - 64% quicker model training for object detection
@@ -499,7 +499,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train object detection models](/how-tos/deploy-ml/) in addition to image classification models from within the Viam app.
+You now have the capability to directly [train object detection models](/how-tos/train-deploy-ml/) in addition to image classification models from within the Viam app.
 
 This update allows you to:
 
@@ -922,9 +922,9 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/how-tos/deploy-ml/) and [deploy](/services/ml/deploy/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
+You can now [train](/how-tos/train-deploy-ml/) and [deploy](/services/ml/deploy/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
 Additionally, you can upload and use existing [machine learning models](/services/ml/ml-models/) with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [Train a model](/how-tos/deploy-ml/).
+For more information on using data synced to the cloud to train machine learning models, read [Train a model](/how-tos/train-deploy-ml/).
 
 {{% /changelog %}}
 

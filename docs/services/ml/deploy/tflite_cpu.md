@@ -141,7 +141,7 @@ Save the configuration.
 ## Model requirements
 
 {{% alert title="Tip" color="tip" %}}
-Models [trained](/how-tos/deploy-ml/) in the Viam app meet these requirements by design.
+Models [trained](/how-tos/train-deploy-ml/) in the Viam app meet these requirements by design.
 {{% /alert %}}
 
 We strongly recommend that you package your TensorFlow Lite model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
@@ -168,7 +168,7 @@ To use the inferences from the model, you must use an additional service such as
 Use your model deployed with the ML model service by adding a vision service that can provide detections or classifications depending on your ML model.
 
 {{% /manualcard %}}
-{{% card link="/how-tos/deploy-ml/" noimage="True" %}}
+{{% card link="/how-tos/train-deploy-ml/" noimage="True" %}}
 {{% card link="/how-tos/detect-people/" customTitle="Detect people" noimage="true" %}}
 
 {{< /cards >}}

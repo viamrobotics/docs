@@ -1,11 +1,11 @@
 ---
-title: "Train and deploy ML/computer vision models"
+title: "Train and deploy computer vision models"
 linkTitle: "Train and deploy computer vision models"
 weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
-description: "Use your image data to create and label a dataset and train and deploy a computer vision ML model."
+description: "Use your image data to train a model, so your machines can make inferences about their environments."
 aliases:
   - /use-cases/deploy-ml/
   - /manage/ml/train-model/
@@ -24,26 +24,33 @@ emailform: true
 level: "Beginner"
 date: "2024-06-21"
 # updated: ""  # When the tutorial was last entirely checked
+aliases:
+ - "/how-tos/deply-ml/"
 cost: "0"
 ---
 
-You can use Viam's built-in tools to train a machine learning (ML) model on your images and then deploy computer vision on your machines.
+Many machines have access to data about their environment.
+With machine leaning, you can train models on patterns within that data.
+Using the created models, your machines can then make inferences about their environments.
 
-![Diagram of the camera component to data management service to ML model service to vision service pipeline.](/how-tos/ml-vision-diagram.png)
+A common use case is **quality assurance**.
+Machines monitor their environment, for example using a camera.
+You can collect data from the camera stream and label any patterns within the images.
+If the camera is pointed at a food display, you can label data with `full` and `empty`, for example or label items such as individual `pizza_slice`s.
 
-You can use ML models to help your machines adapt their behavior to the world around them.
-
-For example, you can train a model to recognize your dog and detect whether they are sitting or standing.
-You could then use that knowledge to [give your dog treats](https://www.viam.com/post/smart-pet-feeder) or [capture images](/tutorials/configure/pet-photographer/) only when your dog is in the camera frame so you don't capture hundreds of photos of an empty room.
+Using a model trained on the data, machines can then make inferences and send alerts.
+If a food display is empty, the machine could, for example, alert a supervisor to restock the display.
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Create a dataset and label data](#create-a-dataset-and-label-data)
+1. [Create a dataset with labeled data](#create-a-dataset-and-label-data)
 1. [Train a machine learning (ML) model](#train-a-machine-learning-ml-model)
 1. [Test your ML model](#test-your-ml-model)
 1. [Deploy your ML model](#deploy-an-ml-model)
 
 {{< /alert >}}
+
+![Diagram of the camera component to data management service to ML model service to vision service pipeline.](/how-tos/ml-vision-diagram.png)
 
 ## Prerequisites
 
@@ -57,11 +64,12 @@ You could then use that knowledge to [give your dog treats](https://www.viam.com
 
 First, connect the camera to your machine's computer if it's not already connected (like with an inbuilt laptop webcam).
 
-Then, navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Then [find and add a camera model](/components/camera/) that supports your camera.
+The `webcam` model supports most USB cameras and inbuilt laptop webcams.
+You can find additional camera models in the [camera configuration](/components/camera/#configuration) documentation.
 
-If you are not sure what to use, start with a [webcam](/components/camera/webcam/) which supports most USB cameras and inbuilt laptop webcams.
+Complete the camera configuration and use the **TEST** panel inn the configuration card to test that the camera is working.
 
 {{% /expand%}}
 
@@ -90,7 +98,11 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 ## Create a dataset and label data
 
-Start by assembling the dataset to train your machine learning model on.
+You will start by collecting images from your machine as it monitors its environment and add these images to a dataset.
+Placing your images in a dataset will, in later steps, allow you to train a machine learning model.
+To ensure the model you create performs well, you need to train it on a variety of images that cover the range of things your machine should be able to recognize.
+
+To capture data from a machine, you will use the data management service.
 
 {{% expand "Just testing and want a dataset to get started with? Click here." %}}
 
@@ -235,49 +247,101 @@ We have two datasets you can use for testing, one with shapes and the other with
 
 {{% /expand%}}
 
-{{< alert title="Tip" color="tip" >}}
-For best results when training machine learning models:
-
-- Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify.
-  Generally, the more different perspectives of a given object you tag, the more likely it is that your model will be able to identify it, even under differing conditions.
-- Include some images that do not contain any of the objects you wish to identify, but do not add labels to these images.
-  Unlabelled images must not comprise more than 20% of your dataset, so if you have 25 images in your dataset, at least 20 of those must be labelled.
-- If you want your machine to operate successfully in various lighting conditions, such as changing sunlight, include images of each object from varying lighting conditions.
-
-{{< /alert >}}
+{{< gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="Configuring data management for a camera in the viam app" max-width="600px" class="aligncenter" >}}
 
 {{< table >}}
-{{% tablestep %}}
-{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="width: 250px" declaredimensions=true alt="Collect data">}}
-**1. Collect images**
+{{% tablestep link="/services/data/" %}}
+**1. Enable the data management service**
 
-Start by collecting images from your cameras and syncing it to the Viam app.
-See [Collect image data and sync it to the cloud](/how-tos/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
+In the configuration pane for your configured camera component, find the **Data capture** section.
+Click **Add method**.
 
-When training machine learning models, it is important to supply a variety of different data about the subject in different situations, such as from different angles or in different lighting situations.
-The more varied the provided data set, the more accurate the resulting model becomes.
+When the **Create a data management service** prompt appears, click it to add the service to your machine.
+You can leave the default data manager settings.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="width: 250px" declaredimensions=true alt="Label data">}}
-**2. Label your images**
+**2. Capture data**
 
-Once you have enough images of the objects you'd like to identify captured and synced to the Viam app, use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your data.
+With the data management service configured on your machine, configure how the camera component itself captures data:
 
-You can label your images to create:
+In the **Data capture** panel of your camera's configuration, select `ReadImage` from the method selector.
 
-- **Detection models**: Draw **bounding boxes** around distinct objects within captured images.
-  The trained model will enable your machine to be able to detect those objects on its own.
-- **Classification models**: Add **tags** to each of your images with class labels that describe it.
-  The trained model will enable your machine to classify similar images on its own.
+Set your desired capture frequency.
+For example, set it to `0.05` to capture an image every 20 seconds.
 
-<br>
+Set the MIME type to your desired image format, for example `image/jpeg`.
 
-{{< expand "Create image tags (for an image classifier)" >}}
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Save to start capturing**
 
-You can use tags to create classification models for images.
-For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
-You also need images without the star tag or with another tag like `notstar`.
+Save the config.
+
+With cloud sync enabled, you machine automatically uploads captured data to the Viam app after a short delay.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. View data in the Viam app**
+
+Click on the **...** menu of the camera component and click on **View captured data**.
+This takes you to the data tab.
+
+![View captured data option in the component menu](/get-started/quickstarts/collect-data/cam-capt-data.png)
+
+If you do not see images from your camera, try waiting a minute and refreshing the page to allow time for the images to be captured and then synced to the app at the interval you configured.
+
+If no data appears after the sync interval, check the **LOGS** tab for errors.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**5. Capture a variety of data**
+
+Your camera now saves images at the configured time interval.
+When training machine learning models, it is important to supply a variety of different data. The more varied the provided data set, the more accurate the resulting model becomes.
+
+Generally most use cases fall into two categories:
+
+- Detecting certain objects and getting their location within an image. Each object gets a `label`.
+
+  - **Examples**: A `pizza`, `dog`, or `person` and their coordinates.
+  - **Instructions**: Capture at least 10 images of the same object, taken from different angles and in different lighting situations. Also capture some images that do not contain any of the objects you wish to detect.
+
+- Describing an image. This is returned as something called a `tag`.
+
+  - **Example**: A `full`, `empty`, or `average` food display, `good` or `bad` quality manufacturing output.
+  - **Instructions**: Capture a variety of images that represent the possible range of visual input that should result in each `tag`.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**6. Label your images**
+
+Once you have enough images, you can disable data capture.
+Then use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your data.
+
+To detect objects and their locations, add labels. For images that do not contain any of the objects you wish to identify, do not add labels.
+
+{{< expand "For instructions to add labels, click here." >}}
+
+To add a label, click on an image and select the **Bounding box** mode in the menu that opens.
+Choose an existing label or create a new label.
+Click on the image where you would like to add the bounding box and drag to where the bounding box should end.
+
+{{<gif webm_src="/services/data/label-dog.webm" mp4_src="/services/data/label-dog.mp4" alt="Add a bounding box around the dog in an image">}}
+
+To expand the image, click on the expand side menu arrow in the corner of the image:
+
+{{<gif webm_src="/services/data/label-dog-big.webm" mp4_src="/services/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
+
+Repeat this with all images.
+
+You can add one or more bounding boxes for objects in each image.
+
+{{< /expand >}}
+
+To determine a descriptive state about an image, add tags.
+
+{{< expand "For instructions to add tags, click here." >}}
 
 To tag an image, click on an image and select the **Image tags** mode in the menu that opens.
 Add one or more tags to your image.
@@ -290,41 +354,21 @@ Repeat this with all images.
 
 {{< /expand >}}
 
-{{< expand "Create bounding boxes (for an object detector)" >}}
-
-You can create one or more bounding boxes for objects in each image.
-For example, if you would like to create a model that detects a dog in an image, add bounding boxes around the dog in each of your images and add or select the label `dog`.
-
-To add a bounding box, click on an image and select the **Bounding box** mode in the menu that opens.
-Choose an existing label or create a new label.
-Click on the image where you would like to add the bounding box and drag to where the bounding box should end.
-
-{{<gif webm_src="/services/data/label-dog.webm" mp4_src="/services/data/label-dog.mp4" alt="Add a bounding box around the dog in an image">}}
-
-To expand the image, click on the expand side menu arrow in the corner of the image:
-
-{{<gif webm_src="/services/data/label-dog-big.webm" mp4_src="/services/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
-
-Repeat this with all images.
-To see all the images that have bounding boxes, you can filter your dataset by selecting the label from the **Bounding box labels** dropdown in the **Filters** menu.
-
-{{< /expand >}}
-
 {{% /tablestep %}}
 {{% tablestep link="/services/data/dataset/" %}}
-**3. Create a dataset**
+**7. Organize data into a dataset**
 
-A [dataset](/services/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
+To train a model, your images must be in a dataset.
 
-Use the interface on the **DATA** tab (or the [`viam dataset data add` command](/cli/#dataset)) to add all images you want to train the model on to a dataset.
+Use the interface on the **DATA** tab to add your labeled images to a dataset.
 
-Click on an image you want to train your ML model.
-In the **Actions** pane on the right-hand side, enter a dataset name under **Datasets**, then press return.
-Repeat this with all images you want to add to your dataset.
+Also add any unlabelled images to your dataset.
+Unlabelled images must not comprise more than 20% of your dataset.
+If you have 25 images in your dataset, at least 20 of those must be labelled.
 
-{{<gif webm_src="/tutorials/data-mlmodel/add-to-dataset.webm" mp4_src="/tutorials/data-mlmodel/add-to-dataset.mp4" alt="Add image to dataset" max-width="600px">}}
+{{<gif webm_src="/tutorials/data-mlmodel/add-to-dataset.webm" mp4_src="/tutorials/data-mlmodel/add-to-dataset.mp4" alt="Click on an image you want to add to your dataset. In the actions pane, enter a dataset name under datasets, then press return." max-width="600px">}}
 
-{{< expand "Want to do this programmatically? Click here." >}}
+{{< expand "Want to add images to a dataset programmatically? Click here." >}}
 
 You can also add all data with a certain label to a dataset using the [`viam dataset data add` command](/cli/#dataset) or the [Data Client API](/appendix/apis/data-client/#addtagstobinarydatabyfilter):
 
@@ -420,12 +464,12 @@ if __name__ == '__main__':
 
 {{% /expand%}}
 
-To remove an image from a dataset click on the **x** button next to the dataset name.
-
 {{% /tablestep %}}
 {{< /table >}}
 
 ## Train a machine learning (ML) model
+
+Now that you have a dataset with your labeled data, you are ready to train a machine learning model.
 
 {{< table >}}
 {{% tablestep %}}
@@ -435,8 +479,7 @@ In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/da
 
 Click **Train model** and follow the prompts.
 
-Select to train a new model or update an existing model.
-You can train or update using **Built-in training** or using a [training script](/services/ml/training-scripts/) from the Viam Registry.
+You can train your model using **Built-in training** or using a [training script](/services/ml/training-scripts/) from the Viam Registry.
 
 Click **Next steps**.
 
@@ -444,17 +487,17 @@ Click **Next steps**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Select the details for your ML model**
+**2. Fill in the details for your ML model**
 
-- Enter a name or use the suggested name for your new model.
-- For built-in training scripts, select a **Model Type**.
-  Depending on the training script you've chose, you may have a number of these options:
+- Enter a name for your new model.
+- For built-in trainings, select a **Task Type**:
   - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
     Select this if you only have one label on each image. Ensure that the dataset you are training on also contains unlabeled images.
   - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
   - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
-- For built-in classification training, select the tags you want to train your model on from the **Labels** section. Unselected tags will be ignored, and will not be part of the resulting model.
-- Click **Train model**.
+- Select the labels you want to train your model on from the **Labels** section. Unselected labels will be ignored, and will not be part of the resulting model.
+
+Click **Train model**.
 
 {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill aligncenter" >}}
 
@@ -462,9 +505,9 @@ Click **Next steps**.
 {{% tablestep %}}
 **3. Wait for your model to train**
 
-The model now starts training and you can follow its process on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
+The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
 
-Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
+Once the model has finished training, it becomes visible on the [**MODELS** tab](https://app.viam.com/data/models).
 
 You will receive an email when your model finishes training.
 
@@ -472,7 +515,7 @@ You will receive an email when your model finishes training.
 {{% tablestep %}}
 **4. Debug your training job**
 
-From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
+From the [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
 
 {{< alert title="Note" color="note" >}}
 
@@ -489,57 +532,67 @@ You can also view your training jobs' logs with the [`viam train logs`](/cli/#tr
 
 {{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
 
-Once your model has finished training, you can test it with images in the Viam app:
+Once your model has finished training, you can test it.
+
+Ideally, you want your ML model to be able to work with a high level of confidence.
+As you test it, if you notice faulty predictions or confidence scores, you will need adjust your dataset and retrain your model.
+
+If you trained a classification model, you can test it with the following instructions.
+If you trained a detection model, skip to [deploy an ML model](#deploy-an-ml-model).
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click on the **Images** subtab.
-2. Click on an image to open the side menu, and select the **Actions** tab.
-3. In the **Run model** section, select your model and specify a confidence threshold.
-4. Click **Run model**
+1. Click on an image to open the side menu, and select the **Actions** tab.
+1. In the **Run model** section, select your model and specify a confidence threshold.
+1. Click **Run model**
 
 If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
 
-When satisfied that your ML model is working well, continue to [deploy an ML model](#deploy-an-ml-model).
-If the vision service is not detecting or classifying reliably, you will need to adjust your ML model by consider adding and labelling more images in your dataset.
-
-Ideally, you want your ML model to be able to identify objects with a high level of confidence, which is dependent on a robust training dataset.
-
 ## Deploy an ML model
 
-To use an ML model on your machine, you need to deploy it to your machine using a compatible ML model service.
-The ML model service will run the model and allow a vision service to use it:
+You have your trained model.
+Now you can deploy it to your machines and make live inferences.
+
+To use an ML model on your machine, you need to deploy the model with an ML model service.
+The ML model service will run the model.
+
+On its own the ML model service only runs the model.
+To use it to make inferences on a camera stream, you need to use it alongside a vision service.
 
 {{< table >}}
 {{% tablestep link="/services/ml/deploy/" %}}
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Train models">}}
 **1. Deploy your ML model**
 
-Navigate to the **CONFIGURE** tab of one of your machines in [the Viam app](https://app.viam.com).
-Here, add an [ML model service](/services/ml/deploy/) that supports the ML model you just trained and add the model as the **Model**.
-For example use the `TFLite CPU` ML model service for TFlite ML models.
-This service will deploy and run the model.
+Navigate to the **CONFIGURE** tab of one of your machine in the [Viam app](https://app.viam.com).
+Add an ML model service that supports the ML model you just trained and add the model as the **Model**.
+For example use the `ML model / TFLite CPU` service for TFlite ML models.
+If you used the built-in training, this is the ML model service you need to use.
+If you used a custom training script, you may need a different [ML model service](/services/ml/deploy/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/" %}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure a service">}}
 **2. Configure an <code>mlmodel</code> vision service**
 
-The vision service takes the ML model and applies it to the stream of images from your camera.
+The ML model service will deploy and run the model.
+
+The vision service works with the ML model services.
+It uses the ML model and applies it to the stream of images from your camera.
 
 Add the `vision / ML model` service to your machine.
 Then, from the **Select model** dropdown, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).
 
-Click **Save** to save your changes.
+**Save** your changes.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/#test-your-detector-or-classifier" %}}
 {{<imgproc src="/services/ml/deploy.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Deploy your model">}}
-**3. Use your detector or classifier**
+**3. Use your vision service**
 
-You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).
+You can test your vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
-The camera stream will show classification or detections when it identifies something, depending on your model.
-Try placing an object your ML model can recognize in front of the camera.
-If you are using a Viam rover, use the `viam_base` panel to move your rover, then click on the vision panel to check for classifications or detections.
+The camera stream will show when the vision service identifies something.
+Try pointing the camera at a scene similar to your training data.
 
 {{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="x200" >}}
 {{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="x200" >}}
@@ -574,8 +627,6 @@ For more detailed information, including optional attribute configuration, see t
 
 {{% /expand%}}
 
-You can also test your detector or classifier [with code](/services/vision/mlmodel/#existing-images-on-your-machine).
-
 {{% /tablestep %}}
 
 {{< /table >}}
@@ -584,13 +635,12 @@ You can also test your detector or classifier [with code](/services/vision/mlmod
 
 ## Next steps
 
-To work with datasets programmatically, see the data API which includes several methods to work with datasets:
+Now your machine can make inferences about its environment. The next step is to act based on these inferences:
 
-{{< cards >}}
-{{% card link="/appendix/apis/data-client/" %}}
-{{< /cards >}}
+- Perform actions: You can use the [vision service API](/appendix/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
+- Webhooks: You can use triggers to send webhooks when certain inferences are made. For an example of this, see the [Helmer Monitoring tutorial](/tutorials/projects/helmet/)
 
-See the following tutorials for examples of using machine learning models to make your machine interact intelligently based on what it detects:
+See the following tutorials for examples of using machine learning models to make your machine do thinks based on its inferences about its environment:
 
 {{< cards >}}
 {{% card link="/tutorials/projects/helmet/" %}}

@@ -93,7 +93,7 @@ You can see more information about exporting data in the [Viam CLI documentation
 Other how-to guides for using and querying data include:
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/sensor-data-visualize/" %}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
 {{< /cards >}}

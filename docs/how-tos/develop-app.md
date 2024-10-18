@@ -221,7 +221,7 @@ For more information, see [How to create and deploy a new module](/how-tos/creat
 Now that you have a running machine that you can control, make your machine better and smarter:
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/navigate/" %}}
 {{% card link="/services/motion/" %}}
 {{< /cards >}}

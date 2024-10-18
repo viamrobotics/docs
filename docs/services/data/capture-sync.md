@@ -800,13 +800,13 @@ Wait for a few seconds and you should see correctly colored images.
 ## Next steps
 
 If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
-If you have synced images, you can use those images to [train machine learning models](/how-tos/deploy-ml/) within the Viam app.
+If you have synced images, you can use those images to [train machine learning models](/how-tos/train-deploy-ml/) within the Viam app.
 
 Or check out the following guides and tutorials:
 
 {{< cards >}}
 {{% card link="/how-tos/image-data/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/performance-metrics/" %}}
 {{% card link="/tutorials/control/air-quality-fleet/" %}}
 {{< /cards >}}

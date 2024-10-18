@@ -261,7 +261,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/deploy-ml/) with the Viam platform.
+Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/train-deploy-ml/) with the Viam platform.
 
 To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
