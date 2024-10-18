@@ -69,7 +69,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 The `webcam` model supports most USB cameras and inbuilt laptop webcams.
 You can find additional camera models in the [camera configuration](/components/camera/#configuration) documentation.
 
-Complete the camera configuration and use the **TEST** panel inn the configuration card to test that the camera is working.
+Complete the camera configuration and use the **TEST** panel in the configuration card to test that the camera is working.
 
 {{% /expand%}}
 
@@ -99,7 +99,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 ## Create a dataset and label data
 
 You will start by collecting images from your machine as it monitors its environment and add these images to a dataset.
-Placing your images in a dataset will, in later steps, allow you to train a machine learning model.
+By creating a dataset from your images, you can then train a machine learning model. 
 To ensure the model you create performs well, you need to train it on a variety of images that cover the range of things your machine should be able to recognize.
 
 To capture data from a machine, you will use the data management service.
@@ -300,7 +300,7 @@ If no data appears after the sync interval, check the **LOGS** tab for errors.
 Your camera now saves images at the configured time interval.
 When training machine learning models, it is important to supply a variety of different data. The more varied the provided data set, the more accurate the resulting model becomes.
 
-Generally most use cases fall into two categories:
+Most use cases fall into one of two categories:
 
 - Detecting certain objects and getting their location within an image. Each object gets a `label`.
 
