@@ -179,10 +179,6 @@ The following instructions will preinstall `viam-agent` into an image.
 
 **Only use the following method for offline pre-installs with images. For live systems, follow the instructions on a machine's setup tab to [install `viam-server` with `viam-agent`](/installation/viam-server-setup/).**
 
-```suggestion
-**Only use the following method for offline pre-installs. For live systems, **
-```
-
 {{< alert title="Support notice" color="note" >}}
 Please note this script works only under POSIX (MacOS and Linux) at the moment.
 {{< /alert >}}
