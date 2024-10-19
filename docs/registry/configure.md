@@ -71,49 +71,124 @@ You can write modules in a variety of programming languages, such as, Go, Python
 
 ## Add a modular resource to your machine
 
-Once you find or create a modular resource for your use case, add it from the registry to your machine:
+### Modular resource configuration
+
+When you add components and services to your machine with the builder UI, you can select available modular resources from the Viam registry.
+As you add them, Viam automatically also adds the module that provides the modular resource to your configuration.
+The modular resource card allows you to configure attributes for the resource.
+Check the module's GitHub Readme for information about available configuration attributes for a resource.
+You can configure modules and their modular resources in the config builder or with JSON.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component** or **Service** as applicable.
-3. Browse the list of available component or service types, and select the specific modular resource you'd like to add.
+The following image shows an example of a configured modular resource, specifically an ultrasonic sensor component.
+This modular component is made available by the `ultrasonic` module, shown in the [next section](#module-configuration).
 
-   {{<imgproc src="registry/configure/add-component-by-category.png" resize="500x" style="width: 300px" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the category 'camera'">}}
-
-4. After selecting the modular resource, click **Add module** to add the module that supports the resource to your machine.
-
-   {{<imgproc src="registry/configure/add-component-screen.png" resize="500x" style="width: 300px" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
-
-5. Enter a name or use the suggested name for your modular resource and click **Create** to add it to your machine's configuration.
-
-   Be sure the modular resource you select supports the [platform](/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
-   You can see which platforms the module supports at bottom of the module information screen before you add it.
-
-When you add a modular resource from the registry, it appears on the **CONFIGURE** tab like any other component.
-
-If the resource requires you to configure specific **Attributes**, navigate to the **CONFIGURE** tab and hover over the module in the machine {{< glossary_tooltip term_id="part" text="part" >}} tree in left side of the page.
-Click on the **...** menu and select **Go to URL** to view the specific attribute requirements on the module's GitHub page.
+{{<imgproc src="registry/configure/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example in the Viam app builder UI.">}}
 
 {{% /tab %}}
-
 {{% tab name="JSON" %}}
 
-If you prefer to use JSON, the following properties are available for all modular resources:
+{{< tabs >}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+  "components": [
+    {
+      "name": "sensor-1",
+      "model": "viam:ultrasonic:sensor",
+      "type": "sensor",
+      "namespace": "rdk",
+      "attributes": {
+        "trigger_pin": "13",
+        "echo_interrupt_pin": "15",
+        "board": "board-1",
+        "timeout_ms": 500
+      },
+      "depends_on": []
+    }
+  ]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+  "components": [
+    {
+      "name": "<your-model-instance-name>",
+      "model": "<namespace>:<repo-name>:<name>",
+      "type": "<your-resource-subtype>",
+      "namespace": "<your-module-namespace>",
+      "attributes": {
+        "<relevant attributes--see module Readme>"
+      },
+      "depends_on": []
+    }
+  ]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The following properties are available for modular resources:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers) |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). This will be `rdk` unless the module implements a [custom, non-standard API](/registry/advanced/). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers). |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers). |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/architecture/rdk/#dependency-management). |
 
+{{% /tab %}}
+{{< /tabs >}}
+
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
-The `attributes` available vary depending on your implementation.
-If the module requires you to configure specific **Attributes**, click the **Registry** link in the module's configuration card to view the specific attribute requirements on the module's GitHub page.
+The attributes available vary depending on your implementation.
+If the module requires you to configure specific attributes, click the **Readme** link in the module's configuration card to view the specific attribute requirements on the module's GitHub page.
+
+### Module configuration
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+The following image shows an example of a configured module in a machine's config.
+This ultrasonic sensor modular component in the previous section is provided by the [module](https://app.viam.com/module/viam/ultrasonic) shown here.
+
+{{<imgproc src="registry/configure/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example in the Viam app builder UI.">}}
+
+{{% /tab %}}
+{{% tab name="JSON" %}}
+
+Examples:
+
+```json {class="line-numbers linkable-line-numbers"}
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_ultrasonic",
+      "module_id": "viam:ultrasonic",
+      "version": "0.0.2"
+    },
+    {
+      "type": "registry",
+      "name": "viam_tflite_cpu",
+      "module_id": "viam:tflite_cpu",
+      "version": "latest"
+    },
+    {
+      "type": "registry",
+      "name": "viam_raspberry-pi",
+      "module_id": "viam:raspberry-pi",
+      "version": "1.1.0"
+    },
+  ]
+```
+
+The config of both a module and a corresponding modular resource resembles the following:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -123,9 +198,9 @@ If the module requires you to configure specific **Attributes**, click the **Reg
   "components": [
     {
       "name": "<your-model-instance-name>",
-      "model": "<namespace>:<repo-name>:<name>",
+      "model": "<module-namespace>:<repo-name>:<name>",
       "type": "<your-resource-subtype>",
-      "namespace": "<your-module-namespace>",
+      "namespace": "<model-API-namespace>",
       "attributes": {},
       "depends_on": []
     }
@@ -133,7 +208,7 @@ If the module requires you to configure specific **Attributes**, click the **Reg
   "modules": [
     {
       "type": "registry",
-      "name": "<module-name>",
+      "name": "<module-namespace>_<module-name>",
       "module_id": "<module-namespace>:<module-name>",
       "version": "<module-version>"
     }
@@ -146,13 +221,13 @@ If the module requires you to configure specific **Attributes**, click the **Reg
 
 The following is an example configuration for the [Intel Realsense module](https://app.viam.com/module/viam/realsense).
 The configuration adds `viam:camera:realsense` as a modular resource from the module `viam:realsense`.
-The custom model is configured as a component with the name "my-realsense".
+The custom model is configured as a component with the name `myRealsenseCamera1`.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
-      "name": "my-realsense",
+      "name": "myRealsenseCamera1",
       "model": "viam:camera:realsense",
       "type": "camera",
       "namespace": "rdk",
@@ -178,6 +253,16 @@ The custom model is configured as a component with the name "my-realsense".
 
 {{% /tab %}}
 {{< /tabs >}}
+
+The following properties are configurable for each module:
+
+<!--prettier-ignore-->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul></p> |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam registry](https://app.viam.com/registry) or is only available [locally](/how-tos/create-module/#test-your-module-locally) on your computer. |
+| `name` | string | **Required** | The module author's organization namespace, followed by an underscore, followed by the name of the module. `<module namespace>_<module name>` |
+| `module_id` | string | **Required** | The module namespace, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} |
 
 ### Further configuration options
 
@@ -312,7 +397,7 @@ When a module is instantiated, it has access to the following default environmen
 | Name | Description |
 | ---- | ----------- |
 | `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default: `$HOME/.viam` |
-| `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module. If you are using a [local module](#local-modules), you must set this value manually if your module requires it.<br>Example: `/opt/my-module/verxxxx-my-module/` |
+| `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module. If you are using a [local module](/how-tos/create-module/#test-your-module-locally), you must set this value manually if your module requires it.<br>Example: `/opt/my-module/verxxxx-my-module/` |
 | `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/sdks/python/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-machine-id/my-module-name/` |
 | `VIAM_MODULE_ID` | The module ID of the module. <br>Example: `viam:realsense` |
 
