@@ -486,13 +486,15 @@ Click **Next steps**.
 {{% tablestep %}}
 **2. Fill in the details for your ML model**
 
-- Enter a name for your new model.
-- For built-in trainings, select a **Task Type**:
-  - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
-    Select this if you only have one label on each image. Ensure that the dataset you are training on also contains unlabeled images.
-  - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
-  - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
-- Select the labels you want to train your model on from the **Labels** section. Unselected labels will be ignored, and will not be part of the resulting model.
+Enter a name for your new model.
+For built-in trainings, select a **Task Type**:
+
+- **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
+  Select this if you only have one label on each image. Ensure that the dataset you are training on also contains unlabeled images.
+- **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
+- **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
+
+Select the labels you want to train your model on from the **Labels** section. Unselected labels will be ignored, and will not be part of the resulting model.
 
 Click **Train model**.
 
