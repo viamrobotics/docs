@@ -487,6 +487,7 @@ Click **Next steps**.
 **2. Fill in the details for your ML model**
 
 Enter a name for your new model.
+
 For built-in trainings, select a **Task Type**:
 
 - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
