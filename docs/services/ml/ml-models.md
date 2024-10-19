@@ -29,7 +29,7 @@ Services like the [vision service](/services/vision/mlmodel/) can then use the M
 The ML model service works with models trained inside and outside the Viam app:
 
 - You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
-- You can [train](/how-tos/deploy-ml/) models on data from your machines.
+- You can [train](/how-tos/train-deploy-ml/) models on data from your machines.
 - You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the Viam Registry.
 - You can use a [model](/services/ml/ml-models/) trained outside the Viam platform that's already available on your machine.
 
@@ -71,7 +71,7 @@ The model package config looks like this:
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 
 {{< alert title="Note" color="note" >}}
-When you [train](/how-tos/deploy-ml/) a new version of a model, the previous model remains unchanged and is not used as input.
+When you [train](/how-tos/train-deploy-ml/) a new version of a model, the previous model remains unchanged and is not used as input.
 {{< /alert >}}
 
 If you need to make changes to a model, you can edit or delete it on its page which you can access from the [**MODELS** tab](https://app.viam.com/data/models).
@@ -82,7 +82,7 @@ Use the ML model service to deploy a machine learning model to your machine:
 
 {{< cards >}}
 {{% card link="/services/ml/deploy/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{< /cards >}}
 
 Follow one of these tutorials to see ML models in action:

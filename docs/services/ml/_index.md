@@ -36,7 +36,7 @@ Machine Learning (ML) models are mathematical models that can recognize patterns
 Currently Viam supports TensorFlow Lite, TensorFlow, ONNX, and PyTorch.
 
 - You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
-- You can [train](/how-tos/deploy-ml/) models on data from your machines using different training scripts.
+- You can [train](/how-tos/train-deploy-ml/) models on data from your machines using different training scripts.
 - You can use [ML models from the Viam Registry](https://app.viam.com/registry?type=ML+Model).
 - You can use a [model](/services/ml/ml-models/) trained outside the Viam platform that's already available on your machine.
 
@@ -60,7 +60,7 @@ For comprehensive guides on using data capture and synchronization together with
 
 {{< cards >}}
 {{% card link="/how-tos/image-data/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{< /cards >}}
 
 You can also follow one of these tutorials to see ML models in action:

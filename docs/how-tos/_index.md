@@ -63,7 +63,7 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{< how-to-expand "Collect images and train machine learning models" "3" "INTERMEDIATE" >}}
 {{< cards >}}
 {{% card link="/how-tos/collect-data/" noimage="true" %}}
-{{% card link="/how-tos/deploy-ml/" noimage="true" %}}
+{{% card link="/how-tos/train-deploy-ml/" noimage="true" %}}
 {{% card link="/how-tos/create-custom-training-scripts/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}

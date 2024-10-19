@@ -35,7 +35,7 @@ Once added to the [Viam Registry](https://app.viam.com/registry?type=Training+Sc
 
 {{% expand "A dataset with data you can train an ML model on. Click to see instructions." %}}
 
-Follow the instructions to [Create a dataset and label data](/how-tos/deploy-ml/#create-a-dataset-and-label-data) to create a dataset.
+Follow the instructions to [Create a dataset and label data](/how-tos/train-deploy-ml/#create-a-dataset-and-label-data) to create a dataset.
 
 {{% /expand%}}
 
@@ -631,5 +631,5 @@ You can also view your training jobs' logs with the [`viam train logs`](/cli/#tr
 ## Next steps
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{< /cards >}}

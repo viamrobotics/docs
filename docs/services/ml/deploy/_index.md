@@ -22,7 +22,7 @@ date: "2024-09-03"
 The Machine Learning (ML) model service allows you to deploy [machine learning models](/services/ml/ml-models/) to your machine.
 You can deploy:
 
-- a model you [trained](/how-tos/deploy-ml/)
+- a model you [trained](/how-tos/train-deploy-ml/)
 - a model from [the registry](https://app.viam.com/registry) that another user has shared publicly
 - a model trained outside the Viam platform that you have uploaded to the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app
 - a model trained outside the Viam platform that's already available on your machine
@@ -72,7 +72,7 @@ To use the inferences from the model, you must use an additional service such as
 Use your model deployed with the ML model service by adding a vision service that can provide detections or classifications depending on your ML model.
 
 {{% /manualcard %}}
-{{% card link="/how-tos/deploy-ml/" noimage="True" %}}
+{{% card link="/how-tos/train-deploy-ml/" noimage="True" %}}
 {{% card link="/how-tos/detect-people/" customTitle="Detect people" noimage="true" %}}
 
 {{< /cards >}}
