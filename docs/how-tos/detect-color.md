@@ -194,7 +194,7 @@ You must close and reopen the panel for the new configuration to take effect.
 ## Next steps
 
 You can now detect colors on a camera stream using any device and any webcam.
-You can also use the vision service with more sophisticated Machine Learning models.
+If you want to detect obeckst, you can also use the vision service with more sophisticated Machine Learning models.
 To learn more about how to access the data from a vision service programmatically or use machine learning models with a vision service, see:
 
 {{< cards >}}
