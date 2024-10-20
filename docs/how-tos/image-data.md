@@ -11,7 +11,7 @@ aliases:
   - /tutorials/projects/filtered-camera
 languages: []
 viamresources: ["camera", "data_manager", "mlmodel", "vision"]
-platformarea: ["ml", "data"]
+platformarea: ["data"]
 level: "Intermediate"
 date: "2024-08-26"
 # updated: ""  # When the tutorial was last entirely checked

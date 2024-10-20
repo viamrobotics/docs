@@ -15,12 +15,12 @@ viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
 level: "Advanced"
 date: "2024-08-29"
-# updated: ""  # When the tutorial was last entirely checked
+updated: "2024-10-20" # When the tutorial was last entirely checked
 cost: "0"
 ---
 
-You can create your own custom Python training script that trains ML models to your specifications using the Machine Learning framework of your choice (PyTorch, Tensorflow, TFLite, ONNX, or any other framework).
-Once added to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use the training script to build ML models based on your datasets.
+You can create your own custom Python training script that trains ML models to your specifications using PyTorch, Tensorflow, TFLite, ONNX, or any other Machine Learning framework.
+Once you upload your training script to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use it to build ML models in the Viam Cloud based on your datasets.
 
 {{< alert title="In this page" color="tip" >}}
 
@@ -35,7 +35,9 @@ Once added to the [Viam Registry](https://app.viam.com/registry?type=Training+Sc
 
 {{% expand "A dataset with data you can train an ML model on. Click to see instructions." %}}
 
-Follow the instructions to [Create a dataset and label data](/how-tos/train-deploy-ml/#create-a-dataset-and-label-data) to create a dataset.
+For image data, you can follow the instructions to [Create a dataset and label data](/how-tos/train-deploy-ml/#create-a-dataset-and-label-data) to create a dataset.
+
+For other data you can use the [Data Client API](/appendix/apis/data-client/) to get data stored in the Viam Cloud.
 
 {{% /expand%}}
 
@@ -67,7 +69,7 @@ my-training/
 {{% tablestep %}}
 **2. Add `setup.py` code**
 
-Add the following code to `setup.py`:
+Add the following code to `setup.py` and dd additional required packages on line 11:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
 from setuptools import find_packages, setup
@@ -84,8 +86,6 @@ setup(
     ],
 )
 ```
-
-Ensure you add additional required packages on line 11.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -296,11 +296,12 @@ if __name__ == "__main__":
 
 {{% /tablestep %}}
 {{< tablestep >}}
-<b>5. Template script parsing functionality explained</b>
 
-<p>You do not need to edit the scripts parsing functionality but if you want to understand the script fully, click on the following expanders:</p>
+<p><strong>5. Understand template script parsing functionality</strong></p>
+<p>When a training script is run, the Viam platform passes the dataset file for the training and the designated model output directory to the script.</p>
+<p>The template contains functionality to parse the command line inputs and parse annotations from the dataset file.</p>
 
-{{% expand "Parsing command line inputs" %}}
+{{% expand "Click for more information on parsing command line inputs." %}}
 
 The script you are creating must take the following command line inputs:
 
@@ -310,7 +311,8 @@ The script you are creating must take the following command line inputs:
 The `parse_args()` function in the template parses your arguments.
 
 {{% /expand %}}
-{{%expand "Parsing annotations from dataset file" %}}
+
+{{% expand "Click for more information on parsing annotations from dataset file" %}}
 
 When you submit a training job to the Viam Cloud, Viam will pass a `dataset_file` to the training script when you train an ML model with it.
 The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
@@ -387,6 +389,8 @@ Depending on if you are training a classification or detection model, the templa
 
 {{% /expand%}}
 
+<p>If the script you are creating does not use an image dataset, you only need the model output directory.</p>
+
 {{% /tablestep %}}
 {{% tablestep %}}
 **6. Add logic to produce the model artifact**
@@ -412,7 +416,7 @@ As an example, you can refer to the logic from <file>model/training.py</file> fr
 {{% tablestep %}}
 **8. Update the main method**
 
-Update the main to which calls the functions you have just created.
+Update the main to call the functions you have just created.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -459,7 +463,7 @@ Use the `parse_filenames_and_labels_from_json` and `parse_filenames_and_bboxes_f
 {{% tablestep %}}
 **2. Run your training script locally**
 
-Install any required dependencies and run your training script specifying the path to the <dataset.jsonl> file from your exported dataset:
+Install any required dependencies and run your training script specifying the path to the <FILE>dataset.jsonl</FILE> file from your exported dataset:
 
 ```sh {class="command-line" data-prompt="$" data-output="1-10"}
 python3 -m model.training --dataset_file=/path/to/dataset.jsonl --model_output_directory=.
@@ -476,8 +480,7 @@ To be able to use your training script in the Viam platform, you must upload it 
 {{% tablestep %}}
 **1. Package the training script as a <file>tar.gz</file> source distribution**
 
-To run your training script on datasets in Viam, compress your project folder into a tar.gz file.
-You can run this command to create a .tar.gz archive from your project folder:
+To run your training script on datasets in Viam, compress your project folder into a tar.gz file:
 
 ```sh {class="command-line" data-prompt="$" data-output="1-10"}
 tar -czvf my-training.tar.gz my-training/
@@ -489,11 +492,9 @@ You can refer to the directory structure of this [example classification trainin
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Upload a new training script (or a new version)**
+**2. Upload a training script**
 
-To upload a custom training script to the registry, use the [`viam training-script upload`](/cli/#training-script) command.
-
-For example:
+To upload a custom training script to the registry, use the `viam training-script upload` command.
 
 {{< tabs >}}
 {{% tab name="Usage" %}}
@@ -528,8 +529,8 @@ To find your organization's ID, run the following command:
 viam organization list
 ```
 
-After a successful upload, you'll receive a confirmation message with a link to view your changes online in the CLI.
-Once uploaded, you can view the script by navigating to the [registry's **Training Scripts** page](https://app.viam.com/registry?type=Training+Script).
+After a successful upload, the CLI displays a confirmation message with a link to view your changes online.
+You can view uploaded training scripts by navigating to the [registry's **Training Scripts** page](https://app.viam.com/registry?type=Training+Script).
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -547,19 +548,16 @@ After uploading the training script, you can run it by submitting a training job
 
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 200px" declaredimensions=true alt="Train models">}}
 
-In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
+In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train a model on.
 
 Click **Train model** and select **Train on a custom training script**, then follow the prompts.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-You can use [`viam train submit custom from-registry`](/cli/#positional-arguments-submit) to submit a training job from a training script already uploaded to the registry or `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
+You can use [`viam train submit custom from-registry`](/cli/#positional-arguments-submit) to submit a training job.
 
 For example:
-
-{{< tabs >}}
-{{% tab name="from-registry" %}}
 
 ```sh {class="command-line" data-prompt="$"}
 viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> \
@@ -570,27 +568,7 @@ viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> \
 
 This command submits a training job to the previously uploaded `MyCustomTrainingScript` with another input dataset, which trains `MyRegistryModel` and publishes that to the registry.
 
-{{% /tab %}}
-{{% tab name="with-upload" %}}
-
-```sh {class="command-line" data-prompt="$"}
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> \
-  --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel \
-  --model-type=single_label_classification --model-version=2 \
-  --version=1 --path=<path-to-tar.gz> \
-  --script-name=mycompany:MyCustomTrainingScript
-```
-
-This command uploads a script called `MyCustomTrainingScript` to the registry under the specified organization and also submits a training job to that script with the input dataset, which generates a new version of the single-classification ML model `MyRegistryModel` and publishes that to the registry.
-
-To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
-Click **...** in the left-hand menu and click **Copy dataset ID**.
-
-To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
-Find **Organization ID** and click the copy icon.
-
-{{% /tab %}}
-{{< /tabs >}}
+You can get the dataset id from the dataset page or using the [`viam dataset list`](/cli/#dataset) command.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -599,7 +577,7 @@ Find **Organization ID** and click the copy icon.
 {{% tablestep %}}
 **2. Check on training job process**
 
-Once submitted, you can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
+You can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
 
 Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
 
@@ -630,6 +608,13 @@ You can also view your training jobs' logs with the [`viam train logs`](/cli/#tr
 
 ## Next steps
 
+To use your new model with machines, you must deploy it with the [ML model service](/services/ml/deploy/).
+Then you can use another service, such as the vision service, to apply the deployed model to any live data, such as camera feeds.
+
+To see models in use with machines, see one of the following resources:
+
 {{< cards >}}
-{{% card link="/how-tos/train-deploy-ml/" %}}
+{{% card link="/how-tos/detect-people/" %}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/projects/integrating-viam-with-openai/" %}}
 {{< /cards >}}

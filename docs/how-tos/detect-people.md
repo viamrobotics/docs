@@ -1,14 +1,14 @@
 ---
-title: "Detect People with a Webcam in 4 minutes"
-linkTitle: "Detect people (4 min)"
+title: "Detect objects in a camera stream"
+linkTitle: "Detect objects or people"
 type: "docs"
 tags: ["vision", "data", "services", "quickstart", "ml", "camera", "webcam"]
 no_list: true
-description: "Detect people using a webcam and the Viam vision service. Without writing code, view your camera stream with detection bounding boxes around people."
+description: "Detect people on a camera stream from any webcam using the vision service."
 images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []
-weight: 10
+weight: 30
 no_list: true
 cost: "0"
 resource: "quickstart"
@@ -20,9 +20,15 @@ viamresources: ["camera", "mlmodel", "vision"]
 platformarea: ["ml"]
 level: "Beginner"
 date: "2024-07-31"
-# updated: ""  # When the tutorial was last entirely checked
+updated: "2024-10-20"
 cost: "0"
 ---
+
+WebRTC is a powerful technology that allows developers to build apps with video streams.
+Like an app that provides you a live stream of your house's security cameras.
+
+Adding Computer Vision allows machines to analyze images and gain meaningful information from video streams.
+You can then program the machines to act based on this data, for example by alerting you when people appear on your camera stream.
 
 In this guide you'll use machine learning to detect people in a camera stream.
 
@@ -39,18 +45,14 @@ In this guide you'll use machine learning to detect people in a camera stream.
 
 ## Requirements
 
-You don't need to buy or own any hardware to complete this tutorial.
+You don't need to buy or own any hardware to follow along.
 If you have the following components, you can follow along on your own hardware:
 
-- A Linux, macOS or WSL computer that can run `viam-server`.
+- A Linux or macOS that can run `viam-server`.
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
-Make sure to connect the webcam to your computer (if it's not built-in) before starting this guide.
-
 {{% expand "No computer or webcam?" %}}
-No problem.
-
-Use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
+No problem. Use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
 The rover already has `viam-server` installed and is configured with some components to test with, including a webcam.
 You may not be able to test using the supplied ML model, as your borrowed rover will generally not be able to see people.
 We recommend you follow the [Detect color with a Webcam](/how-tos/detect-color/) guide instead.
@@ -61,6 +63,7 @@ Now you know what the rover can _perceive_.
 
 If your rover is facing a wall, find the base configuration panel and click on its **Test** panel.
 Use the controls to drive your rover to a different location.
+You can use picture in picture mode on one of the cameras so you can see where you're driving.
 
 Now that you have seen that the cameras on your Try Viam rover work, **continue with Step 4**.
 
@@ -72,7 +75,8 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 ## Instructions
 
-Follow these instructions to configure your machine and test detecting people:
+To use Viam with your device, you must install Viam and create a configuration that describes the connected camera.
+Then you can add the ML model service to deploy and run the machine learning model that can detect people and the vision service that applies the model to your camera's live feed.
 
 {{%expand "Step 1: Create a new machine" %}}
 
@@ -91,6 +95,8 @@ Select the Platform you want to install `viam-server` on.
 {{% /expand%}}
 {{%expand "Step 3: Configure your webcam" %}}
 
+First, make sure to connect your webcam to your machine if it's not already connected (like with an inbuilt laptop webcam).
+
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `webcam` model.
 Enter a name or use the suggested name for your camera and click **Create**.
@@ -98,27 +104,31 @@ Enter a name or use the suggested name for your camera and click **Create**.
 Click the **Save** button in the top right corner of the page to save your configuration.
 Then click on the **Test** panel at the bottom of the camera's configuration panel to test the camera stream.
 
-If you don't see an image stream, you need to [configure the `video_path` attribute](/components/camera/webcam/#using-video_path).
+If you don't see an image stream, use the video path dropdown to select your camera path.
 
-For more detailed information, including optional attribute configuration, see the [`webcam` docs](/components/camera/webcam/).
+For more detailed configuration information and troubleshooting, see the [`webcam` docs](/components/camera/webcam/).
 
 {{% /expand%}}
 {{%expand "Step 4: Deploy a person detection model" %}}
 
-Now add an `ML model` service that can detect a person:
+In this guide you'll use a publicly available model to detect people.
+You will deploy this model to your machine using the ML model service.
+
 Click **+**, click **Service** and select the `ML model` type, then select the `TFLite CPU` model.
 Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
-Click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy an object detection TFLite model that has been trained to be able to detect a person.
+THen click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy a model that has been trained to be able to detect people.
+This model is a TFLite model.
 
 For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/deploy/tflite_cpu/).
 
 {{% /expand%}}
 {{%expand "Step 5: Configure a vision service" %}}
 
-To use the deployed person detection model to detect people on a camera stream, you need to configure a vision service.
+The ML model service runs the person detection model on your machine.
+To use the deployed model to detect people on a camera stream, you need to additionally configure a vision service.
 This service applies the ML model to the camera input stream.
 
 Add a `vision` **Service** and select the `ML model` model.
@@ -133,7 +143,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 Now, test your person detection in the **Test** section of the computer vision service's configuration panel or on the **CONTROL** tab.
 
 You will see your camera stream and see detections as labeled boxes on the images along with labels and confidence data.
-Detections in class `Person` with a high confidence score show positive person detections, but the ML model can also detect other objects:
+Detections with the label `Person` and a high confidence score show positive person detections, but the ML model can also detect other objects:
 
 {{<imgproc src="/get-started/quickstarts/vision-card-more-detections.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card with a lower default minimum confidence threshold." class="imgzoom">}}
 
@@ -143,7 +153,7 @@ Detections in class `Person` with a high confidence score show positive person d
 If you are seeing a lot of detections, you can set a minimum confidence threshold.
 
 On the configuration page of the vision service in the top right corner, click **{}** (Switch to advanced).
-Add the following JSON to the JSON configuration to set the `default_minimum_confidence` of the detector:
+Add the following line to the JSON configuration to set the `default_minimum_confidence` of the detector:
 
 ```json
 "default_minimum_confidence": 0.82
@@ -164,21 +174,17 @@ You can adjust this attribute as necessary.
 Click the **Save** button in the top right corner of the page to save your configuration and close and reopen the **Test** panel of the vision service configuration panel.
 Now if you view detections, you will only see detections with a confidence value higher than the `"default_minimum_confidence"` attribute.
 
-For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
-
 {{<imgproc src="/get-started/quickstarts/vision-card.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card." >}}
 
 {{% /expand%}}
 
 ## Next steps
 
-You can now detect people on a camera stream.
-These detections are also accessible using the [vision service API](/appendix/apis/services/vision/).
-
-To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
+You can now detect people or other objects on a camera stream using any device and any webcam.
+You can also use the Viam platform to train your own Machine Learning models or to configure alerts for when something is detected:
 
 {{< cards >}}
-{{% card link="/how-tos/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/platform/" %}}
+{{% card link="/appendix/apis/services/vision/" customTitle="Vision Service API" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
+{{% card link="/tutorials/projects/helmet/" %}}
 {{< /cards >}}
