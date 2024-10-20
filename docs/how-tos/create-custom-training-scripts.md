@@ -37,7 +37,7 @@ Once you upload a training script to the [Viam Registry](https://app.viam.com/re
 
 For image data, you can follow the instructions to [Create a dataset and label data](/how-tos/train-deploy-ml/#create-a-dataset-and-label-data) to create a dataset.
 
-For other data you can use the [Data Client API](/appendix/apis/data-client/) to get data stored in the Viam Cloud.
+For other data you can use the [Data Client API](/appendix/apis/data-client/) from within the training script to get data stored in the Viam Cloud.
 
 {{% /expand%}}
 
@@ -494,7 +494,7 @@ You can refer to the directory structure of this [example classification trainin
 {{% tablestep %}}
 **2. Upload a training script**
 
-To upload a custom training script to the registry, use the `viam training-script upload` command.
+To upload your custom training script to the registry, use the `viam training-script upload` command.
 
 {{< tabs >}}
 {{% tab name="Usage" %}}
