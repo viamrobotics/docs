@@ -19,8 +19,8 @@ updated: "2024-10-20" # When the tutorial was last entirely checked
 cost: "0"
 ---
 
-You can create your own custom Python training script that trains ML models to your specifications using PyTorch, Tensorflow, TFLite, ONNX, or any other Machine Learning framework.
-Once you upload your training script to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use it to build ML models in the Viam Cloud based on your datasets.
+You can create custom Python training scripts that train ML models to your specifications using PyTorch, Tensorflow, TFLite, ONNX, or any other Machine Learning framework.
+Once you upload a training script to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use it to build ML models in the Viam Cloud based on your datasets.
 
 {{< alert title="In this page" color="tip" >}}
 
@@ -69,7 +69,7 @@ my-training/
 {{% tablestep %}}
 **2. Add `setup.py` code**
 
-Add the following code to `setup.py` and dd additional required packages on line 11:
+Add the following code to `setup.py` and add additional required packages on line 11:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
 from setuptools import find_packages, setup
@@ -312,7 +312,7 @@ The `parse_args()` function in the template parses your arguments.
 
 {{% /expand %}}
 
-{{% expand "Click for more information on parsing annotations from dataset file" %}}
+{{% expand "Click for more information on parsing annotations from dataset file." %}}
 
 When you submit a training job to the Viam Cloud, Viam will pass a `dataset_file` to the training script when you train an ML model with it.
 The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
@@ -480,7 +480,7 @@ To be able to use your training script in the Viam platform, you must upload it 
 {{% tablestep %}}
 **1. Package the training script as a <file>tar.gz</file> source distribution**
 
-To run your training script on datasets in Viam, compress your project folder into a tar.gz file:
+Before you can upload your training script to Viam, you have to compress your project folder into a tar.gz file:
 
 ```sh {class="command-line" data-prompt="$" data-output="1-10"}
 tar -czvf my-training.tar.gz my-training/
@@ -609,7 +609,7 @@ You can also view your training jobs' logs with the [`viam train logs`](/cli/#tr
 ## Next steps
 
 To use your new model with machines, you must deploy it with the [ML model service](/services/ml/deploy/).
-Then you can use another service, such as the vision service, to apply the deployed model to any live data, such as camera feeds.
+Then you can use another service, such as the vision service, to apply the deployed model to camera feeds.
 
 To see models in use with machines, see one of the following resources:
 
