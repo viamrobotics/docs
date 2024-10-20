@@ -173,7 +173,7 @@ You will see your camera stream and see detections as labeled boxes on the image
 If the color is not reliably detected, change the color detector's configuration.
 Increase the **Hue Tolerance** or decrease the segment size.
 
-{{< alert title="Colors can vary dramatically based on the light source" color="tip" >}}
+{{< alert title="Colors can vary based on lighting" color="tip" >}}
 We recommend you verify the desired color detection value under the lighting conditions your machine will be in when in use.
 
 To determine a color value from the camera stream, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
