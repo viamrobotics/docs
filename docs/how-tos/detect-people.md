@@ -4,7 +4,7 @@ linkTitle: "Detect objects or people"
 type: "docs"
 tags: ["vision", "data", "services", "quickstart", "ml", "camera", "webcam"]
 no_list: true
-description: "Detect people on a camera stream from any webcam using the vision service."
+description: "Detect people and their location in an image with any webcam and a vision service."
 images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []
@@ -30,7 +30,7 @@ Like an app that provides you a live stream of your house's security cameras.
 Adding Computer Vision allows machines to analyze images and gain meaningful information from video streams.
 You can then program the machines to act based on this data, for example by alerting you when people appear on your camera stream.
 
-In this guide you'll use machine learning to detect people in a camera stream.
+In this guide you'll use a publicly available machine learning model to detect people on a camera stream.
 
 {{< alert title="You will learn" color="tip" >}}
 
@@ -119,7 +119,7 @@ Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
-THen click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy a model that has been trained to be able to detect people.
+Then click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy a model that has been trained to be able to detect people.
 This model is a TFLite model.
 
 For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/deploy/tflite_cpu/).
@@ -181,7 +181,7 @@ Now if you view detections, you will only see detections with a confidence value
 ## Next steps
 
 You can now detect people or other objects on a camera stream using any device and any webcam.
-You can also use the Viam platform to train your own Machine Learning models or to configure alerts for when something is detected:
+If you need a model to detect objects specific to your use case, you can use the Viam platform to train your own models or upload externally-trained models:
 
 {{< cards >}}
 {{% card link="/appendix/apis/services/vision/" customTitle="Vision Service API" %}}
