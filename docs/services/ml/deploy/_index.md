@@ -19,7 +19,7 @@ date: "2024-09-03"
 # SME: Aaron Casas
 ---
 
-The Machine Learning (ML) model service allows you to deploy [machine learning models](/services/ml/ml-models/) to your machine.
+The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 You can deploy:
 
 - a model you [trained](/how-tos/train-deploy-ml/)

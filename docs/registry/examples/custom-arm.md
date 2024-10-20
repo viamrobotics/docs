@@ -237,7 +237,7 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 
 ### Prepare the module for execution
 
-To [add a module](/registry/configure/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
+To [add a module](/registry/modular-resources/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 
 - runs your module when executed,
 - takes a local socket as a command line argument, and
@@ -270,4 +270,4 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Configure the module and modular resource on your machine
 
-Follow [these configuration instructions](/registry/configure/) to add your custom resource to your machine.
+Follow [these configuration instructions](/registry/modular-resources/) to add your custom resource to your machine.

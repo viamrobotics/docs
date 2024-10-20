@@ -169,7 +169,7 @@ Then, create a new dataset using your uploaded images and train a new model usin
    You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
 3. [Train a model on your dataset](/how-tos/train-deploy-ml/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
-4. [Deploy the model](/services/ml/deploy/) to your machine so it can be used by other services, such as the vision service.
+4. [Deploy the model](/services/ml/) to your machine so it can be used by other services, such as the vision service.
 
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 

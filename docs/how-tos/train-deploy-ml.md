@@ -476,7 +476,7 @@ In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/da
 
 Click **Train model** and follow the prompts.
 
-You can train your model using **Built-in training** or using a [training script](/services/ml/training-scripts/) from the Viam Registry.
+You can train your model using **Built-in training** or using a [training script](/registry/training-scripts/) from the Viam Registry.
 
 Click **Next steps**.
 
@@ -559,7 +559,7 @@ On its own the ML model service only runs the model.
 To use it to make inferences on a camera stream, you need to use it alongside a vision service.
 
 {{< table >}}
-{{% tablestep link="/services/ml/deploy/" %}}
+{{% tablestep link="/services/ml/" %}}
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Train models">}}
 **1. Deploy your ML model**
 

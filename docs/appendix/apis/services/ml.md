@@ -11,7 +11,7 @@ images: ["/services/icons/ml.svg"]
 
 The ML model service API allows you to make inferences based on a provided ML model.
 
-The [ML Model service](/services/ml/deploy/) supports the following methods:
+The [ML Model service](/services/ml/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/mlmodel-table.md" >}}
 

@@ -122,7 +122,7 @@ In the resulting ML model service configuration pane, ensure that **Deploy model
 Then click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy a model that has been trained to be able to detect people.
 This model is a TFLite model.
 
-For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/deploy/tflite_cpu/).
+For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/tflite_cpu/).
 
 {{% /expand%}}
 {{%expand "Step 5: Configure a vision service" %}}

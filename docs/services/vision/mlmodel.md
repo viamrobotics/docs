@@ -27,14 +27,14 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/services/ml/ml-models/) or [train your own models](/how-tos/train-deploy-ml/) for object detection and classification using data from the [data management service](/services/data/).
+You can add an [existing model](/registry/ml-models/) or [train your own models](/how-tos/train-deploy-ml/) for object detection and classification using data from the [data management service](/services/data/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
 
 <h4>2. Deploy your ML model</h4>
 
-To use ML models with your machine, use a suitable [ML model service](/services/ml/deploy/) to deploy and run the model.
+To use ML models with your machine, use a suitable [ML model service](/services/ml/) to deploy and run the model.
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -123,7 +123,7 @@ The following attributes are available for an `mlmodel` detector or classifier:
 <!-- prettier-ignore -->
 | Parameter | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
-| `mlmodel_name` | string | **Required** | The name of the [ML model service](/services/ml/deploy/) you want to use the model from. |
+| `mlmodel_name` | string | **Required** | The name of the [ML model service](/services/ml/) you want to use the model from. |
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `remap_input_names` | object | Optional | The name of your input tensor, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expects the input image to have BGR pixels, rather than RGB pixels. <br> Default: `false` |

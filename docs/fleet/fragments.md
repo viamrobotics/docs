@@ -267,7 +267,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{< /expand >}}
 {{< expand "Pin a module version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for a module](/registry/configure/#edit-the-configuration-of-a-module-from-the-viam-registry) named `custom-sensor` in the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for a module](/registry/modular-resources/#configuration) named `custom-sensor` in the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
