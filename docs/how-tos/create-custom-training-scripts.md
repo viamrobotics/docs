@@ -1,10 +1,10 @@
 ---
-title: "Create custom training scripts"
-linkTitle: "Create custom training scripts"
+title: "Train models with any machine learning frameworks"
+linkTitle: "Train models with custom specs"
 weight: 90
 type: "docs"
 tags: ["data management", "ml", "model training"]
-description: "How to write and upload a custom machine learning model training script to the Viam registry and use it to submit training jobs."
+description: "If you want to train models to custom specifications, write a custom training script and upload it to the Viam registry."
 # SME: Tahiya S.
 images: ["/services/icons/ml.svg"]
 icon: true
