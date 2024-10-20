@@ -190,7 +190,7 @@ In addition to other improvements, your component, service, and other resource c
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
 Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks, expanding upon the existing support for TensorFlow Lite models.
-You can now upload your own ML model(/services/ml/ml-models/) using any of these frameworks for use with the Vision service.
+You can now upload your own ML model(/registry/ml-models/) using any of these frameworks for use with the Vision service.
 
 {{% /changelog %}}
 
@@ -229,7 +229,7 @@ You can now use the [generic service](/services/generic/) to define new, unique 
 
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
-You can now upload [machine learning (ML) models](/services/ml/ml-models/) to the Viam registry, in addition to modules.
+You can now upload [machine learning (ML) models](/registry/ml-models/) to the Viam registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
@@ -922,8 +922,8 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/how-tos/train-deploy-ml/) and [deploy](/services/ml/deploy/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
-Additionally, you can upload and use existing [machine learning models](/services/ml/ml-models/) with your machines.
+You can now [train](/how-tos/train-deploy-ml/) and [deploy](/services/ml/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
+Additionally, you can upload and use existing [machine learning models](/registry/ml-models/) with your machines.
 For more information on using data synced to the cloud to train machine learning models, read [Train a model](/how-tos/train-deploy-ml/).
 
 {{% /changelog %}}

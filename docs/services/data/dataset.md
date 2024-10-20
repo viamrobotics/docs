@@ -24,7 +24,7 @@ You can create and manage datasets using the [**DATA** tab](https://app.viam.com
 Filtered datasets are views and not materialized.
 That means the data you are viewing may change as you label and train on the dataset.
 
-Your dataset is also not versioned. If you train [ML models](/services/ml/ml-models/) on your dataset and the dataset changes existing models will not be affected but any new models you train will use the dataset with the data in it at the time of training.
+Your dataset is also not versioned. If you train [ML models](/registry/ml-models/) on your dataset and the dataset changes existing models will not be affected but any new models you train will use the dataset with the data in it at the time of training.
 {{< /alert >}}
 
 ## Labels

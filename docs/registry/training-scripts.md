@@ -1,21 +1,26 @@
 ---
 title: "Training scripts"
 linkTitle: "Training scripts"
-weight: 10
+weight: 30
 type: "docs"
 description: "The Viam registry hosts custom Python ML training scripts, which you can use to train machine learning models."
 no_list: true
 icon: true
 images: ["/services/icons/ml.svg"]
 modulescript: true
-date: "2024-09-03"
+aliases:
+  - /services/ml/training-scripts/
+date: "2024-10-20"
 # updated: ""  # When the content was last entirely checked
 ---
 
 The Viam registry hosts custom Python ML training scripts, which you can use to train machine learning models.
-You can upload your own training script by following the guide to [Create custom training scripts](/how-tos/create-custom-training-scripts/).
 
-You can search the available ML training scripts from the Viam registry here:
+{{< alert title="In this page" color="note" >}}
+{{% toc %}}
+{{< /alert >}}
+
+## Training scripts in the registry
 
 {{<trainingscripts>}}
 

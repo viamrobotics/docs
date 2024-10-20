@@ -140,11 +140,11 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{% tablestep link="/services/ml/deploy/"%}}
+{{% tablestep link="/services/ml/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model service to your machine**
 
-Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/deploy/tflite_cpu/).
+Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/tflite_cpu/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}

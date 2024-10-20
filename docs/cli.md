@@ -1248,7 +1248,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### `training-script`
 
-Manage training scripts for [custom ML training](/services/ml/training-scripts/).
+Manage training scripts for [custom ML training](/registry/training-scripts/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>

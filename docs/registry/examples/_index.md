@@ -6,7 +6,6 @@ description: "Tutorials and repositories with modular resources configuration ex
 weight: 70
 type: "docs"
 no_list: true
-draft: true
 images: ["/tutorials/intermode/rover_outside.png"]
 imageAlt: "A large black intermode rover controlled with CANBUS protocol chilling outside in the snow."
 tags:

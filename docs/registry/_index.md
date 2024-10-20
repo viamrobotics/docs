@@ -28,17 +28,17 @@ menuindent: true
 The [Viam registry](https://app.viam.com/registry) is the storage and distribution system for:
 
 {{< cards >}}
-{{% manualcard link="/registry/configure/" %}}
+{{% manualcard link="/registry/modular-resources/" %}}
 
 **Modular resources** that add capabilities to your machine beyond what is built into `viam-server`
 
 {{% /manualcard %}}
-{{% manualcard link="/services/ml/ml-models/" %}}
+{{% manualcard link="/registry/ml-models/" %}}
 
 **ML models** to deploy with machine applications like computer vision
 
 {{% /manualcard %}}
-{{% manualcard link="/services/ml/training-scripts/" %}}
+{{% manualcard link="/registry/training-scripts/" %}}
 
 **Training scripts** to train and produce ML models in the Viam cloud for custom machine learning
 

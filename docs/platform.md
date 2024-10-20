@@ -60,7 +60,7 @@ And you can use the following platform capabilities and services to make your ma
 
 {{< cards >}}
 {{% relatedcard link="/services/data" %}}
-{{% relatedcard link="/services/ml/deploy" alt_title="Machine Learning" %}}
+{{% relatedcard link="/services/ml" alt_title="Machine Learning" %}}
 {{% relatedcard link="/services/motion" %}}
 {{% relatedcard link="/services/navigation" %}}
 {{% relatedcard link="/services/slam" %}}

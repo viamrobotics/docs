@@ -21,7 +21,7 @@ To work with the `tflite_cpu` ML model service, an ML model is comprised of a <f
 With the `tflite_cpu` ML model service, you can deploy:
 
 - [a model from the registry](https://app.viam.com/registry)
-- a [model](/services/ml/ml-models/) trained outside the Viam platform that you have uploaded
+- a [model](/registry/ml-models/) trained outside the Viam platform that you have uploaded
 - a model available on your machine
 
 To configure a `tflite_cpu` ML model service:
@@ -115,7 +115,7 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
 ```
 
 The `"packages"` array shown above is automatically created when you deploy the model.
-You do not need to edit the configuration yourself, except if you wish to specify a specific [version for your deployed model](/services/ml/ml-models/#versions).
+You do not need to edit the configuration yourself, except if you wish to specify a specific [version for your deployed model](/registry/ml-models/#versions).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -1,23 +1,26 @@
 ---
-title: "Machine Learning"
-linkTitle: "Machine Learning"
+title: "ML Model Service"
+linkTitle: "ML Model"
 weight: 30
 type: "docs"
-tags: ["data management", "data", "services"]
-no_list: true
-description: "Use Viam's built-in machine learning capabilities to train image classification models and deploy these models to your machines."
-images: ["/platform/ml.svg"]
+tags: ["data management", "ml", "model training"]
 aliases:
+  - /manage/data/deploy-model/
+  - /services/ml/
+  - /ml/deploy/
+  - /services/ml/deploy/
   - /manage/ml/
   - /ml/
+description: "Deploy machine learning models to a machine and use the vision service to detect or classify images or to create point clouds of identified objects."
+modulescript: true
+hide_children: true
+icon: true
+no_list: true
+images: ["/platform/ml.svg"]
 date: "2024-09-03"
 # updated: ""  # When the content was last entirely checked
 # SME: Aaron Casas
 ---
-
-<p>
-{{<imgproc src="/services/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
-</p>
 
 Machine learning (ML) provides your machines with the ability to adjust their behavior based on models that recognize patterns or make predictions.
 
@@ -27,46 +30,58 @@ Common use cases include:
 - Object classification, which enables machines to separate people, animals, plants, or other objects into predefined categories based on their characteristics, and to perform different actions based on the classes of objects.
 - Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us.
 
-Viam provides two services that together enable visual machine learning capabilities: the [ML model](/services/ml/deploy/) service and the [Computer Vision](/services/vision/) service.
+The Machine Learning (ML) model service allows you to deploy [machine learning models](/registry/ml-models/) to your machine.
+The service works with models trained inside and outside the Viam app:
+
+- You can [train](/how-tos/train-deploy-ml/) models on data from your machines.
+- You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
+- You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [Viam Registry](https://app.viam.com/registry).
+- You can use a [model](/registry/ml-models/) trained outside the Viam platform whose files are on your machine.
+
+## Configuration
+
+You must deploy an ML model service to use machine learning models on your machines.
+Once you have deployed the ML model service, you can select an [ML model](#machine-learning-models-from-registry).
+
+After deploying your model, you need to configure an additional service to use the deployed model.
+For example, you can configure an [`mlmodel` vision service](/services/vision/) to visualize the predictions your model makes.
 For other use cases, consider [creating custom functionality with a module](/how-tos/create-module/).
 
-## Machine learning models
+{{<resources_svc api="rdk:service:mlmodel" type="ML model">}}
 
-Machine Learning (ML) models are mathematical models that can recognize patterns.
-Currently Viam supports TensorFlow Lite, TensorFlow, ONNX, and PyTorch.
+{{< alert title="Add support for other models" color="tip" >}}
+ML models must be designed in particular shapes to work with the `mlmodel` [classification](/services/vision/mlmodel/) or [detection](/services/vision/mlmodel/) model of Viam's [vision service](/services/vision/).
+See [ML Model Design](/registry/advanced/mlmodel-design/) to design modular ML model service with models that work with vision.
+{{< /alert >}}
 
-- You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
-- You can [train](/how-tos/train-deploy-ml/) models on data from your machines using different training scripts.
-- You can use [ML models from the Viam Registry](https://app.viam.com/registry?type=ML+Model).
-- You can use a [model](/services/ml/ml-models/) trained outside the Viam platform that's already available on your machine.
+{{< alert title="Note" color="note" >}}
+For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
+{{< /alert >}}
 
-For more information, see [ML Models](/services/ml/ml-models/) and [Training Scripts](/services/ml/training-scripts/).
+## Machine learning models from registry
 
-{{< cards >}}
-{{% card link="/services/ml/ml-models/" noimage="True" %}}
-{{% card link="/services/ml/training-scripts/" noimage="True" %}}
-{{< /cards >}}
+You can search the machine learning models that are available to deploy on this service from the registry here:
 
-## ML Model service
+{{<mlmodels>}}
 
-The [ML model service](/services/ml/deploy/) deploys and runs a machine learning model, such as a TensorFlow or ONNX model, on your machine and makes its output accessible to other services.
-For example, the [Computer Vision](/services/vision/mlmodel/) `mlmodel` service, which can detect or classify objects, is built to work with the inferences from an ML model service.
-As a detector, the service uses these inferences to interpret image data from images on your computer or a [camera](/components/camera/), drawing bounding boxes around objects.
-As a classifier, the service returns class labels and confidence score based off the [inferences](/appendix/apis/services/ml/#infer) the underlying ML model makes from image data.
+## API
+
+The [ML model service API](/appendix/apis/services/ml/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/generated/mlmodel-table.md" >}}
 
 ## Next steps
 
-For comprehensive guides on using data capture and synchronization together with the ML model service, see:
+The ML model service only runs your model on the machine.
+To use the inferences from the model, you must use an additional service such as a [vision service](/services/vision/):
 
 {{< cards >}}
-{{% card link="/how-tos/image-data/" %}}
-{{% card link="/how-tos/train-deploy-ml/" %}}
-{{< /cards >}}
+{{% manualcard link="/services/vision/mlmodel/" title="Create a visual detector or classifier" noimage="True" %}}
 
-You can also follow one of these tutorials to see ML models in action:
+Use your model deployed with the ML model service by adding a vision service that can provide detections or classifications depending on your ML model.
 
-{{< cards >}}
-{{% card link="/tutorials/projects/helmet/" %}}
-{{% card link="/tutorials/services/color-detection-scuttle/" %}}
-{{% card link="/tutorials/projects/integrating-viam-with-openai/" customDescription="Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine." %}}
+{{% /manualcard %}}
+{{% card link="/how-tos/train-deploy-ml/" noimage="True" %}}
+{{% card link="/how-tos/detect-people/" customTitle="Detect people" noimage="true" %}}
+
 {{< /cards >}}
