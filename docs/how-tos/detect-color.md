@@ -170,7 +170,7 @@ You will see your camera stream and see detections as labeled boxes on the image
 
 ![Detection of the color rose](/services/vision/rose-detection.png)
 
-If the color is not reliably detected, change the color detectors configuration.
+If the color is not reliably detected, change the color detector's configuration.
 Increase the **Hue Tolerance** or decrease the segment size.
 
 {{< alert title="Colors can vary dramatically based on the light source" color="tip" >}}
