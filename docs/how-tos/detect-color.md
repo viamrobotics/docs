@@ -27,10 +27,10 @@ Adding computer vision allows machines to analyze images and gain meaningful inf
 You can then program the machines to act based on this data, for example by alerting you.
 
 Imagine a factory's storage unit.
-To get an idea of stock levels there are cameras, so someone can view the camera feeds to get stock levels rather than having to check in person.
+To know what to restock, there are cameras, so someone can view the camera feeds to see stock levels rather than having to check in person.
 
 Computer vision let's us do even better.
-The factory adds red paint to the walls of your factory at level where they need to restock.
+The factory adds red paint to the walls of the factory at level where they need to restock.
 Now, a computer can monitor the live stream of the stock levels and as soon as the red color becomes visible, it can alert a supervisor.
 
 This guide will show you how to use any webcam alongside a computer to detect the color red with the vision service.
@@ -159,14 +159,6 @@ Add the vision service object to the services array in your rover’s JSON confi
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< alert title="Colors can vary dramatically based on the light source" color="tip" >}}
-We recommend you verify the desired color detection value under the lighting conditions your machine will be in when in use.
-
-To determine the color value from the camera stream, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
-
-Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
-{{< /alert >}}
-
 {{% /expand %}}
 {{% expand "Step 5: Test color detection" %}}
 
@@ -180,6 +172,14 @@ You will see your camera stream and see detections as labeled boxes on the image
 
 If the color is not reliably detected, change the color detectors configuration.
 Increase the **Hue Tolerance** or decrease the segment size.
+
+{{< alert title="Colors can vary dramatically based on the light source" color="tip" >}}
+We recommend you verify the desired color detection value under the lighting conditions your machine will be in when in use.
+
+To determine a color value from the camera stream, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
+
+Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
+{{< /alert >}}
 
 {{% /expand %}}
 {{% expand "(Optional) Step 6: Limit the number of detections" %}}
