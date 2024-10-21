@@ -1,7 +1,7 @@
 ---
 title: "Machine Control Interface"
 linkTitle: "Control Interface"
-weight: 80
+weight: 30
 type: "docs"
 description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
 tags: ["fleet management", "control", "app"]

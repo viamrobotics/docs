@@ -54,7 +54,7 @@ For example, a trigger configured to fire when data is captured from the motor `
 For more information, see [Conditions](#conditions).
 
 {{% alert title="Note" color="note" %}}
-You must [configure data capture](/services/data/capture-sync/) for your component to use this trigger.
+You must [configure data capture](/services/data/) for your component to use this trigger.
 {{% /alert %}}
 
 {{% /tab %}}

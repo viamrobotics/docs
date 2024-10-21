@@ -223,7 +223,7 @@ You must configure a service with a `name` and a `type`:
 The other aspects of configuring a service are highly specific to the type of service, review the docs for the service you are interested in:
 
 {{< cards >}}
-{{% relatedcard link="/services/data/capture-sync/" %}}
+{{% relatedcard link="/services/data/" %}}
 {{% relatedcard link="/services/ml/deploy" alt_title="Machine Learning" %}}
 {{% relatedcard link="/services/motion" %}}
 {{% relatedcard link="/services/navigation" %}}

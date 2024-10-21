@@ -1,7 +1,7 @@
 ---
 title: "Configuration Fragments"
 linkTitle: "Fragments"
-weight: 40
+weight: 10
 type: "docs"
 description: Use fragments to configure many machines at the same time.
 tags: ["fleet management", "cloud", "app"]

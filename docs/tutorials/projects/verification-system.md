@@ -139,7 +139,7 @@ To add the [data management service](/services/data/) and configure data capture
    Here you can view the images captured so far from the camera on your machine.
    You should see new images appearing steadily as cloud sync uploads them from your machine.
 
-For more information, see [configure data capture for individual components](/services/data/capture-sync/#configure-data-capture-and-sync).
+For more information, see [configure data capture for individual components](/services/data/#configuration).
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different method **Type** in your data capture configuration.

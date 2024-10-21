@@ -77,7 +77,7 @@ If you do not have a physical sensor or if you're not sure which sensor model to
 Viam's [data management service](/services/data/) lets you capture data locally from sensors and then sync it to the cloud where you can access all data across different {{< glossary_tooltip term_id="machine" text="machines" >}} or {{< glossary_tooltip term_id="location" text="locations" >}}.
 
 {{< table >}}
-{{% tablestep link="/services/data/capture-sync/"%}}
+{{% tablestep link="/services/data/"%}}
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure the data management service">}}
 **1. Add the data management service**
 
