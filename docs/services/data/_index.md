@@ -102,7 +102,7 @@ If cloud sync is enabled, the data management service deletes captured data once
 With `viam-server`, the data management service will also automatically delete local data in the event your machine's local storage fills up.
 Local data is automatically deleted when _all_ of the following conditions are met:
 
-- Data capture is enabled on the data manager service
+- Data capture is enabled on the data management service
 - Local disk usage percentage is greater than or equal to 90%
 - The Viam capture directory is at least 50% of the current local disk usage
 
@@ -128,7 +128,7 @@ Then [configure data management](#resource-data-capture-configuration) on each {
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-From your machine's **CONFIGURE** in [the Viam app](https://app.viam.com), add the `data management` service.
+From your machine's **CONFIGURE** tab in [the Viam app](https://app.viam.com), add the `data management` service.
 On the panel that appears, configure data capture and sync attributes as applicable, then save your config.
 
 ![Data capture configuration](/tutorials/data-management/data-management-conf.png)
@@ -709,7 +709,7 @@ You can also access data from a resource, machine part, or machine menu.
 
 - **Sync data conditionally**: You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
   For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
-  To set up triggers for syncing see:
+  To set up triggers for syncing see [Trigger cloud sync conditionally](/how-tos/trigger-sync/).
 
 ## API
 
