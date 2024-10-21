@@ -69,12 +69,11 @@ The [arm API](/appendix/apis/components/arm/) supports the following methods:
 ## Motion planning with your arm
 
 Each arm model provided by Viam wraps the arm manufacturer's API with the Viam [arm API](#api).
-The arm API handles turning the arm on and off, sending requests for the arm to move to a set of joint positions, and engaging brakes, if supported.
+The arm API sends requests for the arm to move to a set of joint positions.
 Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/services/motion/#api).
-Some arm manufacturers build inverse kinematics into their software, but the Viam motion service bypasses it, so all arms are controlled by the motion service in the same way.
 
 For each arm model, there is a JSON file that describes the [kinematics parameters of the arm](/internals/kinematic-chain-config/#kinematic-parameters).
-When you configure an arm model, the arm driver will load and parse the kinematics file for the [frame system](/services/frame-system/) service to use.
+When you configure an arm model, the arm driver parses the kinematics file for the [frame system](/services/frame-system/) service to use.
 The frame system allows the motion service to calculate where any component of your machine is relative to any other component, other machine, or object in the environment.
 
 ## Troubleshooting
