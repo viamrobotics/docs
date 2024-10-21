@@ -14,6 +14,7 @@ aliases:
   - "/components/sensor/"
   - /micro-rdk/sensor/
   - /build/micro-rdk/sensor/
+date: "2024-10-21"
 hide_children: true
 # SME: #team-bucket
 ---

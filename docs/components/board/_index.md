@@ -15,6 +15,7 @@ aliases:
   - "/micro-rdk/board/"
   - "/build/micro-rdk/board/"
 hide_children: true
+date: "2024-10-21"
 # SMEs: Gautham, Rand
 ---
 

@@ -183,6 +183,10 @@ Then, follow these requirements to change the PWM frequencies of a pin:
    1. If there are less than 4 active frequencies, you can change the PWM frequency freely because there will be a timer available.
    2. If there are already 4 active frequencies, changing the PWM frequency of the pin will raise an error because there are no timers available. Free a timer by setting the PWM frequencies of all of the pins to 0.
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

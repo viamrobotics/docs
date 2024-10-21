@@ -10,6 +10,7 @@ tags: ["sensor", "components", "power sensor", "ina219", "ina226", "renogy"]
 icon: true
 images: ["/icons/components/power-sensor.svg"]
 modulescript: true
+date: "2024-10-21"
 aliases:
   - "/components/power-sensor/"
 hide_children: true

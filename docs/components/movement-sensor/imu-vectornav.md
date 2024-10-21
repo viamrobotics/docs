@@ -93,6 +93,10 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

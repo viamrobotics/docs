@@ -13,6 +13,7 @@ modulescript: true
 aliases:
   - "/components/gripper/"
 hide_children: true
+date: "2024-10-21"
 # SMEs: Bucket Team
 ---
 

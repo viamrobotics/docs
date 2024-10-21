@@ -10,6 +10,7 @@ icon: true
 images: ["/icons/components/imu.svg"]
 no_list: true
 modulescript: true
+date: "2024-10-21"
 aliases:
   - /components/movement-sensor/
   - /micro-rdk/movement-sensor/
