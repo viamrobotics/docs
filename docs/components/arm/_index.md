@@ -68,7 +68,6 @@ The [arm API](/appendix/apis/components/arm/) supports the following methods:
 
 ## Motion planning with your arm
 
-Each arm model provided by Viam wraps the arm manufacturer's API with the Viam [arm API](#api).
 The arm API sends requests for the arm to move to a set of joint positions.
 Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/services/motion/#api).
 
