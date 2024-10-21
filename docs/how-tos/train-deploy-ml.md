@@ -351,7 +351,7 @@ Repeat this with all images.
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep link="/services/data/dataset/" %}}
+{{% tablestep link="/fleet/dataset/" %}}
 **7. Organize data into a dataset**
 
 To train a model, your images must be in a dataset.
