@@ -23,9 +23,7 @@ For local communication between [parts](/architecture/parts/#machine-parts) Viam
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
-You can also switch between different machine parts and control the selected machine part directly from the **CONTROL** tab.
-
-{{< imgproc src="/fleet/app-usage/control-machine-part-dropdown.png" alt="The expanded Machine part dropdown menu with the main part selected on the Control tab." resize="650x" class="aligncenter" >}}
+You can also switch between different machine parts directly from the **CONTROL** tab and control the selected machine part.
 
 For more information on configuring and controlling machine parts, see [Machine Architecture](/architecture/parts/#machine-parts).
 

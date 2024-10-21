@@ -11,6 +11,6 @@ Try driving your base around using the WASD keyboard controls.
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
-You can also move straight or spin from the base panel.
+You can also move straight, spin, set power or set velocity from the base panel.
 
 If you do not see the base card in the **TEST** panel, check the **LOGS** tab for possible setup or configuration errors.
