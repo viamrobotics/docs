@@ -68,7 +68,7 @@ The [arm API](/appendix/apis/components/arm/) supports the following methods:
 
 ## Motion planning with your arm
 
-The arm API sends requests for the arm to move to a set of joint positions.
+The arm API sends requests for the arm to move to a set of joint positions, and reports the arm's current joint positions.
 Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/services/motion/#api).
 
 For each arm model, there is a JSON file that describes the [kinematics parameters of the arm](/internals/kinematic-chain-config/#kinematic-parameters).
