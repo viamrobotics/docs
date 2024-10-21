@@ -17,6 +17,7 @@ aliases:
   - "/tutorials/services/data-management-tutorial/"
   - /tutorials/services/data-mlmodel-tutorial/
   - /tutorials/projects/filtered-camera/
+  - /how-tos/deploy-ml/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 platformarea: ["ml"]
