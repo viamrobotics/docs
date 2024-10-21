@@ -24,7 +24,7 @@ date: "2024-09-18"
 {{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
 
 You can now set how long data collected by a component should remain stored in the Viam cloud in the component's data capture configuration.
-For more information, see [Data Capture and Sync](/services/data/capture-sync/).
+For more information, see [Data Capture and Sync](/services/data/).
 
 {{% /changelog %}}
 
@@ -58,7 +58,7 @@ For more information, see [Configure provisioning with viam-agent](/how-tos/prov
 {{% changelog date="2024-08-16" color="added" title="Data capture for vision" %}}
 
 Data capture is now possible for the vision service.
-For more information, see [Supported components and services](/services/data/capture-sync/#supported-components-and-services).
+For more information, see [Supported components and services](/services/data/#supported-components-and-services).
 
 {{% /changelog %}}
 
@@ -244,7 +244,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/how-tos/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any data, such as sensor readings, that you have [synced](/services/data/capture-sync/) to the Viam app from your machine.
+You can visualize any data, such as sensor readings, that you have [synced](/services/data/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -295,7 +295,7 @@ For more information, see [Query Data with SQL or MQL](/how-tos/sensor-data-quer
 
 {{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/services/data/dataset/).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/fleet/dataset/).
 
 {{% /changelog %}}
 
@@ -366,7 +366,7 @@ You now have the capability to use a [power sensor component](/components/power-
 {{% /changelog %}}
 
 {{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/capture-sync/).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/).
 It equips machines to:
 
 - Remove data that is not of interest
