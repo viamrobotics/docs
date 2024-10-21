@@ -66,18 +66,16 @@ The [arm API](/appendix/apis/components/arm/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/arm-table.md" >}}
 
-## Motion planning with your arm's software
+## Motion planning with your arm
 
-Each arm model implements the [Arm API](#api).
+Each arm model provided by Viam wraps the arm manufacturer's API with the Viam [arm API](#api).
+The arm API handles turning the arm on and off, sending requests for the arm to move to a set of joint positions, and engaging brakes, if supported.
+Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/services/motion/#api).
+Some arm manufacturers build inverse kinematics into their software, but the Viam motion service bypasses it, so all arms are controlled by the motion service in the same way.
 
-The arm models provided by Viam are built using the manufacturers software.
-The software handles turning the arm on and off, querying the arm for its joint position, sending requests for the arm to move to a set of joint positions, and engaging brakes as needed, if supported.
-
-The arm models provided by Viam each use a JSON file that describe the [kinematics parameters of each arm](/internals/kinematic-chain-config/#kinematic-parameters).
-Some arm models use the inverse kinematics supplied by the manufacturer's software, many bypass any onboard inverse kinematics, and use Viam's [motion service](/services/motion/) instead.
-
+For each arm model, there is a JSON file that describes the [kinematics parameters of the arm](/internals/kinematic-chain-config/#kinematic-parameters).
 When you configure an arm model, the arm driver will load and parse the kinematics file for the [frame system](/services/frame-system/) service to use.
-The frame system will allow you to easily calculate where any part of your machine is relative to any other part, other machine, or piece of the environment.
+The frame system allows the motion service to calculate where any component of your machine is relative to any other component, other machine, or object in the environment.
 
 ## Troubleshooting
 
