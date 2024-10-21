@@ -398,6 +398,10 @@ The following attributes are available for `customlinux` boards:
 | ---- | ---- | --------- | ----------- |
 | `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a board definitions file](#create-a-board-definitions-file). |
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

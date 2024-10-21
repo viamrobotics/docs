@@ -12,6 +12,7 @@ modulescript: true
 aliases:
   - "/components/input-controller/"
 hide_children: true
+date: "2024-10-21"
 # SME: James
 ---
 

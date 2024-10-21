@@ -165,6 +165,10 @@ For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attr
 
 {{< readfile "/static/include/components/test-control/movement-sensor-gps-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

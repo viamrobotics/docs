@@ -72,6 +72,10 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:
