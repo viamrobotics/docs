@@ -307,7 +307,7 @@ class MotorScreen extends StatelessWidget {
 }
 ```
 
-This code creates a screen with a power widget to adjust the power and a button that, when pressed, calls on the `setPower()` method to set the power of the motor to 35% spinning the motor forwards, waits three seconds, and then stops the motor.
+This code creates a screen with a power widget to adjust the power and a button that, when pressed, calls on the `setPower()` method to spin the motor forwards at 35% power, waits three seconds to let it spin, and then stops the motor.
 
 Then, replace the contents of <file>robot_screen.dart</file> with the following file, or add the highlighted lines of code to your program in the locations indicated:
 
