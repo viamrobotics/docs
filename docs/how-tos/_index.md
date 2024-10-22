@@ -75,8 +75,10 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Create and manage modular resources" "4" "INTERMEDIATE" >}}
+{{< how-to-expand "Create and manage modular resources" "5" "INTERMEDIATE" >}}
+
 {{< cards >}}
+{{% card link="/how-tos/hello-world-module/" noimage="true" %}}
 {{% card link="/how-tos/sensor-module/" noimage="true" %}}
 {{% card link="/how-tos/create-module/" noimage="true" %}}
 {{% card link="/how-tos/upload-module/" noimage="true" %}}

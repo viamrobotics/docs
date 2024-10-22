@@ -1,12 +1,12 @@
 ---
 title: "Create a sensor module with Python"
-linkTitle: "Create a sensor module"
+linkTitle: "Create a sensor module with Python"
 type: "docs"
 weight: 26
 images: ["/icons/components/sensor.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
-description: "Add a custom resource by creating and deploying a module to your machine."
+description: "Add support for a new model of sensor by creating a module written in Python."
 languages: ["python"]
 viamresources: ["sensor"]
 platformarea: ["registry"]
@@ -20,7 +20,7 @@ A sensor is anything that collects data.
 
 A sensor could be something we typically think of as a sensor, like a temperature and humidity sensor, or it could be a "virtual," non-hardware sensor like a service that gets stock market data.
 
-Since a sensor can be so many different things, there's a good chance you're on this page because though there are various [built-in and modular sensor models available in Viam](/components/sensor/#configuration), you have a different, unsupported sort of sensor you'd like to use.
+Since a sensor can be so many different things, although there are various [built-in and modular sensor models available in Viam](/components/sensor/#configuration), you may have a different, unsupported sort of sensor you'd like to use.
 
 Making a module to support your sensor will allow you to use it with Viam's data capture and sync tools, as well as using the sensor API (using any of the different programming language [SDKs](/sdks/)) to get readings from it.
 
@@ -37,7 +37,7 @@ Making a module to support your sensor will allow you to use it with Viam's data
 
 ## Start with a test script
 
-Start by getting a test script working so you can check that the sensor code itself works before packaging it into a module.
+Start by getting a test script working so you can check that your sensor code itself works before packaging it into a module.
 
 Since this how-to uses Python, you need a Python test script so that you can more easily wrap it in a Python-based module.
 You'll still be able to use any of Viam's SDKs to get readings from machines that use the module.

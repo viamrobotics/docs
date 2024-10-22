@@ -26,7 +26,7 @@ modulescript: true
 ---
 
 The Viam Registry hosts {{< glossary_tooltip term_id="module" text="modules" >}} that provide modular resources.
-A modular resource is a model of a {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} that you can use on your machines.
+A modular resource is a non-built-in model of a {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} that you can use on your machines.
 
 {{< alert title="In this page" color="note" >}}
 {{% toc %}}
@@ -323,11 +323,12 @@ Modules run alongside [`viam-server`](/architecture/viam-server/) as separate pr
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/architecture/viam-server/#dependency-management), [start-up](/architecture/viam-server/#start-up), [reconfiguration](/architecture/viam-server/#reconfiguration), [data management](/services/data/#configuration), and [shutdown](/architecture/viam-server/#shutdown) behavior of your modular resource.
 
-## Next steps
+## Create a module
 
 You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the respective [component APIs](/appendix/apis/components/) or [service APIs](/appendix/apis/services/).
 
 {{< cards >}}
+{{% card link="/how-tos/hello-world-module/" class="fit-contain" noimage=true %}}
 {{% card link="/how-tos/sensor-module/" class="fit-contain" noimage=true %}}
 {{% card link="/how-tos/create-module/" class="fit-contain" noimage=true %}}
 {{< /cards >}}
