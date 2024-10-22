@@ -289,24 +289,16 @@ class MotorScreen extends StatelessWidget {
         // [Gripper.open] on a gripper, or [Sensor.readings] on a Sensor.
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           ElevatedButton(
-            onPressed: () => {motor.goFor(100, -10)},
-            style: ElevatedButton.styleFrom(
-            minimumSize: Size(80, 20), // Adjusts width and height of the button
-            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
-          ),
-            child: const Text('Go Backwards 10 Revolutions', textAlign: TextAlign.center),
-          ),
-          const SizedBox(width: 16), // Padding between widgets
-          ElevatedButton(
             onPressed: () async {
-              motor.setPower(0.35);
+              motor.setPower(0.35); // Set motor power
               await Future.delayed(Duration(seconds: 3)); // Wait for 3 seconds
+              await motor.stop();
             },
             style: ElevatedButton.styleFrom(
             minimumSize: Size(80, 20), // Adjusts width and height of the button
             padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
           ),
-            child: const Text('Go Forwards 10 Revolutions', textAlign: TextAlign.center),
+            child: const Text('Set motor power', textAlign: TextAlign.center),
           ),
         ]),
       ]),
