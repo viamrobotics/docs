@@ -8,6 +8,8 @@ tags: ["fleet management", "cloud", "app"]
 aliases:
   - /manage/fleet/organizations/
   - /fleet/organizations/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 An organization is a group of one or more locations that helps you organize your fleet.

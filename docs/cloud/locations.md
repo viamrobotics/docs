@@ -9,6 +9,8 @@ tags: ["fleet management", "cloud", "app"]
 aliases:
   - /manage/fleet/locations/
   - /fleet/locations/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 In Viam, every machine belongs to a location.

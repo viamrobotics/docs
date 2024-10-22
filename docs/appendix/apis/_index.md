@@ -12,6 +12,8 @@ aliases:
   - /program/apis/
   - /build/program/apis/
 no_list: true
+date: "2024-10-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API) described through [protocol buffers](https://developers.google.com/protocol-buffers).

@@ -8,6 +8,8 @@ imageAlt: "Viam architecture"
 images: ["/viam/machine-components.png"]
 tags: ["components", "services", "communication"]
 menuindent: true
+date: "2024-08-13"
+# updated: ""  # When the content was last entirely checked
 ---
 
 This page provides an overview of how a machine is structured, including on-device and cloud communications:

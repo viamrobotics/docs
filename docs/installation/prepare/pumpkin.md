@@ -11,6 +11,8 @@ aliases:
   - /installation/prepare/pumpkin/
   - /get-started/installation/prepare/pumpkin/
   - /get-started/prepare/pumpkin/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 To use a [Mediatek Genio 500 Pumpkin single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:

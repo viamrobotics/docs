@@ -6,6 +6,8 @@ type: "docs"
 description: "Commands for getting sensor readings."
 icon: true
 images: ["/icons/components/sensor.svg"]
+date: "2022-10-10"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The sensor API allows you to get measurements from your [sensor components](/components/sensor/).

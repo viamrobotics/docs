@@ -11,6 +11,8 @@ aliases:
   - "/try-viam/reserve-a-rover/"
   - "/get-started/try-viam/reserve-a-rover/"
 toc_hide: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.

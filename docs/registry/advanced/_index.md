@@ -18,6 +18,8 @@ description: "Some usage may require you to define new APIs or deploy custom com
 aliases:
   - "/program/extend/"
   - "/modular-resources/advanced/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Some use cases may require advanced considerations when designing or deploying modular resources.

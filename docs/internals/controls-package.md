@@ -5,6 +5,8 @@ weight: 10
 type: "docs"
 description: "The Control Package implements feedback control on an endpoint."
 # SME: Nicolas Menard, Rand, Martha
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 [Encoded motors](/components/motor/encoded-motor/) and [sensor controlled bases](/components/base/sensor-controlled/) use a control loop that is implemented by `viam-server`.

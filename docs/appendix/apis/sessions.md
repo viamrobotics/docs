@@ -19,6 +19,8 @@ tags:
 aliases:
   - /program/apis/sessions/
   - /build/program/apis/sessions/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 When you connect to a machine using an SDK, the SDK connects to the machine's `viam-server` instance as a _client_.

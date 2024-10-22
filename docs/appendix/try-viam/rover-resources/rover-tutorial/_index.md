@@ -10,6 +10,8 @@ description: "A list of the contents of the Viam Rover 2 kit, instructions for w
 no_list: true
 aliases:
   - "/get-started/try-viam/rover-resources/rover-tutorial"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 {{% alert title="Tip" color="tip" %}}

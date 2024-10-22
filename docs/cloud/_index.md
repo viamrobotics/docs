@@ -8,6 +8,8 @@ tags: ["fleet management", "cloud", "app"]
 images: ["/fleet/fleet.svg"]
 no_list: true
 menuindent: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Viam fleet management allows you to organize, manage, and control any number of machines alone or in collaboration with others.

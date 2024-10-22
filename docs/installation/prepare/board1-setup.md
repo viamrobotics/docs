@@ -8,6 +8,8 @@ images: ["/installation/thumbnails/prepare.png"]
 imageAlt: "<board-series-model>"
 no_list: true
 draft: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The [<board-series-model>](http://example.com) from <manufacturer/organization> is a <brief-board-description-including-features-and-specifications>.

@@ -17,6 +17,8 @@ aliases:
   - "/ml/vision/segmentation/"
   - "/services/vision/segmentation/"
   - /ml/vision/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SMEs: Bijan, Khari
 ---
 

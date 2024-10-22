@@ -9,6 +9,8 @@ tags: ["camera", "components"]
 aliases:
   - "/components/camera/calibrate/"
 no_component: true
+date: "2024-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 To calibrate a camera, you can use the classical example of a [chessboard](https://en.wikipedia.org/wiki/Chessboard_detection).

@@ -23,6 +23,8 @@ aliases:
   - "/modular-resources/key-concepts/"
   - "/modular-resources/"
 menuindent: true
+date: "2024-10-22"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The [Viam registry](https://app.viam.com/registry) is the storage and distribution system for:

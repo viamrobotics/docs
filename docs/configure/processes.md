@@ -7,6 +7,8 @@ description: "Configure a process to automatically run a command such as a scrip
 tags: ["processes"]
 aliases:
   - /build/configure/processes/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 To automatically run a specified command when your machine boots, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.

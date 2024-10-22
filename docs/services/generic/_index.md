@@ -13,6 +13,8 @@ modulescript: true
 hide_children: true
 aliases:
   - /registry/advanced/generic/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SMEs:
 ---
 

@@ -6,6 +6,8 @@ type: "docs"
 description: "Commands for getting measurements of voltage, current, and power consumption."
 icon: true
 images: ["/icons/components/power-sensor.svg"]
+date: "2022-10-10"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The power sensor API allows you to give commands to your [power sensor components](/components/power-sensor/) for getting measurements of voltage, current, and power consumption.

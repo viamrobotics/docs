@@ -9,6 +9,8 @@ aliases:
   - "/product-overviews/rdk"
   - "/build/program/rdk"
   - /internals/rdk/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.

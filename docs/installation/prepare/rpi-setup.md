@@ -14,6 +14,8 @@ aliases:
   - /get-started/installation/prepare/rpi-setup/
   - /get-started/prepare/rpi-setup/
 # SME: James
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/drl2p2of-qA">}}

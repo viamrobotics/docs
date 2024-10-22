@@ -8,6 +8,8 @@ description: "Configure your rover by adding the Viam-provided configuration fra
 aliases:
   - "/try-viam/rover-resources/rover-tutorial-fragments/"
   - "/get-started/try-viam/rover-resources/rover-tutorial-fragments/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 To be able to drive your rover, you need to configure it.

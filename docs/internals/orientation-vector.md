@@ -6,6 +6,8 @@ type: "docs"
 description: "A description of Viam's orientation vector object."
 aliases:
   - "/appendix/orientation-vector"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 An _orientation vector_ specifies the orientation of an object in 3D space.

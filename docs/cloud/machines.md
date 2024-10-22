@@ -10,6 +10,8 @@ aliases:
   - /fleet/robots/
   - /manage/fleet/machines/
   - /fleet/machines/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 A _machine_ is an organizational concept, consisting of either one <em>{{< glossary_tooltip term_id="part" text="part" >}}</em>, or multiple _parts_ working closely together to complete tasks.

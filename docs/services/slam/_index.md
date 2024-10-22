@@ -11,6 +11,8 @@ no_list: true
 aliases:
   - "/services/slam/"
   - "/mobility/slam/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SMEs: John N.
 ---
 

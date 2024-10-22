@@ -7,6 +7,8 @@ type: "docs"
 description: "Give commands for getting the current GPS location, linear velocity and acceleration, angular velocity and acceleration and heading."
 icon: true
 images: ["/icons/components/imu.svg"]
+date: "2022-10-10"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The movement sensor API allows you to give commands to your [movement sensor components](/components/movement-sensor/) for getting a GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.

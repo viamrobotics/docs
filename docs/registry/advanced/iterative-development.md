@@ -7,6 +7,8 @@ tags: ["modules", "modular resources", "registry"]
 description: "Test your modules locally before uploading to the Viam registry, and use prerelease versioning to publish beta versions of your module."
 icon: true
 images: ["/services/icons/ml.svg"]
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Once you have [created the first version of your module](/how-tos/create-module/), you can use the procedure outlined on this page to iterate on your design, and test changes quickly.

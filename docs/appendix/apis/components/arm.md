@@ -6,6 +6,8 @@ type: "docs"
 description: "Give commands to your arm components for linear motion planning, including self-collision prevention and obstacle avoidance."
 icon: true
 images: ["/icons/components/arm.svg"]
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The arm API allows you to give commands to your [arm components](/components/arm/) for linear motion planning, including self-collision prevention and obstacle avoidance.

@@ -8,6 +8,8 @@ tags: ["fleet management", "cloud", "app"]
 images: ["/how-tos/one-to-many/new-fragment.png"]
 aliases:
   - /fleet/configure-a-fleet/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 If you have multiple machines with similar configurations, you can use a _fragment_ to configure all of the machines at the same time.

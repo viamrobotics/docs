@@ -11,6 +11,8 @@ aliases:
   - /installation/prepare/sk-tda4vm/
   - /get-started/installation/prepare/sk-tda4vm/
   - /get-started/prepare/sk-tda4vm/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 ## Hardware requirements

@@ -11,6 +11,8 @@ aliases:
   - /installation/prepare/jetson-agx-orin-setup/
   - /get-started/installation/prepare/jetson-agx-orin-setup/
   - /get-started/prepare/jetson-agx-orin-setup/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SMEs: Pete Garafano
 ---
 

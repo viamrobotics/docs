@@ -13,6 +13,8 @@ aliases:
   - /build/
 no_list: true
 menuindent: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Before you can program a smart machine, you must configure it.

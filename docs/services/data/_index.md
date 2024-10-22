@@ -17,6 +17,8 @@ aliases:
   - /data/cloud-sync/
   - /services/data/capture-sync/
 no_service: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The data management service captures data from one or more {{< glossary_tooltip term_id="resource" text="resources" >}} locally, and syncs it to cloud storage when a connection to the cloud is available.

@@ -4,6 +4,8 @@ linkTitle: "Troubleshooting"
 weight: 40
 type: "docs"
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.
