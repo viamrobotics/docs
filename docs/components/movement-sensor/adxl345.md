@@ -17,7 +17,7 @@ This three axis accelerometer supplies linear acceleration data, supporting the 
 
 If you are using a [Viam Rover](/appendix/try-viam/), this is the accelerometer on it.
 
-Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Physically connect your movement sensor to your machine's computer and power both on.
 Then, configure the movement sensor:
 
 {{< tabs >}}

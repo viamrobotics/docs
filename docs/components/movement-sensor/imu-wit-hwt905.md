@@ -17,7 +17,7 @@ To get all the raw sensor data, you can use the [sensor](/components/sensor/) [`
 
 The `imu-wit-hwt905` movement sensor model supports the [HWT905-TTL IMU](https://www.wit-motion.com/proztgjd/39.html) manufactured by WitMotion.
 
-Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Physically connect your movement sensor to your machine's computer and power both on.
 Then, configure the movement sensor:
 
 {{< tabs >}}

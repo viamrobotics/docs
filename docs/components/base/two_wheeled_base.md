@@ -23,7 +23,7 @@ The`two_wheeled_base` base model is not currently available as a built-in option
 
 {{< /alert >}}
 
-Make sure to first physically assemble the base, connect it to your machine's computer, and turn it on if you want to be able to test the base as you configure it.
+If you want to test your base as you configure it, physically assemble the base, connect it to your machine's computer, and turn it on.
 Then, configure a `two_wheeled_base` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}

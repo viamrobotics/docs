@@ -16,7 +16,7 @@ You can explore the source code on the [Viam-labs Yahboom GitHub repository](htt
 
 Configure a `dofbot` arm to add it to your machine.
 
-Connect your arm to your machine and turn it on if you want to test your arm as you configure it.
+If you want to test your arm as you configure it, connect it to your machine's computer and turn it on.
 Then, configure the arm:
 
 {{< tabs >}}

@@ -21,7 +21,7 @@ The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
 The `gps-nmea` model can be connected using USB and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board.
 
-Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Physically connect your movement sensor to your machine's computer and power both on.
 Then, configure the movement sensor:
 
 {{< tabs >}}

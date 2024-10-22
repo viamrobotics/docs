@@ -14,7 +14,7 @@ component_description: "Supports the Sensirion SHT3x-DIS temperature and humidit
 ---
 
 Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your machine.
-Make sure to physically connect your sensor to your machine's computer and turn it on.
+Physically connect your sensor to your machine's computer and power both on.
 Then, configure the sensor:
 
 {{< tabs >}}

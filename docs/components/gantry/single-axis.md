@@ -15,6 +15,7 @@ component_description: "Supports a gantry with a singular linear rail."
 
 Configure a `single-axis` gantry to integrate a single-axis gantry into your machine.
 First, be sure to physically assemble the gantry and connect it to your machine's computer.
+Power both on.
 Also, configure any [motor components](/components/motor/) that are part of the gantry.
 Then, configure the gantry:
 

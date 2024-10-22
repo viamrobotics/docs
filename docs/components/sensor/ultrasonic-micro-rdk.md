@@ -14,7 +14,7 @@ aliases:
 ---
 
 Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your machine.
-Make sure to physically connect your sensor to your machine's microcontroller and turn it on.
+Physically connect your sensor to your microcontroller and power both on.
 Then, configure the sensor:
 
 {{< tabs >}}

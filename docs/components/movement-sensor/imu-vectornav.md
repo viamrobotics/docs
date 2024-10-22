@@ -17,7 +17,7 @@ Acceleration and magnetometer data are available by using the [sensor](/componen
 
 The `imu-vectornav` movement sensor model supports IMUs manufactured by [VectorNav](https://www.vectornav.com/products) that support SPI connection.
 
-Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Physically connect your movement sensor to your machine's computer and power both on.
 Then, configure the movement sensor:
 
 {{< tabs >}}

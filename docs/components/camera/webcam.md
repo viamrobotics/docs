@@ -17,7 +17,7 @@ toc_hide: true
 `webcam` is the general camera model.
 If the camera drivers are among those in [this mediadevices repository](https://github.com/pion/mediadevices), the camera will work with the webcam model.
 
-First, connect your camera to your machine's computer (unless it is built-in like a webcam on a laptop).
+First, connect your camera to your machine's computer (unless it is built-in like a webcam on a laptop) and power both on.
 Then, configure your camera:
 
 {{< tabs name="Configure a Webcam" >}}

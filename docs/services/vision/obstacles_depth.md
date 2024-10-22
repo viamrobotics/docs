@@ -16,7 +16,7 @@ _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 The `obstacles_depth` vision service model is for depth cameras, and is best for motion planning with transient obstacles.
 Use this segmenter to identify well separated objects above a flat plane.
 
-First, make sure your camera is connected to your machine's computer and powered on.
+First, make sure your camera is connected to your machine's computer and both are powered on.
 Then, configure an `obstacles_depth` segmenter:
 
 {{< tabs >}}

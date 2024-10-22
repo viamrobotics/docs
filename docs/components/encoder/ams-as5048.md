@@ -18,7 +18,7 @@ This is an absolute encoder that uses an I<sup>2</sup>C or SPI interface to conn
 Any [motor](/components/motor/) using the `AMS-AS5048` encoder must have its `ticks_per_rotation` attribute configured as `1` because this encoder provides angular measurements directly.
 {{% /alert %}}
 
-First, be sure to connect the encoder to your machine's computer.
+To be able to test the encoder as you configure it, connect the encoder to your machine's computer and power both on.
 Then, configure the encoder:
 
 {{< tabs name="Configure an AMS-AS5048 Encoder" >}}

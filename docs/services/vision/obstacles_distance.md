@@ -18,7 +18,7 @@ It is best for transient obstacle avoidance.
 
 For example, if you have an ultrasonic distance sensor as [`viam:ultrasonic:camera`](https://github.com/viam-modules/viam-ultrasonic), this model will query the sensor `"num_queries"` times, and then take the average point from those measurements and return that as an obstacle.
 
-First, make sure your camera is connected to your machine's computer and powered on.
+First, make sure your camera is connected to your machine's computer and both are powered on.
 Then, configure the service:
 
 {{< tabs >}}

@@ -15,7 +15,7 @@ micrordk_component: true
 ---
 
 Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins into your machine.
-Make sure to physically connect your sensor to your microcontroller and turn it on.
+Physically connect your servo to your microcontroller and power both on.
 Then, configure the servo:
 
 {{< tabs name="Configure a gpio Servo" >}}

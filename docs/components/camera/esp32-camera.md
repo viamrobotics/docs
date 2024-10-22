@@ -40,7 +40,7 @@ The `esp32-camera` camera model does not currently support the [data management 
 
 {{< /alert >}}
 
-First, connect your camera to your machine's microcontroller and turn it on.
+First, connect your camera to your machine's microcontroller and turn the microcontroller on.
 Then, configure your camera:
 
 {{< tabs name="Configure a esp32-camera" >}}

@@ -15,7 +15,7 @@ toc_hide: true
 
 The `gyro-mpu6050` movement sensor model supports a combination [gyroscope and accelerometer manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/).
 
-Make sure to physically connect your movement sensor to your machine's computer and turn it on.
+Physically connect your movement sensor to your machine's computer and power both on.
 Then, configure the movement sensor:
 
 {{< tabs >}}

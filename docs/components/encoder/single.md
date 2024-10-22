@@ -14,7 +14,7 @@ component_description: "A single pin 'pulse output' encoder which returns its re
 A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the [board](/components/board/).
 The direction of spin is dictated by the [motor](/components/motor/) that has this encoder's name in its `encoder` attribute field.
 
-First, be sure to connect the encoder to your machine's computer.
+To be able to test the encoder as you configure it, connect the encoder to your machine's computer and power both on.
 Then, configure the encoder:
 
 {{< tabs name="Configure an single encoder" >}}
