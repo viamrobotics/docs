@@ -106,7 +106,7 @@ The following properties are available for modular resources:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `attributes` | object | **Required** | Any configuration attributes for your model Check the module's GitHub Readme for information about available configuration attributes for a resource. |
+| `attributes` | object | Sometimes **Required** | Any configuration attributes for your model Check the module's GitHub Readme for information about available configuration attributes for a resource. |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). This will be `rdk` unless the module implements a [custom, non-standard API](/registry/advanced/). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers). |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers). |
@@ -228,9 +228,9 @@ The following properties are configurable for each module:
 | ---- | ---- | --------- | ----------- |
 | `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/registry/modular-resources/#module-versioning).</p> |
 | `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam registry](https://app.viam.com/registry) or is only available [locally](/how-tos/create-module/#test-your-module-locally) on your computer. |
-| `name` | string | **Required** | The module author's organization namespace, followed by an underscore, followed by the name of the module. `<module namespace>_<module name>` |
-| `module_id` | string | **Required** | The module namespace, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} |
-| `env` | object | **Optional** | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environments variables](#environment-variables). |
+| `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. |
+| `name` | string | **Required** | A name for this instance of the module. |
+| `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environments variables](#environment-variables). |
 
 #### Module versioning
 
@@ -321,7 +321,7 @@ To set the path to a program or library on a machine, you can set a system varia
 
 Modules run alongside [`viam-server`](/architecture/rdk/) as separate processes, communicating with `viam-server` over UNIX sockets.
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
-`viam-server` manages the [dependencies](/architecture/rdk/#dependency-management), [start-up](/architecture/rdk/#start-up), [reconfiguration](/architecture/rdk/#reconfiguration), [data management](/services/data/capture-sync/#configure-data-capture-and-sync), and [shutdown](/architecture/rdk/#shutdown) behavior of your modular resource.
+`viam-server` manages the [dependencies](/architecture/rdk/#dependency-management), [start-up](/architecture/rdk/#start-up), [reconfiguration](/architecture/rdk/#reconfiguration), [data management](/services/data/#configuration), and [shutdown](/architecture/rdk/#shutdown) behavior of your modular resource.
 
 ## Next steps
 
