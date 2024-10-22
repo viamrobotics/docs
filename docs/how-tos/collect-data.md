@@ -126,7 +126,7 @@ For more detailed information, including optional attribute configuration, see t
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
+For more detailed information, see [data management service](/services/data/).
 
 {{< /expand >}}
 {{< expand "Step 5: View the captured image data" >}}
@@ -233,7 +233,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
+For more detailed information, see [data management service](/services/data/).
 
 {{< /expand >}}
 {{< expand "Step 6: View the captured sensor data" >}}

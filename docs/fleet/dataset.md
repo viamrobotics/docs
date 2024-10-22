@@ -2,7 +2,7 @@
 title: "Datasets"
 linkTitle: "Datasets"
 description: "Label data and create datasets for managing data and creating machine learning models."
-weight: 30
+weight: 50
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 imageAlt: "Label data and create datasets"
