@@ -21,6 +21,7 @@ Find more information in the [encoded motor documentation](/components/motor/enc
 {{< /alert >}}
 
 To configure a DC motor as a component of your machine, first make sure the motor is wired to a suitable motor driver, which is in turn wired to a board.
+If you want to test the motor as you configure it, connect the system to power.
 Connect the system to power if you want to test it while configuring.
 Configure the [board](/components/board/) to which the motor driver is wired.
 Then configure your motor:
