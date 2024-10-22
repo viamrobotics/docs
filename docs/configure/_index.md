@@ -224,7 +224,7 @@ The other aspects of configuring a service are highly specific to the type of se
 
 {{< cards >}}
 {{% relatedcard link="/services/data/" %}}
-{{% relatedcard link="/services/ml/deploy" alt_title="Machine Learning" %}}
+{{% relatedcard link="/services/ml/" alt_title="Machine Learning" %}}
 {{% relatedcard link="/services/motion" %}}
 {{% relatedcard link="/services/navigation" %}}
 {{% relatedcard link="/services/slam" %}}

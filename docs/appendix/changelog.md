@@ -24,7 +24,7 @@ date: "2024-09-18"
 {{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
 
 You can now set how long data collected by a component should remain stored in the Viam cloud in the component's data capture configuration.
-For more information, see [Data Capture and Sync](/services/data/).
+For more information, see [Data management service](/services/data/).
 
 {{% /changelog %}}
 

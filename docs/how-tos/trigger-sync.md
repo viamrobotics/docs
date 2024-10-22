@@ -45,7 +45,7 @@ You can use it as the basis of your own custom logic.
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management](/services/data/) service:
+Add the [data management service](/services/data/):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 

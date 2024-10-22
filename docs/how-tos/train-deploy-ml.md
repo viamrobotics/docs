@@ -7,17 +7,17 @@ tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
 description: "Use your image data to train a model, so your machines can make inferences about their environments."
 aliases:
-- /use-cases/deploy-ml/
-- /manage/ml/train-model/
-- /ml/train-model/
-- /services/ml/train-model/
-- /tutorials/data-management-tutorial/
-- /tutorials/data-management/
-- /data-management/data-management-tutorial/
-- /tutorials/services/data-management-tutorial/
-- /tutorials/services/data-mlmodel-tutorial/
-- /tutorials/projects/filtered-camera/
-- /how-tos/deploy-ml/
+  - /use-cases/deploy-ml/
+  - /manage/ml/train-model/
+  - /ml/train-model/
+  - /services/ml/train-model/
+  - /tutorials/data-management-tutorial/
+  - /tutorials/data-management/
+  - /data-management/data-management-tutorial/
+  - /tutorials/services/data-management-tutorial/
+  - /tutorials/services/data-mlmodel-tutorial/
+  - /tutorials/projects/filtered-camera/
+  - /how-tos/deploy-ml/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 platformarea: ["ml"]

@@ -161,7 +161,7 @@ For more information, refer to [Write your new resource model definition](/how-t
 
 The filter function in your custom filter module must contain two critical elements:
 
-1. A utility function that will check if the caller of the filter function is the [data management](/services/data/) service.
+1. A utility function that will check if the caller of the filter function is the [data management service](/services/data/).
 1. A safeguard that ensures if the data management service is not the caller, an error and the unfiltered data is returned.
 
 {{< alert title="Important" color="note" >}}
