@@ -279,31 +279,26 @@ class MotorScreen extends StatelessWidget {
         ViamMotorWidget(motor: motor),
         const SizedBox(height: 10), // Padding between widgets
 
-        // Here we have 2 buttons that control the [Motor]:
-        // Either go backward or forward for 10 revolutions.
+        // Here we have a button that controls the [Motor]:
+        // Spin the motor at 35% power forwards for three seconds.
         // The [Motor] resource provides many control functions, but here
-        // we are using the [Motor.goFor] method.
+        // we are using the [Motor.setPower] method.
         //
         // You can extrapolate this to other Viam resources.
         // For example, you could make the onPressed function call
         // [Gripper.open] on a gripper, or [Sensor.readings] on a Sensor.
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           ElevatedButton(
-            onPressed: () => {motor.goFor(100, -10)},
+            onPressed: () async {
+              motor.setPower(0.35); // Set motor power to 35%
+              await Future.delayed(Duration(seconds: 3)); // Let the motor spin for 3 seconds
+              await motor.stop(); // Stop the motor
+            },
             style: ElevatedButton.styleFrom(
             minimumSize: Size(80, 20), // Adjusts width and height of the button
             padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
           ),
-            child: const Text('Go Backwards 10 Revolutions', textAlign: TextAlign.center),
-          ),
-          const SizedBox(width: 16), // Padding between widgets
-          ElevatedButton(
-            onPressed: () => {motor.goFor(100, 10)},
-            style: ElevatedButton.styleFrom(
-            minimumSize: Size(80, 20), // Adjusts width and height of the button
-            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
-          ),
-            child: const Text('Go Forwards 10 Revolutions', textAlign: TextAlign.center),
+            child: const Text('Set motor power', textAlign: TextAlign.center),
           ),
         ]),
       ]),
@@ -312,7 +307,7 @@ class MotorScreen extends StatelessWidget {
 }
 ```
 
-This code creates a screen with a power widget to adjust the power and two buttons that, when pressed, call on the `goFor()` method to make the motor either go forwards 10 revolutions or go backwards 10 revolutions.
+This code creates a screen with a power widget to adjust the power and a button that, when pressed, calls on the `setPower()` method to spin the motor forwards at 35% power, waits three seconds to let it spin, and then stops the motor.
 
 Then, replace the contents of <file>robot_screen.dart</file> with the following file, or add the highlighted lines of code to your program in the locations indicated:
 
