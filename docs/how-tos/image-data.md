@@ -11,7 +11,7 @@ aliases:
   - /tutorials/projects/filtered-camera
 languages: []
 viamresources: ["camera", "data_manager", "mlmodel", "vision"]
-platformarea: ["ml", "data"]
+platformarea: ["data"]
 level: "Intermediate"
 date: "2024-08-26"
 # updated: ""  # When the tutorial was last entirely checked
@@ -24,7 +24,7 @@ If you want to control the volume of data your machine writes and syncs, you can
 The filtering camera uses a computer vision model to detect objects in your camera feed and selectively stores and uploads only those images that are matched by your model.
 
 With your images synced to the cloud, you can view images from all your machines in the Viam app interface.
-From there, you can use your image data to do things like [train ML models](/how-tos/deploy-ml/).
+From there, you can use your image data to do things like [train ML models](/how-tos/train-deploy-ml/).
 
 ![Data view](/services/data/delete_all.png)
 <br>
@@ -95,7 +95,6 @@ With cloud sync enabled, captured data is automatically uploaded to the Viam app
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
 Click on the **...** menu of the camera component and click on **View captured data**.
@@ -141,11 +140,11 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{% tablestep link="/services/ml/deploy/"%}}
+{{% tablestep link="/services/ml/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model service to your machine**
 
-Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/deploy/tflite_cpu/).
+Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/tflite_cpu/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
@@ -244,10 +243,10 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have collected image data, you can [train new computer vision models](/how-tos/deploy-ml/) or [programmatically access your data](https://docs.viam.com/appendix/apis/data-client/):
+Now that you have collected image data, you can [train new computer vision models](/how-tos/train-deploy-ml/) or [programmatically access your data](https://docs.viam.com/appendix/apis/data-client/):
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/appendix/apis/data-client/" %}}
 {{< /cards >}}
 

@@ -131,6 +131,10 @@ The sections in the panel include the angular velocity and linear acceleration.
 
 {{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-mpu6050.png" resize="800x" declaredimensions=true alt="The movement sensor component in the control tab">}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

@@ -223,8 +223,8 @@ You must configure a service with a `name` and a `type`:
 The other aspects of configuring a service are highly specific to the type of service, review the docs for the service you are interested in:
 
 {{< cards >}}
-{{% relatedcard link="/services/data/capture-sync/" %}}
-{{% relatedcard link="/services/ml/deploy" alt_title="Machine Learning" %}}
+{{% relatedcard link="/services/data/" %}}
+{{% relatedcard link="/services/ml/" alt_title="Machine Learning" %}}
 {{% relatedcard link="/services/motion" %}}
 {{% relatedcard link="/services/navigation" %}}
 {{% relatedcard link="/services/slam" %}}
@@ -258,8 +258,10 @@ Find more information in the [processes documentation](/configure/processes/).
 Modules allow you to add [modular resources](/registry/) to your machines which add resource types or models that are not built into Viam.
 Many models are available in the [registry](https://app.viam.com/registry) and you are able to add them as components or services.
 
+#### Local Modules
+
 To add a module that is not in the registry and is local to your machine, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Local module**.
-Follow the instructions in our [registry documentation](/registry/configure/#add-a-local-module) to configure the module.
+Follow the instructions in our [registry documentation](/registry/modular-resources/#configuration) to configure the module.
 
 ### Remote parts
 

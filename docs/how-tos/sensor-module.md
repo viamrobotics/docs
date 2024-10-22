@@ -444,7 +444,7 @@ With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-
 
 ## Build and Run
 
-To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
+To use this module, add it from the machines **CONFIGURE** tab and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
 
 ## Configure your `meteo_PM` sensor
 
@@ -485,7 +485,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 ## Upload your module to the registry
 
-To share your module with others in your organization or with the world, [follow these instructions to upload your module to the modular resource registry](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry).
+To share your module with others in your organization or with the world, [follow these instructions to upload your module to the modular resource registry](/how-tos/upload-module/).
 
 Once you've uploaded your module, you can [deploy it on your machines](/how-tos/create-module/#deploy-your-module-to-more-machines) by adding it just as you'd add any component instead of as a local module.
 

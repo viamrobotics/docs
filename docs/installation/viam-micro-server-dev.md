@@ -212,7 +212,7 @@ make upload
 1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
 
 1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `dependencies` section of the project's `Cargo.toml` file, then build and flash the project.
-   The module will now be available for use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
+   The module will now be available for use by adding it to your machine configuration on the [Viam app](https://app.viam.com).
 
 {{% /tab %}}
 {{% tab name="viam-micro-server Development" %}}

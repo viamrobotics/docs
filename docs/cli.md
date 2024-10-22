@@ -395,7 +395,7 @@ Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
 
-See [Datasets](/services/data/dataset/) for more information.
+See [Datasets](/fleet/dataset/) for more information.
 
 ##### Using the `filter` argument
 
@@ -424,7 +424,7 @@ Removing the `viam data export` string, you can use the same filter parameters (
 
 You cannot use the `--file-ids` argument when using `filter`.
 
-See [Datasets](/services/data/dataset/) for more information.
+See [Datasets](/fleet/dataset/) for more information.
 
 ### `data`
 
@@ -1248,7 +1248,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### `training-script`
 
-Manage training scripts for [custom ML training](/services/ml/training-scripts/).
+Manage training scripts for [custom ML training](/registry/training-scripts/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>

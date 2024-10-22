@@ -30,7 +30,7 @@ After you [create and deploy a module](/how-tos/create-module/), you may need to
 
 {{% /alert %}}
 
-For information on pinning module deployments to versions, see [Configuring version update management for a registry module](/registry/configure/#configure-version-update-management-for-a-registry-module).
+For information on pinning module deployments to versions, see [Module versioning](/registry/modular-resources/#module-versioning).
 
 ## Update an existing module
 
@@ -425,7 +425,7 @@ To upload another version, you must increment the version number to a later vers
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/registry/configure/#configure-version-update-management-for-a-registry-module" %}}
+{{% manualcard link="/registry/modular-resources/#module-versioning" %}}
 {{<imgproc src="/registry/create-module.svg" declaredimensions=true alt="Gear icon" >}}
 
 <br>

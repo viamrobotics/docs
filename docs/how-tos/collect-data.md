@@ -126,7 +126,7 @@ For more detailed information, including optional attribute configuration, see t
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
+For more detailed information, see [data management service](/services/data/).
 
 {{< /expand >}}
 {{< expand "Step 5: View the captured image data" >}}
@@ -233,7 +233,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
+For more detailed information, see [data management service](/services/data/).
 
 {{< /expand >}}
 {{< expand "Step 6: View the captured sensor data" >}}
@@ -261,7 +261,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/deploy-ml/) with the Viam platform.
+Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/train-deploy-ml/) with the Viam platform.
 
 To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 

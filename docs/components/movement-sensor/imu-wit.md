@@ -101,6 +101,10 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

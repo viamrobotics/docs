@@ -14,6 +14,7 @@ aliases:
   - "/micro-rdk/base/"
   - "/build/micro-rdk/base/"
 hide_children: true
+date: "2024-10-21"
 # SMEs: Steve B
 ---
 
@@ -27,17 +28,13 @@ If you have a mobile robot, use a base component to coordinate the motion of its
 
 ## Configuration
 
-To use a rover or other base, you need to add it to your machine's configuration.
+Most mobile robots with a base use the following hardware:
 
-Most mobile robots with a base need at least the following hardware:
-
-- A [board](/components/board/).
-- Some sort of actuators to move the base.
-  Usually [motors](/components/motor/) attached to wheels or propellers.
-- A power supply for the board.
-- A power supply for the actuators.
+- A [board](/components/board/)
+- Some actuators to move the base, such as [motors](/components/motor/) attached to wheels or propellers
 - Some sort of chassis to hold everything together.
 
+To use a rover or other base, you need to add each component as well as the base to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your base.
 
 The following list shows the available base models.

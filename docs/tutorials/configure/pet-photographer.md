@@ -24,7 +24,7 @@ After following this tutorial, you will understand how to control sync parameter
 Note: Consider this tutorial alongside filtered camera tutorial.
 -->
 
-If your machine [captures](/services/data/capture-sync/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
+If your machine [captures](/services/data/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
 For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
 
 In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/components/camera/) to only capture images where your pet is in the frame in the following way:
@@ -161,7 +161,7 @@ For more information, refer to [Write your new resource model definition](/how-t
 
 The filter function in your custom filter module must contain two critical elements:
 
-1. A utility function that will check if the caller of the filter function is the [data management](/services/data/) service.
+1. A utility function that will check if the caller of the filter function is the [data management service](/services/data/).
 1. A safeguard that ensures if the data management service is not the caller, an error and the unfiltered data is returned.
 
 {{< alert title="Important" color="note" >}}
@@ -849,7 +849,7 @@ To enable data capture on your machine, add and configure the [data management s
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
-   For more detailed information, see [Add the data management service](/services/data/capture-sync/#configure-data-capture-and-sync).
+   For more detailed information, see [Add the data management service](/services/data/#configuration).
    {{% /tab %}}
    {{% tab name="JSON Template" %}}
    Add the data management service to the services array in your rover’s raw JSON configuration:
@@ -1005,5 +1005,5 @@ Try these other tutorials for more on working with the data management and visio
 {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
 {{% card link="/tutorials/projects/guardian/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/how-tos/deploy-ml/"  %}}
+{{% card link="/how-tos/train-deploy-ml/"  %}}
 {{< /cards >}}

@@ -131,6 +131,10 @@ If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from S
 
 {{< readfile "/static/include/components/test-control/movement-sensor-gps-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

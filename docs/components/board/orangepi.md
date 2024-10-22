@@ -122,6 +122,10 @@ Configure these attributes on your board to integrate [analog-to-digital convert
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

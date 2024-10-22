@@ -72,6 +72,10 @@ Configuring these attributes on your board allows you to integrate [digital inte
 
 {{< readfile "/static/include/components/board/board-analogs.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
 For more configuration and usage info, see:

@@ -16,6 +16,7 @@ hide_children: true
 outputs:
   - html
   - typesense
+date: "2024-10-21"
 # SME: Peter L
 ---
 
@@ -41,9 +42,9 @@ For additional configuration information, click on the model name:
 
 {{< alert title="Add support for other models" color="tip" >}}
 
-If none of the existing models fit your use case, you can [create a modular resource](/registry/) to add support for it.
+If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
-You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
+You can follow [this guide](/registry/examples/custom-arm/) to implement your arm model.
 
 {{< /alert >}}
 
@@ -65,26 +66,18 @@ The [arm API](/appendix/apis/components/arm/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/arm-table.md" >}}
 
-## Motion planning with your arm's built-in software
+## Motion planning with your arm's software
 
-Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
-While some arm models build inverse kinematics into their software, many do not.
+Each arm model implements the [Arm API](#api).
 
-- Most of the arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [motion service](/services/motion/) instead.
+The arm models provided by Viam are built using the manufacturers software.
+The software handles turning the arm on and off, querying the arm for its joint position, sending requests for the arm to move to a set of joint positions, and engaging brakes as needed, if supported.
 
-- This driver handles turning the arm on and off, querying the arm for its current joint position, sending requests for the arm to move to a specified set of joint positions, and engaging brakes as needed, if supported.
+The arm models provided by Viam each use a JSON file that describe the [kinematics parameters of each arm](/internals/kinematic-chain-config/#kinematic-parameters).
+Some arm models use the inverse kinematics supplied by the manufacturer's software, many bypass any onboard inverse kinematics, and use Viam's [motion service](/services/motion/) instead.
 
-Arm drivers are also paired, in the RDK, with JSON files that describe the kinematics parameters of each arm.
-
-- When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [frame system](/services/frame-system/) service to use.
-
-- The [frame system](/services/frame-system/) will allow you to easily calculate where any part of your machine is relative to any other part, other machine, or piece of the environment.
-
-- All arms have a `Home` position, which corresponds to setting all joint angles to 0.
-
-- When an arm is moved with a `move_to_position` call, the movement will follow a straight line, and not deviate from the start or end orientations more than the start and orientations differ from one another.
-
-- If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
+When you configure an arm model, the arm driver will load and parse the kinematics file for the [frame system](/services/frame-system/) service to use.
+The frame system will allow you to easily calculate where any part of your machine is relative to any other part, other machine, or piece of the environment.
 
 ## Troubleshooting
 

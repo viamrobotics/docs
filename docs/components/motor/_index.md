@@ -15,6 +15,7 @@ aliases:
   - /micro-rdk/motor/
   - /build/micro-rdk/motor/
 hide_children: true
+date: "2024-10-21"
 # SME: Rand
 ---
 
@@ -27,9 +28,7 @@ If you have a hobby servo, configure it as a [servo component](/components/servo
 ## Configuration
 
 To use a motor, you need to add it to your machine's configuration.
-Go to your machine's **CONFIGURE** page, and add a model that supports your motor.
-
-Because your machine controls your motor using a [motor driver](https://www.wellpcb.com/what-is-motor-driver.html), you technically need to select a motor model that supports your motor driver rather than the motor itself.
+Go to your machine's **CONFIGURE** page, and add a model that supports your motor and its [motor driver](https://www.wellpcb.com/what-is-motor-driver.html).
 
 The following list shows the available motor models.
 For additional configuration information, click on the model name:
@@ -57,8 +56,6 @@ For additional configuration information, click on the model name:
 ## API
 
 The [motor API](/appendix/apis/components/motor/) supports the following methods:
-
-The motor component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/motor-table.md" >}}
 

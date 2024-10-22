@@ -39,6 +39,7 @@ IgnoreURLs:
   - "elevenlabs.io"
   - "docs.m5stack.com"
   - "code.visualstudio.com"
+  - "thingiverse.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
