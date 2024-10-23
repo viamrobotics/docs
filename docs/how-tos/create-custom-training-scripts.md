@@ -310,6 +310,8 @@ The script you are creating must take the following command line inputs:
 
 The `parse_args()` function in the template parses your arguments.
 
+You can add additional custom commandline inputs by adding them to the `parse_args()` function.
+
 {{% /expand %}}
 
 {{% expand "Click for more information on parsing annotations from dataset file." %}}
@@ -452,7 +454,7 @@ You can export one of your Viam datasets to test your training script locally.
 
 You can get the dataset id from the dataset page or using the [`viam dataset list`](/cli/#dataset) command:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=<destination> --dataset-id=<dataset-id> --include-jsonl=true
 ```
 
@@ -465,8 +467,9 @@ Use the `parse_filenames_and_labels_from_json` and `parse_filenames_and_bboxes_f
 
 Install any required dependencies and run your training script specifying the path to the <FILE>dataset.jsonl</FILE> file from your exported dataset:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
-python3 -m model.training --dataset_file=/path/to/dataset.jsonl --model_output_directory=.
+```sh {class="command-line" data-prompt="$"}
+python3 -m model.training --dataset_file=/path/to/dataset.jsonl \
+    --model_output_directory=. --args=custom_arg=3
 ```
 
 {{% /tablestep %}}
@@ -482,7 +485,7 @@ To be able to use your training script in the Viam platform, you must upload it 
 
 Before you can upload your training script to Viam, you have to compress your project folder into a tar.gz file:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$"}
 tar -czvf my-training.tar.gz my-training/
 ```
 
@@ -564,6 +567,7 @@ viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> \
   --org-id=<INSERT ORG ID> --model-name=MyRegistryModel \
   --model-version=2 --version=1 \
   --script-name=mycompany:MyCustomTrainingScript
+  --args=custom_arg1=3,custom_arg2="'green_square blue_star'"
 ```
 
 This command submits a training job to the previously uploaded `MyCustomTrainingScript` with another input dataset, which trains `MyRegistryModel` and publishes that to the registry.

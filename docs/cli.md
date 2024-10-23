@@ -1295,8 +1295,8 @@ Use a training script to train an ML model on data.
 
 ```sh {class="command-line" data-prompt="$"}
 viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
-viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> [...named args]
-viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> [...named args]
+viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> --args=<arg-key>=<arg-value> [...named args]
+viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --args=<arg-key>=<arg-value> [...named args]
 viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
@@ -1310,10 +1310,10 @@ Examples:
 viam train submit managed --dataset-id=456 --model-org-id=123 --model-name=MyCoolClassifier --model-type=single_label_classification --model-labels=1,2,3
 
 # submit custom training job with an existing training script in the Registry on data in Viam cloud
-viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-version=2 --version=1 --script-name=mycompany:MyCustomTrainingScript
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-version=2 --version=1 --script-name=mycompany:MyCustomTrainingScript  --args=num_epochs=3,model_type=multi_label
 
 # submit custom training job with an uploaded training script on data in Viam cloud
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --args=num_epochs=3,labels="'green_square blue_star'"
 
 # get a training job from Viam cloud based on training job ID
 viam train get --job-id=123
@@ -1373,6 +1373,7 @@ viam train list --org-id=123 --job-status=completed
 | `--job-id` | The ID of the training job to get or cancel. You can retrieve this value with `train list`. | `get`, `logs`, `cancel` | **Required** |
 | `--job-status` | Training status to filter for. Can be one of `canceled`, `canceling`, `completed`, `failed`, `in_progress`, `pending`, or `unspecified`. | `list` | **Required** |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
+| `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | `submit custom from-registry`, `submit custom with-upload` | Optional |
 
 ### `version`
 
