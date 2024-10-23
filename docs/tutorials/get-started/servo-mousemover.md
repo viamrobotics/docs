@@ -174,7 +174,7 @@ Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIGURE** ta
 
 Create a [board component](/components/board/):
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 1. Select the `board` type, then select the `viam:raspberry-pi:rpi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
    If you are using a Raspberry Pi 5, use the `pi5` model instead.
@@ -189,7 +189,7 @@ You can name the board whatever you want, but if you change the name you must up
 
 Create a [servo component](/components/servo/):
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 1. Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 1. Enter the name `fs90f` for your servo and click **Create**.

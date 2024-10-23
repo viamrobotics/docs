@@ -43,7 +43,7 @@ The `esp32-camera` camera model does not currently support the [data management 
 {{< tabs name="Configure a esp32-camera" >}}
 {{% tab name="JSON Template" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Select **JSON** mode.
 Copy and paste the following JSON into your existing machine configuration into the `"components"` array:
 

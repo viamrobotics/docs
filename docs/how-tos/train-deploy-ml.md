@@ -566,7 +566,7 @@ Navigate to the **CONFIGURE** tab of one of your machine in the [Viam app](https
 Add an ML model service that supports the ML model you just trained and add the model as the **Model**.
 For example use the `ML model / TFLite CPU` service for TFlite ML models.
 If you used the built-in training, this is the ML model service you need to use.
-If you used a custom training script, you may need a different [ML model service](/services/ml/deploy/).
+If you used a custom training script, you may need a different [ML model service](/services/ml/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/" %}}

@@ -19,7 +19,7 @@ Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https:/
 {{< tabs name="Configure an numato Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `numato` model.
 Enter a name or use the suggested name for your board and click **Create**.

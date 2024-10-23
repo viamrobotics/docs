@@ -17,7 +17,7 @@ Viam provides reusable {{% glossary_tooltip term_id="fragment" text="*fragments*
 
 - An assembled Viam Rover.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial/)
-- The board is connected to [the Viam app](https://app.viam.com).
+- The board is connected to the [Viam app](https://app.viam.com).
   To add your Pi to the Viam app, refer to [the rover setup guide](/appendix/try-viam/rover-resources/rover-tutorial/#control-your-rover-on-the-viam-app).
 
 ## Add the fragment
@@ -27,7 +27,7 @@ Follow the appropriate instructions for the model of rover and board you have:
 {{< tabs >}}
 {{% tab name="Viam Rover 2 (RPi 5)" %}}
 
-Navigate to your machine in [the Viam app](https://app.viam.com/robots).
+Navigate to your machine in the [Viam app](https://app.viam.com/robots).
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -58,7 +58,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (RPi 4)" %}}
 
-Navigate to your machine in [the Viam app](https://app.viam.com/robots).
+Navigate to your machine in the [Viam app](https://app.viam.com/robots).
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -89,7 +89,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 1 (RPi 4)" %}}
 
-Navigate to your machine in [the Viam app](https://app.viam.com/robots).
+Navigate to your machine in the [Viam app](https://app.viam.com/robots).
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -127,7 +127,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (Jetson Nano)" %}}
 
-Navigate to your machine in [the Viam app](https://app.viam.com/robots).
+Navigate to your machine in the [Viam app](https://app.viam.com/robots).
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -158,7 +158,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (Jetson Orin Nano)" %}}
 
-Navigate to your machine in [the Viam app](https://app.viam.com/robots).
+Navigate to your machine in the [Viam app](https://app.viam.com/robots).
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.

@@ -10,7 +10,7 @@ aliases:
   - /fleet/account/
 ---
 
-The [Viam app](https://app.viam.com/) is a web UI for managing and building machines.
+the [Viam app](https://app.viam.com/) is a web UI for managing and building machines.
 
 ## Create account and log In
 

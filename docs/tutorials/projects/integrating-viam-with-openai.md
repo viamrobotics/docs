@@ -331,7 +331,7 @@ Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).
 
 ### Configuration
 
-Navigate to the **CONFIGURE** page of your rover robot in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** page of your rover robot in the [Viam app](https://app.viam.com).
 
 {{< tabs name="Configure the speech module" >}}
 {{% tab name="Builder" %}}

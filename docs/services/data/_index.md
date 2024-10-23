@@ -128,7 +128,7 @@ Then [configure data management](#resource-data-capture-configuration) on each {
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-From your machine's **CONFIGURE** tab in [the Viam app](https://app.viam.com), add the `data management` service.
+From your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), add the `data management` service.
 On the panel that appears, configure data capture and sync attributes as applicable, then save your config.
 
 ![Data capture configuration](/tutorials/data-management/data-management-conf.png)

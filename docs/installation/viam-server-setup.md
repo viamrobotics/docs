@@ -98,7 +98,7 @@ If you have a [compatible operating system](#platform-requirements), follow alon
 
 1. Once you have followed the steps on the setup instructions, wait for confirmation that your machine has successfully connected.
 
-   On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
+   On your machine's page on the [Viam app](https://app.viam.com), your machine will show that it's **Live**.
 
 {{< alert title="Linux: Automatic startup" color="note" >}}
 On Linux installs, by default `viam-server` or `viam-agent` and `viam-server` will start automatically when your system boots.

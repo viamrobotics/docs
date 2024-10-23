@@ -45,7 +45,7 @@ You do need:
 
 {{% expand "At least one configured sensor. Click to see instructions." %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a sensor model](/components/sensor/) that supports your sensor.
 
@@ -81,7 +81,7 @@ Viam's [data management service](/services/data/) lets you capture data locally 
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure the data management service">}}
 **1. Add the data management service**
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Then add the **data management** service.
 

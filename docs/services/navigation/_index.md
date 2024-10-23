@@ -43,7 +43,7 @@ See [navigation concepts](#navigation-concepts) for more info on how to implemen
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Select the `navigation` type.
 Enter a name or use the suggested name for your service and click **Create**.
@@ -172,7 +172,7 @@ To make sure your rover base's autonomous GPS navigation with the navigation ser
 
 Add a [nested reference frame](/services/frame-system/nested-frame-config/) configuration to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/):
 
-- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com) and select the **Frame** mode.
+- Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com) and select the **Frame** mode.
 - From the left-hand menu, select your base.
 - Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 

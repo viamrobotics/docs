@@ -18,7 +18,7 @@ To configure a `boat` base as a component of your machine, first configure the [
 {{< tabs name="Configure a Boat Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `base` type, then select the `boat` model.
 Enter a name or use the suggested name for your base and click **Create**.

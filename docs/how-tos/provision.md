@@ -116,11 +116,11 @@ In the captive web portal, you will then be prompted to provide the network info
 Depending on how the machine was set up so far, the captive portal may also require you to paste machine cloud credentials.
 This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
 
-Navigate to [the Viam app](https://app.viam.com) and create a new machine.
+Navigate to the [Viam app](https://app.viam.com) and create a new machine.
 
 To copy your machine cloud credentials:
 
-- Navigate to your machine's page on [the Viam app](https://app.viam.com).
+- Navigate to your machine's page on the [Viam app](https://app.viam.com).
 - Select the part status dropdown to the right of your machine's name on the top of the page.
   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 - Click the copy icon next to **Machine cloud credentials**.

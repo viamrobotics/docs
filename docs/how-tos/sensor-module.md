@@ -448,7 +448,7 @@ To use this module, add it from the machines **CONFIGURE** tab and select the `r
 
 ## Configure your `meteo_PM` sensor
 
-Navigate to the **CONFIGURE** tab of your robot’s page in [the Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your robot’s page in the [Viam app](https://app.viam.com/).
 Add a component.
 Select the `sensor` type, then select the `jessamy:weather:meteo_PM` model.
 Enter a name for your sensor and click **Create**.

@@ -76,7 +76,7 @@ For information on managing the service, see [Manage `viam-agent`](/installation
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
 
 {{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width=600x" >}}

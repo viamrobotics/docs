@@ -1491,7 +1491,7 @@ _Add instructions here for any requirements._
 
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
-Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in [the Viam app](https://app.viam.com/).
+Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in the [Viam app](https://app.viam.com/).
 [Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
@@ -1546,7 +1546,7 @@ This driver supports differential, ackermann, and omni directional steering mode
 > [!NOTE]
 > Before configuring your base, you must add a machine in the [Viam app](https://app.viam.com).
 
-Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your machine’s page in the [Viam app](https://app.viam.com/).
 [Add `base` / `agilex-limo` to your machine](https://docs.viam.com/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your base’s attributes field:
@@ -1616,7 +1616,7 @@ If you would like to test your module locally against a target platform other th
 To use a local module on your machine, first make sure any physical hardware implemented in your module is connected to your machine's computer.
 Add the module to your machine's config, then add the component or service it implements:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 
 1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
 

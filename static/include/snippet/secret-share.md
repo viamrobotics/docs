@@ -1,4 +1,4 @@
-{{< alert title="Caution" color="caution" >}}
-Do not share your API key or machine address publicly.
-Sharing this information could compromise your system security by allowing unauthorized access to your machine, or to the computer running your machine.
+{{< alert title="Caution: Keep your API key and machine address safe" color="caution" >}}
+We strongly recommend that you add your API key and machine address as an environment variable.
+Anyone with these secrets can access your machine, and the computer running your machine.
 {{< /alert >}}

@@ -94,7 +94,7 @@ Wait for your device to connect to the Viam app.
 
 {{< gif webm_src="/how-tos/configure-webcam.webm" mp4_src="/how-tos/configure-webcam.mp4" alt="The process described below." max-width="550px" class=aligncenter >}}
 
-1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
+1. From the **CONFIGURE** tab on your machine's page in the [Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
    Select the `camera` type and add the `webcam` model.
 
 1. Click the **Save** button in the top right corner of the page to save your config.
@@ -197,7 +197,7 @@ If you don't have a physical sensor that can be wired to the pins of a SBC, you 
 
 Once you determine which model to use, add it to your machine's configuration:
 
-1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
+1. From the **CONFIGURE** tab on your machine's page in the [Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
    Select the `sensor` type and add your sensor model.
 
    {{<imgproc src="/get-started/quickstarts/collect-data/config-sensor.png" resize="x1100" declaredimensions=true alt="The dropdown showing all sensor models." style="width:550px" >}}
