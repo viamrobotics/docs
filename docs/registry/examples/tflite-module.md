@@ -11,6 +11,7 @@ aliases:
   - "/extend/modular-resources/examples/tflite-module/"
   - "/modular-resources/examples/tflite-module/"
 # SMEs: Andrew Morrow
+toc_hide: true
 ---
 
 Viam provides an example {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
@@ -187,7 +188,7 @@ This example uses the `yamnet/classification` TensorFlow Lite model for audio cl
 
 Next, install `viam-server` on your machine, if you have not done so already:
 
-1. Navigate to [the Viam app](https://app.viam.com) in your browser and [add a new machine](/cloud/machines/#add-a-new-machine).
+1. Navigate to the [Viam app](https://app.viam.com) in your browser and add a new machine.
 
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**.
@@ -234,7 +235,7 @@ To generate your machine's configuration using `example_audio_classification_cli
    ```
 
 1. Copy the contents of this file.
-   Then return to your machine's page on [the Viam app](https://app.viam.com), select the **CONFIGURE** tab, select **JSON** mode, and add the configuration into the text area.
+   Then return to your machine's page on the [Viam app](https://app.viam.com), select the **CONFIGURE** tab, select **JSON** mode, and add the configuration into the text area.
 
    {{< alert title="Important" color="note" >}}
    If you already have other configured components, you will need to add each generated JSON object to the respective `modules` or `services` array.
@@ -334,7 +335,7 @@ Once you have run the example and examined the module and client code, you might
 
 - Write a client similar to `example_audio_classification_client` that generates a different kind of data and provides a suitable TensorFlow Lite model for that data to the `MLModelService` modular resource.
   For example, you might find a new [pre-trained TensorFlow Lite model](https://www.tensorflow.org/lite/models/trained) that analyzes [speech waveforms](https://tfhub.dev/s?deployment-format=lite&module-type=audio-speech-synthesis) and write a client to provide these waveform samples to the `MLModelService` modular resource and interpret the results returned.
-- Write a client similar to `example_audio_classification_client` that [trains its own model](/how-tos/deploy-ml/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
+- Write a client similar to `example_audio_classification_client` that [trains its own model](/how-tos/train-deploy-ml/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
   For example, you might add a [movement sensor](/components/movement-sensor/) component to your machine that captures sensor readings to the built-in [data management service](/services/data/).
   Then you could write a client that trains a new model based on the collected data, provides the model and new sensor data readings to the `MLModelService` modular resource, and interprets the results returned.
 - Write a module similar to `example_mlmodelservice_tflite` that accepts models for other inference engines besides TensorFlow Lite, then write a client that provides a valid model and source data for that inference engine.

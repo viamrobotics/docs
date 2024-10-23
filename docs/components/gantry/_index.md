@@ -13,6 +13,7 @@ modulescript: true
 aliases:
   - "/components/gantry/"
 hide_children: true
+date: "2024-10-21"
 # SME: Rand
 ---
 
@@ -29,7 +30,7 @@ A 3D printer is an example of a three-axis gantry where each linear actuator can
 Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.
 
-## Available models
+## Configuration
 
 To use a gantry, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your gantry.
@@ -64,9 +65,13 @@ The [gantry API](/appendix/apis/components/gantry/) supports the following metho
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your gantry is not working as expected, follow these steps:
 
-{{< snippet "social.md" >}}
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your gantry model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the gamtry there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

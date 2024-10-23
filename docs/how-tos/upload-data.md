@@ -18,7 +18,7 @@ aliases:
   - /services/data/upload/
 ---
 
-If you configured [cloud sync](/services/data/capture-sync/), Viam automatically uploads data from the specified directory to the cloud, at the interval you specified.
+If you configured the [data management service](/services/data/), Viam automatically uploads data from the configured directory to the cloud, at the interval you specified.
 However, if you want to upload a batch of data once from somewhere else, either from a different directory on your machine or from your personal computer or mobile device, you have several options using the Viam app, the data client API, or the Viam mobile app.
 
 {{% alert title="In this page" color="tip" %}}
@@ -46,7 +46,7 @@ However, if you already have a cache of data you'd like to use with Viam, you ca
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management](/services/data/) service:
+Add the [data management service](/services/data/):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -310,6 +310,6 @@ Now that you have a batch of data uploaded, you can train an ML model on it.
 Or, if you want to collect and upload data _not_ in a batch, see Capture and Sync Image Data.
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/image-data/" %}}
 {{< /cards >}}

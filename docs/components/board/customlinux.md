@@ -339,7 +339,7 @@ Try looking at your board's data sheet and cross-referencing with the output fro
 
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `customlinux` model.
 Enter a name or use the suggested name for your `customlinux` board and click **Create**.
@@ -398,9 +398,13 @@ The following attributes are available for `customlinux` boards:
 | ---- | ---- | --------- | ----------- |
 | `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a board definitions file](#create-a-board-definitions-file). |
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}

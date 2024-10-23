@@ -31,11 +31,11 @@ Your microcontroller should have at least the following resources available to w
 
 To test your board as you configure it, power it on.
 If you plan to connect hardware to the board's pins, connect the hardware while it's powered off.
-To configure an `esp32` board, navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com) and select **JSON** mode.
+To configure an `esp32` board, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com) and select **JSON** mode.
 
 {{< alert title="Info" color="info" >}}
 
-The`esp32` [board](/components/board/) model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+The`esp32` [board](/components/board/) model is not currently available as a built-in option in the [Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
 
 {{< /alert >}}
 
@@ -185,9 +185,13 @@ Then, follow these requirements to change the PWM frequencies of a pin:
    1. If there are less than 4 active frequencies, you can change the PWM frequency freely because there will be a timer available.
    2. If there are already 4 active frequencies, changing the PWM frequency of the pin will raise an error because there are no timers available. Free a timer by setting the PWM frequencies of all of the pins to 0.
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}

@@ -24,7 +24,7 @@ Then, configure the board:
 {{< tabs name="Configure an odroid Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `odroid` model.
 Enter a name or use the suggested name for your board and click **Create**.
@@ -76,9 +76,13 @@ Configuring these attributes on your board allows you to integrate [digital inte
 
 {{< readfile "/static/include/components/board/board-analogs.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}

@@ -230,10 +230,10 @@ See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-pa
 
 For more detailed instructions on using Grafana, including a full step-by-step configuration walkthrough, see [visualizing data with Grafana](/tutorials/services/visualize-data-grafana/).
 
-On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/how-tos/sensor-data-query-sdk/) or [query it with the Viam app](/how-tos/sensor-data-query-with-third-party-tools/).
+On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/appendix/apis/data-client/) or [query it with the Viam app](/how-tos/sensor-data-query-with-third-party-tools/).
 
 {{< cards >}}
-{{% card link="/how-tos/sensor-data-query-sdk/" %}}
+{{% card link="/appendix/apis/data-client/" %}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
 {{< /cards >}}
 

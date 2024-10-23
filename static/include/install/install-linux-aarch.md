@@ -27,6 +27,6 @@ To install `viam-server` :
 
 1. Once you have followed the steps on the setup instructions, wait for confirmation that your machine has successfully connected.
 
-   On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
+   On your machine's page on the [Viam app](https://app.viam.com), your machine will show that it's **Live**.
 
 By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage-viam-server/) if desired.

@@ -23,7 +23,7 @@ Then, configure your camera:
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `webcam` model.
 Enter a name or use the suggested name for your camera and click **Create**.
@@ -119,8 +119,6 @@ v4l2-ctl --list-devices
 
 The `id` listed by `ls /dev/v4l/by-id/` is a more consistent way to refer to the webcam.
 
-See [Camera troubleshooting](/appendix/troubleshooting/#error-failed-to-find-camera) for Linux-specific camera troubleshooting steps.
-
 {{% /tab %}}
 {{% tab name="Mac" %}}
 
@@ -162,8 +160,66 @@ v4l2-ctl --list-formats-ext --device /dev/video0
 
 ## Troubleshooting
 
-### No visible live video feed
+{{< readfile "/static/include/components/troubleshoot/camera.md" >}}
 
+{{% expand "Cannot open webcam or found no webcams" %}}
+When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
+
+On your Linux system, verify each of the following:
+
+- Ensure that your Linux OS is able to access your camera:
+
+  1.  Run the following command to list compatible camera devices on your system:
+
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl --list-devices
+      ```
+
+      In the list of camera devices returned, find the entry for your camera.
+      For example, the webcam on the [Viam Rover](/appendix/try-viam/) appears as follows:
+
+      ```sh {class="command-line" data-prompt="$"}
+      GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):
+              /dev/video0
+              /dev/video1
+              /dev/media4
+      ```
+
+      The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
+
+  1.  Then, [stop `viam-server`](/installation/manage-viam-server/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
+
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl --stream-count 1 --device /dev/video0
+      ```
+
+      Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
+
+      The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
+      If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
+      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage-viam-server/#run-viam-server) first, then re-run the command above.
+
+- Ensure that your camera uses a supported pixel format:
+
+  1.  First, determine your video path, like `/dev/video0`, following the instructions above.
+  1.  Then, run the following command:
+
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl --list-formats-ext --device /dev/video0
+      ```
+
+      Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
+
+      The command will return a list of pixel formats your camera supports, such as `MJPG` (also notated as `MJPEG`) or `YUYV` (also notated as `YUY2`).
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
+      If your camera does not support any of these formats, it cannot be used with Viam.
+
+If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
+If you are running `viam-server` as a different user, find the <file>.viam/debug/components/camera</file> directory in that user's home directory instead.
+This file contains basic diagnostic and configuration information about your camera that helps to quickly troubleshoot issues.
+{{% /expand%}}
+
+{{% expand "No visible live video feed" %}}
 If you're working on a Linux machine, `ssh` into it, then restart `viam-server` by running:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -176,21 +232,23 @@ If this doesn't work, you can reboot your machine by running:
 sudo reboot
 ```
 
-### Images are dim on start up
+{{% /expand%}}
 
+{{% expand "Images are dim on start up" %}}
 If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
+{{% /expand%}}
 
-### CSI Camera not working on a Raspberry Pi
-
+{{% expand "CSI Camera not working on a Raspberry Pi" %}}
 If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/installation/prepare/rpi-setup/#enable-communication-protocols).
 If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
+{{% /expand%}}
 
-### High CPU usage
-
+{{% expand "High CPU usage" %}}
 Each camera stream you add uses CPU on the device it is connected to and there is therefore a practical limit to the numbeof camera streams your device can simultaneously support.
 You can limit the CPU usage by reducing the image resolution.
+{{% /expand%}}
 
-### Timeout errors on a Raspberry Pi
+{{% expand "Timeout errors on a Raspberry Pi" %}}
 
 If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box).
 
@@ -204,9 +262,11 @@ Then, select: **Interface Options -> Camera -> Enable Camera**.
 
 Restart the Pi to complete the configuration.
 
+{{% /expand%}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

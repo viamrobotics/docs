@@ -389,7 +389,7 @@ Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sen
 
 If you followed the instructions in the [Pi installation guide](/installation/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 
-If not, make sure to [prepare your device and install `viam-server`](/installation/), and then [add a new machine](/cloud/machines/#add-a-new-machine).
+If not, add a new machine in the [Viam app](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} until your machine is connected.
 
 To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
 

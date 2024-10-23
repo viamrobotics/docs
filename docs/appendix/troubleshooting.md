@@ -20,7 +20,7 @@ For information on the status of [app.viam.com](https://app.viam.com), visit [st
 
 ### The authenticity of host 'hostname.local' can't be established
 
-**Description:** When following our [installation guides](/installation/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
+**Description:** When following our [installation guides](/installation/viam-server-setup/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
 This is expected: `ssh` is advising you that it has not yet connected to this address, and prompts you for how to proceed.
 
 **Solution:** The message will ask `Are you sure you want to continue connecting?`.
@@ -38,7 +38,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 - Your `ssh` connection string should resemble the following: `ssh username@hostname.local`.
   Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
 - If you are still unable to connect, restart your board and try your `ssh` connection again after a few minutes.
-- If that fails, try re-imaging your board following the [installation guide](/installation/) appropriate for your board.
+- If that fails, try re-imaging your board following the [installation guide](/installation/viam-server-setup/) appropriate for your board.
   - If using the [Raspberry Pi installation guide](/installation/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
   - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
   - If you re-imaged your board and provided the same hostname, you may see an error message similar to `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`.
@@ -60,9 +60,9 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/installation/viam-server-setup/) or [update](/installation/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
-**Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
+**Solution:** Reinstall `viam-server` following the [installation instructions](/installation/viam-server-setup/).
 
 ### AppImages require FUSE to run
 
@@ -118,7 +118,7 @@ This error can be safely ignored if you do not intend to use audio on your machi
 
 ### Failed to connect; retrying
 
-**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
+**Description:** the [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
 When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
 
 **Solution:** Check the following to ensure your machine is accessible to the Viam app:
@@ -161,73 +161,6 @@ In **JSON** mode, it will resemble the following:
    }
 }
 ```
-
-### Error: failed to find camera
-
-**Additional Errors:** `cannot open webcam`, and `found no webcams`.
-
-**Description:** When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
-
-**Solution:** On your Linux system, verify each of the following:
-
-- Ensure that your Linux OS is able to access your camera:
-
-  1.  Run the following command to list compatible camera devices on your system:
-
-      ```sh {class="command-line" data-prompt="$"}
-      v4l2-ctl --list-devices
-      ```
-
-      In the list of camera devices returned, find the entry for your camera.
-      For example, the webcam on the [Viam Rover](/appendix/try-viam/) appears as follows:
-
-      ```sh {class="command-line" data-prompt="$"}
-      GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):
-              /dev/video0
-              /dev/video1
-              /dev/media4
-      ```
-
-      The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
-
-  1.  Then, [stop `viam-server`](/installation/manage-viam-server/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
-
-      ```sh {class="command-line" data-prompt="$"}
-      v4l2-ctl --stream-count 1 --device /dev/video0
-      ```
-
-      Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
-
-      The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
-      If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
-      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage-viam-server/#run-viam-server) first, then re-run the command above.
-
-- Ensure that your camera uses a supported pixel format:
-
-  1.  First, determine your video path, like `/dev/video0`, following the instructions above.
-  1.  Then, run the following command:
-
-      ```sh {class="command-line" data-prompt="$"}
-      v4l2-ctl --list-formats-ext --device /dev/video0
-      ```
-
-      Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
-
-      The command will return a list of pixel formats your camera supports, such as `MJPG` (also notated as `MJPEG`) or `YUYV` (also notated as `YUY2`).
-      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
-      If your camera does not support any of these formats, it cannot be used with Viam.
-
-If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
-If you are running `viam-server` as a different user, find the <file>.viam/debug/components/camera</file> directory in that user's home directory instead.
-This file contains basic diagnostic and configuration information about your camera that helps to quickly troubleshoot issues.
-
-### Error: failed to find the best driver that fits the constraints
-
-**Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
-
-**Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
-On the **CONFIGURE** page, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **{}** (Switch to Advanced) button in the top right of the component panel to enter these attributes manually.
-Provide at least the width and height values to start.
 
 ## Known application and plugin conflicts
 

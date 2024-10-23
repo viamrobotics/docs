@@ -545,7 +545,7 @@ The following instructions describe how to set up an API key for one location.
      for (const entry of alltheData) {
        if (entry.robot_id == machineID) {
          thedata.push({
-           PM25: entry.data.readings["pm_2.5"],
+           PM25: entry.data.readings["pm_2_5"],
            time: entry.time_received,
          });
        }

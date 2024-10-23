@@ -21,6 +21,13 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
+
+You can now set how long data collected by a component should remain stored in the Viam cloud in the component's data capture configuration.
+For more information, see [Data management service](/services/data/).
+
+{{% /changelog %}}
+
 {{% changelog date="2024-09-20" color="added" title="Pi models moved to module" %}}
 
 The Raspberry Pi 4, 3, and Zero 2 W boards are now supported by [`viam:raspberry-pi:rpi`](https://github.com/viam-modules/raspberry-pi).
@@ -51,7 +58,7 @@ For more information, see [Configure provisioning with viam-agent](/how-tos/prov
 {{% changelog date="2024-08-16" color="added" title="Data capture for vision" %}}
 
 Data capture is now possible for the vision service.
-For more information, see [Supported components and services](/services/data/capture-sync/#supported-components-and-services).
+For more information, see [Supported components and services](/services/data/#supported-components-and-services).
 
 {{% /changelog %}}
 
@@ -175,7 +182,7 @@ In addition to the existing returned metadata, the [`GetCloudMetadata`](/appendi
 
 {{% changelog date="2024-04-16" color="improved" title="Viam app interface" %}}
 
-The [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+the [Viam app](https://app.viam.com) machine page UI has been updated significantly.
 In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
 
 {{% /changelog %}}
@@ -183,7 +190,7 @@ In addition to other improvements, your component, service, and other resource c
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
 Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks, expanding upon the existing support for TensorFlow Lite models.
-You can now upload your own ML model(/services/ml/ml-models/) using any of these frameworks for use with the Vision service.
+You can now upload your own ML model(/registry/ml-models/) using any of these frameworks for use with the Vision service.
 
 {{% /changelog %}}
 
@@ -222,7 +229,7 @@ You can now use the [generic service](/services/generic/) to define new, unique 
 
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
-You can now upload [machine learning (ML) models](/services/ml/ml-models/) to the Viam registry, in addition to modules.
+You can now upload [machine learning (ML) models](/registry/ml-models/) to the Viam registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
@@ -237,7 +244,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/how-tos/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any data, such as sensor readings, that you have [synced](/services/data/capture-sync/) to the Viam app from your machine.
+You can visualize any data, such as sensor readings, that you have [synced](/services/data/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -288,7 +295,7 @@ For more information, see [Query Data with SQL or MQL](/how-tos/sensor-data-quer
 
 {{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/services/data/dataset/).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/fleet/dataset/).
 
 {{% /changelog %}}
 
@@ -359,7 +366,7 @@ You now have the capability to use a [power sensor component](/components/power-
 {{% /changelog %}}
 
 {{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/capture-sync/).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/).
 It equips machines to:
 
 - Remove data that is not of interest
@@ -376,7 +383,7 @@ You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.c
 
 {{% /changelog %}}
 
-{{% changelog date="2023-08-31" color="added" title="Image inspection for ML training" %}}
+{{% changelog date="2023-08-31" color="improved" title="Image inspection for ML training" %}}
 
 This update enables you to get a closer examination of your image and streamline your image annotation experience by making it easier to add bounding boxes and labels in the **Data** tab.
 
@@ -476,7 +483,7 @@ To better control gantries with Viam, you can now:
 
 {{% changelog date="2023-06-30" color="improved" title="Optimized Viam-trained object detection models" %}}
 
-This update for object detection models [trained with the machine learning service](/how-tos/deploy-ml/) brings significant improvements, including:
+This update for object detection models [trained with the machine learning service](/how-tos/train-deploy-ml/) brings significant improvements, including:
 
 - 76% faster model inference for camera streams
 - 64% quicker model training for object detection
@@ -492,7 +499,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train object detection models](/how-tos/deploy-ml/) in addition to image classification models from within the Viam app.
+You now have the capability to directly [train object detection models](/how-tos/train-deploy-ml/) in addition to image classification models from within the Viam app.
 
 This update allows you to:
 
@@ -915,9 +922,9 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/how-tos/deploy-ml/) and [deploy](/services/ml/deploy/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
-Additionally, you can upload and use existing [machine learning models](/services/ml/ml-models/) with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [Train a model](/how-tos/deploy-ml/).
+You can now [train](/how-tos/train-deploy-ml/) and [deploy](/services/ml/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
+Additionally, you can upload and use existing [machine learning models](/registry/ml-models/) with your machines.
+For more information on using data synced to the cloud to train machine learning models, read [Train a model](/how-tos/train-deploy-ml/).
 
 {{% /changelog %}}
 

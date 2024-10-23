@@ -19,7 +19,7 @@ Then, configure the component:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `arm` type, then select the `model1` model.
 Enter a name or use the suggested name for your arm and click **Create**.
@@ -139,3 +139,11 @@ After you configure your component, navigate to the [**CONTROL** tab](/fleet/con
 Then _explain how to interact with the panel_.
 
 {{<imgproc src="/components/sensor/sensor-control-tab.png" resize="800x" declaredimensions=true alt="Image or GIF of the control tab">}}
+
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/component.md" >}}
+
+## Next steps
+
+Text & Links

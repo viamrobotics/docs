@@ -23,6 +23,7 @@ date: "2022-08-18"
 updated: "2024-05-01"
 cost: 540
 no_list: true
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS

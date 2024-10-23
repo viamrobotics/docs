@@ -23,7 +23,7 @@ Then, configure the multi-axis gantry:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `gantry` type, then select the `multi-axis` model.
 Enter a name or use the suggested name for your gantry and click **Create**.
@@ -217,9 +217,13 @@ The following attributes are available for `multi-axis` gantries:
 
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/gantry.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}

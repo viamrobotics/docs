@@ -53,8 +53,8 @@ If you wanted to take this tutorial further, you could use these state transitio
 
 Before following this tutorial, you should:
 
-1. [Create a new machine](/cloud/machines/#add-a-new-machine) in the Viam app.
-1. [Install `viam-server`](/installation/) on your new machine.
+1. Add a new machine in the [Viam app](https://app.viam.com).
+1. [Install `viam-server`](/installation/viam-server-setup/) on your new machine.
 
 Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/).
 Make sure to connect your camera to your machine's computer (if it isn't built-in) before starting the project and power it on.
@@ -64,7 +64,7 @@ Make sure to connect your camera to your machine's computer (if it isn't built-i
 Navigate to the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com).
 Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
-Reference [these available models](/components/camera/#available-models).
+Reference [these available models](/components/camera/#configuration).
 
 To configure a `webcam`:
 
@@ -139,7 +139,7 @@ To add the [data management service](/services/data/) and configure data capture
    Here you can view the images captured so far from the camera on your machine.
    You should see new images appearing steadily as cloud sync uploads them from your machine.
 
-For more information, see [configure data capture for individual components](/services/data/capture-sync/#configure-data-capture-and-sync).
+For more information, see [configure data capture for individual components](/services/data/#configuration).
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different method **Type** in your data capture configuration.
@@ -163,13 +163,13 @@ For best results:
 
 Then, create a new dataset using your uploaded images and train a new model using that model:
 
-1. [Create a new dataset and add the images you captured](/how-tos/deploy-ml/#create-a-dataset-and-label-data).
+1. [Create a new dataset and add the images you captured](/how-tos/train-deploy-ml/#create-a-dataset-and-label-data).
    Remember that you must add at least 10 images that contain people, as well as a few (but no more than 20% of the total images) that _do not_ contain people.
 2. Label the images that contain people with bounding boxes, and add the label `person`.
    You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
-3. [Train a model on your dataset](/how-tos/deploy-ml/).
+3. [Train a model on your dataset](/how-tos/train-deploy-ml/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
-4. [Deploy the model](/services/ml/deploy/) to your machine so it can be used by other services, such as the vision service.
+4. [Deploy the model](/services/ml/) to your machine so it can be used by other services, such as the vision service.
 
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 

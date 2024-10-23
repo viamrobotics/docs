@@ -21,7 +21,7 @@ Then, configure the controller:
 {{< tabs name="Configure a `gamepad` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `gamepad` model.
 Enter a name or use the suggested name for your input controller and click **Create**.
@@ -75,16 +75,16 @@ If you have another controller that you want to use to control your machine, fee
 
 ## Troubleshooting
 
-- If you are not able to see a dropdown menu with the name of your controller appear in the **CONTROL** tab, try specifying the `dev_file` attribute to match the exact path to your device.
-  You can also try setting `auto_reconnect` to `True`.
+{{< readfile "/static/include/components/troubleshoot/input-controller.md" >}}
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-{{< snippet "social.md" >}}
+{{% expand "Not able to see a dropdown menu?" %}}
+If you are not able to see a dropdown menu with the name of your controller appear in the **CONTROL** tab, try specifying the `dev_file` attribute to match the exact path to your device.
+You can also try setting `auto_reconnect` to `True`.
+{{% /expand%}}
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}

@@ -117,7 +117,7 @@ Assign each user a role (owner or operator) to manage permissions.
 Users with owner access to a location or organization, can collaborate on the [machines](/cloud/machines/) within it.
 
 {{% /tablestep %}}
-{{% tablestep link="/installation/" %}}
+{{% tablestep link="/installation/viam-server-setup/" %}}
 **2. Use API keys**
 
 You (and anyone with owner access) can create API keys for programmatic access to machines, locations, or organizations.
@@ -177,6 +177,6 @@ With your machines set up on Viam, you can now manage data across all your machi
 
 {{< cards >}}
 {{% card link="/how-tos/collect-sensor-data/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/navigate/" %}}
 {{< /cards >}}

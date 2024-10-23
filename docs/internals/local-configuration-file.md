@@ -9,9 +9,9 @@ images: ["/installation/thumbnails/manage.png"]
 description: "Building a local machine configuration file for use with viam-server."
 ---
 
-The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
+The `viam-server` binary uses a JSON-formatted configuration file to define all {{< glossary_tooltip term_id="resource" text="resources" >}} it has access to, as well as any relevant parameters for those resources.
 
-When you [install `viam-server`](/installation/) from [the Viam app](https://app.viam.com), you configure your machine directly in the app, and the app will automatically sync your configuration to your machine.
+When you [install `viam-server`](/installation/viam-server-setup/) from the [Viam app](https://app.viam.com), you configure your machine directly in the app, and the app will automatically sync your configuration to your machine.
 
 However, if your machine will never connect to the internet, you will need to create your own local configuration file, using one of these options:
 
@@ -25,7 +25,7 @@ For information on the individual configuration options available, see [Configur
 If your machine will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your machine to it.
 Follow the steps below to build and then download your configuration file:
 
-1. Navigate to [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+1. Navigate to the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 1. Use **Builder** mode to add components and services, configure attributes, and map pin assignments.
 1. Then, switch to **JSON** mode to be shown the equivalent JSON configuration to the settings you made in **Builder** mode.
 1. Download the JSON configuration to the board or computer you intend to run `viam-server` on.
@@ -50,7 +50,7 @@ If your machine will never connect to the internet, you can create a local confi
 A locally-configured machine will not be able to access Viam's cloud features.
 For most users, we recommend [using the Viam app to create the configuration file](#build-a-local-configuration-file-in-the-viam-app) as it is less error-prone.
 
-If you followed the instructions to [install `viam-server`](/installation/), the installation process provides an example configuration file in the following location:
+If you followed the instructions to [install `viam-server`](/installation/viam-server-setup/), the installation process provides an example configuration file in the following location:
 
 - Linux: <file>/etc/viam.json</file>
 - macOS: <file>/opt/homebrew/etc/viam.json</file>
@@ -65,8 +65,8 @@ If your machine temporarily disconnects from the internet, its configuration is 
 
 ## Example JSON configuration file
 
-If you want to create your own JSON configuration file without using [the Viam app](https://app.viam.com), you can start with the following example file.
-This file contains some basic example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
+If you want to create your own JSON configuration file without using the [Viam app](https://app.viam.com), you can start with the following example file.
+The following file contains some example {{< glossary_tooltip term_id="component" text="component" >}} and {{< glossary_tooltip term_id="service" text="service" >}} configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

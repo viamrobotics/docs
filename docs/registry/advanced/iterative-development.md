@@ -18,7 +18,7 @@ Generally, when developing a module, you have two options for iterative developm
 - **Sync Code and Test Remotely:** If you want your module to support a different architecture than your development workstation, you can sync your module code to a machine running your desired target architecture and test remotely.
   For example, if you are developing a module on a macOS computer, but want your module to support a Raspberry Pi running Linux on the `arm64` architecture, you can set up syncing for your module code to be able to continue development on your macOS workstation, but test on your remote Raspberry Pi.
 
-Both of these options involve deploying your module to the target test system as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
+Both of these options involve deploying your module to the target test system as a [local module](/configure/#local-modules), without uploading it to the Viam registry.
 Even if you have already published a version of your module to the registry, you might still find it useful to follow the steps in this section to verify that changes you make as part of releasing a new version work as expected on your target platform.
 
 Then, once you have tested it, you can [upload your module](/how-tos/upload-module/) to the Viam registry.
@@ -29,13 +29,13 @@ You can use [prerelease versioning](#use-prerelease-versioning) to publish a ver
 
 If you are developing a module for the same target architecture as your development workstation, you can test your module locally using the following procedure:
 
-1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/cloud/machines/#add-a-new-machine) to serve as your development machine.
+1. Navigate to the [Viam app](https://app.viam.com/robots) and add a new machine to serve as your development machine.
    Be sure to follow the steps shown in the Viam app to install `viam-server` on your local machine.
 
 1. If you are using a programming language that requires that you build your module, such as Go or C++, follow the instructions for your language to [compile or package](/how-tos/create-module/#compile-or-package-your-module) your module.
    If you are using a programming language that does not require compilation, such as Python, you can skip this step.
 
-1. Navigate to the Viam app, select your machine, and [add your module as a local module](/registry/configure/#local-modules) to your machine.
+1. Navigate to the Viam app, select your machine, and [add your module as a local module](/configure/#local-modules) to your machine.
    For the **Executable path** field, enter the absolute path on your machine's filesystem to either:
 
    - the module's [executable file](/how-tos/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
@@ -87,7 +87,7 @@ If you are developing a module for the same target architecture as your developm
 
 If you are developing a module for a different target architecture than your development workstation, you can sync your module code and test your module remotely using the following procedure:
 
-1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/cloud/machines/#add-a-new-machine) to serve as your development machine.
+1. Navigate to the [Viam app](https://app.viam.com/robots) and add a new machine to serve as your development machine.
    Be sure to follow the steps shown in the Viam app to install `viam-server` on the target machine you want to test and build on.
    For example, to test and build your module on your Raspberry Pi, be sure to install `viam-server` on the Pi itself, not your macOS workstation.
 
@@ -171,7 +171,7 @@ If you are developing a module for a different target architecture than your dev
 1. If you are using a programming language that requires that you build your module, such as Go or C++, follow the instructions for your language to [compile or package](/how-tos/create-module/#compile-or-package-your-module) your module.
    If you are using a programming language that does not require compilation, such as Python, you can skip this step.
 
-1. Navigate to the Viam app, select your machine, and [add your module as a local module](/registry/configure/#local-modules) to your machine.
+1. Navigate to the Viam app, select your machine, and [add your module as a local module](/configure/#local-modules) to your machine.
    Provide the **Executable path** in the configuration, pointing to the compiled or built binary, or the executable script, depending on your language.
    Provide the _remote system's_ path to this file, for example: <file>/home/username/my-module/run.sh</file>.
    With the Mutagen sync in place, Mutagen transfers the binary or executable automatically when you created it in the previous step.

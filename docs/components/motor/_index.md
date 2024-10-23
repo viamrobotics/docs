@@ -15,6 +15,7 @@ aliases:
   - /micro-rdk/motor/
   - /build/micro-rdk/motor/
 hide_children: true
+date: "2024-10-21"
 # SME: Rand
 ---
 
@@ -24,12 +25,10 @@ If you have a device that converts electricity into rotary motion, such as a bru
 
 If you have a hobby servo, configure it as a [servo component](/components/servo/) instead.
 
-## Available models
+## Configuration
 
 To use a motor, you need to add it to your machine's configuration.
-Go to your machine's **CONFIGURE** page, and add a model that supports your motor.
-
-Because your machine controls your motor using a [motor driver](https://www.wellpcb.com/what-is-motor-driver.html), you technically need to select a motor model that supports your motor driver rather than the motor itself.
+Go to your machine's **CONFIGURE** page, and add a model that supports your motor and its [motor driver](https://www.wellpcb.com/what-is-motor-driver.html).
 
 The following list shows the available motor models.
 For additional configuration information, click on the model name:
@@ -58,15 +57,18 @@ For additional configuration information, click on the model name:
 
 The [motor API](/appendix/apis/components/motor/) supports the following methods:
 
-The motor component supports the following methods:
-
 {{< readfile "/static/include/components/apis/generated/motor-table.md" >}}
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your motor is not working as expected, follow these steps:
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+1. Check your machine logs on the **LOGS** tab to check for errors.
+1. Review your motor model's documentation to ensure you have configured all required attributes.
+1. Check that all wires are securely attached to the correct pins.
+1. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the motor there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

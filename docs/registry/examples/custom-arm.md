@@ -21,6 +21,7 @@ images: ["/registry/module-icon.svg"]
 aliases:
   - "/extend/modular-resources/examples/custom-arm/"
   - "/modular-resources/examples/custom-arm/"
+toc_hide: true
 # SMEs: Nicole Jung
 ---
 
@@ -35,17 +36,18 @@ Each of these models must also include a [kinematics file](/internals/kinematic-
 Each built-in driver in the RDK includes a corresponding kinematics file located in the same directory as the driver.
 For example, the `ur5e`'s kinematics file, [`ur5e.json`](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json), is provided in the RDK in the same directory as its driver, `ur.go`.
 
-See [Arm Configuration](/components/arm/#available-models) for the current list of built-in models the RDK provides.
+See [Arm Configuration](/components/arm/#configuration) for the current list of built-in models the RDK provides.
 
 {{% /alert %}}
 
-If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/sdks/) and control it with the [arm API](/appendix/apis/components/arm/#api), or use it with [services](/services/) like [Motion](/services/motion/), just as you would with a built-in model.
+If you have a robot arm that is not already supported by an existing arm model, create a module that provides a customized model for your arm to [program](/sdks/).
+Then you can control it with the [arm API](/appendix/apis/components/arm/#api), or use it with {{< glossary_tooltip term_id="service" text="services" >}} like [Motion](/services/motion/), just as you would with a built-in model.
 
 See [Modular Resources](/registry/) for more information.
 
 ## Get your arm's kinematics file
 
-The way arms move through space is more complicated than Viam's other [components](/components/).
+The way arms move through space is more complicated than Viam's other {{< glossary_tooltip term_id="component" text="components" >}}.
 Because of this, an arm, unlike other components, requires a [kinematic configuration file](/internals/kinematic-chain-config/) describing its geometry.
 This provides the necessary information for the [frame system service](/services/frame-system/) and built-in [motion service](/services/motion/) to work with the arm.
 
@@ -235,7 +237,7 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 
 ### Prepare the module for execution
 
-To [add a module](/registry/configure/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
+To [add a module](/registry/modular-resources/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 
 - runs your module when executed,
 - takes a local socket as a command line argument, and
@@ -268,4 +270,4 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Configure the module and modular resource on your machine
 
-Follow [these configuration instructions](/registry/configure/) to add your custom resource to your machine.
+Follow [these configuration instructions](/registry/modular-resources/) to add your custom resource to your machine.

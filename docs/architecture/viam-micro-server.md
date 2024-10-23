@@ -32,7 +32,7 @@ date: "2024-09-03"
 {{% relatedcard link="/components/sensor/" %}}
 {{% relatedcard link="/components/servo/" %}}
 {{% relatedcard link="/components/generic/" %}}
-{{% relatedcard link="/services/data/capture-sync/" %}}
+{{% relatedcard link="/services/data/" %}}
 {{< /cards >}}
 
 Click on each supported resource to see available models, API methods, and configuration info.
@@ -43,6 +43,6 @@ To use `viam-micro-server`, follow the installation guide.
 If you want to access camera functionality, extend the functionality of `viam-micro-server, or customize it see the development setup guide.
 
 {{< cards >}}
-{{% card link="/installation/" %}}
+{{% card link="/installation/viam-server-setup/" %}}
 {{% card link="/installation/viam-micro-server-dev/" %}}
 {{< /cards >}}

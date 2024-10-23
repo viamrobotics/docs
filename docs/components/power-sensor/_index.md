@@ -10,6 +10,7 @@ tags: ["sensor", "components", "power sensor", "ina219", "ina226", "renogy"]
 icon: true
 images: ["/icons/components/power-sensor.svg"]
 modulescript: true
+date: "2024-10-21"
 aliases:
   - "/components/power-sensor/"
 hide_children: true
@@ -20,7 +21,7 @@ The power sensor component provides an API for getting measurements of voltage, 
 
 If you have a physical power sensor, an API endpoint, or anything else that provides such measurements, use a power sensor component.
 
-## Available models
+## Configuration
 
 To use a power sensor and get its measurements, you need to add it to your machine's configuration.
 
@@ -56,9 +57,13 @@ The [power sensor API](/appendix/apis/components/power-sensor/) supports the fol
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your power sensor is not working as expected, follow these steps:
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your power sensor model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the power sensor there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

@@ -22,6 +22,7 @@ level: "Beginner"
 date: "2022-10-11"
 # updated: ""
 cost: "0"
+toc_hide: true
 ---
 
 <!-- LEARNING GOALS
@@ -46,7 +47,7 @@ You'll need the following hardware and software for this tutorial:
 - A computer running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
-If you don't already have a Viam account, sign up for one on [the Viam app](https://app.viam.com).
+If you don't already have a Viam account, sign up for one on the [Viam app](https://app.viam.com).
 
 {{% snippet "setup.md" %}}
 
@@ -318,7 +319,7 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 ### What is a sub-part?
 
 Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](https://github.com/viam-modules/raspberry-pi).
-You follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your [board](/components/board/), and you start operating your machine with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
+You follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your [board](/components/board/), and you start operating your machine with that computer, adding the {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} you want to use to that `viam-server` instance.
 
 By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:
 

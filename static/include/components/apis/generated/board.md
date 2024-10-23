@@ -169,7 +169,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% alert title="Info" color="info" %}}
 
 [Pulse-width modulation (PWM)](https://www.digikey.com/en/blog/pulse-width-modulation) is a method where of transmitting a digital signal in the form of pulses to control analog circuits.
-With PWM on a _board_, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components/) wired to the pin that read analog signals.
+With PWM on a _board_, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any hardware components wired to the pin that read analog signals.
 This enables the board to communicate with these components.
 
 {{% /alert %}}
@@ -1085,7 +1085,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](/components/board/#available-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](/components/board/#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 

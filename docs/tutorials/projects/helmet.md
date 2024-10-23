@@ -2,7 +2,7 @@
 title: "Monitor Job Site Helmet Usage with Computer Vision"
 linkTitle: "Helmet Monitor"
 type: "docs"
-description: "Get an email alert if people are not wearing hard hats."
+description: "Use computer vision to detect problems such as people not wearing safety gear and get email alerts."
 videos: ["/tutorials/helmet/hardhat.webm", "/tutorials/helmet/hardhat.mp4"]
 images: ["/tutorials/helmet/hardhat.gif"]
 videoAlt: "A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera."
@@ -18,10 +18,12 @@ cost: 120
 
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="width: 350px">}}
 
-We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/services/data/capture-sync/), [computer vision](/services/vision/), and [triggers](/configure/triggers/), along with a hard hat detection model.
+Personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
+If you want to monitor the usage of PPE equipment, you can address this problem using computer vision and a machine learning model that can detect if someone is wearing a hard.
 
-By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
+By following this tutorial you will build a system that can monitor camera feeds and detect situations that require review.
+In other words, this system performs anomaly detection.
+Whenever the system detects an anomaly, like someone not wearing a hard hat, it will send an email notification.
 
 {{<gif webm_src="/tutorials/helmet/hardhat.webm" mp4_src="/tutorials/helmet/hardhat.mp4" alt="A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera." class="alignleft" max-width="250px">}}
 
@@ -46,7 +48,7 @@ After completing this tutorial, you will:
 
 - A camera such as a standard USB webcam.
   You can also test the hard hat detection system using the webcam built into your laptop.
-- A computer capable of running [`viam-server`](/installation/).
+- A computer capable of running [`viam-server`](/installation/viam-server-setup/).
   You can use a personal computer running macOS or Linux, or a single-board computer (SBC) running 64-bit Linux.
 
 ### Optional hardware
@@ -59,7 +61,7 @@ Note that your machine must be connected to the internet for data sync and email
 
 ### Required software
 
-- [`viam-server`](/installation/)
+- [`viam-server`](/installation/viam-server-setup/)
 - [Ultralytics YOLOv8](https://docs.ultralytics.com/), integrated with Viam using the [YOLOv8 modular service](https://github.com/viam-labs/YOLOv8)
 - [YOLOv8 Hard Hat Detection model](https://huggingface.co/keremberke/yolov8s-hard-hat-detection)
 - [`objectfilter-camera`](https://github.com/felixreichenbach/objectfilter-camera) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
@@ -248,13 +250,18 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Triggers](/configure/triggers/) allow you to trigger actions by sending an HTML request when a certain event happens.
-In this case, you're going to set up a trigger to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
+[Triggers](/configure/triggers/) allow you to send webhook requests or email notifications when certain events happen.
 
-Before you configure a trigger on your machine, you need to create a serverless function for the trigger to call.
+For example, you can set up a trigger to perform an action whenever an image of someone without a hard hat is uploaded to the cloud.
+
+You can set up the trigger with a serverless function which sends you a customized email or with Viam's built-in email alerts which sends a generic email letting you know that data has been synced.
+
+If you wish to use Viam's built-in email alerts, skip ahead to [configuring a trigger on your machine](#set-up-email-notifications).
+To set up a serverless function, continue reading.
 
 ### Create a serverless function
 
+Before you configure a trigger on your machine, you need to create a serverless function for the trigger to call.
 A serverless function is a simple script that is hosted by a service such as [Google Cloud Functions](https://cloud.google.com/functions) or [AWS Lambda](https://aws.amazon.com/pm/lambda).
 You don't need to host it on your machine; instead, it is always available and runs only when an event triggers it.
 
@@ -411,36 +418,26 @@ Now you can test the script:
 
 ### Configure a trigger on your machine
 
-Now it's time to configure a [trigger](/configure/triggers/) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
+Now it's time to configure a trigger so that you get an email when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the trigger to trigger each time an image is synced to the cloud will produce the desired result.
 
-Configure a trigger as follows:
+Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-1. Navigate to the **CONFIGURE** tab of your machine.
-   Select **JSON** mode in the left-hand menu.
+Name the trigger and click **Create**.
 
-2. Paste the following JSON template into your JSON config.
-   `"triggers"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+Select trigger **Type** as **Data has been synced to the cloud** and **Data Types** as **Binary (image)**.
 
-   ```json {class="line-numbers linkable-line-numbers"}
-     "triggers": [
-       {
-         "url": "<Insert your own cloud function URL>",
-         "event": {
-           "attributes": {
-             "data_types": ["binary"]
-           },
-           "type": "part_data_ingested"
-         }
-       }
-     ]
-   ```
+{{<imgproc src="/tutorials/helmet/trigger.png" resize="x400" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." >}}
 
-3. Replace the `url` value with your cloud function URL.
-   You can get this URL by copying it from the **TRIGGER** tab in the cloud function console.
-   Once you've done this, the `url` line should resemble, for example, `"url": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email"`.
+To configure notifications, either
 
-4. Click **Save** in the top right corner of the screen to save your changes.
+- add a webhook and enter the URL of your custom cloud function, if you created one
+- add an email address to use Viam's built-in email notifications
+
+For both options also configure the time between notifications.
+
+Click **Save** in the top right corner of the screen to save your changes.
 
 ## Test the whole system
 
@@ -462,10 +459,10 @@ Here are some ways you could expand on this project:
 - Change your cloud function to send a different kind of notification, or trigger some other action.
   For an example demonstrating how to configure text notifications, see the [Detect a Person and Send a Photo tutorial](/tutorials/projects/send-security-photo/).
 
-- Use a different existing model or [train your own](/how-tos/deploy-ml/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
+- Use a different existing model or [train your own](/how-tos/train-deploy-ml/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
 
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

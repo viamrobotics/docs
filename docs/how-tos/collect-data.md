@@ -94,7 +94,7 @@ Wait for your device to connect to the Viam app.
 
 {{< gif webm_src="/how-tos/configure-webcam.webm" mp4_src="/how-tos/configure-webcam.mp4" alt="The process described below." max-width="550px" class=aligncenter >}}
 
-1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
+1. From the **CONFIGURE** tab on your machine's page in the [Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
    Select the `camera` type and add the `webcam` model.
 
 1. Click the **Save** button in the top right corner of the page to save your config.
@@ -126,7 +126,7 @@ For more detailed information, including optional attribute configuration, see t
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
+For more detailed information, see [data management service](/services/data/).
 
 {{< /expand >}}
 {{< expand "Step 5: View the captured image data" >}}
@@ -154,7 +154,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 {{< expand "Step 1: Create a machine" >}}
 
-Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
+Add a new machine in the [Viam app](https://app.viam.com).
 
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
@@ -177,7 +177,7 @@ Most sensors need to be wired to the pins of a SBC such as a Raspberry Pi.
 If you are not using a single-board computer (SBC), move on to step 4.
 
 If you are using a SBC, make sure you have installed `viam-server` on the SBC.
-Then add a [board component](/components/board/#available-models) to your config for your SBC.
+Then add a [board component](/components/board/#configuration) to your config for your SBC.
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 
@@ -190,20 +190,20 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 {{< expand "Step 4: Configure a sensor" >}}
 
-Search the [sensor models](/components/sensor/#available-models) for a model of sensor that is compatible with your sensor hardware.
+Search the [sensor models](/components/sensor/#configuration) for a model of sensor that is compatible with your sensor hardware.
 For example, if you have a Sensirion SHT3x-DIS temperature and humidity sensor, you should use the [`sensirion-sht3xd`](https://docs.viam.com/components/sensor/sensirion-sht3xd/) model of sensor.
 
 If you don't have a physical sensor that can be wired to the pins of a SBC, you can use the [`viam:viam-sensor:telegrafsensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) model which measures computer performance metrics.
 
 Once you determine which model to use, add it to your machine's configuration:
 
-1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
+1. From the **CONFIGURE** tab on your machine's page in the [Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
    Select the `sensor` type and add your sensor model.
 
    {{<imgproc src="/get-started/quickstarts/collect-data/config-sensor.png" resize="x1100" declaredimensions=true alt="The dropdown showing all sensor models." style="width:550px" >}}
 
 1. Add required attributes, such as information about how the sensor is connected to the board.
-   You can find information on these attributes by clicking the name of your sensor model in the [available models list](/components/sensor/#available-models).
+   You can find information on these attributes by clicking the name of your sensor model in the [available models list](/components/sensor/#configuration).
 
 1. Click the **Save** button in the upper right corner of the page to save your configuration.
 
@@ -233,7 +233,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 1. Click the **Save** button in the top right corner of the page to save your config.
 
-For more detailed information on data capture, see [Configure Data Capture](/services/data/capture-sync/).
+For more detailed information, see [data management service](/services/data/).
 
 {{< /expand >}}
 {{< expand "Step 6: View the captured sensor data" >}}
@@ -261,7 +261,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/deploy-ml/) with the Viam platform.
+Now that you have captured data, you could use this data to [train your own Machine Learning model](/how-tos/train-deploy-ml/) with the Viam platform.
 
 To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 

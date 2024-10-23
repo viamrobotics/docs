@@ -2,7 +2,7 @@
 {{- $section := $.Site.GetPage "section" .Section -}}
       {{- range .Site.AllPages -}}
       {{- if eq .Section $section.Section -}}
-            {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
+            {{- if or (and (.IsDescendant $section) (and (and (not .Draft) (not .Params.toc_hide)) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
                   {{- if or (or (eq .Section "tutorials") (eq .Section "get-started")) (eq .Section "how-tos") -}}
                         {{- $.Scratch.Set "latestDate" .Date.UTC.Unix -}}
                         {{- if .Params.updated -}}
@@ -157,22 +157,18 @@
                   {{- end -}}
             {{- end -}}
             {{- if eq .Section "services" -}}
-                  {{ $services_with_resources := slice "Generic Service" "ML Model Service" "Computer Vision" }}
+                  {{ $services_with_resources := slice "Generic Service" "ML Model" "Computer Vision" }}
                   {{- if and (in $services_with_resources .Parent.LinkTitle) (and (not .Draft) (not .Params.no_service)) -}}
                   {{- if .Params.canonical -}}
                         {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
                         {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
                   {{- else -}}
                         {{- $.Scratch.Set "permalink" .Permalink -}}
-                        {{- if eq .Parent.LinkTitle "ML Model Service" -}}
-                              {{- $.Scratch.Set "relpermalink" (printf "../../..%s" .RelPermalink) -}}
-                        {{- else -}}
-                              {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
-                        {{- end -}}
+                        {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
                   {{- end -}}
 
                   {{- $.Scratch.Set "id" (printf "builtin:rdk:service:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
-                  {{- if eq .Parent.LinkTitle "ML Model Service" -}}
+                  {{- if eq .Parent.LinkTitle "ML Model" -}}
                         {{- $.Scratch.Set "api" (printf "rdk:service:mlmodel" ) -}}
                   {{- else -}}
                         {{- if eq .Parent.LinkTitle "Generic Service" -}}

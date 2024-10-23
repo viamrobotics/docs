@@ -16,17 +16,18 @@ The board component supports the following methods:
 
 ## Establish a connection
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
+To get started using Viam's SDKs to connect to and control your board and the rest of your machine, go to your machine's page on the [Viam app](https://app.viam.com),
+Navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your machine as a client.
 Then control your machine programmatically by getting your `board` component from the machine with `FromRobot` and adding API method calls, as shown in the following examples.
 
-The following examples assume you have a board called "my_board" configured as a component of your machine.
+The following examples assume you have a board called `"my_board"` configured as a component of your machine.
 If your board has a different name, change the `name` in the code.
 
-Be sure to import the board package for the SDK you are using:
+Import the board package for the SDK you are using:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

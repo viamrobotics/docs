@@ -17,7 +17,7 @@ For example, you can use a `fake` component as a placeholder while waiting on a 
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `motor` type, then select the `fake` model.
 Enter a name or use the suggested name for your motor and click **Create**.
@@ -116,9 +116,13 @@ Use the buttons to try turning your motor forwards or backwards at different pow
 
 ![Motor control panel.](/components/motor/control.png)
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/motor.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}

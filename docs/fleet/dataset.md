@@ -2,7 +2,7 @@
 title: "Datasets"
 linkTitle: "Datasets"
 description: "Label data and create datasets for managing data and creating machine learning models."
-weight: 30
+weight: 50
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 imageAlt: "Label data and create datasets"
@@ -24,7 +24,7 @@ You can create and manage datasets using the [**DATA** tab](https://app.viam.com
 Filtered datasets are views and not materialized.
 That means the data you are viewing may change as you label and train on the dataset.
 
-Your dataset is also not versioned. If you train [ML models](/services/ml/ml-models/) on your dataset and the dataset changes existing models will not be affected but any new models you train will use the dataset with the data in it at the time of training.
+Your dataset is also not versioned. If you train [ML models](/registry/ml-models/) on your dataset and the dataset changes existing models will not be affected but any new models you train will use the dataset with the data in it at the time of training.
 {{< /alert >}}
 
 ## Labels
@@ -46,5 +46,5 @@ To interact with datasets programmatically, use the [data client API](/appendix/
 The following how-to guide contains instructions on creating datasets as well as on how to train a model on a dataset:
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{< /cards >}}

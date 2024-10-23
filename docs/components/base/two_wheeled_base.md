@@ -19,7 +19,7 @@ Only bases with two drive wheels are supported by this `viam-micro-server` model
 
 {{< alert title="Info" color="info" >}}
 
-The`two_wheeled_base` base model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+The`two_wheeled_base` base model is not currently available as a built-in option in the [Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
 
 {{< /alert >}}
 
@@ -82,9 +82,13 @@ The following attributes are available for `two_wheeled_base` bases:
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/base.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}

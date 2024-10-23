@@ -35,9 +35,13 @@ Then, configure the arm:
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/arm.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}

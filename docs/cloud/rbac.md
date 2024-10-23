@@ -180,7 +180,7 @@ Permissions for managing {{< glossary_tooltip term_id="fragment" text="fragments
 
 ### Data and machine learning
 
-Permissions for [data management](/services/data/) and [machine learning](/services/ml/) are as follows:
+Permissions for [data management](/fleet/data-management/) and [machine learning](/services/ml/) are as follows:
 
 <!-- prettier-ignore -->
 | Permissions | Org owner | Org operator | Location owner | Location operator | Machine owner | Machine operator |

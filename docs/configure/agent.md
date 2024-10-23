@@ -39,7 +39,7 @@ You can install `viam-agent` using either an existing machine's part ID and API 
 Your machine must have `curl` available in order to install `viam-agent`.
 {{< /alert >}}
 
-1. The first step is to [create a new machine in the Viam app](/cloud/machines/#add-a-new-machine).
+1. The first step is to add a new machine in the [Viam app](https://app.viam.com).
 2. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
 
@@ -76,7 +76,7 @@ For information on managing the service, see [Manage `viam-agent`](/installation
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
 
 {{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width=600x" >}}
@@ -156,7 +156,7 @@ Edit and fill in the attributes as applicable.
     "agent-syscfg": {
       "attributes": {
         "logging": {
-          "disable": true,
+          "disable": false,
           "system_max_use": "128M",
           "runtime_max_use": "96M"
         },
@@ -282,7 +282,7 @@ The following configuration defines the connection information and credentials f
 | `pin_version` | string | Optional | "Lock" the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables the `agent-syscfg` subsystem. |
-| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: when set to `true`, the defaults for `512M` limits are ignored and the operating system defaults are used.</li></ul></li><li>`upgrades`: using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with "security" in their codename, ex: `bookworm-security`), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
+| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: If `false` (default), Viam enforces the given logging configurations. If `true`: Viam does NOT modify logging configuration, and the operating system defaults are used.</li></ul></li><li>`upgrades`: using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with "security" in their codename, ex: `bookworm-security`), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
 
 The following configuration allows all upgrades from configured sources and sets the maximum disk space `journald` will user for persistent log storage to 128MB and the runtime limit to 96MB:
 
@@ -291,7 +291,7 @@ The following configuration allows all upgrades from configured sources and sets
   "release_channel": "stable",
   "attributes": {
     "logging": {
-      "disable": true,
+      "disable": false,
       "system_max_use": "128M",
       "runtime_max_use": "96M"
     },

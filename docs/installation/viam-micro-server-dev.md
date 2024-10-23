@@ -105,7 +105,7 @@ With the dev setup for `viam-micro-server`, you can:
 
 1.  Create a new machine and obtain its credentials:
 
-    Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
+    Navigate to the [Viam app](https://app.viam.com) and add a new machine.
     Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
 
     Then select the part status dropdown to the right of your machine's name on the top of the page and copy the **Machine cloud credentials**:
@@ -176,7 +176,7 @@ make upload
 
 {{< /alert >}}
 
-7.  Navigate to your new machine's page on [the Viam app](https://app.viam.com).
+7.  Navigate to your new machine's page on the [Viam app](https://app.viam.com).
     If successful, **Live** should be displayed underneath **Last online**.
 
 8.  You may now add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project.
@@ -212,7 +212,7 @@ make upload
 1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
 
 1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `dependencies` section of the project's `Cargo.toml` file, then build and flash the project.
-   The module will now be available for use by adding it to your machine configuration on the [Viam App](https://app.viam.com).
+   The module will now be available for use by adding it to your machine configuration on the [Viam app](https://app.viam.com).
 
 {{% /tab %}}
 {{% tab name="viam-micro-server Development" %}}
@@ -304,7 +304,7 @@ If successful, the Viam app will show that your machine part's status is **Live*
 
 If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
 
-1. Navigate to your machine's page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 1. Click the copy icon underneath **Machine cloud credentials**.
    `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).

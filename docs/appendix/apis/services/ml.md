@@ -11,7 +11,7 @@ images: ["/services/icons/ml.svg"]
 
 The ML model service API allows you to make inferences based on a provided ML model.
 
-The [ML Model service](/services/ml/deploy/) supports the following methods:
+The [ML Model service](/services/ml/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/mlmodel-table.md" >}}
 
@@ -27,7 +27,7 @@ pip install 'viam-sdk[mlmodel]'
 
 {{< /alert >}}
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on the [Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -36,7 +36,7 @@ When executed, this sample code creates a connection to your machine as a client
 The following examples assume that you have a machine configured with an `MLModel` service called `"my_mlmodel_service"`, and that you have installed the `mlmodel` extra for the Python SDK.
 If your ML model service has a different name, change the `name` in the code.
 
-Be sure to import the mlmodel package for the SDK you are using:
+Import the mlmodel package for the SDK you are using:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

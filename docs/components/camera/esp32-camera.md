@@ -46,7 +46,7 @@ Then, configure your camera:
 {{< tabs name="Configure a esp32-camera" >}}
 {{% tab name="JSON Template" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Select **JSON** mode.
 Copy and paste the following JSON into your existing machine configuration into the `"components"` array:
 
@@ -190,17 +190,13 @@ The following attributes are available for `esp32-camera` cameras:
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next steps
+## Troubleshooting
 
-If you need to capture image data and sync it to the cloud, see:
-
-{{< cards >}}
-{{% card link="/how-tos/image-data/" %}}
-{{< /cards >}}
+{{< readfile "/static/include/components/troubleshoot/camera.md" >}}
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

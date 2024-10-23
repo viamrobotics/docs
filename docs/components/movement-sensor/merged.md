@@ -15,19 +15,19 @@ component_description: "A model that allows you to aggregate the API methods sup
 The `merged` movement sensor model is an abstraction that combines data from multiple movement sensors.
 This allows you to aggregate the API methods supported by multiple sensors into a singular sensor client.
 
-This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#available-models) or [`IMU`](/components/movement-sensor/#available-models) models, respectively.
+This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#configuration) or [`IMU`](/components/movement-sensor/#configuration) models, respectively.
 
-To reduce velocity error when your machine is using the [navigation service](/services/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#available-models) and `Orientation()` from an [`IMU`](/components/movement-sensor/#available-models) movement sensor in a `merged` model.
+To reduce velocity error when your machine is using the [navigation service](/services/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/components/movement-sensor/#configuration) movement sensor in a `merged` model.
 
 Configure a [navigation service](/services/navigation/) to use your merged sensor to navigate.
 
-Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/components/movement-sensor/#available-models).
+Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/components/movement-sensor/#configuration).
 Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `merged` model.
 Enter a name or use the suggested name for your movement sensor and click **Create**.
@@ -94,7 +94,7 @@ For example:
 Configure an array of the `name` of each movement sensor you want to add to your machine as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that the particular movement sensor supports, or the type of reading or measurement that it takes.
-- Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#available-models), or by calling [`GetProperties()`](/appendix/apis/components/movement-sensor/#getproperties) on the sensor.
+- Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#configuration), or by calling [`GetProperties()`](/appendix/apis/components/movement-sensor/#getproperties) on the sensor.
 - Put the `name` of each movement sensor into the attribute array for the type of reading it supports.
   You can use the same sensor for multiple attributes if it supports multiple properties.
 
@@ -117,9 +117,13 @@ For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"`
 After you configure your movement sensor, navigate to the [Control tab](/fleet/control/) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

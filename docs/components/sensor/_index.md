@@ -14,6 +14,7 @@ aliases:
   - "/components/sensor/"
   - /micro-rdk/sensor/
   - /build/micro-rdk/sensor/
+date: "2024-10-21"
 hide_children: true
 # SME: #team-bucket
 ---
@@ -24,7 +25,7 @@ If you have a physical sensor, an API endpoint, or anything else that provides m
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/0YfP-63OBh8">}}
 
-## Available models
+## Configuration
 
 To use a sensor and get its measurements, you need to add it to your machine's configuration.
 Physical sensors often require a [board component](/components/board/) with a configured analog-to-digital converter (ADC).
@@ -73,9 +74,14 @@ The [sensor API](/appendix/apis/components/sensor/) supports the following metho
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your sensor is not working as expected, follow these steps:
 
-{{< snippet "social.md" >}}
+1. Check your machine logs on the **LOGS** tab to check for errors.
+1. Review your sensor model's documentation to ensure you have configured all required attributes.
+1. Check that any wires are securely attached to the correct pins, if appropriate.
+1. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the sensor there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

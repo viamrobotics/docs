@@ -72,7 +72,7 @@ h2, .h2 {
   min-height: 92%;
 }
 
-.td-content > h2.frontpage-headers {
+.frontpage > h2 {
   margin-top: 1.5rem;
 }
 
@@ -466,6 +466,12 @@ END MARKETING CSS
   clear: both;
 }
 
+.expand i {
+  font-size: x-small;
+  margin-right: 0.3rem;
+  min-width: 16px;
+}
+
 .expand-content ol li p {
   margin-bottom: 0;
 }
@@ -487,7 +493,7 @@ details[open] * i.fa-chevron-right {
 }
 
 details summary::-webkit-details-marker {
-  display:none;
+  display: none;
 }
 
 .center-text {
@@ -517,7 +523,7 @@ details summary::-webkit-details-marker {
 
 /* START CSS for how-to paths */
 
-.expand.howtoexpand summary, .expand-content {
+.expand.howtoexpand summary, .expand.howtoexpand .expand-content {
   background-color: #eaf9fb;
 }
 
@@ -528,15 +534,32 @@ details summary::-webkit-details-marker {
 
 .howtoexpand .expand-label > span > div {
   display: flex;
-  align-items:baseline;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .howtoexpand .expand-label > span > div > div {
   padding-right: 14px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.howtoexpand .expand-label > span > div > div > div {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .howtoexpand .expand-label i {
-  font-size: x-small;
+  margin-right: 0.3rem;
+  min-width: 16px;
+  line-height: 1.4375em;
+  margin-top: 4px;
+}
+
+.howtoexpand .expand-label h4 {
+  margin-bottom: unset;
 }
 
 .howtoexpand .expand-content {
@@ -932,13 +955,6 @@ details summary::-webkit-details-marker {
 }
 
 // TUTORIAL CARD STYLING END
-
-// On front page the normal hover-cards should take up more space
-
-.max-page * .hover-card {
-  min-width: 280px;
-  max-width: 400px;
-}
 
 // fit either all 4 cards, 2 by 2 or each card individually START
 
@@ -2152,6 +2168,10 @@ h3.body-header[style] {
 
 // Front page styling START
 
+.frontpage h2 {
+  margin-bottom: 1rem;
+}
+
 // Image and text START
 
 .front-card-container {
@@ -2419,6 +2439,7 @@ hr {
   margin-bottom: 0;
   max-width: 100%;
   max-height: 345px;
+  height: 345px;
   width: auto;
   flex: 1;
   align-content: center;

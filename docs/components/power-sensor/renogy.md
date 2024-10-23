@@ -20,7 +20,7 @@ Then, configure the power sensor:
 {{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `power_sensor` type, then select the `renogy` model.
 Enter a name or use the suggested name for your sensor and click **Create**.
@@ -78,6 +78,7 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 
 {{% /tab %}}
 {{% /tabs %}}
+
 The following attributes are available for `renogy` sensors:
 
 <!-- prettier-ignore -->
@@ -88,6 +89,10 @@ The following attributes are available for `renogy` sensors:
 | `modbus_id`  | integer | Optional | Controller MODBUS address. <br> Default: `1` |
 
 {{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}
+
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/power-sensor.md" >}}
 
 ## Next steps
 

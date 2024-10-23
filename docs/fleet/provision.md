@@ -1,7 +1,7 @@
 ---
 title: "Provision machines using viam-agent"
 linkTitle: "Provisioning Machines"
-weight: 70
+weight: 20
 type: "docs"
 description: "Provision a machine as it first comes online with a pre-defined configuration - in the factory or when the machine is taken into service."
 images: ["/platform/provisioning-demo.gif"]
@@ -121,7 +121,7 @@ This is the general process for provisioning depending on whether you are using 
 
      To copy a machine cloud credentials file:
 
-     - Navigate to your machine's page on [the Viam app](https://app.viam.com).
+     - Navigate to your machine's page on the [Viam app](https://app.viam.com).
      - Select the part status dropdown to the right of your machine's name on the top of the page.
        {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown">}}
      - Click the copy icon next to **Machine cloud credentials**.

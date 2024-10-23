@@ -20,7 +20,7 @@ Then, configure the sensor:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `sensor` type, then select the `sensirion-sht3xd` model.
 Enter a name or use the suggested name for your sensor and click **Create**.
@@ -64,6 +64,10 @@ The following attributes are available for `sensirion-sht3xd` sensors:
 ## Test the sensor
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
+
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/sensor.md" >}}
 
 ## Next steps
 

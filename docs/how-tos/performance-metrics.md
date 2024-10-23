@@ -17,6 +17,7 @@ level: "Beginner"
 date: "2024-08-23"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
+toc_hide: true
 ---
 
 You can use the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) {{< glossary_tooltip term_id="module" text="module" >}} to capture and monitor the following metrics about the performance of individual machines or your entire fleet:
@@ -58,7 +59,7 @@ You must run `viam-server` with `sudo` to monitor machine performance metrics.
 ## Add the telegraf-sensor
 
 {{< table >}}
-{{% tablestep link="/registry/configure/#add-a-modular-resource-from-the-viam-registry" %}}
+{{% tablestep link="/registry/modular-resources/#configuration" %}}
 **1. Add the performance metrics sensor**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.

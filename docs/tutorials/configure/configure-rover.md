@@ -34,7 +34,7 @@ If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/appendix/
 ## Requirements
 
 - A running an instance of `viam-server`.
-  See our [Installation Guide](/installation/) for instructions.
+  See our [Installation Guide](/installation/viam-server-setup/) for instructions.
 - A rover like the [SCUTTLE robot](https://www.scuttlerobot.org/shop/) or the [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
 
 Make sure your rover is assembled before starting this tutorial.
@@ -142,7 +142,7 @@ Add the following JSON objects to the `components` array:
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of encoder](/components/encoder/#available-models) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
+Follow the instructions for the [model of encoder](/components/encoder/#configuration) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -293,7 +293,7 @@ You can ignore the other optional attributes.
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of motor](/components/motor/#available-models) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
+Follow the instructions for the [model of motor](/components/motor/#configuration) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -80,16 +80,13 @@ If you are using different hardware, the navigation setup process will be mostly
 
 {{% /alert %}}
 
-Before you start, make sure to create a machine in [the Viam app](https://app.viam.com) and [install `viam-server`](/installation/) on your robot.
+Before you start, make sure to create a machine in the [Viam app](https://app.viam.com) and [install `viam-server`](/installation/viam-server-setup/) on your robot.
 Also, make sure to physically connect your components together to your machine's computer and power it on.
 
 ## Configure the components you need
 
-First, configure the components of your robot.
-
-{{< alert title="Info" color="info" >}}
-If you are using different hardware, configure them according to the instructions for each [component](/components/).
-{{< /alert >}}
+First, configure the {{< glossary_tooltip term_id="component" text="components" >}} of your robot.
+If you are using different hardware, configure them according to the instructions for the component model that supports your hardware.
 
 {{% expand "Click to see how we configured our LEO rover" %}}
 
@@ -99,7 +96,7 @@ If you are using different hardware, configure them according to the instruction
 ### Configure a board with `"digital_interrupts"`
 
 First, configure the [board](/components/board/) local to your rover.
-Follow [these instructions](/components/board/#available-models) to configure your board model.
+Follow [these instructions](/components/board/#configuration) to configure your board model.
 We used a [`jetson` board](/components/board/jetson/), but you can use any model of board you have on hand, as the [resource's API](/appendix/apis/components/board/#api) is hardware agnostic.
 
 1. Configure a board named `local` as shown below:
@@ -141,7 +138,7 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 Configure your rover base to act as the moving platform of the navigating robot.
 Start by configuring the [encoders](/components/encoder/) and [motors](/components/motor/) of your encoded motor.
 
-1. Follow [these instructions](/components/) to configure the left and right encoders of the wheeled base.
+1. Follow the [encoder configuration instructions](/components/encoder/#configuration) to configure the left and right encoders of the wheeled base.
    We configured ours as [`incremental` encoders](/components/encoder/incremental/), as shown below:
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="1000x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
@@ -151,7 +148,7 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
    Assign the pins as the [digital interrupts](/components/board/jetson/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/components/encoder/incremental/) for attribute information.
 
-2. Next, follow [these instructions](/components/motor/#available-models) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
+2. Next, follow [these instructions](/components/motor/#configuration) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
    We [configured ours as `gpio` motors](/components/motor/gpio/), as shown below:
 
 {{<imgproc src="/tutorials/navigate-with-rover-base/right-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a right gpio motor in the Viam app config builder." style="min-height:550px; max-height:600px">}}

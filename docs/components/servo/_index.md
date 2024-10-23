@@ -15,6 +15,7 @@ aliases:
   - /micro-rdk/servo/
   - /build/micro-rdk/servo/
 hide_children: true
+date: "2024-10-21"
 # SME: #team-bucket
 ---
 
@@ -24,7 +25,7 @@ If you have a physical ["RC" or "hobby" servo motor](https://learn.adafruit.com/
 
 If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should configure it as an [encoded motor](/components/motor/encoded-motor/) instead.
 
-## Available models
+## Configuration
 
 To use a hobby servo, you need to add it to your machine's configuration.
 
@@ -60,9 +61,14 @@ The [servo API](/appendix/apis/components/servo/) supports the following methods
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your servo is not working as expected, follow these steps:
 
-{{< snippet "social.md" >}}
+1. Check your machine logs on the **LOGS** tab to check for errors.
+1. Review your servo model's documentation to ensure you have configured all required attributes.
+1. Check that all wires are securely attached to the correct pins on the board.
+1. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the servo there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

@@ -46,7 +46,7 @@ Due to the way processes are designed for stability, if you are configuring a pr
 
 ## Configure a process
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Process**.
 Your process is automatically created with a name (`id` in JSON) like **process-1** and a card matching that name on the **CONFIGURE** tab.
 Navigate to that card.

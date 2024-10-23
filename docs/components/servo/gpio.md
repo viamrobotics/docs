@@ -20,7 +20,7 @@ Then, configure the servo:
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `servo` type, then select the `gpio` model.
 Enter a name or use the suggested name for your servo and click **Create**.
@@ -106,6 +106,10 @@ Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs
 {{% /alert %}}
 
 {{< readfile "/static/include/components/test-control/servo-control.md" >}}
+
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/servo.md" >}}
 
 ## Next steps
 

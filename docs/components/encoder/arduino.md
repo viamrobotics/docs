@@ -14,7 +14,7 @@ aliases:
 {{< tabs name="Configure an arduino Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `encoder` type, then select the `arduino` model.
 Enter a name or use the suggested name for your encoder and click **Create**.
@@ -55,9 +55,13 @@ The following attributes are available for `arduino` encoders:
 | `motor_name` | string | **Required** | The `name` of the motor. |
 | `pins` | **Required** | object | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: Required for two phase encoder. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} for the second board pin to which the encoder is wired. </li> </ul> |
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/encoder.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}

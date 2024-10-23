@@ -16,7 +16,7 @@ aliases:
   - /get-started/installation/manage-viam-server/
 ---
 
-If you have manually [installed `viam-server`](/installation/), you can chose to run it as a system service or directly on the command line.
+If you have manually [installed `viam-server`](/installation/viam-server-setup/), you can chose to run it as a system service or directly on the command line.
 Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/installation/viam-server-setup/#install-viam-server) on Linux.
 Running on the command line is suitable for local development.
 
@@ -211,7 +211,7 @@ Homebrew does not support automatic updates, so you will need to manually perfor
 Use the following commands to view these log messages locally on your system.
 
 {{< alert title="Tip" color="tip" >}}
-If your system is able to connect with the Viam app, you can also view logs in the **LOGS** tab on [the Viam app](https://app.viam.com/).
+If your system is able to connect with the Viam app, you can also view logs in the **LOGS** tab on the [Viam app](https://app.viam.com/).
 {{< /alert >}}
 
 Select the tab below for your platform:

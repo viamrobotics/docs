@@ -144,7 +144,7 @@ You can do this from the organization's settings page in the [Viam app](https://
    Where:
 
    - `org-id` is your organization ID.
-     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/).
    - `key-name` is an optional name for your API key.
 
 The command will return a `key id` and a `key value`.
@@ -180,7 +180,7 @@ You can do this from the organization's settings page in the [Viam app](https://
    - `location-id` is your location ID.
      You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app.
    - `org-id` is an optional organization ID to attach the key to.
-     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/).
      If only one organization owns the location, you can omit the parameter.
      If multiple organizations own the location, you must specify the `org-id` explicitly.
    - `key-name` is an optional name for your API key.
@@ -382,7 +382,7 @@ The following command tags two images specified by their file ids in the specifi
 viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
 ```
 
-To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in the [Viam app](https://app.viam.com/).
 Find **Organization ID** and click the copy icon.
 
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
@@ -395,7 +395,7 @@ Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
 
-See [Datasets](/services/data/dataset/) for more information.
+See [Datasets](/fleet/dataset/) for more information.
 
 ##### Using the `filter` argument
 
@@ -424,7 +424,7 @@ Removing the `viam data export` string, you can use the same filter parameters (
 
 You cannot use the `--file-ids` argument when using `filter`.
 
-See [Datasets](/services/data/dataset/) for more information.
+See [Datasets](/fleet/dataset/) for more information.
 
 ### `data`
 
@@ -519,6 +519,7 @@ done
 | `--component-type` | Filter by specified component type. |`export`, `delete`, `tag filter` | Optional |
 | `--component-model` | Filter by specified component model. |`export`, `delete`| Optional |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export` | Optional|
 | `--start` | ISO-8601 timestamp indicating the start of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
 | `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
@@ -1248,7 +1249,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### `training-script`
 
-Manage training scripts for [custom ML training](/services/ml/training-scripts/).
+Manage training scripts for [custom ML training](/registry/training-scripts/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>
@@ -1279,7 +1280,7 @@ viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--path` | The path to ML training scripts for upload. | `upload` | **Required** |
-| `--org-id` | The organization ID to host the scripts in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `upload`, `update` | **Required** |
+| `--org-id` | The organization ID to host the scripts in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `upload`, `update` | **Required** |
 | `--script-name` | Name of the ML training script to update or upload. | `upload`, `update` | **Required** |
 | `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | `update` | **Required** |
 | `--version` | Version of the ML training script to upload. | `upload` | Optional |
@@ -1361,8 +1362,8 @@ viam train list --org-id=123 --job-status=completed
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
-| `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
-| `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
+| `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
+| `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-type` | Type of model to train. Can be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |

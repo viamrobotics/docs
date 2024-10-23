@@ -1,6 +1,6 @@
 ---
-title: "Create and configure a smart machine"
-linkTitle: "Configure a smart machine"
+title: "Create and configure a machine"
+linkTitle: "Configure a machine"
 weight: 10
 type: "docs"
 description: "Create a machine in a few steps using Viam's modular system of components and services without writing much or any code."
@@ -50,7 +50,7 @@ Then create a machine by typing in a name and clicking **Add machine**.
 {{<imgproc src="/fleet/app-usage/create-machine.png" resize="600x" declaredimensions=true alt="The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/installation/" %}}
+{{% tablestep link="/installation/viam-server-setup/" %}}
 **2. Install Viam on your machine**
 
 All of the software that runs your machine on a computer is packaged into a binary called `viam-server`.
@@ -74,7 +74,7 @@ A machine can be a single-board computer with a single sensor or LED wired to it
 Click on the **CONFIGURE** tab of your machine's page in the Viam app to navigate to it.
 
 {{% /tablestep %}}
-{{% tablestep link="/components/" %}}
+{{% tablestep link="/configure/#components" %}}
 **4. Configure your components**
 
 Each physical piece of your smart machine that is controlled by a computer is called a {{% glossary_tooltip term_id="component" text="_component_" %}}. For example, if your smart machine includes an arm, a motor, and a camera, each of those is a component.
@@ -83,8 +83,8 @@ For each component that makes up your machine:
 
 1. Physically connect the hardware to your machine's computer.
 2. Find an appropriate model for your hardware.
-   You can find the available models on the [component pages](/components/).
-   For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
+   You can find the available models on each {{< glossary_tooltip term_id="component" text="component" >}}'s documentation.
+   For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#configuration).
 3. You need to [_configure_](/configure/) your machine so that `viam-server` can interact with its hardware.
    Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.
    For example, if you have a DC motor, follow the [corresponding configuration instructions](/components/motor/gpio/) to tell the software which pins it is connected to.
@@ -111,7 +111,7 @@ With the panels, you can drive motors at different speeds, view your camera feed
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="600px" class="fill alignleft">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/services/" %}}
+{{% tablestep link="/configure/#services" %}}
 
 **6. Configure services**
 
@@ -123,7 +123,7 @@ Services are built-in Viam software packages that add high-level functionality t
 - **Vision**: Enable your machine to intelligently see and interpret the world around it.
 - **Simultaneous Localization And Mapping (SLAM)**: Make your machine map its surroundings and find its position on a map.
 
-If you want to use any services, see their [documentation](/services/) for configuration and usage information.
+To use these or other services, see their documentation for configuration and usage information.
 If you are making a simple machine that doesn't use services, you can skip this step!
 
 {{% /tablestep %}}

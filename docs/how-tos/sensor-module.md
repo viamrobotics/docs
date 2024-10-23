@@ -20,7 +20,7 @@ A sensor is anything that collects data.
 
 A sensor could be something we typically think of as a sensor, like a temperature and humidity sensor, or it could be a "virtual," non-hardware sensor like a service that gets stock market data.
 
-Since a sensor can be so many different things, there's a good chance you're on this page because though there are various [built-in and modular sensor models available in Viam](/components/sensor/#available-models), you have a different, unsupported sort of sensor you'd like to use.
+Since a sensor can be so many different things, there's a good chance you're on this page because though there are various [built-in and modular sensor models available in Viam](/components/sensor/#configuration), you have a different, unsupported sort of sensor you'd like to use.
 
 Making a module to support your sensor will allow you to use it with Viam's data capture and sync tools, as well as using the sensor API (using any of the different programming language [SDKs](/sdks/)) to get readings from it.
 
@@ -444,11 +444,11 @@ With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-
 
 ## Build and Run
 
-To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
+To use this module, add it from the machines **CONFIGURE** tab and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
 
 ## Configure your `meteo_PM` sensor
 
-Navigate to the **CONFIGURE** tab of your robot’s page in [the Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your robot’s page in the [Viam app](https://app.viam.com/).
 Add a component.
 Select the `sensor` type, then select the `jessamy:weather:meteo_PM` model.
 Enter a name for your sensor and click **Create**.
@@ -485,7 +485,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 ## Upload your module to the registry
 
-To share your module with others in your organization or with the world, [follow these instructions to upload your module to the modular resource registry](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry).
+To share your module with others in your organization or with the world, [follow these instructions to upload your module to the modular resource registry](/how-tos/upload-module/).
 
 Once you've uploaded your module, you can [deploy it on your machines](/how-tos/create-module/#deploy-your-module-to-more-machines) by adding it just as you'd add any component instead of as a local module.
 

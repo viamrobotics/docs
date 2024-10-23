@@ -1,8 +1,8 @@
 ---
-title: "Detect Color with a Webcam"
+title: "Detect color with a webcam"
 linkTitle: "Detect Color"
 type: "docs"
-description: "Detect colors using a webcam and the Viam vision service. Without writing code, you will be able to view your camera stream, with detection bounding boxes."
+description: "Detect colors and their location in an image with any webcam and a vision service."
 imageAlt: "camera stream displaying a color detection"
 images: ["/tutorials/try-viam-color-detection/detected-example.png"]
 tags: ["vision", "detector", "camera", "services"]
@@ -18,16 +18,26 @@ viamresources: ["vision", "camera"]
 platformarea: ["ml"]
 level: "Beginner"
 date: "2022-12-16"
-updated: "2024-09-03"
+updated: "2024-10-20"
 cost: "0"
-# SMEs: Hazal
 ---
 
-In this guide you will detect the color red using your computer's webcam and the Viam vision service.
-Without writing any code, you will be able to view your camera stream, with detection bounding boxes, from the Viam app control interface.
+WebRTC is a powerful technology that allows developers to build apps with video streams.
+Adding computer vision allows machines to analyze images and gain meaningful information from video streams.
+You can then program the machines to act based on this data, for example by alerting you.
+
+Imagine a factory's storage unit.
+To know what to restock, there are cameras, so someone can view the camera feeds to see stock levels rather than having to check in person.
+
+Computer vision let's us do even better.
+The factory adds red paint to the walls of the factory at level where they need to restock.
+Now, a computer can monitor the live stream of the stock levels and as soon as the red color becomes visible, it can alert a supervisor.
+
+This guide will show you how to use any webcam alongside a computer to detect the color red with the vision service.
 
 {{< alert title="You will learn" color="tip" >}}
 
+- How to create a machine and install `viam-server`
 - How to configure a webcam
 - How to use the color detection vision service
 
@@ -35,13 +45,11 @@ Without writing any code, you will be able to view your camera stream, with dete
 
 ## Requirements
 
-You don't need to buy or own any hardware to complete this tutorial.
+You don't need to buy or own any hardware to follow along.
 If you have the following components, you can follow along on your own hardware:
 
-- A Linux, macOS or WSL computer that can run `viam-server`.
+- A Linux or macOS computer that can run `viam-server`.
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
-
-Make sure to connect the webcam to your computer (if it's not built-in) before starting this guide.
 
 {{% expand "No computer or webcam?" %}}
 No problem.
@@ -54,6 +62,7 @@ Now you know what the rover can perceive.
 
 If your rover is facing a wall, find the base configuration panel and click on its **Test** panel.
 Use the controls to drive your rover to a different location.
+You can use picture in picture mode on one of the cameras so you can see where you're driving.
 
 Now that you have seen that the cameras on your Try Viam rover work, **continue with Step 4**.
 
@@ -63,16 +72,10 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 {{% /expand%}}
 
-{{% expand "Have your own rover?" %}}
-
-If you are running this tutorial on [your own Viam Rover](/appendix/try-viam/rover-resources/), make sure you have physically set up and [configured your rover](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
-Go to the **CONFIGURE** tab of the machine, find the camera and click on the **Test** panel at the bottom of the camera's configuration panel to test the camera stream.
-
-{{% /expand%}}
-
 ## Instructions
 
-Follow these instructions to configure your machine and test detecting colors:
+To use Viam with your device, you must install Viam and create a configuration that describes the connected camera.
+Then you can add the vision service to detect colors from your camera's live feed.
 
 {{% expand "Step 1: Create a new machine" %}}
 
@@ -100,16 +103,16 @@ Enter a name or use the suggested name for your camera and click **Create**.
 Click the **Save** button in the top right corner of the page to save your configuration.
 Then click on the **Test** panel at the bottom of the camera's configuration panel to test the camera stream.
 
-If you don't see an image stream, you need to [configure the `video_path` attribute](/components/camera/webcam/#using-video_path).
+If you don't see an image stream, use the video path dropdown to select your camera path.
 
-For more detailed information, including optional attribute configuration, see the [`webcam` docs](/components/camera/webcam/).
+For more detailed configuration information and troubleshooting, see the [`webcam` docs](/components/camera/webcam/).
 
 {{% /expand %}}
 {{% expand "Step 4: Configure a color detection vision service" %}}
 
-The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
-The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, and more.
-The `color_detector` model of the vision service is a heuristic-based detector that draws boxes around objects according to their hue.
+The vision service enables a machine to use its cameras to see and interpret the world around it.
+The service also allows you to create different types of detectors with which the machine can recognize objects, scan QR codes, perform optical quality inspections, and more.
+The `color_detector` model of the vision service is a heuristic-based detector that detects colors and their location within an image.
 
 In this guide, we use the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
@@ -120,7 +123,7 @@ In this guide, we use the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-On your machine's **CONFIGURE** tab, add a `vision` **Service** and select the `color detector` model.
+On your machine's **CONFIGURE** tab, add a `vision` service and select the `color detector` model.
 
 In the resulting vision service panel, click the color picker box to set the color to be detected.
 For this tutorial, set the color to `rgb(122, 79, 92)` or use hex code `#7a4f5c`.
@@ -156,28 +159,27 @@ Add the vision service object to the services array in your rover’s JSON confi
 {{% /tab %}}
 {{< /tabs >}}
 
-Click the **Save** button in the top right corner of the page to save your vision service configuration.
-
-{{< alert title="Tip" color="tip" >}}
-If you want to detect other colors, change the color parameter.
-Object colors can vary dramatically based on the light source.
-We recommend you verify the desired color detection value under the lighting conditions your machine will be in when in use.
-
-To determine the color value from the camera stream, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
-
-Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
-{{< /alert >}}
-
 {{% /expand %}}
 {{% expand "Step 5: Test color detection" %}}
 
-Now, test your color detection in the **Test** section of the computer vision service's configuration panel or on the **CONTROL** tab.
+Click the **Save** button in the top right corner of the page to save your vision service configuration.
+
+Now, test your color detection in the **Test** section of the computer vision service's configuration panel.
 
 You will see your camera stream and see detections as labeled boxes on the images along with labels and confidence data:
 
 ![Detection of the color rose](/services/vision/rose-detection.png)
 
-If the color is not reliably detected, change the color detectors configuration and increase the **Hue Tolerance** or decrease the segment size.
+If the color is not reliably detected, change the color detector's configuration.
+Increase the **Hue Tolerance** or decrease the segment size.
+
+{{< alert title="Colors can vary based on lighting" color="tip" >}}
+We recommend you verify the desired color detection value under the lighting conditions your machine will be in when in use.
+
+To determine a color value from the camera stream, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
+
+Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
+{{< /alert >}}
 
 {{% /expand %}}
 {{% expand "(Optional) Step 6: Limit the number of detections" %}}
@@ -191,18 +193,12 @@ You must close and reopen the panel for the new configuration to take effect.
 
 ## Next steps
 
-You can now detect colors on a camera stream.
-Of course these detections are not just accessible from the Viam app, but you can also use the [vision service API](/appendix/apis/services/vision/#api).
-
-You can also use the vision service with Machine Learning models:
+You can now detect colors on a camera stream using any device and any webcam.
+If you want to detect obeckst, you can also use the vision service with more sophisticated Machine Learning models.
+To learn more about how to access the data from a vision service programmatically or use machine learning models with a vision service, see:
 
 {{< cards >}}
+{{% card link="/appendix/apis/services/vision/" customTitle="Vision Service API" %}}
 {{% card link="/how-tos/detect-people/" %}}
-{{% card link="/tutorials/projects/send-security-photo/" %}}
-{{< /cards >}}
-
-To learn about coding with Viam's SDKs, try [making a rover move in a square](/how-tos/drive-rover/).
-
-{{< cards >}}
-{{% card link="/how-tos/drive-rover/" %}}
+{{% card link="/tutorials/projects/helmet/" %}}
 {{< /cards >}}

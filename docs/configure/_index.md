@@ -165,14 +165,31 @@ You must configure each component with a type, a model, a name, attributes, and 
   You can either accept the suggested default name when creating a component or choose a unique name for a component.
   The name must start with a letter or number and only contain letters, numbers, dashes, and underscores with a max length of 60.
 
-- `attributes`: A struct to define things like how the component is wired to the machine, its dimensions, and other specifications; attributes vary widely between models.
-  See the [component documentation](/components/) for a given component type and model for more details.
+- `attributes`: Configure component details such as how the component is wired to the machine, its dimensions, and other specifications; attributes vary widely between models.
+  See a {{< glossary_tooltip term_id="component" text="component" >}}'s documentation for more details.
 
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
-For specific information on how to configure each supported component type, see the [components documentation](/components/).
+For specific information on how to configure each supported component type, see the {{< glossary_tooltip term_id="component" text="component" >}}'s documentation:
+
+{{< cards >}}
+{{% relatedcard link="/components/arm" %}}
+{{% relatedcard link="/components/base" %}}
+{{% relatedcard link="/components/board" %}}
+{{% relatedcard link="/components/camera" %}}
+{{% relatedcard link="/components/encoder" %}}
+{{% relatedcard link="/components/gantry" %}}
+{{% relatedcard link="/components/generic" %}}
+{{% relatedcard link="/components/gripper" %}}
+{{% relatedcard link="/components/input-controller" %}}
+{{% relatedcard link="/components/motor" %}}
+{{% relatedcard link="/components/movement-sensor" %}}
+{{% relatedcard link="/components/power-sensor" %}}
+{{% relatedcard link="/components/sensor" %}}
+{{% relatedcard link="/components/servo" %}}
+{{< /cards >}}
 
 Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the component.
 You must be running `viam-server` and connected to your machine to use this feature.
@@ -192,7 +209,7 @@ The **Code sample** page on the **CONNECT** tab will also update to include code
 
 ### Services
 
-[Services](/services/) are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine.
+Services are software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine.
 To add a new service, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Service** or hit **S**.
 Search for and select your desired {{< glossary_tooltip term_id="model" text="model" >}}.
 
@@ -203,8 +220,18 @@ You must configure a service with a `name` and a `type`:
   You can accept the suggested default name when creating a service or choose a choose any unique name for a service.
   The name must start with a letter or number and can only contain letters, numbers, dashes, and underscores with a max length of 60.
 
-The other aspects of configuring a service are highly specific to the type of service.
-See the [services documentation](/services/) for more information.
+The other aspects of configuring a service are highly specific to the type of service, review the docs for the service you are interested in:
+
+{{< cards >}}
+{{% relatedcard link="/services/data/" %}}
+{{% relatedcard link="/services/ml/" alt_title="Machine Learning" %}}
+{{% relatedcard link="/services/motion" %}}
+{{% relatedcard link="/services/navigation" %}}
+{{% relatedcard link="/services/slam" %}}
+{{% relatedcard link="/services/vision" %}}
+{{% relatedcard link="/services/generic" %}}
+{{% relatedcard link="/services/frame-system" %}}
+{{< /cards >}}
 
 Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the service.
 You must be running `viam-server` and connected to your machine to use this feature.
@@ -231,8 +258,10 @@ Find more information in the [processes documentation](/configure/processes/).
 Modules allow you to add [modular resources](/registry/) to your machines which add resource types or models that are not built into Viam.
 Many models are available in the [registry](https://app.viam.com/registry) and you are able to add them as components or services.
 
+#### Local Modules
+
 To add a module that is not in the registry and is local to your machine, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Local module**.
-Follow the instructions in our [registry documentation](/registry/configure/#add-a-local-module) to configure the module.
+Follow the instructions in our [registry documentation](/registry/modular-resources/#configuration) to configure the module.
 
 ### Remote parts
 

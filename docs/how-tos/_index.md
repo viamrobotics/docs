@@ -52,11 +52,10 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Work with sensor data" "4" "INTERMEDIATE" >}}
+{{< how-to-expand "Work with sensor data" "3" "INTERMEDIATE" >}}
 {{< cards >}}
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-visualize/" noimage="true" %}}
-{{% card link="/how-tos/sensor-data-query-sdk/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
@@ -64,7 +63,7 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{< how-to-expand "Collect images and train machine learning models" "3" "INTERMEDIATE" >}}
 {{< cards >}}
 {{% card link="/how-tos/collect-data/" noimage="true" %}}
-{{% card link="/how-tos/deploy-ml/" noimage="true" %}}
+{{% card link="/how-tos/train-deploy-ml/" noimage="true" %}}
 {{% card link="/how-tos/create-custom-training-scripts/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}

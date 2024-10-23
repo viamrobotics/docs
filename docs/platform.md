@@ -28,16 +28,17 @@ Learn more about the structure and configuration of machines:
 <!-- prettier-ignore -->
 |   | Structure... | Configuration... | Installation... |
 | - | ------------ | ---------------- | --------------- |
-| ...of one machine -> | [Architecture](/architecture/) | [Machine Configuration](/configure/) | [Installation](/installation/) |
+| ...of one machine -> | [Architecture](/architecture/) | [Machine Configuration](/configure/) | [Installation](/installation/viam-server-setup/) |
 | ...of many machines -> | [Cloud Organization Hierarchy](/cloud/) | [Deploy a Large Fleet](/fleet/) | [Provisioning](/fleet/provision/) |
 
 ## The things that make up a machine
 
-On your machine, you configure [components](/components/) and [services](/services/).
+On your machine, you configure {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}.
 Some are built-in, and many more are available in the [registry](/registry/).
 You can also write your own and add them to the registry.
 
 You can configure the following components:
+
 {{< cards >}}
 {{% relatedcard link="/components/arm" %}}
 {{% relatedcard link="/components/base" %}}
@@ -54,14 +55,18 @@ You can configure the following components:
 {{% relatedcard link="/components/sensor" %}}
 {{% relatedcard link="/components/servo" %}}
 {{< /cards >}}
+
 And you can use the following platform capabilities and services to make your machines smarter and better:
+
 {{< cards >}}
 {{% relatedcard link="/services/data" %}}
-{{% relatedcard link="/services/ml/deploy" alt_title="Machine Learning" %}}
+{{% relatedcard link="/services/ml" alt_title="Machine Learning" %}}
 {{% relatedcard link="/services/motion" %}}
 {{% relatedcard link="/services/navigation" %}}
 {{% relatedcard link="/services/slam" %}}
 {{% relatedcard link="/services/vision" %}}
+{{% relatedcard link="/services/generic" %}}
+{{% relatedcard link="/services/frame-system" %}}
 {{< /cards >}}
 
 ## Ways to control a machine

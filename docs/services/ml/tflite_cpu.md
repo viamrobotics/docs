@@ -20,8 +20,8 @@ It is supported on any CPU and Linux, Raspbian, MacOS and Android machines.
 To work with the `tflite_cpu` ML model service, an ML model is comprised of a <file>.tflite</file> model file which defines the model, and optionally a <file>.txt</file> labels file which provides the text labels for your model.
 With the `tflite_cpu` ML model service, you can deploy:
 
-- [a model from the registry](https://app.viam.com/registry)
-- a [model](/services/ml/ml-models/) trained outside the Viam platform that you have uploaded
+- a [model from the registry](https://app.viam.com/registry)
+- a [model](/registry/ml-models/) trained outside the Viam platform that you have uploaded
 - a model available on your machine
 
 To configure a `tflite_cpu` ML model service:
@@ -29,7 +29,7 @@ To configure a `tflite_cpu` ML model service:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Select the `ML model` type, then select the `TFLite CPU` model.
 Enter a name or use the suggested name for your service and click **Create**.
@@ -115,7 +115,7 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
 ```
 
 The `"packages"` array shown above is automatically created when you deploy the model.
-You do not need to edit the configuration yourself, except if you wish to specify a specific [version for your deployed model](/services/ml/ml-models/#versions).
+You do not need to edit the configuration yourself, except if you wish to specify a specific [version for your deployed model](/registry/ml-models/#versions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -141,7 +141,7 @@ Save the configuration.
 ## Model requirements
 
 {{% alert title="Tip" color="tip" %}}
-Models [trained](/how-tos/deploy-ml/) in the Viam app meet these requirements by design.
+Models [trained](/how-tos/train-deploy-ml/) in the Viam app meet these requirements by design.
 {{% /alert %}}
 
 We strongly recommend that you package your TensorFlow Lite model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
@@ -168,7 +168,7 @@ To use the inferences from the model, you must use an additional service such as
 Use your model deployed with the ML model service by adding a vision service that can provide detections or classifications depending on your ML model.
 
 {{% /manualcard %}}
-{{% card link="/how-tos/deploy-ml/" noimage="True" %}}
+{{% card link="/how-tos/train-deploy-ml/" noimage="True" %}}
 {{% card link="/how-tos/detect-people/" customTitle="Detect people" noimage="true" %}}
 
 {{< /cards >}}

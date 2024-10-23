@@ -21,7 +21,7 @@ Then, configure a `wheeled` base as follows:
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `base` type, then select the `wheeled` model.
 Enter a name or use the suggested name for your base and click **Create**.
@@ -157,9 +157,13 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/base.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}

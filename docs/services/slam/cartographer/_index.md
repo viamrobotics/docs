@@ -17,7 +17,6 @@ aliases:
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-See the [Use Modules](/registry/#use-modules) section for instructions on using a module from the Viam registry on your machine.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
@@ -95,7 +94,7 @@ To create a new map, follow the instructions below.
 
 2. Set up the `cartographer` module on your machine:
 
-   Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+   Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 
    Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
    Select **SLAM**, then select `cartographer`.

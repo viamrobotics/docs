@@ -13,6 +13,7 @@ modulescript: true
 aliases:
   - "/components/gripper/"
 hide_children: true
+date: "2024-10-21"
 # SMEs: Bucket Team
 ---
 
@@ -20,7 +21,7 @@ The gripper component provides an API for opening and closing a device.
 
 If you have a robotic grasping device that can open and close, use a gripper component.
 
-## Available models
+## Configuration
 
 To use a robotic gripper, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your gripper.
@@ -55,9 +56,13 @@ The [gripper API](/appendix/apis/components/gripper/) supports the following met
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your gripper is not working as expected, follow these steps:
 
-You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your gripper model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the gripper there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

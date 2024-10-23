@@ -23,7 +23,7 @@ Then, configure the movement sensor:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `imu-vectornav` model.
 Enter a name or use the suggested name for your movement sensor and click **Create**.
@@ -91,14 +91,18 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
 | `spi_bus` | string | **Required** | The index of the SPI bus over which the device communicates with the board. |
 | `chip_select_pin` | string | **Required** | The ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}) of the pin on the board (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device. |
-| `spi_baud_rate` | int | **Required** | The rate at which data is sent from the IMU. <br> Default: `115200` |
-| `polling_frequency_hz` | int | **Required** | How many times per second the sensor is polled. |
+| `spi_baud_rate` | int | Optional | The rate at which data is sent from the IMU. <br> Default: `115200` |
+| `polling_frequency_hz` | int | Optional | How many times per second the sensor is polled. |
 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}

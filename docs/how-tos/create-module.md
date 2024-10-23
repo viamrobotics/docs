@@ -22,7 +22,7 @@ cost: "0"
 <br>
 
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
-If no [existing modules](/registry/#modular-resources) support your specific use case, you can write your own [custom {{< glossary_tooltip term_id="resource" text="resources" >}}](/registry/) by creating a module, and either upload it to the [Viam registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
+If no [existing modules](/registry/modular-resources/) support your specific use case, you can write your own [custom {{< glossary_tooltip term_id="resource" text="resources" >}}](/registry/) by creating a module, and either upload it to the [Viam registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/), and then deploy it to your machines.
 
@@ -199,7 +199,7 @@ For more Python module examples:
 - See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
 - For tutorials featuring modular resource creation, see the [Modular resource examples](/registry/examples/) page.
 - For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
-- For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+- For additional examples use the [modular resources search](/registry/modular-resources/) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -214,7 +214,7 @@ For more Python module examples:
 For more Go module examples:
 
 - See the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/) for sample module code of varying complexity.
-- For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+- For additional examples use the [modular resources search](/registry/modular-resources/) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -685,7 +685,7 @@ func (b *myBase) Close(ctx context.Context) error {
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP3004-8](https://github.com/mestcihazal/mcp3004-8-go).
 
-For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+For additional examples use the [modular resources search](/registry/modular-resources/) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 {{< /alert >}}
 
 When implementing built-in methods from the Viam Go SDK in your model, be sure your implementation of those methods returns any values designated in the built-in method's return signature, typed correctly.
@@ -1478,7 +1478,7 @@ Strings of the form `<INSERT X>` indicate placeholders that you need to replace 
 ````md
 # [`<INSERT MODULE NAME>` module](<INSERT LINK TO MODULE REPO>)
 
-This [module](https://docs.viam.com/registry/#modular-resources) implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
+This [module](https://docs.viam.com/registry/modular-resources/) implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
 With this model, you can...
 
 ## Requirements
@@ -1491,7 +1491,7 @@ _Add instructions here for any requirements._
 
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
-Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in [the Viam app](https://app.viam.com/).
+Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in the [Viam app](https://app.viam.com/).
 [Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
@@ -1544,9 +1544,9 @@ This driver supports differential, ackermann, and omni directional steering mode
 ## Configure your `agilex-limo` base
 
 > [!NOTE]
-> Before configuring your base, you must [create a machine](https://docs.viam.com/cloud/machines/#add-a-new-machine).
+> Before configuring your base, you must add a machine in the [Viam app](https://app.viam.com).
 
-Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your machine’s page in the [Viam app](https://app.viam.com/).
 [Add `base` / `agilex-limo` to your machine](https://docs.viam.com/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your base’s attributes field:
@@ -1616,7 +1616,7 @@ If you would like to test your module locally against a target platform other th
 To use a local module on your machine, first make sure any physical hardware implemented in your module is connected to your machine's computer.
 Add the module to your machine's config, then add the component or service it implements:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 
 1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
 
@@ -1639,7 +1639,7 @@ Add the module to your machine's config, then add the component or service it im
 
 1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
-   {{<imgproc src="registry/configure/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component model showing the create a module step for an intel realsense module">}}
+   {{<imgproc src="registry/modular-resources/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component model showing the create a module step for an intel realsense module">}}
 
 1. Enter a name for this instance of your modular resource.
    This name must be different from the module name.
@@ -1662,7 +1662,7 @@ See [How to Upload a Module](/how-tos/upload-module/) for instructions.
 You have now created a module, and are ready to deploy it to a fleet of machines.
 There are two ways to deploy a module:
 
-- Through the Viam registry: Once you have uploaded your new module to the Viam registry, [add the module to one or more machines in the Viam app](/registry/configure/).
+- Through the Viam registry: Once you have uploaded your new module to the Viam registry, [add the module to one or more machines in the Viam app](/registry/modular-resources/).
   You can also choose to configure [automated uploads for new module versions](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module (without uploading it to the Viam app), as you did in the [Test your module locally step above](#test-your-module-locally).
   This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.

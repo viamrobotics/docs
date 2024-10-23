@@ -32,12 +32,12 @@ There are no built-in generic service models (other than `fake`).
 The generic service API only supports the `DoCommand` method.
 If you use the generic subtype, your module needs to define any and all service functionality and pass it through `DoCommand`.
 
-Whenever possible, it is best to use an [existing service API](/services/) instead of generic so that you do not have to replicate code.
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an [existing subtype](/services/), instead of using the generic service.
+Whenever possible, it is best to use an [existing service API](/appendix/apis/services/) instead of generic so that you do not have to replicate code.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing {{< glossary_tooltip term_id="subtype" text="subtype" >}}, instead of using the generic service.
 
 {{% /alert %}}
 
-## Available models
+## Configuration
 
 {{<resources_svc api="rdk:service:generic" type="generic">}}
 

@@ -18,7 +18,7 @@ An `image_file` camera gets color and depth image frames or point clouds from a 
 {{< tabs name="Configure an Image File Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `image_file` model.
 Enter a name or use the suggested name for your camera and click **Create**.
@@ -85,9 +85,13 @@ If you then also configure a `pointcloud_file_path` on your camera, Viam will tr
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
+## Troubleshooting
+
+{{< readfile "/static/include/components/troubleshoot/camera.md" >}}
+
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/camera/" customTitle="Camera API" noimage="true" %}}

@@ -16,6 +16,7 @@ hide_children: true
 outputs:
   - html
   - typesense
+date: "2024-10-21"
 # SME: Peter L
 ---
 
@@ -26,7 +27,7 @@ If you have a physical robotic arm, consisting of a serial chain of joints and l
 Arms have two ends: one fixed in place, and one with a device you can position.
 When controlling an arm, you can place its end effector at arbitrary cartesian positions relative to the base of the arm.
 
-## Available models
+## Configuration
 
 To use a robotic arm, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your arm.
@@ -41,9 +42,9 @@ For additional configuration information, click on the model name:
 
 {{< alert title="Add support for other models" color="tip" >}}
 
-If none of the existing models fit your use case, you can [create a modular resource](/registry/) to add support for it.
+If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
-You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
+You can follow [this guide](/registry/examples/custom-arm/) to implement your arm model.
 
 {{< /alert >}}
 
@@ -65,32 +66,24 @@ The [arm API](/appendix/apis/components/arm/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/arm-table.md" >}}
 
-## Motion planning with your arm's built-in software
+## Motion planning with your arm
 
-Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
-While some arm models build inverse kinematics into their software, many do not.
+The arm API sends requests for the arm to move to a set of joint positions, and reports the arm's current joint positions.
+Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/services/motion/#api).
 
-- Most of the arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [motion service](/services/motion/) instead.
-
-- This driver handles turning the arm on and off, querying the arm for its current joint position, sending requests for the arm to move to a specified set of joint positions, and engaging brakes as needed, if supported.
-
-Arm drivers are also paired, in the RDK, with JSON files that describe the kinematics parameters of each arm.
-
-- When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [frame system](/services/frame-system/) service to use.
-
-- The [frame system](/services/frame-system/) will allow you to easily calculate where any part of your machine is relative to any other part, other machine, or piece of the environment.
-
-- All arms have a `Home` position, which corresponds to setting all joint angles to 0.
-
-- When an arm is moved with a `move_to_position` call, the movement will follow a straight line, and not deviate from the start or end orientations more than the start and orientations differ from one another.
-
-- If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
+For each arm model, there is a JSON file that describes the [kinematics parameters of the arm](/internals/kinematic-chain-config/#kinematic-parameters).
+When you configure an arm model, the arm driver parses the kinematics file for the [frame system](/services/frame-system/) service to use.
+The frame system allows the motion service to calculate where any component of your machine is relative to any other component, other machine, or object in the environment.
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+If your arm is not working as expected, follow these steps:
 
-You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
+1. Check your machine logs on the **LOGS** tab to check for errors.
+2. Review your arm model's documentation to ensure you have configured all required attributes.
+3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the arm there.
+
+If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
 ## Next steps
 

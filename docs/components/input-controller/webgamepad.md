@@ -29,7 +29,7 @@ Use the following configuration for an input controller of model `webgamepad`:
 {{< tabs name="Configure a `webgamepad` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `webgamepad` model.
 Enter the name `WebGamepad` and click **Create**.
@@ -66,13 +66,11 @@ For your security, the browser won't report a gamepad until an input has been se
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-{{< snippet "social.md" >}}
+{{< readfile "/static/include/components/troubleshoot/input-controller.md" >}}
 
 ## Next steps
 
-For more configuration and development info, see:
+For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}

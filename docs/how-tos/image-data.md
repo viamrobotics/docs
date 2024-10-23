@@ -11,7 +11,7 @@ aliases:
   - /tutorials/projects/filtered-camera
 languages: []
 viamresources: ["camera", "data_manager", "mlmodel", "vision"]
-platformarea: ["ml", "data"]
+platformarea: ["data"]
 level: "Intermediate"
 date: "2024-08-26"
 # updated: ""  # When the tutorial was last entirely checked
@@ -24,7 +24,7 @@ If you want to control the volume of data your machine writes and syncs, you can
 The filtering camera uses a computer vision model to detect objects in your camera feed and selectively stores and uploads only those images that are matched by your model.
 
 With your images synced to the cloud, you can view images from all your machines in the Viam app interface.
-From there, you can use your image data to do things like [train ML models](/how-tos/deploy-ml/).
+From there, you can use your image data to do things like [train ML models](/how-tos/train-deploy-ml/).
 
 ![Data view](/services/data/delete_all.png)
 <br>
@@ -49,7 +49,7 @@ From there, you can use your image data to do things like [train ML models](/how
 
 First, make sure to connect your camera to your machine if it's not already connected (like with an inbuilt laptop webcam).
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a camera model](/components/camera/) that supports your camera.
 
@@ -95,7 +95,6 @@ With cloud sync enabled, captured data is automatically uploaded to the Viam app
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
 Click on the **...** menu of the camera component and click on **View captured data**.
@@ -141,18 +140,18 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{% tablestep link="/services/ml/deploy/"%}}
+{{% tablestep link="/services/ml/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model service to your machine**
 
-Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/deploy/tflite_cpu/).
+Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/tflite_cpu/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
 {{<imgproc src="/services/icons/ml.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
-Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
+Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Upload a new model** to upload your own.
 If you're not sure which model to use, you can use [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
@@ -244,10 +243,10 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have collected image data, you can [train new computer vision models](/how-tos/deploy-ml/) or [programmatically access your data](https://docs.viam.com/appendix/apis/data-client/):
+Now that you have collected image data, you can [train new computer vision models](/how-tos/train-deploy-ml/) or [programmatically access your data](https://docs.viam.com/appendix/apis/data-client/):
 
 {{< cards >}}
-{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/appendix/apis/data-client/" %}}
 {{< /cards >}}
 
