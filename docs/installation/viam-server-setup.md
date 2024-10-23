@@ -113,6 +113,10 @@ To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`
 
 For manual installs of only `viam-server`, see [Manage `viam-server`](/installation/manage-viam-server/).
 
+### Troubleshooting
+
+If you cannot install `viam-server` due to dependency issues, try to use this binary instead: []().
+
 ### Next steps
 
 {{< cards >}}
