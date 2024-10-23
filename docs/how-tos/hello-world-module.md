@@ -25,9 +25,9 @@ The goal is to familiarize you with how to create your own {{< glossary_tooltip 
 1. [Write the basic functionality into a test script](#write-the-basic-functionality-into-a-test-script)
 1. [Choose an API](#choose-an-api-to-implement)
 1. [Generate code stub files](#generate-stub-files)
-1. [Implement the API](#implement-the-API)
-1. Test your module
-1. Package the module
+1. [Implement the API](#implement-the-api)
+1. [Test your module](#test-your-module)
+1. [Package the module](#package-the-module)
 
 {{% /alert %}}
 
@@ -43,6 +43,12 @@ Authenticate your CLI session with Viam using one of the following options:
 {{< readfile "/static/include/how-to/auth-cli.md" >}}
 {{< /expand >}}
 
+{{% expand "viam-server installed on your computer and connected to the Viam app." %}}
+
+{{% snippet "setup.md" %}}
+
+{{% /expand%}}
+
 ## What is a module? What is a modular resource?
 
 A module is a set of files that provides support for one or more {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} that are not built into `viam-server`.
@@ -50,7 +56,7 @@ The {{< glossary_tooltip term_id="resource" text="resources" >}} supported by a 
 
 ## Write the basic functionality into a test script
 
-The point of creating a module is to add functionality to your machine, so before you do anything else, you need to define some functionality that you will later package into a module.
+The point of creating a module is to add functionality to your machine, so before you do anything else, it is helpful to define the functionality that you will later package into a module.
 
 For the purposes of this guide, you're going to make a module that does two things: It opens an image file from a configured path on your machine, and it prints `Hello, World! The latest random number is __.` with a random number in the blank.
 
@@ -170,3 +176,129 @@ The easiest way to generate the necessary files for your module is to use the [V
 1. Hit your Enter key and the generator will generate a folder called <file>hello-world</file> containing stub files for your modular camera.
 
 ## Implement the API
+
+Edit the stub files to implement your test script in a way that works with the camera API:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+1. Open the <file>hello-world/src/main.py</file> file in your code editing program.
+
+1. Add the following to the list of imports at the top of <file>main.py</file>:
+
+    ```python {class="line-numbers linkable-line-numbers"}
+    from viam.media.utils.pil import pil_to_viam_image
+    from viam.media.video import CameraMimeType
+    from viam.utils import struct_to_dict
+    from PIL import Image
+    ```
+
+1. Instead of hard-coding the path to the image into the module itself, make the path a configurable attribute so you or other users of the module can easily set a different path.
+   Add the following lines to the `reconfigure()` function definition:
+
+    ```python {class="line-numbers"}
+    attrs = struct_to_dict(config.attributes)
+    self.image_path = str(attrs.get("image_path"))
+    ```
+
+1. Since the camera won't work unless the user configures an `image_path` attribute, add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
+
+    ```python {class="line-numbers linkable-line-numbers"}
+    # Check that a path to get an image was configured
+    fields = config.attributes.fields
+    if not "image_path" in fields:
+        raise Exception("Missing image_path attribute.")
+    elif not fields["image_path"].HasField("string_value"):
+        raise Exception("image_path must be a string.")
+    ```
+
+1. The module generator created a stub for the `get_image()` function we want to implement:
+
+   ```python {class="line-numbers linkable-line-numbers" data-start="79" }
+    async def get_image(
+        self,
+        mime_type: str = "",
+        *,
+        extra: Optional[Dict[str, Any]] = None,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> ViamImage:
+        raise NotImplementedError()
+   ```
+
+   You need to replace `raise NotImplementedError()` with code to actually implement the method:
+
+   ```python {class="line-numbers linkable-line-numbers" data-start="86" }
+   ) -> ViamImage:
+       img = Image.open(self.image_path)
+       return pil_to_viam_image(img, CameraMimeType.JPEG)
+   ```
+
+    You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
+
+1. Open <file>requirements.txt</file>.
+   Add the following line:
+
+   ```text
+   Pillow
+   ```
+
+1. Create a virtual Python environment with necessary packages by running the setup file:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Test your module
+
+With the implementation written, it's time to test your module locally:
+
+1. In the [Viam app](https://app.viam.com), navigate to your machine's **CONFIGURE** page.
+
+1. Click the **+** button, select **Local module**, then again select **Local module**.
+
+1. Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh`.
+   Click **Create**.
+
+1. Now add the modular resource provided by the module:
+
+   Click **+**, click **Local module**, then click **Local component**.
+
+   For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, enter `<namespace>:hello-world:hello-camera`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
+   For example, `jessamy:hello-world:hello-camera`.
+
+   For type, enter `camera`.
+
+   For name, you can use the automatic `camera-1`.
+
+1. Configure the image path attribute by pasting the following in place of the `{}` brackets:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+    "image_path": "<replace with the path to your image>"
+   }
+   ```
+
+   Replace the path with the path to your image, for example `"/Users/jessamyt/Downloads/hello-world.jpg"`.
+
+1. Save the config, then click to open the **TEST** section of the camera's configuration card.
+
+
+   ![The Viam app configuration interface with the Test section of the camera card open, showing a hello world image.](/how-tos/hello-camera.png)
+
+   You should see your image displayed.
+   If not, check the **LOGS** tab for errors.
+
+## Package the module
+
+// TODO
