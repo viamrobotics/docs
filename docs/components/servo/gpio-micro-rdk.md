@@ -14,7 +14,9 @@ micrordk_component: true
 # SME: Gautham
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins into your machine:
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins into your machine.
+Physically connect your servo to your microcontroller and power both on.
+Then, configure the servo:
 
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}

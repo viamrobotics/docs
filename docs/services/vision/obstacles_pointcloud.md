@@ -16,6 +16,9 @@ _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 `obstacles_pointcloud` is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates that plane, and clusters the remaining points into objects.
 
+First, make sure your camera is connected to your machine's computer and both are powered on.
+Then, configure the service:
+
 {{< tabs >}}
 {{% tab name="Builder" %}}
 

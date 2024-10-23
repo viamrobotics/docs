@@ -18,6 +18,9 @@ The `detector_3d_segmenter` vision service model takes 2D bounding boxes from an
 If the chosen camera is not equipped to do projections from 2D to 3D, then this vision model will fail.
 The label and the pixels associated with the 2D detections become the label and point cloud associated with the 3D segmenter.
 
+First, make sure your camera is connected to your machine's computer and both are powered on.
+Then, configure the service:
+
 {{< tabs >}}
 {{% tab name="Builder" %}}
 

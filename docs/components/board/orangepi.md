@@ -12,7 +12,9 @@ component_description: "Supports Orange Pi Zero2, Orange Pi Zero 2W or OrangePi 
 
 Configure an `orangepi` board to integrate the GPIO pins of an [Orange Pi Zero2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html), [Orange Pi Zero 2W](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html) or [OrangePi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html) into your machine.
 
-First, follow the installation guide for your specific Orange Pi board:
+To test your board as you configure it, power it on.
+If you plan to connect hardware to the board's pins, connect the hardware while it's powered off.
+Follow the installation guide for your specific Orange Pi board:
 
 - For an Orange Pi Zero2: follow the [Orange Pi Zero2 installation guide](/installation/prepare/orange-pi-zero2/).
 - For an Orange Pi 3 LTS, follow the [Orange Pi 3 LTS installation guide](/installation/prepare/orange-pi-3-lts/).

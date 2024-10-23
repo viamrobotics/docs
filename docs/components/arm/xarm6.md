@@ -12,7 +12,10 @@ component_description: "Supports UFACTORY xArm 6."
 # SMEs: Bucket, Motion
 ---
 
-Configure an `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) into your machine:
+Configure an `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) into your machine.
+
+If you want to test your arm as you configure it, connect it to your machine's computer and turn it on.
+Then, configure the arm:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

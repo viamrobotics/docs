@@ -35,6 +35,10 @@ If you do not enable hardware PWM, these pins will have no function.
 
 ### Configuration
 
+To test your board as you configure it, power it on.
+If you plan to connect hardware to the board's pins, connect the hardware while it's powered off.
+Then, configure the board:
+
 {{< tabs name="Configure a pi5 Board" >}}
 {{% tab name="Config Builder" %}}
 

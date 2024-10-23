@@ -13,6 +13,9 @@ draft: true
 The `model1` arm model supports the XYZ unit made by Some Company(INSERT LINK AS APPLICABLE).
 Optional additional description/information.
 
+To be able to test your component as you configure it, first physically assemble the component and connect it to your machine's computer. Power both on.
+Then, configure the component:
+
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 

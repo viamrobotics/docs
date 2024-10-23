@@ -13,7 +13,12 @@ component_description: "Supports a gantry with multiple linear rails. Composed o
 # SME: Rand, Martha
 ---
 
-Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/components/gantry/single-axis/) gantries into your machine:
+Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/components/gantry/single-axis/) gantries into your machine.
+
+First, physically assemble the gantry and connect it to your machine's computer.
+Power both on.
+Next, configure each single-axis gantry that is part of the muti-axis gantry.
+Then, configure the multi-axis gantry:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

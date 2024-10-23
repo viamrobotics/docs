@@ -40,6 +40,9 @@ See [navigation concepts](#navigation-concepts) for more info on how to implemen
 
 ## Configuration
 
+First, make sure your base is physically assembled and powered on.
+Then, configure the service:
+
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 

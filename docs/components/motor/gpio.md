@@ -20,8 +20,10 @@ The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (b
 Find more information in the [encoded motor documentation](/components/motor/encoded-motor/).
 {{< /alert >}}
 
-To configure a DC motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
-Then add your motor:
+To configure a DC motor as a component of your machine, first make sure the motor is wired to a suitable motor driver, which is in turn wired to a board.
+Connect the system to power if you want to test it while configuring.
+Configure the [board](/components/board/) to which the motor driver is wired.
+Then configure your motor:
 
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}

@@ -15,7 +15,8 @@ component_description: "Supports mobile wheeled robotic bases with motors on bot
 A `wheeled` base supports mobile robotic bases with motors on both sides (differential steering).
 To configure a `wheeled` base as a component of your machine, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
-Configure a `wheeled` base as follows:
+If you want to test your base as you configure it, physically assemble the base, connect it to your machine's computer, and turn it on.
+Then, configure a `wheeled` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
