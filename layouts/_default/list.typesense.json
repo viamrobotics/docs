@@ -168,7 +168,7 @@
                   {{- end -}}
 
                   {{- $.Scratch.Set "id" (printf "builtin:rdk:service:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
-                  {{- if eq .Parent.LinkTitle "ML Model Service" -}}
+                  {{- if eq .Parent.LinkTitle "ML Model" -}}
                         {{- $.Scratch.Set "api" (printf "rdk:service:mlmodel" ) -}}
                   {{- else -}}
                         {{- if eq .Parent.LinkTitle "Generic Service" -}}
