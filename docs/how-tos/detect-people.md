@@ -140,7 +140,7 @@ Select the ML model service your person detector model is deployed with (which y
 
 Click the **Save** button in the top right corner of the page to save your configuration.
 
-Now, test your person detection in the **Test** section of the computer vision service's configuration panel or on the **CONTROL** tab.
+Now, test your person detection in the **Test** section of the vision service configuration panel or on the **CONTROL** tab.
 
 You will see your camera stream and see detections as labeled boxes on the images along with labels and confidence data.
 Detections with the label `Person` and a high confidence score show positive person detections, but the ML model can also detect other objects:
@@ -150,25 +150,10 @@ Detections with the label `Person` and a high confidence score show positive per
 {{% /expand%}}
 {{%expand "(Optional) Step 7: Limit the number of detections" %}}
 
-If you are seeing a lot of detections, you can set a minimum confidence threshold.
+If you are seeing a lot of detections, you can set a minimum confidence threshold on your vision service configuration panel.
 
-On the configuration page of the vision service in the top right corner, click **{}** (Switch to advanced).
-Add the following line to the JSON configuration to set the `default_minimum_confidence` of the detector:
-
-```json
-"default_minimum_confidence": 0.82
-```
-
-The full configuration for the attributes of the vision service should resemble:
-
-```json {class="line-numbers linkable-line-numbers" data-line="3"}
-{
-  "mlmodel_name": "mlmodel-1",
-  "default_minimum_confidence": 0.82
-}
-```
-
-This optional attribute reduces your detections output by filtering out detections below the threshold of 82% confidence.
+Start by setting the value to 0.8.
+This reduces your detections output by filtering out detections below a threshold of 80% confidence.
 You can adjust this attribute as necessary.
 
 Click the **Save** button in the top right corner of the page to save your configuration and close and reopen the **Test** panel of the vision service configuration panel.

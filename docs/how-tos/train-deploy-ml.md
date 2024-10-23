@@ -600,23 +600,8 @@ Try pointing the camera at a scene similar to your training data.
 
 If you are seeing a lot of classifications or detections, you can set a minimum confidence threshold.
 
-On the configuration page of the vision service in the top right corner, click **{}** (Switch to advanced).
-Add the following JSON to the JSON configuration to set the `default_minimum_confidence` of the detector:
-
-```json
-"default_minimum_confidence": 0.82
-```
-
-The full configuration for the attributes of the vision service should resemble:
-
-```json {class="line-numbers linkable-line-numbers" data-line="3"}
-{
-  "mlmodel_name": "mlmodel-1",
-  "default_minimum_confidence": 0.82
-}
-```
-
-This optional attribute reduces your output by filtering out classifications or detections below the threshold of 82% confidence.
+Start by setting the value to 0.8.
+This reduces your output by filtering out anything below a threshold of 80% confidence.
 You can adjust this attribute as necessary.
 
 Click the **Save** button in the top right corner of the page to save your configuration, then close and reopen the **Test** panel of the vision service configuration panel.
