@@ -8,6 +8,8 @@ tags: ["fleet management", "cloud", "app"]
 menuindent: true
 aliases:
   - /fleet/billing/
+date: "2024-03-13"
+# updated: ""  # When the content was last entirely checked
 ---
 
 {{<imgproc src="/billing-menu.png" resize="400x" declaredimensions=true alt="Payment and billing menu item" class="alignright">}}

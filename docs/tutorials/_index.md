@@ -26,4 +26,6 @@ outputs:
   - rss
   - html
   - typesense
+date: "2024-10-20"
+# updated: ""  # When the content was last entirely checked
 ---

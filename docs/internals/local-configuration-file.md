@@ -7,6 +7,8 @@ type: docs
 icon: true
 images: ["/installation/thumbnails/manage.png"]
 description: "Building a local machine configuration file for use with viam-server."
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The `viam-server` binary uses a JSON-formatted configuration file to define all {{< glossary_tooltip term_id="resource" text="resources" >}} it has access to, as well as any relevant parameters for those resources.

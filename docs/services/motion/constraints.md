@@ -8,6 +8,8 @@ aliases:
   - "/services/motion/constraints/"
   - "/mobility/motion/constraints/"
 no_service: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 You can constrain the motion of your machine using the motion service's built-in constraint options.

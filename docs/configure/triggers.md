@@ -8,6 +8,8 @@ tags: ["triggers"]
 aliases:
   - /build/configure/webhooks/
   - /build/configure/triggers/
+date: "2024-10-17"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Triggers allow you to send webhook requests or emails for the following events:

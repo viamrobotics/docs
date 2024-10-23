@@ -12,6 +12,8 @@ aliases:
   - "/services/motion/"
   - "/mobility/motion/"
 no_service: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SME: Motion team
 ---
 

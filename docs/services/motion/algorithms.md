@@ -8,6 +8,8 @@ aliases:
   - "/services/motion/algorithms/"
   - "/mobility/motion/algorithms/"
 no_service: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Robotic motion planning is heavily reliant on planning algorithms to determine how to achieve motion for a particular scenario.

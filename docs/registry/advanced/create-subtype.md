@@ -9,6 +9,8 @@ no_list: true
 aliases:
   - "/extend/modular-resources/create/create-subtype/"
   - "/modular-resources/advanced/create-subtype/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 You can define a new {{< glossary_tooltip term_id="resource" text="resource" >}} _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:

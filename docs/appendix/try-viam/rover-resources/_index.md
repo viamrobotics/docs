@@ -13,6 +13,8 @@ aliases:
   - "/try-viam/rover-resources/"
   - "/get-started/try-viam/rover-resources/"
 description: If you want a convenient mobile base for robotics projects, order a Viam rover and set it up.
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 {{< alert title="Tip" color="tip" >}}

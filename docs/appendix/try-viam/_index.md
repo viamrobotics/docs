@@ -19,6 +19,8 @@ aliases:
   - "/appendix/try-viam-faq/"
   - "/try-viam/faq/"
   - "get-started/try-viam/faq/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Viam is a general {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} platform that can run on any hardware.

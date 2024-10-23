@@ -11,6 +11,8 @@ aliases:
   - /installation/prepare/jetson-nano-setup/
   - /get-started/installation/prepare/jetson-nano-setup/
   - /get-started/prepare/jetson-nano-setup/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SMEs: Pete Garafano
 ---
 

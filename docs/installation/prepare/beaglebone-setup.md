@@ -13,7 +13,9 @@ aliases:
   - "/installation/prepare/beaglebone-setup/"
   - /get-started/installation/prepare/beaglebone-setup/
   - /get-started/prepare/beaglebone-setup/
-# SMEs: Shawn, Matt Dannenberg, and Rand
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
+# SMEs: Shawn and Rand
 ---
 
 The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/) from [BeagleBoard.org](https://beagleboard.org/) is an open-source single-board computer with a Debian GNU/Linux operating system based on the Texas Instruments TDA4VM processor.

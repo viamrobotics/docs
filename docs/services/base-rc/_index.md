@@ -11,6 +11,8 @@ aliases:
   - "/services/base-rc/"
   - "/mobility/base-rc/"
 no_service: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SME: Eric
 ---
 

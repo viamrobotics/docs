@@ -9,6 +9,8 @@ tags: ["sdk", "extra", "extend"]
 aliases:
   - /program/sdks/use-extra-params
   - /program/use-extra-params/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 How to [use](#use) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} [API methods](/appendix/apis/) offer in the Go and Python SDKs.

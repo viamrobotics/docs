@@ -10,6 +10,8 @@ aliases:
   - /build/configure/parts-and-remotes/
   - /configure/parts/
   - /build/configure/parts/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 When {{< glossary_tooltip term_id="machine" text="smart machines" >}} communicate with each other, they can share resources and operate collaboratively.

@@ -6,6 +6,8 @@ type: "docs"
 description: "Give commands for coordinated control of one or more linear actuators."
 icon: true
 images: ["/icons/components/gantry.svg"]
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The gantry API allows you to give commands to your [gantry components](/components/gantry/) for coordinated control of one or more linear actuators.

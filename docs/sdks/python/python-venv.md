@@ -9,6 +9,8 @@ tags:
   ["client", "sdk", "application", "sdk", "fleet", "program", "python", "venv"]
 aliases:
   - /program/python-venv/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 To manage Python packages for your Viam application, it is recommended that you use a virtual environment, or `venv`.

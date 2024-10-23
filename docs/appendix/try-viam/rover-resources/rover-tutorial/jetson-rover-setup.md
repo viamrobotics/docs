@@ -9,6 +9,8 @@ imageAlt: "A Viam Rover 2 in a box"
 description: "Instructions for setting up a Viam Rover 2 with a Jetson Nano or Jetson Orin Nano."
 aliases:
   - /get-started/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.

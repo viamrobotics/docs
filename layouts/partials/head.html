@@ -35,20 +35,20 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 "_internal/schema.html" . -}} {{ template "_internal/twitter_cards.html" . -}}
 {{ partialCached "head-css.html" . "asdf" -}}
 
-{{- if not .Params.toc_hide -}}
+{{- if and (not .Params.toc_hide) (hugo.IsProduction) -}}
 {{- if .Description -}}
 {{- if and .Params.date .Params.updated -}}
     {{- $updatedLast6months := (lt (sub now.Unix ((time .Params.updated).UTC.Unix)) 15552000) -}}
     {{- if not $updatedLast6months -}}
         {{- warnf "Last update more than 6 months ago (%s): %s" .Params.updated .Path -}}
     {{- end -}}
-{{- else if .Params.date -}}
-    {{- $updatedLast6months := (lt (sub now.Unix ((time .Params.date).UTC.Unix)) 15552000) -}}
-    {{- if not $updatedLast6months -}}
-        {{- warnf "Last update more than 6 months ago (%s): %s" .Params.date .Path -}}
-    {{- end -}}
 {{- else -}}
-<!-- { {- warnf "Missing date: %s" .Path -} } -->
+    {{- if .Params.date -}}
+        {{- $updatedLast6months := (lt (sub now.Unix ((time .Params.date).UTC.Unix)) 15552000) -}}
+        {{- if not $updatedLast6months -}}
+            {{- warnf "Last update more than 6 months ago (%s): %s" .Params.date .Path -}}
+        {{- end -}}
+    {{- end -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}

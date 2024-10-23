@@ -7,6 +7,8 @@ type: "docs"
 tags: ["data management", "cloud", "app", "fleet management"]
 aliases:
   - /fleet/rbac/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SME: Devin Hilly
 ---
 

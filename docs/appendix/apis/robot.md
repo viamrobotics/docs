@@ -8,6 +8,8 @@ tags: ["robot state", "sdk", "apis", "robot api"]
 aliases:
   - /program/apis/robot/
   - /build/program/apis/robot/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The _machine API_ allows you to connect to your machine from within a supported [Viam SDK](/appendix/apis/), retrieve status information, and send commands remotely.

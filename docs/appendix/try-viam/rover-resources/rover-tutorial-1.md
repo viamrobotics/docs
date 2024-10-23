@@ -11,6 +11,8 @@ aliases:
   - "/rover-resources/rover-tutorial/"
   - "/try-viam/rover-resources/rover-tutorial/"
   - "/get-started/try-viam/rover-resources/rover-tutorial/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 {{% alert title="Tip" color="tip" %}}

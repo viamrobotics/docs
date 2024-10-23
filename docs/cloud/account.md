@@ -8,6 +8,8 @@ tags: ["fleet management", "cloud", "app"]
 no_list: true
 aliases:
   - /fleet/account/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 the [Viam app](https://app.viam.com/) is a web UI for managing and building machines.

@@ -10,6 +10,8 @@ no_list: true
 aliases:
   - /get-started/installation/prepare/orange-pi-3-lts/
   - /get-started/prepare/orange-pi-3-lts/
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SME: Olivia Miller
 ---
 

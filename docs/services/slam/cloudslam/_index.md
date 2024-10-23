@@ -7,6 +7,8 @@ description: "Configure a Simultaneous Localization And Mapping (SLAM) service t
 tags: ["slam", "services"]
 icon: true
 images: ["/services/icons/slam.svg"]
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SMEs: John N.
 ---
 

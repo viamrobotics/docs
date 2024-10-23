@@ -6,6 +6,8 @@ type: "docs"
 description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
 tags: ["fleet management", "control", "app"]
 images: ["/components/base/cropped-control.png"]
+date: "2024-10-22"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Once you have [configured components and services](/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).

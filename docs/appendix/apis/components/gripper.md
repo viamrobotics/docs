@@ -6,6 +6,8 @@ type: "docs"
 description: "Give commands for opening and closing a gripper device."
 icon: true
 images: ["/icons/components/gripper.svg"]
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The gripper API allows you to give commands to your [gripper components](/components/gripper/) for opening and closing a device.

@@ -19,6 +19,8 @@ aliases:
   - /program/apis/fleet/
   - /appendix/apis/fleet/
   - /build/program/apis/fleet/
+date: "2024-09-20"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The fleet management API allows you to [manage your machine fleet](/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).

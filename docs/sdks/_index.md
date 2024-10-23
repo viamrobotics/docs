@@ -14,6 +14,8 @@ aliases:
   - /program/
   - /program/run/
   - /program/debug/
+date: "2024-05-23"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Viam's SDK libraries wrap Viam's [gRPC APIs](https://github.com/viamrobotics/api) for interacting with a machine's [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as for [cloud capabilities](/appendix/apis/robot/), such as [data management](/appendix/apis/data-client/) and [fleet management](/appendix/apis/fleet/).

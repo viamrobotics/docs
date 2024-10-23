@@ -2,8 +2,10 @@
 title: "Appendix"
 linkTitle: "Appendix"
 weight: 900
-simple_list: true
+empty_node: true
+layout: "empty"
 notoc: true
 type: "docs"
 description: "Reference and Background Material"
+canonical: "/appendix/changelog/"
 ---

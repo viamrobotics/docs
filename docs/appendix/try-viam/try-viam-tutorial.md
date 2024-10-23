@@ -12,6 +12,8 @@ draft: true
 aliases:
   - "/try-viam/try-viam-tutorial/"
   - "/get-started/try-viam/try-viam-tutorial/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.

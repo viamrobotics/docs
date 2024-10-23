@@ -8,6 +8,8 @@ description: "Give commands to get detections, classifications, or point cloud o
 icon: true
 images: ["/services/icons/vision.svg"]
 tags: ["vision", "computer vision", "CV", "services"]
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The vision service API allows you to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using.

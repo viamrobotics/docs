@@ -10,6 +10,8 @@ aliases:
   - "/extend/custom-components-remotes/"
   - "/modular-resources/advanced/custom-components-remotes/"
 description: "If you are unable to use modular resources, you can implement custom components and register them on a server configured as a remote of your machine."
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.

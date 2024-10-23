@@ -7,6 +7,8 @@ type: "docs"
 description: "Give commands to register callbacks for events, allowing you to use input devices to control your machines."
 icon: true
 images: ["/icons/components/controller.svg"]
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The input controller API allows you to give commands to your [input controller components](/components/input-controller/) for configuring callbacks for events, allowing you to configure input devices to control your machines.

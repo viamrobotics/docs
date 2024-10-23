@@ -9,6 +9,8 @@ tags: ["slam", "services"]
 aliases:
   - "/services/slam/orbslamv3/"
   - "/mobility/slam/orbslamv3/"
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 # SMEs: Kat, Jeremy
 ---
 

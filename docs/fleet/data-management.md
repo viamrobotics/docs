@@ -23,6 +23,8 @@ aliases:
 icon: true
 images: ["/services/icons/data-management.svg"]
 no_service: true
+date: "2022-01-01"
+# updated: ""  # When the content was last entirely checked
 ---
 
 The [data management service](/services/data/) allows you to reliably capture and sync data to the cloud where you can query data from all your machines.
