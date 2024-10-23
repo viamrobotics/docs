@@ -16,7 +16,7 @@ The motion service supports the following methods:
 
 ## Establish a connection
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on the [Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -25,7 +25,7 @@ When executed, this sample code creates a connection to your machine as a client
 Because the motion service is enabled by default, you don't give it a `"name"` while configuring it.
 Use the name `"builtin"` to access the built-in motion service in your code with methods like [`FromRobot()`](/appendix/apis/services/motion/#fromrobot) that require a `ResourceName`.
 
-Be sure to import the motion package for the SDK you are using:
+Import the motion package for the SDK you are using:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -49,7 +49,7 @@ From there, you can use your image data to do things like [train ML models](/how
 
 First, make sure to connect your camera to your machine if it's not already connected (like with an inbuilt laptop webcam).
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a camera model](/components/camera/) that supports your camera.
 

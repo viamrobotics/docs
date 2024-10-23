@@ -75,7 +75,7 @@ If you have a [compatible microcontroller](#platform-requirements), follow along
 1. Once you have followed the steps on the setup instructions, `viam-micro-server` is installed and will run.
    Wait for confirmation that your microcontroller has successfully connected.
 
-   On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
+   On your machine's page on the [Viam app](https://app.viam.com), your machine will show that it's **Live**.
    If something is not working, see [Troubleshooting](/installation/viam-micro-server-setup/#troubleshooting).
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).

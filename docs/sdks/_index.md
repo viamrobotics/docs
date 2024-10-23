@@ -112,7 +112,7 @@ flutter pub add viam_sdk
 
 ## Code samples
 
-Navigate to the **CONNECT** tab on your machine's page on [the Viam app](https://app.viam.com/robots) and select one of the programming languages.
+Navigate to the **CONNECT** tab on your machine's page on the [Viam app](https://app.viam.com/robots) and select one of the programming languages.
 
 The sample code will show you how to authenticate and connect to a machine's `viam-server` instance, as well as some of the methods you can use on your configured components and services.
 
@@ -466,7 +466,7 @@ Read and filter a machine's logs to view updates from your machine's `viam-serve
 {{< tabs >}}
 {{% tab name="App UI" %}}
 
-Navigate to the **LOGS** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
 
 Use the **Filter** input to filter the logs by key terms, and select from the **Levels** dropdown menu to filter the logs by warning level:
 

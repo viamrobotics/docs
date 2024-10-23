@@ -290,7 +290,7 @@ You will now configure your base in the [Viam app](https://app.viam.com).
 Go to the [machine you added during setup](#machine-setup).
 To make your module accessible to `viam-server`, you must add it as a local module:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
 1. Enter a **Name** for this instance of your modular resource, for example `my-custom-base-module`.
 1. Enter the [module's executable path](/how-tos/create-module/#compile-or-package-your-module).
@@ -300,7 +300,7 @@ To make your module accessible to `viam-server`, you must add it as a local modu
 
 Now that `viam-server` can find the module, you can add the base component it provides for your Intermode base:
 
-1. On the **CONFIGURE** tab of your machine's page on [the Viam app](https://app.viam.com):
+1. On the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com):
 
    - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**.
    - Then, select **Local component**.

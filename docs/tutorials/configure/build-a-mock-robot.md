@@ -47,7 +47,7 @@ You'll need the following hardware and software for this tutorial:
 - A computer running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
-If you don't already have a Viam account, sign up for one on [the Viam app](https://app.viam.com).
+If you don't already have a Viam account, sign up for one on the [Viam app](https://app.viam.com).
 
 {{% snippet "setup.md" %}}
 

@@ -30,7 +30,7 @@ For example, you may have an account with one organization for your personal sma
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
-You organization is shown in the upper right corner of [the Viam app](https://app.viam.com).
+You organization is shown in the upper right corner of the [Viam app](https://app.viam.com).
 If you click on the organization dropdown, the app displays your name, email, and a list of organizations you belong to.
 
 {{< imgproc alt="The org dropdown showing an example user's name, email, Sign out button, list of organizations, and org settings button." src="/fleet/app-usage/my-org.png" resize="400x" declaredimensions=true >}}

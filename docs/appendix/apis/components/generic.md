@@ -16,7 +16,8 @@ The generic component supports the following method:
 
 ## Establish a connection
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
+To get started using Viam's SDKs to connect to and control your generic component and the rest of your machine, go to your machine's page on the [Viam app](https://app.viam.com),
+Navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -26,7 +27,7 @@ Then control your machine programmatically by getting your `generic` component f
 The following examples assume you have a board called "my_board" configured as a component of your machine.
 If your board has a different name, change the `name` in the code.
 
-Be sure to import the generic component package for the SDK you are using:
+Import the generic component package for the SDK you are using:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

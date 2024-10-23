@@ -182,7 +182,7 @@ In addition to the existing returned metadata, the [`GetCloudMetadata`](/appendi
 
 {{% changelog date="2024-04-16" color="improved" title="Viam app interface" %}}
 
-The [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+the [Viam app](https://app.viam.com) machine page UI has been updated significantly.
 In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
 
 {{% /changelog %}}

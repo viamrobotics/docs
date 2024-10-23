@@ -14,7 +14,7 @@ component_description: "Supports Intel-based boards like the UP4000."
 
 Configure an `upboard` board to integrate an Intel-based board like the [UP 4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your machine.
 
-Complete the following setup requirements, then move on to configuring your board in [the Viam app](https://app.viam.com):
+Complete the following setup requirements, then move on to configuring your board in the [Viam app](https://app.viam.com):
 
 ## Setup requirements
 
@@ -30,7 +30,7 @@ You must flash your Intel-based board with:
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `upboard` model.
 Enter a name or use the suggested name for your board and click **Create**.

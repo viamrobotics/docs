@@ -39,7 +39,7 @@ You can configure a reference frame within the frame system for each of your mac
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Frame Editor" %}}
 
-1. Navigate to the **CONFIGURE** tab of the machine's page in [the Viam app](https://app.viam.com) and select the **Frame** mode.
+1. Navigate to the **CONFIGURE** tab of the machine's page in the [Viam app](https://app.viam.com) and select the **Frame** mode.
 2. From the left-hand menu, select your component.
    If you haven't adjusted any parameters yet, the default reference frame will be shown for the component:
 
@@ -54,7 +54,7 @@ You can configure a reference frame within the frame system for each of your mac
 {{% /tab %}}
 {{% tab name="JSON Editor" %}}
 
-1. Navigate to the **CONFIGURE** tab of the machine's page in [the Viam app](https://app.viam.com) and select the **JSON** mode.
+1. Navigate to the **CONFIGURE** tab of the machine's page in the [Viam app](https://app.viam.com) and select the **JSON** mode.
 2. Edit the JSON inside your component object to add a `"frame"` configuration.
 
 {{< tabs >}}
@@ -180,7 +180,7 @@ For more information about determining the appropriate values for these paramete
 
 ### Visualize the frame system
 
-You can visualize how your machine is oriented in the frame system in [the Viam app](https://app.viam.com).
+You can visualize how your machine is oriented in the frame system in the [Viam app](https://app.viam.com).
 Navigate to the **CONFIGURE** tab on your machine's page and select the **Frame** mode.
 
 The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your machine:
