@@ -519,6 +519,7 @@ done
 | `--component-type` | Filter by specified component type. |`export`, `delete`, `tag filter` | Optional |
 | `--component-model` | Filter by specified component model. |`export`, `delete`| Optional |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export` | Optional|
 | `--start` | ISO-8601 timestamp indicating the start of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
 | `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
