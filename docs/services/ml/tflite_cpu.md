@@ -20,7 +20,7 @@ It is supported on any CPU and Linux, Raspbian, MacOS and Android machines.
 To work with the `tflite_cpu` ML model service, an ML model is comprised of a <file>.tflite</file> model file which defines the model, and optionally a <file>.txt</file> labels file which provides the text labels for your model.
 With the `tflite_cpu` ML model service, you can deploy:
 
-- [a model from the registry](https://app.viam.com/registry)
+- a [model from the registry](https://app.viam.com/registry)
 - a [model](/registry/ml-models/) trained outside the Viam platform that you have uploaded
 - a model available on your machine
 
