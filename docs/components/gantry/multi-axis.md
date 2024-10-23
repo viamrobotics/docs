@@ -17,7 +17,6 @@ Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`sing
 
 First, physically assemble the gantry and connect it to your machine's computer.
 Power both on.
-Power both on.
 Next, configure each single-axis gantry that is part of the muti-axis gantry.
 Then, configure the multi-axis gantry:
 
