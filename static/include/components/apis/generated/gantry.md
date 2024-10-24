@@ -358,6 +358,10 @@ Get if the gantry is currently moving.
 ```python {class="line-numbers linkable-line-numbers"}
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
+# Stop all motion of the gantry. It is assumed that the
+# gantry stops immediately.
+await my_gantry.stop()
+
 # Print if the gantry is currently moving.
 print(await my_gantry.is_moving())
 ```
