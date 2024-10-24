@@ -295,7 +295,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 // Define a function to handle pressing the Start Menu button, "ButtonStart", on your controller and logging the start time
 printStartTime := func(ctx context.Context, event input.Event) {
-logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
+    logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
 }
 
 myController, err := input.FromRobot(machine, "my_input_controller")
