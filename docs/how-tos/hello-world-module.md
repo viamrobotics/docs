@@ -193,9 +193,9 @@ Edit the stub files to implement your test script in a way that works with the c
     from PIL import Image
     ```
 
-1. In the test script you hard-coded the path to the image. 
+1. In the test script you hard-coded the path to the image.
    For the module, let's make the path a configurable attribute so you or other users of the module can set a different path.
-	   Add the following lines to the `reconfigure()` function definition:
+	 Add the following lines to the `reconfigure()` function definition:
 
     ```python {class="line-numbers"}
     attrs = struct_to_dict(config.attributes)
@@ -248,9 +248,9 @@ Edit the stub files to implement your test script in a way that works with the c
 
 1. Create a virtual Python environment with necessary packages by running the setup file:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
-```
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sh setup.sh
+   ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -295,7 +295,6 @@ With the implementation written, it's time to test your module locally:
    Replace the path with the path to your image, for example `"/Users/jessamyt/Downloads/hello-world.jpg"`.
 
 1. Save the config, then click the **TEST** section of the camera's configuration card.
-
 
    ![The Viam app configuration interface with the Test section of the camera card open, showing a hello world image.](/how-tos/hello-camera.png)
 
