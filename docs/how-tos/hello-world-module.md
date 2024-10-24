@@ -17,15 +17,15 @@ cost: "0"
 ---
 
 This guide will walk you through creating a simple {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} that responds to API calls by returning a random number, and a configured image.
-The goal is to familiarize you with how to create your own {{< glossary_tooltip term_id="module" text="modules" >}} and [modular resources](/registry/modular-resources/).
+By the end of this guide, you will be able to create your own {{< glossary_tooltip term_id="module" text="modules" >}} and [modular resources](/registry/modular-resources/).
 
 {{% alert title="In this page" color="tip" %}}
 
 1. [Concepts](#what-is-a-module-what-is-a-modular-resource)
-1. [Write the basic functionality into a test script](#write-the-basic-functionality-into-a-test-script)
+1. [Create a test script](#create-a-test-script)
 1. [Choose an API](#choose-an-api-to-implement)
 1. [Generate code stub files](#generate-stub-files)
-1. [Implement the API](#implement-the-api)
+1. [Implement the API methods](#implement-the-api-methods)
 1. [Test your module](#test-your-module)
 1. [Package the module](#package-the-module)
 
@@ -43,7 +43,7 @@ Authenticate your CLI session with Viam using one of the following options:
 {{< readfile "/static/include/how-to/auth-cli.md" >}}
 {{< /expand >}}
 
-{{% expand "viam-server installed on your computer and connected to the Viam app." %}}
+{{% expand "Install viam-server on your computer and connect to the Viam app" %}}
 
 {{% snippet "setup.md" %}}
 
@@ -54,7 +54,7 @@ Authenticate your CLI session with Viam using one of the following options:
 A module is a set of files that provides support for one or more {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} that are not built into `viam-server`.
 The {{< glossary_tooltip term_id="resource" text="resources" >}} supported by a module are called modular resources.
 
-## Write the basic functionality into a test script
+## Create a test script
 
 The point of creating a module is to add functionality to your machine, so before you do anything else, it is helpful to define the functionality that you will later package into a module.
 
@@ -137,17 +137,17 @@ go run test.go
 
 ## Choose an API to implement
 
-Now it's time to decide which standard Viam [API](/appendix/apis/) makes the most sense for your module.
+Now it's time to decide which Viam [APIs](/appendix/apis/#component-apis) make the most sense for your module.
 You need a way to return an image, and you need a way to return a number.
 
 If you look at the [camera API](/appendix/apis/components/camera/), you can see the `GetImage` method, which returns an image.
-This seems promising.
+That will work for the image.
 None of the camera API methods return a number though.
 
 Look at the [sensor API](/appendix/apis/components/sensor/), which includes the `GetReadings` method.
-You could return a number with that, but the sensor API can't return an image.
+You can return a number with that, but the sensor API can't return an image.
 
-Your module can support multiple modular resources, so for our purposes here, let's make two modular resources: a camera to return the image, and a sensor to return a random number.
+Your module can support multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
 
 ## Generate stub files
 
@@ -175,14 +175,14 @@ The easiest way to generate the necessary files for your module is to use the [V
 
 1. Hit your Enter key and the generator will generate a folder called <file>hello-world</file> containing stub files for your modular camera.
 
-## Implement the API
+## Implement the API methods
 
 Edit the stub files to implement your test script in a way that works with the camera API:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Open the <file>hello-world/src/main.py</file> file in your code editing program.
+1. Open the <file>hello-world/src/main.py</file> file in your code editor.
 
 1. Add the following to the list of imports at the top of <file>main.py</file>:
 
@@ -193,15 +193,18 @@ Edit the stub files to implement your test script in a way that works with the c
     from PIL import Image
     ```
 
-1. Instead of hard-coding the path to the image into the module itself, make the path a configurable attribute so you or other users of the module can easily set a different path.
-   Add the following lines to the `reconfigure()` function definition:
+1. In the test script you hard-coded the path to the image. 
+   For the module, let's make the path a configurable attribute so you or other users of the module can set a different path.
+	   Add the following lines to the `reconfigure()` function definition:
 
     ```python {class="line-numbers"}
     attrs = struct_to_dict(config.attributes)
     self.image_path = str(attrs.get("image_path"))
     ```
 
-1. Since the camera won't work unless the user configures an `image_path` attribute, add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
+1. Since the camera needs to get an image from somewhere, `image_path` is a required attribute.
+   That means someone using the module must configure an `image_path`.
+   Add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
 
     ```python {class="line-numbers linkable-line-numbers"}
     # Check that a path to get an image was configured
@@ -291,7 +294,7 @@ With the implementation written, it's time to test your module locally:
 
    Replace the path with the path to your image, for example `"/Users/jessamyt/Downloads/hello-world.jpg"`.
 
-1. Save the config, then click to open the **TEST** section of the camera's configuration card.
+1. Save the config, then click the **TEST** section of the camera's configuration card.
 
 
    ![The Viam app configuration interface with the Test section of the camera card open, showing a hello world image.](/how-tos/hello-camera.png)

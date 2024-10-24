@@ -26,7 +26,7 @@ modulescript: true
 ---
 
 The Viam Registry hosts {{< glossary_tooltip term_id="module" text="modules" >}} that provide modular resources.
-A modular resource is a non-built-in model of a {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} that you can use on your machines.
+A modular resource is a model of a {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} provided by a {{< glossary_tooltip term_id="module" text="module" >}} that you can use on your machines.
 
 {{< alert title="In this page" color="note" >}}
 {{% toc %}}
