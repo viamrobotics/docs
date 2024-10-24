@@ -14,11 +14,12 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The open-source `viam-server` executable runs on a computer and manages hardware, software, and data for a machine.
+The `viam-server` executable runs on a computer and manages hardware, software, and data for a machine.
+`viam-server` is built from the open-source [Robot Development Kit (RDK)](https://github.com/viamrobotics/rdk).
 If you are working with microcontrollers, [`viam-micro-server`](/architecture/viam-micro-server/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
-`viam-server` manages and runs the drivers for the configured {{< glossary_tooltip term_id="resource" text="resources" >}}.
+`viam-server` then manages and runs the drivers for the configured {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 Overall, _viam-server_ manages:
 
