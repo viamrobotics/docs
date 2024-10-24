@@ -310,7 +310,7 @@ The script you are creating must take the following command line inputs:
 
 The `parse_args()` function in the template parses your arguments.
 
-You can add additional custom commandline inputs by adding them to the `parse_args()` function.
+You can add additional custom command line inputs by adding them to the `parse_args()` function.
 
 {{% /expand %}}
 
@@ -452,7 +452,7 @@ You can export one of your Viam datasets to test your training script locally.
 {{% tablestep %}}
 **1. Export your dataset**
 
-You can get the dataset id from the dataset page or using the [`viam dataset list`](/cli/#dataset) command:
+You can get the dataset ID from the dataset page or using the [`viam dataset list`](/cli/#dataset) command:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=<destination> --dataset-id=<dataset-id> --include-jsonl=true
@@ -469,7 +469,7 @@ Install any required dependencies and run your training script specifying the pa
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m model.training --dataset_file=/path/to/dataset.jsonl \
-    --model_output_directory=. --args=custom_arg=3
+    --model_output_directory=. --custom_arg=3
 ```
 
 {{% /tablestep %}}
