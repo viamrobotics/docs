@@ -40,7 +40,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my-gripper")
+myGripper, err := gripper.FromRobot(machine, "my_gripper")
 
 // Open the gripper.
 err := myGripper.Open(context.Background(), nil)
@@ -113,7 +113,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my-gripper")
+myGripper, err := gripper.FromRobot(machine, "my_gripper")
 
 // Grab with the gripper.
 grabbed, err := myGripper.Grab(context.Background(), nil)
