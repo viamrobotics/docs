@@ -1,6 +1,6 @@
 ---
-title: "Training scripts"
-linkTitle: "Training scripts"
+title: "Training Scripts"
+linkTitle: "Training Scripts"
 weight: 30
 type: "docs"
 description: "The Viam registry hosts custom Python ML training scripts, which you can use to train machine learning models."
