@@ -136,13 +136,17 @@ This method is currently only supported for input controllers of model `webgamep
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Get your controller from the machine.
+my_controller = Controller.from_robot(
+    myRobotWithController, "my_controller")
+
 # Define a "Button is Pressed" event for the control BUTTON_START.
 button_is_pressed_event = Event(
     time(), EventType.BUTTON_PRESS, Control.BUTTON_START, 1.0)
 
 # Trigger the event on your controller. Set this trigger to timeout if it has
 # not completed in 7 seconds.
-await myController.trigger_event(event=my_event, timeout=7.0)
+await my_controller.trigger_event(event=button_is_pressed_event, timeout=7.0)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.trigger_event).
@@ -185,7 +189,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-geometries = await my_input_controller.get_geometries()
+geometries = await my_controller.get_geometries()
 
 if geometries:
     # Get the center of the first geometry
@@ -228,6 +232,8 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.components.input import Control, EventType
+
 # Define a function to handle pressing the Start Menu Button "BUTTON_START" on
 # your controller, printing out the start time.
 def print_start_time(event):
@@ -259,10 +265,10 @@ async def main():
 
     # Get your controller from the machine.
     my_controller = Controller.from_robot(
-        robot=myRobotWithController, name="my_controller")
+        myRobotWithController, "my_controller")
 
     # Run the handleController function.
-    await handleController(my_controller)
+    await handle_controller(my_controller)
 
     # ... < INSERT ANY OTHER CODE FOR MAIN FUNCTION >
 ```
@@ -289,20 +295,23 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 // Define a function to handle pressing the Start Menu button, "ButtonStart", on your controller and logging the start time
 printStartTime := func(ctx context.Context, event input.Event) {
-    logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
+logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
 }
+
+myController, err := input.FromRobot(machine, "my_input_controller")
 
 // Define the EventType "ButtonPress" to serve as the trigger for printStartTime.
 triggers := []input.EventType{input.ButtonPress}
 
 // Get the controller's Controls.
-controls, err := controller.Controls(ctx, nil)
+controls, err := myController.Controls(context.Background(), nil)
 
-// If the "ButtonStart" Control is found, trigger printStartTime when "ButtonStart" the event "ButtonPress" occurs.
+// If the "ButtonStart" Control is found, trigger printStartTime when on "ButtonStart" the event "ButtonPress" occurs.
 if !slices.Contains(controls, input.ButtonStart) {
-    return errors.New("button `ButtonStart` not found; controller may be disconnected")
+    logger.Error("button 'ButtonStart' not found; controller may be disconnected")
+    return
 }
-Mycontroller.RegisterControlCallback(context.Background(), input.ButtonStart, triggers, printStartTime, nil)
+myController.RegisterControlCallback(context.Background(), input.ButtonStart, triggers, printStartTime, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
@@ -359,7 +368,7 @@ If you are implementing your own input controller and add features that have no 
 
 ```python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
-result = await my_input_controller.do_command(command)
+result = await my_controller.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.do_command).
@@ -380,10 +389,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input_controller.FromRobot(machine, "my_input_controller")
+myController, err := input_controller.FromRobot(machine, "my_input_controller")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myInputController.DoCommand(context.Background(), command)
+result, err := myController.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -435,7 +444,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await my_input_controller.close()
+await my_controller.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.close).
@@ -454,9 +463,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input.FromRobot(machine, "my_input_controller")
+myController, err := input.FromRobot(machine, "my_input_controller")
 
-err = myInputController.Close(context.Background())
+err = myController.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
