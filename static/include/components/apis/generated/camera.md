@@ -41,6 +41,8 @@ For example:
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
+
 # Get the ViamImage from your camera.
 frame = await my_camera.get_image()
 
@@ -207,6 +209,7 @@ The consumer of this call should decode the bytes into the format suggested by t
 import numpy as np
 import open3d as o3d
 
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
 data, _ = await my_camera.get_point_cloud()
 
 # write the point cloud into a temporary file

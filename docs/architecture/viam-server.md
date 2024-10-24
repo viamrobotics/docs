@@ -9,17 +9,17 @@ aliases:
   - "/product-overviews/rdk"
   - "/build/program/rdk"
   - /internals/rdk/
+  - /architecture/rdk/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
+The `viam-server` executable runs on a computer and manages hardware, software, and data for a machine.
+`viam-server` is built from the open-source [Robot Development Kit (RDK)](https://github.com/viamrobotics/rdk).
 If you are working with microcontrollers, [`viam-micro-server`](/architecture/viam-micro-server/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
-Viam has many built-in {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} that run within `viam-server`.
-The components and services are configurable building blocks you can put together to make your machine.
-`viam-server` then manages and runs the drivers for the configured hardware components and software services.
+`viam-server` then manages and runs the drivers for the configured {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 Overall, _viam-server_ manages:
 
@@ -36,8 +36,7 @@ Overall, _viam-server_ manages:
 
 ## Dependency management
 
-Modular resources may depend on other built-in resources or other modular resources, and vice versa.
-The Viam RDK handles dependency management.
+`viam-server` handles dependency management between resources.
 
 ## Start-up
 
