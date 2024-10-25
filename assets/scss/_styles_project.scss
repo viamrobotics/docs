@@ -614,8 +614,10 @@ details summary::-webkit-details-marker {
 
 .hover-card > a, .hover-card > .hovercardcontainer {
   border: 1px solid #000;
+  border-radius: 2px;
   padding: 1rem;
-  margin: 0px
+  margin: 0px;
+  transition: all .2s;
 }
 
 .hover-card.link-with-icon {
@@ -630,23 +632,23 @@ details summary::-webkit-details-marker {
   -webkit-transform: translate(-3px,-3px);
   -ms-transform: translate(-3px,-3px);
   transform: translate(-3px,-3px);
-  box-shadow: 8px 8px 0 0 #000;
+  box-shadow: 5px 5px 0 0 #000;
 }
 
 .hover-card.yellow:hover > a {
-  box-shadow: 8px 8px 0 0 #FFD400;
+  box-shadow: 5px 5px 0 0 #FFD400;
 }
 .hover-card.green:hover > a {
-  box-shadow: 8px 8px 0 0 #00ef83;
+  box-shadow: 5px 5px 0 0 #00ef83;
 }
 .hover-card.purple:hover > a {
-  box-shadow: 8px 8px 0 0 #a51aff;
+  box-shadow: 5px 5px 0 0 #a51aff;
 }
 .hover-card.teal:hover > a {
-  box-shadow: 8px 8px 0 0 #00e8e8;
+  box-shadow: 5px 5px 0 0 #00e8e8;
 }
 .hover-card.pink:hover > a {
-  box-shadow: 8px 8px 0 0 #ff79ff;
+  box-shadow: 5px 5px 0 0 #ff79ff;
 }
 
 // images in hover cards at the top have a margin before text
