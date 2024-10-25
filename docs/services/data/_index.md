@@ -1,6 +1,6 @@
 ---
-title: "Data management service"
-linkTitle: "Data management"
+title: "Data Management Service"
+linkTitle: "Data Management"
 description: "Configure the data management service to capture data from your components and services and sync it to the cloud."
 weight: 10
 type: "docs"
