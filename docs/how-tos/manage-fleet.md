@@ -130,11 +130,24 @@ You can manage this in the **API Keys** section of the organization settings pag
 
 ## Monitoring and debugging
 
-Viam allows you to access each machine, check its logs, check recent changes, and roll back changes if needed.
+Viam allows you to view all machines from a dashboard or access each machine, check its logs, check recent changes, and roll back changes if needed.
 
 {{< table >}}
+{{% tablestep %}}
+**1. Monitor your fleet's synced data and part status**
+
+You can monitor the amount of binary and tabular data your fleet has synced in the last 48 hours from the Viam app's **FLEET** tab's [**DASHBOARD** subtab](https://app.viam.com/fleet/dashboard).
+You can also monitor the number of parts online, offline, and awaiting setup on this dashboard.
+
+{{<imgproc src="how-tos/manage-fleet/dashboard.png" resize="500x" declaredimensions=true alt="Fleet dashboard">}}
+
+For a table of data about each machine part, including **Location**, **Status**, **Architecture**, and more, view the **FLEET** tab's [**ALL MACHINES DASHBOARD** subtab](https://app.viam.com/fleet/machines).
+
+{{<imgproc src="how-tos/manage-fleet/all-machines-dashboard.png" resize="500x" declaredimensions=true alt="All machines dashboard">}}
+
+{{% /tablestep %}}
 {{% tablestep link="/cloud/machines/#logs" %}}
-**1. Monitor your fleet's logs**
+**2. Monitor your fleet's logs**
 
 Using the [Viam app](https://app.viam.com), you can monitor the status of each machine from its [**LOGS** tab](/cloud/machines/#logs).
 
@@ -144,7 +157,7 @@ You can also access machine logs using [`viam machines logs`](/cli/#machines-ali
 
 {{% /tablestep %}}
 {{% tablestep link="/fleet/control/" %}}
-**2. Test your machines remotely**
+**3. Test your machines remotely**
 
 Using the [Viam app](https://app.viam.com), you can remotely operate machines from the **TEST** pane on the **CONFIGURE** tab or from the [**CONTROL** tab](/fleet/control/).
 
@@ -154,7 +167,7 @@ You can also operate machine using the [`viam machines part run`](/cli/#machines
 
 {{% /tablestep %}}
 {{% tablestep link="/configure/#configuration-history" %}}
-**3. Use configuration version history**
+**4. Use configuration version history**
 
 The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
 To see the history of the configuration of a machine part, click on **History** on the **CONFIGURE** tab.
