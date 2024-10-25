@@ -22,7 +22,7 @@ cost: "0"
 <br>
 
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
-If no [existing modules](/registry/modular-resources/) support your specific use case, you can write your own [custom {{< glossary_tooltip term_id="resource" text="resources" >}}](/registry/) by creating a module, and either upload it to the [Viam registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
+If no [existing modules](/registry/modular-resources/) support your specific use case, you can write your own custom modular {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a module, and either upload it to the [Viam registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/), and then deploy it to your machines.
 
@@ -42,7 +42,7 @@ You will need to [recompile and flash your ESP32 yourself](/installation/viam-mi
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
-If you are writing a sensor module in Python, you can use this [more specific guide](/how-tos/sensor-module/).
+If you are writing a sensor module in Python, you can use this [more specific, simplified guide](/how-tos/sensor-module/).
 {{% /alert %}}
 
 You can also watch this guide to creating a vision service module:
