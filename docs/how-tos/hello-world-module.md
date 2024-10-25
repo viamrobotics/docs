@@ -153,6 +153,11 @@ Your module can support multiple modular resources, so let's make two modular re
 
 The easiest way to generate the necessary files for your module is to use the [Viam CLI](/cli/).
 
+### Generate the camera files
+
+The CLI module generator generates all the necessary files for one modular resource at a time.
+First let's generate the camera component files, and we'll add the sensor code later.
+
 1. Run the `module generate` command in your terminal:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -173,14 +178,91 @@ The easiest way to generate the necessary files for your module is to use the [V
    - Enable cloud build: `No`
    - Register module: `No`
 
-1. Hit your Enter key and the generator will generate a folder called <file>hello-world</file> containing stub files for your modular camera.
+1. Hit your Enter key and the generator will generate a folder called <file>hello-world</file> containing stub files for your modular camera component.
+
+### Generate the sensor code
+
+Some of the code you just generated is shared across the module no matter how many modular resource models it supports.
+Some of the code you generated is camera-specific.
+You need to add some sensor-specific code to support the sensor component.
+
+1. Instead of writing the code manually, use the module generator again.
+
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module generate
+    ```
+
+1. You're going to delete this module after copy-pasting the sensor-specific code from it.
+   The only things that matter are the API and the model name.
+
+   - Module name: `temporary`
+   - Language: Your choice
+   - Visibility: `Private`
+   - Namespace/Organization ID: Same as you used before.
+   - Resource to add to the module (API): `Sensor Component`.
+   - Model name: `hello-sensor`
+   - Enable cloud build: `No`
+   - Register module: `No`
+
+1. Open <file>temporary/src/main.py</file>.
+   Copy the sensor class definition, from `class HelloSensor(Sensor, EasyResource)` through the `get_readings()` function definition (lines 15-65).
+
+   Open the <file>hello-world/src/main.py</file> file you generated earlier, and paste the sensor class definition in after the camera class definition, above `if __name__ == "__main__":`.
+
+1. Add the imports that are unique to the sensor file:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   from viam.components.sensor import *
+   from viam.utils import SensorReading
+   ```
+
+1. Open <file>temporary/meta.json</file> and copy the model information.
+   For example:
+
+   ```json {class="line-numbers linkable-line-numbers" data-start="8"}
+    {
+      "api": "rdk:component:sensor",
+      "model": "jessamy:temporary:hello-sensor"
+    }
+   ```
+
+1. Open <file>hello-world/meta.json</file> and paste the sensor model into the model list.
+   Edit the `description` to accurately include both models.
+   The file should now resemble the following:
+
+    ```json {class="line-numbers linkable-line-numbers" data-line="6-16"}
+    {
+      "$schema": "https://dl.viam.dev/module.schema.json",
+      "module_id": "jessamy:hello-world",
+      "visibility": "private",
+      "url": "",
+      "description": "Example camera and sensor components: hello-camera and hello-sensor",
+      "models": [
+        {
+          "api": "rdk:component:camera",
+          "model": "jessamy:hello-world:hello-camera"
+        },
+        {
+          "api": "rdk:component:sensor",
+          "model": "jessamy:temporary:hello-sensor"
+        }
+      ],
+      "entrypoint": "./run.sh",
+      "first_run": ""
+    }
+    ```
+
+1. You can now delete the <file>temporary</file> module directory and all its contents.
+
 
 ## Implement the API methods
 
-Edit the stub files to implement your test script in a way that works with the camera API:
+Edit the stub files to implement your test script in a way that works with the camera and sensor APIs:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
+First, implement the camera API methods by editing the camera class definition:
 
 1. Open the <file>hello-world/src/main.py</file> file in your code editor.
 
@@ -195,7 +277,7 @@ Edit the stub files to implement your test script in a way that works with the c
 
 1. In the test script you hard-coded the path to the image.
    For the module, let's make the path a configurable attribute so you or other users of the module can set a different path.
-	 Add the following lines to the `reconfigure()` function definition:
+   Add the following lines to the `reconfigure()` function definition:
 
     ```python {class="line-numbers"}
     attrs = struct_to_dict(config.attributes)
@@ -245,6 +327,10 @@ Edit the stub files to implement your test script in a way that works with the c
    ```text
    Pillow
    ```
+
+Now edit the sensor class definition to implement the sensor API:
+
+//TODO
 
 1. Create a virtual Python environment with necessary packages by running the setup file:
 
