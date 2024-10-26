@@ -27,7 +27,7 @@ By the end of this guide, you will be able to create your own {{< glossary_toolt
 1. [Generate code stub files](#generate-stub-files)
 1. [Implement the API methods](#implement-the-api-methods)
 1. [Test your module](#test-your-module)
-1. [Package the module](#package-the-module)
+1. [Package and upload the module](#package-and-upload-the-module)
 
 {{% /alert %}}
 
@@ -209,6 +209,12 @@ You need to add some sensor-specific code to support the sensor component.
 
    Open the <file>hello-world/src/main.py</file> file you generated earlier, and paste the sensor class definition in after the camera class definition, above `if __name__ == "__main__":`.
 
+1. Change `temporary` to `hello-world` in the ModelFamily line, so you have:
+
+    ```python {class="line-numbers linkable-line-numbers" data-start="108" }
+    MODEL: ClassVar[Model] = Model(ModelFamily("jessamy", "hello-world"), "hello-sensor")
+    ```
+
 1. Add the imports that are unique to the sensor file:
 
    ```python {class="line-numbers linkable-line-numbers"}
@@ -227,7 +233,11 @@ You need to add some sensor-specific code to support the sensor component.
    ```
 
 1. Open <file>hello-world/meta.json</file> and paste the sensor model into the model list.
+
    Edit the `description` to accurately include both models.
+
+   Change `temporary` to `hello-world`.
+
    The file should now resemble the following:
 
     ```json {class="line-numbers linkable-line-numbers" data-line="6-16"}
@@ -244,7 +254,7 @@ You need to add some sensor-specific code to support the sensor component.
         },
         {
           "api": "rdk:component:sensor",
-          "model": "jessamy:temporary:hello-sensor"
+          "model": "jessamy:hello-world:hello-sensor"
         }
       ],
       "entrypoint": "./run.sh",
@@ -254,13 +264,14 @@ You need to add some sensor-specific code to support the sensor component.
 
 1. You can now delete the <file>temporary</file> module directory and all its contents.
 
-
 ## Implement the API methods
 
 Edit the stub files to implement your test script in a way that works with the camera and sensor APIs:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
+#### Implement the camera API
 
 First, implement the camera API methods by editing the camera class definition:
 
@@ -328,14 +339,38 @@ First, implement the camera API methods by editing the camera class definition:
    Pillow
    ```
 
-Now edit the sensor class definition to implement the sensor API:
+#### Implement the sensor API
 
-//TODO
+Now edit the sensor class definition to implement the sensor API.
+You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
 
-1. Create a virtual Python environment with necessary packages by running the setup file:
+1. Add `random` to the list of imports for the random number generation:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sh setup.sh
+   ```python {class="line-numbers linkable-line-numbers"}
+   import random
+   ```
+
+1. The sensor API only has one resource-specific method, `get_readings()`:
+
+   ```python {class="line-numbers linkable-line-numbers" data-start="156" }
+    async def get_readings(
+        self,
+        *,
+        extra: Optional[Mapping[str, Any]] = None,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, SensorReading]:
+        raise NotImplementedError()
+   ```
+
+   Replace `raise NotImplementedError()` with the following code:
+
+   ```python {class="line-numbers linkable-line-numbers" data-start="162" }
+    ) -> Mapping[str, SensorReading]:
+        number = random.random()
+        return {
+            "random_number": number
+        }
    ```
 
 {{% /tab %}}
@@ -352,14 +387,25 @@ Now edit the sensor class definition to implement the sensor API:
 
 With the implementation written, it's time to test your module locally:
 
-1. In the [Viam app](https://app.viam.com), navigate to your machine's **CONFIGURE** page.
+1. Create a virtual Python environment with necessary packages by running the setup file:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sh setup.sh
+   ```
+
+    This environment is where the local _module_ will run, but _not_ where `viam-server` will run.
+
+1. Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
+   If the image your camera will return is stored outside of the Python virtual environment, make sure you are not accidentally running `viam-server` from inside the venv or the camera won't be able to find it.
+
+1. In the Viam app, navigate to your machine's **CONFIGURE** page.
 
 1. Click the **+** button, select **Local module**, then again select **Local module**.
 
 1. Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh`.
    Click **Create**.
 
-1. Now add the modular resource provided by the module:
+1. Now add the modular camera resource provided by the module:
 
    Click **+**, click **Local module**, then click **Local component**.
 
@@ -387,6 +433,54 @@ With the implementation written, it's time to test your module locally:
    You should see your image displayed.
    If not, check the **LOGS** tab for errors.
 
-## Package the module
+1. Add the modular sensor:
 
-// TODO
+   Click **+**, click **Local module**, then click **Local component**.
+
+   For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, enter `<namespace>:hello-world:hello-sensor`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
+   For example, `jessamy:hello-world:hello-sensor`.
+
+   For type, enter `sensor`.
+
+   For name, you can use the automatic `sensor-1`.
+
+1. Save the config, then click **TEST** to see a random number generated every second.
+
+    ![The sensor card test section open.](/how-tos/hello-sensor.png)
+
+## Package and upload the module
+
+You have a working local module.
+You can make it available to deploy on more machines by packaging it and uploading it to the [Viam registry](https://app.viam.com/registry).
+
+The hello world module you created is for learning purposes, not to provide any meaningful utility, so we recommend making it available only to machines within your {{< glossary_tooltip term_id="organization" text="organization" >}} instead of making it publicly available.
+
+{{< expand "Click to see what you would do differently if this wasn't just a hello world module" >}}
+
+1. Create a GitHub repo with all the source code for your module.
+   Add the link to that repo as the `url` in the <file>meta.json</file> file.
+1. Create a README to document what your module does and how to configure it.
+1. If you wanted to share the module outside of your organization, you'd set `"visibility": "public"` in the <file>meta.json</file> file.
+
+{{< /expand >}}
+
+To package and upload your module and make it available to configure on machines in your organization:
+
+1. Package the module as an archive, run the following command from inside the <file>hello-world</file> directory:
+
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    tar -czf module.tar.gz run.sh requirements.txt src
+    ```
+
+    This creates a tarball called <file>module.tar.gz</file>.
+
+1. Run the `viam module upload` CLI command to upload the module to the Viam registry:
+
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module upload --version 1.0.0 --platform any module.tar.gz
+    ```
+
+1. Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your private module listed.
+   You can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
+
+    ![The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results.](/how-tos/hello-config.png)

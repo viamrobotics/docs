@@ -793,7 +793,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>module_id</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the module, including its <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
+    <td>The name of the module, including its <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a>.</td>
 
   </tr>
   <tr>
