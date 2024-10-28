@@ -86,19 +86,19 @@ gantry,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition
 gantry,GetLengths,,get_lengths,Lengths,lengths
 gantry,Home,,home,Home,home
 ## TED: Gantry in Go SDK doesn't appear to implement (inherit) this:
-gantry,GetGeometries,,get_geometries,,
+gantry,GetGeometries,,,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 gantry,IsMoving,,is_moving,IsMoving,isMoving
 gantry,Stop,,stop,Stop,stop
 gantry,Reconfigure,,,Reconfigure,
-gantry,DoCommand,,do_command,DoCommand,doCommand
+gantry,DoCommand,,,,doCommand
 gantry,GetResourceName,,get_resource_name,,getResourceName
 gantry,Close,,close,Close,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
 generic_component,DoCommand,Yes,do_command,DoCommand,doCommand
-generic_component,GetGeometries,No,get_geometries,,
+# generic_component,GetGeometries,No,,,
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
 generic_component,GetResourceName,No,get_resource_name,,getResourceName
@@ -112,7 +112,7 @@ gripper,IsMoving,,is_moving,IsMoving,isMoving
 gripper,Stop,,stop,Stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,
 gripper,Reconfigure,,,Reconfigure,
-gripper,DoCommand,,do_command,DoCommand,doCommand
+gripper,DoCommand,,,,doCommand
 gripper,GetResourceName,,get_resource_name,,getResourceName
 gripper,Close,,close,Close,
 
@@ -127,7 +127,7 @@ input_controller,GetGeometries,,get_geometries,,
 input_controller,RegisterControlCallback,,register_control_callback,RegisterControlCallback,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 input_controller,Reconfigure,,,Reconfigure,
-input_controller,DoCommand,,do_command,DoCommand,
+input_controller,DoCommand,,,,
 input_controller,GetResourceName,,get_resource_name,,
 input_controller,Close,,close,Close,
 

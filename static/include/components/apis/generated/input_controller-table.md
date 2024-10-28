@@ -7,6 +7,5 @@
 | [`GetGeometries`](/appendix/apis/components/input-controller/#getgeometries) | Get all the geometries associated with the input controller in its current configuration, in the frame of the input controller. |
 | [`RegisterControlCallback`](/appendix/apis/components/input-controller/#registercontrolcallback) | Defines a callback function to execute whenever one of the EventTypes selected occurs on the given Control. |
 | [`Reconfigure`](/appendix/apis/components/input-controller/#reconfigure) | Reconfigure this resource. |
-| [`DoCommand`](/appendix/apis/components/input-controller/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`GetResourceName`](/appendix/apis/components/input-controller/#getresourcename) | Get the `ResourceName` for this input controller with the given name. |
 | [`Close`](/appendix/apis/components/input-controller/#close) | Safely shut down the resource and prevent further use. |

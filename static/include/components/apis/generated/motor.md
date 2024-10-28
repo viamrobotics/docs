@@ -122,7 +122,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Set the motor's RPM to 50
-myMotorComponent.SetRPM(context.Background(), 50)
+myMotorComponent.SetRPM(context.Background(), 50, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).

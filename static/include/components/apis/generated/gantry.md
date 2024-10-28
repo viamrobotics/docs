@@ -306,38 +306,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetGeometries
-
-Get all the geometries associated with the gantry in its current configuration, in the [frame](/services/frame-system/) of the gantry.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-geometries = await my_gantry.get_geometries()
-
-if geometries:
-    # Get the center of the first geometry
-    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_geometries).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### IsMoving
 
 Get if the gantry is currently moving.
@@ -522,55 +490,6 @@ For built-in models, model-specific commands are covered with each model's docum
 If you are implementing your own gantry and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
-
-**Raises:**
-
-- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-command = {"cmd": "test", "data1": 500}
-result = await my_gantry.do_command(command)
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.do_command).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
-
-**Returns:**
-
-- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
-
-command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myGantry.DoCommand(context.Background(), command)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
-
-{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
