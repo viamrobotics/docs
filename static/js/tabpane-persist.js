@@ -91,6 +91,11 @@ function tdRegisterTabClickHandler(tabs) {
         tdPersistActiveTab(activeTabKey);
         tdActivateTabsWithKey(activeTabKey, event.srcElement, event.srcElement.getBoundingClientRect())
       });
+    } else {
+      tab.addEventListener('click', (event) => {
+        const activeTabKey = tab.getAttribute("data-td-tp-persist");
+        tdActivateTabsWithKey(activeTabKey, event.srcElement, event.srcElement.getBoundingClientRect())
+      });
     }
   });
 }
