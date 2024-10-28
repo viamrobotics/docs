@@ -33,7 +33,7 @@ After following this tutorial, you will be able to:
 
 {{< /alert >}}
 
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.us/product/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
 
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 
