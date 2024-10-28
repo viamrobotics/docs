@@ -21,6 +21,12 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog date="2024-10-28" color="added" title="Deprecate builtin pi model" %}}
+
+The built-in `pi` sensor and board models have moved to the [`raspberry-pi` module](https://github.com/viam-modules/raspberry-pi).
+
+{{% /changelog %}}
+
 {{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
 
 You can now set how long data collected by a component should remain stored in the Viam cloud in the component's data capture configuration.
