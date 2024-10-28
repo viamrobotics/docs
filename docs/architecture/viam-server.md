@@ -57,6 +57,28 @@ This means you can add, modify, and remove a modular resource instance from a ru
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
+#### Conditional reconfiguration
+
+If you only want to apply configuration updates under certain conditions, you can create a sensor with your conditions.
+The sensor must return a true value when it is safe to update and a false value otherwise.
+
+Add the following configuration to your machine's JSON configuration:
+
+```json
+// components: [ ... ],
+// services: [ ... ],
+maintenance : {
+   "sensor_name" : string,
+   "maintenance_allowed_key" : string
+}
+```
+
+<!-- prettier-ignore -->
+| Attribute | Type | Required? | Description |
+| --------- | ---- | --------- | ----------- |
+| `sensor_name` | string | Optional | The name of the sensor that provides the information if it is safe to update a machine's configuration. |
+| `maintenance_allowed_key` | string | Optional | The key of the key value pair for the reading returned by the sensor. |
+
 ### Logging
 
 Log messages written appear under the [**LOGS** tab](/cloud/machines/#logs) for the machine running the module.
