@@ -76,8 +76,8 @@ maintenance : {
 <!-- prettier-ignore -->
 | Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
-| `sensor_name` | string | Optional | The name of the sensor that provides the information if it is safe to update a machine's configuration. |
-| `maintenance_allowed_key` | string | Optional | The key of the key value pair for the reading returned by the sensor. |
+| `sensor_name` | string | **Required** | The full name of the sensor that provides the information if it is safe to update a machine's configuration. For example `rdk:component:sensor/sensor1`. |
+| `maintenance_allowed_key` | string | **Required** | The key of the key value pair for the reading returned by the sensor. |
 
 ### Logging
 
