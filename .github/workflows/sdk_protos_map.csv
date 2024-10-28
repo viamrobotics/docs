@@ -428,7 +428,7 @@ mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,,
 
 ## Robot
 ## Omitting some Flutter methods from w until we can determine what they do
-## ( counterpart description text in other SDKs, as  other SDKs implement these)
+## ( counterpart description text in other SDKs, as other SDKs implement these)
 robot,GetOperations,,get_operations,,
 robot,GetMachineStatus,,get_machine_status,,
 robot,GetSessions,,,,
@@ -436,7 +436,7 @@ robot,ResourceNames,,,ResourceNames,
 robot,ResourceRPCSubtypes,,,,
 robot,CancelOperation,,cancel_operation,,
 robot,BlockForOperation,,block_for_operation,,
-robot,DiscoverComponents,,discover_components,DiscoverComponents,
+robot,DiscoverComponents,,discover_components,DiscoverComponents,discoverComponents
 robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,
 robot,TransformPose,,transform_pose,TransformPose,
 robot,TransformPCD,,,TransformPointCloud,
