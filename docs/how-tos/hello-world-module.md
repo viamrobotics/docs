@@ -271,7 +271,7 @@ Edit the stub files to implement your test script in a way that works with the c
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-#### Implement the camera API
+### Implement the camera API
 
 First, implement the camera API methods by editing the camera class definition:
 
@@ -339,7 +339,7 @@ First, implement the camera API methods by editing the camera class definition:
    Pillow
    ```
 
-#### Implement the sensor API
+### Implement the sensor API
 
 Now edit the sensor class definition to implement the sensor API.
 You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
@@ -393,7 +393,8 @@ With the implementation written, it's time to test your module locally:
    sh setup.sh
    ```
 
-    This environment is where the local _module_ will run, but _not_ where `viam-server` will run.
+    This environment is where the local module will run.
+    `viam-server` does not need to run inside this environment.
 
 1. Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
    If the image your camera will return is stored outside of the Python virtual environment, make sure you are not accidentally running `viam-server` from inside the venv or the camera won't be able to find it.
@@ -469,7 +470,7 @@ To package and upload your module and make it available to configure on machines
 1. Package the module as an archive, run the following command from inside the <file>hello-world</file> directory:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-    tar -czf module.tar.gz run.sh requirements.txt src
+    tar -czf module.tar.gz run.sh setup.sh requirements.txt src
     ```
 
     This creates a tarball called <file>module.tar.gz</file>.
