@@ -85,7 +85,7 @@ print("Hello, World! The latest random number is ", number, ".")
 ```
 
 {{% /tab %}}
-{{% tab name="Go" %}}
+<!-- TODO add back in when generator supports Go
 
 ```go {class="line-numbers linkable-line-numbers"}
 // test.go opens an image and prints a random number
@@ -103,7 +103,7 @@ func main() {
 }
 ```
 
-{{% /tab %}}
+-->
 {{< /tabs >}}
 
 1. Replace the path in the script above with the path to where you saved your photo.
@@ -121,13 +121,6 @@ You'll also need to install the dependency Pillow in the virtual environment bef
 source venv/bin/activate
 pip install Pillow
 python3 test.py
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-go run test.go
 ```
 
 {{% /tab %}}
@@ -372,13 +365,6 @@ You don't need to edit any of the validate or configuration methods because you'
             "random_number": number
         }
    ```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-
-```
 
 {{% /tab %}}
 {{< /tabs >}}
