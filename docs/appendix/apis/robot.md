@@ -39,7 +39,6 @@ from viam.robot.client import RobotClient
 
 async def connect() -> RobotClient:
     opts = RobotClient.Options(
-        disable_sessions=True,
         dial_options=DialOptions(timeout=10)).with_api_key(
             # Replace "<API-KEY>" (including brackets) with your API key
             api_key='<API-KEY>',
