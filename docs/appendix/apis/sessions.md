@@ -164,7 +164,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 This option allows you to have full control over sessions management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
-You can do this with Viam's client SDK.
+You can do this with Viam's client SDKs.
 
 ### Use the session management API to manually manage sessions
 
