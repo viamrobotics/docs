@@ -130,7 +130,7 @@ You can manage this in the **API Keys** section of the organization settings pag
 
 ## Monitoring and debugging
 
-Viam allows you to view all machines from a dashboard or access each machine, check its logs, check recent changes, and roll back changes if needed.
+Viam allows you to view all machines from a dashboard and access each machine, check its logs, check recent changes, and roll back changes if needed.
 
 {{< table >}}
 {{% tablestep %}}
