@@ -5,7 +5,6 @@
 | [`MoveToPosition`](/appendix/apis/components/gantry/#movetoposition) | Move the axes of the gantry to the desired positions (mm) at the requested speeds (mm/sec). |
 | [`GetLengths`](/appendix/apis/components/gantry/#getlengths) | Get the lengths of the axes of the gantry (mm). |
 | [`Home`](/appendix/apis/components/gantry/#home) | Run the homing sequence of the gantry to re-calibrate the axes with respect to the limit switches. |
-| [`GetGeometries`](/appendix/apis/components/gantry/#getgeometries) | Get all the geometries associated with the gantry in its current configuration, in the frame of the gantry. |
 | [`IsMoving`](/appendix/apis/components/gantry/#ismoving) | Get if the gantry is currently moving. |
 | [`Stop`](/appendix/apis/components/gantry/#stop) | Stop all motion of the gantry. |
 | [`Reconfigure`](/appendix/apis/components/gantry/#reconfigure) | Reconfigure this resource. |

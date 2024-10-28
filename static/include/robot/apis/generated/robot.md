@@ -403,6 +403,7 @@ If no names are passed in, the status of every resource configured on the machin
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the status of the resources on the machine.
 statuses = await machine.get_status()
+resource_statuses = machine_status.resources
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
