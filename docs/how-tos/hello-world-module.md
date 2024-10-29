@@ -118,7 +118,7 @@ It's best practice to use a virtual environment for running Python scripts.
 You'll also need to install the dependency Pillow in the virtual environment before running the test script.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-source venv/bin/activate
+source .venv/bin/activate
 pip install Pillow
 python3 test.py
 ```
@@ -165,6 +165,7 @@ First let's generate the camera component files, and we'll add the sensor code l
    - Namespace/Organization ID:
      - In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
        Find the **Public namespace** and copy that string.
+       In the example snippets below, the namespace is `jessamy`.
    - Resource to add to the module (API): `Camera Component`.
    We will add the sensor later.
    - Model name: `hello-camera`
@@ -202,9 +203,9 @@ You need to add some sensor-specific code to support the sensor component.
 
    Open the <file>hello-world/src/main.py</file> file you generated earlier, and paste the sensor class definition in after the camera class definition, above `if __name__ == "__main__":`.
 
-1. Change `temporary` to `hello-world` in the ModelFamily line, so you have:
+1. Change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
 
-    ```python {class="line-numbers linkable-line-numbers" data-start="108" }
+    ```python {class="line-numbers linkable-line-numbers" data-start="94" }
     MODEL: ClassVar[Model] = Model(ModelFamily("jessamy", "hello-world"), "hello-sensor")
     ```
 
@@ -214,6 +215,8 @@ You need to add some sensor-specific code to support the sensor component.
    from viam.components.sensor import *
    from viam.utils import SensorReading
    ```
+
+   Save the <file>hello-world/src/main.py</file> file.
 
 1. Open <file>temporary/meta.json</file> and copy the model information.
    For example:
@@ -268,7 +271,7 @@ Edit the stub files to implement your test script in a way that works with the c
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Open the <file>hello-world/src/main.py</file> file in your code editor.
+1. Open the <file>hello-world/src/main.py</file> file again in your code editor.
 
 1. Add the following to the list of imports at the top of <file>main.py</file>:
 
@@ -281,9 +284,9 @@ First, implement the camera API methods by editing the camera class definition:
 
 1. In the test script you hard-coded the path to the image.
    For the module, let's make the path a configurable attribute so you or other users of the module can set a different path.
-   Add the following lines to the `reconfigure()` function definition:
+   Add the following lines to the camera's `reconfigure()` function definition:
 
-    ```python {class="line-numbers"}
+    ```python {class="line-numbers" data-start="68"}
     attrs = struct_to_dict(config.attributes)
     self.image_path = str(attrs.get("image_path"))
     ```
@@ -292,7 +295,7 @@ First, implement the camera API methods by editing the camera class definition:
    That means someone using the module must configure an `image_path`.
    Add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
 
-    ```python {class="line-numbers linkable-line-numbers"}
+    ```python {class="line-numbers linkable-line-numbers" data-start="57"}
     # Check that a path to get an image was configured
     fields = config.attributes.fields
     if not "image_path" in fields:
@@ -324,6 +327,7 @@ First, implement the camera API methods by editing the camera class definition:
    ```
 
     You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
+    Save the file.
 
 1. Open <file>requirements.txt</file>.
    Add the following line:
@@ -337,7 +341,7 @@ First, implement the camera API methods by editing the camera class definition:
 Now edit the sensor class definition to implement the sensor API.
 You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
 
-1. Add `random` to the list of imports for the random number generation:
+1. Add `random` to the list of imports in <file>main.py</file> for the random number generation:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import random
@@ -366,6 +370,8 @@ You don't need to edit any of the validate or configuration methods because you'
         }
    ```
 
+   Save the file.
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -373,7 +379,7 @@ You don't need to edit any of the validate or configuration methods because you'
 
 With the implementation written, it's time to test your module locally:
 
-1. Create a virtual Python environment with necessary packages by running the setup file:
+1. Create a virtual Python environment with necessary packages by running the setup file from within the <file>hello-world</file> directory:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    sh setup.sh
