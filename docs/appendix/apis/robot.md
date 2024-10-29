@@ -128,10 +128,10 @@ Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Add the timeout argument to DialOptions:
-    opts = RobotClient.Options(
-        dial_options=DialOptions(timeout=10)).with_api_key(
-          ...
-        )
+opts = RobotClient.Options(
+    dial_options=DialOptions(timeout=10)).with_api_key(
+      ...
+    )
 ```
 
 The example above shows a timeout of 10 seconds configured.
