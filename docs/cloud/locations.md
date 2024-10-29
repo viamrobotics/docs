@@ -39,7 +39,7 @@ You can access your locations on the Viam app on the **FLEET** tab's [**LOCATION
 ## Add a location
 
 When you create a new organization, Viam automatically creates a new location for you.
-You can create additional locations by typing a new location name in the **New Location** field in the left side navigation bar on the [**FLEET** page](https://app.viam.com/robots) and clicking **Add**.
+You can create additional locations by typing a new location name in the **New Location** field in the left side navigation bar on the **FLEET** page's [**LOCATIONS** subtab](https://app.viam.com/fleet/locations/) and clicking **Add**.
 
 Click a location's name to display the list of machines associated with that location.
 
