@@ -26,7 +26,7 @@ Get a list of detections from the next image from a specified camera using a con
 my_detector = VisionClient.from_robot(machine, "my_detector")
 
 # Get detections from the next image from the camera
-detections = await my_detector.get_detections_from_camera("cam1")
+detections = await my_detector.get_detections_from_camera("cam")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_from_camera).
@@ -48,8 +48,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+myDetectorService, err := vision.FromRobot(machine, "my_detector")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 // Get detections from the camera output
-detections, err := visService.DetectionsFromCamera(context.Background(), myCam, nil)
+detections, err := visService.DetectionsFromCamera(context.Background(), "cam", nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -109,13 +115,13 @@ Get a list of detections from a given image using a configured [detector](/servi
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Grab camera from the machine
-cam1 = Camera.from_robot(machine, "cam1")
+cam = Camera.from_robot(machine, "cam")
 
 # Get the detector you configured on your machine
 my_detector = VisionClient.from_robot(machine, "my_detector")
 
 # Get an image from the camera
-img = await cam1.get_image()
+img = await cam.get_image()
 
 # Get detections from that image
 detections = await my_detector.get_detections(img)
@@ -141,14 +147,25 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the stream from a camera
-camStream, err := myCam.Stream(context.Background())
+cam, err := camera.FromRobot(machine, "cam")
+if err != nil {
+    logger.Error(err)
+    return
+}
+camStream, err := cam.Stream(context.Background())
 
 // Get an image from the camera stream
 img, release, err := camStream.Next(context.Background())
 defer release()
 
+myDetectorService, err := vision.FromRobot(machine, "my_detector")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 // Get the detections from the image
-detections, err := visService.Detections(context.Background(), img, nil)
+detections, err := myDetectorService.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -210,7 +227,7 @@ my_classifier = VisionClient.from_robot(machine, "my_classifier")
 
 # Get the 2 classifications with the highest confidence scores from the next image from the camera
 classifications = await my_classifier.get_classifications_from_camera(
-    "cam1", 2)
+    "cam", 2)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications_from_camera).
@@ -233,8 +250,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+myClassifierService, err := vision.FromRobot(machine, "my_classifier")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 // Get the 2 classifications with the highest confidence scores from the camera output
-classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
+classifications, err := myClassifierService.ClassificationsFromCamera(context.Background(), "cam", 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }
@@ -292,13 +315,13 @@ Get a list of classifications from a given image using a configured [classifier]
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Grab camera from the machine
-cam1 = Camera.from_robot(machine, "cam1")
+cam = Camera.from_robot(machine, "cam")
 
 # Get the classifier you configured on your machine
 my_classifier = VisionClient.from_robot(machine, "my_classifier")
 
 # Get an image from the camera
-img = await cam1.get_image()
+img = await cam.get_image()
 
 # Get the 2 classifications with the highest confidence scores
 classifications = await my_classifier.get_classifications(img, 2)
@@ -325,7 +348,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the stream from a camera
-camStream, err := myCam.Stream(context.Background())
+cam, err := camera.FromRobot(machine, "cam")
+if err != nil {
+    logger.Error(err)
+    return
+}
+camStream, err := cam.Stream(context.Background())
 if err!=nil {
     logger.Error(err)
     return
@@ -335,8 +363,13 @@ if err!=nil {
 img, release, err := camStream.Next(context.Background())
 defer release()
 
+myClassifierService, err := vision.FromRobot(machine, "my_classifier")
+if err != nil {
+    logger.Error(err)
+    return
+}
 // Get the 2 classifications with the highest confidence scores from the image
-classifications, err := visService.Classifications(context.Background(), img, 2, nil)
+classifications, err := myClassifierService.Classifications(context.Background(), img, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }
@@ -426,8 +459,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+mySegmenterService, err := vision.FromRobot(machine, "my_segmenter")
+if err != nil {
+    logger.Error(err)
+    return
+}
 // Get the objects from the camera output
-objects, err := visService.GetObjectPointClouds(context.Background(), "cam1", nil)
+objects, err := mySegmenterService.GetObjectPointClouds(context.Background(), "cam", nil)
 if err != nil {
     logger.Fatalf("Could not get point clouds: %v", err)
 }
@@ -454,7 +492,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```dart {class="line-numbers linkable-line-numbers"}
 // Example:
-var ptCloud = await myVisionService.objectPointClouds('myCamera');
+var ptCloud = await myVisionService.objectPointClouds("cam");
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/objectPointClouds.html).
@@ -487,8 +525,6 @@ Used for visualization.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-camera_name = "cam1"
-
 # Grab the detector you configured on your machine
 my_detector = VisionClient.from_robot(machine, "my_detector")
 
@@ -522,17 +558,26 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+// import ( "go.viam.com/rdk/vision/viscapture" )
+
+visService, err := vision.FromRobot(machine, "my_vision_svc")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 // The data to capture and return from the camera
-captOpts := viscapture.CaptureOptions{}
+captOpts := viscapture.CaptureOptions{
+    ReturnImage: true,
+    ReturnDetections: true,
+}
 // Get the captured data for a camera
-capture, err := visService.CaptureAllFromCamera(context.Background(), "cam1", captOpts, nil)
+capture, err := visService.CaptureAllFromCamera(context.Background(), "cam", captOpts, nil)
 if err != nil {
     logger.Fatalf("Could not get capture data from vision service: %v", err)
 }
 image := capture.Image
 detections := capture.Detections
-classifications := capture.Classifications
-objects := capture.Objects
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
