@@ -65,7 +65,7 @@ func main() {
 	// Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 	myGantry.Stop(context.Background(), nil)
 
-	// Log if the arm is currently moving.
+	// Log if the gantry is currently moving.
 	is_moving, err := myGantry.IsMoving(context.Background())
 	logger.Info(is_moving)
 
@@ -98,7 +98,7 @@ func main() {
 	grabbed, err := myGripper.Grab(context.Background(), nil)
 	logger.Info(grabbed)
 
-	// Stop all motion of the arm. It is assumed that the arm stops immediately.
+	// Stop all motion of the gripper. It is assumed that the gripper stops immediately.
 	myGripper.Stop(context.Background(), nil)
 
 	// Log if the arm is currently moving.
