@@ -16,7 +16,7 @@ date: "2024-10-22"
 cost: "0"
 ---
 
-This guide will walk you through creating two simple {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that respond to API calls by returning a random number, and a configured image.
+This guide will walk you through creating two simple {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that respond to API calls by returning a configured image, and a random number.
 By the end of this guide, you will be able to create your own {{< glossary_tooltip term_id="module" text="modules" >}} and [modular resources](/registry/modular-resources/).
 
 {{% alert title="In this page" color="tip" %}}
@@ -142,6 +142,13 @@ You can return a number with that, but the sensor API can't return an image.
 
 Your module can support multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
 
+{{% alert title="Note" color="note" %}}
+
+For a quicker hello world experience, you can skip the sensor and only create a camera modular resource.
+If you prefer the simpler path, skip the sensor sections in the steps below.
+
+{{% /alert %}}
+
 ## Generate stub files
 
 The easiest way to generate the necessary files for your module is to use the [Viam CLI](/cli/).
@@ -175,6 +182,8 @@ First let's generate the camera component files, and we'll add the sensor code l
 1. Hit your Enter key and the generator will generate a folder called <file>hello-world</file> containing stub files for your modular camera component.
 
 ### Generate the sensor code
+
+{{< expand "Click if you are also creating a sensor component" >}}
 
 Some of the code you just generated is shared across the module no matter how many modular resource models it supports.
 Some of the code you generated is camera-specific.
@@ -260,6 +269,8 @@ You need to add some sensor-specific code to support the sensor component.
 
 1. You can now delete the <file>temporary</file> module directory and all its contents.
 
+{{< /expand >}}
+
 ## Implement the API methods
 
 Edit the stub files to implement your test script in a way that works with the camera and sensor APIs:
@@ -338,6 +349,8 @@ First, implement the camera API methods by editing the camera class definition:
 
 ### Implement the sensor API
 
+{{< expand "Click if you are also creating a sensor component" >}}
+
 Now edit the sensor class definition to implement the sensor API.
 You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
 
@@ -371,6 +384,8 @@ You don't need to edit any of the validate or configuration methods because you'
    ```
 
    Save the file.
+
+{{< /expand >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -426,7 +441,9 @@ With the implementation written, it's time to test your module locally:
    You should see your image displayed.
    If not, check the **LOGS** tab for errors.
 
-1. Add the modular sensor:
+{{< expand "Click if you also created a sensor component" >}}
+
+9. Add the modular sensor:
 
    Click **+**, click **Local module**, then click **Local component**.
 
@@ -437,9 +454,11 @@ With the implementation written, it's time to test your module locally:
 
    For name, you can use the automatic `sensor-1`.
 
-1. Save the config, then click **TEST** to see a random number generated every second.
+10. Save the config, then click **TEST** to see a random number generated every second.
 
     ![The sensor card test section open.](/how-tos/hello-sensor.png)
+
+{{< /expand >}}
 
 ## Package and upload the module
 
@@ -477,3 +496,13 @@ To package and upload your module and make it available to configure on machines
    You can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
 
     ![The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results.](/how-tos/hello-config.png)
+
+For more information about uploading modules, see [Upload a module](/how-tos/upload-module/).
+
+## Next steps
+
+For an example module that gets weather data from an online source, see the example code in [Create a sensor module with Python](/how-tos/sensor-module/).
+
+For more module creation information with more programming language options, see the general [Create a module](/how-tos/create-module/) guide.
+
+To update or delete a module, see [Update and manage modules](/how-tos/manage-modules/).

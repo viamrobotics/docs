@@ -42,7 +42,7 @@ You will need to [recompile and flash your ESP32 yourself](/installation/viam-mi
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
-If you are writing a sensor module in Python, you can use this [more specific, simplified guide](/how-tos/sensor-module/).
+For a simplified step-by-step guide, see [Create a Hello World module](/how-tos/hello-world-module/).
 {{% /alert %}}
 
 You can also watch this guide to creating a vision service module:
