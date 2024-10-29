@@ -125,9 +125,50 @@ The `SessionsClient` that serves the session management API is automatically ena
 It is instantiated as part of your [`RobotClient`](/appendix/apis/robot/) instance (client of the Machine API).
 If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+async def main():
+    opts = RobotClient.Options(disable_sessions=True)
+    await RobotClient.at_address("my-machine-address", opts)
+    robot = await connect()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options.disable_sessions).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+robot, err := client.New(
+  ctx, "my-machine-address",
+  logger,
+  client.WithDisableSessions(),
+  ...)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithDisableSessions)
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robot = await VIAM.createRobotClient({
+  // ...
+  disableSessions: true,
+  // ...
+});
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DialWebRTCConf.html).
+
+{{% /tab %}}
+{{% /tabs %}}
+
 This option allows you to have full control over sessions management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
-You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/session).
+You can do this with Viam's client SDKs.
 
 ### Use the session management API to manually manage sessions
 
