@@ -6,7 +6,7 @@ weight: 24
 images: ["/registry/module-puzzle-piece.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
-description: "Get started with custom module creation by creating a Hello World modular resource."
+description: "Get started writing your own modular resources by creating a Hello World module."
 languages: ["python", "go"]
 viamresources: ["components"]
 platformarea: ["registry"]
@@ -16,7 +16,7 @@ date: "2024-10-22"
 cost: "0"
 ---
 
-This guide will walk you through creating a simple {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} that responds to API calls by returning a random number, and a configured image.
+This guide will walk you through creating two simple {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that respond to API calls by returning a random number, and a configured image.
 By the end of this guide, you will be able to create your own {{< glossary_tooltip term_id="module" text="modules" >}} and [modular resources](/registry/modular-resources/).
 
 {{% alert title="In this page" color="tip" %}}
@@ -58,13 +58,13 @@ The {{< glossary_tooltip term_id="resource" text="resources" >}} supported by a 
 
 The point of creating a module is to add functionality to your machine, so before you do anything else, it is helpful to define the functionality that you will later package into a module.
 
-For the purposes of this guide, you're going to make a module that does two things: It opens an image file from a configured path on your machine, and it prints `Hello, World! The latest random number is __.` with a random number in the blank.
+For the purposes of this guide, you're going to make a module that does two things: It opens an image file from a configured path on your machine, and it returns a random number.
 
 1. Find an image you'd like to display when your program runs.
    We used [this image of a computer with "hello world" on the screen](https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-8q6e5hu3Ilc).
    Save the image to your computer.
 
-1. Create a test script file on your computer and copy the following code in the programming language of your choice into it:
+1. Create a test script file on your computer and copy the following code into it:
 
     {{< tabs >}}
 {{% tab name="Python" %}}
