@@ -141,7 +141,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-robot, err := client.New(ctx, "my-machine-address", logger, client.WithDisableSessions(), ...)
+robot, err := client.New(
+  ctx, "my-machine-address",
+  logger,
+  client.WithDisableSessions(),
+  ...)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithDisableSessions)
