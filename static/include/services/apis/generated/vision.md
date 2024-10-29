@@ -22,13 +22,11 @@ Get a list of detections from the next image from a specified camera using a con
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-camera_name = "cam1"
-
 # Grab the detector you configured on your machine
-my_detector = VisionClient.from_robot(robot, "my_detector")
+my_detector = VisionClient.from_robot(machine, "my_detector")
 
 # Get detections from the next image from the camera
-detections = await my_detector.get_detections_from_camera(camera_name)
+detections = await my_detector.get_detections_from_camera("cam1")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_from_camera).
@@ -111,10 +109,10 @@ Get a list of detections from a given image using a configured [detector](/servi
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Grab camera from the machine
-cam1 = Camera.from_robot(robot, "cam1")
+cam1 = Camera.from_robot(machine, "cam1")
 
 # Get the detector you configured on your machine
-my_detector = VisionClient.from_robot(robot, "my_detector")
+my_detector = VisionClient.from_robot(machine, "my_detector")
 
 # Get an image from the camera
 img = await cam1.get_image()
@@ -207,14 +205,12 @@ Get a list of classifications from the next image from a specified camera using 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-camera_name = "cam1"
-
 # Grab the classifier you configured on your machine
-my_classifier = VisionClient.from_robot(robot, "my_classifier")
+my_classifier = VisionClient.from_robot(machine, "my_classifier")
 
 # Get the 2 classifications with the highest confidence scores from the next image from the camera
 classifications = await my_classifier.get_classifications_from_camera(
-    camera_name, 2)
+    "cam1", 2)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications_from_camera).
@@ -296,10 +292,10 @@ Get a list of classifications from a given image using a configured [classifier]
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Grab camera from the machine
-cam1 = Camera.from_robot(robot, "cam1")
+cam1 = Camera.from_robot(machine, "cam1")
 
 # Get the classifier you configured on your machine
-my_classifier = VisionClient.from_robot(robot, "my_classifier")
+my_classifier = VisionClient.from_robot(machine, "my_classifier")
 
 # Get an image from the camera
 img = await cam1.get_image()
@@ -400,12 +396,10 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 import numpy as np
 import open3d as o3d
 
-# Grab the 3D camera from the machine
-cam1 = Camera.from_robot(robot, "cam1")
 # Grab the object segmenter you configured on your machine
-my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
+my_segmenter = VisionClient.from_robot(machine, "my_segmenter")
 # Get the objects from the camera output
-objects = await my_segmenter.get_object_point_clouds(cam1)
+objects = await my_segmenter.get_object_point_clouds("cam")
 # write the first object point cloud into a temporary file
 with open("/tmp/pointcloud_data.pcd", "wb") as f:
     f.write(objects[0].point_cloud)
@@ -496,14 +490,16 @@ Used for visualization.
 camera_name = "cam1"
 
 # Grab the detector you configured on your machine
-my_detector = VisionClient.from_robot(robot, "my_detector")
+my_detector = VisionClient.from_robot(machine, "my_detector")
 
 # capture all from the next image from the camera
 result = await my_detector.capture_all_from_camera(
-    camera_name,
+    "cam",
     return_image=True,
     return_detections=True,
 )
+image = result.image
+detections = result.detections
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.capture_all_from_camera).
@@ -588,7 +584,7 @@ If you are implementing your own vision service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = VisionClient.from_robot(robot, "my_vision_svc")
+service = VisionClient.from_robot(machine, "my_vision_svc")
 
 my_command = {
   "cmnd": "dosomething",
@@ -708,7 +704,7 @@ Fetch information about which vision methods a given vision service supports.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Grab the detector you configured on your machine
-my_detector = VisionClient.from_robot(robot, "my_detector")
+my_detector = VisionClient.from_robot(machine, "my_detector")
 properties = await my_detector.get_properties()
 properties.detections_supported      # returns True
 properties.classifications_supported # returns False
