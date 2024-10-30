@@ -75,7 +75,7 @@ If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Se
 1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
    A new location called `First Location` is automatically generated for you.
 
-   Use the **...** menu next to edit the location name to what it represents for your use case.
+   Use the **...** menu to edit the location name to what it represents for your use case.
    Then click **Save**.
 
 1. Create additional locations as needed using the **Add location** button, on the left of the **LOCATIONS** page.
