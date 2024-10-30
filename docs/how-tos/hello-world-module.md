@@ -21,7 +21,6 @@ By the end of this guide, you will be able to create your own [modular resources
 
 {{% alert title="In this page" color="tip" %}}
 
-1. [Concepts](#what-is-a-module-what-is-a-modular-resource)
 1. [Create a test script](#create-a-test-script)
 1. [Choose an API](#choose-an-api-to-implement)
 1. [Generate code stub files](#generate-stub-files)
@@ -48,11 +47,6 @@ Authenticate your CLI session with Viam using one of the following options:
 {{% snippet "setup.md" %}}
 
 {{% /expand%}}
-
-## What is a module? What is a modular resource?
-
-A module is a set of files that provides support for one or more {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} that are not built into `viam-server`.
-The resources provided by a module are called modular resources.
 
 ## Create a test script
 
@@ -117,6 +111,7 @@ It's best practice to use a virtual environment for running Python scripts.
 You'll also need to install the dependency Pillow in the virtual environment before running the test script.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+python3 -m venv .venv
 source .venv/bin/activate
 pip install Pillow
 python3 test.py
@@ -126,6 +121,12 @@ python3 test.py
 {{< /tabs >}}
 
     The image you saved should open on your screen, and a random number should print to your terminal.
+
+1. In later steps, the module generator will create a new virtual environment with required dependencies, so you can deactivate the one you just ran the test script in:
+
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    deactivate
+    ```
 
 ## Choose an API to implement
 
@@ -281,7 +282,6 @@ Edit the stub files to add the logic from your test script in a way that works w
 
 First, implement the camera API methods by editing the camera class definition:
 
-
 1. Add the following to the list of imports at the top of <file>hello-world/src/main.py</file>:
 
     ```python {class="line-numbers linkable-line-numbers"}
@@ -404,7 +404,6 @@ With the implementation written, it's time to test your module locally:
     `viam-server` does not need to run inside this environment.
 
 1. Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
-   If the image your camera will return is stored outside of the Python virtual environment, make sure you are not accidentally running `viam-server` from inside the virtual environment or the camera won't be able to find it.
 
 1. In the Viam app, navigate to your machine's **CONFIGURE** page.
 
