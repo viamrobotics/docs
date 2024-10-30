@@ -17,7 +17,7 @@ cost: "0"
 ---
 
 This guide will walk you through creating two simple {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that respond to API calls by returning a configured image, and a random number.
-By the end of this guide, you will be able to create your own {{< glossary_tooltip term_id="module" text="modules" >}} and [modular resources](/registry/modular-resources/).
+By the end of this guide, you will be able to create your own [modular resources](/registry/modular-resources/) and package them into {{< glossary_tooltip term_id="module" text="modules" >}} so you can use them on your machines.
 
 {{% alert title="In this page" color="tip" %}}
 
@@ -52,19 +52,18 @@ Authenticate your CLI session with Viam using one of the following options:
 ## What is a module? What is a modular resource?
 
 A module is a set of files that provides support for one or more {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} that are not built into `viam-server`.
-The {{< glossary_tooltip term_id="resource" text="resources" >}} supported by a module are called modular resources.
+The resources provided by a module are called modular resources.
 
 ## Create a test script
 
-The point of creating a module is to add functionality to your machine, so before you do anything else, it is helpful to define the functionality that you will later package into a module.
-
+The point of creating a module is to add functionality to your machine.
 For the purposes of this guide, you're going to make a module that does two things: It opens an image file from a configured path on your machine, and it returns a random number.
 
 1. Find an image you'd like to display when your program runs.
    We used [this image of a computer with "hello world" on the screen](https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-8q6e5hu3Ilc).
    Save the image to your computer.
 
-1. Create a test script file on your computer and copy the following code into it:
+1. Create a test script on your computer and copy the following code into it:
 
     {{< tabs >}}
 {{% tab name="Python" %}}
@@ -107,7 +106,7 @@ func main() {
 {{< /tabs >}}
 
 1. Replace the path in the script above with the path to where you saved your photo.
-   Save the file.
+   Save the script.
 
 1. Run the test script in your terminal:
 
@@ -130,7 +129,7 @@ python3 test.py
 
 ## Choose an API to implement
 
-Now it's time to decide which Viam [APIs](/appendix/apis/#component-apis) make the most sense for your module.
+Now it's time to decide which Viam [APIs](/appendix/apis/#component-apis) make sense for your module.
 You need a way to return an image, and you need a way to return a number.
 
 If you look at the [camera API](/appendix/apis/components/camera/), you can see the `GetImage` method, which returns an image.
@@ -140,7 +139,7 @@ None of the camera API methods return a number though.
 Look at the [sensor API](/appendix/apis/components/sensor/), which includes the `GetReadings` method.
 You can return a number with that, but the sensor API can't return an image.
 
-Your module can support multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
+Your module can provide multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
 
 {{% alert title="Note" color="note" %}}
 
@@ -151,11 +150,11 @@ If you prefer the simpler path, skip the sensor sections in the steps below.
 
 ## Generate stub files
 
-The easiest way to generate the necessary files for your module is to use the [Viam CLI](/cli/).
+The easiest way to generate the files for your module is to use the [Viam CLI](/cli/).
 
 ### Generate the camera files
 
-The CLI module generator generates all the necessary files for one modular resource at a time.
+The CLI module generator generates the files for one modular resource at a time.
 First let's generate the camera component files, and we'll add the sensor code later.
 
 1. Run the `module generate` command in your terminal:
@@ -273,7 +272,7 @@ You need to add some sensor-specific code to support the sensor component.
 
 ## Implement the API methods
 
-Edit the stub files to implement your test script in a way that works with the camera and sensor APIs:
+Edit the stub files to add the logic from your test script in a way that works with the camera and sensor APIs:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -282,9 +281,8 @@ Edit the stub files to implement your test script in a way that works with the c
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Open the <file>hello-world/src/main.py</file> file again in your code editor.
 
-1. Add the following to the list of imports at the top of <file>main.py</file>:
+1. Add the following to the list of imports at the top of <file>hello-world/src/main.py</file>:
 
     ```python {class="line-numbers linkable-line-numbers"}
     from viam.media.utils.pil import pil_to_viam_image
@@ -294,16 +292,17 @@ First, implement the camera API methods by editing the camera class definition:
     ```
 
 1. In the test script you hard-coded the path to the image.
-   For the module, let's make the path a configurable attribute so you or other users of the module can set a different path.
-   Add the following lines to the camera's `reconfigure()` function definition:
+   For the module, let's make the path a configurable attribute so you or other users of the module can set the path from which to get the image.
+   Add the following lines to the camera's `reconfigure()` function definition.
+   These lines set the `image_path` based on the configuration when the resource is configured or reconfigured.
 
     ```python {class="line-numbers" data-start="68"}
     attrs = struct_to_dict(config.attributes)
     self.image_path = str(attrs.get("image_path"))
     ```
 
-1. Since the camera needs to get an image from somewhere, `image_path` is a required attribute.
-   That means someone using the module must configure an `image_path`.
+1. We are not providing a default image but rely on the end user to supply a valid path to an image when configuring the resource.
+   This means `image_path` is a required attribute.
    Add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
 
     ```python {class="line-numbers linkable-line-numbers" data-start="57"}
@@ -338,6 +337,7 @@ First, implement the camera API methods by editing the camera class definition:
    ```
 
     You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
+
     Save the file.
 
 1. Open <file>requirements.txt</file>.
@@ -394,7 +394,7 @@ You don't need to edit any of the validate or configuration methods because you'
 
 With the implementation written, it's time to test your module locally:
 
-1. Create a virtual Python environment with necessary packages by running the setup file from within the <file>hello-world</file> directory:
+1. Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    sh setup.sh
@@ -404,7 +404,7 @@ With the implementation written, it's time to test your module locally:
     `viam-server` does not need to run inside this environment.
 
 1. Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
-   If the image your camera will return is stored outside of the Python virtual environment, make sure you are not accidentally running `viam-server` from inside the venv or the camera won't be able to find it.
+   If the image your camera will return is stored outside of the Python virtual environment, make sure you are not accidentally running `viam-server` from inside the virtual environment or the camera won't be able to find it.
 
 1. In the Viam app, navigate to your machine's **CONFIGURE** page.
 
@@ -462,8 +462,8 @@ With the implementation written, it's time to test your module locally:
 
 ## Package and upload the module
 
-You have a working local module.
-You can make it available to deploy on more machines by packaging it and uploading it to the [Viam registry](https://app.viam.com/registry).
+You now have a working local module.
+To make it available to deploy on more machines, you can package it and upload it to the [Viam registry](https://app.viam.com/registry).
 
 The hello world module you created is for learning purposes, not to provide any meaningful utility, so we recommend making it available only to machines within your {{< glossary_tooltip term_id="organization" text="organization" >}} instead of making it publicly available.
 
@@ -486,7 +486,7 @@ To package and upload your module and make it available to configure on machines
 
     This creates a tarball called <file>module.tar.gz</file>.
 
-1. Run the `viam module upload` CLI command to upload the module to the Viam registry:
+1. Run the `viam module upload` CLI command to upload the module to the registry:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     viam module upload --version 1.0.0 --platform any module.tar.gz
@@ -503,6 +503,6 @@ For more information about uploading modules, see [Upload a module](/how-tos/upl
 
 For an example module that gets weather data from an online source, see the example code in [Create a sensor module with Python](/how-tos/sensor-module/).
 
-For more module creation information with more programming language options, see the general [Create a module](/how-tos/create-module/) guide.
+For more module creation information with more programming language options, see the [Create a module](/how-tos/create-module/) guide.
 
 To update or delete a module, see [Update and manage modules](/how-tos/manage-modules/).
