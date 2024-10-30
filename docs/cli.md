@@ -710,8 +710,8 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | Optional |
 | `--module` | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
-| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. | `generate` | Optional |
-| `--resource-type` | Whether the new resource is a component or a service. For example, `component`. | `generate` | Optional |
+| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
+| `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
 | `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
 | `--name` | The name of the custom module to be created | `create` | **Required** |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
