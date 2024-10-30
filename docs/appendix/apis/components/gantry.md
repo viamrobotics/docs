@@ -1,7 +1,7 @@
 ---
 title: "Gantry API"
 linkTitle: "Gantry"
-weight: 20
+weight: 60
 type: "docs"
 description: "Give commands for coordinated control of one or more linear actuators."
 icon: true

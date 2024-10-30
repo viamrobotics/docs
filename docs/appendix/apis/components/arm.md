@@ -1,7 +1,7 @@
 ---
 title: "Arm API"
 linkTitle: "Arm"
-weight: 20
+weight: 10
 type: "docs"
 description: "Give commands to your arm components for linear motion planning, including self-collision prevention and obstacle avoidance."
 icon: true

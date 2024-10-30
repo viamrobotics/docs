@@ -2,7 +2,7 @@
 title: "Input controller API"
 linkTitle: "Input Controller"
 titleMustBeLong: true
-weight: 20
+weight: 90
 type: "docs"
 description: "Give commands to register callbacks for events, allowing you to use input devices to control your machines."
 icon: true

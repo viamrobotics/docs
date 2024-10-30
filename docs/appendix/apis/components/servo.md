@@ -1,7 +1,7 @@
 ---
 title: "Servo API"
 linkTitle: "Servo"
-weight: 20
+weight: 140
 type: "docs"
 description: "Commands for controlling the angular position of a servo precisely or getting its current status."
 icon: true

@@ -1,7 +1,7 @@
 ---
 title: "Power sensor API"
 linkTitle: "Power Sensor"
-weight: 20
+weight: 120
 type: "docs"
 description: "Commands for getting measurements of voltage, current, and power consumption."
 icon: true

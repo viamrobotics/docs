@@ -1,7 +1,7 @@
 ---
 title: "Control your gripper with the gripper API"
 linkTitle: "Gripper"
-weight: 20
+weight: 80
 type: "docs"
 description: "Give commands for opening and closing a gripper device."
 icon: true
