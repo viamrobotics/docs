@@ -1115,8 +1115,8 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--name` | The name of the package | `upload`, `export` | **Required** |
 | `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
-| `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `export` | **Required** |
-| `--destination` | The output directory for downloaded package. | `upload` | **Required** |
+| `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
+| `--destination` | The output directory for downloaded package. | `export` | **Required** |
 
 ### `machines` (alias `robots`)
 
