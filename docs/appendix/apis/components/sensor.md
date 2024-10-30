@@ -1,7 +1,7 @@
 ---
 title: "Sensor API"
 linkTitle: "Sensor"
-weight: 20
+weight: 130
 type: "docs"
 description: "Commands for getting sensor readings."
 icon: true
