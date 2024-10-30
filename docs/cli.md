@@ -513,27 +513,27 @@ done
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--destination` | Output directory for downloaded data. |`export` | **Required** |
-| `--data-type` | Data type to be downloaded: either binary or tabular. |`export`| **Required** |
-| `--component-name` | Filter by specified component name. |`export`, `delete`, `tag filter`| Optional |
-| `--component-type` | Filter by specified component type. |`export`, `delete`, `tag filter` | Optional |
-| `--component-model` | Filter by specified component model. |`export`, `delete`| Optional |
+| `--destination` | Output directory for downloaded data. | `export` | **Required** |
+| `--data-type` | Data type to be downloaded: either binary or tabular. | `export`| **Required** |
+| `--component-name` | Filter by specified component name. | `export`, `delete`, `tag filter`| Optional |
+| `--component-type` | Filter by specified component type. | `export`, `delete`, `tag filter` | Optional |
+| `--component-model` | Filter by specified component model. | `export`, `delete`| Optional |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export` | Optional|
-| `--start` | ISO-8601 timestamp indicating the start of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
-| `--end` | ISO-8601 timestamp indicating the end of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval. | `export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. | `export`, `delete`, `dataset`, `tag filter`| Optional |
 | `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
 | `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id). |`dataset`, `tag ids` | **Required** |
-| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
-| `--method` | Filter by specified method. |`export`, `delete`, `tag filter`| Optional |
-| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). |`export`, `delete`, `tag filter`|false |
+| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export`, `delete`, `tag filter`| Optional |
+| `--method` | Filter by specified method. | `export`, `delete`, `tag filter`| Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export`, `delete`, `tag filter`|false |
 | `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged. (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
-| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 10. |`export`, `delete`, `dataset export` | Optional |
-| `--part-id` | Filter by specified part ID. |`export`, `delete`, `tag filter`| Optional |
-| `--part-name` | Filter by specified part name. |`export`, `delete`, `tag filter`| Optional |
-| `--machine-id` | Filter by specified machine ID. |`export`, `delete`, `tag filter` | Optional |
-| `--machine-name` | Filter by specified machine name. |`export`, `delete`, `tag filter`| Optional |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export`, `delete`, `tag filter`| Optional |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export`, `delete`, `dataset export` | Optional |
+| `--part-id` | Filter by specified part ID. | `export`, `delete`, `tag filter`| Optional |
+| `--part-name` | Filter by specified part name. | `export`, `delete`, `tag filter`| Optional |
+| `--machine-id` | Filter by specified machine ID. | `export`, `delete`, `tag filter` | Optional |
+| `--machine-name` | Filter by specified machine name. | `export`, `delete`, `tag filter`| Optional |
 | `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export`, `delete`, `tag ids`, `tag filter` | Optional |
 | `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter` | Optional |
 | `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
@@ -1087,14 +1087,14 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package>
+viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz>
 viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=.
+viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=./the_package.tar.gz
 viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_model --destination=.
 ```
 
@@ -1115,8 +1115,8 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--name` | The name of the package | `upload`, `export` | **Required** |
 | `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
-| `--path` | The output directory for downloaded package | `export` | **Required** |
-| `--destination` | The path to the package for upload | `upload` | **Required** |
+| `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
+| `--destination` | The output directory for downloaded package. | `export` | **Required** |
 
 ### `machines` (alias `robots`)
 
