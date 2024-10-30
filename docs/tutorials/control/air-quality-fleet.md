@@ -97,15 +97,15 @@ You can choose to manage your fleet of machines differently based on what makes 
    Create an account and log in.
 1. Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization for your air quality machine company.
    Name the organization and click **Create**.
-1. Click **FLEET** in the upper-left corner of the page.
+1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
    A new location called `First Location` is automatically generated for you.
    Rename it so you can use it for Antonia's machines:
 
-   Click on the location and use the **...** menu next to edit the location name to `Antonia's Home`, then click **Save**.
+   Use the **...** menu next to edit the location name to `Antonia's Home`, then click **Save**.
 
 1. Now, create a separate location for RobotsRUs:
 
-   On the left side of the **FLEET** page, click the **Add location** button.
+   On the left side of the **LOCATIONS** page, click the **Add location** button.
    Type in `RobotsRUs` and click **Add**.
 
 1. Add sub-locations to the RobotsRUs location to group the machines at each of their offices:

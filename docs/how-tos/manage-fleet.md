@@ -72,13 +72,13 @@ If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Se
 {{% tablestep link="/cloud/locations/" %}}
 **2. Create locations**
 
-1. Click **FLEET** in the upper-left corner of the page.
+1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
    A new location called `First Location` is automatically generated for you.
 
-   Click on the location and use the **...** menu next to edit the location name to what it represents for your use case.
+   Use the **...** menu to edit the location name to what it represents for your use case.
    Then click **Save**.
 
-1. Create additional locations as needed using **Add location** button, on the left of the **FLEET** page.
+1. Create additional locations as needed using the **Add location** button, on the left of the **LOCATIONS** page.
 
 {{% /tablestep %}}
 {{% tablestep link="/cloud/locations/" %}}
@@ -130,11 +130,24 @@ You can manage this in the **API Keys** section of the organization settings pag
 
 ## Monitoring and debugging
 
-Viam allows you to access each machine, check its logs, check recent changes, and roll back changes if needed.
+Viam allows you to view all machines from a dashboard and access each machine, check its logs, check recent changes, and roll back changes if needed.
 
 {{< table >}}
+{{% tablestep %}}
+**1. Monitor your fleet's parts statuses and synced data**
+
+You can monitor the number of parts online, offline, and awaiting setup from the Viam app's **FLEET** tab's [**DASHBOARD** subtab](https://app.viam.com/fleet/dashboard).
+You can also monitor the amount of binary and tabular data your fleet has synced in the last 48 hours on this dashboard.
+
+{{<imgproc src="how-tos/manage-fleet/dashboard.png" resize="500x" declaredimensions=true alt="Fleet dashboard">}}
+
+To view data at the machine part level, including **Location**, **Status**, **Architecture**, and more, go to the **FLEET** tab's [**ALL MACHINES DASHBOARD** subtab](https://app.viam.com/fleet/machines).
+
+{{<imgproc src="how-tos/manage-fleet/all-machines-dashboard.png" resize="500x" declaredimensions=true alt="All machines dashboard">}}
+
+{{% /tablestep %}}
 {{% tablestep link="/cloud/machines/#logs" %}}
-**1. Monitor your fleet's logs**
+**2. Monitor your fleet's logs**
 
 Using the [Viam app](https://app.viam.com), you can monitor the status of each machine from its [**LOGS** tab](/cloud/machines/#logs).
 
@@ -144,7 +157,7 @@ You can also access machine logs using [`viam machines logs`](/cli/#machines-ali
 
 {{% /tablestep %}}
 {{% tablestep link="/fleet/control/" %}}
-**2. Test your machines remotely**
+**3. Test your machines remotely**
 
 Using the [Viam app](https://app.viam.com), you can remotely operate machines from the **TEST** pane on the **CONFIGURE** tab or from the [**CONTROL** tab](/fleet/control/).
 
@@ -154,7 +167,7 @@ You can also operate machine using the [`viam machines part run`](/cli/#machines
 
 {{% /tablestep %}}
 {{% tablestep link="/configure/#configuration-history" %}}
-**3. Use configuration version history**
+**4. Use configuration version history**
 
 The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
 To see the history of the configuration of a machine part, click on **History** on the **CONFIGURE** tab.
