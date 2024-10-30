@@ -114,7 +114,7 @@ For more detailed configuration information and troubleshooting, see the [`webca
 In this guide you'll use a publicly available model to detect people.
 You will deploy this model to your machine using the ML model service.
 
-Click **+**, click **Service** and select the `ML model` type, then select the `TFLite CPU` model.
+Click **+**, click **Service** and search for and select the `ML model / TFLite CPU` model.
 Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
