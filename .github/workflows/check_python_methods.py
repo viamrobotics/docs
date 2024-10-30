@@ -34,7 +34,7 @@ services_page_mapping = {
     "navigation": "services/navigation",
     "slam": "services/slam",
     "vision": "services/vision",
-    "ml": "services/ml/deploy"
+    "ml": "services/ml"
 }
 
 def is_unimplemented(obj):
