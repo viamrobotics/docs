@@ -20,18 +20,18 @@ date: "2024-08-21"
 cost: "0"
 ---
 
-After [writing a module](/how-tos/create-module/), you can upload your module to the Viam registry to:
+After [writing a module](/how-tos/create-module/), you can upload your module to the Viam Registry to:
 
 - share your module with other Viam users
 - deploy your module to a fleet of machines from a central interface
 
-You can choose to upload it to the Viam registry as a _public module_ that is shared with other Viam users, or as a _private module_ that is shared only within your [organization](/cloud/organizations/).
+You can choose to upload it to the Viam Registry as a _public module_ that is shared with other Viam users, or as a _private module_ that is shared only within your [organization](/cloud/organizations/).
 
-To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions.
+To upload your custom module to the [Viam Registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions.
 
 {{% alert title="In this page" color="info" %}}
 
-- [Package and upload a module to the Viam registry](#upload-a-module)
+- [Package and upload a module to the Viam Registry](#upload-a-module)
 
 {{% /alert %}}
 
@@ -248,7 +248,7 @@ Supply the path to the resulting archive file in the next step.
 {{% tablestep %}}
 **5. Upload your module**
 
-Run `viam module upload` to upload your custom module to the Viam registry.
+Run `viam module upload` to upload your custom module to the Viam Registry.
 Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -269,7 +269,7 @@ where:
 The `viam module upload` command only supports one `platform` argument at a time.
 If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
 Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
-The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
+The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
 {{% /alert %}}
 
 For example:

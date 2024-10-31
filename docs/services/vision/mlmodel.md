@@ -145,7 +145,7 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _output tensor_ must be named `probability`
 
 If you [trained your ML model using the Viam app](/how-tos/train-deploy-ml/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
-However, if you uploaded your own ML model, or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
+However, if you uploaded your own ML model, or are using one from the [Viam Registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 #### Remap tensor names
 

@@ -38,7 +38,7 @@ A modular resource is a model of a {{< glossary_tooltip term_id="component" text
 
 ## Configuration
 
-When you add components and services from your machine's **CONFIGURE** tab, you can select available modular resources from the Viam registry.
+When you add components and services from your machine's **CONFIGURE** tab, you can select available modular resources from the Viam Registry.
 When you add a modular resource _from the registry_, the module that provides it is automatically added at the same time.
 To add a modular resource from a _local_ module, you must add the module first.
 
@@ -227,17 +227,17 @@ The following properties are configurable for each module:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/registry/modular-resources/#module-versioning).</p> |
-| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam registry](https://app.viam.com/registry) or is only available [locally](/how-tos/create-module/#test-your-module-locally) on your computer. |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam Registry](https://app.viam.com/registry) or is only available [locally](/how-tos/create-module/#test-your-module-locally) on your computer. |
 | `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. |
 | `name` | string | **Required** | A name for this instance of the module. |
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environments variables](#environment-variables). |
 
 #### Module versioning
 
-You can configure how each module on your machine updates itself when a newer version becomes available from the Viam registry.
+You can configure how each module on your machine updates itself when a newer version becomes available from the Viam Registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will _never automatically update itself_.
 
-To allow automatic module updates when a new version of the module becomes available in the Viam registry, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
+To allow automatic module updates when a new version of the module becomes available in the Viam Registry, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
 
 {{<imgproc src="registry/modular-resources/deployed-module-with-component.png" style="width: 400px" resize="500x" declaredimensions=true alt="The module card">}}
 
@@ -246,16 +246,16 @@ The following update options are available:
 - **Patch (X.Y.Z)**: Do not update to any other version.
   This is the default.
 - **Minor (X.Y.\*)**: Only update to newer patch releases of the same minor release branch.
-  The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam registry.
+  The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.2.5` but not `1.3.0` or `2.0.0`.
 - **Major (X.\*)**: Only update to newer minor releases of the same major release branch.
-  The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam registry.
+  The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
-- **Latest**: Always update to the latest version of this module available from the Viam registry as soon as a new version becomes available.
+- **Latest**: Always update to the latest version of this module available from the Viam Registry as soon as a new version becomes available.
 
 When using the **Patch (X.Y.Z)** version type, you may select any patch version of the module from the **Version** dropdown menu, including past versions if desired.
 
-The current deployed version of your module and the latest version of that module available from the Viam registry are shown on this module card for your reference.
+The current deployed version of your module and the latest version of that module available from the Viam Registry are shown on this module card for your reference.
 
 {{% alert title="Caution" color="caution" %}}
 For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.

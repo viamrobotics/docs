@@ -21,7 +21,7 @@ The CLI lets you:
 - Retrieve [organization](/cloud/organizations/) and location information
 - Manage [machine fleet](/fleet/) data and logs
 - Control machines by issuing component and service commands
-- Upload and manage [modular resources](/registry/) in the Viam registry
+- Upload and manage [modular resources](/registry/) in the Viam Registry
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -623,7 +623,7 @@ This includes:
 - Creating metadata for a {{< glossary_tooltip term_id="resource" text="modular resource" >}}
 - Uploading a new module to the [Viam registry](https://app.viam.com/registry)
 - Uploading a new version of your module to the [Viam registry](https://app.viam.com/registry)
-- Updating an existing module in the Viam registry
+- Updating an existing module in the Viam Registry
 - Updating a module's metadata file based on models it provides
 - Building your module for different architectures using cloud runners
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
@@ -679,7 +679,7 @@ viam module build logs --wait --id=$(viam module build start --version "0.1.2")
 # restart a module running on your local viam-server, by name, without building or reconfiguring
 viam module reload --restart-only --id viam:python-example-module
 
-# upload a new or updated custom module to the Viam registry:
+# upload a new or updated custom module to the Viam Registry:
 viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz
 ```
 
@@ -692,7 +692,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `create` | Generate new metadata for a custom module on your local filesystem. | - |
 | `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
-| `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
+| `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
 | `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
@@ -724,10 +724,10 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-- Use the `--public-namespace` argument to supply the [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) of your organization. This will upload your module to the Viam registry and share it with other users.
+- Use the `--public-namespace` argument to supply the [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) of your organization. This will upload your module to the Viam Registry and share it with other users.
 - Use the `--org-id` to provide your organization ID instead, This will upload your module privately within your organization.
 
-You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`"visibility": "public"`) to the Viam registry.
+You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`"visibility": "public"`) to the Viam Registry.
 
 ##### Using the `--platform` argument
 
@@ -757,7 +757,7 @@ Use the _same version number_ when running multiple `upload` commands of the sam
 If you specify a platform that includes `any` (such as `any`, `any/amd64`, or `linux/any`), a machine that deploys your module will select the _most restrictive_ architecture from the ones you have provided for your module.
 For example, if you upload your module with support for `any/amd64` and then also upload with support for `linux/amd64`, a machine running the `linux/amd64` architecture deploys the `linux/amd64` version, while a machine running the `darwin/amd64` architecture deploys the `any/amd64` version.
 
-The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
+The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
 
 If you are using the `build logs` command, the `--platform` argument instead restricts the logs returned by the command to only those build jobs that match the specified platform.
 
@@ -766,7 +766,7 @@ If you are using the `build logs` command, the `--platform` argument instead res
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
 
-Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam registry.
+Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam Registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
@@ -784,7 +784,7 @@ The following criteria are checked for every `upload`:
 
 ##### The `meta.json` file
 
-When uploading a custom module, the Viam registry tracks your module's metadata in a `meta.json` file.
+When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
 This file is created for you when you run the `viam module generate` or `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
 If you later make changes to this file, you can register those changes with the Viam registry by using the `viam module update` command.
 

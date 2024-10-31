@@ -8,6 +8,8 @@ action:
 swap:
   viam app: Viam app
   Viam App: Viam app
+  viam registry: Viam Registry
+  Viam registry: Viam Registry
   RPLIDAR: RPlidar
   Rplidar: RPlidar
   Viam platform: Viam platform

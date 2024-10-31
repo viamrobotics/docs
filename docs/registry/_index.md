@@ -27,7 +27,7 @@ date: "2024-10-22"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The [Viam registry](https://app.viam.com/registry) is the storage and distribution system for:
+The [Viam Registry](https://app.viam.com/registry) is the storage and distribution system for:
 
 {{< cards >}}
 {{% manualcard link="/registry/modular-resources/" %}}

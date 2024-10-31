@@ -68,7 +68,7 @@ You can also use the [Viam mobile app](/fleet/control/#control-interface-in-the-
 
 ### Create a namespace for your organization
 
-When uploading [custom modules](/registry/) to the Viam registry, you must set a namespace for your organization to associate your module with.
+When uploading [custom modules](/registry/) to the Viam Registry, you must set a namespace for your organization to associate your module with.
 
 To create a new namespace for your organization, click on the Org's **Settings** in the top right of the navigation bar, then click the **Set a public namespace** button.
 Enter a name or use the suggested name for your namespace, and then click **Set namespace**.

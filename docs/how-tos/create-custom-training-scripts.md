@@ -4,7 +4,7 @@ linkTitle: "Train models with custom specs"
 weight: 90
 type: "docs"
 tags: ["data management", "ml", "model training"]
-description: "If you want to train models to custom specifications, write a custom training script and upload it to the Viam registry."
+description: "If you want to train models to custom specifications, write a custom training script and upload it to the Viam Registry."
 # SME: Tahiya S.
 images: ["/services/icons/ml.svg"]
 icon: true
