@@ -79,9 +79,3 @@ You can also use your machine's [Viam app](https://app.viam.com) **CONTROL** tab
 {{% card link="/cli/" %}}
 {{% card link="/fleet/control/" %}}
 {{< /cards >}}
-
-## Deeper details
-
-{{< cards >}}
-{{% card link="/internals/" %}}
-{{< /cards >}}
