@@ -616,11 +616,11 @@ viam logout
 
 ### `module`
 
-The `module` command allows to you to manage custom {{< glossary_tooltip term_id="module" text="modules" >}}.
+The `module` command allows to you to work with {{< glossary_tooltip term_id="module" text="modules" >}}.
 This includes:
 
 - Generating stub files for a new module
-- Creating metadata for a new custom {{< glossary_tooltip term_id="resource" text="modular resource" >}}
+- Creating metadata for a {{< glossary_tooltip term_id="resource" text="modular resource" >}}
 - Uploading a new module to the [Viam registry](https://app.viam.com/registry)
 - Uploading a new version of your module to the [Viam registry](https://app.viam.com/registry)
 - Updating an existing module in the Viam registry
@@ -628,13 +628,13 @@ This includes:
 - Building your module for different architectures using cloud runners
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
 
-See [Upload a custom module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for more information.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
 [automatically upload new versions of your module on release](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 ```sh {class="command-line" data-prompt="$"}
-viam module generate --resource-type=<component|service> --resource-subtype=<subtype>
+viam module generate
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
 viam module update-models --binary=<binary> [...named args]
@@ -688,7 +688,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `generate` | Auto-generate stub files for a new Python module by following prompts. | - |
+| `generate` | Auto-generate stub files for a new module by following prompts. | - |
 | `create` | Generate new metadata for a custom module on your local filesystem. | - |
 | `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
