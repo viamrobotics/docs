@@ -68,8 +68,6 @@ For more information, see [`GetEndPosition`](/appendix/apis/components/arm/#gete
 {{% /tablestep %}}
 {{% tablestep %}}
 
-<!-- {{<imgproc src="/how-tos/one-to-many/delete.png" class="fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete">}} -->
-
 **4. Get the joint positions**
 
 The state of a robot arm can also be described as the **combined positions of each joint** attached to the arm.
