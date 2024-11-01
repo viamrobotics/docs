@@ -3,14 +3,14 @@ title: "Access and move a robot arm"
 linkTitle: "Move a robot arm"
 weight: 70
 type: "docs"
-tags: ["data management", "data", "services"]
+tags: ["arm", "components"]
 images: ["/tutorials/motion/preview.jpg"]
 description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
 aliases:
   - /tutorials/motion/accessing-and-moving-robot-arm
   - /tutorials/motion/
-languages: []
-viamresources: []
+languages: ["Python", "Go"]
+viamresources: ["arm"]
 platformarea: ["mobility"]
 level: "Intermediate"
 date: "2024-10-31"
