@@ -77,7 +77,7 @@ To get that information, add the following code right after the code that gets t
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Joint Positions of myArm
+# Joint Positions of arm1
 my_arm_joint_positions = await arm_1.get_joint_positions()
 print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 ```
@@ -86,7 +86,7 @@ print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Joint Positions of myArm
+// Joint Positions of arm1
 myArmJointPositions, err := arm1.JointPositions(context.Background(), nil)
 if err != nil {
   logger.Error(err)
