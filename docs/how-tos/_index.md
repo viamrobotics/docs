@@ -34,7 +34,7 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 
 <div id="how-to-paths">
 
-{{< how-to-expand title="Get started with Viam basics" tasks="4" level="BEGINNER-FRIENDLY" >}}
+{{< how-to-expand title="Get started with Viam basics" tasks="5" level="BEGINNER-FRIENDLY" >}}
 {{< cards >}}
 {{% card link="/how-tos/drive-rover/" noimage="true" %}}
 {{% card link="/how-tos/control-motor/" noimage="true" %}}
