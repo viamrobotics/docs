@@ -40,6 +40,7 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{% card link="/how-tos/control-motor/" noimage="true" %}}
 {{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{% card link="/how-tos/collect-data/" noimage="true" %}}
+{{% card link="/how-tos/move-robot-arm/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

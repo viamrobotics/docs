@@ -67,7 +67,6 @@ For more information, see [`GetEndPosition`](/appendix/apis/components/arm/#gete
 
 {{% /tablestep %}}
 {{% tablestep %}}
-
 **4. Get the joint positions**
 
 The state of a robot arm can also be described as the **combined positions of each joint** attached to the arm.
@@ -154,7 +153,6 @@ For more information, see [`MoveToJointPositions`](/appendix/apis/components/arm
 
 {{% /tablestep %}}
 {{% tablestep %}}
-
 **2. Command to move to position**
 
 Add the following code to your script:
