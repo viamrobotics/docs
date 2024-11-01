@@ -17,7 +17,7 @@ cost: "0"
 ---
 
 This guide will walk you through creating two simple {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that respond to API calls by returning a configured image, and a random number.
-By the end of this guide, you will be able to create your own [modular resources](/registry/modular-resources/) and package them into {{< glossary_tooltip term_id="module" text="modules" >}} so you can use them on your machines.
+By the end of this guide, you will be able to create your own modular resources and package them into {{< glossary_tooltip term_id="module" text="modules" >}} so you can use them on your machines.
 
 {{% alert title="In this page" color="tip" %}}
 
@@ -142,7 +142,7 @@ None of the camera API methods return a number though.
 Look at the [sensor API](/appendix/apis/components/sensor/), which includes the `GetReadings` method.
 You can return a number with that, but the sensor API can't return an image.
 
-Your module can provide multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
+Your module can contain multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
 
 {{% alert title="Note" color="note" %}}
 
@@ -464,7 +464,7 @@ With the implementation written, it's time to test your module locally:
 ## Package and upload the module
 
 You now have a working local module.
-To make it available to deploy on more machines, you can package it and upload it to the [Viam registry](https://app.viam.com/registry).
+To make it available to deploy on more machines, you can package it and upload it to the [Viam Registry](https://app.viam.com/registry).
 
 The hello world module you created is for learning purposes, not to provide any meaningful utility, so we recommend making it available only to machines within your {{< glossary_tooltip term_id="organization" text="organization" >}} instead of making it publicly available.
 
@@ -502,7 +502,7 @@ For more information about uploading modules, see [Upload a module](/how-tos/upl
 
 ## Next steps
 
-For an example module that gets weather data from an online source, see the example code in [Create a sensor module with Python](/how-tos/sensor-module/).
+For a guide that walks you through creating different sensor models, for example to get weather data from an online source, see [Create a sensor module with Python](/how-tos/sensor-module/).
 
 For more module creation information with more programming language options, see the [Create a module](/how-tos/create-module/) guide.
 

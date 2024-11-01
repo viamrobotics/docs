@@ -6,7 +6,7 @@ weight: 26
 images: ["/icons/components/sensor.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
-description: "Add support for a new model of sensor by creating a module written in Python."
+description: "Add a new model of sensor component by writing a module in Python."
 languages: ["python"]
 viamresources: ["sensor"]
 platformarea: ["registry"]
