@@ -616,10 +616,11 @@ viam logout
 
 ### `module`
 
-The `module` command allows to you to manage custom {{< glossary_tooltip term_id="module" text="modules" >}}
+The `module` command allows to you to work with {{< glossary_tooltip term_id="module" text="modules" >}}.
 This includes:
 
-- Creating a new custom {{< glossary_tooltip term_id="resource" text="modular resource" >}}
+- Generating stub files for a new module
+- Creating metadata for a {{< glossary_tooltip term_id="resource" text="modular resource" >}}
 - Uploading a new module to the [Viam registry](https://app.viam.com/registry)
 - Uploading a new version of your module to the [Viam registry](https://app.viam.com/registry)
 - Updating an existing module in the Viam registry
@@ -627,12 +628,13 @@ This includes:
 - Building your module for different architectures using cloud runners
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
 
-See [Upload a custom module](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for more information.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
 [automatically upload new versions of your module on release](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 ```sh {class="command-line" data-prompt="$"}
+viam module generate
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
 viam module update-models --binary=<binary> [...named args]
@@ -647,6 +649,9 @@ viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
+# generate stub files for a new modular resource by following prompts
+viam module generate
+
 # generate metadata for a module named 'my-module' using your organization's public namespace:
 viam module create --name=my-module --public-namespace=my-namespace
 
@@ -683,6 +688,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
+| `generate` | Auto-generate stub files for a new module by following prompts. | - |
 | `create` | Generate new metadata for a custom module on your local filesystem. | - |
 | `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
@@ -704,6 +710,8 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | Optional |
 | `--module` | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
+| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
+| `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
 | `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
 | `--name` | The name of the custom module to be created | `create` | **Required** |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
@@ -777,7 +785,7 @@ The following criteria are checked for every `upload`:
 ##### The `meta.json` file
 
 When uploading a custom module, the Viam registry tracks your module's metadata in a `meta.json` file.
-This file is created for you when you run the `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
+This file is created for you when you run the `viam module generate` or `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
 If you later make changes to this file, you can register those changes with the Viam registry by using the `viam module update` command.
 
 The `meta.json` file includes the following configuration options:
@@ -853,7 +861,7 @@ In the example above, the model namespace is set to `acme` to match the owning o
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a custom module](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 See [Modular resources](/registry/) for a conceptual overview of modules and the modular resource system at Viam.
 
