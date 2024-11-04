@@ -2,7 +2,7 @@
 Configuring digital interrupts to monitor GPIO pins on your board is useful when your application needs to know precisely when there is a change in GPIO value between high and low.
 
 - When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it ticks to record the state change.
-  You can stream these ticks with the board API's [`StreamTicks()`](/appendix/apis/components/board/#streamticks), or get the current value of the digital interrupt with [`Value()`](/appendix/apis/components/board/#value).
+  You can stream these ticks with the board API's [`StreamTicks()`](/appendix/apis/components/board/#streamticks), or get the current value of the digital interrupt with [`Value()`](/appendix/apis/components/board/#getdigitalinterruptvalue).
 - Calling [`GetGPIO()`](/appendix/apis/components/board/#getgpio) on a GPIO pin, which you can do without configuring interrupts, is useful when you want to know a pin's value at specific points in your program, but is less precise and convenient than using an interrupt.
 
 Integrate `digital_interrupts` into your machine in the `attributes` of your board by following the **Config Builder** instructions, or by adding the following to your board's JSON configuration:
