@@ -55,7 +55,7 @@ Create a {{< glossary_tooltip term_id="machine" text="machine" >}} in any locati
 
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} on your machine page to install `viam-server`.
 If you are using a microcontroller, install `viam-micro-server` instead.
-Follow tge setup instructions until your machine connects and appear as **Live** in the Viam app.
+Follow the setup instructions until your machine connects and appear as **Live** in the Viam app.
 
 {{% /tablestep %}}
 {{% tablestep link="/configure/" %}}
@@ -96,7 +96,7 @@ If a component you want to use for your project is not natively supported, you c
     {{< /alert >}}
 
 4.  When you add a component, it will create a panel in the configuration builder tool. Fill in any required attributes, following the documentation for the specific model.
-    You can find this documentation by following the link to the model's documentation from the available resources clicking on the respective model in each component's documentation
+    You can find this documentation by following the link to the model's documentation from the available resources.
 
 5.  Click the **TEST** area of the configuration panel to test your component.
 6.  If any problems occur check the **LOGS** tab or check the component page for component-specific troubleshooting.
