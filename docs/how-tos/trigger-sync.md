@@ -74,18 +74,15 @@ func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[stri
     currentTime := time.Now()
     var hStart, mStart, sStart, hEnd, mEnd, sEnd int
     n, err := fmt.Sscanf(s.start, "%d:%d:%d", &hStart, &mStart, &sStart)
-    readings := map[string]interface{}{}
 
     if err != nil || n != 3 {
         s.logger.Error("Start time is not in the format HH:MM:SS.")
-        readings["should_sync"] = false
-        return readings, err
+        return nil, err
     }
     m, err := fmt.Sscanf(s.end, "%d:%d:%d", &hEnd, &mEnd, &sEnd)
     if err != nil || m != 3 {
         s.logger.Error("End time is not in the format HH:MM:SS.")
-        readings["should_sync"] = false
-        return readings, err
+        return nil, err
     }
 
     zone, err := time.LoadLocation(s.zone)
@@ -98,15 +95,15 @@ func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[stri
     endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
         hEnd, mEnd, sEnd, 0, zone)
 
+    readings := map[string]interface{}{"should_sync": false}
     // If it is between the start and end time, sync.
     if currentTime.After(startTime) && currentTime.Before(endTime) {
         s.logger.Info("Syncing")
-        readings["should_sync"] = false
+        readings["should_sync"] = true
         return readings, nil
     }
 
     // Otherwise, do not sync.
-    readings["should_sync"] = false
     return readings, nil
 }
 ```
