@@ -18,7 +18,7 @@ date: "2024-07-30"
 cost: "0"
 ---
 
-{{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}
+{{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam Registry, some modules within it, and a rover they support." >}}
 <br>
 
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
@@ -152,7 +152,7 @@ A resource model is identified by a unique name, called the {{< glossary_tooltip
 
 - `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
-    If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+    If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam Registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
 - `repo-name` is the code repository (GitHub repo) that houses your module code.
   - Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
@@ -228,7 +228,7 @@ For more Go module examples:
 {{% /tab %}}
 {{% /tabs %}}
 
-Explore the full list of available modules in the [Viam registry](https://app.viam.com/registry).
+Explore the full list of available modules in the [Viam Registry](https://app.viam.com/registry).
 {{< /expand >}}
 
 Follow the instructions below to define the capabilities provided by your model, for the language you are using to write your module code:
@@ -1650,7 +1650,7 @@ Once you've added your local module using steps 1-5, you can repeat steps 6-11 t
 
 ## Upload your module to the modular resource registry
 
-Once you are satisfied with the state of your module, you can upload your module to the Viam registry to:
+Once you are satisfied with the state of your module, you can upload your module to the Viam Registry to:
 
 - share your module with other Viam users
 - deploy your module to a fleet of machines from a central interface
@@ -1662,7 +1662,7 @@ See [How to Upload a Module](/how-tos/upload-module/) for instructions.
 You have now created a module, and are ready to deploy it to a fleet of machines.
 There are two ways to deploy a module:
 
-- Through the Viam registry: Once you have uploaded your new module to the Viam registry, [add the module to one or more machines in the Viam app](/registry/modular-resources/).
+- Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines in the Viam app](/registry/modular-resources/).
   You can also choose to configure [automated uploads for new module versions](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module (without uploading it to the Viam app), as you did in the [Test your module locally step above](#test-your-module-locally).
   This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.

@@ -42,7 +42,7 @@ However, if you want to manage your machine's captured data yourself, you can en
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
 
-The data is captured in the ESP32's flash memory until it is uploaded to the Viam cloud.
+The data is captured in the ESP32's flash memory until it is uploaded to the Viam Cloud.
 
 If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
 
@@ -85,7 +85,7 @@ To avoid syncing files that are still being written to, the data management serv
 
 Data that is successfully synced to the cloud is automatically deleted from local storage.
 
-When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
+When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam Cloud again.
 
 {{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
 
@@ -203,7 +203,7 @@ The following attributes are available for the data management service:
 | `additional_sync_paths` | string array | Optional | Paths to any other directories on your machine from which you want to sync data to the cloud. Once data is synced from a directory, it is automatically deleted from your machine. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `sync_interval_mins` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing. <br> Default: `0.1`, meaning once every 6 seconds. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/services/data/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
-| `maximum_num_sync_threads` | int | Optional | Max number of CPU threads to use for syncing data to the Viam cloud. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2 so half the number of logical CPUs available to viam-server |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
+| `maximum_num_sync_threads` | int | Optional | Max number of CPU threads to use for syncing data to the Viam Cloud. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2 so half the number of logical CPUs available to viam-server |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 
 ### Resource data capture configuration
@@ -658,7 +658,7 @@ The following attributes are available for data capture configuration:
 | ------------------ | ------ | --------- | ----------- |
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/services/data/#supported-components-and-services). |
-| `retention_policy` | object | Optional | Option to configure how long data collected by this component should remain stored in the Viam cloud. You must set this in JSON mode. See the JSON example for a camera component. Options: `"days": <int>`. Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. |
+| `retention_policy` | object | Optional | Option to configure how long data collected by this component should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. Options: `"days": <int>`. Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
 ### Supported components and services
@@ -703,7 +703,7 @@ You can also access data from a resource, machine part, or machine menu.
 ## Considerations
 
 - **Capturing too much data**: You can [use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) to capture data selectively.
-- **Rentention policy**: Set a `retention_policy` attribute in your [data capture configuration](#resource-data-capture-configuration) to avoid keeping data stored in the Viam cloud longer than a specified number of days.
+- **Rentention policy**: Set a `retention_policy` attribute in your [data capture configuration](#resource-data-capture-configuration) to avoid keeping data stored in the Viam Cloud longer than a specified number of days.
 - **Pausing sync**: You can pause cloud sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
 
   If you have captured data that you do not want to sync, delete the data on the machine before resuming cloud sync.

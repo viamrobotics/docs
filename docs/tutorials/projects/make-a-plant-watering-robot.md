@@ -19,7 +19,7 @@ no_list: true
 ---
 
 <!-- LEARNING GOALS:
-After this tutorial you will understand what modules are and when to use them, and be able to build a machine from start to finish. You will be able to create machines using built-in resources as well as resources from the Viam registry, and can write code with the SDKs to operate your machine.
+After this tutorial you will understand what modules are and when to use them, and be able to build a machine from start to finish. You will be able to create machines using built-in resources as well as resources from the Viam Registry, and can write code with the SDKs to operate your machine.
 
 Notes:
 possibly extend or point to data management tutorial next? To Jessamy's in particular? and the grafana tutorial
@@ -224,10 +224,10 @@ However, there are many different types of sensors used for sensing different th
 Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
 
 A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ({{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}) or models that are not built into Viam.
-A module can be added to your robot from the Viam registry.
+A module can be added to your robot from the Viam Registry.
 
-The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
-You can add a module from the Viam registry directly from your robot’s **CONFIGURE** tab in the Viam app, using the **+** (Create) button.
+The [Viam Registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
+You can add a module from the Viam Registry directly from your robot’s **CONFIGURE** tab in the Viam app, using the **+** (Create) button.
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 

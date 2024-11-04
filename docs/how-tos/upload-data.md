@@ -104,7 +104,7 @@ You can also turn off **Syncing** unless you have other directories you'd like t
 
 ## Upload data with Python
 
-You can use the Python data client API [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
+You can use the Python data client API [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam Cloud.
 
 {{% alert title="Note" color="note" %}}
 

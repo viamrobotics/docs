@@ -27,7 +27,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/registry/ml-models/) or [train your own models](/how-tos/train-deploy-ml/) for object detection and classification using your data in the [Viam cloud](/fleet/data-management/).
+You can add an [existing model](/registry/ml-models/) or [train your own models](/how-tos/train-deploy-ml/) for object detection and classification using your data in the [Viam Cloud](/fleet/data-management/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
@@ -145,7 +145,7 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _output tensor_ must be named `probability`
 
 If you [trained your ML model using the Viam app](/how-tos/train-deploy-ml/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
-However, if you uploaded your own ML model, or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
+However, if you uploaded your own ML model, or are using one from the [Viam Registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 #### Remap tensor names
 
@@ -217,7 +217,7 @@ The feature is only available for classifiers that were uploaded after September
 
 {{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
 
-If you have images stored in the [Viam cloud](/fleet/data-management/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
+If you have images stored in the [Viam Cloud](/fleet/data-management/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
 
 1. Navigate to the [Data tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 2. Click on an image to open the side menu, and select the **Actions** tab under the **Data** tab.

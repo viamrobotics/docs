@@ -4,7 +4,7 @@ linkTitle: "Iterative Development"
 weight: 40
 type: "docs"
 tags: ["modules", "modular resources", "registry"]
-description: "Test your modules locally before uploading to the Viam registry, and use prerelease versioning to publish beta versions of your module."
+description: "Test your modules locally before uploading to the Viam Registry, and use prerelease versioning to publish beta versions of your module."
 icon: true
 images: ["/services/icons/ml.svg"]
 date: "2022-01-01"
@@ -20,10 +20,10 @@ Generally, when developing a module, you have two options for iterative developm
 - **Sync Code and Test Remotely:** If you want your module to support a different architecture than your development workstation, you can sync your module code to a machine running your desired target architecture and test remotely.
   For example, if you are developing a module on a macOS computer, but want your module to support a Raspberry Pi running Linux on the `arm64` architecture, you can set up syncing for your module code to be able to continue development on your macOS workstation, but test on your remote Raspberry Pi.
 
-Both of these options involve deploying your module to the target test system as a [local module](/configure/#local-modules), without uploading it to the Viam registry.
+Both of these options involve deploying your module to the target test system as a [local module](/configure/#local-modules), without uploading it to the Viam Registry.
 Even if you have already published a version of your module to the registry, you might still find it useful to follow the steps in this section to verify that changes you make as part of releasing a new version work as expected on your target platform.
 
-Then, once you have tested it, you can [upload your module](/how-tos/upload-module/) to the Viam registry.
+Then, once you have tested it, you can [upload your module](/how-tos/upload-module/) to the Viam Registry.
 You can use [prerelease versioning](#use-prerelease-versioning) to publish a version of your module to the registry without affecting machines that are using stable versions of your module.
 
 {{< tabs >}}
@@ -212,7 +212,7 @@ If you are developing a module for a different target architecture than your dev
 {{% /tab %}}
 {{% /tabs %}}
 
-When you are satisfied that your module is ready for release, follow the steps to [upload your module](/how-tos/upload-module/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
+When you are satisfied that your module is ready for release, follow the steps to [upload your module](/how-tos/upload-module/) to the Viam Registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
 
 ## Troubleshooting `ssh`
 

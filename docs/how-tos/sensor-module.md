@@ -390,7 +390,7 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 
 {{% /expand%}}
 
-It's a good idea to test your module locally before uploading it to the [Viam registry](https://app.viam.com/registry):
+It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry):
 
 {{< table >}}
 {{% tablestep link="/how-tos/create-module/#test-your-module-locally" %}}

@@ -29,7 +29,7 @@ The built-in `pi` sensor and board models have moved to the [`raspberry-pi` modu
 
 {{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
 
-You can now set how long data collected by a component should remain stored in the Viam cloud in the component's data capture configuration.
+You can now set how long data collected by a component should remain stored in the Viam Cloud in the component's data capture configuration.
 For more information, see [Data management service](/services/data/).
 
 {{% /changelog %}}
@@ -223,7 +223,7 @@ The dual GPS movement sensor calculates a compass heading from both GPS sensors,
 {{% changelog date="2024-03-01" color="added" title="Viam Agent" %}}
 
 You can now use the [Viam Agent](/fleet/provision/) to provision your machine or fleet of machines during deployment.
-The Viam agent is a software provisioning manager that you can install on your machine which manages your `viam-server` installation, including installation and ongoing updates, as well as providing flexible deployment configuration options, such as pre-configured WiFi network credentials.
+The Viam Agent is a software provisioning manager that you can install on your machine which manages your `viam-server` installation, including installation and ongoing updates, as well as providing flexible deployment configuration options, such as pre-configured WiFi network credentials.
 
 {{% /changelog %}}
 
@@ -235,7 +235,7 @@ You can now use the [generic service](/services/generic/) to define new, unique 
 
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
-You can now upload [machine learning (ML) models](/registry/ml-models/) to the Viam registry, in addition to modules.
+You can now upload [machine learning (ML) models](/registry/ml-models/) to the Viam Registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
@@ -446,7 +446,7 @@ Sessions are enabled by default, with the option to [disable sessions](/appendix
 
 {{% changelog date="2023-06-30" color="added" title="Connect an ODrive motor controller as a Viam module" %}}
 
-You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the Viam registry](https://github.com/viamrobotics/odrive).
+You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the Viam Registry](https://github.com/viamrobotics/odrive).
 
 See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn how to connect and use an ODrive motor controller with Viam, and view the sample configurations.
 

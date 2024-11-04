@@ -27,7 +27,7 @@ date: "2024-10-22"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The [Viam registry](https://app.viam.com/registry) is the storage and distribution system for:
+The [Viam Registry](https://app.viam.com/registry) is the storage and distribution system for:
 
 {{< cards >}}
 {{% manualcard link="/registry/modular-resources/" %}}
@@ -42,7 +42,7 @@ The [Viam registry](https://app.viam.com/registry) is the storage and distributi
 {{% /manualcard %}}
 {{% manualcard link="/registry/training-scripts/" %}}
 
-**Training scripts** to train and produce ML models in the Viam cloud for custom machine learning
+**Training scripts** to train and produce ML models in the Viam Cloud for custom machine learning
 
 {{% /manualcard %}}
 {{< /cards >}}

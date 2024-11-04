@@ -87,7 +87,7 @@ In order for your machine's camera to be able to detect the presence of a person
 ### Use an existing ML model
 
 The [ML model service](/services/ml/) allows you to deploy a machine learning model to your robot.
-For your machine to be able to detect people, you will use a Machine Learning model from the Viam registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
+For your machine to be able to detect people, you will use a Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
 
 1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
@@ -200,7 +200,7 @@ scp /path/to/my-photo.jpg username@my-machine.local:/home/me/my-photo.jpg
 ```
 
 After you have copied at least one image of a person to your machine, you are ready to configure the second detection layer: the facial recognition detector.
-For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [Viam registry](https://app.viam.com/module/viam-labs/facial-detector).
+For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [Viam Registry](https://app.viam.com/module/viam-labs/facial-detector).
 The `facial-detector` module provides a [modular](/registry/) vision service that uses Facebook's DeepFace library to perform facial detections.
 
 To add the `facial-detector` module to your machine:
@@ -237,7 +237,7 @@ See the [`facial-detector` module documentation](https://github.com/viam-labs/fa
 ## Configure a verification system
 
 Now that you have configured both the coarser `people-detect` object detector and the more fine-grained `face-detect` facial detector, you are ready to add the alarm logic that uses these detectors to either trigger an alarm or disarm, based on the detected person.
-For this, add and configure the `verification-system` module from the Viam registry following the steps below:
+For this, add and configure the `verification-system` module from the Viam Registry following the steps below:
 
 1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
@@ -341,7 +341,7 @@ For example:
 - Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
   For example, you could use [`GetClassificationsFromCamera()`](/appendix/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
 - Try changing the type of [detectors](/services/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
-- Add the [filtered camera module](/how-tos/image-data/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam cloud only when the system enters into specific states.
+- Add the [filtered camera module](/how-tos/image-data/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam Cloud only when the system enters into specific states.
   This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.
 - If you don't want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, set `disable_alarm: true` in the config, which prevents `TRIGGER_2` from entering into the `COUNTDOWN` state, meaning the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.
 - Use entering into the state `TRIGGER_2` as a way to send notifications.

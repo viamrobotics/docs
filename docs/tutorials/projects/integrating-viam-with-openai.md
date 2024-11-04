@@ -243,7 +243,7 @@ We found that if set up this way, the following positions accurately show the co
 ### 2. Configure the ML Model and vision services to use the detector
 
 The [ML model service](/services/ml/) allows you to deploy a machine learning model to your robot.
-This tutorial uses a pre-trained machine learning (ML) model from the Viam registry named [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
+This tutorial uses a pre-trained machine learning (ML) model from the Viam Registry named [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 This model can detect a variety of objects, which you can find in the provided <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 To configure an ML model service:
