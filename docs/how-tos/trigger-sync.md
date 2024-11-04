@@ -23,15 +23,13 @@ For example, if you rely on mobile data but have intermittent WiFi connection in
 Or, you may want to trigger sync only when your machine detects an object of a certain color.
 You can use the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2) if one of these examples is what you are looking for.
 
-If you need different logic, this guide will show you the implementation of the [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) module which triggers cloud sync based on a defined time interval.
+If you need different logic, you can create a modular sensor that determines if the conditions for sync are met or not.
+This guide will show you the implementation of a sensor which only allows sync during a defined time interval.
 You can use it as the basis of your own custom logic.
 
 {{% alert title="In this page" color="tip" %}}
 
-1. [Return `should_sync` as a reading from a sensor](#return-should_sync-as-a-reading-from-a-sensor)
-1. [Add and configure sensor to determine when to sync](#add-your-sensor-to-determine-when-to-sync)
-1. [Configure the data manager to sync based on the sensor](#configure-the-data-manager-to-sync-based-on-sensor)
-1. [Test your sync configuration](#test-your-sync-configuration)
+{{% toc %}}
 
 {{% /alert %}}
 
@@ -67,7 +65,8 @@ It can then return true during the specified sync time interval and false otherw
 
 ## Return `should_sync` as a reading from a sensor
 
-Regardless of the specifics of your trigger sync logic, to trigger sync your sensor needs to return a value for `should_sync` as part of your modular sensor's `Readings` function.
+If the builtin data manager is configured with a sync sensor, the data manager will check the sensor's `Readings` method for a response with a "should_sync" key.
+
 The following example returns `"should_sync": true` if the current time is in a specified time window, and `"should_sync": false` otherwise.
 
 ```go {class="line-numbers linkable-line-numbers" data-line="5,15,32,37"}
