@@ -228,7 +228,7 @@ You can test the vision service from the [**CONTROL** tab](/cloud/machines/#cont
 **7. (Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
-If you need to trigger sync in a different way, see [Trigger cloud sync conditionally](/how-tos/trigger-sync/) for a documented example of syncing data only at certain times of day.
+If you need to trigger sync in a different way, see [Conditional cloud sync](/how-tos/conditional-sync/) for a documented example of syncing data only at certain times of day.
 
 {{% /tablestep %}}
 {{< /table >}}

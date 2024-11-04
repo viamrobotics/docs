@@ -8,6 +8,7 @@ images: ["/services/icons/data-cloud-sync.svg"]
 icon: true
 aliases:
   - /data/trigger-sync/
+  - /how-tos/trigger-sync/
   - /services/data/trigger-sync/
 languages: []
 viamresources: ["sensor", "data_manager"]
@@ -69,7 +70,7 @@ If the builtin data manager is configured with a sync sensor, the data manager w
 
 The following example returns `"should_sync": true` if the current time is in a specified time window, and `"should_sync": false` otherwise.
 
-```go {class="line-numbers linkable-line-numbers" data-line="5,15,32,37"}
+```go {class="line-numbers linkable-line-numbers" data-line="26,30,31,35"}
 func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
     currentTime := time.Now()
     var hStart, mStart, sStart, hEnd, mEnd, sEnd int
