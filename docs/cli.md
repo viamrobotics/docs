@@ -495,8 +495,8 @@ done
 | `tag` | Add or remove tags from data matching the ids or filter. | `ids`, `filter` |
 | `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query). | - |
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query). | - |
-| `delete binary` | Delete binary data from the Viam cloud. | - |
-| `delete tabular` | Delete tabular data from the Viam cloud. | - |
+| `delete binary` | Delete binary data from the Viam Cloud. | - |
+| `delete tabular` | Delete tabular data from the Viam Cloud. | - |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `tag`
@@ -1092,7 +1092,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 ### `packages`
 
-The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
+The `packages` command allows you to upload packages to the Viam Cloud or export packages from the Viam Cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz>
@@ -1111,8 +1111,8 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `upload` | Upload a package to the Viam cloud | - |
-| `export` | Download a package from the Viam cloud | - |
+| `upload` | Upload a package to the Viam Cloud | - |
+| `export` | Download a package from the Viam Cloud | - |
 
 ##### Named arguments
 
@@ -1315,25 +1315,25 @@ viam train list --org-id=<org-id> --job-status=<job-status>
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-# submit training job on data in Viam cloud with a Viam-managed training script
+# submit training job on data in Viam Cloud with a Viam-managed training script
 viam train submit managed --dataset-id=456 --model-org-id=123 --model-name=MyCoolClassifier --model-type=single_label_classification --model-labels=1,2,3
 
-# submit custom training job with an existing training script in the Registry on data in Viam cloud
+# submit custom training job with an existing training script in the Registry on data in Viam Cloud
 viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-version=2 --version=1 --script-name=mycompany:MyCustomTrainingScript  --args=num_epochs=3,model_type=multi_label
 
-# submit custom training job with an uploaded training script on data in Viam cloud
+# submit custom training job with an uploaded training script on data in Viam Cloud
 viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --args=num_epochs=3,labels="'green_square blue_star'"
 
-# get a training job from Viam cloud based on training job ID
+# get a training job from Viam Cloud based on training job ID
 viam train get --job-id=123
 
-# get training job logs from Viam cloud based on training job ID
+# get training job logs from Viam Cloud based on training job ID
 viam train logs --job-id=123
 
-# cancel training job in Viam cloud based on training job ID
+# cancel training job in Viam Cloud based on training job ID
 viam train cancel --job-id=123
 
-# list training jobs in Viam cloud based on organization ID and job status
+# list training jobs in Viam Cloud based on organization ID and job status
 viam train list --org-id=123 --job-status=completed
 ```
 
@@ -1342,27 +1342,27 @@ viam train list --org-id=123 --job-status=completed
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `submit` | Submits training job on data in the Viam cloud. | `managed`, `custom` |
-| `get` | Gets a training job from the Viam cloud based on training job ID. | - |
-| `logs` | Gets the logs of a training job from the Viam cloud based on training job ID. | - |
-| `cancel` | Cancels training job in the Viam cloud based on training job ID. | - |
-| `list` | Lists training jobs in Viam cloud based on organization ID and job status. | - |
+| `submit` | Submits training job on data in the Viam Cloud. | `managed`, `custom` |
+| `get` | Gets a training job from the Viam Cloud based on training job ID. | - |
+| `logs` | Gets the logs of a training job from the Viam Cloud based on training job ID. | - |
+| `cancel` | Cancels training job in the Viam Cloud based on training job ID. | - |
+| `list` | Lists training jobs in Viam Cloud based on organization ID and job status. | - |
 
 ##### Positional arguments: `submit`
 
 <!-- prettier-ignore -->
 | Argument | Description | Positional Arguments |
 | -------- | ----------- | -------------------- |
-| `managed` | Submits training job on data in the Viam cloud with a Viam-managed training script. | - |
-| `custom` | Submits custom training job on data in the Viam cloud. | `from-registry`, `with-upload` |
+| `managed` | Submits training job on data in the Viam Cloud with a Viam-managed training script. | - |
+| `custom` | Submits custom training job on data in the Viam Cloud. | `from-registry`, `with-upload` |
 
 ##### Position arguments: `submit custom`
 
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam cloud. |
-| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam cloud. |
+| `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam Cloud. |
+| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam Cloud. |
 
 ##### Named arguments
 

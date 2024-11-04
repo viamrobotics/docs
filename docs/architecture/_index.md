@@ -21,7 +21,7 @@ This page provides an overview of how a machine is structured, including on-devi
 - [Basic machine example](#basic-machine-example)
 - [Structure of more complex machines](#complex-machines-with-multiple-parts)
 
-{{<imgproc class="imgzoom" src="/architecture/architecture-diagram.svg" resize="x1100" declaredimensions=true alt="Viam-server runs on your machine and communicates with processes running on your machine, with the Viam cloud, with API clients, and with other machines running viam-server." >}}
+{{<imgproc class="imgzoom" src="/architecture/architecture-diagram.svg" resize="x1100" declaredimensions=true alt="Viam-server runs on your machine and communicates with processes running on your machine, with the Viam Cloud, with API clients, and with other machines running viam-server." >}}
 
 ## `viam-server` and `viam-micro-server`
 
@@ -117,7 +117,7 @@ Viam uses API keys with [role-based access control (RBAC)](/cloud/rbac/) to cont
 {{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
 <br>
 
-Data is captured and synced to the Viam cloud as follows:
+Data is captured and synced to the Viam Cloud as follows:
 
 1. Data collected by your resources, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
    You control what data to capture, how often to capture it, and where to store it using the configuration in the Viam app.

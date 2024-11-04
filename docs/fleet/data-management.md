@@ -56,7 +56,7 @@ Export data with the Viam CLI and download your data for offline access.
 {{% /manualcard %}}
 {{% manualcard title="Upload a batch of data" link="/how-tos/upload-data/" %}}
 
-Upload data to the Viam cloud from your computer or mobile device using the data client API, the Viam CLI, or the Viam mobile app.
+Upload data to the Viam Cloud from your computer or mobile device using the data client API, the Viam CLI, or the Viam mobile app.
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -82,7 +82,7 @@ The [data client API](/appendix/apis/data-client/) supports the following method
 
 <br>
 
-Methods to upload data like images or sensor readings directly to the Viam cloud:
+Methods to upload data like images or sensor readings directly to the Viam Cloud:
 
 {{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
 

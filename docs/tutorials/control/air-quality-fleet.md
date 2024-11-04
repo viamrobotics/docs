@@ -495,7 +495,7 @@ The following instructions describe how to set up an API key for one location.
 
 ### Add functionality to your code
 
-1. Now that you have the API key and org and location IDs, you are ready to add code that establishes a connection from the computer running the code to the Viam cloud where the air quality sensor data is stored.
+1. Now that you have the API key and org and location IDs, you are ready to add code that establishes a connection from the computer running the code to the Viam Cloud where the air quality sensor data is stored.
    You'll create a Viam `dataClient` instance which accesses all the data in your location, and then query this data to get only the data tagged with the `air-quality` tag you applied with your data service configuration.
    The following code also queries the data for a list of the machines that have collected air quality data so that later, you can make a dashboard that has a place for the latest data from each of them.
 

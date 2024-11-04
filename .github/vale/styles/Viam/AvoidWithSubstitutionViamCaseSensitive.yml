@@ -10,6 +10,10 @@ swap:
   Viam App: Viam app
   viam registry: Viam Registry
   Viam registry: Viam Registry
+  viam agent: Viam Agent
+  Viam agent: Viam Agent
+  viam cloud: Viam Cloud
+  Viam cloud: Viam Cloud
   RPLIDAR: RPlidar
   Rplidar: RPlidar
   Viam platform: Viam platform

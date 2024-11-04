@@ -27,7 +27,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/registry/ml-models/) or [train your own models](/how-tos/train-deploy-ml/) for object detection and classification using your data in the [Viam cloud](/fleet/data-management/).
+You can add an [existing model](/registry/ml-models/) or [train your own models](/how-tos/train-deploy-ml/) for object detection and classification using your data in the [Viam Cloud](/fleet/data-management/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
@@ -217,7 +217,7 @@ The feature is only available for classifiers that were uploaded after September
 
 {{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
 
-If you have images stored in the [Viam cloud](/fleet/data-management/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
+If you have images stored in the [Viam Cloud](/fleet/data-management/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
 
 1. Navigate to the [Data tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 2. Click on an image to open the side menu, and select the **Actions** tab under the **Data** tab.
