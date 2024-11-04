@@ -90,7 +90,7 @@ The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/app
 
 {{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
 
-The board analog API [`Read()`](/appendix/apis/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
+The board analog API [`Read()`](/appendix/apis/components/board/#readanalogreader) method now returns an `AnalogValue` struct instead of a single int.
 The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
 
 {{% /changelog %}}
@@ -144,7 +144,7 @@ detections = await detector.get_detections(cropped_frame)
 {{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
 
 The `WriteAnalog()` method has been removed from the Go SDK.
-Use [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) followed by [`Write()`](/appendix/apis/components/board/#write) instead.
+Use [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) followed by [`Write()`](/appendix/apis/components/board/#writeanalog) instead.
 
 {{% /changelog %}}
 
