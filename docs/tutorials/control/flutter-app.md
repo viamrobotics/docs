@@ -374,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 Notice in the file the following line:
 
-```dart {class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers" data-start="28"}
 _viam = await Viam.withApiKey(dotenv.env['API_KEY_ID']?? '', dotenv.env['API_KEY']?? '');
 ```
 
@@ -463,7 +463,7 @@ import 'home_screen.dart';
 
 Change `ElevatedButton` in the `Column` to the following:
 
-```dart {class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers" data-start="35"}
             ElevatedButton(
                 onPressed: () => Navigator.of(context)
                     .push(MaterialPageRoute(builder: (_) => HomeScreen())),
@@ -673,7 +673,7 @@ Now that you have the code for the screens in place, you can enable navigation b
 
 Connect the home screen to the locations screen by un-commenting the following two lines in <file>home_screen.dart</file>:
 
-```dart {class="line-numbers linkable-line-numbers" data-line="3-4"}
+```dart {class="line-numbers linkable-line-numbers" data-line="3-4" data-start="42"}
  /// This method will navigate to a specific [Location]. <-- Leave this commented!
  void _navigateToLocation(Location location) {
     Navigator.of(context)                             // <-- Un-comment this
