@@ -56,7 +56,7 @@ Obtain unified tabular data and metadata, queried with SQL.
 
 **Returns:**
 
-- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]]): An array of data objects.
+- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes | [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]): An array of data objects.
 
 **Example:**
 
@@ -86,7 +86,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 
 **Returns:**
 
-- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]]): An array of data objects.
+- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes | [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]): An array of data objects.
 
 **Example:**
 

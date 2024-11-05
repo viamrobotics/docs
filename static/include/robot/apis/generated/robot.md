@@ -132,14 +132,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### DiscoverComponents
 
-Get a list of discovered potential component configurations. Only implemented for webcam cameras in builtin components. Returns module names for modules.
+Get a list of discovered component configurations.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `queries` ([List[viam.proto.robot.DiscoveryQuery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)) (required): The list of component models to lookup potential component configurations for.
+- `queries` ([List[viam.proto.robot.DiscoveryQuery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)) (required): The list of component models to lookup potential configurations for.
 
 **Returns:**
 
@@ -248,7 +248,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
+- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -309,9 +309,9 @@ pose = Pose(
     y=2.0,    # Y coordinate in mm
     z=3.0,    # Z coordinate in mm
     o_x=0.0,  # X component of orientation vector
-    o_y=1.0,  # Y component of orientation vector
+    o_y=0.0,  # Y component of orientation vector
     o_z=0.0,  # Z component of orientation vector
-    theta=25.0 # Orientation angle in degrees
+    theta=0.0 # Orientation angle in degrees
 )
 
 pose_in_frame = PoseInFrame(
@@ -347,8 +347,8 @@ import (
   "go.viam.com/rdk/spatialmath"
 )
 
-baseOrigin := referenceframe.NewPoseInFrame("base-1", spatialmath.NewZeroPose())
-cameraToBase, err := machine.TransformPose(context.Background(), baseOrigin, "camera-1", nil)
+baseOrigin := referenceframe.NewPoseInFrame("test-base", spatialmath.NewZeroPose())
+movementSensorToBase, err := machine.TransformPose(context.Background(), baseOrigin, "my-movement-sensor", nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).

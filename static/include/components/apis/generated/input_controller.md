@@ -46,6 +46,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+myController, err := input.FromRobot(machine, "my_input_controller")
+
 // Get the list of Controls provided by the controller.
 controls, err := myController.Controls(context.Background(), nil)
 ```
@@ -76,7 +78,7 @@ This method returns the current state of the controller as a map of [Event Objec
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the machine.
 my_controller = Controller.from_robot(
-    robot=myRobotWithController, name="my_controller")
+    myRobotWithController, "my_controller")
 
 # Get the most recent Event for each Control.
 recent_events = await my_controller.get_events()
@@ -103,6 +105,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+myController, err := input.FromRobot(machine, "my_input_controller")
+
 // Get the most recent Event for each Control.
 recent_events, err := myController.Events(context.Background(), nil)
 ```

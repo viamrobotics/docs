@@ -19,13 +19,13 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
 
 # Set the pin to high.
-await pin.set(high="true")
+await pin.set(high=True)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.set).
@@ -102,7 +102,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
@@ -192,7 +192,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
@@ -275,14 +275,14 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
 
 # Set the duty cycle to .6, meaning that this pin will be in the high state for
 # 60% of the duration of the PWM interval period.
-await pin.set_pwm(cycle=.6)
+await pin.set_pwm(duty_cycle=.6)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.set_pwm).
@@ -359,7 +359,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
@@ -447,7 +447,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
@@ -528,7 +528,7 @@ Get a configured `Analog` by `name`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the Analog "my_example_analog_reader".
 reader = await my_board.analog_by_name(name="my_example_analog_reader")
@@ -658,7 +658,7 @@ Get a configured `DigitalInterrupt` by `name`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(
@@ -712,9 +712,9 @@ Start a stream of `DigitalInterrupt` ticks.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
-di8 = await my_board.digital_interrupt_by_name(name="8"))
-di11 = await my_board.digital_interrupt_by_name(name="11"))
+my_board = Board.from_robot(robot=machine, name="my_board")
+di8 = await my_board.digital_interrupt_by_name(name="8")
+di11 = await my_board.digital_interrupt_by_name(name="11")
 
 # Iterate over stream of ticks from pins 8 and 11.
 async for tick in await my_board.stream_ticks([di8, di11]):
@@ -814,7 +814,7 @@ This is expected: the board has been successfully powered down and can no longer
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Set the power mode of the board to OFFLINE_DEEP.
 status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
@@ -926,7 +926,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the Analog "my_example_analog_reader".
 reader = await my_board.analog_reader_by_name(
@@ -990,7 +990,7 @@ Get the current value of this interrupt.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(
@@ -1072,7 +1072,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
