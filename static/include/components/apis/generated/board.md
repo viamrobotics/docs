@@ -510,42 +510,50 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### AnalogByName
+### GetDigitalInterruptValue
 
-Get a configured `Analog` by `name`.
+Get the current value of a configured digital interrupt.
+The value is the number of times the interrupt has been interrupted with a tick.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the analog reader to be retrieved.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.components.board.board.Board.Analog](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog)): The analog reader or writer.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The current value.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_board = Board.from_robot(robot=machine, name="my_board")
 
-# Get the Analog "my_example_analog_reader".
-reader = await my_board.analog_by_name(name="my_example_analog_reader")
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
+
+# Get the amount of times this DigitalInterrupt has been interrupted with a
+# tick.
+count = await interrupt.value()
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.analog_by_name).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.DigitalInterruptClient.value).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog pin you want to retrieve. Set as the `"name"` property in board configuration.
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(Analog)](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog): An interface representing an analog pin configured and residing on the board.
+- [(int64)](https://pkg.go.dev/builtin#int64): The amount of ticks that have occurred.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -553,11 +561,100 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the Analog pin "my_example_analog".
-analog, err := myBoard.AnalogByName("my_example_analog")
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Get the amount of times this DigitalInterrupt has ticked.
+count, err := interrupt.Value(context.Background(), nil)
 ```
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `digitalInterruptName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Get the current value of a digital interrupt named "my_example_digital_interrupt"
+var interruptVal = await myBoard.digitalInterruptValue('my_example_digital_interrupt');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Board/digitalInterruptValue.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ReadAnalogReader
+
+Read the current integer value of the digital signal output by the ADC.
+Supported by `viam-micro-server`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step_size of the reader.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the Analog "my_example_analog_reader".
+reader = await my_board.analog_reader_by_name(
+    name="my_example_analog_reader")
+
+# Get the value of the digital signal "my_example_analog_reader" has most
+# recently measured.
+reading = await reader.read()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogClient.read).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(AnalogValue)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogValue): The current value, including the integer `Value` of the digital signal output by the analog pin and the `Min`, `Max`, and `StepSize` of the reader.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the analog pin "my_example_analog".
+analog, err := myBoard.AnalogByName("my_example_analog")
+
+// Get the value of the analog signal "my_example_analog" has most recently measured.
+reading, err := analog.Read(context.Background(), nil)
+readingValue := reading.Value
+stepSize := reading.StepSize
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -583,12 +680,39 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### Write
+### WriteAnalog
 
 Write an analog value to a pin on the board.
 Supported by `viam-micro-server`.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `value` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Value to write to the analog writer.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=machine, name="my_board")
+
+# Get the Analog "my_example_analog_writer".
+writer = await my_board.analog_by_name(
+    name="my_example_analog_writer")
+
+await writer.write(42)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogClient.write).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -636,59 +760,6 @@ await myBoard.writeAnalog('11', 48);
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Board/writeAnalog.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### GetDigitalInterruptValue
-
-Get a configured `DigitalInterrupt` by `name`.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the digital interrupt.
-
-**Returns:**
-
-- ([viam.components.board.board.Board.DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)): The digital interrupt.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=machine, name="my_board")
-
-# Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(
-    name="my_example_digital_interrupt")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.digital_interrupt_by_name).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the digital interrupt you want to retrieve. Set as the `"name"` property in board configuration.
-
-**Returns:**
-
-- [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -829,7 +900,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(pb.PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
-- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
+- `duration` [(\*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
 
@@ -874,82 +945,42 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetGeometries
+### AnalogByName
 
-Get all the geometries associated with the board in its current configuration, in the [frame](/services/frame-system/) of the board.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-geometries = await my_board.get_geometries()
-
-if geometries:
-    # Get the center of the first geometry
-    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_geometries).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Read
-
-Read the current integer value of the digital signal output by the ADC.
-Supported by `viam-micro-server`.
+Get a configured `Analog` by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the analog reader to be retrieved.
 
 **Returns:**
 
-- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step_size of the reader.
+- ([viam.components.board.board.Board.Analog](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog)): The analog reader or writer.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=machine, name="my_board")
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the Analog "my_example_analog_reader".
-reader = await my_board.analog_reader_by_name(
-    name="my_example_analog_reader")
-
-# Get the value of the digital signal "my_example_analog_reader" has most
-# recently measured.
-reading = await reader.read()
+reader = await my_board.analog_by_name(name="my_example_analog_reader")
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogClient.read).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.analog_by_name).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog pin you want to retrieve. Set as the `"name"` property in board configuration.
 
 **Returns:**
 
-- [(AnalogValue)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogValue): The current value, including the integer `Value` of the digital signal output by the analog pin and the `Min`, `Max`, and `StepSize` of the reader.
+- [(Analog)](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog): An interface representing an analog pin configured and residing on the board.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -957,35 +988,28 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the analog pin "my_example_analog".
+// Get the Analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
-
-// Get the value of the analog signal "my_example_analog" has most recently measured.
-reading, err := analog.Read(context.Background(), nil)
-readingValue := reading.Value
-stepSize := reading.StepSize
 ```
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Value
+### DigitalInterruptByName
 
-Get the current value of this interrupt.
-
+Get a DigitalInterrupt by `name`.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the digital interrupt.
 
 **Returns:**
 
-- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The current value.
+- ([viam.components.board.board.Board.DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)): The digital interrupt.
 
 **Example:**
 
@@ -995,25 +1019,20 @@ my_board = Board.from_robot(robot=machine, name="my_board")
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(
     name="my_example_digital_interrupt")
-
-# Get the amount of times this DigitalInterrupt has been interrupted with a
-# tick.
-count = await interrupt.value()
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.DigitalInterruptClient.value).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.digital_interrupt_by_name).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the digital interrupt you want to retrieve. Set as the `"name"` property in board configuration.
 
 **Returns:**
 
-- [(int64)](https://pkg.go.dev/builtin#int64): The amount of ticks that have occurred.
+- [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -1023,33 +1042,9 @@ myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-
-// Get the amount of times this DigitalInterrupt has ticked.
-count, err := interrupt.Value(context.Background(), nil)
 ```
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
-
-{{% /tab %}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `digitalInterruptName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
-
-**Returns:**
-
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
-
-**Example:**
-
-```dart {class="line-numbers linkable-line-numbers"}
-// Get the current value of a digital interrupt named "my_example_digital_interrupt"
-var interruptVal = await myBoard.digitalInterruptValue('my_example_digital_interrupt');
-```
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Board/digitalInterruptValue.html).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1102,6 +1097,38 @@ pin, err := myBoard.GPIOPinByName("15")
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetGeometries
+
+Get all the geometries associated with the board in its current configuration, in the [frame](/services/frame-system/) of the board.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+geometries = await my_board.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_geometries).
 
 {{% /tab %}}
 {{< /tabs >}}
