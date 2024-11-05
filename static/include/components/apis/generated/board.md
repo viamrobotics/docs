@@ -963,7 +963,44 @@ Get a configured `Analog` by `name`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+<<<<<<< HEAD
 my_board = Board.from_robot(robot=robot, name="my_board")
+=======
+my_board = Board.from_robot(robot=machine, name="my_board")
+geometries = await my_board.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_geometries).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Read
+
+Read the current integer value of the digital signal output by the ADC.
+Supported by `viam-micro-server`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step_size of the reader.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=machine, name="my_board")
+>>>>>>> c138ffdb9 (Update python generic methods)
 
 # Get the Analog "my_example_analog_reader".
 reader = await my_board.analog_by_name(name="my_example_analog_reader")
@@ -1182,6 +1219,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=machine, name="my_board")
 command = {"cmd": "test", "data1": 500}
 result = await my_board.do_command(command)
 ```
@@ -1313,6 +1351,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=machine, name="my_board")
 await my_board.close()
 ```
 

@@ -936,6 +936,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_motion_svc = MotionClient.from_robot(robot=machine, name="my_motion_svc")
 await my_motion_svc.close()
 ```
 

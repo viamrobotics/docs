@@ -615,6 +615,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_navigation_svc = NavigationClient.from_robot(robot=machine, name="my_navigation_svc")
 await my_navigation_svc.close()
 ```
 

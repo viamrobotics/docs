@@ -338,6 +338,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_slam_svc = SLAMClient.from_robot(robot=machine, name="my_slam_svc")
 await my_slam_svc.close()
 ```
 

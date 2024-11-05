@@ -543,6 +543,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 geometries = await my_arm.get_geometries()
 
 if geometries:
@@ -633,6 +634,7 @@ If you are implementing your own arm and add features that have no built-in API 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 command = {"cmd": "test", "data1": 500}
 result = await my_arm.do_command(command)
 ```
@@ -744,6 +746,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
 await my_arm.close()
 ```
 

@@ -231,6 +231,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_mlmodel_svc = MLModelClient.from_robot(robot=machine, name="my_mlmodel_svc")
 await my_mlmodel_svc.close()
 ```
 

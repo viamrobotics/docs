@@ -339,6 +339,7 @@ If you are implementing your own power sensor and add features that have no buil
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_power_sensor = PowerSensor.from_robot(robot=machine, name="my_power_sensor")
 command = {"cmd": "test", "data1": 500}
 result = await my_power_sensor.do_command(command)
 ```
@@ -450,6 +451,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_power_sensor = PowerSensor.from_robot(robot=machine, name="my_power_sensor")
 await my_power_sensor.close()
 ```
 

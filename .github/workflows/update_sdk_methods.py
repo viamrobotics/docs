@@ -1299,26 +1299,46 @@ def parse(type, names):
                                     service_class = "SLAMClient"
                                 this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("SERVICE", service_class)
                                 if not resource in ["motion"]:
-                                    this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("builtin", "my_{}_svc".format(resource))
+                                    this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("SERVICE", service_class).replace("builtin", "my_{}_svc".format(resource))
                             else:
-                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
+                                if resource == "generic_component":
+                                    this_method_dict["code_sample"] = 'my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")\n' + this_method_dict["code_sample"].replace("component", "my_generic_component")
+                                else:
+                                    this_method_dict["code_sample"] = 'my_{} = {}.from_robot(robot=machine, name="my_{}")\n'.format(resource, resource.title().replace("_", ""), resource) + this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
 
                         # For get_geometries, update the code sample to be more specific:
                         if method_name == "get_geometries":
                             if type == "service":
-                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("component", "my_{}_svc".format(resource))
+                                if resource == "generic_service":
+                                    this_method_dict["code_sample"] = 'my_{} = {}.from_robot(robot=machine, name="my_{}")\n'.format(resource, resource.title(), resource) + this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
+                                else:
+                                    this_method_dict["code_sample"] = 'my_{} = {}.from_robot(robot=machine, name="my_{}_svc")\n'.format(resource, resource.title(), resource) + this_method_dict["code_sample"].replace("component", "my_{}_svc".format(resource))
                             else:
-                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
+                                if resource == "generic_component":
+                                    this_method_dict["code_sample"] = 'my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")\n' + this_method_dict["code_sample"].replace("component", "my_generic_component")
+                                elif resource == "input_controller":
+                                    this_method_dict["code_sample"] = 'my_controller = Controller.from_robot(robot=machine, name="my_controller")\n' + this_method_dict["code_sample"].replace("component", "my_controller")
+                                else:
+                                    this_method_dict["code_sample"] = 'my_{} = {}.from_robot(robot=machine, name="my_{}")\n'.format(resource, resource.title().replace("_", ""), resource) + this_method_dict["code_sample"].replace("component", "my_{}".format(resource))
 
                         # For close, update the code sample to be more specific:
                         if method_name == "close":
                             if type == "service":
                                 if resource == "generic_service":
-                                    this_method_dict["code_sample"] = "await my_{}.close()\n".format(resource)
+                                    this_method_dict["code_sample"] = 'my_{} = Generic.from_robot(robot=machine, name="my_{}")\nawait my_{}.close()\n'.format(resource, resource, resource)
+                                elif resource == "mlmodel":
+                                    this_method_dict["code_sample"] = 'my_{}_svc = MLModelClient.from_robot(robot=machine, name="my_{}_svc")\nawait my_{}_svc.close()\n'.format(resource, resource, resource)
+                                elif resource == "slam":
+                                    this_method_dict["code_sample"] = 'my_{}_svc = SLAMClient.from_robot(robot=machine, name="my_{}_svc")\nawait my_{}_svc.close()\n'.format(resource, resource, resource)
                                 else:
-                                    this_method_dict["code_sample"] = "await my_{}_svc.close()\n".format(resource)
+                                    this_method_dict["code_sample"] = 'my_{}_svc = {}Client.from_robot(robot=machine, name="my_{}_svc")\nawait my_{}_svc.close()\n'.format(resource, resource.title(), resource, resource)
                             elif type == "component":
-                                this_method_dict["code_sample"] = "await my_{}.close()\n".format(resource)
+                                if resource == "generic_component":
+                                    this_method_dict["code_sample"] = 'my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")\nawait my_generic_component.close()\n'
+                                elif resource == "input_controller":
+                                    this_method_dict["code_sample"] = 'my_controller = Controller.from_robot(robot=machine, name="my_controller")\nawait my_controller.close()\n'
+                                else:
+                                    this_method_dict["code_sample"] = 'my_{} = {}.from_robot(robot=machine, name="my_{}")\nawait my_{}.close()\n'.format(resource, resource.title().replace("_", ""), resource, resource)
 
                         # For get_resource_name, update the code sample to be more specific:
                         if method_name == "get_resource_name":

@@ -782,6 +782,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_vision_svc = VisionClient.from_robot(robot=machine, name="my_vision_svc")
 await my_vision_svc.close()
 ```
 

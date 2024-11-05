@@ -898,6 +898,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 await my_motor.close()
 ```
 

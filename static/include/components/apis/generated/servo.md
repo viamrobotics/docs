@@ -447,6 +447,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_servo = Servo.from_robot(robot=machine, name="my_servo")
 await my_servo.close()
 ```
 
