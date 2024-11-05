@@ -22,7 +22,9 @@ date: "2024-09-18"
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
 {{% changelog date="2024-11-05" color="added" title="TFLite model moved to module" %}}
+
 The TFLite CPU ML model service is now supported as a [module](https://app.viam.com/module/viam/tflite_cpu).
+
 {{% /changelog %}}
 
 {{% changelog date="2024-10-28" color="added" title="Deprecate builtin pi model" %}}
