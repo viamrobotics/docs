@@ -440,8 +440,16 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
       "name": "mlmodel-1",
       "namespace": "rdk",
       "type": "mlmodel",
-      "model": "tflite_cpu",
+      "model": "viam:mlmodel-tflite:tflite_cpu",
       "attributes": {}
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_tflite_cpu",
+      "module_id": "viam:tflite_cpu",
+      "version": "0.0.3"
     }
   ]
 }

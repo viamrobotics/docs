@@ -573,7 +573,7 @@ If you used a custom training script, you may need a different [ML model service
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure a service">}}
 **2. Configure an <code>mlmodel</code> vision service**
 
-The ML model service will deploy and run the model.
+The ML model service deploys and run the model.
 
 The vision service works with the ML model services.
 It uses the ML model and applies it to the stream of images from your camera.
@@ -590,7 +590,7 @@ Then, from the **Select model** dropdown, select the name of the ML model servic
 
 You can test your vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
-The camera stream will show when the vision service identifies something.
+The camera stream shows when the vision service identifies something.
 Try pointing the camera at a scene similar to your training data.
 
 {{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="x200" >}}

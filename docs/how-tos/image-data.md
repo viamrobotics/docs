@@ -144,7 +144,7 @@ The following steps use the [`filtered_camera`](https://github.com/erh/filtered_
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model service to your machine**
 
-Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/tflite_cpu/).
+Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](https://github.com/viam-modules/mlmodel-tflite).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
