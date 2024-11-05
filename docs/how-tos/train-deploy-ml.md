@@ -573,7 +573,7 @@ If you used a custom training script, you may need a different [ML model service
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure a service">}}
 **2. Configure an <code>mlmodel</code> vision service**
 
-The ML model service deploys and run the model.
+The ML model service deploys and runs the model.
 
 The vision service works with the ML model services.
 It uses the ML model and applies it to the stream of images from your camera.
