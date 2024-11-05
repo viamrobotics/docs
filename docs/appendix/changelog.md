@@ -23,7 +23,7 @@ date: "2024-09-18"
 
 {{% changelog date="2024-11-05" color="added" title="TFLite model moved to module" %}}
 
-The TFLite CPU ML model service is now supported as a [module](https://app.viam.com/module/viam/tflite_cpu).
+The `TFLite CPU` ML model service is now supported as a [module](https://app.viam.com/module/viam/tflite_cpu).
 
 {{% /changelog %}}
 
