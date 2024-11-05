@@ -80,7 +80,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```dart {class="line-numbers linkable-line-numbers"}
-// Move the servo from its origin to the desired angle of 30 degrees.
 await myServo.move(30);
 ```
 

@@ -583,6 +583,8 @@ Stop a [base](/components/base/) component being moved by an in progress [`MoveO
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+motion = MotionClient.from_robot(robot=machine, name="builtin")
+
 # Assuming a `move_on_globe()` started the execution
 # Stop the base component which was instructed to move by `move_on_globe()`
 # or `move_on_map()`

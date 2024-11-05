@@ -22,11 +22,10 @@ Get a list of detections from the next image from a specified camera using a con
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Grab the detector you configured on your machine
-my_detector = VisionClient.from_robot(machine, "my_detector")
+my_detector = VisionClient.from_robot(robot, "my_detector")
 
-# Get detections from the next image from the camera
-detections = await my_detector.get_detections_from_camera("cam")
+# Get detections for the next image from the specified camera
+detections = await my_detector.get_detections_from_camera("my_camera")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_from_camera).
@@ -99,7 +98,7 @@ Get a list of detections from a given image using a configured [detector](/servi
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections for.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -114,16 +113,13 @@ Get a list of detections from a given image using a configured [detector](/servi
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Grab camera from the machine
-cam = Camera.from_robot(machine, "cam")
-
-# Get the detector you configured on your machine
-my_detector = VisionClient.from_robot(machine, "my_detector")
+my_camera = Camera.from_robot(robot, "my_camera")
+my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get an image from the camera
-img = await cam.get_image()
+img = await my_camera.get_image()
 
-# Get detections from that image
+# Get detections for that image
 detections = await my_detector.get_detections(img)
 ```
 
@@ -222,12 +218,11 @@ Get a list of classifications from the next image from a specified camera using 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Grab the classifier you configured on your machine
-my_classifier = VisionClient.from_robot(machine, "my_classifier")
+my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
-# Get the 2 classifications with the highest confidence scores from the next image from the camera
+# Get the 2 classifications with the highest confidence scores for the next image from the camera
 classifications = await my_classifier.get_classifications_from_camera(
-    "cam", 2)
+    "my_camera", 2)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications_from_camera).
@@ -302,7 +297,7 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections for.
 - `count` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): The number of classifications desired.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
@@ -314,16 +309,13 @@ Get a list of classifications from a given image using a configured [classifier]
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Grab camera from the machine
-cam = Camera.from_robot(machine, "cam")
-
-# Get the classifier you configured on your machine
-my_classifier = VisionClient.from_robot(machine, "my_classifier")
+my_camera = Camera.from_robot(robot, "my_camera")
+my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get an image from the camera
-img = await cam.get_image()
+img = await my_camera.get_image()
 
-# Get the 2 classifications with the highest confidence scores
+# Get the 2 classifications with the highest confidence scores for the image
 classifications = await my_classifier.get_classifications(img, 2)
 ```
 
@@ -429,10 +421,9 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 import numpy as np
 import open3d as o3d
 
-# Grab the object segmenter you configured on your machine
-my_segmenter = VisionClient.from_robot(machine, "my_segmenter")
+my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 # Get the objects from the camera output
-objects = await my_segmenter.get_object_point_clouds("cam")
+objects = await my_segmenter.get_object_point_clouds("my_camera")
 # write the first object point cloud into a temporary file
 with open("/tmp/pointcloud_data.pcd", "wb") as f:
     f.write(objects[0].point_cloud)
@@ -492,7 +483,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```dart {class="line-numbers linkable-line-numbers"}
 // Example:
-var ptCloud = await myVisionService.objectPointClouds("cam");
+var ptCloud = await myVisionService.objectPointClouds('myCamera');
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/objectPointClouds.html).
@@ -525,12 +516,11 @@ Used for visualization.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Grab the detector you configured on your machine
 my_detector = VisionClient.from_robot(machine, "my_detector")
 
-# capture all from the next image from the camera
+# Get the captured data for a camera
 result = await my_detector.capture_all_from_camera(
-    "cam",
+    "my_camera",
     return_image=True,
     return_detections=True,
 )
@@ -748,11 +738,10 @@ Fetch information about which vision methods a given vision service supports.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Grab the detector you configured on your machine
-my_detector = VisionClient.from_robot(machine, "my_detector")
+my_detector = VisionClient.from_robot(robot, "my_detector")
 properties = await my_detector.get_properties()
-properties.detections_supported      # returns True
-properties.classifications_supported # returns False
+detections_supported = properties.detections_supported
+classifications_supported = properties.classifications_supported
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_properties).
