@@ -1,6 +1,6 @@
 ---
-title: "Trigger cloud sync conditionally"
-linkTitle: "Trigger data sync conditionally"
+title: "Conditional cloud sync"
+linkTitle: "Conditional data sync"
 description: "Trigger cloud sync to sync captured data when custom conditions are met."
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -8,6 +8,7 @@ images: ["/services/icons/data-cloud-sync.svg"]
 icon: true
 aliases:
   - /data/trigger-sync/
+  - /how-tos/trigger-sync/
   - /services/data/trigger-sync/
 languages: []
 viamresources: ["sensor", "data_manager"]
@@ -23,15 +24,13 @@ For example, if you rely on mobile data but have intermittent WiFi connection in
 Or, you may want to trigger sync only when your machine detects an object of a certain color.
 You can use the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2) if one of these examples is what you are looking for.
 
-If you need different logic, this guide will show you the implementation of the [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) module which triggers cloud sync based on a defined time interval.
+If you need different logic, you can create a modular sensor that determines if the conditions for sync are met or not.
+This guide will show you the implementation of a sensor which only allows sync during a defined time interval.
 You can use it as the basis of your own custom logic.
 
 {{% alert title="In this page" color="tip" %}}
 
-1. [Use the `CreateShouldSyncReading` function to enable sync](#use-the-createshouldsyncreading-function-to-enable-sync)
-1. [Add and configure sensor to determine when to sync](#add-your-sensor-to-determine-when-to-sync)
-1. [Configure the data manager to sync based on the sensor](#configure-the-data-manager-to-sync-based-on-sensor)
-1. [Test your sync configuration](#test-your-sync-configuration)
+{{% toc %}}
 
 {{% /alert %}}
 
@@ -65,27 +64,26 @@ It can then return true during the specified sync time interval and false otherw
 
 {{% /expand%}}
 
-## Use the `CreateShouldSyncReading` function to enable sync
+## Return `should_sync` as a reading from a sensor
 
-Regardless of the specifics of your trigger sync logic, to trigger sync your sensor needs to pass `true` to the [CreateShouldSyncReading function](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#CreateShouldSyncReading) within the definition of your modular sensor's `Readings` function.
+If the builtin data manager is configured with a sync sensor, the data manager will check the sensor's `Readings` method for a response with a "should_sync" key.
 
-The `sync-at-time` sensor does not sense time despite being named a time sensor.
-It _senses_ whether the data manager should sync or not and determines this based on the time of day.
-During the configured time of the day, the code will pass `true` to the [CreateShouldSyncReading function](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#CreateShouldSyncReading) which will enable syncing:
+The following example returns `"should_sync": true` if the current time is in a specified time window, and `"should_sync": false` otherwise.
 
-```go {class="line-numbers linkable-line-numbers" data-line="7,12,28"}
+```go {class="line-numbers linkable-line-numbers" data-line="26,30,31,35"}
 func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
     currentTime := time.Now()
     var hStart, mStart, sStart, hEnd, mEnd, sEnd int
     n, err := fmt.Sscanf(s.start, "%d:%d:%d", &hStart, &mStart, &sStart)
+
     if err != nil || n != 3 {
         s.logger.Error("Start time is not in the format HH:MM:SS.")
-        return datamanager.CreateShouldSyncReading(false), err
+        return nil, err
     }
     m, err := fmt.Sscanf(s.end, "%d:%d:%d", &hEnd, &mEnd, &sEnd)
     if err != nil || m != 3 {
         s.logger.Error("End time is not in the format HH:MM:SS.")
-        return datamanager.CreateShouldSyncReading(false), err
+        return nil, err
     }
 
     zone, err := time.LoadLocation(s.zone)
@@ -98,16 +96,22 @@ func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[stri
     endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
         hEnd, mEnd, sEnd, 0, zone)
 
+    readings := map[string]interface{}{"should_sync": false}
     // If it is between the start and end time, sync.
     if currentTime.After(startTime) && currentTime.Before(endTime) {
         s.logger.Info("Syncing")
-        return datamanager.CreateShouldSyncReading(true), nil
+        readings["should_sync"] = true
+        return readings, nil
     }
 
     // Otherwise, do not sync.
-    return datamanager.CreateShouldSyncReading(false), nil
+    return readings, nil
 }
 ```
+
+{{< alert title="Note" color="note" >}}
+You can return other readings alongside the `should_sync` value.
+{{< /alert >}}
 
 If you wish to see more context, see the entire [implementation of the sensor on GitHub](https://github.com/viam-labs/sync-at-time/blob/main/timesyncsensor/timesyncsensor.go).
 
