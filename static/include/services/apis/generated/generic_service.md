@@ -25,7 +25,6 @@ my_command = {
   "someparameter": 52
 }
 
-# Can be used with any resource, using the motion service as an example
 await service.do_command(command=my_command)
 ```
 
@@ -76,7 +75,7 @@ Get the `ResourceName` for this instance of the generic service with the given n
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_generic_service_svc_name = Generic.get_resource_name("my_generic_service_svc")
+my_generic_service_name = Generic.get_resource_name("my_generic_service")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/generic/client/index.html#viam.services.generic.client.GenericClient.get_resource_name).
