@@ -963,7 +963,7 @@ Get a configured `Analog` by `name`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
+my_board = Board.from_robot(robot=machine, name="my_board")
 
 # Get the Analog "my_example_analog_reader".
 reader = await my_board.analog_by_name(name="my_example_analog_reader")
@@ -1121,6 +1121,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=machine, name="my_board")
 geometries = await my_board.get_geometries()
 
 if geometries:
@@ -1182,6 +1183,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=machine, name="my_board")
 command = {"cmd": "test", "data1": 500}
 result = await my_board.do_command(command)
 ```
@@ -1313,6 +1315,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=machine, name="my_board")
 await my_board.close()
 ```
 

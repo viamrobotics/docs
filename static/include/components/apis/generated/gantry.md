@@ -570,6 +570,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_gantry = Gantry.from_robot(robot=machine, name="my_gantry")
 await my_gantry.close()
 ```
 

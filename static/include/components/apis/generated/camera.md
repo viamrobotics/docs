@@ -352,6 +352,7 @@ If you are implementing your own camera and adding features that have no native 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
 command = {"cmd": "test", "data1": 500}
 result = await my_camera.do_command(command)
 ```
@@ -402,6 +403,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
 geometries = await my_camera.get_geometries()
 
 if geometries:
@@ -471,6 +473,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
 await my_camera.close()
 ```
 

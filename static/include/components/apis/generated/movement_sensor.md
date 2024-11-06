@@ -754,6 +754,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_movement_sensor = MovementSensor.from_robot(robot=machine, name="my_movement_sensor")
 command = {"cmd": "test", "data1": 500}
 result = await my_movement_sensor.do_command(command)
 ```
@@ -865,6 +866,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_movement_sensor = MovementSensor.from_robot(robot=machine, name="my_movement_sensor")
 await my_movement_sensor.close()
 ```
 

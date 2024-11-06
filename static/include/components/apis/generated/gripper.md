@@ -314,6 +314,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
 geometries = await my_gripper.get_geometries()
 
 if geometries:
@@ -466,6 +467,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
 await my_gripper.close()
 ```
 

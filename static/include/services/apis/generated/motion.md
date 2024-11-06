@@ -852,15 +852,14 @@ If you are implementing your own motion service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = MotionClient.from_robot(robot, "builtin")
+my_motion_svc = MotionClient.from_robot(robot, "builtin")
 
 my_command = {
   "cmnd": "dosomething",
   "someparameter": 52
 }
 
-# Can be used with any resource, using the motion service as an example
-await service.do_command(command=my_command)
+await my_motion_svc.do_command(command=my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.do_command).
@@ -936,6 +935,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_motion_svc = MotionClient.from_robot(robot=machine, name="my_motion_svc")
 await my_motion_svc.close()
 ```
 

@@ -23,6 +23,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")
 command = {"cmd": "test", "data1": 500}
 result = await my_generic_component.do_command(command)
 ```
@@ -134,6 +135,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")
 await my_generic_component.close()
 ```
 

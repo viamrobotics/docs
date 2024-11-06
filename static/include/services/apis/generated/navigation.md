@@ -531,15 +531,14 @@ If you are implementing your own navigation service and add features that have n
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = NavigationClient.from_robot(robot, "my_navigation_svc")
+my_navigation_svc = NavigationClient.from_robot(robot, "my_navigation_svc")
 
 my_command = {
   "cmnd": "dosomething",
   "someparameter": 52
 }
 
-# Can be used with any resource, using the motion service as an example
-await service.do_command(command=my_command)
+await my_navigation_svc.do_command(command=my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.do_command).
@@ -615,6 +614,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_navigation_svc = NavigationClient.from_robot(robot=machine, name="my_navigation_svc")
 await my_navigation_svc.close()
 ```
 

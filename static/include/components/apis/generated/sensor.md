@@ -180,6 +180,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_sensor = Sensor.from_robot(robot=machine, name="my_sensor")
 await my_sensor.close()
 ```
 

@@ -1,0 +1,1 @@
+Get a DigitalInterrupt by `name`.

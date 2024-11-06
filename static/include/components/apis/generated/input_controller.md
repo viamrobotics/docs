@@ -193,6 +193,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_controller = Controller.from_robot(robot=machine, name="my_controller")
 geometries = await my_controller.get_geometries()
 
 if geometries:
@@ -315,6 +316,7 @@ if !slices.Contains(controls, input.ButtonStart) {
     logger.Error("button 'ButtonStart' not found; controller may be disconnected")
     return
 }
+
 myController.RegisterControlCallback(context.Background(), input.ButtonStart, triggers, printStartTime, nil)
 ```
 
@@ -390,6 +392,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_controller = Controller.from_robot(robot=machine, name="my_controller")
 await my_controller.close()
 ```
 

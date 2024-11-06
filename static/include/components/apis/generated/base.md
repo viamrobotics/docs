@@ -613,6 +613,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_base = Base.from_robot(robot=machine, name="my_base")
 geometries = await my_base.get_geometries()
 
 if geometries:
@@ -704,6 +705,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_base = Base.from_robot(robot=machine, name="my_base")
 command = {"cmd": "test", "data1": 500}
 result = await my_base.do_command(command)
 ```
@@ -815,6 +817,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+my_base = Base.from_robot(robot=machine, name="my_base")
 await my_base.close()
 ```
 
