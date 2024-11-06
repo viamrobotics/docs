@@ -1353,7 +1353,10 @@ def parse(type, names):
                                     service_class = "Generic"
                                 elif resource == "slam":
                                     service_class = "SLAMClient"
-                                this_method_dict["code_sample"] = 'my_{}_svc_name = {}.get_resource_name("my_{}_svc")\n'.format(resource, service_class ,resource)
+                                if resource == "generic_service":
+                                    this_method_dict["code_sample"] = 'my_{}_name = {}.get_resource_name("my_{}")\n'.format(resource, service_class ,resource)
+                                else:
+                                    this_method_dict["code_sample"] = 'my_{}_svc_name = {}.get_resource_name("my_{}_svc")\n'.format(resource, service_class ,resource)
                             else:
                                 if resource == "input_controller":
                                     this_method_dict["code_sample"] = 'my_input_controller_name = Controller.get_resource_name("my_input_controller")\n'
