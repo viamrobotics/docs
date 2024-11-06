@@ -1,11 +1,11 @@
 ---
-title: "Access and move a robot arm"
+title: "Move a robot arm"
 linkTitle: "Move a robot arm"
 weight: 70
 type: "docs"
 tags: ["arm", "components"]
 images: ["/tutorials/motion/preview.jpg"]
-description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
+description: "Connect to a robotic arm and control it with the arm API."
 aliases:
   - /tutorials/motion/accessing-and-moving-robot-arm
   - /tutorials/motion/
@@ -18,7 +18,7 @@ date: "2024-10-31"
 cost: "8400"
 ---
 
-In this guide you'll use Viam's Python or Go SDKs to access data about the state of your robot arm and issue movement commands.
+In this guide you'll use Viam's Python or Go SDK to get the current position of your robot arm and issue movement commands.
 
 {{<imgproc src="/tutorials/motion/access_01_xarm6.png" resize="500x" declaredimensions=true alt="A picture of the UFACTORY xArm 6." style="width: 150px" class="fill alignleft" >}}
 
@@ -43,15 +43,14 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 {{% snippet "setup.md" %}}
 
-[Configure an arm](/components/arm/#configuration).
+Add an arm component.
+Select a model that supports your arm. Refer to the [documentation for the model](/components/arm/#configuration) for information about your arm's configuration attributes.
 
 {{<imgproc src="/how-tos/access-arm/config.png" resize="500x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="Configuration builder UI with a blank arm component">}}
-
-Refer to the [documentation for the model](/components/arm/#configuration) for information about your arm's configuration attributes.
 Save your config.
 
 {{% /tablestep %}}
-{{% tablestep %}}
+{{% tablestep link="/appendix/apis/components/arm/#getendposition" %}}
 **2. Get the position of the end effector**
 
 One way to describe the state of a robot arm is with the position of the end effector, or the "tool" or "hand" of the arm.
@@ -60,16 +59,15 @@ Go to the **Code sample** page of the **CONNECT** tab and select either Python o
 
 {{% snippet "show-secret.md" %}}
 
-{{<imgproc src="/how-tos/access-arm/code-sample.png" resize="700x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="Code sample page of the CONNECT tab">}}
 
 Then, copy and paste the sample code into a file and run the resulting script to see the resources available on your screen and the position of the end effector output as a [`Pose`](/internals/orientation-vector/).
 For more information, see [`GetEndPosition`](/appendix/apis/components/arm/#getendposition).
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**4. Get the joint positions**
+**3. Get the joint positions**
 
-The state of a robot arm can also be described as the **combined positions of each joint** attached to the arm.
+The state of a robot arm can also be described as the list of positions of each joint attached to the arm.
 To get that information, add the following code right after the code that gets the end effector pose from the prior code sample:
 
 {{< tabs >}}
@@ -106,7 +104,7 @@ You can also see these values reflected on the **CONTROL** tab in the Viam app f
 
 ## Move the arm
 
-The two main options for specifying arm movement are through **joint position commands** and through **pose commands**.
+The two main options for controlling arm movement are through **joint position commands** and through **pose commands**.
 
 {{< table >}}
 {{% tablestep %}}
@@ -129,7 +127,7 @@ await arm_1.move_to_joint_positions(positions=cmd_joint_positions)
 ```
 
 {{% /tab %}}
-{{% tab name="Go" %}}
+{{% tab name="Go" link="/appendix/apis/components/arm/#movetojointpositions" %}}
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -148,11 +146,11 @@ if err != nil {
 {{<gif webm_src="/how-tos/joint_positions.webm" mp4_src="/how-tos/joint_positions.mp4" alt="The robot arm moving through joint position commands" max-width="200px" class="alignleft">}}
 
 Run the code.
-The third joint of your arm should move a small amount (30 degrees).
+The third joint of your arm should move 30 degrees.
 For more information, see [`MoveToJointPositions`](/appendix/apis/components/arm/#movetojointpositions).
 
 {{% /tablestep %}}
-{{% tablestep %}}
+{{% tablestep link="/appendix/apis/components/arm/#movetoposition" %}}
 **2. Command to move to position**
 
 Add the following code to your script:
