@@ -1298,6 +1298,9 @@ def parse(type, names):
                                 elif resource == "slam":
                                     service_class = "SLAMClient"
                                 this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("SERVICE", service_class)
+                                this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("# Can be used with any resource, using the motion service as an example\n", "")
+                                if not resource == "generic_service":
+                                    this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("service", "my_{}_svc".format(resource))
                                 if not resource in ["motion"]:
                                     this_method_dict["code_sample"] = this_method_dict["code_sample"].replace("SERVICE", service_class).replace("builtin", "my_{}_svc".format(resource))
                             else:

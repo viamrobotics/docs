@@ -619,15 +619,14 @@ If you are implementing your own vision service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = VisionClient.from_robot(machine, "my_vision_svc")
+my_vision_svc = VisionClient.from_robot(robot, "my_vision_svc")
 
 my_command = {
   "cmnd": "dosomething",
   "someparameter": 52
 }
 
-# Can be used with any resource, using the motion service as an example
-await service.do_command(command=my_command)
+await my_vision_svc.do_command(command=my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.do_command).

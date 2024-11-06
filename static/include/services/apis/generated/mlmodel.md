@@ -147,15 +147,14 @@ If you are implementing your own ML model service and add features that have no 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-service = MLModelClient.from_robot(robot, "my_mlmodel_svc")
+my_mlmodel_svc = MLModelClient.from_robot(robot, "my_mlmodel_svc")
 
 my_command = {
   "cmnd": "dosomething",
   "someparameter": 52
 }
 
-# Can be used with any resource, using the motion service as an example
-await service.do_command(command=my_command)
+await my_mlmodel_svc.do_command(command=my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.do_command).
