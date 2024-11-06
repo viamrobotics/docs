@@ -251,9 +251,9 @@ To configure an ML model service:
 - Select the **CONFIGURE** tab.
 - Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 - Select the `ML model` type, then select the `TFLite CPU` model.
-- Enter the name `stuff_detector` for your service and click **Create**.
+- Enter the name `stuff_detector` for your service, click **Add module** and click **Create**.
 
-Your robot will register this as a machine learning model and make it available for use.
+Your robot registers this as a machine learning model and makes it available for use.
 
 Select **Deploy model on machine** for the **Deployment** field.
 Click **Select model**, then select the `viam-labs:EfficientDet-COCO` model from the modal that appears.

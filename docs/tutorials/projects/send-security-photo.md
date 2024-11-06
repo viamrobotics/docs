@@ -96,14 +96,14 @@ If you want to train your own model instead, follow the instructions in [train a
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
    Start typing `ML model` and select **ML model / TFLite CPU** from the builtin options.
 
-   Enter `people` as the name, then click **Create**.
+   Enter `people` as the name, click **Add Module**, then click **Create**.
 
    In the new ML Model service panel, configure your service.
 
    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/send-security-photo/app-service-ml-before.png)
 
    Select **Deploy model on machine** for the **Deployment** field.
-   Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
+   Then select the `viam-labs:EfficientDet-COCO` model from the **Select model** dropdown.
 
 1. **Configure an mlmodel detector** [vision service](/services/vision/)
 

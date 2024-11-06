@@ -114,15 +114,15 @@ For more detailed configuration information and troubleshooting, see the [`webca
 In this guide you'll use a publicly available model to detect people.
 You will deploy this model to your machine using the ML model service.
 
-Click **+**, click **Service** and select the `ML model` type, then select the `TFLite CPU` model.
-Create the service.
+Click **+**, click **Service** and search for and select the `ML model / TFLite CPU` model.
+Click **Add module** and create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
 Then click on **Select model**, switch to the **Registry** tab and select the **people** model by **ml-models-scuttle** to deploy a model that has been trained to be able to detect people.
 This model is a TFLite model.
 
-For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/tflite_cpu/).
+For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](https://github.com/viam-modules/mlmodel-tflite).
 
 {{% /expand%}}
 {{%expand "Step 5: Configure a vision service" %}}
