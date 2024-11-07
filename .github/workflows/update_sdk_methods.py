@@ -858,9 +858,11 @@ def parse(type, names):
                                         if resource == "generic_component":
                                             go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericComponent, err := generic.FromRobot(machine, "my_generic_component")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericComponent.DoCommand(context.Background(), command)\n'
                                     else:
-                                        go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + 'Svc.DoCommand(context.Background(), command)\n'
+                                        go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ 'Svc, err := ' + resource.replace("_","") + '.FromRobot(machine, "my_' + resource + '_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + 'Svc.DoCommand(context.Background(), command)\n'
                                         if resource == "slam":
                                             go_methods[type][resource]['DoCommand']['code_sample'] = 'mySLAMService, err := slam.FromRobot(machine, "my_slam_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := mySLAMService.DoCommand(context.Background(), command)\n'
+                                        print(resource)
+                                        print(go_methods[type][resource]['DoCommand']['code_sample'])
 
                                 go_methods[type][resource]['Close'] = {'proto': 'Close', \
                                     'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
