@@ -4,7 +4,8 @@ linkTitle: "Move a robot arm"
 weight: 70
 type: "docs"
 tags: ["arm", "components"]
-images: ["/tutorials/motion/preview.jpg"]
+images: ["/how-tos/move_to_position.gif"]
+videos: ["/how-tos/move_to_position.webm", "/how-tos/move_to_position.mp4"]
 description: "Connect to a robotic arm and control it with the arm API."
 aliases:
   - /tutorials/motion/accessing-and-moving-robot-arm
@@ -20,8 +21,6 @@ cost: "8400"
 
 In this guide you'll use Viam's Python or Go SDK to get the current position of your robot arm and issue movement commands.
 
-{{<imgproc src="/tutorials/motion/access_01_xarm6.png" resize="500x" declaredimensions=true alt="A picture of the UFACTORY xArm 6." style="width: 150px" class="fill alignleft" >}}
-
 {{< alert title="In this page" color="tip" >}}
 
 1. [Access the arm](#access-the-arm)
@@ -29,16 +28,11 @@ In this guide you'll use Viam's Python or Go SDK to get the current position of 
 
 {{< /alert >}}
 
-{{< alert title="Caution" color="caution" >}}
-Be careful when instructing robot arms to move.
-Before running any code, ensure your robotic arm has enough space and that there are no obstacles.
-Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your machine.
-{{< /alert >}}
-
 ## Requirements
 
 You need the following hardware to complete this tutorial:
 
+- A single-board computer or other computer to run `viam-server`.
 - A Linux, macOS or Windows computer that can run SDK code.
 - A [robotic arm](/components/arm/).
 
@@ -113,6 +107,12 @@ You can also see these values reflected on the **CONTROL** tab in the Viam app f
 The two main options for controlling arm movement are through **joint position commands** and through **pose commands**.
 Joint position commands allow for more detailed control and flexibility instead of commanding movement with the end effector position in a pose command.
 
+{{< alert title="Caution" color="caution" >}}
+Be careful when instructing robot arms to move.
+Before running any code, ensure your robotic arm has enough space and that there are no obstacles.
+Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your machine.
+{{< /alert >}}
+
 {{< table >}}
 {{% tablestep %}}
 **1. Initiate motion with a joint position command**
@@ -127,7 +127,7 @@ from viam.proto.component.arm import JointPositions
 
 Add the following code to your script:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
 # Command a joint position move: move the forearm of the arm slightly up
 cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
 await arm_1.move_to_joint_positions(positions=cmd_joint_positions)
@@ -138,7 +138,7 @@ await arm_1.move_to_joint_positions(positions=cmd_joint_positions)
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list.
 Add the following code to your script:
 
-```go {class="line-numbers linkable-line-numbers"}
+```go
 // Command a joint position move: move the forearm of the arm slightly up
 cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
 err = arm1.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
@@ -166,7 +166,7 @@ For more information, see [`MoveToJointPositions`](/appendix/apis/components/arm
 
 Add the following code to your script:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
 # Generate a simple pose move +100mm in the +Z direction of the arm
 cmd_arm_pose = await arm_1.get_end_position()
 cmd_arm_pose.z += 100.0
@@ -179,7 +179,7 @@ Add `"go.viam.com/rdk/spatialmath"` to your import list.
 
 Add the following code to your script:
 
-```go {class="line-numbers linkable-line-numbers"}
+```go
 // Generate a simple pose move +100mm in the +Z direction of the arm
 currentArmPose, err := arm1.EndPosition(context.Background(), nil)
 if err != nil {
