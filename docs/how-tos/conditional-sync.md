@@ -70,7 +70,7 @@ If the builtin data manager is configured with a sync sensor, the data manager w
 
 The following example returns `"should_sync": true` if the current time is in a specified time window, and `"should_sync": false` otherwise.
 
-```go {class="line-numbers linkable-line-numbers" data-line="26,30,31,35"}
+```go {class="line-numbers linkable-line-numbers" data-line="26,31,32,37"}
 func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
     currentTime := time.Now()
     var hStart, mStart, sStart, hEnd, mEnd, sEnd int
@@ -97,14 +97,16 @@ func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[stri
         hEnd, mEnd, sEnd, 0, zone)
 
     readings := map[string]interface{}{"should_sync": false}
+    readings["time"] = currentTime.String()
     // If it is between the start and end time, sync.
     if currentTime.After(startTime) && currentTime.Before(endTime) {
-        s.logger.Info("Syncing")
+        s.logger.Debug("Syncing")
         readings["should_sync"] = true
         return readings, nil
     }
 
     // Otherwise, do not sync.
+    s.logger.Debug("Not syncing. Current time not in sync window: " + currentTime.String())
     return readings, nil
 }
 ```
