@@ -174,6 +174,14 @@ You must configure each component with a type, a model, a name, attributes, and 
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
+- `log_configuration`: Specify the log level for a resource. The default log level is `"Info"`. For example:
+
+  ```json
+  "log_configuration": {
+      "level": "Debug"
+  }
+  ```
+
 For specific information on how to configure each supported component type, see the {{< glossary_tooltip term_id="component" text="component" >}}'s documentation:
 
 {{< cards >}}
