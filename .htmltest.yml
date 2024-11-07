@@ -40,6 +40,7 @@ IgnoreURLs:
   - "docs.m5stack.com"
   - "code.visualstudio.com"
   - "thingiverse.com"
+  - "unsplash.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
