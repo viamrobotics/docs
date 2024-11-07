@@ -18,6 +18,38 @@ Please post the error message you received along with how you were able to trigg
 
 For information on the status of [app.viam.com](https://app.viam.com), visit [status.viam.com](https://status.viam.com/).
 
+## Enable debug level logs
+
+The default log level for `viam-server` and any running resources is `"Info"`.
+If you are not seeing helpful logs, you can try changing the log level to `"Debug"`.
+
+{{< tabs >}}
+{{% tab name="For individual resources" %}}
+
+Add the `log_configuration` option to the resource's JSON configuration:
+
+```json
+"log_configuration": {
+    "level": "Debug"
+},
+"attributes": { ... }
+```
+
+{{% /tab %}}
+{{% tab name="For viam-server" %}}
+
+Add `"debug": true` to the machine's configuration:
+
+```json
+{
+  "debug": true,
+  "components": [{ ... }]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Common installation errors
 
 ### The authenticity of host 'hostname.local' can't be established
