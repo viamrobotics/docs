@@ -412,9 +412,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := input.FromRobot(machine, "my_input_controller")
+myInputController, err := input.FromRobot(machine, "my_input_controller")
 
-err = myController.Close(context.Background())
+err = myInputController.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

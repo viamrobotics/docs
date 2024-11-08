@@ -17,7 +17,7 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+my_power_sensor = PowerSensor.from_robot(robot=machine, name='my_power_sensor')
 
 # Get the voltage reading from the power sensor
 voltage, is_ac = await my_power_sensor.get_voltage()
@@ -92,7 +92,7 @@ Return the current of a specified device and whether it is AC or DC.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+my_power_sensor = PowerSensor.from_robot(robot=machine, name='my_power_sensor')
 
 # Get the current reading from the power sensor
 current, is_ac = await my_power_sensor.get_current()
@@ -167,7 +167,7 @@ Return the power reading in watts.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+my_power_sensor = PowerSensor.from_robot(robot=machine, name='my_power_sensor')
 
 # Get the power reading from the power sensor
 power = await my_power_sensor.get_power()
@@ -240,7 +240,7 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+my_power_sensor = PowerSensor.from_robot(robot=machine, name='my_power_sensor')
 
 # Get the readings provided by the sensor.
 readings = await my_power_sensor.get_readings()

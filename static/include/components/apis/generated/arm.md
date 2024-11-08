@@ -206,7 +206,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `positionDegs` [(*pb.JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement. JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
+- `positions` [([]referenceframe.Input)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Input)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -295,7 +295,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*pb.JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
+- [([]referenceframe.Input)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Input)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**

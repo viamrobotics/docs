@@ -198,7 +198,7 @@ Make sure the [SLAM service](/services/slam/) you use alongside this motion serv
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=machine, name="builtin")
 
 # Get the ResourceNames of the base component and SLAM service
 my_base_resource_name = Base.get_resource_name("my_base")
@@ -340,7 +340,7 @@ Translation in obstacles is not supported by the [navigation service](/services/
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=machine, name="builtin")
 
 # Get the ResourceNames of the base and movement sensor
 my_base_resource_name = Base.get_resource_name("my_base")
@@ -465,7 +465,7 @@ from viam.services.motion import MotionClient
 # Assume that the connect function is written and will return a valid machine.
 robot = await connect()
 
-motion = MotionClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=machine, name="builtin")
 gripperName = Gripper.get_resource_name("my_gripper")
 gripperPoseInWorld = await motion.get_pose(component_name=gripperName,
                                         destination_frame="world")
@@ -654,7 +654,7 @@ All repeated fields are in chronological order.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=machine, name="builtin")
 # List the plan statuses of the motion service within the TTL
 resp = await motion.list_plan_statuses()
 ```
@@ -727,7 +727,7 @@ All repeated fields are in chronological order.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="builtin")
+motion = MotionClient.from_robot(robot=machine, name="builtin")
 my_base_resource_name = Base.get_resource_name("my_base")
 # Get the plan(s) of the base component which was instructed to move by `MoveOnGlobe()` or `MoveOnMap()`
 resp = await motion.get_plan(component_name=my_base_resource_name)
@@ -821,7 +821,7 @@ async def main():
     robot = await connect()
 
     # Can be used with any resource, using the motion service as an example
-    motion = MotionClient.from_robot(robot=robot, name="builtin")
+    motion = MotionClient.from_robot(robot=machine, name="builtin")
 
     robot.close()
 ```
@@ -852,7 +852,7 @@ If you are implementing your own motion service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motion_svc = MotionClient.from_robot(robot, "builtin")
+my_motion_svc = MotionClient.from_robot(robot=machine, "builtin")
 
 my_command = {
   "cmnd": "dosomething",

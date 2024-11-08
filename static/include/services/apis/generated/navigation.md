@@ -21,7 +21,7 @@ There are two options for modes: `MODE_MANUAL` or `MODE_WAYPOINT`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Get the Mode the service is operating in
 await my_nav.get_mode()
@@ -78,7 +78,7 @@ There are two options for modes: `MODE_MANUAL` or `MODE_WAYPOINT`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Set the Mode the service is operating in to MODE_WAYPOINT and begin navigation
 await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
@@ -129,7 +129,7 @@ Get the current location of the robot in the navigation service.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Get the current location of the robot in the navigation service
 location = await my_nav.get_location()
@@ -181,7 +181,7 @@ These are locations designated within a path for the robot to navigate to.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Get a list containing each waypoint stored by the navigation service
 waypoints = await my_nav.get_waypoints()
@@ -232,7 +232,7 @@ Add a waypoint to the service's data storage.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
  # Create a new waypoint with latitude and longitude values of 0 degrees
  location = GeoPoint(latitude=0, longitude=0)
@@ -293,7 +293,7 @@ If the robot is currently navigating to this waypoint, the motion will be cancel
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Remove the waypoint matching that ObjectID from the service's data storage
 await my_nav.remove_waypoint(waypoint_id)
@@ -353,7 +353,7 @@ See the [motion service](/services/motion/) for more information.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Get a list containing each obstacle stored by the navigation service
 obstacles = await my_nav.get_obstacles()
@@ -404,7 +404,7 @@ Get each path, the series of geo points the robot plans to travel through to get
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Get a list containing each path stored by the navigation service
 paths = await my_nav.get_paths()
@@ -455,7 +455,7 @@ Get information about the navigation service.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+my_nav = NavigationClient.from_robot(robot=machine, name="my_nav_service")
 
 # Get the properties of the current navigation service.
 nav_properties = await my_nav.get_properties()
@@ -531,7 +531,7 @@ If you are implementing your own navigation service and add features that have n
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_navigation_svc = NavigationClient.from_robot(robot, "my_navigation_svc")
+my_navigation_svc = NavigationClient.from_robot(robot=machine, "my_navigation_svc")
 
 my_command = {
   "cmnd": "dosomething",

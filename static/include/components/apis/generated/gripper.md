@@ -17,7 +17,7 @@ Opens the gripper.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
 
 # Open the gripper.
 await my_gripper.open()
@@ -89,7 +89,7 @@ Closes the gripper until it grabs something or closes completely, and returns wh
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
 
 # Grab with the gripper.
 grabbed = await my_gripper.grab()
@@ -161,7 +161,7 @@ Returns whether the gripper is actively moving (or attempting to move) under its
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
 
 # Check whether the gripper is currently moving.
 moving = await my_gripper.is_moving()
@@ -240,7 +240,7 @@ It is assumed that the gripper stops immediately, so `IsMoving` will return fals
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
 
 # Stop the gripper.
 await my_gripper.stop()

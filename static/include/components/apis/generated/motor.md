@@ -22,7 +22,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Set the power to 40% forwards.
 await my_motor.set_power(power=0.4)
@@ -97,7 +97,7 @@ Spin the motor indefinitely at the specified speed, in revolutions per minute. I
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Spin the motor at 75 RPM.
 await my_motor.set_rpm(rpm=75)
@@ -174,7 +174,7 @@ If both `rpm` and `revolutions` are negative, the motor spins in the forward dir
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Turn the motor 7.2 revolutions at 60 RPM.
 await my_motor.go_for(rpm=60, revolutions=7.2)
@@ -254,7 +254,7 @@ This blocks until the position has been reached.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Turn the motor to 8.3 revolutions from home at 75 RPM.
 await my_motor.go_to(rpm=75, revolutions=8.3)
@@ -330,7 +330,7 @@ Set the current position (modified by `offset`) to be the new zero (home) positi
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Set the current position as the new home position with no offset.
 await my_motor.reset_zero_position(offset=0.0)
@@ -406,7 +406,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Get the current position of the motor.
 position = await my_motor.get_position()
@@ -483,7 +483,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Report a dictionary mapping optional properties to whether it is supported by
 # this motor.
@@ -564,7 +564,7 @@ Stepper motors will report `true` if they are being powered while holding a posi
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Check whether the motor is currently running.
 powered = await my_motor.is_powered()
@@ -647,7 +647,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Check whether the motor is currently moving.
 moving = await my_motor.is_moving()
@@ -727,7 +727,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
+my_motor = Motor.from_robot(robot=machine, name="my_motor")
 
 # Stop the motor.
 await my_motor.stop()
