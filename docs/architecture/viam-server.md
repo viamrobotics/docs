@@ -83,6 +83,31 @@ maintenance : {
 
 Log messages written appear under the [**LOGS** tab](/cloud/machines/#logs) for the machine running the module.
 
+#### Debugging
+
+The default log level for `viam-server` and any running resources is `"Info"`.
+
+You can enable debug level logs in two ways:
+
+- Start `viam-server` with the `-debug` option.
+- Add `"debug": true` to the machine's configuration:
+
+  ```json
+  {
+    "debug": true,
+    "components": [{ ... }]
+  }
+  ```
+
+To enable debug level logs for specific resources you can add the `log_configuration` option to the resources' JSON configuration:
+
+```json
+"log_configuration": {
+    "level": "Debug"
+},
+"attributes": { ... }
+```
+
 ### Shutdown
 
 During machine shutdown, `viam-server` handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
