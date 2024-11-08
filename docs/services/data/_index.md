@@ -123,7 +123,7 @@ You can also control how local data is deleted if your machine's local storage b
 ## Configuration
 
 To capture data from one or more machines, you must first [configure the data management service](#data-management-service-configuration).
-Then [configure data management](#resource-data-capture-configuration) on each {{< glossary_tooltip term_id="resource" text="resources" >}} that you want to capture data from.
+Then [configure data management](#resource-data-capture-configuration) on each {{< glossary_tooltip term_id="resource" text="resource" >}} that you want to capture data from.
 
 ### Data management service configuration
 
