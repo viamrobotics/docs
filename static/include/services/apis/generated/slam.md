@@ -16,7 +16,7 @@ Get the current position of the component the SLAM service is configured to sour
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
+slam_svc = SLAMClient.from_robot(robot=machine, name="my_slam_service")
 
 # Get the current position of the specified source component in the SLAM map as a Pose.
 pose = await slam.get_position()
@@ -68,7 +68,7 @@ Get the point cloud map.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
+slam_svc = SLAMClient.from_robot(robot=machine, name="my_slam_service")
 
 # Get the point cloud map in standard PCD format.
 pcd_map = await slam_svc.get_point_cloud_map()
@@ -97,7 +97,7 @@ Get the internal state of the SLAM algorithm required to continue mapping/locali
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-slam = SLAMClient.from_robot(robot=robot, name="my_slam_service")
+slam = SLAMClient.from_robot(robot=machine, name="my_slam_service")
 
 # Get the internal state of the SLAM algorithm required to continue mapping/localization.
 internal_state = await slam.get_internal_state()
@@ -126,7 +126,7 @@ Get information about the current SLAM session.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
+slam_svc = SLAMClient.from_robot(robot=machine, name="my_slam_service")
 
 # Get the properties of your current SLAM session.
 slam_properties = await slam_svc.get_properties()
@@ -254,7 +254,7 @@ If you are implementing your own SLAM service and add features that have no buil
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_slam_svc = SLAMClient.from_robot(robot, "my_slam_svc")
+my_slam_svc = SLAMClient.from_robot(robot=machine, "my_slam_svc")
 
 my_command = {
   "cmnd": "dosomething",

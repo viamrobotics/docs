@@ -856,7 +856,7 @@ def parse(type, names):
                                     if type == "component":
                                         go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ ', err := ' + resource + '.FromRobot(machine, "my_' + resource.title().replace("_", "") + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'
                                         if resource == "generic_component":
-                                            go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericComponent, err := generic.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericComponent.DoCommand(context.Background(), command)\n'
+                                            go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericComponent, err := generic.FromRobot(machine, "my_generic_component")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericComponent.DoCommand(context.Background(), command)\n'
                                     else:
                                         go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + 'Svc.DoCommand(context.Background(), command)\n'
                                         if resource == "slam":
@@ -971,7 +971,7 @@ def parse(type, names):
                                     'description': 'DoCommand sends/receives arbitrary data.', \
                                     'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
-                                    'code_sample': 'my' + resource.replace("_", "").title() + ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.replace("_", "").title() + '.DoCommand(context.Background(), command)\n'}
+                                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'}
                 if resource == "generic_service":
                     go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromRobot(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
 

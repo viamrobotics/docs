@@ -32,7 +32,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_servo = Servo.from_robot(robot=robot, name="my_servo")
+my_servo = Servo.from_robot(robot=machine, name="my_servo")
 
 # Move the servo from its origin to the desired angle of 10 degrees.
 await my_servo.move(10)
@@ -108,7 +108,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_servo = Servo.from_robot(robot=robot, name="my_servo")
+my_servo = Servo.from_robot(robot=machine, name="my_servo")
 
 # Move the servo from its origin to the desired angle of 10 degrees.
 await my_servo.move(10)
@@ -196,7 +196,7 @@ Returns whether the servo is actively moving (or attempting to move) under its o
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_servo = Servo.from_robot(robot=robot, name="my_servo")
+my_servo = Servo.from_robot(robot=machine, name="my_servo")
 
 print(await my_servo.is_moving())
 ```
@@ -273,7 +273,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_servo = Servo.from_robot(robot=robot, name="my_servo")
+my_servo = Servo.from_robot(robot=machine, name="my_servo")
 
 # Move the servo from its origin to the desired angle of 10 degrees.
 await my_servo.move(10)

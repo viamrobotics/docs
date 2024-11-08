@@ -18,7 +18,7 @@ Supported by `viam-micro-server`.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
+my_sensor = Sensor.from_robot(robot=machine, name='my_sensor')
 
 # Get the readings provided by the sensor.
 readings = await my_sensor.get_readings()

@@ -8,6 +8,7 @@ Take an already ordered input tensor as an array, make an inference on the model
 **Parameters:**
 
 - `input_tensors` (Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [typing.NDArray](https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray)]) (required): A dictionary of input flat tensors as specified in the metadata.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
@@ -19,7 +20,7 @@ Take an already ordered input tensor as an array, make an inference on the model
 ```python {class="line-numbers linkable-line-numbers"}
 import numpy as np
 
-my_mlmodel = MLModelClient.from_robot(robot=robot, name="my_mlmodel_service")
+my_mlmodel = MLModelClient.from_robot(robot=machine, name="my_mlmodel_service")
 
 nd_array = np.array([1, 2, 3], dtype=np.float64)
 input_tensors = {"0": nd_array}
@@ -64,6 +65,7 @@ Get the metadata: name, data type, expected tensor/array shape, inputs, and outp
 
 **Parameters:**
 
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
@@ -73,7 +75,7 @@ Get the metadata: name, data type, expected tensor/array shape, inputs, and outp
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_mlmodel = MLModelClient.from_robot(robot=robot, name="my_mlmodel_service")
+my_mlmodel = MLModelClient.from_robot(robot=machine, name="my_mlmodel_service")
 
 metadata = await my_mlmodel.metadata()
 ```
@@ -147,7 +149,7 @@ If you are implementing your own ML model service and add features that have no 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_mlmodel_svc = MLModelClient.from_robot(robot, "my_mlmodel_svc")
+my_mlmodel_svc = MLModelClient.from_robot(robot=machine, "my_mlmodel_svc")
 
 my_command = {
   "cmnd": "dosomething",
