@@ -666,7 +666,7 @@ The following attributes are available for data capture configuration:
 | ------------------ | ------ | --------- | ----------- |
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/services/data/#supported-components-and-services). |
-| `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. |
+| `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
 ### Supported components and services
