@@ -667,7 +667,7 @@ my_twilio_svc = Generic.from_robot(robot=machine, name="my_twilio_svc")
 
 # Use a custom command to send a text message with Twilio
 command = {"to": "+1 234 567 8901", "body": "Hello world!"}
-result = await my_button.do_command(command)
+result = await my_twilio_svc.do_command(command)
 ```
 
 {{% /tab %}}
@@ -676,9 +676,9 @@ result = await my_button.do_command(command)
 ```go
 myTwilioSvc, err := generic.FromRobot(machine, "my_twilio_svc")
 
-// Use a custom command to push the button 5
+// Use a custom command to send a text message with Twilio
 command := map[string]interface{}{"to": "+1 234 567 8901", "body": "Hello world!"}
-result, err := myButton.DoCommand(context.Background(), command)
+result, err := myTwilioSvc.DoCommand(context.Background(), command)
 ```
 
 {{% /tab %}}
