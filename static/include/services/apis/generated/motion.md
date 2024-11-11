@@ -880,10 +880,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotion, err := motion.FromRobot(machine, "my_motion")
+myMotionSvc, err := motion.FromRobot(machine, "my_motion_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myMotion.DoCommand(context.Background(), command)
+result, err := myMotionSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

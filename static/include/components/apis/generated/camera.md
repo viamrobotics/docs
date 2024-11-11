@@ -22,14 +22,14 @@ If the server does not know how to return the specified MIME type, the server re
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.media.video import CameraMimeType
 
- my_camera = Camera.from_robot(robot=machine, name="my_camera")
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
 
- # Assume "frame" has a mime_type of "image/vnd.viam.dep"
- frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
+# Assume "frame" has a mime_type of "image/vnd.viam.dep"
+frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
 
- # Convert "frame" to a standard 2D image representation.
- # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
- standard_frame = frame.bytes_to_depth_array()
+# Convert "frame" to a standard 2D image representation.
+# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
+standard_frame = frame.bytes_to_depth_array()
 ```
 
 If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`ViamImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
