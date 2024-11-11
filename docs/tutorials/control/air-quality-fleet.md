@@ -67,7 +67,7 @@ You choose how to group your machines.
 
 <br>
 
-For more information, see [Fleet Management](/fleet/).
+For more information, see [Fleet Management](/how-tos/manage-fleet/#organize-your-machines).
 
 ### Example
 
