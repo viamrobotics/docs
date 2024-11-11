@@ -209,7 +209,7 @@ Use the template and example below to populate the JSON file with a single key, 
 
 ## Configure a `customlinux` board
 
-Configure your board as a [`customlinux`](/components/board/customlinux/) board to use your board definitions file:
+Configure your board as a [`customlinux`](https://github.com/viam-modules/customlinux/tree/main/customlinux) board to use your board definitions file:
 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
@@ -219,7 +219,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `board` type, then select the `customlinux` model.
 Enter a name or use the suggested name for your `customlinux` board and click **Create**.
 
-![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
+[See an example configuration for a pumpkin board using customlinux in the Viam app Config.](https://github.com/viam-modules/customlinux/blob/main/README.md#example-configuration-for-a-pumpkin-board)
 
 Copy and paste the following json object into your board's attributes field.
 

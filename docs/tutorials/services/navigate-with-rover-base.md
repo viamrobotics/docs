@@ -67,7 +67,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
    We used three movement sensors to satisfy these requirements:
 
-   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps-nmea-rtk-serial/) model, providing GPS position and compass heading measurements.
+   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](https://github.com/viam-modules/gps/tree/main/rtk) model, providing GPS position and compass heading measurements.
    2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
@@ -97,16 +97,16 @@ If you are using different hardware, configure them according to the instruction
 
 First, configure the [board](/components/board/) local to your rover.
 Follow [these instructions](/components/board/#configuration) to configure your board model.
-We used a [`jetson` board](/components/board/jetson/), but you can use any model of board you have on hand, as the [resource's API](/appendix/apis/components/board/#api) is hardware agnostic.
+We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jetson), but you can use any model of board you have on hand, as the [resource's API](/appendix/apis/components/board/#api) is hardware agnostic.
 
 1. Configure a board named `local` as shown below:
 
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
-2. Configure [digital interrupts](/components/board/jetson/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
+2. Configure [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
    Find your board on the **CONFIGURE** tab in **Builder** mode.
    Click the **{}** (Switch to advanced) button on the right side of your board's card to switch to JSON attributes editing mode.
-   Copy and paste the following JSON into your board's attributes field to add [digital interrupts](/components/board/jetson/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
+   Copy and paste the following JSON into your board's attributes field to add [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -145,7 +145,7 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="950x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
-   Assign the pins as the [digital interrupts](/components/board/jetson/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
+   Assign the pins as the [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/components/encoder/incremental/) for attribute information.
 
 2. Next, follow [these instructions](/components/motor/#configuration) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
@@ -326,7 +326,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
 
     We named ours `gps`.
-    Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](/components/movement-sensor/gps-nmea-rtk-serial/) for attribute information.
+    Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](https://github.com/viam-modules/gps/blob/main/README.md#configure-your-rtk-serial-movement_sensor) for attribute information.
 
 2.  Configure a wheeled odometry movement sensor to provide angular and linear velocity measurements from the encoded motors on our base.
 

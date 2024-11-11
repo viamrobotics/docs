@@ -86,7 +86,7 @@ Complete the following instructions to install `viam-server`, noting that if you
 
 ## Next steps
 
-[Configure an `orangepi` board as a component](/components/board/orangepi/) to integrate the GPIO pins of the single-board computer into your smart machine.
+[Configure an `orangepi` board as a component](https://github.com/viam-modules/orange-pi/tree/main/orangepi) to integrate the GPIO pins of the single-board computer into your smart machine.
 
 ## Troubleshooting
 

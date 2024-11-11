@@ -121,7 +121,7 @@ Note that these boards require additional parts to be purchased and will not wor
 
 The MPU6050 sensor is a digital 6-axis accelerometer or gyroscope that can read acceleration and angular velocity.
 You can access it through the I2C digital interface.
-You configure it with Viam on your machine as a [movement sensor](/components/movement-sensor/mpu6050/).
+You configure it with Viam on your machine as a [movement sensor](https://github.com/viam-modules/tdk-invensense/tree/main/mpu6050).
 
 ### INA219 power monitoring unit
 
@@ -130,7 +130,7 @@ You configure it with Viam on your machine as a [movement sensor](/components/mo
 The INA219 unit measures the voltage and current from the power supply.
 You can use it to measure battery life status and power consumption.
 It connects to the Raspberry Pi 4 through the I2C bus.
-You configure it with Viam on your machine as a [power sensor](/components/power-sensor/ina219/).
+You configure it with Viam on your machine as a [power sensor](https://github.com/viam-modules/texas-instruments/tree/main/ina).
 
 ### DC-DC 5V converter
 
