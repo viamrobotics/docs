@@ -19,7 +19,7 @@ Get a list of the [Controls](/appendix/apis/components/input-controller/#control
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the machine.
 my_controller = Controller.from_robot(
-    robot=myRobotWithController, name="my_controller")
+    robot=machine, "my_controller")
 
 # Get the list of Controls provided by the controller.
 controls = await my_controller.get_controls()
@@ -78,7 +78,7 @@ This method returns the current state of the controller as a map of [Event Objec
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the machine.
 my_controller = Controller.from_robot(
-    myRobotWithController, "my_controller")
+    robot=machine, "my_controller")
 
 # Get the most recent Event for each Control.
 recent_events = await my_controller.get_events()
@@ -270,7 +270,7 @@ async def main():
 
     # Get your controller from the machine.
     my_controller = Controller.from_robot(
-        myRobotWithController, "my_controller")
+        robot=machine, "my_controller")
 
     # Run the handleController function.
     await handle_controller(my_controller)

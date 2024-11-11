@@ -177,10 +177,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMlmodel, err := mlmodel.FromRobot(machine, "my_mlmodel")
+myMlmodelSvc, err := mlmodel.FromRobot(machine, "my_mlmodel_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myMlmodel.DoCommand(context.Background(), command)
+result, err := myMlmodelSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
