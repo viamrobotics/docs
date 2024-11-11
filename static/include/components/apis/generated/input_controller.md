@@ -142,7 +142,7 @@ This method is currently only supported for input controllers of model `webgamep
 ```python {class="line-numbers linkable-line-numbers"}
 # Get your controller from the machine.
 my_controller = Controller.from_robot(
-    myRobotWithController, "my_controller")
+    robot=machine, "my_controller")
 
 # Define a "Button is Pressed" event for the control BUTTON_START.
 button_is_pressed_event = Event(
