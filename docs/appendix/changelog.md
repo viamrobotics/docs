@@ -391,7 +391,7 @@ To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on cr
 
 {{% changelog date="2023-08-31" color="added" title="Configure a custom Linux board" %}}
 
-You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](https://github.com/viam-modules/customlinux/tree/main/customlinux).
+You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/components/board/customlinux/).
 
 {{% /changelog %}}
 
