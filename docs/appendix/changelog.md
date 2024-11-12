@@ -44,6 +44,7 @@ date: "2024-09-18"
 
 The following resource models have moved to modules.
 
+<!-- prettier-ignore -->
 | Resource | Model |
 | -------- | ----- |
 | board | [`customlinux`](https://github.com/viam-modules/customlinux/) |
@@ -54,10 +55,6 @@ The following resource models have moved to modules.
 | board | [`pi`](https://github.com/viam-modules/raspberry-pi) |
 | board | [`orange-pi`](https://github.com/viam-modules/orange-pi) |
 | board | [`upboard`](https://github.com/viam-modules/up) |
-| gripper | [`softrobotics`]() |
-| motor | [`encoded-motor`]() |
-| motor | [`gpiostepper`]() |
-| motor | [`roboclaw`]() |
 | motor | [`tmc5072`](https://github.com/viam-modules/analog-devices) |
 | motor | [`28byj-48`](https://github.com/viam-modules/uln2003) |
 | encoder | [`ams-as5048`](https://github.com/viam-modules/ams/) |
@@ -72,10 +69,17 @@ The following resource models have moved to modules.
 | power sensor | [`ina219`](https://github.com/viam-modules/texas-instruments) |
 | power sensor | [`ina226`](https://github.com/viam-modules/texas-instruments) |
 | sensor | [`bme280`](https://github.com/viam-modules/bosch) |
-| sensor | [`ds18b20`]() |
 | sensor | [`sensirion-sht3xd`](https://github.com/viam-modules/sensirion) |
 | sensor | [`pi`](https://github.com/viam-modules/raspberry-pi) |
 | ML model | [`TFLite CPU`](https://app.viam.com/module/viam/tflite_cpu) |
+
+The following models were removed:
+
+| gripper | `softrobotics` |
+| motor | `encoded-motor` |
+| motor | `gpiostepper` |
+| motor | `roboclaw` |
+| sensor | `ds18b20` |
 
 {{% /changelog %}}
 
