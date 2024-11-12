@@ -147,7 +147,7 @@ You can create these automatically using the Viam module generator:
 {{% tablestep %}}
 **1. Install the module generator**
 
-Install the [module generator](https://github.com/viam-labs/generator-viam-module/tree/main):
+Install the [module generator](https://github.com/viam-labs/generator-viam-module/):
 
 1. Install node (version 16 or later) and npm if you don't already have them:
 

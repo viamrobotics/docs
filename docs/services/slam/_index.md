@@ -70,6 +70,6 @@ While in a slam session, you should:
 - use a machine that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed
 - when using a wheeled base, try to include an [odometry movement sensor](/components/movement-sensor/wheeled-odometry/). This helps the SLAM algorithm keep track of where the machine is moving.
-- it is important to note that the [adxl345 accelerometer](https://github.com/viam-modules/analog-devices/tree/main/adxl345) on the [Viam Rover 1](/appendix/try-viam/rover-resources/rover-tutorial-1/) **will not** satisfy the movement sensor requirement.
+- it is important to note that the [adxl345 accelerometer](https://github.com/viam-modules/analog-devices/) on the [Viam Rover 1](/appendix/try-viam/rover-resources/rover-tutorial-1/) **will not** satisfy the movement sensor requirement.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

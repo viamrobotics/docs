@@ -11,6 +11,25 @@ aliases:
   - "/components/camera/dual-stream/"
   - "/components/camera/align-color-depth-extrinsics/"
   - "/components/camera/align-color-depth-homography/"
+  - "/components/board/customlinux/"
+  - "/components/board/jetson/"
+  - "/components/board/pca9685/"
+  - "/components/board/ti/"
+  - "/components/gripper/softrobotics/"
+  - "/components/motor/encoded-motor/"
+  - "/components/motor/gpiostepper/"
+  - "/components/motor/roboclaw/"
+  - "/components/movement-sensor/adxl345/"
+  - "/components/movement-sensor/dual-gps-rtk/"
+  - "/components/movement-sensor/gps-nmea-rtk-pmtk/"
+  - "/components/movement-sensor/gps-nmea-rtk-serial/"
+  - "/components/movement-sensor/gps-nmea/"
+  - "/components/movement-sensor/wheeled-odometry/"
+  - "/components/power-sensor/ina219/"
+  - "/components/power-sensor/ina226/"
+  - "/components/sensor/bme280/"
+  - "/components/sensor/ds18b20/"
+  - "/components/sensor/sensirion-sht3xd/"
 layout: "changelog"
 outputs:
   - rss
@@ -21,15 +40,42 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-{{% changelog date="2024-11-05" color="added" title="TFLite model moved to module" %}}
+{{% changelog date="2024-11-12" color="added" title="Builtin models moved to modules" %}}
 
-The `TFLite CPU` ML model service has moved to a [module](https://app.viam.com/module/viam/tflite_cpu).
+The following resource models have moved to modules.
 
-{{% /changelog %}}
-
-{{% changelog date="2024-10-28" color="added" title="Deprecate builtin pi model" %}}
-
-The built-in `pi` sensor and board models have moved to the [`raspberry-pi` module](https://github.com/viam-modules/raspberry-pi).
+| Resource | Model |
+| -------- | ----- |
+| board | [`customlinux`](https://github.com/viam-modules/customlinux/) |
+| board | [`jetson`](https://github.com/viam-modules/nvidia) |
+| board | [`pca9685`](https://github.com/viam-modules/pca/tree/main) |
+| board | [`odroid`](https://github.com/viam-modules/hardkernel) |
+| board | [`ti`](https://github.com/viam-modules/texas-instruments) |
+| board | [`pi`](https://github.com/viam-modules/raspberry-pi) |
+| board | [`orange-pi`](https://github.com/viam-modules/orange-pi) |
+| board | [`upboard`](https://github.com/viam-modules/up) |
+| gripper | [`softrobotics`]() |
+| motor | [`encoded-motor`]() |
+| motor | [`gpiostepper`]() |
+| motor | [`roboclaw`]() |
+| motor | [`tmc5072`](https://github.com/viam-modules/analog-devices) |
+| motor | [`28byj-48`](https://github.com/viam-modules/uln2003) |
+| encoder | [`ams-as5048`](https://github.com/viam-modules/ams/) |
+| movement sensor | [`adxl345`](https://github.com/viam-modules/analog-devices) |
+| movement sensor | [`dual-gps-rtk`](https://github.com/viam-modules/gps/) |
+| movement sensor | [`gps-nmea-rtk-pmtk`](https://github.com/viam-modules/gps/) |
+| movement sensor | [`gps-nmea-rtk-serial`](https://github.com/viam-modules/gps/) |
+| movement sensor | [`gps-nmea`](https://github.com/viam-modules/gps/) |
+| movement sensor | [`imu-wit`](https://github.com/viam-modules/wit-motion) |
+| movement sensor | [`imu-wit-hwt905`](https://github.com/viam-modules/wit-motion) |
+| movement sensor | [`mpu6050`](https://github.com/viam-modules/tdk-invensense) |
+| power sensor | [`ina219`](https://github.com/viam-modules/texas-instruments) |
+| power sensor | [`ina226`](https://github.com/viam-modules/texas-instruments) |
+| sensor | [`bme280`](https://github.com/viam-modules/bosch) |
+| sensor | [`ds18b20`]() |
+| sensor | [`sensirion-sht3xd`](https://github.com/viam-modules/sensirion) |
+| sensor | [`pi`](https://github.com/viam-modules/raspberry-pi) |
+| ML model | [`TFLite CPU`](https://app.viam.com/module/viam/tflite_cpu) |
 
 {{% /changelog %}}
 
@@ -221,7 +267,7 @@ You can use the `fragment_mods` objects to be able to deploy a fragment to a fle
 
 {{% changelog date="2024-03-01" color="added" title="Dual GPS movement sensor" %}}
 
-You can now use the [dual GPS movement sensor component](/components/movement-sensor/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
+You can now use the [dual GPS movement sensor component](https://github.com/viam-modules/gps) to integrate a movement sensor that employs two GPS sensors into your machine.
 The dual GPS movement sensor calculates a compass heading from both GPS sensors, and returns the midpoint position between the two sensors as its position.
 
 {{% /changelog %}}
@@ -391,7 +437,7 @@ To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on cr
 
 {{% changelog date="2023-08-31" color="added" title="Configure a custom Linux board" %}}
 
-You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/components/board/customlinux/).
+You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](https://github.com/viam-modules/customlinux/).
 
 {{% /changelog %}}
 
@@ -1023,7 +1069,7 @@ The base control UI previously always sent 100% power to the base's motors.
 
 {{% changelog date="2023-01-31" color="added" title="New encoder model: AMS AS5048" %}}
 
-The [AMS AS5048](/components/encoder/ams-as5048/) is now supported.
+The [AMS AS5048](https://github.com/viam-modules/ams) is now supported.
 
 {{% /changelog %}}
 
@@ -1063,8 +1109,8 @@ You can now supply kinematic information using URDF files when implementing your
 
 There are two new movement sensor {{< glossary_tooltip term_id="model" text="models" >}}:
 
-- [ADXL345](/components/movement-sensor/adxl345/): A 3-axis accelerometer
-- [MPU-6050](/components/movement-sensor/mpu6050/): A 6-axis accelerometer and gyroscope
+- [ADXL345](https://github.com/viam-modules/analog-devices): A 3-axis accelerometer
+- [MPU-6050](https://github.com/viam-modules/tdk-invensense): A 6-axis accelerometer and gyroscope
 
 {{% /changelog %}}
 

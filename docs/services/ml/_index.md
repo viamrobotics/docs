@@ -55,7 +55,7 @@ See [ML Model Design](/registry/advanced/mlmodel-design/) to design modular ML m
 {{< /alert >}}
 
 {{< alert title="Note" color="note" >}}
-For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
+For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
 {{< /alert >}}
 
 ## Machine learning models from registry
