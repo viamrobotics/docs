@@ -20,7 +20,7 @@ aliases:
 To use Viam, you need to install either [the `viam-server` binary](/installation/viam-server-setup/) or `viam-micro-server`.
 
 `viam-micro-server` is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
-`viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/tree/main).
+`viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/).
 
 {{< alert title="In this page" color="note" >}}
 {{% toc %}}

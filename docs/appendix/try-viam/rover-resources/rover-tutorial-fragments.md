@@ -51,8 +51,8 @@ The fragment adds the following components to your machine's JSON configuration:
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/mpu6050/)
-- A [power sensor](/components/power-sensor/ina219/)
+- An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
+- A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=7c413f24-691d-4ae6-a759-df3654cfe4c8).
@@ -82,8 +82,8 @@ The fragment adds the following components to your machine's JSON configuration:
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/mpu6050/)
-- A [power sensor](/components/power-sensor/ina219/)
+- An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
+- A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=7c413f24-691d-4ae6-a759-df3654cfe4c8).
@@ -114,7 +114,7 @@ The fragment adds the following components to your machine's JSON configuration:
   - Wheel circumference: 217 mm
   - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/adxl345/)
+- An [accelerometer](https://github.com/viam-modules/analog-devices/)
 
 {{% alert title="Info" color="info" %}}
 
@@ -151,8 +151,8 @@ The fragment adds the following components to your machine's JSON configuration:
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/mpu6050/)
-- A [power sensor](/components/power-sensor/ina219/)
+- An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
+- A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=747e1f43-309b-4311-b1d9-1dfca45bd097).
@@ -182,8 +182,8 @@ The fragment adds the following components to your machine's JSON configuration:
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/mpu6050/)
-- A [power sensor](/components/power-sensor/ina219/)
+- An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
+- A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=6208e890-8400-4197-bf0f-e8ddeca4e157).

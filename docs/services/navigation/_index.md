@@ -249,11 +249,11 @@ Here's how to use the following types of measurements:
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take compass heading measurements:
 
-- [gps-nmea](/components/movement-sensor/gps-nmea/) - some GPS hardware only report heading while moving.
-- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps-nmea-rtk-pmtk/) - some GPS hardware only report heading while moving.
-- [gps-nmea-rtk-serial](/components/movement-sensor/gps-nmea-rtk-serial/) - some GPS hardware only report heading while moving.
-- [imu-wit](/components/movement-sensor/imu-wit/)
-- [imu-wit-hwt905](/components/movement-sensor/imu-wit-hwt905/)
+- [gps-nmea](https://github.com/viam-modules/gps/) - some GPS hardware only report heading while moving.
+- [gps-nmea-rtk-pmtk](https://github.com/viam-modules/gps/) - some GPS hardware only report heading while moving.
+- [gps-nmea-rtk-serial](https://github.com/viam-modules/gps/) - some GPS hardware only report heading while moving.
+- [imu-wit](https://github.com/viam-modules/wit-motion/)
+- [imu-wit-hwt905](https://github.com/viam-modules/wit-motion/)
 
 An example of a `CompassHeading` reading:
 
@@ -271,8 +271,8 @@ Then use the movement sensor API's [`GetCompassHeading()`](/appendix/apis/compon
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take orientation measurements:
 
-- [imu-wit](/components/movement-sensor/imu-wit/)
-- [imu-wit-hwt905](/components/movement-sensor/imu-wit-hwt905/)
+- [imu-wit](https://github.com/viam-modules/wit-motion/)
+- [imu-wit-hwt905](https://github.com/viam-modules/wit-motion/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of an `Orientation` reading:
@@ -295,10 +295,10 @@ Then use the movement sensor API's [`GetOrientation()`](/appendix/apis/component
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take angular velocity measurements:
 
-- [imu-wit](/components/movement-sensor/imu-wit/)
-- [imu-wit-hwt905](/components/movement-sensor/imu-wit-hwt905/)
+- [imu-wit](https://github.com/viam-modules/wit-motion/)
+- [imu-wit-hwt905](https://github.com/viam-modules/wit-motion/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
-- [gyro-mpu6050](/components/movement-sensor/mpu6050/)
+- [gyro-mpu6050](https://github.com/viam-modules/tdk-invensense/)
 
 An example of an `AngularVelocity` reading:
 
@@ -316,9 +316,9 @@ Then use the movement sensor API's [`GetAngularVelocity()`](/appendix/apis/compo
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take position measurements:
 
-- [gps-nmea](/components/movement-sensor/gps-nmea/)
-- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps-nmea-rtk-pmtk/)
-- [gps-nmea-rtk-serial](/components/movement-sensor/gps-nmea-rtk-serial/)
+- [gps-nmea](https://github.com/viam-modules/gps/)
+- [gps-nmea-rtk-pmtk](https://github.com/viam-modules/gps/)
+- [gps-nmea-rtk-serial](https://github.com/viam-modules/gps/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of a `Position` reading:
@@ -338,9 +338,9 @@ Then use the movement sensor API's [`GetPosition()`](/appendix/apis/components/m
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take linear velocity measurements:
 
-- [gps-nmea](/components/movement-sensor/gps-nmea/)
-- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps-nmea-rtk-pmtk/)
-- [gps-nmea-rtk-serial](/components/movement-sensor/gps-nmea-rtk-serial/)
+- [gps-nmea](https://github.com/viam-modules/gps/)
+- [gps-nmea-rtk-pmtk](https://github.com/viam-modules/gps/)
+- [gps-nmea-rtk-serial](https://github.com/viam-modules/gps/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
 
 An example of a `LinearVelocity` reading:
@@ -359,10 +359,10 @@ Then use the movement sensor API's [`GetLinearVelocity()`](/appendix/apis/compon
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take linear acceleration measurements:
 
-- [accel-adxl345](/components/movement-sensor/adxl345/)
-- [imu-wit](/components/movement-sensor/imu-wit/)
-- [imu-wit-hwt905](/components/movement-sensor/imu-wit-hwt905/)
-- [gyro-mpu6050](/components/movement-sensor/mpu6050/)
+- [accel-adxl345](https://github.com/viam-modules/analog-devices/)
+- [imu-wit](https://github.com/viam-modules/wit-motion/)
+- [imu-wit-hwt905](https://github.com/viam-modules/wit-motion/)
+- [gyro-mpu6050](https://github.com/viam-modules/tdk-invensense/)
 
 An example of a `LinearAcceleration` reading:
 
