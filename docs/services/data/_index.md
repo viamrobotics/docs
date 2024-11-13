@@ -48,6 +48,7 @@ If the machine restarts before all data is synced, all unsynced data captured si
 
 The service can capture data from multiple resources at the same or different frequencies.
 The service does not impose a lower or upper limit on the frequency of data collection.
+
 However, in practice, high frequency data collection (> 100Hz) requires special considerations on the ESP32.
 
 {{% /tab %}}
