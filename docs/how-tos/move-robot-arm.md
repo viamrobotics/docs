@@ -73,7 +73,7 @@ To get that information, add the following code right after the code that gets t
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
 # Joint Positions of arm1
 my_arm_joint_positions = await arm_1.get_joint_positions()
 print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
@@ -82,7 +82,7 @@ print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go {class="line-numbers linkable-line-numbers"}
+```go
 // Joint Positions of arm1
 myArmJointPositions, err := arm1.JointPositions(context.Background(), nil)
 if err != nil {
@@ -121,7 +121,7 @@ Also pay attention to your surroundings, double-check your code for correctness,
 {{% tab name="Python" %}}
 Add the following line to your import list to be able to assign values to a `JointPositions` data structure:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python
 from viam.proto.component.arm import JointPositions
 ```
 
