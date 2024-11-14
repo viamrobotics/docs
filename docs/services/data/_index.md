@@ -120,15 +120,13 @@ You can also control how local data is deleted if your machine's local storage b
 
 {{< /expand >}}
 
-{{< expand "Capture Directly to MongoDB" >}}
+{{< expand "Capture directly to MongoDB" >}}
 
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
 
-This feature is intended to support use cases like offline dashboards which don't require strong data
-delivery or consistency guarantees.
+This feature is intended to support use cases like offline dashboards which don't require strong data delivery or consistency guarantees.
 
-Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI
-as well as to the Viam capture directory on disk:
+Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the Viam capture directory on disk:
 
 ```json
 {
@@ -170,19 +168,19 @@ as well as to the Viam capture directory on disk:
 }
 ```
 
-When `mongo_capture_config.uri` is configured, Data capture will attempt to connect to the configured MongoDB
-server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection`
-(or their defaults if unconfigured) after enqueuing that data to be written to disk.
+When `mongo_capture_config.uri` is configured, data capture will attempt to connect to the configured MongoDB server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection` (or their defaults if unconfigured) after enqueuing that data to be written to disk.
 
-If writes to MongoDB fail for any reason, Data capture will log an error for each failed write and continue capturing.
+If writes to MongoDB fail for any reason, data capture will log an error for each failed write and continue capturing.
 
-Failing to write to MongoDB doesn't affect capturing & syncing data to cloud storage other than adding capture latency.
+Failing to write to MongoDB doesn't affect capturing and syncing data to cloud storage other than adding capture latency.
 
 {{< alert title="Caution" color="caution" >}}
 
 - Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
-- Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB. This can happen in cases such MongoDB being inaccessible to viam-server or writes timing out.
-- Capturing directly to MongoDB may reduce the maximum frequency that Data capture can capture data due to the added latency of writing to MongoDB. If your use case needs to support very high capture rates, this feature may not be appropriate.
+- Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB.
+  This can happen in cases such as MongoDB being inaccessible to `viam-server` or writes timing out.
+- Capturing directly to MongoDB may reduce the maximum frequency that data capture can capture data due to the added latency of writing to MongoDB.
+  If your use case needs to support very high capture rates, this feature may not be appropriate.
 
 {{< /alert >}}
 
