@@ -352,7 +352,7 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referencef
 You can use any robotic arm with Viam.
 Configure it as an arm component. Then you can move it using the arm API.
 
-[Move a robotic arm →](/tutorials/services/accessing-and-moving-robot-arm/)
+[Move a robotic arm →](/how-tos/move-robot-arm/)
 
   </div>
 </div>

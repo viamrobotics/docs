@@ -21,7 +21,7 @@ cost: 8400
 no_list: true
 ---
 
-With Viam you can move individual components, like [arms](../accessing-and-moving-robot-arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
+With Viam you can move individual components, like [arms](/components/arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
 The [motion service](/services/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
 The service abstracts the lower-level commands away so that instead of passing in a series of joint positions, you can call the `Move()` command with the desired destination and any obstacles, and the service will move your machine to the desired location for you.
 
@@ -49,15 +49,13 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-Make sure you have mastery of the concepts outlined in the first motion tutorial, [Access and Move a Robot Arm](../accessing-and-moving-robot-arm/), before continuing.
+Make sure you have mastery of the concepts outlined in the first motion guide, [Access and Move a Robot Arm](/how-tos/move-robot-arm/), before continuing.
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
-For a helpful recap of the code we previously added, look at [the full code sample from the prior tutorial](../accessing-and-moving-robot-arm/#full-tutorial-code).
-
 ## Configure a robot
 
-The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-machine) should be used for this tutorial.
+The [robot configuration from the prior tutorial](/how-tos/move-robot-arm/) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
