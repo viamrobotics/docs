@@ -180,7 +180,7 @@ Failing to write to MongoDB doesn't affect capturing & syncing data to cloud sto
 
 {{< alert title="Caution" color="caution" >}}
 
-- Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud stroage).
+- Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
 - Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB. This can happen in cases such MongoDB being inaccessible to viam-server or writes timing out.
 - Capturing directly to MongoDB may reduce the maximum frequency that Data Capture can capture data due to the added latency of writing to MongoDB. If your use case needs to support very high capture rates, this feature may not be appropriate.
 
