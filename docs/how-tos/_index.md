@@ -52,11 +52,12 @@ The guides on this page provide solutions for common tasks and workflows. Browse
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Work with sensor data" "3" "INTERMEDIATE" >}}
+{{< how-to-expand "Work with sensor data" "4" "INTERMEDIATE" >}}
 {{< cards >}}
 {{% card link="/how-tos/collect-sensor-data/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-visualize/" noimage="true" %}}
 {{% card link="/how-tos/sensor-data-query-with-third-party-tools/" noimage="true" %}}
+{{% card link="/how-tos/configure-teleop-workspace/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
