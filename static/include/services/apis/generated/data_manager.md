@@ -77,10 +77,10 @@ If you are implementing your own data manager service and add features that have
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myDataManager, err := data_manager.FromRobot(machine, "my_data_manager")
+myDataManagerSvc, err := datamanager.FromRobot(machine, "my_data_manager_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myDataManager.DoCommand(context.Background(), command)
+result, err := myDataManagerSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

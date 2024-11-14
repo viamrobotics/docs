@@ -70,10 +70,10 @@ If you are implementing your own base remote control service and add features th
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBaseRemoteControl, err := base_remote_control.FromRobot(machine, "my_base_remote_control")
+myBaseRemoteControlSvc, err := baseremotecontrol.FromRobot(machine, "my_base_remote_control_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myBaseRemoteControl.DoCommand(context.Background(), command)
+result, err := myBaseRemoteControlSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

@@ -647,10 +647,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myVision, err := vision.FromRobot(machine, "my_vision")
+myVisionSvc, err := vision.FromRobot(machine, "my_vision_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myVision.DoCommand(context.Background(), command)
+result, err := myVisionSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

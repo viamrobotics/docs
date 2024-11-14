@@ -92,7 +92,7 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
-{{% card link="/tutorials/services/accessing-and-moving-robot-arm" noimage="true" %}}
+{{% card link="/how-tos/move-robot-arm/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the arm component with the following services:

@@ -352,7 +352,7 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referencef
 You can use any robotic arm with Viam.
 Configure it as an arm component. Then you can move it using the arm API.
 
-[Move a robotic arm →](/tutorials/services/accessing-and-moving-robot-arm/)
+[Move a robotic arm →](/how-tos/move-robot-arm/)
 
   </div>
 </div>
@@ -362,26 +362,25 @@ Configure it as an arm component. Then you can move it using the arm API.
 <div class="innertabcontentcontainer">
 
 {{< tabs >}}
-{{% tab name="Shell" %}}
+{{% tab name="Python" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="3-20"}
-yo viam-module
-? Create module structure within current directory?  If no, will create a new directory with current directory matching the module name
-you select No
-? Your model triplet in the format namespace:family:modelname acme:rovers:base
-? The language your module will be written in, must match Viam SDK language selected (python currently supported) python
-? The API triplet this module uses (for example: rdk:component:motor). Expectation is that the second element is 'component' or 'service'.
- rdk:component:base
-? Is this a viam-sdk built-in API? Yes
-Will create module scaffolding for module -  base
-API -  rdk:component:base
-Model - acme:rovers:base
-   create base-base/run.sh
-   create base-base/requirements.txt
-   create base-base/src/__main__.py
-   create base-base/src/__init__.py
-   create base-base/src/base.py
-   create base-base/README.md
+```python
+my_button = Generic.from_robot(robot=machine, name="my_button")
+
+# Use a custom command to push the button 5
+command = {"cmd": "push_button", "button": 5}
+result = await my_button.do_command(command)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+myButton, err := generic.FromRobot(machine, "my_button")
+
+// Use a custom command to push the button 5
+command := map[string]interface{}{"cmd": "push_button", "button": 5}
+result, err := myButton.DoCommand(context.Background(), command)
 ```
 
 {{% /tab %}}
@@ -391,9 +390,9 @@ Model - acme:rovers:base
   <div class="explanationtext">
 
 Using the Viam Registry you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
-There are also a variety of community-supplied resources you can use.
+You can use an existing component or service type or create generic resources.
 
-[Create a module →](/how-tos/create-module/)
+[Create a module →](/how-tos/hello-world-module/)
 
   </div>
 </div>
@@ -661,28 +660,25 @@ Use the navigation service to autonomously navigate a machine to defined waypoin
 <div class="innertabcontentcontainer">
 
 {{< tabs >}}
-{{% tab name="Shell" %}}
+{{% tab name="Python" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="3-20"}
-npm install -g generator-viam-module
-yo viam-module
-? Create module structure within current directory?  If no, will create a new directory with current directory matching the module name
-you select No
-? Your model triplet in the format namespace:family:modelname acme:services:slam
-? The language your module will be written in, must match Viam SDK language selected (python currently supported) python
-? The API triplet this module uses (for example: rdk:component:motor). Expectation is that the second element is 'component' or 'service'.
- rdk:services:slam
-? Is this a viam-sdk built-in API? No
-? Is this an new API you will define now? No
-Will create module scaffolding for module -  slam
-API -  rdk:services:slam
-Model - acme:services:slam
-   create slam-slam/run.sh
-   create slam-slam/requirements.txt
-   create slam-slam/src/__main__.py
-   create slam-slam/src/slam/__init__.py
-   create slam-slam/src/slam/slam.py
-   create slam-slam/README.md
+```python
+my_twilio_svc = Generic.from_robot(robot=machine, name="my_twilio_svc")
+
+# Use a custom command to send a text message with Twilio
+command = {"to": "+1 234 567 8901", "body": "Hello world!"}
+result = await my_twilio_svc.do_command(command)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+myTwilioSvc, err := generic.FromRobot(machine, "my_twilio_svc")
+
+// Use a custom command to send a text message with Twilio
+command := map[string]interface{}{"to": "+1 234 567 8901", "body": "Hello world!"}
+result, err := myTwilioSvc.DoCommand(context.Background(), command)
 ```
 
 {{% /tab %}}
@@ -691,7 +687,7 @@ Model - acme:services:slam
 <div class="explanation">
   <div class="explanationtext">
 
-Using the Viam Registry you can turn your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
+Using the Viam Registry you can turn services and your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
 
 [Create a module →](/how-tos/create-module/)
 

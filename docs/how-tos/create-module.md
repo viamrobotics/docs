@@ -175,7 +175,7 @@ In this step, you will code the logic that is unique to your model.
 
 If you are using Golang, use the [Golang Module templates](https://github.com/viam-labs/module-templates-golang) which contain detailed instructions for creating your module.
 
-If you are using Python, you can use the [Viam module generator](https://github.com/viam-labs/generator-viam-module/tree/main) to generate the scaffolding for a module with one resource model.
+If you are using Python, you can use the [Viam module generator](https://github.com/viam-labs/generator-viam-module/) to generate the scaffolding for a module with one resource model.
 
 {{% /alert %}}
 

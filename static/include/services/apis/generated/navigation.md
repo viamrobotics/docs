@@ -559,10 +559,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myNavigation, err := navigation.FromRobot(machine, "my_navigation")
+myNavigationSvc, err := navigation.FromRobot(machine, "my_navigation_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myNavigation.DoCommand(context.Background(), command)
+result, err := myNavigationSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

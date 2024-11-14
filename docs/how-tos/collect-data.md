@@ -191,7 +191,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 {{< expand "Step 4: Configure a sensor" >}}
 
 Search the [sensor models](/components/sensor/#configuration) for a model of sensor that is compatible with your sensor hardware.
-For example, if you have a Sensirion SHT3x-DIS temperature and humidity sensor, you should use the [`sensirion-sht3xd`](https://docs.viam.com/components/sensor/sensirion-sht3xd/) model of sensor.
+For example, if you have a Sensirion SHT3x-DIS temperature and humidity sensor, you should use the [`sensirion-sht3xd`](https://github.com/viam-modules/sensirion/) model of sensor.
 
 If you don't have a physical sensor that can be wired to the pins of a SBC, you can use the [`viam:viam-sensor:telegrafsensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) model which measures computer performance metrics.
 

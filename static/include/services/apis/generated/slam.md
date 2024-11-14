@@ -282,10 +282,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySlam, err := slam.FromRobot(machine, "my_slam")
+mySLAMService, err := slam.FromRobot(machine, "my_slam_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := mySlam.DoCommand(context.Background(), command)
+result, err := mySLAMService.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

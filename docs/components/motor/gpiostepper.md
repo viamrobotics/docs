@@ -15,7 +15,7 @@ usage: 900000
 The `gpiostepper` model of the motor component supports bipolar [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825), [A4988](https://www.pololu.com/product/1182), or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and move the motor one step per pulse.
 
 {{< alert title="Tip" color="tip" >}}
-Viam also supports some more advanced stepper driver chips like the [TMC5072](../tmc5072/) that have their own microcontrollers that handle things like speed and acceleration control.
+Viam also supports some more advanced stepper driver chips like the [TMC5072](https://github.com/viam-modules/analog-devices/) that have their own microcontrollers that handle things like speed and acceleration control.
 {{< /alert >}}
 
 To use a `gpiostepper` motor as a component of your machine, first wire your motor to a suitable stepper motor driver, which is in turn wired to a board.
