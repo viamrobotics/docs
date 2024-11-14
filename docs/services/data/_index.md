@@ -174,7 +174,7 @@ When `mongo_capture_config.uri` is configured, Data Capture will attempt to conn
 server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection`
 (or their defaults if unconfigured) after enqueuing that data to be written to disk.
 
-If writes to MongoDB fail for any resson, Data Capture will log an error for each failed write and continue capturing.
+If writes to MongoDB fail for any reason, Data Capture will log an error for each failed write and continue capturing.
 
 Failing to write to MongoDB doesn't affect capturing & syncing data to cloud storage other than adding capture latency.
 
