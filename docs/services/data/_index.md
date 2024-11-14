@@ -126,7 +126,7 @@ Data capture supports capturing tabular data directly to MongoDB in addition to 
 
 This feature is intended to support use cases like offline dashboards which don't require strong data delivery or consistency guarantees.
 
-Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the Viam capture directory on disk:
+Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
 
 ```json
 {
