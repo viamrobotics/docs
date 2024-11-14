@@ -4,14 +4,13 @@ linkTitle: "Configure a teleop workspace"
 weight: 10
 type: "docs"
 description: "Create and configure a teleop workspace with widgets."
-# images: ["/how-tos/teleop.gif"] #update
 images: ["/how-tos/teleop/full-workspace.png"]
 icon: true
 tags: ["teleop", "configuration"]
 languages: []
 viamresources: ["sensor", "camera", "movement sensor"]
 platformarea: ["viz", "data"]
-level: "Beginner"
+level: "Intermediate"
 date: "2024-11-13"
 # updated: "2024-08-26"  # When the tutorial was last entirely checked
 cost: "0"
@@ -72,7 +71,7 @@ Repeat as many times as necessary.
 - If you have a sensor, select **Stat** to view a single sensor value.
   Enter the name of the sensor for **Sensor name** and enter the key for the value in **Path**, for example `time_unix`.
   Optionally, add **Units** and give the stat a **Widget title**.
-  
+
   Then, add that same sensor as a time series graph.
   Click **Add widget** again and select **Time series**, which allows you to graph sensor values over time.
   Enter the name of the sensor for **Sensor name**.
@@ -110,5 +109,6 @@ Follow more of our how-to guides to do more with the Viam platform:
 {{< cards >}}
 {{% card link="/how-tos/detect-people/" %}}
 {{% card link="/how-tos/drive-rover/" %}}
+{{% card link="/how-tos/train-deploy-ml/" %}}
 {{% card link="/how-tos/upload-data/" %}}
 {{< /cards >}}
