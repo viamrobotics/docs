@@ -160,7 +160,9 @@ Here is a sample configuration that will capture fake sensor readings both to th
       "type": "data_manager",
       "attributes": {
         "mongo_capture_config": {
-          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
+          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000",
+          "database": "my_db", // optional, defaults to "sensorData"
+          "collection": "my_collection" // optional, defaults to "readings"
         }
       }
     }
