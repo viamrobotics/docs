@@ -122,7 +122,7 @@ You can also control how local data is deleted if your machine's local storage b
 
 {{< expand "Capture Directly to MongoDB" >}}
 
-Data Capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
+Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
 
 This feature is intended to support use cases like offline dashboards which don't require strong data
 delivery or consistency guarantees.
@@ -170,11 +170,11 @@ as well as to the Viam capture directory on disk:
 }
 ```
 
-When `mongo_capture_config.uri` is configured, Data Capture will attempt to connect to the configured MongoDB
+When `mongo_capture_config.uri` is configured, Data capture will attempt to connect to the configured MongoDB
 server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection`
 (or their defaults if unconfigured) after enqueuing that data to be written to disk.
 
-If writes to MongoDB fail for any reason, Data Capture will log an error for each failed write and continue capturing.
+If writes to MongoDB fail for any reason, Data capture will log an error for each failed write and continue capturing.
 
 Failing to write to MongoDB doesn't affect capturing & syncing data to cloud storage other than adding capture latency.
 
@@ -182,7 +182,7 @@ Failing to write to MongoDB doesn't affect capturing & syncing data to cloud sto
 
 - Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
 - Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB. This can happen in cases such MongoDB being inaccessible to viam-server or writes timing out.
-- Capturing directly to MongoDB may reduce the maximum frequency that Data Capture can capture data due to the added latency of writing to MongoDB. If your use case needs to support very high capture rates, this feature may not be appropriate.
+- Capturing directly to MongoDB may reduce the maximum frequency that Data capture can capture data due to the added latency of writing to MongoDB. If your use case needs to support very high capture rates, this feature may not be appropriate.
 
 {{< /alert >}}
 
@@ -272,7 +272,7 @@ The following attributes are available for the data management service:
 | `sync_interval_mins` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing. <br> Default: `0.1`, meaning once every 6 seconds. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/services/data/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `maximum_num_sync_threads` | int | Optional | Max number of CPU threads to use for syncing data to the Viam Cloud. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2 so half the number of logical CPUs available to viam-server |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
-| `mongo_capture_config.uri` | string | Optional | The [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) data capture will attempt to write tabular data to after it is enqueued to be written to disk. When non empty, data capture will capture tabular data to the configured MongoDB database & collection at that URI.<br>See  `mongo_capture_config.database` and  `mongo_capture_config.collection` below for database & collection defaults.<br>See [Data Capture Directly To MongoDB](/services/data/#capture-directly-to-mongodb) for an example config.|  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
+| `mongo_capture_config.uri` | string | Optional | The [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) data capture will attempt to write tabular data to after it is enqueued to be written to disk. When non empty, data capture will capture tabular data to the configured MongoDB database & collection at that URI.<br>See  `mongo_capture_config.database` and  `mongo_capture_config.collection` below for database & collection defaults.<br>See [Data capture Directly To MongoDB](/services/data/#capture-directly-to-mongodb) for an example config.|  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `mongo_capture_config.database` | string | Optional | When `mongo_capture_config.uri` is non empty, changes the database data capture will write tabular data to. <br> Default: `"sensorData"`   |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `mongo_capture_config.collection` | string | Optional | When `mongo_capture_config.uri` is non empty, changes the collection data capture will write tabular data to.<br> Default: `"readings"`   |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
