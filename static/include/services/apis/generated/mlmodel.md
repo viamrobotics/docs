@@ -226,7 +226,7 @@ Get the `ResourceName` for this instance of the ML model service with the given 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_mlmodel_svc_name = my_mlmodel.get_resource_name("my_mlmodel_svc")
+my_mlmodel_svc_name = MLModelClient.get_resource_name("my_mlmodel_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.get_resource_name).
