@@ -53,18 +53,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
-  "go.viam.com/rdk/ml"
-  "gorgonia.org/tensor"
+    "go.viam.com/rdk/ml"
+    "gorgonia.org/tensor"
 )
 
 myMLModel, err := mlmodel.FromRobot(machine, "mlmodel-1")
 
 input_tensors := ml.Tensors{
-  "image": tensor.New(
-    tensor.Of(tensor.Uint8),
-    tensor.WithShape(1, 384, 384, 3),
-    tensor.WithBacking(make([]uint8, 1*384*384*3)),
-  ),
+    "image": tensor.New(
+        tensor.Of(tensor.Uint8),
+        tensor.WithShape(1, 384, 384, 3),
+        tensor.WithBacking(make([]uint8, 1*384*384*3)),
+    ),
 }
 
 output_tensors, err := myMLModel.Infer(context.Background(), input_tensors)
