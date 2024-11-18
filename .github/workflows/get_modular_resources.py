@@ -18,7 +18,7 @@ async def connect() -> ViamClient:
     )
     return await ViamClient.create_from_dial_options(dial_options)
 
-# ModelType is an enum and defined to render as int, convert back to string through this 
+# ModelType is an enum and defined to render as int, convert back to string through this
 def model_type_to_str(model_type: int) -> str:
     model_type_map = {
         0: "Unspecified",
@@ -26,12 +26,12 @@ def model_type_to_str(model_type: int) -> str:
         2: "Multi Label Classification",
         3: "Object Detection",
     }
-    
+
     try:
         return model_type_map[model_type]
     except KeyError:
         raise ValueError(f"NEW UNKNOWN MODEL TYPE {model_type} must add to model type map")
-    
+
 def model_framework_to_str(model_framework: int) -> str:
     model_framework_map = {
         0: "Unspecified",
@@ -40,7 +40,7 @@ def model_framework_to_str(model_framework: int) -> str:
         3: "Pytorch",
         4: "ONNX"
     }
-    
+
     try:
         return model_framework_map[model_framework]
     except KeyError:
@@ -70,12 +70,14 @@ async def main():
     for module in module_list:
         if module.visibility == 2:
             for model in module.models:
+                app_url = "https://app.viam.com/module/" + module.public_namespace + "/" + module.name + "/"
                 json_m = {
                     "id": module.module_id + '-' + model.model,
                     "module_id": module.module_id,
                     "total_organization_usage": module.total_organization_usage,
                     "total_robot_usage": module.total_robot_usage,
-                    "url": module.url,
+                    "url": module.url or app_url,
+                    "app_url": app_url,
                     "description": module.description,
                     "model": model.model,
                     "api": model.api,
