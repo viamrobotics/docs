@@ -229,6 +229,13 @@ You must configure a service with a `name` and a `type`:
 - `name`: serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
   You can accept the suggested default name when creating a service or choose a choose any unique name for a service.
   The name must start with a letter or number and can only contain letters, numbers, dashes, and underscores with a max length of 60.
+- `log_configuration`: Specify the log level for a resource. The default log level is `"Info"`. For example:
+
+  ```json
+  "log_configuration": {
+      "level": "Debug"
+  }
+  ```
 
 The other aspects of configuring a service are highly specific to the type of service, review the docs for the service you are interested in:
 
