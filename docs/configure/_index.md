@@ -236,7 +236,7 @@ You must configure a service with a `name` and a `type`:
       "level": "Debug"
   }
   ```
-  
+
 The other aspects of configuring a service are highly specific to the type of service, review the docs for the service you are interested in:
 
 {{< cards >}}
