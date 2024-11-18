@@ -28,7 +28,7 @@ If you have a hobby servo, configure it as a [servo component](/components/servo
 ## Configuration
 
 To use a motor, you need to add it to your machine's configuration.
-Go to your machine's **CONFIGURE** page, and add a model that supports your motor and its [motor driver](https://www.wellpcb.com/what-is-motor-driver.html).
+Go to your machine's **CONFIGURE** page, and add a model that supports your motor and its motor driver.
 
 The following list shows the available motor models.
 For additional configuration information, click on the model name:
