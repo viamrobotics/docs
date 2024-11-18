@@ -216,17 +216,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Assumes you have imported "go.viam.com/api/component/arm/v1" as `componentpb`
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-// Declare an array of values with your desired rotational value for each joint on the arm.
-degrees := []float64{4.0, 5.0, 6.0}
+// Declare an array of values with your desired rotational value (in radians) for each joint on the arm.
+inputs := referenceframe.FloatsToInputs([]float64{0, math.Pi/2, math.Pi})
 
-// Declare a new JointPositions with these values.
-jointPos := &componentpb.JointPositions{Values: degrees}
-
-// Move each joint of the arm to the position these values specify.
-err = myArm.MoveToJointPositions(context.Background(), jointPos, nil)
+// Move each joint of the arm to the positions specified in the above slice
+err = myArm.MoveToJointPositions(context.Background(), inputs, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).

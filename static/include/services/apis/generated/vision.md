@@ -49,17 +49,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myDetectorService, err := vision.FromRobot(machine, "my_detector")
 if err != nil {
-    logger.Error(err)
-    return
+  logger.Error(err)
+  return
 }
 
 // Get detections from the camera output
-detections, err := visService.DetectionsFromCamera(context.Background(), "cam", nil)
+detections, err := myDetectorService.DetectionsFromCamera(context.Background(), "my_camera", nil)
 if err != nil {
-    logger.Fatalf("Could not get detections: %v", err)
+  logger.Fatalf("Could not get detections: %v", err)
 }
 if len(detections) > 0 {
-    logger.Info(detections[0])
+  logger.Info(detections[0])
 }
 ```
 
@@ -142,31 +142,29 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the stream from a camera
-cam, err := camera.FromRobot(machine, "cam")
+myCam, err := camera.FromRobot(machine, "my_camera")
 if err != nil {
-    logger.Error(err)
-    return
+  logger.Error(err)
+  return
 }
-camStream, err := cam.Stream(context.Background())
-
+// Get the stream from a camera
+camStream, err := myCam.Stream(context.Background())
 // Get an image from the camera stream
 img, release, err := camStream.Next(context.Background())
 defer release()
 
 myDetectorService, err := vision.FromRobot(machine, "my_detector")
 if err != nil {
-    logger.Error(err)
-    return
+  logger.Error(err)
+  return
 }
-
 // Get the detections from the image
 detections, err := myDetectorService.Detections(context.Background(), img, nil)
 if err != nil {
-    logger.Fatalf("Could not get detections: %v", err)
+  logger.Fatalf("Could not get detections: %v", err)
 }
 if len(detections) > 0 {
-    logger.Info(detections[0])
+  logger.Info(detections[0])
 }
 ```
 
@@ -247,17 +245,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myClassifierService, err := vision.FromRobot(machine, "my_classifier")
 if err != nil {
-    logger.Error(err)
-    return
+  logger.Error(err)
+  return
 }
-
 // Get the 2 classifications with the highest confidence scores from the camera output
-classifications, err := myClassifierService.ClassificationsFromCamera(context.Background(), "cam", 2, nil)
+classifications, err := myClassifierService.ClassificationsFromCamera(context.Background(), "my_camera", 2, nil)
 if err != nil {
-    logger.Fatalf("Could not get classifications: %v", err)
+  logger.Fatalf("Could not get classifications: %v", err)
 }
 if len(classifications) > 0 {
-    logger.Info(classifications[0])
+  logger.Info(classifications[0])
 }
 ```
 
@@ -339,34 +336,33 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the stream from a camera
-cam, err := camera.FromRobot(machine, "cam")
+myCam, err := camera.FromRobot(machine, "my_camera")
 if err != nil {
-    logger.Error(err)
-    return
+  logger.Error(err)
+  return
 }
-camStream, err := cam.Stream(context.Background())
+// Get the stream from a camera
+camStream, err := myCam.Stream(context.Background())
 if err!=nil {
     logger.Error(err)
     return
 }
-
 // Get an image from the camera stream
 img, release, err := camStream.Next(context.Background())
 defer release()
 
 myClassifierService, err := vision.FromRobot(machine, "my_classifier")
 if err != nil {
-    logger.Error(err)
-    return
+  logger.Error(err)
+  return
 }
 // Get the 2 classifications with the highest confidence scores from the image
 classifications, err := myClassifierService.Classifications(context.Background(), img, 2, nil)
 if err != nil {
-    logger.Fatalf("Could not get classifications: %v", err)
+  logger.Fatalf("Could not get classifications: %v", err)
 }
 if len(classifications) > 0 {
-    logger.Info(classifications[0])
+  logger.Info(classifications[0])
 }
 ```
 
@@ -452,16 +448,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 mySegmenterService, err := vision.FromRobot(machine, "my_segmenter")
 if err != nil {
-    logger.Error(err)
-    return
+  logger.Error(err)
+  return
 }
 // Get the objects from the camera output
-objects, err := mySegmenterService.GetObjectPointClouds(context.Background(), "cam", nil)
+objects, err := mySegmenterService.GetObjectPointClouds(context.Background(), "my_camera", nil)
 if err != nil {
-    logger.Fatalf("Could not get point clouds: %v", err)
+  logger.Fatalf("Could not get point clouds: %v", err)
 }
 if len(objects) > 0 {
-    logger.Info(objects[0])
+  logger.Info(objects[0])
 }
 ```
 
@@ -558,16 +554,18 @@ if err != nil {
 
 // The data to capture and return from the camera
 captOpts := viscapture.CaptureOptions{
-    ReturnImage: true,
-    ReturnDetections: true,
+  ReturnImage: true,
+  ReturnDetections: true,
 }
 // Get the captured data for a camera
-capture, err := visService.CaptureAllFromCamera(context.Background(), "cam", captOpts, nil)
+capture, err := visService.CaptureAllFromCamera(context.Background(), "my_camera", captOpts, nil)
 if err != nil {
-    logger.Fatalf("Could not get capture data from vision service: %v", err)
+  logger.Fatalf("Could not get capture data from vision service: %v", err)
 }
 image := capture.Image
 detections := capture.Detections
+classifications := capture.Classifications
+objects := capture.Objects
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).

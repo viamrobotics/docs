@@ -135,33 +135,6 @@ For built-in service models, any model-specific commands available are covered w
 If you are implementing your own ML model service and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes])
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_mlmodel_svc = MLModelClient.from_robot(robot=machine, "my_mlmodel_svc")
-
-my_command = {
-  "cmnd": "dosomething",
-  "someparameter": 52
-}
-
-await my_mlmodel_svc.do_command(command=my_command)
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.do_command).
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
