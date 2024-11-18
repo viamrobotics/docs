@@ -16,8 +16,8 @@ date: "2024-11-13"
 cost: "0"
 ---
 
-You can use teleop to create a custom workspace where you can visualize data from a machine.
-Follow this guide to learn how to create a custom workspace using teleop, visualizing data from a camera, a sensor, or a movement sensor.
+You can use teleop to create a custom workspace where you can visualize and aggregate data from a machine.
+You can currently visualize data from a camera, a sensor, or a movement sensor.
 
 {{% alert title="In this page" color="info" %}}
 
@@ -51,20 +51,19 @@ Navigate to the **FLEET** page's **TELEOP** tab.
 Create a workspace by clicking **+ Create workspace**.
 Give it a name.
 
-{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill aligncenter" declaredimensions=true alt="Blank teleop page.">}}
+{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Blank teleop page.">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **2. Add widgets**
 
-You are prompted to add a widget to add teleop visualizations to your workspace.
 Click **Add widget** and select the appropriate widget for your machine.
 Repeat as many times as necessary.
 
 - If you have a camera, select **Camera stream**, which allows you to view a camera stream.
   Enter the name of your camera.
 
-- If you have a movement sensor, select a **GPS map**, which allows you to map the location of a machine.
+- If you have a movement sensor, select a **GPS map**, which displays the location of a machine on a map.
   Enter the name of your movement sensor.
   Toggle **Historic positions** to on to see how position has changed over time.
 
