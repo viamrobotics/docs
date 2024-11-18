@@ -75,6 +75,9 @@ The following resource models have moved to modules.
 
 The following models were removed:
 
+<!-- prettier-ignore -->
+| Resource | Model |
+| -------- | ----- |
 | gripper | `softrobotics` |
 | motor | `encoded-motor` |
 | motor | `gpiostepper` |
