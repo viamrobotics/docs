@@ -89,7 +89,7 @@ Now, select a machine with which to make your teleop workspace come to life.
 Select **Monitor** in the top right corner to leave editing mode.
 Click **Select machine** and select your configured machine.
 
-Your workspace now appears like the following depending on which widgets you've configured:
+Your dashboard now shows the configured widgets for the data from your machine:
 
 {{<imgproc src="/how-tos/teleop/full-workspace.png" resize="900x" style="width: 500px" class="fill aligncenter" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode.">}}
 
@@ -109,5 +109,4 @@ Follow more of our how-to guides to do more with the Viam platform:
 {{% card link="/how-tos/detect-people/" %}}
 {{% card link="/how-tos/drive-rover/" %}}
 {{% card link="/how-tos/train-deploy-ml/" %}}
-{{% card link="/how-tos/upload-data/" %}}
 {{< /cards >}}
