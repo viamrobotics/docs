@@ -340,7 +340,7 @@ adjustedArmPoint := currentArmPose.Point()
 adjustedArmPoint.Z += 100.0
 cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
 
-err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referenceframe.NewEmptyWorldState(), nil)
+err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
 ```
 
 {{% /tab %}}
@@ -353,6 +353,11 @@ You can use any robotic arm with Viam.
 Configure it as an arm component. Then you can move it using the arm API.
 
 [Move a robotic arm →](/how-tos/move-robot-arm/)
+
+  </div>
+  <div class="explanationvisual">
+
+{{<gif webm_src="/how-tos/move_to_position.webm" mp4_src="/how-tos/move_to_position.mp4" alt="A robot arm moving to a commanded position.">}}
 
   </div>
 </div>
