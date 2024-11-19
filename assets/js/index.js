@@ -68,71 +68,176 @@ if(main && scrollBtn) {
     observer.observe(main);
 }
 
-function handleSearch(inputSelector) {
-    const searchConfig = {
-        inputSelector: inputSelector,
-        typesenseCollectionName: 'docsearch',
-        typesenseServerConfig: {
-            nodes: [{
-                host: 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
-                port: '443',
-                protocol: 'https'
-            }],
-            apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
-        },
-        typesenseSearchParams: {
-            query_by: 'hierarchy.lvl0,hierarchy.lvl1,url_without_anchor',
-            query_by_weight: '100,50,1',
-            sort_by: "_text_match:desc,item_priority:desc",
-            prioritize_token_position: true,
-            group_by: "url_without_anchor",
-            group_limit: 1
-        },
-        autocompleteOptions: {
-            autoselect: false,
-            debug: false,
-            hint: false
-        }
-    };
+// Inkeep START
 
-    const search = docsearch(searchConfig);
+const INKEEP_API_KEY = "b17e5b4e252d7ce29b48a48a3dcba6fcfdc045680e8ea576";
+const INKEEP_INTEGRATION_ID = "cm3ogfzp4003f29brrf16r6gm";
+const INKEEP_ORGANIZATION_ID = "org_yjUXfeVC1tTVMIoY";
 
-    let opened = false;
-    search.autocomplete.on('autocomplete:shown', (e, a, b, c) => {
-        opened = true;
-    });
-    search.autocomplete.on('autocomplete:closed', () => {
-        opened = false;
-    });
-    let cursorUsed = false;
-    // we can't detect the cursor changing to an empty auto complete entry,
-    // so the only case where getting to search results via Enter will work is
-    // text typed followed by Enter.
-    search.autocomplete.on('autocomplete:cursorchanged', (event, suggestion) => {
-        cursorUsed = true;
-    });
-    // search.autocomplete.on('keydown', (e) => {
-    //     if (opened && !cursorUsed && e.key === 'Enter' && search.input[0].value !== '') {
-    //         const query = encodeURIComponent(search.input[0].value);
-    //         window.location = `${window.location.origin}/search?query=${query}`;
-    //     }
-    // });
+// Get the button element
+const inkeepButton = document.getElementById("chatButton");
+
+// Create a new div element to hold the Inkeep modal and set its id and position
+const inkeepDiv = document.createElement("div");
+inkeepDiv.id = "inkeepModal";
+inkeepDiv.style.position = "absolute";
+document.body.appendChild(inkeepDiv);
+
+const handleClose = () => {
+inkeepWidget.render({
+    ...config,
+    isOpen: false,
+});
+};
+
+const handleOpen = () => {
+inkeepWidget.render({
+    ...config,
+    isOpen: true,
+});
 }
 
-handleSearch('.navbar-nav .td-search-input');
-handleSearch('.td-sidebar__search .td-search-input');
+const config = {
+componentType: "CustomTrigger", // required
+targetElement: inkeepDiv, // required
+properties: {
+    isOpen: false, // required
+    onClose: handleClose, // required
+    onOpen: undefined,
+    baseSettings: {
+    apiKey: INKEEP_API_KEY,
+    integrationId: INKEEP_INTEGRATION_ID,
+    organizationId: INKEEP_ORGANIZATION_ID,
+    primaryBrandColor: "#000000",
+    organizationDisplayName: "Viam AI Bot",
+    //... optional base settings
+    },
+    modalSettings: {
+    // optional InkeepModalSettings
+    },
+    searchSettings: {
+    // optional InkeepSearchSettings
+    },
+    aiChatSettings: {
+        chatSubjectName: "Viam",
+        botAvatarSrcUrl: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
+        botAvatarDarkSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
+        getHelpCallToActions: [
+            {
+                name: "Email",
+                url: "mailto:support@viam.com",
+                icon: {
+                    builtIn: "IoMail"
+                }
+            },
+            {
+                name: "Discord",
+                url: "https://discord.gg/viam",
+                icon: {
+                    builtIn: "FaDiscord"
+                }
+            }
+        ],
+        quickQuestions: [
+            "How to install lightweight version microcontroller?",
+            "How to deploy a person detection model?",
+            "How can I ingest data from machines?",
+            "How to query sensor data with third-party tools?",
+        ],
+    },
+},
+};
 
-// Userflow START
-!function(){var e="undefined"==typeof window?{}:window,r=e.userflow;if(!r){var t="https://js.userflow.com/",n=null;r=e.userflow={_stubbed:!0,load:function(){return n||(n=new Promise((function(r,o){var s=document.createElement("script");s.async=!0;var a=e.USERFLOWJS_ENV_VARS||{};"es2020"===(a.USERFLOWJS_BROWSER_TARGET||function(e){for(var r=[[/Edg\//,/Edg\/(\d+)/,80],[/OPR\//,/OPR\/(\d+)/,67],[/Chrome\//,/Chrome\/(\d+)/,80],[/Safari\//,/Version\/(\d+)/,14],[/Firefox\//,/Firefox\/(\d+)/,74]],t=0;t<r.length;t++){var n=r[t],o=n[0],s=n[1],a=n[2];if(e.match(o)){var u=e.match(new RegExp(s));if(u&&parseInt(u[1],10)>=a)return"es2020";break}}return"legacy"}(navigator.userAgent))?(s.type="module",s.src=a.USERFLOWJS_ES2020_URL||t+"es2020/userflow.js"):s.src=a.USERFLOWJS_LEGACY_URL||t+"legacy/userflow.js",s.onload=function(){r()},s.onerror=function(){document.head.removeChild(s),n=null;var e=new Error("Could not load Userflow.js");console.error(e.message),o(e)},document.head.appendChild(s)}))),n}};var o=e.USERFLOWJS_QUEUE=e.USERFLOWJS_QUEUE||[],s=function(e){r[e]=function(){var t=Array.prototype.slice.call(arguments);r.load(),o.push([e,null,t])}},a=function(e){r[e]=function(){var t,n=Array.prototype.slice.call(arguments);r.load();var s=new Promise((function(e,r){t={resolve:e,reject:r}}));return o.push([e,t,n]),s}},u=function(e,t){r[e]=function(){return t}};s("_setTargetEnv"),s("closeResourceCenter"),s("init"),s("off"),s("on"),s("prepareAudio"),s("registerCustomInput"),s("remount"),s("reset"),s("setBaseZIndex"),s("setCustomInputSelector"),s("setCustomNavigate"),s("setCustomScrollIntoView"),s("setInferenceAttributeFilter"),s("setInferenceAttributeNames"),s("setInferenceClassNameFilter"),s("setResourceCenterLauncherHidden"),s("setScrollPadding"),s("setShadowDomEnabled"),s("setPageTrackingDisabled"),s("setUrlFilter"),s("openResourceCenter"),s("toggleResourceCenter"),a("endAll"),a("endAllFlows"),a("endChecklist"),a("group"),a("identify"),a("identifyAnonymous"),a("start"),a("startFlow"),a("startWalk"),a("track"),a("updateGroup"),a("updateUser"),u("getResourceCenterState",null),u("isIdentified",!1)}}();
+// Embed the widget using the `Inkeep.embed()` function.
+const inkeepWidget = Inkeep().embed(config);
 
-userflow.init("ct_dybdwc2fkna4lmih2zyqb6eune");
-userflow.setResourceCenterLauncherHidden(true);
+// Add event listener to open the Inkeep modal when the button is clicked
+inkeepButton.addEventListener("click", handleOpen);
 
-async function initAndClick() {
-    // unclear why it needs to be called twice but otherwise you need to click the button twice.
-    await userflow.identifyAnonymous({});
-    await userflow.identifyAnonymous({});
-    userflow.openResourceCenter()
-}
+// Create an HTML element that the Inkeep widget will be inserted into.
+const nav = document.querySelector("nav");
+const sidebar = document.getElementById("mobile-search");
 
-// Userflow END
+const inkeepNavDiv = document.createElement("div");
+inkeepNavDiv.id = "navSearchBar";
+nav.appendChild(inkeepNavDiv);
+
+const inkeepSidebarDiv = document.createElement("div");
+inkeepSidebarDiv.id = "sideSearchBar";
+sidebar && sidebar.prepend(inkeepSidebarDiv);
+
+// Function for initializating the widget.
+const addInkeepWidget = ({
+  targetElement,
+  stylesheetUrls,
+  isShortcutKeyEnabled,
+}) => {
+  // Embed the widget using the `Inkeep.embed()` function.
+  const inkeepWidget = Inkeep().embed({
+    componentType: "SearchBar",
+    targetElement,
+    properties: {
+      baseSettings: {
+        apiKey: INKEEP_API_KEY,
+        integrationId: INKEEP_INTEGRATION_ID,
+        organizationId: INKEEP_ORGANIZATION_ID,
+        primaryBrandColor: "#000000", // your brand color, widget color scheme is derived from this
+        organizationDisplayName: "Viam AI Bot",
+        // ...optional settings
+        theme: {
+          stylesheetUrls,
+          // ...optional settings
+        },
+      },
+      modalSettings: {
+        // optional settings
+        isShortcutKeyEnabled,
+      },
+      searchSettings: {
+        // optional settings
+      },
+      aiChatSettings: {
+        chatSubjectName: "Viam",
+        botAvatarSrcUrl: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
+        botAvatarDarkSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
+        getHelpCallToActions: [
+            {
+                name: "Email",
+                url: "mailto:support@viam.com",
+                icon: {
+                    builtIn: "IoMail"
+                }
+            },
+            {
+                name: "Discord",
+                url: "https://discord.gg/viam",
+                icon: {
+                    builtIn: "FaDiscord"
+                }
+            }
+        ],
+        quickQuestions: [
+            "How to install lightweight version microcontroller?",
+            "How to deploy a person detection model?",
+            "How can I ingest data from machines?",
+            "How to query sensor data with third-party tools?",
+        ],
+      },
+    },
+  });
+};
+
+sidebar &&
+  addInkeepWidget({
+    targetElement: document.getElementById("sideSearchBar"),
+    // stylesheetUrls: ['/path/to/stylesheets'], // optional
+    isShortcutKeyEnabled: false,
+  });
+
+addInkeepWidget({
+  targetElement: document.getElementById("navSearchBar"),
+//   stylesheetUrls: ['/path/to/stylesheets'], // optional
+  isShortcutKeyEnabled: true,
+});
+
+// Inkeep END

@@ -19,6 +19,10 @@
 </script>
 {{ end }}
 
+<!-- INKEEP start -->
+<script src="https://unpkg.com/@inkeep/uikit-js@0.3.18/dist/embed.js" type="module"></script>
+<!-- INKEEP end -->
+
 <!-- START script for lazy loading -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 {{ $jsLozad := resources.Get "js/lozad.js" }}
@@ -103,7 +107,7 @@ window.markmap = {
     integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous'
     {{ printf "onload='renderMathInElement(%s, %s);'" (( .Site.Params.katex.html_dom_element | default "document.body" ) | safeJS ) ( printf "%s" ( $.Site.Params.katex.options | jsonify )) | safeHTMLAttr }}></script>
 {{ end }}
-<script src="https://cdn.jsdelivr.net/npm/typesense-docsearch.js@1/dist/cdn/docsearch.min.js"></script>
+
 
 {{ $jsIndex := resources.Get "js/index.js" }}
 {{ $jsPrismViam := resources.Get "js/prism.js" }}
