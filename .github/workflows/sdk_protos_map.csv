@@ -4,6 +4,7 @@
 arm,GetEndPosition,,get_end_position,EndPosition,endPosition
 arm,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition
 arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJointPositions
+arm,MoveThroughJointPositions,,,MoveThroughJointPositions,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions
 arm,GetKinematics,,get_kinematics,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:

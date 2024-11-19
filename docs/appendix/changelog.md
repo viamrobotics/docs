@@ -86,6 +86,10 @@ The following models were removed:
 
 {{% /changelog %}}
 
+{{% changelog date="2024-11-05" color="added" title="MoveThroughJointPositions to arm interface" %}}
+The [arm interface](/appendix/apis/components/arm/) now includes a [MoveThroughJointPositions](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm) method that moves an arm through an ordered array of joint positions.
+{{% /changelog %}}
+
 {{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
 
 You can now set how long data collected by a component should remain stored in the Viam Cloud in the component's data capture configuration.
