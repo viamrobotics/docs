@@ -57,7 +57,7 @@ This means you can add, modify, and remove a modular resource instance from a ru
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
-#### Conditional reconfiguration
+#### Maintenance window
 
 If you only want to apply configuration updates under certain conditions, you can create a sensor with your conditions.
 The sensor must return a true value when it is safe to update and a false value otherwise.
