@@ -307,9 +307,12 @@ Capture at least 10 images of anything you want your machine to recognize.
 {{< expand "For more tips and tricks on improving model accuracy, click here." >}}
 
 - **More data means better models:** Incorporate more data from varying environments, such as lighting conditions or distances, to improve your model’s overall performance.
-- **Include counterexamples:** Include images with and without the object you’re looking to classify. This helps the model distinguish the target object from the background and reduces the chances of false positives by teaching it what the object is not.
-- **Avoid class imbalance:** Don’t train excessively on one specific type or class, make sure each category has a roughly equal number of images. For instance, if you're training a dog detector, include images of various dog breeds to avoid bias towards one breed. An imbalanced dataset can lead the model to favor one class over others, reducing its overall accuracy.
-- **Match your training images to your intended use case:** Use images that reflect the quality and conditions of your production environment. For example, if you plan to use a low-quality camera in production, train with low-quality images. Similarly, if your model will run all day, capture images in both daylight and nighttime conditions.
+- **Include counterexamples:** Include images with and without the object you’re looking to classify.
+  This helps the model distinguish the target object from the background and reduces the chances of false positives by teaching it what the object is not.
+- **Avoid class imbalance:** Don’t train excessively on one specific type or class, make sure each category has a roughly equal number of images.
+  For instance, if you're training a dog detector, include images of various dog breeds to avoid bias towards one breed. An imbalanced dataset can lead the model to favor one class over others, reducing its overall accuracy.
+- **Match your training images to your intended use case:** Use images that reflect the quality and conditions of your production environment.
+  For example, if you plan to use a low-quality camera in production, train with low-quality images. Similarly, if your model will run all day, capture images in both daylight and nighttime conditions.
 - **Vary your angles:** Have image examples from every angle that the model will see in normal use.
 - **Ensure labelling accuracy:** Make sure the labels or bounding box annotations you give are accurate.
 
