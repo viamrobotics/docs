@@ -61959,13 +61959,13 @@ const inkeepWidget = window.Inkeep().embed({
 sidebar &&
 addInkeepWidget({
   targetElement: document.getElementById("sideSearchBar"),
-  stylesheetUrls: ['/css/inkeep.css'],
+  stylesheetUrls: ['https://docs.viam.com/css/inkeep.css'],
   isShortcutKeyEnabled: false,
 });
 
 addInkeepWidget({
   targetElement: document.getElementById("navSearchBar"),
-  stylesheetUrls: ['/css/inkeep.css'],
+  stylesheetUrls: ['https://docs.viam.com/css/inkeep.css'],
   isShortcutKeyEnabled: true,
 });
 
