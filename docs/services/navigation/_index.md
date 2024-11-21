@@ -181,7 +181,7 @@ Add a [nested reference frame](/services/frame-system/nested-frame-config/) conf
 - From the left-hand menu, select your base.
 - Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 
-  {{<imgproc src="/services/navigation/select-base-frame.png" resize="300x" style="width: 500px" alt="Frame card for a base with the default reference frame settings">}}
+  {{<imgproc src="/services/navigation/select-base-frame.png" resize="700x" style="width: 300px" alt="Frame card for a base with the default reference frame settings">}}
 
 - Keep the `parent` frame as `world`.
   Select the **Geometry** dropdown menu.
@@ -191,7 +191,7 @@ Add a [nested reference frame](/services/frame-system/nested-frame-config/) conf
 
   For example, you would configure a box-shaped base with dimensions of 100mm x 100mm x 100mm (l x h x w) as follows:
 
-  {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="300x" style="width: 500px" alt="The frame card for the base in the Viam app config builder.">}}
+  {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="700x" style="width: 300px" alt="The frame card for the base in the Viam app config builder.">}}
 
 - Next, select your movement sensor from the left-hand menu. Click on the **Parent** menu and select your base component.
 - Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
@@ -199,7 +199,7 @@ Add a [nested reference frame](/services/frame-system/nested-frame-config/) conf
 
   For example, you would configure a movement sensor mounted 200mm on top of your base as follows:
 
-  {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="300x" style="width: 500px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
+  {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="700x" style="width: 300px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
 
 You can also adjust the **Orientation** and **Geometry** of your movement sensor or base, if necessary.
 See [the frame system service](/services/frame-system/#configuration) for instructions.
@@ -227,9 +227,9 @@ The [navigation service API](/appendix/apis/services/navigation/) supports the f
 
 After configuring the navigation service for your machine, navigate to the **CONTROL** tab of the machine's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
 
-Here, you can toggle the mode of the service between **Manual** and **Waypoint** to start and stop navigation, add waypoints and obstacles, and view the position of your rover base on a map:
+Here, you can add waypoints and obstacles and view the position of your rover base on a map:
 
-![An example control interface for a navigation service in the Viam app Control Tab.](/services/navigation/navigation-control-card.png)
+{{<imgproc src="/services/navigation/navigation-control-card.png" resize="900x" style="width: 700px" alt="An example control interface for a navigation service in the Viam app Control Tab.">}}
 
 ## Navigation concepts
 
