@@ -31,9 +31,7 @@ You can currently visualize data from a camera, a sensor, or a movement sensor.
 
 Make sure your machine has at least one of the following:
 
-- A [camera](/components/camera/)
-- A [movement sensor](/components/movement-sensor/)
-- A [sensor](/components/sensor/)
+- A camera, movement sensor, sensor, base, arm, board, gantry, gripper, motor or servo
 
 See [configure a machine](/how-tos/configure/) for more information.
 
