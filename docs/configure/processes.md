@@ -33,7 +33,7 @@ In the process configuration panel, configure the attributes for your process:
 | Arguments (`args`) | string[]  | Optional | Arguments to follow the command. |
 | Working directory (`cwd`) | string  | Optional | Where you want the process to execute. Defaults to the directory where `viam-server` executes. |
 | `username` (not available in builder mode) | string | Optional | Example: `"username": "ubuntu"`. |
-| `env` (not available in builder mode) | Map<string, string> | Optional | Environment variables for the process. Example: `"environment": { "SVC_API_KEY":"VALUE" }`. |
+| `env` (not available in builder mode) | Map<string, string> | Optional | Environment variables for the process. Environment variables are encrypted in transit but are stored in plain text in the configuration file that resides on the machine. Example: `"environment": { "SVC_API_KEY":"VALUE" }`. |
 | Logging (`log`) | boolean | Optional | Toggle logging of errors and other messages on or off. <br>Default: `false`. |
 | Execute once (`one_shot`) | boolean | Optional     | Toggle whether to execute the command just once or keep running the process indefinitely.<ul><li>If `true`, the process executes once at `viam-server` startup. Until the process completes, `viam-server` startup is blocked and the machine appears offline in the [Viam app](https://app.viam.com). This machine should only be used for quick processes.</li><li>If `false`, the process continues to run and is restarted if the process crashes or is killed. The process does not block `viam-server`.</li></ul> Default: `false`. |
 
