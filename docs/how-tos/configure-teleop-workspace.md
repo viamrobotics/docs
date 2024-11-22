@@ -60,23 +60,6 @@ Give it a name.
 Click **Add widget** and select the appropriate widget for your machine.
 Repeat as many times as necessary.
 
-- If you have a camera, select **Camera stream**, which allows you to view a camera stream.
-  Enter the name of your camera.
-
-- If you have a movement sensor, select a **GPS map**, which displays the location of a machine on a map.
-  Enter the name of your movement sensor.
-  Toggle **Historic positions** to on to see how position has changed over time.
-
-- If you have a sensor, select **Stat** to view a single sensor value.
-  Enter the name of the sensor for **Sensor name** and enter the key for the value in **Path**, for example `time_unix`.
-  Optionally, add **Units** and give the stat a **Widget title**.
-
-  Then, add that same sensor as a time series graph.
-  Click **Add widget** again and select **Time series**, which allows you to graph sensor values over time.
-  Enter the name of the sensor for **Sensor name**.
-  Give the graph a line title and enter the key for the sensor value in **Path**, for example `time_unix`.
-  Add more lines if your sensor measures multiple values.
-
 Now your workspace setup is complete:
 
 {{<imgproc src="/how-tos/teleop/configured-workspace.png" resize="700x" style="width: 500px" class="fill aligncenter" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets.">}}
