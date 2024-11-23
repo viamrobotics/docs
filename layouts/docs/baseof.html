@@ -32,7 +32,7 @@
             {{ if ne .Params.noedit true }}
               {{ partial "edit-on-github.html" . }}
             {{ end }}
-            {{ if not .IsHome }}
+            {{ if and (not .IsHome) (not .Params.overview) }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ end }}
             {{ block "main" . }}{{ end }}
