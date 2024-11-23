@@ -96,7 +96,7 @@
     </div>
     </a>
   {{- else -}}
-    {{- errorf "Card has a bad link: %s" $link -}}
+    {{- warnf "Card has a bad link: %s" $link -}}
   {{- end -}}
  {{- end -}}
 </div>
