@@ -22,8 +22,14 @@ import numpy as np
 
 my_mlmodel = MLModelClient.from_robot(robot=machine, name="my_mlmodel_service")
 
-nd_array = np.array([1, 2, 3], dtype=np.float64)
-input_tensors = {"0": nd_array}
+output_tensors = await my_mlmodel.infer(input_tensors)
+
+image_data = np.zeros((1, 384, 384, 3), dtype=np.uint8)
+
+# Create the input tensors dictionary
+input_tensors = {
+    "image": image_data
+}
 
 output_tensors = await my_mlmodel.infer(input_tensors)
 ```
@@ -46,7 +52,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-input_tensors := ml.Tensors{"0": tensor.New(tensor.WithShape(1, 2, 3), tensor.WithBacking([]int{1, 2, 3, 4, 5, 6}))}
+import (
+    "go.viam.com/rdk/ml"
+    "gorgonia.org/tensor"
+)
+
+myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
+
+input_tensors := ml.Tensors{
+    "image": tensor.New(
+        tensor.Of(tensor.Uint8),
+        tensor.WithShape(1, 384, 384, 3),
+        tensor.WithBacking(make([]uint8, 1*384*384*3)),
+    ),
+}
 
 output_tensors, err := myMLModel.Infer(context.Background(), input_tensors)
 ```
@@ -97,6 +116,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
 metadata, err := myMLModel.Metadata(context.Background())
 ```
 
