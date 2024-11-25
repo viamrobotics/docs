@@ -51,7 +51,7 @@ For other use cases, consider [creating custom functionality with a module](/how
 
 {{< alert title="Add support for other models" color="tip" >}}
 ML models must be designed in particular shapes to work with the `mlmodel` [classification](/services/vision/mlmodel/) or [detection](/services/vision/mlmodel/) model of Viam's [vision service](/services/vision/).
-See [ML Model Design](/registry/advanced/mlmodel-design/) to design modular ML model service with models that work with vision.
+See [ML Model Design](/registry/advanced/mlmodel-design/) to design a modular ML model service with models that work with vision.
 {{< /alert >}}
 
 {{< alert title="Note" color="note" >}}
