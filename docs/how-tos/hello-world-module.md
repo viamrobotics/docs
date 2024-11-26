@@ -79,27 +79,43 @@ print("Hello, World! The latest random number is ", number, ".")
 ```
 
 {{% /tab %}}
-
-<!-- TODO add back in when generator supports Go
+{{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 // test.go opens an image and prints a random number
 package main
 
-import "fmt"
-import "math/rand"
+import (
+  "os"
+  "os/exec"
+  "fmt"
+  "math/rand"
+)
 
 func main() {
 
+  // TODO: Replace path string with path to where you saved your photo
+  imagePath := "/Users/jessamyt/Downloads/hello-world.jpg"
+  file, err := os.Open(imagePath)
+  if err != nil {
+    fmt.Println("Error opening image:", err)
+    return
+  }
+  defer file.Close()
+
+  // "open" works on macOS.
+  // For Linux, replace "open" with "xdg-open".
+  err = exec.Command("open", imagePath).Start()
+  if err != nil {
+    fmt.Println("Error opening image viewer:", err)
+  }
+
   number := rand.Float64()
   fmt.Println("Hello, World! The latest random number is ", number, ".")
-
-  // TODO
 }
 ```
 
--->
-
+{{% /tab %}}
 {{< /tabs >}}
 
 1.  Replace the path in the script above with the path to where you saved your photo.
@@ -120,16 +136,25 @@ pip install Pillow
 python3 test.py
 ```
 
+The image you saved should open on your screen, and a random number should print to your terminal.
+
+In later steps, the module generator will create a new virtual environment with required dependencies, so you can deactivate the one you just ran the test script in:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+deactivate
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+go run test.go
+```
+
+The image you saved should open on your screen, and a random number should print to your terminal.
+
 {{% /tab %}}
 {{< /tabs >}}
-
-    The image you saved should open on your screen, and a random number should print to your terminal.
-
-1.  In later steps, the module generator will create a new virtual environment with required dependencies, so you can deactivate the one you just ran the test script in:
-
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-    deactivate
-    ```
 
 ## Choose an API to implement
 
@@ -210,10 +235,13 @@ You need to add some sensor-specific code to support the sensor component.
     - Enable cloud build: `No`
     - Register module: `No`
 
-1.  Open <file>temporary/src/main.py</file>.
-    Copy the sensor class definition, from `class HelloSensor(Sensor, EasyResource)` through the `get_readings()` function definition (lines 15-65).
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-    Open the <file>hello-world/src/main.py</file> file you generated earlier, and paste the sensor class definition in after the camera class definition, above `if __name__ == "__main__":`.
+3.  Open <file>temporary/src/main.py</file>.
+    Copy the sensor class definition, from `class HelloSensor(Sensor, EasyResource)` through the `get_readings()` function definition (lines 15-65).<br><br>
+
+    Open the <file>hello-world/src/main.py</file> file you generated earlier, and paste the sensor class definition in after the camera class definition, above `if __name__ == "__main__":`.<br><br>
 
 1.  Change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
 
@@ -230,8 +258,62 @@ You need to add some sensor-specific code to support the sensor component.
 
     Save the <file>hello-world/src/main.py</file> file.
 
-1.  Open <file>temporary/meta.json</file> and copy the model information.
-    For example:
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+3. Open <file>temporary/main.go</file>.
+   Copy the three lines that add the sensor model from the registry:<br><br>
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="29"}
+    if err = helloWorld.AddModelFromRegistry(ctx, sensor.API, sensor.HelloSensor); err != nil {
+        return err
+    }
+   ```
+
+   Paste them into the <file>hello-world/main.go</file> file you generated earlier, after the lines that add the HelloCamera model.
+
+   Edit `if err = helloWorld.AddModelFromRegistry(ctx, camera.API, models.HelloCamera); err != nil {` to the following:<br><br>
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="25"}
+   if err = helloWorld.AddModelFromRegistry(ctx, camera.API, camera.HelloCamera); err != nil {
+       return err
+   }
+   ```
+
+   Save the file.<br><br>
+
+1. Edit the file structure:<br><br>
+
+   1. Change the name of <file>hello-world/models/module.go</file> to <file>hello-camera.go</file> and move it into a new folder called `hellocamera` so you have <file>hello-world/hellocamera/hello-camera.go</file>.<br><br>
+
+      In the first line of <file>hello-camera.go</file>, change `package models` to `package hellocamera`.<br><br>
+
+   1. Change the name of <file>temporary/models/module.go</file> to <file>hello-sensor.go</file> and move it into a new folder within <file>hello-world<file> called `hellosensor` so you have <file>hello-world/hellosensor/hello-sensor.go</file>.<br><br>
+
+      In the first line of <file>hello-sensor.go</file>, change `package models` to `package hellosensor`.<br><br>
+
+   1. Edit the imports in <file>hello-world/main.go</file> to remove `"hello-world/models"` and replace it with the following:<br><br>
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="5"}
+   "hello-world/hellocamera"
+   "hello-world/hellosensor"
+   ```
+
+1. Edit `temporary` to `hello-world` on line 14 of <file>hello-world/hellosensor/hello-sensor.go</file>, so it looks like this (but with your org ID in place of `jessamy`):<br><br>
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="14"}
+   HelloSensor      = resource.NewModel("jessamy", "hello-world", "hello-sensor")
+   ```
+
+   Change both instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
+
+   Search for any other instances of `temporary` in the rest of the <file>hello-world/hellosensor/hello-sensor.go</file> and replace each with `helloWorld`.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+6.  Open <file>temporary/meta.json</file> and copy the model information.
+    For example:<br><br>
 
     ```json {class="line-numbers linkable-line-numbers" data-start="8"}
     {
@@ -240,11 +322,11 @@ You need to add some sensor-specific code to support the sensor component.
     }
     ```
 
-1.  Open <file>hello-world/meta.json</file> and paste the sensor model into the model list.
+1.  Open <file>hello-world/meta.json</file> and paste the sensor model into the model list.<br><br>
 
-    Edit the `description` to accurately include both models.
+    Edit the `description` to include both models.<br><br>
 
-    Change `temporary` to `hello-world`.
+    Change `temporary` to `hello-world`.<br><br>
 
     The file should now resemble the following:
 
@@ -391,11 +473,157 @@ You don't need to edit any of the validate or configuration methods because you'
 {{< /expand >}}
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+### Implement the camera API
+
+First, implement the camera API methods by editing the camera class definition:
+
+1. Add the following to the list of imports at the top of <file>hello-world/models/hello-camera.go</file>:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="7"}
+   "os"
+   "reflect"
+   ```
+
+1. In the test script you hard-coded the path to the image.
+   For the module, let's make the path a configurable attribute so you or other users of the module can set the path from which to get the image.
+
+   Edit the `type Config struct` definition, replacing the comments with the following:
+
+   ```go {class="line-numbers" data-start="31"}
+    type Config struct {
+        resource.AlwaysRebuild
+        ImagePath string `json:"image_path"`
+    }
+   ```
+
+   This adds the `image_path` attribute and causes the resource to rebuild each time the configuration is changed.
+
+1. Delete the `Reconfigure()` function entirely, since the camera will rebuild instead of reconfiguring.
+
+1. We are not providing a default image but rely on the end user to supply a valid path to an image when configuring the resource.
+   This means `image_path` is a required attribute.
+   Add the following code to the `Validate` function to throw an error if `image_path` isn't configured or isn't a string:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="35"}
+    func (conf *Config) Validate(path string) ([]string, error) {
+        var deps []string
+        if conf.ImagePath == "" {
+            return nil, resource.NewConfigValidationFieldRequiredError(path, "image_path")
+        }
+        if reflect.TypeOf(conf.ImagePath) != "string" {
+            return nil, errors.New("image_path must be a string.")
+        }
+        return deps, nil
+    }
+   ```
+
+1. The module generator created a stub for the `Read` function we want to implement:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="101" }
+    func (s *helloWorldHelloCamera) Read(ctx context.Context) (image.Image, func(), error) {
+        panic("not implemented")
+    }
+   ```
+
+   You need to replace `panic("not implemented")` with code to actually implement the method:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="86" }
+    file, err := os.Open(ImagePath)
+    if err != nil {
+        fmt.Println("Error opening image:", err)
+        return
+    }
+    defer file.Close()
+    return file
+   ```
+
+1. Delete the methods that have "rt" in them, since they are not applicable to this camera.
+
+1. You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
+   If this camera returned a camera stream instead of a single static file, we would have implemented `Stream` instead of `Read`.
+
+   <!-- TODO: Module generator will be updated. At that point, these steps to edit the `panic` lines can be removed. -->
+
+   However, you do need to edit the return statements to return empty structs that match the API.
+   Edit these methods so they look like this:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="110" }
+    func (s *helloWorldHelloCamera) Stream(ctx context.Context, errHandlers ...gostream.ErrorHandler) (gostream.VideoStream, error) {
+   return nil, errors.New("not implemented")
+   }
+
+   func (s *helloWorldHelloCamera) Images(ctx context.Context) ([]camera.NamedImage, resource.ResponseMetadata, error) {
+       return []camera.NamedImage{}, resource.ResponseMetadata{}, errors.New("not implemented")
+   }
+
+   func (s *helloWorldHelloCamera) NextPointCloud(ctx context.Context) (pointcloud.PointCloud, error) {
+       return nil, errors.New("not implemented")
+   }
+
+   func (s *helloWorldHelloCamera) Properties(ctx context.Context) (camera.Properties, error) {
+       return camera.Properties{}, errors.New("not implemented")
+   }
+
+   func (s *helloWorldHelloCamera) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+       return map[string]interface{}{}, errors.New("not implemented")
+   }
+   ```
+
+1. Save the file.
+
+### Implement the sensor API
+
+{{< expand "Click if you are also creating a sensor component" >}}
+
+Now edit the sensor class definition to implement the sensor API.
+You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
+
+1. Add `"math/rand"` to the list of imports in <file>hello-sensor.go</file> for the random number generation.
+
+1. The sensor API only has one resource-specific method, `Readings`:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="93" }
+    func (s *helloWorldHelloSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+        panic("not implemented")
+    }
+   ```
+
+   Replace `panic("not implemented")` with the following code:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="94" }
+   number := rand.Float64()
+   return map[string]interface{}{
+      "random_number": number,
+   }, nil
+   ```
+
+1. In the `NewClientFromConn` definition, replace `panic("not implemented")` with the following:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="90"}
+   return nil, errUnimplemented
+   ```
+
+1. In the `DoCommand` definition, replace `panic("not implemented")` with the following:
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="101"}
+   return map[string]interface{}{}, errors.New("not implemented")
+   ```
+
+1. Save the file.
+
+{{< /expand >}}
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ## Test your module
 
 With the implementation written, it's time to test your module locally:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 1. Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
 
@@ -406,7 +634,23 @@ With the implementation written, it's time to test your module locally:
    This environment is where the local module will run.
    `viam-server` does not need to run inside this environment.
 
-1. Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+1. Use Go to compile your module into a single executable:
+
+   - Navigate to your <file>hello-world</file> module directory in your terminal.
+   - Run `make` and then `make setup` to install dependencies.
+   - Run `go build` to compile your entry point (main program) file <file>main.go</file> and all other <file>.go</file> files in the directory, building your module and all dependencies into a single executable file.
+
+   Compiling your Go module also generates the `go.mod` and `go.sum` files that define dependency resolution in Go.
+
+   See the [Go compilation documentation](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) for more information.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+2. Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
 
 1. In the Viam app, navigate to your machine's **CONFIGURE** page.
 
