@@ -318,13 +318,37 @@ See [Configure a Trigger](/configure/triggers/) for more information on triggers
 
 ### Network
 
-Expand a part's configuration card to open its network configuration interface:
+You can configure your machine's bind address and heartbeat window.
 
-{{<imgproc src="/build/configure/network.png" resize="x400" style="width: 300px" declaredimensions=true alt="The network configuration interface on a part card of a machine.">}}
+On your machine's **CONFIGURE** tab, click the **+** button and select **Network**.
 
-You can configure the address `viam-server` binds to for accepting connections.
-By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
-You can also set the [heartbeat](/appendix/apis/sessions/#heartbeats) window.
+{{< tabs >}}
+{{% tab name="Builder UI" %}}
+
+In the **network** panel, configure your **Bind address** and your **Heartbeat window**.
+
+{{% /tab %}}
+{{% tab name="JSON" %}}
+
+```json
+  ... // components {...}, services {...},
+  "network": {
+    "bind_address": "0.0.0.0:8080",
+    "sessions": {
+      "heartbeat_window": "30s" // Changes heartbeat window to 30 seconds
+    }
+  },
+  ...
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<!-- prettier-ignore -->
+| Attribute | Type | Required? | Description |
+| --------- | ---- | --------- | ----------- |
+| `bind_address` | string | Optional | The address `viam-server` binds to for accepting connections. Default: `"0.0.0.0:8080"` when managed by the Viam app or when authentication and TLS are enabled. |
+| `sessions.heartbeat_window` | string | Optional | A _heartbeat_ is a signal that indicates machine connectivity. Heartbeats are sent automatically from Viam's SDKs unless you disable them with the session management API or session management is not implemented by the server in question. Heartbeats are automatically sent at an interval that is one fifth of the heartbeat window. Default: `"2s"`. Use a higher value in high-latency networks. Requires a restart to take effect. |
 
 ## Configuration History
 

@@ -25,7 +25,7 @@ When a machine loses its connection to LAN or WAN, all client sessions will time
 
 ## Client session timeout and end
 
-When your client cannot connect to your machine's `viam-server` instance, `viam-server` will end any current client [_sessions_](/appendix/apis/sessions/) on this machine and all client operations will [timeout automatically](/appendix/apis/sessions/#heartbeats) and halt: any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the machine until the connection is restored.
+When your client cannot connect to your machine's `viam-server` instance, `viam-server` will end any current client [_sessions_](/appendix/apis/sessions/) on this machine and all client operations will [timeout automatically](/appendix/apis/sessions/) and halt: any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the machine until the connection is restored.
 
 To disable the default behavior and manage resource timeout and reconfiguration over a networking session yourself, you can [disable the default behavior](/appendix/apis/sessions/#disable-default-session-management) of session management, then use [Viam's SDKs](/sdks/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
 

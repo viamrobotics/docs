@@ -59,59 +59,13 @@ If a resource was used by client A and then by client B, and client A disconnect
 
 A disconnected client will attempt to establish a new session immediately prior to the next operation it performs.
 
-#### Heartbeats
-
-A _heartbeat_ is a signal that indicates machine connectivity.
-Essentially, heartbeats are a client's way of letting a machine know that they are still connected.
-
-Heartbeats are sent automatically from Viam's SDKs unless you disable them with the session management API or session management is not implemented by the server in question.
-Heartbeats are automatically sent at an interval that is one fifth of the heartbeat window.
-For example, if the heartbeat window is 5 seconds, clients will each send a heartbeat every 1 second.
-
-You can adjust the heartbeat window in the configuration of your machine:
-
-{{< tabs >}}
-{{% tab name="Builder UI" %}}
-
-Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
-Find the card belonging to the appropriate {{< glossary_tooltip term_id="part" text="part" >}} of your machine in the nested resource tree.
-Click the card to expand it, then click **Set heartbeat window** to adjust the **Heartbeat window**:
-
-{{<imgproc src="/build/program/sessions/heartbeatwindow.png" alt="Heartbeat window configuration pane in Viam app" resize="400x" declaredimensions=true >}}
-
-{{% /tab %}}
-{{% tab name="JSON" %}}
-
-Add the following `heartbeat_window` configuration to your `network.sessions` object:
-
-```json
-  ... // components {...}, services {...},
-  "network": {
-    "sessions": {
-      "heartbeat_window": "30s" // Changes heartbeat window to 30 seconds
-    }
-  },
-  ...
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< alert title="Note" color="note" >}}
-You must restart your machine for the new `heartbeat_window` to take effect.
-{{< /alert >}}
-
-The default heartbeat window is 2 seconds if this configuration is omitted.
-
-If you manually manage sessions, each client must send at least one heartbeat within the window you set.
-
 ## Manage sessions with the session management API
 
 The [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) is not currently provided in the Python or TypeScript SDKs.
 Use the Go Client SDK instead.
 
 {{< alert title="Tip" color="tip" >}}
-If you are looking to implement session management yourself only to increase the session window, you can increase the session window instead, by [increasing the `heartbeat_window`](#heartbeats).
+If you are looking to implement session management yourself only to increase the session window, you can increase the session window instead, by [increasing the `heartbeat_window`](/configure/#network).
 {{< /alert >}}
 
 To manage your session with the session management API:
