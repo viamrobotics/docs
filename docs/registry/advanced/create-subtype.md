@@ -4,7 +4,7 @@ linkTitle: "New API Subtype"
 weight: 30
 type: "docs"
 tags: ["rdk", "extending viam", "modular resources", "API"]
-description: "Define a new API for a resource that does not fit into existing component or service subtypes."
+description: "Define a custom API for a resource that does not fit into existing component or service subtypes."
 no_list: true
 aliases:
   - "/extend/modular-resources/create/create-subtype/"
@@ -13,7 +13,7 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-You can define a new {{< glossary_tooltip term_id="resource" text="resource" >}} _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:
+You can define a new, custom {{< glossary_tooltip term_id="resource" text="resource" >}} _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:
 
 - You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} subtypes.
 - You have a resource that could fit into an existing subtype, but you want to define an API with different methods and messages than the ones in the existing [APIs](/appendix/apis/) for that subtype.
@@ -34,7 +34,7 @@ Viam uses [protocol buffers](https://protobuf.dev/) for API definition.
 To define a new subtype, you need to define the methods and messages of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), write code in Python or Go to implement the higher level server and client functions required, and generate all necessary [protobuf module files](https://buf.build/docs/generate/usage/).
 The following steps guide you through this process in more detail:
 
-1. Decide whether your subtype is a {{< glossary_tooltip term_id="component" text="component" >}} or a {{< glossary_tooltip term_id="service" text="service" >}}.
+1. Decide whether your custom subtype is a {{< glossary_tooltip term_id="component" text="component" >}} or a {{< glossary_tooltip term_id="service" text="service" >}}.
    If it provides an interface to control hardware, it is a component.
    If it provides higher-level functionality, it is a service.
 1. Choose a name for your subtype.
