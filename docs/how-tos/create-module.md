@@ -1214,7 +1214,7 @@ When packaged in this fashion, you can run the resulting executable on your desi
 To create a packaged executable:
 
 1. First, [create a Python virtual environment](/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
-   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
+   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parentheses.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`), PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) are installed:
@@ -1333,7 +1333,7 @@ Use the [`nuitka` Python compiler](https://pypi.org/project/Nuitka/) to compile 
 1. In order to use Nuitka, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
 
 1. Then, [create a Python virtual environment](/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
-   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
+   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parentheses.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) and Nuitka (`nuitka`) are installed:
