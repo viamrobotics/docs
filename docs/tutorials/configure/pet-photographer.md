@@ -947,7 +947,7 @@ If you haven't already, add a [camera](/components/camera/) component to your sm
 1. On the **Create** menu:
 
    1. Select the `camera` type from the dropdown menu.
-   1. Enter `example:camera:colorfilter`, the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
+   1. Select or enter `example:camera:colorfilter`, the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
    1. Provide a name for this instance of your modular resource.
       This name must be different from the module name.
 

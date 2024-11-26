@@ -410,10 +410,11 @@ Click the **+** button again, this time selecting **Local module** and then **Lo
 
 For **Type** choose **sensor**.
 
-Enter your {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
+Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
+
 Click **Create**.
 
-![Configuring a local model after the local module is configured.](/how-tos/sensor-module-config.png)
+{{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local model after the local module is configured">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
