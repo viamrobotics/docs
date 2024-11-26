@@ -251,7 +251,8 @@ The following update options are available:
 - **Major (X.\*)**: Only update to newer minor releases of the same major release branch.
   The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
-- **Latest**: Always update to the latest version of this module available from the Viam Registry as soon as a new version becomes available.
+- **Latest (`latest`)**: Always update to the latest version of this module available from the Viam Registry as soon as a new version becomes available.
+- **Latest with prerelease (`latest-with-prerelease`)**: Always update to the latest release or prerelease version of this module available from the Viam Registry as soon as the new version becomes available.
 
 When using the **Patch (X.Y.Z)** version type, you may select any patch version of the module from the **Version** dropdown menu, including past versions if desired.
 
