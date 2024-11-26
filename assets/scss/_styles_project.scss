@@ -18,7 +18,8 @@ a.footnote-ref::after {
 /* START Adjust Heading sizes*/
 
 .td-navbar {
-  background-color: rgb(19,20,20) !important;
+  // background-color: rgb(19,20,20) !important;
+  background-color: heather;
 }
 
 /* This ensures there is no padding added to the top logo bar */
@@ -31,7 +32,7 @@ a.footnote-ref::after {
 }
 
 .td-navbar .navbar-brand {
-  font-family: Space Mono, sans-serif;
+  // font-family: Space Mono, sans-serif;
   font-size: 0.833rem;
   line-height: 1.667em;
   letter-spacing: 0.1875rem;
@@ -60,13 +61,13 @@ a.footnote-ref::after {
 }
 
 h1, .h1 {
-  font-family: Space Mono, sans-serif;
+  // font-family: Space Mono, sans-serif;
   font-size: 2.667rem; // 32pt
   margin-left: 0px;
 }
 
 h2, .h2 {
-  font-family: space grotesk, sans-serif;
+  // font-family: space grotesk, sans-serif;
   font-size: 2.0rem !important; // 24pt
   line-height: 2.667rem;
   font-weight: 600;
@@ -2143,7 +2144,7 @@ div .filterable > p {
 // Styling for email newsletter
 
 h3.body-header[style] {
-  font-family: space grotesk, sans-serif !important;
+  // font-family: space grotesk, sans-serif !important;
   font-size: 2.0rem !important;
   line-height: 2.667rem !important;
   font-weight: 400 !important;
@@ -2335,7 +2336,7 @@ hr {
   color: #AAA;
   padding: 0.45rem 0.75rem;
   font-size: 0.75rem;
-  font-family: Space Mono, sans-serif;
+  // font-family: Space Mono, sans-serif;
 }
 
 .table.horizontalheaders > ul.nav-tabs > li.nav-item {
@@ -2590,7 +2591,7 @@ nav {
   padding-right: 1.5rem;
   display: inline-block;
   text-transform: uppercase;
-  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  // font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
   font-size: .875rem;
   line-height: 1.25rem;
 }
@@ -2640,7 +2641,7 @@ span.section-overview {
 
   li.nav-fold.open-on-desktop.header-only > span > a {
     text-transform: uppercase;
-    font-family: Space Mono,sans-serif;
+    // font-family: Space Mono,sans-serif;
     color: #aaa;
     margin-top: 1rem;
   }
