@@ -59,10 +59,16 @@ You can also revert to an earlier configuration from the History tab.
 
 #### Maintenance window
 
-If you only want to apply configuration updates under certain conditions, you can create a sensor with your conditions.
-The sensor must return a true value when it is safe to update and a false value otherwise.
+There are a few updates that may make your machine temporarily unavailable:
 
-Add the following configuration to your machine's JSON configuration:
+- `viam-agent` updating `viam-server`
+- configuration updates
+
+To avoid performing these updates until your machine is ready for maintenance, you can define a maintenance window.
+A maintenance window consists of one or multiple conditions that determine if maintenance is currently allowed.
+To configure a maintenance window, you need to create a sensor that returns true when your maintenance conditions are met and false otherwise.
+
+Then, Add the following configuration to your machine's JSON configuration:
 
 ```json
 // components: [ ... ],

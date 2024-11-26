@@ -306,8 +306,9 @@ The following configuration allows all upgrades from configured sources and sets
 
 ## Version management for `viam-agent` and `viam-server`
 
-`viam-agent` automatically updates both itself, its subsystems, and `viam-server` as new updates are released.
-You can configure update behavior for the Agent and `viam-server` using the [Viam app](https://app.viam.com/).
+By default, `viam-agent` automatically updates both itself, its subsystems, and `viam-server` as new updates are released.
+You can configure update behavior using the [Viam app](https://app.viam.com/).
+To ensure that updates only occur when your machines are ready, configure a [maintenance window](/architecture/viam-server/#maintenance-window).
 
 To use a specific version of `viam-agent` and `viam-server`, you can pin the version.
 
