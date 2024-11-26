@@ -120,7 +120,7 @@ The three pieces of the API namespace triplet are as follows:
 
 In addition to determining which existing API namespace triplet to use when creating your module, you need to decide on a separate triplet unique to your model.
 
-{{< expand "API namespace triplet and model namespace triplet examples" >}}
+{{< expand "API namespace triplet and model namespace triplet example" >}}
 
 The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
 The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
@@ -133,16 +133,6 @@ The models implement the `rdk:component:arm` and the `rdk:component:gripper` API
 {
     "api": "rdk:component:gripper",
     "model": "rand:yahboom:gripper"
-}
-```
-
-The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
-It implements the custom API `viam-labs:service:audioout`:
-
-```json
-{
-  "api": "viam-labs:service:audioout",
-  "model": "viam-labs:audioout:pygame"
 }
 ```
 
