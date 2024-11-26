@@ -47,6 +47,7 @@ The following steps guide you through this process in more detail:
 
    The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
    It implements the custom API `viam-labs:service:audioout`:
+
    ```json
    {
      "api": "viam-labs:service:audioout",
