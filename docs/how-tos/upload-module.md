@@ -252,7 +252,7 @@ Run `viam module upload` to upload your custom module to the Viam Registry.
 Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module upload --version <version> --platform <platform> <module-path>
+viam module upload --version <version> --platform <platform> <module-path> --tags=<tags>
 ```
 
 where:
@@ -264,6 +264,7 @@ where:
   You can only provide one `platform` argument at a time to the `viam module upload` command.
   See [Using the `--platform` argument](/cli/#using-the---platform-argument) for the full list of supported architectures.
 - `module-path`: provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
+- `tags`: provide a comma-serparated list of platform tags that determine to which this binary can be deployed. See [`viam module upload`](/cli/#module).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.

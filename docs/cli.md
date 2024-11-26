@@ -643,7 +643,7 @@ viam module build local --module=<path to meta.json> [arguments...]
 viam module build list [command options] [arguments...]
 viam module build logs --id=<id> [...named args]
 viam module reload [...named args]
-viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path>
+viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 ```
 
 Examples:
@@ -680,7 +680,8 @@ viam module build logs --wait --id=$(viam module build start --version "0.1.2")
 viam module reload --restart-only --id viam:python-example-module
 
 # upload a new or updated custom module to the Viam Registry:
-viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz
+viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz --tags=distro:ubuntu,os_version:20.04,codename:focal,cuda:true,cuda_version:11,jetpack:5
+
 ```
 
 #### Command options
@@ -717,6 +718,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
 | `--public-namespace` | The [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | **Required** |
+| `--tags` | Comma-serparated list of platform tags that determine to which this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the raspberry pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
 | `--version` | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument) | `upload` | **Required** |
 | `--wait` | Wait for the build to finish before outputting any logs | `build logs` | Optional |
 
