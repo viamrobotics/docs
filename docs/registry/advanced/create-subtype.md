@@ -39,6 +39,26 @@ The following steps guide you through this process in more detail:
    If it provides higher-level functionality, it is a service.
 1. Choose a name for your subtype.
    For example, `gizmo`.
+
+   Determine a valid {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} based on your subtype name.
+   You can figure out the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} later when you [create a model that implements your custom API](/registry/advanced/create-subtype/#next-steps).
+
+   {{< expand "API namespace triplet and model namespace triplet example" >}}
+
+   The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
+   It implements the custom API `viam-labs:service:audioout`:
+
+   ```json
+   {
+     "api": "viam-labs:service:audioout",
+     "model": "viam-labs:audioout:pygame"
+   }
+   ```
+
+   For your custom API, your API namespace triplet might be `your-org-namespace:component:gizmo` where `your-org-namespace` is your organization namespace, found in your org settings page in the Viam app.
+
+   {{< /expand >}}
+
 1. Create a directory for your module.
    Within that, create a directory called <file>src</file>.
 
