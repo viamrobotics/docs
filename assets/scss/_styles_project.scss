@@ -218,6 +218,14 @@ a > code {
   color: #333333 !important;
 }
 
+.nav-fold * #TableOfContents ul li ul {
+  padding: 0;
+}
+
+.nav-fold * #TableOfContents ul li ul.is-collapsed {
+  display: none;
+}
+
 p, li {
   color: #515151;
   a {
