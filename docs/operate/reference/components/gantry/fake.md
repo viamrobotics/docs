@@ -55,7 +55,7 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gantry/fak
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/gantry/" customTitle="Gantry API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

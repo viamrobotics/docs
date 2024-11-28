@@ -51,7 +51,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [power sensor API](/appendix/apis/components/power-sensor/) supports the following methods:
+The [power sensor API](/dev/reference/apis/components/power-sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/power_sensor-table.md" >}}
 

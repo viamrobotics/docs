@@ -55,7 +55,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [motor API](/appendix/apis/components/motor/) supports the following methods:
+The [motor API](/dev/reference/apis/components/motor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/motor-table.md" >}}
 

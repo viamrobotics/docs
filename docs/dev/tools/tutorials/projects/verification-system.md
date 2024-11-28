@@ -126,7 +126,7 @@ To add the [data management service](/services/data/) and configure data capture
 5. Scroll to the panel of the camera you just configured.
    Find the **Data capture** section.
    Click **Add Method**.
-   If you're using a webcam, select the **Method** type [`ReadImage`](/appendix/apis/components/camera/#getimage).
+   If you're using a webcam, select the **Method** type [`ReadImage`](/dev/reference/apis/components/camera/#getimage).
    Set the **Frequency** to `0.333`.
    This will capture an image from the camera once every 3 seconds.
    Set the **MIME type** to `image/jpeg`.
@@ -143,7 +143,7 @@ For more information, see [configure data capture for individual components](/se
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different method **Type** in your data capture configuration.
-For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/appendix/apis/components/camera/#getimages).
+For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/dev/reference/apis/components/camera/#getimages).
 {{% /alert %}}
 
 Next, position your camera to capture a variety of images of people.
@@ -317,9 +317,9 @@ To add a transform camera to your machine:
 
 {{% alert title="Note" color="note" %}}
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
-To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/appendix/apis/services/vision/#getclassificationsfromcamera).
+To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/dev/reference/apis/services/vision/#getclassificationsfromcamera).
 
-See [2D Image Classification](/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/appendix/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
+See [2D Image Classification](/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/dev/reference/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}
 
 With everything configured, you are now ready to see your facial recognition machine in action by watching the transform camera as a person passes in front of the camera.
@@ -339,7 +339,7 @@ Now that you've got the verification aspect of your system working, you can use 
 For example:
 
 - Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
-  For example, you could use [`GetClassificationsFromCamera()`](/appendix/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
+  For example, you could use [`GetClassificationsFromCamera()`](/dev/reference/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
 - Try changing the type of [detectors](/services/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
 - Add the [filtered camera module](/how-tos/image-data/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam Cloud only when the system enters into specific states.
   This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.

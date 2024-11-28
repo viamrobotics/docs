@@ -55,7 +55,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [servo API](/appendix/apis/components/servo/) supports the following methods:
+The [servo API](/dev/reference/apis/components/servo/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/servo-table.md" >}}
 

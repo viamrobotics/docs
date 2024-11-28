@@ -1,6 +1,6 @@
 ---
-title: "Component APIs"
-linkTitle: "Component APIs"
+title: "Components"
+linkTitle: "Components"
 weight: 20
 type: docs
 layout: "empty"

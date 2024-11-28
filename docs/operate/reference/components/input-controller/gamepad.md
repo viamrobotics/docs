@@ -87,7 +87,7 @@ You can also try setting `auto_reconnect` to `True`.
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
 {{< /cards >}}

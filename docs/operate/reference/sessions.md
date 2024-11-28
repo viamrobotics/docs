@@ -29,7 +29,7 @@ The period of time during which a client is connected to a machine is called a _
 _Session management_ is a safety precaution that allows you to manage the clients that are authenticated and communicating with a machine's `viam-server` instance.
 The default session management configuration checks for presence to ensures that a machine only moves when a client is actively connected and stops any components that remain running when a client disconnects.
 This is especially important for machines that physically move.
-For example, imagine a wheeled rover gets a [`SetPower()`](/appendix/apis/components/base/#setpower) command as the last input from a client before the connection to the machine is interrupted.
+For example, imagine a wheeled rover gets a [`SetPower()`](/dev/reference/apis/components/base/#setpower) command as the last input from a client before the connection to the machine is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the machine to continue driving forever and potentially colliding with objects and people.
 
 For more information, see [Client Sessions and Machine Network Connectivity](/sdks/connectivity/).
@@ -76,7 +76,7 @@ To manage your session with the session management API:
 ### Disable default session management
 
 The `SessionsClient` that serves the session management API is automatically enabled on your machine.
-It is instantiated as part of your [`RobotClient`](/appendix/apis/robot/) instance (client of the Machine API).
+It is instantiated as part of your [`RobotClient`](/dev/reference/apis/robot/) instance (client of the Machine API).
 If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
 
 {{< tabs >}}
@@ -126,6 +126,6 @@ You can do this with Viam's client SDKs.
 
 ### Use the session management API to manually manage sessions
 
-Use your [`RobotClient()`](/appendix/apis/robot/) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
+Use your [`RobotClient()`](/dev/reference/apis/robot/) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
 This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
 Then, define your own [`SessionsClient`](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).

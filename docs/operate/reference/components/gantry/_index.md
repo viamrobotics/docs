@@ -59,7 +59,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [gantry API](/appendix/apis/components/gantry/) supports the following methods:
+The [gantry API](/dev/reference/apis/components/gantry/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gantry-table.md" >}}
 

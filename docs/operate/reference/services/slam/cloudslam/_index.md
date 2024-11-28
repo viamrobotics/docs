@@ -355,7 +355,7 @@ Example of previously captured IMU data:
 From your machine's **Location** page, click **View SLAM library**, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
 
 1. Enter the **Machine name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
-   If your machine has been deleted, you can alternatively specify the [**machine ID**](/appendix/apis/fleet/#find-machine-id).
+   If your machine has been deleted, you can alternatively specify the [**machine ID**](/dev/reference/apis/fleet/#find-machine-id).
 2. Select the timeframe of the data you'd like to use.
 3. At the bottom, you can see the total number of PCD files and movement sensor data points that will be processed.
 4. Click **Generate map**.
@@ -432,8 +432,8 @@ The following attributes are available for `viam:cloudslam-wrapper:cloudslam`
 | `api_key_id` | string | **Required** | The associated API key ID with the API key. |
 | `organization_id` | string | **Required** | The organization ID of your [organization](/cloud/organizations/). |
 | `location_id` | string | **Required** | The location ID of your [location](/cloud/locations/). |
-| `machine_id` | string | **Required** | The machine ID of your [machine](/appendix/apis/fleet/#find-machine-id). |
-| `machine_part_id` | string | Optional | The machine part ID of your [machine part](/appendix/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
+| `machine_id` | string | **Required** | The machine ID of your [machine](/dev/reference/apis/fleet/#find-machine-id). |
+| `machine_part_id` | string | Optional | The machine part ID of your [machine part](/dev/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
 | `viam_version` | string | Optional | The version of viam-server to use with CloudSLAM. Defaults to `stable`. |
 | `slam_version` | string | Optional | The version of cartographer to use with CloudSLAM. Defaults to `stable`. |
 | `camera_freq_hz` | float | Optional | The expected capture frequency for your camera/lidar components. Defaults to `5`. |

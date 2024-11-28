@@ -1,7 +1,7 @@
 ---
 title: "Payment and billing"
 linkTitle: "Billing"
-weight: 80
+weight: 500
 type: "docs"
 description: "An overview of the Payments & Billing page."
 tags: ["fleet management", "cloud", "app"]

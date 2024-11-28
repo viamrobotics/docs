@@ -83,7 +83,7 @@ The sections in the panel include the position, orientation, angular velocity, l
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

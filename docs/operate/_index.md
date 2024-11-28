@@ -1,7 +1,7 @@
 ---
-linkTitle: "Operate machines"
-title: "Operate your machines"
-weight: 200
+linkTitle: "Build apps"
+title: "Build apps"
+weight: 100
 layout: "docs"
 type: "docs"
 no_list: true

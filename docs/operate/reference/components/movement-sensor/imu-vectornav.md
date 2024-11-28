@@ -12,7 +12,7 @@ aliases:
 # SMEs: Rand
 ---
 
-An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/appendix/apis/components/movement-sensor/#getangularvelocity), [`Orientation`](/appendix/apis/components/movement-sensor/#getorientation), [`CompassHeading`](/appendix/apis/components/movement-sensor/#getcompassheading), and [`LinearAcceleration`](/appendix/apis/components/movement-sensor/#getlinearacceleration) methods.
+An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/dev/reference/apis/components/movement-sensor/#getangularvelocity), [`Orientation`](/dev/reference/apis/components/movement-sensor/#getorientation), [`CompassHeading`](/dev/reference/apis/components/movement-sensor/#getcompassheading), and [`LinearAcceleration`](/dev/reference/apis/components/movement-sensor/#getlinearacceleration) methods.
 Acceleration and magnetometer data are available by using the [sensor](/components/sensor/) [`GetReadings`](/components/sensor/#getreadings) method, which IMUs wrap.
 
 The `imu-vectornav` movement sensor model supports IMUs manufactured by [VectorNav](https://www.vectornav.com/products) that support SPI connection.
@@ -105,7 +105,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

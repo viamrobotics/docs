@@ -1,6 +1,6 @@
 ---
-title: "Service APIs"
-linkTitle: "Service APIs"
+title: "Services"
+linkTitle: "Services"
 weight: 30
 type: docs
 layout: "empty"

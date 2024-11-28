@@ -19,9 +19,9 @@ date: "2024-10-21"
 # SMEs:
 ---
 
-Generic components provide an API for running model-specific commands using [`DoCommand`](/appendix/apis/components/generic/#docommand).
+Generic components provide an API for running model-specific commands using [`DoCommand`](/dev/reference/apis/components/generic/#docommand).
 
-If you have a physical device or a program that does not fit into any of the provided [components APIs](/appendix/apis/#component-apis), use a generic component.
+If you have a physical device or a program that does not fit into any of the provided [components APIs](/dev/reference/apis/#component-apis), use a generic component.
 
 For example, if you want to use an LED display, you need functionality that isn't currently exposed in an existing API.
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
@@ -34,7 +34,7 @@ If you are adding new high-level software functionality, rather than supporting 
 The generic component API only supports the `DoCommand` method.
 If you use the generic subtype, your module needs to define any and all component functionality and pass it through `DoCommand`.
 
-Whenever possible, it is best to use an [existing component API](/appendix/apis/#component-apis) instead of generic so that you do not have to replicate code.
+Whenever possible, it is best to use an [existing component API](/dev/reference/apis/#component-apis) instead of generic so that you do not have to replicate code.
 If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing {{< glossary_tooltip term_id="subtype" text="subtype" >}}, instead of using the generic component.
 
 {{% /alert %}}
@@ -68,7 +68,7 @@ You will need to [recompile and flash your ESP32 yourself](/installation/viam-mi
 
 ## API
 
-The [generic API](/appendix/apis/components/generic/) supports the following methods:
+The [generic API](/dev/reference/apis/components/generic/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 

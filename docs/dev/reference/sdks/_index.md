@@ -17,14 +17,14 @@ date: "2024-05-23"
 # updated: ""  # When the content was last entirely checked
 ---
 
-Viam's SDK libraries wrap Viam's [gRPC APIs](https://github.com/viamrobotics/api) for interacting with a machine's [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as for [cloud capabilities](/appendix/apis/robot/), such as [data management](/appendix/apis/data-client/) and [fleet management](/appendix/apis/fleet/).
+Viam's SDK libraries wrap Viam's [gRPC APIs](https://github.com/viamrobotics/api) for interacting with a machine's [components](/dev/reference/apis/#component-apis) and [services](/dev/reference/apis/#service-apis), as well as for [cloud capabilities](/dev/reference/apis/robot/), such as [data management](/dev/reference/apis/data-client/) and [fleet management](/dev/reference/apis/fleet/).
 You can run control code from anywhere; it does not necessarily have to be run on the same machine that runs `viam-server`.
 
 ![Diagram showing how a client connects to a machine with Viam. Diagram shows a client as a computer sending commands to a machine. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/build/program/sdks/robot-client.png)
 
 ## Backend SDKs
 
-Use the backend SDK to build business logic to control [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as manage your [fleet](/appendix/apis/fleet/) and [data](/appendix/apis/data-client/), and [billing information](/appendix/apis/billing-client/), or [provision](/fleet/provision/) machines.
+Use the backend SDK to build business logic to control [components](/dev/reference/apis/#component-apis) and [services](/dev/reference/apis/#service-apis), as well as manage your [fleet](/dev/reference/apis/fleet/) and [data](/dev/reference/apis/data-client/), and [billing information](/dev/reference/apis/billing-client/), or [provision](/fleet/provision/) machines.
 With the backend SDKs you can also create custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 
 {{< sectionlist-custom >}}
@@ -35,7 +35,7 @@ With the backend SDKs you can also create custom {{< glossary_tooltip term_id="m
 
 ## Frontend SDKs
 
-Use the frontend SDK to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [data](/appendix/apis/data-client/) or [provision](/fleet/provision/) machines.
+Use the frontend SDK to control your machine's [components](/dev/reference/apis/#component-apis), as well as manage your [data](/dev/reference/apis/data-client/) or [provision](/fleet/provision/) machines.
 
 {{< sectionlist-custom >}}
 {{% sectionlist-custom-item link="/sdks/typescript/" %}}
@@ -43,7 +43,7 @@ Use the frontend SDK to control your machine's [components](/appendix/apis/#comp
 
 ## Mobile SDK
 
-Use the mobile SDK to build iOS and Android apps to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [fleet](/appendix/apis/fleet/) and [data](/appendix/apis/data-client/), or [provision](/fleet/provision/) machines.
+Use the mobile SDK to build iOS and Android apps to control your machine's [components](/dev/reference/apis/#component-apis), as well as manage your [fleet](/dev/reference/apis/fleet/) and [data](/dev/reference/apis/data-client/), or [provision](/fleet/provision/) machines.
 
 {{< sectionlist-custom >}}
 {{% sectionlist-custom-item link="/sdks/flutter/" %}}
@@ -117,7 +117,7 @@ Navigate to the **CONNECT** tab on your machine's page on the [Viam app](https:/
 
 The sample code will show you how to authenticate and connect to a machine's `viam-server` instance, as well as some of the methods you can use on your configured components and services.
 
-For a full list of available API methods, see [Component APIs](/appendix/apis/#component-apis) and [Service APIs](/appendix/apis/#service-apis):
+For a full list of available API methods, see [Component APIs](/dev/reference/apis/#component-apis) and [Service APIs](/dev/reference/apis/#service-apis):
 
 {{< cards >}}
 {{% card link="/appendix/apis" customDescription="Usage examples for each API method." %}}
@@ -320,7 +320,7 @@ If you need to build apps with custom login flows, [contact us](mailto:support@v
 
 ## Run code
 
-After saving your [code sample](/sdks/#code-samples) and adding control logic with [Viam's SDKs](/appendix/apis/), run your program to control your Viam-connected machine.
+After saving your [code sample](/sdks/#code-samples) and adding control logic with [Viam's SDKs](/dev/reference/apis/), run your program to control your Viam-connected machine.
 
 You can remotely control your machine from anywhere in the world.
 If your machine and your personal computer are both connected to the Internet, you can run code to control your machine remotely from your personal computer.
@@ -328,7 +328,7 @@ If your machine and your personal computer are both connected to the Internet, y
 {{<imgproc src="/build/program/remotely.png" resize="900x" declaredimensions=true alt="A client connecting remotely to a machine">}}
 
 This method is convenient for most use cases because your machine and your personal computer do not have to be connected to the same WAN/LAN to issue control commands.
-When you run code on one computer, creating a client [session](/appendix/apis/sessions/), the code running on that computer sends instructions to your machine's `viam-server` instance over the Internet.
+When you run code on one computer, creating a client [session](/dev/reference/apis/sessions/), the code running on that computer sends instructions to your machine's `viam-server` instance over the Internet.
 
 After editing your code to include your machine's [authentication credentials](#authentication), run a command to execute the program in the terminal of a computer with the appropriate programming language and [Viam SDK](/sdks/) installed:
 
@@ -396,7 +396,7 @@ For more information, see [How to create and deploy a new module](/how-tos/creat
 Your machines do not need to be connected to the Internet for you to be able to run code.
 As long as your machine is connected to the same LAN or WAN network as the device running the code, you can connect to it and run code.
 
-When you use the connection code sample from the [**CONNECT** tab](/sdks/#code-samples), that code establishes a [client session](/appendix/apis/sessions/) that automatically uses the [most efficient route](/sdks/connectivity/) to send commands to your machine.
+When you use the connection code sample from the [**CONNECT** tab](/sdks/#code-samples), that code establishes a [client session](/dev/reference/apis/sessions/) that automatically uses the [most efficient route](/sdks/connectivity/) to send commands to your machine.
 That means that when the device your code runs on is on the same network as your machine, even if internet is available, the connection will choose the most efficient route and connect over LAN or WAN.
 If you subsequently lose internet connectivity, but stay connected to LAN or WAN, the connection will thus remain.
 
@@ -410,7 +410,7 @@ Running everything on one machine is also convenient if you have a machine (for 
 {{<imgproc src="/build/program/on-robot.png" resize="900x" declaredimensions=true alt="A client running on a machine">}}
 
 The script you run on-machine is the same as the script you run remotely or on a local network.
-When the connection code from the [**CONNECT** tab's **Code sample** page](/sdks/#code-samples) executes, it creates a [client session](/appendix/apis/sessions/) connected to your machine using the [most efficient route](/sdks/connectivity/).
+When the connection code from the [**CONNECT** tab's **Code sample** page](/sdks/#code-samples) executes, it creates a [client session](/dev/reference/apis/sessions/) connected to your machine using the [most efficient route](/sdks/connectivity/).
 Because the code is running on the same machine as `viam-server`, the favored route for commands is automatically over localhost.
 
 Install the appropriate programming language and [Viam SDK](/sdks/) on your machine and run a command to execute the program in the terminal of that machine instead of from a separate computer:

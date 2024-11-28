@@ -55,7 +55,7 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/servo/fake
 For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/servo/" customTitle="Servo API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/servo/" customTitle="Servo API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

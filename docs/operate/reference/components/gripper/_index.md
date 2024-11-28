@@ -50,7 +50,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [gripper API](/appendix/apis/components/gripper/) supports the following methods:
+The [gripper API](/dev/reference/apis/components/gripper/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gripper-table.md" >}}
 

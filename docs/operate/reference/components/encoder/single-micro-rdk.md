@@ -59,7 +59,7 @@ The following attributes are available for `single` encoders:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `pin` | object | **Required** | GPIO number of the pin to which the encoder is wired. |
-| `dir_flip` | boolean | **Required** | If the encoder's count should increment or decrement in its initial state before a [`SetPower()`](/appendix/apis/components/motor/#setpower) call is made to an encoded [motor](/components/motor/). `true` implies decrement. |
+| `dir_flip` | boolean | **Required** | If the encoder's count should increment or decrement in its initial state before a [`SetPower()`](/dev/reference/apis/components/motor/#setpower) call is made to an encoded [motor](/components/motor/). `true` implies decrement. |
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}
 
@@ -72,7 +72,7 @@ The following attributes are available for `single` encoders:
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

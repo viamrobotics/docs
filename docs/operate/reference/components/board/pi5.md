@@ -117,7 +117,7 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/board/" customTitle="Board API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/board/" customTitle="Board API" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{% card link="/tutorials/get-started/blink-an-led/" noimage="true" %}}
 {{< /cards >}}

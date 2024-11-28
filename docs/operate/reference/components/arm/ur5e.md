@@ -92,7 +92,7 @@ The following attributes are available for `ur5e` arms:
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/move-robot-arm/" noimage="true" %}}
 {{< /cards >}}

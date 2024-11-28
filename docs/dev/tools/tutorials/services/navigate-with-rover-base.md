@@ -97,7 +97,7 @@ If you are using different hardware, configure them according to the instruction
 
 First, configure the [board](/components/board/) local to your rover.
 Follow [these instructions](/components/board/#configuration) to configure your board model.
-We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jetson), but you can use any model of board you have on hand, as the [resource's API](/appendix/apis/components/board/#api) is hardware agnostic.
+We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jetson), but you can use any model of board you have on hand, as the [resource's API](/dev/reference/apis/components/board/#api) is hardware agnostic.
 
 1. Configure a board named `local` as shown below:
 
@@ -542,7 +542,7 @@ Your rover will begin navigating between waypoints.
 
 ### Programmatic method
 
-If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/appendix/apis/services/navigation/#addwaypoint):
+If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/dev/reference/apis/services/navigation/#addwaypoint):
 
 #### Add waypoints
 
@@ -577,7 +577,7 @@ await my_nav.add_waypoint(point=location)
 
 #### Begin navigation
 
-To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/appendix/apis/services/navigation/#setmode):
+To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/dev/reference/apis/services/navigation/#setmode):
 
 {{< tabs >}}
 {{% tab name="Go" %}}

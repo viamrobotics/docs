@@ -75,7 +75,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [board API](/appendix/apis/components/board/) supports the following methods:
+The [board API](/dev/reference/apis/components/board/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 

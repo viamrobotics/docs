@@ -108,8 +108,8 @@ See [the frame system service](/services/frame-system/) for more information on 
 
 ### Additional commands
 
-In addition to the [Arm API](/appendix/apis/components/arm/), the `xArm7` arm supports some model-specific commands that allow you to set the speed and the acceleration of the arm.
-You can invoke these commands by passing the following JSON document to the [`DoCommand()`](/appendix/apis/components/arm/#docommand) method:
+In addition to the [Arm API](/dev/reference/apis/components/arm/), the `xArm7` arm supports some model-specific commands that allow you to set the speed and the acceleration of the arm.
+You can invoke these commands by passing the following JSON document to the [`DoCommand()`](/dev/reference/apis/components/arm/#docommand) method:
 
 ```json
 {
@@ -175,7 +175,7 @@ var result = myArm.doCommand(command);
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/move-robot-arm/" noimage="true" %}}
 {{< /cards >}}

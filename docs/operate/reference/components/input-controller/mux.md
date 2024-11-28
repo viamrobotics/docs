@@ -129,7 +129,7 @@ This tells the program loading the config to fully load the source components fi
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
 {{< /cards >}}

@@ -64,7 +64,7 @@ The following attributes are available for `arduino` encoders:
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
 {{< /cards >}}

@@ -228,7 +228,7 @@ If the axes are different from those described above, take these differences int
 Imagine your cup is 120 millimeters tall with a radius of 45 millimeters.
 You need to take this space into account to avoid bumping objects on the table with the cup.
 
-You can pass transforms to the [motion service `move` method](/appendix/apis/services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
+You can pass transforms to the [motion service `move` method](/dev/reference/apis/services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
 To represent the drinking cup held in your robot's gripper, create a transform with the cup's measurements:
 
 ```python {class="line-numbers linkable-line-numbers"}

@@ -62,7 +62,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [base API](/appendix/apis/components/base/) supports the following methods:
+The [base API](/dev/reference/apis/components/base/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 

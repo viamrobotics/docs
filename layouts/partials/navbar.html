@@ -28,7 +28,9 @@
           <ul>
               {{- range .Pages -}}
               {{- $activePath := or ($currentPage.IsDescendant .) (eq $currentPage .) -}}
+              {{- if not (eq .LinkTitle "Tutorials") -}}
               <li><a href="{{.RelPermalink}}" title="{{ .Title }}" class="navsectiontop{{ if $activePath}} active-path{{ end }}">{{ .LinkTitle }}</a></li>
+              {{- end -}}
               {{- end -}}
           </ul>
           {{- end -}}

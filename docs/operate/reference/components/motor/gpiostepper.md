@@ -147,7 +147,7 @@ See the data sheet of your stepper motor and stepper motor driver for informatio
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/control-motor/" noimage="true" %}}
 {{< /cards >}}

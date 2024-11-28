@@ -12,7 +12,7 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-When connecting to a machine using the connection code from the [**CONNECT** tab](/sdks/#code-samples), a [client session](/appendix/apis/sessions/) automatically uses the most efficient route to connect to your machine either through local LAN or WAN or the internet.
+When connecting to a machine using the connection code from the [**CONNECT** tab](/sdks/#code-samples), a [client session](/dev/reference/apis/sessions/) automatically uses the most efficient route to connect to your machine either through local LAN or WAN or the internet.
 
 When a machine loses its connection to the internet but is still connected to a LAN or WAN:
 
@@ -25,10 +25,10 @@ When a machine loses its connection to LAN or WAN, all client sessions will time
 
 ## Client session timeout and end
 
-When your client cannot connect to your machine's `viam-server` instance, `viam-server` will end any current client [_sessions_](/appendix/apis/sessions/) on this machine and all client operations will [timeout automatically](/appendix/apis/sessions/) and halt: any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the machine until the connection is restored.
+When your client cannot connect to your machine's `viam-server` instance, `viam-server` will end any current client [_sessions_](/dev/reference/apis/sessions/) on this machine and all client operations will [timeout automatically](/dev/reference/apis/sessions/) and halt: any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the machine until the connection is restored.
 
-To disable the default behavior and manage resource timeout and reconfiguration over a networking session yourself, you can [disable the default behavior](/appendix/apis/sessions/#disable-default-session-management) of session management, then use [Viam's SDKs](/sdks/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
+To disable the default behavior and manage resource timeout and reconfiguration over a networking session yourself, you can [disable the default behavior](/dev/reference/apis/sessions/#disable-default-session-management) of session management, then use [Viam's SDKs](/sdks/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
 
 ## Configure a connection timeout
 
-When connecting to a machine using the [robot API](/appendix/apis/robot/) from a supported [Viam SDK](/appendix/apis/), you can configure an [optional timeout](/appendix/apis/robot/#configure-a-timeout) to account for intermittent or delayed network connectivity.
+When connecting to a machine using the [robot API](/dev/reference/apis/robot/) from a supported [Viam SDK](/dev/reference/apis/), you can configure an [optional timeout](/dev/reference/apis/robot/#configure-a-timeout) to account for intermittent or delayed network connectivity.

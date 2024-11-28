@@ -55,7 +55,7 @@ Click the model name for configuration instructions.
 
 ## API
 
-The [SLAM service API](/appendix/apis/services/slam/) supports the following methods:
+The [SLAM service API](/dev/reference/apis/services/slam/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/slam-table.md" >}}
 

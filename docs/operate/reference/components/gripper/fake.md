@@ -55,7 +55,7 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gripper/fa
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/tutorials/services/plan-motion-with-arm-gripper/" noimage="true" %}}
 {{< /cards >}}

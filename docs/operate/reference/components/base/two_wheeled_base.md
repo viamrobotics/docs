@@ -91,7 +91,7 @@ The following attributes are available for `two_wheeled_base` bases:
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/appendix/apis/components/base/" customTitle="Base API" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/base/" customTitle="Base API" noimage="true" %}}
 {{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
 {{% card link="/how-tos/drive-rover/" noimage="true" %}}
 {{< /cards >}}

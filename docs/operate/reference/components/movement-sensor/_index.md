@@ -54,7 +54,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [movement sensor API](/appendix/apis/components/movement-sensor/) supports the following methods:
+The [movement sensor API](/dev/reference/apis/components/movement-sensor/) supports the following methods:
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 

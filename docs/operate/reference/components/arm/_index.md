@@ -62,7 +62,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## API
 
-The [arm API](/appendix/apis/components/arm/) supports the following methods:
+The [arm API](/dev/reference/apis/components/arm/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/arm-table.md" >}}
 

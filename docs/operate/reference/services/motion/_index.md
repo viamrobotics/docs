@@ -37,7 +37,7 @@ The motion service itself is enabled on the machine by default, so you do not ne
 
 ## API
 
-The [motion service API](/appendix/apis/services/motion/) supports the following methods:
+The [motion service API](/dev/reference/apis/services/motion/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/motion-table.md" >}}
 

@@ -67,7 +67,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [encoder API](/appendix/apis/components/encoder/) supports the following methods:
+The [encoder API](/dev/reference/apis/components/encoder/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
 

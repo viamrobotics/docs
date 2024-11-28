@@ -266,13 +266,13 @@ The resulting tree of reference frames looks like:
 
 ## Access the frame system
 
-The [Machine Management API](/appendix/apis/robot/) supplies the following methods to interact with the frame system:
+The [Machine Management API](/dev/reference/apis/robot/) supplies the following methods to interact with the frame system:
 
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----- | ----------- |
-| [`FrameSystemConfig`](/appendix/apis/robot/#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. |
-| [`TransformPose`](/appendix/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
+| [`FrameSystemConfig`](/dev/reference/apis/robot/#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. |
+| [`TransformPose`](/dev/reference/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
 
 ## Additional transforms
 
@@ -294,6 +294,6 @@ For example:
 
 Usage:
 
-- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/appendix/apis/services/motion/#getpose) method.
+- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/dev/reference/apis/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
-- [`TransformPose`](/appendix/apis/robot/#transformpose) has the option to take in these additional transforms.
+- [`TransformPose`](/dev/reference/apis/robot/#transformpose) has the option to take in these additional transforms.

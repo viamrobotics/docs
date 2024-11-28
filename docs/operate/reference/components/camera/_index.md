@@ -58,7 +58,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [camera API](/appendix/apis/components/camera/) supports the following methods:
+The [camera API](/dev/reference/apis/components/camera/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/camera-table.md" >}}
 
