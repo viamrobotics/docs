@@ -209,9 +209,11 @@ If you created a <FILE>viam-provisioning.json</FILE>, specify its location when 
 
 {{% expand "Using a Raspberry Pi?" %}}
 
-{{< alert title="Important" color="note" >}}
+{{< alert title="Important: Required customization" color="note" >}}
 
-You must have flashed a 64-bit image to your SD card and customized at least the hostname when prompted by the Raspberry Pi Imager.
+You **must customize at least the hostname** when prompted by the Raspberry Pi Imager.
+
+{{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/installation/rpi-setup/advanced-options-yes.png" resize="800x" declaredimensions=true >}}
 
 When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
 
