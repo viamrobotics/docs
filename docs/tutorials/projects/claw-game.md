@@ -181,7 +181,7 @@ This is the only component in the main machine.
 Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board:
 
@@ -230,7 +230,7 @@ For more information on xArm6 configuration, see [Configure an xArm6 Arm](/compo
 Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm:
 
@@ -295,7 +295,7 @@ Ours was 120mm for the width and 180mm for the height.
 Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm and gripper:
 

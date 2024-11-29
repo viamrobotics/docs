@@ -68,7 +68,17 @@ To avoid performing these updates until your machine is ready for maintenance, y
 A maintenance window consists of one or multiple conditions that determine if maintenance is currently allowed.
 To configure a maintenance window, you need to create a sensor that returns true when your maintenance conditions are met and false otherwise.
 
-Then, add the following configuration to your machine's JSON configuration:
+{{< tabs >}}
+{{% tab name="Builder UI" %}}
+
+To configure a maintenance window, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Maintenance window**.
+
+In the new panel, specify the name of the sensor and the key for the value to be used to determine when maintenance is allowed.
+
+{{% /tab %}}
+{{% tab name="JSON" %}}
+
+To configure a maintenance window, add the following configuration to your machine's JSON configuration:
 
 ```json
 // components: [ ... ],
@@ -78,6 +88,9 @@ maintenance : {
    "maintenance_allowed_key" : string
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <!-- prettier-ignore -->
 | Attribute | Type | Required? | Description |

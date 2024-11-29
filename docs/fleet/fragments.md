@@ -71,7 +71,7 @@ If you have made edits, you will see an **edited from FRAGMENT NAME** indicator 
 ![A motor config card with "edited from SCUTTLE101" in the upper right corner.](/fleet/fragment-edited.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 You can modify fragment fields in your machine's raw JSON config by using [update operators](https://www.mongodb.com/docs/manual/reference/operator/update/positional/#---update-).
 Viam supports all update operators except for `$setOnInsert`, `$`, `$[]`, and `$[<identifier>]`.

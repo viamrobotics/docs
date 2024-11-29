@@ -150,7 +150,7 @@ For example:
 ![An example configuration for a base remote control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 Add the following configuration for your base remote control service, replacing `<your-base-name>` with your base's name:
 
