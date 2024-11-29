@@ -223,8 +223,8 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 
 #### Networks
 
-For an already-online device, you can add additional networks to the machine's [`viam-agent` configuration](/configure/agent/#configuration).
-It's primarily useful for a machine that might move between different WiFi networks, so the machine can automatically connect when moved between locations.
+For an already-online device, you can configure new WiFi networks in the machine's [`viam-agent` configuration](/configure/agent/#configuration) in the Viam app.
+It's primarily useful for a machine that moves between different networks, so the machine can automatically connect when moved between locations.
 
 To add additional networks add them using the JSON editor for your device's config in the Viam app.
 
