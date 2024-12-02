@@ -100,11 +100,47 @@ maintenance : {
 
 ### Logging
 
-Log messages written appear under the [**LOGS** tab](/cloud/machines/#logs) for the machine running the module.
-
-#### Debugging
+Log messages appear under the [**LOGS** tab](/cloud/machines/#logs) for a machine.
 
 The default log level for `viam-server` and any running resources is `"Info"`.
+
+You can set log levels for individual resources by adding the `log_configuration` option to the resources' JSON configuration:
+
+```json
+"log_configuration": {
+    "level": "Debug"
+},
+"attributes": { ... }
+```
+
+Alternatively, you can configure logs for all machine resources, inside your machine config.
+To specify the log level for a specific resource, add the `log` field to your machine config:
+
+For example:
+
+```json
+"log": [
+     {
+       "pattern": "rdk.resource_manager",
+       "level": "info",
+     },{
+       "pattern": "rdk.resource_manager.*",
+       "level": "debug",
+     }
+  ]
+```
+
+<!-- prettier-ignore -->
+| Attribute | Description |
+| --------- | ----------- |
+| `pattern` | A regular expression (regex) pattern matching one or more resources. |
+| `level` | The log level: `"debug"`, `"info"`, `"warn"`, or `"error"`. |
+
+Patterns are processed from top to bottom.
+If multiple patterns apply, the last pattern to be processed will apply.
+If log configurations are applied at a resource level using the `log_configuration` field, these take precedence over log levels applied in the `log` field of the machine configuration.
+
+#### Debugging
 
 You can enable debug level logs in two ways:
 
@@ -118,14 +154,7 @@ You can enable debug level logs in two ways:
   }
   ```
 
-To enable debug level logs for specific resources you can add the `log_configuration` option to the resources' JSON configuration:
-
-```json
-"log_configuration": {
-    "level": "Debug"
-},
-"attributes": { ... }
-```
+Enabling debug level logs will take precedence over all logging configuration set using the `log` field on a machine or the `log_configuration` field on a resource.
 
 ### Shutdown
 
