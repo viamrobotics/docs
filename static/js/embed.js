@@ -61866,7 +61866,7 @@ properties: {
             }
         ],
         quickQuestions: [
-            "How to install lightweight version microcontroller?",
+            "How to install Viam on microcontrollers?",
             "How to deploy a person detection model?",
             "How can I ingest data from machines?",
             "How to query sensor data with third-party tools?",
@@ -61946,7 +61946,7 @@ const inkeepWidget = window.Inkeep().embed({
             }
         ],
         quickQuestions: [
-            "How to install lightweight version microcontroller?",
+            "How to install Viam on microcontrollers?",
             "How to deploy a person detection model?",
             "How can I ingest data from machines?",
             "How to query sensor data with third-party tools?",
