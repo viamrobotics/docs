@@ -212,9 +212,9 @@ You can set optional arguments by defining the following environment variables:
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `VIAM_JSON_PATH` | The path to the machine credentials <FILE>viam.json</FILE> file to be copied to the machine. |
+| `VIAM_JSON_PATH` | The path to the machine credentials <FILE>viam.json</FILE> file to be copied to the machine. The script will also prompt you for this file if not provided. |
 | `PROVISIONING_PATH` | The path to the <FILE>viam-provisioning.json</FILE> file. The script will also prompt you for this file if not provided. |
-| `VIAM_AGENT` | The path to a beta or local build of `viam-agent`. Used for testing. |
+| `VIAM_AGENT_PATH` | The path to a beta or local build of `viam-agent`. Used for testing. |
 
 <br>
 
