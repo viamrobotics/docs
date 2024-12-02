@@ -213,13 +213,13 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credentials: {
-      type: 'api-key'
-          /* Replace "<API-KEY>" (including brackets) with your machine's api key */,
-      payload: '<API-KEY>',
-      authEntity: '<API-KEY-ID>'
-      /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */,
+      // Replace "<API-KEY>" (including brackets) with your machine's api key
+      type: "api-key",
+      payload: "<API-KEY>",
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+      authEntity: "<API-KEY-ID>",
     },
-    signalingAddress: 'https://app.viam.com:443',
+    signalingAddress: "https://app.viam.com:443",
   });
 
   console.log("Resources:");
