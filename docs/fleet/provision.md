@@ -18,7 +18,7 @@ date: "2024-08-16"
 You can use Viam's software provisioning manager (`agent-provisioning`), to provision a machine as it first comes online with a pre-defined configuration.
 This is useful when deploying a fleet of machines directly from the factory to a customer, or when bundling proprietary software on your Viam machine.
 
-The provisioning subsystem is a feature of [`viam-agent`](/configure/agent/), which you can install as part of your manufacturing process.
+Provisioning is a feature of [`viam-agent`](/configure/agent/), which you can install as part of your manufacturing process.
 `agent-provisioning` will then perform the rest of the first-time setup for your machine once an [end user sets up the machine](#end-user-experience).
 
 Consider a company that sells machines that monitor weather conditions on a maritime craft and provide navigation advice based on those readings.
@@ -26,7 +26,7 @@ Such a machine might use Viam to regularly capture and upload a stream of sensor
 To parse the readings and provide tailored guidance to a ship's captain, the company writes their own proprietary application which includes live analytics and speech generation for conveying advice to the captain.
 
 Using `agent-provisioning`, this company can ship their machines directly to customers with `viam-agent` installed.
-When a customer sets up their machine, the provisioning subsystem installs `viam-server`.
+When a customer sets up their machine, `viam-agent` installs `viam-server`.
 By having the end customer set up the machine, the company:
 
 - eliminates per-device setup and individualization at the factory

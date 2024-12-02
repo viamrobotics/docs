@@ -15,7 +15,7 @@ date: "2024-08-21"
 cost: "0"
 ---
 
-The provisioning subsystem is a feature of `viam-agent`, which you can install as part of your manufacturing process. `agent-provisioning` will then perform the rest of the first-time setup for your machine once an end user sets up the machine.
+Provisioning is a feature of `viam-agent`, which you can install as part of your manufacturing process. `agent-provisioning` will then perform the rest of the first-time setup for your machine once an end user sets up the machine.
 
 This is useful when deploying a fleet of machines directly from the factory to a customer, or when bundling proprietary software on your Viam machine.
 
