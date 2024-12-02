@@ -22,8 +22,6 @@ import numpy as np
 
 my_mlmodel = MLModelClient.from_robot(robot=machine, name="my_mlmodel_service")
 
-output_tensors = await my_mlmodel.infer(input_tensors)
-
 image_data = np.zeros((1, 384, 384, 3), dtype=np.uint8)
 
 # Create the input tensors dictionary
@@ -52,20 +50,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-import (
-    "go.viam.com/rdk/ml"
-    "gorgonia.org/tensor"
-)
-
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
-
-input_tensors := ml.Tensors{
-    "image": tensor.New(
-        tensor.Of(tensor.Uint8),
-        tensor.WithShape(1, 384, 384, 3),
-        tensor.WithBacking(make([]uint8, 1*384*384*3)),
-    ),
-}
+input_tensors := ml.Tensors{"0": tensor.New(tensor.WithShape(1, 2, 3), tensor.WithBacking([]int{1, 2, 3, 4, 5, 6}))}
 
 output_tensors, err := myMLModel.Infer(context.Background(), input_tensors)
 ```
