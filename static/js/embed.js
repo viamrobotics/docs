@@ -61884,7 +61884,7 @@ const inkeepWidget = window.Inkeep().embed(config);
 inkeepButton.addEventListener("click", handleOpen);
 
 // Create an HTML element that the Inkeep widget will be inserted into.
-const nav = document.querySelector("nav");
+const nav = document.querySelector("#navsearch");
 const sidebar = document.getElementById("mobile-search");
 
 const inkeepNavDiv = document.createElement("div");
