@@ -212,6 +212,26 @@ const componentConfigs = await machine.discoverComponents(queries);
 For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `queries` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[DiscoveryQuery](https://flutter.viam.dev/viam_sdk/DiscoveryQuery-class.html)\> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Discovery](https://flutter.viam.dev/viam_sdk/Discovery-class.html)\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var queries = [DiscoveryQuery(subtype: 'camera', model: 'webcam', extra: {'username': 'admin', 'password': 'admin'})];
+var discoveredComponents = await machine.discoverComponents(queries);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/discoverComponents.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### FrameSystemConfig

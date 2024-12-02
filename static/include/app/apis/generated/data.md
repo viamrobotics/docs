@@ -56,7 +56,7 @@ Obtain unified tabular data and metadata, queried with SQL.
 
 **Returns:**
 
-- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes | [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]): An array of data objects.
+- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes | [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]): An array of decoded BSON data objects.
 
 **Example:**
 
@@ -82,24 +82,16 @@ Obtain unified tabular data and metadata, queried with MQL.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. You can obtain your organization ID from the Viam app’s organization settings page.
-- `mql_binary` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): The MQL query to run as a list of BSON queries. You can encode your bson queries using a library like pymongo or bson.
+- `mql_binary` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): The MQL query to run as a list of BSON queries. You can encode your bson queries using a library like pymongo.
 
 **Returns:**
 
-- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes | [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]): An array of data objects.
+- (List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes | [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]): An array of decoded BSON data objects.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 import bson
-
-# using bson package (pip install bson)
-tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_binary=[
-    bson.dumps({ '$match': { 'location_id': '<YOUR-LOCATION-ID>' } }),
-    bson.dumps({ '$limit': 5 })
-])
-
-print(f"Tabular Data 1: {tabular_data}")
 
 # using pymongo package (pip install pymongo)
 tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_binary=[
@@ -107,7 +99,7 @@ tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-
     bson.encode({ "$limit": 5 })
 ])
 
-print(f"Tabular Data 2: {tabular_data}")
+print(f"Tabular Data: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_mql).
