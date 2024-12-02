@@ -18,7 +18,7 @@ a.footnote-ref::after {
 /* START Adjust Heading sizes*/
 
 .td-navbar {
-  background: black !important;
+  background-color: rgb(19,20,20) !important;
 }
 
 /* This ensures there is no padding added to the top logo bar */
@@ -35,13 +35,18 @@ a.footnote-ref::after {
   font-size: 0.833rem;
   line-height: 1.667em;
   letter-spacing: 0.1875rem;
-  padding: 5px 10px;
+  padding: 5px 8px;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   a {
     color: white;
   }
+}
+
+.td-navbar .navbar-brand svg {
+  height: 16px;
+  margin: 0;
 }
 
 .td-navbar .nav-link {
@@ -211,6 +216,14 @@ a > code {
 
 .td-toc #TableOfContents ul li a > code {
   color: #333333 !important;
+}
+
+.nav-fold * #TableOfContents ul li ul {
+  padding: 0;
+}
+
+.nav-fold * #TableOfContents ul li ul.is-collapsed {
+  display: none;
 }
 
 p, li {
@@ -2556,3 +2569,118 @@ div.explanation > .explanationvisual > .gif {
   opacity: 0;
   transition: opacity 250ms ease-out;
 }
+
+// Top level nav START
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.navcontainer {
+  min-width: 100%;
+  display: flex;
+}
+
+.td-topbar-sections {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  line-height: unset !important;
+}
+
+.td-topbar-sections > ul {
+  padding: 0;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0 0;
+  border-left: 1px solid white;
+}
+
+.td-topbar-sections > ul > li {
+  padding-right: 1.5rem;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.td-topbar-sections > ul > li > a {
+  color: white;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.td-topbar-sections > ul > li > a:hover {
+  text-decoration: none;
+}
+
+.td-navbar {
+  min-height: 3.5rem;
+}
+
+.navsectiontop.active-path {
+  border-bottom: 1px solid white;
+}
+
+#navsearch {
+  min-width: 250.633px;
+}
+
+span.section-overview {
+  display: none
+}
+
+@media (min-width: 768px) {
+  .td-sidebar-nav__section ul.ul-1 {
+    padding-top: 0.5rem
+  }
+
+  .ul-1 > li.nav-fold.hide-if-desktop {
+    display: none;
+  }
+
+  .menu-toggle.open-on-desktop {
+    display: none;
+  }
+
+  li.nav-fold.open-on-desktop > span > ul > li {
+    display: block !important;
+  }
+
+  li.nav-fold.open-on-desktop.header-only > span > a {
+    text-transform: uppercase;
+    font-family: Space Mono,sans-serif;
+    color: #aaa;
+    margin-top: 1rem;
+  }
+
+  li.nav-fold.open-on-desktop.header-only:first-child > span > a {
+    margin-top: 0.5rem;
+  }
+
+  li.nav-fold.open-on-desktop.header-only * li {
+    text-transform: unset;
+  }
+
+  li.open-on-desktop > span > ul.ul-2 {
+    padding-left: 0;
+  }
+
+  li.open-on-desktop.header-only > span > ul.ul-3 {
+    padding-left: 0;
+  }
+
+  span.section-overview-title {
+    display: none
+  }
+
+  span.section-overview {
+    display: block
+  }
+
+}
+
+a.tree-root {
+  display: none;
+}
+
+// Top level nav END
