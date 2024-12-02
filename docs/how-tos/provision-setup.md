@@ -205,7 +205,18 @@ sudo ./preinstall.sh
 ```
 
 Follow the instructions.
-If you created a <FILE>viam-provisioning.json</FILE>, specify its location when prompted.
+If you created a <FILE>viam-provisioning.json</FILE>, specify its location as an environment variable or when prompted.
+
+You can set optional arguments by defining the following environment variables:
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `VIAM_JSON_PATH` | The path to the machine credentials <FILE>viam.json</FILE> file to be copied to the machine. |
+| `PROVISIONING_PATH` | The path to the <FILE>viam-provisioning.json</FILE> file. The script will also prompt you for this file if not provided. |
+| `VIAM_AGENT` | The path to a beta or local build of `viam-agent`. Used for testing. |
+
+<br>
 
 {{% expand "Using a Raspberry Pi?" %}}
 
