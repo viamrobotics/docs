@@ -188,6 +188,11 @@ Edit and fill in the attributes as applicable.
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables the management of `viam-server`. |
 | `attributes` | object | Optional | <ul><li>`fast_start`: If set to `true`, `viam-agent` will not wait for a network connection nor check for updates before starting `viam-server`. See [Fast start mode](#fast-start-mode).</li></ul> |
 
+#### Version updates
+
+To avoid unexpected downtime when `viam-server` is updated, you can configure a [Maintenance Window](/architecture/viam-server/#maintenance-window).
+With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
+
 #### Fast start mode
 
 You can use fast start mode to bypass `viam-agent` waiting for a network connection to be established and checking for updates during initial startup.
