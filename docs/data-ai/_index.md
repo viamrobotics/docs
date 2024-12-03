@@ -1,6 +1,6 @@
 ---
-linkTitle: "AI & data"
-title: "Use data & AI"
+linkTitle: "AI & Data"
+title: "Work with Data and AI"
 weight: 250
 layout: "docs"
 type: "docs"
