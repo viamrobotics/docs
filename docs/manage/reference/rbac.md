@@ -22,44 +22,6 @@ Users can have access to different fleet management capabilities depending on wh
 
 For more detailed information on the permissions each role confers for different resources, see [Permissions](/cloud/rbac/#permissions).
 
-## Change a user's access
-
-If you have the **Owner** role, you can [invite new users](/cloud/organizations/#invite-someone-to-an-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
-
-To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
-
-{{<imgproc src="/cloud/rbac.png" resize="700x" declaredimensions=true alt="Organization page">}}
-
-### Limit access
-
-To limit the access of a user, first open the access settings for the user by clicking on the user.
-Then either change the role of the user from owner to operator with the dropdown or click on **Limit access** and change the resource the user has access.
-
-You can also remove the user by clicking on **Remove user**.
-
-{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true >}}
-
-For more information on the permissions the roles assign for each resource, see [Permissions](/cloud/rbac/#permissions).
-
-### Grant additional access
-
-To grant additional access to a user, first open the access settings for the user by clicking on the user.
-Then either change the role of the user from operator to owner with the dropdown or click on **Grant additional access** and change the resource the user has access.
-
-{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/grant-access.png" resize="800x" declaredimensions=true >}}
-
-For more information on the permissions the roles assign for each resource, see [Permissions](/cloud/rbac/#permissions).
-
-{{< alert title="Note" color="note" >}}
-The option to grant additional access is only visible if you can grant the user additional access.
-{{< /alert >}}
-
-### Use the mobile app
-
-You can also use the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) to grant or revoke organization owner or operator access to users on the go.
-Navigate to your organizations on the mobile app by swiping left to right or clicking on the menu in the top left corner.
-Click the gear icon associated with the organization where you want to manage access or invite new people.
-
 ## API keys
 
 API keys grant access to organizations, locations, and machines.
@@ -208,3 +170,12 @@ Permissions for [data management](/fleet/data-management/) and [machine learning
 \*For data from the location
 
 \*\*For data from the machine
+
+---
+
+#### Rotate a secret key
+
+If you ever need to rotate this key, click on the **Generate Key** button to generate a new key.
+
+Viam supports flexible key rotation with up to two keys in use at one time.
+After generating a new secret key, update all references to the key in your code as soon as possible and then remove the old key.
