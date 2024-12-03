@@ -1,6 +1,6 @@
 ---
-linkTitle: "Troubleshoot"
-title: "Troubleshoot and Monitor"
+linkTitle: "Monitor & Troubleshoot"
+title: "Monitor and Troubleshoot"
 weight: 30
 layout: "empty"
 type: "docs"
