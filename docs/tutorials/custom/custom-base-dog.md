@@ -382,7 +382,7 @@ Now, add the local base component from the local module.
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local component**.
 Select `base` as the **Type**.
 Name your component `quadruped`.
-For the colon-delimited triplet, enter `viamlabs:base:robotdog`.
+For the colon-delimited triplet, select or enter `viamlabs:base:robotdog`.
 
 Then, in the configuration panel that appears for the local base, copy and paste the follow attributes:
 

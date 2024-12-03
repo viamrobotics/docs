@@ -419,7 +419,7 @@ With the implementation written, it's time to test your module locally:
 
    Click **+**, click **Local module**, then click **Local component**.
 
-   For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, enter `<namespace>:hello-world:hello-camera`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
+   For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, select or enter `<namespace>:hello-world:hello-camera`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
    For example, `jessamy:hello-world:hello-camera`.
 
    For type, enter `camera`.
@@ -449,7 +449,7 @@ With the implementation written, it's time to test your module locally:
 
    Click **+**, click **Local module**, then click **Local component**.
 
-   For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, enter `<namespace>:hello-world:hello-sensor`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
+   For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, select or enter `<namespace>:hello-world:hello-sensor`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
    For example, `jessamy:hello-world:hello-sensor`.
 
    For type, enter `sensor`.

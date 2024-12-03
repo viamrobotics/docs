@@ -308,7 +308,7 @@ Now that `viam-server` can find the module, you can add the base component it pr
 1. On the **Create** menu for a **Local component**:
 
    - Select the type of modular resource provided by your module: [base](/components/base/), from the dropdown menu.
-   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}: `viamlabs:tutorial:intermode`.
+   - Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}: `viamlabs:tutorial:intermode`.
    - Enter a name for this instance of your base, for example `base-1`.
      This name must be different from the module name.
 

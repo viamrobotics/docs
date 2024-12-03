@@ -1625,11 +1625,11 @@ Add the module to your machine's config, then add the component or service it im
 
 1. Select **Local module**, then select **Local component** or **Local service**.
 
+1. Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
+
+   {{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local component after the local module is configured">}}
+
 1. Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
-
-1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
-
-   {{<imgproc src="registry/modular-resources/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component model showing the create a module step for an intel realsense module">}}
 
 1. Enter a name for this instance of your modular resource.
    This name must be different from the module name.
