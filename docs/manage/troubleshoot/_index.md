@@ -1,7 +1,7 @@
 ---
-linkTitle: "Monitor"
-title: "Monitor"
-weight: 20
+linkTitle: "Troubleshoot"
+title: "Troubleshoot and Monitor"
+weight: 30
 layout: "empty"
 type: "docs"
 empty_page: true
