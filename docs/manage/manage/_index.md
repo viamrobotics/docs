@@ -1,7 +1,7 @@
 ---
-linkTitle: "Organize"
-title: "Organize"
-weight: 200
+linkTitle: "Manage"
+title: "Manage and organize"
+weight: 20
 layout: "empty"
 type: "docs"
 empty_page: true
