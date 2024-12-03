@@ -1,6 +1,6 @@
 ---
-linkTitle: "Write apps"
-title: "Write apps"
+linkTitle: "Build apps"
+title: "Build apps"
 weight: 100
 layout: "empty"
 type: "docs"
