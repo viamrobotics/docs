@@ -1,6 +1,6 @@
 ---
 linkTitle: "Manage fleet"
-title: "Manage your fleet"
+title: "Deploy, manage, and troubleshoot"
 weight: 300
 layout: "docs"
 type: "docs"
