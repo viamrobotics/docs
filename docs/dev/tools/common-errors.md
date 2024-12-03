@@ -1,6 +1,6 @@
 ---
-title: "Troubleshooting"
-linkTitle: "Troubleshooting"
+title: "Common Errors & Known Issues"
+linkTitle: "Common Errors"
 weight: 50
 type: "docs"
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
@@ -11,44 +11,14 @@ date: "2022-01-01"
 This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.
 While many common issues and their possible resolutions are presented here, this list is not comprehensive.
 
+To view logs or get a remote shell on a machine see [Troubleshoot](/manage/troubleshoot/troubleshoot/).
+
 If you have encountered an error that is not listed here, we'd love to hear from you on our [Community Discord](https://discord.gg/viam)!
 Please post the error message you received along with how you were able to trigger it and we'll see if we can help.
 
 ## Status
 
 For information on the status of [app.viam.com](https://app.viam.com), visit [status.viam.com](https://status.viam.com/).
-
-## Enable debug level logs
-
-The default log level for `viam-server` and any running resources is `"Info"`.
-If you are not seeing helpful logs, you can try changing the log level to `"Debug"`.
-
-{{< tabs >}}
-{{% tab name="For individual resources" %}}
-
-Add the `log_configuration` option to the resource's JSON configuration:
-
-```json
-"log_configuration": {
-    "level": "Debug"
-},
-"attributes": { ... }
-```
-
-{{% /tab %}}
-{{% tab name="For viam-server" %}}
-
-Add `"debug": true` to the machine's configuration:
-
-```json
-{
-  "debug": true,
-  "components": [{ ... }]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## Common installation errors
 
