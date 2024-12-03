@@ -21,6 +21,8 @@ Triggers allow you to send webhook requests or emails for the following events:
 
 For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
+## Configuration
+
 To configure a trigger:
 
 {{< tabs >}}
@@ -463,6 +465,8 @@ The request includes the following headers:
 | `Part-Id` |  The part of the machine that triggered the request. | all |
 | `Machine-Name` | The name of the machine that triggered the request. | `part_online`, `part_offline` |
 | `Robot-Id` | The ID of the machine that triggered the request. | all |
+
+## Returned data
 
 The request body includes the following data:
 
