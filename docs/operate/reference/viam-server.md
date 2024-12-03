@@ -54,6 +54,9 @@ After start-up, `viam-server` manages:
 When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running machine.
 
+Reconfiguration of individual resources happens concurrently if there are no configured dependencies for any resources.
+If there are configured dependencies, resources are reconfigured in groups.
+
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
@@ -68,7 +71,17 @@ To avoid performing these updates until your machine is ready for maintenance, y
 A maintenance window consists of one or multiple conditions that determine if maintenance is currently allowed.
 To configure a maintenance window, you need to create a sensor that returns true when your maintenance conditions are met and false otherwise.
 
-Then, add the following configuration to your machine's JSON configuration:
+{{< tabs >}}
+{{% tab name="Builder UI" %}}
+
+To configure a maintenance window, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Maintenance window**.
+
+In the new panel, specify the name of the sensor and the key for the value to be used to determine when maintenance is allowed.
+
+{{% /tab %}}
+{{% tab name="JSON" %}}
+
+To configure a maintenance window, add the following configuration to your machine's JSON configuration:
 
 ```json
 // components: [ ... ],
@@ -78,6 +91,9 @@ maintenance : {
    "maintenance_allowed_key" : string
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 <!-- prettier-ignore -->
 | Attribute | Type | Required? | Description |

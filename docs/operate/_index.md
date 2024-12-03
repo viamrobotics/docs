@@ -1,7 +1,7 @@
 ---
 linkTitle: "Build & integrate"
 title: "Build and integrate"
-weight: 100
+weight: 150
 layout: "docs"
 type: "docs"
 no_list: true
