@@ -2629,6 +2629,10 @@ span.section-overview {
   display: none
 }
 
+.navsectiontop {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .td-sidebar-nav__section ul.ul-1 {
     padding-top: 0.5rem
@@ -2636,6 +2640,10 @@ span.section-overview {
 
   .ul-1 > li.nav-fold.hide-if-desktop {
     display: none;
+  }
+
+  .navsectiontop {
+    display: unset;
   }
 
   .menu-toggle.open-on-desktop {
@@ -2646,7 +2654,7 @@ span.section-overview {
     display: block !important;
   }
 
-  li.nav-fold.open-on-desktop.header-only > span > a {
+  li.nav-fold.open-on-desktop.header-only > span > span {
     text-transform: uppercase;
     font-family: Space Mono,sans-serif;
     color: #aaa;
