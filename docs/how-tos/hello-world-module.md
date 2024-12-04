@@ -511,6 +511,7 @@ First, implement the camera API methods by editing the camera class definition:
    ```go {class="line-numbers linkable-line-numbers" data-start="6"}
    "os"
    "reflect"
+   "io/ioutil"
    ```
 
 1. Add `imagePath = ""` to the global variables so you have the following:
