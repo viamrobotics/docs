@@ -5,11 +5,11 @@ weight: 20
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations."
 ---
 
-To collaborate with others on your machines, you can grant individual collaborators or entire organizations granular permissions for individual machines or entire locations.
-You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) to grant or revoke organization owner or operator access to users on the go.
+To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations.
+You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) to grant or revoke organization owner or operator access to users or API keys.
 
 ## Grant access
 
@@ -95,7 +95,14 @@ You can also remove the user by clicking on **Remove user**.
 
 You can remove any organization except the primary owner from the shared list by clicking the **X** to the right of the location in the shared list.
 
-## Simultaneous configuration changes
+## Rotate an API key
+
+If you ever need to rotate an API key, click on the **Generate Key** button on the organization setting page to generate a new key.
+
+Viam supports flexible key rotation with up to two keys in use at one time.
+After generating a new secret key, update all references to the key in your code as soon as possible and then remove the old key.
+
+## Collaborate safely
 
 When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
 This means everyone who has access can change a fleet's [configuration](machines/#configure), even while your machines are running.

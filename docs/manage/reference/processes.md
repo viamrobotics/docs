@@ -15,10 +15,6 @@ To run a program or control code when your machine is online, configure a _{{< g
 The process is managed by `viam-server`.
 You can configure processes to run once upon startup or indefinitely.
 
-{{< alert title="In this page" color="note" >}}
-{{% toc %}}
-{{< /alert >}}
-
 ## Configure a process
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).

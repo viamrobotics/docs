@@ -45,7 +45,9 @@ Your machine must have `curl` available in order to install `viam-agent`.
 2. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
 
-![Machine setup alert in a newly created machine](/installation/setup-part.png)
+<p>
+{{<imgproc src="/installation/setup-part.png" resize="800x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="imgzoom aligncenter">}}
+</p>
 
 Click **View setup instructions** to open the setup instructions.
 Then navigate to the machine part's setup and follow the instructions to install `viam server` with `viam-agent`.
@@ -81,7 +83,9 @@ For information on managing the service, see [Manage `viam-agent`](/installation
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
 
-{{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width=600x" >}}
+<p>
+{{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width:600px" class="imgzoom aligncenter">}}
+</p>
 
 Edit and fill in the attributes as applicable.
 
@@ -338,11 +342,3 @@ You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your
 If your machine is offline, log messages are queued and are sent to the Viam app once your machine reconnects to the internet.
 
 These log messages include when `viam-server` is stopped and started, the status of agent subsystems, and any errors or warnings encountered during operation.
-
-## Next Steps
-
-To see how to provision machines using `viam-agent`, see:
-
-{{< cards >}}
-{{% card link="/fleet/provision/" %}}
-{{< /cards >}}
