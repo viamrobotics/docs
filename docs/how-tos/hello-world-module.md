@@ -261,53 +261,78 @@ You need to add some sensor-specific code to support the sensor component.
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-3. Open <file>temporary/main.go</file>.
-   Copy the three lines that add the sensor model from the registry:<br><br>
+3. Edit the file structure:<br><br>
+
+   1. Change the name of <file>hello-world/models/module.go</file> to <file>hello-camera.go</file> and change the name of the <file>/models/</file> folder to <file>hellocamera</file> so you have <file>hello-world/hellocamera/hello-camera.go</file>.<br><br>
+
+   1. In the first line of <file>hello-camera.go</file>, change `package models` to `package hellocamera`.<br><br>
+
+   1. Change the name of <file>temporary/models/module.go</file> to <file>hello-sensor.go</file> and change the name of its folder to <file>hellosensor</file>.
+      Move the <file>hellosensor</file> folder from <file>temporary</file> to <file>hello-world</file> so you have <file>hello-world/hellosensor/hello-sensor.go</file>.<br><br>
+
+   1. In the first line of <file>hello-sensor.go</file>, change `package models` to `package hellosensor`.<br><br>
+
+1. Open <file>hello-world/main.go</file>.
+   You need to add the necessary imports and define how it adds the sensor model from the registry.
+   Delete all the contents and replace them with the following:<br><br>
 
    ```go {class="line-numbers linkable-line-numbers" data-start="29"}
-    if err = helloWorld.AddModelFromRegistry(ctx, sensor.API, sensor.HelloSensor); err != nil {
-        return err
+    package main
+
+    import (
+        "context"
+        "hello-world/hellocamera"
+        "hello-world/hellosensor"
+
+        "go.viam.com/rdk/components/camera"
+        "go.viam.com/rdk/components/sensor"
+        "go.viam.com/rdk/logging"
+        "go.viam.com/rdk/module"
+        "go.viam.com/utils"
+    )
+
+    func main() {
+        utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("hello-world"))
     }
-   ```
 
-   Paste them into the <file>hello-world/main.go</file> file you generated earlier, after the lines that add the HelloCamera model.
+    func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) error {
+        helloWorld, err := module.NewModuleFromArgs(ctx)
+        if err != nil {
+            return err
+        }
 
-   Edit `if err = helloWorld.AddModelFromRegistry(ctx, camera.API, models.HelloCamera); err != nil {` to the following:<br><br>
+        if err = helloWorld.AddModelFromRegistry(ctx, camera.API, hellocamera.HelloCamera); err != nil {
+            return err
+        }
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="25"}
-   if err = helloWorld.AddModelFromRegistry(ctx, camera.API, camera.HelloCamera); err != nil {
-       return err
-   }
+        if err = helloWorld.AddModelFromRegistry(ctx, sensor.API, hellosensor.HelloSensor); err != nil {
+            return err
+        }
+
+        err = helloWorld.Start(ctx)
+        defer helloWorld.Close(ctx)
+        if err != nil {
+            return err
+        }
+
+        <-ctx.Done()
+        return nil
+    }
    ```
 
    Save the file.<br><br>
 
-1. Edit the file structure:<br><br>
+1. Change all instances of "temporary" in <file>hello-world/hellosensor/hello-sensor.go</file>:<br><br>
 
-   1. Change the name of <file>hello-world/models/module.go</file> to <file>hello-camera.go</file> and move it into a new folder called `hellocamera` so you have <file>hello-world/hellocamera/hello-camera.go</file>.<br><br>
+   1. Edit `temporary` to `hello-world` on line 14, so it looks like this (but with your org ID in place of `jessamy`):<br><br>
 
-      In the first line of <file>hello-camera.go</file>, change `package models` to `package hellocamera`.<br><br>
+      ```go {class="line-numbers linkable-line-numbers" data-start="14"}
+      HelloSensor      = resource.NewModel("jessamy", "hello-world", "hello-sensor")
+      ```
 
-   1. Change the name of <file>temporary/models/module.go</file> to <file>hello-sensor.go</file> and move it into a new folder within <file>hello-world<file> called `hellosensor` so you have <file>hello-world/hellosensor/hello-sensor.go</file>.<br><br>
+   1. Change both instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
 
-      In the first line of <file>hello-sensor.go</file>, change `package models` to `package hellosensor`.<br><br>
-
-   1. Edit the imports in <file>hello-world/main.go</file> to remove `"hello-world/models"` and replace it with the following:<br><br>
-
-   ```go {class="line-numbers linkable-line-numbers" data-start="5"}
-   "hello-world/hellocamera"
-   "hello-world/hellosensor"
-   ```
-
-1. Edit `temporary` to `hello-world` on line 14 of <file>hello-world/hellosensor/hello-sensor.go</file>, so it looks like this (but with your org ID in place of `jessamy`):<br><br>
-
-   ```go {class="line-numbers linkable-line-numbers" data-start="14"}
-   HelloSensor      = resource.NewModel("jessamy", "hello-world", "hello-sensor")
-   ```
-
-   Change both instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
-
-   Search for any other instances of `temporary` in the rest of the <file>hello-world/hellosensor/hello-sensor.go</file> and replace each with `helloWorld`.
+   1. Search for any other instances of `temporary` in the rest of the <file>hello-world/hellosensor/hello-sensor.go</file> and replace each with `helloWorld`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -359,6 +384,8 @@ You need to add some sensor-specific code to support the sensor component.
 ## Implement the API methods
 
 Edit the stub files to add the logic from your test script in a way that works with the camera and sensor APIs:
+
+First, implement the camera API methods by editing the camera class definition:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -479,11 +506,21 @@ You don't need to edit any of the validate or configuration methods because you'
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Add the following to the list of imports at the top of <file>hello-world/models/hello-camera.go</file>:
+1. Add the following to the list of imports at the top of <file>hello-world/hellocamera/hello-camera.go</file>:
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="7"}
+   ```go {class="line-numbers linkable-line-numbers" data-start="6"}
    "os"
    "reflect"
+   ```
+
+1. Add `imagePath = ""` to the global variables so you have the following:
+
+   ```go {class="line-numbers linkable-line-numbers" data-line="21" data-start="18" data-line-offset="18"}
+   var (
+       HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
+       errUnimplemented = errors.New("unimplemented")
+       imagePath        = ""
+   )
    ```
 
 1. In the test script you hard-coded the path to the image.
@@ -491,11 +528,11 @@ First, implement the camera API methods by editing the camera class definition:
 
    Edit the `type Config struct` definition, replacing the comments with the following:
 
-   ```go {class="line-numbers" data-start="31"}
-    type Config struct {
-        resource.AlwaysRebuild
-        ImagePath string `json:"image_path"`
-    }
+   ```go {class="line-numbers" data-start="32"}
+   type Config struct {
+       resource.AlwaysRebuild
+       ImagePath string `json:"image_path"`
+   }
    ```
 
    This adds the `image_path` attribute and causes the resource to rebuild each time the configuration is changed.
@@ -506,40 +543,41 @@ First, implement the camera API methods by editing the camera class definition:
    This means `image_path` is a required attribute.
    Add the following code to the `Validate` function to throw an error if `image_path` isn't configured or isn't a string:
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="35"}
-    func (conf *Config) Validate(path string) ([]string, error) {
-        var deps []string
-        if conf.ImagePath == "" {
-            return nil, resource.NewConfigValidationFieldRequiredError(path, "image_path")
-        }
-        if reflect.TypeOf(conf.ImagePath) != "string" {
-            return nil, errors.New("image_path must be a string.")
-        }
-        return deps, nil
-    }
+   ```go {class="line-numbers linkable-line-numbers" data-start="37"}
+   func (cfg *Config) Validate(path string) ([]string, error) {
+     var deps []string
+     if cfg.ImagePath == "" {
+         return nil, resource.NewConfigValidationFieldRequiredError(path, "image_path")
+     }
+     if reflect.TypeOf(cfg.ImagePath).Kind() != reflect.String {
+         return nil, errors.New("image_path must be a string.")
+     }
+     imagePath = cfg.ImagePath
+     return deps, nil
+   }
    ```
 
-1. The module generator created a stub for the `Read` function we want to implement:
+1. The module generator created a stub for the `Image` function we want to implement:
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="101" }
-    func (s *helloWorldHelloCamera) Read(ctx context.Context) (image.Image, func(), error) {
-        panic("not implemented")
-    }
+   ```go {class="line-numbers linkable-line-numbers" data-start="96" }
+   func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
+       panic("not implemented")
+   }
    ```
 
    You need to replace `panic("not implemented")` with code to actually implement the method:
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="86" }
-    file, err := os.Open(ImagePath)
-    if err != nil {
-        fmt.Println("Error opening image:", err)
-        return
-    }
-    defer file.Close()
-    return file
+   ```go {class="line-numbers linkable-line-numbers" data-start="97" }
+   imgFile, err := os.Open(imagePath)
+   if err != nil {
+     return nil, func() {}, errors.New("Error opening image.")
+   }
+   defer imgFile.Close()
+   im, _, err := image.Decode(imgFile)
+   return im, func() {}, nil
    ```
 
-1. Delete the methods that have "rt" in them, since they are not applicable to this camera.
+1. Delete the `SubscribeRTP` and `Unsubscribe` methods, since they are not applicable to this camera.
 
 1. You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
    If this camera returned a camera stream instead of a single static file, we would have implemented `Stream` instead of `Read`.
@@ -550,8 +588,12 @@ First, implement the camera API methods by editing the camera class definition:
    Edit these methods so they look like this:
 
    ```go {class="line-numbers linkable-line-numbers" data-start="110" }
-    func (s *helloWorldHelloCamera) Stream(ctx context.Context, errHandlers ...gostream.ErrorHandler) (gostream.VideoStream, error) {
-   return nil, errors.New("not implemented")
+   func (s *helloWorldHelloCamera) NewClientFromConn(ctx context.Context, conn rpc.ClientConn, remoteName string, name resource.Name, logger logging.Logger) (camera.Camera, error) {
+       return nil, errors.New("not implemented")
+   }
+
+   func (s *helloWorldHelloCamera) Stream(ctx context.Context, errHandlers ...gostream.ErrorHandler) (gostream.VideoStream, error) {
+       return nil, errors.New("not implemented")
    }
 
    func (s *helloWorldHelloCamera) Images(ctx context.Context) ([]camera.NamedImage, resource.ResponseMetadata, error) {
@@ -585,9 +627,9 @@ You don't need to edit any of the validate or configuration methods because you'
 1. The sensor API only has one resource-specific method, `Readings`:
 
    ```go {class="line-numbers linkable-line-numbers" data-start="93" }
-    func (s *helloWorldHelloSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
-        panic("not implemented")
-    }
+   func (s *helloWorldHelloSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+       panic("not implemented")
+   }
    ```
 
    Replace `panic("not implemented")` with the following code:
