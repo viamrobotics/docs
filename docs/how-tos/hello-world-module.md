@@ -205,7 +205,7 @@ First let's generate the camera component files, and we'll add the sensor code l
       We will add the sensor later.
     - Model name: `hello-camera`
     - Enable cloud build: `No`
-    - Register module: `No`
+    - Register module: `Yes`
 
 1.  Hit your Enter key and the generator will generate a folder called <file>hello-world</file> containing stub files for your modular camera component.
 
@@ -764,7 +764,10 @@ The hello world module you created is for learning purposes, not to provide any 
 
 {{< /expand >}}
 
-To package and upload your module and make it available to configure on machines in your organization:
+To package (for Python) and upload your module and make it available to configure on machines in your organization:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 1. Package the module as an archive, run the following command from inside the <file>hello-world</file> directory:
 
@@ -780,10 +783,22 @@ To package and upload your module and make it available to configure on machines
    viam module upload --version 1.0.0 --platform any module.tar.gz
    ```
 
-1. Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your private module listed.
-   You can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-   ![The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results.](/how-tos/hello-config.png)
+From within your <file>hello-world</file> directory, run the `viam module upload` CLI command to upload the module to the registry:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module upload --version 1.0.0 --platform any .
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your private module listed.
+You can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
+
+![The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results.](/how-tos/hello-config.png)
 
 For more information about uploading modules, see [Upload a module](/how-tos/upload-module/).
 
