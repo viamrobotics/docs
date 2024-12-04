@@ -5,7 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "Monitor the status of all machines in an organization and investigate issues when needed."
 ---
 
 You can view all machines in an organization from a dashboard and access each machine from it.

@@ -1,6 +1,6 @@
 ---
 title: "Role-Based Access Control"
-linkTitle: "Manage Access"
+linkTitle: "Permissions"
 description: "Fleet and data management permissions."
 weight: 30
 type: "docs"
@@ -12,62 +12,16 @@ date: "2022-01-01"
 # SME: Devin Hilly
 ---
 
-Role-Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions.
-Users can have access to different fleet management capabilities depending on whether they are an owner or an operator of a given {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
+Role-Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members or API keys roles that confer permissions.
+You can assign an owner or an operator role for an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
-- **Owner**: Can see and edit [every tab on the machine page](/cloud/machines/#navigating-the-machine-page).
-  Can manage users in the app.
-- **Operator**: Can see and use only the [**CONTROL**](/fleet/control/) tab.
+- **Owner**: Can see and edit [every tab on the machine page](/cloud/machines/#navigating-the-machine-page) and perform equivalent operations from the APIs.
+- **Operator**: Can see and use only the [**CONTROL**](/fleet/control/) tab and perform equivalent operations from the APIs.
   Cannot see or edit the [**CONFIGURE**](/cloud/machines/#configure), [**LOGS**](/cloud/machines/#logs), or **CONNECT** tabs.
-
-For more detailed information on the permissions each role confers for different resources, see [Permissions](/cloud/rbac/#permissions).
-
-## API keys
-
-API keys grant access to organizations, locations, and machines.
-If at the organization level, they grant access to all locations and machines contained within that organization.
-If at the location level, they grant access to all of the machines contained within that location.
-
-To view all API keys in use for your organization and the locations and machines inside it, click on the organization dropdown in the top navigation bar and click on **Settings**.
-
-View a table with each key, ID, name (if assigned), time created, and entities it provides access to:
-
-{{<imgproc src="/fleet/api-keys.png" resize="700x" declaredimensions=true alt="API Keys table">}}
-
-In each row, click the copy icon to copy the API key and key ID.
-Click the duplicate icon to duplicate the API key.
-Click the trash can icon to delete the API key.
-
-### Add an API key
-
-Click **Generate key** to generate a new key.
-Optionally, give the key a name of your choice.
-Click on the **Resource** menu and choose what organization, location, or machine you want the key to grant access to.
-For **Role**, assign either an **Owner** or **Operator** role.
-See [Permissions](#permissions) for information about the privilege each role entails at each resource level.
-
-### View an API key's details
-
-To view the role of an API key and what it grants access to, click on **Show details** in the key's row of the key table's **Resources** column:
-
-{{<imgproc src="/fleet/additional-details.png" resize="700x" declaredimensions=true alt="Additional details for a key">}}
-
-### Change an API key's access
-
-To edit an API key, click on **Show details** in the key's row of the key table's **Resources** column.
-
-To edit the role, click on the dropdown menu next to the role and select **Owner** or **Operator**.
-See [Permissions](#permissions) for information about the privilege each role entails at each resource level.
-
-To change the entities it is able to access, click **+ Grant additional access**.
-Select which organization, location, or machine you want the key to grant access to.
-Click **Choose** to confirm your selection.
-
-## Permissions
 
 The following sections describe the permissions for each user role when it comes to managing machines, locations, organizations, fragments, and data.
 
-### Machines
+## Machines
 
 Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" >}} are as follows:
 
@@ -83,7 +37,7 @@ Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" 
 | Restart the machine | **Yes** | No | **Yes** | No | **Yes** | No |
 | Edit a machine config (including data capture and sync) | **Yes** | No | **Yes** | No | **Yes** | No |
 
-### Locations
+## Locations
 
 Permissions for managing {{< glossary_tooltip term_id="location" text="locations" >}} are as follows:
 
@@ -106,7 +60,7 @@ If a user is an owner of an organization with which a location was shared (that 
 
 \*Users can only use Try Viam from within an organization they own because doing so creates a new location in the org.
 
-### Organization settings and roles
+## Organization settings and roles
 
 Only {{< glossary_tooltip term_id="organization" text="organization" >}} owners can edit or delete an organization, or see and edit the organization billing page.
 
@@ -131,7 +85,7 @@ Permissions for managing org settings and user roles are as follows:
 
 \*For locations/machines they have access to
 
-### Fragments
+## Fragments
 
 Permissions for managing {{< glossary_tooltip term_id="fragment" text="fragments" >}} are as follows:
 
@@ -142,7 +96,7 @@ Permissions for managing {{< glossary_tooltip term_id="fragment" text="fragments
 | See and use fragments in the {{< glossary_tooltip term_id="organization" text="org" >}} | **Yes** | No | **Yes** | No | **Yes** | No |
 | Edit and delete fragments | **Yes** | No | No | No | No | No |
 
-### Data and machine learning
+## Data and machine learning
 
 Permissions for [data management](/fleet/data-management/) and [machine learning](/services/ml/) are as follows:
 
@@ -170,12 +124,3 @@ Permissions for [data management](/fleet/data-management/) and [machine learning
 \*For data from the location
 
 \*\*For data from the machine
-
----
-
-#### Rotate a secret key
-
-If you ever need to rotate this key, click on the **Generate Key** button to generate a new key.
-
-Viam supports flexible key rotation with up to two keys in use at one time.
-After generating a new secret key, update all references to the key in your code as soon as possible and then remove the old key.

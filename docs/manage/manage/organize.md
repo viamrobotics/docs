@@ -5,7 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "Organize and manage access to your fleet by grouping machines into organizations and locations."
 aliases:
   - /fleet/account/
   - /cloud/account/
@@ -25,6 +25,8 @@ You cannot move machines to other locations once created.
 <p>
 {{<imgproc src="/fleet/fleet.svg" class="fill aligncenter" resize="800x" style="width: 600px" declaredimensions=true alt="Two locations within an organization">}}
 </p>
+
+## Create organizations and locations
 
 {{< table >}}
 {{% tablestep link="/cloud/organizations/" %}}
@@ -67,6 +69,6 @@ You can nest locations up to three levels deep.
 {{% /tablestep %}}
 {{< /table >}}
 
-{{< alert title="Tip" color="tip" >}}
+## Example
+
 If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/#example).
-{{< /alert >}}
