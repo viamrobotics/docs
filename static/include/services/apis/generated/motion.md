@@ -166,7 +166,7 @@ Use the machine's position reported by the {{< glossary_tooltip term_id="slam" t
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnMap()`, your [SLAM service](/services/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
 
-Make sure the [SLAM service](/services/slam/) you use alongside this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/appendix/apis/services/slam/):
+Make sure the [SLAM service](/services/slam/) you use alongside this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/dev/reference/apis/services/slam/):
 
 - It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
 - It must support `GetPosition()` to report the machine's current location on the SLAM map.
@@ -295,7 +295,7 @@ You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()`
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the machine.
 
-Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/appendix/apis/components/movement-sensor/).
+Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/dev/reference/apis/components/movement-sensor/).
 
 - It must support `GetPosition()` to report the machine's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the machine is facing.
@@ -565,7 +565,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### StopPlan
 
-Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/appendix/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/appendix/apis/services/motion/#moveonmap) call.
+Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) call.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -631,7 +631,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### ListPlanStatuses
 
-Returns the statuses of plans created by [`MoveOnGlobe`](/appendix/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/appendix/apis/services/motion/#moveonmap) calls that meet at least one of the following conditions since the motion service initialized:
+Returns the statuses of plans created by [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) calls that meet at least one of the following conditions since the motion service initialized:
 
 - the plan's status is in progress
 - the plan's status changed state within the last 24 hours
@@ -692,7 +692,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### GetPlan
 
-By default, returns the plan history of the most recent [`MoveOnGlobe`](/appendix/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/appendix/apis/services/motion/#moveonmap) call to move a [base](/components/base/) component.
+By default, returns the plan history of the most recent [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) call to move a [base](/components/base/) component.
 
 The plan history for executions before the most recent can be requested by providing an `ExecutionID` in the request.
 

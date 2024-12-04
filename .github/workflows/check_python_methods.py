@@ -235,7 +235,7 @@ def parse(type, names):
         # Parse the Docs site's service page
         if args.local:
             if type == "app" or type == "robot":
-                with open(f"dist/appendix/apis/{service}/index.html") as fp:
+                with open(f"dist/dev/reference/apis/{service}/index.html") as fp:
                     soup2 = BeautifulSoup(fp, 'html.parser')
             else:
                 if service in services_page_mapping.keys():

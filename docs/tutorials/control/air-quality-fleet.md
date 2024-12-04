@@ -438,11 +438,12 @@ The following instructions describe how to set up an API key for one location.
 
     async function main() {
       const opts: VIAM.ViamClientOptions = {
-        credentials: {
-          // Replace "<API-KEY>" (including brackets) with your machine's api key
+        credential: {
           type: "api-key",
+          // Key with location operator permissions
+          // Replace <API-KEY> (including angle brackets)
           payload: "<API-KEY>",
-          // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+          // Replace <API-KEY-ID> (including angle brackets)
           authEntity: "<API-KEY-ID>",
         },
       };
