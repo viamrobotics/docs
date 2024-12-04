@@ -121,7 +121,7 @@ You can authenticate your CLI session using either a personal access token, or a
   ```
 
   {{< alert title="Note" color="note" >}}
-  To use an organization, location, or machine part API key to authenticate, you can create one from the organization's settings page in the [Viam app](https://app.viam.com) or authenticate with a personal access token and then [create an organization API key](#create-an-organization-api-key, a [location](#create-a-location-api-key), or a [machine part API key](#create-a-machine-part-api-key).
+  To use an organization, location, or machine part API key to authenticate, you can create one from the organization's settings page in the [Viam app](https://app.viam.com) or authenticate with a personal access token and then [create an organization API key](#create-an-organization-api-key), a [location](#create-a-location-api-key), or a [machine part API key](#create-a-machine-part-api-key).
   {{< /alert >}}
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
