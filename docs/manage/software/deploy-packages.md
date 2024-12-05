@@ -1,13 +1,12 @@
 ---
 linkTitle: "Deploy packages"
 title: "Deploy software packages to machines (OTA)"
-weight: 10
+weight: 30
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
 images: ["/registry/module-puzzle-piece.svg"]
-description: "You can use a fragment to deploy software packages to many machines, as well as to keep those software packages versioned."
+description: You can use a fragment to deploy software packages and ML models to many machines, as well as to update deployed versions of those software packages and ML models."
 languages: []
 viamresources: []
 platformarea: ["registry", "fleet"]
@@ -18,7 +17,11 @@ cost: "0"
 ---
 
 Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
-You can use a fragment to deploy software packages to many machines, as well as to keep those software packages versioned.
+You can use a fragment to deploy software packages and ML models to many machines, as well as to update deployed versions of those software packages and ML models.
+
+For example, you can configure a fragment with one resource, like a speech detection service.
+Add the fragment to all machines that need the speech detection service.
+As you improve the speech detection service, you can specify the version to deploy and all machines will reconfigure themselves to use the version specified in the update.
 
 ## Create a fragment
 
@@ -29,7 +32,7 @@ You can use a fragment to deploy software packages to many machines, as well as 
 Start by adding a new machine in the [Viam app](https://app.viam.com).
 You do not need to follow the setup instructions.
 
-Use the **CONFIGURE** tab to add the component or service you want to deploy across your machines.
+Use the **CONFIGURE** tab to add the resource you want to deploy to your machines.
 
 {{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
 
@@ -75,11 +78,7 @@ We only created this machine to easily generate the JSON config for the fragment
 
 ## Add the fragment to multiple machines
 
-With your fragment created, you can add it to as many machines as you'd like:
-
-{{< alert title="Tip" color="tip" >}}
-You can add multiple fragments to one machine.
-{{< /alert >}}
+With your fragment created, add it to all machines that need it:
 
 {{< table >}}
 {{% tablestep %}}
@@ -90,6 +89,10 @@ On your machine's **CONFIGURE** tab, click the **+** button and select **Insert 
 Search for your fragment and add it.
 
 Click **Save** in the upper right corner of the screen.
+
+{{< alert title="Tip" color="tip" >}}
+You can add multiple fragments to one machine.
+{{< /alert >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}

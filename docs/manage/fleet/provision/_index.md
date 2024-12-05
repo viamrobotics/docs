@@ -1,7 +1,7 @@
 ---
 linkTitle: "Provision devices"
 title: "Provision devices using viam-agent"
-weight: 40
+weight: 25
 layout: "docs"
 type: "docs"
 no_list: true
