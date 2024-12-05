@@ -19,7 +19,7 @@ cost: 120
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="width: 350px">}}
 
 Personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-If you want to monitor the usage of PPE equipment, you can address this problem using computer vision and a machine learning model that can detect if someone is wearing a hard.
+If you want to monitor the usage of PPE equipment, you can address this problem using computer vision and a machine learning model that can detect if someone is wearing a hard hat.
 
 By following this tutorial you will build a system that can monitor camera feeds and detect situations that require review.
 In other words, this system performs anomaly detection.
