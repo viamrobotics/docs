@@ -1,25 +1,26 @@
 ---
 linkTitle: "Update packages"
 title: "Update packages"
-weight: 10
+weight: 40
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
 ---
 
-## Testing Strategies
+If you have already [deployed a package](/manage/deploy/deploy-package/), you can inspect fragment you have created.
+The JSON object for the deployed package has a `version` field.
 
-If you inspect the fragment you have created, you will notice it contains a `version` field.
+As new versions of software modules or ML models become available, you can update the deployed version in one go using the fragment.
 
-As you develop new versions of your software, your machines will continue to use the version of the software that you have configured in the fragment.
+We strongly recommend that you test updates on a subset of machines before deploying it to all machines.
 
-We generally recommend that you test updates on a subset of machines before deploying it to all machines.
+## Test updates
 
-You can either create a second fragment that you add to a subset of machines, or manually overwrite the version of the package for a subset of machines:
+You can either create a second fragment that you add to a subset of machines, or manually overwrite the version of the package for a subset of machines.
 
 {{< tabs >}}
-{{< tab name="A second fragment" >}}
+{{< tab name="A second fragment (recommended)" >}}
 
 {{< table >}}
 {{% tablestep %}}
@@ -135,6 +136,8 @@ For example:
 Don't forget to **Save**.
 
 All machines configured with your fragment will update when they next check for configuration updates.
+
+## Check machine status
 
 To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/appendix/apis/robot/#getmachinestatus).
 
