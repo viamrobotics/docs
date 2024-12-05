@@ -308,7 +308,7 @@ Do not pass a transform camera that already has the "detections" or "classificat
 {{% /alert %}}
 
 {{< tabs >}}
-{{< tab name="Detections" >}}
+{{% tab name="Detections" %}}
 
 {{< tabs >}}
 {{< tab name="Python" >}}
