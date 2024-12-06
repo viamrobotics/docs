@@ -380,8 +380,6 @@ You need to add some sensor-specific code to support the sensor component.
 
 Edit the stub files to add the logic from your test script in a way that works with the camera and sensor APIs:
 
-First, implement the camera API methods by editing the camera class definition:
-
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -533,11 +531,9 @@ First, implement the camera API methods by editing the camera class definition:
 
    This adds the `image_path` attribute and causes the resource to rebuild each time the configuration is changed.
 
-1. Delete the `Reconfigure()` function entirely, since the camera will rebuild instead of reconfiguring.
-
 1. We are not providing a default image but rely on the end user to supply a valid path to an image when configuring the resource.
    This means `image_path` is a required attribute.
-   Add the following code to the `Validate` function to throw an error if `image_path` isn't configured or isn't a string:
+   Replace the `Validate` function with the following code to throw an error if `image_path` isn't configured or isn't a string:
 
    ```go {class="line-numbers linkable-line-numbers" data-start="38"}
    func (cfg *Config) Validate(path string) ([]string, error) {
@@ -620,27 +616,11 @@ You don't need to edit any of the validate or configuration methods because you'
 
 1. Since `errUnimplemented` and `Config` are defined in <file>hello-camera.go</file>, you need to change <file>hello-sensor.go</file> to avoid redeclaring them:<br><br>
 
-   - Delete line 20, `errUnimplemented = errors.New("unimplemented")` from <file>hello-sensor.go</file>.<br><br>
+   - Delete line 16, `errUnimplemented = errors.New("unimplemented")` from <file>hello-sensor.go</file>.<br><br>
 
    - On line 27, change `type Config struct {` to `type sensorConfig struct {`.<br><br>
 
-   - On lines 21, 39, 48, and 63, change `*Config` to `*sensorConfig`:<br><br>
-
-   ```go {class="line-numbers linkable-line-numbers" data-start="21" }
-    resource.Registration[sensor.Sensor, *sensorConfig]{
-   ```
-
-   ```go {class="line-numbers linkable-line-numbers" data-start="39" }
-   func (cfg *sensorConfig) Validate(path string) ([]string, error) {
-   ```
-
-   ```go {class="line-numbers linkable-line-numbers" data-start="48" }
-   cfg    *sensorConfig
-   ```
-
-   ```go {class="line-numbers linkable-line-numbers" data-start="63" }
-   conf, err := resource.NativeConfig[*sensorConfig](rawConf)
-   ```
+   - Search for all instances of `*Config` in <file>hello-sensor.go</file> and change them to `*sensorConfig`.
 
 1. The sensor API only has one resource-specific method, `Readings`:
 
@@ -697,15 +677,12 @@ With the implementation written, it's time to test your module locally:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-1. Use Go to compile your module into a single executable:
+1. From within the <file>hello-world</file> directory, compile your module into a single executable:
 
-   - Navigate to your <file>hello-world</file> module directory in your terminal.
-   - Run `make` and then `make setup` to install dependencies.
-   - Run `go build` to compile your entry point (main program) file <file>main.go</file> and all other <file>.go</file> files in the directory, building your module and all dependencies into a single executable file.
+   ```sh {class="command-line" data-prompt="$" data-output="5-10"}
+   make setup
+   make build
 
-   Compiling your Go module also generates the `go.mod` and `go.sum` files that define dependency resolution in Go.
-
-   See the [Go compilation documentation](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) for more information.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -814,7 +791,8 @@ viam module upload --version 1.0.0 --platform any .
 {{< /tabs >}}
 
 Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your private module listed.
-You can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
+Because the module is now in the registry, you can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
+The local module configuration is primarily for testing purposes.
 
 ![The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results.](/how-tos/hello-config.png)
 
