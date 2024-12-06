@@ -511,7 +511,7 @@ First, implement the camera API methods by editing the camera class definition:
 
 1. Add `imagePath = ""` to the global variables so you have the following:
 
-   ```go {class="line-numbers linkable-line-numbers" data-line="21" data-start="18" data-line-offset="18"}
+   ```go {class="line-numbers linkable-line-numbers" data-line="22" data-start="19" data-line-offset="19"}
    var (
        HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
        errUnimplemented = errors.New("unimplemented")
@@ -524,7 +524,7 @@ First, implement the camera API methods by editing the camera class definition:
 
    Edit the `type Config struct` definition, replacing the comments with the following:
 
-   ```go {class="line-numbers" data-start="32"}
+   ```go {class="line-numbers" data-start="33"}
    type Config struct {
        resource.AlwaysRebuild
        ImagePath string `json:"image_path"`
@@ -539,7 +539,7 @@ First, implement the camera API methods by editing the camera class definition:
    This means `image_path` is a required attribute.
    Add the following code to the `Validate` function to throw an error if `image_path` isn't configured or isn't a string:
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="37"}
+   ```go {class="line-numbers linkable-line-numbers" data-start="38"}
    func (cfg *Config) Validate(path string) ([]string, error) {
      var deps []string
      if cfg.ImagePath == "" {
@@ -555,7 +555,7 @@ First, implement the camera API methods by editing the camera class definition:
 
 1. The module generator created a stub for the `Image` function we want to implement:
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="96" }
+   ```go {class="line-numbers linkable-line-numbers" data-start="103" }
    func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
        panic("not implemented")
    }
@@ -563,22 +563,20 @@ First, implement the camera API methods by editing the camera class definition:
 
    You need to replace `panic("not implemented")` with code to actually implement the method:
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="97" }
+   ```go {class="line-numbers linkable-line-numbers" data-start="104" }
    imgFile, err := os.Open(imagePath)
    if err != nil {
-     return nil, func() {}, errors.New("Error opening image.")
+     return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
    }
    defer imgFile.Close()
-   im, _, err := image.Decode(imgFile)
-   return im, func() {}, nil
+   imgByte, err := ioutil.ReadFile(imagePath)
+   return imgByte, camera.ImageMetadata{}, nil
    ```
 
 1. Delete the `SubscribeRTP` and `Unsubscribe` methods, since they are not applicable to this camera.
 
 1. You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
    If this camera returned a camera stream instead of a single static file, we would have implemented `Stream` instead of `Read`.
-
-   <!-- TODO: Module generator will be updated. At that point, these steps to edit the `panic` lines can be removed. -->
 
    However, you do need to edit the return statements to return empty structs that match the API.
    Edit these methods so they look like this:
