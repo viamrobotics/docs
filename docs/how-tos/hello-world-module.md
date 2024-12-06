@@ -317,7 +317,7 @@ You need to add some sensor-specific code to support the sensor component.
 
    Save the file.<br><br>
 
-1. Change all instances of "temporary" in <file>hello-world/models/hello-sensor.go</file>:<br><br>
+1. Change all instances of `temporary` in <file>hello-world/models/hello-sensor.go</file>:<br><br>
 
    1. Edit `temporary` to `hello-world` on line 14, so it looks like this (but with your org ID in place of `jessamy`):<br><br>
 
