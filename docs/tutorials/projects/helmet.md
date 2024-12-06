@@ -138,7 +138,7 @@ The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any 
 ### Configure the `objectfilter` module
 
 The physical camera is working and the vision service is set up.
-Now you will pull them together with the [`objectfilter`](https://app.viam.com/module/felixreichenbach/object-filter) {{< glossary_tooltip term_id="module" text="module" >}}.
+Now you will pull them together with the [`objectfilter`](https://app.viam.com/module/felixr/object-filter) {{< glossary_tooltip term_id="module" text="module" >}}.
 This module takes a vision service (in this case, your hard hat detector) and applies it to your webcam feed.
 It outputs a stream with bounding boxes around the hard hats (and people without hard hats) in your camera's view so that you can see the detector working.
 This module also filters the output so that later, when you configure data management, you can save only the images that contain people without hard hats rather than all images the camera captures.
