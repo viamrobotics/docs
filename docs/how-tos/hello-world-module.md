@@ -682,7 +682,7 @@ With the implementation written, it's time to test your module locally:
    ```sh {class="command-line" data-prompt="$" data-output="5-10"}
    make setup
    make build
-
+   ```
 
 {{% /tab %}}
 {{< /tabs >}}
