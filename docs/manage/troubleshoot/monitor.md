@@ -4,7 +4,6 @@ title: "Monitor machine status"
 weight: 10
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Monitor the status of all machines in an organization and investigate issues when needed."
 ---
 
