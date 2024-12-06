@@ -263,14 +263,10 @@ You need to add some sensor-specific code to support the sensor component.
 
 3. Edit the file structure:<br><br>
 
-   1. Change the name of <file>hello-world/models/module.go</file> to <file>hello-camera.go</file> and change the name of the <file>/models/</file> folder to <file>hellocamera</file> so you have <file>hello-world/hellocamera/hello-camera.go</file>.<br><br>
+   1. Change the name of <file>hello-world/models/module.go</file> to <file>hello-camera.go</file>.<br><br>
 
-   1. In the first line of <file>hello-camera.go</file>, change `package models` to `package hellocamera`.<br><br>
-
-   1. Change the name of <file>temporary/models/module.go</file> to <file>hello-sensor.go</file> and change the name of its folder to <file>hellosensor</file>.
-      Move the <file>hellosensor</file> folder from <file>temporary</file> to <file>hello-world</file> so you have <file>hello-world/hellosensor/hello-sensor.go</file>.<br><br>
-
-   1. In the first line of <file>hello-sensor.go</file>, change `package models` to `package hellosensor`.<br><br>
+   1. Change the name of <file>temporary/models/module.go</file> to <file>hello-sensor.go</file>.
+      Move the <file>hello-sensor.go</file> folder from <file>temporary/models/</file> to <file>/hello-world/models/</file>.<br><br>
 
 1. Open <file>hello-world/main.go</file>.
    You need to add the necessary imports and define how it adds the sensor model from the registry.
@@ -281,8 +277,7 @@ You need to add some sensor-specific code to support the sensor component.
 
     import (
         "context"
-        "hello-world/hellocamera"
-        "hello-world/hellosensor"
+        "hello-world/models"
 
         "go.viam.com/rdk/components/camera"
         "go.viam.com/rdk/components/sensor"
@@ -301,11 +296,11 @@ You need to add some sensor-specific code to support the sensor component.
             return err
         }
 
-        if err = helloWorld.AddModelFromRegistry(ctx, camera.API, hellocamera.HelloCamera); err != nil {
+        if err = helloWorld.AddModelFromRegistry(ctx, camera.API, models.HelloCamera); err != nil {
             return err
         }
 
-        if err = helloWorld.AddModelFromRegistry(ctx, sensor.API, hellosensor.HelloSensor); err != nil {
+        if err = helloWorld.AddModelFromRegistry(ctx, sensor.API, models.HelloSensor); err != nil {
             return err
         }
 
@@ -322,7 +317,7 @@ You need to add some sensor-specific code to support the sensor component.
 
    Save the file.<br><br>
 
-1. Change all instances of "temporary" in <file>hello-world/hellosensor/hello-sensor.go</file>:<br><br>
+1. Change all instances of "temporary" in <file>hello-world/models/hello-sensor.go</file>:<br><br>
 
    1. Edit `temporary` to `hello-world` on line 14, so it looks like this (but with your org ID in place of `jessamy`):<br><br>
 
@@ -332,7 +327,7 @@ You need to add some sensor-specific code to support the sensor component.
 
    1. Change both instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
 
-   1. Search for any other instances of `temporary` in the rest of the <file>hello-world/hellosensor/hello-sensor.go</file> and replace each with `helloWorld`.
+   1. Search for any other instances of `temporary` in the rest of the <file>hello-world/models/hello-sensor.go</file> and replace each with `helloWorld`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -506,7 +501,7 @@ You don't need to edit any of the validate or configuration methods because you'
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Add the following to the list of imports at the top of <file>hello-world/hellocamera/hello-camera.go</file>:
+1. Add the following to the list of imports at the top of <file>hello-world/models/hello-camera.go</file>:
 
    ```go {class="line-numbers linkable-line-numbers" data-start="6"}
    "os"
