@@ -9,6 +9,8 @@ images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 tags: ["fleet management", "viam-server", "viam-agent"]
 # SMEs: James, Ale
+prev: "/manage/fleet/setup/"
+next: "/manage/fleet/provision/provision-setup"
 aliases:
   - "/build/provision/"
   - "/fleet/provision/"
