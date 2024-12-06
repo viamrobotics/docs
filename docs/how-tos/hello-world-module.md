@@ -624,11 +624,23 @@ You don't need to edit any of the validate or configuration methods because you'
 
    - On line 27, change `type Config struct {` to `type sensorConfig struct {`.<br><br>
 
-   - On line 39, change `*Config` to `*sensorConfig`:<br><br>
+   - On lines 21, 39, 48, and 63, change `*Config` to `*sensorConfig`:<br><br>
 
-     ```go {class="line-numbers linkable-line-numbers" data-start="39" }
-     func (cfg *sensorConfig) Validate(path string) ([]string, error) {
-     ```
+   ```go {class="line-numbers linkable-line-numbers" data-start="21" }
+    resource.Registration[sensor.Sensor, *sensorConfig]{
+   ```
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="39" }
+   func (cfg *sensorConfig) Validate(path string) ([]string, error) {
+   ```
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="48" }
+   cfg    *sensorConfig
+   ```
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="63" }
+   conf, err := resource.NativeConfig[*sensorConfig](rawConf)
+   ```
 
 1. The sensor API only has one resource-specific method, `Readings`:
 
