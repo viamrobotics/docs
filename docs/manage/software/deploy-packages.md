@@ -4,9 +4,8 @@ title: "Deploy software packages to machines (OTA)"
 weight: 30
 layout: "docs"
 type: "docs"
-no_list: true
 images: ["/registry/module-puzzle-piece.svg"]
-description: You can use a fragment to deploy software packages and ML models to many machines, as well as to update deployed versions of those software packages and ML models."
+description: You can use a fragment to deploy software packages and ML models to many machines, as well as to update deployed versions of those software packages and ML models.
 languages: []
 viamresources: []
 platformarea: ["registry", "fleet"]
