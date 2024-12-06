@@ -4,7 +4,6 @@ title: "Update packages"
 weight: 40
 layout: "docs"
 type: "docs"
-no_list: true
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
 ---
 

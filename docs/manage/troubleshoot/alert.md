@@ -4,7 +4,6 @@ title: "Alert on machine telemetry"
 weight: 20
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Configure a trigger to trigger actions when data is sent from your machine to the cloud, or when your machine's internet connectivity changes."
 tags: ["triggers"]
 aliases:

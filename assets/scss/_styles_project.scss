@@ -2692,3 +2692,97 @@ a.tree-root {
 }
 
 // Top level nav END
+
+// Next page START
+
+#next-page {
+  clear: both;
+}
+
+#next-page > div.left-only {
+  flex-direction: row-reverse;
+}
+
+#next-page > div > div.hover-card {
+  min-width: 250px;
+  max-width: unset;
+}
+
+@media (min-width: 500px) {
+  #next-page > div > div.hover-card {
+    max-width: calc((100% - 1.5rem)/2);
+  }
+}
+
+#next-page > div > div.hover-card.left {
+  float: left;
+  margin: 0rem 0.75rem 0rem 0rem;
+}
+
+#next-page > div > div.hover-card.right {
+  float: right;
+  margin: 0rem 0rem 0rem 0.75rem;
+}
+
+#next-page > div > div.hover-card > a {
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#next-page > div > div.hover-card > a > div > p {
+  font-family: space grotesk,sans-serif;
+  font-size: 1.1667rem !important;
+  line-height: 1.4375em;
+}
+
+#next-page > div > div.hover-card > a > div {
+  display: flex;
+  align-items: center;
+}
+
+#next-page > div > div.hover-card > a > div.text {
+  flex-direction: column;
+}
+
+#next-page > div > div.hover-card > a > div.text > p:first-child {
+  text-transform: uppercase;
+  font-family: Space Mono,sans-serif;
+  color: #aaa;
+  font-size: 0.833rem !important;
+}
+
+#next-page > div > div.hover-card.left > a > div.text > p:first-child {
+  align-self: flex-end;
+}
+
+#next-page > div > div.hover-card.right > a > div.text > p:first-child {
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+
+#next-page > div > div.hover-card > a > div > div {
+  margin-bottom: 0;
+}
+
+#next-page > div > div.hover-card.left > a > div.arrow {
+  margin-right: 1.5rem;
+}
+
+#next-page > div > div.hover-card.left > a > div {
+  text-align: right;
+}
+
+#next-page > div > div.hover-card.right > a > div.arrow {
+  margin-left: 1.5rem;
+}
+
+#next-page > div > div.hover-card.right > a > div {
+  text-align: left;
+}
+
+
+// Next page END
