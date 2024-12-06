@@ -111,7 +111,7 @@ Edit the newly-created `meta.json` file, and provide the required configuration 
     <td><code>module_id</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The module ID, which includes either the module <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization-id</a>, followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
+    <td>The module ID, which includes either the module <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization ID</a>, followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
     <div class="alert alert-caution" role="alert">
   <h4 class="alert-heading">Caution</h4>
 
@@ -264,7 +264,7 @@ where:
   You can only provide one `platform` argument at a time to the `viam module upload` command.
   See [Using the `--platform` argument](/cli/#using-the---platform-argument) for the full list of supported architectures.
 - `module-path`: provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
-- `tags`: provide a comma-separated list of platform tags that determine to which this binary can be deployed. See [`viam module upload`](/cli/#module).
+- `tags`: provide a comma-separated list of platform tags that determine to which platforms this binary can be deployed. See [`viam module upload`](/cli/#module).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -275,19 +275,19 @@ The Viam Registry page for your module displays the platforms your module suppor
 
 For example:
 
-- To upload a custom module that is defined in a single file named `my-module-file` in a local `bin` directory:
+- To upload a module that is defined in a single file named `my-module-file` in a local `bin` directory:
 
   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
   viam module upload --version 1.0.0 --platform linux/amd64 ./bin/my-module-file
   ```
 
-- To upload a custom module that includes multiple files, as well as a separate entry point file, all contained with a local `bin` directory:
+- To upload a module that includes multiple files, as well as a separate entry point file, all contained with a local `bin` directory:
 
   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
   viam module upload --version 1.0.0 --platform linux/amd64 ./bin
   ```
 
-- To upload a custom module that has been compressed as an archive named `packaged-module.tar.gz`:
+- To upload a module that has been compressed as an archive named `packaged-module.tar.gz`:
 
   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
   viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
