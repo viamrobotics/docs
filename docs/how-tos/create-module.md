@@ -1119,7 +1119,24 @@ The example code shown above under [Write your new resource model definition](#w
 {{< tabs name="Configure logging">}}
 {{% tab name="Python"%}}
 
-To enable your Python module to write log messages to the Viam app, add the following lines to your code:
+To enable your Python module to write resource-level log messages to the Viam app, add the following lines to your code:
+
+```python {class="line-numbers linkable-line-numbers"}
+# Within some method, log information:
+self.logger.debug("debug info")
+self.logger.info("info")
+self.logger.warn("warning info")
+self.logger.error("error info")
+self.logger.exception("error info", exc_info=True)
+self.logger.critical("critical info")
+```
+
+Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
+Resource-level logs appear in the **ERROR LOGS** section of each resource's configuration card in the app.
+
+{{< expand "Click to see global logging" >}}
+
+If you need to publish to the global machine-level logs instead of using the recommended resource-level logging, you can follow this example:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="2,5"}
 # In your import block, import the logging package:
@@ -1136,6 +1153,8 @@ LOGGER.error("error info")
 LOGGER.exception("error info", exc_info=True)
 LOGGER.critical("critical info")
 ```
+
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="Go"%}}
