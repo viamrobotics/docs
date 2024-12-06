@@ -616,7 +616,19 @@ First, implement the camera API methods by editing the camera class definition:
 Now edit the sensor class definition to implement the sensor API.
 You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
 
-1. Add `"math/rand"` to the list of imports in <file>hello-sensor.go</file> for the random number generation.
+1. Add `"math/rand"` to the list of imports in <file>hello-sensor.go</file> for the random number generation.<br><br>
+
+1. Since `errUnimplemented` and `Config` are defined in <file>hello-camera.go</file>, you need to change <file>hello-sensor.go</file> to avoid redeclaring them:<br><br>
+
+   - Delete line 20, `errUnimplemented = errors.New("unimplemented")` from <file>hello-sensor.go</file>.<br><br>
+
+   - On line 27, change `type Config struct {` to `type sensorConfig struct {`.<br><br>
+
+   - On line 39, change `*Config` to `*sensorConfig`:<br><br>
+
+     ```go {class="line-numbers linkable-line-numbers" data-start="39" }
+     func (cfg *sensorConfig) Validate(path string) ([]string, error) {
+     ```
 
 1. The sensor API only has one resource-specific method, `Readings`:
 
