@@ -11,6 +11,7 @@ viamresources: []
 platformarea: ["fleet"]
 level: "Intermediate"
 date: "2024-08-21"
+prev: "/manage/fleet/provision/"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 ---

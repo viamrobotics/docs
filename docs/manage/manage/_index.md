@@ -1,6 +1,6 @@
 ---
-linkTitle: "Manage"
-title: "Manage and organize"
+linkTitle: "Manage workspace"
+title: "Manage and organize your workspace"
 weight: 20
 layout: "empty"
 type: "docs"

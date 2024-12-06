@@ -1,6 +1,6 @@
 ---
-linkTitle: "Deploy fleet"
-title: "Deploy fleet"
+linkTitle: "Manage fleet"
+title: "Manage fleet"
 weight: 10
 layout: "empty"
 type: "docs"
