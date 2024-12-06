@@ -13,6 +13,11 @@ date: "2024-10-17"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{< alert title="Note" color="note" >}}
+TODO: Mke this more about performance metrics.
+{{< /alert >}}
+
+
 You can receive alerts for the following machine events:
 
 - **Data has been synced to the cloud**: receive an email or webhook when data from the machine is synced
