@@ -4,7 +4,6 @@ title: "Configure machine operating system settings"
 weight: 20
 layout: "docs"
 type: "docs"
-no_list: true
 description: "TODO"
 ---
 

@@ -4,7 +4,6 @@ title: "Provision devices using viam-agent"
 weight: 25
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Provision a machine as it first comes online with a pre-defined configuration - in the factory or when the machine is taken into service."
 images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
