@@ -9,6 +9,7 @@ aliases:
   - /build/configure/processes/
 date: "2022-01-01"
 updated: "2024-11-01"
+no_list: true
 ---
 
 To run a program or control code when your machine is online, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
