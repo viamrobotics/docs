@@ -17,10 +17,6 @@ date: "2024-08-09"
 cost: "0"
 ---
 
-{{< alert title="Note" color="note" >}}
-Does this belong here or in Build & integrate?
-{{< /alert >}}
-
 If most of your machines use the same setup, you can use a {{< glossary_tooltip term_id="fragment" text="fragment" >}}, like a cookie cutter, to configure the machines in the same way.
 Fragments are a way of sharing and managing [machine configurations](/configure/) across multiple machines.
 
