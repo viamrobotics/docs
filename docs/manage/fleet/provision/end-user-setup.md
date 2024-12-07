@@ -1,6 +1,6 @@
 ---
-title: "Complete setup for a machine"
-linkTitle: "Set a machine up"
+title: "Complete end-user setup for a machine"
+linkTitle: "Setup machine (end-user)"
 weight: 69
 type: "docs"
 description: "If you have received a machine that uses Viam and have been pointed to this guide, this guide will show you how to set it up."
@@ -18,13 +18,6 @@ cost: "0"
 If you have received a machine with Viam pre-installed on it, this guide will show you how to complete your device setup using either the [Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app) or the [captive portal](#set-up-your-machine-using-the-captive-portal).
 
 Unless you have been told to use the captive portal, we recommend you use the Viam mobile app.
-
-{{< alert title="In this page" color="tip" >}}
-
-1. [Set up your machine using the Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app).
-1. [Set up your machine using the captive portal](#set-up-your-machine-using-the-captive-portal).
-
-{{< /alert >}}
 
 ## Prerequisites
 
@@ -146,8 +139,4 @@ You can now use your machine.
 If your machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/configure/agent/#networks).
 You can also override other configuration details in the [`viam-agent` configuration](/configure/agent/#configuration).
 
-For information on how to use your machine's controls, see:
-
-{{< cards >}}
-{{% card link="/fleet/control/" %}}
-{{< /cards >}}
+To control your machine, you can navigate to its **CONTROL** tab in the [Viam app](https://app.viam.com).
