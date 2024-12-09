@@ -5,7 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "Create a dataset to train a machine learning model."
 ---
 
 Collect images from your machine as it monitors its environment and add these images to a dataset.

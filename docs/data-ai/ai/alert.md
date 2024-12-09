@@ -11,7 +11,7 @@ description: "TODO"
 You can use triggers to send webhooks when certain inferences are made.
 For an example of this, see the [Helmet Monitoring tutorial](/tutorials/projects/helmet/).
 
-<!-- todo: intro more generally focused on alerts -->
+<!-- todo: change to use eliot's filtered camera module for both classifications and detectors -->
 
 On this page, you'll learn how to use triggers to send alerts in the form of email notifications when certain detections are made.
 
@@ -39,12 +39,6 @@ You could mount your machine in a stationary location like on a pole, or you cou
 This tutorial covers the software side; you can get creative with the hardware.
 
 Note that your machine must be connected to the internet for data sync and email notifications to work.
-
-### Required software
-
-- [`viam-server`](/installation/viam-server-setup/)
-- [`objectfilter-camera`](https://github.com/felixreichenbach/objectfilter-camera) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
-- Python 3.8
 
 ## Set up your monitor
 
@@ -84,8 +78,8 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Find a model and configure an ML model service
 
-You must use an object detection model to use the `objectfilter` module.
-You can use an object detection ML model from the registry or train one yourself with Viam's built-in tools for [TFLite](/data-ai/ai/train-tflite/) or with another framework using a [custom training script](/data-ai/ai/train/).
+You must use an object detection or classification model to use the `filtered-camera` module.
+You can use an ML model from the registry or train one yourself with Viam's built-in tools for [TFLite](/data-ai/ai/train-tflite/) or with another framework using a [custom training script](/data-ai/ai/train/).
 
 Before you can run an computer vision service on your machine, you usually need to configure an ML model service to deploy the module.
 
@@ -108,7 +102,7 @@ Follow the instructions to [configure an `mlmodel` vision service](/data-ai/refe
 However, the [Viam registry](https://app.viam.com/registry) also provides many modules of vision service that you could use.
 For example, if you were to configure hard hat detection with a YOLOv8 model, you would use the `yolov8` module (without an ML model service):
 
-{{% expand "instructions for configuring a YOLOv8 module" %}}
+{{% expand "Instructions for configuring a YOLOv8 module" %}}
 
 Viam's built-in [`mlmodel` vision service](/services/vision/mlmodel/) works with Tensor Flow Lite models, but since the hard hat detection uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
 The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
@@ -141,24 +135,22 @@ The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any 
 
 With the vision service configured, you can view the inferences provided on the **CONTROL** tab of the Viam app or get them programmatically using the [vision service API](/data-ai/reference/vision-client/).
 
-### Configure the `objectfilter` module
+### Configure the `filtered-camera` module
 
 Now, your physical camera is working and the vision service is set up.
-Now you will pull them together to filter out only images where an inference is made with the [`objectfilter`](https://app.viam.com/module/felixr/object-filter) {{< glossary_tooltip term_id="module" text="module" >}}.
-This camera module takes the vision service and applies it to your webcam feed.
-It outputs a stream with bounding boxes around the inferences in your camera's view so that you can see the detector working.
-This module also filters the output so that later, when you configure data management, you can save only the images that contain people without hard hats rather than all images the camera captures.
+Now you will pull them together to filter out only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
+This camera module takes the vision service and applies it to your webcam feed, filtering the output so that later, when you configure data management, you can save only the images that contain people without hard hats rather than all images the camera captures.
 
-Configure the module with `"labels"` according to the labels your ML model provides that you want to alert on.
-Set the `"filter_data"` attribute to `true` so that later, when you configure data capture on this camera, only images that have one or more of the labels will be captured and sent to the cloud.
+Configure the camera module with classification or object labels according to the labels your ML model provides that you want to alert on.
+Follow the instructions in the [`filtered-camera` module readme](https://github.com/erh/filtered_camera).
 For example, if using the YOLOv8 model (named `yolo`) for hardhat detection, you would configure the module like the following:
 
-{{% expand "instructions for configuring the objectfilter module for detecting people without a hardhat" %}}
+{{% expand "Instructions for configuring the filtered-camera module to detect people without a hardhat" %}}
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
 2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
-   Start typing `objectfilter` and select **camera / objectfilter** from the results.
+   Start typing `filtered-camera` and select **camera / filtered-camera** from the results.
    Click **Add module**.
 
 3. Name your filtering camera something like `objectfilter-cam` and click **Create**.
@@ -167,49 +159,30 @@ For example, if using the YOLOv8 model (named `yolo`) for hardhat detection, you
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "filter_data": true,
      "camera": "my_webcam",
-     "vision_services": ["yolo"],
-     "labels": ["NO-Hardhat"],
-     "confidence": 0.5,
-     "display_boxes": true
+     "vision": "yolo",
+     "window_seconds": 3,
+     "objects": {
+       "NO-Hardhat": 0.5
+     }
    }
    ```
 
    If you named your detector something other than "yolo," edit the `vision_services` value accordingly.
    You can also edit the confidence threshold.
-   If you change it to `0.6` for example, the `objectfilter` camera will only return labeled bounding boxes when the vision model indicates at least 60% confidence that the object is a hard hat or a person without a hard hat.
-
-   Your `objectfilter` camera configuration should now resemble the following:
-
-   {{<imgproc src="/tutorials/helmet/filtercam-config.png" resize="x1100" declaredimensions=true alt="The detector_cam config panel in the Viam app." >}}
+   If you change it to `0.6` for example, the `filtered-camera` camera will only return labeled bounding boxes when the vision model indicates at least 60% confidence that the object is a hard hat or a person without a hard hat.
 
 5. Click **Save** in the top right corner of the screen to save your changes.
 
 {{% /expand%}}
 
-### Test the detector
-
-Now that the detector is configured, it's time to test it!
-
-1. Navigate to the **CONTROL** tab.
-
-2. Click the **objectfilter_cam** panel to open your detector camera controls.
-
-3. Toggle **View objectfilter_cam** to the "on" position.
-   This displays a live feed from your webcam with detection bounding boxes overlaid on it.
-
-For example, if detecting the presence of hard hats:
-
-{{<imgproc src="/tutorials/helmet/no-hard-hat1.png" resize="x1100" declaredimensions=true alt="A person with no hard hat on, with a bounding box labeled No-Hardhat around her head." >}}
-
 ## Configure data capture and sync
 
 Viam's built-in [data management service](/services/data/) allows you to, among other things, capture images and sync them to the cloud.
 
-Configure data capture on the `objectfilter` camera to capture images of detections:
+Configure data capture on the `filtered-camera` camera to capture images of detections or classifications:
 
-1. First, you need to add the data service to your machine to make it available to capture data on your camera.
+1. First, you need to add the data management service to your machine to make it available to capture data on your camera.
 
    Navigate to your machine's **CONFIGURE** tab.
 
@@ -262,10 +235,8 @@ Run your camera in front of what you're detecting and wait for an anomaly to app
 Wait a couple of minutes for the email to arrive in your inbox.
 Congratulations, you've successfully built your anomaly detection monitor!
 
-## Next steps
+## Troubleshooting
 
-{{< cards >}}
-{{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/how-tos/train-deploy-ml/" %}}
-{{% card link="/tutorials/services/navigate-with-rover-base/" %}}
-{{< /cards >}}
+### Test the vision service
+
+To see the detections or classifications occuring in real time and verify if their confidence level reaches the threshold you have set, you can navigate to the vision service card and expand the **TEST** panel.

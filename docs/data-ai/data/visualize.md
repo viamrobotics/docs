@@ -18,6 +18,7 @@ description: "Use teleop or grafana to visualize sensor data from the Viam app."
 ---
 
 Once you have used the data management service to [capture data](/data-ai/data/get-started/capture-sync/), you can visualize your data with either the Viam app's **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
+
 <!-- You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines.
 
 For example, you can configure data capture for several sensors across multiple machines to report the ambient operating temperature.

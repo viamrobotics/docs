@@ -8,7 +8,7 @@ no_list: true
 description: "Use the vision service API to act based on inferences."
 ---
 
-You can use the [vision service API](/appendix/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
+You can use the [vision service API](/dev/reference/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
 
 ## Program a line following robot
 
@@ -111,8 +111,6 @@ For example, you can program a robot arm to halt operations when workers enter d
 
 The code for this would look like:
 
-{{% expand "click to view code" %}}
-
 ```python {class="line-numbers linkable-line-numbers"}
 detections = await detector.get_detections_from_camera(camera_name)
 for d in detections:
@@ -120,14 +118,10 @@ for d in detections:
         arm.stop()
 ```
 
-{{% /expand%}}
-
 You can also use inferences of computer vision for quality assurance purposes.
 For example, you can program a robot arm doing automated harvesting to use vision to identify ripe produce and pick crops selectively.
 
 The code for this would look like:
-
-{{% expand "click to view code" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 classifications = await detector.get_classifications_from_camera(camera_name, 4)
@@ -136,4 +130,19 @@ for c in classifications:
         arm.pick()
 ```
 
-{{% /expand%}}
+To get inferences programmatically, you will want to use the vision service API:
+
+{{< cards >}}
+{{% card link="/dev/reference/apis/services/vision/" customTitle="Vision service API" noimage="True" %}}
+{{< /cards >}}
+
+To implement industrial solutions in code, you can also explore the following component APIs:
+
+{{< cards >}}
+{{< card link="/dev/reference/apis/components/arm/" customTitle="Arm API" noimage="True" >}}
+{{< card link="/dev/reference/apis/components/base/" customTitle="Base API" noimage="True" >}}
+{{< card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="True" >}}
+{{< card link="/dev/reference/apis/components/gripper/" customTitle="Gripper API" noimage="True" >}}
+{{< card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="True" >}}
+{{< card link="/dev/reference/apis/components/sensor/" customTitle="Sensor API" noimage="True" >}}
+{{< /cards >}}
