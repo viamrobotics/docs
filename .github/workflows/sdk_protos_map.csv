@@ -379,6 +379,7 @@ billing,GetInvoicesSummary,,get_invoices_summary,,
 billing,GetInvoicePdf,,get_invoice_pdf,,
 
 ## Data
+data,GetLatestTabularData,,get_latest_tabular_data,,
 data,TabularDataByFilter,,tabular_data_by_filter,,
 data,TabularDataBySQL,,tabular_data_by_sql,,
 data,TabularDataByMQL,,tabular_data_by_mql,,

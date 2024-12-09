@@ -1,3 +1,37 @@
+### GetLatestTabularData
+
+Gets the most recent tabular data captured from the specified data source, as long as it was synced within the last year.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that owns the data.
+- `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data.
+- `resource_subtype` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The subtype of the requested resource that captured the data.
+- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name.
+
+**Returns:**
+
+- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of None means that data hasn’t been synced yet for the data source or the most recently captured data was over a year ago, otherwise the returned tuple contains the following: datetime: The time captured, datetime: The time synced, Dict[str, ValueTypes]: The latest tabular data captured from the specified data source.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+time_captured, time_synced, payload = await data_client.get_latest_tabular_data(
+    part_id="<PART-ID>",
+    resource_name="<RESOURCE-NAME>",
+    resource_subtype="<RESOURCE-SUBTYPE>",
+    method_name="<METHOD-NAME>"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_latest_tabular_data).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### TabularDataByFilter
 
 Retrieve optionally filtered tabular data from the [Viam app](https://app.viam.com).

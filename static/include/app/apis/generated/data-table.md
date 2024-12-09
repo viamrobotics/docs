@@ -1,6 +1,7 @@
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----------- | ----------- |
+| [`GetLatestTabularData`](/appendix/apis/data-client/#getlatesttabulardata) | Gets the most recent tabular data captured from the specified data source, as long as it was synced within the last year. |
 | [`TabularDataByFilter`](/appendix/apis/data-client/#tabulardatabyfilter) | Retrieve optionally filtered tabular data from the Viam app. |
 | [`TabularDataBySQL`](/appendix/apis/data-client/#tabulardatabysql) | Obtain unified tabular data and metadata, queried with SQL. |
 | [`TabularDataByMQL`](/appendix/apis/data-client/#tabulardatabymql) | Obtain unified tabular data and metadata, queried with MQL. |
