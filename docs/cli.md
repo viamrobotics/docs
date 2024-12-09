@@ -628,7 +628,7 @@ This includes:
 - Building your module for different architectures using cloud runners
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
 
-See [Upload a custom module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for more information.
+See [Upload a module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for more information.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
 [automatically upload new versions of your module on release](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
@@ -718,7 +718,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
 | `--public-namespace` | The [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | **Required** |
-| `--tags` | Comma-separated list of platform tags that determine to which this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the raspberry pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
+| `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the raspberry pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
 | `--version` | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument) | `upload` | **Required** |
 | `--wait` | Wait for the build to finish before outputting any logs | `build logs` | Optional |
 
@@ -863,7 +863,7 @@ In the example above, the model namespace is set to `acme` to match the owning o
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a custom module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 See [Modular resources](/registry/) for a conceptual overview of modules and the modular resource system at Viam.
 
