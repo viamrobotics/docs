@@ -759,12 +759,20 @@ The hello world module you created is for learning purposes, not to provide any 
 
 {{< /expand >}}
 
-To package (for Python) and upload your module and make it available to configure on machines in your organization:
+To create the module in the registry, package your code (for Python), and upload your module to make it available for use on machines in your organization:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Package the module as an archive, run the following command from inside the <file>hello-world</file> directory:
+1. Create the module in the registry, from within your <file>hello-world</file> directory, run the `viam module upload` CLI command:
+
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module create --name <your-module-name> --org-id <your-org-id>
+    ```
+
+    Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="organization" >}} from your organization's **Settings** page in the [Viam app](https://app.viam.com/).
+
+2. Package the module as an archive, run the following command:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -czf module.tar.gz run.sh setup.sh requirements.txt src
@@ -772,7 +780,7 @@ To package (for Python) and upload your module and make it available to configur
 
    This creates a tarball called <file>module.tar.gz</file>.
 
-1. Run the `viam module upload` CLI command to upload the module to the registry:
+3. Run the `viam module upload` CLI command to upload the module to the registry:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.0 --platform any module.tar.gz
@@ -781,11 +789,19 @@ To package (for Python) and upload your module and make it available to configur
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-From within your <file>hello-world</file> directory, run the `viam module upload` CLI command to upload the module to the registry:
+1. Create the module in the registry, from within your <file>hello-world</file> directory, run the `viam module upload` CLI command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module upload --version 1.0.0 --platform any .
-```
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module create --name <your-module-name> --org-id <your-org-id>
+    ```
+
+    Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="organization" >}} from your organization's **Settings** page in the [Viam app](https://app.viam.com/).
+
+2. Run the `viam module upload` CLI command to upload the module to the registry:
+
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module upload --version 1.0.0 --platform any .
+    ```
 
 {{% /tab %}}
 {{< /tabs >}}
