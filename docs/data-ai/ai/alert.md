@@ -8,12 +8,7 @@ no_list: true
 description: "TODO"
 ---
 
-You can use triggers to send webhooks when certain inferences are made.
-For an example of this, see the [Helmet Monitoring tutorial](/tutorials/projects/helmet/).
-
-<!-- todo: change to use eliot's filtered camera module for both classifications and detectors -->
-
-On this page, you'll learn how to use triggers to send alerts in the form of email notifications when certain detections are made.
+On this page, you'll learn how to use triggers to send alerts in the form of email notifications when certain detections or classifications are made.
 
 You will build a system that can monitor camera feeds and detect situations that require review.
 In other words, this system performs anomaly detection.
