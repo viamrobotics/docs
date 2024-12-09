@@ -39,4 +39,15 @@ Now if you reopen the panel, you will only see classifications or detections wit
 
 For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
 
-<!-- TODO: add information about running inference with an SDK -->
+## Use an SDK
+
+You can also run inference using a Viam SDK.
+You can use the [`Infer`](/dev/reference/apis/services/ml/#infer)
+method of the ML Model API to make inferences.
+After adding a vision service, you can use a vision service API method with a classifier or a detector to get inferences programmatically.
+For more information, see the ML Model and Vision APIs:
+
+{{< cards >}}
+{{< card link="/dev/reference/apis/services/ml/" customTitle="ML Model API" noimage="True" >}}
+{{% card link="/dev/reference/apis/services/vision/" customTitle="Vision service API" noimage="True" %}}
+{{< /cards >}}

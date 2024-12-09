@@ -609,13 +609,12 @@ You can also view your training jobs' logs with the [`viam train logs`](/cli/#tr
 
 ## Next steps
 
-To use your new model with machines, you must deploy it with the [ML model service](/services/ml/).
+To use your new model with machines, you must [deploy it](/data-ai/ai/deploy/) with the appropriate [ML model service](/data-ai/reference/ml/).
 Then you can use another service, such as the vision service, to apply the deployed model to camera feeds.
 
 To see models in use with machines, see one of the following resources:
 
 {{< cards >}}
-{{% card link="/how-tos/detect-people/" %}}
 {{% card link="/tutorials/projects/helmet/" %}}
 {{% card link="/tutorials/projects/integrating-viam-with-openai/" %}}
 {{< /cards >}}

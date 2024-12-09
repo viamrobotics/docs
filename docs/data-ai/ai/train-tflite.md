@@ -39,7 +39,6 @@ Common use cases for this are **quality assurance** and **health and safety** ap
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Create a dataset with labeled data](#create-a-dataset-and-label-data)
 1. [Train a machine learning (ML) model](#train-a-machine-learning-ml-model)
 1. [Test your ML model](#test-your-ml-model)
 
@@ -52,6 +51,12 @@ Common use cases for this are **quality assurance** and **health and safety** ap
 {{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
 
 {{% snippet "setup.md" %}}
+
+{{% /expand%}}
+
+{{% expand "A dataset with labels. Click to see instructions." %}}
+
+Follow the guide to [create a dataset](/data-ai/ai/create-dataset/) if you haven't already.
 
 {{% /expand%}}
 

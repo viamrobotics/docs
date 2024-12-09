@@ -305,9 +305,9 @@ However, the uploaded images will not be associated with a component or method.
 ## Next steps
 
 Now that you have a batch of data uploaded, you can train an ML model on it.
-Or, if you want to collect and upload data _not_ in a batch, see Capture and Sync Image Data.
+Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/ai/create-dataset/).
 
 {{< cards >}}
-{{% card link="/how-tos/train-deploy-ml/" %}}
-{{% card link="/how-tos/image-data/" %}}
+{{% card link="/data-ai/ai/train-tflite/" %}}
+{{% card link="/data-ai/ai/train/" %}}
 {{< /cards >}}

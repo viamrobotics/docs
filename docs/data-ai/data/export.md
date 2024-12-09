@@ -13,7 +13,6 @@ aliases:
   - /services/data/export/
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "cli"]
-level: "Beginner"
 date: "2024-12-03"
 ---
 
@@ -85,13 +84,3 @@ Sort your folder by filename in order to see them in chronological order.
 {{< /table >}}<br>
 
 You can see more information about exporting data in the [Viam CLI documentation](/cli/#data).
-
-## Next steps
-
-Other how-to guides for using and querying data include:
-
-{{< cards >}}
-{{% card link="/how-tos/train-deploy-ml/" %}}
-{{% card link="/how-tos/sensor-data-visualize/" %}}
-{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
-{{< /cards >}}
