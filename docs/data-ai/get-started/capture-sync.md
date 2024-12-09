@@ -12,9 +12,6 @@ no_list: true
 date: "2024-12-03"
 ---
 
-<!-- todo: make not just camera
-make description better -->
-
 You can use Viam's built-in data management service to capture images from a camera on your machine and sync the images to the cloud.
 
 With your images synced to the cloud, you can view images from all your machines in the Viam app interface.
