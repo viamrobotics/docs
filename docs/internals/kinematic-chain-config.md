@@ -16,7 +16,7 @@ For example, an [arm](/components/arm/) has a reference frame originating where 
 
 If you want to implement a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} with a complex kinematic chain, you need to add a file to your driver that details the attachment of the intermediate reference frames on the component.
 
-This file can be a JSON file in the [same format as Viam's built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm/xarm/xarm6_kinematics.json), or an [<file>.URDF</file> file](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html).
+This file can be a JSON file like [The one for the xArm6](https://github.com/viam-modules/viam-ufactory-xarm/blob/main/arm/xarm6_kinematics.json), or a [<file>.URDF</file> file](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html).
 
 ## Kinematic parameters
 
