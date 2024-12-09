@@ -29,7 +29,6 @@ Making a module to support your sensor will allow you to use it with Viam's data
 1. [Start with a test script](#start-with-a-test-script)
 1. [Generate template module code](#generate-template-module-code)
 1. [Implement the sensor API](#implement-the-sensor-api)
-1. [Make the module executable](#make-the-module-executable)
 1. [Test your module locally](#test-your-module-locally)
 1. [Upload your module](#upload-your-module-to-the-registry)
 
@@ -339,17 +338,6 @@ Most modules have their implementation code linked on their module page, so you 
 Update the generated <file>requirements.txt</file> file to include any packages that must be installed for the module to run.
 Depending on your use case, you may not need to add anything here beyond `viam-sdk` which is auto-populated.
 
-## Set up a virtual environment
-
-Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
-```
-
-This environment is where the local module will run.
-`viam-server` does not need to run inside this environment.
-
 ## Test your module locally
 
 {{% expand "Prerequisite: A running machine connected to the Viam app." %}}
@@ -365,7 +353,20 @@ It's a good idea to test your module locally before uploading it to the [Viam Re
 
 {{< table >}}
 {{% tablestep link="/how-tos/create-module/#test-your-module-locally" %}}
-**1. Configure your local module on a machine**
+**1. Set up a virtual environment**
+
+Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+```
+
+This environment is where the local module will run.
+`viam-server` does not need to run inside this environment.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Configure your local module on a machine**
 
 On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
 Select **Local module**, then **Local module**.
@@ -374,7 +375,7 @@ Type in the _absolute_ path on your machine's filesystem to your module's execut
 Click **Create**.
 
 {{% /tablestep %}}
-{{% tablestep link="/how-tos/create-module/#test-your-module-locally" %}}
+{{% tablestep %}}
 **2. Configure the model provided by your module**
 
 Click the **+** button again, this time selecting **Local module** and then **Local component**.
