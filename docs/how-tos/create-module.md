@@ -1132,7 +1132,7 @@ self.logger.critical("critical info")
 ```
 
 Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
-Resource-level logs appear in the **ERROR LOGS** section of each resource's configuration card in the app.
+Resource-level error logs appear in the **ERROR LOGS** section of each resource's configuration card in the app.
 
 {{% alert title="Note" color="note" %}}
 In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/architecture/viam-server/#logging).
