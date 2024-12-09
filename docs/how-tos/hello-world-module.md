@@ -764,7 +764,7 @@ To create the module in the registry, package your code (for Python), and upload
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Create the module in the registry, from within your <file>hello-world</file> directory, run the `viam module upload` CLI command:
+1. Create the module in the registry, from within your <file>hello-world</file> directory, run the `viam module create` CLI command:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     viam module create --name <your-module-name> --org-id <your-org-id>
@@ -789,7 +789,7 @@ To create the module in the registry, package your code (for Python), and upload
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-1. Create the module in the registry, from within your <file>hello-world</file> directory, run the `viam module upload` CLI command:
+1. Create the module in the registry, from within your <file>hello-world</file> directory, run the `viam module create` CLI command:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     viam module create --name <your-module-name> --org-id <your-org-id>
