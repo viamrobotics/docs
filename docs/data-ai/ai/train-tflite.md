@@ -42,7 +42,6 @@ Common use cases for this are **quality assurance** and **health and safety** ap
 1. [Create a dataset with labeled data](#create-a-dataset-and-label-data)
 1. [Train a machine learning (ML) model](#train-a-machine-learning-ml-model)
 1. [Test your ML model](#test-your-ml-model)
-1. [Deploy your ML model](#deploy-an-ml-model)
 
 {{< /alert >}}
 
@@ -70,6 +69,7 @@ Complete the camera configuration and use the **TEST** panel in the configuratio
 {{% /expand%}}
 
 {{% expand "No computer or webcam?" %}}
+
 No problem.
 You don't need to buy or own any hardware to complete this guide.
 
@@ -91,8 +91,6 @@ Be aware that if you are running out of time during your rental, you can [extend
 {{< /alert >}}
 
 {{% /expand%}}
-
-
 
 ## Train a machine learning (ML) model
 
@@ -165,10 +163,10 @@ You can also view your training jobs' logs with the [`viam train logs`](/cli/#tr
 Once your model has finished training, you can test it.
 
 Ideally, you want your ML model to be able to work with a high level of confidence.
-As you test it, if you notice faulty predictions or confidence scores, you will need adjust your dataset and retrain your model.
+As you test it, if you notice faulty predictions or confidence scores, you will need to adjust your dataset and retrain your model.
 
 If you trained a classification model, you can test it with the following instructions.
-If you trained a detection model, skip to [deploy an ML model](#deploy-an-ml-model).
+If you trained a detection model, move on to [deploy an ML model](/data-ai/ai/deploy/).
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 1. Click on an image to open the side menu, and select the **Actions** tab.
@@ -176,73 +174,6 @@ If you trained a detection model, skip to [deploy an ML model](#deploy-an-ml-mod
 1. Click **Run model**
 
 If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
-
-## Deploy an ML model
-
-You have your trained model.
-Now you can deploy it to your machines and make live inferences.
-
-To use an ML model on your machine, you need to deploy the model with an ML model service.
-The ML model service will run the model.
-
-On its own the ML model service only runs the model.
-To use it to make inferences on a camera stream, you need to use it alongside a vision service.
-
-{{< table >}}
-{{% tablestep link="/services/ml/" %}}
-{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Train models">}}
-**1. Deploy your ML model**
-
-Navigate to the **CONFIGURE** tab of one of your machine in the [Viam app](https://app.viam.com).
-Add an ML model service that supports the ML model you just trained and add the model as the **Model**.
-For example use the `ML model / TFLite CPU` service for TFlite ML models.
-If you used the built-in training, this is the ML model service you need to use.
-If you used a custom training script, you may need a different [ML model service](/services/ml/).
-
-{{% /tablestep %}}
-{{% tablestep link="/services/vision/mlmodel/" %}}
-{{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Configure a service">}}
-**2. Configure an <code>mlmodel</code> vision service**
-
-The ML model service deploys and runs the model.
-
-The vision service works with the ML model services.
-It uses the ML model and applies it to the stream of images from your camera.
-
-Add the `vision / ML model` service to your machine.
-Then, from the **Select model** dropdown, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).
-
-**Save** your changes.
-
-{{% /tablestep %}}
-{{% tablestep link="/services/vision/mlmodel/#test-your-detector-or-classifier" %}}
-{{<imgproc src="/services/ml/deploy.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Deploy your model">}}
-**3. Use your vision service**
-
-You can test your vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/fleet/control/).
-
-The camera stream shows when the vision service identifies something.
-Try pointing the camera at a scene similar to your training data.
-
-{{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="x200" >}}
-{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="x200" >}}
-
-{{% expand "Want to limit the number of shown classifications or detections? Click here." %}}
-
-If you are seeing a lot of classifications or detections, you can set a minimum confidence threshold.
-
-Start by setting the value to 0.8.
-This reduces your output by filtering out anything below a threshold of 80% confidence.
-You can adjust this attribute as necessary.
-
-Click the **Save** button in the top right corner of the page to save your configuration, then close and reopen the **Test** panel of the vision service configuration panel.
-Now if you reopen the panel, you will only see classifications or detections with a confidence value higher than the `default_minimum_confidence` attribute.
-
-For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
-
-{{% /expand%}}
-{{% /tablestep %}}
-{{< /table >}}
 
 ## Next steps
 
