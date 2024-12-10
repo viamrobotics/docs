@@ -44,7 +44,7 @@ robot, err := client.New(
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-```ts {class="line-numbers linkable-line-numbers" data-line="2,9,12"}
+```ts {class="line-numbers linkable-line-numbers" data-line="2,9,11"}
 // Replace with the host of your actual machine running Viam.
 const host = "ADDRESS FROM THE VIAM APP";
 
