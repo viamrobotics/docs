@@ -246,17 +246,20 @@ class Meteopm(Sensor, EasyResource):
 
     @classmethod
     def new(
-        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+        cls, config: ComponentConfig, dependencies: Mapping[
+          ResourceName, ResourceBase]
     ) -> Self:
         """This method creates a new instance of this Sensor component.
-        The default implementation sets the name from the `config` parameter and then calls `reconfigure`.
+        The default implementation sets the name from the `config` parameter
+        and then calls `reconfigure`.
         """
         return super().new(config, dependencies)
 
     @classmethod
     def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
-        """This method allows you to validate the configuration object received from the machine,
-        as well as to return any implicit dependencies based on that `config`.
+        """This method allows you to validate the configuration object
+        received from the machine, as well as to return any implicit
+        dependencies based on that `config`.
         """
         fields = config.attributes.fields
         # Check that configured fields are floats
@@ -270,9 +273,11 @@ class Meteopm(Sensor, EasyResource):
         return []
 
     def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+        self, config: ComponentConfig, dependencies: Mapping[
+          ResourceName, ResourceBase]
     ):
-        """This method allows you to dynamically update your service when it receives a new `config` object.
+        """This method allows you to dynamically update your service
+        when it receives a new `config` object.
         """
         attrs = struct_to_dict(config.attributes)
 
