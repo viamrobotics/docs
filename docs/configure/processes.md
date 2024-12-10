@@ -11,31 +11,6 @@ date: "2022-01-01"
 updated: "2024-11-01"
 ---
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```go {class="line-numbers linkable-line-numbers" data-start="18" data-line-offset="18" data-line="19,21"}
-var (
-    HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
-    errUnimplemented = errors.New("unimplemented")
-    imagePath        = ""
-)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers" data-start="18" data-line-offset="18" data-line="19-21"}
-var (
-    HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
-    errUnimplemented = errors.New("unimplemented")
-    imagePath        = ""
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 To run a program or control code when your machine is online, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
 The process is managed by `viam-server`.
 You can configure processes to run once upon startup or indefinitely.
