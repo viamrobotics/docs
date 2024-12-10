@@ -27,15 +27,9 @@ You can then run queries against that data to search for outliers or edge cases,
 
 - **MQL**: Viam also supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
 
-{{< alert title="In this page" color="tip" >}}
+## Query data in the Viam app
 
-1. [Query data in the Viam app](#query-data-in-the-viam-app).
-1. [Configure data query](#configure-data-query).
-1. [Query data from third-party tools](#query-data-using-third-party-tools).
-
-{{< /alert >}}
-
-## Prerequisites
+### Prerequisites
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
@@ -43,22 +37,7 @@ Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
 
 {{% /expand%}}
 
-{{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
-
-You must have the Viam CLI installed to configure querying with third-party tools.
-
-{{< readfile "/static/include/how-to/install-cli.md" >}}
-
-{{% /expand%}}
-
-{{% expand "mongosh or another third-party tool for querying data. Click to see instructions." %}}
-
-[Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source to follow along.
-See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
-
-{{% /expand%}}
-
-## Query data in the Viam app
+### Query from the app
 
 Once your data has synced, you can query your data from within the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
@@ -160,13 +139,38 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 {{% /tablestep %}}
 {{< /table >}}
 
-## Configure data query
+## Query data using third-party tools
+
+### Prerequisites
+
+{{% expand "Captured sensor data. Click to see instructions." %}}
+
+Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
+
+{{% /expand%}}
+
+{{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
+
+You must have the Viam CLI installed to configure querying with third-party tools.
+
+{{< readfile "/static/include/how-to/install-cli.md" >}}
+
+{{% /expand%}}
+
+{{% expand "mongosh or another third-party tool for querying data. Click to see instructions." %}}
+
+[Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source to follow along.
+See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
+
+{{% /expand%}}
+
+### Configure data query
 
 If you want to query data from third party tools, you have to configure data query to obtain the credentials you need to connect to the third party service.
 
 {{< readfile "/static/include/how-to/query-data.md" >}}
 
-## Query data using third-party tools
+### Query data using third-party tools
 
 You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/) or [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query captured sensor data.
 

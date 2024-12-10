@@ -19,21 +19,11 @@ description: "Use teleop or grafana to visualize sensor data from the Viam app."
 
 Once you have used the data management service to [capture data](/data-ai/data/get-started/capture-sync/), you can visualize your data with either the Viam app's **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
 
-<!-- You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines.
+## Teleop
 
-For example, you can configure data capture for several sensors across multiple machines to report the ambient operating temperature.
-You can then visualize that data to easily understand how the ambient temperature affects your machines' operation.
+Visualize sensor data on a widget with the Viam app's **TELEOP** page.
 
-You can do all of this using the [Viam app](https://app.viam.com/) user interface. You will not need to write any code. -->
-
-{{< alert title="In this page" color="tip" >}}
-
-1. [Visualize data with teleop](#prerequisites-teleop)
-1. [Visualize data with 3rd party tools](#prerequisites-3rd-party-tools)
-
-{{< /alert >}}
-
-## Prerequisites: Teleop
+### Prerequisites
 
 {{% expand "A configured machine with sensor components" %}}
 
@@ -45,16 +35,50 @@ See [configure a machine](/how-tos/configure/) for more information.
 
 {{% /expand%}}
 
-## Configure a sensor widget
+### Configure a workplace with a sensor widget
 
-Follow our docs to [configure a teleop workspace](manage/troubleshoot/teleoperate/).
-Add a GPS widget for a movement sensor and a time series or stat widget for a sensor.
+{{< table >}}
+{{% tablestep %}}
+**1. Create a workspace in the Viam app**
 
+Log in to the [Viam app](https://app.viam.com/).
+
+Navigate to the **FLEET** page's **TELEOP** tab.
+Create a workspace by clicking **+ Create workspace**.
+Give it a name.
+
+{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Blank teleop page.">}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Add widgets**
+
+Click **Add widget** and select the appropriate widget for your machine.
+Repeat as many times as necessary.
+
+Click **Add widget** and add a **GPS** widget for a movement sensor and a **time series** or **stat** widget for a sensor.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Select a machine**
+
+Now, select a machine with which to make your teleop workspace come to life.
+Select **Monitor** in the top right corner to leave editing mode.
+Click **Select machine** and select your configured machine.
+
+Your dashboard now shows the configured widget for the data from your machine.
 For example, a time series graph measuring noise over time:
 
 {{< imgproc src="/services/data/time-series.png" alt="Time series widget measuring noise over time." style="width:500px" resize="1200x" class="imgzoom fill" >}}
 
-## Prerequisites: 3rd party tools
+{{% /tablestep %}}
+{{< /table >}}
+
+## Third party tools
+
+Configure data query and use a third-party visualization tool like Grafana to visualize your sensor data.
+
+### Prerequisites
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
@@ -70,13 +94,13 @@ You must have the Viam CLI installed to configure querying with third-party tool
 
 {{% /expand%}}
 
-## Configure data query
+### Configure data query
 
 If you want to query data from third party tools, you have to configure data query to obtain the credentials you need to connect to the third party service.
 
 {{< readfile "/static/include/how-to/query-data.md" >}}
 
-## Visualize data with third-party tools
+### Visualize data with third-party tools
 
 When you sync captured data to Viam, that data is stored in the Viam organization’s MongoDB Atlas Data Federation instance.
 You can use third-party visualization tools, such as Grafana, to visualize your data.
@@ -251,7 +275,7 @@ See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-pa
 
 For more detailed instructions on using Grafana, including a full step-by-step configuration walkthrough, see [visualizing data with Grafana](/tutorials/services/visualize-data-grafana/).
 
-On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/appendix/apis/data-client/) or [query it with the Viam app](/how-tos/sensor-data-query-with-third-party-tools/).
+On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/appendix/apis/data-client/) or [query it with the Viam app](/data-ai/data/query/).
 
 {{< cards >}}
 {{% card link="/appendix/apis/data-client/" %}}

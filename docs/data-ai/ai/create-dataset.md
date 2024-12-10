@@ -8,11 +8,9 @@ no_list: true
 description: "Create a dataset to train a machine learning model."
 ---
 
-Collect images from your machine as it monitors its environment and add these images to a dataset.
-By creating a dataset from your images, you can then train a machine learning model.
-To ensure the model you create performs well, you need to train it on a variety of images that cover the range of things your machine should be able to recognize.
+To ensure a machine learning model you create performs well, you need to train it on a variety of images that cover the range of things your machine should be able to recognize.
 
-To capture image data from a machine, you will use the data management service.
+This page will walk you through capturing data with the data management service, labeling these images for machine learning, and creating a dataset with them.
 
 {{% expand "Just testing and want a dataset to get started with? Click here." %}}
 

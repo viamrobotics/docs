@@ -109,7 +109,7 @@ In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/da
 
 Click **Train model** and follow the prompts.
 
-You can train your model using **Built-in training** or using a [training script](/registry/training-scripts/) from the Viam Registry.
+You can train a TFLite model using **Built-in training**.
 
 Click **Next steps**.
 
@@ -182,10 +182,7 @@ If the results exceed the confidence threshold, the **Run model** section shows 
 
 ## Next steps
 
-Now your machine can make inferences about its environment. The next step is to act based on these inferences:
-
-- Perform actions: You can use the [vision service API](/appendix/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
-- Webhooks: You can use triggers to send webhooks when certain inferences are made. For an example of this, see the [Helmet Monitoring tutorial](/tutorials/projects/helmet/)
+Now your machine can make inferences about its environment. The next step is to [act](/data-ai/ai/act/) or [alert](/data-ai/ai/alert/) based on these inferences.
 
 See the following tutorials for examples of using machine learning models to make your machine do things based on its inferences about its environment:
 

@@ -20,12 +20,6 @@ You can download machine data from cloud storage to your computer with the Viam 
 
 If you prefer to manage your data with code, see the [data client API documentation](/appendix/apis/data-client/).
 
-{{% alert title="In this page" color="tip" %}}
-
-- [Export data with the Viam CLI](#export-data-with-the-viam-cli)
-
-{{% /alert %}}
-
 ## Prerequisites
 
 {{< expand "Install the Viam CLI and authenticate." >}}
