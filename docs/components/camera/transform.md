@@ -53,8 +53,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
     "rk3": <float>,
     "tp1": <float>,
     "tp2": <float>
-  },
-  "debug": <boolean>
+  }
 }
 ```
 
@@ -102,8 +101,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
       "rk3": <float>,
       "tp1": <float>,
       "tp2": <float>
-    },
-    "debug": <boolean>
+    }
   }
 }
 ```
