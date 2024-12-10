@@ -227,7 +227,7 @@ import asyncio
 from typing import Any, ClassVar, Final, Mapping, Optional, Sequence
 
 from typing_extensions import Self
-from viam.components.sensor import *
+from viam.components.sensor import Sensor
 from viam.module.module import Module
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
@@ -242,7 +242,8 @@ from retry_requests import retry
 
 
 class Meteopm(Sensor, EasyResource):
-    MODEL: ClassVar[Model] = Model(ModelFamily("jessamy", "weather"), "meteo_PM")
+    MODEL: ClassVar[Model] = Model(
+      ModelFamily("jessamy", "weather"), "meteo_PM")
 
     @classmethod
     def new(
