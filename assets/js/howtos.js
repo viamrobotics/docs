@@ -98,9 +98,9 @@ let refinementLists = [customRefinementList({
   items: [
     { label: "Data Management", value: "data" },
     { label: "Machine Learning", value: "ml" },
-    { label: "Core", value: "core" },
+    { label: "Control hardware", value: "core" },
     { label: "Fleet Management", value: "fleet" },
-    { label: "Registry", value: "registry" },
+    { label: "Integrate other hardware", value: "registry" },
     { label: "Mobility", value: "mobility" },
   ],
 }),

@@ -18,7 +18,7 @@ a.footnote-ref::after {
 /* START Adjust Heading sizes*/
 
 .td-navbar {
-  background: black !important;
+  background-color: rgb(19,20,20) !important;
 }
 
 /* This ensures there is no padding added to the top logo bar */
@@ -35,13 +35,18 @@ a.footnote-ref::after {
   font-size: 0.833rem;
   line-height: 1.667em;
   letter-spacing: 0.1875rem;
-  padding: 5px 10px;
+  padding: 5px 8px;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   a {
     color: white;
   }
+}
+
+.td-navbar .navbar-brand svg {
+  height: 16px;
+  margin: 0;
 }
 
 .td-navbar .nav-link {
@@ -211,6 +216,14 @@ a > code {
 
 .td-toc #TableOfContents ul li a > code {
   color: #333333 !important;
+}
+
+.nav-fold * #TableOfContents ul li ul {
+  padding: 0;
+}
+
+.nav-fold * #TableOfContents ul li ul.is-collapsed {
+  display: none;
 }
 
 p, li {
@@ -2556,3 +2569,220 @@ div.explanation > .explanationvisual > .gif {
   opacity: 0;
   transition: opacity 250ms ease-out;
 }
+
+// Top level nav START
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.navcontainer {
+  min-width: 100%;
+  display: flex;
+}
+
+.td-topbar-sections {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  line-height: unset !important;
+}
+
+.td-topbar-sections > ul {
+  padding: 0;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0 0;
+  border-left: 1px solid white;
+}
+
+.td-topbar-sections > ul > li {
+  padding-right: 1.5rem;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.td-topbar-sections > ul > li > a {
+  color: white;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.td-topbar-sections > ul > li > a:hover {
+  text-decoration: none;
+}
+
+.td-navbar {
+  min-height: 3.5rem;
+}
+
+.navsectiontop.active-path {
+  border-bottom: 1px solid white;
+}
+
+#navsearch {
+  min-width: 250.633px;
+}
+
+span.section-overview {
+  display: none
+}
+
+.navsectiontop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .td-sidebar-nav__section ul.ul-1 {
+    padding-top: 0.5rem
+  }
+
+  .ul-1 > li.nav-fold.hide-if-desktop {
+    display: none;
+  }
+
+  .navsectiontop {
+    display: unset;
+  }
+
+  .menu-toggle.open-on-desktop {
+    display: none;
+  }
+
+  li.nav-fold.open-on-desktop > span > ul > li {
+    display: block !important;
+  }
+
+  li.nav-fold.open-on-desktop.header-only > span > span {
+    text-transform: uppercase;
+    font-family: Space Mono,sans-serif;
+    color: #aaa;
+    margin-top: 1rem;
+  }
+
+  li.nav-fold.open-on-desktop.header-only:first-child > span > a {
+    margin-top: 0.5rem;
+  }
+
+  li.nav-fold.open-on-desktop.header-only * li {
+    text-transform: unset;
+  }
+
+  li.open-on-desktop > span > ul.ul-2 {
+    padding-left: 0;
+  }
+
+  li.open-on-desktop.header-only > span > ul.ul-3 {
+    padding-left: 0;
+  }
+
+  span.section-overview-title {
+    display: none
+  }
+
+  span.section-overview {
+    display: block
+  }
+
+}
+
+a.tree-root {
+  display: none;
+}
+
+// Top level nav END
+
+// Next page START
+
+#next-page {
+  clear: both;
+}
+
+#next-page > div.left-only {
+  flex-direction: row-reverse;
+}
+
+#next-page > div > div.hover-card {
+  min-width: 250px;
+  max-width: unset;
+}
+
+@media (min-width: 500px) {
+  #next-page > div > div.hover-card {
+    max-width: calc((100% - 1.5rem)/2);
+  }
+}
+
+#next-page > div > div.hover-card.left {
+  float: left;
+  margin: 0rem 0.75rem 0rem 0rem;
+}
+
+#next-page > div > div.hover-card.right {
+  float: right;
+  margin: 0rem 0rem 0rem 0.75rem;
+}
+
+#next-page > div > div.hover-card > a {
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#next-page > div > div.hover-card > a > div > p {
+  font-family: space grotesk,sans-serif;
+  font-size: 1.1667rem !important;
+  line-height: 1.4375em;
+}
+
+#next-page > div > div.hover-card > a > div {
+  display: flex;
+  align-items: center;
+}
+
+#next-page > div > div.hover-card > a > div.text {
+  flex-direction: column;
+}
+
+#next-page > div > div.hover-card > a > div.text > p:first-child {
+  text-transform: uppercase;
+  font-family: Space Mono,sans-serif;
+  color: #aaa;
+  font-size: 0.833rem !important;
+}
+
+#next-page > div > div.hover-card.left > a > div.text > p:first-child {
+  align-self: flex-end;
+}
+
+#next-page > div > div.hover-card.right > a > div.text > p:first-child {
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+
+#next-page > div > div.hover-card > a > div > div {
+  margin-bottom: 0;
+}
+
+#next-page > div > div.hover-card.left > a > div.arrow {
+  margin-right: 1.5rem;
+}
+
+#next-page > div > div.hover-card.left > a > div {
+  text-align: right;
+}
+
+#next-page > div > div.hover-card.right > a > div.arrow {
+  margin-left: 1.5rem;
+}
+
+#next-page > div > div.hover-card.right > a > div {
+  text-align: left;
+}
+
+
+// Next page END
