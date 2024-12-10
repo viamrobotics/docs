@@ -107,7 +107,7 @@ Log messages appear under the [**LOGS** tab](/cloud/machines/#logs) for a machin
 
 The default log level for `viam-server` and any running resources is `"Info"`.
 
-You can set log levels for individual resources by adding the `log_configuration` option to the resources' JSON configuration:
+You can set log levels for individual components or other resources by adding the `log_configuration` option to the resources' JSON configuration:
 
 ```json
 "log_configuration": {
