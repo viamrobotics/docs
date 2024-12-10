@@ -58,7 +58,6 @@ If you click on **Show more**, then the **video_path** field while your machine 
       "tp1": <float>,
       "tp2": <float>
     },
-    "debug": <boolean>,
     "format": <string>,
     "video_path": "<your-video-path>",
     "width_px": <int>,
@@ -98,7 +97,6 @@ The following attributes are available for `webcam` cameras:
 | `frame_rate` | float | Optional | The camera capture frequency as frames per second, used with `video_path` to find a camera with this throughput. <br> Default: Closest possible value to `30.0` |
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
-| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
 ## Using `video_path`
 
