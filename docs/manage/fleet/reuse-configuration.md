@@ -1,7 +1,7 @@
 ---
 title: "Reuse machine configuration on many machines"
 linkTitle: "Reuse machine configuration"
-weight: 10
+weight: 20
 type: "docs"
 tags: ["data management", "data", "services"]
 images: ["/how-tos/one-to-many/new-fragment.png"]
