@@ -177,7 +177,7 @@ You can create these automatically using the Viam module generator:
 | Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** and copy that string. In the example snippets below, the namespace is `jessamy`. |
 | Resource to add to the module (API) | The [component API](/appendix/apis/#component-apis) or [service API](/appendix/apis/#service apis) the resource you're creating implements. Choose `Sensor Component` for this guide. |
 | Model name | Name your sensor based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `XYZ_1234` or similar. |
-| Enable cloud build | You can select `No` for this tutorial because you'll build the module yourself before uploading it. If you select `Yes`, the module will build from your specified GitHub repo using GitHub actions. |
+| Enable cloud build | You can select `No` for this guide because you'll build the module yourself before uploading it. If you select `Yes` and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. |
 
 The generator will create a folder containing stub files for your modular sensor component.
