@@ -1,6 +1,6 @@
 ---
-linkTitle: "Manage"
-title: "Manage and organize"
+linkTitle: "Manage organization"
+title: "Manage and organize your organization"
 weight: 20
 layout: "empty"
 type: "docs"

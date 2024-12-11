@@ -1,5 +1,5 @@
 ---
-linkTitle: "Get Started"
+linkTitle: "Connect devices"
 title: "Get Started"
 weight: 100
 layout: "empty"
