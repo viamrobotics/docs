@@ -2699,7 +2699,11 @@ a.tree-root {
   clear: both;
 }
 
-#next-page > div.left-only {
+#next-page > div {
+  flex-direction: row;
+}
+
+#next-page > div.right-only {
   flex-direction: row-reverse;
 }
 

@@ -13,14 +13,14 @@ date: "2024-08-16"
 The [`viam-agent`](https://github.com/viamrobotics/agent) is a self-updating service manager that maintains the lifecycle for itself and the following system services:
 
 - `viam-server`: the core of the machine
-- [`agent-provisioning`](#agent-provisioning): device provisioning subsystem that can set up machine configs and manage WiFi networks. For more information see [Provisioning](/fleet/provision/).
+- [`agent-provisioning`](#agent-provisioning): device provisioning which can set up machine configs and manage WiFi networks. For more information see [Provisioning](/fleet/provision/).
 - [`agent-syscfg`](#agent-syscfg): provides various operating system and system configuration tweaks
 
 Among other things, `viam-agent`:
 
 - Installs, runs, and monitors `viam-server`
   You can also use a custom build of `viam-server`, if needed.
-- Provides automatic updates for `viam-server`, the agent itself, and any configured subsystems (such as the `agent-provisioning` subsystem).
+- Provides automatic updates for `viam-server` and the agent itself.
 - Allows control of deployed software versions through the Viam app.
 
 {{< alert title="Support notice" color="note" >}}
@@ -110,16 +110,10 @@ Edit and fill in the attributes as applicable.
       }
     },
     "agent-provisioning": {
-      "release_channel": "stable",
-      "pin_version": "",
-      "pin_url": "",
       "disable_subsystem": false,
       "networks": []
     },
     "agent-syscfg": {
-      "release_channel": "stable",
-      "pin_version": "",
-      "pin_url": "",
       "disable_subsystem": false
     }
   }
@@ -178,15 +172,13 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{< /tabs >}}
 
-Each section primarily controls updates for that subsystem:
-
 ### `viam-agent`
 
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
 | `release_channel` | string | Optional | `viam-agent` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default). |
-| `pin_version` | string | Optional | Lock the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
+| `pin_version` | string | Optional | Use a specific version for `viam-agent` (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 
 ### `viam-server`
@@ -195,15 +187,17 @@ Each section primarily controls updates for that subsystem:
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
 | `release_channel` | string | Optional | `viam-agent` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default), `"latest"`. |
-| `pin_version` | string | Optional | "Lock" the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
+| `pin_version` | string | Optional | Use a specific version for `viam-server` (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
-| `disable_subsystem` | boolean | Optional | When set to `true` it disables the `viam-server` subsystem. |
+| `disable_subsystem` | boolean | Optional | When set to `true` it disables the management of `viam-server`. |
 | `attributes` | object | Optional | <ul><li>`fast_start`: If set to `true`, `viam-agent` will not wait for a network connection nor check for updates before starting `viam-server`. See [Fast start mode](#fast-start-mode).</li></ul> |
 
 #### Version updates
 
-To avoid unexpected downtime when `viam-server` is updated, you can configure a [Maintenance Window](/architecture/viam-server/#maintenance-window).
-With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
+To avoid unexpected downtime when `viam-server` is updated, you can configure a [Maintenance Window](/
+architecture/viam-server/#maintenance-window).
+With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when ma
+intenance is allowed and when `viam-server` is not currently processing config changes.
 
 #### Fast start mode
 
@@ -224,16 +218,13 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
-| `release_channel` | string | Optional | `agent-provisioning` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default), `"latest"`. |
-| `pin_version` | string | Optional | Lock the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
-| `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
-| `disable_subsystem` | boolean | Optional | When set to `true` it disables the `agent-provisioning` subsystem. |
+| `disable_subsystem` | boolean | Optional | When set to `true` it disables `agent-provisioning` management. |
 | `attributes` | object | Optional | You can override all attributes from the [`viam-agent` configuration file](/fleet/provision/#configuration) here. The [`viam-agent` configuration file](/fleet/provision/#configuration) is generally customized by the manufacturer to provide "out of the box" settings. The attributes configured in the machine config in the Viam app can let you as the machine user override those if you wish. For security purposes, you should change the `hotspot_password`. You can also configure `roaming_mode` and add any additional networks you want to configure. <ul><li>`hotspot_password`: Overwrite the password set for the WiFi hotspot a machine creates during provisioning.</li><li>`networks`: Networks a machine can automatically connect to when roaming mode is enabled. See [Networks](#networks). </li><li>`roaming_mode`: If enabled, lets the machine connect to additional configured networks. See [Networks](#networks). </li><li>`wifi_power_save`: If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. </li></ul> |
 
 #### Networks
 
-For an already-online device, you can add additional networks to the machine's [`viam-agent` configuration](/configure/agent/#configuration).
-It's primarily useful for a machine that might move between different WiFi networks, so the machine can automatically connect when moved between locations.
+For an already-online device, you can configure new WiFi networks in the machine's [`viam-agent` configuration](/configure/agent/#configuration) in the Viam app.
+It's primarily useful for a machine that moves between different networks, so the machine can automatically connect when moved between locations.
 
 To add additional networks add them using the JSON editor for your device's config in the Viam app.
 
@@ -289,10 +280,7 @@ The following configuration defines the connection information and credentials f
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
-| `release_channel` | string | Optional | `agent-syscfg` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default), `"latest"`. |
-| `pin_version` | string | Optional | "Lock" the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
-| `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
-| `disable_subsystem` | boolean | Optional | When set to `true` it disables the `agent-syscfg` subsystem. |
+| `disable_subsystem` | boolean | Optional | When set to `true` it disables `agent-syscfg`. |
 | `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: If `false` (default), Viam enforces the given logging configurations. If `true`: Viam does NOT modify logging configuration, and the operating system defaults are used.</li></ul></li><li>`upgrades`: using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with "security" in their codename, ex: `bookworm-security`), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
 
 The following configuration allows all upgrades from configured sources and sets the maximum disk space `journald` will user for persistent log storage to 128MB and the runtime limit to 96MB:
@@ -315,7 +303,7 @@ The following configuration allows all upgrades from configured sources and sets
 
 ## Version management for `viam-agent` and `viam-server`
 
-By default, `viam-agent` automatically updates both itself, its subsystems, and `viam-server` as new updates are released.
+By default, `viam-agent` automatically updates both itself and `viam-server` as new updates are released.
 You can configure update behavior using the [Viam app](https://app.viam.com/).
 To ensure that updates only occur when your machines are ready, configure a [maintenance window](/architecture/viam-server/#maintenance-window).
 
@@ -346,4 +334,4 @@ You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your
 `viam-agent` only sends messages when your machine is online and connected to the internet.
 If your machine is offline, log messages are queued and are sent to the Viam app once your machine reconnects to the internet.
 
-These log messages include when `viam-server` is stopped and started, the status of agent subsystems, and any errors or warnings encountered during operation.
+These log messages include when `viam-server` is stopped and started, the status of `viam-agent`, and any errors or warnings encountered during operation.
