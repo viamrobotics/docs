@@ -2,7 +2,7 @@
 title: "Teleoperate with the default control interface"
 linkTitle: "Teleoperate (default)"
 titleMustBeLong: true
-weight: 25
+weight: 30
 type: "docs"
 description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
 tags: ["teleop", "fleet management", "control", "app"]

@@ -1,7 +1,7 @@
 ---
 linkTitle: "Troubleshoot problems"
 title: "Troubleshoot problems"
-weight: 30
+weight: 35
 layout: "docs"
 type: "docs"
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
