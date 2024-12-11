@@ -1,7 +1,7 @@
 ---
-linkTitle: "Organize your workspace"
-title: "Organize your workspace"
-weight: 10
+linkTitle: "Organize your machines"
+title: "Organize your machines"
+weight: 60
 layout: "docs"
 type: "docs"
 no_list: true

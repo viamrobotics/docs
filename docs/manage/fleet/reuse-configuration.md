@@ -1,7 +1,7 @@
 ---
 title: "Reuse machine configuration on many machines"
 linkTitle: "Reuse machine configuration"
-weight: 10
+weight: 20
 type: "docs"
 tags: ["data management", "data", "services"]
 images: ["/how-tos/one-to-many/new-fragment.png"]
@@ -16,10 +16,6 @@ date: "2024-08-09"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 ---
-
-{{< alert title="Note" color="note" >}}
-Does this belong here or in Build & integrate?
-{{< /alert >}}
 
 If most of your machines use the same setup, you can use a {{< glossary_tooltip term_id="fragment" text="fragment" >}}, like a cookie cutter, to configure the machines in the same way.
 Fragments are a way of sharing and managing [machine configurations](/configure/) across multiple machines.

@@ -4,6 +4,6 @@ title: "Reuse device configuration"
 weight: 100
 layout: "docs"
 type: "docs"
-no_list: true
-description: "TODO"
+layout: "empty"
+canonical: "/manage/fleet/reuse-configuration/"
 ---

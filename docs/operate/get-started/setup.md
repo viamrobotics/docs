@@ -1,6 +1,6 @@
 ---
-linkTitle: "Set up a machine"
-title: "Set up a machine"
+linkTitle: "Start a new machine"
+title: "Start a new machine"
 weight: 10
 layout: "docs"
 type: "docs"
