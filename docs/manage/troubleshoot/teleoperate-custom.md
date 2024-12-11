@@ -1,7 +1,7 @@
 ---
 title: "Teleoperate with custom control interface"
 linkTitle: "Teleoperate (custom)"
-weight: 20
+weight: 25
 type: "docs"
 description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
 tags: ["teleop", "fleet management", "control", "app"]
