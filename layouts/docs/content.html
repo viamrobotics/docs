@@ -53,19 +53,28 @@
 	<hr>
 	{{ $pages := .CurrentSection.Pages.ByWeight }}
 	<!-- These are swapped in order -->
-	{{ if ($pages.Next .) }}
+	{{ if ($pages.Next . ) }}
 	<div class="row-no-margin">
 	{{ else }}
-	<div class="row-no-margin left-only">
+	<div class="row-no-margin {{ if not .Params.prev }}right-only{{ end }}">
 	{{ end }}
-	{{ with $pages.Next . }}
-		{{ if not .Params.toc_hide }}
-		{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "left"  "customCanonicalLink" (.Page.Params.canonical) ) }}
+	{{ if .Params.prev }}
+		{{ partial "nextcard.html" (dict "link" (.Params.prev) "class" "left"  "customCanonicalLink" (.Page.Params.canonical) ) }}
+	{{ else }}
+		{{ with $pages.Next . }}
+			{{ if not .Params.toc_hide }}
+			{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "left"  "customCanonicalLink" (.Page.Params.canonical) ) }}
+			{{ end }}
 		{{ end }}
 	{{ end }}
-	{{ with $pages.Prev . }}
-		{{ if not .Params.toc_hide }}
-		{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "right"  "customCanonicalLink" (.Page.Params.canonical) ) }}
+
+	{{ if .Params.next }}
+		{{ partial "nextcard.html" (dict "link" (.Params.next) "class" "right"  "customCanonicalLink" (.Page.Params.canonical) ) }}
+	{{ else }}
+		{{ with $pages.Prev . }}
+			{{ if not .Params.toc_hide }}
+			{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "right"  "customCanonicalLink" (.Page.Params.canonical) ) }}
+			{{ end }}
 		{{ end }}
 	{{ end }}
 	</div>
