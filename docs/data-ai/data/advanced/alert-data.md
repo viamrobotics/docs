@@ -399,7 +399,7 @@ When a trigger occurs, Viam sends a HTTP request to the URL you specified for th
 | Trigger type | HTTP Method |
 | ------------ | ----------- |
 | `part_data_ingested` | POST |
-| `conditional_data_ingested` | POST ||
+| `conditional_data_ingested` | POST |
 
 The request includes the following headers:
 

@@ -28,6 +28,7 @@ async def connect():
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
 
+
 # Get largest detection box and see if it's center is in the left, center, or
 # right third
 def leftOrRight(detections, midpoint):
@@ -48,6 +49,7 @@ def leftOrRight(detections, midpoint):
         return 2  # on the right
     else:
         return 1  # basically centered
+
 
 async def main():
     spinNum = 10         # when turning, spin the motor this much
@@ -113,7 +115,7 @@ The code for this would look like:
 ```python {class="line-numbers linkable-line-numbers"}
 detections = await detector.get_detections_from_camera(camera_name)
 for d in detections:
-    if d.confidence > 0.6 and d.class_name is "PERSON":
+    if d.confidence > 0.6 and d.class_name == "PERSON":
         arm.stop()
 ```
 
@@ -123,9 +125,11 @@ For example, you can program a robot arm doing automated harvesting to use visio
 The code for this would look like:
 
 ```python {class="line-numbers linkable-line-numbers"}
-classifications = await detector.get_classifications_from_camera(camera_name, 4)
+classifications = await detector.get_classifications_from_camera(
+    camera_name,
+    4)
 for c in classifications:
-    if d.confidence > 0.6 and d.class_name is "RIPE":
+    if d.confidence > 0.6 and d.class_name == "RIPE":
         arm.pick()
 ```
 
