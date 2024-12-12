@@ -121,4 +121,4 @@ Congratulations, you've successfully built your anomaly detection monitor!
 
 ### Test the vision service
 
-To see the detections or classifications occuring in real time and verify if their confidence level reaches the threshold you have set, you can navigate to the vision service card and expand the **TEST** panel.
+To see the detections or classifications occurring in real time and verify if their confidence level reaches the threshold you have set, you can navigate to the vision service card and expand the **TEST** panel.
