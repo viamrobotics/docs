@@ -1,7 +1,7 @@
 ---
 linkTitle: "Manage organization"
 title: "Manage and organize your organization"
-weight: 20
+weight: 30
 layout: "empty"
 type: "docs"
 empty_node: true

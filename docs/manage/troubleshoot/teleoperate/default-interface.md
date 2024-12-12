@@ -1,6 +1,6 @@
 ---
 title: "Teleoperate with the default control interface"
-linkTitle: "Teleoperate (default)"
+linkTitle: "Default interface"
 titleMustBeLong: true
 weight: 30
 type: "docs"
@@ -14,13 +14,12 @@ level: "Intermediate"
 date: "2024-11-13"
 # updated: ""  # When the content was last entirely checked
 cost: "0"
+next: "/manage/troubleshoot/troubleshoot/"
 ---
 
-You can remotely control, test, and operate any configured machine using the [default control interface](#default-control-interface) or a [custom control interface](../teleoperate-custom/).
+You can remotely control, test, and operate any configured machine using the default control interface
 
-## Default control interface
-
-### Viam app
+## Viam app
 
 The **CONTROL** tab provides a control interface for each component and service that you have configured for you machine.
 
@@ -31,7 +30,7 @@ If you have configured a camera component, a window in the **CONTROL** tab displ
 
 You can also switch between different machine parts directly from the **CONTROL** tab and control the selected machine part.
 
-### Viam mobile app
+## Viam mobile app
 
 {{<gif webm_src="/fleet/mobile-app-control.webm" mp4_src="/fleet/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" class="alignright" max-width="300px">}}
 
