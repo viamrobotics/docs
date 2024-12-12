@@ -17,6 +17,7 @@ aliases:
   - "/data/capture/performance-metrics/"
   - "/services/data/capture/performance-metrics/"
 date: "2024-12-07"
+next: "/manage/troubleshoot/teleoperate/custom-interface/"
 # updated: ""  # When the content was last entirely checked
 cost: "0"
 ---
@@ -35,6 +36,10 @@ You can also configure alerts on any other machine data, for more information on
 {{< /alert >}}
 
 ## Data meets condition
+
+{{< alert title="Note" color="note" >}}
+Will change to [sbc-hwmonitor](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor).
+{{< /alert >}}
 
 The following steps let you configure the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) to monitor the following metrics about the performance of individual machines or your entire fleet:
 

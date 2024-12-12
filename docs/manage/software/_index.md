@@ -1,5 +1,5 @@
 ---
-linkTitle: "Deploy software"
+linkTitle: "Manage software"
 weight: 20
 layout: "empty"
 type: "docs"
