@@ -12,7 +12,6 @@ aliases:
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "core"]
-no_list: true
 date: "2024-12-03"
 description: "Query sensor data that you have synced to the Viam app using the Viam app with SQL or MQL."
 ---
@@ -277,8 +276,6 @@ db.readings.aggregate(
 
 {{% /tablestep %}}
 {{< /table >}}
-
-## Next steps
 
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 

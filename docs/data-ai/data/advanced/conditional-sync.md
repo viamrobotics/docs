@@ -7,7 +7,6 @@ weight: 20
 tags: ["data management", "cloud", "sync"]
 images: ["/services/icons/data-cloud-sync.svg"]
 icon: true
-no_list: true
 aliases:
   - /data/trigger-sync/
   - /how-tos/trigger-sync/
@@ -306,22 +305,3 @@ If you are in the time frame for sync, the time sync sensor will return true.
 You can confirm that if data is currently syncing by going to the [**Data** tab](https://app.viam.com/data/view).
 If you are not in the time frame for sync, adjust the configuration of your time sync sensor.
 Then check again on the **CONTROL** and **Data** tab to confirm data is syncing.
-
-## Next steps
-
-You can now use custom logic to trigger sync conditionally.
-For more information, see:
-
-<!-- markdownlint-disable MD034 -->
-
-{{< cards >}}
-{{% card link="/how-tos/sensor-module/" %}}
-{{% card link="/how-tos/create-module/" %}}
-{{% manualcard link="https://github.com/viam-labs/trigger-sync-examples-v2" %}}
-
-<h4>Sync Trigger Examples</h4>
-
-Other example code for modules that trigger sync.
-
-{{% /manualcard %}}
-{{< /cards >}}

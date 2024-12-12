@@ -4,7 +4,6 @@ title: "Act based on inferences"
 weight: 70
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Use the vision service API to act based on inferences."
 ---
 

@@ -11,23 +11,12 @@ aliases:
   - /data/upload/
   - /services/data/upload/
   - /how-tos/upload-data/
-no_list: true
 date: "2024-12-04"
 description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
 ---
 
 If you configured the [data management service](/services/data/), Viam automatically uploads data from the configured directory to the cloud, at the interval you specified.
 However, if you want to upload a batch of data once from somewhere else, either from a different directory on your machine or from your personal computer or mobile device, you have several options using the Viam app, the data client API, or the Viam mobile app.
-
-{{% alert title="In this page" color="tip" %}}
-
-- [Sync a batch of data from another directory](#sync-a-batch-of-data-from-another-directory) by configuring the path to the directory as an additional sync path in a machine's data management service.
-  This requires the data to be on a machine running `viam-server`.
-- [Upload data with the Python SDK](#upload-data-with-python) by running a Python script to upload files from a folder.
-  You can do this on a computer that doesn't have `viam-server` installed on it.
-- [Upload images with the Viam mobile app](#upload-images-with-the-viam-mobile-app) from your mobile device.
-
-{{% /alert %}}
 
 ## Sync a batch of data from another directory
 
@@ -304,10 +293,5 @@ However, the uploaded images will not be associated with a component or method.
 
 ## Next steps
 
-Now that you have a batch of data uploaded, you can train an ML model on it.
+Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/ai/train-tflite/) on it.
 Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/ai/create-dataset/).
-
-{{< cards >}}
-{{% card link="/data-ai/ai/train-tflite/" %}}
-{{% card link="/data-ai/ai/train/" %}}
-{{< /cards >}}

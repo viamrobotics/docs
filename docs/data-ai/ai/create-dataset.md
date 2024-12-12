@@ -4,7 +4,6 @@ title: "Create a dataset"
 weight: 10
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Create a dataset to train a machine learning model."
 ---
 

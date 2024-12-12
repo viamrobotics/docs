@@ -5,7 +5,6 @@ weight: 50
 layout: "docs"
 type: "docs"
 modulescript: true
-no_list: true
 description: "Run inference on a model with a vision service or an SDK."
 ---
 
@@ -21,7 +20,7 @@ They use an ML model and apply it to the stream of images from your camera.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-Note that many of these services have built in ML model deployment, and thus do not need to be run alongside an ML model service.
+Note that many of these services have built in ML models, and thus do not need to be run alongside an ML model service.
 
 One vision service you can use to run inference on a camera stream if you have an ML model service configured is the `mlmodel` service.
 

@@ -4,7 +4,6 @@ title: "Filter data before sync"
 weight: 10
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Use filtering to collect and sync only certain images."
 ---
 

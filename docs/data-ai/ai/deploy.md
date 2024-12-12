@@ -4,7 +4,6 @@ title: "Deploy a model"
 weight: 40
 layout: "docs"
 type: "docs"
-no_list: true
 modulescript: true
 description: "Deploy an ML model to your machine."
 ---

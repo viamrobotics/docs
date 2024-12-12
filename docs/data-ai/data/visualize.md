@@ -10,7 +10,6 @@ aliases:
   - /data/visualize/
   - /use-cases/sensor-data-visualize/
   - /how-tos/sensor-data-visualize/
-no_list: true
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "fleet"]
 date: "2024-12-04"
@@ -271,16 +270,10 @@ See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-pa
 {{< /tab >}}
 {{< /tabs >}}
 
-## Next steps
 
 For more detailed instructions on using Grafana, including a full step-by-step configuration walkthrough, see [visualizing data with Grafana](/tutorials/services/visualize-data-grafana/).
 
 On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/appendix/apis/data-client/) or [query it with the Viam app](/data-ai/data/query/).
-
-{{< cards >}}
-{{% card link="/appendix/apis/data-client/" %}}
-{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
-{{< /cards >}}
 
 To see full projects using visualization, check out these resources:
 

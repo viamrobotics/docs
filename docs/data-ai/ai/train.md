@@ -8,7 +8,6 @@ type: "docs"
 aliases:
   - /services/ml/upload-training-script/
   - /how-tos/create-custom-training-scripts/
-no_list: true
 languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
@@ -19,20 +18,11 @@ date: "2024-12-04"
 You can create custom Python training scripts that train ML models to your specifications using PyTorch, Tensorflow, TFLite, ONNX, or any other Machine Learning framework.
 Once you upload a training script to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use it to build ML models in the Viam Cloud based on your datasets.
 
-{{< alert title="In this page" color="tip" >}}
-
-1. [Create a training script](#create-a-training-script) from a template.
-1. [Test your training script locally](#test-your-training-script-locally) with a downloaded dataset.
-1. [Upload your training script](#upload-your-training-script).
-1. [Submit a training job](#submit-a-training-job) that uses the training script on a dataset to train a new ML model.
-
-{{< /alert >}}
-
 ## Prerequisites
 
 {{% expand "A dataset with data you can train an ML model on. Click to see instructions." %}}
 
-For image data, you can follow the instructions to [Create a dataset and label data](/how-tos/train-deploy-ml/#create-a-dataset-and-label-data) to create a dataset.
+For image data, you can follow the instructions to [Create a dataset](/data-ai/ai/create-dataset/) to create a dataset and label data.
 
 For other data you can use the [Data Client API](/appendix/apis/data-client/) from within the training script to get data stored in the Viam Cloud.
 
@@ -607,14 +597,5 @@ You can also view your training jobs' logs with the [`viam train logs`](/cli/#tr
 {{% /tablestep %}}
 {{< /table >}}
 
-## Next steps
-
-To use your new model with machines, you must [deploy it](/data-ai/ai/deploy/) with the appropriate [ML model service](/data-ai/reference/ml/).
-Then you can use another service, such as the vision service, to apply the deployed model to camera feeds.
-
-To see models in use with machines, see one of the following resources:
-
-{{< cards >}}
-{{% card link="/tutorials/projects/helmet/" %}}
-{{% card link="/tutorials/projects/integrating-viam-with-openai/" %}}
-{{< /cards >}}
+To use your new model with machines, you must [deploy it](/data-ai/ai/deploy/) with the appropriate ML model service.
+Then you can use another service, such as the vision service, to [run inference](/data-ai/ai/run-inference/).

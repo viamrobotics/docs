@@ -4,7 +4,6 @@ title: "Alert on inferences"
 weight: 60
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Use triggers to send email notifications when inferences are made."
 ---
 
@@ -18,13 +17,9 @@ Whenever the system detects an anomaly, it will send an email notification.
 First, you'll set up data capture and sync to record images with the anomaly and upload them to the cloud.
 Next, you'll configure a trigger to send email notifications when the anomaly is detected.
 
-{{% alert title="Note" color="note" %}}
-This page assumes you have [deployed an ML model](/data-ai/ai/deploy/) and [configured a vision service](/data-ai/ai/run-inference/).
-{{% /alert %}}
-
 ## Configured a filtered camera
 
-Now, your physical camera is working and the vision service is set up.
+Your physical camera is working and your vision service is set up.
 Now you will pull them together to filter out only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
 This camera module takes the vision service and applies it to your webcam feed, filtering the output so that later, when you configure data management, you can save only the images that contain people without hard hats rather than all images the camera captures.
 

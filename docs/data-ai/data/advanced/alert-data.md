@@ -4,16 +4,16 @@ title: "Alert on data"
 weight: 60
 layout: "docs"
 type: "docs"
-no_list: true
-description: "Use triggers to send email notifications or webhook requests when inferences are made."
+description: "Use triggers to send email notifications or webhook requests when data from the machine is synced."
 ---
+
+You can use triggers to send email notifications or webhook requests when data from the machine is synced, even captured from a specific component with a specified condition.
+For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
 Follow this guide to learn how to configure a trigger to send webhook requests or emails for the following events:
 
 - **Data has been synced to the cloud**: trigger when data from the machine is synced
 - **Conditional data ingestion**: trigger any time data is captured from a specified component with a specified method and condition
-
-For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
 To configure a trigger:
 
@@ -33,7 +33,7 @@ To configure a trigger:
 {{< tabs name="Types of Triggers" >}}
 {{% tab name="Data synced to cloud" %}}
 
-Select the data types for which the Trigger should send requests.
+Select the data types for which the trigger should send requests.
 Whenever data of the specified data types is ingested, a `POST` request will be sent.
 
 {{% /tab %}}
@@ -428,11 +428,3 @@ The request body includes the following data:
 | `file_id` | The id of the file that was ingested. | `part_data_ingested` |
 | `trigger_condition` | The condition that triggered the request. | `conditional_data_ingested` |
 | `data` | The ingested sensor data. Includes `metadata` with `received_at` and `requested_at` timestamps and `data` in the form `map[string]any`. | `part_data_ingested`, `conditional_data_ingested` (sensor data) |
-
-## Next steps
-
-To see an example project that uses triggers to send email notification, see the [Monitor Job Site Helmet Usage with Computer Vision tutorial](/tutorials/projects/helmet/#configure-a-trigger-on-your-machine).
-
-{{< cards >}}
-{{% card link="/tutorials/projects/helmet/" %}}
-{{< /cards >}}

@@ -114,7 +114,7 @@ Click **Next steps**.
 
 Enter a name for your new model.
 
-For built-in trainings, select a **Task Type**:
+Select a **Task Type**:
 
 - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
   Select this if you only have one label on each image. Ensure that the dataset you are training on also contains unlabeled images.
