@@ -1041,7 +1041,7 @@ main().catch((error) => {
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-<file>robot_screen.dart</file>:
+<file>base_screen.dart</file>:
 
 ```dart {class="line-numbers linkable-line-numbers"}
 /// This is the BaseScreen, which allows us to control a Base.
@@ -1078,7 +1078,7 @@ class BaseScreen extends StatelessWidget {
         ,);}}
 ```
 
-<file>base_screen.dart</file>:
+<file>robot_screen.dart</file>:
 
 ```dart {class="line-numbers linkable-line-numbers"}
 /// This is the screen that shows the resources available on a robot (or smart machine).
