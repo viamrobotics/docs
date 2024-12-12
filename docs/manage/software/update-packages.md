@@ -1,6 +1,6 @@
 ---
 linkTitle: "Update packages"
-title: "Update packages"
+title: "Update packages on machines"
 weight: 40
 layout: "docs"
 type: "docs"
