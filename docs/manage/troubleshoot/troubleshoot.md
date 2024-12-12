@@ -1,7 +1,7 @@
 ---
 linkTitle: "Troubleshoot problems"
 title: "Troubleshoot problems"
-weight: 30
+weight: 35
 layout: "docs"
 type: "docs"
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
@@ -19,7 +19,15 @@ For common errors see [Common Errors](/dev/tools/common-errors/).
 
 ## Check logs
 
-Go to the [**LOGS** tab](/cloud/machines/#logs) and check for errors or other information relevant to the issue.
+### Check for errors on the CONFIGURE page
+
+Go to your machine's **CONFIGURE** page and check whether any configured components have a red exclamation symbol on their configuration card.
+If so click on the symbol or expand the **ERROR LOGS** panel.
+The expanded panel shows you errors produced by that resource.
+
+### Check logs on the LOGS tab
+
+Go to the **LOGS** tab and check for errors or other information relevant to the issue.
 
 {{<gif webm_src="/fleet/log-filtering.webm" mp4_src="/fleet/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 

@@ -1,6 +1,6 @@
 ---
-linkTitle: "Create voice app"
-title: "Create voice app"
+linkTitle: "Create voice-interface app"
+title: "Create voice-interface app"
 weight: 30
 layout: "docs"
 type: "docs"
