@@ -28,12 +28,12 @@ Add an ML model service that supports the ML model you trained or the one you wa
 Viam currently supports the following frameworks:
 
 <!-- prettier-ignore -->
-| Model Framework | ML Model Service | Hardware Support | System Architecture | Description |
-| --------------- | --------------- | ---------------- | ------------------- | ----------- |
-| [TensorFlow Lite](https://www.tensorflow.org/lite) | [`tflite_cpu`](https://github.com/viam-modules/mlmodel-tflite) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. Uploaded models must adhere to the [model requirements.](https://github.com/viam-modules/mlmodel-tflite) |
-| [ONNX](https://onnx.ai/) | [`onnx-cpu`](https://github.com/viam-labs/onnx-cpu) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
-| [TensorFlow](https://www.tensorflow.org/) | [`tensorflow-cpu`](https://github.com/viam-modules/tensorflow-cpu), [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS | A full framework that is made for more production-ready systems. |
-| [PyTorch](https://pytorch.org/) | [`torch-cpu`](https://github.com/viam-modules/torch), [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
+| Model Framework | ML Model Service | Hardware Support | Description |
+| --------------- | --------------- | ------------------- | ----------- |
+| [TensorFlow Lite](https://www.tensorflow.org/lite) | [`tflite_cpu`](https://github.com/viam-modules/mlmodel-tflite) | linux/amd64, linux/arm64, darwin/arm64, darwin/amd64 | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. Uploaded models must adhere to the [model requirements.](https://github.com/viam-modules/mlmodel-tflite) |
+| [ONNX](https://onnx.ai/) | [`onnx-cpu`](https://github.com/viam-labs/onnx-cpu), [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) |  Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
+| [TensorFlow](https://www.tensorflow.org/) | [`tensorflow-cpu`](https://github.com/viam-modules/tensorflow-cpu), [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64 | A full framework that is made for more production-ready systems. |
+| [PyTorch](https://pytorch.org/) | [`torch-cpu`](https://github.com/viam-modules/torch), [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Nvidia GPU, linux/arm64, darwin/arm64 | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
 
 {{< alert title="Note" color="note" >}}
 For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
