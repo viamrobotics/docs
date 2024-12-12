@@ -744,34 +744,7 @@ The following attributes are available for data capture configuration:
 
 The following components and services support data capture, for the following methods:
 
-{{< tabs >}}
-{{% tab name="viam-server" %}}
-
-<!-- prettier-ignore -->
-| Type                                            | Method |
-| ----------------------------------------------- | ------ |
-| [Arm](/components/arm/)                         | `EndPosition`, `JointPositions` |
-| [Board](/components/board/)                     | `Analogs`, `Gpios` |
-| [Camera](/components/camera/)                   | `GetImages`, `ReadImage`, `NextPointCloud` |
-| [Encoder](/components/encoder/)                 | `TicksCount` |
-| [Gantry](/components/gantry/)                   | `Lengths`, `Position` |
-| [Motor](/components/motor/)                     | `Position`, `IsPowered` |
-| [Movement sensor](/components/movement-sensor/) | `AngularVelocity`, `CompassHeading`, `LinearAcceleration`, `LinearVelocity`, `Orientation`, `Position` |
-| [Sensor](/components/sensor/)                   | `Readings` |
-| [Servo](/components/servo/)                     | `Position` |
-| [Vision service](/services/vision/)             | `CaptureAllFromCamera` |
-
-{{% /tab %}}
-{{% tab name="viam-micro-server" %}}
-
-<!-- prettier-ignore -->
-| Type | Method |
-| ---- | ------ |
-| [Movement Sensor](/components/movement-sensor/) | [`AngularVelocity`](/dev/reference/apis/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/dev/reference/apis/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/dev/reference/apis/components/movement-sensor/#getlinearvelocity) |
-| [Sensor](/components/sensor/) | [`GetReadings`](/dev/reference/apis/components/sensor/#getreadings) |
-
-{{% /tab %}}
-{{< /tabs >}}
+{{< readfile "/static/include/data/capture-supported.md" >}}
 
 ## View captured data
 

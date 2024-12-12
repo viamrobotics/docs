@@ -4,5 +4,5 @@ linkTitle: "Data Client API"
 weight: 30
 type: "docs"
 layout: "empty"
-canonical: "/dev/apis/data-client/"
+canonical: "/dev/reference/apis/data-client/"
 ---
