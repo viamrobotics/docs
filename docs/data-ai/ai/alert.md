@@ -5,137 +5,24 @@ weight: 60
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "Use triggers to send email notifications when inferences are made."
 ---
 
-You can use triggers to send webhooks when certain inferences are made.
-For an example of this, see the [Helmet Monitoring tutorial](/tutorials/projects/helmet/).
-
-<!-- todo: change to use eliot's filtered camera module for both classifications and detectors -->
-
-On this page, you'll learn how to use triggers to send alerts in the form of email notifications when certain detections are made.
+At this point, you should have already set up and tested [computer vision functionality](/data-ai/ai/run-inference/).
+On this page, you'll learn how to use triggers to send alerts in the form of email notifications when certain detections or classifications are made.
 
 You will build a system that can monitor camera feeds and detect situations that require review.
 In other words, this system performs anomaly detection.
 Whenever the system detects an anomaly, it will send an email notification.
 
-First, you'll set up and test the computer vision functionality.
-Next, you'll set up data capture and sync to record images with the anomaly and upload them to the cloud.
-Finally, you'll configure a trigger to send email notifications when the anomaly is detected.
-
-## Requirements
-
-### Required hardware
-
-- A camera such as a standard USB webcam.
-  You can also test the anomaly detection system using the webcam built into your laptop.
-- A computer capable of running [`viam-server`](/installation/viam-server-setup/).
-  You can use a personal computer running macOS or Linux, or a single-board computer (SBC) running 64-bit Linux.
-
-### Optional hardware
-
-If you want to set up your camera far away from your personal computer, you can use a webcam plugged into a single-board computer, powered by batteries.
-You could mount your machine in a stationary location like on a pole, or you could mount it on a rover.
-This tutorial covers the software side; you can get creative with the hardware.
-
-Note that your machine must be connected to the internet for data sync and email notifications to work.
-
-## Set up your monitor
-
-Get your hardware ready and connected to the Viam platform:
-
-Plug your webcam into your computer.
-Then, make sure your computer (whether it's a personal computer or an SBC) is connected to adequate power, and turn it on.
-
-{{% snippet "setup.md" %}}
-
-## Configure the camera and computer vision
-
-### Configure your physical camera
-
-Configure your [webcam](/components/camera/webcam/) so that your machine can get the video stream from the camera:
-
-1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
-   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
-
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
-   Start typing "webcam" and select **camera / webcam**.
-   Give your camera a name.
-   This guide uses the name `my_webcam` in all example code.
-   Click **Create**.
-
-3. Click the **video path** dropdown and select the webcam you'd like to use for this project from the list of suggestions.
-
-4. Click **Save** in the top right corner of the screen to save your changes.
-
-### Test your physical camera
-
-To test your camera, go to the **CONTROL** tab and click to expand your camera's panel.
-
-Toggle **View `my_webcam`** to the "on" position.
-The video feed should display.
-If it doesn't, double-check that your config is saved correctly, and check the **LOGS** tab for errors.
-
-### Find a model and configure an ML model service
-
-You must use an object detection or classification model to use the `filtered-camera` module.
-You can use an ML model from the registry or train one yourself with Viam's built-in tools for [TFLite](/data-ai/ai/train-tflite/) or with another framework using a [custom training script](/data-ai/ai/train/).
-
-Before you can run an computer vision service on your machine, you usually need to configure an ML model service to deploy the module.
+First, you'll set up data capture and sync to record images with the anomaly and upload them to the cloud.
+Next, you'll configure a trigger to send email notifications when the anomaly is detected.
 
 {{% alert title="Note" color="note" %}}
-This is not the case when the functionality to deploy the ML model is bundled into the vision service, for example with the [`YOLOv8`](https://app.viam.com/module/viam-labs/YOLOv8) {{< glossary_tooltip term_id="module" text="module" >}}.
-
-If you are using one of those modular vision services, you can move on to [Configure a vision service](#configure-a-vision-service).
+This page assumes you have [deployed an ML model](/data-ai/ai/deploy/) and [configured a vision service](/data-ai/ai/run-inference/).
 {{% /alert %}}
 
-What model of ML model service you use depends on the framework of the computer vision model you want to use, like TFLite, Tensorflow, or ONNX.
-
-To configure an ML model service, [add the ML model service](/data-ai/reference/ml/) and [deploy the model](/data-ai/ai/deploy/).
-
-### Configure a vision service
-
-Now it is time to add computer vision by configuring the [vision service](/services/vision/) on your machine.
-
-If you are using an ML model service, you will probably want to use the `mlmodel` computer vision model.
-Follow the instructions to [configure an `mlmodel` vision service](/data-ai/reference/vision/mlmodel/).
-However, the [Viam registry](https://app.viam.com/registry) also provides many modules of vision service that you could use.
-For example, if you were to configure hard hat detection with a YOLOv8 model, you would use the `yolov8` module (without an ML model service):
-
-{{% expand "Instructions for configuring a YOLOv8 module" %}}
-
-Viam's built-in [`mlmodel` vision service](/services/vision/mlmodel/) works with Tensor Flow Lite models, but since the hard hat detection uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
-The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
-
-1. Navigate to your machine's **CONFIGURE** tab.
-
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
-   Start typing `yolo` and select **vision / yolov8** from the registry options.
-   Click **Add module**.
-
-3. Give your vision service a name, for example `yolo`, and click **Create**.
-
-4. In the attributes field of your new vision service, paste the following JSON:
-
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "model_location": "keremberke/yolov8n-hard-hat-detection"
-   }
-   ```
-
-   This tells the vision service where to look for [the hard hat detection model](https://huggingface.co/keremberke/yolov8s-hard-hat-detection) we are using for this tutorial.
-
-   Your vision service config should now resemble the following:
-
-   {{<imgproc src="/tutorials/helmet/model-location.png" resize="x1100" declaredimensions=true alt="The vision service configured in the Viam app per the instructions." >}}
-
-5. Click **Save** in the top right corner of the screen to save your changes.
-
-{{% /expand%}}
-
-With the vision service configured, you can view the inferences provided on the **CONTROL** tab of the Viam app or get them programmatically using the [vision service API](/data-ai/reference/vision-client/).
-
-### Configure the `filtered-camera` module
+## Configured a filtered camera
 
 Now, your physical camera is working and the vision service is set up.
 Now you will pull them together to filter out only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.

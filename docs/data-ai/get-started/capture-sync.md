@@ -1,6 +1,6 @@
 ---
-linkTitle: "Capture and sync"
-title: "Capture and sync data"
+linkTitle: "Capture edge data"
+title: "Capture and sync edge data"
 tags: ["data management", "data", "services"]
 weight: 10
 layout: "docs"

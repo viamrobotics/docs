@@ -37,14 +37,7 @@ If a food display is empty, the machine could, for example, alert a supervisor t
 
 Common use cases for this are **quality assurance** and **health and safety** applications.
 
-{{< alert title="In this page" color="tip" >}}
-
-1. [Train a machine learning (ML) model](#train-a-machine-learning-ml-model)
-1. [Test your ML model](#test-your-ml-model)
-
-{{< /alert >}}
-
-![Diagram of the camera component to data management service to ML model service to vision service pipeline.](/how-tos/ml-vision-diagram.png)
+Follow this guide to use your image data to train an ML model, so that your machine can make inferences about its enviroment.
 
 ## Prerequisites
 
