@@ -764,7 +764,7 @@ To package (for Python) and upload your module and make it available to configur
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Package the module as an archive, run the following command from inside the <file>hello-world</file> directory:
+1. To package the module as an archive, run the following command from inside the <file>hello-world</file> directory:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -czf module.tar.gz run.sh setup.sh requirements.txt src
