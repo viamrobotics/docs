@@ -40,7 +40,7 @@ In this guide you'll write code that makes a rover drive in a square.
 
 - How to run SDK code
 - How to use the base API to move a rover in a square
-- How to use a vision service to find a color with your rover
+- How to use a vision service to find a color with your rover 
 
 {{< /alert >}}
 
