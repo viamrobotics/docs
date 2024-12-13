@@ -530,16 +530,6 @@ For more information, see this [tutorial on creating a custom arm](/registry/exa
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-30" color="added" title="Apply a crop transform to camera views" %}}
-
-You can now apply a [crop transform](/components/camera/transform/) to the views of your connected cameras in the Viam app.
-
-This feature enables you to focus on a specific area of your camera feed.
-
-For example, crop a video stream of a busy street to just the sidewalk.
-
-{{% /changelog %}}
-
 {{% changelog date="2023-06-30" color="improved" title="Gantry component" %}}
 
 To better control gantries with Viam, you can now:
