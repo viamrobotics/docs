@@ -7,7 +7,6 @@ layout: "docs"
 type: "docs"
 platformarea: ["data"]
 description: "Capture data from a resource on your machine and sync the data to the cloud."
-no_list: true
 date: "2024-12-03"
 ---
 
