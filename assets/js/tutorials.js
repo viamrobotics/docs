@@ -231,7 +231,6 @@ search.start();
 search.addWidgets([{
   init: function(options) {
     options.helper.toggleRefinement('resource', 'tutorial');
-    options.helper.toggleRefinement('resource', 'blogpost');
   }
 }]);
 search.on("render", function () {
@@ -280,15 +279,15 @@ search.on("render", function () {
     document.getElementById("filter-level").textContent = "Level";
   }
   if (
-    search.helper.state.facetsRefinements.platformarea &&
-    search.helper.state.facetsRefinements.platformarea.length
+    search.helper.state.disjunctiveFacetsRefinements.resource &&
+    search.helper.state.disjunctiveFacetsRefinements.resource.length
   ) {
-    document.getElementById("filter-platformarea").textContent =
-      "Areas (" +
-      search.helper.state.facetsRefinements.platformarea.length +
+    document.getElementById("filter-resources").textContent =
+      "Content Types (" +
+      search.helper.state.disjunctiveFacetsRefinements.resource.length +
       ")";
   } else {
-    document.getElementById("filter-platformarea").textContent = "Platform Areas";
+    document.getElementById("filter-resources").textContent = "Content Types";
   }
   if (
     search.helper.state.facetsRefinements &&
