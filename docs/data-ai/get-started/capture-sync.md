@@ -10,7 +10,7 @@ description: "Capture data from a resource on your machine and sync the data to 
 date: "2024-12-03"
 ---
 
-You can use viam's data management service to capture and sync data from your machine to the cloud.
+You can use data management service to capture and sync data from your machine to the cloud.
 Once you have configured the data management service, you can specify the data you want to capture at a resource level.
 
 To configure data capture and cloud sync, you must have one of the following components and services configured on your machine:
