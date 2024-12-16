@@ -1053,6 +1053,8 @@ The `organizations` command allows you to list the organizations your authentica
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
 viam organizations api-key create --org-id=<org-id> [--name=<key-name>]
+viam organizations support-email [get|set] --org-id=<org-id> --support-email=<support-email>
+viam organizations logo set --org-id=<org-id> --logo-path=<logo-path>
 ```
 
 Examples:
@@ -1073,24 +1075,21 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `list` | List all organizations (name, id, and [namespace](/cloud/organizations/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
-| `api-key` | Create a new organization API key |`create` |
+| `api-key create` | Create a new organization API key. | - |
+| `support-email get` | Get the support email for an organization. | - |
+| `support-email set` | Set the support email for an organization. | - |
+| `logo set` | Upload the logo for an organization from a local file. | - |
 | `--help` | Return help | - |
-
-##### Positional arguments: `api-key`
-
-<!-- prettier-ignore -->
-| Argument | Description |
-| -------- | ----------- |
-| `create` | Create an API key for an organization |
-| `--help` | Return help |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--org-id` | The organization to create an API key for |`api-key` | **Required** |
+| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`. | **Required** |
 | `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key` | Optional |
+| `--support-email` | The support email to set for the organization. | `support-email get`, `support-email set` | **Required** |
+| `--logo-path` | The support email to set for the organization. | `logo set` | **Required** |
 
 ### `packages`
 
