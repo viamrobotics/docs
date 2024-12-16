@@ -17,6 +17,20 @@ Whenever the system detects an anomaly, it will send an email notification.
 First, you'll set up data capture and sync to record images with the anomaly and upload them to the cloud.
 Next, you'll configure a trigger to send email notifications when the anomaly is detected.
 
+### Prerequisites
+
+{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+
+{{% snippet "setup-both.md" %}}
+
+{{% /expand%}}
+
+{{< expand "A configured camera and vision service. Click to see instructions." >}}
+
+Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/ai/run-inference/).
+
+{{< /expand >}}
+
 ## Configured a filtered camera
 
 Your physical camera is working and your vision service is set up.
