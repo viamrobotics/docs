@@ -269,7 +269,7 @@ The following configuration defines the connection information and credentials f
 
 ### `agent-syscfg`
 
-`agent-syscfg` is a plugin for `viam-agent` that provides a number of system and operating system configuration helpers.
+`agent-syscfg` is a plugin for `viam-agent` which allows you to configure settings for operating system package updates and operating system logging.
 
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
