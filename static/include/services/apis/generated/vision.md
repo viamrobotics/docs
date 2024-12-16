@@ -75,7 +75,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
 
 **Example:**
 
@@ -180,7 +180,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
 
 **Example:**
 
@@ -271,7 +271,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
 
 **Example:**
 
@@ -379,7 +379,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
 
 **Example:**
 
@@ -473,7 +473,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)\>\>
 
 **Example:**
 
@@ -662,7 +662,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

@@ -442,7 +442,6 @@ robot,DiscoverComponents,,discover_components,DiscoverComponents,discoverCompone
 robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,
 robot,TransformPose,,transform_pose,TransformPose,
 robot,TransformPCD,,,TransformPointCloud,
-robot,GetStatus,,get_status,Status,
 robot,StreamStatus,,,,
 robot,StopAll,,stop_all,StopAll,
 robot,RestartModule,,,RestartModule,
