@@ -57,7 +57,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Pose](https://flutter.viam.dev/viam_sdk/Pose-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[Pose](https://flutter.viam.dev/viam_sdk/Pose-class.html)\>
 
 **Example:**
 
@@ -142,7 +142,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<void\>
 
 **Example:**
 
@@ -237,7 +237,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<void\>
 
 **Example:**
 
@@ -272,6 +272,21 @@ This will block until done or a new operation cancels this one.
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+// Declare a 2D array of values with your desired rotational value (in radians) for each joint on the arm.
+inputs := [][]referenceframe.Input{
+  referenceframe.FloatsToInputs([]float64{0, math.Pi/2, math.Pi})
+  referenceframe.FloatsToInputs([]float64{0, 0, 0})
+}
+
+// Move each joint of the arm through the positions in the slice defined above
+err = myArm.MoveThroughJointPositions(context.Background(), inputs, nil, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -338,7 +353,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>\>
 
 **Example:**
 
@@ -457,7 +472,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
 
 **Example:**
 
@@ -530,7 +545,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<void\>
 
 **Example:**
 
@@ -694,7 +709,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

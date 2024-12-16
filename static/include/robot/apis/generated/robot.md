@@ -220,7 +220,7 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Discovery](https://flutter.viam.dev/viam_sdk/Discovery-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Discovery](https://flutter.viam.dev/viam_sdk/Discovery-class.html)\>\>
 
 **Example:**
 
@@ -401,76 +401,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetStatus
-
-Get the status of the resources on the machine.
-You can provide a list of ResourceNames for which you want statuses.
-If no names are passed in, the status of every resource configured on the machine is returned.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `components` ([List[viam.proto.common.ResourceName]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)) (optional): Optional list of ResourceName for components you want statuses.
-
-**Returns:**
-
-- ([List[viam.proto.robot.Status]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Status)): A list of statuses for each requested resource.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-# Get the status of the resources on the machine.
-statuses = await machine.get_status()
-resource_statuses = machine_status.resources
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `resourceNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): A list of resource names for components you want the status of. If no names are passed in, all resource statuses are returned.
-
-**Returns:**
-
-- [([]Status)](https://pkg.go.dev/go.viam.com/rdk/robot#Status): The `Status` of each resource queried. If no resource was provided as a parameter, the status of all resources is returned.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-status, err := machine.Status(context.Background(), nil)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- `resourceNames` [(commonApi.ResourceName[])](https://ts.viam.dev/classes/commonApi.ResourceName.html): An optional array of ResourceNames for components you want the status of.
-  If no names are passed in, all resource statuses are returned.
-
-**Returns:**
-
-- [(robotApi.Status[])](https://ts.viam.dev/classes/robotApi.Status.html): An array containing the status of each resource.
-
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
-
-```typescript {class="line-numbers linkable-line-numbers"}
-// Get the status of the resources on the machine.
-const status = await machine.getStatus();
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### StopAll
 
 Cancel all current and outstanding operations for the machine and stop all actuators and movement.
@@ -642,7 +572,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)\>
 
 **Example:**
 
@@ -784,7 +714,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)\>
 
 **Example:**
 
@@ -878,7 +808,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<void\>
 
 **Example:**
 
@@ -994,7 +924,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<void\>
 
 **Example:**
 

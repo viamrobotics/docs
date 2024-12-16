@@ -10,7 +10,6 @@
 | [`FrameSystemConfig`](/appendix/apis/robot/#framesystemconfig) | Get the configuration of the frame system of a given machine. |
 | [`TransformPose`](/appendix/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
 | [`TransformPCD`](/appendix/apis/robot/#transformpcd) | Transforms the pointcloud to the desired frame in the robot's frame system. |
-| [`GetStatus`](/appendix/apis/robot/#getstatus) | Get the status of the resources on the machine. |
 | [`StopAll`](/appendix/apis/robot/#stopall) | Cancel all current and outstanding operations for the machine and stop all actuators and movement. |
 | [`RestartModule`](/appendix/apis/robot/#restartmodule) | Reload a module as if its config changed. |
 | [`Log`](/appendix/apis/robot/#log) | Create a LogEntry object from the log to send to the RDK over gRPC. |

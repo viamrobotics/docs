@@ -50,7 +50,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-input_tensors := ml.Tensors{"0": tensor.New(tensor.WithShape(1, 2, 3), tensor.WithBacking([]int{1, 2, 3, 4, 5, 6}))}
+import (
+  "go.viam.com/rdk/ml"
+  "gorgonia.org/tensor"
+ )
+
+myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel")
+
+input_tensors := ml.Tensors{
+  "image": tensor.New(
+    tensor.Of(tensor.Uint8),
+    tensor.WithShape(1, 384, 384, 3),
+          tensor.WithBacking(make([]uint8, 1*384*384*3)),
+  ),
+}
 
 output_tensors, err := myMLModel.Infer(context.Background(), input_tensors)
 ```
@@ -101,7 +114,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
+myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel")
 metadata, err := myMLModel.Metadata(context.Background())
 ```
 
