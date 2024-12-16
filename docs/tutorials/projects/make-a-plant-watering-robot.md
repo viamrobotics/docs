@@ -15,7 +15,7 @@ date: "2023-03-29"
 # updated: "2024-04-19"
 cost: 150
 no_list: true
-# SMES: Olivia Miller, Sierra Guequierre, Hazal Mestci
+# SMES: Olivia Miller, Sierra Guequierre
 ---
 
 <!-- LEARNING GOALS:
@@ -239,7 +239,9 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
 4. Click **Create** to add this module to your machine.
 5. Find your module's card on the **CONFIGURE** page.
    In the attributes field, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
-   For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
+   `sensor_pin` is the GPIO pin number of the Raspberry Pi's pin you connected to the MCP300x chip.
+   If you followed the wiring in this tutorial, this will be 8 which is `24 GPIO 8 (SPI Chip Select 0)`.
+   Otherwise if you are using CS1, use 7.
 
    ```json
    {
