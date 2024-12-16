@@ -8,14 +8,14 @@ description: "Use triggers to send email notifications when inferences are made.
 ---
 
 At this point, you should have already set up and tested [computer vision functionality](/data-ai/ai/run-inference/).
-On this page, you'll learn how to use triggers to send alerts in the form of email notifications when certain detections or classifications are made.
+On this page, you'll learn how to use triggers to send alerts in the form of email notifications or webhook requests when certain detections or classifications are made.
 
 You will build a system that can monitor camera feeds and detect situations that require review.
 In other words, this system performs anomaly detection.
 Whenever the system detects an anomaly, it will send an email notification.
 
 First, you'll set up data capture and sync to record images with the anomaly and upload them to the cloud.
-Next, you'll configure a trigger to send email notifications when the anomaly is detected.
+Next, you'll configure a trigger to send email notifications or webhook requests when the anomaly is detected.
 
 ### Prerequisites
 
@@ -31,7 +31,7 @@ Follow the instructions to [configure a camera](/operate/reference/components/ca
 
 {{< /expand >}}
 
-## Configured a filtered camera
+## Configure a filtered camera
 
 Your physical camera is working and your vision service is set up.
 Now you will pull them together to filter out only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
