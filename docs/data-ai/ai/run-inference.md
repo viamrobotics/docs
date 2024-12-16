@@ -9,7 +9,7 @@ description: "Run inference on a model with a vision service or an SDK."
 ---
 
 After deploying an ml model, you need to configure an additional service to use the inferences the deployed model makes.
-You can run inference on an ML model with a vision service in the app or use an SDK.
+You can run inference on an ML model with a vision service or use an SDK to further process inferences.
 
 ## Use a vision service
 
@@ -33,7 +33,7 @@ Then, from the **Select model** dropdown, select the name of the ML model servic
 
 ### Test your changes
 
-You can test your vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/fleet/control/).
+You can test a deployed vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
 The camera stream shows when the vision service identifies something.
 Try pointing the camera at a scene similar to your training data.
