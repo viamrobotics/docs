@@ -20,6 +20,7 @@ aliases:
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 # SMEs: Bijan, Khari
+toc_hide: true
 ---
 
 The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
