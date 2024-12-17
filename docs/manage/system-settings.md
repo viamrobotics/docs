@@ -2,7 +2,14 @@
 linkTitle: "Configure machine settings"
 title: "Configure machine operating system settings"
 weight: 50
+layout: "docs"
 type: "docs"
-layout: "empty"
-canonical: "/manage/fleet/reuse-configuration/"
+description: "TODO"
 ---
+
+
+## Configure operating system settings
+
+agent-syscfg
+
+## Configure networks

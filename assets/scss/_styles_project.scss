@@ -540,6 +540,18 @@ details summary::-webkit-details-marker {
   background-color: #eaf9fb;
 }
 
+.expand.howtoexpand.light summary, .expand.howtoexpand.light .expand-content  {
+  background-color: rgba(200, 249, 183, 1.0) !important;
+}
+
+.expand.howtoexpand.middle summary, .expand.howtoexpand.middle .expand-content  {
+  background-color: rgba(189, 234, 196, 1.0) !important;
+}
+
+.expand.howtoexpand.dark summary, .expand.howtoexpand.dark .expand-content  {
+  background-color: rgba(163, 203, 178, 1.0) !important;
+}
+
 .howtoexpand .expand-label {
   padding-top: 1rem;
   padding-bottom: 0;
