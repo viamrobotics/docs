@@ -741,18 +741,6 @@ The following attributes are available for data capture configuration:
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
-### Supported components and services
-
-The following components and services support data capture, for the following methods:
-
-{{< readfile "/static/include/data/capture-supported.md" >}}
-
-## View captured data
-
-To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can filter by location, type of data, and more.
-
-You can also access data from a resource, machine part, or machine menu.
-
 ## Considerations
 
 - **Capturing too much data**: You can [use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) to capture data selectively.
