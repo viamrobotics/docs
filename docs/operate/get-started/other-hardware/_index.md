@@ -78,7 +78,8 @@ Authenticate your CLI session with Viam using one of the following options:
    ```
 
 1. Follow the prompts.
-   Find more information in the following table:
+
+   {{< expand "Click for more details about each prompt" >}}
 
 <!--prettier-ignore-->
 | Prompt | Description |
@@ -91,6 +92,8 @@ Authenticate your CLI session with Viam using one of the following options:
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `XYZ_1234` or similar. |
 | Enable cloud build | You can select `No` if you will always build the module yourself before uploading it. If you select `Yes` and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. |
+
+{{< /expand >}}
 
 The generator will create a folder containing stub files for your modular sensor component.
 In the next section, you'll customize some of the generated files to support your sensor.
@@ -316,4 +319,225 @@ LOGGER.critical("critical info")
 
 ## Test your module locally
 
+{{% expand "Prerequisite: A running machine connected to the Viam app." %}}
+
+You can write a module without a machine, but to test your module you'll need a machine.
+Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
+
+{{% snippet "setup.md" %}}
+
+{{% /expand%}}
+
+It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry):
+
+1. **Configure your local module** on a machine:
+
+   On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+   Select **Local module**, then **Local module**.
+
+   Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example <file>/Users/jessamy/my-sensor-module/run.sh</file>.
+   Click **Create**.
+
+2. **Configure the model** provided by your module:
+
+   Click the **+** button again, this time selecting **Local module** and then **Local component**.
+
+   Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
+
+   Select the **Type** corresponding to the API you implemented.
+
+   Enter a **Name** such as `my-cool-component`.
+   Click **Create**.
+
+   {{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local model after the local module is configured">}}
+
+   Configure any required attributes using proper JSON syntax.
+
+3. **Test the component**:
+
+   Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
+   For example, if you created a sensor component, check whether readings are displayed.
+
+   {{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" >}}
+
+If it works, you're almost ready to share your module by uploading it to the registry.
+If not, you have some debugging to do.
+For help, don't hesitate to reach out on the [Community Discord](https://discord.gg/viam).
+
 ## Upload your module
+
+1. **Create a README** (optional):
+
+   It's quite helpful to create a README to document what your module does and how to use it, especially if you plan to share your module with others.
+
+   {{< expand "Example sensor module README" >}}
+
+   ````md
+   # `meteo_PM` modular component
+
+   This module implements the [Viam sensor API](https://github.com/rdk/sensor-api) in a jessamy:weather:meteo_PM model.
+   With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
+
+   ## Build and Run
+
+   To use this module, add it from the machines **CONFIGURE** tab and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
+
+   ## Configure your `meteo_PM` sensor
+
+   Navigate to the **CONFIGURE** tab of your robot’s page in the [Viam app](https://app.viam.com/).
+   Add a component.
+   Select the `sensor` type, then select the `jessamy:weather:meteo_PM` model.
+   Enter a name for your sensor and click **Create**.
+
+   On the new component panel, copy and paste the following attribute template into your sensor’s **Attributes** box:
+
+   ```json
+   {
+   "latitude": <float>,
+   "longitude": <float>
+   }
+   ```
+
+   ### Attributes
+
+   The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM` sensors:
+
+   | Name        | Type  | Inclusion | Description                            |
+   | ----------- | ----- | --------- | -------------------------------------- |
+   | `latitude`  | float | Optional  | Latitude at which to get the readings  |
+   | `longitude` | float | Optional  | Longitude at which to get the readings |
+
+   ### Example Configuration
+
+   ```json
+   {
+     "latitude": -40.6,
+     "longitude": 93.125
+   }
+   ```
+   ````
+
+{{< /expand >}}
+
+2. **Create a GitHub repo**:
+
+   Create a GitHub repository with all the source code and the README for your module.
+   Add the link to that repo as the `url` in the <file>meta.json</file> file.
+
+3. **Edit the meta.json file**:
+
+   Make any necessary edits to the `meta.json` file.
+   Click below for information about the available fields.
+
+   {{< expand "meta.json reference" >}}
+
+<table class="table table-striped">
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Inclusion</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>module_id</code></td>
+<td>string</td>
+<td><strong>Required</strong></td>
+<td>The module ID, which includes either the module <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization ID</a>, followed by its name.
+<div class="alert alert-caution" role="alert">
+<h4 class="alert-heading">Caution</h4>
+
+<p>The <code>module_id</code> uniquely identifies your module.
+Do not change the <code>module_id</code>.</p>
+
+</div>
+</td>
+
+</tr>
+<tr>
+<td><code>visibility</code></td>
+<td>string</td>
+<td><strong>Required</strong></td>
+<td>Whether the module is accessible only to members of your <a href="/cloud/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>The URL of the GitHub repository containing the source code of the module. Required for cloud build.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td><strong>Required</strong></td>
+<td>A description of your module and what it provides.</td>
+</tr>
+<tr>
+<td><code>models</code></td>
+<td>object</td>
+<td><strong>Required</strong></td>
+<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p></td>
+</tr>
+<tr>
+<td><code>entrypoint</code></td>
+<td>string</td>
+<td><strong>Required</strong></td>
+<td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
+</tr>
+<tr>
+<td><code>build</code></td>
+<td>object</td>
+<td>Optional</td>
+<td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
+</tr>
+<tr>
+<td><code>$schema</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Enables VS Code hover and autocomplete as you edit your module code. Gets auto-generated when you run <code>viam module generate</code> or <code>viam module create</code>. Has no impact on the module's function.</td>
+</tr>
+
+</table>
+
+{{< /expand >}}
+
+3. **Package and upload**:
+
+   To package (for Python) and upload your module and make it available to configure on machines in your organization:
+
+   {{< tabs >}}
+   {{% tab name="Python" %}}
+
+   1. To package the module as an archive, run the following command from inside the module directory:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   tar -czf module.tar.gz run.sh setup.sh requirements.txt src
+   ```
+
+   where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
+
+   This creates a tarball called <file>module.tar.gz</file>.
+
+   1. Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
+      If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam module upload --version 1.0.0 --platform any module.tar.gz
+   ```
+
+   For details on platform support, see [Using the --platform argument](/cli/#using-the---platform-argument).
+
+   {{% /tab %}}
+   {{% tab name="Go" %}}
+
+   From within your module's directory, run the `viam module upload` CLI command to upload the module to the registry, replacing `<platform>` with `linux/amd64`, `linux/arm64`, or one or more other [platforms depending on what your module requires](/cli/#using-the---platform-argument).
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam module upload --version 1.0.0 --platform <platform> .
+   ```
+
+   {{% /tab %}}
+   {{< /tabs >}}
+
+Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your module listed.
+Now that your module is in the registry, you can configure the component you added on your machines just as you would configure other components and services; there's no more need for local module configuration.
+The local module configuration is primarily for testing purposes.

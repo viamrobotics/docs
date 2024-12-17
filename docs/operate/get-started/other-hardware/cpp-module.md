@@ -16,6 +16,7 @@ level: "Intermediate"
 date: "2024-07-30"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
+draft: true # Take out Go and Python, and check updatedness before un-drafting.
 ---
 
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
