@@ -1,16 +1,18 @@
 ---
+title: "Integrate other physical or virtual hardware"
 linkTitle: "Integrate other hardware"
-title: "Integrate other hardware"
 weight: 30
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Add support for more hardware to the Viam ecosystem."
+description: "Add support for more physical or virtual hardware to the Viam ecosystem."
 ---
 
-If your hardware is not [already supported](../supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
+If your physical or virtual hardware is not [already supported](../supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
+
+This page provides instructions for writing and uploading a module in Python or Go.
 
 {{% alert title="In this page" color="info" %}}
 
@@ -24,7 +26,6 @@ You can use built-in tools to manage versioning and deployment to machines as yo
 
 - [Write a module for microcontrollers (to use alongside viam-micro-server)](./micro-module/)
 - [Hello World guide to writing a module with Python or Go](./hello-world-module/)
-- [Write a module with C++](./cpp-module/)
 - [Update and manage modules](./manage-modules/)
 
 {{% /alert %}}
@@ -89,7 +90,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
 | Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** and copy that string. |
 | Resource to add to the module (API) | The [component API](/appendix/apis/#component-apis) your module will implement. |
-| Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `XYZ_1234` or similar. |
+| Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | You can select `No` if you will always build the module yourself before uploading it. If you select `Yes` and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. |
 
@@ -110,7 +111,7 @@ Edit the generated files to add your logic:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Open <file>/src/main.py</file>.
+1. Open <file>/src/main.py</file> and add any necessary imports.
 1. **Edit the `validate_config` function** to do the following:
 
    - Check that the user has configured required attributes
@@ -264,6 +265,8 @@ if __name__ == "__main__":
 
 {{< /expand >}}
 
+You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
+
 5. **Add logging** messages as desired.
    The following log levels are available for resource logs:
 
@@ -306,18 +309,187 @@ LOGGER.critical("critical info")
 
 {{< /expand >}}
 
+6. Edit the generated <file>requirements.txt</file> file to include any packages that must be installed for the module to run.
+   Depending on your use case, you may not need to add anything here beyond `viam-sdk` which is auto-populated.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-1. Open `/models/<model-name>.go` and add necessary imports.
+1. Open <file>/models/your-model-name.go</file> and add necessary imports.
+
+1. **Add any configurable attributes to the `Config` struct.**
+
+1. **Edit the `Validate` function** to do the following:
+
+   - Check that the user has configured required attributes
+   - Return any implicit dependencies
+
+      <details>
+        <summary><strong>Explicit versus implicit dependencies</strong></summary>
+
+     Some modular resources require that other {{< glossary_tooltip term_id="resource" text="resources" >}} start up first.
+     For example, a mobile robotic base might need its motors to instantiate before the overall base module instantiates.
+     If your use case requires that things initialize in a specific order, you have two options:
+
+     - Explicit dependencies: Require that a user list the names of all resources that must start before a given component in the `depends_on` field of the component's configuration.
+       - Useful when dependencies are optional.
+     - Implicit dependencies: Instead of explicitly using the `depends_on` field, require users to configure a named attribute (for example `"left-motor": "motor1"`), and write your module with that attribute as a dependency.
+       Note that most named attributes are _not_ dependencies; you need to specify a resource as not only an attribute but also a dependency for it to be initialized first.
+       See code examples below.
+
+       - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
+
+       </details><br>
+
+1. **Edit the `Reconfigure` function** to do the following:
+
+   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+
+1. **Edit the methods you want to implement**:
+
+   For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+   Make sure you return the correct type in accordance with the function's return signature.
+   You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
+
+{{< expand "Example code for a camera module" >}}
+This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
+
+```go {class="line-numbers linkable-line-numbers"}
+package models
+
+import (
+  "context"
+  "errors"
+  "io/ioutil"
+  "os"
+  "reflect"
+
+  "go.viam.com/rdk/components/camera"
+  "go.viam.com/rdk/gostream"
+  "go.viam.com/rdk/logging"
+  "go.viam.com/rdk/pointcloud"
+  "go.viam.com/rdk/resource"
+  "go.viam.com/utils/rpc"
+)
+
+var (
+  HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
+  errUnimplemented = errors.New("unimplemented")
+  imagePath        = ""
+)
+
+func init() {
+  resource.RegisterComponent(camera.API, HelloCamera,
+    resource.Registration[camera.Camera, *Config]{
+      Constructor: newHelloWorldHelloCamera,
+    },
+  )
+}
+
+type Config struct {
+  resource.AlwaysRebuild // Resource rebuilds instead of reconfiguring
+  ImagePath string `json:"image_path"`
+}
+
+func (cfg *Config) Validate(path string) ([]string, error) {
+  var deps []string
+  if cfg.ImagePath == "" {
+    return nil, resource.NewConfigValidationFieldRequiredError(path, "image_path")
+  }
+  if reflect.TypeOf(cfg.ImagePath).Kind() != reflect.String {
+    return nil, errors.New("image_path must be a string.")
+  }
+  imagePath = cfg.ImagePath
+  return deps, nil
+}
+
+type helloWorldHelloCamera struct {
+  name resource.Name
+
+  logger logging.Logger
+  cfg    *Config
+
+  cancelCtx  context.Context
+  cancelFunc func()
+}
+
+func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (camera.Camera, error) {
+  conf, err := resource.NativeConfig[*Config](rawConf)
+  if err != nil {
+    return nil, err
+  }
+
+  cancelCtx, cancelFunc := context.WithCancel(context.Background())
+
+  s := &helloWorldHelloCamera{
+    name:       rawConf.ResourceName(),
+    logger:     logger,
+    cfg:        conf,
+    cancelCtx:  cancelCtx,
+    cancelFunc: cancelFunc,
+  }
+  return s, nil
+}
+
+func (s *helloWorldHelloCamera) Name() resource.Name {
+  return s.name
+}
+
+func (s *helloWorldHelloCamera) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
+  return errUnimplemented
+}
+
+func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
+  imgFile, err := os.Open(imagePath)
+  if err != nil {
+    return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
+  }
+  defer imgFile.Close()
+  imgByte, err := ioutil.ReadFile(imagePath)
+  return imgByte, camera.ImageMetadata{}, nil
+}
+
+func (s *helloWorldHelloCamera) NewClientFromConn(ctx context.Context, conn rpc.ClientConn, remoteName string, name resource.Name, logger logging.Logger) (camera.Camera, error) {
+  return nil, errors.New("not implemented")
+}
+
+func (s *helloWorldHelloCamera) Stream(ctx context.Context, errHandlers ...gostream.ErrorHandler) (gostream.VideoStream, error) {
+  return nil, errors.New("not implemented")
+}
+
+func (s *helloWorldHelloCamera) Images(ctx context.Context) ([]camera.NamedImage, resource.ResponseMetadata, error) {
+  return []camera.NamedImage{}, resource.ResponseMetadata{}, errors.New("not implemented")
+}
+
+func (s *helloWorldHelloCamera) NextPointCloud(ctx context.Context) (pointcloud.PointCloud, error) {
+  return nil, errors.New("not implemented")
+}
+
+func (s *helloWorldHelloCamera) Properties(ctx context.Context) (camera.Properties, error) {
+  return camera.Properties{}, errors.New("not implemented")
+}
+
+func (s *helloWorldHelloCamera) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+  return map[string]interface{}{}, errors.New("not implemented")
+}
+
+func (s *helloWorldHelloCamera) Close(context.Context) error {
+  s.cancelFunc()
+  return nil
+}
+
+```
+
+{{< /expand >}}
+
+You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
 
 {{% /tab %}}
 {{< /tabs >}}
 
-5. Edit the generated <file>requirements.txt</file> file to include any packages that must be installed for the module to run.
-   Depending on your use case, you may not need to add anything here beyond `viam-sdk` which is auto-populated.
-
 ## Test your module locally
+
+It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry):
 
 {{% expand "Prerequisite: A running machine connected to the Viam app." %}}
 
@@ -328,17 +500,40 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 
 {{% /expand%}}
 
-It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry):
+1. {{< tabs >}}
+   {{% tab name="Python" %}}
+
+   Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sh setup.sh
+   ```
+
+   This environment is where the local module will run.
+   `viam-server` does not need to run inside this environment.
+
+   {{% /tab %}}
+   {{% tab name="Go" %}}
+
+   From within the <file>hello-world</file> directory, compile your module into a single executable:
+
+   ```sh {class="command-line" data-prompt="$" data-output="5-10"}
+   make setup
+   make build
+   ```
+
+   {{% /tab %}}
+   {{< /tabs >}}
 
 1. **Configure your local module** on a machine:
 
    On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
    Select **Local module**, then **Local module**.
 
-   Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example <file>/Users/jessamy/my-sensor-module/run.sh</file>.
+   Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example <file>/Users/jessamy/my-python-sensor-module/run.sh</file> or <file>/Users/artoo/my-go-module/main.go</file>.
    Click **Create**.
 
-2. **Configure the model** provided by your module:
+1. **Configure the model** provided by your module:
 
    Click the **+** button again, this time selecting **Local module** and then **Local component**.
 
@@ -353,7 +548,7 @@ It's a good idea to test your module locally before uploading it to the [Viam Re
 
    Configure any required attributes using proper JSON syntax.
 
-3. **Test the component**:
+1. **Test the component**:
 
    Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
    For example, if you created a sensor component, check whether readings are displayed.
@@ -502,29 +697,38 @@ Do not change the <code>module_id</code>.</p>
 
 3. **Package and upload**:
 
-   To package (for Python) and upload your module and make it available to configure on machines in your organization:
+   To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
 
    {{< tabs >}}
    {{% tab name="Python" %}}
 
    1. To package the module as an archive, run the following command from inside the module directory:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh setup.sh requirements.txt src
-   ```
+      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+      tar -czf module.tar.gz run.sh setup.sh requirements.txt src
+      ```
 
-   where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
+      where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
 
-   This creates a tarball called <file>module.tar.gz</file>.
+      This creates a tarball called <file>module.tar.gz</file>.
 
    1. Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
       If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module upload --version 1.0.0 --platform any module.tar.gz
-   ```
+      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+      viam module upload --version 1.0.0 --platform any module.tar.gz
+      ```
 
-   For details on platform support, see [Using the --platform argument](/cli/#using-the---platform-argument).
+      For details on platform support, see [Using the `--platform` argument](/cli/#using-the---platform-argument).
+
+      For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
+
+   {{% alert title="Important" color="note" %}}
+   The `viam module upload` command only supports one `platform` argument at a time.
+   If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+   Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+   The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
+   {{% /alert %}}
 
    {{% /tab %}}
    {{% tab name="Go" %}}
@@ -535,9 +739,24 @@ Do not change the <code>module_id</code>.</p>
    viam module upload --version 1.0.0 --platform <platform> .
    ```
 
+   For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
+
+   {{% alert title="Important" color="note" %}}
+   The `viam module upload` command only supports one `platform` argument at a time.
+   If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+   Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+   The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
+   {{% /alert %}}
+
    {{% /tab %}}
    {{< /tabs >}}
 
 Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your module listed.
+
+## Add your new modular resource to your machines
+
 Now that your module is in the registry, you can configure the component you added on your machines just as you would configure other components and services; there's no more need for local module configuration.
 The local module configuration is primarily for testing purposes.
+
+Click the **+** button on your machine's **CONFIGURE** tab and search for your model.
+For more details, see [Configure hardware on your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
