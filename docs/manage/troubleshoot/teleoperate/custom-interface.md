@@ -3,7 +3,7 @@ title: "Teleoperate with custom control interface"
 linkTitle: "Custom interface"
 weight: 25
 type: "docs"
-description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
+description: "Use a teleop workspace to create a custom control interface for operating a machine or visualizign and aggregating its data."
 tags: ["teleop", "fleet management", "control", "app"]
 languages: []
 viamresources: ["sensor", "camera", "movement sensor"]
@@ -16,7 +16,7 @@ cost: "0"
 prev: "/manage/troubleshoot/alert/"
 ---
 
-You can remotely operate any configured machine and visualiza and aggregate its data using a custom control interface by creating a teleop workspace.
+You can remotely operate any configured machine and visualize and aggregate its data using a custom control interface by creating a teleop workspace.
 
 ### Prerequisites
 
