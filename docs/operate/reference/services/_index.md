@@ -7,4 +7,5 @@ layout: "empty"
 canonical: "/configure/#services"
 no_component: true
 empty_node: true
+toc_hide: true
 ---
