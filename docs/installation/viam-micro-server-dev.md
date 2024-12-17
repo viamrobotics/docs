@@ -82,7 +82,7 @@ The instructions below are for configuring a development environment in order to
 1. Use `espup` to download and install the ESP Rust toolchain:
 
    ```sh { class="command-line" data-prompt="$"}
-   espup install -s -f /dev/null -v 1.76.0
+   espup install -s -f /dev/null -v 1.83.0
    ```
 
 {{< alert title="Note" color="tip" >}}
@@ -274,6 +274,13 @@ For further details on `viam-micro-server` development, including credentials ma
 
 This is caused by an [upstream bug](https://github.com/esp-rs/esp-idf-template/issues/174).
 To work around this issue, ensure that `CRATE_CC_NO_DEFAULTS=1` is set in the environment when building.
+
+### Error: `error: externally-managed-environment` when building ESP-IDF on macOS
+
+This is encountered when attempting to build ESP-IDF projects while using Python obtained from Homebrew.
+Homebrew's Python infrastructure is not intended for end-user consumption but is instead made available to support Homebrew packages which require a python interpreter.
+The preferred workaround for this issue is to obtain a user-facing python installation not from Homebrew, but there are other, less safe, workarounds.
+Please see the macOS specific notes in the [development technical notes on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md#fixing-esp-builds-on-macos) for more details.
 
 ### Error: Failed to open serial port
 
