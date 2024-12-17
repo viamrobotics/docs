@@ -23,7 +23,6 @@ Common use cases include:
 {{<imgproc src="/platform-overviews/data-and-AI.png" resize="1200x" style="width:800px" class="aligncenter imgzoom" declaredimensions=true alt="ALT">}}
 </p>
 
-
 {{< how-to-expand "Get started" "1" "BEGINNER-FRIENDLY" "light" >}}
 {{< cards >}}
 {{% card link="/data-ai/get-started/capture-sync/" noimage="true" %}}
