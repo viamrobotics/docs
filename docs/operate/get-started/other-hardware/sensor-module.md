@@ -14,7 +14,7 @@ level: "Beginner"
 date: "2024-08-21"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
-draft: true
+draft: true # This is now captured in /other-hardware/_index.md
 ---
 
 A sensor is anything that collects data.

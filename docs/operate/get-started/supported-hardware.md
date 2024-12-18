@@ -47,6 +47,20 @@ You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry
 
 ### For use with microcontrollers
 
+The following is a selection of components (some built-ins and some modules) written for use with `viam-micro-server`.
+To use any of the built-in components, configure them according to their readmes.
+To use a module with `viam-micro-server`, you need to [build firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module).
+
+<!--prettier-ignore-->
+| Model | Description | Built-in |
+| ----- | ----------- | -------- |
+| `gpio` | A servo controlled by GPIO pins. [Configuration info](/components/servo/gpio-micro-rdk/). | Yes |
+| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/components/base/two_wheeled_base/). | Yes |
+| `free_heap_sensor` | Ships with `viam-micro-server`. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
+| `wifi_rssi_sensor` | Ships with `viam-micro-server`. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
+| `moisture_sensor` | [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
+| `water_pump` | [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
+
 ## Configure hardware on your machine
 
 After installing `viam-server` or `viam-micro-server` on your computer or microcontroller, you can configure hardware components by using the **+** button on your machine's **CONFIGURE** tab in the Viam app.

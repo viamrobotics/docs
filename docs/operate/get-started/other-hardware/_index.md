@@ -169,7 +169,7 @@ import requests_cache
 from retry_requests import retry
 
 
-class Meteopm(Sensor, EasyResource):
+class meteo_PM(Sensor, EasyResource):
     MODEL: ClassVar[Model] = Model(
       ModelFamily("jessamy", "weather"), "meteo_PM")
 
@@ -268,7 +268,7 @@ if __name__ == "__main__":
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
 
 5. **Add logging** messages as desired.
-   The following log levels are available for resource logs:
+   The following log severity levels are available for resource logs:
 
    ```python {class="line-numbers linkable-line-numbers"}
     # Within some method, log information:
@@ -483,6 +483,27 @@ func (s *helloWorldHelloCamera) Close(context.Context) error {
 {{< /expand >}}
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
+
+6. **Add logging** messages as desired.
+
+   You can add log messages with various levels of severity:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   fn (c *component) someFunction(ctx context.Context, a int) {
+     // Log with severity info:
+     c.logger.CInfof(ctx, "performing some function with a=%v", a)
+     // Log with severity debug (using value wrapping):
+     c.logger.CDebugw(ctx, "performing some function", "a" ,a)
+     // Log with severity warn:
+     c.logger.CWarnw(ctx, "encountered warning for component", "name", c.Name())
+     // Log with severity error without a parameter:
+     c.logger.CError(ctx, "encountered an error")
+   }
+   ```
+
+   {{% alert title="Note" color="note" %}}
+   In order to see debug logs when using your modular resource, you'll need to run `viam-server` with the `-debug` option.
+   {{% /alert %}}
 
 {{% /tab %}}
 {{< /tabs >}}
