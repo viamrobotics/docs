@@ -101,168 +101,9 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
 [Triggers](/configure/triggers/) allow you to send webhook requests or email notifications when certain events happen.
 
-You can use the **Data has been synced to the cloud** trigger to send alerts whenever an image with an anomaly detection is synced to the cloud from your object filter camera.
+You can use the **Data has been synced to the cloud** (`part_data_ingested`) trigger to send alerts whenever an image with an anomaly detection is synced to the cloud from your object filter camera.
 
-You can set up the trigger with a serverless function which sends you a customized email or with Viam's built-in email alerts which sends a generic email letting you know that data has been synced.
-
-If you wish to use Viam's built-in email alerts, skip ahead to [Configure a trigger on your machine](#configure-a-trigger-on-your-machine).
-To set up a serverless function, continue reading.
-
-### Create a serverless function
-
-Before you configure a trigger on your machine, you need to create a serverless function for the trigger to call.
-A serverless function is a simple script that is hosted by a service such as [Google Cloud Functions](https://cloud.google.com/functions) or [AWS Lambda](https://aws.amazon.com/pm/lambda).
-You don't need to host it on your machine; instead, it is always available and runs only when an event triggers it.
-
-#### Set up your cloud function scaffold
-
-You can use Google Cloud Functions and write your function in Python.
-If you are new to cloud functions, you may find [this getting started guide](https://cloud.google.com/functions/docs/console-quickstart) useful.
-
-1. Create a Google Cloud (GCP) account.
-2. Create a project, then search for **Cloud Functions** in the Google Cloud console search bar.
-3. Click **CREATE FUNCTION**.
-4. Choose `1st gen` as the **Environment**.
-5. Give your function a name.
-6. Choose your region.
-7. For trigger type, choose `HTTP`.
-8. Click **NEXT**.
-9. For **Runtime**, choose `Python 3.8`.
-10. Click **Deploy**.
-    The demo function won't do anything exciting yet; keep going through the next few sections before testing it.
-
-#### Configure email credentials
-
-To write a function that sends an email, you need a service that can send emails.
-You can use [SendGrid](https://sendgrid.com) (which has a free tier) to make configuration of your email notifications simpler.
-Follow these instructions to create a SendGrid account and configure the SendGrid API credentials for your Google Cloud Function:
-
-1. [Enable SendGrid Email API](https://console.cloud.google.com/marketplace/details/sendgrid-app/sendgrid-email) through the Google Cloud Marketplace.
-1. Create a SendGrid account and confirm your email.
-1. Create a [SendGrid API key](https://docs.sendgrid.com/ui/account-and-settings/api-keys) with **Mail Send > Full Access** permissions.
-1. Store your API key with the Google Cloud Function console:
-   1. In the top banner of your console, click **Edit**.
-   2. Click to expand **Runtime, build, connections and security settings**.
-   3. Under **Runtime environment variables**, click **ADD VARIABLE**.
-      For the name, enter `EMAIL_API_KEY`.
-      For the value, paste the API key you generated with SendGrid.
-   4. Click **NEXT**.
-
-#### Write the cloud function code
-
-SendGrid's [Email API Quickstart](https://docs.sendgrid.com/for-developers/sending-email/quickstart-python) contains more information about the functionality of the SendGrid API.
-The following code is adapted from that example.
-
-1. Copy and paste the following code into your cloud function source code `main.py` file and change the email address parameters `from_email` and `to_emails`:
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   import functions_framework
-   import os
-   import sendgrid
-   from sendgrid import SendGridAPIClient
-   from sendgrid.helpers.mail import Mail, Email, To, Content
-   from python_http_client.exceptions import HTTPError
-
-   def email(request):
-
-       sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('EMAIL_API_KEY'))
-
-       message = Mail(
-        # TODO: Change to the email you created the API key for
-        from_email='youremailaddresstosendfrom@example.com',
-        # TODO: Change to whichever email should receive the notification
-        to_emails='youremailaddresstosendto@example.com',
-        subject='Put on a helmet!',
-        html_content='Hello!<br><br>Please remember to keep \
-        hard hats on where required. Thank you! \
-        <br><br>You can view captured images in \
-        <a href="https://app.viam.com/data/view?view=images">\
-        the DATA tab</a of the Viam app>.'
-    )
-
-       # Get a JSON-ready representation of the Mail object
-       mail_json = message.get()
-
-       # Send an HTTP POST request to /mail/send
-       response = sg.client.mail.send.post(request_body=mail_json)
-   ```
-
-2. Edit the **Entry point** field from `hello_world` to `email` to match the function name.
-
-3. Select <file>requirements.txt</file> (below <file>main.py</file> on the **SOURCE** console tab) and add the required dependencies:
-
-   ```text {class="line-numbers linkable-line-numbers"}
-   # Function dependencies, for example:
-   # package>=version
-   sendgrid
-   functions-framework
-   ```
-
-#### Register an HTTP function
-
-The trigger you will configure with Viam invokes the function with an HTTP request.
-You can learn more about HTTP functions in [Google's Write HTTP functions guide](https://cloud.google.com/functions/docs/writing/write-http-functions).
-
-You need to add `@functions_framework.http` at the top of your function to register the HTTP function, and you need to add a `return` statement at the bottom to return an HTTP response.
-Your final code should look like this:
-
-```python {class="line-numbers linkable-line-numbers" data-line="9,33"}
-import functions_framework
-import os
-import sendgrid
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail, Email, To, Content
-from python_http_client.exceptions import HTTPError
-
-
-@functions_framework.http
-def email(request):
-
-    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('EMAIL_API_KEY'))
-
-    message = Mail(
-        # Change to the email you created the API key for
-        from_email='youremailaddresstosendfrom@example.com',
-        # Change to whichever email should receive the notification
-        to_emails='youremailaddresstosendto@example.com',
-        subject='Put on a helmet!',
-        html_content='Hello!<br><br>Please remember to keep \
-        hard hats on where required. Thank you! \
-        <br><br>You can view captured images in \
-        <a href="https://app.viam.com/data/view?view=images">\
-        the DATA tab</a of the Viam app>.'
-    )
-
-    # Get a JSON-ready representation of the Mail object
-    mail_json = message.get()
-
-    # Send an HTTP POST request to /mail/send
-    response = sg.client.mail.send.post(request_body=mail_json)
-
-    return 'Notification sent.'
-```
-
-Click **DEPLOY**.
-
-For simplicity while developing and testing your code, you can [allow unauthenticated HTTP function invocation](https://cloud.google.com/functions/docs/securing/managing-access-iam#allowing_unauthenticated_http_function_invocation), though we recommend that you ultimately set up proper authentication for better security.
-
-#### Test the cloud function
-
-Now you can test the script:
-
-1. Navigate to the **TRIGGER** tab in the Google Cloud console.
-
-2. Click the copy button to copy the trigger URL.
-   Paste it into a new browser window and hit your **Enter** key.
-   The browser should display "Notification sent."
-   If it displays an error, double-check your code, and double-check your [access authorization](https://cloud.google.com/functions/docs/securing/managing-access-iam).
-
-3. Check your email inbox.
-
-   {{<imgproc src="/tutorials/helmet/email-received.png" resize="x600" declaredimensions=true alt="The email, opened in a web email client." style="width: 400px" >}}
-
-   If you don't see an email, check your spam folder.
-   If you still don't see an email, make sure your SendGrid account is fully set up (2FA enabled, email confirmed) and that your email API key is [correctly configured](#configure-email-credentials).
+Set up the trigger with a webhook or with Viam's built-in email alerts which sends a generic email letting you know that data has been synced.
 
 ### Configure a trigger on your machine
 
@@ -279,12 +120,14 @@ Select trigger **Type** as **Data has been synced to the cloud** and **Data Type
 
 To configure notifications, either
 
-- add a webhook and enter the URL of your custom cloud function, if you created one
+- add a webhook and enter the URL of your custom cloud function
 - add an email address to use Viam's built-in email notifications
 
 For both options also configure the time between notifications.
 
 Click **Save** in the top right corner of the screen to save your changes.
+
+{{< readfile "/static/include/webhooks.md" >}}
 
 ## Test the whole system
 
