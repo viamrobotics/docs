@@ -24,14 +24,17 @@ overview: true
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Build apps" "5" "BEGINNER-FRIENDLY" "middle" >}}
+{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "middle" >}}
 {{< cards >}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/operate/control/mobile-app/" noimage="true" %}}
-{{% card link="/operate/control/mobile-app/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
+
+<!-- unlisting for now
 {{% card link="/operate/control/voice-app/" noimage="true" %}}
 {{% card link="/operate/control/kiosk-app/" noimage="true" %}}
+-->
+
 {{< /cards >}}
 {{< /how-to-expand >}}
 
