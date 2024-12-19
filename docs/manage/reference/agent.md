@@ -194,7 +194,8 @@ Edit and fill in the attributes as applicable.
 
 #### Version updates
 
-To avoid unexpected downtime when `viam-server` is updated, you can configure a [Maintenance Window](/architecture/viam-server/#maintenance-window).
+When a new version of `viam-server` becomes available, `viam-agent` will restart and upgrade `viam-server` immediately.
+To limit when `viam-server` can be updated, you can configure a [Maintenance Window](/architecture/viam-server/#maintenance-window).
 With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
 
 #### Fast start mode
