@@ -6,10 +6,18 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Run control logic on a machine."
+images: ["/general/code.png"]
+aliases:
+  - "product-overviews/sdk-as-client"
+  - "program/sdk-as-client"
+  - "program/sdks"
+  - /program/
+  - /program/run/
+  - /program/debug/
 ---
 
-To write control logic for your machine that will run without a user interface, you can use the Python SDK or the Go SDK.
-Both SDKs include similar methods to hit standard component and service API endpoints, so choose the language you feel most comfortable scripting in.
+To write control logic for your machine that will run without a user interface, you can use the Python, Go, or C++ SDK.
+The SDKs include similar methods to hit Viam's [gRPC API](https://github.com/viamrobotics/api) endpoints, so choose the language you feel most comfortable scripting in.
 
 {{% alert title="In this page" color="tip" %}}
 
@@ -17,6 +25,7 @@ Both SDKs include similar methods to hit standard component and service API endp
 1. [Authenticate your script to your machine with API keys](#authenticate-your-script)
 1. [Write your control script](#write-your-control-script)
 1. [Run your script](#run-your-script)
+1. [Debug](#debug)
 
 {{% /alert %}}
 
@@ -24,10 +33,22 @@ Both SDKs include similar methods to hit standard component and service API endp
 
 You can run your code directly on the machine's single-board computer (SBC), or you can run it from a separate computer connected to the internet or to the same local network as your machine's SBC or microcontroller.
 
-For computationally-intensive programs involving computer vision or motion planning, we recommend running your script on a laptop, desktop, or server for optimal performance.
-The client code will establish a connection to the instance of `viam-server` on your machine's SBC over webRTC or gRPC.
+### On a separate computer
 
-For less compute-heavy scripts, running the code on the SBC that directly controls your hardware components can reduce latency.
+We recommend running your script on a laptop, desktop, or server if:
+
+- You are using computationally-intensive programs involving, for example, computer vision or motion planning, and
+- You have a stable internet connection
+
+The client code will establish a connection to the instance of `viam-server` on your machine's SBC over [LAN or WAN](/dev/reference/sdks/connectivity/).
+
+### On the machine itself
+
+We recommend running your script on the SBC that directly controls your hardware if:
+
+- Your machines have intermittent or no network connectivity, or
+- You want to reduce latency, for example for running [PID control loops](https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller), or
+- Your machine runs continuously (for example, an air quality sensor) and it is impractical to constantly run a client from your development computer
 
 ## Install an SDK
 
@@ -64,6 +85,11 @@ Run the following command to install the [Viam Go SDK](https://pkg.go.dev/go.via
 ```sh {class="command-line" data-prompt="$"}
 go get go.viam.com/rdk/robot/client
 ```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -123,6 +149,28 @@ To connect your code to your machine, use the API keys Viam automatically genera
            Payload: "<API-KEY>",
        })),
    )
+   ```
+
+   Copy not just this function but the entire code snippet on the **CONNECT** tab if you'd like to test your connection with some basic API calls.
+
+   {{% /tab %}}
+   {{% tab name="C++" %}}
+
+   The machine connection code will resemble the following:
+
+   ```cpp {class="line-numbers linkable-line-numbers" data-line="1,5,7"}
+   std::string host("ADDRESS FROM THE VIAM APP");
+   DialOptions dial_opts;
+   dial_opts.set_type("api-key");
+   // Replace "<API-KEY-ID>" with your machine's API key ID
+   dial_opts.set_entity("<API-KEY-ID>");
+   // Replace "<API-KEY>" with your machine's API key
+   Credentials credentials("<API-KEY>");
+   dial_opts.set_credentials(credentials);
+   boost::optional<DialOptions> opts(dial_opts);
+   Options options(0, opts);
+
+   auto robot = RobotClient::at_address(host, options);
    ```
 
    Copy not just this function but the entire code snippet on the **CONNECT** tab if you'd like to test your connection with some basic API calls.
@@ -249,6 +297,71 @@ func main() {
 ```
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#include <boost/optional.hpp>
+#include <string>
+#include <vector>
+#include <viam/sdk/robot/client.hpp>
+#include <viam/sdk/components/motor.hpp>
+#include <viam/sdk/components/base.hpp>
+#include <viam/sdk/components/camera.hpp>
+#include <viam/sdk/components/encoder.hpp>
+
+using namespace viam::sdk;
+using namespace viam::sdk;
+using std::cerr;
+using std::cout;
+using std::endl;
+
+void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
+  for (int i = 0; i < 4; ++i) {
+    cout << "Move straight" << endl;
+    // Move the base forward 600mm at 500mm/s
+    base->move_straight(500, 500);
+    cout << "Spin" << endl;
+    // Spin the base by 90 degree at 100 degrees per second
+    base->spin(90, 100);
+  }
+}
+
+int main() {
+    std::string host("ADDRESS FROM THE VIAM APP");
+    DialOptions dial_opts;
+    // Replace "<API-KEY-ID>" with your machine's api key ID
+    dial_opts.set_entity(std::string("<API-KEY-ID>"));
+    // Replace "<API-KEY>" with your machine's api key
+    Credentials credentials("api-key", "<API-KEY>");
+    dial_opts.set_credentials(credentials);
+    boost::optional<DialOptions> opts(dial_opts);
+    Options options(0, opts);
+
+    auto machine = RobotClient::at_address(host, options);
+
+    std::cout << "Resources:\n";
+    for (const Name& resource : machine->resource_names()) {
+      std::cout << "\t" << resource << "\n";
+    }
+
+    std::string base_name("viam_base");
+
+    cout << "Getting base: " << base_name << endl;
+    std::shared_ptr<Base> base;
+    try {
+        base = machine->resource_by_name<Base>(base_name);
+
+        move_in_square(base);
+
+    } catch (const std::exception& e) {
+        cerr << "Failed to find " << base_name << ". Exiting." << endl;
+        throw;
+    }
+    return EXIT_SUCCESS;
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 {{< /expand >}}
@@ -338,6 +451,11 @@ go run /home/myName/project/my_cool_script.go
 ```
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+For information on running C++ code see [the instructions on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Run your script as an automatic process
@@ -377,6 +495,42 @@ The following example executes the command `python3 my_cool_script.py` in your <
     }
   ]
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Debug
+
+Read and filter a machine's logs to view updates from your machine's `viam-server` instance and troubleshoot issues with your program.
+
+{{< tabs >}}
+{{% tab name="App UI" %}}
+
+Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
+
+Use the **Filter** input to filter the logs by key terms, and select from the **Levels** dropdown menu to filter the logs by warning level:
+
+![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {class="command-line" data-prompt="$"}
+sudo journalctl --unit=viam-server
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {class="command-line" data-prompt="$"}
+cat $(brew --prefix)/var/log/viam.log
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}

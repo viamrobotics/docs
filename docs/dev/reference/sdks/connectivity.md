@@ -8,6 +8,7 @@ tags:
   ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 aliases:
   - /program/connectivity/
+  - /sdks/connectivity/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
