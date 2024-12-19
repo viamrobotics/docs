@@ -157,6 +157,9 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`).
 
+{{< tabs >}}
+{{% tab name="Template" %}}
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "source": "<your-source-camera-name>",
@@ -167,19 +170,70 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
         "x_min_px": <int>,
         "y_min_px": <int>,
         "x_max_px": <int>,
-        "y_max_px": <int>
+        "y_max_px": <int>,
+        "overlay_crop_box": <bool>
       }
     }
   ]
 }
 ```
 
+{{% /tab %}}
+{{% tab name="Coordinate Example" %}}
+
+If you have a 100 x 200 image, and you want to crop to a box between the points (30, 40) and (60,80), the following would suffice:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "crop",
+      "attributes": {
+        "x_min_px": 30,
+        "y_min_px": 40,
+        "x_max_px": 60,
+        "y_max_px": 80,
+        "overlay_crop_box": false
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Proportion Example" %}}
+
+If you have a 100 x 200 image, and you want to crop to a box between the points (30, 40) and (60,80), the following would suffice:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "crop",
+      "attributes": {
+        "x_min_px": 0.3,
+        "y_min_px": 0.2,
+        "x_max_px": 0.6,
+        "y_max_px": 0.4,
+        "overlay_crop_box": false
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 **Attributes:**
 
-- `x_min_px`: The x coordinate of the top left point of the rectangular area to crop the image to.
-- `y_min_px`: The y coordinate of the top left point of the rectangular area to crop the image to.
-- `x_max_px`: The x coordinate of the bottom right point of the rectangular area to crop the image to.
-- `y_max_px`: The y coordinate of the bottom right point of the rectangular area to crop the image to.
+- `x_min_px`: The x coordinate or the relative proportion of the top left point of the rectangular area to crop the image to.
+- `y_min_px`: The y coordinate or the relative proportion of the top left point of the rectangular area to crop the image to.
+- `x_max_px`: The x coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
+- `y_max_px`: The y coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
+- `overlay_crop_box`: Set to `true` to not actually carry out the crop, but instead overlay the cropping box on the original image and visualize where the crop would be applied.
 
 {{% /tab %}}
 
