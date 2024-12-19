@@ -13,10 +13,11 @@ aliases:
   - /how-tos/upload-data/
 date: "2024-12-04"
 description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
+no_list: true
 ---
 
-If you configured the [data management service](/services/data/), Viam automatically uploads data from the configured directory to the cloud, at the interval you specified.
-However, if you want to upload a batch of data once from somewhere else, either from a different directory on your machine or from your personal computer or mobile device, you have several options using the Viam app, the data client API, or the Viam mobile app.
+When you configure the data management service, Viam automatically uploads data from the default directory `~/.viam/capture` or the directory you configured to the cloud at the interval you specify.
+If you want to upload a batch of data from a different source—such as another directory on your machine, your personal computer, or a mobile device—you can use the Viam app, the data client API, or the Viam mobile app to do so.
 
 ## Sync a batch of data from another directory
 

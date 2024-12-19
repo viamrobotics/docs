@@ -25,35 +25,6 @@ toc_hide: true
 The data management service captures data from one or more {{< glossary_tooltip term_id="resource" text="resources" >}} locally, and syncs it to cloud storage when a connection to the cloud is available.
 You can configure which data you want to capture, as well as the capture rate and the sync frequency.
 
-{{< tabs >}}
-{{% tab name="viam-server" %}}
-
-The data is captured locally on the machine's storage and, by default, stored in the `~/.viam/capture` directory.
-
-If a machine restarts for any reason, capture automatically resumes and any data from already stored but not yet synced is synced.
-
-The service can capture data from multiple resources at the same or different frequencies.
-The service does not impose a lower or upper limit on the frequency of data collection.
-However, in practice, your hardware may impose limits on the frequency of data collection.
-Avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
-
-Data capture is frequently used with cloud sync.
-However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
-
-{{% /tab %}}
-{{% tab name="viam-micro-server" %}}
-
-The data is captured in the ESP32's flash memory until it is uploaded to the Viam Cloud.
-
-If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
-
-The service can capture data from multiple resources at the same or different frequencies.
-The service does not impose a lower or upper limit on the frequency of data collection.
-However, in practice, high frequency data collection (> 100Hz) requires special considerations on the ESP32.
-
-{{% /tab %}}
-{{< /tabs >}}
-
 {{< expand "Click for an example." >}}
 Consider a tomato picking robot with a 3D camera and an arm.
 When you configure the robot, you might set the camera to capture point cloud data at a frequency of 30Hz.
@@ -65,127 +36,6 @@ If your requirements change and you want to capture data from both components at
 {{< alert title="In this page" color="note" >}}
 {{% toc %}}
 {{< /alert >}}
-
-## Security
-
-The data management service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
-When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.
-
-## Data Integrity
-
-Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
-
-If the internet becomes unavailable or the machine needs to restart during the sync process, the sync is interrupted.
-If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour, at which point the service retries the sync every hour.
-When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
-If the interruption happens mid-file, sync resumes from the beginning of that file.
-
-To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
-
-## Storage
-
-Data that is successfully synced to the cloud is automatically deleted from local storage.
-
-When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam Cloud again.
-
-{{<imgproc src="/services/data/data_management.png" resize="x1100" declaredimensions=true alt="Data is captured on the machine, uploaded to the cloud, and then deleted off local storage." class="imgzoom" >}}
-
-To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
-
-{{< alert title="Warning" color="warning" >}}
-
-If your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
-
-{{< /alert >}}
-
-{{< expand "Automatic data deletion details" >}}
-
-If cloud sync is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
-
-With `viam-server`, the data management service will also automatically delete local data in the event your machine's local storage fills up.
-Local data is automatically deleted when _all_ of the following conditions are met:
-
-- Data capture is enabled on the data management service
-- Local disk usage percentage is greater than or equal to 90%
-- The Viam capture directory is at least 50% of the current local disk usage
-
-If local disk usage is greater than or equal to 90%, but the Viam capture directory is not at least 50% of that usage, a warning log message will be emitted instead and no action will be taken.
-
-Automatic file deletion only applies to files in the specified Viam capture directory, which is set to `~/.viam/capture` by default.
-Data outside of this directory is not touched by automatic data deletion.
-
-If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available.
-You can change the capture directory using the `capture_dir` attribute.
-
-You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` attribute.
-
-{{< /expand >}}
-
-{{< expand "Capture directly to MongoDB" >}}
-
-Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
-
-This feature is intended to support use cases like offline dashboards which don't require strong data delivery or consistency guarantees.
-
-Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
-
-```json
-{
-  "components": [
-    {
-      "name": "sensor-1",
-      "namespace": "rdk",
-      "type": "sensor",
-      "model": "fake",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Readings",
-                "capture_frequency_hz": 0.5,
-                "additional_params": {}
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ],
-  "services": [
-    {
-      "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
-      "attributes": {
-        "mongo_capture_config": {
-          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
-        }
-      }
-    }
-  ]
-}
-```
-
-When `mongo_capture_config.uri` is configured, data capture will attempt to connect to the configured MongoDB server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection` (or their defaults if unconfigured) after enqueuing that data to be written to disk.
-
-If writes to MongoDB fail for any reason, data capture will log an error for each failed write and continue capturing.
-
-Failing to write to MongoDB doesn't affect capturing and syncing data to cloud storage other than adding capture latency.
-
-{{< alert title="Caution" color="caution" >}}
-
-- Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
-- Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB.
-  This can happen in cases such as MongoDB being inaccessible to `viam-server` or writes timing out.
-- Capturing directly to MongoDB may reduce the maximum frequency that data capture can capture data due to the added latency of writing to MongoDB.
-  If your use case needs to support very high capture rates, this feature may not be appropriate.
-
-{{< /alert >}}
-
-{{< /expand >}}
 
 ## Configuration
 
@@ -277,6 +127,70 @@ The following attributes are available for the data management service:
 | `mongo_capture_config.database` | string | Optional | When `mongo_capture_config.uri` is non empty, changes the database data capture will write tabular data to. <br> Default: `"sensorData"`   |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `mongo_capture_config.collection` | string | Optional | When `mongo_capture_config.uri` is non empty, changes the collection data capture will write tabular data to.<br> Default: `"readings"`   |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+
+#### Capture directly to MongoDB
+
+Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
+
+This feature is intended to support use cases like offline dashboards which don't require strong data delivery or consistency guarantees.
+
+Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
+
+```json
+{
+  "components": [
+    {
+      "name": "sensor-1",
+      "namespace": "rdk",
+      "type": "sensor",
+      "model": "fake",
+      "attributes": {},
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Readings",
+                "capture_frequency_hz": 0.5,
+                "additional_params": {}
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "data_manager-1",
+      "namespace": "rdk",
+      "type": "data_manager",
+      "attributes": {
+        "mongo_capture_config": {
+          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
+        }
+      }
+    }
+  ]
+}
+```
+
+When `mongo_capture_config.uri` is configured, data capture will attempt to connect to the configured MongoDB server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection` (or their defaults if unconfigured) after enqueuing that data to be written to disk.
+
+If writes to MongoDB fail for any reason, data capture will log an error for each failed write and continue capturing.
+
+Failing to write to MongoDB doesn't affect capturing and syncing data to cloud storage other than adding capture latency.
+
+{{< alert title="Caution" color="caution" >}}
+
+- Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
+- Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB.
+  This can happen in cases such as MongoDB being inaccessible to `viam-server` or writes timing out.
+- Capturing directly to MongoDB may reduce the maximum frequency that data capture can capture data due to the added latency of writing to MongoDB.
+  If your use case needs to support very high capture rates, this feature may not be appropriate.
+
+{{< /alert >}}
 
 ### Resource data capture configuration
 
@@ -740,18 +654,6 @@ The following attributes are available for data capture configuration:
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/services/data/#supported-components-and-services). |
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
-
-### Supported components and services
-
-The following components and services support data capture, for the following methods:
-
-{{< readfile "/static/include/data/capture-supported.md" >}}
-
-## View captured data
-
-To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can filter by location, type of data, and more.
-
-You can also access data from a resource, machine part, or machine menu.
 
 ## Considerations
 

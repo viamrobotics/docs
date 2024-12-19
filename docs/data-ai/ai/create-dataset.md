@@ -9,7 +9,7 @@ description: "Create a dataset to train a machine learning model."
 
 To ensure a machine learning model you create performs well, you need to train it on a variety of images that cover the range of things your machine should be able to recognize.
 
-This page will walk you through capturing data with the data management service, labeling these images for machine learning, and creating a dataset with them.
+This page will walk you through labeling images for machine learning and creating a dataset with them.
 
 {{% expand "Just testing and want a dataset to get started with? Click here." %}}
 
@@ -154,65 +154,20 @@ We have two datasets you can use for testing, one with shapes and the other with
 
 {{% /expand%}}
 
-{{< gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="Configuring data management for a camera in the viam app" max-width="600px" class="aligncenter" >}}
+## Prerequisites
 
-{{< table >}}
-{{% tablestep link="/services/data/" %}}
-**1. Enable the data management service**
+{{< expand "At least 10 captured images of what you want your machine to recognize." >}}
 
-In the configuration pane for your configured camera component, find the **Data capture** section.
-Click **Add method**.
+[Capture and sync image data](/data-ai/get-started/capture-sync/) using the data management service.
 
-When the **Create a data management service** prompt appears, click it to add the service to your machine.
-You can leave the default data manager settings.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**2. Capture data**
-
-With the data management service configured on your machine, configure how the camera component captures data:
-
-In the **Data capture** panel of your camera's configuration, select `ReadImage` from the method selector.
-
-Set your desired capture frequency.
-For example, set it to `0.05` to capture an image every 20 seconds.
-
-Set the MIME type to your desired image format, for example `image/jpeg`.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**3. Save to start capturing**
-
-Save the config.
-
-With cloud sync enabled, your machine automatically uploads captured data to the Viam app after a short delay.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**4. View data in the Viam app**
-
-Click on the **...** menu of the camera component and click on **View captured data**.
-This takes you to the data tab.
-
-![View captured data option in the component menu](/get-started/quickstarts/collect-data/cam-capt-data.png)
-
-If you do not see images from your camera, try waiting a minute and refreshing the page to allow time for the images to be captured and then synced to the app at the interval you configured.
-
-If no data appears after the sync interval, check the **LOGS** tab for errors.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**5. Capture a variety of data**
-
-Your camera now saves images at the configured time interval.
 When training machine learning models, it is important to supply a variety of images.
 The dataset you create should represent the possible range of visual input.
 This may include capturing images of different angles, different configurations of objects and different lighting conditions.
 The more varied the provided dataset, the more accurate the resulting model becomes.
 
-Capture at least 10 images of anything you want your machine to recognize.
+{{< /expand >}}
 
-{{< expand "For more tips and tricks on improving model accuracy, click here." >}}
+{{< expand "For tips and tricks on improving model accuracy while capturing data, click here." >}}
 
 - **More data means better models:** Incorporate as much data as you practically can to improve your model’s overall performance.
 - **Include counterexamples:** Include images with and without the object you’re looking to classify.
@@ -228,9 +183,7 @@ Capture at least 10 images of anything you want your machine to recognize.
 
 {{< /expand >}}
 
-{{% /tablestep %}}
-{{% tablestep %}}
-**6. Label your images**
+## Label your images
 
 Once you have enough images, you can disable data capture to [avoid incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of training data.
 
@@ -274,9 +227,7 @@ If you want to expand the image, click on the expand side menu arrow in the corn
 Repeat this with all images.
 {{< /expand >}}
 
-{{% /tablestep %}}
-{{% tablestep link="/fleet/dataset/" %}}
-**7. Organize data into a dataset**
+## Organize data into a dataset
 
 To train a model, your images must be in a dataset.
 
@@ -383,6 +334,3 @@ if __name__ == '__main__':
 {{< /tabs >}}
 
 {{% /expand%}}
-
-{{% /tablestep %}}
-{{< /table >}}

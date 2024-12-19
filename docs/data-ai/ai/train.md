@@ -18,6 +18,9 @@ date: "2024-12-04"
 You can create custom Python training scripts that train ML models to your specifications using PyTorch, Tensorflow, TFLite, ONNX, or any other Machine Learning framework.
 Once you upload a training script to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use it to build ML models in the Viam Cloud based on your datasets.
 
+You can also use training scripts that are in the registry already.
+If you wish to do this, skip to [Submit a training job](#submit-a-training-job).
+
 ## Prerequisites
 
 {{% expand "A dataset with data you can train an ML model on. Click to see instructions." %}}

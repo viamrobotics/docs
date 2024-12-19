@@ -9,13 +9,16 @@ description: "Use the vision service API to act based on inferences."
 
 You can use the [vision service API](/dev/reference/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
 
+The following are just a few examples of what you can do with the vision service and other components and services.
+Program a line following robot or act in industrial applications like accident prevention or quality assurance.
+
 ## Program a line following robot
 
 For example, you can [program a line following robot](/tutorials/services/color-detection-scuttle/) that uses a vision service to follow a colored object.
 
 You can use the following code to detect and follow the location of a colored object:
 
-{{% expand "click to view code" %}}
+{{% expand "Click to view code" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def connect():
