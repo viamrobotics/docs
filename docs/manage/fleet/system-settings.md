@@ -134,7 +134,7 @@ For complete reference information, see [viam-agent](/configure/agent/#networks)
 By default, the operating system defaults determine the disk space that `journald` uses to persist logs.
 To adjust these settings update the `"agent"` value in the machine's JSON configuration.
 
-For complete reference information, see [viam-agent](/configure/agent/#agent-syscfg).
+For complete reference information, see [viam-agent](/configure/agent/#agent-syscfg) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
 
 ### Set the maximum disk space
 
