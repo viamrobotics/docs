@@ -5,5 +5,5 @@ weight: 20
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "Spatially describe your robot's working environment for collision avoidance."
 ---
