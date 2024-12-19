@@ -32,12 +32,16 @@ This page provides instructions for writing and uploading a module in Python or 
 
 ## Design your module
 
-### Write a test script (optional)
+{{< table >}}
+{{% tablestep %}}
+**1. Write a test script (optional)**
 
 You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
 Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
 
-### Choose an API
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Choose an API**
 
 Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
 With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
@@ -49,11 +53,16 @@ For example, if you want to use the [camera API](/dev/reference/apis/components/
 
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
 
-### Decide on configuration attributes and dependencies
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Decide on configuration attributes and dependencies**
 
 Make a list of required and optional attributes for users to configure when adding your module to a machine.
 For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
 You'll need to add these attributes to the `Validate` and `Reconfigure` functions when you write the module.
+
+{{% /tablestep %}}
+{{< /table >}}
 
 ## Write your module
 
@@ -521,131 +530,151 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 
 {{% /expand%}}
 
-1. {{< tabs >}}
-   {{% tab name="Python" %}}
+{{< table >}}
+{{% tablestep %}}
+**1. Prepare to run your module**
 
-   Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sh setup.sh
-   ```
+Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
 
-   This environment is where the local module will run.
-   `viam-server` does not need to run inside this environment.
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+```
 
-   {{% /tab %}}
-   {{% tab name="Go" %}}
+This environment is where the local module will run.
+`viam-server` does not need to run inside this environment.
 
-   From within the <file>hello-world</file> directory, compile your module into a single executable:
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-   ```sh {class="command-line" data-prompt="$" data-output="5-10"}
-   make setup
-   make build
-   ```
+From within the <file>hello-world</file> directory, compile your module into a single executable:
 
-   {{% /tab %}}
-   {{< /tabs >}}
+```sh {class="command-line" data-prompt="$" data-output="5-10"}
+make setup
+make build
+```
 
-1. **Configure your local module** on a machine:
+{{% /tab %}}
+{{< /tabs >}}
 
-   On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
-   Select **Local module**, then **Local module**.
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Configure your local module on a machine**
 
-   Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example <file>/Users/jessamy/my-python-sensor-module/run.sh</file> or <file>/Users/artoo/my-go-module/main.go</file>.
-   Click **Create**.
+On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+Select **Local module**, then **Local module**.
 
-1. **Configure the model** provided by your module:
+Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example <file>/Users/jessamy/my-python-sensor-module/run.sh</file> or <file>/Users/artoo/my-go-module/main.go</file>.
+Click **Create**.
 
-   Click the **+** button again, this time selecting **Local module** and then **Local component**.
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Configure the model provided by your module**
 
-   Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
+Click the **+** button again, this time selecting **Local module** and then **Local component**.
 
-   Select the **Type** corresponding to the API you implemented.
+Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
 
-   Enter a **Name** such as `my-cool-component`.
-   Click **Create**.
+Select the **Type** corresponding to the API you implemented.
 
-   {{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local model after the local module is configured">}}
+Enter a **Name** such as `my-cool-component`.
+Click **Create**.
 
-   Configure any required attributes using proper JSON syntax.
+{{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local model after the local module is configured">}}
 
-1. **Test the component**:
+Configure any required attributes using proper JSON syntax.
 
-   Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
-   For example, if you created a sensor component, check whether readings are displayed.
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. Test the component**
 
-   {{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" >}}
+Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
+For example, if you created a sensor component, check whether readings are displayed.
+
+{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" >}}
 
 If it works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.
 For help, don't hesitate to reach out on the [Community Discord](https://discord.gg/viam).
 
+{{% /tablestep %}}
+{{< /table >}}
+
 ## Upload your module
 
-1. **Create a README** (optional):
+{{< table >}}
+{{% tablestep %}}
+**1. Create a README (optional)**
 
-   It's quite helpful to create a README to document what your module does and how to use it, especially if you plan to share your module with others.
+It's quite helpful to create a README to document what your module does and how to use it, especially if you plan to share your module with others.
 
-   {{< expand "Example sensor module README" >}}
+{{< expand "Example sensor module README" >}}
 
-   ````md
-   # `meteo_PM` modular component
+````md
+# `meteo_PM` modular component
 
-   This module implements the [Viam sensor API](https://github.com/rdk/sensor-api) in a jessamy:weather:meteo_PM model.
-   With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
+This module implements the [Viam sensor API](https://github.com/rdk/sensor-api) in a jessamy:weather:meteo_PM model.
+With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
 
-   ## Build and Run
+## Build and Run
 
-   To use this module, add it from the machines **CONFIGURE** tab and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
+To use this module, add it from the machines **CONFIGURE** tab and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
 
-   ## Configure your `meteo_PM` sensor
+## Configure your `meteo_PM` sensor
 
-   Navigate to the **CONFIGURE** tab of your robot’s page in the [Viam app](https://app.viam.com/).
-   Add a component.
-   Select the `sensor` type, then select the `jessamy:weather:meteo_PM` model.
-   Enter a name for your sensor and click **Create**.
+Navigate to the **CONFIGURE** tab of your robot’s page in the [Viam app](https://app.viam.com/).
+Add a component.
+Select the `sensor` type, then select the `jessamy:weather:meteo_PM` model.
+Enter a name for your sensor and click **Create**.
 
-   On the new component panel, copy and paste the following attribute template into your sensor’s **Attributes** box:
+On the new component panel, copy and paste the following attribute template into your sensor’s **Attributes** box:
 
-   ```json
-   {
-   "latitude": <float>,
-   "longitude": <float>
-   }
-   ```
+```json
+{
+"latitude": <float>,
+"longitude": <float>
+}
+```
 
-   ### Attributes
+### Attributes
 
-   The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM` sensors:
+The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM` sensors:
 
-   | Name        | Type  | Inclusion | Description                            |
-   | ----------- | ----- | --------- | -------------------------------------- |
-   | `latitude`  | float | Optional  | Latitude at which to get the readings  |
-   | `longitude` | float | Optional  | Longitude at which to get the readings |
+| Name        | Type  | Inclusion | Description                            |
+| ----------- | ----- | --------- | -------------------------------------- |
+| `latitude`  | float | Optional  | Latitude at which to get the readings  |
+| `longitude` | float | Optional  | Longitude at which to get the readings |
 
-   ### Example Configuration
+### Example Configuration
 
-   ```json
-   {
-     "latitude": -40.6,
-     "longitude": 93.125
-   }
-   ```
-   ````
+```json
+{
+  "latitude": -40.6,
+  "longitude": 93.125
+}
+```
+````
 
 {{< /expand >}}
 
-2. **Create a GitHub repo**:
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Create a GitHub repo**
 
-   Create a GitHub repository with all the source code and the README for your module.
-   Add the link to that repo as the `url` in the <file>meta.json</file> file.
+Create a GitHub repository with all the source code and the README for your module.
 
-3. **Edit the meta.json file**:
+Add the link to that repo as the `url` in the <file>meta.json</file> file.
 
-   Make any necessary edits to the `meta.json` file.
-   Click below for information about the available fields.
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Edit the meta.json file**
 
-   {{< expand "meta.json reference" >}}
+Make any necessary edits to the `meta.json` file.
+Click below for information about the available fields.
+
+{{< expand "meta.json reference" >}}
 
 <table class="table table-striped">
 <tr>
@@ -716,63 +745,68 @@ Do not change the <code>module_id</code>.</p>
 
 {{< /expand >}}
 
-3. **Package and upload**:
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. Package and upload**
 
-   To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
+To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
 
-   {{< tabs >}}
-   {{% tab name="Python" %}}
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-   1. To package the module as an archive, run the following command from inside the module directory:
+1.  To package the module as an archive, run the following command from inside the module directory:
 
-      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      tar -czf module.tar.gz run.sh setup.sh requirements.txt src
-      ```
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    tar -czf module.tar.gz run.sh setup.sh requirements.txt src
+    ```
 
-      where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
+    where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
 
-      This creates a tarball called <file>module.tar.gz</file>.
+    This creates a tarball called <file>module.tar.gz</file>.
 
-   1. Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
-      If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
+1.  Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
+    If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
 
-      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      viam module upload --version 1.0.0 --platform any module.tar.gz
-      ```
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module upload --version 1.0.0 --platform any module.tar.gz
+    ```
 
-      For details on platform support, see [Using the `--platform` argument](/cli/#using-the---platform-argument).
+    For details on platform support, see [Using the `--platform` argument](/cli/#using-the---platform-argument).
 
-      For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
+    For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
 
-   {{% alert title="Important" color="note" %}}
-   The `viam module upload` command only supports one `platform` argument at a time.
-   If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
-   Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
-   The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
-   {{% /alert %}}
+{{% alert title="Important" color="note" %}}
+The `viam module upload` command only supports one `platform` argument at a time.
+If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
+{{% /alert %}}
 
-   {{% /tab %}}
-   {{% tab name="Go" %}}
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-   From within your module's directory, run the `viam module upload` CLI command to upload the module to the registry, replacing `<platform>` with `linux/amd64`, `linux/arm64`, or one or more other [platforms depending on what your module requires](/cli/#using-the---platform-argument).
+From within your module's directory, run the `viam module upload` CLI command to upload the module to the registry, replacing `<platform>` with `linux/amd64`, `linux/arm64`, or one or more other [platforms depending on what your module requires](/cli/#using-the---platform-argument).
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module upload --version 1.0.0 --platform <platform> .
-   ```
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module upload --version 1.0.0 --platform <platform> .
+```
 
-   For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
+For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
 
-   {{% alert title="Important" color="note" %}}
-   The `viam module upload` command only supports one `platform` argument at a time.
-   If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
-   Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
-   The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
-   {{% /alert %}}
+{{% alert title="Important" color="note" %}}
+The `viam module upload` command only supports one `platform` argument at a time.
+If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
+{{% /alert %}}
 
-   {{% /tab %}}
-   {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your module listed.
+
+{{% /tablestep %}}
+{{< /table >}}
 
 ## Add your new modular resource to your machines
 
