@@ -10,6 +10,8 @@ description: "TODO"
 date: "2024-12-18"
 ---
 
+Data capture and cloud sync works differently for `viam-server` and `viam-micro-server`.
+
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 
