@@ -105,12 +105,9 @@ When you sync captured data to Viam, that data is stored in the Viam organizatio
 You can use third-party visualization tools, such as Grafana, to visualize your data.
 Your chosen third-party visualization tool must be able to connect to a [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/query/sql/connect/) instance as its data store.
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CGq3XIRQjUQ">}}
-
 Select a tab below to learn how to configure your visualization tool for use with Viam:
 
-{{< tabs >}}
-{{< tab name="Grafana" >}}
+#### Grafana
 
 {{< table >}}
 {{% tablestep %}}
@@ -187,8 +184,7 @@ See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-pa
 {{% /tablestep %}}
 {{< /table >}}
 
-{{% /tab %}}
-{{< tab name="Other visualization tools" >}}
+#### Other visualization tools
 
 {{< table >}}
 {{% tablestep %}}
@@ -267,8 +263,7 @@ See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-pa
 {{% /tablestep %}}
 {{< /table >}}
 
-{{< /tab >}}
-{{< /tabs >}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CGq3XIRQjUQ">}}
 
 For more detailed instructions on using Grafana, including a full step-by-step configuration walkthrough, see [visualizing data with Grafana](/tutorials/services/visualize-data-grafana/).
 

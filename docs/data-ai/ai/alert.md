@@ -8,16 +8,30 @@ description: "Use triggers to send email notifications when inferences are made.
 ---
 
 At this point, you should have already set up and tested [computer vision functionality](/data-ai/ai/run-inference/).
-On this page, you'll learn how to use triggers to send alerts in the form of email notifications when certain detections or classifications are made.
+On this page, you'll learn how to use triggers to send alerts in the form of email notifications or webhook requests when certain detections or classifications are made.
 
 You will build a system that can monitor camera feeds and detect situations that require review.
 In other words, this system performs anomaly detection.
 Whenever the system detects an anomaly, it will send an email notification.
 
 First, you'll set up data capture and sync to record images with the anomaly and upload them to the cloud.
-Next, you'll configure a trigger to send email notifications when the anomaly is detected.
+Next, you'll configure a trigger to send email notifications or webhook requests when the anomaly is detected.
 
-## Configured a filtered camera
+### Prerequisites
+
+{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+
+{{% snippet "setup-both.md" %}}
+
+{{% /expand%}}
+
+{{< expand "A configured camera and vision service. Click to see instructions." >}}
+
+Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/ai/run-inference/).
+
+{{< /expand >}}
+
+## Configure a filtered camera
 
 Your physical camera is working and your vision service is set up.
 Now you will pull them together to filter out only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
@@ -87,7 +101,9 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
 [Triggers](/configure/triggers/) allow you to send webhook requests or email notifications when certain events happen.
 
-You can use the **Data has been synced to the cloud** trigger to send email alerts whenever an image with an anomaly detection is synced to the cloud from your object filter camera.
+You can use the **Data has been synced to the cloud** (`part_data_ingested`) trigger to send alerts whenever an image with an anomaly detection is synced to the cloud from your object filter camera.
+
+Set up the trigger with a webhook or with Viam's built-in email alerts which sends a generic email letting you know that data has been synced.
 
 ### Configure a trigger on your machine
 
@@ -102,10 +118,16 @@ Select trigger **Type** as **Data has been synced to the cloud** and **Data Type
 
 {{<imgproc src="/tutorials/helmet/trigger.png" resize="x300" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." >}}
 
-To configure notifications, add an email address.
-Also configure the time between notifications.
+To configure notifications, either
+
+- add a webhook and enter the URL of your custom cloud function
+- add an email address to use Viam's built-in email notifications
+
+For both options also configure the time between notifications.
 
 Click **Save** in the top right corner of the screen to save your changes.
+
+{{< readfile "/static/include/webhooks.md" >}}
 
 ## Test the whole system
 
