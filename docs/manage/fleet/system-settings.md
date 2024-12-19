@@ -77,7 +77,7 @@ You may need to add the `agent-syscfg` object to the `agent` object if it doesn'
         "release_channel": "stable",
         "attributes": {
             "upgrades": {
-                "type": "security"
+                "type": "disabled"
             }
         }
     }
@@ -128,10 +128,6 @@ If the `fallbackNetOne` is not available or the machine can connect but internet
 ```
 
 For complete reference information, see [viam-agent](/configure/agent/#networks).
-
-### Example 2
-
-
 
 ## Configure operating system logging
 
