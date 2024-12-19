@@ -13,76 +13,33 @@ The `viam-agent` configuration allows you to configure:
 - [networks a machine can connect to](#configure-networks)
 - [parameters for operating system logging](#configure-operating-system-logging)
 
-## Configure OS package updates
+## Manage OS package updates
 
 By default, the configuration in <FILE>/etc/apt/apt.conf.d/</FILE> determines the behavior for updating operating system packages.
-To adjust these settings update the `"agent"` value in the machine's JSON configuration.
+To manage OS package updates using Viam, add an `"agent-syscfg"` object to the `"agent"` object in the machine's JSON configuration, if it doesn't already exist.
+Then, add the `"upgrades"` field in its attributes:
+
+```json
+"agent": {
+    "agent-syscfg": {
+        "release_channel": "stable",
+        "attributes": {
+            "upgrades": {
+                "type": "all|security|disabled"
+            }
+        }
+    }
+}
+```
+
+When the `upgrades` attribute is specified, `viam-agent` will install the `unattended-upgrades` package and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE> with an Origins-Pattern list generated automatically from configured repositories on the system.
+Custom repos installed on the system at the time the setting is enabled will be included.
+
+You can set automatic upgrades for all packages by setting the field value to `{ "type": "all" }`.
+Alternatively, you can set automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`), by setting the field value to `{ "type": "security" }`.
+To disable automatic upgrades, set the field value to `{ "type": "all" }`.
 
 For complete reference information, see [viam-agent](/configure/agent/#agent-syscfg).
-
-### Automatically upgrade all packages
-
-When set, `viam-agent` will install the `unattended-upgrades` package and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE> with an Origins-Pattern list generated automatically from configured repositories on the system.
-Custom repos installed on the system at the time the setting is enabled will be included.
-
-To set automatic upgrades for all packages, add the `upgrades` field to the `agent-syscfg`'s `attributes` object as following.
-You may need to add the `agent-syscfg` object to the `agent` object if it doesn't already exist.
-
-
-```json
-"agent": {
-    "agent-syscfg": {
-        "release_channel": "stable",
-        "attributes": {
-            "upgrades": {
-                "type": "all"
-            }
-        }
-    }
-}
-```
-
-### Automatically upgrade security packages
-
-When set, `viam-agent` will install the `unattended-upgrades` package and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE> with an Origins-Pattern list generated automatically from configured repositories on the system.
-Custom repos installed on the system at the time the setting is enabled will be included.
-
-To set automatic upgrades for packages containing `"security"` in their codename (for example `bookworm-security`), add the `upgrades` field to the `agent-syscfg`'s `attributes` object as following.
-You may need to add the `agent-syscfg` object to the `agent` object if it doesn't already exist.
-
-```json
-"agent": {
-    "agent-syscfg": {
-        "release_channel": "stable",
-        "attributes": {
-            "upgrades": {
-                "type": "security"
-            }
-        }
-    }
-}
-```
-
-### Disable automatic upgrades
-
-When set, `viam-agent` will install the `unattended-upgrades` package and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE> with an Origins-Pattern list generated automatically from configured repositories on the system.
-Custom repos installed on the system at the time the setting is enabled will be included.
-
-To set automatic upgrades, add the `upgrades` field to the `agent-syscfg`'s `attributes` object.
-You may need to add the `agent-syscfg` object to the `agent` object if it doesn't already exist.
-
-```json
-"agent": {
-    "agent-syscfg": {
-        "release_channel": "stable",
-        "attributes": {
-            "upgrades": {
-                "type": "disabled"
-            }
-        }
-    }
-}
-```
 
 ## Configure networks
 
