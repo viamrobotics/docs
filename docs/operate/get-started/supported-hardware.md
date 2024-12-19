@@ -99,7 +99,7 @@ The modular resource card allows you to configure attributes for the resource.
 
 The following image shows an example of a configured modular resource, specifically an ultrasonic sensor component.
 This modular component is made available by the `ultrasonic` module.
-See [module configuration](#module-configuration).
+See [module configuration](#module-configuration-details).
 
 {{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example in the Viam app builder UI.">}}
 
