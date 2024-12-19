@@ -1,6 +1,6 @@
 ---
-linkTitle: "Manage data"
-title: "Manage data"
+linkTitle: "Work with data"
+title: "Work with data"
 weight: 200
 layout: "empty"
 type: "docs"

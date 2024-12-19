@@ -1,6 +1,6 @@
 ---
-linkTitle: "Get started"
-title: "Get started"
+linkTitle: "Capture data"
+title: "Capture data"
 weight: 100
 layout: "empty"
 type: "docs"

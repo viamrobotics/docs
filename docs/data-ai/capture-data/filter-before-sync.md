@@ -1,7 +1,7 @@
 ---
 linkTitle: "Filter data"
 title: "Filter data before sync"
-weight: 10
+weight: 13
 layout: "docs"
 type: "docs"
 description: "Use filtering to collect and sync only certain images."

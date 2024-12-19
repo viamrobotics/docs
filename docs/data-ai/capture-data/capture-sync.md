@@ -11,15 +11,11 @@ date: "2024-12-03"
 ---
 
 You can use data management service to capture and sync data from your machine to the cloud.
-Once you have configured the data management service, you can specify the data you want to capture at a resource level.
-
-To configure data capture and cloud sync, you must have one of the following components and services configured on your machine:
-
-{{< readfile "/static/include/data/capture-supported.md" >}}
+You can capture data from [supported components and services](#supported-resources) or from arbitrary folders on your machines.
 
 ## Configure the data management service
 
-To start, configure a data management service to capture and sync the resource data.
+To start, configure the data management service to capture and sync data.
 
 From your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), add the `data management` service.
 On the panel that appears, configure data capture and sync attributes as applicable.
@@ -33,14 +29,14 @@ For more advanced attribute configuration information, see [Data management serv
 
 ## Configure data capture
 
-Scroll to the config card you wish to configure data capture and sync on.
+Scroll to the resource card you wish to configure data capture and sync on.
 
 In the **Data capture** section:
 
 - Click the **Method** dropdown and select the method you want to capture.
 - Set the frequency in hz, for example to `0.1` to capture an image every 10 seconds.
 
-For example, with a camera component capturing the `ReadImage` method every 3.03 seconds:
+For example, a camera component configured to capture the `ReadImage` method every 3.03 seconds:
 
 {{< imgproc src="/tutorials/data-management/camera-data-capture.png" alt="Data capture configuration card." resize="600x" >}}
 
@@ -61,6 +57,12 @@ Click the **Save** button in the top right corner of the page to save your confi
 To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can filter by location, type of data, and more.
 
 You can also access data from a resource or machine part menu.
+
+## Supported resources
+
+The following components and services support data capture and cloud sync:
+
+{{< readfile "/static/include/data/capture-supported.md" >}}
 
 ## Next steps
 
