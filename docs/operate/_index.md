@@ -13,12 +13,11 @@ overview: true
 {{<imgproc src="/platform-overviews/build-integrate.png" resize="1200x" style="width:800px" class="aligncenter imgzoom" declaredimensions=true alt="ALT">}}
 </p>
 
-{{< how-to-expand "Connect devices" "5" "BEGINNER-FRIENDLY" "light" >}}
+{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "light" >}}
 {{< cards >}}
 {{% card link="/operate/get-started/setup/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/software-capabilities/" noimage="true" %}}
 {{% card link="/operate/get-started/system-settings/" noimage="true" %}}
 
 {{< /cards >}}
