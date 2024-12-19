@@ -9,17 +9,33 @@ description: "Use supported hardware with your machine."
 modulescript: true
 ---
 
-Viam supports a wide variety of sensors, cameras, motors, robotic arms, and other hardware.
-Any hardware that is not already supported by a Viam {{< glossary_tooltip term_id="module" text="module" >}} can be added into Viam's system of modular resources by [creating a new module](../other-hardware/)
+Viam supports a wide variety of sensors, cameras, motors, robotic arms, and other physical hardware.
+Viam also supports various software services such as [data capture](/data-ai/get-started/capture-sync/), [computer vision](/data-ai/ai/create-dataset/), and [motion planning](/operate/mobility/move-arm/), designed to integrate seamlessly with the hardware driver modules.
 
-In this page:
+Any hardware that is not already supported by a Viam {{< glossary_tooltip term_id="module" text="module" >}} can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
+You can also create a module to support new software-only functionality.
+
+In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add functionality that has little to do with hardware, for example:
+
+- [A "camera" that takes a camera feed from a physical camera, and crops it, overlays it, or otherwise transforms the output](/components/camera/transform/)
+- [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
+- [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
+- [A "sensor" that returns all active I2C addresses as sensor readings](https://github.com/michaellee1019/i2cdetect)
+
+These software-only "hardware" modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules.
+
+{{% alert title="In this page" color="tip" %}}
 
 - [What hardware is already supported?](#supported-hardware)
 - [Add supported hardware to my machine's configuration](#configure-hardware-on-your-machine)
 
-See also:
+{{% /alert %}}
+
+{{% alert title="See also" color="tip" %}}
 
 - [Support other hardware by creating a new module](../other-hardware/)
+
+{{% /alert %}}
 
 ## Supported hardware
 
@@ -63,15 +79,18 @@ To use a module with `viam-micro-server`, you need to [build firmware that combi
 
 ## Configure hardware on your machine
 
-After installing `viam-server` or `viam-micro-server` on your computer or microcontroller, you can configure hardware components by using the **+** button on your machine's **CONFIGURE** tab in the Viam app.
-Click **Component**, then select from available components from the Viam Registry (as well as built-in resources).
+After installing `viam-server` or `viam-micro-server` on your computer or microcontroller, you can configure hardware components on your machine's page in the [Viam app](https://app.viam.com):
 
-{{<gif webm_src="/integrate/configure.webm" mp4_src="/integrate/configure.mp4" alt="Configuring a board and ultrasonic sensor." max-width="600px">}}
+1. Click the **+** button on your machine's **CONFIGURE** tab.
+1. Click **Component**, then select from available components from the Viam Registry (as well as built-in resources).
+1. Use the link to the module README to find information on configuring that specific component.
 
-When you add a modular resource _from the registry_, the module that provides it is automatically added at the same time, generating a configuration card for the modular resource and a separate one for the module.
-If you add a built-in component, there will only be a configuration card for the component.
+   {{<gif webm_src="/integrate/configure.webm" mp4_src="/integrate/configure.mp4" alt="Configuring a board and ultrasonic sensor." max-width="600px">}}
 
-### Modular resource configuration
+   When you add a modular resource _from the registry_, the module that provides it is automatically added at the same time, generating a configuration card for the modular resource and a separate one for the module.
+   If you add a built-in component, there will only be a configuration card for the component.
+
+### Modular resource configuration details
 
 The modular resource card allows you to configure attributes for the resource.
 
@@ -140,7 +159,7 @@ The following properties are available for modular resources:
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/architecture/viam-server/#dependency-management). |
 
-### Module configuration
+### Module configuration details
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

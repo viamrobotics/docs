@@ -342,7 +342,7 @@ go run /home/myName/project/my_cool_script.go
 
 ### Run your script as an automatic process
 
-If you want your script to run each time your machine boots, configure the script as a _{{< glossary_tooltip term_id="process" text="process" >}}_.
+If you want your script to run each time your machine boots, configure the script as a _{{< glossary_tooltip term_id="process" text="process" >}}_ on your machine.
 Configured processes are managed by `viam-server` and are a way to run any specified command either once on boot or continuously over the lifecycle of `viam-server`.
 
 {{% alert title="Tip" color="tip" %}}
