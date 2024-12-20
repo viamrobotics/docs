@@ -37,7 +37,7 @@ Custom repos installed on the system at the time the setting is enabled will be 
 
 You can set automatic upgrades for all packages by setting the field value to `{ "type": "all" }`.
 Alternatively, you can set automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`), by setting the field value to `{ "type": "security" }`.
-To disable automatic upgrades, set the field value to `{ "type": "all" }`.
+To disable automatic upgrades, set the field value to `{ "type": "disabled" }`.
 
 For complete reference information, see [viam-agent](/configure/agent/#agent-syscfg).
 
