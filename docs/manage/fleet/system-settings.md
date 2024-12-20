@@ -32,7 +32,7 @@ Then, add the `"upgrades"` field in its attributes:
 }
 ```
 
-When the `upgrades` attribute is specified, `viam-agent` will install the `unattended-upgrades` package and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE> with an Origins-Pattern list generated automatically from configured repositories on the system.
+When the `type` attribute is specified for `"upgrades"`, `viam-agent` will install the `unattended-upgrades` package and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE> with an Origins-Pattern list generated automatically from configured repositories on the system.
 Custom repos installed on the system at the time the setting is enabled will be included.
 
 You can set automatic upgrades for all packages by setting the field value to `{ "type": "all" }`.
@@ -88,7 +88,8 @@ For complete reference information, see [viam-agent](/configure/agent/#networks)
 
 ## Configure operating system logging
 
-By default, the operating system defaults determine the disk space that `journald` uses to persist logs.
+By default, the maximum disk space `journald` will use for `viam-server` logs is 512MB.
+
 To adjust these settings update the `"agent"` value in the machine's JSON configuration.
 
 For complete reference information, see [viam-agent](/configure/agent/#agent-syscfg) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
@@ -136,7 +137,8 @@ The configured values will take precedence over operating system defaults.
 ### Use the default operating system settings
 
 This configuration does not modify the OS-level logging configuration.
-The operating system defaults will be used:
+
+The operating system defaults for `journald` will determine the logging settings.
 
 ```json
 "agent": {
