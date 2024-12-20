@@ -17,17 +17,7 @@ aliases:
 ---
 
 To write control logic for your machine that will run without a user interface, you can use the Python, Go, or C++ SDK.
-The SDKs include similar methods to hit Viam's [gRPC API](https://github.com/viamrobotics/api) endpoints, so choose the language you feel most comfortable scripting in.
-
-{{% alert title="In this page" color="tip" %}}
-
-1. [Install an SDK](#install-an-sdk)
-1. [Authenticate your script to your machine with API keys](#authenticate-your-script)
-1. [Write your control script](#write-your-control-script)
-1. [Run your script](#run-your-script)
-1. [Debug](#debug)
-
-{{% /alert %}}
+The SDKs each include similar methods to hit Viam's [gRPC API](https://github.com/viamrobotics/api) endpoints.
 
 ## Decide where to run your code
 
@@ -94,7 +84,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 {{% /tab %}}
 {{< /tabs >}}
 
-## Authenticate your script
+## Authenticate
 
 To connect your code to your machine, use the API keys Viam automatically generates for you.
 
@@ -185,8 +175,6 @@ Sharing this information could compromise your system security by allowing unaut
 
 ## Write your control script
 
-Save the code on the computer or SBC where you'll run it.
-Edit it to add your control logic.
 
 For API reference including code snippets for each method, see [Viam's Client APIs](/dev/reference/apis/).
 
