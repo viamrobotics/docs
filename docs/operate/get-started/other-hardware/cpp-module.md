@@ -120,7 +120,7 @@ In addition to determining which existing API namespace triplet to use when crea
 
 {{< expand "API namespace triplet and model namespace triplet example" >}}
 
-The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
+The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the module name (and matching repo name) [yahboom](https://github.com/viam-labs/yahboom).
 The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
 
 ```json
@@ -136,17 +136,18 @@ The models implement the `rdk:component:arm` and the `rdk:component:gripper` API
 
 {{< /expand >}}
 
-A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
+A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:module-name:model-name`, where:
 
 - `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
-  - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
+  - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
     If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam Registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
-- `repo-name` is the code repository (GitHub repo) that houses your module code.
-  - Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
+- `module-name` is the name of your module.
+  Your `module-name` should describe the common functionality provided across the model or models provided by that module.
+  - Many people also choose to use the module name as the name of the code repository (GitHub repo) that houses the module code.
 - `model-name` is the name of the new resource model that your module will provide.
 
-For example, if your organization namespace is `acme`, and you have written a new base implementation named `mybase` which you have pushed to a repository named `my-custom-base-repo`, you would use the namespace `acme:my-custom-base-repo:mybase` for your model.
+For example, if your organization namespace is `acme`, and you have written a new base implementation named `mybase` which you have supported with a module named `my-custom-base-module`, you would use the namespace `acme:my-custom-base-module:mybase` for your model.
 
 More requirements:
 
@@ -259,7 +260,7 @@ This file will inherit from the existing class for your resource type, implement
 
 For example, the following file, `my_base.py`:
 
-- defines a new model `acme:my-custom-base-repo:mybase` by implementing a new `MyBase` class, which inherits from the built-in class `Base`.
+- defines a new model `acme:my-custom-base-module:mybase` by implementing a new `MyBase` class, which inherits from the built-in class `Base`.
 - defines a new constructor `new_base()` and a new method `validate_config()`.
 - does not implement several built-in methods, including `get_properties()` and `set_velocity()`, but instead raises a `NotImplementedError` error in the body of those functions.
   This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or raise a `NotImplementedError()` error, to ensure that the new `MyBase` class successfully instantiates.
@@ -300,10 +301,10 @@ class MyBase(Base, Reconfigurable):
     """
 
     # Here is where we define our new model's colon-delimited-triplet:
-    # acme:my-custom-base-repo:mybase
-    # acme = namespace, my-custom-base-repo = repo-name, mybase = model name.
+    # acme:my-custom-base-module:mybase
+    # acme = namespace, my-custom-base-module = module-name, mybase = model name.
     MODEL: ClassVar[Model] = Model(
-        ModelFamily("acme", "my-custom-base-repo"), "mybase")
+        ModelFamily("acme", "my-custom-base-module"), "mybase")
 
     def __init__(self, name: str, left: str, right: str):
         super().__init__(name, left, right)
@@ -473,7 +474,7 @@ This file will inherit from the existing package for your resource type, impleme
 
 For example, the following file, `mybase.go`:
 
-- defines a new model `acme:my-custom-base-repo:mybase` by implementing a new `mybase` package, which inherits from the built-in package `base`.
+- defines a new model `acme:my-custom-base-module:mybase` by implementing a new `mybase` package, which inherits from the built-in package `base`.
 - defines a new constructor `newBase()` and a new method `Validate()`.
 - does not implement several built-in methods, including `MoveStraight()` and `SetVelocity()`, but instead returns an `errUnimplemented` error in the body of those methods.
   This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or return an `errUnimplemented` error, to ensure that the new `mybase` package successfully instantiates.
@@ -503,10 +504,10 @@ import (
     "go.viam.com/rdk/spatialmath"
 )
 
-// Here is where we define your new model's colon-delimited-triplet (acme:my-custom-base-repo:mybase)
-// acme = namespace, my-custom-base-repo = repo-name, mybase = model name.
+// Here is where we define your new model's colon-delimited-triplet (acme:my-custom-base-module:mybase)
+// acme = namespace, my-custom-base-module = module-name, mybase = model name.
 var (
-    Model            = resource.NewModel("acme", "my-custom-base-repo", "mybase")
+    Model            = resource.NewModel("acme", "my-custom-base-module", "mybase")
     errUnimplemented = errors.New("unimplemented")
 )
 
@@ -726,7 +727,7 @@ For example, the files below define the new `MyBase` class and its constituent f
   This prevents these functions from being used by new base components that use this modular resource, but meets the requirement that all built-in functions either be defined or `throw` a `runtime_error` error, to ensure that the new `MyBase` class successfully instantiates.
 - The `my_base.cpp` source file contains the function and object definitions used by the `MyBase` class.
 
-Note that the model triplet itself, `acme:my-custom-base-repo:mybase` in this example, is defined in the entry point (main program) file `main.cpp`, which is described in the next section.
+Note that the model triplet itself, `acme:my-custom-base-module:mybase` in this example, is defined in the entry point (main program) file `main.cpp`, which is described in the next section.
 
 {{< expand "Click to view sample code for the my_base.hpp header file" >}}
 
@@ -1048,7 +1049,7 @@ Create a <file>main.cpp</file> file to serve as the module's entry point file, w
 - creates and starts the module
 
 For example, the following `main.cpp` file serves as the entry point file for the `mybase` custom model.
-It imports the `mybase` model implementation from the `my_base.hpp` file that provides it, declares the model triplet `acme:my-custom-base-repo:mybase`, and defines a `main()` function that registers it.
+It imports the `mybase` model implementation from the `my_base.hpp` file that provides it, declares the model triplet `acme:my-custom-base-module:mybase`, and defines a `main()` function that registers it.
 
 {{< expand "Click to view sample code for main.cpp" >}}
 
@@ -1080,7 +1081,7 @@ using namespace viam::sdk;
 
 int main(int argc, char** argv) {
     API base_api = Base::static_api();
-    Model mybase_model("acme", "my-custom-base-repo", "mybase");
+    Model mybase_model("acme", "my-custom-base-module", "mybase");
 
     std::shared_ptr<ModelRegistration> mybase_mr = std::make_shared<ModelRegistration>(
         base_api,

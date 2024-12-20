@@ -131,7 +131,7 @@ See [module configuration](#module-configuration-details).
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-model-instance-name>",
-  "model": "<namespace>:<repo-name>:<name>",
+  "model": "<namespace>:<module-name>:<model-name>",
   "type": "<your-resource-subtype>",
   "namespace": "<your-module-namespace>",
   "attributes": {
@@ -207,7 +207,7 @@ The config of both a module and a corresponding modular resource resembles the f
   "components": [
     {
       "name": "<your-model-instance-name>",
-      "model": "<module-namespace>:<repo-name>:<name>",
+      "model": "<module-namespace>:<module-name>:<model-name>",
       "type": "<your-resource-subtype>",
       "namespace": "<model-API-namespace>",
       "attributes": {},
