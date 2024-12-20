@@ -755,24 +755,24 @@ class MyBase : public Base {
     static std::vector<std::string> validate(ResourceConfig cfg);
 
     bool is_moving() override;
-    void stop(const AttributeMap& extra) override;
+    void stop(const ProtoStruct& extra) override;
     void set_power(const Vector3& linear,
                    const Vector3& angular,
-                   const AttributeMap& extra) override;
+                   const ProtoStruct& extra) override;
 
-    AttributeMap do_command(const AttributeMap& command) override;
-    std::vector<GeometryConfig> get_geometries(const AttributeMap& extra) override;
-    Base::properties get_properties(const AttributeMap& extra) override;
+    ProtoStruct do_command(const ProtoStruct& command) override;
+    std::vector<GeometryConfig> get_geometries(const ProtoStruct& extra) override;
+    Base::properties get_properties(const ProtoStruct& extra) override;
 
-    void move_straight(int64_t distance_mm, double mm_per_sec, const AttributeMap& extra) override {
+    void move_straight(int64_t distance_mm, double mm_per_sec, const ProtoStruct& extra) override {
         throw std::runtime_error("move_straight unimplemented");
     }
-    void spin(double angle_deg, double degs_per_sec, const AttributeMap& extra) override {
+    void spin(double angle_deg, double degs_per_sec, const ProtoStruct& extra) override {
         throw std::runtime_error("spin unimplemented");
     }
     void set_velocity(const Vector3& linear,
                       const Vector3& angular,
-                      const AttributeMap& extra) override {
+                      const ProtoStruct& extra) override {
         throw std::runtime_error("set_velocity unimplemented");
     }
 
@@ -853,7 +853,7 @@ bool MyBase::is_moving() {
     return left_->is_moving() || right_->is_moving();
 }
 
-void MyBase::stop(const AttributeMap& extra) {
+void MyBase::stop(const ProtoStruct& extra) {
     std::string err_message;
     bool throw_err = false;
 
@@ -878,7 +878,7 @@ void MyBase::stop(const AttributeMap& extra) {
     }
 }
 
-void MyBase::set_power(const Vector3& linear, const Vector3& angular, const AttributeMap& extra) {
+void MyBase::set_power(const Vector3& linear, const Vector3& angular, const ProtoStruct& extra) {
     // Stop the base if absolute value of linear and angular velocity is less
     // than 0.01.
     if (abs(linear.y()) < 0.01 && abs(angular.z()) < 0.01) {
@@ -893,12 +893,12 @@ void MyBase::set_power(const Vector3& linear, const Vector3& angular, const Attr
     right_->set_power(((linear.y() + angular.z()) / sum), extra);
 }
 
-AttributeMap MyBase::do_command(const AttributeMap& command) {
+ProtoStruct MyBase::do_command(const ProtoStruct& command) {
     std::cout << "Received DoCommand request for MyBase " << Resource::name() << std::endl;
     return command;
 }
 
-std::vector<GeometryConfig> MyBase::get_geometries(const AttributeMap& extra) {
+std::vector<GeometryConfig> MyBase::get_geometries(const ProtoStruct& extra) {
     auto left_geometries = left_->get_geometries(extra);
     auto right_geometries = right_->get_geometries(extra);
     std::vector<GeometryConfig> geometries(left_geometries);
@@ -906,7 +906,7 @@ std::vector<GeometryConfig> MyBase::get_geometries(const AttributeMap& extra) {
     return geometries;
 }
 
-Base::properties MyBase::get_properties(const AttributeMap& extra) {
+Base::properties MyBase::get_properties(const ProtoStruct& extra) {
     // Return fake properties.
     return {2, 4, 8};
 }
@@ -915,7 +915,7 @@ Base::properties MyBase::get_properties(const AttributeMap& extra) {
 {{< /expand >}}
 
 When implementing built-in functions from the Viam C++ SDK in your model, be sure your implementation of those functions returns any values designated in the built-in function's return signature, typed correctly.
-For example, the `set_power()` implementation in the example code above returns three values of type `Vector3`, `Vector3`, `AttributeMap`, which matches the return values of the built-in `set_power()` function as defined in the Viam C++ SDK in the file [`base.hpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base.hpp).
+For example, the `set_power()` implementation in the example code above returns three values of type `Vector3`, `Vector3`, `ProtoStruct`, which matches the return values of the built-in `set_power()` function as defined in the Viam C++ SDK in the file [`base.hpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base.hpp).
 
 For more information on the base component API methods used in these examples, see the following resources:
 
