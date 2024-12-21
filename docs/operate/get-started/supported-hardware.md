@@ -15,12 +15,11 @@ Viam also supports various software services such as [data capture](/data-ai/get
 Any hardware that is not already supported by a Viam {{< glossary_tooltip term_id="module" text="module" >}} can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
 You can also create a module to support new software-only functionality.
 
-In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add functionality that has little to do with hardware, for example:
+In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
 
 - [A "camera" that takes a camera feed from a physical camera, and crops it, overlays it, or otherwise transforms the output](/components/camera/transform/)
 - [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
 - [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
-- [A "sensor" that returns all active I2C addresses as sensor readings](https://github.com/michaellee1019/i2cdetect)
 
 These software-only "hardware" modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules.
 
