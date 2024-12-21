@@ -15,7 +15,26 @@ The Flutter SDK includes:
 - Widgets to ease the development process
 - Authentication tools so users can log in securely
 
-## Example usage
+## Install the Flutter SDK
+
+Run the following command in your terminal to install the Viam Flutter SDK:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+flutter pub add viam_sdk
+```
+
+## Connect to your machine
+
+You can find sample connection code on each machine's **CONNECT** tab in the [Viam app](https://app.viam.com).
+Select **Flutter** to display a code snippet with connection code as well as some calls to the APIs of the resources you've configured on your machine.
+
+You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.
+
+## Write your app
+
+Refer to the [Viam Flutter SDK](https://flutter.viam.dev/) documentation for available methods and widgets.
+
+### Example usage
 
 The following code, part of [Drive a rover in a square in 2 minutes](/how-tos/drive-rover/), shows how you could move a robotic rover base in a square using the base API's [`moveStraight`](https://flutter.viam.dev/viam_sdk/Base/moveStraight.html) and [`spin`](https://flutter.viam.dev/viam_sdk/Base/spin.html) methods:
 
@@ -66,8 +85,22 @@ For a more in-depth guide with more screens, see the following guide:
 {{% card link="/tutorials/control/flutter-app/" %}}
 {{< /cards >}}
 
-## Set up authentication
+## Test your app
+
+You can use the mobile app simulator on your development computer to test your app.
+The connection code will establish communication with your machine over LAN or WAN.
+
+## Set up user authentication
 
 Viam uses [FusionAuth](FusionAuth) for authentication and authorization.
 
 Use the [Viam CLI `auth-app` command](/dev/tools/cli/#auth-app) to register your application with FusionAuth so that you or your users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
+
+For support building apps with custom login flows, [contact us](mailto:support@viam.com).
+
+## Next steps
+
+To publish your app to the app stores when you're done testing and adding authentication, see Flutter's articles:
+
+- [iOS](https://docs.flutter.dev/deployment/ios)
+- [Android](https://docs.flutter.dev/deployment/android)

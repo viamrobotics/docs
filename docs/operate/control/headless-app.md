@@ -175,7 +175,6 @@ Sharing this information could compromise your system security by allowing unaut
 
 ## Write your control script
 
-
 For API reference including code snippets for each method, see [Viam's Client APIs](/dev/reference/apis/).
 
 {{< expand "Example code for moving a rover in a square" >}}
@@ -496,7 +495,7 @@ Read and filter a machine's logs to view updates from your machine's `viam-serve
 
 Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
 
-Use the **Filter** input to filter the logs by key terms, and select from the **Levels** dropdown menu to filter the logs by warning level:
+Select from the **Levels** dropdown menu to filter the logs by severity level:
 
 ![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
 
