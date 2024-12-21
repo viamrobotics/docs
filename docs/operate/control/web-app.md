@@ -29,6 +29,8 @@ Select **TypeScript** to display a code snippet, with connection code as well as
 
 You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.
 
+If your code will connect to multiple machines or use [Platform APIs](/dev/reference/apis/#platform-apis) you can create an API key with broader access.
+
 ## Write your app
 
 Refer to the [Viam TypeScript SDK](https://ts.viam.dev/) documentation for available methods.

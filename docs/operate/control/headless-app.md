@@ -86,92 +86,12 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 ## Authenticate
 
-To connect your code to your machine, use the API keys Viam automatically generates for you.
+You can find sample connection code on each machine's **CONNECT** tab in the [Viam app](https://app.viam.com).
+Select your preferred **Language** to display a code snippet, with connection code as well as some calls to the APIs of the resources you've configured on your machine.
 
-1. On your machine's page in the [Viam app](https://app.viam.com), click the **CONNECT** tab.
+You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.
 
-1. Select your preferred programming **Language**.
-   A fully functional code snippet will be displayed, with connection code as well as some calls to the APIs of the resources you've configured on your machine.
-   The machine address (which resembles `12345.somemachine-main.viam.cloud`) auto-populates into the connection code.
-   It is a public address to connect to your machine.
-
-1. Toggle the **Include API key** to auto-populate the API key and API key ID into the code.
-   You can either:
-
-   - Copy the code with the API key in it, **OR**
-   - To reduce the risk of accidentally sharing your API key when collaborating on code, create environment variables for the API key and API key ID, and copy the code with **Include API key** toggled off.
-
-   {{< tabs >}}
-   {{% tab name="Python" %}}
-
-   The `connect()` function will resemble the following:
-
-   ```python {class="line-numbers linkable-line-numbers" data-line="4,7,9"}
-   async def connect():
-       opts = RobotClient.Options.with_api_key(
-           # Replace "<API-KEY>" (including brackets) with your machine's API key
-           api_key='<API-KEY>',
-           # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
-           # ID
-           api_key_id='<API-KEY-ID>'
-       )
-       return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
-   ```
-
-   Copy not just this function but the entire code snippet on the **CONNECT** tab if you'd like to test your connection with some basic API calls.
-
-   {{% /tab %}}
-   {{% tab name="Go" %}}
-
-   The machine connection function will resemble the following:
-
-   ```go {class="line-numbers linkable-line-numbers" data-line="3,7,11"}
-   machine, err := client.New(
-       context.Background(),
-       "ADDRESS FROM THE VIAM APP",
-       logger,
-       client.WithDialOptions(rpc.WithEntityCredentials(
-       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-       "<API-KEY-ID>",
-       rpc.Credentials{
-           Type:    rpc.CredentialsTypeAPIKey,
-           // Replace "<API-KEY>" (including brackets) with your machine's API key
-           Payload: "<API-KEY>",
-       })),
-   )
-   ```
-
-   Copy not just this function but the entire code snippet on the **CONNECT** tab if you'd like to test your connection with some basic API calls.
-
-   {{% /tab %}}
-   {{% tab name="C++" %}}
-
-   The machine connection code will resemble the following:
-
-   ```cpp {class="line-numbers linkable-line-numbers" data-line="1,5,7"}
-   std::string host("ADDRESS FROM THE VIAM APP");
-   DialOptions dial_opts;
-   dial_opts.set_type("api-key");
-   // Replace "<API-KEY-ID>" with your machine's API key ID
-   dial_opts.set_entity("<API-KEY-ID>");
-   // Replace "<API-KEY>" with your machine's API key
-   Credentials credentials("<API-KEY>");
-   dial_opts.set_credentials(credentials);
-   boost::optional<DialOptions> opts(dial_opts);
-   Options options(0, opts);
-
-   auto robot = RobotClient::at_address(host, options);
-   ```
-
-   Copy not just this function but the entire code snippet on the **CONNECT** tab if you'd like to test your connection with some basic API calls.
-
-   {{% /tab %}}
-   {{< /tabs >}}
-
-{{< alert title="Caution" color="caution" >}}
-Do not share your machine part API key or machine address publicly.
-Sharing this information could compromise your system security by allowing unauthorized access to your machine, or to the computer running your machine.
-{{< /alert >}}
+If your code will connect to multiple machines or use [Platform APIs](/dev/reference/apis/#platform-apis) you can create an API key with broader access.
 
 ## Write your control script
 
