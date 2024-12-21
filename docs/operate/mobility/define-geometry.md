@@ -5,5 +5,5 @@ weight: 10
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "Specify your robot's dimensions and how it is positioned in space."
 ---
