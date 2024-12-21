@@ -21,7 +21,7 @@ If you are working with microcontrollers, [`viam-micro-server`](/architecture/vi
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
 `viam-server` then manages and runs the drivers for the configured {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
-Overall, _viam-server_ manages:
+Overall, `viam-server` manages:
 
 - [Communication](#communication)
 - [Dependency management](#dependency-management)

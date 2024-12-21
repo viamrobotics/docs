@@ -13,25 +13,27 @@ overview: true
 {{<imgproc src="/platform-overviews/build-integrate.png" resize="1200x" style="width:800px" class="aligncenter imgzoom" declaredimensions=true alt="ALT">}}
 </p>
 
-{{< how-to-expand "Connect devices" "5" "BEGINNER-FRIENDLY" "light" >}}
+{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "light" >}}
 {{< cards >}}
 {{% card link="/operate/get-started/setup/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/software-capabilities/" noimage="true" %}}
 {{% card link="/operate/get-started/system-settings/" noimage="true" %}}
 
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Build apps" "5" "BEGINNER-FRIENDLY" "middle" >}}
+{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "middle" >}}
 {{< cards >}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/operate/control/mobile-app/" noimage="true" %}}
-{{% card link="/operate/control/mobile-app/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
+
+<!-- unlisting for now
 {{% card link="/operate/control/voice-app/" noimage="true" %}}
 {{% card link="/operate/control/kiosk-app/" noimage="true" %}}
+-->
+
 {{< /cards >}}
 {{< /how-to-expand >}}
 

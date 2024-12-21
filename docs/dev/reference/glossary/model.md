@@ -15,5 +15,5 @@ Regardless, you can power any motor model that implements the `rdk:component:mot
 Models are either included with [`viam-server`](/architecture/viam-server/) or provided through {{< glossary_tooltip term_id="module" text="modules" >}}.
 All models are uniquely namespaced as colon-delimited-triplets.
 Built-in model names have the form `rdk:builtin:name`.
-Modular resource model names have the form `namespace:repo-name:name`.
+Modular resource model names have the form `namespace:module-name:model-name`.
 See [Name your new resource model](/how-tos/create-module/#name-your-new-resource-model) for more information.

@@ -136,7 +136,7 @@ The full code for the modular resource is available on [GitHub](https://github.c
 This is the code for the entry point:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="30"}
-// namespace, repo-name, model
+// namespace, module-name, model
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
 func main() {
@@ -179,7 +179,7 @@ func registerBase() {
 ```
 
 To support this new model of a base that you are creating, you need to give the model a name.
-This tutorial uses the namespace `viamlabs`, an (arbitrary) repo-name called `tutorial` and lastly, the model name `intermode`.
+This tutorial uses the namespace `viamlabs`, an (arbitrary) module-name called `tutorial` and lastly, the model name `intermode`.
 The complete triplet is:
 `viamlabs:tutorial:intermode`.
 
