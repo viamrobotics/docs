@@ -232,7 +232,7 @@ If you have a 100 x 200 image, and you want to crop to a box between the points 
 - `y_max_px`: The y coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
 - `overlay_crop_box`: Set to `true` to not actually carry out the crop, but instead overlay the cropping box on the original image and visualize where the crop would be applied.
 
-### Depth Edges
+### Depth edges
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
@@ -258,7 +258,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 - `low_threshold_pct`: The low threshold value: between 0.0 - 1.0.
 - `blur_radius_px`: The blur radius used to smooth the image before applying the filter.
 
-### Depth Preprocess
+### Depth preprocess
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
 
@@ -278,7 +278,7 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 - None.
 
-### Depth to Pretty
+### Depth to pretty
 
 The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points.
 The actual depth information is lost in the transform.
