@@ -122,8 +122,7 @@ The following attributes are available for `transform` views:
 
 The following are the transformation objects available for the `pipeline`:
 
-{{< tabs >}}
-{{% tab name="Classifications" %}}
+### Classifications
 
 Classifications overlay text from the `GetClassifications` method of the [vision service](/services/vision/) onto the image.
 
@@ -151,11 +150,12 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 - `max_classifications`: _Optional_. The maximum number of classifications to display on the camera stream at any given time. Default: `1`.
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
 
-{{% /tab %}}
-
-{{% tab name="Crop" %}}
+### Crop
 
 The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`).
+
+{{< tabs >}}
+{{% tab name="Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -167,23 +167,72 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
         "x_min_px": <int>,
         "y_min_px": <int>,
         "x_max_px": <int>,
-        "y_max_px": <int>
+        "y_max_px": <int>,
+        "overlay_crop_box": <bool>
       }
     }
   ]
 }
 ```
 
-**Attributes:**
+{{% /tab %}}
+{{% tab name="Coordinate Example" %}}
 
-- `x_min_px`: The x coordinate of the top left point of the rectangular area to crop the image to.
-- `y_min_px`: The y coordinate of the top left point of the rectangular area to crop the image to.
-- `x_max_px`: The x coordinate of the bottom right point of the rectangular area to crop the image to.
-- `y_max_px`: The y coordinate of the bottom right point of the rectangular area to crop the image to.
+If you have a 100 x 200 image, and you want to crop to a box between the points (30, 40) and (60,80), the following would suffice:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "crop",
+      "attributes": {
+        "x_min_px": 30,
+        "y_min_px": 40,
+        "x_max_px": 60,
+        "y_max_px": 80,
+        "overlay_crop_box": false
+      }
+    }
+  ]
+}
+```
 
 {{% /tab %}}
+{{% tab name="Proportion Example" %}}
 
-{{% tab name="Depth Edges" %}}
+If you have a 100 x 200 image, and you want to crop to a box between the points (30, 40) and (60,80), the following would suffice:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "source": "<your-source-camera-name>",
+  "pipeline": [
+    {
+      "type": "crop",
+      "attributes": {
+        "x_min_px": 0.3,
+        "y_min_px": 0.2,
+        "x_max_px": 0.6,
+        "y_max_px": 0.4,
+        "overlay_crop_box": false
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+**Attributes:**
+
+- `x_min_px`: The x coordinate or the relative proportion of the top left point of the rectangular area to crop the image to.
+- `y_min_px`: The y coordinate or the relative proportion of the top left point of the rectangular area to crop the image to.
+- `x_max_px`: The x coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
+- `y_max_px`: The y coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
+- `overlay_crop_box`: Set to `true` to not actually carry out the crop, but instead overlay the cropping box on the original image and visualize where the crop would be applied.
+
+### Depth edges
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
 
@@ -209,8 +258,7 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 - `low_threshold_pct`: The low threshold value: between 0.0 - 1.0.
 - `blur_radius_px`: The blur radius used to smooth the image before applying the filter.
 
-{{% /tab %}}
-{{% tab name="Depth Preprocess" %}}
+### Depth preprocess
 
 Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
 
@@ -230,9 +278,7 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 - None.
 
-{{% /tab %}}
-
-{{% tab name="Depth to Pretty" %}}
+### Depth to pretty
 
 The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points.
 The actual depth information is lost in the transform.
@@ -253,9 +299,7 @@ The actual depth information is lost in the transform.
 
 - None.
 
-{{% /tab %}}
-
-{{% tab name="Detections" %}}
+### Detections
 
 The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/services/vision/).
 
@@ -281,9 +325,7 @@ The Detections transform takes the input image and overlays the detections from 
 - `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
 
-{{% /tab %}}
-
-{{% tab name="Identity"%}}
+### Identity
 
 The Identity transform does nothing to the image.
 You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
@@ -303,9 +345,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 
 - None
 
-{{% /tab %}}
-
-{{% tab name="Overlay" %}}
+### Overlay
 
 Overlays the depth and the color 2D images.
 Useful to debug the alignment of the two images.
@@ -341,9 +381,7 @@ Useful to debug the alignment of the two images.
   - `fx`: The image focal x.
   - `fy`: The image focal y.
 
-{{% /tab %}}
-
-{{% tab name="Resize" %}}
+### Resize
 
 The Resize transform resizes the image to the specified height and width.
 
@@ -367,9 +405,7 @@ The Resize transform resizes the image to the specified height and width.
 - `width_px`: Specify the expected width for the aligned image. Value must be >= 0.
 - `height_px`: Specify the expected width for the aligned image. Value must be >= 0.
 
-{{% /tab %}}
-
-{{% tab name="Rotate" %}}
+### Rotate
 
 The Rotate transformation rotates the image by the angle specified in `angle_deg`. Default: 180 degrees.
 This feature is useful for when the camera is installed upside down or sideways on your machine.
@@ -392,9 +428,7 @@ This feature is useful for when the camera is installed upside down or sideways 
 
 - `angle_deg`: Rotate the image by a specific angle in degrees.
 
-{{% /tab %}}
-
-{{% tab name="Undistort" %}}
+### Undistort
 
 The Undistort transform undistorts the input image according to the intrinsic and distortion parameters specified within the camera parameters.
 Currently only supports a Brown-Conrady model of distortion (20 September 2022).
@@ -443,10 +477,6 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
   - `rk3`: The radial distortion z.
   - `tp1`: The tangential distortion x.
   - `tp2`: The tangential distortion y.
-
-{{% /tab %}}
-
-{{< /tabs >}}
 
 ## Example
 
