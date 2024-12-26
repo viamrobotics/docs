@@ -257,42 +257,6 @@ The Detections transform takes the input image and overlays the detections from 
 - `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
 
-### Overlay
-
-Overlays the depth and the color 2D images.
-Useful to debug the alignment of the two images.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "<your-source-camera-name>",
-  "pipeline": [
-    {
-      "type": "overlay",
-      "attributes": {
-        "intrinsic_parameters": {
-          "width_px": <int>,
-          "height_px": <int>,
-          "ppx": <float>,
-          "ppy": <float>,
-          "fx": <float>,
-          "fy": <float>,
-        }
-      }
-    }
-  ]
-}
-```
-
-**Attributes:**
-
-- `intrinsic_parameters`: The intrinsic parameters of the camera used to do 2D <-> 3D projections.
-  - `width_px`: The width of the image in pixels. Value must be >= 0.
-  - `height_px`: The height of the image in pixels. Value must be >= 0.
-  - `ppx`: The image center x point.
-  - `ppy`: The image center y point.
-  - `fx`: The image focal x.
-  - `fy`: The image focal y.
-
 ### Resize
 
 The Resize transform resizes the image to the specified height and width.
