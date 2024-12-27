@@ -85,6 +85,25 @@ After installing `viam-server` or `viam-micro-server` on your computer or microc
 
    For details on configuring versioning and environment variables for modules, see [Modular Resource and Module Configuration Details](/operate/reference/module-configuration/).
 
+## Add software services to your machine
+
+In addition to hardware driver _{{< glossary_tooltip term_id="component" text="components" >}}_ and abstracted "virtual hardware" components, Viam offers _{{< glossary_tooltip term_id="service" text="services" >}}_ to provide higher-level software capabilities.
+You can read more about the Viam-maintained services and how to configure them in their respective documentation:
+
+- [Data capture and sync](/data-ai/capture-data/capture-sync/)
+- [ML model deployment](/data-ai/ai/deploy/)
+- [Computer vision](/data-ai/ai/run-inference/)
+- Motion planning for various components:
+  - [Robot arm motion](/operate/mobility/move-arm/)
+  - [Mobile robot navigation](/operate/mobility/move-base/)
+
+To add a service to your machine:
+
+1. Click the **+** button on your machine's **CONFIGURE** tab.
+1. Click **Service**, then select from available services.
+   The dropdown list includes services from the Viam Registry as well as the built-in services.
+1. Add required attributes according to the README or other documentation.
+
 ## How modules run
 
 Modules run alongside [`viam-server`](/architecture/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
