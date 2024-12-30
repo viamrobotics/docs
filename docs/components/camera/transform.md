@@ -118,7 +118,6 @@ The following attributes are available for `transform` views:
 | `pipeline` | array | **Required** | Specify an array of transformation objects. |
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. Value must be >= 0.</li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. Value must be >= 0.</li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
-| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
 The following are the transformation objects available for the `pipeline`:
 
@@ -232,73 +231,6 @@ If you have a 100 x 200 image, and you want to crop to a box between the points 
 - `y_max_px`: The y coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
 - `overlay_crop_box`: Set to `true` to not actually carry out the crop, but instead overlay the cropping box on the original image and visualize where the crop would be applied.
 
-### Depth edges
-
-The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "<your-source-camera-name>",
-  "pipeline": [
-    {
-      "type": "depth_edges",
-      "attributes": {
-        "high_threshold_pct": <float>,
-        "low_threshold_pct": <float>,
-        "blur_radius_px": <float>
-      }
-    }
-  ]
-}
-```
-
-**Attributes:**
-
-- `high_threshold_pct`: The high threshold value: between 0.0 - 1.0.
-- `low_threshold_pct`: The low threshold value: between 0.0 - 1.0.
-- `blur_radius_px`: The blur radius used to smooth the image before applying the filter.
-
-### Depth preprocess
-
-Depth Preprocessing applies some basic hole-filling and edge smoothing to a depth map.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "<your-source-camera-name>",
-  "pipeline": [
-    {
-      "type": "depth_preprocess",
-      "attributes": {}
-    }
-  ]
-}
-```
-
-**Attributes:**
-
-- None.
-
-### Depth to pretty
-
-The Depth-to-Pretty transform takes a depth image and turns it into a colorful image, with blue indicating distant points and red indicating nearby points.
-The actual depth information is lost in the transform.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "<your-source-camera-name>",
-  "pipeline": [
-    {
-      "type": "depth_to_pretty",
-      "attributes": {}
-    }
-  ]
-}
-```
-
-**Attributes:**
-
-- None.
-
 ### Detections
 
 The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/services/vision/).
@@ -324,62 +256,6 @@ The Detections transform takes the input image and overlays the detections from 
 - `detector_name`: The name of the detector configured in the [vision service](/services/vision/).
 - `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
-
-### Identity
-
-The Identity transform does nothing to the image.
-You can use this transform to change the underlying camera source's intrinsic parameters or stream type, for example.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "<your-source-camera-name>",
-  "pipeline": [
-    {
-      "type": "identity"
-    }
-  ]
-}
-```
-
-**Attributes:**
-
-- None
-
-### Overlay
-
-Overlays the depth and the color 2D images.
-Useful to debug the alignment of the two images.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "<your-source-camera-name>",
-  "pipeline": [
-    {
-      "type": "overlay",
-      "attributes": {
-        "intrinsic_parameters": {
-          "width_px": <int>,
-          "height_px": <int>,
-          "ppx": <float>,
-          "ppy": <float>,
-          "fx": <float>,
-          "fy": <float>,
-        }
-      }
-    }
-  ]
-}
-```
-
-**Attributes:**
-
-- `intrinsic_parameters`: The intrinsic parameters of the camera used to do 2D <-> 3D projections.
-  - `width_px`: The width of the image in pixels. Value must be >= 0.
-  - `height_px`: The height of the image in pixels. Value must be >= 0.
-  - `ppx`: The image center x point.
-  - `ppy`: The image center y point.
-  - `fx`: The image focal x.
-  - `fy`: The image focal y.
 
 ### Resize
 
@@ -427,74 +303,6 @@ This feature is useful for when the camera is installed upside down or sideways 
 **Attributes:**
 
 - `angle_deg`: Rotate the image by a specific angle in degrees.
-
-### Undistort
-
-The Undistort transform undistorts the input image according to the intrinsic and distortion parameters specified within the camera parameters.
-Currently only supports a Brown-Conrady model of distortion (20 September 2022).
-For further information, please refer to the [OpenCV docs](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a).
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "<your-source-camera-name>",
-  "pipeline": [
-    {
-      "type": "undistort",
-      "attributes": {
-        "intrinsic_parameters": {
-        "width_px": <int>,
-          "height_px": <int>,
-          "ppx": <float>,
-          "ppy": <float>,
-          "fx": <float>,
-          "fy": <float>
-        },
-        "distortion_parameters": {
-          "rk1": <float>,
-          "rk2": <float>,
-          "rk3": <float>,
-          "tp1": <float>,
-          "tp2": <float>
-        }
-      }
-    }
-  ]
-}
-```
-
-**Attributes:**
-
-- `intrinsic_parameters`: The intrinsic parameters of the camera used to do 2D <-> 3D projections.
-  - `width_px`: The expected width of the aligned image in pixels. Value must be >= 0.
-  - `height_px`: The expected height of the aligned image in pixels. Value must be >= 0.
-  - `ppx`: The image center x point.
-  - `ppy`: The image center y point.
-  - `fx`: The image focal x.
-  - `fy`: The image focal y.
-- `distortion_parameters`: Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens.
-  - `rk1`: The radial distortion x.
-  - `rk2`: The radial distortion y.
-  - `rk3`: The radial distortion z.
-  - `tp1`: The tangential distortion x.
-  - `tp2`: The tangential distortion y.
-
-## Example
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "name": "camera_name",
-  "model": "transform",
-  "type": "camera",
-  "namespace": "rdk",
-  "attributes": {
-    "source": "physical_cam",
-    "pipeline": [
-      { "type": "rotate", "attributes": {} },
-      { "type": "resize", "attributes": { "width_px": 200, "height_px": 100 } }
-    ]
-  }
-}
-```
 
 ## View the camera stream
 
