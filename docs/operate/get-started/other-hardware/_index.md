@@ -100,7 +100,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** and copy that string. |
 | Resource to add to the module (API) | The [component API](/appendix/apis/#component-apis) your module will implement. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
-| Enable cloud build | You can select `No` if you will always build the module yourself before uploading it. If you select `Yes` and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. |
+| Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. |
 
 {{< /expand >}}
@@ -752,7 +752,74 @@ Do not change the <code>module_id</code>.</p>
 To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
 
 {{< tabs >}}
-{{% tab name="Python" %}}
+{{% tab name="Python: pyinstaller (recommended)" %}}
+
+The recommended approach for Python is to use [PyInstaller](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
+When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
+
+{{% alert title="Note" color="note" %}}
+To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
+If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
+{{% /alert %}}
+
+To create a packaged executable:
+
+1. First, activate the [Python virtual environment](/sdks/python/python-venv/) the module generator created for you to ensure your module has access to any required libraries.
+   Run the following command from inside your module's directory to activate the virtual environment:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   source venv/bin/activate
+   ```
+
+   Be sure you are within your Python virtual environment for the rest of these steps.
+   Your terminal prompt should include the name of your virtual environment in parentheses.
+
+1. Edit the <file>requirements.txt</file> file, adding PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) to the list of dependencies:
+
+   ```sh { class="command-line" data-prompt="$"}
+   pyinstaller
+   google-api-python-client
+   ```
+
+1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m pip install -r requirements.txt -U
+   ```
+
+1. Then compile your module, adding the Google API Python client as a hidden import:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+   ```
+
+   If you need to include any additional data files to support your module, specify them using the `--add-data` flag:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
+   ```
+
+   By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
+
+We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
+See [Update an existing module using a GitHub action](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
+
+{{% alert title="Note" color="note" %}}
+
+PyInstaller does not support relative imports in entrypoints (imports starting with `.`).
+If you get `"ImportError: attempted relative import with no known parent package"`, set up a stub entrypoint as described on [GitHub](https://github.com/pyinstaller/pyinstaller/issues/2560).
+
+In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
+For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
+Viam makes this easy to manage by providing a build system for modules.
+Follow [these instructions](/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/cli/).
+
+{{% /alert %}}
+
+{{% /tab %}}
+{{% tab name="Python: venv" %}}
+
+You can use the following package and upload method if you opted not to enable cloud build when you ran `viam module generate`.
 
 1.  To package the module as an archive, run the following command from inside the module directory:
 
