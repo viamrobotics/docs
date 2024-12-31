@@ -8,9 +8,21 @@ no_list: true
 description: "Move an arm with joint positions or automated motion planning."
 ---
 
-You can move a robotic arm either with the direct joint position commands of the [arm API](/dev/reference/apis/components/arm/), or with automated complex motion planning using the [motion planning service API](/dev/reference/apis/services/motion/).
+You have two options for moving a robotic arm:
+
+- Use direct joint position commands and simple linear commands with the [arm API](/dev/reference/apis/components/arm/)
+- Use automated complex motion planning with the [motion planning service API](/dev/reference/apis/services/motion/)
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/arm/" %}}
 {{% card link="/dev/reference/apis/services/motion/" %}}
+{{< /cards >}}
+
+## Tutorials and example usage
+
+{{< cards >}}
+{{% card link="/how-tos/move-robot-arm/" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper/" %}}
+{{% card link="/tutorials/services/constrain-motion/" %}}
+{{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}

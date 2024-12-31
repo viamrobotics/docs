@@ -78,7 +78,7 @@ class BaseScreen extends StatelessWidget {
 See the guide for full code and instructions to get started by building a simple app to control a rented Viam rover:
 
 {{< cards >}}
-{{% card link="/tutorials/control/mobile-app/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}
 
 For a more in-depth guide with more screens, see the following guide:
