@@ -1,8 +1,8 @@
 ---
-title: "Plan Motion with an Arm and a Gripper"
-linkTitle: "Plan Motion with an Arm"
+title: "Plan motion with an arm and gripper"
+linkTitle: "Use the motion service"
 type: "docs"
-description: "Use the motion service to move robot arms and other components."
+description: "Use the motion service to move a robot arm and gripper."
 videos:
   [
     "/tutorials/videos/motion_armmoving.webm",
@@ -19,6 +19,8 @@ date: "2023-03-07"
 # updated: ""
 cost: 8400
 no_list: true
+aliases:
+  - /tutorials/services/plan-motion-with-arm-gripper/
 ---
 
 With Viam you can move individual components, like [arms](/components/arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
@@ -55,8 +57,8 @@ This also helps simplify and shorten the code examples presented below.
 
 ## Configure a robot
 
-The [robot configuration from the prior tutorial](/how-tos/move-robot-arm/) should be used for this tutorial.
-We will revisit that robot configuration and add new components during specific sections below.
+Use the robot configuration from the [prerequisite guide](/how-tos/move-robot-arm/) for this tutorial as well.
+We will revisit that robot configuration and add new components.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
 All you need is a robot with a component that can move, such as a robotic arm.
