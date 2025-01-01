@@ -96,6 +96,7 @@ You can read more about the Viam-maintained services and how to configure them i
 - Motion planning for various components:
   - [Robot arm motion](/operate/mobility/move-arm/)
   - [Mobile robot navigation](/operate/mobility/move-base/)
+  - [Gantry motion planning](/operate/mobility/move-gantry/)
 
 To add a service to your machine:
 

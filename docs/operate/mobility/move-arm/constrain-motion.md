@@ -2,6 +2,7 @@
 title: "Add constraints and transforms to a motion plan"
 linkTitle: "Add motion constraints"
 type: "docs"
+weight: 60
 description: "Use constraints and transforms with the motion service."
 videos:
   [

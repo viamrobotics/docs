@@ -2,6 +2,7 @@
 title: "Plan motion with an arm and gripper"
 linkTitle: "Use the motion service"
 type: "docs"
+weight: 40
 description: "Use the motion service to move a robot arm and gripper."
 videos:
   [

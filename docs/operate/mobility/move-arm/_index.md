@@ -8,7 +8,7 @@ no_list: true
 description: "Move an arm with joint positions or automated motion planning."
 ---
 
-You have two options for moving a robotic arm:
+You have two options for moving a robotic [arm](/operate/reference/components/arm/):
 
 - Use direct joint position commands and simple linear commands with the [arm API](/dev/reference/apis/components/arm/)
 - Use automated complex motion planning with the [motion planning service API](/dev/reference/apis/services/motion/)

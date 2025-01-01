@@ -25,7 +25,7 @@ You can run your code directly on the machine's single-board computer (SBC), or 
 
 ### On a separate computer
 
-We recommend running your script on a laptop, desktop, or server if:
+We recommend running your code on a laptop, desktop, or server if:
 
 - You are using computationally-intensive programs involving, for example, computer vision or motion planning, and
 - You have a stable internet connection
@@ -34,7 +34,7 @@ The client code will establish a connection to the instance of `viam-server` on 
 
 ### On the machine itself
 
-We recommend running your script on the SBC that directly controls your hardware if:
+We recommend running your code on the SBC that directly controls your hardware if:
 
 - Your machines have intermittent or no network connectivity, or
 - You want to reduce latency, for example for running [PID control loops](https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller), or
@@ -93,7 +93,7 @@ You can use the toggle to include the machine API key and API key ID, though we 
 
 If your code will connect to multiple machines or use [Platform APIs](/dev/reference/apis/#platform-apis) you can create an API key with broader access.
 
-## Write your control script
+## Write your control code
 
 For API reference including code snippets for each method, see [Viam's Client APIs](/dev/reference/apis/).
 
@@ -335,13 +335,13 @@ if __name__ == '__main__':
 
 {{< /expand >}}
 
-## Run your script
+## Run your code
 
-You can run your script manually from your terminal, or you can automatically run it each time your machine starts.
+You can run your code manually from your terminal, or you can automatically run it each time your machine starts.
 
-### Run your script manually
+### Run your code manually
 
-To run your script on a laptop or desktop, or to run it on your machine's SBC manually for testing purposes, execute the following command in a terminal:
+To run your code on a laptop or desktop, or to run it on your machine's SBC manually for testing purposes, execute the following command in a terminal:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -365,13 +365,13 @@ For information on running C++ code see [the instructions on GitHub](https://git
 {{% /tab %}}
 {{< /tabs >}}
 
-### Run your script as an automatic process
+### Run your code as an automatic process
 
-If you want your script to run each time your machine boots, configure the script as a _{{< glossary_tooltip term_id="process" text="process" >}}_ on your machine.
+If you want your code to run each time your machine boots, configure the code as a _{{< glossary_tooltip term_id="process" text="process" >}}_ on your machine.
 Configured processes are managed by `viam-server` and are a way to run any specified command either once on boot or continuously over the lifecycle of `viam-server`.
 
 {{% alert title="Tip" color="tip" %}}
-If you are running your code from a laptop or desktop, we do not recommend configuring your script to run as a process because doing so will cause the process to run whenever you boot your computer, even when you are using your computer for unrelated purposes.
+If you are running your code from a laptop or desktop, we do not recommend configuring your code to run as a process because doing so will cause the process to run whenever you boot your computer, even when you are using your computer for unrelated purposes.
 {{% /alert %}}
 
 To configure a process, click the **+** button on your machine's **CONFIGURE** tab and select **Process**.

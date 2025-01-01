@@ -5,5 +5,5 @@ weight: 70
 layout: "docs"
 type: "docs"
 no_list: true
-description: "TODO"
+description: "Actuate your machine based on sensor readings or other inputs."
 ---

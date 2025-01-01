@@ -1,7 +1,7 @@
 ---
 title: "Move a robot arm with the arm API"
 linkTitle: "Use the arm API"
-weight: 70
+weight: 20
 type: "docs"
 tags: ["arm", "components"]
 images: ["/how-tos/move_to_position.gif"]
