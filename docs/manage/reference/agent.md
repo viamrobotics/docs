@@ -194,10 +194,9 @@ Edit and fill in the attributes as applicable.
 
 #### Version updates
 
-To avoid unexpected downtime when `viam-server` is updated, you can configure a [Maintenance Window](/
-architecture/viam-server/#maintenance-window).
-With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when ma
-intenance is allowed and when `viam-server` is not currently processing config changes.
+When a new version of `viam-server` becomes available, `viam-agent` will restart and upgrade `viam-server` immediately.
+To limit when `viam-server` can be updated, you can configure a [Maintenance Window](/architecture/viam-server/#maintenance-window).
+With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
 
 #### Fast start mode
 
@@ -275,13 +274,13 @@ The following configuration defines the connection information and credentials f
 
 ### `agent-syscfg`
 
-`agent-syscfg` is a plugin for `viam-agent` which allows you to configure settings for operating system package updates and operating system logging.
+`agent-syscfg` is a plugin for `viam-agent` that allows you to configure logging settings and automated upgrades for packages installed on the operating system.
 
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables `agent-syscfg`. |
-| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: If `false` (default), Viam enforces the given logging configurations. If `true`: Viam does NOT modify logging configuration, and the operating system defaults are used.</li></ul></li><li>`upgrades`: using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with "security" in their codename, ex: `bookworm-security`), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
+| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: If `false` (default), Viam enforces the given logging configurations. If `true`: Viam does NOT modify logging configuration, and the operating system defaults are used.</li></ul></li><li>`upgrades`: using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with an automatically generated Origins-Pattern list that is generated based on that of `50unattended-upgrades`. Custom repos installed on the system at the time the setting is enabled will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with "security" in their codename, ex: `bookworm-security`), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
 
 The following configuration allows all upgrades from configured sources and sets the maximum disk space `journald` will user for persistent log storage to 128MB and the runtime limit to 96MB:
 
