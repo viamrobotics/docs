@@ -60,7 +60,7 @@ Edit and fill in the attributes as applicable.
           "dir": "<pin-number>"
         },
         "ticks_per_rotation": <int>,
-        "stepper_delay": <int>
+        "stepper_delay_usec": <int>
       },
       "depends_on": []
     }
@@ -116,7 +116,7 @@ The following attributes are available for `gpiostepper` motors:
 | `board` | string | **Required** | `name` of the [board](/components/board/) the motor driver is wired to. |
 | `pins` | object | **Required** |  A struct containing the [board](/components/board/) {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} that the `step` and `dir` pins of the motor driver are wired to. |
 | `ticks_per_rotation` | int | **Required** | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. |
-| `stepper_delay` | int | Optional | Time in microseconds to remain high for each step. |
+| `stepper_delay_usec` | int | Optional | Time in microseconds to remain high for each step. Required when using the SetPower API. |
 
 Refer to your motor and motor driver data sheets for specifics.
 
