@@ -167,7 +167,7 @@ The more varied the provided dataset, the more accurate the resulting model beco
 
 {{< /expand >}}
 
-{{< expand "For tips and tricks on improving model accuracy while capturing data, click here." >}}
+## Tips on improving model accuracy
 
 - **More data means better models:** Incorporate as much data as you practically can to improve your model’s overall performance.
 - **Include counterexamples:** Include images with and without the object you’re looking to classify.
@@ -179,9 +179,7 @@ The more varied the provided dataset, the more accurate the resulting model beco
   For example, if you plan to use a low-quality camera in production, train with low-quality images.
   Similarly, if your model will run all day, capture images in both daylight and nighttime conditions.
 - **Vary your angles and distances:** Include image examples from every angle and distance that the model will see in normal use.
-- **Ensure labelling accuracy:** Make sure the labels or bounding box annotations you give are accurate.
-
-{{< /expand >}}
+- **Ensure labeling accuracy:** Make sure the labels or bounding box annotations you give are accurate.
 
 ## Label your images
 
