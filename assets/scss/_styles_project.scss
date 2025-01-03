@@ -60,16 +60,17 @@ a.footnote-ref::after {
 }
 
 h1, .h1 {
-  font-family: Space Mono, sans-serif;
-  font-size: 2.667rem; // 32pt
+  font-family: Space grotesk, sans-serif;
+  font-size: 2.625rem; // 32pt
   margin-left: 0px;
+  font-weight: 500;
 }
 
 h2, .h2 {
-  font-family: space grotesk, sans-serif;
-  font-size: 2.0rem !important; // 24pt
-  line-height: 2.667rem;
-  font-weight: 600;
+  font-family: Public sans, sans-serif;
+  font-size: 1.25rem !important; // 20px
+  line-height: 1.25rem;
+  font-weight: 500;
   clear: both;
 }
 
@@ -162,7 +163,6 @@ h7, .h7 {
 
 .td-toc ul li a {
   font-size: 0.833rem;
-  font-weight: 500;
   color: #333333;
   text-decoration: none;
 }
@@ -274,9 +274,10 @@ footer small {
 
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
+  font-family: "Public Sans light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: normal;
-  font-size: 1rem !important;
-  line-height: 1.5em !important;
+  font-size: 0.938rem !important;
+  line-height: 1.625rem !important;
 }
 
 /*
@@ -351,6 +352,7 @@ END MARKETING CSS
   color: black;
   border: 1px solid black;
   margin-right: 5px;
+  padding: 1rem 1.25rem;
 
   @each $color, $value in $theme-colors {
     &-#{$color} {
@@ -364,8 +366,12 @@ END MARKETING CSS
   }
 }
 
+.alert * ul:last-child, .alert * p:last-child {
+  margin-bottom: 0;
+}
+
 .td-content .alert:not(:first-child) {
-  margin-top: 1.5rem;
+  margin-top: 37px;
   margin-bottom: 1.5rem;
   clear: both;
 }
@@ -450,7 +456,7 @@ END MARKETING CSS
 
 .expand-label {
   background-color: whitesmoke;
-  border: black solid 1px;
+  border: #d9d9d9 solid 1px;
   padding: 0.5rem 1rem 0.5rem 1rem;
   i {
     font-size: inherit !important;
@@ -462,20 +468,25 @@ END MARKETING CSS
 .expand-label span h5 {
   display: inline;
   font-family: Public Sans,system-ui;
+  font-size: 0.938rem !important;
+}
+
+.tablestep * .expand-label, .tablestep * .expand-content {
+  background-color: white !important;
 }
 
 .expand-content {
-  border-top: black solid 0px;
-  border-left: black solid 1px;
-  border-right: black solid 1px;
-  border-bottom: black solid 1px;
+  border-top: #d9d9d9 solid 0px;
+  border-left: #d9d9d9 solid 1px;
+  border-right: #d9d9d9 solid 1px;
+  border-bottom: #d9d9d9 solid 1px;
   background: whitesmoke;
   padding: 1rem;
   overflow: hidden;
 }
 
 .expand {
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
   clear: both;
 }
 
@@ -2150,6 +2161,23 @@ div .filterable > p {
   padding: 1rem;
   overflow: auto;
 }
+
+// Fix tables in steps and expanders
+
+.tablestep > table, .expand-content > table {
+  min-width: 100% !important;
+}
+
+.tablestep > table td, .tablestep > table th, .expand-content > table td, .expand-content > table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.tablestep * tbody > tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
 
 .usecase-table .tablestep:nth-of-type(odd) {
   background-color: whitesmoke;
