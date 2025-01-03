@@ -6,6 +6,7 @@
     margin-right: -15px;
     margin-left: -15px;
     font-size: 1rem;
+    font-weight: 300;
 
     @include media-breakpoint-up(md) {
         @supports (position: sticky) {
@@ -63,7 +64,7 @@
     a, .emptynode {
         display: inline-block;
         padding-bottom: 0.375rem;
-        color: black;
+        color: #333333;
         text-decoration: none;
 
         &:hover {
@@ -96,6 +97,7 @@
 
     li i { // Layout of icons
         padding-right: 0.5em;
+        -webkit-text-stroke: 1px whitesmoke;
         &:before{
             display: inline-block;
             text-align: center;
@@ -170,4 +172,15 @@
 li .indent {
     font-size: 0.833rem;
     padding-left: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .header-only > span > span.emptynode:hover {
+    color: #aaa;
+    }
+
+    .ul-2 > li:not(:last-child) {
+        padding-bottom: 8px;
+        border-bottom: 1px solid #ccc;
+    }
 }
