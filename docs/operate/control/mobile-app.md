@@ -38,7 +38,7 @@ Refer to the [Viam Flutter SDK](https://flutter.viam.dev/) documentation for ava
 
 ### Example usage
 
-The following code, part of [Drive a rover in a square in 2 minutes](/how-tos/drive-rover/), shows how you could move a robotic rover base in a square using the base API's [`moveStraight`](https://flutter.viam.dev/viam_sdk/Base/moveStraight.html) and [`spin`](https://flutter.viam.dev/viam_sdk/Base/spin.html) methods:
+The following code, part of [Drive a rover in a square in 2 minutes](/tutorials/control/drive-rover/), shows how you could move a robotic rover base in a square using the base API's [`moveStraight`](https://flutter.viam.dev/viam_sdk/Base/moveStraight.html) and [`spin`](https://flutter.viam.dev/viam_sdk/Base/spin.html) methods:
 
 ```dart {class="line-numbers linkable-line-numbers"}
 import 'package:flutter/material.dart';
@@ -78,7 +78,7 @@ class BaseScreen extends StatelessWidget {
 See the guide for full code and instructions to get started by building a simple app to control a rented Viam rover:
 
 {{< cards >}}
-{{% card link="/operate/control/mobile-app/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}
 
 For a more in-depth guide with more screens, see the following guide:
