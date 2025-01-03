@@ -18,7 +18,7 @@ a.footnote-ref::after {
 /* START Adjust Heading sizes*/
 
 .td-navbar {
-  background-color: rgb(19,20,20) !important;
+  background-color: white !important;
 }
 
 /* This ensures there is no padding added to the top logo bar */
@@ -40,8 +40,12 @@ a.footnote-ref::after {
   text-transform: uppercase;
   white-space: nowrap;
   a {
-    color: white;
+    color: black;
   }
+}
+
+.navbar-dark .navbar-brand,  {
+  color: black;
 }
 
 .td-navbar .navbar-brand svg {
@@ -245,17 +249,25 @@ p, li {
 
 // START FOOTER STYLING
 
+footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 footer a {
   color: #fff !important;
 }
 
 /* sets the footer to black. */
 .bg-dark {
-  background-color: black !important;
+  background-color: white !important;
 }
 
 footer * small {
-  color: white;
+  color: black;
+}
+
+.text-white, footer a {
+  color: black !important;
 }
 
 /* START no whitespace beneath footer */
@@ -366,8 +378,8 @@ END MARKETING CSS
   }
 }
 
-.alert * ul:last-child, .alert * p:last-child {
-  margin-bottom: 0;
+.alert > ul:last-child, .alert > p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .td-content .alert:not(:first-child) {
@@ -2622,9 +2634,16 @@ nav {
   flex-direction: column;
 }
 
+.navbar {
+  padding: 0;
+}
+
 .navcontainer {
   min-width: 100%;
   display: flex;
+  padding: 0.25rem 1rem;
+  min-height: 50px;
+  background-color: white;
 }
 
 .td-topbar-sections {
@@ -2637,7 +2656,7 @@ nav {
   padding: 0;
   padding-left: 1.25rem;
   margin: 0.25rem 0 0 0;
-  border-left: 1px solid white;
+  border-left: 1px solid black;
 }
 
 .td-topbar-sections > ul > li {
@@ -2650,7 +2669,7 @@ nav {
 }
 
 .td-topbar-sections > ul > li > a {
-  color: white;
+  color: black;
   padding-bottom: 8px;
   padding-top: 8px;
 }
@@ -2659,12 +2678,59 @@ nav {
   text-decoration: none;
 }
 
+.second-nav {
+  background-color: rgb(239,239,242);
+  min-width: 100%;
+  padding: 0.25rem 1rem;
+}
+
+.second-nav > ul {
+  padding: 0;
+  padding-left: 0.25rem;
+  margin: 0.25rem 0 0 0;
+}
+
+.second-nav > ul > li {
+  padding-right: 3rem;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.second-nav > ul > li > a {
+  color: #333;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.second-nav > ul > li > a:hover {
+  text-decoration: none;
+}
+
+.second-nav * .active-path {
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .td-main main {
+      padding-top: 7.5rem;
+  }
+}
+
 .td-navbar {
   min-height: 3.5rem;
 }
 
+@media (max-width: 768px) {
+  .second-nav {
+    display: none;
+  }
+}
+
 .navsectiontop.active-path {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid black;
 }
 
 #navsearch {
