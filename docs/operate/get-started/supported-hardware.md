@@ -93,10 +93,7 @@ You can read more about the Viam-maintained services and how to configure them i
 - [Data capture and sync](/data-ai/capture-data/capture-sync/)
 - [ML model deployment](/data-ai/ai/deploy/)
 - [Computer vision](/data-ai/ai/run-inference/)
-- Motion planning for various components:
-  - [Robot arm motion](/operate/mobility/move-arm/)
-  - [Mobile robot navigation](/operate/mobility/move-base/)
-  - [Gantry motion planning](/operate/mobility/move-gantry/)
+- Motion planning for [robot arm motion](/operate/mobility/move-arm/), [mobile robot navigation](/operate/mobility/move-base/), and [gantry motion planning](/operate/mobility/move-gantry/)
 
 To add a service to your machine:
 

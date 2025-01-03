@@ -22,14 +22,7 @@ cost: "8400"
 
 In this guide you'll use Viam's Python or Go SDK to get the current position of your robot arm and issue movement commands.
 
-{{< alert title="In this page" color="tip" >}}
-
-1. [Access the arm](#access-the-arm)
-1. [Move the arm](#move-the-arm)
-
-{{< /alert >}}
-
-## Requirements
+## Prerequisites
 
 You need the following hardware to complete this tutorial:
 

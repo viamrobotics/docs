@@ -8,7 +8,7 @@ no_list: true
 description: "Specify your robot's dimensions and how it is positioned in space."
 ---
 
-Before you can use the motion planning or navigation services, you need to create a description of your machine's dimensions and how it is positioned relative to its surroundings.
+Before you can use the motion planning or navigation with your machine, you need to create a description of your machine's dimensions and how it is positioned relative to its surroundings.
 The position and orientation readings returned by a component such as an accelerometer or a robot arm have no meaning without a reference frame.
 
 Use Viam's frame system to define a coordinate system for your machine, and configure the geometries of your machine's components.
@@ -105,7 +105,7 @@ This allows `viam-server` to correctly calculate the position of the end of the 
    This is the origin `(0,0,0)` of the arm reference frame.
 1. Measure between these two points.
    For example, if the arm origin is 10 centimeters above the gantry/world origin, the translation is (0.00, 0.00, 0.10).
-1. Configure the gantry reference frame and the arm reference frame as per the instructions in the section above, but set the `parent` of the arm as the gantry, and supply the translation you measured.
+1. Configure the gantry reference frame and the arm reference frame according to the instructions in the section above, but set the `parent` of the arm as the gantry, and supply the translation you measured.
 
 {{< tabs >}}
 {{% tab name="Frame Editor" %}}

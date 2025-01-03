@@ -37,7 +37,7 @@ This may include sensors, cameras, motors, bases, arms, gantries, servos, grippe
 {{% tablestep %}}
 **1. Start building your app**
 
-Depending on your use case, see [Create a web app](/operate/control/web-app/), [Create a mobile app](/operate/control/mobile-app/), or [Create a headless app](/operate/contro/headless-app/) for information on installing an SDK and connecting your code to your machine.
+Depending on your use case, see [Create a web app](/operate/control/web-app/), [Create a mobile app](/operate/control/mobile-app/), or [Create a headless app](/operate/control/headless-app/) for information on installing an SDK and connecting your code to your machine.
 
 {{% /tablestep %}}
 {{% tablestep %}}
