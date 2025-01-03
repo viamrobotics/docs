@@ -34,7 +34,7 @@
 			{{ partial "reading-time.html" . }}
 		{{ end }}
 	</header> -->
-	{{ if not .IsHome }}
+	{{ if and (not .IsHome) (not .Params.noTitle) }}
 	<h1>{{ .Title }}</h1>
 	{{ end }}
 
