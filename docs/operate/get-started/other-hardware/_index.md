@@ -101,7 +101,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Resource to add to the module (API) | The [component API](/appendix/apis/#component-apis) your module will implement. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
-| Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. |
+| Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
 
 {{< /expand >}}
 
@@ -535,7 +535,24 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 **1. Prepare to run your module**
 
 {{< tabs >}}
-{{% tab name="Python" %}}
+{{% tab name="Python: pyinstaller (recommended)" %}}
+{{% alert title="Note" color="note" %}}
+To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
+If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
+{{% /alert %}}
+
+From within the <file>hello-world</file> directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+sh build.sh
+```
+
+This environment is where the local module will run.
+`viam-server` does not need to run inside this environment.
+
+{{% /tab %}}
+{{% tab name="Python: venv" %}}
 
 Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
 
@@ -566,7 +583,26 @@ make build
 On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
 Select **Local module**, then **Local module**.
 
-Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example <file>/Users/jessamy/my-python-sensor-module/run.sh</file> or <file>/Users/artoo/my-go-module/main.go</file>.
+Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example:
+
+{{< tabs >}}
+{{% tab name="Python: pyinstaller (recommended)" %}}
+
+<file>Users/jessamy/my-python-sensor-module/dist/main</file>
+
+{{% /tab %}}
+{{% tab name="Python: venv" %}}
+
+<file>/Users/jessamy/my-python-sensor-module/run.sh</file>
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+<file>/Users/artoo/my-go-module/main.go</file>
+
+{{% /tab %}}
+{{< /tabs >}}
+
 Click **Create**.
 
 {{% /tablestep %}}
@@ -595,14 +631,33 @@ For example, if you created a sensor component, check whether readings are displ
 
 {{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" >}}
 
-If it works, you're almost ready to share your module by uploading it to the registry.
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. Iterate**
+
+If your component works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.
+
+Each time you make changes to your local module, you need to rebuild the module and then restart its instance on your machine.
+Run the following command to rebuild it:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module build local
+```
+
+Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+
 For help, don't hesitate to reach out on the [Community Discord](https://discord.gg/viam).
 
 {{% /tablestep %}}
 {{< /table >}}
 
 ## Upload your module
+
+Once you are done testing locally, you can upload your module to the [Viam Registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
 
 {{< table >}}
 {{% tablestep %}}
@@ -759,47 +814,27 @@ When packaged in this fashion, you can run the resulting executable on your desi
 
 {{% alert title="Note" color="note" %}}
 To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
-If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
 {{% /alert %}}
 
-To create a packaged executable:
+The <file>build.sh</file> script packaged a tarball for you when you ran it before [testing](#test-your-module-locally).
 
-1. First, activate the [Python virtual environment](/sdks/python/python-venv/) the module generator created for you to ensure your module has access to any required libraries.
-   Run the following command from inside your module's directory to activate the virtual environment:
+Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
+If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   source venv/bin/activate
-   ```
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module upload --version 1.0.0 --platform any module.tar.gz
+```
 
-   Be sure you are within your Python virtual environment for the rest of these steps.
-   Your terminal prompt should include the name of your virtual environment in parentheses.
+For details on platform support, see [Using the `--platform` argument](/cli/#using-the---platform-argument).
 
-1. Edit the <file>requirements.txt</file> file, adding PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) to the list of dependencies:
+For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
 
-   ```sh { class="command-line" data-prompt="$"}
-   pyinstaller
-   google-api-python-client
-   ```
-
-1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m pip install -r requirements.txt -U
-   ```
-
-1. Then compile your module, adding the Google API Python client as a hidden import:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-   ```
-
-   If you need to include any additional data files to support your module, specify them using the `--add-data` flag:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
-   ```
-
-   By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
+{{% alert title="Important" color="note" %}}
+The `viam module upload` command only supports one `platform` argument at a time.
+If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
+{{% /alert %}}
 
 We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
 See [Update an existing module using a GitHub action](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
