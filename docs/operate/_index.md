@@ -41,7 +41,10 @@ overview: true
 {{< cards >}}
 {{% card link="/operate/mobility/define-geometry/" noimage="true" %}}
 {{% card link="/operate/mobility/define-obstacles/" noimage="true" %}}
-{{% card link="/operate/mobility/define-dynamic-obstacles/" noimage="true" %}}
+
+<!-- unlisting for now
+{{% card link="/operate/mobility/define-dynamic-obstacles/" noimage="true" %}}-->
+
 {{% card link="/operate/mobility/move-base/" noimage="true" %}}
 {{% card link="/operate/mobility/move-arm/" noimage="true" %}}
 {{% card link="/operate/mobility/move-gantry/" noimage="true" %}}

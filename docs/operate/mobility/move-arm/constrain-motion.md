@@ -1,7 +1,8 @@
 ---
-title: "Add Constraints and Transforms to a Motion Plan"
-linkTitle: "Add Motion Constraints"
+title: "Add constraints and transforms to a motion plan"
+linkTitle: "Add motion constraints"
 type: "docs"
+weight: 60
 description: "Use constraints and transforms with the motion service."
 videos:
   [
@@ -19,6 +20,8 @@ level: "Intermediate"
 date: "2023-07-03"
 # updated: ""
 cost: 8400
+aliases:
+  - /tutorials/services/constrain-motion/
 ---
 
 {{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}
