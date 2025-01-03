@@ -2906,3 +2906,24 @@ a.tree-root {
 
 
 // Next page END
+
+// Platform landing pages START
+
+#fleet-platform-management, #fleet-platform-team, #fleet-platform-monitor {
+  display: none;
+}
+
+.hoverable-fleet:hover ~ #fleet-platform-all, .hoverable-team:hover ~ #fleet-platform-all, .hoverable-monitor:hover ~ #fleet-platform-all {
+  display: none;
+}
+
+.hoverable-fleet:hover ~ #fleet-platform-management, .hoverable-team:hover ~ #fleet-platform-team, .hoverable-monitor:hover ~ #fleet-platform-monitor {
+  display: block !important;
+}
+
+.upside-down {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+// Platform landing pages END
