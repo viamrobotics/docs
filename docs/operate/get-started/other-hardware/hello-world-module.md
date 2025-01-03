@@ -693,10 +693,22 @@ With the implementation written, it's time to test your module locally:
 
 1. Click the **+** button, select **Local module**, then again select **Local module**.
 
-1. Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh`.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+5. Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh` or `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
    Click **Create**.
 
-1. Now add the modular camera resource provided by the module:
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+5. Enter the path to the automatically-generated executable in the <file>/bin/</file> folder, for example, `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
+   Click **Create**.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+6. Now add the modular camera resource provided by the module:
 
    Click **+**, click **Local module**, then click **Local component**.
 

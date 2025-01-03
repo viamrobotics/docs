@@ -583,22 +583,28 @@ make build
 On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
 Select **Local module**, then **Local module**.
 
-Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example:
+Type in the _absolute_ path on your machine's filesystem to your module's executable file:
 
 {{< tabs >}}
 {{% tab name="Python: pyinstaller (recommended)" %}}
+
+Enter the absolute path to the <file>dist/main</file> executable, for example:
 
 <file>Users/jessamy/my-python-sensor-module/dist/main</file>
 
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
+Enter the absolute path to the <file>run.sh</file> script, for example:
+
 <file>/Users/jessamy/my-python-sensor-module/run.sh</file>
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-<file>/Users/artoo/my-go-module/main.go</file>
+Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example:
+
+<file>/Users/artoo/my-go-module/bin/mymodule</file>
 
 {{% /tab %}}
 {{< /tabs >}}
