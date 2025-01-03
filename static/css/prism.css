@@ -117,7 +117,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
   }
 
   .code-toolbar {
-    border: 1px solid black;
+    border: 1px solid #dee2e6;
     background-color: white;
     margin-bottom: 1rem;
   }

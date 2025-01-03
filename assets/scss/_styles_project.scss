@@ -84,26 +84,26 @@ h2, .h2 {
 
 h3, .h3 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.6667rem !important; // 20pt
+  font-size: 1.1667rem !important; // 20pt
   font-weight: 400;
   clear: both;
 }
 
 h4, .h4 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.3333rem !important; // 16pt
+  font-size: 1.0rem !important; // 16pt
   line-height: 1.4375em;
   clear: both;
 }
 
 h5, .h5 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.1667rem !important; // 14pt
+  font-size: 0.933rem !important; // 14pt
   clear: both;
 }
 
 h6, .h6 {
-  font-size: 1.0rem !important;
+  font-size: 0.933rem !important;
   line-height: 1.0625rem; // 12pt
   clear: both;
 }
@@ -505,8 +505,13 @@ END MARKETING CSS
 details * i.fa-chevron-down {
   display: none;
 }
+
 details * i.fa-chevron-right {
   display: unset;
+}
+
+details * i {
+  -webkit-text-stroke: 1px whitesmoke;
 }
 
 details[open] * i.fa-chevron-down {
@@ -649,7 +654,7 @@ details summary::-webkit-details-marker {
 // Hover animations and colors
 
 .hover-card > a, .hover-card > .hovercardcontainer {
-  border: 1px solid #000;
+  border: 1px solid #dee2e6;
   border-radius: 2px;
   padding: 1rem;
   margin: 0px;
@@ -669,7 +674,7 @@ details summary::-webkit-details-marker {
   -webkit-transform: translate(-3px,-3px);
   -ms-transform: translate(-3px,-3px);
   transform: translate(-3px,-3px);
-  box-shadow: 5px 5px 0 0 #000;
+  box-shadow: 5px 5px 0 0 #dee2e6;
 }
 
 .hover-card.yellow:hover > a {
@@ -1067,7 +1072,7 @@ td > ul, td > ol {
   margin-right: -1px;
   border-bottom: 1px solid rgb(209, 213, 219);
   border-top: 1px solid rgb(209, 213, 219);
-  padding: 0.25rem 0.75rem;
+  padding: 0.5rem 1.5rem;
   color: rgb(78, 79, 82);
   background-color: rgb(241, 241, 244);
 }
