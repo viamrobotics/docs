@@ -1460,6 +1460,16 @@ ul.sectionlist {
   padding: 0;
 }
 
+ul.sectionlist.horizontal {
+  display: flex;
+  gap: 50px;
+}
+
+ul.sectionlist.horizontal > li {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 ul.sectionlist > li {
   list-style-type: none;
 }
