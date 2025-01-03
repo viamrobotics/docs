@@ -44,7 +44,11 @@ a.footnote-ref::after {
   }
 }
 
-.navbar-dark .navbar-brand,  {
+.td-navbar .navbar-brand span:last-child {
+  vertical-align: middle;
+}
+
+.navbar-dark .navbar-brand, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
   color: black;
 }
 
