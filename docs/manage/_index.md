@@ -45,9 +45,9 @@ Viam's fleet management tooling allows you to remotely deploy and manage softwar
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-<img src="/platform/platform-fleet-all.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-all" style="width:800px" loading="lazy">
-<img src="/platform/platform-fleet-management.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-management" style="width:800px" loading="lazy">
-<img src="/platform/platform-fleet-team.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-team" style="width:800px" loading="lazy">
-<img src="/platform/platform-fleet-monitor.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-monitor" style="width:800px" loading="lazy">
+<img src="../platform/platform-fleet-all.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-all" style="width:800px" loading="lazy">
+<img src="../platform/platform-fleet-management.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-management" style="width:800px" loading="lazy">
+<img src="../platform/platform-fleet-team.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-team" style="width:800px" loading="lazy">
+<img src="../platform/platform-fleet-monitor.svg" alt="ALT" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-monitor" style="width:800px" loading="lazy">
 
 </div>
