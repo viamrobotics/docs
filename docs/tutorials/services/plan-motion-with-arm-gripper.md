@@ -38,7 +38,7 @@ After following this tutorial, you will be able to:
 
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.us/product/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
 
-The [full tutorial code](#full-tutorial-code) is available at the end of this page.
+The [full code](#full-code) is available at the end of this page.
 
 {{< alert title="Caution" color="caution" >}}
 Be careful when instructing robot arms to move.
@@ -411,7 +411,7 @@ If you would like to continue onto working with Viam's motion service, check out
 
 {{< snippet "social.md" >}}
 
-## Full tutorial code
+## Full code
 
 {{< tabs >}}
 {{% tab name="Python" %}}
