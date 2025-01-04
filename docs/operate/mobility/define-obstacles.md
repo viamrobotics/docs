@@ -37,6 +37,6 @@ See the API documentation for the following methods which can take into account 
 ## Tutorials and example usage
 
 {{< cards >}}
-{{% card link="/operate/mobility/move-arm/constrain-motion/" %}}
+{{% card link="/tutorials/services/constrain-motion/" %}}
 {{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}
