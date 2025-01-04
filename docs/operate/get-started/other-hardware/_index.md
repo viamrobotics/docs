@@ -590,7 +590,7 @@ Type in the _absolute_ path on your machine's filesystem to your module's execut
 
 Enter the absolute path to the <file>dist/main</file> executable, for example:
 
-<file>Users/jessamy/my-python-sensor-module/dist/main</file>
+<file>/Users/jessamy/my-python-sensor-module/dist/main</file>
 
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
@@ -639,7 +639,7 @@ For example, if you created a sensor component, check whether readings are displ
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**4. Iterate**
+**5. Iterate**
 
 If your component works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.

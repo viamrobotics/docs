@@ -4,7 +4,7 @@ title: "Integrate supported hardware"
 weight: 20
 layout: "docs"
 type: "docs"
-no_list: true
+no_list: false
 description: "Use supported hardware with your machine."
 modulescript: true
 ---
@@ -25,7 +25,9 @@ In addition to physical hardware, there are "virtual" hardware modules that do n
 
 These software-only "hardware" modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules.
 
-</details>
+</details><br>
+
+After [setting up your machine's computer](/operate/get-started/setup/), you can start adding supported hardware.
 
 ## Supported hardware
 
