@@ -49,7 +49,7 @@ See [Create a web app](/operate/control/web-app/), [Create a mobile app](/operat
 
 ## Move the arm using the arm API
 
-The two main options for controlling arm movement are through **joint position commands** and through **pose commands**.
+The two main options for controlling arm movement with the arm API are through **joint position commands** and through **pose commands**.
 Joint position commands allow for more detailed control and flexibility instead of commanding movement with the end effector position in a pose command.
 
 {{< alert title="Caution" color="caution" >}}
