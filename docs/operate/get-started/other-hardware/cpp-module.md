@@ -24,15 +24,6 @@ If no [existing modules](/registry/modular-resources/) support your specific use
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/), and then deploy it to your machines.
 
-{{% alert title="In this page" color="tip" %}}
-
-1. [Write a custom module to support a new resource.](#write-a-module)
-1. [Test your module locally.](#test-your-module-locally)
-1. [Upload your module to the modular resource registry.](#upload-your-module-to-the-modular-resource-registry)
-1. [Deploy your module on more machines.](#deploy-your-module-to-more-machines)
-
-{{% /alert %}}
-
 {{< alert title="Note: viam-micro-server modules" color="note" >}}
 [`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.

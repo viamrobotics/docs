@@ -14,6 +14,7 @@ aliases:
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
+next: /data-ai/capture-data/advanced/how-sync-works/
 date: "2024-12-04"
 ---
 
@@ -25,12 +26,6 @@ You can use the [trigger-sync-examples module](https://github.com/viam-labs/trig
 If you need different logic, you can create a modular sensor that determines if the conditions for sync are met or not.
 This page will show you the implementation of a sensor which only allows sync during a defined time interval.
 You can use it as the basis of your own custom logic.
-
-{{% alert title="In this page" color="tip" %}}
-
-{{% toc %}}
-
-{{% /alert %}}
 
 ## Prerequisites
 

@@ -8,6 +8,7 @@ type: "docs"
 platformarea: ["data"]
 description: "TODO"
 date: "2024-12-18"
+prev: "/data-ai/capture-data/conditional-sync/"
 ---
 
 Data capture and cloud sync works differently for `viam-server` and `viam-micro-server`.

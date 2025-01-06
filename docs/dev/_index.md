@@ -20,7 +20,7 @@ noTitle: true
       <div class="cards max-page">
         <div class="front-card-container">
           <div class="hover-card primary">
-            <a href="how-tos/" class="noanchor">
+            <a href="/dev/tools/tutorials/" class="noanchor">
             <div>
               <p>Project Tutorials</p>
             </div>

@@ -4,7 +4,6 @@ title: "Create a headless app"
 weight: 30
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Run control logic on a machine."
 images: ["/general/code.png"]
 aliases:

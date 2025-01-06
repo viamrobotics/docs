@@ -4,8 +4,9 @@ linkTitle: "Integrate other hardware"
 weight: 30
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Add support for more physical or virtual hardware to the Viam ecosystem."
+prev: "/operate/get-started/supported-hardware/"
+next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
 
 If your physical or virtual hardware is not [already supported](../supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
@@ -14,14 +15,6 @@ You can use built-in tools to manage versioning and deployment to machines as yo
 
 This page provides instructions for writing and uploading a module in Python or Go.
 
-{{% alert title="In this page" color="info" %}}
-
-1. [Design your module](#design-your-module)
-1. [Write your module](#write-your-module)
-1. [Test your module locally](#test-your-module-locally)
-1. [Upload your module](#upload-your-module)
-
-{{% /alert %}}
 {{% alert title="See also" color="info" %}}
 
 - [Write a module for microcontrollers (to use alongside viam-micro-server)](./micro-module/)
