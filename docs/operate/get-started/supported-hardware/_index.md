@@ -4,9 +4,11 @@ title: "Integrate supported hardware"
 weight: 20
 layout: "docs"
 type: "docs"
-no_list: false
+#no_list: false
 description: "Use supported hardware with your machine."
 modulescript: true
+prev: "/operate/get-started/setup/"
+next: "/operate/get-started/other-hardware/"
 ---
 
 Viam supports a wide variety of sensors, cameras, and other physical hardware, with APIs for each of the following types of hardware:
