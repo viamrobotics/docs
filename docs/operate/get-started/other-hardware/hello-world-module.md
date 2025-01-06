@@ -20,17 +20,6 @@ This guide will walk you through creating a {{< glossary_tooltip term_id="modula
 This guide also includes optional steps to create a modular sensor that returns random numbers, to demonstrate how you can include two modular resources within one {{< glossary_tooltip term_id="module" text="module" >}}.
 By the end of this guide, you will be able to create your own modular resources and package them into modules so you can use them on your machines.
 
-{{% alert title="In this page" color="tip" %}}
-
-1. [Create a test script](#create-a-test-script)
-1. [Choose an API](#choose-an-api-to-implement)
-1. [Generate code stub files](#generate-stub-files)
-1. [Implement the API methods](#implement-the-api-methods)
-1. [Test your module](#test-your-module)
-1. [Package and upload the module](#package-and-upload-the-module)
-
-{{% /alert %}}
-
 ## Prerequisites
 
 {{< expand "Install the Viam CLI and authenticate" >}}
@@ -693,10 +682,22 @@ With the implementation written, it's time to test your module locally:
 
 1. Click the **+** button, select **Local module**, then again select **Local module**.
 
-1. Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh`.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+5. Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh` or `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
    Click **Create**.
 
-1. Now add the modular camera resource provided by the module:
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+5. Enter the path to the automatically-generated executable in the <file>/bin/</file> folder, for example, `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
+   Click **Create**.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+6. Now add the modular camera resource provided by the module:
 
    Click **+**, click **Local module**, then click **Local component**.
 

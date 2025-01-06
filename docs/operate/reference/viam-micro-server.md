@@ -23,24 +23,22 @@ date: "2024-09-03"
 [Client API](/appendix/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 {{< cards >}}
-{{% relatedcard link="/components/base/" %}}
-{{% relatedcard link="/components/board/" %}}
-{{% relatedcard link="/components/camera/" %}}
-{{% relatedcard link="/components/encoder/" %}}
-{{% relatedcard link="/components/movement-sensor/" %}}
-{{% relatedcard link="/components/motor/" %}}
-{{% relatedcard link="/components/sensor/" %}}
-{{% relatedcard link="/components/servo/" %}}
-{{% relatedcard link="/components/generic/" %}}
-{{% relatedcard link="/services/data/" %}}
+{{% relatedcard link="/dev/reference/apis/components/base/" %}}
+{{% relatedcard link="/dev/reference/apis/components/board/" %}}
+{{% relatedcard link="/dev/reference/apis/components/camera/" %}}
+{{% relatedcard link="/dev/reference/apis/components/encoder/" %}}
+{{% relatedcard link="/dev/reference/apis/components/movement-sensor/" %}}
+{{% relatedcard link="/dev/reference/apis/components/motor/" %}}
+{{% relatedcard link="/dev/reference/apis/components/sensor/" %}}
+{{% relatedcard link="/dev/reference/apis/components/servo/" %}}
+{{% relatedcard link="/dev/reference/apis/components/generic/" %}}
+{{% relatedcard link="/dev/reference/apis/services/data/" %}}
 {{< /cards >}}
-
-Click on each supported resource to see available models, API methods, and configuration info.
 
 ## Next steps
 
 To use `viam-micro-server`, follow the installation guide.
-If you want to access camera functionality, extend the functionality of `viam-micro-server, or customize it see the development setup guide.
+If you want to access camera functionality, extend the functionality of `viam-micro-server`, or customize it see the development setup guide.
 
 {{< cards >}}
 {{% card link="/installation/viam-server-setup/" %}}

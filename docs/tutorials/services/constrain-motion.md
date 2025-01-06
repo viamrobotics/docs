@@ -44,7 +44,7 @@ After following this tutorial, you will be able to:
 
 {{< /alert >}}
 
-The [full tutorial code](#full-tutorial-code) is available at the end of this page.
+The [full code]](#full-code) is available at the end of this page.
 
 {{< alert title="Caution" color="caution" >}}
 Be careful when instructing robot arms to move.
@@ -342,7 +342,7 @@ print("At end pose")
 await my_gripper.open()
 ```
 
-## Full tutorial code
+## Full code
 
 The following code contains everything covered in this tutorial in addition to the `connect()` function, and the resource access code from the last tutorial that you need here as well.
 Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `ADDRESS FROM THE VIAM APP` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.

@@ -4,7 +4,7 @@ title: "Integrate supported hardware"
 weight: 20
 layout: "docs"
 type: "docs"
-no_list: true
+no_list: false
 description: "Use supported hardware with your machine."
 modulescript: true
 ---
@@ -14,18 +14,7 @@ Viam also supports various software services such as [data capture](/data-ai/get
 
 Any hardware that is not already supported by a Viam {{< glossary_tooltip term_id="module" text="module" >}} can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
 
-<details>
-  <summary>You can also create a module to support new software-only functionality.</summary>
-
-In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
-
-- [A "camera" that takes a camera feed from a physical camera, and crops it, overlays it, or otherwise transforms the output](/components/camera/transform/)
-- [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
-- [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
-
-These software-only "hardware" modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules.
-
-</details>
+After [setting up your machine's computer](/operate/get-started/setup/), you can start adding supported hardware.
 
 ## Supported hardware
 
@@ -84,6 +73,16 @@ After installing `viam-server` or `viam-micro-server` on your computer or microc
    If you add a built-in component, there will only be a configuration card for the component.
 
    For details on configuring versioning and environment variables for modules, see [Modular Resource and Module Configuration Details](/operate/reference/module-configuration/).
+
+### Configure virtual hardware components
+
+In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
+
+- [A "camera" that takes a camera feed from a physical camera, and crops it, overlays it, or otherwise transforms the output](/components/camera/transform/)
+- [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
+- [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
+
+These software-only "hardware" modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
 
 ## Add software services to your machine
 

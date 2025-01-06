@@ -13,14 +13,7 @@ You have two options for moving a [gantry](/operate/reference/components/gantry/
 - Move each axis of the gantry directly with the [gantry API](/dev/reference/apis/components/gantry/)
 - Use automated complex motion planning with the [motion planning service API](/dev/reference/apis/services/motion/)
 
-{{< cards >}}
-{{% card link="/dev/reference/apis/components/gantry/" %}}
-{{% card link="/dev/reference/apis/services/motion/" %}}
-{{< /cards >}}
-
-## Usage
-
-### Prerequisites
+## Prerequisites
 
 {{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
 
@@ -28,7 +21,7 @@ You have two options for moving a [gantry](/operate/reference/components/gantry/
 
 {{% /expand%}}
 
-### Steps
+## Configure and connect to your gantry
 
 {{< table >}}
 {{% tablestep link="/operate/reference/components/motor/" %}}
@@ -38,6 +31,7 @@ First, connect the gantry's motors to your machine.
 
 Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Search for and select a model that supports your motor.
 
 Complete the motor configuration and use the **TEST** panel in the configuration card to test that the motor is working.
 
@@ -61,13 +55,11 @@ Select your preferred programming language and copy the code snippet.
 See [Create a web app](/operate/control/web-app/), [Create a mobile app](/operate/control/mobile-app/), or [Create a headless app](/operate/control/headless-app/) for more information, depending on your use case.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Write code to control your gantry**
+{{< /table >}}
 
-{{< expand "Gantry API usage example" >}}
+## Control each axis
 
-The following is an example Python script.
-
+The following is an example Python script using the gantry API.
 For more methods and code snippets in more languages, see [Gantry API](/dev/reference/apis/components/gantry/).
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -112,11 +104,7 @@ if __name__ == '__main__':
 
 ```
 
-{{< /expand >}}
-
-{{< expand "Motion planning API usage example" >}}
-
-The following is an example Python script.
+## Use automated complex motion planning
 
 {{% alert title="Important" color="note" %}}
 
@@ -124,6 +112,7 @@ Before using the motion service with a gantry, you must [define your gantry's re
 
 {{% /alert %}}
 
+The following is an example Python script using the motion planning API.
 For more methods and code snippets in more languages, see [Motion API](/dev/reference/apis/services/motion/).
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -169,14 +158,3 @@ if __name__ == '__main__':
     asyncio.run(main())
 
 ```
-
-{{< /expand >}}
-
-{{% /tablestep %}}
-{{% tablestep link="/operate/reference/components/motor/" %}}
-**5. Run your code**
-
-Make sure your gantry's path is unobstructed, and run your code.
-
-{{% /tablestep %}}
-{{< /table >}}
