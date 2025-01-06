@@ -4,7 +4,6 @@ title: "Integrate supported hardware"
 weight: 20
 layout: "docs"
 type: "docs"
-#no_list: false
 description: "Use supported hardware with your machine."
 modulescript: true
 prev: "/operate/get-started/setup/"
