@@ -17,11 +17,10 @@
         </div>
         <p id="tasks">
           {{- if .IsNamedParams -}}
-          {{.Get "tasks" }}
+          {{.Get "tasks" }} &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp
           {{- else -}}
-          {{.Get 1 }}
+          {{ if .Get 1 }}{{.Get 1 }} &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp{{ end }}
           {{- end -}}
-          &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp
           {{- if .IsNamedParams -}}
           {{.Get "level" }}
           {{- else -}}
