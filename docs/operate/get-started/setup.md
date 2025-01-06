@@ -62,7 +62,7 @@ When you create a new machine in the Viam app, Viam generates a unique set of cr
 
 ### Installation methods: `viam-agent` versus manual
 
-`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/) configuring operating system updates.
+`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/) and configuring operating system updates.
 
 When you set up a Linux device in the Viam app, you'll see an option to install using `viam-agent`, or to manually install only `viam-server`.
 Using `viam-agent` is generally recommended when installing `viam-server` on a single-board computer.
