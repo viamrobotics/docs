@@ -41,13 +41,13 @@ overview: true
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "hoverable-connect" >}}
+{{< how-to-expand "Connect devices" "5" "BEGINNER-FRIENDLY" "" "hoverable-connect" >}}
 {{< cards >}}
 {{% card link="/operate/get-started/setup/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/system-settings/" noimage="true" %}}
-
+{{% card link="/manage/fleet/system-settings/" noimage="true" %}}
+{{% card link="/manage/fleet/reuse-configuration/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

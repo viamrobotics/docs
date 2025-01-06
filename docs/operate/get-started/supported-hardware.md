@@ -9,20 +9,37 @@ description: "Use supported hardware with your machine."
 modulescript: true
 ---
 
-Viam supports a wide variety of sensors, cameras, motors, robotic arms, and other physical hardware.
-Viam also supports various software services such as [data capture](/data-ai/get-started/capture-sync/), [computer vision](/data-ai/ai/create-dataset/), and [motion planning](/operate/mobility/move-arm/), designed to integrate seamlessly with the hardware driver modules.
+Viam supports a wide variety of sensors, cameras, and other physical hardware, with APIs for each of the following types of hardware:
 
-Any hardware that is not already supported by a Viam {{< glossary_tooltip term_id="module" text="module" >}} can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
+{{< cards >}}
+{{% relatedcard link="/dev/reference/apis/components/arm/" %}}
+{{% relatedcard link="/dev/reference/apis/components/base/" %}}
+{{% relatedcard link="/dev/reference/apis/components/board/" %}}
+{{% relatedcard link="/dev/reference/apis/components/camera/" %}}
+{{% relatedcard link="/dev/reference/apis/components/encoder/" %}}
+{{% relatedcard link="/dev/reference/apis/components/gantry/" %}}
+{{% relatedcard link="/dev/reference/apis/components/gripper/" %}}
+{{% relatedcard link="/dev/reference/apis/components/input-controller/" %}}
+{{% relatedcard link="/dev/reference/apis/components/motor/" %}}
+{{% relatedcard link="/dev/reference/apis/components/movement-sensor/" %}}
+{{% relatedcard link="/dev/reference/apis/components/power-sensor/" %}}
+{{% relatedcard link="/dev/reference/apis/components/sensor/" %}}
+{{% relatedcard link="/dev/reference/apis/components/servo/" %}}
+{{< /cards >}}
 
-After [setting up your machine's computer](/operate/get-started/setup/), you can start adding supported hardware.
+These standardized APIs are implemented by {{< glossary_tooltip term_id="module" text="modules" >}} that provide drivers for specific models of hardware.
+
+Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
+
+Viam also supports various software services such as [data capture](/data-ai/get-started/capture-sync/) and [computer vision](/data-ai/ai/create-dataset/), designed to integrate seamlessly with the hardware driver modules.
 
 ## Supported hardware
 
-Many modules are designed to run alongside the full version of [`viam-server`](/operate/get-started/setup/), which runs on 64-bit architectures such as single-board computers and laptop/desktop computers running 64-bit Linux, as well as macOS.
+Many modules are designed to run alongside the full version of [`viam-server`](/operate/reference/viam-server/), which runs on 64-bit architectures such as single-board computers and laptop/desktop computers running 64-bit Linux, as well as macOS.
 
-Other modules are designed to run on microcontrollers alongside `viam-micro-server`.
+Other modules are designed to run on microcontrollers alongside [`viam-micro-server`](/operate/reference/viam-micro-server/).
 
-{{< expand "For use with 64-bit architecture" >}}
+### For use with 64-bit architecture
 
 The following modular components are available for computers and SBCs running `viam-server`.
 
@@ -40,8 +57,7 @@ The Viam Registry is the storage and distribution system for not just hardware m
 You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry?type=Module).
 {{% /alert %}}
 
-{{< /expand >}}
-{{< expand "For use with ESP-32 microcontrollers" >}}
+### For use with ESP-32 microcontrollers
 
 The following is a selection of components (some built-ins and some modules) written for use with `viam-micro-server`.
 To use any of the built-in components, configure them according to their readmes.
@@ -57,11 +73,9 @@ To use a module with `viam-micro-server`, you need to [build firmware that combi
 | `moisture_sensor` | [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
 | `water_pump` | [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
 
-{{< /expand >}}
-
 ## Configure hardware on your machine
 
-After installing `viam-server` or `viam-micro-server` on your computer or microcontroller, you can configure hardware components on your machine's page in the [Viam app](https://app.viam.com):
+After [installing `viam-server` or `viam-micro-server`](/operate/get-started/setup/) on your computer or microcontroller, you can configure hardware components on your machine's page in the [Viam app](https://app.viam.com):
 
 1. Click the **+** button on your machine's **CONFIGURE** tab.
 1. Click **Component**, then select from available components from the Viam Registry (as well as built-in resources).
