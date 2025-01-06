@@ -2919,21 +2919,46 @@ a.tree-root {
 
 // Platform landing pages START
 
-#fleet-platform-management, #fleet-platform-team, #fleet-platform-monitor {
+#fleet-platform-management, #fleet-platform-team, #fleet-platform-monitor, #data-platform-capture, #data-platform-work, #data-platform-ai,
+#build-platform-connect, #build-platform-apps, #build-platform-motion,
+#build-platform, #data-platform, #fleet-platform {
   display: none;
 }
 
-.hoverable-fleet:hover ~ #fleet-platform-all, .hoverable-team:hover ~ #fleet-platform-all, .hoverable-monitor:hover ~ #fleet-platform-all {
+.hoverable-fleet:hover ~ #fleet-platform-all, .hoverable-team:hover ~ #fleet-platform-all, .hoverable-monitor:hover ~ #fleet-platform-all,
+.hoverable-capture:hover ~ #data-platform-all, .hoverable-work:hover ~ #data-platform-all, .hoverable-ai:hover ~ #data-platform-all,
+.hoverable-connect:hover ~ #build-platform-all, .hoverable-apps:hover ~ #build-platform-all, .hoverable-motion:hover ~ #build-platform-all,
+.hoverable-build:hover ~ #platform-all, .hoverable-data:hover ~ #platform-all, .hoverable-fleet:hover ~ #platform-all {
   display: none;
 }
 
-.hoverable-fleet:hover ~ #fleet-platform-management, .hoverable-team:hover ~ #fleet-platform-team, .hoverable-monitor:hover ~ #fleet-platform-monitor {
+.hoverable-fleet:hover ~ #fleet-platform-management, .hoverable-team:hover ~ #fleet-platform-team, .hoverable-monitor:hover ~ #fleet-platform-monitor, .hoverable-capture:hover ~ #data-platform-capture, .hoverable-work:hover ~ #data-platform-work, .hoverable-ai:hover ~ #data-platform-ai,
+.hoverable-connect:hover ~ #build-platform-connect, .hoverable-apps:hover ~ #build-platform-apps, .hoverable-motion:hover ~ #build-platform-motion,
+.hoverable-build:hover ~ #build-platform, .hoverable-data:hover ~ #data-platform, .hoverable-fleet:hover ~ #fleet-platform {
   display: block !important;
 }
 
 .upside-down {
   display: flex;
   flex-direction: column-reverse;
+}
+
+.upside-down.max-page {
+  justify-self: center;
+}
+
+.col-12.col-md-12.col-xl-12.pl-md-12 {
+  display: flex;
+  flex-direction: column;
+}
+
+#rss-feed {
+  align-self: flex-end;
+}
+
+.upside-down > .col.hover-card {
+  min-width: unset;
+  max-width: unset;
 }
 
 // Platform landing pages END
