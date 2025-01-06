@@ -1,7 +1,7 @@
 ---
 title: "Configure Complex Kinematic Chains"
 linkTitle: "Complex Kinematic Chains"
-weight: 50
+weight: 200
 type: "docs"
 description: "Define kinematic parameters to configure intermediate reference frames for components with complex kinematic chains."
 tags: ["slam", "services"]
