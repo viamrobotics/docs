@@ -2961,4 +2961,9 @@ a.tree-root {
   max-width: unset;
 }
 
+.col-12.col-md-12.col-xl-12.pl-md-12 > .td-content {
+  display: flex;
+  justify-content: center;
+}
+
 // Platform landing pages END
