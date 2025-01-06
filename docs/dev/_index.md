@@ -666,11 +666,6 @@ mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
 ```
 
 {{% /tab %}}
-{{% tab name="Viam app" %}}
-
-{{< imgproc src="/services/navigation/navigation-control-card.png" alt="An example control interface for a navigation service in the Viam app Control Tab." resize="1200x" class="imgzoom aligncenter" >}}
-
-{{% /tab %}}
 {{< /tabs >}}
 
 <div class="explanation">
@@ -730,11 +725,6 @@ Get status information and logs from all your deployed machines using the fleet 
 <div class="innertabcontentcontainer">
 
 {{< tabs >}}
-{{% tab name="Viam app" %}}
-
-{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" resize="1200x" class="imgzoom" >}}
-
-{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python

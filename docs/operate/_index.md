@@ -9,35 +9,10 @@ open_on_desktop: true
 overview: true
 ---
 
-<p>
-{{<imgproc src="/platform-overviews/build-integrate.png" resize="1200x" style="width:800px" class="aligncenter imgzoom" declaredimensions=true alt="ALT">}}
-</p>
+<!-- Need to use upside down logic because using Subsequent-sibling combinator -->
+<div class="upside-down">
 
-{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "light" >}}
-{{< cards >}}
-{{% card link="/operate/get-started/setup/" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/system-settings/" noimage="true" %}}
-
-{{< /cards >}}
-{{< /how-to-expand >}}
-
-{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "middle" >}}
-{{< cards >}}
-{{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/operate/control/mobile-app/" noimage="true" %}}
-{{% card link="/operate/control/headless-app/" noimage="true" %}}
-
-<!-- unlisting for now
-{{% card link="/operate/control/voice-app/" noimage="true" %}}
-{{% card link="/operate/control/kiosk-app/" noimage="true" %}}
--->
-
-{{< /cards >}}
-{{< /how-to-expand >}}
-
-{{< how-to-expand "Intelligent actuation and motion planning" "7" "INTERMEDIATE" "dark" >}}
+{{< how-to-expand "Intelligent actuation and motion planning" "7" "INTERMEDIATE" "" "hoverable-motion" >}}
 {{< cards >}}
 {{% card link="/operate/mobility/define-geometry/" noimage="true" %}}
 {{% card link="/operate/mobility/define-obstacles/" noimage="true" %}}
@@ -51,3 +26,34 @@ overview: true
 {{% card link="/operate/mobility/use-input-to-act/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
+
+{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "" "hoverable-apps" >}}
+{{< cards >}}
+{{% card link="/operate/control/web-app/" noimage="true" %}}
+{{% card link="/operate/control/mobile-app/" noimage="true" %}}
+{{% card link="/operate/control/headless-app/" noimage="true" %}}
+
+<!-- unlisting for now
+{{% card link="/operate/control/voice-app/" noimage="true" %}}
+{{% card link="/operate/control/kiosk-app/" noimage="true" %}}
+-->
+
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "hoverable-connect" >}}
+{{< cards >}}
+{{% card link="/operate/get-started/setup/" noimage="true" %}}
+{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
+{{% card link="/operate/get-started/system-settings/" noimage="true" %}}
+
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+<img src="../platform/platform-build-all.svg" alt="Platform diagram with build elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-all" style="width:800px" >
+<img src="../platform/platform-build-connect.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-connect" style="width:800px" >
+<img src="../platform/platform-build-apps.svg" alt="Platform diagram with apps element highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-apps" style="width:800px" >
+<img src="../platform/platform-build-motion.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-motion" style="width:800px" >
+
+</div>

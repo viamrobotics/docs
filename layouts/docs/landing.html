@@ -22,9 +22,7 @@
                     <p><i class="fas fa-rss"></i> RSS Feed</p>
                 </a>
                 </div>
-                <div class="td-content">
-
-                </div>
+                  {{ .Render "content" }}
             </main>
         </div>
         {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
