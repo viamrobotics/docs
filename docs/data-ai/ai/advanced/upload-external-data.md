@@ -16,8 +16,12 @@ description: "Upload data to the Viam app from your local computer or mobile dev
 prev: "/data-ai/ai/act/"
 ---
 
-When you configure the data management service, Viam automatically uploads data from the default directory `~/.viam/capture` or the directory you configured to the cloud at the interval you specify.
-If you want to upload a batch of data from a different source—such as another directory on your machine, your personal computer, or a mobile device—you can use the Viam app, the data client API, or the Viam mobile app to do so.
+When you configure the data management service, Viam automatically uploads data from the default directory `~/.viam/capture` and any directory you configured.
+If you want to upload a batch of data to train ML models on from an external source you can also:
+
+- [Sync a batch of data from another directory](#sync-a-batch-of-data-from-another-directory)
+- [Upload data with Python](#upload-data-with-python)
+- [Upload images from your phone with the Viam mobile app](#upload-images-with-the-viam-mobile-app)
 
 ## Sync a batch of data from another directory
 

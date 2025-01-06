@@ -74,28 +74,5 @@ If your machine's disk fills up beyond a certain threshold, the data management 
 
 {{< /alert >}}
 
-{{< expand "Automatic data deletion details" >}}
-
-If cloud sync is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
-
-With `viam-server`, the data management service will also automatically delete local data in the event your machine's local storage fills up.
-Local data is automatically deleted when _all_ of the following conditions are met:
-
-- Data capture is enabled on the data management service
-- Local disk usage percentage is greater than or equal to 90%
-- The Viam capture directory is at least 50% of the current local disk usage
-
-If local disk usage is greater than or equal to 90%, but the Viam capture directory is not at least 50% of that usage, a warning log message will be emitted instead and no action will be taken.
-
-Automatic file deletion only applies to files in the specified Viam capture directory, which is set to `~/.viam/capture` by default.
-Data outside of this directory is not touched by automatic data deletion.
-
-If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available.
-You can change the capture directory using the `capture_dir` attribute.
-
-You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` attribute.
-
-{{< /expand >}}
-
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
 For more information, see [Capture directly to MongoDB](/data-ai/reference/data/#capture-directly-to-mongodb).

@@ -10,8 +10,10 @@ next: "/data-ai/ai/advanced/upload-external-data/"
 
 You can use the [vision service API](/dev/reference/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
 
-The following are just a few examples of what you can do with the vision service and other components and services.
-Program a line following robot or act in industrial applications like accident prevention or quality assurance.
+The following are examples of what you can do using a vision service alongside hardware:
+
+- [Line following robot](#program-a-line-following-robot): Using computer vision to follow objects or a pre-determined path
+- [Accident prevention and quality assurance](#act-in-industrial-applications)
 
 ## Program a line following robot
 
