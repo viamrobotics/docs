@@ -158,7 +158,7 @@ We have two datasets you can use for testing, one with shapes and the other with
 
 {{< expand "At least 10 captured images of what you want your machine to recognize." >}}
 
-[Capture and sync image data](/data-ai/get-started/capture-sync/) using the data management service.
+[Capture and sync image data](/data-ai/capture-data/capture-sync/) using the data management service.
 
 When training machine learning models, it is important to supply a variety of images.
 The dataset you create should represent the possible range of visual input.

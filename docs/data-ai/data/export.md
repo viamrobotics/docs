@@ -19,7 +19,7 @@ next: "/data-ai/data/advanced/alert-data/"
 
 You can download machine data from cloud storage to your computer with the Viam CLI.
 
-If you prefer to manage your data with code, see the [data client API documentation](/appendix/apis/data-client/).
+If you prefer to manage your data with code, see the [data client API documentation](/dev/reference/apis/data-client/).
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ viam data export --org-ids=<org-id> --data-type=<binary|tabular> --mime-types=<m
 This command uses the Viam CLI to download the data onto your computer based on the search criteria you select in the Viam app.
 
 By default, the command creates two new directories named `data` and `metadata` in the current directory and downloads the specified data into the `data` folder and metadata, like bounding box information and labels, in JSON format into the `metadata` folder.
-If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/cli/#named-arguments).
+If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/dev/tools/cli/#named-arguments).
 
 Once the command has finished running and downloading the data, you can view and use the data locally.
 
@@ -78,4 +78,4 @@ Sort your folder by filename in order to see them in chronological order.
 {{% /tablestep %}}
 {{< /table >}}<br>
 
-You can see more information about exporting data in the [Viam CLI documentation](/cli/#data).
+You can see more information about exporting data in the [Viam CLI documentation](/dev/tools/cli/#data).
