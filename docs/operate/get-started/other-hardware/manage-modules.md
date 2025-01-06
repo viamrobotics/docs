@@ -22,14 +22,6 @@ cost: "0"
 
 After you [create and deploy a module](/how-tos/create-module/), you may need to update or delete it.
 
-{{% alert title="In this page" color="tip" %}}
-
-- [Update an existing module](#update-an-existing-module)
-- [Change the privacy settings of a module](#change-a-module-from-public-to-private)
-- [Delete a module](#delete-a-module)
-
-{{% /alert %}}
-
 For information on pinning module deployments to versions, see [Module versioning](/registry/modular-resources/#module-versioning).
 
 ## Update an existing module

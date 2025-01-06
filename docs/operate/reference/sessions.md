@@ -20,6 +20,7 @@ aliases:
   - /program/apis/sessions/
   - /build/program/apis/sessions/
 date: "2022-01-01"
+no_list: true
 # updated: ""  # When the content was last entirely checked
 ---
 

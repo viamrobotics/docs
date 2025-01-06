@@ -14,6 +14,7 @@ level: "Beginner"
 date: "2024-10-22"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
+prev: "/operate/get-started/other-hardware/"
 ---
 
 This guide will walk you through creating a {{< glossary_tooltip term_id="modular-resource" text="modular" >}} camera component that responds to API calls by returning a configured image.

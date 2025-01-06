@@ -18,23 +18,6 @@ aliases:
 Get started by installing the open-source software that drives your hardware and connects your device to the cloud.
 The easiest way to do this is through the Viam app, so that your machines are automatically connected to configuration and remote operation tools.
 
-## Supported systems
-
-Viam can run on any computer that runs one of the following operating systems:
-
-- Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
-- macOS
-
-Viam also offers a lightweight binary to support the following 32-bit microcontrollers:
-
-- [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
-- [ESP32-WROOM Series](https://www.espressif.com/en/products/modules/esp32) (until v0.1.7)
-
-ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 4MB flash to work with Viam.
-
-Viam can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
-This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
-
 ## Quickstart
 
 {{< expand "Prerequisite: Operating system setup" >}}
@@ -107,3 +90,20 @@ You can change this behavior if desired.
 To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](/installation/manage-viam-agent/).
 
 For manual installs of only `viam-server`, see [Manage `viam-server`](/installation/manage-viam-server/).
+
+## Supported systems
+
+Viam can run on any computer that runs one of the following operating systems:
+
+- Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
+- macOS
+
+Viam also offers a lightweight binary to support the following 32-bit microcontrollers:
+
+- [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
+- [ESP32-WROOM Series](https://www.espressif.com/en/products/modules/esp32) (until v0.1.7)
+
+ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 4MB flash to work with Viam.
+
+Viam can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
+This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.

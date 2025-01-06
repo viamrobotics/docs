@@ -33,10 +33,6 @@ For the arm, you might capture joint positions at 1Hz.
 If your requirements change and you want to capture data from both components at 10Hz, you can change the capture rate at any time in each component's data capture configuration.
 {{< /expand >}}
 
-{{< alert title="In this page" color="note" >}}
-{{% toc %}}
-{{< /alert >}}
-
 ## Configuration
 
 To capture data from one or more machines, you must first [configure the data management service](#data-management-service-configuration).
