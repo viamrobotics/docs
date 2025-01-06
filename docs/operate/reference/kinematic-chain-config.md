@@ -7,6 +7,7 @@ description: "Define kinematic parameters to configure intermediate reference fr
 tags: ["slam", "services"]
 date: "2022-01-01"
 updated: "2024-10-21"
+no_list: true
 # SMEs: Motion
 ---
 

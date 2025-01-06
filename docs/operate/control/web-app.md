@@ -4,7 +4,6 @@ title: "Create a web app"
 weight: 10
 layout: "docs"
 type: "docs"
-no_list: true
 description: "Create a custom user interface for interacting with machines from a browser."
 ---
 
