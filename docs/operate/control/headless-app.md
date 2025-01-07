@@ -13,6 +13,7 @@ aliases:
   - /program/
   - /program/run/
   - /program/debug/
+  - /how-tos/develop-app/
 ---
 
 To write control logic for your machine that will run without a user interface, you can use the Python, Go, or C++ SDK.
