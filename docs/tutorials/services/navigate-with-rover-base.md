@@ -37,7 +37,7 @@ weight: 5
 # SMEs: Ray Bjorkman, Fahmina
 ---
 
-The [navigation service](/services/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
+The [navigation service](/operate/reference/services/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
 You can also add obstacles or set linear and angular velocity targets in your navigation service config.
 Viam's motion planner will plan routes that avoid those obstacles and attempt to keep the robot at your specified velocity.
 
@@ -72,7 +72,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
    3. A [`merged`](/operate/reference/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
    You can use any combo of movement sensors you want as long as you are getting all the types of measurements required.
-   See [the navigation service](/services/navigation/#requirements) for more info on movement sensor requirements.
+   See [the navigation service](/operate/reference/services/navigation/#requirements) for more info on movement sensor requirements.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -461,7 +461,7 @@ To add the navigation service to your robot, do the following:
    ```
 
    Edit the attributes as applicable.
-   Attribute information is available in [the navigation service documentation](/services/navigation/#configuration).
+   Attribute information is available in [the navigation service documentation](/operate/reference/services/navigation/#configuration).
 
 1. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -469,7 +469,7 @@ Your navigation service should now appear in your machine's **CONFIGURE** tab as
 
 ![Navigation Card](/tutorials/navigate-with-rover-base/navigation-config-builder.png)
 
-For more detailed information see [the navigation service](/services/navigation/#configuration).
+For more detailed information see [the navigation service](/operate/reference/services/navigation/#configuration).
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -542,7 +542,7 @@ Your rover will begin navigating between waypoints.
 
 ### Programmatic method
 
-If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/appendix/apis/services/navigation/#addwaypoint):
+If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/dev/reference/apis/services/navigation/#addwaypoint):
 
 #### Add waypoints
 
@@ -577,7 +577,7 @@ await my_nav.add_waypoint(point=location)
 
 #### Begin navigation
 
-To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/appendix/apis/services/navigation/#setmode):
+To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/dev/reference/apis/services/navigation/#setmode):
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -620,9 +620,9 @@ You can alternatively use [`viam:ultrasonic:camera`](https://github.com/viam-mod
 
 {{< /alert >}}
 
-If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/services/vision/#segmentations).
-For example, [configure](/services/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/services/vision/obstacles_depth/) to detect obstacles in front of the robot.
-Then, use one of [Viam's client SDKs](/sdks/) to automate obstacle avoidance with the navigation service like in the following Python program:
+If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/data-ai/reference/vision/#segmentations).
+For example, [configure](/data-ai/reference/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/data-ai/reference/vision/obstacles_depth/) to detect obstacles in front of the robot.
+Then, use one of [Viam's client SDKs](/dev/reference/sdks/) to automate obstacle avoidance with the navigation service like in the following Python program:
 
 {{%expand "Click to view full example of automated obstacle avoidance with the Python SDK" %}}
 

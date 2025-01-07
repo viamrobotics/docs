@@ -11,7 +11,7 @@ If you specify a goal pose and the robot's current position is already within th
 
 You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()` and `ListPlanStatuses()`.
 
-`MoveOnGlobe()` is intended for use with the [navigation service](/services/navigation/), providing autonomous GPS navigation for rover [bases](/operate/reference/components/base/).
+`MoveOnGlobe()` is intended for use with the [navigation service](/operate/reference/services/navigation/), providing autonomous GPS navigation for rover [bases](/operate/reference/components/base/).
 
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the machine.
@@ -29,6 +29,6 @@ The `heading` parameter is experimental.
 Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/services/motion/algorithms/).
 
 Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoGeometry` objects.
-Translation in obstacles is not supported by the [navigation service](/services/navigation/).
+Translation in obstacles is not supported by the [navigation service](/operate/reference/services/navigation/).
 
 {{< /alert >}}

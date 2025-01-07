@@ -38,7 +38,7 @@ Finish the [`viam-micro-server` Development Setup](/installation/viam-micro-serv
 
 {{< alert title="Data management not supported" color="caution" >}}
 
-The `esp32-camera` camera model does not currently support the [data management service](/services/data/).
+The `esp32-camera` camera model does not currently support the [data management service](/data-ai/capture-data/capture-sync/).
 
 {{< /alert >}}
 
@@ -203,5 +203,4 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
-{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}

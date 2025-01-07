@@ -137,7 +137,7 @@ Note that any features that require internet access will not function if the con
 
 You can now use your machine.
 
-If your machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/configure/agent/#networks).
-You can also override other configuration details in the [`viam-agent` configuration](/configure/agent/#configuration).
+If your machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/manage/reference/viam-agent/#networks).
+You can also override other configuration details in the [`viam-agent` configuration](/manage/reference/viam-agent/#configuration).
 
 To control your machine, you can navigate to its **CONTROL** tab in the [Viam app](https://app.viam.com).

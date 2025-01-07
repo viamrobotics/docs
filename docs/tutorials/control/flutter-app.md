@@ -29,7 +29,7 @@ Notes:
 </div>
 
 Flutter is Google's user interface toolkit for building applications for mobile, web, and desktop from a single codebase.
-If you're looking to monitor and control individual machines with the same functionality you have on the [**CONTROL** tab](/fleet/control/), you can use the general-purpose [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) rather than creating your own.
+If you're looking to monitor and control individual machines with the same functionality you have on the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app), you can use the general-purpose [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) rather than creating your own.
 If you need custom functionality or a custom interface, you can use Viam's [Flutter SDK](https://flutter.viam.dev/) to build a custom app to interact with your machines that run on Viam.
 
 This tutorial guides you through creating a mobile app that shows your machines and their components.
@@ -43,7 +43,7 @@ As you work through this project you will learn the following:
 
 You do not need any hardware for this tutorial other than a computer running macOS or a 64-bit Linux operating system.
 
-This tutorial assumes you already have a machine [configured](/configure/) on the [Viam app](https://app.viam.com).
+This tutorial assumes you already have a machine [configured](/operate/get-started/setup/) on the [Viam app](https://app.viam.com).
 
 ## Set up your Flutter development environment
 

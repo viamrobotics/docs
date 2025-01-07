@@ -103,7 +103,7 @@ maintenance : {
 
 ### Logging
 
-Log messages appear under the [**LOGS** tab](/cloud/machines/#logs) for a machine.
+Log messages appear under the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for a machine.
 
 The default log level for `viam-server` and any running resources is `"Info"`.
 

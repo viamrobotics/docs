@@ -7,7 +7,7 @@ type: "docs"
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
 ---
 
-If you have already [deployed a package](/manage/deploy/deploy-package/), you can inspect fragment you have created.
+If you have already [deployed a package](/manage/software/deploy-packages/), you can inspect fragment you have created.
 The JSON object for the deployed package has a `version` field.
 
 As new versions of software modules or ML models become available, you can update the deployed version in one go using the fragment.
@@ -138,7 +138,7 @@ All machines configured with your fragment will update when they next check for 
 
 ## Check machine status
 
-To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/appendix/apis/robot/#getmachinestatus).
+To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/dev/reference/apis/robot/#getmachinestatus).
 
 The following example script iterates over all machines in a given location and if it can connect to the machines, it prints their status information.
 If it cannot connect to a machine, it prints the most recent log entries.

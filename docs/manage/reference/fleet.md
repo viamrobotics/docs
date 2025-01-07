@@ -4,5 +4,5 @@ linkTitle: "Fleet Management API"
 weight: 750
 type: "docs"
 layout: "empty"
-canonical: "/dev/apis/fleet/"
+canonical: "/manage/"
 ---

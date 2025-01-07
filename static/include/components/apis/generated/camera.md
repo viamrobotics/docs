@@ -41,8 +41,6 @@ For example:
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
-my_camera = Camera.from_robot(robot=machine, name="my_camera")
-
 # Get the ViamImage from your camera.
 frame = await my_camera.get_image()
 
@@ -386,8 +384,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the camera in its current configuration, in the [frame](/services/frame-system/) of the camera.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the camera in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the camera.
+The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -16,8 +16,6 @@ toc_hide: true
 The `accel-adxl345` movement sensor model supports the Analog Devices [ADXL345 digital accelerometer](https://www.analog.com/en/products/adxl345.html).
 This three axis accelerometer supplies linear acceleration data, supporting the `LinearAcceleration` method.
 
-If you are using a [Viam Rover](/appendix/try-viam/), this is the accelerometer on it.
-
 Physically connect your movement sensor to your microcontroller and power both on.
 Then, configure the movement sensor:
 

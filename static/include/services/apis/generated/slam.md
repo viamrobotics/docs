@@ -1,6 +1,6 @@
 ### GetPosition
 
-Get the current position of the component the SLAM service is configured to source point cloud data from in the SLAM map as a [`Pose`](/internals/orientation-vector/).
+Get the current position of the component the SLAM service is configured to source point cloud data from in the SLAM map as a [`Pose`](/operate/reference/orientation-vector/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -143,7 +143,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): 
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties):
 Information about the current SLAM session.
 An object containing four fields:
 

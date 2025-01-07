@@ -13,7 +13,7 @@ date: "2022-01-01"
 
 The SLAM service API allows you to get a machine's position within a map.
 
-The [SLAM service](/services/slam/) supports the following methods:
+The [SLAM service](/operate/reference/services/slam/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/slam-table.md" >}}
 

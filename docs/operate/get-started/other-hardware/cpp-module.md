@@ -19,12 +19,12 @@ draft: true # Take out Go and Python, and check updatedness before un-drafting.
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
 If no [existing modules](/registry/modular-resources/) support your specific use case, you can write your own custom modular {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a module, and either upload it to the [Viam Registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
-Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/), and then deploy it to your machines.
+Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/dev/reference/sdks/), and then deploy it to your machines.
 
 {{< alert title="Note: viam-micro-server modules" color="note" >}}
-[`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
+[`viam-micro-server`](/operate/reference/viam-micro-server/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
-You will need to [recompile and flash your ESP32 yourself](/installation/viam-micro-server-setup/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/operate/get-started/setup/) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
@@ -61,7 +61,7 @@ For example, the [sensor API](/dev/reference/apis/components/sensor/) has a `Get
 If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/dev/reference/apis/components/encoder/) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
 
 In addition to the list of methods, another reason to choose one API over another is how certain APIs fit into the Viam ecosystem.
-For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/services/navigation/).
+For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/operate/reference/services/navigation/).
 For this reason, it's generally best to choose the API that most closely matches your hardware or software.
 {{< /expand >}}
 
@@ -69,7 +69,7 @@ For this reason, it's generally best to choose the API that most closely matches
 If you want to write a module to add support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
 - If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/operate/reference/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/services/generic/) to build your own service API.
+- If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/operate/reference/components/generic/) to build your own service API.
 - It is also possible to [define an entirely new API](/registry/advanced/create-subtype/), but this is even more advanced than using `generic`.
 
 Most module use cases, however, benefit from implementing an existing API instead of `generic`.
@@ -126,7 +126,7 @@ The models implement the `rdk:component:arm` and the `rdk:component:gripper` API
 
 A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:module-name:model-name`, where:
 
-- `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
+- `namespace` is the [namespace of your organization](/dev/reference/glossary/organization/#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
     If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam Registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
@@ -174,7 +174,6 @@ Browse additional example modules by language:
 For more Python module examples:
 
 - See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
-- For tutorials featuring modular resource creation, see the [Modular resource examples](/registry/examples/) page.
 - For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
 - For additional examples use the [modular resources search](/registry/modular-resources/) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 
@@ -186,7 +185,7 @@ For more Python module examples:
 | ------ | ---------- | ----------- |
 | [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/dev/reference/apis/components/base/) to support the Agilex Limo base. |
 | [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to support several models of the SLAMTEC RPlidar. |
-| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/how-tos/image-data/) for more information. |
+| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/data-ai/capture-data/filter-before-sync/) for more information. |
 
 For more Go module examples:
 
@@ -1093,7 +1092,7 @@ int main(int argc, char** argv) {
 #### (Optional) Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
-Log messages sent to the Viam app appear under the [**LOGS** tab](/cloud/machines/#logs) for your machine in an easily-parsable and searchable manner.
+Log messages sent to the Viam app appear under the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for your machine in an easily-parsable and searchable manner.
 
 Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
 
@@ -1223,7 +1222,7 @@ When packaged in this fashion, you can run the resulting executable on your desi
 
 To create a packaged executable:
 
-1. First, [create a Python virtual environment](/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+1. First, [create a Python virtual environment](/dev/reference/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parentheses.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
@@ -1333,7 +1332,7 @@ This is the recommended approach for modules written in Python:
 
 Using a virtual environment together with a `requirements.txt` file and a `run.sh` file that references it ensures that your module has access to any packages it requires during runtime.
 If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach handles dependency resolution for each deployment automatically, meaning that there is no need to explicitly determine and install the Python packages your module requires to run on each machine that installs your module.
-See [prepare a Python virtual environment](/sdks/python/python-venv/) for more information.
+See [prepare a Python virtual environment](/dev/reference/sdks/python/python-venv/) for more information.
 
 {{% /tab %}}
 {{% tab name="Python: nuitka" %}}
@@ -1342,7 +1341,7 @@ Use the [`nuitka` Python compiler](https://pypi.org/project/Nuitka/) to compile 
 
 1. In order to use Nuitka, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
 
-1. Then, [create a Python virtual environment](/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+1. Then, [create a Python virtual environment](/dev/reference/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parentheses.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
@@ -1682,6 +1681,5 @@ To read more about module development at Viam, check out these tutorials that cr
 
 {{< cards >}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
-{{% card link="/registry/examples/custom-arm/" %}}
 {{% card link="/tutorials/configure/pet-photographer/" %}}
 {{< /cards >}}

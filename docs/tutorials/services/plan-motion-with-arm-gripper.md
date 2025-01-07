@@ -25,7 +25,7 @@ aliases:
 ---
 
 With Viam you can move individual components, like [arms](/operate/reference/components/arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
-The [motion service](/services/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
+The [motion service](/operate/reference/services/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
 The service abstracts the lower-level commands away so that instead of passing in a series of joint positions, you can call the `Move()` command with the desired destination and any obstacles, and the service will move your machine to the desired location for you.
 
 {{< alert title="Learning Goals" color="info" >}}
@@ -52,13 +52,13 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-Make sure you have mastery of the concepts outlined in the first motion guide, [Access and Move a Robot Arm](/how-tos/move-robot-arm/), before continuing.
+Make sure you have mastery of the concepts outlined in the first motion guide, [Access and Move a Robot Arm](/operate/mobility/move-arm/), before continuing.
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
 ## Configure a robot
 
-Use the robot configuration from the [prerequisite guide](/how-tos/move-robot-arm/) for this tutorial as well.
+Use the robot configuration from the [prerequisite guide](/operate/mobility/move-arm/) for this tutorial as well.
 We will revisit that robot configuration and add new components.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
@@ -105,14 +105,14 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/services/frame-system/).
+The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/operate/mobility/define-geometry/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
 ### Get the `ResourceName`
 
 When you use the [arm API](/dev/reference/apis/components/arm/#api), you call methods on your arm component itself.
-To use the [motion service API](/appendix/apis/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
+To use the [motion service API](/dev/reference/apis/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
 
 Add the following to the section of your code where you access the arm:
 
@@ -239,7 +239,7 @@ Within the app, the **Frame** subtab of your machine's **CONFIGURE** tab gives y
 
 In previous examples you controlled motion of individual components.
 Now you will use the motion service to control the motion of the robot as a whole.
-You will use the motion service's [`Move`](/appendix/apis/services/motion/#move) method to execute more general robotic motion.
+You will use the motion service's [`Move`](/dev/reference/apis/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the motion service takes that information into account when planning.
 
@@ -302,7 +302,7 @@ In this section you will add a new component to your machine.
 One device that is very commonly attached to the end of a robot arm is a [_gripper_](/operate/reference/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
-This is possible because the motion service considers other components of the robot (through the [frame system](/services/frame-system/)) when calculating how to achieve the desired motion.
+This is possible because the motion service considers other components of the robot (through the [frame system](/operate/mobility/define-geometry/)) when calculating how to achieve the desired motion.
 
 ### Add a gripper component
 

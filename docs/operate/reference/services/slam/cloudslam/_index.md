@@ -14,7 +14,7 @@ date: "2022-01-01"
 
 SLAM Algorithms can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms for machines in the cloud as well as management of the maps generated in their location.
 
-CloudSLAM can be used with both a live machine or with previously captured data in your location. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/services/data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
+CloudSLAM can be used with both a live machine or with previously captured data in your location. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/data-ai/capture-data/capture-sync/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
 The CloudSLAM server will then process that data and produce a map that can then be used on any machine in your location.
 When using an [offline machine](#using-previously-captured-data-offline-mode), you can select data from specific sensors over a period of time to build a map with.
 
@@ -72,7 +72,7 @@ To use CloudSLAM you must enable data capture and configure your `cloudslam-wrap
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
 Note that when the [data management service](/services/data/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/#configuration) once you have finished your SLAM session.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#configuration) once you have finished your SLAM session.
 {{< /alert >}}
 
 {{< tabs name="Create new map">}}
@@ -87,7 +87,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
    On the panel that appears, you can manage the capturing and syncing functions.
    You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data.
-   See the [data management service](/services/data/) for more information.
+   See the [data management service](/data-ai/capture-data/capture-sync/) for more information.
 
 2. Enable data capture for your camera, and for your movement sensor if you would like to use IMU data, odometry data, or both:
 
@@ -178,7 +178,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 This example JSON configuration:
 
 - adds the `viam:rplidar`, `viam:cartographer`, and `viam:cloudslam-wrapper` modules
-- configures the `viam:slam:cartographer`, `viam:cloudslam-wrapper:cloudslam`, and the [data management](/services/data/) services
+- configures the `viam:slam:cartographer`, `viam:cloudslam-wrapper:cloudslam`, and the [data management](/data-ai/capture-data/capture-sync/) services
 - adds a `viam:lidar:rplidar` camera with data capture configured
 
   ```json {class="line-numbers linkable-line-numbers"}
@@ -430,8 +430,8 @@ The following attributes are available for `viam:cloudslam-wrapper:cloudslam`
 | `slam_service` | string | **Required** | The name of the SLAM Service on the machine to use with cloudslam. |
 | `api_key` | string | **Required** | An [API key](/cloud/rbac/#api-keys) with location owner or higher permission. |
 | `api_key_id` | string | **Required** | The associated API key ID with the API key. |
-| `organization_id` | string | **Required** | The organization ID of your [organization](/cloud/organizations/). |
-| `location_id` | string | **Required** | The location ID of your [location](/cloud/locations/). |
+| `organization_id` | string | **Required** | The organization ID of your [organization](/dev/reference/glossary/organization/). |
+| `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/location/). |
 | `machine_id` | string | **Required** | The machine ID of your [machine](/dev/reference/apis/fleet/#find-machine-id). |
 | `machine_part_id` | string | Optional | The machine part ID of your [machine part](/dev/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
 | `viam_version` | string | Optional | The version of viam-server to use with CloudSLAM. Defaults to `stable`. |

@@ -38,7 +38,7 @@ However, if you already have a cache of data you'd like to use with Viam, you ca
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management service](/services/data/):
+Add the [data management service](/data-ai/capture-data/capture-sync/#configure-the-data-management-service):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -96,7 +96,7 @@ You can also turn off **Syncing** unless you have other directories you'd like t
 
 ## Upload data with Python
 
-You can use the Python data client API [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam Cloud.
+You can use the Python data client API [`file_upload_from_path`](/dev/reference/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam Cloud.
 
 {{% alert title="Note" color="note" %}}
 
@@ -122,13 +122,13 @@ pip install viam-sdk
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/appendix/apis/data-client/#establish-a-connection" %}}
+{{% tablestep link="/dev/reference/apis/data-client/#establish-a-connection" %}}
 **1. Get API key**
 
 Go to your organization's setting page and create an API key for your individual {{< glossary_tooltip term_id="part" text="machine part" >}}, {{< glossary_tooltip term_id="part" text="machine" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 {{% /tablestep %}}
-{{% tablestep link="/appendix/apis/data-client/" %}}
+{{% tablestep link="/dev/reference/apis/data-client/" %}}
 **2. Add a `file_upload_from_path` API call**
 
 Create a Python script and use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
@@ -136,7 +136,7 @@ Create a Python script and use the `file_upload_from_path` method to upload your
 {{< tabs >}}
 {{< tab name="Upload a single file" >}}
 
-To upload just one file, make a call to [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath).
+To upload just one file, make a call to [`file_upload_from_path`](/dev/reference/apis/data-client/#fileuploadfrompath).
 
 {{< expand "Click this to see example code" >}}
 
@@ -186,7 +186,7 @@ if __name__ == "__main__":
 {{% /tab %}}
 {{< tab name="Upload all files in a directory" >}}
 
-To upload all the files in a directory, you can use the [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop.
+To upload all the files in a directory, you can use the [`file_upload_from_path`](/dev/reference/apis/data-client/#fileuploadfrompath) method inside a `for` loop.
 
 {{< expand "Click this to see example code" >}}
 
@@ -252,7 +252,7 @@ View your uploaded data in your [**DATA** page in the Viam app](https://app.viam
 
 ## Upload images with the Viam mobile app
 
-Upload images as machine data straight from your phone, skipping the normal data capture and cloud synchronization process, through the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
+Upload images as machine data straight from your phone, skipping the normal data capture and cloud synchronization process, through the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app).
 This is useful if you want to capture images for training machine learning models on the go.
 
 ### Prerequisites
@@ -274,7 +274,7 @@ Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-r
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/services/data/" %}}
+{{% tablestep link="/data-ai/capture-data/capture-sync/#configure-the-data-management-service" %}}
 **1. Navigate to your machine**
 
 In the Viam mobile app, select an organization by clicking on the menu icon in the top left corner and tapping an organization.

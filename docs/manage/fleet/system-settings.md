@@ -39,7 +39,7 @@ You can set automatic upgrades for all packages by setting the field value to `{
 Alternatively, you can set automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`), by setting the field value to `{ "type": "security" }`.
 To disable automatic upgrades, set the field value to `{ "type": "disabled" }`.
 
-For complete reference information, see [viam-agent](/configure/agent/#agent-syscfg).
+For complete reference information, see [viam-agent](/manage/reference/viam-agent/#agent-syscfg).
 
 ## Configure networks
 
@@ -84,7 +84,7 @@ If the `fallbackNetOne` is not available or the machine can connect but internet
 }
 ```
 
-For complete reference information, see [viam-agent](/configure/agent/#networks).
+For complete reference information, see [viam-agent](/manage/reference/viam-agent/#networks).
 
 ## Configure operating system logging
 
@@ -92,7 +92,7 @@ By default, the maximum disk space `journald` will use for `viam-server` logs is
 
 To adjust these settings update the `"agent"` value in the machine's JSON configuration.
 
-For complete reference information, see [viam-agent](/configure/agent/#agent-syscfg) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
+For complete reference information, see [viam-agent](/manage/reference/viam-agent/#agent-syscfg) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
 
 ### Set the maximum disk space
 

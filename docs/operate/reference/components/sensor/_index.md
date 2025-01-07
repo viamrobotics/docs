@@ -93,4 +93,4 @@ For general configuration and development info, see:
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
 {{< /cards >}}
 
-To capture data from the sensor, see the [data management service](/services/data/).
+To capture data from the sensor, see the [data management service](/data-ai/capture-data/capture-sync/).
