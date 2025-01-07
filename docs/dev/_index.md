@@ -22,19 +22,19 @@ aliases:
       <div class="cards max-page">
         <div class="front-card-container">
           <div class="hover-card primary">
-            <a href="/dev/tools/tutorials/" class="noanchor">
+            <a href="tools/tutorials/" class="noanchor">
             <div>
               <p>Project Tutorials</p>
             </div>
           </a>
           </div>
           <div class="cta secondary">
-            <a href="platform/" class="noanchor"><div>
+            <a href="tools/cli/" class="noanchor"><div>
             <p>CLI →</p></div>
             </a>
           </div>
           <div class="cta secondary">
-            <a href="platform/" class="noanchor"><div>
+            <a href="reference/apis/" class="noanchor"><div>
             <p>APIs →</p></div>
             </a>
           </div>
@@ -393,7 +393,7 @@ result, err := myButton.DoCommand(context.Background(), command)
 Using the Viam Registry you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
 You can use an existing component or service type or create generic resources.
 
-[Create a module →](/how-tos/hello-world-module/)
+[Create a module →](/operate/get-started/other-hardware/hello-world-module/)
 
   </div>
 </div>

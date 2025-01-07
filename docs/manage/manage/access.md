@@ -105,7 +105,7 @@ After generating a new secret key, update all references to the key in your code
 ## Collaborate safely
 
 When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
-This means everyone who has access can change a fleet's [configuration](machines/#configure), even while your machines are running.
+This means everyone who has access can change a fleet's configuration, even while your machines are running.
 
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
@@ -116,4 +116,4 @@ If you edit a config while someone else edits the same config, the person who sa
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
 
-Machine [configuration](machines/#configure) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Machine [configuration](/operate/get-started/supported-hardware/) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.

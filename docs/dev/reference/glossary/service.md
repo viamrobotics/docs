@@ -8,4 +8,4 @@ Services are built-in software packages for complex capabilities such as Simulta
 
 Each service is typed by a proto API, such as the [service proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
 
-For more information, see [Services](/configure/#services).
+For more information, see [Services](/operate/get-started/supported-hardware/#add-software-services-to-your-machine).

@@ -60,7 +60,7 @@ For example:
 ]
 ```
 
-For more information on setting log levels see, [Logging](/architecture/viam-server/#logging).
+For more information on setting log levels see, [Logging](/manage/troubleshoot/troubleshoot/#check-logs).
 
 To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#machines-alias-robots) on the command line or the [Machines API](/dev/reference/apis/robot/).
 
@@ -68,13 +68,13 @@ To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#
 
 To remotely access your machine from your terminal, add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine.
 
-Once you have added the fragment, you can use the [Viam CLI](/dev/tools/cli) to open a shell on the machine.
+Once you have added the fragment, you can use the [Viam CLI](/dev/tools/cli/) to open a shell on the machine.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
 ```
 
-TODO: You can [access the local log file](/installation/manage-viam-server/#view-viam-server-logs) on your machine if needed.
+TODO: You can [access the local log file](/operate/reference/viam-server/manage-viam-server/#view-viam-server-logs) on your machine if needed.
 
 ## Restart your machine
 

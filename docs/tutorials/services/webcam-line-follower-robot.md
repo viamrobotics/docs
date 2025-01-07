@@ -103,7 +103,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-With [**JSON**](/configure/#the-configure-tab) mode selected on the **CONFIGURE** tab, replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+With **JSON** mode selected on the **CONFIGURE** tab, replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
@@ -269,7 +269,7 @@ Replace the attributes JSON object (`{}`) with the following object which specif
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-With [**JSON** mode](/configure/#the-configure-tab) selected, replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
+With **JSON** mode selected, replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -639,6 +639,6 @@ Things to try:
 - Try a different color of line, or a different background.
   Be sure to update your `detect_color` parameter accordingly.
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
 
 {{< snippet "social.md" >}}

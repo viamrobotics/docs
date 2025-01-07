@@ -185,7 +185,7 @@ On your Linux system, verify each of the following:
 
       The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
 
-  1.  Then, [stop `viam-server`](/installation/manage-viam-server/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
+  1.  Then, [stop `viam-server`](/operate/reference/viam-server/manage-viam-server/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
 
       ```sh {class="command-line" data-prompt="$"}
       v4l2-ctl --stream-count 1 --device /dev/video0
@@ -195,7 +195,7 @@ On your Linux system, verify each of the following:
 
       The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
       If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
-      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage-viam-server/#run-viam-server) first, then re-run the command above.
+      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/operate/reference/viam-server/manage-viam-server/#run-viam-server) first, then re-run the command above.
 
 - Ensure that your camera uses a supported pixel format:
 
@@ -237,7 +237,7 @@ If you are capturing camera data, it can happen that the camera captures and syn
 {{% /expand%}}
 
 {{% expand "CSI Camera not working on a Raspberry Pi" %}}
-If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/installation/prepare/rpi-setup/#enable-communication-protocols).
+If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
 If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
 {{% /expand%}}
 

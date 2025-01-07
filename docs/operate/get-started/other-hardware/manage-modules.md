@@ -133,7 +133,7 @@ jobs:
           token: ${{ github.token }} # only required for private git repos
 ```
 
-The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/how-tos/upload-module/).
+The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/operate/get-started/other-hardware/#upload-your-module).
 At the end of your <file>meta.json</file>, add the build configuration:
 
 <!-- { {< tabs >}}
