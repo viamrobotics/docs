@@ -6,7 +6,6 @@
 | [`ResourceNames`](/appendix/apis/robot/#resourcenames) | Get a list of all known resource names connected to this machine. |
 | [`CancelOperation`](/appendix/apis/robot/#canceloperation) | Cancel the specified operation on the machine. |
 | [`BlockForOperation`](/appendix/apis/robot/#blockforoperation) | Blocks on the specified operation on the machine. |
-| [`DiscoverComponents`](/appendix/apis/robot/#discovercomponents) | Get a list of discovered component configurations. |
 | [`FrameSystemConfig`](/appendix/apis/robot/#framesystemconfig) | Get the configuration of the frame system of a given machine. |
 | [`TransformPose`](/appendix/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
 | [`TransformPCD`](/appendix/apis/robot/#transformpcd) | Transforms the pointcloud to the desired frame in the robot's frame system. |

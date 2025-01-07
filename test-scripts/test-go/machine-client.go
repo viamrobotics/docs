@@ -38,12 +38,6 @@ func main() {
 
 	defer machine.Close(context.Background())
 
-	q := resource.NewDiscoveryQuery(camera.API, resource.Model{Name: "webcam", Family: resource.DefaultModelFamily})
-
-	// Define a list of discovery queries and get potential component configurations with these queries.
-	out, err := machine.DiscoverComponents(context.Background(), []resource.DiscoveryQuery{q})
-	logger.Info(out)
-
 	frameSystem, err := machine.FrameSystemConfig(context.Background())
 	fmt.Println(frameSystem)
 
