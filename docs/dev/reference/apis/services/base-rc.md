@@ -9,7 +9,7 @@ icon: true
 images: ["/services/icons/base-rc.svg"]
 date: "2022-01-01"
 aliases:
-   - /appendix/apis/services/base-rc/
+  - /appendix/apis/services/base-rc/
 # updated: ""  # When the content was last entirely checked
 ---
 

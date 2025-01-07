@@ -9,7 +9,7 @@ open_on_desktop: true
 overview: true
 noTitle: true
 aliases:
-    - /docs/appendix/
+  - /docs/appendix/
 ---
 
 <div class="max-page">
