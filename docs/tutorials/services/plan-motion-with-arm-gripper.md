@@ -24,7 +24,7 @@ aliases:
   - /tutorials/services/plan-motion-with-arm-gripper/
 ---
 
-With Viam you can move individual components, like [arms](/components/arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
+With Viam you can move individual components, like [arms](/operate/reference/components/arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
 The [motion service](/services/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
 The service abstracts the lower-level commands away so that instead of passing in a series of joint positions, you can call the `Move()` command with the desired destination and any obstacles, and the service will move your machine to the desired location for you.
 
@@ -36,7 +36,7 @@ After following this tutorial, you will be able to:
 
 {{< /alert >}}
 
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.us/product/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.us/product/ufactory-xarm-6), but you can use any [arm model](/operate/reference/components/arm/).
 
 The [full code](#full-code) is available at the end of this page.
 
@@ -111,7 +111,7 @@ The `GetPose` method provided by the motion service serves a similar function to
 
 ### Get the `ResourceName`
 
-When you use the [arm API](/appendix/apis/components/arm/#api), you call methods on your arm component itself.
+When you use the [arm API](/dev/reference/apis/components/arm/#api), you call methods on your arm component itself.
 To use the [motion service API](/appendix/apis/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
 
 Add the following to the section of your code where you access the arm:
@@ -299,7 +299,7 @@ if err != nil {
 ## Command other components to move with the motion service
 
 In this section you will add a new component to your machine.
-One device that is very commonly attached to the end of a robot arm is a [_gripper_](/components/gripper/).
+One device that is very commonly attached to the end of a robot arm is a [_gripper_](/operate/reference/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
 This is possible because the motion service considers other components of the robot (through the [frame system](/services/frame-system/)) when calculating how to achieve the desired motion.

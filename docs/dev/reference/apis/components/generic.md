@@ -7,10 +7,12 @@ description: "Give commands for running custom model-specific commands using DoC
 icon: true
 images: ["/icons/components/generic.svg"]
 date: "2022-01-01"
+aliases:
+  - /appendix/apis/components/generic/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The generic API allows you to give commands to your [generic components](/components/generic/) for running model-specific commands using [`DoCommand`](/dev/reference/apis/components/generic/#docommand).
+The generic API allows you to give commands to your [generic components](/operate/reference/components/generic/) for running model-specific commands using [`DoCommand`](/dev/reference/apis/components/generic/#docommand).
 
 The generic component supports the following method:
 

@@ -7,10 +7,12 @@ description: "Commands for controlling the angular position of a servo precisely
 icon: true
 images: ["/icons/components/servo.svg"]
 date: "2022-10-10"
+aliases:
+  - /appendix/apis/components/servo/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The servo API allows you to give commands to your [servo components](/components/servo/) for controlling the angular position of a servo precisely or getting its current status.
+The servo API allows you to give commands to your [servo components](/operate/reference/components/servo/) for controlling the angular position of a servo precisely or getting its current status.
 
 The servo component supports the following methods:
 

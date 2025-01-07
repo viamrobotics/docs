@@ -1,5 +1,5 @@
-Move a [base](/components/base/) component to a destination GPS point, represented in geographic notation _(latitude, longitude)_.
-Use a [movement sensor](/components/movement-sensor/) to check the location of the machine.
+Move a [base](/operate/reference/components/base/) component to a destination GPS point, represented in geographic notation _(latitude, longitude)_.
+Use a [movement sensor](/operate/reference/components/movement-sensor/) to check the location of the machine.
 
 `MoveOnGlobe()` is non blocking, meaning the motion service will move the component to the destination GPS point after `MoveOnGlobe()` returns.
 
@@ -11,12 +11,12 @@ If you specify a goal pose and the robot's current position is already within th
 
 You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()` and `ListPlanStatuses()`.
 
-`MoveOnGlobe()` is intended for use with the [navigation service](/services/navigation/), providing autonomous GPS navigation for rover [bases](/components/base/).
+`MoveOnGlobe()` is intended for use with the [navigation service](/services/navigation/), providing autonomous GPS navigation for rover [bases](/operate/reference/components/base/).
 
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the machine.
 
-Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/dev/reference/apis/components/movement-sensor/).
+Make sure the [movement sensor](/operate/reference/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/dev/reference/apis/components/movement-sensor/).
 
 - It must support `GetPosition()` to report the machine's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the machine is facing.

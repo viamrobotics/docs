@@ -54,9 +54,9 @@ If you wanted to take this tutorial further, you could use these state transitio
 Before following this tutorial, you should:
 
 1. Add a new machine in the [Viam app](https://app.viam.com).
-1. [Install `viam-server`](/installation/viam-server-setup/) on your new machine.
+1. [Install `viam-server`](/operate/get-started/setup/) on your new machine.
 
-Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/).
+Your machine must have a [camera](/operate/reference/components/camera/) component, such as a [webcam](/operate/reference/components/camera/webcam/).
 Make sure to connect your camera to your machine's computer (if it isn't built-in) before starting the project and power it on.
 
 ## Configure a camera
@@ -64,7 +64,7 @@ Make sure to connect your camera to your machine's computer (if it isn't built-i
 Navigate to the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com).
 Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
-Reference [these available models](/components/camera/#configuration).
+Reference [these available models](/operate/reference/components/camera/#configuration).
 
 To configure a `webcam`:
 
@@ -126,7 +126,7 @@ To add the [data management service](/services/data/) and configure data capture
 5. Scroll to the panel of the camera you just configured.
    Find the **Data capture** section.
    Click **Add Method**.
-   If you're using a webcam, select the **Method** type [`ReadImage`](/appendix/apis/components/camera/#getimage).
+   If you're using a webcam, select the **Method** type [`ReadImage`](/dev/reference/apis/components/camera/#getimage).
    Set the **Frequency** to `0.333`.
    This will capture an image from the camera once every 3 seconds.
    Set the **MIME type** to `image/jpeg`.
@@ -143,7 +143,7 @@ For more information, see [configure data capture for individual components](/se
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different method **Type** in your data capture configuration.
-For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/appendix/apis/components/camera/#getimages).
+For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/dev/reference/apis/components/camera/#getimages).
 {{% /alert %}}
 
 Next, position your camera to capture a variety of images of people.
@@ -281,7 +281,7 @@ See the [`verification-system` module documentation](https://github.com/viam-lab
 ## Configure a transform camera
 
 At this point, your machine is fully capable of detecting people in its camera feed, and of identifying whether a specific detected person is "approved" (defined under `"face_labels"`) or not.
-To easily see this in action, you can add a [transform camera](/components/camera/transform/) to your machine to overlay the current state of the on top of the camera feed.
+To easily see this in action, you can add a [transform camera](/operate/reference/components/camera/transform/) to your machine to overlay the current state of the on top of the camera feed.
 
 To add a transform camera to your machine:
 

@@ -23,7 +23,7 @@ Once you have [configured data query](/how-tos/sensor-data-query-with-third-part
 
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
-Only components that capture [sensor](/components/sensor/) readings or other time-series data support data visualization.
+Only components that capture [sensor](/operate/reference/components/sensor/) readings or other time-series data support data visualization.
 
 You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and tags.
 
@@ -41,7 +41,7 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 Before following this tutorial, ensure you have:
 
 - Added a new machine in the [Viam app](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
-- A configured [sensor component](/components/sensor/), such as the [`bme280`](https://github.com/viam-modules/bosch/) sensor, that reports data.
+- A configured [sensor component](/operate/reference/components/sensor/), such as the [`bme280`](https://github.com/viam-modules/bosch/) sensor, that reports data.
   If it's a physical sensor, make sure to connect it to your machine's computer.
 
   - This tutorial uses a dataset of plant moisture measurements, originally captured for our [Plant watering tutorial](/tutorials/projects/make-a-plant-watering-robot/) using an analog resistive soil moisture sensor connected to an analog-to-digital-converter (ADC).
@@ -78,7 +78,7 @@ For more information, see [data management service configuration](/services/data
 ### Configure data capture for a component
 
 Once you have added the data management service, you can configure data capture for specific components on your machine.
-For this tutorial, you will configure data capture for a [sensor](/components/sensor/) component, gathering sensor readings to later visualize in Grafana.
+For this tutorial, you will configure data capture for a [sensor](/operate/reference/components/sensor/) component, gathering sensor readings to later visualize in Grafana.
 Only sensor readings or other time-series data can be visualized in this manner.
 
 To enable data capture for a sensor component:

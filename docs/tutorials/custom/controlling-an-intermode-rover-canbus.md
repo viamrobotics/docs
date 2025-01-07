@@ -39,15 +39,15 @@ Viam supports most rovers with builtin models.
 If your rover is not supported out of the box, this tutorial shows you how to add support for your rover or mobile robot.
 
 To use a rover with the Viam platform, you have to [configure the rover's components](/tutorials/configure/configure-rover/).
-One of the components you need to configure is called a [base](/components/base/), which allows you to control a mobile robot using [commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
+One of the components you need to configure is called a [base](/operate/reference/components/base/), which allows you to control a mobile robot using [commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
 You can think of the base component as an abstraction that coordinates the movement of the motors of your base for you so you can control the higher level object as a base.
 
-For many robotic rovers you can use the [`wheeled`](/components/base/wheeled/) base model.
+For many robotic rovers you can use the [`wheeled`](/operate/reference/components/base/wheeled/) base model.
 Once you specify the circumference of the wheels and how far they are apart, you can then control your rover with the base component.
 
 However, some rovers or other mobile robots do not expose direct motor control.
 For these types of machines, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/appendix/apis/components/base/#api) as you would with builtin Viam components.
+Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/dev/reference/apis/components/base/#api) as you would with builtin Viam components.
 Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/appendix/apis/).
 Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK to issue commands.
 
@@ -76,8 +76,7 @@ The tutorial uses the following hardware:
 ### Machine setup
 
 Before you can use Viam on your device, you must ensure it has a supported operating system.
-If you are using a Raspberry Pi, start by [setting up your Raspberry Pi](/installation/prepare/rpi-setup/).
-For other single-board computers, see the [installation guide](/installation/viam-server-setup/#platform-requirements).
+See [Start a new machine](/operate/get-started/setup/) for platform requirements and instructions.
 
 {{% snippet "setup.md" %}}
 
@@ -117,14 +116,14 @@ You can now power up the rover, which also provides power to your Pi and allows 
 ## A modular resource for the Intermode base
 
 The Viam platform provides [APIs](/appendix/apis/) for common component types within `viam-server`.
-For controlling a mobile robot's movements, the [base component](/components/base/) exposes a useful interface.
+For controlling a mobile robot's movements, the [base component](/operate/reference/components/base/) exposes a useful interface.
 
 In the rest of this tutorial, you'll learn how to use this API to create your own custom modular resource.
 If you want to directly configure this modular resource code with your robot, skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
 
 ### Create a custom model using the Viam RDK base API
 
-The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
+The [base](/operate/reference/components/base/) component exposes an API for controlling a mobile robot’s movements.
 To use it for the Intermode rover, you must create a new {{< glossary_tooltip term_id="model" text="model" >}} with its own implementation of each method.
 
 Generally modular resources are made up of two parts:
@@ -185,10 +184,10 @@ The complete triplet is:
 
 The entry point code defines the model name and then registers it with `viam-server`.
 When registering it, the code also provides the API that the new model supports.
-That means in this case that the base should support the default [base API](/appendix/apis/components/base/#api) with methods such as `MoveStraight` and `Spin`.
+That means in this case that the base should support the default [base API](/dev/reference/apis/components/base/#api) with methods such as `MoveStraight` and `Spin`.
 
 The **API** of any Viam resource is also represented as colon-separated triplets where the first element is a namespace.
-Since you are using the default Viam API for a [base](/components/base/), the [API](/how-tos/create-module/#valid-api-identifiers) you are using is:
+Since you are using the default Viam API for a [base](/operate/reference/components/base/), the [API](/how-tos/create-module/#valid-api-identifiers) you are using is:
 `rdk:component:base`.
 In the code this is specified on line 30 as `base.Subtype`.
 
@@ -307,7 +306,7 @@ Now that `viam-server` can find the module, you can add the base component it pr
 
 1. On the **Create** menu for a **Local component**:
 
-   - Select the type of modular resource provided by your module: [base](/components/base/), from the dropdown menu.
+   - Select the type of modular resource provided by your module: [base](/operate/reference/components/base/), from the dropdown menu.
    - Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}: `viamlabs:tutorial:intermode`.
    - Enter a name for this instance of your base, for example `base-1`.
      This name must be different from the module name.
@@ -341,7 +340,7 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 ## Next steps
 
 Now that you have integrated your rover or mobile base with Viam, you can use the [Viam SDKs](/sdks/) to operate your rover.
-If your rover has a [`camera`](/components/camera/) or a [`movement_sensor`](/components/movement-sensor/), you can try the following tutorials:
+If your rover has a [`camera`](/operate/reference/components/camera/) or a [`movement_sensor`](/operate/reference/components/movement-sensor/), you can try the following tutorials:
 
 {{< cards >}}
 {{% card link="/how-tos/drive-rover/" %}}

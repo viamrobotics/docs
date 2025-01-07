@@ -94,7 +94,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like instructions to sauté onions.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
-  For example, the [Installation page](/installation/viam-server-setup/) or the [Find module page](/registry/modular-resources/).
+  For example, the [Installation page](/operate/get-started/setup/) or the [Find module page](/registry/modular-resources/).
 
   {{< expand "Click to view template" >}}
 
@@ -159,7 +159,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{< /expand >}}
 
 - **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
-  Examples include the [API pages](/appendix/apis/) as well as [component and service pages](/components/arm/).
+  Examples include the [API pages](/appendix/apis/) as well as [component and service pages](/operate/reference/components/arm/).
 
   Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/components/component/_index.md).
 

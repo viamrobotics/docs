@@ -53,8 +53,8 @@ To build your own line follower robot, you need the following hardware:
 <!-- prettier-ignore -->
 | Hardware | Avg. price |
 | -------- | ----------------- |
-| **A single-board computer**: This tutorial uses a Raspberry Pi 4. If you use a different single-board computer, choose the [model that supports your board](/components/board/#configuration) when you [configure your board component](#configure-your-components). | $60 |
-| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. Make sure to assemble this rover. | $99+ |
+| **A single-board computer**: This tutorial uses a Raspberry Pi 4. If you use a different single-board computer, choose the [model that supports your board](/operate/reference/components/board/#configuration) when you [configure your board component](#configure-your-components). | $60 |
+| **A wheeled [base component](/operate/reference/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. Make sure to assemble this rover. | $99+ |
 | **RGB camera**: A common off-the-shelf webcam (such as the [EMEET C690](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera on the front of the rover, pointing down towards the floor.** | $30 |
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
@@ -74,20 +74,20 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 
    Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `board`, and select the `pi` model.
-   Enter `local` as the name of your [board component](/components/board/), then click **Create**.
+   Enter `local` as the name of your [board component](/operate/reference/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
    Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `motor`, and select the `gpio` model.
-   Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
+   Enter `leftm` as the name of your [motor component](/operate/reference/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
    Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
    Click the **+** (Create) (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `base`, and select the `wheeled` model.
-   Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
+   Enter `scuttlebase` as the name for your [base component](/operate/reference/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
@@ -107,7 +107,7 @@ With [**JSON**](/configure/#the-configure-tab) mode selected on the **CONFIGURE*
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
-To find yours, follow [these instructions](/components/camera/webcam/#using-video_path).
+To find yours, follow [these instructions](/operate/reference/components/camera/webcam/#using-video_path).
 {{< /alert >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -239,11 +239,11 @@ We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrica
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/components/camera/transform/).
+If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/operate/reference/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
-Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Add a [transform camera](/operate/reference/components/camera/transform/) with type `camera` and model `transform`.
 Name it `transform_cam` and click **Create**.
 
 Click **{}** (Switch to advanced) in the top right of the camera's configuration panel to switch to advanced mode.
