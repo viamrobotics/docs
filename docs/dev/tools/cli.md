@@ -17,7 +17,7 @@ date: "2024-08-23"
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
-- Retrieve [organization](/dev/reference/glossary/organizaion/) and location information
+- Retrieve [organization](/dev/reference/glossary/organization/) and location information
 - Manage [machine fleet](/fleet/) data and logs
 - Control machines by issuing component and service commands
 - Upload and manage modular resources in the [Viam Registry](https://app.viam.com/registry/)

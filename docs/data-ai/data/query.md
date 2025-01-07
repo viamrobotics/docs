@@ -9,6 +9,7 @@ aliases:
   - /data/query/
   - /use-cases/sensor-data-query/
   - /use-cases/sensor-data-query-with-third-party-tools/
+  - /how-tos/sensor-data-query-with-third-party-tools/
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "core"]

@@ -7,8 +7,10 @@ description: "This model takes 2D bounding boxes from an object detector and pro
 service_description: "A segmenter that takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
-  - "/services/vision/segmentation/"
+  - /services/vision/segmentation/
   - /ml/vision/detector_3d_segmenter/
+  - /services/vision/detector_3d_segmenter/
+  - /data-ai/services/vision/detector_3d_segmenter/
 # SMEs: Bijan, Khari
 ---
 

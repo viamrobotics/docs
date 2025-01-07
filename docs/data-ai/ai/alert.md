@@ -35,7 +35,7 @@ Follow the instructions to [configure a camera](/operate/reference/components/ca
 
 Your physical camera is working and your vision service is set up.
 Now you will pull them together to filter out only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
-This camera module takes the vision service and applies it to your webcam feed, filtering the output so that later, when you configure data management, you can save only the images that contain people without hard hats rather than all images the camera captures.
+This camera module takes the vision service and applies it to your webcam feed, filtering the output so that later, when you configure data management, you can save only the images that contain people inferred to match the filtering criteria rather than all images the camera captures.
 
 Configure the camera module with classification or object labels according to the labels your ML model provides that you want to alert on.
 Follow the instructions in the [`filtered-camera` module readme](https://github.com/erh/filtered_camera).

@@ -17,6 +17,7 @@ aliases:
   - /data/cloud-sync/
   - /services/data/capture-sync/
   - /how-tos/sensor-data/
+  - /services/data/
 ---
 
 You can use data management service to capture and sync data from your machine to the cloud.
@@ -114,7 +115,7 @@ The following attributes are available for the data management service:
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `file_last_modified_millis` | float | Optional | The amount of time to pass since arbitrary files were last modified until they are synced. Normal <file>.capture</file> files are synced as soon as they are able to be synced. <br> Default: `10000` milliseconds. |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 
-#### Capture directly to MongoDB
+### Capture directly to MongoDB
 
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
 

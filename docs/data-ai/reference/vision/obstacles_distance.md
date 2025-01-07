@@ -8,6 +8,8 @@ service_description: "A segmenter that takes point clouds from a camera input an
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - /ml/vision/obstacles_distance/
+  - /data-ai/services/vision/obstacles_distance/
+  - /services/vision/obstacles_distance/
 # SMEs: Bijan, Khari
 ---
 

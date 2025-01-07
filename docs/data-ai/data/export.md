@@ -11,6 +11,7 @@ aliases:
   - /manage/data/export/
   - /data/export/
   - /services/data/export/
+  - /how-tos/export-data/
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "cli"]
 date: "2024-12-03"
