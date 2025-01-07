@@ -10,6 +10,7 @@ aliases:
   - /use-cases/create-module/
   - /how-tos/create-module/
   - /how-tos/sensor-module/
+  - /registry/advanced/iterative-development/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
@@ -831,7 +832,7 @@ viam module upload --version 1.0.0 --platform any module.tar.gz
 
 For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
+For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -879,7 +880,7 @@ You can use the following package and upload method if you opted not to enable c
 
     For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-    For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
+    For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -897,7 +898,7 @@ From within your module's directory, run the `viam module upload` CLI command to
 viam module upload --version 1.0.0 --platform <platform> .
 ```
 
-For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
+For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
