@@ -161,7 +161,7 @@ v4l2-ctl --list-formats-ext --device /dev/video0
 {{< readfile "/static/include/components/troubleshoot/camera.md" >}}
 
 {{% expand "Cannot open webcam or found no webcams" %}}
-When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
+When working with a [camera](/operate/reference/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
 
 On your Linux system, verify each of the following:
 
@@ -209,7 +209,7 @@ On your Linux system, verify each of the following:
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
       The command will return a list of pixel formats your camera supports, such as `MJPG` (also notated as `MJPEG`) or `YUYV` (also notated as `YUY2`).
-      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/operate/reference/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
 If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.

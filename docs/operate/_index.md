@@ -7,6 +7,8 @@ type: "docs"
 no_list: true
 open_on_desktop: true
 overview: true
+aliases:
+  - /configure/
 ---
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->

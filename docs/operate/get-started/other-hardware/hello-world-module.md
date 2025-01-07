@@ -148,14 +148,14 @@ The image you saved should open on your screen, and a random number should print
 
 ## Choose an API to implement
 
-Now it's time to decide which Viam [APIs](/appendix/apis/#component-apis) make sense for your module.
+Now it's time to decide which Viam [APIs](/dev/reference/apis/#component-apis) make sense for your module.
 You need a way to return an image, and you need a way to return a number.
 
-If you look at the [camera API](/appendix/apis/components/camera/), you can see the `GetImage` method, which returns an image.
+If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImage` method, which returns an image.
 That will work for the image.
 None of the camera API methods return a number though.
 
-Look at the [sensor API](/appendix/apis/components/sensor/), which includes the `GetReadings` method.
+Look at the [sensor API](/dev/reference/apis/components/sensor/), which includes the `GetReadings` method.
 You can return a number with that, but the sensor API can't return an image.
 
 Your module can contain multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
@@ -169,7 +169,7 @@ If you prefer the simpler path, skip the sensor sections in the steps below.
 
 ## Generate stub files
 
-The easiest way to generate the files for your module is to use the [Viam CLI](/cli/).
+The easiest way to generate the files for your module is to use the [Viam CLI](/dev/tools/cli/).
 
 ### Generate the camera files
 
@@ -804,6 +804,6 @@ For more information about uploading modules, see [Upload a module](/how-tos/upl
 
 For a guide that walks you through creating different sensor models, for example to get weather data from an online source, see [Create a sensor module with Python](/how-tos/sensor-module/).
 
-For more module creation information with more programming language options, see the [Create a module](/how-tos/create-module/) guide.
+For more module creation information with more programming language options, see the [Create a module](/operate/get-started/other-hardware/) guide.
 
-To update or delete a module, see [Update and manage modules](/how-tos/manage-modules/).
+To update or delete a module, see [Update and manage modules](/operate/get-started/other-hardware/manage-modules/).

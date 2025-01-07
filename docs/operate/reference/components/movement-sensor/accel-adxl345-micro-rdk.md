@@ -125,13 +125,13 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 <!-- prettier-ignore -->
 | Name | Type   | Required? | Description |
 | ---- | ------ | --------- | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
-| `i2c_bus` | string | **Required** | The `name` of the I<sup>2</sup>C bus on the [board](/components/board/) wired to this device. |
+| `board` | string | **Required** | The `name` of the [board](/operate/reference/components/board/) to which the device is wired. |
+| `i2c_bus` | string | **Required** | The `name` of the I<sup>2</sup>C bus on the [board](/operate/reference/components/board/) wired to this device. |
 | `use_alt_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
 
 ## Test the movement sensor
 
-After you configure your movement sensor, navigate to the [Control tab](/fleet/control/) and select the dedicated movement sensor dropdown panel.
+After you configure your movement sensor, navigate to the [Control tab](/manage/troubleshoot/teleoperate/default-interface/) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
 
 {{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}

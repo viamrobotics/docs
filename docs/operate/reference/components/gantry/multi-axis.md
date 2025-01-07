@@ -13,7 +13,7 @@ component_description: "Supports a gantry with multiple linear rails. Composed o
 # SME: Rand, Martha
 ---
 
-Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/components/gantry/single-axis/) gantries into your machine.
+Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/operate/reference/components/gantry/single-axis/) gantries into your machine.
 
 First, physically assemble the gantry and connect it to your machine's computer.
 Power both on.
@@ -212,7 +212,7 @@ The following attributes are available for `multi-axis` gantries:
 <!-- prettier-ignore -->
 | Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
-| `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |
+| `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/operate/reference/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |
 | `move_simultaneously` | boolean | Optional | A boolean indicating if the sub-axes should move together, or one at a time when `MoveToPosition` is called. <br> Default:  `false` |
 
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}

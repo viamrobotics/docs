@@ -28,7 +28,7 @@ If you have a physical sensor, an API endpoint, or anything else that provides m
 ## Configuration
 
 To use a sensor and get its measurements, you need to add it to your machine's configuration.
-Physical sensors often require a [board component](/components/board/) with a configured analog-to-digital converter (ADC).
+Physical sensors often require a [board component](/operate/reference/components/board/) with a configured analog-to-digital converter (ADC).
 Virtual sensors often function without additional dependencies.
 
 Go to your machine's **CONFIGURE** page, and add a model that supports your sensor.
@@ -60,9 +60,9 @@ If none of the existing models fit your use case, you can [create a modular reso
 
 {{% expand "Measuring movement or power or working with a motor?" %}}
 
-- If your sensor measures GPS, IMU, position, velocity, or acceleration, use a [movement sensor](/components/movement-sensor/).
-- If your sensor measured voltage, current, or power consumption of connected hardware use a [power sensor](/components/power-sensor/).
-- If your sensor detects speed and direction of rotation of a motor or a joint, use an [encoder](/components/encoder/).
+- If your sensor measures GPS, IMU, position, velocity, or acceleration, use a [movement sensor](/operate/reference/components/movement-sensor/).
+- If your sensor measured voltage, current, or power consumption of connected hardware use a [power sensor](/operate/reference/components/power-sensor/).
+- If your sensor detects speed and direction of rotation of a motor or a joint, use an [encoder](/operate/reference/components/encoder/).
 
 {{% /expand%}}
 

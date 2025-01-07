@@ -14,7 +14,7 @@ updated: "2024-10-18"
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Imagine a robotic [arm](/components/arm/) is attached to a table.
+Imagine a robotic [arm](/operate/reference/components/arm/) is attached to a table.
 
 Consider one corner of the table the arm is attached to be the origin of the `world`, `(0, 0, 0)`.
 Measure from that point to the base of the arm to get the `translation` coordinates.
@@ -29,7 +29,7 @@ Measure from that point to the base of the arm to get the `translation` coordina
 To configure your machine following this example:
 
 - Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-- Select **Builder** mode and [configure your arm](/components/arm/#configuration).
+- Select **Builder** mode and [configure your arm](/operate/reference/components/arm/#configuration).
   If you don't have a physical arm, you can use a `fake` model.
 - Select the **Frame** mode.
 - From the left-hand menu, select your arm:

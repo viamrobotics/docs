@@ -21,7 +21,7 @@ For complex kinematic chain configuration, useful when creating a module to supp
 
 ## Configure a reference frame
 
-Imagine you have a robotic [arm](/components/arm/) attached to a table.
+Imagine you have a robotic [arm](/operate/reference/components/arm/) attached to a table.
 
 Consider one corner of the table the arm is attached to be the origin of the `world`, `(0, 0, 0)`.
 Measure from that point to the base of the arm to get the `translation` coordinates.
@@ -36,7 +36,7 @@ Measure from that point to the base of the arm to get the `translation` coordina
 To configure your machine following this example:
 
 - Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-- Select **Builder** mode and [configure your arm](/components/arm/#configuration).
+- Select **Builder** mode and [configure your arm](/operate/reference/components/arm/#configuration).
 - Select the **Frame** mode.
 - From the left-hand menu, select your arm:
   {{<imgproc src="/services/frame-system/arm_default_frame.png" resize="500x" style="width: 300px" alt="Frame card for an arm with the default reference frame settings">}}
@@ -93,7 +93,7 @@ To configure your machine following this example:
 
 ### Configure nested reference frames
 
-Imagine you have a robotic arm attached to the actuator (moving part) of a [gantry](/components/gantry/).
+Imagine you have a robotic arm attached to the actuator (moving part) of a [gantry](/operate/reference/components/gantry/).
 
 Using a nested reference frame allows you to define the reference frame of the arm with respect to the end effector of the gantry.
 This allows `viam-server` to correctly calculate the position of the end of the arm, taking into account the combined motion of the gantry and the arm.

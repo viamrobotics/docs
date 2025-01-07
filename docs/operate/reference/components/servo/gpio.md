@@ -13,7 +13,7 @@ component_description: "Supports hobby servos wired to any model of board beside
 # SME: Rand
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`viam:raspberry-pi:rpi` model [board](/components/board/) into your machine.
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`viam:raspberry-pi:rpi` model [board](/operate/reference/components/board/) into your machine.
 Physically connect your servo to your board and power both on.
 Then, configure the servo:
 
@@ -89,8 +89,8 @@ The following attributes are available for `gpio` servos:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board/). |
-| `board` | string | **Required** | `name` of the [board](/components/board/) the servo is wired to. |
+| `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/operate/reference/components/board/). |
+| `board` | string | **Required** | `name` of the [board](/operate/reference/components/board/) the servo is wired to. |
 | `min_angle_deg` | float | Optional | The minimum angle in degrees that the servo can reach. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
 | `max_angle_deg` | float | Optional | The maximum angle in degrees that the servo can reach. <br> Default = `180.0` <br> Range = [`0.0`, `180.0`] |
 | `starting_position_deg` | float | Optional | Starting position of the servo in degrees. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |

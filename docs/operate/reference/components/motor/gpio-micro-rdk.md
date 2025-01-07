@@ -13,12 +13,12 @@ micrordk_component: true
 
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
-You can configure [encoders](/components/encoder/) to work with `gpio` motors.
-Find more information in the [encoded motor documentation](/components/motor/encoded-motor/).
+You can configure [encoders](/operate/reference/components/encoder/) to work with `gpio` motors.
+Find more information in the [encoded motor documentation](/operate/reference/components/motor/encoded-motor/).
 
 To configure a DC motor as a component of your machine, first make sure the motor is wired to a suitable motor driver, which is in turn wired to the microcontroller.
 Connect the system to power if you want to test it while configuring.
-Configure the [board](/components/board/esp32/) to which the motor driver is wired.
+Configure the [board](/operate/reference/components/board/esp32/) to which the motor driver is wired.
 Then configure the motor:
 Then add your motor:
 
@@ -112,7 +112,7 @@ The following attributes are available for `gpio` motors:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
+| `board` | string | **Required** | `name` of the [board](/operate/reference/components/board/) to which the motor driver is wired. |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
 | `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
 | `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
@@ -152,7 +152,7 @@ Each `gpio` motor uses a PWM pin at 10000 Hz PWM frequency.
 
 This leaves you with three remaining PWM frequencies for use on an `esp32`.
 If the frequency of another PWM signal is unimportant, it can also be set to 10000 Hz.
-See [PWM signals on `esp32` pins](/components/board/esp32/#pwm-signals-on-esp32-pins) for more information.
+See [PWM signals on `esp32` pins](/operate/reference/components/board/esp32/#pwm-signals-on-esp32-pins) for more information.
 
 ## Test the motor
 
@@ -169,5 +169,5 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/control-motor/" noimage="true" %}}
+{{% card link="/tutorials/control/control-motor/" noimage="true" %}}
 {{< /cards >}}

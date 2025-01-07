@@ -14,7 +14,7 @@ updated: "2024-10-18"
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Imagine a robotic [arm](/components/arm/) is attached to the actuator (moving part) of a [gantry](/components/gantry/).
+Imagine a robotic [arm](/operate/reference/components/arm/) is attached to the actuator (moving part) of a [gantry](/operate/reference/components/gantry/).
 
 Consider the point that the gantry itself is fixed to as the center of the `world`, making the gantry's origin the same as the `world` origin: `(0, 0, 0)`.
 
@@ -32,7 +32,7 @@ Now, as the gantry moves its actuator, the Frame System will translate both the 
 To configure your machine following this example:
 
 - Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-- Select **Builder** mode and [configure your gantry](/components/gantry/#configuration), then [configure your arm](/components/arm/#configuration).
+- Select **Builder** mode and [configure your gantry](/operate/reference/components/gantry/#configuration), then [configure your arm](/operate/reference/components/arm/#configuration).
   If you don't have a physical gantry or arm, you can use their `fake` models.
 - Select the **Frame** mode.
 - From the left-hand menu, select your gantry.

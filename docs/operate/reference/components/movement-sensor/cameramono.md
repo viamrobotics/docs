@@ -21,7 +21,7 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 The `camera_mono` movement sensor model is an **experimental** model that uses a visual odometry algorithm with dead reckoning to track the position, orientation, linear velocity and angular velocity of the camera's frame.
-The `camera_mono` model can use any single [camera](/components/camera/) within its algorithm.
+The `camera_mono` model can use any single [camera](/operate/reference/components/camera/) within its algorithm.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -99,12 +99,12 @@ Edit and fill in the attributes as applicable.
 <!-- prettier-ignore -->
 | Name                       | Type   | Required? | Description |
 | -------------------------- | ------ | --------- | ----------- |
-| `camera`                   | string | **Required** | The `name` of the [camera](/components/camera/) you want to use for visual odometry. |
+| `camera`                   | string | **Required** | The `name` of the [camera](/operate/reference/components/camera/) you want to use for visual odometry. |
 | `motion_estimation_config` | object | **Required** | See [motionestimation.go in RDK](https://github.com/viamrobotics/rdk/blob/99f62a1640f4c267b744bdfc2924e9fd4f7a3c60/vision/odometry/motionestimation.go). |
 
 ## Test the movement sensor
 
-After you configure your movement sensor, navigate to the [Control tab](/fleet/control/) and select the dedicated movement sensor dropdown panel.
+After you configure your movement sensor, navigate to the [Control tab](/manage/troubleshoot/teleoperate/default-interface/) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
 
 ## Troubleshooting
