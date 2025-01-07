@@ -28,7 +28,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 Data capture is frequently used with cloud sync.
 You can start and stop capture and sync independently.
 You can also enable cloud sync without data capture and it will sync data in either the sync directory or in the additional sync paths configured in the `viam-server` config.
-If a file  in either the data capture directory or any of the sync paths ends with <file>.capture</file> it will be treated as a file with data that was captured by data capture.
+If a file in either the data capture directory or any of the sync paths ends with <file>.capture</file> it will be treated as a file with data that was captured by data capture.
 If it ends in `.prog` it will be ignored as this extension is used by data capture to denote that a file is a capture file that's currently being written to.
 If a file is in the capture directory or one of its descendants or any of the additional sync paths or their descendants and doesn't have <file>.prog</file> nor <file>.capture</file> extensions, it will be treated as an arbitrary file and, like <file>.capture</file> files, synced if data sync is enabled and the robot is able to connect to [the Viam app](https://app.viam.com).
 
