@@ -7,7 +7,7 @@ description: Configure a camera to use for testing."
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
-  - "/components/camera/fake/"
+  - /components/camera/fake-micro-server/
 component_description: "A camera model for testing."
 micrordk_component: true
 toc_hide: true

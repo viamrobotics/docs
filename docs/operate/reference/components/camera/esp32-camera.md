@@ -10,6 +10,8 @@ component_description: "An `OV2640` or `OV3660` camera connected to an esp32 boa
 micrordk_component: true
 toc_hide: true
 date: "2024-08-28"
+aliases:
+  - /components/camera/esp32-camera/
 # updated: ""  # When the content was last entirely checked
 # SMEs: Matt Perez, micro-RDK team
 ---

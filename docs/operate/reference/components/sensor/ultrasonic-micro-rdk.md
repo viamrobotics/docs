@@ -10,6 +10,7 @@ images: ["/icons/components/sensor.svg"]
 micrordk_component: true
 aliases:
   - /build/micro-rdk/sensor/ultrasonic/
+  - /components/sensor/ultrasonic-micro-rdk/
 # SME: Andrew Morrow
 ---
 
