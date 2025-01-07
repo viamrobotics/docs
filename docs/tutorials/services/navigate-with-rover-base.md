@@ -139,14 +139,14 @@ Configure your rover base to act as the moving platform of the navigating robot.
 Start by configuring the [encoders](/operate/reference/components/encoder/) and [motors](/operate/reference/components/motor/) of your encoded motor.
 
 1. Follow the [encoder configuration instructions](/operate/reference/components/encoder/#configuration) to configure the left and right encoders of the wheeled base.
-   We configured ours as [`incremental` encoders](/operate/reference/components/encoder/#incremental/), as shown below:
+   We configured ours as [`incremental` encoders](/operate/reference/components/encoder/incremental/), as shown below:
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="1000x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="950x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
    Assign the pins as the [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
-   Refer to the [`incremental` encoder documentation](/operate/reference/components/encoder/#incremental/) for attribute information.
+   Refer to the [`incremental` encoder documentation](/operate/reference/components/encoder/incremental/) for attribute information.
 
 2. Next, follow [these instructions](/operate/reference/components/motor/#configuration) to configure the left and right [motors](/operate/reference/components/motor/) of the `wheeled` base.
    We [configured ours as `gpio` motors](/operate/reference/components/motor/gpio/), as shown below:
@@ -162,7 +162,7 @@ Refer to the [`gpio` motor](/operate/reference/components/motor/gpio/) documenta
    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png" resize="800x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Config Builder." style="min-height:550px; max-height:600px">}}
 
    - Make sure to select each of your right and left motors as **right** and **left**, as well as set the **wheel_circumference_mm** and **width_mm** of each of the wheels the motors are attached to.
-   - [Configure the frame system](/services/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
+   - [Configure the frame system](/operate/mobility/define-geometry/) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
 
      - Switch to **Frame** mode on the **CONFIGURE** tab and select your base.
        If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
@@ -343,7 +343,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     Refer to [the `merged` movement sensor documentation](/operate/reference/components/movement-sensor/merged/) for attribute information.
 
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
-    - [Configure the frame system](/services/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
+    - [Configure the frame system](/operate/mobility/define-geometry/) for this movement sensor so that the navigation service knows where it is in relation to the base.
 
       - Switch to **Frame** mode on the **CONFIGURE** tab and select your movement sensor.
         If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1`.
