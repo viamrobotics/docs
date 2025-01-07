@@ -8,10 +8,12 @@ description: "Give commands to register callbacks for events, allowing you to us
 icon: true
 images: ["/icons/components/controller.svg"]
 date: "2022-01-01"
+aliases:
+  - /appendix/apis/components/input-controller/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The input controller API allows you to give commands to your [input controller components](/components/input-controller/) for configuring callbacks for events, allowing you to configure input devices to control your machines.
+The input controller API allows you to give commands to your [input controller components](/operate/reference/components/input-controller/) for configuring callbacks for events, allowing you to configure input devices to control your machines.
 
 The input controller component supports the following methods:
 

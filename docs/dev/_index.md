@@ -44,7 +44,6 @@ noTitle: true
 </div>
 <br>
 
-
 <div class="max-page frontpage">
 
 Once you've set up your machine you can control your device and any attached physical hardware with [Viam APIs](/dev/reference/APIs), for example:
@@ -225,7 +224,7 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 
 Once you have configured a motor, you can operate it using the motor API.
 
-[Control a motor →](/how-tos/control-motor/)
+[Control a motor →](/tutorials/control/control-motor/)
 
   </div>
   <div class="explanationvisual">
@@ -444,7 +443,6 @@ Using the Viam Registry you can turn services and your own custom business logic
 <br>
 
 You can also manage data, use higher level services, and manage your machines:
-
 
 {{< tabs class="horizontalheaders services" navheader="Examples">}}
 {{% tab name="Use computer vision" %}}

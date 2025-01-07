@@ -34,7 +34,7 @@ If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/appendix/
 ## Requirements
 
 - A running an instance of `viam-server`.
-  See our [Installation Guide](/installation/viam-server-setup/) for instructions.
+  See our [Installation Guide](/operate/get-started/setup/) for instructions.
 - A rover like the [SCUTTLE robot](https://www.scuttlerobot.org/shop/) or the [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
 
 Make sure your rover is assembled before starting this tutorial.
@@ -52,7 +52,7 @@ In the following, you can see two popular examples with components that are pres
 
 ## Configure the board
 
-The first component you will add is the [board](/components/board/) which represents the Raspberry Pi to which the other components are wired.
+The first component you will add is the [board](/operate/reference/components/board/) which represents the Raspberry Pi to which the other components are wired.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `viam:raspberry-pi:rpi` model.
@@ -142,7 +142,7 @@ Add the following JSON objects to the `components` array:
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of encoder](/components/encoder/#configuration) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
+Follow the instructions for the [model of encoder](/operate/reference/components/encoder/#configuration) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -242,7 +242,7 @@ Add the following JSON objects to the `components` array:
 {{% /tab %}}
 {{% tab name="Yahboom" %}}
 
-Since both right (and left) side motors of the Yahboom rover are wired together to a single motor driver, you configure the right (and left) side motors as a single [motor component](/components/motor/).
+Since both right (and left) side motors of the Yahboom rover are wired together to a single motor driver, you configure the right (and left) side motors as a single [motor component](/operate/reference/components/motor/).
 
 Start with the right set of wheels.
 
@@ -293,7 +293,7 @@ You can ignore the other optional attributes.
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of motor](/components/motor/#configuration) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
+Follow the instructions for the [model of motor](/operate/reference/components/motor/#configuration) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -366,7 +366,7 @@ If you click on the **Video Path** field while your robot is live, a dropdown au
 {{% /tab %}}
 {{< /tabs >}}
 
-If your rover has its camera mounted on a pair of [servos](/components/servo/), like the Yahboom rover, you can use these to control the pan and tilt of the camera.
+If your rover has its camera mounted on a pair of [servos](/operate/reference/components/servo/), like the Yahboom rover, you can use these to control the pan and tilt of the camera.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
@@ -387,11 +387,11 @@ Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`21` fo
 
 ## Configure the base
 
-Next, configure the [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
+Next, configure the [base component](/operate/reference/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
 Configuring a {{% glossary_tooltip term_id="base" text="base"%}} component also provides you with a nice UI for moving the rover around.
 
 {{< alert title="Note" color="note" >}}
-Viam supports most rovers with built-in models like the [`wheeled`](/components/base/wheeled/) base.
+Viam supports most rovers with built-in models like the [`wheeled`](/operate/reference/components/base/wheeled/) base.
 If your rover is not supported out of the box, follow the [Create a Modular Resource to Control a Rover](/tutorials/custom/controlling-an-intermode-rover-canbus/) tutorial to create a model for your rover or mobile robot.
 {{< /alert >}}
 

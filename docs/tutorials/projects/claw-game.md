@@ -57,7 +57,7 @@ To build your own claw game machine, you need the following hardware:
 
 To build your own claw game machine, you need the following software:
 
-- [`viam-server`](/installation/viam-server-setup/#install-viam-server)
+- [`viam-server`](/operate/get-started/setup/#install-viam-server)
 - [Python 3](https://www.python.org/download/releases/3.0/)
 - [pip](https://pip.pypa.io/en/stable/#)
 - [Viam Python SDK](https://python.viam.dev/)
@@ -135,7 +135,7 @@ Next, configure your newly-built robot.
 
 {{% snippet "setup.md" %}}
 
-Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a [single-board computer](/installation/viam-server-setup/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
+Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
 
 Every machine has a main part which is automatically created when you create the machine.
 Since you just created a new machine, your machine's main part is already defined.
@@ -168,7 +168,7 @@ Navigate to the **Config** tab of your machine's page and select your main part 
 Click the **Components** subtab.
 Click the **Create component** button in the lower-left corner.
 
-Add your [board](/components/board/) with type `board` and model `viam:raspberry-pi:rpi` if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
+Add your [board](/operate/reference/components/board/) with type `board` and model `viam:raspberry-pi:rpi` if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
 If you are using a Raspberry Pi 5, use the `pi5` model.
 Name your board `myBoard` and click **Create**.
 
@@ -216,7 +216,7 @@ Use the parts dropdown menu to navigate to the `planning` sub-part.
 Click the **Components** subtab.
 Click the **Create component** button in the lower-left corner.
 
-Add your [arm](/components/arm/) with type `arm`, and model `xArm6`.
+Add your [arm](/operate/reference/components/arm/) with type `arm`, and model `xArm6`.
 Name it `myArm` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
@@ -225,7 +225,7 @@ Configure the arm component with the arm's IP address in the `host` field.
 Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
 
-For more information on xArm6 configuration, see [Configure an xArm6 Arm](/components/arm/xarm6/).
+For more information on xArm6 configuration, see [Configure an xArm6 Arm](/operate/reference/components/arm/xarm6/).
 
 Click **Save config** in the lower-left corner of the screen.
 
@@ -280,7 +280,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click **Create component** and add your [gripper](/components/gripper/).
+Click **Create component** and add your [gripper](/operate/reference/components/gripper/).
 Choose type `gripper` and model `fake`.
 Name it `gripper` and click **Create**.
 
