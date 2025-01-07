@@ -92,7 +92,7 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
-{{% card link="/how-tos/move-robot-arm/" noimage="true" %}}
+{{% card link="/operate/mobility/move-arm/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the arm component with the following services:

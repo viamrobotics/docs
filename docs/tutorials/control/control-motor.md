@@ -23,6 +23,7 @@ level: "Beginner"
 date: "2024-07-31"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0" # Approximate cost in USD - Only specify number
+draft: true
 ---
 
 In this guide you'll configure and control a motor.
@@ -580,13 +581,3 @@ int main() {
 {{< /tabs >}}
 
 {{< /expand >}}
-
-## Next steps
-
-To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
-
-{{< cards >}}
-{{% card link="/how-tos/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/platform/" %}}
-{{< /cards >}}

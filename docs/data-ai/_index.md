@@ -45,7 +45,7 @@ Common use cases include:
 
 {{< how-to-expand "Capture data" "1" "BEGINNER-FRIENDLY" "" "hoverable-capture" >}}
 {{< cards >}}
-{{% card link="/data-ai/get-started/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
