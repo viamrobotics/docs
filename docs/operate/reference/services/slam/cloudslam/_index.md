@@ -430,7 +430,7 @@ The following attributes are available for `viam:cloudslam-wrapper:cloudslam`
 | `slam_service` | string | **Required** | The name of the SLAM Service on the machine to use with cloudslam. |
 | `api_key` | string | **Required** | An [API key](/cloud/rbac/#api-keys) with location owner or higher permission. |
 | `api_key_id` | string | **Required** | The associated API key ID with the API key. |
-| `organization_id` | string | **Required** | The organization ID of your [organization](/dev/reference/glossary/organization/). |
+| `organization_id` | string | **Required** | The organization ID of your [organization](/dev/reference/glossary/#organization). |
 | `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/location/). |
 | `machine_id` | string | **Required** | The machine ID of your [machine](/dev/reference/apis/fleet/#find-machine-id). |
 | `machine_part_id` | string | Optional | The machine part ID of your [machine part](/dev/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |

@@ -66,7 +66,7 @@ If you choose to have a mobile app experience, you can use the [Viam mobile app]
 
 The Viam mobile app allows end users to create a new machine in the app, and `agent-provisioning` will then install `viam-server` and run it with a provided configuration.
 If you choose to use the Viam mobile app, you must provide a {{< glossary_tooltip term_id="fragment" text="fragment" >}} for provisioning.
-If you do not yet have a fragment, follow the steps to [Create a configuration fragment](/how-tos/one-to-many/) and make a note of the fragment ID.
+If you do not yet have a fragment, follow the steps to [Create a configuration fragment](/manage/fleet/reuse-configuration/) and make a note of the fragment ID.
 
 {{< alert title="Tip" color="tip" >}}
 If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).

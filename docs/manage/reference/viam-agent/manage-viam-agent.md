@@ -50,4 +50,4 @@ date: "2024-08-16"
 
 ## Troubleshooting
 
-You can find assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).

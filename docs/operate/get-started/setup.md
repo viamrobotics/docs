@@ -90,7 +90,7 @@ You can change this behavior if desired.
 
 To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](manage/reference/viam-agent/manage-viam-agent/).
 
-For manual installs of only `viam-server`, see [Manage `viam-server`](/installation/manage-viam-server/).
+For manual installs of only `viam-server`, see [Manage `viam-server`](/operate/reference/viam-server/manage-viam-server/).
 
 ## Supported systems
 

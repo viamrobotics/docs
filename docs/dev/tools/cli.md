@@ -17,8 +17,8 @@ date: "2024-08-23"
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
-- Retrieve [organization](/dev/reference/glossary/organization/) and location information
-- Manage [machine fleet](/fleet/) data and logs
+- Retrieve [organization](/dev/reference/glossary/#organization) and location information
+- Manage fleet data and logs
 - Control machines by issuing component and service commands
 - Upload and manage modular resources in the [Viam Registry](https://app.viam.com/registry/)
 
@@ -152,7 +152,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
-You can change an API key's permissions from the Viam app on the [organizations page](/cloud/organizations/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions from the Viam app on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the organization API key to authenticate future CLI sessions or to [use the SDKs](/sdks/#authentication).
@@ -191,7 +191,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new location API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your location.
-You can change an API key's permissions from the Viam app on the [organizations page](/cloud/organizations/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions from the Viam app on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the location API key to authenticate future CLI sessions or to [connect to machines with the SDK](/sdks/#authentication).
@@ -394,7 +394,7 @@ Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
 
-See [Datasets](/fleet/dataset/) for more information.
+See [Create a dataset](/data-ai/ai/create-dataset/) for more information.
 
 ##### Using the `filter` argument
 
@@ -423,7 +423,7 @@ Removing the `viam data export` string, you can use the same filter parameters (
 
 You cannot use the `--file-ids` argument when using `filter`.
 
-See [Datasets](/fleet/dataset/) for more information.
+See [Create a dataset](/data-ai/ai/create-dataset/) for more information.
 
 ### `data`
 
@@ -492,8 +492,8 @@ done
 | -------------- | ----------- | -------------------- |
 | `export` | Export data in a specified format to a specified location. | - |
 | `tag` | Add or remove tags from data matching the ids or filter. | `ids`, `filter` |
-| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query). | - |
-| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query). | - |
+| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
+| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
 | `delete binary` | Delete binary data from the Viam Cloud. | - |
 | `delete tabular` | Delete tabular data from the Viam Cloud. | - |
 | `--help` | Return help | - |
@@ -627,10 +627,10 @@ This includes:
 - Building your module for different architectures using cloud runners
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
 
-See [Upload a module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for more information.
+See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for more information.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
+[automatically upload new versions of your module on release](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate
@@ -809,7 +809,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>visibility</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>Whether the module is accessible only to members of your <a href="/dev/reference/glossary/organization/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+    <td>Whether the module is accessible only to members of your <a href="/dev/reference/glossary/#organization">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
   </tr>
   <tr>
     <td><code>url</code></td>
@@ -857,14 +857,12 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the namespace of your model match the namespace of your [organization](/dev/reference/glossary/organization/).
+If you are publishing a public module (`"visibility": "public"`), the namespace of your model match the namespace of your [organization](/dev/reference/glossary/#organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a module](/how-tos/upload-module/) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
-
-See [Modular resources](/registry/) for a conceptual overview of modules and the modular resource system at Viam.
+See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
 ##### Using the `build` subcommand
 
@@ -1257,7 +1255,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### `training-script`
 
-Manage training scripts for [custom ML training](/registry/training-scripts/).
+Manage training scripts for [custom ML training](/data-ai/ai/train/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>
@@ -1403,7 +1401,7 @@ viam whoami
 
 ### `auth-app`
 
-The `auth-app` command allows you to register, update, and get your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
+The `auth-app` command allows you to register, update, and get your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/dev/reference/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
 The user's credentials allow them the same [permissions](/manage/manage/rbac/) to organizations, locations, and machines that they have in the Viam app.
 
 ```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}

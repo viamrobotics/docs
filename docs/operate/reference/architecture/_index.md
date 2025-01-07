@@ -204,6 +204,6 @@ See [Parts, Sub-parts and Remotes](/operate/reference/architecture/parts/) for m
 ## Next steps
 
 This page has provided an overview of the architecture of just one machine.
-For information on organizing a fleet of many machines, see [Cloud Organization Hierarchy](/fleet/).
+For information on organizing a fleet of many machines, see [Organize your machines](/manage/reference/organize/).
 
 For more details on the architecture of a single machine, see the following:

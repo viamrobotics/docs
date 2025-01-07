@@ -32,7 +32,7 @@ You can receive alerts for the following events involving machine performance te
 For example, you can configure a trigger to send you a notification when your machine's CPU usage reaches a certain threshold.
 
 {{< alert title="Tip" color="tip" >}}
-You can also configure alerts on any other machine data, for more information on that, see [TODO](/data/).
+You can also configure alerts on any other machine data, for more information on that, see [Alert on data](/data-ai/data/advanced/alert-data/).
 {{< /alert >}}
 
 ## Data meets condition
@@ -116,7 +116,7 @@ You can also see readings on the **CONTROL** tab.
 To capture or alert on the data from your configured sensor, you must add the [data management service](/data-ai/capture-data/capture-sync/) and configure it to capture and sync the sensor data:
 
 {{< table >}}
-{{% tablestep link="/services/data/" %}}
+{{% tablestep link="/data-ai/capture-data/capture-sync/" %}}
 **1. Add the data management service**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Service**.

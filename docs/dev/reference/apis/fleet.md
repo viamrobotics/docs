@@ -23,7 +23,7 @@ date: "2024-09-20"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The fleet management API allows you to [manage your machine fleet](/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The fleet management API allows you to manage your machine fleet with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 With it you can
 
 - create and manage organizations, locations, and individual machines

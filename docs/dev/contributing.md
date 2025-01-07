@@ -62,7 +62,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **Explanation (conceptual)**: An understanding-oriented piece of content.
   This content provides background knowledge on a topic and tends to be referenced in how-to guides and tutorials.
-  For example the [`viam-server` page](/architecture/viam-server/).
+  For example the [`viam-server` page](/operate/reference/viam-server/).
   It’s useful to have a real or imagined "Why?" question to serve as a prompt.
 
   {{< expand "Click to view template" >}}

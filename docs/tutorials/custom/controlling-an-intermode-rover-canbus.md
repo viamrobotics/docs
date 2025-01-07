@@ -65,7 +65,7 @@ This tutorial shows you how to leverage this protocol and abstract it into the V
 
 The tutorial uses the following hardware:
 
-- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
+- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/operate/reference/prepare/rpi-setup/).
 - [An Intermode rover](https://www.intermode.io/)
 - [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
 - [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)

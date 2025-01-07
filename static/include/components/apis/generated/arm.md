@@ -372,7 +372,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 This method is not yet available with the Viam Go SDK.
 {{% /alert %}}
 
-Get the kinematics information associated with the arm as the format and byte contents of the [kinematics file](/internals/kinematic-chain-config/).
+Get the kinematics information associated with the arm as the format and byte contents of the [kinematics file](/operate/reference/kinematic-chain-config/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
