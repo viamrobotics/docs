@@ -9,6 +9,7 @@ aliases:
   - /registry/create/
   - /use-cases/create-module/
   - /how-tos/create-module/
+  - /how-tos/sensor-module/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
