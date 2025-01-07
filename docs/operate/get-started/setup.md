@@ -15,6 +15,7 @@ aliases:
   - /installation/viam-micro-server-setup/
   - /installation/viam-server-setup/
   - /how-tos/configure/
+  - /cloud/account/
 ---
 
 Get started by installing the open-source software that drives your hardware and connects your device to the cloud.

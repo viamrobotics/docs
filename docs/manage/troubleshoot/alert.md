@@ -16,6 +16,7 @@ aliases:
   - /build/configure/triggers/
   - "/data/capture/performance-metrics/"
   - "/services/data/capture/performance-metrics/"
+  - /configure/triggers/
 date: "2024-12-07"
 next: "/manage/troubleshoot/teleoperate/custom-interface/"
 # updated: ""  # When the content was last entirely checked

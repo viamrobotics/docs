@@ -16,7 +16,8 @@ prev: "/manage/fleet/reuse-configuration/"
 next: "/manage/fleet/provision/end-user-setup/"
 aliases:
   - "/build/provision/"
-  - "/fleet/provision/"
+  - /how-tos/provision-setup/
+  - fleet/provision/
 # updated: ""  # When the tutorial was last entirely checked
 # SMEs: James, Ale
 cost: "0"

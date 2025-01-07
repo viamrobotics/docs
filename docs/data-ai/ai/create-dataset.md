@@ -5,6 +5,11 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Create a dataset to train a machine learning model."
+aliases:
+  - /fleet/dataset/
+  - /manage/data/label/
+  - /manage/data/dataset/
+  - /data/dataset/
 ---
 
 To ensure a machine learning model you create performs well, you need to train it on a variety of images that cover the range of things your machine should be able to recognize.

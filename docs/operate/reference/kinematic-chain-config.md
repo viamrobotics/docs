@@ -8,6 +8,8 @@ tags: ["slam", "services"]
 date: "2022-01-01"
 updated: "2024-10-21"
 no_list: true
+aliases:
+  - /internals/kinematic-chain-config/
 # SMEs: Motion
 ---
 

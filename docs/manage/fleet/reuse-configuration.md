@@ -8,6 +8,9 @@ images: ["/how-tos/one-to-many/new-fragment.png"]
 description: "Reuse the machine configuration from one machine for multiple machines."
 aliases:
   - /use-cases/one-to-many/
+  - /how-tos/one-to-many/
+  - /fleet/fragments/
+  - /fleet/configure-a-fleet/
 languages: []
 viamresources: []
 platformarea: ["fleet"]

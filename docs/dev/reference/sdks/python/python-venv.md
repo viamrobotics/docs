@@ -9,6 +9,7 @@ tags:
   ["client", "sdk", "application", "sdk", "fleet", "program", "python", "venv"]
 aliases:
   - /program/python-venv/
+  - /sdks/python/python-venv/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---

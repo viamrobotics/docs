@@ -17,6 +17,14 @@ images: ["/general/understand.png"]
 noedit: true
 date: "2024-09-17"
 updated: "2024-10-11"
+aliases:
+  - "/getting-started/"
+  - "/getting-started/high-level-overview"
+  - "/product-overviews/"
+  - "/viam/"
+  - "/viam/app.viam.com/"
+  - "/get-started/"
+  - "/platform/"
 ---
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->

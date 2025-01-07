@@ -30,6 +30,7 @@ aliases:
   - "/components/sensor/bme280/"
   - "/components/sensor/ds18b20/"
   - "/components/sensor/sensirion-sht3xd/"
+  - /appendix/changelog/
 layout: "changelog"
 outputs:
   - rss

@@ -8,6 +8,9 @@ aliases:
   - "/appendix/orientation-vector"
 date: "2022-01-01"
 no_list: true
+aliases:
+  - /internals/orientation-vector/
+  - "/appendix/orientation-vector"
 # updated: ""  # When the content was last entirely checked
 ---
 

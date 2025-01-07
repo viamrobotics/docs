@@ -8,6 +8,7 @@ tags: ["robot state", "sdk", "apis", "robot api"]
 aliases:
   - /program/apis/robot/
   - /build/program/apis/robot/
+  - /appendix/apis/robot/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
