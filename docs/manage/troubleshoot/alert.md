@@ -65,7 +65,6 @@ If you are on another operating system, telegraf will be installed automatically
 
 {{% /expand%}}
 
-
 {{< alert title="Note" color="note" >}}
 You must run `viam-server` with `sudo` to monitor machine performance metrics.
 {{< /alert >}}
@@ -671,7 +670,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
     {
       "name": "trigger-1",
       "event": {
-        "type": "part_offline",
+        "type": "part_offline"
       },
       "notifications": [
         {
