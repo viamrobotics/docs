@@ -1,6 +1,6 @@
 ### GetEndPosition
 
-Get the current position of the arm as a [pose](/internals/orientation-vector/).
+Get the current position of the arm as a [pose](/operate/reference/orientation-vector/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -72,7 +72,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### MoveToPosition
 
-Move the end of the arm in a straight line to the desired [pose](/internals/orientation-vector/), relative to the base of the arm.
+Move the end of the arm in a straight line to the desired [pose](/operate/reference/orientation-vector/), relative to the base of the arm.
 
 All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 
@@ -560,8 +560,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the arm in its current configuration, in the [frame](/services/frame-system/) of the arm.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the arm in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the arm.
+The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

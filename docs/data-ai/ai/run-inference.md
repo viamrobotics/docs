@@ -33,7 +33,7 @@ Then, from the **Select model** dropdown, select the name of the ML model servic
 
 ### Test your changes
 
-You can test a deployed vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/fleet/control/).
+You can test a deployed vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
 
 The camera stream shows when the vision service identifies something.
 Try pointing the camera at a scene similar to your training data.
@@ -54,7 +54,7 @@ Now if you reopen the panel, you will only see classifications or detections wit
 
 {{< /expand>}}
 
-For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
+For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/data-ai/reference/vision/mlmodel/).
 
 ## Use an SDK
 

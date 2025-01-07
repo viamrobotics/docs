@@ -17,10 +17,10 @@ date: "2024-08-23"
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
-- Retrieve [organization](/cloud/organizations/) and location information
+- Retrieve [organization](/dev/reference/glossary/organizaion/) and location information
 - Manage [machine fleet](/fleet/) data and logs
 - Control machines by issuing component and service commands
-- Upload and manage [modular resources](/registry/) in the Viam Registry
+- Upload and manage modular resources in the [Viam Registry](https://app.viam.com/registry/)
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -540,7 +540,7 @@ done
 
 ### `locations`
 
-The `locations` command allows you to manage the [locations](/cloud/locations/) that you have access to.
+The `locations` command allows you to manage the [locations](/manage/reference/organize/) that you have access to.
 With it, you can list available locations, filter locations by organization, or create a new location API key.
 
 ```sh {class="command-line" data-prompt="$"}
@@ -715,7 +715,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
 | `--name` | The name of the custom module to be created | `create` | **Required** |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
-| `--public-namespace` | The [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
+| `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | **Required** |
 | `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the raspberry pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
 | `--version` | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument) | `upload` | **Required** |
@@ -725,7 +725,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-- Use the `--public-namespace` argument to supply the [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) of your organization. This will upload your module to the Viam Registry and share it with other users.
+- Use the `--public-namespace` argument to supply the namespace of your organization. This will upload your module to the Viam Registry and share it with other users.
 - Use the `--org-id` to provide your organization ID instead, This will upload your module privately within your organization.
 
 You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`"visibility": "public"`) to the Viam Registry.
@@ -802,14 +802,14 @@ The `meta.json` file includes the following configuration options:
     <td><code>module_id</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the module, including its <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a>.</td>
+    <td>The name of the module, including its namespace.</td>
 
   </tr>
   <tr>
     <td><code>visibility</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>Whether the module is accessible only to members of your <a href="/cloud/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+    <td>Whether the module is accessible only to members of your <a href="/dev/reference/glossary/organization/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
   </tr>
   <tr>
     <td><code>url</code></td>
@@ -857,7 +857,7 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/how-tos/create-module/#name-your-new-resource-model) must match the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the namespace of your model match the namespace of your [organization](/dev/reference/glossary/organization/).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
@@ -1404,7 +1404,7 @@ viam whoami
 ### `auth-app`
 
 The `auth-app` command allows you to register, update, and get your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
-The user's credentials allow them the same [permissions](/cloud/rbac/) to organizations, locations, and machines that they have in the Viam app.
+The user's credentials allow them the same [permissions](/manage/manage/rbac/) to organizations, locations, and machines that they have in the Viam app.
 
 ```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
 viam auth-app register --org-id=<org-id> --application-name=<application-name> --origin-uris=<origin-uris> --redirect-uris=<redirect-uris> --logout-uri=<logout-uri>

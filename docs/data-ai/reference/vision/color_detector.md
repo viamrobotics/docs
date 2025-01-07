@@ -124,7 +124,7 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 ### Live camera footage
 
-1. Configure a [camera component](/components/camera/).
+1. Configure a [camera component](/operate/reference/components/camera/).
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
@@ -136,7 +136,7 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 {{% expand "Click to see how to configure a camera live feed that shows detections or classifications" %}}
 
-Configure a [transform camera](/components/camera/transform/) with the following attributes:
+Configure a [transform camera](/operate/reference/components/camera/transform/) with the following attributes:
 
 ```json
 {

@@ -13,7 +13,7 @@ date: "2022-01-01"
 
 The navigation service API allows you to define waypoints and move your machine along those waypoints while avoiding obstacles.
 
-The [navigation service](/services/navigation/) supports the following methods:
+The [navigation service](/operate/reference/services/navigation/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/navigation-table.md" >}}
 

@@ -62,7 +62,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **Explanation (conceptual)**: An understanding-oriented piece of content.
   This content provides background knowledge on a topic and tends to be referenced in how-to guides and tutorials.
-  For example the [`viam-server` page](/architecture/viam-server/) or the [Registry page](/registry/).
+  For example the [`viam-server` page](/architecture/viam-server/).
   It’s useful to have a real or imagined "Why?" question to serve as a prompt.
 
   {{< expand "Click to view template" >}}
@@ -94,7 +94,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like instructions to sauté onions.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
-  For example, the [Installation page](/operate/get-started/setup/) or the [Find module page](/registry/modular-resources/).
+  For example, the [Move a base](/operate/mobility/move-base/) page.
 
   {{< expand "Click to view template" >}}
 
@@ -159,7 +159,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{< /expand >}}
 
 - **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
-  Examples include the [API pages](/appendix/apis/) as well as [component and service pages](/operate/reference/components/arm/).
+  Examples include the [API pages](/dev/reference/apis/) as well as [component and service pages](/operate/reference/components/arm/).
 
   Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/components/component/_index.md).
 

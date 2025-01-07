@@ -73,7 +73,7 @@ You must run `viam-server` with `sudo` to monitor machine performance metrics.
 ### Add performance sensor
 
 {{< table >}}
-{{% tablestep link="/registry/modular-resources/#configuration" %}}
+{{% tablestep link="/operate/reference/module-configuration/#modular-resource-configuration-details" %}}
 **1. Add the performance metrics sensor**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.
@@ -113,7 +113,7 @@ You can also see readings on the **CONTROL** tab.
 
 ### Configure data management
 
-To capture or alert on the data from your configured sensor, you must add the [data management service](/services/data/) and configure it to capture and sync the sensor data:
+To capture or alert on the data from your configured sensor, you must add the [data management service](/data-ai/capture-data/capture-sync/) and configure it to capture and sync the sensor data:
 
 {{< table >}}
 {{% tablestep link="/services/data/" %}}
@@ -393,7 +393,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Data synced
 
-You must [configure data capture](/services/data/) for your machine to use this trigger.
+You must [configure data capture](/data-ai/capture-data/capture-sync/) for your machine to use this trigger.
 
 {{< tabs >}}
 {{% tab name="Builder mode" %}}

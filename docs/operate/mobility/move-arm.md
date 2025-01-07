@@ -146,7 +146,7 @@ if err != nil {
 
 {{<gif webm_src="/how-tos/move_to_position.webm" mp4_src="/how-tos/move_to_position.mp4" alt="A robot arm moving to a commanded position" max-width="200px" class="alignright">}}
 
-This code gets the arm's end position, makes a 100 millimeter adjustment in the +Z direction, and then uses that adjustment as a goal [`Pose`](/internals/orientation-vector/) when commanding arm motion.
+This code gets the arm's end position, makes a 100 millimeter adjustment in the +Z direction, and then uses that adjustment as a goal [`Pose`](/operate/reference/orientation-vector/) when commanding arm motion.
 Run the code to see your arm move 100 mm upwards.
 For more information, see [`MoveToPosition`](/dev/reference/apis/components/arm/#movetoposition).
 

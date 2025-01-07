@@ -32,7 +32,7 @@ These standardized APIs are implemented by {{< glossary_tooltip term_id="module"
 
 Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
 
-Viam also supports various software services such as [data capture](/data-ai/get-started/capture-sync/) and [computer vision](/data-ai/ai/create-dataset/), designed to integrate seamlessly with the hardware driver modules.
+Viam also supports various software services such as [data capture](/data-ai/capture-data/capture-sync/) and [computer vision](/data-ai/ai/create-dataset/), designed to integrate seamlessly with the hardware driver modules.
 
 ## Supported hardware
 
@@ -119,5 +119,5 @@ To add a service to your machine:
 ## How modules run
 
 Modules run alongside [`viam-server`](/architecture/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/architecture/viam-server/#dependency-management), [start-up](/architecture/viam-server/#start-up), [reconfiguration](/architecture/viam-server/#reconfiguration), [data management](/services/data/#configuration), and [shutdown](/architecture/viam-server/#shutdown) behavior of your modular resource.

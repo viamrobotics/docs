@@ -60,7 +60,7 @@ First, connect the camera to your machine's computer if it's not already connect
 Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 The `webcam` model supports most USB cameras and inbuilt laptop webcams.
-You can find additional camera models in the [camera configuration](/components/camera/#configuration) documentation.
+You can find additional camera models in the [camera configuration](/operate/reference/components/camera/#configuration) documentation.
 
 Complete the camera configuration and use the **TEST** panel in the configuration card to test that the camera is working.
 
@@ -85,7 +85,7 @@ Now that you have seen that the cameras on your Try Viam rover work, begin by [C
 You can drive the rover around as you capture data to get a variety of images from different angles.
 
 {{< alert title="Tip" color="tip" >}}
-Be aware that if you are running out of time during your rental, you can [extend your rover rental](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+Be aware that if you are running out of time during your rental, you can extend your rover rental as long as there are no other reservations.
 {{< /alert >}}
 
 {{% /expand%}}
@@ -149,7 +149,7 @@ Your training script may output logs at the error level but still succeed.
 
 {{< /alert >}}
 
-You can also view your training jobs' logs with the [`viam train logs`](/cli/#train) command.
+You can also view your training jobs' logs with the [`viam train logs`](/dev/tools/cli/#train) command.
 
 {{% /tablestep %}}
 {{< /table >}}

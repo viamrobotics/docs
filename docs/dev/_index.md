@@ -129,7 +129,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 
 Once you have configured a robotic base, you can drive it using the base API.
 
-[Drive a base →](/how-tos/drive-rover/)
+[Drive a base →](/tutorials/control/drive-rover/)
 
   </div>
   <div class="explanationvisual">
@@ -224,7 +224,7 @@ void spin_motor(std::shared_ptr<viam::sdk::Motor> motor) {
 
 Once you have configured a motor, you can operate it using the motor API.
 
-[Control a motor →](/tutorials/control/control-motor/)
+[Control a motor →](/dev/reference/apis/components/motor/)
 
   </div>
   <div class="explanationvisual">
@@ -297,7 +297,7 @@ std::cout << "co2-monitor get_readings return value " << co2monitor_get_readings
 
 Once you have configured a physical sensor or anything else that provides measurements, you can get sensor readings using the sensor API.
 
-[Collect sensor data →](/how-tos/collect-sensor-data/)
+[Collect sensor data →](/data-ai/capture-data/capture-sync/)
 
   </div>
 </div>
@@ -346,7 +346,7 @@ err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
 
 Once you have configured a robotic arm, you can move it using the arm API.
 
-[Move a robotic arm →](/how-tos/move-robot-arm/)
+[Move a robotic arm →](/operate/mobility/move-arm/)
 
   </div>
   <div class="explanationvisual">
@@ -430,7 +430,7 @@ result, err := myTwilioSvc.DoCommand(context.Background(), command)
 
 Using the Viam Registry you can turn services and your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
 
-[Create a module →](/how-tos/create-module/)
+[Create a module →](/operate/get-started/other-hardware/)
 
   </div>
 </div>
@@ -542,7 +542,7 @@ tabular_data, count, last = await data_client.tabular_data_by_filter(
 
 You can query synced sensor data, images, and any other binary or timeseries data from all your machines using the data client API.
 
-[Learn about Data Management →](/services/data/)
+[Learn about Data Management →](/data-ai/capture-data/capture-sync/)
 
   </div>
 </div>
@@ -711,7 +711,7 @@ for m in machines:
 
 Get status information and logs from all your deployed machines using the fleet management API.
 
-[Learn about Platform APIs →](/appendix/apis/#platform-apis)
+[Learn about Platform APIs →](/dev/reference/apis/#platform-apis)
 
   </div>
 </div>
@@ -749,7 +749,7 @@ job_metadata = await ml_training_client.get_training_job(
 
 Build machine learning models based on your machines' data any time using the ML training client API
 
-[Train and deploy ML models →](/how-tos/train-deploy-ml/)
+[Train and deploy ML models →](/data-ai/ai/train-tflite/)
 
   </div>
 </div>
@@ -789,7 +789,7 @@ api_key, api_key_id = await cloud.create_key(
 
 Viam allows you to organize and manage any number of machines. When collaborating with others, you can assign permissions using Role-Based Access Control (RBAC). Programmatically you can do this with the fleet management API.
 
-[Learn about access control →](/cloud/rbac/)
+[Learn about access control →](/manage/manage/rbac/)
 
   </div>
 </div>

@@ -20,7 +20,7 @@ date: "2022-01-01"
 The motion service enables your machine to plan and move itself or its components relative to itself, other machines, and the world.
 The motion service:
 
-1. Gathers the current positions of the machine’s components as defined with the [frame system](/services/frame-system/).
+1. Gathers the current positions of the machine’s components as defined with the [frame system](/operate/mobility/define-geometry/).
 2. Plans the necessary motions to move a component to a given destination while obeying any [constraints you configure](constraints/).
 
 The motion service can:
@@ -30,7 +30,7 @@ The motion service can:
 
 ## Configuration
 
-You need to configure frames for your machine's components with the [frame system](/services/frame-system/).
+You need to configure frames for your machine's components with the [frame system](/operate/mobility/define-geometry/).
 This defines the spatial context within which the motion service operates.
 
 The motion service itself is enabled on the machine by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.

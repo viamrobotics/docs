@@ -24,7 +24,7 @@ After following this tutorial, you will understand how to control sync parameter
 Note: Consider this tutorial alongside filtered camera tutorial.
 -->
 
-If your machine [captures](/services/data/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
+If your machine [captures](/data-ai/capture-data/capture-sync/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
 For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
 
 In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/operate/reference/components/camera/) to only capture images where your pet is in the frame in the following way:
@@ -161,7 +161,7 @@ For more information, refer to [Write your new resource model definition](/how-t
 
 The filter function in your custom filter module must contain two critical elements:
 
-1. A utility function that will check if the caller of the filter function is the [data management service](/services/data/).
+1. A utility function that will check if the caller of the filter function is the [data management service](/data-ai/capture-data/capture-sync/).
 1. A safeguard that ensures if the data management service is not the caller, an error and the unfiltered data is returned.
 
 {{< alert title="Important" color="note" >}}
@@ -827,12 +827,12 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 
 Next, add the following services to your smart machine to support the color filter module:
 
-- The [data management service](/services/data/) enables your smart machine to capture data and sync it to the cloud.
-- The [vision service](/services/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
+- The [data management service](/data-ai/capture-data/capture-sync/) enables your smart machine to capture data and sync it to the cloud.
+- The [vision service](/data-ai/reference/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
 
 ### Add the data management service
 
-To enable data capture on your machine, add and configure the [data management service](/services/data/) to capture and store data on your machine's computer:
+To enable data capture on your machine, add and configure the [data management service](/data-ai/capture-data/capture-sync/) to capture and store data on your machine's computer:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -849,7 +849,7 @@ To enable data capture on your machine, add and configure the [data management s
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
-   For more detailed information, see [Add the data management service](/services/data/#configuration).
+   For more detailed information, see [Add the data management service](/data-ai/capture-data/capture-sync/#configuration).
    {{% /tab %}}
    {{% tab name="JSON Template" %}}
    Add the data management service to the services array in your rover’s raw JSON configuration:
@@ -873,7 +873,7 @@ To enable data capture on your machine, add and configure the [data management s
 
 ### Add the vision service
 
-To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/services/vision/color_detector/).
+To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/data-ai/reference/vision/color_detector/).
 For this tutorial, we will configure the vision service to recognize a blue dog collar using `#43A1D0` or `rgb(67, 161, 208)`.
 If you have a different item you want to use, or want to match to a color that matches your pet closely, you can use a different color.
 
@@ -896,7 +896,7 @@ Your configuration should look like the following:
 
 ![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
 
-For more detailed information, refer to [Configure a color detector](/services/vision/color_detector/).
+For more detailed information, refer to [Configure a color detector](/data-ai/reference/vision/color_detector/).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

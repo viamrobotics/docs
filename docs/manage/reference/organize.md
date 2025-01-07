@@ -29,7 +29,7 @@ You cannot move machines to other locations once created.
 ## Create organizations and locations
 
 {{< table >}}
-{{% tablestep link="/cloud/organizations/" %}}
+{{% tablestep link="/dev/reference/glossary/organization/" %}}
 **1. Create organizations**
 
 1. Log into [Viam app](https://app.viam.com) in a web browser.
@@ -38,7 +38,7 @@ You cannot move machines to other locations once created.
 1. Create additional organizations as needed.
 
 {{% /tablestep %}}
-{{% tablestep link="/cloud/locations/" %}}
+{{% tablestep %}}
 **2. Create locations**
 
 1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
@@ -50,7 +50,7 @@ You cannot move machines to other locations once created.
 1. Create additional locations as needed using the **Add location** button, on the left of the **LOCATIONS** page.
 
 {{% /tablestep %}}
-{{% tablestep link="/cloud/locations/" %}}
+{{% tablestep %}}
 **3. Create sub-locations**
 
 If needed, you can add further sub-locations to, for example, differentiate groups of machines within an office.

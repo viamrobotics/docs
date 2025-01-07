@@ -17,7 +17,7 @@ date: "2022-01-01"
 # SMEs: Raymond
 ---
 
-The navigation service is the stateful definition of Viam's [motion service](/services/motion/).
+The navigation service is the stateful definition of Viam's [motion service](/operate/reference/services/motion/).
 It uses GPS to autonomously navigate a rover [base](/operate/reference/components/base/) to user-defined waypoints.
 
 Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](/dev/reference/apis/services/navigation/#setmode) to move your rover along a defined path at your desired motion configuration.
@@ -151,23 +151,23 @@ The following attributes are available for `Navigation` services:
 | `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
 | `base` | string | **Required** | The `name` you have configured for the [base](/operate/reference/components/base/) you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/operate/reference/components/movement-sensor/) you have configured for the base you are operating with this service. |
-| `motion_service` | string | Optional | The `name` of the [motion service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your machine, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
+| `motion_service` | string | Optional | The `name` of the [motion service](/operate/reference/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your machine, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
 | `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/operate/reference/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/services/motion/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
 | `position_polling_frequency_hz` | float | Optional | The frequency in Hz to poll for the position of the machine. <br> Default: `1` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in Hz to poll each vision service for new obstacles. <br> Default: `1` |
 | `plan_deviation_m` | float | Optional | The distance in meters that a machine is allowed to deviate from the motion plan. <br> Default: `2.6`|
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/operate/reference/components/base/) in degrees per second. <br> Default: `20` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/operate/reference/components/base/) in meters per second. <br> Default: `0.3` |
-| `obstacles` | obj | Optional | Any obstacles you wish to add to the machine's path. See the [motion service](/services/motion/) for more information. |
-| `bounding_regions` | obj | Optional | Set of bounds which the robot must remain within while navigating. See the [motion service](/services/motion/) for more information. |
+| `obstacles` | obj | Optional | Any obstacles you wish to add to the machine's path. See the [motion service](/operate/reference/services/motion/) for more information. |
+| `bounding_regions` | obj | Optional | Set of bounds which the robot must remain within while navigating. See the [motion service](/operate/reference/services/motion/) for more information. |
 
 ### Configure and calibrate the frame system service for GPS navigation
 
 {{% alert title="Info" color="info" %}}
 
-The [frame system service](/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
+The [frame system service](/operate/mobility/define-geometry/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
 
-It stores the required contextual information for Viam's services like [Motion](/services/motion/) and [Vision](/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
+It stores the required contextual information for Viam's services like [Motion](/operate/reference/services/motion/) and [Vision](/data-ai/reference/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
 
 {{% /alert %}}
 
@@ -175,7 +175,7 @@ To make sure your rover base's autonomous GPS navigation with the navigation ser
 
 #### Configure
 
-Add a [nested reference frame](/services/frame-system/nested-frame-config/) configuration to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/):
+Add a [nested reference frame](/operate/mobility/define-geometry/#configure-nested-reference-frames) configuration to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/):
 
 - Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com) and select the **Frame** mode.
 - From the left-hand menu, select your base.
@@ -238,12 +238,12 @@ Each concept is a type of relative or absolute measurement, taken by a [movement
 
 Here's how to use the following types of measurements:
 
-- [Compass Heading](/services/navigation/#compass-heading)
-- [Orientation](/services/navigation/#orientation)
-- [Angular Velocity](/services/navigation/#angular-velocity)
-- [Position](/services/navigation/#position)
-- [Linear Acceleration](/services/navigation/#linear-acceleration)
-- [Linear Velocity](/services/navigation/#linear-velocity)
+- [Compass Heading](/operate/reference/services/navigation/#compass-heading)
+- [Orientation](/operate/reference/services/navigation/#orientation)
+- [Angular Velocity](/operate/reference/services/navigation/#angular-velocity)
+- [Position](/operate/reference/services/navigation/#position)
+- [Linear Acceleration](/operate/reference/services/navigation/#linear-acceleration)
+- [Linear Velocity](/operate/reference/services/navigation/#linear-velocity)
 
 ### Compass heading
 
@@ -282,13 +282,13 @@ An example of an `Orientation` reading:
 orientation, err := imuwit.Orientation(context.Background(), nil)
 ```
 
-Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/internals/orientation-vector/).
+Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/operate/reference/orientation-vector/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
-You can choose the origin reference frame by configuring it using Viam's [frame system](/services/frame-system/).
+You can choose the origin reference frame by configuring it using Viam's [frame system](/operate/mobility/define-geometry/).
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
 To read orientation, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Additionally, follow [these instructions](/operate/mobility/define-geometry/#configure-a-reference-frame) to configure the geometries of each component of your machine within the [frame system](/operate/services/frame-system/).
+Additionally, follow [these instructions](/operate/mobility/define-geometry/#configure-a-reference-frame) to configure the geometries of each component of your machine within the [frame system](/operate/mobility/define-geometry/).
 Then use the movement sensor API's [`GetOrientation()`](/dev/reference/apis/components/movement-sensor/#getorientation) method to get orientation readings.
 
 ### Angular velocity
@@ -371,7 +371,7 @@ An example of a `LinearAcceleration` reading:
 linearAcceleration, err := imu.LinearAcceleration(context.Background(), nil)
 ```
 
-You can use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.
+You can use linear acceleration readings to determine the rate of change of the [linear velocity](/operate/reference/services/navigation/#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.
 
 To get linear acceleration, [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
 Then use the movement sensor API's [`GetLinearAcceleration()`](/dev/reference/apis/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.

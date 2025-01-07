@@ -195,7 +195,7 @@ The following properties are configurable for each module:
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/registry/modular-resources/#module-versioning).</p> |
+| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/reference/module-configuration/#module-versioning).</p> |
 | `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam Registry](https://app.viam.com/registry) or is only available [locally](/operate/get-started/other-hardware/#test-your-module-locally) on your computer. |
 | `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. |
 | `name` | string | **Required** | A name for this instance of the module. |
@@ -241,7 +241,7 @@ Each module has access to the following default environment variables:
 | ---- | ----------- |
 | `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default: `$HOME/.viam` |
 | `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module. If you are using a [local module](/operate/get-started/other-hardware/#test-your-module-locally), you must set this value manually if your module requires it.<br>Example: `/opt/my-module/verxxxx-my-module/` |
-| `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/sdks/python/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-machine-id/my-module-name/` |
+| `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/dev/reference/sdks/python/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-machine-id/my-module-name/` |
 | `VIAM_MODULE_ID` | The module ID of the module. <br>Example: `viam:realsense` |
 
 You can also set additional environment variables.

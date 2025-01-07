@@ -12,7 +12,7 @@ no_list: true
 
 [Encoded motors](/operate/reference/components/motor/encoded-motor/) and [sensor controlled bases](/operate/reference/components/base/sensor-controlled/) use a control loop that is implemented by `viam-server`.
 You can configure the `control_parameters` attribute for both components to adjust the control loop.
-However, if you want to change or customize the control loops on these components beyond the configurable parameter, or you want to add a control loop to a different component, you can use the controls package to [build your own PID control loop](/internals/controls-package/#creating-and-using-a-pid-control-loop).
+However, if you want to change or customize the control loops on these components beyond the configurable parameter, or you want to add a control loop to a different component, you can use the controls package to [build your own PID control loop](/operate/reference/controls-package/#creating-and-using-a-pid-control-loop).
 
 The control package implements feedback control on an endpoint, which is usually the hardware you are trying to control.
 With the control package, users can design a control loop that monitors a process variable (PV) and compares it with a set point (SP).
@@ -38,29 +38,29 @@ The following functions are available for creating and using a control loop:
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----------- | ----------- |
-| [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) | Creates a [PIDLoop](/internals/controls-package/#pidloop) object that contains all the necessary attributes to run a control loop based on the specified [Options](/internals/controls-package/#options). |
-| [`TunePIDLoop`](/internals/controls-package/#tunepidloop) | Automatically tunes the system and logs the calculated PID values for the loop. |
-| [`StartControlLoop`](/internals/controls-package/#startcontrolloop) | Starts the control loop in a background thread. |
-| [`CreateConstantBlock`](/internals/controls-package/#createconstantblock) | Creates a control block of type `constant`, all control loops need at least one constant block representing the set point. |
-| [`UpdateConstantBlock`](/internals/controls-package/#updateconstantblock) | Updates the value of a constant block to the new set point. |
-| [`CreateTrapzBlock`](/internals/controls-package/#createtrapzblock) | Creates a control block of type `trapezoidalVelocityProfile`. Control loops that control position (for example, control loops for encoded motors), need a trapezoidal velocity profile block. |
-| [`UpdateTrapzBlock`](/internals/controls-package/#updatetrapzblock) | Updates the attributes of a trapezoidal velocity profile block to the new desired max velocity. |
+| [`SetupPIDControlConfig`](/operate/reference/controls-package/#setuppidcontrolconfig) | Creates a [PIDLoop](/operate/reference/controls-package/#pidloop) object that contains all the necessary attributes to run a control loop based on the specified [Options](/operate/reference/controls-package/#options). |
+| [`TunePIDLoop`](/operate/reference/controls-package/#tunepidloop) | Automatically tunes the system and logs the calculated PID values for the loop. |
+| [`StartControlLoop`](/operate/reference/controls-package/#startcontrolloop) | Starts the control loop in a background thread. |
+| [`CreateConstantBlock`](/operate/reference/controls-package/#createconstantblock) | Creates a control block of type `constant`, all control loops need at least one constant block representing the set point. |
+| [`UpdateConstantBlock`](/operate/reference/controls-package/#updateconstantblock) | Updates the value of a constant block to the new set point. |
+| [`CreateTrapzBlock`](/operate/reference/controls-package/#createtrapzblock) | Creates a control block of type `trapezoidalVelocityProfile`. Control loops that control position (for example, control loops for encoded motors), need a trapezoidal velocity profile block. |
+| [`UpdateTrapzBlock`](/operate/reference/controls-package/#updatetrapzblock) | Updates the attributes of a trapezoidal velocity profile block to the new desired max velocity. |
 
 ### SetupPIDControlConfig
 
-Creates a [PIDLoop](/internals/controls-package/#pidloop) object, which contains all the attributes related to a control loop that a controlled component needs, including, most importantly, the control config.
+Creates a [PIDLoop](/operate/reference/controls-package/#pidloop) object, which contains all the attributes related to a control loop that a controlled component needs, including, most importantly, the control config.
 
 **Parameters:**
 
-- `pidVals` [([]PIDConfig)](/internals/controls-package/#pidconfig): The P, I, and D values for the control loop, if all are zero the loop will auto-tune and log the calculated PID values.
+- `pidVals` [([]PIDConfig)](/operate/reference/controls-package/#pidconfig): The P, I, and D values for the control loop, if all are zero the loop will auto-tune and log the calculated PID values.
 - `componentName` [(string)](https://pkg.go.dev/builtin#string): The name of the component that the PID loop controls.
-- `options` [(Options)](/internals/controls-package/#options): All the desired optional parameters to customize the control loop.
-- `c` [(Controllable)](/internals/controls-package/#controllable): An interface that contains the necessary functions to move the controlled component.
+- `options` [(Options)](/operate/reference/controls-package/#options): All the desired optional parameters to customize the control loop.
+- `c` [(Controllable)](/operate/reference/controls-package/#controllable): An interface that contains the necessary functions to move the controlled component.
 - `logger` (Logger): The logger of the controlled component to log any issues with the control loop setup.
 
 **Returns:**
 
-- [(PIDLoop)](/internals/controls-package/#pidloop): A struct containing all relevant control loop attributes.
+- [(PIDLoop)](/operate/reference/controls-package/#pidloop): A struct containing all relevant control loop attributes.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go
@@ -131,7 +131,7 @@ Creates a new control block of type `constant`.
 
 **Returns:**
 
-[(BlockConfig)](/internals/controls-package/#blockconfig): The config for the newly created block.
+[(BlockConfig)](/operate/reference/controls-package/#blockconfig): The config for the newly created block.
 
 ```go
 constBlock := control.CreatConstantBlock(context.Background(), "set_point", 10.0)
@@ -169,7 +169,7 @@ Creates a new control block of type `trapezoidalVelocityProfile`.
 
 **Returns:**
 
-[(BlockConfig)](/internals/controls-package/#blockconfig): The config for the newly created block.
+[(BlockConfig)](/operate/reference/controls-package/#blockconfig): The config for the newly created block.
 
 ```go
 trapzBlock := control.CreateTrapzBlock(context.Background(), "set_point", 10.0, []string{"set_point", "endpoint"})
@@ -197,7 +197,7 @@ err := control.UpdateTrapzBlock(context.Background(), "set_point", 10.0, []strin
 
 ### PIDLoop
 
-`PIDLoop` is a struct containing all the attributes for setting up a PID control loop. [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) will create this object for you.
+`PIDLoop` is a struct containing all the attributes for setting up a PID control loop. [`SetupPIDControlConfig`](/operate/reference/controls-package/#setuppidcontrolconfig) will create this object for you.
 
 ```go
 type PIDLoop struct {
@@ -269,13 +269,13 @@ type Options struct {
 ```
 
 The built in control loop setup is only structured to work with an encoded motor or a sensor controlled base. If you wish to use a different setup, you can use the options by setting `UseCustomConfig` to `true` and `CompleteCustomConfig` to your custom control loop config of type `control.Config`.
-The [Control Blocks](/internals/controls-package/#control-blocks) section details the different options for control blocks and how to create a `control.Config`.
+The [Control Blocks](/operate/reference/controls-package/#control-blocks) section details the different options for control blocks and how to create a `control.Config`.
 
 ### BlockConfig
 
 `BlockConfig` is a struct for the configuration of an individual control block.
 You have to build individual BlockConfigs if you use the `UseCustomConfig` option.
-Each block type requires different attributes, which are outlined in the [Control Blocks](/internals/controls-package/#control-blocks) section.
+Each block type requires different attributes, which are outlined in the [Control Blocks](/operate/reference/controls-package/#control-blocks) section.
 
 ```go
 type BlockConfig struct {
@@ -534,7 +534,7 @@ If you want to configure a control loop outside of the standard encoded motor or
 
 ### Using SetupPIDControlConfig
 
-The following is an example of how to manually set up and tune a control loop using the function [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig):
+The following is an example of how to manually set up and tune a control loop using the function [`SetupPIDControlConfig`](/operate/reference/controls-package/#setuppidcontrolconfig):
 
 ```go
 // set the necessary options for a component

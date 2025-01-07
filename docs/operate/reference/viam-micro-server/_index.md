@@ -20,7 +20,7 @@ date: "2024-09-03"
 
 ## Support
 
-[Client API](/appendix/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
+[Client API](/dev/reference/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 {{< cards >}}
 {{% relatedcard link="/dev/reference/apis/components/base/" %}}

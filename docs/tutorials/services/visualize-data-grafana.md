@@ -162,7 +162,7 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 1. Click the **Save & test** button to save your settings.
    Grafana will perform a health check on your configuration settings to verify that everything looks good.
 
-This connection allows Grafana to access all synced sensor data under your [organization](/cloud/organizations/), from any machine.
+This connection allows Grafana to access all synced sensor data under your [organization](/dev/reference/glossary/organization/), from any machine.
 
 ## Visualize your data
 
@@ -222,7 +222,7 @@ See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/
 
 In this tutorial, you learned:
 
-- how to use the [data management service](/services/data/) to capture data from your machine and sync it to the Viam app
+- how to use the [data management service](/data-ai/capture-data/capture-sync/) to capture data from your machine and sync it to the Viam app
 - how to [enable data query access](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) to your synced data
 - how to connect Grafana to your data
 - how to build a dashboard visualizing that data

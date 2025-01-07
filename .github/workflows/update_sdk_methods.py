@@ -435,10 +435,10 @@ override_description_links = {
     "SLAM service": "/services/slam/",
     "frame": "/services/frame-system/",
     "Viam app": "https://app.viam.com/",
-    "organization settings page": "/cloud/organizations/",
+    "organization settings page": "/manage/reference/organize/",
     "image tags": "/fleet/dataset/#image-tags",
     "API key": "/fleet/cli/#authenticate",
-    "board model": "/components/board/#configuration"
+    "board model": "/dev/reference/apis/components/board/"
 }
 
 ## Language-specific resource name overrides:
