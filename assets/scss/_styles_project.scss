@@ -18,7 +18,7 @@ a.footnote-ref::after {
 /* START Adjust Heading sizes*/
 
 .td-navbar {
-  background: black !important;
+  background-color: white !important;
 }
 
 /* This ensures there is no padding added to the top logo bar */
@@ -35,13 +35,26 @@ a.footnote-ref::after {
   font-size: 0.833rem;
   line-height: 1.667em;
   letter-spacing: 0.1875rem;
-  padding: 5px 10px;
+  padding: 5px 8px;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   a {
-    color: white;
+    color: black;
   }
+}
+
+.td-navbar .navbar-brand span:last-child {
+  vertical-align: middle;
+}
+
+.navbar-dark .navbar-brand, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
+  color: black;
+}
+
+.td-navbar .navbar-brand svg {
+  height: 16px;
+  margin: 0;
 }
 
 .td-navbar .nav-link {
@@ -55,16 +68,17 @@ a.footnote-ref::after {
 }
 
 h1, .h1 {
-  font-family: Space Mono, sans-serif;
-  font-size: 2.667rem; // 32pt
+  font-family: Space grotesk, sans-serif;
+  font-size: 2.625rem; // 32pt
   margin-left: 0px;
+  font-weight: 500;
 }
 
 h2, .h2 {
-  font-family: space grotesk, sans-serif;
-  font-size: 2.0rem !important; // 24pt
-  line-height: 2.667rem;
-  font-weight: 600;
+  font-family: Public sans, sans-serif;
+  font-size: 1.25rem !important; // 20px
+  line-height: 1.25rem;
+  font-weight: 500;
   clear: both;
 }
 
@@ -78,26 +92,26 @@ h2, .h2 {
 
 h3, .h3 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.6667rem !important; // 20pt
+  font-size: 1.1667rem !important; // 20pt
   font-weight: 400;
   clear: both;
 }
 
 h4, .h4 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.3333rem !important; // 16pt
+  font-size: 1.0rem !important; // 16pt
   line-height: 1.4375em;
   clear: both;
 }
 
 h5, .h5 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.1667rem !important; // 14pt
+  font-size: 0.933rem !important; // 14pt
   clear: both;
 }
 
 h6, .h6 {
-  font-size: 1.0rem !important;
+  font-size: 0.933rem !important;
   line-height: 1.0625rem; // 12pt
   clear: both;
 }
@@ -157,7 +171,6 @@ h7, .h7 {
 
 .td-toc ul li a {
   font-size: 0.833rem;
-  font-weight: 500;
   color: #333333;
   text-decoration: none;
 }
@@ -213,6 +226,14 @@ a > code {
   color: #333333 !important;
 }
 
+.nav-fold * #TableOfContents ul li ul {
+  padding: 0;
+}
+
+.nav-fold * #TableOfContents ul li ul.is-collapsed {
+  display: none;
+}
+
 p, li {
   color: #515151;
   a {
@@ -232,17 +253,25 @@ p, li {
 
 // START FOOTER STYLING
 
+footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 footer a {
   color: #fff !important;
 }
 
 /* sets the footer to black. */
 .bg-dark {
-  background-color: black !important;
+  background-color: white !important;
 }
 
 footer * small {
-  color: white;
+  color: black;
+}
+
+.text-white, footer a {
+  color: black !important;
 }
 
 /* START no whitespace beneath footer */
@@ -261,9 +290,10 @@ footer small {
 
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
+  font-family: "Public Sans light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: normal;
-  font-size: 1rem !important;
-  line-height: 1.5em !important;
+  font-size: 0.938rem !important;
+  line-height: 1.625rem !important;
 }
 
 /*
@@ -338,6 +368,7 @@ END MARKETING CSS
   color: black;
   border: 1px solid black;
   margin-right: 5px;
+  padding: 1rem 1.25rem;
 
   @each $color, $value in $theme-colors {
     &-#{$color} {
@@ -351,8 +382,12 @@ END MARKETING CSS
   }
 }
 
+.alert > ul:last-child, .alert > p:last-child {
+  margin-bottom: 0 !important;
+}
+
 .td-content .alert:not(:first-child) {
-  margin-top: 1.5rem;
+  margin-top: 37px;
   margin-bottom: 1.5rem;
   clear: both;
 }
@@ -437,7 +472,7 @@ END MARKETING CSS
 
 .expand-label {
   background-color: whitesmoke;
-  border: black solid 1px;
+  border: #d9d9d9 solid 1px;
   padding: 0.5rem 1rem 0.5rem 1rem;
   i {
     font-size: inherit !important;
@@ -449,20 +484,25 @@ END MARKETING CSS
 .expand-label span h5 {
   display: inline;
   font-family: Public Sans,system-ui;
+  font-size: 0.938rem !important;
+}
+
+.tablestep * .expand-label, .tablestep * .expand-content {
+  background-color: white !important;
 }
 
 .expand-content {
-  border-top: black solid 0px;
-  border-left: black solid 1px;
-  border-right: black solid 1px;
-  border-bottom: black solid 1px;
+  border-top: #d9d9d9 solid 0px;
+  border-left: #d9d9d9 solid 1px;
+  border-right: #d9d9d9 solid 1px;
+  border-bottom: #d9d9d9 solid 1px;
   background: whitesmoke;
   padding: 1rem;
   overflow: hidden;
 }
 
 .expand {
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
   clear: both;
 }
 
@@ -481,8 +521,13 @@ END MARKETING CSS
 details * i.fa-chevron-down {
   display: none;
 }
+
 details * i.fa-chevron-right {
   display: unset;
+}
+
+details * i {
+  -webkit-text-stroke: 1px whitesmoke;
 }
 
 details[open] * i.fa-chevron-down {
@@ -525,6 +570,18 @@ details summary::-webkit-details-marker {
 
 .expand.howtoexpand summary, .expand.howtoexpand .expand-content {
   background-color: #eaf9fb;
+}
+
+.expand.howtoexpand.light summary, .expand.howtoexpand.light .expand-content  {
+  background-color: rgba(200, 249, 183, 1.0) !important;
+}
+
+.expand.howtoexpand.middle summary, .expand.howtoexpand.middle .expand-content  {
+  background-color: rgba(189, 234, 196, 1.0) !important;
+}
+
+.expand.howtoexpand.dark summary, .expand.howtoexpand.dark .expand-content  {
+  background-color: rgba(163, 203, 178, 1.0) !important;
 }
 
 .howtoexpand .expand-label {
@@ -613,11 +670,12 @@ details summary::-webkit-details-marker {
 // Hover animations and colors
 
 .hover-card > a, .hover-card > .hovercardcontainer {
-  border: 1px solid #000;
+  border: 1px solid #dee2e6;
   border-radius: 2px;
   padding: 1rem;
   margin: 0px;
   transition: all .2s;
+  width: 100%;
 }
 
 .hover-card.link-with-icon {
@@ -632,7 +690,7 @@ details summary::-webkit-details-marker {
   -webkit-transform: translate(-3px,-3px);
   -ms-transform: translate(-3px,-3px);
   transform: translate(-3px,-3px);
-  box-shadow: 5px 5px 0 0 #000;
+  box-shadow: 5px 5px 0 0 #dee2e6;
 }
 
 .hover-card.yellow:hover > a {
@@ -1030,7 +1088,7 @@ td > ul, td > ol {
   margin-right: -1px;
   border-bottom: 1px solid rgb(209, 213, 219);
   border-top: 1px solid rgb(209, 213, 219);
-  padding: 0.25rem 0.75rem;
+  padding: 0.5rem 1.5rem;
   color: rgb(78, 79, 82);
   background-color: rgb(241, 241, 244);
 }
@@ -1400,6 +1458,16 @@ img.frame {
 
 ul.sectionlist {
   padding: 0;
+}
+
+ul.sectionlist.horizontal {
+  display: flex;
+  gap: 50px;
+}
+
+ul.sectionlist.horizontal > li {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 ul.sectionlist > li {
@@ -2125,6 +2193,23 @@ div .filterable > p {
   overflow: auto;
 }
 
+// Fix tables in steps and expanders
+
+.tablestep > table, .expand-content > table {
+  min-width: 100% !important;
+}
+
+.tablestep > table td, .tablestep > table th, .expand-content > table td, .expand-content > table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.tablestep * tbody > tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+
 .usecase-table .tablestep:nth-of-type(odd) {
   background-color: whitesmoke;
   border-top: 1px solid #d7d7d9;
@@ -2556,3 +2641,329 @@ div.explanation > .explanationvisual > .gif {
   opacity: 0;
   transition: opacity 250ms ease-out;
 }
+
+// Top level nav START
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navcontainer {
+  min-width: 100%;
+  display: flex;
+  padding: 0.25rem 1rem;
+  min-height: 50px;
+  background-color: white;
+}
+
+.td-topbar-sections {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  line-height: unset !important;
+}
+
+.td-topbar-sections > ul {
+  padding: 0;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0 0;
+  border-left: 1px solid black;
+}
+
+.td-topbar-sections > ul > li {
+  padding-right: 1.5rem;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.td-topbar-sections > ul > li > a {
+  color: black;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.td-topbar-sections > ul > li > a:hover {
+  text-decoration: none;
+}
+
+.second-nav {
+  background-color: rgb(239,239,242);
+  min-width: 100%;
+  padding: 0.25rem 1rem;
+}
+
+.second-nav > ul {
+  padding: 0;
+  padding-left: 0.25rem;
+  margin: 0.25rem 0 0 0;
+}
+
+.second-nav > ul > li {
+  padding-right: 3rem;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.second-nav > ul > li > a {
+  color: #333;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.second-nav > ul > li > a:hover {
+  text-decoration: none;
+}
+
+.second-nav * .active-path {
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .td-main main {
+      padding-top: 7.5rem;
+  }
+}
+
+.td-navbar {
+  min-height: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .second-nav {
+    display: none;
+  }
+}
+
+.navsectiontop.active-path {
+  border-bottom: 1px solid black;
+}
+
+#navsearch {
+  min-width: 250.633px;
+}
+
+span.section-overview {
+  display: none
+}
+
+.navsectiontop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .td-sidebar-nav__section ul.ul-1 {
+    padding-top: 0.5rem
+  }
+
+  .ul-1 > li.nav-fold.hide-if-desktop {
+    display: none;
+  }
+
+  .navsectiontop {
+    display: unset;
+  }
+
+  .menu-toggle.open-on-desktop {
+    display: none;
+  }
+
+  li.nav-fold.open-on-desktop > span > ul > li {
+    display: block !important;
+  }
+
+  li.nav-fold.header-only > span > span {
+    text-transform: uppercase;
+    font-family: Space Mono,sans-serif;
+    color: #aaa;
+    margin-top: 1rem;
+  }
+
+  li.nav-fold.open-on-desktop.header-only:first-child > span > a {
+    margin-top: 0.5rem;
+  }
+
+  li.nav-fold.open-on-desktop.header-only * li {
+    text-transform: unset;
+  }
+
+  li.open-on-desktop > span > ul.ul-2 {
+    padding-left: 0;
+  }
+
+  li.open-on-desktop.header-only > span > ul.ul-3 {
+    padding-left: 0;
+  }
+
+  span.section-overview-title {
+    display: none
+  }
+
+  span.section-overview {
+    display: block
+  }
+
+}
+
+a.tree-root {
+  display: none;
+}
+
+// Top level nav END
+
+// Next page START
+
+#next-page {
+  clear: both;
+}
+
+#next-page > div {
+  flex-direction: row;
+}
+
+#next-page > div.right-only {
+  flex-direction: row-reverse;
+}
+
+#next-page > div > div.hover-card {
+  min-width: 250px;
+  max-width: unset;
+}
+
+@media (min-width: 500px) {
+  #next-page > div > div.hover-card {
+    max-width: calc((100% - 1.5rem)/2);
+  }
+}
+
+#next-page > div > div.hover-card.left {
+  float: left;
+  margin: 0rem 0.75rem 0rem 0rem;
+}
+
+#next-page > div > div.hover-card.right {
+  float: right;
+  margin: 0rem 0rem 0rem 0.75rem;
+}
+
+#next-page > div > div.hover-card > a {
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#next-page > div > div.hover-card > a > div > p {
+  font-family: space grotesk,sans-serif;
+  font-size: 1.1667rem !important;
+  line-height: 1.4375em;
+}
+
+#next-page > div > div.hover-card > a > div {
+  display: flex;
+  align-items: center;
+}
+
+#next-page > div > div.hover-card > a > div.text {
+  flex-direction: column;
+}
+
+#next-page > div > div.hover-card > a > div.text > p:first-child {
+  text-transform: uppercase;
+  font-family: Space Mono,sans-serif;
+  color: #aaa;
+  font-size: 0.833rem !important;
+}
+
+#next-page > div > div.hover-card.left > a > div.text > p:first-child {
+  align-self: flex-end;
+}
+
+#next-page > div > div.hover-card.right > a > div.text > p:first-child {
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+
+#next-page > div > div.hover-card > a > div > div {
+  margin-bottom: 0;
+}
+
+#next-page > div > div.hover-card.left > a > div.arrow {
+  margin-right: 1.5rem;
+}
+
+#next-page > div > div.hover-card.left > a > div {
+  text-align: right;
+}
+
+#next-page > div > div.hover-card.right > a > div.arrow {
+  margin-left: 1.5rem;
+}
+
+#next-page > div > div.hover-card.right > a > div {
+  text-align: left;
+}
+
+
+// Next page END
+
+// Platform landing pages START
+
+#fleet-platform-management, #fleet-platform-team, #fleet-platform-monitor, #data-platform-capture, #data-platform-work, #data-platform-ai,
+#build-platform-connect, #build-platform-apps, #build-platform-motion,
+#build-platform, #data-platform, #fleet-platform {
+  display: none;
+}
+
+.hoverable-fleet:hover ~ #fleet-platform-all, .hoverable-team:hover ~ #fleet-platform-all, .hoverable-monitor:hover ~ #fleet-platform-all,
+.hoverable-capture:hover ~ #data-platform-all, .hoverable-work:hover ~ #data-platform-all, .hoverable-ai:hover ~ #data-platform-all,
+.hoverable-connect:hover ~ #build-platform-all, .hoverable-apps:hover ~ #build-platform-all, .hoverable-motion:hover ~ #build-platform-all,
+.hoverable-build:hover ~ #platform-all, .hoverable-data:hover ~ #platform-all, .hoverable-fleet:hover ~ #platform-all {
+  display: none;
+}
+
+.hoverable-fleet:hover ~ #fleet-platform-management, .hoverable-team:hover ~ #fleet-platform-team, .hoverable-monitor:hover ~ #fleet-platform-monitor, .hoverable-capture:hover ~ #data-platform-capture, .hoverable-work:hover ~ #data-platform-work, .hoverable-ai:hover ~ #data-platform-ai,
+.hoverable-connect:hover ~ #build-platform-connect, .hoverable-apps:hover ~ #build-platform-apps, .hoverable-motion:hover ~ #build-platform-motion,
+.hoverable-build:hover ~ #build-platform, .hoverable-data:hover ~ #data-platform, .hoverable-fleet:hover ~ #fleet-platform {
+  display: block !important;
+}
+
+.upside-down {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.upside-down.max-page {
+  justify-self: center;
+}
+
+.col-12.col-md-12.col-xl-12.pl-md-12 {
+  display: flex;
+  flex-direction: column;
+}
+
+#rss-feed {
+  align-self: flex-end;
+}
+
+.upside-down > .col.hover-card {
+  min-width: unset;
+  max-width: unset;
+}
+
+.col-12.col-md-12.col-xl-12.pl-md-12 > .td-content {
+  display: flex;
+  justify-content: center;
+}
+
+// Platform landing pages END

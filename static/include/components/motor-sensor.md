@@ -6,7 +6,7 @@ The first just uses the encoder feedback to increase or decrease the power being
 
 The second requires setting the `control_parameters` attribute, which sets up a PID control loop to adjust the distance and velocity of the motor.
 Setting the `control_parameters` will automatically set up the required PID loop for an encoded motor.
-For more information on PID or to set up a more complex control loop, see the [controls package](/internals/controls-package/)
+For more information on PID or to set up a more complex control loop, see the [controls package](/operate/reference/controls-package/)
 
 If you want these values to be auto-tuned, you can set all values to 0: `{ "p": 0, "i": 0, "d": 0 }`, and `viam-server` will auto-tune and log the calculated values.
 Tuning takes several seconds and spins the motor.

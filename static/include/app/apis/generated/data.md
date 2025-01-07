@@ -8,9 +8,9 @@ Gets the most recent tabular data captured from the specified data source, as lo
 **Parameters:**
 
 - `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that owns the data.
-- `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data.
-- `resource_subtype` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The subtype of the requested resource that captured the data.
-- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name.
+- `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data. Ex: “my-sensor”.
+- `resource_subtype` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The subtype of the requested resource that captured the data. Ex: “rdk:component:sensor”.
+- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name. Ex: “Readings”.
 
 **Returns:**
 
@@ -19,12 +19,20 @@ Gets the most recent tabular data captured from the specified data source, as lo
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-time_captured, time_synced, payload = await data_client.get_latest_tabular_data(
-    part_id="<PART-ID>",
-    resource_name="<RESOURCE-NAME>",
-    resource_subtype="<RESOURCE-SUBTYPE>",
-    method_name="<METHOD-NAME>"
+tabular_data = await data_client.get_latest_tabular_data(
+    part_id="77ae3145-7b91-123a-a234-e567cdca8910",
+    resource_name="camera-1",
+    resource_subtype="rdk:component:camera",
+    method_name="GetImage"
 )
+
+if tabular_data:
+    time_captured, time_synced, payload = tabular_data
+    print(f"Time Captured: {time_captured}")
+    print(f"Time Synced: {time_synced}")
+    print(f"Payload: {payload}")
+else:
+    print(f"No data returned: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_latest_tabular_data).
@@ -116,7 +124,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. You can obtain your organization ID from the Viam app’s organization settings page.
-- `mql_binary` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): The MQL query to run as a list of BSON queries. You can encode your bson queries using a library like pymongo.
+- `query` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)] | List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): The MQL query to run as a list of BSON queries. Note: Support for bytes will be removed in the future, so using a dictionary is preferred.
 
 **Returns:**
 
@@ -127,10 +135,9 @@ Obtain unified tabular data and metadata, queried with MQL.
 ```python {class="line-numbers linkable-line-numbers"}
 import bson
 
-# using pymongo package (pip install pymongo)
-tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_binary=[
-    bson.encode({ '$match': { 'location_id': '<YOUR-LOCATION-ID>' } }),
-    bson.encode({ "$limit": 5 })
+tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_query=[
+    { '$match': { 'location_id': '<YOUR-LOCATION-ID>' } },
+    { "$limit": 5 }
 ])
 
 print(f"Tabular Data: {tabular_data}")

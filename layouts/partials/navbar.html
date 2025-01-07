@@ -4,59 +4,81 @@
 -}}
 
 <nav
-  class="js-navbar-scroll navbar navbar-expand navbar-dark {{ if $cover }}td-navbar-cover{{ end }} flex-column flex-md-row td-navbar">
-  <a class="navbar-brand" href="{{ .Site.BaseURL }}">
-    {{- /**/ -}}
-    <span class="navbar-logo">
-      {{- if .Site.Params.ui.navbar_logo -}}
-        {{ with resources.Get "icons/logo.svg" -}}
-          {{ ( . | minify).Content | safeHTML -}}
+  class="js-navbar-scroll navbar navbar-expand navbar-dark {{ if $cover }}td-navbar-cover{{ end }} flex-column td-navbar">
+  <div class="navcontainer">
+    <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+      {{- /**/ -}}
+      <span class="navbar-logo">
+        {{- if .Site.Params.ui.navbar_logo -}}
+          {{ with resources.Get "icons/logo.svg" -}}
+            {{ ( . | minify).Content | safeHTML -}}
+          {{ end -}}
         {{ end -}}
-      {{ end -}}
-    {{- /**/ -}}
-    <span>
-      {{- .Site.Title -}}
+      {{- /**/ -}}
+      <span>
+        Docs
+      </span>
+      {{- /**/ -}}
+    </a>
     </span>
-    {{- /**/ -}}
-  </a>
-  </span>
-  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
-    <ul class="navbar-nav mt-2 mt-lg-0">
-      {{ $p := . -}}
-      {{ range .Site.Menus.main -}}
-      <li class="nav-item mr-4 mb-2 mb-lg-0">
-        {{ $active := or ($p.IsMenuCurrent "main" .) ($p.HasMenuCurrent "main" .) -}}
-        {{ with .Page }}{{ $active = or $active ( $.IsDescendant .) }}{{ end -}}
-        {{ $pre := .Pre -}}
-        {{ $post := .Post -}}
-        {{ $url := urls.Parse .URL -}}
-        {{ $baseurl := urls.Parse $.Site.Params.Baseurl -}}
-        <a {{/**/ -}}
-          class="nav-link {{- if $active }} active {{- end }}" {{/**/ -}}
-          href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
-          {{- if ne $url.Host $baseurl.Host }} target="_blank" {{- end -}}
-        >
-            {{- with .Pre }}{{ $pre }}{{ end -}}
-            <span {{- if $active }} class="active" {{- end }}>
-              {{- .Name -}}
-            </span>
-            {{- with .Post }}{{ $post }}{{ end -}}
-        </a>
-      </li>
-      {{ end -}}
-      {{ if .Site.Params.versions -}}
-      <li class="nav-item dropdown mr-4 d-none d-lg-block">
-        {{ partial "navbar-version-selector.html" . -}}
-      </li>
-      {{ end -}}
-      {{ if (gt (len .Site.Home.Translations) 0) -}}
-      <li class="nav-item dropdown mr-4 d-none d-lg-block">
-        {{ partial "navbar-lang-selector.html" . -}}
-      </li>
-      {{ end -}}
-    </ul>
+    <div class="td-navbar-nav-scroll ml-md-auto td-topbar-sections" id="main_navbar">
+          <ul>
+              <li><a href="https://app.viam.com/fleet/" title="Fleet" class="navsectiontop">Fleet</a></li>
+              <li><a href="https://app.viam.com/data/view" title="Data" class="navsectiontop">Data</a></li>
+              <li><a href="https://app.viam.com/registry/" title="Registry" class="navsectiontop">Registry</a></li>
+              <li><a href="{{ .Site.BaseURL }}" title="Docs" class="navsectiontop active-path">Docs</a></li>
+          </ul>
+          {{- $currentPage := .Page -}}
+          {{ $s := .Page.Section -}}
+        <ul class="navbar-nav mt-2 mt-lg-0">
+          {{ $p := . -}}
+          {{ range .Site.Menus.main -}}
+          <li class="nav-item mr-4 mb-2 mb-lg-0">
+            {{ $active := or ($p.IsMenuCurrent "main" .) ($p.HasMenuCurrent "main" .) -}}
+            {{ with .Page }}{{ $active = or $active ( $.IsDescendant .) }}{{ end -}}
+            {{ $pre := .Pre -}}
+            {{ $post := .Post -}}
+            {{ $url := urls.Parse .URL -}}
+            {{ $baseurl := urls.Parse $.Site.Params.Baseurl -}}
+            <a {{/**/ -}}
+              class="nav-link {{- if $active }} active {{- end }}" {{/**/ -}}
+              href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
+              {{- if ne $url.Host $baseurl.Host }} target="_blank" {{- end -}}
+            >
+                {{- with .Pre }}{{ $pre }}{{ end -}}
+                <span {{- if $active }} class="active" {{- end }}>
+                  {{- .Name -}}
+                </span>
+                {{- with .Post }}{{ $post }}{{ end -}}
+            </a>
+          </li>
+          {{ end -}}
+          {{ if .Site.Params.versions -}}
+          <li class="nav-item dropdown mr-4 d-none d-lg-block">
+            {{ partial "navbar-version-selector.html" . -}}
+          </li>
+          {{ end -}}
+          {{ if (gt (len .Site.Home.Translations) 0) -}}
+          <li class="nav-item dropdown mr-4 d-none d-lg-block">
+            {{ partial "navbar-lang-selector.html" . -}}
+          </li>
+          {{ end -}}
+        </ul>
+    </div>
+    <div class="navbar-nav d-none d-lg-block" id="navsearch">
+      {{ partial "search-input.html" . }}
+    </div>
   </div>
-  <div class="navbar-nav d-none d-lg-block">
-    {{ partial "search-input.html" . }}
+  <div class="second-nav">
+    <ul>
+    {{ with .Site.GetPage "/" }}
+    {{- range .Pages -}}
+    {{- $activePath := or ($currentPage.IsDescendant .) (eq $currentPage .) -}}
+    {{- if not (eq .LinkTitle "Tutorials") -}}
+    <li><a href="{{.RelPermalink}}" title="{{ .Title }}" class="{{ if $activePath}} active-path{{ end }}">{{ .LinkTitle }}</a></li>
+    {{- end -}}
+    {{- end -}}
+    {{- end -}}
+    </ul>
   </div>
 </nav>

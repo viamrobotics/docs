@@ -1,6 +1,6 @@
 ### GetControls
 
-Get a list of the [Controls](/appendix/apis/components/input-controller/#control-field) that your controller provides.
+Get a list of the [Controls](/dev/reference/apis/components/input-controller/#control-field) that your controller provides.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -175,8 +175,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetGeometries
 
-Get all the geometries associated with the input controller in its current configuration, in the [frame](/services/frame-system/) of the input controller.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the input controller in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the input controller.
+The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -286,7 +286,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `control` [(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](/appendix/apis/components/input-controller/#control-field) to register the function for.
+- `control` [(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](/dev/reference/apis/components/input-controller/#control-field) to register the function for.
 - `triggers` [([]EventType)](https://pkg.go.dev/go.viam.com/rdk/components/input#EventType): The [EventTypes](#eventtype-field) that trigger the function.
 - `ctrlFunc` [(ControlFunction)](https://pkg.go.dev/go.viam.com/rdk/components/input#ControlFunction): The function to run when the specified triggers are invoked.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.

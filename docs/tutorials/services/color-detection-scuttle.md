@@ -29,8 +29,8 @@ toc_hide: true
 <!-- LEARNING GOALS
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
-In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
-We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/appendix/try-viam/rover-resources/).
+In this tutorial, you'll learn how to use the [vision service](/operate/reference/services/vision/) to make a rover follow a colored object.
+We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/dev/reference/try-viam/rover-resources/).
 
 {{< alert title="You will learn" color="tip" >}}
 
@@ -52,12 +52,12 @@ You don't need to buy or own any hardware to complete this tutorial.
 You will need the following hardware to complete this tutorial:
 
 - A wheeled rover, configured with a base component.
-  If you have your own Viam rover [follow the Viam Rover configuration instructions](/appendix/try-viam/rover-resources/).
+  If you have your own Viam rover [follow the Viam Rover configuration instructions](/dev/reference/try-viam/rover-resources/).
   If you own another mobile robot [follow the general configuration instructions](/tutorials/configure/configure-rover/).
 
-  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or any other wheeled robot that can be configured as a [base component](/components/base/wheeled/).
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or any other wheeled robot that can be configured as a [base component](/operate/reference/components/base/wheeled/).
 
-- An attached and configured [webcam camera](/components/camera/webcam/).
+- An attached and configured [webcam camera](/operate/reference/components/camera/webcam/).
 
 ## Set up the hardware
 
@@ -68,7 +68,7 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/services/vision/#detections):
+To create a [color detector vision service](/operate/reference/services/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -121,7 +121,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/):
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app):
 
 The camera stream will show detections with bounding boxes around the detected colors.
 
@@ -162,7 +162,7 @@ Next, create a file named <file>main.py</file> and paste the sample code from th
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
-If you haven't yet installed `viam-server`, follow the [installation guide](/installation/viam-server-setup/#install-viam-server) to install `viam-server` on your robot before proceeding with this tutorial.
+If you haven't yet installed `viam-server`, follow the [installation guide](/operate/get-started/setup/) to install `viam-server` on your robot before proceeding with this tutorial.
 
 You can run your code by typing the following into your terminal from the same directory as your `main.py` file:
 
@@ -313,7 +313,7 @@ Use something like a red sports ball or book cover as a target to follow to test
 ## Next steps
 
 Congratulations! If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your rover move in a square](/how-tos/drive-rover/).
+You could also write some code with a Viam SDK to [make your rover move in a square](/tutorials/control/drive-rover//).
 
 {{< snippet "social.md" >}}
 

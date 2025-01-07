@@ -1,0 +1,41 @@
+{{- $class := .class -}}
+{{- $customTitle := .customTitle -}}
+{{- $customCanonicalLink := .customCanonicalLink -}}
+{{- $link := (path.Clean (.link)) -}}
+{{- $baseurl := .Site.BaseURL -}}
+{{- if (eq (substr .Site.BaseURL -1 1) "/" ) -}}
+  {{- $baseurl := (substr .Site.BaseURL 0 -1) -}}
+{{- end -}}
+<div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
+{{- if site.GetPage ($link | string) -}}
+  {{- with site.GetPage ($link | string) -}}
+    {{- if $customCanonicalLink -}}
+    <a href="{{$customCanonicalLink}}">
+    {{- else -}}
+    <a href="{{.RelPermalink}}">
+    {{- end -}}
+    {{ if eq $class "left" }} <div class="arrow"><i class="fas fa-chevron-left"></i></div> {{ end }}
+    <div class="text">
+      {{ if eq $class "left" }} <p class="left">Previous</p> {{ else }} <p class="left">Next</p> {{ end }}
+        <p> {{- .LinkTitle -}}</p>
+    </div>
+    {{ if eq $class "right" }} <div class="arrow"><i class="fas fa-chevron-right"></i></div> {{ end }}    </a>
+   {{- end -}}
+ {{- else -}}
+  {{- if strings.HasPrefix ($link | string) "http" -}}
+    {{- if $customCanonicalLink -}}
+    <a href="{{$customCanonicalLink}}">
+    {{- else -}}
+    <a href="{{.RelPermalink}}">
+    {{- end -}}
+    <div {{ if .webm_src }}class="small-hover-card-div"{{ end }}>
+     {{- if $customTitle -}}
+      <div> {{- $customTitle -}}</div>
+     {{- end -}}
+    </div>
+    </a>
+  {{- else -}}
+    {{- errorf "Card has a bad link: %s" $link -}}
+  {{- end -}}
+ {{- end -}}
+</div>

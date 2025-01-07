@@ -21,7 +21,7 @@ To install `viam-server` on a Linux computer:
 
 1. If you selected **Linux / Aarch 64** or **Linux / x86** also select your installation method:
 
-   - `viam-agent` (recommended): installs viam-agent, which will automatically install (and update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision/) and operating system update configuration.
+   - `viam-agent` (recommended): installs viam-agent, which will automatically install (and update) viam-server **and** provide additional functionality such as [provisioning](/manage/fleet/provision/setup/) and operating system update configuration.
    - `manual`: installs only `viam-server` on your machine.
 
 1. Follow the instructions listed.
@@ -30,4 +30,4 @@ To install `viam-server` on a Linux computer:
 
    On your machine's page on the [Viam app](https://app.viam.com), your machine will show that it's **Live**.
 
-By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage-viam-server/) if desired.
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/operate/reference/viam-server/manage-viam-server/) if desired.

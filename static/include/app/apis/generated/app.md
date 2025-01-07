@@ -1093,7 +1093,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### MarkPartAsMain
 
-Mark a machine part as the [_main_ part](/architecture/parts/#machine-parts) of a machine.
+Mark a machine part as the [_main_ part](/operate/reference/architecture/parts/#machine-parts) of a machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1787,7 +1787,7 @@ Valid arguments for permissions are as follows:
 
 {{% /expand %}}
 
-For more information about managing permissions, see [Role-Based Access Control](/cloud/rbac/#permissions).
+For more information about managing permissions, see [Role-Based Access Control](/manage/manage/rbac/).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.check_permissions).
 

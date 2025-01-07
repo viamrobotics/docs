@@ -48,7 +48,7 @@ After completing this tutorial, you will:
 
 - A camera such as a standard USB webcam.
   You can also test the hard hat detection system using the webcam built into your laptop.
-- A computer capable of running [`viam-server`](/installation/viam-server-setup/).
+- A computer capable of running [`viam-server`](/operate/get-started/setup/).
   You can use a personal computer running macOS or Linux, or a single-board computer (SBC) running 64-bit Linux.
 
 ### Optional hardware
@@ -61,7 +61,7 @@ Note that your machine must be connected to the internet for data sync and email
 
 ### Required software
 
-- [`viam-server`](/installation/viam-server-setup/)
+- [`viam-server`](/operate/get-started/setup/)
 - [Ultralytics YOLOv8](https://docs.ultralytics.com/), integrated with Viam using the [YOLOv8 modular service](https://github.com/viam-labs/YOLOv8)
 - [YOLOv8 Hard Hat Detection model](https://huggingface.co/keremberke/yolov8s-hard-hat-detection)
 - [`objectfilter-camera`](https://github.com/felixreichenbach/objectfilter-camera) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
@@ -82,7 +82,7 @@ Then, make sure your computer (whether it's a personal computer or an SBC) is co
 
 ### Configure your physical camera
 
-Configure your [webcam](/components/camera/webcam/) so that your machine can get the video stream from the camera:
+Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from the camera:
 
 1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
@@ -107,8 +107,8 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure the vision service
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/services/vision/) on your machine.
-Viam's built-in [`mlmodel` vision service](/services/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/operate/reference/services/vision/) on your machine.
+Viam's built-in [`mlmodel` vision service](/operate/reference/services/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](https://app.viam.com/registry/) that augments Viam with YOLOv8 integration.
 The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
 
 1. Navigate to your machine's **CONFIGURE** tab.
@@ -196,7 +196,7 @@ Now that the detector is configured, it's time to test it!
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/services/data/) allows you to, among other things, capture images and sync them to the cloud.
+Viam's built-in [data management service](/data-ai/capture-data/capture-sync/) allows you to, among other things, capture images and sync them to the cloud.
 For this project, you will capture images of people without hard hats so that you can see who wasn't wearing one, and so that you can trigger notifications when these images are captured and synced.
 Configure data capture on the `objectfilter` camera to capture images of people without hard hats:
 
@@ -250,7 +250,7 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Triggers](/configure/triggers/) allow you to send webhook requests or email notifications when certain events happen.
+[Triggers](/data-ai/ai/alert/) allow you to send webhook requests or email notifications when certain events happen.
 
 For example, you can set up a trigger to perform an action whenever an image of someone without a hard hat is uploaded to the cloud.
 
@@ -459,10 +459,10 @@ Here are some ways you could expand on this project:
 - Change your cloud function to send a different kind of notification, or trigger some other action.
   For an example demonstrating how to configure text notifications, see the [Detect a Person and Send a Photo tutorial](/tutorials/projects/send-security-photo/).
 
-- Use a different existing model or [train your own](/how-tos/train-deploy-ml/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
+- Use a different existing model or [train your own](/data-ai/ai/train-tflite/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
 
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/how-tos/train-deploy-ml/" %}}
+{{% card link="/data-ai/ai/train-tflite/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

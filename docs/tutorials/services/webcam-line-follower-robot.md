@@ -33,11 +33,11 @@ toc_hide: true
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/#detections">vision service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/operate/reference/services/vision/#detections">vision service color detector</a>.
 
 **What you will learn**:
 
-- How to use the [vision service](/services/vision/)'s [color detectors](/services/vision/color_detector/)
+- How to use the [vision service](/operate/reference/services/vision/)'s [color detectors](/operate/reference/services/vision/color_detector/)
 - How to use the [Python SDK](https://python.viam.dev/), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
@@ -53,8 +53,8 @@ To build your own line follower robot, you need the following hardware:
 <!-- prettier-ignore -->
 | Hardware | Avg. price |
 | -------- | ----------------- |
-| **A single-board computer**: This tutorial uses a Raspberry Pi 4. If you use a different single-board computer, choose the [model that supports your board](/components/board/#configuration) when you [configure your board component](#configure-your-components). | $60 |
-| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. Make sure to assemble this rover. | $99+ |
+| **A single-board computer**: This tutorial uses a Raspberry Pi 4. If you use a different single-board computer, choose the [model that supports your board](/operate/reference/components/board/#configuration) when you [configure your board component](#configure-your-components). | $60 |
+| **A wheeled [base component](/operate/reference/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. Make sure to assemble this rover. | $99+ |
 | **RGB camera**: A common off-the-shelf webcam (such as the [EMEET C690](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera on the front of the rover, pointing down towards the floor.** | $30 |
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
@@ -74,20 +74,20 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 
    Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `board`, and select the `pi` model.
-   Enter `local` as the name of your [board component](/components/board/), then click **Create**.
+   Enter `local` as the name of your [board component](/operate/reference/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
    Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `motor`, and select the `gpio` model.
-   Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
+   Enter `leftm` as the name of your [motor component](/operate/reference/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
    Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
    Click the **+** (Create) (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `base`, and select the `wheeled` model.
-   Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
+   Enter `scuttlebase` as the name for your [base component](/operate/reference/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
@@ -103,11 +103,11 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-With [**JSON**](/configure/#the-configure-tab) mode selected on the **CONFIGURE** tab, replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+With **JSON** mode selected on the **CONFIGURE** tab, replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
-To find yours, follow [these instructions](/components/camera/webcam/#using-video_path).
+To find yours, follow [these instructions](/operate/reference/components/camera/webcam/#using-video_path).
 {{< /alert >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -187,7 +187,7 @@ Click **Save** in the top right corner of the screen.
 
 ## Test your components
 
-Navigate to your [machine's **CONTROL** tab](/fleet/control/) to test your components.
+Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that the part status dropdown (in the top banner) says, "Live."
 
 1. Go to the **CONTROL** tab, click on the base panel, and toggle the camera to on.
@@ -204,7 +204,7 @@ Verify that it’s connected by refreshing the page and ensuring that the part s
 
 ## Configuring a color detector for the color of your tape line
 
-You'll use the [vision service color detector](/services/vision/color_detector/) to programmatically identify the line to follow.
+You'll use the [vision service color detector](/operate/reference/services/vision/color_detector/) to programmatically identify the line to follow.
 Before you can start on that, you need to get creative though and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
@@ -225,7 +225,7 @@ Next, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app]
 
 1. **Add a vision service.**
 
-Next, add a vision service [detector](/services/vision/#detections):
+Next, add a vision service [detector](/operate/reference/services/vision/#detections):
 
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Service**.
 Select type `vision` and model `color detector`.
@@ -239,11 +239,11 @@ We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrica
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/components/camera/transform/).
+If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/operate/reference/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
-Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Add a [transform camera](/operate/reference/components/camera/transform/) with type `camera` and model `transform`.
 Name it `transform_cam` and click **Create**.
 
 Click **{}** (Switch to advanced) in the top right of the camera's configuration panel to switch to advanced mode.
@@ -269,7 +269,7 @@ Replace the attributes JSON object (`{}`) with the following object which specif
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-With [**JSON** mode](/configure/#the-configure-tab) selected, replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
+With **JSON** mode selected, replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -378,7 +378,7 @@ Click **Save** in the top right corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [machine's **CONTROL** tab](/fleet/control/) to test the transform camera.
+Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
@@ -634,11 +634,11 @@ If your rover keeps driving off the line so fast that the color detector can’t
 
 Things to try:
 
-- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/services/vision/color_detector/) to your vision service parameters.
+- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/operate/reference/services/vision/color_detector/) to your vision service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
   Be sure to update your `detect_color` parameter accordingly.
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
 
 {{< snippet "social.md" >}}

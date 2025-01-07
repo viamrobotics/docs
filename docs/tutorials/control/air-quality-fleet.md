@@ -45,7 +45,7 @@ You can complete this tutorial using any number of air quality sensing machines.
 For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/how-tos/create-module/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/get-started/other-hardware/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
@@ -67,7 +67,7 @@ You choose how to group your machines.
 
 <br>
 
-For more information, see [Fleet Management](/how-tos/manage-fleet/#organize-your-machines).
+For more information, see [Fleet Management](/manage/reference/organize/).
 
 ### Example
 
@@ -126,11 +126,11 @@ With your organizational structure in place, let's add some machines:
 
 1. Connect your first single-board computer to power.
    For this tutorial, we'll treat this as the machine for our first customer, Antonia.
-   If the computer does not already have a Viam-compatible operating system installed, follow the [Platform Requirements section of the Installation Guide](/installation/viam-server-setup/#platform-requirements) to install a compatible operating system.
+   If the computer does not already have a Viam-compatible operating system installed, follow the [operating system setup section of the Quickstart guide](/operate/get-started/setup/#quickstart) to install a compatible operating system.
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
-   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/installation/prepare/rpi-setup/#enable-communication-protocols).
+   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Click **Antonia's Home** in the left navigation menu to navigate to that location's page.
    In the **New machine** field near the top-right corner of the screen, type in a name for the machine, such as `Home Air Quality Sensor`, and click **Add machine**.
@@ -173,7 +173,7 @@ For each sensing machine:
 
 ## Configure your air quality sensors
 
-You need to [configure](/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/components/sensor/).
+You need to [configure](/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/operate/reference/components/sensor/).
 
 No matter how many sensing machines you use, you can configure them efficiently by using a reusable configuration block called a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
 Fragments are a way to share and manage identical machine configurations across multiple machines.
@@ -184,7 +184,7 @@ With all your machines configured using the same fragment, if you need to update
 {{< alert title="Note" color="note" >}}
 If this was a real company, adding the fragment to each individual machine would quickly become tiring.
 We're showing you how to do this manually as a learning device.
-Once you understand how to configure machines and use fragments, you can use [Provisioning](/fleet/provision/) to automatically set up your devices.
+Once you understand how to configure machines and use fragments, you can use [Provisioning](/manage/fleet/provision/setup/) to automatically set up your devices.
 {{< /alert >}}
 
 ### Configure your first machine
@@ -235,8 +235,8 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 #### Configure data capture and sync
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
-Viam's [data management service](/services/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
-Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/cloud/rbac/) to the data from the sensors in their locations.
+Viam's [data management service](/data-ai/capture-data/capture-sync/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
+Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/manage/manage/access/) to the data from the sensors in their locations.
 
 Configure data capture and sync as follows:
 
@@ -313,11 +313,11 @@ For each machine:
    {{< expand "Click here for usb_interface troubleshooting help" >}}
 
 If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-If not, you can use [fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to modify the value on any machine for which it is different:
+If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to modify the value on any machine for which it is different:
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
 2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment overwrite to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to your machine's config, using the following JSON template:
+   Follow the [instructions to add a fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to your machine's config, using the following JSON template:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [
@@ -417,7 +417,7 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
 Your TypeScript code requires an API key to establish a connection to your machines.
 You can set up credentials to access data from all the sensor machines in your organization, or from just one location.
-These API keys only need [**Operator** permissions](/cloud/rbac/).
+These API keys only need [**Operator** permissions](/manage/manage/rbac/).
 
 In our example you could create a dashboard for Antonia with an API key to see the data from her location, and create a separate dashboard for RobotsRUs with a different API key to access the data from their location.
 If RobotsRUs wanted to separate their dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.
@@ -438,11 +438,12 @@ The following instructions describe how to set up an API key for one location.
 
     async function main() {
       const opts: VIAM.ViamClientOptions = {
-        credentials: {
-          // Replace "<API-KEY>" (including brackets) with your machine's api key
+        credential: {
           type: "api-key",
+          // Key with location operator permissions
+          // Replace <API-KEY> (including angle brackets)
           payload: "<API-KEY>",
-          // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+          // Replace <API-KEY-ID> (including angle brackets)
           authEntity: "<API-KEY-ID>",
         },
       };
@@ -814,10 +815,10 @@ For an example of setting up text alerts, see the [Detect a Person and Send a Ph
 For another example of a custom TypeScript interface, check out the [Claw Game tutorial](/tutorials/projects/claw-game/).
 Instead of displaying data, the claw game interface has buttons to control a robotic arm.
 
-In this tutorial we covered configuring a fleet of machines using fragments, but to automate the setup process further, you can [use the Viam Agent to provision machines](/fleet/provision/).
+In this tutorial we covered configuring a fleet of machines using fragments, but to automate the setup process further, you can [use the Viam Agent to provision machines](/manage/fleet/provision/setup/).
 
 {{< cards >}}
-{{% card link="/fleet/provision/" %}}
+{{% card link="/manage/fleet/provision/end-user-setup/" %}}
 {{% card link="/tutorials/services/visualize-data-grafana/" %}}
 {{% card link="/tutorials/projects/helmet/" %}}
 {{< /cards >}}
