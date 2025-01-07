@@ -6,7 +6,7 @@ weight: 12
 layout: "docs"
 type: "docs"
 platformarea: ["data"]
-description: "Data sync works differently for viam-server and viam-micro-server."
+description: "Data capture and sync works differently for viam-server and viam-micro-server."
 date: "2024-12-18"
 prev: "/data-ai/capture-data/conditional-sync/"
 ---
@@ -18,7 +18,7 @@ Data capture and cloud sync works differently for `viam-server` and `viam-micro-
 
 The data is captured locally on the machine's storage and, by default, stored in the `~/.viam/capture` directory.
 
-If a machine restarts for any reason, capture automatically resumes and any data already stored but not yet synced is synced.
+If a machine restarts for any reason, data capture automatically resumes and any data already stored but not yet synced is synced.
 
 The service can capture data from multiple resources at the same or different frequencies.
 The service does not impose a lower or upper limit on the frequency of data collection.
@@ -27,10 +27,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Data capture is frequently used with cloud sync.
 You can start and stop capture and sync independently.
-You can also enable cloud sync without data capture and it will sync data in either the sync directory or in the additional sync paths configured in the `viam-server` config.
-If a file in either the data capture directory or any of the sync paths ends with <file>.capture</file> it will be treated as a file with data that was captured by data capture.
-If it ends in <file>.prog</file> it will be ignored as this extension is used by data capture to denote that a file is a capture file that's currently being written to.
-If a file is in the capture directory or one of its descendants or any of the additional sync paths or their descendants and doesn't have <file>.prog</file> nor <file>.capture</file> extensions, it will be treated as an arbitrary file and, like <file>.capture</file> files, synced if data sync is enabled and the robot is able to connect to [the Viam app](https://app.viam.com).
+You can also enable cloud sync without data capture and it will sync data in the capture directory, as well as the additional sync paths configured in the `viam-server` config.
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
