@@ -9,6 +9,7 @@ description: "The Machine Learning (ML) model service allows you to deploy machi
 aliases:
   - /how-tos/train-deploy-ml/
   - /services/ml/
+  - /services/ml/ml-models/
 ---
 
 The Machine Learning (ML) model service allows you to deploy [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) to your machine.
