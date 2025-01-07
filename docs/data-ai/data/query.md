@@ -16,7 +16,7 @@ date: "2024-12-03"
 description: "Query sensor data that you have synced to the Viam app using the Viam app with SQL or MQL."
 ---
 
-You can use the data management service to [capture sensor data](/how-tos/collect-sensor-data/) from any machine and sync that data to the cloud.
+You can use the data management service to [capture sensor data](/data-ai/capture-data/capture-sync/) from any machine and sync that data to the cloud.
 Then, you can follow the steps on this page to query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
