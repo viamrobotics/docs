@@ -59,12 +59,12 @@ You can search the machine learning models that are available to deploy on this 
 
 On its own the ML model service only runs the model.
 After deploying your model, you need to configure an additional service to use the deployed model.
-For example, you can configure an [`mlmodel` vision service](/data-ai/reference/vision/) to visualize the inferences your model makes.
+For example, you can configure an [`mlmodel` vision service](/operate/reference/services/vision/) to visualize the inferences your model makes.
 Follow our docs to [run inference](/data-ai/ai/run-inference/) to add an `mlmodel` vision service and see inferences.
 
 For other use cases, consider [creating custom functionality with a module](/operate/get-started/other-hardware/).
 
 {{< alert title="Add support for other models" color="tip" >}}
-ML models must be designed in particular shapes to work with the `mlmodel` [classification](/data-ai/reference/vision/mlmodel/) or [detection](/data-ai/reference/vision/mlmodel/) model of Viam's [vision service](/data-ai/reference/vision/).
+ML models must be designed in particular shapes to work with the `mlmodel` [classification](/operate/reference/services/vision/mlmodel/) or [detection](/operate/reference/services/vision/mlmodel/) model of Viam's [vision service](/operate/reference/services/vision/).
 See [ML Model Design](/registry/advanced/mlmodel-design/) to design a modular ML model service with models that work with vision.
 {{< /alert >}}

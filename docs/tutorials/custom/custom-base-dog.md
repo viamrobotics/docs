@@ -518,5 +518,5 @@ You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
-You could also use the Viam [vision service](/data-ai/reference/vision/) with the robot dog's [camera component](/operate/reference/components/camera/).
+You could also use the Viam [vision service](/operate/reference/services/vision/) with the robot dog's [camera component](/operate/reference/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.

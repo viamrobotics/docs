@@ -90,7 +90,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 - [GetObjectPointClouds()](/dev/reference/apis/services/vision/#getobjectpointclouds)
 
-The [vision service](/data-ai/reference/vision/) supports the following methods:
+The [vision service](/operate/reference/services/vision/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
 
@@ -102,7 +102,7 @@ To get started using Viam's SDKs to connect to and control your machine, go to y
 
 When executed, this sample code creates a connection to your machine as a client.
 
-The following examples assume that you have a machine configured with a [camera](/operate/reference/components/camera/) and a vision service [detector](/data-ai/reference/vision/#detections), [classifier](/data-ai/reference/vision/#classifications) or [segmenter](/data-ai/reference/vision/#segmentations).
+The following examples assume that you have a machine configured with a [camera](/operate/reference/components/camera/) and a vision service [detector](/operate/reference/services/vision/#detections), [classifier](/operate/reference/services/vision/#classifications) or [segmenter](/operate/reference/services/vision/#segmentations).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

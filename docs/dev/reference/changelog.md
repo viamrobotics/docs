@@ -620,7 +620,7 @@ You can manage the data synced to Viam's cloud with the new capability for bulk 
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
-The [vision service](/data-ai/reference/vision/) became more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
+The [vision service](/operate/reference/services/vision/) became more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
 
 Find more information on each of the changes below.
 
@@ -664,7 +664,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/data-ai/reference/vision/color_detector/) or you can update the JSON configuration of your machines:
+You can replace existing color detectors by [configuring new ones in the UI](/operate/reference/services/vision/color_detector/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -739,7 +739,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/da
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/data-ai/reference/vision/mlmodel/) or you can update the JSON configuration of your machines:
+You can replace existing TFLite detectors by [configuring new ones in the UI](/operate/reference/services/vision/mlmodel/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -799,7 +799,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/d
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/data-ai/reference/vision/mlmodel/) or you can update the JSON configuration of your machines:
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/operate/reference/services/vision/mlmodel/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -859,7 +859,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/data-ai/reference/vision/obstacles_pointcloud/) or you can update the JSON configuration of your machines:
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/operate/reference/services/vision/obstacles_pointcloud/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -913,7 +913,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/data-ai/reference/vision/detector_3d_segmenter/) or you can update the JSON configuration of your machines:
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/operate/reference/services/vision/detector_3d_segmenter/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}

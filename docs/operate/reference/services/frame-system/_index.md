@@ -17,7 +17,7 @@ updated: "2024-10-18"
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-The frame system is the basis for some of Viam's other services, like [motion](/operate/reference/services/motion/) and [vision](/data-ai/reference/vision/).
+The frame system is the basis for some of Viam's other services, like [motion](/operate/reference/services/motion/) and [vision](/operate/reference/services/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 It is a mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
@@ -284,7 +284,7 @@ For example:
 
   However, an arm with an attached [camera](/operate/reference/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the machine.
 
-  With the [vision service](/data-ai/reference/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
+  With the [vision service](/operate/reference/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
   If a [camera](/operate/reference/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 

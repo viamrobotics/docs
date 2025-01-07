@@ -22,7 +22,7 @@ The following steps use the [`filtered_camera`](https://github.com/erh/filtered_
 Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](https://github.com/viam-modules/mlmodel-tflite).
 
 {{% /tablestep %}}
-{{% tablestep link="/data-ai/reference/vision/"%}}
+{{% tablestep link="/operate/reference/services/vision/"%}}
 {{<imgproc src="/services/icons/ml.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
@@ -30,7 +30,7 @@ Click **Select model** on the ML model service configuration panel, then select 
 If you're not sure which model to use, you can use [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
-{{% tablestep link="/data-ai/reference/vision/"%}}
+{{% tablestep link="/operate/reference/services/vision/"%}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **3. Add a vision service to use with the ML model**
 

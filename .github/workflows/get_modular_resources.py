@@ -101,19 +101,19 @@ async def main():
             print("INSERTED")
             print(insert_resp)
 
-    # Get built-in resources from services/typesense.json
-    with open('services/typesense.json') as f:
-        resources = json.load(f)
-        for r in resources:
-            print("RESOURCE")
-            print(r)
-            r["last_updated"] = time_now
-            r["total_organization_usage"] = int(r["total_organization_usage"])
-            r["total_robot_usage"] = int(r["total_robot_usage"])
-            print(r)
-            insert_resp = typesense_client.collections['resources'].documents.upsert(r)
-            print("INSERTED")
-            print(insert_resp)
+    # # Get built-in resources from services/typesense.json
+    # with open('services/typesense.json') as f:
+    #     resources = json.load(f)
+    #     for r in resources:
+    #         print("RESOURCE")
+    #         print(r)
+    #         r["last_updated"] = time_now
+    #         r["total_organization_usage"] = int(r["total_organization_usage"])
+    #         r["total_robot_usage"] = int(r["total_robot_usage"])
+    #         print(r)
+    #         insert_resp = typesense_client.collections['resources'].documents.upsert(r)
+    #         print("INSERTED")
+    #         print(insert_resp)
 
     # Create a request to list registry items and get the response from the app
     request = ListRegistryItemsRequest(organization_id=cloud._organization_id)

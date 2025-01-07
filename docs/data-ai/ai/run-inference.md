@@ -57,7 +57,7 @@ Now if you reopen the panel, you will only see classifications or detections wit
 
 {{< /expand>}}
 
-For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/data-ai/reference/vision/mlmodel/).
+For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/operate/reference/services/vision/mlmodel/).
 
 ## Use an SDK
 

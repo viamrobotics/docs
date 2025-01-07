@@ -51,13 +51,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: components-models-file
-          path: ./public/components/typesense.json
+          path: ./public/operate/reference/components/typesense.json
 
-      - name: Upload services models file
-        uses: actions/upload-artifact@v4
-        with:
-          name: services-models-file
-          path: ./public/services/typesense.json
+      # - name: Upload services models file
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: services-models-file
+      #     path: ./public/operate/reference/services/typesense.json
 
   deploy:
     environment:
@@ -134,11 +134,11 @@ jobs:
         with:
           name: components-models-file
           path: "components"
-      - name: Download the services models file
-        uses: actions/download-artifact@v4
-        with:
-          name: services-models-file
-          path: "services"
+      # - name: Download the services models file
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: services-models-file
+      #     path: "services"
       - run: pip install -r .github/workflows/requirements.txt
       - name: "Update modular resources"
         run: python3 .github/workflows/get_modular_resources.py

@@ -123,7 +123,7 @@ The following are the transformation objects available for the `pipeline`:
 
 ### Classifications
 
-Classifications overlay text from the `GetClassifications` method of the [vision service](/data-ai/reference/vision/) onto the image.
+Classifications overlay text from the `GetClassifications` method of the [vision service](/operate/reference/services/vision/) onto the image.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -144,7 +144,7 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 **Attributes:**
 
-- `classifier_name`: The name of the classifier in the [vision service](/data-ai/reference/vision/).
+- `classifier_name`: The name of the classifier in the [vision service](/operate/reference/services/vision/).
 - `confidence_threshold`: The threshold above which to display classifications.
 - `max_classifications`: _Optional_. The maximum number of classifications to display on the camera stream at any given time. Default: `1`.
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
@@ -233,7 +233,7 @@ If you have a 100 x 200 image, and you want to crop to a box between the points 
 
 ### Detections
 
-The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/data-ai/reference/vision/).
+The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/operate/reference/services/vision/).
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -253,7 +253,7 @@ The Detections transform takes the input image and overlays the detections from 
 
 **Attributes:**
 
-- `detector_name`: The name of the detector configured in the [vision service](/data-ai/reference/vision/).
+- `detector_name`: The name of the detector configured in the [vision service](/operate/reference/services/vision/).
 - `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
 
