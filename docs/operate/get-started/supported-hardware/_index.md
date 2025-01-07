@@ -6,6 +6,12 @@ layout: "docs"
 type: "docs"
 description: "Use supported hardware with your machine."
 modulescript: true
+aliases:
+  - program/extend/modular-resources/configure/
+  - /extend/modular-resources/configure/
+  - /modular-resources/configure/
+  - /registry/configure/
+  - /registry/modular-resources/
 prev: "/operate/get-started/setup/"
 next: "/operate/get-started/other-hardware/"
 ---

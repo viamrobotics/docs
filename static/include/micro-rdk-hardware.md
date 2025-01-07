@@ -15,5 +15,5 @@ Your microcontroller should have at least the following resources available to w
 The main difference between the WROOM and WROVER is that the WROVER has additional RAM with the SPIRAM chip.
 If you would like to allow more than one concurrent connection to your device we recommend using the WROVER.
 The WROVER allows a max of 3 incoming gRPC connections (whether over HTTP2 or WebRTC).
-You can change this max by [building your own version of `viam-micro-server`](/installation/viam-micro-server-dev/).
+You can change this max by [building your own version of `viam-micro-server`](/operate/get-started/other-hardware/micro-module/).
 {{< /alert >}}
