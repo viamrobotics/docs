@@ -10,6 +10,7 @@ aliases:
   - /services/vision/segmentation/
   - /ml/vision/detector_3d_segmenter/
   - /services/vision/detector_3d_segmenter/
+  - /data-ai/services/vision/detector_3d_segmenter/
 # SMEs: Bijan, Khari
 ---
 

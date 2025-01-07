@@ -11,7 +11,6 @@ aliases:
   - /data/upload/
   - /services/data/upload/
   - /how-tos/upload-data/
-  - /how-tos/upload-data
 date: "2024-12-04"
 description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
 prev: "/data-ai/ai/act/"

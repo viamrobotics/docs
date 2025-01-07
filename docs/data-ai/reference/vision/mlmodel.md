@@ -12,6 +12,7 @@ aliases:
   - /services/vision/classification/
   - /ml/vision/mlmodel/
   - /services/vision/mlmodel/
+  - /data-ai/services/vision/mlmodel/
 # SMEs: Bijan, Khari
 ---
 

@@ -12,6 +12,7 @@ aliases:
   - /services/vision/classification/
   - /ml/vision/color_detector/
   - /services/vision/color_detector/
+  - /data-ai/services/vision/color_detector/
 # SMEs: Bijan, Khari
 ---
 
