@@ -5,6 +5,8 @@ weight: 13
 layout: "docs"
 type: "docs"
 description: "Use filtering to collect and sync only certain images."
+aliases:
+  - /how-tos/image-data/
 ---
 
 You can use filtering to selectively capture images using a machine learning (ML) model, for example to only capture images with people or specific objects in them.
@@ -101,7 +103,7 @@ You can test the vision service from the [**CONTROL** tab](/cloud/machines/#cont
 **7. (Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
-If you need to trigger sync in a different way, see [Conditional cloud sync](/how-tos/conditional-sync/) for a documented example of syncing data only at certain times of day.
+If you need to trigger sync in a different way, see [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for a documented example of syncing data only at certain times of day.
 
 {{% /tablestep %}}
 {{< /table >}}
