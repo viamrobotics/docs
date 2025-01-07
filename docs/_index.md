@@ -30,13 +30,13 @@ updated: "2024-10-11"
 
 <div class="col hover-card hoverable-data">
 <a href="data-ai/">
-<div><div>Work with Data and AI</div><p>Lorem Ipsum</p></div>
+<div><div>Work with Data and AI</div><p>Sync and store sensor data, images, and any other binary or timeseries data. Then use ML and AI to turn your data into insights and action.</p></div>
 </a>
 </div>
 
 <div class="col hover-card hoverable-build">
 <a href="operate/">
-<div><div>Build & integrate</div><p>Lorem Ipsum</p></div>
+<div><div>Build & integrate</div><p>To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.</p></div>
 </a>
 </div>
 
