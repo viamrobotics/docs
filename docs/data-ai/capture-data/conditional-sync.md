@@ -49,7 +49,7 @@ Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{% expand "Create a sensor module. Click to see instructions." %}}
 
-Start by [creating a sensor module](/how-tos/sensor-module/).
+Start by [creating a sensor module](/operate/get-started/other-hardware/).
 Your sensor should have access to the information you need to determine if your machine should sync or not.
 Based on that data, make the sensor return true when the machine should sync and false when it should not.
 For example, if your want your machine to return data only during a specific time interval, your sensor needs to be able to access the time as well as be configured with the time interval during which you would like to sync data.

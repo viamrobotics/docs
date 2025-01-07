@@ -11,6 +11,12 @@ aliases:
   - /how-tos/create-module/
   - /how-tos/sensor-module/
   - /registry/advanced/iterative-development/
+  - /build/program/extend/modular-resources/
+  - /extend/modular-resources/
+  - /extend/
+  - /build/program/extend/modular-resources/key-concepts/
+  - /modular-resources/key-concepts/
+  - /modular-resources/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
@@ -616,7 +622,8 @@ Click **Create**.
 
 Click the **+** button again, this time selecting **Local module** and then **Local component**.
 
-Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
+Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, for example `jessamy:weather:meteo-PM`.
+You can find the triplet in the `model` field of your <file>meta.json</file> file.
 
 Select the **Type** corresponding to the API you implemented.
 

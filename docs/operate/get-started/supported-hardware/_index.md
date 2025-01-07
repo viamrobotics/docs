@@ -12,6 +12,11 @@ aliases:
   - /modular-resources/configure/
   - /registry/configure/
   - /registry/modular-resources/
+  - /configure/
+  - /manage/configuration/
+  - /build/configure/
+  - /configure/
+  - /registry/
 prev: "/operate/get-started/setup/"
 next: "/operate/get-started/other-hardware/"
 ---

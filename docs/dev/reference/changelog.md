@@ -968,7 +968,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Add and remove models using the machine config
 
-You must add and remove models using the [machine config](/configure/).
+You must add and remove models using the [machine config](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 You will no longer be able to add or remove models using the SDKs.
 
 #### Add machine learning vision models to a vision service

@@ -93,7 +93,7 @@ The connection code will establish communication with your machine over LAN or W
 
 ## Set up user authentication
 
-Viam uses [FusionAuth](FusionAuth) for authentication and authorization.
+Viam uses [FusionAuth](https://fusionauth.io/) for authentication and authorization.
 
 Use the [Viam CLI `auth-app` command](/dev/tools/cli/#auth-app) to register your application with FusionAuth so that you or your users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
 

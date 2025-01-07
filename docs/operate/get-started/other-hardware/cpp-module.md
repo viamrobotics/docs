@@ -1490,7 +1490,7 @@ _Add instructions here for any requirements._
 
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
-Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your [machine](https://docs.viam.com/fleet/machines/) in the [Viam app](https://app.viam.com/).
 [Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
@@ -1558,7 +1558,7 @@ On the new component panel, copy and paste the following attribute template into
 ```
 
 > [!NOTE]
-> For more information, see [Configure a Machine](https://docs.viam.com/configure/).
+> For more information, see [Configure hardware on your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 
 ### Attributes
 

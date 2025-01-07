@@ -173,7 +173,7 @@ For each sensing machine:
 
 ## Configure your air quality sensors
 
-You need to [configure](/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/operate/reference/components/sensor/).
+You need to [configure](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine) your hardware so that each of your machines can communicate with its attached air quality [sensor](/operate/reference/components/sensor/).
 
 No matter how many sensing machines you use, you can configure them efficiently by using a reusable configuration block called a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
 Fragments are a way to share and manage identical machine configurations across multiple machines.

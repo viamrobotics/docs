@@ -25,7 +25,7 @@ You have two options for moving a robotic [arm](/operate/reference/components/ar
 ## Configure and connect to your arm
 
 {{< table >}}
-{{% tablestep link="/get-started/supported-hardware/" %}}
+{{% tablestep link="/operate/get-started/supported-hardware/" %}}
 **1. Configure an arm component**
 
 First, physically connect the arm to your machine.

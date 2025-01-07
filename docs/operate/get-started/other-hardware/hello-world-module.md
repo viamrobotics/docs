@@ -802,8 +802,6 @@ For more information about uploading modules, see [Update and manage modules you
 
 ## Next steps
 
-For a guide that walks you through creating different sensor models, for example to get weather data from an online source, see [Create a sensor module with Python](/how-tos/sensor-module/).
-
-For more module creation information with more programming language options, see the [Create a module](/operate/get-started/other-hardware/) guide.
+For more module creation information, see the [Integrate other hardware](/operate/get-started/other-hardware/) guide.
 
 To update or delete a module, see [Update and manage modules](/operate/get-started/other-hardware/manage-modules/).

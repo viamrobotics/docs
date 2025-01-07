@@ -22,8 +22,6 @@ However, if your machine will never connect to the internet, you will need to cr
 - [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your machine, without connecting your machine to the Viam app.
 - [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
 
-For information on the individual configuration options available, see [Configuration](/configure/).
-
 ## Build a local configuration file in the Viam app
 
 If your machine will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your machine to it.
@@ -227,5 +225,3 @@ The following file contains some example {{< glossary_tooltip term_id="component
   ]
 }
 ```
-
-For more information on the individual configuration options available, see [Configuration](/configure/).
