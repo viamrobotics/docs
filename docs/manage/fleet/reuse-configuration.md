@@ -84,7 +84,7 @@ By using the new fragment, all your machines will use the exact same configurati
 
 With your fragment created, you can add it to all machines that should have it.
 
-In the following, you will see how to add a fragment manually. If you are working in a factory setting and need to set up devices before they reach the end user, you can also fragments while [provisioning](/fleet/provision/) your fleet.
+In the following, you will see how to add a fragment manually. If you are working in a factory setting and need to set up devices before they reach the end user, you can also fragments while [provisioning](/manage/fleet/provision/setup/) your fleet.
 
 {{< table >}}
 {{% tablestep %}}

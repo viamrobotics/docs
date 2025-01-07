@@ -13,7 +13,7 @@ date: "2024-08-16"
 The [`viam-agent`](https://github.com/viamrobotics/agent) is a self-updating service manager that maintains the lifecycle for itself and the following system services:
 
 - `viam-server`: the core of the machine
-- [`agent-provisioning`](#agent-provisioning): device provisioning which can set up machine configs and manage WiFi networks. For more information see [Provisioning](/fleet/provision/).
+- [`agent-provisioning`](#agent-provisioning): device provisioning which can set up machine configs and manage WiFi networks. For more information see [Provisioning](/manage/fleet/provision/setup/).
 - [`agent-syscfg`](#agent-syscfg): provides various operating system and system configuration tweaks
 
 Among other things, `viam-agent`:
@@ -73,7 +73,7 @@ sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/a
     {{< /alert >}}
 
 `viam-agent` will install itself as a systemd service named `viam-agent`.
-For information on managing the service, see [Manage `viam-agent`](/installation/manage-viam-agent/).
+For information on managing the service, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
 ## Configuration
 
@@ -309,7 +309,7 @@ To ensure that updates only occur when your machines are ready, configure a [mai
 To use a specific version of `viam-agent` and `viam-server`, you can pin the version.
 
 {{< alert title="Important" color="note" >}}
-When `viam-agent` updates itself, you must [restart `viam-agent`](/installation/manage-viam-agent/) or reboot in order to use the new version.
+When `viam-agent` updates itself, you must [restart `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/) or reboot in order to use the new version.
 When you stop or restart `viam-agent`, the agent will stop or restart `viam-server` as well.
 
 When `viam-server` updates itself, you must restart `viam-server` in order to use the new version.

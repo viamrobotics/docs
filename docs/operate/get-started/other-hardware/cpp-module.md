@@ -186,7 +186,7 @@ For more Python module examples:
 | ------ | ---------- | ----------- |
 | [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/dev/reference/apis/components/base/) to support the Agilex Limo base. |
 | [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to support several models of the SLAMTEC RPlidar. |
-| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/how-tos/image-data/) for more information. |
+| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/data-ai/capture-data/filter-before-sync/) for more information. |
 
 For more Go module examples:
 

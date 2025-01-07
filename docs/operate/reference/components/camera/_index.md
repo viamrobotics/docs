@@ -92,7 +92,6 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the camera component with the following services:

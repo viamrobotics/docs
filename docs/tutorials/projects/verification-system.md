@@ -163,11 +163,11 @@ For best results:
 
 Then, create a new dataset using your uploaded images and train a new model using that model:
 
-1. [Create a new dataset and add the images you captured](/how-tos/train-deploy-ml/#create-a-dataset-and-label-data).
+1. [Create a new dataset and add the images you captured](/data-ai/ai/create-dataset/).
    Remember that you must add at least 10 images that contain people, as well as a few (but no more than 20% of the total images) that _do not_ contain people.
 2. Label the images that contain people with bounding boxes, and add the label `person`.
    You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
-3. [Train a model on your dataset](/how-tos/train-deploy-ml/).
+3. [Train a TFlite model on your dataset](/data-ai/ai/train-tflite/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
 4. [Deploy the model](/services/ml/) to your machine so it can be used by other services, such as the vision service.
 
@@ -341,7 +341,7 @@ For example:
 - Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
   For example, you could use [`GetClassificationsFromCamera()`](/appendix/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
 - Try changing the type of [detectors](/services/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
-- Add the [filtered camera module](/how-tos/image-data/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam Cloud only when the system enters into specific states.
+- Add the [filtered camera module](/data-ai/capture-data/filter-before-sync/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam Cloud only when the system enters into specific states.
   This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.
 - If you don't want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, set `disable_alarm: true` in the config, which prevents `TRIGGER_2` from entering into the `COUNTDOWN` state, meaning the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.
 - Use entering into the state `TRIGGER_2` as a way to send notifications.

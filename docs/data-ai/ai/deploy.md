@@ -11,7 +11,7 @@ description: "Deploy an ML model to your machine."
 The Machine Learning (ML) model service allows you to deploy [machine learning models](/registry/ml-models/) to your machine.
 The service works with models trained inside and outside the Viam app:
 
-- You can [train](/how-tos/train-deploy-ml/) models on data from your machines.
+- You can [train TFlite](/data-ai/ai/train-tflite/) or [other models](data-ai/ai/train/) on data from your machines.
 - You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
 - You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [Viam Registry](https://app.viam.com/registry).
 - You can use a [model](/registry/ml-models/) trained outside the Viam platform whose files are on your machine.

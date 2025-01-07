@@ -168,13 +168,13 @@ if __name__ == '__main__':
 
 {{< table >}}
 
-{{% tablestep link="/fleet/provision/#configuration" %}}
+{{% tablestep link="/manage/fleet/provision/setup/#configure-agent-provisioning" %}}
 **1. Configure provisioning**
 
 If you are using the captive portal, this step is optional.
 If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
 
-Create a file called <FILE>viam-provisioning.json</FILE> with the following format and customize the [attributes](/fleet/provision/#configuration):
+Create a file called <FILE>viam-provisioning.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-agent-provisioning):
 
 {{< tabs >}}
 {{% tab name="Template" %}}

@@ -692,7 +692,7 @@ The following components and services support data capture and cloud sync:
 
 ## Considerations
 
-- **Capturing too much data**: You can [use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) to capture data selectively.
+- **Capturing too much data**: You can [use filtering to collect and sync only certain images](/data-ai/capture-data/filter-before-sync/) to capture data selectively.
 - **Rentention policy**: Set a `retention_policy` attribute in your [data capture configuration](#configure-data-capture) to avoid keeping data stored in the Viam Cloud longer than a specified number of days.
 - **Pausing sync**: You can pause cloud sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your data management service.
 

@@ -481,5 +481,4 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
-{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}

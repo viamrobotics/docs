@@ -32,7 +32,7 @@ You can then run queries against that data to search for outliers or edge cases,
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
+Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 
@@ -144,7 +144,7 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
+Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 

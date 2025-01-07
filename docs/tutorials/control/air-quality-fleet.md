@@ -184,7 +184,7 @@ With all your machines configured using the same fragment, if you need to update
 {{< alert title="Note" color="note" >}}
 If this was a real company, adding the fragment to each individual machine would quickly become tiring.
 We're showing you how to do this manually as a learning device.
-Once you understand how to configure machines and use fragments, you can use [Provisioning](/fleet/provision/) to automatically set up your devices.
+Once you understand how to configure machines and use fragments, you can use [Provisioning](/manage/fleet/provision/setup/) to automatically set up your devices.
 {{< /alert >}}
 
 ### Configure your first machine

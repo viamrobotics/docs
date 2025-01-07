@@ -285,7 +285,7 @@ The dual GPS movement sensor calculates a compass heading from both GPS sensors,
 
 {{% changelog date="2024-03-01" color="added" title="Viam Agent" %}}
 
-You can now use the [Viam Agent](/fleet/provision/) to provision your machine or fleet of machines during deployment.
+You can now use the [Viam Agent](/manage/reference/viam-agent/) to provision your machine or fleet of machines during deployment.
 The Viam Agent is a software provisioning manager that you can install on your machine which manages your `viam-server` installation, including installation and ongoing updates, as well as providing flexible deployment configuration options, such as pre-configured WiFi network credentials.
 
 {{% /changelog %}}
@@ -330,7 +330,7 @@ You can now configure [triggers](/configure/triggers/) (previously called webhoo
 Viam has added a [`filtered-camera` module](https://app.viam.com/module/erh/filtered-camera) that selectively captures and syncs only the images that match the detections of an ML model.
 For example, you could train an ML model that is focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
 
-Check out [this guide](/how-tos/image-data/) for more information.
+Check out [this guide](/data-ai/capture-data/filter-before-sync/) for more information.
 
 {{% /changelog %}}
 
@@ -552,7 +552,7 @@ To better control gantries with Viam, you can now:
 
 {{% changelog date="2023-06-30" color="improved" title="Optimized Viam-trained object detection models" %}}
 
-This update for object detection models [trained with the machine learning service](/how-tos/train-deploy-ml/) brings significant improvements, including:
+This update for TFlite object detection models [trained with the machine learning service](/data-ai/ai/train-tflite/) brings significant improvements, including:
 
 - 76% faster model inference for camera streams
 - 64% quicker model training for object detection
@@ -568,7 +568,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train object detection models](/how-tos/train-deploy-ml/) in addition to image classification models from within the Viam app.
+You now have the capability to directly [train a TFlite object detection models](/data-ai/ai/train-tflite/) in addition to image classification models from within the Viam app.
 
 This update allows you to:
 
@@ -991,9 +991,9 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/how-tos/train-deploy-ml/) and [deploy](/services/ml/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
+You can now [train](/data-ai/ai/train-tflite/) and [deploy](/data-ai/ai/deploy/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
 Additionally, you can upload and use existing [machine learning models](/registry/ml-models/) with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [Train a model](/how-tos/train-deploy-ml/).
+For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/).
 
 {{% /changelog %}}
 

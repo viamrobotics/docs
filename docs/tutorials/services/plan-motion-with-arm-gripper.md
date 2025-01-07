@@ -52,13 +52,13 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-Make sure you have mastery of the concepts outlined in the first motion guide, [Access and Move a Robot Arm](/how-tos/move-robot-arm/), before continuing.
+Make sure you have mastery of the concepts outlined in the first motion guide, [Access and Move a Robot Arm](/operate/mobility/move-arm/), before continuing.
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
 ## Configure a robot
 
-Use the robot configuration from the [prerequisite guide](/how-tos/move-robot-arm/) for this tutorial as well.
+Use the robot configuration from the [prerequisite guide](/operate/mobility/move-arm/) for this tutorial as well.
 We will revisit that robot configuration and add new components.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.

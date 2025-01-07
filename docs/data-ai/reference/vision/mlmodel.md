@@ -27,7 +27,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/registry/ml-models/) or [train your own models](/how-tos/train-deploy-ml/) for object detection and classification using your data in the [Viam Cloud](/fleet/data-management/).
+You can add an [existing model](/registry/ml-models/) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/fleet/data-management/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
@@ -144,7 +144,7 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _input tensor_ must be named `image`
   - The _output tensor_ must be named `probability`
 
-If you [trained your ML model using the Viam app](/how-tos/train-deploy-ml/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+If you [trained a TFlite ML model using the Viam app](/data-ai/ai/train-tflite/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 However, if you uploaded your own ML model, or are using one from the [Viam Registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 #### Remap tensor names
@@ -627,5 +627,4 @@ For general configuration and development info, see:
 {{< cards >}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}

@@ -30,7 +30,7 @@ Make sure your machine has at least one of the following:
 
 - A movement sensor or sensor
 
-See [configure a machine](/how-tos/configure/) for more information.
+See [configure a machine](/operate/get-started/supported-hardware/) for more information.
 
 {{% /expand%}}
 
