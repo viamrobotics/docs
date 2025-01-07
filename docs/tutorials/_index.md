@@ -8,4 +8,8 @@ hide_children: true
 sitemap:
   priority: 1.0
 hidden: true
+outputs:
+  - rss
+  - html
+  - typesense
 ---
