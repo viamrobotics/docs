@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Move an arm with joint positions or automated motion planning."
+aliases:
+  - /how-tos/move-robot-arm/
 ---
 
 You have two options for moving a robotic [arm](/operate/reference/components/arm/):

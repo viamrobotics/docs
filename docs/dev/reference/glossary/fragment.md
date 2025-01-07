@@ -1,7 +1,7 @@
 ---
 title: Fragment
 id: fragment
-full_link: /configure/#fragments
+full_link: /manage/fleet/reuse-configuration/
 short_description: A reusable configuration block that you can share across multiple machines.
 ---
 

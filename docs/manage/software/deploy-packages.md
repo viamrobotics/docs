@@ -25,7 +25,7 @@ As you improve the speech detection service, you can specify the version to depl
 ## Create a fragment
 
 {{< table >}}
-{{% tablestep link="/configure/" %}}
+{{% tablestep link="/operate/get-started/supported-hardware/" %}}
 **1. Configure your software**
 
 Start by adding a new machine in the [Viam app](https://app.viam.com).

@@ -28,7 +28,7 @@ You will need to [recompile and flash your ESP32 yourself](/operate/get-started/
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
-For a simplified step-by-step guide, see [Create a Hello World module](/how-tos/hello-world-module/).
+For a simplified step-by-step guide, see [Create a Hello World module](/operate/get-started/other-hardware/hello-world-module/).
 {{% /alert %}}
 
 You can also watch this guide to creating a vision service module:
@@ -126,7 +126,7 @@ The models implement the `rdk:component:arm` and the `rdk:component:gripper` API
 
 A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:module-name:model-name`, where:
 
-- `namespace` is the [namespace of your organization](/dev/reference/glossary/organization/#create-a-namespace-for-your-organization).
+- `namespace` is the [namespace of your organization](/dev/reference/glossary/#organization#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
     If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam Registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
@@ -1121,7 +1121,7 @@ Resource-level logs are recommended instead of global logs for modular resources
 Resource-level error logs appear in the **ERROR LOGS** section of each resource's configuration card in the app.
 
 {{% alert title="Note" color="note" %}}
-In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/architecture/viam-server/#logging).
+In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
 {{% /alert %}}
 
 {{< expand "Click to see global logging" >}}
@@ -1491,7 +1491,7 @@ _Add instructions here for any requirements._
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
 Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in the [Viam app](https://app.viam.com/).
-[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/configure/#components).
+[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
 
@@ -1546,7 +1546,7 @@ This driver supports differential, ackermann, and omni directional steering mode
 > Before configuring your base, you must add a machine in the [Viam app](https://app.viam.com).
 
 Navigate to the **CONFIGURE** tab of your machine’s page in the [Viam app](https://app.viam.com/).
-[Add `base` / `agilex-limo` to your machine](https://docs.viam.com/configure/#components).
+[Add `base` / `agilex-limo` to your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your base’s attributes field:
 
@@ -1654,7 +1654,7 @@ Once you are satisfied with the state of your module, you can upload your module
 - share your module with other Viam users
 - deploy your module to a fleet of machines from a central interface
 
-See [How to Upload a Module](/how-tos/upload-module/) for instructions.
+See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for instructions.
 
 ## Deploy your module to more machines
 

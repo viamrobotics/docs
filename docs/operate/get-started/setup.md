@@ -14,6 +14,7 @@ aliases:
   - /get-started/installation/microcontrollers/
   - /installation/viam-micro-server-setup/
   - /installation/viam-server-setup/
+  - /how-tos/configure/
 ---
 
 Get started by installing the open-source software that drives your hardware and connects your device to the cloud.
@@ -90,7 +91,7 @@ You can change this behavior if desired.
 
 To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](manage/reference/viam-agent/manage-viam-agent/).
 
-For manual installs of only `viam-server`, see [Manage `viam-server`](/installation/manage-viam-server/).
+For manual installs of only `viam-server`, see [Manage `viam-server`](/operate/reference/viam-server/manage-viam-server/).
 
 ## Supported systems
 

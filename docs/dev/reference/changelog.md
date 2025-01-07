@@ -113,7 +113,7 @@ For more information, see [Configure an esp32-camera](/operate/reference/compone
 {{% changelog date="2024-08-26" color="changed" title="Micro-RDK now called viam-micro-server" %}}
 
 The lightweight version of `viam-server` that is built from the micro-RDK is now referred to as `viam-micro-server`.
-For more information, see [viam-micro-server](/architecture/viam-micro-server/).
+For more information, see [viam-micro-server](/operate/reference/viam-micro-server/).
 
 {{% /changelog %}}
 
@@ -227,7 +227,7 @@ The functionality remains the same, but code that uses analogs must be updated.
 
 {{% changelog date="2024-04-30" color="added" title="Part online and part offline triggers" %}}
 
-You can now configure [triggers](/configure/triggers/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
+You can now configure [triggers](/manage/troubleshoot/alert/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
 
 {{% /changelog %}}
 
@@ -312,7 +312,7 @@ Viam has added a [sensor-controlled base](/operate/reference/components/base/sen
 
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
-You can now [visualize your data](/how-tos/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can now [visualize your data](/data-ai/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
 You can visualize any data, such as sensor readings, that you have [synced](/data-ai/capture-data/capture-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
@@ -321,7 +321,7 @@ See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) f
 
 {{% changelog date="2024-01-31" color="added" title="Use triggers to trigger actions" %}}
 
-You can now configure [triggers](/configure/triggers/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
+You can now configure [triggers](/data-ai/data/advanced/alert-data/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 
@@ -358,13 +358,13 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
-For more information, see [Query Data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/).
+For more information, see [Query Data with SQL or MQL](/data-ai/data/query/).
 
 {{% /changelog %}}
 
 {{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/fleet/dataset/).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data-ai/ai/create-dataset/).
 
 {{% /changelog %}}
 
@@ -399,7 +399,7 @@ Read the [Viam PLC Support](https://www.viam.com/post/viam-plc-support-democrati
 
 {{% changelog date="2023-10-31" color="improved" title="SLAM map creation" %}}
 
-The [Cartographer-module](/services/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
+The [Cartographer-module](/operate/reference/services/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
 This enhancement allows you to:
 
 - Generate larger maps without encountering session timeouts
@@ -526,8 +526,6 @@ This update enables you to implement custom models of an arm component as a modu
 
 Then, use the [motion planning service](/operate/reference/services/motion/) to specify poses, and Viam handles the rest.
 
-For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm/).
-
 {{% /changelog %}}
 
 {{% changelog date="2023-06-30" color="added" title="Apply a crop transform to camera views" %}}
@@ -587,7 +585,7 @@ Now when you invite collaborators to join your organization, you can assign perm
 - **Operator**: These members can only see and use the [remote control tab](/manage/troubleshoot/teleoperate/default-interface/).
   This role is best for those on your team who are teleoperating or remotely controlling machines.
 
-For more information about assigning permissions and collaborating with others on Viam, see [Fleet Management](/fleet/).
+For more information about assigning permissions and collaborating with others on Viam, see [Manage access](/manage/manage/access/).
 
 {{% /changelog %}}
 
@@ -675,7 +673,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/data-ai/reference/vision/color_detector/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/data-ai/reference/vision/color_detector/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -750,7 +748,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/da
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/data-ai/reference/vision/mlmodel/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/data-ai/reference/vision/mlmodel/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -810,7 +808,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/d
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/data-ai/reference/vision/mlmodel/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/data-ai/reference/vision/mlmodel/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -870,7 +868,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/data-ai/reference/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/data-ai/reference/vision/obstacles_pointcloud/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -924,7 +922,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/data-ai/reference/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/data-ai/reference/vision/detector_3d_segmenter/) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}

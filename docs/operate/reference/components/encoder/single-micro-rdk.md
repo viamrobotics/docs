@@ -8,6 +8,7 @@ tags: ["encoder", "components"]
 aliases:
   - /micro-rdk/encoder/single/
   - /build/micro-rdk/encoder/single/
+  - /components/encoder/single-micro-rdk/
 micrordk_component: true
 # SMEs: Rand
 ---

@@ -7,4 +7,4 @@ short_description: Managed instances of programs or scripts running on a machine
 
 Processes are instances of programs, invoked by commands running binaries or scripts on a {{< glossary_tooltip term_id="part" text="part" >}}.
 
-Find more information in [Configure a Process to Run on Your Machine](/configure/processes/).
+Find more information in [Configure a Process to Run on Your Machine](/manage/reference/processes/).

@@ -67,7 +67,7 @@ You choose how to group your machines.
 
 <br>
 
-For more information, see [Fleet Management](/how-tos/manage-fleet/#organize-your-machines).
+For more information, see [Fleet Management](/manage/reference/organize/).
 
 ### Example
 
@@ -130,7 +130,7 @@ With your organizational structure in place, let's add some machines:
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
-   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/installation/prepare/rpi-setup/#enable-communication-protocols).
+   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Click **Antonia's Home** in the left navigation menu to navigate to that location's page.
    In the **New machine** field near the top-right corner of the screen, type in a name for the machine, such as `Home Air Quality Sensor`, and click **Add machine**.
@@ -236,7 +236,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
 Viam's [data management service](/data-ai/capture-data/capture-sync/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
-Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/cloud/rbac/) to the data from the sensors in their locations.
+Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/manage/manage/access/) to the data from the sensors in their locations.
 
 Configure data capture and sync as follows:
 
@@ -417,7 +417,7 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
 Your TypeScript code requires an API key to establish a connection to your machines.
 You can set up credentials to access data from all the sensor machines in your organization, or from just one location.
-These API keys only need [**Operator** permissions](/cloud/rbac/).
+These API keys only need [**Operator** permissions](/manage/manage/rbac/).
 
 In our example you could create a dashboard for Antonia with an API key to see the data from her location, and create a separate dashboard for RobotsRUs with a different API key to access the data from their location.
 If RobotsRUs wanted to separate their dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.

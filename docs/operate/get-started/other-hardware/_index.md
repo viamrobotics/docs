@@ -9,6 +9,7 @@ aliases:
   - /registry/create/
   - /use-cases/create-module/
   - /how-tos/create-module/
+  - /how-tos/sensor-module/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
@@ -290,7 +291,7 @@ You can find more examples by looking at the source code GitHub repos linked fro
    Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource’s configuration card in the app.
 
    {{% alert title="Note" color="note" %}}
-   In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/architecture/viam-server/#logging).
+   In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
    {{% /alert %}}
 
 {{< expand "Click for global logging information" >}}

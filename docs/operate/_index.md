@@ -7,9 +7,12 @@ type: "docs"
 no_list: true
 open_on_desktop: true
 overview: true
+description: "To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world."
 aliases:
   - /configure/
 ---
+
+To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="upside-down">

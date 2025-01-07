@@ -32,7 +32,7 @@ You can receive alerts for the following events involving machine performance te
 For example, you can configure a trigger to send you a notification when your machine's CPU usage reaches a certain threshold.
 
 {{< alert title="Tip" color="tip" >}}
-You can also configure alerts on any other machine data, for more information on that, see [TODO](/data/).
+You can also configure alerts on any other machine data, for more information on that, see [Alert on data](/data-ai/data/advanced/alert-data/).
 {{< /alert >}}
 
 ## Data meets condition
@@ -64,7 +64,6 @@ On macOS, you must also install telegraf by running `brew install telegraf` in y
 If you are on another operating system, telegraf will be installed automatically for you.
 
 {{% /expand%}}
-
 
 {{< alert title="Note" color="note" >}}
 You must run `viam-server` with `sudo` to monitor machine performance metrics.
@@ -116,7 +115,7 @@ You can also see readings on the **CONTROL** tab.
 To capture or alert on the data from your configured sensor, you must add the [data management service](/data-ai/capture-data/capture-sync/) and configure it to capture and sync the sensor data:
 
 {{< table >}}
-{{% tablestep link="/services/data/" %}}
+{{% tablestep link="/data-ai/capture-data/capture-sync/" %}}
 **1. Add the data management service**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
@@ -671,7 +670,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
     {
       "name": "trigger-1",
       "event": {
-        "type": "part_offline",
+        "type": "part_offline"
       },
       "notifications": [
         {

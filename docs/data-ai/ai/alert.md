@@ -99,7 +99,7 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
 ## Set up alerts
 
-[Triggers](/configure/triggers/) allow you to send webhook requests or email notifications when certain events happen.
+[Triggers](/data-ai/data/advanced/alert-data/) allow you to send webhook requests or email notifications when certain events happen.
 
 You can use the **Data has been synced to the cloud** (`part_data_ingested`) trigger to send alerts whenever an image with an anomaly detection is synced to the cloud from your object filter camera.
 

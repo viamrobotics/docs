@@ -706,4 +706,4 @@ The following components and services support data capture and cloud sync:
 
 ## Next steps
 
-Now that you have captured data, you could [create a dataset](/data-ai/ai/create-dataset) and use this data to [train your own Machine Learning model](/data-ai/ai/train-tflite/) with the Viam platform.
+Now that you have captured data, you could [create a dataset](/data-ai/ai/create-dataset/) and use this data to [train your own Machine Learning model](/data-ai/ai/train-tflite/) with the Viam platform.

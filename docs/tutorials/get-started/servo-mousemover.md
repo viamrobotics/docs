@@ -77,7 +77,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ## Install Viam software
 
-First, prepare your Raspberry Pi according to our [setup guide](/installation/prepare/rpi-setup/).
+First, prepare your Raspberry Pi according to our [setup guide](/operate/reference/prepare/rpi-setup/).
 Then connect to your Raspberry Pi with SSH.
 
 {{% snippet "setup.md" %}}

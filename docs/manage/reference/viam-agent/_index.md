@@ -195,7 +195,7 @@ Edit and fill in the attributes as applicable.
 #### Version updates
 
 When a new version of `viam-server` becomes available, `viam-agent` will restart and upgrade `viam-server` immediately.
-To limit when `viam-server` can be updated, you can configure a [Maintenance Window](/architecture/viam-server/#maintenance-window).
+To limit when `viam-server` can be updated, you can configure a [Maintenance Window](/operate/reference/viam-server/#maintenance-window).
 With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
 
 #### Fast start mode
@@ -304,7 +304,7 @@ The following configuration allows all upgrades from configured sources and sets
 
 By default, `viam-agent` automatically updates both itself and `viam-server` as new updates are released.
 You can configure update behavior using the [Viam app](https://app.viam.com/).
-To ensure that updates only occur when your machines are ready, configure a [maintenance window](/architecture/viam-server/#maintenance-window).
+To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window).
 
 To use a specific version of `viam-agent` and `viam-server`, you can pin the version.
 

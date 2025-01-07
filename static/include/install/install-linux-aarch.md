@@ -29,4 +29,4 @@ To install `viam-server` :
 
    On your machine's page on the [Viam app](https://app.viam.com), your machine will show that it's **Live**.
 
-By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage-viam-server/) if desired.
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/operate/reference/viam-server/manage-viam-server/) if desired.

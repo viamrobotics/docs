@@ -65,7 +65,7 @@ The [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) is not 
 Use the Go Client SDK instead.
 
 {{< alert title="Tip" color="tip" >}}
-If you are looking to implement session management yourself only to increase the session window, you can increase the session window instead, by [increasing the `heartbeat_window`](/configure/#network).
+If you are looking to implement session management yourself only to increase the session window, you can increase the session window instead, by increasing the `heartbeat_window` in the network configuration.
 {{< /alert >}}
 
 To manage your session with the session management API:

@@ -66,7 +66,7 @@ If you experience any issues getting Viam to work on your <board-series-model>, 
 
 {{< snippet "social.md" >}}
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
 
 ## Next steps
 

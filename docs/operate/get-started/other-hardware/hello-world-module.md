@@ -798,7 +798,7 @@ The local module configuration is primarily for testing purposes.
 
 ![The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results.](/how-tos/hello-config.png)
 
-For more information about uploading modules, see [Upload a module](/how-tos/upload-module/).
+For more information about uploading modules, see [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/).
 
 ## Next steps
 

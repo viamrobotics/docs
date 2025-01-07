@@ -19,7 +19,7 @@ no_list: true
 
 <!-- After following this tutorial, you will be able to use the data management service to capture and sync sensor data from your machine to the Viam app, from which you can then configure a visualization dashboard such as Grafana to view and optionally query your sensor readings. -->
 
-Once you have [configured data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
+Once you have [configured data query](/data-ai/data/query/#query-data-using-third-party-tools) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
 
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
@@ -31,7 +31,7 @@ Follow the steps in this tutorial to learn how to collect data from your machine
 
 {{% alert title="Info" color="info" %}}
 This tutorial focuses on using Grafana to visualize your captured data.
-For general guidance appropriate for any third-party visualization tool, see [Visualize data](/how-tos/sensor-data-visualize/).
+For general guidance appropriate for any third-party visualization tool, see [Visualize data](/data-ai/data/visualize/).
 {{% /alert %}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/CGq3XIRQjUQ">}}
@@ -104,11 +104,11 @@ For more information see [data management service configuration](/services/data/
 
 Next, enable the ability to query your synced data.
 When you sync captured data to Viam, that data is stored in the Viam organization’s [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
-Configuring data query allows you to directly [query your data](/how-tos/sensor-data-query-with-third-party-tools/#query-data-in-the-viam-app) using the Viam app or a compatible client (such as `mongosh`), but also allows Grafana to access that data and visualize it.
+Configuring data query allows you to directly [query your data](/data-ai/data/query/#query-data-in-the-viam-app) using the Viam app or a compatible client (such as `mongosh`), but also allows Grafana to access that data and visualize it.
 
 To enable data query:
 
-1. Follow the steps to [configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query).
+1. Follow the steps to [configure data query](/data-ai/data/query/#query-data-in-the-viam-app).
 
 1. Note the username and hostname returned from these steps, in addition to the password you chose for that user.
    You will use this information in the next section.
@@ -141,7 +141,7 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
      ```
 
      The connection string is specific to your organization ID and configured user.
-     You must have followed the steps under [configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) previously in order for this URL to be valid.
+     You must have followed the steps under [configure data query](/data-ai/data/query/#configure-data-query) previously in order for this URL to be valid.
 
    - **Credentials: User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
 
@@ -155,14 +155,14 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
      db-user-abcdef12-abcd-abcd-abcd-abcdef123456
      ```
 
-   - **Credentials: Password**: Enter the password you provided when you [configured data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) previously.
+   - **Credentials: Password**: Enter the password you provided when you [configured data query](/data-ai/data/query/#configure-data-query) previously.
 
    {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
 
 1. Click the **Save & test** button to save your settings.
    Grafana will perform a health check on your configuration settings to verify that everything looks good.
 
-This connection allows Grafana to access all synced sensor data under your [organization](/dev/reference/glossary/organization/), from any machine.
+This connection allows Grafana to access all synced sensor data under your [organization](/dev/reference/glossary/#organization), from any machine.
 
 ## Visualize your data
 
@@ -223,7 +223,7 @@ See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/
 In this tutorial, you learned:
 
 - how to use the [data management service](/data-ai/capture-data/capture-sync/) to capture data from your machine and sync it to the Viam app
-- how to [enable data query access](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) to your synced data
+- how to [enable data query access](/data-ai/data/query/#configure-data-query) to your synced data
 - how to connect Grafana to your data
 - how to build a dashboard visualizing that data
 - how to use query language to dynamically update the visualization based on UI selections

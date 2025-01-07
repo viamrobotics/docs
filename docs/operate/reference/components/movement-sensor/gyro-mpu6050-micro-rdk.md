@@ -8,6 +8,7 @@ images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/gyro-mpu6050/
   - /build/micro-rdk/movement-sensor/gyro-mpu6050/
+  - /components/movement-sensor/gyro-mpu6050-micro-rdk/
 micrordk_component: true
 toc_hide: true
 # SMEs: Rand

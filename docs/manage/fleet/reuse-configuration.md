@@ -31,7 +31,7 @@ If one rover has an arm attached, you can add the rover configuration fragment (
 You must be an [organization owner](/manage/manage/rbac/) to create fragments for an organization.
 
 {{< table >}}
-{{% tablestep link="/configure/" %}}
+{{% tablestep link="/operate/get-started/setup/" %}}
 **1. Configure one machine**
 
 Start by configuring one of your machines.
@@ -371,7 +371,7 @@ Here are the version options:
 
 {{% alert title="Support Notice" color="note" %}}
 
-Fragment overwrites are currently _not_ supported for modifying [triggers](/configure/triggers/).
+Fragment overwrites are currently _not_ supported for modifying [triggers](/manage/troubleshoot/alert/).
 
 {{% /alert %}}
 

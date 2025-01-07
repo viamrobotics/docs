@@ -101,7 +101,7 @@ You can set the `auto_reconnect` attribute to `true`.
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**JSON** mode](/configure/#the-configure-tab) on the **CONFIGURE** tab.
+If instead of using the config builder, you prefer to write raw JSON, switch to **JSON** mode on the **CONFIGURE** tab.
 Inside the `components` array of your config, add the following configuration for your [gamepad](/operate/reference/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
