@@ -20,7 +20,7 @@ date: "2022-01-01"
 
 The _generic_ service {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of services that do not already have an [appropriate API](/dev/reference/apis/#service-apis) defined for them.
 
-For example, when writing code to manage [simultaneous localization and mapping (SLAM)](/services/slam/) for your machine, it makes sense to use the existing [SLAM API](/dev/reference/apis/services/slam/#api), which provides specific functionality required for generating accurate maps of an environment.
+For example, when writing code to manage [simultaneous localization and mapping (SLAM)](/operate/reference/services/slam/) for your machine, it makes sense to use the existing [SLAM API](/dev/reference/apis/services/slam/#api), which provides specific functionality required for generating accurate maps of an environment.
 However, if you want to create a new service to monitor your machine's CPU and RAM usage for example, you need very different functionality that isn't currently exposed in any API.
 Instead, you can use the generic service API to add support for your unique type of service, like local system monitoring, to your machine.
 

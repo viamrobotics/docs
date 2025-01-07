@@ -20,7 +20,7 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+The vision service enables your machine to use its on-board [cameras](/operate/reference/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
 The vision service API allows you to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using.
@@ -88,7 +88,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 - [GetObjectPointClouds()](/dev/reference/apis/services/vision/#getobjectpointclouds)
 
-The [vision service](/services/vision/) supports the following methods:
+The [vision service](/data-ai/reference/vision/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
 
@@ -100,7 +100,7 @@ To get started using Viam's SDKs to connect to and control your machine, go to y
 
 When executed, this sample code creates a connection to your machine as a client.
 
-The following examples assume that you have a machine configured with a [camera](/operate/reference/components/camera/) and a vision service [detector](/services/vision/#detections), [classifier](/services/vision/#classifications) or [segmenter](/services/vision/#segmentations).
+The following examples assume that you have a machine configured with a [camera](/operate/reference/components/camera/) and a vision service [detector](/data-ai/reference/vision/#detections), [classifier](/data-ai/reference/vision/#classifications) or [segmenter](/data-ai/reference/vision/#segmentations).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

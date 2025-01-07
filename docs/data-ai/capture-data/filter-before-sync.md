@@ -15,14 +15,14 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{% tablestep link="/services/ml/"%}}
+{{% tablestep link="/data-ai/ai/deploy/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model service to your machine**
 
 Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](https://github.com/viam-modules/mlmodel-tflite).
 
 {{% /tablestep %}}
-{{% tablestep link="/services/vision/"%}}
+{{% tablestep link="/data-ai/reference/vision/"%}}
 {{<imgproc src="/services/icons/ml.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
@@ -30,7 +30,7 @@ Click **Select model** on the ML model service configuration panel, then select 
 If you're not sure which model to use, you can use [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
-{{% tablestep link="/services/vision/"%}}
+{{% tablestep link="/data-ai/reference/vision/"%}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **3. Add a vision service to use with the ML model**
 
@@ -94,8 +94,8 @@ Once you save your configuration, place something that is part of your trained M
 Images that pass your filter will be captured and will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
 Your images will begin to appear under the **DATA** tab.
 
-If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs) and ensure that the condition for filtering is met.
-You can test the vision service from the [**CONTROL** tab](/cloud/machines/#control) to see its classifications and detections live.
+If no data appears after the sync interval, check the [**Logs**](/manage/troubleshoot/troubleshoot/#check-logs) and ensure that the condition for filtering is met.
+You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/) to see its classifications and detections live.
 
 {{% /tablestep %}}
 {{% tablestep %}}

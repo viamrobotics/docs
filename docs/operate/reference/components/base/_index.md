@@ -95,5 +95,5 @@ For general configuration, development, and usage info, see:
 
 You can also use the base component with the following services:
 
-- [Navigation service](/services/navigation/): to navigate with GPS
-- [SLAM service](/services/slam/): for mapping
+- [Navigation service](/operate/reference/services/navigation/): to navigate with GPS
+- [SLAM service](/operate/reference/services/slam/): for mapping

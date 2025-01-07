@@ -182,7 +182,7 @@ Use the buttons to try turning your motor forwards or backwards at different pow
 
 ![Motor control panel.](/components/motor/control.png)
 
-For example, a [Viam Rover](/appendix/try-viam/rover-resources/) with encoded motors following both an [angular](/dev/reference/apis/components/base/#spin) and [linear](/dev/reference/apis/components/base/#movestraight) velocity command:
+For example, a rover with encoded motors following both an [angular](/dev/reference/apis/components/base/#spin) and [linear](/dev/reference/apis/components/base/#movestraight) velocity command:
 
 {{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
 
@@ -190,7 +190,7 @@ The position, orientation, and linear and angular velocity of the rover changing
 
 {{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
 
-If the motor does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/cloud/machines/#logs) for errors, and review the configuration.
+If the motor does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for errors, and review the configuration.
 
 ## Control motor velocity with encoder feedback
 

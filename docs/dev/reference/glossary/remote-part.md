@@ -8,4 +8,4 @@ aka:
 
 A machine part which is controlled by another machine part.
 
-For more information, see [Machine Architecture: Parts](/architecture/parts/).
+For more information, see [Machine Architecture: Parts](/operate/reference/architecture/parts/).

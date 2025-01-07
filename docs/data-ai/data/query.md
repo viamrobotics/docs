@@ -33,7 +33,7 @@ You can then run queries against that data to search for outliers or edge cases,
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
+Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 
@@ -41,7 +41,7 @@ Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
 
 Once your data has synced, you can query your data from within the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
-You must have the [owner role](/cloud/rbac/) in order to query data in the Viam app.
+You must have the [owner role](/manage/manage/rbac/) in order to query data in the Viam app.
 
 {{< table >}}
 {{% tablestep %}}
@@ -145,7 +145,7 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
+Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 

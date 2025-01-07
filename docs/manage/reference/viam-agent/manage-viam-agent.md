@@ -12,7 +12,7 @@ date: "2024-08-16"
 # updated: ""  # When the content was last entirely checked
 ---
 
-[`viam-agent`](/configure/agent/) is installed as a `systemd` service named `viam-agent`.
+[`viam-agent`](/manage/reference/viam-agent/) is installed as a `systemd` service named `viam-agent`.
 
 - To start `viam-agent`:
 

@@ -92,11 +92,10 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the camera component with the following services:
 
-- [Data management service](/services/data/): To capture and sync the camera's data
-- [Vision service](/services/vision/): To use computer vision to interpret the camera stream
-- [SLAM service](/services/slam/): for mapping
+- [Data management service](/data-ai/capture-data/capture-sync/: To capture and sync the camera's data
+- [Vision service](/data-ai/reference/vision/): To use computer vision to interpret the camera stream
+- [SLAM service](/operate/reference/services/slam/): for mapping

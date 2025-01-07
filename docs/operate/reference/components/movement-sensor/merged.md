@@ -17,9 +17,9 @@ This allows you to aggregate the API methods supported by multiple sensors into 
 
 This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/operate/reference/components/movement-sensor/#configuration) or [`IMU`](/operate/reference/components/movement-sensor/#configuration) models, respectively.
 
-To reduce velocity error when your machine is using the [navigation service](/services/navigation/), aggregate `Position()` from a [`GPS`](/operate/reference/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/operate/reference/components/movement-sensor/#configuration) movement sensor in a `merged` model.
+To reduce velocity error when your machine is using the [navigation service](/operate/reference/services/navigation/), aggregate `Position()` from a [`GPS`](/operate/reference/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/operate/reference/components/movement-sensor/#configuration) movement sensor in a `merged` model.
 
-Configure a [navigation service](/services/navigation/) to use your merged sensor to navigate.
+Configure a [navigation service](/operate/reference/services/navigation/) to use your merged sensor to navigate.
 
 Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/operate/reference/components/movement-sensor/#configuration).
 Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes:

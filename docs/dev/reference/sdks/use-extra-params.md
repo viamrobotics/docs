@@ -94,9 +94,9 @@ If `extra` information must be passed to a resource, it is handled within a new,
 {{%expand "Click for instructions on defining a custom model to use extra params" %}}
 
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
-Follow the steps in the [Modular Resources documentation](/how-tos/create-module/) to do so.
+Follow the steps in the [Modular Resources documentation](/operate/get-started/other-hardware/) to do so.
 
-For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/dev/reference/apis/), reference this modification to the built-in [sensor](/operate/reference/components/sensor/) resource type's [Readings](/dev/reference/apis/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/dev/reference/apis/), reference this modification to the built-in [sensor](/operate/reference/components/sensor/) resource type's [Readings](/dev/reference/apis/components/sensor/#getreadings) method in the code of a new sensor model:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -162,6 +162,6 @@ func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (
 {{% /tab %}}
 {{% /tabs %}}
 
-See [Extend Viam with Modular Resources](/registry/) for more information and [instructions](/registry/) on modifying built-in API specifications.
+See [Integrate other hardware](/operate/get-started/other-hardware/) for more information and instructions on modifying built-in API specifications.
 
 {{% /expand%}}

@@ -37,7 +37,7 @@ You can use it as the basis of your own custom logic.
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management service](/services/data/):
+Add the [data management service](/data-ai/capture-data/capture-sync/#configure-the-data-management-service):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -285,11 +285,11 @@ You have now configured sync to happen during a specific time slot.
 
 ## Test your sync configuration
 
-To test your setup, [configure a webcam](/components/camera/webcam/) or another component and [enable data capture on the component](/services/data/#configuration).
+To test your setup, [configure a webcam](/operate/reference/components/camera/webcam/) or another component and [enable data capture on the component](/data-ai/capture-data/capture-sync/#configure-the-data-management-service).
 Make sure to physically connect any hardware parts to the computer controlling your machine.
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
-Go to the [**CONTROL** tab](/fleet/control/).
+Go to the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
 You should see the sensor.
 Click on `GetReadings`.
 

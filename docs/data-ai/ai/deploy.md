@@ -11,13 +11,13 @@ aliases:
     - /services/ml/
 ---
 
-The Machine Learning (ML) model service allows you to deploy [machine learning models](/registry/ml-models/) to your machine.
+The Machine Learning (ML) model service allows you to deploy [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) to your machine.
 The service works with models trained inside and outside the Viam app:
 
-- You can [train](/how-tos/train-deploy-ml/) models on data from your machines.
+- You can [train TFlite](/data-ai/ai/train-tflite/) or [other models](data-ai/ai/train/) on data from your machines.
 - You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
 - You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [Viam Registry](https://app.viam.com/registry).
-- You can use a [model](/registry/ml-models/) trained outside the Viam platform whose files are on your machine.
+- You can use a [model](/data-ai/ai/deploy/#deploy-your-ml-model) trained outside the Viam platform whose files are on your machine.
 
 ## Deploy your ML model
 
@@ -59,12 +59,12 @@ You can search the machine learning models that are available to deploy on this 
 
 On its own the ML model service only runs the model.
 After deploying your model, you need to configure an additional service to use the deployed model.
-For example, you can configure an [`mlmodel` vision service](/services/vision/) to visualize the inferences your model makes.
+For example, you can configure an [`mlmodel` vision service](/data-ai/reference/vision/) to visualize the inferences your model makes.
 Follow our docs to [run inference](/data-ai/ai/run-inference/) to add an `mlmodel` vision service and see inferences.
 
-For other use cases, consider [creating custom functionality with a module](/how-tos/create-module/).
+For other use cases, consider [creating custom functionality with a module](/operate/get-started/other-hardware/).
 
 {{< alert title="Add support for other models" color="tip" >}}
-ML models must be designed in particular shapes to work with the `mlmodel` [classification](/services/vision/mlmodel/) or [detection](/services/vision/mlmodel/) model of Viam's [vision service](/services/vision/).
+ML models must be designed in particular shapes to work with the `mlmodel` [classification](/data-ai/reference/vision/mlmodel/) or [detection](/data-ai/reference/vision/mlmodel/) model of Viam's [vision service](/data-ai/reference/vision/).
 See [ML Model Design](/registry/advanced/mlmodel-design/) to design a modular ML model service with models that work with vision.
 {{< /alert >}}

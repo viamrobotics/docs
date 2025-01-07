@@ -94,6 +94,6 @@ For general configuration, development, and usage info, see:
 
 You can also use the encoder component with the following services:
 
-- [Data management service](/services/data/): To capture and sync the encoder's data
-- [Motion service](/services/motion/): To move machines or components of machines
-- [Navigation service](/services/navigation/): To navigate with GPS
+- [Data management service](/data-ai/capture-data/capture-sync/): To capture and sync the encoder's data
+- [Motion service](/operate/reference/services/motion/): To move machines or components of machines
+- [Navigation service](/operate/reference/services/navigation/): To navigate with GPS

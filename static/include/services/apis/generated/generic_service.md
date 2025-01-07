@@ -108,9 +108,4 @@ await my_generic_service.close()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/generic/client/index.html#viam.services.generic.client.GenericClient.close).
 
 {{% /tab %}}
-{{% tab name="C++" %}}
-
-There is no need to explicitly close a generic service's resource in C++, as resource destruction is handled automatically by the generic service's class destructor when variables exit scope.
-
-{{% /tab %}}
 {{< /tabs >}}

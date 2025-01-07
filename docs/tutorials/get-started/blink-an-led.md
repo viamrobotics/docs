@@ -35,7 +35,7 @@ This is a great place to start if you have never built a robot or a circuit befo
 {{<gif webm_src="/tutorials/blink-an-led/image9.webm" mp4_src="/tutorials/blink-an-led/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
 First, you'll use the control interface on the [Viam app](https://app.viam.com) to turn the LED on and off.
-Then, you'll write code to control the LED using the Viam [software development kits](/sdks/).
+Then, you'll write code to control the LED using the Viam [software development kits](/dev/reference/sdks/).
 
 ## What you'll need for this guide
 
@@ -175,7 +175,7 @@ Click the **Save** button in the top right corner of the page to save your chang
 ## Control your robot using the Viam app
 
 When you configure your board component, the Viam app generates a control panel for it.
-Click the [**CONTROL** tab](/fleet/control/) to view the control panels for all your machine's components (in this case, just the board).
+Click the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to view the control panels for all your machine's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.
