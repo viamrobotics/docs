@@ -8,6 +8,8 @@ icon: true
 images: ["/installation/thumbnails/manage.png"]
 description: "Building a local machine configuration file for use with viam-server."
 date: "2022-01-01"
+aliases:
+  - /internals/local-configuration-file/
 # updated: ""  # When the content was last entirely checked
 ---
 

@@ -8,6 +8,8 @@ description: "Give commands to define waypoints and move your machine along thos
 icon: true
 images: ["/services/icons/navigation.svg"]
 date: "2022-01-01"
+aliases:
+   - /appendix/apis/services/navigation/
 # updated: ""  # When the content was last entirely checked
 ---
 

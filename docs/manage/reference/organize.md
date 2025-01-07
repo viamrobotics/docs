@@ -9,6 +9,18 @@ description: "Organize and manage access to your fleet by grouping machines into
 aliases:
   - /fleet/account/
   - /cloud/account/
+  - /how-tos/manage-fleet/
+  - /use-cases/manage-fleet/
+  - /cloud/machines/
+  - /fleet/robots/
+  - /manage/fleet/machines/
+  - /fleet/machines/
+  - /cloud/locations/
+  - /manage/fleet/locations/
+  - /fleet/locations/
+  - /cloud/organizations/
+  - /manage/fleet/organizations/
+  - /fleet/organizations/
 ---
 
 Before you start connecting your devices to the Viam app, you need to decide how you want to group your machines.

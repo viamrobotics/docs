@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations."
+aliases:
+  - /cloud/rbac/
+  - /fleet/rbac/
 ---
 
 To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations.

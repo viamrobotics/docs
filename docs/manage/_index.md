@@ -7,7 +7,9 @@ type: "docs"
 no_list: true
 open_on_desktop: true
 overview: true
-description: "Viam's fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere."
+description: "Remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere."
+aliases:
+  - /cloud/
 ---
 
 Viam's fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere.

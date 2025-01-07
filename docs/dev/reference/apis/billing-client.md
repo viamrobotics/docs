@@ -8,6 +8,7 @@ tags: ["cloud", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - /program/apis/billing-client/
   - /build/program/apis/billing-client/
+  - /appendix/apis/billing-client/
 date: "2024-09-14"
 # updated: ""  # When the content was last entirely checked
 ---

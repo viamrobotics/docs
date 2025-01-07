@@ -7,6 +7,7 @@ description: "Configure a process to run a program when your machine is online."
 tags: ["processes"]
 aliases:
   - /build/configure/processes/
+  - /configure/processes/
 date: "2022-01-01"
 updated: "2024-11-01"
 no_list: true

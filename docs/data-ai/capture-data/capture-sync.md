@@ -18,6 +18,20 @@ aliases:
   - /services/data/capture-sync/
   - /how-tos/sensor-data/
   - /services/data/
+  - fleet/data-management/
+  - /manage/data-management/
+  - /services/data-management/
+  - /manage/data/
+  - "/data-management/"
+  - "/data-management/"
+  - "/services/data/"
+  - "/data/"
+  - /manage/data/export/
+  - /data/export/
+  - /services/data/export/
+  - /manage/data/view/
+  - /data/view/
+  - /services/data/view/
 ---
 
 You can use data management service to capture and sync data from your machine to the cloud.

@@ -19,6 +19,7 @@ tags:
 aliases:
   - /program/apis/sessions/
   - /build/program/apis/sessions/
+  - /appendix/apis/sessions/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---

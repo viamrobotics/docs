@@ -9,6 +9,8 @@ images: ["/installation/thumbnails/manage.png"]
 imageAlt: "Manage viam-agent"
 description: "Control and manage the viam-agent systemd service."
 date: "2024-08-16"
+aliases:
+  - /installation/manage-viam-agent/
 # updated: ""  # When the content was last entirely checked
 ---
 

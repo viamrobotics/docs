@@ -15,6 +15,8 @@ date: "2024-11-13"
 # updated: ""  # When the content was last entirely checked
 cost: "0"
 next: "/manage/troubleshoot/troubleshoot/"
+aliases:
+  - /fleet/control/
 ---
 
 You can remotely control, test, and operate any configured machine using the default control interface

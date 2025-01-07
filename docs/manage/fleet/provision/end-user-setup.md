@@ -12,6 +12,8 @@ platformarea: ["fleet"]
 level: "Intermediate"
 prev: "/manage/fleet/provision/"
 date: "2024-08-21"
+aliases:
+  - /provision/
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 ---

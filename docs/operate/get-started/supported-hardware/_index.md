@@ -26,6 +26,7 @@ Viam supports a wide variety of sensors, cameras, and other physical hardware, w
 {{% relatedcard link="/dev/reference/apis/components/power-sensor/" %}}
 {{% relatedcard link="/dev/reference/apis/components/sensor/" %}}
 {{% relatedcard link="/dev/reference/apis/components/servo/" %}}
+{{% relatedcard link="/dev/reference/apis/components/generic/" %}}
 {{< /cards >}}
 
 These standardized APIs are implemented by {{< glossary_tooltip term_id="module" text="modules" >}} that provide drivers for specific models of hardware.

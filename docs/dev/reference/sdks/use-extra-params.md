@@ -9,6 +9,7 @@ tags: ["sdk", "extra", "extend"]
 aliases:
   - /program/sdks/use-extra-params
   - /program/use-extra-params/
+  - /sdks/use-extra-params/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---

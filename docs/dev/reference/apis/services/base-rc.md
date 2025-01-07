@@ -8,6 +8,8 @@ description: "Give commands to get a list of inputs from the controller that are
 icon: true
 images: ["/services/icons/base-rc.svg"]
 date: "2022-01-01"
+aliases:
+   - /appendix/apis/services/base-rc/
 # updated: ""  # When the content was last entirely checked
 ---
 

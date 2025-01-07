@@ -11,6 +11,8 @@ viamresources: []
 platformarea: ["registry", "fleet"]
 level: "Intermediate"
 date: "2024-08-28"
+aliases:
+  - /how-tos/deploy-packages/
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 ---
