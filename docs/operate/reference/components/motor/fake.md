@@ -126,6 +126,5 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
-{{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/tutorials/control/control-motor/" noimage="true" %}}
+{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{< /cards >}}

@@ -815,10 +815,10 @@ For an example of setting up text alerts, see the [Detect a Person and Send a Ph
 For another example of a custom TypeScript interface, check out the [Claw Game tutorial](/tutorials/projects/claw-game/).
 Instead of displaying data, the claw game interface has buttons to control a robotic arm.
 
-In this tutorial we covered configuring a fleet of machines using fragments, but to automate the setup process further, you can [use the Viam Agent to provision machines](/fleet/provision/).
+In this tutorial we covered configuring a fleet of machines using fragments, but to automate the setup process further, you can [use the Viam Agent to provision machines](/manage/fleet/provision/setup/).
 
 {{< cards >}}
-{{% card link="/fleet/provision/" %}}
+{{% card link="/manage/fleet/provision/end-user-setup/" %}}
 {{% card link="/tutorials/services/visualize-data-grafana/" %}}
 {{% card link="/tutorials/projects/helmet/" %}}
 {{< /cards >}}

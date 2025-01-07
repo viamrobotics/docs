@@ -175,6 +175,6 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
-{{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/move-robot-arm/" noimage="true" %}}
+{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/mobility/move-arm/" noimage="true" %}}
 {{< /cards >}}

@@ -78,8 +78,8 @@ If none of these steps work, reach out to us on the [Community Discord](https://
 For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the gantry component with the following services:
