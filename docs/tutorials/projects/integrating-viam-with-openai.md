@@ -54,7 +54,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChatGPT with the Viam platform’s built-in [computer vision service](/services/vision/), ML model support, and [locomotion](/operate/reference/components/base/), you can within a few hours create a basic companion robot that:
+By combining ChatGPT with the Viam platform’s built-in [computer vision service](/data-ai/reference/vision/), ML model support, and [locomotion](/operate/reference/components/base/), you can within a few hours create a basic companion robot that:
 
 - Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 - Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -422,6 +422,6 @@ Some ideas:
 - Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 - Integrate another ML model that is used to follow a human (when told to do so).
 - Add Lidar and integrate Viam's {{< glossary_tooltip term_id="slam" text="SLAM service" >}} to map the world around it.
-- Use Viam's [Data Management](/services/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
+- Use Viam's [Data Management](/data-ai/capture-data/capture-sync/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

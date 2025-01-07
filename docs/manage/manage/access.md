@@ -9,7 +9,7 @@ description: "To collaborate with others on your machines, you can grant users p
 ---
 
 To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations.
-You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) to grant or revoke organization owner or operator access to users or API keys.
+You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) to grant or revoke organization owner or operator access to users or API keys.
 
 ## Grant access
 

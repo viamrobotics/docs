@@ -27,7 +27,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/registry/ml-models/) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/fleet/data-management/).
+You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/fleet/data-management/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
@@ -228,11 +228,11 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-You can test your detector or classifier from the [**Control tab**](/fleet/control/) or with code using a camera that is part of your machine.
+You can test your detector or classifier from the [**Control tab**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) or with code using a camera that is part of your machine.
 
 #### Test your vision service
 
-1. Configure a [camera component](/components/camera/).
+1. Configure a [camera component](/operate/reference/components/camera/).
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
@@ -245,7 +245,7 @@ You can test your detector or classifier from the [**Control tab**](/fleet/contr
 
 {{% expand "Click to see how to configure a camera live feed that shows detections or classifications" %}}
 
-Configure a [transform camera](/components/camera/transform/) with the following attributes:
+Configure a [transform camera](/operate/reference/components/camera/transform/) with the following attributes:
 
 {{< tabs >}}
 {{% tab name="Detections" %}}

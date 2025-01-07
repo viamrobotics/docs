@@ -19,7 +19,7 @@ cost: "0"
 ---
 
 If most of your machines use the same setup, you can use a {{< glossary_tooltip term_id="fragment" text="fragment" >}}, like a cookie cutter, to configure the machines in the same way.
-Fragments are a way of sharing and managing [machine configurations](/configure/) across multiple machines.
+Fragments are a way of sharing and managing [machine configurations](/operate/get-started/supported-hardware/) across multiple machines.
 
 For example, if you have a fleet of rovers that uses the same hardware, you could use a fragment to configure the motors, base component, camera, and all other resources for all rovers.
 If some of the rovers have a slightly different configuration, you can overwrite the configuration for just those {{< glossary_tooltip term_id="resource" text="resources" >}} of those rovers.
@@ -49,7 +49,7 @@ In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/fleet/fragments/" %}}
+{{% tablestep link="/manage/fleet/reuse-configuration/" %}}
 **3. Create a fragment**
 
 On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
@@ -120,7 +120,7 @@ If you or a collaborator later modify fields within the upstream fragment, your 
 For example if you changed the default camera configuration in the fragment to be a different camera model, your modified rovers would still overwrite the camera model set by the fragment.
 
 {{< table >}}
-{{% tablestep link="/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment" %}}
+{{% tablestep link="/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine" %}}
 
 <!-- markdownlint-disable MD036 -->
 
@@ -317,7 +317,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{< /expand >}}
 {{< expand "Modify data sync settings" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/services/data/) named `data-management` in the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/data-ai/capture-data/capture-sync/) named `data-management` in the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -379,7 +379,7 @@ Fragment overwrites are currently _not_ supported for modifying [triggers](/conf
 {{% tablestep %}}
 **2. Check your machine's logs**
 
-After configuring fragment overwrites, check your machine's [**LOGS** tab](/cloud/machines/#logs).
+After configuring fragment overwrites, check your machine's [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs).
 
 If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
 

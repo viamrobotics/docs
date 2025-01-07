@@ -1,6 +1,6 @@
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a configured [detector](/services/vision/#detections).
+Get a list of detections from the next image from a specified camera using a configured [detector](/data-ai/reference/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -75,7 +75,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
 
 **Example:**
 
@@ -91,7 +91,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDetections
 
-Get a list of detections from a given image using a configured [detector](/services/vision/#detections).
+Get a list of detections from a given image using a configured [detector](/data-ai/reference/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -180,7 +180,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
 
 **Example:**
 
@@ -197,7 +197,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured [classifier](/services/vision/#classifications).
+Get a list of classifications from the next image from a specified camera using a configured [classifier](/data-ai/reference/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -271,7 +271,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
 
 **Example:**
 
@@ -287,7 +287,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured [classifier](/services/vision/#classifications).
+Get a list of classifications from a given image using a configured [classifier](/data-ai/reference/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -379,7 +379,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
 
 **Example:**
 
@@ -396,7 +396,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/services/vision/#segmentations)).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/data-ai/reference/vision/#segmentations)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -473,7 +473,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)\>\>
 
 **Example:**
 
@@ -544,14 +544,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// import ( "go.viam.com/rdk/vision/viscapture" )
-
-visService, err := vision.FromRobot(machine, "my_vision_svc")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
 // The data to capture and return from the camera
 captOpts := viscapture.CaptureOptions{
   ReturnImage: true,
@@ -662,7 +654,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

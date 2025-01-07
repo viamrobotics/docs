@@ -167,7 +167,7 @@ The following attributes are available for `Navigation` services:
 
 The [frame system service](/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
 
-It stores the required contextual information for Viam's services like [Motion](/services/motion/) and [Vision](/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
+It stores the required contextual information for Viam's services like [Motion](/services/motion/) and [Vision](/data-ai/reference/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
 
 {{% /alert %}}
 
@@ -282,7 +282,7 @@ An example of an `Orientation` reading:
 orientation, err := imuwit.Orientation(context.Background(), nil)
 ```
 
-Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/internals/orientation-vector/).
+Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/operate/reference/orientation-vector/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
 You can choose the origin reference frame by configuring it using Viam's [frame system](/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.

@@ -17,7 +17,7 @@ updated: "2024-10-18"
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-The frame system is the basis for some of Viam's other services, like [motion](/services/motion/) and [vision](/services/vision/).
+The frame system is the basis for some of Viam's other services, like [motion](/services/motion/) and [vision](/data-ai/reference/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 It is a mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
@@ -155,12 +155,12 @@ Configure the reference frame as follows:
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
 | `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: m in Frame Editor, mm in JSON. |
-| `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
+| `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/operate/reference/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
 | `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: m in Frame Editor, mm in JSON. <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
 
 {{% alert title="Info" color="info" %}}
 
-The `orientation` parameter offers types for ease of configuration, but the frame system always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
+The `orientation` parameter offers types for ease of configuration, but the frame system always stores and returns [orientation vectors](/operate/reference/orientation-vector/) in `Orientation Vector Radians`.
 Other types will be converted to `ov_radian`.
 
 {{% /alert %}}
@@ -213,7 +213,7 @@ Add this value to `"z"` in the camera's reference frame `Translation` attribute,
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
-Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"ox"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
+Adjust the [orientation vector](/operate/reference/orientation-vector/) to 0.5 degrees in `"ox"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
 
 ![Camera oriented 0.5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
 
@@ -284,7 +284,7 @@ For example:
 
   However, an arm with an attached [camera](/operate/reference/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the machine.
 
-  With the [vision service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
+  With the [vision service](/data-ai/reference/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
   If a [camera](/operate/reference/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 

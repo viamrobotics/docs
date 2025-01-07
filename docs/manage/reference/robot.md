@@ -4,5 +4,5 @@ linkTitle: "Machine Management API"
 weight: 700
 type: "docs"
 layout: "empty"
-canonical: "/dev/apis/robot/"
+canonical: "/dev/reference/apis/robot/"
 ---

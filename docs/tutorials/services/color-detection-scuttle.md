@@ -29,7 +29,7 @@ toc_hide: true
 <!-- LEARNING GOALS
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
-In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
+In this tutorial, you'll learn how to use the [vision service](/data-ai/reference/vision/) to make a rover follow a colored object.
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/appendix/try-viam/rover-resources/).
 
 {{< alert title="You will learn" color="tip" >}}
@@ -68,7 +68,7 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/services/vision/#detections):
+To create a [color detector vision service](/data-ai/reference/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -121,7 +121,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/):
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app):
 
 The camera stream will show detections with bounding boxes around the detected colors.
 

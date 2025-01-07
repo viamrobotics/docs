@@ -48,7 +48,7 @@ Once you specify the circumference of the wheels and how far they are apart, you
 However, some rovers or other mobile robots do not expose direct motor control.
 For these types of machines, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/dev/reference/apis/components/base/#api) as you would with builtin Viam components.
-Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/appendix/apis/).
+Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/dev/reference/apis/).
 Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK to issue commands.
 
 {{% alert title="Tip" color="tip"%}}
@@ -115,7 +115,7 @@ You can now power up the rover, which also provides power to your Pi and allows 
 
 ## A modular resource for the Intermode base
 
-The Viam platform provides [APIs](/appendix/apis/) for common component types within `viam-server`.
+The Viam platform provides [APIs](/dev/reference/apis/) for common component types within `viam-server`.
 For controlling a mobile robot's movements, the [base component](/operate/reference/components/base/) exposes a useful interface.
 
 In the rest of this tutorial, you'll learn how to use this API to create your own custom modular resource.
@@ -318,7 +318,7 @@ For more information on modules and how they work, see the [modular resources do
 
 ### Control the rover
 
-After you configured the base, go to the [**CONTROL**](/fleet/control/) tab and expand the base component to view the controls to enable keyboard or discrete control over your machine's movement.
+After you configured the base, go to the [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) tab and expand the base component to view the controls to enable keyboard or discrete control over your machine's movement.
 
 {{< alert title="Caution" color="caution" >}}
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure your rover has sufficient space to drive around without hitting anyone or anything.

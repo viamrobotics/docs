@@ -79,12 +79,12 @@ Wait for your device to connect to the Viam app.
 On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
 
-If you are using a physical board to follow along, look through the [**Supported Models**](/components/board/#configuration) to determine the model of component to configure.
+If you are using a physical board to follow along, look through the [**Supported Models**](/operate/reference/components/board/#configuration) to determine the model of component to configure.
 For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
 
-If you do not have a physical board, use the [`fake` board model](/components/board/fake/).
+If you do not have a physical board, use the [`fake` board model](/operate/reference/components/board/fake/).
 
 Follow the instructions in the board model's documentation to configure any required attributes.
 For the `fake` model, there are no required attributes.
@@ -93,15 +93,15 @@ For the `fake` model, there are no required attributes.
 {{< expand "Step 4: Configure a motor" >}}
 
 Add a `motor` component that supports the type of motor and motor driver you're using.
-Look through the [**Supported Models**](/components/motor/#configuration) to determine the model of component to configure.
-For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/components/motor/gpio/):
+Look through the [**Supported Models**](/operate/reference/components/motor/#configuration) to determine the model of component to configure.
+For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/operate/reference/components/motor/gpio/):
 
 ![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)
 
 Follow the motor driver manufacturer's data sheet to wire your motor driver to your board and to your motor.
-Follow the [model's documentation](/components/motor/) to configure the attributes so that the computer can send signals to the motor.
+Follow the [model's documentation](/operate/reference/components/motor/) to configure the attributes so that the computer can send signals to the motor.
 
-If you do not have a physical motor, use the [`fake` motor model](/components/motor/fake/).
+If you do not have a physical motor, use the [`fake` motor model](/operate/reference/components/motor/fake/).
 For the `fake` model, there are no required attributes.
 
 **Save your configuration.**
@@ -120,7 +120,7 @@ Use the **Backwards** and **Forwards** buttons to change the direction.
 
 ### Option 2: Control from the mobile app
 
-You can use [the Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) to control your motor's speed and direction directly from your smart phone.
+You can use [the Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) to control your motor's speed and direction directly from your smart phone.
 
 Open the Viam mobile app and log in to your account.
 Select the location that your machine is in from the **Locations** tab.
@@ -132,7 +132,7 @@ Choose your machine from the list and use the mobile interface to adjust the mot
 ### Option 3: Control programmatically
 
 Each component has a standardized API.
-The following code shows you how to control the motor's speed and direction using the [Motor API](/components/motor/#api).
+The following code shows you how to control the motor's speed and direction using the [Motor API](/operate/reference/components/motor/#api).
 
 If you'd like to try it, find your machine's API key and address on your machine's **CONNECT** tab and run the code sample:
 

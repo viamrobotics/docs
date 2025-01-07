@@ -239,7 +239,7 @@ If you have 25 images in your dataset, at least 20 of those must be labelled.
 
 {{< expand "Want to add images to a dataset programmatically? Click here." >}}
 
-You can also add all images with a certain label to a dataset using the [`viam dataset data add` command](/cli/#dataset) or the [Data Client API](/appendix/apis/data-client/#addtagstobinarydatabyfilter):
+You can also add all images with a certain label to a dataset using the [`viam dataset data add` command](/dev/tools/cli/#dataset) or the [Data Client API](/dev/reference/apis/data-client/#addtagstobinarydatabyfilter):
 
 {{< tabs >}}
 {{% tab name="CLI" %}}

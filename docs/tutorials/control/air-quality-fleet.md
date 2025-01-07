@@ -45,7 +45,7 @@ You can complete this tutorial using any number of air quality sensing machines.
 For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/how-tos/create-module/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/get-started/other-hardware/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
@@ -235,7 +235,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 #### Configure data capture and sync
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
-Viam's [data management service](/services/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
+Viam's [data management service](/data-ai/capture-data/capture-sync/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
 Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/cloud/rbac/) to the data from the sensors in their locations.
 
 Configure data capture and sync as follows:
@@ -313,11 +313,11 @@ For each machine:
    {{< expand "Click here for usb_interface troubleshooting help" >}}
 
 If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-If not, you can use [fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to modify the value on any machine for which it is different:
+If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to modify the value on any machine for which it is different:
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
 2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment overwrite to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to your machine's config, using the following JSON template:
+   Follow the [instructions to add a fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to your machine's config, using the following JSON template:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [

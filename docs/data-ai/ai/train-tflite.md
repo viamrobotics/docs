@@ -60,7 +60,7 @@ First, connect the camera to your machine's computer if it's not already connect
 Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 The `webcam` model supports most USB cameras and inbuilt laptop webcams.
-You can find additional camera models in the [camera configuration](/components/camera/#configuration) documentation.
+You can find additional camera models in the [camera configuration](/operate/reference/components/camera/#configuration) documentation.
 
 Complete the camera configuration and use the **TEST** panel in the configuration card to test that the camera is working.
 
@@ -149,7 +149,7 @@ Your training script may output logs at the error level but still succeed.
 
 {{< /alert >}}
 
-You can also view your training jobs' logs with the [`viam train logs`](/cli/#train) command.
+You can also view your training jobs' logs with the [`viam train logs`](/dev/tools/cli/#train) command.
 
 {{% /tablestep %}}
 {{< /table >}}

@@ -542,7 +542,7 @@ Your rover will begin navigating between waypoints.
 
 ### Programmatic method
 
-If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/appendix/apis/services/navigation/#addwaypoint):
+If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/dev/reference/apis/services/navigation/#addwaypoint):
 
 #### Add waypoints
 
@@ -577,7 +577,7 @@ await my_nav.add_waypoint(point=location)
 
 #### Begin navigation
 
-To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/appendix/apis/services/navigation/#setmode):
+To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/dev/reference/apis/services/navigation/#setmode):
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -620,8 +620,8 @@ You can alternatively use [`viam:ultrasonic:camera`](https://github.com/viam-mod
 
 {{< /alert >}}
 
-If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/services/vision/#segmentations).
-For example, [configure](/services/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/services/vision/obstacles_depth/) to detect obstacles in front of the robot.
+If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/data-ai/reference/vision/#segmentations).
+For example, [configure](/data-ai/reference/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/data-ai/reference/vision/obstacles_depth/) to detect obstacles in front of the robot.
 Then, use one of [Viam's client SDKs](/sdks/) to automate obstacle avoidance with the navigation service like in the following Python program:
 
 {{%expand "Click to view full example of automated obstacle avoidance with the Python SDK" %}}

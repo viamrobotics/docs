@@ -1,5 +1,5 @@
 {{< table >}}
-{{% tablestep link="/cli/#authenticate"%}}
+{{% tablestep link="/dev/tools/cli/#authenticate"%}}
 **1. Authenticate with the CLI**
 
 Authenticate using a personal access token:

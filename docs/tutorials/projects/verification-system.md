@@ -64,7 +64,7 @@ Make sure to connect your camera to your machine's computer (if it isn't built-i
 Navigate to the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com).
 Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
-Reference [these available models](/operate/reference/components/camera/#configuration).
+Reference [these available models](/operate/reference/operate/reference/components/camera/#configuration).
 
 To configure a `webcam`:
 
@@ -106,15 +106,15 @@ Finally, configure an `mlmodel` detector vision service to use your new `"person
 5. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
 6. Click **Save**.
 
-For more information, see [Configure an `mlmodel` detector](/services/vision/mlmodel/)
+For more information, see [Configure an `mlmodel` detector](/data-ai/reference/vision/mlmodel/)
 
 Continue to [Configure a facial detector](#configure-a-facial-detector).
 
 ### Train your own model
 
-To train your own model, you will need to capture images of a variety of people using your camera, and upload them to the Viam app using the [data management service](/services/data/).
+To train your own model, you will need to capture images of a variety of people using your camera, and upload them to the Viam app using the [data management service](/data-ai/capture-data/capture-sync/).
 
-To add the [data management service](/services/data/) and configure data capture:
+To add the [data management service](/data-ai/capture-data/capture-sync/) and configure data capture:
 
 1. Navigate to your machine’s page on the [Viam app](https://app.viam.com/robots) and select the **CONFIGURE** tab.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
@@ -180,7 +180,7 @@ Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML mod
 5. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
 6. Click **Save**.
 
-For more information, see [Configure an `mlmodel` detector](/services/vision/mlmodel/)
+For more information, see [Configure an `mlmodel` detector](/data-ai/reference/vision/mlmodel/)
 
 Now you are ready to configure the more fine-grained layer: the facial recognition detector.
 
@@ -317,9 +317,9 @@ To add a transform camera to your machine:
 
 {{% alert title="Note" color="note" %}}
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
-To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/appendix/apis/services/vision/#getclassificationsfromcamera).
+To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/dev/reference/apis/services/vision/#getclassificationsfromcamera).
 
-See [2D Image Classification](/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/appendix/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
+See [2D Image Classification](/data-ai/reference/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/dev/reference/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}
 
 With everything configured, you are now ready to see your facial recognition machine in action by watching the transform camera as a person passes in front of the camera.
@@ -339,8 +339,8 @@ Now that you've got the verification aspect of your system working, you can use 
 For example:
 
 - Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
-  For example, you could use [`GetClassificationsFromCamera()`](/appendix/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
-- Try changing the type of [detectors](/services/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
+  For example, you could use [`GetClassificationsFromCamera()`](/dev/reference/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
+- Try changing the type of [detectors](/data-ai/reference/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
 - Add the [filtered camera module](/data-ai/capture-data/filter-before-sync/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam Cloud only when the system enters into specific states.
   This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.
 - If you don't want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, set `disable_alarm: true` in the config, which prevents `TRIGGER_2` from entering into the `COUNTDOWN` state, meaning the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.

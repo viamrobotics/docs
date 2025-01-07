@@ -223,7 +223,7 @@ The following diagram shows this, as well as the global coordinate system.
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the [**CONTROL** tab](/fleet/control/) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup
@@ -231,7 +231,7 @@ If the axes are different from those described above, take these differences int
 Imagine your cup is 120 millimeters tall with a radius of 45 millimeters.
 You need to take this space into account to avoid bumping objects on the table with the cup.
 
-You can pass transforms to the [motion service `move` method](/appendix/apis/services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
+You can pass transforms to the [motion service `move` method](/dev/reference/apis/services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
 To represent the drinking cup held in your robot's gripper, create a transform with the cup's measurements:
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -299,7 +299,7 @@ If we changed the orientation along the way, we might spill the tea!
 {{< alert title="Tip" color="tip" >}}
 You may be wondering how the orientations of the poses are determined.
 Our example gripper's frame is defined such that its orientation vector points from its "wrist" to the tip of its jaws.
-In the example code above, all poses have an [orientation vector](/internals/orientation-vector/) pointing along the positive X axis of the world frame, which is a horizontal orientation pointing "forwards" with respect to the xArm 6 base.
+In the example code above, all poses have an [orientation vector](/operate/reference/orientation-vector/) pointing along the positive X axis of the world frame, which is a horizontal orientation pointing "forwards" with respect to the xArm 6 base.
 When we tell the gripper to move to such a pose, its orientation vector moves to align with the orientation vector of the pose, so its jaws end up pointing along the global X axis, "forwards" from the robot base.
 This puts it in a good position for picking up and moving a cup.
 

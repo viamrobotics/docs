@@ -218,11 +218,11 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables `agent-provisioning` management. |
-| `attributes` | object | Optional | You can override all attributes from the [`viam-agent` configuration file](/fleet/provision/#configuration) here. The [`viam-agent` configuration file](/fleet/provision/#configuration) is generally customized by the manufacturer to provide "out of the box" settings. The attributes configured in the machine config in the Viam app can let you as the machine user override those if you wish. For security purposes, you should change the `hotspot_password`. You can also configure `roaming_mode` and add any additional networks you want to configure. <ul><li>`hotspot_password`: Overwrite the password set for the WiFi hotspot a machine creates during provisioning.</li><li>`networks`: Networks a machine can automatically connect to when roaming mode is enabled. See [Networks](#networks). </li><li>`roaming_mode`: If enabled, lets the machine connect to additional configured networks. See [Networks](#networks). </li><li>`wifi_power_save`: If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. </li></ul> |
+| `attributes` | object | Optional | You can override all attributes from the [`viam-agent` configuration file](/manage/fleet/provision/setup/#configure-agent-provisioning) here. The [`viam-agent` configuration file](/manage/fleet/provision/setup/#configure-agent-provisioning) is generally customized by the manufacturer to provide "out of the box" settings. The attributes configured in the machine config in the Viam app can let you as the machine user override those if you wish. For security purposes, you should change the `hotspot_password`. You can also configure `roaming_mode` and add any additional networks you want to configure. <ul><li>`hotspot_password`: Overwrite the password set for the WiFi hotspot a machine creates during provisioning.</li><li>`networks`: Networks a machine can automatically connect to when roaming mode is enabled. See [Networks](#networks). </li><li>`roaming_mode`: If enabled, lets the machine connect to additional configured networks. See [Networks](#networks). </li><li>`wifi_power_save`: If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. </li></ul> |
 
 #### Networks
 
-For an already-online device, you can configure new WiFi networks in the machine's [`viam-agent` configuration](/configure/agent/#configuration) in the Viam app.
+For an already-online device, you can configure new WiFi networks in the machine's [`viam-agent` configuration](/manage/reference/viam-agent/#configuration) in the Viam app.
 It's primarily useful for a machine that moves between different networks, so the machine can automatically connect when moved between locations.
 
 To add additional networks add them using the JSON editor for your device's config in the Viam app.
@@ -328,7 +328,7 @@ For more information on managing `viam-agent` see:
 ## Agent logs
 
 `viam-agent` writes log messages to the [Viam app](https://app.viam.com/).
-You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your machine's page.
+You can find these messages on the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) of your machine's page.
 
 `viam-agent` only sends messages when your machine is online and connected to the internet.
 If your machine is offline, log messages are queued and are sent to the Viam app once your machine reconnects to the internet.

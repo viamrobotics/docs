@@ -44,7 +44,7 @@ In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 {{<imgproc src="/how-tos/deploy-packages/json-config.png" resize="800x" class="fill aligncenter" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/fleet/fragments/" %}}
+{{% tablestep link="/manage/fleet/reuse-configuration/" %}}
 **3. Create a fragment**
 
 Go to [app.viam.com/fragments](https://app.viam.com/fragments).

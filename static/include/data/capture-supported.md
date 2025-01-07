@@ -13,7 +13,7 @@
 | [Movement sensor](/operate/reference/components/movement-sensor/) | `AngularVelocity`, `CompassHeading`, `LinearAcceleration`, `LinearVelocity`, `Orientation`, `Position` |
 | [Sensor](/operate/reference/components/sensor/)                   | `Readings` |
 | [Servo](/operate/reference/components/servo/)                     | `Position` |
-| [Vision service](/services/vision/)             | `CaptureAllFromCamera` |
+| [Vision service](/data-ai/reference/vision/)             | `CaptureAllFromCamera` |
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}

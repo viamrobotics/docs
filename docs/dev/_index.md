@@ -430,7 +430,7 @@ result, err := myTwilioSvc.DoCommand(context.Background(), command)
 
 Using the Viam Registry you can turn services and your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
 
-[Create a module →](/how-tos/create-module/)
+[Create a module →](/operate/get-started/other-hardware/)
 
   </div>
 </div>
@@ -542,7 +542,7 @@ tabular_data, count, last = await data_client.tabular_data_by_filter(
 
 You can query synced sensor data, images, and any other binary or timeseries data from all your machines using the data client API.
 
-[Learn about Data Management →](/services/data/)
+[Learn about Data Management →](/data-ai/capture-data/capture-sync/)
 
   </div>
 </div>
@@ -711,7 +711,7 @@ for m in machines:
 
 Get status information and logs from all your deployed machines using the fleet management API.
 
-[Learn about Platform APIs →](/appendix/apis/#platform-apis)
+[Learn about Platform APIs →](/dev/reference/apis/#platform-apis)
 
   </div>
 </div>

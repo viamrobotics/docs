@@ -1,6 +1,6 @@
-Move a [base](/operate/reference/components/base/) component to a destination [pose](/internals/orientation-vector/) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Move a [base](/operate/reference/components/base/) component to a destination [pose](/operate/reference/orientation-vector/) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
 
-`MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [pose](/internals/orientation-vector/) after `MoveOnMap()` returns.
+`MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [pose](/operate/reference/orientation-vector/) after `MoveOnMap()` returns.
 
 Each successful `MoveOnMap()` call returns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnMap()` call.
 

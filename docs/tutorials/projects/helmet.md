@@ -107,8 +107,8 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure the vision service
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/services/vision/) on your machine.
-Viam's built-in [`mlmodel` vision service](/services/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/data-ai/reference/vision/) on your machine.
+Viam's built-in [`mlmodel` vision service](/data-ai/reference/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
 The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
 
 1. Navigate to your machine's **CONFIGURE** tab.
@@ -196,7 +196,7 @@ Now that the detector is configured, it's time to test it!
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/services/data/) allows you to, among other things, capture images and sync them to the cloud.
+Viam's built-in [data management service](/data-ai/capture-data/capture-sync/) allows you to, among other things, capture images and sync them to the cloud.
 For this project, you will capture images of people without hard hats so that you can see who wasn't wearing one, and so that you can trigger notifications when these images are captured and synced.
 Configure data capture on the `objectfilter` camera to capture images of people without hard hats:
 

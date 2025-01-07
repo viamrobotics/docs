@@ -89,7 +89,7 @@ For general configuration and development info, see:
 
 To capture data from the movement sensor or use it for motion, see the following services:
 
-- [data management service](/services/data/): to capture and sync the movement sensor's data
+- [data management service](/data-ai/capture-data/capture-sync/): to capture and sync the movement sensor's data
 - [motion service](/services/motion/): to move machines or components of machines
 - [navigation service](/services/navigation/): to navigate with GPS
 - [SLAM service](/services/slam/): for mapping

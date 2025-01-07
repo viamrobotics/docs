@@ -444,7 +444,7 @@ Represented in that file are obstacles for the prize drop hole, and each of the 
 If the dimensions of your enclosure differ from ours, adjust your `obstacles.json` file to match your enclosure.
 
 The obstacles for our arm are configured in reference to the "world" frame which is defined as a , which is a special frame that represents the starting point for all other frames in the robot's world.
-The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/appendix/apis/services/motion/#move) call.
+The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/dev/reference/apis/services/motion/#move) call.
 
 {{< alert title="Tip" color="tip" >}}
 If the arm is not mounted exactly perpendicular to the x/y axis of the enclosure, you can adjust the theta (_th_) of the arm within the arm component configuration by a number of degrees to compensate.
@@ -939,7 +939,7 @@ In this tutorial, you learned how to:
 For some next steps, you could:
 
 - Use the advanced interface included in the project repository to leverage the [motion service](/services/motion/) for larger, more complex arm movement within the enclosure.
-- Add a camera and use the [vision service](/services/vision/) to add color detection, or use an [ML model](/services/ml/) to determine grab success rate and create a score counter.
+- Add a camera and use the [vision service](/data-ai/reference/vision/) to add color detection, or use an [ML model](/services/ml/) to determine grab success rate and create a score counter.
 - Design a hard mode where the prizes are shuffled around with the arm every few attempts.
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 

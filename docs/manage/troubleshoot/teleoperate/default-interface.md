@@ -34,14 +34,14 @@ You can also switch between different machine parts directly from the **CONTROL*
 
 {{<gif webm_src="/fleet/mobile-app-control.webm" mp4_src="/fleet/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" class="alignright" max-width="300px">}}
 
-In addition to the Viam app, the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) also allows you to test, monitor and remotely operate machines in your fleet.
+In addition to the Viam app, the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) also allows you to test, monitor and remotely operate machines in your fleet.
 
 For example, you can view live camera feeds, adjust components' runtime parameters, and switch between controllable components.
 
 Additionally, the app allows you to:
 
 - see if your machines are online
-- [view a machine's logs](/cloud/machines/#logs)
+- [view a machine's logs](/manage/troubleshoot/troubleshoot/#check-logs)
 - [upload images from your phone to the cloud](/how-tos/upload-data/#upload-images-with-the-viam-mobile-app)
 - [invite people to collaborate with you and modify access](/cloud/rbac/#use-the-mobile-app)
 

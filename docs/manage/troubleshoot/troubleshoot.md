@@ -62,7 +62,7 @@ For example:
 
 For more information on setting log levels see, [Logging](/architecture/viam-server/#logging).
 
-To access logs from the commandline, use [`viam machines logs`](/cli/#machines-alias-robots) on the command line or the [Machines API](/appendix/apis/robot/).
+To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#machines-alias-robots) on the command line or the [Machines API](/dev/reference/apis/robot/).
 
 ## Remote shell on the machine
 

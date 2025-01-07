@@ -13,7 +13,7 @@ no_list: true
 
 Many components have complex kinematic chains and require an additional set of intermediate reference frames to use the [motion service](/services/motion/).
 
-For example, an [arm](/operate/reference/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/orientation-vector/) with [`MoveToPosition()`](/dev/reference/apis/components/arm/#movetoposition).
+For example, an [arm](/operate/reference/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/operate/reference/orientation-vector/) with [`MoveToPosition()`](/dev/reference/apis/components/arm/#movetoposition).
 
 If you want to implement a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} with a complex kinematic chain, you need to add a file to your driver that details the attachment of the intermediate reference frames on the component.
 

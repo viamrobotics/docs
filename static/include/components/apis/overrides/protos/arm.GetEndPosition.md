@@ -1,1 +1,1 @@
-Get the current position of the arm as a [pose](/internals/orientation-vector/).
+Get the current position of the arm as a [pose](/operate/reference/orientation-vector/).
