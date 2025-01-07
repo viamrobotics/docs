@@ -15,8 +15,6 @@ date: "2022-01-01"
 The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/UxQbUT4eYnw">}}
-
 The vision service API allows you to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using.
 
 The vision service supports the following kinds of operations:
@@ -81,12 +79,6 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 **Supported API methods:**
 
 - [GetObjectPointClouds()](/dev/reference/apis/services/vision/#getobjectpointclouds)
-
-## Supported models
-
-{{<resources_svc api="rdk:service:vision" type="vision">}}
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 The [vision service](/services/vision/) supports the following methods:
 
