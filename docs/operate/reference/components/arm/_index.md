@@ -44,8 +44,6 @@ For additional configuration information, click on the model name:
 
 If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
-You can follow [this guide](/registry/examples/custom-arm/) to implement your arm model.
-
 {{< /alert >}}
 
 {{% /tab %}}
@@ -69,10 +67,10 @@ The [arm API](/dev/reference/apis/components/arm/) supports the following method
 ## Motion planning with your arm
 
 The arm API sends requests for the arm to move to a set of joint positions, and reports the arm's current joint positions.
-Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/services/motion/#api).
+Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/operate/reference/services/motion/#api).
 
 For each arm model, there is a JSON file that describes the [kinematics parameters of the arm](/internals/kinematic-chain-config/#kinematic-parameters).
-When you configure an arm model, the arm driver parses the kinematics file for the [frame system](/services/frame-system/) service to use.
+When you configure an arm model, the arm driver parses the kinematics file for the [frame system](/operate/mobility/define-geometry/) service to use.
 The frame system allows the motion service to calculate where any component of your machine is relative to any other component, other machine, or object in the environment.
 
 ## Troubleshooting
@@ -97,5 +95,5 @@ For general configuration, development, and usage info, see:
 
 You can also use the arm component with the following services:
 
-- [Motion service](/services/slam/): To move machines or components of machines
-- [Frame system service](/services/navigation/): To configure the positions of your components
+- [Motion service](/operate/reference/services/slam//services/slam/): To move machines or components of machines
+- [Frame system service](/operate/reference/services/navigation/): To configure the positions of your components

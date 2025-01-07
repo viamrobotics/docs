@@ -17,7 +17,7 @@ updated: "2024-10-18"
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-The frame system is the basis for some of Viam's other services, like [motion](/services/motion/) and [vision](/data-ai/reference/vision/).
+The frame system is the basis for some of Viam's other services, like [motion](/operate/reference/services/motion/) and [vision](/data-ai/reference/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 It is a mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
@@ -176,8 +176,8 @@ For non base components, there is no inherent concept of "forward," so it is up 
 
 For more information about determining the appropriate values for these parameters, see these two examples:
 
-- [A Reference Frame:](/services/frame-system/frame-config/) A component attached to a static surface
-- [Nested Reference Frames:](/services/frame-system/nested-frame-config/) A component attached to another, dynamic, component
+- [A Reference Frame:](/operate/mobility/define-geometry/#configure-a-reference-frame) A component attached to a static surface
+- [Nested Reference Frames:](/operate/mobility/define-geometry/#configure-nested-reference-frames) A component attached to another, dynamic, component
 
 ### Visualize the frame system
 
@@ -217,7 +217,7 @@ Adjust the [orientation vector](/operate/reference/orientation-vector/) to 0.5 d
 
 ![Camera oriented 0.5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
 
-Now that you have configured the frame system with the machine's spatial orientation, you can use [motion service](/services/motion/) methods that take in reference frame information.
+Now that you have configured the frame system with the machine's spatial orientation, you can use [motion service](/operate/reference/services/motion/) methods that take in reference frame information.
 
 ### Geometries
 
@@ -253,7 +253,7 @@ Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_s
 
 ![an example of a logged frame system](/services/frame-system/frame_sys_log_example.png)
 
-Consider the example of nested reference frame configuration where [two dynamic components are attached](/services/frame-system/nested-frame-config/): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
+Consider the example of nested reference frame configuration where [two dynamic components are attached](/operate/mobility/define-geometry/#configure-nested-reference-frames): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
 The resulting tree of reference frames looks like:
 
@@ -280,7 +280,7 @@ _Additional transforms_ exist to help the frame system determine the location of
 
 For example:
 
-- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config/), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the machine's coordinate system).
+- In our [example of nested dynamic attachment](/operate/mobility/define-geometry/#configure-nested-reference-frames), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the machine's coordinate system).
 
   However, an arm with an attached [camera](/operate/reference/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the machine.
 

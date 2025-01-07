@@ -41,7 +41,7 @@ This guide will show you how to install and configure `viam-agent`.
 
 {{% expand "One or more physical devices with supported operating system" %}}
 
-To find out more about supported systems, see [`viam-server` Platform requirements](/installation/viam-server-setup/#platform-requirements) and [`viam-micro-server` Platform requirements](/installation/viam-micro-server-setup/#platform-requirements).
+To find out more about supported systems, see [`viam-server` Platform requirements](/operate/get-started/setup/#supported-systems) and [`viam-micro-server` hardware requirements](/operate/reference/viam-micro-server/#hardware-requirements).
 
 If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and customize at least the hostname when prompted by the Raspberry Pi Imager.
 
@@ -246,7 +246,7 @@ If you know in advance which other networks a machine should be able to connect 
 However, if you want to add additional networks to the provisioning configuration you can add them to the `networks` field value.
 
 {{< alert title="Important" color="note" >}}
-You must enable `roaming_mode` in the [`agent-provisioning` configuration](#configuration) of the machine to allow the machine to connect to the specified networks after provisioning.
+You must enable `roaming_mode` in the [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) of the machine to allow the machine to connect to the specified networks after provisioning.
 {{< /alert >}}
 
 If `roaming_mode` is enabled, `agent-provisioning` will try to connect to each specified network in order of `priority` from highest to lowest.
@@ -300,7 +300,7 @@ The following configuration defines the connection information and credentials f
 
 The following instructions will preinstall `viam-agent` into an image.
 
-**Only use the following method for offline pre-installs with images. For live systems, follow the instructions on a machine's setup tab to [install `viam-server` with `viam-agent`](/installation/viam-server-setup/).**
+**Only use the following method for offline pre-installs with images. For live systems, follow the instructions on a machine's setup tab to install `viam-server` with `viam-agent`.**
 
 {{< alert title="Support notice" color="note" >}}
 Please note this script works only under POSIX (MacOS and Linux) at the moment.
@@ -464,7 +464,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `viam-agent` creates a WiFi hotspot.
 
-   - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file> on your machine.
+   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-provisioning.json</file> on your machine.
 
 1. You then use your mobile device or computer and connect to the WiFi hotspot.
 
@@ -490,7 +490,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. When you, as the end user, power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
-   - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
+   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-provisioning.json</file>.
    - If a machine already exists, a machine cloud credentials file, if provided, is at <file>/etc/viam.json</file>.
 
 1. You as the end user then use your mobile device or computer and connect to the WiFi hotspot.

@@ -25,7 +25,7 @@ aliases:
 ---
 
 With Viam you can move individual components, like [arms](/operate/reference/components/arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
-The [motion service](/services/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
+The [motion service](/operate/reference/services/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
 The service abstracts the lower-level commands away so that instead of passing in a series of joint positions, you can call the `Move()` command with the desired destination and any obstacles, and the service will move your machine to the desired location for you.
 
 {{< alert title="Learning Goals" color="info" >}}
@@ -105,7 +105,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/services/frame-system/).
+The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/operate/mobility/define-geometry/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
@@ -302,7 +302,7 @@ In this section you will add a new component to your machine.
 One device that is very commonly attached to the end of a robot arm is a [_gripper_](/operate/reference/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
-This is possible because the motion service considers other components of the robot (through the [frame system](/services/frame-system/)) when calculating how to achieve the desired motion.
+This is possible because the motion service considers other components of the robot (through the [frame system](/operate/mobility/define-geometry/)) when calculating how to achieve the desired motion.
 
 ### Add a gripper component
 

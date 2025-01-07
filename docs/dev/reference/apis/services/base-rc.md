@@ -13,7 +13,7 @@ date: "2022-01-01"
 
 The base remote control service API allows you to get a list of inputs from the controller that are being monitored for that control mode.
 
-The [SLAM service](/services/slam/) supports the following methods:
+The [SLAM service](/operate/reference/services/slam/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/base_remote_control-table.md" >}}
 

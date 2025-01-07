@@ -789,7 +789,7 @@ api_key, api_key_id = await cloud.create_key(
 
 Viam allows you to organize and manage any number of machines. When collaborating with others, you can assign permissions using Role-Based Access Control (RBAC). Programmatically you can do this with the fleet management API.
 
-[Learn about access control →](/cloud/rbac/)
+[Learn about access control →](/manage/manage/rbac/)
 
   </div>
 </div>

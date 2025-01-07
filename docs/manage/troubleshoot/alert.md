@@ -73,7 +73,7 @@ You must run `viam-server` with `sudo` to monitor machine performance metrics.
 ### Add performance sensor
 
 {{< table >}}
-{{% tablestep link="/registry/modular-resources/#configuration" %}}
+{{% tablestep link="/operate/reference/module-configuration/#modular-resource-configuration-details" %}}
 **1. Add the performance metrics sensor**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.

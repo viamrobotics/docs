@@ -71,7 +71,7 @@ To use CloudSLAM on a live machine, you must meet the following requirements:
 To use CloudSLAM you must enable data capture and configure your `cloudslam-wrapper` SLAM service:
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
-Note that when the [data management service](/data-ai/capture-data/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
+Note that when the [data management service](/services/data/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
 To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#configuration) once you have finished your SLAM session.
 {{< /alert >}}
 
@@ -430,8 +430,8 @@ The following attributes are available for `viam:cloudslam-wrapper:cloudslam`
 | `slam_service` | string | **Required** | The name of the SLAM Service on the machine to use with cloudslam. |
 | `api_key` | string | **Required** | An [API key](/cloud/rbac/#api-keys) with location owner or higher permission. |
 | `api_key_id` | string | **Required** | The associated API key ID with the API key. |
-| `organization_id` | string | **Required** | The organization ID of your [organization](/cloud/organizations/). |
-| `location_id` | string | **Required** | The location ID of your [location](/cloud/locations/). |
+| `organization_id` | string | **Required** | The organization ID of your [organization](/dev/reference/glossary/organization/). |
+| `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/location/). |
 | `machine_id` | string | **Required** | The machine ID of your [machine](/dev/reference/apis/fleet/#find-machine-id). |
 | `machine_part_id` | string | Optional | The machine part ID of your [machine part](/dev/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
 | `viam_version` | string | Optional | The version of viam-server to use with CloudSLAM. Defaults to `stable`. |

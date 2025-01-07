@@ -85,7 +85,7 @@ Now that you have seen that the cameras on your Try Viam rover work, begin by [C
 You can drive the rover around as you capture data to get a variety of images from different angles.
 
 {{< alert title="Tip" color="tip" >}}
-Be aware that if you are running out of time during your rental, you can [extend your rover rental](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+Be aware that if you are running out of time during your rental, you can extend your rover rental as long as there are no other reservations.
 {{< /alert >}}
 
 {{% /expand%}}

@@ -7,7 +7,7 @@ type: "docs"
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
 ---
 
-If you have already [deployed a package](/manage/deploy/deploy-package/), you can inspect fragment you have created.
+If you have already [deployed a package](/manage/software/deploy-packages/), you can inspect fragment you have created.
 The JSON object for the deployed package has a `version` field.
 
 As new versions of software modules or ML models become available, you can update the deployed version in one go using the fragment.

@@ -15,7 +15,7 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{% tablestep link="/services/ml/"%}}
+{{% tablestep link="/data-ai/ai/deploy/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model service to your machine**
 
@@ -95,7 +95,7 @@ Images that pass your filter will be captured and will sync at the specified syn
 Your images will begin to appear under the **DATA** tab.
 
 If no data appears after the sync interval, check the [**Logs**](/manage/troubleshoot/troubleshoot/#check-logs) and ensure that the condition for filtering is met.
-You can test the vision service from the [**CONTROL** tab](/cloud/machines/#control) to see its classifications and detections live.
+You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/) to see its classifications and detections live.
 
 {{% /tablestep %}}
 {{% tablestep %}}

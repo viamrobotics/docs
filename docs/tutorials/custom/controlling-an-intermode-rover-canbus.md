@@ -314,7 +314,7 @@ Now that `viam-server` can find the module, you can add the base component it pr
 1. Click **Create** to create the modular resource provided by the local module.
 1. Click **Save** in the top right corner.
 
-For more information on modules and how they work, see the [modular resources documentation](/registry/).
+For more information on modules and how they work, see the [integrate other hardware](/operate/get-started/other-hardware/).
 
 ### Control the rover
 
@@ -339,7 +339,7 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 
 ## Next steps
 
-Now that you have integrated your rover or mobile base with Viam, you can use the [Viam SDKs](/sdks/) to operate your rover.
+Now that you have integrated your rover or mobile base with Viam, you can use the [Viam SDKs](/dev/reference/sdks/) to operate your rover.
 If your rover has a [`camera`](/operate/reference/components/camera/) or a [`movement_sensor`](/operate/reference/components/movement-sensor/), you can try the following tutorials:
 
 {{< cards >}}

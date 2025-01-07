@@ -86,7 +86,7 @@ In order for your machine's camera to be able to detect the presence of a person
 
 ### Use an existing ML model
 
-The [ML model service](/services/ml/) allows you to deploy a machine learning model to your robot.
+The [ML model service](/data-ai/ai/deploy/) allows you to deploy a machine learning model to your robot.
 For your machine to be able to detect people, you will use a Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
 
@@ -169,7 +169,7 @@ Then, create a new dataset using your uploaded images and train a new model usin
    You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
 3. [Train a TFlite model on your dataset](/data-ai/ai/train-tflite/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
-4. [Deploy the model](/services/ml/) to your machine so it can be used by other services, such as the vision service.
+4. [Deploy the model](/data-ai/ai/deploy/) to your machine so it can be used by other services, such as the vision service.
 
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 
@@ -201,7 +201,7 @@ scp /path/to/my-photo.jpg username@my-machine.local:/home/me/my-photo.jpg
 
 After you have copied at least one image of a person to your machine, you are ready to configure the second detection layer: the facial recognition detector.
 For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [Viam Registry](https://app.viam.com/module/viam-labs/facial-detector).
-The `facial-detector` module provides a [modular](/registry/) vision service that uses Facebook's DeepFace library to perform facial detections.
+The `facial-detector` module provides a modular vision service that uses Facebook's DeepFace library to perform facial detections.
 
 To add the `facial-detector` module to your machine:
 
@@ -317,7 +317,7 @@ To add a transform camera to your machine:
 
 {{% alert title="Note" color="note" %}}
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
-To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/dev/reference/apis/services/vision/#getclassificationsfromcamera).
+To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/dev/reference/sdks/) to [poll the classifications](/dev/reference/apis/services/vision/#getclassificationsfromcamera).
 
 See [2D Image Classification](/data-ai/reference/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/dev/reference/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}
@@ -338,7 +338,7 @@ To view your machine's transform camera overlay:
 Now that you've got the verification aspect of your system working, you can use this as a launch point for customizing your own DIY home security system.
 For example:
 
-- Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
+- Write a program using one of the [Viam SDK](/dev/reference/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
   For example, you could use [`GetClassificationsFromCamera()`](/dev/reference/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
 - Try changing the type of [detectors](/data-ai/reference/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
 - Add the [filtered camera module](/data-ai/capture-data/filter-before-sync/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam Cloud only when the system enters into specific states.

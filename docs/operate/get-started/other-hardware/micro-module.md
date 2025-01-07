@@ -26,7 +26,7 @@ aliases:
 This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
-If you only want to install and use `viam-micro-server`, see [Install `viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) instead.
+If you only want to install and use `viam-micro-server`, follow the normal [setup instructions](/operate/get-started/setup/) instead.
 {{< /alert >}}
 
 The instructions below are for configuring a development environment in order to:

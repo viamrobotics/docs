@@ -27,14 +27,14 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/fleet/data-management/).
+You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/data-ai/capture-data/capture-sync/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
 
 <h4>2. Deploy your ML model</h4>
 
-To use ML models with your machine, use a suitable [ML model service](/services/ml/) to deploy and run the model.
+To use ML models with your machine, use a suitable [ML model service](/data-ai/ai/deploy/) to deploy and run the model.
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -123,7 +123,7 @@ The following attributes are available for an `mlmodel` detector or classifier:
 <!-- prettier-ignore -->
 | Parameter | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
-| `mlmodel_name` | string | **Required** | The name of the [ML model service](/services/ml/) you want to use the model from. |
+| `mlmodel_name` | string | **Required** | The name of the [ML model service](/data-ai/ai/deploy/) you want to use the model from. |
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `remap_input_names` | object | Optional | The name of your input tensor, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expects the input image to have BGR pixels, rather than RGB pixels. <br> Default: `false` |
@@ -217,7 +217,7 @@ The feature is only available for classifiers that were uploaded after September
 
 {{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
 
-If you have images stored in the [Viam Cloud](/fleet/data-management/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
+If you have images stored in the [Viam Cloud](/data-ai/capture-data/capture-sync/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
 
 1. Navigate to the [Data tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 2. Click on an image to open the side menu, and select the **Actions** tab under the **Data** tab.

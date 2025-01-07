@@ -98,4 +98,4 @@ You can also use the camera component with the following services:
 
 - [Data management service](/data-ai/capture-data/capture-sync/: To capture and sync the camera's data
 - [Vision service](/data-ai/reference/vision/): To use computer vision to interpret the camera stream
-- [SLAM service](/services/slam/): for mapping
+- [SLAM service](/operate/reference/services/slam/): for mapping

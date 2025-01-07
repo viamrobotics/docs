@@ -120,28 +120,28 @@ For more information, see [viam-micro-server](/architecture/viam-micro-server/).
 {{% changelog date="2024-08-26" color="added" title="Provisioning" %}}
 
 You can now configure provisioning for machines with the Viam Agent.
-For more information, see [Configure provisioning with viam-agent](/how-tos/provision-setup/).
+For more information, see [Configure provisioning with viam-agent](/manage/fleet/provision/setup/).
 
 {{% /changelog %}}
 
 {{% changelog date="2024-08-16" color="added" title="Data capture for vision" %}}
 
 Data capture is now possible for the vision service.
-For more information, see [Supported components and services](/services/data/#supported-components-and-services).
+For more information, see [Supported components and services](/data-ai/capture-data/capture-sync/#supported-resources).
 
 {{% /changelog %}}
 
 {{% changelog date="2024-08-01" color="added" title="Create custom training scripts" %}}
 
 You can now upload custom training scripts to the Viam Registry and use them to train machine learning models.
-For more information, see [Create custom training scripts](/how-tos/create-custom-training-scripts/).
+For more information, see [Create custom training scripts](/data-ai/ai/train/).
 
 {{% /changelog %}}
 
 {{% changelog date="2024-07-19" color="changed" title="Operators can now view data" %}}
 
 The operator role now has view permissions for the data in the respective resource a user has access to.
-For more information, see [Data and machine learning permissions](/cloud/rbac/#data-and-machine-learning).
+For more information, see [Data and machine learning permissions](/manage/manage/rbac/#data-and-machine-learning).
 
 {{% /changelog %}}
 
@@ -265,7 +265,7 @@ You can now upload your own ML model(/data-ai/ai/deploy/#deploy-your-ml-model) u
 
 {{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for `viam-micro-server`" %}}
 
-You can now use the [ultrasonic sensor component](/operate/reference/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
+You can now use the [ultrasonic sensor component](/operate/reference/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/operate/reference/viam-micro-server/) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
 
 {{% /changelog %}}
 
@@ -292,7 +292,7 @@ The Viam Agent is a software provisioning manager that you can install on your m
 
 {{% changelog date="2024-02-12" color="added" title="Generic service" %}}
 
-You can now use the [generic service](/services/generic/) to define new, unique types of services that do not already have an [appropriate API](/dev/reference/apis/#service-apis) defined for them.
+You can now use the [generic service](/operate/reference/components/generic/) to define new, unique types of services that do not already have an [appropriate API](/dev/reference/apis/#service-apis) defined for them.
 
 {{% /changelog %}}
 
@@ -342,7 +342,7 @@ You can now run `viam-server` on a [Raspberry Pi 5](/operate/reference/component
 
 {{% changelog date="2023-12-31" color="added" title="Role-based access control" %}}
 
-Users can now have [access to different fleet management capabilities](/cloud/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
+Users can now have [access to different fleet management capabilities](/manage/manage/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
 
 {{% /changelog %}}
 
@@ -371,7 +371,7 @@ To make it easier to iterate while training machine learning models from image d
 {{% changelog date="2023-11-30" color="improved" title="Manage users access" %}}
 
 You can now manage users access to machines, locations, and organizations.
-For more information, see [Access Control](/cloud/rbac/)
+For more information, see [Access Control](/manage/manage/rbac/)
 
 {{% /changelog %}}
 
@@ -412,7 +412,7 @@ This enhancement allows you to:
 
 {{% changelog date="2023-09-30" color="added" title="Modular registry" %}}
 
-The [Modular Registry](/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
+The [Modular Registry](https://app.viam.com/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
 
 You can:
 
@@ -518,13 +518,13 @@ See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn 
 {{% changelog date="2023-06-30" color="added" title="Implement custom robotic arms as Viam modules" %}}
 
 When prototyping a robotic arm, you can now facilitate movement without creating your own motion planning.
-This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/dev/reference/apis/components/arm/#api):
+This update enables you to implement custom models of an arm component as a modular resource by coding three endpoints of the [Arm API](/dev/reference/apis/components/arm/#api):
 
 - `getJointPositions`
 - `movetoJointPositions`
 - `GetKinematics`
 
-Then, use the [motion planning service](/services/motion/) to specify poses, and Viam handles the rest.
+Then, use the [motion planning service](/operate/reference/services/motion/) to specify poses, and Viam handles the rest.
 
 For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm/).
 
@@ -581,7 +581,7 @@ This update allows you to:
 
 Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
 
-- **Owner**: These members can see and edit [every tab on the machine page](/cloud/machines/#navigating-the-machine-page), as well as manage users in the app.
+- **Owner**: These members can see and edit every tab on the machine page, as well as manage users in the app.
   This role is best for those on your team who are actively engineering and building machines.
 
 - **Operator**: These members can only see and use the [remote control tab](/manage/troubleshoot/teleoperate/default-interface/).
@@ -985,7 +985,7 @@ You will no longer be able to add or remove models using the SDKs.
 #### Add machine learning vision models to a vision service
 
 The way to add machine learning vision models is changing.
-You will need to first register the machine learning model file with the [ML model service](/services/ml/) and then add that registered model to a vision service.
+You will need to first register the machine learning model file with the [ML model service](/data-ai/ai/deploy/) and then add that registered model to a vision service.
 
 {{% /changelog %}}
 
@@ -1060,14 +1060,14 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog date="2023-02-28" color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/services/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
+When adding [frames](/operate/mobility/define-geometry/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 
 {{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
 `viam-micro-server` is a lightweight version of `viam-server` that can run on an ESP32.
-Find more information in the [`viam-micro-server` installation docs](/installation/viam-micro-server-setup/#install-viam-micro-server).
+Find more information in the [`viam-micro-server` docs](/operate/reference/viam-micro-server/).
 
 {{% /changelog %}}
 
@@ -1092,7 +1092,7 @@ The movement sensor API now includes a [GetLinearAcceleration](/dev/reference/ap
 
 {{% changelog date="2023-01-31" color="added" title="Support for capsule geometry" %}}
 
-The [motion service](/services/motion/) now supports capsule geometries.
+The [motion service](/operate/reference/services/motion/) now supports capsule geometries.
 
 The UR5 arm model has been improved using this new geometry type.
 
@@ -1100,7 +1100,7 @@ The UR5 arm model has been improved using this new geometry type.
 
 {{% changelog date="2022-12-28" color="added" title="Modular resources" %}}
 
-You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_](/registry/).
+You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_ in the registry](https://app.viam.com/registry/).
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
@@ -1136,7 +1136,7 @@ There are two new movement sensor {{< glossary_tooltip term_id="model" text="mod
 
 {{% changelog date="2022-12-28" color="improved" title="Motion planning with remote components" %}}
 
-The [motion service](/services/motion/) is now agnostic to the networking topology of a machine.
+The [motion service](/operate/reference/services/motion/) is now agnostic to the networking topology of a machine.
 
 - Kinematic information is now transferred over the robot API.
   This means that the motion service is able to get kinematic information for every component on the machine, regardless of whether it is on a main or remote viam-server.

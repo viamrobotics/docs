@@ -28,7 +28,7 @@ If one rover has an arm attached, you can add the rover configuration fragment (
 
 ## Create a fragment
 
-You must be an [organization owner](/cloud/rbac/#permissions) to create fragments for an organization.
+You must be an [organization owner](/manage/manage/rbac/) to create fragments for an organization.
 
 {{< table >}}
 {{% tablestep link="/configure/" %}}
@@ -336,7 +336,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{< /expand >}}
 {{< expand "Pin a module version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for a module](/registry/modular-resources/#configuration) named `custom-sensor` in the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for a module](/operate/reference/module-configuration/#module-configuration-details) named `custom-sensor` in the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [

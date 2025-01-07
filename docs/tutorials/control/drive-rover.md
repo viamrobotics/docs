@@ -75,7 +75,7 @@ If you are running out of time during your session, you can [extend your rover s
 {{% tab name="Other Rover" %}}
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [borrowing one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/viam-server-setup/#install-viam-server) on it, and connect and [configure](/tutorials/configure/configure-rover/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [borrowing one](https://app.viam.com/try), be sure to [follow the setup instructions and install `viam-server`](/operate/get-started/setup/) on it, and connect and [configure](/tutorials/configure/configure-rover/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 {{% /tab %}}
@@ -91,7 +91,7 @@ To install your preferred Viam SDK on your Linux or macOS development machine or
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-If you are using the Python SDK, [set up a virtual environment](/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
+If you are using the Python SDK, [set up a virtual environment](/dev/reference/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
 For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), run the following commands:
 

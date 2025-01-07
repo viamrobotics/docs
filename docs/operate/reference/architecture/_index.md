@@ -39,12 +39,12 @@ When `viam-server` can connect to the cloud, it also:
 - Automatically pulls configuration updates you make in the Viam app
 - Gets new versions of software packages
 - Uploads and syncs image and sensor data
-- Handles requests from client code you write with [SDKs](/sdks/)
+- Handles requests from client code you write with [SDKs](/dev/reference/sdks/)
 - Allows you to remotely monitor and control your machine from the Viam app
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
 
-[`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
+[`viam-micro-server`](/operate/reference/viam-micro-server/) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
 It supports a limited set of {{< glossary_tooltip term_id="resource" text="resources" >}} and can connect with the cloud as well as with devices running `viam-server`.
 
 ## Components, services, modules
@@ -55,7 +55,7 @@ A {{< glossary_tooltip term_id="service" text="service" >}} is a software packag
 
 Viam has many built-in components and services that run within `viam-server`.
 
-A [_modular resource_](/registry/) is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
+A _modular resource_ is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
 A module runs as a process managed by `viam-server` on your machine, communicating over UNIX sockets, and `viam-server` manages its lifecycle.
 
 {{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="width:600px" >}}
@@ -85,7 +85,7 @@ If you want to add some other high-level software functionality beyond the built
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="width:270px;"></img>
 
 Viam uses peer-to-peer communication, where all machines running `viam-server` or [`viam-micro-server`](/installation/viam-micro-server-dev/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
-This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
+This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/operate/reference/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
 
 On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
 `viam-server` pulls its configuration from the app, caches it locally, and initializes all components and services based on that configuration.
@@ -103,7 +103,7 @@ The Viam app uses the same API endpoints as your SDK client code (in fact, it us
 All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
 {{% /alert %}}
 
-For more details, see [Machine-to-Machine Communication](/architecture/machine-to-machine-comms/).
+For more details, see [Machine-to-Machine Communication](/operate/reference/architecture/machine-to-machine-comms/).
 
 ### Security
 
@@ -151,7 +151,7 @@ Here is how this works in Viam:
 Now imagine you want to run code to turn on a fan when the temperature sensor reads over 100 degrees Fahrenheit:
 
 - Configure the fan motor as a motor component and wire the fan motor relay to the same board as the sensor.
-- Write your script using one of the Viam [SDKs](/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
+- Write your script using one of the Viam [SDKs](/dev/reference/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
 - You then run this code either locally on the SBC, or on a separate server.
   See [Run code](/sdks/#run-code) for more options.
   Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/operate/reference/components/sensor/#api) to get readings and the [motor API](/operate/reference/components/motor/#api) to turn the motor on and off.
@@ -199,7 +199,7 @@ However, in some high-bandwidth cases it is better to establish a direct connect
 
 {{< /expand >}}
 
-See [Parts, Sub-parts and Remotes](/architecture/parts/) for more details.
+See [Parts, Sub-parts and Remotes](/operate/reference/architecture/parts/) for more details.
 
 ## Next steps
 

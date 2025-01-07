@@ -10,7 +10,7 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The motion service API allows you to give commands to your [motion service](/services/motion/) for moving a mobile robot based on a SLAM map or GPS coordinates or for moving a machine's components from one pose to another.
+The motion service API allows you to give commands to your [motion service](/operate/reference/services/motion/) for moving a mobile robot based on a SLAM map or GPS coordinates or for moving a machine's components from one pose to another.
 
 The motion service supports the following methods:
 

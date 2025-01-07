@@ -174,7 +174,7 @@ On your Linux system, verify each of the following:
       ```
 
       In the list of camera devices returned, find the entry for your camera.
-      For example, the webcam on the [Viam Rover](/appendix/try-viam/) appears as follows:
+      For example, the webcam on a rover may appear as follows:
 
       ```sh {class="command-line" data-prompt="$"}
       GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):

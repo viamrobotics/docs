@@ -28,7 +28,7 @@ aliases:
 
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 
-If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/services/motion/) to move a robot arm and end effector to desired positions.
+If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/operate/reference/services/motion/) to move a robot arm and end effector to desired positions.
 This tutorial builds on this foundation.
 
 In this tutorial, you will learn about transforms and constraints with the example of moving a cup across a table without hitting another object, and while remaining upright.
@@ -64,7 +64,7 @@ Before starting this tutorial, you must:
 
 ## Configure your robot
 
-Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/services/frame-system/) configured.
+Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/operate/mobility/define-geometry/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.

@@ -27,16 +27,16 @@ In the [Viam app](https://app.viam.com), click on the organization dropdown in t
 {{% tablestep %}}
 **2. Grant access**
 
-In the **Members** section of the organization settings page you can click on **Grant access** to invite new users to an organization or a location to [share access](/cloud/#use-viam-for-collaboration) to the machines within it.
+In the **Members** section of the organization settings page you can click on **Grant access** to invite new users to an organization or a location to [share access](/manage/manage/access/) to the machines within it.
 
 {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="900x" declaredimensions=true >}}
 
 {{% /tablestep %}}
-{{% tablestep link="/cloud/rbac/#permissions" %}}
+{{% tablestep link="/manage/manage/rbac/" %}}
 **3. Select a resource and role**
 
 Then select the resource that you would like to grant the user access to and the designated role (owner or operator).
-Users with owner access to a location or organization, can collaborate on the [machines](/cloud/machines/) within it.
+Users with owner access to a location or organization, can collaborate on the [machines](/operate/get-started/setup/#what-is-a-machine) within it.
 
 You can grant a user access to the following resources:
 
@@ -77,7 +77,7 @@ You must have the **Owner** role to be able to grant permissions.
 In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar and click on **Settings**.
 
 {{% /tablestep %}}
-{{% tablestep link="/cloud/rbac/#permissions" %}}
+{{% tablestep link="/manage/manage/rbac/" %}}
 **2. Limit access**
 
 In the **Members** section of the organization settings page, click on the user to open the access settings for the user.
@@ -116,4 +116,4 @@ If you edit a config while someone else edits the same config, the person who sa
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
 
-Machine [configuration](machines/#configure) and machine [code](/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Machine [configuration](machines/#configure) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.

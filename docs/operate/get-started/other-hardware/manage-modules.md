@@ -23,7 +23,7 @@ cost: "0"
 
 After you [create and deploy a module](/operate/get-started/other-hardware/), you may need to update or delete it.
 
-For information on pinning module deployments to versions, see [Module versioning](/registry/modular-resources/#module-versioning).
+For information on pinning module deployments to versions, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
 ## Update an existing module
 
@@ -333,7 +333,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-4. Create an [organization API key](/dev/tools/cli/#create-an-organization-api-key) with the [owner](/cloud/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+4. Create an [organization API key](/dev/tools/cli/#create-an-organization-api-key) with the [owner](/manage/manage/rbac/) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
    - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 
@@ -345,7 +345,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
      Make sure your organization API key is set to **Role: Owner**, or the GitHub action will not be able to successfully authenticate during runs.
      If you are using an existing organization API key which is not set to **Role: Owner**, you can change an API key's permissions from the Viam app on the organizations page by clicking the **Show details** link next to your API key.
      The operator role cannot be used to authenticate GitHub action runs.
-     For more information see [Manage organizations](/cloud/organizations/).
+     For more information see [Organize your machines](/manage/reference/organize/).
 
    Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
@@ -374,7 +374,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 You can change the visibility of a module from public to private if:
 
-- you are an [owner](/cloud/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- you are an [owner](/manage/manage/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines outside of the organization that owns the module have the module configured (no other orgs are using it).
 
 To change the visibility, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
@@ -391,7 +391,7 @@ viam module update
 
 You can delete a module if:
 
-- you are an [owner](/cloud/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- you are an [owner](/manage/manage/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines have the module configured.
 
 To delete a module, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), click the **...** menu in the upper-right corner of the page, and click **Delete**.
@@ -419,7 +419,7 @@ To upload another version, you must increment the version number to a later vers
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/registry/modular-resources/#module-versioning" %}}
+{{% manualcard link="/operate/reference/module-configuration/#module-versioning" %}}
 {{<imgproc src="/registry/create-module.svg" declaredimensions=true alt="Gear icon" >}}
 
 <br>

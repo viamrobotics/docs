@@ -162,7 +162,7 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 1. Click the **Save & test** button to save your settings.
    Grafana will perform a health check on your configuration settings to verify that everything looks good.
 
-This connection allows Grafana to access all synced sensor data under your [organization](/cloud/organizations/), from any machine.
+This connection allows Grafana to access all synced sensor data under your [organization](/dev/reference/glossary/organization/), from any machine.
 
 ## Visualize your data
 

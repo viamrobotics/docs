@@ -182,7 +182,7 @@ Use the buttons to try turning your motor forwards or backwards at different pow
 
 ![Motor control panel.](/components/motor/control.png)
 
-For example, a [Viam Rover](/appendix/try-viam/rover-resources/) with encoded motors following both an [angular](/dev/reference/apis/components/base/#spin) and [linear](/dev/reference/apis/components/base/#movestraight) velocity command:
+For example, a rover with encoded motors following both an [angular](/dev/reference/apis/components/base/#spin) and [linear](/dev/reference/apis/components/base/#movestraight) velocity command:
 
 {{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
 
