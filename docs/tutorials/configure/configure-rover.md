@@ -28,7 +28,7 @@ This tutorial will guide you through configuring a rover.
 If you are using a SCUTTLE, a Yahboom rover, or a different rover, this tutorial covers instructions for your rover model.
 
 {{< alert title="Viam Rover" color="note" >}}
-If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/appendix/try-viam/rover-resources/rover-tutorial-fragments/) instead.
+If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/dev/reference/try-viam/rover-resources/rover-tutorial-fragments/) instead.
 {{< /alert >}}
 
 ## Requirements
