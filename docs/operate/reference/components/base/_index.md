@@ -30,8 +30,8 @@ If you have a mobile robot, use a base component to coordinate the motion of its
 
 Most mobile robots with a base use the following hardware:
 
-- A [board](/components/board/)
-- Some actuators to move the base, such as [motors](/components/motor/) attached to wheels or propellers
+- A [board](/operate/reference/components/board/)
+- Some actuators to move the base, such as [motors](/operate/reference/components/motor/) attached to wheels or propellers
 - Some sort of chassis to hold everything together.
 
 To use a rover or other base, you need to add each component as well as the base to your machine's configuration.
@@ -90,7 +90,7 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
-{{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{% card link="/tutorials/control/drive-rover/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the base component with the following services:

@@ -19,7 +19,7 @@ Viam also supports some more advanced stepper driver chips like the [TMC5072](ht
 {{< /alert >}}
 
 To use a `gpiostepper` motor as a component of your machine, first wire your motor to a suitable stepper motor driver, which is in turn wired to a board.
-Configure the [board](/components/board/) to which the motor driver is wired.
+Configure the [board](/operate/reference/components/board/) to which the motor driver is wired.
 Then configure the motor:
 
 {{< tabs name="gpiostepper-config">}}
@@ -113,8 +113,8 @@ The following attributes are available for `gpiostepper` motors:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ---------- |
-| `board` | string | **Required** | `name` of the [board](/components/board/) the motor driver is wired to. |
-| `pins` | object | **Required** |  A struct containing the [board](/components/board/) {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} that the `step` and `dir` pins of the motor driver are wired to. |
+| `board` | string | **Required** | `name` of the [board](/operate/reference/components/board/) the motor driver is wired to. |
+| `pins` | object | **Required** |  A struct containing the [board](/operate/reference/components/board/) {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} that the `step` and `dir` pins of the motor driver are wired to. |
 | `ticks_per_rotation` | int | **Required** | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. |
 | `stepper_delay` | int | Optional | Time in microseconds to remain high for each step. |
 
@@ -149,5 +149,5 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/control-motor/" noimage="true" %}}
+{{% card link="/tutorials/control/control-motor/" noimage="true" %}}
 {{< /cards >}}

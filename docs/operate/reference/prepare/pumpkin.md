@@ -255,9 +255,9 @@ Copy and paste the following json object into your board's attributes field.
 ## Next steps
 
 {{< cards >}}
-{{% card link="/configure/" %}}
+{{% card link="/operate/get-started/supported-hardware/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/sdks/" %}}
+{{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}
 
 ## Need assistance?

@@ -13,7 +13,7 @@ aliases:
 ---
 
 An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/dev/reference/apis/components/movement-sensor/#getangularvelocity), [`Orientation`](/dev/reference/apis/components/movement-sensor/#getorientation), [`CompassHeading`](/dev/reference/apis/components/movement-sensor/#getcompassheading), and [`LinearAcceleration`](/dev/reference/apis/components/movement-sensor/#getlinearacceleration) methods.
-Acceleration and magnetometer data are available by using the [sensor](/components/sensor/) [`GetReadings`](/components/sensor/#getreadings) method, which IMUs wrap.
+Acceleration and magnetometer data are available by using the [sensor](/operate/reference/components/sensor/) [`GetReadings`](/operate/reference/components/sensor/#getreadings) method, which IMUs wrap.
 
 The `imu-vectornav` movement sensor model supports IMUs manufactured by [VectorNav](https://www.vectornav.com/products) that support SPI connection.
 
@@ -88,7 +88,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
+| `board` | string | **Required** | The `name` of the [board](/operate/reference/components/board/) to which the device is wired. |
 | `spi_bus` | string | **Required** | The index of the SPI bus over which the device communicates with the board. |
 | `chip_select_pin` | string | **Required** | The ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}) of the pin on the board (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device. |
 | `spi_baud_rate` | int | Optional | The rate at which data is sent from the IMU. <br> Default: `115200` |

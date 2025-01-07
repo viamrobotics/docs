@@ -67,8 +67,8 @@ To use a module with `viam-micro-server`, you need to [build firmware that combi
 <!--prettier-ignore-->
 | Model | Description | Built-in |
 | ----- | ----------- | -------- |
-| `gpio` | A servo controlled by GPIO pins. [Configuration info](/components/servo/gpio-micro-rdk/). | Yes |
-| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/components/base/two_wheeled_base/). | Yes |
+| `gpio` | A servo controlled by GPIO pins. [Configuration info](/operate/reference/components/servo/gpio-micro-rdk/). | Yes |
+| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/operate/reference/components/base/two_wheeled_base/). | Yes |
 | `free_heap_sensor` | Ships with `viam-micro-server`. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
 | `wifi_rssi_sensor` | Ships with `viam-micro-server`. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
 | `moisture_sensor` | [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
@@ -93,7 +93,7 @@ After [installing `viam-server` or `viam-micro-server`](/operate/get-started/set
 
 In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
 
-- [A "camera" that takes a camera feed from a physical camera, and crops it, overlays it, or otherwise transforms the output](/components/camera/transform/)
+- [A "camera" that takes a camera feed from a physical camera, and crops it, overlays it, or otherwise transforms the output](/operate/reference/components/camera/transform/)
 - [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
 - [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
 

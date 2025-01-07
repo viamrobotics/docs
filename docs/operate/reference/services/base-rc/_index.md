@@ -16,8 +16,8 @@ date: "2022-01-01"
 # SME: Eric
 ---
 
-The base remote control service implements an [input controller](/components/input-controller/) as a remote control for a [base](/components/base/).
-This uses the [`input` API](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
+The base remote control service implements an [input controller](/operate/reference/components/input-controller/) as a remote control for a [base](/operate/reference/components/base/).
+This uses the [`input` API](/operate/reference/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
 
 Add the base remote control service after configuring your machine with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
 
@@ -34,16 +34,16 @@ You can monitor the input from these controls in the **CONTROL** tab of the [Via
 ## Used with
 
 {{< cards >}}
-{{< relatedcard link="/components/base/" required="yes" >}}
-{{< relatedcard link="/components/input-controller/" required="yes" >}}
-{{< relatedcard link="/components/movement-sensor/" >}}
+{{< relatedcard link="/operate/reference/components/base/" required="yes" >}}
+{{< relatedcard link="/operate/reference/components/input-controller/" required="yes" >}}
+{{< relatedcard link="/operate/reference/components/movement-sensor/" >}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
 
 ## Configuration
 
-You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your machine to be able to use a base remote control service.
+You must configure a [base](/operate/reference/components/base/) with a [movement sensor](/operate/reference/components/movement-sensor/) as part of your machine to be able to use a base remote control service.
 
 First, make sure your base is physically assembled and powered on.
 Then, configure the service:
@@ -109,11 +109,11 @@ The following attributes are available for base remote control services:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
-| `input_controller` | string | **Required** | The `name` of the [input controller](/components/input-controller/) you have configured for the base you are operating with this service. |
+| `base` | string | **Required** | The `name` of the [base](/operate/reference/components/base/) you have configured for the base you are operating with this service. |
+| `input_controller` | string | **Required** | The `name` of the [input controller](/operate/reference/components/input-controller/) you have configured for the base you are operating with this service. |
 | `control_mode` | string | Optional | The mode of remote control you want to use. <br> Options: <ul><li>`"arrowControl"`</li><li>`"triggerSpeedControl"`</li><li>`"buttonControl"`</li><li>`"joystickControl"`</li> <li>`"droneControl"`</li></ul> <br> Default: `"arrowControl"` |
-| `max_angular_degs_per_sec` | float | Optional | The max angular velocity for the [base](/components/base/) in degrees per second. |
-| `max_linear_mm_per_sec` | float | Optional | The max linear velocity for the [base](/components/base/) in meters per second. |
+| `max_angular_degs_per_sec` | float | Optional | The max angular velocity for the [base](/operate/reference/components/base/) in degrees per second. |
+| `max_linear_mm_per_sec` | float | Optional | The max linear velocity for the [base](/operate/reference/components/base/) in meters per second. |
 
 ## API
 
@@ -123,7 +123,7 @@ The base remote control service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a machine configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
+The following code examples assume that you have a machine configured with a [base](/operate/reference/components/base/) named `"my_base"`, [input controller](/operate/reference/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
 Make sure to add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for sample code to connect to your machine.
 

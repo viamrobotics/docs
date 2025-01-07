@@ -5,6 +5,10 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Add support for more physical or virtual hardware to the Viam ecosystem."
+aliases:
+  - /registry/create/
+  - /use-cases/create-module/
+  - /how-tos/create-module/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
@@ -61,7 +65,7 @@ You'll need to add these attributes to the `Validate` and `Reconfigure` function
 
 ### Generate stub files
 
-The easiest way to generate the files for your module is to use the [Viam CLI](/cli/):
+The easiest way to generate the files for your module is to use the [Viam CLI](/dev/tools/cli/):
 
 1. Install the Viam CLI and authenticate to Viam, from the same machine that you intend to upload your module from.
 
@@ -91,7 +95,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Language | The language for the module. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
 | Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** and copy that string. |
-| Resource to add to the module (API) | The [component API](/appendix/apis/#component-apis) your module will implement. |
+| Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
@@ -824,7 +828,7 @@ If your module does not require OS-level support (such as platform-specific depe
 viam module upload --version 1.0.0 --platform any module.tar.gz
 ```
 
-For details on platform support, see [Using the `--platform` argument](/cli/#using-the---platform-argument).
+For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
 For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
 
@@ -836,7 +840,7 @@ The Viam Registry page for your module displays the platforms your module suppor
 {{% /alert %}}
 
 We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
-See [Update an existing module using a GitHub action](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
+See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
 
 {{% alert title="Note" color="note" %}}
 
@@ -846,7 +850,7 @@ If you get `"ImportError: attempted relative import with no known parent package
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
 Viam makes this easy to manage by providing a build system for modules.
-Follow [these instructions](/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/cli/).
+Follow [these instructions](/dev/tools/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/dev/tools/cli/).
 
 {{% /alert %}}
 
@@ -872,7 +876,7 @@ You can use the following package and upload method if you opted not to enable c
     viam module upload --version 1.0.0 --platform any module.tar.gz
     ```
 
-    For details on platform support, see [Using the `--platform` argument](/cli/#using-the---platform-argument).
+    For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
     For details about versioning, see [Module versioning](/operate/get-started/supported-hardware/#module-versioning).
 
@@ -886,7 +890,7 @@ The Viam Registry page for your module displays the platforms your module suppor
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-From within your module's directory, run the `viam module upload` CLI command to upload the module to the registry, replacing `<platform>` with `linux/amd64`, `linux/arm64`, or one or more other [platforms depending on what your module requires](/cli/#using-the---platform-argument).
+From within your module's directory, run the `viam module upload` CLI command to upload the module to the registry, replacing `<platform>` with `linux/amd64`, `linux/arm64`, or one or more other [platforms depending on what your module requires](/dev/tools/cli/#using-the---platform-argument).
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module upload --version 1.0.0 --platform <platform> .

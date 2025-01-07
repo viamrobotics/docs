@@ -16,13 +16,13 @@ usage: 999999
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
 {{< alert title="Note" color="note" >}}
-[Encoders](/components/encoder/) can be configured to work with `gpio` motors.
-Find more information in the [encoded motor documentation](/components/motor/encoded-motor/).
+[Encoders](/operate/reference/components/encoder/) can be configured to work with `gpio` motors.
+Find more information in the [encoded motor documentation](/operate/reference/components/motor/encoded-motor/).
 {{< /alert >}}
 
 To configure a DC motor as a component of your machine, first make sure the motor is wired to a suitable motor driver, which is in turn wired to a board.
 Connect the system to power if you want to test it while configuring.
-Configure the [board](/components/board/) to which the motor driver is wired.
+Configure the [board](/operate/reference/components/board/) to which the motor driver is wired.
 Then configure your motor:
 
 {{< tabs name="gpio-config">}}
@@ -123,14 +123,14 @@ The following attributes are available for `gpio` motors:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
-| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/dev/reference/apis/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/components/motor/encoded-motor/) `gpio` motors.* |
+| `board` | string | **Required** | `name` of the [board](/operate/reference/components/board/) to which the motor driver is wired. |
+| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/dev/reference/apis/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/operate/reference/components/motor/encoded-motor/) `gpio` motors.* |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
 | `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
 | `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
-| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/encoded-motor/). |
+| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/operate/reference/components/motor/encoded-motor/). |
 
 Refer to your motor and motor driver data sheets for specifics.
 
@@ -212,5 +212,5 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/control-motor/" noimage="true" %}}
+{{% card link="/tutorials/control/control-motor/" noimage="true" %}}
 {{< /cards >}}

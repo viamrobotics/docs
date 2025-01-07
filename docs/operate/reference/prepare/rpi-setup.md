@@ -26,14 +26,14 @@ If you already have a 64-bit Linux distribution installed on your Pi, skip ahead
 
 {{%expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit" %}}
 
-If you already have a 64-bit Linux distribution installed on your Pi, you can skip ahead to [installing `viam-server`](/installation/viam-server-setup/#install-viam-server).
+If you already have a 64-bit Linux distribution installed on your Pi, you can skip ahead to [installing `viam-server`](/operate/get-started/setup/).
 To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running `viam-server`), `ssh` into your Pi and then run `lscpu`.
 
 Example output:
 
 {{< imgproc alt="Screenshot of a terminal running the 'lscpu' command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads 'Architecture: aarch64.'" src="/installation/rpi-setup/lscpu-output.png" resize="800x" declaredimensions=true >}}
 
-If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](/installation/viam-server-setup/#install-viam-server).
+If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](/operate/get-started/setup/).
 
 {{% /expand%}}
 
@@ -241,9 +241,9 @@ If you are using hardware that requires these protocols, you must enable support
 ## Next steps
 
 {{< cards >}}
-{{% card link="/configure/" %}}
+{{% card link="/operate/get-started/supported-hardware/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/sdks/" %}}
+{{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

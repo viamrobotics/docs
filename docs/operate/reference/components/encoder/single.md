@@ -11,8 +11,8 @@ component_description: "A single pin 'pulse output' encoder which returns its re
 # SMEs: Rand
 ---
 
-A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the [board](/components/board/).
-The direction of spin is dictated by the [motor](/components/motor/) that has this encoder's name in its `encoder` attribute field.
+A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the [board](/operate/reference/components/board/).
+The direction of spin is dictated by the [motor](/operate/reference/components/motor/) that has this encoder's name in its `encoder` attribute field.
 
 To be able to test the encoder as you configure it, connect the encoder to your machine's computer and power both on.
 Then, configure the encoder:
@@ -55,7 +55,7 @@ The following attributes are available for `single` encoders:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |
+| `board` | string | **Required** | The `name` of the [board](/operate/reference/components/board/) to which the encoder is wired. |
 | `pins` | object | **Required** | A struct holding the name of the pin wired to the encoder: <ul> <li> <code>i</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the pin to which the encoder is wired. </li> </ul> |
 
 Viam also supports a model of encoder called [`"incremental"`](../incremental/) which uses two pins.

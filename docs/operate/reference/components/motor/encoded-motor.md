@@ -11,19 +11,19 @@ component_description: "Standard brushed or brushless DC motor with an encoder."
 # SMEs: Rand, James
 ---
 
-Use an [encoder](/components/encoder/) with a motor to create a closed feedback loop for better control of your machine.
+Use an [encoder](/operate/reference/components/encoder/) with a motor to create a closed feedback loop for better control of your machine.
 Instead of sending speed or position commands without a way to verify the motor's behavior, the encoder lets the computer know how the motor is actually rotating in the real world, so adjustments can be made to achieve the desired motor movement.
 
 Some motors come with encoders integrated with or attached to them.
 You can also add an encoder to a motor.
-See the [encoder component documentation](/components/encoder/) for more information on encoders.
+See the [encoder component documentation](/operate/reference/components/encoder/) for more information on encoders.
 
 Viam supports `gpio` model motors with encoders.
-To configure an encoded motor, you must configure the encoder [per the encoder documentation](/components/encoder/) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/components/motor/gpio/).
+To configure an encoded motor, you must configure the encoder [per the encoder documentation](/operate/reference/components/encoder/) and then configure a `gpio` motor with an `encoder` attribute in addition to the [standard `gpio` model attributes](/operate/reference/components/motor/gpio/).
 
 Physically connect your motor to a suitable driver chip, and connect that to your board, as well as connecting the encoder.
 Connect the system to power if you want to test it while configuring.
-Configure the [board](/components/board/) and the [encoder](/components/encoder/).
+Configure the [board](/operate/reference/components/board/) and the [encoder](/operate/reference/components/encoder/).
 Then, configure the motor:
 
 <a id="encoder-config">
@@ -146,7 +146,7 @@ Here’s an example configuration:
 {{% /tab %}}
 {{< /tabs >}}
 
-In addition to the [attributes for a non-encoded motor](/components/motor/gpio/), the following attributes are available for encoded DC motors:
+In addition to the [attributes for a non-encoded motor](/operate/reference/components/motor/gpio/), the following attributes are available for encoded DC motors:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
@@ -158,7 +158,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio/)
 
 {{% alert title="Info" color="info" %}}
 
-The attribute [`max_rpm`](/components/motor/gpio/) is not required or available for encoded `gpio` motors.
+The attribute [`max_rpm`](/operate/reference/components/motor/gpio/) is not required or available for encoded `gpio` motors.
 
 {{% /alert %}}
 
@@ -177,7 +177,7 @@ This wiring example corresponds to the [example config above](#encoder-config).
 
 ## Test the motor
 
-Once your motor is configured and connected, go to the [**CONTROL** tab](/fleet/control/) and click on the motor's dropdown panel.
+Once your motor is configured and connected, go to the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/) and click on the motor's dropdown panel.
 Use the buttons to try turning your motor forwards or backwards at different power levels and check whether it moves as expected.
 
 ![Motor control panel.](/components/motor/control.png)
@@ -186,7 +186,7 @@ For example, a [Viam Rover](/appendix/try-viam/rover-resources/) with encoded mo
 
 {{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
 
-The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
+The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/operate/reference/components/movement-sensor/):
 
 {{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
 
@@ -207,5 +207,5 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/control-motor/" noimage="true" %}}
+{{% card link="/tutorials/control/control-motor/" noimage="true" %}}
 {{< /cards >}}

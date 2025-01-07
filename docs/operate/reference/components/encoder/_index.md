@@ -89,7 +89,7 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
-{{% card link="/components/motor/encoded-motor/" noimage="true" %}}
+{{% card link="/operate/reference/components/motor/encoded-motor/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the encoder component with the following services:

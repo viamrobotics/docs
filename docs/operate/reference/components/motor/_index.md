@@ -23,7 +23,7 @@ The motor component provides an API for operating a motor or getting its current
 
 If you have a device that converts electricity into rotary motion, such as a brushed DC motor, a brushless DC motor, or a stepper motor, configure it as a motor component.
 
-If you have a hobby servo, configure it as a [servo component](/components/servo/) instead.
+If you have a hobby servo, configure it as a [servo component](/operate/reference/components/servo/) instead.
 
 ## Configuration
 
@@ -77,5 +77,5 @@ For general configuration and development info, see:
 {{< cards >}}
 {{% card link="/how-tos/configure/" noimage="true" %}}
 {{% card link="/how-tos/develop-app/" noimage="true" %}}
-{{% card link="/how-tos/control-motor/" noimage="true" %}}
+{{% card link="/tutorials/control/control-motor/" noimage="true" %}}
 {{< /cards >}}

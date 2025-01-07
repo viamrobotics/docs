@@ -55,7 +55,7 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
 
-If your `viam-micro-server` machine includes a resource that isn't a [base](/components/base/), [board](/components/board/),[encoder](/components/encoder/), [movement sensor](/components/movement-sensor/), [motor](/components/motor/), or [servo](/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
+If your `viam-micro-server` machine includes a resource that isn't a [base](/operate/reference/components/base/), [board](/operate/reference/components/board/),[encoder](/operate/reference/components/encoder/), [movement sensor](/operate/reference/components/movement-sensor/), [motor](/operate/reference/components/motor/), or [servo](/operate/reference/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
 
 {{< alert title="Important" color="note" >}}
 `viam-micro-server` works differently from the RDK, so creating modular resources for it is different.

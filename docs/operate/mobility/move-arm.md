@@ -78,7 +78,7 @@ await arm_1.move_to_joint_positions(positions=cmd_joint_positions)
 ```
 
 {{% /tab %}}
-{{% tab name="Go" link="/appendix/apis/components/arm/#movetojointpositions" %}}
+{{% tab name="Go" link="/dev/reference/apis/components/arm/#movetojointpositions" %}}
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list.
 Add the following code to your script:
 
@@ -99,10 +99,10 @@ if err != nil {
 
 Run the code.
 The third joint of your arm should move 30 degrees.
-For more information, see [`MoveToJointPositions`](/appendix/apis/components/arm/#movetojointpositions).
+For more information, see [`MoveToJointPositions`](/dev/reference/apis/components/arm/#movetojointpositions).
 
 {{% /tablestep %}}
-{{% tablestep link="/appendix/apis/components/arm/#movetoposition" %}}
+{{% tablestep link="/dev/reference/apis/components/arm/#movetoposition" %}}
 **2. Command to move to position**
 
 {{< tabs >}}
@@ -148,7 +148,7 @@ if err != nil {
 
 This code gets the arm's end position, makes a 100 millimeter adjustment in the +Z direction, and then uses that adjustment as a goal [`Pose`](/internals/orientation-vector/) when commanding arm motion.
 Run the code to see your arm move 100 mm upwards.
-For more information, see [`MoveToPosition`](/appendix/apis/components/arm/#movetoposition).
+For more information, see [`MoveToPosition`](/dev/reference/apis/components/arm/#movetoposition).
 
 {{% /tablestep %}}
 {{< /table >}}
