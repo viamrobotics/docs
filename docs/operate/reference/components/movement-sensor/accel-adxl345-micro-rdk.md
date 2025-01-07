@@ -8,6 +8,7 @@ description: "Configure an ADXL345 digital accelerometer with a microcontroller.
 images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/accel-adxl345/
+  - /components/movement-sensor/accel-adxl345-micro-rdk/
 micrordk_component: true
 toc_hide: true
 # SMEs: Rand, Kim Mishra

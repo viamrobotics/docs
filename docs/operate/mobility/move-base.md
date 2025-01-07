@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Move a mobile robot with manual or autonomous navigation."
+aliases:
+  - /how-tos/navigate/
 ---
 
 You have three options for moving a mobile robot [base](/operate/reference/components/base/):
