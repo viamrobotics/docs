@@ -19,9 +19,6 @@ aliases:
 {{% card link="/operate/mobility/define-geometry/" noimage="true" %}}
 {{% card link="/operate/mobility/define-obstacles/" noimage="true" %}}
 
-<!-- unlisting for now
-{{% card link="/operate/mobility/define-dynamic-obstacles/" noimage="true" %}}-->
-
 {{% card link="/operate/mobility/move-base/" noimage="true" %}}
 {{% card link="/operate/mobility/move-arm/" noimage="true" %}}
 {{% card link="/operate/mobility/move-gantry/" noimage="true" %}}
@@ -35,11 +32,6 @@ aliases:
 {{% card link="/operate/control/mobile-app/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
 
-<!-- unlisting for now
-{{% card link="/operate/control/voice-app/" noimage="true" %}}
-{{% card link="/operate/control/kiosk-app/" noimage="true" %}}
--->
-
 {{< /cards >}}
 {{< /how-to-expand >}}
 
@@ -48,8 +40,6 @@ aliases:
 {{% card link="/operate/get-started/setup/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{% card link="/manage/fleet/system-settings/" noimage="true" %}}
-{{% card link="/manage/fleet/reuse-configuration/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

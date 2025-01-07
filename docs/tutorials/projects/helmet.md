@@ -463,6 +463,6 @@ Here are some ways you could expand on this project:
 
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/how-tos/train-deploy-ml/" %}}
+{{% card link="/data-ai/ai/train-tflite/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

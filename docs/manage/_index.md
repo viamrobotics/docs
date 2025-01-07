@@ -42,7 +42,7 @@ Viam's fleet management tooling allows you to remotely deploy and manage softwar
 {{< cards >}}
 {{% card link="/manage/fleet/reuse-configuration/" noimage="true" %}}
 {{% card link="/manage/fleet/provision/setup/" noimage="true" %}}
-{{% card link="/manage/fleet/provision/end-user-setup/" noimage="true" %}}
+{{% card link="manage/fleet/provision/end-user-setup/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

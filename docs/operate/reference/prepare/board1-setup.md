@@ -73,5 +73,4 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 {{< cards >}}
 {{% card link="/operate/get-started/supported-hardware/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/appendix/try-viam/" %}}
 {{< /cards >}}

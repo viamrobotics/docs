@@ -30,7 +30,7 @@ Currently, `viam-agent` is only supported on Linux, for amd64 (x86_64) and arm64
 To provision machines using `viam-agent`, see
 
 {{< cards >}}
-{{% card link="/fleet/provision/" %}}
+{{% card link="/manage/fleet/provision/setup/" %}}
 {{< /cards >}}
 
 ## Installation
@@ -322,7 +322,7 @@ You can restart `viam-server` from the machine's part status dropdown to the rig
 For more information on managing `viam-agent` see:
 
 {{< cards >}}
-{{% card link="/installation/manage-viam-agent/" %}}
+{{% card link="/manage/reference/viam-agent/manage-viam-agent/" %}}
 {{< /cards >}}
 
 ## Agent logs

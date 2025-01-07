@@ -625,7 +625,7 @@ To see more code examples of how to use Viam's vision service, see [our example 
 For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/how-tos/detect-people/" noimage="true" %}}
 {{< /cards >}}

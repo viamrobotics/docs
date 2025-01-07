@@ -95,6 +95,6 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
-{{% card link="/how-tos/configure/" noimage="true" %}}
-{{% card link="/how-tos/develop-app/" noimage="true" %}}
+{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}
