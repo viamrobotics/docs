@@ -9,7 +9,7 @@ description: "Configure network settings, operating system package updates and l
 
 The `viam-agent` configuration allows you to configure:
 
-- [settings for package updates for the host operating system](#configure-os-package-updates)
+- [settings for package updates for the host operating system](#manage-os-package-updates)
 - [networks a machine can connect to](#configure-networks)
 - [parameters for operating system logging](#configure-operating-system-logging)
 

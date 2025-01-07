@@ -11,7 +11,7 @@ You have three options for moving a mobile robot [base](/operate/reference/compo
 
 - Give direct commands such as `Spin` and `MoveStraight` using the [base API](/dev/reference/apis/components/base/)
 - Send the base to a destination on a SLAM map or to a GPS coordinate using the [motion planning service API's](/dev/reference/apis/services/motion/) `MoveOnMap` or `MoveOnGlobe` commands, respectively
-- Define waypoints and move your base along those waypoints while avoiding obstacles, using the [navigation service API](/dev/reference/apis/services/navigation)
+- Define waypoints and move your base along those waypoints while avoiding obstacles, using the [navigation service API](/dev/reference/apis/services/navigation/)
 
 ## Prerequisites
 

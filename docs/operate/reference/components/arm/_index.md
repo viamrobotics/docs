@@ -69,7 +69,7 @@ The [arm API](/dev/reference/apis/components/arm/) supports the following method
 The arm API sends requests for the arm to move to a set of joint positions, and reports the arm's current joint positions.
 Viam's motion service provides an [API for moving the end of the arm to a given position, around any obstacles](/operate/reference/services/motion/#api).
 
-For each arm model, there is a JSON file that describes the [kinematics parameters of the arm](/internals/kinematic-chain-config/#kinematic-parameters).
+For each arm model, there is a JSON file that describes the [kinematics parameters of the arm](/operate/reference/kinematic-chain-config/).
 When you configure an arm model, the arm driver parses the kinematics file for the [frame system](/operate/mobility/define-geometry/) service to use.
 The frame system allows the motion service to calculate where any component of your machine is relative to any other component, other machine, or object in the environment.
 

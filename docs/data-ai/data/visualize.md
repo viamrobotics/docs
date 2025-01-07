@@ -177,7 +177,7 @@ sensorData.readings.aggregate([
           )
 ```
 
-See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-party-tools/) for more information.
+See the [guide on querying data](/data-ai/data/query/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 
@@ -256,7 +256,7 @@ Some third-party visualization tools support the ability to directly query your 
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
 
 While every third-party tool is different, you would generally query your data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-party-tools/) for more information.
+See the [guide on querying data](/data-ai/data/query/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 

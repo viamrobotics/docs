@@ -841,7 +841,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Stream](https://api.flutter.dev/flutter/dart-core/Stream-class.html)\<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)\>
+- [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)\<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)\>
 
 **Example:**
 
@@ -1103,7 +1103,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetGeometries
 
-Get all the geometries associated with the board in its current configuration, in the [frame](/operate/mobility/define-geometry/e-geometry/) of the board.
+Get all the geometries associated with the board in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the board.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}

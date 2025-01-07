@@ -36,7 +36,7 @@ In this tutorial, you will:
 
 To build your own claw game machine, you need the following hardware:
 
-- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
+- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/).
 - An [xarm6](https://www.ufactory.us/product/ufactory-xarm-6) robotic arm
 - An [Arcade claw](https://www.ebay.com/itm/393988987705)
 - A [Relay](https://www.amazon.com/gp/product/B095YFJ69T)
@@ -183,7 +183,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board:
+On the `Raw JSON` tab, replace the configuration with the following JSON configuration for your board:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -232,7 +232,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm:
+On the `Raw JSON` tab, replace the configuration with the following JSON configuration for your arm:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -297,7 +297,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm and gripper:
+On the `Raw JSON` tab, replace the configuration with the following JSON configuration for your arm and gripper:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

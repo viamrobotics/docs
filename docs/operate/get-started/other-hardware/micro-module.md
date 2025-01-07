@@ -21,7 +21,7 @@ aliases:
   - /installation/viam-micro-server-dev/
 ---
 
-`viam-micro-server` is the lightweight version of [`viam-server`](/architecture/viam-server/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
+`viam-micro-server` is the lightweight version of [`viam-server`](/operate/reference/viam-server/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
 
 This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
 
@@ -336,6 +336,6 @@ Run the following commands to flash <file>esp32-server.bin</file> to your ESP32 
 espflash write-bin 0x0 target/esp32-server.bin -B 460800  && sleep 2 && espflash monitor
 ```
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
 
 {{< snippet "social.md" >}}

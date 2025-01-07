@@ -63,7 +63,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 Freenove documentation includes Raspberry Pi setup instructions but we recommend the following steps to make sure the Pi is set up for this tutorial:
 
-Follow the steps in our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to install Raspberry Pi OS.
+Follow the steps in our [Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/) to install Raspberry Pi OS.
 
 {{% alert title=Note color="note" %}}
 
@@ -113,7 +113,7 @@ If the name of the directory where you store and run your code is different, be 
    pip install viam-sdk
    ```
 
-1. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enable-communication-protocols).
+1. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of January 24, 2023).
 
@@ -409,7 +409,7 @@ Your local component configuration should look similar to the following:
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-Configure a [_process_](/configure/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+Configure a [_process_](/manage/reference/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Process**.
 
