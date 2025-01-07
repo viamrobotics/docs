@@ -202,7 +202,7 @@ Add a [nested reference frame](/services/frame-system/nested-frame-config/) conf
   {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="700x" style="width: 300px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
 
 You can also adjust the **Orientation** and **Geometry** of your movement sensor or base, if necessary.
-See [the frame system service](/services/frame-system/#configuration) for instructions.
+See [the frame system service](/operate/mobility/define-geometry/) for instructions.
 
 #### Calibrate
 
@@ -288,7 +288,7 @@ You can choose the origin reference frame by configuring it using Viam's [frame 
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
 To read orientation, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Additionally, follow [these instructions](/services/frame-system/#configuration) to configure the geometries of each component of your machine within the [frame system](/services/frame-system/).
+Additionally, follow [these instructions](/operate/mobility/define-geometry/#configure-a-reference-frame) to configure the geometries of each component of your machine within the [frame system](/operate/services/frame-system/).
 Then use the movement sensor API's [`GetOrientation()`](/dev/reference/apis/components/movement-sensor/#getorientation) method to get orientation readings.
 
 ### Angular velocity

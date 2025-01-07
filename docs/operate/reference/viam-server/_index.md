@@ -167,6 +167,6 @@ During machine shutdown, `viam-server` handles modular resource instances simila
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/" %}}
-{{% card link="/registry/" customTitle="Viam Registry" %}}
+{{% card link="/operate/get-started/supported-hardware/" %}}
 {{% card link="/operate/get-started/setup/" %}}
 {{< /cards >}}
