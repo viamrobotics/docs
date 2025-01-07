@@ -349,7 +349,7 @@ Users can now have [access to different fleet management capabilities](/manage/m
 
 {{% changelog date="2023-11-30" color="added" title="Authenticate with location API key" %}}
 
-You can now use [API keys for authentication](/sdks/#authentication).
+You can now use [API keys for authentication](/dev/tools/cli/#authenticate).
 API keys allow you to assign the minimum required permissions for usage.
 Location secrets, the previous method of authentication, is deprecated and will be removed in a future release.
 

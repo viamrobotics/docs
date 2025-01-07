@@ -156,7 +156,7 @@ By default, new organization API keys are created with **Owner** permissions, gi
 You can change an API key's permissions from the Viam app on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
-Once created, you can use the organization API key to authenticate future CLI sessions or to [use the SDKs](/sdks/#authentication).
+Once created, you can use the organization API key to authenticate future CLI sessions or to [use the SDKs](/dev/reference/sdks/).
 To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 An organization can have multiple API keys.
@@ -195,7 +195,7 @@ By default, new location API keys are created with **Owner** permissions, giving
 You can change an API key's permissions from the Viam app on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
-Once created, you can use the location API key to authenticate future CLI sessions or to [connect to machines with the SDK](/sdks/#authentication).
+Once created, you can use the location API key to authenticate future CLI sessions or to [connect to machines with the SDK](/dev/reference/sdks/).
 To switch to using a location API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
@@ -233,7 +233,7 @@ Keep these key values safe.
 Authenticating using a machine part API key gives the authenticated CLI session full read and write access to your machine.
 {{% /alert %}}
 
-Once created, you can use the machine part API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/sdks/#authentication).
+Once created, you can use the machine part API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/dev/reference/sdks/).
 To switch to using a machine part API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
