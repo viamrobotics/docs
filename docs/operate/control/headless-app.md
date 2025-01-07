@@ -274,7 +274,7 @@ int main() {
 
 {{< expand "Example Python code for turning on a fan based on sensor readings" >}}
 
-The following example from [Automate air filtration with air quality sensors](https://codelabs.viam.com/guide/air-quality/index.html?index=..%2F..index#0) uses both the sensor API's [GetReadings](/dev/reference/apis/components/sensor/#getreadings) command as well as custom functionality with the generic [DoCommand](/appendix/apis/components/generic/#docommand).
+The following example from [Automate air filtration with air quality sensors](https://codelabs.viam.com/guide/air-quality/index.html?index=..%2F..index#0) uses both the sensor API's [GetReadings](/dev/reference/apis/components/sensor/#getreadings) command as well as custom functionality with the generic [DoCommand](/dev/reference/apis/components/generic/#docommand).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

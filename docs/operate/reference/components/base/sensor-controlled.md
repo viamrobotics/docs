@@ -23,7 +23,7 @@ In order to use feedback control for [MoveStraight()](/dev/reference/apis/compon
 Additionally, heading feedback control while moving straight can be used by providing a movement sensor that implements [Orientation()](/dev/reference/apis/components/movement-sensor/#getorientation) or [CompassHeading()](/dev/reference/apis/components/movement-sensor/#getcompassheading).
 {{% /alert %}}
 
-To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/components/base/) you want to wrap with feedback control and each required [movement sensor](/components/movement-sensor/).
+To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/operate/reference/components/base/) you want to wrap with feedback control and each required [movement sensor](/operate/reference/components/movement-sensor/).
 To see what models of movement sensor report which feedback, reference the appropriate column in [Movement Sensor API](/dev/reference/apis/components/movement-sensor/#api).
 
 Configure a `sensor-controlled` base as follows:
@@ -107,7 +107,7 @@ For example, a [Viam Rover](/appendix/try-viam/rover-resources/) using `sensor-c
 
 {{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
 
-The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
+The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/operate/reference/components/movement-sensor/):
 
 {{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
 
@@ -122,5 +122,5 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/base/" customTitle="Base API" noimage="true" %}}
 {{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
-{{% card link="/how-tos/drive-rover/" noimage="true" %}}
+{{% card link="/tutorials/control/drive-rover/" noimage="true" %}}
 {{< /cards >}}

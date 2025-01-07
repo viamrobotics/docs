@@ -68,7 +68,7 @@ The motors, GPS, and camera each require software drivers so that the board can 
 These drivers are called _{{< glossary_tooltip term_id="component" text="components" >}}_.
 There is also a _component_ for the board itself that allows Viam software to communicate with the pins on the board.
 
-If you configure a [base component](/components/base/), you can specify the size of the wheels attached to the motors, and how wide the rover base is, so `viam-server` can calculate how to coordinate the motion of the rover base.
+If you configure a [base component](/operate/reference/components/base/), you can specify the size of the wheels attached to the motors, and how wide the rover base is, so `viam-server` can calculate how to coordinate the motion of the rover base.
 
 If your rover includes a piece of hardware (such as a particular sensor) that is not yet supported as a built-in in by Viam, check the registry for a contributed {{< glossary_tooltip term_id="module" text="module" >}} or write your own module to integrate it into your machine.
 
@@ -154,7 +154,7 @@ Now imagine you want to run code to turn on a fan when the temperature sensor re
 - Write your script using one of the Viam [SDKs](/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
 - You then run this code either locally on the SBC, or on a separate server.
   See [Run code](/sdks/#run-code) for more options.
-  Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/components/sensor/#api) to get readings and the [motor API](/components/motor/#api) to turn the motor on and off.
+  Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/operate/reference/components/sensor/#api) to get readings and the [motor API](/operate/reference/components/motor/#api) to turn the motor on and off.
 
   ![A desktop computer (client in this case) sends commands to robot 1 (server) with gRPC over wifi.](/build/program/sdks/robot-client.png)
 

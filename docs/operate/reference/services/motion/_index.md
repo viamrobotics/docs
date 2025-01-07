@@ -43,7 +43,7 @@ The [motion service API](/dev/reference/apis/services/motion/) supports the foll
 
 ## Test the motion service
 
-You can test motion on your machine from the [**CONTROL** tab](/fleet/control/).
+You can test motion on your machine from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/).
 
 ![Motion card on the Control tab](/services/motion/motion-rc-card.png)
 

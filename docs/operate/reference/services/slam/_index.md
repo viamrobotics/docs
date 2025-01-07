@@ -35,9 +35,9 @@ You can conduct SLAM with data collected live by a [RPlidar](https://github.com/
 <!-- markdownlint-disable MD034 -->
 
 {{< cards >}}
-{{< relatedcard link="/components/camera/" alt_title="RPlidar" alt_link="https://github.com/viamrobotics/rplidar" required="yes">}}
-{{< relatedcard link="/components/movement-sensor/" required="no" >}}
-{{< relatedcard link="/components/base/" required="no" >}}
+{{< relatedcard link="/operate/reference/components/camera/" alt_title="RPlidar" alt_link="https://github.com/viamrobotics/rplidar" required="yes">}}
+{{< relatedcard link="/operate/reference/components/movement-sensor/" required="no" >}}
+{{< relatedcard link="/operate/reference/components/base/" required="no" >}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
@@ -69,7 +69,7 @@ While in a slam session, you should:
 - stay relatively (but not extremely) close to walls
 - use a machine that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed
-- when using a wheeled base, try to include an [odometry movement sensor](/components/movement-sensor/wheeled-odometry/). This helps the SLAM algorithm keep track of where the machine is moving.
+- when using a wheeled base, try to include an [odometry movement sensor](/operate/reference/components/movement-sensor/wheeled-odometry/). This helps the SLAM algorithm keep track of where the machine is moving.
 - it is important to note that the [adxl345 accelerometer](https://github.com/viam-modules/analog-devices/) on the [Viam Rover 1](/appendix/try-viam/rover-resources/rover-tutorial-1/) **will not** satisfy the movement sensor requirement.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

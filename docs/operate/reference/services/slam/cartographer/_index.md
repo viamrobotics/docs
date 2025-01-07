@@ -56,7 +56,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
   Be sure to position the RPlidar so that it **faces forward in the direction of travel**. For example, if you are using a [Viam Rover](https://www.viam.com/resources/rover) and the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing is facing in the same direction as the webcam.
 
-  Furthermore, ensure that the center of the RPlidar is mounted at the center of your machine's [base](/components/base/).
+  Furthermore, ensure that the center of the RPlidar is mounted at the center of your machine's [base](/operate/reference/components/base/).
   In the case of the Viam Rover the center is in the middle between the wheels.
 
   If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
@@ -80,9 +80,9 @@ If you choose to use movement sensor data for SLAM, you can:
 - Add only inertial measurement unit (IMU) data
   - Requires a movement sensor that supports [`AngularVelocity`](/services/navigation/#angular-velocity) and [`LinearAcceleration`](/services/navigation/#linear-acceleration) readings
 - Add only odometry data
-  - Requires a movement sensor that collects [`Position`](/services/navigation/#position) and [`Orientation`](/services/navigation/#orientation) data (for example, [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/))
+  - Requires a movement sensor that collects [`Position`](/services/navigation/#position) and [`Orientation`](/services/navigation/#orientation) data (for example, [`wheeled-odometry`](/operate/reference/components/movement-sensor/wheeled-odometry/))
 - Add both IMU _and_ odometry data
-  - Requires all four of the above kinds of data, merged together using the [`merged` movement sensor model](/components/movement-sensor/merged/)
+  - Requires all four of the above kinds of data, merged together using the [`merged` movement sensor model](/operate/reference/components/movement-sensor/merged/)
   - If you choose this option, be sure to configure data capture on the `merged` sensor and not on the individual movement sensors when following the steps below.
 
 ### Create a new map

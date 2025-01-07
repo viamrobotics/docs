@@ -10,6 +10,7 @@ description: "Update or delete your existing modules, or change their privacy se
 aliases:
   - /use-cases/deploy-code/
   - /use-cases/manage-modules/
+  - /how-tos/manage-modules/
 languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
 languages: []
 viamresources: []
@@ -20,7 +21,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and deploy a module](/how-tos/create-module/), you may need to update or delete it.
+After you [create and deploy a module](/operate/get-started/other-hardware/), you may need to update or delete it.
 
 For information on pinning module deployments to versions, see [Module versioning](/registry/modular-resources/#module-versioning).
 
@@ -28,7 +29,7 @@ For information on pinning module deployments to versions, see [Module versionin
 
 You can update an existing module in the [Viam Registry](https://app.viam.com/registry) in one of two ways:
 
-- [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/cli/).
+- [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/dev/tools/cli/).
 - [Automatically upload new versions of your module on release](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub action.
 
 Updating your module manually is appropriate for smaller projects, especially those with only one contributor.
@@ -36,7 +37,7 @@ Updating your module automatically using CI is better suited for larger, ongoing
 
 ### Update an existing module using the Viam CLI
 
-To update an existing module in the [Viam Registry](https://app.viam.com/registry) manually, you can use the [Viam CLI](/cli/).
+To update an existing module in the [Viam Registry](https://app.viam.com/registry) manually, you can use the [Viam CLI](/dev/tools/cli/).
 
 {{% alert title="Tip" color="tip" %}}
 If you intend to make frequent code changes to your module, want to support a variety of platforms, or otherwise want to streamline your module development workflow, consider [using a GitHub action to update your module](#update-an-existing-module-using-a-github-action) instead.
@@ -58,7 +59,7 @@ If you intend to make frequent code changes to your module, want to support a va
    tar -czf module.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/how-tos/create-module/#compile-or-package-your-module).
+   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/operate/get-started/other-hardware/#test-your-module-locally).
 
    {{% /tab %}}
    {{% tab name="Using venv" %}}
@@ -67,7 +68,7 @@ If you intend to make frequent code changes to your module, want to support a va
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [executable file](/how-tos/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/how-tos/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
+   Where `run.sh` is your [executable file](/operate/get-started/other-hardware/#test-your-module-locally), `requirements.txt` is your [pip dependency list file](/operate/get-started/other-hardware/#test-your-module-locally), and `src` is the directory that contains the source code of your module.
 
    {{% /tab %}}
    {{< /tabs >}}
@@ -80,15 +81,15 @@ If you intend to make frequent code changes to your module, want to support a va
    viam module upload --version <version> --platform <platform> <module-path>
    ```
 
-   For example, the following command uploads a module compressed as an archive named `my-module.tar.gz` to the Viam Registry, and increments the [`version`](/cli/#using-the---version-argument) of the module to version `1.0.1`:
+   For example, the following command uploads a module compressed as an archive named `my-module.tar.gz` to the Viam Registry, and increments the [`version`](/dev/tools/cli/#using-the---version-argument) of the module to version `1.0.1`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
+   When you `upload` a module, the command performs basic [validation](/dev/tools/cli/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/cli/#module).
+For more information, see the [`viam module` command](/dev/tools/cli/#module).
 
 ### Update an existing module using a GitHub action
 
@@ -270,7 +271,7 @@ tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 { {% /tab %}}
 { {< /tabs >}} -->
 
-You can test this build configuration by running the Viam CLI's [`build local` command](/cli/#using-the-build-subcommand) on your development machine:
+You can test this build configuration by running the Viam CLI's [`build local` command](/dev/tools/cli/#using-the-build-subcommand) on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local
@@ -319,9 +320,9 @@ When you are ready to test the action, uncomment `if: github.event_name == 'rele
 
 For guidance on configuring the other parameters, see the documentation for each:
 
-- [`org-id`](/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
-- [`platform`](/cli/#using-the---platform-argument): You can only upload one platform at a time.
-- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/cli/#using-the---version-argument) for more details on the types of versioning supported.
+- [`org-id`](/dev/tools/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
+- [`platform`](/dev/tools/cli/#using-the---platform-argument): You can only upload one platform at a time.
+- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/dev/tools/cli/#using-the---version-argument) for more details on the types of versioning supported.
 
 For more details, see the [`upload-module` GitHub Action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
@@ -332,7 +333,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-4. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/cloud/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+4. Create an [organization API key](/dev/tools/cli/#create-an-organization-api-key) with the [owner](/cloud/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
    - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 
@@ -380,7 +381,7 @@ To change the visibility, navigate to its page in the [**REGISTRY** section of t
 
 {{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x1000" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." max-width="700px" >}}
 
-You can also edit the visibility by editing the <file>meta.json</file> file and then running the following [CLI](/cli/#module) command:
+You can also edit the visibility by editing the <file>meta.json</file> file and then running the following [CLI](/dev/tools/cli/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module update

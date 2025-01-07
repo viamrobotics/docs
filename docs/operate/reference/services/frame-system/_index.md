@@ -27,10 +27,10 @@ It is a mostly static system for storing the "reference frame" of each component
 ## Used with
 
 {{< cards >}}
-{{< relatedcard link="/components/arm/">}}
-{{< relatedcard link="/components/base/">}}
-{{< relatedcard link="/components/camera/">}}
-{{< relatedcard link="/components/gantry/">}}
+{{< relatedcard link="/operate/reference/components/arm">}}
+{{< relatedcard link="/operate/reference/components/base/">}}
+{{< relatedcard link="/operate/reference/components/camera/">}}
+{{< relatedcard link="/operate/reference/components/gantry/">}}
 {{< /cards >}}
 
 ## Configuration
@@ -167,7 +167,7 @@ Other types will be converted to `ov_radian`.
 
 {{% alert title="Tip" color="tip" %}}
 
-For [base components](/components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
+For [base components](/operate/reference/components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
 You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule) to understand rotation about any of these axes.
 
 For non base components, there is no inherent concept of "forward," so it is up to the user to define frames that make sense in their application.
@@ -192,7 +192,7 @@ On this tab, you can simultaneously view and edit the position, orientation, and
 
 For example:
 
-Consider a machine configured with a [board](/components/board/) wired to a [camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/).
+Consider a machine configured with a [board](/operate/reference/components/board/) wired to a [camera](/operate/reference/components/camera/webcam/) and a [`wheeled` base](/operate/reference/components/base/wheeled/).
 
 You have not specified any reference frame configuration, so on the **Frame** subtab of the **CONFIGURE** tab, the components are shown to all be located on the default `world` origin point as follows:
 
@@ -282,11 +282,11 @@ For example:
 
 - In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config/), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the machine's coordinate system).
 
-  However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the machine.
+  However, an arm with an attached [camera](/operate/reference/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the machine.
 
   With the [vision service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-  If a [camera](/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
+  If a [camera](/operate/reference/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 
   The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 

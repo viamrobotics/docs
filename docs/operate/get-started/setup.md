@@ -13,6 +13,7 @@ aliases:
   - /build/micro-rdk/
   - /get-started/installation/microcontrollers/
   - /installation/viam-micro-server-setup/
+  - /installation/viam-server-setup/
 ---
 
 Get started by installing the open-source software that drives your hardware and connects your device to the cloud.
@@ -87,7 +88,7 @@ On Linux installs, by default `viam-server` or `viam-agent` and `viam-server` wi
 On macOS installs, `viam-server` does not start automatically on boot.
 You can change this behavior if desired.
 
-To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](/installation/manage-viam-agent/).
+To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](manage/reference/viam-agent/manage-viam-agent/).
 
 For manual installs of only `viam-server`, see [Manage `viam-server`](/installation/manage-viam-server/).
 
