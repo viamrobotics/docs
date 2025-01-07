@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 modulescript: true
 description: "Deploy an ML model to your machine."
+aliases:
+    - /how-tos/train-deploy-ml/
+    - /services/ml/
 ---
 
 The Machine Learning (ML) model service allows you to deploy [machine learning models](/registry/ml-models/) to your machine.

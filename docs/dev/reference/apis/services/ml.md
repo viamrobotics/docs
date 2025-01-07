@@ -8,6 +8,8 @@ description: "Give commands to your ML model service to make inferences based on
 icon: true
 images: ["/services/icons/ml.svg"]
 date: "2022-01-01"
+aliases:
+  - /appendix/apis/services/ml/
 # updated: ""  # When the content was last entirely checked
 ---
 

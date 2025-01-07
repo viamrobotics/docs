@@ -8,6 +8,8 @@ no_list: true
 open_on_desktop: true
 overview: true
 noTitle: true
+aliases:
+    - /docs/appendix/
 ---
 
 <div class="max-page">

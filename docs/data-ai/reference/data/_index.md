@@ -8,14 +8,6 @@ tags: ["data management", "cloud", "sync", "capture"]
 icon: true
 images: ["/services/icons/data-capture.svg"]
 no_list: true
-aliases:
-  - /services/data/capture/
-  - /data/capture/
-  - /build/micro-rdk/data_management/
-  - /services/data/capture/
-  - /services/data/cloud-sync/
-  - /data/cloud-sync/
-  - /services/data/capture-sync/
 no_service: true
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
@@ -193,7 +185,6 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
 
 {{< tabs >}}
-
 {{% tab name="Regular" %}}
 
 Once you have added the data capture service, you can specify the data you want to capture at a resource level.
@@ -683,13 +674,9 @@ Wait for a few seconds and you should see correctly colored images.
 ## Next steps
 
 If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
-If you have synced images, you can use those images to [train TFlite](/data-ai/ai/train-tflite/) or [other models](data-ai/ai/train/) within the Viam app.
 
 Or check out the following guides and tutorials:
 
 {{< cards >}}
-{{% card link="/data-ai/capture-data/capture-sync/" %}}
-{{% card link="/data-ai/ai/train-tflite/" %}}
-{{% card link="/manage/troubleshoot/alert/" %}}
 {{% card link="/tutorials/control/air-quality-fleet/" %}}
 {{< /cards >}}
