@@ -1,1 +1,1 @@
-Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) call.
+Stop a [base](/operate/reference/components/base/) component being moved by an in progress [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) or [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) call.

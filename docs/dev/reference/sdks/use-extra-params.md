@@ -19,10 +19,10 @@ How to [use](#use) and [define](#define) the `extra` parameters that many {{< gl
 
 You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are _models_ of built-in resource types.
 
-For example, a new model of [sensor](/components/sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
+For example, a new model of [sensor](/operate/reference/components/sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
 
 The `extra` parameters in that built-in resource type's [API](/dev/reference/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
-This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
+This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/operate/reference/components/motor/) or all models of [camera](/operate/reference/components/camera/).
 
 Send extra information in an API call in `extra` parameters as follows:
 
@@ -96,7 +96,7 @@ If `extra` information must be passed to a resource, it is handled within a new,
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
 Follow the steps in the [Modular Resources documentation](/how-tos/create-module/) to do so.
 
-For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/dev/reference/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/dev/reference/apis/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/dev/reference/apis/), reference this modification to the built-in [sensor](/operate/reference/components/sensor/) resource type's [Readings](/dev/reference/apis/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
 
 {{< tabs >}}
 {{% tab name="Python" %}}

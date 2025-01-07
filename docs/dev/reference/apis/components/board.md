@@ -7,10 +7,12 @@ description: "Give commands for setting GPIO pins to high or low, setting PWM, a
 icon: true
 images: ["/icons/components/board.svg"]
 date: "2022-01-01"
+aliases:
+  - /appendix/apis/components/board/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The board API allows you to give commands to your [board components](/components/board/) for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
+The board API allows you to give commands to your [board components](/operate/reference/components/board/) for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
 
 The board component supports the following methods:
 

@@ -9,7 +9,7 @@ A particular implementation of a {{< glossary_tooltip term_id="resource" text="r
 
 Models allow you to control hardware or software of a similar category, such as motors, with a consistent set of methods as an interface, even if the underlying implementation differs.
 
-For example, some _models_ of DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the SPI bus.
+For example, some _models_ of DC motors communicate using [GPIO](/operate/reference/components/board/), while other DC motors use serial protocols like the SPI bus.
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
 Models are either included with [`viam-server`](/architecture/viam-server/) or provided through {{< glossary_tooltip term_id="module" text="modules" >}}.

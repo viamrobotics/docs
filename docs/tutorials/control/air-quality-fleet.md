@@ -45,7 +45,7 @@ You can complete this tutorial using any number of air quality sensing machines.
 For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/how-tos/create-module/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/how-tos/create-module/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
@@ -126,7 +126,7 @@ With your organizational structure in place, let's add some machines:
 
 1. Connect your first single-board computer to power.
    For this tutorial, we'll treat this as the machine for our first customer, Antonia.
-   If the computer does not already have a Viam-compatible operating system installed, follow the [Platform Requirements section of the Installation Guide](/installation/viam-server-setup/#platform-requirements) to install a compatible operating system.
+   If the computer does not already have a Viam-compatible operating system installed, follow the [operating system setup section of the Quickstart guide](/operate/get-started/setup/#quickstart) to install a compatible operating system.
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
@@ -173,7 +173,7 @@ For each sensing machine:
 
 ## Configure your air quality sensors
 
-You need to [configure](/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/components/sensor/).
+You need to [configure](/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/operate/reference/components/sensor/).
 
 No matter how many sensing machines you use, you can configure them efficiently by using a reusable configuration block called a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
 Fragments are a way to share and manage identical machine configurations across multiple machines.

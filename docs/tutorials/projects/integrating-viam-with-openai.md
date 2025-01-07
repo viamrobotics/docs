@@ -54,7 +54,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChatGPT with the Viam platform’s built-in [computer vision service](/services/vision/), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
+By combining ChatGPT with the Viam platform’s built-in [computer vision service](/services/vision/), ML model support, and [locomotion](/operate/reference/components/base/), you can within a few hours create a basic companion robot that:
 
 - Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 - Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -87,7 +87,7 @@ If you are using a different rover, the [Configure a Rover like Yahboom or SCUTT
 
 ### 1. Connect the servo
 
-We'll use a [servo](/components/servo/) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
+We'll use a [servo](/operate/reference/components/servo/) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
 
 {{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging, moving wires, or otherwise modifying electrical circuits.
@@ -211,7 +211,7 @@ Now, configure your rover to:
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo/), go to your rover's **CONFIGURE** tab.
+To configure your [servo](/operate/reference/components/servo/), go to your rover's **CONFIGURE** tab.
 
 - Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 - Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
@@ -222,7 +222,7 @@ Now, in the panel for `servo1`, add the following attribute configuration:
 {{< imgproc src="/tutorials/ai-integration/servo_pane.png" alt="An example configuration for a pi servo with GPIO 8 and board 'local' in the Viam app Config Builder." resize="1200x" style="width:450px" >}}
 
 - Enter `8` for `pin`.
-- Select the name of your [board](/components/board/) for the `board` attribute: in this case, `local`.
+- Select the name of your [board](/operate/reference/components/board/) for the `board` attribute: in this case, `local`.
 
 This tells `viam-server` that the servo is attached to GPIO pin 8 on the board.
 

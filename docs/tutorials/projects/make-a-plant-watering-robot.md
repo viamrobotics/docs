@@ -180,7 +180,7 @@ Restart your Pi using `sudo reboot` to make these changes take effect.
 
 Then, navigate to the **CONFIGURE** tab of your new machine's page in the app.
 
-First, add your Pi as a [board component](/components/board/):
+First, add your Pi as a [board component](/operate/reference/components/board/):
 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
@@ -218,7 +218,7 @@ This tutorial uses the name `local`.
 
 _Resources_ refer to the different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} Viam provides for robots to use.
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
-For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
+For example, the [sensor component](/operate/reference/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
 Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
@@ -325,7 +325,7 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [board](/appendix/apis/components/board/) and [sensor](/appendix/apis/components/sensor/) API methods to read from the moisture sensor and control the pump's voltage with PWM as a GPIO pin.
+Use the Viam [board](/dev/reference/apis/components/board/) and [sensor](/dev/reference/apis/components/sensor/) API methods to read from the moisture sensor and control the pump's voltage with PWM as a GPIO pin.
 
 You can get your components from the robot like this:
 

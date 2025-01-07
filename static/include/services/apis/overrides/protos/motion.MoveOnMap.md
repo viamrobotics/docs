@@ -1,4 +1,4 @@
-Move a [base](/components/base/) component to a destination [pose](/internals/orientation-vector/) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Move a [base](/operate/reference/components/base/) component to a destination [pose](/internals/orientation-vector/) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
 
 `MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [pose](/internals/orientation-vector/) after `MoveOnMap()` returns.
 
@@ -12,7 +12,7 @@ You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` a
 
 Use the machine's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
 
-`MoveOnMap()` is intended for use with the [navigation service](/services/navigation/), providing autonomous indoor navigation for rover [bases](/components/base/).
+`MoveOnMap()` is intended for use with the [navigation service](/services/navigation/), providing autonomous indoor navigation for rover [bases](/operate/reference/components/base/).
 
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnMap()`, your [SLAM service](/services/slam/) must implement `GetPointCloudMap()` and `GetPosition()`

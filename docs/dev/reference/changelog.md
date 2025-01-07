@@ -87,7 +87,7 @@ The following models were removed:
 {{% /changelog %}}
 
 {{% changelog date="2024-11-05" color="added" title="MoveThroughJointPositions to arm interface" %}}
-The [arm interface](/appendix/apis/components/arm/) now includes a [MoveThroughJointPositions](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm) method that moves an arm through an ordered array of joint positions.
+The [arm interface](/dev/reference/apis/components/arm/) now includes a [MoveThroughJointPositions](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm) method that moves an arm through an ordered array of joint positions.
 {{% /changelog %}}
 
 {{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
@@ -106,7 +106,7 @@ The Raspberry Pi 4, 3, and Zero 2 W boards are now supported by [`viam:raspberry
 {{% changelog date="2024-08-26" color="added" title="ESP32 cameras" %}}
 
 `viam-micro-server` now supports cameras on ESP32s.
-For more information, see [Configure an esp32-camera](/components/camera/esp32-camera/).
+For more information, see [Configure an esp32-camera](/operate/reference/components/camera/esp32-camera/).
 
 {{% /changelog %}}
 
@@ -153,7 +153,7 @@ The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/app
 
 {{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
 
-The board analog API [`Read()`](/appendix/apis/components/board/#readanalogreader) method now returns an `AnalogValue` struct instead of a single int.
+The board analog API [`Read()`](/dev/reference/apis/components/board/#readanalogreader) method now returns an `AnalogValue` struct instead of a single int.
 The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
 
 {{% /changelog %}}
@@ -174,7 +174,7 @@ This affects users of the [`MoveOnGlobe()`](/appendix/apis/services/motion/#move
 {{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera component's [`GetImage()`](/appendix/apis/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/appendix/apis/services/vision/#getdetections) and [`GetClassifications()`](/appendix/apis/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
+The camera component's [`GetImage()`](/dev/reference/apis/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/appendix/apis/services/vision/#getdetections) and [`GetClassifications()`](/appendix/apis/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
@@ -207,7 +207,7 @@ detections = await detector.get_detections(cropped_frame)
 {{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
 
 The `WriteAnalog()` method has been removed from the Go SDK.
-Use [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) followed by [`Write()`](/appendix/apis/components/board/#writeanalog) instead.
+Use [`AnalogByName()`](/dev/reference/apis/components/board/#analogbyname) followed by [`Write()`](/dev/reference/apis/components/board/#writeanalog) instead.
 
 {{% /changelog %}}
 
@@ -221,7 +221,7 @@ Use [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) followed b
 
 `AnalogReader` has been renamed to `Analog`.
 The functionality remains the same, but code that uses analogs must be updated.
-`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/appendix/apis/components/board/#analogbyname) and `AnalogNames()` (since deprecated), respectively.
+`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/dev/reference/apis/components/board/#analogbyname) and `AnalogNames()` (since deprecated), respectively.
 
 {{% /changelog %}}
 
@@ -265,7 +265,7 @@ You can now upload your own ML model(/registry/ml-models/) using any of these fr
 
 {{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for `viam-micro-server`" %}}
 
-You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
+You can now use the [ultrasonic sensor component](/operate/reference/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/installation/viam-micro-server-setup/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
 
 {{% /changelog %}}
 
@@ -292,7 +292,7 @@ The Viam Agent is a software provisioning manager that you can install on your m
 
 {{% changelog date="2024-02-12" color="added" title="Generic service" %}}
 
-You can now use the [generic service](/services/generic/) to define new, unique types of services that do not already have an [appropriate API](/appendix/apis/#service-apis) defined for them.
+You can now use the [generic service](/services/generic/) to define new, unique types of services that do not already have an [appropriate API](/dev/reference/apis/#service-apis) defined for them.
 
 {{% /changelog %}}
 
@@ -306,7 +306,7 @@ When uploading, you have the option to make your model available to the general 
 
 {{% changelog date="2024-01-31" color="added" title="Sensor-controlled base" %}}
 
-Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) component model, which supports a robotic base that receives feedback control from a movement sensor.
+Viam has added a [sensor-controlled base](/operate/reference/components/base/sensor-controlled/) component model, which supports a robotic base that receives feedback control from a movement sensor.
 
 {{% /changelog %}}
 
@@ -336,7 +336,7 @@ Check out [this guide](/how-tos/image-data/) for more information.
 
 {{% changelog date="2023-12-31" color="added" title="Raspberry Pi 5 Support" %}}
 
-You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with the new board model [`pi5`](/components/board/pi5/).
+You can now run `viam-server` on a [Raspberry Pi 5](/operate/reference/components/board/pi5/) with the new board model [`pi5`](/operate/reference/components/board/pi5/).
 
 {{% /changelog %}}
 
@@ -430,7 +430,7 @@ You can use a [mobile application](/fleet/control/#control-interface-in-the-viam
 
 {{% changelog date="2023-09-30" color="added" title="Power sensor component" %}}
 
-You now have the capability to use a [power sensor component](/components/power-sensor/) to monitor the voltage, current, and power consumption within your machine's system.
+You now have the capability to use a [power sensor component](/operate/reference/components/power-sensor/) to monitor the voltage, current, and power consumption within your machine's system.
 
 {{% /changelog %}}
 
@@ -487,7 +487,7 @@ Note that currently, accounts from different SSO providers are treated separatel
 
 {{% changelog date="2023-07-31" color="improved" title="Arm component API" %}}
 
-Arm models now support the [`GetKinematics` method](/appendix/apis/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
+Arm models now support the [`GetKinematics` method](/dev/reference/apis/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
 
 {{% /changelog %}}
 
@@ -518,7 +518,7 @@ See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn 
 {{% changelog date="2023-06-30" color="added" title="Implement custom robotic arms as Viam modules" %}}
 
 When prototyping a robotic arm, you can now facilitate movement without creating your own motion planning.
-This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/appendix/apis/components/arm/#api):
+This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/dev/reference/apis/components/arm/#api):
 
 - `getJointPositions`
 - `movetoJointPositions`
@@ -534,7 +534,7 @@ For more information, see this [tutorial on creating a custom arm](/registry/exa
 
 To better control gantries with Viam, you can now:
 
-- Specify speed values when calling the `MovetoPosition` method on [Gantry components](/components/gantry/).
+- Specify speed values when calling the `MovetoPosition` method on [Gantry components](/operate/reference/components/gantry/).
   This allows you to define the speed at which each axis moves to the desired position, providing enhanced precision and control over the gantry's movement.
 - Set a home position for Gantry components to facilitate position resetting or maintain consistent starting points.
 
@@ -1063,7 +1063,7 @@ Find more information in the [`viam-micro-server` installation docs](/installati
 
 {{% changelog date="2023-01-31" color="added" title="Remote control power input" %}}
 
-On your machine's **CONTROL** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
+On your machine's **CONTROL** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/operate/reference/components/base/).
 The base control UI previously always sent 100% power to the base's motors.
 
 {{% /changelog %}}
@@ -1076,7 +1076,7 @@ The [AMS AS5048](https://github.com/viam-modules/ams) is now supported.
 
 {{% changelog date="2023-01-31" color="added" title="GetLinearAcceleration method" %}}
 
-The movement sensor API now includes a [GetLinearAcceleration](/appendix/apis/components/movement-sensor/#getlinearacceleration) method.
+The movement sensor API now includes a [GetLinearAcceleration](/dev/reference/apis/components/movement-sensor/#getlinearacceleration) method.
 
 {{% /changelog %}}
 
@@ -1158,13 +1158,13 @@ Now is uses a simpler unary approach that is more performant on batched unary ca
 - Transform
 - Join pointclouds
 
-For information on configuring any camera model, see [Camera Component](/components/camera/).
+For information on configuring any camera model, see [Camera Component](/operate/reference/components/camera/).
 
 {{% /changelog %}}
 
 {{% changelog date="2022-11-15" color="added" title="New servo model" %}}
 
-A new [servo model called `gpio`](/components/servo/gpio/) supports servos connected to non-Raspberry Pi boards.
+A new [servo model called `gpio`](/operate/reference/components/servo/gpio/) supports servos connected to non-Raspberry Pi boards.
 
 {{% /changelog %}}
 
@@ -1212,7 +1212,7 @@ Other service configurations are not affected.
 
 {{% changelog date="2022-11-15" color="removed" title="Width and height fields from camera API" %}}
 
-Removed `width` and `height` from the response of the [`GetImage`](/appendix/apis/components/camera/#getimage) method in the camera API.
+Removed `width` and `height` from the response of the [`GetImage`](/dev/reference/apis/components/camera/#getimage) method in the camera API.
 This does not impact any existing camera models.
 If you write a custom camera model, you no longer need to implement the `width` and `height` fields.
 
