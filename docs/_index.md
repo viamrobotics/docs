@@ -30,7 +30,7 @@ updated: "2024-10-11"
 
 <div class="col hover-card hoverable-data">
 <a href="data-ai/">
-<div><div>Work with Data and AI</div><p>Lorem Ipsum</p></div>
+<div><div>Work with Data and AI</div><p>Viam's data and AI capabilities enable you to capture and sync or upload data, build a dataset, train and deploy ML models, and run inference with computer vision. Then, you can act or alert on inferences.</p></div>
 </a>
 </div>
 
