@@ -988,7 +988,7 @@ For more information on using data synced to the cloud to train machine learning
 
 {{% changelog date="2023-03-31" color="added" title="Motion planning with new `constraint` parameter" %}}
 
-A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/dev/reference/apis/services/motion/#api), allowing you to define restrictions on the machine's movement.
+A new parameter, [`constraint`](/operate/reference/services/motion/constraints/), has been added to the [Motion service API](/dev/reference/apis/services/motion/#api), allowing you to define restrictions on the machine's movement.
 The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a machine.
 
 {{% /changelog %}}

@@ -44,14 +44,14 @@ Click **Save** in the upper right corner of the page to save your new configurat
 The fragment adds the following components to your machine's JSON configuration:
 
 - A [board component](/components/board/) named `local` representing the Raspberry Pi.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- Two [motors](/operate/reference/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+- Two [encoders](/operate/reference/components/encoder/single/), one for each motor
+- A wheeled [base](/operate/reference/components/base/), an abstraction that coordinates the movement of the right and left motors
   - Width between the wheel centers: 356 mm
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
-- A webcam [camera](/components/camera/webcam/)
+- A webcam [camera](/operate/reference/components/camera/webcam/)
 - An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
 - A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
@@ -75,14 +75,14 @@ Click **Save** in the upper right corner of the page to save your new configurat
 The fragment adds the following components to your machine's JSON configuration:
 
 - A [board component](/components/board/) named `local` representing the Raspberry Pi.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- Two [motors](/operate/reference/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+- Two [encoders](/operate/reference/components/encoder/single/), one for each motor
+- A wheeled [base](/operate/reference/components/base/), an abstraction that coordinates the movement of the right and left motors
   - Width between the wheel centers: 356 mm
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
-- A webcam [camera](/components/camera/webcam/)
+- A webcam [camera](/operate/reference/components/camera/webcam/)
 - An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
 - A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
@@ -107,14 +107,14 @@ The fragment adds the following components to your machine's JSON configuration:
 
 - A [board component](/components/board/) named `local` representing the Raspberry Pi
   - An I<sup>2</sup>C bus for connection to the accelerometer.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- Two [motors](/operate/reference/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+- Two [encoders](/operate/reference/components/encoder/single/), one for each motor
+- A wheeled [base](/operate/reference/components/base/), an abstraction that coordinates the movement of the right and left motors
   - Width between the wheel centers: 260 mm
   - Wheel circumference: 217 mm
   - Spin slip factor: 1
-- A webcam [camera](/components/camera/webcam/)
+- A webcam [camera](/operate/reference/components/camera/webcam/)
 - An [accelerometer](https://github.com/viam-modules/analog-devices/)
 
 {{% alert title="Info" color="info" %}}
@@ -144,14 +144,14 @@ Click **Save** in the upper right corner of the page to save your new configurat
 The fragment adds the following components to your machine's JSON configuration:
 
 - A [board component](/components/board/) named `local` representing the Jetson.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- Two [motors](/operate/reference/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+- Two [encoders](/operate/reference/components/encoder/single/), one for each motor
+- A wheeled [base](/operate/reference/components/base/), an abstraction that coordinates the movement of the right and left motors
   - Width between the wheel centers: 356 mm
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
-- A webcam [camera](/components/camera/webcam/)
+- A webcam [camera](/operate/reference/components/camera/webcam/)
 - An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
 - A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
@@ -175,14 +175,14 @@ Click **Save** in the upper right corner of the page to save your new configurat
 The fragment adds the following components to your machine's JSON configuration:
 
 - A [board component](/components/board/) named `local` representing the Jetson.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- Two [motors](/operate/reference/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+- Two [encoders](/operate/reference/components/encoder/single/), one for each motor
+- A wheeled [base](/operate/reference/components/base/), an abstraction that coordinates the movement of the right and left motors
   - Width between the wheel centers: 356 mm
   - Wheel circumference: 381 mm
   - Spin slip factor: 1
-- A webcam [camera](/components/camera/webcam/)
+- A webcam [camera](/operate/reference/components/camera/webcam/)
 - An [accelerometer](https://github.com/viam-modules/tdk-invensense/)
 - A [power sensor](https://github.com/viam-modules/texas-instruments/)
 

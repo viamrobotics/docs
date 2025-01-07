@@ -18,7 +18,7 @@ date: "2022-01-01"
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab to play around!
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](/components/base/wheeled/#test-the-base):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](/operate/reference/components/base/wheeled/#test-the-base):
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU" max-width="600px">}}
 

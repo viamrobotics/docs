@@ -1,1 +1,1 @@
-Create a new [API key](/cloud/rbac/#api-keys).
+Create a new [API key](/manage/manage/access/).

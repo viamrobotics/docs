@@ -1,1 +1,1 @@
-Delete an [API key](/cloud/rbac/#api-keys).
+Delete an [API key](/manage/manage/access/).

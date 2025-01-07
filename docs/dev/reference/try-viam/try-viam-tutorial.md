@@ -48,7 +48,7 @@ The order of these components may vary.
 
 ### Base control
 
-The [base component](/components/base/) is the platform that the other parts of a mobile machine attach to.
+The [base component](/operate/reference/components/base/) is the platform that the other parts of a mobile machine attach to.
 
 Click the `viam_base` component to expand the base control pane to reveal the camera feed and driving interfaces.
 
@@ -95,7 +95,7 @@ If you go from the from **Keyboard** to the **Discrete** tab, you can choose bet
 
 ### Camera control
 
-While you can view the camera streams [from the base component panel](#camera-views), you can access more features on each individual [camera component](/components/camera/) panel. In these panels, you can:
+While you can view the camera streams [from the base component panel](#camera-views), you can access more features on each individual [camera component](/operate/reference/components/camera/) panel. In these panels, you can:
 
 - Set the refresh frequency
 - Export screenshots
@@ -111,7 +111,7 @@ While you can view the camera streams [from the base component panel](#camera-vi
 
 ### Motor control
 
-The [motor components](/components/motor/) enable you to move the base.
+The [motor components](/operate/reference/components/motor/) enable you to move the base.
 The motors are named `left` and `right`, corresponding to their location on the rover base.
 Their initial state is **Idle**.
 You can click on each motor panel and make the motor **RUN** or **STOP**.
@@ -153,7 +153,7 @@ For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`,
 
 ### Encoder configuration
 
-An [encoder](/components/encoder/) is a device that is used to sense angular position, direction and/or speed of rotation.
+An [encoder](/operate/reference/components/encoder/) is a device that is used to sense angular position, direction and/or speed of rotation.
 In this case, the encoders on the left and right motors are `Lenc` and `Renc` and configure the pins to `le` and `re`.
 
 {{< alert title="Important" color="note" >}}
@@ -164,7 +164,7 @@ When configuring encoded motors for your own robot, you must configure the encod
 
 ### Motor configuration
 
-Both [motors](/components/motor/) on this rover use the model `gpio` which is the model for basic DC motors that are connected to and controlled by the configured board.
+Both [motors](/operate/reference/components/motor/) on this rover use the model `gpio` which is the model for basic DC motors that are connected to and controlled by the configured board.
 
 The attributes section lists the board the motor is wired to, and since the rover's motors are encoded the user interface also shows the encoded motor attributes: the encoder name, motor ramp rate limit, encoder ticks per rotation, and max RPM limit.
 
@@ -174,7 +174,7 @@ Click **Switch to Builder** to return to the default graphical user interface.
 
 ### Base configuration
 
-The [base component](/components/base/) is the platform that the other parts of a mobile robot attach to.
+The [base component](/operate/reference/components/base/) is the platform that the other parts of a mobile robot attach to.
 By configuring a base component, the individual components are organized to produce coordinated movement and you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 The base's type is `base` and its model is `wheeled` which configures a robot with wheels on its base, like the Viam Rover.
 The **left** and **right** attributes configure the motors on the left and right side of the rover, which are named `left` and `right`, respectively.
@@ -187,10 +187,10 @@ The **Spin Slip Factor** of 1.76 is used in steering calculations to account for
 
 ### Camera configuration
 
-The [camera component](/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
+The [camera component](/operate/reference/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
 The camera component has the **Type** `camera`, the **Model** `webcam`, and the **Video Path** is `video0`.
 
-For more information on choosing the correct video path, refer to our [webcam documentation](/components/camera/webcam/).
+For more information on choosing the correct video path, refer to our [webcam documentation](/operate/reference/components/camera/webcam/).
 
 ![The video path in the webcam configuration panel is set to 'video0'.](appendix/try-viam/try-viam/camera-config.png)
 
