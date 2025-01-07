@@ -8,6 +8,8 @@ service_description: "A segmenter for depth cameras that returns the perceived o
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - /ml/vision/obstacles_depth/
+  - /services/vision/obstacles_depth/
+  - /data-ai/services/vision/obstacles_depth/
 # SMEs: Bijan, Khari
 ---
 

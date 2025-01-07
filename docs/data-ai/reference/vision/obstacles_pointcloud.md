@@ -8,6 +8,8 @@ service_description: "A segmenter that identifies well-separated objects above a
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - /ml/vision/obstacles_pointcloud/
+  - /data-ai/services/vision/obstacles_pointcloud/
+  - /services/vision/obstacles_pointcloud/
 # SMEs: Bijan, Khari
 ---
 

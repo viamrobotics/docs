@@ -8,9 +8,11 @@ service_description: "A detector or classifier that uses a model available on th
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/services/vision/dog-detector.png"]
 aliases:
-  - "/services/vision/detection/"
-  - "/services/vision/classification/"
+  - /services/vision/detection/
+  - /services/vision/classification/
   - /ml/vision/mlmodel/
+  - /services/vision/mlmodel/
+  - /data-ai/services/vision/mlmodel/
 # SMEs: Bijan, Khari
 ---
 

@@ -7,6 +7,8 @@ description: "Give commands to your data management service to sync data stored 
 icon: true
 images: ["/icons/components/arm.svg"]
 date: "2022-01-01"
+aliases:
+   - /appendix/apis/services/data/
 # updated: ""  # When the content was last entirely checked
 ---
 

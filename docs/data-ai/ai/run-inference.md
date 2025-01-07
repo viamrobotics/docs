@@ -5,6 +5,9 @@ weight: 50
 layout: "docs"
 type: "docs"
 modulescript: true
+aliases:
+  - /how-tos/detect-people/
+  - /how-tos/detect-color/
 description: "Run inference on a model with a vision service or an SDK."
 ---
 
