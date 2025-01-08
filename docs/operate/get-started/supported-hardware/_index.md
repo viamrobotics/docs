@@ -16,25 +16,7 @@ aliases:
   - /manage/configuration/
   - /build/configure/
   - /registry/
-  - "/build/program/extend/modular-resources/"
-  - "/extend/modular-resources/"
-  - "/extend/"
-  - "/build/program/extend/modular-resources/key-concepts/"
-  - "/modular-resources/key-concepts/"
-  - "/modular-resources/"
-  - /manage/configuration/
-  - /build/configure/
-  - /build/
   - "program/extend/modular-resources/configure/"
-  - "/extend/modular-resources/configure/"
-  - "/modular-resources/configure/"
-  - /registry/configure/
-  - /registry/advanced/
-  - "/program/extend/"
-  - "/modular-resources/advanced/"
-  - /registry/advanced/create-subtype/
-  - "/extend/modular-resources/create/create-subtype/"
-  - "/modular-resources/advanced/create-subtype/"
 prev: "/operate/get-started/setup/"
 next: "/operate/get-started/other-hardware/"
 ---

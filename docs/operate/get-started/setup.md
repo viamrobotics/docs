@@ -27,11 +27,6 @@ aliases:
   - /getting-started/linux-install/
   - /installation/
   - /get-started/installation/
-  - /installation/microcontrollers/
-  - /installation/prepare/microcontrollers/
-  - /installation/prepare/microcontrollers/
-  - /build/micro-rdk/
-  - /get-started/installation/microcontrollers/
 ---
 
 Get started by installing the open-source software that drives your hardware and connects your device to the cloud.
