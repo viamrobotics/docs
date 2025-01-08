@@ -10,15 +10,8 @@ overview: true
 description: "Sync and store sensor data, images, and any other binary or timeseries data. Then use ML and AI to turn your data into insights and action."
 ---
 
-Sync and store sensor data, images, and any other binary or timeseries data. Then use ML and AI to turn your data into insights and action.
-
-<!-- Machine learning (ML) provides your machines with the ability to adjust their behavior based on models that recognize patterns or make predictions.
-
-Common use cases include:
-
-- Object detection, which enables machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
-- Object classification, which enables machines to separate people, animals, plants, or other objects into predefined categories based on their characteristics, and to perform different actions based on the classes of objects.
-- Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us. -->
+Viam's data and AI capabilities enable you to capture and sync or upload data, build a dataset, train and deploy ML models, and run inference with computer vision.
+Then, you can act or alert on inferences.
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="upside-down">
