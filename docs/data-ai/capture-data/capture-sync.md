@@ -32,6 +32,7 @@ aliases:
   - /manage/data/view/
   - /data/view/
   - /services/data/view/
+  - /how-tos/collect-data/
 ---
 
 You can use data management service to capture and sync data from your machine to the cloud.

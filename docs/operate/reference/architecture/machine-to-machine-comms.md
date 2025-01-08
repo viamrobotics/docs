@@ -7,6 +7,7 @@ description: "Explanation of how a machine and its parts interact at the communi
 aliases:
   - "/internals/robot-to-robot-comms/"
   - "/internals/machine-to-machine-comms/"
+  - /architecture/viam-server/
 toc_hide: true
 ---
 
