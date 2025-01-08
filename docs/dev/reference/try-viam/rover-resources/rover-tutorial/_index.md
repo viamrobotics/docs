@@ -218,8 +218,8 @@ If you wish to use a Jetson Nano or Jetson Orin Nano, follow [this guide](./jets
 If you are using another board, you can skip this step.
 {{% /alert %}}
 
-Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/installation/prepare/rpi-setup/).
-Follow all steps as listed, including the final step, [Enable communication protocols](/installation/prepare/rpi-setup/#enable-communication-protocols), which is required to enable [the accelerometer](#6dof-imu) on your rover.
+Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/operate/reference/prepare/rpi-setup/).
+Follow all steps as listed, including the final step, [Enable communication protocols](/operate/reference/prepare/rpi-setup/#enable-communication-protocols), which is required to enable [the accelerometer](#6dof-imu) on your rover.
 Once you have installed Raspberry Pi OS and `viam-server`, put your SD card in the slot on your Pi.
 
 ### Add the power supply
@@ -390,7 +390,7 @@ Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sen
 
 ### Control your rover on the Viam app
 
-If you followed the instructions in the [Pi installation guide](/installation/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
+If you followed the instructions in the [Pi installation guide](/operate/reference/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 
 If not, add a new machine in the [Viam app](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} until your machine is connected.
 

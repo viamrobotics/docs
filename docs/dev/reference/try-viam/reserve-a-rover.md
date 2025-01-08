@@ -10,6 +10,7 @@ tags: ["try viam", "app"]
 aliases:
   - "/try-viam/reserve-a-rover/"
   - "/get-started/try-viam/reserve-a-rover/"
+  - /appendix/try-viam/reserve-a-rover
 toc_hide: true
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
@@ -123,7 +124,7 @@ Another collaboration option is to use screen sharing in a Zoom or Webex session
 
 You can only borrow one rover at a time.
 You cannot join the queue for another reservation while you have an active rental session.
-If there is no one waiting after you, you can extend your reservation with the **Extend** button.
+If you would like to, you can [extend your reservation](/dev/reference/try-viam/reserve-a-rover/#extend-your-reservation).
 
 ### I loved my experience - can I play around more?
 

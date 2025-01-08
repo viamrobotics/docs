@@ -109,7 +109,7 @@ For more details, see [Machine-to-Machine Communication](/operate/reference/arch
 
 TLS certificates automatically provided by the Viam app ensure that all communication is authenticated and encrypted.
 
-Viam uses API keys with [role-based access control (RBAC)](/cloud/rbac/) to control access to machines from client code.
+Viam uses API keys with [role-based access control (RBAC)](/manage/manage/rbac/) to control access to machines from client code.
 
 ## Data management flow
 

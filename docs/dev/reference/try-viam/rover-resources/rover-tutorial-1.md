@@ -167,7 +167,8 @@ This is the recommended order to assemble your rover:
 
 ### Install Raspberry Pi OS
 
-Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/installation/prepare/rpi-setup/). Follow all steps as listed, including the final step, [Enable communication protocols](/installation/prepare/rpi-setup/#enable-communication-protocols), which is required to enable the accelerometer on your rover.
+Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/operate/reference/prepare/rpi-setup/).
+Follow all steps as listed, including the final step, [Enable communication protocols](/operate/reference/prepare/rpi-setup/#enable-communication-protocols), which is required to enable the accelerometer on your rover.
 
 ### Attach the Raspberry Pi to the Rover
 

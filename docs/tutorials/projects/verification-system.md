@@ -319,7 +319,7 @@ To add a transform camera to your machine:
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
 To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/dev/reference/sdks/) to [poll the classifications](/dev/reference/apis/services/vision/#getclassificationsfromcamera).
 
-See [2D Image Classification](/operate/reference/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/dev/reference/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
+See [2D Image Classification](/dev/reference/apis/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/dev/reference/apis/services/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}
 
 With everything configured, you are now ready to see your facial recognition machine in action by watching the transform camera as a person passes in front of the camera.
