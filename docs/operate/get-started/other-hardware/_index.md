@@ -11,6 +11,12 @@ aliases:
   - /how-tos/create-module/
   - /how-tos/sensor-module/
   - /registry/advanced/iterative-development/
+  - /build/program/extend/modular-resources/
+  - /extend/modular-resources/
+  - /extend/
+  - /build/program/extend/modular-resources/key-concepts/
+  - /modular-resources/key-concepts/
+  - /modular-resources/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
@@ -616,7 +622,8 @@ Click **Create**.
 
 Click the **+** button again, this time selecting **Local module** and then **Local component**.
 
-Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-template-module-code), for example `jessamy:weather:meteo-PM`.
+Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, for example `jessamy:weather:meteo-PM`.
+You can find the triplet in the `model` field of your <file>meta.json</file> file.
 
 Select the **Type** corresponding to the API you implemented.
 
@@ -762,7 +769,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>visibility</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>Whether the module is accessible only to members of your <a href="/cloud/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.</td>
+<td>Whether the module is accessible only to members of your <a href="/manage/reference/organize/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.</td>
 </tr>
 <tr>
 <td><code>url</code></td>
@@ -792,7 +799,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>build</code></td>
 <td>object</td>
 <td>Optional</td>
-<td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
+<td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/dev/tools/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
 </tr>
 <tr>
 <td><code>$schema</code></td>

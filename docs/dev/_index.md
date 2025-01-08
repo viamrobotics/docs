@@ -48,7 +48,7 @@ aliases:
 
 <div class="max-page frontpage">
 
-Once you've set up your machine you can control your device and any attached physical hardware with [Viam APIs](/dev/reference/APIs), for example:
+Once you've set up your machine you can control your device and any attached physical hardware with [Viam APIs](/dev/reference/apis/), for example:
 
 {{< tabs class="horizontalheaders program" navheader="Examples">}}
 {{% tab name="Drive a base" %}}

@@ -60,7 +60,7 @@ Before starting this tutorial, you must:
 - If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the arm controller before continuing.
   Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.us/product/ufactory-xarm-6), but you can use any [arm model](/operate/reference/components/arm/) including a [fake arm model](/operate/reference/components/arm/fake/).
 - Complete the previous tutorial, [Plan Motion with an Arm and a Gripper](../plan-motion-with-arm-gripper/), which configures the robot, client and service access, and other infrastructure we'll need for this tutorial.
-  For reference, see the [full code sample from the prior tutorial](../plan-motion-with-arm-gripper/#full-tutorial-code).
+  For reference, see the [full code sample from the prior tutorial](../plan-motion-with-arm-gripper/#full-code).
 
 ## Configure your robot
 
@@ -309,10 +309,10 @@ If we changed it to `theta=90` or `theta=270`, the gripper jaws would open verti
 
 ## Add a motion constraint
 
-To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](/services/motion/constraints/#linear-constraint).
+To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](/operate/reference/services/motion/constraints/#linear-constraint).
 When you tell the robot to move the cup from one upright position to another, the linear constraint forces the gripper to move linearly and to maintain the upright orientation of the cup throughout the planned path.
 
-You could try using an [orientation constraint](/services/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
+You could try using an [orientation constraint](/operate/reference/services/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
 However, since this opens up many more options for potential paths, it is much more computationally intensive than the linear constraint.
 
 The code below creates a linear constraint and then uses that constraint to keep the cup upright and move it in a series of linear paths along the predetermined route while avoiding the obstacles we've defined:

@@ -102,7 +102,7 @@ To get started using Viam's SDKs to connect to and control your machine, go to y
 
 When executed, this sample code creates a connection to your machine as a client.
 
-The following examples assume that you have a machine configured with a [camera](/operate/reference/components/camera/) and a vision service [detector](/operate/reference/services/vision/#detections), [classifier](/operate/reference/services/vision/#classifications) or [segmenter](/operate/reference/services/vision/#segmentations).
+The following examples assume that you have a machine configured with a [camera](/operate/reference/components/camera/) and a vision service [detector](/dev/reference/apis/services/vision/#detections), [classifier](/dev/reference/apis/services/vision/#classifications) or [segmenter](/dev/reference/apis/services/vision/#segmentations).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

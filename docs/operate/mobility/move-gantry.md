@@ -68,14 +68,18 @@ from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.components.gantry import Gantry
 
+
 async def connect():
     opts = RobotClient.Options.with_api_key(
-            # Replace "<API-KEY>" (including brackets) with your machine's api key
+        # Replace "<API-KEY>" (including brackets) with
+        # your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+        # Replace "<API-KEY-ID>" (including brackets) with
+        # your machine's API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('<ROBOT_ADDRESS>', opts)
+
 
 async def main():
     machine = await connect()
@@ -91,16 +95,16 @@ async def main():
     # Home the gantry
     await gantry_1.home()
 
-    # Move this three-axis gantry to a position 5mm in the positive Y direction from (0,0,0)
+    # Move this three-axis gantry to a position 5mm in the
+    # positive Y direction from (0,0,0)
     # and set the speed of each axis to 8 mm/sec
-    await gantry_1.move_to_position([0,5,0], [8,8,8])
+    await gantry_1.move_to_position([0, 5, 0], [8, 8, 8])
 
     # Don't forget to close the machine when you're done!
     await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
-
 ```
 
 ## Use automated complex motion planning
@@ -123,14 +127,18 @@ from viam.components.gantry import Gantry
 from viam.services.motion import MotionClient
 from viam.proto.common import Pose, PoseInFrame
 
+
 async def connect():
     opts = RobotClient.Options.with_api_key(
-            # Replace "<API-KEY>" (including brackets) with your machine's api key
+        # Replace "<API-KEY>" (including brackets) with
+        # your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+        # Replace "<API-KEY-ID>" (including brackets) with
+        # your machine's API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('<ROBOT_ADDRESS>', opts)
+
 
 async def main():
     machine = await connect()
@@ -147,13 +155,13 @@ async def main():
 
     goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
     # Move the gantry
-    await motion.move(component_name=gantry_1,
-      destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose))
+    await motion.move(
+        component_name=gantry_1,
+        destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose))
 
     # Don't forget to close the machine when you're done!
     await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
-
 ```

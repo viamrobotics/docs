@@ -61,7 +61,7 @@ When the connection is restored and sync resumes, the service continues sync whe
 If the interruption happens mid-file, sync resumes from the beginning of that file.
 
 To avoid syncing files that are still being written to, the data management service only syncs arbitrary files that haven't been modified in the previous 10 seconds.
-This default can be changed with the [`file_last_modified_millis` config attribute](/data-ai/capture-sync/#configure-the-data-management-service).
+This default can be changed with the [`file_last_modified_millis` config attribute](/data-ai/capture-data/capture-sync/).
 
 ## Storage
 

@@ -12,6 +12,11 @@ aliases:
   - /modular-resources/configure/
   - /registry/configure/
   - /registry/modular-resources/
+  - /configure/
+  - /manage/configuration/
+  - /build/configure/
+  - /configure/
+  - /registry/
 prev: "/operate/get-started/setup/"
 next: "/operate/get-started/other-hardware/"
 ---
@@ -69,7 +74,7 @@ You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry
 
 The following is a selection of components (some built-ins and some modules) written for use with `viam-micro-server`.
 To use any of the built-in components, configure them according to their readmes.
-To use a module with `viam-micro-server`, you need to [build firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module).
+To use a module with `viam-micro-server`, you need to [build firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
 | Model | Description | Built-in |
@@ -127,4 +132,4 @@ To add a service to your machine:
 
 Modules run alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
-`viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/services/data/#configuration), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
+`viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.

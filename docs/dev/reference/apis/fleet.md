@@ -45,7 +45,7 @@ The fleet management API supports the following methods:
 To use the Viam fleet management API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
 
-You can create an [API key](/cloud/rbac/#api-keys) on your settings page.
+You can create an [API key](/manage/manage/access/) on your settings page.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

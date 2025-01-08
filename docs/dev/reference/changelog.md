@@ -349,7 +349,7 @@ Users can now have [access to different fleet management capabilities](/manage/m
 
 {{% changelog date="2023-11-30" color="added" title="Authenticate with location API key" %}}
 
-You can now use [API keys for authentication](/sdks/#authentication).
+You can now use [API keys for authentication](/dev/tools/cli/#authenticate).
 API keys allow you to assign the minimum required permissions for usage.
 Location secrets, the previous method of authentication, is deprecated and will be removed in a future release.
 
@@ -382,7 +382,7 @@ After you upload and train a machine learning model, you can test its results in
 
 This allows you to refine models by iteratively tagging more images for training based on observed performance.
 
-For more information, see [Test classification models with existing images in the cloud](/services/vision/mlmodel/#existing-images-in-the-cloud).
+For more information, see [Test classification models with existing images in the cloud](/operate/reference/services/vision/mlmodel/#existing-images-in-the-cloud).
 
 To use this update, the classifier must have been trained or uploaded after September 19, 2023.
 The current version of this feature exclusively supports classification models.
@@ -968,7 +968,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Add and remove models using the machine config
 
-You must add and remove models using the [machine config](/configure/).
+You must add and remove models using the [machine config](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 You will no longer be able to add or remove models using the SDKs.
 
 #### Add machine learning vision models to a vision service
@@ -982,13 +982,13 @@ You will need to first register the machine learning model file with the [ML mod
 
 You can now [train](/data-ai/ai/train-tflite/) and [deploy](/data-ai/ai/deploy/) image classification models with the [data management service](/data-ai/capture-data/capture-sync/) and use your machine's image data directly within Viam.
 Additionally, you can upload and use existing [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/).
+For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/).
 
 {{% /changelog %}}
 
 {{% changelog date="2023-03-31" color="added" title="Motion planning with new `constraint` parameter" %}}
 
-A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/dev/reference/apis/services/motion/#api), allowing you to define restrictions on the machine's movement.
+A new parameter, [`constraint`](/operate/reference/services/motion/constraints/), has been added to the [Motion service API](/dev/reference/apis/services/motion/#api), allowing you to define restrictions on the machine's movement.
 The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a machine.
 
 {{% /changelog %}}
@@ -999,7 +999,7 @@ You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} 
 The configurations you added will now show up automatically in the **Builder** view on your machine's **CONFIGURE** tab.
 This makes it easier to monitor what fragments you've added to your machine and how they're configured.
 
-For more information, see [Fragments](/configure/#fragments).
+For more information, see [Fragments](/manage/fleet/reuse-configuration/).
 
 {{% /changelog %}}
 

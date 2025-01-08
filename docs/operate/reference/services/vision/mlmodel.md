@@ -16,7 +16,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/dev/reference/changelog/#vision-service)_
 
 The `mlmodel` {{< glossary_tooltip term_id="model" text="model" >}} of the Viam vision service supports machine learning detectors and classifiers that draw bounding boxes or return class labels based on a deployed TensorFlow Lite, TensorFlow, PyTorch, or ONNX ML model.
 
@@ -29,7 +29,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/data-ai/capture-data/capture-sync/).
+You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/data-ai/capture-data/capture-sync/).
 
 {{% /manualcard %}}
 {{% manualcard %}}

@@ -1,6 +1,6 @@
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a configured [detector](/operate/reference/services/vision/#detections).
+Get a list of detections from the next image from a specified camera using a configured [detector](/dev/reference/apis/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -91,7 +91,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDetections
 
-Get a list of detections from a given image using a configured [detector](/operate/reference/services/vision/#detections).
+Get a list of detections from a given image using a configured [detector](/dev/reference/apis/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -197,7 +197,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured [classifier](/operate/reference/services/vision/#classifications).
+Get a list of classifications from the next image from a specified camera using a configured [classifier](/dev/reference/apis/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -287,7 +287,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured [classifier](/operate/reference/services/vision/#classifications).
+Get a list of classifications from a given image using a configured [classifier](/dev/reference/apis/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -396,7 +396,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/operate/reference/services/vision/#segmentations)).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/dev/reference/apis/services/vision/#segmentations)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -440,7 +440,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]*viz.Object)](https://pkg.go.dev/go.viam.com/rdk/vision#Object): A list of point clouds and associated metadata like the center coordinates of each point cloud.
+- [([]\*viz.Object)](https://pkg.go.dev/go.viam.com/rdk/vision#Object): A list of point clouds and associated metadata like the center coordinates of each point cloud.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -507,7 +507,7 @@ Used for visualization.
 
 **Returns:**
 
-- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service. It can  return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
+- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service. It can return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
 
 **Example:**
 
@@ -745,7 +745,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*Properties)](https://pkg.go.dev/go.viam.com/rdk/services/vision#Properties)
+- [(\*Properties)](https://pkg.go.dev/go.viam.com/rdk/services/vision#Properties)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).

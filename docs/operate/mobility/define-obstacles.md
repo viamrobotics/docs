@@ -13,7 +13,7 @@ The motion service will take into account the obstacles as well as the geometry 
 Start by [defining your machine's geometry](/operate/mobility/define-geometry/) so that you can define the obstacles with respect to the machine's reference frame.
 
 Next, define one or more obstacles.
-Here is a Python example from the [Add constraints and transforms to a motion plan guide](/operate/mobility/move-arm/constrain-motion/#modify-your-robots-working-environment):
+Here is a Python example from the [Add constraints and transforms to a motion plan guide](/tutorials/services/constrain-motion/#modify-your-robots-working-environment):
 
 ```python {class="line-numbers linkable-line-numbers"}
 box_origin = Pose(x=400, y=0, z=50+z_offset)

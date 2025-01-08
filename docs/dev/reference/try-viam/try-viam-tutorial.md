@@ -22,7 +22,7 @@ You can take over a Viam Rover in our robotics lab to play around!
 The rental rover is made up of a chassis with a Raspberry Pi 4B single-board computer, two motors, encoders, and a camera.
 The Try Viam area also has an overhead camera to provide a view of the rental rover, allowing you to view its movements in real time.
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/appendix/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](#control-tab):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/dev/reference/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/operate/), and [drive the rover](#control-tab):
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU">}}
 
@@ -48,7 +48,7 @@ The order of these components may vary.
 
 ### Base control
 
-The [base component](/components/base/) is the platform that the other parts of a mobile machine attach to.
+The [base component](/operate/reference/components/base/) is the platform that the other parts of a mobile machine attach to.
 
 Click the `viam_base` component to expand the base control pane to reveal the camera feed and driving interfaces.
 
@@ -61,7 +61,7 @@ We recommend enabling both cameras so you can have a better sense of what's happ
 
 ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](appendix/try-viam/try-viam/enable-both-cameras.png)
 
-You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/cloud/machines/#control).
+You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
 
 #### Movement control
 
@@ -95,7 +95,7 @@ If you go from the from **Keyboard** to the **Discrete** tab, you can choose bet
 
 ### Camera control
 
-While you can view the camera streams [from the base component panel](#camera-views), you can access more features on each individual [camera component](/components/camera/) panel. In these panels, you can:
+While you can view the camera streams [from the base component panel](#camera-views), you can access more features on each individual [camera component](/operate/reference/components/camera/) panel. In these panels, you can:
 
 - Set the refresh frequency
 - Export screenshots
@@ -111,7 +111,7 @@ While you can view the camera streams [from the base component panel](#camera-vi
 
 ### Motor control
 
-The [motor components](/components/motor/) enable you to move the base.
+The [motor components](/operate/reference/components/motor/) enable you to move the base.
 The motors are named `left` and `right`, corresponding to their location on the rover base.
 Their initial state is **Idle**.
 You can click on each motor panel and make the motor **RUN** or **STOP**.
@@ -127,7 +127,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 #### Board control
 
-The [board component](/components/board/) is the signal wire hub of a machine which allows you to control the states of individual GPIO pins on the board.
+The [board component](/operate/reference/components/board/) is the signal wire hub of a machine which allows you to control the states of individual GPIO pins on the board.
 
 For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
@@ -147,13 +147,13 @@ There you can view the configuration for each component in the machine: attribut
 
 ### Board configuration
 
-The [board component](/components/board/) is the signal wire hub of a machine.
+The [board component](/operate/reference/components/board/) is the signal wire hub of a machine.
 Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
 For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `viam:raspberry-pi:rpi`.
 
 ### Encoder configuration
 
-An [encoder](/components/encoder/) is a device that is used to sense angular position, direction and/or speed of rotation.
+An [encoder](/operate/reference/components/encoder/) is a device that is used to sense angular position, direction and/or speed of rotation.
 In this case, the encoders on the left and right motors are `Lenc` and `Renc` and configure the pins to `le` and `re`.
 
 {{< alert title="Important" color="note" >}}
@@ -164,7 +164,7 @@ When configuring encoded motors for your own robot, you must configure the encod
 
 ### Motor configuration
 
-Both [motors](/components/motor/) on this rover use the model `gpio` which is the model for basic DC motors that are connected to and controlled by the configured board.
+Both [motors](/operate/reference/components/motor/) on this rover use the model `gpio` which is the model for basic DC motors that are connected to and controlled by the configured board.
 
 The attributes section lists the board the motor is wired to, and since the rover's motors are encoded the user interface also shows the encoded motor attributes: the encoder name, motor ramp rate limit, encoder ticks per rotation, and max RPM limit.
 
@@ -174,7 +174,7 @@ Click **Switch to Builder** to return to the default graphical user interface.
 
 ### Base configuration
 
-The [base component](/components/base/) is the platform that the other parts of a mobile robot attach to.
+The [base component](/operate/reference/components/base/) is the platform that the other parts of a mobile robot attach to.
 By configuring a base component, the individual components are organized to produce coordinated movement and you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 The base's type is `base` and its model is `wheeled` which configures a robot with wheels on its base, like the Viam Rover.
 The **left** and **right** attributes configure the motors on the left and right side of the rover, which are named `left` and `right`, respectively.
@@ -187,10 +187,10 @@ The **Spin Slip Factor** of 1.76 is used in steering calculations to account for
 
 ### Camera configuration
 
-The [camera component](/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
+The [camera component](/operate/reference/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
 The camera component has the **Type** `camera`, the **Model** `webcam`, and the **Video Path** is `video0`.
 
-For more information on choosing the correct video path, refer to our [webcam documentation](/components/camera/webcam/).
+For more information on choosing the correct video path, refer to our [webcam documentation](/operate/reference/components/camera/webcam/).
 
 ![The video path in the webcam configuration panel is set to 'video0'.](appendix/try-viam/try-viam/camera-config.png)
 
@@ -222,11 +222,11 @@ You can view the complete JSON for your rover by clicking on **Raw JSON** at the
 
 ![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](appendix/try-viam/try-viam/raw-json.png)
 
-You can [copy this `JSON` config between rental rovers](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-borrowed-rover).
+You can [copy this `JSON` config between rental rovers](/dev/reference/try-viam/reserve-a-rover/#how-can-i-reuse-my-borrowed-rover).
 
 ## Next steps
 
-If you have questions, check out our [FAQ](/appendix/try-viam/reserve-a-rover/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
+If you have questions, check out our [FAQ](/dev/reference/try-viam/reserve-a-rover/#faq/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
 
 {{< cards >}}
 {{% card link="/tutorials/control/drive-rover/" %}}

@@ -64,15 +64,15 @@ To use CloudSLAM on a live machine, you must meet the following requirements:
 1. A cloudslam supported algorithm must be configured on the machine. Currently only the [cartographer module](../cartographer/) is supported.
    Please configure a supported algorithm on the machine before continuing.
 
-2. A location owner [API key](/cloud/rbac/#api-keys) or higher.
+2. A location owner [API key](/manage/manage/access/) or higher.
 
 ### Configuration
 
 To use CloudSLAM you must enable data capture and configure your `cloudslam-wrapper` SLAM service:
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
-Note that when the [data management service](/services/data/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#configuration) once you have finished your SLAM session.
+Note that when the [data management service](/data-ai/capture-data/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#stop-data-capture) once you have finished your SLAM session.
 {{< /alert >}}
 
 {{< tabs name="Create new map">}}
@@ -379,7 +379,7 @@ This feature can also be used with SLAM algorithms that CloudSLAM does not curre
 
 - A SLAM algorithm must be configured on the machine. This algorithm does **not** need to be supported by cloudslam to work.
 
-- A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
+- A location owner API Key or higher. See [Add an API key](/manage/manage/access/) to learn how to create a key!
 
 ### Configuration
 
@@ -428,10 +428,10 @@ The following attributes are available for `viam:cloudslam-wrapper:cloudslam`
 | Name    | Type   | Required?    | Description |
 | ------- | ------ | ------------ | ----------- |
 | `slam_service` | string | **Required** | The name of the SLAM Service on the machine to use with cloudslam. |
-| `api_key` | string | **Required** | An [API key](/cloud/rbac/#api-keys) with location owner or higher permission. |
+| `api_key` | string | **Required** | An [API key](/manage/manage/access/) with location owner or higher permission. |
 | `api_key_id` | string | **Required** | The associated API key ID with the API key. |
 | `organization_id` | string | **Required** | The organization ID of your [organization](/dev/reference/glossary/#organization). |
-| `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/location/). |
+| `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/#location/). |
 | `machine_id` | string | **Required** | The machine ID of your [machine](/dev/reference/apis/fleet/#find-machine-id). |
 | `machine_part_id` | string | Optional | The machine part ID of your [machine part](/dev/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
 | `viam_version` | string | Optional | The version of viam-server to use with CloudSLAM. Defaults to `stable`. |

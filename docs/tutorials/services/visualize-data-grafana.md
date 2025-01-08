@@ -73,7 +73,7 @@ First, add the data management service to your machine to be able capture and sy
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
-For more information, see [data management service configuration](/services/data/#configuration).
+For more information, see [data management service configuration](/data-ai/capture-data/capture-sync/).
 
 ### Configure data capture for a component
 
@@ -98,7 +98,7 @@ To enable data capture for a sensor component:
 After a short while, your sensor will begin capturing live readings, and syncing those readings to the Viam app.
 You can check that data is being captured and synced by clicking on the menu icon on the sensor configuration pane. and selecting **View captured data**.
 
-For more information see [data management service configuration](/services/data/#configuration).
+For more information see [data management service configuration](/data-ai/capture-data/capture-sync/).
 
 ### Configure data query
 
