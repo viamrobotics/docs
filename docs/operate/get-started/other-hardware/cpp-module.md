@@ -289,7 +289,8 @@ class MyBase(Base, Reconfigurable):
 
     # Here is where we define our new model's colon-delimited-triplet:
     # acme:my-custom-base-module:mybase
-    # acme = namespace, my-custom-base-module = module-name, mybase = model name.
+    # acme = namespace, my-custom-base-module = module-name,
+    # mybase = model name
     MODEL: ClassVar[Model] = Model(
         ModelFamily("acme", "my-custom-base-module"), "mybase")
 

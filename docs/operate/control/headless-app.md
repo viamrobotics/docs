@@ -297,12 +297,14 @@ robot_address = os.getenv('ROBOT_ADDRESS') or ''
 sensor_name = os.getenv("SENSOR_NAME", "")
 plug_name = os.getenv("PLUG_NAME", "")
 
+
 async def connect():
     opts = RobotClient.Options.with_api_key(
         api_key=robot_api_key,
         api_key_id=robot_api_key_id
     )
     return await RobotClient.at_address(robot_address, opts)
+
 
 async def main():
     machine = await connect()
@@ -319,7 +321,8 @@ async def main():
     while True:
         readings = await pms_7003.get_readings()
         # Check if any of the PM values exceed the unhealthy thresholds
-        if any(readings.get(pm_type, 0) > threshold for pm_type, threshold in unhealthy_thresholds.items()):
+        if any(readings.get(pm_type, 0) > threshold for pm_type,
+                threshold in unhealthy_thresholds.items()):
             LOGGER.info('UNHEALTHY.')
             await kasa_plug.do_command({"toggle_on": []})
         else:
