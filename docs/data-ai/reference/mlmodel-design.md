@@ -1,6 +1,6 @@
 ---
 title: "Design your ML Models for Vision"
-linkTitle: "ML Model Design"
+linkTitle: "ML model service design"
 weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training", "vision"]
@@ -12,6 +12,7 @@ date: "2022-01-01"
 # SME: Bijan Haney
 aliases:
   - /registry/advanced/mlmodel-design/
+  - /operate/reference/advanced-modules/mlmodel-design/
 ---
 
 The [Machine Learning (ML) model service](/data-ai/ai/deploy/) allow you to deploy machine learning models to your smart machine.

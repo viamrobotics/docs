@@ -10,6 +10,7 @@ aliases:
   - /data/visualize/
   - /use-cases/sensor-data-visualize/
   - /how-tos/sensor-data-visualize/
+  - /how-tos/configure-teleop-workspace/
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "fleet"]
 date: "2024-12-04"
