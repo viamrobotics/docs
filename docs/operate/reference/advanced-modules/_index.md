@@ -18,10 +18,7 @@ aliases:
   - /registry/advanced/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
-layout: "empty"
 toc_hide: true
-no_component: true
-empty_node: true
 ---
 
 Some use cases may require advanced considerations when designing or deploying modular resources.
@@ -47,7 +44,7 @@ Alternatively, you can also [define a new resource subtype and an API for that s
 
 Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the computer directly connected to your components is the preferred way of managing and controlling custom components.
 
-However, if you are unable to use [modular resources](/registry/) because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/registry/advanced/custom-components-remotes/) on your machine.
+However, if you are unable to use modular resources because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/operate/reference/advanced-modules/custom-components-remotes/) on your machine.
 
 ## Design a custom ML model
 

@@ -14,11 +14,11 @@ aliases:
   - /registry/advanced/mlmodel-design/
 ---
 
-The [Machine Learning (ML) model service](/services/ml/) allow you to deploy machine learning models to your smart machine.
+The [Machine Learning (ML) model service](/data-ai/ai/deploy) allow you to deploy machine learning models to your smart machine.
 Vision services, like [an `"mlmodel"` detector](/dev/reference/apis/services/vision/#detections) or [classifier](/dev/reference/apis/services/vision/#classifications), enable your machines to identify and classify objects in images with the deployed models' predictions.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.
-If you are [designing your own ML Model service](/registry/), you must try to make your ML models' shapes match the input and output tensors the `mlmodel` vision service expects to work with if you want the two services to coordinate in classification or detection.
+If you are [designing your own ML Model service](/data-ai/ai/deploy/), you must try to make your ML models' shapes match the input and output tensors the `mlmodel` vision service expects to work with if you want the two services to coordinate in classification or detection.
 
 To be able to use a deployed ML model, the `mlmodel` vision service checks for descriptions of these characteristics in the [metadata](/dev/reference/apis/services/ml/#metadata) of the model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
 For an example of this, see [Example Metadata](#example-metadata).

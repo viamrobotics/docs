@@ -42,7 +42,7 @@ The following steps guide you through this process in more detail:
    For example, `gizmo`.
 
    Determine a valid {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} based on your subtype name.
-   You can figure out the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} later when you [create a model that implements your custom API](/registry/advanced/create-subtype/#next-steps).
+   You can figure out the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} later when you [create a model that implements your custom API](/operate/get-started/other-hardware/).
 
    {{< expand "API namespace triplet and model namespace triplet example" >}}
 
