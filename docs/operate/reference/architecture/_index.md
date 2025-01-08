@@ -8,6 +8,8 @@ imageAlt: "Viam architecture"
 images: ["/viam/machine-components.png"]
 tags: ["components", "services", "communication"]
 date: "2024-08-13"
+aliases:
+  - /architecture/
 # updated: ""  # When the content was last entirely checked
 ---
 

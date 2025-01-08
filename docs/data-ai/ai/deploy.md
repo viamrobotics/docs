@@ -17,6 +17,7 @@ aliases:
   - /manage/ml/upload-model/
   - /ml/upload-model/
   - /services/ml/ml-models/
+  - /registry/ml-models/
 ---
 
 The Machine Learning (ML) model service allows you to deploy [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) to your machine.

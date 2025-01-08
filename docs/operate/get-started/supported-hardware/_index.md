@@ -15,8 +15,8 @@ aliases:
   - /configure/
   - /manage/configuration/
   - /build/configure/
-  - /configure/
   - /registry/
+  - "program/extend/modular-resources/configure/"
 prev: "/operate/get-started/setup/"
 next: "/operate/get-started/other-hardware/"
 ---

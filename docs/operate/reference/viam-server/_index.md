@@ -10,6 +10,7 @@ aliases:
   - "/build/program/rdk"
   - /internals/rdk/
   - /architecture/rdk/
+  - /architecture/viam-server/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
