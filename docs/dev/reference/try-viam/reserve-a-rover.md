@@ -39,7 +39,7 @@ Once your reservation starts and the system has configured your rover, click **T
 
 ### Limitations
 
-When using a rented Viam rover, adding [modules](/registry/) is disabled for security purposes.
+When using a rented Viam rover, adding {{< glossary_tooltip term_id="module" text="modules" >}} is disabled for security purposes.
 
 ### Extend your reservation
 
@@ -112,7 +112,7 @@ If you change the location, you must refresh the page.
 
 ### Which organization does this machine e belong to?
 
-Your machine belongs to the [organization](/cloud/organizations/) you were in when you made the request.
+Your machine belongs to the [organization](/manage/reference/organize/) you were in when you made the request.
 
 ### Can I share this Location with a friend to work on the machine together?
 

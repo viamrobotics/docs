@@ -21,7 +21,7 @@ Running as a system service enables you to configure `viam-server` to start auto
 Running on the command line is suitable for local development.
 
 {{< alert title="Note" color="note" >}}
-If you have installed `viam-agent`, see [Manage `viam-agent`](manage/reference/viam-agent/manage-viam-agent/) instead.
+If you have installed `viam-agent`, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/) instead.
 {{< /alert >}}
 
 ## Run `viam-server`

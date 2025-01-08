@@ -95,5 +95,5 @@ For general configuration, development, and usage info, see:
 
 You can also use the arm component with the following services:
 
-- [Motion service](/operate/reference/services/slam/services/slam/): To move machines or components of machines
+- [Motion service](/operate/reference/services/slam/): To move machines or components of machines
 - [Frame system service](/operate/reference/services/navigation/): To configure the positions of your components

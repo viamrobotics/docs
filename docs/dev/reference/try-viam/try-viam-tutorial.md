@@ -22,7 +22,7 @@ You can take over a Viam Rover in our robotics lab to play around!
 The rental rover is made up of a chassis with a Raspberry Pi 4B single-board computer, two motors, encoders, and a camera.
 The Try Viam area also has an overhead camera to provide a view of the rental rover, allowing you to view its movements in real time.
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/appendix/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/operate/), and [drive the rover](#control-tab):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/dev/reference/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/operate/), and [drive the rover](#control-tab):
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU">}}
 
@@ -61,7 +61,7 @@ We recommend enabling both cameras so you can have a better sense of what's happ
 
 ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](appendix/try-viam/try-viam/enable-both-cameras.png)
 
-You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/cloud/machines/#control).
+You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
 
 #### Movement control
 
@@ -222,11 +222,11 @@ You can view the complete JSON for your rover by clicking on **Raw JSON** at the
 
 ![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](appendix/try-viam/try-viam/raw-json.png)
 
-You can [copy this `JSON` config between rental rovers](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-borrowed-rover).
+You can [copy this `JSON` config between rental rovers](/dev/reference/try-viam/reserve-a-rover/#how-can-i-reuse-my-borrowed-rover).
 
 ## Next steps
 
-If you have questions, check out our [FAQ](/appendix/try-viam/reserve-a-rover/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
+If you have questions, check out our [FAQ](/dev/reference/try-viam/reserve-a-rover/#faq/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
 
 {{< cards >}}
 {{% card link="/tutorials/control/drive-rover/" %}}

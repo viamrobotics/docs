@@ -125,7 +125,7 @@ To link the controller input to the base functionality, you need to add the base
 ## Add the base remote control service
 
 Services are software packages that provide robots with higher level functionality.
-To link the controller's input to the base functionality, you need to configure the [base remote control service](/services/base-rc/):
+To link the controller's input to the base functionality, you need to configure the [base remote control service](/operate/reference/services/base-rc/):
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

@@ -982,7 +982,7 @@ You will need to first register the machine learning model file with the [ML mod
 
 You can now [train](/data-ai/ai/train-tflite/) and [deploy](/data-ai/ai/deploy/) image classification models with the [data management service](/data-ai/capture-data/capture-sync/) and use your machine's image data directly within Viam.
 Additionally, you can upload and use existing [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train-tflite/) or [another model](data-ai/ai/train/).
+For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/).
 
 {{% /changelog %}}
 

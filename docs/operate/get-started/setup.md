@@ -90,7 +90,7 @@ On Linux installs, by default `viam-server` or `viam-agent` and `viam-server` wi
 On macOS installs, `viam-server` does not start automatically on boot.
 You can change this behavior if desired.
 
-To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](manage/reference/viam-agent/manage-viam-agent/).
+To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
 For manual installs of only `viam-server`, see [Manage `viam-server`](/operate/reference/viam-server/manage-viam-server/).
 
