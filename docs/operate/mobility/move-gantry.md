@@ -155,7 +155,8 @@ async def main():
 
     goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
     # Move the gantry
-    await motion.move(component_name=gantry_1,
+    await motion.move(
+        component_name=gantry_1,
         destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose))
 
     # Don't forget to close the machine when you're done!
