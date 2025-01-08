@@ -10,6 +10,7 @@ aliases:
   - /build/configure/parts-and-remotes/
   - /configure/parts/
   - /build/configure/parts/
+  - /architecture/parts/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
