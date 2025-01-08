@@ -17,6 +17,7 @@ aliases:
   - /build/program/extend/modular-resources/key-concepts/
   - /modular-resources/key-concepts/
   - /modular-resources/
+  - /how-tos/upload-module/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---

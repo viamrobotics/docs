@@ -50,4 +50,4 @@ However, if you are unable to use modular resources because you need to host `vi
 
 When working with the [ML model service](/dev/reference/apis/services/ml/), you can deploy an [existing model](/data-ai/ai/deploy/) or [train your own model](/data-ai/ai/train/).
 
-However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/dev/reference/apis/services/vision/), you can also [design your own ML model](/operate/reference/advanced-modules/mlmodel-design/) to better match your specific use case.
+However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/dev/reference/apis/services/vision/), you can also [design your own ML model](/data-ai/reference/mlmodel-design/) to better match your specific use case.
