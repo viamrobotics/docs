@@ -11,6 +11,7 @@ aliases:
   - /data/trigger-sync/
   - /how-tos/trigger-sync/
   - /services/data/trigger-sync/
+  - /how-tos/conditional-sync/
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
