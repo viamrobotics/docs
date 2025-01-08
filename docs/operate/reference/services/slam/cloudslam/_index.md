@@ -72,7 +72,7 @@ To use CloudSLAM you must enable data capture and configure your `cloudslam-wrap
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
 Note that when the [data management service](/data-ai/capture-data/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#configuration) once you have finished your SLAM session.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#stop-data-capture) once you have finished your SLAM session.
 {{< /alert >}}
 
 {{< tabs name="Create new map">}}
@@ -431,7 +431,7 @@ The following attributes are available for `viam:cloudslam-wrapper:cloudslam`
 | `api_key` | string | **Required** | An [API key](/manage/manage/access/) with location owner or higher permission. |
 | `api_key_id` | string | **Required** | The associated API key ID with the API key. |
 | `organization_id` | string | **Required** | The organization ID of your [organization](/dev/reference/glossary/#organization). |
-| `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/#term-location/). |
+| `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/#location/). |
 | `machine_id` | string | **Required** | The machine ID of your [machine](/dev/reference/apis/fleet/#find-machine-id). |
 | `machine_part_id` | string | Optional | The machine part ID of your [machine part](/dev/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
 | `viam_version` | string | Optional | The version of viam-server to use with CloudSLAM. Defaults to `stable`. |
