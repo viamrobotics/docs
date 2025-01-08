@@ -64,7 +64,7 @@ Make sure to connect your camera to your machine's computer (if it isn't built-i
 Navigate to the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com).
 Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
-Reference [these available models](/operate/reference/operate/reference/components/camera/#configuration).
+Reference [these available models](/operate/reference/components/camera/#configuration).
 
 To configure a `webcam`:
 

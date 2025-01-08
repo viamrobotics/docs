@@ -382,7 +382,7 @@ After you upload and train a machine learning model, you can test its results in
 
 This allows you to refine models by iteratively tagging more images for training based on observed performance.
 
-For more information, see [Test classification models with existing images in the cloud](/services/vision/mlmodel/#existing-images-in-the-cloud).
+For more information, see [Test classification models with existing images in the cloud](/operate/reference/services/vision/mlmodel/#existing-images-in-the-cloud).
 
 To use this update, the classifier must have been trained or uploaded after September 19, 2023.
 The current version of this feature exclusively supports classification models.
@@ -999,7 +999,7 @@ You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} 
 The configurations you added will now show up automatically in the **Builder** view on your machine's **CONFIGURE** tab.
 This makes it easier to monitor what fragments you've added to your machine and how they're configured.
 
-For more information, see [Fragments](/configure/#fragments).
+For more information, see [Fragments](/manage/fleet/reuse-configuration/).
 
 {{% /changelog %}}
 

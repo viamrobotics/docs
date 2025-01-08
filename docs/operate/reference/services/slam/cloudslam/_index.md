@@ -71,7 +71,7 @@ To use CloudSLAM on a live machine, you must meet the following requirements:
 To use CloudSLAM you must enable data capture and configure your `cloudslam-wrapper` SLAM service:
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
-Note that when the [data management service](/data-ai/capture-data/capture-sync) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
+Note that when the [data management service](/data-ai/capture-data/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
 To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#configuration) once you have finished your SLAM session.
 {{< /alert >}}
 

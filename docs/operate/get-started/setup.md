@@ -82,7 +82,7 @@ Since the configuration is cached locally, your machine does not need to stay co
 If it is online, the machine checks for new configurations every 15 seconds and changes its config automatically when a new config is available.
 All communication happens securely over HTTPS using secret tokens that are in the machine's config.
 
-If your machine will never connect to the internet, you can also create a [local configuration file](/operate/reference/local-configuration-file/) on the machine itself.
+If your machine will never connect to the internet, you can also create a [local configuration file](/operate/reference/viam-server/local-configuration-file/) on the machine itself.
 
 ### Manage your installation
 

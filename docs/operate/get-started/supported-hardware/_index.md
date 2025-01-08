@@ -74,7 +74,7 @@ You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry
 
 The following is a selection of components (some built-ins and some modules) written for use with `viam-micro-server`.
 To use any of the built-in components, configure them according to their readmes.
-To use a module with `viam-micro-server`, you need to [build firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module).
+To use a module with `viam-micro-server`, you need to [build firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
 | Model | Description | Built-in |
