@@ -90,7 +90,7 @@ If passing an object of type `nil`, you must specify `nil` in the method call or
 
 ## Define
 
-If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/registry/) wrapper.
+If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/operate/get-started/other-hardware/) wrapper.
 
 {{%expand "Click for instructions on defining a custom model to use extra params" %}}
 

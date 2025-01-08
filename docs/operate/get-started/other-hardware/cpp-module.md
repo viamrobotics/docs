@@ -70,7 +70,7 @@ If you want to write a module to add support to a new type of component or servi
 
 - If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/operate/reference/components/generic/) to build your own component API.
 - If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/operate/reference/components/generic/) to build your own service API.
-- It is also possible to [define an entirely new API](/registry/advanced/create-subtype/), but this is even more advanced than using `generic`.
+- It is also possible to [define an entirely new API](/operate/reference/advanced-modules/create-subtype/), but this is even more advanced than using `generic`.
 
 Most module use cases, however, benefit from implementing an existing API instead of `generic`.
 {{% /alert %}}
