@@ -16,6 +16,17 @@ aliases:
   - /installation/viam-server-setup/
   - /how-tos/configure/
   - /cloud/account/
+  - /installation/prepare/
+  - /installation/macos-install/
+  - /installation/linux-install/
+  - /installation/install/
+  - /installation/install/linux-install/
+  - /installation/install/macos-install
+  - /getting-started/installation/
+  - /getting-started/macos-install/
+  - /getting-started/linux-install/
+  - /installation/
+  - /get-started/installation/
 ---
 
 Get started by installing the open-source software that drives your hardware and connects your device to the cloud.

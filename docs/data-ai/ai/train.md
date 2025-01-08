@@ -8,6 +8,8 @@ type: "docs"
 aliases:
   - /services/ml/upload-training-script/
   - /how-tos/create-custom-training-scripts/
+  - /services/ml/training-scripts/
+  - /registry/training-scripts/
 languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
