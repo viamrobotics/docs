@@ -9,6 +9,14 @@ description: "The Machine Learning (ML) model service allows you to deploy machi
 aliases:
   - /how-tos/train-deploy-ml/
   - /services/ml/
+  - /registry/ml/
+  - /services/ml/upload-model/
+  - /services/ml/edit/
+  - /ml/edit/
+  - /manage/data/upload-model/
+  - /manage/ml/upload-model/
+  - /ml/upload-model/
+  - /services/ml/ml-models/
 ---
 
 The Machine Learning (ML) model service allows you to deploy [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) to your machine.
@@ -66,5 +74,5 @@ For other use cases, consider [creating custom functionality with a module](/ope
 
 {{< alert title="Add support for other models" color="tip" >}}
 ML models must be designed in particular shapes to work with the `mlmodel` [classification](/operate/reference/services/vision/mlmodel/) or [detection](/operate/reference/services/vision/mlmodel/) model of Viam's [vision service](/operate/reference/services/vision/).
-See [ML Model Design](/registry/advanced/mlmodel-design/) to design a modular ML model service with models that work with vision.
+See [ML Model Design](/operate/reference/advanced-modules/mlmodel-design/) to design a modular ML model service with models that work with vision.
 {{< /alert >}}
