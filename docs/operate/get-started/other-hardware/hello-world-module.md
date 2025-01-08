@@ -12,6 +12,8 @@ viamresources: ["components"]
 platformarea: ["registry"]
 level: "Beginner"
 date: "2024-10-22"
+aliases:
+  - /how-tos/hello-world-module/
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 prev: "/operate/get-started/other-hardware/"
