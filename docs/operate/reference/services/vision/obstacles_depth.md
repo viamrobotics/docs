@@ -13,7 +13,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/dev/reference/changelog/#vision-service)_
 
 The `obstacles_depth` vision service model is for depth cameras, and is best for motion planning with transient obstacles.
 Use this segmenter to identify well separated objects above a flat plane.

@@ -18,7 +18,7 @@ date: "2022-01-01"
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab to play around!
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](/operate/reference/components/base/wheeled/#test-the-base):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/operate/), and [drive the rover](/operate/reference/components/base/wheeled/#test-the-base):
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU" max-width="600px">}}
 
@@ -67,7 +67,7 @@ You can take over and play around with a Viam Rover in our robotics lab from any
 
 1. Please notify Viam support on [our Community Discord](https://discord.gg/viam).
 2. Use the **Add Viam Support** button on your machine's Location page to give Viam Support access to your _location_.
-   Refer to [Managing Locations and sub-locations](/cloud/locations/).
+   Refer to [Grant access](/manage/manage/access/#grant-access).
 
 ### Can I extend my time?
 
@@ -115,7 +115,7 @@ Your machine belongs to the [organization](/cloud/organizations/) you were in wh
 
 ### Can I share this Location with a friend to work on the machine together?
 
-Sure, you can [invite other users to your organization](/cloud/locations/) to collaborate on your machine.
+Sure, you can [invite other users to your organization](/manage/manage/access/#grant-access) to collaborate on your machine.
 As members of your organization, those users have full control of your machine.
 Another collaboration option is to use screen sharing in a Zoom or Webex session.
 
@@ -123,7 +123,7 @@ Another collaboration option is to use screen sharing in a Zoom or Webex session
 
 You can only borrow one rover at a time.
 You cannot join the queue for another reservation while you have an active rental session.
-If you would like to, you can [extend your reservation](/appendix/try-viam/reserve-a-rover/#can-i-extend-my-time).
+If there is no one waiting after you, you can extend your reservation with the **Extend** button.
 
 ### I loved my experience - can I play around more?
 

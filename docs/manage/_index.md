@@ -10,6 +10,7 @@ overview: true
 description: "Remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere."
 aliases:
   - /cloud/
+  - /fleet/
 ---
 
 Viam's fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere.

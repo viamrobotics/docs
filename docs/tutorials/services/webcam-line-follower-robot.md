@@ -33,7 +33,7 @@ toc_hide: true
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/operate/reference/services/vision/#detections">vision service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/dev/reference/apis/services/vision/#detections">vision service color detector</a>.
 
 **What you will learn**:
 
@@ -225,7 +225,7 @@ Next, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app]
 
 1. **Add a vision service.**
 
-Next, add a vision service [detector](/operate/reference/services/vision/#detections):
+Next, add a vision service [detector](/dev/reference/apis/services/vision/#detections):
 
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Service**.
 Select type `vision` and model `color detector`.

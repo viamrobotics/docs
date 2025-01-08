@@ -828,7 +828,7 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 Next, add the following services to your smart machine to support the color filter module:
 
 - The [data management service](/data-ai/capture-data/capture-sync/) enables your smart machine to capture data and sync it to the cloud.
-- The [vision service](/operate/reference/services/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
+- The [vision service](/dev/reference/apis/services/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
 
 ### Add the data management service
 

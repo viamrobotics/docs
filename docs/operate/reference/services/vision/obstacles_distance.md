@@ -13,7 +13,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/dev/reference/changelog/#vision-service)_
 
 `obstacles_distance` is a segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
 It is best for transient obstacle avoidance.

@@ -22,7 +22,7 @@ You can take over a Viam Rover in our robotics lab to play around!
 The rental rover is made up of a chassis with a Raspberry Pi 4B single-board computer, two motors, encoders, and a camera.
 The Try Viam area also has an overhead camera to provide a view of the rental rover, allowing you to view its movements in real time.
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/appendix/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](#control-tab):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/appendix/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/operate/), and [drive the rover](#control-tab):
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU">}}
 
@@ -127,7 +127,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 #### Board control
 
-The [board component](/components/board/) is the signal wire hub of a machine which allows you to control the states of individual GPIO pins on the board.
+The [board component](/operate/reference/components/board/) is the signal wire hub of a machine which allows you to control the states of individual GPIO pins on the board.
 
 For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
@@ -147,7 +147,7 @@ There you can view the configuration for each component in the machine: attribut
 
 ### Board configuration
 
-The [board component](/components/board/) is the signal wire hub of a machine.
+The [board component](/operate/reference/components/board/) is the signal wire hub of a machine.
 Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
 For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `viam:raspberry-pi:rpi`.
 
