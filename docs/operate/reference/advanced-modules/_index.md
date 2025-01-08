@@ -34,11 +34,11 @@ If you want to use most of an existing API but need just a few other functions, 
 Or, if your resource does not fit into an existing resource subtype, you can use one of the following:
 
 - If you are working with a component that doesn't fit into any of the existing [component APIs](/dev/reference/apis/#component-apis), you can use the [generic component](/operate/reference/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/dev/reference/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/dev/reference/apis/#service-apis), you can use the [generic service](/dev/reference/apis/services/generic/) to build your own service API.
 
 Both generic resources use the [`DoCommand`](/dev/reference/apis/components/generic/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
 
-Alternatively, you can also [define a new resource subtype and an API for that subtype](/registry/advanced/create-subtype/) if none of the above options are a good fit for your use case.
+Alternatively, you can also [define a new resource subtype and an API for that subtype](/operate/reference/advanced-modules/create-subtype/) if none of the above options are a good fit for your use case.
 
 ## Custom components as remotes
 
@@ -50,4 +50,4 @@ However, if you are unable to use modular resources because you need to host `vi
 
 When working with the [ML model service](/data-ai/ai/deploy/), you can deploy an [existing model](/registry/ml-models/) or [train your own model](/data-ai/ai/train/).
 
-However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/reference/apis/services/vision/), you can also [design your own ML model](/operate/reference/advanced-modules/mlmodel-design/) to better match your specific use case.
+However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/dev/reference/apis/services/vision/), you can also [design your own ML model](/operate/reference/advanced-modules/mlmodel-design/) to better match your specific use case.
