@@ -1,3 +1,5 @@
+import params from "@params";
+
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
 const observer = lozad();
 
@@ -97,7 +99,7 @@ search.addWidgets([
     templates: {
       item: `
 <div class="col tutorial hover-card {{resource}}">
-    <a href="{{relpermalink}}" target="_blank">
+    <a href="` + params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL +`{{relpermalink}}" target="_blank">
     {{#webm}}
         <div class="hover-card-video">
             <div>
