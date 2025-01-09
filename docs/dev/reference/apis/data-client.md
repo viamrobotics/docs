@@ -20,7 +20,8 @@ tags:
 aliases:
   - /program/apis/data-client/
   - /build/program/apis/data-client/
-  - /appendix/apis/data-client/
+  - /appendix/apis/data-client/  
+
 date: "2024-09-19"
 # updated: ""  # When the content was last entirely checked
 ---
