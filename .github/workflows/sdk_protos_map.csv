@@ -438,7 +438,6 @@ robot,ResourceNames,,,ResourceNames,
 robot,ResourceRPCSubtypes,,,,
 robot,CancelOperation,,cancel_operation,,
 robot,BlockForOperation,,block_for_operation,,
-robot,DiscoverComponents,,discover_components,DiscoverComponents,discoverComponents
 robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,
 robot,TransformPose,,transform_pose,TransformPose,
 robot,TransformPCD,,,TransformPointCloud,
