@@ -103,7 +103,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Module name | The module name describes the module or the family of devices it supports. It is generally the same as the name of the GitHub repo where you will put your module code. |
 | Language | The language for the module. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
-| Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** and copy that string. |
+| Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. |
 | Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
@@ -755,7 +755,7 @@ Click below for information about the available fields.
 <td><code>module_id</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>The module ID, which includes either the module <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization ID</a>, followed by its name.
+<td>The module ID, which includes either the module <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace</a> or organization ID, followed by its name.
 <div class="alert alert-caution" role="alert">
 <h4 class="alert-heading">Caution</h4>
 
@@ -788,7 +788,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>models</code></td>
 <td>object</td>
 <td><strong>Required</strong></td>
-<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p></td>
+<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p></td>
 </tr>
 <tr>
 <td><code>entrypoint</code></td>

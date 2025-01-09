@@ -726,7 +726,8 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-- Use the `--public-namespace` argument to supply the namespace of your organization. This will upload your module to the Viam Registry and share it with other users.
+- Use the `--public-namespace` argument to supply the [namespace of your organization](/operate/reference/naming-modules/#create-a-namespace-for-your-organization).
+  This will upload your module to the Viam Registry and share it with other users.
 - Use the `--org-id` to provide your organization ID instead, This will upload your module privately within your organization.
 
 You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`"visibility": "public"`) to the Viam Registry.
@@ -858,7 +859,7 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the namespace of your model match the namespace of your [organization](/dev/reference/glossary/#organization).
+If you are publishing a public module (`"visibility": "public"`), the namespace of your model match the [namespace of your organization](/operate/reference/naming-modules/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
@@ -1072,7 +1073,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all organizations (name, id, and [namespace](/cloud/organizations/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
+| `list` | List all organizations (name, id, and [namespace](/operate/reference/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
 | `api-key create` | Create a new organization API key. | - |
 | `support-email get` | Get the support email for an organization. | - |
 | `support-email set` | Set the support email for an organization. | - |
