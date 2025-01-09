@@ -27,12 +27,6 @@ date: "2024-09-19"
 
 The data client API allows you to upload and retrieve data to and from the Viam Cloud.
 
-{{% alert title="Support Notice" color="note" %}}
-
-Data client API methods are only available in the Python SDK.
-
-{{% /alert %}}
-
 The data client API supports the following methods:
 
 Methods to upload data like images or sensor readings directly to the [Viam app](https://app.viam.com):
