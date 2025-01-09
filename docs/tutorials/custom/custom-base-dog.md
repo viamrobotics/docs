@@ -31,7 +31,7 @@ After following this tutorial, you will know about Viam's modules and be able to
 Consider if can be merged with intermode rover one to create more generalized guidance.
  -->
 
-The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
+The [base component type](/operate/reference/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 
@@ -63,7 +63,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 Freenove documentation includes Raspberry Pi setup instructions but we recommend the following steps to make sure the Pi is set up for this tutorial:
 
-Follow the steps in our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to install Raspberry Pi OS.
+Follow the steps in our [Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/) to install Raspberry Pi OS.
 
 {{% alert title=Note color="note" %}}
 
@@ -113,7 +113,7 @@ If the name of the directory where you store and run your code is different, be 
    pip install viam-sdk
    ```
 
-1. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enable-communication-protocols).
+1. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of January 24, 2023).
 
@@ -220,7 +220,7 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 ## Implement the custom base code
 
-Now that the Freenove server is set up, you will follow the [process for creating modular resources](/how-tos/create-module/).
+Now that the Freenove server is set up, you will follow the [process for creating modular resources](/operate/get-started/other-hardware/).
 You will use [this module creation tool](https://github.com/viam-labs/generator-viam-module) to simplify the process and generate the necessary stub files.
 Then, you will edit them as necessary to define how each base API method interacts with your robot dog.
 
@@ -238,14 +238,14 @@ As you follow the prompts, it's a good idea to use the same names we used so tha
 
 - Model name: `robotdog`
 - Module namespace: `viamlabs`
-- Module repo-name: `base`
+- Module name: `base`
 - Language: `python`
 - API triplet: `rdk:component:base`
 - Existing API? `Yes`
 
 {{% alert title="Important" color="note" %}}
 
-You can use a different model name, module namespace, and repo-name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
+You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
 
 {{% /alert %}}
 
@@ -256,7 +256,7 @@ This is the file you will modify in the next steps.
 
 ### Connect the module to the Freenove server
 
-When you send a command to the robot using the Viam [base API](/appendix/apis/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
+When you send a command to the robot using the Viam [base API](/dev/reference/apis/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
 In your code, establish a socket and then create a `send_data` helper method to send the command from `viam-server` to the Freenove server.
 
 Start by importing socket:
@@ -325,7 +325,7 @@ class robotdog(Base, Reconfigurable):
 To create a custom base model, you need a script that defines what each base component method (for example `set_power`) makes the robot dog do.
 
 Open your newly created <file>robotdog.py</file> file.
-It contains stubs of all the [base API methods](/appendix/apis/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
+It contains stubs of all the [base API methods](/dev/reference/apis/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
 
 Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-module/blob/main/robotdog/src/robotdog.py).
 
@@ -341,13 +341,13 @@ async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
 ```
 
 Copy and paste that code into your <file>robotdog.py</file> file.
-Feel free to tweak the specific contents of each of the [base method definitions](/appendix/apis/components/base/#api) to do things like make the dog move faster.
+Feel free to tweak the specific contents of each of the [base method definitions](/dev/reference/apis/components/base/#api) to do things like make the dog move faster.
 Don't forget to save.
 
 ### Make your module executable
 
 Now that you defined the methods for the custom component, you need to set up an [executable file](https://en.wikipedia.org/wiki/Executable) to run your custom component module.
-You can find more information in [the relevant section of the modular resource documentation](/registry/).
+You can find more information in [integrate other hardware](/operate/get-started/other-hardware/).
 Since the command line tool already created a <file>run.sh</file> for you, all you need to do is make that shell script executable by running this command from your <file>robotdog</file> directory:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -372,7 +372,7 @@ Now that the custom base code is set up, you need to configure all your hardware
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam/).
+Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/operate/reference/components/camera/webcam/).
 
 Click **Save**.
 
@@ -409,7 +409,7 @@ Your local component configuration should look similar to the following:
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-Configure a [_process_](/configure/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+Configure a [_process_](/manage/reference/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Process**.
 
@@ -518,5 +518,5 @@ You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
-You could also use the Viam [vision service](/services/vision/) with the robot dog's [camera component](/components/camera/).
+You could also use the Viam [vision service](/operate/reference/services/vision/) with the robot dog's [camera component](/operate/reference/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.

@@ -54,7 +54,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChatGPT with the Viam platform’s built-in [computer vision service](/services/vision/), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
+By combining ChatGPT with the Viam platform’s built-in [computer vision service](/operate/reference/services/vision/), ML model support, and [locomotion](/operate/reference/components/base/), you can within a few hours create a basic companion robot that:
 
 - Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 - Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -67,7 +67,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 
 ## Hardware list
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/installation/prepare/rpi-setup/).
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/operate/reference/prepare/rpi-setup/).
 - [Viam rover](https://www.viam.com/resources/rover) (note: this tutorial can also be adapted to work with any other configured rover that has a webcam and a microphone)
 - [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
 - [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/) (with included 3.5mm audio cable and USB power cable)
@@ -77,7 +77,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 ## Rover setup
 
 This tutorial assumes that you have already set up your Viam Rover.
-If not, first follow the Viam Rover [setup instructions](/appendix/try-viam/rover-resources/rover-tutorial/).
+If not, first follow the Viam Rover [setup instructions](/dev/reference/try-viam/rover-resources/rover-tutorial/).
 
 If you are not using a Viam Rover, add a new machine in the [Viam app](https://app.viam.com).
 Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
@@ -87,7 +87,7 @@ If you are using a different rover, the [Configure a Rover like Yahboom or SCUTT
 
 ### 1. Connect the servo
 
-We'll use a [servo](/components/servo/) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
+We'll use a [servo](/operate/reference/components/servo/) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
 
 {{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging, moving wires, or otherwise modifying electrical circuits.
@@ -133,7 +133,7 @@ You can also attach your speaker to the top of your rover with [double-sided foa
 
 The [git repository](https://github.com/viam-labs/tutorial-openai-integration) for this tutorial contains code that integrates with:
 
-- [viam-server](/architecture/viam-server/)
+- [viam-server](/operate/reference/viam-server/)
 - [Google text/speech tools](https://gtts.readthedocs.io/en/latest/)
 - [OpenAI](https://openai.com/api/)
 
@@ -211,7 +211,7 @@ Now, configure your rover to:
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo/), go to your rover's **CONFIGURE** tab.
+To configure your [servo](/operate/reference/components/servo/), go to your rover's **CONFIGURE** tab.
 
 - Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 - Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
@@ -222,7 +222,7 @@ Now, in the panel for `servo1`, add the following attribute configuration:
 {{< imgproc src="/tutorials/ai-integration/servo_pane.png" alt="An example configuration for a pi servo with GPIO 8 and board 'local' in the Viam app Config Builder." resize="1200x" style="width:450px" >}}
 
 - Enter `8` for `pin`.
-- Select the name of your [board](/components/board/) for the `board` attribute: in this case, `local`.
+- Select the name of your [board](/operate/reference/components/board/) for the `board` attribute: in this case, `local`.
 
 This tells `viam-server` that the servo is attached to GPIO pin 8 on the board.
 
@@ -242,7 +242,7 @@ We found that if set up this way, the following positions accurately show the co
 
 ### 2. Configure the ML Model and vision services to use the detector
 
-The [ML model service](/services/ml/) allows you to deploy a machine learning model to your robot.
+The [ML model service](/data-ai/ai/deploy/) allows you to deploy a machine learning model to your robot.
 This tutorial uses a pre-trained machine learning (ML) model from the Viam Registry named [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 This model can detect a variety of objects, which you can find in the provided <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
@@ -422,6 +422,6 @@ Some ideas:
 - Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 - Integrate another ML model that is used to follow a human (when told to do so).
 - Add Lidar and integrate Viam's {{< glossary_tooltip term_id="slam" text="SLAM service" >}} to map the world around it.
-- Use Viam's [Data Management](/services/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
+- Use Viam's [Data Management](/data-ai/capture-data/capture-sync/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

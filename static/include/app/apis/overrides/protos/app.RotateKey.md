@@ -1,1 +1,1 @@
-Rotate an [API key](/cloud/rbac/#api-keys).
+Rotate an [API key](/manage/manage/access/#rotate-an-api-key).

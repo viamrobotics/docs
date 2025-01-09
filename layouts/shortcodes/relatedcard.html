@@ -22,5 +22,5 @@
     </div>
   {{ end }}
 {{ else }}
-    {{ errorf "Could not get link %s on %s" $link .Page }}
+    {{ warnf "Could not get link %s on %s" $link .Page }}
 {{ end }}

@@ -1,4 +1,4 @@
-<details class="expand howtoexpand">
+<details class="expand howtoexpand {{ if .Get 3 }}{{ .Get 3 }}{{ end }} {{ if .Get 4 }}{{ .Get 4 }}{{ end }}">
   <summary class="expand-label">
     <span>
       <div>
@@ -17,11 +17,10 @@
         </div>
         <p id="tasks">
           {{- if .IsNamedParams -}}
-          {{.Get "tasks" }}
+          {{.Get "tasks" }} &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp
           {{- else -}}
-          {{.Get 1 }}
+          {{ if .Get 1 }}{{.Get 1 }} &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp{{ end }}
           {{- end -}}
-          &nbsp TASKS &nbsp&nbsp|&nbsp&nbsp&nbsp
           {{- if .IsNamedParams -}}
           {{.Get "level" }}
           {{- else -}}

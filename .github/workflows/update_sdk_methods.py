@@ -435,10 +435,10 @@ override_description_links = {
     "SLAM service": "/services/slam/",
     "frame": "/services/frame-system/",
     "Viam app": "https://app.viam.com/",
-    "organization settings page": "/cloud/organizations/",
-    "image tags": "/fleet/dataset/#image-tags",
+    "organization settings page": "/manage/reference/organize/",
+    "image tags": "/data-ai/ai/create-dataset/#label-your-images",
     "API key": "/fleet/cli/#authenticate",
-    "board model": "/components/board/#configuration"
+    "board model": "/dev/reference/apis/components/board/"
 }
 
 ## Language-specific resource name overrides:
@@ -617,7 +617,7 @@ def link_data_types(sdk, data_type_string):
 
 ## Link matching text, used in write_markdown():
 ## NOTE: Currently does not support formatting for link titles
-## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/appendix/apis/data-client/#binarydatabyfilter)
+## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/dev/reference/apis/data-client/#binarydatabyfilter)
 def link_description(format_type, full_description, link_text, link_url):
 
     ## Supports 'md' link styling or 'html' link styling.
@@ -1830,23 +1830,23 @@ def write_markdown(type, names, methods):
                         if type == 'component':
                             ## Replace underscores, and convert generic_component to just generic:
                             resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
-                            proto_anchor_link = '/appendix/apis/components/' + resource_adjusted + '/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/components/' + resource_adjusted + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam', 'vision']:
-                            proto_anchor_link = '/appendix/apis/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
-                            proto_anchor_link = '/appendix/apis/services/data/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/services/data/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
-                            proto_anchor_link = '/appendix/apis/services/generic/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/services/generic/#' + proto_link
                         elif type == 'service' and resource == 'mlmodel':
-                            proto_anchor_link = '/appendix/apis/services/ml/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/services/ml/#' + proto_link
                         elif type == 'app' and resource == 'app':
-                            proto_anchor_link = '/appendix/apis/fleet/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/fleet/#' + proto_link
                         elif type == 'app' and resource in ["billing", "mltraining"]:
-                            proto_anchor_link = '/appendix/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto_link
                         elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
-                            proto_anchor_link = '/appendix/apis/data-client/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/data-client/#' + proto_link
                         elif type == 'robot':
-                            proto_anchor_link = '/appendix/apis/' + resource + '/#' + proto_link
+                            proto_anchor_link = '/dev/reference/apis/' + resource + '/#' + proto_link
 
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')

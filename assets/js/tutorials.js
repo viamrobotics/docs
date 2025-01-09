@@ -1,3 +1,5 @@
+import params from "@params";
+
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
 const observer = lozad();
 
@@ -77,8 +79,6 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
       </ul>
       <ul class="pill-explainer">
       <li><p><strong>tutorial</strong>: Projects that show you how to use different parts of Viam.</p></li>
-      <li><p><strong>how-to</strong>: Step-by-step guides to complete tasks.</p></li>
-      <li><p><strong>quickstart</strong>: <5 min step-by-step guide to complete tasks.</p></li>
       <li><p><strong>blogpost</strong>: Sample projects you can build.</p></li>
       <li><p><strong>codelab</strong>: Community projects and example project.</p></li>
       </ul>
@@ -99,7 +99,7 @@ search.addWidgets([
     templates: {
       item: `
 <div class="col tutorial hover-card {{resource}}">
-    <a href="{{relpermalink}}" target="_blank">
+    <a href="` + params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL +`{{relpermalink}}" target="_blank">
     {{#webm}}
         <div class="hover-card-video">
             <div>
@@ -215,8 +215,6 @@ search.addWidgets([
     sortBy: ["name:asc"],
     items: [
       { label: "tutorial" },
-      { label: "how-to" },
-      { label: "quickstart" },
       { label: "blogpost" },
       { label: "codelab" },
     ],

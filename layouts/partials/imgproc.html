@@ -13,17 +13,17 @@
   {{ $imgwebp := $img.Resize (printf "%s webp text q100 Lanczos" .resize) }}
   {{if .declaredimensions}}
 <source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}">
-<img src="{{ $img.RelPermalink }}" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+<img src="{{ $img.RelPermalink }}" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}" alt="{{ .alt }}" class="{{ .class }}" id="{{ .id }}" style="{{ .style }}" loading="lazy">
   {{ else }}
 <source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp">
-<img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+<img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" id="{{ .id }}" style="{{ .style }}" loading="lazy">
   {{ end }}
 {{ else }}
   {{if .declaredimensions}}
     {{ $dimensions := split .src "." }}
-<img src="{{ $img.RelPermalink }}" width="{{ index $dimensions 0 }}" height="{{ index $dimensions 0 }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+<img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" id="{{ .id }}" style="{{ .style }}" loading="lazy">
   {{ else }}
-<img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+<img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" id="{{ .id }}" style="{{ .style }}" loading="lazy">
   {{ end }}
 {{ end }}
 </picture>

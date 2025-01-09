@@ -37,7 +37,7 @@ After following this tutorial, you will be able to use the input controller comp
 
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
+- A wheeled rover, configured with a [base component](/operate/reference/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or an entirely different rover.
   - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
 - [EasySMX ESM-9101 Wireless Controller](https://www.amazon.com/Wireless-Controller-EasySMX-ESM-9101-Gamepad/dp/B07F1NLGW2?th=1) or a similar gamepad and dongle.
@@ -48,7 +48,7 @@ You will need the following hardware to complete this tutorial:
 
 ## Set up the hardware
 
-If your gamepad has a dongle, plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/components/board/).
+If your gamepad has a dongle, plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/operate/reference/components/board/).
 Then turn on power to the rover.
 
 {{% expand "Click here if your gamepad does not have a dongle for bluetooth pairing instructions." %}}
@@ -88,7 +88,7 @@ Go to your rover's **CONFIGURE** tab on the [Viam app](https://app.viam.com/).
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Configure a [gamepad](/components/input-controller/gamepad/):
+Configure a [gamepad](/operate/reference/components/input-controller/gamepad/):
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `gamepad` model.
@@ -101,8 +101,8 @@ You can set the `auto_reconnect` attribute to `true`.
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**JSON** mode](/configure/#the-configure-tab) on the **CONFIGURE** tab.
-Inside the `components` array of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
+If instead of using the config builder, you prefer to write raw JSON, switch to **JSON** mode on the **CONFIGURE** tab.
+Inside the `components` array of your config, add the following configuration for your [gamepad](/operate/reference/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -125,7 +125,7 @@ To link the controller input to the base functionality, you need to add the base
 ## Add the base remote control service
 
 Services are software packages that provide robots with higher level functionality.
-To link the controller's input to the base functionality, you need to configure the [base remote control service](/services/base-rc/):
+To link the controller's input to the base functionality, you need to configure the [base remote control service](/operate/reference/services/base-rc/):
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -150,7 +150,7 @@ For example:
 ![An example configuration for a base remote control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
-{{% tab name="JSON" %}}
+{{% tab name="Raw JSON" %}}
 
 Add the following configuration for your base remote control service, replacing `<your-base-name>` with your base's name:
 
@@ -230,7 +230,6 @@ You can now drive your rover with a wireless controller.
 If you'd like to do more with your rover, check out one of these tutorials:
 
 {{< cards >}}
-{{% card link="/how-tos/drive-rover/" %}}
-{{% card link="/how-tos/detect-color/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

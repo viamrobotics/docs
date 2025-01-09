@@ -1,2 +1,2 @@
 Access data usage information for the current month for a given organization.
-You can also find your usage data on the [**Payment and billing** page](/billing/).
+You can also find your usage data on the [**Payment and billing** page](/manage/reference/billing/).
