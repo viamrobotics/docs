@@ -1073,7 +1073,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all organizations (name, id, and [namespace](/cloud/organizations/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
+| `list` | List all organizations (name, id, and [namespace](/operate/reference/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
 | `api-key create` | Create a new organization API key. | - |
 | `support-email get` | Get the support email for an organization. | - |
 | `support-email set` | Set the support email for an organization. | - |

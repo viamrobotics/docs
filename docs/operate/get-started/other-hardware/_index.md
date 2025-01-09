@@ -755,7 +755,7 @@ Click below for information about the available fields.
 <td><code>module_id</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>The module ID, which includes either the module <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization ID</a>, followed by its name.
+<td>The module ID, which includes either the module <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization ID</a>, followed by its name.
 <div class="alert alert-caution" role="alert">
 <h4 class="alert-heading">Caution</h4>
 
