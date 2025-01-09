@@ -32,6 +32,25 @@ aliases:
 Get started by installing the open-source software that drives your hardware and connects your device to the cloud.
 The easiest way to do this is through the Viam app, so that your machines are automatically connected to configuration and remote operation tools.
 
+{{< expand "Supported systems" >}}
+
+Viam can run on any computer that runs one of the following operating systems:
+
+- Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
+- macOS
+
+Viam also offers a lightweight binary to support the following 32-bit microcontrollers:
+
+- [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
+- ESP32-WROOM Series (until v0.1.7)
+
+ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 4MB flash to work with Viam.
+
+Viam can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
+This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
+
+{{< /expand >}}
+
 ## Quickstart
 
 {{< expand "Prerequisite: Operating system setup" >}}
@@ -74,15 +93,6 @@ You can think of one machine as representing one device, or one robot.
 
 When you create a new machine in the Viam app, Viam generates a unique set of credentials for that machine that connect the physical machine to its instance in the Viam app.
 
-### Installation methods: `viam-agent` versus manual
-
-`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/) and configuring operating system updates.
-
-When you set up a Linux device in the Viam app, you'll see an option to install using `viam-agent`, or to manually install only `viam-server`.
-Using `viam-agent` is generally recommended when installing `viam-server` on a single-board computer.
-
-`viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers, so use manual install for those systems.
-
 ### How the configuration works
 
 The machine setup steps displayed in the Viam app copy your machine's credentials to your machine.
@@ -95,6 +105,15 @@ All communication happens securely over HTTPS using secret tokens that are in th
 
 If your machine will never connect to the internet, you can also create a [local configuration file](/operate/reference/viam-server/local-configuration-file/) on the machine itself.
 
+### Installation methods: `viam-agent` versus manual
+
+`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/) and configuring operating system updates.
+
+When you set up a Linux device in the Viam app, you'll see an option to install using `viam-agent`, or to manually install only `viam-server`.
+Using `viam-agent` is generally recommended when installing `viam-server` on a single-board computer.
+
+`viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers, so use manual install for those systems.
+
 ### Manage your installation
 
 On Linux installs, by default `viam-server` or `viam-agent` and `viam-server` will start automatically when your system boots.
@@ -104,20 +123,3 @@ You can change this behavior if desired.
 To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
 For manual installs of only `viam-server`, see [Manage `viam-server`](/operate/reference/viam-server/manage-viam-server/).
-
-## Supported systems
-
-Viam can run on any computer that runs one of the following operating systems:
-
-- Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
-- macOS
-
-Viam also offers a lightweight binary to support the following 32-bit microcontrollers:
-
-- [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
-- [ESP32-WROOM Series](https://www.espressif.com/en/products/modules/esp32) (until v0.1.7)
-
-ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 4MB flash to work with Viam.
-
-Viam can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
-This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.

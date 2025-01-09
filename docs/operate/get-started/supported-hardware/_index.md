@@ -44,7 +44,11 @@ These standardized APIs are implemented by {{< glossary_tooltip term_id="module"
 
 Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
 
-Viam also supports various software services such as [data capture](/data-ai/capture-data/capture-sync/) and [computer vision](/data-ai/ai/create-dataset/), designed to integrate seamlessly with the hardware driver modules.
+{{% alert title="Tip" color="tip" %}}
+
+Viam also supports various software services such as [data capture](/data-ai/capture-data/capture-sync/) and [computer vision](/dev/reference/apis/services/vision/), designed to integrate seamlessly with the hardware driver modules.
+
+{{% /alert %}}
 
 ## Supported hardware
 
@@ -68,6 +72,10 @@ You can also browse these same built-in and modular registry components on your 
 
 The Viam Registry is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
 You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry?type=Module).
+{{% /alert %}}
+
+{{% alert title="Support notice" color="note" %}}
+Modules in the list above are officially supported and maintained by Viam if and only if they are marked as "built-in", or if the first part of their model triplet is `viam`.
 {{% /alert %}}
 
 ### For use with ESP-32 microcontrollers
