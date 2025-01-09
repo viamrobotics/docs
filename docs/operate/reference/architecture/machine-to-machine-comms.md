@@ -22,7 +22,6 @@ Below, we describe the flow of information through a Viam-based multipart machin
 To begin, let's define our machine's topology:
 
 ![robot communication diagram](/internals/robot-to-robot-comms/robot-communication-diagram.png)
-![robot communication diagram](/internals/robot-to-robot-comms/robot-communication-diagram.png)
 
 This machine is made of two parts and a separate SDK-based application, which we'll assume is on a third machine, though it could just as easily run on the main part without any changes.
 
