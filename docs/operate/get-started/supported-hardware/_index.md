@@ -75,7 +75,7 @@ You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry
 {{% /alert %}}
 
 {{% alert title="Support notice" color="note" %}}
-Modules in the list above are officially supported and maintained by Viam if and only if they are marked as "built-in", or if the first part of their model triplet is `viam`.
+Modules in the list above are officially supported and maintained by Viam if and only if they are marked as "built-in," or if the first part of their model triplet is `viam`.
 {{% /alert %}}
 
 ### For use with ESP-32 microcontrollers
