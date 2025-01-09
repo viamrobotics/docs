@@ -22,7 +22,7 @@ prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---
 
-If your physical or virtual hardware is not [already supported](../supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
+If your physical or virtual hardware is not [already supported](/operate/get-started/supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
@@ -30,9 +30,9 @@ This page provides instructions for writing and uploading a module in Python or 
 
 {{% alert title="See also" color="info" %}}
 
-- [Write a module for microcontrollers (to use alongside viam-micro-server)](./micro-module/)
-- [Hello World guide to writing a module with Python or Go](./hello-world-module/)
-- [Update and manage modules](./manage-modules/)
+- [Write a module for microcontrollers (to use alongside viam-micro-server)](/operate/get-started/other-hardware/micro-module/)
+- [Hello World guide to writing a module with Python or Go](/operate/get-started/other-hardware/hello-world-module/)
+- [Update and manage modules](/operate/get-started/other-hardware/manage-modules/)
 
 {{% /alert %}}
 

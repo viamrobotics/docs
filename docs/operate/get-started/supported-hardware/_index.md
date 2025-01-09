@@ -46,7 +46,7 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 
 {{% alert title="Tip" color="tip" %}}
 
-Viam also supports various software services such as [data capture](/data-ai/capture-data/capture-sync/) and [computer vision](/dev/reference/apis/services/vision/), designed to integrate seamlessly with the hardware driver modules.
+Viam also supports various [software services](#add-software-services-to-your-machine) such as [data capture](/data-ai/capture-data/capture-sync/) and [computer vision](/dev/reference/apis/services/vision/), designed to integrate seamlessly with the hardware driver modules.
 
 {{% /alert %}}
 
