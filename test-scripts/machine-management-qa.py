@@ -5,7 +5,6 @@ from viam.robot.client import RobotClient
 from viam.rpc.dial import DialOptions, dial
 from viam.proto.common import Pose, PoseInFrame
 
-from viam.proto.robot import DiscoveryQuery
 
 async def connect(address) -> RobotClient:
     opts = RobotClient.Options(
@@ -37,17 +36,6 @@ async def main():
     print(result.platform)
     print(result.version)
     print(result.api_version)
-
-    # Define a new discovery query.
-    # just implemented for webcam -- for modules returns name of modules
-    q = DiscoveryQuery(subtype="camera", model="webcam")
-
-    # Define a list of discovery queries.
-    qs = [q]
-
-    # # Get component configurations with these queries.
-    component_configs = await machine.discover_components(qs)
-    print(component_configs)
 
     frame_system = await machine.get_frame_system_config()
     print(f"frame system configuration: {frame_system}")
