@@ -43,7 +43,7 @@ if (api == "") {
   };
   itemtemplate = `
   <div class="type"><p><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></p></div>
-  <div class="name"><p><a href="` + params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL +`{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 } else {
@@ -52,7 +52,7 @@ if (api == "") {
     hitsPerPage: 5,
   };
   itemtemplate = `
-  <div class="name"><p><a href="` + params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL +`{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 }
@@ -140,7 +140,7 @@ if (mlmodel) {
     hitsPerPage: 5,
   };
   itemtemplateML = `
-  <div class="name"><p><a href="` + params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL +`{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
   <div class="type">{{#helpers.highlight}}{ "attribute": "type" }{{/helpers.highlight}}</div>
   <div class="framework">{{#helpers.highlight}}{ "attribute": "framework" }{{/helpers.highlight}}</div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
@@ -228,7 +228,7 @@ if (scripts) {
     hitsPerPage: 5,
   };
   itemtemplateScripts = `
-  <div class="name"><p><a href="` + params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL +`{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 

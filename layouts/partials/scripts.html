@@ -38,21 +38,20 @@
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
 
 {{ $jsModels := resources.Get "js/models.js" }}
-{{ if (eq (substr .Site.BaseURL -1) "/" ) }}
-{{- $opts := dict
-"params" (dict "baseURL" (substr .Site.BaseURL 0 -1 ))
--}}
-{{- $jsModels = $jsModels | js.Build $opts -}}
-{{ $jsModels := $jsModels | minify }}
-<script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
-{{ else }}
-{{- $opts := dict
-"params" (dict "baseURL" .Site.BaseURL)
--}}
-{{- $jsModels = $jsModels | js.Build $opts -}}
 {{ $jsModels := $jsModels | minify }}
 <script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
 {{ end }}
+
+<!-- JS for how to page -->
+{{ if .Page.Params.howtojs }}
+
+<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
+
+{{ $jsHowtos := resources.Get "js/howtos.js" }}
+{{ $jsHowtos := $jsHowtos | minify }}
+<script type="text/javascript" src="{{ $jsHowtos.RelPermalink }}" crossorigin="anonymous"></script>
 {{ end }}
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
