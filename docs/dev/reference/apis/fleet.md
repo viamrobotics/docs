@@ -19,6 +19,7 @@ aliases:
   - /program/apis/fleet/
   - /dev/reference/apis/fleet/
   - /build/program/apis/fleet/
+  - /appendix/apis/fleet/
 date: "2024-09-20"
 # updated: ""  # When the content was last entirely checked
 ---
