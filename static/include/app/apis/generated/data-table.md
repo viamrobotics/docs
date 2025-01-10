@@ -2,6 +2,7 @@
 | Method Name | Description |
 | ----------- | ----------- |
 | [`GetLatestTabularData`](/dev/reference/apis/data-client/#getlatesttabulardata) | Gets the most recent tabular data captured from the specified data source, as long as it was synced within the last year. |
+| [`ExportTabularData`](/dev/reference/apis/data-client/#exporttabulardata) | Obtain unified tabular data and metadata from the specified data source. |
 | [`TabularDataByFilter`](/dev/reference/apis/data-client/#tabulardatabyfilter) | Retrieve optionally filtered tabular data from the Viam app. |
 | [`TabularDataBySQL`](/dev/reference/apis/data-client/#tabulardatabysql) | Obtain unified tabular data and metadata, queried with SQL. |
 | [`TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) | Obtain unified tabular data and metadata, queried with MQL. |
