@@ -12,6 +12,7 @@ aliases:
   - /how-tos/sensor-module/
   - /registry/advanced/iterative-development/
   - /build/program/extend/modular-resources/
+  - /program/extend/modular-resources/
   - /extend/modular-resources/
   - /extend/
   - /build/program/extend/modular-resources/key-concepts/
