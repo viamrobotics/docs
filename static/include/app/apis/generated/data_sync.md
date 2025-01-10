@@ -82,17 +82,23 @@ Uploaded tabular data can be found under the **Sensors** subtab of the app's [**
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+from datetime import datetime
+
 time_requested = datetime(2023, 6, 5, 11)
 time_received = datetime(2023, 6, 5, 11, 0, 3)
-
 file_id = await data_client.tabular_data_capture_upload(
     part_id="INSERT YOUR PART ID",
-    component_type='rdk:component:motor',
-    component_name='left_motor',
-    method_name='IsPowered',
-    tags=["tag_1", "tag_2"],
+    component_type='rdk:component:movement_sensor',
+    component_name='my_movement_sensor',
+    method_name='Readings',
+    tags=["sensor_data"],
     data_request_times=[(time_requested, time_received)],
-    tabular_data=[{'PowerPCT': 0, 'IsPowered': False}]
+    tabular_data=[{
+        'readings': {
+            'linear_velocity': {'x': 0.5, 'y': 0.0, 'z': 0.0},
+            'angular_velocity': {'x': 0.0, 'y': 0.0, 'z': 0.1}
+        }
+    }]
 )
 ```
 
