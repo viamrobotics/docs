@@ -61809,11 +61809,6 @@ const inkeepButtonBottom = document.getElementById("chatButton");
 const inkeepDiv = document.createElement("div");
 inkeepDiv.id = "inkeepModal";
 inkeepDiv.style.position = "absolute";
-inkeepDiv.style.width = "90%";
-inkeepDiv.style.height = "90%";
-inkeepDiv.style.maxWidth = "90%";
-inkeepDiv.style.maxHeight = "90%";
-inkeepDiv.style.size = "expand";
 
 document.body.appendChild(inkeepDiv);
 
@@ -61844,6 +61839,16 @@ const config = {
         organizationId: INKEEP_ORGANIZATION_ID,
         primaryBrandColor: "#000000",
         organizationDisplayName: "Viam AI Bot",
+        theme: {
+          components: {
+            AIChatPageWrapper: {
+              defaultProps: {
+                size: 'full-viewport', // 'shrink-vertically' 'expand', 'default', 'full-viewport'
+                variant: 'container-with-shadow', // 'no-shadow' or 'container-with-shadow'
+              },
+            },
+          }
+        }
         //... optional base settings
         },
       modalSettings: {
