@@ -40,6 +40,46 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### ExportTabularData
+
+Obtain unified tabular data and metadata from the specified data source.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that owns the data.
+- `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data.
+- `resource_subtype` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The subtype of the requested resource that captured the data.
+- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name.
+- `start_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time for requesting a specific range of data.
+- `end_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time for requesting a specific range of data.
+
+**Returns:**
+
+- ([List[TabularDataPoint]](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.TabularDataPoint)): The unified tabular data and metadata.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+tabular_data = await data_client.export_tabular_data(
+    part_id="<PART-ID>",
+    resource_name="<RESOURCE-NAME>",
+    resource_subtype="<RESOURCE-SUBTYPE>",
+    method_name="<METHOD-NAME>",
+    start_time="<START_TIME>"
+    end_time="<END_TIME>"
+)
+
+print(f"My data: {tabular_data}")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.export_tabular_data).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### TabularDataByFilter
 
 Retrieve optionally filtered tabular data from the [Viam app](https://app.viam.com).
