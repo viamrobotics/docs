@@ -60619,7 +60619,7 @@ const TP = Z(ebe), tbe = D.forwardRef(
                   value: t,
                   onChange: b,
                   onKeyDown: r,
-                  placeholder: c || (l ? "Search..." : "Search for anything..."),
+                  placeholder: c || (l ? "Search..." : "Search..."),
                   narrowView: n,
                   onFocus: g,
                   onBlur: k
@@ -61843,7 +61843,7 @@ const config = {
           components: {
             AIChatPageWrapper: {
               defaultProps: {
-                size: 'full-viewport', // 'shrink-vertically' 'expand', 'default', 'full-viewport'
+                size: 'default', // 'shrink-vertically' 'expand', 'default', 'full-viewport'
                 variant: 'container-with-shadow', // 'no-shadow' or 'container-with-shadow'
               },
             },

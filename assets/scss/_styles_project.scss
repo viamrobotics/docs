@@ -2763,7 +2763,7 @@ nav {
   min-height: 3.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .second-nav {
     display: none;
   }
@@ -2802,6 +2802,10 @@ span.section-overview {
 
   .navsectiontop {
     display: unset;
+  }
+
+  #landing-page-sidebar {
+    display: none;
   }
 
   .menu-toggle.open-on-desktop {
@@ -2973,6 +2977,7 @@ a.tree-root {
 .upside-down {
   display: flex;
   flex-direction: column-reverse;
+  align-self: first baseline;
 }
 
 .upside-down.max-page {
@@ -2995,6 +3000,8 @@ a.tree-root {
 .upside-down > .col.hover-card {
   min-width: unset;
   max-width: unset;
+  max-height: fit-content;
+  flex-grow: unset !important;
 }
 
 .col-12.col-md-12.col-xl-12.pl-md-12 > .td-content {
