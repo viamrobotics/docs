@@ -61839,16 +61839,6 @@ const config = {
         organizationId: INKEEP_ORGANIZATION_ID,
         primaryBrandColor: "#000000",
         organizationDisplayName: "Viam AI Bot",
-        theme: {
-          components: {
-            AIChatPageWrapper: {
-              defaultProps: {
-                size: 'default', // 'shrink-vertically' 'expand', 'default', 'full-viewport'
-                variant: 'container-with-shadow', // 'no-shadow' or 'container-with-shadow'
-              },
-            },
-          }
-        }
         //... optional base settings
         },
       modalSettings: {
