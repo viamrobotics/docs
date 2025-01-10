@@ -56,7 +56,7 @@ Give it a name.
 Click **Add widget** and select the appropriate widget for your machine.
 Repeat as many times as necessary.
 
-Click **Add widget** and add a **GPS** widget for a movement sensor and a **time series** or **stat** widget for a sensor.
+Click **Add widget** and add a **GPS** widget for a movement sensor, a **stat** widget for a sensor, and a **time series** widget for any component that supports data capture.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -67,7 +67,7 @@ Select **Monitor** in the top right corner to leave editing mode.
 Click **Select machine** and select your configured machine.
 
 Your dashboard now shows the configured widget for the data from your machine.
-For example, a time series graph measuring noise over time:
+For example, a time series graph measuring noise over time for a sensor component:
 
 {{< imgproc src="/services/data/time-series.png" alt="Time series widget measuring noise over time." style="width:500px" resize="1200x" class="imgzoom fill" >}}
 
