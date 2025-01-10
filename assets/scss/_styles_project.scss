@@ -48,6 +48,11 @@ a.footnote-ref::after {
   vertical-align: middle;
 }
 
+#main_navbar {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-dark .navbar-brand, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
   color: black;
 }
@@ -290,7 +295,7 @@ footer small {
 
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
-  font-family: "Public Sans light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: normal;
   font-size: 0.938rem !important;
   line-height: 1.625rem !important;
@@ -617,6 +622,7 @@ details summary::-webkit-details-marker {
 
 .howtoexpand .expand-label h4 {
   margin-bottom: unset;
+  align-content: end;
 }
 
 .howtoexpand .expand-content {
@@ -2686,12 +2692,11 @@ nav {
 .td-topbar-sections > ul {
   padding: 0;
   padding-left: 1.25rem;
-  margin: 0.25rem 0 0 0;
+  margin: 0;
   border-left: 1px solid black;
 }
 
 .td-topbar-sections > ul > li {
-  padding-right: 1.5rem;
   display: inline-block;
   text-transform: uppercase;
   font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
@@ -2701,43 +2706,47 @@ nav {
 
 .td-topbar-sections > ul > li > a {
   color: black;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
   padding-top: 8px;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
 }
 
 .td-topbar-sections > ul > li > a:hover {
   text-decoration: none;
+  background-color: rgb(232,232,234);
 }
 
 .second-nav {
   background-color: rgb(239,239,242);
   min-width: 100%;
   padding: 0.25rem 1rem;
+  border-bottom: 1px solid rgb(215,215,217);
 }
 
 .second-nav > ul {
   padding: 0;
   padding-left: 0.25rem;
-  margin: 0.25rem 0 0 0;
+  margin: 0;
 }
 
 .second-nav > ul > li {
-  padding-right: 3rem;
   display: inline-block;
   text-transform: uppercase;
   font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
   font-size: .875rem;
   line-height: 1.25rem;
+  margin: 5px 0px;
 }
 
 .second-nav > ul > li > a {
   color: #333;
-  padding-bottom: 8px;
-  padding-top: 8px;
+  padding: 5px 1rem;
 }
 
 .second-nav > ul > li > a:hover {
   text-decoration: none;
+  background-color: rgb(232,232,234);
 }
 
 .second-nav * .active-path {
@@ -2968,6 +2977,10 @@ a.tree-root {
 
 .upside-down.max-page {
   justify-self: center;
+}
+
+.upside-down > img {
+  margin-bottom: 2.5rem;
 }
 
 .col-12.col-md-12.col-xl-12.pl-md-12 {
