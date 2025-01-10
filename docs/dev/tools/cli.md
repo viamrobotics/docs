@@ -417,10 +417,12 @@ Click **...** in the left-hand menu and click **Copy dataset ID**.
 
 To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
 
+###### Copy `export` command
+
 You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
 Navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
-Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
+Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the data type `binary` and `tabular` subcommands and `--destination` flags, which are specific to `viam data export`.
 
 You cannot use the `--file-ids` argument when using `filter`.
 
@@ -432,7 +434,8 @@ The `data` command allows you to manage machine data.
 With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam data export --destination=<output path> --data-type=<output data type> [...named args]
+viam data export binary --destination=<output path> [...named args]
+viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
 viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
@@ -445,13 +448,11 @@ viam data tag filter remove --tags=<tags> [...named args from filter]
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-# export tabular data to /home/robot/data for org abc, location 123
-viam data export --destination=/home/robot/data --data-type=tabular \
---org-ids=abc --location-ids=123
+# export binary data from the specified org with mime types image/jpeg and image/png to /home/robot/data
+viam data export binary --mime-types=image/jpeg,image/png --org-ids=12345678-eb33-123a-88ec-12a345b123a1 --destination=/home/robot/data
 
-# export binary data from all orgs and locations, component name myComponent
-viam data export --destination=/home/robot/data --data-type=binary \
---component-name myComponent
+# export tabular data to /home/robot/data for specified part id with resource name my_movement_sensor, subtype movement_sensor and method Readings
+viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resource-name=my_movement_sensor --resource-subtype=movement_sensor --method=Readings --destination=/home/robot/data
 
 # delete binary data of mime type image/jpeg in an organization between a specified timestamp
 viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
@@ -491,7 +492,8 @@ done
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `export` | Export data in a specified format to a specified location. | - |
+| `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
+| `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
 | `tag` | Add or remove tags from data matching the ids or filter. | `ids`, `filter` |
 | `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
@@ -513,31 +515,32 @@ done
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--destination` | Output directory for downloaded data. | `export` | **Required** |
-| `--data-type` | Data type to be downloaded: either binary or tabular. | `export`| **Required** |
-| `--component-name` | Filter by specified component name. | `export`, `delete`, `tag filter`| Optional |
-| `--component-type` | Filter by specified component type. | `export`, `delete`, `tag filter` | Optional |
+| `--destination` | Output directory for downloaded data. | `export tabular`, `export binary` | **Required** |
+| `--component-name` | Filter by specified component name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--component-type` | Filter by specified component type. | `export binary`, `delete`, `tag filter` | Optional |
 | `--component-model` | Filter by specified component model. | `export`, `delete`| Optional |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
-| `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export` | Optional|
-| `--start` | ISO-8601 timestamp indicating the start of the interval. | `export`, `delete`, `dataset`, `tag filter`| Optional |
-| `--end` | ISO-8601 timestamp indicating the end of the interval. | `export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
+| `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
 | `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
 | `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id). |`dataset`, `tag ids` | **Required** |
-| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export`, `delete`, `tag filter`| Optional |
-| `--method` | Filter by specified method. | `export`, `delete`, `tag filter`| Optional |
-| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export`, `delete`, `tag filter`|false |
+| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
+| `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
 | `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged. (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
-| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export`, `delete`, `tag filter`| Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export`, `delete`, `dataset export` | Optional |
-| `--part-id` | Filter by specified part ID. | `export`, `delete`, `tag filter`| Optional |
-| `--part-name` | Filter by specified part name. | `export`, `delete`, `tag filter`| Optional |
-| `--machine-id` | Filter by specified machine ID. | `export`, `delete`, `tag filter` | Optional |
-| `--machine-name` | Filter by specified machine name. | `export`, `delete`, `tag filter`| Optional |
-| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export`, `delete`, `tag ids`, `tag filter` | Optional |
-| `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter` | Optional |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export binary`, `delete`, `dataset export` | Optional |
+| `--part-id` | Filter by specified part ID. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional, **Required** for `export tabular` |
+| `--part-name` | Filter by specified part name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--machine-id` | Filter by specified machine ID. | `export binary`, `delete`, `tag filter` | Optional |
+| `--machine-name` | Filter by specified machine name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export binary`, `delete`, `tag ids`, `tag filter` | Optional |
+| `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
 | `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
 | `--password` | Password for the database user being configured. | `database configure` | **Required** |
+| `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
+| `--resource-subtype` | Resource subtype. Sometimes called "component type". | `export tabular` | **Required** |
 
 ### `locations`
 
