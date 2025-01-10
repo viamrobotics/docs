@@ -66,6 +66,12 @@
         </ul>
     </div>
     <div class="navbar-nav d-none d-lg-block" id="navsearch">
+      {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
+      <button class="docsbutton" id="chatButtonTop" title="Chatbot and support">
+          <span id="chatButtonContent">
+            <span>Ask AI</span>
+          </span>
+      </button>
       {{ partial "search-input.html" . }}
     </div>
   </div>

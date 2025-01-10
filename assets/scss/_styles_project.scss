@@ -1130,6 +1130,23 @@ td > ul, td > ol {
   }
 }
 
+#navsearch > #chatButtonTop {
+  padding: 0.125rem 0.75rem;
+  margin: 0px;
+  margin-right: 1rem;
+  height: 40px;
+  background-color: black;
+  color: white;
+  min-width: 70px;
+}
+
+#navSearchBar {
+  margin: 0px;
+  min-width: 250px;
+  max-width: 250px;
+  width: 250px;
+}
+
 #scrollButton, #chatButton {
   position: sticky;
   left: 100%;
@@ -2748,7 +2765,13 @@ nav {
 }
 
 #navsearch {
-  min-width: 250.633px;
+  min-width: 350px;
+}
+
+@media (min-width: 992px) {
+  .d-lg-block {
+    display: flex !important;
+  }
 }
 
 span.section-overview {
