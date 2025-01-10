@@ -56,7 +56,7 @@ Give it a name.
 Click **Add widget** and select the appropriate widget for your machine.
 Repeat as many times as necessary.
 
-Click **Add widget** and add a **GPS** widget for a movement sensor, a **stat** widget for a sensor, and a **time series** widget for any component that supports capturing numeric data.
+Click **Add widget** and add a **GPS** widget for any position-reporting sensor, a **stat** widget for current readings from a sensor, or a **time series** widget to graph data for any component that supports capturing numeric data.
 
 {{% /tablestep %}}
 {{% tablestep %}}
