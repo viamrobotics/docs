@@ -61102,7 +61102,7 @@ const TP = Z(ebe), tbe = D.forwardRef(
   return /* @__PURE__ */ m.jsxs(up.Container, { w: "100%", onClick: e, children: [
     /* @__PURE__ */ m.jsxs(Ee, { alignItems: "center", minW: "0px", children: [
       /* @__PURE__ */ m.jsx(up.Icon, { mr: 2, children: /* @__PURE__ */ m.jsx(TP, { className: `${X}-search-bar-trigger__search-icon` }) }),
-      /* @__PURE__ */ m.jsx(up.Text, { children: i || "Search for anything..." })
+      /* @__PURE__ */ m.jsx(up.Text, { children: i || "Search..." })
     ] }),
     t && r && /* @__PURE__ */ m.jsx(up.Kbd, { children: /* @__PURE__ */ m.jsx(LO, { openShortcutKey: t }) })
   ] });
