@@ -484,6 +484,7 @@ If you would like to test your detector or classifier with existing images, load
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionClient
+from viam.media.utils.pil import pil_to_viam_image
 from PIL import Image
 
 robot = await connect()
@@ -491,7 +492,8 @@ robot = await connect()
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Load an image
-img = Image.open('test-image.png')
+pil_img = Image.open('test-image.png')
+img = pil_to_viam_image(pil_img)
 
 # Apply the detector to the image
 detections_from_image = await my_detector.get_detections(img)
