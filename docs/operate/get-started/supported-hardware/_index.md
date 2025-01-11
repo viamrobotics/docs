@@ -117,7 +117,7 @@ In addition to physical hardware, there are "virtual" hardware modules that do n
 - [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
 - [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
 
-These software-only "hardware" modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
+These software-only modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
 
 ## Add software services to your machine
 
@@ -138,6 +138,9 @@ To add a service to your machine:
 
 ## How modules run
 
-Modules run alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
+Modules for 64-bit architecture run alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
+
+For microcontrollers, a single firmware build that includes the micro-RDK and one or more modules must be flashed onto the device.
+Note that in order to add the module successfully to the machine’s configuration, the module needs to exist in the firmware build.

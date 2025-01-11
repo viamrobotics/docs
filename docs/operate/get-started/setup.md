@@ -42,7 +42,6 @@ Viam can run on any computer that runs one of the following operating systems:
 Viam also offers a lightweight binary to support the following 32-bit microcontrollers:
 
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
-- ESP32-WROOM Series (until v0.1.7)
 
 ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 4MB flash to work with Viam.
 
