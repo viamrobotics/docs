@@ -82,7 +82,7 @@ Modules in the list above are officially supported and maintained by Viam if and
 
 The following is a selection of components (some built-ins and some modules) written for use with `viam-micro-server`.
 To use any of the built-in components, configure them according to their readmes.
-To use a module with `viam-micro-server`, you need to [build firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module/).
+To use a module with `viam-micro-server`, you can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
 | Model | Description | Built-in |
@@ -108,6 +108,8 @@ After [installing `viam-server` or `viam-micro-server`](/operate/get-started/set
    If you add a built-in component, there will only be a configuration card for the component.
 
    For details on configuring versioning and environment variables for modules, see [Modular Resource and Module Configuration Details](/operate/reference/module-configuration/).
+
+   Note that for microcontrollers, in order to add a module successfully to the machine’s configuration, the module needs to exist in the [firmware build](operate/get-started/supported-hardware/).
 
 ### Configure virtual hardware components
 
@@ -142,5 +144,4 @@ Modules for 64-bit architecture run alongside [`viam-server`](/operate/reference
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
 
-For microcontrollers, a single firmware build that includes the micro-RDK and one or more modules must be flashed onto the device.
-Note that in order to add the module successfully to the machine’s configuration, the module needs to exist in the firmware build.
+For microcontrollers, you must flash a [firmware build of `viam-micro-server`](operate/get-started/other-hardware/micro-module/) that includes the micro-RDK and one or more modules onto your device.
