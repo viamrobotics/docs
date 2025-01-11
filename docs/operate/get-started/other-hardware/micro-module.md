@@ -37,7 +37,7 @@ The instructions below are for configuring a development environment in order to
 
 ## Required software
 
-The micro-RDK (from which `viam-micro-server` is built) is written in Rust.
+The [micro-RDK](https://github.com/viamrobotics/micro-rdk) (from which `viam-micro-server` is built) is written in Rust.
 To be able to develop for `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
 
 1. Install dependencies:
