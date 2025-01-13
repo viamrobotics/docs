@@ -6,7 +6,6 @@ type: "docs"
 tags: ["vision", "computer vision", "CV", "services"]
 description: "Give commands to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using."
 aliases:
-  - /services/vision/
   - /ml/vision/detection/
   - /ml/vision/classification/
    - /ml/vision/segmentation/

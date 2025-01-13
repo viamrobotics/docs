@@ -8,6 +8,7 @@ modulescript: true
 aliases:
   - /how-tos/detect-people/
   - /how-tos/detect-color/
+  - /services/vision/
 description: "Run inference on a model with a vision service or an SDK."
 ---
 
