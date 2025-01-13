@@ -2210,7 +2210,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### RotateKey
 
-Rotate an [API key](/cloud/rbac/#api-keys).
+Rotate an [API key](/manage/manage/access/#rotate-an-api-key).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

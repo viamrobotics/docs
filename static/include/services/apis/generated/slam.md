@@ -143,7 +143,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties):
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): 
 Information about the current SLAM session.
 An object containing four fields:
 
