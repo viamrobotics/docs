@@ -1,5 +1,5 @@
 ---
-linkTitle: "Capture edge data"
+linkTitle: "Capture and sync edge data"
 title: "Capture and sync edge data"
 tags: ["data management", "data", "services"]
 weight: 10
@@ -35,7 +35,7 @@ aliases:
   - /how-tos/collect-data/
 ---
 
-You can use data management service to capture and sync data from your machine to the cloud.
+You can use the data management service to capture and sync data from your machine to the cloud.
 You can capture data from [supported components and services](#supported-resources) or from arbitrary folders on your machines.
 
 ## Configure the data management service
