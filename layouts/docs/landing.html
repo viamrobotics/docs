@@ -20,13 +20,8 @@
             {{ partial "sidebar.html" . }}
           </aside>
           <main class="col-12 col-md-12 col-xl-12 pl-md-12" role="main">
-                <div id="rss-feed">
-                <a target="_blank" title="Open RSS feed" aria-label="Open RSS feed" href="{{ .Permalink }}feed.xml">
-                    <p><i class="fas fa-rss"></i> RSS Feed</p>
-                </a>
-                </div>
-                  {{ .Render "content" }}
-            </main>
+            {{ .Render "content" }}
+          </main>
         </div>
         {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
         <button class="docsbutton" id="chatButton" title="Chatbot and support">
