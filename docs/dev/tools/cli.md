@@ -492,8 +492,8 @@ done
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
-| `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
+| `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. Downloads as two directories, first as <file><destination>/data</file>, which would contain the file or files and second as <file><destination>/metadata</file>, which has the metadata documents related to the files. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
+| `export binary` | Export binary or image data to a specified location. Binary data is downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
 | `tag` | Add or remove tags from data matching the ids or filter. | `ids`, `filter` |
 | `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
