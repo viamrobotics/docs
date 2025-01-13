@@ -296,7 +296,7 @@ vision,CaptureAllFromCamera,,capture_all_from_camera,CaptureAllFromCamera,
 vision,Reconfigure,,,Reconfigure,
 vision,DoCommand,,do_command,DoCommand,doCommand
 vision,GetResourceName,,get_resource_name,,getResourceName
-vision,GetProperties,,get_properties,GetProperties,
+vision,GetProperties,,get_properties,GetProperties,properties
 vision,Close,,close,Close,
 
 ## App
