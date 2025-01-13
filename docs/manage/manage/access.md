@@ -98,13 +98,6 @@ You can also remove the user by clicking on **Remove user**.
 
 You can remove any organization except the primary owner from the shared list by clicking the **X** to the right of the location in the shared list.
 
-## Rotate an API key
-
-If you ever need to rotate an API key, click on the **Generate Key** button on the organization setting page to generate a new key.
-
-Viam supports flexible key rotation with up to two keys in use at one time.
-After generating a new secret key, update all references to the key in your code as soon as possible and then remove the old key.
-
 ## Collaborate safely
 
 When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.

@@ -803,7 +803,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotAPIKeys
 
-Gets the [API keys](/cloud/rbac/#api-keys) for the machine.
+Gets the [API keys](/operate/control/api-key/) for the machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2140,7 +2140,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### CreateKey
 
-Create a new [API key](/cloud/rbac/#api-keys).
+Create a new [API key](/operate/control/api-key/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2184,7 +2184,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### DeleteKey
 
-Delete an [API key](/cloud/rbac/#api-keys).
+Delete an [API key](/operate/control/api-key/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
