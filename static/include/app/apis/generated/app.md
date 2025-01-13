@@ -803,7 +803,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotAPIKeys
 
+<<<<<<< HEAD
 Gets the [API keys](/operate/control/api-key/) for the machine.
+=======
+Gets the [API keys](/operate/control/api-keys/) for the machine.
+>>>>>>> e7a4cb207 (Add API key page)
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2140,7 +2144,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### CreateKey
 
-Create a new [API key](/operate/control/api-key/).
+Create a new [API key](/operate/control/api-keys/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
