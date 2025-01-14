@@ -26,7 +26,7 @@ aliases:
 This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
-If you only want to install and use `viam-micro-server`, follow the normal [setup instructions](/operate/get-started/setup/) instead.
+If you only want to install the pre-built `viam-micro-server` firmware with a default set of modules, follow the normal [setup instructions](/operate/get-started/setup/) instead.
 {{< /alert >}}
 
 The instructions below are for configuring a development environment in order to:
@@ -37,7 +37,8 @@ The instructions below are for configuring a development environment in order to
 
 ## Required software
 
-`viam-micro-server` is written in Rust. To be able to develop for `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
+The [micro-RDK](https://github.com/viamrobotics/micro-rdk) (from which `viam-micro-server` is built) is written in Rust.
+To be able to develop for `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
 
 1. Install dependencies:
 

@@ -82,7 +82,7 @@ Modules in the list above are officially supported and maintained by Viam if and
 
 The following is a selection of components (some built-ins and some modules) written for use with `viam-micro-server`.
 To use any of the built-in components, configure them according to their readmes.
-To use a module with `viam-micro-server`, you need to [build firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module/).
+To use a module with `viam-micro-server`, you can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
 | Model | Description | Built-in |
@@ -109,6 +109,8 @@ After [installing `viam-server` or `viam-micro-server`](/operate/get-started/set
 
    For details on configuring versioning and environment variables for modules, see [Modular Resource and Module Configuration Details](/operate/reference/module-configuration/).
 
+   Note that for microcontrollers, in order to add a module successfully to the machine’s configuration, the module needs to exist in the [firmware build](/operate/get-started/other-hardware/micro-module/).
+
 ### Configure virtual hardware components
 
 In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
@@ -117,7 +119,7 @@ In addition to physical hardware, there are "virtual" hardware modules that do n
 - [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
 - [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
 
-These software-only "hardware" modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
+These software-only modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
 
 ## Add software services to your machine
 
@@ -138,6 +140,8 @@ To add a service to your machine:
 
 ## How modules run
 
-Modules run alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
+Modules for 64-bit architecture run alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
+
+For microcontrollers, you must flash a [firmware build of `viam-micro-server`](/operate/get-started/other-hardware/micro-module/) that includes the micro-RDK and one or more modules onto your device.
