@@ -1,1 +1,1 @@
-Rotate an [API key](/manage/manage/access/#rotate-an-api-key).
+Rotate an [API key](/operate/control/api-keys/#rotate-an-api-key).

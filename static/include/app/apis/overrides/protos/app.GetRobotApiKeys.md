@@ -1,1 +1,1 @@
-Gets the [API keys](/cloud/rbac/#api-keys) for the machine.
+Gets the [API keys](/operate/control/api-keys/) for the machine.
