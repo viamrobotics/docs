@@ -166,6 +166,8 @@ if len(detections) > 0 {
 }
 ```
 
+Import `"go.viam.com/rdk/utils"` at the beginning of your file.
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}
@@ -357,6 +359,8 @@ if len(classifications) > 0 {
   logger.Info(classifications[0])
 }
 ```
+
+Import `"go.viam.com/rdk/utils"` at the beginning of your file.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
