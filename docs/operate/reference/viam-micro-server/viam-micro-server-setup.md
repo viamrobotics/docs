@@ -110,6 +110,9 @@ However, if the correct port has been selected, try the following:
    2. With the above button held down, select the correct serial port.
    3. Press and hold down the "EN" and "Boot" buttons at the same time. Then release both.
 
+If this doesn't work, try wiggling or reattaching the connections on both ends of the data cable connecting your ESP32 to your computer.
+You can also try using a different cable entirely; make sure it is a data-compatible cable.
+
 You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
 
 {{< snippet "social.md" >}}
