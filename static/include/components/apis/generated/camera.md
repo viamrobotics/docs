@@ -67,34 +67,30 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-{{% alert title="Info" color="info" %}}
-
-Unlike most Viam [component APIs](/dev/reference/apis/#component-apis), the methods of the Go camera client do not map exactly to the names of the other SDK's camera methods.
-To get an image in the Go SDK, you first need to construct a `Stream` and then you can get the next image from that stream.
-
-{{% /alert %}}
-
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `errHandlers` [(...gostream.ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors.
+- `mimeType` [(string)](https://pkg.go.dev/builtin#string): The desired mime type of the image. This does not guarantee output type.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(gostream.VideoStream)](https://pkg.go.dev/go.viam.com/rdk/gostream#VideoStream): A `VideoStream` that streams video until closed.
+- [([]byte)](https://pkg.go.dev/builtin#byte): The frame as bytes.
+- [(ImageMetadata)](https://pkg.go.dev/go.viam.com/rdk/components/camera#ImageMetadata): The associated metadata, containing the image mime type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(machine, "my_camera")
+imageBytes, mimeType, err := myCamera.Image(context.Background(), utils.MimeTypeJPEG, nil)
+```
 
-// gets the stream from a camera
-stream, err := myCamera.Stream(context.Background())
+You can also directly decode as an `Image.Image` with the camera's `DecodeImageFromCamera` function:
 
-// gets an image from the camera stream
-img, release, err := stream.Next(context.Background())
-defer release()
+```go {class="line-numbers linkable-line-numbers"}
+myCamera, err := camera.FromRobot(machine, "my_camera")
+img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCamera)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
@@ -448,6 +444,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final myCameraResourceName = myCamera.getResourceName("my_camera");
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Camera/getResourceName.html).
 
