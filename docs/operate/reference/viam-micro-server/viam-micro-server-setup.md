@@ -15,11 +15,11 @@ For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.co
 
 For code examples and more information on `viam-micro-server`, see [GitHub](https://github.com/viamrobotics/micro-rdk).
 
-## SDK usage recommendation
+## Unstable connection
 
-If you run [control code](/dev/reference/sdks/) to control your `viam-micro-server` machine, you may experience instability.
-If the connection to the ESP32 with an SDK is unstable, we recommend the following changes to the default settings in your connection code.
-This will disable the SDK background task that monitors the connection to `viam-micro-server`, saving bandwidth.
+Because microcontrollers are more resource-constrained than single-board computers or other computers, when you run [control code](/dev/reference/sdks/) to control your `viam-micro-server` machine, you may experience instability.
+If your connection is unstable, we recommend changing the default settings by making the following changes to your connection code.
+This code will disable the SDK background task that monitors the connection to `viam-micro-server`, reducing processing demands and improving the reliability of connection establishment.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -81,25 +81,23 @@ if err != nil {
 {{% /tab %}}
 {{% /tabs %}}
 
-## Troubleshooting
-
-### Error: IceTransportClosed
+## Error: IceTransportClosed
 
 If you are trying to connect to an ESP32 and the connection is unstable with the repeating error `E (412486) micro_rdk::common::webrtc::ice: closing ice agent with error IceTransportClosed`, you have opened too many connections to the ESP32, which has a maximum of 3 connections by default.
 Make sure you only have one tab with your machine's page open to limit the number of connections to your ESP32.
 
-### Linux port permissions
+## Linux port permissions
 
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.
 If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, restart your terminal, and try again.
 
-### MacOS executable permissions
+## MacOS executable permissions
 
 When using a machine running a version of MacOS, the user is blocked from running the executable by default.
 To fix this, **Control+Click** the binary in Finder and then, in the following two prompts select **Open**.
 Close whatever terminal window this opens to be able to run the installer.
 
-### Error: FlashConnect
+## Error: FlashConnect
 
 This may occur because the serial port chosen if/when prompted is incorrect.
 However, if the correct port has been selected, try the following:
@@ -117,7 +115,7 @@ You can find additional assistance in the [Troubleshooting section](/manage/trou
 
 {{< snippet "social.md" >}}
 
-### Ubuntu not recognizing the microcontroller
+## Ubuntu not recognizing the microcontroller
 
 If you’re trying to connect a microcontroller using serial port to an Ubuntu system and the computer doesn’t seem to be recognizing the microcontroller, check if the `brltty` service or its secondary service `brltty-udev` are active (`brltty` is a service installed by default that provides access to a braille display):
 
