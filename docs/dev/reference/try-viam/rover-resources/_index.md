@@ -49,3 +49,7 @@ You must purchase the following hardware separately:
 {{< /alert >}}
 
 ### Next steps
+
+{{< cards >}}
+{{% card link="/dev/reference/try-viam/rover-resources/rover-tutorial/" %}}
+{{< /cards >}}
