@@ -38,3 +38,9 @@ See [Permissions](/manage/manage/rbac/) for information about the privilege each
 To change the entities it is able to access, click **+ Grant additional access**.
 Select which organization, location, or machine you want the key to grant access to.
 Click **Choose** to confirm your selection.
+
+## Rotate an API key
+
+If you ever need to rotate an API key, click on the **Generate Key** button on the organization setting page to generate a new key.
+
+Viam supports flexible key rotation with up to two keys in use at one time. After generating a new secret key, update all references to the key in your code as soon as possible and then remove the old key.
