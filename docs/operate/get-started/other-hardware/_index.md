@@ -547,7 +547,7 @@ It's a good idea to test your module locally before uploading it to the [Viam Re
 
 {{% expand "Prerequisite: A running machine connected to the Viam app." %}}
 
-You can write a module without a machine, but to test your module you'll need a machine.
+You can write a module without a machine, but to test your module you'll need a [machine](/operate/get-started/setup/).
 Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
 
 {{% snippet "setup.md" %}}
@@ -560,25 +560,56 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 
 {{< tabs >}}
 {{% tab name="Python: pyinstaller (recommended)" %}}
-{{% alert title="Note" color="note" %}}
-To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
-If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
-{{% /alert %}}
 
-From within the <file>hello-world</file> directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
+If you enabled cloud build, use these steps.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
-sh build.sh
-```
+1. Create a <file>reload.sh</file> script in your module directory.
+   You'll use this for local testing and can delete it before you upload your module.
+   Paste the following contents into it and save the file:
 
-This environment is where the local module will run.
-`viam-server` does not need to run inside this environment.
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   #!/usr/bin/env bash
+
+    # bash safe mode. look at `set --help` to see what these are doing
+    set -euxo pipefail
+
+    cd $(dirname $0)
+    MODULE_DIR=$(dirname $0)
+    VIRTUAL_ENV=$MODULE_DIR/venv
+    PYTHON=$VIRTUAL_ENV/bin/python
+    ./setup.sh
+
+    # Be sure to use `exec` so that termination signals reach the python process,
+    # or handle forwarding termination signals manually
+    exec $PYTHON src/main.py $@
+   ```
+
+1. Make your reload script executable by running the following command in your module directory:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sudo chmod +x reload.sh
+   ```
+
+1. Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
+
+   ```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
+     "entrypoint": "reload.sh",
+     "first_run": "",
+     "build": {
+       "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py meta.json setup.sh reload.sh",
+       "setup": "./setup.sh",
+       "path": "module.tar.gz",
+       "arch": [
+         "linux/amd64",
+         "linux/arm64"
+       ]
+     }
+   ```
 
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
-Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
+Create a virtual Python environment with the necessary packages by running the setup file from within the module directory:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sh setup.sh
@@ -590,7 +621,7 @@ This environment is where the local module will run.
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-From within the <file>hello-world</file> directory, compile your module into a single executable:
+From within the module directory, compile your module into a single executable:
 
 ```sh {class="command-line" data-prompt="$" data-output="5-10"}
 make setup
@@ -612,9 +643,9 @@ Type in the _absolute_ path on your machine's filesystem to your module's execut
 {{< tabs >}}
 {{% tab name="Python: pyinstaller (recommended)" %}}
 
-Enter the absolute path to the <file>dist/main</file> executable, for example:
+Enter the absolute path to the <file>reload.sh</file> script, for example:
 
-<file>/Users/jessamy/my-python-sensor-module/dist/main</file>
+<file>/Users/jessamy/my-python-sensor-module/reload.sh</file>
 
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
@@ -845,9 +876,32 @@ When packaged in this fashion, you can run the resulting executable on your desi
 
 {{% alert title="Note" color="note" %}}
 To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
+If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
 {{% /alert %}}
 
-The <file>build.sh</file> script packaged a tarball for you when you ran it before [testing](#test-your-module-locally).
+Edit your <file>meta.json</file> file back to its original state, reverting the edits you made for local testing purposes.
+It should resemble the following:
+
+```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
+ "entrypoint": "dist/main",
+ "first_run": "",
+ "build": {
+   "build": "./build.sh",
+   "setup": "./setup.sh",
+   "path": "dist/archive.tar.gz",
+   "arch": [
+     "linux/amd64",
+     "linux/arm64"
+   ]
+ }
+```
+
+From within the module directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+sh build.sh
+```
 
 Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
 If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
