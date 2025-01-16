@@ -279,6 +279,65 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
+### DiscoverComponents
+
+Get a list of discovered potential component configurations, for example listing different supported resolutions. Currently only works for some cameras.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `queries` ([List[viam.proto.robot.DiscoveryQuery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery)) (required): The list of component models to lookup potential configurations for.
+
+**Returns:**
+
+- ([List[viam.proto.robot.Discovery]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery)): A list of discovered potential component configurations.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.robot import DiscoveryQuery
+
+# Define a new discovery query.
+q = DiscoveryQuery(subtype="camera", model="webcam")
+
+# Define a list of discovery queries.
+qs = [q]
+
+# Get component configurations with these queries.
+component_configs = await machine.discover_components(qs)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.discover_components).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery)
+
+**Returns:**
+
+- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Define a new discovery query.
+q := resource.NewDiscoveryQuery(camera.API, resource.Model{Name: "webcam", Family: resource.DefaultModelFamily})
+
+// Define a list of discovery queries and get potential component configurations with these queries.
+out, err := machine.DiscoverComponents(context.Background(), []resource.DiscoveryQuery{q})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### StopAll
 
 Cancel all current and outstanding operations for the machine and stop all actuators and movement.

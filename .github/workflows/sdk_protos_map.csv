@@ -91,15 +91,17 @@ gantry,GetGeometries,,,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 gantry,IsMoving,,is_moving,IsMoving,isMoving
 gantry,Stop,,stop,Stop,stop
+gantry,GetGeometries,,get_geometries,,
 gantry,Reconfigure,,,Reconfigure,
-gantry,DoCommand,,,,doCommand
+gantry,DoCommand,,do_command,,doCommand
 gantry,GetResourceName,,get_resource_name,,getResourceName
 gantry,Close,,close,Close,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
 generic_component,DoCommand,Yes,do_command,DoCommand,doCommand
-# generic_component,GetGeometries,No,,,
+generic_component,GetGeometries,No,get_geometries,,
+generic_component,DoCommand,,do_command,,doCommand
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
 generic_component,GetResourceName,No,get_resource_name,,getResourceName
@@ -128,7 +130,7 @@ input_controller,GetGeometries,,get_geometries,,
 input_controller,RegisterControlCallback,,register_control_callback,RegisterControlCallback,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 input_controller,Reconfigure,,,Reconfigure,
-input_controller,DoCommand,,,,
+input_controller,DoCommand,,do_command,,
 input_controller,GetResourceName,,get_resource_name,,
 input_controller,Close,,close,Close,
 
@@ -161,7 +163,7 @@ movement_sensor,GetProperties,Yes,get_properties,Properties,properties
 movement_sensor,GetAccuracy,No,get_accuracy,Accuracy,accuracy
 movement_sensor,GetLinearAcceleration,Yes,get_linear_acceleration,LinearAcceleration,linearAcceleration
 ## NOTED: Go SDK doesn't appear to implement this:
-# NOT implemented movement_sensor,GetGeometries,No,get_geometries,,
+movement_sensor,GetGeometries,No,get_geometries,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 movement_sensor,GetReadings,Yes,get_readings,Readings,readings
 movement_sensor,Reconfigure,No,,Reconfigure,
@@ -187,6 +189,7 @@ power_sensor,Close,,close,Close,
 sensor,GetReadings,Yes,get_readings,Readings,readings
 # NOT implemented sensor,GetGeometries,No,get_geometries,,
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
+sensor,GetGeometries,,get_geometries,,
 sensor,Reconfigure,No,,Reconfigure,
 # NOT implemented in other languages
 sensor,DoCommand,,,,doCommand
@@ -443,6 +446,7 @@ robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,
 robot,TransformPose,,transform_pose,TransformPose,
 robot,TransformPCD,,,TransformPointCloud,
 robot,StreamStatus,,,,
+robot,DiscoverComponents,,discover_components,DiscoverComponents,
 robot,StopAll,,stop_all,StopAll,
 robot,RestartModule,,,RestartModule,
 robot,StartSession,,,,

@@ -7,6 +7,7 @@
 | [`Home`](/dev/reference/apis/components/gantry/#home) | Run the homing sequence of the gantry to re-calibrate the axes with respect to the limit switches. |
 | [`IsMoving`](/dev/reference/apis/components/gantry/#ismoving) | Get if the gantry is currently moving. |
 | [`Stop`](/dev/reference/apis/components/gantry/#stop) | Stop all motion of the gantry. |
+| [`GetGeometries`](/dev/reference/apis/components/gantry/#getgeometries) | Get all the geometries associated with the gantry in its current configuration, in the frame of the gantry. |
 | [`Reconfigure`](/dev/reference/apis/components/gantry/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/dev/reference/apis/components/gantry/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`GetResourceName`](/dev/reference/apis/components/gantry/#getresourcename) | Get the `ResourceName` for this gantry with the given name. |

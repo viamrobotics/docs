@@ -421,7 +421,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```dart {class="line-numbers linkable-line-numbers"}
 // Example:
-var name = Servo.getResourceName('myServo');
+var name = Servo.getResourceName('my_servo');
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Servo/getResourceName.html).
