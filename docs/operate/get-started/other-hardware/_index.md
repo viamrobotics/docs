@@ -88,7 +88,8 @@ Authenticate your CLI session with Viam using one of the following options:
 {{< readfile "/static/include/how-to/auth-cli.md" >}}
 {{< /expand >}}
 
-1. Run the `module generate` command in your terminal:
+1. Run the `module generate` command in your terminal.
+   If you are writing your module using Python, you must have Python version 3.11 or newer installed on your computer for this command to work:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module generate

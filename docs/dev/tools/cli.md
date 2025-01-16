@@ -649,6 +649,10 @@ viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 ```
 
+{{% alert title="Note" color="note" %}}
+If you are writing your module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
+{{% /alert %}}
+
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}

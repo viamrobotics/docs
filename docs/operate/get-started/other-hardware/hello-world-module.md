@@ -40,6 +40,12 @@ Authenticate your CLI session with Viam using one of the following options:
 {{% snippet "setup.md" %}}
 
 {{% /expand%}}
+{{< expand "For Python users: Make sure you have at least Python 3.11" >}}
+
+If you plan to write your module using Python, you need Python version 3.11 or newer installed on your computer to use the code generation tool in this guide.
+You can check by running `python3 --version` or `python --version` in your terminal.
+
+{{< /expand >}}
 
 ## Create a test script
 
