@@ -113,7 +113,7 @@ For more information, see [Configure an esp32-camera](/operate/reference/compone
 
 {{% changelog date="2024-08-26" color="changed" title="Micro-RDK now called viam-micro-server" %}}
 
-The lightweight version of `viam-server` that is built from the micro-RDK is now referred to as `viam-micro-server`.
+The lightweight version of `viam-server` that is built from the Micro-RDK is now referred to as `viam-micro-server`.
 For more information, see [viam-micro-server](/operate/reference/viam-micro-server/).
 
 {{% /changelog %}}

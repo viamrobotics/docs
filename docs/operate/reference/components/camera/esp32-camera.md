@@ -5,7 +5,7 @@ weight: 33
 type: "docs"
 description: "Configure a camera connected to an esp32 board, initialized and configured using esp-idf."
 images: ["/icons/components/camera.svg"]
-tags: ["camera", "components", "micro-RDK"]
+tags: ["camera", "components", "Micro-RDK"]
 component_description: "An `OV2640` or `OV3660` camera connected to an esp32 board."
 micrordk_component: true
 toc_hide: true
@@ -13,7 +13,7 @@ date: "2024-08-28"
 aliases:
   - /components/camera/esp32-camera/
 # updated: ""  # When the content was last entirely checked
-# SMEs: Matt Perez, micro-RDK team
+# SMEs: Matt Perez, Micro-RDK team
 ---
 
 `esp32-camera` is the camera model that supports all cameras that work with Espressif's [esp32-camera drivers](https://github.com/espressif/esp32-camera) including:

@@ -144,4 +144,4 @@ Modules for 64-bit architecture run alongside [`viam-server`](/operate/reference
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
 
-For microcontrollers, you must flash a [firmware build of `viam-micro-server`](/operate/get-started/other-hardware/micro-module/) that includes the micro-RDK and one or more modules onto your device.
+For microcontrollers, you must flash a [firmware build of `viam-micro-server`](/operate/get-started/other-hardware/micro-module/) that includes the Micro-RDK and one or more modules onto your device.
