@@ -86,7 +86,7 @@ swap:
   make sure: ensure
   matrices: matrixes
   meta-data: metadata
-  microRDK: micro-RDK
+  microRDK: Micro-RDK
   name space: namespace
   nameserver: name server
   need to: must
