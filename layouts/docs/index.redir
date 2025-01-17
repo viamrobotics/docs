@@ -1,0 +1,6 @@
+# Netlify redirects. See https://www.netlify.com/docs/redirects/
+{{ range $p := .Site.AllPages }}
+{{- range .Aliases -}}
+{{ . }} {{ $p.RelPermalink }}
+{{ end }}
+{{- end -}}
