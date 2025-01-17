@@ -7,6 +7,6 @@ short_description: The lightweight version of viam-server that can run on ESP32 
 
 The lightweight version of `viam-server`, built for microcontrollers.
 `viam-micro-server` is a set of open-source utilities which run on your microcontroller and provides Viam functionality to your machine.
-`viam-micro-server` is built from the micro-RDK.
+`viam-micro-server` is built from the Micro-RDK.
 
 For more information see [Architecture](/operate/reference/viam-micro-server/).

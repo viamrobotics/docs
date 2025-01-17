@@ -11,7 +11,7 @@ aliases:
 component_description: "A camera model for testing."
 micrordk_component: true
 toc_hide: true
-# SMEs: Matt Perez, micro-RDK team
+# SMEs: Matt Perez, Micro-RDK team
 ---
 
 A `fake` camera is a camera model for testing.
