@@ -49,9 +49,17 @@ weight = 1
     ordered = false
     startLevel = 2
 
+disableAliases = false
+
 [outputs]
-home = ["HTML"]
+home = ["HTML", "REDIR"]
 section = ["HTML", "Typesense"]
+
+[outputFormats.REDIR]
+mediaType = "text/netlify"
+baseName = "_redirects"
+isPlainText = true
+notAlternative = true
 
 [outputFormats.Typesense]
 baseName = "typesense"
@@ -62,6 +70,10 @@ notAlternative = true
 [outputFormats.RSS]
 mediaType = "application/rss+xml"
 baseName = "feed"
+
+[mediaTypes]
+[mediaTypes."text/netlify"]
+delimiter = ""
 
 [params]
 copyright = "Viam, Inc. - Documentation is licensed under Creative Commons ShareAlike License. "

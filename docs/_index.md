@@ -12,6 +12,7 @@ sitemap:
   priority: 1.0
 outputs:
   - html
+  - REDIR
 imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
 noedit: true
