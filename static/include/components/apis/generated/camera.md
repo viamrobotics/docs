@@ -70,13 +70,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `mimeType` [(string)](https://pkg.go.dev/builtin#string): The desired mime type of the image. This does not guarantee output type.
+- `mimeType` [(string)](https://pkg.go.dev/builtin#string): The desired MIME type of the image. This does not guarantee output type.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
 - [([]byte)](https://pkg.go.dev/builtin#byte): The frame as bytes.
-- [(ImageMetadata)](https://pkg.go.dev/go.viam.com/rdk/components/camera#ImageMetadata): The associated metadata, containing the image mime type.
+- [(ImageMetadata)](https://pkg.go.dev/go.viam.com/rdk/components/camera#ImageMetadata): The associated metadata, containing the image MIME type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -103,11 +103,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `mimeType` [MimeType](https://flutter.viam.dev/viam_sdk/MimeType-class.html)? (optional)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
 
 **Example:**
 
@@ -246,11 +246,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
 
 **Example:**
 
@@ -311,7 +311,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)>
 
 **Example:**
 
@@ -361,11 +361,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 

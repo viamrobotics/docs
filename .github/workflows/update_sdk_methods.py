@@ -1411,6 +1411,10 @@ def parse(type, names):
 
                         ## Determine method link:
                         method_link = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                        # HACK: link 404s
+                        if method_link == "https://api.flutter.dev/flutter/dart-core/Future-class.html":
+                            print("faulty link detected")
+                            method_link = "https://api.flutter.dev/flutter/dart-async/Future-class.html"
                         this_method_dict["method_link"] = method_link
 
                         ## While some method info is available to us on this current Flutter SDK page, the code sample is only found on the

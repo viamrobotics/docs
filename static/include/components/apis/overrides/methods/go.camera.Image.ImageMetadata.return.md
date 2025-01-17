@@ -1,0 +1,1 @@
+The associated metadata, containing the image MIME type.

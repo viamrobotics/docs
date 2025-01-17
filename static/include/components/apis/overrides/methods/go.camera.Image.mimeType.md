@@ -1,0 +1,1 @@
+The desired MIME type of the image. This does not guarantee output type.
