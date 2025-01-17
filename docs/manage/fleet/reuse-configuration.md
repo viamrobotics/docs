@@ -26,7 +26,6 @@ Fragments are a way of sharing and managing [machine configurations](/operate/ge
 
 For example, if you have a fleet of rovers that uses the same hardware, you could use a fragment to configure the motors, base component, camera, and all other resources for all rovers.
 If some of the rovers have a slightly different configuration, you can overwrite the configuration for just those {{< glossary_tooltip term_id="resource" text="resources" >}} of those rovers.
-
 If one rover has an arm attached, you can add the rover configuration fragment (including the motors, camera, and base components), and then configure the arm on just that one rover.
 
 ## Create a fragment
@@ -40,6 +39,8 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 Start by configuring one of your machines.
 
 In the [Viam app](https://app.viam.com), use the **CONFIGURE** tab to build a configuration for all resources you want to use on all your machines.
+You can use all available resources except [triggers](/data-ai/data/advanced/alert-data/) in the configuration for your machine.
+This means you can also use fragments inside a fragment.
 
 {{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
 
