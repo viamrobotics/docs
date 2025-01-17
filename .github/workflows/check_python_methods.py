@@ -30,11 +30,11 @@ ignore_apis = [
 ]
 
 services_page_mapping = {
-    "motion": "services/motion",
-    "navigation": "services/navigation",
-    "slam": "services/slam",
-    "vision": "services/vision",
-    "ml": "services/ml"
+    "motion": "dev/reference/apis/services/motion/",
+    "navigation": "dev/reference/apis/services/navigation",
+    "slam": "dev/reference/apis/services/slam",
+    "vision": "dev/reference/apis/services/vision",
+    "ml": "dev/reference/apis/services/ml"
 }
 
 def is_unimplemented(obj):
@@ -246,12 +246,12 @@ def parse(type, names):
                         soup2 = BeautifulSoup(fp, 'html.parser')
         else:
             if type == "app" or type == "robot":
-                soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
+                soup2 = make_soup(f"https://docs.viam.com/dev/reference/apis/{service}/")
             else:
                 if service in services_page_mapping.keys():
                     soup2 = make_soup(f"https://docs.viam.com/{services_page_mapping[service]}/")
                 else:
-                    soup2 = make_soup(f"https://docs.viam.com/configure/{type}/{service}/")
+                    soup2 = make_soup(f"https://docs.viam.com/dev/reference/apis/{type}/{service}/")
 
         # Find all links on Docs site soup
         all_links = soup2.find_all('a')

@@ -52,7 +52,7 @@ myBoard, err := board.FromRobot(robot, "my_board")
 pin, err := myBoard.GPIOPinByName("15")
 
 // Set the pin to high.
-err := pin.Set(context.Background(), "true", nil)
+err = pin.Set(context.Background(), true, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -135,7 +135,7 @@ myBoard, err := board.FromRobot(robot, "my_board")
 pin, err := myBoard.GPIOPinByName("15")
 
 // Get if it is true or false that the state of the pin is high.
-high := pin.Get(context.Background(), nil)
+high, err := pin.Get(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -225,7 +225,7 @@ myBoard, err := board.FromRobot(robot, "my_board")
 pin, err := myBoard.GPIOPinByName("15")
 
 // Returns the duty cycle.
-duty_cycle := pin.PWM(context.Background(), nil)
+duty_cycle, err := pin.PWM(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -309,7 +309,7 @@ myBoard, err := board.FromRobot(robot, "my_board")
 pin, err := myBoard.GPIOPinByName("15")
 
 // Set the duty cycle to .6, meaning that this pin will be in the high state for 60% of the duration of the PWM interval period.
-err := pin.SetPWM(context.Background(), .6, nil)
+err = pin.SetPWM(context.Background(), .6, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -480,7 +480,7 @@ myBoard, err := board.FromRobot(robot, "my_board")
 pin, err := myBoard.GPIOPinByName("15")
 
 // Set the PWM frequency of this pin to 1600 Hz.
-high := pin.SetPWMFreq(context.Background(), 1600, nil)
+err = pin.SetPWMFreq(context.Background(), 1600, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -734,7 +734,7 @@ myBoard, err := board.FromRobot(robot, "my_board")
 analog, err := myBoard.AnalogByName("my_example_analog")
 
 // Set the pin to value 48.
-err := analog.Write(context.Background(), 48, nil)
+err = analog.Write(context.Background(), 48, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
@@ -1291,6 +1291,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final myBoardResourceName = myBoard.getResourceName("my_board");
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Board/getResourceName.html).
 
