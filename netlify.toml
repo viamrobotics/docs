@@ -1,0 +1,5 @@
+[[plugins]]
+
+# This must be the lst plugin in this list
+# https://github.com/munter/netlify-plugin-hashfiles#readme
+package = "netlify-plugin-hashfiles"
