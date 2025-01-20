@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [build]
   publish = "public"
 
@@ -11,6 +12,13 @@
 	srcdir = "public"
 
 [[plugins]]
+=======
+[[plugins]]
+  # https://github.com/Tom-Bonnike/netlify-plugin-inline-critical-css#readme
+  package = "netlify-plugin-inline-critical-css"
+
+[[plugins]]
+>>>>>>> 362585c37 (Inline critical css)
   # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
   package = "netlify-plugin-minify-html"
 
