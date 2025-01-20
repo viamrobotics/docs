@@ -8,7 +8,6 @@ description: "Manage and control your machines from the command line."
 aliases:
   - "/build/program/cli"
   - /manage/cli/
-  - /fleet/cli/
   - /cli/
 images: ["/platform/cli.png"]
 date: "2024-08-23"
