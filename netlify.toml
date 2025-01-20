@@ -50,7 +50,7 @@
 	]
 
 [[plugins]]
-  # https://github.com/netlify-labs/netlify-plugin-a11y#readme
+  # https://github.com/eggnstone/netlify-plugin-no-more-404/blob/master/manifest.yaml
   package = "@eggnstone/netlify-plugin-no-more-404"
 
   # all inputs are optional, we just show you the defaults below
