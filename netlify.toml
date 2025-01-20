@@ -7,8 +7,6 @@
 	[plugins.inputs]
 	# If it should show more verbose logs (optional, default = true)
 	debug = true
-	# Relative path to source directory in case you use Hugo's "--s" option
-	srcdir = "public"
 
 [[plugins]]
   # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
@@ -30,3 +28,23 @@
     removeComments = true
     collapseInlineTagWhitespace = true
 
+[[plugins]]
+  # https://github.com/cdeleeuwe/netlify-plugin-submit-sitemap#readme
+  package = "netlify-plugin-submit-sitemap"
+
+	[plugins.inputs]
+
+	# The base url of your site (optional, default = main URL set in Netlify)
+	baseUrl = "https://docs.viam.com"
+
+	# Path to the sitemap URL (optional, default = /sitemap.xml)
+	sitemapPath = "/sitemap.xml"
+
+	# Time in seconds to not submit the sitemap after successful submission
+	ignorePeriod = 0
+
+	# Enabled providers to submit sitemap to (optional, default = 'google', 'yandex'). Possible providers are currently only 'google', 'yandex'.
+	providers = [
+		"google",
+		"yandex"
+	]
