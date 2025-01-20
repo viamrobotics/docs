@@ -18,6 +18,18 @@ Data capture and cloud sync works differently for `viam-server` and `viam-micro-
 
 The data is captured locally on the machine's storage and, by default, stored in the `~/.viam/capture` directory.
 
+{{% expand "Can't find the directory data is stored in? Click here." %}}
+
+The relative path for the data capture directory depends on where `viam-server` is run from, as well as the operating system of the machine.
+
+To find the `$HOME` vale, check your machine's logs on startup which will log it in the environment variables:
+
+```sh
+2025-01-15T14:27:26.073Z	INFO	rdk	server/entrypoint.go:77	Starting viam-server with following environment variables	{"HOME":"/home/johnsmith"}
+```
+
+{{% /expand%}}
+
 If a machine restarts for any reason, data capture automatically resumes and any data already stored but not yet synced is synced.
 
 The service can capture data from multiple resources at the same or different frequencies.
