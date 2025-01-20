@@ -57,10 +57,10 @@
   [plugins.inputs]
 
   # either "warn" or "error"
-  on404 = "error"
+  failBuildOnError = true
 
   # change this key to a new one any time you need to restart from scratch
   cacheKey = "Jan202025"
 
   # (for development) turn true for extra diagnostic logging
-  debugMode = true
+  debug = true
