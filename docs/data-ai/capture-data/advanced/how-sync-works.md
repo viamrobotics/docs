@@ -25,7 +25,7 @@ The relative path for the data capture directory depends on where `viam-server` 
 To find the `$HOME` vale, check your machine's logs on startup which will log it in the environment variables:
 
 ```sh
-2025-01-15T14:27:26.073Z	INFO	rdk	server/entrypoint.go:77	Starting viam-server with following environment variables	{"HOME":"/home/johnsmith"}
+2025-01-15T14:27:26.073Z    INFO    rdk    server/entrypoint.go:77    Starting viam-server with following environment variables    {"HOME":"/home/johnsmith"}
 ```
 
 {{% /expand%}}
