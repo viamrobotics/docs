@@ -6,7 +6,7 @@
 
 	[plugins.inputs]
 	# If it should show more verbose logs (optional, default = true)
-	debug = true
+	debug = false
 
 [[plugins]]
   # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
@@ -48,3 +48,19 @@
 		"google",
 		"yandex"
 	]
+
+[[plugins]]
+  # https://github.com/eggnstone/netlify-plugin-no-more-404/blob/master/manifest.yaml
+  package = "@eggnstone/netlify-plugin-no-more-404"
+
+  # all inputs are optional, we just show you the defaults below
+  [plugins.inputs]
+
+  # either "warn" or "error"
+  failBuildOnError = true
+
+  # change this key to a new one any time you need to restart from scratch
+  cacheKey = "Jan202025"
+
+  # (for development) turn true for extra diagnostic logging
+  debug = true

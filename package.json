@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/google/docsy-example#readme",
   "devDependencies": {
+    "@eggnstone/netlify-plugin-no-more-404": "^1.5.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.31",
     "postcss-cli": "^9.1.0",
