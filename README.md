@@ -1,5 +1,6 @@
 [![published](https://github.com/viamrobotics/docs/actions/workflows/docs.yml/badge.svg)](https://github.com/viamrobotics/docs/actions/workflows/docs.yml)
 [![external link check](https://github.com/viamrobotics/docs/actions/workflows/run-htmltest.yml/badge.svg)](https://github.com/viamrobotics/docs/actions/workflows/run-htmltest.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f7bff5c9-699f-4753-9166-ffa405290d67/deploy-status)](https://app.netlify.com/sites/viam-docs/deploys)
 
 # Welcome to the Viam Documentation
 
