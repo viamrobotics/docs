@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [build]
   publish = "public"
 
@@ -12,12 +11,6 @@
 	srcdir = "public"
 
 [[plugins]]
-=======
-[[plugins]]
-  package = "netlify-plugin-image-optim"
-
-[[plugins]]
->>>>>>> 362585c37 (Inline critical css)
   # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
   package = "netlify-plugin-minify-html"
 
@@ -37,3 +30,23 @@
     removeComments = true
     collapseInlineTagWhitespace = true
 
+[[plugins]]
+  # https://github.com/cdeleeuwe/netlify-plugin-submit-sitemap#readme
+  package = "netlify-plugin-submit-sitemap"
+
+	[plugins.inputs]
+
+	# The base url of your site (optional, default = main URL set in Netlify)
+	baseUrl = "https://docs.viam.com"
+
+	# Path to the sitemap URL (optional, default = /sitemap.xml)
+	sitemapPath = "/sitemap.xml"
+
+	# Time in seconds to not submit the sitemap after successful submission
+	ignorePeriod = 0
+
+	# Enabled providers to submit sitemap to (optional, default = 'google', 'yandex'). Possible providers are currently only 'google', 'yandex'.
+	providers = [
+		"google",
+		"yandex"
+	]
