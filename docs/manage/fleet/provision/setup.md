@@ -446,8 +446,8 @@ sudo ./preinstall.sh /path/to/rootfs
 ### Device not detecting networks
 
 Some systems can't scan for WiFi networks while in hotspot mode, meaning they won't automatically detect networks coming online or into range until the `fallback_timeout` expires.
-The `fallback_timeout` causes your device to exit hotspot mode, at which point your device will be able to detect newly available network(s).
-If your device does not connect to your network, adjust the `fallback_timeout` value in the [`agent-provisioning` configuation](http://localhost:1313/manage/fleet/provision/setup/#configure-agent-provisioning).
+The `fallback_timeout` causes your device to exit hotspot mode, at which point your device will be able to detect newly available networks.
+If your device does not connect to your network, adjust the `fallback_timeout` value in the [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning).
 
 ### Test GRPC components of the provisioning service
 
