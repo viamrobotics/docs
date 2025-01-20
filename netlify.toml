@@ -1,6 +1,5 @@
 [[plugins]]
-  # https://github.com/Tom-Bonnike/netlify-plugin-inline-critical-css#readme
-  package = "netlify-plugin-inline-critical-css"
+  package = "netlify-plugin-image-optim"
 
 [[plugins]]
   # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
