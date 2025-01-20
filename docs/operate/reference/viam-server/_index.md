@@ -157,16 +157,18 @@ If log configurations are applied at a resource level using the `log_configurati
   ],
   "services": [],
   "log": [
-     {
-       "pattern": "rdk.resource_manager",
-       "level": "info",
-     },{
-       "pattern": "rdk.resource_manager.*",
-       "level": "debug",
-     }
-  ]
+    {
+      "pattern": "rdk.resource_manager",
+      "level": "info"
+    },
+    {
+      "pattern": "rdk.resource_manager.*",
+      "level": "debug"
+    }
+  ]
 }
 ```
+
 {{% /expand%}}
 
 #### Disable log deduplication
@@ -195,6 +197,7 @@ To disable log deduplication, set `disable_log_deduplication` in your machine's 
   "disable_log_deduplication": true
 }
 ```
+
 {{% /expand%}}
 
 #### Debugging
