@@ -14,8 +14,7 @@
 [[plugins]]
 =======
 [[plugins]]
-  # https://github.com/Tom-Bonnike/netlify-plugin-inline-critical-css#readme
-  package = "netlify-plugin-inline-critical-css"
+  package = "netlify-plugin-image-optim"
 
 [[plugins]]
 >>>>>>> 362585c37 (Inline critical css)
