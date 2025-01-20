@@ -1,5 +1,8 @@
 [[plugins]]
+  # https://github.com/Tom-Bonnike/netlify-plugin-inline-critical-css#readme
+  package = "netlify-plugin-inline-critical-css"
 
+[[plugins]]
   # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
   package = "netlify-plugin-minify-html"
 
@@ -18,3 +21,4 @@
   [plugins.inputs.minifierOptions]
     removeComments = true
     collapseInlineTagWhitespace = true
+
