@@ -54,7 +54,7 @@ Eject and reinsert the card to make sure it's mounted with the newly written con
 
 {{< alert title="Support Notice" color="note" >}}
 
-Provisioning is supported and tested only on Debian 11 (Bullseye), and 12 (Bookworm) but should work on most distros using NetworkManager v1.42 (or newer) as well.
+Provisioning is supported and tested on Ubuntu 22.04, Debian 11 (Bullseye), and 12 (Bookworm) but should work on most distros using NetworkManager v1.30 (or newer) as well.
 For Bullseye, the installation of `viam-agent` changes the network configuration to use NetworkManager.
 
 {{< /alert >}}
@@ -443,6 +443,14 @@ sudo ./preinstall.sh /path/to/rootfs
 
 ## Troubleshooting
 
+### Device not detecting networks
+
+Some systems can't scan for WiFi networks while in hotspot mode, meaning they won't automatically detect networks coming online or into range until the `fallback_timeout` expires.
+The `fallback_timeout` causes your device to exit hotspot mode, at which point your device will be able to detect newly available network(s).
+If your device does not connect to your network, adjust the `fallback_timeout` value in the [`agent-provisioning` configuation](http://localhost:1313/manage/fleet/provision/setup/#configure-agent-provisioning).
+
+### Test GRPC components of the provisioning service
+
 If you need to test the GRPC components of the provisioning service, there is a CLI client available.
 Get the code from the [`agent-provisioning` repo](https://github.com/viamrobotics/agent-provisioning) and run `go run ./cmd/client/` for info.
 
@@ -475,6 +483,8 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. If you as the end user have a provisioning mobile app, go back to the app to complete setup.
    In the mobile app, you will be prompted to provide the network information for the machine.
+
+   - If your device is not detecting networks, see [Troubleshooting](/manage/fleet/provision/setup/#device-not-detecting-networks).
 
 1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
    If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
