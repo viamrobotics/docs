@@ -1,5 +1,16 @@
-[[plugins]]
+[build]
+  publish = "public"
 
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+
+	[plugins.inputs]
+	# If it should show more verbose logs (optional, default = true)
+	debug = true
+	# Relative path to source directory in case you use Hugo's "--s" option
+	srcdir = "public"
+
+[[plugins]]
   # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
   package = "netlify-plugin-minify-html"
 
@@ -18,3 +29,4 @@
   [plugins.inputs.minifierOptions]
     removeComments = true
     collapseInlineTagWhitespace = true
+
