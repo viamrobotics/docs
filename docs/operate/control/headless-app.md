@@ -7,13 +7,15 @@ type: "docs"
 description: "Run control logic on a machine."
 images: ["/general/code.png"]
 aliases:
-  - "product-overviews/sdk-as-client"
-  - "program/sdk-as-client"
-  - "program/sdks"
+  - /product-overviews/sdk-as-client/
+  - /program/sdk-as-client/
+  - /program/sdks/
   - /program/
   - /program/run/
   - /program/debug/
   - /how-tos/develop-app/
+  - /use-cases/develop-app/
+  - /product-overviews/sdk-as-client/
 ---
 
 To write control logic for your machine that will run without a user interface, you can use the Python, Go, or C++ SDK.

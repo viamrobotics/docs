@@ -7,6 +7,7 @@ type: "docs"
 description: "Move a mobile robot with manual or autonomous navigation."
 aliases:
   - /how-tos/navigate/
+  - /use-cases/navigate/
 ---
 
 You have three options for moving a mobile robot [base](/operate/reference/components/base/):

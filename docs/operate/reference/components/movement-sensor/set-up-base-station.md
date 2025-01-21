@@ -7,6 +7,8 @@ description: "Follow this guide to set up your own SparkFun RTK base station, a 
 images: ["/icons/components/imu.svg"]
 no_component: true
 date: "2024-01-01"
+aliases:
+  - /components/movement-sensor/set-up-base-station/
 # updated: ""  # When the content was last entirely checked
 # SMEs: Susmita
 ---

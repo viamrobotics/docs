@@ -16,6 +16,7 @@ aliases:
   - "/get-started/try-viam/try-viam-tutorial/"
   - "/get-started/quickstarts/drive-rover/"
   - "/how-tos/drive-rover/"
+  - /get-started/drive-rover/
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 level: "Beginner"
 authors: []

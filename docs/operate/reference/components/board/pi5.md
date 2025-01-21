@@ -8,6 +8,8 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 component_description: "Supports Raspberry Pi 5."
 usage: 999999
+aliases:
+  - /components/board/pi5/
 # SMEs: Bucket, Alan
 ---
 

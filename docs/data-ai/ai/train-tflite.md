@@ -16,6 +16,9 @@ aliases:
   - /data-management/data-management-tutorial/
   - /tutorials/services/data-management-tutorial/
   - /tutorials/services/data-mlmodel-tutorial/
+  - /extend/modular-resources/examples/tflite-module/
+  - /modular-resources/examples/tflite-module/
+  - /registry/examples/tflite-module/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 platformarea: ["ml"]

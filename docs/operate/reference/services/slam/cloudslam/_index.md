@@ -8,13 +8,18 @@ tags: ["slam", "services"]
 icon: true
 images: ["/services/icons/slam.svg"]
 date: "2022-01-01"
+aliases:
+  - /services/slam/cloudslam/
 # updated: ""  # When the content was last entirely checked
 # SMEs: John N.
 ---
 
-SLAM Algorithms can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms for machines in the cloud as well as management of the maps generated in their location.
+SLAM Algorithms can have varying levels of resource requirements in order to run effectively.
+`Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps.
+In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms for machines in the cloud as well as management of the maps generated in their location.
 
-CloudSLAM can be used with both a live machine or with previously captured data in your location. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/data-ai/capture-data/capture-sync/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
+CloudSLAM can be used with both a live machine or with previously captured data in your location.
+In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/data-ai/capture-data/capture-sync/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
 The CloudSLAM server will then process that data and produce a map that can then be used on any machine in your location.
 When using an [offline machine](#using-previously-captured-data-offline-mode), you can select data from specific sensors over a period of time to build a map with.
 
