@@ -3,11 +3,10 @@ title: "Tutorials"
 linkTitle: "Tutorials"
 weight: 300
 type: docs
-layout: "tutorials"
-hide_children: true
+layout: "empty"
 sitemap:
   priority: 1.0
-hidden: true
+toc_hide: false
 outputs:
   - rss
   - html

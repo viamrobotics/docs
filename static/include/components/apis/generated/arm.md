@@ -758,6 +758,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final myArmResourceName = myArm.getResourceName("my_arm");
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/getResourceName.html).
 
 {{% /tab %}}

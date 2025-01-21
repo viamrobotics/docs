@@ -1,0 +1,1 @@
+Get a list of discovered potential component configurations, for example listing different supported resolutions. Currently only works for some cameras.

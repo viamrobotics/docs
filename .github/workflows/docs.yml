@@ -53,12 +53,6 @@ jobs:
           name: components-models-file
           path: ./public/operate/reference/components/typesense.json
 
-      # - name: Upload services models file
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: services-models-file
-      #     path: ./public/operate/reference/services/typesense.json
-
   deploy:
     environment:
       name: github-pages
@@ -69,32 +63,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
-  generate-index:
-    needs: deploy
-    if: github.repository_owner == 'viamrobotics'
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/viamrobotics/canon:amd64
-    steps:
-      - name: Checkout Push/Workflow Dispatch
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      # Unsure why this is needed - testing smaller sleep time
-      - name: Wait before index
-        run: sleep 60s
-
-      - name: Write env
-        run: |
-          echo TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} > typesense.env
-          echo TYPESENSE_HOST=cgnvrk0xwyj9576lp-1.a1.typesense.net >> typesense.env
-          echo TYPESENSE_PORT=443 >> typesense.env
-          echo TYPESENSE_PROTOCOL=https >> typesense.env
-
-      - name: Index
-        run: docker run --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
 
   upsert-tutorials:
     needs: build

@@ -1,0 +1,66 @@
+[build]
+  publish = "public"
+
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+
+	[plugins.inputs]
+	# If it should show more verbose logs (optional, default = true)
+	debug = false
+
+[[plugins]]
+  # https://github.com/philhawksworth/netlify-plugin-minify-html#readme
+  package = "netlify-plugin-minify-html"
+
+  # Specify which deploy contexts we'll minify HTML in.
+  # Supports any Deploy Contexts available in Netlify.
+  # https://docs.netlify.com/site-deploys/overview/#deploy-contexts
+  [plugins.inputs]
+    contexts = [
+      'production',
+      'branch-deploy',
+      'deploy-preview'
+    ]
+
+  # Optionally, override the default options for the minification
+  # https://github.com/kangax/html-minifier#options-quick-reference
+  [plugins.inputs.minifierOptions]
+    removeComments = true
+    collapseInlineTagWhitespace = true
+
+[[plugins]]
+  # https://github.com/cdeleeuwe/netlify-plugin-submit-sitemap#readme
+  package = "netlify-plugin-submit-sitemap"
+
+	[plugins.inputs]
+
+	# The base url of your site (optional, default = main URL set in Netlify)
+	baseUrl = "https://docs.viam.com"
+
+	# Path to the sitemap URL (optional, default = /sitemap.xml)
+	sitemapPath = "/sitemap.xml"
+
+	# Time in seconds to not submit the sitemap after successful submission
+	ignorePeriod = 0
+
+	# Enabled providers to submit sitemap to (optional, default = 'google', 'yandex'). Possible providers are currently only 'google', 'yandex'.
+	providers = [
+		"google",
+		"yandex"
+	]
+
+[[plugins]]
+  # https://github.com/eggnstone/netlify-plugin-no-more-404/blob/master/manifest.yaml
+  package = "@eggnstone/netlify-plugin-no-more-404"
+
+  # all inputs are optional, we just show you the defaults below
+  [plugins.inputs]
+
+  # either "warn" or "error"
+  failBuildOnError = true
+
+  # change this key to a new one any time you need to restart from scratch
+  cacheKey = "Jan202025"
+
+  # (for development) turn true for extra diagnostic logging
+  debug = true

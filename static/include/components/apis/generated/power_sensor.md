@@ -428,6 +428,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final myPowerSensorResourceName = myPowerSensor.getResourceName("my_power_sensor");
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/getResourceName.html).
 
 {{% /tab %}}

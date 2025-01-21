@@ -631,6 +631,39 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetGeometries
+
+Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the movement sensor.
+The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_movement_sensor = MovementSensor.from_robot(robot=machine, name="my_movement_sensor")
+geometries = await my_movement_sensor.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_geometries).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetReadings
 
 Get all the measurements/data from the sensor.
@@ -842,6 +875,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final myMovementSensorResourceName = myMovementSensor.getResourceName("my_movement_sensor");
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/getResourceName.html).
 

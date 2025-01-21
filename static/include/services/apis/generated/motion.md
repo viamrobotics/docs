@@ -144,7 +144,7 @@ Make sure the [SLAM service](/operate/reference/services/slam/) you use alongsid
 - `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)) (required): The `ResourceName` of the base to move.
 - `destination` ([viam.proto.common.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)) (required): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
 - `slam_service_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)) (required): The `ResourceName` of the [SLAM service](/operate/reference/services/slam/) from which the SLAM map is requested.
-- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional):
+- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional): 
 The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
 
 - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/operate/reference/services/vision/) and [camera](/operate/reference/components/camera/) resource pair you want to use for transient obstacle avoidance.
@@ -188,7 +188,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `req` [(MoveOnMapReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnMapReq):
+- `req` [(MoveOnMapReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnMapReq): 
 A `MoveOnMapReq` which contains the following values:
 
 - `ComponentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
@@ -290,7 +290,7 @@ Translation in obstacles is not supported by the [navigation service](/operate/r
 - `movement_sensor_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)) (required): The `ResourceName` of the [movement sensor](/operate/reference/components/movement-sensor/) that you want to use to check the machine's location.
 - `obstacles` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoGeometry)) (optional): Obstacles to consider when planning the motion of the component, with each represented as a `GeoGeometry`. <ul><li> Default: `None` </li></ul>
 - `heading` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The compass heading, in degrees, that the machine's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` `0`: North, `90`: East, `180`: South, `270`: West </li><li>Default: `None`</li></ul>
-- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional):
+- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional): 
 The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
 
 - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/operate/reference/services/vision/) and [camera](/operate/reference/components/camera/) resource pair you want to use for transient obstacle avoidance.
@@ -334,7 +334,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `req` [(MoveOnGlobeReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnGlobeReq):
+- `req` [(MoveOnGlobeReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnGlobeReq): 
 A `MoveOnGlobeReq` which contains the following values:
 
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.

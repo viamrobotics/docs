@@ -219,7 +219,8 @@ If you are using another board, you can skip this step.
 {{% /alert %}}
 
 Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/operate/reference/prepare/rpi-setup/).
-Follow all steps as listed, including the final step, [Enable communication protocols](/operate/reference/prepare/rpi-setup/#enable-communication-protocols), which is required to enable [the accelerometer](#6dof-imu) on your rover.
+Follow all steps as listed.
+When you get to the [Enable communication protocols step](/operate/reference/prepare/rpi-setup/#enable-communication-protocols), you must enable I<sup>2</sup>C so that your Pi can communicate with the accelerometer and power sensor on your rover.
 Once you have installed Raspberry Pi OS and `viam-server`, put your SD card in the slot on your Pi.
 
 ### Add the power supply
@@ -367,26 +368,6 @@ If you need to increase the height of your rover to accommodate your board being
 Screw the top plate back on with the biggest Allen key and use the power switch to turn the rover on.
 Wait a second for the low voltage cutoff relay to trip and provide power to the rover motherboard.
 If the Pi has power, the lights on the Raspberry Pi will light up.
-
-### Enable I<sup>2</sup>C on your Pi
-
-Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sensor when controlling your rover.
-
-1. SSH into your Pi.
-   Launch the configuration tool by running the following command:
-
-   ```sh {class="command-line" data-prompt="$"}
-   sudo raspi-config
-   ```
-
-2. Use your keyboard to select **Interface Options**, and press return.
-   Select **I2C** enabled.
-
-3. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
-
-   ```sh {class="command-line" data-prompt="$"}
-   sudo reboot
-   ```
 
 ### Control your rover on the Viam app
 
