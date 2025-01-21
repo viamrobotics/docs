@@ -35,9 +35,9 @@ async def connect():
         check_connection_interval=0,
         # Same for Attempting to reconnect
         attempt_reconnect_interval=0,
-        disable_sessions=True,
         # viam-micro-server doesn't support sessions
         # so it is safe to disable them
+        disable_sessions=True,
         dial_options=DialOptions.with_api_key(
             # Replace "<API-KEY-ID>" (including brackets)
             # with your machine's api key id
