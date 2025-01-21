@@ -22,6 +22,7 @@ sitemap:
   priority: 1.0
 aliases:
   - /build/
+  - /tutorials/
 outputs:
   - rss
   - html
