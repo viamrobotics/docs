@@ -10,6 +10,7 @@ images: ["/icons/components/generic.svg"]
 date: "2022-01-01"
 aliases:
   - /appendix/apis/services/generic/
+  - /services/generic/
 # updated: ""  # When the content was last entirely checked
 ---
 
