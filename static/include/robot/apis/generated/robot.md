@@ -45,6 +45,7 @@ machine_status = await machine.get_machine_status()
 cloud_metadata = machine_status.resources[0].cloud_metadata
 resource_statuses = machine_status.resources
 config_status = machine_status.config
+machine_state = machine_status.state
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
