@@ -7,8 +7,8 @@ layout: "empty"
 hide_children: true
 sitemap:
   priority: 1.0
-hidden: true
-# canonical: "/dev/tools/tutorials/"
+toc_hide: true
+canonical: "/dev/tools/tutorials/"
 outputs:
   - rss
   - html
