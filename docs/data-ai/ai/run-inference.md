@@ -9,6 +9,9 @@ aliases:
   - /how-tos/detect-people/
   - /how-tos/detect-color/
   - /services/vision/
+  - /ml/vision/detection/
+  - /ml/vision/classification/
+  - /ml/vision/segmentation/
   - /ml/vision/
 description: "Run inference on a model with a vision service or an SDK."
 ---
