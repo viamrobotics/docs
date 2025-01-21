@@ -129,7 +129,7 @@ async def moveInSquare(base):
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are interested to learn about what other commands you can give to a base, see the standardized [base API](/components/base/#api) for a full list of available API methods.
+If you are interested to learn about what other commands you can give to a base, see the standardized [base API](/components/base/#api) for a full list of available API methods. 
 {{% /alert %}}
 
 Next, remove all the code in the `main()` function between where the machine connection is established and closed and instead initialize your `base` and invoke the `moveInSquare()` function.
