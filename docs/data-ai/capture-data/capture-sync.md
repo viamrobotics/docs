@@ -22,10 +22,9 @@ aliases:
   - /manage/data-management/
   - /services/data-management/
   - /manage/data/
-  - "/data-management/"
-  - "/data-management/"
-  - "/services/data/"
-  - "/data/"
+  - /data-management/
+  - /services/data/
+  - /data/
   - /manage/data/export/
   - /data/export/
   - /services/data/export/
@@ -33,6 +32,10 @@ aliases:
   - /data/view/
   - /services/data/view/
   - /how-tos/collect-data/
+  - /how-tos/collect-sensor-data/
+  - /get-started/quickstarts/collect-data/
+  - /use-cases/collect-sensor-data/
+  - /use-cases/image-data/
 ---
 
 You can use the data management service to capture and sync data from your machine to the cloud.
