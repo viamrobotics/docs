@@ -53,6 +53,24 @@
 {{ $toc_hide := $s.Params.toc_hide -}}
 {{ $openOnDesk := $s.Params.open_on_desktop }}
 {{ $headerOnly := $s.Params.header_only }}
+
+{{ warnf "1!%s %s %s" $p $p.Section}}
+
+{{ if eq $p.Section "tutorials"}}
+<!-- If this is a tutorial -->
+<a href="/dev/tools/tutorials/" target="{{ . }}" rel="noopener" class="">
+<span> Tutorials </span>
+</a>
+<li class="active-path tutorial-heading">
+  <a href="" title="{{ $p.Title }}" class="active">{{ $p.LinkTitle }}
+  </a>
+  <div class="td-toc" id="TableOfContents"></div>
+</li>
+
+{{ warnf "2!%s" $p }}
+
+{{ else }}
+
 {{ if or (not $toc_hide) ($activePath)}}
 <li class="{{ if $withChild }}nav-fold{{ end }}{{ if $activePath }} active-path{{ else }}{{ if $p.Parent }} hide-if-desktop{{ end }}{{ end }}{{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} {{ if not $activePath }}collapse{{ end }}{{ end }}{{ if $empty_node }} empty-node-submenu{{ end }}{{if $s.Params.menuindent }} indent{{ end }}{{ if $openOnDesk }} open-on-desktop{{ end }}{{ if $headerOnly }} header-only{{ end }}" >
   {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
@@ -77,9 +95,6 @@
             {{ if $s.Params.canonical }}<i class="fas fa-external-link-alt fa-sm"></i>{{ end }}
           </a>
           {{ else }}
-            <a href="/dev/tools/tutorials/" target="{{ . }}" rel="noopener" class="">
-            <span> Tutorials </span>
-            </a>
           {{ end }}
         {{- end }}
       {{- end }}
@@ -113,13 +128,6 @@
   {{- end }}
   {{- if $withChild }}
     {{- if $hideChildren -}}
-      {{ if eq $p.Section "tutorials" }}
-      <li class="active-path tutorial-heading">
-        <a href="" title="{{ $p.Title }}" class="active">{{ $p.LinkTitle }}
-        </a>
-        <div class="td-toc" id="TableOfContents"></div>
-      </li>
-      {{ end }}
     {{- else -}}
       {{- $ulNr := add $ulNr 1 }}
       <ul class="ul-{{ $ulNr }}">
@@ -132,3 +140,4 @@
 </li>
 {{- end }}
 {{- end }}
+{{- end}}
