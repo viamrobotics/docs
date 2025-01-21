@@ -41,6 +41,7 @@ IgnoreURLs:
   - "code.visualstudio.com"
   - "thingiverse.com"
   - "unsplash.com"
+  - "docs.github.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
