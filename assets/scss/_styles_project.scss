@@ -232,11 +232,11 @@ a > code {
   color: #333333 !important;
 }
 
-.nav-fold * #TableOfContents ul li ul {
+#TableOfContents ul li ul {
   padding: 0;
 }
 
-.nav-fold * #TableOfContents ul li ul.is-collapsed {
+#TableOfContents ul li ul.is-collapsed {
   display: none;
 }
 
@@ -2855,6 +2855,15 @@ a.tree-root {
 }
 
 // Top level nav END
+
+// For tutorials, make side nav heading smaller
+
+li.active-path.tutorial-heading > a {
+  color: #0000EA;
+  margin-top: 1rem;
+  font-size: 0.833rem;
+  font-weight: 600;
+}
 
 // Next page START
 

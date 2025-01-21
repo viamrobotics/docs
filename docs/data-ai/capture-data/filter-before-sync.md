@@ -7,6 +7,7 @@ type: "docs"
 description: "Use filtering to collect and sync only certain images."
 aliases:
   - /how-tos/image-data/
+  - /tutorials/projects/filtered-camera/
 ---
 
 You can use filtering to selectively capture images using a machine learning (ML) model, for example to only capture images with people or specific objects in them.

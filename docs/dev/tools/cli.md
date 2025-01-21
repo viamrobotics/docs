@@ -1085,6 +1085,10 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `support-email get` | Get the support email for an organization. | - |
 | `support-email set` | Set the support email for an organization. | - |
 | `logo set` | Upload the logo for an organization from a local file. | - |
+| `billing-service get-config` | Get the billing service config for an organization. | - |
+| `billing-service enable` | Enable the billing service for an organization. | - |
+| `billing-service update` | Update the billing service update for an organization. | - |
+| `billing-service disable` | Disable the billing service for an organization. | - |
 | `--help` | Return help | - |
 
 ##### Named arguments
@@ -1092,10 +1096,11 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`. | **Required** |
+| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`, `billing-service get-config`, `billing-service enable`, `billing-service update`, `billing-service disable`. | **Required** |
 | `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key` | Optional |
 | `--support-email` | The support email to set for the organization. | `support-email get`, `support-email set` | **Required** |
 | `--logo-path` | The support email to set for the organization. | `logo set` | **Required** |
+| `--address` | The stringified billing address that follows the pattern: line1, line2 (optional), city, state, zipcode. | `billing-service enable`, `billing-service update` | **Required** |
 
 ### `packages`
 
@@ -1228,8 +1233,15 @@ viam machines part restart --machine=123 --part=456
 | `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
 | `--machine` | Machine name or ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
+| `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
+| `--keyword` | Filter logs by keyword. | `logs` | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
+| `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
+| `--count` | The number of logs to fetch. | `logs` | Optional |
+| `--format` | THe file format for the output file. Options: `text` or `json`. | `logs` | Optional |
+| `--output` | The path to the output file to store logs in. | `logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
 | `--machine-id` | The machine to create an API key for | `api-key` | **Required** |

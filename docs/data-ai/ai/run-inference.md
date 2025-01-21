@@ -7,12 +7,14 @@ type: "docs"
 modulescript: true
 aliases:
   - /how-tos/detect-people/
+  - /get-started/detect-people/
   - /how-tos/detect-color/
   - /services/vision/
   - /ml/vision/detection/
   - /ml/vision/classification/
   - /ml/vision/segmentation/
   - /ml/vision/
+  - /get-started/quickstarts/detect-people/
 description: "Run inference on a model with a vision service or an SDK."
 ---
 

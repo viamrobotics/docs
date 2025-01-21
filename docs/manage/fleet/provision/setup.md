@@ -54,7 +54,7 @@ Eject and reinsert the card to make sure it's mounted with the newly written con
 
 {{< alert title="Support Notice" color="note" >}}
 
-Provisioning is supported and tested only on Debian 11 (Bullseye), and 12 (Bookworm) but should work on most distros using NetworkManager v1.42 (or newer) as well.
+Provisioning is supported and tested on Ubuntu 22.04, Debian 11 (Bullseye), and 12 (Bookworm) but should work on most distros using NetworkManager v1.30 (or newer) as well.
 For Bullseye, the installation of `viam-agent` changes the network configuration to use NetworkManager.
 
 {{< /alert >}}
@@ -224,14 +224,17 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
+| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
-| `disable_dns_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
+| `disable_dns_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
 | `roaming_mode` | boolean | Optional | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and roaming mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
 | `offline_timeout` | boolean | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `"2m"` (2 minutes). |
 | `user_timeout` | boolean | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `"5m"` (5 minutes). |
 | `fallback_timeout` | boolean | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `"10m"` (10 minutes). |
 | `networks` | array | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config in the Viam app, if networks aren't needed until after initial provisioning. See [Networks](/manage/reference/viam-agent/#networks). Default: `[]`. |
+| `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager.  |
+| `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
 
 {{% /expand%}}
 
@@ -443,6 +446,14 @@ sudo ./preinstall.sh /path/to/rootfs
 
 ## Troubleshooting
 
+### Device not detecting networks
+
+Some systems can't scan for WiFi networks while in hotspot mode, meaning they won't automatically detect networks coming online or into range until the `fallback_timeout` expires.
+The `fallback_timeout` causes your device to exit hotspot mode, at which point your device will be able to detect newly available networks.
+If your device does not connect to your network, adjust the `fallback_timeout` value in the [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning).
+
+### Test GRPC components of the provisioning service
+
 If you need to test the GRPC components of the provisioning service, there is a CLI client available.
 Get the code from the [`agent-provisioning` repo](https://github.com/viamrobotics/agent-provisioning) and run `go run ./cmd/client/` for info.
 
@@ -475,6 +486,8 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. If you as the end user have a provisioning mobile app, go back to the app to complete setup.
    In the mobile app, you will be prompted to provide the network information for the machine.
+
+   - If your device is not detecting networks, see [Troubleshooting](/manage/fleet/provision/setup/#device-not-detecting-networks).
 
 1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
    If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.

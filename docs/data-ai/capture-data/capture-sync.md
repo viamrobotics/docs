@@ -22,10 +22,9 @@ aliases:
   - /manage/data-management/
   - /services/data-management/
   - /manage/data/
-  - "/data-management/"
-  - "/data-management/"
-  - "/services/data/"
-  - "/data/"
+  - /data-management/
+  - /services/data/
+  - /data/
   - /manage/data/export/
   - /data/export/
   - /services/data/export/
@@ -33,6 +32,10 @@ aliases:
   - /data/view/
   - /services/data/view/
   - /how-tos/collect-data/
+  - /how-tos/collect-sensor-data/
+  - /get-started/quickstarts/collect-data/
+  - /use-cases/collect-sensor-data/
+  - /use-cases/image-data/
 ---
 
 You can use the data management service to capture and sync data from your machine to the cloud.
@@ -119,7 +122,7 @@ The following attributes are available for the data management service:
 | `capture_dir`      | string | Optional | Path to the directory on your machine where you want to store captured data. If you change the directory for data capture, only new data is stored in the new directory. Existing data remains in the directory where it was stored. <br> Default: `~/.viam/capture` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `tags` | array of strings | Optional | Tags to apply to all images captured by this machine part. May include alphanumeric characters, underscores, and dashes. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `sync_disabled` | bool | Optional | Toggle cloud sync on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. <br> Default: `false` | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
-| `additional_sync_paths` | string array | Optional | Paths to any other directories on your machine from which you want to sync data to the cloud. Once data is synced from a directory, it is automatically deleted from your machine. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
+| `additional_sync_paths` | string array | Optional | Paths to any other directories on your machine from which you want to sync data to the cloud. Once data is synced from a directory, it is automatically deleted from your machine. We recommend using absolute paths. For relative paths, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/#cant-find-the-directory-data-is-stored-in-click-here). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `sync_interval_mins` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing. <br> Default: `0.1`, meaning once every 6 seconds. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_data_on_part_deletion` | bool | Optional | Whether deleting this {{< glossary_tooltip term_id="machine" text="machine" >}} or {{< glossary_tooltip term_id="part" text="machine part" >}} should result in deleting all the data captured by that machine part. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/data-ai/capture-data/advanced/how-sync-works/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
@@ -709,7 +712,7 @@ The following components and services support data capture and cloud sync:
 ## Considerations
 
 - **Capturing too much data**: You can [use filtering to collect and sync only certain images](/data-ai/capture-data/filter-before-sync/) to capture data selectively.
-- **Rentention policy**: Set a `retention_policy` attribute in your [data capture configuration](#configure-data-capture) to avoid keeping data stored in the Viam Cloud longer than a specified number of days.
+- **Retention policy**: Set a `retention_policy` attribute in your [data capture configuration](#configure-data-capture) to avoid keeping data stored in the Viam Cloud longer than a specified number of days.
 - **Pausing sync**: You can pause cloud sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your data management service.
 
   If you have captured data that you do not want to sync, delete the data on the machine before resuming cloud sync.
