@@ -58,7 +58,6 @@ if (toc) {
         let atLeastOne = false;
         let lastElem;
 
-        console.log(tocItems)
         for (var i = 0; i < tocItems.length; i++) {
             let item = tocItems[i];
             if (item && item.target) {
