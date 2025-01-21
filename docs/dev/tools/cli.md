@@ -1085,6 +1085,10 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `support-email get` | Get the support email for an organization. | - |
 | `support-email set` | Set the support email for an organization. | - |
 | `logo set` | Upload the logo for an organization from a local file. | - |
+| `billing-service get-config` | Get the billing service config for an organization. | - |
+| `billing-service enable` | Enable the billing service for an organization. | - |
+| `billing-service update` | Update the billing service update for an organization. | - |
+| `billing-service disable` | Disable the billing service for an organization. | - |
 | `--help` | Return help | - |
 
 ##### Named arguments
@@ -1092,10 +1096,11 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`. | **Required** |
+| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`, `billing-service get-config`, `billing-service enable`, `billing-service update`, `billing-service disable`. | **Required** |
 | `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key` | Optional |
 | `--support-email` | The support email to set for the organization. | `support-email get`, `support-email set` | **Required** |
 | `--logo-path` | The support email to set for the organization. | `logo set` | **Required** |
+| `--address` | The stringified billing address that follows the pattern: line1, line2 (optional), city, state, zipcode. | `billing-service enable`, `billing-service update` | **Required** |
 
 ### `packages`
 
