@@ -1,7 +1,7 @@
 ---
 title: "Vision Service"
 linkTitle: "Vision Service"
-weight: 30
+weight: 20
 type: "docs"
 layout: "empty"
 canonical: "/data-ai/ai/run-inference/"
