@@ -294,6 +294,11 @@ footer small {
 
 // END FOOTER STYLING
 
+// Ensure lists indent properly next to images
+.td-content > ul {
+  list-style-position: inside;
+}
+
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
   font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
