@@ -54,8 +54,6 @@
 {{ $openOnDesk := $s.Params.open_on_desktop }}
 {{ $headerOnly := $s.Params.header_only }}
 
-{{ warnf "1!%s %s %s" $p $p.Section}}
-
 {{ if eq $p.Section "tutorials"}}
 <!-- If this is a tutorial -->
 <a href="/dev/tools/tutorials/" target="{{ . }}" rel="noopener" class="">
@@ -66,9 +64,6 @@
   </a>
   <div class="td-toc" id="TableOfContents"></div>
 </li>
-
-{{ warnf "2!%s" $p }}
-
 {{ else }}
 
 {{ if or (not $toc_hide) ($activePath)}}
