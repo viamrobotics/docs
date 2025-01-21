@@ -66,7 +66,7 @@
 </li>
 {{ else }}
 
-{{ if or (not $toc_hide) ($activePath)}}
+{{ if or ( or (not $toc_hide) ($activePath) ) $active }}
 <li class="{{ if $withChild }}nav-fold{{ end }}{{ if $activePath }} active-path{{ else }}{{ if $p.Parent }} hide-if-desktop{{ end }}{{ end }}{{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} {{ if not $activePath }}collapse{{ end }}{{ end }}{{ if $empty_node }} empty-node-submenu{{ end }}{{if $s.Params.menuindent }} indent{{ end }}{{ if $openOnDesk }} open-on-desktop{{ end }}{{ if $headerOnly }} header-only{{ end }}" >
   {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
   <input type="checkbox" id="{{ $mid }}-check"{{ if $activePath}} checked{{ end }}/>
@@ -122,7 +122,7 @@
   {{ end }}
   {{- end }}
   {{- if $withChild }}
-    {{- if $hideChildren -}}
+    {{- if and ($hideChildren) (not $activePath) -}}
     {{- else -}}
       {{- $ulNr := add $ulNr 1 }}
       <ul class="ul-{{ $ulNr }}">
