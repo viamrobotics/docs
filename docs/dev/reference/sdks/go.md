@@ -7,4 +7,6 @@ layout: "empty"
 icon: true
 images: ["/logos/golang.svg"]
 canonical: "https://pkg.go.dev/go.viam.com/rdk"
+aliases:
+  - /sdks/go/
 ---

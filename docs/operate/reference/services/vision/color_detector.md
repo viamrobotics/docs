@@ -13,6 +13,10 @@ aliases:
   - /ml/vision/color_detector/
   - /services/vision/color_detector/
   - /data-ai/services/vision/color_detector/
+  - /tutorials/services/basic-color-detection/
+  - /tutorials/services/try-viam-color-detection/
+  - /tutorials/try-viam-color-detection/
+  - /tutorials/viam-rover/try-viam-color-detection/
 # SMEs: Bijan, Khari
 ---
 

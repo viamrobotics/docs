@@ -7,4 +7,6 @@ layout: "empty"
 icon: true
 images: ["/logos/python.svg"]
 canonical: "https://python.viam.dev/"
+aliases:
+  - /sdks/python/
 ---

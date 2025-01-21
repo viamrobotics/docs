@@ -17,6 +17,7 @@ cost: "0"
 next: "/manage/troubleshoot/troubleshoot/"
 aliases:
   - /fleet/control/
+  - /manage/app-usage/
 ---
 
 You can remotely control, test, and operate any configured machine using the default control interface

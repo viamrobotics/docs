@@ -7,4 +7,6 @@ layout: "empty"
 icon: true
 images: ["/logos/typescript.svg"]
 canonical: "https://ts.viam.dev/"
+aliases:
+  - /sdks/typescript/
 ---
