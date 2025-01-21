@@ -42,6 +42,7 @@ Get status information about the machine.
 
 ```python {class="line-numbers linkable-line-numbers"}
 machine_status = await machine.get_machine_status()
+cloud_metadata = machine_status.resources[0].cloud_metadata
 resource_statuses = machine_status.resources
 config_status = machine_status.config
 ```
