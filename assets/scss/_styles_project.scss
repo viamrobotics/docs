@@ -2856,6 +2856,15 @@ a.tree-root {
 
 // Top level nav END
 
+// For tutorials, make side nav heading smaller
+
+li.active-path.tutorial-heading > a {
+  color: #0000EA;
+  margin-top: 1rem;
+  font-size: 0.833rem;
+  font-weight: 600;
+}
+
 // Next page START
 
 #next-page {

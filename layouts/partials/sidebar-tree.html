@@ -73,6 +73,10 @@
           {{ end }}
           {{ if $s.Params.canonical }}<i class="fas fa-external-link-alt fa-sm"></i>{{ end }}
         </a>
+        {{ else }}
+          <a href="/dev/tools/tutorials/" target="{{ . }}" rel="noopener" class="">
+          <span> Tutorials </span>
+          </a>
         {{ end }}
       {{- end }}
       {{- if (or (and $withChild (not $treeRoot) ) (not $hideChildren) ) }}
@@ -105,6 +109,13 @@
   {{- end }}
   {{- if $withChild }}
     {{- if $hideChildren -}}
+      {{ if eq $p.Section "tutorials" }}
+      <li class="active-path tutorial-heading">
+        <a href="" title="{{ $p.Title }}" class="active">{{ $p.LinkTitle }}
+        </a>
+        <div class="td-toc" id="TableOfContents"></div>
+      </li>
+      {{ end }}
     {{- else -}}
       {{- $ulNr := add $ulNr 1 }}
       <ul class="ul-{{ $ulNr }}">
