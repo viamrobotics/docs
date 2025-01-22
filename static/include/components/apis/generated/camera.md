@@ -86,7 +86,7 @@ myCamera, err := camera.FromRobot(machine, "my_camera")
 imageBytes, mimeType, err := myCamera.Image(context.Background(), utils.MimeTypeJPEG, nil)
 ```
 
-You can also directly decode as an `Image.Image` with the camera's `DecodeImageFromCamera` function:
+You can also try to directly decode as an `Image.Image` with the camera's `DecodeImageFromCamera` function:
 
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(machine, "my_camera")
