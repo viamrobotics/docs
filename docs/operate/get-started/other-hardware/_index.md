@@ -943,7 +943,7 @@ Run the `viam module upload` CLI command to upload the module to the registry, r
 If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module upload --version 1.0.0 --platform any module.tar.gz
+viam module upload --version 1.0.0 --platform any dist/archive.tar.gz
 ```
 
 For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
