@@ -1065,7 +1065,7 @@ viam organization auth-service [enable|disable] --org-id=<org-id>
 viam organization auth-service oauth-app [create|update] --client-authentication [required|unspecified|not_required|not_required_when_using_pkce] \
     --client-name <client-name> --enabled-grants [password|unspecified|refresh_token|implicit|device_code|authorization_code] \
     --logout-uri "https://logoipsum.com" --origin-uris https://logoipsum.com \
-    --pkce [required|not_required|unspecified|] --redirect-uris https://logoipsum.com/callback \
+    --pkce [required|not_required|unspecified] --redirect-uris https://logoipsum.com/callback \
     --url-validation [allow_wildcards] --org-id <org-id>
 viam organization auth-service oauth-app [list] --org-id=<org-id>
 viam organization auth-service oauth-app [read|delete] --org-id=<org-id> --client-id <client-id>

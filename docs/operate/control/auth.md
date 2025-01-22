@@ -11,7 +11,7 @@ date: "2025-01-22"
 
 If you want to set up a custom login screen, where Viam provides authentication and manages users for you but the branding is yours, follow these steps:
 
-<!-- TODO screenshot of example unbranded login screen -->
+{{<imgproc src="/operate/oauth.png" resize="800x" declaredimensions=true alt="Example Oauth screenshot">}}
 
 ## Prerequisites
 
@@ -64,7 +64,7 @@ Create your OAuth application for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
 viam organization auth-service oauth-app create --client-authentication required \
-    --client-name "OAuth Test App" --enabled-grants password \
+    --client-name "OAuth Test App" --enabled-grants "password, authorization_code" \
     --logout-uri "https://logoipsum.com/logout" --origin-uris https://logoipsum.com \
     --pkce not_required --redirect-uris https://logoipsum.com/callback \
     --url-validation allow_wildcards --org-id <org-id>
@@ -118,13 +118,17 @@ You can update any value after setup using `viam organization auth-service oauth
 ## Use the generated client ID and secret in your app
 
 Your authentication is built on top of FusionAuth.
-To continue, use the generated client secret and client ID with the  [Fusion Auth SDKs](https://fusionauth.io/docs/sdks/).
+To continue, use the generated client secret and client ID with the [Fusion Auth SDKs](https://fusionauth.io/docs/sdks/).
+
+For a quick example, see [Get started with FusionAuth in 5 minutes](https://github.com/FusionAuth/fusionauth-example-5-minute-guide).
+
+{{< alert title="Base URL" color="tip" >}}
+
+When using the client ID and client secret, the base URL for your OAuth application is `https://auth.viam.com`.
+
+{{< /alert >}}
 
 ## FAQ
-
-### Can you update the link shown during authentication?
-
-Currently it is not possible to update the link shown during authentication (`auth.viam.com`).
 
 ### Can I customize my login screen further?
 
