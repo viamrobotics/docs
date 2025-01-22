@@ -19,6 +19,16 @@ aliases:
   - /modular-resources/key-concepts/
   - /modular-resources/
   - /how-tos/upload-module/
+  - /extend/modular-resources/examples/custom-arm/
+  - /modular-resources/examples/custom-arm/
+  - /registry/examples/custom-arm/
+  - /program/extend/modular-resources/examples/
+  - /extend/modular-resources/examples/
+  - /modular-resources/examples/
+  - /registry/examples/
+  - /extend/modular-resources/upload/
+  - /modular-resources/upload/
+  - /registry/upload/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/hello-world-module/"
 ---

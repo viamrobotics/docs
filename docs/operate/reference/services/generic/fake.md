@@ -8,6 +8,7 @@ service_description: "A model used for testing a generic service."
 tags: ["generic", "services"]
 aliases:
   - /registry/advanced/generic/fake/
+  - /services/generic/fake/
 ---
 
 Configure a `fake` generic service to test implementing a generic service on your machine:
