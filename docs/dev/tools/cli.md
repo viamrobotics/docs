@@ -1061,6 +1061,14 @@ viam organizations list
 viam organizations api-key create --org-id=<org-id> [--name=<key-name>]
 viam organizations support-email [get|set] --org-id=<org-id> --support-email=<support-email>
 viam organizations logo set --org-id=<org-id> --logo-path=<logo-path>
+viam organization auth-service [enable|disable] --org-id=<org-id>
+viam organization auth-service oauth-app [create|update] --client-authentication [required|unspecified|not_required|not_required_when_using_pkce] \
+    --client-name <client-name> --enabled-grants [password|unspecified|refresh_token|implicit|device_code|authorization_code] \
+    --logout-uri "https://logoipsum.com" --origin-uris https://logoipsum.com \
+    --pkce [required|not_required|unspecified|] --redirect-uris https://logoipsum.com/callback \
+    --url-validation [allow_wildcards] --org-id <org-id>
+viam organization auth-service oauth-app [list] --org-id=<org-id>
+viam organization auth-service oauth-app [read|delete] --org-id=<org-id> --client-id <client-id>
 ```
 
 Examples:
@@ -1086,9 +1094,9 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `support-email set` | Set the support email for an organization. | - |
 | `logo set` | Upload the logo for an organization from a local file. | - |
 | `billing-service get-config` | Get the billing service config for an organization. | - |
-| `billing-service enable` | Enable the billing service for an organization. | - |
-| `billing-service update` | Update the billing service update for an organization. | - |
-| `billing-service disable` | Disable the billing service for an organization. | - |
+| `billing-service` | Enable, update, or disable the billing service for an organization. | `enable`, `update`, `disable` |
+| `auth-service` | Enable or disable auth-service for OAuth applications. Disabling the auth-service does not delete your OAuth token, it will just take off the custom branding. | `enable`, `disable` |
+| `auth-service oauth-app` | List, create, update, read, or delete OAuth applications. | `create`, `update`, `list`, `read`, `delete` |
 | `--help` | Return help | - |
 
 ##### Named arguments
@@ -1096,11 +1104,21 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`, `billing-service get-config`, `billing-service enable`, `billing-service update`, `billing-service disable`. | **Required** |
+| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`, `billing-service get-config`, `billing-service enable`, `billing-service update`, `billing-service disable`, `auth-service enable`, `auth-service disable`, `auth-service oauth-app create`, `auth-service oauth-app update` `auth-service oauth-app list`, `auth-service oauth-app read`, `auth-service oauth-app delete`. | **Required** |
 | `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key` | Optional |
 | `--support-email` | The support email to set for the organization. | `support-email get`, `support-email set` | **Required** |
 | `--logo-path` | The support email to set for the organization. | `logo set` | **Required** |
 | `--address` | The stringified billing address that follows the pattern: line1, line2 (optional), city, state, zipcode. | `billing-service enable`, `billing-service update` | **Required** |
+| `--client-id` | The client ID of the OAuth application. | `auth-service oauth-app read`, `auth-service oauth-app delete`, `auth-service oauth-app update` | **Required |
+| `--client-authentication` | The client authentication policy for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_pkce`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--client-name` | The name for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update`| **Required** |
+| `--enabled-grants` | Comma-separated enabled grants for the OAuth application. Options: `unspecified`, `refresh_token`, `password`, `implicit`, `device_code`, `authorization_code`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--logout-uri` | The logout uri for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--org-id` |  The organization ID that is tied to the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--origin-uris` | Comma-separated origin URIs for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--pkce` | pkce for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 
 ### `packages`
 
