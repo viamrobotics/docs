@@ -144,6 +144,62 @@ Patterns are processed from top to bottom.
 If multiple patterns apply, the last pattern to be processed will apply.
 If log configurations are applied at a resource level using the `log_configuration` field, these take precedence over log levels applied in the `log` field of the machine configuration.
 
+{{% expand "Click to view full configuration example" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="10-18"}
+{
+  "components": [
+    {
+      "name": "camera1",
+      "type": "camera",
+      "model": "fake"
+    }
+  ],
+  "services": [],
+  "log": [
+    {
+      "pattern": "rdk.resource_manager",
+      "level": "info"
+    },
+    {
+      "pattern": "rdk.resource_manager.*",
+      "level": "debug"
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
+#### Disable log deduplication
+
+By default, `viam-server` deduplicates log messages that are deemed noisy.
+A log is deemed noisy if it has been output 3 times in the past 10 seconds.
+
+To disable log deduplication, set `disable_log_deduplication` in your machine's configuration:
+
+```json
+"disable_log_deduplication": true
+```
+
+{{% expand "Click to view full configuration example" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="10"}
+{
+  "components": [
+    {
+      "name": "camera1",
+      "type": "camera",
+      "model": "fake"
+    }
+  ],
+  "services": [],
+  "disable_log_deduplication": true
+}
+```
+
+{{% /expand%}}
+
 #### Debugging
 
 You can enable debug level logs in two ways:
