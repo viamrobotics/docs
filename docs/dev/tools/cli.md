@@ -452,7 +452,7 @@ Examples:
 viam data export binary --mime-types=image/jpeg,image/png --org-ids=12345678-eb33-123a-88ec-12a345b123a1 --destination=/home/robot/data
 
 # export tabular data to /home/robot/data for specified part id with resource name my_movement_sensor, subtype movement_sensor and method Readings
-viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resource-name=my_movement_sensor --resource-subtype=movement_sensor --method=Readings --destination=/home/robot/data
+viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resource-name=my_movement_sensor --resource-subtype=rdk:component:movement_sensor --method=Readings --destination=/home/robot/data
 
 # delete binary data of mime type image/jpeg in an organization between a specified timestamp
 viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
