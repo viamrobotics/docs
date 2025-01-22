@@ -38,10 +38,6 @@ You can also configure alerts on any other machine data, for more information on
 
 ## Data meets condition
 
-{{< alert title="Note" color="note" >}}
-Will change to [sbc-hwmonitor](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor).
-{{< /alert >}}
-
 The following steps let you configure the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) to monitor the following metrics about the performance of individual machines or your entire fleet:
 
 - **Wireless Signal Strength and Quality**: Signal level, link quality, and noise level
