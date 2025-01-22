@@ -587,7 +587,7 @@ If you enabled cloud build, use these steps.
 1. Make your reload script executable by running the following command in your module directory:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sudo chmod +x reload.sh
+   chmod 755 reload.sh
    ```
 
 1. Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
@@ -701,7 +701,38 @@ If your component works, you're almost ready to share your module by uploading i
 If not, you have some debugging to do.
 
 Each time you make changes to your local module, you need to rebuild the module and then restart its instance on your machine.
-Run the following command to rebuild it:
+
+Run the following command to rebuild and restart your module:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload <insert relevant named args>
+```
+
+For more information, run the command with the `-h` flag or see the [CLI documentation](/dev/tools/cli/#module).
+An example:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00 --home /Users/jessamyt/
+```
+
+{{< expand "Reload troubleshooting" >}}
+
+`Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
+
+- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page in the Viam app and clicking **Part ID**.
+
+`Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
+
+- Try specifying the `--home` directory.
+
+`Error: Error while refreshing token, logging out. Please log in again`
+
+- Run `viam login` to reauthenticate the CLI.
+
+### Try a different command
+
+If you are still having problems with the `reload` command, you can use a different, slower method of rebuilding and then restarting the module.
+Run the following command to rebuild your module:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module build local
@@ -712,7 +743,9 @@ In upper right corner of the module's card, click the three dot (**...**) icon, 
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
 
-For help, don't hesitate to reach out on the [Community Discord](https://discord.gg/viam).
+For more help, try asking the AI chatbot or reach out on the [Community Discord](https://discord.gg/viam).
+
+{{< /expand >}}
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -778,9 +811,10 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Create a GitHub repo (optional)**
+**2. Create a GitHub repo**
 
 Create a GitHub repository with all the source code and the README for your module.
+This is required for cloud build to work.
 
 Add the link to that repo as the `url` in the <file>meta.json</file> file.
 
@@ -895,6 +929,8 @@ It should resemble the following:
    ]
  }
 ```
+
+Delete the <file>reload.sh</file> script since it was only meant for testing purposes.
 
 From within the module directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
 
