@@ -147,11 +147,9 @@ if err != nil {
   logger.Error(err)
   return
 }
-// Get the stream from a camera
-camStream, err := myCam.Stream(context.Background())
-// Get an image from the camera stream
-img, release, err := camStream.Next(context.Background())
-defer release()
+
+// Get an image from the camera decoded as an image.Image
+img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
 myDetectorService, err := vision.FromRobot(machine, "my_detector")
 if err != nil {
@@ -167,6 +165,8 @@ if len(detections) > 0 {
   logger.Info(detections[0])
 }
 ```
+
+Import `"go.viam.com/rdk/utils"` at the beginning of your file.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
@@ -341,15 +341,9 @@ if err != nil {
   logger.Error(err)
   return
 }
-// Get the stream from a camera
-camStream, err := myCam.Stream(context.Background())
-if err!=nil {
-    logger.Error(err)
-    return
-}
-// Get an image from the camera stream
-img, release, err := camStream.Next(context.Background())
-defer release()
+
+// Get an image from the camera decoded as an image.Image
+img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
 myClassifierService, err := vision.FromRobot(machine, "my_classifier")
 if err != nil {
@@ -365,6 +359,8 @@ if len(classifications) > 0 {
   logger.Info(classifications[0])
 }
 ```
+
+Import `"go.viam.com/rdk/utils"` at the beginning of your file.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 

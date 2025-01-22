@@ -1,0 +1,1 @@
+The frame as bytes.

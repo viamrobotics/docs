@@ -58,7 +58,7 @@ board,GetResourceName,No,get_resource_name,,getResourceName
 board,Close,No,close,Close,
 
 ## Camera
-camera,GetImage,,get_image,Stream,image
+camera,GetImage,,get_image,Image,image
 camera,GetImages,,get_images,Images,
 camera,RenderFrame,,,,
 camera,GetPointCloud,,get_point_cloud,NextPointCloud,pointCloud
