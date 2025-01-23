@@ -1160,7 +1160,7 @@ viam machines part status --organization=<org name> --location=<location name> -
 viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
 viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --organization=<org name> --location=<location name> --machin=<machine id> --part=<part name> <file name> machine:/path/to/file
+viam machines part cp --organization=<org name> --location=<location name> --machine=<machine id> --part=<part name> <file name> machine:/path/to/file
 ```
 
 Examples:
