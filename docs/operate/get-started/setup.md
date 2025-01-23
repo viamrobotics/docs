@@ -4,6 +4,8 @@ title: "Start a new machine"
 weight: 10
 layout: "docs"
 type: "docs"
+images: ["/installation/thumbnails/install.png"]
+imageAlt: "Install Viam"
 no_list: false
 description: "Install the software that drives hardware and connects your device to the cloud."
 aliases:

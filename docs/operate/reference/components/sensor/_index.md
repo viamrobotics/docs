@@ -46,7 +46,7 @@ If none of the existing models fit your use case, you can [create a modular reso
 {{< /alert >}}
 
 {{% /tab %}}
-{{% tab name="viam-micro-server" %}}
+{{% tab name="Micro-RDK" %}}
 
 <!-- prettier-ignore -->
 | Model | Description |

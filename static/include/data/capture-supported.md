@@ -16,7 +16,7 @@
 | [Vision service](/operate/reference/services/vision/)             | `CaptureAllFromCamera` |
 
 {{% /tab %}}
-{{% tab name="viam-micro-server" %}}
+{{% tab name="Micro-RDK" %}}
 
 <!-- prettier-ignore -->
 | Type | Method |

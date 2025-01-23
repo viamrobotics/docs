@@ -1,12 +1,12 @@
 ---
-title: "Create or use a viam-micro-server module"
-linkTitle: "viam-micro-server modules"
+title: "Create or use a Micro-RDK module"
+linkTitle: "Micro-RDK modules"
 type: "docs"
 weight: 29
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["modular resources", "components", "services", "registry"]
-description: "Set up the Espressif ESP32 for development with `viam-micro-server` including writing a module for viam-micro-server."
+description: "Set up the Espressif ESP32 for development with the Micro-RDK including writing and using custom modules with the Micro-RDK rather than the pre-built viam-micro-server."
 languages: ["rust"]
 viamresources: []
 platformarea: ["registry"]
@@ -21,24 +21,37 @@ aliases:
   - /installation/viam-micro-server-dev/
 ---
 
-`viam-micro-server` is the lightweight version of [`viam-server`](/operate/reference/viam-server/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
-
-This page provides instructions for configuring a development environment for working with `viam-micro-server`, outlines the steps for performing various development tasks, and provides troubleshooting and development tips to help organize and streamline work.
+[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's full Robot Development Kit, designed for resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
+`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a default set of {{< glossary_tooltip term_id="module" text="modules" >}}, provided for convenience.
+If you want to use different modules with the Micro-RDK, you can build your own firmware using the instructions on this page.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
 If you only want to install the pre-built `viam-micro-server` firmware with a default set of modules, follow the normal [setup instructions](/operate/get-started/setup/) instead.
 {{< /alert >}}
 
+{{< expand "Why does the Micro-RDK work differently from the full RDK?" >}}
+Microcontrollers do not have full operating systems like single-board computers and general-purpose computers.
+This means that it is generally harder to make software portable across multiple microcontrollers, and it means that microcontrollers can only run one "program" at a time.
+
+Rather than being able to download and install an executable the way you can on a computer or single-board computer, a microcontroller must be flashed with firmware containing the entire logic to run.
+
+The Micro-RDK is a version of the RDK library written in Rust and designed to run on microcontrollers.
+The Micro-RDK includes built-in support for several common hardware components, such as standard DC motors and an ultrasonic sensor.
+Viam provides a default firmware build that includes the Micro-RDK as well as two modules: a wifi sensor and a memory heap sensor.
+You may well want to use additional modules, in which case you will need to build your own custom firmware, that includes the Micro-RDK as well as one or more Micro-RDK-compatible modules of your own creation or that others have shared.
+{{< /expand >}}
+
 The instructions below are for configuring a development environment in order to:
 
-- Develop custom firmware which combines `viam-micro-server` with one or more modules.
-- Develop modules for `viam-micro-server`.
-- Develop `viam-micro-server` itself.
+- Develop custom firmware which combines the Micro-RDK with one or more modules.
+- Develop modules for the Micro-RDK.
+
+For advanced topics including development of the Micro-RDK itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution, see [Viam Micro-RDK Development on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
 ## Required software
 
 The [Micro-RDK](https://github.com/viamrobotics/micro-rdk) (from which `viam-micro-server` is built) is written in Rust.
-To be able to develop for `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
+To be able to develop for the Micro-RDK on macOS and Linux systems, you must install the following software on your development machine:
 
 1. Install dependencies:
 
@@ -91,21 +104,14 @@ To be able to develop for `viam-micro-server` on macOS and Linux systems, you mu
 
 {{< alert title="Note" color="tip" >}}
 Prior versions of the above `espup` instructions created a file called `export-rs.sh` which needed to be sourced before proceeding.
-That requirement [no longer applies](https://github.com/esp-rs/esp-idf-hal/issues/319#issuecomment-1785168921) for `viam-micro-server` development.
+That requirement [no longer applies](https://github.com/esp-rs/esp-idf-hal/issues/319#issuecomment-1785168921) for Micro-RDK development.
 The above command redirects `espup`'s production of the setup script to `/dev/null` to avoid cluttering the home directory.
 If you would like to instead retain the setup script, replace `/dev/null` in the above command with the location where you would like the script to be written, or remove the `-f /dev/null` entirely and the file will be written to `$HOME/export-esp.sh` by default.
 {{< /alert >}}
 
-## Creating a project or module
+## Build custom firmware
 
-With the dev setup for `viam-micro-server`, you can:
-
-- Create a project that combines `viam-micro-server` with one or more modules to produce a new firmware instance with expanded functionality.
-- Create modules that can integrate with `viam-micro-server` to deliver new opt-in functionality or device support.
-- Work on `viam-micro-server` itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution.
-
-{{< tabs >}}
-{{% tab name="Create a New Project" %}}
+To create firmware that integrates an existing module with the Micro-RDK, and flash your machine with it, follow these steps.
 
 1.  Create a new machine and obtain its credentials:
 
@@ -116,7 +122,7 @@ With the dev setup for `viam-micro-server`, you can:
 
     {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
-    `viam-micro-server` needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+    The Micro-RDK needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
 {{% snippet "secret-share.md" %}}
 
@@ -186,10 +192,11 @@ make upload
 8.  You may now add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project.
     After adding (or removing) a module or changing the version of a module, you must rerun steps 5-6 above in order to rebuild the firmware and reflash the device.
 
-{{% /tab %}}
-{{% tab name="Create a New Module" %}}
+## Create a new module
 
-1. If you have not previously developed a module for `viam-micro-server`, please review the [module template README](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) and the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md) before continuing.
+To create a new module compatible with the Micro-RDK, follow these steps.
+
+1. If you have not previously developed a module for the Micro-RDK, please review the [module template README](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) and the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md) before continuing.
 
 1. Generate a new module skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module):
 
@@ -215,62 +222,10 @@ make upload
 
 1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
 
-1. To consume the module, follow the "Create a Project" workflow in a different directory, and register your module in the `dependencies` section of the project's `Cargo.toml` file, then build and flash the project.
+1. To consume the module, follow the [Build custom firmware](#build-custom-firmware) workflow in a different directory, and register your module in the `dependencies` section of the project's `Cargo.toml` file, then build and flash the project.
    The module will now be available for use by adding it to your machine configuration on the [Viam app](https://app.viam.com).
 
-{{% /tab %}}
-{{% tab name="viam-micro-server Development" %}}
-
-1. Clone the `viamrobotics/micro-rdk` repository (optionally specifying a path for the new clone) and `cd` into the clone:
-
-   ```sh { class="command-line" data-prompt="$"}
-   git clone https://github.com/viamrobotics/micro-rdk [path-to-new-clone]
-   cd <your-path-to/your-viam-micro-server-clone>
-   ```
-
-1. Make any necessary additions or fixes.
-
-1. Compile and run the project.
-   The `viam-micro-server` can either be built for ESP32, or as a native version for testing purposes:
-
-{{< tabs >}}
-{{% tab name="Build and Flash an ESP32" %}}
-
-Compile the project for ESP32:
-
-```sh { class="command-line" data-prompt="$"}
-make build-esp32-bin
-```
-
-Please note that the first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
-Subsequent builds will be faster.
-
-Next, flash the generated firmware to your ESP32.
-
-Connect the ESP32 board you wish to flash to a USB port on your development machine, and run:
-
-```sh { class="command-line" data-prompt="$"}
-make flash-esp32-bin
-```
-
-When prompted, select the serial port that your ESP32 is connected to through a data cable.
-
-{{% /tab %}}
-{{% tab name="Run Natively" %}}
-
-The native server can be built and run with one command:
-
-```sh { class="command-line" data-prompt="$"}
-make native
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
-For further details on `viam-micro-server` development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
+For further details on Micro-RDK development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
 ## Troubleshooting
 
@@ -318,7 +273,7 @@ If you get the error `viam.json not found` try the following to manually add you
 1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 1. Click the copy icon underneath **Machine cloud credentials**.
-   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+   The Micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 1. Navigate to the directory of the project you just created.
 1. Create a new <file>viam.json</file> file and paste the `viam-server` machine cloud credentials in.
 1. Save the file.
