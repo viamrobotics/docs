@@ -70,7 +70,7 @@
   [context.deploy-preview.plugins.inputs]
 
   failBuildOnError = false
-  failPluginOnError = false
+  failPluginOnError = true
 
 
 [[context.branch-deploy.plugins]]
@@ -79,4 +79,4 @@
   [context.branch-deploy.plugins.inputs]
 
   failBuildOnError = false
-  failPluginOnError = false
+  failPluginOnError = true
