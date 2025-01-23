@@ -69,7 +69,7 @@
 
   [context.deploy-preview.plugins.inputs]
 
-  cacheKey = ["Jan232025-preview", "Jan232025"]
+  cacheKey = "Jan232025-preview"
 
 
 [[context.branch-deploy.plugins]]
@@ -77,4 +77,4 @@
 
   [context.branch-deploy.plugins.inputs]
 
-  cacheKey = ["Jan232025-branch", "Jan232025"]
+  cacheKey = "Jan232025-branch"
