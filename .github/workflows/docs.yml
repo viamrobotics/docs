@@ -13,6 +13,7 @@ permissions:
 jobs:
   build:
     if: github.repository_owner == 'viamrobotics'
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Push/Workflow Dispatch
         uses: actions/checkout@v3
