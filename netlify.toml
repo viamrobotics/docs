@@ -59,8 +59,15 @@
   # either "warn" or "error"
   failBuildOnError = true
 
-  # change this key to a new one any time you need to restart from scratch
-  cacheKey = "Jan232025"
+  [context.production]
+    # change this key to a new one any time you need to restart from scratch
+    cacheKey = "Jan232025"
+
+  [context.branch-deploy]
+    cacheKey = "Jan232025-branch"
+
+  [context.deploy-preview]
+    cacheKey = "Jan232025-preview"
 
   # (for development) turn true for extra diagnostic logging
   debug = true
