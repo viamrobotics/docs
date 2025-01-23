@@ -21,7 +21,7 @@ aliases:
   - /installation/viam-micro-server-dev/
 ---
 
-[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's full Robot Development Kit, designed for resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
+[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's full Robot Development Kit (RDK), designed for resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
 `viam-micro-server` is the pre-built firmware built from the Micro-RDK and a default set of {{< glossary_tooltip term_id="module" text="modules" >}}, provided for convenience.
 If you want to use different modules with the Micro-RDK, you can build your own firmware using the instructions on this page.
 
@@ -31,9 +31,7 @@ If you only want to install the pre-built `viam-micro-server` firmware with a de
 
 {{< expand "Why does the Micro-RDK work differently from the full RDK?" >}}
 Microcontrollers do not have full operating systems like single-board computers and general-purpose computers.
-This means that it is generally harder to make software portable across multiple microcontrollers, and it means that microcontrollers can only run one "program" at a time.
-
-Rather than being able to download and install an executable the way you can on a computer or single-board computer, a microcontroller must be flashed with firmware containing the entire logic to run.
+This means that microcontrollers can only run one "program" at a time, and a microcontroller must be flashed with firmware containing the entire logic to run.
 
 The Micro-RDK is a version of the RDK library written in Rust and designed to run on microcontrollers.
 The Micro-RDK includes built-in support for several common hardware components, such as standard DC motors and an ultrasonic sensor.
@@ -46,7 +44,7 @@ The instructions below are for configuring a development environment in order to
 - Develop custom firmware which combines the Micro-RDK with one or more modules.
 - Develop modules for the Micro-RDK.
 
-For advanced topics including development of the Micro-RDK itself, to add features and fix bugs, or to produce a build for a specific ESP-IDF version or platform for which Viam does not offer a pre-built solution, see [Viam Micro-RDK Development on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
+For advanced topics including development of the Micro-RDK itself, see [Viam Micro-RDK Development on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
 ## Required software
 
@@ -111,7 +109,7 @@ If you would like to instead retain the setup script, replace `/dev/null` in the
 
 ## Build custom firmware
 
-To create firmware that integrates an existing module with the Micro-RDK, and flash your machine with it, follow these steps.
+To create firmware that integrates an existing module with the Micro-RDK, and flash your microcontroller with it, follow these steps.
 
 1.  Create a new machine and obtain its credentials:
 

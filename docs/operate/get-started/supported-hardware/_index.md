@@ -86,7 +86,7 @@ Modules in the list above are officially supported and maintained by Viam if and
 
 The following is a selection of components (some built-ins and some modules) written for use with the Micro-RDK.
 To use any of the built-in components, configure them according to their readmes.
-To use a module with the Micro-RDK, you can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines the Micro-RDK with one or more modules](/operate/get-started/other-hardware/micro-module/).
+You can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines the Micro-RDK with one or more modules of your choice](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
 | Model | Description | Built-in |
