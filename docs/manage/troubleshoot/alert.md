@@ -38,13 +38,20 @@ You can also configure alerts on any other machine data, for more information on
 
 ## Data meets condition
 
-The following steps let you configure the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) to monitor the following metrics about the performance of individual machines or your entire fleet:
+The following steps let you configure [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) sensors to monitor different metrics about a machine, such as:
 
-- **Wireless Signal Strength and Quality**: Signal level, link quality, and noise level
-- **Memory Usage**: Memory statistics, including total available memory, used percentage, and specifics on various types of memory (cached, free, slab, etc.)
-- **CPU Usage**: CPU usage across different states (user, system, idle, etc.)
-- **Disk I/O**: Metrics on read and write operations, including bytes transferred and operation times
-- **Network Traffic**: Detailed network statistics, including bytes sent and received, packet information, and error counts, providing a deep dive into a device's network performance
+- `memory_monitor`: Memory stats for the SBC.
+- `cpu_monitor`: Reports per-core and overall usage percentages.
+- `temperature`: Reports the temperature of various temperature sensors.
+
+{{% expand "On macOS use telegraf instead. Click to see more info." %}}
+
+[`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) is not supported on macOS.
+You can use the [`telegraf`](https://app.viam.com/module/viam/viam-telegraf-sensor) sensor instead.
+
+You must also install telegraf by running `brew install telegraf` in your terminal before using this module.
+
+{{% /expand%}}
 
 ### Prerequisites
 
@@ -54,44 +61,25 @@ The following steps let you configure the [`viam-telegraf-sensor`](https://app.v
 
 {{% /expand%}}
 
-{{% expand "Install telegraf. Click to see instructions." %}}
-
-On macOS, you must also install telegraf by running `brew install telegraf` in your terminal before using this module.
-
-If you are on another operating system, telegraf will be installed automatically for you.
-
-{{% /expand%}}
-
-{{< alert title="Note" color="note" >}}
-You must run `viam-server` with `sudo` to monitor machine performance metrics.
-{{< /alert >}}
-
 ### Add performance sensor
 
 {{< table >}}
 {{% tablestep link="/operate/reference/module-configuration/#modular-resource-configuration-details" %}}
-**1. Add the performance metrics sensor**
+**1. Add the performance metrics sensors**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 
-Search for and add the `viam:viam-sensor:telegrafsensor` model provided by the [`viam-telegraf-sensor` module](https://app.viam.com/module/viam/viam-telegraf-sensor).
+Search for and add the `hwmonitor:cpu_monitor` model provided by the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor).
 
 {{% /tablestep %}}
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{% tablestep link="https://github.com/viamrobotics/viam-telegraf-sensor" %}}
+{{% tablestep link="https://github.com/rinzlerlabs/viam-sbc-hwmonitor" %}}
 **2. (Optional) Customize the sensor configuration**
 
-To enable or disable specific metrics, add them to the attributes configuration.
-You can find a list of configurable attributes in the [module README](https://github.com/viamrobotics/viam-telegraf-sensor).
-For example:
-
-```json
-{
-  "disable_kernel": true
-}
-```
+Add additional sensors for any other metrics you want to track.
+You can find a list of the sensors the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) module provides in the [module README](https://github.com/rinzlerlabs/viam-sbc-hwmonitor).
 
 {{% /tablestep %}}
 {{% tablestep  %}}
@@ -123,9 +111,9 @@ Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Configure data capture on the telegraf sensor**
+**2. Configure data capture on the sensor**
 
-Return to your `telegrafsensor`'s configuration card.
+Return to your sensor's configuration card.
 
 In the **Data capture** section, click **Add method**.
 
@@ -166,7 +154,7 @@ If you do not immediately see data, wait a minute for the data to be captured an
    Next, add any conditions.
 
    These can include a key, a value, and a logical operator.
-   For example, a trigger configured to fire when data is captured from the motor `motor-1`'s `IsPowered` method when `is_on` is equal to `True`:
+   For example, a trigger configured to fire when data is captured from the sensor `cpu-monitor`'s `Readings` method when `cpu` is greater than `50`:
 
    {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." >}}
 
@@ -327,9 +315,9 @@ Examples:
 "condition": {
   "evals": [
     {
-      "operator": "lt",
+      "operator": "gt",
       "value": {
-        "Line-Neutral AC RMS Voltage": 130
+        "cpu": 50
       }
     }
   ]
@@ -341,13 +329,15 @@ This eval would trigger for the following sensor reading:
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "readings": {
-    "Line-Neutral AC RMS Voltage": 100
+    "cpu": 80
   }
 }
 ```
 
 {{% /tab %}}
 {{% tab name="2 levels of nesting" %}}
+
+If you are using a different sensor, you may want to trigger on nested data:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "condition": {
@@ -446,20 +436,10 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
 {
   "components": [
     {
-      "name": "local",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "name": "cpu-monitor",
+      "api": "rdk:component:sensor",
+      "model": "rinzlerlabs:hwmonitor:cpu_monitor",
       "attributes": {},
-      "depends_on": []
-    },
-    {
-      "name": "my_temp_sensor",
-      "model": "bme280",
-      "type": "sensor",
-      "namespace": "rdk",
-      "attributes": {},
-      "depends_on": [],
       "service_configs": [
         {
           "type": "data_manager",
@@ -467,8 +447,8 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
             "capture_methods": [
               {
                 "method": "Readings",
-                "additional_params": {},
-                "capture_frequency_hz": 0.017
+                "capture_frequency_hz": 0.05,
+                "additional_params": {}
               }
             ]
           }
@@ -563,12 +543,24 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
 {
   "components": [
     {
-      "name": "local",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "name": "cpu-monitor",
+      "api": "rdk:component:sensor",
+      "model": "rinzlerlabs:hwmonitor:cpu_monitor",
       "attributes": {},
-      "depends_on": []
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Readings",
+                "capture_frequency_hz": 0.05,
+                "additional_params": {}
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "triggers": [
@@ -655,12 +647,24 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
 {
   "components": [
     {
-      "name": "local",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "name": "cpu-monitor",
+      "api": "rdk:component:sensor",
+      "model": "rinzlerlabs:hwmonitor:cpu_monitor",
       "attributes": {},
-      "depends_on": []
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Readings",
+                "capture_frequency_hz": 0.05,
+                "additional_params": {}
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "triggers": [
