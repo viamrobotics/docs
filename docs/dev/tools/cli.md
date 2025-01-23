@@ -10,7 +10,6 @@ aliases:
   - /manage/cli/
   - /fleet/cli/
   - /cli/
-  - /hello3/
 images: ["/platform/cli.png"]
 date: "2024-08-23"
 # updated: ""  # When the content was last entirely checked
