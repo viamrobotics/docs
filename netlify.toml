@@ -70,6 +70,7 @@
   [context.deploy-preview.plugins.inputs]
 
   cacheKey = "Jan232025-preview"
+  failBuildOnError = false
 
 
 [[context.branch-deploy.plugins]]
@@ -78,3 +79,4 @@
   [context.branch-deploy.plugins.inputs]
 
   cacheKey = "Jan232025-branch"
+  failBuildOnError = false
