@@ -38,8 +38,8 @@ aliases:
   - /use-cases/image-data/
 ---
 
-You can use the data management service to capture and sync data from your machine to the cloud.
-You can capture data from [supported components and services](#supported-resources) or from arbitrary folders on your machines.
+You can use the data management service to capture data from [supported components and services](#supported-resources), then sync it to the cloud.
+You can also sync data from arbitrary folders on your machine.
 
 ## Configure the data management service
 
@@ -454,7 +454,7 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
 {{% tab name="Remote parts" %}}
 
 Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
-For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's resources by adding it as a remote part.
+For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or does not have enough storage or processing power to run `viam-server`, you can still process and capture the data from that part's resources by adding it as a remote part.
 
 Currently, you can only configure data capture from remote resources in your JSON configuration.
 To add them to your JSON configuration you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
