@@ -154,7 +154,7 @@ If you do not immediately see data, wait a minute for the data to be captured an
    Next, add any conditions.
 
    These can include a key, a value, and a logical operator.
-   For example, a trigger configured to fire when data is captured from the sensor `cpu-monitor`'s `Readings` method when `cpu` is greater than to `50`:
+   For example, a trigger configured to fire when data is captured from the sensor `cpu-monitor`'s `Readings` method when `cpu` is greater than `50`:
 
    {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." >}}
 
