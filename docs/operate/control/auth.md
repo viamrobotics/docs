@@ -4,14 +4,15 @@ linkTitle: "OAuth"
 weight: 60
 layout: "docs"
 type: "docs"
-description: "Create a branded login screen."
+description: "Create a branded login screen for your application."
 images: ["/general/code.png"]
 date: "2025-01-22"
 ---
 
-If you want to set up a custom login screen, where Viam provides authentication and manages users for you but the branding is yours, follow these steps:
+You can use Viam to manage your user authentication.
+This guide will show you how to create a branded login screen.
 
-{{<imgproc src="/operate/oauth.png" resize="800x" declaredimensions=true alt="Example Oauth screenshot">}}
+{{<imgproc src="/operate/oauth.png" resize="1000x" declaredimensions=true alt="Example Oauth screenshot" style="width:600px" class="imgzoom">}}
 
 ## Prerequisites
 
@@ -23,7 +24,7 @@ Add a logo to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization logo set logo-path=logo.png --org-id <org-id>
+viam organization logo set --logo-path=logo.png --org-id <org-id>
 Successfully set the logo for organization <org-id> to logo at file-path: logo.png
 ```
 
@@ -65,8 +66,8 @@ Create your OAuth application for your organization:
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
 viam organization auth-service oauth-app create --client-authentication required \
     --client-name "OAuth Test App" --enabled-grants "password, authorization_code" \
-    --logout-uri "https://logoipsum.com/logout" --origin-uris https://logoipsum.com \
-    --pkce not_required --redirect-uris https://logoipsum.com/callback \
+    --logout-uri "https://logoipsum.com/logout" --origin-uris "https://logoipsum.com,http://localhost:3000" \
+    --pkce not_required --redirect-uris "https://logoipsum.com/oauth-redirect,http://localhost:3000/oauth-redirect" \
     --url-validation allow_wildcards --org-id <org-id>
 Successfully created OAuth app OAuth Test App with client ID <client-id> and client secret <secret-token>
 ```
@@ -104,10 +105,10 @@ OAuth config for client ID <client-id>:
 Client Authentication: required
 PKCE (Proof Key for Code Exchange): not_required
 URL Validation Policy: allow_wildcards
-Logout URL: https://logoipsum.com
-Redirect URLs: https://logoipsum.com/callback
-Origin URLs: https://logoipsum.com
-Enabled Grants: password
+Logout URL: https://logoipsum.com/logout
+Redirect URLs: https://logoipsum.com/oauth-redirect, http://localhost:3000/oauth-redirect
+Origin URLs: https://logoipsum.com, http://localhost:3000
+Enabled Grants: authorization_code, password
 ```
 
 {{% /tablestep %}}
