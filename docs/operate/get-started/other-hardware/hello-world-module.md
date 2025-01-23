@@ -23,6 +23,13 @@ This guide will walk you through creating a {{< glossary_tooltip term_id="modula
 This guide also includes optional steps to create a modular sensor that returns random numbers, to demonstrate how you can include two modular resources within one {{< glossary_tooltip term_id="module" text="module" >}}.
 By the end of this guide, you will be able to create your own modular resources and package them into modules so you can use them on your machines.
 
+{{% alert title="Note" color="note" %}}
+
+This guide provides a basic example for learning purposes.
+For a more comprehensive guide including usage of cloud build tools for deployment across different platforms, see [Integrate other hardware](/operate/get-started/other-hardware/).
+
+{{% /alert %}}
+
 ## Prerequisites
 
 {{< expand "Install the Viam CLI and authenticate" >}}
