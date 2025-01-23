@@ -57,7 +57,7 @@
   [plugins.inputs]
 
   # change this key to a new one any time you need to restart from scratch
-  cacheKeys = ["Jan232025"]
+  cacheKey = ["Jan232025"]
   # either "warn" or "error"
   failBuildOnError = true
 
@@ -69,7 +69,7 @@
 
   [context.deploy-preview.plugins.inputs]
 
-  cacheKeys = ["Jan232025-preview", "Jan232025"]
+  cacheKey = ["Jan232025-preview", "Jan232025"]
 
 
 [[context.branch-deploy.plugins]]
@@ -77,4 +77,4 @@
 
   [context.branch-deploy.plugins.inputs]
 
-  cacheKeys = ["Jan232025-branch", "Jan232025"]
+  cacheKey = ["Jan232025-branch", "Jan232025"]
