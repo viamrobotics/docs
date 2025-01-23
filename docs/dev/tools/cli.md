@@ -1160,6 +1160,7 @@ viam machines part status --organization=<org name> --location=<location name> -
 viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
 viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines part restart --machine=<machine id> --part=<part id>
+viam machines part cp --organization=<org name> --location=<location name> --machin=<machine id> --part=<pard name> <file name> machine:/path/to/file
 ```
 
 Examples:
@@ -1190,6 +1191,24 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 # restart a part of a specified machine
 viam machines part restart --machine=123 --part=456
+
+# Copy a single file to the machine with a new name:
+viam machine part cp --organization "org" --location "location" --machine "m1" --part "m1-main" my_file machine:/home/user/
+
+# Recursively copy a directory to the machine with the same name:
+viam machine part cp --part "m1-main" -r my_dir machine:/home/user/
+
+# Copy multiple files to the machine with recursion and keep original permissions and metadata:
+viam machine part cp --part "m1-main" -r -p my_dir my_file machine:/home/user/some/existing/dir/
+
+# Copy a single file from the machine to a local destination:
+viam machine part cp --part "m1-main" machine:my_file ~/Downloads/
+
+# Recursively copy a directory from the machine to a local destination with the same name:
+viam machine part cp --part "m1-main" -r machine:my_dir ~/Downloads/
+
+# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata:
+viam machine part cp --part "m1-main" -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
 #### Command options
@@ -1201,7 +1220,7 @@ viam machines part restart --machine=123 --part=456
 | `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart` (see [positional arguments: part](#positional-arguments-part)) |
+| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart` (see [positional arguments: part](#positional-arguments-part)), `cp` |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
@@ -1231,7 +1250,7 @@ viam machines part restart --machine=123 --part=456
 | -------- | ----------- | ------------------- | --------- |
 | `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
 | `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
-| `--machine` | Machine name or ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
+| `--machine` | Machine name or ID for which the command is being issued | `status`, `logs`, `part` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
@@ -1247,6 +1266,8 @@ viam machines part restart --machine=123 --part=456
 | `--machine-id` | The machine to create an API key for | `api-key` | **Required** |
 | `--name` | The optional name of the API key | `api-key` | Optional |
 | `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
+| `--recursive`, `-r` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
+| `--preserve`, `-p` | Recursively copy files. Default: `false`. | `part cp` | Optional |
 
 ##### Using the `--stream` and `--data` arguments
 
