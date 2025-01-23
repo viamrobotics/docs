@@ -57,9 +57,24 @@
   [plugins.inputs]
 
   # change this key to a new one any time you need to restart from scratch
-  cacheKey = "Jan232025-$CONTEXT"
+  cacheKeys = ["Jan232025"]
   # either "warn" or "error"
   failBuildOnError = true
 
   # (for development) turn true for extra diagnostic logging
   debug = true
+
+[[context.deploy-preview.plugins]]
+  package = "@eggnstone/netlify-plugin-no-more-404"
+
+  [context.deploy-preview.plugins.inputs]
+
+  cacheKeys = ["Jan232025-preview", "Jan232025"]
+
+
+[[context.branch-deploy.plugins]]
+  package = "@eggnstone/netlify-plugin-no-more-404"
+
+  [context.branch-deploy.plugins.inputs]
+
+  cacheKeys = ["Jan232025-branch", "Jan232025"]
