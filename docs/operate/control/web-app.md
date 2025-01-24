@@ -55,4 +55,4 @@ You can also host your app on a server or hosting service of your choice.
 
 Viam uses [FusionAuth](https://fusionauth.io/) for authentication and authorization.
 
-You can [use Viam to authenticate end-users](/manage/manage/oauth/) while using a branded login screen.
+You can [use Viam to authenticate end users](/manage/manage/oauth/) while using a branded login screen.
