@@ -78,7 +78,9 @@ Once you have added the fragment, you can use the [Viam CLI](/dev/tools/cli/) to
 viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
 ```
 
-TODO: You can [access the local log file](/operate/reference/viam-server/manage-viam-server/#view-viam-server-logs) on your machine if needed.
+You can [access the local log file](/operate/reference/viam-server/manage-viam-server/#view-viam-server-logs) on your machine if needed.
+
+If you need to copy files from your machine, use the [`viam machine part cp`](/dev/tools/cli/#machines-alias-robots) command.
 
 ## Restart your machine
 

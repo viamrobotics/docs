@@ -1178,6 +1178,7 @@ viam machines part status --organization=<org name> --location=<location name> -
 viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
 viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines part restart --machine=<machine id> --part=<part id>
+viam machines part cp --organization=<org name> --location=<location name> --machine=<machine id> --part=<part name> <file name> machine:/path/to/file
 ```
 
 Examples:
@@ -1208,6 +1209,24 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 # restart a part of a specified machine
 viam machines part restart --machine=123 --part=456
+
+# Copy and a single file to a machine and change the file's name:
+viam machine part cp --organization=my_org --location=my_location --machine=my_machine --part=m1-main my_file machine:/home/user/
+
+# Recursively copy a directory to a machine:
+viam machine part cp --machine=123 --part=123 -r my_dir machine:/home/user/
+
+# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
+viam machine part cp --machine=123 --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
+
+# Copy a single file from a machine to a local destination:
+viam machine part cp --machine=123 --part=123 machine:my_file ~/Downloads/
+
+# Recursively copy a directory from a machine to a local destination:
+viam machine part cp --machine=123 --part=123 -r machine:my_dir ~/Downloads/
+
+# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
+viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
 #### Command options
@@ -1219,7 +1238,7 @@ viam machines part restart --machine=123 --part=456
 | `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart` (see [positional arguments: part](#positional-arguments-part)) |
+| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `cp` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
@@ -1240,6 +1259,7 @@ viam machines part restart --machine=123 --part=456
 | `logs` | Get logs for the specified machine part |
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
+| `cp` | Copy files to and from a machine part. |
 | `--help` | Return help |
 
 ##### Named arguments
@@ -1249,7 +1269,7 @@ viam machines part restart --machine=123 --part=456
 | -------- | ----------- | ------------------- | --------- |
 | `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
 | `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
-| `--machine` | Machine name or ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
+| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs`, `part` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
@@ -1265,6 +1285,8 @@ viam machines part restart --machine=123 --part=456
 | `--machine-id` | The machine to create an API key for | `api-key` | **Required** |
 | `--name` | The optional name of the API key | `api-key` | Optional |
 | `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
+| `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
+| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
 
 ##### Using the `--stream` and `--data` arguments
 
