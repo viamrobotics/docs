@@ -95,7 +95,7 @@ The connection code will establish communication with your machine over LAN or W
 
 Viam uses [FusionAuth](https://fusionauth.io/) for authentication and authorization.
 
-You can use [use Viam to authenticate end-users](/manage/manage/oauth/) while using a branded login screen.
+You can [use Viam to authenticate end-users](/manage/manage/oauth/) while using a branded login screen.
 
 ## Next steps
 
