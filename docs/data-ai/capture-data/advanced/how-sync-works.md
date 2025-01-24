@@ -40,6 +40,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 Data capture is frequently used with cloud sync.
 You can start and stop capture and sync independently.
 You can also enable cloud sync without data capture and it will sync data in the capture directory, as well as the additional sync paths configured in the `viam-server` config.
+If you place data like images or files in the `~/.viam/capture` directory or another directory set up for sync with the data manager, for example with the `"additional_sync_paths"` config attribute, it will sync this data to the cloud.
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
