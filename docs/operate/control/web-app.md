@@ -51,7 +51,7 @@ The connection code will establish communication with your machine over LAN or W
 
 You can also host your app on a server or hosting service of your choice.
 
-## Set up user authentication
+## Set up user authentication through Viam
 
 Viam uses [FusionAuth](https://fusionauth.io/) for authentication and authorization.
 
