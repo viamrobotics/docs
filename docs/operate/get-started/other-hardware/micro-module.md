@@ -36,7 +36,7 @@ This means that microcontrollers can only run one "program" at a time, and a mic
 The Micro-RDK is a version of the RDK library written in Rust and designed to run on microcontrollers.
 The Micro-RDK includes built-in support for several common hardware components, such as standard DC motors and an ultrasonic sensor.
 Viam provides a default firmware build that includes the Micro-RDK as well as two modules: a wifi sensor and a memory heap sensor.
-You may well want to use additional modules, in which case you will need to build your own custom firmware, that includes the Micro-RDK as well as one or more Micro-RDK-compatible modules of your own creation or that others have shared.
+You can use additional modules to support more or other hardware by building custom firmware from the Micro-RDK and one or more Micro-RDK-compatible modules.
 {{< /expand >}}
 
 The instructions below are for configuring a development environment in order to:
@@ -271,7 +271,7 @@ If you get the error `viam.json not found` try the following to manually add you
 1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 1. Click the copy icon underneath **Machine cloud credentials**.
-   The Micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+   The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 1. Navigate to the directory of the project you just created.
 1. Create a new <file>viam.json</file> file and paste the `viam-server` machine cloud credentials in.
 1. Save the file.
