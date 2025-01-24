@@ -83,7 +83,7 @@ Successfully created OAuth app OAuth Test App with client ID <client-id> and cli
 | `--logout-uri` | The logout uri for the OAuth application. | **Required** |
 | `--org-id` |  The organization ID that is tied to the OAuth application. | **Required** |
 | `--origin-uris` | Comma-separated origin URIs for the OAuth application. | **Required** |
-| `--pkce` | pkce for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | **Required** |
+| `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | **Required** |
 | `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | **Required** |
 | `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | **Required** |
 
