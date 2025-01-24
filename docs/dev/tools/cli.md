@@ -1267,8 +1267,8 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | `--machine-id` | The machine to create an API key for | `api-key` | **Required** |
 | `--name` | The optional name of the API key | `api-key` | Optional |
 | `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
-| `--recursive`, `-r` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
-| `--preserve`, `-p` | Recursively copy files. Default: `false`. | `part cp` | Optional |
+| `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
+| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
 
 ##### Using the `--stream` and `--data` arguments
 
