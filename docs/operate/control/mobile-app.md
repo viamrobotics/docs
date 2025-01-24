@@ -91,13 +91,11 @@ For a more in-depth guide with more screens, see the following guide:
 You can use the mobile app simulator on your development computer to test your app.
 The connection code will establish communication with your machine over LAN or WAN.
 
-## Set up user authentication
+## Set up user authentication through Viam
 
 Viam uses [FusionAuth](https://fusionauth.io/) for authentication and authorization.
 
-Use the [Viam CLI `auth-app` command](/dev/tools/cli/#auth-app) to register your application with FusionAuth so that you or your users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
-
-For support building apps with custom login flows, [contact us](mailto:support@viam.com).
+You can [use Viam to authenticate end users](/manage/manage/oauth/) while using a branded login screen.
 
 ## Next steps
 

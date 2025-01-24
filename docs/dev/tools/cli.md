@@ -1460,69 +1460,6 @@ The `whoami` command returns the Viam user for an authenticated CLI session, or 
 viam whoami
 ```
 
-### `auth-app`
-
-The `auth-app` command allows you to register, update, and get your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/dev/reference/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
-The user's credentials allow them the same [permissions](/manage/manage/rbac/) to organizations, locations, and machines that they have in the Viam app.
-
-```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
-viam auth-app register --org-id=<org-id> --application-name=<application-name> --origin-uris=<origin-uris> --redirect-uris=<redirect-uris> --logout-uri=<logout-uri>
-viam auth-app update --org-id=<org-id> --application-id=<application-id> --application-name=<application-name> --origin-uris=<origin-uris> --redirect-uris=<redirect-uris> --logout-uri=<logout-uri>
-viam auth-app get --org-id=<org-id> --application-id=<application-id>
-```
-
-Examples:
-
-```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
-# register a third party auth application
-viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris=https://test.com,https://test2.com --redirect-uris=https://redirect-url.com--logout-uri=https://logout.com
-Info: Successfully registered auth application
-{
-  "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
-  "application_name": "julias app",
-  "secret": "supersupersecretsecret"
-}
-
-# update a third party auth application
-viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris=https://test.com,https://test2.com
-Info: Successfully updated auth application
-{
-  "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
-  "application_name": "julias app"
-}
-
-# get configuration for a third party auth application
-viam auth-app get --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-id=1234a1z9-ab2c-1234-5678-bcd12345678
-```
-
-{{% alert title="Caution" color="caution" %}}
-Do not share the secret returned by `auth-app register` publicly.
-Sharing this information could compromise your system security by allowing unauthorized access to your machines, or to the computer running your machine.
-{{% /alert %}}
-
-#### Command options
-
-<!-- prettier-ignore -->
-| Command option | Description |
-| -------------- | ----------- |
-| `register` | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
-| `update` | Update your application |
-| `get` | Get the configuration of the auth application |
-
-##### Named arguments
-
-The `org-id` and `application-id` are immutable; they cannot be updated with `update` after the application is registered.
-
-<!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required? |
-| -------- | ----------- | ------------------- | --------- |
-| `--org-id` | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app. | `register`, `update`, `get` | **Required** |
-| `--application-name` | A display name (of your choice) for your application. | `register`, `update` | **Required** |
-| `--application-id` | The ID of the application. | `update`, `get` | **Required** |
-| `--origin-uris` | All URIs from which valid logins to FusionAuth can originate from. | `register`, `update` | **Required** for `register` |
-| `--redirect-uris` | URIs to which FusionAuth will redirect the user upon login. | `register`, `update` | **Required** for `register` |
-| `--logout-uri` | URI of page to show user upon logout. | `register`, `update` | **Required** for `register` |
-
 ## Global options
 
 You can pass global options after the `viam` CLI keyword with any command.
