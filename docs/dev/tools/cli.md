@@ -1251,7 +1251,7 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | -------- | ----------- | ------------------- | --------- |
 | `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
 | `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
-| `--machine` | Machine name or ID for which the command is being issued | `status`, `logs`, `part` | **Required** |
+| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs`, `part` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
