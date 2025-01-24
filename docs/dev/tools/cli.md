@@ -1193,7 +1193,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 viam machines part restart --machine=123 --part=456
 
 # Copy and a single file to a machine and change the file's name:
-viam machine part cp --organization=my_org --location=my_ocation --machine=my_machine --part=m1-main my_file machine:/home/user/
+viam machine part cp --organization=my_org --location=my_location --machine=my_machine --part=m1-main my_file machine:/home/user/
 
 # Recursively copy a directory to a machine:
 viam machine part cp --machine=123 --part=123 -r my_dir machine:/home/user/
