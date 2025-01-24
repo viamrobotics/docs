@@ -23,6 +23,8 @@ sitemap:
 aliases:
   - /build/
   - /tutorials/
+  - /how-tos/
+  - /use-cases/
 outputs:
   - rss
   - html

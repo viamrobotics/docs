@@ -7,6 +7,7 @@ description: "Learn about our style guide and how to work with hugo to contribut
 toc_hide: true
 aliases:
   - /dev/contributing/
+  - /appendix/contributing/
 ---
 
 Thank you for wanting to help us make the docs better.

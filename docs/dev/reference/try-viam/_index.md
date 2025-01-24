@@ -20,6 +20,7 @@ aliases:
   - "/try-viam/faq/"
   - "get-started/try-viam/faq/"
   - /appendix/try-viam/
+  - /appendix/get-started/try-viam/faq/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---

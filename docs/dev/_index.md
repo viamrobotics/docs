@@ -10,6 +10,9 @@ overview: true
 noTitle: true
 aliases:
   - /docs/appendix/
+  - /appendix/
+  - /deeper-dive/
+  - /internals/
 ---
 
 <div class="max-page">

@@ -36,6 +36,8 @@ aliases:
   - /get-started/quickstarts/collect-data/
   - /use-cases/collect-sensor-data/
   - /use-cases/image-data/
+  - /get-started/collect-data/
+  - /fleet/data-management/
 ---
 
 You can use the data management service to capture data from [supported components and services](#supported-resources), then sync it to the cloud.

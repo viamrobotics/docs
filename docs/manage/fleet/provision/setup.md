@@ -17,7 +17,8 @@ next: "/manage/fleet/provision/end-user-setup/"
 aliases:
   - "/build/provision/"
   - /how-tos/provision-setup/
-  - fleet/provision/
+  - /fleet/provision/
+  - /how-tos/provision/
 # updated: ""  # When the tutorial was last entirely checked
 # SMEs: James, Ale
 cost: "0"
