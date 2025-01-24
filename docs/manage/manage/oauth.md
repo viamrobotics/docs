@@ -24,7 +24,7 @@ Add a logo to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization logo set --logo-path=logo.png --org-id <org-id>
+viam organization logo set --logo-path=logo.png --org-id=<org-id>
 Successfully set the logo for organization <org-id> to logo at file-path: logo.png
 ```
 
@@ -37,7 +37,7 @@ You must have [owner permissions](/manage/manage/rbac/#organization-settings-and
 This is the email that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization support-email set --support-email support@logoipsum.com --org-id <org-id>
+viam organization support-email set --support-email=support@logoipsum.com --org-id=<org-id>
 Successfully set support email for organization "<org-id>" to "support@logoipsum.com"
 ```
 
@@ -53,7 +53,7 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 Enable the authentication service for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization auth-service enable --org-id <org-id>
+viam organization auth-service enable --org-id=<org-id>
 enabled auth service for organization "<org-id>":
 ```
 
@@ -67,7 +67,7 @@ Create your OAuth application for your organization:
 viam organization auth-service oauth-app create --client-authentication=required \
     --client-name="OAuth Test App" --enabled-grants="password, authorization_code" \
     --logout-uri="https://logoipsum.com/logout" --origin-uris="https://logoipsum.com,http://localhost:3000" \
-    --pkce not_required --redirect-uris="https://logoipsum.com/oauth-redirect,http://localhost:3000/oauth-redirect" \
+    --pkce=not_required --redirect-uris="https://logoipsum.com/oauth-redirect,http://localhost:3000/oauth-redirect" \
     --url-validation=allow_wildcards --org-id=<org-id>
 Successfully created OAuth app OAuth Test App with client ID <client-id> and client secret <secret-token>
 ```
@@ -94,12 +94,12 @@ Successfully created OAuth app OAuth Test App with client ID <client-id> and cli
 **3. See OAuth app**
 
 ```sh {class="command-line" data-prompt="$" data-output="2-5,7-20"}
-viam organization auth-service oauth-app list --org-id <org-id>
+viam organization auth-service oauth-app list --org-id=<org-id>
 OAuth apps for organization "<org-id>":
 
  - <client-id>
 
-viam organization auth-service oauth-app read --org-id <org-id> --client-id <client-id>
+viam organization auth-service oauth-app read --org-id=<org-id> --client-id=<client-id>
 OAuth config for client ID <client-id>:
 
 Client Authentication: required
