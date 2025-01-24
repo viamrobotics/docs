@@ -55,6 +55,4 @@ You can also host your app on a server or hosting service of your choice.
 
 Viam uses [FusionAuth](https://fusionauth.io/) for authentication and authorization.
 
-Use the [Viam CLI `auth-app` command](/dev/tools/cli/#auth-app) to register your application with FusionAuth so that you or your users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
-
-For support building apps with custom login flows, [contact us](mailto:support@viam.com).
+You can use [use Viam to authenticate end-users](/manage/manage/oauth/) while using a branded login screen.
