@@ -1192,23 +1192,23 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 # restart a part of a specified machine
 viam machines part restart --machine=123 --part=456
 
-# Copy a single file to the machine with a new name:
-viam machine part cp --organization "org" --location "location" --machine "m1" --part "m1-main" my_file machine:/home/user/
+# Copy and a single file to a machine and change the file's name:
+viam machine part cp --organization=my_org --location=my_ocation --machine=my_machine --part=m1-main my_file machine:/home/user/
 
-# Recursively copy a directory to the machine with the same name:
-viam machine part cp --part "m1-main" -r my_dir machine:/home/user/
+# Recursively copy a directory to a machine:
+viam machine part cp --machine=123 --part=123 -r my_dir machine:/home/user/
 
-# Copy multiple files to the machine with recursion and keep original permissions and metadata:
-viam machine part cp --part "m1-main" -r -p my_dir my_file machine:/home/user/some/existing/dir/
+# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
+viam machine part cp --machine=123 --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
-# Copy a single file from the machine to a local destination:
-viam machine part cp --part "m1-main" machine:my_file ~/Downloads/
+# Copy a single file from a machine to a local destination:
+viam machine part cp --machine=123 --part=123 machine:my_file ~/Downloads/
 
-# Recursively copy a directory from the machine to a local destination with the same name:
-viam machine part cp --part "m1-main" -r machine:my_dir ~/Downloads/
+# Recursively copy a directory from a machine to a local destination:
+viam machine part cp --machine=123 --part=123 -r machine:my_dir ~/Downloads/
 
-# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata:
-viam machine part cp --part "m1-main" -r -p machine:my_dir machine:my_file ~/some/existing/dir/
+# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
+viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
 #### Command options
@@ -1220,7 +1220,7 @@ viam machine part cp --part "m1-main" -r -p machine:my_dir machine:my_file ~/som
 | `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart` (see [positional arguments: part](#positional-arguments-part)), `cp` |
+| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `cp` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
@@ -1241,6 +1241,7 @@ viam machine part cp --part "m1-main" -r -p machine:my_dir machine:my_file ~/som
 | `logs` | Get logs for the specified machine part |
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
+| `cp` | Copy files to and from a machine part. |
 | `--help` | Return help |
 
 ##### Named arguments
