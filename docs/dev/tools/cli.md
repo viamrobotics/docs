@@ -1064,9 +1064,9 @@ viam organizations logo set --org-id=<org-id> --logo-path=<logo-path>
 viam organization auth-service [enable|disable] --org-id=<org-id>
 viam organization auth-service oauth-app [create|update] --client-authentication [required|unspecified|not_required|not_required_when_using_pkce] \
     --client-name <client-name> --enabled-grants [password|unspecified|refresh_token|implicit|device_code|authorization_code] \
-    --logout-uri "https://logoipsum.com" --origin-uris https://logoipsum.com \
-    --pkce [required|not_required|unspecified] --redirect-uris https://logoipsum.com/callback \
-    --url-validation [allow_wildcards] --org-id <org-id>
+    --logout-uri=https://logoipsum.com --origin-uris=https://logoipsum.com \
+    --pkce=[required|not_required|unspecified] --redirect-uris=https://logoipsum.com/callback \
+    --url-validation=[allow_wildcards|unspecified|exact_match] --org-id=<org-id>
 viam organization auth-service oauth-app [list] --org-id=<org-id>
 viam organization auth-service oauth-app [read|delete] --org-id=<org-id> --client-id=<client-id>
 ```
@@ -1116,7 +1116,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--logout-uri` | The logout uri for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 | `--org-id` |  The organization ID that is tied to the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 | `--origin-uris` | Comma-separated origin URIs for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
-| `--pkce` | pkce for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 | `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 | `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 
