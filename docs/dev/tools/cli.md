@@ -1068,7 +1068,7 @@ viam organization auth-service oauth-app [create|update] --client-authentication
     --pkce [required|not_required|unspecified] --redirect-uris https://logoipsum.com/callback \
     --url-validation [allow_wildcards] --org-id <org-id>
 viam organization auth-service oauth-app [list] --org-id=<org-id>
-viam organization auth-service oauth-app [read|delete] --org-id=<org-id> --client-id <client-id>
+viam organization auth-service oauth-app [read|delete] --org-id=<org-id> --client-id=<client-id>
 ```
 
 Examples:
