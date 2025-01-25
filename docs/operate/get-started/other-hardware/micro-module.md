@@ -225,6 +225,36 @@ To create a new module compatible with the Micro-RDK, follow these steps.
 
 For further details on Micro-RDK development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
+## Over-the-air updates
+
+To remotely update the firmware on your microcontroller without a physical connection to the device, add the OTA (over-the-air) service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
+Use the **+** button to add `generic:ota_service`, then configure the URL from which to fetch new firmware, and the version to pin to.
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "url": "<URL where firmware is stored in cloud storage>",
+  "version": "<version name>"
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "url": "https://storage.googleapis.com/jordanna/micro-rdk-server-esp32-ota.bin",
+  "version": "myVersion1"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{<imgproc src="/get-started/micro-ota.png" resize="x1100" declaredimensions=true alt="generic:ota_service configuration in the Viam app." class="imgzoom" >}}
+
 ## Troubleshooting
 
 ### Error: `xtensa-esp32-elf-gcc: error: unrecognized command line option '--target=xtensa-esp32-espidf'` when building on macOS
