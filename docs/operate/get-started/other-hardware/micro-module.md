@@ -228,15 +228,26 @@ For further details on Micro-RDK development, including credentials management a
 ## Over-the-air updates
 
 To remotely update the firmware on your microcontroller without a physical connection to the device, add the OTA (over-the-air) service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
-Use the **+** button to add `generic:ota_service`, then configure the URL from which to fetch new firmware, and the version to pin to.
+Use **JSON** mode to add the service as in the template below, then configure the URL from which to fetch new firmware, and the version name.
+
+When the `version` field is modified, the Micro-RDK will automatically download and install the firmware at the URL onto your device.
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "url": "<URL where firmware is stored in cloud storage>",
-  "version": "<version name>"
+  "services": [
+    {
+      "name": "OTA",
+      "api": "rdk:service:generic",
+      "model": "rdk:builtin:ota_service",
+      "attributes": {
+        "url": "<URL where firmware is stored in cloud storage>",
+        "version": "<version name>"
+      }
+    }
+  ]
 }
 ```
 
@@ -245,15 +256,22 @@ Use the **+** button to add `generic:ota_service`, then configure the URL from w
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "url": "https://storage.googleapis.com/jordanna/micro-rdk-server-esp32-ota.bin",
-  "version": "myVersion1"
+  "services": [
+    {
+      "name": "OTA",
+      "api": "rdk:service:generic",
+      "model": "rdk:builtin:ota_service",
+      "attributes": {
+        "url": "https://storage.googleapis.com/jordanna/micro-rdk-server-esp32-ota.bin",
+        "version": "myVersion1"
+      }
+    }
+  ]
 }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-{{<imgproc src="/get-started/micro-ota.png" resize="x1100" declaredimensions=true alt="generic:ota_service configuration in the Viam app." class="imgzoom" >}}
 
 ## Troubleshooting
 
