@@ -48,7 +48,7 @@ For additional configuration information, click on the model name:
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
 {{% /tab %}}
-{{% tab name="viam-micro-server" %}}
+{{% tab name="Micro-RDK" %}}
 
 <!-- prettier-ignore -->
 | Model | Description |

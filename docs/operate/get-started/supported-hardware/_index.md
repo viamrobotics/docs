@@ -4,6 +4,8 @@ title: "Integrate supported hardware"
 weight: 20
 layout: "docs"
 type: "docs"
+imageAlt: "Configure a Machine"
+images: ["/viam.svg"]
 description: "Use supported hardware with your machine."
 modulescript: true
 aliases:
@@ -56,7 +58,7 @@ Viam also supports various [software services](#add-software-services-to-your-ma
 
 Many modules are designed to run alongside the full version of [`viam-server`](/operate/reference/viam-server/), which runs on 64-bit architectures such as single-board computers and laptop/desktop computers running 64-bit Linux, as well as macOS.
 
-Other modules are designed to run on microcontrollers alongside [`viam-micro-server`](/operate/reference/viam-micro-server/).
+Other modules are designed to run on microcontrollers alongside [the Micro-RDK](/operate/reference/viam-micro-server/).
 
 ### For use with 64-bit architecture
 
@@ -82,9 +84,9 @@ Modules in the list above are officially supported and maintained by Viam if and
 
 ### For use with ESP-32 microcontrollers
 
-The following is a selection of components (some built-ins and some modules) written for use with `viam-micro-server`.
+The following is a selection of components (some built-ins and some modules) written for use with the Micro-RDK.
 To use any of the built-in components, configure them according to their readmes.
-To use a module with `viam-micro-server`, you can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines `viam-micro-server` with one or more modules](/operate/get-started/other-hardware/micro-module/).
+You can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines the Micro-RDK with one or more modules of your choice](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
 | Model | Description | Built-in |
@@ -117,11 +119,11 @@ After [installing `viam-server` or `viam-micro-server`](/operate/get-started/set
 
 In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
 
-- [A "camera" that takes a camera feed from a physical camera, and crops it, overlays it, or otherwise transforms the output](/operate/reference/components/camera/transform/)
 - [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
+- [A "movement sensor" that calculates the estimated the position of a wheeled rover based on the output of other components](/operate/reference/components/movement-sensor/wheeled-odometry/)
 - [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
 
-These software-only modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
+These modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
 
 ## Add software services to your machine
 
@@ -146,4 +148,4 @@ Modules for 64-bit architecture run alongside [`viam-server`](/operate/reference
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
 
-For microcontrollers, you must flash a [firmware build of `viam-micro-server`](/operate/get-started/other-hardware/micro-module/) that includes the Micro-RDK and one or more modules onto your device.
+For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.

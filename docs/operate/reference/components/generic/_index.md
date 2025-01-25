@@ -53,7 +53,7 @@ For configuration information, click on the model name:
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
 {{% /tab %}}
-{{% tab name="viam-micro-server" %}}
+{{% tab name="Micro-RDK" %}}
 
 If your `viam-micro-server` machine includes a resource that isn't a [base](/operate/reference/components/base/), [board](/operate/reference/components/board/),[encoder](/operate/reference/components/encoder/), [movement sensor](/operate/reference/components/movement-sensor/), [motor](/operate/reference/components/motor/), or [servo](/operate/reference/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
 

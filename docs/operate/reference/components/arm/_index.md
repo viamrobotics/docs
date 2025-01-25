@@ -47,11 +47,11 @@ If none of the existing models fit your use case, you can create a {{< glossary_
 {{< /alert >}}
 
 {{% /tab %}}
-{{% tab name="viam-micro-server" %}}
+{{% tab name="Micro-RDK" %}}
 
 {{< alert title="Support Notice" color="note" >}}
 
-There is currently no support for this component in `viam-micro-server`.
+There is currently no support for this component compatible with the Micro-RDK.
 
 {{< /alert >}}
 

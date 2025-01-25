@@ -37,11 +37,11 @@ For additional configuration information, click on the model name:
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
 {{% /tab %}}
-{{% tab name="viam-micro-server" %}}
+{{% tab name="Micro-RDK" %}}
 
 {{< alert title="Support Notice" color="note" >}}
 
-There is currently no support for this component in `viam-micro-server`.
+There is currently no support for this component compatible with the Micro-RDK.
 
 {{< /alert >}}
 

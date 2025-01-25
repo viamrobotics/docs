@@ -4,6 +4,8 @@ linkTitle: "Integrate other hardware"
 weight: 30
 layout: "docs"
 type: "docs"
+icon: true
+images: ["/registry/create-module.svg"]
 description: "Add support for more physical or virtual hardware to the Viam ecosystem."
 aliases:
   - /registry/create/
