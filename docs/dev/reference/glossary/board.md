@@ -7,6 +7,6 @@ short_description: A board is the signal wire hub of a machine that provides acc
 
 A board is the signal wire hub of a machine that provides access to GPIO pins.
 
-Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
+Examples of boards include Jetson, Raspberry Pi, or Numato.
 
 For more information see [Board Component](/operate/reference/components/board/).
