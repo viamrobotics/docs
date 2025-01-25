@@ -17,11 +17,11 @@ date: "2024-12-04"
 description: "Use teleop or grafana to visualize sensor data from the Viam app."
 ---
 
-Once you have used the data management service to [capture data](/data-ai/capture-data/capture-sync/), you can visualize your data with either the Viam app's **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
+Once you have used the data management service to [capture data](/data-ai/capture-data/capture-sync/), you can visualize your data on a dashboard with the Viam app's **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
 
 ## Teleop
 
-Visualize sensor data on a widget with the Viam app's **TELEOP** page.
+Create a dashboard visualizing numeric data from components with the Viam app's **TELEOP** page.
 
 ### Prerequisites
 
