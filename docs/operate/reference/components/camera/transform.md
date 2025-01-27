@@ -312,6 +312,8 @@ This feature is useful for when the camera is installed upside down or sideways 
 
 {{< readfile "/static/include/components/troubleshoot/camera.md" >}}
 
+There's no model available to mirror the camera image.
+
 ## Next steps
 
 For more configuration and usage info, see:
