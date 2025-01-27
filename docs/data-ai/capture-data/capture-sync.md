@@ -459,7 +459,7 @@ Viam supports data capture from {{< glossary_tooltip term_id="resource" text="re
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or does not have enough storage or processing power to run `viam-server`, you can still process and capture the data from that part's resources by adding it as a remote part.
 
 Currently, you can only configure data capture from remote resources in your JSON configuration.
-To add them to your JSON configuration you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+To add them to your JSON configuration you must explicitly add the remote resource's `type`, `model`, `name`, and any `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 <!-- prettier-ignore -->
 | Key | Description |
@@ -472,7 +472,6 @@ To add them to your JSON configuration you must explicitly add the remote resour
 {{< expand "Click to view example JSON configuration for an ESP32 board" >}}
 
 The following example shows the configuration of the remote part, in this case an [ESP32 board](/operate/reference/components/board/esp32/).
-This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -494,13 +493,30 @@ This config is just like that of a non-remote part; the remote connection is est
             "name": "A2"
           }
         ]
-      },
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "data-sync",
+      "namespace": "rdk",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "tags": [],
+        "capture_dir": ""
+      }
+    }
+  ],
+  "remotes": [
+    {
       "service_configs": [
         {
           "type": "data_manager",
           "attributes": {
             "capture_methods": [
               {
+                "disabled": false,
                 "method": "Analogs",
                 "additional_params": {
                   "reader_name": "A1"
@@ -509,6 +525,7 @@ This config is just like that of a non-remote part; the remote connection is est
                 "capture_frequency_hz": 10
               },
               {
+                "disabled": false,
                 "method": "Analogs",
                 "additional_params": {
                   "reader_name": "A2"
@@ -519,7 +536,9 @@ This config is just like that of a non-remote part; the remote connection is est
             ]
           }
         }
-      ]
+      ],
+      "name": "<name of remote>",
+      "address": "<address of remote>"
     }
   ]
 }
