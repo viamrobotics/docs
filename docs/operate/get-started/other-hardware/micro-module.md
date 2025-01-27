@@ -225,6 +225,70 @@ To create a new module compatible with the Micro-RDK, follow these steps.
 
 For further details on Micro-RDK development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
+## Over-the-air updates
+
+To remotely update the firmware on your microcontroller without a physical connection to the device, add the OTA (over-the-air) service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
+Use **JSON** mode to add the service as in the template below, then configure the URL from which to fetch new firmware, and the version name.
+
+There are two requirements for hosting firmware:
+
+- The hosting endpoint must use HTTP/2.
+- The hosting endpoint must _not_ use redirection.
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="3-10"}
+{
+  "services": [
+    {
+      "name": "OTA",
+      "api": "rdk:service:generic",
+      "model": "rdk:builtin:ota_service",
+      "attributes": {
+        "url": "<URL where firmware is stored in cloud storage>",
+        "version": "<version name>"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "services": [
+    {
+      "name": "OTA",
+      "api": "rdk:service:generic",
+      "model": "rdk:builtin:ota_service",
+      "attributes": {
+        "url": "https://storage.googleapis.com/jordanna/micro-rdk-server-esp32-ota.bin",
+        "version": "myVersion1"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Your device checks for configuration updates periodically.
+If the device receives a configuration with the OTA service and a modified `version` field in it, the device downloads the new firmware to an inactive partition and restarts.
+When the device boots it loads the new firmware.
+
+{{% alert title="Note" color="note" %}}
+There is no way to roll back to previous firmware after a bad upgrade without reflashing the device with a physical connection, so test your firmware thoroughly before deploying it to a fleet.
+{{% /alert %}}
+
+{{% alert title="Tip" color="tip" %}}
+To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-packages/) with the OTA service configuration and apply it to multiple machines.
+Then, whenever you update the `version` field in the fragment, the version will be updated for each machine that has that fragment in its config, triggering a firmware update the next time the devices fetch their configs.
+{{% /alert %}}
+
 ## Troubleshooting
 
 ### Error: `xtensa-esp32-elf-gcc: error: unrecognized command line option '--target=xtensa-esp32-espidf'` when building on macOS

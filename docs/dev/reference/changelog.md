@@ -41,6 +41,12 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog color="added" title="Over-the-air updates for the Micro-RDK" date="2025-01-08" %}}
+
+You can now update microcontroller firmware from anywhere using the [OTA update service](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
+
+{{% /changelog %}}
+
 {{% changelog date="2024-11-12" color="added" title="Builtin models moved to modules" %}}
 
 The following resource models have moved to modules.

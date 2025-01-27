@@ -24,6 +24,12 @@ For example, you can configure a fragment with one resource, like a speech detec
 Add the fragment to all machines that need the speech detection service.
 As you improve the speech detection service, you can specify the version to deploy and all machines will reconfigure themselves to use the version specified in the update.
 
+{{% alert title="OTA updates for microcontrollers" color="note" %}}
+Fragments (as described on this page) are supported for microcontrollers running the Micro-RDK.
+
+However, if you want to update not just the configuration of your microcontroller but its entire firmware, see [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
+{{% /alert %}}
+
 ## Create a fragment
 
 {{< table >}}
