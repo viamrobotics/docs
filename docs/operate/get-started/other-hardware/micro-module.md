@@ -233,7 +233,7 @@ Use **JSON** mode to add the service as in the template below, then configure th
 There are two requirements for hosting firmware:
 
 - The hosting endpoint must use HTTP/2.
-- The hosting enpoint must _not_ use redirection.
+- The hosting endpoint must _not_ use redirection.
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
