@@ -716,9 +716,9 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | `update-models` | **Required** |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | Optional |
-| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root` | `reload` | Optional |
-| `--id` | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs`, `reload` | Optional |
-| `--local` | Use if the target machine is localhost to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
+| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload` | Optional |
+| `--id` | The build ID to list or show logs for, as returned from `build start`. | `build list`, `build logs`, `reload` | Optional |
+| `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
 | `--module` | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload` | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
