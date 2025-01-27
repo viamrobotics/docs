@@ -10,7 +10,7 @@ aliases:
   - "/components/camera/transform/"
 component_description: "Use pipelines for applying transformations to an input image source."
 toc_hide: true
-# SMEs: Bijan, vision team
+# SMEs: Rand, AV team
 ---
 
 Use the `transform` model to apply transformations to input source images.
