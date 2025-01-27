@@ -8,7 +8,7 @@ tags: ["APIs", "python"]
 description: "Learn how to continually index sensor data from Viam into Elasticsearch and display an alert in the real world."
 images:
   [
-    "https://codelabs.viam.com/guide/monitoring-automation-elastic/img/aa78ebe437bc2401.png",
+    "/codelabs/elastic.jpeg",
   ]
 imageAlt: "architecture diagram"
 authors: ["Joyce Lin"]
