@@ -3,11 +3,14 @@ title: "Camera facts"
 linkTitle: "Camera facts"
 weight: 60
 type: "docs"
-description: "Hidden facts about the camera."
+description: "There's no model of transform camera available to mirror the camera image."
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 toc_hide: true
-draft: true
+hidden: true
+_build:
+  render: false
+  list: false
 # SMEs: Rand, AV team
 ---
 
