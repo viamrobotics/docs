@@ -6,7 +6,6 @@ let api = "";
 if (document.getElementsByClassName("mr-component").length){
   api = document.getElementsByClassName("mr-component")[0].id;
 }
-let baseURL = params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL;
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
@@ -142,7 +141,7 @@ if (mlmodel) {
     hitsPerPage: 5,
   };
   itemtemplateML = `
-  <div class="name"><p><a href="${baseURL}{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
   <div class="type">{{#helpers.highlight}}{ "attribute": "type" }{{/helpers.highlight}}</div>
   <div class="framework">{{#helpers.highlight}}{ "attribute": "framework" }{{/helpers.highlight}}</div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
@@ -230,7 +229,7 @@ if (scripts) {
     hitsPerPage: 5,
   };
   itemtemplateScripts = `
-  <div class="name"><p><a href="${baseURL}{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 
