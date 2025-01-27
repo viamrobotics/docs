@@ -45,7 +45,7 @@ Add an ML model service that supports the ML model you trained or the one you wa
 
 ### Model framework support
 
-Viam currently supports the following frameworks:
+Viam currently supports the following framework as ML model services:
 
 <!-- prettier-ignore -->
 | Model Framework | ML Model Service | Hardware Support | Description |
@@ -71,6 +71,10 @@ Save your config.
 You can search the machine learning models that are available to deploy on this service from the registry here:
 
 {{<mlmodels>}}
+
+### Deploy a specific version of an ML model
+
+When you add
 
 ## Next steps
 
