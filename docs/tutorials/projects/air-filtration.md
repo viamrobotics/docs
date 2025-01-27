@@ -6,7 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/air-quality/index.html"
 tags: ["APIs", "python"]
 description: "Use Viam to automate an air filtration system using air quality sensors and an air filter attached to a box fan."
-images: ["https://codelabs.viam.com/guide/air-quality/img/3902802cce8beb95.jpg"]
+images: ["/codelabs/air-filtration.jpg"]
 imageAlt: "Homemade air quality sensors"
 authors: ["Joyce Lin"]
 languages: []
