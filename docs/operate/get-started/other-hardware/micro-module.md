@@ -6,7 +6,7 @@ weight: 29
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["modular resources", "components", "services", "registry"]
-description: "Set up the Espressif ESP32 for development with the Micro-RDK including writing and using custom modules with the Micro-RDK rather than the pre-built viam-micro-server."
+description: "Set up an Espressif ESP32 microcontroller for development with the Micro-RDK including writing and using custom modules rather than using the pre-built viam-micro-server."
 languages: ["rust"]
 viamresources: []
 platformarea: ["registry"]
@@ -21,9 +21,9 @@ aliases:
   - /installation/viam-micro-server-dev/
 ---
 
-[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's full Robot Development Kit (RDK), designed for resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
+[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's full Robot Development Kit (RDK), designed for resource-limited embedded systems (ESP32 microcontrollers) that cannot run the fully-featured `viam-server`.
 `viam-micro-server` is the pre-built firmware built from the Micro-RDK and a default set of {{< glossary_tooltip term_id="module" text="modules" >}}, provided for convenience.
-If you want to use different modules with the Micro-RDK, you can build your own firmware using the instructions on this page.
+If you want to use different modules on your microcontroller, you can build your own firmware with the Micro-RDK and your choice of modules using the instructions on this page.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
 If you only want to install the pre-built `viam-micro-server` firmware with a default set of modules, follow the normal [setup instructions](/operate/get-started/setup/) instead.
