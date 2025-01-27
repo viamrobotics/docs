@@ -93,21 +93,19 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
   },
 );
 
-let baseURL = params.baseURL.substr(-1) === '/' ? params.baseURL.slice(0, -1) : params.baseURL;
-
 search.addWidgets([
   instantsearch.widgets.hits({
     container: "#hits",
     templates: {
       item: `
 <div class="col tutorial hover-card {{resource}}">
-    <a href="${baseURL}{{relpermalink}}" target="_blank">
+    <a href="{{relpermalink}}" target="_blank">
     {{#webm}}
         <div class="hover-card-video">
             <div>
             <video autoplay loop muted playsinline alt="{{videoAlt}}" width="100%" style="width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
-                <source data-src="${baseURL}{{webm}}" type="video/webm">
-                <source data-src="${baseURL}{{mp4}}" type="video/mp4">
+                <source data-src="{{webm}}" type="video/webm">
+                <source data-src="{{mp4}}" type="video/mp4">
                 There should have been a video here but your browser does not seem to support it.
             </video>
             </div>
@@ -116,7 +114,7 @@ search.addWidgets([
     {{#image}}
         <div class="hover-card-img">
         <picture>
-            <img src="${baseURL}{{image}}" alt="{{imageAlt}}" loading="lazy">
+            <img src="{{image}}" alt="{{imageAlt}}" loading="lazy">
         </picture>
         </div>
     {{/image}}
