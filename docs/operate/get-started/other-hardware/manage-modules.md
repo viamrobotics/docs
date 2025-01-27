@@ -154,7 +154,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 
 {{%expand "Click to view example setup.sh" %}}
 
-```sh { class="command-line"}
+```sh {class="command-line" data-prompt="$"}
 #!/bin/bash
 set -e
 UNAME=$(uname -s)
@@ -179,7 +179,7 @@ pip3 install -r requirements.txt
 
 {{%expand "Click to view example build.sh (with setup.sh)" %}}
 
-```sh { class="command-line"}
+```sh { class="command-line" data-prompt="$"}
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
@@ -190,7 +190,7 @@ tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 
 {{%expand "Click to view example build.sh (without setup.sh)" %}}
 
-```sh { class="command-line"}
+```sh { class="command-line" data-prompt="$"}
 #!/bin/bash
 set -e
 UNAME=$(uname -s)

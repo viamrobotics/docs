@@ -186,6 +186,12 @@ If you prefer the simpler path, skip the sensor sections in the steps below.
 
 The easiest way to generate the files for your module is to use the [Viam CLI](/dev/tools/cli/).
 
+{{% alert title="Note" color="note" %}}
+The steps below suggest that you disable cloud build when generating your stub files, for simplicity of local testing.
+If you plan to publish your module to the Viam registry, we recommend enabling cloud build, and then following the testing, packaging and uploading steps in [Integrate other hardware](/operate/get-started/other-hardware/) once you are done writing your API implementation in this guide.
+Enabling cloud build will set up your module for a more automated deployment process if you plan to use your module for more than just learning.
+{{% /alert %}}
+
 ### Generate the camera files
 
 The CLI module generator generates the files for one modular resource at a time.
