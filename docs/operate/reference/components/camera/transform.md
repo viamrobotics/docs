@@ -10,7 +10,7 @@ aliases:
   - "/components/camera/transform/"
 component_description: "Use pipelines for applying transformations to an input image source."
 toc_hide: true
-# SMEs: Bijan, vision team
+# SMEs: Rand, AV team
 ---
 
 Use the `transform` model to apply transformations to input source images.
@@ -311,8 +311,6 @@ This feature is useful for when the camera is installed upside down or sideways 
 ## Troubleshooting
 
 {{< readfile "/static/include/components/troubleshoot/camera.md" >}}
-
-There's no model available to mirror the camera image.
 
 ## Next steps
 
