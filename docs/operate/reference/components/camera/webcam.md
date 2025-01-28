@@ -239,6 +239,9 @@ If you are capturing camera data, it can happen that the camera captures and syn
 {{% expand "CSI Camera not working on a Raspberry Pi" %}}
 If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
 If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
+For Raspberry Pi AI cameras like the IMX500 AI camera, you can use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
+Note that this module is not officially supported by Viam.
+For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/ai/run-inference/).
 {{% /expand%}}
 
 {{% expand "High CPU usage" %}}
