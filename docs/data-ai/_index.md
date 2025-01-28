@@ -12,6 +12,7 @@ description: "Sync and store sensor data, images, and any other binary or timese
 
 Viam's data and AI capabilities enable you to capture and sync or upload data, build a dataset, train and deploy ML models, and run inference with computer vision.
 Then, you can act or alert on inferences.
+You can also monitor your machines through Teleop, power your application logic, or analyze historical data trends.
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="upside-down">
