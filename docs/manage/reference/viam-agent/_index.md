@@ -14,8 +14,6 @@ aliases:
 
 The [`viam-agent`](https://github.com/viamrobotics/agent) is a self-updating service manager that maintains the lifecycle for itself and `viam-server`.
 
-- [`system_configuration`](#system_configuration):
-
 Among other things, `viam-agent`:
 
 - Installs, runs, and monitors `viam-server` or a custom build of `viam-server`.
@@ -97,8 +95,8 @@ Edit and fill in the attributes as applicable.
 {
   "agent": {
     "version_control": {
-		  "agent": "stable",
-		  "viam-server": "0.52.1"
+      "agent": "stable",
+      "viam-server": "0.52.1"
     },
     "advanced_settings": {
       "debug": false,
@@ -150,8 +148,8 @@ Edit and fill in the attributes as applicable.
 {
   "agent": {
     "version_control": {
-		  "agent": "stable",
-		  "viam-server": "0.52.1"
+      "agent": "stable",
+      "viam-server": "0.52.1"
     },
     "advanced_settings": {
       "debug": false,
@@ -278,7 +276,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `manufacturer` | string | false | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
 | `model` | string | false | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `offline_before_starting_hotspot_minutes` | integer | false | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `2` (2 minutes). |
-| `retry_connection_timeout_minutes` |
+| `retry_connection_timeout_minutes` | TODO | TODO | TODO |
 | `turn_on_hotspot_if_wifi_has_no_internet` | boolean | false | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and roaming mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
 | `user_idle_minutes` | integer | false | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `wifi_power_save` | boolean | false | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
@@ -318,9 +316,9 @@ If the highest-priority network is not available or the machine can connect but 
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
-| `logging_journald_runtime_max_use_megabytes` | Set the temporary space limit for logs. `-1` to disable. Default: `512` (512 MB). |
-| `logging_journald_system_max_use_megabytes` | Sets the maximum disk space `journald` will user for persistent log storage. `-1` to disable. Default: `512` (512 MB). |
-| `os_auto_upgrade_type` | Manage OS package updates using Viam by setting this field. Installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with an automatically generated Origins-Pattern list that is generated based on that of `50unattended-upgrades`. Custom repos installed on the system at the time the setting is enabled will be included. Options: `"all"` (automatic upgrades are performed for all packages), `"security"` (automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)), `""` (disable automatic upgrades). Default: `""`. |
+| `logging_journald_runtime_max_use_megabytes` | integer | optional |Set the temporary space limit for logs. `-1` to disable. Default: `512` (512 MB). |
+| `logging_journald_system_max_use_megabytes` | integer | optional | Sets the maximum disk space `journald` will user for persistent log storage. `-1` to disable. Default: `512` (512 MB). |
+| `os_auto_upgrade_type` | boolean | optional | Manage OS package updates using Viam by setting this field. Installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with an automatically generated Origins-Pattern list that is generated based on that of `50unattended-upgrades`. Custom repos installed on the system at the time the setting is enabled will be included. Options: `"all"` (automatic upgrades are performed for all packages), `"security"` (automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)), `""` (disable automatic upgrades). Default: `""`. |
 
 For more detailed instructions, see [Configure machine settings](https://docs.viam.com/manage/fleet/system-settings/).
 

@@ -36,7 +36,7 @@ You can set automatic upgrades to the following options:
 - `"security"`: automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)
 - `""`: disable automatic upgrades
 
-For complete reference information, see [viam-agent](/manage/reference/viam-agent/#system_configuration).
+For complete reference information, see [viam-agent](/manage/reference/viam-agent/#system-configuration).
 
 ## Configure networks
 
@@ -82,7 +82,7 @@ By default, the maximum disk space `journald` will use for `viam-server` logs is
 
 To adjust these settings update the `"agent"` value in the machine's JSON configuration.
 
-For complete reference information, see [viam-agent](/manage/reference/viam-agent/#system_configuration) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
+For complete reference information, see [viam-agent](/manage/reference/viam-agent/#system-configuration) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
 
 ### Set the maximum disk space
 
