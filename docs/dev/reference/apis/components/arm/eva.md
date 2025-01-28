@@ -7,8 +7,10 @@ draft: "true"
 description: "Configure an Eva arm."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
+toc_hide: true
 aliases:
-  - "/components/arm/eva/"
+  - /components/arm/eva/
+  - /operate/reference/components/arm/eva/
 # SMEs: Bucket, Motion
 ---
 

@@ -1,17 +1,22 @@
 ---
-title: "Configure a UR5e Arm"
-linkTitle: "ur5e"
-weight: 40
+title: "Configure a Yahboom DOFBOT Arm"
+linkTitle: "yahboom-dofbot"
+weight: 50
 type: "docs"
-description: "Configure a UR5e arm."
+draft: "true"
+description: "Configure a Yahboom DOFBOT modular arm."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
+toc_hide: true
 aliases:
-  - "/components/arm/ur5e/"
-component_description: "Supports Universal Robots UR5e."
+  - /components/arm/yahboom-dofbot/
+  - /operate/reference/components/arm/yahboom-dofbot/
 ---
 
-Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine.
+Viam supports the [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) arm as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
+You can explore the source code on the [Viam-labs Yahboom GitHub repository](https://github.com/viam-labs/yahboom).
+
+Configure a `dofbot` arm to add it to your machine.
 
 If you want to test your arm as you configure it, connect it to your machine's computer and turn it on.
 Then, configure the arm:
@@ -21,10 +26,12 @@ Then, configure the arm:
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `arm` type, then select the `ur5e` model.
+Select the `arm` type, then select the `rand:yahboom:dofbot` modular resource.
 Enter a name or use the suggested name for your arm and click **Create**.
 
-![Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/ur5e-ui-config.png)
+There are no attributes available for this modular arm.
+
+<!-- ![Web UI configuration panel for an arm of model yahboom-dofbot in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/yahboom-dofbot-ui-config.png) -->
 
 Edit and fill in the attributes as applicable.
 
@@ -36,13 +43,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-arm-name>",
-      "model": "ur5e",
+      "model": "dofbot",
       "type": "arm",
-      "namespace": "rdk",
-      "attributes": {
-        "speed_degs_per_sec": <float>,
-        "host": "<your-host-address>"
-      },
+      "attributes": {},
       "depends_on": []
     }
   ]
@@ -56,14 +59,11 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "my-arm",
-      "model": "ur5e",
+      "name": "myarm",
+      "model": "yahboom-dofbot",
       "type": "arm",
       "namespace": "rdk",
-      "attributes": {
-        "speed_degs_per_sec": 30,
-        "host": "10.1.10.82"
-      },
+      "attributes": {},
       "depends_on": []
     }
   ]
@@ -72,14 +72,6 @@ Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-The following attributes are available for `ur5e` arms:
-
-<!-- prettier-ignore -->
-| Attribute | Type | Required? | Description |
-| --------- | ---- | --------- | ----------- |
-| `speed_degs_per_sec` | float | **Required** | Desired maximum speed of joint movement in degrees per second. Must be between `3` and `180`. |
-| `host` | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
 
