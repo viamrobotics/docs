@@ -74,7 +74,7 @@ If the `fallbackNetOne` is not available or the machine can connect but internet
 }
 ```
 
-For complete reference information, see [viam-agent](/manage/reference/viam-agent/#networks).
+For complete reference information, see [viam-agent](/manage/reference/viam-agent/#network_configuration).
 
 ## Configure operating system logging
 
