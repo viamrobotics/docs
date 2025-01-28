@@ -6,8 +6,10 @@ type: "docs"
 description: "Configure a fake arm to use for testing."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
+toc_hide: true
 aliases:
-  - "/components/arm/fake/"
+  - /components/arm/fake/
+  - /operate/reference/components/arm/fake/
 component_description: "A model used for testing, with no physical hardware."
 # SMEs: Bucket, Motion
 ---
