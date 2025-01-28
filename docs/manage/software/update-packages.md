@@ -7,12 +7,16 @@ type: "docs"
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
 ---
 
-If you have already [deployed a package](/manage/software/deploy-packages/), you can inspect fragment you have created.
+If you have already [deployed a package](/manage/software/deploy-packages/), you can inspect the fragment you have created.
 The JSON object for the deployed package has a `version` field.
 
 As new versions of software modules or ML models become available, you can update the deployed version in one go using the fragment.
 
 We strongly recommend that you test updates on a subset of machines before deploying it to all machines.
+
+{{% alert title="Updates for microcontrollers" color="note" %}}
+To update the firmware on your microcontroller, see [Over-the-air updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
+{{% /alert %}}
 
 ## Test updates
 
