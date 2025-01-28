@@ -469,9 +469,9 @@ To add them to your JSON configuration you must explicitly add the remote resour
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
-{{< expand "Click to view example JSON configuration for an ESP32 board" >}}
+{{< expand "Click to view example JSON configuration for an ESP32 board that will be established as a remote part" >}}
 
-The following example shows the configuration of the remote part, in this case an [ESP32 board](/operate/reference/components/board/esp32/).
+The following example shows the configuration of the part that we will establish as a remote, in this case an [ESP32 board](/operate/reference/components/board/esp32/).
 This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -529,7 +529,7 @@ This config is just like that of a non-remote part; the remote connection is est
 
 {{< expand "Click to view the JSON configuration for capturing data from two analog readers and a pin of the board's GPIO" >}}
 
-The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
+The following example of a configuration with a remote part captures data from two analog readers that provide a voltage reading and from pin 27 of the GPIO of the board that we configured in the previous example:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -599,7 +599,7 @@ The following example captures data from two analog readers that provide a volta
 
 {{< expand "Click to view the JSON configuration for capturing data from a camera" >}}
 
-The following example captures data from the `ReadImage` method of a camera:
+The following example of a configuration with a remote part captures data from the `ReadImage` method of a camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
