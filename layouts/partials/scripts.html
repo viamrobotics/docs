@@ -20,7 +20,9 @@
 {{ end }}
 
 <!-- INKEEP start -->
-<script type="text/javascript" src='{{ "js/embed.js" | relURL }}' crossorigin="anonymous" defer></script>
+{{ $jsInkeep := resources.Get "js/embed.js" }}
+{{ $jsInkeep := $jsInkeep | minify }}
+<script type="text/javascript" src="{{ $jsInkeep.RelPermalink }}" crossorigin="anonymous" async></script>
 <!-- INKEEP end -->
 
 <!-- START script for lazy loading -->
