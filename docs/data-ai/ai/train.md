@@ -222,7 +222,8 @@ def parse_filenames_and_bboxes_from_json(
 
 # Build the model
 def build_and_compile_model(
-    labels: ty.List[str], model_type: str, input_shape: ty.Tuple[int, int, int]) -> Model:
+    labels: ty.List[str], model_type: str, input_shape: ty.Tuple[int, int, int]
+) -> Model:
     """Builds and compiles a model
     Args:
         labels: list of string lists, where each string list contains up to
