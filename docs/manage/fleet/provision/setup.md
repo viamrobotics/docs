@@ -229,13 +229,13 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
-| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and roaming mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
+| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and `turn_on_hotspot_if_wifi_has_no_internet` mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
 | `offline_before_starting_hotspot_minutes` | integer | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `2` (2 minutes). |
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10` (10 minutes). |
 | `networks` | array | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config in the Viam app, if networks aren't needed until after initial provisioning. See [Networks](/manage/reference/viam-agent/#network_configuration). Default: `[]`. |
-| `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager.  |
-| `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
+| `wifi_power_save` | boolean | Optional | Boolean, which, if set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `NULL`.  |
+| `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline (and in hotspot mode) for the specified duration. Default: `0` (disabled). |
 
 {{% /expand%}}
 
@@ -496,7 +496,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
    - `agent-provisioning` will use the provided network if it can connect, even if that network does not have internet access.
      Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
-     If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable roaming mode.
+     If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable `turn_on_hotspot_if_wifi_has_no_internet`.
 
 1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
 
@@ -536,7 +536,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
    - `agent-provisioning` will use the provided network if it can connect, even if that network does not have internet access.
      Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
-     If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable roaming mode.
+     If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable `turn_on_hotspot_if_wifi_has_no_internet`.
 
 1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
 

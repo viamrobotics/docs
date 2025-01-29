@@ -89,7 +89,7 @@ For complete reference information, see [viam-agent](/manage/reference/viam-agen
 To set the maximum disk space `journald` will use to persist logs, add the `logging_journald_system_max_use_megabytes` field to the `system_configuration` object.
 You may need to add the `system_configuration` object to the `agent` object if it doesn't already exist.
 
-The configured values will take precedence over operating system defaults.
+The configured values will take precedencpce over operating system defaults.
 
 ```json
 "agent": {
