@@ -16,7 +16,7 @@ The camera API allows you to give commands to your [camera components](/operate/
 
 The API for camera components allows you to:
 
-- Request single images or a stream in 2D color, or display z-depth.
+- Request single images in 2D color, or display z-depth.
 - Request a point cloud.
   Each 3D point cloud image consists of a set of coordinates (x,y,z) representing depth in mm.
 
