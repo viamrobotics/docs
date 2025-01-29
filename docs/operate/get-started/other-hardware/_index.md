@@ -939,7 +939,7 @@ It should resemble the following:
 
 Delete the <file>reload.sh</file> script since it was only meant for testing purposes.
 
-Now you are ready to build and upload your module, either using Viam's cloud build tooling which is recommended for continous integration, or a more manual process:
+Now you are ready to build and upload your module, either using Viam's cloud build tooling which is recommended for continuous integration, or a more manual process:
 
 {{< tabs >}}
 {{% tab name="PyInstaller cloud build (recommended)" %}}
