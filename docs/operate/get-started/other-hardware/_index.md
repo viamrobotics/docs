@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 icon: true
 images: ["/registry/create-module.svg"]
-description: "Add support for more physical or virtual hardware to the Viam ecosystem."
+description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a module."
 aliases:
   - /registry/create/
   - /use-cases/create-module/
@@ -39,7 +39,7 @@ If your physical or virtual hardware is not [already supported](/operate/get-sta
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
-This page provides instructions for writing and uploading a module in Python or Go.
+This page provides instructions for creating and uploading a module in Python or Go.
 
 {{% alert title="See also" color="info" %}}
 
@@ -878,7 +878,7 @@ Do not change the <code>module_id</code>.</p>
 <td>object</td>
 <td><strong>Required</strong></td>
 <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p>
-<p>You are strongly encouraged to include a <code>markdown_link</code> to the section of the README containing configuration information about each model, so that that section will be displayed alongside the configuration panel when configuring the model. For example, <code>"README.md#configure-your-meteo_pm-sensor"</code>. Please also include a <code>short_description</code> describing what hardware the model supports.</p></td>
+<p>You are strongly encouraged to include a <code>markdown_link</code> to the section of the README containing configuration information about each model, so that the section will be displayed alongside the configuration panel when configuring the model. For example, <code>"README.md#configure-your-meteo_pm-sensor"</code>. Please also include a <code>short_description</code> describing what hardware the model supports.</p></td>
 </tr>
 <tr>
 <td><code>entrypoint</code></td>
@@ -939,6 +939,41 @@ It should resemble the following:
 
 Delete the <file>reload.sh</file> script since it was only meant for testing purposes.
 
+Now you are ready to build and upload your module, either using Viam's cloud build tooling which is recommended for continous integration, or a more manual process:
+
+{{< tabs >}}
+{{% tab name="PyInstaller cloud build (recommended)" %}}
+
+We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
+
+The `viam module generate` command already generated the `build-action` file in your <file>.github/workflows</file> folder, so you just need to set up authentication in GitHub, and then create a new release to trigger the action:
+
+1. In your terminal, run `viam organizations list` to view your organization ID.
+1. Create an organization API key by running the following command:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam organization api-key create --org-id YOUR_ORG_UUID --name descriptive-key-name
+   ```
+
+1. In the GitHub repo for your project, go to **Settings** &rarr; **Secrets and variables** &rarr; **Actions**.
+   Create two new secrets using the **New repository secret** button:
+
+   - `VIAM_KEY_ID` with the UUID from `Key ID:` in your terminal
+   - `VIAM_KEY_VALUE` with the string from `Key Value:` in your terminal
+
+1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
+1. In the **Choose a tag** dropdown, create a new tag such as `1.0.0`.
+   _Do not prepend the tag with `v` or the GH action will not trigger._
+   For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+
+1. Click **Publish release**.
+   The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
+
+See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
+
+{{% /tab %}}
+{{% tab name="Manual PyInstaller build" %}}
+
 From within the module directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -964,8 +999,8 @@ Use the _same version number_ when running multiple `upload` commands of the sam
 The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
 {{% /alert %}}
 
-We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
-See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
 
