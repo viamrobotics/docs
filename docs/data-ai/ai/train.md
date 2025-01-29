@@ -92,7 +92,7 @@ If you haven't already, create a folder called <file>model</file> and create an 
 
 {{% expand "Click to see the template without parsing labels (recommended for use with UI)" %}}
 
-```python {class="line-numbers linkable-line-numbers" data-line="132" }
+```python {class="line-numbers linkable-line-numbers" data-line="134" }
 import argparse
 import json
 import os
