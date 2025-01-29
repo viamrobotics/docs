@@ -1,3 +1,4 @@
+// https://unpkg.com/@inkeep/uikit-js@0.3.19/dist/embed.js
 var BP = Object.defineProperty;
 var IP = (e, t, r) => t in e ? BP(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
 var md = (e, t, r) => (IP(e, typeof t != "symbol" ? t + "" : t, r), r);
@@ -25175,7 +25176,7 @@ prismjs/prism.js:
    *)
 */
 async function cJ(e) {
-  globalThis.Prism = e, await import("./prism-python-47c53c27.js"), await import("./prism-bash-9cd46793.js"), await import("./prism-sql-4fd3a13d.js"), await import("./prism-json-a7824359.js"), await import("./prism-css-db2d0e53.js"), await import("./prism-javascript-8d001e70.js"), delete globalThis.Prism;
+  globalThis.Prism = e, await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), delete globalThis.Prism;
 }
 const dJ = (e) => (D.useEffect(() => {
   e || cJ(re);
