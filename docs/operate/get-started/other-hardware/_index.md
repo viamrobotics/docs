@@ -559,7 +559,7 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 **1. Prepare to run your module**
 
 {{< tabs >}}
-{{% tab name="Python: pyinstaller (recommended)" %}}
+{{% tab name="Python: PyInstaller (recommended)" %}}
 
 If you enabled cloud build, use these steps.
 
@@ -588,6 +588,12 @@ If you enabled cloud build, use these steps.
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    chmod 755 reload.sh
+   ```
+
+1. Create a virtual Python environment with the necessary packages by running the setup file from within the module directory:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sh setup.sh
    ```
 
 1. Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
@@ -635,36 +641,89 @@ make build
 {{% tablestep %}}
 **2. Configure your local module on a machine**
 
-On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
-Select **Local module**, then **Local module**.
-
-Type in the _absolute_ path on your machine's filesystem to your module's executable file:
+<a name="reload"></a>
 
 {{< tabs >}}
-{{% tab name="Python: pyinstaller (recommended)" %}}
+{{% tab name="Python: PyInstaller (recommended)" %}}
 
-Enter the absolute path to the <file>reload.sh</file> script, for example:
+Run the following command to build and start your module:
 
-<file>/Users/jessamy/my-python-sensor-module/reload.sh</file>
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload <insert relevant named args>
+```
+
+{{< expand "Reload example commands" >}}
+
+For example, to run on your development machine:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --local
+```
+
+Or to run on a different machine (such as a single-board computer), specify the part ID of the remote machine:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
+```
+
+{{< /expand >}}
+
+For more information, run the command with the `-h` flag or see the [CLI documentation](/dev/tools/cli/#module).
+
+{{< expand "Reload troubleshooting" >}}
+
+`Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
+
+- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page in the Viam app and clicking **Part ID**.
+
+`Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
+
+- Try specifying the `--home` directory, for example `/Users/jessamy/` on macOS.
+
+`Error: Error while refreshing token, logging out. Please log in again`
+
+- Run `viam login` to reauthenticate the CLI.
+
+### Try a different command
+
+If you are still having problems with the `reload` command, you can use a different, slower method of rebuilding and then restarting the module.
+Run the following command to rebuild your module:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module build local
+```
+
+Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+
+{{< /expand >}}
+
+When you run `viam module reload`, the module will be added to your device automatically.
 
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
-Enter the absolute path to the <file>run.sh</file> script, for example:
+On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+Select **Local module**, then **Local module**.
 
-<file>/Users/jessamy/my-python-sensor-module/run.sh</file>
+Enter the absolute path to the <file>run.sh</file> script, for example `/home/jessamy/my-module/run.sh` on Linux, or `/Users/jessamy/my-python-sensor-module/run.sh` on macOS.
+
+Click **Create**.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example:
+On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+Select **Local module**, then **Local module**.
 
-<file>/Users/artoo/my-go-module/bin/mymodule</file>
+Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example `/home/jessamy/my-go-module/bin/mymodule` on Linux, or `/Users/jessamy/my-go-module/bin/mymodule` on macOS.
+
+Click **Create**.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-Click **Create**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -702,47 +761,19 @@ If not, you have some debugging to do.
 
 Each time you make changes to your local module, you need to rebuild the module and then restart its instance on your machine.
 
-Run the following command to rebuild and restart your module:
+{{< tabs >}}
+
+{{% tab name="Python: PyInstaller (recommended)" %}}
+
+Run the [reload command again](#reload) to rebuild and restart your module:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload <insert relevant named args>
 ```
 
-{{< expand "Reload example commands" >}}
+{{% /tab %}}
+{{% tab name="Python: venv" %}}
 
-For example, to run on your development machine:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module reload --local
-```
-
-Or to run on a different machine (such as a single-board computer), specify the part ID of the remote machine, and the home directory of your development machine:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00 --home /Users/jessamyt/
-```
-
-{{< /expand >}}
-
-For more information, run the command with the `-h` flag or see the [CLI documentation](/dev/tools/cli/#module).
-
-{{< expand "Reload troubleshooting" >}}
-
-`Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
-
-- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page in the Viam app and clicking **Part ID**.
-
-`Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
-
-- Try specifying the `--home` directory.
-
-`Error: Error while refreshing token, logging out. Please log in again`
-
-- Run `viam login` to reauthenticate the CLI.
-
-### Try a different command
-
-If you are still having problems with the `reload` command, you can use a different, slower method of rebuilding and then restarting the module.
 Run the following command to rebuild your module:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -754,9 +785,22 @@ In upper right corner of the module's card, click the three dot (**...**) icon, 
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
 
-For more help, try asking the AI chatbot or reach out on the [Community Discord](https://discord.gg/viam).
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-{{< /expand >}}
+Run the following command to rebuild your module:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module build local
+```
+
+Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -910,7 +954,7 @@ Do not change the <code>module_id</code>.</p>
 To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
 
 {{< tabs >}}
-{{% tab name="Python: pyinstaller (recommended)" %}}
+{{% tab name="Python: PyInstaller (recommended)" %}}
 
 The recommended approach for Python is to use [PyInstaller](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
 When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
