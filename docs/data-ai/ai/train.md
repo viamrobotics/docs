@@ -261,6 +261,7 @@ def save_model(
         model_dir: output directory for model artifacts
         model_name: name of saved model
     """
+    # Save the model to the output directory
     file_type = "tflite"  # Add proper file type
     filename = os.path.join(model_dir, f"{model_name}.{file_type}")
     
