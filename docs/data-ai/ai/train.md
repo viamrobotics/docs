@@ -92,13 +92,13 @@ If you haven't already, create a folder called <file>model</file> and create an 
 
 {{% expand "Click to see the template" %}}
 
-```python {class="line-numbers linkable-line-numbers" data-line="140" }
+```python {class="line-numbers linkable-line-numbers" data-line="148" }
 import argparse
 import json
 import os
 import typing as ty
 from tensorflow.keras import Model  # Add proper import
-import tensorflow as tf # Add proper import
+import tensorflow as tf  # Add proper import
 
 single_label = "MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION"
 multi_label = "MODEL_TYPE_MULTI_LABEL_CLASSIFICATION"
@@ -115,34 +115,42 @@ DEFAULT_EPOCHS = 200
 # the ML model that this script creates should be stored.
 # The data_json variable will contain the metadata for the dataset
 # that you should use to train the model.
+
+
 def parse_args():
-    """Returns dataset file, model output directory, labels, and num_epochs if present.
-    These must be parsed as command line arguments and then used as the model
-    input and output, respectively. The number of epochs can be used to
-    optionally override the default.
+    """Returns dataset file, model output directory, labels, and num_epochs
+    if present. These must be parsed as command line arguments and then used
+    as the model input and output, respectively. The number of epochs can be
+    used to optionally override the default.
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset_file", dest="data_json", type=str, required=True)
-    parser.add_argument("--model_output_directory", dest="model_dir", type=str, required=True)
+    parser.add_argument("--dataset_file", dest="data_json",
+                        type=str, required=True)
+    parser.add_argument("--model_output_directory", dest="model_dir",
+                        type=str, required=True)
     parser.add_argument("--num_epochs", dest="num_epochs", type=int)
     parser.add_argument(
         "--labels",
         dest="labels",
         type=str,
         required=True,
-        help="Space-separated list of labels, enclosed in single quotes (e.g., 'label1 label2').",
+        help="Space-separated list of labels, \
+            enclosed in single quotes (e.g., 'label1 label2').",
     )
     args = parser.parse_args()
-    
+
     if not args.labels:
         raise ValueError("Labels must be provided")
-        
+
     labels = [label.strip() for label in args.labels.strip("'").split()]
     return args.data_json, args.model_dir, args.num_epochs, labels
+
 
 # This is used for parsing the dataset file (produced and stored in Viam),
 # parse it to get the label annotations
 # Used for training classifiction models
+
+
 def parse_filenames_and_labels_from_json(
     filename: str, all_labels: ty.List[str], model_type: str
 ) -> ty.Tuple[ty.List[str], ty.List[str]]:
@@ -265,11 +273,11 @@ def save_model(
     # Save the model to the output directory
     file_type = "tflite"  # Add proper file type
     filename = os.path.join(model_dir, f"{model_name}.{file_type}")
-    
+
     # Example: Convert to TFLite
     converter = tf.lite.TFLiteConverter.from_keras_model(model)
     tflite_model = converter.convert()
-    
+
     # Save the model
     with open(filename, "wb") as f:
         f.write(tflite_model)
@@ -289,7 +297,8 @@ if __name__ == "__main__":
 
     # Validate epochs
     epochs = (
-        DEFAULT_EPOCHS if NUM_EPOCHS is None or NUM_EPOCHS <= 0 else int(NUM_EPOCHS)
+        DEFAULT_EPOCHS if NUM_EPOCHS is None
+        or NUM_EPOCHS <= 0 else int(NUM_EPOCHS)
     )
 
     # Build and compile model on data
