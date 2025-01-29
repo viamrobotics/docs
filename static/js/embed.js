@@ -1,3 +1,4 @@
+// https://unpkg.com/@inkeep/uikit-js@0.3.19/dist/embed.js
 var BP = Object.defineProperty;
 var IP = (e, t, r) => t in e ? BP(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
 var md = (e, t, r) => (IP(e, typeof t != "symbol" ? t + "" : t, r), r);
