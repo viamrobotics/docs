@@ -72,8 +72,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        "google-cloud-aiplatform",
-        "google-cloud-storage",
         # TODO: Add additional required packages
     ],
 )
@@ -124,6 +122,13 @@ def parse_args():
     parser.add_argument("--dataset_file", dest="data_json", type=str)
     parser.add_argument("--model_output_directory", dest="model_dir", type=str)
     parser.add_argument("--num_epochs", dest="num_epochs", type=int)
+    parser.add_argument(
+        "--labels",
+        dest="labels",
+        type=str,
+        required=False,
+        help="Space-separated list of labels, enclosed in single quotes (e.g., 'label1 label2').",
+    )
     args = parser.parse_args()
     return args.data_json, args.model_dir, args.num_epochs
 
