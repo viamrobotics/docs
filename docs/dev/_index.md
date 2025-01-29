@@ -478,7 +478,6 @@ for d in detections:
 ```go
 // Get image from camera stream on construction site
 myCamera, err := camera.FromRobot(machine, "construction-site-cam")
-
 img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCamera)
 
 // Use machine learning model to gather information from the image
