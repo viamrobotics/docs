@@ -708,12 +708,23 @@ Run the following command to rebuild and restart your module:
 viam module reload <insert relevant named args>
 ```
 
-For more information, run the command with the `-h` flag or see the [CLI documentation](/dev/tools/cli/#module).
-An example:
+{{< expand "Reload example commands" >}}
+
+For example, to run on your development machine:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --local
+```
+
+Or to run on a different machine (such as a single-board computer), specify the part ID of the remote machine, and the home directory of your development machine:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00 --home /Users/jessamyt/
 ```
+
+{{< /expand >}}
+
+For more information, run the command with the `-h` flag or see the [CLI documentation](/dev/tools/cli/#module).
 
 {{< expand "Reload troubleshooting" >}}
 
@@ -765,26 +776,21 @@ It's quite helpful to create a README to document what your module does and how 
 ````md
 # `meteo_PM` modular component
 
-This module implements the [Viam sensor API](https://github.com/rdk/sensor-api) in a jessamy:weather:meteo_PM model.
+This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `jessamy:weather:meteo_PM` model.
 With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
-
-## Build and Run
-
-To use this module, add it from the machines **CONFIGURE** tab and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
 
 ## Configure your `meteo_PM` sensor
 
-Navigate to the **CONFIGURE** tab of your robot’s page in the [Viam app](https://app.viam.com/).
-Add a component.
-Select the `sensor` type, then select the `jessamy:weather:meteo_PM` model.
-Enter a name for your sensor and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine’s page in the [Viam app](https://app.viam.com/).
+Click the **+** button, select **Component**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
+Click **Add module**, enter a name for your sensor, and click **Create**.
 
 On the new component panel, copy and paste the following attribute template into your sensor’s **Attributes** box:
 
 ```json
 {
-"latitude": <float>,
-"longitude": <float>
+  "latitude": <float>,
+  "longitude": <float>
 }
 ```
 
@@ -871,7 +877,8 @@ Do not change the <code>module_id</code>.</p>
 <td><code>models</code></td>
 <td>object</td>
 <td><strong>Required</strong></td>
-<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p></td>
+<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p>
+<p>You are strongly encouraged to include a <code>markdown_link</code> to the section of the README containing configuration information about each model, so that that section will be displayed alongside the configuration panel when configuring the model. For example, <code>"README.md#configure-your-meteo_pm-sensor"</code>. Please also include a <code>short_description</code> describing what hardware the model supports.</p></td>
 </tr>
 <tr>
 <td><code>entrypoint</code></td>
