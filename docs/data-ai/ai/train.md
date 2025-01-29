@@ -327,6 +327,7 @@ The script you are creating must take the following command line inputs:
 
 - `dataset_file`: a file containing the data and metadata for the training job
 - `model_output_directory`: the location where the produced model artifacts are saved to
+- `labels`: space separated list of labels, enclosed in single quotes
 
 The `parse_args()` function in the template parses your arguments.
 
