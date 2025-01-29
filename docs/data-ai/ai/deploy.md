@@ -45,7 +45,7 @@ Add an ML model service that supports the ML model you trained or the one you wa
 
 ### Model framework support
 
-Viam currently supports the following framework as ML model services:
+Viam currently supports the following frameworks as ML model services:
 
 <!-- prettier-ignore -->
 | Model Framework | ML Model Service | Hardware Support | Description |
