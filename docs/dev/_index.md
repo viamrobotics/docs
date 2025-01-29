@@ -478,9 +478,8 @@ for d in detections:
 ```go
 // Get image from camera stream on construction site
 myCamera, err := camera.FromRobot(machine, "construction-site-cam")
-camStream, err := myCamera.Stream(context.Background())
-img, release, err := camStream.Next(context.Background())
-defer release()
+
+img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCamera)
 
 // Use machine learning model to gather information from the image
 visService, err := vision.FromRobot(machine, "hardhat_detector")
@@ -493,6 +492,8 @@ for i := 0; i < len(detections); i++ {
   }
 }
 ```
+
+Be sure to import `"go.viam.com/rdk/utils"` at the beginning of your file.
 
 {{% /tab %}}
 {{< /tabs >}}

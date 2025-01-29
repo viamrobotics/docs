@@ -211,6 +211,7 @@ import (
   "go.viam.com/rdk/config"
   "go.viam.com/rdk/services/vision"
   "go.viam.com/rdk/components/camera"
+  "go.viam.com/rdk/utils"
 )
 
 // Grab the camera from the machine
@@ -237,12 +238,11 @@ if len(directDetections) > 0 {
 // If you need to store the image, get the image first
 // and then run detections on it. This process is slower:
 
-// Get the stream from a camera
-camStream, err := myCam.Stream(context.Background())
-
-// Get an image from the camera stream
-img, release, err := camStream.Next(context.Background())
-defer release()
+// Get an image from the camera decoded as an image.Image
+img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
+if err != nil {
+    logger.Fatalf("Could not decode image from camera: %v", err)
+}
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
 detectionsFromImage, err := myDetector.Detections(context.Background(), img, nil)
