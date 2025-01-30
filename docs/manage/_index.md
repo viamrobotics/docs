@@ -51,9 +51,9 @@ Viam's fleet management tooling allows you to remotely deploy and manage softwar
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-<img src="../platform/platform-fleet-all.svg" alt="Platform diagram with deploy and manage elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-all" style="width:800px" >
-<img src="../platform/platform-fleet-management.svg" alt="Platform diagram with deploy and manage elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-management" style="width:800px" >
-<img src="../platform/platform-fleet-team.svg" alt="Platform diagram with team management elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-team" style="width:800px" >
-<img src="../platform/platform-fleet-monitor.svg" alt="Platform diagram with monitoring elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-monitor" style="width:800px" >
+<img src="../platform/platform-fleet-all.png" alt="Platform diagram with deploy and manage elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-all" style="width:800px" >
+<img src="../platform/platform-fleet-management.png" alt="Platform diagram with deploy and manage elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-management" style="width:800px" >
+<img src="../platform/platform-fleet-team.png" alt="Platform diagram with team management elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-team" style="width:800px" >
+<img src="../platform/platform-fleet-monitor.png" alt="Platform diagram with monitoring elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform-monitor" style="width:800px" >
 
 </div>
