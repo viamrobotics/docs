@@ -44,8 +44,8 @@ Then, you can act or alert on inferences.
 {{< /how-to-expand >}}
 
 <img src="../platform/platform-data-all.png" alt="Platform diagram with data elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform-all" style="width:800px" >
-<img src="../platform/platform-data-capture.png" alt="Platform diagram with data capture elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform-capture" style="width:800px" >
-<img src="../platform/platform-data-work.png" alt="Platform diagram with data usage elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform-work" style="width:800px" >
-<img src="../platform/platform-data-ai.png" alt="Platform diagram with AI elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform-ai" style="width:800px" >
+<img src="../platform/platform-data-capture.png" alt="Platform diagram with data capture elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform-capture" style="width:800px" loading="lazy">
+<img src="../platform/platform-data-work.png" alt="Platform diagram with data usage elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform-work" style="width:800px" loading="lazy">
+<img src="../platform/platform-data-ai.png" alt="Platform diagram with AI elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform-ai" style="width:800px" loading="lazy">
 
 </div>

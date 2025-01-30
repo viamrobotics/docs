@@ -47,8 +47,8 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{< /how-to-expand >}}
 
 <img src="../platform/platform-build-all.png" alt="Platform diagram with build elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-all" style="width:800px;height:auto;" >
-<img src="../platform/platform-build-connect.png" alt="Platform diagram with connect elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-connect" style="width:800px;height:auto;" >
-<img src="../platform/platform-build-apps.png" alt="Platform diagram with apps element highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-apps" style="width:800px;height:auto;" >
-<img src="../platform/platform-build-motion.png" alt="Platform diagram with motion elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-motion" style="width:800px;height:auto;" >
+<img src="../platform/platform-build-connect.png" alt="Platform diagram with connect elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-connect" style="width:800px;height:auto;" loading="lazy">
+<img src="../platform/platform-build-apps.png" alt="Platform diagram with apps element highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-apps" style="width:800px;height:auto;" loading="lazy">
+<img src="../platform/platform-build-motion.png" alt="Platform diagram with motion elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform-motion" style="width:800px;height:auto;" loading="lazy">
 
 </div>
