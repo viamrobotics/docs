@@ -6,7 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/shana-tobot/index.html"
 tags: ["APIs", "python"]
 description: "This tutorial will walk you through making your own vending machine from scratch, along with a web application that allows you to operate your machine from any device."
-images: ["https://codelabs.viam.com/guide/shana-tobot/img/686d2a32f40cc254.jpg"]
+images: ["/codelabs/shana-tobot.jpeg"]
 imageAlt: "sticker machine"
 authors: ["Natalia Jacobowitz"]
 languages: []

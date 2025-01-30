@@ -161,6 +161,8 @@ Edit the generated files to add your logic:
 
        - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
 
+       - See [<file>ackermann.py</file> on GitHub](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) for an example.
+
        </details><br>
 
 1. **Edit the `reconfigure` function** to do the following:
@@ -367,6 +369,8 @@ LOGGER.critical("critical info")
        See code examples below.
 
        - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
+
+       - See [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go) for an example.
 
        </details><br>
 

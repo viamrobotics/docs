@@ -4,7 +4,7 @@ The following ESP32 microcontrollers are supported:
 
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
 
-You will also need a data cable to connect the microcontroller to your development machine.
+You will also need a data cable to connect the microcontroller to your development machine, though subsequent firmware updates can be made remotely with the [over-the-air (OTA) service](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
 
 Your microcontroller should have at least the following resources available to work with `viam-micro-server`:
 

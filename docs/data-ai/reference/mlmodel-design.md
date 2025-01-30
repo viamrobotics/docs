@@ -127,3 +127,8 @@ output_info {
   }
 }
 ```
+
+## Troubleshooting
+
+- `resource build error: model "rdk:service:vision/test-vision" does not fulfill any method of the vision service. It is neither a detector, nor classifier, nor 3D segmenter resource rdk:service:vision/test-vision model rdk:builtin:mlmodel`: This error indicates that your ML model's output tensor mappings don't match what Viam expects.
+  For instance, for a detector, your model metadata needs to have at least 3 output tensors mapped to "location", "category", and "score".

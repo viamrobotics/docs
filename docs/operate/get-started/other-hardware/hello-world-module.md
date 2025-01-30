@@ -577,17 +577,12 @@ First, implement the camera API methods by editing the camera class definition:
 1. Delete the `SubscribeRTP` and `Unsubscribe` methods, since they are not applicable to this camera.
 
 1. You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
-   If this camera returned a camera stream instead of a single static file, we would have implemented `Stream` instead of `Read`.
 
    However, you do need to edit the return statements to return empty structs that match the API.
    Edit these methods so they look like this:
 
    ```go {class="line-numbers linkable-line-numbers" data-start="110" }
    func (s *helloWorldHelloCamera) NewClientFromConn(ctx context.Context, conn rpc.ClientConn, remoteName string, name resource.Name, logger logging.Logger) (camera.Camera, error) {
-       return nil, errors.New("not implemented")
-   }
-
-   func (s *helloWorldHelloCamera) Stream(ctx context.Context, errHandlers ...gostream.ErrorHandler) (gostream.VideoStream, error) {
        return nil, errors.New("not implemented")
    }
 

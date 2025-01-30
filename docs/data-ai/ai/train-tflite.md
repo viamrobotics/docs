@@ -35,7 +35,7 @@ Using a model trained on such images, machines can make inferences about their e
 Your machines can then automatically trigger alerts or perform other actions.
 If a food display is empty, the machine could, for example, alert a supervisor to restock the display.
 
-Common use cases for this are **quality assurance** and **health and safety** applications.
+Common use cases for this are **security**, **quality assurance**, and **food service** applications.
 
 Follow this guide to use your image data to train an ML model, so that your machine can make inferences about its environment.
 

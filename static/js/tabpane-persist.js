@@ -106,7 +106,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   var allTabsInThisPage = document.querySelectorAll(".nav-tabs > .nav-item > a");
   tdRegisterTabClickHandler(allTabsInThisPage);
-  if (document.getElementsByTagName("h1") && document.getElementsByTagName("h1")[0].textContent != "Viam Documentation") {
+  if (document.getElementsByTagName("h1").length && document.getElementsByTagName("h1")[0].textContent != "Dev tools") {
     tdGetAndActivatePersistedTabs(allTabsInThisPage);
   }
 

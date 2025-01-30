@@ -122,7 +122,7 @@ The following attributes are available for the data management service:
 | ------------------ | ------ | --------- | ----------- | ------------------- |
 | `capture_disabled` | bool   | Optional | Toggle data capture on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. Note that even if capture is on for the whole part, but is not on for any individual {{< glossary_tooltip term_id="component" text="components" >}} (see Step 2), data is not being captured. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `capture_dir`      | string | Optional | Path to the directory on your machine where you want to store captured data. If you change the directory for data capture, only new data is stored in the new directory. Existing data remains in the directory where it was stored. <br> Default: `~/.viam/capture` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `tags` | array of strings | Optional | Tags to apply to all images captured by this machine part. May include alphanumeric characters, underscores, and dashes. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
+| `tags` | array of strings | Optional | Tags to apply to all images or tabular data captured by this machine part. May include alphanumeric characters, underscores, and dashes. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `sync_disabled` | bool | Optional | Toggle cloud sync on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. <br> Default: `false` | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `additional_sync_paths` | string array | Optional | Paths to any other directories on your machine from which you want to sync data to the cloud. Once data is synced from a directory, it is automatically deleted from your machine. We recommend using absolute paths. For relative paths, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/#cant-find-the-directory-data-is-stored-in-click-here). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | `sync_interval_mins` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing. <br> Default: `0.1`, meaning once every 6 seconds. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
@@ -469,9 +469,9 @@ To add them to your JSON configuration you must explicitly add the remote resour
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
-{{< expand "Click to view example JSON configuration for an ESP32 board" >}}
+{{< expand "Click to view example JSON configuration for an ESP32 board that will be established as a remote part" >}}
 
-The following example shows the configuration of the remote part, in this case an [ESP32 board](/operate/reference/components/board/esp32/).
+The following example shows the configuration of the part that we will establish as a remote, in this case an [ESP32 board](/operate/reference/components/board/esp32/).
 This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -529,7 +529,7 @@ This config is just like that of a non-remote part; the remote connection is est
 
 {{< expand "Click to view the JSON configuration for capturing data from two analog readers and a pin of the board's GPIO" >}}
 
-The following example captures data from two analog readers that provide a voltage reading and from pin 27 of the board's GPIO:
+The following example of a configuration with a remote part captures data from two analog readers that provide a voltage reading and from pin 27 of the GPIO of the board that we configured in the previous example:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -599,7 +599,7 @@ The following example captures data from two analog readers that provide a volta
 
 {{< expand "Click to view the JSON configuration for capturing data from a camera" >}}
 
-The following example captures data from the `ReadImage` method of a camera:
+The following example of a configuration with a remote part captures data from the `ReadImage` method of a camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

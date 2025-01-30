@@ -91,7 +91,7 @@ You can find a list of the sensors the [`sbc-hwmonitor`](https://app.viam.com/mo
 Now, click **Test** at the bottom of the sensor configuration card to view the readings.
 You can also see readings on the **CONTROL** tab.
 
-![Test panel with readings displayed.](/how-tos/telegraf-test.png)
+{{<imgproc src="/how-tos/telegraf-test.png" resize="1000x" style="width:600px" class="imgzoom" declaredimensions=true alt="Test panel with readings displayed.">}}
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -121,7 +121,7 @@ In the **Data capture** section, click **Add method**.
 From the **Method** dropdown select `Readings`.
 Set the **Frequency** to `0.05` Hz to capture readings once every 20 seconds.
 
-![Sensor readings capture configuration.](/how-tos/capture-readings.png)
+{{<imgproc src="/how-tos/capture-readings.png" resize="1000x" style="width:600px" class="imgzoom" declaredimensions=true alt="Sensor readings capture configuration.">}}
 
 **Save your config.**
 {{% /tablestep %}}
