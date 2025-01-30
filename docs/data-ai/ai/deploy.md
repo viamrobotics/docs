@@ -77,8 +77,8 @@ You can search the machine learning models that are available to deploy on this 
 When you add a model to the ML model service in the app interface, it automatically grabs the latest version.
 To change what version is deployed, you must edit the JSON.
 Go to the [**Models** page](https://app.viam.com/data/models) on the **DATA** tab.
-Click the **>** menu to expand the versions of a model and click the **...** menu on your desired version.
-Click **Select package JSON** to copy the package JSON.
+Click the **>** icon to expand the versions of a model and click the **...** menu on your desired version.
+Click **Copy package JSON**.
 Then, return to your machine page.
 Enter **JSON** mode and find the `"packages"` section of your config.
 Replace `"version": "latest"` with `"version"` from the package reference you just copied, for example `"version": "2024-11-14T15-05-26"`.
