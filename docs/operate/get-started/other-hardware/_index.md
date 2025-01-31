@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 icon: true
 images: ["/registry/create-module.svg"]
-description: "Add support for more physical or virtual hardware to the Viam ecosystem."
+description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a module."
 aliases:
   - /registry/create/
   - /use-cases/create-module/
@@ -39,7 +39,7 @@ If your physical or virtual hardware is not [already supported](/operate/get-sta
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
-This page provides instructions for writing and uploading a module in Python or Go.
+This page provides instructions for creating and uploading a module in Python or Go.
 
 {{% alert title="See also" color="info" %}}
 
@@ -547,7 +547,7 @@ It's a good idea to test your module locally before uploading it to the [Viam Re
 
 {{% expand "Prerequisite: A running machine connected to the Viam app." %}}
 
-You can write a module without a machine, but to test your module you'll need a machine.
+You can write a module without a machine, but to test your module you'll need a [machine](/operate/get-started/setup/).
 Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
 
 {{% snippet "setup.md" %}}
@@ -559,26 +559,63 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 **1. Prepare to run your module**
 
 {{< tabs >}}
-{{% tab name="Python: pyinstaller (recommended)" %}}
-{{% alert title="Note" color="note" %}}
-To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
-If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
-{{% /alert %}}
+{{% tab name="Python: Hot reloading (recommended)" %}}
 
-From within the <file>hello-world</file> directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
+If you enabled cloud build, use these steps.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
-sh build.sh
-```
+1. Create a <file>reload.sh</file> script in your module directory.
+   You'll use this for local testing and can delete it before you upload your module.
+   Paste the following contents into it and save the file:
 
-This environment is where the local module will run.
-`viam-server` does not need to run inside this environment.
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   #!/usr/bin/env bash
+
+    # bash safe mode. look at `set --help` to see what these are doing
+    set -euxo pipefail
+
+    cd $(dirname $0)
+    MODULE_DIR=$(dirname $0)
+    VIRTUAL_ENV=$MODULE_DIR/venv
+    PYTHON=$VIRTUAL_ENV/bin/python
+    ./setup.sh
+
+    # Be sure to use `exec` so that termination signals reach the python process,
+    # or handle forwarding termination signals manually
+    exec $PYTHON src/main.py $@
+   ```
+
+1. Make your reload script executable by running the following command in your module directory:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   chmod 755 reload.sh
+   ```
+
+1. Create a virtual Python environment with the necessary packages by running the setup file from within the module directory:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sh setup.sh
+   ```
+
+1. Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
+
+   ```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
+     "entrypoint": "reload.sh",
+     "first_run": "",
+     "build": {
+       "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py meta.json setup.sh reload.sh",
+       "setup": "./setup.sh",
+       "path": "module.tar.gz",
+       "arch": [
+         "linux/amd64",
+         "linux/arm64"
+       ]
+     }
+   ```
 
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
-Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
+Create a virtual Python environment with the necessary packages by running the setup file from within the module directory:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sh setup.sh
@@ -590,7 +627,7 @@ This environment is where the local module will run.
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-From within the <file>hello-world</file> directory, compile your module into a single executable:
+From within the module directory, compile your module into a single executable:
 
 ```sh {class="command-line" data-prompt="$" data-output="5-10"}
 make setup
@@ -604,36 +641,89 @@ make build
 {{% tablestep %}}
 **2. Configure your local module on a machine**
 
-On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
-Select **Local module**, then **Local module**.
-
-Type in the _absolute_ path on your machine's filesystem to your module's executable file:
+<a name="reload"></a>
 
 {{< tabs >}}
-{{% tab name="Python: pyinstaller (recommended)" %}}
+{{% tab name="Python: Hot reloading (recommended)" %}}
 
-Enter the absolute path to the <file>dist/main</file> executable, for example:
+Run the following command to build and start your module:
 
-<file>/Users/jessamy/my-python-sensor-module/dist/main</file>
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload <insert relevant named args>
+```
+
+{{< expand "Reload example commands" >}}
+
+For example, to run on your development machine:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --local
+```
+
+Or to run on a different machine (such as a single-board computer), specify the part ID of the remote machine:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
+```
+
+{{< /expand >}}
+
+For more information, run the command with the `-h` flag or see the [CLI documentation](/dev/tools/cli/#module).
+
+{{< expand "Reload troubleshooting" >}}
+
+`Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
+
+- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page in the Viam app and clicking **Part ID**.
+
+`Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
+
+- Try specifying the `--home` directory, for example `/Users/jessamy/` on macOS.
+
+`Error: Error while refreshing token, logging out. Please log in again`
+
+- Run `viam login` to reauthenticate the CLI.
+
+### Try using a different command
+
+If you are still having problems with the `reload` command, you can use a different, slower method of rebuilding and then restarting the module.
+Run the following command to rebuild your module:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module build local
+```
+
+Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+
+{{< /expand >}}
+
+When you run `viam module reload`, the module will be added to your device automatically.
 
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
-Enter the absolute path to the <file>run.sh</file> script, for example:
+On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+Select **Local module**, then **Local module**.
 
-<file>/Users/jessamy/my-python-sensor-module/run.sh</file>
+Enter the absolute path to the <file>run.sh</file> script, for example `/home/jessamy/my-module/run.sh` on Linux, or `/Users/jessamy/my-python-sensor-module/run.sh` on macOS.
+
+Click **Create**.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example:
+On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+Select **Local module**, then **Local module**.
 
-<file>/Users/artoo/my-go-module/bin/mymodule</file>
+Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example `/home/jessamy/my-go-module/bin/mymodule` on Linux, or `/Users/jessamy/my-go-module/bin/mymodule` on macOS.
+
+Click **Create**.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-Click **Create**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -670,7 +760,21 @@ If your component works, you're almost ready to share your module by uploading i
 If not, you have some debugging to do.
 
 Each time you make changes to your local module, you need to rebuild the module and then restart its instance on your machine.
-Run the following command to rebuild it:
+
+{{< tabs >}}
+
+{{% tab name="Python: PyInstaller (recommended)" %}}
+
+Run the [reload command again](#reload) to rebuild and restart your module:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload <insert relevant named args>
+```
+
+{{% /tab %}}
+{{% tab name="Python: venv" %}}
+
+Run the following command to rebuild your module:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module build local
@@ -681,7 +785,22 @@ In upper right corner of the module's card, click the three dot (**...**) icon, 
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
 
-For help, don't hesitate to reach out on the [Community Discord](https://discord.gg/viam).
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Run the following command to rebuild your module:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module build local
+```
+
+Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -701,26 +820,21 @@ It's quite helpful to create a README to document what your module does and how 
 ````md
 # `meteo_PM` modular component
 
-This module implements the [Viam sensor API](https://github.com/rdk/sensor-api) in a jessamy:weather:meteo_PM model.
+This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `jessamy:weather:meteo_PM` model.
 With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
-
-## Build and Run
-
-To use this module, add it from the machines **CONFIGURE** tab and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
 
 ## Configure your `meteo_PM` sensor
 
-Navigate to the **CONFIGURE** tab of your robot’s page in the [Viam app](https://app.viam.com/).
-Add a component.
-Select the `sensor` type, then select the `jessamy:weather:meteo_PM` model.
-Enter a name for your sensor and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine’s page in the [Viam app](https://app.viam.com/).
+Click the **+** button, select **Component**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
+Click **Add module**, enter a name for your sensor, and click **Create**.
 
 On the new component panel, copy and paste the following attribute template into your sensor’s **Attributes** box:
 
 ```json
 {
-"latitude": <float>,
-"longitude": <float>
+  "latitude": <float>,
+  "longitude": <float>
 }
 ```
 
@@ -747,9 +861,10 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Create a GitHub repo (optional)**
+**2. Create a GitHub repo**
 
 Create a GitHub repository with all the source code and the README for your module.
+This is required for cloud build to work.
 
 Add the link to that repo as the `url` in the <file>meta.json</file> file.
 
@@ -806,7 +921,8 @@ Do not change the <code>module_id</code>.</p>
 <td><code>models</code></td>
 <td>object</td>
 <td><strong>Required</strong></td>
-<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p></td>
+<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p>
+<p>You are strongly encouraged to include a <code>markdown_link</code> to the section of the README containing configuration information about each model, so that the section will be displayed alongside the configuration panel when configuring the model. For example, <code>"README.md#configure-your-meteo_pm-sensor"</code>. Please also include a <code>short_description</code> describing what hardware the model supports.</p></td>
 </tr>
 <tr>
 <td><code>entrypoint</code></td>
@@ -838,22 +954,82 @@ Do not change the <code>module_id</code>.</p>
 To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
 
 {{< tabs >}}
-{{% tab name="Python: pyinstaller (recommended)" %}}
+{{% tab name="Python: PyInstaller (recommended)" %}}
 
 The recommended approach for Python is to use [PyInstaller](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
 When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
 
 {{% alert title="Note" color="note" %}}
 To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
+If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
 {{% /alert %}}
 
-The <file>build.sh</file> script packaged a tarball for you when you ran it before [testing](#test-your-module-locally).
+Edit your <file>meta.json</file> file back to its original state, reverting the edits you made for local testing purposes.
+It should resemble the following:
+
+```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
+ "entrypoint": "dist/main",
+ "first_run": "",
+ "build": {
+   "build": "./build.sh",
+   "setup": "./setup.sh",
+   "path": "dist/archive.tar.gz",
+   "arch": [
+     "linux/amd64",
+     "linux/arm64"
+   ]
+ }
+```
+
+Delete the <file>reload.sh</file> script since it was only meant for testing purposes.
+
+Now you are ready to build and upload your module, either using Viam's cloud build tooling which is recommended for continuous integration, or a more manual process:
+
+{{< tabs >}}
+{{% tab name="PyInstaller cloud build (recommended)" %}}
+
+We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
+
+The `viam module generate` command already generated the `build-action` file in your <file>.github/workflows</file> folder, so you just need to set up authentication in GitHub, and then create a new release to trigger the action:
+
+1. In your terminal, run `viam organizations list` to view your organization ID.
+1. Create an organization API key by running the following command:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam organization api-key create --org-id YOUR_ORG_UUID --name descriptive-key-name
+   ```
+
+1. In the GitHub repo for your project, go to **Settings** &rarr; **Secrets and variables** &rarr; **Actions**.
+   Create two new secrets using the **New repository secret** button:
+
+   - `VIAM_KEY_ID` with the UUID from `Key ID:` in your terminal
+   - `VIAM_KEY_VALUE` with the string from `Key Value:` in your terminal
+
+1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
+1. In the **Choose a tag** dropdown, create a new tag such as `1.0.0`.
+   _Do not prepend the tag with `v` or the GH action will not trigger._
+   For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+
+1. Click **Publish release**.
+   The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
+
+See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
+
+{{% /tab %}}
+{{% tab name="Manual PyInstaller build" %}}
+
+From within the module directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+sh build.sh
+```
 
 Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
 If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module upload --version 1.0.0 --platform any module.tar.gz
+viam module upload --version 1.0.0 --platform any dist/archive.tar.gz
 ```
 
 For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
@@ -867,8 +1043,8 @@ Use the _same version number_ when running multiple `upload` commands of the sam
 The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
 {{% /alert %}}
 
-We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
-See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) for more information.
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
 
