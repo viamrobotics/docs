@@ -163,7 +163,7 @@ You can capture data for any {{< glossary_tooltip term_id="resource" text="resou
 
 Configure data capture for individual resources by:
 
-- Selecting which resource methods to capture data fromm
+- Selecting which resource methods to capture data from
 - Setting the capture frequency for each method
 
 {{< tabs >}}
