@@ -15,6 +15,7 @@ Once set up:
 
 - You will have a branded billing dashboard for each org
 - Invoices will be sent from your provided support email address and will contain your provided logo
+- You can set custom pricing
 
 {{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom">}}
 
@@ -104,6 +105,35 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 ```
 
 {{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom">}}
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Set custom pricing
+
+You can set custom pricing for machines within your organization:
+
+{{< table >}}
+{{% tablestep link="" %}}
+**1. Create a fragment with billing information**
+
+For example:
+
+```json {class="line-numbers linkable-line-numbers" data-line="5"}
+{
+  "billing": {
+    "cost_per_month": {
+      "per_machine": 10
+    },
+    "tier_name": "not-free"
+  }
+}
+```
+
+{{% /tablestep %}}
+{{% tablestep link="/manage/fleet/reuse-configuration/" %}}
+**2. Add the fragment to each machine**
+
 
 {{% /tablestep %}}
 {{< /table >}}
