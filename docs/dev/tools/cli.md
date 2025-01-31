@@ -1241,7 +1241,7 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `cp` (see [positional arguments: part](#positional-arguments-part)) |
+| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
