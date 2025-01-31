@@ -95,7 +95,7 @@ For more information, see the [`viam module` command](/dev/tools/cli/#module).
 
 To update an existing module in the [Viam Registry](https://app.viam.com/registry) using continuous integration (CI), you can use one of two GitHub actions.
 You can only use these GitHub actions if you have already created the module by running `viam module create` and `viam module upload` (or `viam module generate` and opting to register the module, and then `viam module upload`).
-For most use cases, we recommend the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and MacOS.
+For most use cases, we recommend the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and macOS.
 However, if you already have your own CI with access to arm runners or only intend to build on `x86` or `mac`, you may also use the [`upload-module` GitHub action](https://github.com/viamrobotics/upload-module) instead which allows you to define the exact build steps.
 
 1. Edit your custom module with the changes you'd like to make.

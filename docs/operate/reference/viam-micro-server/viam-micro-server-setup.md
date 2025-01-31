@@ -91,9 +91,9 @@ Make sure you only have one tab with your machine's page open to limit the numbe
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.
 If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, restart your terminal, and try again.
 
-## MacOS executable permissions
+## macOS executable permissions
 
-When using a machine running a version of MacOS, the user is blocked from running the executable by default.
+When using a machine running a version of macOS, the user is blocked from running the executable by default.
 To fix this, **Control+Click** the binary in Finder and then, in the following two prompts select **Open**.
 Close whatever terminal window this opens to be able to run the installer.
 

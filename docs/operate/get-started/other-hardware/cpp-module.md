@@ -1258,7 +1258,7 @@ To create a packaged executable:
 
    By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
-We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
+We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and macOS.
 Follow the instructions to [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
 
 With this approach, you can make a build script like the following to
