@@ -25175,11 +25175,8 @@ prismjs/prism.js:
    * @public
    *)
 */
-async function cJ(e) {
-  globalThis.Prism = e, await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), await import("./prism.js"), delete globalThis.Prism;
-}
 const dJ = (e) => (D.useEffect(() => {
-  e || cJ(re);
+  e;
 }, [e]), null), Nm = dJ;
 var LI = {
   color: void 0,
