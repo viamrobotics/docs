@@ -299,7 +299,7 @@ It's primarily useful for a machine that moves between different networks, so th
 | `priority` | integer | optional | Priority to choose the network with. Values between -999 and 999 with higher values taking precedence. Default: `0`. |
 | `psk` | string | optional | The network pass key. Default: `""`. |
 | `ssid` | string | optional | The WiFi network's SSID. Only needed for WiFi networks. Default: `""`. |
-| `type` | string | optional | The type of the network. Options: `"wifi"`, `"wired"`. Default: `""`. |
+| `type` | string | optional | The type of the network. Required if a network is provided. Options: `"wifi"`, `"wired"`. |
 
 To add additional networks add them using the JSON editor for your device's config in the Viam app.
 
