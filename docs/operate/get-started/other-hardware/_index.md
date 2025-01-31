@@ -559,7 +559,7 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 **1. Prepare to run your module**
 
 {{< tabs >}}
-{{% tab name="Python: PyInstaller (recommended)" %}}
+{{% tab name="Python: Hot reloading (recommended)" %}}
 
 If you enabled cloud build, use these steps.
 
@@ -644,7 +644,7 @@ make build
 <a name="reload"></a>
 
 {{< tabs >}}
-{{% tab name="Python: PyInstaller (recommended)" %}}
+{{% tab name="Python: Hot reloading (recommended)" %}}
 
 Run the following command to build and start your module:
 
