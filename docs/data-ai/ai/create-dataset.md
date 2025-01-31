@@ -196,18 +196,16 @@ Most use cases fall into one of two categories:
 
 - Detecting certain objects and their location within an image.
   For example, you may wish to know where and how many `pizzas` there are in an image.
-  In this case, add a label for each object you would like to detect.
+  In this case, use the **Annotate** interface to add a label for each object you would like to detect.
 
 {{< expand "For instructions to add labels, click here." >}}
-To add a label, click on an image and select the **Bounding box** mode in the menu that opens.
+To add a label, click on an image and select the **Annotate** option in the menu that opens.
 Choose an existing label or create a new label.
-Click on the image where you would like to add the bounding box and drag to where the bounding box should end.
+Holding the command key, click on the image where you would like to add the bounding box and drag to where the bounding box should end.
 
-{{<gif webm_src="/services/data/label-dog.webm" mp4_src="/services/data/label-dog.mp4" alt="Add a bounding box around the dog in an image">}}
+{{<gif webm_src="/services/data/label-magnemite.webm" mp4_src="/services/data/label-magnemite.mp4" alt="Add a bounding box around the magnemite pokemon in an image">}}
 
-To expand the image, click on the expand side menu arrow in the corner of the image:
-
-{{<gif webm_src="/services/data/label-dog-big.webm" mp4_src="/services/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
+You can move around or resize the bounding box once you have created it.
 
 Repeat this with all images.
 
@@ -220,12 +218,10 @@ You can add one or more bounding boxes for objects in each image.
   In this case, add tags to describe your images.
 
 {{< expand "For instructions to add tags, click here." >}}
-To tag an image, click on an image and select the **Image tags** mode in the menu that opens.
+To tag an image, click on an image and click the **+** next to the **Tags** option.
 Add one or more tags to your image.
 
-{{<gif webm_src="/services/data/tag-star.webm" mp4_src="/services/data/tag-star.mp4" alt="Tag image with a star label">}}
-
-If you want to expand the image, click on the expand side menu arrow in the corner of the image.
+{{<gif webm_src="/services/data/tag-tortilla.webm" mp4_src="/services/data/tag-tortilla.mp4" alt="Tag image with a full label">}}
 
 Repeat this with all images.
 {{< /expand >}}
@@ -239,8 +235,6 @@ Use the interface on the **DATA** tab to add your labeled images to a dataset.
 Also add any unlabelled images to your dataset.
 Unlabelled images must not comprise more than 20% of your dataset.
 If you have 25 images in your dataset, at least 20 of those must be labelled.
-
-{{<gif webm_src="/tutorials/data-mlmodel/add-to-dataset.webm" mp4_src="/tutorials/data-mlmodel/add-to-dataset.mp4" alt="Click on an image you want to add to your dataset. In the actions pane, enter a dataset name under datasets, then press return." max-width="600px">}}
 
 {{< expand "Want to add images to a dataset programmatically? Click here." >}}
 
