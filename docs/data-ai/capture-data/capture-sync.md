@@ -46,6 +46,7 @@ You can also sync data from arbitrary folders on your machine.
 ## Configure the data management service
 
 To start, configure the data management service to capture and sync data.
+Data management is available for both `{{< glossary_tooltip term_id="viam-server" text="viam-server" >}}` and `{{< glossary_tooltip term_id="viam-micro-server" text="viam-micro-server" >}}`, but the configuration attributes available are different.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -53,8 +54,6 @@ To start, configure the data management service to capture and sync data.
 From your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), add the `data management` service.
 On the panel that appears, configure data capture and sync attributes as applicable.
 To both capture data and sync it to the cloud, keep both **Capturing** and **Syncing** switched on.
-
-Click the **Save** button in the top right corner of the page to save your config.
 
 {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="Data capture configuration card." resize="600x" >}}
 
@@ -202,7 +201,6 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
 ## Configure data capture
 
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
-Scroll to the resource card you wish to configure data capture and sync on.
 
 {{< tabs >}}
 {{% tab name="Regular" %}}
@@ -660,8 +658,6 @@ The following attributes are available for data capture configuration:
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
-Click the **Save** button in the top right corner of the page to save your config.
-
 If cloud sync is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
 
 {{< alert title="Warning" color="warning" >}}
@@ -696,8 +692,6 @@ You can also control how local data is deleted if your machine's local storage b
 If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
 
 In the **Data capture** section of your resource's configuration card, toggle the switch to **Off**.
-
-Click the **Save** button in the top right corner of the page to save your config.
 
 ## View captured data
 
