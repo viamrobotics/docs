@@ -17,7 +17,7 @@ To get started, install Viam on any device and integrate your hardware. Then you
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="upside-down">
 
-{{< how-to-expand "Intelligent actuation and motion planning" "7" "INTERMEDIATE" "" "hoverable-motion" >}}
+{{< how-to-expand "Intelligent actuation and motion planning" "5" "INTERMEDIATE" "" "hoverable-motion" >}}
 {{< cards >}}
 {{% card link="/operate/mobility/define-geometry/" noimage="true" %}}
 {{% card link="/operate/mobility/define-obstacles/" noimage="true" %}}
@@ -25,7 +25,6 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{% card link="/operate/mobility/move-base/" noimage="true" %}}
 {{% card link="/operate/mobility/move-arm/" noimage="true" %}}
 {{% card link="/operate/mobility/move-gantry/" noimage="true" %}}
-{{% card link="/operate/mobility/use-input-to-act/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
@@ -43,6 +42,8 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{% card link="/operate/get-started/setup/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
+{{% card link="/manage/fleet/system-settings/" noimage="true" %}}
+{{% card link="/manage/fleet/reuse-configuration/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
