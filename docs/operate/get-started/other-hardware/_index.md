@@ -684,7 +684,7 @@ For more information, run the command with the `-h` flag or see the [CLI documen
 
 - Run `viam login` to reauthenticate the CLI.
 
-### Try a different command
+### Try using a different command
 
 If you are still having problems with the `reload` command, you can use a different, slower method of rebuilding and then restarting the module.
 Run the following command to rebuild your module:
