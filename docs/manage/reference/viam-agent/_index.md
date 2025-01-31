@@ -285,7 +285,7 @@ For more detailed instructions on what these settings do, see [Provisioning](htt
 
 ## `additional_networks`
 
-For an already-online device, you can configure new WiFi networks in the machine's [`viam-agent` configuration](/manage/reference/viam-agent/#configuration) in the Viam app.
+For an already-online device, you can configure new WiFi  or wired networks in the machine's [`viam-agent` configuration](/manage/reference/viam-agent/#configuration) in the Viam app.
 It's primarily useful for a machine that moves between different networks, so the machine can automatically connect when moved between locations.
 
 <!-- prettier-ignore -->
