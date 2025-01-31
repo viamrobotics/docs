@@ -657,6 +657,12 @@ You can also control how local data is deleted if your machine's local storage b
 
 {{< /expand >}}
 
+### Supported resources
+
+The following components and services support data capture and cloud sync:
+
+{{< readfile "/static/include/data/capture-supported.md" >}}
+
 ## Stop data capture
 
 If you don't need to capture data, for instance in a test scenario, you can turn off data capture to reduce unnecessary storage.
@@ -758,23 +764,15 @@ See [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for how to
 
 Configure how long your synced data remains stored in the cloud:
 
-- **Retain data up to a certain specific amount or for a specific length of time:** Set `retention_policies` at the resource level.
+- **Retain data up to a certain size or for a specific length of time:** Set `retention_policies` at the resource level.
   - See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-capture-attributes).
 - **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
   - See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
 
 ### Sync optimization
 
-**Capture interval considerations:** Performance can vary based on hardware capabilities, so ensure your capture settings are not too aggressive if resources are limited.
-
 **Configurable sync threads:** You can control how many concurrent sync operations occur by adjusting the `maximum_num_sync_threads` setting.
 Higher values may improve throughput on more powerful hardware, but raising it too high may introduce instability on resource-constrained devices.
 
 **Wait time before syncing arbitrary files:** If you choose to sync arbitrary files (beyond those captured by the data management service), the `file_last_modified_millis` configuration attribute specifies how long a file must remain unmodified before the data manager considers it for syncing.
 The default is 10 seconds.
-
-## Supported resources
-
-The following components and services support data capture and cloud sync:
-
-{{< readfile "/static/include/data/capture-supported.md" >}}
