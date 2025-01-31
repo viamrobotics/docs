@@ -245,8 +245,8 @@ For more information on managing `viam-agent` see:
 | `disable_network_configuration` | boolean | false | Disables the network and hotspot configuration, as well as the configuration of additional networks. Default: `false`. |
 | `disable_system_configuration` | boolean | false | Disables the system configuration. Default: `false`. |
 | `disable_viam_server` | boolean | false | Disable `viam-server` remotely. This option is often used by developers working on Viam agent or when manually running `viam-server`. Default: `false`. |
-| `viam_server_start_timeout_minutes` | integer | false | TODO. Default: `10`. |
-| `wait_for_update_check` | boolean | false | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `true`. |
+| `viam_server_start_timeout_minutes` | integer | false | Specify a time after which, if `viam-server` hasn't successfully started, Viam agent will kill it and restart. Default: `10`. |
+| `wait_for_update_check` | boolean | false | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `false`. |
 
 ### Reduce startup time
 
