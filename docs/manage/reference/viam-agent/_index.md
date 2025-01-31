@@ -220,7 +220,8 @@ To ensure that updates only occur when your machines are ready, configure a [mai
 | `viam-server` | string | true | The version of `viam-server` specified as `"5.6.77"`, `"stable"` or by providing a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-server-test-aarch64"`. `viam-server` is semantically versioned and is tested before release. When set to `"stable"`, `viam-server` will automatically upgrade when a new stable version is released. Default: `"stable"`. |
 
 {{< alert title="Important" color="note" >}}
-When `viam-agent` updates itself, you must [restart `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/) or reboot in order to use the new version.
+`viam-agent` does not update itself.
+You must [restart `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/) or reboot in order to use the new version.
 When you stop or restart `viam-agent`, the agent will stop or restart `viam-server` as well.
 
 When `viam-server` updates itself, you must restart `viam-server` in order to use the new version.
