@@ -297,7 +297,7 @@ This example configuration captures data from the `ReadImage` method of a camera
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
 
-This example configuration captures data from the `GetReadings` method of a temperature sensor and wifi signal sensor:
+This example configuration captures data from the `GetReadings` method of a temperature sensor and WiFi signal sensor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -662,7 +662,7 @@ If cloud sync is enabled, the data management service deletes captured data once
 
 {{< alert title="Warning" color="warning" >}}
 
-If your robot is offline and can't sync and your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
+If your robot is offline and can't sync and your machine's disk fills up beyond a certain threshold, the data management service will delete captured data from the disk to free up additional space and maintain a working machine.
 
 {{< /alert >}}
 
@@ -693,9 +693,9 @@ If this is a test project, make sure you stop data capture to avoid charges for 
 
 In the **Data capture** section of your resource's configuration card, toggle the switch to **Off**.
 
-## View captured data
+## View synced data
 
-To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can filter by location, type of data, and more.
+To view all the synced data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can filter by location, type of data, and more.
 
 You can also access data from a resource or machine part menu.
 
