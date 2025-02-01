@@ -1060,59 +1060,6 @@ To list all in-progress builds and their build status, use the following command
 viam module build list
 ```
 
-### `profiles`
-
-The `profiles` command allows you to manage different CLI authentication profiles, so you can easily switch between API key authentications (for example authentication to one organization versus another).
-
-```sh {class="command-line" data-prompt="$"}
-viam profiles add --profile-name=<name-of-profile-to-add> --key-id=<API-key-ID> --key=<API-key>
-viam profiles update --profile-name=<name-of-profile-to-update> --key-id=<API-key-ID> --key=<API-key>
-viam profiles list
-viam profiles remove --profile-name=<name-of-profile-to-remove>
-```
-
-Examples:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-# Add a new profile for authentication (throws error if profile already exists)
-viam profiles add --profile-name=mycompany --key-id=54321zyx --key=123abcd1234
-
-# Update an existing profile for authentication, or add it if it doesn't exist
-viam profiles update --key=123abcd1234 --key-id=54321zyx --profile-name=mycompany
-
-# List all existing profiles by name
-viam profiles list
-
-# Remove a profile
-viam profiles remove --profile-name=mycompany
-```
-
-See [create an organization API key](#create-an-organization-api-key) for more information.
-
-{{% alert title="Tip" color="tip" %}}
-You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment variable.
-{{% /alert %}}
-
-#### Command options
-
-<!-- prettier-ignore -->
-| Command option | Description | Positional arguments |
-| -------------- | ----------- | -------------------- |
-| `add` | List all existing profiles by name. | - |
-| `update` | Update an existing profile for authentication, or add it if it doesn't exist. | - |
-| `list` | List all existing profiles by name. | - |
-| `remove` | Remove a profile. | - |
-| `--help` | Return help | - |
-
-##### Named arguments
-
-<!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required? |
-| -------- | ----------- | ------------------- | --------- |
-| `--profile-name` | Name of the profile to add, update, or remove. | `add`, `update`, `remove` | **Required** |
-| `--key-id` | The `key id` (UUID) of the API key. | `add`, `update` | **Required** |
-| `--key` | The `key value` of the API key. | `api-key`, `update` | **Required** |
-
 ### `organizations`
 
 The `organizations` command allows you to list the organizations your authenticated session has access to, and to create a new organization API key.
@@ -1217,6 +1164,59 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
 | `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
 | `--destination` | The output directory for downloaded package. | `export` | **Required** |
+
+### `profiles`
+
+The `profiles` command allows you to manage different CLI authentication profiles, so you can easily switch between API key authentications (for example authentication to one organization versus another).
+
+```sh {class="command-line" data-prompt="$"}
+viam profiles add --profile-name=<name-of-profile-to-add> --key-id=<API-key-ID> --key=<API-key>
+viam profiles update --profile-name=<name-of-profile-to-update> --key-id=<API-key-ID> --key=<API-key>
+viam profiles list
+viam profiles remove --profile-name=<name-of-profile-to-remove>
+```
+
+Examples:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+# Add a new profile for authentication (throws error if profile already exists)
+viam profiles add --profile-name=mycompany --key-id=54321zyx --key=123abcd1234
+
+# Update an existing profile for authentication, or add it if it doesn't exist
+viam profiles update --key=123abcd1234 --key-id=54321zyx --profile-name=mycompany
+
+# List all existing profiles by name
+viam profiles list
+
+# Remove a profile
+viam profiles remove --profile-name=mycompany
+```
+
+See [create an organization API key](#create-an-organization-api-key) for more information.
+
+{{% alert title="Tip" color="tip" %}}
+You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment variable.
+{{% /alert %}}
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `add` | List all existing profiles by name. | - |
+| `update` | Update an existing profile for authentication, or add it if it doesn't exist. | - |
+| `list` | List all existing profiles by name. | - |
+| `remove` | Remove a profile. | - |
+| `--help` | Return help | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--profile-name` | Name of the profile to add, update, or remove. | `add`, `update`, `remove` | **Required** |
+| `--key-id` | The `key id` (UUID) of the API key. | `add`, `update` | **Required** |
+| `--key` | The `key value` of the API key. | `api-key`, `update` | **Required** |
 
 ### `machines` (alias `robots`)
 
