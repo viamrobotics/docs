@@ -89,14 +89,14 @@ To use any of the built-in components, configure them according to their readmes
 You can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines the Micro-RDK with one or more modules of your choice](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
-| Model | Description | Built-in |
-| ----- | ----------- | -------- |
-| `gpio` | A servo controlled by GPIO pins. [Configuration info](/operate/reference/components/servo/gpio-micro-rdk/). | Yes |
-| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/operate/reference/components/base/two_wheeled_base/). | Yes |
-| `free_heap_sensor` | Ships with `viam-micro-server`. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
-| `wifi_rssi_sensor` | Ships with `viam-micro-server`. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
-| `moisture_sensor` | [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
-| `water_pump` | [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
+| Model | Description | Ships with `viam-micro-server`? |
+| ----- | ----------- | ------------------------------- |
+| `gpio` | A servo controlled by GPIO pins. [Configuration info](/operate/reference/components/servo/gpio-micro-rdk/). Built into the Micro-RDK. | **Yes** |
+| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/operate/reference/components/base/two_wheeled_base/). Built into the Micro-RDK. | **Yes** |
+| `free_heap_sensor` | Reports the amount of free memory space. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | **Yes** |
+| `wifi_rssi_sensor` | A WiFi signal strength sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | **Yes** |
+| `moisture_sensor` | A moisture sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
+| `water_pump` | A water pump. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | No |
 
 ## Configure hardware on your machine
 
