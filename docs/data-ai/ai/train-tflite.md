@@ -175,7 +175,7 @@ If the results exceed the confidence threshold, the **Run model** section shows 
 You can test both detection models and classifier models using:
 - [a camera](/operate/reference/components/camera/)
 - [a `tflite_cpu` ML model](/data-ai/ai/deploy/) with the model you just trained
-- [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model.
+- [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model
 
 ## Next steps
 
