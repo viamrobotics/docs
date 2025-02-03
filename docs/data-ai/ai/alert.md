@@ -74,7 +74,7 @@ For example, if using the YOLOv8 model (named `yolo`) for hardhat detection, you
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/data-ai/capture-data/capture-sync/#configure-a-data-management-service-for-your-machine) allows you to, among other things, capture images and sync them to the cloud.
+Viam's built-in [data management service](/data-ai/capture-data/capture-sync/#configure-the-data-management-service-for-your-machine) allows you to, among other things, capture images and sync them to the cloud.
 
 Configure data capture on the `filtered-camera` camera to capture images of detections or classifications:
 

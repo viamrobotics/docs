@@ -38,7 +38,7 @@ You can use it as the basis of your own custom logic.
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management service](/data-ai/capture-data/capture-sync/#configure-a-data-management-service-for-your-machine):
+Add the [data management service](/data-ai/capture-data/capture-sync/#configure-the-data-management-service-for-your-machine):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 

@@ -744,7 +744,7 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
 
 ### Conditional sync
 
-By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins `).
+By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
 You can additionally configure sync to only happen when certain conditions are met.
 For example:
 
