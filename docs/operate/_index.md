@@ -37,7 +37,7 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Connect devices" "5" "BEGINNER-FRIENDLY" "" "hoverable-connect" >}}
+{{< how-to-expand "Connect devices" "3" "BEGINNER-FRIENDLY" "" "hoverable-connect" >}}
 {{< cards >}}
 {{% card link="/operate/get-started/setup/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
