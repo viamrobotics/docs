@@ -161,7 +161,7 @@ Edit the generated files to add your logic:
 
        - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
 
-       - See [<file>ackermann.py</file> on GitHub](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) for an example.
+       - See [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src) for example usage.
 
        </details><br>
 
