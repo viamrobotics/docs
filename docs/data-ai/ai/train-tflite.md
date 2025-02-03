@@ -172,8 +172,10 @@ If you trained a classification model, you can test it with the following instru
 
 If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
 
-If you trained a detection model, you can test it using a configured [camera](/operate/reference/components/camera/) and [vision service](/data-ai/ai/run-inference/) by expanding the **TEST** panel on the vision service's configuration card.
-You can also test classifiers this way.
+You can test both detection models and classifier models using:
+- [a camera]()
+- [a tflite_cpu ML model]() with the model you just trained
+- [an mlmodel vision service] using the tflite_cpu model.
 
 ## Next steps
 
