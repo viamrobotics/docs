@@ -177,7 +177,6 @@ Adjust attributes as needed and save.
 
 {{% /expand%}}
 
-
 {{% expand "Click to view cost per month attributes" %}}
 
 <!-- prettier-ignore -->
@@ -204,7 +203,6 @@ Adjust attributes as needed and save.
 Inside the fragment you use to provision your machines, add the billing fragment.
 
 Click **Save** in the upper right corner of the screen.
-
 
 {{% /tablestep %}}
 {{< /table >}}
