@@ -17,6 +17,7 @@ Data capture and cloud sync works differently for `viam-server` and `viam-micro-
 {{% tab name="viam-server" %}}
 
 The data is captured locally on the machine's storage and, by default, stored in the `~/.viam/capture` directory.
+For Linux root or sudo users, the `~/.viam/capture` directory resolves to `/root/.viam/capture`.
 
 {{% expand "Can't find the directory data is stored in? Click here." %}}
 
