@@ -43,26 +43,20 @@ aliases:
 You can use the data management service to capture data from [supported components and services](#supported-resources), then sync it to the cloud.
 You can also sync data from arbitrary folders on your machine.
 
-
 Data capture and sync in Viam involves two key pieces:
 
-- A data management {{< glossary_tooltip term_id="service" text="service" >}} that writes captured data to local edge device storage and syncs that data with the cloud.
+- The data management {{< glossary_tooltip term_id="service" text="service" >}} that writes captured data to local edge device storage and syncs that data with the cloud.
 - Individual {{< glossary_tooltip term_id="resource" text="resource" >}} configurations that specify what data to capture and how often.
 
 ## How data capture and data sync works
+
+The data management service writes data from your configured Viam resources to local storage on your edge device and syncs data from the edge device to the cloud:
 
 - The data management service stores captured data locally in <file>~/.viam/capture<file> by default.
 - Data is synced to the Viam cloud at a configured sync interval using encrypted gRPC calls and deleted from the disk once synced.
 - You can capture and sync data independently, one can run without the other.
 
-## Set up data capture and data sync
-
-### Configure a data management service for your machine
-
-The data management service is responsible for:
-
-- Writing data from your configured Viam resources to local storage on your edge device
-- Syncing data from the edge device to the cloud
+## Configure the data management service for your machine
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -156,11 +150,11 @@ The following attributes are available for the data management service:
 
 {{< /expand >}}
 
-### Configure data capture for individual resources
+## Configure data capture for individual resources
 
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
 
-Configure data capture for individual resources by:
+Configure data capture for individual resources in their configuration by:
 
 - Selecting which resource methods to capture data from
 - Setting the capture frequency for each method
@@ -679,7 +673,7 @@ You can also access data from a resource or machine part menu.
 
 ## Advanced data capture and sync configurations
 
-### Direct to MongoDB capture
+### Capture directly to MongoDB
 
 You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
 This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
@@ -767,7 +761,7 @@ Configure how long your synced data remains stored in the cloud:
 - **Retain data up to a certain size or for a specific length of time:** Set `retention_policies` at the resource level.
   See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-capture-attributes).
 - **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
-    See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
+  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
 
 ### Sync optimization
 
