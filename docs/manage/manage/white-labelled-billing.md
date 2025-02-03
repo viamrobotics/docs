@@ -14,7 +14,7 @@ This guide will show you how to set up white-labelled billing.
 Once set up:
 
 - You will have a branded billing dashboard for each org
-- invoices will be sent from your provided support email address and will contain your provided
+- Invoices will be sent from your provided support email address and will contain your provided logo
 
 {{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom">}}
 
