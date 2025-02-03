@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Actuate your machine based on sensor readings or other inputs."
+toc_hide: true
 ---
 
 You can program your machine to move based on sensor readings or other inputs.
