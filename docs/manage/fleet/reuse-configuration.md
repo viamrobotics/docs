@@ -53,7 +53,7 @@ In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/manage/fleet/reuse-configuration/" %}}
+{{% tablestep %}}
 **3. Create a fragment**
 
 On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).

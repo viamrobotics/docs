@@ -117,9 +117,15 @@ You can set custom pricing for machines within your organization:
 {{% tablestep link="" %}}
 **1. Create a fragment with billing information**
 
-For example:
+On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
 
-```json {class="line-numbers linkable-line-numbers" data-line="5"}
+Click **Create fragment**, and paste the following JSON configuration into it.
+Adjust attributes as needed and save.
+
+{{< tabs >}}
+{{% tab name="Example" %}}
+
+```json { class="line-numbers linkable-line-numbers" }
 {
   "billing": {
     "cost_per_month": {
@@ -130,9 +136,74 @@ For example:
 }
 ```
 
+{{% /tab %}}
+{{% tab name="Full Template" %}}
+
+```json
+{
+  "billing": {
+    "cost_per_month": {
+      "per_machine": 0,
+      "binary_data_upload_bytes": 0.0,
+      "binary_data_egress_bytes": 0.0,
+      "binary_data_cloud_storage_bytes": 0.0,
+      "tabular_data_upload_bytes": 0.0,
+      "tabular_data_egress_bytes": 0.0,
+      "tabular_data_cloud_storage_bytes": 0.0,
+      "history_cloud_storage_bytes": 0.0,
+      "logs_cloud_storage_bytes": 0.0,
+      "logs_data_upload_bytes": 0.0,
+      "logs_data_egress_bytes": 0.0
+    },
+    "tier_name": "example-tier",
+    "description": "",
+    "tier_credit": 0.0
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% expand "Click to view billing attributes" %}}
+
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-month-attributes). Default: `{}` (all machines cost `0`). |
+| `tier_name` | string | **Required** | The name of the billing tier. |
+| `description` |  | Optional | Description for the billing tier. Default: `""`. |
+| `tier_credit` | number | Optional | Credit that should be applied to final total for the org. Default: `0`. |
+
+{{% /expand%}}
+
+
+{{% expand "Click to view cost per month attributes" %}}
+
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `per_machine` | number | Optional | Charge a flat fee per machine. Default: `0`. |
+| `binary_data_upload_bytes` | float | Optional | Cost per byte for binary data upload. Default: `0`. |
+| `binary_data_egress_bytes` | float | Optional | Cost per byte for binary data download. Default: `0`. |
+| `binary_data_cloud_storage_bytes` | float | Optional | Cost per byte per month for binary data stored. Default: `0`. |
+| `tabular_data_upload_bytes` |  | Optional | Cost per byte per month for tabular data upload. Default: `0`. |
+| `tabular_data_egress_bytes` |  | Optional | Cost per byte per month for tabular data egress. Default: `0`. |
+| `tabular_data_cloud_storage_bytes` |  | Optional | Cost per byte per month for tabular data cloud storage. Default: `0`. |
+| `history_cloud_storage_bytes` |  | Optional | Cost per byte per month for config history stored. Default: `0`. |
+| `logs_cloud_storage_bytes` |  | Optional | Cost per byte per month for logs cloud storage. Default: `0`. |
+| `logs_data_upload_bytes` |  | Optional | Cost per byte per month for logs data upload. Default: `0`. |
+| `logs_data_egress_bytes` |  | Optional | Cost per byte per month for logs data egress. Default: `0`. |
+
+{{% /expand%}}
 {{% /tablestep %}}
 {{% tablestep link="/manage/fleet/reuse-configuration/" %}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
 **2. Add the fragment to each machine**
+
+Inside the fragment you use to provision your machines, add the billing fragment.
+
+Click **Save** in the upper right corner of the screen.
 
 
 {{% /tablestep %}}
