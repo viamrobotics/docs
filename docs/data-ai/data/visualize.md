@@ -53,17 +53,15 @@ Give it a name.
 {{% tablestep %}}
 **2. Add widgets**
 
-Click **Add widget** and select the appropriate widget for your machine.
-Repeat as many times as necessary.
-
 Click **Add widget** and add a **GPS** widget for any position-reporting sensor, a **stat** widget for current readings from a sensor, or a **time series** widget to graph data for any component that supports capturing numeric data.
+Use the widget header to configure the panel.
+Repeat as many times as necessary.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **3. Select a machine**
 
 Now, select a machine with which to make your teleop workspace come to life.
-Select **Save changes** in the top right corner to leave editing mode.
 Click **Select machine** and select your configured machine.
 
 Your dashboard now shows the configured widget for the data from your machine.
