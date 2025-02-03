@@ -43,7 +43,6 @@ aliases:
 You can use the data management service to capture data from [supported components and services](#supported-resources), then sync it to the cloud.
 You can also sync data from arbitrary folders on your machine.
 
-## Overview
 
 Data capture and sync in Viam involves two key pieces:
 
@@ -685,7 +684,7 @@ You can also access data from a resource or machine part menu.
 You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
 This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
 
-Configure using `mongo_capture_config` attributes in your data manager service.
+Configure using the `mongo_capture_config` attributes in your data manager service.
 
 Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
 
@@ -751,7 +750,8 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
 
 ### Conditional sync
 
-Although data sync checks for new data at the configured interval, you can define additional conditions that must be met to trigger syncing.
+By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins `).
+You can additionally configure sync to only happen when certain conditions are met.
 For example:
 
 - Only sync when on WiFi
@@ -765,9 +765,9 @@ See [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for how to
 Configure how long your synced data remains stored in the cloud:
 
 - **Retain data up to a certain size or for a specific length of time:** Set `retention_policies` at the resource level.
-  - See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-capture-attributes).
+  See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-capture-attributes).
 - **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
-  - See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
+    See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
 
 ### Sync optimization
 
