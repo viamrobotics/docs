@@ -42,8 +42,6 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{% card link="/operate/get-started/setup/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{% card link="/manage/fleet/system-settings/" noimage="true" %}}
-{{% card link="/manage/fleet/reuse-configuration/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
