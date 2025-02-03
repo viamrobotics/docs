@@ -58,17 +58,14 @@ Now your workspace setup is complete:
 **3. Select a machine**
 
 Now, select a machine with which to make your teleop workspace come to life.
-Select **Monitor** in the top right corner to leave editing mode.
+Select **Save changes** in the top right corner to leave editing mode.
 Click **Select machine** and select your configured machine.
 
 Your dashboard now shows the configured widgets for the data from your machine:
 
 {{<imgproc src="/how-tos/teleop/full-workspace.png" resize="900x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode.">}}
 
-You can go back to **Edit** mode and drag and drop the widgets' panes around to edit their appearance.
-For example:
-
-{{<imgproc src="/how-tos/teleop/four-panes.png" resize="900x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode with four panes.">}}
+You can select **Edit workspace** to go back to editing and drag and drop the widgets' panes around to edit their appearance.
 
 {{% /tablestep %}}
 {{< /table >}}

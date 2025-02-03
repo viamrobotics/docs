@@ -63,7 +63,7 @@ Click **Add widget** and add a **GPS** widget for any position-reporting sensor,
 **3. Select a machine**
 
 Now, select a machine with which to make your teleop workspace come to life.
-Select **Monitor** in the top right corner to leave editing mode.
+Select **Save changes** in the top right corner to leave editing mode.
 Click **Select machine** and select your configured machine.
 
 Your dashboard now shows the configured widget for the data from your machine.
