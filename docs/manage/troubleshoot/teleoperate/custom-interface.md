@@ -40,35 +40,26 @@ Navigate to the **FLEET** page's **TELEOP** tab.
 Create a workspace by clicking **+ Create workspace**.
 Give it a name.
 
-{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Blank teleop page.">}}
+{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 700px" class="fill aligncenter imgzoom" declaredimensions=true alt="Blank teleop page.">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **2. Add widgets**
 
 Click **Add widget** and select the appropriate widget for your machine.
+Use the widget header to configure the panel.
 Repeat as many times as necessary.
-
-Now your workspace setup is complete:
-
-{{<imgproc src="/how-tos/teleop/configured-workspace.png" resize="700x" style="width: 500px" class="fill aligncenter" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets.">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **3. Select a machine**
 
 Now, select a machine with which to make your teleop workspace come to life.
-Select **Monitor** in the top right corner to leave editing mode.
 Click **Select machine** and select your configured machine.
 
 Your dashboard now shows the configured widgets for the data from your machine:
 
-{{<imgproc src="/how-tos/teleop/full-workspace.png" resize="900x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode.">}}
-
-You can go back to **Edit** mode and drag and drop the widgets' panes around to edit their appearance.
-For example:
-
-{{<imgproc src="/how-tos/teleop/four-panes.png" resize="900x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode with four panes.">}}
+{{<imgproc src="/how-tos/teleop/full-workspace.png" resize="800x" style="width: 700px" class="fill aligncenter imgzoom" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode.">}}
 
 {{% /tablestep %}}
 {{< /table >}}

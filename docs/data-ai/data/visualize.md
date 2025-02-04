@@ -47,23 +47,21 @@ Navigate to the **FLEET** page's **TELEOP** tab.
 Create a workspace by clicking **+ Create workspace**.
 Give it a name.
 
-{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill aligncenter imgzoom" declaredimensions=true alt="Blank teleop page.">}}
+{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 700px" class="fill aligncenter imgzoom" declaredimensions=true alt="Blank teleop page.">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **2. Add widgets**
 
-Click **Add widget** and select the appropriate widget for your machine.
-Repeat as many times as necessary.
-
 Click **Add widget** and add a **GPS** widget for any position-reporting sensor, a **stat** widget for current readings from a sensor, or a **time series** widget to graph data for any component that supports capturing numeric data.
+Use the widget header to configure the panel.
+Repeat as many times as necessary.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **3. Select a machine**
 
 Now, select a machine with which to make your teleop workspace come to life.
-Select **Monitor** in the top right corner to leave editing mode.
 Click **Select machine** and select your configured machine.
 
 Your dashboard now shows the configured widget for the data from your machine.
