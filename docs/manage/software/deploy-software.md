@@ -1,0 +1,234 @@
+---
+linkTitle: "Deploy software"
+title: "Deploy software packages to machines (OTA)"
+weight: 30
+layout: "docs"
+type: "docs"
+images: ["/registry/module-puzzle-piece.svg"]
+description: You can use a fragment to deploy software packages and ML models to many machines, as well as to update deployed versions of those software packages and ML models.
+languages: []
+viamresources: []
+platformarea: ["registry", "fleet"]
+level: "Intermediate"
+date: "2024-08-28"
+aliases:
+  - /how-tos/deploy-packages/
+  - /manage/software/deploy-packages/
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
+---
+
+To deploy code or other software to individual machines, you:
+
+1. [Create a module with machine control logic](#create-a-module-with-machine-control-logic)
+2. [Create a fragment with the configuration for your machines](#create-a-fragment)
+3. [Add the fragment to your machines](#add-the-fragment-to-your-machines)
+
+## Prerequisites
+
+This guide assumes that you have [at least one machine](/operate/get-started/setup/) with [configured hardware and software resources](/operate/get-started/supported-hardware/).
+
+## Create a module with machine control logic
+
+You can operate devices by running control logic on another device, for example using an app, or on the machine itself using a {{< glossary_tooltip term_id="module" text="module" >}}.
+If all your machine control logic runs on another device or server, move on to [Create a fragment](#create-a-fragment).
+
+If at least some of your machine control logic should run on your machine, place the control logic in a module.
+
+{{% alert title="OTA updates for microcontrollers" color="note" %}}
+The following steps do not cover how to create a module with machine control logic for microcontrollers.
+For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module) and [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates) instead.
+{{% /alert %}}
+
+{{< table >}}
+{{% tablestep link="/operate/get-started/other-hardware/" %}}
+**1. Generate stub files**
+
+Run the `module generate` command in your terminal:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate --resource-subtype=generic-component
+```
+
+Follow the prompts, selecting the following options:
+
+- Module name: Your choice, for example `my-control-logic`
+- Language: Your choice
+- Visibility: `Private`
+- Namespace/Organization ID: In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+  Find the **Public namespace** and copy that string.
+  In the example snippets below, the namespace is `naomi`.
+- Resource to be added to the module: `Generic Component`.[^generic]
+- Model name: Your choice, for example `control-logic`
+- Enable cloud build: `Yes`
+- Register module: `Yes`
+
+Press the Enter key and the generator will create a folder for your control logic component.
+
+[^generic]:
+    For simplicity, this guide uses the generic component.
+    You can choose a different resource type to add your control logic to.
+    For example, for logic controlling a camera, you may wish to use the camera component.
+    You must implement any required API methods for the chosen component.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Add your control logic**
+
+When your new model gets added to your machine, its `reconfigure()` method gets called.
+If you want your control logic to run in a loop in the background, you can start this loop here.
+Be sure to also implement logic to handle subsequent calls to the reconfigure method gracefully.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+In Python, start your logic in <FILE>src/main.py</FILE>, for example:
+
+```python {class="line-numbers linkable-line-numbers" data-line="5"}
+from asyncio import create_task
+
+class ControlLogic(Generic, EasyResource):
+
+# ( other methods omitted for brevity)
+
+  def reconfigure(
+      self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+  ):
+      if self.logic_runner is not None:
+          create_task(self.run_logic())
+      else:
+        print("already running logic")
+
+  async def run_logic():
+    self.logic_runner = "Running"
+    for _ in range(10):
+      print("Running logic")
+    self.logic_runner = None
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+TODO
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For complete examples that implement control logic, see:
+
+- [`re-id-object-tracking`](https://github.com/viam-modules/re-id-object-tracking)
+- TODO
+
+{{% /tablestep %}}
+{{% tablestep link="/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action" %}}
+**3. Package your control logic**
+
+Once you have implemented your control logic, commit and push your changes to a GitHub repository.
+
+If you are not using GitHub, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/other-hardware/manage-modules/#update-an-existing-module) for more information on alternatives.
+
+Then push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+Your module will now be built, packaged and pushed to the Viam Registry.
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Create a fragment
+
+Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
+When deploying or updating software on many machines, you should use fragments.
+
+The following example creates a fragment with a camera and a servo, as well as with the [control logic module](#create-a-module-with-machine-control-logic).
+
+{{< table >}}
+{{% tablestep link="/operate/get-started/supported-hardware/" %}}
+**1. Configure your software**
+
+Go to your [machine](#prerequisites) in the [Viam app](https://app.viam.com).
+Ensure all hardware and other resources your machine uses are configured.
+
+Add your control logic module.
+
+{{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="fill aligncenter" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Set the version and update strategy**
+
+Scroll to the module card for your control logic module and select the pinned version type.
+You can select a specific version or set the machine to always update to the latest major, minor, patch, or pre-release version once new versions are available.
+For more information on these configuration options, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+
+{{<imgproc src="/how-tos/deploy-packages/version.png" resize="800x" class="fill aligncenter" style="width: 500px" declaredimensions=true alt="Module card UI">}}
+
+{{% alert title="Caution" color="caution" %}}
+For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.
+If the module cannot be interrupted, the module will not be upgraded.
+{{% /alert %}}
+
+{{% /tablestep %}}
+
+{{% tablestep %}}
+**3. Copy the raw JSON**
+
+In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
+
+The following example shows a machine with a configured camera and the control logic module.
+Your machine will have different resources.
+
+{{<imgproc src="/how-tos/deploy-packages/json-config.png" resize="800x" class="fill aligncenter" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
+
+{{% /tablestep %}}
+{{% tablestep link="/manage/fleet/reuse-configuration/" %}}
+**4. Create a fragment**
+
+Go to [app.viam.com/fragments](https://app.viam.com/fragments).
+
+Add a fragment, and paste the copied JSON configuration into it.
+
+{{<imgproc src="/how-tos/deploy-packages/fragment.png" resize="1000x" alt="Configuration builder UI">}}
+
+Set your privacy settings.
+There are three options for this:
+
+- **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
+- **Private:** No user outside of your organization will be able to view or use this fragment.
+- **Unlisted:** Any user inside or outside of your organization, with a direct link, will be able to view and use this fragment.
+
+Click **Save**.
+
+If you want to edit the fragment later, do it from this screen.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+{{<imgproc src="/how-tos/one-to-many/delete.png" class="fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete">}}
+**5. Delete the original machine configuration (optional)**
+
+Now that the configuration is saved as a fragment, you can delete the machine you created in step 1.
+We only created this machine to easily generate the JSON config for the fragment.
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Add the fragment to your machines
+
+Generally, you will use [provisioning](/manage/fleet/provision/setup/) to add this fragment to your machines.
+
+You can also add the fragment manually to the machines that need it:
+
+{{< table >}}
+{{% tablestep %}}
+{{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
+**Add the fragment to one machine**
+
+On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
+Search for your fragment and add it.
+
+Click **Save** in the upper right corner of the screen.
+
+{{< alert title="Tip" color="tip" >}}
+You can also add multiple fragments to one machine.
+{{< /alert >}}
+
+{{% /tablestep %}}
+{{< /table >}}

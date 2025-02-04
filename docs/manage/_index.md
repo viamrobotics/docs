@@ -30,16 +30,19 @@ Viam's fleet management tooling allows you to remotely deploy and manage softwar
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Manage access for organizations" "1" "INTERMEDIATE" "" "hoverable-team" >}}
+{{< how-to-expand "Manage access for organizations" "4" "INTERMEDIATE" "" "hoverable-team" >}}
 {{< cards >}}
 {{% card link="/manage/manage/access/" noimage="true" %}}
+{{% card link="/manage/manage/rbac/" noimage="true" %}}
+{{% card link="/manage/manage/oauth/" noimage="true" %}}
+{{% card link="/manage/manage/white-labelled-billing/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Manage software on many machines" "2" "INTERMEDIATE" "hoverable-fleet" >}}
+{{< how-to-expand "Deploy code and manage software on machines" "2" "INTERMEDIATE" "hoverable-fleet" >}}
 {{< cards >}}
-{{% card link="/manage/software/deploy-packages/" noimage="true" %}}
-{{% card link="/manage/software/update-packages/" noimage="true" %}}
+{{% card link="/manage/software/deploy-software/" noimage="true" %}}
+{{% card link="/manage/software/update-software/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

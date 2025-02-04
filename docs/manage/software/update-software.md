@@ -1,16 +1,19 @@
 ---
-linkTitle: "Update packages"
-title: "Update packages on machines"
+linkTitle: "Update software"
+title: "Roll out software updates to machines"
 weight: 40
 layout: "docs"
 type: "docs"
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
+aliases:
+  - /manage/software/update-packages/
 ---
 
-If you have already [deployed a package](/manage/software/deploy-packages/), you can inspect the fragment you have created.
+If you have already [deployed software](/manage/software/deploy-software/), you can inspect the fragment you have created.
 The JSON object for the deployed package has a `version` field.
 
 As new versions of software modules or ML models become available, you can update the deployed version in one go using the fragment.
+TODO - might auto update?
 
 We strongly recommend that you test updates on a subset of machines before deploying it to all machines.
 
