@@ -77,7 +77,7 @@ To use CloudSLAM you must enable data capture and configure your `cloudslam-wrap
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
 Note that when the [data management service](/data-ai/capture-data/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#stop-data-capture) once you have finished your SLAM session.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#stop-data-capture-and-data-sync) once you have finished your SLAM session.
 {{< /alert >}}
 
 {{< tabs name="Create new map">}}
