@@ -43,9 +43,22 @@ aliases:
 You can use the data management service to capture data from [supported components and services](#supported-resources), then sync it to the cloud.
 You can also sync data from arbitrary folders on your machine.
 
-## Configure the data management service
+Data capture and sync in Viam involves two key pieces:
 
-To start, configure the data management service to capture and sync data.
+- The data management {{< glossary_tooltip term_id="service" text="service" >}} that writes captured data to local edge device storage and syncs that data with the cloud.
+- Individual {{< glossary_tooltip term_id="resource" text="resource" >}} configurations that specify what data to capture and how often.
+
+## How data capture and data sync works
+
+The data management service writes data from your configured Viam resources to local storage on your edge device and syncs data from the edge device to the cloud:
+
+- The data management service stores captured data locally in <file>~/.viam/capture<file> by default.
+- Data is synced to the Viam cloud at a configured sync interval using encrypted gRPC calls and deleted from the disk once synced.
+- You can capture and sync data independently, one can run without the other.
+
+For more information, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/).
+
+## Configure the data management service for your machine
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -117,6 +130,8 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 The following attributes are available for the data management service:
 
+{{< expand "Click to view data management attributes" >}}
+
 <!-- prettier-ignore -->
 | Name               | Type   | Required? | Description | `viam-micro-server` Support |
 | ------------------ | ------ | --------- | ----------- | ------------------- |
@@ -135,74 +150,16 @@ The following attributes are available for the data management service:
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `file_last_modified_millis` | float | Optional | The amount of time to pass since arbitrary files were last modified until they are synced. Normal <file>.capture</file> files are synced as soon as they are able to be synced. <br> Default: `10000` milliseconds. |  <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 
-### Capture directly to MongoDB
+{{< /expand >}}
 
-Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
-
-This feature is intended to support use cases like offline dashboards which don't require strong data delivery or consistency guarantees.
-
-Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
-
-```json
-{
-  "components": [
-    {
-      "name": "sensor-1",
-      "namespace": "rdk",
-      "type": "sensor",
-      "model": "fake",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Readings",
-                "capture_frequency_hz": 0.5,
-                "additional_params": {}
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ],
-  "services": [
-    {
-      "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
-      "attributes": {
-        "mongo_capture_config": {
-          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
-        }
-      }
-    }
-  ]
-}
-```
-
-When `mongo_capture_config.uri` is configured, data capture will attempt to connect to the configured MongoDB server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection` (or their defaults if unconfigured) after enqueuing that data to be written to disk.
-
-If writes to MongoDB fail for any reason, data capture will log an error for each failed write and continue capturing.
-
-Failing to write to MongoDB doesn't affect capturing and syncing data to cloud storage other than adding capture latency.
-
-{{< alert title="Caution" color="caution" >}}
-
-- Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
-- Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB.
-  This can happen in cases such as MongoDB being inaccessible to `viam-server` or writes timing out.
-- Capturing directly to MongoDB may reduce the maximum frequency that data capture can capture data due to the added latency of writing to MongoDB.
-  If your use case needs to support very high capture rates, this feature may not be appropriate.
-
-{{< /alert >}}
-
-## Configure data capture
+## Configure data capture for individual resources
 
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
-Scroll to the resource card you wish to configure data capture and sync on.
+
+Configure data capture for individual resources in their configuration by:
+
+- Selecting which resource methods to capture data from
+- Setting the capture frequency for each method
 
 {{< tabs >}}
 {{% tab name="Regular" %}}
@@ -652,6 +609,8 @@ The following example of a configuration with a remote part captures data from t
 
 The following attributes are available for data capture configuration:
 
+{{< expand "Click to view data capture attributes" >}}
+
 <!-- prettier-ignore -->
 | Name               | Type   | Required? | Description |
 | ------------------ | ------ | --------- | ----------- |
@@ -659,6 +618,8 @@ The following attributes are available for data capture configuration:
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#supported-resources). |
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
+
+{{< /expand >}}
 
 Click the **Save** button in the top right corner of the page to save your config.
 
@@ -691,13 +652,11 @@ You can also control how local data is deleted if your machine's local storage b
 
 {{< /expand >}}
 
-## Stop data capture
+### Supported resources
 
-If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
+The following components and services support data capture and cloud sync:
 
-In the **Data capture** section of your resource's configuration card, toggle the switch to **Off**.
-
-Click the **Save** button in the top right corner of the page to save your config.
+{{< readfile "/static/include/data/capture-supported.md" >}}
 
 ## View captured data
 
@@ -705,25 +664,114 @@ To view all the captured data you have access to, go to the [**DATA** tab](https
 
 You can also access data from a resource or machine part menu.
 
-## Supported resources
+## Stop data capture
 
-The following components and services support data capture and cloud sync:
+If you don't need to capture data, for instance in a test scenario, you can turn off data capture to reduce unnecessary storage.
+Alternatively, see [advanced data capture and sync configurations](/data-ai/capture-data/capture-sync/#advanced-data-capture-and-sync-configurations) for other ways to control data usage, such as conditional sync or retention policies.
 
-{{< readfile "/static/include/data/capture-supported.md" >}}
+To turn off data capture for a specific resource's capture method (for example, a camera component capturing through the `GetImage` capture method) navigate to the **Data capture** section of your resource's configuration card and toggle the configured capture method's switch to **Off**.
+You can also globally turn off data capture on the `data_manager` service configuration card by toggling the **Capturing** switch to **Off**.
 
-## Considerations
+To turn off data sync, navigate to the `data_manager` service configuration card and toggle the **Syncing** switch to **Off**.
 
-- **Capturing too much data**: You can [use filtering to collect and sync only certain images](/data-ai/capture-data/filter-before-sync/) to capture data selectively.
-- **Retention policy**: Set a `retention_policy` attribute in your [data capture configuration](#configure-data-capture) to avoid keeping data stored in the Viam Cloud longer than a specified number of days.
-- **Pausing sync**: You can pause cloud sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your data management service.
+Click the **Save** button in the top right corner of the page to save your config.
 
-  If you have captured data that you do not want to sync, delete the data on the machine before resuming cloud sync.
-  To delete the data locally, `ssh` into your machine and delete the data in the directory where you capture data.
+## Advanced data capture and sync configurations
 
-- **Sync data conditionally**: You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
-  For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
-  To set up triggers for syncing see [Conditional cloud sync](/data-ai/capture-data/conditional-sync/).
+### Capture directly to MongoDB
 
-## Next steps
+You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
+This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
 
-Now that you have captured data, you could [create a dataset](/data-ai/ai/create-dataset/) and use this data to [train your own Machine Learning model](/data-ai/ai/train-tflite/) with the Viam platform.
+Configure using the `mongo_capture_config` attributes in your data manager service.
+
+Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
+
+{{< expand "Click to view configuration" >}}
+
+```json
+{
+  "components": [
+    {
+      "name": "sensor-1",
+      "namespace": "rdk",
+      "type": "sensor",
+      "model": "fake",
+      "attributes": {},
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Readings",
+                "capture_frequency_hz": 0.5,
+                "additional_params": {}
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "data_manager-1",
+      "namespace": "rdk",
+      "type": "data_manager",
+      "attributes": {
+        "mongo_capture_config": {
+          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
+        }
+      }
+    }
+  ]
+}
+```
+
+{{< /expand >}}
+
+When `mongo_capture_config.uri` is configured, data capture will attempt to connect to the configured MongoDB server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection` (or their defaults if unconfigured) after enqueuing that data to be written to disk.
+
+If writes to MongoDB fail for any reason, data capture will log an error for each failed write and continue capturing.
+
+Failing to write to MongoDB doesn't affect capturing and syncing data to cloud storage other than adding capture latency.
+
+{{< alert title="Caution" color="caution" >}}
+
+- Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
+- Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB.
+  This can happen in cases such as MongoDB being inaccessible to `viam-server` or writes timing out.
+- Capturing directly to MongoDB may reduce the maximum frequency that data capture can capture data due to the added latency of writing to MongoDB.
+  If your use case needs to support very high capture rates, this feature may not be appropriate.
+
+{{< /alert >}}
+
+### Conditional sync
+
+By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
+You can additionally configure sync to only happen when certain conditions are met.
+For example:
+
+- Only sync when on WiFi
+- Sync when specific events are detected
+- Sync during certain time windows
+
+See [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for how to implement conditional syncs.
+
+### Cloud data retention
+
+Configure how long your synced data remains stored in the cloud:
+
+- **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
+  See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-capture-attributes).
+- **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
+  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
+
+### Sync optimization
+
+**Configurable sync threads:** You can control how many concurrent sync operations occur by adjusting the `maximum_num_sync_threads` setting.
+Higher values may improve throughput on more powerful hardware, but raising it too high may introduce instability on resource-constrained devices.
+
+**Wait time before syncing arbitrary files:** If you choose to sync arbitrary files (beyond those captured by the data management service), the `file_last_modified_millis` configuration attribute specifies how long a file must remain unmodified before the data manager considers it for syncing.
+The default is 10 seconds.
