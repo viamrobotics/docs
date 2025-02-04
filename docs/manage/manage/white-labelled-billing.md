@@ -111,22 +111,24 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 
 ## Set custom pricing
 
-You can set custom pricing for machines within your organization:
+You can set custom pricing for machines within your organization.
 
 {{< table >}}
 {{% tablestep link="" %}}
-**1. Create a fragment with billing information**
+**1. Add billing configuration to the fragment for your machines**
 
-On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
+On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments) and select the fragment you use for your machines.
+If you are not using a fragment, you can instead add the billing configuration to individual machine configurations.
 
-Click **Create fragment**, and paste the following JSON configuration into it.
-Adjust attributes as needed and save.
+In the JSON configuration, add the `billing`  object, adjust attributes as needed and save.
 
 {{< tabs >}}
 {{% tab name="Example" %}}
 
 ```json { class="line-numbers linkable-line-numbers" }
 {
+  "components": { ... },
+  "services" : { ... },
   "billing": {
     "cost_per_month": {
       "per_machine": 10
@@ -195,14 +197,6 @@ Adjust attributes as needed and save.
 | `logs_data_egress_bytes` |  | Optional | Cost per byte per month for logs data egress. Default: `0`. |
 
 {{% /expand%}}
-{{% /tablestep %}}
-{{% tablestep link="/manage/fleet/reuse-configuration/" %}}
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
-**2. Add the fragment to each machine**
-
-Inside the fragment you use to provision your machines, add the billing fragment.
-
-Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
 {{< /table >}}
