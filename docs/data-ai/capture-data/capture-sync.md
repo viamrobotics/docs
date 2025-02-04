@@ -669,7 +669,7 @@ You can also access data from a resource or machine part menu.
 If you don't need to capture data, for instance in a test scenario, you can turn off data capture to reduce unnecessary storage.
 Alternatively, see [advanced data capture and sync configurations](/data-ai/capture-data/capture-sync/#advanced-data-capture-and-sync-configurations) for other ways to control data usage, such as conditional sync or retention policies.
 
-To turn off data capture for a specific resource's capture method (for example, a camera component capturing via the `GetImage` capture method) navigate to the **Data capture** section of your resource's configuration card and toggle the configured capture method's switch to **Off**.
+To turn off data capture for a specific resource's capture method (for example, a camera component capturing through the `GetImage` capture method) navigate to the **Data capture** section of your resource's configuration card and toggle the configured capture method's switch to **Off**.
 You can also globally turn off data capture on the `data_manager` service configuration card by toggling the **Capturing** switch to **Off**.
 
 To turn off data sync, navigate to the `data_manager` service configuration card and toggle the **Syncing** switch to **Off**.
