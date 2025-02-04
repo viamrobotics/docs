@@ -56,7 +56,7 @@ The data management service writes data from your configured Viam resources to l
 - Data is synced to the Viam cloud at a configured sync interval using encrypted gRPC calls and deleted from the disk once synced.
 - You can capture and sync data independently, one can run without the other.
 
-For more information, see [How sync works](data-ai/capture-data/advanced/how-sync-works/).
+For more information, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/).
 
 ## Configure the data management service for your machine
 
