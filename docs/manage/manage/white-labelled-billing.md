@@ -120,7 +120,7 @@ You can set custom pricing for machines within your organization.
 On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments) and select the fragment you use for your machines.
 If you are not using a fragment, you can instead add the billing configuration to individual machine configurations.
 
-In the JSON configuration, add the `billing`  object, adjust attributes as needed and save.
+In the JSON configuration, add the `billing` object, adjust attributes as needed and save.
 
 {{< tabs >}}
 {{% tab name="Example" %}}
