@@ -56,6 +56,8 @@ The data management service writes data from your configured Viam resources to l
 - Data is synced to the Viam cloud at a configured sync interval using encrypted gRPC calls and deleted from the disk once synced.
 - You can capture and sync data independently, one can run without the other.
 
+For more information, see [How sync works](data-ai/capture-data/advanced/how-sync-works/).
+
 ## Configure the data management service for your machine
 
 {{< tabs >}}
@@ -656,20 +658,23 @@ The following components and services support data capture and cloud sync:
 
 {{< readfile "/static/include/data/capture-supported.md" >}}
 
-## Stop data capture
-
-If you don't need to capture data, for instance in a test scenario, you can turn off data capture to reduce unnecessary storage.
-Alternatively, see [advanced data capture and sync configurations](/data-ai/capture-data/capture-sync/#advanced-data-capture-and-sync-configurations) for other ways to control data usage, such as conditional sync or retention policies.
-
-In the **Data capture** section of your resource's configuration card, toggle the switch to **Off**.
-
-Click the **Save** button in the top right corner of the page to save your config.
-
 ## View captured data
 
 To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can filter by location, type of data, and more.
 
 You can also access data from a resource or machine part menu.
+
+## Stop data capture
+
+If you don't need to capture data, for instance in a test scenario, you can turn off data capture to reduce unnecessary storage.
+Alternatively, see [advanced data capture and sync configurations](/data-ai/capture-data/capture-sync/#advanced-data-capture-and-sync-configurations) for other ways to control data usage, such as conditional sync or retention policies.
+
+To turn off data capture for a specific resource's capture method (for example, a camera component capturing via the `GetImage` capture method) navigate to the **Data capture** section of your resource's configuration card and toggle the configured capture method's switch to **Off**.
+You can also globally turn off data capture on the `data_manager` service configuration card by toggling the **Capturing** switch to **Off**.
+
+To turn off data sync, navigate to the `data_manager` service configuration card and toggle the **Syncing** switch to **Off**.
+
+Click the **Save** button in the top right corner of the page to save your config.
 
 ## Advanced data capture and sync configurations
 
@@ -758,7 +763,7 @@ See [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for how to
 
 Configure how long your synced data remains stored in the cloud:
 
-- **Retain data up to a certain size or for a specific length of time:** Set `retention_policies` at the resource level.
+- **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
   See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-capture-attributes).
 - **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
   See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
