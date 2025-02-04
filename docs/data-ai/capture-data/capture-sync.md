@@ -664,7 +664,7 @@ To view all the captured data you have access to, go to the [**DATA** tab](https
 
 You can also access data from a resource or machine part menu.
 
-## Stop data capture
+## Stop data capture and data sync
 
 If you don't need to capture data, for instance in a test scenario, you can turn off data capture to reduce unnecessary storage.
 Alternatively, see [advanced data capture and sync configurations](/data-ai/capture-data/capture-sync/#advanced-data-capture-and-sync-configurations) for other ways to control data usage, such as conditional sync or retention policies.
