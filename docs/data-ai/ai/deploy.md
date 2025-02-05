@@ -75,7 +75,8 @@ You can search the machine learning models that are available to deploy on this 
 ### Deploy a specific version of an ML model
 
 When you add a model to the ML model service in the app interface, it automatically grabs the latest version.
-To change what version is deployed, you must edit the JSON.
+You can still edit what version of an ML model your machine uses, but not through the UI.
+To deploy a specific version of an ML model, you must edit the raw JSON of your machine.
 Go to the [**Models** page](https://app.viam.com/data/models) on the **DATA** tab.
 Click the **>** icon to expand the versions of a model and click the **...** menu on your desired version.
 Click **Copy package JSON**.
