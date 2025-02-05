@@ -36,6 +36,11 @@ brew install viam
 ```
 
 {{% /tab %}}
+{{% tab name="Windows" %}}
+
+[Download the installer](https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-windows-amd64.exe) to use the Viam CLI on a Windows computer.
+
+{{% /tab %}}
 {{% tab name="Source" %}}
 
 If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly from source using the `go install` command:
