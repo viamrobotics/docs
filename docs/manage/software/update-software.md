@@ -1,16 +1,24 @@
 ---
-linkTitle: "Update packages"
-title: "Update packages on machines"
+linkTitle: "Update software"
+title: "Roll out software updates to machines"
 weight: 40
 layout: "docs"
 type: "docs"
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
+date: "2025-02-05"
+aliases:
+  - /manage/software/update-packages/
 ---
 
-If you have already [deployed a package](/manage/software/deploy-packages/), you can inspect the fragment you have created.
-The JSON object for the deployed package has a `version` field.
+If you have already [deployed software](/manage/software/deploy-software/), you can inspect the fragment you have created.
+The JSON object for the deployed module or package has a `version` field.
+Unless the `version` field is set to a specific version, some or all updates for that module or package can happen automatically.
 
-As new versions of software modules or ML models become available, you can update the deployed version in one go using the fragment.
+To perform other updates or changes to the configuration of all machines using the fragment:
+
+1. [Test your updates](#test-updates)
+2. [Update the software version and roll out the changes](#update-the-software-version)
+3. [Check the status of your machines](#check-machine-status)
 
 We strongly recommend that you test updates on a subset of machines before deploying it to all machines.
 
@@ -38,26 +46,32 @@ Paste the JSON object from your primary fragment.
 {{% tablestep %}}
 **2. Edit the fragment**
 
-Change the version of your package in the development fragment.
+Change the version of your module or package in the development fragment.
 For example:
 
-```json {class="line-numbers linkable-line-numbers" data-line="16"}
+```json {class="line-numbers linkable-line-numbers" data-line="22"}
 {
-  "services": [
+  "components": [
     {
-      "name": "speech-1",
-      "namespace": "viam-labs",
-      "type": "speech",
-      "model": "viam-labs:speech:speechio",
-      "attributes": {}
+      "api": "rdk:component:camera",
+      "attributes": {},
+      "model": "rdk:builtin:fake",
+      "name": "camera-1"
+    },
+    {
+      "api": "rdk:component:generic",
+      "attributes": {},
+      "model": "naomi:my-control-logic:control-logic",
+      "name": "generic-1"
     }
   ],
+  "debug": true,
   "modules": [
     {
+      "module_id": "naomi:my-control-logic",
+      "name": "naomi_my-control-logic",
       "type": "registry",
-      "name": "viam-labs_speech",
-      "module_id": "viam-labs:speech",
-      "version": "0.5.3"
+      "version": "0.0.7"
     }
   ]
 }
@@ -75,7 +89,7 @@ If you had configured them already with the primary fragment, remove that fragme
 **4. Test the new version**
 
 Test the new version of your package.
-When you are satisfied that your package works as expected, continue to [update your primary fragment](#update-a-package-version).
+When you are satisfied that your package works as expected, continue to update your primary fragment.
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -100,7 +114,7 @@ Click **Save** in the upper right corner of the screen.
 **2. Test the new version**
 
 Test the new version of your package.
-When you are satisfied that your package works as expected, continue to [update your primary fragment](#update-a-package-version).
+When you are satisfied that your package works as expected, continue to [update your primary fragment](#update-the-software-version).
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -108,29 +122,35 @@ When you are satisfied that your package works as expected, continue to [update 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Update a package version
+## Update the software version
 
-Once you have confirmed that the new version of your package works, go to your primary fragment and edit it to use the new version of your package.
+Once you have confirmed that the new version of your module or package works, go to your primary fragment and edit it to use the new version.
 
 For example:
 
-```json {class="line-numbers linkable-line-numbers" data-line="16"}
+```json {class="line-numbers linkable-line-numbers" data-line="22"}
 {
-  "services": [
+  "components": [
     {
-      "name": "speech-1",
-      "namespace": "viam-labs",
-      "type": "speech",
-      "model": "viam-labs:speech:speechio",
-      "attributes": {}
+      "api": "rdk:component:camera",
+      "attributes": {},
+      "model": "rdk:builtin:fake",
+      "name": "camera-1"
+    },
+    {
+      "api": "rdk:component:generic",
+      "attributes": {},
+      "model": "naomi:my-control-logic:control-logic",
+      "name": "generic-1"
     }
   ],
+  "debug": true,
   "modules": [
     {
+      "module_id": "naomi:my-control-logic",
+      "name": "naomi_my-control-logic",
       "type": "registry",
-      "name": "viam-labs_speech",
-      "module_id": "viam-labs:speech",
-      "version": "0.5.3"
+      "version": "0.0.7"
     }
   ]
 }
