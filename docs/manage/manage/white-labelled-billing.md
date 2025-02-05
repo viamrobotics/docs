@@ -15,6 +15,7 @@ Once set up:
 
 - You will have a branded billing dashboard for each org
 - Invoices will be sent from your provided support email address and will contain your provided logo
+- You can set custom pricing
 
 {{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom">}}
 
@@ -104,6 +105,98 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 ```
 
 {{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom">}}
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Set custom pricing
+
+You can set custom pricing for machines within your organization.
+
+{{< table >}}
+{{% tablestep link="" %}}
+**1. Add billing configuration to the fragment for your machines**
+
+On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments) and select the fragment you use for your machines.
+If you are not using a fragment, you can instead add the billing configuration to individual machine configurations.
+
+In the JSON configuration, add the `billing` object, adjust attributes as needed and save.
+
+{{< tabs >}}
+{{% tab name="Example" %}}
+
+```json { class="line-numbers linkable-line-numbers" }
+{
+  "components": { ... },
+  "services" : { ... },
+  "billing": {
+    "cost_per_month": {
+      "per_machine": 10
+    },
+    "tier_name": "not-free"
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Full Template" %}}
+
+```json
+{
+  "billing": {
+    "cost_per_month": {
+      "per_machine": 0,
+      "binary_data_upload_bytes": 0.0,
+      "binary_data_egress_bytes": 0.0,
+      "binary_data_cloud_storage_bytes": 0.0,
+      "tabular_data_upload_bytes": 0.0,
+      "tabular_data_egress_bytes": 0.0,
+      "tabular_data_cloud_storage_bytes": 0.0,
+      "history_cloud_storage_bytes": 0.0,
+      "logs_cloud_storage_bytes": 0.0,
+      "logs_data_upload_bytes": 0.0,
+      "logs_data_egress_bytes": 0.0
+    },
+    "tier_name": "example-tier",
+    "description": "",
+    "tier_credit": 0.0
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% expand "Click to view billing attributes" %}}
+
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-month-attributes). Default: `{}` (all machines cost `0`). |
+| `tier_name` | string | **Required** | The name of the billing tier. |
+| `description` |  | Optional | Description for the billing tier. Default: `""`. |
+| `tier_credit` | number | Optional | Credit that should be applied to final total for the org. Default: `0`. |
+
+{{% /expand%}}
+
+{{% expand "Click to view cost per month attributes" %}}
+
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `per_machine` | number | Optional | Charge a flat fee per machine. Default: `0`. |
+| `binary_data_upload_bytes` | float | Optional | Cost per byte for binary data upload. Default: `0`. |
+| `binary_data_egress_bytes` | float | Optional | Cost per byte for binary data download. Default: `0`. |
+| `binary_data_cloud_storage_bytes` | float | Optional | Cost per byte per month for binary data stored. Default: `0`. |
+| `tabular_data_upload_bytes` |  | Optional | Cost per byte per month for tabular data upload. Default: `0`. |
+| `tabular_data_egress_bytes` |  | Optional | Cost per byte per month for tabular data egress. Default: `0`. |
+| `tabular_data_cloud_storage_bytes` |  | Optional | Cost per byte per month for tabular data cloud storage. Default: `0`. |
+| `history_cloud_storage_bytes` |  | Optional | Cost per byte per month for config history stored. Default: `0`. |
+| `logs_cloud_storage_bytes` |  | Optional | Cost per byte per month for logs cloud storage. Default: `0`. |
+| `logs_data_upload_bytes` |  | Optional | Cost per byte per month for logs data upload. Default: `0`. |
+| `logs_data_egress_bytes` |  | Optional | Cost per byte per month for logs data egress. Default: `0`. |
+
+{{% /expand%}}
 
 {{% /tablestep %}}
 {{< /table >}}
