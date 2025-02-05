@@ -43,7 +43,7 @@ date: "2024-09-18"
 
 {{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
 
-The `Stream` API method has now been removed from the Go SDK camera interface.
+The `Stream` API method has been removed from the Go SDK camera interface.
 For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimage).
 
 {{% /changelog %}}
