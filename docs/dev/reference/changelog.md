@@ -41,6 +41,13 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
+
+The `Stream` API method has now been removed from the Go SDK camera interface.
+For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimage).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Over-the-air updates for the Micro-RDK" date="2025-01-08" %}}
 
 You can now update microcontroller firmware from anywhere using the [OTA update service](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
