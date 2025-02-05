@@ -85,39 +85,86 @@ Be sure to also implement logic to handle subsequent calls to the reconfigure me
 In Python, start your logic in <FILE>src/main.py</FILE>, for example:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="5"}
-from asyncio import create_task
+# Add these imports
+import asyncio
+from threading import Event
 
 class ControlLogic(Generic, EasyResource):
 
-# ( other methods omitted for brevity)
+    task = None
+    event = Event()
 
-  def reconfigure(
-      self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-  ):
-      if self.logic_runner is not None:
-          create_task(self.run_logic())
-      else:
-        print("already running logic")
+    # ( other methods omitted for brevity)
 
-  async def run_logic():
-    self.logic_runner = "Running"
-    for _ in range(10):
-      print("Running logic")
-    self.logic_runner = None
+    def reconfigure(
+        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ):
+        if self.running is not None:
+            create_task(self.start())
+        else:
+            #  Log
+            LOGGER.info("Already running control logic.")
+
+    def start(self):
+        loop = asyncio.get_event_loop()
+        self.task = loop.create_task(self.control_loop())
+        self.event.clear()
+
+    def stop(self):
+        self.event.set()
+        if self.task is not None:
+            self.task.cancel()
+
+    async def control_loop(self):
+        while not self.event.is_set():
+            await self.on_loop()
+            await asyncio.sleep(0)
+
+    async def on_loop(self):
+        try:
+            LOGGER.info("Executing control logic")
+            # TODO: ADD CONTROL LOGIC
+
+        except Exception as err:
+            LOGGER.error(err)
+
+    def __del__(self):
+        self.stop()
+
+    async def close(self):
+        self.stop()
+
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        result = {key: False for key in command.keys()}
+        for name, _args in command.items():
+            if name == "start":
+                self.start()
+                result[name] = True
+            if name == "stop":
+                self.stop()
+                result[name] = True
+        return result
+
+
+if __name__ == "__main__":
+    asyncio.run(Module.run_from_registry())
 ```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-TODO
 
 {{% /tab %}}
 {{< /tabs >}}
 
 For complete examples that implement control logic, see:
 
+- [`event-manager`](https://github.com/viam-modules/event-manager)
+- [`refill-controller`](https://github.com/viam-devrel/refill-controller)
 - [`re-id-object-tracking`](https://github.com/viam-modules/re-id-object-tracking)
-- TODO
+- [`detectio-dock`](https://github.com/viam-labs/detection-dock)
 
 {{% /tablestep %}}
 {{% tablestep link="/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action" %}}
