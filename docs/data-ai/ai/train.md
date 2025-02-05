@@ -303,7 +303,7 @@ if __name__ == "__main__":
 
 {{% /expand %}}
 
-{{% expand "Click to see the template with labels parsed" %}}
+{{% expand "Click to see the template with parsed labels" %}}
 
 ```python {class="line-numbers linkable-line-numbers" data-line="148" }
 import argparse
