@@ -81,7 +81,7 @@ Be sure to also implement logic to handle subsequent calls to the reconfigure me
 
 For example, in Python, start your logic in <FILE>src/main.py</FILE>:
 
-```python {class="line-numbers linkable-line-numbers" data-line="19-26"}
+```python {class="line-numbers linkable-line-numbers" data-line="20-28"}
 # Add these imports
 import asyncio
 from threading import Event
