@@ -44,7 +44,7 @@ We recommend running your code on the SBC that directly controls your hardware i
 
 ## Install an SDK
 
-Install your preferred Viam SDK on the Linux or macOS computer SBC where you plan to run the control script.
+Install your preferred Viam SDK on the computer or SBC where you plan to run the control script.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

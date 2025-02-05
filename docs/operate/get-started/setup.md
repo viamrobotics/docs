@@ -40,6 +40,9 @@ Viam can run on any computer that runs one of the following operating systems:
 
 - Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
 - macOS
+- Windows
+  - native: use native if you are using a WSL version prior to WSL 2 or need native USB support
+  - WSL: use WSL if you are using python modules or other linux dependencies
 
 Viam also offers a lightweight binary to support the following 32-bit microcontrollers:
 
