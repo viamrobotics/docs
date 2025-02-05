@@ -10,7 +10,7 @@ languages: []
 viamresources: []
 platformarea: ["registry", "fleet"]
 level: "Intermediate"
-date: "2024-08-28"
+date: "2025-02-05"
 aliases:
   - /how-tos/deploy-packages/
   - /manage/software/deploy-packages/
@@ -37,7 +37,7 @@ If at least some of your machine control logic should run on your machine, place
 
 {{% alert title="OTA updates for microcontrollers" color="note" %}}
 The following steps do not cover how to create a module with machine control logic for microcontrollers.
-For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module) and [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates) instead.
+For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates) instead.
 {{% /alert %}}
 
 {{< table >}}
@@ -60,7 +60,7 @@ Follow the prompts, selecting the following options:
   In the example snippets below, the namespace is `naomi`.
 - Resource to be added to the module: `Generic Component`.[^generic]
 - Model name: Your choice, for example `control-logic`
-- Enable cloud build: Choose `Yes` if you are using GitHub or want to make use of cloud build.
+- Enable cloud build: Choose `Yes` if you are using GitHub or want to use cloud build.
 - Register module: `Yes`
 
 Press the Enter key and the generator will create a folder for your control logic component.
@@ -81,7 +81,7 @@ Be sure to also implement logic to handle subsequent calls to the reconfigure me
 
 For example, in Python, start your logic in <FILE>src/main.py</FILE>:
 
-```python {class="line-numbers linkable-line-numbers" data-line="15-23"}
+```python {class="line-numbers linkable-line-numbers" data-line="19-26"}
 # Add these imports
 import asyncio
 from threading import Event
@@ -89,6 +89,7 @@ from viam.logging import getLogger
 
 
 LOGGER = getLogger("control-logic")
+
 
 class ControlLogic(Generic, EasyResource):
     MODEL: ClassVar[Model] = Model(
@@ -101,7 +102,8 @@ class ControlLogic(Generic, EasyResource):
     # Other methods omitted for brevity
 
     def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+        self, config: ComponentConfig,
+        dependencies: Mapping[ResourceName, ResourceBase]
     ):
         # starts automatically
         if self.running is None:
@@ -174,7 +176,7 @@ For complete examples that implement control logic, see:
 
 Once you have implemented your control logic, commit and push your changes to a GitHub repository.
 
-If you are not using GitHub, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/other-hardware/manage-modules/#update-an-existing-module) for more information on alternatives.
+If you are not using GitHub, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) for more information on alternatives.
 
 Follow the steps in [Upload your module](/operate/get-started/other-hardware/#upload-your-module) using cloud build.
 

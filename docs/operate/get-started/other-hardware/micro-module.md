@@ -285,7 +285,7 @@ There is no way to roll back to previous firmware after a bad upgrade without re
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
-To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-packages/) with the OTA service configuration and apply it to multiple machines.
+To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-software/) with the OTA service configuration and apply it to multiple machines.
 Then, whenever you update the `version` field in the fragment, the version will be updated for each machine that has that fragment in its config, triggering a firmware update the next time the devices fetch their configs.
 {{% /alert %}}
 
