@@ -18,7 +18,7 @@ aliases:
 cost: "0"
 ---
 
-To deploy code or other software to individual machines, you:
+To deploy code or other software to individual machines:
 
 1. [Create a module with machine control logic](#create-a-module-with-machine-control-logic)
 2. [Create a fragment with the configuration for your machines](#create-a-fragment)
@@ -33,7 +33,7 @@ This guide assumes that you have [at least one machine](/operate/get-started/set
 You can operate devices by running control logic on another device, for example using an app, or on the machine itself using a {{< glossary_tooltip term_id="module" text="module" >}}.
 If all your machine control logic runs on another device or server, move on to [Create a fragment](#create-a-fragment).
 
-If at least some of your machine control logic should run on your machine, place the control logic in a module.
+If at least some of your machine control logic should run on your machine, place the control logic in a module by following these steps:
 
 {{% alert title="OTA updates for microcontrollers" color="note" %}}
 The following steps do not cover how to create a module with machine control logic for microcontrollers.
@@ -60,7 +60,7 @@ Follow the prompts, selecting the following options:
   In the example snippets below, the namespace is `naomi`.
 - Resource to be added to the module: `Generic Component`.[^generic]
 - Model name: Your choice, for example `control-logic`
-- Enable cloud build: `Yes`
+- Enable cloud build: Choose `Yes` if you are using GitHub or want to make use of cloud build.
 - Register module: `Yes`
 
 Press the Enter key and the generator will create a folder for your control logic component.
@@ -79,30 +79,34 @@ When your new model gets added to your machine, its `reconfigure()` method gets 
 If you want your control logic to run in a loop in the background, you can start this loop here.
 Be sure to also implement logic to handle subsequent calls to the reconfigure method gracefully.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+For example, in Python, start your logic in <FILE>src/main.py</FILE>:
 
-In Python, start your logic in <FILE>src/main.py</FILE>, for example:
-
-```python {class="line-numbers linkable-line-numbers" data-line="5"}
+```python {class="line-numbers linkable-line-numbers" data-line="15-23"}
 # Add these imports
 import asyncio
 from threading import Event
+from viam.logging import getLogger
+
+
+LOGGER = getLogger("control-logic")
 
 class ControlLogic(Generic, EasyResource):
-
+    MODEL: ClassVar[Model] = Model(
+        ModelFamily("naomi", "my-control-logic"), "control-logic"
+    )
+    running = None
     task = None
     event = Event()
 
-    # ( other methods omitted for brevity)
+    # Other methods omitted for brevity
 
     def reconfigure(
         self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
     ):
-        if self.running is not None:
-            create_task(self.start())
+        # starts automatically
+        if self.running is None:
+            self.start()
         else:
-            #  Log
             LOGGER.info("Already running control logic.")
 
     def start(self):
@@ -127,6 +131,7 @@ class ControlLogic(Generic, EasyResource):
 
         except Exception as err:
             LOGGER.error(err)
+        await asyncio.sleep(1)
 
     def __del__(self):
         self.stop()
@@ -156,9 +161,6 @@ if __name__ == "__main__":
     asyncio.run(Module.run_from_registry())
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
-
 For complete examples that implement control logic, see:
 
 - [`event-manager`](https://github.com/viam-modules/event-manager)
@@ -174,7 +176,9 @@ Once you have implemented your control logic, commit and push your changes to a 
 
 If you are not using GitHub, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/other-hardware/manage-modules/#update-an-existing-module) for more information on alternatives.
 
-Then push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+Follow the steps in [Upload your module](/operate/get-started/other-hardware/#upload-your-module) using cloud build.
+
+Then [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github) with a tag of the form `1.0.0`.
 Your module will now be built, packaged and pushed to the Viam Registry.
 
 {{% /tablestep %}}

@@ -13,6 +13,9 @@ a.footnote-ref::after {
 }
 /* END Add Square bracket on footnote number */
 
+div.footnotes > ol > li, div.footnotes > ol > li > p {
+  font-size: 0.75rem !important;
+}
 
 /* START MARKETING CSS */
 /* START Adjust Heading sizes*/
