@@ -88,7 +88,7 @@ If you haven't already, create a folder called <file>model</file> and create an 
 
 <p><strong>4. Add <code>training.py</code> code</strong></p>
 
-<p>Copy one of the following templates into <file>training.py</file>, depending on whether or not you wish to parse labels:</p>
+<p>Copy one of the following templates into <file>training.py</file>, depending on whether or not you wish to parse labels instead of having to hard code the labels in the training script and re-upload for each set of labels, allowing you to more easily reuse training scripts:</p>
 
 {{% expand "Click to see the template without parsing labels (recommended for use with UI)" %}}
 
@@ -541,7 +541,7 @@ The script you are creating must take the following command line inputs:
 - `dataset_file`: a file containing the data and metadata for the training job
 - `model_output_directory`: the location where the produced model artifacts are saved to
 
-If you used the version with labels parsed, it will also take the following command line inputs:
+If you used the version with parsed labels, it will also take the following command line inputs:
 
 - `labels`: space separated list of labels, enclosed in single quotes
 
@@ -793,8 +793,8 @@ In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/da
 Click **Train model** and select **Train on a custom training script**, then follow the prompts.
 
 {{% alert title="Tip" color="tip" %}}
-If you used the version of <file>training.py</file> with labels parsed, your training job will fail with the error `ERROR training.py: error: the following arguments are required: --labels`.
-Use the CLI and enter labels.
+If you used the version of <file>training.py</file> with parsed labels, your training job will fail with the error `ERROR training.py: error: the following arguments are required: --labels`.
+To use labels, you must use the CLI.
 {{% /alert %}}
 
 {{% /tab %}}
