@@ -188,13 +188,13 @@ In the JSON configuration, add the `billing` object, adjust attributes as needed
 | `binary_data_upload_bytes` | float | Optional | Cost per byte for binary data upload. Default: `0`. |
 | `binary_data_egress_bytes` | float | Optional | Cost per byte for binary data download. Default: `0`. |
 | `binary_data_cloud_storage_bytes` | float | Optional | Cost per byte per month for binary data stored. Default: `0`. |
-| `tabular_data_upload_bytes` |  | Optional | Cost per byte per month for tabular data upload. Default: `0`. |
-| `tabular_data_egress_bytes` |  | Optional | Cost per byte per month for tabular data egress. Default: `0`. |
-| `tabular_data_cloud_storage_bytes` |  | Optional | Cost per byte per month for tabular data cloud storage. Default: `0`. |
-| `history_cloud_storage_bytes` |  | Optional | Cost per byte per month for config history stored. Default: `0`. |
-| `logs_cloud_storage_bytes` |  | Optional | Cost per byte per month for logs cloud storage. Default: `0`. |
-| `logs_data_upload_bytes` |  | Optional | Cost per byte per month for logs data upload. Default: `0`. |
-| `logs_data_egress_bytes` |  | Optional | Cost per byte per month for logs data egress. Default: `0`. |
+| `tabular_data_upload_bytes` | float | Optional | Cost per byte per month for tabular data upload. Default: `0`. |
+| `tabular_data_egress_bytes` | float | Optional | Cost per byte per month for tabular data egress. Default: `0`. |
+| `tabular_data_cloud_storage_bytes` | float | Optional | Cost per byte per month for tabular data cloud storage. Default: `0`. |
+| `history_cloud_storage_bytes` | float | Optional | Cost per byte per month for config history stored. Default: `0`. |
+| `logs_cloud_storage_bytes` | float | Optional | Cost per byte per month for logs cloud storage. Default: `0`. |
+| `logs_data_upload_bytes` | float | Optional | Cost per byte per month for logs data upload. Default: `0`. |
+| `logs_data_egress_bytes` | float | Optional | Cost per byte per month for logs data egress. Default: `0`. |
 
 {{% /expand%}}
 
