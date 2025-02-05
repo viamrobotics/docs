@@ -24,7 +24,7 @@ You can remotely control, test, and operate any configured machine using the def
 
 ## Viam app
 
-The **CONTROL** tab provides a control interface for each component and service that you have configured for you machine.
+The **CONTROL** tab provides a control interface for each component and service that you have configured for your machine.
 
 For example, if you have configured a base with wheels, you can move your machine's with an arrow pad and control the base's speed by setting its power with a slider.
 If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
