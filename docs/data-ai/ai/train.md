@@ -88,7 +88,7 @@ If you haven't already, create a folder called <file>model</file> and create an 
 
 <p><strong>4. Add <code>training.py</code> code</strong></p>
 
-<p>Copy one of the following templates into <file>training.py</file>, depending on whether or not you wish to parse labels instead of having to hard code the labels in the training script and re-upload for each set of labels, allowing you to more easily reuse training scripts:</p>
+<p>Copy one of the following templates into <file>training.py</file>, depending on whether or not you wish to parse labels instead of having to hard code the labels in the training script and re-upload for each set of labels, which allows you to more easily reuse training scripts:</p>
 
 {{% expand "Click to see the template without parsing labels (recommended for use with UI)" %}}
 
