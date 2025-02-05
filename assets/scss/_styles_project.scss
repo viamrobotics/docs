@@ -1075,6 +1075,10 @@ td > ul, td > ol {
   gap: 10px;
 }
 
+.horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
+  gap: 0px;
+}
+
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
   background-color: white;
   border-bottom: 1px solid #d7d7d9;
@@ -1124,6 +1128,10 @@ td > ul, td > ol {
   margin-bottom: 0.5rem;
 }
 
+.horizontalheaders * .nav-tabs > .nav-item, .horizontalheaders > .nav-tabs > .nav-item {
+  margin-bottom: 0rem;
+}
+
 .nav-tabs > .nav-item:last-child {
   border-right: 1px solid rgb(209, 213, 219);
 }
@@ -1132,6 +1140,10 @@ td > ul, td > ol {
   padding: .7rem;
   background-color: white;
   border-bottom: 1px solid rgb(215, 215, 217);
+}
+
+.horizontalheaders * .tab-content {
+  border: 1px solid rgb(215, 215, 217);
 }
 
 /* TAB CSS consistency END */
@@ -2242,18 +2254,11 @@ div .filterable > p {
   border-top: 1px solid #dee2e6;
 }
 
-// .tablestep * tbody > tr:nth-of-type(odd) {
-//   background-color: rgba(0, 0, 0, 0.05) !important;
-// }
-
-
 .usecase-table .tablestep:nth-of-type(odd) {
-  // background-color: whitesmoke;
   border-top: 1px solid #d7d7d9;
 }
 
 .usecase-table .tablestep:nth-of-type(even) {
-  // background-color: white;
   border-top: 1px solid #d7d7d9;
 }
 
