@@ -164,7 +164,6 @@ Ideally, you want your ML model to be able to work with a high level of confiden
 As you test it, if you notice faulty predictions or confidence scores, you will need to adjust your dataset and retrain your model.
 
 If you trained a classification model, you can test it with the following instructions.
-If you trained a detection model, move on to [deploy an ML model](/data-ai/ai/deploy/).
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 1. Click on an image to open the side menu, and select the **Actions** tab.
@@ -172,6 +171,12 @@ If you trained a detection model, move on to [deploy an ML model](/data-ai/ai/de
 1. Click **Run model**
 
 If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
+
+You can test both detection models and classifier models using the following resources together:
+
+- [a camera](/operate/reference/components/camera/)
+- [a `tflite_cpu` ML model](/data-ai/ai/deploy/) with the model you just trained
+- [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model
 
 ## Next steps
 
