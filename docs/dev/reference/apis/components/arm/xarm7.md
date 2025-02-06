@@ -6,8 +6,10 @@ type: "docs"
 description: "Configure a UFACTORY xArm 7 for your machine."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
+toc_hide: true
 aliases:
-  - "/components/arm/xarm7/"
+  - /components/arm/xarm7/
+  - /operate/reference/components/arm/xarm7/
 component_description: "Supports UFACTORY xArm 7."
 # SMEs: Bucket, Motion
 ---
