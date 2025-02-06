@@ -47,7 +47,7 @@ You can grant a user access to the following resources:
 - a {{< glossary_tooltip term_id="location" text="location" >}}
 - a {{< glossary_tooltip term_id="machine" text="machine" >}}
 
-{{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="aligncenter" declaredimensions=true alt="Limit user access">}}
+{{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="" declaredimensions=true alt="Limit user access">}}
 
 Click **invite**.
 
