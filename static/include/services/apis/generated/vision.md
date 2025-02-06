@@ -75,7 +75,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>\>
 
 **Example:**
 
@@ -142,31 +142,30 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCam, err := camera.FromRobot(machine, "my_camera")
-if err != nil {
-  logger.Error(err)
-  return
-}
+ // add "go.viam.com/rdk/utils" to imports to use this code snippet
 
-// Get an image from the camera decoded as an image.Image
-img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
+  myCam, err := camera.FromRobot(machine, "my_camera")
+  if err != nil {
+    logger.Error(err)
+    return
+  }
+  // Get an image from the camera decoded as an image.Image
+  img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
-myDetectorService, err := vision.FromRobot(machine, "my_detector")
-if err != nil {
-  logger.Error(err)
-  return
-}
-// Get the detections from the image
-detections, err := myDetectorService.Detections(context.Background(), img, nil)
-if err != nil {
-  logger.Fatalf("Could not get detections: %v", err)
-}
-if len(detections) > 0 {
-  logger.Info(detections[0])
-}
+  myDetectorService, err := vision.FromRobot(machine, "my_detector")
+  if err != nil {
+    logger.Error(err)
+    return
+  }
+  // Get the detections from the image
+  detections, err := myDetectorService.Detections(context.Background(), img, nil)
+  if err != nil {
+    logger.Fatalf("Could not get detections: %v", err)
+  }
+  if len(detections) > 0 {
+    logger.Info(detections[0])
+  }
 ```
-
-Import `"go.viam.com/rdk/utils"` at the beginning of your file.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
@@ -180,7 +179,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>\>
 
 **Example:**
 
@@ -271,7 +270,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>\>
 
 **Example:**
 
@@ -336,31 +335,30 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCam, err := camera.FromRobot(machine, "my_camera")
-if err != nil {
-  logger.Error(err)
-  return
-}
+ // add "go.viam.com/rdk/utils" to imports to use this code snippet
 
-// Get an image from the camera decoded as an image.Image
-img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
+  myCam, err := camera.FromRobot(machine, "my_camera")
+  if err != nil {
+    logger.Error(err)
+    return
+  }
+  // Get an image from the camera decoded as an image.Image
+  img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
-myClassifierService, err := vision.FromRobot(machine, "my_classifier")
-if err != nil {
-  logger.Error(err)
-  return
-}
-// Get the 2 classifications with the highest confidence scores from the image
-classifications, err := myClassifierService.Classifications(context.Background(), img, 2, nil)
-if err != nil {
-  logger.Fatalf("Could not get classifications: %v", err)
-}
-if len(classifications) > 0 {
-  logger.Info(classifications[0])
-}
+  myClassifierService, err := vision.FromRobot(machine, "my_classifier")
+  if err != nil {
+    logger.Error(err)
+    return
+  }
+  // Get the 2 classifications with the highest confidence scores from the image
+  classifications, err := myClassifierService.Classifications(context.Background(), img, 2, nil)
+  if err != nil {
+    logger.Fatalf("Could not get classifications: %v", err)
+  }
+  if len(classifications) > 0 {
+    logger.Info(classifications[0])
+  }
 ```
-
-Import `"go.viam.com/rdk/utils"` at the beginning of your file.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
@@ -375,7 +373,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>\>
 
 **Example:**
 
@@ -469,7 +467,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)>\>
 
 **Example:**
 
@@ -650,7 +648,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
