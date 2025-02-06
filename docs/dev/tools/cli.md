@@ -1294,8 +1294,8 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
-| `--desination-port` | The port on a machine part to tunnel to. Default: `0`. | `part tunnel` | Optional |
-| `--local-port` | The local port from which to tunnel. Default: `0`. | `part tunnel` | Optional |
+| `--desination-port` | The port on a machine part to tunnel to. Default: `0`. | `part tunnel` | **Required** |
+| `--local-port` | The local port from which to tunnel. Default: `0`. | `part tunnel` | **Required** |
 
 ##### Using the `--stream` and `--data` arguments
 
