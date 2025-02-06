@@ -1213,6 +1213,9 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 # restart a part of a specified machine
 viam machines part restart --machine=123 --part=456
 
+# tunnel connections to the specified port on a machine part
+viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
+
 # Copy and a single file to a machine and change the file's name:
 viam machine part cp --organization=my_org --location=my_location --machine=my_machine --part=m1-main my_file machine:/home/user/
 
@@ -1241,7 +1244,7 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
+| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
@@ -1263,6 +1266,7 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
 | `cp` | Copy files to and from a machine part. |
+| `tunnel` | Tunnel connections to a specified port on a machine part. |
 | `--help` | Return help |
 
 ##### Named arguments
@@ -1290,6 +1294,8 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
+| `--desination-port` | The port on a machine part to tunnel to. Default: `0`. | `part tunnel` | Optional |
+| `--local-port` | The local port from which to tunnel. Default: `0`. | `part tunnel` | Optional |
 
 ##### Using the `--stream` and `--data` arguments
 
