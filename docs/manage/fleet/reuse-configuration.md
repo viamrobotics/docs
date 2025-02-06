@@ -42,7 +42,7 @@ In the [Viam app](https://app.viam.com), use the **CONFIGURE** tab to build a co
 You can use all available resources except [triggers](/data-ai/data/advanced/alert-data/) in the configuration for your machine.
 This means you can also use fragments inside a fragment.
 
-{{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="fill" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -50,7 +50,7 @@ This means you can also use fragments inside a fragment.
 
 In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 
-{{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="fill aligncenter" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
+{{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -71,7 +71,7 @@ Click **Save**.
 
 If you want to edit the fragment later, do it from this screen.
 
-{{<imgproc src="/how-tos/one-to-many/new-fragment.png" resize="700x" class="fill aligncenter" style="width: 350px" declaredimensions=true alt="app.viam.com/fragment interface">}}
+{{<imgproc src="/how-tos/one-to-many/new-fragment.png" resize="700x" class="fill" style="width: 350px" declaredimensions=true alt="app.viam.com/fragment interface">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -139,7 +139,7 @@ You can click the **{}** button to switch to advanced view and see the changes.
 
 Click **Save**.
 
-{{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A motor config panel from a fragment being edited with different direction and pwm pin values." max-width="500px" class="aligncenter" >}}
+{{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A motor config panel from a fragment being edited with different direction and pwm pin values." max-width="500px" class="" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

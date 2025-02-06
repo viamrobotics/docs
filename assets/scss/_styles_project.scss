@@ -505,10 +505,6 @@ END MARKETING CSS
   font-size: 0.938rem !important;
 }
 
-.tablestep * .expand-label, .tablestep * .expand-content {
-  background-color: white !important;
-}
-
 .expand-content {
   border-top: #d9d9d9 solid 0px;
   border-left: #d9d9d9 solid 1px;
@@ -1072,11 +1068,16 @@ td > ul, td > ol {
 
 .nav-tabs {
   border-bottom: none; // unset from inherited styles
+  gap: 10px;
+}
+
+.horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
+  gap: 0px;
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
-  background-color: white;
-  border-bottom: 1px solid white;
+  border-color: rgb(156, 156, 164);
+  background-color: rgb(251, 251, 252);
 }
 
 .horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
@@ -1109,6 +1110,17 @@ td > ul, td > ol {
   border-top: 1px solid rgb(209, 213, 219);
   padding: 0.5rem 1.5rem;
   color: rgb(78, 79, 82);
+}
+
+.horizontalheaders .nav-tabs .nav-link, .horizontalheaders .nav-tabs .nav-link:hover {
+  padding: 0.5rem 1.5rem;
+}
+
+.nav-tabs .nav-link {
+  background-color: rgb(251, 251, 252);
+}
+
+.nav-tabs .nav-link:hover {
   background-color: rgb(241, 241, 244);
 }
 
@@ -1120,7 +1132,11 @@ td > ul, td > ol {
 }
 
 .nav-tabs .nav-item {
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
+}
+
+.horizontalheaders * .nav-tabs > .nav-item, .horizontalheaders > .nav-tabs > .nav-item {
+  margin-bottom: 0rem;
 }
 
 .nav-tabs > .nav-item:last-child {
@@ -1130,6 +1146,10 @@ td > ul, td > ol {
 .tab-content {
   padding: .7rem;
   background-color: white;
+  border-bottom: 1px solid rgb(215, 215, 217);
+}
+
+.horizontalheaders * .tab-content, .horizontalheaders > .tab-content {
   border: 1px solid rgb(215, 215, 217);
 }
 
@@ -2241,18 +2261,11 @@ div .filterable > p {
   border-top: 1px solid #dee2e6;
 }
 
-.tablestep * tbody > tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05) !important;
-}
-
-
 .usecase-table .tablestep:nth-of-type(odd) {
-  background-color: whitesmoke;
   border-top: 1px solid #d7d7d9;
 }
 
 .usecase-table .tablestep:nth-of-type(even) {
-  background-color: white;
   border-top: 1px solid #d7d7d9;
 }
 
@@ -2597,7 +2610,6 @@ div.explanation > .explanationvisual {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  border-left: 1px solid #d7d7d9;
 }
 
 div.explanation > .explanationvisual * video, div.explanation > .explanationvisual > picture > img {

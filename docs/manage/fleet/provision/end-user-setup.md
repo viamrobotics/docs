@@ -29,7 +29,7 @@ Unless you have been told to use the captive portal, we recommend you use the Vi
 
 ## Set up your machine using the Viam mobile app
 
-{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" max-width="400px" class="aligncenter imgzoom">}}
+{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" max-width="300px" class="">}}
 
 {{< table >}}
 {{% tablestep %}}

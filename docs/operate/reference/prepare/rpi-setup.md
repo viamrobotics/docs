@@ -167,7 +167,7 @@ Be sure that you remember the `hostname` and `username` you set, as you will nee
 
     You may also be prompted by your operating system to enter an administrator password:
 
-    {{< imgproc class="aligncenter" alt="macOS admin password confirmation screen." src="/installation/rpi-setup/imager-permission.png" resize="300x" declaredimensions=true >}}
+    {{< imgproc class="" alt="macOS admin password confirmation screen." src="/installation/rpi-setup/imager-permission.png" resize="300x" declaredimensions=true >}}
 
     After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card.
 

@@ -32,7 +32,7 @@ Currently, `viam-agent` is only supported on Linux, for amd64 (x86_64) and arm64
 To provision machines using `viam-agent`, see
 
 {{< cards >}}
-{{% card link="/manage/fleet/provision/setup/" %}}
+{{% card link="/manage/fleet/provision/setup/" noimage=true %}}
 {{< /cards >}}
 
 ## Installation
@@ -48,7 +48,7 @@ Your machine must have `curl` available in order to install `viam-agent`.
    An alert will be present directing you to **Set up your machine part**:
 
 <p>
-{{<imgproc src="/installation/setup-part.png" resize="800x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="imgzoom aligncenter">}}
+{{<imgproc src="/installation/setup-part.png" resize="800x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="imgzoom">}}
 </p>
 
 Click **View setup instructions** to open the setup instructions.
@@ -86,7 +86,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
 
 <p>
-{{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width:600px" class="imgzoom aligncenter">}}
+{{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width:600px" class="imgzoom">}}
 </p>
 
 Edit and fill in the attributes as applicable.
