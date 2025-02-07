@@ -126,7 +126,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### TabularDataBySQL
 
-Obtain unified tabular data and metadata, queried with SQL.
+Obtain unified tabular data and metadata, queried with SQL. Make sure your API key has permissions at the organization level in order to use this.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -164,7 +164,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. You can obtain your organization ID from the Viam app’s organization settings page.
-- `query` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)] | List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): The MQL query to run as a list of BSON queries. Note: Support for bytes will be removed in the future, so using a dictionary is preferred.
+- `query` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)] | List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): The MQL query to run, as a list of MongoDB aggregation pipeline stages. Note: Each stage can be provided as either a dictionary or raw BSON bytes, but support for bytes will be removed in the future, so using a dictionary is preferred.
 
 **Returns:**
 
