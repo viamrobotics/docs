@@ -5,7 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 images: ["/registry/module-puzzle-piece.svg"]
-description: You can use a fragment to deploy software packages and ML models to many machines, as well as to update deployed versions of those software packages and ML models.
+description: "Deploy code packages with machine control logic to one or more machines."
 languages: []
 viamresources: []
 platformarea: ["registry", "fleet"]
@@ -18,26 +18,27 @@ aliases:
 cost: "0"
 ---
 
-To deploy code or other software to individual machines:
+{{< glossary_tooltip term_id="module" text="Modules" >}} are code packages that provide most of the functionality on your machines: drivers, integrations, and control logic.
+
+The following steps show you how to create modules with control logic and how to deploy all modules over the air (OTA) to your machine:
 
 1. [Create a module with machine control logic](#create-a-module-with-machine-control-logic)
-2. [Create a fragment with the configuration for your machines](#create-a-fragment)
-3. [Add the fragment to your machines](#add-the-fragment-to-your-machines)
+2. [Create a configuration fragment with the modules for your machine](#create-a-fragment)
+3. [Add the fragment to one or more machines](#add-the-fragment-to-your-machines)
 
 ## Prerequisites
 
-This guide assumes that you have [at least one machine](/operate/get-started/setup/) with [configured hardware and software resources](/operate/get-started/supported-hardware/).
+Start by [setting up one machine](/operate/get-started/setup/).
+Then, [configure any hardware and software resources](/operate/get-started/supported-hardware/) that you will use with your machine and that you want to drive with your control logic.
 
 ## Create a module with machine control logic
 
-You can operate devices by running control logic on another device, for example using an app, or on the machine itself using a {{< glossary_tooltip term_id="module" text="module" >}}.
-If all your machine control logic runs on another device or server, move on to [Create a fragment](#create-a-fragment).
-
-If at least some of your machine control logic should run on your machine, place the control logic in a module by following these steps:
+One method of operating your device is by running control logic on another device, such as an app.
+With {{< glossary_tooltip term_id="module" text="modules" >}}, you can run your control logic on the machine itself.
 
 {{% alert title="OTA updates for microcontrollers" color="note" %}}
-The following steps do not cover how to create a module with machine control logic for microcontrollers.
-For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates) instead.
+The following steps cover how to create a module for machines running `viam-server`.
+For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
 {{% /alert %}}
 
 {{< table >}}
@@ -79,7 +80,7 @@ When your new model gets added to your machine, its `reconfigure()` method gets 
 If you want your control logic to run in a loop in the background, you can start this loop here.
 Be sure to also implement logic to handle subsequent calls to the reconfigure method gracefully.
 
-For example, in Python, start your logic in <FILE>src/main.py</FILE>:
+For example, in Python, start your logic in the `reconfigure()` method of <FILE>src/main.py</FILE>:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="20-28"}
 # Add these imports
@@ -189,18 +190,18 @@ Your module will now be built, packaged and pushed to the Viam Registry.
 ## Create a fragment
 
 Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
-When deploying or updating software on many machines, you should use fragments.
+When deploying or updating software on many machines, you should use fragments to deploy your modules OTA to your machines.
 
-The following example creates a fragment with a camera and a servo, as well as with the [control logic module](#create-a-module-with-machine-control-logic).
+The following example starts with a machine with a camera and a servo and adds the [control logic module](#create-a-module-with-machine-control-logic).
+The resulting machine configuration gets used to create the fragment for reuse on other machines.
 
 {{< table >}}
 {{% tablestep link="/operate/get-started/supported-hardware/" %}}
 **1. Configure your software**
 
 Go to your [machine](#prerequisites) in the [Viam app](https://app.viam.com).
-Ensure all hardware and other resources your machine uses are configured.
 
-Add your control logic module.
+Then add your control logic module.
 
 {{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="fill aligncenter" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}
 
@@ -265,7 +266,7 @@ We only created this machine to easily generate the JSON config for the fragment
 
 ## Add the fragment to your machines
 
-Generally, you will use [provisioning](/manage/fleet/provision/setup/) to add this fragment to your machines.
+Generally, fragments are used with [provisioning](/manage/fleet/provision/setup/) to deploy and manage softwareon many machines.
 
 You can also add the fragment manually to the machines that need it:
 
