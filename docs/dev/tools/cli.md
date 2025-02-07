@@ -1131,6 +1131,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 ### `packages`
 
 The `packages` command allows you to upload packages to the Viam Cloud or export packages from the Viam Cloud.
+For example, you can use this command to download ML models or modules from the registry.
 
 ```sh {class="command-line" data-prompt="$"}
 viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz>
