@@ -95,7 +95,7 @@ img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG
 
 To use either method, be sure to import `"go.viam.com/rdk/utils"` at the beginning of your file.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -177,7 +177,7 @@ myCamera, err := camera.FromRobot(machine, "my_camera")
 images, metadata, err := myCamera.Images(context.Background())
 ```
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#ImagesSource).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -239,7 +239,7 @@ myCamera, err := camera.FromRobot(machine, "my_camera")
 pointCloud, err := myCamera.NextPointCloud(context.Background())
 ```
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#PointCloudSource).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -300,7 +300,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/camera#Properties): Properties of the particular implementation of a camera.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -501,7 +501,7 @@ myCamera, err := camera.FromRobot(machine, "my_camera")
 err = myCamera.Close(context.Background())
 ```
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

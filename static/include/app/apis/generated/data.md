@@ -9,7 +9,7 @@ Gets the most recent tabular data captured from the specified data source, as lo
 
 - `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that owns the data.
 - `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data. Ex: “my-sensor”.
-- `resource_subtype` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The subtype of the requested resource that captured the data. Ex: “rdk:component:sensor”.
+- `resource_api` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The API of the requested resource that captured the data. Ex: “rdk:component:sensor”.
 - `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name. Ex: “Readings”.
 
 **Returns:**
@@ -22,7 +22,7 @@ Gets the most recent tabular data captured from the specified data source, as lo
 tabular_data = await data_client.get_latest_tabular_data(
     part_id="77ae3145-7b91-123a-a234-e567cdca8910",
     resource_name="camera-1",
-    resource_subtype="rdk:component:camera",
+    resource_api="rdk:component:camera",
     method_name="GetImage"
 )
 
@@ -51,7 +51,7 @@ Obtain unified tabular data and metadata from the specified data source.
 
 - `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that owns the data.
 - `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data.
-- `resource_subtype` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The subtype of the requested resource that captured the data.
+- `resource_api` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The API of the requested resource that captured the data.
 - `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name.
 - `start_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time for requesting a specific range of data.
 - `end_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time for requesting a specific range of data.
@@ -66,7 +66,7 @@ Obtain unified tabular data and metadata from the specified data source.
 tabular_data = await data_client.export_tabular_data(
     part_id="<PART-ID>",
     resource_name="<RESOURCE-NAME>",
-    resource_subtype="<RESOURCE-SUBTYPE>",
+    resource_api="<RESOURCE-API>",
     method_name="<METHOD-NAME>",
     start_time="<START_TIME>"
     end_time="<END_TIME>"
