@@ -111,12 +111,15 @@ If your machine will never connect to the internet, you can also create a [local
 
 ### Installation methods: `viam-agent` versus manual
 
-`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/) and configuring operating system updates.
+`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/), networking, and configuring operating system settings.
 
 When you set up a Linux device in the Viam app, you'll see an option to install using `viam-agent`, or to manually install only `viam-server`.
 Using `viam-agent` is generally recommended when installing `viam-server` on a single-board computer.
 
-`viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers, so use manual install for those systems.
+When you set up a native Windows device in the Viam app, you must use the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable.msi).
+
+`viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers.
+Instead use manual install for those systems.
 
 ### Manage your installation
 
