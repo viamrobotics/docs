@@ -211,7 +211,7 @@ Edit and fill in the attributes as applicable.
 ## `version_control`: Version management for `viam-agent` and `viam-server`
 
 By default, when a new version of `viam-server` becomes available, it will automatically download.
-When `viam-agent` next restarts, it install and start using the new version of `viam-server`.
+When `viam-agent` next restarts, it installs and starts using the new version of `viam-server`.
 To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window). With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
 
 <!-- prettier-ignore -->
