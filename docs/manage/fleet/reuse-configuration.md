@@ -214,6 +214,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
   Note that this does not affect the other mods; you still use `motor1` for them.
 - Sets the pin number for pin `a` to `30`.
 - Sets the name of the board associated with this motor to `local`.
+- Sets the `capture_frequency_hz` in the `service_config` for the first capture method in the `capture_methods` array.
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -225,8 +226,9 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
          "components.motor1.attributes.max_rpm": 1818,
          "components.motor1.name": "my_motor",
          "components.motor1.attributes.pins.a": 30,
-         "components.motor1.attributes.board": "local"
-       }
+         "components.motor1.attributes.board": "local",
+         "components.motor1.service_configs.0.attributes.capture_methods.0.capture_frequency_hz": 0.25
+        }
      }
    ]
  }
@@ -363,6 +365,25 @@ Here are the version options:
 - To update with new patch releases of the same minor release branch, use `"~<minor version number>"`, for example `"~1.8"`
 - To always update with the latest release, use `"latest"`
 - To pin to a specific release, use `"<version number>"`, for example `"1.8.3"`
+
+{{< /expand >}}
+{{< expand "Change a package version" >}}
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for the first package in the packages array of the fragment](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) in the fragment:
+
+```json {class="line-numbers linkable-line-numbers"}
+"fragment_mods": [
+  {
+    "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+    "mods": [
+      {
+        "$set": {
+          "packages.0.version": "latest"
+        }
+      }
+    ]
+  }
+],
+```
 
 {{< /expand >}}
 
