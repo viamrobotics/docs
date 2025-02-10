@@ -4,7 +4,6 @@ var siteMenuSubmenus = document.getElementsByClassName(
 );
 
 function submenuToggle(menu, toggle) {
-    console.log(menu)
     let open = false;
     if (toggle.children[0].className === "fas fa-chevron-right") {
         open = true;
@@ -28,15 +27,18 @@ function submenuToggle(menu, toggle) {
             c.classList.add("collapse");
         }
     }
-    let pageChildren = menu.querySelector("span>div>ul").children;
-    if (pageChildren) {
-        if (open) {
-            for (let c of pageChildren) {
-                c.classList.remove("collapse");
-            }
-        } else {
-            for (let c of pageChildren) {
-                c.classList.add("collapse");
+    let pageChildrenPage = menu.querySelector("span>div>ul")
+    if (pageChildrenPage) {
+        let pageChildren = pageChildrenPage.children;
+        if (pageChildren) {
+            if (open) {
+                for (let c of pageChildren) {
+                    c.classList.remove("collapse");
+                }
+            } else {
+                for (let c of pageChildren) {
+                    c.classList.add("collapse");
+                }
             }
         }
     }

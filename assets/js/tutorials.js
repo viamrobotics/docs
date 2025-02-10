@@ -335,7 +335,7 @@ document.body.addEventListener(
         }
       });
       let open_elem = filter_box.getElementsByClassName("show");
-      if (open_elem) {
+      if (open_elem.length) {
         open_elem[0].classList.remove("show");
       }
     }
