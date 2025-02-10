@@ -106,8 +106,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   var allTabsInThisPage = document.querySelectorAll(".nav-tabs > .nav-item > a");
   tdRegisterTabClickHandler(allTabsInThisPage);
-  if (document.getElementsByTagName("h1").length && document.getElementsByTagName("h1")[0].textContent != "Dev tools") {
-    tdGetAndActivatePersistedTabs(allTabsInThisPage);
+  if (document.getElementsByTagName("h1").length) {
+    if (document.getElementsByTagName("h1")[0].textContent != "Dev tools") {
+      tdGetAndActivatePersistedTabs(allTabsInThisPage);
+    }
   }
 
   // Open Anchor for expanders if hidden START
