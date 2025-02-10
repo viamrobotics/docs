@@ -88,4 +88,4 @@ If your robot is offline and can't sync and your machine's disk fills up beyond 
 For more information, see [Automatic data deletion details](/data-ai/capture-data/capture-sync/#click-for-more-automatic-data-deletion-details)
 
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
-For more information, see [Capture directly to MongoDB](/data-ai/capture-data/capture-sync/#capture-directly-to-mongodb).
+For more information, see [Capture directly to MongoDB](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-mongodb).

@@ -40,7 +40,7 @@ aliases:
   - /fleet/data-management/
 ---
 
-You can use the data management service to capture data from [supported components and services](#supported-resources), then sync it to the cloud.
+You can use the data management service to capture data from [supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync), then sync it to the cloud.
 You can also sync data from arbitrary folders on your machine.
 
 Data capture and sync in Viam involves two key pieces:
