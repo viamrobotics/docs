@@ -49,9 +49,11 @@ aliases:
 </a>
 </div>
 
-<img src="platform/platform-all.svg" alt="Platform diagram with build elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="platform-all" style="width:800px" >
-<img src="platform/platform-build-all.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="build-platform" style="width:800px" >
-<img src="platform/platform-data-all.svg" alt="Platform diagram with apps element highlighted" class="aligncenter imgzoom medium-zoom-image" id="data-platform" style="width:800px" >
-<img src="platform/platform-fleet-all.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter imgzoom medium-zoom-image" id="fleet-platform" style="width:800px" >
+<div class="img-overlay-wrap aligncenter">
+  <img src="platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px" >
+  <img src="platform/platform-build-all.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay-platform" id="build-platform" style="width:800px" >
+  <img src="platform/platform-data-all.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay-platform" id="data-platform" style="width:800px" >
+  <img src="platform/platform-fleet-all.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay-platform" id="fleet-platform" style="width:800px" >
+</div>
 
 </div>

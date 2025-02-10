@@ -61919,33 +61919,6 @@ const inkeepWidgetSearch = window.Inkeep().embed({
           // ...optional settings
           },
       },
-      aiChatSettings: {
-        chatSubjectName: "Viam",
-        botAvatarSrcUrl: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
-        botAvatarDarkSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
-        getHelpCallToActions: [
-            {
-                name: "Email",
-                url: "mailto:support@viam.com",
-                icon: {
-                    builtIn: "IoMail"
-                }
-            },
-            {
-                name: "Discord",
-                url: "https://discord.gg/viam",
-                icon: {
-                    builtIn: "FaDiscord"
-                }
-            }
-        ],
-        quickQuestions: [
-            "How to install Viam on microcontrollers?",
-            "How to deploy a person detection model?",
-            "How can I ingest data from machines?",
-            "How to query sensor data with third-party tools?",
-        ],
-      },
       modalSettings: {
           // optional settings
           isShortcutKeyEnabled,
