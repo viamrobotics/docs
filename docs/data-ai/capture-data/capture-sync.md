@@ -52,12 +52,13 @@ Data capture and sync in Viam involves two key pieces:
 
 The data management service writes data from your configured Viam resources to local storage on your edge device and syncs data from the edge device to the cloud:
 
-- The data management service stores captured data locally in <file>~/.viam/capture<file> by default.
+- The data management service stores captured data locally in <file>~/.viam/capture</file> by default.
 - Data is synced to the Viam cloud at a configured sync interval using encrypted gRPC calls and deleted from the disk once synced.
 - You can capture and sync data independently, one can run without the other.
 
 For more information, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/).
 
+<<<<<<< HEAD
 ## Configure the data management service for your machine
 
 {{< tabs >}}
@@ -153,6 +154,9 @@ The following attributes are available for the data management service:
 {{< /expand >}}
 
 ## Configure data capture for individual resources
+=======
+## Configure data capture and sync for individual resources
+>>>>>>> d6526a8b9 (Simplify page)
 
 You can capture data for any {{< glossary_tooltip term_id="resource" text="resource" >}} that supports it, including resources on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
 
@@ -161,469 +165,33 @@ Configure data capture for individual resources in their configuration by:
 - Selecting which resource methods to capture data from
 - Setting the capture frequency for each method
 
-{{< tabs >}}
-{{% tab name="Regular" %}}
+{{< expand "Click to see resources that support data capture and cloud sync" >}}
 
-{{< tabs >}}
-{{% tab name="Config builder" %}}
+The following components and services support data capture and cloud sync:
+
+{{< readfile "/static/include/data/capture-supported.md" >}}
+
+{{< /expand >}}
+
+{{% alert title="Note" color="note" %}}
+The following instructions assume you are using the [app UI](https://app.viam.com) in **Builder** mode.
+For instructions on configuring data capture and sync with JSON, go to [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/) and follow the instructions for JSON examples.
+{{% /alert %}}
 
 For each resource you can capture data for, there is a **Data capture** section in its panel.
-Select a **Method** and specify a capture **Frequency** in hertz, for example to `0.1` to capture an image every 10 seconds.
+Click **+ Add method** and **Create data management service**.
+This creates a data management service for you that both captures and syncs data to the cloud by default.
+
+Select a **Method** to capture from and specify a capture **Frequency** in hertz, for example to `0.1` with `ReadImage` on a camera to capture an image every 10 seconds.
 You can add multiple methods with different capture frequencies.
 Some methods will prompt you to add additional parameters.
-
 The available methods, and corresponding additional parameters, will depend on the component or service type.
-For example, a camera has the options `ReadImage` and `NextPointCloud`.
+For example, a camera has the options `ReadImage`, `GetImages` and `NextPointCloud`.
 Keep in mind that some models do not support all options, for example webcams do not capture point clouds, and choose the method accordingly.
-
-![component config example](/services/data/data-service-component-config.png)
-
-{{< alert title="Caution" color="caution" >}}
-
-Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
-
-{{< /alert >}}
-
-{{% /tab %}}
-{{% tab name="JSON example" %}}
-
-{{< tabs >}}
-{{% tab name="viam-server" %}}
-
-This example configuration captures data from the `ReadImage` method of a camera:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "services": [
-    ...
-    ,
-    {
-      "name": "data_manager",
-      "type": "data_manager",
-      "attributes": {
-        "sync_interval_mins": 5,
-        "capture_dir": "",
-        "sync_disabled": false,
-        "tags": []
-      }
-    }
-  ],
-  "remotes": [
-    {
-        ...
-    }
-  ],
-  "components": [
-        ...
-    ,
-    {
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "capture_frequency_hz": 0.333,
-                "disabled": false,
-                "method": "ReadImage",
-                "additional_params": {
-                  "reader_name": "cam1",
-                  "mime_type": "image/jpeg"
-                }
-              }
-            ],
-            "retention_policy": {
-              "days": 5
-            }
-          }
-        }
-      ],
-      "model": "webcam",
-      "name": "cam",
-      "type": "camera",
-      "attributes": {
-        "video_path": "video0"
-      },
-      "depends_on": [
-        "local"
-      ]
-    },
-    ...
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="viam-micro-server" %}}
-
-This example configuration captures data from the `GetReadings` method of a temperature sensor and wifi signal sensor:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "services": [
-    {
-      "attributes": {
-        "capture_dir": "",
-        "tags": [],
-        "additional_sync_paths": [],
-        "sync_interval_mins": 3
-      },
-      "name": "dm",
-      "namespace": "rdk",
-      "type": "data_manager"
-    }
-  ],
-  "components": [
-    {
-      "type": "sensor",
-      "model": "tmp36",
-      "attributes": {
-        "analog_reader": "temp",
-        "num_readings": 15
-      },
-      "depends_on": [],
-      "service_configs": [
-        {
-          "attributes": {
-            "capture_methods": [
-              {
-                "capture_frequency_hz": 0.2,
-                "cache_size_kb": 10,
-                "additional_params": {},
-                "method": "Readings"
-              }
-            ]
-          },
-          "type": "data_manager"
-        }
-      ],
-      "name": "tmp36",
-      "namespace": "rdk"
-    },
-    {
-      "type": "sensor",
-      "model": "wifi-rssi",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "additional_params": {},
-                "method": "Readings",
-                "capture_frequency_hz": 0.1,
-                "cache_size_kb": 10
-              }
-            ]
-          }
-        }
-      ],
-      "name": "my-wifi-sensor",
-      "namespace": "rdk"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Example for a vision service:
-
-{{< tabs >}}
-{{% tab name="viam-server" %}}
-
-This example configuration captures data from the `CaptureAllFromCamera` method of the vision service:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "camera-1",
-      "namespace": "rdk",
-      "type": "camera",
-      "model": "webcam",
-      "attributes": {}
-    }
-  ],
-  "services": [
-    {
-      "name": "vision-1",
-      "namespace": "rdk",
-      "type": "vision",
-      "model": "mlmodel",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "CaptureAllFromCamera",
-                "capture_frequency_hz": 1,
-                "additional_params": {
-                  "mime_type": "image/jpeg",
-                  "camera_name": "camera-1",
-                  "min_confidence_score": "0.7"
-                }
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
-      "attributes": {
-        "sync_interval_mins": 0.1,
-        "capture_dir": "",
-        "tags": [],
-        "additional_sync_paths": []
-      }
-    },
-    {
-      "name": "mlmodel-1",
-      "namespace": "rdk",
-      "type": "mlmodel",
-      "model": "viam:mlmodel-tflite:tflite_cpu",
-      "attributes": {}
-    }
-  ],
-  "modules": [
-    {
-      "type": "registry",
-      "name": "viam_tflite_cpu",
-      "module_id": "viam:tflite_cpu",
-      "version": "0.0.3"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% /tab %}}
-{{% tab name="Remote parts" %}}
-
-Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
-For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or does not have enough storage or processing power to run `viam-server`, you can still process and capture the data from that part's resources by adding it as a remote part.
-
-Currently, you can only configure data capture from remote resources in your JSON configuration.
-To add them to your JSON configuration you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
-
-<!-- prettier-ignore -->
-| Key | Description |
-| --- | ----------- |
-| `type` | The type tells your machine what the resource is. For example, a board. |
-| `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
-| `name` | The name specifies the fully qualified name of the part. |
-| `additional_params` | The additional parameters specify the data sources when you are using a board. |
-
-{{< expand "Click to view example JSON configuration for an ESP32 board that will be established as a remote part" >}}
-
-The following example shows the configuration of the part that we will establish as a remote, in this case an [ESP32 board](/operate/reference/components/board/esp32/).
-This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "my-esp32",
-      "model": "esp32",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {
-        "pins": [27],
-        "analogs": [
-          {
-            "pin": "34",
-            "name": "A1"
-          },
-          {
-            "pin": "35",
-            "name": "A2"
-          }
-        ]
-      },
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Analogs",
-                "additional_params": {
-                  "reader_name": "A1"
-                },
-                "cache_size_kb": 10,
-                "capture_frequency_hz": 10
-              },
-              {
-                "method": "Analogs",
-                "additional_params": {
-                  "reader_name": "A2"
-                },
-                "cache_size_kb": 10,
-                "capture_frequency_hz": 10
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-{{< /expand >}}
-
-{{< expand "Click to view the JSON configuration for capturing data from two analog readers and a pin of the board's GPIO" >}}
-
-The following example of a configuration with a remote part captures data from two analog readers that provide a voltage reading and from pin 27 of the GPIO of the board that we configured in the previous example:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "services": [
-    {
-      "name": "data_manager",
-      "type": "data_manager",
-      "attributes": {
-        "capture_dir": "",
-        "sync_disabled": true,
-        "sync_interval_mins": 5,
-        "tags": ["tag1", "tag2"]
-      },
-      "name": "data_manager",
-      "type": "data_manager"
-    }
-  ],
-  "components": [],
-  "remotes": [
-    {
-      "name": "esp-home",
-      "address": "esp-home-main.33vvxnbbw9.viam.cloud:80",
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-             // Captures data from two analog readers (A1 and A2)
-             {
-                "method": "Analogs",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": { "reader_name": "A1" },
-                "disabled": false
-             },
-             {
-                "method": "Analogs",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": { "reader_name": "A2" },
-                "disabled": false
-              },
-              // Captures data from pin 27 of the board's GPIO
-              {
-                "method": "Gpios",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": {
-                  "pin_name": “27”
-                },
-                "disabled": false
-              }
-            ]
-          }
-        }
-      ],
-      "secret": "REDACTED"
-    }
-  ]
-}
-```
-
-{{< /expand >}}
-
-{{< expand "Click to view the JSON configuration for capturing data from a camera" >}}
-
-The following example of a configuration with a remote part captures data from the `ReadImage` method of a camera:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "services": [
-    {
-      "attributes": {
-        "capture_dir": "",
-        "sync_disabled": true,
-        "sync_interval_mins": 5,
-        "tags": []
-      },
-      "name": "data_manager",
-      "type": "data_manager"
-    }
-  ],
-  "components": [],
-  "remotes": [
-    {
-      "name": "pi-test-main",
-      "address": "pi-test-main.vw3iu72d8n.viam.cloud",
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "capture_frequency_hz": 1,
-                "name": "rdk:component:camera/cam",
-                "disabled": false,
-                "method": "ReadImage",
-                "additional_params": {
-                  "mime_type": "image/jpeg",
-                  "reader_name": "cam1"
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "secret": "REDACTED"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< /expand >}}
-
-The following attributes are available for data capture configuration:
-
-{{< expand "Click to view data capture attributes" >}}
-
-<!-- prettier-ignore -->
-| Name               | Type   | Required? | Description |
-| ------------------ | ------ | --------- | ----------- |
-| `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
-| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#supported-resources). |
-| `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. |
-| `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
-
-{{< /expand >}}
 
 Click the **Save** button in the top right corner of the page to save your config.
 
-If cloud sync is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
+If cloud sync is enabled, the data management service deletes captured data from the disk once it has successfully synced to the cloud.
 
 {{< alert title="Warning" color="warning" >}}
 
@@ -652,12 +220,6 @@ You can also control how local data is deleted if your machine's local storage b
 
 {{< /expand >}}
 
-### Supported resources
-
-The following components and services support data capture and cloud sync:
-
-{{< readfile "/static/include/data/capture-supported.md" >}}
-
 ## View captured data
 
 To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view) where you can filter by location, type of data, and more.
@@ -676,102 +238,7 @@ To turn off data sync, navigate to the `data_manager` service configuration card
 
 Click the **Save** button in the top right corner of the page to save your config.
 
-## Advanced data capture and sync configurations
+## Next steps
 
-### Capture directly to MongoDB
-
-You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
-This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
-
-Configure using the `mongo_capture_config` attributes in your data manager service.
-
-Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
-
-{{< expand "Click to view configuration" >}}
-
-```json
-{
-  "components": [
-    {
-      "name": "sensor-1",
-      "namespace": "rdk",
-      "type": "sensor",
-      "model": "fake",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Readings",
-                "capture_frequency_hz": 0.5,
-                "additional_params": {}
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ],
-  "services": [
-    {
-      "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
-      "attributes": {
-        "mongo_capture_config": {
-          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
-        }
-      }
-    }
-  ]
-}
-```
-
-{{< /expand >}}
-
-When `mongo_capture_config.uri` is configured, data capture will attempt to connect to the configured MongoDB server and write captured tabular data to the configured `mongo_capture_config.database` and `mongo_capture_config.collection` (or their defaults if unconfigured) after enqueuing that data to be written to disk.
-
-If writes to MongoDB fail for any reason, data capture will log an error for each failed write and continue capturing.
-
-Failing to write to MongoDB doesn't affect capturing and syncing data to cloud storage other than adding capture latency.
-
-{{< alert title="Caution" color="caution" >}}
-
-- Capturing directly to MongoDB may write data to MongoDB that later fails to be written to disk (and therefore never gets synced to cloud storage).
-- Capturing directly to MongoDB does not retry failed writes to MongoDB. As a consequence, it is NOT guaranteed all data captured will be written to MongoDB.
-  This can happen in cases such as MongoDB being inaccessible to `viam-server` or writes timing out.
-- Capturing directly to MongoDB may reduce the maximum frequency that data capture can capture data due to the added latency of writing to MongoDB.
-  If your use case needs to support very high capture rates, this feature may not be appropriate.
-
-{{< /alert >}}
-
-### Conditional sync
-
-By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
-You can additionally configure sync to only happen when certain conditions are met.
-For example:
-
-- Only sync when on WiFi
-- Sync when specific events are detected
-- Sync during certain time windows
-
-See [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for how to implement conditional syncs.
-
-### Cloud data retention
-
-Configure how long your synced data remains stored in the cloud:
-
-- **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
-  See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-capture-attributes).
-- **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
-  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/capture-sync/#click-to-view-data-management-attributes).
-
-### Sync optimization
-
-**Configurable sync threads:** You can control how many concurrent sync operations occur by adjusting the `maximum_num_sync_threads` setting.
-Higher values may improve throughput on more powerful hardware, but raising it too high may introduce instability on resource-constrained devices.
-
-**Wait time before syncing arbitrary files:** If you choose to sync arbitrary files (beyond those captured by the data management service), the `file_last_modified_millis` configuration attribute specifies how long a file must remain unmodified before the data manager considers it for syncing.
-The default is 10 seconds.
+For more information on available configuration attributes and options like capturing directly to MongoDB or conditional sync, see [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/).
+To leverage AI, you can now [create a dataset](/data-ai/ai/create-dataset/) with the data you've captured.

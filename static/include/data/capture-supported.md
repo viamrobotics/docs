@@ -14,6 +14,7 @@
 | [Sensor](/operate/reference/components/sensor/)                   | `Readings` |
 | [Servo](/operate/reference/components/servo/)                     | `Position` |
 | [Vision service](/operate/reference/services/vision/)             | `CaptureAllFromCamera` |
+| [SLAM service](/operate/reference/services/slam/)             | `Position`, `PointCloudMap` |
 
 {{% /tab %}}
 {{% tab name="Micro-RDK" %}}
