@@ -29,7 +29,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/data-ai/capture-data/capture-sync/).
+You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) or [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/) for object detection and classification using your data in the [Viam Cloud](/data-ai/capture-data/capture-sync/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
