@@ -34,7 +34,7 @@ After training or uploading a machine learning model, use a machine learning (ML
 
 Navigate to the **CONFIGURE** tab of one of your machine in the [Viam app](https://app.viam.com).
 Add an ML model service that supports the ML model you want to use.
-For example,use the `ML model / TFLite CPU` service for TFlite ML models that you trained with Viam's built-in training.
+For example, use the `ML model / TFLite CPU` service for TFlite ML models that you trained with Viam's built-in training.
 
 {{<resources_svc api="rdk:service:mlmodel" type="ML model">}}
 
