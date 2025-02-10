@@ -1401,7 +1401,7 @@ def parse(type, names):
                 soup = make_soup(url)
 
                 if args.verbose:
-                    print(f'DEBUG: making soup for {type}')
+                    print(f'DEBUG: Making soup for {type}')
 
                 if resource in flutter_resource_overrides:
                     flutter_resource = flutter_resource_overrides[resource]
