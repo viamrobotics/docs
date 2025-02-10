@@ -27,6 +27,41 @@ print(dataset_id)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_dataset).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `orgId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ // Org ID to create dataset in
+ const orgId = '<YOUR-ORG-ID>';
+
+ try {
+   // Create the dataset
+   final datasetId = await dataClient.createDataset(orgId, "example-dataset");
+   print('Successfully created dataset');
+ } catch (e) {
+   print('Error creating dataset: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/createDataset.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### DeleteDataset
@@ -53,6 +88,40 @@ await data_client.delete_dataset(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_dataset).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `id` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ // Dataset ID to delete
+ const datasetId = '<YOUR-DATASET-ID>';
+
+ try {
+   // Delete the dataset
+   await dataClient.deleteDataset(datasetId);
+   print('Successfully deleted dataset');
+ } catch (e) {
+   print('Error deleting dataset: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/deleteDataset.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -85,6 +154,41 @@ await data_client.rename_dataset(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.rename_dataset).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `id` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ // Dataset ID to rename
+ const datasetId = '<YOUR-DATASET-ID>';
+
+ try {
+   // Rename the dataset
+   await dataClient.renameDataset(datasetId, "new-name");
+   print('Successfully renamed dataset');
+ } catch (e) {
+   print('Error renaming dataset: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/renameDataset.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### ListDatasetsByOrganizationID
@@ -114,6 +218,40 @@ print(datasets)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_datasets_by_organization_id).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `orgId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ // Org ID to list datasets from
+ const orgId = '<YOUR-ORG-ID>';
+
+ try {
+   // List datasets from org
+   final datasets = await dataClient.listDatasetsByOrganizationID(orgId);
+   print('Successfully retrieved list of datasets: $datasets');
+ } catch (e) {
+   print('Error retrieving list of datasets: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/listDatasetsByOrganizationID.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### ListDatasetsByIDs
@@ -141,6 +279,39 @@ print(datasets)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_dataset_by_ids).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `ids` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ const datasetIds = ["<YOUR-DATASET-ID>", "<YOUR-DATASET-ID-2>"];
+
+ try {
+   // List datasets by ids
+   final datasets = await dataClient.listDatasetsByIDs(datasetIds);
+   print('Successfully listed datasets by ids: $datasets');
+ } catch (e) {
+   print('Error retrieving datasets by ids: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/listDatasetsByIDs.html).
 
 {{% /tab %}}
 {{< /tabs >}}
