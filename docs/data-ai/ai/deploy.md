@@ -28,22 +28,17 @@ aliases:
   - /manage/data/deploy-model/
 ---
 
-The Machine Learning (ML) model service allows you to deploy [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) to your machine.
-The service works with models trained inside and outside the Viam app:
+After training or uploading a machine learning model, use a machine learning (ML) model service to deploy the ML model to your machine.
 
-- You can [train TFlite](/data-ai/ai/train-tflite/) or [other models](/data-ai/ai/train/) on data from your machines.
-- You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
-- You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [Viam Registry](https://app.viam.com/registry).
-- You can use a [model](/data-ai/ai/deploy/#deploy-your-ml-model) trained outside the Viam platform whose files are on your machine.
-
-## Deploy your ML model
+## Deploy your ML model on an ML model service
 
 Navigate to the **CONFIGURE** tab of one of your machine in the [Viam app](https://app.viam.com).
-Add an ML model service that supports the ML model you trained or the one you want to use from the registry.
+Add an ML model service that supports the ML model you want to use.
+For example,use the `ML model / TFLite CPU` service for TFlite ML models that you trained with Viam's built-in training.
 
 {{<resources_svc api="rdk:service:mlmodel" type="ML model">}}
 
-### Model framework support
+{{% expand "Want more information about model framework and hardware support for each ML model service? Click here." %}}
 
 Viam currently supports the following frameworks:
 
@@ -59,16 +54,14 @@ Viam currently supports the following frameworks:
 For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
 {{< /alert >}}
 
-For example,use the `ML model / TFLite CPU` service for TFlite ML models.
-If you used the built-in training, this is the ML model service you need to use.
-If you used a custom training script, you may need a different ML model service.
+{{< /expand>}}
 
 To deploy a model, click **Select model** and select the model from your organization or the registry.
 Save your config.
 
-### Machine learning models from registry
+### Models available to deploy on the ML Model service
 
-You can search the machine learning models that are available to deploy on this service from the registry here:
+You can search the machine learning models that are available to deploy on an ML model service from the registry here:
 
 {{<mlmodels>}}
 
@@ -85,7 +78,14 @@ Enter **JSON** mode and find the `"packages"` section of your config.
 Replace `"version": "latest"` with `"version"` from the package reference you just copied, for example `"version": "2024-11-14T15-05-26"`.
 Save your config to use your specified version of the ML model.
 
-## Next steps
+## How the ML model service works
+
+The service works with models trained inside and outside the Viam app:
+
+- You can [train TFlite](/data-ai/ai/train-tflite/) or [other model frameworks](/data-ai/ai/train/) on data from your machines.
+- You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [Viam Registry](https://app.viam.com/registry).
+- You can upload externally trained models from a model file on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
+- You can use a [model](/data-ai/ai/deploy/#deploy-your-ml-model) trained outside the Viam platform whose files are on your machine. See the documentation of the model of ML model service you're using (pick one that supports your model framework) for instructions on this.
 
 On its own the ML model service only runs the model.
 After deploying your model, you need to configure an additional service to use the deployed model.
