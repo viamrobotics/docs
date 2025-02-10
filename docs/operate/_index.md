@@ -46,10 +46,10 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{< /how-to-expand >}}
 
 <div class="img-overlay-wrap aligncenter">
-  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px" >
-  <img src="../platform/platform-build-connect.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay" id="build-platform-connect" style="width:800px" >
-  <img src="../platform/platform-build-apps.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay" id="build-platform-apps" style="width:800px" >
-  <img src="../platform/platform-build-motion.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay" id="build-platform-motion" style="width:800px" >
+  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:371.58px" >
+  <img src="../platform/platform-build-connect.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay" id="build-platform-connect" style="width:800px;height:371.58px" loading="lazy" >
+  <img src="../platform/platform-build-apps.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay" id="build-platform-apps" style="width:800px;height:371.58px" loading="lazy" >
+  <img src="../platform/platform-build-motion.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay" id="build-platform-motion" style="width:800px;height:371.58px" loading="lazy" >
 </div>
 
 </div>
