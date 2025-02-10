@@ -45,10 +45,10 @@ You can also monitor your machines through teleop, power your application logic,
 {{< /how-to-expand >}}
 
 <div class="img-overlay-wrap aligncenter">
-  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto">
-  <img src="../platform/platform-data-capture.svg" alt="Platform diagram with data capture elements highlighted" class="aligncenter overlay" id="data-platform-capture" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-data-work.svg" alt="Platform diagram with data usage elements highlighted" class="aligncenter overlay" id="data-platform-work" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-data-ai.svg" alt="Platform diagram with AI elements highlighted" class="aligncenter overlay" id="data-platform-ai" style="width:800px;height:auto" loading="lazy" >
+  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:371.58px">
+  <img src="../platform/platform-data-capture.svg" alt="Platform diagram with data capture elements highlighted" class="aligncenter overlay" id="data-platform-capture" style="width:800px;height:371.58px" loading="lazy" >
+  <img src="../platform/platform-data-work.svg" alt="Platform diagram with data usage elements highlighted" class="aligncenter overlay" id="data-platform-work" style="width:800px;height:371.58px" loading="lazy" >
+  <img src="../platform/platform-data-ai.svg" alt="Platform diagram with AI elements highlighted" class="aligncenter overlay" id="data-platform-ai" style="width:800px;height:371.58px" loading="lazy" >
 </div>
 
 </div>
