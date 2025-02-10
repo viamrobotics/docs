@@ -2989,23 +2989,61 @@ li.active-path.tutorial-heading > a {
 
 // Platform landing pages START
 
-#fleet-platform-management, #fleet-platform-team, #fleet-platform-monitor, #data-platform-capture, #data-platform-work, #data-platform-ai,
-#build-platform-connect, #build-platform-apps, #build-platform-motion,
-#build-platform, #data-platform, #fleet-platform {
-  display: none;
+.hoverable-fleet:hover ~ .img-overlay-wrap > #fleet-platform-team,
+.hoverable-fleet:hover ~ .img-overlay-wrap > #fleet-platform-monitor,
+.hoverable-team:hover ~ .img-overlay-wrap > #fleet-platform-management,
+.hoverable-team:hover ~ .img-overlay-wrap > #fleet-platform-monitor,
+.hoverable-monitor:hover ~ .img-overlay-wrap > #fleet-platform-management,
+.hoverable-monitor:hover ~ .img-overlay-wrap > #fleet-platform-team {
+  display: none !important;
 }
 
-.hoverable-fleet:hover ~ #fleet-platform-all, .hoverable-team:hover ~ #fleet-platform-all, .hoverable-monitor:hover ~ #fleet-platform-all,
-.hoverable-capture:hover ~ #data-platform-all, .hoverable-work:hover ~ #data-platform-all, .hoverable-ai:hover ~ #data-platform-all,
-.hoverable-connect:hover ~ #build-platform-all, .hoverable-apps:hover ~ #build-platform-all, .hoverable-motion:hover ~ #build-platform-all,
-.hoverable-build:hover ~ #platform-all, .hoverable-data:hover ~ #platform-all, .hoverable-fleet:hover ~ #platform-all {
-  display: none;
+.hoverable-connect:hover ~ .img-overlay-wrap > #build-platform-apps,
+.hoverable-connect:hover ~ .img-overlay-wrap > #build-platform-motion,
+.hoverable-apps:hover ~ .img-overlay-wrap > #build-platform-connect,
+.hoverable-apps:hover ~ .img-overlay-wrap > #build-platform-motion,
+.hoverable-motion:hover ~ .img-overlay-wrap > #build-platform-connect,
+.hoverable-motion:hover ~ .img-overlay-wrap > #build-platform-apps {
+  display: none !important;
 }
 
-.hoverable-fleet:hover ~ #fleet-platform-management, .hoverable-team:hover ~ #fleet-platform-team, .hoverable-monitor:hover ~ #fleet-platform-monitor, .hoverable-capture:hover ~ #data-platform-capture, .hoverable-work:hover ~ #data-platform-work, .hoverable-ai:hover ~ #data-platform-ai,
-.hoverable-connect:hover ~ #build-platform-connect, .hoverable-apps:hover ~ #build-platform-apps, .hoverable-motion:hover ~ #build-platform-motion,
-.hoverable-build:hover ~ #build-platform, .hoverable-data:hover ~ #data-platform, .hoverable-fleet:hover ~ #fleet-platform {
-  display: block !important;
+.hoverable-ai:hover ~ .img-overlay-wrap > #data-platform-capture,
+.hoverable-ai:hover ~ .img-overlay-wrap > #data-platform-work,
+.hoverable-work:hover ~ .img-overlay-wrap > #data-platform-capture,
+.hoverable-work:hover ~ .img-overlay-wrap > #data-platform-ai,
+.hoverable-capture:hover ~ .img-overlay-wrap > #data-platform-work,
+.hoverable-capture:hover ~ .img-overlay-wrap > #data-platform-ai {
+  display: none !important;
+}
+
+.hoverable-build:hover ~ .img-overlay-wrap > #build-platform,
+.hoverable-data:hover ~ .img-overlay-wrap > #data-platform,
+.hoverable-fleet:hover ~ .img-overlay-wrap > #fleet-platform {
+  display: inline-block !important;
+}
+
+
+.img-overlay-wrap {
+  position: relative;
+  display: inline-block;
+  transition: transform 150ms ease-in-out;
+}
+
+.img-overlay-wrap .overview {
+  display: inline-block;
+}
+
+.img-overlay-wrap .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.img-overlay-wrap .overlay-platform {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
 }
 
 .upside-down {
