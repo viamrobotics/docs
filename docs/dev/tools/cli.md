@@ -563,7 +563,7 @@ viam locations api-key create --location-id=<location-id>
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : (_optional_) return results for specified organization only |
-| `api-key` | Work with an api-key for your location | `create` |
+| `api-key` | Work with an API key for your location | `create` |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
@@ -1190,6 +1190,9 @@ viam profiles list
 
 # Remove a profile
 viam profiles remove --profile-name=mycompany
+
+# Example of using a profile to see a list of machines available to that profile
+viam --profile=mycompany machines list
 ```
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
@@ -1250,7 +1253,7 @@ Examples:
 viam machines list
 
 # get machine status
-viam machines status  --machine=123 --location=myLoc
+viam machines status  --machine=123
 
 # create an api key for a machine
 viam machines api-key create --machine-id=123 --name=MyKey
@@ -1297,7 +1300,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `list` | List all machines that the authenticated session has access to, filtered by organization and location. | - |
-| `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `api-key` | Work with an API key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
 | `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
@@ -1332,7 +1335,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | -------- | ----------- | ------------------- | --------- |
 | `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | Optional |
 | `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | Optional |
-| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs`, `part` | **Required** |
+| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs`, `part` | Optional |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
