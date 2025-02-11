@@ -736,9 +736,6 @@ def parse(type, names):
                 else:
                     url = f"{scrape_url}/viam_sdk/{resource.capitalize()}-class.html"
 
-                if args.verbose:
-                    print(f'DEBUG: Processing Flutter URL: {url}')
-
             ## If an invalid language was provided:
             else:
                 pass
@@ -1399,9 +1396,6 @@ def parse(type, names):
                 and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
                 and resource !='navigation' and resource !='slam':
                 soup = make_soup(url)
-
-                if args.verbose:
-                    print(f'DEBUG: Making soup for {type}')
 
                 if resource in flutter_resource_overrides:
                     flutter_resource = flutter_resource_overrides[resource]
@@ -2163,26 +2157,6 @@ def write_markdown(type, names, methods):
                                 output_file.write("{{< /tabs >}}\n")
 
                         if flutter_method_name and "flutter" in sdks:
-                            # Add robust error checking for Flutter methods
-                            if 'flutter' not in methods:
-                                if args.verbose:
-                                    print(f'DEBUG: No Flutter methods dictionary found')
-                                continue
-                                
-                            if type not in methods['flutter']:
-                                if args.verbose:
-                                    print(f'DEBUG: No Flutter methods found for type {type}')
-                                continue
-                                
-                            if resource not in methods['flutter'][type]:
-                                if args.verbose:
-                                    print(f'DEBUG: No Flutter methods found for resource {resource}')
-                                continue
-                                
-                            if flutter_method_name not in methods['flutter'][type][resource]:
-                                if args.verbose:
-                                    print(f'DEBUG: No Flutter method found: {flutter_method_name}')
-                                continue
                                 
                             output_file.write('{{% tab name="Flutter" %}}\n\n')
 
