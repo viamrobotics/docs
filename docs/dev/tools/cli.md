@@ -26,7 +26,7 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part run --machine 82c608a-1be9-46a5 --organization "Artoo's Org" \
+viam machines part run --machine 82c608a-1be9-46a5 --org "Artoo's Org" \
 --location myLoc --part "mymachine-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
@@ -1235,15 +1235,15 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
-viam machines status --organization=<org name> --location=<location name> --machine=<machine id>
-viam machines logs --organization=<org name> --location=<location name> --machine=<machine id> [...named args]
-viam machines api-key create --machine-id=<machine-id> [...named args]
+viam machines status --org=<org name> --location=<location name> --machine=<machine id>
+viam machines logs --org=<org name> --location=<location name> --machine=<machine id> [...named args]
+viam machines api-key create --machine=<machine-id> [...named args]
 viam machines part logs --machine=<machine> --part=<part> [...named args]
-viam machines part status --organization=<org name> --location=<location name> --machine=<machine id>
-viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
-viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id> --part=<part id>
+viam machines part status --org=<org name> --location=<location name> --machine=<machine id>
+viam machines part run --org=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
+viam machines part shell --org=<org name> --location=<location name> --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --organization=<org name> --location=<location name> --machine=<machine id> --part=<part name> <file name> machine:/path/to/file
+viam machines part cp --org=<org name> --location=<location name> --machine=<machine id> --part=<part name> <file name> machine:/path/to/file
 ```
 
 Examples:
@@ -1256,7 +1256,7 @@ viam machines list
 viam machines status  --machine=123
 
 # create an api key for a machine
-viam machines api-key create --machine-id=123 --name=MyKey
+viam machines api-key create --machine=123 --name=MyKey
 
 # stream logs from a machine
 viam machines logs --machine=123
@@ -1333,9 +1333,9 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | Optional |
+| `--org` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | Optional |
 | `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | Optional |
-| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs`, `part` | Optional |
+| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs`, `part` | Optional |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
