@@ -1519,11 +1519,6 @@ def parse(type, names):
 
                                 this_method_dict["return"][return_type] = this_method_return_dict
 
-                        if type not in flutter_methods:
-                            flutter_methods[type] = {}
-                        if resource not in flutter_methods[type]:
-                            flutter_methods[type][resource] = {}
-
                         flutter_methods[type][resource][method_name] = this_method_dict
 
                 ## We have finished looping through all scraped Flutter methods. Write the flutter_methods dictionary
