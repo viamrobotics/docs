@@ -89,14 +89,14 @@ To use any of the built-in components, configure them according to their readmes
 You can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines the Micro-RDK with one or more modules of your choice](/operate/get-started/other-hardware/micro-module/).
 
 <!--prettier-ignore-->
-| Model | Description | Ships with `viam-micro-server`? |
-| ----- | ----------- | ------------------------------- |
-| `gpio` | A servo controlled by GPIO pins. [Configuration info](/operate/reference/components/servo/gpio-micro-rdk/). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/operate/reference/components/base/two_wheeled_base/). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `free_heap_sensor` | Reports the amount of free memory space. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `wifi_rssi_sensor` | A WiFi signal strength sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `moisture_sensor` | A moisture sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
-| `water_pump` | A water pump. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
+| Model | Description | Built into the Micro-RDK? | Ships with `viam-micro-server`? |
+| ----- | ----------- | ------------------------------- | --- |
+| `gpio` | A servo controlled by GPIO pins. [Configuration info](/operate/reference/components/servo/gpio-micro-rdk/). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/operate/reference/components/base/two_wheeled_base/). Built into the Micro-RDK. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `free_heap_sensor` | Reports the amount of free memory space. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `wifi_rssi_sensor` | A WiFi signal strength sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `moisture_sensor` | A moisture sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | |
+| `water_pump` | A water pump. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | |
 
 ## Configure hardware on your machine
 
