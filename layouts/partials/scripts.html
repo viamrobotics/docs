@@ -134,9 +134,9 @@ window.markmap = {
 
 <!-- INKEEP start -->
 <script type="module" src="{{ "js/embed.min.js" | relURL }}" defer></script>
-{{ $jsEmbed := resources.Get "js/embed.js" }}
-{{ $jsEmbed := $jsEmbed | minify }}
-<script type="module" src="{{ $jsEmbed.RelPermalink }}" defer></script>
+{{ $jsInkeep := resources.Get "js/inkeep.js" }}
+{{ $jsInkeep := $jsInkeep | minify }}
+<script type="module" src="{{ $jsInkeep.RelPermalink }}" defer></script>
 <!-- INKEEP end -->
 
 {{ partial "hooks/body-end.html" . }}
