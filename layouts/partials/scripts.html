@@ -77,8 +77,6 @@ window.markmap = {
 <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
 {{ end }}
 
-<script src='{{ "js/tabpane-persist.js" | relURL }}'></script>
-
 <!-- load the deflate.js for plantuml support -->
 {{ if .Site.Params.plantuml.enable }}
 <script src='{{ "js/deflate.js" | relURL }}'></script>
@@ -107,6 +105,7 @@ window.markmap = {
 
 
 {{ $jsIndex := resources.Get "js/index.js" }}
+{{ $jsTabpanePersist := resources.Get "js/tabpane-persist.js" }}
 {{ $jsPrismViam := resources.Get "js/prism.js" }}
 {{ $jsToc := resources.Get "js/toc.js" }}
 {{ $jsBase := resources.Get "js/base.js" }}
@@ -117,17 +116,16 @@ window.markmap = {
 {{ $jsMarkmap := resources.Get "js/markmap.js" | resources.ExecuteAsTemplate "js/markmap.js" . }}
 {{ $jsPlantuml := resources.Get "js/plantuml.js" | resources.ExecuteAsTemplate "js/plantuml.js" . }}
 {{ $jsDrawio := resources.Get "js/drawio.js" | resources.ExecuteAsTemplate "js/plantuml.js" .}}
-
 {{ $jsSentry := resources.Get "js/sentry.js" }}
 
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
 {{ if not hugo.IsProduction }}
-{{ $js := (slice $jsIndex $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom) | resources.Concat "js/main.js" }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
-{{ $js := (slice $jsIndex $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom) | resources.Concat "js/main.js" }}
 {{ $js := $js | minify | fingerprint }}
 {{ $jsSentry := $jsSentry | minify }}
 <script async src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
@@ -136,7 +134,9 @@ window.markmap = {
 
 <!-- INKEEP start -->
 <script type="module" src="{{ "js/embed.min.js" | relURL }}" defer></script>
-<script type="module" src="{{ "js/embed.js" | relURL }}" defer></script>
+{{ $jsEmbed := resources.Get "js/embed.js" }}
+{{ $jsEmbed := $jsEmbed | minify }}
+<script type="module" src="{{ $jsEmbed.RelPermalink }}" defer></script>
 <!-- INKEEP end -->
 
 {{ partial "hooks/body-end.html" . }}
