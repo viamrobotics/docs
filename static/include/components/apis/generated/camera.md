@@ -20,16 +20,9 @@ If the server does not know how to return the specified MIME type, the server re
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.media.video import CameraMimeType
-
-my_camera = Camera.from_robot(robot=machine, name="my_camera")
-
-# Assume "frame" has a mime_type of "image/vnd.viam.dep"
-frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
-
-# Convert "frame" to a standard 2D image representation.
-# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
-standard_frame = frame.bytes_to_depth_array()
+my_camera = Camera.from_robot(machine, "my_camera")
+frame = await my_camera.get_image()
+print(f"Frame: {frame}")
 ```
 
 If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`ViamImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
@@ -70,6 +63,9 @@ cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
 # Convert back to ViamImage.
 cropped_frame = pil_to_viam_image(cropped_pil_frame, frame.mime_type)
 ```
+
+For documentation on available mime types, see [`CameraMimeType`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.CameraMimeType).
+For more information on working with `ViamImage`, see [`ViamImage`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage).
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -122,7 +118,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
 
 **Example:**
 
@@ -265,7 +261,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
 
 **Example:**
 
@@ -326,7 +322,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)>
 
 **Example:**
 
@@ -380,7 +376,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
