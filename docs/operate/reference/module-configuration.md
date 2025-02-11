@@ -242,7 +242,7 @@ Each module has access to the following default environment variables:
 | `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default: `$HOME/.viam` |
 | `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module. If you are using a [local module](/operate/get-started/other-hardware/#test-your-module-locally), you must set this value manually if your module requires it.<br>Example: `/opt/my-module/verxxxx-my-module/` |
 | `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/dev/reference/sdks/python/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-machine-id/my-module-name/` |
-| `VIAM_MODULE_ID` | The module ID of the module. <br>Example: `viam:realsense` |
+| `VIAM_MODULE_ID` | The module ID of the module. If you are using a [local module](/operate/get-started/other-hardware/#test-your-module-locally), you must set this value manually if your module requires it.<br>Example: `viam:realsense` |
 
 You can also set additional environment variables.
 
