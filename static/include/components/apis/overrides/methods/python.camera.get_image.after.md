@@ -37,7 +37,7 @@ cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
 cropped_frame = pil_to_viam_image(cropped_pil_frame, frame.mime_type)
 ```
 
-For documentation on available mime types, see [`CameraMimeType`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.CameraMimeType).
+For documentation on available MIME types, see [`CameraMimeType`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.CameraMimeType).
 For more information on working with `ViamImage`, see [`ViamImage`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage).
 
 {{% alert title="Tip" color="tip" %}}
