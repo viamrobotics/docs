@@ -735,7 +735,6 @@ def parse(type, names):
                         print(f'DEBUG: Parsing Flutter URL: {url}')
                 else:
                     url = f"{scrape_url}/viam_sdk/{resource.capitalize()}-class.html"
-
             ## If an invalid language was provided:
             else:
                 pass
@@ -2157,7 +2156,6 @@ def write_markdown(type, names, methods):
                                 output_file.write("{{< /tabs >}}\n")
 
                         if flutter_method_name and "flutter" in sdks:
-                                
                             output_file.write('{{% tab name="Flutter" %}}\n\n')
 
                             ## Assemble possible method override filepaths. Provide a file at one or both of these locations to
