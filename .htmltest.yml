@@ -42,6 +42,7 @@ IgnoreURLs:
   - "thingiverse.com"
   - "unsplash.com"
   - "docs.github.com"
+  - "bugs.launchpad.net"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
