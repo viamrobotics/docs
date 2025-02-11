@@ -1,5 +1,20 @@
 If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`ViamImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
 
+For example:
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.media.video import CameraMimeType
+
+my_camera = Camera.from_robot(robot=machine, name="my_camera")
+
+# Assume "frame" has a mime_type of "image/vnd.viam.dep"
+frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
+
+# Convert "frame" to a standard 2D image representation.
+# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
+standard_frame = frame.bytes_to_depth_array()
+```
+
 In addition, the Python SDK provides the helper functions `viam_to_pil_image` and `pil_to_viam_image` to decode the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
 For example:
