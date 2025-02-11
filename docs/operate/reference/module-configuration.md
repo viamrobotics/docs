@@ -244,8 +244,8 @@ Not all of these variables are available on [local modules](/operate/get-started
 | `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module.<br>Example: `/opt/my-module/verxxxx-my-module/` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/dev/reference/sdks/python/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-machine-id/my-module-name/` | |
 | `VIAM_MODULE_ID` | The module ID of the module.<br>Example: `viam:realsense` | |
-| `VIAM_API_KEY` | An API key with access to the machine where this instance of the module is running. | |
-| `VIAM_API_KEY_ID` | The ID of the API key with access to the machine where this instance of the module is running. | |
+| `VIAM_API_KEY` | An API key with access to the machine where this instance of the module is running. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `VIAM_API_KEY_ID` | The ID of the API key with access to the machine where this instance of the module is running. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `VIAM_MACHINE_PART_ID` | The ID of the part where this instance of the module is running. | |
 | `VIAM_MACHINE_ID` | The ID of the machine where this instance of the module is running. | |
 | `VIAM_LOCATION_ID` | The ID of the {{< glossary_tooltip term_id="location" text="location" >}} that owns the machine where this instance of the module is running. | |
