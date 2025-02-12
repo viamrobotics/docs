@@ -416,12 +416,12 @@ Viam supports data capture from {{< glossary_tooltip term_id="resource" text="re
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or does not have enough storage or processing power to run `viam-server`, you can still process and capture the data from that part's resources by adding it as a remote part.
 
 Currently, you can only configure data capture from remote resources in your JSON configuration.
-To add them to your JSON configuration you must explicitly add the remote resource's `api`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+To add them to your JSON configuration you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 <!-- prettier-ignore -->
 | Key | Description |
 | --- | ----------- |
-| `api` | The API tells your machine what the resource is. For example, a board. |
+| `type` | The type tells your machine what the resource is. For example, a board. |
 | `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
@@ -437,7 +437,7 @@ This config is just like that of a non-remote part; the remote connection is est
     {
       "name": "my-esp32",
       "model": "esp32",
-      "api": "board",
+      "type": "board",
       "namespace": "rdk",
       "attributes": {
         "pins": [27],
