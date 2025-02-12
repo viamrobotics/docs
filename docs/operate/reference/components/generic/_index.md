@@ -32,10 +32,10 @@ If you are adding new high-level software functionality, rather than supporting 
 {{% alert title="Important" color="note" %}}
 
 The generic component API only supports the `DoCommand` method.
-If you use the generic subtype, your module needs to define any and all component functionality and pass it through `DoCommand`.
+If you use the generic API, your module needs to define any and all component functionality and pass it through `DoCommand`.
 
 Whenever possible, it is best to use an [existing component API](/dev/reference/apis/#component-apis) instead of generic so that you do not have to replicate code.
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing {{< glossary_tooltip term_id="subtype" text="subtype" >}}, instead of using the generic component.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing API, instead of using the generic component.
 
 {{% /alert %}}
 
@@ -55,7 +55,7 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{% tab name="Micro-RDK" %}}
 
-If your `viam-micro-server` machine includes a resource that isn't a [base](/operate/reference/components/base/), [board](/operate/reference/components/board/),[encoder](/operate/reference/components/encoder/), [movement sensor](/operate/reference/components/movement-sensor/), [motor](/operate/reference/components/motor/), or [servo](/operate/reference/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
+If your `viam-micro-server` machine includes a resource that isn't a [base](/operate/reference/components/base/), [board](/operate/reference/components/board/),[encoder](/operate/reference/components/encoder/), [movement sensor](/operate/reference/components/movement-sensor/), [motor](/operate/reference/components/motor/), or [servo](/operate/reference/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic API.
 
 {{< alert title="Important" color="note" >}}
 `viam-micro-server` works differently from the RDK, so creating modular resources for it is different.

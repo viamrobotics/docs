@@ -55,7 +55,7 @@ See [module configuration](#module-configuration-details).
 {
   "name": "<your-model-instance-name>",
   "model": "<namespace>:<module-name>:<model-name>",
-  "type": "<your-resource-subtype>",
+  "type": "<your-resource-API>",
   "namespace": "<your-module-namespace>",
   "attributes": {
     "<relevant attributes--see module Readme>"
@@ -78,7 +78,7 @@ The following properties are available for modular resources:
 | `attributes` | object | Sometimes **Required** | Any configuration attributes for your model Check the module's GitHub Readme for information about available configuration attributes for a resource. |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). This will be `rdk` unless the module implements a [custom, non-standard API](/operate/reference/advanced-modules/). |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). |
+| `api` | string | **Required** | The API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/operate/reference/components/board/). Unnecessary if you coded [implicit dependencies](/operate/reference/viam-server/#dependency-management). |
 
@@ -131,7 +131,7 @@ The config of both a module and a corresponding modular resource resembles the f
     {
       "name": "<your-model-instance-name>",
       "model": "<module-namespace>:<module-name>:<model-name>",
-      "type": "<your-resource-subtype>",
+      "type": "<your-resource-API>",
       "namespace": "<model-API-namespace>",
       "attributes": {},
       "depends_on": []
