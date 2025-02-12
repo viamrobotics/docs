@@ -10,7 +10,6 @@ aliases:
   - /extend/modular-resources/create/create-subtype/
   - /modular-resources/advanced/create-subtype/
   - /registry/advanced/create-subtype/
-  - /operate/reference/advanced-modules/create-subtype/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
