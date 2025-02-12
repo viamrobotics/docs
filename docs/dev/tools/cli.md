@@ -1235,15 +1235,15 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
-viam machines status --org=<org name> --location=<location name> --machine=<machine id>
-viam machines logs --org=<org name> --location=<location name> --machine=<machine id> [...named args]
-viam machines api-key create --machine=<machine-id> [...named args]
-viam machines part logs --machine=<machine> --part=<part> [...named args]
-viam machines part status --org=<org name> --location=<location name> --machine=<machine id>
-viam machines part run --org=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
-viam machines part shell --org=<org name> --location=<location name> --machine=<machine id> --part=<part id>
+viam machines status --org=<org id> --location=<location id> --machine=<machine id>
+viam machines logs --org=<org id> --location=<location id> --machine=<machine id> [...named args]
+viam machines api-key create --machine=<machine id> [...named args]
+viam machines part logs --machine=<machine id> --part=<part id> [...named args]
+viam machines part status --org=<org id> --location=<location id> --machine=<machine id>
+viam machines part run --org=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
+viam machines part shell --org=<org id> --location=<location id> --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --org=<org name> --location=<location name> --machine=<machine id> --part=<part name> <file name> machine:/path/to/file
+viam machines part cp --org=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
 ```
 
 Examples:
@@ -1276,7 +1276,7 @@ viam machines part restart --part=123
 viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
 
 # Copy and a single file to a machine and change the file's name:
-viam machine part cp --part=m1-main my_file machine:/home/user/
+viam machine part cp --part=123 my_file machine:/home/user/
 
 # Recursively copy a directory to a machine:
 viam machine part cp --part=123 -r my_dir machine:/home/user/
@@ -1321,7 +1321,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | -------- | ----------- |
 | `status` | Retrieve machine status for a specified machine part |
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs` | Get logs for the specified machine part |
+| `logs` | Get logs for the specified machine or machine part |
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
 | `cp` | Copy files to and from a machine part. |
@@ -1333,27 +1333,26 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--org` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | Optional |
-| `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | Optional |
-| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs`, `part` | Optional |
-| `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
+| `--part` | Part ID for which the command is being issued. | `part` | **Required** |
+| `--machine` | Machine ID for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs` | **Required** |
+| `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--org` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
-| `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
-| `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
+| `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
 | `--keyword` | Filter logs by keyword. | `logs` | Optional |
 | `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
 | `--count` | The number of logs to fetch. | `logs` | Optional |
 | `--format` | THe file format for the output file. Options: `text` or `json`. | `logs` | Optional |
 | `--output` | The path to the output file to store logs in. | `logs` | Optional |
-| `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
-| `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
-| `--machine-id` | The machine to create an API key for | `api-key` | **Required** |
-| `--name` | The optional name of the API key | `api-key` | Optional |
-| `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
+| `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | `part run` | Optional |
+| `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)). | `part run` | **Required** |
+| `--machine-id` | The machine to create an API key for. | `api-key` | **Required** |
+| `--name` | The optional name of the API key. | `api-key` | Optional |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
-| `--desination-port` | The port on a machine part to tunnel to. | `part tunnel` | **Required** |
+| `--destination-port` | The port on a machine part to tunnel to. | `part tunnel` | **Required** |
 | `--local-port` | The local port from which to tunnel. | `part tunnel` | **Required** |
 
 ##### Using the `--stream` and `--data` arguments
