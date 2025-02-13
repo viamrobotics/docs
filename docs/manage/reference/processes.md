@@ -14,7 +14,7 @@ no_list: true
 toc_hide: true
 ---
 
-To run a program or control code when your machine is online, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
+To run a program or control code when your machine is online, configure a _process_.
 The process is managed by `viam-server`.
 You can configure processes to run once upon startup or indefinitely.
 
