@@ -53,43 +53,6 @@ Follow the guide to [create a dataset](/data-ai/ai/create-dataset/) if you haven
 
 {{% /expand%}}
 
-{{% expand "A configured camera. Click to see instructions." %}}
-
-First, connect the camera to your machine's computer if it's not already connected (like with an inbuilt laptop webcam).
-
-Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-The `webcam` model supports most USB cameras and inbuilt laptop webcams.
-You can find additional camera models in the [camera configuration](/operate/reference/components/camera/#configuration) documentation.
-
-Complete the camera configuration and use the **TEST** panel in the configuration card to test that the camera is working.
-
-{{% /expand%}}
-
-{{% expand "No computer or webcam?" %}}
-
-No problem.
-You don't need to buy or own any hardware to complete this guide.
-
-Use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
-The rover already has `viam-server` installed and is configured with some components, including a webcam.
-
-Once you have borrowed a rover, go to its **CONTROL** tab where you can view camera streams and also drive the rover.
-You should have a front-facing camera and an overhead view of your rover.
-Now you know what the rover can perceive.
-
-To change what the front-facing camera is pointed at, find the **cam** camera panel on the **CONTROL** tab and click **Toggle picture-in-picture** so you can continue to view the camera stream.
-Then, find the **viam_base** panel and drive the rover around.
-
-Now that you have seen that the cameras on your Try Viam rover work, begin by [Creating a dataset and labeling data](/data-ai/ai/create-dataset/).
-You can drive the rover around as you capture data to get a variety of images from different angles.
-
-{{< alert title="Tip" color="tip" >}}
-Be aware that if you are running out of time during your rental, you can extend your rover rental as long as there are no other reservations.
-{{< /alert >}}
-
-{{% /expand%}}
-
 ## Train a machine learning (ML) model
 
 Now that you have a dataset with your labeled images, you are ready to train a machine learning model.
@@ -163,7 +126,7 @@ Once your model has finished training, you can test it.
 Ideally, you want your ML model to be able to work with a high level of confidence.
 As you test it, if you notice faulty predictions or confidence scores, you will need to adjust your dataset and retrain your model.
 
-If you trained a classification model, you can test it with the following instructions.
+If you trained a _classification_ model, you can test it with the following instructions.
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 1. Click on an image to open the side menu, and select the **Actions** tab.
@@ -180,7 +143,8 @@ You can test both detection models and classifier models using the following res
 
 ## Next steps
 
-Now your machine can make inferences about its environment. The next step is to [act](/data-ai/ai/act/) or [alert](/data-ai/ai/alert/) based on these inferences.
+Now your machine can make inferences about its environment.
+The next step is to [deploy](/data-ai/ai/deploy/) the ML model and then [act](/data-ai/ai/act/) or [alert](/data-ai/ai/alert/) based on these inferences.
 
 See the following tutorials for examples of using machine learning models to make your machine do things based on its inferences about its environment:
 
