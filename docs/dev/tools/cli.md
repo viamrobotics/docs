@@ -77,7 +77,7 @@ brew install viam
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
-[Download the installer](https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-windows-amd64.exe) to use the Viam CLI on a Windows computer.
+[Download the binary](https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-windows-amd64.exe) and run it directly to use the Viam CLI on a Windows computer.
 
 {{% /tab %}}
 {{% tab name="Source" %}}
