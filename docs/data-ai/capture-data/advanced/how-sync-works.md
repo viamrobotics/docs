@@ -8,7 +8,7 @@ type: "docs"
 platformarea: ["data"]
 description: "Data capture and sync works differently for viam-server and viam-micro-server."
 date: "2024-12-18"
-prev: "/data-ai/capture-data/conditional-sync/"
+prev: "/data-ai/capture-data/advanced/advanced-data-capture-sync/"
 ---
 
 Data capture and cloud sync works differently for `viam-server` and `viam-micro-server`.
@@ -74,6 +74,33 @@ If the interruption happens mid-file, sync resumes from the beginning of that fi
 To avoid syncing files that are still being written to, the data management service only syncs arbitrary files that haven't been modified in the previous 10 seconds.
 This default can be changed with the [`file_last_modified_millis` config attribute](/data-ai/capture-data/capture-sync/).
 
+## Automatic data deletion
+
+If cloud sync is enabled, the data management service deletes captured data from the disk once it has successfully synced to the cloud.
+
+{{< alert title="Warning" color="warning" >}}
+
+If your robot is offline and can't sync and your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
+
+{{< /alert >}}
+
+The data management service will also automatically delete local data in the event your machine's local storage fills up.
+Local data is automatically deleted when _all_ of the following conditions are met:
+
+- Data capture is enabled on the data management service
+- Local disk usage percentage is greater than or equal to 90%
+- The Viam capture directory is at least 50% of the current local disk usage
+
+If local disk usage is greater than or equal to 90%, but the Viam capture directory is not at least 50% of that usage, a warning log message will be emitted instead and no action will be taken.
+
+Automatic file deletion only applies to files in the specified Viam capture directory, which is set to `~/.viam/capture` by default.
+Data outside of this directory is not touched by automatic data deletion.
+
+If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available.
+You can change the capture directory using the `capture_dir` attribute.
+
+You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` attribute.
+
 ## Storage
 
 Data that is successfully synced to the cloud is automatically deleted from local storage.
@@ -85,7 +112,7 @@ When a machine loses its internet connection, it cannot resume cloud sync until 
 To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
 
 If your robot is offline and can't sync and your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
-For more information, see [Automatic data deletion details](/data-ai/capture-data/capture-sync/#click-for-more-automatic-data-deletion-details)
+For more information, see [Automatic data deletion details](/data-ai/capture-data/advanced/how-sync-works/)
 
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
 For more information, see [Capture directly to MongoDB](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-mongodb).
