@@ -169,7 +169,7 @@ For complete examples that implement control logic, see:
 - [`event-manager`](https://github.com/viam-modules/event-manager)
 - [`refill-controller`](https://github.com/viam-devrel/refill-controller)
 - [`re-id-object-tracking`](https://github.com/viam-modules/re-id-object-tracking)
-- [`detectio-dock`](https://github.com/viam-labs/detection-dock)
+- [`detection-dock`](https://github.com/viam-labs/detection-dock)
 
 {{% /tablestep %}}
 {{% tablestep link="/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action" %}}
