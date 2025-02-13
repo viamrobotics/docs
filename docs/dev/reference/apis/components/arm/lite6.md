@@ -5,9 +5,11 @@ weight: 34
 type: "docs"
 description: "Configure a UFACTORY Lite 6 arm for your machine."
 tags: ["arm", "components"]
+toc_hide: true
 aliases:
-  - "/components/arm/xarmlite/"
+  - /components/arm/xarmlite/
   - /components/arm/lite6/
+  - /operate/reference/components/arm/lite6/
 component_description: "Supports UFACTORY Lite 6."
 # SMEs: Bucket, Motion
 ---
