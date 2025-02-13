@@ -78,7 +78,7 @@ If your SBC or other computer already has a supported operating system installed
 
 1. Create a [Viam app](https://app.viam.com) account.
    The Viam app is the online hub for configuring and managing devices as well as viewing data.
-1. Add a new _{{< glossary_tooltip term_id="machine" text="machine" >}}_ in the app.
+1. Add a new _{{< glossary_tooltip term_id="machine" text="machine" >}}_ using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 1. From your machine's page in the Viam app, follow the setup instructions to install `viam-server` or `viam-micro-server` on your device and connect it to the cloud.
    [`viam-server`](/operate/reference/viam-server/) is the executable binary that runs on your device and manages hardware drivers, software, and data capture and sync.
