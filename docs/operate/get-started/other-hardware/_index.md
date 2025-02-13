@@ -398,7 +398,6 @@ import (
   "reflect"
 
   "go.viam.com/rdk/components/camera"
-  "go.viam.com/rdk/gostream"
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/pointcloud"
   "go.viam.com/rdk/resource"
@@ -483,10 +482,6 @@ func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extr
 }
 
 func (s *helloWorldHelloCamera) NewClientFromConn(ctx context.Context, conn rpc.ClientConn, remoteName string, name resource.Name, logger logging.Logger) (camera.Camera, error) {
-  return nil, errors.New("not implemented")
-}
-
-func (s *helloWorldHelloCamera) Stream(ctx context.Context, errHandlers ...gostream.ErrorHandler) (gostream.VideoStream, error) {
   return nil, errors.New("not implemented")
 }
 
