@@ -7,6 +7,7 @@ layout: "docs"
 type: "docs"
 platformarea: ["data"]
 description: "Advanced data capture and data sync configurations."
+prev: /data-ai/capture-data/conditional-sync/
 date: "2025-02-10"
 ---
 
@@ -606,18 +607,6 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
   If your use case needs to support very high capture rates, this feature may not be appropriate.
 
 {{< /alert >}}
-
-### Conditional sync
-
-By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
-You can additionally configure sync to only happen when certain conditions are met.
-For example:
-
-- Only sync when on WiFi
-- Sync when specific events are detected
-- Sync during certain time windows
-
-See [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for how to implement conditional syncs.
 
 ### Cloud data retention
 
