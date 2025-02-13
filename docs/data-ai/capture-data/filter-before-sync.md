@@ -93,7 +93,7 @@ You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**7. (Optional) Trigger sync with custom logic**
+**8. (Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
 If you need to trigger sync in a different way, see [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for a documented example of syncing data only at certain times of day.
