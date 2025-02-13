@@ -20,7 +20,7 @@ cost: "0"
 
 {{< glossary_tooltip term_id="module" text="Modules" >}} are code packages that provide most of the functionality on your machines: drivers, integrations, and control logic.
 
-The following steps show you how to create modules with control logic and how to deploy all modules over the air (OTA) to your machine:
+The following steps show you how to create modules with control logic and how to deploy and manage all of your machine's modules over the air (OTA):
 
 1. [Create a module with machine control logic](#create-a-module-with-machine-control-logic)
 2. [Create a configuration fragment with the modules for your machine](#create-a-fragment)
@@ -33,7 +33,7 @@ Then, [configure any hardware and software resources](/operate/get-started/suppo
 
 ## Create a module with machine control logic
 
-One method of operating your device is by running control logic on another device, such as an app.
+One method of operating your machine is by running control logic on another device, such as an app.
 With {{< glossary_tooltip term_id="module" text="modules" >}}, you can run your control logic on the machine itself.
 
 {{% alert title="OTA updates for microcontrollers" color="note" %}}
