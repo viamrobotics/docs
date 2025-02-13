@@ -32,9 +32,9 @@ After training or uploading a machine learning model, use a machine learning (ML
 
 ## Deploy your ML model on an ML model service
 
-Navigate to the **CONFIGURE** tab of one of your machine in the [Viam app](https://app.viam.com).
-Add an ML model service that supports the ML model you want to use.
-For example, use the `ML model / TFLite CPU` service for TFlite ML models that you trained with Viam's built-in training.
+1. Navigate to the **CONFIGURE** tab of one of your machine in the [Viam app](https://app.viam.com).
+2. Add an ML model service that supports the ML model you want to use.
+   - For example, use the `ML model / TFLite CPU` service for TFlite ML models that you trained with Viam's built-in training.
 
 {{<resources_svc api="rdk:service:mlmodel" type="ML model">}}
 
@@ -56,12 +56,12 @@ For some models of the ML model service, like the [Triton ML model service](http
 
 {{< /expand>}}
 
-To deploy a model, click **Select model** and select the model from your organization or the registry.
-Save your config.
+3. Click **Select model** and select a model from your organization or the registry.
+4. Save your config.
 
 ### Models available to deploy on the ML Model service
 
-You can search the machine learning models that are available to deploy on an ML model service from the registry here:
+You can also use these publicly available machine learning models with an ML model service:
 
 {{<mlmodels>}}
 
