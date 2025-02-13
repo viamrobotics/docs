@@ -89,7 +89,7 @@ For instructions on configuring data capture and sync with JSON, go to [Advanced
 
 ## Stop data capture or data sync
 
-To stop data capture for a specific resource:
+### Stop data capture for a specific resource
 
 1. Navigate to the **Data capture** section of your resource's configuration card.
 1. Toggle the configured capture method's switch to **Off**.
@@ -98,7 +98,7 @@ To stop data capture for a specific resource:
 
 1. **Save** your config.
 
-To stop data capture for all resources:
+### Stop data capture for all resources
 
 1. Navigate to the **Data capture** section of the data management service configuration card.
 1. Toggle the **Capturing** switch to **Off**.
@@ -107,7 +107,7 @@ To stop data capture for all resources:
 
 1. **Save** your config.
 
-To disable data sync:
+### Disable data sync:
 
 1. Navigate to the **Cloud sync** section of the data management service configuration card.
 1. Toggle the **Syncing** switch to **Off**.
