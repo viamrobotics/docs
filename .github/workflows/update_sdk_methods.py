@@ -1900,7 +1900,7 @@ def write_markdown(type, names, methods):
                                 if micro_rdk_support == 'Yes':
                                     mark = '<p class="center-text"><i class="fas fa-check" title="yes"></i></p>'
                                 else:
-                                    mark = '<p class="center-text"><i class="fas fa-times" title="no"></i></p>'
+                                    mark = ''
                                 table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' | ' + mark +' |\n')
                             else:
                                 table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
