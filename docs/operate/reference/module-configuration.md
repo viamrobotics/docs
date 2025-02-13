@@ -36,8 +36,7 @@ See [module configuration](#module-configuration-details).
 {
   "name": "sensor-1",
   "model": "viam:ultrasonic:sensor",
-  "type": "sensor",
-  "namespace": "rdk",
+  "api": "rdk:component:sensor",
   "attributes": {
     "trigger_pin": "13",
     "echo_interrupt_pin": "15",
@@ -55,8 +54,7 @@ See [module configuration](#module-configuration-details).
 {
   "name": "<your-model-instance-name>",
   "model": "<namespace>:<module-name>:<model-name>",
-  "api": "<your-resource-API>",
-  "namespace": "<your-module-namespace>",
+  "api": "<model-API-namespace>:<component|service>:<model-name>",
   "attributes": {
     "<relevant attributes--see module Readme>"
   },
@@ -77,7 +75,6 @@ The following properties are available for modular resources:
 | ---- | ---- | --------- | ----------- |
 | `attributes` | object | Sometimes **Required** | Any configuration attributes for your model Check the module's GitHub Readme for information about available configuration attributes for a resource. |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). This will be `rdk` unless the module implements a [custom, non-standard API](/operate/reference/advanced-modules/). |
 | `api` | string | **Required** | The {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/operate/reference/components/board/). Unnecessary if you coded [implicit dependencies](/operate/reference/viam-server/#dependency-management). |
@@ -131,10 +128,8 @@ The config of both a module and a corresponding modular resource resembles the f
     {
       "name": "<your-model-instance-name>",
       "model": "<module-namespace>:<module-name>:<model-name>",
-      "api": "<your-resource-API>",
-      "namespace": "<model-API-namespace>",
-      "attributes": {},
-      "depends_on": []
+      "api": "<model-API-namespace>:<component|service>:<model-name>",
+      "attributes": {}
     }
   ],
   "modules": [
@@ -165,8 +160,7 @@ The model is configured as a component with the name `myRealsenseCamera1`.
     {
       "name": "myRealsenseCamera1",
       "model": "viam:camera:realsense",
-      "type": "camera",
-      "namespace": "rdk",
+      "api": "rdk:component:camera",
       "attributes": {
         "sensors": ["color", "depth"]
       },
@@ -178,7 +172,7 @@ The model is configured as a component with the name `myRealsenseCamera1`.
       "type": "registry",
       "name": "viam_realsense",
       "module_id": "viam:realsense",
-      "version": "0.0.3"
+      "version": "0.0.11"
     }
   ]
 }
