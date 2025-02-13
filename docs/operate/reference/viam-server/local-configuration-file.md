@@ -68,7 +68,7 @@ If your machine temporarily disconnects from the internet, its configuration is 
 ## Example JSON configuration file
 
 If you want to create your own JSON configuration file without using the [Viam app](https://app.viam.com), you can start with the following example file.
-The following file contains some example {{< glossary_tooltip term_id="component" text="component" >}} and {{< glossary_tooltip term_id="service" text="service" >}} configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
+The following file contains some example {{< glossary_tooltip term_id="component" text="component" >}} and {{< glossary_tooltip term_id="service" text="service" >}} configurations:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -181,23 +181,6 @@ The following file contains some example {{< glossary_tooltip term_id="component
       "name": "servo1",
       "type": "servo",
       "model": "fake"
-    }
-  ],
-  "processes": [
-    {
-      "id": "1",
-      "name": "echo",
-      "args": ["hello", "world"],
-      "one_shot": true
-    },
-    {
-      "id": "2",
-      "name": "bash",
-      "args": [
-        "-c",
-        "trap \"exit 0\" SIGINT; while true; do echo hey; sleep 2; done"
-      ],
-      "log": true
     }
   ],
   "services": [
