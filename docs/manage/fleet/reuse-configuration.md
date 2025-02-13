@@ -17,7 +17,6 @@ platformarea: ["fleet"]
 level: "Beginner"
 date: "2025-02-07"
 # updated: ""  # When the tutorial was last entirely checked
-next: /manage/fleet/provision/setup/
 cost: "0"
 ---
 
