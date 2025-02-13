@@ -30,7 +30,7 @@ ignore_apis = [
 ]
 
 services_page_mapping = {
-    "motion": "dev/reference/apis/services/motion/",
+    "motion": "dev/reference/apis/services/motion",
     "navigation": "dev/reference/apis/services/navigation",
     "slam": "dev/reference/apis/services/slam",
     "vision": "dev/reference/apis/services/vision",
