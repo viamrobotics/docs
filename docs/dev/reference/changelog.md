@@ -41,10 +41,34 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
+
+[Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Native windows support" date="2025-02-01" %}}
+
+You can now run `viam-server` on Windows natively and use the CLI and the Viam agent.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="White labelled billing and custom pricing" date="2025-02-01" %}}
+
+You can now [set custom pricing](/manage/manage/white-labelled-billing/) for your organizations and add your logo to invoices and other billing materials.
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
 
 The `Stream` API method has been removed from the Go SDK camera interface.
 For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimage).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="OAuth" date="2025-01-27" %}}
+
+You can now [authenticate end users with OAuth](/manage/manage/oauth/).
 
 {{% /changelog %}}
 
