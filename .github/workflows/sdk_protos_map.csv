@@ -382,47 +382,47 @@ billing,GetInvoicesSummary,,get_invoices_summary,,
 billing,GetInvoicePdf,,get_invoice_pdf,,
 
 ## Data
-data,GetLatestTabularData,,get_latest_tabular_data,,
-data,ExportTabularData,,export_tabular_data,,
-data,TabularDataByFilter,,tabular_data_by_filter,,
-data,TabularDataBySQL,,tabular_data_by_sql,,
-data,TabularDataByMQL,,tabular_data_by_mql,,
-data,BinaryDataByFilter,,binary_data_by_filter,,
-data,BinaryDataByIDs,,binary_data_by_ids,,
-data,DeleteTabularData,,delete_tabular_data,,
-data,DeleteBinaryDataByFilter,,delete_binary_data_by_filter,,
-data,DeleteBinaryDataByIDs,,delete_binary_data_by_ids,,
-data,AddTagsToBinaryDataByIDs,,add_tags_to_binary_data_by_ids,,
-data,AddTagsToBinaryDataByFilter,,add_tags_to_binary_data_by_filter,,
-data,RemoveTagsFromBinaryDataByIDs,,remove_tags_from_binary_data_by_ids,,
-data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,
-data,TagsByFilter,,tags_by_filter,,
-data,AddBoundingBoxToImageByID,,add_bounding_box_to_image_by_id,,
-data,RemoveBoundingBoxFromImageByID,,remove_bounding_box_from_image_by_id,,
-data,BoundingBoxLabelsByFilter,,bounding_box_labels_by_filter,,
-data,GetDatabaseConnection,,get_database_connection,,
-data,ConfigureDatabaseUser,,configure_database_user,,
-data,AddBinaryDataToDatasetByIDs,,add_binary_data_to_dataset_by_ids,,
-data,RemoveBinaryDataFromDatasetByIDs,,remove_binary_data_from_dataset_by_ids,,
+data,GetLatestTabularData,,get_latest_tabular_data,,getLatestTabularData
+data,ExportTabularData,,export_tabular_data,,exportTabularData
+data,TabularDataByFilter,,tabular_data_by_filter,,tabularDataByFilter
+data,TabularDataBySQL,,tabular_data_by_sql,,tabularDataBySql
+data,TabularDataByMQL,,tabular_data_by_mql,,tabularDataByMql
+data,BinaryDataByFilter,,binary_data_by_filter,,binaryDataByFilter
+data,BinaryDataByIDs,,binary_data_by_ids,,binaryDataByIds
+data,DeleteTabularData,,delete_tabular_data,,deleteTabularData
+data,DeleteBinaryDataByFilter,,delete_binary_data_by_filter,,deleteBinaryDataByFilter
+data,DeleteBinaryDataByIDs,,delete_binary_data_by_ids,,deleteBinaryDataByIds
+data,AddTagsToBinaryDataByIDs,,add_tags_to_binary_data_by_ids,,addTagsToBinaryDataByIds
+data,AddTagsToBinaryDataByFilter,,add_tags_to_binary_data_by_filter,,addTagsToBinaryDataByFilter
+data,RemoveTagsFromBinaryDataByIDs,,remove_tags_from_binary_data_by_ids,,removeTagsFromBinaryDataByIds
+data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,removeTagsFromBinaryDataByFilter
+data,TagsByFilter,,tags_by_filter,,tagsByFilter
+data,AddBoundingBoxToImageByID,,add_bounding_box_to_image_by_id,,addBoundingBoxToImageById
+data,RemoveBoundingBoxFromImageByID,,remove_bounding_box_from_image_by_id,,removeBoundingBoxFromImageById
+data,BoundingBoxLabelsByFilter,,bounding_box_labels_by_filter,,boundingBoxLabelsByFilter
+data,GetDatabaseConnection,,get_database_connection,,getDatabaseConnection
+data,ConfigureDatabaseUser,,configure_database_user,,configureDatabaseUser
+data,AddBinaryDataToDatasetByIDs,,add_binary_data_to_dataset_by_ids,,addBinaryDataToDatasetByIds
+data,RemoveBinaryDataFromDatasetByIDs,,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIds
 
 ## Dataset
-dataset,CreateDataset,,create_dataset,,
-dataset,DeleteDataset,,delete_dataset,,
-dataset,RenameDataset,,rename_dataset,,
-dataset,ListDatasetsByOrganizationID,,list_datasets_by_organization_id,,
+dataset,CreateDataset,,create_dataset,,createDataset
+dataset,DeleteDataset,,delete_dataset,,deleteDataset
+dataset,RenameDataset,,rename_dataset,,renameDataset
+dataset,ListDatasetsByOrganizationID,,list_datasets_by_organization_id,,listDatasetsByOrganizationID
 ## TE: yes PySDK is singular:
-dataset,ListDatasetsByIDs,,list_dataset_by_ids,,
+dataset,ListDatasetsByIDs,,list_dataset_by_ids,,listDatasetsByIDs
 
 ## Datasync
 data_sync,DataCaptureUpload,,,,
 ## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
-data_sync,BinaryDataCaptureUpload,,binary_data_capture_upload,,
+data_sync,BinaryDataCaptureUpload,,binary_data_capture_upload,,binaryDataCaptureUpload
 ## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
-data_sync,TabularDataCaptureUpload,,tabular_data_capture_upload,,
-data_sync,FileUpload,,file_upload,,
+data_sync,TabularDataCaptureUpload,,tabular_data_capture_upload,,tabularDataCaptureUpload
+data_sync,FileUpload,,file_upload,,uploadFile
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
 data_sync,FileUploadFromPath,,file_upload_from_path,,
-data_sync,StreamingDataCaptureUpload,,streaming_data_capture_upload,,
+data_sync,StreamingDataCaptureUpload,,streaming_data_capture_upload,,streamingDataCaptureUpload
 
 ## MLTraining
 mltraining,SubmitTrainingJob,,submit_training_job,,

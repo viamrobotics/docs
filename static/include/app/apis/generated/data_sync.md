@@ -48,6 +48,59 @@ file_id = await data_client.binary_data_capture_upload(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_capture_upload).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `binaryData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required)
+- `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `fileExtension` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `dataRequestTimes` ([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))? (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+   final imageBytes = getPNGasBytes(); // Replace with your image bytes getter
+
+   (DateTime, DateTime) dataRequestTimes = (
+     DateTime(2025, 1, 15, 10, 30), // Start time
+     DateTime(2025, 1, 15, 14, 45)  // End time
+   );
+
+   final fileId = await dataClient.binaryDataCaptureUpload(
+     imageBytes,
+     "<YOUR-PART-ID>",
+     ".png",
+     componentType: "rdk:component:camera",
+     componentName: "camera-1",
+     methodName: "ReadImage",
+     dataRequestTimes: dataRequestTimes);
+
+   print('Successfully uploaded binary data with fileId: $fileId');
+ } catch (e) {
+   print('Error uploading binary data: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/binaryDataCaptureUpload.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### TabularDataCaptureUpload
@@ -104,6 +157,66 @@ file_id = await data_client.tabular_data_capture_upload(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_capture_upload).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `tabularData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>> (required)
+- `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `dataRequestTimes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))>? (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+
+ try {
+   // Define tabular data
+   final List<Map<String, dynamic>> tabularData;
+   tabularData = [{
+     'readings': {
+       "altitude_m": 50.2,
+       "coordinate": {
+         "latitude": 40.5,
+         "longitude": -72.98
+      }
+     }
+   }];
+
+  // Define date request times
+  final List<(DateTime, DateTime)> timeSpan = [(DateTime(2025, 1, 23, 11), DateTime(2025, 1, 23, 11, 0, 3))];
+
+  // Upload captured tabular data
+  final fileId = await dataClient.tabularDataCaptureUpload(
+    tabularData,
+    "<YOUR-PART-ID>",
+    componentType: "rdk:component:movement_sensor",
+    componentName: "movement_sensor-1",
+    methodName: "Position",
+    dataRequestTimes: timeSpan,
+    tags: ["tag_1", "tag_2"]
+  );
+   print('Successfully uploaded captured tabular data: $fileId');
+ } catch (e) {
+   print('Error uploading captured tabular data: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/tabularDataCaptureUpload.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### FileUpload
@@ -149,6 +262,73 @@ file_id = await data_client.file_upload(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.file_upload).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `path` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `fileName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+import 'package:file_picker/file_picker.dart';
+import 'package:cross_file/cross_file.dart';
+
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+// File picker function
+Future<XFile?> pickTextFile() async {
+  FilePickerResult? result = await FilePicker.platform.pickFiles(
+    type: FileType.custom,
+    allowedExtensions: ['txt', 'md', 'json', 'csv'],  // Add any other text file extensions you want to support
+  );
+ if (result != null) {
+   return XFile(result.files.single.path!);
+ }
+   return null;
+ }
+
+// Upload text file function. Call this in onPressed in a button in your application.
+Future<void> uploadTextFile() async {
+  final file = await pickTextFile();
+  if (file == null) return;
+
+  try {
+    // Get file name
+    final fileName = file.name;
+
+    // Upload the file
+    final result = await _viam.dataClient.uploadFile(
+      file.path,
+      fileName: fileName,
+      "<YOUR-PART-ID>",
+      tags: ["text_file", "document"]
+    );
+    print('Upload success: $result');
+  } catch (e) {
+    print('Upload error: $e');
+  }
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/uploadFile.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -242,6 +422,99 @@ file_id = await data_client.streaming_data_capture_upload(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.streaming_data_capture_upload).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `bytes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required)
+- `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `fileExtension` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `dataRequestTimes` ([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))? (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+import 'package:file_picker/file_picker.dart';
+import 'dart:typed_data';
+
+Future<Uint8List> pickVideoAsBytes() async {
+  try {
+    // Open file picker
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.video,
+      allowMultiple: false,
+    );
+
+    if (result == null || result.files.isEmpty) {
+      throw Exception('No file selected');
+    }
+
+    // For mobile, we get the file path and read it
+    final String? filePath = result.files.first.path;
+    if (filePath == null) {
+      throw Exception('Invalid file path');
+    }
+
+    // Read the file as bytes
+    final File file = File(filePath);
+    final Uint8List bytes = await file.readAsBytes();
+
+    if (bytes.isEmpty) {
+      throw Exception('File is empty');
+    }
+
+    print('Successfully read file: ${bytes.length} bytes');
+
+    return bytes;
+  } catch (e, stackTrace) {
+    print('Error picking video: $e');
+    print('Stack trace: $stackTrace');
+    rethrow;
+  }
+}
+
+void _uploadData() async {
+  _viam = await Viam.withApiKey(
+       dotenv.env['API_KEY_ID'] ?? '',
+       dotenv.env['API_KEY'] ?? ''
+   );
+   final dataClient = _viam.dataClient;
+
+   try {
+     Uint8List video = await pickVideoAsBytes();
+
+     (DateTime, DateTime) dataRequestTimes = (
+       DateTime(2025, 1, 15, 10, 30), // Start time
+       DateTime(2025, 1, 15, 14, 45)  // End time
+     );
+
+     final fileId = await dataClient.streamingDataCaptureUpload(
+       video,
+       "<YOUR-PART-ID>",
+       ".mp4", // Replace with your desired file format
+       componentType: "rdk:component:camera",
+       componentName: "camera-1",
+       dataRequestTimes: dataRequestTimes);
+
+     print('Successfully uploaded streaming binary data with fileId: $fileId');
+   } catch (e) {
+     print('Error uploading streaming binary data: $e');
+   }
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/streamingDataCaptureUpload.html).
 
 {{% /tab %}}
 {{< /tabs >}}
