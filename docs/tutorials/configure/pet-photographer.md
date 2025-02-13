@@ -129,7 +129,7 @@ To code your own color filtering module, first create the necessary files and di
 
 #### Code a filter resource model
 
-Next, include all the methods that the corresponding Viam SDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
+Next, include all the methods that the corresponding Viam SDK requires in its API definition.
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -339,7 +339,7 @@ Otherwise, it raises a `data.ErrNoCaptureToStore` error.
 {{% /tab %}}
 {{< /tabs >}}
 
-After you have implemented your resource subtype's required methods and written your filter function, your final code should look like this:
+After you have implemented your resource API's required methods and written your filter function, your final code should look like this:
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -702,7 +702,7 @@ For more information, see [Write your new resource model definition](/operate/ge
 
 Next, code your module entry point file which `viam-server` will use to initialize and start the filter module.
 
-To code an entry point file yourself, locate the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the [RDK source code](https://github.com/viamrobotics/rdk).
+To code an entry point file yourself, locate the API as defined in the relevant `<resource-name>/<resource-name>.go` file in the [RDK source code](https://github.com/viamrobotics/rdk).
 
 - In this example, the camera's API is defined in the <file>[camera.go](https://github.com/viamrobotics/rdk/blob/main/components/camera/camera.go)</file> file in the RDK source code.
   When developing your <file>main.go</file> or <file>main.py</file> file, reference this file.
@@ -734,7 +734,7 @@ async def main():
     registry before the module adds the resource model.
     """
     Registry.register_resource_creator(
-        Camera.SUBTYPE,
+        Camera.API,
         color_filter.ColorFilterCam.MODEL,
         ResourceCreatorRegistration(
             color_filter.ColorFilterCam.new_cam,
@@ -743,7 +743,7 @@ async def main():
     )
     module = Module.from_args()
     module.add_model_from_registry(
-        Camera.SUBTYPE,
+        Camera.API,
         color_filter.ColorFilterCam.MODEL
     )
     await module.start()

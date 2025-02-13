@@ -545,7 +545,7 @@ done
 | `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
 | `--password` | Password for the database user being configured. | `database configure` | **Required** |
 | `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
-| `--resource-subtype` | Resource subtype. Sometimes called "component type". | `export tabular` | **Required** |
+| `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
 
 ### `locations`
 
