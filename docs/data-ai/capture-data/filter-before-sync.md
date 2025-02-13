@@ -65,7 +65,6 @@ If you were to set `window_seconds` to `3`, the camera would also capture and sy
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Configure data capture and sync on the filtered camera**
 
 Configure data capture and sync on the filtered camera just as you did before for the physical camera.
@@ -82,8 +81,6 @@ With cloud sync enabled, captured data is automatically uploaded to the Viam app
 
 {{% /tablestep %}}
 {{% tablestep %}}
-
-{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **7. View filtered data in the Viam app**
 
 Once you save your configuration, place something that is part of your trained ML model within view of your camera.
@@ -96,7 +93,6 @@ You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **7. (Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
