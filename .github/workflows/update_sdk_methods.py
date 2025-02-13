@@ -1042,11 +1042,18 @@ def parse(type, names):
                                 ## Determine parameter type:
                                 param_type = parameter_tag.find_all('span', class_='n')[1].text
 
+                                param_default = parameter_tag.select_one('span.default_value')
+                                if param_default:
+                                    param_default = param_default.text
+                                else:
+                                    param_default = None
+
+                                if param_default == "''":  # Check for empty string default
+                                    this_method_parameters_dict["optional"] = True
                                 ## Determine if this parameter is optional, and strip off ' | None' syntax if so:
-                                if param_type.endswith(' | None'):
+                                elif param_type.endswith(' | None'):
                                     this_method_parameters_dict["optional"] = True
                                     param_type = param_type.replace(' | None', "")
-
                                 else:
                                     this_method_parameters_dict["optional"] = False
 
