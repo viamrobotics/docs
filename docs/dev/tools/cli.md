@@ -26,7 +26,7 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part run --machine 82c608a-1be9-46a5 --organization "Artoo's Org" \
+viam machines part run --machine 82c608a-1be9-46a5 --org "Artoo's Org" \
 --location myLoc --part "mymachine-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
@@ -563,7 +563,7 @@ viam locations api-key create --location-id=<location-id>
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : (_optional_) return results for specified organization only |
-| `api-key` | Work with an api-key for your location | `create` |
+| `api-key` | Work with an API key for your location | `create` |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
@@ -603,7 +603,7 @@ See [Authenticate](#authenticate).
 | -------------- | ----------- | -------------------- |
 | `api-key` | Authenticate to Viam using an organization, location, or machine part API key. | - |
 | `print-access-token` | Prints the access token used to authenticate the current CLI session. | - |
-| `--disable-browser-open` | Authenticate in a headless environment by preventing the opening of the default browser during login (default: `false`). | - |
+| `--no-browser` | Authenticate in a headless environment by preventing the opening of the default browser during login (default: `false`). | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
@@ -1096,7 +1096,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all organizations (name, id, and [namespace](/operate/reference/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
+| `list` | List all organizations (name, ID, and [namespace](/operate/reference/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
 | `api-key create` | Create a new organization API key. | - |
 | `support-email get` | Get the support email for an organization. | - |
 | `support-email set` | Set the support email for an organization. | - |
@@ -1165,6 +1165,62 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
 | `--destination` | The output directory for downloaded package. | `export` | **Required** |
 
+### `profiles`
+
+The `profiles` command allows you to manage different CLI authentication profiles, so you can easily switch between API key authentications (for example authentication to one organization versus another).
+
+```sh {class="command-line" data-prompt="$"}
+viam profiles add --profile-name=<name-of-profile-to-add> --key-id=<API-key-ID> --key=<API-key>
+viam profiles update --profile-name=<name-of-profile-to-update> --key-id=<API-key-ID> --key=<API-key>
+viam profiles list
+viam profiles remove --profile-name=<name-of-profile-to-remove>
+```
+
+Examples:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+# Add a new profile for authentication (throws error if profile already exists)
+viam profiles add --profile-name=mycompany --key-id=54321zyx --key=123abcd1234
+
+# Update an existing profile for authentication, or add it if it doesn't exist
+viam profiles update --key=123abcd1234 --key-id=54321zyx --profile-name=mycompany
+
+# List all existing profiles by name
+viam profiles list
+
+# Remove a profile
+viam profiles remove --profile-name=mycompany
+
+# Example of using a profile to see a list of machines available to that profile
+viam --profile=mycompany machines list
+```
+
+See [create an organization API key](#create-an-organization-api-key) for more information.
+
+{{% alert title="Tip" color="tip" %}}
+You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment variable.
+{{% /alert %}}
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `add` | List all existing profiles by name. | - |
+| `update` | Update an existing profile for authentication, or add it if it doesn't exist. | - |
+| `list` | List all existing profiles by name. | - |
+| `remove` | Remove a profile. | - |
+| `--help` | Return help | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--profile-name` | Name of the profile to add, update, or remove. | `add`, `update`, `remove` | **Required** |
+| `--key-id` | The `key id` (UUID) of the API key. | `add`, `update` | **Required** |
+| `--key` | The `key value` of the API key. | `api-key`, `update` | **Required** |
+
 ### `machines` (alias `robots`)
 
 The `machines` command allows you to manage your machine fleet.
@@ -1179,15 +1235,15 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
-viam machines status --organization=<org name> --location=<location name> --machine=<machine id>
-viam machines logs --organization=<org name> --location=<location name> --machine=<machine id> [...named args]
-viam machines api-key create --machine-id=<machine-id> [...named args]
-viam machines part logs --machine=<machine> --part=<part> [...named args]
-viam machines part status --organization=<org name> --location=<location name> --machine=<machine id>
-viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
-viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
+viam machines status --org=<org id> --location=<location id> --machine=<machine id>
+viam machines logs --org=<org id> --location=<location id> --machine=<machine id> [...named args]
+viam machines api-key create --machine=<machine id> [...named args]
+viam machines part logs --machine=<machine id> --part=<part id> [...named args]
+viam machines part status --org=<org id> --location=<location id> --machine=<machine id>
+viam machines part run --org=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
+viam machines part shell --org=<org id> --location=<location id> --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --organization=<org name> --location=<location name> --machine=<machine id> --part=<part name> <file name> machine:/path/to/file
+viam machines part cp --org=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
 ```
 
 Examples:
@@ -1197,48 +1253,45 @@ Examples:
 viam machines list
 
 # get machine status
-viam machines status  --machine=123 --organization="Robot's Org" --location=myLoc
+viam machines status  --machine=123
 
 # create an api key for a machine
-viam machines api-key create --machine-id=123 --name=MyKey
+viam machines api-key create --machine=123 --name=MyKey
 
 # stream logs from a machine
-viam machines logs --machine=123 \
---organization="Robot's Org" --location=myLoc
+viam machines logs --machine=123
 
 # stream logs from a machine part
-viam machines part logs --machine=123 \
---organization="Robot's Org" --location=myLoc --part=myrover-main --tail=true
+viam machines part logs --part=myrover-main --tail=true
 
 # stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
-viam machines part run --machine=123 \
---organization="Robot's Org" --location=myLoc --part=myrover-main --stream=500ms \
+viam machines part run --part=myrover-main --stream=500ms \
 --data='{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_classifier", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 # restart a part of a specified machine
-viam machines part restart --machine=123 --part=456
+viam machines part restart --part=123
 
 # tunnel connections to the specified port on a machine part
 viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
 
 # Copy and a single file to a machine and change the file's name:
-viam machine part cp --organization=my_org --location=my_location --machine=my_machine --part=m1-main my_file machine:/home/user/
+viam machine part cp --part=123 my_file machine:/home/user/
 
 # Recursively copy a directory to a machine:
-viam machine part cp --machine=123 --part=123 -r my_dir machine:/home/user/
+viam machine part cp --part=123 -r my_dir machine:/home/user/
 
 # Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
-viam machine part cp --machine=123 --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
+viam machine part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
 # Copy a single file from a machine to a local destination:
-viam machine part cp --machine=123 --part=123 machine:my_file ~/Downloads/
+viam machine part cp --part=123 machine:my_file ~/Downloads/
 
 # Recursively copy a directory from a machine to a local destination:
-viam machine part cp --machine=123 --part=123 -r machine:my_dir ~/Downloads/
+viam machine part cp --part=123 -r machine:my_dir ~/Downloads/
 
 # Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
-viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
+viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
 #### Command options
@@ -1247,7 +1300,7 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `list` | List all machines that the authenticated session has access to, filtered by organization and location. | - |
-| `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `api-key` | Work with an API key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
 | `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
@@ -1268,7 +1321,7 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 | -------- | ----------- |
 | `status` | Retrieve machine status for a specified machine part |
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs` | Get logs for the specified machine part |
+| `logs` | Get logs for the specified machine or machine part |
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
 | `cp` | Copy files to and from a machine part. |
@@ -1280,27 +1333,26 @@ viam machine part cp --machine=123 --part=123 -r -p machine:my_dir machine:my_fi
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
-| `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
-| `--machine` | Machine name or ID for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs`, `part` | **Required** |
-| `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
+| `--part` | Part ID for which the command is being issued. | `part` | **Required** |
+| `--machine` | Machine ID for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs` | **Required** |
+| `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--org` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
-| `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
-| `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
+| `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
 | `--keyword` | Filter logs by keyword. | `logs` | Optional |
 | `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
 | `--count` | The number of logs to fetch. | `logs` | Optional |
 | `--format` | THe file format for the output file. Options: `text` or `json`. | `logs` | Optional |
 | `--output` | The path to the output file to store logs in. | `logs` | Optional |
-| `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
-| `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
-| `--machine-id` | The machine to create an API key for | `api-key` | **Required** |
-| `--name` | The optional name of the API key | `api-key` | Optional |
-| `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
+| `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | `part run` | Optional |
+| `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)). | `part run` | **Required** |
+| `--machine-id` | The machine to create an API key for. | `api-key` | **Required** |
+| `--name` | The optional name of the API key. | `api-key` | Optional |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
-| `--desination-port` | The port on a machine part to tunnel to. | `part tunnel` | **Required** |
+| `--destination-port` | The port on a machine part to tunnel to. | `part tunnel` | **Required** |
 | `--local-port` | The local port from which to tunnel. | `part tunnel` | **Required** |
 
 ##### Using the `--stream` and `--data` arguments
@@ -1482,4 +1534,8 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
-| `--debug` | Enable debug logging (default: false) |
+| `--debug` | Enable debug logging (default: false). |
+| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. |
+| `--help`, `-h` | Show help (default: false). |
+| `--profile` | Specify a particular [profile](#profiles) for the current command. |
+| `--quiet`, `-q` | Suppress warnings (default: false). |
