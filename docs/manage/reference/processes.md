@@ -11,11 +11,19 @@ aliases:
 date: "2022-01-01"
 updated: "2024-11-01"
 no_list: true
+toc_hide: true
 ---
 
 To run a program or control code when your machine is online, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
 The process is managed by `viam-server`.
 You can configure processes to run once upon startup or indefinitely.
+
+{{% alert title="Support Notice" color="warn" %}}
+
+Processes are deprecated and will be removed in a future version of `viam-server`.
+Instead [use modules for control logic](/manage/software/deploy-software/#create-a-module-with-machine-control-logic).
+
+{{% /alert %}}
 
 ## Configure a process
 
