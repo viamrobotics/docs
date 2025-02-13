@@ -16,7 +16,7 @@ The `viam-agent` configuration allows you to configure:
 ## Manage OS package updates
 
 By default, the configuration in <FILE>/etc/apt/apt.conf.d/</FILE> determines the behavior for updating operating system packages.
-To manage OS package updates using Viam, add an `"system_configuration"` object to the `"agent"` object in the machine's JSON configuration, if it doesn't already exist.
+To manage OS package updates using Viam, add a `"system_configuration"` object to the `"agent"` object in the machine's JSON configuration, if it doesn't already exist.
 Then, add the `"os_auto_upgrade_type"` field in its attributes:
 
 ```json
@@ -89,7 +89,7 @@ For complete reference information, see [viam-agent](/manage/reference/viam-agen
 To set the maximum disk space `journald` will use to persist logs, add the `logging_journald_system_max_use_megabytes` field to the `system_configuration` object.
 You may need to add the `system_configuration` object to the `agent` object if it doesn't already exist.
 
-The configured values will take precedencpce over operating system defaults.
+The configured values will take precedence over operating system defaults.
 
 ```json
 "agent": {

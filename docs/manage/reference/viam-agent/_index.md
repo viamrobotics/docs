@@ -277,9 +277,9 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `hotspot_prefix` | string | false | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `manufacturer` | string | false | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
 | `model` | string | false | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
-| `offline_before_starting_hotspot_minutes` | integer | false | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `2` (2 minutes). |
+| `offline_before_starting_hotspot_minutes` | integer | false | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the WiFi/router may take longer to be available. Default: `2` (2 minutes). |
 | `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10` (10 minutes). |
-| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | false | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and `turn_on_hotspot_if_wifi_has_no_internet` is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
+| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | false | By default, the device will only attempt to connect to a single WiFi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. WiFi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and `turn_on_hotspot_if_wifi_has_no_internet` is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
 | `user_idle_minutes` | integer | false | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `wifi_power_save` | boolean | false | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
 
@@ -299,7 +299,7 @@ It's primarily useful for a machine that moves between different networks, so th
 | `ipv4_gateway` | string | optional | IPv4 gateway. Default: `""`. |
 | `ipv4_route_metric` | integer | optional | IPv4 route metric. Lower values are preferred. Default: `0` which defaults to `100` for wired networks and `600` for wireless network. |
 | `priority` | integer | optional | Priority to choose the network with. Values between -999 and 999 with higher values taking precedence. Default: `0`. |
-| `psk` | string | optional | The network pass key. Default: `""`. |
+| `psk` | string | optional | The network passkey. Default: `""`. |
 | `ssid` | string | optional | The WiFi network's SSID. Only needed for WiFi networks. Default: `""`. |
 | `type` | string | optional | The type of the network. Required if a network is provided. Options: `"wifi"`, `"wired"`. |
 
@@ -319,7 +319,7 @@ If the highest-priority network is not available or the machine can connect but 
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
 | `logging_journald_runtime_max_use_megabytes` | integer | optional |Set the temporary space limit for logs. `-1` to disable. Default: `512` (512 MB). |
-| `logging_journald_system_max_use_megabytes` | integer | optional | Sets the maximum disk space `journald` will user for persistent log storage. `-1` to disable. Default: `512` (512 MB). |
+| `logging_journald_system_max_use_megabytes` | integer | optional | Sets the maximum disk space `journald` will use for persistent log storage. `-1` to disable. Default: `512` (512 MB). |
 | `os_auto_upgrade_type` | boolean | optional | Manage OS package updates using Viam by setting this field. Installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with an automatically generated Origins-Pattern list that is generated based on that of `50unattended-upgrades`. Custom repos installed on the system at the time the setting is enabled will be included. Options: `"all"` (automatic upgrades are performed for all packages), `"security"` (automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)), `"disable"` (disable automatic upgrades), `""` (do not change system settings). Default: `""`. |
 
 For more detailed instructions, see [Configure machine settings](https://docs.viam.com/manage/fleet/system-settings/).
