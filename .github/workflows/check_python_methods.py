@@ -4,6 +4,7 @@ import sys
 import markdownify
 import urllib.parse
 import argparse
+import os
 
 
 parser = argparse.ArgumentParser()
@@ -56,15 +57,44 @@ def html_to_markdown(base_url, html):
     return markdownify.markdownify(str(html)).strip()
 
 def get_param_details(item):
-    param, desc = item.split(" – ")
-    if "** (" in param:
-        param_name, param_type = param.split("** (")
-        param_type = param_type[:-1].replace("*","")
-        param_name = param_name.replace("**","")
-        return f"- {param_name} ({param_type}): {desc}\n".format(param_name=param_name, param_type=param_type, desc=desc)
-    else:
-        param_name = param.replace("**","")
-        return "- {param_name}: {desc}\n".format(param_name=param_name, desc=desc)
+    """Parse parameter details from docstring."""
+    # Handle case where item starts with a dash
+    item = item.lstrip('- ')
+
+    try:
+        # Try splitting on " – " first
+        if " – " in item:
+            param, desc = item.split(" – ")
+        # Try splitting on " - " next
+        elif " - " in item:
+            param, desc = item.split(" - ")
+        else:
+            # If no split character found, treat whole thing as param
+            param = item
+            desc = ""
+
+        # Parse parameter name and type
+        if "(*" in param:
+            # Format: "name (*type*)"
+            param_name = param.split("(*")[0].strip().replace("**", "")
+            param_type = param.split("(*")[1].split("*)")[0].replace("*", "")
+        elif "(" in param and ")" in param:
+            # Format: "name (type)"
+            param_name = param.split("(")[0].strip().replace("**", "")
+            param_type = param.split("(")[1].split(")")[0]
+        else:
+            # Format: "**name**"
+            param_name = param.strip().replace("**", "")
+            param_type = ""
+
+        if param_type:
+            return f"- {param_name} ({param_type}): {desc}\n"
+        else:
+            return f"- {param_name}: {desc}\n"
+
+    except Exception as e:
+        print(f"WARNING: Could not parse parameter details for: {item}")
+        return f"- {item}\n"
 
 def parse(type, names):
 
