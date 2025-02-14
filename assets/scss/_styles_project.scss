@@ -1192,11 +1192,9 @@ td > ol {
 
 .nav-tabs {
   border-bottom: none; // unset from inherited styles
-  gap: 10px;
+  gap: 1px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-
 }
 
 .horizontalheaders > .nav-tabs,
@@ -1242,7 +1240,7 @@ td > ol {
   margin-right: -1px;
   border-bottom: 1px solid rgb(209, 213, 219);
   border-top: 1px solid rgb(209, 213, 219);
-  padding: 0.5rem 1.5rem;
+  padding: 0.25rem 0.75rem;
   color: rgb(78, 79, 82);
 }
 
@@ -1269,7 +1267,6 @@ td > ol {
 
 .nav-tabs .nav-item {
   margin-bottom: 0.5rem;
-  flex-grow: 1;
 }
 
 .nav-tabs .nav-item > a {
@@ -1283,7 +1280,6 @@ td > ol {
 .horizontalheaders * .nav-tabs > .nav-item,
 .horizontalheaders > .nav-tabs > .nav-item {
   margin-bottom: 0rem;
-  flex-grow: unset;
 }
 
 .nav-tabs > .nav-item:last-child {
