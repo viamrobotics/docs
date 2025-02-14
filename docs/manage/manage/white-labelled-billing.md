@@ -17,7 +17,7 @@ Once set up:
 - Invoices will be sent from your provided support email address and will contain your provided logo
 - You can set custom pricing
 
-{{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom">}}
+{{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom shadow">}}
 
 ## Prerequisites
 
@@ -93,7 +93,7 @@ To see the billing dashboard for a specific organization, navigate to:
 https://app.viam.com/billing/<public-namespace>?id=<org-id>
 ```
 
-{{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom">}}
+{{<imgproc src="/operate/wlbilling.png" resize="1000x" declaredimensions=true alt="Example billing dashboard" style="width:600px" class="imgzoom shadow">}}
 
 {{% /tablestep %}}
 {{< /table >}}
