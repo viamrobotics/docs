@@ -5,7 +5,7 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
-date: "2025-02-05"
+date: "2025-02-14"
 aliases:
   - /manage/software/update-packages/
 ---
@@ -35,18 +35,16 @@ You can either create a second fragment that you add to a subset of machines, or
 
 {{< table >}}
 {{% tablestep %}}
-**1. Create a fragment for development**
 
-Copy the JSON object from your primary fragment and create a second fragment.
+**1. Create a fragment for development** by copying the JSON object from your primary fragment and into a new fragment.
 We recommend you call your second fragment something easily identifiable as your testing environment, such as `FragmentName-DEV`.
 
 Paste the JSON object from your primary fragment.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Edit the fragment**
+**2. Edit the fragment** and change the version of your module or package in the development fragment.
 
-Change the version of your module or package in the development fragment.
 For example:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="22"}
@@ -81,14 +79,12 @@ For example:
 {{% tablestep %}}
 **3. Add the development fragment to a subset of machines**
 
-Configure a subset of your machines with the development fragment.
 If you had configured them already with the primary fragment, remove that fragment first.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**4. Test the new version**
+**4. Test the new version of your package**.
 
-Test the new version of your package.
 When you are satisfied that your package works as expected, continue to update your primary fragment.
 
 {{% /tablestep %}}
