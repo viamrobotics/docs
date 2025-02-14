@@ -48,12 +48,6 @@ Instead [use modules for control logic](/manage/software/deploy-software/#create
 
 {{% /changelog %}}
 
-{{% changelog color="added" title="Native windows support" date="2025-02-01" %}}
-
-You can now run `viam-server` on Windows natively and use the CLI and the Viam agent.
-
-{{% /changelog %}}
-
 {{% changelog color="added" title="White labelled billing and custom pricing" date="2025-02-01" %}}
 
 You can now [set custom pricing](/manage/manage/white-labelled-billing/) for your organizations and add your logo to invoices and other billing materials.

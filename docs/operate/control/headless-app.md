@@ -370,46 +370,12 @@ For information on running C++ code see [the instructions on GitHub](https://git
 {{% /tab %}}
 {{< /tabs >}}
 
-### Run your code as an automatic process
+### Run your control code in a module
 
-If you want your code to run each time your machine boots, configure the code as a _{{< glossary_tooltip term_id="process" text="process" >}}_ on your machine.
-Configured processes are managed by `viam-server` and are a way to run any specified command either once on boot or continuously over the lifecycle of `viam-server`.
+To run your control code on your machine, create a {{< glossary_tooltip term_id="module" text="module" >}} and deploy it to your machine.
+You can add functionality to the `DoCommand()` method to, for example, start and stop the control code.
 
-{{% alert title="Tip" color="tip" %}}
-If you are running your code from a laptop or desktop, we do not recommend configuring your code to run as a process because doing so will cause the process to run whenever you boot your computer, even when you are using your computer for unrelated purposes.
-{{% /alert %}}
-
-To configure a process, click the **+** button on your machine's **CONFIGURE** tab and select **Process**.
-For detailed configuration information, see [Configure a managed process](/manage/reference/processes/).
-
-#### Example
-
-The following example executes the command `python3 my_cool_script.py` in your <file>/home/myName/project/</file> directory every time your machine boots, and restarts the process if it stops running.
-
-{{< tabs >}}
-{{% tab name="Builder mode" %}}
-
-![The CONFIGURE tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](/build/configure/process-fancy.png)
-
-{{% /tab %}}
-{{% tab name="JSON" %}}
-
-```json
-"processes": [
-    {
-      "id": "run-my-code",
-      "log": true,
-      "name": "python3",
-      "args": [
-        "my_cool_script.py"
-      ],
-      "cwd": "/home/myName/project/"
-    }
-  ]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+For more information, see [Create a module with machine control logic](/manage/software/deploy-software/#create-a-module-with-machine-control-logic).
 
 ## Debug
 
