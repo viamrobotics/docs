@@ -32,7 +32,7 @@ In the [Viam app](https://app.viam.com), click on the organization dropdown in t
 
 In the **Members** section of the organization settings page you can click on **Grant access** to invite new users to an organization or a location to [share access](/manage/manage/access/) to the machines within it.
 
-{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="900x" declaredimensions=true >}}
+{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="900x" declaredimensions=true class="shadow" >}}
 
 {{% /tablestep %}}
 {{% tablestep link="/manage/manage/rbac/" %}}
@@ -47,7 +47,7 @@ You can grant a user access to the following resources:
 - a {{< glossary_tooltip term_id="location" text="location" >}}
 - a {{< glossary_tooltip term_id="machine" text="machine" >}}
 
-{{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="" declaredimensions=true alt="Limit user access">}}
+{{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="shadow" declaredimensions=true alt="Limit user access">}}
 
 Click **invite**.
 
@@ -89,7 +89,7 @@ Then either change the role of the user from owner to operator with the dropdown
 
 You can also remove the user by clicking on **Remove user**.
 
-{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true >}}
+{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true class="shadow" >}}
 
 {{% /tablestep %}}
 {{< /table >}}

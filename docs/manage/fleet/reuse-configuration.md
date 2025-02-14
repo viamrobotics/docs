@@ -41,7 +41,7 @@ In the [Viam app](https://app.viam.com), use the **CONFIGURE** tab to build a co
 You can use all available resources in the configuration for your machine except [triggers](/data-ai/data/advanced/alert-data/) which aren't supported.
 This means you can also use fragments inside a fragment.
 
-{{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="fill" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="shadow fill" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -49,7 +49,7 @@ This means you can also use fragments inside a fragment.
 
 In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON configuration object.
 
-{{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
+{{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -70,11 +70,11 @@ Click **Save**.
 
 If you want to edit the fragment later, do it from this screen.
 
-{{<imgproc src="/how-tos/one-to-many/new-fragment.png" resize="700x" class="fill" style="width: 350px" declaredimensions=true alt="app.viam.com/fragment interface">}}
+{{<imgproc src="/how-tos/one-to-many/new-fragment.png" resize="700x" class="shadow fill" style="width: 350px" declaredimensions=true alt="app.viam.com/fragment interface">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/delete.png" class="fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete">}}
+{{<imgproc src="/how-tos/one-to-many/delete.png" class="shadow fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete">}}
 **4. Delete the original configuration (optional)**
 
 Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
@@ -91,7 +91,7 @@ In the following steps, you will see how to add a fragment manually. If you are 
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="shadow fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
 **1. Add the fragment to one machine**
 
 On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
@@ -409,7 +409,7 @@ If there are problems with overwrites to the fragment, the overwrites will not b
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/reset.png" class="fill alignleft" resize="500x" style="width: 250px"  declaredimensions=true alt="Reset to fragment">}}
+{{<imgproc src="/how-tos/one-to-many/reset.png" class="shadow fill alignleft" resize="500x" style="width: 250px"  declaredimensions=true alt="Reset to fragment">}}
 **3. (Optional) Revert fragment modifications**
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.

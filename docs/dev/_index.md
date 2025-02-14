@@ -492,8 +492,6 @@ for i := 0; i < len(detections); i++ {
 }
 ```
 
-Be sure to import `"go.viam.com/rdk/utils"` at the beginning of your file.
-
 {{% /tab %}}
 {{< /tabs >}}
 

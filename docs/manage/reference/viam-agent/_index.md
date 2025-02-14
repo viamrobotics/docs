@@ -34,7 +34,7 @@ To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet
 1. Navigate to the machine's **CONFIGURE** tab.
 1. Click **View setup instructions** on the alert to **Set up your machine part**:
 
-   {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="imgzoom">}}
+   {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="shadow imgzoom">}}
 
 1. Follow the instructions to install `viam server` with `viam-agent`.
 
@@ -54,7 +54,7 @@ To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet
 
    As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the `viam-server` app JSON configuration from the Viam app into <file>/etc/viam.json</file>.
    You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
-   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
 
    Then run the following command to install `viam-agent`:
 
@@ -164,7 +164,7 @@ When you stop or restart `viam-agent`, the agent will stop or restart `viam-serv
 When `viam-server` updates itself, you must restart `viam-server` in order to use the new version.
 You can restart `viam-server` from the machine's part status dropdown to the right of your machine’s name on its page in the Viam app.
 
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
 
 {{< /alert >}}
 

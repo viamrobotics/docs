@@ -105,7 +105,7 @@ You can overwrite parts of a fragment to use a new version of a package without 
 
 For each machine that you would like to test the new version of the package on, go to its **CONFIGURE** tab, find the package, and edit its version number.
 
-{{<imgproc src="/how-tos/deploy-packages/version-change.png" resize="800x" class="fill" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/version-change.png" resize="800x" class="shadow fill" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
 
 Click **Save** in the upper right corner of the screen.
 

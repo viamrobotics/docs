@@ -78,7 +78,7 @@ If you choose to use the captive web portal, you can optionally create a machine
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
 
 {{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
 
@@ -352,7 +352,7 @@ You can set optional arguments by defining the following environment variables:
 
 You **must customize at least the hostname** when prompted by the Raspberry Pi Imager.
 
-{{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/installation/rpi-setup/advanced-options-yes.png" resize="800x" declaredimensions=true >}}
+{{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/installation/rpi-setup/advanced-options-yes.png" resize="800x" declaredimensions=true class="shadow" >}}
 
 When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
 
@@ -526,7 +526,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
      - Navigate to your machine's page on the [Viam app](https://app.viam.com).
      - Select the part status dropdown to the right of your machine's name on the top of the page.
-       {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown">}}
+       {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
      - Click the copy icon next to **Machine cloud credentials**.
      - Paste the machine cloud credentials when prompted.
 
