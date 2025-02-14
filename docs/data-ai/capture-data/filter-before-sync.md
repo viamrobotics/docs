@@ -17,14 +17,12 @@ The following steps use the [`filtered_camera`](https://github.com/erh/filtered_
 
 {{< table >}}
 {{% tablestep link="/data-ai/ai/deploy/"%}}
-{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model service to your machine**
 
 Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](https://github.com/viam-modules/mlmodel-tflite).
 
 {{% /tablestep %}}
 {{% tablestep link="/operate/reference/services/vision/"%}}
-{{<imgproc src="/services/icons/ml.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
 Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Upload a new model** to upload your own.
@@ -32,7 +30,6 @@ If you're not sure which model to use, you can use [`EfficientDet-COCO`](https:/
 
 {{% /tablestep %}}
 {{% tablestep link="/operate/reference/services/vision/"%}}
-{{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **3. Add a vision service to use with the ML model**
 
 You can think of the vision service as the bridge between the ML model service and the output from your camera.
@@ -42,7 +39,6 @@ From the **Select model** dropdown, select the name of your ML model service (fo
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/modular-registry.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **4. Configure the filtered camera**
 
 The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
@@ -69,7 +65,6 @@ If you were to set `window_seconds` to `3`, the camera would also capture and sy
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Configure data capture and sync on the filtered camera**
 
 Configure data capture and sync on the filtered camera just as you did before for the physical camera.
@@ -86,8 +81,6 @@ With cloud sync enabled, captured data is automatically uploaded to the Viam app
 
 {{% /tablestep %}}
 {{% tablestep %}}
-
-{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
 **7. View filtered data in the Viam app**
 
 Once you save your configuration, place something that is part of your trained ML model within view of your camera.
@@ -100,8 +93,7 @@ You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="width: 150px"  declaredimensions=true alt="Train models">}}
-**7. (Optional) Trigger sync with custom logic**
+**8. (Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
 If you need to trigger sync in a different way, see [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for a documented example of syncing data only at certain times of day.
