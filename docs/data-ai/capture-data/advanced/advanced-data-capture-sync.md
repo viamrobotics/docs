@@ -11,7 +11,8 @@ prev: /data-ai/capture-data/conditional-sync/
 date: "2025-02-10"
 ---
 
-You can configure both the data management and data capture with attributes in JSON for advanced use cases.
+Some data use cases require advanced configuration beyond the attributes accessible in the UI.
+You can use raw JSON to configure additional  attributes for both data management and data capture.
 You can also configure data capture for remote parts.
 
 ### Advanced data management service configurations
