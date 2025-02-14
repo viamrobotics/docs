@@ -3147,24 +3147,26 @@ li.active-path.tutorial-heading > a {
 // Table styling END
 // Numbered list styling START
 
-.td-content > ol {
+.td-content > ol, .td-content > .table * ol {
   list-style: none;
   counter-reset: item;
+  padding-inline-start: 0px;
 }
 
-.td-content > ol > li {
+.td-content > ol > li, .td-content > .table * ol > li {
   counter-increment: item;
   margin-bottom: 5px;
 }
-.td-content > ol > li:before {
+.td-content > ol > li:before, .td-content > .table * ol > li:before {
   margin-right: 10px;
   content: counter(item);
   background: #000000;
-  // border-radius: 100%;
+  border-radius: 100%;
   color: white;
   width: 1.625rem;
   height: 1.625rem;
   text-align: center;
   display: inline-block;
+  float: left;
 }
 // Numbered list styling END
