@@ -5,7 +5,7 @@ weight: 20
 no_list: true
 type: docs
 description: "The viam-agent is a self-updating service manager that maintains the lifecycle for Viam's system services, among them viam-server and provisioning."
-date: "2024-08-16"
+date: "2025-02-14"
 aliases:
   - /configure/agent/
 # updated: ""  # When the content was last entirely checked
@@ -23,123 +23,59 @@ Among other things, `viam-agent`:
 - Provides various operating system settings.
 
 {{< alert title="Support notice" color="note" >}}
-Currently, `viam-agent` is only supported on Linux, for amd64 (x86_64) and arm64 (aarch64) CPUs.
+Currently, `viam-agent` is only supported on Linux for amd64 (x86_64) and arm64 (aarch64) CPUs and Windows (native).
 {{< /alert >}}
 
-To provision machines using `viam-agent`, see
-
-{{< cards >}}
-{{% card link="/manage/fleet/provision/setup/" noimage=true %}}
-{{< /cards >}}
+To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet/provision/setup/).
 
 ## Installation
 
-You can install `viam-agent` using either an existing machine's part ID and API key, or using an existing machine credentials configuration file at <file>/etc/viam.json</file>.
+1. Add a new machine in the [Viam app](https://app.viam.com).
+1. Navigate to the machine's **CONFIGURE** tab.
+1. Click **View setup instructions** on the alert to **Set up your machine part**:
 
-{{< alert title="Important" color="note" >}}
-Your machine must have `curl` available in order to install `viam-agent`.
-{{< /alert >}}
+   {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="imgzoom">}}
 
-1. The first step is to add a new machine in the [Viam app](https://app.viam.com).
-2. Navigate to the **CONFIGURE** tab and find your machine's card.
-   An alert will be present directing you to **Set up your machine part**:
+1. Follow the instructions to install `viam server` with `viam-agent`.
 
-<p>
-{{<imgproc src="/installation/setup-part.png" resize="800x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="imgzoom">}}
-</p>
+   {{< alert title="Important" color="note" >}}
+   If you are using Linux, your machine must have `curl` available in order to install `viam-agent`.
+   {{< /alert >}}
 
-Click **View setup instructions** to open the setup instructions.
-Then navigate to the machine part's setup and follow the instructions to install `viam server` with `viam-agent`.
+   You can use `viam-agent` either with an existing machine's part ID and API key, or with an existing machine credentials configuration file at <file>/etc/viam.json</file>.
 
-The command will be of the following form:
+   The command will be of the following form:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
-sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
-```
+   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+   sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+   ```
 
-{{< alert title="Note" color="note" >}}
+   {{< alert title="Note" color="note" >}}
 
-As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the `viam-server` app JSON configuration from the Viam app into <file>/etc/viam.json</file>.
-You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+   As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the `viam-server` app JSON configuration from the Viam app into <file>/etc/viam.json</file>.
+   You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
+   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
-Then run the following command to install `viam-agent`:
+   Then run the following command to install `viam-agent`:
 
-```sh {class="command-line" data-prompt="$"}
-sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
-```
+   ```sh {class="command-line" data-prompt="$"}
+   sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+   ```
 
-    {{< /alert >}}
+   {{< /alert >}}
 
-`viam-agent` will install itself as a systemd service named `viam-agent`.
-For information on managing the service, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
+   On Linux, `viam-agent` will install itself as a systemd service named `viam-agent`.
+   For information on managing the service, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
 ## Configuration
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
-
-<p>
-{{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width:600px" class="imgzoom">}}
-</p>
-
-Edit and fill in the attributes as applicable.
-
-{{% /tab %}}
-{{% tab name="JSON (Default)" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "agent": {
-    "version_control": {
-      "agent": "stable",
-      "viam-server": "0.52.1"
-    },
-    "advanced_settings": {
-      "debug": false,
-      "wait_for_update_check": false,
-      "viam_server_start_timeout_minutes": 10,
-      "disable_viam_server": false,
-      "disable_network_configuration": false,
-      "disable_system_configuration": false
-    },
-    "network_configuration": {
-      "manufacturer": "viam",
-      "model": "custom",
-      "fragment_id": "",
-      "hotspot_prefix": "viam-setup",
-      "hotspot_password": "viamsetup",
-      "disable_captive_portal_redirect": false,
-      "offline_before_starting_hotspot_minutes": 2,
-      "user_idle_minutes": 5,
-      "retry_connection_timeout_minutes": 10,
-      "turn_on_hotspot_if_wifi_has_no_internet": false,
-      "wifi_power_save": null
-    },
-    "additional_networks": {
-      {
-        "type": "",
-        "interface": "",
-        "ssid": "",
-        "psk": "",
-        "priority": 0,
-        "ipv4_address": "",
-        "ipv4_gateway": "",
-        "ipv4_dns": [],
-        "ipv4_route_metric": 0
-      }
-    },
-    "system_configuration": {
-      "logging_journald_system_max_use_megabytes": 512,
-      "logging_journald_runtime_max_use_megabytes": 512,
-      "os_auto_upgrade_type": "security"
-    }
-  }
-}
-```
+1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
+1. Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -232,11 +168,7 @@ You can restart `viam-server` from the machine's part status dropdown to the rig
 
 {{< /alert >}}
 
-For more information on managing `viam-agent` see:
-
-{{< cards >}}
-{{% card link="/manage/reference/viam-agent/manage-viam-agent/" %}}
-{{< /cards >}}
+For more information on managing `viam-agent` see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
 ## `advanced_settings`
 
