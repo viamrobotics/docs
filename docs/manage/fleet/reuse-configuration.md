@@ -15,9 +15,8 @@ languages: []
 viamresources: []
 platformarea: ["fleet"]
 level: "Beginner"
-date: "2024-08-09"
+date: "2025-02-07"
 # updated: ""  # When the tutorial was last entirely checked
-next: /manage/fleet/provision/setup/
 cost: "0"
 ---
 
@@ -39,7 +38,7 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 Start by configuring one of your machines.
 
 In the [Viam app](https://app.viam.com), use the **CONFIGURE** tab to build a configuration for all resources you want to use on all your machines.
-You can use all available resources except [triggers](/data-ai/data/advanced/alert-data/) in the configuration for your machine.
+You can use all available resources in the configuration for your machine except [triggers](/data-ai/data/advanced/alert-data/) which aren't supported.
 This means you can also use fragments inside a fragment.
 
 {{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="fill" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
@@ -48,7 +47,7 @@ This means you can also use fragments inside a fragment.
 {{% tablestep %}}
 **2. Copy the raw JSON**
 
-In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
+In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON configuration object.
 
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
@@ -79,7 +78,7 @@ If you want to edit the fragment later, do it from this screen.
 **4. Delete the original configuration (optional)**
 
 Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
-By using the new fragment, all your machines will use the exact same configuration.
+By using the new fragment, this and every other machine you add the fragment to will use the exact same configuration.
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -88,7 +87,7 @@ By using the new fragment, all your machines will use the exact same configurati
 
 With your fragment created, you can add it to all machines that should have it.
 
-In the following, you will see how to add a fragment manually. If you are working in a factory setting and need to set up devices before they reach the end user, you can also fragments while [provisioning](/manage/fleet/provision/setup/) your fleet.
+In the following steps, you will see how to add a fragment manually. If you are working in a factory setting and need to set up devices before they reach the end user, you can also use fragments to [provision](/manage/fleet/provision/setup/) your machines.
 
 {{< table >}}
 {{% tablestep %}}

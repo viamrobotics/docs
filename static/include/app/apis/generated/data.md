@@ -38,6 +38,45 @@ else:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_latest_tabular_data).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `resourceName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `resourceSubtype` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<({[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> payload, [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html) timeCaptured, [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html) timeSynced})?>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+   // Get latest tabular data
+   final response = await dataClient.getLatestTabularData(
+     "<YOUR-PART-ID>",
+     "movement_sensor-1",
+     "rdk:component:movement_sensor",
+     "Position"
+   );
+   print('Successfully retrieved latest tabular data: $response');
+ } catch (e) {
+   print('Error retrieving latest tabular data: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/getLatestTabularData.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### ExportTabularData
@@ -76,6 +115,60 @@ print(f"My data: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.export_tabular_data).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `resourceName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `resourceSubtype` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `startTime` [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html)? (required)
+- `endTime` [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html)? (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[TabularDataPoint](https://flutter.viam.dev/viam_sdk/TabularDataPoint-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+  // Define date request times
+  final startTime = DateTime(2025, 1, 23, 11);
+  final endTime = DateTime(2025, 1, 23, 11, 0, 3);
+
+  final tabularData = await dataClient.exportTabularData(
+    "<YOUR-PART-ID>",
+    "movement_sensor-1",
+    "rdk:component:movement_sensor",
+    "Position",
+    startTime,
+    endTime
+  );
+
+  for (var dataPoint in tabularData) {
+    print(dataPoint.partId);
+    print(dataPoint.resourceName);
+    print(dataPoint.methodName);
+    print(dataPoint.payload);
+  }
+
+  print('Successfully exported tabular data');
+ } catch (e) {
+  print('Error exporting tabular data: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/exportTabularData.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -122,6 +215,57 @@ print(f"My data: {my_data}")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (optional)
+- `limit` [int](https://api.flutter.dev/flutter/dart-core/int-class.html)? (optional)
+- `sortOrder` [Order](https://flutter.viam.dev/viam_protos.app.data/Order-class.html)? (optional)
+- `last` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `countOnly` dynamic (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[TabularDataByFilterResponse](https://flutter.viam.dev/viam_protos.app.data/TabularDataByFilterResponse-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+    dotenv.env['API_KEY_ID'] ?? '',
+    dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+ // Create a filter to target specific tabular data
+ final filter = Filter(
+  componentName: "arm-1",
+ );
+
+ final response = await dataClient.tabularDataByFilter(
+   filter: filter,
+   limit: 10
+ );
+ print('Number of items: ${response.count.toInt()}');
+ print('Total size: ${response.totalSizeBytes.toInt()}');
+ for (var metadata in response.metadata) {
+   print(metadata);
+ }
+ for (var data in response.data) {
+   print(data);
+ }
+
+ print('Successfully retrieved tabular data by filter');
+} catch (e) {
+ print('Error retrieving tabular data by filter: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/tabularDataByFilter.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### TabularDataBySQL
@@ -152,6 +296,40 @@ data = await data_client.tabular_data_by_sql(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_sql).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `organizationId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `query` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// List<Map<String, dynamic>>? _responseData;
+
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ // Example SQL query
+ final sqlQuery = "SELECT * FROM readings LIMIT 5";
+
+ _responseData = await dataClient.tabularDataBySql(
+   "<YOUR-ORG-ID>",
+   sqlQuery
+ );
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/tabularDataBySql.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### TabularDataByMQL
@@ -175,7 +353,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 ```python {class="line-numbers linkable-line-numbers"}
 import bson
 
-tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_query=[
+tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", query=[
     { '$match': { 'location_id': '<YOUR-LOCATION-ID>' } },
     { "$limit": 5 }
 ])
@@ -184,6 +362,53 @@ print(f"Tabular Data: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_mql).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `organizationId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `query` dynamic (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// import 'package:bson/bson.dart';
+
+// List<Map<String, dynamic>>? _responseData;
+
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ final query = BsonCodec.serialize({
+  "\$match": {
+     "location_id": "<YOUR-LOCATION-ID>",
+  }
+ });
+
+ final sort = BsonCodec.serialize({
+   "\$sort": {"time_requested": -1}
+   sqlQuery
+ });
+
+ final limit = BsonCodec.serialize({"\$limit": 1});
+
+ final pipeline = [query.byteList, sort.byteList, limit.byteList];
+ _responseData = await dataClient.tabularDataByMql(
+  "<YOUR-ORG-ID>",
+  pipeline
+ );
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/tabularDataByMql.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -252,6 +477,54 @@ while True:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (optional)
+- `limit` [int](https://api.flutter.dev/flutter/dart-core/int-class.html)? (optional)
+- `sortOrder` [Order](https://flutter.viam.dev/viam_protos.app.data/Order-class.html)? (optional)
+- `last` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `countOnly` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
+- `includeBinary` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[BinaryDataByFilterResponse](https://flutter.viam.dev/viam_protos.app.data/BinaryDataByFilterResponse-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+    dotenv.env['API_KEY_ID'] ?? '',
+    dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+ // Create a filter to target specific binary data
+ final filter = Filter(
+  componentName: "camera-1",
+ );
+
+ final response = await dataClient.binaryDataByFilter(filter: filter, limit: 1);
+
+ print('Number of items: ${response.count.toInt()}');
+ print('Total size: ${response.totalSizeBytes.toInt()} bytes');
+ for (var dataPoint in response.data) {
+   print(dataPoint.binary);
+   print(dataPoint.metadata);
+ }
+
+ print('Successfully retrieved binary data by filter');
+} catch (e) {
+ print('Error retrieving binary data by filter: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/binaryDataByFilter.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### BinaryDataByIDs
@@ -301,6 +574,51 @@ binary_data = await data_client.binary_data_by_ids(my_ids)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
+- `includeBinary` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[BinaryDataByIDsResponse](https://flutter.viam.dev/viam_protos.app.data/BinaryDataByIDsResponse-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+  final binaryIDs = [
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  ];
+
+  final response = await dataClient.binaryDataByIds(
+    binaryIDs,
+    includeBinary: true
+  );
+
+  for (var dataPoint in response.data) {
+    print(dataPoint.binary);
+    print(dataPoint.metadata);
+  }
+
+  print('Successfully retrieved binary data by IDs');
+ } catch (e) {
+  print('Error retrieving binary data by IDs: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/binaryDataByIds.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### DeleteTabularData
@@ -331,6 +649,38 @@ tabular_data = await data_client.delete_tabular_data(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `organizationId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `olderThanDays` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+    dotenv.env['API_KEY_ID'] ?? '',
+    dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+  dataClient.deleteTabularData("<YOUR-ORG-ID>", 5);
+
+ print('Successfully deleted tabular data');
+} catch (e) {
+ print('Error deleting tabular data: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/deleteTabularData.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### DeleteBinaryDataByFilter
@@ -359,6 +709,44 @@ res = await data_client.delete_binary_data_by_filter(my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_filter).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (required)
+- `includeInternalData` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+  // Create a filter to target specific binary data. Must include at least one org ID.
+  final filter = Filter(
+   componentName: "camera-1",
+   organizationIds: ["<YOUR-ORG-ID>"]
+  );
+
+  final deletedCount = await dataClient.deleteBinaryDataByFilter(filter);
+
+  print('Successfully deleted binary data by filter: count $deletedCount');
+ } catch (e) {
+  print('Error deleting binary data by filter: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/deleteBinaryDataByFilter.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -410,6 +798,43 @@ binary_data = await data_client.delete_binary_data_by_ids(my_ids)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_ids).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+  final binaryIDs = [
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  ];
+
+  // Call the function to delete binary data
+  await dataClient.deleteBinaryDataByIds(binaryIDs);
+
+  print('Successfully deleted binary data');
+ } catch (e) {
+  print('Error deleting binary data: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/deleteBinaryDataByIds.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -466,6 +891,47 @@ binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+  // List of tags to add
+  final List<String> tags = ['tag_1', 'tag_2'];
+
+  final binaryIDs = [
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  ];
+
+  // Call the function with both tags and IDs
+  await dataClient.addTagsToBinaryDataByIds(tags, binaryIDs);
+
+  print('Successfully added tags to binary IDs');
+ } catch (e) {
+  print('Error adding tags: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/addTagsToBinaryDataByIds.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### AddTagsToBinaryDataByFilter
@@ -499,6 +965,46 @@ await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+  // List of tags to add
+  final List<String> tags = ['tag_1', 'tag_2'];
+
+  // Create a filter to target specific binary data
+  final filter = Filter(
+   componentName: "camera-1",
+  );
+
+  await dataClient.addTagsToBinaryDataByFilter(tags, filter);
+
+  print('Successfully added tags to binary data by filter');
+ } catch (e) {
+  print('Error adding tags to binary data by filter: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/addTagsToBinaryDataByFilter.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -557,6 +1063,47 @@ binary_data = await data_client.remove_tags_from_binary_data_by_ids(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+ _viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+ try {
+  // List of tags to remove
+  final List<String> tags = ['tag_1', 'tag_2'];
+
+  final binaryIDs = [
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  ];
+
+  // Call the function with both tags and IDs
+  await dataClient.removeTagsFromBinaryDataByIds(tags, binaryIDs);
+
+  print('Successfully removed tags from binary IDs');
+ } catch (e) {
+  print('Error removing tags: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/removeTagsFromBinaryDataByIds.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### RemoveTagsFromBinaryDataByFilter
@@ -592,6 +1139,46 @@ res = await data_client.remove_tags_from_binary_data_by_filter(tags, my_filter)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+    dotenv.env['API_KEY_ID'] ?? '',
+    dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+ // List of tags to remove
+ final List<String> tags = ['tag_1', 'tag_2'];
+
+ // Create a filter to target specific binary data
+ final filter = Filter(
+  componentName: "camera-1",
+ );
+
+ await dataClient.removeTagsFromBinaryDataByFilter(tags, filter);
+
+ print('Successfully removed tags from binary data by filter');
+} catch (e) {
+ print('Error removing tags from binary data by filter: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/removeTagsFromBinaryDataByFilter.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### TagsByFilter
@@ -619,6 +1206,43 @@ tags = await data_client.tags_by_filter(my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tags_by_filter).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+ // Create a filter to target specific binary data
+ final filter = Filter(
+   componentName: "camera-1",
+ );
+
+ // Call the function to get tags by filter
+ final tags = await dataClient.tagsByFilter(filter);
+
+ print('Successfully got tags: $tags');
+} catch (e) {
+ print('Error getting tags: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/tagsByFilter.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -673,6 +1297,51 @@ print(bbox_id)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_bounding_box_to_image_by_id).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `label` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `binaryId` [BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html) (required)
+- `xMinNormalized` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
+- `yMinNormalized` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
+- `xMaxNormalized` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
+- `yMaxNormalized` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+// Example binary ID to add a bounding box to
+final binaryId = BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>');
+
+try {
+  await dataClient.addBoundingBoxToImageById(
+    "label",
+    binaryId,
+    0,
+   .1,
+   .2,
+   .3
+  );
+  print('Successfully added bounding box');
+} catch (e) {
+  print('Error adding bounding box: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/addBoundingBoxToImageById.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### RemoveBoundingBoxFromImageByID
@@ -711,6 +1380,46 @@ bbox_id="your-bounding-box-id-to-delete"
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_bounding_box_from_image_by_id).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `bboxId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `binaryId` [BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+// Example binary ID to remove a bounding box from
+final binaryId = BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>');
+
+// Example bbox ID (label)
+final bboxId = "label";
+try {
+  await dataClient.removeBoundingBoxFromImageById(
+    bboxId,
+    binaryId,
+  );
+
+  print('Successfully removed bounding box');
+} catch (e) {
+  print('Error removing bounding box: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/removeBoundingBoxFromImageById.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### BoundingBoxLabelsByFilter
@@ -743,6 +1452,43 @@ print(bounding_box_labels)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.bounding_box_labels_by_filter).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+ // Create a filter to target specific binary data
+ final filter = Filter(
+   componentName: "camera-1",
+ );
+
+ // Call the function to get bounding box labels by filter
+ final labels = await dataClient.boundingBoxLabelsByFilter(filter);
+
+ print('Successfully got bounding box labels: $labels');
+} catch (e) {
+ print('Error getting bounding box labels: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/boundingBoxLabelsByFilter.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetDatabaseConnection
@@ -767,6 +1513,42 @@ hostname = await data_client.get_database_connection(organization_id="<YOUR-ORG-
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_database_connection).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `organizationId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<[DatabaseConnection](https://flutter.viam.dev/viam_sdk/DatabaseConnection.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+ final String organizationId = "<YOUR-ORG-ID>";
+ // Get the database connection
+ final connection = await dataClient.getDatabaseConnection(organizationId);
+
+ final hostname = connection.hostname;
+ final mongodbUri = connection.mongodbUri;
+
+ print('Successfully got database connection: with hostname $hostname and mongodbUri $mongodbUri');
+} catch (e) {
+ print('Error getting database connection: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/getDatabaseConnection.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -800,6 +1582,41 @@ await data_client.configure_database_user(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.configure_database_user).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `organizationId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `password` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+);
+final dataClient = _viam.dataClient;
+
+try {
+ await dataClient.configureDatabaseUser(
+   "<YOUR-ORG-ID>",
+   "PasswordLikeThis1234",
+ );
+
+ print('Successfully configured database user for this organization');
+} catch (e) {
+ print('Error configuring database user: $e');
+}
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/configureDatabaseUser.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### AddBinaryDataToDatasetByIDs
@@ -812,7 +1629,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your dataset’s page in the Viam app, click … in the left-hand menu, and click Copy dataset ID.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.
 
 **Returns:**
@@ -848,6 +1665,50 @@ await data_client.add_binary_data_to_dataset_by_ids(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_binary_data_to_dataset_by_ids).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
+- `datasetId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+// Example binary IDs to add to the dataset
+ final binaryIds = [
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+ ];
+
+ // Dataset ID where the binary data will be added
+ const datasetId = '<YOUR-DATASET-ID>';
+
+ try {
+   // Add the binary data to the dataset
+   await dataClient.addBinaryDataToDatasetByIds(
+     binaryIds,
+     datasetId
+ );
+   print('Successfully added binary data to dataset');
+ } catch (e) {
+   print('Error adding binary data to dataset: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/addBinaryDataToDatasetByIds.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### RemoveBinaryDataFromDatasetByIDs
@@ -860,7 +1721,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from dataset. To retrieve these IDs, navigate to your dataset’s page in the Viam app, click … in the left-hand menu, and click Copy dataset ID.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from.
 
 **Returns:**
@@ -894,6 +1755,50 @@ await data_client.remove_binary_data_from_dataset_by_ids(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_binary_data_from_dataset_by_ids).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
+- `datasetId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+_viam = await Viam.withApiKey(
+     dotenv.env['API_KEY_ID'] ?? '',
+     dotenv.env['API_KEY'] ?? ''
+ );
+ final dataClient = _viam.dataClient;
+
+// Example binary IDs to remove from the dataset
+ final binaryIds = [
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
+   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+ ];
+
+ // Dataset ID where the binary data will be removed
+ const datasetId = '<YOUR-DATASET-ID>';
+
+ try {
+   // Remove the binary data from the dataset
+   await dataClient.removeBinaryDataFromDatasetByIds(
+     binaryIds,
+     datasetId
+ );
+   print('Successfully removed binary data from dataset');
+ } catch (e) {
+   print('Error removing binary data from dataset: $e');
+ }
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/removeBinaryDataFromDatasetByIds.html).
 
 {{% /tab %}}
 {{< /tabs >}}

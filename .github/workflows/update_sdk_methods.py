@@ -447,7 +447,10 @@ flutter_resource_overrides = {
     "movement_sensor": "MovementSensor",
     "power_sensor": "PowerSensor",
     "vision": "VisionClient",
-    "robot": "RobotClient"
+    "robot": "RobotClient",
+    "data": "DataClient",
+    "dataset": "DataClient",
+    "data_sync": "DataClient"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -666,6 +669,7 @@ def parse(type, names):
         elif sdk == "flutter":
             flutter_methods = {}
             flutter_methods[type] = {}
+            flutter_methods[type][resource] = {}
             if flutter_staging_url != '':
                 scrape_url = flutter_staging_url
         else:
@@ -705,15 +709,32 @@ def parse(type, names):
             ## Determine URL form for Flutter depending on type (like 'component').
             ## TEMP: Manually exclude Base Remote Control Service (Go only):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'encoder' and resource != 'input_controller' \
-                and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
-                and resource !='navigation' and resource !='slam' and type !='app':
-
-                if resource in flutter_resource_overrides:
+            elif sdk == "flutter":
+                # Initialize Flutter methods dictionary if it doesn't exist
+                if 'flutter' not in all_methods:
+                    all_methods['flutter'] = {}
+                if type not in all_methods['flutter']:
+                    all_methods['flutter'][type] = {}
+                
+                # Initialize empty dictionary for this resource
+                all_methods['flutter'][type][resource] = {}
+                
+                # Skip resources not supported in Flutter
+                unsupported_resources = [
+                    "base_remote_control", "encoder", "input_controller",
+                    "data_manager", "generic_service", "mlmodel", "motion",
+                    "navigation", "slam"
+                ]
+                if resource in unsupported_resources:
+                    if args.verbose:
+                        print(f'DEBUG: Skipping unsupported Flutter resource: {resource}')
+                    continue
+                elif resource in flutter_resource_overrides:
                     url = f"{scrape_url}/viam_sdk/{flutter_resource_overrides[resource]}-class.html"
+                    if args.verbose:
+                        print(f'DEBUG: Parsing Flutter URL: {url}')
                 else:
                     url = f"{scrape_url}/viam_sdk/{resource.capitalize()}-class.html"
-                flutter_methods[type][resource] = {}
             ## If an invalid language was provided:
             else:
                 pass
@@ -1042,11 +1063,18 @@ def parse(type, names):
                                 ## Determine parameter type:
                                 param_type = parameter_tag.find_all('span', class_='n')[1].text
 
+                                param_default = parameter_tag.select_one('span.default_value')
+                                if param_default:
+                                    param_default = param_default.text
+                                else:
+                                    param_default = None
+
+                                if param_default == "''":  # Check for empty string default
+                                    this_method_parameters_dict["optional"] = True
                                 ## Determine if this parameter is optional, and strip off ' | None' syntax if so:
-                                if param_type.endswith(' | None'):
+                                elif param_type.endswith(' | None'):
                                     this_method_parameters_dict["optional"] = True
                                     param_type = param_type.replace(' | None', "")
-
                                 else:
                                     this_method_parameters_dict["optional"] = False
 
@@ -1372,7 +1400,7 @@ def parse(type, names):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'encoder' and resource != 'input_controller' \
                 and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
-                and resource !='navigation' and resource !='slam' and type !='app':
+                and resource !='navigation' and resource !='slam':
                 soup = make_soup(url)
 
                 if resource in flutter_resource_overrides:
@@ -1872,7 +1900,7 @@ def write_markdown(type, names, methods):
                                 if micro_rdk_support == 'Yes':
                                     mark = '<p class="center-text"><i class="fas fa-check" title="yes"></i></p>'
                                 else:
-                                    mark = '<p class="center-text"><i class="fas fa-times" title="no"></i></p>'
+                                    mark = ''
                                 table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' | ' + mark +' |\n')
                             else:
                                 table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')

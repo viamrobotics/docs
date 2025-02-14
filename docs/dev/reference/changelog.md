@@ -48,10 +48,22 @@ Instead [use modules for control logic](/manage/software/deploy-software/#create
 
 {{% /changelog %}}
 
+{{% changelog color="added" title="White labelled billing and custom pricing" date="2025-02-01" %}}
+
+You can now [set custom pricing](/manage/manage/white-labelled-billing/) for your organizations and add your logo to invoices and other billing materials.
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
 
 The `Stream` API method has been removed from the Go SDK camera interface.
 For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimage).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="OAuth" date="2025-01-27" %}}
+
+You can now [authenticate end users with OAuth](/manage/manage/oauth/).
 
 {{% /changelog %}}
 
@@ -280,7 +292,7 @@ In addition to other improvements, your component, service, and other resource c
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
 Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks, expanding upon the existing support for TensorFlow Lite models.
-You can now upload your own ML model(/data-ai/ai/deploy/#deploy-your-ml-model) using any of these frameworks for use with the Vision service.
+You can now upload your own ML model(/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) using any of these frameworks for use with the Vision service.
 
 {{% /changelog %}}
 
@@ -319,7 +331,7 @@ You can now use the [generic service](/operate/reference/components/generic/) to
 
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
-You can now upload [machine learning (ML) models](/data-ai/ai/deploy/#deploy-your-ml-model) to the Viam Registry, in addition to modules.
+You can now upload [machine learning (ML) models](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) to the Viam Registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
@@ -1001,7 +1013,7 @@ You will need to first register the machine learning model file with the [ML mod
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
 You can now [train](/data-ai/ai/train-tflite/) and [deploy](/data-ai/ai/deploy/) image classification models with the [data management service](/data-ai/capture-data/capture-sync/) and use your machine's image data directly within Viam.
-Additionally, you can upload and use existing [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model) with your machines.
+Additionally, you can upload and use existing [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) with your machines.
 For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/).
 
 {{% /changelog %}}

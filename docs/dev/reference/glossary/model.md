@@ -2,10 +2,10 @@
 title: Model
 id: model
 full_link:
-short_description: A particular implementation of a resource. For example, UR5e is a model of the arm component subtype.
+short_description: A particular implementation of a resource. For example, UR5e is a model of the arm component API.
 ---
 
-A particular implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="subtype" text="subtype" >}} that implements its [API](/dev/reference/apis/).
+A particular implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} [API](/dev/reference/apis/).
 
 Models allow you to control hardware or software of a similar category, such as motors, with a consistent set of methods as an interface, even if the underlying implementation differs.
 
