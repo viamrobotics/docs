@@ -49,7 +49,7 @@ The data management service writes data from your configured Viam resources to l
 
 - The data management service writes captured data to local edge device storage (<file>~/.viam/capture</file> by default).
 - The data management service syncs data to the Viam cloud at a configured sync interval using encrypted gRPC calls and deletes it from the disk once synced.
-- You can capture and sync data independently, one can run without the other.
+- You can capture and sync data independently; one can run without the other.
 
 For more information, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/).
 
@@ -153,7 +153,7 @@ The following attributes are available for the data management service:
 ## Configure data capture and sync for individual resources
 >>>>>>> d6526a8b9 (Simplify page)
 
-1. Navigate to a configured {{< glossary_tooltip term_id="resource" text="resource" >}} in **Builder** mode in the [Viam app](https://app.viam.com)
+1. Navigate to a configured {{< glossary_tooltip term_id="resource" text="resource" >}} in **Builder** mode in the [Viam app](https://app.viam.com).
 1. Find the **Data capture** section in the resource panel.
 1. Click **+ Add method**.
 
@@ -161,7 +161,7 @@ The following attributes are available for the data management service:
 
 1. If you see a warning **Capture disabled on data management service**, click **Enable capture on data management service**.
 1. Select a **Method** to capture data from.
-1. Set the capture **frequency** in hertz, for example to `0.1` with `ReadImage` on a camera to capture an image every 10 seconds.
+1. Set the capture **frequency** in hertz, for example to `0.2` with `ReadImage` on a camera to capture an image every 5 seconds.
 1. **Save** your config.
 
 You can add multiple methods with different capture frequencies.
@@ -218,9 +218,9 @@ For instructions on configuring data capture and sync with JSON, go to [Advanced
 
 For other ways to control data synchronization, see:
 
-- [conditional sync](/data-ai/capture-data/conditional-sync/)
-- [retention policies](/data-ai/capture-data/advanced/advanced-data-capture-sync/#cloud-data-retention)
-- [sync optimization](/data-ai/capture-data/advanced/advanced-data-capture-sync/#sync-optimization)
+- [Conditional sync](/data-ai/capture-data/conditional-sync/)
+- [Retention policies](/data-ai/capture-data/advanced/advanced-data-capture-sync/#cloud-data-retention)
+- [Sync optimization](/data-ai/capture-data/advanced/advanced-data-capture-sync/#sync-optimization)
 
 {{< /alert >}}
 
