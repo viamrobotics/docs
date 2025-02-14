@@ -1,10 +1,10 @@
 ---
-title: "Define a New Resource Subtype"
-linkTitle: "New API Subtype"
+title: "Define a New Resource API"
+linkTitle: "Custom API"
 weight: 30
 type: "docs"
 tags: ["rdk", "extending viam", "modular resources", "API"]
-description: "Define a custom API for a resource that does not fit into existing component or service subtypes."
+description: "Define a custom API for a resource that does not fit into existing component or service APIs."
 no_list: true
 aliases:
   - /extend/modular-resources/create/create-subtype/
@@ -14,14 +14,14 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-You can define a new, custom {{< glossary_tooltip term_id="resource" text="resource" >}} _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:
+You can define a new, custom {{< glossary_tooltip term_id="resource" text="resource" >}} API if:
 
-- You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} subtypes.
-- You have a resource that could fit into an existing subtype, but you want to define an API with different methods and messages than the ones in the existing [APIs](/dev/reference/apis/) for that subtype.
+- You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} APIs.
+- You have a resource that could fit into an existing API, but you want to define an API with different methods and messages than the one in the existing [APIs](/dev/reference/apis/).
 
 {{% alert title="Tip" color="tip" %}}
 
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and [extra parameters](/dev/reference/sdks/use-extra-params/) to add custom functionality to an existing subtype.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and [extra parameters](/dev/reference/sdks/use-extra-params/) to add custom functionality to an existing API.
 For example, if you have a [sensor](/operate/reference/components/sensor/) and you want to define a `Calibrate` method, you can use `DoCommand`.
 
 If your use case uses only `DoCommand` and no other API methods, you can define a new model of [generic component](/operate/reference/components/generic/) or [generic service](/operate/reference/services/generic/).
@@ -32,16 +32,16 @@ If your use case uses only `DoCommand` and no other API methods, you can define 
 
 Viam uses [protocol buffers](https://protobuf.dev/) for API definition.
 
-To define a new subtype, you need to define the methods and messages of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), write code in Python or Go to implement the higher level server and client functions required, and generate all necessary [protobuf module files](https://buf.build/docs/generate/usage/).
+To define a new API, you need to define the methods and messages of the API in [protobuf](https://github.com/protocolbuffers/protobuf), write code in Python or Go to implement the higher level server and client functions required, and generate all necessary [protobuf module files](https://buf.build/docs/generate/usage/).
 The following steps guide you through this process in more detail:
 
-1. Decide whether your custom subtype is a {{< glossary_tooltip term_id="component" text="component" >}} or a {{< glossary_tooltip term_id="service" text="service" >}}.
+1. Decide whether your custom API is a {{< glossary_tooltip term_id="component" text="component" >}} or a {{< glossary_tooltip term_id="service" text="service" >}}.
    If it provides an interface to control hardware, it is a component.
    If it provides higher-level functionality, it is a service.
-1. Choose a name for your subtype.
+1. Choose a name for your API.
    For example, `gizmo`.
 
-   Determine a valid {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} based on your subtype name.
+   Determine a valid {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} based on your API name.
    You can figure out the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} later when you [create a model that implements your custom API](/operate/get-started/other-hardware/).
 
    {{< expand "API namespace triplet and model namespace triplet example" >}}
@@ -71,7 +71,7 @@ The following steps guide you through this process in more detail:
 
 1. Define your new API:
 
-   - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<subtype name>.proto` file inside your <file>src/proto</file> directory.
+   - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<API name>.proto` file inside your <file>src/proto</file> directory.
      For reference:
      - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/proto/gizmo.proto)
      - [Example modular service proto file](https://github.com/viam-labs/speech-service-api/blob/main/src/proto/speech.proto)
@@ -88,7 +88,7 @@ The following steps guide you through this process in more detail:
    - [<file>buf.gen.yaml</file>](https://buf.build/docs/configuration/v1/buf-gen-yaml/)
    - [<file>buf.lock</file>](https://buf.build/docs/configuration/v1/buf-lock/)
 
-1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<subtype name>.proto` file you wrote.
+1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<API name>.proto` file you wrote.
 
    - [Example generated files for a Python-based service](https://github.com/viam-labs/speech-service-api/tree/main/src/proto).
      The `buf.` files were generated.

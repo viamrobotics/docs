@@ -90,14 +90,14 @@ The three pieces of the API namespace triplet are as follows:
 
 - `namespace`: `rdk`
 - `type`: `component`
-- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor` if you are creating a new model of motor
+- `api`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor` if you are creating a new model of motor
 
 {{% /tab %}}
 {{% tab name="Service" %}}
 
 - `namespace`: `rdk`
 - `type`: `service`
-- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `vision` if you are creating a new model of vision service
+- `api`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `vision` if you are creating a new model of vision service
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -280,7 +280,7 @@ class MyBase(Base, Reconfigurable):
     (basic forward/back/turn controls) is_moving (check if in motion), and stop
     (stop all motion).
 
-    It inherits from the built-in resource subtype Base and conforms to the
+    It inherits from the built-in resource API Base and conforms to the
     ``Reconfigurable`` protocol, which signifies that this component can be
     reconfigured. Additionally, it specifies a constructor function
     ``MyBase.new_base`` which confirms to the
@@ -471,7 +471,7 @@ For example, the following file, `mybase.go`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
-// It extends the built-in resource subtype Base and implements methods to handle resource construction, attribute configuration, and reconfiguration.
+// It extends the built-in resource API Base and implements methods to handle resource construction, attribute configuration, and reconfiguration.
 
 package mybase
 
@@ -950,12 +950,12 @@ async def main():
     registry before the module adds the resource model.
     """
     Registry.register_resource_creator(
-        Base.SUBTYPE,
+        Base.API,
         MyBase.MODEL,
         ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
     module = Module.from_args()
 
-    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
+    module.add_model_from_registry(Base.API, MyBase.MODEL)
     await module.start()
 
 if __name__ == "__main__":
