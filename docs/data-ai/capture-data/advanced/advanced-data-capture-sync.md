@@ -251,9 +251,6 @@ This example configuration captures data from the `GetReadings` method of a temp
 
 Example for a vision service:
 
-{{< tabs >}}
-{{% tab name="viam-server" %}}
-
 This example configuration captures data from the `CaptureAllFromCamera` method of the vision service:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -322,9 +319,6 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
   ]
 }
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Remote parts" %}}
