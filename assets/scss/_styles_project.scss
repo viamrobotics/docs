@@ -3145,3 +3145,26 @@ li.active-path.tutorial-heading > a {
 }
 
 // Table styling END
+// Numbered list styling START
+
+.td-content > ol {
+  list-style: none;
+  counter-reset: item;
+}
+
+.td-content > ol > li {
+  counter-increment: item;
+  margin-bottom: 5px;
+}
+.td-content > ol > li:before {
+  margin-right: 10px;
+  content: counter(item);
+  background: #000000;
+  // border-radius: 100%;
+  color: white;
+  width: 1.625rem;
+  height: 1.625rem;
+  text-align: center;
+  display: inline-block;
+}
+// Numbered list styling END
