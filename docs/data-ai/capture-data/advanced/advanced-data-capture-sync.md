@@ -105,7 +105,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 {{< /alert >}}
 
 {{< tabs >}}
-{{% tab name="Regular" %}}
+{{% tab name="Part or sub-part" %}}
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
