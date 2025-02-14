@@ -28,8 +28,8 @@ To configure the data manager in JSON, see the following example configurations:
   "services": [
     {
       "name": "my-data-manager",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "sync_interval_mins": 1,
         "capture_dir": "",
