@@ -18,85 +18,71 @@ You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/manag
 
 ### Share resources with users
 
-{{< table >}}
-{{% tablestep %}}
-**1. Navigate to the organization settings page**
-
 You must have the **Owner** role to be able to grant permissions.
 
-In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar and click on **Settings**.
+1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+2. Click on **Settings**.
+3. Find the **Members** section of the organization settings page.
+4. Click on **Grant access**.
+5. Enter a user's **Email** address.
 
-{{% /tablestep %}}
-{{% tablestep %}}
-**2. Grant access**
+   {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="700x" declaredimensions=true >}}
 
-In the **Members** section of the organization settings page you can click on **Grant access** to invite new users to an organization or a location to [share access](/manage/manage/access/) to the machines within it.
+6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Resource** to share.
 
-{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="900x" declaredimensions=true >}}
+   Users with access to a location or organization, can collaborate on the [machines](/operate/get-started/setup/#what-is-a-machine) within it.
 
-{{% /tablestep %}}
-{{% tablestep link="/manage/manage/rbac/" %}}
-**3. Select a resource and role**
+7. Select a role to assign to the user.
 
-Then select the resource that you would like to grant the user access to and the designated role (owner or operator).
-Users with owner access to a location or organization, can collaborate on the [machines](/operate/get-started/setup/#what-is-a-machine) within it.
+   For more information on roles and the permissions they provide, see [Manage access with Role-Based Access Control](/manage/manage/rbac/).
 
-You can grant a user access to the following resources:
+8. Click **invite**.
 
-- an {{< glossary_tooltip term_id="organization" text="organization" >}}
-- a {{< glossary_tooltip term_id="location" text="location" >}}
-- a {{< glossary_tooltip term_id="machine" text="machine" >}}
-
-{{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="" declaredimensions=true alt="Limit user access">}}
-
-Click **invite**.
-
-{{% /tablestep %}}
-{{< /table >}}
+   {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="" declaredimensions=true alt="Limit user access">}}
 
 ### Share a location with an organization
 
-Share your location with another organization you belong to by selecting the organization from the **Add Organization** dropdown menu and clicking **Share**.
+You must have the **Owner** role to be able to share locations.
 
-To share your location with an organization you are not a member of, select the location or enter the organization ID (a string like `1ab2c3d1-1234-123a-abcd-abcdef123456`) and click **Share**.
-Members of the org can find the org ID on their org settings page.
+1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+2. Select the organization that contains the location you want to share.
+3. Navigate to the location you want to share.
+4. Find the **Sharing** section of the location page.
+5. Select an organization you have access to in the dropdown or specify an organization ID (a string like `1ab2c3d1-1234-123a-abcd-abcdef123456`).
+   Members of the org can find the organization ID on their organization settings page.
+6. Click **Share**.
 
-{{% alert title="Note" color="info" %}}
-
+{{< alert title="Note" color="note" >}}
 Once you share a _nested_ location (sub-location), its parent location cannot be changed.
-
-{{% /alert %}}
+{{< /alert >}}
 
 ## Limit access
 
 ### Limit access for users
 
+You must have the **Owner** role to be able to limit permissions.
+
+1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+2. Click on **Settings**.
+3. Find the **Members** section of the organization settings page.
+4. Click on the user to open the access settings for the user.
+5. Either change the role of the user from owner to operator with the dropdown or click on **Limit access** and change the resource the user has [access](/manage/manage/rbac/).
+   You can also remove the user by clicking on **Remove user**.
+   {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true >}}
+
 {{< table >}}
-{{% tablestep %}}
-**1. Navigate to the organization settings page**
-
-You must have the **Owner** role to be able to grant permissions.
-
-In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar and click on **Settings**.
-
-{{% /tablestep %}}
-{{% tablestep link="/manage/manage/rbac/" %}}
-**2. Limit access**
-
-In the **Members** section of the organization settings page, click on the user to open the access settings for the user.
-
-Then either change the role of the user from owner to operator with the dropdown or click on **Limit access** and change the resource the user has access.
-
-You can also remove the user by clicking on **Remove user**.
-
-{{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true >}}
-
-{{% /tablestep %}}
 {{< /table >}}
 
 ### Remove an organization from a shared location
 
-You can remove any organization except the primary owner from the shared list by clicking the **X** to the right of the location in the shared list.
+You must have the **Owner** role to be able to share locations.
+
+1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+2. Select the organization that contains the location you want to share.
+3. Navigate to the location you want to share.
+4. Find the **Sharing** section of the location page.
+5. Click the **X** to the right of the organization you want to remove.
+6. Click **Remove**.
 
 ## Collaborate safely
 

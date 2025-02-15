@@ -23,15 +23,11 @@ Once set up:
 
 {{< table >}}
 {{% tablestep %}}
-**1. Set organization public namespace**
-
-In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Create a **Public namespace**.
+**1. Navigate to the organization settings page** through the menu in upper right corner of the page. Create a **Public namespace**.
 
 {{% /tablestep %}}
 {{% tablestep link="/dev/tools/cli/#organizations" %}}
-**2. Add your logo**
-
-Add a logo to be displayed on the login screen for your organization.
+**2. Add a logo** to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -43,9 +39,7 @@ You must have [owner permissions](/manage/manage/rbac/#organization-settings-and
 
 {{% /tablestep %}}
 {{% tablestep link="/dev/tools/cli/#organizations" %}}
-**3. Add support email**
-
-This is the email that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
+**3. Add the support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organization support-email set --support-email=support@logoipsum.com --org-id=<org-id>
@@ -59,9 +53,7 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 
 {{< table >}}
 {{% tablestep link="/dev/tools/cli/#organizations" %}}
-**1. Enable billing service**
-
-Enable the billing service for your organization:
+**1. Enable the billing service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organizations billing-service enable --org-id=<org-id> --address="100 Center Street, New York, NY, 10001"
@@ -70,9 +62,7 @@ Successfully enabled billing service for organization "<org-id>"
 
 {{% /tablestep %}}
 {{% tablestep link="/dev/tools/cli/#organizations" %}}
-**2. Get billing dashboard URL**
-
-Run the following command to check your billing configuration:
+**2. Get billing dashboard URL** from the billing service config:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
 viam organizations billing-service get-config --org-id="<org-id> "
@@ -93,14 +83,13 @@ You can update any value after setup using `viam organizations billing-service u
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**3. Check the billing dashboard**
+**3. Check the billing dashboard** by navigating to the billing dashboard URL:
 
-In the information returned in the previous step, get the billing dashboard URL.
 It will be of the form `https://app.viam.com/billing/<public-namespace>`.
 
 To see the billing dashboard for a specific organization, navigate to:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
 https://app.viam.com/billing/<public-namespace>?id=<org-id>
 ```
 
@@ -111,16 +100,14 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 
 ## Set custom pricing
 
-You can set custom pricing for machines within your organization.
+To use custom billing, add a billing configuration to your machines.
+You can add the billing configuration to individual machine configurations, however, usually this is added to a fragment.
 
-{{< table >}}
-{{% tablestep link="" %}}
-**1. Add billing configuration to the fragment for your machines**
-
-On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments) and select the fragment you use for your machines.
-If you are not using a fragment, you can instead add the billing configuration to individual machine configurations.
-
-In the JSON configuration, add the `billing` object, adjust attributes as needed and save.
+1. Navigate to the **FLEET** page.
+2. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
+3. Select the fragment you use for your machines.
+4. In the JSON configuration, add the `billing` object, adjust attributes as needed.
+5. Save the fragment.
 
 {{< tabs >}}
 {{% tab name="Example" %}}
@@ -197,6 +184,3 @@ In the JSON configuration, add the `billing` object, adjust attributes as needed
 | `logs_data_egress_bytes` | float | Optional | Cost per byte per month for logs data egress. Default: `0`. |
 
 {{% /expand%}}
-
-{{% /tablestep %}}
-{{< /table >}}
