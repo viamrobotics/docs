@@ -44,7 +44,7 @@ date: "2024-09-18"
 {{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
 
 [Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
-Instead [use modules for control logic](/manage/software/deploy-software/#create-a-module-with-machine-control-logic).
+Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
 
 {{% /changelog %}}
 

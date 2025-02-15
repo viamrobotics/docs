@@ -21,7 +21,7 @@ You can configure processes to run once upon startup or indefinitely.
 {{% alert title="Support Notice" color="warn" %}}
 
 Processes are deprecated and will be removed in a future version of `viam-server`.
-Instead [use modules for control logic](/manage/software/deploy-software/#create-a-module-with-machine-control-logic).
+Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
 
 {{% /alert %}}
 
