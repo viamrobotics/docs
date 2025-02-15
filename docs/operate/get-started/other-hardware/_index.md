@@ -316,13 +316,13 @@ You can find more examples by looking at the source code GitHub repos linked fro
    The following log severity levels are available for resource logs:
 
 ```python {class="line-numbers linkable-line-numbers"}
- # Within some method, log information:
- self.logger.debug("debug info")
- self.logger.info("info")
- self.logger.warn("warning info")
- self.logger.error("error info")
- self.logger.exception("error info", exc_info=True)
- self.logger.critical("critical info")
+# Within some method, log information:
+self.logger.debug("debug info")
+self.logger.info("info")
+self.logger.warn("warning info")
+self.logger.error("error info")
+self.logger.exception("error info", exc_info=True)
+self.logger.critical("critical info")
 ```
 
 Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
