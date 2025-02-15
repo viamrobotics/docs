@@ -89,7 +89,7 @@ It will be of the form `https://app.viam.com/billing/<public-namespace>`.
 
 To see the billing dashboard for a specific organization, navigate to:
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
+```sh {class="command-line" data-prompt="$"}
 https://app.viam.com/billing/<public-namespace>?id=<org-id>
 ```
 
