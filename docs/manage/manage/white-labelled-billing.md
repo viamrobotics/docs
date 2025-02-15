@@ -39,7 +39,7 @@ You must have [owner permissions](/manage/manage/rbac/#organization-settings-and
 
 {{% /tablestep %}}
 {{% tablestep link="/dev/tools/cli/#organizations" %}}
-**3. Add the support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
+**3. Add the support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account-related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organization support-email set --support-email=support@logoipsum.com --org-id=<org-id>
