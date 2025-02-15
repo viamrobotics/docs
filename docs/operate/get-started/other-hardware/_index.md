@@ -181,11 +181,11 @@ Edit the generated files to add your logic:
 
    - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
-1. **Edit the methods you want to implement**:
+<ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
 
-   For each method you want to implement, replace the body of the method with the relevant logic from your test script.
-   Make sure you return the correct type in accordance with the function's return signature.
-   You can find details about the return types at [python.viam.dev](https://python.viam.dev/autoapi/viam/components/index.html).
+For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+Make sure you return the correct type in accordance with the function's return signature.
+You can find details about the return types at [python.viam.dev](https://python.viam.dev/autoapi/viam/components/index.html).
 
 {{< expand "Example code for a sensor module" >}}
 
@@ -310,25 +310,27 @@ if __name__ == "__main__":
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
 
-5. **Add logging** messages as desired.
+</li></ol>
+
+<ol><li style="counter-reset: item 4"><strong>Add logging</strong> messages as desired.
    The following log severity levels are available for resource logs:
 
-   ```python {class="line-numbers linkable-line-numbers"}
-    # Within some method, log information:
-    self.logger.debug("debug info")
-    self.logger.info("info")
-    self.logger.warn("warning info")
-    self.logger.error("error info")
-    self.logger.exception("error info", exc_info=True)
-    self.logger.critical("critical info")
-   ```
+```python {class="line-numbers linkable-line-numbers"}
+ # Within some method, log information:
+ self.logger.debug("debug info")
+ self.logger.info("info")
+ self.logger.warn("warning info")
+ self.logger.error("error info")
+ self.logger.exception("error info", exc_info=True)
+ self.logger.critical("critical info")
+```
 
-   Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
-   Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource's configuration card in the app.
+Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
+Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource's configuration card in the app.
 
-   {{% alert title="Note" color="note" %}}
-   In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
-   {{% /alert %}}
+{{% alert title="Note" color="note" %}}
+In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
+{{% /alert %}}
 
 {{< expand "Click for global logging information" >}}
 
@@ -352,8 +354,12 @@ LOGGER.critical("critical info")
 
 {{< /expand >}}
 
-6. Edit the generated <file>requirements.txt</file> file to include any packages that must be installed for the module to run.
+</li></ol>
+
+<ol><li style="counter-reset: item 5"><strong>Edit the generated <file>requirements.txt</file> file</strong> to include any packages that must be installed for the module to run.
    Depending on your use case, you may not need to add anything here beyond `viam-sdk` which is auto-populated.
+
+</li></ol>
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -390,11 +396,11 @@ LOGGER.critical("critical info")
 
    - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
-1. **Edit the methods you want to implement**:
+<ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
 
-   For each method you want to implement, replace the body of the method with the relevant logic from your test script.
-   Make sure you return the correct type in accordance with the function's return signature.
-   You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
+For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+Make sure you return the correct type in accordance with the function's return signature.
+You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
 {{< expand "Example code for a camera module" >}}
 This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
@@ -524,26 +530,30 @@ func (s *helloWorldHelloCamera) Close(context.Context) error {
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
 
-6. **Add logging** messages as desired.
+</li></ol>
 
-   You can add log messages with various levels of severity:
+<ol><li style="counter-reset: item 5"><strong>Add logging</strong> messages as desired.
 
-   ```go {class="line-numbers linkable-line-numbers"}
-   fn (c *component) someFunction(ctx context.Context, a int) {
-     // Log with severity info:
-     c.logger.CInfof(ctx, "performing some function with a=%v", a)
-     // Log with severity debug (using value wrapping):
-     c.logger.CDebugw(ctx, "performing some function", "a" ,a)
-     // Log with severity warn:
-     c.logger.CWarnw(ctx, "encountered warning for component", "name", c.Name())
-     // Log with severity error without a parameter:
-     c.logger.CError(ctx, "encountered an error")
-   }
-   ```
+You can add log messages with various levels of severity:
 
-   {{% alert title="Note" color="note" %}}
-   In order to see debug logs when using your modular resource, you'll need to run `viam-server` with the `-debug` option.
-   {{% /alert %}}
+```go {class="line-numbers linkable-line-numbers"}
+fn (c *component) someFunction(ctx context.Context, a int) {
+  // Log with severity info:
+  c.logger.CInfof(ctx, "performing some function with a=%v", a)
+  // Log with severity debug (using value wrapping):
+  c.logger.CDebugw(ctx, "performing some function", "a" ,a)
+  // Log with severity warn:
+  c.logger.CWarnw(ctx, "encountered warning for component", "name", c.Name())
+  // Log with severity error without a parameter:
+  c.logger.CError(ctx, "encountered an error")
+}
+```
+
+</li></ol>
+
+{{% alert title="Note" color="note" %}}
+In order to see debug logs when using your modular resource, you'll need to run `viam-server` with the `-debug` option.
+{{% /alert %}}
 
 {{% /tab %}}
 {{< /tabs >}}
