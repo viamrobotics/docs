@@ -6,15 +6,14 @@ Add styles or override variables from the theme here.
 
 /* START Add Square bracket on footnote number */
 a.footnote-ref::before {
-  content: "[";
+  content: '[';
 }
 a.footnote-ref::after {
-  content: "]";
+  content: ']';
 }
 /* END Add Square bracket on footnote number */
 
-div.footnotes > ol > li,
-div.footnotes > ol > li > p {
+div.footnotes > ol > li, div.footnotes > ol > li > p {
   font-size: 0.75rem !important;
 }
 
@@ -35,9 +34,7 @@ div.footnotes > ol > li > p {
 }
 
 .td-navbar .navbar-brand {
-  font-family:
-    Space Mono,
-    sans-serif;
+  font-family: Space Mono, sans-serif;
   font-size: 0.833rem;
   line-height: 1.667em;
   letter-spacing: 0.1875rem;
@@ -59,9 +56,7 @@ div.footnotes > ol > li > p {
   align-items: center;
 }
 
-.navbar-dark .navbar-brand,
-.navbar-dark .navbar-brand:focus,
-.navbar-dark .navbar-brand:hover {
+.navbar-dark .navbar-brand, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
   color: black;
 }
 
@@ -71,9 +66,7 @@ div.footnotes > ol > li > p {
 }
 
 .td-navbar .nav-link {
-  font-family:
-    Space Mono,
-    sans-serif;
+  font-family: Space Mono, sans-serif;
   font-weight: 400;
   font-size: 0.833rem;
   line-height: 1.667em;
@@ -82,21 +75,15 @@ div.footnotes > ol > li > p {
   text-decoration: none;
 }
 
-h1,
-.h1 {
-  font-family:
-    Space grotesk,
-    sans-serif;
+h1, .h1 {
+  font-family: Space grotesk, sans-serif;
   font-size: 2.625rem; // 32pt
   margin-left: 0px;
   font-weight: 500;
 }
 
-h2,
-.h2 {
-  font-family:
-    Public sans,
-    sans-serif;
+h2, .h2 {
+  font-family: Public sans, sans-serif;
   font-size: 1.25rem !important; // 20px
   line-height: 1.25rem;
   font-weight: 500;
@@ -112,44 +99,33 @@ h2,
   margin-top: 1.5rem;
 }
 
-h3,
-.h3 {
-  font-family:
-    space grotesk,
-    sans-serif;
+h3, .h3 {
+  font-family: space grotesk, sans-serif;
   font-size: 1.1667rem !important; // 20pt
   font-weight: 400;
   clear: both;
 }
 
-h4,
-.h4 {
-  font-family:
-    space grotesk,
-    sans-serif;
-  font-size: 1rem !important; // 16pt
+h4, .h4 {
+  font-family: space grotesk, sans-serif;
+  font-size: 1.0rem !important; // 16pt
   line-height: 1.4375em;
   clear: both;
 }
 
-h5,
-.h5 {
-  font-family:
-    space grotesk,
-    sans-serif;
+h5, .h5 {
+  font-family: space grotesk, sans-serif;
   font-size: 0.933rem !important; // 14pt
   clear: both;
 }
 
-h6,
-.h6 {
+h6, .h6 {
   font-size: 0.933rem !important;
   line-height: 1.0625rem; // 12pt
   clear: both;
 }
 
-h7,
-.h7 {
+h7, .h7 {
   font-size: 0.833rem !important;
   line-height: 1.0625rem;
   font-weight: 400;
@@ -186,8 +162,7 @@ h7,
 //   border-left: 2px solid #666666;
 // }
 
-.toc-list,
-.td-toc ul ul {
+.toc-list, .td-toc ul ul {
   padding-inline-start: 0;
 }
 
@@ -229,7 +204,7 @@ h7,
 }
 
 .breadcrumb-item {
-  color: #0000ea;
+  color: #0000EA;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -241,23 +216,15 @@ h7,
 
 // Link styling
 
-a,
-a:hover {
-  color: #0000ea;
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  h7,
-  p {
+a, a:hover {
+  color: #0000EA;
+  h1, h2, h3, h4, h5, h6, h7, p {
     color: black;
   }
 }
 
 a > code {
-  color: #0000ea !important;
+  color: #0000EA !important;
 }
 
 .td-toc #TableOfContents ul li li a > code {
@@ -276,8 +243,7 @@ a > code {
   display: none;
 }
 
-p,
-li {
+p, li {
   color: #515151;
   a {
     text-decoration: none;
@@ -313,8 +279,7 @@ footer * small {
   color: black;
 }
 
-.text-white,
-footer a {
+.text-white, footer a {
   color: black !important;
 }
 
@@ -342,21 +307,8 @@ footer small {
 }
 
 /* sets the base font heavier than the theme. */
-.td-content p,
-.td-content li,
-.td-content td {
-  font-family:
-    "Public Sans",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol";
+.td-content p, .td-content li, .td-content td {
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: normal;
   font-size: 0.938rem !important;
   line-height: 1.625rem !important;
@@ -366,11 +318,11 @@ footer small {
 END MARKETING CSS
 */
 
+
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/*/
 /* Added margins, changed Preload to 600px. The default was 100% */
 
-.td-content > .video-shortcode,
-.video-shortcode {
+.td-content > .video-shortcode, .video-shortcode {
   margin: 12px 0 12px 0;
   border: solid 1px;
   max-width: 100%;
@@ -378,8 +330,7 @@ END MARKETING CSS
   height: auto;
 }
 
-.td-content > .video-shortcode.aligncenter,
-.video-shortcode.aligncenter {
+.td-content > .video-shortcode.aligncenter, .video-shortcode.aligncenter {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -387,91 +338,42 @@ END MARKETING CSS
 
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/ */
 
-.primary-color {
-  color: var(--primary-color);
-}
-.bg-primary-color {
-  background-color: var(--primary-color);
-}
-.hover-bg-primary-color:hover {
-  background-color: var(--primary-color);
-}
+.primary-color                      {color: var(--primary-color)}
+.bg-primary-color                   {background-color: var(--primary-color)}
+.hover-bg-primary-color:hover       {background-color: var(--primary-color)}
 
-.primary-color-dark {
-  color: var(--primary-color-dark);
-}
-.bg-primary-color-dark {
-  background-color: var(--primary-color-dark);
-}
-.hover-bg-primary-color-dark:hover {
-  background-color: var(--primary-color-dark);
-}
+.primary-color-dark                  {color: var(--primary-color-dark)}
+.bg-primary-color-dark               {background-color: var(--primary-color-dark)}
+.hover-bg-primary-color-dark:hover   {background-color: var(--primary-color-dark)}
 
-.primary-color-light {
-  color: var(--primary-color-light);
-}
-.bg-primary-color-light {
-  background-color: var(--primary-color-light);
-}
-.hover-bg-primary-color-light:hover {
-  background-color: var(--primary-color-light);
-}
+.primary-color-light                  {color: var(--primary-color-light)}
+.bg-primary-color-light               {background-color: var(--primary-color-light)}
+.hover-bg-primary-color-light:hover   {background-color: var(--primary-color-light)}
 
-.accent-color {
-  color: var(--accent-color);
-}
-.bg-accent-color {
-  background-color: var(--accent-color);
-}
-.hover-bg-accent-color:hover {
-  background-color: var(--accent-color);
-}
+.accent-color                         {color: var(--accent-color)}
+.bg-accent-color                      {background-color: var(--accent-color)}
+.hover-bg-accent-color:hover          {background-color: var(--accent-color)}
 
-.accent-color-light {
-  color: var(--accent-color-light);
-}
-.hover-accent-color-light:hover {
-  color: var(--accent-color-light);
-}
-.bg-accent-color-light {
-  background-color: var(--accent-color-light);
-}
-.hover-bg-accent-color-light:hover {
-  background-color: var(--accent-color-light);
-}
+.accent-color-light                   {color: var(--accent-color-light)}
+.hover-accent-color-light:hover                   {color: var(--accent-color-light)}
+.bg-accent-color-light                {background-color: var(--accent-color-light)}
+.hover-bg-accent-color-light:hover    {background-color: var(--accent-color-light)}
 
-.accent-color-dark {
-  color: var(--accent-color-dark);
-}
-.bg-accent-color-dark {
-  background-color: var(--accent-color-dark);
-}
-.hover-bg-accent-color-dark:hover {
-  background-color: var(--accent-color-dark);
-}
+.accent-color-dark                    {color: var(--accent-color-dark)}
+.bg-accent-color-dark                 {background-color: var(--accent-color-dark)}
+.hover-bg-accent-color-dark:hover     {background-color: var(--accent-color-dark)}
 
-.text-color-primary {
-  color: var(--text-color-primary);
-}
-.text-on-primary-color {
-  color: var(--text-on-primary-color);
-}
-.text-color-secondary {
-  color: var(--text-color-secondary);
-}
-.text-color-disabled {
-  color: var(--text-color-disabled);
-}
-.divider-color {
-  color: var(--divider-color);
-}
-.warn-color {
-  color: var(--warn-color);
-}
+.text-color-primary    {color: var(--text-color-primary)}
+.text-on-primary-color {color: var(--text-on-primary-color)}
+.text-color-secondary  {color: var(--text-color-secondary)}
+.text-color-disabled   {color: var(--text-color-disabled)}
+.divider-color         {color: var(--divider-color)}
+.warn-color            {color: var(--warn-color)}
 
 .nested-links a {
   color: var(--primary-color);
   text-decoration: none;
+
 }
 
 /* START CSS FOR NOTES, CAUTIONS, WARNINGS */
@@ -498,8 +400,7 @@ END MARKETING CSS
   }
 }
 
-.alert > ul:last-child,
-.alert > p:last-child {
+.alert > ul:last-child, .alert > p:last-child {
   margin-bottom: 0 !important;
 }
 
@@ -509,16 +410,14 @@ END MARKETING CSS
   clear: both;
 }
 
-.alert-heading {
-  // left margin for h4 in alerts
+.alert-heading { // left margin for h4 in alerts
   margin-left: 0;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
 }
-.alert-heading::after {
-  // blocks display h4 rules in alerts
-  content: " ";
-  display: none;
+.alert-heading::after { // blocks display h4 rules in alerts
+  content:' ';
+  display:none;
 }
 
 .note,
@@ -542,7 +441,7 @@ END MARKETING CSS
 .admonition-content {
   display: block;
   margin: 0px;
-  padding: 0.125em 1em;
+  padding: .125em 1em;
   margin-top: 2em;
   margin-bottom: 2em;
   overflow-x: auto;
@@ -556,6 +455,7 @@ END MARKETING CSS
 .alert a:hover {
   text-decoration: underline;
 }
+
 
 .alert.alert-warning {
   border-color: red;
@@ -572,8 +472,7 @@ END MARKETING CSS
   border-left: 3px solid #f0b93f;
   background-color: rgb(252, 244, 225);
 }
-.alert.alert-tip,
-.alert.alert-info {
+.alert.alert-tip, .alert.alert-info {
   border-color: #1be020;
   border-left: 3px solid #1be020;
   background-color: rgb(229, 249, 228);
@@ -585,6 +484,7 @@ END MARKETING CSS
 }
 
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
+
 
 /* START CSS FOR EXPANDER */
 
@@ -601,9 +501,7 @@ END MARKETING CSS
 
 .expand-label span h5 {
   display: inline;
-  font-family:
-    Public Sans,
-    system-ui;
+  font-family: Public Sans,system-ui;
   font-size: 0.938rem !important;
 }
 
@@ -684,24 +582,20 @@ details summary::-webkit-details-marker {
 
 /* START CSS for how-to paths */
 
-.expand.howtoexpand summary,
-.expand.howtoexpand .expand-content {
+.expand.howtoexpand summary, .expand.howtoexpand .expand-content {
   background-color: #eaf9fb;
 }
 
-.expand.howtoexpand.light summary,
-.expand.howtoexpand.light .expand-content {
-  background-color: rgba(200, 249, 183, 1) !important;
+.expand.howtoexpand.light summary, .expand.howtoexpand.light .expand-content  {
+  background-color: rgba(200, 249, 183, 1.0) !important;
 }
 
-.expand.howtoexpand.middle summary,
-.expand.howtoexpand.middle .expand-content {
-  background-color: rgba(189, 234, 196, 1) !important;
+.expand.howtoexpand.middle summary, .expand.howtoexpand.middle .expand-content  {
+  background-color: rgba(189, 234, 196, 1.0) !important;
 }
 
-.expand.howtoexpand.dark summary,
-.expand.howtoexpand.dark .expand-content {
-  background-color: rgba(163, 203, 178, 1) !important;
+.expand.howtoexpand.dark summary, .expand.howtoexpand.dark .expand-content  {
+  background-color: rgba(163, 203, 178, 1.0) !important;
 }
 
 .howtoexpand .expand-label {
@@ -750,12 +644,7 @@ details summary::-webkit-details-marker {
 }
 
 @media (min-width: 691px) {
-  .max-page
-    .howtoexpand
-    > .expand-content
-    > .card-container
-    > div
-    > .hover-card {
+  .max-page .howtoexpand > .expand-content > .card-container > div > .hover-card {
     max-width: 280px !important;
   }
   .search-panel__results.guides > #hits .hover-card {
@@ -772,11 +661,11 @@ details summary::-webkit-details-marker {
 }
 
 .howtoexpand #tasks {
-  font-size: 0.93rem !important;
+  font-size: .93rem !important;
 }
 
 .howtoexpand .hover-card {
-  margin: 0.8rem;
+  margin: .8rem;
 }
 
 /* END CSS for how-to paths */
@@ -795,13 +684,12 @@ details summary::-webkit-details-marker {
 
 // Hover animations and colors
 
-.hover-card > a,
-.hover-card > .hovercardcontainer {
+.hover-card > a, .hover-card > .hovercardcontainer {
   border: 1px solid #dee2e6;
   border-radius: 2px;
   padding: 1rem;
   margin: 0px;
-  transition: all 0.2s;
+  transition: all .2s;
   width: 100%;
 }
 
@@ -809,21 +697,19 @@ details summary::-webkit-details-marker {
   margin: 0.5rem 1rem;
 }
 
-.hover-card.link-with-icon > a,
-.hover-card.link-with-ico > .hovercardcontainer {
+.hover-card.link-with-icon > a, .hover-card.link-with-ico > .hovercardcontainer {
   padding: 0.5rem 1rem;
 }
 
-.hover-card:hover > a,
-.hover-card:hover > .hovercardcontainer {
-  -webkit-transform: translate(-3px, -3px);
-  -ms-transform: translate(-3px, -3px);
-  transform: translate(-3px, -3px);
+.hover-card:hover > a, .hover-card:hover > .hovercardcontainer  {
+  -webkit-transform: translate(-3px,-3px);
+  -ms-transform: translate(-3px,-3px);
+  transform: translate(-3px,-3px);
   box-shadow: 5px 5px 0 0 #dee2e6;
 }
 
 .hover-card.yellow:hover > a {
-  box-shadow: 5px 5px 0 0 #ffd400;
+  box-shadow: 5px 5px 0 0 #FFD400;
 }
 .hover-card.green:hover > a {
   box-shadow: 5px 5px 0 0 #00ef83;
@@ -839,19 +725,15 @@ details summary::-webkit-details-marker {
 }
 
 // images in hover cards at the top have a margin before text
-.hover-card a > .hover-card-img,
-.hover-card a > .hover-card-icon {
+.hover-card a > .hover-card-img, .hover-card a > .hover-card-icon {
   margin-bottom: 1rem;
 }
 
 // Adjust font size
 
-.hover-card a div > div,
-.hover-card div > div {
-  font-family:
-    space grotesk,
-    sans-serif;
-  font-size: 1.24rem !important;
+.hover-card a div > div, .hover-card div > div {
+  font-family: space grotesk, sans-serif;
+  font-size: 1.24rem!important;
   font-weight: 450;
   line-height: 1.4375em;
   color: black;
@@ -911,8 +793,7 @@ details summary::-webkit-details-marker {
   padding-bottom: 7px;
 }
 
-.hover-card * img,
-.hover-card * video {
+.hover-card * img, .hover-card * video {
   object-fit: cover;
   width: 100%;
   max-width: 100%;
@@ -921,8 +802,7 @@ details summary::-webkit-details-marker {
   border: 1px solid black;
 }
 
-.fit-contain.hover-card * img,
-.fit-contain.hover-card * video {
+.fit-contain.hover-card * img, .fit-contain.hover-card * video {
   object-fit: contain;
 }
 
@@ -961,8 +841,7 @@ details summary::-webkit-details-marker {
   flex-direction: column;
 }
 
-.hover-card.small a:hover,
-li .hover-card a:hover {
+.hover-card.small a:hover, li .hover-card a:hover{
   text-decoration: none;
 }
 
@@ -1029,14 +908,12 @@ li .hover-card a:hover {
   margin-bottom: 0;
 }
 
-@media (max-width: 650px) {
-  // at least two cards fit next to one another
+@media (max-width: 650px) { // at least two cards fit next to one another
   .hover-card.tutorial a > video {
     margin-bottom: 0;
   }
 
-  .hover-card {
-    // only one card
+  .hover-card { // only one card
     min-width: 92%;
     width: 92%;
     max-width: 92%;
@@ -1046,8 +923,7 @@ li .hover-card a:hover {
     display: flex;
     padding-right: 1rem;
 
-    .hover-card-video,
-    .hover-card-img {
+    .hover-card-video, .hover-card-img {
       max-width: 50%;
       min-width: 50%;
       margin: 0 1rem 1rem 0;
@@ -1096,12 +972,12 @@ li .hover-card a:hover {
 }
 
 .hover-card * .pill {
-  background-color: whitesmoke;
-  padding: 0.1rem 0.25rem;
-  border: 1px solid black;
-  margin: 0.1rem;
-  font-size: 0.833rem !important;
-  font-weight: 400 !important;
+ background-color: whitesmoke;
+ padding: 0.1rem 0.25rem;
+ border: 1px solid black;
+ margin: 0.1rem;
+ font-size: 0.833rem !important;
+ font-weight: 400 !important;
 }
 
 .hover-card * .pills > .pill.pill-highlight {
@@ -1132,10 +1008,10 @@ li .hover-card a:hover {
 }
 
 .hover-card.tutorial * .small-hover-card-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .robot-cost {
@@ -1175,14 +1051,14 @@ li .hover-card a:hover {
 
 /* card styling END */
 
+
 .nav-link {
   text-decoration: none;
 }
 
 /* CSS to ensure lists within columns of markdown aren't indented START */
 
-td > ul,
-td > ol {
+td > ul, td > ol {
   padding-inline-start: 1.5em;
 }
 
@@ -1197,20 +1073,17 @@ td > ol {
   flex-direction: row;
 }
 
-.horizontalheaders > .nav-tabs,
-.horizontalheaders * .nav-tabs {
+.horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
   justify-content: unset;
   gap: 0px;
 }
 
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link.active:hover {
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
   border-color: rgb(156, 156, 164);
   background-color: rgb(251, 251, 252);
 }
 
-.horizontalheaders > .nav-tabs,
-.horizontalheaders * .nav-tabs {
+.horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
   background-color: rgb(247, 247, 248);
   border-bottom: 1px solid #d7d7d9;
 }
@@ -1223,15 +1096,13 @@ td > ol {
   background-color: #d7d7d9;
 }
 
-.horizontalheaders * .nav-tabs .nav-link.active,
-.horizontalheaders * .nav-tabs .nav-link.active:hover {
+.horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
   background-color: white;
   border-top: unset;
   border-bottom: 1px solid white;
 }
 
-.nav-tabs .nav-link,
-.nav-tabs .nav-link:hover {
+.nav-tabs .nav-link, .nav-tabs .nav-link:hover {
   border: 0px;
   border-style: solid;
   border-radius: 0;
@@ -1240,12 +1111,11 @@ td > ol {
   margin-right: -1px;
   border-bottom: 1px solid rgb(209, 213, 219);
   border-top: 1px solid rgb(209, 213, 219);
-  padding: 0.25rem 0.75rem;
+  padding: 0.5rem 1.5rem;
   color: rgb(78, 79, 82);
 }
 
-.horizontalheaders .nav-tabs .nav-link,
-.horizontalheaders .nav-tabs .nav-link:hover {
+.horizontalheaders .nav-tabs .nav-link, .horizontalheaders .nav-tabs .nav-link:hover {
   padding: 0.5rem 1.5rem;
 }
 
@@ -1257,29 +1127,28 @@ td > ol {
   background-color: rgb(241, 241, 244);
 }
 
-.horizontalheaders * .nav-tabs .nav-link,
-.horizontalheaders * .nav-tabs .nav-link:hover {
+.horizontalheaders * .nav-tabs .nav-link, .horizontalheaders * .nav-tabs .nav-link:hover {
   border-top: unset;
   background-color: rgb(247, 247, 248);
   border-left: 1px solid rgb(209, 213, 219);
   border-bottom: 1px solid rgb(209, 213, 219);
+  border-right: 1px solid rgb(209, 213, 219);
 }
 
 .nav-tabs .nav-item {
   margin-bottom: 0.5rem;
 }
 
-.nav-tabs .nav-item > a {
-  text-align: center;
+.horizontalheaders * .nav-tabs > .nav-item, .horizontalheaders > .nav-tabs > .nav-item {
+  margin-bottom: 0rem;
 }
 
 .horizontalheaders > .nav-tabs .nav-item > a {
   text-align: unset;
 }
 
-.horizontalheaders * .nav-tabs > .nav-item,
-.horizontalheaders > .nav-tabs > .nav-item {
-  margin-bottom: 0rem;
+.nav-tabs .nav-item > a {
+  text-align: center;
 }
 
 .nav-tabs > .nav-item:last-child {
@@ -1287,13 +1156,12 @@ td > ol {
 }
 
 .tab-content {
-  padding: 0.7rem;
+  padding: .7rem;
   background-color: white;
   border-bottom: 1px solid rgb(215, 215, 217);
 }
 
-.horizontalheaders * .tab-content,
-.horizontalheaders > .tab-content {
+.horizontalheaders * .tab-content, .horizontalheaders > .tab-content {
   border: 1px solid rgb(215, 215, 217);
 }
 
@@ -1330,8 +1198,7 @@ td > ol {
   width: 200px;
 }
 
-#scrollButton,
-#chatButton {
+#scrollButton, #chatButton {
   position: sticky;
   left: 100%;
   bottom: 1rem;
@@ -1344,8 +1211,7 @@ td > ol {
   color: white;
 }
 
-#scrollButton > i,
-#chatButton > i {
+#scrollButton > i, #chatButton > i {
   color: white;
 }
 
@@ -1354,21 +1220,11 @@ td > ol {
 }
 
 @keyframes wiggle {
-  0% {
-    transform: rotate(0deg);
-  }
-  80% {
-    transform: rotate(0deg);
-  }
-  85% {
-    transform: rotate(5deg);
-  }
-  95% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+  0% { transform: rotate(0deg); }
+ 80% { transform: rotate(0deg); }
+ 85% { transform: rotate(5deg); }
+ 95% { transform: rotate(-5deg); }
+100% { transform: rotate(0deg); }
 }
 
 #chatButton {
@@ -1386,8 +1242,7 @@ td > ol {
   }
 }
 
-#edit-on-github,
-#rss-feed {
+#edit-on-github, #rss-feed {
   float: right;
   a {
     color: #515151;
@@ -1395,6 +1250,7 @@ td > ol {
 }
 
 /* scroll to top and github styling END */
+
 
 /* cookie consent message START*/
 .alert.cookieconsent-optout-marketing {
@@ -1532,7 +1388,7 @@ img.frame {
   color: black;
 
   svg {
-    color: #0000ea;
+    color: #0000EA;
     visibility: initial;
   }
 }
@@ -1540,71 +1396,23 @@ img.frame {
 // Align media to left, center, or right
 
 @media (min-width: 650px) {
-  img.alignright {
-    padding: 4px;
-    margin: 0 0 2px 20px;
-    display: inline;
-  }
-  img.alignleft {
-    padding: 4px;
-    margin: 0 20px 2px 0;
-    display: inline;
-  }
-  video.alignright {
-    padding: 4px;
-    margin: 0 0 2px 20px;
-    display: inline;
-  }
-  video.alignleft {
-    padding: 4px;
-    margin: 0 20px 2px 0;
-    display: inline;
-  }
-  div.alignright {
-    padding: 4px;
-    margin: 0 0 2px 20px;
-    display: inline;
-  }
-  div.alignleft {
-    padding: 4px;
-    margin: 0 20px 2px 0;
-    display: inline;
-  }
-  .alignright {
-    float: right;
-  }
-  .alignleft {
-    float: left;
-  }
-  .aligncenter {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  img.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
+  img.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
+  video.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
+  video.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
+  div.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
+  div.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
+  .alignright { float: right; }
+  .alignleft { float: left; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
 }
 
 // center on small screens
 @media (max-width: 650px) {
-  .alignright {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .alignleft {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .aligncenter {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .center-if-small {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .alignright { display: block; margin-left: auto; margin-right: auto; }
+  .alignleft { display: block; margin-left: auto; margin-right: auto; }
+  .aligncenter { display: block; margin-left: auto; margin-right: auto; }
+  .center-if-small { display: block; margin-left: auto; margin-right: auto; }
 }
 
 // Fix page width on full screen to be 90%
@@ -1616,11 +1424,15 @@ img.frame {
 .td-content > picture,
 .td-content > picture > img {
   @include media-breakpoint-up(lg) {
-    max-width: 90%;
+      max-width: 90%;
   }
 
   max-width: 100%;
   max-height: 100%;
+}
+
+.gif {
+  margin-bottom: 1rem;
 }
 
 .td-content > img.shadow,
@@ -1628,24 +1440,20 @@ img.frame {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.gif {
-  margin-bottom: 1rem;
-}
-
 @media (min-width: 992px) {
   .td-max-width-on-larger-screens,
-  .td-content > pre,
-  .td-content > .highlight,
-  .td-content > .lead,
-  .td-content > h1,
-  .td-content > h2,
-  .td-content > ul,
-  .td-content > ol,
-  .td-content > p,
-  .td-content > blockquote,
-  .td-content > dl dd,
+  .td-content>pre,
+  .td-content>.highlight,
+  .td-content>.lead,
+  .td-content>h1,
+  .td-content>h2,
+  .td-content>ul,
+  .td-content>ol,
+  .td-content>p,
+  .td-content>blockquote,
+  .td-content>dl dd,
   .td-content .footnotes,
-  .td-content > .alert {
+  .td-content>.alert {
     max-width: 90%;
   }
 }
@@ -1690,32 +1498,33 @@ img.frame {
 }
 
 @media (max-width: 800px) {
-  .relatedcard {
-    width: 100%;
-    padding: 0.25rem 0rem;
-    min-height: unset;
-  }
+.relatedcard {
+  width: 100%;
+  padding: 0.25rem 0rem;
+  min-height: unset;
+}
 
-  .relatedcard a {
-    width: 95%;
-    text-align: unset;
-    padding: 0;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+.relatedcard a {
+  width: 95%;
+  text-align: unset;
+  padding: 0;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
-  .relatedcard * img {
-    width: 45px;
-    height: 45px;
-    margin: 0rem;
-  }
+.relatedcard * img {
+  width: 45px;
+  height: 45px;
+  margin: 0rem;
+}
 
-  .relatedcard * p {
-    margin-left: 0.75rem;
-    margin-bottom: 0;
-  }
+.relatedcard * p {
+  margin-left: 0.75rem;
+  margin-bottom: 0;
+}
+
 }
 
 // sectionlist styling
@@ -1891,8 +1700,8 @@ ul.sectionlist > li:hover {
 }
 
 #board-carousel ul li a p {
-  font-size: 0.833rem !important;
-  line-height: 1.0625rem !important;
+  font-size: .833rem!important;
+  line-height: 1.0625rem!important;
   color: black;
   font-weight: 600;
 }
@@ -1913,9 +1722,7 @@ ul.sectionlist > li:hover {
   max-width: 100%;
   visibility: visible;
   opacity: 1;
-  transition:
-    opacity 250ms ease-in,
-    visibility 0ms ease-in 0ms;
+  transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
 }
 
 #tutorial-menu {
@@ -1934,14 +1741,12 @@ ul.sectionlist > li:hover {
   margin-bottom: 0 !important;
 }
 
-#tutorial-filters,
-#tutorial-filter-items {
+#tutorial-filters, #tutorial-filter-items {
   display: flex;
   flex-wrap: wrap;
 }
 
-#tutorial-filters > .filter,
-#platformarea-list .filterbutton {
+#tutorial-filters > .filter, #platformarea-list .filterbutton {
   text-decoration: none;
   color: black;
   padding: 0.2rem 1rem;
@@ -1973,7 +1778,7 @@ ul.sectionlist > li:hover {
   cursor: pointer;
 }
 
-#tutorial-filters > .filter[aria-expanded="true"] {
+#tutorial-filters > .filter[aria-expanded="true"]{
   background-color: #e7e5e4;
 }
 
@@ -1993,17 +1798,17 @@ ul.sectionlist > li:hover {
 
 .ais-Hits-item > .quickstart .title:after {
   content: "Quickstart";
-  background-color: #00e8e8;
+  background-color: #00E8E8;
 }
 
 .ais-Hits-item > .how-to .title:after {
   content: "How‑to";
-  background-color: #00e8e8;
+  background-color: #00E8E8;
 }
 
 .ais-Hits-item > .codelab .title:after {
   content: "Codelab";
-  background-color: #ff7d80;
+  background-color: #FF7D80;
 }
 
 .ais-Hits-item .title:after {
@@ -2040,10 +1845,10 @@ ul.sectionlist > li:hover {
 }
 
 @media (max-width: 800px) {
-  .search-facets {
-    max-width: 86%;
-    width: 445px;
-  }
+.search-facets {
+  max-width: 86%;
+  width: 445px;
+}
 }
 
 .search-facets > ul {
@@ -2055,7 +1860,7 @@ ul.sectionlist > li:hover {
 
 .search-facets * li {
   list-style: none;
-  margin: 0.2rem;
+  margin: 0.2rem
 }
 
 .search-facets * label {
@@ -2095,9 +1900,7 @@ ul.sectionlist > li:hover {
 
 // Pagination CSS start
 
-#pagination,
-#paginationML,
-#paginationScripts {
+#pagination, #paginationML, #paginationScripts {
   margin: 2rem auto;
 }
 
@@ -2148,31 +1951,25 @@ a.ais-Pagination-link:hover {
 }
 
 @media (max-width: 600px) {
-  .algolia-autocomplete .ds-dropdown-menu {
-    min-width: 90% !important;
-  }
+.algolia-autocomplete .ds-dropdown-menu {
+  min-width: 90% !important;
+}
 }
 
-.ds-dataset-1,
-.ds-dataset-2,
-.ds-dataset-3 {
+.ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
   max-height: 500px !important;
 }
 
 /* Add margin in front of breadcrumbs on small screens */
 @media (max-height: 600px) {
-  .ds-dataset-1,
-  .ds-dataset-2,
-  .ds-dataset-3 {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
     max-height: 300px !important;
   }
 }
 
 /* Add margin in front of breadcrumbs on small screens */
 @media (max-height: 400px) {
-  .ds-dataset-1,
-  .ds-dataset-2,
-  .ds-dataset-3 {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
     max-height: 200px !important;
   }
 }
@@ -2191,6 +1988,7 @@ a.ais-Pagination-link:hover {
   min-height: 90%;
 }
 
+
 // Search START
 
 #sideSearchBar {
@@ -2200,6 +1998,7 @@ a.ais-Pagination-link:hover {
 }
 
 @media (max-width: 992px) {
+
   #navSearchBar {
     display: none;
   }
@@ -2207,6 +2006,7 @@ a.ais-Pagination-link:hover {
   #sideSearchBar {
     display: unset;
   }
+
 }
 
 // Search END
@@ -2251,8 +2051,7 @@ a.ais-Pagination-link:hover {
   text-align: center;
 }
 
-.modellist * .ais-Hits-list,
-.modellistheader {
+.modellist * .ais-Hits-list, .modellistheader {
   margin-bottom: 0rem;
   display: flex;
 }
@@ -2263,8 +2062,7 @@ a.ais-Pagination-link:hover {
   border-top: 1px solid #d7d7d9;
 }
 
-.modellist * .ais-Hits-list > .ais-Hits-item > div,
-.modellistheader > div {
+.modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
   margin: 1rem;
 }
 
@@ -2280,12 +2078,7 @@ a.ais-Pagination-link:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.modellistheader > .name,
-.modellist * .name,
-.modellistheader > .type,
-.modellist * .type,
-.modellistheader > .framework,
-.modellist * .framework {
+.modellistheader > .name, .modellist * .name, .modellistheader > .type, .modellist * .type, .modellistheader > .framework, .modellist * .framework {
   min-width: 15%;
   max-width: 15%;
 }
@@ -2299,21 +2092,16 @@ a.ais-Pagination-link:hover {
   font-weight: 600;
 }
 
-.modellistheader > .description,
-.modellist * .description {
+.modellistheader > .description, .modellist * .description {
   overflow-wrap: anywhere;
 }
 
-#searchbox,
-#searchboxScripts,
-#searchboxML {
+#searchbox, #searchboxScripts, #searchboxML {
   margin: 1rem 0rem 2rem 0rem;
   min-height: 34px;
 }
 
-#searchstats,
-#searchstatsScripts,
-#searchstatsML {
+#searchstats, #searchstatsScripts, #searchstatsML {
   min-height: 24px;
 }
 
@@ -2326,7 +2114,7 @@ a.ais-Pagination-link:hover {
   width: 100%;
 }
 
-input[type="search"]::-webkit-search-cancel-button {
+input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: searchfield-cancel-button;
 }
 
@@ -2355,14 +2143,13 @@ input[type="search"]::-webkit-search-cancel-button {
   padding-right: 4px;
 }
 
-.changelog .colorbox,
-.changelog .datebox {
+.changelog .colorbox, .changelog .datebox {
   text-transform: uppercase;
   padding: 0.1rem 0.25rem;
   border: 1px solid black;
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.0;
   margin-right: 0.5em;
 }
 
@@ -2407,28 +2194,23 @@ input[type="search"]::-webkit-search-cancel-button {
   border: 1px solid black;
 }
 
-#added-button.active,
-#added-button:hover {
+#added-button.active, #added-button:hover {
   background-color: #93f6c9;
 }
 
-#improved-button.active,
-#improved-button:hover {
+#improved-button.active, #improved-button:hover {
   background-color: #92f3f3;
 }
 
-#changed-button.active,
-#changed-button:hover {
+#changed-button.active, #changed-button:hover {
   background-color: #f4eab7;
 }
 
-#removed-button.active,
-#removed-button:hover {
+#removed-button.active, #removed-button:hover {
   background-color: #f68dab;
 }
 
-#all-button.active,
-#all-button:hover {
+#all-button.active, #all-button:hover {
   background-color: #d1b4cb;
 }
 
@@ -2486,15 +2268,11 @@ div .filterable > p {
 
 // Fix tables in steps and expanders
 
-.tablestep > table,
-.expand-content > table {
+.tablestep > table, .expand-content > table {
   min-width: 100% !important;
 }
 
-.tablestep > table td,
-.tablestep > table th,
-.expand-content > table td,
-.expand-content > table th {
+.tablestep > table td, .tablestep > table th, .expand-content > table td, .expand-content > table th {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
@@ -2511,14 +2289,12 @@ div .filterable > p {
 // Styling for email newsletter
 
 h3.body-header[style] {
-  font-family:
-    space grotesk,
-    sans-serif !important;
-  font-size: 2rem !important;
+  font-family: space grotesk, sans-serif !important;
+  font-size: 2.0rem !important;
   line-height: 2.667rem !important;
   font-weight: 400 !important;
   clear: both !important;
-}
+};
 
 .actions .hs-button.primary.large {
   border: 1px solid black;
@@ -2535,6 +2311,7 @@ h3.body-header[style] {
   margin-top: 1rem;
 }
 
+
 .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field {
   display: flex;
 }
@@ -2543,8 +2320,7 @@ h3.body-header[style] {
   content: ":";
 }
 
-.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label,
-.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field .input {
+.hs_email.hs-email.hs-fieldtype-text.field.hs-form-field label, .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field .input {
   margin-right: 1rem;
 }
 
@@ -2602,8 +2378,7 @@ h3.body-header[style] {
 
 // CTA buttons START
 
-.front-card-container > .hover-card.primary,
-.front-card-container > .cta.secondary {
+.front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
   margin-right: 0;
   padding-top: 1rem;
 }
@@ -2627,7 +2402,7 @@ h3.body-header[style] {
   padding: unset;
   white-space: nowrap;
   text-transform: uppercase;
-  font-family: "Space Mono", sans-serif;
+  font-family: "Space Mono",sans-serif;
 }
 
 .front-card-container > .cta.secondary > a {
@@ -2649,7 +2424,7 @@ h3.body-header[style] {
 
 .front-card-container > .hover-card > a > div {
   margin: auto;
-  padding: 0 0.75rem;
+  padding: 0 0.75rem
 }
 
 @media (max-width: 650px) {
@@ -2658,13 +2433,12 @@ h3.body-header[style] {
   }
 }
 
-.td-content > div.max-page,
-hr {
+.td-content > div.max-page, hr {
   max-width: 1000px !important;
 }
 
 hr {
-  margin-left: 0;
+  margin-left:0;
 }
 
 // CTA buttons END
@@ -2704,12 +2478,10 @@ hr {
 
 .horizontalheaders > ul.nav-tabs > .navheader {
   text-transform: uppercase;
-  color: #aaa;
+  color: #AAA;
   padding: 0.45rem 0.75rem;
   font-size: 0.75rem;
-  font-family:
-    Space Mono,
-    sans-serif;
+  font-family: Space Mono, sans-serif;
 }
 
 .table.horizontalheaders > ul.nav-tabs > li.nav-item {
@@ -2767,11 +2539,7 @@ hr {
   width: 100%;
 }
 
-.table.horizontalheaders
-  > .tab-content
-  > div
-  > .innertabcontentcontainer
-  > .table {
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .table {
   margin-top: unset;
   margin-bottom: unset;
   flex: 1;
@@ -2781,13 +2549,7 @@ hr {
 
 // inner tabs navitems START
 
-.table.horizontalheaders
-  *
-  .innertabcontentcontainer
-  > .table
-  > ul
-  > li.nav-item:first-child
-  > a {
+.table.horizontalheaders * .innertabcontentcontainer > .table > ul > li.nav-item:first-child > a {
   margin-left: -1px;
 }
 
@@ -2803,22 +2565,13 @@ hr {
   justify-content: center;
 }
 
-.table.horizontalheaders
-  > .tab-content
-  > div
-  > .innertabcontentcontainer
-  > .table
-  > .tab-content {
+
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer > .table > .tab-content {
   border: unset;
   flex-grow: 1;
 }
 
-.table.horizontalheaders
-  > .tab-content
-  > div
-  > .innertabcontentcontainer
-  *
-  .code-toolbar {
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar {
   margin: 0;
   padding: 0;
   border: unset;
@@ -2826,13 +2579,7 @@ hr {
   max-width: 100%;
 }
 
-.table.horizontalheaders
-  > .tab-content
-  > div
-  > .innertabcontentcontainer
-  *
-  .code-toolbar
-  > pre {
+.table.horizontalheaders > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
   height: 350px;
   max-height: 350px;
   overflow: auto;
@@ -2840,13 +2587,7 @@ hr {
   padding-top: 12px;
 }
 
-.table.horizontalheaders.program
-  > .tab-content
-  > div
-  > .innertabcontentcontainer
-  *
-  .code-toolbar
-  > pre {
+.table.horizontalheaders.program > .tab-content > div > .innertabcontentcontainer * .code-toolbar > pre {
   height: 220px;
   max-height: 220px;
 }
@@ -2888,8 +2629,7 @@ div.explanation > .explanationvisual {
   justify-content: center;
 }
 
-div.explanation > .explanationvisual * video,
-div.explanation > .explanationvisual > picture > img {
+div.explanation > .explanationvisual * video, div.explanation > .explanationvisual > picture > img {
   min-width: 250px;
   max-width: 250px;
   aspect-ratio: 4/3;
@@ -2941,6 +2681,7 @@ div.explanation > .explanationvisual > .gif {
 // Assign min-width to containers to reduce jumping (only on wide screens) START
 
 @media (min-width: 900px) {
+
   .horizontalheaders.program * .explanation {
     min-height: 190px;
   }
@@ -3000,12 +2741,8 @@ nav {
 .td-topbar-sections > ul > li {
   display: inline-block;
   text-transform: uppercase;
-  font-family:
-    Roboto Mono Variable,
-    Roboto Mono,
-    ui-monospace,
-    monospace;
-  font-size: 0.875rem;
+  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  font-size: .875rem;
   line-height: 1.25rem;
 }
 
@@ -3019,14 +2756,14 @@ nav {
 
 .td-topbar-sections > ul > li > a:hover {
   text-decoration: none;
-  background-color: rgb(232, 232, 234);
+  background-color: rgb(232,232,234);
 }
 
 .second-nav {
-  background-color: rgb(239, 239, 242);
+  background-color: rgb(239,239,242);
   min-width: 100%;
   padding: 0.25rem 1rem;
-  border-bottom: 1px solid rgb(215, 215, 217);
+  border-bottom: 1px solid rgb(215,215,217);
 }
 
 .second-nav > ul {
@@ -3038,12 +2775,8 @@ nav {
 .second-nav > ul > li {
   display: inline-block;
   text-transform: uppercase;
-  font-family:
-    Roboto Mono Variable,
-    Roboto Mono,
-    ui-monospace,
-    monospace;
-  font-size: 0.875rem;
+  font-family: Roboto Mono Variable,Roboto Mono,ui-monospace,monospace;
+  font-size: .875rem;
   line-height: 1.25rem;
   margin: 5px 0px;
 }
@@ -3055,7 +2788,7 @@ nav {
 
 .second-nav > ul > li > a:hover {
   text-decoration: none;
-  background-color: rgb(232, 232, 234);
+  background-color: rgb(232,232,234);
 }
 
 .second-nav * .active-path {
@@ -3064,7 +2797,7 @@ nav {
 
 @media (min-width: 768px) {
   .td-main main {
-    padding-top: 7.5rem;
+      padding-top: 7.5rem;
   }
 }
 
@@ -3093,7 +2826,7 @@ nav {
 }
 
 span.section-overview {
-  display: none;
+  display: none
 }
 
 .navsectiontop {
@@ -3102,7 +2835,7 @@ span.section-overview {
 
 @media (min-width: 768px) {
   .td-sidebar-nav__section ul.ul-1 {
-    padding-top: 0.5rem;
+    padding-top: 0.5rem
   }
 
   .ul-1 > li.nav-fold.hide-if-desktop {
@@ -3127,9 +2860,7 @@ span.section-overview {
 
   li.nav-fold.header-only > span > span {
     text-transform: uppercase;
-    font-family:
-      Space Mono,
-      sans-serif;
+    font-family: Space Mono,sans-serif;
     color: #aaa;
     margin-top: 1rem;
   }
@@ -3151,12 +2882,13 @@ span.section-overview {
   }
 
   span.section-overview-title {
-    display: none;
+    display: none
   }
 
   span.section-overview {
-    display: block;
+    display: block
   }
+
 }
 
 a.tree-root {
@@ -3168,7 +2900,7 @@ a.tree-root {
 // For tutorials, make side nav heading smaller
 
 li.active-path.tutorial-heading > a {
-  color: #0000ea;
+  color: #0000EA;
   margin-top: 1rem;
   font-size: 0.833rem;
   font-weight: 600;
@@ -3195,7 +2927,7 @@ li.active-path.tutorial-heading > a {
 
 @media (min-width: 500px) {
   #next-page > div > div.hover-card {
-    max-width: calc((100% - 1.5rem) / 2);
+    max-width: calc((100% - 1.5rem)/2);
   }
 }
 
@@ -3218,9 +2950,7 @@ li.active-path.tutorial-heading > a {
 }
 
 #next-page > div > div.hover-card > a > div > p {
-  font-family:
-    space grotesk,
-    sans-serif;
+  font-family: space grotesk,sans-serif;
   font-size: 1.1667rem !important;
   line-height: 1.4375em;
 }
@@ -3236,9 +2966,7 @@ li.active-path.tutorial-heading > a {
 
 #next-page > div > div.hover-card > a > div.text > p:first-child {
   text-transform: uppercase;
-  font-family:
-    Space Mono,
-    sans-serif;
+  font-family: Space Mono,sans-serif;
   color: #aaa;
   font-size: 0.833rem !important;
 }
@@ -3251,6 +2979,7 @@ li.active-path.tutorial-heading > a {
   text-transform: uppercase;
   align-self: flex-start;
 }
+
 
 #next-page > div > div.hover-card > a > div > div {
   margin-bottom: 0;
@@ -3271,6 +3000,7 @@ li.active-path.tutorial-heading > a {
 #next-page > div > div.hover-card.right > a > div {
   text-align: left;
 }
+
 
 // Next page END
 
@@ -3308,6 +3038,7 @@ li.active-path.tutorial-heading > a {
 .hoverable-fleet:hover ~ .img-overlay-wrap > #fleet-platform {
   display: inline-block !important;
 }
+
 
 .img-overlay-wrap {
   position: relative;
