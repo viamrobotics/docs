@@ -30,7 +30,7 @@ You must have the **Owner** role to be able to grant permissions.
 
 6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Resource** to share.
 
-   Users with access to a location or organization, can collaborate on the [machines](/operate/get-started/setup/#what-is-a-machine) within it.
+   Users with access to a location or organization can collaborate on the [machines](/operate/get-started/setup/#what-is-a-machine) within it.
 
 7. Select a role to assign to the user.
 
