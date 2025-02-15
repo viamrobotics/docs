@@ -91,7 +91,7 @@ You can find a list of the sensors the [`sbc-hwmonitor`](https://app.viam.com/mo
 Now, click **Test** at the bottom of the sensor configuration card to view the readings.
 You can also see readings on the **CONTROL** tab.
 
-{{<imgproc src="/how-tos/telegraf-test.png" resize="1000x" style="width:600px" class="imgzoom" declaredimensions=true alt="Test panel with readings displayed.">}}
+{{<imgproc src="/how-tos/telegraf-test.png" resize="1000x" style="width:600px" class="shadow imgzoom" declaredimensions=true alt="Test panel with readings displayed.">}}
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -121,7 +121,7 @@ In the **Data capture** section, click **Add method**.
 From the **Method** dropdown select `Readings`.
 Set the **Frequency** to `0.05` Hz to capture readings once every 20 seconds.
 
-{{<imgproc src="/how-tos/capture-readings.png" resize="1000x" style="width:600px" class="imgzoom" declaredimensions=true alt="Sensor readings capture configuration.">}}
+{{<imgproc src="/how-tos/capture-readings.png" resize="1000x" style="width:600px" class="shadow imgzoom" declaredimensions=true alt="Sensor readings capture configuration.">}}
 
 **Save your config.**
 {{% /tablestep %}}
@@ -145,7 +145,7 @@ If you do not immediately see data, wait a minute for the data to be captured an
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." >}}
+   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
 
 2. Name the trigger and click **Create**.
 
@@ -157,7 +157,7 @@ If you do not immediately see data, wait a minute for the data to be captured an
    These can include a key, a value, and a logical operator.
    For example, a trigger configured to fire when data is captured from the sensor `cpu-monitor`'s `Readings` method when `cpu` is greater than `50`:
 
-   {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." >}}
+   {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow">}}
 
    For more information, see [Conditions](#conditions).
 
@@ -388,7 +388,7 @@ You must [configure data capture](/data-ai/capture-data/capture-sync/) for your 
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." >}}
+   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
 
 2. Name the trigger and click **Create**.
 
@@ -501,7 +501,7 @@ The following attributes are available for triggers:
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." >}}
+   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
 
 2. Name the trigger and click **Create**.
 
@@ -605,7 +605,7 @@ The following attributes are available for triggers:
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." >}}
+   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
 
 2. Name the trigger and click **Create**.
 

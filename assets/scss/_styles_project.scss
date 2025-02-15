@@ -1068,10 +1068,13 @@ td > ul, td > ol {
 
 .nav-tabs {
   border-bottom: none; // unset from inherited styles
-  gap: 10px;
+  gap: 1px;
+  display: flex;
+  flex-direction: row;
 }
 
 .horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
+  justify-content: unset;
   gap: 0px;
 }
 
@@ -1129,6 +1132,7 @@ td > ul, td > ol {
   background-color: rgb(247, 247, 248);
   border-left: 1px solid rgb(209, 213, 219);
   border-bottom: 1px solid rgb(209, 213, 219);
+  border-right: 1px solid rgb(209, 213, 219);
 }
 
 .nav-tabs .nav-item {
@@ -1137,6 +1141,14 @@ td > ul, td > ol {
 
 .horizontalheaders * .nav-tabs > .nav-item, .horizontalheaders > .nav-tabs > .nav-item {
   margin-bottom: 0rem;
+}
+
+.horizontalheaders > .nav-tabs .nav-item > a {
+  text-align: unset;
+}
+
+.nav-tabs .nav-item > a {
+  text-align: center;
 }
 
 .nav-tabs > .nav-item:last-child {
@@ -1421,6 +1433,11 @@ img.frame {
 
 .gif {
   margin-bottom: 1rem;
+}
+
+.td-content > img.shadow,
+.td-content * img.shadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 992px) {

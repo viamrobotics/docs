@@ -69,7 +69,7 @@ You can train a TFLite model using **Built-in training**.
 
 Click **Next steps**.
 
-{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill">}}
+{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -88,7 +88,7 @@ Select the labels you want to train your model on from the **Labels** section. U
 
 Click **Train model**.
 
-{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill" >}}
+{{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}

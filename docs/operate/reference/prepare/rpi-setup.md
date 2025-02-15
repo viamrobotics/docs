@@ -31,7 +31,7 @@ To check whether the Linux installation on your Raspberry Pi is 64-bit (required
 
 Example output:
 
-{{< imgproc alt="Screenshot of a terminal running the 'lscpu' command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads 'Architecture: aarch64.'" src="/installation/rpi-setup/lscpu-output.png" resize="800x" declaredimensions=true >}}
+{{< imgproc alt="Screenshot of a terminal running the 'lscpu' command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads 'Architecture: aarch64.'" src="/installation/rpi-setup/lscpu-output.png" resize="800x" declaredimensions=true class="shadow" >}}
 
 If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](/operate/get-started/setup/).
 
@@ -53,21 +53,21 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and launch it.
 
-   {{< imgproc alt="Raspberry Pi Imager launcher window showing a 'Choose OS' and 'Choose Storage' buttons." src="/installation/rpi-setup/imager-launch-screen.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager launcher window showing a 'Choose OS' and 'Choose Storage' buttons." src="/installation/rpi-setup/imager-launch-screen.png" resize="800x" declaredimensions=true class="shadow" >}}
 
 1. Click **CHOOSE DEVICE**.
    Select your model of Pi.
 
-   {{< imgproc alt="Raspberry Pi Imager window showing available pi models." src="/installation/rpi-setup/select-pi-models.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing available pi models." src="/installation/rpi-setup/select-pi-models.png" resize="800x" declaredimensions=true class="shadow" >}}
 
 1. Click **CHOOSE OS**.
    Select **Raspberry Pi OS (other)**.
 
-   {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true class="shadow" >}}
 
    Select **Raspberry Pi OS Full (64-bit)** from the menu.
 
-   {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Legacy, 64-bit) Full is selected." src="/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Legacy, 64-bit) Full is selected." src="/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true class="shadow"  >}}
 
    You should be brought back to the initial launch screen.
 
@@ -76,13 +76,13 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
    If no devices are listed, make sure your microSD card is connected to your computer correctly.
 
-   {{< imgproc alt="The storage screen is shown with a generic SD card available as an option." src="/installation/rpi-setup/imager-select-storage.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="The storage screen is shown with a generic SD card available as an option." src="/installation/rpi-setup/imager-select-storage.png" resize="800x" declaredimensions=true class="shadow"  >}}
 
 1. Configure your Raspberry Pi for remote access.
    Click **Next**.
    When prompted to apply OS customization settings, select **EDIT SETTINGS**.
 
-   {{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/installation/rpi-setup/advanced-options.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/installation/rpi-setup/advanced-options.png" resize="800x" declaredimensions=true class="shadow"  >}}
 
    {{% alert title="Important" color="note" %}}
 
@@ -92,7 +92,7 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
    Check **Set hostname** and enter the name you would like to access the Pi by in that field:
 
-   {{< imgproc alt="Raspberry Pi Imager window showing the advanced options menu with set hostname checked and set to my-machine.local." src="/installation/rpi-setup/imager-set-hostname.png" resize="600x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing the advanced options menu with set hostname checked and set to my-machine.local." src="/installation/rpi-setup/imager-set-hostname.png" resize="600x" declaredimensions=true class="shadow"  >}}
 
    There are two ways you can secure your Raspberry Pi: with an SSH key or with password authentication.
 
@@ -105,7 +105,7 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
 1. Select the checkbox next to **Set username and password** and set a username (for example, your first name) and a unique password that you will use to log into the Pi:
 
-   {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected. The user has entered username 'Robota' and some hidden password." src="/installation/rpi-setup/imager-set-passwordauthentication.png" resize="550x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected. The user has entered username 'Robota' and some hidden password." src="/installation/rpi-setup/imager-set-passwordauthentication.png" resize="550x" declaredimensions=true class="shadow"  >}}
 
 2. Select the **SERVICES** tab.
 3. Check **Enable SSH**.
@@ -127,7 +127,7 @@ To set up SSH authentication:
    If you skip this step, the default username will be `pi` (not recommended for security reasons).
    You do not need to specify a password.
 
-   {{< imgproc alt="Raspberry Pi Imager with username specified as 'Robota' and the password field left blank." src="/installation/rpi-setup/imager-set-username.png" resize="500x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager with username specified as 'Robota' and the password field left blank." src="/installation/rpi-setup/imager-set-username.png" resize="500x" declaredimensions=true class="shadow"  >}}
 
 1. Select the **SERVICES** tab.
 1. Check **Enable SSH**.
@@ -137,7 +137,7 @@ To set up SSH authentication:
    In that case, you can leave the pre-populated key as-is.
    If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
 
-   {{< imgproc alt="Raspberry Pi Imager window showing 'Set Hostname' and 'Enable SSH' both selected." src="/installation/rpi-setup/imager-set-ssh.png" resize="500x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing 'Set Hostname' and 'Enable SSH' both selected." src="/installation/rpi-setup/imager-set-ssh.png" resize="500x" declaredimensions=true class="shadow"  >}}
 
 {{% alert title="IMPORTANT" color="note" %}}
 
@@ -153,21 +153,21 @@ Be sure that you remember the `hostname` and `username` you set, as you will nee
     SSID (short for Service Set Identifier) is your Wi-Fi network name, and password is the network password.
     Change the section `Wireless LAN country` to where your router is currently being operated:
 
-    {{< imgproc alt="Raspberry Pi Imager window showing the 'Configure wireless LAN' option selected with SSID and password information for a wireless network." src="/installation/rpi-setup/imager-set-wifi.png" resize="550x" declaredimensions=true >}}
+    {{< imgproc alt="Raspberry Pi Imager window showing the 'Configure wireless LAN' option selected with SSID and password information for a wireless network." src="/installation/rpi-setup/imager-set-wifi.png" resize="550x" declaredimensions=true class="shadow"  >}}
 
     Click **SAVE**.
 
 1.  Double check your OS and Storage settings and then click `YES`:
 
-    {{< imgproc alt="Edit image customization options window" src="/installation/rpi-setup/apply-settings-yes.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Edit image customization options window" src="/installation/rpi-setup/apply-settings-yes.png" resize="800x" declaredimensions=true class="shadow"  >}}
 
     You will be prompted to confirm erasing your microSD card: select `YES`.
 
-    {{< imgproc alt="Edit image customization options window" src="/installation/rpi-setup/imager-write-confirm.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Edit image customization options window" src="/installation/rpi-setup/imager-write-confirm.png" resize="800x" declaredimensions=true class="shadow"  >}}
 
     You may also be prompted by your operating system to enter an administrator password:
 
-    {{< imgproc class="" alt="macOS admin password confirmation screen." src="/installation/rpi-setup/imager-permission.png" resize="300x" declaredimensions=true >}}
+    {{< imgproc alt="macOS admin password confirmation screen." src="/installation/rpi-setup/imager-permission.png" resize="300x" declaredimensions=true class="shadow"  >}}
 
     After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card.
 
@@ -217,7 +217,7 @@ If you are using hardware that requires these protocols, you must enable support
 
 1. Use your keyboard to select "Interface Options", and press return.
 
-   {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/installation-raspberry-pi-i2c-raspiconfig-interface-options.png" resize="800x" declaredimensions=true >}}
+   {{<imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/installation-raspberry-pi-i2c-raspiconfig-interface-options.png" resize="800x" declaredimensions=true class="shadow" >}}
 
 1. Enable the relevant protocols to support your specific hardware. For example:
 

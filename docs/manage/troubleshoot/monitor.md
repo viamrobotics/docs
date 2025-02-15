@@ -19,7 +19,7 @@ You can monitor your machines from your **FLEET**'s [**ALL MACHINES DASHBOARD** 
 
 You can also monitor the amount of binary and tabular data your fleet has synced in the last 48 hours from the **FLEET**'s [**DASHBOARD** subtab](https://app.viam.com/fleet/dashboard).
 
-{{<imgproc src="how-tos/manage-fleet/dashboard.png" resize="500x" declaredimensions=true alt="Fleet dashboard showing the machine parts and data sync overview">}}
+{{<imgproc src="how-tos/manage-fleet/dashboard.png" resize="500x" declaredimensions=true alt="Fleet dashboard showing the machine parts and data sync overview" class="shadow">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}

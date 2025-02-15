@@ -40,7 +40,7 @@ Navigate to the **FLEET** page's **TELEOP** tab.
 Create a workspace by clicking **+ Create workspace**.
 Give it a name.
 
-{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 700px" class="fill imgzoom" declaredimensions=true alt="Blank teleop page.">}}
+{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 700px" class="shadow fill imgzoom" declaredimensions=true alt="Blank teleop page.">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -59,7 +59,7 @@ Click **Select machine** and select your configured machine.
 
 Your dashboard now shows the configured widgets for the data from your machine:
 
-{{<imgproc src="/how-tos/teleop/full-workspace.png" resize="800x" style="width: 700px" class="fill imgzoom" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode.">}}
+{{<imgproc src="/how-tos/teleop/full-workspace.png" resize="800x" style="width: 700px" class="shadow fill imgzoom" declaredimensions=true alt="Teleop workspace with values configured for each of the four widgets on monitor mode.">}}
 
 {{% /tablestep %}}
 {{< /table >}}

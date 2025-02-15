@@ -47,7 +47,7 @@ Navigate to the **FLEET** page's **TELEOP** tab.
 Create a workspace by clicking **+ Create workspace**.
 Give it a name.
 
-{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill imgzoom" declaredimensions=true alt="Blank teleop page.">}}
+{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="Blank teleop page.">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -67,7 +67,7 @@ Click **Select machine** and select your configured machine.
 Your dashboard now shows the configured widget for the data from your machine.
 For example, a time series graph measuring noise over time for a sensor component:
 
-{{< imgproc src="/services/data/time-series.png" alt="Time series widget measuring noise over time." style="width:500px" resize="1200x" class="imgzoom fill" >}}
+{{< imgproc src="/services/data/time-series.png" alt="Time series widget measuring noise over time." style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -122,7 +122,7 @@ You can use either a local instance of Grafana Enterprise or Grafana Cloud, and 
 Navigate to your Grafana web UI.
 Go to **Connections > Add new connection** and add the [Grafana MongoDB data source](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) plugin to your Grafana instance.
 
-{{<imgproc src="/tutorials/visualize-data-grafana/search-grafana-plugins.png" resize="800x" declaredimensions=true alt="The Grafana plugin search interface showing the results for a search for mongodb">}}
+{{<imgproc src="/tutorials/visualize-data-grafana/search-grafana-plugins.png" resize="800x" declaredimensions=true alt="The Grafana plugin search interface showing the results for a search for mongodb" class="shadow" >}}
 
 Install the datasource plugin.
 
@@ -150,7 +150,7 @@ Enter the following information in the configuration UI for the plugin:
 
 - **Password**: Enter the password you provided earlier.
 
-  {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
+  {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps" class="shadow" >}}
 
 {{< /tablestep >}}
 {{% tablestep %}}

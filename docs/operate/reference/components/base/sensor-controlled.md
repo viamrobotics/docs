@@ -36,7 +36,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `base` type, then select the `sensor-controlled` model.
 Enter a name or use the suggested name for your base and click **Create**.
 
-{{< imgproc src="/components/base/sensor-controlled-base-ui-config.png" alt="An example configuration for a sensor-controlled base in the Viam app config builder" resize="1200x" style="width: 600x">}}
+{{< imgproc src="/components/base/sensor-controlled-base-ui-config.png" alt="An example configuration for a sensor-controlled base in the Viam app config builder" resize="1200x" style="width: 600x" class="shadow" >}}
 
 Edit and fill in the attributes as applicable.
 

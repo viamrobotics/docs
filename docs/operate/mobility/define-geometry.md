@@ -17,7 +17,7 @@ You can also [define static obstacles](/operate/mobility/define-obstacles/) for 
 For complex kinematic chain configuration, useful when creating a module to support an unsupported arm model, see [Configure Complex Kinematic Chains](/operate/reference/kinematic-chain-config/).
 {{% /alert %}}
 
-{{<imgproc src="/services/frame-system/frame_system_wheeled_base.png" resize="x1100" declaredimensions=true alt="Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI" style="max-width:600px" class="imgzoom" >}}
+{{<imgproc src="/services/frame-system/frame_system_wheeled_base.png" resize="x1100" declaredimensions=true alt="Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI" style="max-width:600px" class="imgzoom shadow" >}}
 
 ## Configure a reference frame
 
@@ -39,9 +39,9 @@ To configure your machine following this example:
 - Select **Builder** mode and [configure your arm](/operate/reference/components/arm/#configuration).
 - Select the **Frame** mode.
 - From the left-hand menu, select your arm:
-  {{<imgproc src="/services/frame-system/arm_default_frame.png" resize="500x" style="width: 300px" alt="Frame card for an arm with the default reference frame settings">}}
+  {{<imgproc src="/services/frame-system/arm_default_frame.png" resize="500x" style="width: 300px" alt="Frame card for an arm with the default reference frame settings" class="shadow" >}}
 - Keep the **Parent** frame as `world` and fill in the coordinates for **Translation** (meters) and **Orientation** (degrees) according to the position and orientation of the arm in relation to the `world` frame's origin:
-  {{<imgproc src="/services/frame-system/arm_frame.png" resize="500x" style="width: 300px" alt="Frame card for an arm with a translation of 0.1 meters and -0.25 meters configured">}}
+  {{<imgproc src="/services/frame-system/arm_frame.png" resize="500x" style="width: 300px" alt="Frame card for an arm with a translation of 0.1 meters and -0.25 meters configured" class="shadow" >}}
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}
@@ -111,12 +111,12 @@ This allows `viam-server` to correctly calculate the position of the end of the 
 
 - Since the gantry and world have the same origin, don't configure a translation between them:
 
-  {{<imgproc src="/services/frame-system/frame_card_dyn_gantry.png" resize="500x" style="width: 300px" alt="Gantry frame card example for this configuration">}}
+  {{<imgproc src="/services/frame-system/frame_card_dyn_gantry.png" resize="500x" style="width: 300px" alt="Gantry frame card example for this configuration" class="shadow" >}}
 
 - Next, select your arm from the left hand menu.
 - Select the **Parent** frame as the gantry, and fill in the coordinates for **Translation** (m) of the arm in relation to the gantry's origin:
 
-  {{<imgproc src="/services/frame-system/frame_card_dyn_arm.png" resize="500x" style="width: 300px" alt="Arm frame card example for this configuration">}}
+  {{<imgproc src="/services/frame-system/frame_card_dyn_arm.png" resize="500x" style="width: 300px" alt="Arm frame card example for this configuration" class="shadow" >}}
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}

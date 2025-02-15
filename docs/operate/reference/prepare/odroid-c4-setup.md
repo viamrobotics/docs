@@ -18,7 +18,7 @@ date: "2022-01-01"
 
 The [Odroid-C4](https://wiki.odroid.com/odroid-c4/odroid-c4#odroid-c4) is a single-board computer that features an Amlogic S905x3 CPU and runs a variety of Linux or Android distributions.
 
-{{<imgproc src="installation/thumbnails/odroid-c4.png" alt="The Odroid-C4 single-board computer." resize="350x" declaredimensions=true >}}
+{{<imgproc src="installation/thumbnails/odroid-c4.png" alt="The Odroid-C4 single-board computer." resize="350x" declaredimensions=true class="shadow"  >}}
 
 Follow this guide to set up your Odroid-C4.
 

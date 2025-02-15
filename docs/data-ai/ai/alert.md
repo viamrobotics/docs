@@ -116,7 +116,7 @@ Name the trigger and click **Create**.
 
 Select trigger **Type** as **Data has been synced to the cloud** and **Data Types** as **Binary (image)**.
 
-{{<imgproc src="/tutorials/helmet/trigger.png" resize="x300" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." >}}
+{{<imgproc src="/tutorials/helmet/trigger.png" resize="x300" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." class="shadow" >}}
 
 To configure notifications, either
 

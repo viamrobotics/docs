@@ -16,7 +16,7 @@ The [<board-series-model>](http://example.com) from <manufacturer/organization> 
 It supports <operating-systems-or-distributions> and is ideal for <use-cases-or-applications>.
 Follow this guide to set up your <board-series-model> and prepare it for `viam-server` installation.
 
-{{<imgproc src="installation/thumbnails/prepare.png" alt="The <board-series-model> single-board computer." resize="350x" declaredimensions=true >}}
+{{<imgproc src="installation/thumbnails/prepare.png" alt="The <board-series-model> single-board computer." resize="350x" declaredimensions=true class="shadow"  >}}
 
 ## Hardware requirements
 

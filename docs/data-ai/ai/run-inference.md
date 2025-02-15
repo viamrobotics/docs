@@ -48,8 +48,8 @@ You can test a deployed vision service by clicking on the **Test** area of its c
 The camera stream shows when the vision service identifies something.
 Try pointing the camera at a scene similar to your training data.
 
-{{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="x200" >}}
-{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="x200" >}}
+{{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="x200" class="shadow" >}}
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="x200" class="shadow" >}}
 
 {{% expand "Want to limit the number of shown classifications or detections? Click here." %}}
 

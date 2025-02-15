@@ -66,7 +66,7 @@ Then toggle the camera or the Point Cloud Data view to ON.
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.
 
-{{< imgproc src="/components/camera/fake-view.png" alt="Fake Camera View" resize="600x" >}}
+{{< imgproc src="/components/camera/fake-view.png" alt="Fake Camera View" resize="600x" class="shadow"  >}}
 
 ## Troubleshooting
 

@@ -12,7 +12,7 @@ date: "2025-01-22"
 You can use Viam to manage your user authentication.
 This guide will show you how to create a branded login screen.
 
-{{<imgproc src="/operate/oauth.png" resize="1000x" declaredimensions=true alt="Example Oauth login screen" style="width:600px" class="imgzoom">}}
+{{<imgproc src="/operate/oauth.png" resize="1000x" declaredimensions=true alt="Example Oauth login screen" style="width:600px" class="imgzoom shadow">}}
 
 ## Prerequisites
 

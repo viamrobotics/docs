@@ -203,7 +203,7 @@ Go to your [machine](#prerequisites) in the [Viam app](https://app.viam.com).
 
 Then add your control logic module.
 
-{{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="fill aligncenter" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="shadow fill aligncenter" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -213,7 +213,7 @@ Scroll to the module card for your control logic module and select the pinned ve
 You can select a specific version or set the machine to always update to the latest major, minor, patch, or pre-release version once new versions are available.
 For more information on these configuration options, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
-{{<imgproc src="/how-tos/deploy-packages/version.png" resize="800x" class="fill aligncenter" style="width: 500px" declaredimensions=true alt="Module card UI">}}
+{{<imgproc src="/how-tos/deploy-packages/version.png" resize="800x" class="shadow fill aligncenter" style="width: 500px" declaredimensions=true alt="Module card UI">}}
 
 {{% alert title="Caution" color="caution" %}}
 For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.
@@ -230,7 +230,7 @@ In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 The following example shows a machine with a configured camera and the control logic module.
 Your machine will have different resources.
 
-{{<imgproc src="/how-tos/deploy-packages/json-config.png" resize="800x" class="fill aligncenter" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/json-config.png" resize="800x" class="shadow fill aligncenter" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
 {{% tablestep link="/manage/fleet/reuse-configuration/" %}}
@@ -240,7 +240,7 @@ Go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 Add a fragment, and paste the copied JSON configuration into it.
 
-{{<imgproc src="/how-tos/deploy-packages/fragment.png" resize="1000x" alt="Configuration builder UI">}}
+{{<imgproc src="/how-tos/deploy-packages/fragment.png" resize="1000x" alt="Configuration builder UI" class="shadow">}}
 
 Set your privacy settings.
 There are three options for this:
@@ -255,7 +255,7 @@ If you want to edit the fragment later, do it from this screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/delete.png" class="fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete">}}
+{{<imgproc src="/how-tos/one-to-many/delete.png" class="shadow fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete" >}}
 **5. Delete the original machine configuration (optional)**
 
 Now that the configuration is saved as a fragment, you can delete the machine you created in step 1.
@@ -272,7 +272,7 @@ You can also add the fragment manually to the machines that need it:
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
+{{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="shadow fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
 **Add the fragment to one machine**
 
 On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.

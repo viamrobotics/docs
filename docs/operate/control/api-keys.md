@@ -13,7 +13,7 @@ API keys grant access to organizations, locations, and machines.
 
 To view all API keys in use for your organization and the locations and machines inside it, click on the organization dropdown in the top navigation bar and click on **Settings**.
 
-{{<imgproc src="/fleet/api-keys.png" resize="700x" declaredimensions=true alt="API Keys table">}}
+{{<imgproc src="/fleet/api-keys.png" resize="700x" declaredimensions=true alt="API Keys table" class="shadow" >}}
 
 ## Add an API key
 
@@ -30,7 +30,7 @@ See [Permissions](/manage/manage/rbac/) for information about the privilege each
 
 To edit an API key, click on **Show details** in the key's row of the key table's **Resources** column.
 
-{{<imgproc src="/fleet/additional-details.png" resize="700x" declaredimensions=true alt="Additional details for a key">}}
+{{<imgproc src="/fleet/additional-details.png" resize="700x" declaredimensions=true alt="Additional details for a key" class="shadow" >}}
 
 To edit the role, click on the dropdown menu next to the role and select **Owner** or **Operator**.
 See [Permissions](/manage/manage/rbac/) for information about the privilege each role entails at each resource level.

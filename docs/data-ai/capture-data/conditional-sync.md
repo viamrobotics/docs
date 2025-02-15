@@ -294,7 +294,7 @@ Go to the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#
 You should see the sensor.
 Click on `GetReadings`.
 
-{{<imgproc src="/services/data/timesensor.png" resize="800x" declaredimensions=true alt="Control tab with sensor panel">}}
+{{<imgproc src="/services/data/timesensor.png" resize="800x" declaredimensions=true alt="Control tab with sensor panel" class="shadow" >}}
 
 If you are in the time frame for sync, the time sync sensor will return true.
 

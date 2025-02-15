@@ -787,8 +787,6 @@ After uploading the training script, you can run it by submitting a training job
 {{< tabs >}}
 {{% tab name="Viam app" min-height="150px" %}}
 
-{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="width: 200px" declaredimensions=true alt="Train models">}}
-
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train a model on.
 
 Click **Train model** and select **Train on a custom training script**, then follow the prompts.
