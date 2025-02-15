@@ -36,7 +36,7 @@ You can either create a second fragment that you add to a subset of machines, or
 {{< table >}}
 {{% tablestep %}}
 
-**1. Create a fragment for development** by copying the JSON object from your primary fragment and into a new fragment.
+**1. Create a fragment for development** by copying the JSON object from your primary fragment and pasting it into a new fragment.
 We recommend you call your second fragment something easily identifiable as your testing environment, such as `FragmentName-DEV`.
 
 Paste the JSON object from your primary fragment.
