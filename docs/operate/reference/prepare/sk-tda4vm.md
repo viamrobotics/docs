@@ -40,7 +40,7 @@ Download the following files to your computer:
 You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 
-{{< imgproc alt="The Balena Etcher interface." src="/installation/sk-tda4vm/etcher.png" resize="600x" declaredimensions=true >}}
+{{< imgproc alt="The Balena Etcher interface." src="/installation/sk-tda4vm/etcher.png" resize="600x" declaredimensions=true class="shadow"  >}}
 
 <br>
 <br>
@@ -63,7 +63,7 @@ You must extract the image from the zip file before flashing the microSD card.
 
 8. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
 
-{{< imgproc alt="Successful image flash completion screen." src="/installation/sk-tda4vm/completed.png" resize="600x" declaredimensions=true >}}
+{{< imgproc alt="Successful image flash completion screen." src="/installation/sk-tda4vm/completed.png" resize="600x" declaredimensions=true class="shadow"  >}}
 
 ## Install Viam dependencies on the TDA4VM
 

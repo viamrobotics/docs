@@ -28,7 +28,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `movement-sensor` type, then select the `accel-adxl345` model.
 Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" class="shadow"  >}}
 
 Copy and paste the following attribute template into your movement sensor's attributes field.
 Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.

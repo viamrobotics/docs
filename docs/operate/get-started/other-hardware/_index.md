@@ -691,7 +691,7 @@ viam module build local
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
 In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
 
-{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
 
 {{< /expand >}}
 
@@ -734,7 +734,7 @@ Select the **Type** corresponding to the API you implemented.
 Enter a **Name** such as `my-cool-component`.
 Click **Create**.
 
-{{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local model after the local module is configured">}}
+{{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local model after the local module is configured" class="shadow" >}}
 
 Configure any required attributes using proper JSON syntax.
 
@@ -745,7 +745,7 @@ Configure any required attributes using proper JSON syntax.
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
 For example, if you created a sensor component, check whether readings are displayed.
 
-{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" >}}
+{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" class="shadow" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -778,7 +778,7 @@ viam module build local
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
 In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
 
-{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -792,7 +792,7 @@ viam module build local
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
 In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
 
-{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" >}}
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
 
 {{% /tab %}}
 {{< /tabs >}}

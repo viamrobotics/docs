@@ -69,7 +69,7 @@ To both capture data and sync it to the cloud, keep both **Capturing** and **Syn
 
 Click the **Save** button in the top right corner of the page to save your config.
 
-{{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="Data capture configuration card." resize="600x" >}}
+{{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="Data capture configuration card." resize="600x" class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}

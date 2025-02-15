@@ -1637,7 +1637,7 @@ Add the module to your machine's config, then add the component or service it im
 
 1. Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
-   {{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local component after the local module is configured">}}
+   {{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local component after the local module is configured" class="shadow" >}}
 
 1. Select the type of modular resource provided by your module, such as a [camera](/operate/reference/components/camera/), from the dropdown menu.
 

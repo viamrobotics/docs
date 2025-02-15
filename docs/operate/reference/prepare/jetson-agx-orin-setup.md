@@ -17,7 +17,7 @@ date: "2022-01-01"
 ---
 
 <div class="td-max-width-on-larger-screens text-center">
-{{<imgproc src="installation/thumbnails/jetson-agx-orin-dev-kit.png" alt="The grey and chunky front of the NVIDIA Jetson AGX Orin single-board computer development kit." resize="200x" declaredimensions=true >}}
+{{<imgproc src="installation/thumbnails/jetson-agx-orin-dev-kit.png" alt="The grey and chunky front of the NVIDIA Jetson AGX Orin single-board computer development kit." resize="200x" declaredimensions=true class="shadow"  >}}
 </div>
 
 The [Jetson AGX Orin](https://developer.nvidia.com/embedded/jetson-orin) from [NVIDIA](https://www.nvidia.com/) is a single-board computer that supports modern AI workloads and application development.

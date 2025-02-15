@@ -379,7 +379,7 @@ You can change the visibility of a module from public to private if:
 
 To change the visibility, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
 
-{{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x600" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." max-width="900px" >}}
+{{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x600" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." max-width="900px" class="shadow" >}}
 
 You can also edit the visibility by editing the <file>meta.json</file> file and then running the following [CLI](/dev/tools/cli/#module) command:
 
@@ -396,7 +396,7 @@ You can delete a module if:
 
 To delete a module, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), click the **...** menu in the upper-right corner of the page, and click **Delete**.
 
-{{<imgproc src="/registry/upload/delete-module.png" resize="x600" declaredimensions=true alt="A module page with the ... menu open. Delete is the only option in the menu." max-width="500px" >}}
+{{<imgproc src="/registry/upload/delete-module.png" resize="x600" declaredimensions=true alt="A module page with the ... menu open. Delete is the only option in the menu." max-width="500px" class="shadow" >}}
 
 {{% alert title="Note" color="note" %}}
 
@@ -420,9 +420,6 @@ To upload another version, you must increment the version number to a later vers
 
 {{< cards >}}
 {{% manualcard link="/operate/reference/module-configuration/#module-versioning" %}}
-{{<imgproc src="/registry/create-module.svg" declaredimensions=true alt="Gear icon" >}}
-
-<br>
 
 ### Pin a version
 

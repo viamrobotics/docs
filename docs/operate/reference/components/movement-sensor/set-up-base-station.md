@@ -80,13 +80,13 @@ Also ensure that the hotspot is set to 2.4GHz and not 5GHz because the reference
 Connect your phone or computer to the WiFi network called "RTK Config" and use your web browser (Safari or Internet Explorer are recommended over Chrome) to go to the address `192.168.4.1`, which is the default IP address of the reference station.
 At that address you will see the RTK setup configure page displayed:
 
-{{< imgproc src="/components/movement-sensor/sparkfun-configure-page.png" alt="The SparkFun RTK Setup configure page displayed with dropdown menu rows showing different options for configuration." resize="900x" style="width:450px" >}}
+{{< imgproc src="/components/movement-sensor/sparkfun-configure-page.png" alt="The SparkFun RTK Setup configure page displayed with dropdown menu rows showing different options for configuration." resize="900x" style="width:450px" class="shadow"  >}}
 
 ### Update System configuration
 
 Look on the top of the RTK setup configure page and ensure that the firmware version of the base station is v4.0 or higher:
 
-{{< imgproc src="/components/movement-sensor/sparkfun-rtk-firmware.png" alt="The top of the SparkFun RTK Setup configure page with the RTK Firmware version displayed as v4.0." resize="1000x" style="width:500px" >}}
+{{< imgproc src="/components/movement-sensor/sparkfun-rtk-firmware.png" alt="The top of the SparkFun RTK Setup configure page with the RTK Firmware version displayed as v4.0." resize="1000x" style="width:500px" class="shadow"  >}}
 
 This is important since as of April 2024, version 4.0 allows the base station to send [RTCM](https://www.xyht.com/gnsslocation-tech/rtcm/) corrections over WiFi.
 To update the version of the firmware to 4.0, select the **System Configuration** dropdown and follow the steps provided in [Updating Firmware Over-The-Air](https://docs.sparkfun.com/SparkFun_RTK_Firmware/firmware_update/#updating-firmware-over-the-air).
@@ -112,7 +112,7 @@ For each option, select the following:
 
 With these recommended values selected, your GNSS Configuration should look like this:
 
-{{< imgproc src="/components/movement-sensor/sparkfun-GNSS-config.png" alt="Recommended GNSS Configuration." resize="900x" style="width:450px" >}}
+{{< imgproc src="/components/movement-sensor/sparkfun-GNSS-config.png" alt="Recommended GNSS Configuration." resize="900x" style="width:450px" class="shadow"  >}}
 
 Now click on the **Message Rates** box.
 In the Message Menu enable the following messages:
@@ -127,7 +127,7 @@ In the Message Menu enable the following messages:
 This is necessary for this use case because Viam’s RTK driver uses these messages.
 Your **Message Rates** option should look like this:
 
-{{< imgproc src="/components/movement-sensor/sparkfun-GNSS-message-rates.png" alt="Recommended GNSS Message Rates Configuration." resize="900x" style="width:450px" >}}
+{{< imgproc src="/components/movement-sensor/sparkfun-GNSS-message-rates.png" alt="Recommended GNSS Message Rates Configuration." resize="900x" style="width:450px" class="shadow"  >}}
 
 ### Update Base configuration
 
@@ -152,7 +152,7 @@ Enter the following credentials:
 
 For example:
 
-{{< imgproc src="/components/movement-sensor/sparkfun-base-configuration.png" alt="Recommended Base Configuration." resize="900x" style="width:450px" >}}
+{{< imgproc src="/components/movement-sensor/sparkfun-base-configuration.png" alt="Recommended Base Configuration." resize="900x" style="width:450px" class="shadow"  >}}
 
 ### Update WiFi configuration
 
@@ -165,7 +165,7 @@ The device tries all networks and uses the best network available.
 
 Your WiFi configuration should look like this, with the examples replaced with your real values:
 
-{{< imgproc src="/components/movement-sensor/sparkfun-wifi-configuration.png" alt="Example WiFi Configuration." resize="1000x" style="width:500px" >}}
+{{< imgproc src="/components/movement-sensor/sparkfun-wifi-configuration.png" alt="Example WiFi Configuration." resize="1000x" style="width:500px" class="shadow"  >}}
 
 ### Update Profile configuration
 
@@ -176,7 +176,7 @@ At reset, your RTK device will use the selected settings profile.
 
 Your **Profile Configuration** should look like this:
 
-{{< imgproc src="/components/movement-sensor/sparkfun-profile-configuration.png" alt="Example Profile Configuration." resize="900x" style="width:450px" >}}
+{{< imgproc src="/components/movement-sensor/sparkfun-profile-configuration.png" alt="Example Profile Configuration." resize="900x" style="width:450px" class="shadow"  >}}
 
 ### Save your configuration changes
 

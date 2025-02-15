@@ -59,7 +59,6 @@ If you do not want the data deleted from your machine, copy the data to a new fo
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-folder.svg" class="fill alignleft" style="width: 120px" declaredimensions=true alt="Folder" >}}
 **1. Organize your data**
 
 Put the data you want to sync in a directory on your machine.
@@ -73,7 +72,7 @@ In the **Additional paths**, enter the full path to the directory where the data
 
 Toggle **Syncing** to on (green) if it isn't already on.
 
-{{<imgproc src="/services/data/data-sync-temp.png" resize="x1100" declaredimensions=true alt="Data service configured in the Viam app as described." >}}
+{{<imgproc src="/services/data/data-sync-temp.png" resize="x1100" declaredimensions=true alt="Data service configured in the Viam app as described." class="shadow" >}}
 
 Click **Save** in the top right corner of the page.
 
@@ -240,7 +239,6 @@ if __name__ == "__main__":
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-cloud-sync.svg" class="fill alignleft" style="width: 150px" declaredimensions=true alt="Cloud connection">}}
 **3. Run your code**
 
 Save and run your code once.

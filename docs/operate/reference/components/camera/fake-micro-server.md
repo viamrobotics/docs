@@ -55,7 +55,7 @@ Once your camera is configured, expand the **TEST** section on the configuration
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.
 
-{{< imgproc src="/components/camera/fake-micro-server-view.png" alt="Fake Camera Micro Server View" resize="400x" >}}
+{{< imgproc src="/components/camera/fake-micro-server-view.png" alt="Fake Camera Micro Server View" resize="400x" class="shadow"  >}}
 
 ## Troubleshooting
 

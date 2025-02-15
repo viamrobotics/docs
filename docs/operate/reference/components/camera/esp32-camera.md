@@ -30,7 +30,7 @@ aliases:
 
 For example, the `OV2640` with a ribbon cable connected to an ESP32:
 
-{{< imgproc src="/components/camera/esp32-camera-2640.png" alt="Fake Camera on the ESP32" resize="300x" >}}
+{{< imgproc src="/components/camera/esp32-camera-2640.png" alt="Fake Camera on the ESP32" resize="300x" class="shadow" >}}
 
 {{< alert title="Software requirements" color="note" >}}
 To use this model, you must follow the [`viam-micro-server` Development Setup](/operate/get-started/other-hardware/micro-module/), which enables you to install and activate the ESP-IDF.

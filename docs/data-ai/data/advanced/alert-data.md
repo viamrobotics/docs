@@ -26,7 +26,7 @@ To configure a trigger:
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." >}}
+   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow" >}}
 
 2. Name the trigger and click **Create**.
 
@@ -48,7 +48,7 @@ Then, add any conditions.
 These can include a key, a value, and a logical operator.
 For example, a trigger configured to fire when data is captured from the motor `motor-1`'s `IsPowered` method when `is_on` is equal to `True`:
 
-{{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." >}}
+{{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow" >}}
 
 For more information, see [Conditions](#conditions).
 
@@ -68,7 +68,7 @@ Click **Add Webhook**.
 Add the URL of your cloud function or lambda.
 Configure the time between notifications.
 
-![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
+{{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="Emails" %}}

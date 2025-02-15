@@ -118,7 +118,7 @@ To create firmware that integrates an existing module with the Micro-RDK, and fl
 
     Then select the part status dropdown to the right of your machine's name on the top of the page and copy the **Machine cloud credentials**:
 
-    {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+    {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
 
     The Micro-RDK needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
@@ -333,7 +333,7 @@ If successful, the Viam app will show that your machine part's status is **Live*
 If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
 
 1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
 1. Click the copy icon underneath **Machine cloud credentials**.
    The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 1. Navigate to the directory of the project you just created.
