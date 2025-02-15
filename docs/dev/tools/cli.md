@@ -960,7 +960,7 @@ The following criteria are checked for every `upload`:
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
 
-See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
+See [Integrate other hardware](/operate/get-started/other-hardware/) and [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
 ##### Using the `build` subcommand
 
@@ -1102,7 +1102,7 @@ tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 {{ % /tab %}}
 { {< /tabs >}} -->
 
-For example, the following extends the `my-module` <file>meta.json</file> file from the previous section using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
+For example, the following extends the `my-module` <file>meta.json</file> file using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
