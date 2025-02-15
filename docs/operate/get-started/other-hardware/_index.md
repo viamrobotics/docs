@@ -800,6 +800,8 @@ In upper right corner of the module's card, click the three dot (**...**) icon, 
 {{% /tablestep %}}
 {{< /table >}}
 
+See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) for advanced `build` options.
+
 ## Upload your module
 
 Once you are done testing locally, you can upload your module to the [Viam Registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
