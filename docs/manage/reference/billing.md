@@ -13,7 +13,7 @@ no_list: true
 # updated: ""  # When the content was last entirely checked
 ---
 
-{{<imgproc src="/billing-menu.png" resize="400x" declaredimensions=true alt="Payment and billing menu item" class="alignright">}}
+{{<imgproc src="/billing-menu.png" resize="400x" declaredimensions=true alt="Payment and billing menu item" class="alignright shadow">}}
 
 To access the **Payment and billing** page, click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
 

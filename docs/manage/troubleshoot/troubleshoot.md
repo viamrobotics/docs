@@ -92,7 +92,7 @@ It takes a few minutes for the server to shut down and restart.
 The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
 To see the history of the configuration of a machine part, click on **History** on the **CONFIGURE** tab.
 
-{{<imgproc src="build/configure/history.png" resize="800x" declaredimensions=true alt="Configuration history for a machine part">}}
+{{<imgproc src="build/configure/history.png" resize="800x" declaredimensions=true alt="Configuration history for a machine part" class="shadow">}}
 
 To restore to an earlier version of your configuration, click the **Restore version** button next to the desired configuration.
 
