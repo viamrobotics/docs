@@ -749,7 +749,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `--output` | The path to the output file to store logs in. | `logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)). | `part run` | **Required** |
-| `--machine-id` | The machine to create an API key for. | `api-key` | **Required** |
+| `--machine-id` | The ID of the machine to create an API key for. | `api-key` | **Required** |
 | `--name` | The optional name of the API key. | `api-key` | Optional |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
