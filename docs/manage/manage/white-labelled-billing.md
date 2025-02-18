@@ -31,7 +31,7 @@ Once set up:
 Your logo can be up to 200KB in size and must be in PNG format.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization logo set --logo-path=logo.png --org-id=<org-id>
+viam organization logo set --logo-path logo.png --org-id <org-id>
 Successfully set the logo for organization <org-id> to logo at file-path: logo.png
 ```
 
@@ -42,7 +42,7 @@ You must have [owner permissions](/manage/manage/rbac/#organization-settings-and
 **3. Add the support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account-related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization support-email set --support-email=support@logoipsum.com --org-id=<org-id>
+viam organization support-email set --support-email support@logoipsum.com --org-id <org-id>
 Successfully set support email for organization "<org-id>" to "support@logoipsum.com"
 ```
 
@@ -56,7 +56,7 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 **1. Enable the billing service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organizations billing-service enable --org-id=<org-id> --address="100 Center Street, New York, NY, 10001"
+viam organizations billing-service enable --org-id <org-id> --address "100 Center Street, New York, NY, 10001"
 Successfully enabled billing service for organization "<org-id>"
 ```
 
@@ -65,9 +65,9 @@ Successfully enabled billing service for organization "<org-id>"
 **2. Get billing dashboard URL** from the billing service config:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
-viam organizations billing-service get-config --org-id="<org-id> "
+viam organizations billing-service get-config --org-id "<org-id> "
 Billing config for organization: <org-id>
-Support Email: npentrel@gmail.com
+Support Email: support.person@gmail.com
 Billing Dashboard URL: https://app.viam.com/billing/logoipsum
 Logo URL: https://storage.googleapis.com/viam-self-service-<org-id>/primary_logo.png
 
