@@ -700,9 +700,9 @@ TypeScript is a superset of JavaScript with added functionality, and it transpil
 If you look at line 5 of <file>package.json</file>, you can see that `./main.ts` builds out to `static/main.js`.
 {{% /alert %}}
 
-1. Now you'll create a style sheet to specify the fonts, colors, and spacing of your dashboard.
+2. Now you'll create a style sheet to specify the fonts, colors, and spacing of your dashboard.
    Create a new file inside your <file>static</file> folder and name it <file>style.css</file>.
-1. Paste the following into <file>style.css</file>:
+3. Paste the following into <file>style.css</file>:
 
    ```{class="line-numbers linkable-line-numbers"}
    body {
