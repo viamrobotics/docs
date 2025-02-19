@@ -96,3 +96,7 @@ You can also add fragments manually to the machines that need it:
 {{< alert title="Tip" color="tip" >}}
 You can also add multiple fragments to one machine.
 {{< /alert >}}
+
+{{% hiddencontent %}}
+You cannot add the same fragment to a machine twice.
+{{% /hiddencontent %}}
