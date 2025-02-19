@@ -41,6 +41,7 @@ Viam's fleet management tooling allows you to remotely deploy and manage softwar
 
 {{< how-to-expand "Deploy code and manage software on machines" "2" "INTERMEDIATE" "hoverable-fleet" >}}
 {{< cards >}}
+{{% card link="/manage/software/control-logic/" noimage="true" %}}
 {{% card link="/manage/software/deploy-software/" noimage="true" %}}
 {{% card link="/manage/software/update-software/" noimage="true" %}}
 {{< /cards >}}
