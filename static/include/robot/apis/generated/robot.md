@@ -807,7 +807,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-core/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
