@@ -235,7 +235,7 @@ If, for example, the module provides a motor component, and the motor is running
 #### Environment variables
 
 Each module has access to the following default environment variables.
-Not all of these variables are available on [local modules](/operate/get-started/other-hardware/#test-your-module-locally); you can manually set variables your module requires if necessary.
+Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/#test-your-module-locally); you can manually set variables your module requires if necessary.
 
 <!-- prettier-ignore -->
 | Name | Description | Automatically set on local modules? |
