@@ -85,4 +85,5 @@ These APIs provide interfaces for controlling and getting information from the s
 {{% card link="/dev/reference/apis/services/generic/" customTitle="Generic service API" noimage="True" %}}
 {{% card link="/dev/reference/apis/services/slam/" customTitle="SLAM service API" noimage="True" %}}
 {{% card link="/dev/reference/apis/services/base-rc/" customTitle="Base Remote Control service API" noimage="True" %}}
+{{% card link="/dev/reference/apis/services/discovery/" customTitle="Discovery service API" noimage="True" %}}
 {{< /cards >}}

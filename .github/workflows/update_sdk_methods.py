@@ -21,7 +21,7 @@ sdks_supported = ["go", "python", "flutter"]
 ## at runtime if desired:
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
               "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
-services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
+services = ["base_remote_control", "data_manager", "discovery", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
 app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
 robot_apis = ["robot"]
 
@@ -294,6 +294,11 @@ proto_map = {
     "data_sync": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/datasync/v1/data_sync_grpc.pb.go",
         "name": "DataSyncServiceClient",
+        "methods": []
+    },
+    "discovery": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/discovery/v1/discovery_grpc.pb.go",
+        "name": "DiscoveryServiceClient",
         "methods": []
     },
     "robot": {
@@ -715,10 +720,10 @@ def parse(type, names):
                     all_methods['flutter'] = {}
                 if type not in all_methods['flutter']:
                     all_methods['flutter'][type] = {}
-                
+
                 # Initialize empty dictionary for this resource
                 all_methods['flutter'][type][resource] = {}
-                
+
                 # Skip resources not supported in Flutter
                 unsupported_resources = [
                     "base_remote_control", "encoder", "input_controller",
@@ -1863,6 +1868,8 @@ def write_markdown(type, names, methods):
                             proto_anchor_link = '/dev/reference/apis/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
                             proto_anchor_link = '/dev/reference/apis/services/data/#' + proto_link
+                        elif type == 'service' and resource == 'discovery':
+                            proto_anchor_link = '/dev/reference/apis/services/discovery/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
                             proto_anchor_link = '/dev/reference/apis/services/generic/#' + proto_link
                         elif type == 'service' and resource == 'mlmodel':

@@ -424,6 +424,9 @@ data_sync,FileUpload,,file_upload,,uploadFile
 data_sync,FileUploadFromPath,,file_upload_from_path,,
 data_sync,StreamingDataCaptureUpload,,streaming_data_capture_upload,,streamingDataCaptureUpload
 
+## Discovery
+discovery,DiscoverResources,,discover_resources,DiscoverResources,
+
 ## MLTraining
 mltraining,SubmitTrainingJob,,submit_training_job,,
 mltraining,SubmitCustomTrainingJob,,submit_custom_training_job,,
@@ -447,6 +450,7 @@ robot,TransformPose,,transform_pose,TransformPose,
 robot,TransformPCD,,,TransformPointCloud,
 robot,StreamStatus,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,
+robot,GetModelsFromModules,,get_models_from_modules,,
 robot,StopAll,,stop_all,StopAll,
 robot,RestartModule,,,RestartModule,
 robot,StartSession,,,,
