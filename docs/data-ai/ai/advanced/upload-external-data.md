@@ -38,7 +38,7 @@ However, if you already have a cache of data you'd like to use with Viam, you ca
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management service](/data-ai/capture-data/capture-sync/#configure-the-data-management-service-for-your-machine):
+Add the [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -272,7 +272,7 @@ Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-r
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/data-ai/capture-data/capture-sync/#configure-the-data-management-service-for-your-machine" %}}
+{{% tablestep link="/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources" %}}
 **1. Navigate to your machine**
 
 In the Viam mobile app, select an organization by clicking on the menu icon in the top left corner and tapping an organization.

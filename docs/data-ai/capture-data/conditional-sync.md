@@ -15,18 +15,24 @@ aliases:
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
-next: /data-ai/capture-data/advanced/how-sync-works/
+next: /data-ai/capture-data/advanced/advanced-data-capture-sync/
 date: "2024-12-04"
 ---
 
-You may want to sync data only when a certain logic condition is met, instead of at a regular time interval.
-For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
-Or, you may want to trigger sync only when your machine detects an object of a certain color.
-You can use the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2) if one of these examples is what you are looking for.
+### Conditional sync
 
-If you need different logic, you can create a modular sensor that determines if the conditions for sync are met or not.
+By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
+You can additionally configure sync to only happen when certain conditions are met.
+For example:
+
+- Only sync when on WiFi
+- Sync when conditions are met or events are detected
+- Sync during certain time windows
+
 This page will show you the implementation of a sensor which only allows sync during a defined time interval.
 You can use it as the basis of your own custom logic.
+
+You can also view [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2) for more examples.
 
 ## Prerequisites
 
@@ -38,7 +44,7 @@ You can use it as the basis of your own custom logic.
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management service](/data-ai/capture-data/capture-sync/#configure-the-data-management-service-for-your-machine):
+Add the [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -286,7 +292,7 @@ You have now configured sync to happen during a specific time slot.
 
 ## Test your sync configuration
 
-To test your setup, [configure a webcam](/operate/reference/components/camera/webcam/) or another component and [enable data capture on the component](/data-ai/capture-data/capture-sync/#configure-data-capture-for-individual-resources).
+To test your setup, [configure a webcam](/operate/reference/components/camera/webcam/) or another component and [enable data capture on the component](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources).
 Make sure to physically connect any hardware parts to the computer controlling your machine.
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
