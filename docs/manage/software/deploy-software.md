@@ -30,7 +30,7 @@ Then, [configure any hardware and software resources](/operate/get-started/suppo
 ## Configure your software
 
 1.  Go to your [machine](#prerequisites) in the [Viam app](https://app.viam.com).
-1.  Add drivers for your hardware resources. For more information, see [Supported hardware](/operate/get-started/supported-hardware/).
+1.  Add drivers for your hardware resources and any other resources you want to use with your control logic. For more information, see [Supported hardware](/operate/get-started/supported-hardware/).
 1.  If you created a [control logic module](/manage/software/control-logic/), add it to your machine.
 
     {{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="shadow" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}

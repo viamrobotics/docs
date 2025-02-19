@@ -44,18 +44,18 @@ Then, [configure any hardware and software resources](/operate/get-started/suppo
    - Namespace/Organization ID: In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
      Find the **Public namespace** and copy that string.
      In the example snippets below, the namespace is `naomi`.
-   - Resource to be added to the module: `Generic Component`.[^generic]
+   - Resource to be added to the module: `Generic Component`.
+
+     For simplicity, this guide uses the generic component.
+     You can choose a different resource type to add your control logic to.
+     For example, for logic controlling a camera, you may wish to use the camera component.
+     You must implement any required API methods for the chosen component.
+
    - Model name: Your choice, for example `control-logic`
    - Enable cloud build: Choose `Yes` if you are using GitHub or want to use cloud build.
    - Register module: `Yes`
 
 3. Press the Enter key and the generator will create a folder for your control logic component.
-
-[^generic]:
-    For simplicity, this guide uses the generic component.
-    You can choose a different resource type to add your control logic to.
-    For example, for logic controlling a camera, you may wish to use the camera component.
-    You must implement any required API methods for the chosen component.
 
 ## Add control logic to your module
 
