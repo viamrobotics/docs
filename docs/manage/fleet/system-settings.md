@@ -58,20 +58,20 @@ If the `fallbackNetOne` is not available or the machine can connect but internet
 
 ```json
 "agent": {
-    "additional_networks": [
-        {
+    "additional_networks": {
+        "network_name_1": {
             "type": "wifi",
             "ssid": "fallbackNetOne",
             "psk": "myFirstPassword",
             "priority": 30
         },
-        {
+        "network_name_2": {
             "type": "wifi",
             "ssid": "fallbackNetTwo",
             "psk": "mySecondPassword",
             "priority": 10
         }
-    ]
+    }
 }
 ```
 
