@@ -5,13 +5,13 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "As new versions of software modules or ML models become available, you can update the deployed version on all machines in one go."
-date: "2025-02-05"
+date: "2025-02-14"
 aliases:
   - /manage/software/update-packages/
 ---
 
 If you have already [deployed software](/manage/software/deploy-software/), you can inspect the fragment you have created.
-The JSON object for the deployed module or package has a `version` field.
+The JSON object for the deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glossary_tooltip term_id="package" text="package" >}} has a `version` field.
 Unless the `version` field is set to a specific version, some or all updates for that module or package can happen automatically.
 
 To perform other updates or changes to the configuration of all machines using the fragment:
@@ -28,25 +28,23 @@ To update the firmware on your microcontroller, see [Over-the-air updates](/oper
 
 ## Test updates
 
-You can either create a second fragment that you add to a subset of machines, or manually overwrite the version of the package for a subset of machines.
+You can either create a second fragment that you add to a subset of machines, or manually overwrite the version of the module or package for a subset of machines.
 
 {{< tabs >}}
 {{< tab name="A second fragment (recommended)" >}}
 
 {{< table >}}
 {{% tablestep %}}
-**1. Create a fragment for development**
 
-Copy the JSON object from your primary fragment and create a second fragment.
+**1. Create a fragment for development** by copying the JSON object from your primary fragment and pasting it into a new fragment.
 We recommend you call your second fragment something easily identifiable as your testing environment, such as `FragmentName-DEV`.
 
 Paste the JSON object from your primary fragment.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Edit the fragment**
+**2. Edit the fragment** and change the version of your module or package in the development fragment.
 
-Change the version of your module or package in the development fragment.
 For example:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="22"}
@@ -81,15 +79,13 @@ For example:
 {{% tablestep %}}
 **3. Add the development fragment to a subset of machines**
 
-Configure a subset of your machines with the development fragment.
 If you had configured them already with the primary fragment, remove that fragment first.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**4. Test the new version**
+**4. Test the new version of your module or package**.
 
-Test the new version of your package.
-When you are satisfied that your package works as expected, continue to update your primary fragment.
+When you are satisfied that your module or package works as expected, continue to update your primary fragment.
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -101,9 +97,9 @@ When you are satisfied that your package works as expected, continue to update y
 {{% tablestep %}}
 **1. Change the version of the module**
 
-You can overwrite parts of a fragment to use a new version of a package without modifying the upstream fragment.
+You can overwrite parts of a fragment to use a new version of a module or package without modifying the upstream fragment.
 
-For each machine that you would like to test the new version of the package on, go to its **CONFIGURE** tab, find the package, and edit its version number.
+For each machine that you would like to test the new version of the module or package on, go to its **CONFIGURE** tab, find the module or package, and edit its version number.
 
 {{<imgproc src="/how-tos/deploy-packages/version-change.png" resize="800x" class="shadow fill" style="width: 600px" declaredimensions=true alt="Configuration builder UI">}}
 
@@ -113,8 +109,8 @@ Click **Save** in the upper right corner of the screen.
 {{% tablestep %}}
 **2. Test the new version**
 
-Test the new version of your package.
-When you are satisfied that your package works as expected, continue to [update your primary fragment](#update-the-software-version).
+Test the new version of your module or package.
+When you are satisfied that your module or package works as expected, continue to [update your primary fragment](#update-the-software-version).
 
 {{% /tablestep %}}
 {{< /table >}}
