@@ -1,0 +1,47 @@
+### DiscoverResources
+
+Get a list of component configs of all resources available to configure on a machine based on the hardware that is physically connected to or part of the machine.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([List[viam.proto.app.robot.ComponentConfig]](https://python.viam.dev/autoapi/viam/proto/app/robot/index.html#viam.proto.app.robot.ComponentConfig)): A list of ComponentConfigs that describe the components found by a discover service.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_discovery = DiscoveryClient.from_robot(machine, "my_discovery")
+
+# Get the discovered resources
+result = await my_discovery.discover_resources(
+    "my_discovery",
+)
+discoveries = result.discoveries
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/discovery/client/index.html#viam.services.discovery.client.DiscoveryClient.discover_resources).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]resource.Config)](https://pkg.go.dev/go.viam.com/rdk/resource#Config)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/discovery#Service).
+
+{{% /tab %}}
+{{< /tabs >}}

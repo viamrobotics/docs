@@ -36,16 +36,16 @@ Get status information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the resources (List[ResourceStatus]) and config of the machine.
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the machine (initializing or running), resources (List[ResourceStatus]) and config of the machine.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 machine_status = await machine.get_machine_status()
-cloud_metadata = machine_status.resources[0].cloud_metadata
-resource_statuses = machine_status.resources
-config_status = machine_status.config
 machine_state = machine_status.state
+resource_statuses = machine_status.resources
+cloud_metadata = machine_status.resources[0].cloud_metadata
+config_status = machine_status.config
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
@@ -277,6 +277,27 @@ Do not move the robot between the generation of the initial pointcloud and the r
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetModelsFromModules
+
+Get a list of all models provided by local and registry modules on the machine.
+This includes models that are not currently configured on the machine.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- ([List[viam.proto.robot.ModuleModel]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)): A list of discovered models.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_models_from_modules).
 
 {{% /tab %}}
 {{< /tabs >}}

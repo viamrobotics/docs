@@ -9,6 +9,7 @@
 | [`FrameSystemConfig`](/dev/reference/apis/robot/#framesystemconfig) | Get the configuration of the frame system of a given machine. |
 | [`TransformPose`](/dev/reference/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
 | [`TransformPCD`](/dev/reference/apis/robot/#transformpcd) | Transforms the pointcloud to the desired frame in the robot's frame system. |
+| [`GetModelsFromModules`](/dev/reference/apis/robot/#getmodelsfrommodules) | Get a list of all models provided by local and registry modules on the machine. |
 | [`StopAll`](/dev/reference/apis/robot/#stopall) | Cancel all current and outstanding operations for the machine and stop all actuators and movement. |
 | [`RestartModule`](/dev/reference/apis/robot/#restartmodule) | Reload a module as if its config changed. |
 | [`Log`](/dev/reference/apis/robot/#log) | Create a LogEntry object from the log to send to the RDK over gRPC. |
