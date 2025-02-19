@@ -622,6 +622,166 @@ The `logout` command ends an authenticated CLI session.
 viam logout
 ```
 
+### `machines` (alias `robots`)
+
+The `machines` command allows you to manage your machine fleet.
+This includes:
+
+- Listing all machines that you have access to, filtered by organization and location.
+- Creating API keys to grant access to a specific machine
+- Retrieving machine and machine part status
+- Retrieving machine and machine part logs
+- Controlling a machine by issuing component and service commands
+- Accessing your machine with a secure shell (when this feature is enabled)
+
+```sh {class="command-line" data-prompt="$"}
+viam machines list
+viam machines status --org=<org id> --location=<location id> --machine=<machine id>
+viam machines logs --org=<org id> --location=<location id> --machine=<machine id> [...named args]
+viam machines api-key create --machine=<machine id> [...named args]
+viam machines part logs --machine=<machine id> --part=<part id> [...named args]
+viam machines part status --org=<org id> --location=<location id> --machine=<machine id>
+viam machines part run --org=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
+viam machines part shell --org=<org id> --location=<location id> --machine=<machine id> --part=<part id>
+viam machines part restart --machine=<machine id> --part=<part id>
+viam machines part cp --org=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# list all machines you have access to
+viam machines list
+
+# get machine status
+viam machines status  --machine=123
+
+# create an api key for a machine
+viam machines api-key create --machine=123 --name=MyKey
+
+# stream logs from a machine
+viam machines logs --machine=123
+
+# stream logs from a machine part
+viam machines part logs --part=myrover-main --tail=true
+
+# stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
+viam machines part run --part=myrover-main --stream=500ms \
+--data='{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_classifier", "n":1}' \
+viam.service.vision.v1.VisionService.GetClassificationsFromCamera
+
+# restart a part of a specified machine
+viam machines part restart --part=123
+
+# tunnel connections to the specified port on a machine part
+viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
+
+# Copy and a single file to a machine and change the file's name:
+viam machine part cp --part=123 my_file machine:/home/user/
+
+# Recursively copy a directory to a machine:
+viam machine part cp --part=123 -r my_dir machine:/home/user/
+
+# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
+viam machine part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
+
+# Copy a single file from a machine to a local destination:
+viam machine part cp --part=123 machine:my_file ~/Downloads/
+
+# Recursively copy a directory from a machine to a local destination:
+viam machine part cp --part=123 -r machine:my_dir ~/Downloads/
+
+# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
+viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `list` | List all machines that the authenticated session has access to, filtered by organization and location. | - |
+| `api-key` | Work with an API key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `status` | Retrieve machine status for a specified machine | - |
+| `logs` | Retrieve logs for a specified machine | - |
+| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
+| `--help` | Return help | - |
+
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `create` | Create an API key for a specific machine |
+| `--help` | Return help |
+
+##### Positional arguments: `part`
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `status` | Retrieve machine status for a specified machine part |
+| `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
+| `logs` | Get logs for the specified machine or machine part |
+| `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
+| `restart` | Restart a machine part. |
+| `cp` | Copy files to and from a machine part. |
+| `tunnel` | Tunnel connections to a specified port on a machine part. |
+| `--help` | Return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--part` | Part ID for which the command is being issued. | `part` | **Required** |
+| `--machine` | Machine ID for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs` | **Required** |
+| `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--org` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
+| `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
+| `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
+| `--keyword` | Filter logs by keyword. | `logs` | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
+| `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
+| `--count` | The number of logs to fetch. | `logs` | Optional |
+| `--format` | THe file format for the output file. Options: `text` or `json`. | `logs` | Optional |
+| `--output` | The path to the output file to store logs in. | `logs` | Optional |
+| `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | `part run` | Optional |
+| `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)). | `part run` | **Required** |
+| `--machine-id` | The ID of the machine to create an API key for. | `api-key` | **Required** |
+| `--name` | The optional name of the API key. | `api-key` | Optional |
+| `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
+| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
+| `--destination-port` | The port on a machine part to tunnel to. | `part tunnel` | **Required** |
+| `--local-port` | The local port from which to tunnel. | `part tunnel` | **Required** |
+
+##### Using the `--stream` and `--data` arguments
+
+Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
+
+The `--data` parameter is required and you must specify both:
+
+- Method arguments in JSON format
+- A resource method (in the form of the {{< glossary_tooltip term_id="protobuf" text="protobuf" >}} package and method path)
+
+The format of what is passed to the `--data` argument is:
+
+```sh {class="command-line" data-prompt="$"}
+'{"arg1": "val1"}' <protobuf path>
+```
+
+You can find the protobuf path for the Viam package and method in the [Viam API package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
+
+For example:
+
+```sh {class="command-line" data-prompt="$"}
+'{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' \
+viam.service.vision.v1.VisionService.GetClassificationsFromCamera
+```
+
+The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
+
 ### `module`
 
 The `module` command allows to you to work with {{< glossary_tooltip term_id="module" text="modules" >}}.
@@ -703,12 +863,12 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | -------------- | ----------- | -------------------- |
 | `generate` | Auto-generate stub files for a new module by following prompts. | - |
 | `create` | Generate new metadata for a custom module on your local filesystem. | - |
-| `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
+| `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
-| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
-| `build local` | Start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `--help` | Return help. | - |
@@ -724,7 +884,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start`. | `build list`, `build logs`, `reload` | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
-| `--module` | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
+| `--module` | The path to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload` | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
@@ -787,7 +947,7 @@ You set an initial version for your custom module with your first `viam module u
 Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam Registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
-When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
+When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) is associated with the specific `--version` for that `upload`.
 Therefore, you are able to change the `entrypoint` file from version to version, if desired.
 
 ##### Upload validation
@@ -796,90 +956,11 @@ When you `upload` a module, the command performs basic validation of your module
 The following criteria are checked for every `upload`:
 
 - The module must exist on the filesystem at the path provided to the `upload` command.
-- The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
+- The entry point file specified in the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
 
-##### The `meta.json` file
-
-When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
-This file is created for you when you run the `viam module generate` or `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
-If you later make changes to this file, you can register those changes with the Viam registry by using the `viam module update` command.
-
-The `meta.json` file includes the following configuration options:
-
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Inclusion</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>module_id</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>The name of the module, including its namespace.</td>
-
-  </tr>
-  <tr>
-    <td><code>visibility</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>Whether the module is accessible only to members of your <a href="/dev/reference/glossary/#organization">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
-  </tr>
-  <tr>
-    <td><code>url</code></td>
-    <td>string</td>
-    <td>Optional</td>
-    <td>The URL of the GitHub repository containing the source code of the module.</td>
-  </tr>
-  <tr>
-    <td><code>description</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>A description of your module and what it provides.</td>
-  </tr>
-  <tr>
-    <td><code>models</code></td>
-    <td>object</td>
-    <td><strong>Required</strong></td>
-    <td>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key-value pair.</td>
-  </tr>
-  <tr>
-    <td><code>entrypoint</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory. You can change the entrypoint file from version to version, if desired.
-</td>
-  </tr>
-</table>
-
-For example, the following represents the configuration of an example `my-module` module in the `acme` namespace:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "module_id": "acme:my-module",
-  "visibility": "public",
-  "url": "https://github.com/<my-repo-name>/my-module",
-  "description": "An example custom module.",
-  "models": [
-    {
-      "api": "rdk:component:generic",
-      "model": "acme:demo:my-model"
-    }
-  ],
-  "entrypoint": "<PATH-TO-EXECUTABLE>"
-}
-```
-
-{{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the namespace of your model match the [namespace of your organization](/operate/reference/naming-modules/#create-a-namespace-for-your-organization).
-In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
-If the two namespaces do not match, the command will return an error.
-{{% /alert %}}
-
-See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
+See [Integrate other hardware](/operate/get-started/other-hardware/) and [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
 ##### Using the `build` subcommand
 
@@ -888,7 +969,7 @@ You can use the `module build start` or `module build local` commands to build y
 - Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
-To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file) like the following:
+To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) like the following:
 
 <!-- Developers can either have a single build file for all platforms, or platform specific files: -->
 
@@ -1021,7 +1102,7 @@ tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 {{ % /tab %}}
 { {< /tabs >}} -->
 
-For example, the following extends the `my-module` <file>meta.json</file> file from the previous section using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
+For example, the following extends the `my-module` <file>meta.json</file> file using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -1220,166 +1301,6 @@ You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment v
 | `--profile-name` | Name of the profile to add, update, or remove. | `add`, `update`, `remove` | **Required** |
 | `--key-id` | The `key id` (UUID) of the API key. | `add`, `update` | **Required** |
 | `--key` | The `key value` of the API key. | `api-key`, `update` | **Required** |
-
-### `machines` (alias `robots`)
-
-The `machines` command allows you to manage your machine fleet.
-This includes:
-
-- Listing all machines that you have access to, filtered by organization and location.
-- Creating API keys to grant access to a specific machine
-- Retrieving machine and machine part status
-- Retrieving machine and machine part logs
-- Controlling a machine by issuing component and service commands
-- Accessing your machine with a secure shell (when this feature is enabled)
-
-```sh {class="command-line" data-prompt="$"}
-viam machines list
-viam machines status --org=<org id> --location=<location id> --machine=<machine id>
-viam machines logs --org=<org id> --location=<location id> --machine=<machine id> [...named args]
-viam machines api-key create --machine=<machine id> [...named args]
-viam machines part logs --machine=<machine id> --part=<part id> [...named args]
-viam machines part status --org=<org id> --location=<location id> --machine=<machine id>
-viam machines part run --org=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
-viam machines part shell --org=<org id> --location=<location id> --machine=<machine id> --part=<part id>
-viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --org=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
-```
-
-Examples:
-
-```sh {class="command-line" data-prompt="$"}
-# list all machines you have access to
-viam machines list
-
-# get machine status
-viam machines status  --machine=123
-
-# create an api key for a machine
-viam machines api-key create --machine=123 --name=MyKey
-
-# stream logs from a machine
-viam machines logs --machine=123
-
-# stream logs from a machine part
-viam machines part logs --part=myrover-main --tail=true
-
-# stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
-viam machines part run --part=myrover-main --stream=500ms \
---data='{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_classifier", "n":1}' \
-viam.service.vision.v1.VisionService.GetClassificationsFromCamera
-
-# restart a part of a specified machine
-viam machines part restart --part=123
-
-# tunnel connections to the specified port on a machine part
-viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
-
-# Copy and a single file to a machine and change the file's name:
-viam machine part cp --part=123 my_file machine:/home/user/
-
-# Recursively copy a directory to a machine:
-viam machine part cp --part=123 -r my_dir machine:/home/user/
-
-# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
-viam machine part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
-
-# Copy a single file from a machine to a local destination:
-viam machine part cp --part=123 machine:my_file ~/Downloads/
-
-# Recursively copy a directory from a machine to a local destination:
-viam machine part cp --part=123 -r machine:my_dir ~/Downloads/
-
-# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
-viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
-```
-
-#### Command options
-
-<!-- prettier-ignore -->
-| Command option | Description | Positional arguments |
-| -------------- | ----------- | -------------------- |
-| `list` | List all machines that the authenticated session has access to, filtered by organization and location. | - |
-| `api-key` | Work with an API key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
-| `status` | Retrieve machine status for a specified machine | - |
-| `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
-| `--help` | Return help | - |
-
-##### Positional arguments: `api-key`
-
-<!-- prettier-ignore -->
-| Argument | Description |
-| -------- | ----------- |
-| `create` | Create an API key for a specific machine |
-| `--help` | Return help |
-
-##### Positional arguments: `part`
-
-<!-- prettier-ignore -->
-| Argument | Description |
-| -------- | ----------- |
-| `status` | Retrieve machine status for a specified machine part |
-| `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs` | Get logs for the specified machine or machine part |
-| `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
-| `restart` | Restart a machine part. |
-| `cp` | Copy files to and from a machine part. |
-| `tunnel` | Tunnel connections to a specified port on a machine part. |
-| `--help` | Return help |
-
-##### Named arguments
-
-<!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required? |
-| -------- | ----------- | ------------------- | --------- |
-| `--part` | Part ID for which the command is being issued. | `part` | **Required** |
-| `--machine` | Machine ID for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs` | **Required** |
-| `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
-| `--org` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
-| `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
-| `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
-| `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
-| `--keyword` | Filter logs by keyword. | `logs` | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
-| `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | `logs` | Optional |
-| `--count` | The number of logs to fetch. | `logs` | Optional |
-| `--format` | THe file format for the output file. Options: `text` or `json`. | `logs` | Optional |
-| `--output` | The path to the output file to store logs in. | `logs` | Optional |
-| `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | `part run` | Optional |
-| `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)). | `part run` | **Required** |
-| `--machine-id` | The machine to create an API key for. | `api-key` | **Required** |
-| `--name` | The optional name of the API key. | `api-key` | Optional |
-| `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
-| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
-| `--destination-port` | The port on a machine part to tunnel to. | `part tunnel` | **Required** |
-| `--local-port` | The local port from which to tunnel. | `part tunnel` | **Required** |
-
-##### Using the `--stream` and `--data` arguments
-
-Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
-
-The `--data` parameter is required and you must specify both:
-
-- Method arguments in JSON format
-- A resource method (in the form of the {{< glossary_tooltip term_id="protobuf" text="protobuf" >}} package and method path)
-
-The format of what is passed to the `--data` argument is:
-
-```sh {class="command-line" data-prompt="$"}
-'{"arg1": "val1"}' <protobuf path>
-```
-
-You can find the protobuf path for the Viam package and method in the [Viam API package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
-
-For example:
-
-```sh {class="command-line" data-prompt="$"}
-'{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' \
-viam.service.vision.v1.VisionService.GetClassificationsFromCamera
-```
-
-The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
 
 ### `training-script`
 
