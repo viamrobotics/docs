@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Run control logic on a machine."
 images: ["/general/code.png"]
-date: "2024-01-13"
+date: "2025-01-15"
 ---
 
 API keys grant access to organizations, locations, and machines.
