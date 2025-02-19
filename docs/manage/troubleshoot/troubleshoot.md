@@ -5,7 +5,7 @@ weight: 35
 layout: "docs"
 type: "docs"
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
-date: "2022-01-01"
+date: "2025-01-07"
 # updated: ""  # When the content was last entirely checked
 aliases:
   - /appendix/troubleshooting/
