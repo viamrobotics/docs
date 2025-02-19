@@ -65,9 +65,9 @@ Successfully enabled billing service for organization "<org-id>"
 **2. Get billing dashboard URL** from the billing service config:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
-viam organizations billing-service get-config --org-id "<org-id> "
+viam organizations billing-service get-config --org-id <org-id>
 Billing config for organization: <org-id>
-Support Email: support.person@gmail.com
+Support Email: support.person@email.com
 Billing Dashboard URL: https://app.viam.com/billing/logoipsum
 Logo URL: https://storage.googleapis.com/viam-self-service-<org-id>/primary_logo.png
 
