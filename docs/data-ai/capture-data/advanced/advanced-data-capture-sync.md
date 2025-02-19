@@ -12,7 +12,7 @@ date: "2025-02-10"
 ---
 
 Some data use cases require advanced configuration beyond the attributes accessible in the UI.
-You can use raw JSON to configure additional  attributes for both data management and data capture.
+You can use raw JSON to configure additional attributes for both data management and data capture.
 You can also configure data capture for remote parts.
 
 ### Advanced data management service configurations

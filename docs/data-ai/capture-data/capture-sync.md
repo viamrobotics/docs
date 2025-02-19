@@ -107,7 +107,7 @@ For instructions on configuring data capture and sync with JSON, go to [Advanced
 
 1. **Save** your config.
 
-### Disable data sync:
+### Disable data sync
 
 1. Navigate to the **Cloud sync** section of the data management service configuration card.
 1. Toggle the **Syncing** switch to **Off**.
