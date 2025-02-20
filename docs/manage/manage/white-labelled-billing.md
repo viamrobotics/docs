@@ -184,3 +184,14 @@ You can add the billing configuration to individual machine configurations, howe
 | `logs_data_egress_bytes` | float | Optional | Cost per byte per month for logs data egress. Default: `0`. |
 
 {{% /expand%}}
+
+## FAQ
+
+### How does reimbursement work for white-labeled billing?
+
+Payments for white-labeled billing go directly to Viam. To arrange reimbursement, please [contact us](mailto:support@viam.com).
+
+### Can I customize the billing page further? 
+
+If you need further customization, please [contact us](mailto:support@viam.com).
+
