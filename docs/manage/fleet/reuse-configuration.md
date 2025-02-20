@@ -33,21 +33,17 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 
 {{< table >}}
 {{% tablestep link="/operate/get-started/setup/" %}}
-**1. Configure one machine**
+**1. Configure one of your machine** in the [Viam app](https://app.viam.com).
 
-Start by configuring one of your machines.
-
-In the [Viam app](https://app.viam.com), use the **CONFIGURE** tab to build a configuration for all resources you want to use on all your machines.
-You can use all available resources in the configuration for your machine except [triggers](/data-ai/data/advanced/alert-data/) which aren't supported.
+Use the **CONFIGURE** tab to configure all resources you want to use on all your machines.
+All available resources except [triggers](/data-ai/data/advanced/alert-data/) are supported in fragments.
 This means you can also use fragments inside a fragment.
 
 {{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="shadow fill" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Copy the raw JSON**
-
-In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON configuration object.
+**2. In your machine's CONFIGURE tab**, switch to **JSON** and **copy the raw JSON configuration object**.
 
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
@@ -92,19 +88,15 @@ In the following steps, you will see how to add a fragment manually. If you are 
 {{< table >}}
 {{% tablestep %}}
 {{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="shadow fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
-**1. Add the fragment to one machine**
+**1. On your machine's CONFIGURE tab, click the + button and select Insert fragment.**
 
-On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
 Search for your fragment and add it.
 
 Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/repeat.svg" class="fill alignleft" style="width: 120px"  declaredimensions=true alt="Repeat">}}
-**2. Repeat for each machine**
-
-Repeat step 1 for each of the machines that you want to configure in the same way.
+**2. Repeat step 1 for each of the machines** that you want to configure in the same way.
 
 If some of your machines have slight differences, you can still add the fragment and then add fragment overwrites in the next section.
 
