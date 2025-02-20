@@ -32,13 +32,6 @@ If your switch has a different name, change the `name` in the code.
 Import the switch package for the SDK you are using:
 
 {{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.switch import Switch
-```
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go

@@ -31,13 +31,6 @@ If your button has a different name, change the `name` in the code.
 Import the button package for the SDK you are using:
 
 {{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.components.button import Button
-```
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
