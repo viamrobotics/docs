@@ -95,7 +95,7 @@ When you are satisfied that your module or package works as expected, continue t
 
 {{< table >}}
 {{% tablestep %}}
-**1. Change the version of the module**
+**1. Change the version of the module**.
 
 You can overwrite parts of a fragment to use a new version of a module or package without modifying the upstream fragment.
 
@@ -107,9 +107,8 @@ Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Test the new version**
+**2. Test the new versionof your module or package.**
 
-Test the new version of your module or package.
 When you are satisfied that your module or package works as expected, continue to [update your primary fragment](#update-the-software-version).
 
 {{% /tablestep %}}
