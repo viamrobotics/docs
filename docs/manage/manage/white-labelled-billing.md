@@ -191,7 +191,6 @@ You can add the billing configuration to individual machine configurations, howe
 
 Payments for white-labeled billing go directly to Viam. To arrange reimbursement, please [contact us](mailto:support@viam.com).
 
-### Can I customize the billing page further? 
+### Can I customize the billing page further?
 
 If you need further customization, please [contact us](mailto:support@viam.com).
-
