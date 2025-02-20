@@ -64,7 +64,7 @@ Successfully enabled billing service for organization "<org-id>"
 {{% tablestep link="/dev/tools/cli/#organizations" %}}
 **2. Get billing dashboard URL** from the billing service config:
 
-```sh {class="command-line" data-prompt="$" data-output="6-10"}
+```sh {class="command-line" data-prompt="$" data-output="6-15"}
 viam organizations billing-service get-config --org-id <org-id>
 Billing config for organization: <org-id>
 Support Email: support.person@email.com
