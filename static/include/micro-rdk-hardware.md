@@ -8,9 +8,9 @@ You will also need a data cable to connect the microcontroller to your developme
 
 Your microcontroller should have at least the following resources available to work with `viam-micro-server`:
 
-- 2 Cores + 384kB SRAM + 2MB PSRAM + 4MB Flash
+- 2 Cores + 384kB SRAM + 2MB PSRAM + 8MB Flash
 
 {{< alert title="Tip" color="tip" >}}
-The WROVER allows a max of 3 incoming gRPC connections (whether over HTTP2 or WebRTC).
-You can change this max by [building your own version of `viam-micro-server`](/operate/get-started/other-hardware/micro-module/).
+The WROVER allows only a small number of incoming gRPC connections (1-5, depending on resources), whether over HTTP2 or WebRTC.
+You can change this max by [building your own firmware](/operate/get-started/other-hardware/micro-module/).
 {{< /alert >}}
