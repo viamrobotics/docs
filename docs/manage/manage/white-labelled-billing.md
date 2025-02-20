@@ -56,7 +56,7 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 **1. Enable the billing service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organizations billing-service enable --org-id <org-id> --address "100 Center Street, New York, NY, 10001"
+viam organizations billing-service enable --org-id <org-id> --address "100 Center Street, New York, NY, 10001, USA"
 Successfully enabled billing service for organization "<org-id>"
 ```
 
