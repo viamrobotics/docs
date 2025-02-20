@@ -26,7 +26,7 @@ The following ESP32 microcontrollers are supported:
 
 Your microcontroller should have at least the following resources available to work with `viam-micro-server`:
 
-- 2 Cores + 384kB SRAM + 2MB PSRAM + 4MB Flash
+- 2 Cores + 384kB SRAM + 2MB PSRAM + 8MB Flash
 
 {{% /alert %}}
 

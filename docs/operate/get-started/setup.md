@@ -48,7 +48,7 @@ Viam also offers a lightweight binary to support the following 32-bit microcontr
 
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
 
-ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 4MB flash to work with Viam.
+ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 8MB flash to work with Viam.
 
 Viam can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
 This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
