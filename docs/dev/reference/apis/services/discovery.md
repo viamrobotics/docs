@@ -10,7 +10,7 @@ date: "2025-02-18"
 ---
 
 The discovery service API allows you to get a list of resources available to configure on a machine based on the hardware that is connected to or part of the machine.
-Discoverable resources include components that are physically connected to the machine, as well as components that are available on the machine's local network.
+Discoverable resources can include components that are physically connected to the machine, as well as components that are available on the machine's local network.
 
 The discovery service supports the following methods:
 
