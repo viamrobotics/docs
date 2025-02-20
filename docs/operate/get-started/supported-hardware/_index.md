@@ -31,6 +31,7 @@ Viam supports a wide variety of sensors, cameras, and other physical hardware, w
 {{% relatedcard link="/dev/reference/apis/components/arm/" %}}
 {{% relatedcard link="/dev/reference/apis/components/base/" %}}
 {{% relatedcard link="/dev/reference/apis/components/board/" %}}
+{{% relatedcard link="/dev/reference/apis/components/button/" %}}
 {{% relatedcard link="/dev/reference/apis/components/camera/" %}}
 {{% relatedcard link="/dev/reference/apis/components/encoder/" %}}
 {{% relatedcard link="/dev/reference/apis/components/gantry/" %}}
@@ -41,6 +42,7 @@ Viam supports a wide variety of sensors, cameras, and other physical hardware, w
 {{% relatedcard link="/dev/reference/apis/components/power-sensor/" %}}
 {{% relatedcard link="/dev/reference/apis/components/sensor/" %}}
 {{% relatedcard link="/dev/reference/apis/components/servo/" %}}
+{{% relatedcard link="/dev/reference/apis/components/switch/" %}}
 {{% relatedcard link="/dev/reference/apis/components/generic/" %}}
 {{< /cards >}}
 

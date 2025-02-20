@@ -59,6 +59,7 @@ These APIs provide interfaces for controlling and getting information from the {
 {{< card link="/dev/reference/apis/components/arm/" customTitle="Arm API" noimage="True" >}}
 {{< card link="/dev/reference/apis/components/base/" customTitle="Base API" noimage="True" >}}
 {{< card link="/dev/reference/apis/components/board/" customTitle="Board API" noimage="True" >}}
+{{< card link="/dev/reference/apis/components/button/" customTitle="Button API" noimage="True" >}}
 {{< card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="True" >}}
 {{< card link="/dev/reference/apis/components/encoder/" customTitle="Encoder API" noimage="True" >}}
 {{< card link="/dev/reference/apis/components/gantry/" customTitle="Gantry API" noimage="True" >}}
@@ -70,6 +71,7 @@ These APIs provide interfaces for controlling and getting information from the {
 {{< card link="/dev/reference/apis/components/power-sensor/" customTitle="Power sensor API" noimage="True" >}}
 {{< card link="/dev/reference/apis/components/sensor/" customTitle="Sensor API" noimage="True" >}}
 {{< card link="/dev/reference/apis/components/servo/" customTitle="Servo API" noimage="True" >}}
+{{< card link="/dev/reference/apis/components/switch/" customTitle="Switch API" noimage="True" >}}
 {{< /cards >}}
 
 ## Service APIs
