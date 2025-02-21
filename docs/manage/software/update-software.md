@@ -155,6 +155,12 @@ Don't forget to **Save**.
 
 All machines configured with your fragment will update when they next check for configuration updates.
 
+{{< alert title="Manage when machines update their config" color="tip" >}}
+By default, when a fragment is updated, machines using it will automatically update when the configuration is synced next.
+To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window).
+With a configured maintenance window, configuration updates will only be applied when maintenance is allowed.
+{{< /alert >}}
+
 ## Check machine status
 
 To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/dev/reference/apis/robot/#getmachinestatus).
