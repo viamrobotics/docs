@@ -4,7 +4,7 @@ linkTitle: "Switch"
 childTitleEndOverwrite: "Switch Component"
 weight: 100
 type: "docs"
-description: "Represents a physical multi-position switch on a machine."
+description: "A physical multi-position switch on a machine."
 tags: ["switch", "components"]
 icon: true # this should be used when the image is an icon, it will adjust the sizing and object-fit
 images: ["/icons/components/generic.svg"]
@@ -15,7 +15,7 @@ date: "2025-02-20"
 ---
 
 The switch component provides an API for reading the state of a physical switch on a machine that has multiple discrete positions.
-A simple switch has two positions, and a knob could have ten positions.
+A simple switch has two positions, and a knob could have any number of positions.
 
 ## Configuration
 

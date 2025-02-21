@@ -4,7 +4,7 @@ linkTitle: "Button"
 childTitleEndOverwrite: "Button Component"
 weight: 10
 type: "docs"
-description: "Represents a physical button on a machine."
+description: "A physical button on a machine."
 tags: ["button", "components"]
 icon: true # this should be used when the image is an icon, it will adjust the sizing and object-fit
 images: ["/icons/components/generic.svg"]
