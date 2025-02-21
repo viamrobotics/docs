@@ -47,7 +47,7 @@ For each module:
    For more information on these configuration options, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
    By default, if the set version type allows for automatic updates, when a new version of a module or package becomes available, it will automatically update when the configuration is synced next.
-  To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window). With a configured maintenance window, configuration updates will only be applied when maintenance is allowed.
+   To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window). With a configured maintenance window, configuration updates will only be applied when maintenance is allowed.
 
    {{<imgproc src="/how-tos/deploy-packages/version.png" resize="800x" class="shadow" style="width: 500px" declaredimensions=true alt="Module card UI">}}
 
