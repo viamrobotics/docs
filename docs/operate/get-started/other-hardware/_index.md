@@ -43,7 +43,7 @@ This page provides instructions for creating and uploading a module in Python or
 
 {{% alert title="See also" color="info" %}}
 
-- [Write a module for microcontrollers (to use alongside viam-micro-server)](/operate/get-started/other-hardware/micro-module/)
+- [Write a module for microcontrollers](/operate/get-started/other-hardware/micro-module/)
 - [Hello World guide to writing a module with Python or Go](/operate/get-started/other-hardware/hello-world-module/)
 - [Update and manage modules](/operate/get-started/other-hardware/manage-modules/)
 
