@@ -38,7 +38,7 @@ Once your module is in the [Viam Registry](https://app.viam.com/registry), there
 
 Use GitHub Actions to automatically build and deploy your new module version when you create a tag or release in GitHub:
 
-1. Edit your module code and update the [`meta.json`](/operate/reference/module-configuration/#meta-json) file if needed.
+1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
 
 1. If you used `viam module generate` to create your module and enabled cloud build, **all you need to do is create a tag and publish a release in GitHub as you did when you [first published the module](/operate/get-started/other-hardware/#upload-your-module)**.
    You can skip to step 5.
@@ -232,7 +232,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 Use the [Viam CLI](/dev/tools/cli/) to manually update your module:
 
-1. Edit your module code and update the [`meta.json`](/operate/reference/module-configuration/#meta-json) file if needed.
+1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
 2. For Python modules only, package your files as an archive:
