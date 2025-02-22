@@ -158,7 +158,7 @@ For complete examples that implement control logic, see:
 
 Once you have implemented your control logic, commit and push your changes to a GitHub repository.
 
-If you are not using GitHub, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-an-existing-module-using-a-github-action) for more information on alternatives.
+If you are not using GitHub, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information on alternatives.
 
 Follow the steps in [Upload your module](/operate/get-started/other-hardware/#upload-your-module) using cloud build.
 

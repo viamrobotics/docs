@@ -28,13 +28,13 @@ For information on pinning module deployments to versions, see [Module versionin
 
 Once your module is in the [Viam Registry](https://app.viam.com/registry), there are two ways to update it:
 
-- [Automatic updates](#automatic-updates) using GitHub Actions: Recommended for ongoing projects with continuous integration (CI) workflows, or if you want to build for multiple platforms.
+- [Update automatically](#update-automatically) using GitHub Actions: Recommended for ongoing projects with continuous integration (CI) workflows, or if you want to build for multiple platforms.
 
   - If you enabled cloud build when you generated your module, the GitHub actions are already set up for you.
 
-- [Manual updates](#manual-updates) using the [Viam CLI](/dev/tools/cli/): Fine for small projects with one contributor.
+- [Update manually](#update-manually) using the [Viam CLI](/dev/tools/cli/): Fine for small projects with one contributor.
 
-### Automatic updates
+### Update automatically
 
 Use GitHub Actions to automatically build and deploy your new module version when you create a tag or release in GitHub:
 
@@ -228,7 +228,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
    Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/reference/module-configuration/#module-versioning) of the module will automatically update to the new version.
 
-### Manual updates
+### Update manually
 
 Use the [Viam CLI](/dev/tools/cli/) to manually update your module:
 
