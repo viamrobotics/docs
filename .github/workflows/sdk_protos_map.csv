@@ -57,6 +57,11 @@ board,Name,No,,Name,
 board,GetResourceName,No,get_resource_name,,getResourceName
 board,Close,No,close,Close,
 
+## Button
+button,Push,No,,Push,
+button,DoCommand,No,,DoCommand,
+button,Close,No,,Close,
+
 ## Camera
 camera,GetImage,,get_image,Image,image
 camera,GetImages,,get_images,Images,
@@ -208,6 +213,13 @@ servo,Reconfigure,No,,Reconfigure,
 servo,DoCommand,,,,doCommand
 servo,GetResourceName,No,get_resource_name,,getResourceName
 servo,Close,No,close,Close,
+
+## Switch
+switch,SetPosition,No,,SetPosition,
+switch,GetPosition,No,,GetPosition,
+switch,GetNumberOfPositions,No,,GetNumberOfPositions,
+switch,DoCommand,No,,DoCommand,
+switch,Close,No,,Close,
 
 ## Base Remote Control
 ## HACK: No proto for Base Remote Control, manually adding:

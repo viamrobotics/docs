@@ -19,8 +19,8 @@ sdks_supported = ["go", "python", "flutter"]
 ##   type = ["array", "of", "resources"]
 ## You can use the target_resources positional parameter to refine this
 ## at runtime if desired:
-components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
-              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
+components = ["arm", "base", "board", "button", "camera", "encoder", "gantry", "generic_component", "gripper",
+              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo", "switch"]
 services = ["base_remote_control", "data_manager", "discovery", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
 app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
 robot_apis = ["robot"]
@@ -181,6 +181,11 @@ proto_map = {
         "name": "BoardServiceClient",
         "methods": []
     },
+    "button": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/button/v1/button_grpc.pb.go",
+        "name": "ButtonServiceClient",
+        "methods": []
+    },
     "camera": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/camera/v1/camera_grpc.pb.go",
         "name": "CameraServiceClient",
@@ -234,6 +239,11 @@ proto_map = {
     "servo": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/servo/v1/servo_grpc.pb.go",
         "name": "ServoServiceClient",
+        "methods": []
+    },
+    "switch": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/switch/v1/switch_grpc.pb.go",
+        "name": "SwitchServiceClient",
         "methods": []
     },
     "data_manager": {
@@ -726,9 +736,9 @@ def parse(type, names):
 
                 # Skip resources not supported in Flutter
                 unsupported_resources = [
-                    "base_remote_control", "encoder", "input_controller",
+                    "base_remote_control", "button", "encoder", "input_controller",
                     "data_manager", "generic_service", "mlmodel", "motion",
-                    "navigation", "slam"
+                    "navigation", "slam", "switch"
                 ]
                 if resource in unsupported_resources:
                     if args.verbose:
@@ -1403,9 +1413,10 @@ def parse(type, names):
             ## Scrape each parent method tag and all contained child tags for Flutter by resource.
             ## TEMP: Manually exclude Base Remote Control Service (Go only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'encoder' and resource != 'input_controller' \
-                and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
-                and resource !='navigation' and resource !='slam':
+            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'button' and resource != 'encoder' \
+                and resource != 'input_controller' and resource != 'switch' and resource != 'data_manager' \
+                and resource != 'generic_service' and resource != 'mlmodel' and resource != 'motion' \
+                and resource != 'navigation' and resource != 'slam':
                 soup = make_soup(url)
 
                 if resource in flutter_resource_overrides:

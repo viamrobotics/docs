@@ -3,7 +3,7 @@ title: "Sensor API"
 linkTitle: "Sensor"
 weight: 130
 type: "docs"
-description: "Commands for getting sensor readings."
+description: "Give commands for getting sensor readings."
 icon: true
 images: ["/icons/components/sensor.svg"]
 date: "2022-10-10"
