@@ -15,6 +15,7 @@ date: "2024-10-22"
 aliases:
   - /how-tos/hello-world-module/
 # updated: ""  # When the tutorial was last entirely checked
+# Python checked/updated: 2025-02-25
 cost: "0"
 prev: "/operate/get-started/other-hardware/"
 ---
@@ -249,25 +250,23 @@ You need to add some sensor-specific code to support the sensor component.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-3.  Open <file>temporary/src/main.py</file>.
-    Copy the sensor class definition, from `class HelloSensor(Sensor, EasyResource)` through the `get_readings()` function definition (lines 15-65).<br><br>
+3.  Move the <file>temporary/src/models/hello-sensor.py</file> file to <file>hello-world/src/models/</file>.<br><br>
 
-    Open the <file>hello-world/src/main.py</file> file you generated earlier, and paste the sensor class definition in after the camera class definition, above `if __name__ == "__main__":`.<br><br>
+1.  In <file>hello-world/src/models/hello-sensor.py</file>, change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
 
-1.  Change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
-
-    ```python {class="line-numbers linkable-line-numbers" data-start="94" }
+    ```python {class="line-numbers linkable-line-numbers" data-start="15" }
     MODEL: ClassVar[Model] = Model(ModelFamily("jessamy", "hello-world"), "hello-sensor")
     ```
 
-1.  Add the imports that are unique to the sensor file:
+    Save the file.<br><br>
 
-    ```python {class="line-numbers linkable-line-numbers"}
-    from viam.components.sensor import *
-    from viam.utils import SensorReading
+1.  Open the <file>hello-world/src/main.py</file> file and add the following to the list of imports:
+
+    ```python {class="line-numbers linkable-line-numbers" data-start="4" }
+    from hello_world.models.hello_sensor import HelloSensor
     ```
 
-    Save the <file>hello-world/src/main.py</file> file.
+    Save the file.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -349,7 +348,9 @@ You need to add some sensor-specific code to support the sensor component.
     ```json {class="line-numbers linkable-line-numbers" data-start="8"}
     {
       "api": "rdk:component:sensor",
-      "model": "jessamy:temporary:hello-sensor"
+      "model": "jessamy:temporary:hello-sensor",
+      "short_description": "A sensor that returns a random number.",
+      "markdown_link": "README.md#model-jessamyhello-worldhello-sensor"
     }
     ```
 
@@ -361,7 +362,7 @@ You need to add some sensor-specific code to support the sensor component.
 
     The file should now resemble the following:
 
-    ```json {class="line-numbers linkable-line-numbers" data-line="6-16"}
+    ```json {class="line-numbers linkable-line-numbers" data-line="6-20"}
     {
       "$schema": "https://dl.viam.dev/module.schema.json",
       "module_id": "jessamy:hello-world",
@@ -371,11 +372,15 @@ You need to add some sensor-specific code to support the sensor component.
       "models": [
         {
           "api": "rdk:component:camera",
-          "model": "jessamy:hello-world:hello-camera"
+          "model": "jessamy:hello-world:hello-camera",
+          "short_description": "A camera that returns an image.",
+          "markdown_link": "README.md#model-jessamyhello-worldhello-camera"
         },
         {
           "api": "rdk:component:sensor",
-          "model": "jessamy:hello-world:hello-sensor"
+          "model": "jessamy:hello-world:hello-sensor",
+          "short_description": "A sensor that returns a random number.",
+          "markdown_link": "README.md#model-jessamyhello-worldhello-sensor"
         }
       ],
       "entrypoint": "./run.sh",
@@ -398,7 +403,7 @@ Edit the stub files to add the logic from your test script in a way that works w
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Add the following to the list of imports at the top of <file>hello-world/src/main.py</file>:
+1. Add the following to the list of imports at the top of <file>hello-world/src/models/hello-camera.py</file>:
 
    ```python {class="line-numbers linkable-line-numbers"}
    from viam.media.utils.pil import pil_to_viam_image
@@ -412,7 +417,7 @@ First, implement the camera API methods by editing the camera class definition:
    Add the following lines to the camera's `reconfigure()` function definition.
    These lines set the `image_path` based on the configuration when the resource is configured or reconfigured.
 
-   ```python {class="line-numbers" data-start="68"}
+   ```python {class="line-numbers" data-start="59"}
    attrs = struct_to_dict(config.attributes)
    self.image_path = str(attrs.get("image_path"))
    ```
@@ -421,7 +426,7 @@ First, implement the camera API methods by editing the camera class definition:
    This means `image_path` is a required attribute.
    Add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
 
-   ```python {class="line-numbers linkable-line-numbers" data-start="57"}
+   ```python {class="line-numbers linkable-line-numbers" data-start="46"}
    # Check that a path to get an image was configured
    fields = config.attributes.fields
    if not "image_path" in fields:
@@ -470,7 +475,7 @@ First, implement the camera API methods by editing the camera class definition:
 Now edit the sensor class definition to implement the sensor API.
 You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
 
-1. Add `random` to the list of imports in <file>main.py</file> for the random number generation:
+1. Add `random` to the list of imports in <file>hello-world/src/models/hello-sensor.py</file> for the random number generation:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import random
@@ -478,7 +483,7 @@ You don't need to edit any of the validate or configuration methods because you'
 
 1. The sensor API only has one resource-specific method, `get_readings()`:
 
-   ```python {class="line-numbers linkable-line-numbers" data-start="156" }
+   ```python {class="line-numbers linkable-line-numbers" data-start="59" }
     async def get_readings(
         self,
         *,
@@ -491,7 +496,7 @@ You don't need to edit any of the validate or configuration methods because you'
 
    Replace `raise NotImplementedError()` with the following code:
 
-   ```python {class="line-numbers linkable-line-numbers" data-start="162" }
+   ```python {class="line-numbers linkable-line-numbers" data-start="65" }
     ) -> Mapping[str, SensorReading]:
         number = random.random()
         return {
@@ -737,7 +742,7 @@ With the implementation written, it's time to test your module locally:
 
 1. Save the config, then click the **TEST** section of the camera's configuration card.
 
-   ![The Viam app configuration interface with the Test section of the camera card open, showing a hello world image.](/how-tos/hello-camera.png)
+   {{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The Viam app configuration interface with the Test section of the camera card open, showing a hello world image." style="max-width:800px" class="shadow aligncenter" >}}
 
    You should see your image displayed.
    If not, check the **LOGS** tab for errors.
@@ -812,7 +817,7 @@ Now, if you look at the [Viam Registry page](https://app.viam.com/registry) whil
 Because the module is now in the registry, you can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
 The local module configuration is primarily for testing purposes.
 
-![The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results.](/how-tos/hello-config.png)
+{{<imgproc src="/how-tos/hello-config.png" resize="x1100" declaredimensions=true alt="The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results." style="max-width:500px" class="shadow aligncenter" >}}
 
 For more information about uploading modules, see [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/).
 
