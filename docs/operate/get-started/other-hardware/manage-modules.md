@@ -40,10 +40,13 @@ Use GitHub Actions to automatically build and deploy your new module version whe
 
 1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
 
-1. If you used `viam module generate` to create your module and enabled cloud build, **all you need to do is create a tag and publish a release in GitHub as you did when you [first published the module](/operate/get-started/other-hardware/#upload-your-module)**.
-   You can skip to step 5.
+   {{% alert title="Note" color="note" %}}
 
-   If you did not use the Viam CLI generator and enable cloud build, you can set up one of the following GitHub actions up manually:
+   If you used `viam module generate` to create your module and enabled cloud build, all you need to do to trigger a new build is create a tag and publish a release in GitHub as you did when you [first published the module](/operate/get-started/other-hardware/#upload-your-module).
+
+   {{% /alert %}}
+
+1. If you did not use the Viam CLI generator and enable cloud build, you can set up one of the following GitHub actions up manually:
 
    {{< tabs >}}
    {{% tab name="build-action (Recommended)" %}}
@@ -217,7 +220,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
   {{% /tab %}}
   {{< /tabs >}}
 
-1. [Create an organization API key](/dev/tools/cli/#create-an-organization-api-key) with owner role:
+3. [Create an organization API key](/dev/tools/cli/#create-an-organization-api-key) with owner role:
 
    ```sh {class="command-line" data-prompt="$"}
    viam organizations api-key create --org-id <org-id> --name <key-name>
@@ -262,11 +265,14 @@ You can change the visibility of a module from public to private if:
 - you are an [owner](/manage/manage/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines outside of the organization that owns the module have the module configured (no other orgs are using it).
 
-To change the visibility, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
+To change the visibility:
 
-{{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x150" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." class="shadow" >}}
+1. Navigate to your module's page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry).
+2. Hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
 
-You can also edit the visibility by editing the <file>meta.json</file> file and then running the following [CLI](/dev/tools/cli/#module) command:
+   {{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x150" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." class="shadow" >}}
+
+You can also edit the visibility by editing the [meta.json](/operate/get-started/other-hardware/#metajson-reference) file and then running the following [CLI](/dev/tools/cli/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module update
@@ -279,9 +285,12 @@ You can delete a module if:
 - you are an [owner](/manage/manage/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines have the module configured.
 
-To delete a module, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), click the **...** menu in the upper-right corner of the page, and click **Delete**.
+To delete a module:
 
-{{<imgproc src="/registry/upload/delete-module.png" resize="x200" declaredimensions=true alt="A module page with the ... menu open. Delete is the only option in the menu." class="shadow" >}}
+1. Navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry).
+2. Click the **...** menu in the upper-right corner of the page, and click **Delete**.
+
+   {{<imgproc src="/registry/upload/delete-module.png" resize="x200" declaredimensions=true alt="A module page with the ... menu open. Delete is the only option in the menu." class="shadow" >}}
 
 {{% alert title="Note" color="note" %}}
 
