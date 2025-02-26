@@ -119,7 +119,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
 | Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
 | Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. |
-| Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called “XYZ Sensor 1234” you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
+| Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
 
@@ -140,7 +140,7 @@ Edit the generated files to add your logic:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Open <file>/src/main.py</file> and add any necessary imports.
+1. Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary imports.
 1. **Edit the `validate_config` function** to do the following:
 
    - Check that the user has configured required attributes
@@ -312,7 +312,7 @@ You can find more examples by looking at the source code GitHub repos linked fro
    ```
 
    Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
-   Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource’s configuration card in the app.
+   Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource's configuration card in the app.
 
    {{% alert title="Note" color="note" %}}
    In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
@@ -820,13 +820,13 @@ It's quite helpful to create a README to document what your module does and how 
 This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `jessamy:weather:meteo_PM` model.
 With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
 
-Navigate to the **CONFIGURE** tab of your machine’s page in the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com/).
 Click the **+** button, select **Component**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
 Click **Add module**, enter a name for your sensor, and click **Create**.
 
 ## Configure your `meteo_PM` sensor
 
-On the new component panel, copy and paste the following attribute template into your sensor’s **Attributes** box:
+On the new component panel, copy and paste the following attribute template into your sensor's **Attributes** box:
 
 ```json
 {
