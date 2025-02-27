@@ -539,7 +539,7 @@ You can find more examples by looking at the source code GitHub repos linked fro
 ## Test your module locally
 
 It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry).
-You'll configure it through the Viam app, but the configured module will consist of local files:
+You'll configure it through the Viam app, but the configured module will consist of local files.
 
 {{% expand "Prerequisite: A running machine connected to the Viam app." %}}
 
