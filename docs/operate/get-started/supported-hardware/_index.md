@@ -27,7 +27,7 @@ next: "/operate/get-started/other-hardware/"
 
 ## About the Viam Registry of supported hardware and software
 
-Viam has a registry of supported hardware {{< glossary_tooltip term_id="module" text="modules" >}} that implement standardized APIs for each category of hardware {{< glossary_tooltip term_id="component" text="component" >}} (for example, the camera API).
+Viam has a registry of supported hardware {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for each category of hardware {{< glossary_tooltip term_id="component" text="component" >}} (for example, the camera API).
 Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/get-started/other-hardware/) that provides a driver for the hardware.
 
 The Viam Registry is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
@@ -97,9 +97,3 @@ To add a service to your machine:
 1. Click **Service**, then select from available services.
    The dropdown list includes services from the Viam Registry as well as the built-in services.
 1. Add required attributes according to the README or other documentation.
-
-## How modules run
-
-Modules for 64-bit architecture run alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
-`viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
