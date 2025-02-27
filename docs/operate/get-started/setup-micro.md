@@ -20,6 +20,7 @@ aliases:
 ## Supported microcontrollers
 
 ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 8MB flash to work with Viam.
+The following microcontrollers have been tested with Viam:
 
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
 
