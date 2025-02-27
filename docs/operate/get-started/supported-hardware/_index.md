@@ -1,7 +1,7 @@
 ---
-linkTitle: "Integrate supported hardware"
-title: "Integrate supported hardware"
-weight: 20
+linkTitle: "Configure supported hardware"
+title: "Configure supported hardware"
+weight: 30
 layout: "docs"
 type: "docs"
 imageAlt: "Configure a Machine"
@@ -25,49 +25,18 @@ prev: "/operate/get-started/setup/"
 next: "/operate/get-started/other-hardware/"
 ---
 
-Viam supports a wide variety of sensors, cameras, and other physical hardware, with APIs for each of the following types of hardware:
+To integrate your hardware with your machine:
 
-{{< cards >}}
-{{% relatedcard link="/dev/reference/apis/components/arm/" %}}
-{{% relatedcard link="/dev/reference/apis/components/base/" %}}
-{{% relatedcard link="/dev/reference/apis/components/board/" %}}
-{{% relatedcard link="/dev/reference/apis/components/button/" %}}
-{{% relatedcard link="/dev/reference/apis/components/camera/" %}}
-{{% relatedcard link="/dev/reference/apis/components/encoder/" %}}
-{{% relatedcard link="/dev/reference/apis/components/gantry/" %}}
-{{% relatedcard link="/dev/reference/apis/components/gripper/" %}}
-{{% relatedcard link="/dev/reference/apis/components/input-controller/" %}}
-{{% relatedcard link="/dev/reference/apis/components/motor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/movement-sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/power-sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/servo/" %}}
-{{% relatedcard link="/dev/reference/apis/components/switch/" %}}
-{{% relatedcard link="/dev/reference/apis/components/generic/" %}}
-{{< /cards >}}
+1. [Find a module that supports your hardware](#find-a-module-that-supports-your-hardware).
+1. If you don't find an existing module for your use case, [create a new module](/operate/get-started/other-hardware/).
+1. [Configure your hardware](#configure-hardware-on-your-machine).
 
-These standardized APIs are implemented by {{< glossary_tooltip term_id="module" text="modules" >}} that provide drivers for specific models of hardware.
-
-Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](../other-hardware/) that provides a driver for the hardware.
-
-{{% alert title="Tip" color="tip" %}}
-
-Viam also supports various [software services](#add-software-services-to-your-machine) such as [data capture](/data-ai/capture-data/capture-sync/) and [computer vision](/dev/reference/apis/services/vision/), designed to integrate seamlessly with the hardware driver modules.
-
-{{% /alert %}}
-
-## Supported hardware
-
-Many modules are designed to run alongside the full version of [`viam-server`](/operate/reference/viam-server/), which runs on 64-bit architectures such as single-board computers and laptop/desktop computers running 64-bit Linux, as well as macOS.
-
-Other modules are designed to run on microcontrollers alongside [the Micro-RDK](/operate/reference/viam-micro-server/).
-
-### For use with 64-bit architecture
+## Find a module that supports your hardware
 
 The following modular components are available for computers and SBCs running `viam-server`.
 
 Search for the name, model number, or manufacturer name of your hardware to see if there is already a hardware driver (_component {{< glossary_tooltip term_id="model" text="model" >}}_) for it.
-Also try searching by broader category name, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
+Or try searching by broader category name, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
 
 {{<resources api="rdk:component" no-intro="true">}}
 
@@ -81,28 +50,12 @@ You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry
 {{% /alert %}}
 
 {{% alert title="Support notice" color="note" %}}
-Modules in the list above are officially supported and maintained by Viam if and only if they are marked as "built-in," or if the first part of their model triplet is `viam`.
+Modules in the list above are officially supported and maintained by Viam only if they are marked as "built-in," or if the first part of their model triplet is `viam`.
 {{% /alert %}}
-
-### For use with ESP-32 microcontrollers
-
-The following is a selection of components (some built-ins and some modules) written for use with the Micro-RDK.
-To use any of the built-in components, configure them according to their readmes.
-You can either install the pre-built `viam-micro-server` firmware that ships with a few common modules, or [build your own firmware that combines the Micro-RDK with one or more modules of your choice](/operate/get-started/other-hardware/micro-module/).
-
-<!--prettier-ignore-->
-| Model | Description | Built into the Micro-RDK? | Ships with `viam-micro-server`? |
-| ----- | ----------- | ------------------------------- | --- |
-| `gpio` | A servo controlled by GPIO pins. [Configuration info](/operate/reference/components/servo/gpio-micro-rdk/). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `two_wheeled_base` | A robotic base with differential steering. [Configuration info](/operate/reference/components/base/two_wheeled_base/). Built into the Micro-RDK. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `free_heap_sensor` | Reports the amount of free memory space. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `wifi_rssi_sensor` | A WiFi signal strength sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `moisture_sensor` | A moisture sensor. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | |
-| `water_pump` | A water pump. [GitHub repo](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src). | | |
 
 ## Configure hardware on your machine
 
-After [installing `viam-server` or `viam-micro-server`](/operate/get-started/setup/) on your computer or microcontroller, you can configure hardware components on your machine's page in the [Viam app](https://app.viam.com):
+After [installing `viam-server`](/operate/get-started/setup/) on your machine, you can configure hardware components on your machine's page in the [Viam app](https://app.viam.com):
 
 1. Click the **+** button on your machine's **CONFIGURE** tab.
 1. Click **Component**, then select from available components from the Viam Registry (as well as built-in resources).
@@ -149,5 +102,3 @@ To add a service to your machine:
 Modules for 64-bit architecture run alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
-
-For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
