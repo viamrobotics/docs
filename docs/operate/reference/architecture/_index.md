@@ -1,6 +1,6 @@
 ---
 title: "Viam Architecture"
-linkTitle: "Architecture"
+linkTitle: "Viam architecture"
 weight: 10
 type: "docs"
 description: "How a machine running on Viam is structured, from on-device to cloud communications."
@@ -158,7 +158,7 @@ Now imagine you want to run code to turn on a fan when the temperature sensor re
   See [Create a headless app](/operate/control/headless-app/) for more information.
   Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/operate/reference/components/sensor/#api) to get readings and the [motor API](/operate/reference/components/motor/#api) to turn the motor on and off.
 
-  ![A desktop computer (client in this case) sends commands to robot 1 (server) with gRPC over wifi.](/build/program/sdks/robot-client.png)
+  {{< imgproc src="/build/program/sdks/robot-client.png" resize="x400" declaredimensions=true alt="A desktop computer (client in this case) sends commands to robot 1 (server) with gRPC over wifi." >}}
 
 Now, imagine you want to change to a different model of temperature sensor from a different brand:
 
