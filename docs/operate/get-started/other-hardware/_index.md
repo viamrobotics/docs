@@ -598,7 +598,7 @@ If you enabled cloud build, use these steps.
      "entrypoint": "reload.sh",
      "first_run": "",
      "build": {
-       "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py meta.json setup.sh reload.sh",
+       "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/models/*.py meta.json setup.sh reload.sh",
        "setup": "./setup.sh",
        "path": "module.tar.gz",
        "arch": [
