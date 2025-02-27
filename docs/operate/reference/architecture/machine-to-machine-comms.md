@@ -5,8 +5,8 @@ weight: 60
 type: "docs"
 description: "Explanation of how a machine and its parts interact at the communication layer."
 aliases:
-  - "/internals/robot-to-robot-comms/"
-  - "/internals/machine-to-machine-comms/"
+  - /internals/robot-to-robot-comms/
+  - /internals/machine-to-machine-comms/
   - /architecture/machine-to-machine-comms/
 toc_hide: true
 ---
