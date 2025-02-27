@@ -24,9 +24,7 @@ aliases:
   - /get-started/installation/
 ---
 
-Get started by installing the open-source software that drives your hardware and connects your device to the cloud.
-
-You should install `viam-server` on the computer or single-board computer (SBC) that is directly connected to your hardware (for example sensors, cameras, or motors).
+Get started by installing [`viam-server`](/operate/reference/viam-server/),the open-source software that drives your hardware and connects your device to the cloud.
 
 {{< expand "Supported systems" >}}
 
@@ -41,13 +39,15 @@ You should install `viam-server` on the computer or single-board computer (SBC) 
 `viam-server` can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
 This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
 
+For 32-bit systems, see [Set up an ESP32](/operate/get-started/setup-micro/).
+
 {{< /expand >}}
 
-## Quickstart
+## Install `viam-server` and connect your machine to the cloud
 
-The easiest way to install `viam-server` is through the Viam app, so that your machines are automatically connected to configuration and remote operation tools.
+Install `viam-server` on the computer or single-board computer (SBC) that is directly connected to your hardware (for example sensors, cameras, or motors).
 
-{{< expand "Prerequisite: Operating system setup" >}}
+{{< expand "Prerequisite: Install a compatible operating system" >}}
 If you're using Viam with a single-board computer that does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
 For convenience, we provide operating system installation instructions for some popular SBCs.
 If your SBC or other computer already has a supported operating system installed, you can skip this step.
@@ -66,20 +66,20 @@ If your SBC or other computer already has a supported operating system installed
 
 {{< /expand >}}
 
+1. Make sure your computer or SBC is powered on and connected to the internet.
+
 1. Create a [Viam app](https://app.viam.com) account.
-   The Viam app is the online hub for configuring and managing devices as well as viewing data.
+   The Viam app is the online hub for configuring and managing devices and data.
 
 1. Add a new _{{< glossary_tooltip term_id="machine" text="machine" >}}_ using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
 1. From your machine's page in the Viam app, follow the setup instructions to install `viam-server` on your device and connect it to the cloud.
-   [`viam-server`](/operate/reference/viam-server/) is the executable binary that runs on your device and manages hardware drivers, software, and data capture and sync.
 
-1. Use the **+** button on your machine's **CONFIGURE** tab to add [supported hardware components](/operate/get-started/supported-hardware/) so that `viam-server` can control your specific hardware.
+1. A secure connection is automatically established between your machine and the Viam app.
+   When you update your machine's configuration, `viam-server` automatically gets the updates.
 
-1. Use this same **+** button to configure software services such as [data capture and sync](/data-ai/capture-data/capture-sync/).
-
-As soon as you configure each component and save the configuration, you can use the **TEST** panel of the component's config card to, for example, view your camera's stream or turn your motor.
+   [You are ready to configure your machine's hardware ->](/operate/get-started/supported-hardware/)
 
 ## The details
 

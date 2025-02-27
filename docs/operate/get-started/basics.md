@@ -20,6 +20,8 @@ Viam consists of:
 
 - An open-source binary called `viam-server` that runs on your machine, managing your hardware, software, and data.
 - A cloud app called the [Viam app](https://app.viam.com) that you can use to configure and manage your machines and data.
+- A registry of modules that support many different types of hardware and software.
+- Standardized APIs that abstract the underlying hardware and software.
 - SDKs for many programming languages that you can use to control your machines.
 
 `viam-server` connects your machine to the Viam app and to SDK clients.
@@ -80,16 +82,16 @@ Viam also supports various software services such as [data capture](/data-ai/cap
 
 ## How do I get started?
 
-1. [Install `viam-server`](/operate/get-started/setup/) on your computer or [install `viam-micro-server`](/operate/get-started/setup-micro/) on an ESP32 microcontroller.
+1. [Set up your machine and connect it to the Viam app](/operate/get-started/setup/).
 
-1. Then, you'll start [configuring](/operate/get-started/supported-hardware/) your machine in the Viam app, adding hardware components and software services.
+1. Next, [configure supported hardware](/operate/get-started/supported-hardware/) and software on your machine in the Viam app.
    You can [share the configuration across multiple machines](/manage/fleet/reuse-configuration/) to scale quickly.
 
-1. If you want to add custom hardware drivers or software services, you can [write your own modules](/operate/get-started/other-hardware/).
+1. To integrate other hardware or software services that aren't already supported, you can [write your own modules](/operate/get-started/other-hardware/).
 
-1. [Test your configured resources](/operate/get-started/test/) by using the **TEST** panel of the component's config card to, for example, view your camera's stream or turn your motor.
+1. [Test your machine](/operate/get-started/test/) by using the **TEST** panel of each configured component's config card to, for example, view your camera's stream or turn your motor.
 
-1. Possible next steps include:
+1. From there, you have many options including:
 
 - [Collect data from your machines](/data-ai/capture-data/capture-sync/)
 - [Create a dataset](/data-ai/ai/create-dataset/) and [train an AI model](/data-ai/ai/train-tflite/)
