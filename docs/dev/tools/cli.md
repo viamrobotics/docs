@@ -1113,7 +1113,9 @@ For example, the following extends the `my-module` <file>meta.json</file> file u
   "models": [
     {
       "api": "rdk:component:generic",
-      "model": "acme:demo:my-model"
+      "model": "acme:demo:my-model",
+      "markdown_link": "README.md#configure-a-my-model",
+      "short_description": "An example model that supports something."
     }
   ],
   "build": {
