@@ -14,7 +14,6 @@ carouselscript: true
 ## What is Viam?
 
 Viam is a software platform for data, AI, and automation.
-It drives your hardware (for example, cameras, sensors, and motors) and connects your devices to the cloud.
 
 Viam consists of:
 
@@ -43,9 +42,10 @@ Viam can run on any computer that runs one of the following operating systems:
 - Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
 - macOS
 - Windows
-- 32-bit microcontrollers (limited support)
 
-Examples of computers that can run Viam:
+Viam can also run on 32-bit microcontrollers such as the ESP32 series.
+
+Examples of computing devices that can run Viam:
 
 {{< board-carousel >}}
 
@@ -78,14 +78,12 @@ These standardized APIs are implemented by {{< glossary_tooltip term_id="module"
 
 Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](/operate/get-started/other-hardware/) that provides a driver for the hardware.
 
-Viam also supports various software services such as [data capture](/data-ai/capture-data/capture-sync/) and [computer vision](/dev/reference/apis/services/vision/), designed to integrate seamlessly with the hardware driver modules.
 
 ## How do I get started?
 
 1. [Set up your machine and connect it to the Viam app](/operate/get-started/setup/).
 
 1. Next, [configure supported hardware](/operate/get-started/supported-hardware/) and software on your machine in the Viam app.
-   You can [share the configuration across multiple machines](/manage/fleet/reuse-configuration/) to scale quickly.
 
 1. To integrate other hardware or software services that aren't already supported, you can [write your own modules](/operate/get-started/other-hardware/).
 
@@ -93,7 +91,8 @@ Viam also supports various software services such as [data capture](/data-ai/cap
 
 1. From there, you have many options including:
 
-- [Collect data from your machines](/data-ai/capture-data/capture-sync/)
+- [Capture data from your machines](/data-ai/capture-data/capture-sync/)
 - [Create a dataset](/data-ai/ai/create-dataset/) and [train an AI model](/data-ai/ai/train-tflite/)
 - Use an SDK of your choice to [write an app](/operate/control/web-app/) to control your machines
 - [Deploy control logic to run directly on your machines](/manage/software/control-logic/)
+- [Share the configuration across multiple machines](/manage/fleet/reuse-configuration/).
