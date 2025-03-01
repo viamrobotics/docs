@@ -24,7 +24,7 @@ aliases:
   - /get-started/installation/
 ---
 
-Get started by installing [`viam-server`](/operate/reference/viam-server/),the open-source software that drives your hardware and connects your device to the cloud.
+Get started by installing [`viam-server`](/operate/reference/viam-server/), the open-source software that drives your hardware and connects your device to the cloud.
 
 {{< expand "Supported systems" >}}
 
@@ -79,7 +79,7 @@ If your SBC or other computer already has a supported operating system installed
 1. A secure connection is automatically established between your machine and the Viam app.
    When you update your machine's configuration, `viam-server` automatically gets the updates.
 
-   [You are ready to configure your machine's hardware ->](/operate/get-started/supported-hardware/)
+   You are ready to [configure supported hardware](/operate/get-started/supported-hardware/) on your machine.
 
 ## The details
 

@@ -26,7 +26,7 @@ The following microcontrollers have been tested with Viam:
 
 ## About ESP32 microcontroller setup
 
-Because microcontrollers do not run operating systems and are instead flashed with firmware, the setup process is different than for other devices running Viam.
+Because microcontrollers do not run operating systems and are instead flashed with firmware, the setup process is different than for regular computers and SBCs.
 
 You can choose to use the pre-built binary for `viam-micro-server` which supports the following components:
 
