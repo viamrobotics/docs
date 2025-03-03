@@ -86,7 +86,7 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 
 1. Next, [configure supported hardware](/operate/get-started/supported-hardware/) and software on your machine in the Viam app.
 
-1. To integrate other hardware or software services that aren't already supported, you can [write your own modules](/operate/get-started/other-hardware/).
+1. To [integrate other hardware](/operate/get-started/other-hardware/) or software services that aren't already supported, you can write your own modules.
 
 1. [Test your machine](/operate/get-started/test/) by using the **TEST** panel of each configured component's config card to, for example, view your camera's stream or turn your motor.
 
