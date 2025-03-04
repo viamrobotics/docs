@@ -39,6 +39,7 @@ The following steps guide you through this process in more detail:
    If it provides an interface to control hardware, it is a component.
    If it provides higher-level functionality, it is a service.
 1. Choose a name for your API.
+   This is called the `{{< glossary_tooltip term_id="subtype" text="subtype" >}}` of your API.
    For example, `gizmo`.
 
    Determine a valid {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} based on your API name.
@@ -46,7 +47,7 @@ The following steps guide you through this process in more detail:
 
    {{< expand "API namespace triplet and model namespace triplet example" >}}
 
-   The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
+   The `viam-labs:audioout:pygame` model uses the module name [audioout](https://github.com/viam-labs/audioout).
    It implements the custom API `viam-labs:service:audioout`:
 
    ```json
