@@ -41,6 +41,26 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog color="added" title="Button API and switch API" date="2025-01-27" %}}
+
+Two new component APIs, the [button API](/dev/reference/apis/components/button/) and [switch API](/dev/reference/apis/components/switch/), have been added.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Discovery service API" date="2025-01-27" %}}
+
+The [discovery service API](/dev/reference/apis/services/discovery/) has been added.
+You can now write modules that discover resources on a robot.
+
+{{% /changelog %}}
+
+{{% changelog color="removed" title="DiscoverComponents" date="2025-01-27" %}}
+
+The `DiscoverComponents` method has been removed from the machine management API.
+Instead, use a [discovery service](/operate/reference/services/discovery/) to discover resources on a robot.
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
 
 [Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
