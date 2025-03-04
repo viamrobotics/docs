@@ -13,7 +13,7 @@ carouselscript: true
 
 ## What is Viam?
 
-Viam is a software platform for data, AI, and automation.
+Viam is a software platform for building smart applications for the physical world.
 
 Viam consists of:
 
@@ -22,7 +22,7 @@ Viam consists of:
 - Simple APIs for common types of hardware (for example, cameras, sensors, and motors), and software services (such as computer vision).
 - A registry of modules that implement the hardware and software APIs.
   This includes support for many popular hardware models.
-- SDKs for many programming languages that you can use to control your machines.
+- SDKs for many programming languages that you can use to interact with your machines.
 
 `viam-server` connects your machine to the Viam app and to SDK clients.
 
@@ -81,7 +81,7 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 
 ## How do I get started?
 
-1. [Set up your machine and connect it to the Viam app](/operate/get-started/setup/).
+1. [Set up a computer or SBC](/operate/get-started/setup/) or [set up an ESP32](/operate/get-started/setup-micro/) and connect it to the Viam app.
 
 1. Next, [configure supported hardware](/operate/get-started/supported-hardware/) and software on your machine in the Viam app.
 

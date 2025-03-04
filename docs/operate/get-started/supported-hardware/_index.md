@@ -49,6 +49,8 @@ You can browse all built-in and modular registry components on your machine's co
 
    {{<gif webm_src="/integrate/configure.webm" mp4_src="/integrate/configure.mp4" alt="Configuring a board and ultrasonic sensor." max-width="600px">}}
 
+### How it works
+
    When you add a modular resource _from the registry_, the module that provides it is automatically added at the same time, generating a configuration card for the modular resource and a separate one for the module.
    If you add a built-in component, there will only be a configuration card for the component.
 
