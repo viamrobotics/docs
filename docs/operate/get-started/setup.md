@@ -32,9 +32,11 @@ Get started by installing [`viam-server`](/operate/reference/viam-server/), the 
 Click for details.
 
 {{< expand "Single-board computer (SBC)" >}}
-If you're using Viam with a single-board computer that does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
+`viam-server` can run on any SBC with AArch64 (ARM64) or x86-64 architecture.
+
+If your SBC does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
 For convenience, we provide operating system installation instructions for some popular SBCs.
-If your SBC or other computer already has a supported operating system installed, you can [skip to installing `viam-server`](#install-viam-server-and-connect-your-machine-to-the-cloud).
+If your SBC already has a supported operating system installed, you can [skip to installing `viam-server`](#install-viam-server-and-connect-your-machine-to-the-cloud).
 
 {{< cards >}}
 {{% card link="/operate/reference/prepare/rpi-setup/" class="small" %}}
