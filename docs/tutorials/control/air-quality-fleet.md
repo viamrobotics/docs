@@ -126,7 +126,7 @@ With your organizational structure in place, let's add some machines:
 
 1. Connect your first single-board computer to power.
    For this tutorial, we'll treat this as the machine for our first customer, Antonia.
-   If the computer does not already have a Viam-compatible operating system installed, follow the [operating system setup section of the Quickstart guide](/operate/get-started/setup/#quickstart) to install a compatible operating system.
+   If the computer does not already have a Viam-compatible operating system installed, follow the [operating system setup section of the Quickstart guide](/operate/get-started/setup/) to install a compatible operating system.
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
