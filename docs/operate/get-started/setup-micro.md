@@ -52,12 +52,7 @@ To get started quickly with the pre-built `viam-micro-server` binary, follow the
    A secure connection is automatically established between your machine and the Viam app.
    When you update your machine's configuration, `viam-micro-server` automatically gets the updates.
 
-1. Use the **+** button on your machine's **CONFIGURE** tab to add any of the supported components listed above.
-
-1. [Data capture and sync](/data-ai/capture-data/capture-sync/) is supported for microcontrollers.
-   You can click the **Add method** button on any component's config card to configure data capture for that component.
-
-As soon as you configure each component and save the configuration, you can use the **TEST** panel of the component's config card to, for example, view your camera's stream or turn your motor.
+   You are ready to [configure](/operate/get-started/supported-hardware/) any of the components listed above on your machine.
 
 ## Advanced setup
 

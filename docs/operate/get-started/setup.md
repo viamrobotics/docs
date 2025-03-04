@@ -26,31 +26,15 @@ aliases:
 
 Get started by installing [`viam-server`](/operate/reference/viam-server/), the open-source software that drives your hardware and connects your device to the cloud.
 
-{{< expand "Supported systems" >}}
+## Prerequisite: Make sure you have a supported operating system
 
-`viam-server` can run on any computer that runs one of the following operating systems:
+`viam-server` can run on any computer that runs one of the following operating systems.
+Click for details.
 
-- Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
-- macOS
-- Windows
-  - Native: Use native if you are using a WSL version prior to WSL 2 or need native USB support
-  - WSL: Use WSL if you are using Python modules or other Linux dependencies
-
-`viam-server` can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
-This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
-
-For 32-bit systems, see [Set up an ESP32](/operate/get-started/setup-micro/).
-
-{{< /expand >}}
-
-## Install `viam-server` and connect your machine to the cloud
-
-Install `viam-server` on the computer or single-board computer (SBC) that is directly connected to your hardware (for example sensors, cameras, or motors).
-
-{{< expand "Prerequisite: Install a compatible operating system" >}}
+{{< expand "Single-board computer (SBC)" >}}
 If you're using Viam with a single-board computer that does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
 For convenience, we provide operating system installation instructions for some popular SBCs.
-If your SBC or other computer already has a supported operating system installed, you can skip this step.
+If your SBC or other computer already has a supported operating system installed, you can [skip to installing `viam-server`](#install-viam-server-and-connect-your-machine-to-the-cloud).
 
 {{< cards >}}
 {{% card link="/operate/reference/prepare/rpi-setup/" class="small" %}}
@@ -65,6 +49,27 @@ If your SBC or other computer already has a supported operating system installed
 {{< /cards >}}
 
 {{< /expand >}}
+{{< expand "Linux laptop or desktop" >}}
+If you have a Linux 64-bit operating system running on AArch64 (ARM64) or x86-64 architecture, proceed to [Install `viam-server` and connect your machine to the cloud](#install-viam-server-and-connect-your-machine-to-the-cloud).
+{{< /expand >}}
+{{< expand "macOS" >}}
+Proceed to [Install `viam-server` and connect your machine to the cloud](#install-viam-server-and-connect-your-machine-to-the-cloud).
+{{< /expand >}}
+{{< expand "Windows" >}}
+
+`viam-server` can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
+This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
+
+- Native: Use native if you are using a WSL version prior to WSL 2 or need native USB support
+- WSL: Use WSL if you are using Python modules or other Linux dependencies
+
+{{< /expand >}}
+
+For 32-bit systems, see [Set up an ESP32](/operate/get-started/setup-micro/).
+
+## Install `viam-server` and connect your machine to the cloud
+
+Install `viam-server` on the computer or single-board computer (SBC) that is directly connected to your hardware (for example sensors, cameras, or motors).
 
 1. Make sure your computer or SBC is powered on and connected to the internet.
 

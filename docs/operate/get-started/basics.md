@@ -20,8 +20,8 @@ Viam consists of:
 - An open-source binary called `viam-server` that runs on your machine, managing your local hardware, software, and data, and connecting your device to Viam's cloud.
 - A cloud app called the [Viam app](https://app.viam.com) that you can use to configure and manage your machines and data.
 - Simple APIs for common types of hardware (for example, cameras, sensors, and motors), and software services (such as computer vision).
-	- A registry of modules that implement the hardware and software APIs.
-	This includes support for many popular hardware models.
+- A registry of modules that implement the hardware and software APIs.
+  This includes support for many popular hardware models.
 - SDKs for many programming languages that you can use to control your machines.
 
 `viam-server` connects your machine to the Viam app and to SDK clients.
@@ -38,15 +38,15 @@ When you create a new machine in the Viam app, Viam generates a unique set of cr
 
 ## What platforms does Viam run on?
 
-Viam can run on any computer that runs one of the following operating systems:
+`viam-server` can run on any computer that runs one of the following operating systems:
 
 - Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
 - macOS
 - Windows
 
-Viam can also run on 32-bit microcontrollers such as the ESP32 series.
+Viam also supports 32-bit microcontrollers such as the ESP32 series.
 
-Examples of computing devices that can run Viam:
+Examples of computing devices that Viam supports:
 
 {{< board-carousel >}}
 
@@ -78,7 +78,6 @@ Viam supports a wide variety of sensors, cameras, and other physical hardware, w
 These standardized APIs are implemented by {{< glossary_tooltip term_id="module" text="modules" >}} that provide drivers for specific models of hardware.
 
 Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](/operate/get-started/other-hardware/) that provides a driver for the hardware.
-
 
 ## How do I get started?
 

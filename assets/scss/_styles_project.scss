@@ -825,9 +825,11 @@ details summary::-webkit-details-marker {
     min-width: 150px;
     max-width: 150px;
   }
-  .hover-card.small > a div.small-hover-card-div > div {
-    font-size: 0.833rem !important;
-  }
+}
+
+// Outside media query - applies at larger screen sizes too
+.hover-card.small > a div.small-hover-card-div > div {
+  font-size: 0.95rem !important;
 }
 
 .hover-card.small {
