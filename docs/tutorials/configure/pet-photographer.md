@@ -857,7 +857,8 @@ To enable data capture on your machine, add and configure the [data management s
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "dm",
-  "type": "data_manager",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "sync_interval_mins": 0.1,
     "capture_dir": "",
