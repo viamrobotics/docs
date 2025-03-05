@@ -40,7 +40,7 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 **2. Use the CONFIGURE tab to configure all the resources** you want to use on your machines.
 
 All available resources except [triggers](/data-ai/data/advanced/alert-data/) are supported in fragments.
-This means you can also use fragments inside a fragment.
+You can even configure other fragments inside a fragment.
 
 {{% /tablestep %}}
 {{% tablestep %}}
