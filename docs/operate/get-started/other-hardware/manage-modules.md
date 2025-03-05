@@ -20,7 +20,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and deploy a module](/operate/get-started/other-hardware/), you can update, delete, or change its visibility settings.
+After you [create and upload a module](/operate/get-started/other-hardware/), you can update, delete, or change its visibility settings.
 
 For information on pinning module deployments to versions, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
@@ -30,7 +30,7 @@ Once your module is in the [Viam Registry](https://app.viam.com/registry), there
 
 - [Update automatically](#update-automatically) using GitHub Actions: Recommended for ongoing projects with continuous integration (CI) workflows, or if you want to build for multiple platforms.
 
-  - If you enabled cloud build when you generated your module, the GitHub actions are already set up for you.
+  - If you enabled cloud build when you generated your module, the GitHub Actions are already set up for you.
 
 - [Update manually](#update-manually) using the [Viam CLI](/dev/tools/cli/): Fine for small projects with one contributor.
 
@@ -46,12 +46,12 @@ Use GitHub Actions to automatically build and deploy your new module version whe
 
    {{% /alert %}}
 
-1. If you did not use the Viam CLI generator and enable cloud build, you can set up one of the following GitHub actions up manually:
+1. If you did not use the Viam CLI generator and enable cloud build, you can set up one of the following GitHub Actions up manually:
 
    {{< tabs >}}
    {{% tab name="build-action (Recommended)" %}}
 
-   The `build-action` GitHub action provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and macOS.
+   The `build-action` GitHub action provides a cross-platform build setup for multiple platforms: x86, ARM Linux, and macOS.
 
    Add this to your GitHub workflow:
 
@@ -238,7 +238,7 @@ Use the [Viam CLI](/dev/tools/cli/) to manually update your module:
 1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
-2. For Python modules only, package your files as an archive:
+2. For Python modules only, package your files as an archive, for example:
 
    ```sh {class="command-line" data-prompt="$"}
    tar -czf module.tar.gz run.sh requirements.txt src
@@ -262,7 +262,7 @@ For more information, see the [`viam module` command](/dev/tools/cli/#module).
 
 You can change the visibility of a module from public to private if:
 
-- you are an [owner](/manage/manage/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- you are an [owner](/manage/manage/rbac/) of the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines outside of the organization that owns the module have the module configured (no other orgs are using it).
 
 To change the visibility:
@@ -305,7 +305,7 @@ To delete just one version of a module:
 
 1. Navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry)
 2. Click **Show previous versions** under the **Latest version** heading.
-3. Hover next to the version you'd like to delete and click the trash icon.
+3. Hover on the architecture pill next to the version you'd like to delete and click the trash icon.
 
 You cannot upload a new file with the same version number as the deleted one.
 To upload another version, you must increment the version number to a later version number.
