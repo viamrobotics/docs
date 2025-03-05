@@ -31,7 +31,8 @@ Enter a name or use the suggested name for your camera and click **Create**.
 {{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" class="shadow"  >}}
 
 Edit and fill in the attributes as applicable.
-If you click on **Show more**, then the **video_path** field while your machine is live, a dropdown autopopulates with identified camera paths.
+Leave the **video_path** blank and the camera will use the default video path for your machine.
+If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app to add a discovery service and identify path options.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
