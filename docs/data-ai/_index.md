@@ -38,9 +38,11 @@ You can also monitor your machines through teleop, power your application logic,
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Capture data" "1" "BEGINNER-FRIENDLY" "" "hoverable-capture" >}}
+{{< how-to-expand "Capture data" "3" "BEGINNER-FRIENDLY" "" "hoverable-capture" >}}
 {{< cards >}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/capture-data/filter-before-sync/" noimage="true" %}}
+{{% card link="/data-ai/capture-data/conditional-sync/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
