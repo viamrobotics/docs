@@ -169,19 +169,17 @@ This example JSON configuration:
         "use_cloud_slam": false
       },
       "name": "slam",
-      "type": "slam",
-      "namespace": "rdk",
+      "api": "rdk:service:slam",
       "model": "viam:slam:cartographer"
     }
   ],
   "components": [
     {
-      "namespace": "rdk",
       "attributes": {},
       "depends_on": [],
       "name": "rplidar",
       "model": "viam:lidar:rplidar",
-      "type": "camera"
+      "api": "rdk:component:camera"
     }
   ]
 }
@@ -253,19 +251,17 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
            "existing_map": "${packages.slam_map.test-map-1}/internalState.pbstream"
          },
          "name": "slam",
-         "type": "slam",
-         "namespace": "rdk",
+         "api": "rdk:service:slam",
          "model": "viam:slam:cartographer"
        }
      ],
      "components": [
        {
-         "namespace": "rdk",
          "attributes": {},
          "depends_on": [],
          "name": "rplidar",
          "model": "viam:lidar:rplidar",
-         "type": "camera"
+         "api": "rdk:component:camera"
        }
      ],
      "packages": [
@@ -341,8 +337,7 @@ This example JSON configuration:
   ],
   "services": [
     {
-      "type": "slam",
-      "namespace": "rdk",
+      "api": "rdk:service:slam",
       "model": "viam:slam:cartographer",
       "attributes": {
         "config_params": {
@@ -364,8 +359,7 @@ This example JSON configuration:
   "components": [
     {
       "model": "viam:lidar:rplidar",
-      "type": "camera",
-      "namespace": "rdk",
+      "api": "rdk:component:camera",
       "attributes": {},
       "depends_on": [],
       "name": "rplidar"
@@ -460,19 +454,17 @@ your config should look something like the following:
         "existing_map": "/PATH/TO/FILE/<INTERNAL-STATE-NAME>.pbstream"
       },
       "name": "slam",
-      "type": "slam",
-      "namespace": "rdk",
+      "api": "rdk:service:slam",
       "model": "viam:slam:cartographer"
     }
   ],
   "components": [
     {
-      "namespace": "rdk",
       "attributes": {},
       "depends_on": [],
       "name": "rplidar",
       "model": "viam:lidar:rplidar",
-      "type": "camera"
+      "api": "rdk:component:camera"
     }
   ],
   "packages": []

@@ -40,8 +40,7 @@ Enter a name or use the suggested name for your camera and click **Create**.
 {
   "name": "<your-camera-name>",
   "model": "fake",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {}
 }
 ```

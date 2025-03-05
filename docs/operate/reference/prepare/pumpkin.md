@@ -238,8 +238,7 @@ Copy and paste the following json object into your board's attributes field.
     {
       "name": "myCustomBoard",
       "model": "customlinux",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {
         "board_defs_file_path": "/home/root/board.json"
       },

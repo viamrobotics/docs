@@ -82,8 +82,7 @@ If instead you create a new machine for this tutorial, copy and paste the follow
     {
       "name": "myArm",
       "model": "xArm6",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "<ip-address>",
         "port": 0,
@@ -112,8 +111,7 @@ If instead you create a new machine for this tutorial, copy and paste the follow
     {
       "name": "myGripper",
       "model": "fake",
-      "type": "gripper",
-      "namespace": "rdk",
+      "api": "rdk:component:gripper",
       "attributes": {},
       "depends_on": ["myArm"],
       "frame": {

@@ -53,8 +53,7 @@ To configure your machine following this example:
       "depends_on": [],
       "name": "myArm",
       "model": "ur5e",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "127.0.0.1"
       },
@@ -127,8 +126,7 @@ This allows `viam-server` to correctly calculate the position of the end of the 
     {
       "name": "myGantry",
       "model": "single-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {},
       "depends_on": [],
       "frame": {
@@ -153,8 +151,7 @@ This allows `viam-server` to correctly calculate the position of the end of the 
       "depends_on": [],
       "name": "myArm",
       "model": "ur5e",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "127.0.0.1"
       },

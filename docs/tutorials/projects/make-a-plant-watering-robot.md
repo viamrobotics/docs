@@ -202,8 +202,7 @@ This tutorial uses the name `local`.
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     }

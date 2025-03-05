@@ -41,8 +41,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
     {
       "name": "<your-sensor-name>",
       "model": "imu-vectornav",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "board": "<your-board-name>",
         "spi_bus": "<your-spi-bus-name-on-board>",
@@ -65,8 +64,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
     {
       "name": "myIMU",
       "model": "imu-vectornav",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "board": "local",
         "spi_bus": "1",

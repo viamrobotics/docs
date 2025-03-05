@@ -54,8 +54,7 @@ To configure your machine following this example:
     {
       "name": "myGantry",
       "model": "single-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {},
       "depends_on": [],
       "frame": {
@@ -80,8 +79,7 @@ To configure your machine following this example:
       "depends_on": [],
       "name": "myArm",
       "model": "ur5e",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "127.0.0.1"
       },

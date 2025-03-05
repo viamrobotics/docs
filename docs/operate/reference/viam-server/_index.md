@@ -151,7 +151,7 @@ If log configurations are applied at a resource level using the `log_configurati
   "components": [
     {
       "name": "camera1",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "model": "fake"
     }
   ],
@@ -189,7 +189,7 @@ To disable log deduplication, set `disable_log_deduplication` in your machine's 
   "components": [
     {
       "name": "camera1",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "model": "fake"
     }
   ],

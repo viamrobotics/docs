@@ -32,8 +32,7 @@ Enter a name or use the suggested name for your servo and click **Create**.
 {
   "name": "<your-fake-servo-name>",
   "model": "fake",
-  "type": "servo",
-  "namespace": "rdk",
+  "api": "rdk:component:servo",
   "attributes": {}
 }
 ```

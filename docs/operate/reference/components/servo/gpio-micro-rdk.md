@@ -70,8 +70,7 @@ Then remove and fill in the attributes as applicable to your servo, according to
     {
       "name": "<your-servo-name>",
       "model": "gpio",
-      "type": "servo",
-      "namespace": "rdk",
+      "api": "rdk:component:servo",
       "attributes": {
         "pin": "<your-pin-number>",
         "board": "<your-board-name>",
@@ -95,8 +94,7 @@ Then remove and fill in the attributes as applicable to your servo, according to
     {
       "name": "local",
       "model": "esp32",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {
         "pins": [16]
       }
@@ -104,8 +102,7 @@ Then remove and fill in the attributes as applicable to your servo, according to
     {
       "name": "my_servo",
       "model": "gpio",
-      "type": "servo",
-      "namespace": "rdk",
+      "api": "rdk:component:servo",
       "attributes": {
         "pin": "16",
         "board": "local"

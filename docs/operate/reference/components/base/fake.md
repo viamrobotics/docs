@@ -30,9 +30,8 @@ Enter a name or use the suggested name for your base and click **Create**.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-base-name>",
-  "type": "base",
+  "api": "rdk:component:base",
   "model": "fake",
-  "namespace": "rdk",
   "attributes": {}
 }
 ```

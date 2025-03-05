@@ -62,8 +62,7 @@ Edit the attributes as applicable to your board, according to the table below.
     {
       "name": "<your-pi-board-name>",
       "model": "pi5",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {
         "analogs": [
           {

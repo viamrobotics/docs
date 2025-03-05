@@ -49,8 +49,7 @@ Copy the following JSON template and paste it into your configuration inside the
 {
   "name": "<your-board-name>",
   "model": "esp32",
-  "type": "board",
-  "namespace": "rdk",
+  "api": "rdk:component:board",
   "attributes": {
     "pins": [
       <int>
@@ -78,8 +77,7 @@ Copy the following JSON template and paste it into your configuration inside the
 {
   "name": "board",
   "model": "esp32",
-  "type": "board",
-  "namespace": "rdk",
+  "api": "rdk:component:board",
   "attributes": {
     "pins": [15, 34],
     "analogs": [

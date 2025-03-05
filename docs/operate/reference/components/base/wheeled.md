@@ -49,8 +49,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "<your-base-name>",
       "model": "wheeled",
-      "type": "base",
-      "namespace": "rdk",
+      "api": "rdk:component:base",
       "attributes": {
         "left": [
           "<your-left-motor-name>" // <INSERT ANY ADDITIONAL LEFT MOTOR NAMES>
@@ -76,16 +75,14 @@ Edit and fill in the attributes as applicable.
     {
       "name": "my-pi",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "rightm",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "pins": {
           "dir": "16",
@@ -98,8 +95,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "leftm",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "pins": {
           "dir": "13",
@@ -112,8 +108,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "my-wheeled-base",
       "model": "wheeled",
-      "type": "base",
-      "namespace": "rdk",
+      "api": "rdk:component:base",
       "attributes": {
         "width_mm": 195,
         "wheel_circumference_mm": 183,

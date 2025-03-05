@@ -42,7 +42,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "<your-arm-name>",
       "model": "dofbot",
-      "type": "arm",
+      "api": "rdk:component:arm",
       "attributes": {},
       "depends_on": []
     }
@@ -59,8 +59,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "myarm",
       "model": "yahboom-dofbot",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {},
       "depends_on": []
     }

@@ -108,8 +108,7 @@ Inside the `components` array of your config, add the following configuration fo
 {
   "name": "my-gamepad",
   "model": "gamepad",
-  "type": "input_controller",
-  "namespace": "rdk",
+  "api": "rdk:component:input_controller",
   "attributes": { "auto_reconnect": true },
   "depends_on": []
 }

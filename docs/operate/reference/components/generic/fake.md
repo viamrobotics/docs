@@ -29,8 +29,7 @@ Enter a name or use the suggested name for your generic component and click **Cr
 {
   "name": "<your-fake-generic-component-name>",
   "model": "fake",
-  "type": "generic",
-  "namespace": "rdk",
+  "api": "rdk:component:generic",
   "attributes": {}
 }
 ```

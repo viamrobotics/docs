@@ -241,8 +241,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
   "components": [
     {
       "name": "camera-1",
-      "namespace": "rdk",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "model": "webcam",
       "attributes": {
         "video_path": "0x114000005a39331"
@@ -250,8 +249,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
     },
     {
       "name": "timesensor",
-      "namespace": "rdk",
-      "type": "sensor",
+      "api": "rdk:component:sensor",
       "model": "naomi:sync-at-time:timesyncsensor",
       "attributes": {
         "start": "18:29:00",

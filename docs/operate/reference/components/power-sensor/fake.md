@@ -32,8 +32,7 @@ Enter a name or use the suggested name for your power sensor and click **Create*
 {
   "name": "<your-sensor-name>",
   "model": "fake",
-  "type": "power_sensor",
-  "namespace": "rdk",
+  "api": "rdk:component:power_sensor",
   "attributes": {}
 }
 ```

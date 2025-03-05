@@ -38,8 +38,7 @@ Fill in the attributes as applicable to your servo, according to the table below
     {
       "name": "<your-servo-name>",
       "model": "gpio",
-      "type": "servo",
-      "namespace": "rdk",
+      "api": "rdk:component:servo",
       "attributes": {
         "pin": "<your-pin-number>",
         "board": "<your-board-name>",
@@ -64,14 +63,12 @@ Fill in the attributes as applicable to your servo, according to the table below
     {
       "name": "local",
       "model": "jetson",
-      "type": "board",
-      "namespace": "rdk"
+      "api": "rdk:component:board"
     },
     {
       "name": "my_servo",
       "model": "gpio",
-      "type": "servo",
-      "namespace": "rdk",
+      "api": "rdk:component:servo",
       "attributes": {
         "pin": "16",
         "board": "local"

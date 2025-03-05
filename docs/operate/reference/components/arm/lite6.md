@@ -38,8 +38,7 @@ Fill in the attributes as applicable to your arm, according to the table below.
     {
       "name": "<your-arm-name>",
       "model": "lite6",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "<your-arms-ip-address-on-your-network>",
         "port": <int>,
@@ -61,8 +60,7 @@ Fill in the attributes as applicable to your arm, according to the table below.
     {
       "name": "my_arm",
       "model": "lite6",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "10.0.0.97"
       },

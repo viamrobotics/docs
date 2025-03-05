@@ -68,8 +68,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
     {
       "name": "<your-wheeledodometry-movement-sensor-name>",
       "model": "wheeled-odometry",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "base": "<your-base-name>",
         "left_motors": ["<your-base-left-motor-name-1>", "<your-base-left-motor-name-2>"],
@@ -90,8 +89,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
     {
       "name": "my-wheeled-odometer",
       "model": "wheeled-odometry",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "base": "my_wheeled_base",
         "left_motors": ["leftm1", "leftm2"],

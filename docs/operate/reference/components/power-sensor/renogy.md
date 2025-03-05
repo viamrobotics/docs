@@ -38,8 +38,7 @@ Edit the attributes as applicable to your power sensor, according to the table b
     {
       "name": "ren1",
       "model": "renogy",
-      "type": "power_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:power_sensor",
       "attributes": {
         "serial_path": "<string>",
         "serial_baud_rate": <int>,
@@ -60,8 +59,7 @@ Edit the attributes as applicable to your power sensor, according to the table b
     {
       "name": "your-renogy-sensor",
       "model": "renogy",
-      "type": "power_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:power_sensor",
       "attributes": {
         "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0",
         "serial_baud_rate": 9600,

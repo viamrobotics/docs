@@ -80,8 +80,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
 {
   "name": "<your-camera-name>",
   "model": "transform",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes" : {
     "source" : "<your-source-camera-name>",
     "pipeline": [

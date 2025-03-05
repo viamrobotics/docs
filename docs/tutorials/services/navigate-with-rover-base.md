@@ -189,7 +189,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
       "depends_on": [],
       "model": "jetson",
       "name": "local",
-      "type": "board",
+      "api": "rdk:component:board",
       "attributes": {
         "digital_interrupts": [
           {
@@ -245,12 +245,12 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
       },
       "model": "wheeled",
       "name": "base",
-      "type": "base"
+      "api": "rdk:component:base"
     },
     {
       "model": "gpio",
       "name": "left-motor",
-      "type": "motor",
+      "api": "rdk:component:motor",
       "attributes": {
         "ticks_per_rotation": 420,
         "board": "local",
@@ -267,7 +267,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     {
       "model": "gpio",
       "name": "right-motor",
-      "type": "motor",
+      "api": "rdk:component:motor",
       "attributes": {
         "encoder": "r-encoder",
         "ticks_per_rotation": 425,
@@ -291,13 +291,12 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
       },
       "depends_on": [],
       "name": "l-encoder",
-      "type": "encoder",
+      "api": "rdk:component:encoder",
       "model": "incremental"
     },
     {
       "model": "incremental",
-      "type": "encoder",
-      "namespace": "rdk",
+      "api": "rdk:component:encoder",
       "attributes": {
         "board": "local",
         "pins": {
@@ -359,7 +358,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
 ```json {class="line-numbers linkable-line-numbers"}
     {
       "name": "gps",
-      "type": "movement_sensor",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "ntrip_password": "yourpassword",
         "ntrip_url": "http://your.url:8082",
@@ -374,7 +373,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     },
     {
       "name": "merged",
-      "type": "movement_sensor",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "angular_velocity": [
           "enc-linear"
@@ -411,8 +410,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     },
     {
       "model": "wheeled-odometry",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "base": "base",
         "left_motors": [

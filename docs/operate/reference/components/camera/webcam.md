@@ -40,8 +40,7 @@ If you click on **Show more**, then the **video_path** field while your machine 
 {
   "name": "<your-camera-name>",
   "model": "webcam",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "intrinsic_parameters": {
       "width_px": <int>,
@@ -74,8 +73,7 @@ If you click on **Show more**, then the **video_path** field while your machine 
 {
   "name": "my_cam",
   "model": "webcam",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "video_path": "video0"
   }

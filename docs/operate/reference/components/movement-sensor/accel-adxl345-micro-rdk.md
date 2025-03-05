@@ -66,8 +66,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
     {
       "name": "<your-sensor-name>",
       "model": "accel-adxl345",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "board": "<your-board-name>",
         "i2c_bus": "<your-i2c-bus-name-on-board>",
@@ -87,8 +86,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
     {
       "name": "local",
       "model": "esp32",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {
         "pins": [15, 21, 22],
         "i2cs": [
@@ -104,8 +102,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
     {
       "name": "my-adxl",
       "model": "accel-adxl345",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "board": "local",
         "i2c_bus": "default_i2c_bus",

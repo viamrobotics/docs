@@ -38,8 +38,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "<your-arm-name>",
       "model": "xArm7",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "<ip-address-to-connect-to-your-arm>",
         "port": <int>,
@@ -61,8 +60,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "my_xArm7",
       "model": "xArm7",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "10.0.0.97"
       },

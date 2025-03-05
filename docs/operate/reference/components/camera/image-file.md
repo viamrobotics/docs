@@ -35,8 +35,7 @@ Note that you _must_ specify at least one of `color_image_file_path`, `depth_ima
 {
   "name": "<your-camera-name>",
   "model": "image_file",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "intrinsic_parameters": {
       "width_px": <int>,

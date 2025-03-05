@@ -82,8 +82,7 @@ Then remove and fill in the attributes as applicable to your COMPONENT, accordin
     {
       "name": <arm_name>,
       "model": "model1",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "board": <string>,
         "i2c_bus": <string>
@@ -103,8 +102,7 @@ Then remove and fill in the attributes as applicable to your COMPONENT, accordin
     {
       "name": "myArm",
       "model": "model1",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "board": "local",
         "i2c_bus": "1"

@@ -32,8 +32,7 @@ Enter a name or use the suggested name for your gripper and click **Create**.
 {
   "name": "<your-fake-gripper-name>",
   "model": "fake",
-  "type": "gripper",
-  "namespace": "rdk",
+  "api": "rdk:component:gripper",
   "attributes": {}
 }
 ```

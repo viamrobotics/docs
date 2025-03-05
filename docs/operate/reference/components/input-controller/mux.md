@@ -45,8 +45,7 @@ Also, select each of the source input controllers in the **Depends on** dropdown
     {
       "name": "<your-mux-input-controller-name>",
       "model": "mux",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {
         "sources": [
           "<your-gamepad-input-controller-name",
@@ -74,8 +73,7 @@ The following example configuration combines a `gamepad` and a `webgamepad` cont
     {
       "name": "my-combined-controller",
       "model": "mux",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {
         "sources": ["myGamepad", "WebGamepad"]
       },
@@ -84,8 +82,7 @@ The following example configuration combines a `gamepad` and a `webgamepad` cont
     {
       "name": "myGamepad",
       "model": "gamepad",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {
         "auto_reconnect": true
       },
@@ -94,8 +91,7 @@ The following example configuration combines a `gamepad` and a `webgamepad` cont
     {
       "name": "WebGamepad",
       "model": "webgamepad",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {},
       "depends_on": []
     }

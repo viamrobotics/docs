@@ -37,8 +37,7 @@ Edit the attributes as applicable to your board, according to the table below.
     {
       "name": "<your-fake-board-name>",
       "model": "fake",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {
         "fail_new": <boolean>
       },
