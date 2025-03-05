@@ -41,8 +41,7 @@ If both attributes are specified, an error is thrown stating "can only populate 
 {
   "name": "<arm_name>",
   "model": "fake",
-  "type": "arm",
-  "namespace": "rdk",
+  "api": "rdk:component:arm",
   "attributes": {
     "arm-model": "<your_arm_model>",
     "model-path": "<path_to_arm_model>"
@@ -58,8 +57,7 @@ If both attributes are specified, an error is thrown stating "can only populate 
 {
   "name": "my-fake-arm",
   "model": "fake",
-  "type": "arm",
-  "namespace": "rdk",
+  "api": "rdk:component:arm",
   "attributes": {
     "arm-model": "ur5e"
   },

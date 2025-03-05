@@ -38,8 +38,7 @@ Fill in and edit the attributes as applicable.
 {
   "name": "<your-encoder-name>",
   "model": "incremental",
-  "type": "encoder",
-  "namespace": "rdk",
+  "api": "rdk:component:encoder",
   "attributes": {
     "board": "<your-board-name>",
     "pins": {
@@ -59,15 +58,13 @@ Fill in and edit the attributes as applicable.
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {}
     },
     {
       "name": "myEncoder",
       "model": "incremental",
-      "type": "encoder",
-      "namespace": "rdk",
+      "api": "rdk:component:encoder",
       "attributes": {
         "board": "local",
         "pins": {

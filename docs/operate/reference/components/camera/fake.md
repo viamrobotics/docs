@@ -38,8 +38,7 @@ Edit the attributes as applicable to your camera, according to the table below.
 {
   "name": "<your-camera-name>",
   "model": "fake",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "width": <int>,
     "height": <int>

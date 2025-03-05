@@ -191,8 +191,7 @@ This example JSON configuration:
     "components": [
       {
         "name": "rplidar",
-        "namespace": "rdk",
-        "type": "camera",
+        "api": "rdk:component:camera",
         "model": "viam:lidar:rplidar",
         "attributes": {},
         "service_configs": [
@@ -214,8 +213,7 @@ This example JSON configuration:
     "services": [
       {
         "name": "carto",
-        "namespace": "rdk",
-        "type": "slam",
+        "api": "rdk:service:slam",
         "model": "viam:slam:cartographer",
         "attributes": {
           "enable_mapping": true,
@@ -229,8 +227,8 @@ This example JSON configuration:
       },
       {
         "name": "data_manager-1",
-        "namespace": "rdk",
-        "type": "data_manager",
+        "api": "rdk:service:data_manager",
+        "model": "rdk:builtin:builtin",
         "attributes": {
           "capture_dir": "",
           "capture_disabled": false,
@@ -242,8 +240,7 @@ This example JSON configuration:
       },
       {
         "name": "cloudslam",
-        "namespace": "rdk",
-        "type": "slam",
+        "api": "rdk:service:slam",
         "model": "viam:cloudslam-wrapper:cloudslam",
         "attributes": {
           "slam_service": "carto",

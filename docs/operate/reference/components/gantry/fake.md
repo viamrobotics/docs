@@ -32,8 +32,7 @@ Enter a name or use the suggested name for your gantry and click **Create**.
 {
   "name": "<your-fake-gantry-name>",
   "model": "fake",
-  "type": "gantry",
-  "namespace": "rdk",
+  "api": "rdk:component:gantry",
   "attributes": {}
 }
 ```

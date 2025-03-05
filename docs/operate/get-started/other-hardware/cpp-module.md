@@ -90,14 +90,14 @@ The three pieces of the API namespace triplet are as follows:
 
 - `namespace`: `rdk`
 - `type`: `component`
-- `api`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor` if you are creating a new model of motor
+- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor` if you are creating a new model of motor
 
 {{% /tab %}}
 {{% tab name="Service" %}}
 
 - `namespace`: `rdk`
 - `type`: `service`
-- `api`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `vision` if you are creating a new model of vision service
+- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `vision` if you are creating a new model of vision service
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -33,33 +33,33 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 
 {{< table >}}
 {{% tablestep link="/operate/get-started/setup/" %}}
-**1. Configure one machine**
+**1. In the [Viam app](https://app.viam.com), create a machine** in any {{< glossary_tooltip term_id="location" text="location" >}}.
 
-Start by configuring one of your machines.
+{{% /tablestep %}}
+{{% tablestep link="/operate/get-started/setup/" %}}
+**2. Use the CONFIGURE tab to configure all the resources** you want to use on your machines.
 
-In the [Viam app](https://app.viam.com), use the **CONFIGURE** tab to build a configuration for all resources you want to use on all your machines.
-You can use all available resources in the configuration for your machine except [triggers](/data-ai/data/advanced/alert-data/) which aren't supported.
-This means you can also use fragments inside a fragment.
-
-{{<imgproc src="/how-tos/one-to-many/config.png" resize="800x" class="shadow fill" style="width: 400px" declaredimensions=true alt="Configuration builder UI">}}
+All available resources except [triggers](/data-ai/data/advanced/alert-data/) are supported in fragments.
+You can even configure other fragments inside a fragment.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Copy the raw JSON**
-
-In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON configuration object.
+**3. Switch to JSON**.
 
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**3. Create a fragment**
 
-On the **FLEET** page, go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
+**4. Copy the raw JSON configuration object**.
 
-Click **Create fragment**, and paste the copied JSON configuration into it.
+{{% /tablestep %}}
+{{% tablestep %}}
+**5. Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and create a fragment.**
 
-Set your privacy settings.
+Paste the copied JSON configuration into it.
+
+Set your privacy settings in the menu bar.
 There are three options for this:
 
 - **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
@@ -70,12 +70,9 @@ Click **Save**.
 
 If you want to edit the fragment later, do it from this screen.
 
-{{<imgproc src="/how-tos/one-to-many/new-fragment.png" resize="700x" class="shadow fill" style="width: 350px" declaredimensions=true alt="app.viam.com/fragment interface">}}
-
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/delete.png" class="shadow fill alignleft" resize="500x" style="width: 200px" declaredimensions=true alt="Delete">}}
-**4. Delete the original configuration (optional)**
+**6. Delete the original configuration (optional).**
 
 Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
 By using the new fragment, this and every other machine you add the fragment to will use the exact same configuration.
@@ -91,20 +88,15 @@ In the following steps, you will see how to add a fragment manually. If you are 
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="shadow fill alignleft imgzoom" style="width: 250px" declaredimensions=true alt="Add fragment">}}
-**1. Add the fragment to one machine**
+**1. On your machine's CONFIGURE tab, click the + button and select Insert fragment.**
 
-On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
 Search for your fragment and add it.
 
 Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/how-tos/one-to-many/repeat.svg" class="fill alignleft" style="width: 120px"  declaredimensions=true alt="Repeat">}}
-**2. Repeat for each machine**
-
-Repeat step 1 for each of the machines that you want to configure in the same way.
+**2. Repeat step 1 for each of the machines** that you want to configure in the same way.
 
 If some of your machines have slight differences, you can still add the fragment and then add fragment overwrites in the next section.
 
@@ -127,12 +119,10 @@ For example if you changed the default camera configuration in the fragment to b
 
 <!-- markdownlint-disable MD036 -->
 
-**1. Edit your machine's config**
+**1. On the CONFIGURE tab of the machine whose config you want to modify, make your edits** just as you would edit a non-fragment {{< glossary_tooltip term_id="resource" text="resource" >}}.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
-
-Go to the **CONFIGURE** tab of the machine whose config you want to modify, and make your edits just as you would edit a non-fragment {{< glossary_tooltip term_id="resource" text="resource" >}}.
 
 You can click the **{}** button to switch to advanced view and see the changes.
 
@@ -393,24 +383,16 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Support Notice" color="note" %}}
-
-Fragment overwrites are currently _not_ supported for modifying [triggers](/manage/troubleshoot/alert/).
-
-{{% /alert %}}
-
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Check your machine's logs**
-
-After configuring fragment overwrites, check your machine's [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs).
+**2. After configuring fragment overwrites, check your machine's [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs).**
 
 If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/how-tos/one-to-many/reset.png" class="shadow fill alignleft" resize="500x" style="width: 250px"  declaredimensions=true alt="Reset to fragment">}}
-**3. (Optional) Revert fragment modifications**
+**3. (Optional) Revert fragment modifications.**
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 Now, the fragment will be identical to the upstream fragment.
@@ -427,11 +409,8 @@ If you've already deployed the fragment to one or more machines, the Viam app up
 You can see the number of machines using your fragment from the [fragments page](https://app.viam.com/fragments) in the Viam app.
 
 {{< alert title="Test updates first" color="caution" >}}
-Be cautious when making changes to fragments that have been deployed to production machines.
-
-We recommend that you create a duplicate fragment, make your desired change to that second fragment, and then deploy that fragment to one or more test machines that are configured identically to your production machines.
-
-Once you are confident that your configuration change works as expected, you can safely make the same change to the fragment in use on your production fleet, and the Viam app will deploy that change to all machines using that fragment.
+We recommend testing updates to fragments on a small number of machines before deploying them to a larger fleet.
+For recommendations on updating software on deployed machines, see [Update software](/manage/software/update-software/).
 {{< /alert >}}
 
 ## Example fragments

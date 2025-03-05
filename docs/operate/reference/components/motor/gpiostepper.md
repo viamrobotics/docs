@@ -43,16 +43,14 @@ Edit and fill in the attributes as applicable.
     {
       "name": "<your-board-name>",
       "model": "<your-board-model>",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": [],
     },
     {
       "name": "<your-motor-name>",
       "model": "gpiostepper",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "board": "<your-board-name>",
         "pins": {
@@ -79,14 +77,12 @@ Here’s an example of a basic stepper driver config:
     {
       "name": "example-board",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk"
+      "api": "rdk:component:board"
     },
     {
       "name": "example-motor",
       "model": "gpiostepper",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "board": "example-board",
         "pins": {

@@ -36,8 +36,7 @@ Then, configure a `two_wheeled_base` base as follows:
     {
       "name": "<your-base-name>",
       "model": "two_wheeled_base",
-      "type": "base",
-      "namespace": "rdk",
+      "api": "rdk:component:base",
       "attributes": {
         "left": "<your-left-motor-name>",
         "right": "<your-right-motor-name>"
@@ -56,8 +55,7 @@ Then, configure a `two_wheeled_base` base as follows:
     {
       "name": "my-wheeled-base",
       "model": "two_wheeled_base",
-      "type": "base",
-      "namespace": "rdk",
+      "api": "rdk:component:base",
       "attributes": {
         "left": "leftm",
         "right": "rightm"

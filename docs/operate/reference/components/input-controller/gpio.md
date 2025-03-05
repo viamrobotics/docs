@@ -118,8 +118,7 @@ You can also select **board** in the builder editing mode to clarify the board y
     {
       "name": "<your-gpio-input-controller-name>",
       "model": "gpio",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {
         "board": "<your-board-name>",
         "buttons": {
@@ -157,8 +156,7 @@ You can also select **board** in the builder editing mode to clarify the board y
     {
       "name": "my_gpio_ic",
       "model": "gpio",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {
         "board": "piboard",
         "buttons": {

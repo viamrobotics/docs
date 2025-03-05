@@ -54,8 +54,8 @@ To configure the data manager in JSON, see the following example configurations:
   "services": [
     {
       "name": "my-data-manager",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "capture_dir": "",
         "tags": [],
@@ -119,7 +119,8 @@ This example configuration captures data from the `ReadImage` method of a camera
     ,
     {
       "name": "data_manager",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "sync_interval_mins": 5,
         "capture_dir": "",
@@ -160,7 +161,7 @@ This example configuration captures data from the `ReadImage` method of a camera
       ],
       "model": "webcam",
       "name": "cam",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "attributes": {
         "video_path": "video0"
       },
@@ -189,13 +190,13 @@ This example configuration captures data from the `GetReadings` method of a temp
         "sync_interval_mins": 3
       },
       "name": "dm",
-      "namespace": "rdk",
-      "type": "data_manager"
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin"
     }
   ],
   "components": [
     {
-      "type": "sensor",
+      "api": "rdk:component:sensor",
       "model": "tmp36",
       "attributes": {
         "analog_reader": "temp",
@@ -217,11 +218,10 @@ This example configuration captures data from the `GetReadings` method of a temp
           "type": "data_manager"
         }
       ],
-      "name": "tmp36",
-      "namespace": "rdk"
+      "name": "tmp36"
     },
     {
-      "type": "sensor",
+      "api": "rdk:component:sensor",
       "model": "wifi-rssi",
       "attributes": {},
       "service_configs": [
@@ -239,8 +239,7 @@ This example configuration captures data from the `GetReadings` method of a temp
           }
         }
       ],
-      "name": "my-wifi-sensor",
-      "namespace": "rdk"
+      "name": "my-wifi-sensor"
     }
   ]
 }
@@ -258,8 +257,7 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
   "components": [
     {
       "name": "camera-1",
-      "namespace": "rdk",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "model": "webcam",
       "attributes": {}
     }
@@ -267,8 +265,7 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
   "services": [
     {
       "name": "vision-1",
-      "namespace": "rdk",
-      "type": "vision",
+      "api": "rdk:service:vision",
       "model": "mlmodel",
       "attributes": {},
       "service_configs": [
@@ -292,8 +289,8 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
     },
     {
       "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "sync_interval_mins": 0.1,
         "capture_dir": "",
@@ -303,8 +300,7 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
     },
     {
       "name": "mlmodel-1",
-      "namespace": "rdk",
-      "type": "mlmodel",
+      "api": "rdk:service:mlmodel",
       "model": "viam:mlmodel-tflite:tflite_cpu",
       "attributes": {}
     }
@@ -348,8 +344,7 @@ This config is just like that of a non-remote part; the remote connection is est
     {
       "name": "my-esp32",
       "model": "esp32",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {
         "pins": [27],
         "analogs": [
@@ -404,7 +399,8 @@ The following example of a configuration with a remote part captures data from t
   "services": [
     {
       "name": "data_manager",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
@@ -550,8 +546,7 @@ Here is a sample configuration that will capture fake sensor readings both to th
   "components": [
     {
       "name": "sensor-1",
-      "namespace": "rdk",
-      "type": "sensor",
+      "api": "rdk:component:sensor",
       "model": "fake",
       "attributes": {},
       "service_configs": [
@@ -573,8 +568,8 @@ Here is a sample configuration that will capture fake sensor readings both to th
   "services": [
     {
       "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "mongo_capture_config": {
           "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"

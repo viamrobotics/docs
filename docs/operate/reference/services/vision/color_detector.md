@@ -53,7 +53,7 @@ Add the vision service object to the services array in your JSON configuration:
 "services": [
   {
     "name": "<service_name>",
-    "type": "vision",
+    "api": "rdk:service:vision",
     "model": "color_detector",
     "attributes": {
       "segment_size_px": <integer>,
@@ -74,7 +74,7 @@ Add the vision service object to the services array in your JSON configuration:
 "services": [
   {
     "name": "blue_square",
-    "type": "vision",
+    "api": "rdk:service:vision",
     "model": "color_detector",
     "attributes": {
       "segment_size_px": 100,
@@ -85,7 +85,7 @@ Add the vision service object to the services array in your JSON configuration:
   },
   {
     "name": "green_triangle",
-    "type": "vision",
+    "api": "rdk:service:vision",
     "model": "color_detector",
     "attributes": {
       "segment_size_px": 200,

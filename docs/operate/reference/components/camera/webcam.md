@@ -41,8 +41,7 @@ If this doesn't work when you test your camera later, you can try a different vi
 {
   "name": "<your-camera-name>",
   "model": "webcam",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "intrinsic_parameters": {
       "width_px": <int>,
@@ -75,8 +74,7 @@ If this doesn't work when you test your camera later, you can try a different vi
 {
   "name": "my_cam",
   "model": "webcam",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "video_path": "video0"
   }

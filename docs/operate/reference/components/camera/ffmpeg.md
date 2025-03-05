@@ -43,8 +43,7 @@ Edit the attributes as applicable to your camera, according to the table below.
 {
   "name": "<your-camera-name>",
   "model": "ffmpeg",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "intrinsic_parameters": {
       "width_px": <int>,

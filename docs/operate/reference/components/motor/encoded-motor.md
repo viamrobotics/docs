@@ -43,16 +43,14 @@ Here’s an example configuration:
     {
       "name": "<your-board-name>",
       "model": "<your-board-model>",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "<your-encoder-name>",
       "model": "<your-encoder-model>",
-      "type": "encoder",
-      "namespace": "rdk",
+      "api": "rdk:component:encoder",
       "attributes": {
         ... // insert encoder model specific attributes
       },
@@ -61,8 +59,7 @@ Here’s an example configuration:
     {
       "name": "<your-motor-name>",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "board": "<your-board-name>",
         "pins": {
@@ -93,16 +90,14 @@ Here’s an example configuration:
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "myEncoder",
       "model": "incremental",
-      "type": "encoder",
-      "namespace": "rdk",
+      "api": "rdk:component:encoder",
       "attributes": {
         "board": "local",
         "pins": {
@@ -115,8 +110,7 @@ Here’s an example configuration:
     {
       "name": "myMotor1",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "board": "local",
         "pins": {

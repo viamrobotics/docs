@@ -31,8 +31,7 @@ Enter a name or use the suggested name for your encoder and click **Create**.
 {
   "name": "<your-encoder-name>",
   "model": "fake",
-  "type": "encoder",
-  "namespace": "rdk",
+  "api": "rdk:component:encoder",
   "attributes": {}
 }
 ```
@@ -44,8 +43,7 @@ Enter a name or use the suggested name for your encoder and click **Create**.
 {
   "name": "myEncoder",
   "model": "fake",
-  "type": "encoder",
-  "namespace": "rdk",
+  "api": "rdk:component:encoder",
   "attributes": {}
 }
 ```

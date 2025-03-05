@@ -857,8 +857,8 @@ To enable data capture on your machine, add and configure the [data management s
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "dm",
-  "type": "data_manager",
-  "namespace": "rdk",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "sync_interval_mins": 0.1,
     "capture_dir": "",
@@ -906,7 +906,7 @@ Add the vision service object to the services array in your rover’s raw JSON c
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "my_color_detector",
-  "type": "vision",
+  "api": "rdk:service:vision",
   "model": "color_detector",
   "attributes": {
     "segment_size_px": 100,

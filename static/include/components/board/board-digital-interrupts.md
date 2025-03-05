@@ -37,7 +37,7 @@ Assign a name to your digital interrupt and then enter a pin number.
     {
       "model": "pi",
       "name": "your-board",
-      "type": "board",
+      "api": "rdk:component:board",
       "attributes": {
         "digital_interrupts": [
           {

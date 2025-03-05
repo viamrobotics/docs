@@ -57,8 +57,7 @@ Copy and paste the following JSON into your existing machine configuration into 
 ```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "my-esp32camera",
-    "namespace": "rdk",
-    "type": "camera",
+    "api": "rdk:component:camera",
     "model": "esp32-camera",
     "attributes": {
         "pin_d4": <int>,
@@ -94,8 +93,7 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "my-esp32camera",
-  "namespace": "rdk",
-  "type": "camera",
+  "api": "rdk:component:camera",
   "model": "esp32-camera",
   "attributes": {
     "pin_pwdn": -1,
@@ -127,8 +125,7 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "my-esp32camera",
-  "namespace": "rdk",
-  "type": "camera",
+  "api": "rdk:component:camera",
   "model": "esp32-camera",
   "attributes": {
     "pin_d4": 39,

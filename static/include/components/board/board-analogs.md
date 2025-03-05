@@ -40,7 +40,7 @@ Assign a name to your analog and then fill in the required properties outlined b
     {
       "model": "pi",
       "name": "your-board",
-      "type": "board",
+      "api": "rdk:component:board",
       "attributes": {
         "analogs": [
           {

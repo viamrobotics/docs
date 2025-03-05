@@ -48,8 +48,7 @@ Add the vision service object to the services array in your raw JSON configurati
 "services": [
     {
       "name": "<segmenter_name>",
-      "type": "vision",
-      "namespace": "rdk",
+      "api": "rdk:service:vision",
       "model": "obstacles_distance",
       "attributes": {
         "num_queries": 10
@@ -66,8 +65,7 @@ Add the vision service object to the services array in your raw JSON configurati
 "services": [
     {
         "name": "my_segmenter",
-        "type": "vision",
-        "namespace": "rdk",
+        "api": "rdk:service:vision",
         "model": "obstacles_distance",
         "attributes": {
             "num_queries": 10

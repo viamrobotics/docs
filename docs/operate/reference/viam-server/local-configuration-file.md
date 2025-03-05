@@ -80,8 +80,7 @@ The following file contains some example {{< glossary_tooltip term_id="component
     {
       "name": "arm1",
       "model": "fake",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "arm-model": "xArm6"
       }
@@ -93,14 +92,13 @@ The following file contains some example {{< glossary_tooltip term_id="component
     },
     {
       "name": "base1",
-      "type": "base",
+      "api": "rdk:component:base",
       "model": "fake"
     },
     {
       "name": "board1",
       "model": "fake",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {
         "analogs": [
           {
@@ -118,43 +116,41 @@ The following file contains some example {{< glossary_tooltip term_id="component
     },
     {
       "name": "camera1",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "model": "fake"
     },
     {
       "name": "encoder1",
       "model": "fake",
-      "type": "encoder",
-      "namespace": "rdk",
+      "api": "rdk:component:encoder",
       "attributes": {
         "update_rate_msec": 200
       }
     },
     {
       "name": "gantry1",
-      "type": "gantry",
+      "api": "rdk:component:gantry",
       "model": "fake"
     },
     {
       "name": "generic1",
-      "type": "generic",
+      "api": "rdk:component:generic",
       "model": "fake"
     },
     {
       "name": "gripper1",
-      "type": "gripper",
+      "api": "rdk:component:gripper",
       "model": "fake"
     },
     {
       "name": "input_controller1",
-      "type": "input_controller",
+      "api": "rdk:component:input_controller",
       "model": "fake"
     },
     {
       "name": "motor1",
       "model": "fake",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "encoder": "encoder1",
         "pins": {
@@ -168,18 +164,18 @@ The following file contains some example {{< glossary_tooltip term_id="component
     },
     {
       "name": "movement_sensor1",
-      "type": "movement_sensor",
+      "api": "rdk:component:movement_sensor",
       "model": "fake"
     },
 
     {
       "name": "sensor1",
-      "type": "sensor",
+      "api": "rdk:component:sensor",
       "model": "fake"
     },
     {
       "name": "servo1",
-      "type": "servo",
+      "api": "rdk:component:servo",
       "model": "fake"
     }
   ],
@@ -202,8 +198,8 @@ The following file contains some example {{< glossary_tooltip term_id="component
     },
     {
       "name": "dm",
-      "type": "data_manager",
-      "model": "builtin"
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin"
     }
   ]
 }

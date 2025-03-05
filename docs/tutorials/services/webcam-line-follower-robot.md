@@ -115,16 +115,14 @@ To find yours, follow [these instructions](/operate/reference/components/camera/
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "leftm",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "pins": {
           "a": "15",
@@ -138,8 +136,7 @@ To find yours, follow [these instructions](/operate/reference/components/camera/
     {
       "name": "rightm",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "pins": {
           "b": "11",
@@ -155,8 +152,7 @@ To find yours, follow [these instructions](/operate/reference/components/camera/
     {
       "name": "scuttlebase",
       "model": "wheeled",
-      "type": "base",
-      "namespace": "rdk",
+      "api": "rdk:component:base",
       "attributes": {
         "width_mm": 400,
         "wheel_circumference_mm": 258,
@@ -168,8 +164,7 @@ To find yours, follow [these instructions](/operate/reference/components/camera/
     {
       "name": "my_camera",
       "model": "webcam",
-      "type": "camera",
-      "namespace": "rdk",
+      "api": "rdk:component:camera",
       "attributes": {
         "video_path": "video0"
       },
@@ -276,16 +271,14 @@ With **JSON** mode selected, replace the configuration with the following JSON c
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "leftm",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "pins": {
           "a": "15",
@@ -299,8 +292,7 @@ With **JSON** mode selected, replace the configuration with the following JSON c
     {
       "name": "rightm",
       "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "pins": {
           "b": "11",
@@ -316,8 +308,7 @@ With **JSON** mode selected, replace the configuration with the following JSON c
     {
       "name": "scuttlebase",
       "model": "wheeled",
-      "type": "base",
-      "namespace": "rdk",
+      "api": "rdk:component:base",
       "attributes": {
         "width_mm": 400,
         "wheel_circumference_mm": 258,
@@ -329,8 +320,7 @@ With **JSON** mode selected, replace the configuration with the following JSON c
     {
       "name": "my_camera",
       "model": "webcam",
-      "type": "camera",
-      "namespace": "rdk",
+      "api": "rdk:component:camera",
       "attributes": {
         "video_path": "video0"
       },
@@ -339,8 +329,7 @@ With **JSON** mode selected, replace the configuration with the following JSON c
     {
       "name": "show_detections",
       "model": "transform",
-      "type": "camera",
-      "namespace": "rdk",
+      "api": "rdk:component:camera",
       "attributes": {
         "source": "my_camera",
         "pipeline": [
@@ -358,7 +347,7 @@ With **JSON** mode selected, replace the configuration with the following JSON c
   "services": [
     {
       "name": "green_detector",
-      "type": "vision",
+      "api": "rdk:service:vision",
       "model": "color_detector",
       "attributes": {
         "segment_size_px": 100,

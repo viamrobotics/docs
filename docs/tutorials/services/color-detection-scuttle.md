@@ -93,7 +93,7 @@ Add the vision service object to the services array in your rover’s JSON confi
 "services": [
   {
     "name": "my_color_detector",
-    "type": "vision",
+    "api": "rdk:service:vision",
     "model": "color_detector",
     "attributes": {
       "segment_size_px": 100,

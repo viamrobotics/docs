@@ -197,8 +197,8 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
 ```json {class="line-numbers linkable-line-numbers" data-line="9,14"}
 {
   "name": "data_manager-1",
-  "type": "data_manager",
-  "namespace": "rdk",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "additional_sync_paths": [],
     "capture_dir": "",
@@ -218,8 +218,8 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
 ```json {class="line-numbers linkable-line-numbers" data-line="7,12"}
 {
   "name": "datamanager",
-  "type": "data_manager",
-  "namespace": "rdk",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "additional_sync_paths": [],
     "selective_syncer_name": "timesensor",
@@ -241,8 +241,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
   "components": [
     {
       "name": "camera-1",
-      "namespace": "rdk",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "model": "webcam",
       "attributes": {
         "video_path": "0x114000005a39331"
@@ -250,8 +249,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
     },
     {
       "name": "timesensor",
-      "namespace": "rdk",
-      "type": "sensor",
+      "api": "rdk:component:sensor",
       "model": "naomi:sync-at-time:timesyncsensor",
       "attributes": {
         "start": "18:29:00",
@@ -263,8 +261,8 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
   "services": [
     {
       "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "capture_dir": "",
         "tags": [],

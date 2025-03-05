@@ -30,8 +30,7 @@ Edit and fill in the attributes as applicable.
 {
   "name": "<your-encoder-name>",
   "model": "arduino",
-  "type": "encoder",
-  "namespace": "rdk",
+  "api": "rdk:component:encoder",
   "attributes": {
     "board": "<your-board-name>",
     "motor_name": "your-motor-name>",

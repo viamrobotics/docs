@@ -39,8 +39,7 @@ Edit the attributes as applicable to your input controller, according to the tab
     {
       "name":  "<your-gamepad-input-controller>",
       "model": "gamepad",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {
         "dev_file": "<string>",
         "auto_reconnect": <boolean>
