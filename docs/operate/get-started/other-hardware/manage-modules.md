@@ -36,9 +36,12 @@ Once your module is in the [Viam Registry](https://app.viam.com/registry), there
 
 ### Update automatically
 
-Use GitHub Actions to automatically build and deploy your new module version when you create a tag or release in GitHub:
+Use [GitHub Actions](https://docs.github.com/actions) to automatically build and deploy your new module version when you create a tag or release in GitHub:
 
 1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
+   For example, if you've changed the module's functionality, update the description in the `meta.json` file.
+
+1. Push your changes to the GitHub repository where you have your module code.
 
    {{% alert title="Note" color="note" %}}
 
