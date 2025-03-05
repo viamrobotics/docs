@@ -24,8 +24,7 @@ Then, configure the arm:
 {
   "name": "<arm_name>",
   "model": "eva",
-  "type": "arm",
-  "namespace": "rdk",
+  "api": "rdk:component:arm",
   "attributes": {}
 }
 ```

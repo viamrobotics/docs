@@ -67,7 +67,7 @@ Add the vision service object to the services array in your JSON configuration:
 "services": [
   {
     "name": "<service_name>",
-    "type": "vision",
+    "api": "rdk:service:vision",
     "model": "mlmodel",
     "attributes": {
       "mlmodel_name": "<mlmodel-service-name>"
@@ -87,7 +87,7 @@ Add the vision service object to the services array in your JSON configuration:
 "services": [
   {
     "name": "person_detector",
-    "type": "vision",
+    "api": "rdk:service:vision",
     "model": "mlmodel",
     "attributes": {
       "mlmodel_name": "my_mlmodel_service"
@@ -103,7 +103,7 @@ Add the vision service object to the services array in your JSON configuration:
 "services": [
   {
     "name": "fruit_classifier",
-    "type": "vision",
+    "api": "rdk:service:vision",
     "model": "mlmodel",
     "attributes": {
       "mlmodel_name": "fruit_classifier"
@@ -160,7 +160,7 @@ To remap your model's tensor names to work with an `mlmodel` detector, add the f
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "vision",
+  "api": "rdk:service:vision",
   "model": "mlmodel",
   "attributes": {
     "mlmodel_name": "my_model",
@@ -184,7 +184,7 @@ To remap your model's tensor names to work with an `mlmodel` classifier, add the
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": "vision",
+  "api": "rdk:service:vision",
   "model": "mlmodel",
   "attributes": {
     "mlmodel_name": "my_model",

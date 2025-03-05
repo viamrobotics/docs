@@ -111,8 +111,7 @@ Add the following JSON objects to the `components` array:
 {
     "name": "lenc",
     "model": "AMS-AS5048",
-    "type": "encoder",
-    "namespace": "rdk",
+    "api": "rdk:component:encoder",
     "attributes": {
       "connection_type": "i2c",
       "i2c_attributes": {
@@ -124,8 +123,7 @@ Add the following JSON objects to the `components` array:
 {
     "name": "renc",
     "model": "AMS-AS5048",
-    "type": "encoder",
-    "namespace": "rdk",
+    "api": "rdk:component:encoder",
     "attributes": {
       "connection_type": "i2c",
       "i2c_attributes": {
@@ -202,8 +200,7 @@ Add the following JSON objects to the `components` array:
 {
   "name": "right",
   "model": "gpio",
-  "type": "motor",
-  "namespace": "rdk",
+  "api": "rdk:component:motor",
   "attributes": {
     "pins": {
       "a": "16",
@@ -220,8 +217,7 @@ Add the following JSON objects to the `components` array:
 {
   "name": "left",
   "model": "gpio",
-  "type": "motor",
-  "namespace": "rdk",
+  "api": "rdk:component:motor",
   "attributes": {
     "pins": {
       "a": "12",
@@ -355,8 +351,7 @@ If you click on the **Video Path** field while your robot is live, a dropdown au
 {
   "name": "Webcam",
   "model": "webcam",
-  "type": "camera",
-  "namespace": "rdk",
+  "api": "rdk:component:camera",
   "attributes": {
     "video_path": "<PATH_TO_YOUR_WEBCAM>"
   }
@@ -445,7 +440,7 @@ Enter a name or use the suggested name for your base and click **Create**.
       },
       "model": "gpio",
       "name": "right",
-      "type": "motor"
+      "api": "rdk:component:motor"
     },
     {
       "attributes": {
@@ -458,7 +453,7 @@ Enter a name or use the suggested name for your base and click **Create**.
       },
       "model": "gpio",
       "name": "left",
-      "type": "motor"
+      "api": "rdk:component:motor"
     },
     {
       "attributes": {
@@ -469,7 +464,7 @@ Enter a name or use the suggested name for your base and click **Create**.
       },
       "model": "wheeled",
       "name": "your-wheeled-base",
-      "type": "base"
+      "api": "rdk:component:base"
     }
   ]
 }

@@ -108,8 +108,7 @@ You can add a reference frame to your component with the following template:
   "components": [
     {
       "name": "cam",
-      "namespace": "rdk",
-      "type": "camera",
+      "api": "rdk:component:camera",
       "model": "webcam",
       "attributes": {
         "video_path": "FDF90FEC-59E5-4FCF-AABD-DA03C4E19BFB"

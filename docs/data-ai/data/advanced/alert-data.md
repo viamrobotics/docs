@@ -153,16 +153,14 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "my_temp_sensor",
       "model": "bme280",
-      "type": "sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:sensor",
       "attributes": {},
       "depends_on": [],
       "service_configs": [

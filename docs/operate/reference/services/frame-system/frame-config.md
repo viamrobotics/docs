@@ -47,8 +47,7 @@ To configure your machine following this example:
       "depends_on": [],
       "name": "myArm",
       "model": "ur5e",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "host": "127.0.0.1"
       },

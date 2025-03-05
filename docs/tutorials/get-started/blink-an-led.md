@@ -158,8 +158,7 @@ Replace the contents of the config field with the following JSON configuration f
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
+      "api": "rdk:component:board",
       "attributes": {},
       "depends_on": []
     }

@@ -30,8 +30,7 @@ Enter a name or use the suggested name for your generic service and click **Crea
 {
   "name": "<your-fake-generic-service-name>",
   "model": "fake",
-  "type": "generic",
-  "namespace": "rdk",
+  "api": "rdk:component:generic",
   "attributes": {}
 }
 ```

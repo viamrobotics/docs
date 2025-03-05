@@ -42,8 +42,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "<your-fake-gantry-name>",
       "model": "multi-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {
           "subaxes_list": [
               "<xaxis-name>",
@@ -66,14 +65,12 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "local",
       "model": "pi",
-      "type": "board",
-      "namespace": "rdk"
+      "api": "rdk:component:board"
     },
     {
       "name": "xmotor",
       "model": "gpiostepper",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "board": "local",
         "pins": {
@@ -88,8 +85,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "ymotor",
       "model": "gpiostepper",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "board": "local",
         "pins": {
@@ -104,8 +100,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "zmotor",
       "model": "gpiostepper",
-      "type": "motor",
-      "namespace": "rdk",
+      "api": "rdk:component:motor",
       "attributes": {
         "board": "local",
         "pins": {
@@ -120,8 +115,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "xaxis",
       "model": "single-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {
         "length_mm": 1000,
         "board": "local",
@@ -139,8 +133,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "yaxis",
       "model": "single-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {
         "length_mm": 1000,
         "board": "local",
@@ -158,8 +151,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "zaxis",
       "model": "single-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {
         "length_mm": 1000,
         "board": "local",
@@ -193,8 +185,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "my_multi-axis_gantry",
       "model": "multi-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {
         "subaxes_list": ["xaxis", "yaxis", "zaxis"],
         "move_simultaneously": "false"

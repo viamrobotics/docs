@@ -26,8 +26,7 @@ Then, configure the encoder:
 {
   "name": "<your-encoder-name>",
   "model": "single",
-  "type": "encoder",
-  "namespace": "rdk",
+  "api": "rdk:component:encoder",
   "attributes": {
     "pin": <int>,
     "dir_flip": <boolean>
@@ -42,8 +41,7 @@ Then, configure the encoder:
 {
   "name": "<your-encoder-name>",
   "model": "single",
-  "type": "encoder",
-  "namespace": "rdk",
+  "api": "rdk:component:encoder",
   "attributes": {
     "pin": 22,
     "dir_flip": false

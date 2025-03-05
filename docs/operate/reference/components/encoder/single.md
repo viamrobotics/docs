@@ -36,8 +36,7 @@ Fill in and edit the attributes as applicable.
 {
   "name": "<your-encoder-name>",
   "model": "single",
-  "type": "encoder",
-  "namespace": "rdk",
+  "api": "rdk:component:encoder",
   "attributes": {
     "board": "<your-board-name>",
     "pins": {

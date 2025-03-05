@@ -63,8 +63,7 @@ Although `"board"` is marked as required in `viam-server`, it is not required fo
     {
       "name": "<your-ultrasonic-sensor-name>",
       "model": "ultrasonic",
-      "type": "sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:sensor",
       "attributes": {
         "trigger_pin": "<pin-number>",
         "echo_interrupt_pin": "<pin-number>"
@@ -84,8 +83,7 @@ Although `"board"` is marked as required in `viam-server`, it is not required fo
     {
       "name": "my-ultrasonic-sensor",
       "model": "ultrasonic",
-      "type": "sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:sensor",
       "attributes": {
         "trigger_pin": "15",
         "echo_interrupt_pin": "18"

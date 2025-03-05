@@ -51,8 +51,7 @@ Edit and fill in the attributes as applicable.
     {
       "name": "my-sensor-controlled-base",
       "model": "sensor-controlled",
-      "type": "base",
-      "namespace": "rdk",
+      "api": "rdk:component:base",
       "attributes": {
         "movement_sensor": [
           "<your-orientation-or-velocity-movement-sensor-1>",

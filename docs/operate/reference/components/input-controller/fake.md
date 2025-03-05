@@ -38,8 +38,7 @@ Edit the attributes as applicable.
     {
       "name": "<your-fake-input-controller>",
       "model": "fake",
-      "type": "input_controller",
-      "namespace": "rdk",
+      "api": "rdk:component:input_controller",
       "attributes": {
         "controls": [
           "AbsoluteX",

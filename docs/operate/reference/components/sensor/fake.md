@@ -32,8 +32,7 @@ Enter a name or use the suggested name for your sensor and click **Create**.
 {
   "name": "<your-sensor-name>",
   "model": "fake",
-  "type": "sensor",
-  "namespace": "rdk",
+  "api": "rdk:component:sensor",
   "attributes": {}
 }
 ```

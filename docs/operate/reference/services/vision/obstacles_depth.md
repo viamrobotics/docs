@@ -71,8 +71,7 @@ Add the following vision service object to the services array in your raw JSON c
 "services": [
   {
     "name": "<segmenter_name>",
-    "type": "vision",
-    "namespace": "rdk",
+    "api": "rdk:service:vision",
     "model": "obstacles_depth"
     "attributes": {
       "min_points_in_plane": <integer>,
@@ -94,8 +93,7 @@ Add the following vision service object to the services array in your raw JSON c
 "services": [
 {
   "name": "rc_segmenter",
-  "type": "vision",
-  "namespace": "rdk",
+  "api": "rdk:service:vision",
   "model": "obstacles_depth",
   "attributes": {
     "min_points_in_plane": 1500,

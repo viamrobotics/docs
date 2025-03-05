@@ -193,7 +193,7 @@ On the `Raw JSON` tab, replace the configuration with the following JSON configu
       "attributes": {},
       "depends_on": [],
       "name": "myBoard",
-      "type": "board"
+      "api": "rdk:component:board"
     }
   ]
 }
@@ -239,8 +239,7 @@ On the `Raw JSON` tab, replace the configuration with the following JSON configu
   "components": [
     {
       "model": "xArm6",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "acceleration_degs_per_sec_per_sec": 0,
         "host": "10.1.1.26",
@@ -304,8 +303,7 @@ On the `Raw JSON` tab, replace the configuration with the following JSON configu
   "components": [
     {
       "model": "xArm6",
-      "type": "arm",
-      "namespace": "rdk",
+      "api": "rdk:component:arm",
       "attributes": {
         "acceleration_degs_per_sec_per_sec": 0,
         "host": "10.1.1.26",
@@ -359,8 +357,7 @@ On the `Raw JSON` tab, replace the configuration with the following JSON configu
       },
       "name": "gripper",
       "model": "fake",
-      "type": "gripper",
-      "namespace": "rdk",
+      "api": "rdk:component:gripper",
       "attributes": {},
       "depends_on": []
     }

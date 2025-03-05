@@ -41,8 +41,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
     {
       "name": "<your-single-axis-gantry-name>",
       "model": "single-axis",
-      "type": "gantry",
-      "namespace": "rdk",
+      "api": "rdk:component:gantry",
       "attributes": {
         "motor": "<your-motor-name>",
         "length_mm": <int>,

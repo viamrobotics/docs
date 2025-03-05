@@ -48,8 +48,7 @@ For example:
     {
       "name": "<your-sensor-name>",
       "model": "merged",
-      "type": "movement_sensor",
-      "namespace": "rdk",
+      "api": "rdk:component:movement_sensor",
       "attributes": {
         "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
         "orientation": ["<your-imu-sensor-name-1>"],
@@ -72,8 +71,7 @@ For example:
 {
   "name": "<your-sensor-name>",
   "model": "merged",
-  "type": "movement_sensor",
-  "namespace": "rdk",
+  "api": "rdk:component:movement_sensor",
   "attributes": {
     "position": ["gps1"],
     "orientation": ["imu-wit"],
