@@ -44,13 +44,18 @@ You can even configure other fragments inside a fragment.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**3. Switch to JSON and copy the raw JSON configuration object**.
+**3. Switch to JSON**.
 
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**4. Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and create a fragment.**
+
+**4. Copy the raw JSON configuration object**.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**5. Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and create a fragment.**
 
 Paste the copied JSON configuration into it.
 
@@ -67,7 +72,7 @@ If you want to edit the fragment later, do it from this screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**5. Delete the original configuration (optional).**
+**6. Delete the original configuration (optional).**
 
 Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
 By using the new fragment, this and every other machine you add the fragment to will use the exact same configuration.
@@ -377,12 +382,6 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{% /tab %}}
 {{< /tabs >}}
-
-{{% alert title="Support Notice" color="note" %}}
-
-Fragment overwrites are currently _not_ supported for modifying [triggers](/manage/troubleshoot/alert/).
-
-{{% /alert %}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
