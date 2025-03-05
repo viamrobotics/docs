@@ -227,8 +227,8 @@ This example JSON configuration:
       },
       {
         "name": "data_manager-1",
-        "namespace": "rdk",
-        "type": "data_manager",
+        "api": "rdk:service:data_manager",
+        "model": "rdk:builtin:builtin",
         "attributes": {
           "capture_dir": "",
           "capture_disabled": false,

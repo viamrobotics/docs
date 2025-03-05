@@ -54,8 +54,8 @@ To configure the data manager in JSON, see the following example configurations:
   "services": [
     {
       "name": "my-data-manager",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "capture_dir": "",
         "tags": [],
@@ -119,7 +119,8 @@ This example configuration captures data from the `ReadImage` method of a camera
     ,
     {
       "name": "data_manager",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "sync_interval_mins": 5,
         "capture_dir": "",
@@ -189,8 +190,8 @@ This example configuration captures data from the `GetReadings` method of a temp
         "sync_interval_mins": 3
       },
       "name": "dm",
-      "namespace": "rdk",
-      "type": "data_manager"
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin"
     }
   ],
   "components": [
@@ -288,8 +289,8 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
     },
     {
       "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "sync_interval_mins": 0.1,
         "capture_dir": "",
@@ -398,7 +399,8 @@ The following example of a configuration with a remote part captures data from t
   "services": [
     {
       "name": "data_manager",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
@@ -566,8 +568,8 @@ Here is a sample configuration that will capture fake sensor readings both to th
   "services": [
     {
       "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "mongo_capture_config": {
           "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
