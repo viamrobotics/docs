@@ -37,7 +37,7 @@ Signaling controls the flow of electricity to these pins to change their state b
 The board component allows you to use the pins on your board.
 If there is no board model for your board:
 
-- you can still run `viam-server` if your board [supports it](/operate/get-started/setup/#supported-systems)
+- you can still run `viam-server` if your board [supports it](/operate/get-started/setup/)
 - you can still access USB ports
 
 {{< /alert >}}
