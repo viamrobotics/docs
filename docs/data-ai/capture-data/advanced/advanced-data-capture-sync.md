@@ -299,7 +299,7 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
     },
     {
       "name": "mlmodel-1",
-      "api": "rdk:service:vision",
+      "api": "rdk:service:mlmodel",
       "model": "viam:mlmodel-tflite:tflite_cpu",
       "attributes": {}
     }
