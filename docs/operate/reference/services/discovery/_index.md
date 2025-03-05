@@ -1,7 +1,7 @@
 ---
 title: "Discovery Service"
 linkTitle: "Discovery"
-description: "The discovery service is used to discover resources on a robot."
+description: "The discovery service is used to discover resources on a machine."
 type: docs
 weight: 50
 no_list: true
@@ -15,7 +15,7 @@ date: "2025-03-03"
 modulescript: true
 ---
 
-The discovery service is used to discover resources on a robot.
+The discovery service is used to discover resources on a machine.
 If you are [creating a modular resource](/operate/get-started/other-hardware/) that depends on other resources that are discoverable in a systematic way, you can create a discovery service as part of your module to discover those resources.
 
 ## Example usage

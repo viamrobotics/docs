@@ -50,14 +50,14 @@ Two new component APIs, the [button API](/dev/reference/apis/components/button/)
 {{% changelog color="added" title="Discovery service API" date="2025-01-27" %}}
 
 The [discovery service API](/dev/reference/apis/services/discovery/) has been added.
-You can now write modules that discover resources on a robot.
+You can now write modules that discover resources on a machine.
 
 {{% /changelog %}}
 
 {{% changelog color="removed" title="DiscoverComponents" date="2025-01-27" %}}
 
 The `DiscoverComponents` method has been removed from the machine management API.
-Instead, use a [discovery service](/operate/reference/services/discovery/) to discover resources on a robot.
+Instead, use a [discovery service](/operate/reference/services/discovery/) to discover resources on a machine.
 
 {{% /changelog %}}
 
