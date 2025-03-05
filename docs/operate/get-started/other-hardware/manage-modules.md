@@ -416,6 +416,20 @@ To delete just one version of a module:
 Versions are immutable, meaning that you cannot upload a new file with the same version number as the deleted one.
 To upload another version, you must increment the version number to a later version number.
 
+## Transfer ownership of a module
+
+To transfer ownership of a module from one organization to another:
+
+1. Navigate to the module's page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry).
+1. Make sure the visibility of the module is set to **Public**.
+1. Click the **...** menu in the upper-right corner of the page, and click **Transfer ownership**.
+1. Select the new organization from the dropdown menu.
+1. Click **Transfer module**.
+
+## Rename a module
+
+If you need to change the name of a module, please reach out to the Viam team at [support@viam.com](mailto:support@viam.com).
+
 ## Next steps
 
 {{< cards >}}
