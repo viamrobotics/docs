@@ -199,8 +199,7 @@ The following file contains some example {{< glossary_tooltip term_id="component
     {
       "name": "dm",
       "api": "rdk:service:data_manager",
-      "model": "rdk:builtin:builtin",
-      "model": "builtin"
+      "model": "rdk:builtin:builtin"
     }
   ]
 }

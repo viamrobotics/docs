@@ -140,8 +140,7 @@ This example configuration captures data from the `ReadImage` method of a camera
     {
       "service_configs": [
         {
-          "api": "rdk:service:data_manager",
-          "model": "rdk:builtin:builtin",
+          "type": "data_manager",
           "attributes": {
             "capture_methods": [
               {
