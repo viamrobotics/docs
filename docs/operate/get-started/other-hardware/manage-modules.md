@@ -416,14 +416,39 @@ To delete just one version of a module:
 Versions are immutable, meaning that you cannot upload a new file with the same version number as the deleted one.
 To upload another version, you must increment the version number to a later version number.
 
-## Next steps
+## Transfer ownership of a module
 
-{{< cards >}}
-{{% manualcard link="/operate/reference/module-configuration/#module-versioning" %}}
+To transfer ownership of a module from one organization to another:
 
-### Pin a version
+1. You must be an [owner](/manage/manage/rbac/) in both the current and new organizations.
 
-Configure version update management for a registry module on your machine.
+1. Navigate to the module's page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry).
 
-{{% /manualcard %}}
-{{< /cards >}}
+1. Make sure the visibility of the module is set to **Public**.
+
+1. Click the **...** menu in the upper-right corner of the page, and click **Transfer ownership**.
+
+1. Select the new organization from the dropdown menu, then click **Transfer module**.
+
+1. (Recommended) Transfer the GitHub repository containing the module code to the new owner.
+   Be sure to remove the existing secrets from the repository’s settings before transferring.
+   If the repository is using Viam’s cloud build, the secrets contain an organization API key that will be exposed to the new owner after the repository transfer.
+
+1. Update the `meta.json` file to reflect the new organization:
+
+   - Change the first part of the `module_id` field to the new organization's [namespace](/operate/reference/naming-modules/#create-a-namespace-for-your-organization).
+   - For each model, change the first part of the `model` field to the new organization's namespace.
+   - Update the `url` field to point to the new code repository if it has moved.
+
+1. Update the module code:
+
+   - Throughout your module implementation code, change the model names in your component or service classes to match the changes you made to the `meta.json` file.
+
+1. Run `viam module update` to push the changes to the registry.
+
+1. Publish a new version of the module to the registry by following either set of update steps on this page.
+   This ensures that the model names in the code match the registered model names in the registry.
+
+## Rename a module
+
+If you need to change the name of a module, please reach out to the Viam team at [support@viam.com](mailto:support@viam.com).
