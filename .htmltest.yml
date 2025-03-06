@@ -43,6 +43,7 @@ IgnoreURLs:
   - "unsplash.com"
   - "docs.github.com"
   - "bugs.launchpad.net"
+  - "grpc.io"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
