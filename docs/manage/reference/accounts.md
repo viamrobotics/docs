@@ -32,7 +32,7 @@ Accounts created from separate authentication sources are unique to each other.
 
 ## Sign out
 
-To log out or sign out of the [Viam app](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
+To log out of the [Viam app](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
 Click **Sign out** to sign out of accessing all organizations, locations, and machines your credentials manage.
 
 ## Delete account
