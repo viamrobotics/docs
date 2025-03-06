@@ -336,14 +336,14 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `create` | Create a new dataset | - |
-| `rename` | Rename an existing dataset | - |
-| `list` | List dataset information from specified IDs or for an org ID | - |
-| `delete` | Delete a dataset | - |
-| `data add` | Add a new image to an existing dataset by its file id, add a group of images by specifying a [filter](#using-the-filter-argument) | `ids`, `filter` |
-| `data remove` | Remove a new image to an existing dataset by its file id, or remove a group of images by specifying a [filter](#using-the-filter-argument) | `ids`, `filter` |
-| `export` | Download all the data from a dataset | - |
-| `--help` | Return help | - |
+| `create` | Create a new dataset. | - |
+| `rename` | Rename an existing dataset. | - |
+| `list` | List dataset information from specified IDs or for an org ID. | - |
+| `delete` | Delete a dataset. | - |
+| `data add` | Add a new image to an existing dataset by its file id, add a group of images by specifying a [filter](#using-the-filter-argument). | `ids`, `filter` |
+| `data remove` | Remove a new image to an existing dataset by its file id, or remove a group of images by specifying a [filter](#using-the-filter-argument). | `ids`, `filter` |
+| `export` | Download all the data from a dataset. | - |
+| `--help` | Return help. | - |
 
 ##### Positional arguments
 
@@ -352,7 +352,7 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 | -------- | ----------- |
 | `filter` | `add` or `remove` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
 | `ids` | `add` or `remove` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
-| `--help` | Return help |
+| `--help` | Return help. |
 
 ##### Named arguments
 
@@ -361,16 +361,16 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 | -------- | ----------- | ------------------- | --------- |
 | `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
 | `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
-| `--destination` | Output directory for downloaded data | `export` | **Required** |
-| `--end` | ISO-8601 timestamp indicating the end of the interval | `data add`, `data remove` | Optional |
-| `--file-ids` | The file-ids of the files to perform an operation on | `data add`, `data remove`, `export` | **Required** |
-| `--include-jsonl` | Set to `true` to include JSON Lines files for local testing |`export`| Optional |
-| `--location-id` | The location ID for the location in which to perform an operation (only accepts one location id) | `data add`, `data remove` | **Required** |
-| `--name` | The name of the dataset to create or rename | `create`, `rename` | **Required** |
-| `--org-id` | Organization ID of the organization the dataset belongs to | `create`, `data add`, `data remove`, `list` | **Required** |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 100 | `export` | Optional |
-| `--start` | ISO-8601 timestamp indicating the start of the interval | `data add`, `data remove` | Optional |
-| `--tags` | Filter by specified tag (accepts comma-separated list) | `data add`, `data remove` | Optional |
+| `--destination` | Output directory for downloaded data. | `export` | **Required** |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. | `data add`, `data remove` | Optional |
+| `--file-ids` | The file-ids of the files to perform an operation on. | `data add`, `data remove`, `export` | **Required** |
+| `--include-jsonl` | Set to `true` to include JSON Lines files for local testing. |`export`| Optional |
+| `--location-id` | The location ID for the location in which to perform an operation (only accepts one location id). | `data add`, `data remove` | **Required** |
+| `--name` | The name of the dataset to create or rename. | `create`, `rename` | **Required** |
+| `--org-id` | Organization ID of the organization the dataset belongs to. | `create`, `data add`, `data remove`, `list` | **Required** |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 100. | `export` | Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval. | `data add`, `data remove` | Optional |
+| `--tags` | Filter by specified tag (accepts comma-separated list). | `data add`, `data remove` | Optional |
 
 ##### Using the `ids` argument
 
@@ -533,7 +533,7 @@ done
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
-| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged. (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
+| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged (`tag ids`). | `database configure`, `database hostname`, `tag ids` | **Required** |
 | `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export binary`, `delete`, `dataset export` | Optional |
 | `--part-id` | Filter by specified part ID. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional, **Required** for `export tabular` |
@@ -562,26 +562,26 @@ viam locations api-key create --location-id=<location-id>
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : (_optional_) return results for specified organization only |
-| `api-key` | Work with an API key for your location | `create` |
-| `--help` | Return help | - |
+| `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : (_optional_) return results for specified organization only. |
+| `api-key` | Work with an API key for your location. | `create` |
+| `--help` | Return help. | - |
 
 ##### Positional arguments: `api-key`
 
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `create` | Create an API key for a specific location |
-| `--help` | Return help |
+| `create` | Create an API key for a specific location. |
+| `--help` | Return help. |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--location-id` | The location to create an API key for | `api-key` | **Required** |
-| `--name` | The name of the API key | `api-key` | Optional |
-| `--org-id` | The organization ID to attach the key to | `api-key` | Optional |
+| `--location-id` | The location to create an API key for. | `api-key` | **Required** |
+| `--name` | The name of the API key. | `api-key` | Optional |
+| `--org-id` | The organization ID to attach the key to. | `api-key` | Optional |
 
 ### `login`
 
@@ -639,6 +639,7 @@ viam machines list
 viam machines status --org=<org id> --location=<location id> --machine=<machine id>
 viam machines logs --org=<org id> --location=<location id> --machine=<machine id> [...named args]
 viam machines api-key create --machine=<machine id> [...named args]
+viam machines part list --machine=<machine>
 viam machines part logs --machine=<machine id> --part=<part id> [...named args]
 viam machines part status --org=<org id> --location=<location id> --machine=<machine id>
 viam machines part run --org=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
@@ -661,6 +662,9 @@ viam machines api-key create --machine=123 --name=MyKey
 
 # stream logs from a machine
 viam machines logs --machine=123
+
+# list machine parts
+viam machines part list --machine=123
 
 # stream logs from a machine part
 viam machines part logs --part=myrover-main --tail=true
@@ -701,33 +705,34 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `list` | List all machines that the authenticated session has access to, filtered by organization and location. | - |
-| `api-key` | Work with an API key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
-| `status` | Retrieve machine status for a specified machine | - |
-| `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
-| `--help` | Return help | - |
+| `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `status` | Retrieve machine status for a specified machine. | - |
+| `logs` | Retrieve logs for a specified machine. | - |
+| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
+| `--help` | Return help. | - |
 
 ##### Positional arguments: `api-key`
 
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `create` | Create an API key for a specific machine |
-| `--help` | Return help |
+| `create` | Create an API key for a specific machine. |
+| `--help` | Return help. |
 
 ##### Positional arguments: `part`
 
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `status` | Retrieve machine status for a specified machine part |
+| `list` | List machine parts. |
+| `status` | Retrieve machine status for a specified machine part. |
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs` | Get logs for the specified machine or machine part |
+| `logs` | Get logs for the specified machine or machine part. |
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
 | `cp` | Copy files to and from a machine part. |
 | `tunnel` | Tunnel connections to a specified port on a machine part. |
-| `--help` | Return help |
+| `--help` | Return help. |
 
 ##### Named arguments
 
@@ -863,7 +868,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | -------------- | ----------- | -------------------- |
 | `generate` | Auto-generate stub files for a new module by following prompts. | - |
 | `create` | Generate new metadata for a custom module on your local filesystem. | - |
-| `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
+| `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). The `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
@@ -880,22 +885,22 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | -------- | ----------- | ------------------- | --------- |
 | `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | `update-models` | **Required** |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
-| `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | Optional |
+| `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | `upload` | Optional |
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start`. | `build list`, `build logs`, `reload` | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
-| `--module` | The path to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
+| `--module` | The path to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) for the custom module, if not in the current directory. | `update`, `upload`, `build` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload` | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
 | `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
-| `--name` | The name of the custom module to be created | `create` | **Required** |
-| `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
-| `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
-| `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | **Required** |
+| `--name` | The name of the custom module to be created. | `create` | **Required** |
+| `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
+| `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
+| `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs` | **Required** |
 | `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the raspberry pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
-| `--version` | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument) | `upload` | **Required** |
-| `--wait` | Wait for the build to finish before outputting any logs | `build logs` | Optional |
+| `--version` | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument). | `upload` | **Required** |
+| `--wait` | Wait for the build to finish before outputting any logs. | `build logs` | Optional |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
 
@@ -1188,7 +1193,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `billing-service` | Enable, update, or disable the billing service for an organization. | `enable`, `update`, `disable` |
 | `auth-service` | Enable or disable auth-service for OAuth applications. Disabling the auth-service does not delete your OAuth token, it will just take off the custom branding. | `enable`, `disable` |
 | `auth-service oauth-app` | List, create, update, read, or delete OAuth applications. | `create`, `update`, `list`, `read`, `delete` |
-| `--help` | Return help | - |
+| `--help` | Return help. | - |
 
 ##### Named arguments
 
@@ -1196,11 +1201,11 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`, `billing-service get-config`, `billing-service enable`, `billing-service update`, `billing-service disable`, `auth-service enable`, `auth-service disable`, `auth-service oauth-app create`, `auth-service oauth-app update` `auth-service oauth-app list`, `auth-service oauth-app read`, `auth-service oauth-app delete`. | **Required** |
-| `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key` | Optional |
+| `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time. |`api-key` | Optional |
 | `--support-email` | The support email to set for the organization. | `support-email get`, `support-email set` | **Required** |
 | `--logo-path` | The support email to set for the organization. | `logo set` | **Required** |
 | `--address` | The stringified billing address that follows the pattern: line1, line2 (optional), city, state, zipcode. | `billing-service enable`, `billing-service update` | **Required** |
-| `--client-id` | The client ID of the OAuth application. | `auth-service oauth-app read`, `auth-service oauth-app delete`, `auth-service oauth-app update` | **Required |
+| `--client-id` | The client ID of the OAuth application. | `auth-service oauth-app read`, `auth-service oauth-app delete`, `auth-service oauth-app update` | **Required** |
 | `--client-authentication` | The client authentication policy for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_pkce`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 | `--client-name` | The name for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update`| **Required** |
 | `--enabled-grants` | Comma-separated enabled grants for the OAuth application. Options: `unspecified`, `refresh_token`, `password`, `implicit`, `device_code`, `authorization_code`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
@@ -1233,16 +1238,16 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `upload` | Upload a package to the Viam Cloud | - |
-| `export` | Download a package from the Viam Cloud | - |
+| `upload` | Upload a package to the Viam Cloud. | - |
+| `export` | Download a package from the Viam Cloud. | - |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | -------- |
-| `--org-id` | The organization ID of the package | `upload`, `export` | **Required** |
-| `--name` | The name of the package | `upload`, `export` | **Required** |
+| `--org-id` | The organization ID of the package. | `upload`, `export` | **Required** |
+| `--name` | The name of the package. | `upload`, `export` | **Required** |
 | `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
 | `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
@@ -1293,7 +1298,7 @@ You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment v
 | `update` | Update an existing profile for authentication, or add it if it doesn't exist. | - |
 | `list` | List all existing profiles by name. | - |
 | `remove` | Remove a profile. | - |
-| `--help` | Return help | - |
+| `--help` | Return help. | - |
 
 ##### Named arguments
 
