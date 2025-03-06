@@ -37,9 +37,9 @@ Click **Sign out** to sign out of accessing all organizations, locations, and ma
 
 ## Delete account
 
-To delete your account, you can contact Viam Support at [contact@viam.com](mailto:contact.viam.com).
+To delete your account, you can contact Viam Support at [contact@viam.com](mailto:contact@viam.com).
 
 Some important things to note:
 
 - Account termination may result in the destruction of any associated content
-- If you delete your robot, organization, or account by mistake, contact [contact@viam.com](mailto:contact.viam.com) immediately - they will try to help but cannot guarantee recovery or restoration.
+- If you delete your robot, organization, or account by mistake, contact [contact@viam.com](mailto:contact@viam.com) immediately - they will try to help but cannot guarantee recovery or restoration.
