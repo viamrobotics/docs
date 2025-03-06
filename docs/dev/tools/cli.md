@@ -26,7 +26,7 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part run --machine 82c608a-1be9-46a5 --org-id 123 \
+viam machines part run --machine 82c608a-1be9-46a5 --organization 123 \
 --location myLoc --part "mymachine-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
@@ -636,15 +636,15 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
-viam machines status --org-id=<org id> --location=<location id> --machine=<machine id>
-viam machines logs --org-id=<org id> --location=<location id> --machine=<machine id> [...named args]
+viam machines status --organization=<org id> --location=<location id> --machine=<machine id>
+viam machines logs --organization=<org id> --location=<location id> --machine=<machine id> [...named args]
 viam machines api-key create --machine=<machine id> [...named args]
 viam machines part logs --machine=<machine id> --part=<part id> [...named args]
-viam machines part status --org-id=<org id> --location=<location id> --machine=<machine id>
-viam machines part run --org-id=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
-viam machines part shell --org-id=<org id> --location=<location id> --machine=<machine id> --part=<part id>
+viam machines part status --organization=<org id> --location=<location id> --machine=<machine id>
+viam machines part run --organization=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
+viam machines part shell --organization=<org id> --location=<location id> --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --org-id=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
+viam machines part cp --organization=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
 ```
 
 Examples:
