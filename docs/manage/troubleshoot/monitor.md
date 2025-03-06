@@ -15,7 +15,7 @@ You can view all machines in an organization from a dashboard and access each ma
 
 You can monitor your machines from your **FLEET**'s [**ALL MACHINES DASHBOARD** subtab](https://app.viam.com/fleet/machines).
 
-{{< imgproc src="/fleet/dashboard.png" alt="Fleet dashboard showing the machine parts, location, status, architecture and more" resize="1200x" class="imgzoom" >}}
+{{< imgproc src="/fleet/dashboard.png" alt="Fleet dashboard showing the machine parts, location, status, architecture and more" style="width:800px" resize="1200x" class="imgzoom shadow" >}}
 
 You can also monitor the amount of binary and tabular data your fleet has synced in the last 48 hours from the **FLEET**'s [**DASHBOARD** subtab](https://app.viam.com/fleet/dashboard).
 
@@ -30,7 +30,7 @@ At the top of the machine page, there is an indicator of the machine's status.
 Click on the **status** dropdown to open a menu with information about each {{< glossary_tooltip term_id="part" text="part" >}} of your machine.
 Once you connect to the `viam-server` instance on a part, this display includes its OS, Host, `viam-server` version, IP addresses, and what time it was last online or remote address (if live):
 
-![The machine page with part menu expanded](/fleet/app-usage/machine-page.png)
+{{<imgproc src="/fleet/app-usage/machine-page.png" resize="600x" declaredimensions=true  class="shadow" alt="The machine page with part menu expanded">}}
 
 {{% /tablestep %}}
 {{% tablestep link="/manage/troubleshoot/teleoperate/default-interface/" %}}
@@ -38,7 +38,7 @@ Once you connect to the `viam-server` instance on a part, this display includes 
 
 On a machine's [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app), you can remotely operate the machine and test its resources.
 
-{{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
+{{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px" class="shadow">}}
 
 {{% /tablestep %}}
 {{< /table >}}

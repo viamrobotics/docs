@@ -60,7 +60,7 @@ For example:
 ]
 ```
 
-For more information on setting log levels see, [Logging](/manage/troubleshoot/troubleshoot/#check-logs).
+For more information on setting log levels see, [Logging](/operate/reference/viam-server/#logging).
 
 You may also find that not all logs you are expecting are displayed.
 By default, `viam-server` deduplicates log messages that are deemed noisy.
