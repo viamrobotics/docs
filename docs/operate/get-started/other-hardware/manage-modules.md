@@ -56,7 +56,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    The `build-action` GitHub action provides a cross-platform build setup for multiple platforms: x86, ARM Linux, and macOS.
 
-   Add this to your GitHub workflow:
+   In your repository, create a workflow file called <FILE>build.yml</FILE> in the <FILE>.github/workflows<FILE> directory:
 
    ```yaml
    on:
