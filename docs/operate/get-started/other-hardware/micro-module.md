@@ -227,6 +227,11 @@ For further details on Micro-RDK development, including credentials management a
 
 ## Over-the-air updates
 
+{{% hiddencontent %}}
+Over-the-air updates are available for viam-server and viam-micro-server. For information about `viam-server` see [Deploy software packages to machines](/manage/software/deploy-software/).
+The following information covers `viam-micro-server`.
+{{% /hiddencontent %}}
+
 To remotely update the firmware on your microcontroller without a physical connection to the device, add the OTA (over-the-air) service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
 Use **JSON** mode to add the service as in the template below, then configure the URL from which to fetch new firmware, and the version name.
 
