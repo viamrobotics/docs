@@ -17,7 +17,6 @@ aliases:
   - /installation/viam-micro-server-setup/
   - /installation/viam-server-setup/
   - /how-tos/configure/
-  - /cloud/account/
   - /installation/prepare/
   - /installation/macos-install/
   - /installation/linux-install/
