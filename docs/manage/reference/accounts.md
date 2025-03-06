@@ -13,7 +13,7 @@ aliases:
 
 The [Viam app](https://app.viam.com/) is a web UI for managing and building machines.
 
-## Create account and log In
+## Create account and log in
 
 To get started on the Viam app, you must log in as an authorized user.
 Viam supports sign up using Google, GitHub, Apple, and email.
