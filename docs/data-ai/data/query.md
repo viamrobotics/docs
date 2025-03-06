@@ -31,7 +31,8 @@ You can then run queries against that data to search for outliers or edge cases,
 
 ### Prerequisites
 
-You must have captured sensor data. See [capture sensor data](/data-ai/capture-data/capture-sync/) for more information.
+You must have captured sensor data.
+See [capture sensor data](/data-ai/capture-data/capture-sync/) for more information.
 
 ### Query from the app
 
