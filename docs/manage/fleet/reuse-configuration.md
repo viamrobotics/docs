@@ -403,6 +403,7 @@ Now, the fragment will be identical to the upstream fragment.
 ## Update a fragment
 
 You and your collaborators can edit a fragment at any time.
+The Viam app automatically creates new versions of your fragment as you make changes.
 Fragments can only be deleted if no machines are using them.
 
 If you've already deployed the fragment to one or more machines, the Viam app updates the configuration on each deployed machine that uses that fragment.
@@ -412,6 +413,26 @@ You can see the number of machines using your fragment from the [fragments page]
 We recommend testing updates to fragments on a small number of machines before deploying them to a larger fleet.
 For recommendations on updating software on deployed machines, see [Update software](/manage/software/update-software/).
 {{< /alert >}}
+
+### Create fragment tags
+
+You can create tags to differentiate different between different versions of your fragment.
+For example, you may want to create a tag for `stable` and `beta`.
+
+1. Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and click on a fragment.
+1. Click on **Versions** in the menu bar.
+1. Click **Add Tag**.
+1. Select a version to pin the tag to.
+   You can change this later.
+1. Type in a name for your tag.
+
+### Pin to a version or tag for a fragment
+
+When you add a fragment to a machine you can choose to pin the version to use:
+
+- the **latest version**: Always update to the latest version of this fragment as soon as a new version becomes available. This is the default.
+- a **specific version**: Do not update to any other version.
+- a **tag**: Always use the version of this fragment that with the selected tag. For example `stable` or `testing`.
 
 ## Example fragments
 
