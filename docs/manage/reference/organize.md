@@ -7,8 +7,6 @@ type: "docs"
 no_list: true
 description: "Organize and manage access to your fleet by grouping machines into organizations and locations."
 aliases:
-  - /fleet/account/
-  - /cloud/account/
   - /how-tos/manage-fleet/
   - /use-cases/manage-fleet/
   - /cloud/machines/
