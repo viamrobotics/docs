@@ -14,36 +14,33 @@ If you have already [deployed software](/manage/software/deploy-software/), you 
 The JSON object for the deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glossary_tooltip term_id="package" text="package" >}} has a `version` field.
 Unless the `version` field is set to a specific version, some or all updates for that module or package can happen automatically.
 
-To perform other updates or changes to the configuration of all machines using the fragment:
-
-1. [Test your updates](#test-updates)
-2. [Update the software version and roll out the changes](#update-the-software-version)
-3. [Check the status of your machines](#check-machine-status)
-
-We strongly recommend that you test updates on a subset of machines before deploying it to all machines.
-
 {{% alert title="Updates for microcontrollers" color="note" %}}
 To update the firmware on your microcontroller, see [Over-the-air updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
 {{% /alert %}}
 
-## Test updates
+## Test and update software
 
-You can either create a second fragment that you add to a subset of machines, or manually overwrite the version of the module or package for a subset of machines.
+You can either use fragment tags for testing or manually overwrite the version of the module or package for a subset of machines.
+We strongly recommend that you test updates on a subset of machines before deploying it to all machines.
 
 {{< tabs >}}
-{{< tab name="A second fragment (recommended)" >}}
+{{< tab name="Version tags (recommended)" >}}
 
 {{< table >}}
 {{% tablestep %}}
-
-**1. Create a fragment for development** by copying the JSON object from your primary fragment and pasting it into a new fragment.
-We recommend you call your second fragment something easily identifiable as your testing environment, such as `FragmentName-DEV`.
-
-Paste the JSON object from your primary fragment.
-
+**1. Navigate to your fragment's page** on On your fragment's page, from the [FRAGMENTS tab](https://app.viam.com/fragments).
+{{% /tablestep %}}
+{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" %}}
+**2. Create a `stable` fragment tag**.
+On your fragment's page, click on **Versions** in the menu bar and add a tag called `stable`.
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Edit the fragment** and change the version of your module or package in the development fragment.
+**3. Pin all machine configurations** to the `stable` fragment tag.
+For each machine that uses the fragment, update its configuration.
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. Edit the fragment** and change the version of your module or package in the development fragment.
+This will create a new version of the fragment.
 
 For example:
 
@@ -76,17 +73,21 @@ For example:
 ```
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Add the development fragment to a subset of machines**
-
-If you had configured them already with the primary fragment, remove that fragment first.
-
+{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" %}}
+**5. Create a development tag**. On your fragment's page, click on **Versions** in the menu bar and add a tag called `development`.
+Select the most recent version that you just created for the tag.
 {{% /tablestep %}}
 {{% tablestep %}}
-**4. Test the new version of your module or package**.
-
-When you are satisfied that your module or package works as expected, continue to update your primary fragment.
-
+**6. Add the development fragment to a subset of machines** by pinning the fragment configuration to the `development` fragment tag.
+For each machine that you want to test the changes on, update the configuration.
+{{% /tablestep %}}
+{{% tablestep %}}
+**7. Test the new version of your module or package**.
+{{% /tablestep %}}
+{{% tablestep %}}
+**8. Update the `stable` fragment tag**.
+When you are satisfied that your module or package works as expected, set the **Version** for the `stable` fragment tag. to the new version.
+This will update all machines that use the `stable` fragment tag.
 {{% /tablestep %}}
 {{< /table >}}
 
@@ -108,22 +109,15 @@ Click **Save** in the upper right corner of the screen.
 {{% /tablestep %}}
 {{% tablestep %}}
 **2. Test the new version of your module or package.**
-
-When you are satisfied that your module or package works as expected, continue to [update your primary fragment](#update-the-software-version).
-
 {{% /tablestep %}}
-{{< /table >}}
+{{% tablestep %}}
+**3. Update the fragment.**
 
-{{% /tab %}}
-{{< /tabs >}}
-
-## Update the software version
-
-Once you have confirmed that the new version of your module or package works, go to your primary fragment and edit it to use the new version.
+When you are satisfied that your module or package works as expected, update your fragment.
 
 For example:
 
-```json {class="line-numbers linkable-line-numbers" data-line="22"}
+````json {class="line-numbers linkable-line-numbers" data-line="22"}
 {
   "components": [
     {
@@ -149,11 +143,14 @@ For example:
     }
   ]
 }
-```
-
-Don't forget to **Save**.
 
 All machines configured with your fragment will update when they next check for configuration updates.
+
+{{% /tablestep %}}
+{{< /table >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{< alert title="Manage when machines update their config" color="tip" >}}
 By default, when a fragment is updated, machines using it will automatically update when the configuration is synced next.
@@ -237,4 +234,4 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
-```
+````
