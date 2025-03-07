@@ -84,7 +84,9 @@ If you need to copy files from your machine, use the [`viam machine part cp`](/d
 
 ## Restart your machine
 
-If possible, you can try restarting `viam-server` by navigating to the app's **CONFIGURE** tab in **Builder** mode, clicking the **...** menu on the right side of the machine part's card, and selecting **Restart part**.
+1. Navigate to the app's **CONFIGURE** tab in **Builder** mode.
+1. Click the **...** menu on the right side of the machine part's card, and select **Restart part**.
+
 It takes a few minutes for the server to shut down and restart.
 
 ## Revert to earlier configuration
