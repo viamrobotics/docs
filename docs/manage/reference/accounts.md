@@ -13,7 +13,7 @@ aliases:
 
 The [Viam app](https://app.viam.com/) is a web UI for managing and building machines.
 To use the app, you need a free account.
-Accounts can be [assigned access](/manage/manage/access/) to different groups of machines.
+Accounts can have [different permissions](/manage/manage/rbac/) to different groups of machines.
 
 ## Create account and log in
 
