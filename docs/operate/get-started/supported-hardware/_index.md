@@ -76,13 +76,13 @@ Modules in the list above are officially supported and maintained by Viam only i
 
 ### Virtual hardware components
 
-In addition to physical hardware, there are "virtual" hardware modules that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
+In addition to physical hardware, there are "virtual" hardware modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
 
 - [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
 - [A "movement sensor" that calculates the estimated the position of a wheeled rover based on the output of other components](/operate/reference/components/movement-sensor/wheeled-odometry/)
 - [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
 
-These modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components.
+These modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components, using the **+** button and selecting **Component** from the dropdown menu.
 
 ## Next steps
 
