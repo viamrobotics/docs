@@ -690,7 +690,7 @@ viam module build local
 ```
 
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
-In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+In upper right corner of the module's card, click the **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
 
@@ -777,7 +777,7 @@ viam module build local
 ```
 
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
-In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
 
@@ -791,7 +791,7 @@ viam module build local
 ```
 
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
-In upper right corner of the module's card, click the three dot (**...**) icon, then click **Restart**.
+In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
 

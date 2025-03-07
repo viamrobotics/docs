@@ -107,6 +107,8 @@ maintenance : {
 Log messages appear under the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for a machine.
 
 The default log level for `viam-server` and any running resources is `"Info"`.
+Logs are stored for 30 days.
+
 If you need more logs for individual resource, click **Enable debug logs** in the **...** menu on the resource.
 To set other log levels for individual resources, add the `log_configuration` option to the resource's JSON configuration:
 
@@ -211,6 +213,16 @@ To disable log deduplication, set `disable_log_deduplication` in your machine's 
 ```
 
 {{% /expand%}}
+
+#### Delete machine logs
+
+You cannot delete machine logs.
+If your machine has generated a large amount of logs and you are concerned about the cost, you can:
+
+1. Copy the machine's configuration to a new machine.
+2. Delete the old machine.
+
+If you delete a machine you will not be charged for the remainder of the 30 days until logs from that machine are deleted.
 
 #### Debugging
 
