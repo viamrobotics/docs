@@ -81,18 +81,15 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 
 ## How do I get started?
 
-1. [Set up a computer or SBC](/operate/get-started/setup/) or [set up an ESP32](/operate/get-started/setup-micro/) and connect it to the Viam app.
+1. To start, [set up a computer or SBC](/operate/get-started/setup/) or [set up an ESP32](/operate/get-started/setup-micro/) and connect it to the Viam app.
 
-1. Next, [configure supported hardware](/operate/get-started/supported-hardware/) and software on your machine in the Viam app.
-
-1. To [integrate other hardware](/operate/get-started/other-hardware/) or software services that aren't already supported, you can write your own modules.
-
-1. [Test your machine](/operate/get-started/test/) by using the **TEST** panel of each configured component's config card to, for example, view your camera's stream or turn your motor.
+1. Next, you'll configure hardware and software on your machine in the Viam app.
+   You can test it with the UI in the app.
 
 1. From there, you have many options including:
 
-- [Capture data from your machines](/data-ai/capture-data/capture-sync/)
-- [Create a dataset](/data-ai/ai/create-dataset/) and [train an AI model](/data-ai/ai/train-tflite/)
-- Use an SDK of your choice to [write an app](/operate/control/web-app/) to interact with your machines
-- [Deploy control logic to run directly on your machines](/manage/software/control-logic/)
-- [Share the configuration across multiple machines](/manage/fleet/reuse-configuration/).
+- Capturing data from your machines
+- Training and deploying an AI model
+- Using an SDK of your choice to write an app to interact with your machines
+- Deploying control logic
+- Sharing the configuration across many machines

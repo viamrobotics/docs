@@ -67,7 +67,7 @@ This means that some hardware, such as a connected webcam, may not be available 
 
 {{< /expand >}}
 
-For 32-bit systems, see [Set up an ESP32](/operate/get-started/setup-micro/).
+For 32-bit microcontrollers, see [Set up an ESP32](/operate/get-started/setup-micro/).
 
 ## Install `viam-server` and connect your machine to the cloud
 
@@ -78,7 +78,7 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 1. Create a [Viam app](https://app.viam.com) account.
    The Viam app is the online hub for configuring and managing devices and data.
 
-1. Add a new _{{< glossary_tooltip term_id="machine" text="machine" >}}_ using the button in the top right corner of the **LOCATIONS** tab in the app.
+1. Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
 1. From your machine's page in the Viam app, follow the setup instructions to install `viam-server` on your device and connect it to the cloud.
