@@ -639,7 +639,7 @@ viam machines list
 viam machines status --org=<org id> --location=<location id> --machine=<machine id>
 viam machines logs --org=<org id> --location=<location id> --machine=<machine id> [...named args]
 viam machines api-key create --machine=<machine id> [...named args]
-viam machines part list --machine=<machine>
+viam machines part list --machine=<machine-id>
 viam machines part logs --machine=<machine id> --part=<part id> [...named args]
 viam machines part status --org=<org id> --location=<location id> --machine=<machine id>
 viam machines part run --org=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
