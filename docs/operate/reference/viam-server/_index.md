@@ -107,8 +107,8 @@ maintenance : {
 Log messages appear under the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for a machine.
 
 The default log level for `viam-server` and any running resources is `"Info"`.
-
-You can set log levels for individual components or other resources by adding the `log_configuration` option to the resources' JSON configuration:
+If you need more logs for individual resource, click **Enable debug logs** in the **...** menu on the resource.
+To set other log levels for individual resources, add the `log_configuration` option to the resources' JSON configuration:
 
 ```json
 "log_configuration": {
@@ -117,21 +117,33 @@ You can set log levels for individual components or other resources by adding th
 "attributes": { ... }
 ```
 
+For modular resources, you must instead set the `log_level` attribute on the module itself:
+
+```json {class="line-numbers linkable-line-numbers" data-line="3"}
+"module_id": "viam:raspberry-pi",
+"version": "1.9.0"
+"log_level":  "debug"
+```
+
 Alternatively, you can configure logs for all machine resources, inside your machine config.
 To specify the log level for a specific resource, add the `log` field to your machine config:
 
 For example:
 
 ```json
+"components": [ ... ]
 "log": [
-     {
-       "pattern": "rdk.resource_manager",
-       "level": "info",
-     },{
-       "pattern": "rdk.resource_manager.*",
-       "level": "debug",
-     }
-  ]
+    {
+    "pattern": "rdk.components.arm",
+    "level": "debug",
+    }, {
+    "pattern": "rdk.services.*",
+    "level": "debug",
+    }, {
+    "pattern": "<module-name>",
+    "level": "debug",
+    }
+]
 ```
 
 <!-- prettier-ignore -->
