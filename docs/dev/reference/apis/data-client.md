@@ -103,4 +103,4 @@ To copy the ID of your machine part, select the part status dropdown to the righ
 
 For example:
 
-![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
+{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed in the Viam app.">}}

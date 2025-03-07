@@ -93,10 +93,10 @@ Once you have instantiated an `AppClient`, you can run the following [API method
 
 To copy the ID of your machine {{< glossary_tooltip term_id="part" text="part" >}}, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**:
 
-![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
+{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed in the Viam app.">}}
 
 ## Find machine ID
 
 To copy the ID of your {{< glossary_tooltip term_id="machine" text="machine" >}}, click the **...** (Actions) button in the upper-right corner of your machine's page, then click **Copy machine ID**:
 
-![Machine ID in the actions dropdown in the Viam app.](/fleet/app-usage/copy-machine-id.png)
+{{<imgproc src="/fleet/app-usage/copy-machine-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Machine ID in the actions dropdown in the Viam app.">}}
