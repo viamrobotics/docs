@@ -432,7 +432,7 @@ When you add a fragment to a machine you can choose to pin the version to use:
 
 - the **latest version**: Always update to the latest version of this fragment as soon as a new version becomes available. This is the default.
 - a **specific version**: Do not update to any other version.
-- a **tag**: Always use the version of this fragment that with the selected tag. For example `stable` or `testing`.
+- a **tag**: Always use the version of this fragment that with the selected tag. For example `stable` or `beta`.
 
 ## Example fragments
 
