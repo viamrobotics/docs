@@ -30,7 +30,7 @@ If you forget your password to the app, click **Forgot password** and enter your
 Accounts created from separate authentication sources are unique to each other.
 {{< /alert >}}
 
-<br>
+Once you have logged in, get started by [creating a machine](/operate/get-started/setup/).
 
 ## Sign out
 
