@@ -45,16 +45,21 @@ To enable debug logs for all resources on a machine add `"debug": true` to the m
 }
 ```
 
-If this produces too many logs, you can instead set the log level to debug for individual resources or by matching on a pattern that captures the resources you are interested in.
+If this produces too many logs, you can instead **enable debug logs** for individual resources using the **...** menu on each resource.
+You can also set the log level by configuring the `log` attribute in the machine configuration to match on patterns that capture the resources you are interested in.
 For example:
 
 ```json
+"components": [ ... ]
 "log": [
     {
     "pattern": "rdk.components.arm",
     "level": "debug",
-    },{
+    }, {
     "pattern": "rdk.services.*",
+    "level": "debug",
+    }, {
+    "pattern": "<module-name>",
     "level": "debug",
     }
 ]

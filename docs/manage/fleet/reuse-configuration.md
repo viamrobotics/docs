@@ -357,7 +357,7 @@ Here are the version options:
 
 {{< /expand >}}
 {{< expand "Change a package version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for the first package in the packages array of the fragment](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) in the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to modify [version update settings for the first package in the packages array](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -367,6 +367,42 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
       {
         "$set": {
           "packages.0.version": "latest"
+        }
+      }
+    ]
+  }
+],
+```
+
+{{< /expand >}}
+{{< expand "Change the log level of a resource" >}}
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to modify [the log level](/operate/reference/viam-server/#logging) from the fragment for a resource:
+
+```json {class="line-numbers linkable-line-numbers"}
+"fragment_mods": [
+  {
+    "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+    "mods": [
+      {
+        "$set": {
+          "components.control.log_configuration.level": "debug"
+        }
+      }
+    ]
+  }
+],
+```
+
+If the resource comes from a module, you must instead set the `log_level` attribute on the module itself:
+
+```json {class="line-numbers linkable-line-numbers"}
+"fragment_mods": [
+  {
+    "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+    "mods": [
+      {
+        "$set": {
+          "modules.my-control-logic.log_level":  "debug"
         }
       }
     ]
