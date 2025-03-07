@@ -169,7 +169,7 @@ In **JSON** mode, it will resemble the following:
 
 ### Accidental deletion of machines, locations, organizations, or accounts
 
-If you delete your machine, location, organization, or account by mistake, contact contact@viam.com immediately - they will try to help but cannot guarantee recovery or restoration.
+If you delete your machine, location, organization, or account by mistake, contact [contact@viam.com](mailto:contact@viam.com) immediately - they will try to help but cannot guarantee recovery or restoration.
 
 ## Known application and plugin conflicts
 
