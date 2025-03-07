@@ -50,10 +50,12 @@ This page provides instructions for creating and uploading a module in Python or
 {{% /alert %}}
 
 {{< expand "How and where do modules run?" >}}
-Modules for 64-bit architecture run on your machine, alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
+Modules run on your machine, alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
 
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
 `viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
+
+For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
 {{< /expand >}}
 
 ## Design your module
