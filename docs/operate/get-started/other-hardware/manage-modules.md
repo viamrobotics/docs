@@ -41,7 +41,9 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
-1. Push your changes to the GitHub repository where you have your module code.
+   Make sure the `url` field contains the URL of the GitHub repo that contains your module code.
+
+1. Push your changes to your module GitHub repository.
 
    {{% alert title="Note" color="note" %}}
 
