@@ -357,7 +357,7 @@ Here are the version options:
 
 {{< /expand >}}
 {{< expand "Change a package version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to modify [version update settings for the first package in the packages array of the fragment](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) from the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to modify [version update settings for the first package in the packages array](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
