@@ -28,14 +28,14 @@ The following microcontrollers have been tested with Viam:
 
 Because microcontrollers do not run operating systems and are instead flashed with firmware, the setup process is different than for regular computers and SBCs.
 
-You can choose to use the pre-built binary for `viam-micro-server` which supports the following components:
+To use an ESP32 controller with custom hardware, you build a firmware version from the Micro-RDK and modules to support your hardware.
+
+To quickly try out Viam for microcontrollers, you can use the pre-built binary `viam-micro-server` which supports the following components:
 
 - [`gpio`](/operate/reference/components/servo/gpio-micro-rdk/): A servo controlled by GPIO pins.
 - [`two_wheeled_base`](/operate/reference/components/base/two_wheeled_base/): A robotic base with differential steering.
 - [`free_heap_sensor`](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src): Reports the amount of free heap memory on the microcontroller.
 - [`wifi_rssi_sensor`](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src): Reports the signal strength of the ESP32's WiFi connection.
-
-Or, you can build your own firmware with the Micro-RDK (the software development kit for microcontrollers from which `viam-micro-server` is built) and your choice of modules.
 
 ## Quickstart
 
