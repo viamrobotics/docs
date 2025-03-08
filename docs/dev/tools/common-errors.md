@@ -43,7 +43,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 - Your `ssh` connection string should resemble the following: `ssh username@hostname.local`.
   Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
 - If you are still unable to connect, restart your board and try your `ssh` connection again after a few minutes.
-- If that fails, try re-imaging your board following the [installation guide](/operate/get-started/setup/#quickstart) appropriate for your board.
+- If that fails, try re-imaging your board following the [installation guide](/operate/get-started/setup/) appropriate for your board.
   - If using the [Raspberry Pi installation guide](/operate/reference/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
   - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
   - If you re-imaged your board and provided the same hostname, you may see an error message similar to `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`.
@@ -135,7 +135,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/operate/get-started/setup/#quickstart), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/operate/get-started/setup/), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 

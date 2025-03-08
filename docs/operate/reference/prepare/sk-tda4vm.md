@@ -40,7 +40,7 @@ Download the following files to your computer:
 You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 
-{{< imgproc alt="The Balena Etcher interface." src="/installation/sk-tda4vm/etcher.png" resize="600x" declaredimensions=true class="shadow"  >}}
+{{< imgproc alt="The Balena Etcher interface." src="/installation/sk-tda4vm/etcher.png" resize="600x" declaredimensions=true >}}
 
 <br>
 <br>
