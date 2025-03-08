@@ -7,7 +7,7 @@ type: "docs"
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
 no_list: false
-description: "Learn the basics of Viam."
+description: "Learn the basics of the Viam platform."
 carouselscript: true
 ---
 
