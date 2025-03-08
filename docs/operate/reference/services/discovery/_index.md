@@ -1,7 +1,7 @@
 ---
 title: "Discovery Service"
 linkTitle: "Discovery"
-description: "The discovery service is used to discover resources on a machine."
+description: "Use a discovery service to discover available resources on a machine."
 type: docs
 weight: 50
 no_list: true
@@ -15,18 +15,19 @@ date: "2025-03-03"
 modulescript: true
 ---
 
-The discovery service is used to discover resources on a machine.
+A discovery service allows you to return a list of physical hardware available on a machine, and suggest configurations for those components to integrate the hardware into the machine.
 If you are [creating a modular resource](/operate/get-started/other-hardware/) that depends on other resources that are discoverable in a systematic way, you can create a discovery service as part of your module to discover those resources.
 
 ## Example usage
 
-Imagine you are creating a vision service module that depends on a camera.
-You might want to include both a vision service and a discovery service in your module.
-You could write a discovery service that reports all camera paths recognized by your computer or SBC.
+Imagine you are creating a vision service module that depends on a camera, and you want to make it easier for users to configure the camera.
+You can include both a vision service and a discovery service in your module.
+You'd write a discovery service that reports all camera paths recognized by your computer or SBC.
 Users of your module could then:
 
-1. Configure the discovery service in their machine's configuration.
-1. Use it to discover any cameras that are connected to the machine.
+1. Configure both the vision service and the discovery service in their machine's configuration.
+1. Click the **Test** panel in the discovery service configuration to see all cameras recognized by the machine, presented as a list of configuration snippets.
+1. Copy the copy-pasteable configuration snippet for the camera they want to use, with the camera path already filled in.
 1. Use one of the discovered cameras in their vision service configuration.
 
 To interact with a discovery service programmatically, use the [discovery service API](/dev/reference/apis/services/discovery/).
