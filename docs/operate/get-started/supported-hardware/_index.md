@@ -44,11 +44,22 @@ You can browse all built-in and modular registry components on your machine's co
 1. Make sure your hardware is physically connected to your machine and powered on.
 1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
 1. Click the **+** button on your machine's **CONFIGURE** tab.
+
+   {{<imgproc src="/get-started/plus-button.png" alt="Create a resource button in the Viam app." resize="600x" style="width:350px" class="imgzoom shadow">}}
+
 1. Click **Component**, and search for and select a component that supports your hardware.
 1. Follow the instructions in the configuration card to configure the component's attributes.
-1. If you need more details, use the link to the module's README.
 
-   {{<gif webm_src="/integrate/configure.webm" mp4_src="/integrate/configure.mp4" alt="Configuring a board and ultrasonic sensor." max-width="600px">}}
+   {{<imgproc src="/get-started/configuration-card.png" alt="Configure a component." resize="900x" style="width:450px" class="imgzoom shadow">}}
+
+   If you need more details, use the link to the module's README.
+
+1. Click the **TEST** panel of the component's configuration card to, for example, view your camera's stream, turn your motor, or see the latest readings from your sensor.
+
+   {{<imgproc src="/get-started/test-panel.png" alt="Sensor test panel showing readings." resize="900x" style="width:400px" class="imgzoom shadow">}}
+
+   If your component is not working as expected, check the **ERROR LOGS** panel for error messages.
+   You can also [read more troubleshooting tips](/manage/troubleshoot/troubleshoot/) or click **ASK AI** in the top right corner of the Viam app to get help from Viam's AI assistant.
 
 ### How module configuration works
 
