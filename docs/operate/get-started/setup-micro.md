@@ -17,6 +17,8 @@ aliases:
   - /installation/viam-micro-server-setup/
 ---
 
+Viam maintains a [lightweight version of `viam-server`](/operate/reference/viam-micro-server/) for microcontrollers.
+
 ## Supported microcontrollers
 
 ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 8MB flash to work with Viam.

@@ -28,15 +28,28 @@ Get started by installing [`viam-server`](/operate/reference/viam-server/), the 
 
 ## Prerequisite: Make sure you have a supported operating system
 
-`viam-server` can run on any computer that runs one of the following operating systems.
-Click for details.
+`viam-server` can run on any computer that runs one of the following operating systems:
 
-{{< expand "Single-board computer (SBC)" >}}
-`viam-server` can run on any SBC with AArch64 (ARM64) or x86-64 architecture.
+- Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
+- macOS
+- Windows
 
-If your SBC does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
-For convenience, we provide operating system installation instructions for some popular SBCs.
-If your SBC already has a supported operating system installed, you can [skip to installing `viam-server`](#install-viam-server-and-connect-your-machine-to-the-cloud).
+For 32-bit microcontrollers, see [Set up an ESP32](/operate/get-started/setup-micro/).
+
+Check if your system can run `viam-server` by running the following command in your terminal:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+arch=$(uname -m); bits=$(getconf LONG_BIT); [[ ("$arch" == "x86_64" || "$arch" == "aarch64") && "$bits" == "64" ]] && echo "✅ Your system can run viam-server" || echo "❌ Your system cannot run viam-server"
+```
+
+If you're using Viam with a single-board computer (SBC) that does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
+For convenience, we provide operating system installation instructions for some popular SBCs:
+
+{{< expand "SBC setup instructions" >}}
+If your SBC or other computer already has a supported operating system installed, you can skip this step.
 
 {{< cards >}}
 {{% card link="/operate/reference/prepare/rpi-setup/" class="small" %}}
@@ -49,25 +62,33 @@ If your SBC already has a supported operating system installed, you can [skip to
 {{% card link="/operate/reference/prepare/pumpkin/" class="small" %}}
 {{% card link="/operate/reference/prepare/sk-tda4vm/" class="small" %}}
 {{< /cards >}}
+{{< /expand >}}
 
-{{< /expand >}}
-{{< expand "Linux laptop or desktop" >}}
-If you have a Linux 64-bit operating system running on AArch64 (ARM64) or x86-64 architecture, proceed to [Install `viam-server` and connect your machine to the cloud](#install-viam-server-and-connect-your-machine-to-the-cloud).
-{{< /expand >}}
-{{< expand "macOS" >}}
-Proceed to [Install `viam-server` and connect your machine to the cloud](#install-viam-server-and-connect-your-machine-to-the-cloud).
-{{< /expand >}}
-{{< expand "Windows" >}}
+{{% /tab %}}
+{{% tab name="macOS" %}}
 
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+bash -c '[[ "$(uname -s)" == "Darwin" && ("$(uname -m)" == "x86_64" || "$(uname -m)" == "arm64") ]] && echo "✅ Your system can run viam-server" || echo "❌ Your system cannot run viam-server"'
+```
+
+{{% /tab %}}
+{{% tab name="Windows" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+(Get-WmiObject -Class Win32_OperatingSystem).OSArchitecture -eq "64-bit" -and (wsl --status 2>$null) -ne $null ? "✅ Your system can run viam-server" : "❌ Your system needs WSL for viam-server"
+```
+
+{{% alert title="Windows note" color="note" %}}
 `viam-server` can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
 This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
 
 - Native: Use native if you are using a WSL version prior to WSL 2 or need native USB support
 - WSL: Use WSL if you are using Python modules or other Linux dependencies
 
-{{< /expand >}}
+{{% /alert %}}
 
-For 32-bit microcontrollers, see [Set up an ESP32](/operate/get-started/setup-micro/).
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Install `viam-server` and connect your machine to the cloud
 
@@ -112,7 +133,7 @@ Using `viam-agent` is generally recommended when installing `viam-server` on a s
 When you set up a native Windows device in the Viam app, you must use the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable.msi).
 
 `viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers.
-Instead use manual install for those systems.
+Use manual install for those systems.
 
 ### Manage your installation
 
