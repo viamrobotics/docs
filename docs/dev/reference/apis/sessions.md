@@ -156,15 +156,14 @@ auto machine = RobotClient::at_address(host, options);
 Future<void> connectToViam() async {
   const host = '<machine-address>';
   /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
-  const apiKeyID = '<API-KEY-ID>';x
+  const apiKeyID = '<API-KEY-ID>';
   /* Replace "<API-KEY>" (including brackets) with your machine's api key */
   const apiKey = '<API-KEY>';
 
   final machine = await RobotClient.atAddress(
     host,
-    RobotClientOptions.withApiKey(apiKeyID, apiKey).withDialOptions(DialOptions()
-      ..timeout = 10.0
-    ),
+    RobotClientOptions.withApiKey(apiKeyID, apiKey)
+      ..dialOptions.timeout = Duration(seconds: 10)
   );
   print(machine.resourceNames);
 }
