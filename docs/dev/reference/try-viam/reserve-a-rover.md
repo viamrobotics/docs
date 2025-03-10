@@ -100,11 +100,6 @@ You can also reuse your code for the rover for other machines that you configure
 3. The Rover Rental Location and the final config of all previous rental rovers remain visible to your organization.
    You can continue modifying the configurations as desired.
 
-### I accidentally deleted my machine
-
-Unfortunately, there is no recovery path for a deleted machine.
-If you delete your machine and have a current reservation, click **Cancel Reservation** and then request a new reservation.
-
 ### Can I rename my machine or change the location?
 
 You can rename your machine or change the location.
