@@ -97,7 +97,8 @@ These modules implement the same [component APIs](/dev/reference/apis/#component
 
 ## Next steps
 
-With your machine configured, you have a number of options:
+If you have other hardware you need to integrate with a custom module, continue to [Integrate other hardware](/operate/get-started/other-hardware/).
+If you have configured all your hardware, you can do a variety of things with your machine:
 
 - [Capture data from your machines](/data-ai/capture-data/capture-sync/)
 - [Create a dataset](/data-ai/ai/create-dataset/) and [train an AI model](/data-ai/ai/train-tflite/)

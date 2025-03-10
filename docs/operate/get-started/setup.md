@@ -28,14 +28,6 @@ Get started by installing [`viam-server`](/operate/reference/viam-server/), the 
 
 ## Prerequisite: Make sure you have a supported operating system
 
-`viam-server` can run on any computer that runs one of the following operating systems:
-
-- Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
-- macOS
-- Windows
-
-For 32-bit microcontrollers, see [Set up an ESP32](/operate/get-started/setup-micro/).
-
 Check if your system can run `viam-server` by running the following command in your terminal:
 
 {{< tabs >}}
@@ -44,6 +36,8 @@ Check if your system can run `viam-server` by running the following command in y
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 arch=$(uname -m); bits=$(getconf LONG_BIT); [[ ("$arch" == "x86_64" || "$arch" == "aarch64") && "$bits" == "64" ]] && echo "✅ Your system can run viam-server" || echo "❌ Your system cannot run viam-server"
 ```
+
+`viam-server` can run on Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures.
 
 If you're using Viam with a single-board computer (SBC) that does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
 For convenience, we provide operating system installation instructions for some popular SBCs:
@@ -90,6 +84,8 @@ This means that some hardware, such as a connected webcam, may not be available 
 {{% /tab %}}
 {{< /tabs >}}
 
+For 32-bit microcontrollers, see [Set up an ESP32](/operate/get-started/setup-micro/).
+
 ## Install `viam-server` and connect your machine to the cloud
 
 Install `viam-server` on the computer or single-board computer (SBC) that is directly connected to your hardware (for example sensors, cameras, or motors).
@@ -109,9 +105,22 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 
    You are ready to [configure supported hardware](/operate/get-started/supported-hardware/) on your machine.
 
-## The details
+{{% hiddencontent %}}
 
-### How the configuration works
+## Installation methods: `viam-agent` versus manual
+
+`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/), networking, and configuring operating system settings.
+
+When you set up a Linux device in the Viam app, you'll see an option to install using `viam-agent`, or to manually install only `viam-server`.
+Using `viam-agent` is generally recommended when installing `viam-server` on a single-board computer.
+
+When you set up a native Windows device in the Viam app, you must use the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable.msi).
+
+`viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers.
+Use manual install for those systems.
+{{% /hiddencontent %}}
+
+### How the machine gets its configuration
 
 The machine setup steps displayed in the Viam app copy your machine's credentials to your machine.
 When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its configuration from the Viam app.
@@ -123,19 +132,7 @@ All communication happens securely over HTTPS using secret tokens that are in th
 
 If your machine will never connect to the internet, you can also create a [local configuration file](/operate/reference/viam-server/local-configuration-file/) on the machine itself.
 
-### Installation methods: `viam-agent` versus manual
-
-`viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/), networking, and configuring operating system settings.
-
-When you set up a Linux device in the Viam app, you'll see an option to install using `viam-agent`, or to manually install only `viam-server`.
-Using `viam-agent` is generally recommended when installing `viam-server` on a single-board computer.
-
-When you set up a native Windows device in the Viam app, you must use the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable.msi).
-
-`viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers.
-Use manual install for those systems.
-
-### Manage your installation
+## Manage your installation
 
 On Linux installs, by default `viam-server` or `viam-agent` and `viam-server` will start automatically when your system boots.
 On macOS installs, `viam-server` does not start automatically on boot.

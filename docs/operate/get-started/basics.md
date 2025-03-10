@@ -1,5 +1,5 @@
 ---
-linkTitle: "Learn the basics"
+linkTitle: "Viam basics"
 title: "Viam basics"
 weight: 10
 layout: "docs"
