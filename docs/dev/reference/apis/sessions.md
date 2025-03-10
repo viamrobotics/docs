@@ -142,7 +142,7 @@ dial_opts.set_entity(std::string("<API-KEY-ID>"));
 Credentials credentials("api-key", "<API-KEY>");
 /* Replace "<API-KEY>" (including brackets) with your machine's api key */
 dial_opts.set_credentials(credentials);
-dial_opts.set_timeout(10);
+dial_opts.set_timeout(std::chrono::duration<float>(10));
 boost::optional<DialOptions> opts(dial_opts);
 Options options(0, opts);
 
@@ -154,7 +154,7 @@ auto machine = RobotClient::at_address(host, options);
 
 ```dart {class="line-numbers linkable-line-numbers" data-line="11"}
 Future<void> connectToViam() async {
-  const host = 'guardian-main.vw3iu72d8n.viam.cloud';
+  const host = '<machine-address>';
   /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
   const apiKeyID = '<API-KEY-ID>';x
   /* Replace "<API-KEY>" (including brackets) with your machine's api key */
