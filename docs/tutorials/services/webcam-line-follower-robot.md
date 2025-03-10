@@ -94,9 +94,8 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
    Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `camera`, and select the `webcam` model.
    Enter the name `my_camera`, then click create.
-   Select **Show more** on the configuration panel to see the attributes available for configuration.
-   If your machine is connected, you can click the **video_path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
-   Select the path to the camera you want to use.
+   Leave the **video_path** blank and the camera will use the default video path for your machine.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
 
 5. Click **Save** in the top right corner of the screen.
 

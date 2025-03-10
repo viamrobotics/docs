@@ -68,7 +68,8 @@ Configure your [webcam](/operate/reference/components/camera/webcam/) so that yo
    This tutorial uses the name `cam` in all example code.
    Click **Create**.
 
-3. Click the **video path** dropdown and select the webcam you'd like to use for this project from the list of suggestions.
+3. Leave the **video_path** blank and the camera will use the default video path for your machine.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
 
 4. Click **Save** in the top right corner of the screen to save your changes.
 
