@@ -60,6 +60,118 @@ If a resource was used by client A and then by client B, and client A disconnect
 
 A disconnected client will attempt to establish a new session immediately prior to the next operation it performs.
 
+#### Change the session timeout
+
+The default session timeout length is 20 seconds.
+To change this, pass the `timeout` parameter to the `DialOptions` object:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers" data-line="1"}
+opts = RobotClient.Options(dial_options=DialOptions(timeout=10)).with_api_key(
+  # Replace "<API-KEY>" (including brackets) with your machine's API key
+  api_key='<API-KEY>',
+  # Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  api_key_id='<API-KEY-ID>'
+)
+await RobotClient.at_address('<machine address>', opts)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers" data-line="4,11,15"}
+// Import the time package in addition to the other imports:
+import (
+  ...
+  "time"
+  ...
+)
+
+// Configure a timeoutContext, then pass this context to the client:
+func main() {
+  ctx := context.Background()
+  timeoutContext, cancel := context.WithTimeout(ctx, 10*time.Second)
+  logger := logging.NewDebugLogger("client")
+
+  machine, err := client.New(
+    timeoutContext,
+    "<machine address>",
+    logger,
+    client.WithDialOptions(rpc.WithEntityCredentials(
+      /* Replace "<API-KEY-ID>" (including brackets) with your machine's
+        API key id */
+      "<API-KEY-ID>",
+      rpc.Credentials{
+        Type:    rpc.CredentialsTypeAPIKey,
+        /* Replace "<API-KEY>" (including brackets) with your machine's API key */
+        Payload: "<API-KEY>",
+      })),
+  )
+  ...
+}
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts {class="line-numbers linkable-line-numbers" data-line="11"}
+const machine = await VIAM.createRobotClient({
+  host,
+  credentials: {
+    type: "api-key",
+    /* Replace "<API-KEY>" (including brackets) with your machine's API key */
+    payload: "<API-KEY>",
+    authEntity: "<API-KEY-ID>",
+    /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key id */
+  },
+  signalingAddress: "https://app.viam.com:443",
+  dialTimeout: 1000,
+});
+```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp {class="line-numbers linkable-line-numbers" data-line="8"}
+std::string host("guardian-main.vw3iu72d8n.viam.cloud");
+DialOptions dial_opts;
+dial_opts.set_entity(std::string("<API-KEY-ID>"));
+/* Replace "<API-KEY-ID>" (including brackets) with your machine's API key id */
+Credentials credentials("api-key", "<API-KEY>");
+/* Replace "<API-KEY>" (including brackets) with your machine's API key */
+dial_opts.set_credentials(credentials);
+dial_opts.set_timeout(std::chrono::duration<float>(10));
+boost::optional<DialOptions> opts(dial_opts);
+Options options(0, opts);
+
+auto machine = RobotClient::at_address(host, options);
+```
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart {class="line-numbers linkable-line-numbers" data-line="11"}
+Future<void> connectToViam() async {
+  const host = '<machine-address>';
+  /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key id */
+  const apiKeyID = '<API-KEY-ID>';
+  /* Replace "<API-KEY>" (including brackets) with your machine's API key */
+  const apiKey = '<API-KEY>';
+
+  final machine = await RobotClient.atAddress(
+    host,
+    RobotClientOptions.withApiKey(apiKeyID, apiKey)
+      ..dialOptions.timeout = Duration(seconds: 10)
+  );
+  print(machine.resourceNames);
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Manage sessions with the session management API
 
 The [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) is not currently provided in the Python or TypeScript SDKs.
