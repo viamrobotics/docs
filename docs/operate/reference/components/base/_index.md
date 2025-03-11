@@ -18,7 +18,7 @@ date: "2024-10-21"
 # SMEs: Steve B
 ---
 
-The base component provides an API for moving all configured components attached to a mobile robot platform as a whole without needing to send commands to individual components.
+The base component provides an API for moving all configured drive motors of a mobile robot platform as a whole without needing to send commands to individual motor components.
 
 If you have a mobile robot, use a base component to coordinate the motion of its motor components.
 
@@ -30,9 +30,8 @@ If you have a mobile robot, use a base component to coordinate the motion of its
 
 Most mobile robots with a base use the following hardware:
 
-- A [board](/operate/reference/components/board/)
 - Some actuators to move the base, such as [motors](/operate/reference/components/motor/) attached to wheels or propellers
-- Some sort of chassis to hold everything together.
+- Some sort of chassis to hold everything together
 
 To use a rover or other base, you need to add each component as well as the base to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your base.
