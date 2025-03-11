@@ -826,7 +826,7 @@ If you are writing your module using Python, you must have Python version 3.11 o
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-# generate stub files for a new modular resource by following prompts
+# auto-generate stub files for a new modular resource by following prompts
 viam module generate
 
 # generate metadata for a module named 'my-module' using your organization's public namespace:
