@@ -26,7 +26,7 @@ The default machine address (URI) from the **CONNECT** tab is of the form `mymac
 ```python {class="line-numbers linkable-line-numbers" data-line="10"}
 async def connect():
     opts = RobotClient.Options.with_api_key(
-         # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
         # Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key id
