@@ -62,17 +62,17 @@ A disconnected client will attempt to establish a new session immediately prior 
 
 #### Change the session timeout
 
-The default session length is 20 seconds.
-To change the session timeout length, pass the `timeout` parameter to the `DialOptions` object:
+The default session timeout length is 20 seconds.
+To change this, pass the `timeout` parameter to the `DialOptions` object:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers" data-line="1"}
 opts = RobotClient.Options(dial_options=DialOptions(timeout=10)).with_api_key(
-  # Replace "<API-KEY>" (including brackets) with your machine's api key
+  # Replace "<API-KEY>" (including brackets) with your machine's API key
   api_key='<API-KEY>',
-  # Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+  # Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
   api_key_id='<API-KEY-ID>'
 )
 await RobotClient.at_address('<machine address>', opts)
@@ -81,7 +81,7 @@ await RobotClient.at_address('<machine address>', opts)
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go {class="line-numbers linkable-line-numbers" data-line="4,10,14"}
+```go {class="line-numbers linkable-line-numbers" data-line="4,11,15"}
 // Import the time package in addition to the other imports:
 import (
   ...
