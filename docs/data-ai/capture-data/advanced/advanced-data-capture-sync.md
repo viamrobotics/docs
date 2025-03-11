@@ -534,7 +534,7 @@ You can edit the JSON directly by switching to **JSON** mode in the UI.
 ### Capture to the Hot Data Store
 
 If you want faster access to your most recent sensor readings, you can configure a hot data store.
-The hot data store keeps a rolling window of hot data in a database for faster queries.
+The hot data store keeps a rolling window of hot data for faster queries.
 All historical data remains in your default storage.
 
 To configure the hot data store:
