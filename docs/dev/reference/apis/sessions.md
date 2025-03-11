@@ -101,11 +101,11 @@ func main() {
     logger,
     client.WithDialOptions(rpc.WithEntityCredentials(
       /* Replace "<API-KEY-ID>" (including brackets) with your machine's
-        api key id */
+        API key id */
       "<API-KEY-ID>",
       rpc.Credentials{
         Type:    rpc.CredentialsTypeAPIKey,
-        /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+        /* Replace "<API-KEY>" (including brackets) with your machine's API key */
         Payload: "<API-KEY>",
       })),
   )
@@ -121,10 +121,10 @@ const machine = await VIAM.createRobotClient({
   host,
   credentials: {
     type: "api-key",
-    /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+    /* Replace "<API-KEY>" (including brackets) with your machine's API key */
     payload: "<API-KEY>",
     authEntity: "<API-KEY-ID>",
-    /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+    /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key id */
   },
   signalingAddress: "https://app.viam.com:443",
   dialTimeout: 1000,
@@ -138,9 +138,9 @@ const machine = await VIAM.createRobotClient({
 std::string host("guardian-main.vw3iu72d8n.viam.cloud");
 DialOptions dial_opts;
 dial_opts.set_entity(std::string("<API-KEY-ID>"));
-/* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+/* Replace "<API-KEY-ID>" (including brackets) with your machine's API key id */
 Credentials credentials("api-key", "<API-KEY>");
-/* Replace "<API-KEY>" (including brackets) with your machine's api key */
+/* Replace "<API-KEY>" (including brackets) with your machine's API key */
 dial_opts.set_credentials(credentials);
 dial_opts.set_timeout(std::chrono::duration<float>(10));
 boost::optional<DialOptions> opts(dial_opts);
@@ -155,9 +155,9 @@ auto machine = RobotClient::at_address(host, options);
 ```dart {class="line-numbers linkable-line-numbers" data-line="11"}
 Future<void> connectToViam() async {
   const host = '<machine-address>';
-  /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+  /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key id */
   const apiKeyID = '<API-KEY-ID>';
-  /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+  /* Replace "<API-KEY>" (including brackets) with your machine's API key */
   const apiKey = '<API-KEY>';
 
   final machine = await RobotClient.atAddress(
