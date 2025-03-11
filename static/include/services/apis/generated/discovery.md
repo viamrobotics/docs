@@ -44,16 +44,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-  // Get the discovered resources of a Discovery Service.
-  cfgs, err := myDiscoveryService.DiscoverResources(ctx, nil)
-  if err != nil {
+// Get the discovered resources of a Discovery Service.
+cfgs, err := myDiscoveryService.DiscoverResources(ctx, nil)
+if err != nil {
     logger.Fatal(err)
-  }
-   // Print out the discovered resources.
-  for _, cfg := range cfgs {
+}
+// Print out the discovered resources.
+for _, cfg := range cfgs {
     fmt.Printf("Name: %v\tModel: %v\tAPI: %v", cfg.Name, cfg.Model, cfg.API)
     fmt.Printf("Attributes: ", cfg.Attributes)
-  }
+}
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/discovery#Service).
