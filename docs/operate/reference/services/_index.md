@@ -4,7 +4,7 @@ linkTitle: "Services"
 weight: 30
 type: docs
 layout: "empty"
-canonical: "/operate/get-started/supported-hardware/#add-software-services-to-your-machine"
+canonical: "/dev/reference/apis/#service-apis"
 no_component: true
 empty_node: true
 toc_hide: true
