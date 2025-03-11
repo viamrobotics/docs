@@ -303,6 +303,10 @@ If you need to delete a module and the delete option is unavailable to you, plea
 
 {{% /alert %}}
 
+{{% hiddencontent %}}
+Other registry items such as training scripts and ML models can be deleted in the same way as modules.
+{{% /hiddencontent %}}
+
 ### Delete just one version of a module
 
 Deleting a version of a module requires the same org owner permissions as deleting the entire module, and similarly, you cannot delete a version if any machines are using it.
