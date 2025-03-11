@@ -297,6 +297,13 @@ This includes models that are not currently configured on the machine.
 
 - ([List[viam.proto.robot.ModuleModel]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)): A list of discovered models.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+# Get module models
+module_models = await machine.get_models_from_modules(qs)
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_models_from_modules).
 
 {{% /tab %}}

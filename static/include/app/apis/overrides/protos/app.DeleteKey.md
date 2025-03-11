@@ -1,1 +1,1 @@
-Delete an [API key](/manage/manage/access/).
+Delete an [API key](/operate/control/api-keys/).

@@ -49,7 +49,7 @@ The motion service takes the volumes associated with all configured machine comp
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-resource_name = Arm.get_resource_name("externalFrame")
+resource_name = Gripper.get_resource_name("externalFrame")
 success = await MotionServiceClient.move(resource_name, ...)
 ```
 

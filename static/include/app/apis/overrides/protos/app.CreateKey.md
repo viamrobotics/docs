@@ -1,1 +1,1 @@
-Create a new [API key](/manage/manage/access/).
+Create a new [API key](/operate/control/api-keys/).
