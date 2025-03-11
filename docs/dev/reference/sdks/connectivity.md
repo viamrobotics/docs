@@ -59,7 +59,7 @@ machine, err := client.New(
 {{% tab name="TypeScript" %}}
 The TypeScript SDK currently does not support mDNS which means you cannot use it to connect to your machine over a local network.
 {{% /tab %}}
-{{% tab name="Flutter %}}
+{{% tab name="Flutter" %}}
 
 ```dart {class="line-numbers linkable-line-numbers" data-line="2"}
 Future<void> connectToViam() async {
