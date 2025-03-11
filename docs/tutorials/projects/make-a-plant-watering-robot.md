@@ -249,8 +249,8 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
    ```
 
    `sensor_pin` is the GPIO pin number of the Raspberry Pi's pin you connected to the MCP300x chip.
-   If you followed the wiring in this tutorial, this will be 8 which is `24 GPIO 8 (SPI Chip Select 0)`.
-   Otherwise if you are using CS1, use 7.
+   If you followed the wiring in this tutorial, this will be `8` which is pin 24, GPIO 8 (SPI Chip Select 0).
+   Otherwise if you are using CS1, use `7`.
 
 Save your config by clicking **Save** in the top right corner of the page.
 
