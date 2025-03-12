@@ -40,6 +40,7 @@ You can keep the module private or share it with your organization or the public
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
 This page provides instructions for creating and uploading a module in Python or Go.
+For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
 
 {{% alert title="See also" color="info" %}}
 
