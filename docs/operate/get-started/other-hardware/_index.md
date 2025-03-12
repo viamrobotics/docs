@@ -73,6 +73,7 @@ Start by finding or writing a test script to check that you can connect to and c
 
 Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
 With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
+Each model implements one API.
 
 For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
 
@@ -140,6 +141,7 @@ In the next section, you'll customize some of the generated files to support you
 #### Creating multiple models within one module
 
 If you have multiple modular components that are related to or even dependent upon each other, you can opt to put them all into one module.
+Note that each model can implement only one API.
 For an example of how this is done, see [Create a Hello World module](/operate/get-started/other-hardware/hello-world-module/).
 
 ### Implement the component API
