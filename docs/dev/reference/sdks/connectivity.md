@@ -64,9 +64,9 @@ The TypeScript SDK currently does not support mDNS which means you cannot use it
 ```dart {class="line-numbers linkable-line-numbers" data-line="2"}
 Future<void> connectToViam() async {
   const host = 'mymachine-main.0a1bcdefgi.local.viam.cloud';
-  /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+  /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
   const apiKeyID = '<API-KEY-ID>';
-  /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+  /* Replace "<API-KEY>" (including brackets) with your machine's API key */
   const apiKey = '<API-KEY>';
 
   final machine = await RobotClient.atAddress(
