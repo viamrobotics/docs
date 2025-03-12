@@ -1,9 +1,9 @@
 ---
 title: "Client Sessions and Machine Network Connectivity"
-linkTitle: "Network Connectivity Issues"
+linkTitle: "Network Connectivity"
 weight: 80
 type: "docs"
-description: "When a machine loses its connection to a LAN or WAN, all client sessions will timeout and end by default."
+description: "When you connect to a machine, the machine automatically chooses the best connection over local LAN, WAN or the internet."
 tags:
   ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 aliases:
@@ -79,7 +79,21 @@ Future<void> connectToViam() async {
 
 {{% /tab %}}
 {{% tab name="C++" %}}
-The C++ SDK currently does not support mDNS which means you cannot use it to connect to your machine over a local network.
+
+```cpp {class="line-numbers linkable-line-numbers" data-line="1"}
+std::string host("mymachine-main.0a1bcdefgi.local.viam.cloud");
+DialOptions dial_opts;
+dial_opts.set_entity(std::string("<API-KEY-ID>"));
+/* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
+Credentials credentials("api-key", "<API-KEY>");
+/* Replace "<API-KEY>" (including brackets) with your machine's API key */
+dial_opts.set_credentials(credentials);
+boost::optional<DialOptions> opts(dial_opts);
+Options options(0, opts);
+
+auto machine = RobotClient::at_address(host, options);
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
