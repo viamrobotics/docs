@@ -236,10 +236,13 @@ Options for `operator`:
 | `eq`  | Equals                   |
 | `neq` | Does not equal           |
 
-Examples:
+When configuring triggers to fire on data inside a JSON object, such as data from a sensor's `readings` object, the key you specify is the key inside the `readings` object (without `readings`).
+For example:
 
 {{< tabs >}}
 {{% tab name="1 level of nesting" %}}
+
+If your sensor returns readings of the format `{ "Line-Neutral AC RMS Voltage": 130 }`, the key you would specify is `"Line-Neutral AC RMS Voltage"`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "condition": {
@@ -266,6 +269,8 @@ This eval would trigger for the following sensor reading:
 
 {{% /tab %}}
 {{% tab name="2 levels of nesting" %}}
+
+If your sensor returns readings of the format `{ "coordinate": { "latitude": 50 } }`, the key you would specify is `"coordinate.latitude"`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "condition": {
