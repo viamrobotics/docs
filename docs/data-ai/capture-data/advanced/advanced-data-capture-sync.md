@@ -545,7 +545,7 @@ To configure the hot data store:
 {{% expand "Click to view a sample configuration" %}}
 
 The following sample configuration captures data from a sensor at 0.5 Hz.
-It stores the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage:
+`viam-server` stores the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="17-19"}
 {
