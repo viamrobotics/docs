@@ -236,9 +236,8 @@ Options for `operator`:
 | `eq`  | Equals                   |
 | `neq` | Does not equal           |
 
-Examples:
-
 When configuring triggers to fire on data inside a JSON object, such as data from a sensor's `readings` object, the key you specify is the key inside the `readings` object (without `readings`).
+For example:
 
 {{< tabs >}}
 {{% tab name="1 level of nesting" %}}
