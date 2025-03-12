@@ -1,25 +1,38 @@
 ---
-title: "viam-micro-server Troubleshooting"
-linkTitle: "viam-micro-server Troubleshooting"
+title: "Micro-RDK Troubleshooting"
+linkTitle: "Micro-RDK Troubleshooting"
 weight: 100
 no_list: true
 type: docs
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install viam-micro-server"
-description: "Troubleshooting tips and best practices for installing and using viam-micro-server on a microcontroller."
+description: "Troubleshooting tips and best practices for installing and using viam-micro-server or other Micro-RDK-based firmware on a microcontroller."
 # date: "2024-10-07"
 # updated: ""  # When the content was last entirely checked
 ---
 
-For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
+## CLI for `viam-micro-server`
 
-For code examples and more information on `viam-micro-server`, see [GitHub](https://github.com/viamrobotics/micro-rdk).
+The Viam Micro-RDK installer is a command line tool that you can use to troubleshoot.
+It allows you to:
 
-## Unstable connection
+- View logs locally and debug issues when your device has not connected to the Viam app
+- Change wifi credentials on your microcontroller
+- Overwrite firmware using a serial cable
 
-Because microcontrollers are more resource-constrained than single-board computers or other computers, when you run [control code](/dev/reference/sdks/) to control your `viam-micro-server` machine, you may experience instability.
+For more information on the `micro-rdk-installer` CLI usage options, see the [Micro-RDK Installer GitHub README](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
+
+## Code examples
+
+For code examples and more information on the Micro-RDK, see [the Micro-RDK GitHub repository](https://github.com/viamrobotics/micro-rdk).
+
+## Common issues
+
+### Unstable connection
+
+Because microcontrollers are more resource-constrained than single-board computers or other computers, when you run [control code](/dev/reference/sdks/) to control your Micro-RDK machine, you may experience instability.
 If your connection is unstable, we recommend changing the default settings by making the following changes to your connection code.
-This code will disable the SDK background task that monitors the connection to `viam-micro-server`, reducing processing demands and improving the reliability of connection establishment.
+This code will disable the SDK background task that monitors the connection to your machine, reducing processing demands and improving the reliability of connection establishment.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -81,23 +94,23 @@ if err != nil {
 {{% /tab %}}
 {{% /tabs %}}
 
-## Error: IceTransportClosed
+### Error: IceTransportClosed
 
 If you are trying to connect to an ESP32 and the connection is unstable with the repeating error `E (412486) micro_rdk::common::webrtc::ice: closing ice agent with error IceTransportClosed`, you have opened too many connections to the ESP32, which has a maximum of 3 connections by default.
 Make sure you only have one tab with your machine's page open to limit the number of connections to your ESP32.
 
-## Linux port permissions
+### Linux port permissions
 
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.
 If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, restart your terminal, and try again.
 
-## macOS executable permissions
+### macOS executable permissions
 
 When using a machine running a version of macOS, the user is blocked from running the executable by default.
 To fix this, **Control+Click** the binary in Finder and then, in the following two prompts select **Open**.
 Close whatever terminal window this opens to be able to run the installer.
 
-## Error: FlashConnect
+### Error: FlashConnect
 
 This may occur because the serial port chosen if/when prompted is incorrect.
 However, if the correct port has been selected, try the following:
@@ -115,7 +128,7 @@ You can find additional assistance in the [Troubleshooting section](/manage/trou
 
 {{< snippet "social.md" >}}
 
-## Ubuntu not recognizing the microcontroller
+### Ubuntu not recognizing the microcontroller
 
 If you’re trying to connect a microcontroller using serial port to an Ubuntu system and the computer doesn’t seem to be recognizing the microcontroller, check if the `brltty` service or its secondary service `brltty-udev` are active (`brltty` is a service installed by default that provides access to a braille display):
 
