@@ -87,7 +87,6 @@ Instead, use a [discovery service](/operate/reference/services/discovery/) to di
 
 {{% /changelog %}}
 
-
 {{% changelog color="added" title="OAuth" date="2025-01-27" %}}
 
 You can now [authenticate end users with OAuth](/manage/manage/oauth/).
