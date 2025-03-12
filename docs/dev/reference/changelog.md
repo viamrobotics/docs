@@ -1230,6 +1230,10 @@ Find this indicator of the time to complete one request/response cycle on your m
 
 The Python SDK now supports Python 3.8, in addition to 3.9 and 3.10.
 
+{{% hiddencontent %}}
+We now support Python 3.11 and later as well.
+{{% /hiddencontent %}}
+
 {{% /changelog %}}
 
 {{% changelog date="2022-11-15" color="added" title="New parameter: `extra`" %}}
