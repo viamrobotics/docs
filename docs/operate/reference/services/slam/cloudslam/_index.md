@@ -322,10 +322,10 @@ To stop a CloudSLAM mapping session, do the following:
 3. In the **Input** section, enter the following command:
 
    ```json
-   { "start": "<MAPPING-SESSION-NAME>" }
+   { "stop": "" }
    ```
 
-   You do not need to specify the map name or job id here, as the module is already aware of any active mapping sessions for the machine.
+   You do not need to specify the map name or job ID here, as the module is already aware of any active mapping sessions for the machine.
 
 4. Click the **Execute** button.
    If everything is configured correctly, you will receive a success message.
