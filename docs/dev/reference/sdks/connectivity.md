@@ -29,7 +29,7 @@ async def connect():
         # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
         # Replace "<API-KEY-ID>" (including brackets) with your machine's
-        # API key id
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address(
