@@ -531,7 +531,7 @@ The following attributes are available for data capture configuration:
 
 You can edit the JSON directly by switching to **JSON** mode in the UI.
 
-### Capture to the Hot Data Store
+### Capture to hot data storage
 
 If you want faster access to your most recent sensor readings, you can configure a hot data store.
 The hot data store keeps a rolling window of hot data for faster queries.
