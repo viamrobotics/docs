@@ -47,6 +47,26 @@ The [hot data store](/manage/reference/processes/) allows you to access recent d
 
 {{% /changelog %}}
 
+{{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
+
+[Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
+Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="White labelled billing and custom pricing" date="2025-02-01" %}}
+
+You can now [set custom pricing](/manage/manage/white-labelled-billing/) for your organizations and add your logo to invoices and other billing materials.
+
+{{% /changelog %}}
+
+{{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
+
+The `Stream` API method has been removed from the Go SDK camera interface.
+For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimage).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Button API and switch API" date="2025-01-27" %}}
 
 Two new component APIs, the [button API](/dev/reference/apis/components/button/) and [switch API](/dev/reference/apis/components/switch/), have been added.
@@ -67,25 +87,6 @@ Instead, use a [discovery service](/operate/reference/services/discovery/) to di
 
 {{% /changelog %}}
 
-{{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
-
-[Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
-Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
-
-{{% /changelog %}}
-
-{{% changelog color="added" title="White labelled billing and custom pricing" date="2025-02-01" %}}
-
-You can now [set custom pricing](/manage/manage/white-labelled-billing/) for your organizations and add your logo to invoices and other billing materials.
-
-{{% /changelog %}}
-
-{{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
-
-The `Stream` API method has been removed from the Go SDK camera interface.
-For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimage).
-
-{{% /changelog %}}
 
 {{% changelog color="added" title="OAuth" date="2025-01-27" %}}
 
