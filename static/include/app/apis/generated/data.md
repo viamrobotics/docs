@@ -343,6 +343,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. You can obtain your organization ID from the Viam app’s organization settings page.
 - `query` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)] | List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): The MQL query to run, as a list of MongoDB aggregation pipeline stages. Note: Each stage can be provided as either a dictionary or raw BSON bytes, but support for bytes will be removed in the future, so using a dictionary is preferred.
+- `use_recent_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to query blob storage or your recent data store. Defaults to False.
 
 **Returns:**
 
@@ -1629,7 +1630,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset's page in the Viam app, and use the left-hand menu to copy the dataset ID.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.
 
 **Returns:**
@@ -1721,7 +1722,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from the dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset's page in the Viam app, and use the left-hand menu to copy the dataset ID.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from.
 
 **Returns:**

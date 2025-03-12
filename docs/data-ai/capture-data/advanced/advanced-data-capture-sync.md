@@ -524,13 +524,62 @@ The following attributes are available for data capture configuration:
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). |
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
+| `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](#capture-to-the-hot-data-store) for faster access. Example: `{ "stored_hours": 24 }` |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
 
 {{< /expand >}}
 
 You can edit the JSON directly by switching to **JSON** mode in the UI.
 
-### Capture directly to MongoDB
+### Capture to the hot data store
+
+If you want faster access to your most recent sensor readings, you can configure hot data storage.
+The hot data store keeps a rolling window of hot data for faster queries.
+All historical data remains in your default storage.
+
+To configure the hot data store:
+
+1. Use the `recent_data_store` attribute on each capture method in your data manager service.
+2. Configure your queries' data source to the hot data store by passing the `use_recent_data` boolean argument to [tabularDataByMQL](/dev/reference/apis/data-client/#tabulardatabymql).
+
+{{% expand "Click to view a sample configuration" %}}
+
+The following sample configuration captures data from a sensor at 0.5 Hz.
+`viam-server` stores the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage:
+
+```json {class="line-numbers linkable-line-numbers" data-line="17-19"}
+{
+  "components": [
+    {
+      "name": "sensor-1",
+      "api": "rdk:component:sensor",
+      "model": "rdk:builtin:fake",
+      "attributes": {},
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Readings",
+                "capture_frequency_hz": 0.5,
+                "additional_params": {},
+                "recent_data_store": {
+                  "stored_hours": 24
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
+### Capture directly to local MongoDB
 
 You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
 This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
