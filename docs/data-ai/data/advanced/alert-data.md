@@ -271,7 +271,7 @@ This eval would trigger for the following sensor reading:
 {{% /tab %}}
 {{% tab name="2 levels of nesting" %}}
 
-If your sensor returns readings of the format `{ "coordinate": { "latitude": 50 } }`, the key you would specify is `"coordinate.lat"`:
+If your sensor returns readings of the format `{ "coordinate": { "latitude": 50 } }`, the key you would specify is `"coordinate.latitude"`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "condition": {
