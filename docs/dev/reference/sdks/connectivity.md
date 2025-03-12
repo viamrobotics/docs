@@ -45,11 +45,11 @@ machine, err := client.New(
   "mymachine-main.0a1bcdefgi.local.viam.cloud",
   logger,
   client.WithDialOptions(rpc.WithEntityCredentials(
-          /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+          /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
     "<API-KEY-ID>",
     rpc.Credentials{
       Type:    rpc.CredentialsTypeAPIKey,
-              /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+              /* Replace "<API-KEY>" (including brackets) with your machine's API key */
       Payload: "<API-KEY>",
     })),
 )
