@@ -452,7 +452,7 @@ For recommendations on updating software on deployed machines, see [Update softw
 
 ### Create fragment tags
 
-You can create tags to differentiate different between different versions of your fragment.
+You can create tags to differentiate between versions of your fragment.
 For example, you may want to create a tag for `stable` and `beta`.
 
 1. Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and click on a fragment.
@@ -466,9 +466,11 @@ For example, you may want to create a tag for `stable` and `beta`.
 
 When you add a fragment to a machine you can choose to pin the version to use:
 
-- the **latest version**: Always update to the latest version of this fragment as soon as a new version becomes available. This is the default.
+- the **latest version**: Always update to the latest version of this fragment as soon as a new version becomes available.
+  This is the default.
 - a **specific version**: Do not update to any other version.
-- a **tag**: Always use the version of this fragment that with the selected tag. For example `stable` or `beta`.
+- a **tag**: Always use the version of this fragment with the selected tag.
+  For example `stable` or `beta`.
 
 ## Example fragments
 
