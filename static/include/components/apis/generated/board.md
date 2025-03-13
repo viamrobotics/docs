@@ -841,7 +841,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)\<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)\>
+- [Stream](https://api.flutter.dev/flutter/dart-core/Stream-class.html)\<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)\>
 
 **Example:**
 
