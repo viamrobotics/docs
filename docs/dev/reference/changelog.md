@@ -1234,8 +1234,8 @@ Find this indicator of the time to complete one request/response cycle on your m
 
 {{% changelog date="2022-11-15" color="added" title="Python 3.8 support" %}}
 
-The Python SDK now supports Python 3.8, in addition to 3.9 and 3.10.
-
+The Python SDK now supports Python 3.8 and newer.
+We suggest using Python 3.10 or newer.
 {{% /changelog %}}
 
 {{% changelog date="2022-11-15" color="added" title="New parameter: `extra`" %}}
