@@ -1630,7 +1630,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset's page in the Viam app, and use the left-hand menu to copy the dataset ID.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.
 
 **Returns:**
@@ -1722,7 +1722,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from the dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset's page in the Viam app, and use the left-hand menu to copy the dataset ID.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from.
 
 **Returns:**
