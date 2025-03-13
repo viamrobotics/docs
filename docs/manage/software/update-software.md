@@ -74,7 +74,8 @@ For example:
 
 {{% /tablestep %}}
 {{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" %}}
-**5. Create a development tag**. On your fragment's page, click on **Versions** in the menu bar and add a tag called `development`.
+**5. Create a development tag**.
+On your fragment's page, click on **Versions** in the menu bar and add a tag called `development`.
 Select the most recent version that you just created for the tag.
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -86,7 +87,7 @@ For each machine that you want to test the changes on, update the configuration.
 {{% /tablestep %}}
 {{% tablestep %}}
 **8. Update the `stable` fragment tag**.
-When you are satisfied that your module or package works as expected, set the **Version** for the `stable` fragment tag. to the new version.
+When you are satisfied that your module or package works as expected, set the **Version** for the `stable` fragment tag to the new version.
 This will update all machines that use the `stable` fragment tag.
 {{% /tablestep %}}
 {{< /table >}}
