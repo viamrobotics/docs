@@ -262,10 +262,23 @@ You need to add some sensor-specific code to support the sensor component.
 
     Save the file.<br><br>
 
-1.  Open the <file>hello-world/src/main.py</file> file and add the following to the list of imports:
+1.  Open the <file>hello-world/src/main.py</file> file and add `HelloSensor` to the list of imports so you have:
 
-    ```python {class="line-numbers linkable-line-numbers" data-start="4" }
-    from hello_world.models.hello_sensor import HelloSensor
+    ```python {class="line-numbers linkable-line-numbers" data-line="6, 9"}
+    import asyncio
+
+    from viam.module.module import Module
+    try:
+        from models.hello_camera import HelloCamera
+        from models.hello_sensor import HelloSensor
+    except ModuleNotFoundError: # when running as local module with run.sh
+        from .models.hello_camera import HelloCamera
+        from .models.hello_sensor import HelloSensor
+    ```
+
+if **name** == '**main**':
+asyncio.run(Module.run_from_registry())
+
     ```
 
     Save the file.
