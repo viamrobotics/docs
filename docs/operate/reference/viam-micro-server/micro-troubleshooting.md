@@ -13,7 +13,7 @@ description: "Troubleshooting tips and best practices for installing and using v
 
 ## CLI for `viam-micro-server`
 
-The Viam Micro-RDK installer is a command line tool that you can use to troubleshoot.
+The Viam Micro-RDK installer is a command line tool that you can also use to troubleshoot.
 It allows you to:
 
 - View logs locally and debug issues when your device has not connected to the Viam app
