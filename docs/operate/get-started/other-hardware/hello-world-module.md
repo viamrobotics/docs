@@ -274,10 +274,9 @@ You need to add some sensor-specific code to support the sensor component.
     except ModuleNotFoundError: # when running as local module with run.sh
         from .models.hello_camera import HelloCamera
         from .models.hello_sensor import HelloSensor
-    ```
 
-if **name** == '**main**':
-asyncio.run(Module.run_from_registry())
+    if __name__ == '__main__':
+        asyncio.run(Module.run_from_registry())
 
     ```
 
