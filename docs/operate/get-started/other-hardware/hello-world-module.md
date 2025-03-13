@@ -176,7 +176,8 @@ None of the camera API methods return a number though.
 Look at the [sensor API](/dev/reference/apis/components/sensor/), which includes the `GetReadings` method.
 You can return a number with that, but the sensor API can't return an image.
 
-Your module can contain multiple modular resources, so let's make two modular resources: a camera to return the image, and a sensor to return a random number.
+Each model can implement only one API, but your module can contain multiple modular resources.
+Let's make two modular resources: a camera to return the image, and a sensor to return a random number.
 
 {{% alert title="Note" color="note" %}}
 
