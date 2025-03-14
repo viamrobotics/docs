@@ -15,6 +15,7 @@ aliases:
   - /build/micro-rdk/
   - /get-started/installation/microcontrollers/
   - /installation/viam-micro-server-setup/
+  - /operate/reference/viam-micro-server/viam-micro-server-troubleshooting/
 ---
 
 Viam maintains a [lightweight version of `viam-server`](/operate/reference/viam-micro-server/) for microcontrollers.
@@ -60,4 +61,4 @@ To get started quickly with the pre-built `viam-micro-server` binary, follow the
 
 If you are using your ESP32 with resources that are not supported by the pre-built binary, you can build your own firmware with the Micro-RDK and your choice of {{< glossary_tooltip term_id="module" text="modules" >}}.
 
-See [Create or use a Micro-RDK module](/operate/get-started/other-hardware/micro-module/) to install required software and build custom firmware.
+See [Create or use a Micro-RDK module](/operate/get-started/other-hardware/micro-module/) to build custom firmware for your ESP32.
