@@ -68,7 +68,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[ComponentConfig](appRobotApi.ComponentConfig.html)[]>)
+- (Promise<[ComponentConfig](https://ts.viam.dev/classes/appRobotApi.ComponentConfig.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DiscoveryClient.html#discoverResources).
 

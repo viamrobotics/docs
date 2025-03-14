@@ -61,7 +61,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Vector3](commonApi.Vector3.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getLinearVelocity).
 
@@ -156,7 +156,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Vector3](commonApi.Vector3.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getAngularVelocity).
 
@@ -342,7 +342,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Orientation](commonApi.Orientation.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Orientation](https://ts.viam.dev/classes/commonApi.Orientation.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getOrientation).
 
@@ -433,7 +433,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[movementSensorApi](../modules/movementSensorApi.html).[GetPositionResponse](movementSensorApi.GetPositionResponse.html)>)
+- (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPositionResponse](https://ts.viam.dev/classes/movementSensorApi.GetPositionResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getPosition).
 
@@ -522,7 +522,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[movementSensorApi](../modules/movementSensorApi.html).[GetPropertiesResponse](movementSensorApi.GetPropertiesResponse.html)>)
+- (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/movementSensorApi.GetPropertiesResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getProperties).
 
@@ -625,7 +625,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[GetAccuracyResponse](movementSensorApi.GetAccuracyResponse.html)>)
+- (Promise<[GetAccuracyResponse](https://ts.viam.dev/classes/movementSensorApi.GetAccuracyResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getAccuracy).
 
@@ -717,7 +717,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Vector3](commonApi.Vector3.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getLinearAcceleration).
 
@@ -839,7 +839,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<Record<string, [JsonValue](../types/JsonValue.html)>>)
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getReadings).
 
@@ -949,12 +949,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#doCommand).
 

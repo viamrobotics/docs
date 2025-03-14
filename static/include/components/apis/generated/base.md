@@ -287,8 +287,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `linear` ([PlainMessage](../types/PlainMessage.html)) (required): Desired linear power percentage from -1 to 1.
-- `angular` ([PlainMessage](../types/PlainMessage.html)) (required): Desired angular power percentage from -1 to 1.
+- `linear` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired linear power percentage from -1 to 1.
+- `angular` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired angular power percentage from -1 to 1.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -393,8 +393,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `linear` ([PlainMessage](../types/PlainMessage.html)) (required): Desired linear velocity in millimeters per second.
-- `angular` ([PlainMessage](../types/PlainMessage.html)) (required): Desired angular velocity in degrees per second.
+- `linear` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired linear velocity in millimeters per second.
+- `angular` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired angular velocity in degrees per second.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -510,7 +510,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[baseApi](../modules/baseApi.html).[GetPropertiesResponse](baseApi.GetPropertiesResponse.html)>)
+- (Promise<[baseApi](https://ts.viam.dev/modules/baseApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/baseApi.GetPropertiesResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getProperties).
 
@@ -768,7 +768,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getGeometries).
 
@@ -860,12 +860,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#doCommand).
 

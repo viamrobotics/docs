@@ -64,14 +64,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `positionType` ([PositionType](../enums/encoderApi.PositionType.html)) (optional): The type of position the encoder returns (ticks or
+- `positionType` ([PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)) (optional): The type of position the encoder returns (ticks or
   degrees).
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<readonly [number, [PositionType](../enums/encoderApi.PositionType.html)]>)
+- (Promise<readonly [number, [PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getPosition).
 
@@ -210,7 +210,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[encoderApi](../modules/encoderApi.html).[GetPropertiesResponse](encoderApi.GetPropertiesResponse.html)>)
+- (Promise<[encoderApi](https://ts.viam.dev/modules/encoderApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/encoderApi.GetPropertiesResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getProperties).
 
@@ -334,12 +334,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#doCommand).
 

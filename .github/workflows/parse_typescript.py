@@ -1,7 +1,6 @@
-import pprint
-
 from parser_utils import make_soup
 from markdownify import markdownify as md
+from urllib.parse import urljoin
 
 ## Language-specific resource name overrides:
 typescript_resource_overrides = {
@@ -58,7 +57,6 @@ class TypeScriptParser:
             # Initialize TypeScript methods dictionary if it doesn't exist
             self.typescript_methods[type][resource] = {}
 
-            print("!!!", resource)
             if resource in unsupported_resources:
                 if args.verbose:
                     print(f'DEBUG: Skipping unsupported TypeScript resource: {resource}')
@@ -75,6 +73,10 @@ class TypeScriptParser:
             ## TEMP: Manually exclude Base Remote Control Service (Go only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             soup = make_soup(url)
+            for a in soup.find_all('a'):
+                if a.get('href') and not a.get('href').startswith('http'):
+                    a['href'] = urljoin(url, a.get('href'))
+
             top_level_sections = soup.find_all('section', class_='tsd-panel-group tsd-member-group')
             methods = []
 
@@ -127,7 +129,7 @@ class TypeScriptParser:
 
                 self.typescript_methods[type][resource][method_name] = {
                     'method_description': method_description,
-                    'method_link': url + method.find('a', class_='tsd-anchor-icon')["href"],
+                    'method_link': method.find('a', class_='tsd-anchor-icon')["href"],
                     'parameters': param_object,
                     'proto': '', # method_name ?
                     'return': return_object

@@ -113,7 +113,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `mimeType` ([MimeType](../types/MimeType.html)) (optional)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -218,7 +218,7 @@ A specific MIME type can be requested but may not necessarily be the same one re
 
 **Parameters:**
 
-- `mimeType` ([MimeType](../types/MimeType.html)) (optional)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -374,7 +374,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[cameraApi](../modules/cameraApi.html).[GetPropertiesResponse](cameraApi.GetPropertiesResponse.html)>)
+- (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getProperties).
 
@@ -437,12 +437,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#doCommand).
 
@@ -501,7 +501,6 @@ if geometries:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_geometries).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -511,7 +510,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getGeometries).
 

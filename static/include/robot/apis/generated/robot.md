@@ -22,15 +22,15 @@ operations = await machine.get_operations()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_operations).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
+- None.
 
 **Returns:**
 
-- (Promise<[Operation](robotApi.Operation.html)[]>)
+- (Promise<[Operation](https://ts.viam.dev/classes/robotApi.Operation.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getOperations).
 
@@ -64,15 +64,15 @@ config_status = machine_status.config
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
+- None.
 
 **Returns:**
 
-- (Promise<[GetMachineStatusResponse](robotApi.GetMachineStatusResponse.html)>)
+- (Promise<[GetMachineStatusResponse](https://ts.viam.dev/classes/robotApi.GetMachineStatusResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getMachineStatus).
 
@@ -107,10 +107,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
+- None.
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[ResourceName](commonApi.ResourceName.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourceNames).
 
@@ -141,7 +142,6 @@ await machine.cancel_operation("INSERT OPERATION ID")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.cancel_operation).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -182,7 +182,6 @@ await machine.block_for_operation("INSERT OPERATION ID")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -232,7 +231,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
+- [(\*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -250,11 +249,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `transforms` ([commonApi](../modules/commonApi.html)) (required)
+- `transforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required)
 
 **Returns:**
 
-- (Promise<[FrameSystemConfig](robotApi.FrameSystemConfig.html)[]>)
+- (Promise<[FrameSystemConfig](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
 
@@ -309,13 +308,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `pose` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
 - `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
+- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
 
 **Returns:**
 
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -337,14 +336,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `source` ([commonApi](../modules/commonApi.html)) (required)
+- `source` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required)
 - `destination` (string) (required): The name of the reference frame to transform the given.
-- `supplementalTransforms` ([commonApi](../modules/commonApi.html)) (required): Pose information on any additional
+- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required): Pose information on any additional
   reference frames that are needed to perform the transform.
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[PoseInFrame](commonApi.PoseInFrame.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPose).
 
@@ -379,8 +378,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Parameters:**
 
 - `pointCloudPCD` (Uint8Array) (required): The point clouds to transform. This should be in the
-  PCD format encoded into bytes:
-  https://pointclouds.org/documentation/tutorials/pcd_file_format.html.
+  [PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 - `source` (string) (required): The reference frame of the point cloud.
 - `destination` (string) (required): The reference frame into which the source data should
   be transformed, if unset this defaults to the "world" reference frame. Do
@@ -423,15 +421,15 @@ module_models = await machine.get_models_from_modules(qs)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_models_from_modules).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
+- None.
 
 **Returns:**
 
-- (Promise<[ModuleModel](robotApi.ModuleModel.html)[]>)
+- (Promise<[ModuleModel](https://ts.viam.dev/classes/robotApi.ModuleModel.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getModelsFromModules).
 
@@ -488,6 +486,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
+- None.
 
 **Returns:**
 
@@ -599,10 +598,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
+- None.
 
 **Returns:**
 
-- (Promise<[GetCloudMetadataResponse](robotApi.GetCloudMetadataResponse.html)>)
+- (Promise<[GetCloudMetadataResponse](https://ts.viam.dev/classes/robotApi.GetCloudMetadataResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getCloudMetadata).
 

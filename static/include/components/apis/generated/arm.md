@@ -58,7 +58,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Pose](commonApi.Pose.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getEndPosition).
 
@@ -151,7 +151,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `pose` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `pose` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -398,7 +398,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[JointPositions](armApi.JointPositions.html)>)
+- (Promise<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getJointPositions).
 
@@ -713,7 +713,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getGeometries).
 
@@ -804,12 +804,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#doCommand).
 

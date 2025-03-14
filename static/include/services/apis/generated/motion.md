@@ -111,10 +111,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](../types/PlainMessage.html)) (required)
-- `componentName` ([PlainMessage](../types/PlainMessage.html)) (required)
-- `worldState` ([PlainMessage](../types/PlainMessage.html)) (optional)
-- `constraints` ([PlainMessage](../types/PlainMessage.html)) (optional)
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -263,11 +263,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](../types/PlainMessage.html)) (required)
-- `componentName` ([PlainMessage](../types/PlainMessage.html)) (required)
-- `slamServiceName` ([PlainMessage](../types/PlainMessage.html)) (required)
-- `motionConfig` ([PlainMessage](../types/PlainMessage.html)) (optional)
-- `obstacles` ([PlainMessage](../types/PlainMessage.html)) (optional)
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -430,13 +430,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](../types/PlainMessage.html)) (required)
-- `componentName` ([PlainMessage](../types/PlainMessage.html)) (required)
-- `movementSensorName` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `heading` (number) (optional)
-- `obstaclesList` ([PlainMessage](../types/PlainMessage.html)) (optional)
-- `motionConfig` ([PlainMessage](../types/PlainMessage.html)) (optional)
-- `boundingRegionsList` ([PlainMessage](../types/PlainMessage.html)) (optional)
+- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -595,15 +595,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `destinationFrame` (string) (required)
-- `supplementalTransforms` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[PoseInFrame](commonApi.PoseInFrame.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPose).
 
@@ -678,7 +678,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -760,7 +760,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[motionApi](../modules/motionApi.html).[ListPlanStatusesResponse](motionApi.ListPlanStatusesResponse.html)>)
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listPlanStatuses).
 
@@ -848,7 +848,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `lastPlanOnly` (boolean) (optional)
 - `executionId` (string) (optional)
 - `extra` (None) (optional)
@@ -856,7 +856,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[motionApi](../modules/motionApi.html).[GetPlanResponse](motionApi.GetPlanResponse.html)>)
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPlan).
 
@@ -987,12 +987,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#doCommand).
 

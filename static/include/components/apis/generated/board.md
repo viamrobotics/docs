@@ -777,7 +777,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[ReadAnalogReaderResponse](boardApi.ReadAnalogReaderResponse.html)>)
+- (Promise<[ReadAnalogReaderResponse](https://ts.viam.dev/classes/boardApi.ReadAnalogReaderResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#readAnalogReader).
 
@@ -978,7 +978,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `interrupts` (string) (required): Names of the interrupts to stream.
-- `queue` ([Tick](../interfaces/Tick.html)) (required): Array to put the ticks in.
+- `queue` ([Tick](https://ts.viam.dev/interfaces/Tick.html)) (required): Array to put the ticks in.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -1079,8 +1079,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `powerMode` ([boardApi](../modules/boardApi.html)) (required): The requested power mode.
-- `duration` ([Duration](Duration.html)) (optional): The requested duration to stay in power mode.
+- `powerMode` ([boardApi](https://ts.viam.dev/modules/boardApi.html)) (required): The requested power mode.
+- `duration` ([Duration](https://ts.viam.dev/classes/Duration.html)) (optional): The requested duration to stay in power mode.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -1392,12 +1392,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#doCommand).
 

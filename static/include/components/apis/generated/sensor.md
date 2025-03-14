@@ -58,9 +58,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<Record<string, [JsonValue](../types/JsonValue.html)>>)
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#getReadings).
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const readings = await mySensor.getReadings();
+```
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -151,12 +157,12 @@ If you are implementing your own sensor and add features that have no built-in A
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#doCommand).
 

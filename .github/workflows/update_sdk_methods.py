@@ -13,8 +13,6 @@ from parse_flutter import FlutterParser
 from parse_typescript import TypeScriptParser
 from parser_utils import make_soup
 
-import pprint
-
 ## The full list of SDK languages we scrape. You can use the sdk_languages
 ## positional parameter to refine this at runtime if desired:
 sdks_supported = ["go", "python", "flutter", "typescript"]
@@ -1015,7 +1013,7 @@ def write_markdown(type, names, methods):
 
                             # Close tabs
                             output_file.write("{{% /tab %}}\n")
-                            if not (go_method_name and "go" in sdks) and not (flutter_method_name and "flutter" in sdks):
+                            if not (go_method_name and "go" in sdks) and not (flutter_method_name and "flutter" in sdks) and not (typescript_method_name and "typescript" in sdks):
                                 output_file.write("{{< /tabs >}}\n")
 
                         if go_method_name and "go" in sdks:
@@ -1129,12 +1127,10 @@ def write_markdown(type, names, methods):
                             output_file.write('**Parameters:**\n\n')
 
                             if typescript_method_name not in methods['typescript'][type][resource]:
-                                print("ERROR: Method not found in typescript SDK: ", typescript_method_name)
-                                print(type, resource)
-                                print(methods['typescript'][type])
+                                print("ERROR: Method not found in typescript SDK: ", typescript_method_name, type, resource)
                                 continue
 
-                            if 'parameters' in methods['typescript'][type][resource][typescript_method_name]:
+                            if 'parameters' in methods['typescript'][type][resource][typescript_method_name] and methods['typescript'][type][resource][typescript_method_name]['parameters']:
 
                                 for parameter in methods['typescript'][type][resource][typescript_method_name]['parameters'].keys():
 

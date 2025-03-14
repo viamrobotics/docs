@@ -55,7 +55,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[slamApi](../modules/slamApi.html).[GetPositionResponse](slamApi.GetPositionResponse.html)>)
+- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPosition).
 
@@ -90,7 +90,6 @@ pcd_map = await slam_svc.get_point_cloud_map()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_point_cloud_map).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -134,7 +133,6 @@ internal_state = await slam.get_internal_state()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_internal_state).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -213,7 +211,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[slamApi](../modules/slamApi.html).[GetPropertiesResponse](slamApi.GetPropertiesResponse.html)>)
+- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getProperties).
 
@@ -350,12 +348,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required)
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#doCommand).
 

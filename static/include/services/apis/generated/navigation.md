@@ -61,7 +61,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](../modules/navigationApi.html).[Mode](../enums/navigationApi.Mode.html)>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Mode](https://ts.viam.dev/enums/navigationApi.Mode.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getMode).
 
@@ -127,7 +127,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `mode` ([navigationApi](../modules/navigationApi.html)) (required)
+- `mode` ([navigationApi](https://ts.viam.dev/modules/navigationApi.html)) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -198,7 +198,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](../modules/navigationApi.html).[GetLocationResponse](navigationApi.GetLocationResponse.html)>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetLocationResponse](https://ts.viam.dev/classes/navigationApi.GetLocationResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getLocation).
 
@@ -263,7 +263,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](../modules/navigationApi.html).[Waypoint](navigationApi.Waypoint.html)[]>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Waypoint](https://ts.viam.dev/classes/navigationApi.Waypoint.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getWayPoints).
 
@@ -332,7 +332,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `location` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `location` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -480,7 +480,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[commonApi](../modules/commonApi.html).[GeoGeometry](commonApi.GeoGeometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[GeoGeometry](https://ts.viam.dev/classes/commonApi.GeoGeometry.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getObstacles).
 
@@ -545,7 +545,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](../modules/navigationApi.html).[Path](navigationApi.Path.html)[]>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Path](https://ts.viam.dev/classes/navigationApi.Path.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getPaths).
 
@@ -608,7 +608,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](../modules/navigationApi.html).[GetPropertiesResponse](navigationApi.GetPropertiesResponse.html)>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/navigationApi.GetPropertiesResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getProperties).
 
@@ -700,12 +700,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required)
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#doCommand).
 

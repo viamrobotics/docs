@@ -36,7 +36,6 @@ job_id = await ml_training_client.submit_training_job(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.submit_training_job).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -45,7 +44,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `datasetId` (string) (required)
 - `modelName` (string) (required)
 - `modelVersion` (string) (required)
-- `modelType` ([ModelType](../enums/ModelType.html)) (required)
+- `modelType` ([ModelType](https://ts.viam.dev/enums/ModelType.html)) (required)
 - `tags` (string) (required)
 
 **Returns:**
@@ -94,7 +93,6 @@ job_id = await ml_training_client.submit_custom_training_job(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.submit_custom_training_job).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -140,7 +138,6 @@ job_metadata = await ml_training_client.get_training_job(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.get_training_job).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -149,7 +146,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [TrainingJobMetadata](mlTrainingApi.TrainingJobMetadata.html)>)
+- (Promise<undefined | [TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#getTrainingJob).
 
@@ -184,17 +181,16 @@ first_job_id = jobs_metadata[1].id
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.list_training_jobs).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
 - `organizationId` (string) (required)
-- `status` ([TrainingStatus](../enums/TrainingStatus.html)) (required)
+- `status` ([TrainingStatus](https://ts.viam.dev/enums/TrainingStatus.html)) (required)
 
 **Returns:**
 
-- (Promise<[TrainingJobMetadata](mlTrainingApi.TrainingJobMetadata.html)[]>)
+- (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#listTrainingJobs).
 
@@ -230,7 +226,6 @@ await ml_training_client.cancel_training_job(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.cancel_training_job).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -271,7 +266,6 @@ await ml_training_client.delete_completed_training_job(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.delete_completed_training_job).
 
 {{% /tab %}}
-{{< /tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**

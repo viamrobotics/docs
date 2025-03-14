@@ -51,7 +51,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<null | [Date, Date, Record<string, [JsonValue](../types/JsonValue.html)>]>)
+- (Promise<null | [Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getLatestTabularData).
 
@@ -259,11 +259,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying tabular data to retrieve. No
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying tabular data to retrieve. No
   filter implies all tabular data.
 - `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
   to 50 if unspecfied.
-- `sortOrder` ([Order](../enums/dataApi.Order.html)) (optional): The desired sort order of the data.
+- `sortOrder` ([Order](https://ts.viam.dev/enums/dataApi.Order.html)) (optional): The desired sort order of the data.
 - `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
   provided, the server will return the next data entries after the last
   ID.
@@ -577,11 +577,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to retrieve. No
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to retrieve. No
   filter implies all binary data.
 - `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
   to 50 if unspecfied.
-- `sortOrder` ([Order](../enums/dataApi.Order.html)) (optional): The desired sort order of the data.
+- `sortOrder` ([Order](https://ts.viam.dev/enums/dataApi.Order.html)) (optional): The desired sort order of the data.
 - `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
   provided, the server will return the next data entries after the last
   ID.
@@ -594,7 +594,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<{     count: bigint;     data: [BinaryData](dataApi.BinaryData.html)[];     last: string; }>)
+- (Promise<{     count: bigint;     data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[];     last: string; }>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binaryDataByFilter).
 
@@ -700,11 +700,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the requested binary data.
+- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the requested binary data.
 
 **Returns:**
 
-- (Promise<[BinaryData](dataApi.BinaryData.html)[]>)
+- (Promise<[BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binaryDataByIds).
 
@@ -867,7 +867,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to delete. No
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to delete. No
   filter implies all binary data.
 - `includeInternalData` (boolean) (optional): Whether or not to delete internal data. Default
   is true.
@@ -972,7 +972,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the data to be deleted. Must be non-empty.
+- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the data to be deleted. Must be non-empty.
 
 **Returns:**
 
@@ -1078,7 +1078,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `tags` (string) (required): The list of tags to add to specified binary data. Must be
   non-empty.
-- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the data to be tagged. Must be non-empty.
+- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the data to be tagged. Must be non-empty.
 
 **Returns:**
 
@@ -1168,7 +1168,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `tags` (string) (required): The tags to add to the data.
-- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
   No filter implies all binary data.
 
 **Returns:**
@@ -1280,7 +1280,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `tags` (string) (required): List of tags to remove from specified binary data. Must be
   non-empty.
-- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the data to be edited. Must be non-empty.
+- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the data to be edited. Must be non-empty.
 
 **Returns:**
 
@@ -1371,7 +1371,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `tags` (string) (required): List of tags to remove from specified binary data. Must be
   non-empty.
-- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
   No filter implies all binary data.
 
 **Returns:**
@@ -1454,7 +1454,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
   No filter implies all data.
 
 **Returns:**
@@ -1557,7 +1557,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `id` ([BinaryID](BinaryID.html)) (required)
+- `id` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required)
 - `label` (string) (required): A label for the bounding box.
 - `xMinNormalized` (number) (required): The min X value of the bounding box normalized from 0
   to 1.
@@ -1662,7 +1662,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `binId` ([BinaryID](BinaryID.html)) (required): The ID of the image to remove the bounding box from.
+- `binId` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The ID of the image to remove the bounding box from.
 - `bboxId` (string) (required): The ID of the bounding box to remove.
 
 **Returns:**
@@ -1748,7 +1748,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
   No filter implies all labels.
 
 **Returns:**
@@ -2002,7 +2002,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of binary data to add to dataset.
+- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of binary data to add to dataset.
 - `datasetId` (string) (required): The ID of the dataset to be added to.
 
 **Returns:**
@@ -2108,7 +2108,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the binary data to remove from dataset.
+- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the binary data to remove from dataset.
 - `datasetId` (string) (required): The ID of the dataset to be removed from.
 
 **Returns:**

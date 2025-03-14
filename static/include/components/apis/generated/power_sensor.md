@@ -322,7 +322,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<Record<string, [JsonValue](../types/JsonValue.html)>>)
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getReadings).
 
@@ -431,12 +431,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](../types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#doCommand).
 
