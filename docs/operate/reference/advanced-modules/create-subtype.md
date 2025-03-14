@@ -106,3 +106,15 @@ Now that your resource API is defined, create a new model that implements your n
 
 {{% /manualcard %}}
 {{< /cards >}}
+
+{{% alert title="Note" color="note" %}}
+
+After you define a new API and create a model that implements it, keep the following in mind when writing code against your new API:
+
+- You can't use [SDKs](/dev/reference/sdks/) to call your new API unless you build out the client to support it.
+  It is easiest to write code against your new API in the language you used to define it.
+- Since your API doesn't have built-in SDK support, you'll need a local copy of the module code on whatever machine is running client code against it.
+- Be sure to import the API definition from the module directory, for example in Python it would be of the form `from path.to.module.src.gizmo import Gizmo`.
+  This example module written in Python uses a [Python script](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/client.py) to call the custom API from within the module directory.
+
+{{% /alert %}}
