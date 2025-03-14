@@ -185,7 +185,7 @@ class FlutterParser:
 
                                 ## Markdownify return usage and replace relative links with absolute:
                                 formatted_return_usage = md(return_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
-                                this_method_return_dict["return_usage"] = formatted_return_usage.replace('>>', '>\\>').replace("dart-core/Future-class.html", "dart-async/Future-class.html")
+                                this_method_return_dict["return_usage"] = formatted_return_usage.replace('>>', '>\\>').replace("dart-core/Future-class.html", "dart-async/Future-class.html").replace("dart-core/Stream-class.html","dart-async/Stream-class.html")
 
                                 # Parse return type:
                                 if return_tag.find('span', class_ = 'type-parameter'):

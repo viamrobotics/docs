@@ -55,6 +55,20 @@ result, err := myGenericComponent.DoCommand(context.Background(), command)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#doCommand).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -107,61 +121,6 @@ if geometries:
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### DoCommand
-
-Execute model-specific commands.
-If you are implementing your own generic component and add features that have no built-in API method, you can access them with `DoCommand`.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): Result of the executed command.
-
-**Raises:**
-
-- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")
-command = {"cmd": "test", "data1": 500}
-result = await my_generic_component.do_command(command)
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.do_command).
-
-{{% /tab %}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
-
-**Returns:**
-
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
-
-**Example:**
-
-```dart {class="line-numbers linkable-line-numbers"}
-// Example using doCommand with an arm component
-const command = {'cmd': 'test', 'data1': 500};
-var result = myArm.doCommand(command);
-```
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
 
 {{% /tab %}}
 {{< /tabs >}}

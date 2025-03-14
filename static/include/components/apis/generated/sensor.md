@@ -49,6 +49,26 @@ readings, err := mySensor.Readings(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Sensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#getReadings).
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const readings = await mySensor.getReadings();
+```
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -133,6 +153,20 @@ For built-in models, model-specific commands are covered with each model's docum
 If you are implementing your own sensor and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#doCommand).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**

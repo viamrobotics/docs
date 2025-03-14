@@ -52,6 +52,20 @@ linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getLinearVelocity).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -133,6 +147,20 @@ yAngVel := angVel.Y
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getAngularVelocity).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -206,6 +234,20 @@ heading, err := myMovementSensor.CompassHeading(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getCompassHeading).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -291,6 +333,20 @@ logger.Info("The number of degrees that the movement sensor is rotated about the
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Orientation](https://ts.viam.dev/classes/commonApi.Orientation.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getOrientation).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -368,6 +424,20 @@ position, altitude, err := myMovementSensor.Position(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPositionResponse](https://ts.viam.dev/classes/movementSensorApi.GetPositionResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getPosition).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -441,6 +511,20 @@ properties, err := myMovementSensor.Properties(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/movementSensorApi.GetPropertiesResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getProperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -532,6 +616,20 @@ accuracy, err := myMovementSensor.Accuracy(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[GetAccuracyResponse](https://ts.viam.dev/classes/movementSensorApi.GetAccuracyResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getAccuracy).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -608,6 +706,20 @@ linAcc, err := myMovementSensor.LinearAcceleration(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getLinearAcceleration).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -718,6 +830,20 @@ readings, err := mySensor.Readings(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Sensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getReadings).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -817,6 +943,20 @@ result, err := myMovementSensor.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#doCommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

@@ -1,480 +1,478 @@
-## RESOURCE, PROTO, MICRO RDK, PYTHON METHOD, GO METHOD, FLUTTER METHOD
+## RESOURCE, PROTO, MICRO RDK, PYTHON METHOD, GO METHOD, FLUTTER METHOD, TYPESCRIPT METHOD
 
 ## Arm
-arm,GetEndPosition,,get_end_position,EndPosition,endPosition
-arm,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition
-arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJointPositions
-arm,MoveThroughJointPositions,,,MoveThroughJointPositions,
-arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions
-arm,GetKinematics,,get_kinematics,,
+arm,GetEndPosition,,get_end_position,EndPosition,endPosition,getEndPosition
+arm,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPosition
+arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJointPositions,moveToJointPositions
+arm,MoveThroughJointPositions,,,MoveThroughJointPositions,,
+arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
+arm,GetKinematics,,get_kinematics,,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-arm,IsMoving,,is_moving,IsMoving,isMoving
-arm,Stop,,stop,Stop,stop
-arm,GetGeometries,,get_geometries,Geometries,
-arm,Reconfigure,,,Reconfigure,
-arm,DoCommand,,do_command,DoCommand,doCommand
-arm,GetResourceName,,get_resource_name,,getResourceName
-arm,Close,,close,Close,
+arm,IsMoving,,is_moving,IsMoving,isMoving,isMoving
+arm,Stop,,stop,Stop,stop,stop
+arm,GetGeometries,,get_geometries,Geometries,,getGeometries
+arm,Reconfigure,,,Reconfigure,,
+arm,DoCommand,,do_command,DoCommand,doCommand,doCommand
+arm,GetResourceName,,get_resource_name,,getResourceName,
+arm,Close,,close,Close,,
 
 ## Base
-base,MoveStraight,No,move_straight,MoveStraight,moveStraight
-base,Spin,No,spin,Spin,spin
-base,SetPower,Yes,set_power,SetPower,setPower
-base,SetVelocity,No,set_velocity,SetVelocity,setVelocity
-base,GetProperties,No,get_properties,Properties,
+base,MoveStraight,No,move_straight,MoveStraight,moveStraight,moveStraight
+base,Spin,No,spin,Spin,spin,spin
+base,SetPower,Yes,set_power,SetPower,setPower,setPower
+base,SetVelocity,No,set_velocity,SetVelocity,setVelocity,setVelocity
+base,GetProperties,No,get_properties,Properties,,getProperties
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-base,IsMoving,No,is_moving,IsMoving,isMoving
-base,Stop,Yes,stop,Stop,stop
-base,GetGeometries,No,get_geometries,Geometries,
-base,Reconfigure,No,,Reconfigure,
-base,DoCommand,Yes,do_command,DoCommand,doCommand
-base,GetResourceName,No,get_resource_name,,getResourceName
-base,Close,No,close,Close,
+base,IsMoving,No,is_moving,IsMoving,isMoving,isMoving
+base,Stop,Yes,stop,Stop,stop,stop
+base,GetGeometries,No,get_geometries,Geometries,,getGeometries
+base,Reconfigure,No,,Reconfigure,,
+base,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
+base,GetResourceName,No,get_resource_name,,getResourceName,
+base,Close,No,close,Close,,
 
 ## Board
-board,SetGPIO,Yes,set,Set,setGpioState
-board,GetGPIO,Yes,get,Get,gpio
+board,SetGPIO,Yes,set,Set,setGpioState,setGPIO
+board,GetGPIO,Yes,get,Get,gpio,getGPIO
 ## HACK: Proto is PWM but we call it GetPWM in docs. Upstream likely to change to match soonish:
-board,GetPWM,Yes,get_pwm,PWM,pwm
-board,SetPWM,Yes,set_pwm,SetPWM,setPwm
-board,PWMFrequency,Yes,get_pwm_frequency,PWMFreq,pwmFrequency
-board,SetPWMFrequency,Yes,set_pwm_frequency,SetPWMFreq,setPwmFrequency
-board,GetDigitalInterruptValue,No,value,Value,digitalInterruptValue
-board,ReadAnalogReader,Yes,read,Read,analogReaderValue
+board,GetPWM,Yes,get_pwm,PWM,pwm,getPWM
+board,SetPWM,Yes,set_pwm,SetPWM,setPwm,setPWM
+board,PWMFrequency,Yes,get_pwm_frequency,PWMFreq,pwmFrequency,getPWMFrequency
+board,SetPWMFrequency,Yes,set_pwm_frequency,SetPWMFreq,setPwmFrequency,setPWMFrequency
+board,GetDigitalInterruptValue,No,value,Value,digitalInterruptValue,getDigitalInterruptValue
+board,ReadAnalogReader,Yes,read,Read,analogReaderValue,readAnalogReader
 ## HACK: PySDK: write_analog currently borked; deprecated in favor of write: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
-board,WriteAnalog,Yes,write,Write,writeAnalog
-board,StreamTicks,No,stream_ticks,StreamTicks,streamTicks
-board,SetPowerMode,No,set_power_mode,SetPowerMode,setPowerMode
+board,WriteAnalog,Yes,write,Write,writeAnalog,writeAnalog
+board,StreamTicks,No,stream_ticks,StreamTicks,streamTicks,streamTicks
+board,SetPowerMode,No,set_power_mode,SetPowerMode,setPowerMode,setPowerMode
 ## HACK: Board (python, go) provides additional helper functions, adding 5 pseudo-entries:
-board,AnalogByName,No,analog_by_name,AnalogByName,
+board,AnalogByName,No,analog_by_name,AnalogByName,,
 board,DigitalInterruptByName,No,digital_interrupt_by_name,DigitalInterruptByName,,
-board,GPIOPinByName,No,gpio_pin_by_name,GPIOPinByName,
+board,GPIOPinByName,No,gpio_pin_by_name,GPIOPinByName,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-board,GetGeometries,No,get_geometries,,
-board,Reconfigure,No,,Reconfigure,
-board,DoCommand,Yes,do_command,DoCommand,doCommand
-board,Name,No,,Name,
-board,GetResourceName,No,get_resource_name,,getResourceName
-board,Close,No,close,Close,
+board,GetGeometries,No,get_geometries,,,
+board,Reconfigure,No,,Reconfigure,,
+board,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
+board,Name,No,,Name,,
+board,GetResourceName,No,get_resource_name,,getResourceName,
+board,Close,No,close,Close,,
 
 ## Button
-button,Push,No,,Push,
-button,DoCommand,No,,DoCommand,
-button,Close,No,,Close,
+button,Push,No,,Push,,push
+button,DoCommand,No,,DoCommand,,doCommand
+button,Close,No,,Close,,
 
 ## Camera
-camera,GetImage,,get_image,Image,image
-camera,GetImages,,get_images,Images,
-camera,RenderFrame,,,,
-camera,GetPointCloud,,get_point_cloud,NextPointCloud,pointCloud
-camera,GetProperties,,get_properties,Properties,properties
+camera,GetImage,,get_image,Image,image,getImage
+camera,GetImages,,get_images,Images,,
+camera,RenderFrame,,,,,renderFrame
+camera,GetPointCloud,,get_point_cloud,NextPointCloud,pointCloud,getPointCloud
+camera,GetProperties,,get_properties,Properties,properties,getProperties
 ## TED: Camera in Go SDK doesn't appear to implement (inherit) these:
-camera,DoCommand,,do_command,,doCommand
-camera,GetGeometries,,get_geometries,,
+camera,DoCommand,,do_command,,doCommand,doCommand
+camera,GetGeometries,,get_geometries,,,getGeometries
 ## HACK:  proto for close, manually mapping:
-camera,GetResourceName,,get_resource_name,,getResourceName
-camera,Close,,close,Close,
+camera,GetResourceName,,get_resource_name,,getResourceName,
+camera,Close,,close,Close,,
 
 ## Encoder
-encoder,GetPosition,Yes,get_position,Position,
-encoder,ResetPosition,Yes,reset_position,ResetPosition,
-encoder,GetProperties,Yes,get_properties,Properties,
-encoder,GetGeometries,No,get_geometries,,
+encoder,GetPosition,Yes,get_position,Position,,getPosition
+encoder,ResetPosition,Yes,reset_position,ResetPosition,,resetPosition
+encoder,GetProperties,Yes,get_properties,Properties,,getProperties
+encoder,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-encoder,Reconfigure,No,,Reconfigure,
-encoder,DoCommand,Yes,do_command,DoCommand,
-encoder,GetResourceName,No,get_resource_name,,
-encoder,Close,No,close,Close,
+encoder,Reconfigure,No,,Reconfigure,,
+encoder,DoCommand,Yes,do_command,DoCommand,,doCommand
+encoder,GetResourceName,No,get_resource_name,,,
+encoder,Close,No,close,Close,,
 
 ## Gantry
-gantry,GetPosition,,get_position,Position,position
-gantry,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition
-gantry,GetLengths,,get_lengths,Lengths,lengths
-gantry,Home,,home,Home,home
+gantry,GetPosition,,get_position,Position,position,getPosition
+gantry,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPosition
+gantry,GetLengths,,get_lengths,Lengths,lengths,getLengths
+gantry,Home,,home,Home,home,home
 ## TED: Gantry in Go SDK doesn't appear to implement (inherit) this:
-gantry,GetGeometries,,,,
+gantry,GetGeometries,,,,,getGeometries
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-gantry,IsMoving,,is_moving,IsMoving,isMoving
-gantry,Stop,,stop,Stop,stop
-gantry,GetGeometries,,get_geometries,,
-gantry,Reconfigure,,,Reconfigure,
-gantry,DoCommand,,do_command,,doCommand
-gantry,GetResourceName,,get_resource_name,,getResourceName
-gantry,Close,,close,Close,
+gantry,IsMoving,,is_moving,IsMoving,isMoving,isMoving
+gantry,Stop,,stop,Stop,stop,stop
+gantry,Reconfigure,,,Reconfigure,,
+gantry,DoCommand,,do_command,,doCommand,doCommand
+gantry,GetResourceName,,get_resource_name,,getResourceName,
+gantry,Close,,close,Close,,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_component,DoCommand,Yes,do_command,DoCommand,doCommand
-generic_component,GetGeometries,No,get_geometries,,
-generic_component,DoCommand,,do_command,,doCommand
+generic_component,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
+generic_component,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
-generic_component,GetResourceName,No,get_resource_name,,getResourceName
-generic_component,Close,No,close,,
+generic_component,GetResourceName,No,get_resource_name,,getResourceName,
+generic_component,Close,No,close,,,
 
 ## Gripper
-gripper,Open,,open,Open,open
-gripper,Grab,,grab,Grab,grab
+gripper,Open,,open,Open,open,open
+gripper,Grab,,grab,Grab,grab,grab
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-gripper,IsMoving,,is_moving,IsMoving,isMoving
-gripper,Stop,,stop,Stop,stop
-gripper,GetGeometries,,get_geometries,Geometries,
-gripper,Reconfigure,,,Reconfigure,
-gripper,DoCommand,,,,doCommand
-gripper,GetResourceName,,get_resource_name,,getResourceName
-gripper,Close,,close,Close,
+gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
+gripper,Stop,,stop,Stop,stop,stop
+gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
+gripper,Reconfigure,,,Reconfigure,,
+gripper,DoCommand,,,,doCommand,doCommand
+gripper,GetResourceName,,get_resource_name,,getResourceName,
+gripper,Close,,close,Close,,
 
 ## Input Controller
-input_controller,GetControls,,get_controls,Controls,
-input_controller,GetEvents,,get_events,Events,
-input_controller,StreamEvents,,,,
-input_controller,TriggerEvent,,trigger_event,TriggerEvent,
+input_controller,GetControls,,get_controls,Controls,,
+input_controller,GetEvents,,get_events,Events,,
+input_controller,StreamEvents,,,,,
+input_controller,TriggerEvent,,trigger_event,TriggerEvent,,
 ## TED: Go SDK doesn't appear to implement this:
-input_controller,GetGeometries,,get_geometries,,
+input_controller,GetGeometries,,get_geometries,,,
 ## HACK: Input (python, go) provides additional helper function, adding 1 pseudo-entries:
-input_controller,RegisterControlCallback,,register_control_callback,RegisterControlCallback,
+input_controller,RegisterControlCallback,,register_control_callback,RegisterControlCallback,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-input_controller,Reconfigure,,,Reconfigure,
-input_controller,DoCommand,,do_command,,
-input_controller,GetResourceName,,get_resource_name,,
-input_controller,Close,,close,Close,
+input_controller,Reconfigure,,,Reconfigure,,
+input_controller,DoCommand,,do_command,,,
+input_controller,GetResourceName,,get_resource_name,,,
+input_controller,Close,,close,Close,,
 
 ## Motor
-motor,SetPower,Yes,set_power,SetPower,setPower
-motor,SetRPM,No,set_rpm,SetRPM,setRPM
-motor,GoFor,No,go_for,GoFor,goFor
-motor,GoTo,No,go_to,GoTo,goTo
-motor,ResetZeroPosition,No,reset_zero_position,ResetZeroPosition,resetZeroPosition
-motor,GetPosition,Yes,get_position,Position,position
-motor,GetProperties,Yes,get_properties,Properties,properties
-motor,IsPowered,No,is_powered,IsPowered,powerState
-# NOT implemented motor,GetGeometries,No,get_geometries,,
+motor,SetPower,Yes,set_power,SetPower,setPower,setPower
+motor,SetRPM,No,set_rpm,SetRPM,setRPM,setRPM
+motor,GoFor,No,go_for,GoFor,goFor,goFor
+motor,GoTo,No,go_to,GoTo,goTo,goTo
+motor,ResetZeroPosition,No,reset_zero_position,ResetZeroPosition,resetZeroPosition,resetZeroPosition
+motor,GetPosition,Yes,get_position,Position,position,getPosition
+motor,GetProperties,Yes,get_properties,Properties,properties,getProperties
+motor,IsPowered,No,is_powered,IsPowered,powerState,isPowered
+# NOT implemented motor,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-motor,IsMoving,Yes,is_moving,IsMoving,isMoving
-motor,Stop,Yes,stop,Stop,stop
-motor,Reconfigure,No,,Reconfigure,
+motor,IsMoving,Yes,is_moving,IsMoving,isMoving,isMoving
+motor,Stop,Yes,stop,Stop,stop,stop
+motor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
-motor,DoCommand,,,,doCommand
-motor,GetResourceName,No,get_resource_name,,getResourceName
-motor,Close,No,close,Close,
+motor,DoCommand,,,,doCommand,doCommand
+motor,GetResourceName,No,get_resource_name,,getResourceName,
+motor,Close,No,close,Close,,
 
 ## Movement Sensor
-movement_sensor,GetLinearVelocity,Yes,get_linear_velocity,LinearVelocity,linearVelocity
-movement_sensor,GetAngularVelocity,Yes,get_angular_velocity,AngularVelocity,angularVelocity
-movement_sensor,GetCompassHeading,Yes,get_compass_heading,CompassHeading,compassHeading
-movement_sensor,GetOrientation,No,get_orientation,Orientation,orientation
-movement_sensor,GetPosition,Yes,get_position,Position,position
-movement_sensor,GetProperties,Yes,get_properties,Properties,properties
-movement_sensor,GetAccuracy,No,get_accuracy,Accuracy,accuracy
-movement_sensor,GetLinearAcceleration,Yes,get_linear_acceleration,LinearAcceleration,linearAcceleration
+movement_sensor,GetLinearVelocity,Yes,get_linear_velocity,LinearVelocity,linearVelocity,getLinearVelocity
+movement_sensor,GetAngularVelocity,Yes,get_angular_velocity,AngularVelocity,angularVelocity,getAngularVelocity
+movement_sensor,GetCompassHeading,Yes,get_compass_heading,CompassHeading,compassHeading,getCompassHeading
+movement_sensor,GetOrientation,No,get_orientation,Orientation,orientation,getOrientation
+movement_sensor,GetPosition,Yes,get_position,Position,position,getPosition
+movement_sensor,GetProperties,Yes,get_properties,Properties,properties,getProperties
+movement_sensor,GetAccuracy,No,get_accuracy,Accuracy,accuracy,getAccuracy
+movement_sensor,GetLinearAcceleration,Yes,get_linear_acceleration,LinearAcceleration,linearAcceleration,getLinearAcceleration
 ## NOTED: Go SDK doesn't appear to implement this:
-movement_sensor,GetGeometries,No,get_geometries,,
+movement_sensor,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-movement_sensor,GetReadings,Yes,get_readings,Readings,readings
-movement_sensor,Reconfigure,No,,Reconfigure,
-movement_sensor,DoCommand,Yes,do_command,DoCommand,doCommand
-movement_sensor,GetResourceName,No,get_resource_name,,getResourceName
-movement_sensor,Close,No,close,Close,
+movement_sensor,GetReadings,Yes,get_readings,Readings,readings,getReadings
+movement_sensor,Reconfigure,No,,Reconfigure,,
+movement_sensor,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
+movement_sensor,GetResourceName,No,get_resource_name,,getResourceName,
+movement_sensor,Close,No,close,Close,,
 
 ## Power Sensor
-power_sensor,GetVoltage,,get_voltage,Voltage,voltage
-power_sensor,GetCurrent,,get_current,Current,current
-power_sensor,GetPower,,get_power,Power,power
-power_sensor,GetReadings,,get_readings,Readings,readings
+power_sensor,GetVoltage,,get_voltage,Voltage,voltage,getVoltage
+power_sensor,GetCurrent,,get_current,Current,current,getCurrent
+power_sensor,GetPower,,get_power,Power,power,getPower
+power_sensor,GetReadings,,get_readings,Readings,readings,getReadings
 ## HACK:  GetGeometries proto for power sensor component, adding 1 pseudo-entry:
 ## TED: But t for Go SDK:
-# NOT implemented power_sensor,GetGeometries,,get_geometries,,
+# NOT implemented power_sensor,GetGeometries,,get_geometries,,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-power_sensor,Reconfigure,,,Reconfigure,
-power_sensor,DoCommand,,do_command,DoCommand,doCommand
-power_sensor,GetResourceName,,get_resource_name,,getResourceName
-power_sensor,Close,,close,Close,
+power_sensor,Reconfigure,,,Reconfigure,,
+power_sensor,DoCommand,,do_command,DoCommand,doCommand,doCommand
+power_sensor,GetResourceName,,get_resource_name,,getResourceName,
+power_sensor,Close,,close,Close,,
 
 ## Sensor
-sensor,GetReadings,Yes,get_readings,Readings,readings
-# NOT implemented sensor,GetGeometries,No,get_geometries,,
+sensor,GetReadings,Yes,get_readings,Readings,readings,getReadings
+# NOT implemented sensor,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
-sensor,GetGeometries,,get_geometries,,
-sensor,Reconfigure,No,,Reconfigure,
+sensor,GetGeometries,,get_geometries,,,
+sensor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
-sensor,DoCommand,,,,doCommand
-sensor,GetResourceName,No,get_resource_name,,getResourceName
-sensor,Close,No,close,Close,
+sensor,DoCommand,,,,doCommand,doCommand
+sensor,GetResourceName,No,get_resource_name,,getResourceName,
+sensor,Close,No,close,Close,,
 
 ## Servo
-servo,Move,Yes,move,Move,move
-servo,GetPosition,Yes,get_position,Position,position
-# NOT implemented servo,GetGeometries,No,get_geometries,,
+servo,Move,Yes,move,Move,move,move
+servo,GetPosition,Yes,get_position,Position,position,getPosition
+# NOT implemented servo,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-servo,IsMoving,No,is_moving,IsMoving,isMoving
-servo,Stop,Yes,stop,Stop,stop
-servo,Reconfigure,No,,Reconfigure,
+servo,IsMoving,No,is_moving,IsMoving,isMoving,isMoving
+servo,Stop,Yes,stop,Stop,stop,stop
+servo,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
-servo,DoCommand,,,,doCommand
-servo,GetResourceName,No,get_resource_name,,getResourceName
-servo,Close,No,close,Close,
+servo,DoCommand,,,,doCommand,doCommand
+servo,GetResourceName,No,get_resource_name,,getResourceName,
+servo,Close,No,close,Close,,
 
 ## Switch
-switch,SetPosition,No,,SetPosition,
-switch,GetPosition,No,,GetPosition,
-switch,GetNumberOfPositions,No,,GetNumberOfPositions,
-switch,DoCommand,No,,DoCommand,
-switch,Close,No,,Close,
+switch,SetPosition,No,,SetPosition,,setPosition
+switch,GetPosition,No,,GetPosition,,getPosition
+switch,GetNumberOfPositions,No,,GetNumberOfPositions,,getNumberOfPositions
+switch,DoCommand,No,,DoCommand,,doCommand
+switch,Close,No,,Close,,
 
 ## Base Remote Control
 ## HACK: No proto for Base Remote Control, manually adding:
-base_remote_control,ControllerInputs,,,ControllerInputs,
+base_remote_control,ControllerInputs,,,ControllerInputs,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-base_remote_control,Reconfigure,,,Reconfigure,
-base_remote_control,DoCommand,,,DoCommand,
-base_remote_control,Close,,,Close,
+base_remote_control,Reconfigure,,,Reconfigure,,
+base_remote_control,DoCommand,,,DoCommand,,
+base_remote_control,Close,,,Close,,
 
 ## Data Manager
-data_manager,Sync,No,,Sync,
+data_manager,Sync,No,,Sync,,sync
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-data_manager,Reconfigure,No,,Reconfigure,
-data_manager,DoCommand,No,,DoCommand,
-data_manager,Close,No,,Close,
+data_manager,Reconfigure,No,,Reconfigure,,
+data_manager,DoCommand,No,,DoCommand,,doCommand
+data_manager,Close,No,,Close,,
 
 ## Generic Service
 ## TED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_service,DoCommand,,do_command,DoCommand,
-generic_service,GetResourceName,,get_resource_name,,
+generic_service,DoCommand,,do_command,DoCommand,,doCommand
+generic_service,GetResourceName,,get_resource_name,,,
 ## HACK:  proto for close, manually mapping:
 ## TED: Go SDK also missing Close, but we have it in our docs?:
-generic_service,Close,,close,,
+generic_service,Close,,close,,,
 
 ## MLModel
-mlmodel,Infer,,infer,Infer,
-mlmodel,Metadata,,metadata,Metadata,
+mlmodel,Infer,,infer,Infer,,
+mlmodel,Metadata,,metadata,Metadata,,
 ## HACK:  proto for DoCommand or Close (and/or inherited in Go SDK), manually mapping:
-mlmodel,Reconfigure,,,Reconfigure,
-mlmodel,DoCommand,,,DoCommand,
-mlmodel,GetResourceName,,get_resource_name,,
-mlmodel,Close,,close,Close,
+mlmodel,Reconfigure,,,Reconfigure,,
+mlmodel,DoCommand,,,DoCommand,,
+mlmodel,GetResourceName,,get_resource_name,,,
+mlmodel,Close,,close,Close,,
 
 ## Motion
-motion,Move,,move,Move,
-motion,MoveOnMap,,move_on_map,MoveOnMap,
-motion,MoveOnGlobe,,move_on_globe,MoveOnGlobe,
-motion,GetPose,,get_pose,GetPose,
-motion,StopPlan,,stop_plan,StopPlan,
-motion,ListPlanStatuses,,list_plan_statuses,ListPlanStatuses,
-motion,GetPlan,,get_plan,PlanHistory,
+motion,Move,,move,Move,,move
+motion,MoveOnMap,,move_on_map,MoveOnMap,,moveOnMap
+motion,MoveOnGlobe,,move_on_globe,MoveOnGlobe,,moveOnGlobe
+motion,GetPose,,get_pose,GetPose,,getPose
+motion,StopPlan,,stop_plan,StopPlan,,stopPlan
+motion,ListPlanStatuses,,list_plan_statuses,ListPlanStatuses,,listPlanStatuses
+motion,GetPlan,,get_plan,PlanHistory,,getPlan
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-motion,Reconfigure,,,Reconfigure,
-motion,FromRobot,,from_robot,,
-motion,DoCommand,,do_command,DoCommand,
-motion,GetResourceName,,get_resource_name,,
-motion,Close,,close,Close,
+motion,Reconfigure,,,Reconfigure,,
+motion,FromRobot,,from_robot,,,
+motion,DoCommand,,do_command,DoCommand,,doCommand
+motion,GetResourceName,,get_resource_name,,,
+motion,Close,,close,Close,,
 
 ## Navigation
-navigation,GetMode,,get_mode,Mode,
-navigation,SetMode,,set_mode,SetMode,
-navigation,GetLocation,,get_location,Location,
-navigation,GetWaypoints,,get_waypoints,Waypoints,
-navigation,AddWaypoint,,add_waypoint,AddWaypoint,
-navigation,RemoveWaypoint,,remove_waypoint,RemoveWaypoint,
-navigation,GetObstacles,,get_obstacles,Obstacles,
-navigation,GetPaths,,get_paths,Paths,
-navigation,GetProperties,,get_properties,Properties,
+navigation,GetMode,,get_mode,Mode,,getMode
+navigation,SetMode,,set_mode,SetMode,,setMode
+navigation,GetLocation,,get_location,Location,,getLocation
+navigation,GetWaypoints,,get_waypoints,Waypoints,,getWayPoints
+navigation,AddWaypoint,,add_waypoint,AddWaypoint,,addWayPoint
+navigation,RemoveWaypoint,,remove_waypoint,RemoveWaypoint,,removeWayPoint
+navigation,GetObstacles,,get_obstacles,Obstacles,,getObstacles
+navigation,GetPaths,,get_paths,Paths,,getPaths
+navigation,GetProperties,,get_properties,Properties,,getProperties
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-navigation,Reconfigure,,,Reconfigure,
-navigation,DoCommand,,do_command,DoCommand,
-navigation,GetResourceName,,get_resource_name,,
-navigation,Close,,close,Close,
+navigation,Reconfigure,,,Reconfigure,,
+navigation,DoCommand,,do_command,DoCommand,,doCommand
+navigation,GetResourceName,,get_resource_name,,,
+navigation,Close,,close,Close,,
 
 ## SLAM
-slam,GetPosition,,get_position,Position,
+slam,GetPosition,,get_position,Position,,getPosition
 ## HACK: SLAM (Go) implements proto GetPointCloudMap in user-facing helper PointCloudMapFull instead:
-slam,GetPointCloudMap,,get_point_cloud_map,,
+slam,GetPointCloudMap,,get_point_cloud_map,,,getPointCloudMap
 ## HACK: SLAM (Go) implements proto GetInternalState in user-facing helper InternalStateFull instead:
-slam,GetInternalState,,get_internal_state,,
-slam,GetProperties,,get_properties,Properties,
+slam,GetInternalState,,get_internal_state,,,getInternalState
+slam,GetProperties,,get_properties,Properties,,getProperties
 ## HACK: SLAM (Go) provides 2 additional helper functions, adding 2 pseudo-entries:
-slam,InternalStateFull,,,InternalStateFull,
-slam,PointCloudMapFull,,,PointCloudMapFull,
+slam,InternalStateFull,,,InternalStateFull,,
+slam,PointCloudMapFull,,,PointCloudMapFull,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-slam,Reconfigure,,,Reconfigure,
-slam,DoCommand,,do_command,DoCommand,
-slam,GetResourceName,,get_resource_name,,
-slam,Close,,close,Close,
+slam,Reconfigure,,,Reconfigure,,
+slam,DoCommand,,do_command,DoCommand,,doCommand
+slam,GetResourceName,,get_resource_name,,,
+slam,Close,,close,Close,,
 
 ## Vision
-vision,GetDetectionsFromCamera,,get_detections_from_camera,DetectionsFromCamera,detectionsFromCamera
-vision,GetDetections,,get_detections,Detections,detections
-vision,GetClassificationsFromCamera,,get_classifications_from_camera,ClassificationsFromCamera,classificationsFromCamera
-vision,GetClassifications,,get_classifications,Classifications,classifications
-vision,GetObjectPointClouds,,get_object_point_clouds,GetObjectPointClouds,objectPointClouds
-vision,CaptureAllFromCamera,,capture_all_from_camera,CaptureAllFromCamera,
+vision,GetDetectionsFromCamera,,get_detections_from_camera,DetectionsFromCamera,detectionsFromCamera,getDetectionsFromCamera
+vision,GetDetections,,get_detections,Detections,detections,getDetections
+vision,GetClassificationsFromCamera,,get_classifications_from_camera,ClassificationsFromCamera,classificationsFromCamera,getClassificationsFromCamera
+vision,GetClassifications,,get_classifications,Classifications,classifications,getClassifications
+vision,GetObjectPointClouds,,get_object_point_clouds,GetObjectPointClouds,objectPointClouds,getObjectPointClouds
+vision,CaptureAllFromCamera,,capture_all_from_camera,CaptureAllFromCamera,,captureAllFromCamera
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-vision,Reconfigure,,,Reconfigure,
-vision,DoCommand,,do_command,DoCommand,doCommand
-vision,GetResourceName,,get_resource_name,,getResourceName
-vision,GetProperties,,get_properties,GetProperties,properties
-vision,Close,,close,Close,
+vision,Reconfigure,,,Reconfigure,,
+vision,DoCommand,,do_command,DoCommand,doCommand,doCommand
+vision,GetResourceName,,get_resource_name,,getResourceName,
+vision,GetProperties,,get_properties,GetProperties,properties,getProperties
+vision,Close,,close,Close,,
 
 ## App
-app,GetUserIDByEmail,,get_user_id_by_email,,
-app,CreateOrganization,,create_organization,,
-app,ListOrganizations,,list_organizations,,
-app,GetOrganizationsWithAccessToLocation,,get_organizations_with_access_to_location,,
-app,ListOrganizationsByUser,,list_organizations_by_user,,
-app,GetOrganization,,get_organization,,
-app,GetOrganizationNamespaceAvailability,,get_organization_namespace_availability,,
-app,UpdateOrganization,,update_organization,,
-app,DeleteOrganization,,delete_organization,,
-app,ListOrganizationMembers,,list_organization_members,,
-app,CreateOrganizationInvite,,create_organization_invite,,
-app,UpdateOrganizationInviteAuthorizations,,update_organization_invite_authorizations,,
-app,DeleteOrganizationMember,,delete_organization_member,,
-app,DeleteOrganizationInvite,,delete_organization_invite,,
-app,ResendOrganizationInvite,,resend_organization_invite,,
-app,CreateLocation,,create_location,,
-app,GetLocation,,get_location,,
-app,UpdateLocation,,update_location,,
-app,DeleteLocation,,delete_location,,
-app,ListLocations,,list_locations,,
-app,ShareLocation,,share_location,,
-app,UnshareLocation,,unshare_location,,
-app,LocationAuth,,location_auth,,
-app,CreateLocationSecret,,create_location_secret,,
-app,DeleteLocationSecret,,delete_location_secret,,
-app,GetRobot,,get_robot,,
-app,GetRobotAPIKeys,,get_robot_api_keys,,
+app,GetUserIDByEmail,,get_user_id_by_email,,,getUserIDByEmail
+app,CreateOrganization,,create_organization,,,createOrganization
+app,ListOrganizations,,list_organizations,,,listOrganizations
+app,GetOrganizationsWithAccessToLocation,,get_organizations_with_access_to_location,,,getOrganizationsWithAccessToLocation
+app,ListOrganizationsByUser,,list_organizations_by_user,,,listOrganizationsByUser
+app,GetOrganization,,get_organization,,,getOrganization
+app,GetOrganizationNamespaceAvailability,,get_organization_namespace_availability,,,getOrganizationNamespaceAvailability
+app,UpdateOrganization,,update_organization,,,updateOrganization
+app,DeleteOrganization,,delete_organization,,,deleteOrganization
+app,ListOrganizationMembers,,list_organization_members,,,listOrganizationMembers
+app,CreateOrganizationInvite,,create_organization_invite,,,createOrganizationInvite
+app,UpdateOrganizationInviteAuthorizations,,update_organization_invite_authorizations,,,updateOrganizationInviteAuthorizations
+app,DeleteOrganizationMember,,delete_organization_member,,,deleteOrganizationMember
+app,DeleteOrganizationInvite,,delete_organization_invite,,,deleteOrganizationInvite
+app,ResendOrganizationInvite,,resend_organization_invite,,,resendOrganizationInvite
+app,CreateLocation,,create_location,,,createLocation
+app,GetLocation,,get_location,,,getLocation
+app,UpdateLocation,,update_location,,,updateLocation
+app,DeleteLocation,,delete_location,,,deleteLocation
+app,ListLocations,,list_locations,,,listLocations
+app,ShareLocation,,share_location,,,shareLocation
+app,UnshareLocation,,unshare_location,,,unshareLocation
+app,LocationAuth,,location_auth,,,locationAuth
+app,CreateLocationSecret,,create_location_secret,,,createLocationSecret
+app,DeleteLocationSecret,,delete_location_secret,,,deleteLocationSecret
+app,GetRobot,,get_robot,,,getRobot
+app,GetRobotAPIKeys,,get_robot_api_keys,,,getRobotAPIKeys
 ## TODO: Rover stuff is implemented in py,flutter, but internal in design. Omit at proto-level, t lang-level:
-app,GetRoverRentalRobots,,,,
-app,GetRobotParts,,get_robot_parts,,
-app,GetRobotPart,,get_robot_part,,
-app,GetRobotPartLogs,,get_robot_part_logs,,
-app,TailRobotPartLogs,,tail_robot_part_logs,,
-app,GetRobotPartHistory,,get_robot_part_history,,
-app,UpdateRobotPart,,update_robot_part,,
-app,NewRobotPart,,new_robot_part,,
-app,DeleteRobotPart,,delete_robot_part,,
-app,MarkPartAsMain,,mark_part_as_main,,
-app,MarkPartForRestart,,mark_part_for_restart,,
-app,CreateRobotPartSecret,,create_robot_part_secret,,
-app,DeleteRobotPartSecret,,delete_robot_part_secret,,
-app,ListRobots,,list_robots,,
-app,NewRobot,,new_robot,,
-app,UpdateRobot,,update_robot,,
-app,DeleteRobot,,delete_robot,,
-app,ListFragments,,list_fragments,,
-app,GetFragment,,get_fragment,,
-app,CreateFragment,,create_fragment,,
-app,UpdateFragment,,update_fragment,,
-app,DeleteFragment,,delete_fragment,,
-app,GetFragmentHistory,,get_fragment_history,,
-app,AddRole,,add_role,,
-app,RemoveRole,,remove_role,,
-app,ChangeRole,,change_role,,
-app,ListAuthorizations,,list_authorizations,,
-app,CheckPermissions,,check_permissions,,
-app,GetRegistryItem,,get_registry_item,,
-app,CreateRegistryItem,,create_registry_item,,
-app,UpdateRegistryItem,,update_registry_item,,
-app,ListRegistryItems,,list_registry_items,,
-app,DeleteRegistryItem,,delete_registry_item,,
-app,CreateModule,,create_module,,
-app,UpdateModule,,update_module,,
-app,UploadModuleFile,,upload_module_file,,
-app,GetModule,,get_module,,
-app,ListModules,,list_modules,,
-app,CreateKey,,create_key,,
-app,DeleteKey,,delete_key,,
-app,RotateKey,,rotate_key,,
-app,ListKeys,,list_keys,,
-app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,
+app,GetRoverRentalRobots,,,,,
+app,GetRobotParts,,get_robot_parts,,,getRobotParts
+app,GetRobotPart,,get_robot_part,,,getRobotPart
+app,GetRobotPartLogs,,get_robot_part_logs,,,getRobotPartLogs
+app,TailRobotPartLogs,,tail_robot_part_logs,,,tailRobotPartLogs
+app,GetRobotPartHistory,,get_robot_part_history,,,getRobotPartHistory
+app,UpdateRobotPart,,update_robot_part,,,updateRobotPart
+app,NewRobotPart,,new_robot_part,,,newRobotPart
+app,DeleteRobotPart,,delete_robot_part,,,deleteRobotPart
+app,MarkPartAsMain,,mark_part_as_main,,,markPartAsMain
+app,MarkPartForRestart,,mark_part_for_restart,,,markPartForRestart
+app,CreateRobotPartSecret,,create_robot_part_secret,,,createRobotPartSecret
+app,DeleteRobotPartSecret,,delete_robot_part_secret,,,deleteRobotPartSecret
+app,ListRobots,,list_robots,,,listRobots
+app,NewRobot,,new_robot,,,newRobot
+app,UpdateRobot,,update_robot,,,updateRobot
+app,DeleteRobot,,delete_robot,,,deleteRobot
+app,ListFragments,,list_fragments,,,listFragments
+app,GetFragment,,get_fragment,,,getFragment
+app,CreateFragment,,create_fragment,,,createFragment
+app,UpdateFragment,,update_fragment,,,updateFragment
+app,DeleteFragment,,delete_fragment,,,deleteFragment
+app,GetFragmentHistory,,get_fragment_history,,,
+app,AddRole,,add_role,,,addRole
+app,RemoveRole,,remove_role,,,removeRole
+app,ChangeRole,,change_role,,,changeRole
+app,ListAuthorizations,,list_authorizations,,,listAuthorizations
+app,CheckPermissions,,check_permissions,,,checkPermissions
+app,GetRegistryItem,,get_registry_item,,,getRegistryItem
+app,CreateRegistryItem,,create_registry_item,,,createRegistryItem
+app,UpdateRegistryItem,,update_registry_item,,,updateRegistryItem
+app,ListRegistryItems,,list_registry_items,,,listRegistryItems
+app,DeleteRegistryItem,,delete_registry_item,,,deleteRegistryItem
+app,CreateModule,,create_module,,,createModule
+app,UpdateModule,,update_module,,,updateModule
+app,UploadModuleFile,,upload_module_file,,,
+app,GetModule,,get_module,,,getModule
+app,ListModules,,list_modules,,,listModules
+app,CreateKey,,create_key,,,createKey
+app,DeleteKey,,delete_key,,,deleteKey
+app,RotateKey,,rotate_key,,,rotateKey
+app,ListKeys,,list_keys,,,listKeys
+app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,,createKeyFromExistingKeyAuthorizations
 
 ## Billing
-billing,GetCurrentMonthUsage,,get_current_month_usage,,
-billing,GetOrgBillingInformation,,get_org_billing_information,,
-billing,GetInvoicesSummary,,get_invoices_summary,,
-billing,GetInvoicePdf,,get_invoice_pdf,,
+billing,GetCurrentMonthUsage,,get_current_month_usage,,,getCurrentMonthUsage
+billing,GetOrgBillingInformation,,get_org_billing_information,,,getOrgBillingInformation
+billing,GetInvoicesSummary,,get_invoices_summary,,,getInvoicesSummary
+billing,GetInvoicePdf,,get_invoice_pdf,,,getInvoicePdf
 
 ## Data
-data,GetLatestTabularData,,get_latest_tabular_data,,getLatestTabularData
-data,ExportTabularData,,export_tabular_data,,exportTabularData
-data,TabularDataByFilter,,tabular_data_by_filter,,tabularDataByFilter
-data,TabularDataBySQL,,tabular_data_by_sql,,tabularDataBySql
-data,TabularDataByMQL,,tabular_data_by_mql,,tabularDataByMql
-data,BinaryDataByFilter,,binary_data_by_filter,,binaryDataByFilter
-data,BinaryDataByIDs,,binary_data_by_ids,,binaryDataByIds
-data,DeleteTabularData,,delete_tabular_data,,deleteTabularData
-data,DeleteBinaryDataByFilter,,delete_binary_data_by_filter,,deleteBinaryDataByFilter
-data,DeleteBinaryDataByIDs,,delete_binary_data_by_ids,,deleteBinaryDataByIds
-data,AddTagsToBinaryDataByIDs,,add_tags_to_binary_data_by_ids,,addTagsToBinaryDataByIds
-data,AddTagsToBinaryDataByFilter,,add_tags_to_binary_data_by_filter,,addTagsToBinaryDataByFilter
-data,RemoveTagsFromBinaryDataByIDs,,remove_tags_from_binary_data_by_ids,,removeTagsFromBinaryDataByIds
-data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,removeTagsFromBinaryDataByFilter
-data,TagsByFilter,,tags_by_filter,,tagsByFilter
-data,AddBoundingBoxToImageByID,,add_bounding_box_to_image_by_id,,addBoundingBoxToImageById
-data,RemoveBoundingBoxFromImageByID,,remove_bounding_box_from_image_by_id,,removeBoundingBoxFromImageById
-data,BoundingBoxLabelsByFilter,,bounding_box_labels_by_filter,,boundingBoxLabelsByFilter
-data,GetDatabaseConnection,,get_database_connection,,getDatabaseConnection
-data,ConfigureDatabaseUser,,configure_database_user,,configureDatabaseUser
-data,AddBinaryDataToDatasetByIDs,,add_binary_data_to_dataset_by_ids,,addBinaryDataToDatasetByIds
-data,RemoveBinaryDataFromDatasetByIDs,,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIds
+data,GetLatestTabularData,,get_latest_tabular_data,,getLatestTabularData,getLatestTabularData
+data,ExportTabularData,,export_tabular_data,,exportTabularData,exportTabularData
+data,TabularDataByFilter,,tabular_data_by_filter,,tabularDataByFilter,tabularDataByFilter
+data,TabularDataBySQL,,tabular_data_by_sql,,tabularDataBySql,tabularDataBySQL
+data,TabularDataByMQL,,tabular_data_by_mql,,tabularDataByMql,tabularDataByMQL
+data,BinaryDataByFilter,,binary_data_by_filter,,binaryDataByFilter,binaryDataByFilter
+data,BinaryDataByIDs,,binary_data_by_ids,,binaryDataByIds,binaryDataByIds
+data,DeleteTabularData,,delete_tabular_data,,deleteTabularData,deleteTabularData
+data,DeleteBinaryDataByFilter,,delete_binary_data_by_filter,,deleteBinaryDataByFilter,deleteBinaryDataByFilter
+data,DeleteBinaryDataByIDs,,delete_binary_data_by_ids,,deleteBinaryDataByIds,deleteBinaryDataByIds
+data,AddTagsToBinaryDataByIDs,,add_tags_to_binary_data_by_ids,,addTagsToBinaryDataByIds,addTagsToBinaryDataByIds
+data,AddTagsToBinaryDataByFilter,,add_tags_to_binary_data_by_filter,,addTagsToBinaryDataByFilter,addTagsToBinaryDataByFilter
+data,RemoveTagsFromBinaryDataByIDs,,remove_tags_from_binary_data_by_ids,,removeTagsFromBinaryDataByIds,removeTagsFromBinaryDataByIds
+data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,removeTagsFromBinaryDataByFilter,removeTagsFromBinaryDataByFilter
+data,TagsByFilter,,tags_by_filter,,tagsByFilter,tagsByFilter
+data,AddBoundingBoxToImageByID,,add_bounding_box_to_image_by_id,,addBoundingBoxToImageById,addBoundingBoxToImageById
+data,RemoveBoundingBoxFromImageByID,,remove_bounding_box_from_image_by_id,,removeBoundingBoxFromImageById,removeBoundingBoxFromImageById
+data,BoundingBoxLabelsByFilter,,bounding_box_labels_by_filter,,boundingBoxLabelsByFilter,boundingBoxLabelsByFilter
+data,GetDatabaseConnection,,get_database_connection,,getDatabaseConnection,getDatabaseConnection
+data,ConfigureDatabaseUser,,configure_database_user,,configureDatabaseUser,configureDatabaseUser
+data,AddBinaryDataToDatasetByIDs,,add_binary_data_to_dataset_by_ids,,addBinaryDataToDatasetByIds,addBinaryDataToDatasetByIds
+data,RemoveBinaryDataFromDatasetByIDs,,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIds,removeBinaryDataFromDatasetByIds
 
 ## Dataset
-dataset,CreateDataset,,create_dataset,,createDataset
-dataset,DeleteDataset,,delete_dataset,,deleteDataset
-dataset,RenameDataset,,rename_dataset,,renameDataset
-dataset,ListDatasetsByOrganizationID,,list_datasets_by_organization_id,,listDatasetsByOrganizationID
+dataset,CreateDataset,,create_dataset,,createDataset,
+dataset,DeleteDataset,,delete_dataset,,deleteDataset,
+dataset,RenameDataset,,rename_dataset,,renameDataset,
+dataset,ListDatasetsByOrganizationID,,list_datasets_by_organization_id,,listDatasetsByOrganizationID,
 ## TE: yes PySDK is singular:
-dataset,ListDatasetsByIDs,,list_dataset_by_ids,,listDatasetsByIDs
+dataset,ListDatasetsByIDs,,list_dataset_by_ids,,listDatasetsByIDs,
 
 ## Datasync
-data_sync,DataCaptureUpload,,,,
+data_sync,DataCaptureUpload,,,,,
 ## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
-data_sync,BinaryDataCaptureUpload,,binary_data_capture_upload,,binaryDataCaptureUpload
+data_sync,BinaryDataCaptureUpload,,binary_data_capture_upload,,binaryDataCaptureUpload,
 ## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
-data_sync,TabularDataCaptureUpload,,tabular_data_capture_upload,,tabularDataCaptureUpload
-data_sync,FileUpload,,file_upload,,uploadFile
+data_sync,TabularDataCaptureUpload,,tabular_data_capture_upload,,tabularDataCaptureUpload,
+data_sync,FileUpload,,file_upload,,uploadFile,
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
-data_sync,FileUploadFromPath,,file_upload_from_path,,
-data_sync,StreamingDataCaptureUpload,,streaming_data_capture_upload,,streamingDataCaptureUpload
+data_sync,FileUploadFromPath,,file_upload_from_path,,,
+data_sync,StreamingDataCaptureUpload,,streaming_data_capture_upload,,streamingDataCaptureUpload,
 
 ## Discovery
-discovery,DiscoverResources,,discover_resources,DiscoverResources,
+discovery,DiscoverResources,,discover_resources,DiscoverResources,,discoverResources
 
 ## MLTraining
-mltraining,SubmitTrainingJob,,submit_training_job,,
-mltraining,SubmitCustomTrainingJob,,submit_custom_training_job,,
-mltraining,GetTrainingJob,,get_training_job,,
-mltraining,ListTrainingJobs,,list_training_jobs,,
-mltraining,CancelTrainingJob,,cancel_training_job,,
-mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,,
+mltraining,SubmitTrainingJob,,submit_training_job,,,submitTrainingJob
+mltraining,SubmitCustomTrainingJob,,submit_custom_training_job,,,submitCustomTrainingJob
+mltraining,GetTrainingJob,,get_training_job,,,getTrainingJob
+mltraining,ListTrainingJobs,,list_training_jobs,,,listTrainingJobs
+mltraining,CancelTrainingJob,,cancel_training_job,,,cancelTrainingJob
+mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,,,deleteCompletedTrainingJob
 
 ## Robot
 ## Omitting some Flutter methods from w until we can determine what they do
 ## ( counterpart description text in other SDKs, as other SDKs implement these)
-robot,GetOperations,,get_operations,,
-robot,GetMachineStatus,,get_machine_status,,
-robot,GetSessions,,,,
-robot,ResourceNames,,,ResourceNames,
-robot,ResourceRPCSubtypes,,,,
-robot,CancelOperation,,cancel_operation,,
-robot,BlockForOperation,,block_for_operation,,
-robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,
-robot,TransformPose,,transform_pose,TransformPose,
-robot,TransformPCD,,,TransformPointCloud,
-robot,StreamStatus,,,,
-# DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,
-robot,GetModelsFromModules,,get_models_from_modules,,
-robot,StopAll,,stop_all,StopAll,
-robot,RestartModule,,,RestartModule,
-robot,StartSession,,,,
-robot,SendSessionHeartbeat,,,,
-robot,Log,,log,,
-robot,GetCloudMetadata,,get_cloud_metadata,CloudMetadata,getCloudMetadata
-robot,GetVersion,,get_version,Version,
+robot,GetOperations,,get_operations,,,getOperations
+robot,GetMachineStatus,,get_machine_status,,,getMachineStatus
+robot,GetSessions,,,,,
+robot,ResourceNames,,,ResourceNames,,resourceNames
+robot,ResourceRPCSubtypes,,,,,
+robot,CancelOperation,,cancel_operation,,,cancelOperation
+robot,BlockForOperation,,block_for_operation,,,blockForOperation
+robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,,frameSystemConfig
+robot,TransformPose,,transform_pose,TransformPose,,transformPose
+robot,TransformPCD,,,TransformPointCloud,,transformPCD
+robot,StreamStatus,,,,,
+# DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
+robot,GetModelsFromModules,,get_models_from_modules,,,getModelsFromModules
+robot,StopAll,,stop_all,StopAll,,stopAll
+robot,RestartModule,,,RestartModule,,
+robot,StartSession,,,,,
+robot,SendSessionHeartbeat,,,,,
+robot,Log,,log,,,
+robot,GetCloudMetadata,,get_cloud_metadata,CloudMetadata,getCloudMetadata,getCloudMetadata
+robot,GetVersion,,get_version,Version,,
 ## HACK: Robot (python) provides additional helper function, adding 4 pseudo-entries:
-robot,Options.with_api_key,,with_api_key,,
-robot,AtAddress,,at_address,,atAddress
-robot,WithChannel,,with_channel,,
-robot,Refresh,,refresh,,refresh
-robot,Shutdown,Yes,shutdown,Shutdown,
+robot,Options.with_api_key,,with_api_key,,,
+robot,AtAddress,,at_address,,atAddress,
+robot,WithChannel,,with_channel,,,
+robot,Refresh,,refresh,,refresh,
+robot,Shutdown,Yes,shutdown,Shutdown,,
 ## HACK:  proto for close, manually mapping:
-robot,Close,,close,Close,close
+robot,Close,,close,Close,close,
