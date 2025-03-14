@@ -58,6 +58,23 @@ err = pin.Set(context.Background(), true, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pin` (string) (required): The pin.
+- `high` (boolean) (required): When true, set the given pin to high. When false, set the
+  given pin to low.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setGPIO).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -139,6 +156,21 @@ high, err := pin.Get(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pin` (string) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getGPIO).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -231,6 +263,21 @@ duty_cycle, err := pin.PWM(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pin` (string) (required): The pin.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getPWM).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -315,6 +362,22 @@ err = pin.SetPWM(context.Background(), .6, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pin` (string) (required): The pin.
+- `dutyCyle` (number) (required): A value from 0 to 1.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setPWM).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -396,6 +459,21 @@ freqHz, err := pin.PWMFreq(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pin` (string) (required): The pin.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getPWMFrequency).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -486,6 +564,23 @@ err = pin.SetPWMFreq(context.Background(), 1600, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pin` (string) (required): The pin.
+- `frequencyHz` (number) (required): The PWM frequency, in hertz. 0 will use the board's
+  default PWM frequency.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setPWMFrequency).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -569,6 +664,21 @@ count, err := interrupt.Value(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `digitalInterruptName` (string) (required): The name of the digital interrupt.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getDigitalInterruptValue).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -657,6 +767,21 @@ stepSize := reading.StepSize
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `analogReader` (string) (required): The name of the analog reader.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[ReadAnalogReaderResponse](boardApi.ReadAnalogReaderResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#readAnalogReader).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -738,6 +863,22 @@ err = analog.Write(context.Background(), 48, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pin` (string) (required): The pin name.
+- `value` (number) (required): An integer value to write.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#writeAnalog).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -832,6 +973,22 @@ err = myBoard.StreamTicks(context.Background(), interrupts, ticksChan, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `interrupts` (string) (required): Names of the interrupts to stream.
+- `queue` ([Tick](../interfaces/Tick.html)) (required): Array to put the ticks in.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#streamTicks).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -916,6 +1073,22 @@ myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `powerMode` ([boardApi](../modules/boardApi.html)) (required): The requested power mode.
+- `duration` ([Duration](Duration.html)) (optional): The requested duration to stay in power mode.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setPowerMode).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1213,6 +1386,20 @@ result, err := myBoard.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#doCommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

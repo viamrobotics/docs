@@ -49,6 +49,20 @@ pos, err := myArm.EndPosition(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[Pose](commonApi.Pose.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getEndPosition).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -131,6 +145,21 @@ err = myArm.MoveToPosition(context.Background(), examplePose, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pose` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#moveToPosition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -226,6 +255,21 @@ err = myArm.MoveToJointPositions(context.Background(), inputs, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `jointPositionsList` (number) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#moveToJointPositions).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -343,6 +387,20 @@ pos, err := myArm.JointPositions(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JointPositions](armApi.JointPositions.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getJointPositions).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -464,6 +522,19 @@ logger.Info(is_moving)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#isMoving).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -535,6 +606,20 @@ err = myArm.Stop(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#stop).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -619,6 +704,20 @@ if len(geometries) > 0 {
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getGeometries).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
@@ -699,6 +798,20 @@ result, err := myArm.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#doCommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

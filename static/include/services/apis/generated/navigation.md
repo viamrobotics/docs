@@ -52,6 +52,20 @@ mode, err := myNav.Mode(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[navigationApi](../modules/navigationApi.html).[Mode](../enums/navigationApi.Mode.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getMode).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### SetMode
@@ -109,6 +123,21 @@ err := myNav.SetMode(context.Background(), navigation.ModeWaypoint, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `mode` ([navigationApi](../modules/navigationApi.html)) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#setMode).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetLocation
@@ -160,6 +189,20 @@ location, err := myNav.Location(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[navigationApi](../modules/navigationApi.html).[GetLocationResponse](navigationApi.GetLocationResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getLocation).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetWaypoints
@@ -209,6 +252,20 @@ waypoints, err := myNav.Waypoints(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[navigationApi](../modules/navigationApi.html).[Waypoint](navigationApi.Waypoint.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getWayPoints).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -271,6 +328,21 @@ err := myNav.AddWaypoint(context.Background(), location, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `location` ([PlainMessage](../types/PlainMessage.html)) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#addWayPoint).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### RemoveWaypoint
@@ -330,6 +402,21 @@ err = myNav.RemoveWaypoint(context.Background(), waypoints[0].ID, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#removeWayPoint).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetObstacles
@@ -384,6 +471,20 @@ obstacles, err := myNav.Obstacles(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[GeoGeometry](commonApi.GeoGeometry.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getObstacles).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetPaths
@@ -435,6 +536,20 @@ paths, err := myNav.Paths(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[navigationApi](../modules/navigationApi.html).[Path](navigationApi.Path.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getPaths).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetProperties
@@ -483,6 +598,19 @@ navProperties, err := myNav.Properties(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[navigationApi](../modules/navigationApi.html).[GetPropertiesResponse](navigationApi.GetPropertiesResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getProperties).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -566,6 +694,20 @@ result, err := myNavigationSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#doCommand).
 
 {{% /tab %}}
 {{< /tabs >}}

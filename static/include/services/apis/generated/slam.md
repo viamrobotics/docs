@@ -47,6 +47,19 @@ pos, name, err := mySLAMService.Position(context.Background())
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[slamApi](../modules/slamApi.html).[GetPositionResponse](slamApi.GetPositionResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPosition).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetPointCloudMap
@@ -78,6 +91,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `returnEditedMap` (boolean) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Uint8Array>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPointCloudMap).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetInternalState
 
@@ -104,6 +132,20 @@ internal_state = await slam.get_internal_state()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_internal_state).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Uint8Array>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getInternalState).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -161,6 +203,19 @@ properties, err := mySLAMService.Properties(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[slamApi](../modules/slamApi.html).[GetPropertiesResponse](slamApi.GetPropertiesResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getProperties).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -289,6 +344,20 @@ result, err := mySLAMService.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#doCommand).
 
 {{% /tab %}}
 {{< /tabs >}}

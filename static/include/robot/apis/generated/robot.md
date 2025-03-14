@@ -23,6 +23,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+
+**Returns:**
+
+- (Promise<[Operation](robotApi.Operation.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getOperations).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetMachineStatus
 
@@ -52,6 +65,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+
+**Returns:**
+
+- (Promise<[GetMachineStatusResponse](robotApi.GetMachineStatusResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getMachineStatus).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ResourceNames
 
@@ -75,6 +101,18 @@ resource_names := machine.ResourceNames()
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[ResourceName](commonApi.ResourceName.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourceNames).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -104,6 +142,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): ID of operation to kill.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#cancelOperation).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### BlockForOperation
 
@@ -128,6 +180,20 @@ await machine.block_for_operation("INSERT OPERATION ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): ID of operation to block on.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockForOperation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -178,6 +244,19 @@ fmt.Println(frameSystem)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `transforms` ([commonApi](../modules/commonApi.html)) (required)
+
+**Returns:**
+
+- (Promise<[FrameSystemConfig](robotApi.FrameSystemConfig.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -254,6 +333,22 @@ movementSensorToBase, err := machine.TransformPose(context.Background(), baseOri
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `source` ([commonApi](../modules/commonApi.html)) (required)
+- `destination` (string) (required): The name of the reference frame to transform the given.
+- `supplementalTransforms` ([commonApi](../modules/commonApi.html)) (required): Pose information on any additional
+  reference frames that are needed to perform the transform.
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[PoseInFrame](commonApi.PoseInFrame.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPose).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### TransformPCD
@@ -277,6 +372,27 @@ Do not move the robot between the generation of the initial pointcloud and the r
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `pointCloudPCD` (Uint8Array) (required): The point clouds to transform. This should be in the
+  PCD format encoded into bytes:
+  https://pointclouds.org/documentation/tutorials/pcd_file_format.html.
+- `source` (string) (required): The reference frame of the point cloud.
+- `destination` (string) (required): The reference frame into which the source data should
+  be transformed, if unset this defaults to the "world" reference frame. Do
+  not move the robot between the generation of the initial pointcloud and
+  the receipt of the transformed pointcloud because that will make the
+  transformations inaccurate.
+
+**Returns:**
+
+- (Promise<Uint8Array>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -305,6 +421,19 @@ module_models = await machine.get_models_from_modules(qs)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_models_from_modules).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+
+**Returns:**
+
+- (Promise<[ModuleModel](robotApi.ModuleModel.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getModelsFromModules).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -353,6 +482,18 @@ err := machine.StopAll(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopAll).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -452,6 +593,18 @@ machine_part_id := metadata.MachinePartID
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+
+**Returns:**
+
+- (Promise<[GetCloudMetadataResponse](robotApi.GetCloudMetadataResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getCloudMetadata).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

@@ -50,6 +50,20 @@ position, err := myGantry.Position(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getPosition).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -139,6 +153,22 @@ myGantry.MoveToPosition(context.Background(), examplePositions, exampleSpeeds, n
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `positionsMm` (number) (required)
+- `speedsMmPerSec` (number) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#moveToPosition).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -214,6 +244,20 @@ lengths_mm, err := myGantry.Lengths(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getLengths).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -285,6 +329,20 @@ myGantry.Home(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#home).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -302,6 +360,28 @@ var homed = await myGantry.home();
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Gantry/home.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetGeometries
+
+Get all the geometries associated with the gantry in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the gantry.
+The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getGeometries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -363,6 +443,19 @@ logger.Info(is_moving)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#isMoving).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -439,6 +532,20 @@ err = myArm.Stop(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#stop).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -456,39 +563,6 @@ await myGantry.stop();
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Gantry/stop.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### GetGeometries
-
-Get all the geometries associated with the gantry in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the gantry.
-The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_gantry = Gantry.from_robot(robot=machine, name="my_gantry")
-geometries = await my_gantry.get_geometries()
-
-if geometries:
-    # Get the center of the first geometry
-    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_geometries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -547,6 +621,20 @@ result = await my_gantry.do_command(command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.do_command).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#doCommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

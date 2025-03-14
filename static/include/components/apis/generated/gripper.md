@@ -49,6 +49,20 @@ err := myGripper.Open(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#open).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -120,6 +134,20 @@ grabbed, err := myGripper.Grab(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#grab).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -199,6 +227,19 @@ logger.Info(is_moving)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#isMoving).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -271,6 +312,20 @@ err = myArm.Stop(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#stop).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -355,6 +410,20 @@ if len(geometries) > 0 {
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getGeometries).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
@@ -387,6 +456,20 @@ For built-in models, model-specific commands are covered with each model's docum
 If you are implementing your own gripper and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#doCommand).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**

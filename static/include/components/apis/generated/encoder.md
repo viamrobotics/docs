@@ -60,6 +60,22 @@ position, posType, err := myEncoder.Position(context.Background(), encoder.Posit
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `positionType` ([PositionType](../enums/encoderApi.PositionType.html)) (optional): The type of position the encoder returns (ticks or
+  degrees).
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<readonly [number, [PositionType](../enums/encoderApi.PositionType.html)]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getPosition).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### ResetPosition
@@ -116,6 +132,20 @@ err = myEncoder.ResetPosition(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#resetPosition).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetProperties
@@ -169,6 +199,20 @@ properties, err := myEncoder.Properties(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[encoderApi](../modules/encoderApi.html).[GetPropertiesResponse](encoderApi.GetPropertiesResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getProperties).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -284,6 +328,20 @@ result, err := myEncoder.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#doCommand).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -50,6 +50,20 @@ voltage, isAC, err := myPowerSensor.Voltage(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<readonly [number, boolean]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getVoltage).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -123,6 +137,20 @@ current, isAC, err := myPowerSensor.Current(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<readonly [number, boolean]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getCurrent).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -199,6 +227,20 @@ power, err := myPowerSensor.Power(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getPower).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -269,6 +311,20 @@ readings, err := mySensor.Readings(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Sensor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Record<string, [JsonValue](../types/JsonValue.html)>>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getReadings).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -369,6 +425,20 @@ result, err := myPowerSensor.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#doCommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

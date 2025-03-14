@@ -23,6 +23,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `email` (string) (required): The email address of the user.
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getUserIDByEmail).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### CreateOrganization
 
@@ -46,6 +60,20 @@ organization = await cloud.create_organization("name")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `name` (string) (required): The name of the new organization.
+
+**Returns:**
+
+- (Promise<undefined | [Organization](appApi.Organization.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createOrganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -75,6 +103,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+
+**Returns:**
+
+- (Promise<[Organization](appApi.Organization.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listOrganizations).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetOrganizationsWithAccessToLocation
 
@@ -101,6 +142,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locationId` (string) (required): The ID of the location to query.
+
+**Returns:**
+
+- (Promise<[OrganizationIdentity](appApi.OrganizationIdentity.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getOrganizationsWithAccessToLocation).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ListOrganizationsByUser
 
@@ -124,6 +179,20 @@ org_list = await cloud.list_organizations_by_user("<YOUR-USER-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organizations_by_user).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `userId` (string) (required): The ID of the user to query.
+
+**Returns:**
+
+- (Promise<[OrgDetails](appApi.OrgDetails.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listOrganizationsByUser).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -157,6 +226,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+
+**Returns:**
+
+- (Promise<undefined | [Organization](appApi.Organization.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getOrganization).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetOrganizationNamespaceAvailability
 
@@ -185,6 +268,20 @@ available = await cloud.get_organization_namespace_availability(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization_namespace_availability).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `namespace` (string) (required): The namespace to query for availability.
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getOrganizationNamespaceAvailability).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -226,6 +323,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The id of the organization to update.
+- `name` (string) (optional): Optional name to update the organization with.
+- `publicNamespace` (string) (optional): Optional namespace to update the organization with.
+- `region` (string) (optional): Optional region to update the organization with.
+- `cid` (string) (optional): Optional CRM ID to update the organization with.
+
+**Returns:**
+
+- (Promise<undefined | [Organization](appApi.Organization.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateOrganization).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DeleteOrganization
 
@@ -248,6 +363,20 @@ await cloud.delete_organization("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The id of the organization to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteOrganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -274,6 +403,20 @@ member_list, invite_list = await cloud.list_organization_members("<YOUR-ORG-ID>"
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organization_members).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The id of the organization to query.
+
+**Returns:**
+
+- (Promise<[ListOrganizationMembersResponse](appApi.ListOrganizationMembersResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listOrganizationMembers).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -307,6 +450,24 @@ await cloud.create_organization_invite("<YOUR-ORG-ID>", "youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The id of the organization to create the invite for.
+- `email` (string) (required): The email address of the user to generate an invite for.
+- `authorizations` ([Authorization](appApi.Authorization.html)) (required): The authorizations to associate with the new invite.
+- `sendEmailInvite` (boolean) (optional): Bool of whether to send an email invite (true) or
+  automatically add a user. Defaults to true.
+
+**Returns:**
+
+- (Promise<undefined | [OrganizationInvite](appApi.OrganizationInvite.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createOrganizationInvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -360,6 +521,23 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The id of the organization.
+- `email` (string) (required): The email address associated with the invite.
+- `addAuthsList` ([Authorization](appApi.Authorization.html)) (required): List of authorizations to add to the invite.
+- `removeAuthsList` ([Authorization](appApi.Authorization.html)) (required): List of authorizations to remove from the invite.
+
+**Returns:**
+
+- (Promise<undefined | [OrganizationInvite](appApi.OrganizationInvite.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateOrganizationInviteAuthorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DeleteOrganizationMember
 
@@ -387,6 +565,21 @@ await cloud.delete_organization_member(org_id="org_id", user_id=first_user_id)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_member).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+- `userId` (string) (required): The ID of the user.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteOrganizationMember).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -421,6 +614,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+- `email` (string) (required): The email associated with the invite to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteOrganizationInvite).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ResendOrganizationInvite
 
@@ -449,6 +657,21 @@ org_invite = await cloud.resend_organization_invite("<YOUR-ORG-ID>", "youremail@
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.resend_organization_invite).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+- `email` (string) (required): The email associated with the invite to resend.
+
+**Returns:**
+
+- (Promise<undefined | [OrganizationInvite](appApi.OrganizationInvite.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#resendOrganizationInvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -485,6 +708,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to create the location
+  under.
+- `name` (string) (required): The name of the location to create.
+- `parentLocationId` (string) (optional): Optional name of a parent location to create the
+  new location under.
+
+**Returns:**
+
+- (Promise<undefined | [Location](appApi.Location.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createLocation).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetLocation
 
@@ -512,6 +753,20 @@ location = await cloud.get_location(location_id="123ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to query.
+
+**Returns:**
+
+- (Promise<undefined | [Location](appApi.Location.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getLocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -566,6 +821,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to update.
+- `name` (string) (optional): Optional string to update the location's name to.
+- `parentLocId` (string) (optional): Optional string to update the location's parent location
+  to.
+- `region` (string) (optional): Optional string to update the location's region to.
+
+**Returns:**
+
+- (Promise<undefined | [Location](appApi.Location.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateLocation).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DeleteLocation
 
@@ -596,6 +869,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteLocation).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ListLocations
 
@@ -619,6 +906,20 @@ locations = await cloud.list_locations("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_locations).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to query.
+
+**Returns:**
+
+- (Promise<[Location](appApi.Location.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listLocations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -649,6 +950,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to share with.
+- `locId` (string) (required): The ID of the location to share.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#shareLocation).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### UnshareLocation
 
@@ -673,6 +989,21 @@ await cloud.unshare_location("<YOUR-ORG-ID>", "<YOUR-LOCATION-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.unshare_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to unshare with.
+- `locId` (string) (required): The ID of the location to unshare.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#unshareLocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -706,6 +1037,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to retrieve LocationAuth from.
+
+**Returns:**
+
+- (Promise<undefined | [LocationAuth](appApi.LocationAuth.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#locationAuth).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### CreateLocationSecret
 
@@ -733,6 +1078,20 @@ new_loc_auth = await cloud.create_location_secret(location_id="123xy12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to create a LocationAuth for.
+
+**Returns:**
+
+- (Promise<undefined | [LocationAuth](appApi.LocationAuth.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createLocationSecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -770,6 +1129,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to delete the LocationAuth from.
+- `secretId` (string) (required): The ID of the location secret to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteLocationSecret).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetRobot
 
@@ -800,6 +1174,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the robot.
+
+**Returns:**
+
+- (Promise<undefined | [appApi](../modules/appApi.html).[Robot](appApi.Robot.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobot).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetRobotAPIKeys
 
@@ -823,6 +1211,20 @@ api_keys = await cloud.get_robot_api_keys(robot_id="robot-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_api_keys).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `robotId` (string) (required): The ID of the robot to get API keys for.
+
+**Returns:**
+
+- (Promise<[APIKeyWithAuthorizations](appApi.APIKeyWithAuthorizations.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotAPIKeys).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -858,6 +1260,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `robotId` (string) (required): The ID of the robot to query.
+
+**Returns:**
+
+- (Promise<[RobotPart](appApi.RobotPart.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotParts).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetRobotPart
 
@@ -889,6 +1305,20 @@ my_robot_part = await cloud.get_robot_part(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the requested robot part.
+
+**Returns:**
+
+- (Promise<[GetRobotPartResponse](appApi.GetRobotPartResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotPart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -929,6 +1359,25 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the requested robot part.
+- `filter` (string) (optional): Optional string to filter logs on.
+- `levels` (string) (optional): Optional array of log levels to return. Defaults to returning
+  all log levels.
+- `pageToken` (string) (optional): Optional string indicating which page of logs to query.
+  Defaults to the most recent.
+
+**Returns:**
+
+- (Promise<[GetRobotPartLogsResponse](appApi.GetRobotPartLogsResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotPartLogs).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### TailRobotPartLogs
 
@@ -956,6 +1405,24 @@ logs_stream = await cloud.tail_robot_part_logs(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.tail_robot_part_logs).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the requested robot part.
+- `queue` ([LogEntry](commonApi.LogEntry.html)) (required): A queue to put the log entries into.
+- `filter` (string) (optional): Optional string to filter logs on.
+- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level
+  logs should be returned. Defaults to true.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#tailRobotPartLogs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -988,6 +1455,20 @@ part_history = await cloud.get_robot_part_history(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_history).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the requested robot part.
+
+**Returns:**
+
+- (Promise<[RobotPartHistoryEntry](appApi.RobotPartHistoryEntry.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotPartHistory).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1025,6 +1506,22 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the requested robot part.
+- `name` (string) (required): The new name of the robot part.
+- `robotConfig` ([Struct](Struct.html)) (required): The new config for the robot part.
+
+**Returns:**
+
+- (Promise<undefined | [RobotPart](appApi.RobotPart.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateRobotPart).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### NewRobotPart
 
@@ -1055,6 +1552,21 @@ new_part_id = await cloud.new_robot_part(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot_part).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `robotId` (string) (required): The ID of the robot to create a part for.
+- `partName` (string) (required): The name for the new robot part.
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newRobotPart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1090,6 +1602,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRobotPart).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### MarkPartAsMain
 
@@ -1118,6 +1644,20 @@ await cloud.mark_part_as_main(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_as_main).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part to mark as main.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markPartAsMain).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1152,6 +1692,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part to mark for restart.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markPartForRestart).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### CreateRobotPartSecret
 
@@ -1180,6 +1734,20 @@ part_with_new_secret = await cloud.create_robot_part_secret(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_robot_part_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part to create a secret for.
+
+**Returns:**
+
+- (Promise<undefined | [RobotPart](appApi.RobotPart.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createRobotPartSecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1216,6 +1784,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part to delete a secret from.
+- `secretId` (string) (required): The ID of the secret to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRobotPartSecret).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ListRobots
 
@@ -1243,6 +1826,20 @@ list_of_machines = await cloud.list_robots(location_id="123ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to list robots for.
+
+**Returns:**
+
+- (Promise<[appApi](../modules/appApi.html).[Robot](appApi.Robot.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listRobots).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1274,6 +1871,21 @@ new_machine_id = await cloud.new_robot(name="beepboop", location_id="my-location
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `locId` (string) (required): The ID of the location to create the robot in.
+- `name` (string) (required): The name of the new robot.
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newRobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1313,6 +1925,22 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `robotId` (string) (required): The ID of the robot to update.
+- `locId` (string) (required): The ID of the location to move the robot to.
+- `name` (string) (required): The name to update the robot to.
+
+**Returns:**
+
+- (Promise<undefined | [appApi](../modules/appApi.html).[Robot](appApi.Robot.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateRobot).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DeleteRobot
 
@@ -1343,6 +1971,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the robot to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRobot).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ListFragments
 
@@ -1368,6 +2010,24 @@ fragments_list = await cloud.list_fragments(org_id="org-id", visibilities=[])
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_fragments).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to list fragments for.
+- `publicOnly` (boolean) (optional): Optional, deprecated boolean. Use fragmentVisibilities
+  instead. If true then only public fragments will be listed. Defaults to
+  true.
+- `fragmentVisibility` ([FragmentVisibility](../enums/appApi.FragmentVisibility.html)) (optional)
+
+**Returns:**
+
+- (Promise<[Fragment](appApi.Fragment.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listFragments).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1404,6 +2064,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the fragment to look up.
+
+**Returns:**
+
+- (Promise<undefined | [Fragment](appApi.Fragment.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getFragment).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### CreateFragment
 
@@ -1433,6 +2107,23 @@ new_fragment = await cloud.create_fragment(org_id="org-id", name="cool_smart_mac
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to create the fragment
+  under.
+- `name` (string) (required): The name of the new fragment.
+- `config` ([Struct](Struct.html)) (required): The new fragment's config.
+
+**Returns:**
+
+- (Promise<undefined | [Fragment](appApi.Fragment.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createFragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1472,6 +2163,30 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the fragment to update.
+- `name` (string) (required): The name to update the fragment to.
+- `config` ([Struct](Struct.html)) (required): The config to update the fragment to.
+- `makePublic` (boolean) (optional): Optional, deprecated boolean specifying whether the
+  fragment should be public or not. If not passed, the visibility will be
+  unchanged. Fragments are private by default when created.
+- `visibility` ([FragmentVisibility](../enums/appApi.FragmentVisibility.html)) (optional): Optional FragmentVisibility specifying the updated
+  fragment visibility. If not passed, the visibility will be unchanged. If
+  visibility is not set and makePublic is set, makePublic takes effect. If
+  makePublic and visibility are set, they must not be conflicting. If
+  neither is set, the fragment visibility will remain unchanged.
+
+**Returns:**
+
+- (Promise<undefined | [Fragment](appApi.Fragment.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateFragment).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DeleteFragment
 
@@ -1500,6 +2215,20 @@ await cloud.delete_fragment(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the fragment to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteFragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1578,6 +2307,25 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to create the role under.
+- `entityId` (string) (required): The ID of the entity the role belongs to (e.g., a user ID).
+- `role` (string) (required): The role to add ("owner" or "operator").
+- `resourceType` (string) (required): The type of resource to create the role for ("robot",
+  "location", or "organization").
+- `resourceId` (string) (required): The ID of the resource the role is being created for.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#addRole).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### RemoveRole
 
@@ -1615,6 +2363,25 @@ await cloud.remove_role(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.remove_role).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to remove the role from.
+- `entityId` (string) (required): The ID of the entity the role belongs to (e.g., a user ID).
+- `role` (string) (required): The role to remove ("owner" or "operator").
+- `resourceType` (string) (required): The type of resource to remove the role from ("robot",
+  "location", or "organization").
+- `resourceId` (string) (required): The ID of the resource the role is being removes from.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#removeRole).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1662,6 +2429,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `oldAuthorization` ([Authorization](appApi.Authorization.html)) (required)
+- `newAuthorization` ([Authorization](appApi.Authorization.html)) (required)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#changeRole).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ListAuthorizations
 
@@ -1693,6 +2475,22 @@ list_of_auths = await cloud.list_authorizations(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_authorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to list authorizations for.
+- `resourceIds` (string) (optional): Optional list of IDs of resources to list authorizations
+  for. If not provided, all resources will be included.
+
+**Returns:**
+
+- (Promise<[Authorization](appApi.Authorization.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listAuthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1793,6 +2591,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `permissions` ([AuthorizedPermissions](appApi.AuthorizedPermissions.html)) (required): A list of permissions to check.
+
+**Returns:**
+
+- (Promise<[AuthorizedPermissions](appApi.AuthorizedPermissions.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#checkPermissions).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### GetRegistryItem
 
@@ -1816,6 +2628,20 @@ item = await cloud.get_registry_item("item-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the item to get.
+
+**Returns:**
+
+- (Promise<undefined | [RegistryItem](appApi.RegistryItem.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRegistryItem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1846,6 +2672,23 @@ await cloud.create_registry_item("<YOUR-ORG-ID>", "name", PackageType.PACKAGE_TY
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to create the registry
+  item under.
+- `name` (string) (required): The name of the registry item.
+- `type` (PackageType) (required): The type of the item in the registry.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createRegistryItem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1883,6 +2726,23 @@ await cloud.update_registry_item(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the registry item to update.
+- `type` (PackageType) (required): The PackageType to update the item to.
+- `description` (string) (required): A description of the item.
+- `visibility` ([Visibility](../enums/appApi.Visibility.html)) (required): A visibility value to update to.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateRegistryItem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1937,6 +2797,31 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to query registry items
+  for.
+- `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
+- `visibilities` ([Visibility](../enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not
+  filter on visibility.
+- `platforms` (string) (required): A list of platforms to query for. If empty, will not
+  filter on platform.
+- `statuses` ([RegistryItemStatus](../enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter
+  on status.
+- `searchTerm` (string) (optional): Optional search term to filter on.
+- `pageToken` (string) (optional): Optional page token for results. If not provided, will
+  return all results.
+
+**Returns:**
+
+- (Promise<[RegistryItem](appApi.RegistryItem.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listRegistryItems).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DeleteRegistryItem
 
@@ -1960,6 +2845,20 @@ await cloud.delete_registry_item("your-namespace:your-name")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the item to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRegistryItem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1992,6 +2891,21 @@ print("Module ID:", new_module[0])
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to create the module under.
+- `name` (string) (required): The name of the module.
+
+**Returns:**
+
+- (Promise<[CreateModuleResponse](appApi.CreateModuleResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createModule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2040,6 +2954,25 @@ url_of_my_module = await cloud.update_module(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `moduleId` (string) (required): The ID of the module to update.
+- `visibility` ([Visibility](../enums/appApi.Visibility.html)) (required): The visibility to set for the module.
+- `url` (string) (required): The url to reference for documentation, code, etc.
+- `description` (string) (required): A short description of the module.
+- `models` ([Model](appApi.Model.html)) (required): A list of models available in the module.
+- `entrypoint` (string) (required): The executable to run to start the module program.
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateModule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2111,6 +3044,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `moduleId` (string) (required): The ID of the module.
+
+**Returns:**
+
+- (Promise<undefined | [Module](appApi.Module.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getModule).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ListModules
 
@@ -2134,6 +3081,20 @@ modules_list = await cloud.list_modules("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to query.
+
+**Returns:**
+
+- (Promise<[Module](appApi.Module.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listModules).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2181,6 +3142,22 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `authorizations` ([Authorization](appApi.Authorization.html)) (required): The list of authorizations to provide for the API key.
+- `name` (string) (optional): An optional name for the key. If none is passed, defaults to
+  present timestamp.
+
+**Returns:**
+
+- (Promise<[CreateKeyResponse](appApi.CreateKeyResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createKey).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DeleteKey
 
@@ -2204,6 +3181,20 @@ await cloud.delete_key("key-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_key).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the key to delete.
+
+**Returns:**
+
+- (Promise<[DeleteKeyResponse](appApi.DeleteKeyResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteKey).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2233,6 +3224,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the key to rotate.
+
+**Returns:**
+
+- (Promise<[RotateKeyResponse](appApi.RotateKeyResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#rotateKey).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### ListKeys
 
@@ -2256,6 +3261,20 @@ keys = await cloud.list_keys(org_id="<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_keys).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `orgId` (string) (required): The ID of the organization to query.
+
+**Returns:**
+
+- (Promise<[APIKeyWithAuthorizations](appApi.APIKeyWithAuthorizations.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listKeys).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2283,6 +3302,20 @@ api_key, api_key_id = await cloud.create_key_from_existing_key_authorizations(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key_from_existing_key_authorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the key to duplicate.
+
+**Returns:**
+
+- (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createKeyFromExistingKeyAuthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}

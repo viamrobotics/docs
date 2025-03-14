@@ -19,6 +19,21 @@ Position must be within the valid range for the switch type.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `position` (number) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#setPosition).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetPosition
@@ -41,6 +56,20 @@ Return the current position of the switch.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getPosition).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetNumberOfPositions
@@ -61,6 +90,20 @@ Return the number of valid positions for this switch.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getNumberOfPositions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -94,6 +137,20 @@ result, err := mySwitch.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#doCommand).
 
 {{% /tab %}}
 {{< /tabs >}}

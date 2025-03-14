@@ -109,6 +109,21 @@ To use either method, be sure to import `"go.viam.com/rdk/utils"` at the beginni
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `mimeType` ([MimeType](../types/MimeType.html)) (optional)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Uint8Array>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getImage).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -193,6 +208,29 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
+### RenderFrame
+
+Render a frame from a camera of the underlying robot to an HTTP response.
+A specific MIME type can be requested but may not necessarily be the same one returned.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `mimeType` ([MimeType](../types/MimeType.html)) (optional)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Blob>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderFrame).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetPointCloud
 
 Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.
@@ -251,6 +289,20 @@ pointCloud, err := myCamera.NextPointCloud(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#PointCloudSource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Uint8Array>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getPointCloud).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -314,6 +366,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[cameraApi](../modules/cameraApi.html).[GetPropertiesResponse](cameraApi.GetPropertiesResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getProperties).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -368,6 +433,20 @@ result = await my_camera.do_command(command)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.do_command).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#doCommand).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -420,6 +499,21 @@ if geometries:
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_geometries).
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getGeometries).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -58,6 +58,22 @@ myBase.MoveStraight(context.Background(), 40, -90, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `distanceMm` (number) (required): Distance to move, in millimeters.
+- `mmPerSec` (number) (required): Movement speed, in millimeters per second.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#moveStraight).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -135,6 +151,22 @@ myBase.Spin(context.Background(), 10, 15, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `angleDeg` (number) (required): Degrees to spin.
+- `degsPerSec` (number) (required): Angular speed, in degrees per second.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#spin).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -251,6 +283,22 @@ err = myBase.SetPower(context.Background(), r3.Vector{}, r3.Vector{Z: -.75}, nil
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `linear` ([PlainMessage](../types/PlainMessage.html)) (required): Desired linear power percentage from -1 to 1.
+- `angular` ([PlainMessage](../types/PlainMessage.html)) (required): Desired angular power percentage from -1 to 1.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#setPower).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -339,6 +387,22 @@ myBase.SetVelocity(context.Background(), r3.Vector{Y: 50}, r3.Vector{Z: 15}, nil
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `linear` ([PlainMessage](../types/PlainMessage.html)) (required): Desired linear velocity in millimeters per second.
+- `angular` ([PlainMessage](../types/PlainMessage.html)) (required): Desired angular velocity in degrees per second.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#setVelocity).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -437,6 +501,20 @@ myBaseWheelCircumference := properties.WheelCircumferenceMeters
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[baseApi](../modules/baseApi.html).[GetPropertiesResponse](baseApi.GetPropertiesResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getProperties).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### IsMoving
@@ -493,6 +571,19 @@ logger.Info(is_moving)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#isMoving).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -570,6 +661,20 @@ err = myArm.Stop(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#stop).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -654,6 +759,20 @@ if len(geometries) > 0 {
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](../modules/commonApi.html).[Geometry](commonApi.Geometry.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getGeometries).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
@@ -735,6 +854,20 @@ result, err := myBase.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#doCommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

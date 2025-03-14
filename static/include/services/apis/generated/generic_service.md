@@ -55,6 +55,20 @@ result, err := myGenericService.DoCommand(context.Background(), command)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericServiceClient.html#doCommand).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetResourceName

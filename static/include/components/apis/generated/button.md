@@ -17,6 +17,20 @@ Push the button.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/button#Button).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#push).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### DoCommand
@@ -48,6 +62,20 @@ result, err := myButton.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](../types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#doCommand).
 
 {{% /tab %}}
 {{< /tabs >}}

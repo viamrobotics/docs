@@ -38,6 +38,24 @@ else:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_latest_tabular_data).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part that owns the data.
+- `resourceName` (string) (required): The name of the requested resource that captured the
+  data. Ex: "my-sensor".
+- `resourceSubtype` (string) (required): The subtype of the requested resource that captured
+  the data. Ex: "rdk:component:sensor".
+- `methodName` (string) (required): The data capture method name. Ex: "Readings".
+
+**Returns:**
+
+- (Promise<null | [Date, Date, Record<string, [JsonValue](../types/JsonValue.html)>]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getLatestTabularData).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -115,6 +133,28 @@ print(f"My data: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.export_tabular_data).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part that owns the data.
+- `resourceName` (string) (required): The name of the requested resource that captured the
+  data.
+- `resourceSubtype` (string) (required): The subtype of the requested resource that captured
+  the data.
+- `methodName` (string) (required): The data capture method name.
+- `startTime` (Date) (optional): Optional start time (Date object) for requesting a
+  specific range of data.
+- `endTime` (Date) (optional): Optional end time (Date object) for requesting a specific
+  range of data.
+
+**Returns:**
+
+- (Promise<TabularDataPoint[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#exportTabularData).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -215,6 +255,30 @@ print(f"My data: {my_data}")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying tabular data to retrieve. No
+  filter implies all tabular data.
+- `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
+  to 50 if unspecfied.
+- `sortOrder` ([Order](../enums/dataApi.Order.html)) (optional): The desired sort order of the data.
+- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
+  provided, the server will return the next data entries after the last
+  ID.
+- `countOnly` (boolean) (optional): Whether to return only the total count of entries.
+- `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is
+  used for Viam-specific data ingestion, like cloud SLAM. Defaults to
+  false.
+
+**Returns:**
+
+- (Promise<{     count: bigint;     data: TabularData[];     last: string; }>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabularDataByFilter).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -296,6 +360,20 @@ data = await data_client.tabular_data_by_sql(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_sql).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization that owns the data.
+- `query` (string) (required): The SQL query to run.
+
+**Returns:**
+
+- (Promise<(Object | any[])[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabularDataBySQL).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -363,6 +441,22 @@ print(f"Tabular Data: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_mql).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization that owns the data.
+- `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
+- `useRecentData` (boolean) (optional): Whether to query blob storage or your recent data
+  store. Defaults to false.
+
+**Returns:**
+
+- (Promise<(Object | any[])[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabularDataByMQL).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -479,6 +573,32 @@ while True:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to retrieve. No
+  filter implies all binary data.
+- `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
+  to 50 if unspecfied.
+- `sortOrder` ([Order](../enums/dataApi.Order.html)) (optional): The desired sort order of the data.
+- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
+  provided, the server will return the next data entries after the last
+  ID.
+- `includeBinary` (boolean) (optional): Whether to include binary file data with each
+  retrieved file.
+- `countOnly` (boolean) (optional): Whether to return only the total count of entries.
+- `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is
+  used for Viam-specific data ingestion, like cloud SLAM. Defaults to
+  false.
+
+**Returns:**
+
+- (Promise<{     count: bigint;     data: [BinaryData](dataApi.BinaryData.html)[];     last: string; }>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binaryDataByFilter).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -576,6 +696,19 @@ binary_data = await data_client.binary_data_by_ids(my_ids)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the requested binary data.
+
+**Returns:**
+
+- (Promise<[BinaryData](dataApi.BinaryData.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binaryDataByIds).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -651,6 +784,23 @@ tabular_data = await data_client.delete_tabular_data(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of organization to delete data from.
+- `deleteOlderThanDays` (number) (required): Delete data that was captured more than this
+  many days ago. For example if deleteOlderThanDays is 10, this deletes
+  any data that was captured more than 10 days ago. If it is 0, all
+  existing data is deleted.
+
+**Returns:**
+
+- (Promise<bigint>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deleteTabularData).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -711,6 +861,22 @@ res = await data_client.delete_binary_data_by_filter(my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_filter).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to delete. No
+  filter implies all binary data.
+- `includeInternalData` (boolean) (optional): Whether or not to delete internal data. Default
+  is true.
+
+**Returns:**
+
+- (Promise<bigint>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deleteBinaryDataByFilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -800,6 +966,19 @@ binary_data = await data_client.delete_binary_data_by_ids(my_ids)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_ids).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the data to be deleted. Must be non-empty.
+
+**Returns:**
+
+- (Promise<bigint>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deleteBinaryDataByIds).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -893,6 +1072,21 @@ binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `tags` (string) (required): The list of tags to add to specified binary data. Must be
+  non-empty.
+- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the data to be tagged. Must be non-empty.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addTagsToBinaryDataByIds).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -967,6 +1161,21 @@ await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `tags` (string) (required): The tags to add to the data.
+- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
+  No filter implies all binary data.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addTagsToBinaryDataByFilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1065,6 +1274,21 @@ binary_data = await data_client.remove_tags_from_binary_data_by_ids(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `tags` (string) (required): List of tags to remove from specified binary data. Must be
+  non-empty.
+- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the data to be edited. Must be non-empty.
+
+**Returns:**
+
+- (Promise<bigint>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removeTagsFromBinaryDataByIds).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -1141,6 +1365,22 @@ res = await data_client.remove_tags_from_binary_data_by_filter(tags, my_filter)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `tags` (string) (required): List of tags to remove from specified binary data. Must be
+  non-empty.
+- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
+  No filter implies all binary data.
+
+**Returns:**
+
+- (Promise<bigint>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removeTagsFromBinaryDataByFilter).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -1208,6 +1448,20 @@ tags = await data_client.tags_by_filter(my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tags_by_filter).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
+  No filter implies all data.
+
+**Returns:**
+
+- (Promise<string[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tagsByFilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1299,6 +1553,28 @@ print(bbox_id)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_bounding_box_to_image_by_id).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` ([BinaryID](BinaryID.html)) (required)
+- `label` (string) (required): A label for the bounding box.
+- `xMinNormalized` (number) (required): The min X value of the bounding box normalized from 0
+  to 1.
+- `yMinNormalized` (number) (required): The min Y value of the bounding box normalized from 0
+  to 1.
+- `xMaxNormalized` (number) (required): The max X value of the bounding box normalized from 0
+  to 1.
+- `yMaxNormalized` (number) (required): The max Y value of the bounding box normalized from 0
+  to 1.
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addBoundingBoxToImageById).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -1382,6 +1658,20 @@ bbox_id="your-bounding-box-id-to-delete"
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_bounding_box_from_image_by_id).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `binId` ([BinaryID](BinaryID.html)) (required): The ID of the image to remove the bounding box from.
+- `bboxId` (string) (required): The ID of the bounding box to remove.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removeBoundingBoxFromImageById).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -1454,6 +1744,20 @@ print(bounding_box_labels)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.bounding_box_labels_by_filter).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `filter` ([Filter](dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
+  No filter implies all labels.
+
+**Returns:**
+
+- (Promise<string[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#boundingBoxLabelsByFilter).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -1515,6 +1819,19 @@ hostname = await data_client.get_database_connection(organization_id="<YOUR-ORG-
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_database_connection).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): Organization to retrieve connection for.
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getDatabaseConnection).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1582,6 +1899,20 @@ await data_client.configure_database_user(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.configure_database_user).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+- `password` (string) (required): The password of the user.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#configureDatabaseUser).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1665,6 +1996,20 @@ await data_client.add_binary_data_to_dataset_by_ids(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_binary_data_to_dataset_by_ids).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of binary data to add to dataset.
+- `datasetId` (string) (required): The ID of the dataset to be added to.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addBinaryDataToDatasetByIds).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1757,6 +2102,20 @@ await data_client.remove_binary_data_from_dataset_by_ids(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_binary_data_from_dataset_by_ids).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `ids` ([BinaryID](BinaryID.html)) (required): The IDs of the binary data to remove from dataset.
+- `datasetId` (string) (required): The ID of the dataset to be removed from.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removeBinaryDataFromDatasetByIds).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
