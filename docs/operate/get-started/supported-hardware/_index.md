@@ -121,7 +121,7 @@ The following models implement the [gripper component API](/dev/reference/apis/c
 {{% /tab %}}
 {{% tab name="Input Controller" %}}
 
-The following models implement the [input controller component API](/dev/reference/apis/components/input_controller/):
+The following models implement the [input controller component API](/dev/reference/apis/components/input-controller/):
 
 {{<resources api="rdk:component:input_controller" type="input_controller" no-intro="true">}}
 
@@ -135,14 +135,14 @@ The following models implement the [motor component API](/dev/reference/apis/com
 {{% /tab %}}
 {{% tab name="Movement Sensor" %}}
 
-The following models implement the [movement sensor component API](/dev/reference/apis/components/movement_sensor/):
+The following models implement the [movement sensor component API](/dev/reference/apis/components/movement-sensor/):
 
 {{<resources api="rdk:component:movement_sensor" type="movement_sensor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Power Sensor" %}}
 
-The following models implement the [power sensor component API](/dev/reference/apis/components/power_sensor/):
+The following models implement the [power sensor component API](/dev/reference/apis/components/power-sensor/):
 
 {{<resources api="rdk:component:power_sensor" type="power_sensor" no-intro="true">}}
 
