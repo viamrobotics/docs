@@ -155,8 +155,8 @@ Edit the generated files to add your logic:
 1. Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary imports.
 1. **Edit the `validate_config` function** to do the following:
 
-   - Check that the user has configured required attributes
-   - Return any implicit dependencies
+   - Check that the user has configured required attributes and return errors if they are missing.
+   - Return a map of any implicit dependencies.
 
       <details>
         <summary><strong>Explicit versus implicit dependencies</strong></summary>
@@ -179,7 +179,11 @@ Edit the generated files to add your logic:
 
 1. **Edit the `reconfigure` function** to do the following:
 
-   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+   - Get any values from the `config` object that the user has configured.
+   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.
+   - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
+
+   When the user changes the configuration, the `reconfigure` function is called.
 
 <ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
 
@@ -370,8 +374,8 @@ LOGGER.critical("critical info")
 
 1. **Edit the `Validate` function** to do the following:
 
-   - Check that the user has configured required attributes
-   - Return any implicit dependencies
+   - Check that the user has configured required attributes and return errors if they are missing.
+   - Return any implicit dependencies.
 
       <details>
         <summary><strong>Explicit versus implicit dependencies</strong></summary>
@@ -392,8 +396,20 @@ LOGGER.critical("critical info")
 
        </details><br>
 
-1. **Edit the `Reconfigure` function** to do the following:
+   If you do not implement a `Reconfigure` function (see next step), your `Validate` function should also do the following:
 
+   - Get any values from the `config` object that the user has configured.
+   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+
+1. **(Optional) Create and edit a `Reconfigure` function**:
+
+   In most cases, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
+   This will cause `viam-server` to fully rebuild the resource each time the user changes the configuration.
+
+   If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you should implement this function so that `viam-server` updates the configuration without rebuilding the resource from scratch.
+   In this case, your `Reconfigure` function should do the following:
+
+   - Get any values from the `config` object that the user has configured.
    - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
 <ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
