@@ -684,6 +684,59 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 
     return formatted_output
 
+
+def check_for_unused_methods(methods, type):
+    with open(proto_map_file, 'r') as f:
+        for row in f:
+            if not row.startswith('#') and "," in row:
+                resource = row.split(',')[0]
+
+                py_method_name = row.split(',')[3]
+                go_method_name = row.split(',')[4]
+                flutter_method_name = row.split(',')[5].rstrip()
+                typescript_method_name = row.split(',')[6].rstrip()
+
+                if py_method_name:
+                    if resource in methods['python'][type]:
+                        if py_method_name in methods['python'][type][resource]:
+                            methods['python'][type][resource][py_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {py_method_name} is specified in SDK protos map but not found in SDK docs")
+
+                if go_method_name:
+                    if resource in methods['go'][type]:
+                        if go_method_name in methods['go'][type][resource]:
+                            methods['go'][type][resource][go_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {go_method_name} is specified in SDK protos map but not found in SDK docs")
+
+                if flutter_method_name:
+                    if resource in methods['flutter'][type]:
+                        if flutter_method_name in methods['flutter'][type][resource]:
+                            methods['flutter'][type][resource][flutter_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {flutter_method_name} is specified in SDK protos map but not found in SDK docs")
+
+                if typescript_method_name:
+                    if resource in methods['typescript'][type]:
+                        if typescript_method_name in methods['typescript'][type][resource]:
+                            methods['typescript'][type][resource][typescript_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {typescript_method_name} is specified in SDK protos map but not found in SDK docs")
+
+    for lang in ["python", "go", "flutter", "typescript"]:
+        for resource in methods[lang][type]:
+            for method in methods[lang][type][resource]:
+                if not "used" in methods[lang][type][resource][method].keys():
+                    if resource in ["data_sync", "dataset", "data"]:
+                        continue
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command"] or \
+                        lang == "go" and method not in ["Reconfigure", "Stream", "ListTunnels", "Close", "DoCommand", "CurrentPosition"] or \
+                        lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource"] or \
+                        lang == "typescript" and method not in ["connect", "disconnect", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
+                        print(f"WARNING: {lang} {type} {resource} {method} is unused")
+
+
 ## write_markdown() takes the data object returned from parse(), and writes out the markdown
 ## for each method in that object:
 def write_markdown(type, names, methods):
@@ -754,6 +807,15 @@ def write_markdown(type, names, methods):
                     go_method_name = row.split(',')[4]
                     flutter_method_name = row.split(',')[5].rstrip()
                     typescript_method_name = row.split(',')[6].rstrip()
+
+                    if py_method_name:
+                        methods['python'][type][resource][py_method_name]["used"] = True
+                    if go_method_name:
+                        methods['go'][type][resource][go_method_name]["used"] = True
+                    if flutter_method_name:
+                        methods['flutter'][type][resource][flutter_method_name]["used"] = True
+                    if typescript_method_name:
+                        methods['typescript'][type][resource][typescript_method_name]["used"] = True
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
@@ -1469,6 +1531,7 @@ def run():
             write_markdown("component", components, component_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for COMPONENT methods!')
+                check_for_unused_methods(component_methods, "component")
 
         ## Parse services:
         if only_run_against not in ['components', 'app_apis', 'robot_apis']:
@@ -1482,7 +1545,7 @@ def run():
             write_markdown("service", services, service_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for SERVICE methods!')
-
+                check_for_unused_methods(service_methods, "service")
         ## Parse app client:
         if only_run_against not in ['components', 'services', 'robot_apis']:
             if args.verbose:
@@ -1495,7 +1558,7 @@ def run():
             write_markdown("app", app_apis, app_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for APP methods!')
-
+                check_for_unused_methods(app_methods, "app")
         ## Parse robot client:
         if only_run_against not in ['components', 'services', 'app_apis']:
             if args.verbose:
@@ -1508,6 +1571,7 @@ def run():
             write_markdown("robot", robot_apis, robot_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for ROBOT methods!')
+                check_for_unused_methods(robot_methods, "robot")
 
 run()
 

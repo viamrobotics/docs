@@ -64,6 +64,20 @@ config_status = machine_status.config
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(MachineStatus)](https://pkg.go.dev/go.viam.com/rdk/robot#MachineStatus)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -75,6 +89,26 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - (Promise<[GetMachineStatusResponse](https://ts.viam.dev/classes/robotApi.GetMachineStatusResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getMachineStatus).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetSessions
+
+Get the list of sessions currently connected to the robot.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (Promise<[Session](https://ts.viam.dev/classes/robotApi.Session.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getSessions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -114,6 +148,26 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourceNames).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ResourceRPCSubtypes
+
+Get a list of all resource types.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (Promise<[ResourceRPCSubtype](https://ts.viam.dev/classes/robotApi.ResourceRPCSubtype.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourceRPCSubtypes).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -231,7 +285,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
+- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -308,13 +362,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
 - `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
+- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
 
 **Returns:**
 
-- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -421,6 +475,27 @@ module_models = await machine.get_models_from_modules(qs)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_models_from_modules).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [([]resource.ModuleModel)](https://pkg.go.dev/go.viam.com/rdk/resource#ModuleModel)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+//Get a list of models found in configured modules.
+models, err := machine.GetModelsFromModules(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -432,6 +507,25 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - (Promise<[ModuleModel](https://ts.viam.dev/classes/robotApi.ModuleModel.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getModelsFromModules).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var modelsFromModules = await machine.getModelsFromModules();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/getModelsFromModules.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -667,6 +761,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (Promise<[GetVersionResponse](https://ts.viam.dev/classes/robotApi.GetVersionResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getVersion).
 
 {{% /tab %}}
 {{< /tabs >}}

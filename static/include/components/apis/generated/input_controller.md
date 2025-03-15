@@ -381,6 +381,30 @@ result = await my_input_controller.do_command(command)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.do_command).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myInputController, err := input_controller.FromRobot(machine, "my_input_controller")
+
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myInputController.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetResourceName

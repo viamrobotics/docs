@@ -45,6 +45,7 @@
 | [`UpdateRobot`](/dev/reference/apis/fleet/#updaterobot) | Change the name of an existing machine. |
 | [`DeleteRobot`](/dev/reference/apis/fleet/#deleterobot) | Delete a specified machine. |
 | [`ListFragments`](/dev/reference/apis/fleet/#listfragments) | Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in the organization you are currently authenticated to. |
+| [`ListMachineFragments`](/dev/reference/apis/fleet/#listmachinefragments) | Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text="fragments" >}} for a machine, as well as additionally specified fragment IDs. |
 | [`GetFragment`](/dev/reference/apis/fleet/#getfragment) | Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID. |
 | [`CreateFragment`](/dev/reference/apis/fleet/#createfragment) | Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}. |
 | [`UpdateFragment`](/dev/reference/apis/fleet/#updatefragment) | Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and its config and/or visibility. |

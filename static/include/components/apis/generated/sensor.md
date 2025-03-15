@@ -153,6 +153,56 @@ For built-in models, model-specific commands are covered with each model's docum
 If you are implementing your own sensor and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_sensor = Sensor.from_robot(robot=machine, name="my_sensor")
+command = {"cmd": "test", "data1": 500}
+result = await my_sensor.do_command(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.do_command).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySensor, err := sensor.FromRobot(machine, "my_sensor")
+
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := mySensor.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**

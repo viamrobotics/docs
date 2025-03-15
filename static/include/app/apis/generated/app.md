@@ -1365,7 +1365,7 @@ Get an asynchronous iterator that receives live machine part logs.
 
 **Returns:**
 
-- ([viam.app.\_logs.\_LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
+- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
 
 **Example:**
 
@@ -1954,7 +1954,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from the Viam app’s organization settings page.
-- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True. Deprecated since version 0.25.0: Use visibilities instead.
+- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True.  Deprecated since version 0.25.0: Use visibilities instead.
 - `visibilities` ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): List of FragmentVisibilities specifying which types of fragments to include in the results. If empty, by default only public fragments will be returned.
 
 **Returns:**
@@ -1985,6 +1985,31 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listFragments).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListMachineFragments
+
+Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text="fragments" >}} for a machine, as well as additionally specified fragment IDs.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `machineId` (string) (required): The machine ID used to filter fragments defined in a
+  machine's parts. Also returns any fragments nested within the fragments
+  defined in parts.
+- `additionalFragmentIds` (string) (optional): Additional fragment IDs to append to the
+  response. Useful when needing to view fragments that will be
+  provisionally added to the machine alongside existing fragments.
+
+**Returns:**
+
+- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listMachineFragments).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2095,7 +2120,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - `fragment_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the fragment to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to associate with the fragment.
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
-- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created. Deprecated since version 0.25.0: Use visibility instead.
+- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.  Deprecated since version 0.25.0: Use visibility instead.
 - `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.FragmentVisibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
 
 **Returns:**
@@ -2264,7 +2289,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the role under.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (e.g., a user ID).
 - `role` (string) (required): The role to add ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to create the role for ("robot",
   "location", or "organization").
@@ -2322,7 +2347,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to remove the role from.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (e.g., a user ID).
 - `role` (string) (required): The role to remove ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to remove the role from ("robot",
   "location", or "organization").

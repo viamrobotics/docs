@@ -66,8 +66,8 @@ class TypeScriptParser:
             if resource in typescript_resource_overrides:
                 url = f"{self.scrape_url}/classes/{typescript_resource_overrides[resource]}Client.html"
 
-            if args.verbose:
-                print(f'DEBUG: Parsing TypeScript URL: {url}')
+            # if args.verbose:
+            #     print(f'DEBUG: Parsing TypeScript URL: {url}')
 
             ## Scrape each parent method tag and all contained child tags for TypeScript by resource.
             ## TEMP: Manually exclude Base Remote Control Service (Go only).

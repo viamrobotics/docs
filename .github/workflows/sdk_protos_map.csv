@@ -21,7 +21,7 @@ base,MoveStraight,No,move_straight,MoveStraight,moveStraight,moveStraight
 base,Spin,No,spin,Spin,spin,spin
 base,SetPower,Yes,set_power,SetPower,setPower,setPower
 base,SetVelocity,No,set_velocity,SetVelocity,setVelocity,setVelocity
-base,GetProperties,No,get_properties,Properties,,getProperties
+base,GetProperties,No,get_properties,Properties,properties,getProperties
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 base,IsMoving,No,is_moving,IsMoving,isMoving,isMoving
 base,Stop,Yes,stop,Stop,stop,stop
@@ -69,7 +69,7 @@ camera,RenderFrame,,,,,renderFrame
 camera,GetPointCloud,,get_point_cloud,NextPointCloud,pointCloud,getPointCloud
 camera,GetProperties,,get_properties,Properties,properties,getProperties
 ## TED: Camera in Go SDK doesn't appear to implement (inherit) these:
-camera,DoCommand,,do_command,,doCommand,doCommand
+camera,DoCommand,,do_command,DoCommand,doCommand,doCommand
 camera,GetGeometries,,get_geometries,,,getGeometries
 ## HACK:  proto for close, manually mapping:
 camera,GetResourceName,,get_resource_name,,getResourceName,
@@ -92,19 +92,19 @@ gantry,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPosi
 gantry,GetLengths,,get_lengths,Lengths,lengths,getLengths
 gantry,Home,,home,Home,home,home
 ## TED: Gantry in Go SDK doesn't appear to implement (inherit) this:
-gantry,GetGeometries,,,,,getGeometries
+gantry,GetGeometries,,get_geometries,,,getGeometries
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 gantry,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gantry,Stop,,stop,Stop,stop,stop
 gantry,Reconfigure,,,Reconfigure,,
-gantry,DoCommand,,do_command,,doCommand,doCommand
+gantry,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gantry,GetResourceName,,get_resource_name,,getResourceName,
 gantry,Close,,close,Close,,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
 generic_component,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
-generic_component,GetGeometries,No,get_geometries,,,
+generic_component,GetGeometries,No,get_geometries,,,getGeometries
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
 generic_component,GetResourceName,No,get_resource_name,,getResourceName,
@@ -118,7 +118,7 @@ gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gripper,Stop,,stop,Stop,stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
 gripper,Reconfigure,,,Reconfigure,,
-gripper,DoCommand,,,,doCommand,doCommand
+gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gripper,GetResourceName,,get_resource_name,,getResourceName,
 gripper,Close,,close,Close,,
 
@@ -133,7 +133,7 @@ input_controller,GetGeometries,,get_geometries,,,
 input_controller,RegisterControlCallback,,register_control_callback,RegisterControlCallback,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 input_controller,Reconfigure,,,Reconfigure,,
-input_controller,DoCommand,,do_command,,,
+input_controller,DoCommand,,do_command,DoCommand,,
 input_controller,GetResourceName,,get_resource_name,,,
 input_controller,Close,,close,Close,,
 
@@ -152,7 +152,7 @@ motor,IsMoving,Yes,is_moving,IsMoving,isMoving,isMoving
 motor,Stop,Yes,stop,Stop,stop,stop
 motor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
-motor,DoCommand,,,,doCommand,doCommand
+motor,DoCommand,,do_command,DoCommand,doCommand,doCommand
 motor,GetResourceName,No,get_resource_name,,getResourceName,
 motor,Close,No,close,Close,,
 
@@ -195,7 +195,7 @@ sensor,GetReadings,Yes,get_readings,Readings,readings,getReadings
 sensor,GetGeometries,,get_geometries,,,
 sensor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
-sensor,DoCommand,,,,doCommand,doCommand
+sensor,DoCommand,,do_command,DoCommand,doCommand,doCommand
 sensor,GetResourceName,No,get_resource_name,,getResourceName,
 sensor,Close,No,close,Close,,
 
@@ -208,16 +208,16 @@ servo,IsMoving,No,is_moving,IsMoving,isMoving,isMoving
 servo,Stop,Yes,stop,Stop,stop,stop
 servo,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
-servo,DoCommand,,,,doCommand,doCommand
+servo,DoCommand,,do_command,DoCommand,doCommand,doCommand
 servo,GetResourceName,No,get_resource_name,,getResourceName,
 servo,Close,No,close,Close,,
 
 ## Switch
-switch,SetPosition,No,,SetPosition,,setPosition
-switch,GetPosition,No,,GetPosition,,getPosition
-switch,GetNumberOfPositions,No,,GetNumberOfPositions,,getNumberOfPositions
-switch,DoCommand,No,,DoCommand,,doCommand
-switch,Close,No,,Close,,
+switch,SetPosition,No,set_position,SetPosition,,setPosition
+switch,GetPosition,No,get_position,GetPosition,,getPosition
+switch,GetNumberOfPositions,No,get_number_of_positions,GetNumberOfPositions,,getNumberOfPositions
+switch,DoCommand,No,do_command,DoCommand,,doCommand
+switch,Close,No,close,Close,,
 
 ## Base Remote Control
 ## HACK: No proto for Base Remote Control, manually adding:
@@ -285,9 +285,9 @@ navigation,Close,,close,Close,,
 ## SLAM
 slam,GetPosition,,get_position,Position,,getPosition
 ## HACK: SLAM (Go) implements proto GetPointCloudMap in user-facing helper PointCloudMapFull instead:
-slam,GetPointCloudMap,,get_point_cloud_map,,,getPointCloudMap
+slam,GetPointCloudMap,,get_point_cloud_map,PointCloudMap,,getPointCloudMap
 ## HACK: SLAM (Go) implements proto GetInternalState in user-facing helper InternalStateFull instead:
-slam,GetInternalState,,get_internal_state,,,getInternalState
+slam,GetInternalState,,get_internal_state,InternalState,,getInternalState
 slam,GetProperties,,get_properties,Properties,,getProperties
 ## HACK: SLAM (Go) provides 2 additional helper functions, adding 2 pseudo-entries:
 slam,InternalStateFull,,,InternalStateFull,,
@@ -359,6 +359,7 @@ app,NewRobot,,new_robot,,,newRobot
 app,UpdateRobot,,update_robot,,,updateRobot
 app,DeleteRobot,,delete_robot,,,deleteRobot
 app,ListFragments,,list_fragments,,,listFragments
+app,ListMachineFragments,,,,,listMachineFragments
 app,GetFragment,,get_fragment,,,getFragment
 app,CreateFragment,,create_fragment,,,createFragment
 app,UpdateFragment,,update_fragment,,,updateFragment
@@ -449,10 +450,10 @@ mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,,,deleteCom
 ## Omitting some Flutter methods from w until we can determine what they do
 ## ( counterpart description text in other SDKs, as other SDKs implement these)
 robot,GetOperations,,get_operations,,,getOperations
-robot,GetMachineStatus,,get_machine_status,,,getMachineStatus
-robot,GetSessions,,,,,
+robot,GetMachineStatus,,get_machine_status,MachineStatus,,getMachineStatus
+robot,GetSessions,,,,,getSessions
 robot,ResourceNames,,,ResourceNames,,resourceNames
-robot,ResourceRPCSubtypes,,,,,
+robot,ResourceRPCSubtypes,,,,,resourceRPCSubtypes
 robot,CancelOperation,,cancel_operation,,,cancelOperation
 robot,BlockForOperation,,block_for_operation,,,blockForOperation
 robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,,frameSystemConfig
@@ -460,14 +461,14 @@ robot,TransformPose,,transform_pose,TransformPose,,transformPose
 robot,TransformPCD,,,TransformPointCloud,,transformPCD
 robot,StreamStatus,,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
-robot,GetModelsFromModules,,get_models_from_modules,,,getModelsFromModules
+robot,GetModelsFromModules,,get_models_from_modules,GetModelsFromModules,getModelsFromModules,getModelsFromModules
 robot,StopAll,,stop_all,StopAll,,stopAll
 robot,RestartModule,,,RestartModule,,
 robot,StartSession,,,,,
 robot,SendSessionHeartbeat,,,,,
 robot,Log,,log,,,
 robot,GetCloudMetadata,,get_cloud_metadata,CloudMetadata,getCloudMetadata,getCloudMetadata
-robot,GetVersion,,get_version,Version,,
+robot,GetVersion,,get_version,Version,,getVersion
 ## HACK: Robot (python) provides additional helper function, adding 4 pseudo-entries:
 robot,Options.with_api_key,,with_api_key,,,
 robot,AtAddress,,at_address,,atAddress,

@@ -515,6 +515,25 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getProperties).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[BaseProperties](https://flutter.viam.dev/viam_sdk/BaseProperties.html)\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final myBaseResourceName = myBase.getResourceName("my_base");
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Base/properties.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### IsMoving

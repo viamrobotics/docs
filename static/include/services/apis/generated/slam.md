@@ -90,6 +90,20 @@ pcd_map = await slam_svc.get_point_cloud_map()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_point_cloud_map).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `returnEditedMap` [(bool)](https://pkg.go.dev/builtin#bool)
+
+**Returns:**
+
+- None.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -131,6 +145,19 @@ internal_state = await slam.get_internal_state()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_internal_state).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}

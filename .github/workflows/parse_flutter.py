@@ -15,7 +15,11 @@ flutter_resource_overrides = {
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
 flutter_ignore_apis = [
-    'getRoverRentalRobots' # internal use
+    'getRoverRentalRobots', # internal use
+    'noSuchMethod', # generic method
+    'toString', # generic method
+    'operator ==', # generic method
+    'fromRobot'
 ]
 
 ## Use these URLs for data types that are built-in to the language:
@@ -60,8 +64,8 @@ class FlutterParser:
                 continue
             elif resource in flutter_resource_overrides:
                 url = f"{self.scrape_url}/viam_sdk/{flutter_resource_overrides[resource]}-class.html"
-                if args.verbose:
-                    print(f'DEBUG: Parsing Flutter URL: {url}')
+                # if args.verbose:
+                #     print(f'DEBUG: Parsing Flutter URL: {url}')
             else:
                 url = f"{self.scrape_url}/viam_sdk/{resource.capitalize()}-class.html"
 
