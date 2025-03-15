@@ -178,7 +178,7 @@ Edit the generated files to add your logic:
 1. **Edit the `reconfigure` function** to do the following:
 
    - Get any values from the `config` object that the user has configured.
-   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.
+   - Assign default values as necessary to any optional attributes if the user hasn't configured them.
    - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
 
    When the user changes the configuration, the `reconfigure` function is called.
@@ -391,7 +391,7 @@ LOGGER.critical("critical info")
    If you do not implement a `Reconfigure` function (see next step), your `Validate` function should also do the following:
 
    - Get any values from the `config` object that the user has configured.
-   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+   - Assign default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
 1. **(Optional) Create and edit a `Reconfigure` function**:
 
