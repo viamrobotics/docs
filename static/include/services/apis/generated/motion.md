@@ -273,7 +273,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[moveOnMap](https://ts.viam.dev/interfaces/Motion.html#moveOnMap).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveOnMap).
 
@@ -442,7 +442,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[moveOnGlobe](https://ts.viam.dev/interfaces/Motion.html#moveOnGlobe).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveOnGlobe).
 
@@ -603,7 +603,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[getPose](https://ts.viam.dev/interfaces/Motion.html#getPose).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPose).
 
@@ -684,7 +684,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<null>)
+- (Promise<null>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[stopPlan](https://ts.viam.dev/interfaces/Motion.html#stopPlan).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopPlan).
 
@@ -760,7 +760,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>)
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[listPlanStatuses](https://ts.viam.dev/interfaces/Motion.html#listPlanStatuses).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listPlanStatuses).
 
@@ -856,7 +856,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>)
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[getPlan](https://ts.viam.dev/interfaces/Motion.html#getPlan).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPlan).
 

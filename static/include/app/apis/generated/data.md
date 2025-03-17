@@ -51,7 +51,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<null | [Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>]>)
+- (Promise<null | [Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>]>): A tuple containing \[timeCaptured, timeSynced, payload] or null if
+ no data has been synced for the specified resource OR the most recently
+ captured data was over a year ago.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getLatestTabularData).
 
@@ -152,7 +154,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<TabularDataPoint[]>)
+- (Promise<TabularDataPoint[]>): An array of unified tabular data and metadata.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#exportTabularData).
 
@@ -274,7 +276,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<{     count: bigint;     data: TabularData[];     last: string; }>)
+- (Promise<{     count: bigint;     data: TabularData[];     last: string; }>): An array of data objects, the count (number of entries), and the
+ last\-returned page ID.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabularDataByFilter).
 
@@ -369,7 +372,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<(Object | any[])[]>)
+- (Promise<(Object | any[])[]>): An array of data objects.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabularDataBySQL).
 
@@ -454,7 +457,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<(Object | any[])[]>)
+- (Promise<(Object | any[])[]>): An array of data objects.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabularDataByMQL).
 
@@ -594,7 +597,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<{     count: bigint;     data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[];     last: string; }>)
+- (Promise<{     count: bigint;     data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[];     last: string; }>): An array of data objects, the count (number of entries), and the
+ last\-returned page ID.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binaryDataByFilter).
 
@@ -704,7 +708,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]>)
+- (Promise<[BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]>): An array of data objects.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binaryDataByIds).
 
@@ -796,7 +800,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<bigint>)
+- (Promise<bigint>): The number of items deleted.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deleteTabularData).
 
@@ -874,7 +878,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<bigint>)
+- (Promise<bigint>): The number of items deleted.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deleteBinaryDataByFilter).
 
@@ -976,7 +980,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<bigint>)
+- (Promise<bigint>): The number of items deleted.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deleteBinaryDataByIds).
 
@@ -1284,7 +1288,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<bigint>)
+- (Promise<bigint>): The number of items deleted.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removeTagsFromBinaryDataByIds).
 
@@ -1376,7 +1380,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<bigint>)
+- (Promise<bigint>): The number of items deleted.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removeTagsFromBinaryDataByFilter).
 
@@ -1459,7 +1463,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string[]>)
+- (Promise<string[]>): The list of tags.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tagsByFilter).
 
@@ -1570,7 +1574,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): The bounding box ID.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addBoundingBoxToImageById).
 
@@ -1753,7 +1757,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string[]>)
+- (Promise<string[]>): The list of bounding box labels.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#boundingBoxLabelsByFilter).
 
@@ -1829,7 +1833,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): Hostname of the federated database.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getDatabaseConnection).
 

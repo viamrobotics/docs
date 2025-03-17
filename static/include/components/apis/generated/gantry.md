@@ -59,7 +59,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number[]>)
+- (Promise<number[]>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[getPosition](https://ts.viam.dev/interfaces/Gantry.html#getPosition).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getPosition).
 
@@ -164,7 +164,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[moveToPosition](https://ts.viam.dev/interfaces/Gantry.html#moveToPosition).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#moveToPosition).
 
@@ -253,7 +253,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number[]>)
+- (Promise<number[]>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[getLengths](https://ts.viam.dev/interfaces/Gantry.html#getLengths).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getLengths).
 
@@ -338,7 +338,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise<boolean>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[home](https://ts.viam.dev/interfaces/Gantry.html#home).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#home).
 
@@ -404,7 +404,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[getGeometries](https://ts.viam.dev/interfaces/Gantry.html#getGeometries).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getGeometries).
 
@@ -478,7 +478,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise<boolean>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[isMoving](https://ts.viam.dev/interfaces/Gantry.html#isMoving).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#isMoving).
 
@@ -566,7 +566,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[stop](https://ts.viam.dev/interfaces/Gantry.html#stop).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#stop).
 

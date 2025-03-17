@@ -26,7 +26,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Button](https://ts.viam.dev/interfaces/Button.html).[push](https://ts.viam.dev/interfaces/Button.html#push).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#push).
 

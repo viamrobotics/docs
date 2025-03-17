@@ -58,7 +58,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[getEndPosition](https://ts.viam.dev/interfaces/Arm.html#getEndPosition).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getEndPosition).
 
@@ -157,7 +157,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[moveToPosition](https://ts.viam.dev/interfaces/Arm.html#moveToPosition).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#moveToPosition).
 
@@ -267,7 +267,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[moveToJointPositions](https://ts.viam.dev/interfaces/Arm.html#moveToJointPositions).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#moveToJointPositions).
 
@@ -398,7 +398,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>)
+- (Promise<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[getJointPositions](https://ts.viam.dev/interfaces/Arm.html#getJointPositions).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getJointPositions).
 
@@ -530,7 +530,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise<boolean>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[isMoving](https://ts.viam.dev/interfaces/Arm.html#isMoving).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#isMoving).
 
@@ -617,7 +617,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[stop](https://ts.viam.dev/interfaces/Arm.html#stop).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#stop).
 
@@ -713,7 +713,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[getGeometries](https://ts.viam.dev/interfaces/Arm.html#getGeometries).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getGeometries).
 

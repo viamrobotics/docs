@@ -76,7 +76,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>)
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): Implementation of Vision.getDetectionsFromCamera.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getDetectionsFromCamera).
 
@@ -198,7 +198,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>)
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): Implementation of Vision.getDetections.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getDetections).
 
@@ -304,7 +304,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>)
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): Implementation of Vision.getClassificationsFromCamera.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getClassificationsFromCamera).
 
@@ -426,7 +426,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>)
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): Implementation of Vision.getClassifications.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getClassifications).
 
@@ -536,7 +536,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): Implementation of Vision.getObjectPointClouds.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getObjectPointClouds).
 
@@ -651,7 +651,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<{     classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];     detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];     extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html);     image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);     objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }>)
+- (Promise<{     classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];     detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];     extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html);     image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);     objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }>): Implementation of Vision.captureAllFromCamera.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#captureAllFromCamera).
 
@@ -748,7 +748,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>): Implementation of Vision.doCommand.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#doCommand).
 
@@ -873,7 +873,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<{     classificationsSupported: boolean;     detectionsSupported: boolean;     objectPointCloudsSupported: boolean; }>)
+- (Promise<{     classificationsSupported: boolean;     detectionsSupported: boolean;     objectPointCloudsSupported: boolean; }>): Implementation of Vision.getProperties.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getProperties).
 

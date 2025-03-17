@@ -119,7 +119,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getImage](https://ts.viam.dev/interfaces/Camera.html#getImage).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getImage).
 
@@ -224,7 +224,7 @@ A specific MIME type can be requested but may not necessarily be the same one re
 
 **Returns:**
 
-- (Promise<Blob>)
+- (Promise<Blob>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[renderFrame](https://ts.viam.dev/interfaces/Camera.html#renderFrame).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderFrame).
 
@@ -300,7 +300,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getPointCloud](https://ts.viam.dev/interfaces/Camera.html#getPointCloud).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getPointCloud).
 
@@ -374,7 +374,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>)
+- (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getProperties](https://ts.viam.dev/interfaces/Camera.html#getProperties).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getProperties).
 
@@ -534,7 +534,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getGeometries](https://ts.viam.dev/interfaces/Camera.html#getGeometries).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getGeometries).
 

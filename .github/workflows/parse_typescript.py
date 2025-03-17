@@ -116,9 +116,10 @@ class TypeScriptParser:
                         }
 
                 returns = md(str(method.find('h4', class_="tsd-returns-title"))).replace("#### Returns ", "").strip().replace('\\', '')
+                return_description = md(str(method.find('h4', class_="tsd-returns-title").next_sibling)).strip()
 
                 return_object = {
-                    'return_description': '',
+                    'return_description': return_description,
                     'return_type': returns,
                     'return_usage': returns
                 }

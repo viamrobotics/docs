@@ -55,7 +55,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>)
+- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>): Implementation of Slam.getPosition.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPosition).
 
@@ -113,7 +113,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array>): Implementation of Slam.getPointCloudMap.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPointCloudMap).
 
@@ -168,7 +168,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array>): Implementation of Slam.getInternalState.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getInternalState).
 
@@ -238,7 +238,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>)
+- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>): Implementation of Slam.getProperties.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getProperties).
 
@@ -380,7 +380,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>): Implementation of Slam.doCommand.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#doCommand).
 

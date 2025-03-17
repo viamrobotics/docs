@@ -61,7 +61,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Mode](https://ts.viam.dev/enums/navigationApi.Mode.html)>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Mode](https://ts.viam.dev/enums/navigationApi.Mode.html)>): Implementation of Navigation.getMode.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getMode).
 
@@ -133,7 +133,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of Navigation.setMode.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#setMode).
 
@@ -198,7 +198,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetLocationResponse](https://ts.viam.dev/classes/navigationApi.GetLocationResponse.html)>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetLocationResponse](https://ts.viam.dev/classes/navigationApi.GetLocationResponse.html)>): Implementation of Navigation.getLocation.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getLocation).
 
@@ -263,7 +263,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Waypoint](https://ts.viam.dev/classes/navigationApi.Waypoint.html)[]>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Waypoint](https://ts.viam.dev/classes/navigationApi.Waypoint.html)[]>): Implementation of Navigation.getWayPoints.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getWayPoints).
 
@@ -338,7 +338,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of Navigation.addWayPoint.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#addWayPoint).
 
@@ -412,7 +412,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of Navigation.removeWayPoint.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#removeWayPoint).
 
@@ -480,7 +480,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[GeoGeometry](https://ts.viam.dev/classes/commonApi.GeoGeometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[GeoGeometry](https://ts.viam.dev/classes/commonApi.GeoGeometry.html)[]>): Implementation of Navigation.getObstacles.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getObstacles).
 
@@ -545,7 +545,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Path](https://ts.viam.dev/classes/navigationApi.Path.html)[]>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Path](https://ts.viam.dev/classes/navigationApi.Path.html)[]>): Implementation of Navigation.getPaths.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getPaths).
 
@@ -608,7 +608,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/navigationApi.GetPropertiesResponse.html)>)
+- (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/navigationApi.GetPropertiesResponse.html)>): Implementation of Navigation.getProperties.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getProperties).
 
@@ -705,7 +705,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>): Implementation of Navigation.doCommand.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#doCommand).
 

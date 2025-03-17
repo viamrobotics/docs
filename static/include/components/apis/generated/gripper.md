@@ -58,7 +58,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Gripper](https://ts.viam.dev/interfaces/Gripper.html).[open](https://ts.viam.dev/interfaces/Gripper.html#open).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#open).
 
@@ -145,7 +145,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Gripper](https://ts.viam.dev/interfaces/Gripper.html).[grab](https://ts.viam.dev/interfaces/Gripper.html#grab).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#grab).
 
@@ -235,7 +235,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise<boolean>): Implementation of [Gripper](https://ts.viam.dev/interfaces/Gripper.html).[isMoving](https://ts.viam.dev/interfaces/Gripper.html#isMoving).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#isMoving).
 
@@ -323,7 +323,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [Gripper](https://ts.viam.dev/interfaces/Gripper.html).[stop](https://ts.viam.dev/interfaces/Gripper.html#stop).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#stop).
 
@@ -419,7 +419,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Gripper](https://ts.viam.dev/interfaces/Gripper.html).[getGeometries](https://ts.viam.dev/interfaces/Gripper.html#getGeometries).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getGeometries).
 

@@ -39,7 +39,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise<void>): Implementation of [DataManager](https://ts.viam.dev/interfaces/DataManager.html).[sync](https://ts.viam.dev/interfaces/DataManager.html#sync).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#sync).
 

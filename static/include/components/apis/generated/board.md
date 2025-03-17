@@ -168,7 +168,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise<boolean>): Implementation of [Board](https://ts.viam.dev/interfaces/Board.html).[getGPIO](https://ts.viam.dev/interfaces/Board.html#getGPIO).
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getGPIO).
 
@@ -273,7 +273,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number>)
+- (Promise<number>): The duty cycle, which is a value from 0 to 1\.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getPWM).
 
