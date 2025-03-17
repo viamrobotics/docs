@@ -5,11 +5,10 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  schedule:
-    # 10am UTC on Wednesdays
-    - cron: '0 10 * * 3'
+  pull_request:
+    types: [opened, synchronize]
 jobs:
-  python-methods:
+  method-coverage:
     runs-on: ubuntu-latest
     continue-on-error: true
 
@@ -19,12 +18,6 @@ jobs:
         with:
           submodules: true # Fetch Hugo themes
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "latest"
-          extended: true
-
       - uses: actions/setup-python@v4
         with:
           python-version: "3.9"
