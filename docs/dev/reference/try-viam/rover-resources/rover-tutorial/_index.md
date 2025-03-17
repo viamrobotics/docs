@@ -208,7 +208,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 ## Setup
 
-{{% alert title="Important" color="tip" %}}
+{{% alert title="Important" color="info" %}}
 If you wish to use a Jetson Nano or Jetson Orin Nano, follow [this guide](./jetson-rover-setup/) instead.
 {{% /alert %}}
 

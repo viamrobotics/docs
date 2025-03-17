@@ -1,6 +1,6 @@
 ### Sync
 
-{{% alert title="Important" color="tip" %}}
+{{% alert title="Important" color="info" %}}
 
 This method is not yet available in the Viam Python SDK.
 
