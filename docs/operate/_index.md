@@ -1,6 +1,6 @@
 ---
-linkTitle: "Build & integrate"
-title: "Build and integrate"
+linkTitle: "Build and Integrate"
+title: "Build and Integrate"
 weight: 150
 layout: "docs"
 type: "docs"

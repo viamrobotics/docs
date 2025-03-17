@@ -22,12 +22,6 @@
     </a>
     </span>
     <div class="td-navbar-nav-scroll ml-md-auto td-topbar-sections" id="main_navbar">
-          <ul>
-              <li><a href="https://app.viam.com/fleet/" title="Fleet" class="navsectiontop">Fleet</a></li>
-              <li><a href="https://app.viam.com/data/view/" title="Data" class="navsectiontop">Data</a></li>
-              <li><a href="https://app.viam.com/registry/" title="Registry" class="navsectiontop">Registry</a></li>
-              <li><a href="{{ .Site.BaseURL }}" title="Docs" class="navsectiontop active-path">Docs</a></li>
-          </ul>
           {{- $currentPage := .Page -}}
           {{ $s := .Page.Section -}}
         <ul class="navbar-nav mt-2 mt-lg-0">
@@ -77,6 +71,7 @@
   </div>
   <div class="second-nav">
     <ul>
+      <li><a href="/" title="Overview" class="{{ if .IsHome }}active-path{{ end }}">Overview</a></li>
     {{ with .Site.GetPage "/" }}
     {{- range .Pages -}}
     {{- $activePath := or ($currentPage.IsDescendant .) (eq $currentPage .) -}}

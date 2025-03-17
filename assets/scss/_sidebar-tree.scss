@@ -74,7 +74,9 @@
 
         &.active {
             // The active navbar item
-            color: #0000EA;
+            color: #282829;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: 4px;
             font-weight: 600;
         }
     }
@@ -181,6 +183,5 @@ li .indent {
 
     .ul-2 > li:not(:last-child) {
         padding-bottom: 8px;
-        border-bottom: 1px solid #ccc;
     }
 }

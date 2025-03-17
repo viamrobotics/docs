@@ -1,5 +1,5 @@
 ---
-linkTitle: "AI & Data"
+linkTitle: "AI and Data"
 title: "Work with Data and AI"
 weight: 250
 layout: "docs"
@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 open_on_desktop: true
 overview: true
+toc_hide: true
 description: "Sync and store sensor data, images, and any other binary or timeseries data. Then use ML and AI to turn your data into insights and action."
 ---
 
