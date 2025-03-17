@@ -22,7 +22,7 @@ This guide provides supplemental instructions for setting up your rover with a J
 {{< tabs >}}
 {{% tab name="Jetson Nano" %}}
 
-{{% alert title="Important" color="tip" %}}
+{{% alert title="Important" color="note" %}}
 You must purchase the following hardware separately:
 
 - Four 18650 batteries (with charger) or a RC type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH) (with charger)
@@ -85,7 +85,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 {{% /tab %}}
 {{% tab name="Jetson Orin Nano" %}}
 
-{{% alert title="Important" color="tip" %}}
+{{% alert title="Important" color="note" %}}
 You must purchase the following hardware separately:
 
 - A 4S RC type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH) (with charger)
