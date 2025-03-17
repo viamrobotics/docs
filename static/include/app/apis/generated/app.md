@@ -2292,7 +2292,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the role under.
-- `entityId` (string) (required): The ID of the entity the role belongs to (e.g., a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
 - `role` (string) (required): The role to add ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to create the role for ("robot",
   "location", or "organization").
@@ -2350,7 +2350,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to remove the role from.
-- `entityId` (string) (required): The ID of the entity the role belongs to (e.g., a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
 - `role` (string) (required): The role to remove ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to remove the role from ("robot",
   "location", or "organization").

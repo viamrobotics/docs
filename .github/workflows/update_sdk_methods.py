@@ -689,12 +689,6 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 def check_for_unused_methods(methods, type):
     warnings = False
 
-    print(os.listdir())
-    print(os.listdir("static"))
-    print(os.listdir("static/include"))
-    print(os.listdir("static/include/app/apis/overrides/protos"))
-
-
     with open(proto_map_file, 'r') as f:
         for row in f:
             if not row.startswith('#') and "," in row:
@@ -859,7 +853,7 @@ def write_markdown(type, names, methods):
                         if os.path.isfile(proto_override_file):
 
                             for line in open(proto_override_file, 'r', encoding='utf-8'):
-                               output_file.write(line)
+                                output_file.write(line)
 
                             if micro_rdk_support == "Yes":
                                 output_file.write('Supported by `viam-micro-server`.\n')
@@ -908,6 +902,10 @@ def write_markdown(type, names, methods):
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
                         ## first sentence:
+
+                        print(os.listdir("static/include/app/apis/overrides/protos"))
+
+
                         with open(proto_override_file, 'r') as f:
                             file_contents = f.read().strip()
                             file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)

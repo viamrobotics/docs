@@ -37,7 +37,7 @@ htmltest-fast: setup
 	htmltest
 
 coveragetest:
-	python3 .github/workflows/update_sdk_methods.py --coverage
+	python3 .github/workflows/update_sdk_methods.py --coverage -vv
 
 markdowntest:
 	markdownlint --config .markdownlint.yaml
