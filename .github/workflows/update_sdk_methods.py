@@ -10,11 +10,12 @@ import argparse
 from parse_python import PythonParser
 from parse_go import GoParser
 from parse_flutter import FlutterParser
+from parse_typescript import TypeScriptParser
 from parser_utils import make_soup
 
 ## The full list of SDK languages we scrape. You can use the sdk_languages
 ## positional parameter to refine this at runtime if desired:
-sdks_supported = ["go", "python", "flutter"]
+sdks_supported = ["go", "python", "flutter", "typescript"]
 
 ## Arrays of resources to scrape, by type:
 ##   type = ["array", "of", "resources"]
@@ -52,14 +53,14 @@ parser.add_argument('-v', '--verbose', action='store_true', help="Run in verbose
 
 ## Parse provided parameters and arguments, if any:
 args = parser.parse_args()
+sdk_list = ''
+resource_list = ''
+only_run_against = ''
+
 if args.map:
     ## We check for args.map again in both proto_map() and run().
     sdks = sdks_supported
 else:
-    sdk_list = ''
-    resource_list = ''
-    only_run_against = ''
-
     ## Using specific argument names to allow help text to be specific, but checking both
     ## for sdk or resource values, to allow providing either in any position on the CLI.
     if args.sdk_languages is not None:
@@ -126,17 +127,17 @@ if args.verbose:
     print('              Try, in a separate terminal window:\n')
     print('              DURING RUN: tail -f /tmp/update_sdk_methods_debug.txt')
     print('              AFTER RUN: less /tmp/update_sdk_methods_debug.txt\n')
-if sdk_list and args.verbose:
-    print('SDKS OVERRIDE: Only running against ' + str(sdks) + '\n')
-if resource_list and args.verbose:
-    print('RESOURCE OVERRIDE: Only running against ' + str(resource_list) + '\n')
-if args.overrides and args.verbose:
-    print("ERROR: You cannot use verbose mode with print overrides mode.")
-    print("       If you want this script to print the overrides filepaths it needs")
-    print("       for param | return description overrides, rerun this script with")
-    print("       the -o flag but WITHOUT the -v flag.")
-    print("Exiting ...")
-    exit(1)
+    if sdk_list:
+        print('SDKS OVERRIDE: Only running against ' + str(sdks) + '\n')
+    if resource_list:
+        print('RESOURCE OVERRIDE: Only running against ' + str(resource_list) + '\n')
+    if args.overrides:
+        print("ERROR: You cannot use verbose mode with print overrides mode.")
+        print("       If you want this script to print the overrides filepaths it needs")
+        print("       for param | return description overrides, rerun this script with")
+        print("       the -o flag but WITHOUT the -v flag.")
+        print("Exiting ...")
+        exit(1)
 
 ## This script must be run within the 'docs' git repo. Here we check
 ## to make sure this is the case, and get the root of our git-managed
@@ -349,7 +350,8 @@ override_description_links = {
 code_fence_fmt = {
     'python': 'python',
     'go': 'go',
-    'flutter': 'dart'
+    'flutter': 'dart',
+    'typescript': 'ts'
 }
 
 ## Check to see if we have a locally-staged version of any of the supported SDK docs sites.
@@ -359,6 +361,8 @@ code_fence_fmt = {
 python_staging_url = ''
 go_staging_url = ''
 flutter_staging_url = ''
+# TODO: NOT implemented yet
+typescript_staging_url = ''
 
 ## Check for GO SDK docs staging on local workstation:
 go_process_pid = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text=True, capture_output=True).stdout.rstrip()
@@ -473,13 +477,6 @@ def parse(type, names):
 
     ## Iterate through each sdk (like 'python') in sdks array:
     for sdk in sdks:
-
-        ## Determine SDK URL based on resource type:
-        sdk_url = sdk_url_mapping[sdk]
-        scrape_url = sdk_url
-
-        ## Build empty dict to house methods, and update scrape_url
-        ## with staging link if we detected one earlier:
         if sdk == "go":
             go_parser = GoParser(proto_map_file, go_staging_url)
             all_methods["go"] = go_parser.parse(type, names)
@@ -489,6 +486,9 @@ def parse(type, names):
         elif sdk == "flutter":
             flutter_parser = FlutterParser(proto_map_file, flutter_staging_url)
             all_methods["flutter"] = flutter_parser.parse(type, names, args)
+        elif sdk == "typescript":
+            typescript_parser = TypeScriptParser(proto_map_file, typescript_staging_url)
+            all_methods["typescript"] = typescript_parser.parse(type, names, args)
         else:
             print("unsupported language!")
 
@@ -753,10 +753,11 @@ def write_markdown(type, names, methods):
                     py_method_name = row.split(',')[3]
                     go_method_name = row.split(',')[4]
                     flutter_method_name = row.split(',')[5].rstrip()
+                    typescript_method_name = row.split(',')[6].rstrip()
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
-                    if (py_method_name and "python" in sdks) or (go_method_name and "go" in sdks) or (flutter_method_name and "flutter" in sdks):
+                    if (py_method_name and "python" in sdks) or (go_method_name and "go" in sdks) or (typescript_method_name and "typescript" in sdks) or (flutter_method_name and "flutter" in sdks):
 
                         ## We have at least one implemented method for this proto, so begin writing output markdown for this resource.
                         ## Write proto as H3, with leading newlines if appending to ongoing {resource}.md file:
@@ -1012,7 +1013,7 @@ def write_markdown(type, names, methods):
 
                             # Close tabs
                             output_file.write("{{% /tab %}}\n")
-                            if not (go_method_name and "go" in sdks) and not (flutter_method_name and "flutter" in sdks):
+                            if not (go_method_name and "go" in sdks) and not (flutter_method_name and "flutter" in sdks) and not (typescript_method_name and "typescript" in sdks):
                                 output_file.write("{{< /tabs >}}\n")
 
                         if go_method_name and "go" in sdks:
@@ -1104,8 +1105,170 @@ def write_markdown(type, names, methods):
                             output_file.write(f'\nFor more information, see the [Go SDK Docs]({methods["go"][type][resource][go_method_name]["method_link"]}).\n\n')
 
                             output_file.write("{{% /tab %}}\n")
+                            if not (typescript_method_name and "typescript" in sdks) and not(flutter_method_name and "flutter" in sdks):
+                                output_file.write("{{< /tabs >}}\n")
+
+                        if typescript_method_name and "typescript" in sdks:
+                            output_file.write('{{% tab name="TypeScript" %}}\n\n')
+
+                            ## Assemble possible method override filepaths. Provide a file at one or both of these locations to
+                            ## inject additional MD content either before or after the auto-generated method content:
+                            ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
+                            ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
+                            ## .../overrides/methods/{sdk}.{resource}.{method_name}.before|after.md
+                            before_method_override_filepath = path_to_methods_override + '/typescript.' + resource + '.' + typescript_method_name + '.before.md'
+                            after_method_override_filepath = path_to_methods_override + '/typescript.' + resource + '.' + typescript_method_name + '.after.md'
+
+                            ## If we detected a 'before' method override file, write it out here:
+                            if os.path.exists(before_method_override_filepath):
+                                for line in open(before_method_override_filepath, 'r', encoding='utf-8'):
+                                    output_file.write(line)
+
+                            output_file.write('**Parameters:**\n\n')
+
+                            if typescript_method_name not in methods['typescript'][type][resource]:
+                                print("ERROR: Method not found in typescript SDK: ", typescript_method_name, type, resource)
+                                continue
+
+                            if 'parameters' in methods['typescript'][type][resource][typescript_method_name] and methods['typescript'][type][resource][typescript_method_name]['parameters']:
+
+                                for parameter in methods['typescript'][type][resource][typescript_method_name]['parameters'].keys():
+
+                                    param_data = methods['typescript'][type][resource][typescript_method_name]['parameters'][parameter]
+
+                                    param_type = param_data.get("param_type")
+
+                                    param_description = ''
+                                    ## .../overrides/methods/{sdk}.{resource}.{typescript_method_name}.{param_name}.md
+                                    param_desc_override_file = path_to_methods_override + '/typescript.' + resource + '.' + typescript_method_name + '.' + parameter + '.md'
+
+                                    if args.overrides:
+                                        print(param_desc_override_file)
+
+                                    if os.path.exists(param_desc_override_file):
+                                        preserve_formatting = False
+                                        for line in open(param_desc_override_file, 'r', encoding='utf-8'):
+                                            if '<!-- preserve-formatting -->' in line:
+                                                preserve_formatting = True
+                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line
+                                            elif '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line.replace('\n', ' ')
+                                        param_description = param_description.rstrip()
+                                    else:
+                                        param_description = param_data.get("param_description").strip()
+
+                                    optional = param_data.get("optional")
+
+                                    output_file.write(f'- `{parameter}` ({param_type})')
+
+                                    if optional:
+                                        output_file.write(' (optional)')
+                                    else:
+                                        output_file.write(' (required)')
+
+                                    if param_description:
+
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not param_description.endswith('.') and not param_description.endswith('>'):
+                                            param_description = param_description + '.'
+
+                                        output_file.write(f": {param_description}")
+
+                                    # line break for parameters list
+                                    output_file.write('\n')
+
+                            # Handle case where no parameters are found
+                            else:
+                                output_file.write("- None.\n")
+
+                            output_file.write('\n**Returns:**\n\n')
+
+                            if 'return' in methods['typescript'][type][resource][typescript_method_name]:
+
+                                return_data = methods['typescript'][type][resource][typescript_method_name]["return"]
+                                return_type = return_data.get("return_type")
+
+                                return_description = ''
+                                ## .../overrides/methods/{sdk}.{resource}.{typescript_method_name}.return.md
+                                return_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + typescript_method_name + '.return.md'
+
+                                if args.overrides:
+                                    print(return_desc_override_file)
+
+                                if os.path.exists(return_desc_override_file):
+                                    preserve_formatting = False
+                                    for line in open(return_desc_override_file, 'r', encoding='utf-8'):
+                                        if '<!-- preserve-formatting -->' in line:
+                                            preserve_formatting = True
+                                        if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                                            return_description = return_description + line
+                                        elif '<!-- preserve-formatting -->' not in line:
+                                            return_description = return_description + line.replace('\n', ' ')
+                                    return_description = return_description.rstrip()
+                                else:
+                                    return_description = return_data.get("return_description")
+
+                                if return_type:
+                                    output_file.write(f"- ({return_type})")
+
+                                    if return_description:
+
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not return_description.endswith('.') and not return_description.endswith('>'):
+                                            return_description = return_description + '.'
+
+                                        output_file.write(f": {return_description}\n")
+                                    else:
+                                        output_file.write("\n")
+                            # Handle case where no returns are found
+                            else:
+                                output_file.write("- None.\n")
+
+                            if 'raises' in methods['typescript'][type][resource][typescript_method_name]:
+                                output_file.write('\n**Raises:**\n\n')
+
+                                raises_object = methods['typescript'][type][resource][typescript_method_name]["raises"]
+                                raises_types = methods['typescript'][type][resource][typescript_method_name]["raises"].keys()
+                                for raises_type in raises_types:
+                                    output_file.write(f"- ({raises_type})")
+                                    if "raises_description" in raises_object[raises_type]:
+                                        raises_description= raises_object[raises_type]["raises_description"]
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not raises_description.endswith('.') and not raises_description.endswith('>'):
+                                            raises_description = raises_description + '.'
+
+                                        output_file.write(f": {raises_description}\n")
+                                    else:
+                                        output_file.write("\n")
+
+                            ## If the method has a code sample, print it here:
+                            if 'code_sample' in methods['typescript'][type][resource][typescript_method_name]:
+
+                                output_file.write('\n**Example:**\n')
+                                output_file.write('\n```' + code_fence_fmt['typescript'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write(methods['typescript'][type][resource][typescript_method_name]['code_sample'])
+                                output_file.write('```\n')
+
+                            ## If we detected an 'after' method override file earlier, write it out here:
+                            if os.path.exists(after_method_override_filepath):
+
+                                output_file.write('\n')
+                                for line in open(after_method_override_filepath, 'r', encoding='utf-8'):
+                                    output_file.write(line)
+
+                            # Output the method link
+                            output_file.write(f'\nFor more information, see the [TypeScript SDK Docs]({methods["typescript"][type][resource][typescript_method_name]["method_link"]}).\n\n')
+
+                            # Close tabs
+                            output_file.write("{{% /tab %}}\n")
                             if not (flutter_method_name and "flutter" in sdks):
                                 output_file.write("{{< /tabs >}}\n")
+
+
 
                         if flutter_method_name and "flutter" in sdks:
                             output_file.write('{{% tab name="Flutter" %}}\n\n')
@@ -1256,6 +1419,7 @@ def write_markdown(type, names, methods):
                         ## This switch tells us at the start of the loop for this same resource that we should double-newline the next
                         ## proto encountered:
                         is_first_method_in_this_resource = False
+
 
         ## Close file handles:
         output_file.close()

@@ -24,6 +24,19 @@ usage = await billing_client.get_current_month_usage("<ORG-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_current_month_usage).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `orgId` (string) (required)
+
+**Returns:**
+
+- (Promise<GetCurrentMonthUsageResponse>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getCurrentMonthUsage).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetOrgBillingInformation
@@ -52,6 +65,19 @@ information = await billing_client.get_org_billing_information("<ORG-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_org_billing_information).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `orgId` (string) (required)
+
+**Returns:**
+
+- (Promise<[GetOrgBillingInformationResponse](https://ts.viam.dev/classes/billingApi.GetOrgBillingInformationResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getOrgBillingInformation).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetInvoicesSummary
@@ -77,6 +103,19 @@ summary = await billing_client.get_invoices_summary("<ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_invoices_summary).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `orgId` (string) (required)
+
+**Returns:**
+
+- (Promise<[GetInvoicesSummaryResponse](https://ts.viam.dev/classes/billingApi.GetInvoicesSummaryResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getInvoicesSummary).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -107,6 +146,20 @@ await billing_client.get_invoice_pdf("<INVOICE-ID>", "<ORG-ID>", "invoice.pdf")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_invoice_pdf).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required)
+- `orgId` (string) (required)
+
+**Returns:**
+
+- (Promise<Uint8Array>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getInvoicePdf).
 
 {{% /tab %}}
 {{< /tabs >}}

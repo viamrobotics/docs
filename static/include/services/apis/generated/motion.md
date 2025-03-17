@@ -107,6 +107,24 @@ moved, err := motionService.Move(context.Background(), motion.MoveReq{
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>): Whether the move was successful (`true`) or unsuccessful (`false`).
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#move).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### MoveOnMap
@@ -239,6 +257,25 @@ err = motion.PollHistoryUntilSuccessOrError(
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveOnMap).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -389,6 +426,27 @@ err = motion.PollHistoryUntilSuccessOrError(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `heading` (number) (optional)
+- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<string>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveOnGlobe).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetPose
@@ -533,6 +591,23 @@ logger.Info("Orientation of my_gripper from the motion service:", myGripperPose.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `destinationFrame` (string) (required)
+- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPose).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### StopPlan
@@ -599,6 +674,21 @@ err := motionService.StopPlan(context.Background(), motion.StopPlanReq{
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<null>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopPlan).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### ListPlanStatuses
@@ -658,6 +748,21 @@ planStatuses, err := motionService.ListPlanStatuses(context.Background(), motion
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `onlyActivePlans` (boolean) (optional)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listPlanStatuses).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -737,6 +842,23 @@ planHistory, err := motionService.PlanHistory(context.Background(), motion.PlanH
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `lastPlanOnly` (boolean) (optional)
+- `executionId` (string) (optional)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPlan).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -859,6 +981,20 @@ result, err := myMotionSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#doCommand).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -54,6 +54,22 @@ myMotorComponent.SetPower(context.Background(), 0.4, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `power` (number) (required): A value between -1 and 1 where negative values indicate a
+  backwards direction and positive values a forward direction.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setPower).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -126,6 +142,21 @@ myMotorComponent.SetRPM(context.Background(), 50, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `rpm` (number) (required): Speed in revolutions per minute.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setRPM).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -207,6 +238,25 @@ myMotorComponent.GoFor(context.Background(), 60, 7.2, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `rpm` (number) (required): Speed in revolutions per minute.
+- `revolutions` (number) (required): Number of revolutions relative to the motor's starting
+  position. If this value is 0, this will run the motor at the given rpm
+  indefinitely. If this value is nonzero, this will block until the number
+  of revolutions has been completed or another operation comes in.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#goFor).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -286,6 +336,23 @@ myMotorComponent.GoTo(context.Background(), 75, 8.3, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `rpm` (number) (required): Speed in revolutions per minute.
+- `positionRevolutions` (number) (required): Number of revolutions relative to the motor's
+  home position.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#goTo).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -359,6 +426,21 @@ myMotorComponent.ResetZeroPosition(context.Background(), 0.0, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `offset` (number) (required): Position from which to offset the current position.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#resetZeroPosition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -439,6 +521,20 @@ logger.Info(position)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getPosition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -522,6 +618,20 @@ logger.Info(properties)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<{     positionReporting: boolean; }>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getProperties).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -601,6 +711,20 @@ logger.Info(pct)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<readonly [boolean, number]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#isPowered).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -685,6 +809,19 @@ logger.Info(is_moving)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#isMoving).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -760,6 +897,20 @@ err = myArm.Stop(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#stop).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -812,6 +963,20 @@ For built-in models, model-specific commands are covered with each model's docum
 If you are implementing your own motor and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#doCommand).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**

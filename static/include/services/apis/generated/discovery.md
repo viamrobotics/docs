@@ -59,4 +59,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/discovery#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[ComponentConfig](https://ts.viam.dev/classes/appRobotApi.ComponentConfig.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DiscoveryClient.html#discoverResources).
+
+{{% /tab %}}
 {{< /tabs >}}

@@ -66,6 +66,21 @@ if len(detections) > 0 {
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `cameraName` (string) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getDetectionsFromCamera).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -170,6 +185,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `image` (Uint8Array) (required)
+- `width` (number) (required)
+- `height` (number) (required)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getDetections).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -258,6 +291,22 @@ if len(classifications) > 0 {
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `cameraName` (string) (required)
+- `count` (number) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getClassificationsFromCamera).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -363,6 +412,25 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `image` (Uint8Array) (required)
+- `width` (number) (required)
+- `height` (number) (required)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (required)
+- `count` (number) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getClassifications).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -456,6 +524,21 @@ if len(objects) > 0 {
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `cameraName` (string) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getObjectPointClouds).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -557,6 +640,22 @@ objects := capture.Objects
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `cameraName` (string) (required)
+- `__namedParameters` (CaptureAllOptions) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<{     classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];     detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];     extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html);     image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);     objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#captureAllFromCamera).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
@@ -638,6 +737,20 @@ result, err := myVisionSvc.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#doCommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -749,6 +862,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<{     classificationsSupported: boolean;     detectionsSupported: boolean;     objectPointCloudsSupported: boolean; }>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getProperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
