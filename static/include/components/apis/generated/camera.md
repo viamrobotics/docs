@@ -113,7 +113,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
+the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -121,7 +122,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<Uint8Array>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getImage).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getimage).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -218,7 +219,8 @@ A specific MIME type can be requested but may not necessarily be the same one re
 
 **Parameters:**
 
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
+the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -226,7 +228,7 @@ A specific MIME type can be requested but may not necessarily be the same one re
 
 - (Promise<Blob>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderFrame).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderframe).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -302,7 +304,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<Uint8Array>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getPointCloud).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getpointcloud).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -376,7 +378,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getproperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -433,6 +435,30 @@ result = await my_camera.do_command(command)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.do_command).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myCamera, err := camera.FromRobot(machine, "my_camera")
+
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myCamera.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -444,7 +470,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -512,7 +538,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getGeometries).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getgeometries).
 
 {{% /tab %}}
 {{< /tabs >}}

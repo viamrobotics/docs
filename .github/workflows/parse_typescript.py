@@ -51,7 +51,6 @@ class TypeScriptParser:
         for resource in viam_resources:
 
             ## Determine URL form for TypeScript depending on type (like 'component').
-            ## TEMP: Manually exclude Base Remote Control Service (Go only):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
 
             # Initialize TypeScript methods dictionary if it doesn't exist
@@ -66,35 +65,35 @@ class TypeScriptParser:
             if resource in typescript_resource_overrides:
                 url = f"{self.scrape_url}/classes/{typescript_resource_overrides[resource]}Client.html"
 
-            if args.verbose:
-                print(f'DEBUG: Parsing TypeScript URL: {url}')
+            # if args.verbose:
+            #     print(f'DEBUG: Parsing TypeScript URL: {url}')
 
             ## Scrape each parent method tag and all contained child tags for TypeScript by resource.
-            ## TEMP: Manually exclude Base Remote Control Service (Go only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             soup = make_soup(url)
+
             for a in soup.find_all('a'):
                 if a.get('href') and not a.get('href').startswith('http'):
                     a['href'] = urljoin(url, a.get('href'))
 
-            top_level_sections = soup.find_all('section', class_='tsd-panel-group tsd-member-group')
+            top_level_sections = soup.find_all(class_='tsd-member-group')
             methods = []
 
             for section in top_level_sections:
-                if section.find('h2').text == 'Methods':
+                if 'Methods' in section.find('h2').text:
                     methods = section.find_all('section', class_='tsd-panel tsd-member')
                 if resource == 'robot':
-                    if section.find('h2').text in ['App/Cloud', 'ComponentConfig', 'Discovery', "Frame System", "Operations", "Resources", "Sessions"]:
+                    if section.find('h2').text.strip() in ['App/Cloud', 'ComponentConfig', 'Discovery', "Frame System", "Operations", "Resources", "Sessions"]:
                         methods.extend(section.find_all('section', class_='tsd-panel tsd-member'))
 
 
             for method in methods:
-                # print(method)
                 method_name = method.find('h3').text
 
                 param_object = {}
                 if method.find('div', class_="tsd-parameters"):
                     parameters = method.find('div', class_="tsd-parameters").find_all('li')
+
                     for param in parameters:
                         param_name = param.find('span', class_="tsd-kind-parameter").text
                         param_description = ''
@@ -116,16 +115,18 @@ class TypeScriptParser:
                         }
 
                 returns = md(str(method.find('h4', class_="tsd-returns-title"))).replace("#### Returns ", "").strip().replace('\\', '')
+                return_description = md(str(method.find('h4', class_="tsd-returns-title").next_sibling)).strip()
 
                 return_object = {
-                    'return_description': '',
+                    'return_description': return_description,
                     'return_type': returns,
                     'return_usage': returns
                 }
 
                 method_description = ""
-                if method.find('li', class_="tsd-description").find('div', class_="tsd-comment"):
-                    method_description = method.find('li', class_="tsd-description").find('div', class_="tsd-comment").text.strip()
+                if method.find('li', class_="tsd-description"):
+                    if method.find('li', class_="tsd-description").find('div', class_="tsd-comment"):
+                        method_description = method.find('li', class_="tsd-description").find('div', class_="tsd-comment").text.strip()
 
                 self.typescript_methods[type][resource][method_name] = {
                     'method_description': method_description,

@@ -1,4 +1,4 @@
-name: Check Python SDK method coverage
+name: SDK method coverage
 
 concurrency:
   group: pullrequest-untrusted-coverage-${{ github.event.number }}
@@ -9,7 +9,7 @@ on:
     # 10am UTC on weekdays
     - cron: '0 10 * * 3'
 jobs:
-  python-methods:
+  method-coverage:
     runs-on: ubuntu-latest
     continue-on-error: true
 
@@ -19,12 +19,6 @@ jobs:
         with:
           submodules: true # Fetch Hugo themes
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "latest"
-          extended: true
-
       - uses: actions/setup-python@v4
         with:
           python-version: "3.9"
@@ -49,7 +43,7 @@ jobs:
         with:
           project: DOCS
           issuetype: Task
-          summary: New Python Methods
+          summary: New SDK Methods
           description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
       - name: Log created Jira issue
         if: failure()

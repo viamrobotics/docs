@@ -57,7 +57,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getposition).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -90,6 +90,20 @@ pcd_map = await slam_svc.get_point_cloud_map()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_point_cloud_map).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `returnEditedMap` [(bool)](https://pkg.go.dev/builtin#bool)
+
+**Returns:**
+
+- None.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -99,9 +113,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array>): Implementation of Slam.getPointCloudMap.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPointCloudMap).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getpointcloudmap).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -133,6 +147,19 @@ internal_state = await slam.get_internal_state()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_internal_state).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -141,9 +168,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array>): Implementation of Slam.getInternalState.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getInternalState).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getinternalstate).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -213,7 +240,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getproperties).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -348,14 +375,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required)
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#docommand).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -50,6 +50,7 @@ parser.add_argument('-v', '--verbose', action='store_true', help="Run in verbose
                      the complete data object from parse() to /tmp/update_sdk_methods_debug.txt. \
                      Also prints high-level status updates to STDOUT. \
                      Deletes previous debug file when run again.")
+parser.add_argument('-c', '--coverage', action='store_true', help="Fails the build if any methods are unused.")
 
 ## Parse provided parameters and arguments, if any:
 args = parser.parse_args()
@@ -684,6 +685,68 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 
     return formatted_output
 
+
+def check_for_unused_methods(methods, type):
+    warnings = False
+
+    with open(proto_map_file, 'r') as f:
+        for row in f:
+            if not row.startswith('#') and "," in row:
+                resource = row.split(',')[0]
+
+                py_method_name = row.split(',')[3]
+                go_method_name = row.split(',')[4]
+                flutter_method_name = row.split(',')[5].rstrip()
+                typescript_method_name = row.split(',')[6].rstrip()
+
+                if py_method_name:
+                    if 'python' in sdks and resource in methods['python'][type]:
+                        if py_method_name in methods['python'][type][resource]:
+                            methods['python'][type][resource][py_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {py_method_name} is specified in SDK protos map but not found in SDK docs")
+                            warnings = True
+
+                if go_method_name:
+                    if 'go' in sdks and resource in methods['go'][type]:
+                        if go_method_name in methods['go'][type][resource]:
+                            methods['go'][type][resource][go_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {go_method_name} is specified in SDK protos map but not found in SDK docs")
+                            warnings = True
+
+                if flutter_method_name:
+                    if 'flutter' in sdks and resource in methods['flutter'][type]:
+                        if flutter_method_name in methods['flutter'][type][resource]:
+                            methods['flutter'][type][resource][flutter_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {flutter_method_name} is specified in SDK protos map but not found in SDK docs")
+                            warnings = True
+
+                if typescript_method_name:
+                    if 'typescript' in sdks and resource in methods['typescript'][type]:
+                        if typescript_method_name in methods['typescript'][type][resource]:
+                            methods['typescript'][type][resource][typescript_method_name]["used"] = True
+                        else:
+                            print(f"WARNING: {type} {resource} {typescript_method_name} is specified in SDK protos map but not found in SDK docs")
+                            warnings = True
+
+    for lang in sdks:
+        for resource in methods[lang][type]:
+            for method in methods[lang][type][resource]:
+                if not "used" in methods[lang][type][resource][method].keys():
+                    if resource in ["data_sync", "dataset", "data"]:
+                        continue
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command"] or \
+                        lang == "go" and method not in ["Reconfigure", "Stream", "ListTunnels", "Close", "DoCommand", "CurrentPosition"] or \
+                        lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource"] or \
+                        lang == "typescript" and method not in ["connect", "disconnect", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
+                        print(f"WARNING: {lang} {type} {resource} {method} is unused")
+                        warnings = True
+
+    return warnings
+
+
 ## write_markdown() takes the data object returned from parse(), and writes out the markdown
 ## for each method in that object:
 def write_markdown(type, names, methods):
@@ -755,6 +818,15 @@ def write_markdown(type, names, methods):
                     flutter_method_name = row.split(',')[5].rstrip()
                     typescript_method_name = row.split(',')[6].rstrip()
 
+                    if py_method_name and "python" in sdks:
+                        methods['python'][type][resource][py_method_name]["used"] = True
+                    if go_method_name and "go" in sdks:
+                        methods['go'][type][resource][go_method_name]["used"] = True
+                    if flutter_method_name and "flutter" in sdks:
+                        methods['flutter'][type][resource][flutter_method_name]["used"] = True
+                    if typescript_method_name and "typescript" in sdks:
+                        methods['typescript'][type][resource][typescript_method_name]["used"] = True
+
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
                     if (py_method_name and "python" in sdks) or (go_method_name and "go" in sdks) or (typescript_method_name and "typescript" in sdks) or (flutter_method_name and "flutter" in sdks):
@@ -781,7 +853,7 @@ def write_markdown(type, names, methods):
                         if os.path.isfile(proto_override_file):
 
                             for line in open(proto_override_file, 'r', encoding='utf-8'):
-                               output_file.write(line)
+                                output_file.write(line)
 
                             if micro_rdk_support == "Yes":
                                 output_file.write('Supported by `viam-micro-server`.\n')
@@ -830,6 +902,8 @@ def write_markdown(type, names, methods):
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
                         ## first sentence:
+
+
                         with open(proto_override_file, 'r') as f:
                             file_contents = f.read().strip()
                             file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
@@ -1438,6 +1512,8 @@ def write_markdown(type, names, methods):
 ## - write_markdown()   Write out salient fields from passed data object to specific MD files
 def run():
 
+    exit_code = 0
+
     ## If generating the mapping template file, skip all other functionality:
     if args.map:
         if args.verbose:
@@ -1469,6 +1545,8 @@ def run():
             write_markdown("component", components, component_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for COMPONENT methods!')
+            if check_for_unused_methods(component_methods, "component"):
+                exit_code = 1
 
         ## Parse services:
         if only_run_against not in ['components', 'app_apis', 'robot_apis']:
@@ -1482,6 +1560,8 @@ def run():
             write_markdown("service", services, service_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for SERVICE methods!')
+            if check_for_unused_methods(service_methods, "service"):
+                exit_code = 1
 
         ## Parse app client:
         if only_run_against not in ['components', 'services', 'robot_apis']:
@@ -1495,7 +1575,8 @@ def run():
             write_markdown("app", app_apis, app_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for APP methods!')
-
+            if check_for_unused_methods(app_methods, "app"):
+                exit_code = 1
         ## Parse robot client:
         if only_run_against not in ['components', 'services', 'app_apis']:
             if args.verbose:
@@ -1508,7 +1589,12 @@ def run():
             write_markdown("robot", robot_apis, robot_methods)
             if args.verbose:
                 print('DEBUG: Completed writing markdown for ROBOT methods!')
+            if check_for_unused_methods(robot_methods, "robot"):
+                exit_code = 1
+
+        if exit_code == 1 and args.coverage:
+            sys.exit("Warnings present in the SDK docs. Please check the logs for more information.")
 
 run()
 
-sys.exit(1)
+sys.exit(0)

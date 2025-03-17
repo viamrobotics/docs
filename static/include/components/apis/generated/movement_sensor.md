@@ -63,7 +63,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getLinearVelocity).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getlinearvelocity).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -158,7 +158,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getAngularVelocity).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getangularvelocity).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -247,7 +247,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getCompassHeading).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getcompassheading).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -344,7 +344,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Orientation](https://ts.viam.dev/classes/commonApi.Orientation.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getOrientation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getorientation).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -435,7 +435,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPositionResponse](https://ts.viam.dev/classes/movementSensorApi.GetPositionResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -524,7 +524,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/movementSensorApi.GetPropertiesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getproperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -627,7 +627,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[GetAccuracyResponse](https://ts.viam.dev/classes/movementSensorApi.GetAccuracyResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getAccuracy).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getaccuracy).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -719,7 +719,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getLinearAcceleration).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getlinearacceleration).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -841,7 +841,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getReadings).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getreadings).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -956,7 +956,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

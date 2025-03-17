@@ -32,7 +32,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[Operation](https://ts.viam.dev/classes/robotApi.Operation.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getOperations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getoperations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -64,6 +64,20 @@ config_status = machine_status.config
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(MachineStatus)](https://pkg.go.dev/go.viam.com/rdk/robot#MachineStatus)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -74,7 +88,27 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[GetMachineStatusResponse](https://ts.viam.dev/classes/robotApi.GetMachineStatusResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getMachineStatus).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmachinestatus).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetSessions
+
+Get the list of sessions currently connected to the robot.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (Promise<[Session](https://ts.viam.dev/classes/robotApi.Session.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getsessions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -113,7 +147,27 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourceNames).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcenames).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ResourceRPCSubtypes
+
+Get a list of all resource types.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (Promise<[ResourceRPCSubtype](https://ts.viam.dev/classes/robotApi.ResourceRPCSubtype.html)[]>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcerpcsubtypes).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -152,7 +206,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#cancelOperation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#canceloperation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -192,7 +246,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockForOperation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockforoperation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -255,7 +309,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[FrameSystemConfig](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#framesystemconfig).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -345,7 +399,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPose).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformpose).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -390,7 +444,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<Uint8Array>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformpcd).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -421,6 +475,27 @@ module_models = await machine.get_models_from_modules(qs)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_models_from_modules).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [([]resource.ModuleModel)](https://pkg.go.dev/go.viam.com/rdk/resource#ModuleModel)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+//Get a list of models found in configured modules.
+models, err := machine.GetModelsFromModules(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -431,7 +506,26 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[ModuleModel](https://ts.viam.dev/classes/robotApi.ModuleModel.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getModelsFromModules).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmodelsfrommodules).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var modelsFromModules = await machine.getModelsFromModules();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/getModelsFromModules.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -492,7 +586,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopAll).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopall).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -604,7 +698,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[GetCloudMetadataResponse](https://ts.viam.dev/classes/robotApi.GetCloudMetadataResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getCloudMetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getcloudmetadata).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -667,6 +761,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (Promise<[GetVersionResponse](https://ts.viam.dev/classes/robotApi.GetVersionResponse.html)>): None.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getversion).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -30,9 +30,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): The user's ID.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getUserIDByEmail).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getuseridbyemail).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -69,9 +69,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>)
+- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): The new organization.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createOrganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -108,9 +108,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html)[]>)
+- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html)[]>): The organization list.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listOrganizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -147,9 +147,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[OrganizationIdentity](https://ts.viam.dev/classes/appApi.OrganizationIdentity.html)[]>)
+- (Promise<[OrganizationIdentity](https://ts.viam.dev/classes/appApi.OrganizationIdentity.html)[]>): The list of locations with access to the requested location.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getOrganizationsWithAccessToLocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationswithaccesstolocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -186,9 +186,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[OrgDetails](https://ts.viam.dev/classes/appApi.OrgDetails.html)[]>)
+- (Promise<[OrgDetails](https://ts.viam.dev/classes/appApi.OrgDetails.html)[]>): The list of locations the requested user has access to.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listOrganizationsByUser).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizationsbyuser).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -229,9 +229,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>)
+- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): Details about the organization, if it exists.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getOrganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -273,9 +273,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise<boolean>): A boolean indicating whether or not the namespace is available.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getOrganizationNamespaceAvailability).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationnamespaceavailability).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -328,9 +328,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>)
+- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): The updated organization details.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateOrganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -368,7 +368,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteOrganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -405,9 +405,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[ListOrganizationMembersResponse](https://ts.viam.dev/classes/appApi.ListOrganizationMembersResponse.html)>)
+- (Promise<[ListOrganizationMembersResponse](https://ts.viam.dev/classes/appApi.ListOrganizationMembersResponse.html)>): An object containing organization members, pending invites, and
+org ID.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listOrganizationMembers).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizationmembers).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -451,13 +452,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `email` (string) (required): The email address of the user to generate an invite for.
 - `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The authorizations to associate with the new invite.
 - `sendEmailInvite` (boolean) (optional): Bool of whether to send an email invite (true) or
-  automatically add a user. Defaults to true.
+automatically add a user. Defaults to true.
 
 **Returns:**
 
-- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>)
+- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The organization invite.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createOrganizationInvite).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createorganizationinvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -521,9 +522,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>)
+- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The organization invite.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateOrganizationInviteAuthorizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganizationinviteauthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -567,7 +568,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteOrganizationMember).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganizationmember).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -612,7 +613,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteOrganizationInvite).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganizationinvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -655,9 +656,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>)
+- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The invite.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#resendOrganizationInvite).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#resendorganizationinvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -698,16 +699,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the location
-  under.
+under.
 - `name` (string) (required): The name of the location to create.
 - `parentLocationId` (string) (optional): Optional name of a parent location to create the
-  new location under.
+new location under.
 
 **Returns:**
 
-- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>)
+- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createLocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createlocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -748,9 +749,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>)
+- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getLocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getlocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -811,14 +812,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `locId` (string) (required): The ID of the location to update.
 - `name` (string) (optional): Optional string to update the location's name to.
 - `parentLocId` (string) (optional): Optional string to update the location's parent location
-  to.
+to.
 - `region` (string) (optional): Optional string to update the location's region to.
 
 **Returns:**
 
-- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>)
+- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateLocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -861,7 +862,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteLocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -898,9 +899,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>)
+- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listLocations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listlocations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -941,7 +942,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#shareLocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#sharelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -982,7 +983,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#unshareLocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#unsharelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1023,9 +1024,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>)
+- (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>): The `LocationAuth` for the requested location.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#locationAuth).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#locationauth).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1066,9 +1067,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>)
+- (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>): The newly created `LocationAuth`.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createLocationSecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createlocationsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1116,7 +1117,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteLocationSecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletelocationsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1157,9 +1158,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>)
+- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The `Robot` object.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1196,9 +1197,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>)
+- (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): A list of the robot's API keys.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotAPIKeys).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotapikeys).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1241,9 +1242,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)[]>)
+- (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)[]>): The list of `RobotPart` objects associated with the robot.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotParts).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotparts).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1288,9 +1289,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[GetRobotPartResponse](https://ts.viam.dev/classes/appApi.GetRobotPartResponse.html)>)
+- (Promise<[GetRobotPartResponse](https://ts.viam.dev/classes/appApi.GetRobotPartResponse.html)>): The robot part and a its json config.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotPart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1337,15 +1338,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `id` (string) (required): The ID of the requested robot part.
 - `filter` (string) (optional): Optional string to filter logs on.
 - `levels` (string) (optional): Optional array of log levels to return. Defaults to returning
-  all log levels.
+all log levels.
 - `pageToken` (string) (optional): Optional string indicating which page of logs to query.
-  Defaults to the most recent.
+Defaults to the most recent.
 
 **Returns:**
 
-- (Promise<[GetRobotPartLogsResponse](https://ts.viam.dev/classes/appApi.GetRobotPartLogsResponse.html)>)
+- (Promise<[GetRobotPartLogsResponse](https://ts.viam.dev/classes/appApi.GetRobotPartLogsResponse.html)>): The robot requested logs and the page token for the next page of
+logs.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotPartLogs).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartlogs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1365,7 +1367,7 @@ Get an asynchronous iterator that receives live machine part logs.
 
 **Returns:**
 
-- ([viam.app.\_logs.\_LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
+- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
 
 **Example:**
 
@@ -1386,13 +1388,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
 - `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level
-  logs should be returned. Defaults to true.
+logs should be returned. Defaults to true.
 
 **Returns:**
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#tailRobotPartLogs).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#tailrobotpartlogs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1435,9 +1437,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[RobotPartHistoryEntry](https://ts.viam.dev/classes/appApi.RobotPartHistoryEntry.html)[]>)
+- (Promise<[RobotPartHistoryEntry](https://ts.viam.dev/classes/appApi.RobotPartHistoryEntry.html)[]>): The list of the robot part's history.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRobotPartHistory).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotparthistory).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1484,9 +1486,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>)
+- (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>): The updated robot part.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateRobotPart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1531,9 +1533,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): The ID of the newly\-created robot part.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newRobotPart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newrobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1578,7 +1580,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRobotPart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1622,7 +1624,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markPartAsMain).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markpartasmain).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1666,7 +1668,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markPartForRestart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markpartforrestart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1708,9 +1710,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>)
+- (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>): The robot part object.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createRobotPartSecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createrobotpartsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1757,7 +1759,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRobotPartSecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobotpartsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1798,9 +1800,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)[]>)
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)[]>): The list of robot objects.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listRobots).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listrobots).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1843,9 +1845,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): The new robot's ID.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newRobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newrobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1894,9 +1896,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>)
+- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly\-modified robot object.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateRobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1939,7 +1941,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1954,7 +1956,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from the Viam app’s organization settings page.
-- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True. Deprecated since version 0.25.0: Use visibilities instead.
+- `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True.  Deprecated since version 0.25.0: Use visibilities instead.
 - `visibilities` ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): List of FragmentVisibilities specifying which types of fragments to include in the results. If empty, by default only public fragments will be returned.
 
 **Returns:**
@@ -1976,15 +1978,41 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `organizationId` (string) (required): The ID of the organization to list fragments for.
 - `publicOnly` (boolean) (optional): Optional, deprecated boolean. Use fragmentVisibilities
-  instead. If true then only public fragments will be listed. Defaults to
-  true.
+instead. If true then only public fragments will be listed. Defaults to
+true.
 - `fragmentVisibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional)
 
 **Returns:**
 
-- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>)
+- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of fragment objects.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listFragments).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listfragments).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListMachineFragments
+
+Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text="fragments" >}} for a machine, as well as additionally specified fragment IDs.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `machineId` (string) (required): The machine ID used to filter fragments defined in a
+machine's parts. Also returns any fragments nested within the fragments
+defined in parts.
+- `additionalFragmentIds` (string) (optional): Additional fragment IDs to append to the
+response. Useful when needing to view fragments that will be
+provisionally added to the machine alongside existing fragments.
+
+**Returns:**
+
+- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of top level and nested fragments for a machine, as well
+as additionally specified fragment IDs.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinefragments).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2028,9 +2056,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>)
+- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The requested fragment.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getFragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getfragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2070,15 +2098,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the fragment
-  under.
+under.
 - `name` (string) (required): The name of the new fragment.
 - `config` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The new fragment's config.
 
 **Returns:**
 
-- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>)
+- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The newly created fragment.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createFragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createfragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2095,7 +2123,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - `fragment_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the fragment to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to associate with the fragment.
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
-- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created. Deprecated since version 0.25.0: Use visibility instead.
+- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.  Deprecated since version 0.25.0: Use visibility instead.
 - `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.FragmentVisibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
 
 **Returns:**
@@ -2125,19 +2153,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `name` (string) (required): The name to update the fragment to.
 - `config` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The config to update the fragment to.
 - `makePublic` (boolean) (optional): Optional, deprecated boolean specifying whether the
-  fragment should be public or not. If not passed, the visibility will be
-  unchanged. Fragments are private by default when created.
+fragment should be public or not. If not passed, the visibility will be
+unchanged. Fragments are private by default when created.
 - `visibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional): Optional FragmentVisibility specifying the updated
-  fragment visibility. If not passed, the visibility will be unchanged. If
-  visibility is not set and makePublic is set, makePublic takes effect. If
-  makePublic and visibility are set, they must not be conflicting. If
-  neither is set, the fragment visibility will remain unchanged.
+fragment visibility. If not passed, the visibility will be unchanged. If
+visibility is not set and makePublic is set, makePublic takes effect. If
+makePublic and visibility are set, they must not be conflicting. If
+neither is set, the fragment visibility will remain unchanged.
 
 **Returns:**
 
-- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>)
+- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The updated fragment.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateFragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatefragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2181,7 +2209,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteFragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletefragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2274,7 +2302,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#addRole).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#addrole).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2332,7 +2360,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#removeRole).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#removerole).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2390,7 +2418,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#changeRole).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#changerole).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2433,13 +2461,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `organizationId` (string) (required): The ID of the organization to list authorizations for.
 - `resourceIds` (string) (optional): Optional list of IDs of resources to list authorizations
-  for. If not provided, all resources will be included.
+for. If not provided, all resources will be included.
 
 **Returns:**
 
-- (Promise<[Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]>)
+- (Promise<[Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]>): The list of authorizations.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listAuthorizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listauthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2547,9 +2575,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)[]>)
+- (Promise<[AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)[]>): A filtered list of the authorized permissions.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#checkPermissions).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#checkpermissions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2586,9 +2614,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)>)
+- (Promise<undefined | [RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)>): The requested item.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getRegistryItem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2626,7 +2654,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the registry
-  item under.
+item under.
 - `name` (string) (required): The name of the registry item.
 - `type` (PackageType) (required): The type of the item in the registry.
 
@@ -2634,7 +2662,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createRegistryItem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2687,7 +2715,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateRegistryItem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2746,23 +2774,23 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to query registry items
-  for.
+for.
 - `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
 - `visibilities` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not
-  filter on visibility.
+filter on visibility.
 - `platforms` (string) (required): A list of platforms to query for. If empty, will not
-  filter on platform.
+filter on platform.
 - `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter
-  on status.
+on status.
 - `searchTerm` (string) (optional): Optional search term to filter on.
 - `pageToken` (string) (optional): Optional page token for results. If not provided, will
-  return all results.
+return all results.
 
 **Returns:**
 
-- (Promise<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)[]>)
+- (Promise<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)[]>): The list of registry items.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listRegistryItems).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listregistryitems).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2801,7 +2829,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteRegistryItem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2845,9 +2873,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[CreateModuleResponse](https://ts.viam.dev/classes/appApi.CreateModuleResponse.html)>)
+- (Promise<[CreateModuleResponse](https://ts.viam.dev/classes/appApi.CreateModuleResponse.html)>): The module ID and a URL to its detail page.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createModule).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createmodule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2911,9 +2939,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise<string>): The module URL.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateModule).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatemodule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2992,9 +3020,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [Module](https://ts.viam.dev/classes/appApi.Module.html)>)
+- (Promise<undefined | [Module](https://ts.viam.dev/classes/appApi.Module.html)>): The requested module.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getModule).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getmodule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3031,9 +3059,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[Module](https://ts.viam.dev/classes/appApi.Module.html)[]>)
+- (Promise<[Module](https://ts.viam.dev/classes/appApi.Module.html)[]>): The organization's modules.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listModules).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmodules).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3086,13 +3114,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The list of authorizations to provide for the API key.
 - `name` (string) (optional): An optional name for the key. If none is passed, defaults to
-  present timestamp.
+present timestamp.
 
 **Returns:**
 
-- (Promise<[CreateKeyResponse](https://ts.viam.dev/classes/appApi.CreateKeyResponse.html)>)
+- (Promise<[CreateKeyResponse](https://ts.viam.dev/classes/appApi.CreateKeyResponse.html)>): The new key and ID.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createKey).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkey).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3131,7 +3159,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[DeleteKeyResponse](https://ts.viam.dev/classes/appApi.DeleteKeyResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteKey).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletekey).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3168,9 +3196,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[RotateKeyResponse](https://ts.viam.dev/classes/appApi.RotateKeyResponse.html)>)
+- (Promise<[RotateKeyResponse](https://ts.viam.dev/classes/appApi.RotateKeyResponse.html)>): The updated key and ID.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#rotateKey).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#rotatekey).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3207,9 +3235,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>)
+- (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): The list of API keys.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listKeys).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listkeys).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3247,9 +3275,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>)
+- (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>): The new key and ID.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createKeyFromExistingKeyAuthorizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkeyfromexistingkeyauthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
