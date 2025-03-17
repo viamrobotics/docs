@@ -55,6 +55,8 @@ There are also modules in the registry that do not directly drive any physical h
    Search by name, model number, or manufacturer name.
    Or try searching by broader category, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
 
+   {{<imgproc src="/get-started/component-search.png" alt="Component search results in the Viam app." resize="600x" style="width:260px" class="imgzoom shadow">}}
+
    You can also browse the components in the [Browse supported hardware by component API](#browse-supported-hardware-by-component-api) section below.
 
 1. Follow the instructions in the configuration card to configure the component's attributes.
