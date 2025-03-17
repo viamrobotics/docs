@@ -726,6 +726,7 @@ def check_for_unused_methods(methods, type):
                 if typescript_method_name:
                     if resource in methods['typescript'][type]:
                         if typescript_method_name in methods['typescript'][type][resource]:
+                            print(methods['typescript'][type][resource])
                             methods['typescript'][type][resource][typescript_method_name]["used"] = True
                         else:
                             print(f"WARNING: {type} {resource} {typescript_method_name} is specified in SDK protos map but not found in SDK docs")
@@ -902,8 +903,6 @@ def write_markdown(type, names, methods):
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
                         ## first sentence:
-
-                        print(os.listdir("static/include/app/apis/overrides/protos"))
 
 
                         with open(proto_override_file, 'r') as f:

@@ -5,8 +5,9 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  schedule:
+    # 10am UTC on weekdays
+    - cron: '0 10 * * 3'
 jobs:
   method-coverage:
     runs-on: ubuntu-latest
