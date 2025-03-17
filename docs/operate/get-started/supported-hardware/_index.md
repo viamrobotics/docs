@@ -37,7 +37,7 @@ You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry
 Some components are supported by drivers built into `viam-server`, so you won't find them in the registry page.
 You can browse all built-in and modular registry components below or on your machine's configuration page in the Viam app.
 
-There are also modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add software functionality such as a chat bot integration.
+There are also modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add software functionality such as a chatbot integration.
 
 ## Configure hardware on your machine
 
