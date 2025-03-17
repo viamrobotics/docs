@@ -1,4 +1,4 @@
-name: Check Python SDK method coverage
+name: SDK method coverage
 
 concurrency:
   group: pullrequest-untrusted-coverage-${{ github.event.number }}
@@ -6,7 +6,7 @@ concurrency:
 
 on:
   schedule:
-    # 10am UTC on weekdays
+    # 10am UTC on Wednesdays
     - cron: '0 10 * * 3'
 jobs:
   python-methods:

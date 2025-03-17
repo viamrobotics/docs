@@ -37,8 +37,7 @@ htmltest-fast: setup
 	htmltest
 
 coveragetest:
-	hugo $(LOCAL_OPTIONS) -d dist
-	python3 .github/workflows/check_python_methods.py --local
+	python3 .github/workflows/update_sdk_methods.py --coverage
 
 markdowntest:
 	markdownlint --config .markdownlint.yaml
