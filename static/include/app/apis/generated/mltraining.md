@@ -51,7 +51,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<string>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submitTrainingJob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submittrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -108,7 +108,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<string>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submitCustomTrainingJob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submitcustomtrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -148,7 +148,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#getTrainingJob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#gettrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -192,7 +192,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)[]>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#listTrainingJobs).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#listtrainingjobs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -236,7 +236,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<null>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#cancelTrainingJob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#canceltrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -276,7 +276,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<null>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#deleteCompletedTrainingJob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#deletecompletedtrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}

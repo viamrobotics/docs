@@ -56,9 +56,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>): Implementation of [Switch](https://ts.viam.dev/interfaces/Switch.html).[setPosition](https://ts.viam.dev/interfaces/Switch.html#setPosition).
+- (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#setPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#setposition).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -124,9 +124,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number>): Implementation of [Switch](https://ts.viam.dev/interfaces/Switch.html).[getPosition](https://ts.viam.dev/interfaces/Switch.html#getPosition).
+- (Promise<number>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getposition).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -182,9 +182,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number>): Implementation of [Switch](https://ts.viam.dev/interfaces/Switch.html).[getNumberOfPositions](https://ts.viam.dev/interfaces/Switch.html#getNumberOfPositions).
+- (Promise<number>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getNumberOfPositions).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getnumberofpositions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -257,7 +257,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#docommand).
 
 {{% /tab %}}
 {{< /tabs >}}

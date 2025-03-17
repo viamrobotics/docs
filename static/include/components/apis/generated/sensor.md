@@ -60,13 +60,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#getReadings).
-
-**Example:**
-
-```ts {class="line-numbers linkable-line-numbers"}
-const readings = await mySensor.getReadings();
-```
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#getreadings).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -214,7 +208,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

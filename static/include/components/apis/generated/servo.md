@@ -183,7 +183,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ServoClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ServoClient.html#getposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -271,7 +271,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<boolean>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ServoClient.html#isMoving).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ServoClient.html#ismoving).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -477,7 +477,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ServoClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ServoClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

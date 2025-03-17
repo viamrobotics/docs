@@ -59,9 +59,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number[]>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[getPosition](https://ts.viam.dev/interfaces/Gantry.html#getPosition).
+- (Promise<number[]>): The current position of each axis.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -157,16 +157,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `positionsMm` (number) (required)
-- `speedsMmPerSec` (number) (required)
+- `positionsMm` (number) (required): The goal positions for each axis of the gantry.
+- `speedsMmPerSec` (number) (required): The desired speed for each axis to move to the
+respective position in positionsMm.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[moveToPosition](https://ts.viam.dev/interfaces/Gantry.html#moveToPosition).
+- (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#moveToPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#movetoposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -253,9 +254,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number[]>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[getLengths](https://ts.viam.dev/interfaces/Gantry.html#getLengths).
+- (Promise<number[]>): The lengths of the axes of the gantry in millimeters.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getLengths).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getlengths).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -338,7 +339,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<boolean>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[home](https://ts.viam.dev/interfaces/Gantry.html#home).
+- (Promise<boolean>): A bool representing whether the gantry has run the homing sequence
+successfully.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#home).
 
@@ -404,9 +406,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[getGeometries](https://ts.viam.dev/interfaces/Gantry.html#getGeometries).
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getGeometries).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#getgeometries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -478,9 +480,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[isMoving](https://ts.viam.dev/interfaces/Gantry.html#isMoving).
+- (Promise<boolean>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#isMoving).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#ismoving).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -566,7 +568,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>): Implementation of [Gantry](https://ts.viam.dev/interfaces/Gantry.html).[stop](https://ts.viam.dev/interfaces/Gantry.html#stop).
+- (Promise<void>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#stop).
 
@@ -683,7 +685,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

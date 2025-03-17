@@ -65,7 +65,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `positionType` ([PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)) (optional): The type of position the encoder returns (ticks or
-  degrees).
+degrees).
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -73,7 +73,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<readonly [number, [PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getposition).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -143,7 +143,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#resetPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#resetposition).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -212,7 +212,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[encoderApi](https://ts.viam.dev/modules/encoderApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/encoderApi.GetPropertiesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getproperties).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -341,7 +341,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#docommand).
 
 {{% /tab %}}
 {{< /tabs >}}

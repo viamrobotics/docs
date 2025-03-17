@@ -111,10 +111,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
-- `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination to move to, which can a pose in the
+reference frame of any frame in the robot's frame system.
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
+destination.
+- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Avoid obstacles by specifying their geometries in the
+world state. Augment the frame system of the robot by specifying
+additional transforms to add to it for the duration of the Move.
+- `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Constrain the way the robot will move.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -263,19 +267,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Specify a destination to, which can be any Pose with
+respect to the SLAM map's origin.
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
+destination.
+- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Name of the SLAM service from which the SLAM map
+is requested.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
-- `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Optional obstacles to be considered for motion planning.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<string>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[moveOnMap](https://ts.viam.dev/interfaces/Motion.html#moveOnMap).
+- (Promise<string>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveOnMap).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonmap).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -430,11 +437,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `heading` (number) (optional)
-- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination for the component to move to, represented
+as a GeoPoint.
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the component to move.
+- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the Movement Sensor used to check
+the robot's location.
+- `heading` (number) (optional): Compass heading, in degrees, to achieve at destination.
+- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Obstacles to consider when planning the motion of
+the component.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
@@ -442,9 +452,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<string>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[moveOnGlobe](https://ts.viam.dev/interfaces/Motion.html#moveOnGlobe).
+- (Promise<string>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveOnGlobe).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonglobe).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -595,17 +605,20 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `destinationFrame` (string) (required)
-- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component whose Pose is being requested.
+- `destinationFrame` (string) (required): The reference frame in which the component's
+Pose should be provided, if unset this defaults to the "world"
+reference frame.
+- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Pose information on any additional
+reference frames that are needed to compute the component's Pose.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[getPose](https://ts.viam.dev/interfaces/Motion.html#getPose).
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPose).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getpose).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -678,15 +691,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component to stop.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<null>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[stopPlan](https://ts.viam.dev/interfaces/Motion.html#stopPlan).
+- (Promise<null>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopPlan).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopplan).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -754,15 +767,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `onlyActivePlans` (boolean) (optional)
+- `onlyActivePlans` (boolean) (optional): If true, the response will only return plans which
+are executing.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[listPlanStatuses](https://ts.viam.dev/interfaces/Motion.html#listPlanStatuses).
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listPlanStatuses).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listplanstatuses).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -848,7 +862,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component to query.
 - `lastPlanOnly` (boolean) (optional)
 - `executionId` (string) (optional)
 - `extra` (None) (optional)
@@ -856,9 +870,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>): Implementation of [Motion](https://ts.viam.dev/interfaces/Motion.html).[getPlan](https://ts.viam.dev/interfaces/Motion.html#getPlan).
+- (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getPlan).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getplan).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -994,7 +1008,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#docommand).
 
 {{% /tab %}}
 {{< /tabs >}}

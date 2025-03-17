@@ -70,15 +70,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `cameraName` (string) (required)
+- `cameraName` (string) (required): The name of the camera to use for detection.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): Implementation of Vision.getDetectionsFromCamera.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): * The list of Detections.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getDetectionsFromCamera).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getdetectionsfromcamera).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -189,18 +189,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `image` (Uint8Array) (required)
-- `width` (number) (required)
-- `height` (number) (required)
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (required)
+- `image` (Uint8Array) (required): The image from which to get detections.
+- `width` (number) (required): The width of the image.
+- `height` (number) (required): The height of the image.
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (required): The MimeType of the image.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): Implementation of Vision.getDetections.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): * The list of Detections.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getDetections).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getdetections).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -297,16 +297,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `cameraName` (string) (required)
-- `count` (number) (required)
+- `cameraName` (string) (required): The name of the camera to use for classification.
+- `count` (number) (required): The number of Classifications requested.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): Implementation of Vision.getClassificationsFromCamera.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): * The list of Classifications.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getClassificationsFromCamera).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getclassificationsfromcamera).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -416,19 +416,19 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `image` (Uint8Array) (required)
-- `width` (number) (required)
-- `height` (number) (required)
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (required)
-- `count` (number) (required)
+- `image` (Uint8Array) (required): The image from which to get classifications.
+- `width` (number) (required): The width of the image.
+- `height` (number) (required): The height of the image.
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (required): The MimeType of the image.
+- `count` (number) (required): The number of Classifications requested.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): Implementation of Vision.getClassifications.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): * The list of Classifications.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getClassifications).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getclassifications).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -530,15 +530,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `cameraName` (string) (required)
+- `cameraName` (string) (required): The name of the camera.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): Implementation of Vision.getObjectPointClouds.
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): * The list of PointCloudObjects.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getObjectPointClouds).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getobjectpointclouds).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -644,16 +644,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `cameraName` (string) (required)
+- `cameraName` (string) (required): The name of the camera to use for classification,
+detection, and segmentation.
 - `__namedParameters` (CaptureAllOptions) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<{     classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];     detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];     extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html);     image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);     objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }>): Implementation of Vision.captureAllFromCamera.
+- (Promise<    {        classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];        detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];        extra: undefined        | [Struct](https://ts.viam.dev/classes/Struct.html);        image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);        objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[];    },>): * The requested image, classifications, detections, and 3d point
+cloud objects.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#captureAllFromCamera).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#captureallfromcamera).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -743,14 +745,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required)
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>): Implementation of Vision.doCommand.
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -873,9 +875,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<{     classificationsSupported: boolean;     detectionsSupported: boolean;     objectPointCloudsSupported: boolean; }>): Implementation of Vision.getProperties.
+- (Promise<    {        classificationsSupported: boolean;        detectionsSupported: boolean;        objectPointCloudsSupported: boolean;    },>): * The properties of the vision service.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getproperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

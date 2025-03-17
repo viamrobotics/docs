@@ -700,7 +700,7 @@ def check_for_unused_methods(methods, type):
                 typescript_method_name = row.split(',')[6].rstrip()
 
                 if py_method_name:
-                    if resource in methods['python'][type]:
+                    if 'python' in sdks and resource in methods['python'][type]:
                         if py_method_name in methods['python'][type][resource]:
                             methods['python'][type][resource][py_method_name]["used"] = True
                         else:
@@ -708,7 +708,7 @@ def check_for_unused_methods(methods, type):
                             warnings = True
 
                 if go_method_name:
-                    if resource in methods['go'][type]:
+                    if 'go' in sdks and resource in methods['go'][type]:
                         if go_method_name in methods['go'][type][resource]:
                             methods['go'][type][resource][go_method_name]["used"] = True
                         else:
@@ -716,7 +716,7 @@ def check_for_unused_methods(methods, type):
                             warnings = True
 
                 if flutter_method_name:
-                    if resource in methods['flutter'][type]:
+                    if 'flutter' in sdks and resource in methods['flutter'][type]:
                         if flutter_method_name in methods['flutter'][type][resource]:
                             methods['flutter'][type][resource][flutter_method_name]["used"] = True
                         else:
@@ -724,15 +724,14 @@ def check_for_unused_methods(methods, type):
                             warnings = True
 
                 if typescript_method_name:
-                    if resource in methods['typescript'][type]:
+                    if 'typescript' in sdks and resource in methods['typescript'][type]:
                         if typescript_method_name in methods['typescript'][type][resource]:
-                            print(methods['typescript'][type][resource])
                             methods['typescript'][type][resource][typescript_method_name]["used"] = True
                         else:
                             print(f"WARNING: {type} {resource} {typescript_method_name} is specified in SDK protos map but not found in SDK docs")
                             warnings = True
 
-    for lang in ["python", "go", "flutter", "typescript"]:
+    for lang in sdks:
         for resource in methods[lang][type]:
             for method in methods[lang][type][resource]:
                 if not "used" in methods[lang][type][resource][method].keys():
@@ -819,13 +818,13 @@ def write_markdown(type, names, methods):
                     flutter_method_name = row.split(',')[5].rstrip()
                     typescript_method_name = row.split(',')[6].rstrip()
 
-                    if py_method_name:
+                    if py_method_name and "python" in sdks:
                         methods['python'][type][resource][py_method_name]["used"] = True
-                    if go_method_name:
+                    if go_method_name and "go" in sdks:
                         methods['go'][type][resource][go_method_name]["used"] = True
-                    if flutter_method_name:
+                    if flutter_method_name and "flutter" in sdks:
                         methods['flutter'][type][resource][flutter_method_name]["used"] = True
-                    if typescript_method_name:
+                    if typescript_method_name and "typescript" in sdks:
                         methods['typescript'][type][resource][typescript_method_name]["used"] = True
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD

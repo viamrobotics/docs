@@ -59,7 +59,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `power` (number) (required): A value between -1 and 1 where negative values indicate a
-  backwards direction and positive values a forward direction.
+backwards direction and positive values a forward direction.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -67,7 +67,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setPower).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setpower).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -156,7 +156,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setRPM).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setrpm).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -244,9 +244,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `rpm` (number) (required): Speed in revolutions per minute.
 - `revolutions` (number) (required): Number of revolutions relative to the motor's starting
-  position. If this value is 0, this will run the motor at the given rpm
-  indefinitely. If this value is nonzero, this will block until the number
-  of revolutions has been completed or another operation comes in.
+position. If this value is 0, this will run the motor at the given rpm
+indefinitely. If this value is nonzero, this will block until the number
+of revolutions has been completed or another operation comes in.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -254,7 +254,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#goFor).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#gofor).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -342,7 +342,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `rpm` (number) (required): Speed in revolutions per minute.
 - `positionRevolutions` (number) (required): Number of revolutions relative to the motor's
-  home position.
+home position.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -350,7 +350,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#goTo).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#goto).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -440,7 +440,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#resetZeroPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#resetzeroposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -534,7 +534,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -627,9 +627,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<{     positionReporting: boolean; }>)
+- (Promise<{ positionReporting: boolean }>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getproperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -724,7 +724,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<readonly [boolean, number]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#isPowered).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#ispowered).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -819,7 +819,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<boolean>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#isMoving).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#ismoving).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1024,7 +1024,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

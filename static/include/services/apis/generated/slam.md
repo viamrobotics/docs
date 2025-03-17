@@ -55,9 +55,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>): Implementation of Slam.getPosition.
+- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getposition).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -115,7 +115,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<Uint8Array>): Implementation of Slam.getPointCloudMap.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getPointCloudMap).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getpointcloudmap).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -170,7 +170,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<Uint8Array>): Implementation of Slam.getInternalState.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getInternalState).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getinternalstate).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -238,9 +238,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>): Implementation of Slam.getProperties.
+- (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getproperties).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -375,14 +375,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required)
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>): Implementation of Slam.doCommand.
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#docommand).
 
 {{% /tab %}}
 {{< /tabs >}}

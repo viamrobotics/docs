@@ -113,15 +113,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
+the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<Uint8Array>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getImage](https://ts.viam.dev/interfaces/Camera.html#getImage).
+- (Promise<Uint8Array>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getImage).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getimage).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -218,15 +219,16 @@ A specific MIME type can be requested but may not necessarily be the same one re
 
 **Parameters:**
 
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional)
+- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
+the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<Blob>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[renderFrame](https://ts.viam.dev/interfaces/Camera.html#renderFrame).
+- (Promise<Blob>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderFrame).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderframe).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -300,9 +302,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<Uint8Array>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getPointCloud](https://ts.viam.dev/interfaces/Camera.html#getPointCloud).
+- (Promise<Uint8Array>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getPointCloud).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getpointcloud).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -374,9 +376,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getProperties](https://ts.viam.dev/interfaces/Camera.html#getProperties).
+- (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getproperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -468,7 +470,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -534,9 +536,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Camera](https://ts.viam.dev/interfaces/Camera.html).[getGeometries](https://ts.viam.dev/interfaces/Camera.html#getGeometries).
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getGeometries).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getgeometries).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -32,7 +32,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[Operation](https://ts.viam.dev/classes/robotApi.Operation.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getOperations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getoperations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -88,7 +88,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[GetMachineStatusResponse](https://ts.viam.dev/classes/robotApi.GetMachineStatusResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getMachineStatus).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmachinestatus).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -108,7 +108,7 @@ Get the list of sessions currently connected to the robot.
 
 - (Promise<[Session](https://ts.viam.dev/classes/robotApi.Session.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getSessions).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getsessions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -147,7 +147,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourceNames).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcenames).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -167,7 +167,7 @@ Get a list of all resource types.
 
 - (Promise<[ResourceRPCSubtype](https://ts.viam.dev/classes/robotApi.ResourceRPCSubtype.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourceRPCSubtypes).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcerpcsubtypes).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -206,7 +206,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#cancelOperation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#canceloperation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -246,7 +246,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockForOperation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockforoperation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -285,7 +285,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
+- [(\*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -309,7 +309,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[FrameSystemConfig](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#framesystemconfig).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -362,13 +362,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `pose` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
 - `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
+- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
 
 **Returns:**
 
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -399,7 +399,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPose).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformpose).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -444,7 +444,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<Uint8Array>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformpcd).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -506,7 +506,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[ModuleModel](https://ts.viam.dev/classes/robotApi.ModuleModel.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getModelsFromModules).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmodelsfrommodules).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -586,7 +586,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopAll).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopall).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -698,7 +698,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[GetCloudMetadataResponse](https://ts.viam.dev/classes/robotApi.GetCloudMetadataResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getCloudMetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getcloudmetadata).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -773,7 +773,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[GetVersionResponse](https://ts.viam.dev/classes/robotApi.GetVersionResponse.html)>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getVersion).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getversion).
 
 {{% /tab %}}
 {{< /tabs >}}

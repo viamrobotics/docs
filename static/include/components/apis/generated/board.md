@@ -64,7 +64,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `pin` (string) (required): The pin.
 - `high` (boolean) (required): When true, set the given pin to high. When false, set the
-  given pin to low.
+given pin to low.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -72,7 +72,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setGPIO).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setgpio).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -168,9 +168,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<boolean>): Implementation of [Board](https://ts.viam.dev/interfaces/Board.html).[getGPIO](https://ts.viam.dev/interfaces/Board.html#getGPIO).
+- (Promise<boolean>): Implementation of [Board](https://ts.viam.dev/interfaces/Board.html).[getGPIO](https://ts.viam.dev/interfaces/Board.html#getgpio).
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getGPIO).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getgpio).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -275,7 +275,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>): The duty cycle, which is a value from 0 to 1\.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getPWM).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getpwm).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -367,7 +367,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `pin` (string) (required): The pin.
-- `dutyCyle` (number) (required): A value from 0 to 1.
+- `dutyCyle` (number) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -375,7 +375,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setPWM).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setpwm).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -473,7 +473,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getPWMFrequency).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getpwmfrequency).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -570,7 +570,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `pin` (string) (required): The pin.
 - `frequencyHz` (number) (required): The PWM frequency, in hertz. 0 will use the board's
-  default PWM frequency.
+default PWM frequency.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -578,7 +578,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setPWMFrequency).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setpwmfrequency).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -678,7 +678,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getDigitalInterruptValue).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getdigitalinterruptvalue).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -779,7 +779,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[ReadAnalogReaderResponse](https://ts.viam.dev/classes/boardApi.ReadAnalogReaderResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#readAnalogReader).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#readanalogreader).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -878,7 +878,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#writeAnalog).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#writeanalog).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -986,7 +986,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#streamTicks).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#streamticks).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1088,7 +1088,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setPowerMode).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setpowermode).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1399,7 +1399,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

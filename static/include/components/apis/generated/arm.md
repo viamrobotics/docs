@@ -58,9 +58,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[getEndPosition](https://ts.viam.dev/interfaces/Arm.html#getEndPosition).
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getEndPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getendposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -151,15 +151,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `pose` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `pose` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The destination pose for the arm.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[moveToPosition](https://ts.viam.dev/interfaces/Arm.html#moveToPosition).
+- (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#moveToPosition).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#movetoposition).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -261,15 +261,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `jointPositionsList` (number) (required)
+- `jointPositionsList` (number) (required): List of angles (0-360) to move each joint to.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[moveToJointPositions](https://ts.viam.dev/interfaces/Arm.html#moveToJointPositions).
+- (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#moveToJointPositions).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#movetojointpositions).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -398,9 +398,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[getJointPositions](https://ts.viam.dev/interfaces/Arm.html#getJointPositions).
+- (Promise<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getJointPositions).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getjointpositions).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -530,9 +530,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[isMoving](https://ts.viam.dev/interfaces/Arm.html#isMoving).
+- (Promise<boolean>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#isMoving).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#ismoving).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -617,7 +617,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[stop](https://ts.viam.dev/interfaces/Arm.html#stop).
+- (Promise<void>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#stop).
 
@@ -713,9 +713,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Arm](https://ts.viam.dev/interfaces/Arm.html).[getGeometries](https://ts.viam.dev/interfaces/Arm.html#getGeometries).
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getGeometries).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getgeometries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -811,7 +811,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

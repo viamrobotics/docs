@@ -71,7 +71,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#moveStraight).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#movestraight).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -296,7 +296,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#setPower).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#setpower).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -402,7 +402,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#setVelocity).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#setvelocity).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -512,7 +512,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[baseApi](https://ts.viam.dev/modules/baseApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/baseApi.GetPropertiesResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getProperties).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getproperties).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -602,7 +602,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<boolean>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#isMoving).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#ismoving).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -787,9 +787,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>): Implementation of [Base](https://ts.viam.dev/interfaces/Base.html).[getGeometries](https://ts.viam.dev/interfaces/Base.html#getGeometries).
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getGeometries).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getgeometries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -886,7 +886,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#doCommand).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#docommand).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

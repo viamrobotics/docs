@@ -34,7 +34,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<GetCurrentMonthUsageResponse>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getCurrentMonthUsage).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getcurrentmonthusage).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -75,7 +75,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[GetOrgBillingInformationResponse](https://ts.viam.dev/classes/billingApi.GetOrgBillingInformationResponse.html)>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getOrgBillingInformation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getorgbillinginformation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -115,7 +115,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[GetInvoicesSummaryResponse](https://ts.viam.dev/classes/billingApi.GetInvoicesSummaryResponse.html)>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getInvoicesSummary).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicessummary).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -159,7 +159,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<Uint8Array>): None.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getInvoicePdf).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicepdf).
 
 {{% /tab %}}
 {{< /tabs >}}

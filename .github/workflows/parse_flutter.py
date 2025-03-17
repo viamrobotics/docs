@@ -52,7 +52,6 @@ class FlutterParser:
         for resource in viam_resources:
 
             ## Determine URL form for Flutter depending on type (like 'component').
-            ## TEMP: Manually exclude Base Remote Control Service (Go only):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
 
             # Initialize Flutter methods dictionary if it doesn't exist
