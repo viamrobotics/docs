@@ -688,6 +688,13 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 
 def check_for_unused_methods(methods, type):
     warnings = False
+
+    print(os.listdir())
+    print(os.listdir("static"))
+    print(os.listdir("static/include"))
+    print(os.listdir("static/include/app/apis/overrides/protos"))
+
+
     with open(proto_map_file, 'r') as f:
         for row in f:
             if not row.startswith('#') and "," in row:
