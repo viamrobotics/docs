@@ -122,7 +122,7 @@
                   {{- end -}}
             {{- end -}}
             {{- if (eq .Section "operate") -}}
-                  {{- if ne .Title "Build and integrate" -}}
+                  {{- if ne .Title "Build and Integrate" -}}
                         {{- if eq .Parent.Parent.Title "Components" -}}
                         {{- if and (and (and (ne .Parent.Title "Components") (not .Draft)) (not .Params.no_component)) (not .Params.micrordk_component) -}}
                         {{- if .Params.canonical -}}
@@ -160,7 +160,7 @@
                   {{- end -}}
             {{- end -}}
             {{- if (eq .Section "operate") -}}
-                  {{- if ne .Title "Build and integrate" -}}
+                  {{- if ne .Title "Build and Integrate" -}}
                         {{- if eq .Parent.Parent.Title "Services" -}}
                               {{ $services_with_resources := slice "Generic Service" "ML Model" "Vision Service" }}
                               {{- if and (in $services_with_resources .Parent.LinkTitle) (and (not .Draft) (not .Params.no_service)) -}}

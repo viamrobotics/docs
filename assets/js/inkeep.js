@@ -90,10 +90,12 @@ inkeepButtonTop.addEventListener("click", handleOpen);
 // Create an HTML element that the Inkeep widget will be inserted into.
 const nav = document.querySelector("#navsearch");
 const sidebar = document.getElementById("mobile-search");
+const middleNav = document.querySelector("#main_navbar");
+
 
 const inkeepNavDiv = document.createElement("div");
 inkeepNavDiv.id = "navSearchBar";
-nav.appendChild(inkeepNavDiv);
+middleNav.appendChild(inkeepNavDiv);
 
 const inkeepSidebarDiv = document.createElement("div");
 inkeepSidebarDiv.id = "sideSearchBar";

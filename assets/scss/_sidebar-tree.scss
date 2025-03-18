@@ -31,6 +31,11 @@
             margin: 0;
         }
 
+        ul.ul-1 {
+            padding-left: 0.5em;
+            margin-left: 0.5em;
+        }
+
         & .ul-1 ul {
             padding-left: 0.833em;
             font-size: 0.833rem;
@@ -38,7 +43,7 @@
 
         @include media-breakpoint-up(md) {
             & .ul-1 ul {
-                padding-left: 0.75rem;
+                // padding-left: 0rem;
             }
         }
         padding-left: 0;
@@ -63,19 +68,23 @@
 
     a, .emptynode {
         display: inline-block;
-        padding-bottom: 0.375rem;
+        padding-top: 0.175rem;
+        padding-bottom: 0.175rem;
         color: #333333;
         text-decoration: none;
+        width: 100%;
 
         &:hover {
             color: $blue;
             text-decoration: none;
+            cursor: pointer;
         }
 
         &.active {
             // The active navbar item
-            color: #0000EA;
+            color: #282829;
             font-weight: 600;
+            width: 100%;
         }
     }
 
@@ -91,8 +100,8 @@
 
     & > .td-sidebar-nav__section {
         padding-top: .5rem;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-left: 0rem;
+        padding-right: 0rem !important;
     }
 
     li i { // Layout of icons
@@ -127,9 +136,6 @@
     }
 
     &__search {
-        padding: 1rem 15px;
-        margin-right: -15px;
-        margin-left: -15px;
     }
 
     &__inner {
@@ -155,18 +161,15 @@
 
     #content-desktop {display: block;}
     #content-mobile {display: none;}
+    .content-mobile {display: none;}
 
     @include media-breakpoint-down(md) {
 
     #content-desktop {display: none;}
+    #main_navbar {display: none;}
     #content-mobile {display: block;}
+    .content-mobile {display: block;}
     }
-}
-
-
-.menu-toggle {
-    margin-right: -1.5em;
-    float: right;
 }
 
 li .indent {
@@ -181,6 +184,11 @@ li .indent {
 
     .ul-2 > li:not(:last-child) {
         padding-bottom: 8px;
-        border-bottom: 1px solid #ccc;
     }
+}
+
+ul li.active-path.active > a, ul li.active-path.active > span > span {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 4px;
+    width: 100%;
 }

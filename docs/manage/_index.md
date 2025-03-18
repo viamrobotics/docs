@@ -1,5 +1,5 @@
 ---
-linkTitle: "Deploy & Manage"
+linkTitle: "Deploy and Manage"
 title: "Deploy, manage, and troubleshoot"
 weight: 300
 layout: "docs"

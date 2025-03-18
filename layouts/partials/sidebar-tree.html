@@ -8,15 +8,13 @@
     </button>
   </div>
   {{ else -}}
-  <div id="content-mobile">
-    <div class="td-sidebar__search d-flex align-items-center" id="mobile-search">
-      <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation" title="Toggle section navigation">
-      </button>
-    </div>
-  </div>
   <div id="content-desktop"></div>
   {{ end -}}
   <nav class="collapse td-sidebar-nav{{ if .Site.Params.ui.sidebar_menu_foldable }} foldable-nav{{ end }}" id="td-section-nav">
+    <div class="content-mobile">
+      <div class="td-sidebar__search d-flex align-items-center" id="mobile-search">
+      </div>
+    </div>
     {{ if  (gt (len .Site.Home.Translations) 0) -}}
     <div class="nav-item dropdown d-block d-lg-none">
       {{ partial "navbar-lang-selector.html" . }}
@@ -51,6 +49,7 @@
 {{ $manualLinkTitle := cond (isset $s.Params "manuallinktitle") $s.Params.manualLinkTitle $s.Title -}}
 {{ $empty_node := $s.Params.empty_node -}}
 {{ $toc_hide := $s.Params.toc_hide -}}
+{{ $overview := $s.Params.overview -}}
 {{ $openOnDesk := $s.Params.open_on_desktop }}
 {{ $headerOnly := $s.Params.header_only }}
 
@@ -67,7 +66,7 @@
 {{ else }}
 
 {{ if or ( or (not $toc_hide) ($activePath) ) $active }}
-<li class="{{ if $withChild }}nav-fold{{ end }}{{ if $activePath }} active-path{{ else }}{{ if $p.Parent }} hide-if-desktop{{ end }}{{ end }}{{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} {{ if not $activePath }}collapse{{ end }}{{ end }}{{ if $empty_node }} empty-node-submenu{{ end }}{{if $s.Params.menuindent }} indent{{ end }}{{ if $openOnDesk }} open-on-desktop{{ end }}{{ if $headerOnly }} header-only{{ end }}" >
+<li class="{{ if $withChild }}nav-fold{{ end }}{{ if $activePath }} active-path{{ else }}{{ if $p.Parent }} hide-if-desktop{{ end }}{{ end }}{{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} {{ if not $activePath }}collapse{{ end }}{{ end }}{{ if $empty_node }} empty-node-submenu{{ end }}{{if $s.Params.menuindent }} indent{{ end }}{{ if $headerOnly }} header-only{{ end }} {{ if $active}} active{{ end }}"  >
   {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
   <input type="checkbox" id="{{ $mid }}-check"{{ if $activePath}} checked{{ end }}/>
   <label for="{{ $mid }}-check"><a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="{{ if $active}} active{{ end }}{{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}</a>
@@ -75,37 +74,38 @@
   {{ else -}}
   {{- if $withChild }}
     <span>
+      <span class="link-and-toggle">
       {{ if or (not $toc_hide) ($activePath)}}
-        {{ if $empty_node }}
+      {{ if $empty_node }}
         <!-- IF EMPTY NODE WITH CHILDREN -->
-          <span class="emptynode {{ if $active}}active{{ end }} {{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}</span>
-        {{ else }}
-          {{ if not (eq $s.LinkTitle "Tutorials") }}
+        <span class="emptynode {{ if $active}}active{{ end }} {{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}</span>
+      {{ else }}
+        {{ if (not (eq $s.LinkTitle "Tutorials"))}}
           <a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="{{ if $active}} active{{ end }}{{ if $treeRoot }} tree-root{{ end }}">
-            {{ if $s.Params.overview }}
+          {{ if $s.Params.overview }}
             <span class="section-overview"> Overview </span><span class="section-overview-title"> {{ $s.LinkTitle }} </span>
-            {{ else }}
-            <span> {{ $s.LinkTitle }} </span>
-            {{ end }}
-            {{ if $s.Params.canonical }}<i class="fas fa-external-link-alt fa-sm"></i>{{ end }}
-          </a>
           {{ else }}
+            <span> {{ $s.LinkTitle }} </span>
           {{ end }}
-        {{- end }}
+          {{ if $s.Params.canonical }}<i class="fas fa-external-link-alt fa-sm"></i>{{ end }}
+          </a>
+        {{ end }}
       {{- end }}
-      {{- if (or (and $withChild (not $treeRoot) ) (not $hideChildren) ) }}
+    {{- end }}
+    {{- if (or ($withChild ) (not $hideChildren) ) }}
       {{- if (or $hideChildren $treeRoot) -}}
       {{- else -}}
-      <span class="menu-toggle {{ if $openOnDesk }}open-on-desktop{{ end }}">
-        {{ if (or $activePath $active) }}
-          <i class="fas fa-chevron-down"></i>
-        {{ else }}
-          <i class="fas fa-chevron-right"></i>
-        {{- end }}
-      {{- end }}
+          <span class="menu-toggle">
+          {{ if (or $activePath $active) }}
+            <i class="fas fa-chevron-down"></i>
+          {{ else }}
+            <i class="fas fa-chevron-right"></i>
+          {{- end }}
       {{- end -}}
+    {{- end -}}
     </span>
-    {{- if and ($active) (not .Params.notoc) -}}
+  </span>
+  {{- if and ($active) (not .Params.notoc) -}}
     <div class="td-toc" id="TableOfContents"></div>
     {{- end -}}
     {{ else }}

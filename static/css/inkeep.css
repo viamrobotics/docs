@@ -1,7 +1,13 @@
 #inkeep-widget-root * .ikp-btn {
-    border-radius: 0 !important;
+    border-radius: 4px !important;
 }
 
 .ikp-search-bar-trigger__text {
-  color: black !important;
+  color: #4E4F52 !important;
+}
+
+div.ikp-search-bar-trigger__wrapper {
+  margin-right: 1rem;
+  width: 100%;
+  margin-left: 2rem;
 }
