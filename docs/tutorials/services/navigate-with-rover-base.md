@@ -165,7 +165,7 @@ Refer to the [`gpio` motor](/operate/reference/components/motor/gpio/) documenta
    - [Configure the frame system](/operate/mobility/define-geometry/) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
 
      - Switch to **Frame** mode on the **CONFIGURE** tab and select your base.
-       Set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
+       If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
      - Select the `world` as the parent frame.
 
        {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-frame-sys.png" resize="500x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Frame System." style="min-height:200px; max-height:250px">}}
