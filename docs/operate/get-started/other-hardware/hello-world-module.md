@@ -263,10 +263,22 @@ You need to add some sensor-specific code to support the sensor component.
 
     Save the file.<br><br>
 
-1.  Open the <file>hello-world/src/main.py</file> file and add the following to the list of imports:
+1.  Open the <file>hello-world/src/main.py</file> file and add `HelloSensor` to the list of imports so you have:
 
-    ```python {class="line-numbers linkable-line-numbers" data-start="4" }
-    from hello_world.models.hello_sensor import HelloSensor
+    ```python {class="line-numbers linkable-line-numbers" data-line="6, 9"}
+    import asyncio
+
+    from viam.module.module import Module
+    try:
+        from models.hello_camera import HelloCamera
+        from models.hello_sensor import HelloSensor
+    except ModuleNotFoundError: # when running as local module with run.sh
+        from .models.hello_camera import HelloCamera
+        from .models.hello_sensor import HelloSensor
+
+    if __name__ == '__main__':
+        asyncio.run(Module.run_from_registry())
+
     ```
 
     Save the file.
@@ -276,61 +288,38 @@ You need to add some sensor-specific code to support the sensor component.
 
 3. Edit the file structure:<br><br>
 
-   1. Change the name of <file>hello-world/models/module.go</file> to <file>hello-camera.go</file>.<br><br>
+   1. Change the name of <file>hello-world/module.go</file> to <file>hello-camera.go</file>.<br><br>
 
-   1. Change the name of <file>temporary/models/module.go</file> to <file>hello-sensor.go</file>.
-      Move the <file>hello-sensor.go</file> folder from <file>temporary/models/</file> to <file>/hello-world/models/</file>.<br><br>
+   1. Change the name of <file>temporary/module.go</file> to <file>hello-sensor.go</file>.
+      Move the <file>hello-sensor.go</file> folder from <file>temporary/</file> to <file>/hello-world/</file>.<br><br>
 
-1. Open <file>hello-world/main.go</file>.
+1. Open <file>hello-world/cmd/module/main.go</file>.
    You need to add the necessary imports and define how it adds the sensor model from the registry.
    Delete all the contents and replace them with the following:<br><br>
 
    ```go {class="line-numbers linkable-line-numbers" data-start="29"}
-    package main
+   package main
 
-    import (
-        "context"
-        "hello-world/models"
+   import (
+       "helloworld"
 
-        "go.viam.com/rdk/components/camera"
-        "go.viam.com/rdk/components/sensor"
-        "go.viam.com/rdk/logging"
-        "go.viam.com/rdk/module"
-        "go.viam.com/utils"
-    )
+       "go.viam.com/rdk/components/camera"
+       "go.viam.com/rdk/components/sensor"
+       "go.viam.com/rdk/module"
+       "go.viam.com/rdk/resource"
+   )
 
-    func main() {
-        utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("hello-world"))
-    }
-
-    func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) error {
-        helloWorld, err := module.NewModuleFromArgs(ctx)
-        if err != nil {
-            return err
-        }
-
-        if err = helloWorld.AddModelFromRegistry(ctx, camera.API, models.HelloCamera); err != nil {
-            return err
-        }
-
-        if err = helloWorld.AddModelFromRegistry(ctx, sensor.API, models.HelloSensor); err != nil {
-            return err
-        }
-
-        err = helloWorld.Start(ctx)
-        defer helloWorld.Close(ctx)
-        if err != nil {
-            return err
-        }
-
-        <-ctx.Done()
-        return nil
-    }
+   func main() {
+       // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
+       module.ModularMain(resource.APIModel{camera.API, helloworld.HelloCamera}, resource.APIModel{sensor.API, helloworld.HelloSensor})
+   }
    ```
 
    Save the file.<br><br>
 
 1. Change all instances of `temporary` in <file>hello-world/models/hello-sensor.go</file>:<br><br>
+
+   1. On line 1, change `package temporary` to `package helloworld`.
 
    1. Edit `temporary` to `hello-world` on line 14, so it looks like this (but with your org ID in place of `jessamy`):<br><br>
 
@@ -338,9 +327,9 @@ You need to add some sensor-specific code to support the sensor component.
       HelloSensor      = resource.NewModel("jessamy", "hello-world", "hello-sensor")
       ```
 
-   1. Change both instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
+   1. Change all instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
 
-   1. Search for any other instances of `temporary` in the rest of the <file>hello-world/models/hello-sensor.go</file> and replace each with `helloWorld`.
+   1. Change all instances of `temporaryHelloSensor` to `helloWorldHelloSensor`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -518,12 +507,11 @@ You don't need to edit any of the validate or configuration methods because you'
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Add the following to the list of imports at the top of <file>hello-world/models/hello-camera.go</file>:
+1. Add the following to the list of imports at the top of <file>hello-world/hello-camera.go</file>:
 
    ```go {class="line-numbers linkable-line-numbers" data-start="6"}
    "os"
    "reflect"
-   "io/ioutil"
    ```
 
 1. Add `imagePath = ""` to the global variables so you have the following:
@@ -584,7 +572,7 @@ First, implement the camera API methods by editing the camera class definition:
      return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
    }
    defer imgFile.Close()
-   imgByte, err := ioutil.ReadFile(imagePath)
+   imgByte, err := os.ReadFile(imagePath)
    return imgByte, camera.ImageMetadata{}, nil
    ```
 
@@ -695,7 +683,7 @@ With the implementation written, it's time to test your module locally:
 
    ```sh {class="command-line" data-prompt="$" data-output="5-10"}
    make setup
-   make build
+   viam module build local
    ```
 
 {{% /tab %}}

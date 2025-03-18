@@ -358,7 +358,7 @@ LOGGER.critical("critical info")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-1. Open <file>/models/your-model-name.go</file> and add necessary imports.
+1. Open <file>module.go</file> and add necessary imports.
 
 1. **Add any configurable attributes to the `Config` struct.**
 
@@ -400,12 +400,11 @@ LOGGER.critical("critical info")
 This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
 
 ```go {class="line-numbers linkable-line-numbers"}
-package models
+package hello_world
 
 import (
   "context"
   "errors"
-  "io/ioutil"
   "os"
   "reflect"
 
@@ -639,7 +638,7 @@ From within the module directory, compile your module into a single executable:
 
 ```sh {class="command-line" data-prompt="$" data-output="5-10"}
 make setup
-make build
+viam module build local
 ```
 
 {{% /tab %}}
