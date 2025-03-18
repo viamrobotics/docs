@@ -58,7 +58,7 @@ div.footnotes > ol > li, div.footnotes > ol > li > p {
 
 #main_navbar {
   display: flex;
-  align-items: center;
+  flex-direction: row;
 }
 
 .navbar-dark .navbar-brand, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
@@ -96,9 +96,13 @@ h2, .h2 {
   clear: both;
 }
 
+html {
+  scroll-padding-top: 2rem;
+}
+
 .td-content {
   min-height: 92%;
-  max-width: 1200px;
+  max-width: 1000px;
 }
 
 .frontpage > h2 {
@@ -154,7 +158,7 @@ h7, .h7 {
 // TABLE OF CONTENT CHANGES
 
 .td-toc ul li {
-  border-left: 2px solid #1be020;
+  border-left: 2px solid #E4E4E6;
   padding-left: 16px;
   height: fit-content;
 }
@@ -208,14 +212,15 @@ h7, .h7 {
   }
 }
 
-.breadcrumb-item {
-  color: #0000EA;
+.breadcrumb-item, .breadcrumb-item a {
+  color: #4E4F52;
+  text-decoration: underline;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
   padding-right: 0.5rem;
-  color: black;
+  color: #4E4F52;
   content: ">>";
 }
 
@@ -1191,11 +1196,21 @@ td > ul, td > ol {
   min-width: 70px;
 }
 
+#navsearch > #appButton {
+  padding: 0.125rem 0.75rem;
+  margin: 0px;
+  color: #282829;
+}
+
+#navsearch > #appButton > span > span > i {
+  color: #9C9CA4;
+}
+
 #navSearchBar {
   margin: 0px;
-  min-width: 200px;
-  max-width: 200px;
-  width: 200px;
+  min-width: 300px;
+  max-width: 300px;
+  width: 300px;
 }
 
 #scrollButton, #chatButton {
@@ -1876,7 +1891,7 @@ ul.sectionlist > li:hover {
   line-height: 1.4375em;
   background-color: whitesmoke;
   color: black;
-  border-radius: 0px;
+  border-radius: 4px;
   -moz-border-radius: 0px;
 }
 
@@ -2006,10 +2021,21 @@ a.ais-Pagination-link:hover {
 
   #sideSearchBar {
     display: unset;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
   }
 
 }
 
+@media (max-width: 768px) {
+
+  #sideSearchBar {
+    margin-right: 1.5rem;
+    margin-left: 1rem;
+  }
+
+}
 // Search END
 
 // styling for model list from registry
@@ -2732,7 +2758,7 @@ nav {
 
 .td-topbar-sections {
   margin-right: auto !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   line-height: unset !important;
 }
 
@@ -2740,7 +2766,6 @@ nav {
   padding: 0;
   padding-left: 1.25rem;
   margin: 0;
-  border-left: 1px solid #E4E4E6;
 }
 
 .td-topbar-sections > ul > li {
@@ -2795,8 +2820,9 @@ nav {
 .second-nav > ul > li > a:hover, .second-nav > ul > li > a.active-path {
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
   color: #282829;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @media (min-width: 768px) {
@@ -2815,11 +2841,6 @@ nav {
   }
 }
 
-
-#navsearch {
-  min-width: 300px;
-}
-
 @media (min-width: 992px) {
   .d-lg-block {
     display: flex !important;
@@ -2828,6 +2849,11 @@ nav {
 
 span.section-overview {
   display: none
+}
+
+ul > li.nav-fold > span > span.link-and-toggle {
+  display: flex !important;
+  flex-direction: row;
 }
 
 @media (min-width: 768px) {
@@ -2839,12 +2865,8 @@ span.section-overview {
     display: none;
   }
 
-  .menu-toggle.open-on-desktop {
-    display: none;
-  }
-
-  li.nav-fold.open-on-desktop > span > ul > li {
-    display: block !important;
+  nav * ul > li > span > span.link-and-toggle, nav * ul > li > a {
+    padding-left: 0.5rem;
   }
 
   li.nav-fold.header-only > span > span {
@@ -2852,15 +2874,15 @@ span.section-overview {
     margin-top: 1rem;
   }
 
-  li.nav-fold.open-on-desktop.header-only:first-child > span > a {
+  li.nav-fold.header-only:first-child > span > a {
     margin-top: 0.5rem;
   }
 
-  li.nav-fold.open-on-desktop.header-only * li {
+  li.nav-fold.header-only * li {
     text-transform: unset;
   }
 
-  li.open-on-desktop > span > ul.ul-2 {
+  li > span > ul.ul-2 {
     padding-left: 0;
   }
 
@@ -2869,19 +2891,36 @@ span.section-overview {
     font-weight: 600;
   }
 
-  li.open-on-desktop.header-only > span > ul.ul-3 {
-    padding-left: 0.75rem;
+  li.header-only > span > ul.ul-3 {
+    padding-left: 0.5rem;
     border-left: 1px solid #E4E4E6;
+    margin-left: 0.5rem;
+  }
+
+  li > span > ul.ul-3 > li > a {
+    padding-left: 0.5rem;
   }
 
   span.section-overview-title {
     display: none
   }
 
-  span.section-overview {
-    display: block
+  .ul-1 > li.nav-fold > span > span.link-and-toggle {
+    display: none !important;
   }
 
+  .td-sidebar-nav__section .ul-1 ul.ul-2 {
+    padding-left: 0;
+  }
+
+  .td-sidebar-nav__section ul.ul-1 {
+    margin-left: 0;
+  }
+}
+
+.menu-toggle {
+  display: flex !important;
+  align-items: center;
 }
 
 a.tree-root {

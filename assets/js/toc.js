@@ -11,7 +11,9 @@ tocbot.init({
   // For headings inside relative or absolute positioned containers within content.
   hasInnerContainers: false,
   scrollSmooth: true,
-  orderedList: false
+  orderedList: false,
+  headingsOffset: -30,
+  scrollSmoothOffset: -30
 });
 
 // TOC highlighting
