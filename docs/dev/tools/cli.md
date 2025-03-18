@@ -731,8 +731,27 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
 | `cp` | Copy files to and from a machine part. |
-| `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See TODO. |
+| `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](#tunnel-to-a-machine-part). |
 | `--help` | Return help. |
+
+##### Tunnel to a machine part
+
+To tunnel to a machine part you must first explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config.
+For example:
+
+```json {class="line-numbers linkable-line-numbers"}
+  "network": {
+    "traffic_tunnel_endpoints": [
+      {
+        "port": 5900
+      },
+      {
+        "port": 5901,
+        "connection_timeout": "5s"
+      }
+    ]
+  }
+```
 
 ##### Named arguments
 
