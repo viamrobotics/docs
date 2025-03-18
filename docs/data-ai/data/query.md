@@ -41,15 +41,15 @@ Once your data has synced, you can query your data from within the Viam app usin
 You must have the [owner role](/manage/manage/rbac/) in order to query data in the Viam app.
 
 {{< table >}}
-{{% tablestep %}}
-**1. Query with SQL or MQL**
+{{% tablestep number=1 %}}
+**Query with SQL or MQL**
 
 Navigate to the [**Query** page](https://app.viam.com/data/query).
 Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Run your query**
+{{% tablestep number=2 %}}
+**Run your query**
 
 This example query returns 5 readings from a component called `my-sensor`:
 
@@ -74,8 +74,8 @@ WHERE component_name = 'my-sensor' LIMIT 5
 {{% /tab %}}
 {{< /tabs >}}
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Review results**
+{{% tablestep number=3 %}}
+**Review results**
 
 Click **Run query** when ready to perform your query and get matching results.
 Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
@@ -172,8 +172,8 @@ If you want to query data from third party tools, you have to configure data que
 You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/) or [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query captured sensor data.
 
 {{< table >}}
-{{% tablestep link="/data-ai/data/query/#configure-data-query"%}}
-**1. Connect to your Viam organization's data**
+{{% tablestep link="/data-ai/data/query/#configure-data-query" number=1 %}}
+**Connect to your Viam organization's data**
 
 Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:
 
@@ -182,8 +182,8 @@ mongosh "mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HE
 ```
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Query data from a compatible client**
+{{% tablestep number=2 %}}
+**Query data from a compatible client**
 
 Once connected, you can run SQL or MQL statements to query captured data directly.
 

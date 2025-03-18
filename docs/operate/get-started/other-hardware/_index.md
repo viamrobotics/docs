@@ -62,15 +62,15 @@ For microcontrollers, you must flash a [firmware build that includes the Micro-R
 ## Design your module
 
 {{< table >}}
-{{% tablestep %}}
-**1. Write a test script (optional)**
+{{% tablestep number=1 %}}
+**Write a test script (optional)**
 
 You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
 Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Choose an API**
+{{% tablestep number=2 %}}
+**Choose an API**
 
 Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
 With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
@@ -84,8 +84,8 @@ For example, if you want to use the [camera API](/dev/reference/apis/components/
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Decide on configuration attributes and dependencies**
+{{% tablestep number=3 %}}
+**Decide on configuration attributes and dependencies**
 
 Make a list of required and optional attributes for users to configure when adding your module to a machine.
 For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
@@ -573,8 +573,8 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 {{% /expand%}}
 
 {{< table >}}
-{{% tablestep %}}
-**1. Prepare to run your module**
+{{% tablestep number=1 %}}
+**Prepare to run your module**
 
 {{< tabs >}}
 {{% tab name="Python: Hot reloading (recommended)" %}}
@@ -656,8 +656,8 @@ make build
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Configure your local module on a machine**
+{{% tablestep number=2 %}}
+**Configure your local module on a machine**
 
 <a name="reload"></a>
 
@@ -744,8 +744,8 @@ Click **Create**.
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Configure the model provided by your module**
+{{% tablestep number=3 %}}
+**Configure the model provided by your module**
 
 Click the **+** button again, this time selecting **Local module** and then **Local component**.
 
@@ -762,8 +762,8 @@ Click **Create**.
 Configure any required attributes using proper JSON syntax.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Test the component**
+{{% tablestep number=4 %}}
+**Test the component**
 
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
 For example, if you created a sensor component, check whether readings are displayed.
@@ -771,8 +771,8 @@ For example, if you created a sensor component, check whether readings are displ
 {{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" class="shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**5. Iterate**
+{{% tablestep number=5 %}}
+**Iterate**
 
 If your component works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.
@@ -830,8 +830,8 @@ See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) f
 Once you are done testing locally, you can upload your module to the [Viam Registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
 
 {{< table >}}
-{{% tablestep %}}
-**1. Create a README (optional)**
+{{% tablestep number=1 %}}
+**Create a README (optional)**
 
 It's quite helpful to create a README to document what your module does and how to use it, especially if you plan to share your module with others.
 
@@ -880,8 +880,8 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Create a GitHub repo**
+{{% tablestep number=2 %}}
+**Create a GitHub repo**
 
 Create a GitHub repository with all the source code and the README for your module.
 This is required for cloud build to work.
@@ -889,8 +889,8 @@ This is required for cloud build to work.
 Add the link to that repo as the `url` in the <file>meta.json</file> file.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Edit the meta.json file**
+{{% tablestep number=3 %}}
+**Edit the meta.json file**
 
 Make any necessary edits to the `meta.json` file.
 Click below for information about the available fields.
@@ -968,8 +968,8 @@ Do not change the <code>module_id</code>.</p>
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Package and upload**
+{{% tablestep number=4 %}}
+**Package and upload**
 
 To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
 

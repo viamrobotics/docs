@@ -1,13 +1,22 @@
 {{- $link := (.Get "link") -}}
+{{ if not (.Get "number") }}
+  {{ errorf "tablestep: number is required for %s" .Page.File.Path }}
+{{ end }}
+
 <div class="tablestep">
-  {{ if $link }}
-  <a href="{{ $link }}" class="tablesteplink" title="Click for more information on the topic."><i class="fas fa-file-alt"></i></a>
-  {{ end }}
-  {{ with $.Inner }}
-      {{ if eq $.Page.File.Ext "md" }}
-        {{ $.Inner }}
-      {{ else }}
-        {{ $.Inner | htmlUnescape | safeHTML }}
-      {{ end }}
+  <div class="tablestep-number">
+    {{ .Get "number" }}
+  </div>
+  <div class="tablestep-content">
+    {{ if $link }}
+    <a href="{{ $link }}" class="tablesteplink" title="Click for more information on the topic."><i class="fas fa-file-alt"></i></a>
     {{ end }}
+    {{ with $.Inner }}
+        {{ if eq $.Page.File.Ext "md" }}
+          {{ $.Inner }}
+        {{ else }}
+          {{ $.Inner | htmlUnescape | safeHTML }}
+        {{ end }}
+    {{ end }}
+  </div>
 </div>

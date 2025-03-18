@@ -676,6 +676,9 @@ You don't need to edit any of the validate or configuration methods because you'
 
 With the implementation written, it's time to test your module locally:
 
+{{< table >}}
+{{% tablestep number=1 %}}
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -701,58 +704,70 @@ With the implementation written, it's time to test your module locally:
 {{% /tab %}}
 {{< /tabs >}}
 
-2. Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
-
-1. In the Viam app, navigate to your machine's **CONFIGURE** page.
-
-1. Click the **+** button, select **Local module**, then again select **Local module**.
+{{% /tablestep %}}
+{{% tablestep number=2 %}}
+Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
+{{% /tablestep %}}
+{{% tablestep number=3 %}}
+In the Viam app, navigate to your machine's **CONFIGURE** page.
+{{% /tablestep %}}
+{{% tablestep number=4 %}}
+Click the **+** button, select **Local module**, then again select **Local module**.
+{{% /tablestep %}}
+{{% tablestep number=5 %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-5. Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh` or `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
-   Click **Create**.
+Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh` or `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
+Click **Create**.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-5. Enter the path to the automatically-generated executable in the <file>/bin/</file> folder, for example, `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
-   Click **Create**.
+Enter the path to the automatically-generated executable in the <file>/bin/</file> folder, for example, `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
+Click **Create**.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-6. Now add the modular camera resource provided by the module:
+{{% /tablestep %}}
+{{% tablestep number=6 %}}
+Now add the modular camera resource provided by the module:
 
-   Click **+**, click **Local module**, then click **Local component**.
+Click **+**, click **Local module**, then click **Local component**.
 
-   For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, select or enter `<namespace>:hello-world:hello-camera`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
-   For example, `jessamy:hello-world:hello-camera`.
+For the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, select or enter `<namespace>:hello-world:hello-camera`, replacing `<namespace>` with the organization namespace you used when generating the stub files.
+For example, `jessamy:hello-world:hello-camera`.
 
-   For type, enter `camera`.
+For type, enter `camera`.
 
-   For name, you can use the automatic `camera-1`.
+For name, you can use the automatic `camera-1`.
+{{% /tablestep %}}
+{{% tablestep number=7 %}}
+Configure the image path attribute by pasting the following in place of the `{}` brackets:
 
-1. Configure the image path attribute by pasting the following in place of the `{}` brackets:
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "image_path": "<replace with the path to your image>"
+}
+```
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "image_path": "<replace with the path to your image>"
-   }
-   ```
+Replace the path with the path to your image, for example `"/Users/jessamyt/Downloads/hello-world.jpg"`.
+{{% /tablestep %}}
+{{% tablestep number=8 %}}
+Save the config, then click the **TEST** section of the camera's configuration card.
 
-   Replace the path with the path to your image, for example `"/Users/jessamyt/Downloads/hello-world.jpg"`.
+{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The Viam app configuration interface with the Test section of the camera card open, showing a hello world image." style="max-width:800px" class="shadow aligncenter" >}}
 
-1. Save the config, then click the **TEST** section of the camera's configuration card.
-
-   {{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The Viam app configuration interface with the Test section of the camera card open, showing a hello world image." style="max-width:800px" class="shadow aligncenter" >}}
-
-   You should see your image displayed.
-   If not, check the **LOGS** tab for errors.
+You should see your image displayed.
+If not, check the **LOGS** tab for errors.
+{{% /tablestep %}}
+{{< /table >}}
 
 {{< expand "Click if you also created a sensor component" >}}
 
-9. Add the modular sensor:
+1. Add the modular sensor:
 
    Click **+**, click **Local module**, then click **Local component**.
 
@@ -763,9 +778,9 @@ With the implementation written, it's time to test your module locally:
 
    For name, you can use the automatic `sensor-1`.
 
-10. Save the config, then click **TEST** to see a random number generated every second.
+2. Save the config, then click **TEST** to see a random number generated every second.
 
-    ![The sensor card test section open.](/how-tos/hello-sensor.png)
+   ![The sensor card test section open.](/how-tos/hello-sensor.png)
 
 {{< /expand >}}
 

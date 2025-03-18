@@ -58,8 +58,8 @@ Follow the guide to [create a dataset](/data-ai/ai/create-dataset/) if you haven
 Now that you have a dataset with your labeled images, you are ready to train a machine learning model.
 
 {{< table >}}
-{{% tablestep %}}
-**1. Train an ML model**
+{{% tablestep number=1 %}}
+**Train an ML model**
 
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 
@@ -72,8 +72,8 @@ Click **Next steps**.
 {{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Fill in the details for your ML model**
+{{% tablestep number=2 %}}
+**Fill in the details for your ML model**
 
 Enter a name for your new model.
 
@@ -91,8 +91,8 @@ Click **Train model**.
 {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Wait for your model to train**
+{{% tablestep number=3 %}}
+**Wait for your model to train**
 
 The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
 
@@ -101,8 +101,8 @@ Once the model has finished training, it becomes visible on the [**MODELS** tab]
 You will receive an email when your model finishes training.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Debug your training job**
+{{% tablestep number=4 %}}
+**Debug your training job**
 
 From the [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
 

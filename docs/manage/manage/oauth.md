@@ -17,8 +17,8 @@ This guide will show you how to create a branded login screen.
 ## Prerequisites
 
 {{< table >}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**1. Add the logo** to be displayed on the login screen for your organization.
+{{% tablestep link="/dev/tools/cli/#organizations" number=1 %}}
+**Add the logo** to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -29,8 +29,8 @@ Successfully set the logo for organization <org-id> to logo at file-path: logo.p
 You must have [owner permissions](/manage/manage/rbac/#organization-settings-and-roles) on the organization.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**2. Add the support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
+{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+**The support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organization support-email set --support-email=support@logoipsum.com --org-id=<org-id>
@@ -43,8 +43,8 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 ## Set up auth app
 
 {{< table >}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**1. Enable the authentication service** for your organization:
+{{% tablestep link="/dev/tools/cli/#organizations" number=1 %}}
+**Enable the authentication service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organization auth-service enable --org-id=<org-id>
@@ -52,8 +52,8 @@ enabled auth service for organization "<org-id>":
 ```
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**2. Create an OAuth application** for your organization:
+{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+**Create an OAuth application** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
 viam organization auth-service oauth-app create --client-authentication=required \
@@ -82,8 +82,8 @@ Successfully created OAuth app OAuth Test App with client ID <client-id> and cli
 {{% /expand%}}
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**3. See OAuth app**:
+{{% tablestep link="/dev/tools/cli/#organizations" number=3 %}}
+**See OAuth app**:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-5,7-20"}
 viam organization auth-service oauth-app list --org-id=<org-id>

@@ -39,8 +39,8 @@ You cannot move machines to other locations once created.
 ## Create organizations and locations
 
 {{< table >}}
-{{% tablestep link="/dev/reference/glossary/#organization" %}}
-**1. Create organizations**
+{{% tablestep link="/dev/reference/glossary/#organization" number=1 %}}
+**Create organizations**
 
 1. Log into [Viam app](https://app.viam.com) in a web browser.
 1. Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization.
@@ -48,8 +48,8 @@ You cannot move machines to other locations once created.
 1. Create additional organizations as needed.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Create locations**
+{{% tablestep number=2 %}}
+**Create locations**
 
 1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
    A new location called `First Location` is automatically generated for you.
@@ -60,19 +60,16 @@ You cannot move machines to other locations once created.
 1. Create additional locations as needed using the **Add location** button, on the left of the **LOCATIONS** page.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Create sub-locations**
+{{% tablestep number=3 %}}
+**Create sub-locations**
 
 If needed, you can add further sub-locations to, for example, differentiate groups of machines within an office.
 
 To add a sub-location:
 
 1. Add a new location using the same **Add location** button.
-
 1. At the bottom of the location’s page, use the **New parent location** dropdown to choose a parent location.
    Click **Change**.
-
-   {{<imgproc class="" src="/tutorials/air-quality-fleet/locations-done.png" resize="x900" declaredimensions=true alt="The New York Office fleet page. The left Locations navigation panel lists Antonia's Home and RobotsRUs, with New York Office and Oregon Office nested inside RobotsRUs." >}}
 
 You can nest locations up to three levels deep.
 

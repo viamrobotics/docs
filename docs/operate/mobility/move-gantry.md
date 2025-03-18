@@ -23,8 +23,8 @@ You have two options for moving a [gantry](/operate/reference/components/gantry/
 ## Configure and connect to your gantry
 
 {{< table >}}
-{{% tablestep link="/operate/reference/components/motor/" %}}
-**1. Configure the gantry's motor components**
+{{% tablestep link="/operate/reference/components/motor/" number=1 %}}
+**Configure the gantry's motor components**
 
 First, connect the gantry's motors to your machine.
 
@@ -37,16 +37,16 @@ Complete the motor configuration and use the **TEST** panel in the configuration
 Repeat this for each motor of your gantry.
 
 {{% /tablestep %}}
-{{% tablestep link="/operate/reference/components/gantry/" %}}
-**2. Configure a gantry component**
+{{% tablestep link="/operate/reference/components/gantry/" number=2 %}}
+**Configure a gantry component**
 
 Use the **+** button again to add gantry components.
 
 If you have a multi-axis gantry, [configure a single-axis gantry](/operate/reference/components/gantry/single-axis/) for each axis, and then [configure a multi-axis gantry](/operate/reference/components/gantry/multi-axis/) to combine them all into one coordinated unit.
 
 {{% /tablestep %}}
-{{% tablestep link="/operate/control/headless-app/" %}}
-**3. Connect code to your gantry**
+{{% tablestep link="/operate/control/headless-app/" number=3 %}}
+**Connect code to your gantry**
 
 Go to your machine's **CONNECT** tab in the Viam app.
 Select your preferred programming language and copy the code snippet.

@@ -126,8 +126,8 @@ In this example we will continue to use [`sync-at-time:timesyncsensor`](https://
 You will need to follow the same steps with your module:
 
 {{< table >}}
-{{% tablestep %}}
-**1. Add the sensor to your machine**
+{{% tablestep number=1 %}}
+**Add the sensor to your machine**
 
 On your machine's **CONFIGURE** page, click the **+** button next to your machine part in the left menu.
 Select **Component**, then search for and select the `sync-at-time:timesyncsensor` model provided by the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
@@ -138,8 +138,8 @@ Click **Add module**, then enter a name or use the suggested name for your senso
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{% tablestep link="https://github.com/viam-labs/sync-at-time" %}}
-**2. Configure your time frame**
+{{% tablestep link="https://github.com/viam-labs/sync-at-time" number=2 %}}
+**Configure your time frame**
 
 Go to the new component panel and copy and paste the following attribute template into your sensor’s attributes field:
 
