@@ -74,8 +74,6 @@ Follow this tutorial to get started using Viam's Navigation service to help your
    You can use any combo of movement sensors you want as long as you are getting all the types of measurements required.
    See [the navigation service](/operate/reference/services/navigation/#requirements) for more info on movement sensor requirements.
 
-   If you use an accelerometer instead of wheeled odometry, attach your movement sensor to your rover base so that the positive Z axis of the movement sensor points straight up and the positive Y axis points forwards.
-
 {{% alert title="Tip" color="tip" %}}
 
 If you are using different hardware, the navigation setup process will be mostly the same, but you will need to substitute your robot's components.
@@ -167,7 +165,7 @@ Refer to the [`gpio` motor](/operate/reference/components/motor/gpio/) documenta
    - [Configure the frame system](/operate/mobility/define-geometry/) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
 
      - Switch to **Frame** mode on the **CONFIGURE** tab and select your base.
-       If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
+       Set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
      - Select the `world` as the parent frame.
 
        {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-frame-sys.png" resize="500x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Frame System." style="min-height:200px; max-height:250px">}}
