@@ -7,7 +7,7 @@ type: "docs"
 description: "A physical multi-position switch on a machine."
 tags: ["switch", "components"]
 icon: true # this should be used when the image is an icon, it will adjust the sizing and object-fit
-images: ["/icons/components/generic.svg"]
+images: ["/icons/components/switch.svg"]
 no_list: true
 modulescript: true
 date: "2025-02-20"
