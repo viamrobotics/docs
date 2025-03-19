@@ -1,5 +1,5 @@
 ---
-title: "Define a New Resource API"
+title: "Define a new resource API"
 linkTitle: "Custom API"
 weight: 30
 type: "docs"
@@ -20,6 +20,9 @@ You can define a new, custom {{< glossary_tooltip term_id="resource" text="resou
 - You have a resource that could fit into an existing API, but you want to define an API with different methods and messages than the one in the existing [APIs](/dev/reference/apis/).
 
 {{% alert title="Tip" color="tip" %}}
+
+Defining a new resource API is significantly more complex than using an existing API.
+In most cases, you should try to use an existing API rather than define a new one.
 
 If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and [extra parameters](/dev/reference/sdks/use-extra-params/) to add custom functionality to an existing API.
 For example, if you have a [sensor](/operate/reference/components/sensor/) and you want to define a `Calibrate` method, you can use `DoCommand`.
