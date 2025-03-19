@@ -30,44 +30,49 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 });
 const searchClient = typesenseInstantsearchAdapter.searchClient;
 
-const search = instantsearch({
-  indexName: "resources",
-  searchClient,
-});
+// Initialize search for each container
+document.querySelectorAll('.search-container').forEach(container => {
+  const uniqueId = container.dataset.uniqueId;
+  const mrComponent = container.querySelector('.mr-component');
+  const api = mrComponent ? mrComponent.id : "";
 
-let filters;
-let itemtemplate;
+  const search = instantsearch({
+    indexName: "resources",
+    searchClient,
+  });
 
-if (api == "") {
-  filters = {
-    hitsPerPage: 5,
-  };
-  itemtemplate = `
-  <div class="type"><p><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></p></div>
-  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
-  `;
-} else {
-  filters = {
-    facetFilters: ["api: " + api],
-    hitsPerPage: 5,
-  };
-  itemtemplate = `
-  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
-  `;
-}
+  let filters;
+  let itemtemplate;
 
-if (document.getElementById("hits")) {
+  if (api === "") {
+    filters = {
+      hitsPerPage: 5,
+    };
+    itemtemplate = `
+    <div class="type"><p><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></p></div>
+    <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+    <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+    `;
+  } else {
+    filters = {
+      facetFilters: ["api: " + api],
+      hitsPerPage: 5,
+    };
+    itemtemplate = `
+    <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+    <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+    `;
+  }
+
   search.addWidgets([
     instantsearch.widgets.hits({
-      container: "#hits",
+      container: `#hits-${uniqueId}`,
       templates: {
         item: itemtemplate,
       },
     }),
     instantsearch.widgets.searchBox({
-      container: "#searchbox",
+      container: `#searchbox-${uniqueId}`,
       placeholder: "Search for a model...",
       poweredBy: false,
       wrapInput: true,
@@ -76,11 +81,10 @@ if (document.getElementById("hits")) {
       showLoadingIndicator: false,
     }),
     instantsearch.widgets.stats({
-      container: "#searchstats",
+      container: `#searchstats-${uniqueId}`,
       templates: {
         text(data, { html }) {
           let results = "";
-
           if (data.hasManyResults) {
             results += `${data.nbHits} results:`;
           } else if (data.hasOneResult) {
@@ -88,20 +92,19 @@ if (document.getElementById("hits")) {
           } else {
             results += ``;
           }
-
           return `<span>${results}</span>`;
         },
       },
     }),
     instantsearch.widgets.configure(filters),
     instantsearch.widgets.pagination({
-      container: "#pagination",
+      container: `#pagination-${uniqueId}`,
       scrollTo: false,
     }),
   ]);
 
   search.start();
-}
+});
 
 const mlmodel = document.getElementById("mlmodels");
 

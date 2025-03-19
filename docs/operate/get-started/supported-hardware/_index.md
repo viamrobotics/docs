@@ -35,7 +35,9 @@ The Viam Registry is the storage and distribution system for not just hardware m
 You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry?type=Module).
 
 Some components are supported by drivers built into `viam-server`, so you won't find them in the registry page.
-You can browse all built-in and modular registry components on your machine's configuration page in the Viam app.
+You can browse all built-in and modular registry components below or on your machine's configuration page in the Viam app.
+
+There are also modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add software functionality such as a chatbot integration.
 
 ## Configure hardware on your machine
 
@@ -47,7 +49,16 @@ You can browse all built-in and modular registry components on your machine's co
 
    {{<imgproc src="/get-started/plus-button.png" alt="Create a resource button in the Viam app." resize="600x" style="width:350px" class="imgzoom shadow">}}
 
-1. Click **Component**, and search for and select a component that supports your hardware.
+1. Click **Component**.
+   This opens a search menu for all existing hardware drivers in the registry.
+   Search for and select a component _{{< glossary_tooltip term_id="model" text="model" >}}_ that supports your hardware.
+   Search by name, model number, or manufacturer name.
+   Or try searching by broader category, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
+
+   {{<imgproc src="/get-started/component-search.png" alt="Component search results in the Viam app." resize="600x" style="width:260px" class="imgzoom shadow">}}
+
+   You can also browse the components in the [Browse supported hardware by component API](#browse-supported-hardware-by-component-api) section below.
+
 1. Follow the instructions in the configuration card to configure the component's attributes.
 
    {{<imgproc src="/get-started/configuration-card.png" alt="Configure a component." resize="900x" style="width:450px" class="imgzoom shadow">}}
@@ -70,30 +81,136 @@ For details on configuring versioning and environment variables for modules, see
 
 Note that for microcontrollers, in order to add a module successfully to the machine’s configuration, the module needs to exist in the [firmware build](/operate/get-started/other-hardware/micro-module/).
 
-## Browse supported hardware
+## Browse supported hardware by component API
 
-You can browse supported hardware and software modules on your machine's configuration page in the Viam app as described above.
-The list below is provided for reference.
 The following modular components are available for computers and SBCs running `viam-server`.
+Configure any of these components on your machine by following [the steps above](#configure-hardware-on-your-machine).
 
-Search for the name, model number, or manufacturer name of your hardware to see if there is already a hardware driver (_component {{< glossary_tooltip term_id="model" text="model" >}}_) for it.
-Or try searching by broader category name, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
+If you don't find a component that supports your hardware, you can [create a new module](/operate/get-started/other-hardware/) to add it to the registry.
+
+{{< tabs >}}
+{{% tab name="All components" %}}
 
 {{<resources api="rdk:component" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Arm" %}}
+
+The following models implement the [arm component API](/dev/reference/apis/components/arm/):
+
+{{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Base" %}}
+
+The following models implement the [base component API](/dev/reference/apis/components/base/):
+
+{{<resources api="rdk:component:base" type="base" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Board" %}}
+
+The following models implement the [board component API](/dev/reference/apis/components/board/):
+
+{{<resources api="rdk:component:board" type="board" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Button" %}}
+
+The following models implement the [button component API](/dev/reference/apis/components/button/):
+
+{{<resources api="rdk:component:button" type="button" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Camera" %}}
+
+The following models implement the [camera component API](/dev/reference/apis/components/camera/):
+
+{{<resources api="rdk:component:camera" type="camera" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Encoder" %}}
+
+The following models implement the [encoder component API](/dev/reference/apis/components/encoder/):
+
+{{<resources api="rdk:component:encoder" type="encoder" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Gantry" %}}
+
+The following models implement the [gantry component API](/dev/reference/apis/components/gantry/):
+
+{{<resources api="rdk:component:gantry" type="gantry" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Generic" %}}
+
+The following models implement the [generic component API](/dev/reference/apis/components/generic/):
+
+{{<resources api="rdk:component:generic" type="generic" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Gripper" %}}
+
+The following models implement the [gripper component API](/dev/reference/apis/components/gripper/):
+
+{{<resources api="rdk:component:gripper" type="gripper" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Input Controller" %}}
+
+The following models implement the [input controller component API](/dev/reference/apis/components/input-controller/):
+
+{{<resources api="rdk:component:input_controller" type="input_controller" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Motor" %}}
+
+The following models implement the [motor component API](/dev/reference/apis/components/motor/):
+
+{{<resources api="rdk:component:motor" type="motor" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Movement Sensor" %}}
+
+The following models implement the [movement sensor component API](/dev/reference/apis/components/movement-sensor/):
+
+{{<resources api="rdk:component:movement_sensor" type="movement_sensor" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Power Sensor" %}}
+
+The following models implement the [power sensor component API](/dev/reference/apis/components/power-sensor/):
+
+{{<resources api="rdk:component:power_sensor" type="power_sensor" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Sensor" %}}
+
+The following models implement the [sensor component API](/dev/reference/apis/components/sensor/):
+
+{{<resources api="rdk:component:sensor" type="sensor" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Servo" %}}
+
+The following models implement the [servo component API](/dev/reference/apis/components/servo/):
+
+{{<resources api="rdk:component:servo" type="servo" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Switch" %}}
+
+The following models implement the [switch component API](/dev/reference/apis/components/switch/):
+
+{{<resources api="rdk:component:switch" type="switch" no-intro="true">}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Support notice" color="note" %}}
 Modules in the list above are officially supported and maintained by Viam only if they are marked as "built-in," or if the first part of their model triplet is `viam`.
 {{% /alert %}}
-
-### Virtual hardware components
-
-In addition to physical hardware, there are "virtual" hardware modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add other functionality, for example:
-
-- [A "sensor" that allows you to designate a primary sensor and backup sensors in case of failure](https://github.com/viam-modules/failover)
-- [A "movement sensor" that calculates the estimated the position of a wheeled rover based on the output of other components](/operate/reference/components/movement-sensor/wheeled-odometry/)
-- [A ChatGPT integration module](https://github.com/jeremyrhyde/chat-gpt-module)
-
-These modules implement the same [component APIs](/dev/reference/apis/#component-apis) as physical hardware modules, and are configured in the same way as other components, using the **+** button and selecting **Component** from the dropdown menu.
 
 ## Next steps
 
