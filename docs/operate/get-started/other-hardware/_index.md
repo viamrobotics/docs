@@ -62,15 +62,15 @@ For microcontrollers, you must flash a [firmware build that includes the Micro-R
 ## Design your module
 
 {{< table >}}
-{{% tablestep %}}
-**1. Write a test script (optional)**
+{{% tablestep number=1 %}}
+**Write a test script (optional)**
 
 You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
 Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Choose an API**
+{{% tablestep number=2 %}}
+**Choose an API**
 
 Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
 With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
@@ -84,8 +84,8 @@ For example, if you want to use the [camera API](/dev/reference/apis/components/
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Decide on configuration attributes and dependencies**
+{{% tablestep number=3 %}}
+**Decide on configuration attributes and dependencies**
 
 Make a list of required and optional attributes for users to configure when adding your module to a machine.
 For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
@@ -181,11 +181,11 @@ Edit the generated files to add your logic:
 
    - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
-1. **Edit the methods you want to implement**:
+<ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
 
-   For each method you want to implement, replace the body of the method with the relevant logic from your test script.
-   Make sure you return the correct type in accordance with the function's return signature.
-   You can find details about the return types at [python.viam.dev](https://python.viam.dev/autoapi/viam/components/index.html).
+For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+Make sure you return the correct type in accordance with the function's return signature.
+You can find details about the return types at [python.viam.dev](https://python.viam.dev/autoapi/viam/components/index.html).
 
 {{< expand "Example code for a sensor module" >}}
 
@@ -310,25 +310,27 @@ if __name__ == "__main__":
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
 
-5. **Add logging** messages as desired.
+</li></ol>
+
+<ol><li style="counter-reset: item 4"><strong>Add logging</strong> messages as desired.
    The following log severity levels are available for resource logs:
 
-   ```python {class="line-numbers linkable-line-numbers"}
-    # Within some method, log information:
-    self.logger.debug("debug info")
-    self.logger.info("info")
-    self.logger.warn("warning info")
-    self.logger.error("error info")
-    self.logger.exception("error info", exc_info=True)
-    self.logger.critical("critical info")
-   ```
+```python {class="line-numbers linkable-line-numbers"}
+# Within some method, log information:
+self.logger.debug("debug info")
+self.logger.info("info")
+self.logger.warn("warning info")
+self.logger.error("error info")
+self.logger.exception("error info", exc_info=True)
+self.logger.critical("critical info")
+```
 
-   Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
-   Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource's configuration card in the app.
+Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
+Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource's configuration card in the app.
 
-   {{% alert title="Note" color="note" %}}
-   In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
-   {{% /alert %}}
+{{% alert title="Note" color="note" %}}
+In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
+{{% /alert %}}
 
 {{< expand "Click for global logging information" >}}
 
@@ -352,8 +354,12 @@ LOGGER.critical("critical info")
 
 {{< /expand >}}
 
-6. Edit the generated <file>requirements.txt</file> file to include any packages that must be installed for the module to run.
+</li></ol>
+
+<ol><li style="counter-reset: item 5"><strong>Edit the generated <file>requirements.txt</file> file</strong> to include any packages that must be installed for the module to run.
    Depending on your use case, you may not need to add anything here beyond `viam-sdk` which is auto-populated.
+
+</li></ol>
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -390,11 +396,11 @@ LOGGER.critical("critical info")
 
    - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
-1. **Edit the methods you want to implement**:
+<ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
 
-   For each method you want to implement, replace the body of the method with the relevant logic from your test script.
-   Make sure you return the correct type in accordance with the function's return signature.
-   You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
+For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+Make sure you return the correct type in accordance with the function's return signature.
+You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
 {{< expand "Example code for a camera module" >}}
 This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
@@ -523,26 +529,30 @@ func (s *helloWorldHelloCamera) Close(context.Context) error {
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
 
-6. **Add logging** messages as desired.
+</li></ol>
 
-   You can add log messages with various levels of severity:
+<ol><li style="counter-reset: item 5"><strong>Add logging</strong> messages as desired.
 
-   ```go {class="line-numbers linkable-line-numbers"}
-   fn (c *component) someFunction(ctx context.Context, a int) {
-     // Log with severity info:
-     c.logger.CInfof(ctx, "performing some function with a=%v", a)
-     // Log with severity debug (using value wrapping):
-     c.logger.CDebugw(ctx, "performing some function", "a" ,a)
-     // Log with severity warn:
-     c.logger.CWarnw(ctx, "encountered warning for component", "name", c.Name())
-     // Log with severity error without a parameter:
-     c.logger.CError(ctx, "encountered an error")
-   }
-   ```
+You can add log messages with various levels of severity:
 
-   {{% alert title="Note" color="note" %}}
-   In order to see debug logs when using your modular resource, you'll need to run `viam-server` with the `-debug` option.
-   {{% /alert %}}
+```go {class="line-numbers linkable-line-numbers"}
+fn (c *component) someFunction(ctx context.Context, a int) {
+  // Log with severity info:
+  c.logger.CInfof(ctx, "performing some function with a=%v", a)
+  // Log with severity debug (using value wrapping):
+  c.logger.CDebugw(ctx, "performing some function", "a" ,a)
+  // Log with severity warn:
+  c.logger.CWarnw(ctx, "encountered warning for component", "name", c.Name())
+  // Log with severity error without a parameter:
+  c.logger.CError(ctx, "encountered an error")
+}
+```
+
+</li></ol>
+
+{{% alert title="Note" color="note" %}}
+In order to see debug logs when using your modular resource, you'll need to run `viam-server` with the `-debug` option.
+{{% /alert %}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -562,8 +572,8 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 {{% /expand%}}
 
 {{< table >}}
-{{% tablestep %}}
-**1. Prepare to run your module**
+{{% tablestep number=1 %}}
+**Prepare to run your module**
 
 {{< tabs >}}
 {{% tab name="Python: Hot reloading (recommended)" %}}
@@ -645,8 +655,8 @@ viam module build local
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Configure your local module on a machine**
+{{% tablestep number=2 %}}
+**Configure your local module on a machine**
 
 <a name="reload"></a>
 
@@ -733,8 +743,8 @@ Click **Create**.
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Configure the model provided by your module**
+{{% tablestep number=3 %}}
+**Configure the model provided by your module**
 
 Click the **+** button again, this time selecting **Local module** and then **Local component**.
 
@@ -751,8 +761,8 @@ Click **Create**.
 Configure any required attributes using proper JSON syntax.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Test the component**
+{{% tablestep number=4 %}}
+**Test the component**
 
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
 For example, if you created a sensor component, check whether readings are displayed.
@@ -760,8 +770,8 @@ For example, if you created a sensor component, check whether readings are displ
 {{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" class="shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**5. Iterate**
+{{% tablestep number=5 %}}
+**Iterate**
 
 If your component works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.
@@ -819,8 +829,8 @@ See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) f
 Once you are done testing locally, you can upload your module to the [Viam Registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
 
 {{< table >}}
-{{% tablestep %}}
-**1. Create a README (optional)**
+{{% tablestep number=1 %}}
+**Create a README (optional)**
 
 It's quite helpful to create a README to document what your module does and how to use it, especially if you plan to share your module with others.
 
@@ -869,8 +879,8 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Create a GitHub repo**
+{{% tablestep number=2 %}}
+**Create a GitHub repo**
 
 Create a GitHub repository with all the source code and the README for your module.
 This is required for cloud build to work.
@@ -878,8 +888,8 @@ This is required for cloud build to work.
 Add the link to that repo as the `url` in the <file>meta.json</file> file.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Edit the meta.json file**
+{{% tablestep number=3 %}}
+**Edit the meta.json file**
 
 Make any necessary edits to the `meta.json` file.
 Click below for information about the available fields.
@@ -957,8 +967,8 @@ Do not change the <code>module_id</code>.</p>
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Package and upload**
+{{% tablestep number=4 %}}
+**Package and upload**
 
 To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
 

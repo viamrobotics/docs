@@ -122,7 +122,7 @@ To create firmware that integrates an existing module with the Micro-RDK, and fl
 
     The Micro-RDK needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
-{{% snippet "secret-share.md" %}}
+    {{% snippet "secret-share.md" %}}
 
 2.  Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
@@ -174,7 +174,7 @@ To create firmware that integrates an existing module with the Micro-RDK, and fl
     To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
     While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-{{< alert title="Note" color="tip" >}}
+    {{< alert title="Note" color="tip" >}}
 
 The above build and flash steps may be combined by using the `upload` target:
 

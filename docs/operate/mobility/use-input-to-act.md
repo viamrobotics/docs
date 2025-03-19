@@ -30,14 +30,14 @@ This may include sensors, cameras, motors, bases, arms, gantries, servos, grippe
 ## Program your machine
 
 {{< table >}}
-{{% tablestep %}}
-**1. Start building your app**
+{{% tablestep number=1 %}}
+**Start building your app**
 
 Depending on your use case, see [Create a web app](/operate/control/web-app/), [Create a mobile app](/operate/control/mobile-app/), or [Create a headless app](/operate/control/headless-app/) for information on installing an SDK and connecting your code to your machine.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Get an input**
+{{% tablestep number=2 %}}
+**Get an input**
 
 Use one of the input APIs, such as a [sensor's](/dev/reference/apis/components/sensor/) `GetReadings` method:
 
@@ -56,8 +56,8 @@ See [Act based on inferences](/data-ai/ai/act/) for relevant examples.
 If you want to send alerts based on computer vision or captured data, see [Alert on inferences](/data-ai/ai/alert/) or [Alert on data](/data-ai/data/advanced/alert-data/).
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Actuate based on the input**
+{{% tablestep number=3 %}}
+**Actuate based on the input**
 
 To move your actuator, use your actuator component's API, with logic based on your input.
 

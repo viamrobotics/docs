@@ -2288,6 +2288,7 @@ div .filterable > p {
 .tablesteplink {
   float: right;
   color: black;
+  margin-left: 0.5rem;
 }
 
 .tablestep {
@@ -2306,14 +2307,6 @@ div .filterable > p {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
-}
-
-.usecase-table .tablestep:nth-of-type(odd) {
-  border-top: 1px solid #d7d7d9;
-}
-
-.usecase-table .tablestep:nth-of-type(even) {
-  border-top: 1px solid #d7d7d9;
 }
 
 // Styling for email newsletter
@@ -3145,3 +3138,79 @@ li.active-path.tutorial-heading > a {
 }
 
 // Table styling END
+// Numbered list styling START
+
+.td-content > ol, .td-content > .table * ol {
+  list-style: none;
+  counter-reset: item;
+  padding-inline-start: 0px;
+  display: table;
+  list-style-position: outside;
+  margin-bottom: 0rem;
+}
+
+.td-content > ol > li, .td-content > .table * ol > li {
+  counter-increment: item;
+  margin-bottom: 5px;
+  display: table-row;
+}
+
+.td-content > ol > li > p, .td-content > .table * ol > li > p,
+.td-content * .table * ol > li > p,
+.td-content > ol > li > .expand, .td-content > .table * ol > li > .expand,
+.td-content > ol * li > .expand, .td-content * .table * ol > li > .expand,
+.td-content > ol > li > div, .td-content > .table * ol > li > div,
+.td-content * ol > li > div, .td-content * .table * ol > li > div,
+.td-content > ol > li > picture, .td-content > .table * ol > li > picture,
+.td-content * ol > li > picture, .td-content * .table * ol > li > picture,
+.td-content > ol > li > ul, .td-content > .table * ol > li > ul,
+.td-content * ol > li > ul, .td-content * .table * ol > li > ul,
+.td-content > ol > li > img, .td-content > .table * ol > li > img,
+.td-content * ol > li > img, .td-content * .table * ol > li > img {
+    margin-left: 2.5rem;
+}
+
+div.tablestep {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+div.tablestep > div.tablestep-number {
+  margin-right: 1rem;
+  align-self: flex-start;
+  background: #F1F1F4;
+  border-radius: 100%;
+  color: #4E4F52;
+  width: 1.625rem;
+  height: 1.625rem;
+  text-align: center;
+  min-width: 1.625rem;
+  vertical-align: middle;
+  padding-top: 0.125rem;
+}
+
+div.tablestep > div.tablestep-content {
+  width: 100%;
+  max-width: calc(100% - 5rem);
+}
+
+
+.td-content > ol > li:before, .td-content > .table * ol > li:before {
+  margin-right: 10px;
+  content: counter(item);
+  background: #F1F1F4;
+  border-radius: 100%;
+  color: #4E4F52;
+  width: 1.625rem;
+  height: 1.625rem;
+  text-align: center;
+  float: left;
+  display: table-cell;
+  margin-bottom: 1rem;
+}
+
+.td-content > ul li, .td-content > ol li {
+  margin-bottom: 0rem;
+}
+// Numbered list styling END

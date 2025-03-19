@@ -59,7 +59,7 @@ You must [configure data capture](/data-ai/capture-data/capture-sync/#configure-
 {{% /tab %}}
 {{< /tabs >}}
 
-4. Add **Webhooks** or **Emails**.
+<ol><li style="counter-reset: item 3">Add <strong>Webhooks</strong> or <strong>Emails</strong></li></ol>
 
 {{< tabs name="Notifications types" >}}
 {{% tab name="Webhooks" %}}

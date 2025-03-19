@@ -38,8 +38,8 @@ See [configure a machine](/operate/get-started/supported-hardware/) for more inf
 ### Configure a workplace with a sensor widget
 
 {{< table >}}
-{{% tablestep %}}
-**1. Create a workspace in the Viam app**
+{{% tablestep number=1 %}}
+**Create a workspace in the Viam app**
 
 Log in to the [Viam app](https://app.viam.com/).
 
@@ -50,16 +50,16 @@ Give it a name.
 {{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="Blank teleop page.">}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Add widgets**
+{{% tablestep number=2 %}}
+**Add widgets**
 
 Click **Add widget** and add a **GPS** widget for any position-reporting sensor, a **stat** widget for current readings from a sensor, or a **time series** widget to graph data for any component that supports capturing numeric data.
 Use the widget header to configure the panel.
 Repeat as many times as necessary.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Select a machine**
+{{% tablestep number=3 %}}
+**Select a machine**
 
 Now, select a machine with which to make your teleop workspace come to life.
 Click **Select machine** and select your configured machine.
@@ -109,15 +109,15 @@ Select a tab below to learn how to configure your visualization tool for use wit
 #### Grafana
 
 {{< table >}}
-{{% tablestep %}}
-**1. Choose Grafana instance**
+{{% tablestep number=1 %}}
+**Choose Grafana instance**
 
 [Install](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) or set up Grafana.
 You can use either a local instance of Grafana Enterprise or Grafana Cloud, and can use the free trial version of Grafana Cloud if desired.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Install connector to MongoDB data source**
+{{% tablestep number=2 %}}
+**Install connector to MongoDB data source**
 
 Navigate to your Grafana web UI.
 Go to **Connections > Add new connection** and add the [Grafana MongoDB data source](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) plugin to your Grafana instance.
@@ -127,8 +127,8 @@ Go to **Connections > Add new connection** and add the [Grafana MongoDB data sou
 Install the datasource plugin.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Configure a data connection**
+{{% tablestep number=3 %}}
+**Configure a data connection**
 
 Navigate to the Grafana MongoDB data source that you just installed.
 Select **Add new data source**.
@@ -153,8 +153,8 @@ Enter the following information in the configuration UI for the plugin:
   {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps" class="shadow" >}}
 
 {{< /tablestep >}}
-{{% tablestep %}}
-**4. Use Grafana for dashboards**
+{{% tablestep number=4 %}}
+**Use Grafana for dashboards**
 
 With your data connection established, you can then build dashboards that provide insight into your data.
 
@@ -186,8 +186,8 @@ See the [guide on querying data](/data-ai/data/query/) for more information.
 #### Other visualization tools
 
 {{< table >}}
-{{% tablestep %}}
-**1. Install connector to MongoDB data source**
+{{% tablestep number=1 %}}
+**Install connector to MongoDB data source**
 
 Some visualization clients are able to connect to the Viam MongoDB Atlas Data Federation instance natively, while others require that you install and configure an additional plugin or connector.
 For example, Tableau requires both the [Atlas SQL JDBC Driver](https://www.mongodb.com/try/download/jdbc-driver) as well as the [Tableau Connector](https://www.mongodb.com/try/download/tableau-connector) in order to successfully connect and access data.
@@ -195,8 +195,8 @@ For example, Tableau requires both the [Atlas SQL JDBC Driver](https://www.mongo
 Check with the documentation for your third-party visualization tool to be sure you have the required additional software installed to connect to a MongoDB Atlas Data Federation instance.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Configure a data connection**
+{{% tablestep number=2 %}}
+**Configure a data connection**
 
 Most third-party visualization tools require the _connection URI_ (also called the connection string) to that database server, and the _credentials_ to authenticate to that server in order to visualize your data.
 Some third-party tools instead require a _hostname_ and _database name_ of the database server.
@@ -248,8 +248,8 @@ Substitute your organization ID for `<YOUR-ORG-ID>`.
 {{% /tabs %}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Use visualization tools for dashboards**
+{{% tablestep number=3 %}}
+**Use visualization tools for dashboards**
 
 Some third-party visualization tools support the ability to directly query your data within their platform to generate more granular visualizations of specific data.
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.

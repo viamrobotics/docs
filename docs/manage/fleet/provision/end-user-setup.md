@@ -32,8 +32,8 @@ Unless you have been told to use the captive portal, we recommend you use the Vi
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" max-width="300px" class="">}}
 
 {{< table >}}
-{{% tablestep %}}
-**1. Install the Viam mobile app**
+{{% tablestep number=1 %}}
+**Install the Viam mobile app**
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 
@@ -46,16 +46,16 @@ You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/via
 </a>
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Create a machine**
+{{% tablestep number=2 %}}
+**Create a machine**
 
 Open the Viam mobile app and sign in.
 Then, select an organization and location for your machine.
 If you have already created a machine, select it.
 If you have not yet created a machine, click on **Add new smart machine** and give your machine a name.
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Follow the instructions in the app**
+{{% tablestep number=3 %}}
+**Follow the instructions in the app**
 
 Turn on the smart machine you are attempting to connect to.
 Then leave the app and navigate to your mobile device's WiFi settings and connect to the WiFi hotspot your machine has created.
@@ -65,16 +65,16 @@ Unless you have been given other instructions, the WiFi password for this hotspo
 
 Once you are connected to your machine's WiFi hotspot return to the Viam mobile app.
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Provide the network information for the machine**
+{{% tablestep number=4 %}}
+**Provide the network information for the machine**
 
 In the mobile app, you will be prompted to provide the network information for the machine.
 
 The machine will now disable the hotspot network and attempt to connect using the provided network information.
 If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
 {{% /tablestep %}}
-{{% tablestep %}}
-**5. Wait for machine to complete setup**
+{{% tablestep number=5 %}}
+**Wait for machine to complete setup**
 
 If the machine can successfully connect to the network it will now complete its setup and become **live**.
 
@@ -85,13 +85,13 @@ Note that any features that require internet access will not function if the con
 ## Set up your machine using the captive portal
 
 {{< table >}}
-{{% tablestep %}}
-**1. Turn on the smart machine**
+{{% tablestep number=1 %}}
+**Turn on the smart machine**
 
 Turn on the smart machine you are attempting to set up.
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Connect to your machine's WiFi hotspot**
+{{% tablestep number=2 %}}
+**Connect to your machine's WiFi hotspot**
 
 On a laptop or mobile device, navigate to your WiFi settings and connect to the WiFi hotspot your machine has created.
 You may need to wait a short time for your machine to boot and create its WiFi hotspot.
@@ -101,13 +101,13 @@ Unless you have been given other instructions, the WiFi password for this hotspo
 Once you are connected to your machine's WiFi hotspot you will be redirected to a sign-in page.
 If you are using a laptop or are not redirected, try opening [http://viam.setup/](http://viam.setup/) in a browser.
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Follow the captive portal's instructions to provide network information**
+{{% tablestep number=3 %}}
+**Follow the captive portal's instructions to provide network information**
 
 In the captive web portal, you will then be prompted to provide the network information for the machine.
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. If prompted, provide a machine cloud credentials configuration**
+{{% tablestep number=4 %}}
+**If prompted, provide a machine cloud credentials configuration**
 
 Depending on how the machine was set up so far, the captive portal may also require you to paste machine cloud credentials.
 This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
@@ -123,8 +123,8 @@ To copy your machine cloud credentials:
 - Paste the credentials when prompted.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**5. Wait for machine to complete setup**
+{{% tablestep number=5 %}}
+**Wait for machine to complete setup**
 
 The machine will now disable the hotspot network and attempt to connect using the provided network information.
 If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.

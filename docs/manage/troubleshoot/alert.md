@@ -65,8 +65,8 @@ You must also install telegraf by running `brew install telegraf` in your termin
 ### Add performance sensor
 
 {{< table >}}
-{{% tablestep link="/operate/reference/module-configuration/#modular-resource-configuration-details" %}}
-**1. Add the performance metrics sensors**
+{{% tablestep link="/operate/reference/module-configuration/#modular-resource-configuration-details" number=1 %}}
+**e performance metrics sensors**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 
@@ -76,15 +76,15 @@ Search for and add the `hwmonitor:cpu_monitor` model provided by the [`sbc-hwmon
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{% tablestep link="https://github.com/rinzlerlabs/viam-sbc-hwmonitor" %}}
-**2. (Optional) Customize the sensor configuration**
+{{% tablestep link="https://github.com/rinzlerlabs/viam-sbc-hwmonitor" number=2 %}}
+**tional) Customize the sensor configuration**
 
 Add additional sensors for any other metrics you want to track.
 You can find a list of the sensors the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) module provides in the [module README](https://github.com/rinzlerlabs/viam-sbc-hwmonitor).
 
 {{% /tablestep %}}
-{{% tablestep  %}}
-**3. Test the sensor**
+{{% tablestep  number=3 %}}
+**Test the sensor**
 
 **Save the configuration.**
 
@@ -101,8 +101,8 @@ You can also see readings on the **CONTROL** tab.
 To capture or alert on the data from your configured sensor, you must add the [data management service](/data-ai/capture-data/capture-sync/) and configure it to capture and sync the sensor data:
 
 {{< table >}}
-{{% tablestep link="/data-ai/capture-data/capture-sync/" %}}
-**1. Add the data management service**
+{{% tablestep link="/data-ai/capture-data/capture-sync/" number=1 %}}
+**The data management service**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -111,8 +111,8 @@ You can leave the default data sync interval of `0.1` minutes to sync every 6 se
 Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Configure data capture on the sensor**
+{{% tablestep number=2 %}}
+**Configure data capture on the sensor**
 
 Return to your sensor's configuration card.
 

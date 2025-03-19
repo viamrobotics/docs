@@ -58,15 +58,15 @@ If you do not want the data deleted from your machine, copy the data to a new fo
 {{% /alert %}}
 
 {{< table >}}
-{{% tablestep %}}
-**1. Organize your data**
+{{% tablestep number=1 %}}
+**Organize your data**
 
 Put the data you want to sync in a directory on your machine.
 All of the data in the folder will be synced, so be sure that you want to upload all of the contents of the folder.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Configure sync from the additional folder**
+{{% tablestep number=2 %}}
+**Configure sync from the additional folder**
 
 In the **Additional paths**, enter the full path to the directory where the data you want to upload is stored, for example, `/Users/Artoo/my_cat_photos`.
 
@@ -77,15 +77,15 @@ Toggle **Syncing** to on (green) if it isn't already on.
 Click **Save** in the top right corner of the page.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Confirm that your data uploaded**
+{{% tablestep number=3 %}}
+**Confirm that your data uploaded**
 
 Navigate to your [**DATA** page in the Viam app](https://app.viam.com/data/view) and confirm that your data appears there.
 If you don't see your files yet, wait a few moments and refresh the page.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Remove the folder path**
+{{% tablestep number=4 %}}
+**Remove the folder path**
 
 Once the data has uploaded, navigate back to your data service config.
 You can now delete the additional path you added.
@@ -121,14 +121,14 @@ pip install viam-sdk
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/dev/reference/apis/data-client/#establish-a-connection" %}}
-**1. Get API key**
+{{% tablestep link="/dev/reference/apis/data-client/#establish-a-connection" number=1 %}}
+**Get API key**
 
 Go to your organization's setting page and create an API key for your individual {{< glossary_tooltip term_id="part" text="machine part" >}}, {{< glossary_tooltip term_id="part" text="machine" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/reference/apis/data-client/" %}}
-**2. Add a `file_upload_from_path` API call**
+{{% tablestep link="/dev/reference/apis/data-client/" number=2 %}}
+**Add a `file_upload_from_path` API call**
 
 Create a Python script and use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
 
@@ -238,8 +238,8 @@ if __name__ == "__main__":
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Run your code**
+{{% tablestep number=3 %}}
+**Run your code**
 
 Save and run your code once.
 Running your code more than once will duplicate the data.
@@ -272,16 +272,16 @@ Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-r
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources" %}}
-**1. Navigate to your machine**
+{{% tablestep link="/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources" number=1 %}}
+**Navigate to your machine**
 
 In the Viam mobile app, select an organization by clicking on the menu icon in the top left corner and tapping an organization.
 
 Tap the **Locations** tab and select a location, then select the machine you want your data to be associated with.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Upload images**
+{{% tablestep number=2 %}}
+**Upload images**
 
 Tap the menu button marked "**...**" in the upper right corner.
 Tap **Upload Images**.

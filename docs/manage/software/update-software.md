@@ -27,19 +27,19 @@ We strongly recommend that you test updates on a subset of machines before deplo
 {{< tab name="Version tags (recommended)" >}}
 
 {{< table >}}
-{{% tablestep %}}
-**1. Navigate to your fragment's page** on On your fragment's page, from the [FRAGMENTS tab](https://app.viam.com/fragments).
+{{% tablestep number=1 %}}
+**Navigate to your fragment's page** on On your fragment's page, from the [FRAGMENTS tab](https://app.viam.com/fragments).
 {{% /tablestep %}}
-{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" %}}
-**2. Create a `stable` fragment tag**.
+{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" number=2 %}}
+**Create a `stable` fragment tag**.
 On your fragment's page, click on **Versions** in the menu bar and add a tag called `stable`.
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Pin all machine configurations** to the `stable` fragment tag.
+{{% tablestep number=3 %}}
+**Pin all machine configurations** to the `stable` fragment tag.
 For each machine that uses the fragment, update its configuration.
 {{% /tablestep %}}
-{{% tablestep %}}
-**4. Edit the fragment** and change the version of your module or package in the development fragment.
+{{% tablestep number=4 %}}
+**Edit the fragment** and change the version of your module or package in the development fragment.
 This will create a new version of the fragment.
 
 For example:
@@ -73,20 +73,20 @@ For example:
 ```
 
 {{% /tablestep %}}
-{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" %}}
-**5. Create a development tag**.
+{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" number=5 %}}
+**Create a development tag**.
 On your fragment's page, click on **Versions** in the menu bar and add a tag called `development`.
 Select the most recent version that you just created for the tag.
 {{% /tablestep %}}
-{{% tablestep %}}
-**6. Add the development fragment to a subset of machines** by pinning the fragment configuration to the `development` fragment tag.
+{{% tablestep number=6 %}}
+**Add the development fragment to a subset of machines** by pinning the fragment configuration to the `development` fragment tag.
 For each machine that you want to test the changes on, update the configuration.
 {{% /tablestep %}}
-{{% tablestep %}}
-**7. Test the new version of your module or package**.
+{{% tablestep number=7 %}}
+**Test the new version of your module or package**.
 {{% /tablestep %}}
-{{% tablestep %}}
-**8. Update the `stable` fragment tag**.
+{{% tablestep number=8 %}}
+**Update the `stable` fragment tag**.
 When you are satisfied that your module or package works as expected, set the **Version** for the `stable` fragment tag to the new version.
 This will update all machines that use the `stable` fragment tag.
 {{% /tablestep %}}
@@ -96,8 +96,8 @@ This will update all machines that use the `stable` fragment tag.
 {{< tab name="Manual testing" >}}
 
 {{< table >}}
-{{% tablestep %}}
-**1. Change the version of the module.**
+{{% tablestep number=1 %}}
+**Change the version of the module.**
 
 You can overwrite parts of a fragment to use a new version of a module or package without modifying the upstream fragment.
 
@@ -108,11 +108,11 @@ For each machine that you would like to test the new version of the module or pa
 Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Test the new version of your module or package.**
+{{% tablestep number=2 %}}
+**Test the new version of your module or package.**
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Update the fragment.**
+{{% tablestep number=3 %}}
+**Update the fragment.**
 
 When you are satisfied that your module or package works as expected, update your fragment.
 

@@ -32,30 +32,30 @@ If one rover has an arm attached, you can add the rover configuration fragment (
 You must be an [organization owner](/manage/manage/rbac/) to create fragments for an organization.
 
 {{< table >}}
-{{% tablestep link="/operate/get-started/setup/" %}}
-**1. In the [Viam app](https://app.viam.com), create a machine** in any {{< glossary_tooltip term_id="location" text="location" >}}.
+{{% tablestep link="/operate/get-started/setup/" number=1 %}}
+**In the [Viam app](https://app.viam.com), create a machine** in any {{< glossary_tooltip term_id="location" text="location" >}}.
 
 {{% /tablestep %}}
-{{% tablestep link="/operate/get-started/setup/" %}}
-**2. Use the CONFIGURE tab to configure all the resources** you want to use on your machines.
+{{% tablestep link="/operate/get-started/setup/" number=2 %}}
+**Use the CONFIGURE tab to configure all the resources** you want to use on your machines.
 
 All available resources except [triggers](/data-ai/data/advanced/alert-data/) are supported in fragments.
 You can even configure other fragments inside a fragment.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Switch to JSON**.
+{{% tablestep number=3 %}}
+**Switch to JSON**.
 
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
+{{% tablestep number=4 %}}
 
-**4. Copy the raw JSON configuration object**.
+**Copy the raw JSON configuration object**.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**5. Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and create a fragment.**
+{{% tablestep number=5 %}}
+**Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and create a fragment.**
 
 Paste the copied JSON configuration into it.
 
@@ -71,8 +71,8 @@ Click **Save**.
 If you want to edit the fragment later, do it from this screen.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**6. Delete the original configuration (optional).**
+{{% tablestep number=6 %}}
+**Delete the original configuration (optional).**
 
 Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
 By using the new fragment, this and every other machine you add the fragment to will use the exact same configuration.
@@ -87,16 +87,16 @@ With your fragment created, you can add it to all machines that should have it.
 In the following steps, you will see how to add a fragment manually. If you are working in a factory setting and need to set up devices before they reach the end user, you can also use fragments to [provision](/manage/fleet/provision/setup/) your machines.
 
 {{< table >}}
-{{% tablestep %}}
-**1. On your machine's CONFIGURE tab, click the + button and select Insert fragment.**
+{{% tablestep number=1 %}}
+**On your machine's CONFIGURE tab, click the + button and select Insert fragment.**
 
 Search for your fragment and add it.
 
 Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Repeat step 1 for each of the machines** that you want to configure in the same way.
+{{% tablestep number=2 %}}
+**Repeat step 1 for each of the machines** that you want to configure in the same way.
 
 If some of your machines have slight differences, you can still add the fragment and then add fragment overwrites in the next section.
 
@@ -115,11 +115,11 @@ If you or a collaborator later modify fields within the upstream fragment, your 
 For example if you changed the default camera configuration in the fragment to be a different camera model, your modified rovers would still overwrite the camera model set by the fragment.
 
 {{< table >}}
-{{% tablestep link="/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine" %}}
+{{% tablestep link="/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine" number=1 %}}
 
 <!-- markdownlint-disable MD036 -->
 
-**1. On the CONFIGURE tab of the machine whose config you want to modify, make your edits** just as you would edit a non-fragment {{< glossary_tooltip term_id="resource" text="resource" >}}.
+**On the CONFIGURE tab of the machine whose config you want to modify, make your edits** just as you would edit a non-fragment {{< glossary_tooltip term_id="resource" text="resource" >}}.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -420,15 +420,15 @@ If the resource comes from a module, you must instead set the `log_level` attrib
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. After configuring fragment overwrites, check your machine's [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs).**
+{{% tablestep number=2 %}}
+**After configuring fragment overwrites, check your machine's [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs).**
 
 If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
 
 {{% /tablestep %}}
-{{% tablestep %}}
+{{% tablestep number=3 %}}
 {{<imgproc src="/how-tos/one-to-many/reset.png" class="shadow fill alignleft" resize="500x" style="width: 250px"  declaredimensions=true alt="Reset to fragment">}}
-**3. (Optional) Revert fragment modifications.**
+**(Optional) Revert fragment modifications.**
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 Now, the fragment will be identical to the upstream fragment.

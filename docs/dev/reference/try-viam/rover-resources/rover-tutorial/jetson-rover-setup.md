@@ -75,10 +75,13 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 4. Unscrew the top of the rover with the biggest Allen key.
 5. Take the [height extenders](/dev/reference/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
-6. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
+6. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern:
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
 7. Connect the ribbon cable to the motherboard and Jetson Nano.
-   The ribbon cable needs to be routed towards the front of the rover and flip back to the pins on the Jetson Nano, as pictured: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/jetson-ribbon.png" resize="400x" declaredimensions=true alt="The Jetson ribbon cable" >}}
-8. Use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs. The USB ports should be facing the left-hand side of the rover, when viewed from above: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/jetson-motherboard.png" resize="400x" declaredimensions=true alt="The underside of a rover with the Jetson mounted" >}}
+   The ribbon cable needs to be routed towards the front of the rover and flip back to the pins on the Jetson Nano, as pictured:
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/jetson-ribbon.png" resize="400x" declaredimensions=true alt="The Jetson ribbon cable" >}}
+8. Use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs. The USB ports should be facing the left-hand side of the rover, when viewed from above:
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/jetson-motherboard.png" resize="400x" declaredimensions=true alt="The underside of a rover with the Jetson mounted" >}}
 9. Connect the webcam's USB lead to any USB port on your board.
 10. Flip the power switch to turn your rover on.
 
@@ -138,7 +141,8 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 3. Unscrew the top of the rover with the biggest Allen key.
 4. Take the [height extenders](/dev/reference/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
-5. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
+5. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern:
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
 6. **IMPORTANT:** Disconnect the 5V buck converter. Unlike other boards, the Jetson Orin Nano requires a 7-20V input, which means that the board must be powered directly from the battery.
    **Before commencing, ensure that everything is powered off.**
    It is recommended that you clip the buck converter wires completely and place electrical tape over the exposed contacts, as pictured:

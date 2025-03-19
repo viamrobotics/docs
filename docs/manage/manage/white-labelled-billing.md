@@ -22,12 +22,12 @@ Once set up:
 ## Prerequisites
 
 {{< table >}}
-{{% tablestep %}}
-**1. Navigate to the organization settings page** through the menu in upper right corner of the page. Create a **Public namespace**.
+{{% tablestep number=1 %}}
+**Navigate to the organization settings page** through the menu in upper right corner of the page. Create a **Public namespace**.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**2. Add a logo** to be displayed on the login screen for your organization.
+{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+**A logo** to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -38,8 +38,8 @@ Successfully set the logo for organization <org-id> to logo at file-path: logo.p
 You must have [owner permissions](/manage/manage/rbac/#organization-settings-and-roles) on the organization.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**3. Add the support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account-related emails.
+{{% tablestep link="/dev/tools/cli/#organizations" number=3 %}}
+**The support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account-related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organization support-email set --support-email support@logoipsum.com --org-id <org-id>
@@ -52,8 +52,8 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 ## Set up custom billing
 
 {{< table >}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**1. Enable the billing service** for your organization:
+{{% tablestep link="/dev/tools/cli/#organizations" number=1 %}}
+**Enable the billing service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organizations billing-service enable --org-id <org-id> --address "100 Center Street, New York, NY, 10001, USA"
@@ -61,8 +61,8 @@ Successfully enabled billing service for organization "<org-id>"
 ```
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" %}}
-**2. Get billing dashboard URL** from the billing service config:
+{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+**Get billing dashboard URL** from the billing service config:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-15"}
 viam organizations billing-service get-config --org-id <org-id>
@@ -82,8 +82,8 @@ Country: USA
 You can update any value after setup using `viam organizations billing-service update`.
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Check the billing dashboard** by navigating to the billing dashboard URL:
+{{% tablestep number=3 %}}
+**Check the billing dashboard** by navigating to the billing dashboard URL:
 
 It will be of the form `https://app.viam.com/billing/<public-namespace>`.
 

@@ -170,8 +170,8 @@ if __name__ == '__main__':
 
 {{< table >}}
 
-{{% tablestep link="/manage/fleet/provision/setup/#configure-agent-provisioning" %}}
-**1. Configure provisioning**
+{{% tablestep link="/manage/fleet/provision/setup/#configure-agent-provisioning" number=1 %}}
+**Configure provisioning**
 
 If you are using the captive portal, this step is optional.
 If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
@@ -240,8 +240,8 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 {{% /expand%}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Configure Networks (optional)**
+{{% tablestep number=2 %}}
+**Configure Networks (optional)**
 
 During the provisioning process, a machine connects to a network to install `viam-server`.
 If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
@@ -312,8 +312,8 @@ Please note this script works only under POSIX (macOS and Linux) at the moment.
 {{< /alert >}}
 
 {{< table >}}
-{{% tablestep %}}
-**1. Download the preinstall script**
+{{% tablestep number=1 %}}
+**Download the preinstall script**
 
 Run the following commands to download the preinstall script and make the script executable:
 
@@ -323,8 +323,8 @@ chmod 755 preinstall.sh
 ```
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**2. Run the preinstall script**
+{{% tablestep number=2 %}}
+**Run the preinstall script**
 
 Run the preinstall script without options and it will attempt to auto-detect a mounted root filesystem (or for Raspberry Pi, bootfs) and also automatically determine the architecture.
 

@@ -1,6 +1,6 @@
 {{< table >}}
-{{% tablestep link="/dev/tools/cli/#authenticate"%}}
-**1. Authenticate with the CLI**
+{{% tablestep link="/dev/tools/cli/#authenticate" number=1 %}}
+**Authenticate with the CLI**
 
 Authenticate using a personal access token:
 
@@ -9,8 +9,8 @@ viam login
 ```
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations"%}}
-**2. Find your organization ID**
+{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+**Find your organization ID**
 
 To create a database user allowing you to access your data, find your organization ID:
 
@@ -19,8 +19,8 @@ viam organizations list
 ```
 
 {{% /tablestep %}}
-{{% tablestep %}}
-**3. Configure a new database user**
+{{% tablestep number=3 %}}
+**Configure a new database user**
 
 Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
 
@@ -40,8 +40,8 @@ This command configures a database user for your organization for use with data 
 If you have run this command before, this command instead **updates** the password to the new value you set.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#data" %}}
-**4. Determine the connection URI**
+{{% tablestep link="/dev/tools/cli/#data" number=4 %}}
+**Determine the connection URI**
 
 Determine the connection URI (also known as a connection string) for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 

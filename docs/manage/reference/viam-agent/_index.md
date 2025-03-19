@@ -30,42 +30,51 @@ To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet
 
 ## Installation
 
-1. Add a new machine in the [Viam app](https://app.viam.com).
-1. Navigate to the machine's **CONFIGURE** tab.
-1. Click **View setup instructions** on the alert to **Set up your machine part**:
+{{< table >}}
+{{% tablestep number=1 %}}
+Add a new machine in the [Viam app](https://app.viam.com).
+{{% /tablestep %}}
+{{% tablestep number=2 %}}
+Navigate to the machine's **CONFIGURE** tab.
+{{% /tablestep %}}
+{{% tablestep number=3 %}}
+Click **View setup instructions** on the alert to **Set up your machine part**:
 
-   {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="shadow imgzoom">}}
+{{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="shadow imgzoom">}}
+{{% /tablestep %}}
+{{% tablestep number=4 %}}
+Follow the instructions to install `viam server` with `viam-agent`.
 
-1. Follow the instructions to install `viam server` with `viam-agent`.
+{{< alert title="Important" color="note" >}}
+If you are using Linux, your machine must have `curl` available in order to install `viam-agent`.
+{{< /alert >}}
 
-   {{< alert title="Important" color="note" >}}
-   If you are using Linux, your machine must have `curl` available in order to install `viam-agent`.
-   {{< /alert >}}
+You can use `viam-agent` either with an existing machine's part ID and API key, or with an existing machine credentials configuration file at <file>/etc/viam.json</file>.
 
-   You can use `viam-agent` either with an existing machine's part ID and API key, or with an existing machine credentials configuration file at <file>/etc/viam.json</file>.
+The command will be of the following form:
 
-   The command will be of the following form:
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+```
 
-   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
-   sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
-   ```
+{{< alert title="Note" color="note" >}}
 
-   {{< alert title="Note" color="note" >}}
+As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the `viam-server` app JSON configuration from the Viam app into <file>/etc/viam.json</file>.
+You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
 
-   As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the `viam-server` app JSON configuration from the Viam app into <file>/etc/viam.json</file>.
-   You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
-   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
+Then run the following command to install `viam-agent`:
 
-   Then run the following command to install `viam-agent`:
+```sh {class="command-line" data-prompt="$"}
+sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+```
 
-   ```sh {class="command-line" data-prompt="$"}
-   sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
-   ```
+{{< /alert >}}
 
-   {{< /alert >}}
-
-   On Linux, `viam-agent` will install itself as a systemd service named `viam-agent`.
-   For information on managing the service, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
+On Linux, `viam-agent` will install itself as a systemd service named `viam-agent`.
+For information on managing the service, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
+{{% /tablestep %}}
+{{< /table >}}
 
 ## Configuration
 
