@@ -2288,6 +2288,7 @@ div .filterable > p {
 .tablesteplink {
   float: right;
   color: black;
+  margin-left: 0.5rem;
 }
 
 .tablestep {
@@ -3206,6 +3207,7 @@ div.tablestep > div.tablestep-content {
   text-align: center;
   float: left;
   display: table-cell;
+  margin-bottom: 1rem;
 }
 
 .td-content > ul li, .td-content > ol li {
