@@ -12,7 +12,7 @@ aliases:
 ---
 
 If your machine is not working as expected, there are several steps you can take for debugging.
-Start by [checking the machine logs].
+Start by checking the machine logs.
 If that doesn't help, you can enable debug logs or `ssh` into the machine.
 
 For common errors see [Common Errors](/dev/tools/common-errors/).
