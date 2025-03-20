@@ -172,6 +172,40 @@ In **JSON** mode, it will resemble the following:
 If you delete your machine, location, organization, or account by mistake, contact [contact@viam.com](mailto:contact@viam.com) immediately.
 They will try to help but cannot guarantee recovery or restoration.
 
+## Common module errors
+
+### Timed out waiting for module
+
+**Full Error:** `Error adding module - Module X - Error while starting module X: Timed out waiting for module X to start listening.` or `Resource X timed out during reconfigure`
+
+**Description:** This error occurs when a module fails to start up or reconfigure within the default timeout period (5 minutes to start up, 1 minute to reconfigure).
+This can happen when there is a slow internet connection, when the module is trying to download a large number of dependencies, or when the module is running on a device with limited compute resources.
+
+**Solution:**
+
+- Try using a faster internet connection.
+- If the problem persists, try increasing the `VIAM_MODULE_STARTUP_TIMEOUT` or `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` environment variables in the module's JSON configuration file.
+  For example:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "modules": [
+      {
+        ...
+        "env": {
+          "VIAM_MODULE_STARTUP_TIMEOUT": "6m30s",
+          "VIAM_RESOURCE_CONFIGURATION_TIMEOUT": "3m0s"
+        }
+      }
+    ]
+  }
+  ```
+
+- If you are the module author, consider packaging the module with required dependencies so they don't need to be downloaded on startup.
+  For Python modules, you can package your module with dependencies by using the PyInstaller steps when [uploading your module](/operate/get-started/other-hardware/#upload-your-module).
+
+See [Module Configuration Details](/operate/reference/module-configuration/#environment-variables) for more information on these environment variables.
+
 ## Known application and plugin conflicts
 
 ### macOS applications
