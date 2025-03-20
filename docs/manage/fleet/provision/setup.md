@@ -183,13 +183,15 @@ Create a file called <FILE>viam-defaults.json</FILE> with the following format a
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "manufacturer": "<NAME>", # your company name
-  "model": "<NAME>", # the machine's model
-  "fragment_id": "<ID>", # the fragment id, required for mobile app
-  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
-  "disable_captive_portal_redirect": false, # set to true if using a mobile app
-  "hotspot_password": "<PASSWORD>", # password for the hotspot
-  "networks" : []
+  "network_configuration": {
+    "manufacturer": "<NAME>", # your company name
+    "model": "<NAME>", # the machine's model
+    "fragment_id": "<ID>", # the fragment id, required for mobile app
+    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+    "disable_captive_portal_redirect": false, # set to true if using a mobile app
+    "hotspot_password": "<PASSWORD>", # password for the hotspot
+    "networks" : []
+  }
 }
 ```
 
@@ -198,16 +200,18 @@ Create a file called <FILE>viam-defaults.json</FILE> with the following format a
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "manufacturer": "Skywalker",
-  "model": "C-3PO",
-  "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-  "hotspot_prefix": "skywalker-setup",
-  "disable_captive_portal_redirect": false,
-  "hotspot_password": "skywalker123",
-  "turn_on_hotspot_if_wifi_has_no_internet": false,
-  "offline_before_starting_hotspot_minutes": "3m30s",
-  "user_idle_minutes": "2m30s",
-  "retry_connection_timeout_minutes": "15m"
+  "network_configuration": {
+    "manufacturer": "Skywalker",
+    "model": "C-3PO",
+    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_prefix": "skywalker-setup",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "skywalker123",
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m"
+  }
 }
 ```
 
@@ -268,31 +272,33 @@ The following configuration defines the connection information and credentials f
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "manufacturer": "Skywalker",
-  "model": "C-3PO",
-  "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-  "hotspot_prefix": "skywalker-setup",
-  "disable_captive_portal_redirect": false,
-  "hotspot_password": "skywalker123",
-  "turn_on_hotspot_if_wifi_has_no_internet": false,
-  "offline_before_starting_hotspot_minutes": "3m30s",
-  "user_idle_minutes": "2m30s",
-  "retry_connection_timeout_minutes": "15m",
-  "turn_on_hotspot_if_wifi_has_no_internet": true,
-  "networks": [
-    {
-      "type": "wifi",
-      "ssid": "otherNetworkOne",
-      "psk": "myFirstPassword",
-      "priority": 30
-    },
-    {
-      "type": "wifi",
-      "ssid": "otherNetworkTwo",
-      "psk": "mySecondPassword",
-      "priority": 10
-    }
-  ]
+  "network_configuration": {
+    "manufacturer": "Skywalker",
+    "model": "C-3PO",
+    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_prefix": "skywalker-setup",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "skywalker123",
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m",
+    "turn_on_hotspot_if_wifi_has_no_internet": true,
+    "networks": [
+      {
+        "type": "wifi",
+        "ssid": "otherNetworkOne",
+        "psk": "myFirstPassword",
+        "priority": 30
+      },
+      {
+        "type": "wifi",
+        "ssid": "otherNetworkTwo",
+        "psk": "mySecondPassword",
+        "priority": 10
+      }
+    ]
+  }
 }
 ```
 
