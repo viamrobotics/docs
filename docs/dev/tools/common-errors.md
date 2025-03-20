@@ -187,19 +187,19 @@ This can happen when there is a slow internet connection, when the module is try
 - If the problem persists, try increasing the `VIAM_MODULE_STARTUP_TIMEOUT` or `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` environment variables in the module's JSON configuration file.
   For example:
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "modules": [
-    {
-      ...
-      "env": {
-        "VIAM_MODULE_STARTUP_TIMEOUT": "6m30s",
-        "VIAM_RESOURCE_CONFIGURATION_TIMEOUT": "3m0s"
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "modules": [
+      {
+        ...
+        "env": {
+          "VIAM_MODULE_STARTUP_TIMEOUT": "6m30s",
+          "VIAM_RESOURCE_CONFIGURATION_TIMEOUT": "3m0s"
+        }
       }
-    }
-  ]
-}
-```
+    ]
+  }
+  ```
 
 - If you are the module author, consider packaging the module with required dependencies so they don't need to be downloaded on startup.
   For Python modules, you can package your module with dependencies by using the PyInstaller steps when [uploading your module](/operate/get-started/other-hardware/#upload-your-module).
