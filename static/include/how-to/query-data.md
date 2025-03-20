@@ -1,5 +1,5 @@
 {{< table >}}
-{{% tablestep link="/dev/tools/cli/#authenticate" number=1 %}}
+{{% tablestep number=1 %}}
 **Authenticate with the CLI**
 
 Authenticate using a personal access token:
@@ -8,8 +8,10 @@ Authenticate using a personal access token:
 viam login
 ```
 
+For alternative authentication methods, see [/dev/tools/cli/#authenticate].
+
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+{{% tablestep number=2 %}}
 **Find your organization ID**
 
 To create a database user allowing you to access your data, find your organization ID:
@@ -40,7 +42,7 @@ This command configures a database user for your organization for use with data 
 If you have run this command before, this command instead **updates** the password to the new value you set.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#data" number=4 %}}
+{{% tablestep number=4 %}}
 **Determine the connection URI**
 
 Determine the connection URI (also known as a connection string) for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:

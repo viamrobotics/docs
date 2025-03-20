@@ -31,9 +31,9 @@
             margin: 0;
         }
 
-        ul.ul-1 {
-            padding-left: 0.5em;
-            margin-left: 0.5em;
+        & .ul-1 > ul {
+            padding-left: 0.833em;
+            font-size: 1rem;
         }
 
         & .ul-1 ul {
@@ -175,6 +175,10 @@
 li .indent {
     font-size: 0.833rem;
     padding-left: 0.75rem;
+}
+
+.header-only > span > span {
+    font-size: 0.9375rem;
 }
 
 @media (min-width: 768px) {

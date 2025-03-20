@@ -106,7 +106,7 @@ html {
 }
 
 .frontpage > h2 {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 h3, .h3 {
@@ -495,7 +495,6 @@ END MARKETING CSS
 /* START CSS FOR EXPANDER */
 
 .expand-label {
-  background-color: #F7F7F8;
   color: #4E4F52;
   font-weight: 300;
   border: 1px solid #E4E4E6;
@@ -515,15 +514,24 @@ END MARKETING CSS
   font-weight: 300;
 }
 
+details[open] > .expand-label {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
 .expand-content {
   border-top: #d9d9d9 solid 0px;
   border-left: #d9d9d9 solid 1px;
   border-right: #d9d9d9 solid 1px;
   border-bottom: #d9d9d9 solid 1px;
-  border-radius: 4px;
-  background: whitesmoke;
-  padding: 1rem;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 0 1rem;
   overflow: hidden;
+}
+
+.expand-content > p, .expand-content > .table, .expand-content > table {
+  margin-top: 1rem;
 }
 
 .expand {
@@ -1154,8 +1162,12 @@ td > ul, td > ol {
   text-align: center;
 }
 
+.td-content ol li.nav-item {
+  margin-bottom: 0 !important;
+}
+
 .tab-content {
-  padding: .7rem;
+  padding: .7rem 0;
   background-color: white;
   border-bottom: 1px solid rgb(215, 215, 217);
 }
@@ -2018,7 +2030,7 @@ a.ais-Pagination-link:hover {
   #sideSearchBar {
     display: unset;
     margin-right: 0.5rem;
-    margin-left: 1rem;
+    margin-left: 0rem;
     margin-top: 0.5rem;
   }
 
@@ -2280,13 +2292,6 @@ div .filterable > p {
   background-color: whitesmoke;
 }
 
-// TABLES
-.tablesteplink {
-  float: right;
-  color: black;
-  margin-left: 0.5rem;
-}
-
 .tablestep {
   clear: both;
   padding: 1rem;
@@ -2297,12 +2302,26 @@ div .filterable > p {
 
 .tablestep > table, .expand-content > table {
   min-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .tablestep > table td, .tablestep > table th, .expand-content > table td, .expand-content > table th {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
+}
+
+.expand-content > table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.usecase-table .tablestep:nth-of-type(odd) {
+  border-top: 1px solid #d7d7d9;
+}
+
+.usecase-table .tablestep:nth-of-type(even) {
+  border-top: 1px solid #d7d7d9;
 }
 
 // Styling for email newsletter
@@ -2946,20 +2965,36 @@ li.active-path.tutorial-heading > a {
   max-width: unset;
 }
 
-@media (min-width: 500px) {
+
+#next-page > div > div.hover-card {
+  max-width: 100%;
+}
+
+#next-page > div > div.hover-card.left {
+  float: left;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+#next-page > div > div.hover-card.right {
+  float: right;
+  margin: 0
+}
+
+@media (min-width: 569px) {
   #next-page > div > div.hover-card {
     max-width: calc((100% - 1.5rem)/2);
   }
 }
 
-#next-page > div > div.hover-card.left {
-  float: left;
-  margin: 0rem 0.75rem 0rem 0rem;
-}
+@media (min-width: 545px) {
+  #next-page > div > div.hover-card.left {
+    margin: 0rem 0.5rem 0rem 0rem;
+  }
 
-#next-page > div > div.hover-card.right {
-  float: right;
-  margin: 0rem 0rem 0rem 0.75rem;
+  #next-page > div > div.hover-card.right {
+    margin: 0rem 0rem 0rem 0.5rem;
+  }
 }
 
 #next-page > div > div.hover-card > a {
@@ -3127,7 +3162,7 @@ li.active-path.tutorial-heading > a {
   background-color: unset;
 }
 
-.table th, .td-content>table th, .td-box .row.section>table th, .table td, .td-content>table td, .td-box .row.section>table td {
+.table th, .td-content>table th, .td-content table th, .td-box .row.section>table th, .table td, .td-content>table td, .td-content table td, .td-box .row.section>table td {
   border-right: 1px solid #E4E4E6;
   border-left: 1px solid #E4E4E6;
   border-bottom: 1px solid #E4E4E6;

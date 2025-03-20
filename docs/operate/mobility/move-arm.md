@@ -27,7 +27,7 @@ You have two options for moving a robotic [arm](/operate/reference/components/ar
 ## Configure and connect to your arm
 
 {{< table >}}
-{{% tablestep link="/operate/get-started/supported-hardware/" number=1 %}}
+{{% tablestep number=1 %}}
 **Configure an arm component**
 
 First, physically connect the arm to your machine.
@@ -39,7 +39,7 @@ Search for and select a model that supports your arm.
 Complete the arm configuration, then use the **TEST** panel in the configuration card to test that the arm is working.
 
 {{% /tablestep %}}
-{{% tablestep link="/operate/control/headless-app/" number=2 %}}
+{{% tablestep number=2 %}}
 **Connect code to your arm**
 
 Go to your machine's **CONNECT** tab in the Viam app.
@@ -106,7 +106,7 @@ The third joint of your arm should move 30 degrees.
 For more information, see [`MoveToJointPositions`](/dev/reference/apis/components/arm/#movetojointpositions).
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/reference/apis/components/arm/#movetoposition" number=2 %}}
+{{% tablestep number=2 %}}
 **Command to move to position**
 
 {{< tabs >}}

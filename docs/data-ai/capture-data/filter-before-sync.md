@@ -16,20 +16,20 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{% tablestep link="/data-ai/ai/deploy/" number=1 %}}
+{{% tablestep number=1 %}}
 **Add an ML model service to your machine**
 
 Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](https://github.com/viam-modules/mlmodel-tflite).
 
 {{% /tablestep %}}
-{{% tablestep link="/operate/reference/services/vision/" number=2 %}}
+{{% tablestep number=2 %}}
 **Select a suitable ML model**
 
 Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Upload a new model** to upload your own.
 If you're not sure which model to use, you can use [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
-{{% tablestep link="/operate/reference/services/vision/" number=3 %}}
+{{% tablestep number=3 %}}
 **Add a vision service to use with the ML model**
 
 You can think of the vision service as the bridge between the ML model service and the output from your camera.

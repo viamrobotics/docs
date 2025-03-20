@@ -39,7 +39,7 @@ You cannot move machines to other locations once created.
 ## Create organizations and locations
 
 {{< table >}}
-{{% tablestep link="/dev/reference/glossary/#organization" number=1 %}}
+{{% tablestep number=1 %}}
 **Create organizations**
 
 1. Log into [Viam app](https://app.viam.com) in a web browser.
