@@ -2036,14 +2036,40 @@ a.ais-Pagination-link:hover {
 
 }
 
+#mobile-search {
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
 @media (max-width: 768px) {
 
   #sideSearchBar {
-    margin-right: 1.5rem;
+    padding-right: 0.25rem;
     margin-left: 1rem;
   }
 
+
+  #mobile-search {
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
 }
+
+
+@media (max-width: 768px) {
+
+  #sideSearchBar {
+    margin-right: 1.0rem;
+    margin-left: 0.75rem;
+  }
+
+  .td-sidebar-nav > .td-sidebar-nav__section {
+    padding-left: 1.25rem;
+    // padding-right: 0rem !important;
+  }
+
+}
+
 // Search END
 
 // styling for model list from registry
