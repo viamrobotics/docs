@@ -57,7 +57,7 @@ Click **Copy export command**.
 This copies the command, including your org ID and the filters you selected, to your clipboard.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#data" number=3 %}}
+{{% tablestep number=3 %}}
 **Run the command**
 
 Run the copied command in a terminal:

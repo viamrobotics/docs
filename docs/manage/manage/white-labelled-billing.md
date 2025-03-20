@@ -26,7 +26,7 @@ Once set up:
 **Navigate to the organization settings page** through the menu in upper right corner of the page. Create a **Public namespace**.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+{{% tablestep number=2 %}}
 **A logo** to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
@@ -38,7 +38,7 @@ Successfully set the logo for organization <org-id> to logo at file-path: logo.p
 You must have [owner permissions](/manage/manage/rbac/#organization-settings-and-roles) on the organization.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" number=3 %}}
+{{% tablestep number=3 %}}
 **The support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account-related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -52,7 +52,7 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 ## Set up custom billing
 
 {{< table >}}
-{{% tablestep link="/dev/tools/cli/#organizations" number=1 %}}
+{{% tablestep number=1 %}}
 **Enable the billing service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -61,7 +61,7 @@ Successfully enabled billing service for organization "<org-id>"
 ```
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/tools/cli/#organizations" number=2 %}}
+{{% tablestep number=2 %}}
 **Get billing dashboard URL** from the billing service config:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-15"}

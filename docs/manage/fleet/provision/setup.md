@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
 {{< table >}}
 
-{{% tablestep link="/manage/fleet/provision/setup/#configure-agent-provisioning" number=1 %}}
+{{% tablestep number=1 %}}
 **Configure provisioning**
 
 If you are using the captive portal, this step is optional.

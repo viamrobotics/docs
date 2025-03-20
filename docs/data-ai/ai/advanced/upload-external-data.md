@@ -121,13 +121,13 @@ pip install viam-sdk
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/dev/reference/apis/data-client/#establish-a-connection" number=1 %}}
+{{% tablestep number=1 %}}
 **Get API key**
 
 Go to your organization's setting page and create an API key for your individual {{< glossary_tooltip term_id="part" text="machine part" >}}, {{< glossary_tooltip term_id="part" text="machine" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 {{% /tablestep %}}
-{{% tablestep link="/dev/reference/apis/data-client/" number=2 %}}
+{{% tablestep number=2 %}}
 **Add a `file_upload_from_path` API call**
 
 Create a Python script and use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
@@ -272,7 +272,7 @@ Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-r
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources" number=1 %}}
+{{% tablestep number=1 %}}
 **Navigate to your machine**
 
 In the Viam mobile app, select an organization by clicking on the menu icon in the top left corner and tapping an organization.

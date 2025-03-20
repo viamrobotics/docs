@@ -33,7 +33,7 @@ Once you connect to the `viam-server` instance on a part, this display includes 
 {{<imgproc src="/fleet/app-usage/machine-page.png" resize="600x" declaredimensions=true  class="shadow" alt="The machine page with part menu expanded">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/manage/troubleshoot/teleoperate/default-interface/" number=3 %}}
+{{% tablestep number=3 %}}
 **Test your machines remotely**
 
 On a machine's [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app), you can remotely operate the machine and test its resources.

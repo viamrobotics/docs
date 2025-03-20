@@ -32,11 +32,11 @@ If one rover has an arm attached, you can add the rover configuration fragment (
 You must be an [organization owner](/manage/manage/rbac/) to create fragments for an organization.
 
 {{< table >}}
-{{% tablestep link="/operate/get-started/setup/" number=1 %}}
+{{% tablestep number=1 %}}
 **In the [Viam app](https://app.viam.com), create a machine** in any {{< glossary_tooltip term_id="location" text="location" >}}.
 
 {{% /tablestep %}}
-{{% tablestep link="/operate/get-started/setup/" number=2 %}}
+{{% tablestep number=2 %}}
 **Use the CONFIGURE tab to configure all the resources** you want to use on your machines.
 
 All available resources except [triggers](/data-ai/data/advanced/alert-data/) are supported in fragments.
@@ -115,7 +115,7 @@ If you or a collaborator later modify fields within the upstream fragment, your 
 For example if you changed the default camera configuration in the fragment to be a different camera model, your modified rovers would still overwrite the camera model set by the fragment.
 
 {{< table >}}
-{{% tablestep link="/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine" number=1 %}}
+{{% tablestep number=1 %}}
 
 <!-- markdownlint-disable MD036 -->
 

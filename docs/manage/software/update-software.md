@@ -30,7 +30,7 @@ We strongly recommend that you test updates on a subset of machines before deplo
 {{% tablestep number=1 %}}
 **Navigate to your fragment's page** on On your fragment's page, from the [FRAGMENTS tab](https://app.viam.com/fragments).
 {{% /tablestep %}}
-{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" number=2 %}}
+{{% tablestep number=2 %}}
 **Create a `stable` fragment tag**.
 On your fragment's page, click on **Versions** in the menu bar and add a tag called `stable`.
 {{% /tablestep %}}
@@ -73,7 +73,7 @@ For example:
 ```
 
 {{% /tablestep %}}
-{{% tablestep link="/manage/fleet/reuse-configuration/#create-fragment-tags" number=5 %}}
+{{% tablestep number=5 %}}
 **Create a development tag**.
 On your fragment's page, click on **Versions** in the menu bar and add a tag called `development`.
 Select the most recent version that you just created for the tag.
