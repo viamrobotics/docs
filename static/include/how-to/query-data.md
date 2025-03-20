@@ -42,14 +42,8 @@ This command configures a database user for your organization for use with data 
 If you have run this command before, this command instead **updates** the password to the new value you set.
 
 {{% /tablestep %}}
-<<<<<<< HEAD
 {{% tablestep number=4 %}}
 **Determine the connection URI**
-=======
-{{% tablestep %}}
-**4. Determine the connection URI**
-
-> > > > > > > 3a23635c7 (DOCS-3732: Fix CSS bugs)
 
 Determine the connection URI (also known as a connection string) for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
