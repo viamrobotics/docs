@@ -1,7 +1,7 @@
 ---
 title: "Base Component"
 linkTitle: "Base"
-weight: 10
+weight: 14
 type: "docs"
 no_list: true
 description: "The base component allows you to move a mobile robot without needing to send commands to individual components like motors."

@@ -2,7 +2,7 @@
 title: "Button Component"
 linkTitle: "Button"
 childTitleEndOverwrite: "Button Component"
-weight: 10
+weight: 20
 type: "docs"
 description: "A physical button on a machine."
 tags: ["button", "components"]
