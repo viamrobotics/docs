@@ -357,7 +357,7 @@ LOGGER.critical("critical info")
 </li></ol>
 
 <ol><li style="counter-reset: item 5"><strong>Edit the generated <file>requirements.txt</file> file</strong> to include any packages that must be installed for the module to run.
-   Depending on your use case, you may not need to add anything here beyond `viam-sdk` which is auto-populated.
+   Depending on your use case, you may not need to add anything here beyond <code>viam-sdk</code> which is auto-populated.
 
 </li></ol>
 
