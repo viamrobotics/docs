@@ -176,7 +176,7 @@ if __name__ == '__main__':
 If you are using the captive portal, this step is optional.
 If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
 
-Create a file called <FILE>viam-provisioning.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-agent-provisioning):
+Create a file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-agent-provisioning):
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -333,7 +333,7 @@ sudo ./preinstall.sh
 ```
 
 Follow the instructions.
-If you created a <FILE>viam-provisioning.json</FILE>, specify its location as an environment variable or when prompted.
+If you created a <FILE>viam-defaults.json</FILE>, specify its location as an environment variable or when prompted.
 
 You can set optional arguments by defining the following environment variables:
 
@@ -341,7 +341,7 @@ You can set optional arguments by defining the following environment variables:
 | Argument | Description |
 | -------- | ----------- |
 | `VIAM_JSON_PATH` | The path to the machine credentials <FILE>viam.json</FILE> file to be copied to the machine. The script will also prompt you for this file if not provided. |
-| `PROVISIONING_PATH` | The path to the <FILE>viam-provisioning.json</FILE> file. The script will also prompt you for this file if not provided. |
+| `PROVISIONING_PATH` | The path to the <FILE>viam-defaults.json</FILE> file. The script will also prompt you for this file if not provided. |
 | `VIAM_AGENT_PATH` | The path to a beta or local build of `viam-agent`. Used for testing. |
 
 <br>
@@ -376,7 +376,7 @@ Found Raspberry Pi bootfs mounted at /Volumes/bootfs
 A Raspberry Pi boot partition has been found mounted at /Volumes/bootfs
 This script will modify firstrun.sh on that partition to install Viam agent.
 Continue pre-install? (y/n): y
-Path to custom viam-provisioning.json (leave empty to skip):
+Path to custom viam-defaults.json (leave empty to skip):
 Creating tarball for install.
 a opt
 a opt/viam
@@ -477,7 +477,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `viam-agent` creates a WiFi hotspot.
 
-   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-provisioning.json</file> on your machine.
+   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-defaults.json</file> on your machine.
 
 1. You then use your mobile device or computer and connect to the WiFi hotspot.
 
@@ -505,7 +505,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. When you, as the end user, power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
-   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-provisioning.json</file>.
+   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-defaults.json</file>.
    - If a machine already exists, a machine cloud credentials file, if provided, is at <file>/etc/viam.json</file>.
 
 1. You as the end user then use your mobile device or computer and connect to the WiFi hotspot.
