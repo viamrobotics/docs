@@ -51,7 +51,7 @@ Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on 
 {{% tablestep number=2 %}}
 **Run your query**
 
-This example query returns 5 readings from a component called `my-sensor`:
+This example query returns 5 readings from all machines in your current organization where the component is called `my-sensor`:
 
 {{< tabs >}}
 {{% tab name="SQL" %}}
@@ -73,65 +73,141 @@ WHERE component_name = 'my-sensor' LIMIT 5
 
 {{% /tab %}}
 {{< /tabs >}}
+
+{{% expand "Click to see an example that filters by component name and column names." %}}
+
+{{< tabs >}}
+{{% tab name="SQL" %}}
+
+```sh {class="command-line" data-prompt="$" data-output="3-80"}
+SELECT time_received, data, tags FROM readings
+WHERE component_name = 'PM_sensor' LIMIT 2
+[
+{
+  "time_received": "2024-07-30 00:04:02.144 +0000 UTC",
+  "data": {
+    "readings": {
+      "units": "μg/m³",
+      "pm_10": 7.6,
+      "pm_2.5": 5.7
+    }
+  },
+  "tags": [
+    "air-quality"
+  ]
+},
+{
+  "time_received": "2024-07-30 00:37:22.192 +0000 UTC",
+  "data": {
+    "readings": {
+      "pm_2.5": 9.3,
+      "units": "μg/m³",
+      "pm_10": 11.5
+    }
+  },
+  "tags": [
+    "air-quality"
+  ]
+}
+]
+```
+
+{{% /tab %}}
+{{% tab name="MQL" %}}
+
+```sh {class="command-line" data-prompt="$" data-output="16-80"}
+[
+  {
+    $match: {
+      component_name: "PM_sensor"
+    }
+  },{
+    $limit: 2
+  }, {
+    $project: {
+        time_received: 1,
+        data: 1,
+        tags: 1
+    }
+  }
+]
+[
+{
+  "time_received": "2024-07-30 00:04:02.144 +0000 UTC",
+  "data": {
+    "readings": {
+      "units": "μg/m³",
+      "pm_10": 7.6,
+      "pm_2.5": 5.7
+    }
+  },
+  "tags": [
+    "air-quality"
+  ]
+},
+{
+  "time_received": "2024-07-30 00:37:22.192 +0000 UTC",
+  "data": {
+    "readings": {
+      "pm_2.5": 9.3,
+      "units": "μg/m³",
+      "pm_10": 11.5
+    }
+  },
+  "tags": [
+    "air-quality"
+  ]
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /expand %}}
+{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+
+{{< tabs >}}
+{{% tab name="SQL" %}}
+
+```sh {class="command-line" data-prompt="$" data-output="3-80"}
+SELECT count(*) FROM readings
+WHERE component_name = 'PM_sensor' AND location_id = 'ab1cd23e4f'
+[
+{
+  "_1": 111550
+}
+]
+```
+
+{{% /tab %}}
+{{% tab name="MQL" %}}
+
+```sh {class="command-line" data-prompt="$" data-output="11"}
+[
+  {
+    $match: {
+      location_id: "ab1cd23e4f",
+      component_name: "PM_sensor"
+    }
+  },{
+    $count: "count"
+  }
+]
+{ count: 111550 }
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /expand %}}
+
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
 **Review results**
 
 Click **Run query** when ready to perform your query and get matching results.
 Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
-
-{{% expand "See examples" %}}
-
-- The following shows a SQL query that filters by component name and specific column names, and its returned results:
-
-  ```sh {class="command-line" data-prompt="$" data-output="3-80"}
-  SELECT time_received, data, tags FROM readings
-  WHERE component_name = 'PM_sensor' LIMIT 2
-  [
-  {
-    "time_received": "2024-07-30 00:04:02.144 +0000 UTC",
-    "data": {
-      "readings": {
-        "units": "μg/m³",
-        "pm_10": 7.6,
-        "pm_2.5": 5.7
-      }
-    },
-    "tags": [
-      "air-quality"
-    ]
-  },
-  {
-    "time_received": "2024-07-30 00:37:22.192 +0000 UTC",
-    "data": {
-      "readings": {
-        "pm_2.5": 9.3,
-        "units": "μg/m³",
-        "pm_10": 11.5
-      }
-    },
-    "tags": [
-      "air-quality"
-    ]
-  }
-  ]
-  ```
-
-- The following shows a SQL query that returns a count of records matching the search criteria:
-
-  ```sh {class="command-line" data-prompt="$" data-output="3-80"}
-  SELECT count(*) FROM readings
-  WHERE component_name = 'PM_sensor'
-  [
-  {
-    "_1": 111550
-  }
-  ]
-  ```
-
-For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
-
-{{% /expand%}}
 
 {{% /tablestep %}}
 {{< /table >}}
