@@ -408,7 +408,8 @@ LOGGER.critical("critical info")
 
 1. **Edit the constructor** to do the following:
 
-   - Assign default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+   - If you didn't create a `Reconfigure` function, use the constructor to assign default values as necessary to any optional attributes if the user hasn't configured them.
+   - If you created a `Reconfigure` function, make your constructor call `Reconfigure`.<br><br>
 
 <ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
 
