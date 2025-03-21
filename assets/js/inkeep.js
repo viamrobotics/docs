@@ -86,6 +86,7 @@ const inkeepWidgetAI = Inkeep().embed(config);
 
 // Add event listener to open the Inkeep modal when the button is clicked
 inkeepButtonTop.addEventListener("click", handleOpen);
+inkeepButtonBottom.addEventListener("click", handleOpen);
 
 // Create an HTML element that the Inkeep widget will be inserted into.
 const nav = document.querySelector("#navsearch");
