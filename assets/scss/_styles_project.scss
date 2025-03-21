@@ -3269,4 +3269,13 @@ div.tablestep > div.tablestep-content {
 .td-content > ul li, .td-content > ol li {
   margin-bottom: 0rem;
 }
+
+.td-content > ul {
+  padding-left: 1rem;
+}
+
+.td-content > .code-toolbar, .td-content * .code-toolbar {
+  margin-top: 1rem;
+}
+
 // Numbered list styling END
