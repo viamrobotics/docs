@@ -422,7 +422,7 @@ This example from [Hello World module](/operate/get-started/other-hardware/hello
 It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}
-package helloworld
+package hello_world
 
 import (
   "context"
@@ -445,7 +445,7 @@ var (
 func init() {
   resource.RegisterComponent(camera.API, HelloCamera,
     resource.Registration[camera.Camera, *Config]{
-      Constructor: NewHelloWorldHelloCamera,
+      Constructor: newHelloWorldHelloCamera,
     },
   )
 }
@@ -483,7 +483,7 @@ type helloWorldHelloCamera struct {
   cancelFunc func()
 }
 
-func NewHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (camera.Camera, error) {
+func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (camera.Camera, error) {
   conf, err := resource.NativeConfig[*Config](rawConf)
   if err != nil {
     return nil, err
@@ -545,7 +545,6 @@ func (s *helloWorldHelloCamera) DoCommand(ctx context.Context, cmd map[string]in
 }
 
 func (s *helloWorldHelloCamera) Close(context.Context) error {
-  s.logger.Info("closing helloWorldHelloCamera")
   s.cancelFunc()
   return nil
 }
