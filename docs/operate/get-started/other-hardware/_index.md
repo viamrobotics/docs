@@ -421,7 +421,7 @@ This example from [Hello World module](/operate/get-started/other-hardware/hello
 It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}
-package hello_world
+package helloworld
 
 import (
   "context"
@@ -444,14 +444,13 @@ var (
 func init() {
   resource.RegisterComponent(camera.API, HelloCamera,
     resource.Registration[camera.Camera, *Config]{
-      Constructor: newHelloWorldHelloCamera,
+      Constructor: NewHelloWorldHelloCamera,
     },
   )
 }
 
 type Config struct {
-  resource.AlwaysRebuild // Resource rebuilds instead of reconfiguring
-  ImagePath string `json:"image_path"`
+  ImagePath    string `json:"image_path"`
   ExampleValue string `json:"example_value"`
 }
 
@@ -470,6 +469,8 @@ func (cfg *Config) Validate(path string) ([]string, error) {
 }
 
 type helloWorldHelloCamera struct {
+  resource.AlwaysRebuild // Resource rebuilds instead of reconfiguring
+
   name resource.Name
 
   logger logging.Logger
@@ -481,7 +482,7 @@ type helloWorldHelloCamera struct {
   cancelFunc func()
 }
 
-func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (camera.Camera, error) {
+func NewHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (camera.Camera, error) {
   conf, err := resource.NativeConfig[*Config](rawConf)
   if err != nil {
     return nil, err
@@ -495,21 +496,19 @@ func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, r
     cfg:        conf,
     cancelCtx:  cancelCtx,
     cancelFunc: cancelFunc,
-  }
+}
 
-  if cfg.ExampleValue == "" {
+  s.exampleValue = s.cfg.ExampleValue
+  if s.exampleValue == "" {
     s.exampleValue = "default value"
+    s.logger.Debug("setting default exampleValue: %s", s.exampleValue)
   }
 
-  return s, nil
+ return s, nil
 }
 
 func (s *helloWorldHelloCamera) Name() resource.Name {
   return s.name
-}
-
-func (s *helloWorldHelloCamera) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
-  return errUnimplemented
 }
 
 func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
@@ -519,8 +518,8 @@ func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extr
     return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
   }
   defer imgFile.Close()
-  imgByte, err := ioutil.ReadFile(imagePath)
-  s.logger.Info("The example value is: " + s.exampleValue)
+  imgByte, err := os.ReadFile(imagePath)
+  s.logger.Info("The s.exampleValue is: " + s.exampleValue)
   return imgByte, camera.ImageMetadata{}, nil
 }
 
@@ -545,6 +544,7 @@ func (s *helloWorldHelloCamera) DoCommand(ctx context.Context, cmd map[string]in
 }
 
 func (s *helloWorldHelloCamera) Close(context.Context) error {
+  s.logger.Info("closing helloWorldHelloCamera")
   s.cancelFunc()
   return nil
 }
