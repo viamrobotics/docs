@@ -1,5 +1,5 @@
 ---
-title: "API keys"
+title: "Viam API keys"
 linkTitle: "API keys"
 weight: 50
 layout: "docs"
