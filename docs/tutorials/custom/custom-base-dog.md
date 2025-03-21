@@ -258,7 +258,8 @@ The CLI module generator generates the files for your modular resource.
    - Enable cloud build: `No`
    - Register module: `Yes`
 
-   It's a good idea to use the same names, aside from the namespace. That way your code will match the example code.
+   It's a good idea to use the same names, aside from the namespace.
+   That way your code will match the example code.
 
    You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
 
