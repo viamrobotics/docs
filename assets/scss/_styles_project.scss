@@ -153,6 +153,7 @@ h7, .h7 {
 
 .td-sidebar {
   /* NAV Panel changes */
+  background-color: #FFFFFF;
 }
 
 // TABLE OF CONTENT CHANGES
@@ -2021,6 +2022,10 @@ a.ais-Pagination-link:hover {
   width: 100%;
 }
 
+#chatButton {
+  display: none;
+}
+
 @media (max-width: 992px) {
 
   #navSearchBar {
@@ -2032,6 +2037,16 @@ a.ais-Pagination-link:hover {
     margin-right: 0.5rem;
     margin-left: 0rem;
     margin-top: 0.5rem;
+  }
+
+  #chatButton {
+    display: unset;
+    background-color: #000;
+    color: white;
+  }
+
+  #scrollButton {
+    margin-right: 136px;
   }
 
 }
