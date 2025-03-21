@@ -579,10 +579,11 @@ The following sample configuration captures data from a sensor at 0.5 Hz.
 
 {{% /expand%}}
 
-### Capture directly to local MongoDB
+### Capture directly to your own MongoDB cluster
 
 You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
 This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
+The MongoDB instance can be a locally running instance or a cluster in the cloud.
 
 Configure using the `mongo_capture_config` attributes in your data manager service.
 
