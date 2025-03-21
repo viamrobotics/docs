@@ -497,7 +497,9 @@ func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, r
     cancelFunc: cancelFunc,
   }
 
-  s.exampleValue = "default value"
+  if cfg.ExampleValue == "" {
+    s.exampleValue = "default value"
+  }
 
   return s, nil
 }
