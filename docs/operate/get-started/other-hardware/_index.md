@@ -180,7 +180,7 @@ Edit the generated files to add your logic:
 1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
    This function should do the following:
 
-   - Get any values from the `config` object that the user has configured.
+   - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
    - Assign default values as necessary to any optional attributes if the user hasn't configured them.
    - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
 
