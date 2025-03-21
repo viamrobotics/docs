@@ -1921,6 +1921,15 @@ ul.sectionlist > li:hover {
   padding: 0;
 }
 
+.pagination {
+  align-self: center;
+}
+
+.ais-Pagination-list {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 // Pagination CSS start
 
 #pagination, #paginationML, #paginationScripts {
@@ -2122,6 +2131,7 @@ a.ais-Pagination-link:hover {
   width: 100%;
   display: flex;
   border-top: 1px solid #d7d7d9;
+  margin-bottom: 0;
 }
 
 .modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
@@ -3204,6 +3214,7 @@ li.active-path.tutorial-heading > a {
   display: table;
   list-style-position: outside;
   margin-bottom: 0rem;
+  width: 100%;
 }
 
 .td-content > ol > li, .td-content > .table * ol > li {
@@ -3251,8 +3262,7 @@ div.tablestep > div.tablestep-content {
   width: 100%;
 }
 
-
-.td-content > ol > li:before, .td-content > .table * ol > li:before {
+.td-content > ol > li:before, .td-content > .table * ol > li:not(.ais-Hits-item):before {
   margin-right: 10px;
   content: counter(item);
   background: #F1F1F4;
