@@ -176,20 +176,22 @@ if __name__ == '__main__':
 If you are using the captive portal, this step is optional.
 If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
 
-Create a file called <FILE>viam-provisioning.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-agent-provisioning):
+Create a file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-agent-provisioning):
 
 {{< tabs >}}
 {{% tab name="Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "manufacturer": "<NAME>", # your company name
-  "model": "<NAME>", # the machine's model
-  "fragment_id": "<ID>", # the fragment id, required for mobile app
-  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
-  "disable_captive_portal_redirect": false, # set to true if using a mobile app
-  "hotspot_password": "<PASSWORD>", # password for the hotspot
-  "networks" : []
+  "network_configuration": {
+    "manufacturer": "<NAME>", # your company name
+    "model": "<NAME>", # the machine's model
+    "fragment_id": "<ID>", # the fragment id, required for mobile app
+    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+    "disable_captive_portal_redirect": false, # set to true if using a mobile app
+    "hotspot_password": "<PASSWORD>", # password for the hotspot
+    "networks" : []
+  }
 }
 ```
 
@@ -198,16 +200,18 @@ Create a file called <FILE>viam-provisioning.json</FILE> with the following form
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "manufacturer": "Skywalker",
-  "model": "C-3PO",
-  "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-  "hotspot_prefix": "skywalker-setup",
-  "disable_captive_portal_redirect": false,
-  "hotspot_password": "skywalker123",
-  "turn_on_hotspot_if_wifi_has_no_internet": false,
-  "offline_before_starting_hotspot_minutes": "3m30s",
-  "user_idle_minutes": "2m30s",
-  "retry_connection_timeout_minutes": "15m"
+  "network_configuration": {
+    "manufacturer": "Skywalker",
+    "model": "C-3PO",
+    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_prefix": "skywalker-setup",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "skywalker123",
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m"
+  }
 }
 ```
 
@@ -268,31 +272,33 @@ The following configuration defines the connection information and credentials f
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "manufacturer": "Skywalker",
-  "model": "C-3PO",
-  "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-  "hotspot_prefix": "skywalker-setup",
-  "disable_captive_portal_redirect": false,
-  "hotspot_password": "skywalker123",
-  "turn_on_hotspot_if_wifi_has_no_internet": false,
-  "offline_before_starting_hotspot_minutes": "3m30s",
-  "user_idle_minutes": "2m30s",
-  "retry_connection_timeout_minutes": "15m",
-  "turn_on_hotspot_if_wifi_has_no_internet": true,
-  "networks": [
-    {
-      "type": "wifi",
-      "ssid": "otherNetworkOne",
-      "psk": "myFirstPassword",
-      "priority": 30
-    },
-    {
-      "type": "wifi",
-      "ssid": "otherNetworkTwo",
-      "psk": "mySecondPassword",
-      "priority": 10
-    }
-  ]
+  "network_configuration": {
+    "manufacturer": "Skywalker",
+    "model": "C-3PO",
+    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_prefix": "skywalker-setup",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "skywalker123",
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m",
+    "turn_on_hotspot_if_wifi_has_no_internet": true,
+    "networks": [
+      {
+        "type": "wifi",
+        "ssid": "otherNetworkOne",
+        "psk": "myFirstPassword",
+        "priority": 30
+      },
+      {
+        "type": "wifi",
+        "ssid": "otherNetworkTwo",
+        "psk": "mySecondPassword",
+        "priority": 10
+      }
+    ]
+  }
 }
 ```
 
@@ -333,7 +339,7 @@ sudo ./preinstall.sh
 ```
 
 Follow the instructions.
-If you created a <FILE>viam-provisioning.json</FILE>, specify its location as an environment variable or when prompted.
+If you created a <FILE>viam-defaults.json</FILE>, specify its location as an environment variable or when prompted.
 
 You can set optional arguments by defining the following environment variables:
 
@@ -341,7 +347,7 @@ You can set optional arguments by defining the following environment variables:
 | Argument | Description |
 | -------- | ----------- |
 | `VIAM_JSON_PATH` | The path to the machine credentials <FILE>viam.json</FILE> file to be copied to the machine. The script will also prompt you for this file if not provided. |
-| `PROVISIONING_PATH` | The path to the <FILE>viam-provisioning.json</FILE> file. The script will also prompt you for this file if not provided. |
+| `PROVISIONING_PATH` | The path to the <FILE>viam-defaults.json</FILE> file. The script will also prompt you for this file if not provided. |
 | `VIAM_AGENT_PATH` | The path to a beta or local build of `viam-agent`. Used for testing. |
 
 <br>
@@ -376,7 +382,7 @@ Found Raspberry Pi bootfs mounted at /Volumes/bootfs
 A Raspberry Pi boot partition has been found mounted at /Volumes/bootfs
 This script will modify firstrun.sh on that partition to install Viam agent.
 Continue pre-install? (y/n): y
-Path to custom viam-provisioning.json (leave empty to skip):
+Path to custom viam-defaults.json (leave empty to skip):
 Creating tarball for install.
 a opt
 a opt/viam
@@ -477,7 +483,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `viam-agent` creates a WiFi hotspot.
 
-   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-provisioning.json</file> on your machine.
+   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-defaults.json</file> on your machine.
 
 1. You then use your mobile device or computer and connect to the WiFi hotspot.
 
@@ -505,7 +511,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
 1. When you, as the end user, power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
-   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-provisioning.json</file>.
+   - The [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) is at <file>/etc/viam-defaults.json</file>.
    - If a machine already exists, a machine cloud credentials file, if provided, is at <file>/etc/viam.json</file>.
 
 1. You as the end user then use your mobile device or computer and connect to the WiFi hotspot.
