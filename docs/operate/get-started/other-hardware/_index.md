@@ -177,13 +177,12 @@ Edit the generated files to add your logic:
 
        </details><br>
 
-1. **Edit the `reconfigure` function** to do the following:
+1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
+   This function should do the following:
 
    - Get any values from the `config` object that the user has configured.
    - Assign any default values as necessary to any optional attributes if the user hasn't configured them.
    - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
-
-   When the user changes the configuration, the `reconfigure` function is called.
 
 <ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
 
@@ -396,11 +395,6 @@ LOGGER.critical("critical info")
 
        </details><br>
 
-   If you do not implement a `Reconfigure` function (see next step), your `Validate` function should also do the following:
-
-   - Get any values from the `config` object that the user has configured.
-   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
-
 1. **(Optional) Create and edit a `Reconfigure` function**:
 
    In most cases, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
@@ -409,7 +403,11 @@ LOGGER.critical("critical info")
    If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you should implement this function so that `viam-server` updates the configuration without rebuilding the resource from scratch.
    In this case, your `Reconfigure` function should do the following:
 
-   - Get any values from the `config` object that the user has configured.
+   - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
+   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+
+1. **Edit the constructor** to do the following:
+
    - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
 <ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
@@ -420,6 +418,7 @@ You can find details about the return types at [go.viam.com/rdk/components](http
 
 {{< expand "Example code for a camera module" >}}
 This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
+It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}
 package hello_world
@@ -440,7 +439,6 @@ import (
 var (
   HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
   errUnimplemented = errors.New("unimplemented")
-  imagePath        = ""
 )
 
 func init() {
@@ -454,6 +452,7 @@ func init() {
 type Config struct {
   resource.AlwaysRebuild // Resource rebuilds instead of reconfiguring
   ImagePath string `json:"image_path"`
+  ExampleValue string `json:"example_value"`
 }
 
 func (cfg *Config) Validate(path string) ([]string, error) {
@@ -464,7 +463,9 @@ func (cfg *Config) Validate(path string) ([]string, error) {
   if reflect.TypeOf(cfg.ImagePath).Kind() != reflect.String {
     return nil, errors.New("image_path must be a string.")
   }
-  imagePath = cfg.ImagePath
+  if cfg.ExampleValue != "" && reflect.TypeOf(cfg.ExampleValue).Kind() != reflect.String {
+    return nil, errors.New("example_value must be a string.")
+  }
   return deps, nil
 }
 
@@ -473,6 +474,8 @@ type helloWorldHelloCamera struct {
 
   logger logging.Logger
   cfg    *Config
+
+  exampleValue string
 
   cancelCtx  context.Context
   cancelFunc func()
@@ -493,6 +496,9 @@ func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, r
     cancelCtx:  cancelCtx,
     cancelFunc: cancelFunc,
   }
+
+  s.exampleValue = "default value"
+
   return s, nil
 }
 
@@ -505,12 +511,14 @@ func (s *helloWorldHelloCamera) Reconfigure(ctx context.Context, deps resource.D
 }
 
 func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
+  imagePath := s.cfg.ImagePath
   imgFile, err := os.Open(imagePath)
   if err != nil {
     return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
   }
   defer imgFile.Close()
   imgByte, err := ioutil.ReadFile(imagePath)
+  s.logger.Info("The example value is: " + s.exampleValue)
   return imgByte, camera.ImageMetadata{}, nil
 }
 
