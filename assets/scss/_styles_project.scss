@@ -3283,6 +3283,7 @@ div.tablestep > div.tablestep-number {
 
 div.tablestep > div.tablestep-content {
   width: 100%;
+  overflow: auto;
 }
 
 .td-content > ol > li:before, .td-content > .table * ol > li:not(.ais-Hits-item):before {
