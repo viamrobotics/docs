@@ -179,6 +179,17 @@ You can restart `viam-server` from the machine's part status dropdown to the rig
 
 For more information on managing `viam-agent` see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
+### Update or downgrade `viam-server` with `viam-agent`
+
+{{< alert title="Tip" color="tip" >}}
+The current version of `viam-server` is displayed in the machine's part status dropdown to the right of your machine’s name on its page in the Viam app.
+{{< /alert >}}
+
+1. Navigate to your machine's **CONFIGURE** tab.
+2. Click on **machine settings**.
+3. Change the specified `viam-server` version.
+4. Save your configuration.
+
 ## `advanced_settings`
 
 <!-- prettier-ignore -->

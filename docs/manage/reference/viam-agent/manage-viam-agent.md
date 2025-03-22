@@ -24,13 +24,13 @@ aliases:
 
 - To stop `viam-agent`:
 
-  {{< alert title="Alert" color="note" >}}
-  When you stop `viam-agent`, the agent will stop `viam-server` as well.
-  {{< /alert >}}
-
   ```sh {class="command-line" data-prompt="$"}
   sudo systemctl stop viam-agent
   ```
+
+  {{< alert title="Alert" color="note" >}}
+  When you stop `viam-agent`, the agent will stop `viam-server` as well.
+  {{< /alert >}}
 
 - To restart `viam-agent`:
 

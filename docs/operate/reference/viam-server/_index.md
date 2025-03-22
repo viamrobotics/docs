@@ -61,11 +61,11 @@ If there are configured dependencies, resources are reconfigured in groups.
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
-#### Maintenance window
+### Maintenance window
 
 There are a few updates that may make your machine temporarily unavailable:
 
-- `viam-agent` updating `viam-server`
+- [`viam-agent` updating `viam-server`](/manage/reference/viam-agent/#update-or-downgrade-viam-server-with-viam-agent)
 - configuration updates
 
 To avoid performing these updates until your machine is ready for maintenance, you can define a maintenance window.
