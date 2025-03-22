@@ -61,6 +61,13 @@ If there are configured dependencies, resources are reconfigured in groups.
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
+{{% hiddencontent %}}
+If you want to force a reconfiguration of a resource, you can click the **Disable** button in the resource menu, save, and then re-enable the resource.
+This will force two reconfigurations.
+
+Alternatively, if you are having issues with a module, try the **Restart module** button in the module menu.
+{{% /hiddencontent %}}
+
 #### Maintenance window
 
 There are a few updates that may make your machine temporarily unavailable:
