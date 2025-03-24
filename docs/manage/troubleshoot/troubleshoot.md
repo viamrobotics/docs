@@ -75,17 +75,18 @@ To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#
 
 ## Remote shell on the machine
 
-To remotely access your machine from your terminal, add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine.
+To remotely access your machine from your terminal:
 
-Once you have added the fragment, you can use the [Viam CLI](/dev/tools/cli/) to open a shell on the machine.
+1. Add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine.
+1. Once you have added the fragment, you can use the [Viam CLI](/dev/tools/cli/) to open a shell on the machine.
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
-```
+   ```sh {class="command-line" data-prompt="$" data-output="2-10"}
+   viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
+   ```
 
-You can [access the local log file](/operate/reference/viam-server/manage-viam-server/#view-viam-server-logs) on your machine if needed.
+1. You can [access the local log file](/operate/reference/viam-server/manage-viam-server/#view-viam-server-logs) on your machine if needed.
 
-If you need to copy files from your machine, use the [`viam machine part cp`](/dev/tools/cli/#machines-alias-robots) command.
+1. If you need to copy files from your machine, use the [`viam machine part cp`](/dev/tools/cli/#machines-alias-robots) command.
 
 ## Restart your machine
 
