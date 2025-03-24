@@ -447,6 +447,14 @@ sudo ./preinstall.sh /path/to/rootfs
 
 ## Troubleshooting
 
+### Can I re-provision a machine that was already provisioned?
+
+You cannot re-run the `preinstall.sh` script.
+Once a device is set up for provisioning and has a <FILE>viam-provisioning.json</FILE> file on it, it will attempt to provision the machine when it comes online.
+If you have not yet connected the device to a network and setup has not completed, you can still make changes to the <FILE>viam-provisioning.json</FILE> file on the device.
+
+Once a machine has completed the provisioning flow, you cannot re-run the final setup steps without first manually removing the machine configuration file (<FILE>/etc/viam.json</FILE>).
+
 ### Device not detecting networks
 
 Some systems can't scan for WiFi networks while in hotspot mode, meaning they won't automatically detect networks coming online or into range until the `retry_connection_timeout_minutes` expires.
