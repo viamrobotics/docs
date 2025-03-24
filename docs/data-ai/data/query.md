@@ -174,9 +174,9 @@ WHERE component_name = 'PM_sensor' LIMIT 2
 SELECT count(*) FROM readings
 WHERE component_name = 'PM_sensor' AND location_id = 'ab1cd23e4f'
 [
-{
-  "_1": 111550
-}
+  {
+    "_1": 111550
+  }
 ]
 ```
 
