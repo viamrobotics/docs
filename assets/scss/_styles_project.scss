@@ -3286,6 +3286,21 @@ div.tablestep > div.tablestep-content {
   overflow: auto;
 }
 
+div.tablestep > table, div.tablestep table {
+  border-right: 1px solid #E4E4E6;
+  border-left: 1px solid #E4E4E6;
+  border-top: 1px solid #E4E4E6;
+  margin-bottom: 1rem;
+}
+
+div.tablestep > table th, div.tablestep table th {
+  padding: 0.75rem;
+}
+
+div.tablestep > table td, div.tablestep table td {
+  padding: 0.75rem;
+}
+
 .td-content > ol > li:before, .td-content > .table * ol > li:not(.ais-Hits-item):before {
   margin-right: 10px;
   content: counter(item);
