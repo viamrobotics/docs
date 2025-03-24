@@ -133,7 +133,12 @@ window.markmap = {
 {{ end }}
 
 <!-- INKEEP start -->
-<script type="module" src="{{ "js/embed.min.js" | relURL }}" defer></script>
+<script
+  type="module"
+  src="https://unpkg.com/@inkeep/cxkit-js@^0.5.36/dist/embed.js"
+  defer
+></script>
+<!-- <script type="module" src="{{ "js/embed.min.js" | relURL }}" defer></script> -->
 {{ $jsInkeep := resources.Get "js/inkeep.js" }}
 {{ $jsInkeep := $jsInkeep | minify }}
 <script type="module" src="{{ $jsInkeep.RelPermalink }}" defer></script>

@@ -82,7 +82,7 @@ const config = {
 // Start search elments
 
 // Embed the widget using the `Inkeep.embed()` function.
-const inkeepWidgetAI = Inkeep().embed(config);
+// const inkeepWidgetAI = Inkeep().embed(config);
 
 // Add event listener to open the Inkeep modal when the button is clicked
 inkeepButtonTop.addEventListener("click", handleOpen);
@@ -108,49 +108,97 @@ targetElement,
 stylesheetUrls,
 isShortcutKeyEnabled,
 }) => {
-// Embed the widget using the `Inkeep.embed()` function.
-const inkeepWidgetSearch = Inkeep().embed({
-    componentType: "SearchBar",
-    targetElement,
-    properties: {
-      baseSettings: {
-          apiKey: INKEEP_API_KEY,
-          integrationId: INKEEP_INTEGRATION_ID,
-          organizationId: INKEEP_ORGANIZATION_ID,
-          primaryBrandColor: "#000000", // your brand color, widget color scheme is derived from this
-          organizationDisplayName: "Viam AI Bot",
-          // ...optional settings
-          theme: {
-          stylesheetUrls,
-          // ...optional settings
-          },
+
+  const config = {
+    baseSettings: {
+      apiKey: INKEEP_API_KEY,
+      integrationId: INKEEP_INTEGRATION_ID,
+      organizationId: INKEEP_ORGANIZATION_ID,
+      primaryBrandColor: "#000000", // your brand color, widget color scheme is derived from this
+      organizationDisplayName: "Viam AI Bot",
+      // ...optional settings
+      theme: {
+        stylesheetUrls,
+        // ...optional settings
       },
-      modalSettings: {
-          // optional settings
-          isShortcutKeyEnabled,
-          isModeSwitchingEnabled: false
-      },
-      searchSettings: {
-        shouldShowAskAICard: false
-          // optional settings
-      },
-      tabSettings: {
-        isAllTabEnabled: true,
-        rootBreadcrumbsToUseAsTabs: ["Docs", "Blog", "GitHub", "Viam.com"]
+      transformSource: (source, type, opts) => {
+        let tabs = [ "Docs" ];
+        let openInNewTab = true;
+        if (source.type === "github_issue") {
+          tabs = [ "GitHub" ];
+        } else {
+          if (source.url.includes("https://www.viam.com")) {
+            if (source.url.includes("https://www.viam.com/post")) {
+              tabs = [ "Blog" ];
+            } else {
+              tabs = [ "viam.com" ];
+            }
+          } else if (source.url.includes("https://codelabs.viam.com")) {
+            tabs = [ "Codelab" ];
+          } else if (source.url.includes("https://github.com/")) {
+            tabs = [ "GitHub" ];
+          } else if (source.url.includes("https://python.viam.com") | source.url.includes("https://pkg.go.dev/") | source.url.includes("https://flutter.viam.dev/") | source.url.includes("https://cpp.viam.dev/") | source.url.includes("https://ts.viam.dev/") ) {
+            tabs = [ "SDK Docs" ];
+          } else if (source.url.includes("https://docs.viam.com/tutorials/")) {
+            tabs = [ "Tutorials" ];
+          } else {
+            tabs = [ "Docs" ];
+            openInNewTab = false;
+          }
+        }
+
+        // Transform based on source type
+        if (type === "searchResultItem") {
+          return {
+            ...source,
+            title: `${source.title}`,
+            description: source.description?.slice(0, 150) + "...",
+            breadcrumbs: [...(source.breadcrumbs || [])],
+            tabs: tabs,
+            //  [
+              // "API",
+              // [
+              //   "Docs", { breadcrumbs: ["Forums", "Reference"] }
+              // ]
+            // ],
+            shouldOpenInNewTab: openInNewTab,
+            appendToUrl: { source: type },
+          };
+        }
+
+        return source;
       },
     },
-});
+    canToggleView: false,
+    searchSettings: {
+      placeholder: "Search...",
+      tabs: [
+        "All",
+        ["Docs", { isAlwaysVisible: true }],
+        "SDK Docs",
+        "GitHub",
+        "Tutorials",
+        "Codelab",
+        "Blog",
+        "viam.com",
+      ],
+    },
+  };
+
+  // Initialize the widget
+  const widget = Inkeep.SearchBar(targetElement, config);
+
 };
 
 sidebar &&
 addInkeepWidget({
-  targetElement: document.getElementById("sideSearchBar"),
+  targetElement: "#sideSearchBar",
   stylesheetUrls: ['https://docs.viam.com/css/inkeep.css'],
   isShortcutKeyEnabled: false,
 });
 
 addInkeepWidget({
-  targetElement: document.getElementById("navSearchBar"),
+  targetElement: "#navSearchBar",
   stylesheetUrls: ['https://docs.viam.com/css/inkeep.css'],
   isShortcutKeyEnabled: true,
 });
