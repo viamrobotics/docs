@@ -236,8 +236,9 @@ If you are capturing camera data, it can happen that the camera captures and syn
 {{% /expand%}}
 
 {{% expand "CSI Camera not working on a Raspberry Pi" %}}
-If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
-If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
+
+If you are using a CSI camera v1.3 or v2.0, or v3.0, use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
+
 For Raspberry Pi AI cameras like the IMX500 AI camera, you can use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
 Note that this module is not officially supported by Viam.
 For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/ai/run-inference/).
@@ -246,22 +247,6 @@ For more information about the vision service, see [run inference](https://docs.
 {{% expand "High CPU usage" %}}
 Each camera stream you add uses CPU on the device it is connected to and there is therefore a practical limit to the numbeof camera streams your device can simultaneously support.
 You can limit the CPU usage by reducing the image resolution.
-{{% /expand%}}
-
-{{% expand "Timeout errors on a Raspberry Pi" %}}
-
-If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box).
-
-To enable the webcam port on a Raspberry Pi, run the following command:
-
-```sh {class="command-line" data-prompt="$"}
-sudo raspi-config
-```
-
-Then, select: **Interface Options -> Camera -> Enable Camera**.
-
-Restart the Pi to complete the configuration.
-
 {{% /expand%}}
 
 ## Next steps
