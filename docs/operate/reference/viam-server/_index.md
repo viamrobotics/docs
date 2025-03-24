@@ -63,7 +63,6 @@ You can also revert to an earlier configuration from the History tab.
 
 {{% hiddencontent %}}
 If you want to force a reconfiguration of a resource, you can click the **Disable** button in the resource menu, save, and then re-enable the resource.
-This will force two reconfigurations.
 
 Alternatively, if you are having issues with a module, try the **Restart module** button in the module menu.
 {{% /hiddencontent %}}
