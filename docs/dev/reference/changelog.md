@@ -41,6 +41,81 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog color="changed" title="Viam provisioning filename" date="2025-03-24" %}}
+
+When provisioning devices, the configuration file for provisioning is now called <FILE>viam-defaults.json</FILE> and uses different syntax and field names. The old <FILE>viam-provisioning.json</FILE> is still required for older versions of `viam-agent`.
+
+If you are using the old <FILE>viam-provisioning.json</FILE> you must also use the old syntax and field names.
+
+{{% expand "Click to see old syntax and field names." %}}
+
+{{< tabs >}}
+{{% tab name="Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "manufacturer": "<NAME>", # your company name
+  "model": "<NAME>", # the machine's model
+  "fragment_id": "<ID>", # the fragment id, required for mobile app
+  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+  "disable_dns_redirect": true, # disable if using a mobile app
+  "hotspot_password": "<PASSWORD>", # password for the hotspot
+  "networks" : []
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "manufacturer": "Skywalker",
+  "model": "C-3PO",
+  "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+  "hotspot_prefix": "skywalker-setup",
+  "disable_dns_redirect": true,
+  "hotspot_password": "skywalker123",
+  "roaming_mode": false,
+  "offline_timeout": "3m30s",
+  "user_timeout": "2m30s",
+  "fallback_timeout": "15m"
+}
+```
+
+This file configures some basic metadata, specifies a [fragment](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to use to configure the machine, and provides the WiFi hotspot network name and password to use on startup.
+It also configures timeouts to control how long `viam-agent` waits for a valid local WiFi network to come online before creating its hotspot network, and how long to keep the hotspot active before terminating it.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<!-- prettier-ignore -->
+| Name       | Type   | Required? | Description |
+| ---------- | ------ | --------- | ----------- |
+| `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
+| `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
+| `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
+| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
+| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
+| `disable_dns_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
+| `roaming_mode` | boolean | Optional | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and roaming mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
+| `offline_timeout` | boolean | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `"2m"` (2 minutes). |
+| `user_timeout` | boolean | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `"5m"` (5 minutes). |
+| `fallback_timeout` | boolean | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `"10m"` (10 minutes). |
+| `networks` | array | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config in the Viam app, if networks aren't needed until after initial provisioning. See [Networks](/manage/reference/viam-agent/#networks). Default: `[]`. |
+| `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager.  |
+| `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
+
+{{% /expand%}}
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
+
+The [hot data store](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store) allows you to access recent data faster.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
 
 The [hot data store](/manage/reference/processes/) allows you to access recent data faster.
