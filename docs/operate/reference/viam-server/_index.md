@@ -67,11 +67,11 @@ If you want to force a reconfiguration of a resource, you can click the **Disabl
 Alternatively, if you are having issues with a module, try the **Restart module** button in the module menu.
 {{% /hiddencontent %}}
 
-#### Maintenance window
+### Maintenance window
 
 There are a few updates that may make your machine temporarily unavailable:
 
-- `viam-agent` updating `viam-server`
+- [`viam-agent` updating `viam-server`](/manage/reference/viam-agent/#update-or-downgrade-viam-server-with-viam-agent)
 - configuration updates
 
 To avoid performing these updates until your machine is ready for maintenance, you can define a maintenance window.

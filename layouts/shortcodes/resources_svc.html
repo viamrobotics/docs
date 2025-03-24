@@ -1,16 +1,19 @@
 <p>For configuration information, click on the model name:
 </p>
-<div id="searchbox"></div>
-<div id="searchstats"></div></p>
-<div class="searchhitsbox mr-component" id="{{ .Get "api" }}">
-  <span>
-    <div class="modellistheader">
-      <div class="name">Model</div>
-      <div>Description</div>
-    </div>
-    <div id="hits" class="modellist"></div>
-  </span>
-  <div id="pagination"></div>
+{{ $uniqueId := printf "%s-%s" (.Get "api") (.Get "type") | urlize }}
+<div class="search-container" data-unique-id="{{$uniqueId}}">
+  <div id="searchbox-{{$uniqueId}}" class="searchbox"></div><br>
+  <div id="searchstats-{{$uniqueId}}" class="searchstats"></div></p>
+  <div class="searchhitsbox mr-component" id="{{ .Get "api" }}">
+    <span>
+      <div class="modellistheader">
+        <div class="name">Model</div>
+        <div>Description</div>
+      </div>
+      <div id="hits-{{$uniqueId}}" class="hits modellist"></div>
+    </span>
+    <div id="pagination-{{$uniqueId}}" class="pagination"></div>
+  </div>
 </div>
 <noscript>
   <div class="alert alert-caution" role="alert">

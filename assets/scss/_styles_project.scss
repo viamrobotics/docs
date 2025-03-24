@@ -153,6 +153,7 @@ h7, .h7 {
 
 .td-sidebar {
   /* NAV Panel changes */
+  background-color: #FFFFFF;
 }
 
 // TABLE OF CONTENT CHANGES
@@ -526,13 +527,20 @@ details[open] > .expand-label {
   border-bottom: #d9d9d9 solid 1px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   overflow: hidden;
 }
 
-.expand-content > p, .expand-content > .table, .expand-content > table {
-  margin-top: 1rem;
+// First child is the anchor link
+details > div.expand-content *:nth-child(2) {
+  margin-top: 0rem;
 }
+
+// First child is the anchor link
+details > div.expand-content > *:last-child {
+  margin-bottom: 0rem;
+}
+
 
 .expand {
   padding-bottom: 0.75rem;
@@ -1160,6 +1168,7 @@ td > ul, td > ol {
 
 .nav-tabs .nav-item > a {
   text-align: center;
+  min-width: 2rem;
 }
 
 .td-content ol li.nav-item {
@@ -1921,6 +1930,15 @@ ul.sectionlist > li:hover {
   padding: 0;
 }
 
+.pagination {
+  align-self: center;
+}
+
+.ais-Pagination-list {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 // Pagination CSS start
 
 #pagination, #paginationML, #paginationScripts {
@@ -2021,6 +2039,10 @@ a.ais-Pagination-link:hover {
   width: 100%;
 }
 
+#chatButton {
+  display: none;
+}
+
 @media (max-width: 992px) {
 
   #navSearchBar {
@@ -2032,6 +2054,16 @@ a.ais-Pagination-link:hover {
     margin-right: 0.5rem;
     margin-left: 0rem;
     margin-top: 0.5rem;
+  }
+
+  #chatButton {
+    display: unset;
+    background-color: #000;
+    color: white;
+  }
+
+  #scrollButton {
+    margin-right: 136px;
   }
 
 }
@@ -2122,6 +2154,7 @@ a.ais-Pagination-link:hover {
   width: 100%;
   display: flex;
   border-top: 1px solid #d7d7d9;
+  margin-bottom: 0;
 }
 
 .modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
@@ -3204,6 +3237,7 @@ li.active-path.tutorial-heading > a {
   display: table;
   list-style-position: outside;
   margin-bottom: 0rem;
+  width: 100%;
 }
 
 .td-content > ol > li, .td-content > .table * ol > li {
@@ -3249,10 +3283,10 @@ div.tablestep > div.tablestep-number {
 
 div.tablestep > div.tablestep-content {
   width: 100%;
+  overflow: auto;
 }
 
-
-.td-content > ol > li:before, .td-content > .table * ol > li:before {
+.td-content > ol > li:before, .td-content > .table * ol > li:not(.ais-Hits-item):before {
   margin-right: 10px;
   content: counter(item);
   background: #F1F1F4;
@@ -3269,4 +3303,13 @@ div.tablestep > div.tablestep-content {
 .td-content > ul li, .td-content > ol li {
   margin-bottom: 0rem;
 }
+
+.td-content > ul {
+  padding-left: 1rem;
+}
+
+.td-content > .code-toolbar, .td-content * .code-toolbar {
+  margin-top: 1rem;
+}
+
 // Numbered list styling END

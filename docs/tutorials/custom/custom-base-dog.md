@@ -221,37 +221,52 @@ You can also try turning the robot off and on again, and then retrying the proce
 ## Implement the custom base code
 
 Now that the Freenove server is set up, you will follow the [process for creating modular resources](/operate/get-started/other-hardware/).
-You will use [this module creation tool](https://github.com/viam-labs/generator-viam-module) to simplify the process and generate the necessary stub files.
-Then, you will edit them as necessary to define how each base API method interacts with your robot dog.
+
+### Prerequisites
+
+{{< expand "Install the Viam CLI and authenticate" >}}
+Install the Viam CLI and authenticate to Viam, from the same machine that you intend to upload your module from.
+
+{{< readfile "/static/include/how-to/install-cli.md" >}}
+
+Authenticate your CLI session with Viam using one of the following options:
+
+{{< readfile "/static/include/how-to/auth-cli.md" >}}
+{{< /expand >}}
 
 ### Create the module files
 
-First, from the Raspberry Pi terminal, create a directory inside the home directory to hold your custom code files:
+The CLI module generator generates the files for your modular resource.
 
-```sh {class="command-line" data-prompt="$"}
-mkdir robotdog
-```
+1. Run the following command in your terminal:
 
-Next, install [the module creation tool](https://github.com/viam-labs/generator-viam-module).
-Run `yo viam-module` and follow the prompts to create the files for your custom base.
-As you follow the prompts, it's a good idea to use the same names we used so that your code matches the example code:
+   ```sh {class="command-line" data-prompt="$"}
+   viam module generate
+   ```
 
-- Model name: `robotdog`
-- Module namespace: `viamlabs`
-- Module name: `base`
-- Language: `python`
-- API triplet: `rdk:component:base`
-- Existing API? `Yes`
+2. Follow the prompts, selecting the following options:
 
-{{% alert title="Important" color="note" %}}
+   - Module name: `base`
+   - Language: `Python`
+   - Visibility: `Private`
+   - Namespace/Organization ID:
+     - In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+       Find the **Public namespace** (or create one if you haven't already) and copy that string.
+       In the example snippets below, the namespace is `viamlabs`.
+   - Resource to add to the module (API): `Base Component`.
+   - Model name: `robotdog`
+   - Enable cloud build: `No`
+   - Register module: `Yes`
 
-You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
+   It's a good idea to use the same names, aside from the namespace.
+   That way your code will match the example code.
 
-{{% /alert %}}
+   You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
 
-Look in your <file>robotdog</file> directory and you'll see the tool has created a requirements file and an executable.
-Look inside the <file>src</file> subdirectory which now contains <file>\_\_init\_\_.py</file>, <file>main.py</file>, and <file>robotdog.py</file>.
-<file>robotdog.py</file> is the file that defines the behavior of your custom base.
+3. Hit your Enter key and the generator will generate a folder called <file>robotdog</file> containing stub files for your modular base component.
+
+Look inside the <file>src</file> subdirectory which now contains <file>main.py</file>.
+<file>main.py</file> is the file that defines the behavior of your custom base.
 This is the file you will modify in the next steps.
 
 ### Connect the module to the Freenove server
@@ -427,7 +442,8 @@ Fill out the configuration panel as follows:
 
 Click **Save**.
 
-![Screenshot of the Processes subtab of the Config tab, showing a process configured as detailed above.](/tutorials/custom-base-dog/process-config.png)
+{{<imgproc src="/tutorials/custom-base-dog/process-config.png" resize="400x" declaredimensions=true alt="Screenshot of the Processes subtab of the Config tab, showing a process configured as detailed above." class="shadow">}}
+<br>
 
 {{% expand "Click to see what the processes config looks like in JSON mode." %}}
 
