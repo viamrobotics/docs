@@ -48,6 +48,6 @@ If you ever need to rotate an API key:
 1. Click the **Generate Key** button on the organization setting page to generate a new key.
 1. Update all code and integrations that use the key as soon as possible and then remove the old key.
 1. Find the old API key on the page and click on **Show details**.
-1. Then click **Remove API key**.  
+1. Then click **Remove API key**.
 
-Viam supports flexible key rotation with up to two keys in use at one time. 
+Viam supports flexible key rotation with up to two keys in use at one time.
