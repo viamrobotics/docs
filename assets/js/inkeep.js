@@ -14,27 +14,11 @@ inkeepDiv.style.position = "absolute";
 
 document.body.appendChild(inkeepDiv);
 
-const handleClose = () => {
-inkeepWidgetAI.render({
-    ...config,
-    isOpen: false,
-});
-};
-
-const handleOpen = () => {
-inkeepWidgetAI.render({
-    ...config,
-    isOpen: true,
-});
+function handleOpenChange(newOpen) {
+  inkeepWidgetAI.update({ modalSettings: { isOpen: newOpen } });
 }
 
 const config = {
-  componentType: "CustomTrigger", // required
-  targetElement: inkeepDiv, // required
-  properties: {
-      isOpen: false, // required
-      onClose: handleClose, // required
-      onOpen: undefined,
       baseSettings: {
         apiKey: INKEEP_API_KEY,
         integrationId: INKEEP_INTEGRATION_ID,
@@ -45,48 +29,54 @@ const config = {
         },
       modalSettings: {
       // optional InkeepModalSettings
-        defaultView: "AI_CHAT",
-        isShortcutKeyEnabled: false,
-        isModeSwitchingEnabled: false
+        onOpenChange: handleOpenChange,
       },
       aiChatSettings: {
+          aiAssistantName: "Viam",
           chatSubjectName: "Viam",
-          botAvatarSrcUrl: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
-          botAvatarDarkSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
-          getHelpCallToActions: [
-              {
-                  name: "Email",
-                  url: "mailto:support@viam.com",
-                  icon: {
-                      builtIn: "IoMail"
-                  }
+          aiAssistantAvatar: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
+          userAvatarSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
+          getHelpOptions: [
+            {
+              icon: { builtIn: "IoMail" },
+              name: "Email",
+              action: {
+                type: "open_link",
+                url: "mailto:support@viam.com",
               },
-              {
-                  name: "Discord",
-                  url: "https://discord.gg/viam",
-                  icon: {
-                      builtIn: "FaDiscord"
-                  }
-              }
+            },
+            {
+              icon: { builtIn: "FaDiscord" },
+              name: "Discord",
+              action: {
+                type: "open_link",
+                url: "https://discord.gg/viam",
+              },
+            },
           ],
-          quickQuestions: [
+          exampleQuestions: [
               "How to install Viam on microcontrollers?",
               "How to deploy a person detection model?",
               "How can I ingest data from machines?",
               "How to query sensor data with third-party tools?",
           ],
       },
-  },
+      canToggleView: false,
 };
 
 // Start search elments
 
 // Embed the widget using the `Inkeep.embed()` function.
-// const inkeepWidgetAI = Inkeep().embed(config);
+const inkeepWidgetAI = Inkeep.ModalChat(config);
 
 // Add event listener to open the Inkeep modal when the button is clicked
-inkeepButtonTop.addEventListener("click", handleOpen);
-inkeepButtonBottom.addEventListener("click", handleOpen);
+inkeepButtonTop.addEventListener("click",  () => {
+  inkeepWidgetAI.update({ modalSettings: { isOpen: true } });
+});
+inkeepButtonBottom.addEventListener("click",  () => {
+  inkeepWidgetAI.update({ modalSettings: { isOpen: true } });
+});
+
 
 // Create an HTML element that the Inkeep widget will be inserted into.
 const nav = document.querySelector("#navsearch");
