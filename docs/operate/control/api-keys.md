@@ -46,7 +46,7 @@ If you ever need to rotate an API key:
 1. In the [Viam app](https://app.viam.com/), click on the organization dropdown in the top navigation bar.
 1. Click on **Settings and invites**.
 1. Click the **Generate Key** button on the organization setting page to generate a new key.
-1. Update all code and integrations that use the key as soon as possible and then remove the old key.
+1. Update all code and integrations that use the key.
 1. Find the old API key on the page and click on **Show details**.
 1. Then click **Remove API key**.
 
