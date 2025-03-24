@@ -186,7 +186,7 @@ The current version of `viam-server` is displayed in the machine's part status d
 {{< /alert >}}
 
 1. Navigate to your machine's **CONFIGURE** tab.
-2. Click on **machine settings**.
+2. Click on **machine settings** on the left side of the page.
 3. Change the specified `viam-server` version.
 4. Save your configuration.
 
