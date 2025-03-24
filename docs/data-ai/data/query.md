@@ -51,7 +51,7 @@ Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on 
 {{% tablestep number=2 %}}
 **Run your query**
 
-This example query returns 5 readings from all machines in your current organization where the component is called `my-sensor`:
+This example query returns the last 5 readings from any components named `my-sensor` in your organization:
 
 {{< tabs >}}
 {{% tab name="SQL" %}}
