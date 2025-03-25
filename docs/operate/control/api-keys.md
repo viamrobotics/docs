@@ -51,4 +51,3 @@ If you ever need to rotate an API key you can use the [Viam app](https://app.via
 1. Then click **Remove API key**.
 
 Viam supports flexible key rotation with up to two keys in use at one time.
-
