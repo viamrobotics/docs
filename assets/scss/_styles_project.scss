@@ -201,9 +201,7 @@ h7, .h7 {
 }
 
 .td-sidebar-toc {
-  top: 6rem;
   border-left: unset;
-  height: calc(100vh - 10rem);
 }
 
 // Breadcrumb styling
@@ -1263,12 +1261,6 @@ td > ul, td > ol {
   animation: linear 2s wiggle 2s 2;
 }
 
-@media (min-width: 992px) {
-  #scrollButton {
-    margin-right: 10%;
-  }
-}
-
 #chatButtonContent {
   display: flex;
   justify-content: space-evenly;
@@ -1407,7 +1399,7 @@ img.frame {
 // This ensures the gray sidebar covers the area where the sticky buttons are rendered.
 @media (min-width: 768px) {
   .td-sidebar {
-    // padding-bottom: 76px;
+    padding-bottom: 76px;
     margin-bottom: -76px;
   }
 }
@@ -2035,7 +2027,7 @@ a.ais-Pagination-link:hover {
 // ensure tutorials page is 100% of height
 
 .row.flex-xl-nowrap {
-  min-height: 100%;
+  min-height: 90%;
 }
 
 
@@ -3335,16 +3327,4 @@ div.tablestep > table td, div.tablestep table td {
   margin-top: 1rem;
 }
 
-footer.py-5 {
-  padding-bottom: 0 !important;
-  padding-top: 1rem !important;
-  margin-bottom: -2rem !important;
-}
-
-.td-main main {
-  padding-bottom: 0rem !important;
-}
-
-footer {
-  min-height: 30px !important;
-}// Numbered list styling END
+// Numbered list styling END
