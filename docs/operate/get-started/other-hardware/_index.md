@@ -59,40 +59,45 @@ When a module initializes, it registers its {{< glossary_tooltip term_id="model"
 For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
 {{< /expand >}}
 
-## Design your module
+{{< expand "How to design your module" >}}
 
-{{< table >}}
-{{% tablestep number=1 %}}
-**Write a test script (optional)**
+If you want to plan your module before you write it, you can use the following steps to design your module:
 
-You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
-Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
+1. **Write a test script (optional)**
 
-{{% /tablestep %}}
-{{% tablestep number=2 %}}
-**Choose an API**
+   You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
+   Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
 
-Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
-With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
-Each model implements one API.
+   <br>
 
-For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
+2. **Choose an API**
 
-You do not need to fully implement all the methods of an API.
-For example, if you want to use the [camera API](/dev/reference/apis/components/camera/) because you want to return images, but your camera does not get point cloud data, you can implement the `GetImage` method but for the `GetPointCloud` method you can return nil and an "unimplemented" error or similar, depending on the method and the language you use to write your module.
+   Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
+   With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
+   Each model implements one API.
 
-If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
+   <br>
 
-{{% /tablestep %}}
-{{% tablestep number=3 %}}
-**Decide on configuration attributes and dependencies**
+   For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
 
-Make a list of required and optional attributes for users to configure when adding your module to a machine.
-For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
-You'll need to add these attributes to the `Validate` and `Reconfigure` functions when you write the module.
+   <br>
 
-{{% /tablestep %}}
-{{< /table >}}
+   You do not need to fully implement all the methods of an API.
+   For example, if you want to use the [camera API](/dev/reference/apis/components/camera/) because you want to return images, but your camera does not get point cloud data, you can implement the `GetImage` method but for the `GetPointCloud` method you can return nil and an "unimplemented" error or similar, depending on the method and the language you use to write your module.
+
+   <br>
+
+   If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
+
+   <br>
+
+3. **Decide on configuration attributes and dependencies**
+
+   Make a list of required and optional attributes for users to configure when adding your module to a machine.
+   For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
+   You'll need to add these attributes to the `Validate` and `Reconfigure` functions when you write the module.
+
+{{< /expand >}}
 
 ## Write your module
 
@@ -186,7 +191,7 @@ Edit the generated files to add your logic:
 
 <ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
 
-For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+For each method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
 You can find details about the return types at [python.viam.dev](https://python.viam.dev/autoapi/viam/components/index.html).
 
@@ -418,7 +423,7 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 
 <ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
 
-For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+For each method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
