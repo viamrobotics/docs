@@ -38,7 +38,7 @@ Refer to the [Viam TypeScript SDK](https://ts.viam.dev/) documentation for avail
 
 {{< expand "Example camera and sensor code" >}}
 
-The following files are an example of a simple TypeScript web app that connects to a machine and displays the latestimage from the machine's camera, and the latest sensor readings.
+The following files are an example of a TypeScript web app that connects to a machine and displays the latest image from the machine's camera, and the latest sensor readings.
 
 {{<imgproc src="/operate/ts-dashboard.png" resize="x1100" declaredimensions=true alt="A web browser displaying a dashboard with a camera feed and sensor readings." style="max-width:500px" class="imgzoom" >}}
 
