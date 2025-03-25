@@ -579,16 +579,19 @@ The following sample configuration captures data from a sensor at 0.5 Hz.
 
 {{% /expand%}}
 
-### Capture directly to local MongoDB
+### Capture directly to your own MongoDB cluster
 
 You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
 This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
+The MongoDB instance can be a locally running instance or a cluster in the cloud.
 
 Configure using the `mongo_capture_config` attributes in your data manager service.
+You can configure data sync to a MongoDB instance separately from data sync to the Viam Cloud.
 
-Here is a sample configuration that will capture fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk:
+{{< expand "Click to view sample configuration with MongoDB data store." >}}
 
-{{< expand "Click to view configuration" >}}
+This sample configuration captures fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk.
+It does not sync the data to the Viam Cloud.
 
 ```json
 {
@@ -596,7 +599,7 @@ Here is a sample configuration that will capture fake sensor readings both to th
     {
       "name": "sensor-1",
       "api": "rdk:component:sensor",
-      "model": "fake",
+      "model": "rdk:builtin:fake",
       "attributes": {},
       "service_configs": [
         {
@@ -618,11 +621,61 @@ Here is a sample configuration that will capture fake sensor readings both to th
     {
       "name": "data_manager-1",
       "api": "rdk:service:data_manager",
-      "model": "rdk:builtin:builtin",
       "attributes": {
         "mongo_capture_config": {
           "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
         }
+      }
+    }
+  ]
+}
+```
+
+{{< /expand >}}
+
+{{< expand "Click to view sample configuration with MongoDB data store and sync to the Viam Cloud." >}}
+
+This sample configuration captures fake sensor readings both to the configured MongoDB URI as well as to the `~/.viam/capture` directory on disk.
+It syncs data to the Viam Cloud every 0.1 minutes.
+
+```json
+{
+  "components": [
+    {
+      "name": "sensor-1",
+      "api": "rdk:component:sensor",
+      "model": "rdk:builtin:fake",
+      "attributes": {},
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Readings",
+                "capture_frequency_hz": 0.5,
+                "additional_params": {}
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "data_manager-1",
+      "api": "rdk:service:data_manager",
+      "attributes": {
+        "mongo_capture_config": {
+          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
+        },
+        "additional_sync_paths": [],
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "capture_disabled": false,
+        "sync_disabled": false,
+        "tags": []
       }
     }
   ]
