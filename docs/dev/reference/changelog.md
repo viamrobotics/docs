@@ -47,6 +47,34 @@ The [hot data store](/manage/reference/processes/) allows you to access recent d
 
 {{% /changelog %}}
 
+{{% changelog color="changed" title="Config uses API instead of type and namespace" date="2025-03-25" %}}
+
+The JSON configuration for a resource now uses a field called `api` for the {{< glossary_tooltip term_id="api-namespace-triplet" text="API triplet" >}} instead of the deprecated `type` and `namespace` fields.
+For example, instead of:
+
+```json
+{
+  "name": "my_board",
+  "namespace": "rdk",
+  "type": "board",
+  "model": "viam:nvidia:jetson"
+}
+```
+
+You should use:
+
+```json
+{
+  "name": "my_board",
+  "api": "rdk:component:board",
+  "model": "viam:nvidia:jetson"
+}
+```
+
+Backward compatibility is maintained for existing configurations.
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
 
 [Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
