@@ -63,7 +63,7 @@ When your new model gets added to your machine, its `reconfigure()` method gets 
 If you want your control logic to run in a loop in the background, you can start this loop here.
 Be sure to also implement logic to handle subsequent calls to the reconfigure method gracefully.
 
-For example, in Python, start your logic in the `reconfigure()` method of <FILE>src/main.py</FILE>:
+For example, in Python, start your logic in the `reconfigure()` method of <FILE>src/models/control_logic.py</FILE>:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="20-28"}
 # Add these imports
@@ -158,12 +158,10 @@ For complete examples that implement control logic, see:
 
 Once you have implemented your control logic, commit and push your changes to a GitHub repository.
 
-If you are not using GitHub, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information on alternatives.
-
 Follow the steps in [Upload your module](/operate/get-started/other-hardware/#upload-your-module) using cloud build.
+When you create a release, your module will be built, packaged and pushed to the Viam Registry.
 
-Then [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github) with a tag of the form `1.0.0`.
-Your module will now be built, packaged and pushed to the Viam Registry.
+If you are not using GitHub or cloud build, see [Upload your module](/operate/get-started/other-hardware/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information on alternatives.
 
 ## Deploy your control logic
 
@@ -177,3 +175,41 @@ Your module will now be built, packaged and pushed to the Viam Registry.
 1. Click **Save**.
 
 Your control logic will now be added to your machine.
+
+## Start and stop your control logic with Viam SDKs
+
+You can start and stop your control logic with the Viam SDKs by calling `DoCommand()`.
+
+For example, in Python, you can start and stop your control logic with the following code:
+
+```python
+# Start your control logic
+await control_logic.do_command({"start": ""})
+
+# Stop your control logic
+await control_logic.do_command({"stop": ""})
+```
+
+## Start and stop your control logic with the Viam app
+
+You can start and stop your control logic from your machine's **CONTROL** tab in the Viam app:
+
+{{<imgproc src="/components/generic/generic-control.png" alt="The generic component in the test panel." resize="900x" style="width:500px" class="imgzoom shadow">}}<br>
+
+1. To start your control logic, copy and paste the following command input:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "start": ""
+   }
+   ```
+
+   To stop your control logic, use the following command input:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "stop": ""
+   }
+   ```
+
+2. Click **Execute** to call `DoCommand()` on your machine.

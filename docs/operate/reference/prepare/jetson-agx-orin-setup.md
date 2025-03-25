@@ -70,8 +70,8 @@ Follow the instructions in [Getting Started with Jetson AGX Orin Developer Kit](
 If you have already booted up your Orin, start with "Step 2 - Install JetPack Components" to make sure you have installed the latest NVIDIA JetPack components.
 
 {{< alert title="Note" color="note" >}}
-Some vision services in the [registry](https://app.viam.com/registry) require Jetpack 6.
-If you intend to use GPIO, however, we recommend Jetpack 5.
+Some vision services in the [registry](https://app.viam.com/registry) require you to install Jetpack 6 on your Jetson AGX Orin.
+If you intend to use GPIO, however, we recommend installing Jetpack 5 on your Jetson AGX Orin.
 {{< /alert >}}
 
 Look at the Troubleshooting section below for help navigating these instructions.

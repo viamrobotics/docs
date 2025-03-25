@@ -55,7 +55,7 @@ You will need the following hardware to complete this tutorial:
   If you have your own Viam rover [follow the Viam Rover configuration instructions](/dev/reference/try-viam/rover-resources/).
   If you own another mobile robot [follow the general configuration instructions](/tutorials/configure/configure-rover/).
 
-  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or any other wheeled robot that can be configured as a [base component](/operate/reference/components/base/wheeled/).
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a Yahboom 4WD Smart Robot or any other wheeled robot that can be configured as a [base component](/operate/reference/components/base/wheeled/).
 
 - An attached and configured [webcam camera](/operate/reference/components/camera/webcam/).
 

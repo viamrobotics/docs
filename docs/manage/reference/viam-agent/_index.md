@@ -185,6 +185,10 @@ For more information on managing `viam-agent` see [Manage `viam-agent`](/manage/
 The current version of `viam-server` is displayed in the machine's part status dropdown to the right of your machine’s name on its page in the Viam app.
 {{< /alert >}}
 
+{{% hiddencontent %}}
+`viam-server` is made from the RDK. Therefore its the version of RDK and `viam-server` installed on a machine is always the same.
+{{% /hiddencontent %}}
+
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click on **machine settings** on the left side of the page.
 3. Change the specified `viam-server` version.

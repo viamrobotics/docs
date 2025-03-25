@@ -66,7 +66,7 @@ You must also install telegraf by running `brew install telegraf` in your termin
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**e performance metrics sensors**
+**Add the performance metrics sensors**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 
@@ -77,10 +77,10 @@ Search for and add the `hwmonitor:cpu_monitor` model provided by the [`sbc-hwmon
 <!-- markdownlint-disable-file MD034 -->
 
 {{% tablestep number=2 %}}
-**tional) Customize the sensor configuration**
+**(Optional) Customize the sensor configuration**
 
 Add additional sensors for any other metrics you want to track.
-You can find a list of the sensors the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) module provides in the [module README](https://github.com/rinzlerlabs/viam-sbc-hwmonitor).
+You can find a list of the sensors the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) module page.
 
 {{% /tablestep %}}
 {{% tablestep  number=3 %}}
@@ -102,7 +102,7 @@ To capture or alert on the data from your configured sensor, you must add the [d
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**The data management service**
+**1. Add the data management service**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
