@@ -391,7 +391,7 @@ Select from the **Levels** dropdown menu to filter the logs by severity level:
 ![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
 
 {{% /tab %}}
-{{% tab name="Command Line" %}}
+{{% tab name="Command line" %}}
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
