@@ -85,6 +85,11 @@ If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Se
 ### Can I move a machine to a different location?
 
 No, it is not possible to move a machine to a different location.
+
+{{% hiddencontent %}}
+It is also not possible to change the location of a robot with an SDK.
+{{% /hiddencontent %}}
+
 If you want to have the machine in a different location, you will need to create a new machine and copy the old machine's configuration to the new machine.
 
 ### Can I move a location to a different organization?
