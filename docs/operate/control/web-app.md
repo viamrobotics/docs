@@ -34,15 +34,16 @@ If your code will connect to multiple machines or use [Platform APIs](/dev/refer
 
 Refer to the [Viam TypeScript SDK](https://ts.viam.dev/) documentation for available methods.
 
-### Example usage
+### Example: A camera and sensor dashboard
 
-{{< expand "Example camera and sensor code" >}}
+The following files create an example TypeScript web app that connects to a machine and displays the latest image from the machine's camera, and the latest sensor readings.
 
-The following files are an example of a TypeScript web app that connects to a machine and displays the latest image from the machine's camera, and the latest sensor readings.
+{{<imgproc src="/operate/ts-dashboard.png" resize="x1100" declaredimensions=true alt="A web browser displaying a dashboard with a camera feed and sensor readings." style="max-width:450px" class="imgzoom" >}}
 
-{{<imgproc src="/operate/ts-dashboard.png" resize="x1100" declaredimensions=true alt="A web browser displaying a dashboard with a camera feed and sensor readings." style="max-width:500px" class="imgzoom" >}}
+{{< tabs >}}
+{{% tab name="main.ts" %}}
 
-<file>main.ts</file>:
+<file>main.ts</file> connects to the machine and accesses the camera and sensor:
 
 ```ts {class="line-numbers linkable-line-numbers"}
 // This code must be run in a browser environment.
@@ -137,7 +138,10 @@ main().catch((error: unknown) => {
 });
 ```
 
-<file>static/index.html</file>:
+{{% /tab %}}
+{{% tab name="index.html" %}}
+
+<file>static/index.html</file> defines the HTML structure of the web app:
 
 ```html {class="line-numbers linkable-line-numbers"}
 <!doctype html>
@@ -186,7 +190,10 @@ main().catch((error: unknown) => {
 </html>
 ```
 
-<file>static/style.css</file>:
+{{% /tab %}}
+{{% tab name="style.css" %}}
+
+<file>static/style.css</file> defines the CSS styles for the web app:
 
 ```css {class="line-numbers linkable-line-numbers"}
 body {
@@ -226,7 +233,10 @@ button#refresh-button:hover {
 }
 ```
 
-<file>package.json</file>:
+{{% /tab %}}
+{{% tab name="package.json" %}}
+
+<file>package.json</file> defines the dependencies and scripts for the web app:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -248,9 +258,10 @@ button#refresh-button:hover {
 }
 ```
 
-{{< /expand >}}
+{{% /tab %}}
+{{< /tabs >}}
 
-<br>
+### More examples
 
 For an example using Vite to connect to a machine, see [Viam's vanilla TypeScript quickstart example on GitHub](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla).
 
