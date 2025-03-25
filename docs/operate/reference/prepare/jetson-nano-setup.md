@@ -66,8 +66,8 @@ Follow the instructions in [Getting Started with Jetson Nano Developer Kit](http
 Once you have reached _Next Steps_, return to the Viam docs.
 
 {{< alert title="Note" color="note" >}}
-Some vision services in the [registry](https://app.viam.com/registry) require Jetpack 6.
-If you intend to use GPIO, however, we recommend Jetpack 5.
+Some vision services in the [registry](https://app.viam.com/registry) require you to install Jetpack 6 on your Jetson AGX Orin.
+If you intend to use GPIO, however, we recommend installing Jetpack 5 on your Jetson AGX Orin.
 {{< /alert >}}
 
 ## Install `viam-server`
