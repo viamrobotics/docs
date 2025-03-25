@@ -49,7 +49,7 @@ The [hot data store](/manage/reference/processes/) allows you to access recent d
 
 {{% changelog color="changed" title="Config uses API instead of type and namespace" date="2025-03-25" %}}
 
-The JSON configuration for a resource now uses a field called `api` for the {{< glossary_tooltip term_id="api-namespace-triplet" text="API triplet" >}} instead of the now deprecated `type` and `namespace` fields.
+The JSON configuration for a resource now uses a field called `api` for the {{< glossary_tooltip term_id="api-namespace-triplet" text="API triplet" >}} instead of the deprecated `type` and `namespace` fields.
 For example, instead of:
 
 ```json
@@ -71,7 +71,7 @@ You should use:
 }
 ```
 
-Reverse-compatibility is maintained for existing configurations.
+Backward compatibility is maintained for existing configurations.
 
 {{% /changelog %}}
 
