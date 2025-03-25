@@ -41,6 +41,7 @@ Click **Choose** to confirm your selection.
 
 ## Rotate an API key
 
+Viam supports flexible key rotation with up to two keys in use at one time.
 If you ever need to rotate an API key you can use the [Viam app](https://app.viam.com/):
 
 1. In the [Viam app](https://app.viam.com/), click on the organization dropdown in the top navigation bar.
@@ -50,4 +51,4 @@ If you ever need to rotate an API key you can use the [Viam app](https://app.via
 1. Find the old API key on the page and click on **Show details**.
 1. Then click **Remove API key**.
 
-Viam supports flexible key rotation with up to two keys in use at one time.
+Alternatively, you can use the [`RotateKey`](/dev/reference/apis/fleet/#rotatekey) API method.
