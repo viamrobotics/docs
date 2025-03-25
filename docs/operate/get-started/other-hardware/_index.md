@@ -367,6 +367,11 @@ LOGGER.critical("critical info")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+{{% hiddencontent %}}
+`resource.AlwaysRebuild` provides an implementation of `Reconfigure` that returns a `NewMustRebuild` error.
+This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported in those SDKs.
+{{% /hiddencontent %}}
+
 1. Open <file>module.go</file> and add necessary imports.
 
 1. **Add any configurable attributes to the `Config` struct.**
