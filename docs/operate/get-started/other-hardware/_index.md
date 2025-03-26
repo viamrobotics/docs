@@ -162,25 +162,8 @@ Edit the generated files to add your logic:
 
    - Check that the user has configured required attributes and return errors if they are missing.
    - Return a map of any implicit dependencies.
-
-      <details>
-        <summary><strong>Explicit versus implicit dependencies</strong></summary>
-
-     Some modular resources require that other {{< glossary_tooltip term_id="resource" text="resources" >}} start up first.
-     For example, a mobile robotic base might need its motors to instantiate before the overall base module instantiates.
-     If your use case requires that things initialize in a specific order, you have two options:
-
-     - Explicit dependencies: Require that a user list the names of all resources that must start before a given component in the `depends_on` field of the component's configuration.
-       - Useful when dependencies are optional.
-     - Implicit dependencies: Instead of explicitly using the `depends_on` field, require users to configure a named attribute (for example `"left-motor": "motor1"`), and write your module with that attribute as a dependency.
-       Note that most named attributes are _not_ dependencies; you need to specify a resource as not only an attribute but also a dependency for it to be initialized first.
-       See code examples below.
-
-       - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
-
-       - See [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src) for example usage.
-
-       </details><br>
+     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/#implicit-versus-explicit-dependencies).
+     - For example usage, see [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).<br><br>
 
 1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
    This function should do the following:
@@ -385,25 +368,8 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 
    - Check that the user has configured required attributes and return errors if they are missing.
    - Return any implicit dependencies.
-
-      <details>
-        <summary><strong>Explicit versus implicit dependencies</strong></summary>
-
-     Some modular resources require that other {{< glossary_tooltip term_id="resource" text="resources" >}} start up first.
-     For example, a mobile robotic base might need its motors to instantiate before the overall base module instantiates.
-     If your use case requires that things initialize in a specific order, you have two options:
-
-     - Explicit dependencies: Require that a user list the names of all resources that must start before a given component in the `depends_on` field of the component's configuration.
-       - Useful when dependencies are optional.
-     - Implicit dependencies: Instead of explicitly using the `depends_on` field, require users to configure a named attribute (for example `"left-motor": "motor1"`), and write your module with that attribute as a dependency.
-       Note that most named attributes are _not_ dependencies; you need to specify a resource as not only an attribute but also a dependency for it to be initialized first.
-       See code examples below.
-
-       - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
-
-       - See [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go) for an example.
-
-       </details><br>
+     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/#implicit-versus-explicit-dependencies).
+     - For example usage, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).<br><br>
 
 1. **(Optional) Create and edit a `Reconfigure` function**:
 
