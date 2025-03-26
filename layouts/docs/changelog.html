@@ -41,10 +41,20 @@
               </div>
               {{ .Content }}
             </div>
+            <button class="docsbutton" id="chatButton" title="Chatbot and support">
+              <span id="chatButtonContent">
+                <i style="font-size:x-large;" class="fas fa-comments"></i>
+                <span>Ask AI</span>
+              </span>
+            </button>
+            <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
+                <i style="font-size:x-large;" class="fas fa-chevron-up"></i>
+            </button>
+
+            {{ partial "footer.html" . }}
           </main>
         </div>
       </div>
-      {{ partial "footer.html" . }}
     </div>
     {{ $jsChangelog := resources.Get "js/changelog.js" }}
     {{ $jsChangelog := $jsChangelog | minify }}

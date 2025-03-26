@@ -273,10 +273,19 @@ p, li {
   }
 }
 
+.td-content.tutorials {
+  max-width: 1200px;
+}
+
+footer.tutorials {
+  max-width: 1200px;
+}
+
 // START FOOTER STYLING
 
 footer {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
 }
 
 footer a {
@@ -3348,3 +3357,17 @@ footer.py-5 {
 footer {
   min-height: 30px !important;
 }// Numbered list styling END
+
+.center-main-landing {
+  justify-content: center;
+}
+
+.center-main-landing > .pl-md-5, .center-main-landing > .px-md-5 {
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.center-main-landing .col.hover-card {
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+}
