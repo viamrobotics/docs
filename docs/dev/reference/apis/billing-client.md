@@ -27,7 +27,7 @@ The billing client API supports the following methods:
 
 ## Establish a connection
 
-To use the Viam billing client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate a [`BillingClient`](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient).
+To use the Viam billing client API, you first need to instantiate a `ViamClient` and then instantiate a `BillingClient`.
 
 You will also need an API key and API key ID to authenticate your session.
 Your API key needs to have [Org owner permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the billing client API.
