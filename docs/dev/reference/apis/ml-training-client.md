@@ -27,10 +27,18 @@ The ML training client API supports the following methods:
 
 ## Establish a connection
 
-To use the Viam ML training client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`MLTrainingClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient.ml_training_client).
-See the following example for reference.
+To use the Viam ML training client API, you first need to instantiate a `ViamClient` and then instantiate an `MLTrainingClient`.
 
-You can create an [API key](/manage/manage/access/) on your settings page.
+You will also need an API key and API key ID to authenticate your session.
+Your API key needs to have [Org owner permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the MLTraining client API.
+To get an API key (and corresponding ID), you have two options:
+- [Create an API key using the Viam app](/operate/control/api-keys/#add-an-api-key)
+- [Create an API key using the Viam CLI](/dev/tools/cli/#create-an-organization-api-key)
+
+The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates an `MLTrainingClient`:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -65,6 +73,35 @@ async def main():
 if __name__ == '__main__':
     asyncio.run(main())
 ```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts {class="line-numbers linkable-line-numbers" data-line="5"}
+async function connect(): Promise<VIAM.ViamClient> {
+  // Replace "<API-KEY-ID>" (including brackets) with your machine's
+  const API_KEY_ID = "<API-KEY-ID>";
+  // Replace "<API-KEY>" (including brackets) with your machine's API key
+  const API_KEY = "<API-KEY>";
+  const opts: VIAM.ViamClientOptions = {
+    serviceHost: "https://app.viam.com:443",
+    credentials: {
+      type: "api-key",
+      authEntity: API_KEY_ID,
+      payload: API_KEY,
+    },
+  };
+
+  const client = await VIAM.createViamClient(opts);
+  return client;
+}
+
+const appClient = await connect();
+const mlTrainingClient = appClient.mlTrainingClient;
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 Once you have instantiated an `MLTrainingClient`, you can run the following [API methods](#api) against the `MLTrainingClient` object (named `ml_training_client` in the examples).
 
