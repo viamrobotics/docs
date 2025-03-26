@@ -186,7 +186,10 @@ The current version of `viam-server` is displayed in the machine's part status d
 {{< /alert >}}
 
 {{% hiddencontent %}}
-`viam-server` is made from the RDK. Therefore its the version of RDK and `viam-server` installed on a machine is always the same.
+`viam-server` is made from the RDK. Therefore the version of RDK and `viam-server` installed on a machine is always the same.
+
+To check the version of `viam-server` (or the RDK) check the machine part status dropdown.
+To update the version of `viam-server` (or the RDK) update the machine settings.
 {{% /hiddencontent %}}
 
 1. Navigate to your machine's **CONFIGURE** tab.
