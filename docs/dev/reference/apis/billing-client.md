@@ -80,21 +80,21 @@ if __name__ == '__main__':
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="5"}
 async function connect(): Promise<VIAM.ViamClient> {
-    // Replace "<API-KEY-ID>" (including brackets) with your machine's
-    const API_KEY_ID = "<API-KEY-ID>";
-    // Replace "<API-KEY>" (including brackets) with your machine's API key
-    const API_KEY = "<API-KEY>";
-    const opts: VIAM.ViamClientOptions = {
-      serviceHost: 'https://app.viam.com:443',
-      credentials: {
-        type: 'api-key',
-        authEntity: API_KEY_ID,
-        payload: API_KEY,
-      },
-    };
-    
-    const client = await VIAM.createViamClient(opts);
-    return client;
+  // Replace "<API-KEY-ID>" (including brackets) with your machine's
+  const API_KEY_ID = "<API-KEY-ID>";
+  // Replace "<API-KEY>" (including brackets) with your machine's API key
+  const API_KEY = "<API-KEY>";
+  const opts: VIAM.ViamClientOptions = {
+    serviceHost: "https://app.viam.com:443",
+    credentials: {
+      type: "api-key",
+      authEntity: API_KEY_ID,
+      payload: API_KEY,
+    },
+  };
+
+  const client = await VIAM.createViamClient(opts);
+  return client;
 }
 
 const appClient = await connect();
