@@ -17,7 +17,7 @@ The billing client API allows you to retrieve billing information from the [Viam
 
 {{% alert title="Support Notice" color="note" %}}
 
-Billing client API methods are only available in the Python SDK.
+Billing client API methods are only available in the Python and TypeScript SDKs.
 
 {{% /alert %}}
 
@@ -37,6 +37,9 @@ To get an API key (and corresponding ID), you have two options:
 - [Create an API key using the Viam CLI](/dev/tools/cli/#create-an-organization-api-key)
 
 The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `BillingClient`:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -71,6 +74,35 @@ async def main():
 if __name__ == '__main__':
     asyncio.run(main())
 ```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts {class="line-numbers linkable-line-numbers" data-line="5"}
+async function connect(): Promise<VIAM.ViamClient> {
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's
+    const API_KEY_ID = "<API-KEY-ID>";
+    // Replace "<API-KEY>" (including brackets) with your machine's API key
+    const API_KEY = "<API-KEY>";
+    const opts: VIAM.ViamClientOptions = {
+      serviceHost: 'https://app.viam.com:443',
+      credentials: {
+        type: 'api-key',
+        authEntity: API_KEY_ID,
+        payload: API_KEY,
+      },
+    };
+    
+    const client = await VIAM.createViamClient(opts);
+    return client;
+}
+
+const appClient = await connect();
+const billingClient = appClient.billingClient;
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 Once you have instantiated a `BillingClient`, you can run [API methods](#api) against the `BillingClient` object (named `billing_client` in the examples).
 
