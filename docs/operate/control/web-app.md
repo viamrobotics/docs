@@ -34,7 +34,234 @@ If your code will connect to multiple machines or use [Platform APIs](/dev/refer
 
 Refer to the [Viam TypeScript SDK](https://ts.viam.dev/) documentation for available methods.
 
-### Example usage
+### Example: A camera and sensor dashboard
+
+The following files create an example TypeScript web app that connects to a machine and displays the latest image from the machine's camera, and the latest sensor readings.
+
+{{<imgproc src="/operate/ts-dashboard.png" resize="x1100" declaredimensions=true alt="A web browser displaying a dashboard with a camera feed and sensor readings." style="max-width:450px" class="imgzoom" >}}
+
+{{< tabs >}}
+{{% tab name="main.ts" %}}
+
+<file>main.ts</file> connects to the machine and accesses the camera and sensor:
+
+```ts {class="line-numbers linkable-line-numbers"}
+// This code must be run in a browser environment.
+import * as VIAM from "@viamrobotics/sdk";
+import { CameraClient, SensorClient } from "@viamrobotics/sdk";
+
+const main = async () => {
+  const host = "demo-main.abcdefg1234.viam.cloud";
+
+  const machine = await VIAM.createRobotClient({
+    host,
+    credentials: {
+      type: "api-key",
+      /* Replace "<API-KEY>" (including brackets) with your machine's API key */
+      payload: "<API-KEY>",
+      /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
+      authEntity: "<API-KEY-ID>",
+    },
+    signalingAddress: "https://app.viam.com:443",
+  });
+
+  try {
+    // Get the camera
+    const camera = new CameraClient(machine, "camera-1");
+
+    // Get the sensor
+    const sensor = new SensorClient(machine, "sensor-1");
+
+    // Get image from camera
+    const image = await camera.getImage();
+
+    // Convert Uint8Array to base64
+    const base64Image = btoa(
+      Array.from(image)
+        .map((byte) => String.fromCharCode(byte))
+        .join(""),
+    );
+
+    // Convert image to base64 and display it
+    const imageElement = document.createElement("img");
+    imageElement.src = `data:image/jpeg;base64,${base64Image}`;
+    const imageContainer = document.getElementById("insert-image");
+    if (imageContainer) {
+      imageContainer.innerHTML = "";
+      imageContainer.appendChild(imageElement);
+    }
+
+    // Get readings from sensor
+    const readings = await sensor.getReadings();
+
+    // Create HTML to display sensor readings
+    const readingsHtml = document.createElement("div");
+    for (const [key, value] of Object.entries(readings)) {
+      const reading = document.createElement("p");
+      reading.textContent = `${key}: ${value}`;
+      readingsHtml.appendChild(reading);
+    }
+
+    // Display the readings
+    const readingsContainer = document.getElementById("insert-readings");
+    if (readingsContainer) {
+      readingsContainer.innerHTML = "";
+      readingsContainer.appendChild(readingsHtml);
+    }
+
+    // Add refresh button functionality
+    const refreshButton = document.getElementById("refresh-button");
+    if (refreshButton) {
+      refreshButton.onclick = main;
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    const errorMessage = `<p>Error: ${error instanceof Error ? error.message : "Failed to get data"}</p>`;
+
+    const imageContainer = document.getElementById("insert-image");
+    if (imageContainer) {
+      imageContainer.innerHTML = errorMessage;
+    }
+
+    const readingsContainer = document.getElementById("insert-readings");
+    if (readingsContainer) {
+      readingsContainer.innerHTML = errorMessage;
+    }
+  } finally {
+    // Close the connection
+    await machine.disconnect();
+  }
+};
+
+main().catch((error: unknown) => {
+  console.error("encountered an error:", error);
+});
+```
+
+{{% /tab %}}
+{{% tab name="index.html" %}}
+
+<file>static/index.html</file> defines the HTML structure of the web app:
+
+```html {class="line-numbers linkable-line-numbers"}
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="main">
+      <div>
+        <h1>My Dashboard</h1>
+      </div>
+      <script type="module" src="main.js"></script>
+      <div>
+        <h2>Camera Feed</h2>
+        <p>Recent image from the machine's camera:</p>
+      </div>
+      <div id="insert-image">
+        <p>
+          <i
+            >Loading image... It may take a few moments for the image to load.
+            Do not refresh page.</i
+          >
+        </p>
+      </div>
+      <div>
+        <h2>Sensor Data</h2>
+        <p>Recent readings from the machine's sensor:</p>
+      </div>
+      <div id="insert-readings">
+        <p>
+          <i
+            >Loading data... It may take a few moments for the data to load. Do
+            not refresh page.</i
+          >
+        </p>
+      </div>
+      <br />
+      <button id="refresh-button">Refresh Data</button>
+      <p>
+        Click the refresh button above to get the latest image and readings.
+      </p>
+    </div>
+  </body>
+</html>
+```
+
+{{% /tab %}}
+{{% tab name="style.css" %}}
+
+<file>static/style.css</file> defines the CSS styles for the web app:
+
+```css {class="line-numbers linkable-line-numbers"}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+div {
+  background-color: rgb(218, 220, 221);
+}
+
+#main {
+  max-width: 1200px auto;
+  margin: 10px 10px auto;
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button#refresh-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button#refresh-button:hover {
+  background-color: #0056b3;
+}
+```
+
+{{% /tab %}}
+{{% tab name="package.json" %}}
+
+<file>package.json</file> defines the dependencies and scripts for the web app:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "my-ts-dashboard",
+  "description": "A dashboard for getting an image from a machine.",
+  "scripts": {
+    "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static --format=esm",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "<YOUR NAME>",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "*"
+  },
+  "dependencies": {
+    "@viamrobotics/sdk": "^0.38.0",
+    "bson": "^6.10.0"
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### More examples
 
 For an example using Vite to connect to a machine, see [Viam's vanilla TypeScript quickstart example on GitHub](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla).
 
