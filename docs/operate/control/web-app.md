@@ -312,6 +312,31 @@ p {
 ```
 
 {{% /tab %}}
+{{% tab name="package.json" %}}
+
+<file>package.json</file> defines the dependencies and scripts for the web app:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "my-ts-dashboard",
+  "description": "A dashboard for getting an image from a machine.",
+  "scripts": {
+    "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static --format=esm",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "<YOUR NAME>",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "*"
+  },
+  "dependencies": {
+    "@viamrobotics/sdk": "^0.38.0",
+    "bson": "^6.10.0"
+  }
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### More examples
