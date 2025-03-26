@@ -50,6 +50,12 @@ The following files create an example TypeScript web app that connects to a mach
 import * as VIAM from "@viamrobotics/sdk";
 import { CameraClient, SensorClient } from "@viamrobotics/sdk";
 
+let isStreaming = false;
+let camera: CameraClient;
+let stream: StreamClient;
+let animationFrameId: number;
+let machine: VIAM.RobotClient;
+
 const main = async () => {
   const host = "demo-main.abcdefg1234.viam.cloud";
 
@@ -66,32 +72,14 @@ const main = async () => {
   });
 
   try {
-    // Get the camera
-    const camera = new CameraClient(machine, "camera-1");
+    // Get the camera and stream clients
+    camera = new CameraClient(machine, "camera-1");
 
-    // Get the sensor
-    const sensor = new SensorClient(machine, "sensor-1");
-
-    // Get image from camera
-    const image = await camera.getImage();
-
-    // Convert Uint8Array to base64
-    const base64Image = btoa(
-      Array.from(image)
-        .map((byte) => String.fromCharCode(byte))
-        .join(""),
-    );
-
-    // Convert image to base64 and display it
-    const imageElement = document.createElement("img");
-    imageElement.src = `data:image/jpeg;base64,${base64Image}`;
-    const imageContainer = document.getElementById("insert-image");
-    if (imageContainer) {
-      imageContainer.innerHTML = "";
-      imageContainer.appendChild(imageElement);
-    }
+    // Start the camera stream
+    startStream();
 
     // Get readings from sensor
+    const sensor = new SensorClient(machine, "sensor-1");
     const readings = await sensor.getReadings();
 
     // Create HTML to display sensor readings
@@ -112,13 +100,30 @@ const main = async () => {
     // Add refresh button functionality
     const refreshButton = document.getElementById("refresh-button");
     if (refreshButton) {
-      refreshButton.onclick = main;
+      refreshButton.onclick = async () => {
+        try {
+          const newReadings = await sensor.getReadings();
+          const readingsHtml = document.createElement("div");
+          for (const [key, value] of Object.entries(newReadings)) {
+            const reading = document.createElement("p");
+            reading.textContent = `${key}: ${value}`;
+            readingsHtml.appendChild(reading);
+          }
+
+          if (readingsContainer) {
+            readingsContainer.innerHTML = "";
+            readingsContainer.appendChild(readingsHtml);
+          }
+        } catch (error) {
+          console.error("Error refreshing sensor data:", error);
+        }
+      };
     }
   } catch (error) {
     console.error("Error:", error);
     const errorMessage = `<p>Error: ${error instanceof Error ? error.message : "Failed to get data"}</p>`;
 
-    const imageContainer = document.getElementById("insert-image");
+    const imageContainer = document.getElementById("insert-stream");
     if (imageContainer) {
       imageContainer.innerHTML = errorMessage;
     }
@@ -127,9 +132,62 @@ const main = async () => {
     if (readingsContainer) {
       readingsContainer.innerHTML = errorMessage;
     }
-  } finally {
-    // Close the connection
-    await machine.disconnect();
+  }
+
+  // Add cleanup on page unload
+  window.addEventListener("beforeunload", () => {
+    stopStream();
+    machine.disconnect();
+  });
+};
+
+const updateCameraStream = async () => {
+  if (!isStreaming) return;
+
+  try {
+    const imageContainer = document.getElementById("insert-stream");
+    if (imageContainer) {
+      // Create or update video element
+      let videoElement = imageContainer.querySelector("video");
+      if (!videoElement) {
+        videoElement = document.createElement("video");
+        videoElement.autoplay = true;
+        videoElement.muted = true;
+        imageContainer.innerHTML = "";
+        imageContainer.appendChild(videoElement);
+      }
+
+      // Get and set the stream every frame
+      const mediaStream = await stream.getStream("camera-1");
+      videoElement.srcObject = mediaStream;
+
+      // Ensure video plays
+      try {
+        await videoElement.play();
+      } catch (playError) {
+        console.error("Error playing video:", playError);
+      }
+    }
+
+    // Request next frame
+    animationFrameId = requestAnimationFrame(() => updateCameraStream());
+  } catch (error) {
+    console.error("Stream error:", error);
+    stopStream();
+  }
+};
+
+const startStream = () => {
+  // Initialize stream client
+  stream = new StreamClient(machine);
+  isStreaming = true;
+  updateCameraStream();
+};
+
+const stopStream = () => {
+  isStreaming = false;
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
   }
 };
 
@@ -158,12 +216,12 @@ main().catch((error: unknown) => {
       <script type="module" src="main.js"></script>
       <div>
         <h2>Camera Feed</h2>
-        <p>Recent image from the machine's camera:</p>
+        <p>Live view from the machine's camera:</p>
       </div>
-      <div id="insert-image">
+      <div id="insert-stream">
         <p>
           <i
-            >Loading image... It may take a few moments for the image to load.
+            >Loading stream... It may take a few moments for the stream to load.
             Do not refresh page.</i
           >
         </p>
@@ -182,9 +240,6 @@ main().catch((error: unknown) => {
       </div>
       <br />
       <button id="refresh-button">Refresh Data</button>
-      <p>
-        Click the refresh button above to get the latest image and readings.
-      </p>
     </div>
   </body>
 </html>
@@ -199,62 +254,60 @@ main().catch((error: unknown) => {
 body {
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
-}
-
-div {
-  background-color: rgb(218, 220, 221);
+  background-color: #f0f2f5;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #1a1a1a;
 }
 
 #main {
-  max-width: 1200px auto;
-  margin: 10px 10px auto;
-  padding: 20px;
+  max-width: 1200px;
+  margin: 20px 20px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+}
+
+h2 {
+  color: #34495e;
+  margin-top: 30px;
+  font-size: 1.5em;
+}
+
+div {
+  background-color: transparent;
+}
+
+video {
+  background: black;
+  border-radius: 8px;
 }
 
 button#refresh-button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button#refresh-button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
 }
-```
 
-{{% /tab %}}
-{{% tab name="package.json" %}}
-
-<file>package.json</file> defines the dependencies and scripts for the web app:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "name": "my-ts-dashboard",
-  "description": "A dashboard for getting an image from a machine.",
-  "scripts": {
-    "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static --format=esm",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "<YOUR NAME>",
-  "license": "ISC",
-  "devDependencies": {
-    "esbuild": "*"
-  },
-  "dependencies": {
-    "@viamrobotics/sdk": "^0.38.0",
-    "bson": "^6.10.0"
-  }
+p {
+  line-height: 1.6;
+  color: #4a4a4a;
 }
 ```
 
