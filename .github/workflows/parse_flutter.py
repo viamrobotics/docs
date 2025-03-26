@@ -74,6 +74,9 @@ class FlutterParser:
             if resource not in unsupported_resources:
 
                 soup = make_soup(url)
+                if not soup:
+                    print(f"DEBUG: No soup for {url}")
+                    continue
 
                 if resource in flutter_resource_overrides:
                     flutter_resource = flutter_resource_overrides[resource]

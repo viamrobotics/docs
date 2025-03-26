@@ -1447,6 +1447,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobotPart
 
 Change the name of and assign an optional new configuration to a machine {{< glossary_tooltip term_id="part" text="part" >}}.
+You can only change the name and configuration of the machine part, not the location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1855,6 +1856,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobot
 
 Change the name of an existing machine.
+You can only change the name of the machine, not the location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
