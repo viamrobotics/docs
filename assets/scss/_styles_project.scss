@@ -201,7 +201,9 @@ h7, .h7 {
 }
 
 .td-sidebar-toc {
+  top: 6rem;
   border-left: unset;
+  height: calc(100vh - 10rem);
 }
 
 // Breadcrumb styling
@@ -271,10 +273,19 @@ p, li {
   }
 }
 
+.td-content.tutorials {
+  max-width: 1200px;
+}
+
+footer.tutorials {
+  max-width: 1200px;
+}
+
 // START FOOTER STYLING
 
 footer {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
 }
 
 footer a {
@@ -1261,6 +1272,12 @@ td > ul, td > ol {
   animation: linear 2s wiggle 2s 2;
 }
 
+@media (min-width: 992px) {
+  #scrollButton {
+    margin-right: 10%;
+  }
+}
+
 #chatButtonContent {
   display: flex;
   justify-content: space-evenly;
@@ -1399,7 +1416,7 @@ img.frame {
 // This ensures the gray sidebar covers the area where the sticky buttons are rendered.
 @media (min-width: 768px) {
   .td-sidebar {
-    padding-bottom: 76px;
+    // padding-bottom: 76px;
     margin-bottom: -76px;
   }
 }
@@ -2027,7 +2044,7 @@ a.ais-Pagination-link:hover {
 // ensure tutorials page is 100% of height
 
 .row.flex-xl-nowrap {
-  min-height: 90%;
+  min-height: 100%;
 }
 
 
@@ -3327,4 +3344,30 @@ div.tablestep > table td, div.tablestep table td {
   margin-top: 1rem;
 }
 
-// Numbered list styling END
+footer.py-5 {
+  padding-bottom: 0 !important;
+  padding-top: 1rem !important;
+  margin-bottom: -2rem !important;
+}
+
+.td-main main {
+  padding-bottom: 0rem !important;
+}
+
+footer {
+  min-height: 30px !important;
+}// Numbered list styling END
+
+.center-main-landing {
+  justify-content: center;
+}
+
+.center-main-landing > .pl-md-5, .center-main-landing > .px-md-5 {
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.center-main-landing .col.hover-card {
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+}

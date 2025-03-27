@@ -15,24 +15,14 @@
     </header>
     <div class="container-fluid td-outer">
       <div class="td-main">
-        <div class="row flex-xl-nowrap">
-          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none" id="landing-page-sidebar">
-            {{ partial "sidebar.html" . }}
-          </aside>
-          <main class="col-12 col-md-12 col-xl-12 pl-md-12" role="main">
+        <div class="row flex-xl-nowrap center-main-landing">
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             {{ .Render "content" }}
           </main>
         </div>
-        {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
-        <button class="docsbutton" id="chatButton" title="Chatbot and support">
-            <span id="chatButtonContent">
-              <i style="font-size:x-large;" class="fas fa-comments"></i>
-              <span>Ask AI</span>
-            </span>
-        </button>
     </div>
-      {{ partial "footer.html" . }}
-    </div>
+
+  </div>
 
     {{ partial "scripts.html" . }}
 
