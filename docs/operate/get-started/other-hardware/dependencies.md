@@ -191,7 +191,7 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies above, except that you do not need to return the dependency from the `validate_config` method and can instead return an empty list:
+If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies, except that you do not need to return the dependency from the `validate_config` method and can instead return an empty list:
 
 ```python {class="line-numbers linkable-line-numbers"}
 @classmethod
@@ -208,7 +208,7 @@ def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies above, except that you do not need to return the dependency from the `Validate` method and can instead return `nil`:
+If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies, except that you do not need to return the dependency from the `Validate` method and can instead return `nil`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (cfg *Config) Validate(path string) ([]string, error) {
