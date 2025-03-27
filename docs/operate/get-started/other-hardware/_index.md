@@ -162,8 +162,7 @@ Edit the generated files to add your logic:
 
    - Check that the user has configured required attributes and return errors if they are missing.
    - Return a map of any implicit dependencies.
-     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/#implicit-versus-explicit-dependencies).
-     - For example usage, see [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).<br><br>
+     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
 
 1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
    This function should do the following:
@@ -368,8 +367,7 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 
    - Check that the user has configured required attributes and return errors if they are missing.
    - Return any implicit dependencies.
-     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/#implicit-versus-explicit-dependencies).
-     - For example usage, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).<br><br>
+     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).<br><br>
 
 1. **(Optional) Create and edit a `Reconfigure` function**:
 
@@ -381,6 +379,8 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 
    - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
    - Assign default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+
+   For an example that implements the `Reconfigure` method, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
 
 1. **Edit the constructor** to do the following:
 

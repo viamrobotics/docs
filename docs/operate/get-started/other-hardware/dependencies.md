@@ -7,7 +7,7 @@ type: "docs"
 description: "Handle dependencies in your custom modular resource."
 ---
 
-This page covers intermediate-level information about modules and their dependencies.
+If you are authoring a module, this page will help you understand how to handle dependencies in your modular resources.
 
 ## The lifecycle of a module
 
@@ -36,28 +36,45 @@ When `viam-server` builds all the resources on a machine, it builds the dependen
 ### Implicit versus explicit dependencies
 
 - **Implicit dependencies** require users to configure a named attribute (for example `"left-motor": "motor1"`).
+
   - Recommended when dependencies are required, because implicit dependencies:
     - Make it more clear what needs to be configured.
     - Eliminate the need for users to configure the same resource name twice.
     - Make debugging easier.
   - Your module code must access the dependency using its attribute name and return it in the list of dependencies from the `validate` function.
+
 - **Explicit dependencies** require that a user list the names of dependencies in the `depends_on` field of the resource's configuration.
+
   - Useful when dependencies are optional.
   - Depending on how you write your module, especially if your resources use multiple explicit dependencies, you may need users to configure the dependency both in the `depends_on` field and as an attribute so that your code can determine which dependency is which.
+    For example:
 
-## Access dependencies
+    ```json {class="line-numbers linkable-line-numbers"}
+    {
+      "name": "mime-type-sensor",
+      "api": "rdk:component:sensor",
+      "model": "jessamy:my-module:my-sensor",
+      "attributes": {
+        "camera_name": "camera-1"
+      },
+      "depends_on": ["camera-1"]
+    }
+    ```
+
+## Use dependencies
 
 From within a module, you cannot access resources in the same way that you would in a client application.
 For example, you cannot call `Camera.from_robot()` to get a camera resource.
 
-Instead, you must access dependencies as follows:
+Instead, you must access dependencies by writing your module code as follows:
 
-### Access implicit dependencies
+### Use implicit dependencies
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 1. In your modular resource's `validate_config` method, check the configuration attributes, then add the dependency name to the list of dependencies.
+   For example:
 
    ```python {class="line-numbers linkable-line-numbers"}
     @classmethod
@@ -73,8 +90,10 @@ Instead, you must access dependencies as follows:
         return deps
    ```
 
-1. In your `reconfigure` method, access the dependency by using its name as a key in the `dependencies` mapping.
-1. Cast the dependency to the correct type.
+1. In your `reconfigure` method:
+
+   - Access the dependency by using its name as a key in the `dependencies` mapping.
+   - Cast the dependency to the correct type.
 
    ```python {class="line-numbers linkable-line-numbers"}
     def reconfigure(
@@ -92,34 +111,134 @@ Instead, you must access dependencies as follows:
         return super().reconfigure(config, dependencies)
    ```
 
-1. Now you can call API methods on the dependency resource within your module, for example `await self.the_camera.get_image()`.
+1. You can now call API methods on the dependency resource within your module, for example:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   img = await self.the_camera.get_image()
+   ```
 
 For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go {class="line-numbers linkable-line-numbers"}
+1. In your modular resource's `Config` struct, add the dependency attribute name like any other attribute.
+   For example:
 
-```
+   ```go {class="line-numbers linkable-line-numbers"}
+   type Config struct {
+     CameraName string `json:"camera_name"`
+   }
+   ```
+
+1. Add the dependency to the `<module-name><resource-name>` struct:
+
+   ```go {class="line-numbers linkable-line-numbers" data-line="7"}
+   type myModuleMySensor struct {
+     resource.AlwaysRebuild
+
+     name resource.Name
+     logger logging.Logger
+     cfg    *Config
+     camera camera.Camera
+     cancelCtx  context.Context
+     cancelFunc func()
+   }
+   ```
+
+1. In your modular resource's `Validate` method, check the configuration attributes, then add the dependency name to the list of dependencies:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   func (cfg *Config) Validate(path string) ([]string, error) {
+     var deps []string
+     if cfg.CameraName == "" {
+       return nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
+     }
+     if reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
+       return nil, errors.New("camera_name must be a string")
+     }
+     deps = append(deps, cfg.CameraName)
+     return deps, nil
+   }
+   ```
+
+1. In your resource's constructor, initialize the dependency:
+
+   ```go {class="line-numbers linkable-line-numbers" data-line="13-17"}
+    func NewMySensor(ctx context.Context,deps resource.Dependencies,
+      name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
+
+      cancelCtx, cancelFunc := context.WithCancel(context.Background())
+
+      s := &myModuleMySensor{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+      }
+      camera, err := camera.FromDependencies(deps, conf.CameraName)
+      if err != nil {
+        return nil, errors.New("failed to get camera dependency")
+      }
+      s.camera = camera
+
+      return s, nil
+    }
+   ```
+
+1. You can now call API methods on the dependency resource within your module, for example:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   img, imgMetadata, err := s.camera.Image(ctx, utils.MimeTypeJPEG, nil)
+   ```
+
+{{% alert title="Note on reconfiguration" color="note" %}}
+
+Most Go modules use `resource.AlwaysRebuild` within the `<module-name><resource-name>` struct, which means that the resource rebuilds every time the module is reconfigured.
+
+The steps above use `resource.AlwaysRebuild`.
+If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/get-started/other-hardware/#implement-the-component-api).
+
+{{% /alert %}}
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Access explicit dependencies
+### Use explicit dependencies
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python {class="line-numbers linkable-line-numbers"}
+If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies above, except that you do not need to return the dependency from the `validate_config` method and can instead return an empty list:
 
+```python {class="line-numbers linkable-line-numbers"}
+ @classmethod
+ def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
+     fields = config.attributes.fields
+     if not "camera_name" in fields:
+         raise Exception("missing required camera_name attribute")
+     elif not fields["camera_name"].HasField("string_value"):
+         raise Exception("camera_name must be a string")
+     camera_name = fields["camera_name"].string_value
+     return []
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go {class="line-numbers linkable-line-numbers"}
+If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies above, except that you do not need to return the dependency from the `Validate` method and can instead return `nil`:
 
+```go {class="line-numbers linkable-line-numbers"}
+func (cfg *Config) Validate(path string) ([]string, error) {
+  if cfg.CameraName == "" {
+    return nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
+  }
+  if reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
+    return nil, errors.New("camera_name must be a string")
+  }
+  return nil, nil
+}
 ```
 
 {{% /tab %}}
