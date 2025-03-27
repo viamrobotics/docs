@@ -197,11 +197,10 @@ If you prefer to use explicit dependencies (for example, for an optional depende
 @classmethod
 def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
     fields = config.attributes.fields
+    if "camera_name" in fields and not fields["camera_name"].HasField("string_value"):
+      raise Exception("camera_name must be a string")
     if "camera_name" not in fields:
-        raise Exception("missing required camera_name attribute")
-    elif not fields["camera_name"].HasField("string_value"):
-        raise Exception("camera_name must be a string")
-    camera_name = fields["camera_name"].string_value
+      self.logger.info("camera_name not configured, using empty string and no camera")
     return []
 ```
 
@@ -212,11 +211,11 @@ If you prefer to use explicit dependencies (for example, for an optional depende
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (cfg *Config) Validate(path string) ([]string, error) {
-  if cfg.CameraName == "" {
-    return nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
-  }
-  if reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
+  if cfg.CameraName != "" && reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
     return nil, errors.New("camera_name must be a string")
+  }
+  if cfg.CameraName == "" {
+    logger.Info("camera_name not configured, using empty string and no camera")
   }
   return nil, nil
 }
