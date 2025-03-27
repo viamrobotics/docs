@@ -197,10 +197,12 @@ If you prefer to use explicit dependencies (for example, for an optional depende
 @classmethod
 def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
     fields = config.attributes.fields
-    if "camera_name" in fields and not fields["camera_name"].HasField("string_value"):
-      raise Exception("camera_name must be a string")
+    if "camera_name" in fields and not fields[
+      "camera_name"].HasField("string_value"):
+        raise Exception("camera_name must be a string")
     if "camera_name" not in fields:
-      self.logger.info("camera_name not configured, using empty string and no camera")
+        self.logger.info(
+          "camera_name not configured,using empty string and no camera")
     return []
 ```
 
