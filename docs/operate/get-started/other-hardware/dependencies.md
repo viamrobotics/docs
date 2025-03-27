@@ -194,15 +194,15 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies above, except that you do not need to return the dependency from the `validate_config` method and can instead return an empty list:
 
 ```python {class="line-numbers linkable-line-numbers"}
- @classmethod
- def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
-     fields = config.attributes.fields
-     if not "camera_name" in fields:
-         raise Exception("missing required camera_name attribute")
-     elif not fields["camera_name"].HasField("string_value"):
-         raise Exception("camera_name must be a string")
-     camera_name = fields["camera_name"].string_value
-     return []
+@classmethod
+def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
+    fields = config.attributes.fields
+    if "camera_name" not in fields:
+        raise Exception("missing required camera_name attribute")
+    elif not fields["camera_name"].HasField("string_value"):
+        raise Exception("camera_name must be a string")
+    camera_name = fields["camera_name"].string_value
+    return []
 ```
 
 {{% /tab %}}
