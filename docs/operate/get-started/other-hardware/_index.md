@@ -51,10 +51,25 @@ For C++ module examples, see the [C++ examples directory on GitHub](https://gith
 {{% /alert %}}
 
 {{< expand "How and where do modules run?" >}}
-Modules run on your machine, alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
+Modules run on your machine, alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
 
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
-`viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
+[`viam-server` manages](/operate/reference/viam-server/) the dependencies, start-up, reconfiguration, [data management](/data-ai/capture-data/capture-sync/), and shutdown behavior of your modular resource.
+
+The lifecycle of a module and the resources it provides is as follows:
+
+1. `viam-server` starts, and if it is connected to the internet, it checks for configuration updates.
+1. `viam-server` starts any configured modules.
+1. When a module initializes, it registers its model or models and associated [APIs](/dev/reference/apis/) with `viam-server`, making the models available for use.
+1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the dependencies of the resource.
+1. If a dependency is not already running, `viam-server` starts it before starting the resource.
+   If a dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
+1. `viam-server` builds the resource based on its resource configuration.
+1. If configuration fails due to a validation failure or an exception thrown by the reconfigure function, `viam-server` attempts to reconfigure the resource.
+1. The modular resource is ready to use.
+1. If at any point the user changes the configuration of the machine, `viam-server` reconfigures the affected resources within 15 seconds.
+1. If a resource crashes, `viam-server` attempts to rebuild it.
+1. When `viam-server` shuts down, it attempts to stop all running modules.
+   If a module fails to shut down within 90 seconds, `viam-server` will forcefully kill it after 15 seconds.
 
 For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
 {{< /expand >}}
@@ -134,7 +149,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Language | The language for the module. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
 | Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
-| Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. |
+| Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [How to design your module](#how-to-design-your-module) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the Viam app registry page; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |

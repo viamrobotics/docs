@@ -7,33 +7,12 @@ type: "docs"
 description: "Handle dependencies in your custom modular resource."
 ---
 
-If you are authoring a module, this page will help you understand how to handle dependencies in your modular resources.
-
-## The lifecycle of a module
-
-An instance of a module runs as a separate process from `viam-server`.
-`viam-server` manages the lifecycle of the module, communicating with it over UNIX sockets.
-The lifecycle of a module and the resources it provides is as follows:
-
-1. `viam-server` starts, and if it is connected to the internet, it checks for configuration updates.
-1. `viam-server` starts any configured modules.
-1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the dependencies of the resource.
-1. If a dependency is not already running, `viam-server` starts it before starting the resource.
-1. `viam-server` builds the resource based on its configuration.
-1. If the configuration fails, `viam-server` attempts to reconfigure the resource.
-1. The modular resource is ready to use.
-1. If at any point the user changes the configuration of the machine, `viam-server` reconfigures the affected resources.
-1. If a resource crashes, `viam-server` attempts to rebuild it.
-1. When `viam-server` shuts down, it attempts to stop all running modules.
-
-## What are dependencies?
-
 Dependencies are other {{< glossary_tooltip term_id="resource" text="resources" >}} that your modular resource needs to access in order to function.
 For example, a vision service might depend on a camera component, meaning that the camera is a dependency of that vision service.
 
-When `viam-server` builds all the resources on a machine, it builds the dependencies first.
+When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/#how-and-where-do-modules-run), it builds the dependencies first.
 
-### Implicit versus explicit dependencies
+## Implicit versus explicit dependencies
 
 - **Implicit dependencies** require users to configure a named attribute (for example `"left-motor": "motor1"`).
 
@@ -68,7 +47,8 @@ For example, you cannot call `Camera.from_robot()` to get a camera resource.
 
 Instead, you must access dependencies by writing your module code as follows:
 
-### Use implicit dependencies
+{{< tabs >}}
+{{% tab name="Use implicit dependencies" %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -205,7 +185,8 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 {{% /tab %}}
 {{< /tabs >}}
 
-### Use explicit dependencies
+{{% /tab %}}
+{{% tab name="Use explicit dependencies" %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -244,8 +225,13 @@ func (cfg *Config) Validate(path string) ([]string, error) {
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% /tab %}}
+{{< /tabs >}}
+
 {{% hiddencontent %}}
 There is not currently an SDK method to access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
 {{% /hiddencontent %}}
 
 ## Configure your module's dependencies more easily with a discovery service
+
+If your module requires dependencies, you can make it easier for users to configure them by writing a [discovery service](/operate/reference/services/discovery/) as one model within your module.
