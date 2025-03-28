@@ -41,6 +41,12 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog color="added" title="Store metadata" date="2025-03-28" %}}
+
+You can store and retrieve arbitrary data for your organization, location, machine, and machine part with the [Fleet Management API](/dev/dev/reference/apis/fleet/).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
 
 The [hot data store](/manage/reference/processes/) allows you to access recent data faster.
