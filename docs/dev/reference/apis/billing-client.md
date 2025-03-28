@@ -78,7 +78,7 @@ if __name__ == '__main__':
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-```ts {class="line-numbers linkable-line-numbers" data-line="5"}
+```ts {class="line-numbers linkable-line-numbers" data-line="3, 5"}
 async function connect(): Promise<VIAM.ViamClient> {
   // Replace "<API-KEY-ID>" (including brackets) with your machine's
   const API_KEY_ID = "<API-KEY-ID>";
