@@ -7,38 +7,27 @@ type: "docs"
 description: "Handle dependencies in your custom modular resource."
 ---
 
+## What are dependencies?
+
 Dependencies are other {{< glossary_tooltip term_id="resource" text="resources" >}} that your modular resource needs to access in order to function.
-For example, a vision service might depend on a camera component, meaning that the camera is a dependency of that vision service.
+
+For example, you could write a sensor component that requires a camera component, meaning that the camera is a dependency of that sensor.
+
+```json {class="line-numbers linkable-line-numbers" data-line="6"}
+{
+  "name": "mime-type-sensor",
+  "api": "rdk:component:sensor",
+  "model": "jessamy:my-module:my-sensor",
+  "attributes": {
+    "camera_name": "camera-1"
+  }
+}
+```
+
+Dependencies are configured just like any other resource attribute.
+The difference is that dependencies represent other resources that must be built before the resource that depends on them.
 
 When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/#how-and-where-do-modules-run), it builds the dependencies first.
-
-## Implicit versus explicit dependencies
-
-- **Implicit dependencies** require users to configure a named attribute (for example `"left-motor": "motor1"`).
-
-  - Recommended when dependencies are required, because implicit dependencies:
-    - Make it more clear what needs to be configured.
-    - Eliminate the need for users to configure the same resource name twice.
-    - Make debugging easier.
-  - Your module code must access the dependency using its attribute name and return it in the list of dependencies from the `validate` function.
-
-- **Explicit dependencies** require that a user list the names of dependencies in the `depends_on` field of the resource's configuration.
-
-  - Useful when dependencies are optional.
-  - Depending on how you write your module, especially if your resources use multiple explicit dependencies, you may need users to configure the dependency both in the `depends_on` field and as an attribute so that your code can determine which dependency is which.
-    For example:
-
-    ```json {class="line-numbers linkable-line-numbers"}
-    {
-      "name": "mime-type-sensor",
-      "api": "rdk:component:sensor",
-      "model": "jessamy:my-module:my-sensor",
-      "attributes": {
-        "camera_name": "camera-1"
-      },
-      "depends_on": ["camera-1"]
-    }
-    ```
 
 ## Use dependencies
 
@@ -47,8 +36,7 @@ For example, you cannot call `Camera.from_robot()` to get a camera resource.
 
 Instead, you must access dependencies by writing your module code as follows:
 
-{{< tabs >}}
-{{% tab name="Use implicit dependencies" %}}
+### Required dependencies
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -185,53 +173,78 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /tab %}}
-{{% tab name="Use explicit dependencies" %}}
+### Optional dependencies
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies, except that you do not need to return the dependency from the `validate_config` method and can instead return an empty list:
+If your module has optional dependencies, the steps are the same as for required dependencies, except that your `validate_config` method can treat the dependency as optional by returning an empty list if the dependency is not configured:
 
 ```python {class="line-numbers linkable-line-numbers"}
 @classmethod
 def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
+    deps = []
     fields = config.attributes.fields
-    if "camera_name" in fields and not fields[
-      "camera_name"].HasField("string_value"):
-        raise Exception("camera_name must be a string")
     if "camera_name" not in fields:
         self.logger.info(
-          "camera_name not configured,using empty string and no camera")
-    return []
+          "camera_name not configured, using no camera")
+    else:
+        if not fields["camera_name"].HasField("string_value"):
+            raise Exception("camera_name must be a string")
+        deps.append(fields["camera_name"].string_value)
+    return deps
 ```
+
+Be sure to handle the case where the dependency is not configured in your API implementation as well.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If you prefer to use explicit dependencies (for example, for an optional dependency), the steps are the same as for implicit dependencies, except that you do not need to return the dependency from the `Validate` method and can instead return `nil`:
+If your module has optional dependencies, the steps are the same as for required dependencies, except that your `Validate` method can treat the dependency as optional by returning an empty list if the dependency is not configured:
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (cfg *Config) Validate(path string) ([]string, error) {
-  if cfg.CameraName != "" && reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
+  var deps []string
+  if cfg.CameraName == "" {
+    logger.Info("camera_name not configured, using no camera")
+    return nil, nil
+  }
+  if reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
     return nil, errors.New("camera_name must be a string")
   }
-  if cfg.CameraName == "" {
-    logger.Info("camera_name not configured, using empty string and no camera")
-  }
-  return nil, nil
+  deps = append(deps, cfg.CameraName)
+  return deps, nil
 }
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
+Be sure to handle the case where the dependency is not configured in your API implementation as well.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 {{% hiddencontent %}}
-There is not currently an SDK method to access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
+There is not currently an SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
+You must access the API key module environment variables to establish the app client connection.
 {{% /hiddencontent %}}
+
+### Explicit dependencies (deprecated)
+
+Some older modules use explicit dependencies, which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
+
+```json {class="line-numbers linkable-line-numbers"}
+  "name": "mime-type-sensor",
+  "api": "rdk:component:sensor",
+  "model": "jessamy:my-module:my-sensor",
+  "attributes": {
+    "camera_name": "camera-1"
+  },
+  "depends_on": ["camera-1"]
+}
+```
+
+This is deprecated and not recommended when writing new modules.
+
+Instead, we recommend using implicit dependencies (as shown in the examples above), which do not require users to list the names of dependencies in the `depends_on` field.
 
 ## Configure your module's dependencies more easily with a discovery service
 

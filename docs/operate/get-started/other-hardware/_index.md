@@ -176,7 +176,7 @@ Edit the generated files to add your logic:
 1. **Edit the `validate_config` function** to do the following:
 
    - Check that the user has configured required attributes and return errors if they are missing.
-   - Return a map of any implicit dependencies.
+   - Return a map of any dependencies.
      - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
 
 1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
@@ -235,7 +235,7 @@ class meteo_PM(Sensor, EasyResource):
     @classmethod
     def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
         """This method allows you to validate the configuration object
-        received from the machine, as well as to return any implicit
+        received from the machine, as well as to return any
         dependencies based on that `config`.
         """
         fields = config.attributes.fields
@@ -381,7 +381,7 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 1. **Edit the `Validate` function** to do the following:
 
    - Check that the user has configured required attributes and return errors if they are missing.
-   - Return any implicit dependencies.
+   - Return any dependencies.
      - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).<br><br>
 
 1. **(Optional) Create and edit a `Reconfigure` function**:
