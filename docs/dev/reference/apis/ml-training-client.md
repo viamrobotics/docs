@@ -41,7 +41,7 @@ The following example instantiates a `ViamClient`, authenticating with an API ke
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers" data-line="12, 16"}
 import asyncio
 
 from viam.rpc.dial import DialOptions, Credentials
