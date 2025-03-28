@@ -1616,7 +1616,7 @@ Removes a bounding box from an image specified by its BinaryID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await data_client.remove_bounding_box_from_image_by_id(
-binary_id=MY_BINARY_DATA_ID,
+binary_id="<YOUR-BINARY-DATA-ID>",
 bbox_id="your-bounding-box-id-to-delete"
 )
 ```
