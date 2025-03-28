@@ -2,7 +2,7 @@
 title: "Create a Hello World module"
 linkTitle: "Hello World module"
 type: "docs"
-weight: 24
+weight: 20
 images: ["/registry/module-puzzle-piece.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
