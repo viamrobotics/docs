@@ -1185,6 +1185,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### UpdateLocationMetadata
 
+Update the user-defined metadata for a location.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}

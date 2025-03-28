@@ -29,7 +29,7 @@
 | [`CreateLocationSecret`](/dev/reference/apis/fleet/#createlocationsecret) | Create a new location secret. |
 | [`DeleteLocationSecret`](/dev/reference/apis/fleet/#deletelocationsecret) | Delete a location secret. |
 | [`GetLocationMetadata`](/dev/reference/apis/fleet/#getlocationmetadata) | Get the user-defined metadata for a location. |
-| [`UpdateLocationMetadata`](/dev/reference/apis/fleet/#updatelocationmetadata) | . |
+| [`UpdateLocationMetadata`](/dev/reference/apis/fleet/#updatelocationmetadata) | Update the user-defined metadata for a location. |
 | [`GetRobot`](/dev/reference/apis/fleet/#getrobot) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID. |
 | [`GetRobotAPIKeys`](/dev/reference/apis/fleet/#getrobotapikeys) | Gets the API keys for the machine. |
 | [`GetRobotParts`](/dev/reference/apis/fleet/#getrobotparts) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="machine" text="machine" >}}. |
