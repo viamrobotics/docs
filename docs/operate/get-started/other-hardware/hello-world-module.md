@@ -6,9 +6,9 @@ weight: 24
 images: ["/registry/module-puzzle-piece.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
-description: "Get started writing your own modular resources by creating a Hello World module."
+description: "Get started writing your own modular resources by creating a Hello World module that provides an example camera and sensor."
 languages: ["python", "go"]
-viamresources: ["components"]
+viamresources: ["components", "sensor", "camera"]
 platformarea: ["registry"]
 level: "Beginner"
 date: "2024-10-22"
@@ -253,9 +253,9 @@ You need to add some sensor-specific code to support the sensor component.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-3.  Move the <file>temporary/src/models/hello-sensor.py</file> file to <file>hello-world/src/models/</file>.<br><br>
+3.  Move the <file>temporary/src/models/hello_sensor.py</file> file to <file>hello-world/src/models/</file>.<br><br>
 
-1.  In <file>hello-world/src/models/hello-sensor.py</file>, change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
+1.  In <file>hello-world/src/models/hello_sensor.py</file>, change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
 
     ```python {class="line-numbers linkable-line-numbers" data-start="15" }
     MODEL: ClassVar[Model] = Model(ModelFamily("jessamy", "hello-world"), "hello-sensor")
@@ -395,7 +395,7 @@ Edit the stub files to add the logic from your test script in a way that works w
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Add the following to the list of imports at the top of <file>hello-world/src/models/hello-camera.py</file>:
+1. Add the following to the list of imports at the top of <file>hello-world/src/models/hello_camera.py</file>:
 
    ```python {class="line-numbers linkable-line-numbers"}
    from viam.media.utils.pil import pil_to_viam_image
@@ -467,7 +467,7 @@ First, implement the camera API methods by editing the camera class definition:
 Now edit the sensor class definition to implement the sensor API.
 You don't need to edit any of the validate or configuration methods because you're not adding any configurable attributes for the sensor model.
 
-1. Add `random` to the list of imports in <file>hello-world/src/models/hello-sensor.py</file> for the random number generation:
+1. Add `random` to the list of imports in <file>hello-world/src/models/hello_sensor.py</file> for the random number generation:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import random
@@ -483,10 +483,11 @@ You don't need to edit any of the validate or configuration methods because you'
         timeout: Optional[float] = None,
         **kwargs
     ) -> Mapping[str, SensorReading]:
+        self.logger.error("`get_readings` is not implemented")
         raise NotImplementedError()
    ```
 
-   Replace `raise NotImplementedError()` with the following code:
+   Replace the logger error and `raise NotImplementedError()` with the following code:
 
    ```python {class="line-numbers linkable-line-numbers" data-start="65" }
     ) -> Mapping[str, SensorReading]:
@@ -660,6 +661,10 @@ You don't need to edit any of the validate or configuration methods because you'
 {{% /tab %}}
 {{< /tabs >}}
 
+### View the complete code
+
+You can view the complete example code in the [hello-world-module repository on GitHub](https://github.com/viam-labs/hello-world-module/tree/main).
+
 ## Test your module
 
 With the implementation written, it's time to test your module locally:
@@ -670,24 +675,24 @@ With the implementation written, it's time to test your module locally:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
+Create a virtual Python environment with the necessary packages by running the setup file from within the <file>hello-world</file> directory:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sh setup.sh
-   ```
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+```
 
-   This environment is where the local module will run.
-   `viam-server` does not need to run inside this environment.
+This environment is where the local module will run.
+`viam-server` does not need to run inside this environment.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-1. From within the <file>hello-world</file> directory, compile your module into a single executable:
+From within the <file>hello-world</file> directory, compile your module into a single executable:
 
-   ```sh {class="command-line" data-prompt="$" data-output="5-10"}
-   make setup
-   viam module build local
-   ```
+```sh {class="command-line" data-prompt="$" data-output="5-10"}
+make setup
+viam module build local
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -707,7 +712,7 @@ Click the **+** button, select **Local module**, then again select **Local modul
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/Users/jessamyt/myCode/hello-world/run.sh` or `/Users/jessamyt/myCode/hello-world/bin/hello-world`.
+Enter the path to the automatically-generated <file>run.sh</file> file, for example, `/home/jessamy/hello-world/run.sh` on Linux or `/Users/jessamy/hello-world/run.sh`.
 Click **Create**.
 
 {{% /tab %}}
