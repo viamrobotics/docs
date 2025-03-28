@@ -90,10 +90,11 @@ At the end of your <file>meta.json</file>, add the build configuration:
   "module_id": "example-module",
   ...
   "build": {
-    "setup": "./setup.sh", // optional - command to install your build dependencies
-    "build": "./build.sh", // command that will build your module
-    "path" : "dist/archive.tar.gz", // optional - path to your built module
-    "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+    "setup": "./setup.sh", // optional - command for one-time setup
+    "build": "./build.sh", // command that will build your module's tarball
+    "path" : "dist/archive.tar.gz", // optional - path to your built module tarball
+    "arch" : ["linux/amd64", "linux/arm64", "darin/arm64"], // architecture(s) to build for
+    "darwin_deps" : ["go", "x264", "nlopt-static"] // optional - Homebrew dependencies for darwin builds. Explicitly pass `[]` for empty. Default : ["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"].
   }
 }
 ```
