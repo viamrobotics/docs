@@ -20,7 +20,7 @@
 | [`UpdateOrganizationMetadata`](/dev/reference/apis/fleet/#updateorganizationmetadata) | Updates the user-defined metadata for an organization. |
 | [`CreateLocation`](/dev/reference/apis/fleet/#createlocation) | Create and name a {{< glossary_tooltip term_id="location" text="location" >}} under the organization you are currently authenticated to. |
 | [`GetLocation`](/dev/reference/apis/fleet/#getlocation) | Get a {{< glossary_tooltip term_id="location" text="location" >}} by its location ID. |
-| [`UpdateLocation`](/dev/reference/apis/fleet/#updatelocation) | Change the name of a {{< glossary_tooltip term_id="location" text="parent location" >}} and/or assign it a new location. |
+| [`UpdateLocation`](/dev/reference/apis/fleet/#updatelocation) | Change the name of a {{< glossary_tooltip term_id="location" text="location" >}} and/or assign a parent location to a location. |
 | [`DeleteLocation`](/dev/reference/apis/fleet/#deletelocation) | Delete a {{< glossary_tooltip term_id="location" text="location" >}}. |
 | [`ListLocations`](/dev/reference/apis/fleet/#listlocations) | Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} under the organization you are currently authenticated to. |
 | [`ShareLocation`](/dev/reference/apis/fleet/#sharelocation) | Share a location with an organization. |

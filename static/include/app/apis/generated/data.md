@@ -663,7 +663,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): BinaryID objects specifying the desired data. Must be non-empty.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the desired data or BinaryID objects. Must be non-empty. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath for writing retrieved data.
 
 **Returns:**
@@ -672,13 +672,11 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Raises:**
 
-- (GRPCError): If no BinaryID objects are provided.
+- (GRPCError): If no binary data id strings or BinaryID objects are provided.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import BinaryID
-
 binary_metadata, count, last = await data_client.binary_data_by_filter(
     include_binary_data=False
 )
@@ -686,13 +684,7 @@ binary_metadata, count, last = await data_client.binary_data_by_filter(
 my_ids = []
 
 for obj in binary_metadata:
-    my_ids.append(
-        BinaryID(
-            file_id=obj.metadata.id,
-            organization_id=obj.metadata.capture_metadata.organization_id,
-            location_id=obj.metadata.capture_metadata.location_id
-        )
-    )
+    my_ids.append(obj.metadata.binary_data_id)
 
 binary_data = await data_client.binary_data_by_ids(my_ids)
 ```
@@ -932,7 +924,7 @@ Filter and delete binary data by ids.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): BinaryID objects specifying the data to be deleted. Must be non-empty.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the data to be deleted or BinaryID objects.
 
 **Returns:**
 
@@ -940,7 +932,7 @@ Filter and delete binary data by ids.
 
 **Raises:**
 
-- (GRPCError): If no BinaryID objects are provided.
+- (GRPCError): If no binary data id strings or BinaryID objects are provided.
 
 **Example:**
 
@@ -959,11 +951,7 @@ my_ids = []
 
 for obj in binary_metadata:
     my_ids.append(
-        BinaryID(
-            file_id=obj.metadata.id,
-            organization_id=obj.metadata.capture_metadata.organization_id,
-            location_id=obj.metadata.capture_metadata.location_id
-        )
+        obj.metadata.binary_data_id
     )
 
 binary_data = await data_client.delete_binary_data_by_ids(my_ids)
@@ -989,7 +977,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
 
 **Returns:**
 
@@ -1005,13 +993,13 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
  final dataClient = _viam.dataClient;
 
  try {
-  final binaryIDs = [
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  final binaryDataIds = [
+  '<YOUR-BINARY-DATA-ID>',
+  '<YOUR-BINARY-DATA-ID>'
   ];
 
   // Call the function to delete binary data
-  await dataClient.deleteBinaryDataByIds(binaryIDs);
+  await dataClient.deleteBinaryDataByIds(binaryDataIds);
 
   print('Successfully deleted binary data');
  } catch (e) {
@@ -1034,7 +1022,7 @@ Add tags to binary data by ids.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to add to specified binary data. Must be non-empty.
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): List of BinaryID objects specifying binary data to tag. Must be non-empty.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the data to be tagged or BinaryID objects. Must be non-empty. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
 
 **Returns:**
 
@@ -1042,12 +1030,11 @@ Add tags to binary data by ids.
 
 **Raises:**
 
-- (GRPCError): If no BinaryID objects or tags are provided.
+- (GRPCError): If no binary data id strings or BinaryID objects are provided.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import BinaryID
 from viam.utils import create_filter
 
 tags = ["tag1", "tag2"]
@@ -1063,11 +1050,7 @@ my_ids = []
 
 for obj in binary_metadata:
     my_ids.append(
-        BinaryID(
-            file_id=obj.metadata.id,
-            organization_id=obj.metadata.capture_metadata.organization_id,
-            location_id=obj.metadata.capture_metadata.location_id
-        )
+        obj.metadata.binary_data_id
     )
 
 binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
@@ -1096,7 +1079,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
-- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
 
 **Returns:**
 
@@ -1115,13 +1098,13 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
   // List of tags to add
   final List<String> tags = ['tag_1', 'tag_2'];
 
-  final binaryIDs = [
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  final binaryDataIds = [
+  '<YOUR-BINARY-DATA-ID>',
+  '<YOUR-BINARY-DATA-ID>'
   ];
 
   // Call the function with both tags and IDs
-  await dataClient.addTagsToBinaryDataByIds(tags, binaryIDs);
+  await dataClient.addTagsToBinaryDataByIds(tags, binaryDataIds);
 
   print('Successfully added tags to binary IDs');
  } catch (e) {
@@ -1234,7 +1217,7 @@ Remove tags from binary by ids.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to remove from specified binary data. Must be non-empty.
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): List of BinaryID objects specifying binary data to untag. Must be non-empty.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the data to be untagged or BinaryID objects. Must be non-empty. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
 
 **Returns:**
 
@@ -1247,7 +1230,6 @@ Remove tags from binary by ids.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import BinaryID
 from viam.utils import create_filter
 
 tags = ["tag1", "tag2"]
@@ -1264,11 +1246,7 @@ my_ids = []
 
 for obj in binary_metadata:
     my_ids.append(
-        BinaryID(
-            file_id=obj.metadata.id,
-            organization_id=obj.metadata.capture_metadata.organization_id,
-            location_id=obj.metadata.capture_metadata.location_id
-        )
+        obj.metadata.binary_data_id
     )
 
 binary_data = await data_client.remove_tags_from_binary_data_by_ids(
@@ -1298,7 +1276,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
-- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
 
 **Returns:**
 
@@ -1317,13 +1295,13 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
   // List of tags to remove
   final List<String> tags = ['tag_1', 'tag_2'];
 
-  final binaryIDs = [
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  final binaryDataIds = [
+  '<YOUR-BINARY-DATA-ID>',
+  '<YOUR-BINARY-DATA-ID>'
   ];
 
   // Call the function with both tags and IDs
-  await dataClient.removeTagsFromBinaryDataByIds(tags, binaryIDs);
+  await dataClient.removeTagsFromBinaryDataByIds(tags, binaryDataIds);
 
   print('Successfully removed tags from binary IDs');
  } catch (e) {
@@ -1516,7 +1494,7 @@ Add a bounding box to an image specified by its BinaryID.
 
 **Parameters:**
 
-- `binary_id` ([viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): The ID of the image to add the bounding box to.
+- `binary_id` ([viam.proto.app.data.BinaryID | str](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): The binary data id or BinaryID of the image to add the bounding box to. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
 - `label` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A label for the bounding box.
 - `x_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Min X value of the bounding box normalized from 0 to 1.
 - `y_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Min Y value of the bounding box normalized from 0 to 1.
@@ -1533,17 +1511,9 @@ Add a bounding box to an image specified by its BinaryID.
 
 **Example:**
 
-```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import BinaryID
-
-MY_BINARY_ID = BinaryID(
-    file_id="<YOUR-FILE-ID>",
-    organization_id="<YOUR-ORG-ID>",
-    location_id="<YOUR-LOCATION-ID>"
-)
-
+```python {class="line-numbers linkable-line-numbers" data-line="5"}
 bbox_id = await data_client.add_bounding_box_to_image_by_id(
-    binary_id=MY_BINARY_ID,
+    binary_id="<YOUR-BINARY-DATA-ID>",
     label="label",
     x_min_normalized=0,
     y_min_normalized=.1,
@@ -1584,7 +1554,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `label` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `binaryId` [BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html) (required)
+- `binaryDataId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `xMinNormalized` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
 - `yMinNormalized` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
 - `xMaxNormalized` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
@@ -1604,12 +1574,12 @@ _viam = await Viam.withApiKey(
  final dataClient = _viam.dataClient;
 
 // Example binary ID to add a bounding box to
-final binaryId = BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>');
+final binaryDataId = '<YOUR-BINARY-DATA-ID>';
 
 try {
   await dataClient.addBoundingBoxToImageById(
     "label",
-    binaryId,
+    binaryDataId,
     0,
    .1,
    .2,
@@ -1636,7 +1606,7 @@ Removes a bounding box from an image specified by its BinaryID.
 **Parameters:**
 
 - `bbox_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the bounding box to remove.
-- `binary_id` ([viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Binary ID of the image to remove the bounding box from.
+- `binary_id` ([viam.proto.app.data.BinaryID | str](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): The binary data id or BinaryID of the image to remove the bounding box.
 
 **Returns:**
 
@@ -1645,16 +1615,8 @@ Removes a bounding box from an image specified by its BinaryID.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import BinaryID
-
-MY_BINARY_ID = BinaryID(
-    file_id=your-file_id,
-    organization_id=your-org-id,
-    location_id=your-location-id
-)
-
 await data_client.remove_bounding_box_from_image_by_id(
-binary_id=MY_BINARY_ID,
+binary_id="<YOUR-BINARY-DATA-ID>",
 bbox_id="your-bounding-box-id-to-delete"
 )
 ```
@@ -1681,7 +1643,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `bboxId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `binaryId` [BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html) (required)
+- `binaryDataId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 
 **Returns:**
 
@@ -1697,14 +1659,14 @@ _viam = await Viam.withApiKey(
  final dataClient = _viam.dataClient;
 
 // Example binary ID to remove a bounding box from
-final binaryId = BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>');
+final binaryDataId = '<YOUR-BINARY-DATA-ID>';
 
 // Example bbox ID (label)
 final bboxId = "label";
 try {
   await dataClient.removeBoundingBoxFromImageById(
     bboxId,
-    binaryId,
+    binaryDataId,
   );
 
   print('Successfully removed bounding box');
@@ -1966,7 +1928,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.
 
 **Returns:**
@@ -1976,8 +1938,6 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import BinaryID
-
 binary_metadata, count, last = await data_client.binary_data_by_filter(
     include_binary_data=False
 )
@@ -1986,11 +1946,7 @@ my_binary_ids = []
 
 for obj in binary_metadata:
     my_binary_ids.append(
-        BinaryID(
-            file_id=obj.metadata.id,
-            organization_id=obj.metadata.capture_metadata.organization_id,
-            location_id=obj.metadata.capture_metadata.location_id
-            )
+        obj.metadata.binary_data_id
         )
 
 await data_client.add_binary_data_to_dataset_by_ids(
@@ -2020,7 +1976,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
 - `datasetId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 
 **Returns:**
@@ -2037,9 +1993,9 @@ _viam = await Viam.withApiKey(
  final dataClient = _viam.dataClient;
 
 // Example binary IDs to add to the dataset
- final binaryIds = [
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+ final binaryDataIds = [
+  '<YOUR-BINARY-DATA-ID>',
+  '<YOUR-BINARY-DATA-ID>'
  ];
 
  // Dataset ID where the binary data will be added
@@ -2048,7 +2004,7 @@ _viam = await Viam.withApiKey(
  try {
    // Add the binary data to the dataset
    await dataClient.addBinaryDataToDatasetByIds(
-     binaryIds,
+     binaryDataIds,
      datasetId
  );
    print('Successfully added binary data to dataset');
@@ -2072,7 +2028,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from.
 
 **Returns:**
@@ -2082,8 +2038,6 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import BinaryID
-
 binary_metadata, count, last = await data_client.binary_data_by_filter(
     include_binary_data=False
 )
@@ -2092,11 +2046,7 @@ my_binary_ids = []
 
 for obj in binary_metadata:
     my_binary_ids.append(
-        BinaryID(
-            file_id=obj.metadata.id,
-            organization_id=obj.metadata.capture_metadata.organization_id,
-            location_id=obj.metadata.capture_metadata.location_id
-        )
+        obj.metadata.binary_data_id
     )
 
 await data_client.remove_binary_data_from_dataset_by_ids(
@@ -2126,7 +2076,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
 - `datasetId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 
 **Returns:**
@@ -2143,9 +2093,9 @@ _viam = await Viam.withApiKey(
  final dataClient = _viam.dataClient;
 
 // Example binary IDs to remove from the dataset
- final binaryIds = [
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+ final binaryDataIds = [
+  '<YOUR-BINARY-DATA-ID>',
+  '<YOUR-BINARY-DATA-ID>'
  ];
 
  // Dataset ID where the binary data will be removed
@@ -2154,7 +2104,7 @@ _viam = await Viam.withApiKey(
  try {
    // Remove the binary data from the dataset
    await dataClient.removeBinaryDataFromDatasetByIds(
-     binaryIds,
+     binaryDataIds,
      datasetId
  );
    print('Successfully removed binary data from dataset');
