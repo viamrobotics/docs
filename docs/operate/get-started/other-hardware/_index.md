@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 icon: true
 images: ["/registry/create-module.svg"]
-description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a module."
+description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a custom module."
 aliases:
   - /registry/create/
   - /use-cases/create-module/
@@ -38,6 +38,10 @@ next: "/operate/get-started/other-hardware/hello-world-module/"
 If your physical or virtual hardware is not [already supported](/operate/get-started/supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
+
+{{% hiddencontent %}}
+If you want to create a "custom module", this is the the page.
+{{% /hiddencontent %}}
 
 This page provides instructions for creating and uploading a module in Python or Go.
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
