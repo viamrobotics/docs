@@ -693,7 +693,6 @@ def check_for_unused_methods(methods, type):
         for row in f:
             if not row.startswith('#') and "," in row:
                 resource = row.split(',')[0]
-
                 py_method_name = row.split(',')[3]
                 go_method_name = row.split(',')[4]
                 flutter_method_name = row.split(',')[5].rstrip()

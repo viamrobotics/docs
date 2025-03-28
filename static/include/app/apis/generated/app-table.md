@@ -16,6 +16,8 @@
 | [`DeleteOrganizationMember`](/dev/reference/apis/fleet/#deleteorganizationmember) | Remove a member from the {{< glossary_tooltip term_id="organization" text="organization" >}} you are currently authenticated to. |
 | [`DeleteOrganizationInvite`](/dev/reference/apis/fleet/#deleteorganizationinvite) | Delete a pending organization invite to the organization you are currently authenticated to. |
 | [`ResendOrganizationInvite`](/dev/reference/apis/fleet/#resendorganizationinvite) | Resend a pending organization invite email. |
+| [`GetOrganizationMetadata`](/dev/reference/apis/fleet/#getorganizationmetadata) | Gets the user-defined metadata for an organization. |
+| [`UpdateOrganizationMetadata`](/dev/reference/apis/fleet/#updateorganizationmetadata) | Updates the user-defined metadata for an organization. |
 | [`CreateLocation`](/dev/reference/apis/fleet/#createlocation) | Create and name a {{< glossary_tooltip term_id="location" text="location" >}} under the organization you are currently authenticated to. |
 | [`GetLocation`](/dev/reference/apis/fleet/#getlocation) | Get a {{< glossary_tooltip term_id="location" text="location" >}} by its location ID. |
 | [`UpdateLocation`](/dev/reference/apis/fleet/#updatelocation) | Change the name of a {{< glossary_tooltip term_id="location" text="parent location" >}} and/or assign it a new location. |
@@ -26,6 +28,8 @@
 | [`LocationAuth`](/dev/reference/apis/fleet/#locationauth) | Get a location’s `LocationAuth` (location secret or secrets). |
 | [`CreateLocationSecret`](/dev/reference/apis/fleet/#createlocationsecret) | Create a new location secret. |
 | [`DeleteLocationSecret`](/dev/reference/apis/fleet/#deletelocationsecret) | Delete a location secret. |
+| [`GetLocationMetadata`](/dev/reference/apis/fleet/#getlocationmetadata) | Get the user-defined metadata for a location. |
+| [`UpdateLocationMetadata`](/dev/reference/apis/fleet/#updatelocationmetadata) | . |
 | [`GetRobot`](/dev/reference/apis/fleet/#getrobot) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID. |
 | [`GetRobotAPIKeys`](/dev/reference/apis/fleet/#getrobotapikeys) | Gets the API keys for the machine. |
 | [`GetRobotParts`](/dev/reference/apis/fleet/#getrobotparts) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="machine" text="machine" >}}. |
@@ -44,6 +48,10 @@
 | [`NewRobot`](/dev/reference/apis/fleet/#newrobot) | Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}. |
 | [`UpdateRobot`](/dev/reference/apis/fleet/#updaterobot) | Change the name of an existing machine. |
 | [`DeleteRobot`](/dev/reference/apis/fleet/#deleterobot) | Delete a specified machine. |
+| [`GetRobotMetadata`](/dev/reference/apis/fleet/#getrobotmetadata) | Gets the user-defined metadata for a machine. |
+| [`GetRobotPartMetadata`](/dev/reference/apis/fleet/#getrobotpartmetadata) | Gets the user-defined metadata for a machine part. |
+| [`UpdateRobotMetadata`](/dev/reference/apis/fleet/#updaterobotmetadata) | Updates the user-defined metadata for a machine. |
+| [`UpdateRobotPartMetadata`](/dev/reference/apis/fleet/#updaterobotpartmetadata) | Updates the user-defined metadata for a machine part. |
 | [`ListFragments`](/dev/reference/apis/fleet/#listfragments) | Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in the organization you are currently authenticated to. |
 | [`ListMachineFragments`](/dev/reference/apis/fleet/#listmachinefragments) | Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text="fragments" >}} for a machine, as well as additionally specified fragment IDs. |
 | [`GetFragment`](/dev/reference/apis/fleet/#getfragment) | Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID. |
