@@ -122,9 +122,6 @@ For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/vi
      if cfg.CameraName == "" {
        return nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
      }
-     if reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
-       return nil, errors.New("camera_name must be a string")
-     }
      deps = append(deps, cfg.CameraName)
      return deps, nil
    }
@@ -209,9 +206,6 @@ func (cfg *Config) Validate(path string) ([]string, error) {
     logger.Info("camera_name not configured, using no camera")
     return nil, nil
   }
-  if reflect.TypeOf(cfg.CameraName).Kind() != reflect.String {
-    return nil, errors.New("camera_name must be a string")
-  }
   deps = append(deps, cfg.CameraName)
   return deps, nil
 }
@@ -232,6 +226,7 @@ You must access the API key module environment variables to establish the app cl
 Some older modules use explicit dependencies, which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
 
 ```json {class="line-numbers linkable-line-numbers"}
+{
   "name": "mime-type-sensor",
   "api": "rdk:component:sensor",
   "model": "jessamy:my-module:my-sensor",
