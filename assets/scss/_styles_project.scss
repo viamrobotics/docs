@@ -3371,3 +3371,27 @@ footer {
   margin-left: 0rem !important;
   margin-right: 0rem !important;
 }
+
+@media (min-width: 768px) {
+
+  aside.td-sidebar.frontpage {
+    border-right: unset;
+    display: none;
+  }
+}
+
+.td-main main.frontpage {
+  padding-bottom: 0 !important;
+  margin: auto;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.frontpage .col.hover-card {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
