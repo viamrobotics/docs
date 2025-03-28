@@ -40,7 +40,7 @@ You can keep the module private or share it with your organization or the public
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
 {{% hiddencontent %}}
-If you want to create a "custom module", this is the the page.
+If you want to create a "custom module", this is the page.
 {{% /hiddencontent %}}
 
 This page provides instructions for creating and uploading a module in Python or Go.
