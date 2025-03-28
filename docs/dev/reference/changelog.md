@@ -43,7 +43,7 @@ date: "2024-09-18"
 
 {{% changelog color="added" title="Store metadata" date="2025-03-28" %}}
 
-You can store and retrieve arbitrary data for your organization, location, machine, and machine part with the [Fleet Management API](/dev/dev/reference/apis/fleet/).
+You can store and retrieve arbitrary metadata about your organization, location, machine, and machine part with the [Fleet Management API](/dev/dev/reference/apis/fleet/).
 
 {{% /changelog %}}
 
