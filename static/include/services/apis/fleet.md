@@ -7,7 +7,7 @@ Method Name | Description
 [`UpdateOrganizationInviteAuthorizations`](/dev/reference/apis/fleet/#updateorganizationinviteauthorizations) | Update the authorizations attached to an organization invite that has already been created.
 [`CreateLocation`](/dev/reference/apis/fleet/#createlocation) | Create and name a {{< glossary_tooltip term_id="location" text="location" >}}.
 [`GetLocation`](/dev/reference/apis/fleet/#getlocation) | Get a location by its ID.
-[`UpdateLocation`](/dev/reference/apis/fleet/#updatelocation ) | Change the name of and/or assign a parent location to a location.
+[`UpdateLocation`](/dev/reference/apis/fleet/#updatelocation ) | Change the name of a location and/or assign a parent location to a location.
 [`DeleteLocation`](/dev/reference/apis/fleet/#deletelocation ) | Delete a location.
 [`ListLocations`](/dev/reference/apis/fleet/#listlocations ) | List locations.
 [`LocationAuth`](/dev/reference/apis/fleet/#locationauth ) | Get a location's authorization (location secrets).
