@@ -94,7 +94,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
     "build": "./build.sh", // command that will build your module's tarball
     "path" : "dist/archive.tar.gz", // optional - path to your built module tarball
     "arch" : ["linux/amd64", "linux/arm64", "darin/arm64"], // architecture(s) to build for
-    "darwin_deps" : ["go", "x264", "nlopt-static"] // optional - Homebrew dependencies for darwin builds. Explicitly pass `[]` for empty. Default : ["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"].
+    "darwin_deps" : ["go", "x264", "nlopt-static"] // optional - Homebrew dependencies for Darwin builds. Explicitly pass `[]` for empty. Default : ["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"].
   }
 }
 ```
