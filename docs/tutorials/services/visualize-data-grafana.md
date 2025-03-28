@@ -197,7 +197,7 @@ You can use [MongoDB Compass](https://www.mongodb.com/products/tools/compass) to
 
 ### Query your data in Grafana
 
-You can also use query language directly in Grafana using the [MongoDB Query Editor](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/mongodb-query-editor/), which enables data query functionality similar to that of the MongoDB shell, `mongosh`.
+You can also use query language directly in Grafana using the [MongoDB Query Editor](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/query-editor/), which enables data query functionality similar to that of the MongoDB shell, `mongosh`.
 
 For example, to limit the visualization of the plant watering data set to just the `moisture-sensor` component, within a certain time range, and limiting returned results to 1000 records, you could use the following query in the query editor:
 
