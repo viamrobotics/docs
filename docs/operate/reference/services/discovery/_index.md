@@ -30,6 +30,8 @@ Users of your module can then:
 1. Create a camera with the copy-pasteable configuration snippet for the camera they want to use, with the camera path already filled in.
 1. Use the configured camera in their vision service configuration.
 
+To see this in action, see [webcam discovery](/operate/reference/components/camera/webcam/#find-a-video-path-using-a-discovery-service-in-the-viam-app) as an example.
+
 To interact with a discovery service programmatically, use the [discovery service API](/dev/reference/apis/services/discovery/).
 
 ## Configuration
