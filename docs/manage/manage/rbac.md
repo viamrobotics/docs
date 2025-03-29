@@ -37,6 +37,7 @@ Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" 
 | Edit {{< glossary_tooltip term_id="part" text="part" >}} name | **Yes** | No | **Yes** | No | **Yes** | No |
 | Restart the machine | **Yes** | No | **Yes** | No | **Yes** | No |
 | Edit a machine config (including data capture and sync) | **Yes** | No | **Yes** | No | **Yes** | No |
+| Can read and write metadata | **Yes** | No  | **Yes** | No | **Yes** | No |
 
 ## Locations
 
@@ -54,6 +55,7 @@ Permissions for managing {{< glossary_tooltip term_id="location" text="locations
 | Add a shared location | **Yes** | No | **Yes** | No | No | No |
 | Remove a shared location | **Yes** | No | **Yes** | No | No | No |
 | Use Try Viam from within the org\* | **Yes** | No | No | No | No | No |
+| Can read and write metadata | **Yes** | No  | **Yes** | No | **Yes** | No |
 
 If a user has access to a child location but not its parent location, the user cannot see machines in the parent location.
 
@@ -83,6 +85,7 @@ Permissions for managing org settings and user roles are as follows:
 | Create a new organization | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** |
 | Delete modules | **Yes** | No | No | No | No | No |
 | Make public modules private | **Yes** | No | No | No | No | No |
+| Can read and write metadata | **Yes** | No  | **Yes** | No | **Yes** | No |
 
 \*For locations/machines they have access to
 
