@@ -16,7 +16,7 @@
     <div class="container-fluid td-outer">
       <div class="td-main">
         <div class="row flex-xl-nowrap">
-          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none {{ if .IsHome }} frontpage{{ end }}">
             {{ partial "sidebar.html" . }}
           </aside>
           {{ if .Params.noToc }}
@@ -27,7 +27,7 @@
             {{ partial "taxonomy_terms_clouds.html" . }}
           </aside>
           {{ end }}
-          <main class="col-12 col-md-9 {{ if .Params.noToc }}col-xl-10{{ else }}col-xl-8{{ end }} pl-md-5" role="main">
+          <main class="col-12 col-md-9 {{ if .Params.noToc }}col-xl-10{{ else }}col-xl-8{{ end }} pl-md-5 {{ if .IsHome }} frontpage{{ end }}" role="main">
             {{ partial "version-banner.html" . }}
             {{ if ne .Params.noedit true }}
               {{ partial "edit-on-github.html" . }}
