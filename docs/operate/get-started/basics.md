@@ -88,8 +88,8 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 
 1. From there, you have many options including:
 
-- Capturing data from your machines
-- Training and deploying an AI model
-- Using an SDK of your choice to write an app to interact with your machines
-- Deploying control logic
-- Sharing the configuration across many machines
+   - Capturing data from your machines
+   - Training and deploying an AI model
+   - Using an SDK of your choice to write an app to interact with your machines
+   - Deploying control logic
+   - Sharing the configuration across many machines

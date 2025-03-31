@@ -552,7 +552,6 @@ details > div.expand-content > *:last-child {
   margin-bottom: 0rem;
 }
 
-
 .expand {
   padding-bottom: 0.75rem;
   clear: both;
@@ -3265,18 +3264,23 @@ li.active-path.tutorial-heading > a {
 
 .td-content > ol > li > p, .td-content > .table * ol > li > p,
 .td-content * .table * ol > li > p,
-.td-content > ol > li > .expand, .td-content > .table * ol > li > .expand,
-.td-content > ol * li > .expand, .td-content * .table * ol > li > .expand,
 .td-content > ol > li > div, .td-content > .table * ol > li > div,
-.td-content * ol > li > div, .td-content * .table * ol > li > div,
 .td-content > ol > li > picture, .td-content > .table * ol > li > picture,
 .td-content * ol > li > picture, .td-content * .table * ol > li > picture,
 .td-content > ol > li > ul, .td-content > .table * ol > li > ul,
-.td-content * ol > li > ul, .td-content * .table * ol > li > ul,
+.td-content * .table * ol > li > ul,
 .td-content > ol > li > img, .td-content > .table * ol > li > img,
+.td-content > ol > li > .expand, .td-content > .table * ol > li > .expand,
 .td-content * ol > li > img, .td-content * .table * ol > li > img {
     margin-left: 2.5rem;
 }
+
+
+.td-content .expand .table * ol > li > p, .td-content * .table * ol > li > div,
+.td-content > ol * li > .expand, .td-content * .table * ol > li > .expand {
+    margin-left: 0rem !important;
+}
+
 
 div.tablestep {
   display: flex;
