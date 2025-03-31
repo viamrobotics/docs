@@ -129,7 +129,7 @@ For modular resources, you must instead set the `log_level` attribute on the mod
 
 ```json {class="line-numbers linkable-line-numbers" data-line="3"}
 "module_id": "viam:raspberry-pi",
-"version": "1.9.0"
+"version": "1.9.0",
 "log_level":  "debug"
 ```
 
