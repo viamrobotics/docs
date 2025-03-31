@@ -41,9 +41,11 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-{{% changelog color="changed" title="Viam provisioning filename" date="2025-03-24" %}}
+{{% changelog color="changed" title="Viam provisioning" date="2025-03-24" %}}
 
-When provisioning devices, the configuration file for provisioning is now called <FILE>viam-defaults.json</FILE> and uses different syntax and field names. The old <FILE>viam-provisioning.json</FILE> is still required for older versions of `viam-agent`.
+You can now set any `viam-agent` configuration values to customized defaults.
+If you are using `viam-agent` version X.X.X or newer, the provisioning file is called <FILE>viam-defaults.json</FILE> and uses new syntax and field names.
+When provisioning devices using an older version of `viam-agent`, the configuration file needs to be called <FILE>viam-provisioning.json</FILE>.
 
 If you are using the old <FILE>viam-provisioning.json</FILE> you must also use the old syntax and field names.
 
