@@ -85,6 +85,11 @@ if __name__ == '__main__':
 
 Once you have instantiated an `AppClient`, you can run the following [API methods](#api) against the `AppClient` object (named `fleet` in the examples).
 
+{{% hiddencontent %}}
+You cannot instantiate an `AppClient` from inside a module without authenticating using API keys.
+If your module requires an `AppClient`, you can use use the module environment variables `VIAM_API_KEY` and `VIAM_API_KEY_ID` to authenticate.
+{{% /hiddencontent %}}
+
 ## API
 
 {{< readfile "/static/include/app/apis/generated/app.md" >}}
