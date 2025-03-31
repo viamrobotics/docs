@@ -253,22 +253,8 @@ During the provisioning process, a machine connects to a network to install `via
 If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
 
 If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
-
-However, if you want to add additional networks to the provisioning configuration you can add them to the `networks` field value.
-
-{{< alert title="Important" color="note" >}}
-You must enable `turn_on_hotspot_if_wifi_has_no_internet` in the [`agent-provisioning` configuration](/manage/fleet/provision/setup/#configure-agent-provisioning) of the machine to allow the machine to connect to the specified networks after provisioning.
-{{< /alert >}}
-
-If `turn_on_hotspot_if_wifi_has_no_internet` is enabled, `agent-provisioning` will try to connect to each specified network in order of `priority` from highest to lowest.
-
-<!-- prettier-ignore -->
-| Name       | Type   | Description |
-| ---------- | ------ | ----------- |
-| `type`     | string | The type of the network. Options: `"wifi"`|
-| `ssid`     | string | The network's SSID. |
-| `psk`      | string | The network pass key. |
-| `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
+If that is not possible, you can add networks throught the `additional_networks` field.
+`agent-provisioning` will then try to connect to each specified network in order of `priority` from highest to lowest.
 
 The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
 
@@ -285,24 +271,32 @@ The following configuration defines the connection information and credentials f
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
     "retry_connection_timeout_minutes": "15m",
-    "turn_on_hotspot_if_wifi_has_no_internet": true,
-    "networks": [
-      {
-        "type": "wifi",
-        "ssid": "otherNetworkOne",
-        "psk": "myFirstPassword",
-        "priority": 30
-      },
-      {
-        "type": "wifi",
-        "ssid": "otherNetworkTwo",
-        "psk": "mySecondPassword",
-        "priority": 10
-      }
-    ]
-  }
+    "turn_on_hotspot_if_wifi_has_no_internet": true
+  },
+  "additional_networks": [
+    {
+      "type": "wifi",
+      "ssid": "otherNetworkOne",
+      "psk": "myFirstPassword",
+      "priority": 30
+    },
+    {
+      "type": "wifi",
+      "ssid": "otherNetworkTwo",
+      "psk": "mySecondPassword",
+      "priority": 10
+    }
+  ]
 }
 ```
+
+<!-- prettier-ignore -->
+| Name       | Type   | Description |
+| ---------- | ------ | ----------- |
+| `type`     | string | The type of the network. Options: `"wifi"`|
+| `ssid`     | string | The network's SSID. |
+| `psk`      | string | The network pass key. |
+| `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
 
 {{% /tablestep %}}
 {{< /table >}}
