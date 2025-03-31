@@ -479,7 +479,7 @@ The following instructions describe how to set up an API key for one location.
 
 1.  Name your key something such as `air-sensors-key`.
 
-1.  Select **Resource** and choose the location you have all your air quality sensing machines in.
+1.  Select **Entity** and choose the location you have all your air quality sensing machines in.
 
 1.  Set the **Role** to **Owner**, then click **Generate key**.
 

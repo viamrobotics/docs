@@ -28,7 +28,7 @@ You must have the **Owner** role to be able to grant permissions.
 
    {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="700x" declaredimensions=true >}}
 
-6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Resource** to share.
+6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Entity** to share.
 
    Users with access to a location or organization can collaborate on the [machines](/operate/get-started/basics/#what-is-a-machine) within it.
 
