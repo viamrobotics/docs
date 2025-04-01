@@ -97,7 +97,7 @@ To establish a connection between a part of one machine and a part of a second m
    {{<imgproc src="/build/configure/parts/remote-create.png" resize="x1100" declaredimensions=true alt="The create menu with options including remote part shown." style="width:500px" class="shadow" >}}
 
 7. Click **Remote part**.
-8. Select from the list of machines.
+8. Select the remote part from the list of parts.
    Alternatively, click **Add empty remote** and then scroll to the newly-created remote part configuration card.
    Click on **{}** (Switch to advanced) and replace the JSON object with the remote config you copied in step 4.
 
