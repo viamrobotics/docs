@@ -646,6 +646,10 @@ details summary::-webkit-details-marker {
   align-items: baseline;
 }
 
+details.howtoexpand > div.expand-content *:nth-child(2) {
+  margin-top: 0.8rem;
+}
+
 .howtoexpand .expand-label > span > div > div {
   padding-right: 14px;
   display: flex;
@@ -3382,11 +3386,19 @@ footer {
     border-right: unset;
     display: none;
   }
+
+}
+
+@media (max-width: 767px) {
+  .row.flex-xl-nowrap {
+    flex-direction: column;
+  }
 }
 
 .td-main main.frontpage {
   padding-bottom: 0 !important;
   margin: auto;
+  margin-top: 2rem;
   padding-left: 1rem !important;
   padding-right: 1rem !important;
   display: flex;

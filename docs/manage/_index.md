@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 notoc: true
+noedit: true
 open_on_desktop: true
 overview: true
 description: "Remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere."
