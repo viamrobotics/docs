@@ -5,6 +5,7 @@ weight: 250
 layout: "docs"
 type: "docs"
 no_list: true
+noedit: true
 open_on_desktop: true
 overview: true
 notoc: true
