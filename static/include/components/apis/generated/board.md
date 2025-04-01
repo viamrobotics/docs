@@ -168,7 +168,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<boolean>): Implementation of [Board](https://ts.viam.dev/interfaces/Board.html).[getGPIO](https://ts.viam.dev/interfaces/Board.html#getgpio).
+- (Promise<boolean>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getgpio).
 
@@ -1398,6 +1398,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#docommand).
 

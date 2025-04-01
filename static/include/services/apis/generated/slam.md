@@ -113,7 +113,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<Uint8Array>): Implementation of Slam.getPointCloudMap.
+- (Promise<Uint8Array>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getpointcloudmap).
 
@@ -168,7 +168,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<Uint8Array>): Implementation of Slam.getInternalState.
+- (Promise<Uint8Array>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getinternalstate).
 
@@ -381,6 +381,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#docommand).
 

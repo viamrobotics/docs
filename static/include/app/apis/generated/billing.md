@@ -28,11 +28,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `orgId` (string) (required)
+- `orgId` (string) (required): The organization ID.
 
 **Returns:**
 
-- (Promise<GetCurrentMonthUsageResponse>): None.
+- (Promise<GetCurrentMonthUsageResponse>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const usage = await billing.getCurrentMonthUsage('<organization-id>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getcurrentmonthusage).
 
@@ -69,11 +75,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `orgId` (string) (required)
+- `orgId` (string) (required): The organization ID.
 
 **Returns:**
 
-- (Promise<[GetOrgBillingInformationResponse](https://ts.viam.dev/classes/billingApi.GetOrgBillingInformationResponse.html)>): None.
+- (Promise<[GetOrgBillingInformationResponse](https://ts.viam.dev/classes/billingApi.GetOrgBillingInformationResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const billingInfo = await billing.getOrgBillingInformation(
+  '<organization-id>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getorgbillinginformation).
 
@@ -109,11 +123,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `orgId` (string) (required)
+- `orgId` (string) (required): The organization ID.
 
 **Returns:**
 
-- (Promise<[GetInvoicesSummaryResponse](https://ts.viam.dev/classes/billingApi.GetInvoicesSummaryResponse.html)>): None.
+- (Promise<[GetInvoicesSummaryResponse](https://ts.viam.dev/classes/billingApi.GetInvoicesSummaryResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const invoicesSummary = await billing.getInvoicesSummary(
+  '<organization-id>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicessummary).
 
@@ -152,12 +174,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `id` (string) (required)
-- `orgId` (string) (required)
+- `id` (string) (required): The invoice ID.
+- `orgId` (string) (required): The organization ID.
 
 **Returns:**
 
-- (Promise<Uint8Array>): None.
+- (Promise<Uint8Array>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const invoicePdf = await billing.getInvoicePdf(
+  '<invoice-id>',
+  '<organization-id>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicepdf).
 

@@ -696,7 +696,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the requested binary data.
+- `ids` (string) (required): The IDs of the requested binary data.
 
 **Returns:**
 
@@ -964,7 +964,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the data to be deleted. Must be non-empty.
+- `ids` (string) (required): The IDs of the data to be deleted. Must be non-empty.
 
 **Returns:**
 
@@ -1065,7 +1065,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `tags` (string) (required): The list of tags to add to specified binary data. Must be
 non-empty.
-- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the data to be tagged. Must be non-empty.
+- `ids` (string) (required): The IDs of the data to be tagged. Must be non-empty.
 
 **Returns:**
 
@@ -1262,7 +1262,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `tags` (string) (required): List of tags to remove from specified binary data. Must be
 non-empty.
-- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the data to be edited. Must be non-empty.
+- `ids` (string) (required): The IDs of the data to be edited. Must be non-empty.
 
 **Returns:**
 
@@ -1531,7 +1531,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `id` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required)
+- `binaryId` (string) (required): The ID of the image to add the bounding box to.
 - `label` (string) (required): A label for the bounding box.
 - `xMinNormalized` (number) (required): The min X value of the bounding box normalized from 0
 to 1.
@@ -1628,7 +1628,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `binId` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The ID of the image to remove the bounding box from.
+- `binId` (string) (required): The ID of the image to remove the bounding box from.
 - `bboxId` (string) (required): The ID of the bounding box to remove.
 
 **Returns:**
@@ -1962,7 +1962,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of binary data to add to dataset.
+- `ids` (string) (required): The IDs of binary data to add to dataset.
 - `datasetId` (string) (required): The ID of the dataset to be added to.
 
 **Returns:**
@@ -2062,7 +2062,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` ([BinaryID](https://ts.viam.dev/classes/BinaryID.html)) (required): The IDs of the binary data to remove from dataset.
+- `ids` (string) (required): The IDs of the binary data to remove from dataset.
 - `datasetId` (string) (required): The ID of the dataset to be removed from.
 
 **Returns:**

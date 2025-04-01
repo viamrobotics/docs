@@ -34,12 +34,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` (None) (optional)
-- `callOptions` (CallOptions) (optional)
+- `extra` (None) (optional): Extra arguments to pass to the sync request.
+- `callOptions` (CallOptions) (optional): Call options for the sync request.
 
 **Returns:**
 
-- (Promise<void>): Implementation of [DataManager](https://ts.viam.dev/interfaces/DataManager.html).[sync](https://ts.viam.dev/interfaces/DataManager.html#sync).
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const dataManager = new VIAM.DataManagerClient(
+  machine,
+  'my_data_manager'
+);
+await dataManager.sync();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#sync).
 
@@ -104,12 +114,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
-- `callOptions` (CallOptions) (optional)
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to do.
+- `callOptions` (CallOptions) (optional): Call options for the command.
 
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const dataManager = new VIAM.DataManagerClient(
+  machine,
+  'my_data_manager'
+);
+await dataManager.doCommand(new Struct({ cmd: 'test', data1: 500 }));
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#docommand).
 

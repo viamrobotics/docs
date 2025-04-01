@@ -63,6 +63,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const linearVelocity = await movementSensor.getLinearVelocity();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getlinearvelocity).
 
 {{% /tab %}}
@@ -158,6 +168,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const angularVelocity = await movementSensor.getAngularVelocity();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getangularvelocity).
 
 {{% /tab %}}
@@ -246,6 +266,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - (Promise<number>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const compassHeading = await movementSensor.getCompassHeading();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getcompassheading).
 
@@ -344,6 +374,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Orientation](https://ts.viam.dev/classes/commonApi.Orientation.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const orientation = await movementSensor.getOrientation();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getorientation).
 
 {{% /tab %}}
@@ -435,6 +475,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPositionResponse](https://ts.viam.dev/classes/movementSensorApi.GetPositionResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const position = await movementSensor.getPosition();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getposition).
 
 {{% /tab %}}
@@ -523,6 +573,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - (Promise<[movementSensorApi](https://ts.viam.dev/modules/movementSensorApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/movementSensorApi.GetPropertiesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const properties = await movementSensor.getProperties();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getproperties).
 
@@ -627,6 +687,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<[GetAccuracyResponse](https://ts.viam.dev/classes/movementSensorApi.GetAccuracyResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const accuracy = await movementSensor.getAccuracy();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getaccuracy).
 
 {{% /tab %}}
@@ -718,6 +788,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Vector3](https://ts.viam.dev/classes/commonApi.Vector3.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const linearAcceleration =
+  await movementSensor.getLinearAcceleration();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getlinearacceleration).
 
@@ -841,6 +922,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const movementSensor = new VIAM.MovementSensorClient(
+  machine,
+  'my_movement_sensor'
+);
+const readings = await movementSensor.getReadings();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getreadings).
 
 {{% /tab %}}
@@ -955,6 +1046,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#docommand).
 
