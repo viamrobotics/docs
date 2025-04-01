@@ -61,6 +61,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<readonly [number, boolean]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
+const [voltage, isAc] = await powerSensor.getVoltage();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getvoltage).
 
 {{% /tab %}}
@@ -150,6 +160,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<readonly [number, boolean]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
+const [current, isAc] = await powerSensor.getCurrent();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getcurrent).
 
 {{% /tab %}}
@@ -238,6 +258,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
+const power = await powerSensor.getPower();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getpower).
 
 {{% /tab %}}
@@ -323,6 +353,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
+const readings = await powerSensor.getReadings();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getreadings).
 
@@ -437,6 +477,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#docommand).
 

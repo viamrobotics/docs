@@ -2458,7 +2458,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the role under.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
 - `role` (string) (required): The role to add ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to create the role for ("robot",
   "location", or "organization").
@@ -2516,7 +2516,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to remove the role from.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
 - `role` (string) (required): The role to remove ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to remove the role from ("robot",
   "location", or "organization").
@@ -3444,6 +3444,27 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>): The new key and ID.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkeyfromexistingkeyauthorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetAppContent
+
+Retrieve the app content for an organization.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `publicNamespace` (string) (required): The public namespace of the organization.
+- `name` (string) (required): The name of the app.
+
+**Returns:**
+
+- (Promise<[GetAppContentResponse](https://ts.viam.dev/classes/appApi.GetAppContentResponse.html)>): The blob path and entrypoint of the app content.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappcontent).
 
 {{% /tab %}}
 {{< /tabs >}}

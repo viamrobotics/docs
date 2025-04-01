@@ -3,6 +3,29 @@
 Push the button.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_button = Button.from_robot(robot=machine, name="my_button")
+
+# Push the button
+await my_button.push()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/button/client/index.html#viam.components.button.client.ButtonClient.push).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -74,6 +97,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#docommand).
 

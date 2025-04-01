@@ -60,6 +60,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const sensor = new VIAM.SensorClient(machine, 'my_sensor');
+
+// Get the readings of a sensor.
+const readings = await sensor.getReadings();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#getreadings).
 
 {{% /tab %}}
@@ -207,6 +216,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#docommand).
 

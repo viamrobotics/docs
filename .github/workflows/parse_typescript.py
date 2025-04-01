@@ -115,7 +115,14 @@ class TypeScriptParser:
                         }
 
                 returns = md(str(method.find('h4', class_="tsd-returns-title"))).replace("#### Returns ", "").strip().replace('\\', '')
-                return_description = md(str(method.find('h4', class_="tsd-returns-title").next_sibling)).strip()
+                return_description = ""
+                if method.find('h4', class_="tsd-returns-title").next_sibling:
+                    if not method.find('h4', class_="tsd-returns-title").next_sibling.get('class'):
+                        return_description = md(str(method.find('h4', class_="tsd-returns-title").next_sibling)).strip()
+                    else:
+                        return_description = None
+                else:
+                    return_description = None
 
                 return_object = {
                     'return_description': return_description,
@@ -128,6 +135,15 @@ class TypeScriptParser:
                     if method.find('li', class_="tsd-description").find('div', class_="tsd-comment"):
                         method_description = method.find('li', class_="tsd-description").find('div', class_="tsd-comment").text.strip()
 
+                code_sample = ""
+                if method.find('div', class_='tsd-tag-example'):
+                    code_sample_full = method.find('div', class_='tsd-tag-example').find('pre')
+                    code_sample_full.find('button').decompose()
+                    code_sample_draft = md(str(code_sample_full)).replace('```', "").strip()
+                    code_sample = ""
+                    for line in code_sample_draft.split('\n'):
+                        code_sample = code_sample + line.rstrip() + "\n"
+
                 self.typescript_methods[type][resource][method_name] = {
                     'method_description': method_description,
                     'method_link': method.find('a', class_='tsd-anchor-icon')["href"],
@@ -135,9 +151,9 @@ class TypeScriptParser:
                     'proto': '', # method_name ?
                     'return': return_object
                 }
-                    # 'code_sample': "", # No code samples yet method.find('pre').text
-                # print(self.typescript_methods[type][resource][method_name])
-                # print()
+
+                if code_sample:
+                    self.typescript_methods[type][resource][method_name]["code_sample"] = code_sample
 
 
         return self.typescript_methods

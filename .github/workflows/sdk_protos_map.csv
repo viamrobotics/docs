@@ -58,7 +58,7 @@ board,GetResourceName,No,get_resource_name,,getResourceName,
 board,Close,No,close,Close,,
 
 ## Button
-button,Push,No,,Push,,push
+button,Push,No,push,Push,,push
 button,DoCommand,No,,DoCommand,,doCommand
 button,Close,No,,Close,,
 
@@ -393,6 +393,7 @@ app,DeleteKey,,delete_key,,,deleteKey
 app,RotateKey,,rotate_key,,,rotateKey
 app,ListKeys,,list_keys,,,listKeys
 app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,,createKeyFromExistingKeyAuthorizations
+app,GetAppContent,,,,,getAppContent
 
 ## Billing
 billing,GetCurrentMonthUsage,,get_current_month_usage,,,getCurrentMonthUsage

@@ -122,6 +122,29 @@ the same type that will be returned.
 
 - (Promise<Uint8Array>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const image = await camera.getImage();
+
+// Convert Uint8Array to base64
+const base64Image = btoa(
+  Array.from(image)
+    .map((byte) => String.fromCharCode(byte))
+    .join('')
+);
+
+// Convert image to base64 and display it
+const imageElement = document.createElement('img');
+imageElement.src = `data:image/jpeg;base64,${base64Image}`;
+const imageContainer = document.getElementById('#imageContainer');
+if (imageContainer) {
+  imageContainer.innerHTML = '';
+  imageContainer.appendChild(imageElement);
+}
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getimage).
 
 {{% /tab %}}
@@ -228,6 +251,14 @@ the same type that will be returned.
 
 - (Promise<Blob>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const mimeType = 'image/jpeg';
+const image = await camera.renderFrame(mimeType);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderframe).
 
 {{% /tab %}}
@@ -304,6 +335,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<Uint8Array>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const pointCloud = await camera.getPointCloud();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getpointcloud).
 
 {{% /tab %}}
@@ -377,6 +415,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const properties = await camera.getProperties();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getproperties).
 
@@ -469,6 +514,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#docommand).
 

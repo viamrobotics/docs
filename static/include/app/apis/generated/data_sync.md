@@ -83,7 +83,7 @@ _viam = await Viam.withApiKey(
      DateTime(2025, 1, 15, 14, 45)  // End time
    );
 
-   final binaryDataId = await dataClient.binaryDataCaptureUpload(
+   final fileId = await dataClient.binaryDataCaptureUpload(
      imageBytes,
      "<YOUR-PART-ID>",
      ".png",
@@ -499,7 +499,7 @@ void _uploadData() async {
        DateTime(2025, 1, 15, 14, 45)  // End time
      );
 
-     final binaryDataId = await dataClient.streamingDataCaptureUpload(
+     final fileId = await dataClient.streamingDataCaptureUpload(
        video,
        "<YOUR-PART-ID>",
        ".mp4", // Replace with your desired file format
