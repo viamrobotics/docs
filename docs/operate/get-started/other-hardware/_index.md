@@ -1059,6 +1059,9 @@ The `viam module generate` command already generated the `build-action` file in 
    - `VIAM_KEY_ID` with the UUID from `Key ID:` in your terminal
    - `VIAM_KEY_VALUE` with the string from `Key Value:` in your terminal
 
+1. In your GitHub repository **Settings**, navigate to **Actions** -> **General** -> **Workflow permissions**.
+   Set the **Workflow permissions** to **Read and write permissions**.
+
 1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
 1. In the **Choose a tag** dropdown, create a new tag such as `1.0.0`.
    _Do not prepend the tag with `v` or the GH action will not trigger._
