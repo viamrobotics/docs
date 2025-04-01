@@ -68,8 +68,7 @@ The lifecycle of a module and the resources it provides is as follows:
 1. If configuration fails due to a validation failure or an exception thrown by the reconfigure or constructor functions, `viam-server` attempts to reconfigure the resource.
 1. The modular resource is ready to use.
 1. If at any point the user changes the configuration of the machine, `viam-server` reconfigures the affected resources within 15 seconds.
-1. When `viam-server` shuts down, it attempts to stop all running modules.
-   If `viam-server` attempts to shut down an individual module (for example due to a user disabling a module) and the module does not shut down within 30 seconds, `viam-server` kills the module.
+1. If `viam-server` attempts to shut down an individual module (for example due to a user disabling a module) and the module does not shut down within 30 seconds, `viam-server` kills the module.
 1. When `viam-server` shuts down, it first shuts down all modules and kills them if they fail to shut down within 90 seconds.
 
 For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
