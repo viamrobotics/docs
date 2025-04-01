@@ -97,13 +97,13 @@ To establish a connection between a part of one machine and a part of a second m
    {{<imgproc src="/build/configure/parts/remote-create.png" resize="x1100" declaredimensions=true alt="The create menu with options including remote part shown." style="width:500px" class="shadow" >}}
 
 7. Click **Remote part**.
-8. Find the newly-created remote part in the left hand menu.
-   Click it to navigate to its configuration card.
-9. Delete the auto-populated JSON from the new remote's config area and replace it by pasting the remote config you copied in step 4 into the empty field.
+8. Select the remote part from the list of parts.
+   Alternatively, click **Add empty remote** and then scroll to the newly-created remote part configuration card.
+   Click on **{}** (Switch to advanced) and replace the JSON object with the remote config you copied in step 4.
 
    {{<imgproc src="/build/configure/parts/remote-config.png" resize="x1100" declaredimensions=true alt="The configured remote." style="width:700px" class="shadow" >}}
 
-10. Click **Save** in the upper right corner of the page to save your config.
+9. Click **Save** in the upper right corner of the page to save your config.
 
 ## Using remote parts and sub-parts with the Viam SDKs
 
