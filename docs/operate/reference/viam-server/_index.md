@@ -61,11 +61,17 @@ If there are configured dependencies, resources are reconfigured in groups.
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
-#### Maintenance window
+{{% hiddencontent %}}
+If you want to force a reconfiguration of a resource, you can click the **Disable** button in the resource menu, save, and then re-enable the resource.
+
+Alternatively, if you are having issues with a module, try the **Restart module** button in the module menu.
+{{% /hiddencontent %}}
+
+### Maintenance window
 
 There are a few updates that may make your machine temporarily unavailable:
 
-- `viam-agent` updating `viam-server`
+- [`viam-agent` updating `viam-server`](/manage/reference/viam-agent/#update-or-downgrade-viam-server-with-viam-agent)
 - configuration updates
 
 To avoid performing these updates until your machine is ready for maintenance, you can define a maintenance window.
@@ -123,7 +129,7 @@ For modular resources, you must instead set the `log_level` attribute on the mod
 
 ```json {class="line-numbers linkable-line-numbers" data-line="3"}
 "module_id": "viam:raspberry-pi",
-"version": "1.9.0"
+"version": "1.9.0",
 "log_level":  "debug"
 ```
 

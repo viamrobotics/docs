@@ -162,8 +162,8 @@ To ensure that updates only occur when your machines are ready, configure a [mai
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
-| `agent` | string | true | The version of Viam agent specified as `"5.6.77"`, `"stable"` or by providing a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-agent-test-aarch64"`. Viam agent is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Default: `"stable"`. |
-| `viam-server` | string | true | The version of `viam-server` specified as `"5.6.77"`, `"stable"` or by providing a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-server-test-aarch64"`. `viam-server` is semantically versioned and is tested before release. When set to `"stable"`, `viam-server` will automatically upgrade when a new stable version is released. Default: `"stable"`. |
+| `agent` | string | true | The version of Viam agent specified as either:<ul><li>a version number`"5.6.77"` or `"v0.65.1-dev.7"` (indicating the seventh commit to "main" after the previous non-dev release, `v0.65.0`)</li><li>a tag such as`"stable"` or `"dev"`.</li><li>a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-agent-test-aarch64"`</li></ul> Viam agent is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Default: `"stable"`. |
+| `viam-server` | string | true | The version of `viam-server` specified as `"5.6.77"`, `"stable"`, `"dev"` or by providing a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-server-test-aarch64"`. `viam-server` is semantically versioned and is tested before release. When set to `"stable"`, `viam-server` will automatically upgrade when a new stable version is released. Default: `"stable"`. |
 
 {{< alert title="Important" color="note" >}}
 `viam-agent` does not update itself.
@@ -178,6 +178,24 @@ You can restart `viam-server` from the machine's part status dropdown to the rig
 {{< /alert >}}
 
 For more information on managing `viam-agent` see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
+
+### Update or downgrade `viam-server` with `viam-agent`
+
+{{< alert title="Tip" color="tip" >}}
+The current version of `viam-server` is displayed in the machine's part status dropdown to the right of your machine’s name on its page in the Viam app.
+{{< /alert >}}
+
+{{% hiddencontent %}}
+`viam-server` is made from the RDK. Therefore the version of RDK and `viam-server` installed on a machine is always the same.
+
+To check the version of `viam-server` (or the RDK) check the machine part status dropdown.
+To update the version of `viam-server` (or the RDK) update the machine settings.
+{{% /hiddencontent %}}
+
+1. Navigate to your machine's **CONFIGURE** tab.
+2. Click on **machine settings** on the left side of the page.
+3. Change the specified `viam-server` version.
+4. Save your configuration.
 
 ## `advanced_settings`
 

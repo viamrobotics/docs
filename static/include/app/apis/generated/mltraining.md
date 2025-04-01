@@ -40,16 +40,29 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `organizationId` (string) (required)
-- `datasetId` (string) (required)
-- `modelName` (string) (required)
-- `modelVersion` (string) (required)
-- `modelType` ([ModelType](https://ts.viam.dev/enums/ModelType.html)) (required)
-- `tags` (string) (required)
+- `organizationId` (string) (required): The organization ID.
+- `datasetId` (string) (required): The dataset ID.
+- `modelName` (string) (required): The model name.
+- `modelVersion` (string) (required): The model version.
+- `modelType` ([ModelType](https://ts.viam.dev/enums/ModelType.html)) (required): The model type.
+- `tags` (string) (required): The tags.
 
 **Returns:**
 
-- (Promise<string>): None.
+- (Promise<string>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await mlTrainingClient.submitTrainingJob(
+  '<organization-id>',
+  '<dataset-id>',
+  '<your-model-name>',
+  '1.0.0',
+  ModelType.SINGLE_LABEL_CLASSIFICATION,
+  ['tag1', 'tag2']
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submittrainingjob).
 
@@ -97,16 +110,29 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `organizationId` (string) (required)
-- `datasetId` (string) (required)
-- `registryItemId` (string) (required)
-- `registryItemVersion` (string) (required)
-- `modelName` (string) (required)
-- `modelVersion` (string) (required)
+- `organizationId` (string) (required): The organization ID.
+- `datasetId` (string) (required): The dataset ID.
+- `registryItemId` (string) (required): The registry item ID.
+- `registryItemVersion` (string) (required): The registry item version.
+- `modelName` (string) (required): The model name.
+- `modelVersion` (string) (required): The model version.
 
 **Returns:**
 
-- (Promise<string>): None.
+- (Promise<string>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await mlTrainingClient.submitCustomTrainingJob(
+  '<organization-id>',
+  '<dataset-id>',
+  'viam:classification-tflite',
+  '1.0.0',
+  '<your-model-name>',
+  '1.0.0'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submitcustomtrainingjob).
 
@@ -142,11 +168,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `id` (string) (required)
+- `id` (string) (required): The training job ID.
 
 **Returns:**
 
-- (Promise<undefined | [TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)>): None.
+- (Promise<undefined | [TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const job = await mlTrainingClient.getTrainingJob('<training-job-id>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#gettrainingjob).
 
@@ -185,12 +217,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `organizationId` (string) (required)
-- `status` ([TrainingStatus](https://ts.viam.dev/enums/TrainingStatus.html)) (required)
+- `organizationId` (string) (required): The organization ID.
+- `status` ([TrainingStatus](https://ts.viam.dev/enums/TrainingStatus.html)) (required): The training job status.
 
 **Returns:**
 
-- (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)[]>): None.
+- (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const jobs = await mlTrainingClient.listTrainingJobs(
+  '<organization-id>',
+  TrainingStatus.RUNNING
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#listtrainingjobs).
 
@@ -230,11 +271,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `id` (string) (required)
+- `id` (string) (required): The training job ID.
 
 **Returns:**
 
-- (Promise<null>): None.
+- (Promise<null>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await mlTrainingClient.cancelTrainingJob('<training-job-id>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#canceltrainingjob).
 
@@ -270,11 +317,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `id` (string) (required)
+- `id` (string) (required): The training job ID.
 
 **Returns:**
 
-- (Promise<null>): None.
+- (Promise<null>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await mlTrainingClient.deleteCompletedTrainingJob('<training-job-id>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#deletecompletedtrainingjob).
 

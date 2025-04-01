@@ -35,7 +35,7 @@ If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/dev/refer
 
 - A running an instance of `viam-server`.
   See our [Installation Guide](/operate/get-started/setup/) for instructions.
-- A rover like the [SCUTTLE robot](https://www.scuttlerobot.org/shop/) or the [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
+- A rover like the [SCUTTLE robot](https://www.scuttlerobot.org/shop/) or the Yahboom 4WD Smart Robot.
 
 Make sure your rover is assembled before starting this tutorial.
 

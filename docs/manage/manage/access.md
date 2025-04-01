@@ -26,9 +26,9 @@ You must have the **Owner** role to be able to grant permissions.
 4. Click on **Grant access**.
 5. Enter a user's **Email** address.
 
-   {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="700x" declaredimensions=true >}}
+   {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="700x" declaredimensions=true class="shadow" >}}
 
-6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Resource** to share.
+6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Entity** to share.
 
    Users with access to a location or organization can collaborate on the [machines](/operate/get-started/basics/#what-is-a-machine) within it.
 
@@ -38,7 +38,7 @@ You must have the **Owner** role to be able to grant permissions.
 
 8. Click **invite**.
 
-   {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="" declaredimensions=true alt="Limit user access">}}
+   {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="shadow" declaredimensions=true alt="Limit user access">}}
 
 ### Share a location with an organization
 
@@ -68,7 +68,7 @@ You must have the **Owner** role to be able to limit permissions.
 4. Click on the user to open the access settings for the user.
 5. Either change the role of the user from owner to operator with the dropdown or click on **Limit access** and change the resource the user has [access](/manage/manage/rbac/).
    You can also remove the user by clicking on **Remove user**.
-   {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true class="shadow" >}}
 
 {{< table >}}
 {{< /table >}}

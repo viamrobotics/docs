@@ -406,7 +406,7 @@ Follow the steps below to get your API key and create an environment variables f
 
    1. Click **Generate key**.
    2. Give the key a name like "flutter-app-my-org-name."
-   3. Click the **Resource** dropdown and select your organization.
+   3. Click the **Entity** dropdown and select your organization.
    4. Set **Role** to **Owner**.
    5. Click **Generate key**.
    6. Find your new key at the bottom of the list.

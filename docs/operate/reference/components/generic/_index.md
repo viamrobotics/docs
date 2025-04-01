@@ -39,6 +39,12 @@ If you want to use most of an existing API but need just a few other functions, 
 
 {{% /alert %}}
 
+{{% alert title="Example usage" color="tip" %}}
+
+See [Deploy control logic](/manage/software/control-logic/) for an example of how to use the generic component API, including how to call `DoCommand()` from the Viam SDKs or from the Viam app.
+
+{{% /alert %}}
+
 ## Configuration
 
 To use a generic component, check whether one of the following models supports it.

@@ -20,7 +20,7 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The file_id of the uploaded data.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The binary_data_id of the uploaded data.
 
 **Raises:**
 
@@ -92,7 +92,7 @@ _viam = await Viam.withApiKey(
      methodName: "ReadImage",
      dataRequestTimes: dataRequestTimes);
 
-   print('Successfully uploaded binary data with fileId: $fileId');
+   print('Successfully uploaded binary data with binaryDataId: $binaryDataId');
  } catch (e) {
    print('Error uploading binary data: $e');
  }
@@ -397,7 +397,7 @@ Uploaded streaming data can be found under the [**Data** tab](https://app.viam.c
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The file_id of the uploaded data.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The binary_data_id of the uploaded data.
 
 **Raises:**
 
@@ -507,7 +507,7 @@ void _uploadData() async {
        componentName: "camera-1",
        dataRequestTimes: dataRequestTimes);
 
-     print('Successfully uploaded streaming binary data with fileId: $fileId');
+     print('Successfully uploaded streaming binary data with binaryDataId: $binaryDataId');
    } catch (e) {
      print('Error uploading streaming binary data: $e');
    }

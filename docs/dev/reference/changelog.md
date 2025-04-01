@@ -112,15 +112,43 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 
 {{% /changelog %}}
 
+{{% changelog color="added" title="Store metadata" date="2025-03-28" %}}
+
+You can store and retrieve arbitrary metadata about your organization, location, machine, and machine part with the [Fleet Management API](/dev/reference/apis/fleet/).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
 
 The [hot data store](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store) allows you to access recent data faster.
 
 {{% /changelog %}}
 
-{{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
+{{% changelog color="changed" title="Config uses API instead of type and namespace" date="2025-03-25" %}}
 
-The [hot data store](/manage/reference/processes/) allows you to access recent data faster.
+The JSON configuration for a resource now uses a field called `api` for the {{< glossary_tooltip term_id="api-namespace-triplet" text="API triplet" >}} instead of the deprecated `type` and `namespace` fields.
+For example, instead of:
+
+```json
+{
+  "name": "my_board",
+  "namespace": "rdk",
+  "type": "board",
+  "model": "viam:nvidia:jetson"
+}
+```
+
+You should use:
+
+```json
+{
+  "name": "my_board",
+  "api": "rdk:component:board",
+  "model": "viam:nvidia:jetson"
+}
+```
+
+Backward compatibility is maintained for existing configurations.
 
 {{% /changelog %}}
 

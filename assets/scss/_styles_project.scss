@@ -153,6 +153,7 @@ h7, .h7 {
 
 .td-sidebar {
   /* NAV Panel changes */
+  background-color: #FFFFFF;
 }
 
 // TABLE OF CONTENT CHANGES
@@ -200,7 +201,9 @@ h7, .h7 {
 }
 
 .td-sidebar-toc {
+  top: 6rem;
   border-left: unset;
+  height: calc(100vh - 10rem);
 }
 
 // Breadcrumb styling
@@ -270,10 +273,19 @@ p, li {
   }
 }
 
+.td-content.tutorials {
+  max-width: 1200px;
+}
+
+footer.tutorials {
+  max-width: 1200px;
+}
+
 // START FOOTER STYLING
 
 footer {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
 }
 
 footer a {
@@ -308,8 +320,8 @@ footer small {
 // END FOOTER STYLING
 
 // Ensure lists indent properly next to images
-.td-content > ul {
-  list-style-position: inside;
+.td-content > ul, .td-content * ul {
+  list-style-position: outside;
 }
 
 .td-content > ul > li > p {
@@ -526,12 +538,18 @@ details[open] > .expand-label {
   border-bottom: #d9d9d9 solid 1px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   overflow: hidden;
 }
 
-.expand-content > p, .expand-content > .table, .expand-content > table {
-  margin-top: 1rem;
+// First child is the anchor link
+details > div.expand-content *:nth-child(2) {
+  margin-top: 0rem;
+}
+
+// First child is the anchor link
+details > div.expand-content > *:last-child {
+  margin-bottom: 0rem;
 }
 
 .expand {
@@ -626,6 +644,10 @@ details summary::-webkit-details-marker {
   display: flex;
   flex-direction: column;
   align-items: baseline;
+}
+
+details.howtoexpand > div.expand-content *:nth-child(2) {
+  margin-top: 0.8rem;
 }
 
 .howtoexpand .expand-label > span > div > div {
@@ -1160,6 +1182,7 @@ td > ul, td > ol {
 
 .nav-tabs .nav-item > a {
   text-align: center;
+  min-width: 2rem;
 }
 
 .td-content ol li.nav-item {
@@ -1210,6 +1233,10 @@ td > ul, td > ol {
   color: #282829;
 }
 
+#navsearch > #appButton a {
+  color: #282829;
+}
+
 #navsearch > #appButton > span > span > i {
   color: #9C9CA4;
 }
@@ -1250,6 +1277,12 @@ td > ul, td > ol {
   padding: 6px;
   width: 120px;
   animation: linear 2s wiggle 2s 2;
+}
+
+@media (min-width: 992px) {
+  #scrollButton {
+    margin-right: 10%;
+  }
 }
 
 #chatButtonContent {
@@ -1390,7 +1423,7 @@ img.frame {
 // This ensures the gray sidebar covers the area where the sticky buttons are rendered.
 @media (min-width: 768px) {
   .td-sidebar {
-    padding-bottom: 76px;
+    // padding-bottom: 76px;
     margin-bottom: -76px;
   }
 }
@@ -1921,6 +1954,15 @@ ul.sectionlist > li:hover {
   padding: 0;
 }
 
+.pagination {
+  align-self: center;
+}
+
+.ais-Pagination-list {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 // Pagination CSS start
 
 #pagination, #paginationML, #paginationScripts {
@@ -2009,7 +2051,7 @@ a.ais-Pagination-link:hover {
 // ensure tutorials page is 100% of height
 
 .row.flex-xl-nowrap {
-  min-height: 90%;
+  min-height: 100%;
 }
 
 
@@ -2019,6 +2061,10 @@ a.ais-Pagination-link:hover {
   display: none;
   max-width: 100%;
   width: 100%;
+}
+
+#chatButton {
+  display: none;
 }
 
 @media (max-width: 992px) {
@@ -2032,6 +2078,16 @@ a.ais-Pagination-link:hover {
     margin-right: 0.5rem;
     margin-left: 0rem;
     margin-top: 0.5rem;
+  }
+
+  #chatButton {
+    display: unset;
+    background-color: #000;
+    color: white;
+  }
+
+  #scrollButton {
+    margin-right: 136px;
   }
 
 }
@@ -2122,6 +2178,7 @@ a.ais-Pagination-link:hover {
   width: 100%;
   display: flex;
   border-top: 1px solid #d7d7d9;
+  margin-bottom: 0;
 }
 
 .modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
@@ -2338,7 +2395,6 @@ div .filterable > p {
 }
 
 .expand-content > table {
-  table-layout: fixed;
   width: 100%;
 }
 
@@ -3203,28 +3259,15 @@ li.active-path.tutorial-heading > a {
   padding-inline-start: 0px;
   display: table;
   list-style-position: outside;
-  margin-bottom: 0rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  margin-left: 2.5rem;
 }
 
 .td-content > ol > li, .td-content > .table * ol > li {
   counter-increment: item;
   margin-bottom: 5px;
   display: table-row;
-}
-
-.td-content > ol > li > p, .td-content > .table * ol > li > p,
-.td-content * .table * ol > li > p,
-.td-content > ol > li > .expand, .td-content > .table * ol > li > .expand,
-.td-content > ol * li > .expand, .td-content * .table * ol > li > .expand,
-.td-content > ol > li > div, .td-content > .table * ol > li > div,
-.td-content * ol > li > div, .td-content * .table * ol > li > div,
-.td-content > ol > li > picture, .td-content > .table * ol > li > picture,
-.td-content * ol > li > picture, .td-content * .table * ol > li > picture,
-.td-content > ol > li > ul, .td-content > .table * ol > li > ul,
-.td-content * ol > li > ul, .td-content * .table * ol > li > ul,
-.td-content > ol > li > img, .td-content > .table * ol > li > img,
-.td-content * ol > li > img, .td-content * .table * ol > li > img {
-    margin-left: 2.5rem;
 }
 
 div.tablestep {
@@ -3249,11 +3292,27 @@ div.tablestep > div.tablestep-number {
 
 div.tablestep > div.tablestep-content {
   width: 100%;
+  overflow: auto;
 }
 
+div.tablestep > table, div.tablestep table {
+  border-right: 1px solid #E4E4E6;
+  border-left: 1px solid #E4E4E6;
+  border-top: 1px solid #E4E4E6;
+  margin-bottom: 1rem;
+}
 
-.td-content > ol > li:before, .td-content > .table * ol > li:before {
+div.tablestep > table th, div.tablestep table th {
+  padding: 0.75rem;
+}
+
+div.tablestep > table td, div.tablestep table td {
+  padding: 0.75rem;
+}
+
+.td-content > ol > li:before, .td-content > .table * ol > li:not(.ais-Hits-item):before {
   margin-right: 10px;
+  margin-left: -2.5rem;
   content: counter(item);
   background: #F1F1F4;
   border-radius: 100%;
@@ -3269,4 +3328,71 @@ div.tablestep > div.tablestep-content {
 .td-content > ul li, .td-content > ol li {
   margin-bottom: 0rem;
 }
-// Numbered list styling END
+
+.td-content > ul {
+  padding-left: 1rem;
+}
+
+.td-content > .code-toolbar, .td-content * .code-toolbar {
+  margin-top: 1rem;
+}
+
+footer.py-5 {
+  padding-bottom: 0 !important;
+  padding-top: 1rem !important;
+  margin-bottom: -2rem !important;
+}
+
+.td-main main {
+  padding-bottom: 0rem !important;
+}
+
+footer {
+  min-height: 30px !important;
+}// Numbered list styling END
+
+.center-main-landing {
+  justify-content: center;
+}
+
+.center-main-landing > .pl-md-5, .center-main-landing > .px-md-5 {
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.center-main-landing .col.hover-card {
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+}
+
+@media (min-width: 768px) {
+
+  aside.td-sidebar.frontpage {
+    border-right: unset;
+    display: none;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .row.flex-xl-nowrap {
+    flex-direction: column;
+  }
+}
+
+.td-main main.frontpage {
+  padding-bottom: 0 !important;
+  margin: auto;
+  margin-top: 2rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.frontpage .col.hover-card {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

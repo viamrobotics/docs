@@ -1008,6 +1008,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const result = await resource.doCommand({
+  name: 'myCommand',
+  args: { key: 'value' },
+});
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#docommand).
 
 {{% /tab %}}

@@ -5,9 +5,11 @@ weight: 150
 layout: "docs"
 type: "docs"
 no_list: true
+noedit: true
 open_on_desktop: true
 overview: true
 description: "To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world."
+notoc: true
 aliases:
   - /build/
 ---

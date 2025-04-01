@@ -58,7 +58,7 @@ board,GetResourceName,No,get_resource_name,,getResourceName,
 board,Close,No,close,Close,,
 
 ## Button
-button,Push,No,,Push,,push
+button,Push,No,push,Push,,push
 button,DoCommand,No,,DoCommand,,doCommand
 button,Close,No,,Close,,
 
@@ -328,6 +328,8 @@ app,UpdateOrganizationInviteAuthorizations,,update_organization_invite_authoriza
 app,DeleteOrganizationMember,,delete_organization_member,,,deleteOrganizationMember
 app,DeleteOrganizationInvite,,delete_organization_invite,,,deleteOrganizationInvite
 app,ResendOrganizationInvite,,resend_organization_invite,,,resendOrganizationInvite
+app,GetOrganizationMetadata,,,,,getOrganizationMetadata
+app,UpdateOrganizationMetadata,,,,,updateOrganizationMetadata
 app,CreateLocation,,create_location,,,createLocation
 app,GetLocation,,get_location,,,getLocation
 app,UpdateLocation,,update_location,,,updateLocation
@@ -338,6 +340,8 @@ app,UnshareLocation,,unshare_location,,,unshareLocation
 app,LocationAuth,,location_auth,,,locationAuth
 app,CreateLocationSecret,,create_location_secret,,,createLocationSecret
 app,DeleteLocationSecret,,delete_location_secret,,,deleteLocationSecret
+app,GetLocationMetadata,,,,,getLocationMetadata
+app,UpdateLocationMetadata,,,,,updateLocationMetadata
 app,GetRobot,,get_robot,,,getRobot
 app,GetRobotAPIKeys,,get_robot_api_keys,,,getRobotAPIKeys
 ## TODO: Rover stuff is implemented in py,flutter, but internal in design. Omit at proto-level, t lang-level:
@@ -358,6 +362,10 @@ app,ListRobots,,list_robots,,,listRobots
 app,NewRobot,,new_robot,,,newRobot
 app,UpdateRobot,,update_robot,,,updateRobot
 app,DeleteRobot,,delete_robot,,,deleteRobot
+app,GetRobotMetadata,,,,,getRobotMetadata
+app,GetRobotPartMetadata,,,,,getRobotPartMetadata
+app,UpdateRobotMetadata,,,,,updateRobotMetadata
+app,UpdateRobotPartMetadata,,,,,updateRobotPartMetadata
 app,ListFragments,,list_fragments,,,listFragments
 app,ListMachineFragments,,,,,listMachineFragments
 app,GetFragment,,get_fragment,,,getFragment
@@ -385,6 +393,7 @@ app,DeleteKey,,delete_key,,,deleteKey
 app,RotateKey,,rotate_key,,,rotateKey
 app,ListKeys,,list_keys,,,listKeys
 app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,,createKeyFromExistingKeyAuthorizations
+app,GetAppContent,,,,,getAppContent
 
 ## Billing
 billing,GetCurrentMonthUsage,,get_current_month_usage,,,getCurrentMonthUsage

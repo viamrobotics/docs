@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 icon: true
 images: ["/registry/create-module.svg"]
-description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a module."
+description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a custom module."
 aliases:
   - /registry/create/
   - /use-cases/create-module/
@@ -38,6 +38,10 @@ next: "/operate/get-started/other-hardware/hello-world-module/"
 If your physical or virtual hardware is not [already supported](/operate/get-started/supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
+
+{{% hiddencontent %}}
+If you want to create a "custom module", this page provides instructions for creating one in Python and Go.
+{{% /hiddencontent %}}
 
 This page provides instructions for creating and uploading a module in Python or Go.
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
@@ -155,8 +159,8 @@ Edit the generated files to add your logic:
 1. Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary imports.
 1. **Edit the `validate_config` function** to do the following:
 
-   - Check that the user has configured required attributes
-   - Return any implicit dependencies
+   - Check that the user has configured required attributes and return errors if they are missing.
+   - Return a map of any implicit dependencies.
 
       <details>
         <summary><strong>Explicit versus implicit dependencies</strong></summary>
@@ -177,9 +181,12 @@ Edit the generated files to add your logic:
 
        </details><br>
 
-1. **Edit the `reconfigure` function** to do the following:
+1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
+   This function should do the following:
 
-   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+   - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
+   - Assign default values as necessary to any optional attributes if the user hasn't configured them.
+   - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
 
 <ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
 
@@ -364,14 +371,19 @@ LOGGER.critical("critical info")
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+{{% hiddencontent %}}
+`resource.AlwaysRebuild` provides an implementation of `Reconfigure` that returns a `NewMustRebuild` error.
+This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported in those SDKs.
+{{% /hiddencontent %}}
+
 1. Open <file>module.go</file> and add necessary imports.
 
 1. **Add any configurable attributes to the `Config` struct.**
 
 1. **Edit the `Validate` function** to do the following:
 
-   - Check that the user has configured required attributes
-   - Return any implicit dependencies
+   - Check that the user has configured required attributes and return errors if they are missing.
+   - Return any implicit dependencies.
 
       <details>
         <summary><strong>Explicit versus implicit dependencies</strong></summary>
@@ -392,9 +404,21 @@ LOGGER.critical("critical info")
 
        </details><br>
 
-1. **Edit the `Reconfigure` function** to do the following:
+1. **(Optional) Create and edit a `Reconfigure` function**:
 
-   - Assign any default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+   In most cases, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
+   This will cause `viam-server` to fully rebuild the resource each time the user changes the configuration.
+
+   If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you should implement this function so that `viam-server` updates the configuration without rebuilding the resource from scratch.
+   In this case, your `Reconfigure` function should do the following:
+
+   - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
+   - Assign default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+
+1. **Edit the constructor** to do the following:
+
+   - If you didn't create a `Reconfigure` function, use the constructor to assign default values as necessary to any optional attributes if the user hasn't configured them.
+   - If you created a `Reconfigure` function, make your constructor call `Reconfigure`.<br><br>
 
 <ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
 
@@ -404,6 +428,7 @@ You can find details about the return types at [go.viam.com/rdk/components](http
 
 {{< expand "Example code for a camera module" >}}
 This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
+It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}
 package hello_world
@@ -424,7 +449,6 @@ import (
 var (
   HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
   errUnimplemented = errors.New("unimplemented")
-  imagePath        = ""
 )
 
 func init() {
@@ -436,8 +460,8 @@ func init() {
 }
 
 type Config struct {
-  resource.AlwaysRebuild // Resource rebuilds instead of reconfiguring
-  ImagePath string `json:"image_path"`
+  ImagePath    string `json:"image_path"`
+  ExampleValue string `json:"example_value"`
 }
 
 func (cfg *Config) Validate(path string) ([]string, error) {
@@ -448,15 +472,21 @@ func (cfg *Config) Validate(path string) ([]string, error) {
   if reflect.TypeOf(cfg.ImagePath).Kind() != reflect.String {
     return nil, errors.New("image_path must be a string.")
   }
-  imagePath = cfg.ImagePath
+  if cfg.ExampleValue != "" && reflect.TypeOf(cfg.ExampleValue).Kind() != reflect.String {
+    return nil, errors.New("example_value must be a string.")
+  }
   return deps, nil
 }
 
 type helloWorldHelloCamera struct {
+  resource.AlwaysRebuild // Resource rebuilds instead of reconfiguring
+
   name resource.Name
 
   logger logging.Logger
   cfg    *Config
+
+  exampleValue string
 
   cancelCtx  context.Context
   cancelFunc func()
@@ -476,25 +506,30 @@ func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, r
     cfg:        conf,
     cancelCtx:  cancelCtx,
     cancelFunc: cancelFunc,
+}
+
+  s.exampleValue = s.cfg.ExampleValue
+  if s.exampleValue == "" {
+    s.exampleValue = "default value"
+    s.logger.Debug("setting default exampleValue: %s", s.exampleValue)
   }
-  return s, nil
+
+ return s, nil
 }
 
 func (s *helloWorldHelloCamera) Name() resource.Name {
   return s.name
 }
 
-func (s *helloWorldHelloCamera) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
-  return errUnimplemented
-}
-
 func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
+  imagePath := s.cfg.ImagePath
   imgFile, err := os.Open(imagePath)
   if err != nil {
     return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
   }
   defer imgFile.Close()
-  imgByte, err := ioutil.ReadFile(imagePath)
+  imgByte, err := os.ReadFile(imagePath)
+  s.logger.Info("The s.exampleValue is: " + s.exampleValue)
   return imgByte, camera.ImageMetadata{}, nil
 }
 

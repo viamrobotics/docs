@@ -16,13 +16,18 @@
     <div class="container-fluid td-outer">
       <div class="td-main">
         <div class="row flex-xl-nowrap">
-          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none {{ if .IsHome }} frontpage{{ end }}">
             {{ partial "sidebar.html" . }}
           </aside>
           {{ if .Params.noToc }}
           {{ else }}
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            {{ partial "page-meta-links.html" . }}
+            {{ partial "toc.html" . }}
+            {{ partial "taxonomy_terms_clouds.html" . }}
+          </aside>
           {{ end }}
-          <main class="col-12 col-md-9 {{ if .Params.noToc }}col-xl-10{{ else }}col-xl-10{{ end }} pl-md-5" role="main">
+          <main class="col-12 col-md-9 {{ if .Params.noToc }}col-xl-10{{ else }}col-xl-8{{ end }} pl-md-5 {{ if .IsHome }} frontpage{{ end }}" role="main">
             {{ partial "version-banner.html" . }}
             {{ if ne .Params.noedit true }}
               {{ partial "edit-on-github.html" . }}
@@ -34,11 +39,7 @@
           </main>
           {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
         </div>
-          <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
-            <i style="font-size:x-large;" class="fas fa-chevron-up"></i>
-          </button>
       </div>
-      {{ partial "footer.html" . }}
     </div>
     {{ partial "scripts.html" . }}
   </body>

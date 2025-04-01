@@ -32,7 +32,7 @@ Enter a name or use the suggested name for your camera and click **Create**.
 
 Edit and fill in the attributes as applicable.
 Leave the **video_path** blank and the camera will use the default video path for your machine.
-If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app to add a [webcam discovery service](https://app.viam.com/module/rand/find-webcams) and identify path options.
+If this doesn't work when you test your camera later, you can try [configuring a video path](#using-video_path).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -98,6 +98,32 @@ The following attributes are available for `webcam` cameras:
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 
 ## Using `video_path`
+
+### Find a video path using a discovery service in the Viam app
+
+The [`rand:find-webcams:webcam-discovery`](https://github.com/randhid/find-webcams) service helps you identify path options.
+To add and use the service:
+
+1. In the Viam app, navigate to the **CONFIGURE** tab of your machine's page.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Search for `find-webcams` and select the `discovery / find-webcams:webcam-discovery` service.
+1. Click **Add module**.
+1. Enter a name or use the suggested name for your camera and click **Create**.
+1. Save your configuration, and wait a moment for the service to start.
+1. Click **Test** to see the available `video_path`s.
+
+   {{<imgproc src="/components/camera/webcam-discovery-test.png" alt="The test panel for the find-webcams service." resize="1100x" style="max-width:600px" class="shadow imgzoom" >}}
+
+1. Click the **Copy attributes** button for the camera you want to use.
+1. Click the **{}** icon in the upper right corner of the camera component configuration.
+
+   {{<imgproc src="/components/camera/advanced-config.png" resize="x1100" declaredimensions=true alt="The switch to advanced button in the Viam app." style="max-width:200px" class="shadow" >}}
+
+1. Paste the copied attributes.
+1. Click **Save**.
+1. You can now delete the discovery service and the module that provides it from your machine.
+
+### Find a video path using the command line
 
 To list available `video_path`s use the following command:
 
@@ -236,32 +262,16 @@ If you are capturing camera data, it can happen that the camera captures and syn
 {{% /expand%}}
 
 {{% expand "CSI Camera not working on a Raspberry Pi" %}}
-If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
-If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
+
+If you are using a CSI camera v1.3 or v2.0, or v3.0, use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
+
 For Raspberry Pi AI cameras like the IMX500 AI camera, you can use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
-Note that this module is not officially supported by Viam.
 For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/ai/run-inference/).
 {{% /expand%}}
 
 {{% expand "High CPU usage" %}}
 Each camera stream you add uses CPU on the device it is connected to and there is therefore a practical limit to the numbeof camera streams your device can simultaneously support.
 You can limit the CPU usage by reducing the image resolution.
-{{% /expand%}}
-
-{{% expand "Timeout errors on a Raspberry Pi" %}}
-
-If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box).
-
-To enable the webcam port on a Raspberry Pi, run the following command:
-
-```sh {class="command-line" data-prompt="$"}
-sudo raspi-config
-```
-
-Then, select: **Interface Options -> Camera -> Enable Camera**.
-
-Restart the Pi to complete the configuration.
-
 {{% /expand%}}
 
 ## Next steps

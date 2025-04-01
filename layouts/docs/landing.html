@@ -15,18 +15,12 @@
     </header>
     <div class="container-fluid td-outer">
       <div class="td-main">
-        <div class="row flex-xl-nowrap">
-          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none" id="landing-page-sidebar">
-            {{ partial "sidebar.html" . }}
-          </aside>
-          <main class="col-12 col-md-12 col-xl-12 pl-md-12" role="main">
+        <div class="row flex-xl-nowrap center-main-landing">
             {{ .Render "content" }}
-          </main>
         </div>
-        {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
     </div>
-      {{ partial "footer.html" . }}
-    </div>
+
+  </div>
 
     {{ partial "scripts.html" . }}
 

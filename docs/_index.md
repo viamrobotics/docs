@@ -5,7 +5,6 @@ description: "Viam integrates with hardware and software on any device. Use AI, 
 weight: 1
 no_list: true
 type: "docs"
-layout: "landing"
 noToc: true
 hide_feedback: true
 sitemap:

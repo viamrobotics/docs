@@ -65,6 +65,11 @@ You need the following hardware, tools, and software to install `viam-server` on
 Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) or [Getting Started with Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
 Once you have reached _Next Steps_, return to the Viam docs.
 
+{{< alert title="Note" color="note" >}}
+Some vision services in the [registry](https://app.viam.com/registry) require you to install Jetpack 6 on your Jetson AGX Orin.
+If you intend to use GPIO, however, we recommend installing Jetpack 5 on your Jetson AGX Orin.
+{{< /alert >}}
+
 ## Install `viam-server`
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}

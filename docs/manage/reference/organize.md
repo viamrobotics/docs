@@ -79,3 +79,23 @@ You can nest locations up to three levels deep.
 ## Example
 
 If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/#example).
+
+## Frequently asked questions
+
+### Can I move a machine to a different location?
+
+No, it is not possible to move a machine to a different location.
+
+{{% hiddencontent %}}
+It is also not possible to change the location of a robot with an SDK.
+{{% /hiddencontent %}}
+
+If you want to have the machine in a different location, you will need to create a new machine and copy the old machine's configuration to the new machine.
+
+### Can I move a location to a different organization?
+
+No, it is not possible to move a location to a different organization.
+
+You can share a location with another organization.
+However, machines will continue to use the primary organization as a reference point.
+This means any captured data is associated with the primary organization and the machines are only able to use private ML models and registry items from the primary owner.

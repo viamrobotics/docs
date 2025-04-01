@@ -223,7 +223,6 @@ If you are using hardware that requires these protocols, you must enable support
 
    - If you are using an analog-to-digital converter (ADC), motor, or other device that requires the SPI protocol, enable **SPI**.
    - If you are using an accelerometer, sensor, or other device that requires the I<sup>2</sup>C protocol, enable **I2C**.
-   - If you are using a CSI v1.3 or v2.0 camera, enable **Legacy Camera** support.
    - If you are using a sensor, motor, or other device that communicates over the serial port, enable **Serial Port**.
 
    Check the documentation for your specific component to verify the communication protocols it requires.

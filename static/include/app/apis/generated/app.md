@@ -663,6 +663,47 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetOrganizationMetadata
+
+Gets the user-defined metadata for an organization.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the organization.
+
+**Returns:**
+
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the organization.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationmetadata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateOrganizationMetadata
+
+Updates the user-defined metadata for an organization.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the organization.
+- `data` (Record) (required): The metadata to update.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganizationmetadata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### CreateLocation
 
 Create and name a {{< glossary_tooltip term_id="location" text="location" >}} under the organization you are currently authenticated to.
@@ -758,7 +799,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### UpdateLocation
 
-Change the name of a {{< glossary_tooltip term_id="location" text="parent location" >}} and/or assign it a new location.
+Change the name of a {{< glossary_tooltip term_id="location" text="location" >}} and/or assign a parent location to a location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1122,6 +1163,47 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetLocationMetadata
+
+Get the user-defined metadata for a location.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the location.
+
+**Returns:**
+
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the location.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getlocationmetadata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateLocationMetadata
+
+Update the user-defined metadata for a location.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the location.
+- `data` (Record) (required): The metadata to update.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatelocationmetadata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetRobot
 
 Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
@@ -1447,6 +1529,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobotPart
 
 Change the name of and assign an optional new configuration to a machine {{< glossary_tooltip term_id="part" text="part" >}}.
+You can only change the name and configuration of the machine part, not the location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1855,6 +1938,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobot
 
 Change the name of an existing machine.
+You can only change the name of the machine, not the location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1942,6 +2026,88 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - (Promise<void>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetRobotMetadata
+
+Gets the user-defined metadata for a machine.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the robot.
+
+**Returns:**
+
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotmetadata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetRobotPartMetadata
+
+Gets the user-defined metadata for a machine part.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the robot part.
+
+**Returns:**
+
+- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot part.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartmetadata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateRobotMetadata
+
+Updates the user-defined metadata for a machine.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the robot.
+- `data` (Record) (required): The metadata to update.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotmetadata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateRobotPartMetadata
+
+Updates the user-defined metadata for a machine part.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the robot part.
+- `data` (Record) (required): The metadata to update.
+
+**Returns:**
+
+- (Promise<void>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotpartmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2292,7 +2458,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the role under.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
 - `role` (string) (required): The role to add ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to create the role for ("robot",
   "location", or "organization").
@@ -2350,7 +2516,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to remove the role from.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example, a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
 - `role` (string) (required): The role to remove ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to remove the role from ("robot",
   "location", or "organization").
@@ -3278,6 +3444,27 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>): The new key and ID.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkeyfromexistingkeyauthorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetAppContent
+
+Retrieve the app content for an organization.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `publicNamespace` (string) (required): The public namespace of the organization.
+- `name` (string) (required): The name of the app.
+
+**Returns:**
+
+- (Promise<[GetAppContentResponse](https://ts.viam.dev/classes/appApi.GetAppContentResponse.html)>): The blob path and entrypoint of the app content.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappcontent).
 
 {{% /tab %}}
 {{< /tabs >}}

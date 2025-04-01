@@ -5,8 +5,10 @@ weight: 250
 layout: "docs"
 type: "docs"
 no_list: true
+noedit: true
 open_on_desktop: true
 overview: true
+notoc: true
 description: "Sync and store sensor data, images, and any other binary or timeseries data. Then use ML and AI to turn your data into insights and action."
 ---
 
