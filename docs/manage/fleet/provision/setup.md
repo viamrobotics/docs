@@ -343,7 +343,7 @@ You can set optional arguments by defining the following environment variables:
 | Argument | Description |
 | -------- | ----------- |
 | `VIAM_JSON_PATH` | The path to the machine credentials <FILE>viam.json</FILE> file to be copied to the machine. The script will also prompt you for this file if not provided. |
-| `DEFAULTS_PATH ` | The path to the <FILE>viam-defaults.json</FILE> file. The script will also prompt you for this file if not provided. |
+| `DEFAULTS_PATH` | The path to the <FILE>viam-defaults.json</FILE> file. The script will also prompt you for this file if not provided. |
 | `VIAM_AGENT_PATH` | The path to a beta or local build of `viam-agent`. Used for testing. |
 
 <br>
