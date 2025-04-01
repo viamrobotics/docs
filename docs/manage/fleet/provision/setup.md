@@ -253,7 +253,7 @@ During the provisioning process, a machine connects to a network to install `via
 If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
 
 If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
-If that is not possible, you can add networks throught the `additional_networks` field.
+If that is not possible, you can add networks with the `additional_networks` field.
 `viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
 
 The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
