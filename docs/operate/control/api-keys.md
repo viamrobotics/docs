@@ -19,7 +19,7 @@ To view all API keys in use for your organization and the locations and machines
 
 On your organization's page, click **Generate key** to generate a new key.
 Optionally, give the key a name.
-Click on the **Resource** menu and choose what organization, location, or machine you want the key to grant access to.
+Click on the **Entity** menu and choose what organization, location, or machine you want the key to grant access to.
 If you select organization, your key grants access to all locations and machines contained within that organization.
 If you select location, your key grants access to all of the machines contained within that location.
 
@@ -28,7 +28,7 @@ See [Permissions](/manage/manage/rbac/) for information about the privilege each
 
 ## Change an API key's access
 
-To edit an API key, click on **Show details** in the key's row of the key table's **Resources** column.
+To edit an API key, click on **Show details** in the key's row of the key table's **Entities** column.
 
 {{<imgproc src="/fleet/additional-details.png" resize="700x" declaredimensions=true alt="Additional details for a key" class="shadow" >}}
 
