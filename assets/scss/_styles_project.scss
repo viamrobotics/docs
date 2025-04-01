@@ -320,7 +320,7 @@ footer small {
 // END FOOTER STYLING
 
 // Ensure lists indent properly next to images
-.td-content > ul {
+.td-content > ul, .td-content * ul {
   list-style-position: inside;
 }
 
@@ -3256,8 +3256,9 @@ li.active-path.tutorial-heading > a {
   padding-inline-start: 0px;
   display: table;
   list-style-position: outside;
-  margin-bottom: 0rem;
+  margin-bottom: 1rem;
   width: 100%;
+  margin-left: 2.5rem;
 }
 
 .td-content > ol > li, .td-content > .table * ol > li {
@@ -3278,7 +3279,6 @@ li.active-path.tutorial-heading > a {
 .td-content * ol > li > img, .td-content * .table * ol > li > img {
     margin-left: 2.5rem;
 }
-
 
 .td-content .expand .table * ol > li > p, .td-content * .table * ol > li > div,
 .td-content > ol * li > .expand, .td-content * .table * ol > li > .expand {
@@ -3328,6 +3328,7 @@ div.tablestep > table td, div.tablestep table td {
 
 .td-content > ol > li:before, .td-content > .table * ol > li:not(.ais-Hits-item):before {
   margin-right: 10px;
+  margin-left: -2.5rem;
   content: counter(item);
   background: #F1F1F4;
   border-radius: 100%;
