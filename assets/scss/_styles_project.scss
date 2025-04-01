@@ -321,7 +321,7 @@ footer small {
 
 // Ensure lists indent properly next to images
 .td-content > ul, .td-content * ul {
-  list-style-position: inside;
+  list-style-position: outside;
 }
 
 .td-content > ul > li > p {
@@ -2391,7 +2391,6 @@ div .filterable > p {
 }
 
 .expand-content > table {
-  table-layout: fixed;
   width: 100%;
 }
 
@@ -3266,25 +3265,6 @@ li.active-path.tutorial-heading > a {
   margin-bottom: 5px;
   display: table-row;
 }
-
-.td-content > ol > li > p, .td-content > .table * ol > li > p,
-.td-content * .table * ol > li > p,
-.td-content > ol > li > div, .td-content > .table * ol > li > div,
-.td-content > ol > li > picture, .td-content > .table * ol > li > picture,
-.td-content * ol > li > picture, .td-content * .table * ol > li > picture,
-.td-content > ol > li > ul, .td-content > .table * ol > li > ul,
-.td-content * .table * ol > li > ul,
-.td-content > ol > li > img, .td-content > .table * ol > li > img,
-.td-content > ol > li > .expand, .td-content > .table * ol > li > .expand,
-.td-content * ol > li > img, .td-content * .table * ol > li > img {
-    margin-left: 2.5rem;
-}
-
-.td-content .expand .table * ol > li > p, .td-content * .table * ol > li > div,
-.td-content > ol * li > .expand, .td-content * .table * ol > li > .expand {
-    margin-left: 0rem !important;
-}
-
 
 div.tablestep {
   display: flex;
