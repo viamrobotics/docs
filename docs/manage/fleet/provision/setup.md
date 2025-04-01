@@ -273,20 +273,20 @@ The following configuration defines the connection information and credentials f
     "retry_connection_timeout_minutes": "15m",
     "turn_on_hotspot_if_wifi_has_no_internet": true
   },
-  "additional_networks": [
-    {
-      "type": "wifi",
-      "ssid": "otherNetworkOne",
+  "additional_networks": {
+    "testNet1": {
+      "priority": 30,
       "psk": "myFirstPassword",
-      "priority": 30
+      "ssid": "otherNetworkOne",
+      "type": "wifi"
     },
-    {
-      "type": "wifi",
-      "ssid": "otherNetworkTwo",
+    "testNet2": {
+      "priority": 10,
       "psk": "mySecondPassword",
-      "priority": 10
+      "ssid": "otherNetworkTwo",
+      "type": "wifi"
     }
-  ]
+  }
 }
 ```
 
