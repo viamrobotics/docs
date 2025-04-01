@@ -251,7 +251,7 @@ Note that if you are using the Viam app to add networks to a machine's configura
 {{< /alert >}}
 
 During provisioning, `viam-agent` will try to connect to each specified network in order of `priority` from highest to lowest.
-If the highest-priority network is not available or the machine can connect but internet is not available, `viam-agent` will then attempt to connect to the next-highest network, and so on until all configured networks have been tried.
+If the highest-priority network is not available (or, if `turn_on_hotspot_if_wifi_has_no_internet` is enabled, the machine can connect but internet is not available), `viam-agent` will then attempt to connect to the next-highest network, and so on until all configured networks have been tried.
 
 ## `system-configuration`
 
