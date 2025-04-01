@@ -522,7 +522,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 
    By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
    The WiFi password for this hotspot network is `viamsetup` by default.
-   You can customize these values in the [`defaults` file](/manage/reference/viam-agent/#defaults).
+   You can customize these values in the [`defaults` file](/manage/fleet/provision/setup/#configure-defaults).
 
 1. Once connected to the hotspot, you will be redirected to a sign-in page.
    If you are using a laptop or are not redirected, try opening [http://viam.setup/](http://viam.setup/) in a browser.
