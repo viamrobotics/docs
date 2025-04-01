@@ -278,6 +278,14 @@ To change the visibility:
 
    {{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x150" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." class="shadow" >}}
 
+   The options are:
+
+   - **Private**: Only users inside your organization can view, use, and edit the module.
+   - **Public**: Any user inside or outside of your organization can view, use, and edit the module.
+   - **Unlisted**: Any user inside or outside of your organization, with a direct link, can view and use the module.
+     Only organization members can edit the module.
+     Not listed in the registry.
+
 You can also edit the visibility by editing the [meta.json](/operate/get-started/other-hardware/#metajson-reference) file and then running the following [CLI](/dev/tools/cli/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
