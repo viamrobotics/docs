@@ -350,7 +350,7 @@ First, implement the camera API methods by editing the camera class definition:
        return pil_to_viam_image(img, CameraMimeType.JPEG)
    ```
 
-   You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
+   Leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
 
    Save the file.
 
@@ -480,7 +480,7 @@ First, implement the camera API methods by editing the camera class definition:
 
 1. Delete the `SubscribeRTP` and `Unsubscribe` methods, since they are not applicable to this camera.
 
-1. You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
+1. Leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
 
    However, you do need to edit the return statements to return empty structs that match the API.
    Edit these methods so they look like this:
@@ -726,8 +726,8 @@ viam module upload --version 1.0.0 --platform any .
 {{< /tabs >}}
 
 Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you can find your private module listed.
-With the module now in the registry, you can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
-The local module configuration is primarily for testing purposes.
+With the module now in the registry, you can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services.
+There's no more need for local module configuration; local modules are primarily used for testing.
 
 {{<imgproc src="/how-tos/hello-config.png" resize="x1100" declaredimensions=true alt="The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results." style="max-width:500px" class="shadow aligncenter" >}}
 
