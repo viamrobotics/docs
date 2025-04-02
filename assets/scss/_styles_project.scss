@@ -1877,6 +1877,11 @@ ul.sectionlist > li:hover {
   border: none;
 }
 
+.td-content > .table * ol.ais-Hits-list,
+.td-content * .table * ol.ais-Hits-list {
+  margin-left: 0rem;
+}
+
 #hits .ais-Hits-list {
   list-style-type: none;
   display: flex;
