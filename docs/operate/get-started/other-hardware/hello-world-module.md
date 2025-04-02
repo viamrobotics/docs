@@ -22,13 +22,13 @@ prev: "/operate/get-started/other-hardware/"
 
 ## What this guide covers
 
-This guide will walk you through creating a {{< glossary_tooltip term_id="modular-resource" text="modular" >}} camera component that responds to API calls by returning a configured image.
+This guide walks you through creating a {{< glossary_tooltip term_id="modular-resource" text="modular" >}} camera component that returns a configured image.
 This guide also includes optional steps to create a modular sensor that returns random numbers, to demonstrate how you can include two modular resources within one {{< glossary_tooltip term_id="module" text="module" >}}.
-By the end of this guide, you will be able to create your own modular resources and package them into modules so you can use them on your machines.
+By the end, you will know how to create your own modular resources and package them into modules so you can use them on your machines.
 
 {{% alert title="Note" color="note" %}}
 
-This guide provides a basic example for learning purposes.
+This guide provides a basic learning example.
 For a more comprehensive guide including usage of cloud build tools for deployment across different platforms, see [Integrate other hardware](/operate/get-started/other-hardware/).
 
 {{% /alert %}}
@@ -57,116 +57,17 @@ You can check by running `python3 --version` or `python --version` in your termi
 
 {{< /expand >}}
 
-## Create a test script
+## Decide what your module will do
 
-The point of creating a module is to add functionality to your machine.
-For the purposes of this guide, you're going to make a module that does two things: It opens an image file from a configured path on your machine, and it returns a random number.
+The functionality you want to add to your machine determines the APIs you need to implement, so let's start by deciding what your module will do.
+For the purposes of this guide, you're going to make a module that does two things:
 
-1.  Find an image you'd like to display when your program runs.
-    We used [this image of a computer with "hello world" on the screen](https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-8q6e5hu3Ilc).
-    Save the image to your computer.
-
-1.  Create a test script on your computer and copy the following code into it:
-
-    {{< tabs >}}
-    {{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-# test.py opens an image and prints a random number
-from PIL import Image
-import random
-
-# TODO: Replace path with path to where you saved your photo
-photo = Image.open("/Users/jessamyt/Downloads/hello-world.jpg")
-
-photo.show()
-
-number = random.random()
-
-print("Hello, World! The latest random number is ", number, ".")
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-// test.go opens an image and prints a random number
-package main
-
-import (
-  "os"
-  "os/exec"
-  "fmt"
-  "math/rand"
-)
-
-func main() {
-
-  // TODO: Replace path string with path to where you saved your photo
-  imagePath := "/Users/jessamyt/Downloads/hello-world.jpg"
-  file, err := os.Open(imagePath)
-  if err != nil {
-    fmt.Println("Error opening image:", err)
-    return
-  }
-  defer file.Close()
-
-  // "open" works on macOS.
-  // For Linux, replace "open" with "xdg-open".
-  err = exec.Command("open", imagePath).Start()
-  if err != nil {
-    fmt.Println("Error opening image viewer:", err)
-  }
-
-  number := rand.Float64()
-  fmt.Println("Hello, World! The latest random number is ", number, ".")
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-1.  Replace the path in the script above with the path to where you saved your photo.
-    Save the script.
-
-1.  Run the test script in your terminal:
-
-    {{< tabs >}}
-    {{% tab name="Python" %}}
-
-It's best practice to use a virtual environment for running Python scripts.
-You'll also need to install the dependency Pillow in the virtual environment before running the test script.
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-python3 -m venv .venv
-source .venv/bin/activate
-pip install Pillow
-python3 test.py
-```
-
-The image you saved should open on your screen, and a random number should print to your terminal.
-
-In later steps, the module generator will create a new virtual environment with required dependencies, so you can deactivate the one you just ran the test script in:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-deactivate
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-go run test.go
-```
-
-The image you saved should open on your screen, and a random number should print to your terminal.
-
-{{% /tab %}}
-{{< /tabs >}}
+- Opens an image file from a configured path on your machine
+- Returns a random number
 
 ## Choose an API to implement
 
-Now it's time to decide which Viam [APIs](/dev/reference/apis/#component-apis) make sense for your module.
+Let's figure out which Viam [APIs](/dev/reference/apis/#component-apis) make sense for your module.
 You need a way to return an image, and you need a way to return a number.
 
 If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImage` method, which returns an image.
@@ -449,7 +350,7 @@ First, implement the camera API methods by editing the camera class definition:
        return pil_to_viam_image(img, CameraMimeType.JPEG)
    ```
 
-   You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
+   Leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
 
    Save the file.
 
@@ -579,7 +480,7 @@ First, implement the camera API methods by editing the camera class definition:
 
 1. Delete the `SubscribeRTP` and `Unsubscribe` methods, since they are not applicable to this camera.
 
-1. You can leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
+1. Leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`NextPointCloud`), and does not need to return multiple images simultaneously (`Images`).
 
    However, you do need to edit the return statements to return empty structs that match the API.
    Edit these methods so they look like this:
@@ -824,9 +725,9 @@ viam module upload --version 1.0.0 --platform any .
 {{% /tab %}}
 {{< /tabs >}}
 
-Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your private module listed.
-Because the module is now in the registry, you can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services; there's no more need for local module configuration.
-The local module configuration is primarily for testing purposes.
+Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you can find your private module listed.
+With the module now in the registry, you can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services.
+There's no more need for local module configuration; local modules are primarily used for testing.
 
 {{<imgproc src="/how-tos/hello-config.png" resize="x1100" declaredimensions=true alt="The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results." style="max-width:500px" class="shadow aligncenter" >}}
 
