@@ -112,8 +112,8 @@ async function connect(): Promise<VIAM.ViamClient> {
   return client;
 }
 
-const appClient = await connect();
-const dataClient = appClient.dataClient;
+const viamClient = await connect();
+const dataClient = viamClient.dataClient;
 ```
 
 {{% /tab %}}

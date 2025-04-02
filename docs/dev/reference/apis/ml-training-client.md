@@ -97,8 +97,8 @@ async function connect(): Promise<VIAM.ViamClient> {
   return client;
 }
 
-const appClient = await connect();
-const mlTrainingClient = appClient.mlTrainingClient;
+const viamClient = await connect();
+const mlTrainingClient = viamClient.mlTrainingClient;
 ```
 
 {{% /tab %}}
