@@ -3401,3 +3401,25 @@ footer {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+// Base ordered list styling
+.td-content>ol {
+  display: block; // Back to normal block display
+  margin-left: 2.5rem;
+  list-style-position: outside; // Keep numbers in margin
+}
+
+// List items should contain their content
+.td-content>ol>li {
+  display: block;
+}
+
+// Complex content within list items
+.td-content>ol>li>.table,
+.td-content>ol>li>.tab-content,
+.td-content>ol>li>.expand,
+.td-content>ol>li>pre {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
