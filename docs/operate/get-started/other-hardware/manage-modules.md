@@ -234,11 +234,19 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 1. Add the key ID and value as GitHub repository secrets named `viam_key_id` and `viam_key_value`.
 
-1. In your GitHub repository **Settings**, navigate to **Actions** -> **General** -> **Workflow permissions**.
-   Set the **Workflow permissions** to **Read and write permissions**.
-
 1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
    Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/reference/module-configuration/#module-versioning) of the module will automatically update to the new version.
+
+{{% alert title="Troubleshooting tip" color="tip" %}}
+
+If you are having trouble with your GitHub Actions workflow, try the following:
+
+In your GitHub repository **Settings**, navigate to **Actions** -> **General** -> **Workflow permissions**.
+Set the **Workflow permissions** to **Read and write permissions**.
+
+Then try triggering a build with a new release.
+
+{{% /alert %}}
 
 ### Update manually
 

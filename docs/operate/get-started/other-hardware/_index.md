@@ -1059,9 +1059,6 @@ The `viam module generate` command already generated the `build-action` file in 
    - `VIAM_KEY_ID` with the UUID from `Key ID:` in your terminal
    - `VIAM_KEY_VALUE` with the string from `Key Value:` in your terminal
 
-1. In your GitHub repository **Settings**, navigate to **Actions** -> **General** -> **Workflow permissions**.
-   Set the **Workflow permissions** to **Read and write permissions**.
-
 1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
 1. In the **Choose a tag** dropdown, create a new tag such as `1.0.0`.
    _Do not prepend the tag with `v` or the GH action will not trigger._
@@ -1069,6 +1066,17 @@ The `viam module generate` command already generated the `build-action` file in 
 
 1. Click **Publish release**.
    The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
+
+{{% alert title="Troubleshooting tip" color="tip" %}}
+
+If you are having trouble with your GitHub Actions workflow, try the following:
+
+In your GitHub repository **Settings**, navigate to **Actions** -> **General** -> **Workflow permissions**.
+Set the **Workflow permissions** to **Read and write permissions**.
+
+Then try triggering a build with a new release.
+
+{{% /alert %}}
 
 See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information.
 
