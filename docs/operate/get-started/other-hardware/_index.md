@@ -65,11 +65,15 @@ The lifecycle of a module and the resources it provides is as follows:
    If a dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
 1. `viam-server` calls the resource's constructor to build the resource based on its configuration.
    Typically, the constructor calls the reconfigure function.
-1. If configuration fails due to a validation failure or an exception thrown by the reconfigure or constructor functions, `viam-server` attempts to reconfigure the resource.
-1. The modular resource is ready to use.
+1. If construction or reconfiguration fails due to a validation failure or an exception thrown by the modular resource's constructor or its reconfigure method, `viam-server` attempts to construct or reconfigure the resource every 5 seconds.
+   If the module exceeds the [configured timeout limits](/operate/reference/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure), `viam-server` logs an [error](/dev/tools/common-errors/#timed-out-waiting-for-module).
+1. Once the modular resource has started up and configured, it is available for use.
 1. If at any point the user changes the configuration of the machine, `viam-server` reconfigures the affected resources within 15 seconds.
 1. If `viam-server` attempts to shut down an individual module (for example due to a user disabling a module) and the module does not shut down within 30 seconds, `viam-server` kills the module.
-1. When `viam-server` shuts down, it first shuts down all modules and kills them if they fail to shut down within 90 seconds.
+1. When `viam-server` shuts down, it first attempts to shut down each module sequentially in no particular order.
+   If a given module does not shut down within 30 seconds, it is killed with a `SIGKILL`.
+   If any modules are still running after 90 seconds, `viam-server` kills them as well.
+   This means that if four modules are running and the first three each fail to shut down within 30 seconds each, the fourth is killed immediately at the 90 second mark.
 
 For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
 {{< /expand >}}
