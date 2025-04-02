@@ -236,7 +236,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
 
 {{% expand "Click to view a full configuration example" %}}
 
-```json {class="line-numbers linkable-line-numbers" data-line="12-22,25-37,40-45"}
+```json {class="line-numbers linkable-line-numbers" data-line="12-21,25-37,40-45"}
 {
   "components": [
     {

@@ -202,6 +202,10 @@ You can find details about the return types at [python.viam.dev](https://python.
 
 {{< expand "Example code for a sensor module" >}}
 
+The following code implements the sensor API by getting weather data from Open-Meteo and returning it using the `get_readings` function.
+
+The `validate` and `reconfigure` functions have been edited so that the user can configure coordinates from which to get weather data, but if the user does not configure these optional attributes, defaults are assigned.
+
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
 from typing import Any, ClassVar, Final, Mapping, Optional, Sequence
@@ -412,8 +416,6 @@ For each method you want to implement, replace the body of the method with your 
 Make sure you return the correct type in accordance with the function's return signature.
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
-<ol><li style="counter-reset: item 5"><strong>Edit the methods you want to implement</strong>:
-
 {{< expand "Example code for a camera module" >}}
 This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
 It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
@@ -554,7 +556,7 @@ You can find more examples by looking at the source code GitHub repos linked fro
 
 </li></ol>
 
-<ol><li style="counter-reset: item 6"><strong>Add logging</strong> messages as desired.
+<ol><li style="counter-reset: item 5"><strong>Add logging</strong> messages as desired.
 
 You can add log messages with various levels of severity:
 
@@ -790,7 +792,7 @@ Configure any required attributes using proper JSON syntax.
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
 For example, if you created a sensor component, check whether readings are displayed.
 
-{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="width:600px" class="shadow" >}}
+{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" class="shadow" >}}
 
 {{% /tablestep %}}
 {{% tablestep number=5 %}}
