@@ -51,11 +51,11 @@ However, if you are unable to use modular resources because you need to host `vi
 In rare cases, you may need to package and deploy a module using Docker.
 Use cases for this include:
 
-- Your module has complex system dependencies that cannot be installed on a machine.
+- Your module has complex system dependencies that cannot be easily installed on a machine.
 - You have a large bundle and want to use layer caching to reduce the size of the download.
 - You have specific security requirements that are difficult to meet with the default module deployment.
 
-If you choose to deploy your module using Docker, we recommend creating a first run script or binary to run any necessary setup steps.
+If you choose to deploy your module using Docker, we recommend creating a "first run" script or binary to run any necessary setup steps.
 
 {{% expand "Click for first run script instructions" %}}
 
