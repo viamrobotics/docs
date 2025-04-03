@@ -75,6 +75,8 @@ If the `fallbackNetOne` is not available or the machine can connect but internet
 }
 ```
 
+{{< readfile "/static/include/wifi-micro.md" >}}
+
 For complete reference information, see [viam-agent](/manage/reference/viam-agent/#network_configuration).
 
 ## Configure networking settings for tunneling
