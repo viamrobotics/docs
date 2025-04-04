@@ -331,7 +331,7 @@ Add the following code to the `validate()` function to throw an error if `image_
 ```python {class="line-numbers linkable-line-numbers" data-start="46"}
 # Check that a path to get an image was configured
 fields = config.attributes.fields
-if not "image_path" in fields:
+if "image_path" not in fields:
     raise Exception("Missing image_path attribute.")
 elif not fields["image_path"].HasField("string_value"):
     raise Exception("image_path must be a string.")
@@ -356,7 +356,14 @@ async def get_image(
 
 You need to replace `raise NotImplementedError()` with code to actually implement the method:
 
-```python {class="line-numbers linkable-line-numbers" data-start="86" }
+```python {class="line-numbers linkable-line-numbers" data-start="79" }
+async def get_image(
+    self,
+    mime_type: str = "",
+    *,
+    extra: Optional[Dict[str, Any]] = None,
+    timeout: Optional[float] = None,
+    **kwargs
 ) -> ViamImage:
     img = Image.open(self.image_path)
     return pil_to_viam_image(img, CameraMimeType.JPEG)
