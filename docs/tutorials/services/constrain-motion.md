@@ -81,7 +81,7 @@ If instead you create a new machine for this tutorial, copy and paste the follow
   "components": [
     {
       "name": "myArm",
-      "model": "xArm6",
+      "model": "viam:ufactory:xArm6",
       "api": "rdk:component:arm",
       "attributes": {
         "host": "<ip-address>",
