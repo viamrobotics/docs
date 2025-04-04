@@ -56,6 +56,7 @@ Use cases for this include:
 - You have specific security requirements that are difficult to meet with the default module deployment.
 
 If you choose to deploy your module using Docker, we recommend creating a "first run" script or binary to run any necessary setup steps.
+Note this is _not_ recommended for modules that do not use Docker, it adds unnecessary complexity.
 
 {{% expand "Click for first run script instructions" %}}
 
@@ -67,11 +68,6 @@ If you choose to deploy your module using Docker, we recommend creating a "first
 
      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
      #!/usr/bin/env bash
-
-     if [[ -n "$VIAM_TEST_FAIL_RUN_FIRST" ]]; then
-         echo "Sorry, I've failed you."
-         exit 1
-     fi
 
      docker pull mongo:6
 
