@@ -75,6 +75,8 @@ If the `fallbackNetOne` is not available or the machine can connect but internet
 }
 ```
 
+Configuring multiple WiFi networks for the Micro-RDK is similar but the only supported attributes are `priority`, `psk`, and `ssid`.
+
 For complete reference information, see [viam-agent](/manage/reference/viam-agent/#network_configuration).
 
 ## Configure networking settings for tunneling
