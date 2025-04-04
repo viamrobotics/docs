@@ -37,7 +37,7 @@ Overall, `viam-server` manages:
 
 ## Dependency management
 
-`viam-server` handles dependency management between resources.
+`viam-server` handles [dependency](/operate/get-started/other-hardware/dependencies/) management between resources.
 
 ## Start-up
 
@@ -50,7 +50,7 @@ After start-up, `viam-server` manages:
 - the running services, and
 - the {{< glossary_tooltip term_id="module" text="modules" >}} that provide the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 
-### Reconfiguration
+## Reconfiguration
 
 When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running machine.
@@ -67,7 +67,7 @@ If you want to force a reconfiguration of a resource, you can click the **Disabl
 Alternatively, if you are having issues with a module, try the **Restart module** button in the module menu.
 {{% /hiddencontent %}}
 
-### Maintenance window
+## Maintenance window
 
 There are a few updates that may make your machine temporarily unavailable:
 
@@ -108,7 +108,7 @@ maintenance : {
 | `sensor_name` | string | **Required** | The full name of the sensor that provides the information if it is safe to update a machine's configuration. For example `rdk:component:sensor/sensor1`. |
 | `maintenance_allowed_key` | string | **Required** | The key of the key value pair for the reading returned by the sensor. |
 
-### Logging
+## Logging
 
 Log messages appear under the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for a machine.
 
@@ -191,7 +191,7 @@ If log configurations are applied at a resource level using the `log_configurati
 
 {{% /expand%}}
 
-#### Disable log deduplication
+### Disable log deduplication
 
 By default, `viam-server` deduplicates log messages that are deemed noisy.
 A log is deemed noisy if it has been output 3 times in the past 10 seconds.
@@ -220,7 +220,7 @@ To disable log deduplication, set `disable_log_deduplication` in your machine's 
 
 {{% /expand%}}
 
-#### Delete machine logs
+### Delete machine logs
 
 You cannot delete machine logs.
 If your machine has generated a large amount of logs and you are concerned about the cost, you can:
@@ -230,7 +230,7 @@ If your machine has generated a large amount of logs and you are concerned about
 
 If you delete a machine you will not be charged for the remainder of the 30 days until logs from that machine are deleted.
 
-#### Debugging
+### Debugging
 
 You can enable debug level logs in two ways:
 
@@ -246,7 +246,7 @@ You can enable debug level logs in two ways:
 
 Enabling debug level logs will take precedence over all logging configuration set using the `log` field on a machine or the `log_configuration` field on a resource.
 
-### Shutdown
+## Shutdown
 
 During machine shutdown, `viam-server` handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 

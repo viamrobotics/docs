@@ -55,48 +55,72 @@ For C++ module examples, see the [C++ examples directory on GitHub](https://gith
 {{% /alert %}}
 
 {{< expand "How and where do modules run?" >}}
-Modules run on your machine, alongside [`viam-server`](/operate/reference/viam-server/) as separate processes, communicating with `viam-server` over UNIX sockets.
+Modules run on your machine, alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
 
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/dev/reference/apis/) with `viam-server`, making the new model available for use.
-`viam-server` manages the [dependencies](/operate/reference/viam-server/#dependency-management), [start-up](/operate/reference/viam-server/#start-up), [reconfiguration](/operate/reference/viam-server/#reconfiguration), [data management](/data-ai/capture-data/capture-sync/), and [shutdown](/operate/reference/viam-server/#shutdown) behavior of your modular resource.
+[`viam-server` manages](/operate/reference/viam-server/) the dependencies, start-up, reconfiguration, [data management](/data-ai/capture-data/capture-sync/), and shutdown behavior of your modular resource.
+
+The lifecycle of a module and the resources it provides is as follows:
+
+1. `viam-server` starts, and if it is connected to the internet, it checks for configuration updates.
+1. `viam-server` starts any configured modules.
+1. When a module initializes, it registers its model or models and associated [APIs](/dev/reference/apis/) with `viam-server`, making the models available for use.
+1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the dependencies of the resource.
+1. If a dependency is not already running, `viam-server` starts it before starting the resource.
+   If a dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
+1. `viam-server` calls the resource's constructor to build the resource based on its configuration.
+   Typically, the constructor calls the reconfigure function.
+1. If construction or reconfiguration fails due to a validation failure or an exception thrown by the modular resource's constructor or its reconfigure method, `viam-server` attempts to construct or reconfigure the resource every 5 seconds.
+   If the module exceeds the [configured timeout limits](/operate/reference/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure), `viam-server` logs an [error](/dev/tools/common-errors/#timed-out-waiting-for-module).
+1. Once the modular resource has started up and configured, it is available for use.
+1. If at any point the user changes the configuration of the machine, `viam-server` reconfigures the affected resources within 15 seconds.
+1. If `viam-server` attempts to shut down an individual module (for example due to a user disabling a module) and the module does not shut down within 30 seconds, `viam-server` kills the module.
+1. When `viam-server` shuts down, it first attempts to shut down each module sequentially in no particular order.
+   If a given module does not shut down within 30 seconds, it is killed with a `SIGKILL`.
+   If any modules are still running after 90 seconds, `viam-server` kills them as well.
+   This means that if four modules are running and the first three each fail to shut down within 30 seconds each, the fourth is killed immediately at the 90 second mark.
 
 For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
 {{< /expand >}}
 
-## Design your module
+{{< expand "How to design your module" >}}
 
-{{< table >}}
-{{% tablestep number=1 %}}
-**Write a test script (optional)**
+If you want to plan your module before you write it, you can use the following steps to design your module:
 
-You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
-Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
+1. **Write a test script (optional)**
 
-{{% /tablestep %}}
-{{% tablestep number=2 %}}
-**Choose an API**
+   You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
+   Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
 
-Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
-With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
-Each model implements one API.
+   <br>
 
-For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
+2. **Choose an API**
 
-You do not need to fully implement all the methods of an API.
-For example, if you want to use the [camera API](/dev/reference/apis/components/camera/) because you want to return images, but your camera does not get point cloud data, you can implement the `GetImage` method but for the `GetPointCloud` method you can return nil and an "unimplemented" error or similar, depending on the method and the language you use to write your module.
+   Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
+   With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
+   Each model implements one API.
 
-If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
+   <br>
 
-{{% /tablestep %}}
-{{% tablestep number=3 %}}
-**Decide on configuration attributes and dependencies**
+   For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
 
-Make a list of required and optional attributes for users to configure when adding your module to a machine.
-For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
-You'll need to add these attributes to the `Validate` and `Reconfigure` functions when you write the module.
+   <br>
 
-{{% /tablestep %}}
-{{< /table >}}
+   You do not need to fully implement all the methods of an API.
+   For example, if you want to use the [camera API](/dev/reference/apis/components/camera/) because you want to return images, but your camera does not get point cloud data, you can implement the `GetImage` method but for the `GetPointCloud` method you can return nil and an "unimplemented" error or similar, depending on the method and the language you use to write your module.
+
+   <br>
+
+   If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
+
+   <br>
+
+3. **Decide on configuration attributes and dependencies**
+
+   Make a list of required and optional attributes for users to configure when adding your module to a machine.
+   For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
+   You'll need to add these attributes to the `Validate` and `Reconfigure` functions when you write the module.
+
+{{< /expand >}}
 
 ## Write your module
 
@@ -133,7 +157,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Language | The language for the module. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
 | Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
-| Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. |
+| Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [How to design your module](./#how-to-design-your-module) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the Viam app registry page; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
@@ -160,26 +184,8 @@ Edit the generated files to add your logic:
 1. **Edit the `validate_config` function** to do the following:
 
    - Check that the user has configured required attributes and return errors if they are missing.
-   - Return a map of any implicit dependencies.
-
-      <details>
-        <summary><strong>Explicit versus implicit dependencies</strong></summary>
-
-     Some modular resources require that other {{< glossary_tooltip term_id="resource" text="resources" >}} start up first.
-     For example, a mobile robotic base might need its motors to instantiate before the overall base module instantiates.
-     If your use case requires that things initialize in a specific order, you have two options:
-
-     - Explicit dependencies: Require that a user list the names of all resources that must start before a given component in the `depends_on` field of the component's configuration.
-       - Useful when dependencies are optional.
-     - Implicit dependencies: Instead of explicitly using the `depends_on` field, require users to configure a named attribute (for example `"left-motor": "motor1"`), and write your module with that attribute as a dependency.
-       Note that most named attributes are _not_ dependencies; you need to specify a resource as not only an attribute but also a dependency for it to be initialized first.
-       See code examples below.
-
-       - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
-
-       - See [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src) for example usage.
-
-       </details><br>
+   - Return a map of any dependencies.
+     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
 
 1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
    This function should do the following:
@@ -190,7 +196,7 @@ Edit the generated files to add your logic:
 
 <ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
 
-For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+For each method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
 You can find details about the return types at [python.viam.dev](https://python.viam.dev/autoapi/viam/components/index.html).
 
@@ -237,7 +243,7 @@ class meteo_PM(Sensor, EasyResource):
     @classmethod
     def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
         """This method allows you to validate the configuration object
-        received from the machine, as well as to return any implicit
+        received from the machine, as well as to return any
         dependencies based on that `config`.
         """
         fields = config.attributes.fields
@@ -383,26 +389,8 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 1. **Edit the `Validate` function** to do the following:
 
    - Check that the user has configured required attributes and return errors if they are missing.
-   - Return any implicit dependencies.
-
-      <details>
-        <summary><strong>Explicit versus implicit dependencies</strong></summary>
-
-     Some modular resources require that other {{< glossary_tooltip term_id="resource" text="resources" >}} start up first.
-     For example, a mobile robotic base might need its motors to instantiate before the overall base module instantiates.
-     If your use case requires that things initialize in a specific order, you have two options:
-
-     - Explicit dependencies: Require that a user list the names of all resources that must start before a given component in the `depends_on` field of the component's configuration.
-       - Useful when dependencies are optional.
-     - Implicit dependencies: Instead of explicitly using the `depends_on` field, require users to configure a named attribute (for example `"left-motor": "motor1"`), and write your module with that attribute as a dependency.
-       Note that most named attributes are _not_ dependencies; you need to specify a resource as not only an attribute but also a dependency for it to be initialized first.
-       See code examples below.
-
-       - This is the preferred method when dependencies are required, because implicit dependencies make it more clear what needs to be configured, they eliminate the need for the same attribute to be configured twice, and they make debugging easier.
-
-       - See [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go) for an example.
-
-       </details><br>
+   - Return any dependencies.
+     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).<br><br>
 
 1. **(Optional) Create and edit a `Reconfigure` function**:
 
@@ -415,6 +403,8 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
    - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
    - Assign default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
 
+   For an example that implements the `Reconfigure` method, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
+
 1. **Edit the constructor** to do the following:
 
    - If you didn't create a `Reconfigure` function, use the constructor to assign default values as necessary to any optional attributes if the user hasn't configured them.
@@ -422,7 +412,7 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 
 <ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
 
-For each method you want to implement, replace the body of the method with the relevant logic from your test script.
+For each method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
