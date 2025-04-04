@@ -117,7 +117,7 @@ To add and use the service:
 1. Click the **Copy attributes** button for the camera you want to use.
 1. Click the **{}** icon in the upper right corner of the camera component configuration.
 
-   {{<imgproc src="/components/camera/advanced-config.png" resize="x1100" declaredimensions=true alt="The switch to advanced button in the Viam app." style="max-width:200px" class="shadow" >}}
+   {{<imgproc src="/components/camera/advanced-config.png" resize="x1100" declaredimensions=true alt="The switch to advanced button in the Viam app." style="width:200px" class="shadow" >}}
 
 1. Paste the copied attributes.
 1. Click **Save**.

@@ -101,7 +101,7 @@ We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jets
 
 1. Configure a board named `local` as shown below:
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/board-config-builder.png" resize="1200x" declaredimensions=true alt="Configuration of a jetson board with digital interrupts in the Viam app config builder." style="max-width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/board-config-builder.png" resize="1200x" declaredimensions=true alt="Configuration of a jetson board with digital interrupts in the Viam app config builder." style="width:650px" class="shadow imgzoom" >}}
 
 2. Configure [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) on your board to signal precise GPIO state changes to the [encoders](/operate/reference/components/encoder/) on your rover base.
    Find your board on the **CONFIGURE** tab in **Builder** mode.
@@ -322,21 +322,21 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
 1.  Configure a GPS movement sensor so the robot knows where it is while navigating.
     We configured ours as a `gps-nmea-rtk-serial` movement sensor:
 
-    {{<imgproc src="/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a GPS movement sensor in the Viam app Config Builder." style="max-width:550px" class="shadow imgzoom" >}}
+    {{<imgproc src="/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a GPS movement sensor in the Viam app Config Builder." style="width:550px" class="shadow imgzoom" >}}
 
     We named ours `gps`.
     Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](https://github.com/viam-modules/gps/blob/main/README.md#configure-your-rtk-serial-movement_sensor) for attribute information.
 
 2.  Configure a wheeled odometry movement sensor to provide angular and linear velocity measurements from the encoded motors on our base.
 
-    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder." style="max-width:550px" class="shadow imgzoom" >}}
+    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder." style="width:550px" class="shadow imgzoom" >}}
 
     We named ours `enc-linear`.
     Refer to [the `wheeled-odometry` movement sensor documentation](/operate/reference/components/movement-sensor/wheeled-odometry/) for attribute information.
 
 3.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
 
-    {{<imgproc src="/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a merged movement sensor in the Viam app Config Builder." style="max-width:550px" class="shadow imgzoom" >}}
+    {{<imgproc src="/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a merged movement sensor in the Viam app Config Builder." style="width:550px" class="shadow imgzoom" >}}
 
     We named ours `merged`.
     Refer to [the `merged` movement sensor documentation](/operate/reference/components/movement-sensor/merged/) for attribute information.
@@ -348,7 +348,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
         If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1`.
       - Select the `base` as the parent frame.
 
-        {{<imgproc src="/tutorials/navigate-with-rover-base/merged-movement-sensor-frame-system.png" resize="1100x" declaredimensions=true alt="An example configuration for a merged movement sensor in the Viam app Frame System." style="max-width:460px" class="shadow imgzoom" >}}
+        {{<imgproc src="/tutorials/navigate-with-rover-base/merged-movement-sensor-frame-system.png" resize="1100x" declaredimensions=true alt="An example configuration for a merged movement sensor in the Viam app Frame System." style="width:460px" class="shadow imgzoom" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -465,7 +465,7 @@ To add the navigation service to your robot, do the following:
 
 Your navigation service should now appear in your machine's **CONFIGURE** tab as a card with a map like the following:
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/navigation-config-builder.png" resize="1200x" declaredimensions=true alt="Navigation Card" style="max-width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/navigation-config-builder.png" resize="1200x" declaredimensions=true alt="Navigation Card" style="width:650px" class="shadow imgzoom" >}}
 
 For more detailed information see [the navigation service](/operate/reference/services/navigation/#configuration).
 
@@ -516,12 +516,12 @@ From there, ensure that **Navigation mode** is selected as **Manual**, so your r
 Select **Waypoints** on the upper-left corner menu of the navigation card.
 Zoom in on your current location and click on the map to add a waypoint.
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/add-first-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 0 being added in the Viam app config builder on a New York City street" style="max-width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/add-first-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 0 being added in the Viam app config builder on a New York City street" style="width:650px" class="shadow imgzoom" >}}
 
 Add as many waypoints as you desire.
 Hover over a waypoint in the left-hand menu and click the trash icon to delete a waypoint.
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/add-second-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 1 being added in the Viam app config builder, further down the street" style="max-width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/add-second-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 1 being added in the Viam app config builder, further down the street" style="width:650px" class="shadow imgzoom" >}}
 
 #### (Optional) Add obstacles
 
@@ -610,7 +610,7 @@ First, configure a depth [camera](/operate/reference/components/camera/) that yo
 
 We configured ours as an Intel RealSense Camera, which is available as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} [in the Viam Registry](https://app.viam.com/module/viam/realsense):
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/realsense-camera-config-builder.png" resize="1200x" declaredimensions=true alt="An example configuration for an Intel RealSense camera in the Viam app Config Builder." style="max-width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/realsense-camera-config-builder.png" resize="1200x" declaredimensions=true alt="An example configuration for an Intel RealSense camera in the Viam app Config Builder." style="width:650px" class="shadow imgzoom" >}}
 
 {{< alert title="Tip" color="tip" >}}
 
