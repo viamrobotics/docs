@@ -1,6 +1,6 @@
 ---
-title: "Configure a Single Encoder (viam-micro-server)"
-linkTitle: "single"
+title: "Configure a Single Encoder (Micro-RDK)"
+linkTitle: "single (Micro-RDK)"
 type: "docs"
 description: "Configure a single encoder with a microcontroller."
 images: ["/icons/components/encoder.svg"]

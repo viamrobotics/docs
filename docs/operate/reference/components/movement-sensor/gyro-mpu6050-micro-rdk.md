@@ -1,6 +1,6 @@
 ---
-title: "Configure an MPU-6050 (viam-micro-server)"
-linkTitle: "gyro-mpu6050"
+title: "Configure an MPU-6050 (Micro-RDK)"
+linkTitle: "gyro-mpu6050 (Micro-RDK)"
 weight: 40
 type: "docs"
 description: "Configure an MPU-6050 movement sensor with a microcontroller."
