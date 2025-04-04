@@ -211,6 +211,9 @@ The following resource models have moved to modules.
 <!-- prettier-ignore -->
 | Resource | Model |
 | -------- | ----- |
+| arm | [`lite6`](https://github.com/viam-modules/viam-ufactory-xarm) |
+| arm | [`xArm6`](https://github.com/viam-modules/viam-ufactory-xarm) |
+| arm | [`xArm7`](https://github.com/viam-modules/viam-ufactory-xarm) |
 | board | [`customlinux`](https://github.com/viam-modules/customlinux/) |
 | board | [`jetson`](https://github.com/viam-modules/nvidia) |
 | board | [`pca9685`](https://github.com/viam-modules/pca/tree/main) |
