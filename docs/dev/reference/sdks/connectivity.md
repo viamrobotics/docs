@@ -121,7 +121,7 @@ There are a couple of exceptions to the general timeout behavior:
 - If a [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) or [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) command has completed a motion plan and returned an execution ID before the connection is lost, the resource that receives the motion plan will complete the motion without a connection.
 - If a navigation service and motion service are running on the same machine, the navigation service will continue sending requests to the motion service even after losing internet connectivity.
 
-  {{% /alert %}}
+{{% /alert %}}
 
 ### Configure a connection timeout
 
