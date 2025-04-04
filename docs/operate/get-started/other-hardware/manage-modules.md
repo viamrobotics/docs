@@ -45,7 +45,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
 1. Push your changes to your module GitHub repository.
 
-   {{% alert title="Note" color="note" %}}
+   {{% alert title="Tip" color="tip" %}}
 
    If you used `viam module generate` to create your module and enabled cloud build, all you need to do to trigger a new build is create a tag and publish a release in GitHub as you did when you [first published the module](/operate/get-started/other-hardware/#upload-your-module).
 
@@ -99,7 +99,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 }
 ```
 
-{{%expand "Click to view example setup.sh" %}}
+{{%expand "Click to view example setup.sh for a Python module" %}}
 
 ```sh {class="command-line" data-prompt="$"}
 #!/bin/bash
@@ -124,7 +124,7 @@ pip3 install -r requirements.txt
 
 {{% /expand%}}
 
-{{%expand "Click to view example build.sh (with setup.sh)" %}}
+{{%expand "Click to view example build.sh (with setup.sh) for a Python module" %}}
 
 ```sh { class="command-line" data-prompt="$"}
 #!/bin/bash
@@ -135,7 +135,7 @@ tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 
 {{% /expand%}}
 
-{{%expand "Click to view example build.sh (without setup.sh)" %}}
+{{%expand "Click to view example build.sh (without setup.sh) for a Python module" %}}
 
 ```sh { class="command-line" data-prompt="$"}
 #!/bin/bash
