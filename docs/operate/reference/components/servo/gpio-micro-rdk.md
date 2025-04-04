@@ -1,6 +1,6 @@
 ---
-title: "Configure a GPIO Servo (viam-micro-server)"
-linkTitle: "gpio"
+title: "Configure a GPIO Servo (Micro-RDK)"
+linkTitle: "gpio (Micro-RDK)"
 weight: 90
 type: "docs"
 description: "Configure a gpio hobby servo with a microcontroller."

@@ -1,6 +1,6 @@
 ---
-title: "Configure a Two-Wheeled Base (viam-micro-server)"
-linkTitle: "two_wheeled_base"
+title: "Configure a Two-Wheeled Base (Micro-RDK)"
+linkTitle: "two_wheeled_base (Micro-RDK)"
 weight: 30
 type: "docs"
 description: "Configure and wire a two-wheeled base with a microcontroller."

@@ -1,6 +1,6 @@
 ---
-title: "Configure a GPIO Motor (viam-micro-server)"
-linkTitle: "gpio"
+title: "Configure a GPIO Motor (Micro-RDK)"
+linkTitle: "gpio (Micro-RDK)"
 weight: 10
 type: "docs"
 description: "Configure brushed or brushless DC motors with a microcontroller."

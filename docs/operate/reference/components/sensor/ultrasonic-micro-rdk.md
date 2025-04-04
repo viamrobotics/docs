@@ -1,6 +1,6 @@
 ---
-title: "Configure an Ultrasonic Sensor (viam-micro-server)"
-linkTitle: "ultrasonic"
+title: "Configure an Ultrasonic Sensor (Micro-RDK)"
+linkTitle: "ultrasonic (Micro-RDK)"
 weight: 60
 type: "docs"
 description: "Configure an ultrasonic sensor with a microcontroller."
