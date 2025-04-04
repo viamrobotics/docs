@@ -77,12 +77,7 @@ If you choose to deploy your module using Docker, we recommend creating a "first
 
      cat << EOF
      -------------------------------------
-     Congratulations!
      The setup script ran successfully!
-     This message is obnoxiously large for
-     testing purposes.
-     Sincerely,
-     First Run Script
      -------------------------------------
      EOF
 
