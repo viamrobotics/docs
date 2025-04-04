@@ -10,7 +10,7 @@ from viam.proto.app import ListRegistryItemsRequest, ListRegistryItemsResponse
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        auth_entity='fc5301b4-af27-4421-88fb-31352510bac1',
+        auth_entity='6bb028ff-5afb-457a-aace-15eddc8d596e',
         credentials=Credentials(
             type='api-key',
             payload=os.environ['VIAM_API_KEY']
