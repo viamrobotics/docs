@@ -114,6 +114,15 @@ When your client cannot connect to your machine's `viam-server` instance, `viam-
 
 To disable the default behavior and manage resource timeout and reconfiguration over a networking session yourself, you can [disable the default behavior](/dev/reference/apis/sessions/#disable-default-session-management) of session management, then use [Viam's SDKs](/dev/reference/sdks/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
 
+{{% alert title="Note" color="note" %}}
+
+There are a couple of exceptions to the general timeout behavior:
+
+- If a [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) or [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) command has completed a motion plan and returned an execution ID before the connection is lost, the resource that receives the motion plan will complete the motion without a connection.
+- If a navigation service and motion service are running on the same machine, the navigation service will continue sending requests to the motion service even after losing internet connectivity.
+
+{{% /alert %}}
+
 ### Configure a connection timeout
 
 When connecting to a machine using the [robot API](/dev/reference/apis/robot/) from a supported [Viam SDK](/dev/reference/apis/), you can configure an [optional timeout](/dev/reference/apis/robot/#configure-a-timeout) to account for intermittent or delayed network connectivity.
