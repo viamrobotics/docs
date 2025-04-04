@@ -1057,6 +1057,17 @@ The `viam module generate` command already generated the `build-action` file in 
 1. Click **Publish release**.
    The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
 
+{{% alert title="Troubleshooting tip" color="tip" %}}
+
+If you are having trouble with your GitHub Actions workflow, try the following:
+
+In your GitHub repository **Settings**, navigate to **Actions** -> **General** -> **Workflow permissions**.
+Set the **Workflow permissions** to **Read and write permissions**.
+
+Then try triggering a build with a new release.
+
+{{% /alert %}}
+
 See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information.
 
 {{% /tab %}}
