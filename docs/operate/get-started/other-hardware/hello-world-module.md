@@ -296,70 +296,88 @@ Edit the stub files to add the logic from your test script in a way that works w
 
 First, implement the camera API methods by editing the camera class definition:
 
-1. Add the following to the list of imports at the top of <file>hello-world/src/models/hello_camera.py</file>:
+{{< table >}}
+{{< tablestep number=1 >}}
 
-   ```python {class="line-numbers linkable-line-numbers"}
-   from viam.media.utils.pil import pil_to_viam_image
-   from viam.media.video import CameraMimeType
-   from viam.utils import struct_to_dict
-   from PIL import Image
-   ```
+Add the following to the list of imports at the top of <file>hello-world/src/models/hello_camera.py</file>:
 
-1. In the test script you hard-coded the path to the image.
-   For the module, let's make the path a configurable attribute so you or other users of the module can set the path from which to get the image.
-   Add the following lines to the camera's `reconfigure()` function definition.
-   These lines set the `image_path` based on the configuration when the resource is configured or reconfigured.
+```python {class="line-numbers linkable-line-numbers"}
+from viam.media.utils.pil import pil_to_viam_image
+from viam.media.video import CameraMimeType
+from viam.utils import struct_to_dict
+from PIL import Image
+```
 
-   ```python {class="line-numbers" data-start="59"}
-   attrs = struct_to_dict(config.attributes)
-   self.image_path = str(attrs.get("image_path"))
-   ```
+{{% /tablestep %}}
+{{< tablestep number=2 >}}
 
-1. We are not providing a default image but rely on the end user to supply a valid path to an image when configuring the resource.
-   This means `image_path` is a required attribute.
-   Add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
+In the test script you hard-coded the path to the image.
+For the module, let's make the path a configurable attribute so you or other users of the module can set the path from which to get the image.
+Add the following lines to the camera's `reconfigure()` function definition.
+These lines set the `image_path` based on the configuration when the resource is configured or reconfigured.
 
-   ```python {class="line-numbers linkable-line-numbers" data-start="46"}
-   # Check that a path to get an image was configured
-   fields = config.attributes.fields
-   if not "image_path" in fields:
-       raise Exception("Missing image_path attribute.")
-   elif not fields["image_path"].HasField("string_value"):
-       raise Exception("image_path must be a string.")
-   ```
+```python {class="line-numbers" data-start="59"}
+attrs = struct_to_dict(config.attributes)
+self.image_path = str(attrs.get("image_path"))
+```
 
-1. The module generator created a stub for the `get_image()` function we want to implement:
+{{% /tablestep %}}
+{{< tablestep number=3 >}}
 
-   ```python {class="line-numbers linkable-line-numbers" data-start="79" }
-    async def get_image(
-        self,
-        mime_type: str = "",
-        *,
-        extra: Optional[Dict[str, Any]] = None,
-        timeout: Optional[float] = None,
-        **kwargs
-    ) -> ViamImage:
-        raise NotImplementedError()
-   ```
+We are not providing a default image but rely on the end user to supply a valid path to an image when configuring the resource.
+This means `image_path` is a required attribute.
+Add the following code to the `validate()` function to throw an error if `image_path` isn't configured:
 
-   You need to replace `raise NotImplementedError()` with code to actually implement the method:
+```python {class="line-numbers linkable-line-numbers" data-start="46"}
+# Check that a path to get an image was configured
+fields = config.attributes.fields
+if not "image_path" in fields:
+    raise Exception("Missing image_path attribute.")
+elif not fields["image_path"].HasField("string_value"):
+    raise Exception("image_path must be a string.")
+```
 
-   ```python {class="line-numbers linkable-line-numbers" data-start="86" }
-   ) -> ViamImage:
-       img = Image.open(self.image_path)
-       return pil_to_viam_image(img, CameraMimeType.JPEG)
-   ```
+{{% /tablestep %}}
+{{< tablestep number=4 >}}
 
-   Leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
+The module generator created a stub for the `get_image()` function we want to implement:
 
-   Save the file.
+```python {class="line-numbers linkable-line-numbers" data-start="79" }
+async def get_image(
+    self,
+    mime_type: str = "",
+    *,
+    extra: Optional[Dict[str, Any]] = None,
+    timeout: Optional[float] = None,
+    **kwargs
+) -> ViamImage:
+    raise NotImplementedError()
+```
 
-1. Open <file>requirements.txt</file>.
-   Add the following line:
+You need to replace `raise NotImplementedError()` with code to actually implement the method:
 
-   ```text
-   Pillow
-   ```
+```python {class="line-numbers linkable-line-numbers" data-start="86" }
+) -> ViamImage:
+    img = Image.open(self.image_path)
+    return pil_to_viam_image(img, CameraMimeType.JPEG)
+```
+
+Leave the rest of the functions not implemented, because this module is not meant to return a point cloud (`get_point_cloud()`), and does not need to return multiple images simultaneously (`get_images()`).
+
+Save the file.
+
+{{% /tablestep %}}
+{{< tablestep number=5 >}}
+
+Open <file>requirements.txt</file>.
+Add the following line:
+
+```text
+Pillow
+```
+
+{{% /tablestep %}}
+{{< /table >}}
 
 ### Implement the sensor API
 
@@ -571,7 +589,7 @@ You can view the complete example code in the [hello-world-module repository on 
 With the implementation written, it's time to test your module locally:
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{< tablestep number=1 >}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -600,13 +618,19 @@ viam module build local
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
+
 Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
+
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
+
 In the Viam app, navigate to your machine's **CONFIGURE** page.
+
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
+
 Click the **+** button, select **Local module**, then again select **Local module**.
+
 {{% /tablestep %}}
 {{% tablestep number=5 %}}
 
@@ -652,7 +676,7 @@ Replace the path with the path to your image, for example `"/Users/jessamyt/Down
 {{% tablestep number=8 %}}
 Save the config, then click the **TEST** section of the camera's configuration card.
 
-{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The Viam app configuration interface with the Test section of the camera card open, showing a hello world image." style="max-width:800px" class="shadow aligncenter" >}}
+{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The Viam app configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}
 
 You should see your image displayed.
 If not, check the **LOGS** tab for errors.
@@ -729,7 +753,7 @@ Now, if you look at the [Viam Registry page](https://app.viam.com/registry) whil
 With the module now in the registry, you can configure the hello-sensor and hello-camera on your machines just as you would configure other components and services.
 There's no more need for local module configuration; local modules are primarily used for testing.
 
-{{<imgproc src="/how-tos/hello-config.png" resize="x1100" declaredimensions=true alt="The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results." style="max-width:500px" class="shadow aligncenter" >}}
+{{<imgproc src="/how-tos/hello-config.png" resize="x1100" declaredimensions=true alt="The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results." style="width:500px" class="shadow aligncenter" >}}
 
 For more information about uploading modules, see [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/).
 

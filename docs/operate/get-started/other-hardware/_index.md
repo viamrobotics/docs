@@ -180,21 +180,31 @@ Edit the generated files to add your logic:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary imports.
-1. **Edit the `validate_config` function** to do the following:
+{{< table >}}
+{{< tablestep number=1 >}}
+Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary imports.
+{{% /tablestep %}}
+{{< tablestep number=2 >}}
+**Edit the `validate_config` function** to do the following:
 
-   - Check that the user has configured required attributes and return errors if they are missing.
-   - Return a map of any dependencies.
-     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
+- Check that the user has configured required attributes and return errors if they are missing.
+- Return a map of any dependencies.
 
-1. **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
-   This function should do the following:
+For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
 
-   - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
-   - Assign default values as necessary to any optional attributes if the user hasn't configured them.
-   - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
+{{% /tablestep %}}
+{{< tablestep number=3 >}}
 
-<ol><li style="counter-reset: item 3"><strong>Edit the methods you want to implement</strong>:
+**Edit the `reconfigure` function**, which gets called when the user changes the configuration.
+This function should do the following:
+
+- If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
+- Assign default values as necessary to any optional attributes if the user hasn't configured them.
+- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
+  {{% /tablestep %}}
+  {{< tablestep number=4 >}}
+
+**Edit the methods you want to implement**:
 
 For each method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
@@ -323,10 +333,11 @@ if __name__ == "__main__":
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
 
-</li></ol>
+{{% /tablestep %}}
+{{< tablestep number=5 >}}
 
-<ol><li style="counter-reset: item 4"><strong>Add logging</strong> messages as desired.
-   The following log severity levels are available for resource logs:
+**Add logging** messages as desired.
+The following log severity levels are available for resource logs:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Within some method, log information:
@@ -367,12 +378,14 @@ LOGGER.critical("critical info")
 
 {{< /expand >}}
 
-</li></ol>
+{{% /tablestep %}}
+{{< tablestep number=6 >}}
 
-<ol><li style="counter-reset: item 5"><strong>Edit the generated <file>requirements.txt</file> file</strong> to include any packages that must be installed for the module to run.
-   Depending on your use case, you may not need to add anything here beyond <code>viam-sdk</code> which is auto-populated.
+**Edit the generated <file>requirements.txt</file> file** to include any packages that must be installed for the module to run.
+Depending on your use case, you may not need to add anything here beyond <code>viam-sdk</code> which is auto-populated.
 
-</li></ol>
+{{% /tablestep %}}
+{{< /table >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -382,35 +395,48 @@ LOGGER.critical("critical info")
 This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported in those SDKs.
 {{% /hiddencontent %}}
 
-1. Open <file>module.go</file> and add necessary imports.
+{{< table >}}
+{{< tablestep number=1 >}}
+Open <file>module.go</file> and add necessary imports.
+{{% /tablestep %}}
+{{< tablestep number=2 >}}
+**Add any configurable attributes to the `Config` struct.**
+{{% /tablestep %}}
+{{< tablestep number=3 >}}
+**Edit the `Validate` function** to do the following:
 
-1. **Add any configurable attributes to the `Config` struct.**
+- Check that the user has configured required attributes and return errors if they are missing.
+- Return any dependencies.
 
-1. **Edit the `Validate` function** to do the following:
+For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
+{{% /tablestep %}}
+{{< tablestep number=4 >}}
 
-   - Check that the user has configured required attributes and return errors if they are missing.
-   - Return any dependencies.
-     - For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).<br><br>
+**(Optional) Create and edit a `Reconfigure` function**:
 
-1. **(Optional) Create and edit a `Reconfigure` function**:
+In most cases, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
+This will cause `viam-server` to fully rebuild the resource each time the user changes the configuration.
 
-   In most cases, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
-   This will cause `viam-server` to fully rebuild the resource each time the user changes the configuration.
+If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you should implement this function so that `viam-server` updates the configuration without rebuilding the resource from scratch.
+In this case, your `Reconfigure` function should do the following:
 
-   If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you should implement this function so that `viam-server` updates the configuration without rebuilding the resource from scratch.
-   In this case, your `Reconfigure` function should do the following:
+- If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
+- Assign default values as necessary to any optional attributes if the user hasn't configured them.
 
-   - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
-   - Assign default values as necessary to any optional attributes if the user hasn't configured them.<br><br>
+For an example that implements the `Reconfigure` method, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
 
-   For an example that implements the `Reconfigure` method, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
+{{% /tablestep %}}
+{{< tablestep number=5 >}}
 
-1. **Edit the constructor** to do the following:
+**Edit the constructor** to do the following:
 
-   - If you didn't create a `Reconfigure` function, use the constructor to assign default values as necessary to any optional attributes if the user hasn't configured them.
-   - If you created a `Reconfigure` function, make your constructor call `Reconfigure`.<br><br>
+- If you didn't create a `Reconfigure` function, use the constructor to assign default values as necessary to any optional attributes if the user hasn't configured them.
+- If you created a `Reconfigure` function, make your constructor call `Reconfigure`.
 
-<ol><li style="counter-reset: item 4"><strong>Edit the methods you want to implement</strong>:
+{{% /tablestep %}}
+{{< tablestep number=6 >}}
+
+**Edit the methods you want to implement**:
 
 For each method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
@@ -553,10 +579,9 @@ func (s *helloWorldHelloCamera) Close(context.Context) error {
 {{< /expand >}}
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
-
-</li></ol>
-
-<ol><li style="counter-reset: item 5"><strong>Add logging</strong> messages as desired.
+{{% /tablestep %}}
+{{< tablestep number=7 >}}
+**Add logging** messages as desired.
 
 You can add log messages with various levels of severity:
 
@@ -573,7 +598,8 @@ fn (c *component) someFunction(ctx context.Context, a int) {
 }
 ```
 
-</li></ol>
+{{% /tablestep %}}
+{{< /table >}}
 
 {{% alert title="Note" color="note" %}}
 In order to see debug logs when using your modular resource, you'll need to run `viam-server` with the `-debug` option.
@@ -738,7 +764,7 @@ viam module build local
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
 In upper right corner of the module's card, click the **...** menu, then click **Restart**.
 
-{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
 
 {{< /expand >}}
 
@@ -792,7 +818,7 @@ Configure any required attributes using proper JSON syntax.
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
 For example, if you created a sensor component, check whether readings are displayed.
 
-{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="max-width:600px" class="shadow" >}}
+{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="width:600px" class="shadow" >}}
 
 {{% /tablestep %}}
 {{% tablestep number=5 %}}
@@ -825,7 +851,7 @@ viam module build local
 Then restart it in your machine's **CONFIGURE** tab in the Viam app.
 In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
-{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

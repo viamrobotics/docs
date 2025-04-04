@@ -17,7 +17,7 @@ You can also [define static obstacles](/operate/mobility/define-obstacles/) for 
 For complex kinematic chain configuration, useful when creating a module to support an unsupported arm model, see [Configure Complex Kinematic Chains](/operate/reference/kinematic-chain-config/).
 {{% /alert %}}
 
-{{<imgproc src="/services/frame-system/frame_system_wheeled_base.png" resize="x1100" declaredimensions=true alt="Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI" style="max-width:600px" class="imgzoom shadow" >}}
+{{<imgproc src="/services/frame-system/frame_system_wheeled_base.png" resize="x1100" declaredimensions=true alt="Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI" style="width:600px" class="imgzoom shadow" >}}
 
 ## Configure a reference frame
 
