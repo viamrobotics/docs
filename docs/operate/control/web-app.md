@@ -38,7 +38,7 @@ Refer to the [Viam TypeScript SDK](https://ts.viam.dev/) documentation for avail
 
 The following files create an example TypeScript web app that connects to a machine and displays the latest image from the machine's camera, and the latest sensor readings.
 
-{{<imgproc src="/operate/ts-dashboard.png" resize="x1100" declaredimensions=true alt="A web browser displaying a dashboard with a camera feed and sensor readings." style="max-width:450px" class="imgzoom" >}}
+{{<imgproc src="/operate/ts-dashboard.png" resize="x1100" declaredimensions=true alt="A web browser displaying a dashboard with a camera feed and sensor readings." style="width:450px" class="imgzoom" >}}
 
 {{< tabs >}}
 {{% tab name="main.ts" %}}

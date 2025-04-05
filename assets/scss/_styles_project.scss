@@ -539,7 +539,7 @@ details[open] > .expand-label {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   padding: 1rem 1rem;
-  overflow: hidden;
+  overflow: auto;
 }
 
 // First child is the anchor link
@@ -553,8 +553,9 @@ details > div.expand-content > *:last-child {
 }
 
 .expand {
-  padding-bottom: 0.75rem;
   clear: both;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
 }
 
 .expand i {
@@ -618,6 +619,11 @@ details summary::-webkit-details-marker {
 /* END CSS FOR EXPANDER */
 
 /* START CSS for how-to paths */
+
+.expand.howtoexpand {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
 
 .expand.howtoexpand summary, .expand.howtoexpand .expand-content {
   background-color: #eaf9fb;
@@ -1112,12 +1118,13 @@ td > ul, td > ol {
 
 /* TAB CSS consistency START */
 
-.nav-tabs {
+.nav.nav-tabs {
   border-bottom: none; // unset from inherited styles
   gap: 1px;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #E4E4E6;
+  margin-left: 0rem;
 }
 
 .horizontalheaders > .nav-tabs, .horizontalheaders * .nav-tabs {
@@ -1174,6 +1181,7 @@ td > ul, td > ol {
 
 .horizontalheaders * .nav-tabs > .nav-item, .horizontalheaders > .nav-tabs > .nav-item {
   margin-bottom: 0rem;
+  margin-left: 0rem;
 }
 
 .horizontalheaders > .nav-tabs .nav-item > a {
@@ -1187,12 +1195,14 @@ td > ul, td > ol {
 
 .td-content ol li.nav-item {
   margin-bottom: 0 !important;
+  margin-left: 0 !important;
 }
 
 .tab-content {
   padding: .7rem 0;
   background-color: white;
   border-bottom: 1px solid rgb(215, 215, 217);
+  max-width: 1000px;
 }
 
 .horizontalheaders * .tab-content, .horizontalheaders > .tab-content {
@@ -2080,8 +2090,8 @@ a.ais-Pagination-link:hover {
 
   #sideSearchBar {
     display: unset;
-    margin-right: 0.5rem;
-    margin-left: 0rem;
+    margin-right: 0rem;
+    margin-left: 1rem;
     margin-top: 0.5rem;
   }
 
@@ -2098,30 +2108,23 @@ a.ais-Pagination-link:hover {
 }
 
 #mobile-search {
-  margin-left: 0.5rem;
-  margin-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {
 
-  #sideSearchBar {
-    padding-right: 0.25rem;
-    margin-left: 1rem;
-  }
 
 
   #mobile-search {
     margin-left: 0rem;
     margin-right: 0rem;
   }
-}
-
-
-@media (max-width: 768px) {
 
   #sideSearchBar {
-    margin-right: 1.0rem;
-    margin-left: 0.75rem;
+    padding-right: 0rem;
+    margin-right: 0.75rem;
+    margin-left: 1.5rem;
   }
 
   .td-sidebar-nav > .td-sidebar-nav__section {
@@ -3262,17 +3265,30 @@ li.active-path.tutorial-heading > a {
   list-style: none;
   counter-reset: item;
   padding-inline-start: 0px;
-  display: table;
   list-style-position: outside;
   margin-bottom: 1rem;
-  width: 100%;
+  width: calc(100% - 2.5rem);;
   margin-left: 2.5rem;
 }
 
 .td-content > ol > li, .td-content > .table * ol > li {
   counter-increment: item;
   margin-bottom: 5px;
-  display: table-row;
+  display: block;
+}
+
+.td-content > ol > li > ul {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.td-content * ul {
+  margin-left: 1rem;
+  padding-left: 0rem;
+}
+
+.td-content * ol * ul > li, .td-content > ol * ul > li {
+  margin-left: 1.5rem;
 }
 
 div.tablestep {
@@ -3332,6 +3348,11 @@ div.tablestep > table td, div.tablestep table td {
 
 .td-content > ul li, .td-content > ol li {
   margin-bottom: 0rem;
+}
+
+.td-content > ul li, .td-content > ol li {
+  list-style-position: outside;
+  margin-left: 1.0rem;
 }
 
 .td-content > ul {

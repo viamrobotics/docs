@@ -479,7 +479,7 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 {{< tabs >}}
 {{% tab name="Mobile app" min-height="703px" %}}
 
-{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="alignright" max-width="400px" style="margin-left: 2rem">}}
+{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}
 
 1. Open the app and follow any instructions there until the app directs you to turn on the machine.
 
