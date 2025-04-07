@@ -220,7 +220,7 @@ my_base = Base.from_robot(robot=machine, name="my_base")
 # Make your wheeled base move forward. Set linear power to 75%.
 print("move forward")
 await my_base.set_power(
-    linear=Vector3(x=0, y=-.75, z=0),
+    linear=Vector3(x=0, y=.75, z=0),
     angular=Vector3(x=0, y=0, z=0))
 
 # Make your wheeled base move backward. Set linear power to -100%.
