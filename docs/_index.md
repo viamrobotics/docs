@@ -51,7 +51,7 @@ aliases:
         </div>
       </div>
     </div>
-    <img src=../viam.svg alt="Robot illustration" class="hero">
+    <img src=viam.svg alt="Robot illustration" class="hero">
   </div>
 </div>
 <br>
