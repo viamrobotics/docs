@@ -17,9 +17,33 @@ aliases:
 To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
-<div class="upside-down">
+<div class="img-overlay-wrap aligncenter">
+  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
+  <img src="../platform/platform-build-connect.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay" id="build-platform-connect" style="width:800px;height:auto" loading="lazy" >
+  <img src="../platform/platform-build-apps.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay" id="build-platform-apps" style="width:800px;height:auto" loading="lazy" >
+  <img src="../platform/platform-build-motion.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay" id="build-platform-motion" style="width:800px;height:auto" loading="lazy" >
+</div>
 
-{{< how-to-expand "Intelligent actuation and motion planning" "5" "INTERMEDIATE" "" "hoverable-motion" >}}
+<div class="hoveraction">
+
+{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "build-platform-connect" >}}
+{{< cards >}}
+{{% card link="/operate/get-started/basics/" noimage="true" %}}
+{{% card link="/operate/get-started/setup/" noimage="true" %}}
+{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "" "build-platform-apps" >}}
+{{< cards >}}
+{{% card link="/operate/control/web-app/" noimage="true" %}}
+{{% card link="/operate/control/mobile-app/" noimage="true" %}}
+{{% card link="/operate/control/headless-app/" noimage="true" %}}
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+{{< how-to-expand "Intelligent actuation and motion planning" "5" "INTERMEDIATE" "" "build-platform-motion" >}}
 {{< cards >}}
 {{% card link="/operate/mobility/define-geometry/" noimage="true" %}}
 {{% card link="/operate/mobility/define-obstacles/" noimage="true" %}}
@@ -29,30 +53,5 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{% card link="/operate/mobility/move-gantry/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
-
-{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "" "hoverable-apps" >}}
-{{< cards >}}
-{{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/operate/control/mobile-app/" noimage="true" %}}
-{{% card link="/operate/control/headless-app/" noimage="true" %}}
-
-{{< /cards >}}
-{{< /how-to-expand >}}
-
-{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "hoverable-connect" >}}
-{{< cards >}}
-{{% card link="/operate/get-started/basics/" noimage="true" %}}
-{{% card link="/operate/get-started/setup/" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
-
-<div class="img-overlay-wrap aligncenter">
-  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
-  <img src="../platform/platform-build-connect.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay" id="build-platform-connect" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-build-apps.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay" id="build-platform-apps" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-build-motion.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay" id="build-platform-motion" style="width:800px;height:auto" loading="lazy" >
-</div>
 
 </div>

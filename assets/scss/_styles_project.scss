@@ -232,7 +232,7 @@ h7, .h7 {
 a, a:hover {
   color: #0000EA;
   h1, h2, h3, h4, h5, h6, h7, p {
-    color: black;
+    color: #4E4F52;
   }
 }
 
@@ -1150,7 +1150,7 @@ td > ul, td > ol {
 
 .horizontalheaders * .nav-tabs .nav-link.active, .horizontalheaders * .nav-tabs .nav-link.active:hover {
   border-top: unset;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #f7f7f8;
 }
 
 .nav-tabs .nav-link, .nav-tabs .nav-link:hover {
@@ -1163,7 +1163,7 @@ td > ul, td > ol {
 }
 
 .horizontalheaders .nav-tabs .nav-link, .horizontalheaders .nav-tabs .nav-link:hover {
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   margin-right: 0;
 }
 
@@ -1289,11 +1289,6 @@ td > ul, td > ol {
   animation: linear 2s wiggle 2s 2;
 }
 
-@media (min-width: 992px) {
-  #scrollButton {
-    margin-right: 10%;
-  }
-}
 
 #chatButtonContent {
   display: flex;
@@ -2504,6 +2499,13 @@ h3.body-header[style] {
   }
 }
 
+.gray-container {
+  margin-top: 3rem;
+  background-color: #f7f7f8;
+  border-radius: 4px;
+  padding: 2rem;
+}
+
 // CTA buttons START
 
 .front-card-container > .hover-card.primary, .front-card-container > .cta.secondary {
@@ -2627,16 +2629,21 @@ hr {
 .table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link.active {
   background-color: #d7d7d9;
   color: 1px solid #d7d7d9;
-  border-bottom: 1px solid #d7d7d9;
-  border-top: 1px solid #d7d7d9;
+  border-bottom: 1px solid #f7f7f8;
+  border-top: 1px solid #f7f7f8;
+}
+
+.table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link.active:first {
+  border-top: 1px solid #000000;
 }
 
 .table.horizontalheaders > ul.nav-tabs > li.nav-item > a.nav-link:hover {
   border: unset;
   background-color: #d7d7d9;
-  border-top: 1px solid #d7d7d9;
-  border-bottom: 1px solid #d7d7d9;
+  border-top: 1px solid #f7f7f8;
+  border-bottom: 1px solid #f7f7f8;
 }
+
 
 // top-level tabs nav items END
 
@@ -3152,39 +3159,30 @@ li.active-path.tutorial-heading > a {
 
 // Platform landing pages START
 
-.hoverable-fleet:hover ~ .img-overlay-wrap > #fleet-platform-team,
-.hoverable-fleet:hover ~ .img-overlay-wrap > #fleet-platform-monitor,
-.hoverable-team:hover ~ .img-overlay-wrap > #fleet-platform-management,
-.hoverable-team:hover ~ .img-overlay-wrap > #fleet-platform-monitor,
-.hoverable-monitor:hover ~ .img-overlay-wrap > #fleet-platform-management,
-.hoverable-monitor:hover ~ .img-overlay-wrap > #fleet-platform-team {
-  display: none !important;
+.three-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.hoverable-connect:hover ~ .img-overlay-wrap > #build-platform-apps,
-.hoverable-connect:hover ~ .img-overlay-wrap > #build-platform-motion,
-.hoverable-apps:hover ~ .img-overlay-wrap > #build-platform-connect,
-.hoverable-apps:hover ~ .img-overlay-wrap > #build-platform-motion,
-.hoverable-motion:hover ~ .img-overlay-wrap > #build-platform-connect,
-.hoverable-motion:hover ~ .img-overlay-wrap > #build-platform-apps {
-  display: none !important;
+.three-cards > .col {
+  flex: 1;
+  max-width: 300px;
+  margin: 0 !important;
 }
 
-.hoverable-ai:hover ~ .img-overlay-wrap > #data-platform-capture,
-.hoverable-ai:hover ~ .img-overlay-wrap > #data-platform-work,
-.hoverable-work:hover ~ .img-overlay-wrap > #data-platform-capture,
-.hoverable-work:hover ~ .img-overlay-wrap > #data-platform-ai,
-.hoverable-capture:hover ~ .img-overlay-wrap > #data-platform-work,
-.hoverable-capture:hover ~ .img-overlay-wrap > #data-platform-ai {
-  display: none !important;
+.three-cards .hover-card a div > div {
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: normal;
+  font-size: 1.25rem !important;
 }
 
-.hoverable-build:hover ~ .img-overlay-wrap > #build-platform,
-.hoverable-data:hover ~ .img-overlay-wrap > #data-platform,
-.hoverable-fleet:hover ~ .img-overlay-wrap > #fleet-platform {
-  display: inline-block !important;
+.imgcontcenter {
+  display: flex;
+  justify-content: center;
 }
-
 
 .img-overlay-wrap {
   position: relative;
@@ -3209,20 +3207,6 @@ li.active-path.tutorial-heading > a {
   display: none;
 }
 
-.upside-down {
-  display: flex;
-  flex-direction: column-reverse;
-  align-self: first baseline;
-}
-
-.upside-down.max-page {
-  justify-self: center;
-}
-
-.upside-down > img {
-  margin-bottom: 2.5rem;
-}
-
 .col-12.col-md-12.col-xl-12.pl-md-12 {
   display: flex;
   flex-direction: column;
@@ -3230,13 +3214,6 @@ li.active-path.tutorial-heading > a {
 
 #rss-feed {
   align-self: flex-end;
-}
-
-.upside-down > .col.hover-card {
-  min-width: unset;
-  max-width: unset;
-  max-height: fit-content;
-  flex-grow: unset !important;
 }
 
 .col-12.col-md-12.col-xl-12.pl-md-12 > .td-content {
