@@ -60,6 +60,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+
+// Open the gripper
+await gripper.open();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#open).
 
 {{% /tab %}}
@@ -67,11 +76,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -147,6 +156,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+
+// Close the gripper to grab
+await gripper.grab();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#grab).
 
 {{% /tab %}}
@@ -154,11 +172,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -237,6 +255,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<boolean>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+
+// Check if the gripper is currently moving
+const moving = await gripper.isMoving();
+console.log('Gripper is moving:', moving);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#ismoving).
 
 {{% /tab %}}
@@ -248,7 +276,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
 
 **Example:**
 
@@ -325,6 +353,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+
+// Stop the gripper's current motion
+await gripper.stop();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#stop).
 
 {{% /tab %}}
@@ -332,11 +369,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -420,6 +457,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+
+// Get the geometries of this component
+const geometries = await gripper.getGeometries();
+console.log('Geometries:', geometries);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getgeometries).
 
@@ -533,11 +580,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 

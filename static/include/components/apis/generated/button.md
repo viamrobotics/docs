@@ -51,6 +51,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const button = new VIAM.ButtonClient(machine, 'my_button');
+
+// Push the button
+await button.push();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#push).
 
 {{% /tab %}}

@@ -67,6 +67,15 @@ backwards direction and positive values a forward direction.
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Set the power to 40% forwards
+await motor.setPower(0.4);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setpower).
 
 {{% /tab %}}
@@ -75,11 +84,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `powerPct` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -156,6 +165,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Spin the motor at 75 RPM
+await motor.setRPM(75);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#setrpm).
 
 {{% /tab %}}
@@ -164,11 +182,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `rpm` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -254,6 +272,15 @@ of revolutions has been completed or another operation comes in.
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Turn the motor 7.2 revolutions at 60 RPM
+await motor.goFor(60, 7.2);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#gofor).
 
 {{% /tab %}}
@@ -263,11 +290,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `rpm` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
 - `revolutions` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -350,6 +377,15 @@ home position.
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Turn the motor to 8.3 revolutions from home at 75 RPM
+await motor.goTo(75, 8.3);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#goto).
 
 {{% /tab %}}
@@ -359,11 +395,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `rpm` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
 - `positionRevolutions` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -440,6 +476,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Set the current position as the new home position with no offset
+await motor.resetZeroPosition(0.0);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#resetzeroposition).
 
 {{% /tab %}}
@@ -448,11 +493,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `offset` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -534,6 +579,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Get the current position of the motor
+const position = await motor.getPosition();
+console.log('Position:', position);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getposition).
 
 {{% /tab %}}
@@ -541,11 +596,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
 
 **Example:**
 
@@ -629,6 +684,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<{ positionReporting: boolean }>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Report a dictionary mapping optional properties to whether it is supported by
+// this motor
+const properties = await motor.getProperties();
+console.log('Properties:', properties);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getproperties).
 
 {{% /tab %}}
@@ -636,11 +702,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[MotorProperties](https://flutter.viam.dev/viam_sdk/MotorProperties.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[MotorProperties](https://flutter.viam.dev/viam_sdk/MotorProperties.html)>
 
 **Example:**
 
@@ -724,6 +790,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<readonly [boolean, number]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Check whether the motor is currently running
+const [isPowered, powerPct] = await motor.isPowered();
+console.log('Powered:', isPowered);
+console.log('Power percentage:', powerPct);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#ispowered).
 
 {{% /tab %}}
@@ -731,11 +808,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[PowerState](https://flutter.viam.dev/viam_sdk/PowerState-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PowerState](https://flutter.viam.dev/viam_sdk/PowerState-class.html)>
 
 **Example:**
 
@@ -819,6 +896,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<boolean>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Check whether the motor is currently moving
+const moving = await motor.isMoving();
+console.log('Moving:', moving);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#ismoving).
 
 {{% /tab %}}
@@ -826,11 +913,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
 
 **Example:**
 
@@ -908,6 +995,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+
+// Stop the motor
+await motor.stop();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#stop).
 
 {{% /tab %}}
@@ -915,11 +1011,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1040,11 +1136,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 

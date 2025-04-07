@@ -114,6 +114,33 @@ recent_events, err := myController.Events(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[Event](https://ts.viam.dev/classes/inputControllerApi.Event.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const controller = new VIAM.InputControllerClient(
+  machine,
+  'my_controller'
+);
+
+// Get the most recent Event for each Control
+const recentEvents = await controller.getEvents();
+console.log('Recent events:', recentEvents);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/InputControllerClient.html#getevents).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### TriggerEvent
@@ -169,6 +196,40 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `event` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const controller = new VIAM.InputControllerClient(
+  machine,
+  'my_controller'
+);
+
+// Create a "Button is Pressed" event for the control BUTTON_START
+const buttonPressEvent = new VIAM.InputControllerEvent({
+  time: { seconds: BigInt(Math.floor(Date.now() / 1000)) },
+  event: 'ButtonPress',
+  control: 'ButtonStart',
+  value: 1.0,
+});
+// Trigger the event
+await controller.triggerEvent(buttonPressEvent);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/InputControllerClient.html#triggerevent).
 
 {{% /tab %}}
 {{< /tabs >}}

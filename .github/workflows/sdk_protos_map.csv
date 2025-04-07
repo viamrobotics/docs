@@ -124,9 +124,9 @@ gripper,Close,,close,Close,,
 
 ## Input Controller
 input_controller,GetControls,,get_controls,Controls,,
-input_controller,GetEvents,,get_events,Events,,
+input_controller,GetEvents,,get_events,Events,,getEvents
 input_controller,StreamEvents,,,,,
-input_controller,TriggerEvent,,trigger_event,TriggerEvent,,
+input_controller,TriggerEvent,,trigger_event,TriggerEvent,,triggerEvent
 ## TED: Go SDK doesn't appear to implement this:
 input_controller,GetGeometries,,get_geometries,,,
 ## HACK: Input (python, go) provides additional helper function, adding 1 pseudo-entries:
