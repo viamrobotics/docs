@@ -1511,7 +1511,7 @@ Add a bounding box to an image specified by its BinaryID.
 
 **Example:**
 
-```python {class="line-numbers linkable-line-numbers" data-line="5"}
+```python {class="line-numbers linkable-line-numbers"}
 bbox_id = await data_client.add_bounding_box_to_image_by_id(
     binary_id="<YOUR-BINARY-DATA-ID>",
     label="label",

@@ -1358,6 +1358,9 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 my_robot_part = await cloud.get_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
 )
+# Check if machine is live (last access time less than 10 sec ago)
+if (time.time() - my_robot_part.last_access.timestamp()) <= 10000:
+    print("Machine is live.")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part).
