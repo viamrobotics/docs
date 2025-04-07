@@ -213,19 +213,15 @@ Use the parts dropdown menu to navigate to the `planning` sub-part.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click the **Components** subtab.
-Click the **Create component** button in the lower-left corner.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 
-Add your [arm](/operate/reference/components/arm/) with type `arm`, and model `xArm6`.
+Select type `arm`, and model `viam:ufactory:xArm6`.
 Name it `myArm` and click **Create**.
 
-![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
-
 Configure the arm component with the arm's IP address in the `host` field.
-Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
 
-For more information on xArm6 configuration, see [Configure an xArm6 Arm](/operate/reference/components/arm/xarm6/).
+For more information on xArm6 configuration, see [Configure an xArm6 Arm](https://github.com/viam-modules/viam-ufactory-xarm).
 
 Click **Save config** in the lower-left corner of the screen.
 
@@ -238,7 +234,7 @@ On the `Raw JSON` tab, replace the configuration with the following JSON configu
 {
   "components": [
     {
-      "model": "xArm6",
+      "model": "viam:ufactory:xArm6",
       "api": "rdk:component:arm",
       "attributes": {
         "acceleration_degs_per_sec_per_sec": 0,
