@@ -3173,6 +3173,32 @@ li.active-path.tutorial-heading > a {
   margin: 0 !important;
 }
 
+.three-cards > .col:hover {
+  background-color: white;
+}
+
+.three-cards > .col > div {
+  padding: 1rem;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.three-cards > .col > div > p {
+  margin-bottom: 0;
+}
+
+.three-cards > .col > div > span > h2 {
+  font-weight: 600;
+}
+
+.three-cards > .col:hover > div {
+  transform: unset;
+  box-shadow: unset;
+  box-shadow: 0px 0px 10px 10px #dee2e6;
+}
+
 .three-cards .hover-card a div > div {
   font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: normal;

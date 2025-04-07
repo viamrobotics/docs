@@ -37,14 +37,14 @@ aliases:
       <div class="cards max-page">
         <div class="front-card-container">
           <div class="hover-card primary">
-            <a href="tools/tutorials/" class="noanchor">
+            <a href="#platform" class="noanchor">
             <div>
               <p>Platform overview</p>
             </div>
           </a>
           </div>
           <div class="cta secondary">
-            <a href="tools/cli/" class="noanchor"><div>
+            <a href="/dev/tools/tutorials/" class="noanchor"><div>
             <p>Project Tutorials →</p></div>
             </a>
           </div>
@@ -58,7 +58,7 @@ aliases:
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="max-page gray-container">
-<h2>The Viam platform</h2>
+<h2 id="platform">The Viam platform</h2>
 <p> Viam allows you to control and program any sensor, actuator or other hardware that is connected to a device. The Viam platform offers builtin capabilities to capture data from devices to the cloud, to build and deploy machine learning models, to alert on problems, and much more. With the connection to the cloud, you can configure, control, and manage your devices from anywhere.</p>
 <br>
 <div class="imgcontcenter">
@@ -75,21 +75,15 @@ aliases:
 <div class="three-cards hoveraction">
 
 <div class="col hover-card build-platform">
-<a href="operate/">
-<div><div>Build & integrate</div><p>To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.</p></div>
-</a>
+<div><span><h3>Build & integrate</h3><p>To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.</p></span><p><a href="operate/">Learn more</a></p></div>
 </div>
 
 <div class="col hover-card data-platform">
-<a href="data-ai/">
-<div><div>Work with Data and AI</div><p>Viam's data and AI capabilities enable you to capture and sync or upload data, build a dataset, train and deploy ML models, and run inference with computer vision. Then, you can act or alert on inferences.</p></div>
-</a>
+<div><span><h3>Work with Data and AI</h3><p>Viam's data and AI capabilities enable you to capture and sync or upload data, build a dataset, train and deploy ML models, and run inference with computer vision. Then, you can act or alert on inferences.</p></span><p><a href="data-ai/">Learn more</a></p></div>
 </div>
 
 <div class="col hover-card fleet-platform">
-<a href="manage/">
-<div><div>Deploy, manage, and troubleshoot</div><p>Viam’s fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere.</p></div>
-</a>
+<div><span><h3>Deploy, manage, and troubleshoot</h3><p>Viam’s fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere.</p></span><p><a href="manage/">Learn more</a></p></div>
 </div>
 
 </div>
