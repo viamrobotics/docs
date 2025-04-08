@@ -942,7 +942,7 @@ Add the link to that repo as the `url` in the <file>meta.json</file> file.
 {{% tablestep number=3 %}}
 **Edit the meta.json file**
 
-Make any necessary edits to the `meta.json` file.
+Make any necessary edits to the `meta.json` file, including adding a `markdown_link` so that others can find and use your module more easily.
 Click below for information about the available fields.
 
 {{< expand "meta.json reference" >}}
