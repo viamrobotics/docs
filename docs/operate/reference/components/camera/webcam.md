@@ -270,8 +270,7 @@ For more information about the vision service, see [run inference](https://docs.
 {{% /expand%}}
 
 {{% expand "High CPU usage" %}}
-Each camera stream you add uses CPU on the device it is connected to and there is therefore a practical limit to the numbeof camera streams your device can simultaneously support.
-You can limit the CPU usage by reducing the image resolution.
+Camera streams use a significant amount of CPU resources. The more CPU resources a device has, the more camera streams you can run simultaneously. If your device doesn't have enough CPU resources to support your use case, try lowering the image resolution to decrease the CPU load of the camera streams.
 {{% /expand%}}
 
 ## Next steps
