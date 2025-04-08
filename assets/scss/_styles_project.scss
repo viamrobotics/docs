@@ -2468,8 +2468,8 @@ h3.body-header[style] {
 }
 
 .hero-text {
-  min-width: 60%;
-  max-width: 60%;
+  // min-width: 45%;
+  max-width: 45%;
 }
 
 .hero-text > h1 {
@@ -2479,10 +2479,13 @@ h3.body-header[style] {
 
 .hero-container .hero {
   margin-top: 3rem;
-  max-width: 35%;
+  min-width: 500px;
+  max-width: 500px;
+  height: fit-content;
+  margin-top: 9rem;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1200px) {
   .hero-container .hero {
     display: none;
     max-width: 0;
