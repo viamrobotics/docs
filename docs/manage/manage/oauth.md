@@ -106,6 +106,7 @@ Enabled Grants: authorization_code, password
 {{% /tablestep %}}
 {{< /table >}}
 
+The generated client ID is unique to your OAuth app and linked to your organization.
 You can update any value after setup using `viam organization auth-service oauth-app update`.
 
 ## Use the generated client ID and secret in your app
