@@ -15,5 +15,4 @@ outputs:
   - rss
   - html
   - typesense
-date: "2024-10-20"
 ---

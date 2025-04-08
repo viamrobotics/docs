@@ -111,7 +111,7 @@ From the SSH session on the TDA4VM board:
 
 {{< cards >}}
 {{% card link="/operate/get-started/supported-hardware/" %}}
-{{% card link="/tutorials/" %}}
+{{% card link="/dev/tools/tutorials/" %}}
 {{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}
 
