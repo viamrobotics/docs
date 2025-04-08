@@ -2462,9 +2462,14 @@ h3.body-header[style] {
   gap: 1rem;
 }
 
-.hero-container {
+.hero-container, .hero-container-small {
   display: flex;
   justify-content: space-between;
+}
+
+.hero-container-small .hero {
+  margin-top: 3rem;
+  max-width: 35%;
 }
 
 .hero-text {
@@ -2486,7 +2491,7 @@ h3.body-header[style] {
 }
 
 @media (max-width: 1200px) {
-  .hero-container .hero {
+  .hero-container .hero, .hero-container-small .hero {
     display: none;
     max-width: 0;
   }

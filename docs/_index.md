@@ -37,15 +37,15 @@ aliases:
       <div class="cards max-page">
         <div class="front-card-container">
           <div class="hover-card primary">
-            <a href="#platform" class="noanchor">
+            <a href="/operate/get-started/setup/" class="noanchor">
             <div>
-              <p>Platform overview</p>
+              <p>Get started</p>
             </div>
           </a>
           </div>
           <div class="cta secondary">
-            <a href="/dev/tools/tutorials/" class="noanchor"><div>
-            <p>Project Tutorials →</p></div>
+            <a href="/dev/" class="noanchor"><div>
+            <p>APIs & CLI →</p></div>
             </a>
           </div>
         </div>

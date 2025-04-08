@@ -17,7 +17,7 @@ aliases:
 ---
 
 <div class="max-page">
-  <div class="hero-container">
+  <div class="hero-container-small">
     <div class="hero-text">
       <h1>Dev tools</h1>
       <p>
