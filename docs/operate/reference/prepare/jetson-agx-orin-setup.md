@@ -123,7 +123,7 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 
 {{< cards >}}
 {{% card link="/operate/get-started/supported-hardware/" %}}
-{{% card link="/tutorials/" %}}
+{{% card link="/dev/tools/tutorials/" %}}
 {{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}
 
