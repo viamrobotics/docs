@@ -32,6 +32,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<string>): The user's ID.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+// This method is used internally only. To obtain a user's ID, use the listOrganizationsByUser method.
+const members = await appClient.listOrganizationMembers(
+  '<YOUR-ORGANIZATION-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getuseridbyemail).
 
 {{% /tab %}}
@@ -110,6 +119,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html)[]>): The organization list.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const organizations = await appClient.listOrganizations();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizations).
 
 {{% /tab %}}
@@ -148,6 +163,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[OrganizationIdentity](https://ts.viam.dev/classes/appApi.OrganizationIdentity.html)[]>): The list of locations with access to the requested location.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const organizations =
+  await appClient.getOrganizationsWithAccessToLocation(
+    '<YOUR-LOCATION-ID>'
+  );
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationswithaccesstolocation).
 
@@ -231,6 +255,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): Details about the organization, if it exists.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const organization = await appClient.getOrganization(
+  '<YOUR-ORGANIZATION-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganization).
 
 {{% /tab %}}
@@ -274,6 +306,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<boolean>): A boolean indicating whether or not the namespace is available.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const isAvailable =
+  await appClient.getOrganizationNamespaceAvailability('name');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationnamespaceavailability).
 
@@ -330,6 +369,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): The updated organization details.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const organization = await appClient.updateOrganization(
+  '<YOUR-ORGANIZATION-ID>',
+  'newName'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganization).
 
 {{% /tab %}}
@@ -367,6 +415,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteOrganization('<YOUR-ORGANIZATION-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganization).
 
@@ -407,6 +461,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[ListOrganizationMembersResponse](https://ts.viam.dev/classes/appApi.ListOrganizationMembersResponse.html)>): An object containing organization members, pending invites, and
 org ID.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const members = await appClient.listOrganizationMembers(
+  '<YOUR-ORGANIZATION-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizationmembers).
 
@@ -457,6 +519,27 @@ automatically add a user. Defaults to true.
 **Returns:**
 
 - (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The organization invite.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const auth = new VIAM.appApi.Authorization({
+  authorizationType: 'role',
+  authorizationId: 'organization_operator',
+  organizationId: '<YOUR-ORGANIZATION-ID>',
+  resourceId: '<YOUR-RESOURCE-ID>', // The resource to grant access to
+  resourceType: 'organization', // The type of resource to grant access to
+  identityId: '<YOUR-USER-ID>', // The user id of the user to grant access to (optional)
+  roleId: 'owner', // The role to grant access to
+  identityType: 'user',
+});
+
+const invite = await appClient.createOrganizationInvite(
+  '<YOUR-ORGANIZATION-ID>',
+  'youremail@email.com',
+  [auth]
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createorganizationinvite).
 
@@ -524,6 +607,27 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The organization invite.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const auth = new VIAM.appApi.Authorization({
+  authorizationType: 'role',
+  authorizationId: 'organization_operator',
+  organizationId: '<YOUR-ORGANIZATION-ID>',
+  resourceId: '<YOUR-RESOURCE-ID>', // The resource to grant access to
+  resourceType: 'organization', // The type of resource to grant access to
+  identityId: '<YOUR-USER-ID>', // The user id of the user to grant access to (optional)
+  roleId: 'owner', // The role to grant access to
+  identityType: 'user',
+});
+const invite = await appClient.updateOrganizationInviteAuthorizations(
+  '<YOUR-ORGANIZATION-ID>',
+  'youremail@email.com',
+  [auth],
+  []
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganizationinviteauthorizations).
 
 {{% /tab %}}
@@ -567,6 +671,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteOrganizationMember(
+  '<YOUR-ORGANIZATION-ID>',
+  '<YOUR-USER-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganizationmember).
 
@@ -613,6 +726,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteOrganizationInvite(
+  '<YOUR-ORGANIZATION-ID>',
+  'youremail@email.com'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganizationinvite).
 
 {{% /tab %}}
@@ -658,6 +780,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The invite.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const invite = await appClient.resendOrganizationInvite(
+  '<YOUR-ORGANIZATION-ID>',
+  'youremail@email.com'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#resendorganizationinvite).
 
 {{% /tab %}}
@@ -677,6 +808,14 @@ Gets the user-defined metadata for an organization.
 **Returns:**
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the organization.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const metadata = await appClient.getOrganizationMetadata(
+  '<YOUR-ORGANIZATION-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationmetadata).
 
@@ -698,6 +837,14 @@ Updates the user-defined metadata for an organization.
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.updateOrganizationMetadata('<YOUR-ORGANIZATION-ID>', {
+  key: 'value',
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganizationmetadata).
 
@@ -749,6 +896,15 @@ new location under.
 
 - (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const location = await appClient.createLocation(
+  '<YOUR-ORGANIZATION-ID>',
+  'name'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createlocation).
 
 {{% /tab %}}
@@ -791,6 +947,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const location = await appClient.getLocation('<YOUR-LOCATION-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getlocation).
 
@@ -860,6 +1022,15 @@ to.
 
 - (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const location = await appClient.updateLocation(
+  '<YOUR-LOCATION-ID>',
+  'newName'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatelocation).
 
 {{% /tab %}}
@@ -903,6 +1074,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteLocation('<YOUR-LOCATION-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletelocation).
 
 {{% /tab %}}
@@ -941,6 +1118,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const locations = await appClient.listLocations(
+  '<YOUR-ORGANIZATION-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listlocations).
 
@@ -983,6 +1168,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.shareLocation(
+  '<OTHER-ORGANIZATION-ID>',
+  '<YOUR-LOCATION-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#sharelocation).
 
 {{% /tab %}}
@@ -1023,6 +1217,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.unshareLocation(
+  '<OTHER-ORGANIZATION-ID>',
+  '<YOUR-LOCATION-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#unsharelocation).
 
@@ -1067,6 +1270,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>): The `LocationAuth` for the requested location.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const locationAuth = await appClient.locationAuth(
+  '<YOUR-LOCATION-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#locationauth).
 
 {{% /tab %}}
@@ -1109,6 +1320,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>): The newly created `LocationAuth`.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const locationAuth = await appClient.createLocationSecret(
+  '<YOUR-LOCATION-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createlocationsecret).
 
@@ -1158,6 +1377,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteLocationSecret(
+  '<YOUR-LOCATION-ID>',
+  '<YOUR-SECRET-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletelocationsecret).
 
 {{% /tab %}}
@@ -1177,6 +1405,14 @@ Get the user-defined metadata for a location.
 **Returns:**
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the location.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const metadata = await appClient.getLocationMetadata(
+  '<YOUR-LOCATION-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getlocationmetadata).
 
@@ -1198,6 +1434,14 @@ Update the user-defined metadata for a location.
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.updateLocationMetadata('<YOUR-LOCATION-ID>', {
+  key: 'value',
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatelocationmetadata).
 
@@ -1242,6 +1486,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The `Robot` object.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robot = await appClient.getRobot('<YOUR-ROBOT-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobot).
 
 {{% /tab %}}
@@ -1280,6 +1530,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): A list of the robot's API keys.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotAPIKeys =
+  await appClient.getRobotAPIKeys('<YOUR-ROBOT-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotapikeys).
 
@@ -1325,6 +1582,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)[]>): The list of `RobotPart` objects associated with the robot.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotParts = await appClient.getRobotParts('<YOUR-ROBOT-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotparts).
 
@@ -1375,6 +1638,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[GetRobotPartResponse](https://ts.viam.dev/classes/appApi.GetRobotPartResponse.html)>): The robot part and a its json config.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPart = await appClient.getRobotPart('<YOUR-ROBOT-PART-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpart).
 
@@ -1432,6 +1701,14 @@ Defaults to the most recent.
 - (Promise<[GetRobotPartLogsResponse](https://ts.viam.dev/classes/appApi.GetRobotPartLogsResponse.html)>): The robot requested logs and the page token for the next page of
 logs.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPartLogs = await appClient.getRobotPartLogs(
+  '<YOUR-ROBOT-PART-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartlogs).
 
 {{% /tab %}}
@@ -1479,6 +1756,14 @@ logs should be returned. Defaults to true.
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPartLogs = await appClient.tailRobotPartLogs(
+  '<YOUR-ROBOT-PART-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#tailrobotpartlogs).
 
 {{% /tab %}}
@@ -1523,6 +1808,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[RobotPartHistoryEntry](https://ts.viam.dev/classes/appApi.RobotPartHistoryEntry.html)[]>): The list of the robot part's history.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPartHistory = await appClient.getRobotPartHistory(
+  '<YOUR-ROBOT-PART-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotparthistory).
 
@@ -1574,6 +1867,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>): The updated robot part.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPart = await appClient.updateRobotPart(
+  '<YOUR-ROBOT-PART-ID>',
+  'newName'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotpart).
 
 {{% /tab %}}
@@ -1621,6 +1923,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<string>): The ID of the newly\-created robot part.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPartId = await appClient.newRobotPart(
+  '<YOUR-ROBOT-ID>',
+  'newPart'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newrobotpart).
 
 {{% /tab %}}
@@ -1666,6 +1977,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteRobotPart('<YOUR-ROBOT-PART-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobotpart).
 
 {{% /tab %}}
@@ -1709,6 +2026,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.markPartAsMain('<YOUR-ROBOT-PART-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markpartasmain).
 
@@ -1754,6 +2077,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.markPartForRestart('<YOUR-ROBOT-PART-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markpartforrestart).
 
 {{% /tab %}}
@@ -1797,6 +2126,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>): The robot part object.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPart = await appClient.createRobotPartSecret(
+  '<YOUR-ROBOT-PART-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createrobotpartsecret).
 
@@ -1845,6 +2182,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteRobotPartSecret(
+  '<YOUR-ROBOT-PART-ID>',
+  '<YOUR-SECRET-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobotpartsecret).
 
 {{% /tab %}}
@@ -1887,6 +2233,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)[]>): The list of robot objects.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robots = await appClient.listRobots('<YOUR-LOCATION-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listrobots).
 
@@ -1933,6 +2285,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<string>): The new robot's ID.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotId = await appClient.newRobot(
+  '<YOUR-LOCATION-ID>',
+  'newRobot'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newrobot).
 
 {{% /tab %}}
@@ -1978,12 +2339,22 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `robotId` (string) (required): The ID of the robot to update.
-- `locId` (string) (required): The ID of the location to move the robot to.
+- `locId` (string) (required): The ID of the location where the robot is.
 - `name` (string) (required): The name to update the robot to.
 
 **Returns:**
 
 - (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly\-modified robot object.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robot = await appClient.updateRobot(
+  '<YOUR-ROBOT-ID>',
+  '<YOUR-LOCATION-ID>',
+  'newName'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobot).
 
@@ -2028,6 +2399,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteRobot('<YOUR-ROBOT-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobot).
 
 {{% /tab %}}
@@ -2048,6 +2425,12 @@ Gets the user-defined metadata for a machine.
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const metadata = await appClient.getRobotMetadata('<YOUR-ROBOT-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotmetadata).
 
 {{% /tab %}}
@@ -2067,6 +2450,14 @@ Gets the user-defined metadata for a machine part.
 **Returns:**
 
 - (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot part.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const metadata = await appClient.getRobotPartMetadata(
+  '<YOUR-ROBOT-PART-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartmetadata).
 
@@ -2089,6 +2480,14 @@ Updates the user-defined metadata for a machine.
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.updateRobotMetadata('<YOUR-ROBOT-ID>', {
+  key: 'value',
+});
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotmetadata).
 
 {{% /tab %}}
@@ -2109,6 +2508,14 @@ Updates the user-defined metadata for a machine part.
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.updateRobotPartMetadata('<YOUR-ROBOT-PART-ID>', {
+  key: 'value',
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotpartmetadata).
 
@@ -2155,6 +2562,14 @@ true.
 
 - (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of fragment objects.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const fragments = await appClient.listFragments(
+  '<YOUR-ORGANIZATION-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listfragments).
 
 {{% /tab %}}
@@ -2180,6 +2595,14 @@ provisionally added to the machine alongside existing fragments.
 
 - (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of top level and nested fragments for a machine, as well
 as additionally specified fragment IDs.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const fragments = await appClient.listMachineFragments(
+  '<YOUR-MACHINE-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinefragments).
 
@@ -2226,6 +2649,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The requested fragment.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const fragment = await appClient.getFragment(
+  '12a12ab1-1234-5678-abcd-abcd01234567'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getfragment).
 
@@ -2274,6 +2705,15 @@ under.
 **Returns:**
 
 - (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The newly created fragment.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const fragment = await appClient.createFragment(
+  '<YOUR-ORGANIZATION-ID>',
+  'newFragment'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createfragment).
 
@@ -2334,6 +2774,15 @@ neither is set, the fragment visibility will remain unchanged.
 
 - (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The updated fragment.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const fragment = await appClient.updateFragment(
+  '12a12ab1-1234-5678-abcd-abcd01234567',
+  'better_name'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatefragment).
 
 {{% /tab %}}
@@ -2377,6 +2826,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteFragment('12a12ab1-1234-5678-abcd-abcd01234567');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletefragment).
 
@@ -2461,15 +2916,28 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the role under.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a
+user ID).
 - `role` (string) (required): The role to add ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to create the role for ("robot",
-  "location", or "organization").
+"location", or "organization").
 - `resourceId` (string) (required): The ID of the resource the role is being created for.
 
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.addRole(
+  '<YOUR-ORGANIZATION-ID>',
+  '<YOUR-USER-ID>',
+  'owner',
+  'robot',
+  '<YOUR-ROBOT-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#addrole).
 
@@ -2519,15 +2987,28 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to remove the role from.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a
+user ID).
 - `role` (string) (required): The role to remove ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to remove the role from ("robot",
-  "location", or "organization").
+"location", or "organization").
 - `resourceId` (string) (required): The ID of the resource the role is being removes from.
 
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.removeRole(
+  '<YOUR-ORGANIZATION-ID>',
+  '<YOUR-USER-ID>',
+  'owner',
+  'robot',
+  '<YOUR-ROBOT-ID>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#removerole).
 
@@ -2586,6 +3067,32 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const oldAuth = new VIAM.appApi.Authorization({
+  authorizationType: 'role',
+  authorizationId: 'organization_owner',
+  organizationId: '<YOUR-ORGANIZATION-ID>',
+  resourceId: '<YOUR-RESOURCE-ID>', // The resource to grant access to
+  resourceType: 'organization', // The type of resource to grant access to
+  identityId: '<USER-ID>', // The user id of the user to grant access to (optional)
+  roleId: 'owner', // The role to grant access to
+  identityType: 'user',
+});
+const newAuth = new VIAM.appApi.Authorization({
+  authorizationType: 'role',
+  authorizationId: 'organization_operator',
+  organizationId: '<YOUR-ORGANIZATION-ID>',
+  resourceId: '<YOUR-RESOURCE-ID>', // The resource to grant access to
+  resourceType: 'organization', // The type of resource to grant access To
+  identityId: '<USER-ID>', // The user id of the user to grant access to (optional)
+  roleId: 'operator', // The role to grant access to
+  identityType: 'user',
+});
+await appClient.changeRole(oldAuth, newAuth);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#changerole).
 
@@ -2785,6 +3292,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)>): The requested item.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const registryItem = await appClient.getRegistryItem(
+  '<YOUR-REGISTRY-ITEM-ID>'
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getregistryitem).
 
 {{% /tab %}}
@@ -2830,6 +3345,16 @@ item under.
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.createRegistryItem(
+  '<YOUR-ORGANIZATION-ID>',
+  'newRegistryItemName',
+  5
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createregistryitem).
 
@@ -2883,6 +3408,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.updateRegistryItem(
+  '<YOUR-REGISTRY-ITEM-ID>',
+  5, // Package: ML Model
+  'new description',
+  1 // Private
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateregistryitem).
 
@@ -2959,6 +3495,18 @@ return all results.
 
 - (Promise<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)[]>): The list of registry items.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const registryItems = await appClient.listRegistryItems(
+  '<YOUR-ORGANIZATION-ID>',
+  [], // All package types
+  [1], // Private packages
+  [],
+  [1] // Active packages
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listregistryitems).
 
 {{% /tab %}}
@@ -2997,6 +3545,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteRegistryItem('<YOUR-REGISTRY-ITEM-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteregistryitem).
 
@@ -3043,6 +3597,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[CreateModuleResponse](https://ts.viam.dev/classes/appApi.CreateModuleResponse.html)>): The module ID and a URL to its detail page.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const module = await appClient.createModule(
+  '<YOUR-ORGANIZATION-ID>',
+  'newModule'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createmodule).
 
@@ -3109,6 +3672,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<string>): The module URL.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const module = await appClient.updateModule(
+  '<YOUR-MODULE-ID>',
+  1,
+  'https://example.com',
+  'new description',
+  [{ model: 'namespace:group:model1', api: 'rdk:component:generic' }],
+  'entrypoint'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatemodule).
 
@@ -3191,6 +3767,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<undefined | [Module](https://ts.viam.dev/classes/appApi.Module.html)>): The requested module.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const module = await appClient.getModule('<YOUR-MODULE-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getmodule).
 
 {{% /tab %}}
@@ -3229,6 +3811,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[Module](https://ts.viam.dev/classes/appApi.Module.html)[]>): The organization's modules.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const modules = await appClient.listModules('<YOUR-ORGANIZATION-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmodules).
 
@@ -3328,6 +3916,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[DeleteKeyResponse](https://ts.viam.dev/classes/appApi.DeleteKeyResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteKey('<YOUR-KEY-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletekey).
 
 {{% /tab %}}
@@ -3367,6 +3961,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[RotateKeyResponse](https://ts.viam.dev/classes/appApi.RotateKeyResponse.html)>): The updated key and ID.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const key = await appClient.rotateKey('<YOUR-KEY-ID>');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#rotatekey).
 
 {{% /tab %}}
@@ -3405,6 +4005,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): The list of API keys.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const keys = await appClient.listKeys('<YOUR-ORGANIZATION-ID>');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listkeys).
 
@@ -3446,6 +4052,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>): The new key and ID.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const key =
+  await appClient.createKeyFromExistingKeyAuthorizations(
+    '<YOUR-KEY-ID>'
+  );
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkeyfromexistingkeyauthorizations).
 
 {{% /tab %}}
@@ -3466,6 +4081,15 @@ Retrieve the app content for an organization.
 **Returns:**
 
 - (Promise<[GetAppContentResponse](https://ts.viam.dev/classes/appApi.GetAppContentResponse.html)>): The blob path and entrypoint of the app content.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const appContent = await appClient.getAppContent(
+  '<YOUR-PUBLIC-NAMESPACE>',
+  '<YOUR-APP-NAME>'
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappcontent).
 
