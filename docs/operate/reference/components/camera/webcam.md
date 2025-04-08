@@ -270,7 +270,8 @@ For more information about the vision service, see [run inference](https://docs.
 {{% /expand%}}
 
 {{% expand "High CPU usage" %}}
-Camera streams use a significant amount of CPU resources. The more CPU resources a device has, the more camera streams you can run simultaneously. If your device doesn't have enough CPU resources to support your use case, try lowering the image resolution to decrease the CPU load of the camera streams.
+Camera streams use a significant amount of CPU resources. The more CPU resources a device has, the more camera streams you can run simultaneously.
+If your device doesn't have enough CPU resources to support your use case, try lowering the image resolution to decrease the CPU load of the camera streams.
 {{% /expand%}}
 
 ## Next steps
