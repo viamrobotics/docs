@@ -78,6 +78,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): * The list of Detections.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const detections = await vision.getDetectionsFromCamera('my_camera');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getdetectionsfromcamera).
 
 {{% /tab %}}
@@ -200,6 +207,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): * The list of Detections.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+
+const mimeType = 'image/jpeg';
+const image = await camera.getImage(mimeType);
+const detections = await vision.getDetections(
+  image,
+  600,
+  600,
+  mimeType
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getdetections).
 
 {{% /tab %}}
@@ -305,6 +328,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): * The list of Classifications.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const classifications = await vision.getClassificationsFromCamera(
+  'my_camera',
+  10
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getclassificationsfromcamera).
 
@@ -428,6 +461,23 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): * The list of Classifications.
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+
+const mimeType = 'image/jpeg';
+const image = await camera.getImage(mimeType);
+const classifications = await vision.getClassifications(
+  image,
+  600,
+  600,
+  mimeType,
+  10
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getclassifications).
 
 {{% /tab %}}
@@ -537,6 +587,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): * The list of PointCloudObjects.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const pointCloudObjects =
+  await vision.getObjectPointClouds('my_camera');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getobjectpointclouds).
 
@@ -654,6 +712,18 @@ detection, and segmentation.
 
 - (Promise<    {        classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];        detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];        extra: undefined        | [Struct](https://ts.viam.dev/classes/Struct.html);        image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);        objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[];    },>): * The requested image, classifications, detections, and 3d point
 cloud objects.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const captureAll = await vision.captureAllFromCamera('my_camera', {
+  returnImage: true,
+  returnClassifications: true,
+  returnDetections: true,
+  returnObjectPointClouds: true,
+});
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#captureallfromcamera).
 
@@ -885,6 +955,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<    {        classificationsSupported: boolean;        detectionsSupported: boolean;        objectPointCloudsSupported: boolean;    },>): * The properties of the vision service.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const properties = await vision.getProperties();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getproperties).
 

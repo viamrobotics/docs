@@ -32,6 +32,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<[Operation](https://ts.viam.dev/classes/robotApi.Operation.html)[]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const operations = await machine.getOperations();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getoperations).
 
 {{% /tab %}}
@@ -88,6 +94,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[GetMachineStatusResponse](https://ts.viam.dev/classes/robotApi.GetMachineStatusResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const machineStatus = await machine.getMachineStatus();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmachinestatus).
 
 {{% /tab %}}
@@ -107,6 +119,12 @@ Get the list of sessions currently connected to the robot.
 **Returns:**
 
 - (Promise<[Session](https://ts.viam.dev/classes/robotApi.Session.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const sessions = await machine.getSessions();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getsessions).
 
@@ -147,6 +165,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)[]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const resourceNames = await machine.resourceNames();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcenames).
 
 {{% /tab %}}
@@ -166,6 +190,12 @@ Get a list of all resource types.
 **Returns:**
 
 - (Promise<[ResourceRPCSubtype](https://ts.viam.dev/classes/robotApi.ResourceRPCSubtype.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const resourceRPCSubtypes = await machine.resourceRPCSubtypes();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcerpcsubtypes).
 
@@ -206,6 +236,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await machine.cancelOperation('INSERT OPERATION ID');
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#canceloperation).
 
 {{% /tab %}}
@@ -245,6 +281,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await machine.blockForOperation('INSERT OPERATION ID');
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockforoperation).
 
@@ -308,6 +350,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[FrameSystemConfig](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const frameSystemConfig = await machine.frameSystemConfig();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#framesystemconfig).
 
@@ -432,7 +480,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Parameters:**
 
 - `pointCloudPCD` (Uint8Array) (required): The point clouds to transform. This should be in the
-[PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
+PCD format encoded into bytes:
+https://pointclouds.org/documentation/tutorials/pcd_file_format.html.
 - `source` (string) (required): The reference frame of the point cloud.
 - `destination` (string) (required): The reference frame into which the source data should
 be transformed, if unset this defaults to the "world" reference frame. Do
@@ -505,6 +554,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[ModuleModel](https://ts.viam.dev/classes/robotApi.ModuleModel.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const models = await machine.getModelsFromModules();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmodelsfrommodules).
 
@@ -585,6 +640,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await machine.stopAll();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopall).
 
@@ -697,6 +758,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - (Promise<[GetCloudMetadataResponse](https://ts.viam.dev/classes/robotApi.GetCloudMetadataResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const cloudMetadata = await machine.getCloudMetadata();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getcloudmetadata).
 
