@@ -36,6 +36,7 @@ const config = {
           chatSubjectName: "Viam",
           aiAssistantAvatar: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
           userAvatarSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
+          introMessage: "Hi!\n\nI'm an AI assistant trained on documentation, help articles, and other content. \n\nHow can I help you today?\n\n_Please remember not to share sensitive information such as secrets or API keys with me._",
           getHelpOptions: [
             {
               icon: { builtIn: "IoMail" },
