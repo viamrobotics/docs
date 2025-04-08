@@ -59,7 +59,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number[]>)
+- (Promise<number[]>): The current position of each axis.
 
 **Example:**
 
@@ -276,7 +276,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number[]>)
+- (Promise<number[]>): The lengths of the axes of the gantry in millimeters.
 
 **Example:**
 
