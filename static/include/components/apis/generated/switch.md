@@ -58,6 +58,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const mySwitch = new VIAM.SwitchClient(machine, 'my_switch');
+
+// Update the switch from its current position to position 1
+await mySwitch.setPosition(1);
+
+// Update the switch from its current position to position 0
+await mySwitch.setPosition(0);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#setposition).
 
 {{% /tab %}}
@@ -126,6 +138,24 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<number>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const mySwitch = new VIAM.SwitchClient(machine, 'my_switch');
+
+// Update the switch to position 1
+await mySwitch.setPosition(1);
+
+// Get the current set position
+const pos1 = await mySwitch.getPosition();
+
+// Update the switch to position 0
+await mySwitch.setPosition(0);
+
+// Get the current set position
+const pos2 = await mySwitch.getPosition();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getposition).
 
 {{% /tab %}}
@@ -183,6 +213,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - (Promise<number>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const mySwitch = new VIAM.SwitchClient(machine, 'my_switch');
+
+// Get the number of available positions
+const numPositions = await mySwitch.getNumberOfPositions();
+console.log('Number of positions:', numPositions);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getnumberofpositions).
 

@@ -44,8 +44,7 @@ class TypeScriptParser:
 
         # Skip resources not supported in TypeScript
         unsupported_resources = [
-            "base_remote_control", "input_controller", "pose_tracker",
-            "mlmodel"
+            "base_remote_control", "pose_tracker", "mlmodel"
         ]
 
         for resource in viam_resources:
@@ -61,9 +60,9 @@ class TypeScriptParser:
                     print(f'DEBUG: Skipping unsupported TypeScript resource: {resource}')
                 continue
 
-            url = f"{self.scrape_url}/classes/{resource.capitalize()}Client.html"
+            url = f"{self.scrape_url}/classes/{resource.replace('_', ' ').title().replace(' ', '')}Client.html"
             if resource in typescript_resource_overrides:
-                url = f"{self.scrape_url}/classes/{typescript_resource_overrides[resource]}Client.html"
+                url = f"{self.scrape_url}/classes/{typescript_resource_overrides[resource].replace('_', ' ').title().replace(' ', '')}Client.html"
 
             # if args.verbose:
             #     print(f'DEBUG: Parsing TypeScript URL: {url}')

@@ -73,6 +73,18 @@ degrees).
 
 - (Promise<readonly [number, [PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
+
+// Get the position of the encoder in ticks
+const [position, posType] = await encoder.getPosition(
+  EncoderPositionType.POSITION_TYPE_TICKS_COUNT
+);
+console.log('The encoder position is currently', position, posType);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getposition).
 
 {{% /tab %}}
@@ -143,6 +155,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - (Promise<void>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
+
+// Reset the zero position of the encoder
+await encoder.resetPosition();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#resetposition).
 
 {{% /tab %}}
@@ -211,6 +232,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - (Promise<[encoderApi](https://ts.viam.dev/modules/encoderApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/encoderApi.GetPropertiesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
+
+// Get whether the encoder returns position in ticks or degrees
+const properties = await encoder.getProperties();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getproperties).
 
