@@ -162,8 +162,8 @@ To ensure that updates only occur when your machines are ready, configure a [mai
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
-| `agent` | string | true | The version of Viam agent specified as either:<ul><li>a version number`"5.6.77"` or `"v0.65.1-dev.7"` (indicating the seventh commit to "main" after the previous non-dev release, `v0.65.0`)</li><li>a tag such as`"stable"` or `"dev"`.</li><li>a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-agent-test-aarch64"`</li></ul> Viam agent is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Default: `"stable"`. |
-| `viam-server` | string | true | The version of `viam-server` specified as `"5.6.77"`, `"stable"`, `"dev"` or by providing a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-server-test-aarch64"`. `viam-server` is semantically versioned and is tested before release. When set to `"stable"`, `viam-server` will automatically upgrade when a new stable version is released. Default: `"stable"`. |
+| `agent` | string | **Required** | The version of Viam agent specified as either:<ul><li>a version number`"5.6.77"` or `"v0.65.1-dev.7"` (indicating the seventh commit to "main" after the previous non-dev release, `v0.65.0`)</li><li>a tag such as`"stable"` or `"dev"`.</li><li>a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-agent-test-aarch64"`</li></ul> Viam agent is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Default: `"stable"`. |
+| `viam-server` | string | **Required** | The version of `viam-server` specified as `"5.6.77"`, `"stable"`, `"dev"` or by providing a URL such as `"http://example.com/viam-agent-test-aarch64"` or `"file://home/myuser/viam-server-test-aarch64"`. `viam-server` is semantically versioned and is tested before release. When set to `"stable"`, `viam-server` will automatically upgrade when a new stable version is released. Default: `"stable"`. |
 
 {{< alert title="Important" color="note" >}}
 `viam-agent` does not update itself.
@@ -202,12 +202,12 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
-| `debug` | boolean | false | Sets the log level to debug for any logging from the Viam agent binary. Default: `false`. |
-| `disable_network_configuration` | boolean | false | Disables the network and hotspot configuration, as well as the configuration of additional networks. Default: `false`. |
-| `disable_system_configuration` | boolean | false | Disables the system configuration. Default: `false`. |
-| `disable_viam_server` | boolean | false | Disable `viam-server` remotely. This option is often used by developers working on Viam agent or when manually running `viam-server`. Default: `false`. |
-| `viam_server_start_timeout_minutes` | integer | false | Specify a time after which, if `viam-server` hasn't successfully started, Viam agent will kill it and restart. Default: `10`. |
-| `wait_for_update_check` | boolean | false | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `false`. |
+| `debug` | boolean | Optional | Sets the log level to debug for any logging from the Viam agent binary. Default: `false`. |
+| `disable_network_configuration` | boolean | Optional | Disables the network and hotspot configuration, as well as the configuration of additional networks. Default: `false`. |
+| `disable_system_configuration` | boolean | Optional | Disables the system configuration. Default: `false`. |
+| `disable_viam_server` | boolean | Optional | Disable `viam-server` remotely. This option is often used by developers working on Viam agent or when manually running `viam-server`. Default: `false`. |
+| `viam_server_start_timeout_minutes` | integer | Optional | Specify a time after which, if `viam-server` hasn't successfully started, Viam agent will kill it and restart. Default: `10`. |
+| `wait_for_update_check` | boolean | Optional | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `false`. |
 
 ### Reduce startup time
 
@@ -228,19 +228,19 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
-| `device_reboot_after_offline_minutes` | integer | false | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
-| `disable_captive_portal_redirect` | boolean | false | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
-| `fragment_id` | string | false | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
-| `hotspot_interface` | string | false | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
-| `hotspot_password` | string | false | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
-| `hotspot_prefix` | string | false | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
-| `manufacturer` | string | false | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
-| `model` | string | false | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
-| `offline_before_starting_hotspot_minutes` | integer | false | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the WiFi/router may take longer to be available. Default: `2` (2 minutes). |
+| `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
+| `disable_captive_portal_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
+| `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
+| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
+| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
+| `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
+| `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
+| `offline_before_starting_hotspot_minutes` | integer | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the WiFi/router may take longer to be available. Default: `2` (2 minutes). |
 | `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10` (10 minutes). |
-| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | false | By default, the device will only attempt to connect to a single WiFi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. WiFi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and `turn_on_hotspot_if_wifi_has_no_internet` is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
-| `user_idle_minutes` | integer | false | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
-| `wifi_power_save` | boolean | false | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
+| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device will only attempt to connect to a single WiFi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. WiFi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and `turn_on_hotspot_if_wifi_has_no_internet` is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
+| `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
+| `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
 
 For more detailed instructions on what these settings do, see [Provisioning](/manage/fleet/provision/setup/#configure-defaults).
 
@@ -250,17 +250,17 @@ For an already-online device, you can configure new WiFi or wired networks in th
 It's primarily useful for a machine that moves between different networks, so the machine can automatically connect when moved between locations.
 
 <!-- prettier-ignore -->
-| Name       | Type | Required? | Description |
-| ---------- | ---- | --------- | ----------- |
-| `interface` | string | optional | Name of interface, for example: `"wlan0"`, `"eth0"`, `"enp14s0"`. Default: `""`. |
-| `ipv4_address` | string | optional | IPv4 address in CIDR format, for example: `"192.168.0.1/24"`. Default: `"auto"`. |
-| `ipv4_dns` | string | optional | Array of IPv4 DNS such as `["192.168.0.254", "8.8.8.8"]`. Default: `[]`. |
-| `ipv4_gateway` | string | optional | IPv4 gateway. Default: `""`. |
-| `ipv4_route_metric` | integer | optional | IPv4 route metric. Lower values are preferred. Default: `0` which defaults to `100` for wired networks and `600` for wireless network. |
-| `priority` | integer | optional | Priority to choose the network with. Values between -999 and 999 with higher values taking precedence. Default: `0`. |
-| `psk` | string | optional | The network passkey. Default: `""`. |
-| `ssid` | string | optional | The WiFi network's SSID. Only needed for WiFi networks. Default: `""`. |
-| `type` | string | optional | The type of the network. Required if a network is provided. Options: `"wifi"`, `"wired"`. |
+| Name       | Type | Required? | Description | Available with the Micro-RDK |
+| ---------- | ---- | --------- | ----------- | ---------------------------- |
+| `interface` | string | Optional | Name of interface, for example: `"wlan0"`, `"eth0"`, `"enp14s0"`. Default: `""`. | |
+| `ipv4_address` | string | Optional | IPv4 address in CIDR format, for example: `"192.168.0.1/24"`. Default: `"auto"`. | |
+| `ipv4_dns` | string | Optional | Array of IPv4 DNS such as `["192.168.0.254", "8.8.8.8"]`. Default: `[]`. | |
+| `ipv4_gateway` | string | Optional | IPv4 gateway. Default: `""`. | |
+| `ipv4_route_metric` | integer | Optional | IPv4 route metric. Lower values are preferred. Default: `0` which defaults to `100` for wired networks and `600` for wireless network. | |
+| `priority` | integer | Optional | Priority to choose the network with. Values between -999 and 999 with higher values taking precedence. Default: `0`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `psk` | string | Optional | The network passkey. Default: `""`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `ssid` | string | Optional | The WiFi network's SSID. Only needed for WiFi networks. Default: `""`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `type` | string | Optional | The type of the network. Required if a network is provided. Options: `"wifi"`, `"wired"`. | |
 
 To add additional networks add them using the JSON editor for your device's config in the Viam app.
 
@@ -276,9 +276,9 @@ If the highest-priority network is not available (or, if `turn_on_hotspot_if_wif
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
-| `logging_journald_runtime_max_use_megabytes` | integer | optional |Set the temporary space limit for logs. `-1` to disable. Default: `512` (512 MB). |
-| `logging_journald_system_max_use_megabytes` | integer | optional | Sets the maximum disk space `journald` will use for persistent log storage. `-1` to disable. Default: `512` (512 MB). |
-| `os_auto_upgrade_type` | boolean | optional | Manage OS package updates using Viam by setting this field. Installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with an automatically generated Origins-Pattern list that is generated based on that of `50unattended-upgrades`. Custom repos installed on the system at the time the setting is enabled will be included. Options: `"all"` (automatic upgrades are performed for all packages), `"security"` (automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)), `"disable"` (disable automatic upgrades), `""` (do not change system settings). Default: `""`. |
+| `logging_journald_runtime_max_use_megabytes` | integer | Optional |Set the temporary space limit for logs. `-1` to disable. Default: `512` (512 MB). |
+| `logging_journald_system_max_use_megabytes` | integer | Optional | Sets the maximum disk space `journald` will use for persistent log storage. `-1` to disable. Default: `512` (512 MB). |
+| `os_auto_upgrade_type` | boolean | Optional | Manage OS package updates using Viam by setting this field. Installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with an automatically generated Origins-Pattern list that is generated based on that of `50unattended-upgrades`. Custom repos installed on the system at the time the setting is enabled will be included. Options: `"all"` (automatic upgrades are performed for all packages), `"security"` (automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)), `"disable"` (disable automatic upgrades), `""` (do not change system settings). Default: `""`. |
 
 For more detailed instructions, see [Configure machine settings](https://docs.viam.com/manage/fleet/system-settings/).
 

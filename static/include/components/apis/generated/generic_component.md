@@ -82,11 +82,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
@@ -142,6 +142,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const generic = new VIAM.GenericComponentClient(
+  machine,
+  'my_generic_component'
+);
+
+// Get the geometries of this component
+const geometries = await generic.getGeometries();
+console.log('Geometries:', geometries);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#getgeometries).
 
