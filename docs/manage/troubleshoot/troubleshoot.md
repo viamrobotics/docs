@@ -28,6 +28,7 @@ The expanded panel shows you errors produced by that resource.
 #### Machine shows as offline
 
 If your machine shows as offline in the Viam app, restart `viam-server` by running the command to start `viam-server` and adding the `-debug` option.
+Be aware that while your machine is not able to connect to the Viam app, any changes to the machine's configuration that you make in the Viam app will not reach your machine.
 
 ### Check logs on the LOGS tab
 
