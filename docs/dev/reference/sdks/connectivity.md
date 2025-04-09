@@ -15,7 +15,7 @@ date: "2022-01-01"
 
 When connecting to a machine using the connection code from the [**CONNECT** tab](/dev/reference/sdks/), a [client session](/dev/reference/apis/sessions/) automatically uses the most efficient route to connect to your machine either through local LAN or WAN or the internet.
 
-## Connect over local network
+## Connect over local network or offline
 
 To connect directly to the local machine, change the end of the machine address URI from `.viam.cloud` to `.local.viam.cloud` in your machine's connection code.
 The default machine address (URI) from the **CONNECT** tab is of the form `mymachine-main.0a1bcdefgi.viam.cloud`, so `mymachine-main.0a1bcdefgi.local.viam.cloud`.
