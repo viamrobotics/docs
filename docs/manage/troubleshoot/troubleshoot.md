@@ -25,9 +25,13 @@ Go to your machine's **CONFIGURE** page and check whether any configured compone
 If so click on the symbol or expand the **ERROR LOGS** panel.
 The expanded panel shows you errors produced by that resource.
 
+#### Machine shows as offline
+
+If your machine shows as offline in the Viam app, restart `viam-server` by running the command to start `viam-server` and adding the `-debug` option.
+
 ### Check logs on the LOGS tab
 
-Go to the **LOGS** tab and check for errors or other information relevant to the issue.
+If your machine shows as online in the Viam app, go to the **LOGS** tab and check for errors or other information relevant to the issue.
 
 {{<gif webm_src="/fleet/log-filtering.webm" mp4_src="/fleet/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
@@ -36,7 +40,7 @@ You can filter your logs by keyword, log levels and time.
 The default log level for `viam-server` and any running resources is `"Info"`.
 If you are not seeing helpful logs, you can try changing the log level to `"Debug"`.
 
-To enable debug logs for all resources on a machine add `"debug": true` to the machine's JSON configuration:
+You can enable debug logs for all resources on a machine by adding `"debug": true` to the machine's JSON configuration:
 
 ```json
 {
