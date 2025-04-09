@@ -20,20 +20,20 @@ date: "2022-01-01"
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/drl2p2of-qA">}}
 
-To install the Viam {{< glossary_tooltip term_id="rdk" text="RDK" >}}, you need a Raspberry Pi running a 64-bit Linux distribution.
+We recommend using Viam on a 64-bit Linux distribution.
+Support for older Raspberry Pis running on 32-bit ARM v7 is in beta.
 
-If you already have a 64-bit Linux distribution installed on your Pi, skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
+If you already have a Linux distribution installed on your Pi, skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
 
-{{%expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit" %}}
+{{% expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit or 32-bit" %}}
 
-If you already have a 64-bit Linux distribution installed on your Pi, you can skip ahead to [installing `viam-server`](/operate/get-started/setup/).
-To check whether the Linux installation on your Raspberry Pi is 64-bit (required for running `viam-server`), `ssh` into your Pi and then run `lscpu`.
+To check whether the Linux installation on your Raspberry Pi is 64-bit or 32-bit, `ssh` into your Pi and then run `lscpu`.
 
 Example output:
 
 {{< imgproc alt="Screenshot of a terminal running the 'lscpu' command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads 'Architecture: aarch64.'" src="/installation/rpi-setup/lscpu-output.png" resize="800x" declaredimensions=true class="shadow" >}}
 
-If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](/operate/get-started/setup/).
+If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
 
 {{% /expand%}}
 
@@ -65,7 +65,7 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true class="shadow" >}}
 
-   Select **Raspberry Pi OS Full (64-bit)** from the menu.
+   Select **Raspberry Pi OS Full (64-bit)** or **Raspberry Pi OS Full (32-bit)** from the menu.
 
    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Legacy, 64-bit) Full is selected." src="/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true class="shadow"  >}}
 
