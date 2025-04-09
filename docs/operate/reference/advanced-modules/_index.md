@@ -52,7 +52,7 @@ In rare cases, you may need to package and deploy a module using Docker.
 Use cases for this include:
 
 - Your module has complex system dependencies that cannot be easily installed on a machine.
-- You have a large bundle and want to use layer caching to reduce the size of the download.
+- You use a large container image and some layers are already used by your machine which means layer caching can reduce the size of the download.
 - You have specific security requirements that are difficult to meet with the default module deployment.
 
 If you choose to deploy your module using Docker, we recommend creating a "first run" script or binary to run any necessary setup steps.
