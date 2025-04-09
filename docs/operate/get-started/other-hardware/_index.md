@@ -1007,6 +1007,12 @@ Do not change the <code>module_id</code>.</p>
 <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/dev/tools/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
 </tr>
 <tr>
+<td><code>markdown_link</code></td>
+<td>string</td>
+<td>Optional</td>
+<td>Link to the documentation (README) for this module. The Viam app uses this to render your README on your module's page in the <a href="https://app.viam.com/registry">registry</a>. Similar to the <code>markdown_link</code> within the <code>models</code> object (described above), which allows the app to render info for a specific model in the configuration panel.</td>
+</tr>
+<tr>
 <td><code>$schema</code></td>
 <td>string</td>
 <td>Optional</td>
