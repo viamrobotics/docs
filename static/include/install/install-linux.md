@@ -1,5 +1,5 @@
 `viam-server` is distributed for Linux as an AppImage.
-The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies (except for FUSE, which is required by the AppImage format).
+The AppImage is a single, self-contained binary that runs on 64-bit Linux systems with the `aarch64` or `x86_64` architectures and 32-bit Linux systems with the `armv7` architecture, with no need to install any dependencies (except for FUSE, which is required by the AppImage format).
 
 To install `viam-server` on a Linux computer:
 

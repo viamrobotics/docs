@@ -83,3 +83,46 @@ if(main && scrollBtn) {
     });
     observer.observe(main);
 }
+
+if (document.querySelector('.three-cards')) {
+    const threeCards = document.querySelector('.three-cards');
+    if (threeCards) {
+        const hoverCards = threeCards.querySelectorAll('.hover-card');
+        hoverCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                let elem = document.getElementById(card.classList[card.classList.length - 1]);
+                elem.style.display = 'inline-block';
+            });
+            card.addEventListener('mouseleave', () => {
+                let elem = document.getElementById(card.classList[card.classList.length - 1]);
+                elem.style.display = 'none';
+            });
+        });
+    }
+}
+
+if (document.querySelector('.hoveraction')) {
+    const threeCards = document.querySelector('.hoveraction');
+    if (threeCards) {
+        const hoverCards = threeCards.querySelectorAll('.howtoexpand');
+        let highlights = [];
+        hoverCards.forEach(c => highlights.push(c.classList[c.classList.length - 1]));
+        hoverCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                let hoverElem = card.classList[card.classList.length - 1];
+                highlights.forEach(h => {
+                    if (h !== hoverElem) {
+                        let elem = document.getElementById(h);
+                        elem.style.display = 'none';
+                    }
+                });
+            });
+            card.addEventListener('mouseleave', () => {
+                highlights.forEach(h => {
+                    let elem = document.getElementById(h);
+                    elem.style.display = 'inline-block';
+                });
+            });
+        });
+    }
+}

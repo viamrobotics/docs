@@ -126,6 +126,8 @@ isShortcutKeyEnabled,
             }
           } else if (source.url.includes("https://codelabs.viam.com")) {
             tabs = [ "Codelab" ];
+          } else if (source.url.includes("https://app.viam.com/")) {
+            tabs = [ "Modules" ];
           } else if (source.url.includes("https://github.com/")) {
             tabs = [ "GitHub" ];
           } else if (source.url.includes("https://python.viam.com") | source.url.includes("https://pkg.go.dev/") | source.url.includes("https://flutter.viam.dev/") | source.url.includes("https://cpp.viam.dev/") | source.url.includes("https://ts.viam.dev/") ) {
@@ -166,6 +168,7 @@ isShortcutKeyEnabled,
       tabs: [
         "All",
         ["Docs", { isAlwaysVisible: true }],
+        "Modules",
         "SDK Docs",
         "GitHub",
         "Tutorials",
