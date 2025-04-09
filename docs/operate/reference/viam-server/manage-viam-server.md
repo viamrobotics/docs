@@ -80,7 +80,7 @@ If `viam-server` is already running as a system service, be sure to stop the ser
 
 #### Start
 
-Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
+Run the following on the command line to start `viam-server`, providing the path to your configuration file:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo viam-server -config /path/to/my/config.json
@@ -88,7 +88,6 @@ sudo viam-server -config /path/to/my/config.json
 
 If you followed the [Installation Guide](/operate/get-started/setup/), your machine's configuration file is available at <file>/etc/viam.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
-If you don't yet have a configuration file, you can [build a new configuration file](/operate/reference/viam-server/local-configuration-file/).
 
 Note that on a Raspberry Pi, `viam-server` must always run as `root` (using `sudo`) in order to access the DMA subsystem for GPIO.
 When running `viam-server` from your home directory on a Linux computer, you do not need to use `sudo`.
@@ -119,7 +118,6 @@ viam-server -config /path/to/my/config.json
 
 If you followed the [Installation Guide](/operate/get-started/setup/), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
-If you don't yet have a configuration file, you can use the example configuration file provided at <file>/opt/homebrew/etc/viam.json</file> or you can [build a new configuration file](/operate/reference/viam-server/local-configuration-file/).
 
 #### Stop
 
