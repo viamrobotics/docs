@@ -251,6 +251,8 @@ For example, the following `version_control` configuration pins `viam-server` to
 }
 ```
 
+If you are changing to a different version of `viam-server` and `viam-agent`, [restart `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
+When you stop or restart `viam-agent`, the agent also restarts `viam-server`.
 {{% /tab %}}
 {{% tab name="Manual" %}}
 
