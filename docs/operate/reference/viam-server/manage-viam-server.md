@@ -255,12 +255,12 @@ When you stop or restart `viam-agent`, the agent also restarts `viam-server`.
 {{% /tab %}}
 {{% tab name="Manual" %}}
 
-`viam-server` automatically checks for updates when launched.
-On Linux, you can disable automatic `viam-server` these checks.
-To disable update checks, open <file>/etc/systemd/system/viam-server.service</file> service file and comment out the line that starts with `ExecStartPre`.
-Prepend a `#` character to the line so that it matches the following:
+`viam-server` automatically checks for updates.
+On Linux, you can disable automatic `viam-server` updates.
+To disable the updates, open <file>/etc/systemd/system/viam-server.service</file> and comment out the line that starts with `ExecStartPre`.
+Add a `#` character at the beginning of the line so that it matches the following:
 
-```sh {class="command-line" data-prompt="$"}
+```sh
 # ExecStartPre=-/usr/local/bin/viam-server --aix-update
 ```
 
@@ -270,7 +270,7 @@ Then, reload the service file with the following command:
 sudo systemctl daemon-reload
 ```
 
-To resume automatic update checking, delete the leading `#` character once more, and run `sudo systemctl daemon-reload` again.
+To resume automatic update checking, delete the leading `#` character in <file>/etc/systemd/system/viam-server.service</file>, then run `sudo systemctl daemon-reload` again to reload the service file.
 
 {{% /tab %}}
 {{< /tabs >}}
