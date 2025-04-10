@@ -19,13 +19,7 @@ For common errors see [Common Errors](/dev/tools/common-errors/).
 
 ## Check logs
 
-### Check for errors on the CONFIGURE page
-
-Go to your machine's **CONFIGURE** page and check whether any configured components have a red exclamation symbol on their configuration card.
-If so click on the symbol or expand the **ERROR LOGS** panel.
-The expanded panel shows you errors produced by that resource.
-
-#### Machine shows as offline
+### Machine shows as offline
 
 If your machine shows as offline in the Viam app, restart `viam-server` by running the command to start `viam-server` and adding the `-debug` option.
 
@@ -113,6 +107,12 @@ If not follow the steps for the standalone version.
 {{< alert title="Note" color="note" >}}
 Be aware that while your machine is not able to connect to the Viam app, any changes to the machine's configuration that you make in the Viam app will not reach your machine.
 {{< /alert >}}
+
+### Check for errors on the CONFIGURE page
+
+Go to your machine's **CONFIGURE** page and check whether any configured components have a red exclamation symbol on their configuration card.
+If so click on the symbol or expand the **ERROR LOGS** panel.
+The expanded panel shows you errors produced by that resource.
 
 ### Check logs on the LOGS tab
 
