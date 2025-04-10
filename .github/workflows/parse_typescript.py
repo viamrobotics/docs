@@ -6,6 +6,7 @@ from urllib.parse import urljoin
 typescript_resource_overrides = {
     "generic_component": "GenericComponent",
     "generic_service": "GenericService",
+    "input_controller": "InputController",
     "movement_sensor": "MovementSensor",
     "power_sensor": "PowerSensor",
     "vision": "Vision",
@@ -60,9 +61,9 @@ class TypeScriptParser:
                     print(f'DEBUG: Skipping unsupported TypeScript resource: {resource}')
                 continue
 
-            url = f"{self.scrape_url}/classes/{resource.replace('_', ' ').title().replace(' ', '')}Client.html"
+            url = f"{self.scrape_url}/classes/{resource.capitalize()}Client.html"
             if resource in typescript_resource_overrides:
-                url = f"{self.scrape_url}/classes/{typescript_resource_overrides[resource].replace('_', ' ').title().replace(' ', '')}Client.html"
+                url = f"{self.scrape_url}/classes/{typescript_resource_overrides[resource]}Client.html"
 
             # if args.verbose:
             #     print(f'DEBUG: Parsing TypeScript URL: {url}')
