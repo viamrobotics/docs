@@ -178,7 +178,6 @@ By default, `viam-agent` automatically upgrades to the latest stable version of 
 You can change this behavior in the [`version_control` settings of your machine](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/).
 For example, the following `version_control` configuration will always update to the latest stable release of `viam-agent` and the latest development release of `viam-server`:
 
-
 ```json {class="line-numbers linkable-line-numbers" data-line=""}
 {
   "agent": {
