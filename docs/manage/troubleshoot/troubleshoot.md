@@ -28,7 +28,91 @@ The expanded panel shows you errors produced by that resource.
 #### Machine shows as offline
 
 If your machine shows as offline in the Viam app, restart `viam-server` by running the command to start `viam-server` and adding the `-debug` option.
+
+To do this, you will need to know if you installed `viam-server` with `viam-agent` (most common) or manually.
+You can check this by seeing if `viam-agent` is running.
+Run the following command:
+
+```sh {class="command-line" data-prompt="$" data-output="2"}
+ps aux | grep viam-agent
+root      566431  0.5  0.2 1247148 20336 ?       Ssl  11:24   0:00 /opt/viam/bin/viam-agent --config /etc/viam.json
+```
+
+If you see a process running viam-agent, then you used `viam-agent` to install `viam-server`.
+If not follow the steps for the standalone version.
+
+{{< tabs >}}
+{{% tab name="Installed with viam-agent" %}}
+
+1. First check where the `viam-server` binary is and where the config for your machine is:
+
+   ```sh {class="command-line" data-prompt="$" data-output="2"}
+   ps aux | grep viam-server
+   root      566219 83.6  1.1 1966984 88896 ?       Sl   11:17   0:02 /opt/viam/bin/viam-server -config /etc/viam.json
+   ```
+
+2. Stop `viam-agent`:
+
+   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+   sudo systemctl stop viam-agent
+   ```
+
+3. Then run `viam-server` with the `-debug` option and pass in your configuration file:
+
+   ```sh {class="command-line" data-prompt="$" data-output=""}
+   /opt/viam/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
+   ```
+
+4. Then check the logs file <FILE>logs.txt</FILE>.
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+1. First check where the `viam-server` binary is and where the config for your machine is:
+
+   ```sh {class="command-line" data-prompt="$" data-output="2"}
+   ps aux | grep viam-server
+   root       865  1.6  0.2  11612  2428 ?        Ssl  11:42   0:56 /usr/local/bin/viam-server -config /etc/viam.json
+   ```
+
+2. Stop the system service running `viam-server`:
+
+   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+   sudo systemctl stop viam-server
+   ```
+
+3. Then run `viam-server` with the `-debug` option and pass in your configuration file:
+
+   ```sh {class="command-line" data-prompt="$" data-output=""}
+   /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
+   ```
+
+4. Then check the logs file <FILE>logs.txt</FILE>.
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+1. Kill the running `viam-server`.
+2. Then run `viam-server` with the `-debug` option and pass in your configuration file:
+
+   ```sh {class="command-line" data-prompt="$" data-output=""}
+   viam-server -config ~/Downloads/viam.json -debug
+   ```
+
+   You can check the exact command by consulting the setup instructions for your machine in the Viam app.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< alert title="Note" color="note" >}}
 Be aware that while your machine is not able to connect to the Viam app, any changes to the machine's configuration that you make in the Viam app will not reach your machine.
+{{< /alert >}}
 
 ### Check logs on the LOGS tab
 
