@@ -156,6 +156,40 @@ brew services restart viam-server
 
 ## Update `viam-server`
 
+The steps to update `viam-server` differ depending on your installation method.
+You can check this by seeing if `viam-agent` is running.
+Run the following command:
+
+```sh {class="command-line" data-prompt="$" data-output="2"}
+ps aux | grep viam-agent
+root      566431  0.5  0.2 1247148 20336 ?       Ssl  11:24   0:00 /opt/viam/bin/viam-agent --config /etc/viam.json
+```
+
+If you see a process running viam-agent, then you used `viam-agent` to install `viam-server`.
+If not follow the steps for the standalone version.
+
+{{< tabs >}}
+{{% tab name="Installed with viam-agent" %}}
+
+By default, `viam-agent` automatically upgrades to the latest stable version of `viam-server`.
+To change this behaviour or change to a specific version, [change the `version_control` settings in your machine's settings](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/).
+For example:
+
+```json {class="line-numbers linkable-line-numbers" data-line=""}
+{
+  "agent": {
+    "version_control": {
+      "agent": "stable",
+      "viam-server": "dev"
+    }
+  },
+  "components": [ ... ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
 To update to the newest RDK version, you need to update your `viam-server`.
 Select the tab for your platform:
 
@@ -171,9 +205,48 @@ The automatic update behavior of `viam-server` should meet the needs of most dep
 sudo viam-server --aix-update
 ```
 
-### Disable service-based updates
+{{% /tab %}}
+{{% tab name=macOS %}}
 
-If you want to disable `viam-server` from automatically checking for updates each time you launch it, comment out the `ExecStartPre` line from your <file>/etc/systemd/system/viam-server.service</file> service file (by prepending with a `#` character), so that it matches the following:
+`viam-server` is distributed for macOS through the Homebrew package manager, which includes a built-in update feature.
+
+To upgrade to the latest version of `viam-server` using Homebrew:
+
+```sh {class="command-line" data-prompt="$"}
+brew upgrade viam-server
+```
+
+Homebrew does not support automatic updates, so you will need to manually perform this step each time you wish to check for updates. We recommend running `brew upgrade viam-server` on a regular basis.
+{{% /tab %}}
+
+{{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
+
+### Disable automatic updates
+
+{{< tabs >}}
+{{% tab name="Installed with viam-agent" %}}
+
+To disable automatic updates, [change the `version_control` settings in your machine's settings](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/) to a specific version.
+For example:
+
+```json {class="line-numbers linkable-line-numbers" data-line=""}
+{
+  "agent": {
+    "version_control": {
+      "agent": "stable",
+      "viam-server": "0.52.1"
+    }
+  },
+  "components": [ ... ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
+On Linux, if you want to disable `viam-server` from automatically checking for updates each time you launch it, comment out the `ExecStartPre` line from your <file>/etc/systemd/system/viam-server.service</file> service file (by prepending with a `#` character), so that it matches the following:
 
 ```sh {class="command-line" data-prompt="$"}
 # ExecStartPre=-/usr/local/bin/viam-server --aix-update
@@ -188,20 +261,7 @@ sudo systemctl daemon-reload
 To resume automatic update checking, delete the leading `#` character once more, and run `sudo systemctl daemon-reload` again.
 
 {{% /tab %}}
-{{% tab name=macOS %}}
-
-`viam-server` is distributed for macOS through the Homebrew package manager, which includes a built-in update feature.
-
-To upgrade to the latest version of `viam-server` using Homebrew:
-
-```sh {class="command-line" data-prompt="$"}
-brew upgrade viam-server
-```
-
-Homebrew does not support automatic updates, so you will need to manually perform this step each time you wish to check for updates. We recommend running `brew upgrade viam-server` on a regular basis.
-
-{{% /tab %}}
-{{% /tabs %}}
+{{< /tabs >}}
 
 ## View `viam-server` logs
 
