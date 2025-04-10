@@ -89,7 +89,7 @@ If not follow the steps for the standalone version.
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-1. Kill the running `viam-server`.
+1. Kill the running `viam-server` instance.
 2. Then run `viam-server` with the `-debug` option and pass in your configuration file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
