@@ -11,6 +11,8 @@ aliases:
   - /internals/rdk/
   - /architecture/rdk/
   - /architecture/viam-server/
+  - /internals/local-configuration-file/
+  - /operate/reference/viam-server/local-configuration-file/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
