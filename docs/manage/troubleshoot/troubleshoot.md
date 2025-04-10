@@ -47,7 +47,7 @@ If not follow the steps for the standalone version.
 
 2. Stop `viam-agent`:
 
-   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+   ```sh {class="command-line" data-prompt="$" data-output=""}
    sudo systemctl stop viam-agent
    ```
 
@@ -74,7 +74,7 @@ If not follow the steps for the standalone version.
 
 2. Stop the system service running `viam-server`:
 
-   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+   ```sh {class="command-line" data-prompt="$" data-output=""}
    sudo systemctl stop viam-server
    ```
 
