@@ -62,7 +62,13 @@ Note this is _not_ recommended for modules that do not use Docker, it adds unnec
 
 1. Create a tarball that contains:
 
-   - The module's entrypoint script or binary
+   - The module's entrypoint script or binary, for example:
+
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     #!/bin/bash
+     exec docker run <YOUR_CONTAINER_IMAGE> <YOUR_CONTAINER_OPTIONS>
+     ```
+
    - A <file>meta.json</file>
    - A first run script or binary that will be executed during the setup phase, for example:
 
@@ -93,14 +99,16 @@ Note this is _not_ recommended for modules that do not use Docker, it adds unnec
 
 1. Configure your module on your machine in the same way as you would for a regular module.
    The first run script will execute once when `viam-server` receives a new configuration.
-   It will only execute once per module or per version of the module.
+   It will only execute once per module or per version of the module.<br><br>
 
-1. (Optional) After a first run script runs successfully, Viam adds a marker file with a `.first_run_succeeded` suffix in the module’s data directory on disk.
-   It has the location and form: `/root/.viam/packages/data/module/<MODULE_ID>-<VERSION>-<ARCH>.first_run_succeeded`.
-   If you want to force a first run script to run again without changing the configured module or module version, you can do so by deleting this file.
+1. (Optional) After a first run script runs successfully, Viam adds a marker file in the module's data directory.
+   The marker file path format is of the form `unpackedModDir + FirstRunSuccessSuffix`.
+   For example, `.viam/packages/data/module/abcd1234-abcd-abcd-abcd-abcd12345678-viam-rtsp-0_1_0-linux-amd64/bin.first_run_succeeded`.
+
+   If you want to force a first run script to run again without changing the configured module or module version, you can do so by deleting this file.<br><br>
 
 1. (Optional) By default, a first run script will timeout after 1 hour.
-   This can be adjusted by adding a `first_run_timeout` to the module’s configuration.
+   This can be adjusted by adding a `first_run_timeout` to the module's configuration.
    For example, `"first_run_timeout": "5m"` will lower the script timeout to 5 minutes.
 
 {{% /expand %}}
