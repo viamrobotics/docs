@@ -157,7 +157,7 @@ brew services restart viam-server
 ## Update `viam-server`
 
 The steps to update `viam-server` differ depending on your installation method.
-You can check this by seeing if `viam-agent` is running.
+To determine your installation method, check if the `viam-agent` process is running.
 Run the following command:
 
 ```sh {class="command-line" data-prompt="$" data-output="2"}
@@ -165,15 +165,19 @@ ps aux | grep viam-agent
 root      566431  0.5  0.2 1247148 20336 ?       Ssl  11:24   0:00 /opt/viam/bin/viam-agent --config /etc/viam.json
 ```
 
-If you see a process running viam-agent, then you used `viam-agent` to install `viam-server`.
-If not follow the steps for the standalone version.
+If the output includes a process named `viam-agent`, you used `viam-agent` to install `viam-server`.
+Follow the steps to use `viam-agent` to update `viam-server`.
+
+If the output does not include a process named `viam-agent`, you did not use `viam-agent`.
+Follow the manual steps to update the standalone version.
 
 {{< tabs >}}
 {{% tab name="Installed with viam-agent" %}}
 
 By default, `viam-agent` automatically upgrades to the latest stable version of `viam-server`.
-To change this behaviour or change to a specific version, [change the `version_control` settings in your machine's settings](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/).
-For example:
+You can change this behavior in the [`version_control` settings of your machine](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/).
+For example, the following `version_control` configuration will always update to the latest stable release of `viam-agent` and the latest development release of `viam-server`:
+
 
 ```json {class="line-numbers linkable-line-numbers" data-line=""}
 {
@@ -186,6 +190,9 @@ For example:
   "components": [ ... ]
 }
 ```
+
+To use the new versions of `viam-server` and `viam-agent`, [restart `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
+When you stop or restart `viam-agent`, the agent also restarts `viam-server`.
 
 {{% /tab %}}
 {{% tab name="Manual" %}}
@@ -216,7 +223,8 @@ To upgrade to the latest version of `viam-server` using Homebrew:
 brew upgrade viam-server
 ```
 
-Homebrew does not support automatic updates, so you will need to manually perform this step each time you wish to check for updates. We recommend running `brew upgrade viam-server` on a regular basis.
+Homebrew does not support automatic updates, so you will need to manually perform this step each time you wish to check for updates.
+We recommend running `brew upgrade viam-server` on a regular basis.
 {{% /tab %}}
 
 {{< /tabs >}}
@@ -228,8 +236,8 @@ Homebrew does not support automatic updates, so you will need to manually perfor
 {{< tabs >}}
 {{% tab name="Installed with viam-agent" %}}
 
-To disable automatic updates, [change the `version_control` settings in your machine's settings](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/) to a specific version.
-For example:
+To disable automatic updates, configure the [`version_control` settings of your machine](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/) to a specific version number.
+For example, the following `version_control` configuration pins `viam-server` to version `0.52.1`, preventing `viam-server` from updating to a more recent version:
 
 ```json {class="line-numbers linkable-line-numbers" data-line=""}
 {
@@ -246,7 +254,10 @@ For example:
 {{% /tab %}}
 {{% tab name="Manual" %}}
 
-On Linux, if you want to disable `viam-server` from automatically checking for updates each time you launch it, comment out the `ExecStartPre` line from your <file>/etc/systemd/system/viam-server.service</file> service file (by prepending with a `#` character), so that it matches the following:
+`viam-server` automatically checks for updates when launched.
+On Linux, you can disable automatic `viam-server` these checks.
+To disable update checks, open <file>/etc/systemd/system/viam-server.service</file> service file and comment out the line that starts with `ExecStartPre`.
+Prepend a `#` character to the line so that it matches the following:
 
 ```sh {class="command-line" data-prompt="$"}
 # ExecStartPre=-/usr/local/bin/viam-server --aix-update
