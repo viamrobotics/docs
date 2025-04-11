@@ -868,7 +868,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | -------------- | ----------- | -------------------- |
 | `generate` | Auto-generate stub files for a new module by following prompts. | - |
 | `create` | Generate new metadata for a custom module on your local filesystem and register the metadata with the Viam registry. Uploading the code that powers the module is a separate step. | - |
-| `update` | Update your module's metadata and documentation in the Viam registry based on changes to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) and <file>README.md</file> file. Note that `upload` automatically performs this update step. | - |
+| `update` | Update your module's metadata and documentation in the Viam registry based on changes to the [<file>meta.json</file>](/operate/get-started/other-hardware/#metajson-reference) and <file>README.md</file>. Note that `upload` automatically performs this update step. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
