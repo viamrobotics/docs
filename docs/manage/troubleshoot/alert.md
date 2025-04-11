@@ -815,13 +815,13 @@ The request includes the following headers:
 <!-- prettier-ignore -->
 | Header Key | Description | Trigger types |
 | ---------- | ----------- | ------------- |
-| `Org-Id` | The ID of the organization that triggered the request. | all |
-| `Organization-Name` | The name of the organization that triggered the request. | `part_online`, `part_offline` |
-| `Location-Id` | The location of the machine that triggered the request. | all |
-| `Location-Name` | The location of the machine that triggered the request. | `part_online`, `part_offline` |
-| `Part-Id` |  The part of the machine that triggered the request. | all |
-| `Machine-Name` | The name of the machine that triggered the request. | `part_online`, `part_offline` |
-| `Robot-Id` | The ID of the machine that triggered the request. | all |
+| `org-Id` | The ID of the organization that triggered the request. | all |
+| `organization-Name` | The name of the organization that triggered the request. | `part_online`, `part_offline` |
+| `location-Id` | The location of the machine that triggered the request. | all |
+| `location-lame` | The location of the machine that triggered the request. | `part_online`, `part_offline` |
+| `part-id` |  The part of the machine that triggered the request. | all |
+| `machine-name` | The name of the machine that triggered the request. | `part_online`, `part_offline` |
+| `robot-id` | The ID of the machine that triggered the request. | all |
 
 ### Returned data
 
