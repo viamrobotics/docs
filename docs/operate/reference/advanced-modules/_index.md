@@ -11,7 +11,7 @@ tags:
     "components",
     "services",
   ]
-description: "Some usage may require you to define new APIs or deploy custom components using a server on a remote part"
+description: "Some usage may require you to define new APIs or deploy custom components in non-standard ways."
 aliases:
   - /program/extend/
   - /modular-resources/advanced/
@@ -45,6 +45,10 @@ Alternatively, you can also [define a new resource API](/operate/reference/advan
 Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the computer directly connected to your components is the preferred way of managing and controlling custom components.
 
 However, if you are unable to use modular resources because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/operate/reference/advanced-modules/custom-components-remotes/) on your machine.
+
+## Deploy a module using Docker
+
+If you need to package and deploy a module using Docker, for example if your module relies on complex system dependencies, see [Deploy a module using Docker](/operate/reference/advanced-modules/docker-modules/) for suggestions.
 
 ## Design a custom ML model
 
