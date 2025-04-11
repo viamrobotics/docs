@@ -83,7 +83,7 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
 
 1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
 1. Navigate to the **CONFIGURE** tab.
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
+1. Click on **machine settings**.
 1. Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
@@ -118,7 +118,7 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "wifi_power_save": null
     },
     "additional_networks": {
-      {
+      "network1": {
         "type": "wifi",
         "interface": "",
         "ssid": "fallbackNetOne",
@@ -129,7 +129,7 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
         "ipv4_dns": [],
         "ipv4_route_metric": 0
       },
-      {
+      "network2": {
         "type": "wifi",
         "interface": "",
         "ssid": "fallbackNetTwo",
