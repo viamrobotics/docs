@@ -99,7 +99,8 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 1. Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
-1. From your machine's page in the Viam app, follow the setup instructions to install `viam-server` on your device and connect it to the cloud.
+1. From your machine's page in the Viam app, click **View setup instructions** and follow the steps for your operating system.
+   The app provides commands to install `viam-server` and connect it to the cloud with your machine's unique credentials.
 
 1. A secure connection is automatically established between your machine and the Viam app.
    When you update your machine's configuration, `viam-server` automatically gets the updates.
