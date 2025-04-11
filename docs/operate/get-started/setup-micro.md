@@ -44,7 +44,7 @@ To quickly try out Viam for microcontrollers, you can use the pre-built binary `
 ## Quickstart
 
 {{% hiddencontent %}}
-Viam provides installers to flash your ESP32 using macOS, Linux x86_64, or Linux ARM64 (AArch64).
+Viam provides installers to flash an ESP32 from macOS or Linux running on the x86_64 or ARM64 (AArch64) processor architectures.
 {{% /hiddencontent %}}
 
 To get started quickly with the pre-built `viam-micro-server` binary, follow these steps:
