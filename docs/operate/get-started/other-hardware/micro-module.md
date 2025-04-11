@@ -97,7 +97,7 @@ To be able to develop for the Micro-RDK on macOS and Linux systems, you must ins
 1. Use `espup` to download and install the ESP Rust toolchain:
 
    ```sh { class="command-line" data-prompt="$"}
-   espup install -s -f /dev/null -v 1.83.0
+   espup install -s -f /dev/null -v 1.85.0
    ```
 
 {{< alert title="Note" color="tip" >}}
