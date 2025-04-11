@@ -43,6 +43,10 @@ To quickly try out Viam for microcontrollers, you can use the pre-built binary `
 
 ## Quickstart
 
+{{% hiddencontent %}}
+Viam provides installers to flash your ESP32 using macOS, Linux x86_64, or Linux ARM64 (AArch64).
+{{% /hiddencontent %}}
+
 To get started quickly with the pre-built `viam-micro-server` binary, follow these steps:
 
 1. Create a [Viam app](https://app.viam.com) account.
@@ -51,9 +55,10 @@ To get started quickly with the pre-built `viam-micro-server` binary, follow the
 1. Add a new _{{< glossary_tooltip term_id="machine" text="machine" >}}_ using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
-1. From your machine's page in the Viam app, follow the setup instructions to install `viam-micro-server` on your device and connect it to the cloud.
+1. From your machine's page in the Viam app, click **View setup instructions** and follow the steps for your operating system.
+   The app provides commands to install `viam-micro-server` and connect it to the cloud with your machine's unique credentials.
 
-   A secure connection is automatically established between your machine and the Viam app.
+1. A secure connection is automatically established between your machine and the Viam app.
    When you update your machine's configuration, `viam-micro-server` automatically gets the updates.
 
    You are ready to [configure](/operate/get-started/supported-hardware/) any of the components listed above on your machine.
