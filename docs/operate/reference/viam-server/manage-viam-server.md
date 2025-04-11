@@ -270,7 +270,7 @@ Then, reload the service file with the following command:
 sudo systemctl daemon-reload
 ```
 
-To resume automatic update checking, delete the leading `#` character in <file>/etc/systemd/system/viam-server.service</file>, then run `sudo systemctl daemon-reload` again to reload the service file.
+To resume automatic update checking, delete the leading `#` character in <file>/etc/systemd/system/viam-server.service</file>, then run `sudo systemctl daemon-reload` again.
 
 {{% /tab %}}
 {{< /tabs >}}
