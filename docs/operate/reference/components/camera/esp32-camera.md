@@ -1,6 +1,6 @@
 ---
-title: "Configure an esp32-camera (viam-micro-server)"
-linkTitle: "esp32-camera"
+title: "Configure an esp32-camera (Micro-RDK)"
+linkTitle: "esp32-camera (Micro-RDK)"
 weight: 33
 type: "docs"
 description: "Configure a camera connected to an esp32 board, initialized and configured using esp-idf."

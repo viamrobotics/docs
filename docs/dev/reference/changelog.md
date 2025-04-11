@@ -235,9 +235,11 @@ The following resource models have moved to modules.
 | movement sensor | [`mpu6050`](https://github.com/viam-modules/tdk-invensense) |
 | power sensor | [`ina219`](https://github.com/viam-modules/texas-instruments) |
 | power sensor | [`ina226`](https://github.com/viam-modules/texas-instruments) |
+| power sensor | [`renogy`](https://github.com/randhid/renogy) |
 | sensor | [`bme280`](https://github.com/viam-modules/bosch) |
 | sensor | [`sensirion-sht3xd`](https://github.com/viam-modules/sensirion) |
 | sensor | [`pi`](https://github.com/viam-modules/raspberry-pi) |
+| sensor | [`ultrasonic`](https://github.com/viam-modules/viam-ultrasonic) |
 | ML model | [`TFLite CPU`](https://app.viam.com/module/viam/tflite_cpu) |
 
 The following models were removed:
@@ -503,7 +505,7 @@ Check out [this guide](/data-ai/capture-data/filter-before-sync/) for more infor
 
 {{% changelog date="2023-12-31" color="added" title="Raspberry Pi 5 Support" %}}
 
-You can now run `viam-server` on a [Raspberry Pi 5](/operate/reference/components/board/pi5/) with the new board model [`pi5`](/operate/reference/components/board/pi5/).
+You can now run `viam-server` on a Raspberry Pi 5 with the new board model [`pi5`](https://github.com/viam-modules/raspberry-pi).
 
 {{% /changelog %}}
 

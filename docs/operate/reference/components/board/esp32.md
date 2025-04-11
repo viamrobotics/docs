@@ -1,6 +1,6 @@
 ---
-title: "Configure an ESP32 Board (viam-micro-server)"
-linkTitle: "esp32"
+title: "Configure an ESP32 Board (Micro-RDK)"
+linkTitle: "esp32 (Micro-RDK)"
 weight: 20
 type: "docs"
 description: "Configure an ESP32 board running viam-micro-server."

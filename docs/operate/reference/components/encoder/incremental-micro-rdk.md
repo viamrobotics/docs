@@ -1,6 +1,6 @@
 ---
-title: "Configure an Incremental Encoder (viam-micro-server)"
-linkTitle: "incremental"
+title: "Configure an Incremental Encoder (Micro-RDK)"
+linkTitle: "incremental (Micro-RDK)"
 titleMustBeLong: true
 type: "docs"
 description: "Configure an incremental encoder."
