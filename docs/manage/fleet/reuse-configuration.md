@@ -33,33 +33,24 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**In the [Viam app](https://app.viam.com), create a machine** in any {{< glossary_tooltip term_id="location" text="location" >}}.
+**Go to the [FRAGMENTS page](https://app.viam.com/fragments) and create a fragment** in your {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Use the CONFIGURE tab to configure all the resources** you want to use on your machines.
+**Add and configure all the resources** you want to use on your machines.
 
-All available resources except [triggers](/data-ai/data/advanced/alert-data/) are supported in fragments.
-You can even configure other fragments inside a fragment.
+Fragments support all available resources except [triggers](/data-ai/data/advanced/alert-data/).
+You can even add other fragments inside a fragment.
+
+{{< alert title="Tip" color="tip" >}}
+If you already created a machine to test your configuration, you can **Switch to JSON**, copy its JSON configuration and paste it into the fragment.
+
+{{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
+{{< /alert >}}
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
-**Switch to JSON**.
-
-{{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
-
-{{% /tablestep %}}
-{{% tablestep number=4 %}}
-
-**Copy the raw JSON configuration object**.
-
-{{% /tablestep %}}
-{{% tablestep number=5 %}}
-**Go to the [FRAGMENTS tab](https://app.viam.com/fragments) and create a fragment.**
-
-Paste the copied JSON configuration into it.
-
-Set your privacy settings in the menu bar.
+**Set your privacy settings in the menu bar.**
 There are three options for this:
 
 - **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
@@ -69,13 +60,6 @@ There are three options for this:
 Click **Save**.
 
 If you want to edit the fragment later, do it from this screen.
-
-{{% /tablestep %}}
-{{% tablestep number=6 %}}
-**Delete the original configuration (optional).**
-
-Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
-By using the new fragment, this and every other machine you add the fragment to will use the exact same configuration.
 
 {{% /tablestep %}}
 {{< /table >}}

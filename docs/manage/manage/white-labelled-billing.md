@@ -104,10 +104,11 @@ To use custom billing, add a billing configuration to your machines.
 You can add the billing configuration to individual machine configurations, however, usually this is added to a fragment.
 
 1. Navigate to the **FLEET** page.
-2. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
-3. Select the fragment you use for your machines.
-4. In the JSON configuration, add the `billing` object, adjust attributes as needed.
-5. Save the fragment.
+1. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
+1. Select the fragment you use for your machines.
+1. Click **+** and add **Billing**
+1. Adjust attributes as needed.
+1. Save the fragment.
 
 {{< tabs >}}
 {{% tab name="Example" %}}
