@@ -308,7 +308,7 @@ To delete a module:
 
 {{% alert title="Note" color="note" %}}
 
-If you need to delete a module and the delete option is unavailable to you, please [contact our support team](https://support.viam.com/hc/en-us) for assistance.
+If you need to delete a module and the delete option is unavailable to you, please [contact our support team](mailto:contact@viam.com) for assistance.
 
 {{% /alert %}}
 
