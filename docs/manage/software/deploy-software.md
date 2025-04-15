@@ -29,7 +29,7 @@ Once your machine is connected to the Viam app, return to this page.
 
 ## Create a fragment
 
-Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
+Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ that enable you to reuse one configuration across multiple machines.
 When deploying or updating software on many machines, you should use fragments to deploy your modules OTA to your machines.
 For more detailed information, see [Reuse configuration](/manage/fleet/reuse-configuration/).
 
