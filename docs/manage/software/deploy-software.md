@@ -37,7 +37,7 @@ For more detailed information, see [Reuse configuration](/manage/fleet/reuse-con
 1. Click **Create fragment**.
 1. Set your privacy settings at the top of the page.
 
-   There are three options for this:
+   Choose one of the following privacy options for your fragment:
 
    - **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
    - **Private:** No user outside of your organization will be able to view or use this fragment.
