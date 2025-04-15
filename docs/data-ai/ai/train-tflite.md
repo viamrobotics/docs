@@ -96,7 +96,7 @@ Click **Train model**.
 
 The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
 
-Once the model has finished training, it becomes visible on the [**MODELS** tab](https://app.viam.com/data/models).
+Once the model has finished training, it becomes visible on the [**MODELS** tab](https://app.viam.com/models).
 
 You will receive an email when your model finishes training.
 
