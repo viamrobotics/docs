@@ -824,7 +824,7 @@ You can get the dataset id from the dataset page or using the [`viam dataset lis
 
 You can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
 
-Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
+Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/models).
 
 You will receive an email when your training job completes.
 
