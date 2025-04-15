@@ -235,10 +235,7 @@ The following information covers the Micro-RDK.
 To remotely update the firmware on your microcontroller without a physical connection to the device, add the OTA (over-the-air) service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
 Use **JSON** mode to add the service as in the template below, then configure the URL from which to fetch new firmware, and the version name.
 
-There are two requirements for hosting firmware:
-
-- The hosting endpoint must use HTTP/2.
-- The hosting endpoint must _not_ use redirection.
+The firmware hosting endpoint must use HTTP/2.
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
