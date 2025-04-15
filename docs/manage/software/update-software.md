@@ -12,7 +12,7 @@ aliases:
 
 If you have already [deployed software](/manage/software/deploy-software/), you can inspect the fragment you have created.
 Each deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glossary_tooltip term_id="package" text="package" >}} has a `version` field.
-Unless the `version` field is set to a specific version, some or all updates for that module or package happen automatically.
+Unless the `version` field is set to a specific version, updates for that module or package happen automatically.
 
 {{% alert title="Updates for microcontrollers" color="note" %}}
 To update the firmware on your microcontroller, see [Over-the-air updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
