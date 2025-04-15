@@ -48,7 +48,7 @@ aliases:
   sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/uninstall.sh)"
   ```
 
-  This command uninstalls `viam-agent`, `viam-server`, the machine configuration file (<file>/etc/viam.json</file>), and the provisioning configuration file (<file>/etc/viam-provisioning.json</file>).
+  This command uninstalls `viam-agent`, `viam-server`, the machine cloud credentials file (<file>/etc/viam.json</file>), and the provisioning configuration file (<file>/etc/viam-provisioning.json</file>).
 
 ## Troubleshooting
 

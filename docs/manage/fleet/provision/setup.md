@@ -342,7 +342,7 @@ You can set optional arguments by defining the following environment variables:
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `VIAM_JSON_PATH` | The path to the machine credentials <FILE>viam.json</FILE> file to be copied to the machine. The script will also prompt you for this file if not provided. |
+| `VIAM_JSON_PATH` | The path to the machine cloud credentials file (<FILE>viam.json</FILE>) to be copied to the machine. The script will also prompt you for this file if not provided. |
 | `DEFAULTS_PATH` | The path to the <FILE>viam-defaults.json</FILE> file. The script will also prompt you for this file if not provided. |
 | `VIAM_AGENT_PATH` | The path to a beta or local build of `viam-agent`. Used for testing. |
 
@@ -455,7 +455,7 @@ You cannot re-run the `preinstall.sh` script.
 Once a device is set up for provisioning and has a <FILE>viam-provisioning.json</FILE> file on it, it will attempt to provision the machine when it comes online.
 If you have not yet connected the device to a network and setup has not completed, you can still make changes to the <FILE>viam-provisioning.json</FILE> file on the device.
 
-Once a machine has completed the provisioning flow, you cannot re-run the final setup steps without first manually removing the machine configuration file (<FILE>/etc/viam.json</FILE>).
+Once a machine has completed the provisioning flow, you cannot re-run the final setup steps without first manually removing the machine cloud credentials file (<FILE>/etc/viam.json</FILE>).
 
 ### Device not detecting networks
 

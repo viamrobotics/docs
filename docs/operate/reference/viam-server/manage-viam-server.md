@@ -39,7 +39,7 @@ By default, `viam-server` is configured to start when the machine boots.
 Running `viam-server` as a system service is the recommended method for Linux.
 
 You can use the following commands to manage `viam-server` when installed as a system service.
-These commands require that you store your configuration file at <file>/etc/viam.json</file>.
+These commands require that you store your machine cloud credentials file at <file>/etc/viam.json</file>.
 
 #### Start
 
@@ -86,7 +86,7 @@ Run the following on the command line to start `viam-server`, providing the path
 sudo viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/operate/get-started/setup/), your machine's configuration file is available at <file>/etc/viam.json</file>.
+If you followed the [Installation Guide](/operate/get-started/setup/), your machine's cloud credentials file is available at <file>/etc/viam.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 
 Note that on a Raspberry Pi, `viam-server` must always run as `root` (using `sudo`) in order to access the DMA subsystem for GPIO.
@@ -131,7 +131,7 @@ Installing `viam-server` as a system service is not recommended for most use cas
 However, if you are looking to create a machine that runs on macOS and you want it to run `viam-server` automatically when your macOS system boots, then you will need to run `viam-server` as a service.
 
 Once you have [installed `viam-server`](/operate/get-started/setup/) on your macOS computer, use the following commands to control the service.
-These commands require that you store your configuration file at <file>/opt/homebrew/etc/viam.json</file>.
+These commands require that you store your machine cloud credentials file at <file>/opt/homebrew/etc/viam.json</file>.
 
 #### Start
 
@@ -351,7 +351,7 @@ sudo rm /etc/systemd/system/viam-server.service
 sudo systemctl daemon-reload
 ```
 
-To remove the configuration file, run:
+To remove the machine cloud credentials file, run:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo rm /etc/viam.json
@@ -390,7 +390,7 @@ To remove various Viam caches and logs, run:
 rm -r ~/.viam/
 ```
 
-To remove the configuration file, run:
+To remove the machine cloud credentials file, run:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo rm /etc/viam.json
