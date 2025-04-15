@@ -38,7 +38,7 @@ If not follow the steps for the standalone version.
 {{< tabs >}}
 {{% tab name="Installed with viam-agent" %}}
 
-1. First check where the `viam-server` binary is and where the config for your machine is:
+1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
    ```sh {class="command-line" data-prompt="$" data-output="2"}
    ps aux | grep viam-server
@@ -51,7 +51,7 @@ If not follow the steps for the standalone version.
    sudo systemctl stop viam-agent
    ```
 
-3. Then run `viam-server` with the `-debug` option and pass in your configuration file:
+3. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    /opt/viam/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
@@ -65,7 +65,7 @@ If not follow the steps for the standalone version.
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-1. First check where the `viam-server` binary is and where the config for your machine is:
+1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
    ```sh {class="command-line" data-prompt="$" data-output="2"}
    ps aux | grep viam-server
@@ -78,7 +78,7 @@ If not follow the steps for the standalone version.
    sudo systemctl stop viam-server
    ```
 
-3. Then run `viam-server` with the `-debug` option and pass in your configuration file:
+3. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
@@ -90,7 +90,7 @@ If not follow the steps for the standalone version.
 {{% tab name="macOS" %}}
 
 1. Kill the running `viam-server` instance.
-2. Then run `viam-server` with the `-debug` option and pass in your configuration file:
+2. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    viam-server -config ~/Downloads/viam.json -debug
