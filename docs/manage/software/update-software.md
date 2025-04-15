@@ -11,8 +11,8 @@ aliases:
 ---
 
 If you have already [deployed software](/manage/software/deploy-software/), you can inspect the fragment you have created.
-The JSON object for the deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glossary_tooltip term_id="package" text="package" >}} has a `version` field.
-Unless the `version` field is set to a specific version, some or all updates for that module or package can happen automatically.
+Each deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glossary_tooltip term_id="package" text="package" >}} has a `version` field.
+Unless the `version` field is set to a specific version, some or all updates for that module or package happen automatically.
 
 {{% alert title="Updates for microcontrollers" color="note" %}}
 To update the firmware on your microcontroller, see [Over-the-air updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
@@ -44,31 +44,9 @@ This will create a new version of the fragment.
 
 For example:
 
-```json {class="line-numbers linkable-line-numbers" data-line="22"}
+```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [
-    {
-      "api": "rdk:component:camera",
-      "attributes": {},
-      "model": "rdk:builtin:fake",
-      "name": "camera-1"
-    },
-    {
-      "api": "rdk:component:generic",
-      "attributes": {},
-      "model": "naomi:my-control-logic:control-logic",
-      "name": "generic-1"
-    }
-  ],
-  "debug": true,
-  "modules": [
-    {
-      "module_id": "naomi:my-control-logic",
-      "name": "naomi_my-control-logic",
-      "type": "registry",
-      "version": "0.0.7"
-    }
-  ]
+  "version": "0.0.7"
 }
 ```
 
@@ -97,7 +75,7 @@ This will update all machines that use the `stable` fragment tag.
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**Change the version of the module.**
+**For one or more machines, change the version of the module.**
 
 You can overwrite parts of a fragment to use a new version of a module or package without modifying the upstream fragment.
 
@@ -118,32 +96,11 @@ When you are satisfied that your module or package works as expected, update you
 
 For example:
 
-````json {class="line-numbers linkable-line-numbers" data-line="22"}
+````json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [
-    {
-      "api": "rdk:component:camera",
-      "attributes": {},
-      "model": "rdk:builtin:fake",
-      "name": "camera-1"
-    },
-    {
-      "api": "rdk:component:generic",
-      "attributes": {},
-      "model": "naomi:my-control-logic:control-logic",
-      "name": "generic-1"
-    }
-  ],
-  "debug": true,
-  "modules": [
-    {
-      "module_id": "naomi:my-control-logic",
-      "name": "naomi_my-control-logic",
-      "type": "registry",
-      "version": "0.0.7"
-    }
-  ]
+  "version": "0.0.7"
 }
+```
 
 All machines configured with your fragment will update when they next check for configuration updates.
 

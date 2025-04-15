@@ -106,8 +106,9 @@ You can add the billing configuration to individual machine configurations, howe
 1. Navigate to the **FLEET** page.
 2. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
 3. Select the fragment you use for your machines.
-4. In the JSON configuration, add the `billing` object, adjust attributes as needed.
-5. Save the fragment.
+4. Click **+** and add **Billing**
+5. Adjust attributes as needed.
+6. Save the fragment.
 
 {{< tabs >}}
 {{% tab name="Example" %}}
