@@ -324,10 +324,10 @@ viam dataset data add filter --dataset-id=abc --location-id=123 --org-id=456 --s
 # remove images tagged with the "example" tag between January and October of 2023 to dataset abc
 viam dataset data remove filter --dataset-id=abc --location-id=123 --org-id=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
-# add images with file IDs aaa and bbb in the org 123 and location 456 to dataset abc
+# add images with binary data IDs aaa and bbb in the org 123 and location 456 to dataset abc
 viam dataset data add ids --dataset-id=abc --org-id=123 --location-id=456 --file-ids=aaa,bbb
 
-# remove images with file IDs aaa and bbb in the org 123 and location 456 from dataset abc
+# remove images with binary data IDs aaa and bbb in the org 123 and location 456 from dataset abc
 viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --file-ids=aaa,bbb
 ```
 
@@ -351,7 +351,7 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 | Argument | Description |
 | -------- | ----------- |
 | `filter` | `add` or `remove` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
-| `ids` | `add` or `remove` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
+| `ids` | `add` or `remove` images from a dataset by specifying one or more binary data IDs as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
 | `--help` | Return help. |
 
 ##### Named arguments
@@ -374,14 +374,14 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 
 ##### Using the `ids` argument
 
-When you use the `viam dataset data add` and `viam dataset data remove` commands, you can specify the images to add or remove using their file ids as a comma-separated list.
-For example, the following command adds three images specified by their file ids to the specified dataset:
+When you use the `viam dataset data add` and `viam dataset data remove` commands, you can specify the images to add or remove using their binary data IDs as a comma-separated list.
+For example, the following command adds three images specified by their binary data IDs to the specified dataset:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset data add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
 ```
 
-The following command tags two images specified by their file ids in the specified organization and location with three tags:
+The following command tags two images specified by their binary data IDs in the specified organization and location with three tags:
 
 ```sh {class="command-line" data-prompt="$"}
 viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
@@ -512,7 +512,7 @@ done
 | Argument | Description |
 | -------- | ----------- |
 | `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument](#using-the-filter-argument).|
-| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
+| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more binary data IDs as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
 | `--help` | Return help |
 
 ##### Named arguments
@@ -529,7 +529,7 @@ done
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
 | `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
-| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id). |`dataset`, `tag ids` | **Required** |
+| `--location-id` | Location ID for the binary data IDs being added or removed from the specified dataset (only accepts one location id). |`dataset`, `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
