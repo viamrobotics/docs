@@ -27,6 +27,30 @@ print(dataset_id)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_dataset).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `name` (string) (required): The name of the new dataset.
+- `organizationId` (string) (required): The ID of the organization the dataset is being
+created in.
+
+**Returns:**
+
+- (Promise<string>): The ID of the dataset.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const datasetId = await dataClient.createDataset(
+  'my-new-dataset',
+  '123abc45-1234-5678-90ab-cdef12345678'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#createdataset).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -36,7 +60,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
 
 **Example:**
 
@@ -90,6 +114,25 @@ await data_client.delete_dataset(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_dataset).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the dataset.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await dataClient.deleteDataset('12ab3de4f56a7bcd89ef0ab1');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletedataset).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -98,7 +141,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -154,6 +197,29 @@ await data_client.rename_dataset(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.rename_dataset).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the dataset.
+- `name` (string) (required): The new name of the dataset.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await dataClient.renameDataset(
+  '12ab3de4f56a7bcd89ef0ab1',
+  'my-new-dataset'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#renamedataset).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -163,7 +229,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -218,6 +284,27 @@ print(datasets)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_datasets_by_organization_id).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+
+**Returns:**
+
+- (Promise<Dataset[]>): The list of datasets in the organization.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const datasets = await dataClient.listDatasetsByOrganizationID(
+  '123abc45-1234-5678-90ab-cdef12345678'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#listdatasetsbyorganizationid).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
@@ -226,7 +313,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)>\>
 
 **Example:**
 
@@ -281,15 +368,36 @@ print(datasets)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_dataset_by_ids).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `ids` (string) (required): The list of IDs of the datasets.
+
+**Returns:**
+
+- (Promise<Dataset[]>): The list of datasets.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const datasets = await dataClient.listDatasetsByIds([
+  '12ab3de4f56a7bcd89ef0ab1',
+]);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#listdatasetsbyids).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**
 
-- `ids` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `ids` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)>\>
 
 **Example:**
 
