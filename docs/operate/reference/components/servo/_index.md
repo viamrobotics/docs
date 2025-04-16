@@ -25,6 +25,8 @@ If you have a physical ["RC" or "hobby" servo motor](https://learn.adafruit.com/
 
 If your motor is coupled with an [encoder](/operate/reference/components/encoder/), not a potentiometer, for position feedback, you should configure it as an [encoded motor](/operate/reference/components/motor/encoded-motor/) instead.
 
+If you have an industrial servo motor, configure a [motor component](/operate/reference/components/motor/) that supports your hardware.
+
 ## Configuration
 
 To use a hobby servo, you need to add it to your machine's configuration.
