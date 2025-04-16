@@ -670,6 +670,28 @@ Reload a module as if its config changed.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `moduleId` (string) (optional): The id matching the module_id field of the registry
+module in your part configuration.
+- `moduleName` (string) (optional): The name matching the name field of the local/registry
+module in your part configuration.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await machine.restartModule('namespace:module:model', 'my_model_name');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#restartmodule).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Log

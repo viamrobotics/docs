@@ -472,7 +472,7 @@ robot,StreamStatus,,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
 robot,GetModelsFromModules,,get_models_from_modules,GetModelsFromModules,getModelsFromModules,getModelsFromModules
 robot,StopAll,,stop_all,StopAll,,stopAll
-robot,RestartModule,,,RestartModule,,
+robot,RestartModule,,,RestartModule,,restartModule
 robot,StartSession,,,,,
 robot,SendSessionHeartbeat,,,,,
 robot,Log,,log,,,
