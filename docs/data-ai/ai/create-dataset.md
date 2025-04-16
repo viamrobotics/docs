@@ -305,7 +305,7 @@ async def main():
     try:
         dataset_id = await data_client.create_dataset(
             name="MyDataset",
-            organization_id=ORG_ID
+            organization_id="<ORG-ID>"
         )
         print("Created dataset: " + dataset_id)
     except Exception:
