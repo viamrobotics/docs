@@ -206,6 +206,21 @@ This can happen when there is a slow internet connection, when the module is try
 
 See [Module Configuration Details](/operate/reference/module-configuration/#environment-variables) for more information on these environment variables.
 
+## Common warnings
+
+### Unable to create PeerConnection with module
+
+**Full Warning:** `Unable to create PeerConnection with module. Ignoring.`
+
+**Description:** Indicates that while the gRPC connection to the module is working as expected, the connection to the module does not support efficient video streaming over WebRTC.
+Only some Go-based camera modules support optimized video streaming over WebRTC.
+
+{{% hiddencontent %}}
+Any Viam SDK can be used to write a camera module, but only Go-based modules can implement optimized video streaming over WebRTC.
+{{% /hiddencontent %}}
+
+**Solution:** This warning can be safely ignored.
+
 ## Known application and plugin conflicts
 
 ### macOS applications
