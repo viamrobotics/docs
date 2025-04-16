@@ -190,7 +190,6 @@ This can happen when there is a slow internet connection, when the module is try
   Pass a sequence of numbers and time units, for example "6m30s50ms" for a timeout of 6 minutes, 30 seconds, and 50 milliseconds, or "5m" for a timeout of 5 minutes.
   To load new environment variable values, restart `viam-server` from the Viam app.
 
-
 ## Known application and plugin conflicts
 
 ### macOS applications
