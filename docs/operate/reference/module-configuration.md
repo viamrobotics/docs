@@ -234,7 +234,7 @@ Not all of these variables are automatically available on [local modules](/opera
 <!-- prettier-ignore -->
 | Name | Description | Automatically set on local modules? |
 | ---- | ----------- | ----------------------------------- |
-| `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default: `$HOME/.viam` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default for Linux, macOS, and WSL: `$HOME/.viam`<br>Default for Windows: `C:\WINDOWS\system32\config\systemprofile\.viam` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module.<br>Example: `/opt/my-module/verxxxx-my-module/` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` | Duration that resources are allowed to configure or reconfigure.<br>Example: `4m0s`<br>Default: 1 minute. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `VIAM_MODULE_STARTUP_TIMEOUT` | Duration that modules are allowed to start up.<br>Example: `7m15s`<br>Default: 5 minutes. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
