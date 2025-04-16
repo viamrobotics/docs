@@ -204,7 +204,6 @@ This can happen when there is a slow internet connection, when the module is try
   For more information on environment variables used by modules, see [Module Configuration Details](/operate/reference/module-configuration/#environment-variables).
 
 
-
 ## Known application and plugin conflicts
 
 ### macOS applications
