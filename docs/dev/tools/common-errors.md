@@ -187,7 +187,7 @@ This can happen when there is a slow internet connection, when the module is try
 - If you are the module author, consider packaging the module with required dependencies so they don't need to be downloaded on startup.
   For Python modules, you can package your module with dependencies by using the PyInstaller steps when [uploading your module](/operate/get-started/other-hardware/#upload-your-module).
 - If the problem persists, try setting the `VIAM_MODULE_STARTUP_TIMEOUT` or `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` environment variables on your machine.
-  For a value, pass sequence of numbers and a units, e.g. "6m30s", "6.5m", or "630000ms".
+  For a value, pass a sequence of numbers and units, e.g. "6m30s", "6.5m", or "630000ms".
   You can specify units in "ns" (nanoseconds), "us"/"µs" (microseconds), "ms" (milliseconds), "s" (seconds), "m" (minutes), and "h" (hours). 
   For more information on environment variables used by modules, see [Module Configuration Details](/operate/reference/module-configuration/#environment-variables).
 
