@@ -126,6 +126,37 @@ additional transforms to add to it for the duration of the Move.
 
 - (Promise<boolean>): Whether the move was successful (`true`) or unsuccessful (`false`).
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// Assumes a gripper configured with name "my_gripper"
+const gripperName = new VIAM.ResourceName({
+  name: 'my_gripper',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'gripper',
+});
+
+const goalPose: VIAM.Pose = {
+  x: -817,
+  y: -230,
+  z: 62,
+  oX: -1,
+  oY: 0,
+  oZ: 0,
+  theta: 90,
+};
+const goalPoseInFrame = new VIAM.PoseInFrame({
+  referenceFrame: 'world',
+  pose: goalPose,
+});
+
+// Move the gripper
+const moved = await motion.move(goalPoseInFrame, gripperName);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#move).
 
 {{% /tab %}}
@@ -281,6 +312,43 @@ is requested.
 **Returns:**
 
 - (Promise<string>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// Define destination pose with respect to map origin
+const myPose: VIAM.Pose = {
+  x: 0,
+  y: 10,
+  z: 0,
+  oX: 0,
+  oY: 0,
+  oZ: 0,
+  theta: 0,
+};
+
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+const slamServiceName = new VIAM.ResourceName({
+  name: 'my_slam_service',
+  namespace: 'rdk',
+  type: 'service',
+  subtype: 'slam',
+});
+
+// Move the base to Y=10 (location of 0,10,0) relative to map origin
+const executionId = await motion.moveOnMap(
+  myPose,
+  baseName,
+  slamServiceName
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonmap).
 
@@ -454,6 +522,38 @@ the component.
 
 - (Promise<string>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// Define destination at GPS coordinates [0,0]
+const destination: VIAM.GeoPoint = {
+  latitude: 40.7,
+  longitude: -73.98,
+};
+
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+const movementSensorName = new VIAM.ResourceName({
+  name: 'my_movement_sensor',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'movement_sensor',
+});
+
+// Move the base to the geographic location
+const globeExecutionId = await motion.moveOnGlobe(
+  destination,
+  baseName,
+  movementSensorName
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonglobe).
 
 {{% /tab %}}
@@ -618,6 +718,26 @@ reference frames that are needed to compute the component's Pose.
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+const gripperName = new VIAM.ResourceName({
+  name: 'my_gripper',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'gripper',
+});
+
+// Get the gripper's pose in world coordinates
+const gripperPoseInWorld = await motion.getPose(
+  gripperName,
+  'world',
+  []
+);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getpose).
 
 {{% /tab %}}
@@ -699,6 +819,21 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<null>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+
+// Stop the base component which was instructed to move
+await motion.stopPlan(baseName);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopplan).
 
 {{% /tab %}}
@@ -775,6 +910,15 @@ are executing.
 **Returns:**
 
 - (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// List plan statuses within the TTL
+const response = await motion.listPlanStatuses();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listplanstatuses).
 
@@ -871,6 +1015,21 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+
+// Get the plan(s) of the base component
+const response = await motion.getPlan(baseName);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getplan).
 

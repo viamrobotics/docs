@@ -152,9 +152,6 @@ class TypeScriptParser:
                     'return': return_object
                 }
 
-                if method_name == "restartModule":
-                    print(self.typescript_methods[type][resource][method_name])
-
                 if code_sample:
                     self.typescript_methods[type][resource][method_name]["code_sample"] = code_sample
 
