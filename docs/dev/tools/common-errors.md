@@ -216,7 +216,7 @@ See [Module Configuration Details](/operate/reference/module-configuration/#envi
 Only some Go-based camera modules support optimized video streaming over WebRTC.
 
 {{% hiddencontent %}}
-Any Viam SDK can be used to write a camera module, but only Go-based modules can implement optimized video streaming over WebRTC.
+You can use any Viam SDK to implement a camera module, but only Go-based modules can access optimized video streaming over WebRTC.
 {{% /hiddencontent %}}
 
 **Solution:** This warning can be safely ignored.
