@@ -130,7 +130,7 @@ isShortcutKeyEnabled,
             tabs = [ "Modules" ];
           } else if (source.url.includes("https://github.com/")) {
             tabs = [ "GitHub" ];
-          } else if (source.url.includes("https://python.viam.com") | source.url.includes("https://pkg.go.dev/") | source.url.includes("https://flutter.viam.dev/") | source.url.includes("https://cpp.viam.dev/") | source.url.includes("https://ts.viam.dev/") ) {
+          } else if (source.url.includes("https://python.viam.dev/") | source.url.includes("https://pkg.go.dev/") | source.url.includes("https://flutter.viam.dev/") | source.url.includes("https://cpp.viam.dev/") | source.url.includes("https://ts.viam.dev/") ) {
             tabs = [ "SDK Docs" ];
           } else if (source.url.includes("https://docs.viam.com/tutorials/")) {
             tabs = [ "Tutorials" ];
