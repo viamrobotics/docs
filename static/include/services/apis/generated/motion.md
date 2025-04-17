@@ -37,6 +37,7 @@ The motion service takes the volumes associated with all configured machine comp
     Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
     For example, you could use a transform to represent the volume of a marker held in your machine's gripper.
     Transforms are not added to the config or carried into later processes.
+
 - `constraints` ([viam.proto.service.motion.Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (optional): Pass in [motion constraints](/operate/reference/services/motion/constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
@@ -100,7 +101,7 @@ worldState, err := referenceframe.NewWorldState(obstacles, transforms)
 moved, err := motionService.Move(context.Background(), motion.MoveReq{
   ComponentName: gripperName,
   Destination: destination,
-  WorldState: WorldState
+  WorldState: worldState
 })
 ```
 
@@ -112,12 +113,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination to move to, which can a pose in the
-reference frame of any frame in the robot's frame system.
+  reference frame of any frame in the robot's frame system.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
-destination.
+  destination.
 - `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Avoid obstacles by specifying their geometries in the
-world state. Augment the frame system of the robot by specifying
-additional transforms to add to it for the duration of the Move.
+  world state. Augment the frame system of the robot by specifying
+  additional transforms to add to it for the duration of the Move.
 - `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Constrain the way the robot will move.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
@@ -129,14 +130,14 @@ additional transforms to add to it for the duration of the Move.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
+const motion = new VIAM.MotionClient(machine, "builtin");
 
 // Assumes a gripper configured with name "my_gripper"
 const gripperName = new VIAM.ResourceName({
-  name: 'my_gripper',
-  namespace: 'rdk',
-  type: 'component',
-  subtype: 'gripper',
+  name: "my_gripper",
+  namespace: "rdk",
+  type: "component",
+  subtype: "gripper",
 });
 
 const goalPose: VIAM.Pose = {
@@ -149,7 +150,7 @@ const goalPose: VIAM.Pose = {
   theta: 90,
 };
 const goalPoseInFrame = new VIAM.PoseInFrame({
-  referenceFrame: 'world',
+  referenceFrame: "world",
   pose: goalPose,
 });
 
@@ -197,8 +198,8 @@ Make sure the [SLAM service](/operate/reference/services/slam/) you use alongsid
 - `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)) (required): The `ResourceName` of the base to move.
 - `destination` ([viam.proto.common.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)) (required): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
 - `slam_service_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)) (required): The `ResourceName` of the [SLAM service](/operate/reference/services/slam/) from which the SLAM map is requested.
-- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional): 
-The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
+- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional):
+  The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
 
 - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/operate/reference/services/vision/) and [camera](/operate/reference/components/camera/) resource pair you want to use for transient obstacle avoidance.
 - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
@@ -241,8 +242,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `req` [(MoveOnMapReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnMapReq): 
-A `MoveOnMapReq` which contains the following values:
+- `req` [(MoveOnMapReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnMapReq):
+  A `MoveOnMapReq` which contains the following values:
 
 - `ComponentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `Destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
@@ -299,11 +300,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Specify a destination to, which can be any Pose with
-respect to the SLAM map's origin.
+  respect to the SLAM map's origin.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
-destination.
+  destination.
 - `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Name of the SLAM service from which the SLAM map
-is requested.
+  is requested.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Optional obstacles to be considered for motion planning.
 - `extra` (None) (optional)
@@ -316,7 +317,7 @@ is requested.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
+const motion = new VIAM.MotionClient(machine, "builtin");
 
 // Define destination pose with respect to map origin
 const myPose: VIAM.Pose = {
@@ -330,24 +331,20 @@ const myPose: VIAM.Pose = {
 };
 
 const baseName = new VIAM.ResourceName({
-  name: 'my_base',
-  namespace: 'rdk',
-  type: 'component',
-  subtype: 'base',
+  name: "my_base",
+  namespace: "rdk",
+  type: "component",
+  subtype: "base",
 });
 const slamServiceName = new VIAM.ResourceName({
-  name: 'my_slam_service',
-  namespace: 'rdk',
-  type: 'service',
-  subtype: 'slam',
+  name: "my_slam_service",
+  namespace: "rdk",
+  type: "service",
+  subtype: "slam",
 });
 
 // Move the base to Y=10 (location of 0,10,0) relative to map origin
-const executionId = await motion.moveOnMap(
-  myPose,
-  baseName,
-  slamServiceName
-);
+const executionId = await motion.moveOnMap(myPose, baseName, slamServiceName);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonmap).
@@ -402,8 +399,8 @@ Translation in obstacles is not supported by the [navigation service](/operate/r
 - `movement_sensor_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)) (required): The `ResourceName` of the [movement sensor](/operate/reference/components/movement-sensor/) that you want to use to check the machine's location.
 - `obstacles` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoGeometry)) (optional): Obstacles to consider when planning the motion of the component, with each represented as a `GeoGeometry`. <ul><li> Default: `None` </li></ul>
 - `heading` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The compass heading, in degrees, that the machine's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` `0`: North, `90`: East, `180`: South, `270`: West </li><li>Default: `None`</li></ul>
-- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional): 
-The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
+- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional):
+  The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
 
 - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/operate/reference/services/vision/) and [camera](/operate/reference/components/camera/) resource pair you want to use for transient obstacle avoidance.
 - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
@@ -446,8 +443,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `req` [(MoveOnGlobeReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnGlobeReq): 
-A `MoveOnGlobeReq` which contains the following values:
+- `req` [(MoveOnGlobeReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnGlobeReq):
+  A `MoveOnGlobeReq` which contains the following values:
 
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `destination` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The location of the component's destination, represented in geographic notation as a [Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) _(lat, lng)_.
@@ -506,13 +503,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination for the component to move to, represented
-as a GeoPoint.
+  as a GeoPoint.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the component to move.
 - `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the Movement Sensor used to check
-the robot's location.
+  the robot's location.
 - `heading` (number) (optional): Compass heading, in degrees, to achieve at destination.
 - `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Obstacles to consider when planning the motion of
-the component.
+  the component.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
@@ -525,7 +522,7 @@ the component.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
+const motion = new VIAM.MotionClient(machine, "builtin");
 
 // Define destination at GPS coordinates [0,0]
 const destination: VIAM.GeoPoint = {
@@ -534,23 +531,23 @@ const destination: VIAM.GeoPoint = {
 };
 
 const baseName = new VIAM.ResourceName({
-  name: 'my_base',
-  namespace: 'rdk',
-  type: 'component',
-  subtype: 'base',
+  name: "my_base",
+  namespace: "rdk",
+  type: "component",
+  subtype: "base",
 });
 const movementSensorName = new VIAM.ResourceName({
-  name: 'my_movement_sensor',
-  namespace: 'rdk',
-  type: 'component',
-  subtype: 'movement_sensor',
+  name: "my_movement_sensor",
+  namespace: "rdk",
+  type: "component",
+  subtype: "movement_sensor",
 });
 
 // Move the base to the geographic location
 const globeExecutionId = await motion.moveOnGlobe(
   destination,
   baseName,
-  movementSensorName
+  movementSensorName,
 );
 ```
 
@@ -583,6 +580,7 @@ You can use the `supplemental_transforms` argument to augment the machine's exis
   When `supplemental_transforms` are provided, a frame system is created within the context of the `GetPose` function.
   This new frame system builds off the machine's frame system and incorporates the `Transform`s provided.
   If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
+
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -659,7 +657,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the piece of the machine whose pose is returned.
 - `destinationFrame` [(string)](https://pkg.go.dev/builtin#string): The name of the frame with respect to which the component's pose is reported.
-- `supplementalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): An optional list of `LinkInFrame`s.
+- `supplementalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): An optional list of `LinkInFrame`s.
   A `LinkInFrame` represents an additional frame which is added to the machine's frame system.
   It consists of:
 
@@ -668,11 +666,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
     When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.
     This new frame system builds off the machine's frame system and incorporates the `LinkInFrame`s provided.
     If the result of adding the `LinkInFrame`s results in a disconnected frame system, an error is thrown.
+
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose of the component.
+- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose of the component.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -707,10 +706,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component whose Pose is being requested.
 - `destinationFrame` (string) (required): The reference frame in which the component's
-Pose should be provided, if unset this defaults to the "world"
-reference frame.
+  Pose should be provided, if unset this defaults to the "world"
+  reference frame.
 - `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Pose information on any additional
-reference frames that are needed to compute the component's Pose.
+  reference frames that are needed to compute the component's Pose.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -721,21 +720,17 @@ reference frames that are needed to compute the component's Pose.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
+const motion = new VIAM.MotionClient(machine, "builtin");
 
 const gripperName = new VIAM.ResourceName({
-  name: 'my_gripper',
-  namespace: 'rdk',
-  type: 'component',
-  subtype: 'gripper',
+  name: "my_gripper",
+  namespace: "rdk",
+  type: "component",
+  subtype: "gripper",
 });
 
 // Get the gripper's pose in world coordinates
-const gripperPoseInWorld = await motion.getPose(
-  gripperName,
-  'world',
-  []
-);
+const gripperPoseInWorld = await motion.getPose(gripperName, "world", []);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getpose).
@@ -822,12 +817,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
+const motion = new VIAM.MotionClient(machine, "builtin");
 const baseName = new VIAM.ResourceName({
-  name: 'my_base',
-  namespace: 'rdk',
-  type: 'component',
-  subtype: 'base',
+  name: "my_base",
+  namespace: "rdk",
+  type: "component",
+  subtype: "base",
 });
 
 // Stop the base component which was instructed to move
@@ -903,7 +898,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `onlyActivePlans` (boolean) (optional): If true, the response will only return plans which
-are executing.
+  are executing.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -914,7 +909,7 @@ are executing.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
+const motion = new VIAM.MotionClient(machine, "builtin");
 
 // List plan statuses within the TTL
 const response = await motion.listPlanStatuses();
@@ -1019,12 +1014,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
+const motion = new VIAM.MotionClient(machine, "builtin");
 const baseName = new VIAM.ResourceName({
-  name: 'my_base',
-  namespace: 'rdk',
-  type: 'component',
-  subtype: 'base',
+  name: "my_base",
+  namespace: "rdk",
+  type: "component",
+  subtype: "base",
 });
 
 // Get the plan(s) of the base component
@@ -1171,8 +1166,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
+  name: "myCommand",
+  args: { key: "value" },
 });
 ```
 
