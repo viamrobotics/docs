@@ -26,7 +26,7 @@ aliases:
 If you want to use different modules on your microcontroller, you can build your own firmware with the Micro-RDK and your choice of modules using the instructions on this page.
 
 {{< alert title="Looking to install viam-micro-server?" color="note" >}}
-If you only want to install the pre-built `viam-micro-server` firmware with a default set of modules, follow the normal [setup instructions](/operate/get-started/setup/) instead.
+If you only want to install the pre-built `viam-micro-server` firmware with a default set of modules, follow the [quickstart setup instructions](/operate/get-started/setup-micro/#quickstart) instead.
 {{< /alert >}}
 
 {{< expand "Why does the Micro-RDK work differently from the full RDK?" >}}
@@ -320,10 +320,10 @@ If you get the following error while connecting to your ESP32:
   ╰─▶ Timeout while running command
 ```
 
-Run the following command:
+Run the following command, replacing `<YOUR_PROJECT_NAME>` with the name of your project firmware (for example, `esp32-camera`):
 
 ```sh { class="command-line" data-prompt="$"}
-espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa-esp32-espidf/release/esp32-camera --baud 115200 && sleep 2 && espflash monitor
+espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa-esp32-espidf/release/<YOUR_PROJECT_NAME> --baud 115200 && sleep 2 && espflash monitor
 ```
 
 Try the connection command again.
