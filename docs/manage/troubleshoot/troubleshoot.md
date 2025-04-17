@@ -164,17 +164,17 @@ To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#
 
 ### Advanced debugging for Go modules
 
-If you have a Go module that doesn't shut down properly or hangs during operation, you can send a SIGQUIT signal to the process, causing it to dump stack traces of all goroutines to stderr or system logs.
-Do this by running the following commands, replacing `<PID>` with your module's process identifier:
+If you have a Go module that doesn't shut down properly or hangs during operation, you can get more information by sending a SIGQUIT signal to the process.
+Run the following command, replacing `<PID>` with your module's process identifier:
 
 ```sh {class="command-line" data-prompt="$"}
 kill -3 <PID>
 ```
 
-The stack trace output shows:
+The process will dump a stack trace, visible in the `viam-server` logs, that shows:
 
 - All currently running goroutines and their states
-- Exactly where execution is blocked or deadlocked
+- Where execution is blocked or deadlocked
 - Internal state information that might not appear in regular logs
 
 ## Remote shell on the machine
