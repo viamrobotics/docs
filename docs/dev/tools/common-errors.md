@@ -191,6 +191,21 @@ This can happen when there is a slow internet connection, when the module is try
   Pass a sequence of numbers and time units, for example "6m30s50ms" for a timeout of 6 minutes, 30 seconds, and 50 milliseconds, or "5m" for a timeout of 5 minutes.
   To load new environment variable values, restart `viam-server` from the Viam app.
 
+## Common warnings
+
+### Unable to create PeerConnection with module
+
+**Full Warning:** `Unable to create PeerConnection with module. Ignoring.`
+
+**Description:** Indicates that while the gRPC connection to the module is working as expected, the connection to the module does not support efficient video streaming over WebRTC.
+Only some Go-based camera modules support optimized video streaming over WebRTC.
+
+{{% hiddencontent %}}
+You can use any Viam SDK to implement a camera module, but only Go-based modules can access optimized video streaming over WebRTC.
+{{% /hiddencontent %}}
+
+**Solution:** This warning can be safely ignored.
+
 ## Known application and plugin conflicts
 
 ### macOS applications
