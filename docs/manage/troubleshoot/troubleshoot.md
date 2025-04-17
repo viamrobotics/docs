@@ -162,6 +162,21 @@ To disable this behavior, see [Disable log deduplication](/operate/reference/via
 
 To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#machines-alias-robots) on the command line or the [Machines API](/dev/reference/apis/robot/).
 
+### Advanced debugging for Go modules
+
+If you have a Go module that doesn't shut down properly or hangs during operation, you can send a SIGQUIT signal to the process, causing it to dump stack traces of all goroutines to stderr or system logs.
+Do this by running the following commands, replacing `<PID>` with your module's process identifier:
+
+```sh {class="command-line" data-prompt="$"}
+kill -3 <PID>
+```
+
+The stack trace output shows:
+
+- All currently running goroutines and their states
+- Exactly where execution is blocked or deadlocked
+- Internal state information that might not appear in regular logs
+
 ## Remote shell on the machine
 
 To remotely access your machine from your terminal:
