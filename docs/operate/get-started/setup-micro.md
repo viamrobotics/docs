@@ -229,10 +229,45 @@ make upload
 
 {{< /alert >}}
 
-### Test your firmware
+### Configure and test your machine
 
-You can test each component from your machine's page in the [Viam app](https://app.viam.com):
+You can now configure the models you included in your firmware and test them:
 
-1. From the **CONFIGURE** tab, find the configuration card of the component you want to test.
+1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+
+1. From the **CONFIGURE** tab, click **JSON** mode.
+   Micro-RDK components and services must be configured in JSON.
+
+1. Add your components and services to the machine configuration.
+   For example, if you want to use a board, your configuration could look similar to this:
+
+   ```json
+   {
+     "components": [
+       {
+         "name": "my-board",
+         "model": "esp32",
+         "api": "rdk:component:board",
+         "attributes": {
+           "pins": [15, 34],
+           "analogs": [
+             {
+               "pin": "34",
+               "name": "sensor"
+             }
+           ],
+           "digital_interrupts": [
+             {
+               "pin": 4
+             }
+           ]
+         },
+         "depends_on": []
+       }
+     ]
+   }
+   ```
+
+1. Click **Builder** mode and find the configuration card of the component you want to test.
 
 1. Click to open the **Test** section of the card and use the interface to test the component.
