@@ -1,12 +1,12 @@
 ---
-title: "Create or use a Micro-RDK module"
-linkTitle: "Micro-RDK modules"
+title: "Integrate with ESP32 microcontrollers"
+linkTitle: "Modules for ESP32"
 type: "docs"
 weight: 29
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["modular resources", "components", "services", "registry"]
-description: "Set up an Espressif ESP32 microcontroller for development with the Micro-RDK including writing and using custom modules rather than using the pre-built viam-micro-server."
+description: "Create your own modules for use with an Espressif ESP32 microcontroller."
 languages: ["rust"]
 viamresources: []
 platformarea: ["registry"]
@@ -21,19 +21,7 @@ aliases:
   - /installation/viam-micro-server-dev/
 ---
 
-[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's full Robot Development Kit (RDK), designed for resource-limited embedded systems (ESP32 microcontrollers) that cannot run the fully-featured `viam-server`.
-`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a default set of {{< glossary_tooltip term_id="module" text="modules" >}}, provided for convenience.
 If you want to use different modules on your microcontroller, you can build your own firmware with the Micro-RDK and your choice of modules using the instructions on this page.
-
-{{< expand "Why does the Micro-RDK work differently from the full RDK?" >}}
-Microcontrollers do not have full operating systems like single-board computers and general-purpose computers.
-This means that microcontrollers can only run one "program" at a time, and a microcontroller must be flashed with firmware containing the entire logic to run.
-
-The Micro-RDK is a version of the RDK library written in Rust and designed to run on microcontrollers.
-The Micro-RDK includes built-in support for several common hardware components, such as standard DC motors and an ultrasonic sensor.
-Viam provides a default firmware build that includes the Micro-RDK as well as two modules: a wifi sensor and a memory heap sensor.
-You can use additional modules to support more or other hardware by building custom firmware from the Micro-RDK and one or more Micro-RDK-compatible modules.
-{{< /expand >}}
 
 For advanced topics including development of the Micro-RDK itself, see [Viam Micro-RDK Development on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 

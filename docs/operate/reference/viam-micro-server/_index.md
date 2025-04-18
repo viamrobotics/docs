@@ -1,5 +1,5 @@
 ---
-title: "viam-micro-server"
+title: "The Micro-RDK and viam-micro-server"
 linkTitle: "viam-micro-server"
 weight: 90
 type: docs
@@ -13,8 +13,14 @@ aliases:
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
-`viam-micro-server` is the lightweight version of [`viam-server`](/operate/reference/viam-server/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
-`viam-micro-server` is built from the open-source [Micro-RDK](https://github.com/viamrobotics/micro-rdk/).
+[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's full [Robot Development Kit (RDK)](https://github.com/viamrobotics/rdk/tree/main).
+It is written in Rust and designed for resource-limited embedded systems (ESP32 microcontrollers) that cannot run the fully-featured [`viam-server`](/operate/reference/viam-server/).
+
+Microcontrollers do not have full operating systems like single-board computers and general-purpose computers.
+This means that microcontrollers can only run one "program" at a time, and a microcontroller must be flashed with firmware containing the entire logic to run.
+
+`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a [default set](/operate/get-started/setup-micro/#pre-built-firmware) of {{< glossary_tooltip term_id="module" text="modules" >}}, provided for a convenient quick-start.
+For most use cases, you will [build your own firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware) from the Micro-RDK instead of using `viam-micro-server`.
 
 ## Hardware requirements
 
