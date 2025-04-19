@@ -12,5 +12,5 @@ Your microcontroller should have at least the following resources available to w
 
 {{< alert title="Tip" color="tip" >}}
 The WROVER allows only a small number of incoming gRPC connections (1-5, depending on resources), whether over HTTP2 or WebRTC.
-You can change this max by [building your own firmware](/operate/get-started/other-hardware/micro-module/).
+You can change this max by [building your own firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware).
 {{< /alert >}}

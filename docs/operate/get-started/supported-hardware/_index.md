@@ -39,6 +39,8 @@ You can browse all built-in and modular registry components below or on your mac
 
 There are also modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add software functionality such as a chatbot integration.
 
+If you are using an ESP32 microcontroller, see the [ESP32-specific instructions](/operate/get-started/setup-micro/#configure-and-test-your-machine) for how to configure your machine.
+
 ## Configure hardware on your machine
 
 **Prerequisite:** A machine with [`viam-server` installed and connected to the cloud](/operate/get-started/setup/).

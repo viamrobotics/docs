@@ -13,16 +13,9 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-## Micro-RDK CLI
-
-The Viam Micro-RDK installer is a command line tool that you can also use to troubleshoot.
-It allows you to:
-
-- View logs locally and debug issues when your device has not connected to the Viam app
-- Change wifi credentials on your microcontroller
-- Overwrite firmware using a serial cable
-
-For more information on the `micro-rdk-installer` CLI usage options, see the [Micro-RDK Installer GitHub README](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
+{{% alert title="Tip" color="tip" %}}
+The [Viam Micro-RDK installer](/operate/reference/viam-micro-server/manage-micro/#micro-rdk-installer) is a command line tool that can be helpful for troubleshooting.
+{{% /alert %}}
 
 ## Common issues
 
