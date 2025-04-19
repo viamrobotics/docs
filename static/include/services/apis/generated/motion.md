@@ -100,7 +100,7 @@ worldState, err := referenceframe.NewWorldState(obstacles, transforms)
 moved, err := motionService.Move(context.Background(), motion.MoveReq{
   ComponentName: gripperName,
   Destination: destination,
-  WorldState: WorldState
+  WorldState: worldState
 })
 ```
 
