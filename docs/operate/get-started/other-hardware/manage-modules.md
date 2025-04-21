@@ -247,7 +247,7 @@ Use the [Viam CLI](/dev/tools/cli/) to manually update your module:
 2. For Python modules only, package your files as an archive, for example:
 
    ```sh {class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh requirements.txt src
+   tar -czf module.tar.gz run.sh requirements.txt src meta.json
    ```
 
    Supply the path to the resulting archive file in the next step.
