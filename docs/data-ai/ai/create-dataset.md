@@ -44,16 +44,17 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 You can add images to a dataset directly from a camera or vision component feed in the **CONTROL** or **CONFIGURATION** tabs of the Viam app.
 This technique can help you create a dataset without filling the **DATA** tab with a large number of unhelpful empty images.
 
-To add an image directly from a dataset from a visual feed, complete the following steps:
+To add an image directly to a dataset from a visual feed, complete the following steps:
 
-1. Open the **TEST** panel of any camera or vision component to view a feed of images from the camera.
+1. Open the **TEST** panel of any camera or vision service component to view a feed of images from the camera.
 1. Click the button marked with the camera icon to save the currently displayed image to a dataset:
    {{< imgproc src="/components/camera/add_image_to_dataset_button.png" alt="A button marked with the outline of a camera, emphasized in red" resize="800x" style="width:500px" class="imgzoom" >}}
 1. Select an existing dataset.
 1. Click **Add** to add the image to the selected dataset.
-1. When you see a success toast that reads "Saved image to dataset", you have successfully added the image to the dataset.
+1. When you see a success notification that reads "Saved image to dataset", you have successfully added the image to the dataset.
 
-To view images added to your dataset, go to the **DATA** page's [**DATASETS** tab](https://app.viam.com/data/datasets) in the Viam app. Select the dataset to view the images within that dataset.
+To view images added to your dataset, go to the **DATA** page's [**DATASETS** tab](https://app.viam.com/data/datasets) in the Viam app.
+Select the dataset to view the images within that dataset.
 
 {{< alert title="Tip" color="tip" >}}
 
