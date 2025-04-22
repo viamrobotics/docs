@@ -51,13 +51,17 @@ If you wanted to take this tutorial further, you could use these state transitio
 
 ## Prerequisites
 
-Before following this tutorial, you should:
+{{% expand "A machine connected to the Viam app" %}}
 
-1. Add a new machine in the [Viam app](https://app.viam.com).
-1. [Install `viam-server`](/operate/get-started/setup/) on your new machine.
+{{% snippet "setup.md" %}}
 
-Your machine must have a [camera](/operate/reference/components/camera/) component, such as a [webcam](/operate/reference/components/camera/webcam/).
-Make sure to connect your camera to your machine's computer (if it isn't built-in) before starting the project and power it on.
+{{% /expand %}}
+
+{{% expand "A camera, connected to your machine, to capture images" %}}
+
+Follow the guide to configure a [webcam](/operate/reference/components/camera/webcam/) or another [camera component](/operate/reference/components/camera/), if you haven't already.
+
+{{% /expand%}}
 
 ## Configure a camera
 
@@ -82,7 +86,7 @@ Next, configure the person detector, or, the coarser layer of the security syste
 
 ## Configure an `mlmodel` person detector
 
-In order for your machine's camera to be able to detect the presence of a person in its field of vision, you can either use an existing ML Model from the registry capable of detecting people or train your own.
+In order for your machine's camera to detect the presence of a person in its field of vision, you can either use an existing ML model from the registry capable of detecting people or train your own.
 
 ### Use an existing ML model
 
@@ -112,73 +116,72 @@ Continue to [Configure a facial detector](#configure-a-facial-detector).
 
 ### Train your own model
 
-To train your own model, you will need to capture images of a variety of people using your camera, and upload them to the Viam app using the [data management service](/data-ai/capture-data/capture-sync/).
+To create your own model, capture images of a variety of people using your camera, annotate labels on the captured images, and train a model using those labels.
 
-To add the [data management service](/data-ai/capture-data/capture-sync/) and configure data capture:
+To capture training images:
 
-1. Navigate to your machine’s page on the [Viam app](https://app.viam.com/robots) and select the **CONFIGURE** tab.
-2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-3. Choose `data management` as the type and then either use the suggested name or specify a name for your data management service, such as `data-manager`.
-   Click **Create**.
-4. On the panel that appears, you can manage the capturing and syncing functions individually.
-   By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
-   Leave the default settings as they are, and click **Save** in the top right of the screen to save your changes.
-5. Scroll to the panel of the camera you just configured.
-   Find the **Data capture** section.
-   Click **Add Method**.
-   If you're using a webcam, select the **Method** type [`ReadImage`](/dev/reference/apis/components/camera/#getimage).
-   Set the **Frequency** to `0.333`.
-   This will capture an image from the camera once every 3 seconds.
-   Set the **MIME type** to `image/jpeg`.
-   Click **Save**.
-6. Toggle the **Data capture** on.
-   Now, your camera is taking pictures.
-   Walk in front of it a number of times, perhaps with a friend or two, letting the camera capture many images of you.
-   For best results, try capturing a variety of angles and use different lighting.
-7. Select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
-   Here you can view the images captured so far from the camera on your machine.
-   You should see new images appearing steadily as cloud sync uploads them from your machine.
+1. Navigate to your machine’s page in the [Viam app](https://app.viam.com/robots).
+1. Select the **CONFIGURE** tab.
+1. In the left-hand menu, click the **+** icon next to your machine part, then select **Service** from the context menu.
+1. Select the Viam `data management` service type.
+   For the service name, use `data-manager`.
+1. Click **Create**.
+1. Select the **CONTROL** tab.
+1. In the left-hand menu, click the `my_webcam` camera component.
+   You should now see a live camera feed from your webcam.
+1. From the dropdown in the **TEST** panel, select the **Refresh every 5 seconds** option.
+   This should give you enough time to pose for a photo, return to the Viam app, and save the photo.
+1. Click the button marked with the camera icon to save the currently displayed image to a dataset:
+   {{< imgproc src="/components/camera/add_image_to_dataset_button.png" alt="A button marked with the outline of a camera, emphasized in red" resize="800x" style="width:500px" class="imgzoom" >}}
 
-For more information, see [configure data capture for individual components](/data-ai/capture-data/capture-sync/).
+   The first time you capture an image, create a new dataset with the name `verification-system`.
 
-{{% alert title="Tip" color="tip" %}}
-If you are using a different model of camera, you may need to use a different method **Type** in your data capture configuration.
-For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/dev/reference/apis/components/camera/#getimages).
-{{% /alert %}}
+   Walk in front of your camera a number of times, perhaps with a friend or two, letting the camera capture many images of you.
+   For best results, try a variety of angles and lighting.
+1. Add each training image to the `verification-system` dataset using the **Add to dataset** button marked with the camera icon.   
+   To view your captured images, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
 
-Next, position your camera to capture a variety of images of people.
-Consider the lighting conditions, and angle of vision of the position where you intend to place your camera when you deploy it for actual use.
-For example, if you will be using your facial detection machine to look out your front window at your entrance way, you will want to be sure to include many images of people at about window-height, and perhaps in different lighting conditions or different stages of walking or standing at the door.
+.  Next, position your camera to capture a variety of images of people.
+   Consider the lighting conditions and angle of the position where you intend to place your camera when you deploy it for production use.
+
+   For example, if you plan to use your facial detection machine to look out your front window at your entrance way, you should train with images of people at window height, perhaps in different lighting conditions or different stages of walking or standing at the door.
 
 {{< alert title="Tip" color="tip" >}}
 
 For best results:
 
-- Provide at least 10 images that include people, ideally taken from multiple different angles.
-- Include a small number of images that do not contain any of the objects you wish to identify, but do not label these images.
-  Unlabelled images must not comprise more than 20% of your dataset, so if you have 25 images in your dataset, at least 20 of those must be labelled.
-- If your subject might appear under various lighting conditions, such as changing sunlight or light fixtures that might not always be on, include images under those varying lighting conditions as well.
+- Provide at least 15 images that include people, ideally taken from multiple different angles.
+- Include a small number (10-20% of the dataset) of images that do not contain any of the objects you wish to identify, but do not label these images.
+  Unlabelled images must not comprise more than 20% of your dataset.
+- If your subject might appear under various lighting conditions, such as changing sunlight or light fixtures that might not always be on, include images under those varying lighting conditions.
 
 {{< /alert >}}
 
-Then, create a new dataset using your uploaded images and train a new model using that model:
+Then, train a new model using that model:
 
-1. [Create a new dataset and add the images you captured](/data-ai/ai/create-dataset/).
-   Remember that you must add at least 10 images that contain people, as well as a few (but no more than 20% of the total images) that _do not_ contain people.
-2. Label the images that contain people with bounding boxes, and add the label `person`.
-   You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
-3. [Train a TFlite model on your dataset](/data-ai/ai/train-tflite/).
+1. Select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
+1. Go to the **DATASETS** tab.
+1. Select the `verification-system` dataset that you created earlier for your training images.
+1. Select the first image from the dataset. In the right-side menu, click the **Annotate** button.
+1. In the text-entry dropdown at the top of the tab marked with the text **Choose or create...**, enter the text `person`.
+1. Label the images that contain people with bounding boxes, and add the label `person`.
+   This creates a new label for `person` objects.
+1. Holding the command key (on macOS), or the control key (on Linux and Windows), click and drag on the image to create the bounding box:
+
+   {{<gif webm_src="/services/data/label-magnemite.webm" mp4_src="/services/data/label-magnemite.mp4" alt="Add a bounding box around the magnemite pokemon in an image">}}
+1. When you have created bounding boxes for all `person` objects in the image, click the right arrow key to navigate to the next image. Repeat the process for each image in your dataset, drawing bounding boxes for every person in every image.
+1. [Train a TFlite model on your dataset](/data-ai/ai/train-tflite/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
-4. [Deploy the model](/data-ai/ai/deploy/) to your machine so it can be used by other services, such as the vision service.
+1. [Deploy the model](/data-ai/ai/deploy/) to your machine so it can be used by other services, such as the vision service.
 
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 
 1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
-2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-3. Select the `vision` type, then select the `ML model` model.
-4. Give the detector the name `people-detect` and click **Create**.
-5. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
-6. Click **Save**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Select the `vision` type, then select the `ML model` model.
+1. Give the detector the name `people-detect` and click **Create**.
+1. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
+1. Click **Save**.
 
 For more information, see [Configure an `mlmodel` detector](/operate/reference/services/vision/mlmodel/)
 
@@ -341,7 +344,6 @@ For example:
 - Write a program using one of the [Viam SDK](/dev/reference/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
   For example, you could use [`GetClassificationsFromCamera()`](/dev/reference/apis/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an email with the captured image of the trespasser!
 - Try changing the type of [detectors](/dev/reference/apis/services/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
-- Add the [filtered camera module](/data-ai/capture-data/filter-before-sync/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam Cloud only when the system enters into specific states.
-  This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.
+- Add the [filtered camera module](/data-ai/capture-data/filter-before-sync/) to your machine, and use it as the source camera in your verification system to save images to the Viam Cloud only when the system enters into specific states.
 - If you don't want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, set `disable_alarm: true` in the config, which prevents `TRIGGER_2` from entering into the `COUNTDOWN` state, meaning the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.
 - Use entering into the state `TRIGGER_2` as a way to send notifications.

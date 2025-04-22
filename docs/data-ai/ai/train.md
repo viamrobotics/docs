@@ -17,7 +17,7 @@ description: "If you want to train models to custom specifications, write a cust
 date: "2024-12-04"
 ---
 
-You can create custom Python training scripts that train ML models to your specifications using PyTorch, Tensorflow, TFLite, ONNX, or any other Machine Learning framework.
+You can create custom Python training scripts that train machine learning models to your specifications using PyTorch, TensorFlow, TFLite, ONNX, or any other ML framework.
 Once you upload a training script to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use it to build ML models in the Viam Cloud based on your datasets.
 
 You can also use training scripts that are in the registry already.
@@ -61,9 +61,9 @@ my-training/
 {{% tablestep number=2 %}}
 **Add `setup.py` code**
 
-Add the following code to `setup.py` and add additional required packages on line 11:
+Add the following code to `setup.py`:
 
-```python {class="line-numbers linkable-line-numbers" data-line="9"}
+```python {class="line-numbers linkable-line-numbers"}
 from setuptools import find_packages, setup
 
 setup(
@@ -78,13 +78,7 @@ setup(
 ```
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
-**Create `__init__.py`**
-
-If you haven't already, create a folder called <file>model</file> and create an empty file inside it called <file>\_\_init\_\_.py</file>.
-
-{{% /tablestep %}}
-{{< tablestep number=4 >}}
+{{< tablestep number=3 >}}
 
 <p><strong>Add <code>training.py</code> code</strong></p>
 
@@ -529,7 +523,7 @@ if __name__ == "__main__":
 {{% /expand %}}
 
 {{% /tablestep %}}
-{{< tablestep number=5 >}}
+{{< tablestep number=4 >}}
 
 <p><strong>Understand template script parsing functionality</strong></p>
 <p>When a training script is run, the Viam platform passes the dataset file for the training and the designated model output directory to the script.</p>
@@ -552,7 +546,7 @@ You can add additional custom command line inputs by adding them to the `parse_a
 
 {{% /expand %}}
 
-{{% expand "Click for more information on parsing annotations from dataset file." %}}
+{{% expand "Click for more information on parsing annotations from the dataset file." %}}
 
 When you submit a training job to the Viam Cloud, Viam will pass a `dataset_file` to the training script when you train an ML model with it.
 The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
@@ -624,7 +618,7 @@ Dataset JSON files for image datasets with bounding box labels and classificatio
 }
 ```
 
-In your training script, you must parse the dataset file for the classification or bounding box annotations from the dataset metadata.
+In your training script, you must parse the dataset file to extract classification or bounding box annotations from the dataset metadata.
 Depending on if you are training a classification or detection model, the template script contains the `parse_filenames_and_labels_from_json()` and the `parse_filenames_and_bboxes_from_json()` function.
 
 {{% /expand%}}
@@ -632,38 +626,38 @@ Depending on if you are training a classification or detection model, the templa
 <p>If the script you are creating does not use an image dataset, you only need the model output directory.</p>
 
 {{% /tablestep %}}
-{{% tablestep number=6 %}}
+{{% tablestep number=5 %}}
 **Add logic to produce the model artifact**
 
-You must fill in the `build_and_compile_model` function.
-In this part of the script, you use the data from the dataset and the annotations from the dataset file to build a Machine Learning model.
+Fill in the `build_and_compile_model` function.
+In this part of the script, you use data and annotations from the dataset file to build an ML model.
 
 As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
+
+{{% /tablestep %}}
+{{% tablestep number=6 %}}
+**Save the model artifact**
+
+In this example template, the training job produces a model artifact.
+The `save_model()` and `save_labels()` functions save that model artifact to the `model_output_directory`.
+
+When the training job completes, Viam checks the output directory for the model artifact, packages the model, and uploads it to the registry.
+
+You must fill in the `save_model()` and `save_labels()` functions.
+
+As an example, refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
 {{% /tablestep %}}
 {{% tablestep number=7 %}}
-**Save the model artifact**
-
-The `save_model()` and the `save_labels()` functions in the template before the `main` logic save the model artifact your training job produces to the `model_output_directory` in the cloud.
-
-Once a training job is complete, Viam checks the output directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
-
-You must fill in these functions.
-
-As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
-
-{{% /tablestep %}}
-{{% tablestep number=8 %}}
 **Update the main method**
 
 Update the main to call the functions you have just created.
 
 {{% /tablestep %}}
-{{% tablestep number=9 %}}
-**Using Viam APIs in a training script**
+{{% tablestep number=8 %}}
+**Use Viam APIs in a training script**
 
-If you need to access any of the [Viam APIs](/dev/reference/apis/) within a custom training script, you can use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
-These environment variables will be available to training scripts.
+To access [Viam APIs](/dev/reference/apis/) within a custom training script, use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
 
 ```python
 async def connect() -> ViamClient:
@@ -807,13 +801,13 @@ For example:
 viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> \
   --org-id=<INSERT ORG ID> --model-name=MyRegistryModel \
   --model-version=2 --version=1 \
-  --script-name=mycompany:MyCustomTrainingScript
+  --script-name=mycompany:MyCustomTrainingScript \
   --args=custom_arg1=3,custom_arg2="'green_square blue_star'"
 ```
 
 This command submits a training job to the previously uploaded `MyCustomTrainingScript` with another input dataset, which trains `MyRegistryModel` and publishes that to the registry.
 
-You can get the dataset id from the dataset page or using the [`viam dataset list`](/dev/tools/cli/#dataset) command.
+You can get the dataset id from the **DATASET** tab of the **DATA** page or by running the [`viam dataset list`](/dev/tools/cli/#dataset) command.
 
 {{% /tab %}}
 {{< /tabs >}}

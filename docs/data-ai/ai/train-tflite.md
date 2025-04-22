@@ -131,7 +131,7 @@ If you trained a _classification_ model, you can test it with the following inst
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 1. Click on an image to open the side menu, and select the **Actions** tab.
 1. In the **Run model** section, select your model and specify a confidence threshold.
-1. Click **Run model**
+1. Click **Run model**.
 
 If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
 
