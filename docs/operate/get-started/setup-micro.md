@@ -152,12 +152,16 @@ Create firmware that integrates an existing module with the Micro-RDK:
    cargo generate --git https://github.com/viamrobotics/micro-rdk.git
    ```
 
-   Select `templates/project` when prompted. Give the project a name of your choice.
-   Select `esp32` for **MCU**.
-   If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
+   Follow the prompts:
 
-   You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
-   Paste in the credentials you obtained in step 1.
+   - Select `templates/project` when prompted.
+   - Give the project a name of your choice.
+   - Select `esp32` for **MCU**.
+   - If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **Include camera module?**.
+   - For **Machine cloud credentials**, paste in the machine cloud credentials you obtained in step 1.
+
+   Hit **Enter** to generate the project.
+   The CLI automatically initializes a git repository in the generated directory for version control and in case you want to use cloud build later.
 
 1. Navigate into the generated project:
 
@@ -165,21 +169,13 @@ Create firmware that integrates an existing module with the Micro-RDK:
    cd <path-to/your-project-directory>
    ```
 
-1. If you wish to use version control for this project, this is the best time to initialize a git repository and commit all the generated files, but be sure to exclude the generated `viam.json` file, which includes secrets:
-
-   ```sh { class="command-line" data-prompt="$"}
-   git add .
-   git restore viam.json
-   git commit -m "initial commit"
-   ```
-
 1. Add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project.
-   For example, to add any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules), add the following line to the `Cargo.toml` file:
+   For example, to add any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules), add the following line to the `Cargo.toml` file, replacing `v0.5.0` with the version of the Micro-RDK you are using:
 
    ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
    [dependencies]
    ...
-   micro-rdk-modular-driver-example = { git = "https://github.com/viamrobotics/micro-rdk.git", rev = "v0.4.1", package = "micro-rdk-modular-driver-example", features = ["esp32"] }
+   micro-rdk-modular-driver-example = { git = "https://github.com/viamrobotics/micro-rdk.git", rev = "v0.5.0", package = "micro-rdk-modular-driver-example", features = ["esp32"] }
    ```
 
 1. Compile the project using one of the following commands, depending on whether you want to use [over-the-air (OTA) firmware updates](/operate/reference/viam-micro-server/manage-micro/#over-the-air-updates) or not:
@@ -201,7 +197,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
    {{% /tab %}}
    {{< /tabs >}}
 
-   The first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built as well.
+   The first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built.
    Subsequent builds will be faster.
 
 ### Flash your ESP32
@@ -218,7 +214,7 @@ Upload the generated firmware to your ESP32:
 
    When prompted, select the serial port that your ESP32 is connected to through a data cable.
 
-   If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
+   If the flash is successful, you will retain a serial connection to the board until you press `Ctrl-C`.
    To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
    While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
@@ -305,6 +301,8 @@ espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa
 Try the connection command again.
 The baud rate on your device may not have been fast enough to connect.
 If successful, the Viam app will show that your machine part's status is **Live**.
+
+You can also try disconnecting and reconnecting the ESP32 to the USB port, then retrying the flash command.
 
 ### Error: `viam.json` not found
 
