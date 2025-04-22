@@ -733,7 +733,7 @@ To package (for Python) and upload your module and make it available to configur
 1. Package the module as an archive, run the following command from inside the <file>hello-world</file> directory:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh setup.sh requirements.txt src
+   tar -czf module.tar.gz run.sh setup.sh requirements.txt src meta.json
    ```
 
    This creates a tarball called <file>module.tar.gz</file>.
