@@ -426,19 +426,19 @@ data,AddBinaryDataToDatasetByIDs,,add_binary_data_to_dataset_by_ids,,addBinaryDa
 data,RemoveBinaryDataFromDatasetByIDs,,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIds,removeBinaryDataFromDatasetByIds
 
 ## Dataset
-dataset,CreateDataset,,create_dataset,,createDataset,
-dataset,DeleteDataset,,delete_dataset,,deleteDataset,
-dataset,RenameDataset,,rename_dataset,,renameDataset,
-dataset,ListDatasetsByOrganizationID,,list_datasets_by_organization_id,,listDatasetsByOrganizationID,
+dataset,CreateDataset,,create_dataset,,createDataset,createDataset
+dataset,DeleteDataset,,delete_dataset,,deleteDataset,deleteDataset
+dataset,RenameDataset,,rename_dataset,,renameDataset,renameDataset
+dataset,ListDatasetsByOrganizationID,,list_datasets_by_organization_id,,listDatasetsByOrganizationID,listDatasetsByOrganizationID
 ## TE: yes PySDK is singular:
-dataset,ListDatasetsByIDs,,list_dataset_by_ids,,listDatasetsByIDs,
+dataset,ListDatasetsByIDs,,list_dataset_by_ids,,listDatasetsByIDs,listDatasetsByIds
 
 ## Datasync
 data_sync,DataCaptureUpload,,,,,
 ## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
-data_sync,BinaryDataCaptureUpload,,binary_data_capture_upload,,binaryDataCaptureUpload,
+data_sync,BinaryDataCaptureUpload,,binary_data_capture_upload,,binaryDataCaptureUpload,binaryDataCaptureUpload
 ## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
-data_sync,TabularDataCaptureUpload,,tabular_data_capture_upload,,tabularDataCaptureUpload,
+data_sync,TabularDataCaptureUpload,,tabular_data_capture_upload,,tabularDataCaptureUpload,tabularDataCaptureUpload
 data_sync,FileUpload,,file_upload,,uploadFile,
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
 data_sync,FileUploadFromPath,,file_upload_from_path,,,
@@ -472,7 +472,7 @@ robot,StreamStatus,,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
 robot,GetModelsFromModules,,get_models_from_modules,GetModelsFromModules,getModelsFromModules,getModelsFromModules
 robot,StopAll,,stop_all,StopAll,,stopAll
-robot,RestartModule,,,RestartModule,,
+robot,RestartModule,,,RestartModule,,restartModule
 robot,StartSession,,,,,
 robot,SendSessionHeartbeat,,,,,
 robot,Log,,log,,,

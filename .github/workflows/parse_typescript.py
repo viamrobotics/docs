@@ -81,11 +81,11 @@ class TypeScriptParser:
 
             for section in top_level_sections:
                 if 'Methods' in section.find('h2').text:
-                    methods = section.find_all('section', class_='tsd-panel tsd-member')
+                    methods.extend(section.find_all('section', class_='tsd-panel tsd-member'))
                 if resource == 'robot':
-                    if section.find('h2').text.strip() in ['App/Cloud', 'ComponentConfig', 'Discovery', "Frame System", "Operations", "Resources", "Sessions"]:
-                        methods.extend(section.find_all('section', class_='tsd-panel tsd-member'))
-
+                    if section.find('h2').text.strip() in ['App/Cloud', 'ComponentConfig', 'Discovery', "Frame System", "Operations", "Resources", "Sessions", "Modules"]:
+                        new_methods = section.find_all('section', class_='tsd-panel tsd-member')
+                        methods.extend(new_methods)
 
             for method in methods:
                 method_name = method.find('h3').text

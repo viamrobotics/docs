@@ -23,7 +23,7 @@ The servo component provides an API for controlling the angular position of a se
 
 If you have a physical ["RC" or "hobby" servo motor](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos) with built-in potentiometer position sensors, configure it as a servo component.
 
-If your motor is coupled with an [encoder](/operate/reference/components/encoder/), not a potentiometer, for position feedback, you should configure it as an [encoded motor](/operate/reference/components/motor/encoded-motor/) instead.
+If you have an industrial servo motor, configure or [create](/operate/get-started/other-hardware/) a [motor component](/operate/reference/components/motor/) that supports your hardware.
 
 ## Configuration
 

@@ -57,6 +57,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const slam = new VIAM.SlamClient(machine, 'my_slam');
+
+// Get the current position of the robot in the SLAM map
+const position = await slam.getPosition();
+console.log('Current position:', position);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getposition).
 
 {{% /tab %}}
@@ -239,6 +249,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const slam = new VIAM.SlamClient(machine, 'my_slam');
+
+// Get the properties of the SLAM service
+const properties = await slam.getProperties();
+console.log('SLAM properties:', properties);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getproperties).
 

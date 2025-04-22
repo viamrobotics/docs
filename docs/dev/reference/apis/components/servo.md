@@ -12,7 +12,9 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The servo API allows you to give commands to your [servo components](/operate/reference/components/servo/) for controlling the angular position of a servo precisely or getting its current status.
+The servo API allows you to give commands to your [servo components](/operate/reference/components/servo/) for controlling the angular position of a hobby servo precisely or getting its current status.
+
+Industrial servos should use the [motor API](/dev/reference/apis/components/motor/) which provides more features than the servo API.
 
 The servo component supports the following methods:
 

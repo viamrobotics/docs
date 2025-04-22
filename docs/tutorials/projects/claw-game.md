@@ -817,7 +817,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your machine's location secret and host address by navigating to the **Code sample** tab in the [Viam app](https://app.viam.com).
+1. Determine your machine's location secret and host address by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com).
    Use the host address of your main machine part, as it will reference all parts of your machine.
 
    {{% snippet "show-secret.md" %}}
