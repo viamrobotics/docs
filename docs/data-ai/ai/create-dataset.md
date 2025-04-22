@@ -24,22 +24,57 @@ This page explains how to create a dataset that meets these criteria for your tr
 
 ## Prerequisites
 
-{{% expand "A machine connected to the Viam app" %}}
+{{% expand "a machine connected to the Viam app" %}}
 
 {{% snippet "setup.md" %}}
 
 {{% /expand %}}
 
-{{% expand "A camera, connected to your machine, to capture images" %}}
+{{% expand "a camera, connected to your machine, to capture images" %}}
 
-Follow the guide to configure a [webcam](/operate/reference/components/camera/webcam/) or another [camera component](/operate/reference/components/camera/), if you haven't already.
+Follow the guide to configure a [webcam](/operate/reference/components/camera/webcam/) or similar [camera component](/operate/reference/components/camera/).
 
 {{% /expand%}}
+
+## Create a dataset
+
+To create a dataset, use the Viam CLI or the Viam app:
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+1. Open the [**DATASETS** tab on the **DATA** page](https://app.viam.com/data/datasets) of the Viam app.
+
+1. Click the **+ Create dataset** button.
+
+   {{< imgproc src="/services/data/create-dataset.png" alt="The **DATASET** tab of the **DATA** page, showing the **+ Create dataset** button." resize="800x" style="width:500px" class="imgzoom" >}}
+
+1. Enter a unique name for the dataset.
+
+1. Click the **Create dataset** button to create the dataset.
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
+
+1. First, install the Viam CLI and authenticate:
+
+   {{< readfile "/static/include/how-to/install-cli.md" >}}
+
+1. [Log in to the CLI](/dev/tools/cli/#authenticate).
+
+1. Run the following command to create a dataset, replacing the `<org-id>` and `<name>` placeholders with your organization ID and a unique name for the dataset:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam dataset create --org-id=<org-id> --name=<name>
+   ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Capture images
 
 {{< tabs >}}
-{{% tab name="Capture individual images directly into a dataset" %}}
+{{% tab name="One image" %}}
 
 You can add images to a dataset directly from a camera or vision component feed in the **CONTROL** or **CONFIGURATION** tabs of the Viam app.
 This technique can help you create a dataset without filling the **DATA** tab with a large number of unhelpful empty images.
@@ -53,20 +88,14 @@ To add an image directly to a dataset from a visual feed, complete the following
 1. Click **Add** to add the image to the selected dataset.
 1. When you see a success notification that reads "Saved image to dataset", you have successfully added the image to the dataset.
 
-To view images added to your dataset, go to the **DATA** page's [**DATASETS** tab](https://app.viam.com/data/datasets) in the Viam app.
-Select the dataset to view the images within that dataset.
-
-{{< alert title="Tip" color="tip" >}}
-
-Use this technique to manually add tricky images where your first model version fails to your training dataset.
-Annotate the tricky images, then train a new version of your model to improve your model.
-
-{{< /alert >}}
+To view images added to your dataset, go to the **DATA** page's [**DATASETS** tab](https://app.viam.com/data/datasets) in the Viam app and select your dataset.
 
 {{% /tab %}}
-{{% tab name="Capture bulk images" %}}
+{{% tab name="Many images" %}}
 
-To capture a large number of images for training your ML models, [Capture and sync image data](/data-ai/capture-data/capture-sync/) using the data management service with your camera.
+To capture a large number of images for training an ML model, [Capture and sync image data](/data-ai/capture-data/capture-sync/) using the data management service with your camera.
+
+Viam stores the images saved by capture and sync on the [**DATA** page](https://app.viam.com/data/), but does not add the images to a dataset. Visit the **DATA** page to add images to a dataset.
 
 {{< alert title="Tip" color="tip" >}}
 
@@ -76,21 +105,40 @@ Once you have enough images, consider disabling data capture to [avoid incurring
 {{% /tab %}}
 {{< /tabs >}}
 
+Once you've captured enough images for training, you must annotate them to train a model.
+
 ## Annotate images
 
 Use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your images. Always follow best practices when you label your images:
 
-- **More data means better models:** Incorporate as much data as you practically can to improve your model's overall performance.
-- **Include counterexamples:** Include images with and without the object you’re looking to classify.
+More data means better models
+
+: Incorporate as much data as you practically can to improve your model's overall performance.
+
+Include counterexamples
+
+: Include images with and without the object you’re looking to classify.
   This helps the model distinguish the target object from the background and reduces the chances of false positives by teaching the model what the object is _not_.
-- **Avoid class imbalance:** Don't train excessively on one specific type or class, make sure each category has a roughly equal number of images.
+
+Avoid class imbalance
+
+: Don't train excessively on one specific type or class, make sure each category has a roughly equal number of images.
   For instance, if you're training a dog detector, include images of various dog breeds to avoid bias towards one breed.
   An imbalanced dataset can lead the model to favor one class over others, reducing its overall accuracy.
-- **Match your training images to your intended use case:** Use images that reflect the quality and conditions of your production environment.
+
+Match your training images to your intended use case
+
+: Use images that reflect the quality and conditions of your production environment.
   For example, if you plan to use a low-quality camera in production, train with low-quality images.
   Similarly, if your model will run all day, capture images in both daylight and nighttime conditions.
-- **Vary your angles and distances:** Include image examples from every angle and distance that you expect the model to handle.
-- **Ensure labeling accuracy:** Make sure the labels or bounding box annotations you give are accurate.
+
+Vary your angles and distances
+
+: Include image examples from every angle and distance that you expect the model to handle.
+
+Ensure labeling accuracy
+
+: Make sure the labels or bounding box annotations you give are accurate.
 
 Viam supports the following machine learning training approaches:
 
@@ -146,7 +194,7 @@ Repeat these steps for all images in the dataset.
 {{< tabs >}}
 {{% tab name="Viam app" %}}
 
-1. Open the **DATA** page of the Viam app.
+1. Open the [**DATA** page](https://app.viam.com/data/view) of the Viam app.
 
 1. Navigate to the **ALL DATA** tab.
 
@@ -159,14 +207,14 @@ Repeat these steps for all images in the dataset.
 
 Use the Viam CLI to filter images by label and add the filtered images to a dataset:
 
-1. First, run the following command to create a dataset, if you haven't already:
+1. First, [create a dataset](#create-a-dataset), if you haven't already.
+
+1. If you just created a dataset, use the dataset ID output by the creation command.
+   If your dataset already exists, run the following command to get a list of dataset names and corresponding IDs:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam dataset create --org-id=<org-id> --name=<dataset-name>
+   viam dataset list
    ```
-
-   This command will output a dataset ID.
-   Pass this dataset ID in the next step to add images to this dataset.
 
 1. Run the following [command](/dev/tools/cli/#dataset) to add all images labeled with a subset of tags to the dataset, replacing the `<dataset-id>` placeholder with the dataset ID output by the command in the previous step:
 

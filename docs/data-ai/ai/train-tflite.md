@@ -26,50 +26,39 @@ date: "2024-12-03"
 ---
 
 Many machines have cameras through which they can monitor their environment.
-With machine leaning, you can train models on patterns within that visual data.
-You can collect data from the camera stream and label any patterns within the images.
-
-If a camera is pointed at a food display, for example, you can label the image of the display with `full` or `empty`, or label items such as individual `pizza_slice`s.
-
-Using a model trained on such images, machines can make inferences about their environments.
-Your machines can then automatically trigger alerts or perform other actions.
-If a food display is empty, the machine could, for example, alert a supervisor to restock the display.
-
-Common use cases for this are **security**, **quality assurance**, and **food service** applications.
-
+With machine leaning (ML), you can train models on patterns within image data.
 Follow this guide to use your image data to train an ML model, so that your machine can make inferences about its environment.
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "a machine connected to the Viam app" %}}
 
 {{% snippet "setup.md" %}}
 
+{{% /expand %}}
+
+{{% expand "a dataset with labels" %}}
+
+Follow the guide to [create a dataset](/data-ai/ai/create-dataset/).
+
 {{% /expand%}}
 
-{{% expand "A dataset with labels. Click to see instructions." %}}
+## Train a machine learning model
 
-Follow the guide to [create a dataset](/data-ai/ai/create-dataset/) if you haven't already.
-
-{{% /expand%}}
-
-## Train a machine learning (ML) model
-
-Now that you have a dataset with your labeled images, you are ready to train a machine learning model.
+Now that you have a dataset that contains your labeled images, you are ready to train a machine learning model.
 
 {{< table >}}
 {{% tablestep number=1 %}}
 **Train an ML model**
 
-In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
+1. In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 
-Click **Train model** and follow the prompts.
+1. Click **Train model** and follow the prompts.
+   You can train a TFLite model using **Built-in training**.
 
-You can train a TFLite model using **Built-in training**.
+1. Click **Next steps**.
 
-Click **Next steps**.
-
-{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill shadow" >}}
+   {{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
@@ -128,7 +117,7 @@ As you test it, if you notice faulty predictions or confidence scores, you will 
 
 If you trained a _classification_ model, you can test it with the following instructions.
 
-1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click on the **Images** subtab.
+1. Navigate to the [**DATA** page](https://app.viam.com/data/view) and click on the **Images** subtab.
 1. Click on an image to open the side menu, and select the **Actions** tab.
 1. In the **Run model** section, select your model and specify a confidence threshold.
 1. Click **Run model**.
@@ -140,6 +129,23 @@ You can test both detection models and classifier models using the following res
 - [a camera](/operate/reference/components/camera/)
 - [a `tflite_cpu` ML model](/data-ai/ai/deploy/) with the model you just trained
 - [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model
+
+## Iterate your ML model
+
+With the right training dataset, your ML model can perform well as soon as training completes.
+But edge cases always exist.
+You are unlikely to account for all false positives or false negatives during your first round of training.
+Instead, keep track of edge cases as you run your model.
+Add them to your training dataset, annotate them, and re-train your model using the new data.
+Using this approach, each subsequent model version should be more accurate than the last.
+
+To capture images of edge cases and re-train your model using those images, complete the following steps:
+
+1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/ai/create-dataset/#capture-images).
+
+1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
+
+1. Repeat the [steps above](/data-ai/ai/train-tflite/#train-a-machine-learning-ml-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
 
 ## Next steps
 

@@ -43,7 +43,7 @@ Then, from the **Select model** dropdown, select the name of the ML model servic
 
 ### Test your changes
 
-You can test a deployed vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
+You can test a deployed vision service by clicking on the **Test** area of its configuration panel or from the [**CONTROL** page](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
 
 The camera stream shows when the vision service identifies something.
 Try pointing the camera at a scene similar to your training data.
@@ -59,7 +59,7 @@ Start by setting the value to 0.8.
 This reduces your output by filtering out anything below a threshold of 80% confidence.
 You can adjust this attribute as necessary.
 
-Click the **Save** button in the top right corner of the page to save your configuration, then close and reopen the **Test** panel of the vision service configuration panel.
+Click the **Save** button in the top right corner of the page to save your configuration, then close and reopen the **TEST** panel of the vision service configuration panel.
 Now if you reopen the panel, you will only see classifications or detections with a confidence value higher than the `default_minimum_confidence` attribute.
 
 {{< /expand>}}
@@ -69,8 +69,7 @@ For more detailed information, including optional attribute configuration, see t
 ## Use an SDK
 
 You can also run inference using a Viam SDK.
-You can use the [`Infer`](/dev/reference/apis/services/ml/#infer)
-method of the ML Model API to make inferences.
+Use the [`Infer`](/dev/reference/apis/services/ml/#infer) method of the ML Model API to make inferences.
 
 For example:
 
