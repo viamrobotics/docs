@@ -77,7 +77,6 @@ To create a dataset, use the Viam CLI or the Viam app:
 {{% tab name="One image" %}}
 
 You can add images to a dataset directly from a camera or vision component feed in the **CONTROL** or **CONFIGURATION** tabs of the Viam app.
-This technique can help you create a dataset without filling the **DATA** tab with a large number of unhelpful empty images.
 
 To add an image directly to a dataset from a visual feed, complete the following steps:
 
