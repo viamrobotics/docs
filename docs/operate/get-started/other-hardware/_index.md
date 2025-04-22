@@ -1142,7 +1142,7 @@ You can use the following package and upload method if you opted not to enable c
 1.  To package the module as an archive, run the following command from inside the module directory:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-    tar -czf module.tar.gz run.sh setup.sh requirements.txt src
+    tar -czf module.tar.gz run.sh setup.sh requirements.txt src meta.json
     ```
 
     where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
