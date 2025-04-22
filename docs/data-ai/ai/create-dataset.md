@@ -174,83 +174,102 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
    ```
 
 {{% /tab %}}
-{{< tab name="Data Client API" >}}
+{{% tab name="Data Client API" %}}
 
-Run the following script to add all images captured from a certain machine to a dataset:
+The following script adds all images captured from a certain machine to a new dataset. Complete the following steps to use the script:
 
-```python {class="line-numbers linkable-line-numbers" data-line="14,18,30" }
-import asyncio
+1. Copy and paste the following code into a file named <file>add_images_from_machine_to_dataset.py</file> on your machine.
 
-from viam.rpc.dial import DialOptions, Credentials
-from viam.app.viam_client import ViamClient
-from viam.utils import create_filter
-from viam.proto.app.data import BinaryID
+   ```python {class="line-numbers linkable-line-numbers" data-line="14,18,30,54-55" }
+   import asyncio
 
-
-async def connect() -> ViamClient:
-    dial_options = DialOptions(
-      credentials=Credentials(
-        type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
-        payload='<API-KEY>',
-      ),
-      # Replace "<API-KEY-ID>" (including brackets) with your machine's
-      # API key ID
-      auth_entity='<API-KEY-ID>'
-    )
-    return await ViamClient.create_from_dial_options(dial_options)
+   from viam.rpc.dial import DialOptions, Credentials
+   from viam.app.viam_client import ViamClient
+   from viam.utils import create_filter
+   from viam.proto.app.data import BinaryID
 
 
-async def main():
-    # Make a ViamClient
-    viam_client = await connect()
-    # Instantiate a DataClient to run data client API methods on
-    data_client = viam_client.data_client
+   async def connect() -> ViamClient:
+       dial_options = DialOptions(
+         credentials=Credentials(
+           type="api-key",
+           # Replace "<API-KEY>" (including brackets) with your machine's API key
+           payload='<API-KEY>',
+         ),
+         # Replace "<API-KEY-ID>" (including brackets) with your machine's
+         # API key ID
+         auth_entity='<API-KEY-ID>'
+       )
+       return await ViamClient.create_from_dial_options(dial_options)
 
-    # Replace "<PART-ID>" (including brackets) with your machine's part id
-    my_filter = create_filter(part_id="<PART-ID>")
 
-    print("Getting data for part...")
-    binary_metadata, _, _ = await data_client.binary_data_by_filter(
-        my_filter,
-        include_binary_data=False
-    )
-    my_binary_ids = []
+   async def main():
+       # Make a ViamClient
+       viam_client = await connect()
+       # Instantiate a DataClient to run data client API methods on
+       data_client = viam_client.data_client
 
-    for obj in binary_metadata:
-        my_binary_ids.append(
-            BinaryID(
-                file_id=obj.metadata.id,
-                organization_id=obj.metadata.capture_metadata.organization_id,
-                location_id=obj.metadata.capture_metadata.location_id
-                )
-            )
-    print("Creating dataset...")
-    # Create dataset
-    try:
-        dataset_id = await data_client.create_dataset(
-            name="MyDataset",
-            organization_id="<ORG-ID>"
-        )
-        print("Created dataset: " + dataset_id)
-    except Exception:
-        print("Error. Check that the dataset name does not already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        return 1
+       # Replace "<PART-ID>" (including brackets) with your machine's part id
+       my_filter = create_filter(part_id="<PART-ID>")
 
-    print("Adding data to dataset...")
-    await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=my_binary_ids,
-        dataset_id=dataset_id
-    )
-    print("Added files to dataset.")
-    print("See dataset: https://app.viam.com/data/datasets?id=" + dataset_id)
+       print("Getting data for part...")
+       binary_metadata, _, _ = await data_client.binary_data_by_filter(
+           my_filter,
+           include_binary_data=False
+       )
+       my_binary_ids = []
 
-    viam_client.close()
+       for obj in binary_metadata:
+           my_binary_ids.append(
+               BinaryID(
+                   file_id=obj.metadata.id,
+                   organization_id=obj.metadata.capture_metadata.organization_id,
+                   location_id=obj.metadata.capture_metadata.location_id
+                   )
+               )
+       print("Creating dataset...")
+       # Create dataset
+       try:
+           dataset_id = await data_client.create_dataset(
+               # Replace "<ORG-ID>" (including brackets) with your organization id
+               # Replace "<MY-DATASET> (including brackets) with the name of the new
+               # dataset that you want to add your images to
+               name="<MY-DATASET>",
+               organization_id="<ORG-ID>"
+           )
+           print("Created dataset: " + dataset_id)
+       except Exception:
+           print("Error. Check that the dataset name does not already exist.")
+           print("See: https://app.viam.com/data/datasets")
+           return 1
 
-if __name__ == '__main__':
-    asyncio.run(main())
-```
+       print("Adding data to dataset...")
+       await data_client.add_binary_data_to_dataset_by_ids(
+           binary_ids=my_binary_ids,
+           dataset_id=dataset_id
+       )
+       print("Added files to dataset.")
+       print("See dataset: https://app.viam.com/data/datasets?id=" + dataset_id)
+
+       viam_client.close()
+
+   if __name__ == '__main__':
+       asyncio.run(main())
+   ```
+
+1. Fill in the placeholders with values for your own organization, API key, machine, and dataset.
+
+1. Install the [Viam Python SDK](https://python.viam.dev/) by running the following command:
+
+   ```sh {class="command-line" data-prompt="$"}
+   pip install viam-sdk
+   ```
+
+1. Finally, run the following command to add the images to the dataset:
+
+   ```sh {class="command-line" data-prompt="$"}
+   python add_images_from_machine_to_dataset.py
+   ```
 
 {{% /tab %}}
 {{< /tabs >}}
