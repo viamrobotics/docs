@@ -174,6 +174,13 @@ Create firmware that integrates an existing module with the Micro-RDK:
    ```
 
 1. Add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project.
+   For example, to add any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules), add the following line to the `Cargo.toml` file:
+
+   ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
+   [dependencies]
+   ...
+   micro-rdk-modular-driver-example = { git = "https://github.com/viamrobotics/micro-rdk.git", rev = "v0.4.1", package = "micro-rdk-modular-driver-example", features = ["esp32"] }
+   ```
 
 1. Compile the project using one of the following commands, depending on whether you want to use [over-the-air (OTA) firmware updates](/operate/reference/viam-micro-server/manage-micro/#over-the-air-updates) or not:
 
@@ -240,30 +247,17 @@ You can now configure the models you included in your firmware and test them:
    Micro-RDK components and services must be configured in JSON.
 
 1. Add your components and services to the machine configuration.
-   For example, if you want to use a board, your configuration could look similar to this:
+   If you are using one of the example modules, find configuration details in the [example modules README](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules).
+   For example, if you want to use a free heap sensor, your configuration could look like this:
 
    ```json
    {
      "components": [
        {
-         "name": "my-board",
-         "model": "esp32",
-         "api": "rdk:component:board",
-         "attributes": {
-           "pins": [15, 34],
-           "analogs": [
-             {
-               "pin": "34",
-               "name": "sensor"
-             }
-           ],
-           "digital_interrupts": [
-             {
-               "pin": 4
-             }
-           ]
-         },
-         "depends_on": []
+         "name": "my-free-heap-sensor",
+         "api": "rdk:component:sensor",
+         "model": "free-heap",
+         "attributes": {}
        }
      ]
    }
@@ -317,7 +311,10 @@ If successful, the Viam app will show that your machine part's status is **Live*
 If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
 
 1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
+1. Select the part status dropdown to the right of your machine's name on the top of the page:
+
+   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
+
 1. Click the copy icon underneath **Machine cloud credentials**.
    The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 1. Navigate to the directory of the project you just created.

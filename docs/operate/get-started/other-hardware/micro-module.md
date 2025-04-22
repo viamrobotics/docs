@@ -21,8 +21,6 @@ aliases:
 If no existing modules support your hardware or software, you can create your own.
 To create a new module compatible with the Micro-RDK, follow these steps.
 
-1. If you have not previously developed a module for the Micro-RDK, please review the [module template README](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) and the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md) before continuing.
-
 1. Generate a new module skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module):
 
    ```sh { class="command-line" data-prompt="$"}
@@ -31,22 +29,37 @@ To create a new module compatible with the Micro-RDK, follow these steps.
 
    Select `templates/module` when prompted, give the module a name of your choice, and answer any additional prompts.
 
-1. Change directories into the generated tree:
+   The CLI automatically initializes a git repository in the generated module directory.
+
+1. Navigate into the generated module directory:
 
    ```sh { class="command-line" data-prompt="$"}
-   cd <your-path-to/your-module-directory>
+   cd <path-to/your-module-directory>
    ```
 
-1. If you wish to use version control for the module, this is the best time to initialize a git repository and commit all the generated files.
-   There are no secrets in a newly generated module repository:
+1. Develop the module by defining structs which implement the necessary traits and adding tests and registration hooks for them, per the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md).
+   The traits you need to implement are determined by the API you chose to implement.
+   For example, to create a random number generator that implements the sensor API, you need to implement the `Sensor` trait by adding the following code to <file>src/lib.rs</file>:
 
-   ```sh { class="command-line" data-prompt="$"}
-   git add .
-   git commit -m "initial commit"
+   ```rust { class="line-numbers" data-start="24"}
+    impl Sensor for MySensor {}
+
+    impl Readings for MySensor {
+        fn read(&self) -> Result<f64, SensorError> {
+            use rand::Rng;
+            let mut rng = rand::thread_rng();
+            Ok(rng.gen())
+        }
+    }
    ```
 
-1. Develop the module by defining `structs` which implement the necessary `traits` and adding tests and registration hooks for them, per the walkthrough.
+1. To use the module, follow the [Build and flash custom firmware](/operate/get-started/other-hardware/micro-module/#build-custom-firmware) workflow in a different directory from your module.
+   Be sure to register your module in the `dependencies` section of the project's `Cargo.toml` file, for example:
 
-1. To use the module, follow the [Build custom firmware](/operate/get-started/other-hardware/micro-module/#build-custom-firmware) workflow in a different directory, and register your module in the `dependencies` section of the project's `Cargo.toml` file, then build and flash the project.
+   ```toml
+   [dependencies]
+   ...
+   my_module = { path = "../my_module" }
+   ```
 
 For further details on Micro-RDK development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
