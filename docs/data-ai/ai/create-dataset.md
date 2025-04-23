@@ -231,14 +231,13 @@ The following script adds all images captured from a certain machine to a new da
 
 1. Copy and paste the following code into a file named <file>add_images_from_machine_to_dataset.py</file> on your machine.
 
-   ```python {class="line-numbers linkable-line-numbers" data-line="10-14" }
+   ```python {class="line-numbers linkable-line-numbers" data-line="9-13" }
    import asyncio
    from typing import List, Optional
 
    from viam.rpc.dial import DialOptions, Credentials
    from viam.app.viam_client import ViamClient
    from viam.utils import create_filter
-   from viam.proto.app.data import BinaryID
 
    # Configuration constants – replace with your actual values
    DATASET_NAME = "" # a unique, new name for the dataset you want to create
@@ -262,8 +261,8 @@ The following script adds all images captured from a certain machine to a new da
        return await ViamClient.create_from_dial_options(dial_options)
 
 
-   async def fetch_binary_ids(data_client, part_id: str) -> List[BinaryID]:
-       """Fetch binary data metadata and return a list of BinaryID objects."""
+   async def fetch_binary_data_ids(data_client, part_id: str) -> List[str]:
+       """Fetch binary data metadata and return a list of BinaryData objects."""
        data_filter = create_filter(part_id=part_id)
        all_matches = []
        last: Optional[str] = None
@@ -282,22 +281,15 @@ The following script adds all images captured from a certain machine to a new da
                break
            all_matches.extend(data)
 
-       binary_ids = [
-           BinaryID(
-               file_id=obj.metadata.id,
-               organization_id=obj.metadata.capture_metadata.organization_id,
-               location_id=obj.metadata.capture_metadata.location_id,
-           )
-           for obj in all_matches
-       ]
-
-       return binary_ids
+       return all_matches
 
 
    async def main() -> int:
        """Main execution function."""
        viam_client = await connect()
        data_client = viam_client.data_client
+
+       matching_data = await fetch_binary_data_ids(data_client, PART_ID)
 
        print("Creating dataset...")
 
@@ -313,13 +305,13 @@ The following script adds all images captured from a certain machine to a new da
            print(f"Exception: {e}")
            return 1
 
-       binary_ids = await fetch_binary_ids(data_client, PART_ID)
-
        print("Adding data to dataset...")
+
        await data_client.add_binary_data_to_dataset_by_ids(
-           binary_ids=binary_ids,
-           dataset_id=dataset_id,
+           binary_ids=[obj.metadata.binary_data_id for obj in matching_data],
+           dataset_id=dataset_id
        )
+
        print("Added files to dataset.")
        print(f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}")
 
