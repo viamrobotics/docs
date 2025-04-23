@@ -7,6 +7,7 @@ type: docs
 tags: ["modular resources", "components", "services", "registry"]
 description: "Manage your Micro-RDK-based firmware."
 date: "2025-04-18"
+draft: true
 ---
 
 ## Micro-RDK CLI
@@ -90,69 +91,3 @@ Change the executable to the appropriate one for your architecture.
 # Get help for a specific command
 ./micro-rdk-installer-macos create-nvs-partition --help
 ```
-
-## Over-the-air updates
-
-{{% hiddencontent %}}
-Over-the-air updates are available for `viam-server` and the Micro-RDK. For information about `viam-server` see [Deploy software packages to machines](/manage/software/deploy-software/).
-The following information covers the Micro-RDK.
-{{% /hiddencontent %}}
-
-To remotely update the firmware on your microcontroller without a physical connection to the device, add the OTA (over-the-air) service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
-Use **JSON** mode to add the service as in the template below, then configure the URL from which to fetch new firmware, and the version name.
-
-The firmware hosting endpoint must use HTTP/2.
-
-{{< tabs >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers" data-line="3-10"}
-{
-  "services": [
-    {
-      "name": "OTA",
-      "api": "rdk:service:generic",
-      "model": "rdk:builtin:ota_service",
-      "attributes": {
-        "url": "<URL where firmware is stored in cloud storage>",
-        "version": "<version name>"
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "services": [
-    {
-      "name": "OTA",
-      "api": "rdk:service:generic",
-      "model": "rdk:builtin:ota_service",
-      "attributes": {
-        "url": "https://storage.googleapis.com/jordanna/micro-rdk-server-esp32-ota.bin",
-        "version": "myVersion1"
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Your device checks for configuration updates periodically.
-If the device receives a configuration with the OTA service and a modified `version` field in it, the device downloads the new firmware to an inactive partition and restarts.
-When the device boots it loads the new firmware.
-
-{{% alert title="Note" color="note" %}}
-There is no way to roll back to previous firmware after a bad upgrade without reflashing the device with a physical connection, so test your firmware thoroughly before deploying it to a fleet.
-{{% /alert %}}
-
-{{% alert title="Tip" color="tip" %}}
-To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-software/) with the OTA service configuration and apply it to multiple machines.
-Then, whenever you update the `version` field in the fragment, the version will be updated for each machine that has that fragment in its config, triggering a firmware update the next time the devices fetch their configs.
-{{% /alert %}}

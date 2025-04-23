@@ -140,7 +140,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
 
    Then select the part status dropdown to the right of your machine's name on the top of the page and copy the **Machine cloud credentials**:
 
-   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
+   {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}
 
    The Micro-RDK needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
@@ -172,59 +172,43 @@ Create firmware that integrates an existing module with the Micro-RDK:
 1. Add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project:
 
    {{< tabs >}}
-   {{% tab name="Viam example modules" %}}
-
-   To use any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules) provided by Viam:
-
-   ```toml
-   [dependencies]
-   ...
-   micro-rdk-modular-driver-example = { git = "https://github.com/viamrobotics/micro-rdk.git", rev = "v0.5.0", package = "micro-rdk-modular-driver-example", features = ["esp32"] }
-   ```
-
-   Be sure to specify the correct Micro-RDK version that matches your development environment in place of `v0.5.0`.
-
-   {{% /tab %}}
    {{% tab name="Local path dependency" %}}
 
    During development, you'll typically use a local path dependency to reference your module directory, for example:
 
-   ```toml
+   ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
    [dependencies]
+   ...
    my-module = { path = "../my-module" }
    ```
 
    {{% /tab %}}
    {{% tab name="Git repository dependency" %}}
 
-   For modules hosted in a Git repository, you can specify the repository URL and optionally a specific commit (`rev`), branch (`branch`), or tag (`tag`), for example:
+   For modules hosted in a Git repository, specify the repository URL and optionally a specific commit (`rev`), branch (`branch`), or tag (`tag`), for example:
 
-   ```toml
+   ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
    [dependencies]
+   ...
    my-module = { git = "https://github.com/username/my-module.git", tag = "v1.0.0" }
+   ```
+
+   To use any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules) provided by Viam, use this line, specifying the correct Micro-RDK version that matches your development environment:
+
+   ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
+   [dependencies]
+   ...
+   micro-rdk-modular-driver-example = { git = "https://github.com/viamrobotics/micro-rdk.git", rev = "v0.5.0", package = "micro-rdk-modular-driver-example", features = ["esp32"] }
    ```
 
    {{% /tab %}}
    {{< /tabs >}}
 
-1. Compile the project using one of the following commands, depending on whether you want to use [over-the-air (OTA) firmware updates](/operate/reference/viam-micro-server/manage-micro/#over-the-air-updates) or not:
-
-   {{< tabs >}}
-   {{% tab name="OTA" %}}
-
-   ```sh { class="command-line" data-prompt="$"}
-   make build-esp32-ota
-   ```
-
-   {{% /tab %}}
-   {{% tab name="No OTA" %}}
+1. Compile the project:
 
    ```sh { class="command-line" data-prompt="$"}
    make build-esp32-bin
    ```
-
-   {{% /tab %}}
-   {{< /tabs >}}
 
    The first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built.
    Subsequent builds will be faster.
@@ -292,6 +276,120 @@ You can now configure the models you included in your firmware and test them:
 
 1. Click to open the **Test** section of the card and use the interface to test the component.
 
+## Build firmware with cloud build
+
+When developing and testing your firmware, it is easiest to build firmware locally.
+When you are ready to deploy your firmware to a fleet of microcontrollers, you can use the Viam cloud build service to simplify the process of building and hosting your firmware by eliminating the need to build locally and then upload the firmware image to a cloud storage bucket.
+
+To set up cloud build, follow these steps:
+
+1. Create a GitHub repository for any module you created and want to use in your firmware.
+   Upload the contents of the module directory to the repository.
+
+1. Update your firmware project's `Cargo.toml` file to use the URL of the GitHub repository, for example:
+
+   ```toml
+   [dependencies]
+   ...
+   my-module = { git = "https://github.com/username/my-module.git" }
+   ```
+
+1. Create a GitHub repository for your firmware project, and upload the contents of the firmware project directory to the repository.
+   The `templates/project` template you used to create your project contains a GitHub workflow file that is used by the Viam cloud build service to build your firmware.
+
+1. Go to the firmware GitHub repository's **Releases** tab and create a new release.
+   Create a tag starting with `v` followed by a version number, for example `v1.0.0`.
+   Click **Publish release** to trigger a build of the firmware.
+
+1. If you want to deploy the firmware, in the Viam app, navigate to the **CONFIGURE** tab of your machine and [configure the OTA service](#over-the-air-updates) to use the URL of the GitHub release artifact.
+
+The Viam cloud build service builds both full and OTA firmware images, and you should use the OTA firmware image for OTA updates.
+
+## Over-the-air updates
+
+{{% hiddencontent %}}
+Over-the-air updates are available for `viam-server` and the Micro-RDK. For information about `viam-server` see [Deploy software packages to machines](/manage/software/deploy-software/).
+The following information covers the Micro-RDK.
+{{% /hiddencontent %}}
+
+The first time you flash your microcontroller, you must use the `make build-esp32-bin` command to build a full firmware image, and use a data cable to flash it to your microcontroller.
+After the initial flash, you can update the firmware without a physical connection to the device using the OTA (over-the-air) service.
+
+To remotely update the firmware on your microcontroller, add the OTA service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
+Use **JSON** mode to add the service as in the template below, then configure the URL from which to fetch new firmware, and the version name.
+
+The firmware hosting endpoint must use HTTP/2.
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="3-10"}
+{
+  "services": [
+    {
+      "name": "OTA",
+      "api": "rdk:service:generic",
+      "model": "rdk:builtin:ota_service",
+      "attributes": {
+        "url": "<URL where firmware is stored in cloud storage>",
+        "version": "<version name>"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "services": [
+    {
+      "name": "OTA",
+      "api": "rdk:service:generic",
+      "model": "rdk:builtin:ota_service",
+      "attributes": {
+        "url": "https://github.com/gvaradarajan/micro-rdk-project-build-test/actions/runs/12345675999/artifacts/12345678910",
+        "version": "myVersion1"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Your device checks for configuration updates periodically.
+If the device receives a configuration with the OTA service and a modified `version` field in it, the device downloads the new firmware to an inactive partition and restarts.
+When the device boots it loads the new firmware.
+
+{{% alert title="Note" color="note" %}}
+There is no way to roll back to previous firmware after a bad upgrade without reflashing the device with a physical connection, so test your firmware thoroughly before deploying it to a fleet.
+{{% /alert %}}
+
+### Build OTA firmware locally
+
+If you want to use OTA updates, but don't want to use cloud build, follow these steps:
+
+1. Build the OTA firmware locally with the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   make build-esp32-ota
+   ```
+
+   Note that this is different from the `make build-esp32-bin` command, which builds a full firmware image that you must use the first time you flash your microcontroller.
+
+1. Upload the OTA firmware image to a cloud storage bucket.
+
+1. Configure the URL of the cloud storage bucket in your microcontroller's OTA service configuration.
+
+### Update multiple microcontrollers at the same time
+
+To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-software/) with the OTA service configuration and apply it to multiple machines.
+Then, whenever you update the `version` field in the fragment, the version will be updated for each machine that has that fragment in its config, triggering a firmware update the next time the devices fetch their configs.
+
 ## Troubleshooting
 
 ### Error: `xtensa-esp32-elf-gcc: error: unrecognized command line option '--target=xtensa-esp32-espidf'` when building on macOS
@@ -340,7 +438,7 @@ If you get the error `viam.json not found` try the following to manually add you
 1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 1. Select the part status dropdown to the right of your machine's name on the top of the page:
 
-   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
+   {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}
 
 1. Click the copy icon underneath **Machine cloud credentials**.
    The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
