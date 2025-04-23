@@ -148,7 +148,7 @@ To capture images of edge cases and re-train your model using those images, comp
 
 1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
 
-1. Repeat the [steps above](/data-ai/ai/train-tflite/#train-a-machine-learning-ml-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
+1. Repeat the [steps above](/data-ai/ai/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
 
 ## Next steps
 
