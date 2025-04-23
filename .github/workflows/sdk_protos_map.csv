@@ -58,9 +58,9 @@ board,GetResourceName,No,get_resource_name,,getResourceName,
 board,Close,No,close,Close,,
 
 ## Button
-button,Push,No,push,Push,,push
-button,DoCommand,No,,DoCommand,,doCommand
-button,Close,No,,Close,,
+button,Push,Yes,push,Push,,push
+button,DoCommand,Yes,do_command,DoCommand,,doCommand
+button,Close,No,close,Close,,
 
 ## Camera
 camera,GetImage,,get_image,Image,image,getImage
@@ -213,10 +213,10 @@ servo,GetResourceName,No,get_resource_name,,getResourceName,
 servo,Close,No,close,Close,,
 
 ## Switch
-switch,SetPosition,No,set_position,SetPosition,,setPosition
-switch,GetPosition,No,get_position,GetPosition,,getPosition
-switch,GetNumberOfPositions,No,get_number_of_positions,GetNumberOfPositions,,getNumberOfPositions
-switch,DoCommand,No,do_command,DoCommand,,doCommand
+switch,SetPosition,Yes,set_position,SetPosition,,setPosition
+switch,GetPosition,Yes,get_position,GetPosition,,getPosition
+switch,GetNumberOfPositions,Yes,get_number_of_positions,GetNumberOfPositions,,getNumberOfPositions
+switch,DoCommand,Yes,do_command,DoCommand,,doCommand
 switch,Close,No,close,Close,,
 
 ## Base Remote Control
