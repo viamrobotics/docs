@@ -133,14 +133,14 @@ You can test both detection models and classifier models using the following res
 - [a `tflite_cpu` ML model](/data-ai/ai/deploy/) with the model you just trained
 - [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model
 
-## Iterate your ML model
+## Iterate on your ML model
 
 With the right training dataset, your ML model can perform well as soon as training completes.
 However, edge cases always exist.
 You are unlikely to account for all false positives or false negatives during your first round of training.
 Instead, keep track of edge cases as you run your model.
-Add them to your training dataset, annotate them, and re-train your model using the new data.
-Using this approach, each subsequent model version should be more accurate than the last.
+Add images capturing edge cases to your training dataset, annotate them, and re-train your model using the new data.
+Using this approach, each subsequent model version becomes more accurate than the last.
 
 To capture images of edge cases and re-train your model using those images, complete the following steps:
 
