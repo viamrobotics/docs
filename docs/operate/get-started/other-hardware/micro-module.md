@@ -110,15 +110,15 @@ To create a new module compatible with the Micro-RDK, follow these steps.
 
    For more examples, see the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md).
 
-1. To use the module, follow the [Build your firmware](/operate/get-started/setup-micro/#build-your-firmware) workflow in a different directory from your module.
-   Be sure to register your module in the `dependencies` section of the project's `Cargo.toml` file, for example:
+## Using Your Module
 
-   ```toml
-   [dependencies]
-   ...
-   my-module = { path = "../my-module" }
-   ```
+To use your module in a project:
 
-   Then [flash your firmware](/operate/get-started/setup-micro/#flash-your-esp32) to your ESP32 microcontroller, and [configure](/operate/get-started/setup-micro/#configure-and-test-your-machine) your machine to use the module.
+1. Follow the [Build your firmware](/operate/get-started/setup-micro/#build-your-firmware) workflow in a different directory from your module.
+   Be sure to add your module to the `dependencies` section of the project's `Cargo.toml` file.
+2. [Flash your firmware](/operate/get-started/setup-micro/#flash-your-esp32) to your ESP32 microcontroller.
+3. [Configure](/operate/get-started/setup-micro/#configure-and-test-your-machine) your machine to use the module.
 
 For further details on Micro-RDK development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
+
+To update your firmware with a new version of your module, see [Over-the-air firmware updates](/operate/reference/viam-micro-server/manage-micro/#over-the-air-updates).

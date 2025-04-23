@@ -169,14 +169,43 @@ Create firmware that integrates an existing module with the Micro-RDK:
    cd <path-to/your-project-directory>
    ```
 
-1. Add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project.
-   For example, to add any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules), add the following line to the `Cargo.toml` file, replacing `v0.5.0` with the version of the Micro-RDK you are using:
+1. Add any desired modules to the project by including them in the `dependencies` section of the `Cargo.toml` for the generated project:
 
-   ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
+   {{< tabs >}}
+   {{% tab name="Viam example modules" %}}
+
+   To use any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules) provided by Viam:
+
+   ```toml
    [dependencies]
    ...
    micro-rdk-modular-driver-example = { git = "https://github.com/viamrobotics/micro-rdk.git", rev = "v0.5.0", package = "micro-rdk-modular-driver-example", features = ["esp32"] }
    ```
+
+   Be sure to specify the correct Micro-RDK version that matches your development environment in place of `v0.5.0`.
+
+   {{% /tab %}}
+   {{% tab name="Local path dependency" %}}
+
+   During development, you'll typically use a local path dependency to reference your module directory, for example:
+
+   ```toml
+   [dependencies]
+   my-module = { path = "../my-module" }
+   ```
+
+   {{% /tab %}}
+   {{% tab name="Git repository dependency" %}}
+
+   For modules hosted in a Git repository, you can specify the repository URL and optionally a specific commit (`rev`), branch (`branch`), or tag (`tag`), for example:
+
+   ```toml
+   [dependencies]
+   my-module = { git = "https://github.com/username/my-module.git", tag = "v1.0.0" }
+   ```
+
+   {{% /tab %}}
+   {{< /tabs >}}
 
 1. Compile the project using one of the following commands, depending on whether you want to use [over-the-air (OTA) firmware updates](/operate/reference/viam-micro-server/manage-micro/#over-the-air-updates) or not:
 
