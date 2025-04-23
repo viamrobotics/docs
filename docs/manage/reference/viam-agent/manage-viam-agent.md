@@ -56,9 +56,10 @@ aliases:
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
-On Windows, you can manage `viam-agent` using the Services GUI or the command line.
+On Windows, you can manage `viam-agent` using the Services GUI or the command line:
 
-## Manage `viam-agent` using the Services GUI
+{{< tabs >}}
+{{% tab name="Services GUI" %}}
 
 1. Open the **Services** management console from your computer's start menu.
 
@@ -73,7 +74,8 @@ On Windows, you can manage `viam-agent` using the Services GUI or the command li
 
    {{<imgproc src="/manage/startup-type-windows.png" resize="x1000" declaredimensions=true alt="Windows Services manager with viam-agent properties open." style="max-width:350px" class="shadow imgzoom" >}}
 
-## Manage `viam-agent` using the command line
+{{% /tab %}}
+{{% tab name="Command line" %}}
 
 1. Open a PowerShell prompt, selecting **Run as administrator**.
 
@@ -103,6 +105,9 @@ On Windows, you can manage `viam-agent` using the Services GUI or the command li
      Set-Service -Name "viam-agent" -StartupType Manual
      Set-Service -Name "viam-agent" -StartupType Automatic
      ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
