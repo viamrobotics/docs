@@ -109,7 +109,7 @@ Once you've captured enough images for training, you must annotate them to train
 
 ## Annotate images
 
-Use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your images. Always follow best practices when you label your images:
+Use the interface on the [**DATA** page](https://app.viam.com/data/view) to annotate your images. Always follow best practices when you label your images:
 
 More data means better models
 
@@ -126,23 +126,20 @@ Avoid class imbalance
   For instance, if you're training a dog detector, include images of various dog breeds to avoid bias towards one breed.
   An imbalanced dataset can lead the model to favor one class over others, reducing its overall accuracy.
 
-Match your training images to your intended use case
+Match training images to intended use case
 
 : Use images that reflect the quality and conditions of your production environment.
   For example, if you plan to use a low-quality camera in production, train with low-quality images.
-  Similarly, if your model will run all day, capture images in both daylight and nighttime conditions.
+  Similarly, if your model will run all day, capture images in daylight, nighttime, dusk, and dawn conditions.
 
-Vary your angles and distances
+Vary angles and distances
 
 : Include image examples from every angle and distance that you expect the model to handle.
 
-Ensure labeling accuracy
+Viam enables you to annotate images for the following machine learning methods:
 
-: Make sure the labels or bounding box annotations you give are accurate.
-
-Viam supports the following machine learning training approaches:
-
-### Tag images for classification
+{{< tabs >}}
+{{% tab name="Classification" %}}
 
 Classification determines a descriptive tag or set of tags for an image.
 For example, classification could help you identify:
@@ -152,7 +149,7 @@ For example, classification could help you identify:
 - what combination of toppings exists on a pizza: `pepperoni`, `sausage` and `pepper`, or `pineapple` and `ham` and `mushroom`
 
 Viam supports single and multiple label classification.
-To create a training set for classification, add tags to describe your images.
+To create a training set for classification, annotate tags to describe your images.
 
 To tag an image:
 
@@ -163,7 +160,8 @@ To tag an image:
 
 Repeat these steps for all images in the dataset.
 
-### Label bounding boxes for object detection
+{{% /tab %}}
+{{% tab name="Object detection" %}}
 
 Object detection identifies and determines the location of certain objects in an image.
 For example, object detection could help you identify:
@@ -172,7 +170,7 @@ For example, object detection could help you identify:
 - the number of `bicycle` and `pedestrian` objects on a greenway
 - which `plant` objects are popular with `deer` in your garden
 
-To create a training set for object detection, add bounding boxes to teach your model to identify objects that you want to detect in future images.
+To create a training set for object detection, annotate bounding boxes to teach your model to identify objects that you want to detect in future images.
 
 To label an object with a bounding box:
 
@@ -188,6 +186,9 @@ Once created, you can move, resize, or delete the bounding box.
 {{< /alert >}}
 
 Repeat these steps for all images in the dataset.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Add tagged images to a dataset
 
@@ -229,7 +230,7 @@ The following script adds all images captured from a certain machine to a new da
 
 1. Copy and paste the following code into a file named <file>add_images_from_machine_to_dataset.py</file> on your machine.
 
-   ```python {class="line-numbers linkable-line-numbers" data-line="14,18,30,54-55" }
+   ```python {class="line-numbers linkable-line-numbers" data-line="10-14" }
    import asyncio
    from typing import List, Optional
 
@@ -237,7 +238,6 @@ The following script adds all images captured from a certain machine to a new da
    from viam.app.viam_client import ViamClient
    from viam.utils import create_filter
    from viam.proto.app.data import BinaryID
-
 
    # Configuration constants – replace with your actual values
    DATASET_NAME = "" # a unique, new name for the dataset you want to create
