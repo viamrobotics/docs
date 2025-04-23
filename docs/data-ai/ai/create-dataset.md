@@ -242,7 +242,7 @@ The following script adds all images captured from a certain machine to a new da
    # Configuration constants – replace with your actual values
    DATASET_NAME = "" # a unique, new name for the dataset you want to create
    ORG_ID = "" # your organization ID, find in your organization settings
-   PART_ID = "" # id of the machine that captured images to add to the dataset, find in CONFIGURATION
+   PART_ID = "" # id of machine that captured target images, find in machine config
    API_KEY = "" # API key, find or create in your organization settings
    API_KEY_ID = "" # API key ID, find or create in your organization settings
 
