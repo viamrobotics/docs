@@ -138,10 +138,11 @@ To capture training images:
 
    Walk in front of your camera a number of times, perhaps with a friend or two, letting the camera capture many images of you.
    For best results, try a variety of angles and lighting.
-1. Add each training image to the `verification-system` dataset using the **Add to dataset** button marked with the camera icon.   
+
+1. Add each training image to the `verification-system` dataset using the **Add to dataset** button marked with the camera icon.  
    To view your captured images, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
 
-.  Next, position your camera to capture a variety of images of people.
+1. Next, position your camera to capture a variety of images of people.
    Consider the lighting conditions and angle of the position where you intend to place your camera when you deploy it for production use.
 
    For example, if you plan to use your facial detection machine to look out your front window at your entrance way, you should train with images of people at window height, perhaps in different lighting conditions or different stages of walking or standing at the door.
@@ -169,6 +170,7 @@ Then, train a new model using that model:
 1. Holding the command key (on macOS), or the control key (on Linux and Windows), click and drag on the image to create the bounding box:
 
    {{<gif webm_src="/services/data/label-magnemite.webm" mp4_src="/services/data/label-magnemite.mp4" alt="Add a bounding box around the magnemite pokemon in an image">}}
+
 1. When you have created bounding boxes for all `person` objects in the image, click the right arrow key to navigate to the next image. Repeat the process for each image in your dataset, drawing bounding boxes for every person in every image.
 1. [Train a TFlite model on your dataset](/data-ai/ai/train-tflite/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
