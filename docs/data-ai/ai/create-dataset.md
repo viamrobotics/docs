@@ -109,7 +109,8 @@ Once you've captured enough images for training, you must annotate them to train
 
 ## Annotate images
 
-Use the interface on the [**DATA** page](https://app.viam.com/data/view) to annotate your images. Always follow best practices when you label your images:
+Use the interface on the [**DATA** page](https://app.viam.com/data/view) to annotate your images.
+Always follow best practices when you label your images:
 
 More data means better models
 
