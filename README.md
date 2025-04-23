@@ -4,9 +4,9 @@
 
 # Welcome to the Viam Documentation
 
-> **Note**
+> [!NOTE]
 > Looking to contribute? Check out the [Contributor Guide](https://docs.viam.com/appendix/contributing/).
-> For help knowing what and how to write, check out our templates: our [tutorial template](docs/tutorials/template/) and [component page template](docs/components/component/) are accessible on the site when building the docs in Draft mode, or accessible here on GitHub.
+> For help knowing what and how to write, check out [tutorial template](docs/tutorials/template.md) and our [component pages](docs/operate/reference/components).
 
 ## Build the docs locally
 
@@ -19,29 +19,30 @@ To be able to build the docs locally, you need to install the following:
 
 You can build the docs for local development using the following command:
 
-```sh
-make serve-dev-draft
+```console
+make serve-dev
 ```
 
-If you would like to see the production view (without drafts and with minified CSS), run:
+To see the production view (without drafts and with minified CSS), run:
 
-```sh
+```console
 make serve-prod
 ```
 
-You can also run `hugo serve` after installing Hugo to show the production view.
+> [!TIP]
+> You can also run `hugo serve` after installing Hugo to show the production view.
 
 ### Generate HTML docs
 
-To generate the full HTML version of the docs run:
+To generate the full HTML version of the docs, run:
 
-```sh
+```console
 make build-prod
 ```
 
 You can serve the resulting docs with:
 
-```sh
+```console
 python3 -m http.server 9000 --directory public
 ```
 
@@ -49,7 +50,13 @@ python3 -m http.server 9000 --directory public
 
 ### Python snippets
 
-To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown) and add the following lines to the `.git/hooks/pre-commit` file in your local repository:
+To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown):
+
+```console
+brew install flake8
+```
+
+Then, add the following lines to the `.git/hooks/pre-commit` file in your local repository:
 
 ```sh
 if [ "git diff --diff-filter=d --name-only HEAD | grep '\.md$' | wc -l" ];
@@ -63,17 +70,31 @@ fi
 ```
 
 If you don't already have a `.git/hooks/pre-commit` file in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
-If you create a new file, you must also make it executable with: `chmod 755 /path/to/my/.git/hooks/pre-commit`.
+If you create a new file, you must also make it executable with: `chmod +x /path/to/my/.git/hooks/pre-commit`.
 
-To ensure your markdown is properly formatted, run `make markdowntest`.
+### Check markdown formatting
 
-To check locally for broken links, install [`htmltest`](https://github.com/wjdp/htmltest) and run `make htmltest`.
+To ensure your markdown is properly formatted, run:
+
+```console
+make markdowntest docs/**/*`
+```
+
+### Check for broken links
+
+To check locally for broken links, install [`htmltest`](https://github.com/wjdp/htmltest):
+
+```console
+brew install htmltest
+```
+
+Then, and run `make htmltest`.
 
 ### Lint JS and Markdown files with Prettier on save
 
 1. Install the [Prettier VS Code Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
-2. Run `npm install` in the docs folder where you have the docs checked out.
-3. Inside VS code, open the _user_ `settings.json` file by pressing `CMD+SHIFT+P` and typing 'settings', and add the following settings to the end of the file:
+1. Run `npm install` in the docs folder where you have the docs checked out.
+1. Inside VS code, open the _user_ `settings.json` file by pressing `CMD+SHIFT+P`, typing 'settings', selecting **Open User Settings (JSON)**, and appending the following settings to the end of the file:
 
 ```json
   "[markdown]": {
@@ -90,4 +111,4 @@ To check locally for broken links, install [`htmltest`](https://github.com/wjdp/
 
 ## Publishing
 
-The docs are automatically published when a PR merges.
+The docs automatically publish when a PR merges to the `main` branch.
