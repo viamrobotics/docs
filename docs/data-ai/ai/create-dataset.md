@@ -230,6 +230,7 @@ The following script adds all images captured from a certain machine to a new da
 
    ```python {class="line-numbers linkable-line-numbers" data-line="14,18,30,54-55" }
    import asyncio
+   from typing import List, Optional
 
    from viam.rpc.dial import DialOptions, Credentials
    from viam.app.viam_client import ViamClient
@@ -237,71 +238,94 @@ The following script adds all images captured from a certain machine to a new da
    from viam.proto.app.data import BinaryID
 
 
+   # Configuration constants – replace with your actual values
+   DATASET_NAME = "" # a unique, new name for the dataset you want to create
+   ORG_ID = "" # your organization ID, find in your organization settings
+   PART_ID = "" # id of the machine that captured images to add to the dataset, find in CONFIGURATION
+   API_KEY = "" # API key, find or create in your organization settings
+   API_KEY_ID = "" # API key ID, find or create in your organization settings
+
+   # Adjust the maximum number of images to add to the dataset
+   MAX_MATCHES = 500
+
    async def connect() -> ViamClient:
+       """Establish a connection to the Viam client using API credentials."""
        dial_options = DialOptions(
-         credentials=Credentials(
-           type="api-key",
-           # Replace "<API-KEY>" (including brackets) with your machine's API key
-           payload='<API-KEY>',
-         ),
-         # Replace "<API-KEY-ID>" (including brackets) with your machine's
-         # API key ID
-         auth_entity='<API-KEY-ID>'
+           credentials=Credentials(
+               type="api-key",
+               payload=API_KEY,
+           ),
+           auth_entity=API_KEY_ID,
        )
        return await ViamClient.create_from_dial_options(dial_options)
 
 
-   async def main():
-       # Make a ViamClient
-       viam_client = await connect()
-       # Instantiate a DataClient to run data client API methods on
-       data_client = viam_client.data_client
-
-       # Replace "<PART-ID>" (including brackets) with your machine's part id
-       my_filter = create_filter(part_id="<PART-ID>")
+   async def fetch_binary_ids(data_client, part_id: str) -> List[BinaryID]:
+       """Fetch binary data metadata and return a list of BinaryID objects."""
+       data_filter = create_filter(part_id=part_id)
+       all_matches = []
+       last: Optional[str] = None
 
        print("Getting data for part...")
-       binary_metadata, _, _ = await data_client.binary_data_by_filter(
-           my_filter,
-           include_binary_data=False
-       )
-       my_binary_ids = []
 
-       for obj in binary_metadata:
-           my_binary_ids.append(
-               BinaryID(
-                   file_id=obj.metadata.id,
-                   organization_id=obj.metadata.capture_metadata.organization_id,
-                   location_id=obj.metadata.capture_metadata.location_id
-                   )
-               )
+       while len(all_matches) < MAX_MATCHES:
+           print("Fetching more data...")
+           data, _, last = await data_client.binary_data_by_filter(
+               data_filter,
+               limit=50,
+               last=last,
+               include_binary_data=False,
+           )
+           if not data:
+               break
+           all_matches.extend(data)
+
+       binary_ids = [
+           BinaryID(
+               file_id=obj.metadata.id,
+               organization_id=obj.metadata.capture_metadata.organization_id,
+               location_id=obj.metadata.capture_metadata.location_id,
+           )
+           for obj in all_matches
+       ]
+
+       return binary_ids
+
+
+   async def main() -> int:
+       """Main execution function."""
+       viam_client = await connect()
+       data_client = viam_client.data_client
+
        print("Creating dataset...")
-       # Create dataset
+
        try:
            dataset_id = await data_client.create_dataset(
-               # Replace "<ORG-ID>" (including brackets) with your organization id
-               # Replace "<MY-DATASET> (including brackets) with the name of the new
-               # dataset that you want to add your images to
-               name="<MY-DATASET>",
-               organization_id="<ORG-ID>"
+               name=DATASET_NAME,
+               organization_id=ORG_ID,
            )
-           print("Created dataset: " + dataset_id)
-       except Exception:
-           print("Error. Check that the dataset name does not already exist.")
+           print(f"Created dataset: {dataset_id}")
+       except Exception as e:
+           print("Error creating dataset. It may already exist.")
            print("See: https://app.viam.com/data/datasets")
+           print(f"Exception: {e}")
            return 1
+
+       binary_ids = await fetch_binary_ids(data_client, PART_ID)
 
        print("Adding data to dataset...")
        await data_client.add_binary_data_to_dataset_by_ids(
-           binary_ids=my_binary_ids,
-           dataset_id=dataset_id
+           binary_ids=binary_ids,
+           dataset_id=dataset_id,
        )
        print("Added files to dataset.")
-       print("See dataset: https://app.viam.com/data/datasets?id=" + dataset_id)
+       print(f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}")
 
        viam_client.close()
+       return 0
 
-   if __name__ == '__main__':
+
+   if __name__ == "__main__":
        asyncio.run(main())
    ```
 

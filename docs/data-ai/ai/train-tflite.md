@@ -51,17 +51,20 @@ Now that you have a dataset that contains your labeled images, you are ready to 
 {{% tablestep number=1 %}}
 **Train an ML model**
 
-1. In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
-
-1. Click **Train model** and follow the prompts.
-   You can train a TFLite model using **Built-in training**.
-
-1. Click **Next steps**.
-
-   {{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill shadow" >}}
+In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
+
+Click **Train model** and follow the prompts.
+You can train a TFLite model using **Built-in training**.
+
+{{<imgproc src="/services/ml/train-model.png" resize="1200x" declaredimensions=true style="width:500px" alt="The shapes dataset." class="imgzoom fill shadow" >}}
+
+Click **Next steps**.
+
+{{% /tablestep %}}
+{{% tablestep number=3 %}}
 **Fill in the details for your ML model**
 
 Enter a name for your new model.
@@ -80,7 +83,7 @@ Click **Train model**.
 {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep number=4 %}}
 **Wait for your model to train**
 
 The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
@@ -90,7 +93,7 @@ Once the model has finished training, it becomes visible on the [**MODELS** tab]
 You will receive an email when your model finishes training.
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep number=5 %}}
 **Debug your training job**
 
 From the [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
@@ -133,7 +136,7 @@ You can test both detection models and classifier models using the following res
 ## Iterate your ML model
 
 With the right training dataset, your ML model can perform well as soon as training completes.
-But edge cases always exist.
+However, edge cases always exist.
 You are unlikely to account for all false positives or false negatives during your first round of training.
 Instead, keep track of edge cases as you run your model.
 Add them to your training dataset, annotate them, and re-train your model using the new data.
