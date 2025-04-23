@@ -16,6 +16,9 @@ aliases:
 
 [`viam-agent`](/manage/reference/viam-agent/) is installed as a `systemd` service named `viam-agent`.
 
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
 - To start `viam-agent`:
 
   ```sh {class="command-line" data-prompt="$"}
@@ -49,6 +52,65 @@ aliases:
   ```
 
   This command uninstalls `viam-agent`, `viam-server`, the machine cloud credentials file (<file>/etc/viam.json</file>), and the provisioning configuration file (<file>/etc/viam-provisioning.json</file>).
+
+{{% /tab %}}
+{{% tab name="Windows native" %}}
+
+On Windows, you can manage `viam-agent` using the Services GUI or the command line:
+
+{{< tabs >}}
+{{% tab name="Services GUI" %}}
+
+1. Open the **Services** management console from your computer's start menu.
+
+1. Find `viam-agent` in the list of services.
+
+   {{<imgproc src="/manage/viam-agent-windows-services-manager.png" resize="x1100" declaredimensions=true alt="Windows Services manager with viam-agent highlighted." style="max-width:600px" class="shadow imgzoom" >}}
+
+1. Use the **Start Service**, **Stop Service**, and **Restart Service** buttons to manage `viam-agent`.
+
+1. To change the startup type of `viam-agent`, right-click on `viam-agent` and select **Properties**.
+   Select your desired startup type from the **Startup type** dropdown menu.
+
+   {{<imgproc src="/manage/startup-type-windows.png" resize="x1000" declaredimensions=true alt="Windows Services manager with viam-agent properties open." style="max-width:350px" class="shadow imgzoom" >}}
+
+{{% /tab %}}
+{{% tab name="Command line" %}}
+
+1. Open a PowerShell prompt, selecting **Run as administrator**.
+
+1. Use the following commands to manage `viam-agent`:
+
+   - To start `viam-agent`:
+
+     ```sh {class="command-line" data-prompt="$"}
+     Start-Service viam-agent
+     ```
+
+   - To stop `viam-agent`:
+
+     ```sh {class="command-line" data-prompt="$"}
+     Stop-Service viam-agent
+     ```
+
+   - To restart `viam-agent`:
+
+     ```sh {class="command-line" data-prompt="$"}
+     Restart-Service viam-agent
+     ```
+
+   - To change the startup type of `viam-agent`, use one of the following commands:
+
+     ```sh {class="command-line" data-prompt="$"}
+     Set-Service -Name "viam-agent" -StartupType Manual
+     Set-Service -Name "viam-agent" -StartupType Automatic
+     ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 
