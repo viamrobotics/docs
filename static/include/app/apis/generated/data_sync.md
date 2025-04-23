@@ -55,18 +55,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `binaryData` (Uint8Array) (required): The data to be uploaded, represented in bytes.
 - `partId` (string) (required): The part ID of the component used to capture the data.
 - `componentType` (string) (required): The type of the component used to capture the data
-  (for example, "movementSensor").
+(for example, "movementSensor").
 - `componentName` (string) (required): The name of the component used to capture the data.
 - `methodName` (string) (required): The name of the method used to capture the data.
 - `fileExtension` (string) (required): The file extension of binary data including the
-  period, for example .jpg, .png, or .pcd. The backend will route the binary to its
-  corresponding mime type based on this extension. Files with a .jpeg,
-  .jpg, or .png extension will be saved to the images tab.
+period, for example .jpg, .png, or .pcd. The backend will route the
+binary to its corresponding mime type based on this extension. Files with
+a .jpeg, .jpg, or .png extension will be saved to the images tab.
 - `dataRequestTimes` (Date) (required): Tuple containing Date objects denoting the times
-  this data was requested[0] by the robot and received[1] from the
-  appropriate sensor.
+this data was requested[0] by the robot and received[1] from the
+appropriate sensor.
 - `tags` (string) (optional): The list of tags to allow for tag-based filtering when
-  retrieving data.
+retrieving data.
 
 **Returns:**
 
@@ -77,12 +77,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```ts {class="line-numbers linkable-line-numbers"}
 const binaryDataId = await dataClient.binaryDataCaptureUpload(
   binaryData,
-  "123abc45-1234-5678-90ab-cdef12345678",
-  "rdk:component:camera",
-  "my-camera",
-  "ReadImage",
-  ".jpg",
-  [new Date("2025-03-19"), new Date("2025-03-19")],
+  '123abc45-1234-5678-90ab-cdef12345678',
+  'rdk:component:camera',
+  'my-camera',
+  'ReadImage',
+  '.jpg',
+  [new Date('2025-03-19'), new Date('2025-03-19')]
 );
 ```
 
@@ -93,19 +93,19 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required)
+- `binaryData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\> (required)
 - `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `fileExtension` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
 - `dataRequestTimes` ([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 
@@ -203,19 +203,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `tabularData` (Record) (required): The list of data to be uploaded, represented tabularly
-  as an array.
+as an array.
 - `partId` (string) (required): The part ID of the component used to capture the data.
 - `componentType` (string) (required): The type of the component used to capture the data
-  (for example, "movementSensor").
+(for example, "movementSensor").
 - `componentName` (string) (required): The name of the component used to capture the data.
 - `methodName` (string) (required): The name of the method used to capture the data.
 - `dataRequestTimes` (Date) (required): Array of Date tuples, each containing two Date
-  objects denoting the times this data was requested[0] by the robot and
-  received[1] from the appropriate sensor. Passing a list of tabular data
-  and Timestamps with length n > 1 will result in n datapoints being
-  uploaded, all tied to the same metadata.
+objects denoting the times this data was requested[0] by the robot and
+received[1] from the appropriate sensor. Passing a list of tabular data
+and Timestamps with length n > 1 will result in n datapoints being
+uploaded, all tied to the same metadata.
 - `tags` (string) (optional): The list of tags to allow for tag-based filtering when
-  retrieving data.
+retrieving data.
 
 **Returns:**
 
@@ -227,15 +227,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 const fileId = await dataClient.tabularDataCaptureUpload(
   [
     {
-      timestamp: "2025-03-26T10:00:00Z",
+      timestamp: '2025-03-26T10:00:00Z',
       value: 10,
     },
   ],
-  "123abc45-1234-5678-90ab-cdef12345678",
-  "rdk:component:sensor",
-  "my-sensor",
-  "Readings",
-  [[new Date("2025-03-26T10:00:00Z"), new Date("2025-03-26T10:00:00Z")]],
+  '123abc45-1234-5678-90ab-cdef12345678',
+  'rdk:component:sensor',
+  'my-sensor',
+  'Readings',
+  [
+    [
+      new Date('2025-03-26T10:00:00Z'),
+      new Date('2025-03-26T10:00:00Z'),
+    ],
+  ]
 );
 ```
 
@@ -246,18 +251,18 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `tabularData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>> (required)
+- `tabularData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\> (required)
 - `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
-- `dataRequestTimes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))>? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
+- `dataRequestTimes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))\>? (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 
@@ -359,12 +364,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 
@@ -513,19 +518,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `bytes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required)
+- `bytes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\> (required)
 - `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `fileExtension` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
 - `dataRequestTimes` ([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 

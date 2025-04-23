@@ -3061,8 +3061,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `oldAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required)
-- `newAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required)
+- `oldAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The existing authorization.
+- `newAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The new authorization to change to.
 
 **Returns:**
 
