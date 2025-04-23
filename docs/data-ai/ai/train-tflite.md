@@ -49,12 +49,13 @@ Now that you have a dataset that contains your labeled images, you are ready to 
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**Train an ML model**
+**Find your training dataset**
 
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
+**Train an ML model**
 
 Click **Train model** and follow the prompts.
 You can train a TFLite model using **Built-in training**.
