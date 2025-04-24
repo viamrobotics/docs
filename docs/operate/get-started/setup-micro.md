@@ -234,17 +234,7 @@ Upload the generated firmware to your ESP32:
 1. Navigate to your new machine's page on the [Viam app](https://app.viam.com).
    If successful, the status indicator should turn green and show **Live**.
 
-   {{< alert title="Note" color="tip" >}}
-
-After adding (or removing) a module or changing the version of a module, you must rerun the build and flash steps in order to rebuild the firmware and reflash the device.
-
-The above build and flash steps may be combined by using the `upload` target:
-
-```sh { class="command-line" data-prompt="$"}
-make upload
-```
-
-{{< /alert >}}
+After adding (or removing) a module or changing the version of a module, you must rerun the build and flash steps to rebuild the firmware and reflash the device.
 
 ### Configure and test your machine
 
