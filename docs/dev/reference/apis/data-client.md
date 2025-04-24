@@ -128,11 +128,3 @@ Once you have instantiated a `DataClient`, you can run [API methods](#api) again
 {{< readfile "/static/include/app/apis/generated/data.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/dataset.md" >}}
-
-## Find part ID
-
-To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
-
-For example:
-
-{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed in the Viam app.">}}

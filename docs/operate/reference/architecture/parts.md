@@ -58,6 +58,14 @@ If it cannot connect to them, the part will still successfully start up.
 
 ![Example of a remote and a two part machine where the main (and only) part of machine 1 remotes into the main part of machine 2, and thus has access to all resources of machine 2.](/build/configure/parts/remotes-diagram.png)
 
+### Find part ID
+
+To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
+
+For example:
+
+{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed in the Viam app.">}}
+
 ## Configuration
 
 ### Configure a sub-part
