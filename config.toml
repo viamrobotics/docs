@@ -117,7 +117,7 @@ navbar_logo = true
 navbar_translucent_over_cover_disable = false
 sidebar_menu_compact = true  # When true, the section headings work like an accordian.
 sidebar_search_disable = true
-ul_show = 3  # Show only the first level of the sidenav by default
+ul_show = 3  # Always expand every first level section of the sidenav -- due to tabs, our 'first level' is 3
 
 [params.ui.feedback]
 enable = true
