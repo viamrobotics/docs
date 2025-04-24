@@ -154,7 +154,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
 
    Follow the prompts:
 
-   - Which sub-template should be expanded?:  `templates/project`.
+   - Which sub-template should be expanded?: `templates/project`.
    - Project name: Your choice.
    - MCU: `esp32`.
    - Include camera module?: If you will use an `esp32-camera` or a `fake` camera as a component of your machine, select `true`.
@@ -234,7 +234,6 @@ Upload the generated firmware to your ESP32:
 
 1. Navigate to your new machine's page on the [Viam app](https://app.viam.com).
    If successful, the status indicator should turn green and show **Live**.
-
 
 ### Configure and test your machine
 
@@ -383,77 +382,3 @@ If you want to use OTA updates, but don't want to use cloud build, follow these 
 
 To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-software/) with the OTA service configuration and apply it to multiple machines.
 Then, whenever you update the `version` field in the fragment, the version will be updated for each machine that has that fragment in its config, triggering a firmware update the next time the devices fetch their configs.
-
-## Troubleshooting
-
-### Error: `xtensa-esp32-elf-gcc: error: unrecognized command line option '--target=xtensa-esp32-espidf'` when building on macOS
-
-This is caused by an [upstream bug](https://github.com/esp-rs/esp-idf-template/issues/174).
-To work around this issue, ensure that `CRATE_CC_NO_DEFAULTS=1` is set in the environment when building.
-
-### Error: `error: externally-managed-environment` when building ESP-IDF on macOS
-
-This is encountered when attempting to build ESP-IDF projects while using Python obtained from Homebrew.
-Homebrew's Python infrastructure is not intended for end-user consumption but is instead made available to support Homebrew packages which require a python interpreter.
-The preferred workaround for this issue is to obtain a user-facing python installation not from Homebrew, but there are other, less safe, workarounds.
-Please see the macOS specific notes in the [development technical notes on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md#fixing-esp-builds-on-macos) for more details.
-
-### Error: Failed to open serial port
-
-If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`.
-
-### Error: `espflash::timeout`
-
-If you get the following error while connecting to your ESP32:
-
-```sh { class="command-line" data-prompt="$"}
-`Error: espflash::timeout
-
-  × Error while connecting to device
-  ╰─▶ Timeout while running command
-```
-
-Run the following command, replacing `<YOUR_PROJECT_NAME>` with the name of your project firmware (for example, `esp32-camera`):
-
-```sh { class="command-line" data-prompt="$"}
-espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa-esp32-espidf/release/<YOUR_PROJECT_NAME> --baud 115200 && sleep 2 && espflash monitor
-```
-
-Try the connection command again.
-The baud rate on your device may not have been fast enough to connect.
-If successful, the Viam app will show that your machine part's status is **Live**.
-
-You can also try disconnecting and reconnecting the ESP32 to the USB port, then retrying the flash command.
-
-### Error: `viam.json` not found
-
-If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
-
-1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-1. Select the part status dropdown to the right of your machine's name on the top of the page:
-
-   {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}
-
-1. Click the copy icon underneath **Machine cloud credentials**.
-   The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-1. Navigate to the directory of the project you just created.
-1. Create a new <file>viam.json</file> file and paste the machine cloud credentials from the Viam app in.
-1. Save the file.
-
-### Error: failed to run custom build command for `esp32-explorer (/host)`
-
-This may occur for various reasons such as your machine cloud credentials, WiFi SSID, or password not being populated.
-Check that your machine cloud credentials are provided in your project directory as <file>viam.json</file> and ensure that your WiFi credentials are provided.
-
-### Error: invalid value `460800` for `--before <BEFORE>`
-
-Change `"-b"` to `"-B` in the <file>Makefile</file>, as `"-B"` is the Baudrate config.
-Run the following commands to flash <file>esp32-server.bin</file> to your ESP32 microcontroller at a high baud rate, wait for 2 seconds, and observe the device's output:
-
-```sh {class="command-line" data-prompt="$"}
-espflash write-bin 0x0 target/esp32-server.bin -B 460800  && sleep 2 && espflash monitor
-```
-
-You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
-
-{{< snippet "social.md" >}}
