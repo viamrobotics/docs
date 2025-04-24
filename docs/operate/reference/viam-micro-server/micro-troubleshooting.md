@@ -14,7 +14,7 @@ aliases:
 ---
 
 {{% alert title="Tip" color="tip" %}}
-The [Viam Micro-RDK installer](/operate/reference/viam-micro-server/manage-micro/#micro-rdk-installer) is a command line tool that can be helpful for troubleshooting.
+The [Viam Micro-RDK installer](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer) is a command line tool that can be helpful for troubleshooting.
 {{% /alert %}}
 
 ## Common issues

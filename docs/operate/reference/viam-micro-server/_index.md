@@ -19,7 +19,7 @@ It is written in Rust and designed for resource-limited embedded systems (ESP32 
 Microcontrollers do not have full operating systems like single-board computers and general-purpose computers.
 This means that microcontrollers can only run one "program" at a time, and a microcontroller must be flashed with firmware containing the entire logic to run.
 
-`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a [default set](/operate/get-started/setup-micro/#pre-built-firmware) of {{< glossary_tooltip term_id="module" text="modules" >}}, provided for a convenient quick-start.
+`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a [default set](/operate/get-started/setup-micro/#about-esp32-microcontroller-setup) of {{< glossary_tooltip term_id="module" text="modules" >}}, provided for a convenient quick-start.
 For most use cases, you will [build your own firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware) from the Micro-RDK instead of using `viam-micro-server`.
 
 ## Hardware requirements

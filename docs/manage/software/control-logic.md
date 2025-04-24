@@ -21,7 +21,7 @@ These are the same modules that provide functionality like drivers and integrati
 
 The following steps show you how to create modules with control logic and how to deploy them to individual machines using `viam-server`.
 
-For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/reference/viam-micro-server/manage-micro/#over-the-air-updates) instead.
+For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/get-started/setup-micro/#over-the-air-updates) instead.
 
 ## Prerequisites
 

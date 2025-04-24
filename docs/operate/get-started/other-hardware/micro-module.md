@@ -19,7 +19,12 @@ aliases:
 ---
 
 If no existing modules support your hardware or software, you can create your own.
-To create a new module compatible with the Micro-RDK, follow these steps.
+
+## Create a new module for ESP32
+
+To create a new module compatible with the Micro-RDK, follow these steps:
+
+1. Set up your development environment following the [development setup instructions](/operate/get-started/setup-micro/#development-setup).
 
 1. Generate a new module skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module):
 
@@ -112,7 +117,7 @@ To create a new module compatible with the Micro-RDK, follow these steps.
 
 For further details on Micro-RDK development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
 
-## Using Your Module
+## Use Your Module
 
 To use your module in a project:
 
@@ -121,4 +126,4 @@ To use your module in a project:
 2. [Flash your firmware](/operate/get-started/setup-micro/#flash-your-esp32) to your ESP32 microcontroller.
 3. [Configure](/operate/get-started/setup-micro/#configure-and-test-your-machine) your machine to use the module.
 
-To update your firmware with a new version of your module without a physical connection to the ESP32 microcontroller, see [Over-the-air firmware updates](/operate/reference/viam-micro-server/manage-micro/#over-the-air-updates).
+To update your firmware with a new version of your module without a physical connection to the ESP32 microcontroller, see [Over-the-air firmware updates](/operate/get-started/setup-micro/#over-the-air-updates).
