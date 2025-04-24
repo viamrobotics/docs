@@ -50,7 +50,7 @@ python3 -m http.server 9000 --directory public
 
 ### Python snippets
 
-To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown):
+To ensure all Python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown):
 
 ```console
 brew install flake8
@@ -94,7 +94,7 @@ Then, and run `make htmltest`.
 
 1. Install the [Prettier VS Code Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 1. Run `npm install` in the docs folder where you have the docs checked out.
-1. Inside VS code, open the _user_ `settings.json` file by pressing `CMD+SHIFT+P`, typing 'settings', selecting **Open User Settings (JSON)**, and appending the following settings to the end of the file:
+1. Inside VS code, open the _user_ `settings.json` file: Press `CMD+SHIFT+P`, type 'settings', select **Open User Settings (JSON)**, and append the following settings to the end of the file:
 
 ```json
   "[markdown]": {
@@ -111,4 +111,4 @@ Then, and run `make htmltest`.
 
 ## Publishing
 
-The docs automatically publish when a PR merges to the `main` branch.
+A GitHub workflow automatically publishes the docs to [https://docs.viam.com/](https://docs.viam.com/) when new commits appear in the `main` branch.
