@@ -24,7 +24,7 @@ If no existing modules support your hardware or software, you can create your ow
 
 To create a new module compatible with the Micro-RDK, follow these steps:
 
-1. Set up your development environment following the [development setup instructions](/operate/get-started/setup-micro/#development-setup).
+1. Set up your development environment following the [development setup instructions](/operate/get-started/setup-micro/#set-up-your-development-environment).
 
 1. Generate a new module skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module):
 

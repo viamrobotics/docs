@@ -45,10 +45,10 @@ For most use cases, you will [build your own firmware](/operate/get-started/setu
 
 ## Next steps
 
-To use `viam-micro-server`, follow the installation guide.
-If you want to access camera functionality, extend the functionality of `viam-micro-server`, or customize it see the development setup guide.
+To use the Micro-RDK with existing modules, follow the ESP32 setup guide.
+To create your own modules, follow the Modules for ESP32 guide.
 
 {{< cards >}}
-{{% card link="/operate/get-started/setup/" %}}
+{{% card link="/operate/get-started/setup-micro/" %}}
 {{% card link="/operate/get-started/other-hardware/micro-module/" %}}
 {{< /cards >}}
