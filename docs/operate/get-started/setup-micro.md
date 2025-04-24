@@ -297,11 +297,13 @@ To set up cloud build, follow these steps:
 1. Create a GitHub repository for your firmware project, and upload the contents of the firmware project directory to the repository.
    The `templates/project` template you used to create your project contains a GitHub workflow file that is used by the Viam cloud build service to build your firmware.
 
+1. In the firmware GitHub repository, navigate to **Settings** &rarr; **Actions** &rarr; **General** and enable **Read and write permissions**.
+
 1. Go to the firmware GitHub repository's **Releases** tab and create a new release.
    Create a tag starting with `v` followed by a version number, for example `v1.0.0`.
    Click **Publish release** to trigger a build of the firmware.
 
-1. If you want to deploy the firmware, in the Viam app, navigate to the **CONFIGURE** tab of your machine and [configure the OTA service](#over-the-air-updates) to use the URL of the GitHub release artifact.
+1. To deploy the firmware, navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#over-the-air-updates) to use the URL of the GitHub release artifact.
 
 The Viam cloud build service builds both full and OTA firmware images, and you should use the OTA firmware image for OTA updates.
 
