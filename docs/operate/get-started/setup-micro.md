@@ -154,11 +154,13 @@ Create firmware that integrates an existing module with the Micro-RDK:
 
    Follow the prompts:
 
-   - Select `templates/project` when prompted.
-   - Give the project a name of your choice.
-   - Select `esp32` for **MCU**.
-   - If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **Include camera module?**.
-   - For **Machine cloud credentials**, paste in the machine cloud credentials you obtained in step 1.
+   - Which sub-template should be expanded?:  `templates/project`.
+   - Project name: Your choice.
+   - MCU: `esp32`.
+   - Include camera module?: If you will use an `esp32-camera` or a `fake` camera as a component of your machine, select `true`.
+   - Machine cloud credentials: Paste in the machine cloud credentials you obtained in step 1
+   - Enter WiFi name: The name of the WiFi network for the ESP32 to connect to on boot. Note that you must provide a 2.4 GHz network.
+   - Enter the WiFi password: The password for the 2.GHz WiFi network.
 
    Hit **Enter** to generate the project.
    The CLI automatically initializes a git repository in the generated directory for version control and in case you want to use cloud build later.
@@ -174,7 +176,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
    {{< tabs >}}
    {{% tab name="Local path dependency" %}}
 
-   During development, you'll typically use a local path dependency to reference your module directory, for example:
+   While developing a module, you'll typically use a local path dependency to reference your module directory, for example:
 
    ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
    [dependencies]
@@ -228,13 +230,11 @@ Upload the generated firmware to your ESP32:
    When prompted, select the serial port that your ESP32 is connected to through a data cable.
 
    If the flash is successful, you will retain a serial connection to the board until you press `Ctrl-C`.
-   To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
    While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
 1. Navigate to your new machine's page on the [Viam app](https://app.viam.com).
    If successful, the status indicator should turn green and show **Live**.
 
-After adding (or removing) a module or changing the version of a module, you must rerun the build and flash steps to rebuild the firmware and reflash the device.
 
 ### Configure and test your machine
 
@@ -265,6 +265,8 @@ You can now configure the models you included in your firmware and test them:
 1. Click **Builder** mode and find the configuration card of the component you want to test.
 
 1. Click to open the **Test** section of the card and use the interface to test the component.
+
+1. If you need to make changes to the module, make your changes, then rerun the build and flash steps to update the firmware and test the new version on your ESP32.
 
 ## Build firmware with cloud build
 
