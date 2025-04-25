@@ -322,14 +322,14 @@ The following information covers the Micro-RDK.
 The first time you flash your microcontroller, you must use the `make build-esp32-bin` command to build a full firmware image, and use a data cable to flash it to your microcontroller.
 After the initial flash, you can update the firmware without a physical connection to the device using the OTA (over-the-air) service.
 
+The firmware hosting endpoint must use HTTP/2.
+
 To configure OTA updates:
 
 1. On your microcontroller's page in the [Viam app](https://app.viam.com), go to the **CONFIGURE** tab and select **JSON** mode.
 
 1. Paste in the template below, then configure the URL from which to fetch new firmware, and a version name of your choice.
    The value of the `version` field is not directly used by the OTA service, so you can use any string.
-
-The firmware hosting endpoint must use HTTP/2.
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
