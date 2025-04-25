@@ -265,17 +265,25 @@ You can now configure the models you included in your firmware and test them:
 
 1. Click to open the **Test** section of the card and use the interface to test the component.
 
-1. If you need to make changes to the module, make your changes, then rerun the build and flash steps to update the firmware and test the new version on your ESP32.
+1. If you make changes to your modules, rerun the build and flash steps to update the firmware and test the new version on your ESP32.
 
-## Build firmware with cloud build
+## Cloud build and over-the-air updates
+
+You can use the Viam cloud build service to build and host your firmware, and use the OTA service to remotely update the firmware on your microcontrollers using the cloud-hosted firmware.
+
+### Build firmware with cloud build
 
 When developing and testing your firmware, it is easiest to build firmware locally.
 When you are ready to deploy your firmware to a fleet of microcontrollers, you can use the Viam cloud build service to simplify the process of building and hosting your firmware by eliminating the need to build locally and then upload the firmware image to a cloud storage bucket.
 
 To set up cloud build, follow these steps:
 
-1. Create a GitHub repository for any module you created and want to use in your firmware.
-   Upload the contents of the module directory to the repository.
+1. Create a GitHub repository for any [module you created](/operate/get-started/other-hardware/micro-module/) and want to use in your firmware.
+   Upload the contents of your local module directory to the repository.
+
+1. Create a firmware project using the `templates/project` template.
+   _Do not include Wifi credentials or machine cloud credentials in the project_, since you will be publishing the project to a public GitHub repository.
+   The OTA service does not modify the contents of the NVS partition, which contains the machine cloud credentials and WiFi credentials, so OTA updates do not require the credentials.
 
 1. Update your firmware project's `Cargo.toml` file to use the URL of the GitHub repository, for example:
 
@@ -285,7 +293,7 @@ To set up cloud build, follow these steps:
    my-module = { git = "https://github.com/username/my-module.git" }
    ```
 
-1. Create a GitHub repository for your firmware project, and upload the contents of the firmware project directory to the repository.
+1. Create a public GitHub repository for your firmware project, and upload the contents of the firmware project directory to the repository.
    The `templates/project` template you used to create your project contains a GitHub workflow file that is used by the Viam cloud build service to build your firmware.
 
 1. In the firmware GitHub repository, navigate to **Settings** &rarr; **Actions** &rarr; **General** and enable **Read and write permissions**.
@@ -294,11 +302,15 @@ To set up cloud build, follow these steps:
    Create a tag starting with `v` followed by a version number, for example `v1.0.0`.
    Click **Publish release** to trigger a build of the firmware.
 
-1. To deploy the firmware, navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#over-the-air-updates) to use the URL of the GitHub release artifact.
+1. Wait for the build to complete.
 
-The Viam cloud build service builds both full and OTA firmware images, and you should use the OTA firmware image for OTA updates.
+1. In your firmware GitHub repository, navigate to the **Releases** tab and find the assets for the release you just created.
+   The assets include the full and OTA firmware images.
+   Copy the URL of the OTA firmware image.
 
-## Over-the-air updates
+1. To deploy the firmware, navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#configure-over-the-air-updates) with the URL of the firmware image you just copied.
+
+### Configure over-the-air updates
 
 {{% hiddencontent %}}
 Over-the-air updates are available for `viam-server` and the Micro-RDK. For information about `viam-server` see [Deploy software packages to machines](/manage/software/deploy-software/).
@@ -308,8 +320,12 @@ The following information covers the Micro-RDK.
 The first time you flash your microcontroller, you must use the `make build-esp32-bin` command to build a full firmware image, and use a data cable to flash it to your microcontroller.
 After the initial flash, you can update the firmware without a physical connection to the device using the OTA (over-the-air) service.
 
-To remotely update the firmware on your microcontroller, add the OTA service to your microcontroller's configuration in the [Viam app](https://app.viam.com).
-Use **JSON** mode to add the service as in the template below, then configure the URL from which to fetch new firmware, and the version name.
+To configure OTA updates:
+
+1. On your microcontroller's page in the [Viam app](https://app.viam.com), go to the **CONFIGURE** tab and select **JSON** mode.
+
+1. Paste in the template below, then configure the URL from which to fetch new firmware, and a version name of your choice.
+   The value of the `version` field is not directly used by the OTA service, so you can use any string.
 
 The firmware hosting endpoint must use HTTP/2.
 
@@ -343,7 +359,7 @@ The firmware hosting endpoint must use HTTP/2.
       "api": "rdk:service:generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
-        "url": "https://github.com/gvaradarajan/micro-rdk-project-build-test/actions/runs/12345675999/artifacts/12345678910",
+        "url": "https://github.com/Jessamy/modulefirmware/releases/download/v0.1.2/modulefirmware-ota.bin",
         "version": "myVersion1"
       }
     }
@@ -355,8 +371,12 @@ The firmware hosting endpoint must use HTTP/2.
 {{< /tabs >}}
 
 Your device checks for configuration updates periodically.
-If the device receives a configuration with the OTA service and a modified `version` field in it, the device downloads the new firmware to an inactive partition and restarts.
+If the device receives a configuration with a modified `version` field, the device downloads the new firmware to an inactive partition and restarts.
 When the device boots it loads the new firmware.
+
+#### Trigger subsequent updates
+
+To trigger a remote update of the firmware on your microcontroller after the initial configuration, edit the `version` field and save the config.
 
 {{% alert title="Note" color="note" %}}
 There is no way to roll back to previous firmware after a bad upgrade without reflashing the device with a physical connection, so test your firmware thoroughly before deploying it to a fleet.
