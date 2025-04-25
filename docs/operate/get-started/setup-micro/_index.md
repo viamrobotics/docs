@@ -36,7 +36,8 @@ To work with Viam's Micro-RDK, ESP32 microcontrollers must have at least:
 
 ## About ESP32 microcontroller setup
 
-Because microcontrollers do not run operating systems and are instead flashed with firmware, the setup process is different than for regular computers and SBCs.
+Microcontrollers do not run operating systems and are instead flashed with dedicated firmware.
+Because of this, the microcontroller setup process is different than for SBCs, laptops, and desktops.
 
 To use an ESP32 controller with custom hardware, you build a firmware version from the Micro-RDK and modules to support your hardware.
 
@@ -264,7 +265,7 @@ You can now configure the models you included in your firmware and test them:
 
 1. Click to open the **Test** section of the card and use the interface to test the component.
 
-1. If you make changes to your modules, rerun the build and flash steps to update the firmware and test the new version on your ESP32.
+1. If you make changes to your module code, rerun the build and flash steps to update the firmware and test the new version on your ESP32.
 
 ## Cloud build and over-the-air updates
 

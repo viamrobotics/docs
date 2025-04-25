@@ -42,8 +42,8 @@ To create a new module compatible with the Micro-RDK, follow these steps:
    cd <path-to/your-module-directory>
    ```
 
-1. Develop the module by defining structs which implement the necessary traits and adding tests and registration hooks for them.
-   The traits you need to implement are determined by the API you chose to implement.
+1. Develop the module by defining structs which implement the necessary traits.
+   The required traits are determined by the API you chose to implement.
 
    For example, to implement the sensor API, you need to implement `Readings`, `SensorT<f64>` and `Status` traits.
 
