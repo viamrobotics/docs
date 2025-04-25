@@ -20,7 +20,7 @@ cost: "0"
 
 The following steps show you how to deploy and manage your machine's software over the air (OTA).
 
-For microcontrollers, see [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates) for more information.
+For microcontrollers, see [Over-the-air firmware updates](/operate/get-started/setup-micro/#configure-over-the-air-updates) for more information.
 
 ## Prerequisites
 
