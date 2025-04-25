@@ -76,8 +76,8 @@ If you get the error `viam.json not found` try the following to manually add you
 
 ### Error: failed to run custom build command for `esp32-explorer (/host)`
 
-This may occur for various reasons such as your machine cloud credentials, WiFi SSID, or password not being populated.
-Check that your machine cloud credentials are provided in your project directory as <file>viam.json</file> and ensure that your WiFi credentials are provided.
+This may occur for various reasons such as your machine cloud credentials, Wi-Fi SSID, or password not being populated.
+Check that your project directory contains machine cloud credentials in a <file>viam.json</file>, and that you provided Wi-Fi credentials.
 
 ### Error: invalid value `460800` for `--before <BEFORE>`
 

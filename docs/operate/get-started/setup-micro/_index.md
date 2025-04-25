@@ -85,11 +85,7 @@ To be able to develop for the Micro-RDK on macOS and Linux systems, you must ins
    {{% /tab %}}
    {{% tab name="macOS" %}}
 
-   If you haven't already, install Homebrew:
-
-   ```sh { class="command-line" data-prompt="$"}
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
+   If you haven't already, [install Homebrew](https://brew.sh/).
 
    Then, install dependencies:
 
@@ -142,7 +138,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
 
    {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}
 
-   The Micro-RDK needs these credentials, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+   The Micro-RDK needs these credentials, which contain your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 
 1. Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
@@ -156,12 +152,12 @@ Create firmware that integrates an existing module with the Micro-RDK:
    - Project name: Your choice.
    - MCU: `esp32`.
    - Include camera module?: If you will use an `esp32-camera` or a `fake` camera as a component of your machine, select `true`.
-   - Machine cloud credentials: Paste in the machine cloud credentials you obtained in step 1
-   - Enter WiFi name: The name of the WiFi network for the ESP32 to connect to on boot. Note that you must provide a 2.4 GHz network.
-   - Enter the WiFi password: The password for the 2.GHz WiFi network.
+   - Machine cloud credentials: Paste in the machine cloud credentials you obtained in step 1.
+   - Enter Wi-Fi name: The name of the Wi-Fi network for the ESP32 to connect to on boot. Note that you must provide a 2.4 GHz network.
+   - Enter the Wi-Fi password: The password for the 2.GHz WiFi network.
 
    Hit **Enter** to generate the project.
-   The CLI automatically initializes a git repository in the generated directory for version control and in case you want to use cloud build later.
+   The CLI automatically initializes a git repository in the generated directory for version control.
 
 1. Navigate into the generated project:
 
@@ -193,7 +189,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
    my-module = { git = "https://github.com/username/my-module.git", tag = "v1.0.0" }
    ```
 
-   To use any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules) provided by Viam, use this line, specifying the correct Micro-RDK version that matches your development environment:
+   To use any of the [example modules](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md#example-modules) provided by Viam, use this line, specifying the Micro-RDK version that matches your development environment:
 
    ```toml {class="line-numbers linkable-line-numbers" data-line="3"}
    [dependencies]
@@ -231,7 +227,7 @@ Upload the generated firmware to your ESP32:
    While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
 1. Navigate to your new machine's page on the [Viam app](https://app.viam.com).
-   If successful, the status indicator should turn green and show **Live**.
+   If successful, the status indicator should turn green and show the **Live** status.
 
 ### Configure and test your machine
 
@@ -280,7 +276,7 @@ To build firmware with cloud build, follow these steps:
    Upload the contents of your local module directory to the repository.
 
 1. Create a firmware project using the `templates/project` template.
-   _Do not include Wifi credentials or machine cloud credentials in the project_, since you will be publishing the project to a public GitHub repository.
+   _Do not include Wi-Fi credentials or machine cloud credentials in the project_, since you will be publishing the project to a public GitHub repository.
    The OTA service does not modify the contents of the NVS partition, which contains the machine cloud credentials and WiFi credentials, so OTA updates do not require the credentials.
 
 1. Update your firmware project's `Cargo.toml` file to use the URL of the GitHub repository, for example:
