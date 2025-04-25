@@ -200,7 +200,7 @@ You can now [authenticate end users with OAuth](/manage/manage/oauth/).
 
 {{% changelog color="added" title="Over-the-air updates for the Micro-RDK" date="2025-01-08" %}}
 
-You can now update microcontroller firmware from anywhere using the [OTA update service](/operate/get-started/setup-micro/#over-the-air-updates).
+You can now update microcontroller firmware from anywhere using the [OTA update service](/operate/get-started/setup-micro/#configure-over-the-air-updates).
 
 {{% /changelog %}}
 

@@ -276,7 +276,7 @@ You can use the Viam cloud build service to build and host your firmware, and us
 When developing and testing your firmware, it is easiest to build firmware locally.
 When you are ready to deploy your firmware to a fleet of microcontrollers, you can use the Viam cloud build service to simplify the process of building and hosting your firmware by eliminating the need to build locally and then upload the firmware image to a cloud storage bucket.
 
-To set up cloud build, follow these steps:
+To build firmware with cloud build, follow these steps:
 
 1. Create a GitHub repository for any [module you created](/operate/get-started/other-hardware/micro-module/) and want to use in your firmware.
    Upload the contents of your local module directory to the repository.
@@ -298,17 +298,19 @@ To set up cloud build, follow these steps:
 
 1. In the firmware GitHub repository, navigate to **Settings** &rarr; **Actions** &rarr; **General** and enable **Read and write permissions**.
 
-1. Go to the firmware GitHub repository's **Releases** tab and create a new release.
+1. Go to the firmware GitHub repository's **Releases** page and create a new release.
    Create a tag starting with `v` followed by a version number, for example `v1.0.0`.
    Click **Publish release** to trigger a build of the firmware.
 
+To deploy the firmware:
+
 1. Wait for the build to complete.
 
-1. In your firmware GitHub repository, navigate to the **Releases** tab and find the assets for the release you just created.
+1. In your firmware GitHub repository, navigate to the **Releases** page and find the assets for the release you just created.
    The assets include the full and OTA firmware images.
    Copy the URL of the OTA firmware image.
 
-1. To deploy the firmware, navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#configure-over-the-air-updates) with the URL of the firmware image you just copied.
+1. Navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#configure-over-the-air-updates) with the URL of the firmware image you just copied.
 
 ### Configure over-the-air updates
 

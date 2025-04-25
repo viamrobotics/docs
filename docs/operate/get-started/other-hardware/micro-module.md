@@ -126,4 +126,4 @@ To use your module in a project:
 2. [Flash your firmware](/operate/get-started/setup-micro/#flash-your-esp32) to your ESP32 microcontroller.
 3. [Configure](/operate/get-started/setup-micro/#configure-and-test-your-machine) your machine to use the module.
 
-To update your firmware with a new version of your module without a physical connection to the ESP32 microcontroller, see [Over-the-air firmware updates](/operate/get-started/setup-micro/#over-the-air-updates).
+To update your firmware with a new version of your module without a physical connection to the ESP32 microcontroller, see [Over-the-air firmware updates](/operate/get-started/setup-micro/#configure-over-the-air-updates).
