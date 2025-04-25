@@ -267,60 +267,17 @@ You can now configure the models you included in your firmware and test them:
 
 1. If you make changes to your module code, rerun the build and flash steps to update the firmware and test the new version on your ESP32.
 
-## Cloud build and over-the-air updates
+## Configure over-the-air updates
 
-You can use the Viam cloud build service to build and host your firmware, and use the OTA service to remotely update the firmware on your microcontrollers using the cloud-hosted firmware.
-
-### Build firmware with cloud build
-
-When developing and testing your firmware, it is easiest to build firmware locally.
-When you are ready to deploy your firmware to a fleet of microcontrollers, you can use the Viam cloud build service to simplify the process of building and hosting your firmware by eliminating the need to build locally and then upload the firmware image to a cloud storage bucket.
-
-To build firmware with cloud build, follow these steps:
-
-1. Create a GitHub repository for any [module you created](/operate/get-started/other-hardware/micro-module/) and want to use in your firmware.
-   Upload the contents of your local module directory to the repository.
-
-1. Create a firmware project using the `templates/project` template.
-   _Do not include Wi-Fi credentials or machine cloud credentials in the project_, since you will be publishing the project to a public GitHub repository.
-   The OTA service does not modify the contents of the NVS partition, which contains the machine cloud credentials and WiFi credentials, so OTA updates do not require the credentials.
-
-1. Update your firmware project's `Cargo.toml` file to use the URL of the GitHub repository, for example:
-
-   ```toml
-   [dependencies]
-   ...
-   my-module = { git = "https://github.com/username/my-module.git" }
-   ```
-
-1. Create a public GitHub repository for your firmware project, and upload the contents of the firmware project directory to the repository.
-   The `templates/project` template you used to create your project contains a GitHub workflow file that is used by the Viam cloud build service to build your firmware.
-
-1. In the firmware GitHub repository, navigate to **Settings** &rarr; **Actions** &rarr; **General** and enable **Read and write permissions**.
-
-1. Go to the firmware GitHub repository's **Releases** page and create a new release.
-   Create a tag starting with `v` followed by a version number, for example `v1.0.0`.
-   Click **Publish release** to trigger a build of the firmware.
-
-To deploy the firmware:
-
-1. Wait for the build to complete.
-
-1. In your firmware GitHub repository, navigate to the **Releases** page and find the assets for the release you just created.
-   The assets include the full and OTA firmware images.
-   Copy the URL of the OTA firmware image.
-
-1. Navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#configure-over-the-air-updates) with the URL of the firmware image you just copied.
-
-### Configure over-the-air updates
+You can update the firmware on your microcontroller without a physical connection.
 
 {{% hiddencontent %}}
 Over-the-air updates are available for `viam-server` and the Micro-RDK. For information about `viam-server` see [Deploy software packages to machines](/manage/software/deploy-software/).
 The following information covers the Micro-RDK.
 {{% /hiddencontent %}}
 
-The first time you flash your microcontroller, you must use the `make build-esp32-bin` command to build a full firmware image, and use a data cable to flash it to your microcontroller.
-After the initial flash, you can update the firmware without a physical connection to the device using the OTA (over-the-air) service.
+The first time you flash your microcontroller, you must build a full firmware image, and use a data cable to flash it to your microcontroller.
+After the initial flash, you can update the firmware remotely by using the over-the-air (OTA) service to pull [cloud-hosted, OTA-ready firmware](#build-and-host-ota-firmware) from a URL.
 
 The firmware hosting endpoint must use HTTP/2.
 
@@ -331,8 +288,8 @@ To configure OTA updates:
 1. Paste in the template below, then configure the URL from which to fetch new firmware, and a version name of your choice.
    The value of the `version` field is not directly used by the OTA service, so you can use any string.
 
-{{< tabs >}}
-{{% tab name="JSON Template" %}}
+   {{< tabs >}}
+   {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers" data-line="3-10"}
 {
@@ -376,17 +333,55 @@ Your device checks for configuration updates periodically.
 If the device receives a configuration with a modified `version` field, the device downloads the new firmware to an inactive partition and restarts.
 When the device boots it loads the new firmware.
 
-#### Trigger subsequent updates
-
 To trigger a remote update of the firmware on your microcontroller after the initial configuration, edit the `version` field and save the config.
 
 {{% alert title="Note" color="note" %}}
 There is no way to roll back to previous firmware after a bad upgrade without reflashing the device with a physical connection, so test your firmware thoroughly before deploying it to a fleet.
 {{% /alert %}}
 
-### Build OTA firmware locally
+### Update multiple microcontrollers at the same time
 
-If you want to use OTA updates, but don't want to use cloud build, follow these steps:
+To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-software/) with the OTA service configuration and apply it to multiple machines.
+Then, whenever you update the `version` field in the fragment, the version will be updated for each machine that has that fragment in its config, triggering a firmware update the next time the devices fetch their configs.
+
+### Build and host OTA firmware
+
+To use the OTA service, you must host your firmware in the cloud so that it can be accessed at a URL.
+
+GitHub workflows simplify the process of building and hosting your firmware by eliminating the need to build locally and then upload the firmware image to a cloud storage bucket.
+
+{{< tabs >}}
+{{% tab name="Use GitHub workflows (recommended)" %}}
+
+To build firmware on GitHub, follow these steps:
+
+1. [Create a firmware project](#build-and-flash-custom-firmware).
+   _Do not include Wi-Fi credentials or machine cloud credentials in the project_, since you will be publishing the project to a public GitHub repository.
+   The OTA service does not modify the partition containing the machine cloud credentials and WiFi credentials, so OTA updates do not require the credentials.
+
+1. Create a public GitHub repository for your firmware project, and upload the contents of the firmware project directory to the repository.
+   The `templates/project` template you used to create your project contains a GitHub workflow file that is used to build your firmware.
+
+1. In the firmware GitHub repository, navigate to **Settings** &rarr; **Actions** &rarr; **General** and enable **Read and write permissions**.
+
+1. Go to the firmware GitHub repository's **Releases** page and create a new release.
+   Create a tag starting with `v` followed by a version number, for example `v1.0.0`.
+   Click **Publish release** to trigger a build of the firmware.
+
+To deploy the firmware:
+
+1. Wait for the build to complete.
+
+1. In your firmware GitHub repository, navigate to the **Releases** page and find the assets for the release you just created.
+   The assets include the full and OTA firmware images.
+   Copy the URL of the OTA firmware image.
+
+1. Navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#configure-over-the-air-updates) with the URL of the firmware image you just copied.
+
+{{% /tab %}}
+{{% tab name="Build locally and host manually" %}}
+
+If you want to use OTA updates, but don't want to use GitHub Actions, follow these steps:
 
 1. Build the OTA firmware locally with the following command:
 
@@ -400,7 +395,5 @@ If you want to use OTA updates, but don't want to use cloud build, follow these 
 
 1. Configure the URL of the cloud storage bucket in your microcontroller's OTA service configuration.
 
-### Update multiple microcontrollers at the same time
-
-To update the firmware version for a group of microcontrollers at the same time, you can [create a fragment](/manage/software/deploy-software/) with the OTA service configuration and apply it to multiple machines.
-Then, whenever you update the `version` field in the fragment, the version will be updated for each machine that has that fragment in its config, triggering a firmware update the next time the devices fetch their configs.
+{{% /tab %}}
+{{< /tabs >}}
