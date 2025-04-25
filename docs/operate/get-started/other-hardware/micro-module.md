@@ -48,7 +48,7 @@ To create a new module compatible with the Micro-RDK, follow these steps:
    For example, to implement the sensor API, you need to implement `Readings`, `SensorT<f64>` and `Status` traits.
 
    {{< expand "Example implementation" >}}
-   Here is an example <file>src/lib.rs</file> file that implements the sensor API to return random numbers:
+   The following example <file>src/lib.rs</file> file implements the sensor API to return random numbers:
 
    ```rust { class="line-numbers linkable-line-numbers" }
     use std::sync::{Arc, Mutex};
@@ -115,8 +115,6 @@ To create a new module compatible with the Micro-RDK, follow these steps:
 
    For more examples, see the [example module implementation walkthrough](https://github.com/viamrobotics/micro-rdk/blob/main/examples/modular-drivers/README.md).
 
-For further details on Micro-RDK development, including credentials management and developer productivity suggestions, please see the [development technical notes page on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/DEVELOPMENT.md).
-
 ## Test your module
 
-To use your module with your ESP32, follow the [Build and flash custom firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware) workflow in a different directory from your module.
+To use your module with your ESP32, follow the [Build and flash custom firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware) workflow in a separate directory.

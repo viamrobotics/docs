@@ -24,7 +24,12 @@ Viam maintains a [lightweight version of `viam-server`](/operate/reference/viam-
 
 ## Supported microcontrollers
 
-ESP32 microcontrollers must have at least 2 cores, 384kB SRAM, 2MB PSRAM and 8MB flash to work with Viam.
+To work with Viam's micro-RDK, ESP32 microcontrollers must have at least:
+
+- 2 cores
+- 384kB SRAM
+- 2MB PSRAM
+- 8MB flash
 The following microcontrollers have been tested with Viam:
 
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
