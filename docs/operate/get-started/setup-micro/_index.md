@@ -30,7 +30,8 @@ To work with Viam's Micro-RDK, ESP32 microcontrollers must have at least:
 - 384kB SRAM
 - 2MB PSRAM
 - 8MB flash
-  The following microcontrollers have been tested with Viam:
+
+The following microcontrollers have been tested with Viam:
 
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
 
