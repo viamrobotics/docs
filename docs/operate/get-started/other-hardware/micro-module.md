@@ -119,11 +119,4 @@ For further details on Micro-RDK development, including credentials management a
 
 ## Use Your Module
 
-To use your module in a project:
-
-1. Follow the [Build your firmware](/operate/get-started/setup-micro/#build-your-firmware) workflow in a different directory from your module.
-   Be sure to add your module to the `dependencies` section of the project's `Cargo.toml` file.
-2. [Flash your firmware](/operate/get-started/setup-micro/#flash-your-esp32) to your ESP32 microcontroller.
-3. [Configure](/operate/get-started/setup-micro/#configure-and-test-your-machine) your machine to use the module.
-
-To update your firmware with a new version of your module without a physical connection to the ESP32 microcontroller, see [Over-the-air firmware updates](/operate/get-started/setup-micro/#configure-over-the-air-updates).
+To use your module with your ESP32, follow the [Build and flash custom firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware) workflow in a different directory from your module.
