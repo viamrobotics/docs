@@ -69,7 +69,7 @@ To get started quickly with the pre-built `viam-micro-server` binary, follow the
 1. A secure connection is automatically established between your machine and the Viam app.
    When you update your machine's configuration, `viam-micro-server` automatically gets the updates.
 
-   You are ready to [configure](/operate/get-started/supported-hardware/) any of the components listed above on your machine.
+   You are ready to [configure](#configure-and-test-your-machine) any of the components listed above on your machine.
 
 ## Build and flash custom firmware
 
@@ -254,7 +254,7 @@ You can now configure the models you included in your firmware and test them:
      "components": [
        {
          "name": "my-free-heap-sensor",
-         "api": "rdk:component:sensor",
+         "type": "sensor",
          "model": "free-heap",
          "attributes": {}
        }
