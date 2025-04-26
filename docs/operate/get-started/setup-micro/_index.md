@@ -297,7 +297,7 @@ To configure OTA updates:
   "services": [
     {
       "name": "OTA",
-      "api": "rdk:service:generic",
+      "type": "generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
         "url": "<URL where firmware is stored in cloud storage>",
@@ -316,7 +316,7 @@ To configure OTA updates:
   "services": [
     {
       "name": "OTA",
-      "api": "rdk:service:generic",
+      "type": "generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
         "url": "https://github.com/Jessamy/modulefirmware/releases/download/v0.1.2/modulefirmware-ota.bin",
