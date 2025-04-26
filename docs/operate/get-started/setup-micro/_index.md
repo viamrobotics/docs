@@ -213,7 +213,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
    make build-esp32-bin
    ```
 
-   The first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built.
+   The first build can take a few minutes, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built.
    Subsequent builds will be faster.
 
 ### Flash your ESP32
