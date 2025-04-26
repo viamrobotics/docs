@@ -1087,10 +1087,7 @@ The `viam module generate` command already generated the `build-action` file in 
    For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
 1. Click **Publish release**.
-   The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>.
-   The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
-
-   Any machines configured to use the latest release of the module will receive the update once it has finished building.
+   The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
 
 See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information.
 
