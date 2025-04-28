@@ -361,7 +361,9 @@ To transfer ownership of a module from one organization to another:
 1. Run `viam module update` to push the changes to the registry.
 
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
-   This ensures that the model names in the code match the registered model names in the registry.
+   This ensures that the model names in the module code match the registered model names in the registry.
+
+1. Update the `model` field in the configuration of any machines that use the module to point to the new organization's namespace.
 
 ## Rename a module
 
