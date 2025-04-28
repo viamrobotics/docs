@@ -254,8 +254,7 @@ You can now configure the models you included in your firmware and test them:
      "components": [
        {
          "name": "my-free-heap-sensor",
-         "namespace": "rdk",
-         "type": "sensor",
+         "api": "rdk:component:sensor",
          "model": "free-heap",
          "attributes": {}
        }
@@ -298,8 +297,7 @@ To configure OTA updates:
   "services": [
     {
       "name": "OTA",
-      "namespace": "rdk",
-      "type": "generic",
+      "api": "rdk:service:generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
         "url": "<URL where firmware is stored in cloud storage>",
@@ -318,8 +316,7 @@ To configure OTA updates:
   "services": [
     {
       "name": "OTA",
-      "namespace": "rdk",
-      "type": "generic",
+      "api": "rdk:service:generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
         "url": "https://github.com/Jessamy/modulefirmware/releases/download/v0.1.2/modulefirmware-ota.bin",
