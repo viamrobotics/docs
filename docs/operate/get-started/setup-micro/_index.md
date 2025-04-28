@@ -254,6 +254,7 @@ You can now configure the models you included in your firmware and test them:
      "components": [
        {
          "name": "my-free-heap-sensor",
+         "namespace": "rdk",
          "type": "sensor",
          "model": "free-heap",
          "attributes": {}
@@ -297,6 +298,7 @@ To configure OTA updates:
   "services": [
     {
       "name": "OTA",
+      "namespace": "rdk",
       "type": "generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
@@ -316,6 +318,7 @@ To configure OTA updates:
   "services": [
     {
       "name": "OTA",
+       "namespace": "rdk",
       "type": "generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
