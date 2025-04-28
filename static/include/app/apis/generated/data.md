@@ -14,7 +14,7 @@ Gets the most recent tabular data captured from the specified data source, as lo
 
 **Returns:**
 
-- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None):  A return value of None means that data hasn’t been synced yet forthe data source or the most recently captured data was over a year ago, otherwise the returned tuple contains the following: - time_captured (datetime): The time captured. - time_synced (datetime): The time synced. - payload (Dict[str, ValueTypes]): The latest tabular data captured from the specified data source.   .
+- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of None means that one of the following is true:   this data source has not yet synced data the most recently captured data from this data source is over a year old   Otherwise, the data source has synced data in the last year, so the returned tuple contains the following:   time_captured (datetime): The time captured. time_synced (datetime): The time synced. payload (Dict[str, ValueTypes]): The latest tabular data captured from the specified data source.   .
 
 **Example:**
 

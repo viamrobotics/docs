@@ -480,7 +480,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Parameters:**
 
 - `pointCloudPCD` (Uint8Array) (required): The point clouds to transform. This should be in the
-  [PCD format](https://pointclouds.org/documentation/tutorials/pcd_file_format.html), encoded into bytes.
+  [PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 - `source` (string) (required): The reference frame of the point cloud.
 - `destination` (string) (required): The reference frame into which the source data should
   be transformed, if unset this defaults to the "world" reference frame. Do
