@@ -318,7 +318,7 @@ To configure OTA updates:
   "services": [
     {
       "name": "OTA",
-       "namespace": "rdk",
+      "namespace": "rdk",
       "type": "generic",
       "model": "rdk:builtin:ota_service",
       "attributes": {
