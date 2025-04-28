@@ -235,6 +235,8 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 1. Add the key ID and value as GitHub repository secrets named `viam_key_id` and `viam_key_value`.
 
 1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
+   The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
+
    Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/reference/module-configuration/#module-versioning) of the module will automatically update to the new version.
 
 ### Update manually
