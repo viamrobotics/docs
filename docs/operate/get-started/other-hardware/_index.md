@@ -15,8 +15,9 @@ aliases:
   - /registry/advanced/iterative-development/
   - /build/program/extend/modular-resources/
   - /program/extend/modular-resources/
-  - /extend/modular-resources/
   - /extend/
+  - /extend/modular-resources/
+  - /extend/modular-resources/create/
   - /build/program/extend/modular-resources/key-concepts/
   - /modular-resources/key-concepts/
   - /modular-resources/
