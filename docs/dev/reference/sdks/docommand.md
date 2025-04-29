@@ -9,7 +9,7 @@ date: "2025-04-29"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The `DoCommand` method is a generic wrapper that you can use to send commands that don't fit into any other method.
+The `DoCommand` method is a flexible wrapper that you can use to send commands that don't fit into any other method.
 `DoCommand` is part of every [component](/dev/reference/apis/#component-apis) and [service API](/dev/reference/apis/#service-apis), though most models do not implement it.
 
 In the majority of cases, you should use a more specific method for your component or service.
@@ -30,8 +30,11 @@ See [More examples](#more-examples) for more.
 
 ### Example implementation
 
-Imagine you have a vacuum cleaner resource that can run a docking sequence and clean a specific area such as the kitchen or the living room.
-You could implement `DoCommand` to trigger the docking and cleaning sequences:
+Imagine you have a robotic vacuum cleaner that has a docking sequence and can clean specific areas such as the kitchen and the living room.
+
+You could [write a module](/operate/get-started/other-hardware/) that implements the [base API](/dev/reference/apis/components/base/).
+The base API includes methods like `MoveStraight` to drive the vacuum cleaner around, and like all resource APIs, it includes a `DoCommand` method.
+In addition to the standard base methods, you could implement `DoCommand` to trigger the docking and cleaning sequences:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -158,7 +161,7 @@ You can use `DoCommand` from the Viam app:
 
 ## More examples
 
-For an example of how to implement `DoCommand` in a Python module, as well as how to use it from SDKs and the Viam app, see [Add control logic to your module](/manage/software/control-logic/#add-control-logic-to-your-module).
+For an example that implements `DoCommand` in a generic API Python module, see [Add control logic to your module](/manage/software/control-logic/#add-control-logic-to-your-module).
 
 For additional examples, look at the GitHub repositories of [modules in the registry](https://app.viam.com/registry), especially modules that use the generic API.
 Essentially all generic models implement `DoCommand` (since it is the only method of the generic API), and various other models implement it as well.
