@@ -10,14 +10,13 @@ date: "2025-04-29"
 ---
 
 The `DoCommand` method is a generic wrapper that you can use to send commands that don't fit into any other method.
-DoCommand is part of every resource API, though most models do not implement it.
+`DoCommand` is part of every [component](/dev/reference/apis/#component-apis) and [service](/dev/reference/apis/#service-apis), though most models do not implement it.
 
 In the majority of cases, you should use a more specific method for your component or service.
+As the developer of a resource, you can implement `DoCommand` in your module if you need to add custom commands to your resource.
 
 As the user of a resource, you can only call `DoCommand` if it is implemented in the model you are using.
 Refer to the model's documentation (for example, the module README) to see whether `DoCommand` is implemented and how to use it.
-
-As the developer of a resource, you can implement `DoCommand` in your module if you need to.
 
 ## Implement DoCommand in your component or service
 
