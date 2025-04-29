@@ -37,27 +37,27 @@ You could implement `DoCommand` to trigger the docking and cleaning sequences:
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-    async def do_command(
-        self,
-        command: Mapping[str, ValueTypes],
-        *,
-        timeout: Optional[float] = None,
-        **kwargs
-    ) -> Mapping[str, ValueTypes]:
-        if command.keys() == {"dock"}:
-            await self.run_docking_sequence()
-            return {"dock": True}
-        if command.keys() == {"clean_area"}:
-            area = command["clean_area"]
-            if area in ["kitchen", "living_room"]:
-                await self.clean_area(area)
-            else:
-                raise ValueError(f"Unknown area: {area}")
-            return {"clean_area": area}
-        return {"error": f"Unknown command: {command}"}
+async def do_command(
+    self,
+    command: Mapping[str, ValueTypes],
+    *,
+    timeout: Optional[float] = None,
+    **kwargs
+) -> Mapping[str, ValueTypes]:
+    if command.keys() == {"dock"}:
+        await self.run_docking_sequence()
+        return {"dock": True}
+    if command.keys() == {"clean_area"}:
+        area = command["clean_area"]
+        if area in ["kitchen", "living_room"]:
+            await self.clean_area(area)
+        else:
+            raise ValueError(f"Unknown area: {area}")
+        return {"clean_area": area}
+    return {"error": f"Unknown command: {command}"}
 
-    # TODO: Implement run_docking_sequence()
-    # TODO: Implement clean_area()
+# TODO: Implement run_docking_sequence()
+# TODO: Implement clean_area()
 ```
 
 {{% /tab %}}
