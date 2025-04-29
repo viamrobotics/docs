@@ -1,12 +1,11 @@
 ---
 title: "Implement or use DoCommand"
 linkTitle: "DoCommand"
-weight: 70
+weight: 67
 type: "docs"
 description: "Implement DoCommand in your module or use it from Viam's SDKs."
-images: ["/services/icons/sdk.svg"]
 tags: ["sdk", "extend"]
-date: "2022-01-01"
+date: "2025-04-29"
 # updated: ""  # When the content was last entirely checked
 ---
 
