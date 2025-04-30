@@ -133,11 +133,11 @@ class ControlLogic(Generic, EasyResource):
         **kwargs
     ) -> Mapping[str, ValueTypes]:
         result = {key: False for key in command.keys()}
-        for name, _args in command.items():
-            if name == "start":
+        for name, args in command.items():
+            if name == "action" and args == "start":
                 self.start()
                 result[name] = True
-            if name == "stop":
+            if name == "action" and args == "stop":
                 self.stop()
                 result[name] = True
         return result
@@ -184,10 +184,10 @@ For example, in Python, you can start and stop your control logic with the follo
 
 ```python
 # Start your control logic
-await control_logic.do_command({"start": ""})
+await control_logic.do_command({"action": "start"})
 
 # Stop your control logic
-await control_logic.do_command({"stop": ""})
+await control_logic.do_command({"action": "stop"})
 ```
 
 ## Start and stop your control logic with the Viam app
@@ -200,7 +200,7 @@ You can start and stop your control logic from your machine's **CONTROL** tab in
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "start": ""
+     "action": "start"
    }
    ```
 
@@ -208,7 +208,7 @@ You can start and stop your control logic from your machine's **CONTROL** tab in
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "stop": ""
+     "action": "stop"
    }
    ```
 
