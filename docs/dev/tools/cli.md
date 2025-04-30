@@ -642,7 +642,7 @@ viam machines part status --organization=<org id> --location=<location id> --mac
 viam machines part run --organization=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
 viam machines part shell --organization=<org id> --location=<location id> --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --organization=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
+viam machines part cp --part=<part id> <file name> machine:/path/to/file
 ```
 
 Examples:
