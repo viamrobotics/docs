@@ -14,7 +14,7 @@ Gets the most recent tabular data captured from the specified data source, as lo
 
 **Returns:**
 
-- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of None means that data hasn’t been synced yet for the data source or the most recently captured data was over a year ago, otherwise the returned tuple contains the following: datetime: The time captured, datetime: The time synced, Dict[str, ValueTypes]: The latest tabular data captured from the specified data source.
+- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of None means that one of the following is true:   this data source has not yet synced data the most recently captured data from this data source is over a year old   Otherwise, the data source has synced data in the last year, so the returned tuple contains the following:   time_captured (datetime): The time captured. time_synced (datetime): The time synced. payload (Dict[str, ValueTypes]): The latest tabular data captured from the specified data source.   .
 
 **Example:**
 
@@ -51,7 +51,7 @@ the data. Ex: "rdk:component:sensor".
 
 **Returns:**
 
-- (Promise<null | [Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>]>): A tuple containing \[timeCaptured, timeSynced, payload] or null if
+- (Promise<null | [Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>]>): A tuple containing [timeCaptured, timeSynced, payload] or null if
 no data has been synced for the specified resource OR the most recently
 captured data was over a year ago.
 
@@ -80,7 +80,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<({[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> payload, [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html) timeCaptured, [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html) timeSynced})?\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<({[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> payload, [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html) timeCaptured, [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html) timeSynced})?>
 
 **Example:**
 
@@ -196,7 +196,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[TabularDataPoint](https://flutter.viam.dev/viam_sdk/TabularDataPoint-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[TabularDataPoint](https://flutter.viam.dev/viam_sdk/TabularDataPoint-class.html)>\>
 
 **Example:**
 
@@ -249,7 +249,7 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying tabular data to retrieve. No Filter implies all tabular data.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional, specifies tabular data to retrieve. If missing, matches all tabular data.
 - `limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
 - `sort_order` ([viam.proto.app.data.Order.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Order)) (optional): The desired sort order of the data.
 - `last` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to `TabularDataByFilter` as the last value. If provided, the server will return the next data entries after the last object identifier.
@@ -259,7 +259,7 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 
 **Returns:**
 
-- (Tuple[List[TabularData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following: List[TabularData]: The tabular data, int: The count (number of entries), str: The last-returned page ID.
+- (Tuple[List[TabularData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following:   tabular_data (List[TabularData]): The tabular data. count (int): The count (number of entries). last (str): The last-returned page ID.   .
 
 **Example:**
 
@@ -301,7 +301,7 @@ false.
 **Returns:**
 
 - (Promise<{ count: bigint; data: TabularData[]; last: string }>): An array of data objects, the count (number of entries), and the
-last\-returned page ID.
+last-returned page ID.
 
 **Example:**
 
@@ -330,7 +330,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[TabularDataByFilterResponse](https://flutter.viam.dev/viam_protos.app.data/TabularDataByFilterResponse-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[TabularDataByFilterResponse](https://flutter.viam.dev/viam_protos.app.data/TabularDataByFilterResponse-class.html)>
 
 **Example:**
 
@@ -380,7 +380,7 @@ Obtain unified tabular data and metadata, queried with SQL. Make sure your API k
 
 **Parameters:**
 
-- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. You can obtain your organization ID from the Viam app’s organization settings page.
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. To find your organization ID, visit the organization settings page in the Viam app.
 - `sql_query` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The SQL query to run.
 
 **Returns:**
@@ -431,7 +431,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>>
 
 **Example:**
 
@@ -467,8 +467,8 @@ Obtain unified tabular data and metadata, queried with MQL.
 
 **Parameters:**
 
-- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. You can obtain your organization ID from the Viam app’s organization settings page.
-- `query` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)] | List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): The MQL query to run, as a list of MongoDB aggregation pipeline stages. Note: Each stage can be provided as either a dictionary or raw BSON bytes, but support for bytes will be removed in the future, so using a dictionary is preferred.
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. To find your organization ID, visit the organization settings page in the Viam app.
+- `query` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)] | List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): The MQL query to run, as a list of MongoDB aggregation pipeline stages. Each stage can be provided as either a dictionary or raw BSON bytes, but support for bytes will be removed in the future, so prefer the dictionary option.
 - `use_recent_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to query blob storage or your recent data store. Defaults to False.
 
 **Returns:**
@@ -544,7 +544,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>>
 
 **Example:**
 
@@ -594,10 +594,10 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying tabular data to retrieve. No Filter implies all binary data.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional, specifies tabular data to retrieve. An empty filter matches all binary data.
 - `limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
 - `sort_order` ([viam.proto.app.data.Order.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Order)) (optional): The desired sort order of the data.
-- `last` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to `BinaryDataByFilter` as the last value. If provided, the server will return the next data entries after the last object identifier.
+- `last` ([str](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to `BinaryDataByFilter` as the last value. If provided, the server will return the next data entries after the last object identifier.
 - `include_binary_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether to actually include the binary file data with each retrieved file. Defaults to true (that is, both the files’ data and metadata are returned).
 - `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return only the total count of entries.
 - `include_internal_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False.
@@ -605,7 +605,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Returns:**
 
-- (Tuple[List[viam.proto.app.data.BinaryData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following: List[viam.proto.app.data.BinaryData]: The binary data, int: The count (number of entries), str: The last-returned page ID.
+- (Tuple[List[viam.proto.app.data.BinaryData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following:   data (List[ BinaryData ]): The binary data. count (int): The count (number of entries). last (str): The last-returned page ID.   .
 
 **Example:**
 
@@ -670,7 +670,7 @@ false.
 **Returns:**
 
 - (Promise<{ count: bigint; data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]; last: string }>): An array of data objects, the count (number of entries), and the
-last\-returned page ID.
+last-returned page ID.
 
 **Example:**
 
@@ -700,7 +700,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[BinaryDataByFilterResponse](https://flutter.viam.dev/viam_protos.app.data/BinaryDataByFilterResponse-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[BinaryDataByFilterResponse](https://flutter.viam.dev/viam_protos.app.data/BinaryDataByFilterResponse-class.html)>
 
 **Example:**
 
@@ -747,7 +747,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the desired data or BinaryID objects. Must be non-empty. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the desired data or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath for writing retrieved data.
 
 **Returns:**
@@ -756,7 +756,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Raises:**
 
-- (GRPCError): If no binary data id strings or BinaryID objects are provided.
+- (GRPCError): If no binary data ID strings or BinaryID objects are provided.
 
 **Example:**
 
@@ -801,12 +801,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)\> (required)
+- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
 - `includeBinary` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[BinaryDataByIDsResponse](https://flutter.viam.dev/viam_protos.app.data/BinaryDataByIDsResponse-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[BinaryDataByIDsResponse](https://flutter.viam.dev/viam_protos.app.data/BinaryDataByIDsResponse-class.html)>
 
 **Example:**
 
@@ -853,8 +853,8 @@ Delete tabular data older than a specified number of days.
 
 **Parameters:**
 
-- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of organization to delete data from. You can obtain your organization ID from the Viam app’s organization settings page.
-- `delete_older_than_days` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Delete data that was captured up to this many days ago. For example if delete_older_than_days is 10, this deletes any data that was captured up to 10 days ago. If it is 0, all existing data is deleted.
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to delete the data from. To find your organization ID, visit the organization settings page in the Viam app.
+- `delete_older_than_days` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Delete data that was captured up to this many days ago. For example, a value of 10 deletes any data that was captured up to 10 days ago. A value of 0 deletes all existing data.
 
 **Returns:**
 
@@ -907,7 +907,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
 **Example:**
 
@@ -941,7 +941,7 @@ Filter and delete binary data.
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to all data being deleted. Exercise caution when using this option. You must specify an organization ID with “organization_ids” when using this option.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional, specifies binary data to delete. CAUTION: Passing an empty Filter deletes all binary data! You must specify an organization ID with organization_ids when using this option. To find your organization ID, visit the organization settings page in the Viam app.
 
 **Returns:**
 
@@ -997,7 +997,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
 **Example:**
 
@@ -1037,7 +1037,7 @@ Filter and delete binary data by ids.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the data to be deleted or BinaryID objects.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the data to be deleted or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 
 **Returns:**
 
@@ -1045,7 +1045,7 @@ Filter and delete binary data by ids.
 
 **Raises:**
 
-- (GRPCError): If no binary data id strings or BinaryID objects are provided.
+- (GRPCError): If no binary data ID strings or BinaryID objects are provided.
 
 **Example:**
 
@@ -1098,11 +1098,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
 **Example:**
 
@@ -1143,7 +1143,7 @@ Add tags to binary data by ids.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to add to specified binary data. Must be non-empty.
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the data to be tagged or BinaryID objects. Must be non-empty. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the data to be tagged or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 
 **Returns:**
 
@@ -1151,7 +1151,7 @@ Add tags to binary data by ids.
 
 **Raises:**
 
-- (GRPCError): If no binary data id strings or BinaryID objects are provided.
+- (GRPCError): If no binary data ID strings or BinaryID objects are provided.
 
 **Example:**
 
@@ -1210,12 +1210,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
-- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1259,7 +1259,7 @@ Add tags to binary data by filter.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to add to specified binary data. Must be non-empty.
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Filter specifying binary data to tag. If no Filter is provided, all data will be tagged.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Specifies binary data to tag. If none is provided, tags all data.
 
 **Returns:**
 
@@ -1314,12 +1314,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 - `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1362,7 +1362,7 @@ Remove tags from binary by ids.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to remove from specified binary data. Must be non-empty.
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data id strings specifying the data to be untagged or BinaryID objects. Must be non-empty. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the data to be untagged or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 
 **Returns:**
 
@@ -1370,7 +1370,7 @@ Remove tags from binary by ids.
 
 **Raises:**
 
-- (GRPCError): If no binary_ids or tags are provided.
+- (GRPCError): If no binary data ID strings, BinaryID objects, or tags are provided.
 
 **Example:**
 
@@ -1431,12 +1431,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
-- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
 **Example:**
 
@@ -1480,7 +1480,7 @@ Remove tags from binary data by filter.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to remove from specified binary data.
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Filter specifying binary data to untag. If no Filter is provided, all data will be untagged.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Specifies binary data to untag. If none is provided, removes tags from all data.
 
 **Returns:**
 
@@ -1538,12 +1538,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 - `filter` [Filter](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html)? (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
 **Example:**
 
@@ -1585,7 +1585,7 @@ Get a list of tags using a filter.
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Filter specifying data to retrieve from. If no Filter is provided, all data tags will return.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Specifies subset ofdata to retrieve tags from. If none is provided, returns all tags.
 
 **Returns:**
 
@@ -1633,7 +1633,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>\>
 
 **Example:**
 
@@ -1673,7 +1673,7 @@ Add a bounding box to an image specified by its BinaryID.
 
 **Parameters:**
 
-- `binary_id` ([viam.proto.app.data.BinaryID | str](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): The binary data id or BinaryID of the image to add the bounding box to. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
+- `binary_id` ([viam.proto.app.data.BinaryID | str](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): The binary data ID or BinaryID of the image to add the bounding box to. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 - `label` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A label for the bounding box.
 - `x_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Min X value of the bounding box normalized from 0 to 1.
 - `y_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Min Y value of the bounding box normalized from 0 to 1.
@@ -1754,7 +1754,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
 
 **Example:**
 
@@ -1798,7 +1798,7 @@ Removes a bounding box from an image specified by its BinaryID.
 **Parameters:**
 
 - `bbox_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the bounding box to remove.
-- `binary_id` ([viam.proto.app.data.BinaryID | str](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): The binary data id or BinaryID of the image to remove the bounding box.
+- `binary_id` ([viam.proto.app.data.BinaryID | str](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): The binary data ID or BinaryID of the image to remove the bounding box from. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 
 **Returns:**
 
@@ -1848,7 +1848,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1890,7 +1890,7 @@ Get a list of bounding box labels using a Filter.
 
 **Parameters:**
 
-- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Filter specifying data to retrieve from. If no Filter is provided, all labels will return.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Specifies data to retrieve bounding box labels from. If none is provided, returns labels.
 
 **Returns:**
 
@@ -1941,7 +1941,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>\>
 
 **Example:**
 
@@ -1981,7 +1981,7 @@ Get a connection to access a MongoDB Atlas Data federation instance.
 
 **Parameters:**
 
-- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Organization to retrieve the connection for. You can obtain your organization ID from the Viam app’s organization settings page.
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization you’d like to connect to. To find your organization ID, visit the organization settings page in the Viam app.
 
 **Returns:**
 
@@ -2025,7 +2025,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[DatabaseConnection](https://flutter.viam.dev/viam_sdk/DatabaseConnection.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[DatabaseConnection](https://flutter.viam.dev/viam_sdk/DatabaseConnection.html)>
 
 **Example:**
 
@@ -2065,7 +2065,7 @@ It can also be used to reset the password of the existing database user.
 
 **Parameters:**
 
-- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization. You can obtain your organization ID from the Viam app’s organization settings page.
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization you’d like to configure a database user for. To find your organization ID, visit the organization settings page in the Viam app.
 - `password` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The password of the user.
 
 **Returns:**
@@ -2116,7 +2116,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -2154,8 +2154,8 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to add to dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID.
-- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Unique identifiers for binary data to add to the dataset. To retrieve these IDs, navigate to the DATA page, click on an image, and copy its Binary Data ID from the details tab.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.  To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
 
@@ -2213,12 +2213,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 - `datasetId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -2265,8 +2265,8 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): The IDs of binary data to remove from dataset. To retrieve these IDs, navigate to your data page, click on an image and copy its File ID from the details tab. To retrieve the dataset ID, navigate to your dataset’s page in the Viam app, and use the left-hand menu to copy the dataset ID. Note: BinaryID objects are deprecated and will be removed in a future release. Please use the binary data id field instead.
-- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Unique identifiers for the binary data to remove from the dataset. To retrieve these IDs, navigate to the DATA page, click on an image and copy its Binary Data ID from the details tab. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from. To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
 
@@ -2324,12 +2324,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 - `datasetId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 

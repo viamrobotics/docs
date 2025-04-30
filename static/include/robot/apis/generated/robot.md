@@ -239,7 +239,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.cancelOperation('INSERT OPERATION ID');
+await machine.cancelOperation("INSERT OPERATION ID");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#canceloperation).
@@ -285,7 +285,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.blockForOperation('INSERT OPERATION ID');
+await machine.blockForOperation("INSERT OPERATION ID");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockforoperation).
@@ -327,7 +327,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
+- [(\*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -410,13 +410,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `pose` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
 - `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
+- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
 
 **Returns:**
 
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -441,7 +441,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 - `source` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required)
 - `destination` (string) (required): The name of the reference frame to transform the given.
 - `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required): Pose information on any additional
-reference frames that are needed to perform the transform.
+  reference frames that are needed to perform the transform.
 
 **Returns:**
 
@@ -480,13 +480,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Parameters:**
 
 - `pointCloudPCD` (Uint8Array) (required): The point clouds to transform. This should be in the
-[PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
+  [PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 - `source` (string) (required): The reference frame of the point cloud.
 - `destination` (string) (required): The reference frame into which the source data should
-be transformed, if unset this defaults to the "world" reference frame. Do
-not move the robot between the generation of the initial pointcloud and
-the receipt of the transformed pointcloud because that will make the
-transformations inaccurate.
+  be transformed, if unset this defaults to the "world" reference frame. Do
+  not move the robot between the generation of the initial pointcloud and
+  the receipt of the transformed pointcloud because that will make the
+  transformations inaccurate.
 
 **Returns:**
 
@@ -571,7 +571,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)>\>
 
 **Example:**
 
@@ -675,9 +675,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Parameters:**
 
 - `moduleId` (string) (optional): The id matching the module_id field of the registry
-module in your part configuration.
+  module in your part configuration.
 - `moduleName` (string) (optional): The name matching the name field of the local/registry
-module in your part configuration.
+  module in your part configuration.
 
 **Returns:**
 
@@ -686,7 +686,7 @@ module in your part configuration.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.restartModule('namespace:module:model', 'my_model_name');
+await machine.restartModule("namespace:module:model", "my_model_name");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#restartmodule).
@@ -797,7 +797,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)>
 
 **Example:**
 
@@ -952,7 +952,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)>
 
 **Example:**
 
@@ -1046,7 +1046,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1162,7 +1162,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
