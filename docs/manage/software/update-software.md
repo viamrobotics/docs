@@ -165,10 +165,13 @@ async def main():
             if p.main_part:
                 main_part = p
 
-        print("Attempting to connect to {}...".format(main_part.fqdn))
+        // Get machine address
+        machine_address = main_part.fqdn
+
+        print("Attempting to connect to {}...".format(machine_address))
 
         try:
-            machine = await machine_connect(main_part.fqdn)
+            machine = await machine_connect(machine_address)
             status = await machine.get_machine_status()
             print(status.config)
 
