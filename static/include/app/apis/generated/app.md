@@ -1621,6 +1621,8 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 my_robot_part = await cloud.get_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
 )
+# Get the part's address
+address = my_robot_part.fqdn
 # Check if machine is live (last access time less than 10 sec ago)
 if (time.time() - my_robot_part.last_access.timestamp()) <= 10000:
     print("Machine is live.")
@@ -1643,6 +1645,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const robotPart = await appClient.getRobotPart('<YOUR-ROBOT-PART-ID>');
+// Get the part's address
+const address = robotPart.part.fqdn;
+// Check if machine is live (last access time less than 10 sec ago)
+if (Date.now() - Number(robotPart.part.lastAccess.seconds) * 1000 <= 10000) {
+  console.log("Machine is live");
+}
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpart).
