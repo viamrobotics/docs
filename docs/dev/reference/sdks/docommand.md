@@ -16,7 +16,7 @@ In the majority of cases, you should use a more specific method for your compone
 As the developer of a resource, you can implement `DoCommand` in your module if you need to add custom commands to your resource.
 
 As the user of a resource, you can only call `DoCommand` if it is implemented in the model you are using.
-Refer to the model's documentation (for example, the module README) to see whether `DoCommand` is implemented and how to use it.
+Refer to the model's documentation to see whether `DoCommand` is implemented and how to use it.
 
 ## Implement DoCommand in your component or service
 
