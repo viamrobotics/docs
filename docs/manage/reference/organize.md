@@ -100,7 +100,7 @@ You can share a location with another organization.
 However, machines will continue to use the primary organization as a reference point.
 This means any captured data is associated with the primary organization and the machines are only able to use private ML models and registry items from the primary owner.
 
-### How do I delete an organization
+### How do I delete an organization?
 
 1. Delete all the locations in your organization.
 1. Click the dropdown in the upper-right corner of the **FLEET** page and click on **Settings and invites**.
