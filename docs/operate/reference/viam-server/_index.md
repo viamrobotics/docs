@@ -1,7 +1,7 @@
 ---
 title: "viam-server"
 linkTitle: "viam-server"
-weight: 80
+weight: 20
 type: "docs"
 description: "viam-server is the open-source, on-machine portion of the Viam platform."
 tags: ["server", "rdk"]
