@@ -47,17 +47,23 @@ async def do_command(
     timeout: Optional[float] = None,
     **kwargs
 ) -> Mapping[str, ValueTypes]:
-    if command.keys() == {"dock"}:
-        await self.run_docking_sequence()
-        return {"dock": True}
-    if command.keys() == {"clean_area"}:
-        area = command["clean_area"]
-        if area in ["kitchen", "living_room"]:
-            await self.clean_area(area)
+    for name, value in command.items():
+        if name == "action":
+            action = value
+            if action == "dock":
+                await self.run_docking_sequence()
+                return {"status": "docked"}
+            elif isinstance(action, dict) and "clean_area" in action:
+                area = action["clean_area"]
+                if area in ["kitchen", "living_room"]:
+                    await self.clean_area(area)
+                    return {"status": f"cleaned {area}"}
+                else:
+                    raise ValueError(f"Unknown area: {area}")
+            else:
+                raise ValueError(f"Unknown action: {action}")
         else:
-            raise ValueError(f"Unknown area: {area}")
-        return {"clean_area": area}
-    return {"error": f"Unknown command: {command}"}
+            raise ValueError(f"Unknown command: {command}")
 
 # TODO: Implement run_docking_sequence()
 # TODO: Implement clean_area()
@@ -68,24 +74,32 @@ async def do_command(
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (s *Vacuum) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
-  if len(cmd) == 1 {
-    if _, ok := cmd["dock"]; ok {
+  action, ok := cmd["action"]
+  if !ok {
+    return nil, fmt.Errorf("missing 'action' key in command")
+  }
+
+  switch action := action.(type) {
+  case string:
+    if action == "dock" {
       if err := s.runDockingSequence(ctx); err != nil {
         return nil, err
       }
-      return map[string]interface{}{"dock": true}, nil
+      return map[string]interface{}{"status": "docked"}, nil
     }
-    if area, ok := cmd["clean_area"].(string); ok {
-      if area == "kitchen" || area == "living_room" {
-        if err := s.cleanArea(ctx, area); err != nil {
+  case map[string]interface{}:
+    if cleanArea, ok := action["clean_area"].(string); ok {
+      if cleanArea == "kitchen" || cleanArea == "living_room" {
+        if err := s.cleanArea(ctx, cleanArea); err != nil {
           return nil, err
         }
-        return map[string]interface{}{"clean_area": area}, nil
+        return map[string]interface{}{"status": fmt.Sprintf("cleaned %s", cleanArea)}, nil
       }
-      return nil, fmt.Errorf("unknown area: %s", area)
+      return nil, fmt.Errorf("unknown area: %s", cleanArea)
     }
   }
-  return map[string]interface{}{"error": fmt.Sprintf("unknown command: %v", cmd)}, nil
+
+  return nil, fmt.Errorf("unknown action: %v", action)
 }
 
 // TODO: Implement runDockingSequence()
@@ -103,36 +117,28 @@ Continuing with the vacuum cleaner example, you could use `DoCommand` in your co
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Since the docking DoCommand implementation uses the key but not a value,
-# you can use either of the following:
-await vacuum.do_command({"dock": True})
-# OR
-await vacuum.do_command({"dock": ""})
+# Dock the vacuum cleaner
+await vacuum.do_command({"action": "dock"})
 
-# The cleaning DoCommand implementation uses the key and a value,
-# so you must use the following:
-await vacuum.do_command({"clean_area": "kitchen"})
+# Clean the kitchen
+await vacuum.do_command({"action": {"clean_area": "kitchen"}})
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Since the docking DoCommand implementation uses the key but not a value,
-// you can use either of the following:
-_, err := vacuum.DoCommand(context.Background(), map[string]interface{}{"dock": true})
-if err != nil {
-  logger.Error(fmt.Errorf("failed to dock vacuum: %w", err))
-}
-// OR
-_, err = vacuum.DoCommand(context.Background(), map[string]interface{}{"dock": ""})
+// Dock the vacuum cleaner
+_, err := vacuum.DoCommand(context.Background(), map[string]interface{}{
+    "action": "dock"})
 if err != nil {
   logger.Error(fmt.Errorf("failed to dock vacuum: %w", err))
 }
 
-// The cleaning DoCommand implementation uses the key and a value,
-// so you must use the following:
-_, err = vacuum.DoCommand(context.Background(), map[string]interface{}{"clean_area": "kitchen"})
+// Clean the kitchen
+_, err = vacuum.DoCommand(context.Background(), map[string]interface{}{
+    "action": map[string]interface{}{"clean_area": "kitchen"},
+})
 if err != nil {
   logger.Error(fmt.Errorf("failed to clean area: %w", err))
 }
@@ -151,7 +157,7 @@ You can use `DoCommand` from the Viam app:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "clean_area": "kitchen"
+     "action": { "clean_area": "kitchen" }
    }
    ```
 
