@@ -165,7 +165,7 @@ async def main():
             if p.main_part:
                 main_part = p
 
-        // Get machine address
+        # Get machine address
         machine_address = main_part.fqdn
 
         print("Attempting to connect to {}...".format(machine_address))
