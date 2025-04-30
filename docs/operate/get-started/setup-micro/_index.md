@@ -69,7 +69,7 @@ To get started quickly with the pre-built `viam-micro-server` binary, follow the
 1. A secure connection is automatically established between your machine and the Viam app.
    When you update your machine's configuration, `viam-micro-server` automatically gets the updates.
 
-   You are ready to [configure](/operate/get-started/supported-hardware/) any of the components listed above on your machine.
+   You are ready to [configure](#configure-and-test-your-machine) any of the components listed above on your machine.
 
 ## Build and flash custom firmware
 
@@ -213,7 +213,7 @@ Create firmware that integrates an existing module with the Micro-RDK:
    make build-esp32-bin
    ```
 
-   The first build may be fairly time consuming, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built.
+   The first build can take a few minutes, as ESP-IDF must be cloned and built, and all dependent Rust crates must be fetched and built.
    Subsequent builds will be faster.
 
 ### Flash your ESP32
