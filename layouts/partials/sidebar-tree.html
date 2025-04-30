@@ -94,7 +94,7 @@
       {{- if (or $hideChildren $treeRoot) -}}
       {{- else -}}
           <span class="menu-toggle">
-          {{ if (or $activePath $active) }}
+          {{ if (or $activePath $active (eq $ulNr 2)) }}
             <i class="fas fa-chevron-down"></i>
           {{ else }}
             <i class="fas fa-chevron-right"></i>

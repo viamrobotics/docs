@@ -346,6 +346,10 @@ You can set optional arguments by defining the following environment variables:
 | `DEFAULTS_PATH` | The path to the <FILE>viam-defaults.json</FILE> file. The script will also prompt you for this file if not provided. |
 | `VIAM_AGENT_PATH` | The path to a beta or local build of `viam-agent`. Used for testing. |
 
+{{< alert title="Clone SD cards" color="tip" >}}
+Unless you are providing a machine cloud credentials file (<FILE>viam.json</FILE>) to each machine, you can clone SD cards to speed up the provisioning process.
+{{< /alert >}}
+
 <br>
 
 {{% expand "Using a Raspberry Pi?" %}}

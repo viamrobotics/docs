@@ -8,7 +8,7 @@ Authenticate using a personal access token:
 viam login
 ```
 
-For alternative authentication methods, see [/dev/tools/cli/#authenticate].
+For alternative authentication methods, see [Authenticate](/dev/tools/cli/#authenticate).
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}

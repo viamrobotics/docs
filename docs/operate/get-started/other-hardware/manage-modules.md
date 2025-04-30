@@ -235,6 +235,8 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 1. Add the key ID and value as GitHub repository secrets named `viam_key_id` and `viam_key_value`.
 
 1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
+   The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
+
    Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/reference/module-configuration/#module-versioning) of the module will automatically update to the new version.
 
 ### Update manually
@@ -359,7 +361,9 @@ To transfer ownership of a module from one organization to another:
 1. Run `viam module update` to push the changes to the registry.
 
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
-   This ensures that the model names in the code match the registered model names in the registry.
+   This ensures that the model names in the module code match the registered model names in the registry.
+
+1. Update the `model` field in the configuration of any machines that use the module to point to the new organization's namespace.
 
 ## Rename a module
 

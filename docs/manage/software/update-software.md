@@ -15,7 +15,7 @@ Each deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glo
 Unless the `version` field is set to a specific version, updates for that module or package happen automatically.
 
 {{% alert title="Updates for microcontrollers" color="note" %}}
-To update the firmware on your microcontroller, see [Over-the-air updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates).
+To update the firmware on your microcontroller, see [Over-the-air updates](/operate/get-started/setup-micro/#configure-over-the-air-updates).
 {{% /alert %}}
 
 ## Test and update software
@@ -165,10 +165,13 @@ async def main():
             if p.main_part:
                 main_part = p
 
-        print("Attempting to connect to {}...".format(main_part.fqdn))
+        # Get machine address
+        machine_address = main_part.fqdn
+
+        print("Attempting to connect to {}...".format(machine_address))
 
         try:
-            machine = await machine_connect(main_part.fqdn)
+            machine = await machine_connect(machine_address)
             status = await machine.get_machine_status()
             print(status.config)
 

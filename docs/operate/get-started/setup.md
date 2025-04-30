@@ -122,6 +122,14 @@ When you set up a native Windows device in the Viam app, you must use the [Viam 
 Use manual install for those systems.
 {{% /hiddencontent %}}
 
+{{% hiddencontent %}}
+
+## Running `viam-agent` or `viam-server` in a docker container
+
+We do not recommend running `viam-server` or `viam-agent` in Docker. If you need to use Docker reach out to [support](mailto:support@viam.com).
+
+{{% /hiddencontent %}}
+
 ### How the machine gets its configuration
 
 The machine setup steps displayed in the Viam app copy your machine's credentials to your machine.
