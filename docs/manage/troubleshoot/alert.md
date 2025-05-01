@@ -311,7 +311,7 @@ Options for `operator`:
 The following condition defines a trigger that fires based on the value of the `cpu` field of synced data:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"condition": {
+"conditions": {
   "evals": [
     {
       "operator": "gt",
@@ -338,7 +338,7 @@ The following sensor reading fires the trigger, since `80 > 50` is `true`:
 The following condition defines a trigger that fires based on a value nested in the `coordinate.latitude` field of synced data:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"condition": {
+"conditions": {
   "evals": [
     {
       "operator": "lt",
