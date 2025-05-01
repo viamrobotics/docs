@@ -314,8 +314,8 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 ```
 
 {{< /expand >}}
-{{< expand "Pin a module version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for a module](/operate/reference/module-configuration/#module-configuration-details) named `custom-sensor` in the fragment:
+{{< expand "Set a module version" >}}
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a module](/operate/reference/module-configuration/#module-configuration-details) named `custom-sensor` from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -332,7 +332,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 ],
 ```
 
-Here are the version options:
+The `version` field supports the following values:
 
 - To update with new minor releases of the same major release branch, use `"^<major version number>"`, for example `"^1"`
 - To update with new patch releases of the same minor release branch, use `"~<minor version number>"`, for example `"~1.8"`
@@ -340,8 +340,8 @@ Here are the version options:
 - To pin to a specific release, use `"<version number>"`, for example `"1.8.3"`
 
 {{< /expand >}}
-{{< expand "Change a package version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to modify [version update settings for the first package in the packages array](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) from the fragment:
+{{< expand "Set a package version" >}}
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a package](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) named `package_name` from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -350,13 +350,20 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
     "mods": [
       {
         "$set": {
-          "packages.0.version": "latest"
+          "packages.package_name.version": "latest"
         }
       }
     ]
   }
 ],
 ```
+
+The `version` field supports the following values:
+
+- To update with new minor releases of the same major release branch, use `"^<major version number>"`, for example `"^1"`
+- To update with new patch releases of the same minor release branch, use `"~<minor version number>"`, for example `"~1.8"`
+- To always update with the latest release, use `"latest"`
+- To pin to a specific release, use `"<version number>"`, for example `"1.8.3"`
 
 {{< /expand >}}
 {{< expand "Change the log level of a resource" >}}
