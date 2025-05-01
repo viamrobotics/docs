@@ -240,7 +240,7 @@ This calculation yields proportional coordinates of [(0.25, 0.25), (0.75, 0.75)]
 - `y_min_px`: The y pixel or proportional coordinate of the top left corner of the crop area.
 - `x_max_px`: The x pixel or proportional coordinate of the bottom right point of the crop area.
 - `y_max_px`: The y pixel or proportional coordinate of the bottom right point of the crop area.
-- `overlay_crop_box`: When `true`, instead of cropping, overlays the cropping box on the original image to visualize where the crop would be applied.
+- `overlay_crop_box`: When `true`, instead of cropping, overlays the cropping box on the original image to visualize where the crop would apply.
 
 ### Detections
 
