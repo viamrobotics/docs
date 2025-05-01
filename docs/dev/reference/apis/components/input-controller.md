@@ -1,6 +1,6 @@
 ---
 title: "Input controller API"
-linkTitle: "Input Controller"
+linkTitle: "Input controller"
 titleMustBeLong: true
 weight: 90
 type: "docs"

@@ -1,9 +1,9 @@
 ---
-title: "Manage Machines with Viam's Machine Management API"
-linkTitle: "Machine Management"
+title: "Manage machines with Viam's machine management API"
+linkTitle: "Machine management"
 weight: 20
 type: "docs"
-description: "How to use the Machine API to monitor and manage your machines."
+description: "How to use the machine API to monitor and manage your machines."
 tags: ["robot state", "sdk", "apis", "robot api"]
 aliases:
   - /program/apis/robot/

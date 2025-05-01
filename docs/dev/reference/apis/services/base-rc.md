@@ -1,6 +1,6 @@
 ---
-title: "Base Remote Control service API"
-linkTitle: "Base Remote Control"
+title: "Base remote control service API"
+linkTitle: "Base remote control"
 weight: 70
 type: "docs"
 tags: ["base", "services", "rover", "input controller", "remote control"]

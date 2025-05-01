@@ -1,5 +1,5 @@
 ---
-title: "Viam Architecture"
+title: "Viam architecture"
 linkTitle: "Viam architecture"
 weight: 10
 type: "docs"

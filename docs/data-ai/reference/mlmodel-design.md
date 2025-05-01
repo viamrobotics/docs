@@ -1,5 +1,5 @@
 ---
-title: "Design your ML Models for Vision"
+title: "Design your ML models for vision"
 linkTitle: "ML model service design"
 weight: 60
 type: "docs"
