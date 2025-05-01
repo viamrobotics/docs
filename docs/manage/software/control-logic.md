@@ -117,7 +117,7 @@ class ControlLogic(Generic, EasyResource):
 
         except Exception as err:
             LOGGER.error(err)
-        await asyncio.sleep(1)
+        await asyncio.sleep(10)
 
     def __del__(self):
         self.stop()
