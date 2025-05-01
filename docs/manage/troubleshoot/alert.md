@@ -181,7 +181,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
         "type": "conditional_data_ingested",
         "conditional": {
           "data_capture_method": "<component>:<name-of-component>:<method>",
-          "condition": {
+          "conditions": {
             "evals": [
               {
                 "operator": "<lt|gt|lte|gte|eq|neq|regex>",
