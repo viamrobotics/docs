@@ -1,7 +1,7 @@
 ---
 linkTitle: "Move an arm"
 title: "Move an arm"
-weight: 50
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Move an arm with joint positions or automated motion planning."
