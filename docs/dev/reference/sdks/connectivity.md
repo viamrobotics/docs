@@ -1,6 +1,6 @@
 ---
-title: "Client Sessions and Machine Network Connectivity"
-linkTitle: "Network Connectivity"
+title: "Client sessions and machine network connectivity"
+linkTitle: "Network connectivity"
 weight: 80
 type: "docs"
 description: "When you connect to a machine, the machine automatically chooses the best connection over local LAN, WAN or the internet."

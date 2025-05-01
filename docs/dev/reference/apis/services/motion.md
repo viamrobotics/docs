@@ -1,5 +1,5 @@
 ---
-title: "Motion Service API"
+title: "Motion service API"
 linkTitle: "Motion"
 weight: 40
 type: "docs"

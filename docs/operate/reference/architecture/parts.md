@@ -1,6 +1,6 @@
 ---
-title: "Machine Architecture: Parts"
-linkTitle: "Parts, Sub-parts, Remotes"
+title: "Machine architecture: Parts"
+linkTitle: "Parts, sub-parts, remotes"
 weight: 40
 type: "docs"
 description: "Connect multiple machine parts to each other as sub-parts or remotes."

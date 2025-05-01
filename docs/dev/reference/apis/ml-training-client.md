@@ -1,6 +1,6 @@
 ---
-title: "Work with ML Training Jobs with Viam's ML Training API"
-linkTitle: "ML Training Client"
+title: "Work with ML training jobs with Viam's ML training API"
+linkTitle: "ML training client"
 weight: 10
 type: "docs"
 description: "Use the ML training client API to manage ML training jobs taking place in Viam's cloud app."

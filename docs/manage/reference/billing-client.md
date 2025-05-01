@@ -1,6 +1,6 @@
 ---
-title: "Retrieve billing data with Viam's Billing Client API"
-linkTitle: "Billing Client API"
+title: "Retrieve billing data with Viam's billing client API"
+linkTitle: "Billing client API"
 weight: 800
 type: "docs"
 layout: "empty"

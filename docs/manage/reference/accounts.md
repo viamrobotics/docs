@@ -1,6 +1,6 @@
 ---
-linkTitle: "Account Management"
-title: "Account Management"
+linkTitle: "Account management"
+title: "Account management"
 weight: 1000
 layout: "docs"
 type: "docs"

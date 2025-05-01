@@ -1,6 +1,6 @@
 ---
-title: "Control Package"
-linkTitle: "Control Package"
+title: "Control package"
+linkTitle: "Control package"
 weight: 60
 type: "docs"
 description: "The Control Package implements feedback control on an endpoint."

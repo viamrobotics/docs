@@ -1,6 +1,6 @@
 ---
 title: "Configure a managed process"
-linkTitle: "Managed Processes"
+linkTitle: "Managed processes"
 weight: 50
 type: "docs"
 description: "Configure a process to run a program when your machine is online."
