@@ -50,7 +50,7 @@ For example, a trigger configured to fire when data is captured from the motor `
 
 {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow" >}}
 
-For more information, see [Conditions](#conditions).
+For more information, see [Conditions](/manage/troubleshoot/alert/#conditions).
 
 {{% alert title="Note" color="note" %}}
 You must [configure data capture](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources) for your component to use this trigger.
