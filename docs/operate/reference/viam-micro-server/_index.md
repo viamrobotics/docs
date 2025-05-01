@@ -1,7 +1,7 @@
 ---
 title: "The Micro-RDK and viam-micro-server"
 linkTitle: "viam-micro-server"
-weight: 90
+weight: 30
 type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"

@@ -1,7 +1,7 @@
 ---
 title: "Modular Resource and Module Configuration Details"
 linkTitle: "Module Configuration"
-weight: 20
+weight: 40
 no_list: true
 type: docs
 icon: true
