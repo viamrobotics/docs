@@ -150,7 +150,7 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 ### Crop
 
-The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`).
+The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`). You can provide these points as pixel values or as a decimal proportion of total pixels in each dimension. The origin (0, 0) occupies the top left pixel of the image; X values increase as you move right, Y values increase as you move down.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -174,9 +174,9 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
 ```
 
 {{% /tab %}}
-{{% tab name="Coordinate Example" %}}
+{{% tab name="Pixel Coordinate Example" %}}
 
-If you have a 100 x 200 image, and you want to crop to a box between the points (30, 40) and (60,80), the following would suffice:
+Assume a 100 x 200 image. To crop the image to a box between points (30, 40) and (60,80), specify the coordinates using pixel values:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -197,9 +197,9 @@ If you have a 100 x 200 image, and you want to crop to a box between the points 
 ```
 
 {{% /tab %}}
-{{% tab name="Proportion Example" %}}
+{{% tab name="Proportional Coordinate Example" %}}
 
-If you have a 100 x 200 image, and you want to crop to a box between the points (30, 40) and (60,80), the following would suffice:
+To crop an image to a box that occupies the central 50% of the image, specify proportional coordinates [(0.25, 0.25), (0.75, 0.75)]:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -208,10 +208,10 @@ If you have a 100 x 200 image, and you want to crop to a box between the points 
     {
       "type": "crop",
       "attributes": {
-        "x_min_px": 0.3,
-        "y_min_px": 0.2,
-        "x_max_px": 0.6,
-        "y_max_px": 0.4,
+        "x_min_px": 0.25,
+        "y_min_px": 0.25,
+        "x_max_px": 0.75,
+        "y_max_px": 0.75,
         "overlay_crop_box": false
       }
     }
@@ -219,16 +219,28 @@ If you have a 100 x 200 image, and you want to crop to a box between the points 
 }
 ```
 
+{{< alert title="Tip" color="tip" >}}
+
+To convert pixel coordinates to proportional coordinates, divide the X value by the image's width, and the Y value by the image's height.
+For instance, in a 100 x 200 image, the bounding box specified by pixel values [(25, 50), (75, 150)] can be translated to proportional coordinates using the following expression:
+
+```
+[(25 / 100, 50 / 200), (75 / 100, 150 / 200)]
+```
+
+This calculation yields proportional coordinates of [(0.25, 0.25), (0.75, 0.75)].
+{{< /alert >}}
+
 {{% /tab %}}
 {{< /tabs >}}
 
 **Attributes:**
 
-- `x_min_px`: The x coordinate or the relative proportion of the top left point of the rectangular area to crop the image to.
-- `y_min_px`: The y coordinate or the relative proportion of the top left point of the rectangular area to crop the image to.
-- `x_max_px`: The x coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
-- `y_max_px`: The y coordinate or the relative proportion of the bottom right point of the rectangular area to crop the image to.
-- `overlay_crop_box`: Set to `true` to not actually carry out the crop, but instead overlay the cropping box on the original image and visualize where the crop would be applied.
+- `x_min_px`: The x pixel or proportional coordinate of the top left corner of the crop area.
+- `y_min_px`: The y pixel or proportional coordinate of the top left corner of the crop area.
+- `x_max_px`: The x pixel or proportional coordinate of the bottom right point of the crop area.
+- `y_max_px`: The y pixel or proportional coordinate of the bottom right point of the crop area.
+- `overlay_crop_box`: When `true`, instead of cropping, overlays the cropping box on the original image to visualize where the crop would be applied.
 
 ### Detections
 
