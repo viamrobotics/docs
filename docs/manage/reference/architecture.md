@@ -1,6 +1,6 @@
 ---
 linkTitle: "Architecture of a machine"
-title: "Viam Architecture"
+title: "Viam architecture"
 weight: 65
 layout: "docs"
 type: "docs"

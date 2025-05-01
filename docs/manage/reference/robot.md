@@ -1,6 +1,6 @@
 ---
-title: "Manage Machines with Viam's Machine Management API"
-linkTitle: "Machine Management API"
+title: "Manage machines with Viam's machine management API"
+linkTitle: "Machine management API"
 weight: 700
 type: "docs"
 layout: "empty"

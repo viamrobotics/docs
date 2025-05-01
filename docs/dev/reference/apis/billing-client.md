@@ -1,6 +1,6 @@
 ---
-title: "Retrieve billing information with Viam's Billing Client API"
-linkTitle: "Billing Client"
+title: "Retrieve billing information with Viam's billing client API"
+linkTitle: "Billing client"
 weight: 90
 type: "docs"
 description: "Use the billing client API to retrieve billing information from the Viam app."

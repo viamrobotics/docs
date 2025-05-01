@@ -1,6 +1,6 @@
 ---
-title: "Data Management Service API"
-linkTitle: "Data Management"
+title: "Data management service API"
+linkTitle: "Data management"
 weight: 10
 type: "docs"
 description: "Give commands to your data management service to sync data stored on the machine it is deployed on to the cloud."
