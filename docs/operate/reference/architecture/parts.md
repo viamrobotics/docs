@@ -1,5 +1,5 @@
 ---
-title: "Machine architecture: parts"
+title: "Machine architecture: Parts"
 linkTitle: "Parts, sub-parts, remotes"
 weight: 40
 type: "docs"
