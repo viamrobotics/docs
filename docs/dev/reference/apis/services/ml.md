@@ -1,6 +1,6 @@
 ---
 title: "ML model service API"
-linkTitle: "ML Model"
+linkTitle: "ML model"
 weight: 30
 type: "docs"
 tags: ["data management", "ml", "model training"]

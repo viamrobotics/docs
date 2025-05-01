@@ -1,6 +1,6 @@
 ---
-title: "SLAM Service Background"
-linkTitle: "SLAM Technical"
+title: "SLAM service background"
+linkTitle: "SLAM technical"
 weight: 70
 type: "docs"
 draft: true

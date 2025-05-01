@@ -1,6 +1,6 @@
 ---
-title: "Upload and Retrieve Data with Viam's Data Client API"
-linkTitle: "Data Client"
+title: "Upload and retrieve data with Viam's data client API"
+linkTitle: "Data client"
 weight: 10
 type: "docs"
 description: "Use the data client API to upload and retrieve data directly to the Viam app."

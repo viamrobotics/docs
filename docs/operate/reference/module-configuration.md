@@ -1,6 +1,6 @@
 ---
-title: "Modular Resource and Module Configuration Details"
-linkTitle: "Module Configuration"
+title: "Modular resource and module configuration details"
+linkTitle: "Module configuration"
 weight: 40
 no_list: true
 type: docs

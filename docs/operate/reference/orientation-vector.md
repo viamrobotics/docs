@@ -1,6 +1,6 @@
 ---
-title: "Orientation Vector"
-linkTitle: "Orientation Vector"
+title: "Orientation vector"
+linkTitle: "Orientation vector"
 weight: 190
 type: "docs"
 description: "A description of Viam's orientation vector object."

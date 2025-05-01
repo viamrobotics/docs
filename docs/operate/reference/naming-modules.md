@@ -1,6 +1,6 @@
 ---
-title: "Valid Module Identifiers"
-linkTitle: "Module Naming"
+title: "Valid module identifiers"
+linkTitle: "Module naming"
 type: "docs"
 weight: 25
 images: ["/registry/module-puzzle-piece.svg"]
