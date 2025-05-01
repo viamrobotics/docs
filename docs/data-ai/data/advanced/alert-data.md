@@ -125,8 +125,8 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
           "condition": {
             "evals": [
               {
-                "operator": "<lt|gt|lte|gte|eq|neq>",
-                "value": <object, string, or int>
+                "operator": "<lt|gt|lte|gte|eq|neq|regex>",
+                "value": <object, string, bool, regex, or int>
               }
             ]
           }
@@ -215,92 +215,27 @@ The following attributes are available for triggers:
 | `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `part_data_ingested`, `conditional_data_ingested`.</li><li>`data_types`: Required with `type` `part_data_ingested`. The data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required with `type` `conditional_data_ingested`. See [Conditions](#conditions) for more information. </li></ul> |
 | `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
 
-### Conditions
-
-The `conditional` object for the `conditional_data_ingested` trigger includes the following options:
+The `conditions` object for the `conditional_data_ingested` trigger includes the following options:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `data_capture_method` | string | **Required** | The method of data capture to trigger on. <br> Example: `sensor:<name-of-component>:Readings`. |
-| `condition` | object | Optional | Any additional conditions for the method to fire the trigger. Leave out this object for the trigger to fire any time there is data synced. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: An object, string, or integer that specifies the value of the method of the condition, along with the key or nested keys of the measurements in data capture. </li></ul></li></ul> |
+| `conditions` | object | Optional | Conditions that, when true, fire the trigger. Evaluated each time data syncs from the linked component. When this object is empty or not present, the trigger fires each time data syncs from the linked component. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: An object containing a single field and value. The field specifies the path, in the synced data, to the left operand of the conditional. For nested fields, use periods as separators or define the nested structure in JSON. The value specifies an object, string, boolean, regular expression, or integer used as a right operand in the conditional. </li></ul></li></ul> |
 
 Options for `operator`:
 
-| Name  | Description              |
-| ----- | ------------------------ |
-| `lt`  | Less than                |
-| `gt`  | Greater than             |
-| `lte` | Less than or equal to    |
-| `gte` | Greater than or equal to |
-| `eq`  | Equals                   |
-| `neq` | Does not equal           |
+| Name    | Description                |
+| ------- | -------------------------- |
+| `lt`    | less than                  |
+| `gt`    | greater than               |
+| `lte`   | less than or equal to      |
+| `gte`   | greater than or equal to   |
+| `eq`    | equal to                   |
+| `neq`   | not equal to               |
+| `regex` | matches regular expression |
 
-When configuring triggers to fire on data inside a JSON object, such as data from a sensor's `readings` object, the key you specify is the key inside the `readings` object (without `readings`).
-For example:
-
-{{< tabs >}}
-{{% tab name="1 level of nesting" %}}
-
-If your sensor returns readings of the format `{ "Line-Neutral AC RMS Voltage": 130 }`, the key you would specify is `"Line-Neutral AC RMS Voltage"`:
-
-```json {class="line-numbers linkable-line-numbers"}
-"condition": {
-  "evals": [
-    {
-      "operator": "lt",
-      "value": {
-        "Line-Neutral AC RMS Voltage": 130
-      }
-    }
-  ]
-}
-```
-
-This eval would trigger for the following sensor reading:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "readings": {
-    "Line-Neutral AC RMS Voltage": 100
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="2 levels of nesting" %}}
-
-If your sensor returns readings of the format `{ "coordinate": { "latitude": 50 } }`, the key you would specify is `"coordinate.latitude"`:
-
-```json {class="line-numbers linkable-line-numbers"}
-"condition": {
-  "evals": [
-    {
-      "operator": "lt",
-      "value": {
-        "coordinate": {
-          "latitude": 50
-        }
-      }
-    }
-  ]
-}
-```
-
-This eval would trigger for the following sensor reading:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "readings": {
-    "coordinate": {
-      "latitude": 40
-    }
-  }
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+For more information, see [Conditions](/manage/troubleshoot/alert/#conditions).
 
 5. If using a webhook, write your cloud function or lambda to process the request from `viam-server`.
    You can use your cloud function or lambda to interact with any external API such as, for example, Twilio, PagerDuty, or Zapier.

@@ -184,8 +184,8 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
           "condition": {
             "evals": [
               {
-                "operator": "<lt|gt|lte|gte|eq|neq>",
-                "value": <object, string, or int>
+                "operator": "<lt|gt|lte|gte|eq|neq|regex>",
+                "value": <object, string, bool, regex, or int>
               }
             ]
           }
@@ -286,29 +286,29 @@ The following attributes are available for triggers:
 
 ### Conditions
 
-The `conditional` object for the `conditional_data_ingested` trigger includes the following options:
+The `conditions` object for the `conditional_data_ingested` trigger includes the following options:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `data_capture_method` | string | **Required** | The method of data capture to trigger on. <br> Example: `sensor:<name-of-component>:Readings`. |
-| `condition` | object | Optional | Any additional conditions for the method to fire the trigger. Leave out this object for the trigger to fire any time there is data synced. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: An object, string, or integer that specifies the value of the method of the condition, along with the key or nested keys of the measurements in data capture. </li></ul></li></ul> |
+| `conditions` | object | Optional | Conditions that, when true, fire the trigger. Evaluated each time data syncs from the linked component. When this object is empty or not present, the trigger fires each time data syncs from the linked component. <br> Options: <ul><li>`evals`:<ul><li>`operator`: Logical operator for the condition. </li><li>`value`: An object containing a single field and value. The field specifies the path, in the synced data, to the left operand of the conditional. For nested fields, use periods as separators or define the nested structure in JSON. The value specifies an object, string, boolean, regular expression, or integer used as a right operand in the conditional. </li></ul></li></ul> |
 
 Options for `operator`:
 
-| Name  | Description              |
-| ----- | ------------------------ |
-| `lt`  | Less than                |
-| `gt`  | Greater than             |
-| `lte` | Less than or equal to    |
-| `gte` | Greater than or equal to |
-| `eq`  | Equals                   |
-| `neq` | Does not equal           |
+| Name    | Description                |
+| ------- | -------------------------- |
+| `lt`    | less than                  |
+| `gt`    | greater than               |
+| `lte`   | less than or equal to      |
+| `gte`   | greater than or equal to   |
+| `eq`    | equal to                   |
+| `neq`   | not equal to               |
+| `regex` | matches regular expression |
 
-Examples:
+#### Examples
 
-{{< tabs >}}
-{{% tab name="1 level of nesting" %}}
+The following condition defines a trigger that fires based on the value of the `cpu` field of synced data:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "condition": {
@@ -323,7 +323,7 @@ Examples:
 }
 ```
 
-This eval would trigger for the following sensor reading:
+The following sensor reading fires the trigger, since `80 > 50` is `true`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -333,10 +333,9 @@ This eval would trigger for the following sensor reading:
 }
 ```
 
-{{% /tab %}}
-{{% tab name="2 levels of nesting" %}}
+##### Nested Data
 
-If you are using a different sensor, you may want to trigger on nested data:
+The following condition defines a trigger that fires based on a value nested in the `coordinate.latitude` field of synced data:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "condition": {
@@ -353,7 +352,7 @@ If you are using a different sensor, you may want to trigger on nested data:
 }
 ```
 
-This eval would trigger for the following sensor reading:
+The following sensor reading fires the trigger, since `40 < 50` is `true`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -364,9 +363,6 @@ This eval would trigger for the following sensor reading:
   }
 }
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ### Stop data capture
 
