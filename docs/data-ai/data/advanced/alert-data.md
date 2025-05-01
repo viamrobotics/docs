@@ -212,7 +212,7 @@ The following attributes are available for triggers:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
-| `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `part_data_ingested`, `conditional_data_ingested`.</li><li>`data_types`: Required with `type` `part_data_ingested`. The data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required with `type` `conditional_data_ingested`. See [Conditions](#conditions) for more information. </li></ul> |
+| `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `part_data_ingested`, `conditional_data_ingested`.</li><li>`data_types`: Required with `type` `part_data_ingested`. The data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required with `type` `conditional_data_ingested`. See [Conditions](/manage/troubleshoot/alert/#conditions) for more information. </li></ul> |
 | `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
 
 The `conditions` object for the `conditional_data_ingested` trigger includes the following options:
