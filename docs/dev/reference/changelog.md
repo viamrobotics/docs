@@ -164,7 +164,7 @@ Backward compatibility is maintained for existing configurations.
 
 {{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
 
-[Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
+Managed Processes are now deprecated and will be removed in a future version of `viam-server`.
 Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
 
 {{% /changelog %}}

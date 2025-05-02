@@ -423,58 +423,17 @@ Your local component configuration should look similar to the following:
 ## Start the Freenove server
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
-
-Configure a [_process_](/manage/reference/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
-
-Click the **+** (Create) button next to your main part in the left-hand menu and select **Process**.
-
-In the process configuration panel that appears, click on the name in the top left corner and rename it to `freenove`.
-Fill out the configuration panel as follows:
-
-- **Executable**: The path to Python on your Pi, for example `/usr/bin/python`.
-  If you're not sure what this path should be, run `which python` on your Pi command line to find it.
-- **Arguments**: Type in `main.py` and click **Add argument**.
-  Then type `-tn` and click **Add argument** again.
-  This flag starts the Freenove server without launching Freenove's GUI (which you don't need for this use case).
-- **Working directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code).
-- **Logging**: Toggle to the **on** position so you can view logs for this server process.
-- **Execute once**: Leave this **off** so that the Freenove server will continue to run, and will restart if it crashes.
-
-Click **Save**.
-
-{{<imgproc src="/tutorials/custom-base-dog/process-config.png" resize="400x" declaredimensions=true alt="Screenshot of the Processes subtab of the Config tab, showing a process configured as detailed above." class="shadow">}}
-<br>
-
-{{% expand "Click to see what the processes config looks like in JSON mode." %}}
-
-```json
-  "processes": [
-    {
-      "log": true,
-      "name": "/usr/bin/python",
-      "cwd": "/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server",
-      "args": [
-        "main.py",
-        "-tn"
-      ],
-      "one_shot": false,
-      "id": "freenove"
-    }
-  ]
-```
-
-{{% /expand %}}
-
-{{% alert title="Tip" color="tip" %}}
-
-If you prefer not to start the Freenove server every time the machine boots, you can instead start it manually from your command line.
-
-SSH into the Pi.
-From the <file>home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/</file> directory, start the Freenove robot dog server:
+You can do this manually by SSHing into the Pi and running the following command from the <file>home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/</file> directory:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo python main.py -tn
 ```
+
+Alternatively you can add this command to your module's `run.sh` file.
+That way the Freenove robot dog server will start running when the module starts.
+
+{{% alert title="Tip" color="tip" %}}
+
 
 {{% /alert %}}
 
