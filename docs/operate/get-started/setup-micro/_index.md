@@ -292,7 +292,7 @@ To configure OTA updates:
    {{< tabs >}}
    {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers" data-line="3-10"}
+```json {class="line-numbers linkable-line-numbers" data-line="3-11"}
 {
   "services": [
     {
