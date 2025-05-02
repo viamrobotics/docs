@@ -434,7 +434,6 @@ That way the Freenove robot dog server will start running when the module starts
 
 {{% alert title="Tip" color="tip" %}}
 
-
 {{% /alert %}}
 
 ## Driving the robot from the Viam app
