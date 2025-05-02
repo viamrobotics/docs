@@ -1,13 +1,14 @@
 ---
 title: "Move an arm without code"
 linkTitle: "Move an arm with no code"
-weight: 20
+weight: 30
 type: "docs"
 layout: "docs"
 description: "Move an arm without code from the Viam app interface."
 ---
 
 You can move an arm without code from the Viam app interface.
+This is a good way to quickly test that your arm is working before writing code to move it.
 
 ## Prerequisites
 
@@ -39,12 +40,9 @@ See [Configure an arm](/operate/mobility/move-arm/configure-arm/) for instructio
 
 1. On your arm component's configuration card, select the **TEST** tab.
 
-1. Enter joint positions or end effector poses, then click **Execute**.
-   Or, use the **Quick move** interface to move each joint in 5 degree increments.
-
-{{% alert title="Caution" color="caution" %}}
-Be careful when moving your robot arm.
-Before moving the arm, ensure it has enough space and that there are no obstacles or people near the arm.
+   {{% alert title="Caution" color="caution" %}}
+   Be careful when moving your robot arm.
+   Before moving the arm, ensure it has enough space and that there are no obstacles or people near the arm.
 
 Keep in mind:
 
@@ -52,3 +50,17 @@ Keep in mind:
 - Moving the arm to a new pose can cause the arm to move in unexpected ways.
 
 {{% /alert %}}
+
+1. Enter joint positions or end effector poses, then click **Execute**.
+   Or, use the **Quick move** interface to move each joint in 5 degree increments.
+
+   {{<imgproc src="/components/arm/control.png" resize="x1100" declaredimensions=true alt="" style="max-width:600px" class="shadow imgzoom" >}}
+
+   {{% alert title="Info" color="info" %}}
+
+The Viam app control interface uses the [arm API](/dev/reference/apis/components/arm/) to move the arm.
+You can also use the arm API to move the arm in code, though it is not recommended for complex movements because it does not take into account obstacles or allow for complex motion planning.
+
+{{% /alert %}}
+
+1. To refresh the numbers in the **MoveToJointPositions** or **MoveToPosition** tables, click **Current position**.

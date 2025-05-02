@@ -39,14 +39,13 @@ You can use the following components to augment motion planning and navigation:
 
 ## The frame system
 
-Viam's frame system is a way to describe the spatial relationship between the components in your robot.
-
-Each component has a `frame` that describes its position and orientation relative to the world or to other components.
-
-For example, an arm component might have a `frame` that describes its position and orientation relative to the world.
-A gripper component might have a `frame` that describes its position and orientation relative to an arm.
-
+Viam's [frame system](/operate/reference/services/frame-system/) is a way to describe the spatial relationship between the components in your robot.
 The motion service uses the frame system to plan the motion of components.
+
+For example, if you command an arm to move to coordinates of `(300, 0, 0)` millimeters, this has no meaning unless you have defined where the origin `(0, 0, 0)` of the coordinate system is, as well as which directions correspond to the x, y, and z axes.
+
+To give the necessary context, you define the arm's `frame` to describe its position and orientation relative to the world.
+If you also have a gripper component, you define the gripper's `frame` to describe its position and orientation relative to the arm, so that when the arm moves, the motion service knows where the gripper is as well.
 
 ## Visualizing components and frames
 
