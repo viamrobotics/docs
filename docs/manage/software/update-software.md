@@ -20,8 +20,8 @@ To update the firmware on your microcontroller, see [Over-the-air updates](/oper
 
 ## Test and update software
 
-You can either use fragment tags for testing or manually overwrite the version of the module or package for a subset of machines.
-We strongly recommend that you test updates on a subset of machines before deploying it to all machines.
+You can either use fragment tags for testing or manually overwrite the version of the module or package or the configuration for a subset of machines.
+We strongly recommend that you test changes on a subset of machines before deploying it to all machines.
 
 {{< tabs >}}
 {{< tab name="Version tags (recommended)" >}}
@@ -39,7 +39,7 @@ On your fragment's page, click on **Versions** in the menu bar and add a tag cal
 For each machine that uses the fragment, update its configuration.
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
-**Edit the fragment** and change the version of your module or package in the development fragment.
+**Edit the fragment** and change the version of your module or package or the configuration in the development fragment.
 This will create a new version of the fragment.
 
 For example:
@@ -87,20 +87,16 @@ Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Test the new version of your module or package.**
+**Test your changes.**
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
 **Update the fragment.**
 
-When you are satisfied that your module or package works as expected, update your fragment.
+When you are satisfied that your changes work as expected, click the **...** menu on the resource you updated and click **Merge changes**.
+This will create a new version of your fragment.
 
-For example:
-
-````json {class="line-numbers linkable-line-numbers"}
-{
-  "version": "0.0.7"
-}
-```
+Fragment tags remain unchanged.
+If your machines use a fragment tag, you must update the fragment tag separately to point to the new version.
 
 All machines configured with your fragment will update when they next check for configuration updates.
 
@@ -195,4 +191,4 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
-````
+```
