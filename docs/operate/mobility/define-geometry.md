@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Specify your robot's dimensions and how it is positioned in space."
+draft: true
 ---
 
 Before you can use the motion planning or navigation with your machine, you need to create a description of your machine's dimensions and how it is positioned relative to its surroundings.
