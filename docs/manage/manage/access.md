@@ -92,10 +92,8 @@ This means everyone who has access can change a fleet's configuration, even whil
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
-{{< alert title="Simultaneous config edits" color="caution" >}}
-If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
-
-Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
-{{< /alert >}}
+{{% hiddencontent %}}
+If someone updates the configuration and saves it while you are editing, Viam will show you a warning that your configuration is out of date when you try to save.
+{{% /hiddencontent %}}
 
 Machine [configuration](/operate/get-started/supported-hardware/) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
