@@ -6,6 +6,8 @@ weight: 20
 type: "docs"
 layout: "docs"
 aliases:
+  - /operate/mobility/define-geometry/
+  - /operate/mobility/define-obstacles/
 ---
 
 If you have a gripper, camera, or other components attached to your arm, you can configure them to move with the arm.
