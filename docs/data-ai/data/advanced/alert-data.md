@@ -45,7 +45,7 @@ You can configure triggers to alert in the following scenarios:
 
         {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow" >}}
 
-        For more information, see [Conditions](/manage/troubleshoot/alert/#conditions).
+        For more information, see [Conditions](/data-ai/reference/triggers-configuration#conditions).
 
 1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
 
@@ -62,9 +62,8 @@ You can configure triggers to alert in the following scenarios:
         {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
      1. Add the URL of your cloud function.
      1. Configure the time between notifications.
-     1. Write your cloud function to process the [webhook request](/data-ai/reference/triggers-configuration#webhooks).
+     1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration#webhook-attributes).
         Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
-        For more information about how to work with webhooks, see [Webhooks](/data-ai/reference/triggers-configuration#webhooks).
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}

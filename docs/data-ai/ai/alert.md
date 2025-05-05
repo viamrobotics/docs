@@ -154,9 +154,8 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
         {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
      1. Add the URL of your cloud function.
      1. Configure the time between notifications.
-     1. Write your cloud function to process the [webhook request](/data-ai/reference/triggers-configuration#webhooks).
+     1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration#webhook-attributes).
         Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
-        For more information about how to work with webhooks, see [Webhooks](/data-ai/reference/triggers-configuration#webhooks).
 
 1. Configure the time between notifications.
 
