@@ -235,7 +235,7 @@ In the **Type** dropdown, choose one of the following types:
 
      {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow" >}}
 
-     For more information, see [Conditions](/data-ai/reference/triggers-configuration/#conditions).
+     For more information, see [Conditional attributes](/data-ai/reference/triggers-configuration/#conditional-attributes).
 
 {{< /tablestep >}}
 {{< tablestep number=4 >}}
@@ -370,7 +370,7 @@ Click the **Save** button in the top right corner of the page to save your confi
         {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
      1. Add the URL of your cloud function.
      1. Configure the time between notifications.
-     1. Write your cloud function to process the [webhook request](/data-ai/reference/triggers-configuration/#webhooks).
+     1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
         Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
 {{% /tab %}}
@@ -416,7 +416,7 @@ For more information about trigger configuration, see [Triggers](/data-ai/refere
 3. Select **Part is offline** as the trigger **Type**.
 
 4. Add **Webhooks** or **Emails** and configure the time between notifications.
-   For more information on webhooks, see [Webhooks](/data-ai/reference/triggers-configuration/#webhooks).
+   For more information on webhooks, see [Webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}

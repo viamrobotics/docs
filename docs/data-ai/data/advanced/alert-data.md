@@ -45,7 +45,7 @@ You can configure triggers to alert in the following scenarios:
 
         {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow" >}}
 
-        For more information, see [Conditions](/data-ai/reference/triggers-configuration/#conditions).
+        For more information, see [Conditional attributes](/data-ai/reference/triggers-configuration/#conditional-attributes).
 
 1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
 
