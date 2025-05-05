@@ -162,7 +162,7 @@ The Crop transform trims an image to a rectangular area specified by two points:
     {
       "type": "crop",
       "attributes": {
-        "x_min_px": <int> or <float>,
+        "x_min_px": <int|float>,
         "y_min_px": <int> or <float>,
         "x_max_px": <int> or <float>,
         "y_max_px": <int> or <float>,
