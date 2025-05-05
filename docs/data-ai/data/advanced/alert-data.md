@@ -8,7 +8,7 @@ description: "Use triggers to send email notifications or webhook requests when 
 prev: "/data-ai/data/export/"
 ---
 
-You can use triggers to send alerts via email or webhook when data syncs from a machine.
+You can use triggers to send alerts by email or webhook when data syncs from a machine.
 For example, a trigger could alert you when a sensor detects a temperature greater than 100 degrees Celsius.
 
 You can configure triggers to alert in the following scenarios:
