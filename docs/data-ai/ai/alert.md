@@ -9,7 +9,7 @@ description: "Use triggers to send email notifications when inferences are made.
 
 Triggers can send alerts in the form of email notifications or webhook requests when a service makes a specific detection or classification.
 
-For example, a trigger could alert you when a camera feed detects an anomoly.
+For example, a trigger could alert you when a camera feed detects an anomaly.
 
 ### Prerequisites
 

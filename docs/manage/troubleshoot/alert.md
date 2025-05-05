@@ -417,7 +417,7 @@ For more information about trigger configuration, see [Triggers](/data-ai/refere
 3. Select **Part is offline** as the trigger **Type**.
 
 4. Add **Webhooks** or **Emails** and configure the time between notifications.
-   For more information on webhooks, see [Webhooks](#webhooks).
+   For more information on webhooks, see [Webhooks](/data-ai/reference/triggers-configuration#webhooks).
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}
