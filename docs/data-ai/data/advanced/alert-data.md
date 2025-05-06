@@ -52,14 +52,14 @@ You can configure triggers to alert in the following scenarios:
    - To add an email notification:
 
      1. Click **Add Email**.
-        {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email in the Viam app." class="shadow" >}}
+        {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="A trigger configured with an example email in the Viam app." class="shadow" >}}
      1. Add the email you wish to be notified whenever this trigger is triggered.
      1. Configure the time between notifications.
 
    - To add a webhook notification:
 
      1. Click **Add Webhook**.
-        {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
+        {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="A trigger configured with an example URL in the Viam app." class="shadow" >}}
      1. Add the URL of your cloud function.
      1. Configure the time between notifications.
      1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
@@ -123,7 +123,7 @@ To configure your trigger in **JSON** mode, use the following JSON template:
 }
 ```
 
-For more information about trigger configuration, see [Triggers](/data-ai/reference/triggers-configuration/).
+For more information about triggers, see [Trigger Configuration](/data-ai/reference/triggers-configuration/).
 
 {{% /tab %}}
 {{< /tabs >}}

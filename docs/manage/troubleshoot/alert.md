@@ -329,7 +329,7 @@ Use the following template in your `components` JSON to configure the top-level 
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information about trigger configuration, see [Triggers](/data-ai/reference/triggers-configuration/).
+For more information about triggers, see [Trigger configuration](/data-ai/reference/triggers-configuration/).
 
 ### Stop data capture
 
@@ -370,7 +370,7 @@ Click the **Save** button in the top right corner of the page to save your confi
         {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
      1. Add the URL of your cloud function.
      1. Configure the time between notifications.
-     1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
+     1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
         Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
 {{% /tab %}}
@@ -399,7 +399,7 @@ Use the following template in your `components` JSON to configure the top-level 
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information about trigger configuration, see [Triggers](/data-ai/reference/triggers-configuration/).
+For more information about triggers, see [Trigger configuration](/data-ai/reference/triggers-configuration/).
 
 ### Part is offline
 
@@ -444,4 +444,4 @@ Use the following template in your `components` JSON to configure the top-level 
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information about trigger configuration, see [Triggers](/data-ai/reference/triggers-configuration/).
+For more information about triggers, see [Trigger configuration](/data-ai/reference/triggers-configuration/).
