@@ -159,7 +159,7 @@ The following sensor reading fires the trigger, since `40 < 50` is `true`:
 
 ## Webhook attributes
 
-## Request types
+### Request types
 
 When an event occurs, Viam sends a HTTP request to the URL you specified for the trigger:
 
