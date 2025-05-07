@@ -19,7 +19,7 @@ SLAM Algorithms can have varying levels of resource requirements in order to run
 In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms for machines in the cloud as well as management of the maps generated in their location.
 
 CloudSLAM can be used with both a live machine or with previously captured data in your location.
-In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/data-ai/capture-data/capture-sync/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
+In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/data-ai/data/edge/capture-sync/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
 The CloudSLAM server will then process that data and produce a map that can then be used on any machine in your location.
 When using an [offline machine](#using-previously-captured-data-offline-mode), you can select data from specific sensors over a period of time to build a map with.
 
@@ -76,8 +76,8 @@ To use CloudSLAM on a live machine, you must meet the following requirements:
 To use CloudSLAM you must enable data capture and configure your `cloudslam-wrapper` SLAM service:
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
-Note that when the [data management service](/data-ai/capture-data/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#stop-data-capture-or-data-sync) once you have finished your SLAM session.
+Note that when the [data management service](/data-ai/data/edge/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/data/edge/capture-sync/#stop-data-capture-or-data-sync) once you have finished your SLAM session.
 {{< /alert >}}
 
 {{< tabs name="Create new map">}}
@@ -92,7 +92,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
    On the panel that appears, you can manage the capturing and syncing functions.
    You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data.
-   See the [data management service](/data-ai/capture-data/capture-sync/) for more information.
+   See the [data management service](/data-ai/data/edge/capture-sync/) for more information.
 
 2. Enable data capture for your camera, and for your movement sensor if you would like to use IMU data, odometry data, or both:
 
@@ -183,7 +183,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 This example JSON configuration:
 
 - adds the `viam:rplidar`, `viam:cartographer`, and `viam:cloudslam-wrapper` modules
-- configures the `viam:slam:cartographer`, `viam:cloudslam-wrapper:cloudslam`, and the [data management](/data-ai/capture-data/capture-sync/) services
+- configures the `viam:slam:cartographer`, `viam:cloudslam-wrapper:cloudslam`, and the [data management](/data-ai/data/edge/capture-sync/) services
 - adds a `viam:lidar:rplidar` camera with data capture configured
 
   ```json {class="line-numbers linkable-line-numbers"}

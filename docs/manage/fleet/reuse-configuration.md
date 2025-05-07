@@ -39,7 +39,7 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 {{% tablestep number=2 %}}
 **Add and configure all the resources** you want to use on your machines.
 
-Fragments support all available resources except [triggers](/data-ai/data/advanced/alert-data/).
+Fragments support all available resources except [triggers](/data-ai/data/react/alert-data/).
 You can even add other fragments inside a fragment.
 
 {{< alert title="Tip" color="tip" >}}
@@ -296,7 +296,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{< /expand >}}
 {{< expand "Modify data sync settings" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/data-ai/capture-data/capture-sync/) named `data-management` in the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/data-ai/data/edge/capture-sync/) named `data-management` in the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -341,7 +341,7 @@ The `version` field supports the following values:
 
 {{< /expand >}}
 {{< expand "Set a package version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a package](/data-ai/ai/deploy/#deploy-a-specific-version-of-an-ml-model) named `package_name` from the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a package](/data-ai/ai/train/deploy/#deploy-a-specific-version-of-an-ml-model) named `package_name` from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [

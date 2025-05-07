@@ -132,7 +132,7 @@ Data is captured and synced to the Viam Cloud as follows:
 
 If a device has intermittent internet connectivity, data is stored locally until the machine can reconnect to the cloud.
 
-For more information, see [Data management service](/data-ai/capture-data/capture-sync/).
+For more information, see [Data management service](/data-ai/data/edge/capture-sync/).
 
 ## Basic machine example
 

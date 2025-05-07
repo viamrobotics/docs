@@ -52,6 +52,6 @@ If you need to package and deploy a module using Docker, for example if your mod
 
 ## Design a custom ML model
 
-When working with the [ML model service](/dev/reference/apis/services/ml/), you can deploy an [existing model](/data-ai/ai/deploy/) or [train your own model](/data-ai/ai/train/).
+When working with the [ML model service](/dev/reference/apis/services/ml/), you can deploy an [existing model](/data-ai/ai/train/deploy/) or [train your own model](/data-ai/ai/train/train/).
 
 However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/dev/reference/apis/services/vision/), you can also [design your own ML model](/data-ai/reference/mlmodel-design/) to better match your specific use case.

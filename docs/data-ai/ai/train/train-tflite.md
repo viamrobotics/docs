@@ -1,6 +1,6 @@
 ---
-linkTitle: "Train TFlite model"
-title: "Train a TFlite model"
+linkTitle: "TFlite model"
+title: "Train TFlite model"
 weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
@@ -39,7 +39,7 @@ Follow this guide to use your image data to train an ML model, so that your mach
 
 {{% expand "a dataset with labels" %}}
 
-Follow the guide to [create a dataset](/data-ai/ai/create-dataset/).
+Follow the guide to [create a dataset](/data-ai/ai/train/create-dataset/).
 
 {{% /expand%}}
 
@@ -131,7 +131,7 @@ If the results exceed the confidence threshold, the **Run model** section shows 
 You can test both detection models and classifier models using the following resources together:
 
 - [a camera](/operate/reference/components/camera/)
-- [a `tflite_cpu` ML model](/data-ai/ai/deploy/) with the model you just trained
+- [a `tflite_cpu` ML model](/data-ai/ai/train/deploy/) with the model you just trained
 - [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model
 
 ## Iterate on your ML model
@@ -145,16 +145,16 @@ Using this approach, each subsequent model version becomes more accurate than th
 
 To capture images of edge cases and re-train your model using those images, complete the following steps:
 
-1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/ai/create-dataset/#capture-images).
+1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/ai/train/create-dataset/#capture-images).
 
 1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
 
-1. Repeat the [steps above](/data-ai/ai/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
+1. Repeat the [steps above](/data-ai/ai/train/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
 
 ## Next steps
 
 Now your machine can make inferences about its environment.
-The next step is to [deploy](/data-ai/ai/deploy/) the ML model and then [act](/data-ai/ai/act/) or [alert](/data-ai/ai/alert/) based on these inferences.
+The next step is to [deploy](/data-ai/ai/train/deploy/) the ML model and then [act](/data-ai/ai/react/act/) or [alert](/data-ai/ai/react/alert/) based on these inferences.
 
 See the following tutorials for examples of using machine learning models to make your machine do things based on its inferences about its environment:
 

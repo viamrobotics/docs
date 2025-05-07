@@ -24,7 +24,7 @@ Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [vision service](/operate/reference/services/vision/) and the [ML model service](/data-ai/ai/deploy/) to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [vision service](/operate/reference/services/vision/) and the [ML model service](/data-ai/ai/train/deploy/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
 ![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
@@ -88,7 +88,7 @@ This tutorial uses a pre-trained Machine Learning model from the Viam Registry c
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-If you want to train your own model instead, follow the instructions to [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/).
+If you want to train your own model instead, follow the instructions to [train a TFlite](/data-ai/ai/train/train-tflite/) or [another model](/data-ai/ai/train/train/).
 
 1. **Configure the ML model service**
 

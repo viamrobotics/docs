@@ -1,5 +1,5 @@
 ---
-title: "Conditional cloud sync"
+title: "Conditional sync"
 linkTitle: "Conditional sync"
 description: "Trigger cloud sync to sync captured data when custom conditions are met."
 type: "docs"
@@ -15,17 +15,15 @@ aliases:
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
-next: /data-ai/capture-data/advanced/advanced-data-capture-sync/
+next: /data-ai/reference/advanced-data-capture-sync/
 date: "2024-12-04"
 ---
-
-### Conditional sync
 
 By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
 You can additionally configure sync to only happen when certain conditions are met.
 For example:
 
-- Only sync when on WiFi
+- Only sync when connected to Wi-Fi
 - Sync when conditions are met or events are detected
 - Sync during certain time windows
 
@@ -44,7 +42,7 @@ You can also view [trigger-sync-examples module](https://github.com/viam-labs/tr
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
+Add the [data management service](/data-ai/data/edge/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -290,7 +288,7 @@ You have now configured sync to happen during a specific time slot.
 
 ## Test your sync configuration
 
-To test your setup, [configure a webcam](/operate/reference/components/camera/webcam/) or another component and [enable data capture on the component](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources).
+To test your setup, [configure a webcam](/operate/reference/components/camera/webcam/) or another component and [enable data capture on the component](/data-ai/data/edge/capture-sync/#configure-data-capture-and-sync-for-individual-resources).
 Make sure to physically connect any hardware parts to the computer controlling your machine.
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.

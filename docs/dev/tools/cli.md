@@ -399,7 +399,7 @@ The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the
 
 You cannot use filter arguments such as `--start` or `--end` with the `ids` argument.
 
-See [Create a dataset](/data-ai/ai/create-dataset/) for more information.
+See [Create a dataset](/data-ai/ai/train/create-dataset/) for more information.
 
 ##### Using the `filter` argument
 
@@ -430,7 +430,7 @@ Removing the `viam data export` string, you can use the same filter parameters (
 
 You cannot use the `--binary-data-ids` argument when using `filter`.
 
-See [Create a dataset](/data-ai/ai/create-dataset/) for more information.
+See [Create a dataset](/data-ai/ai/train/create-dataset/) for more information.
 
 ### `data`
 
@@ -499,8 +499,8 @@ done
 | `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
 | `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
 | `tag` | Add or remove tags from data matching the IDs or filter. | `ids`, `filter` |
-| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
-| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
+| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/cloud/query/#configure-data-query). | - |
+| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/cloud/query/#configure-data-query). | - |
 | `delete binary` | Delete binary data from the Viam Cloud. | - |
 | `delete tabular` | Delete tabular data from the Viam Cloud. | - |
 | `--help` | Return help | - |
@@ -1309,7 +1309,7 @@ You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment v
 
 ### `training-script`
 
-Manage training scripts for [custom ML training](/data-ai/ai/train/).
+Manage training scripts for [custom ML training](/data-ai/ai/train/train/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>

@@ -90,13 +90,13 @@ Provide at least the width and height values to start.
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/data/edge/capture-sync/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the camera component with the following services:
 
-- [Data management service](/data-ai/capture-data/capture-sync/): To capture and sync the camera's data
+- [Data management service](/data-ai/data/edge/capture-sync/): To capture and sync the camera's data
 - [Vision service](/operate/reference/services/vision/): To use computer vision to interpret the camera stream
 - [SLAM service](/operate/reference/services/slam/): for mapping
 

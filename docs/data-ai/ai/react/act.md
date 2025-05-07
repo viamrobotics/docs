@@ -1,11 +1,11 @@
 ---
-linkTitle: "Act based on inferences"
-title: "Act based on inferences"
+linkTitle: "Autonomous decision-making"
+title: "Autonomous decision-making"
 weight: 70
 layout: "docs"
 type: "docs"
 description: "Use the vision service API to act based on inferences."
-next: "/data-ai/ai/advanced/upload-external-data/"
+next: "/data-ai/ai/train/upload-external-data/"
 ---
 
 You can use the [vision service API](/dev/reference/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.

@@ -1,7 +1,7 @@
 ---
-linkTitle: "Filter data"
+linkTitle: "Filter"
 title: "Filter data before sync"
-weight: 13
+weight: 25
 layout: "docs"
 type: "docs"
 description: "Use filtering to collect and sync only certain images."
@@ -96,7 +96,7 @@ You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/
 **(Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
-If you need to trigger sync in a different way, see [Conditional cloud sync](/data-ai/capture-data/conditional-sync/) for a documented example of syncing data only at certain times of day.
+If you need to trigger sync in a different way, see [Conditional cloud sync](/data-ai/data/edge/conditional-sync/) for a documented example of syncing data only at certain times of day.
 
 {{% /tablestep %}}
 {{< /table >}}

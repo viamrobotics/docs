@@ -1,6 +1,6 @@
 ---
-linkTitle: "Run inference"
-title: "Run inference on a model"
+linkTitle: "Vision service"
+title: "Inference with the vision service"
 weight: 50
 layout: "docs"
 type: "docs"
@@ -37,7 +37,7 @@ One vision service you can use to run inference on a camera stream if you have a
 ### Configure an mlmodel vision service
 
 Add the `vision / ML model` service to your machine.
-Then, from the **Select model** dropdown, select the name of the ML model service you configured when [deploying](/data-ai/ai/deploy/) your model (for example, `mlmodel-1`).
+Then, from the **Select model** dropdown, select the name of the ML model service you configured when [deploying](/data-ai/ai/train/deploy/) your model (for example, `mlmodel-1`).
 
 **Save** your changes.
 

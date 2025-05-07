@@ -1,5 +1,5 @@
 ---
-linkTitle: "Query data"
+linkTitle: "Query"
 title: "Query data"
 weight: 20
 layout: "docs"
@@ -17,7 +17,7 @@ date: "2024-12-03"
 description: "Query sensor data that you have synced to the Viam app using the Viam app with SQL or MQL."
 ---
 
-You can use the data management service to [capture sensor data](/data-ai/capture-data/capture-sync/) from any machine and sync that data to the cloud.
+You can use the data management service to [capture sensor data](/data-ai/data/edge/sync/) from any machine and sync that data to the cloud.
 Then, you can follow the steps on this page to query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
@@ -32,7 +32,7 @@ You can then run queries against that data to search for outliers or edge cases,
 ### Prerequisites
 
 You must have captured sensor data.
-See [capture sensor data](/data-ai/capture-data/capture-sync/) for more information.
+See [capture sensor data](/data-ai/data/edge/capture-sync/) for more information.
 
 ### Query from the app
 
@@ -218,7 +218,7 @@ Query results are displayed as a [JSON array](https://json-schema.org/understand
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
+Follow the guide to [capture sensor data](/data-ai/data/edge/capture-sync/).
 
 {{% /expand%}}
 
@@ -353,4 +353,4 @@ db.readings.aggregate(
 
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
-On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/data-ai/reference/data-client/) or [visualize it](/data-ai/data/visualize/).
+On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/data-ai/reference/data-client/) or [visualize it](/data-ai/data/cloud/visualize/).

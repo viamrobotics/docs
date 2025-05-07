@@ -1,7 +1,7 @@
 ---
-linkTitle: "Process Data"
-title: "Process Data"
-weight: 200
+linkTitle: "Get started"
+title: "Get started"
+weight: 100
 layout: "empty"
 type: "docs"
 empty_node: true

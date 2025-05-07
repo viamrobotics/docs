@@ -242,7 +242,7 @@ We found that if set up this way, the following positions accurately show the co
 
 ### 2. Configure the ML Model and vision services to use the detector
 
-The [ML model service](/data-ai/ai/deploy/) allows you to deploy a machine learning model to your robot.
+The [ML model service](/data-ai/ai/train/deploy/) allows you to deploy a machine learning model to your robot.
 This tutorial uses a pre-trained machine learning (ML) model from the Viam Registry named [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 This model can detect a variety of objects, which you can find in the provided <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
@@ -422,6 +422,6 @@ Some ideas:
 - Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 - Integrate another ML model that is used to follow a human (when told to do so).
 - Add Lidar and integrate Viam's {{< glossary_tooltip term_id="slam" text="SLAM service" >}} to map the world around it.
-- Use Viam's [Data Management](/data-ai/capture-data/capture-sync/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
+- Use Viam's [Data Management](/data-ai/data/edge/capture-sync/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

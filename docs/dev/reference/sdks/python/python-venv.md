@@ -68,7 +68,7 @@ pip3 install viam-sdk
 
 This installs the Viam Python SDK and all required general dependencies.
 
-If you intend to use the [ML (machine learning) model service](/data-ai/ai/deploy/), install the Python SDK using the `mlmodel` extra:
+If you intend to use the [ML (machine learning) model service](/data-ai/ai/train/deploy/), install the Python SDK using the `mlmodel` extra:
 
 ```sh {class="command-line" data-prompt="$"}
 pip3 install 'viam-sdk[mlmodel]'

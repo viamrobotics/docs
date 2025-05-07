@@ -219,8 +219,8 @@ Modules in the list above are officially supported and maintained by Viam only i
 If you have other hardware you need to integrate with a custom module, continue to [Integrate other hardware](/operate/get-started/other-hardware/).
 If you have configured all your hardware, you can do a variety of things with your machine:
 
-- [Capture data from your machines](/data-ai/capture-data/capture-sync/)
-- [Create a dataset](/data-ai/ai/create-dataset/) and [train an AI model](/data-ai/ai/train-tflite/)
+- [Capture data from your machines](/data-ai/data/edge/capture-sync/)
+- [Create a dataset](/data-ai/ai/train/create-dataset/) and [train an AI model](/data-ai/ai/train/train-tflite/)
 - [Write an app](/operate/control/web-app/) to interact with your machines using any of the Viam SDKs
 - [Deploy control logic to run directly on your machines](/manage/software/control-logic/)
 - [Share the configuration across multiple machines](/manage/fleet/reuse-configuration/)

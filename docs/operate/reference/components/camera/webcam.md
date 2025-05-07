@@ -266,7 +266,7 @@ If you are capturing camera data, it can happen that the camera captures and syn
 If you are using a CSI camera v1.3 or v2.0, or v3.0, use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
 
 For Raspberry Pi AI cameras like the IMX500 AI camera, use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
-For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/ai/run-inference/).
+For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/ai/infer/run-inference/).
 {{% /expand%}}
 
 {{% expand "High CPU usage" %}}
@@ -281,5 +281,5 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/data/edge/capture-sync/" noimage="true" %}}
 {{< /cards >}}

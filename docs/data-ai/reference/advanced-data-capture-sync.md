@@ -1,13 +1,13 @@
 ---
-linkTitle: "Advanced data capture and sync configurations"
-title: "Advanced data capture and sync configurations"
+linkTitle: "Sync configuration"
+title: "Sync configuration"
 tags: ["data management", "data", "services"]
 weight: 10
 layout: "docs"
 type: "docs"
 platformarea: ["data"]
 description: "Advanced data capture and data sync configurations."
-prev: /data-ai/capture-data/conditional-sync/
+prev: /data-ai/data/edge/conditional-sync/
 date: "2025-02-10"
 ---
 
@@ -522,7 +522,7 @@ The following attributes are available for data capture configuration:
 | Name               | Type   | Required? | Description |
 | ------------------ | ------ | --------- | ----------- |
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
-| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). |
+| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/data/edge/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). |
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
 | `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](#capture-to-the-hot-data-store) for faster access. Example: `{ "stored_hours": 24 }` |
 | `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
@@ -705,9 +705,9 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
 Configure how long your synced data remains stored in the cloud:
 
 - **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
-  See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-capture-attributes).
+  See the `retention_policy` field in [data capture configuration attributes](/data-ai/reference/advanced-data-capture-sync/#click-to-view-data-capture-attributes).
 - **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
-  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-management-attributes).
+  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/reference/advanced-data-capture-sync/#click-to-view-data-management-attributes).
 
 ### Sync optimization
 

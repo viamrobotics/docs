@@ -25,32 +25,36 @@ You can also monitor your machines through teleop, power your application logic,
 
 <div class="hoveraction">
 
-{{< how-to-expand "Capture data" "3" "BEGINNER-FRIENDLY" "" "data-platform-capture" >}}
+{{< how-to-expand "Get started" "4" "BEGINNER-FRIENDLY" "" "data-platform-capture" >}}
 {{< cards >}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
-{{% card link="/data-ai/capture-data/filter-before-sync/" noimage="true" %}}
-{{% card link="/data-ai/capture-data/conditional-sync/" noimage="true" %}}
+{{% card link="/data-ai/get-started/quickstart/" noimage="true" %}}
+{{% card link="/data-ai/get-started/capture-images/" noimage="true" %}}
+{{% card link="/data-ai/get-started/create-training-dataset/" noimage="true" %}}
+{{% card link="/data-ai/get-started/annotate-images/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Work with data" "4" "BEGINNER-FRIENDLY" "" "data-platform-work" >}}
+{{< how-to-expand "Process data" "7" "INTERMEDIATE" "" "data-platform-work" >}}
 {{< cards >}}
-{{% card link="/data-ai/data/query/" noimage="true" %}}
-{{% card link="/data-ai/data/visualize/" noimage="true" %}}
-{{% card link="/data-ai/data/advanced/alert-data/" noimage="true" %}}
-{{% card link="/data-ai/data/export/" noimage="true" %}}
+{{% card link="/data-ai/data/edge/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/data/edge/filter-before-sync/" noimage="true" %}}
+{{% card link="/data-ai/data/edge/conditional-sync/" noimage="true" %}}
+{{% card link="/data-ai/data/cloud/query/" noimage="true" %}}
+{{% card link="/data-ai/data/cloud/visualize/" noimage="true" %}}
+{{% card link="/data-ai/data/react/alert-data/" noimage="true" %}}
+{{% card link="/data-ai/data/cloud/export/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Leverage AI" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
+{{< how-to-expand "Integrate AI" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
 {{< cards >}}
-{{% card link="/data-ai/ai/create-dataset/" noimage="true" %}}
-{{% card link="/data-ai/ai/train-tflite/" noimage="true" %}}
-{{% card link="/data-ai/ai/train/" noimage="true" %}}
-{{% card link="/data-ai/ai/deploy/" noimage="true" %}}
-{{% card link="/data-ai/ai/run-inference/" noimage="true" %}}
-{{% card link="/data-ai/ai/alert/" noimage="true" %}}
-{{% card link="/data-ai/ai/act/" noimage="true" %}}
+{{% card link="/data-ai/ai/train/create-dataset/" noimage="true" %}}
+{{% card link="/data-ai/ai/train/train-tflite/" noimage="true" %}}
+{{% card link="/data-ai/ai/train/train/" noimage="true" %}}
+{{% card link="/data-ai/ai/train/deploy/" noimage="true" %}}
+{{% card link="/data-ai/ai/infer/run-inference/" noimage="true" %}}
+{{% card link="/data-ai/ai/react/alert/" noimage="true" %}}
+{{% card link="/data-ai/ai/react/act/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

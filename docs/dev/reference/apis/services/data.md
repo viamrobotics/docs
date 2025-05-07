@@ -14,7 +14,7 @@ aliases:
 
 The data management service API allows you to sync data stored on the machine it is deployed on to the cloud.
 
-The [data management service](/data-ai/capture-data/capture-sync/) supports the following methods:
+The [data management service](/data-ai/data/edge/capture-sync/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 

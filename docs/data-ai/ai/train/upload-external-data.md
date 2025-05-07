@@ -1,8 +1,8 @@
 ---
-linkTitle: "Upload external data"
+linkTitle: "Upload training data"
 title: "Upload external data for training"
 images: ["/services/icons/data-folder.svg"]
-weight: 20
+weight: 100
 layout: "docs"
 type: "docs"
 languages: ["python"]
@@ -13,7 +13,7 @@ aliases:
   - /how-tos/upload-data/
 date: "2024-12-04"
 description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
-prev: "/data-ai/ai/act/"
+prev: "/data-ai/ai/react/act/"
 ---
 
 When you configure the data management service, Viam automatically uploads data from the default directory `~/.viam/capture` and any directory you configured.
@@ -38,7 +38,7 @@ However, if you already have a cache of data you'd like to use with Viam, you ca
 
 {{< expand "Enable data capture and sync on your machine." >}}
 
-Add the [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
+Add the [data management service](/data-ai/data/edge/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
 
 On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 
@@ -296,5 +296,5 @@ However, the uploaded images will not be associated with a component or method.
 
 ## Next steps
 
-Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/ai/train-tflite/) on it.
-Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/ai/create-dataset/).
+Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/ai/train/train-tflite/) on it.
+Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/ai/train/create-dataset/).

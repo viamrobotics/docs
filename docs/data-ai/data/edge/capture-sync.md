@@ -1,6 +1,6 @@
 ---
-linkTitle: "Capture and sync edge data"
-title: "Capture and sync edge data"
+linkTitle: "Sync"
+title: "Sync edge data"
 tags: ["data management", "data", "services"]
 weight: 10
 layout: "docs"
@@ -40,7 +40,7 @@ aliases:
   - /fleet/data-management/
 ---
 
-You can use the data management service to capture data from [supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync), then sync it to the cloud.
+You can use the data management service to capture data from [supported components and services](/data-ai/data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync), then sync it to the cloud.
 You can also sync data from arbitrary folders on your machine.
 
 ## How data capture and data sync works
@@ -51,7 +51,7 @@ The data management service writes data from your configured Viam resources to l
 - The data management service syncs data to the Viam cloud at a configured sync interval using encrypted gRPC calls and deletes it from the disk once synced.
 - You can capture and sync data independently; one can run without the other.
 
-For more information, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/).
+For more information, see [How sync works](/data-ai/data/advanced/how-sync-works/).
 
 ## Configure data capture and sync for individual resources
 
@@ -80,7 +80,7 @@ Some models do not support all options, for example webcams do not capture point
 
 {{< /expand >}}
 
-For instructions on configuring data capture and sync with JSON, go to [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/) and follow the instructions for JSON examples.
+For instructions on configuring data capture and sync with JSON, go to [Advanced data capture and sync configurations](/data-ai/reference/advanced-data-capture-sync/) and follow the instructions for JSON examples.
 
 ## View captured data
 
@@ -120,13 +120,13 @@ For instructions on configuring data capture and sync with JSON, go to [Advanced
 
 For other ways to control data synchronization, see:
 
-- [Conditional sync](/data-ai/capture-data/conditional-sync/)
-- [Retention policies](/data-ai/capture-data/advanced/advanced-data-capture-sync/#cloud-data-retention)
-- [Sync optimization](/data-ai/capture-data/advanced/advanced-data-capture-sync/#sync-optimization)
+- [Conditional sync](/data-ai/data/conditional-sync/)
+- [Retention policies](/data-ai/reference/advanced-data-capture-sync/#cloud-data-retention)
+- [Sync optimization](/data-ai/reference/advanced-data-capture-sync/#sync-optimization)
 
 {{< /alert >}}
 
 ## Next steps
 
-For more information on available configuration attributes and options like capturing directly to MongoDB or conditional sync, see [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/).
-To leverage AI, you can now [create a dataset](/data-ai/ai/create-dataset/) with the data you've captured.
+For more information on available configuration attributes and options like capturing directly to MongoDB or conditional sync, see [Advanced data capture and sync configurations](/data-ai/reference/advanced-data-capture-sync/).
+To leverage AI, you can now [create a dataset](/data-ai/ai/train/create-dataset/) with the data you've captured.
