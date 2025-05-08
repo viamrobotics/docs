@@ -297,4 +297,4 @@ However, the uploaded images will not be associated with a component or method.
 ## Next steps
 
 Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/ai/train/train-tflite/) on it.
-Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/ai/train/create-dataset/).
+Or, if you want to collect and upload data _not_ in a batch, see [Create a training dataset](/data-ai/get-started/create-training-dataset/).

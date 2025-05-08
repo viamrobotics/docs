@@ -48,7 +48,6 @@ You can also monitor your machines through teleop, power your application logic,
 
 {{< how-to-expand "Integrate AI" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
 {{< cards >}}
-{{% card link="/data-ai/ai/train/create-dataset/" noimage="true" %}}
 {{% card link="/data-ai/ai/train/train-tflite/" noimage="true" %}}
 {{% card link="/data-ai/ai/train/train/" noimage="true" %}}
 {{% card link="/data-ai/ai/train/deploy/" noimage="true" %}}

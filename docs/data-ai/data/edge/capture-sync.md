@@ -129,4 +129,4 @@ For other ways to control data synchronization, see:
 ## Next steps
 
 For more information on available configuration attributes and options like capturing directly to MongoDB or conditional sync, see [Advanced data capture and sync configurations](/data-ai/reference/advanced-data-capture-sync/).
-To leverage AI, you can now [create a dataset](/data-ai/ai/train/create-dataset/) with the data you've captured.
+You can now use your data to [create a training dataset](/data-ai/get-started/create-training-dataset/).

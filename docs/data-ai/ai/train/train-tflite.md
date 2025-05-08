@@ -39,7 +39,7 @@ Follow this guide to use your image data to train an ML model, so that your mach
 
 {{% expand "a dataset with labels" %}}
 
-Follow the guide to [create a dataset](/data-ai/ai/train/create-dataset/).
+Follow the [Quickstart](/data-ai/get-started/quickstart/).
 
 {{% /expand%}}
 
@@ -145,7 +145,7 @@ Using this approach, each subsequent model version becomes more accurate than th
 
 To capture images of edge cases and re-train your model using those images, complete the following steps:
 
-1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/ai/train/create-dataset/#capture-images).
+1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/get-started/capture-images).
 
 1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
 

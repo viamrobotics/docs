@@ -4,7 +4,7 @@ title: "Create a training dataset"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Create a dataset to use for AI model training"
+description: "Create a dataset from your captured data to use for AI model training"
 ---
 
 {{< tabs >}}
@@ -23,7 +23,7 @@ description: "Create a dataset to use for AI model training"
 
 Use the Viam CLI to filter images by label and add the filtered images to a dataset:
 
-1. First, [create a dataset](#create-a-dataset), if you haven't already.
+1. First, create a dataset, if you haven't already.
 
 1. If you just created a dataset, use the dataset ID output by the creation command.
    If your dataset already exists, run the following command to get a list of dataset names and corresponding IDs:

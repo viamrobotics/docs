@@ -27,7 +27,7 @@ If you wish to do this, skip to [Submit a training job](#submit-a-training-job).
 
 {{% expand "A dataset with data you can train an ML model on. Click to see instructions." %}}
 
-For images, follow the instructions to [Create a dataset](/data-ai/ai/train/create-dataset/) to create a dataset and label data.
+For images, follow the [Quickstart](/data-ai/get-started/quickstart/) to create a dataset and label data.
 
 For other data, use the [Data Client API](/dev/reference/apis/data-client/) from within the training script to store data in the Viam Cloud.
 
