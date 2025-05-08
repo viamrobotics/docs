@@ -105,13 +105,12 @@ At the end of your <file>meta.json</file>, add the build configuration:
 #!/bin/bash
 set -e
 UNAME=$(uname -s)
-
 if [ "$UNAME" = "Linux" ]
 then
+    sudo apt update
     echo "Installing venv on Linux"
     sudo apt-get install -y python3-venv
 fi
-
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
@@ -125,6 +124,7 @@ pip3 install -r requirements.txt
 ```sh { class="command-line" data-prompt="$"}
 #!/bin/bash
 pip3 install -r requirements.txt
+pip3 install pyinstaller
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
