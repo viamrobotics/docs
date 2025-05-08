@@ -1,6 +1,6 @@
 ---
-linkTitle: "AI Inference"
-title: "AI Inference"
+linkTitle: "Apply AI models"
+title: "Apply AI models"
 weight: 300
 layout: "empty"
 type: "docs"
