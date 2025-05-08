@@ -1,6 +1,6 @@
 ---
-linkTitle: "Models"
-title: "Models"
+linkTitle: "Infer"
+title: "Infer"
 weight: 200
 layout: "empty"
 type: "docs"
