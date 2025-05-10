@@ -8,6 +8,9 @@ layout: "docs"
 aliases:
   - /operate/mobility/define-geometry/
   - /operate/mobility/define-obstacles/
+  - /services/frame-system/nested-frame-config/
+  - /mobility/frame-system/nested-frame-config/
+  - /operate/reference/services/frame-system/nested-frame-config/
 ---
 
 If you have a gripper, camera, or other components attached to your arm, you can configure them to move with the arm.
@@ -81,4 +84,4 @@ Then, configure the camera's frame to describe its position and orientation rela
 If you have a passive object attached to the arm such as a camera mount, you will want the motion service to be aware of it to avoid collisions.
 
 You do not need to configure the object as a component, because you won't be interacting with it through a Viam API.
-Instead, you will pass it as a `geometry` object when you call the `Move` motion service API method.
+Instead, you will pass it as a _transform_ object when you call the `Move` motion service API method.

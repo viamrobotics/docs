@@ -11,6 +11,9 @@ tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/
   - /mobility/frame-system/
+  - /services/frame-system/frame-config/
+  - /mobility/frame-system/frame-config/
+  - /operate/reference/services/frame-system/frame-config/
 no_service: true
 date: "2022-01-01"
 updated: "2024-10-18"
@@ -22,8 +25,6 @@ It stores the required contextual information to use the position and orientatio
 
 It is a mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
 
-![Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI](/services/frame-system/frame_system_wheeled_base.png)
-
 ## Used with
 
 {{< cards >}}
@@ -31,37 +32,33 @@ It is a mostly static system for storing the "reference frame" of each component
 {{< relatedcard link="/operate/reference/components/base/">}}
 {{< relatedcard link="/operate/reference/components/camera/">}}
 {{< relatedcard link="/operate/reference/components/gantry/">}}
+{{< relatedcard link="/operate/reference/components/gripper/">}}
 {{< /cards >}}
 
 ## Configuration
 
 You can configure a reference frame within the frame system for each of your machine's components on the **Frame** subtab of the **CONFIGURE** tab or in the raw **JSON** configuration.
 
-{{< tabs name="Frame Configuration Instructions" >}}
-{{% tab name="Frame Editor" %}}
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 
-1. Navigate to the **CONFIGURE** tab of the machine's page in the [Viam app](https://app.viam.com) and select the **Frame** mode.
-2. From the left-hand menu, select your component.
-   If you haven't adjusted any parameters yet, the default reference frame will be shown for the component:
+1. Select **Builder** mode and [configure your arm](/operate/reference/components/arm/#configuration).
+   If you don't have a physical arm, you can use a `fake` model.
 
-   {{<imgproc src="/services/frame-system/frame_card.png" resize="300x" style="width: 250px" alt="Frame card for a camera with the default reference frame settings">}}
+1. Click **+ Add Frame**.
 
-3. To adjust the frame from its default configuration, change the parameters as needed for your machine before saving.
-   Select a **Parent** frame and fill in the coordinates for **Translation** (m) and **Orientation** (deg, rad, or q), according to the position and orientation of your component in relation to the **Parent** frame.
-   Optionally add a **Geometry**.
+1. Edit the frame configuration.
+   The frame configuration is a JSON object with the following parameters:
 
-4. Select **Save** in the top right corner of the page to save your config.
-
-{{% /tab %}}
-{{% tab name="JSON Editor" %}}
-
-1. Navigate to the **CONFIGURE** tab of the machine's page in the [Viam app](https://app.viam.com) and select the **JSON** mode.
-2. Edit the JSON inside your component object to add a `"frame"` configuration.
+<!-- prettier-ignore -->
+| Parameter | Required? | Required |
+| --------- | ----------- | ----- |
+| `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
+| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: m in Frame Editor, mm in JSON. |
+| `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/operate/reference/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
+| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: m in Frame Editor, mm in JSON. <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
-
-You can add a reference frame to your component with the following template:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -144,19 +141,6 @@ You can add a reference frame to your component with the following template:
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /tab %}}
-{{< /tabs >}}
-
-Configure the reference frame as follows:
-
-<!-- prettier-ignore -->
-| Parameter | Required? | Required |
-| --------- | ----------- | ----- |
-| `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: m in Frame Editor, mm in JSON. |
-| `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/operate/reference/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
-| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: m in Frame Editor, mm in JSON. <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
-
 {{% alert title="Info" color="info" %}}
 
 The `orientation` parameter offers types for ease of configuration, but the frame system always stores and returns [orientation vectors](/operate/reference/orientation-vector/) in `Orientation Vector Radians`.
@@ -177,72 +161,6 @@ For more information about determining the appropriate values for these paramete
 
 - [A Reference Frame:](/operate/mobility/define-geometry/#configure-a-reference-frame) A component attached to a static surface
 - [Nested Reference Frames:](/operate/mobility/define-geometry/#configure-nested-reference-frames) A component attached to another, dynamic, component
-
-### Visualize the frame system
-
-You can visualize how your machine is oriented in the frame system in the [Viam app](https://app.viam.com).
-Navigate to the **CONFIGURE** tab on your machine's page and select the **Frame** mode.
-
-The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your machine:
-
-![Default frame system configuration grid visualization for a single component, shown in the Frame System Editor](/services/frame-system/frame_system_basic.png)
-
-On this tab, you can simultaneously view and edit the position, orientation, and geometries of your machine's components in the frame system.
-
-For example:
-
-Consider a machine configured with a [board](/operate/reference/components/board/) wired to a [camera](/operate/reference/components/camera/webcam/) and a [`wheeled` base](/operate/reference/components/base/wheeled/).
-
-You have not specified any reference frame configuration, so on the **Frame** subtab of the **CONFIGURE** tab, the components are shown to all be located on the default `world` origin point as follows:
-
-![Example machine's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](/services/frame-system/demo_base_unedited.png)
-
-The distance on the floor from the wheeled base to the board and camera setup is 0.2 meters.
-
-Add this value to `"x"` in the base's reference frame `Translation` attribute, and the frame system readjusts to show the base's translation:
-
-![Base translated 0.2 m forwards shown in the Frame System Editor](/services/frame-system/demo_base_edited.png)
-
-The distance from the board to the camera mounted overhead is 0.05 meters.
-
-Add this value to `"z"` in the camera's reference frame `Translation` attribute, and the frame system readjusts to show the camera's translation:
-
-![Camera translated 0.05 m overhead shown in the Frame System Editor](/services/frame-system/demo_camera_edited_1.png)
-
-Now the distance between these components is accurately reflected in the visualization.
-However, the camera doesn't yet display as oriented towards the base.
-
-Adjust the [orientation vector](/operate/reference/orientation-vector/) to 0.5 degrees in `"ox"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
-
-![Camera oriented 0.5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
-
-Now that you have configured the frame system with the machine's spatial orientation, you can use [motion service](/operate/reference/services/motion/) methods that take in reference frame information.
-
-### Geometries
-
-To visualize a component's spatial constraints, add `geometry` properties by selecting a component in the **Frame** editor and selecting a **Geometry**.
-
-A **Geometry** is shown surrounding the origin point of a component.
-You can adjust the parameters of a **Geometry** to change its size.
-Parameters vary between **Geometry** types, but units are in meters in the editor.
-
-{{< tabs name="Visualize Adding Geometry Bounds" >}}
-{{% tab name="Box" %}}
-
-![Demo robot with default box bounds added to the wheeled base, shown in the Frame System Editor](/services/frame-system/demo_bound_box.png)
-
-{{< /tab >}}
-{{% tab name="Sphere" %}}
-
-![Demo robot with default sphere bounds added to the wheeled base, shown in the Frame System Editor](/services/frame-system/demo_bound_sphere.png)
-
-{{% /tab %}}
-{{% tab name="Capsule" %}}
-
-![Demo robot with default capsule bounds added to the wheeled base, shown in the Frame System Editor](/services/frame-system/demo_bound_capsule.png)
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## How the frame system works
 
@@ -277,21 +195,17 @@ The [Machine Management API](/dev/reference/apis/robot/) supplies the following 
 
 _Additional transforms_ exist to help the frame system determine the location of and relationships between objects not initially known to the machine.
 
-For example:
+### Example of additional transforms
 
-- In our [example of nested dynamic attachment](/operate/mobility/define-geometry/#configure-nested-reference-frames), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the machine's coordinate system).
+Imagine you are using a wall-mounted [camera](/operate/reference/components/camera/) to find objects near your arm.
+You can use the [vision service](/operate/reference/services/vision/) with the camera to detect objects and provide the poses of the objects with respect to the camera's reference frame.
+The camera is fixed with respect to the `world` reference frame.
 
-  However, an arm with an attached [camera](/operate/reference/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the machine.
+If the camera finds an apple or an orange, you can command the arm to move to the detected fruit's location by providing an additional transform that contains the detected pose of the fruit with respect to the camera that performed the detection.
 
-  With the [vision service](/operate/reference/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
+The frame system uses the supplemental transform to determine where the arm should move to pick up the fruit.
 
-  If a [camera](/operate/reference/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
-
-  The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
-
-  With this information, the frame system could perform the right calculations to express the pose of the object in the `world` reference frame.
-
-Usage:
+### Transform usage
 
 - You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/dev/reference/apis/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
