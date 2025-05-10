@@ -97,7 +97,7 @@ To use a reference frame for your arm that is different from the default world f
 
 Imagine you have two arms mounted on a table, some distance apart.
 
-{{<imgproc src="two-arm-setup-3d.svg" resize="x1100" declaredimensions=true alt="Two arms mounted on a table with frames shown, z pointed up for both." style="max-width:600px" class="imgzoom" >}}
+{{<imgproc src="operate/two-arm-setup-3d.svg" resize="x1100" declaredimensions=true alt="Two arms mounted on a table with frames shown, z pointed up for both." style="max-width:600px" class="imgzoom" >}}
 
 1. You define the frame of one arm to be at the same origin as the world frame.
 1. You move the arm in each direction using the Viam app and see that positive x is to the right, positive y is forward, and positive z is up.
