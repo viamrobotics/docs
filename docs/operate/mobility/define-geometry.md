@@ -39,8 +39,7 @@ To configure your machine following this example:
 - Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 - Select **Builder** mode and [configure your arm](/operate/reference/components/arm/#configuration).
 - Select the **Frame** mode.
-- From the left-hand menu, select your arm:
-  {{<imgproc src="/services/frame-system/arm_default_frame.png" resize="500x" style="width: 300px" alt="Frame card for an arm with the default reference frame settings" class="shadow" >}}
+- From the left-hand menu, select your arm.
 - Keep the **Parent** frame as `world` and fill in the coordinates for **Translation** (meters) and **Orientation** (degrees) according to the position and orientation of the arm in relation to the `world` frame's origin:
   {{<imgproc src="/services/frame-system/arm_frame.png" resize="500x" style="width: 300px" alt="Frame card for an arm with a translation of 0.1 meters and -0.25 meters configured" class="shadow" >}}
 
@@ -107,18 +106,6 @@ This allows `viam-server` to correctly calculate the position of the end of the 
 1. Configure the gantry reference frame and the arm reference frame according to the instructions in the section above, but set the `parent` of the arm as the gantry, and supply the translation you measured.
 
 {{< tabs >}}
-{{% tab name="Frame Editor" %}}
-
-- Since the gantry and world have the same origin, don't configure a translation between them:
-
-  {{<imgproc src="/services/frame-system/frame_card_dyn_gantry.png" resize="500x" style="width: 300px" alt="Gantry frame card example for this configuration" class="shadow" >}}
-
-- Next, select your arm from the left hand menu.
-- Select the **Parent** frame as the gantry, and fill in the coordinates for **Translation** (m) of the arm in relation to the gantry's origin:
-
-  {{<imgproc src="/services/frame-system/frame_card_dyn_arm.png" resize="500x" style="width: 300px" alt="Arm frame card example for this configuration" class="shadow" >}}
-
-{{< /tab >}}
 {{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
