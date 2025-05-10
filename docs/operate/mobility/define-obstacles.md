@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Spatially describe your robot's working environment for collision avoidance."
+draft: true
 ---
 
 To prevent your machine from colliding with objects or surfaces in its environment, you can define obstacles and include them in calls to the [motion service API](/dev/reference/apis/services/motion/).
