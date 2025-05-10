@@ -7,8 +7,12 @@ layout: "docs"
 description: "Move an arm without code from the Viam app interface."
 ---
 
+{{<gif webm_src="/how-tos/joint_positions.webm" mp4_src="/how-tos/joint_positions.mp4" alt="The robot arm moving through joint position commands" max-width="200px" class="alignright">}}
+
 You can move an arm without code from the Viam app interface.
 This is a good way to quickly test that your arm is working before writing code to move it.
+
+This is also a good way to confirm the directions of the x, y, and z axes of your arm.
 
 ## Prerequisites
 
@@ -64,3 +68,6 @@ You can also use the arm API to move the arm in code, though it is not recommend
 {{% /alert %}}
 
 1. To refresh the numbers in the **MoveToJointPositions** or **MoveToPosition** tables, click **Current position**.
+
+1. To confirm the directions of the x, y, and z axes of your arm, move the arm in each direction and note which way the arm moves in the real world.
+   It can be useful to label the axes on your workspace, for example with tape or markers.
