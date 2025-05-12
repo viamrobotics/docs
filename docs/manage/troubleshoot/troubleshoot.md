@@ -194,7 +194,7 @@ To remotely access your machine from your terminal:
 
 ## Restart your machine
 
-1. Navigate to your machine's page on the [Viam app](https://app.viam.com).
+1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
 1. Select the part status dropdown to the right of your machine's name on the top of the page.
    {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
 1. If you installed `viam-server` with `viam-agent` you will see a **Restart** button. Click it.
