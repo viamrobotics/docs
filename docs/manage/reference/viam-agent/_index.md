@@ -159,6 +159,12 @@ By default, when a new version of `viam-server` becomes available, it will autom
 When `viam-agent` next restarts, it installs and starts using the new version of `viam-server`.
 To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window). With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
 
+{{< alert title="Tip: Check versions of viam-agent and viam-server" color="tip" >}}
+
+You can find the installed versions of viam-agent and viam-server on your machine's page in the [Viam app](https://app.viam.com). Click on the part status dropdown to the right of your machine's name on the top of the page.
+
+{{< /alert >}}
+
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
