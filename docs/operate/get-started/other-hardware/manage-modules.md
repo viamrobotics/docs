@@ -64,19 +64,19 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
    on:
    push:
      tags:
-     - "[0-9]+.[0-9]+.[0-9]+"
+       - "[0-9]+.[0-9]+.[0-9]+"
 
    jobs:
    publish:
      runs-on: ubuntu-latest
      steps:
-     - uses: actions/checkout@v3
-     - uses: viamrobotics/build-action@v1
-       with:
-       version: ${{ github.ref_name }}
-       ref: ${{ github.sha }}
-       key-id: ${{ secrets.viam_key_id }}
-       key-value: ${{ secrets.viam_key_value }}
+       - uses: actions/checkout@v3
+       - uses: viamrobotics/build-action@v1
+         with:
+         version: ${{ github.ref_name }}
+         ref: ${{ github.sha }}
+         key-id: ${{ secrets.viam_key_id }}
+         key-value: ${{ secrets.viam_key_value }}
    ```
 
 The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file.
@@ -99,9 +99,11 @@ At the end of your <file>meta.json</file>, add the build configuration:
 }
 ```
 
-{{%expand "Click to view example setup.sh for a Python module" %}}
+{{< expand "Python module example" >}}
 
-```sh {class="line-numbers linkable-line-numbers"}
+The following code snippet demonstrates an example `setup.sh` for a Python module:
+
+```bash {class="line-numbers linkable-line-numbers"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -118,15 +120,15 @@ if ! python3 -m venv $VENV_NAME >/dev/null 2>&1; then
     if ! command -v $SUDO >/dev/null; then
       SUDO=""
     fi
-    if ! apt info python3-venv >/dev/null 2>&1; then
-      echo "Package info not found, trying apt update"
-      $SUDO apt -qq update >/dev/null
-    fi
-    $SUDO apt install -qqy python3-venv >/dev/null 2>&1
-    if ! python3 -m venv $VENV_NAME >/dev/null 2>&1; then
-      echo $ENV_ERROR >&2
-      exit 1
-    fi
+  if ! apt info python3-venv >/dev/null 2>&1; then
+    echo "Package info not found, trying apt update"
+    $SUDO apt -qq update >/dev/null
+  fi
+  $SUDO apt install -qqy python3-venv >/dev/null 2>&1
+  if ! python3 -m venv $VENV_NAME >/dev/null 2>&1; then
+    echo $ENV_ERROR >&2
+    exit 1
+  fi
   else
     echo $ENV_ERROR >&2
     exit 1
@@ -145,11 +147,9 @@ if ! [ -f .installed ]; then
 fi
 ```
 
-{{% /expand%}}
+The following code snippet demonstrates an example `build.sh` for a Python module:
 
-{{%expand "Click to view example build.sh for a Python module" %}}
-
-```sh {class="line-numbers linkable-line-numbers"}
+```bash {class="line-numbers linkable-line-numbers"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -158,14 +158,14 @@ VENV_NAME="venv"
 PYTHON="$VENV_NAME/bin/python"
 
 if ! $PYTHON -m pip install pyinstaller -Uqq; then
-  exit 1
+    exit 1
 fi
 
 $PYTHON -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz ./dist/main
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 
 You can test this build configuration by running the Viam CLI's [`build local` command](/dev/tools/cli/#using-the-build-subcommand) on your development machine:
 
@@ -199,17 +199,17 @@ For more details, see the [`build-action` GitHub Action documentation](https://g
   publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: build
-      run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
-    - uses: viamrobotics/upload-module@v1
-      # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
-      with:
-      module-path: module.tar.gz
-      platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
-      version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
-      key-id: ${{ secrets.viam_key_id }}
-      key-value: ${{ secrets.viam_key_value }}
+      - uses: actions/checkout@v3
+      - name: build
+        run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
+      - uses: viamrobotics/upload-module@v1
+        # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
+        with:
+        module-path: module.tar.gz
+        platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
+        version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
+        key-id: ${{ secrets.viam_key_id }}
+        key-value: ${{ secrets.viam_key_value }}
   ```
 
 Set `run` to the command you use to build and package your module, such as invoking a makefile or running a shell script.
@@ -290,8 +290,8 @@ To change the visibility:
    - **Private**: Only users inside your organization can view, use, and edit the module.
    - **Public**: Any user inside or outside of your organization can view, use, and edit the module.
    - **Unlisted**: Any user inside or outside of your organization, with a direct link, can view and use the module.
-   Only organization members can edit the module.
-   Not listed in the registry.
+     Only organization members can edit the module.
+     Not listed in the registry.
 
 You can also edit the visibility by editing the [meta.json](/operate/get-started/other-hardware/#metajson-reference) file and then running the following [CLI](/dev/tools/cli/#module) command:
 
