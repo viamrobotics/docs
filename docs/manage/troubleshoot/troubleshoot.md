@@ -194,10 +194,14 @@ To remotely access your machine from your terminal:
 
 ## Restart your machine
 
-1. Navigate to the app's **CONFIGURE** tab in **Builder** mode.
-1. Click the **...** menu on the right side of the machine part's card, and select **Restart part**.
+1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Select the part status dropdown to the right of your machine's name on the top of the page.
+   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
+1. If you installed `viam-server` with `viam-agent` you will see a **Restart** button. Click it.
+   If you do not see the **Restart** button, click the **...** menu on the right side of the machine part's card, and select **Restart part**.
+   If restarting the machine part does not resolve the issue, ssh into the machine and [stop and restart viam-server manually](/operate/reference/viam-server/manage-viam-server/#run-viam-server).
 
-It takes a few minutes for the server to shut down and restart.
+It takes a few minutes for `viam-server` to shut down and restart.
 
 ## Revert to earlier configuration
 
