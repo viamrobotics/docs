@@ -4,9 +4,15 @@ linkTitle: "Trigger configuration"
 weight: 60
 type: "docs"
 tags: ["data management", "trigger", "webhook"]
-description: "Detailed information about how to configure alerts."
+description: "Detailed information about how to configure triggers and webhooks."
 date: "2025-05-05"
 ---
+
+Triggers can alert you via webhook or email when the following events occur:
+
+- [machine telemetry data syncs from your local device to the Viam cloud](/manage/troubleshoot/alert/)
+- [data syncs from a machine](/data-ai/data/alert-data/)
+- [service detects a specified object or classifies a specified label](/data-ai/ai/alert/)
 
 ## Trigger attributes
 
@@ -16,8 +22,8 @@ Triggers support the following attributes:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
-| `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `part_data_ingested`, `conditional_data_ingested`.</li><li>`data_types`: Required with `type` `part_data_ingested`. An array of data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required when `type` is `conditional_data_ingested`. </li></ul> |
-| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
+| `event` |  object | **Required** | The trigger event object, which contains the following fields: <ul><li>`type`: The type of the event to trigger on. Options: `part_data_ingested`, `conditional_data_ingested`.</li><li>`data_types`: Required with `type` `part_data_ingested`. An array of data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required when `type` is `conditional_data_ingested`. </li></ul> |
+| `notifications` |  object | **Required** | The notifications object, which contains the following fields: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> For more information on webhooks, see [Webhook attributes](#webhook-attributes). |
 
 ### Data sync trigger template
 
