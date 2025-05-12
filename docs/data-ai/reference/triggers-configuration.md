@@ -8,7 +8,7 @@ description: "Detailed information about how to configure triggers and webhooks.
 date: "2025-05-05"
 ---
 
-Triggers can alert you via webhook or email when the following events occur:
+Triggers can alert you by email or webhook when the following events occur:
 
 - [machine telemetry data syncs from your local device to the Viam cloud](/manage/troubleshoot/alert/)
 - [data syncs from a machine](/data-ai/data/advanced/alert-data/)
