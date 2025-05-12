@@ -33,7 +33,7 @@ Then, configure the gripper's frame to describe its position and orientation rel
    It is up to you to decide what part of the gripper you want to use as the origin of the frame.
    It is common to use a central point near the base of the gripper jaws as the origin.
 
-   {{<imgproc src="/tutorials/constrain-motion/gripper-diagram.png" resize="x1100" declaredimensions=true alt="" style="max-width:500px" class="imgzoom" >}}
+   {{<imgproc src="/tutorials/constrain-motion/gripper-diagram.png" resize="x1100" declaredimensions=true alt="A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y." style="max-width:500px" class="imgzoom" >}}
 
    For example, the gripper in the image above has a translation of 110 millimeters in the z-direction, and it is oriented along the same z-axis as the end of the arm but is rotated 90 degrees around the z-axis, so its frame configuration is:
 

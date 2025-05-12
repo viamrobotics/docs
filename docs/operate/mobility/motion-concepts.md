@@ -34,7 +34,7 @@ You can use the following components to augment motion planning and navigation:
 
 - [Camera](/operate/reference/components/camera/)
   - For example, a [RealSense depth camera](https://app.viam.com/module/viam/realsense)
-- [Movement sensor](/operate/reference/components/movementsensor/)
+- [Movement sensor](/operate/reference/components/movement-sensor/)
   - For example, a [GPS](https://app.viam.com/module/viam/gps)
 
 ## The frame system
