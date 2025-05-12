@@ -62,21 +62,21 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    ```yaml
    on:
-     push:
-       tags:
-         - "[0-9]+.[0-9]+.[0-9]+"
+   push:
+     tags:
+     - "[0-9]+.[0-9]+.[0-9]+"
 
    jobs:
-     publish:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         - uses: viamrobotics/build-action@v1
-           with:
-             version: ${{ github.ref_name }}
-             ref: ${{ github.sha }}
-             key-id: ${{ secrets.viam_key_id }}
-             key-value: ${{ secrets.viam_key_value }}
+   publish:
+     runs-on: ubuntu-latest
+     steps:
+     - uses: actions/checkout@v3
+     - uses: viamrobotics/build-action@v1
+       with:
+       version: ${{ github.ref_name }}
+       ref: ${{ github.sha }}
+       key-id: ${{ secrets.viam_key_id }}
+       key-value: ${{ secrets.viam_key_value }}
    ```
 
 The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file.
@@ -90,18 +90,18 @@ At the end of your <file>meta.json</file>, add the build configuration:
   "module_id": "example-module",
   ...
   "build": {
-    "setup": "./setup.sh", // optional - command for one-time setup
-    "build": "./build.sh", // command that will build your module's tarball
-    "path" : "dist/archive.tar.gz", // optional - path to your built module tarball
-    "arch" : ["linux/amd64", "linux/arm64", "darin/arm64"], // architecture(s) to build for
-    "darwin_deps" : ["go", "x264", "nlopt-static"] // optional - Homebrew dependencies for Darwin builds. Explicitly pass `[]` for empty. Default : ["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"].
+  "setup": "./setup.sh", // optional - command for one-time setup
+  "build": "./build.sh", // command that will build your module's tarball
+  "path" : "dist/archive.tar.gz", // optional - path to your built module tarball
+  "arch" : ["linux/amd64", "linux/arm64", "darin/arm64"], // architecture(s) to build for
+  "darwin_deps" : ["go", "x264", "nlopt-static"] // optional - Homebrew dependencies for Darwin builds. Explicitly pass `[]` for empty. Default : ["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"].
   }
 }
 ```
 
 {{%expand "Click to view example setup.sh for a Python module" %}}
 
-```sh
+```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -127,10 +127,10 @@ if ! python3 -m venv $VENV_NAME >/dev/null 2>&1; then
       echo $ENV_ERROR >&2
       exit 1
     fi
-    else
-      echo $ENV_ERROR >&2
-      exit 1
-    fi
+  else
+    echo $ENV_ERROR >&2
+    exit 1
+  fi
 fi
 
 # remove -U if viam-sdk should not be upgraded whenever possible
@@ -149,7 +149,7 @@ fi
 
 {{%expand "Click to view example build.sh for a Python module" %}}
 
-```sh
+```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -191,25 +191,25 @@ For more details, see the [`build-action` GitHub Action documentation](https://g
 
   ```yaml {class="line-numbers linkable-line-numbers"}
   on:
-    push:
-    release:
-      types: [released]
+  push:
+  release:
+    types: [released]
 
   jobs:
-    publish:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - name: build
-          run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
-        - uses: viamrobotics/upload-module@v1
-          # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
-          with:
-            module-path: module.tar.gz
-            platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
-            version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
-            key-id: ${{ secrets.viam_key_id }}
-            key-value: ${{ secrets.viam_key_value }}
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: build
+      run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
+    - uses: viamrobotics/upload-module@v1
+      # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
+      with:
+      module-path: module.tar.gz
+      platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
+      version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
+      key-id: ${{ secrets.viam_key_id }}
+      key-value: ${{ secrets.viam_key_value }}
   ```
 
 Set `run` to the command you use to build and package your module, such as invoking a makefile or running a shell script.
@@ -290,8 +290,8 @@ To change the visibility:
    - **Private**: Only users inside your organization can view, use, and edit the module.
    - **Public**: Any user inside or outside of your organization can view, use, and edit the module.
    - **Unlisted**: Any user inside or outside of your organization, with a direct link, can view and use the module.
-     Only organization members can edit the module.
-     Not listed in the registry.
+   Only organization members can edit the module.
+   Not listed in the registry.
 
 You can also edit the visibility by editing the [meta.json](/operate/get-started/other-hardware/#metajson-reference) file and then running the following [CLI](/dev/tools/cli/#module) command:
 
