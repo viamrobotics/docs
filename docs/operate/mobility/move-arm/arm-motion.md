@@ -61,7 +61,7 @@ The available geometry types are:
 box_origin = Pose(x=400, y=0, z=50+z_offset)
 box_dims = Vector3(x=120.0, y=80.0, z=100.0)
 box_object = Geometry(center=box_origin,
-                        box=RectangularPrism(dims_mm=box_dims))
+                      box=RectangularPrism(dims_mm=box_dims))
 ```
 
 See [Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry) for more information on the geometry types and their parameters.
@@ -90,7 +90,7 @@ This example puts the object into the world reference frame, but you can put it 
 
 ```python {class="line-numbers linkable-line-numbers"}
 obstacles_in_frame = GeometriesInFrame(reference_frame="world",
-                                    geometries=[box_object])
+                                       geometries=[box_object])
 ```
 
 {{% /tab %}}
@@ -209,7 +209,7 @@ To keep the orientation the same (within a tolerance) throughout the motion, use
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-constraints=Constraints(orientation_constraint=[OrientationConstraint()])
+constraints = Constraints(orientation_constraint=[OrientationConstraint()])
 ```
 
 {{% /tab %}}
@@ -231,7 +231,7 @@ To move the end of the arm in a straight line, use a linear constraint:
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-constraints=Constraints(
+constraints = Constraints(
     linear_constraint=[LinearConstraint(line_tolerance_mm=0.2)])
 ```
 

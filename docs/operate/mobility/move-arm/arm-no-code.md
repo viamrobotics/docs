@@ -58,7 +58,7 @@ Keep in mind:
 1. Enter joint positions or end effector poses, then click **Execute**.
    Or, use the **Quick move** interface to move each joint in 5 degree increments.
 
-   {{<imgproc src="/components/arm/control.png" resize="x1100" declaredimensions=true alt="" style="max-width:600px" class="shadow imgzoom" >}}
+   {{<imgproc src="/components/arm/control.png" resize="x1100" declaredimensions=true alt="Arm control interface." style="max-width:600px" class="shadow imgzoom" >}}
 
    {{% alert title="Info" color="info" %}}
 

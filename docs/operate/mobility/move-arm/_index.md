@@ -25,8 +25,8 @@ To get started:
 
 1. [Configure your arm](/operate/mobility/move-arm/configure-arm/).
 
-1. If you have a component such as a gripper or camera attached to the arm, [configure it](/operate/components/configure-additional/).
+1. If you have a component such as a gripper or camera attached to the arm, [configure it](/operate/mobility/move-arm/configure-additional/).
 
 1. [Move the arm with no code](/operate/mobility/move-arm/arm-no-code/).
 
-1. [Move the arm with the motion planning API](/operate/mobility/move-arm/motion-planning/).
+1. [Move the arm with the motion planning API](/dev/reference/apis/services/motion/).
