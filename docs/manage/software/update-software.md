@@ -96,7 +96,6 @@ When you are satisfied that your changes work as expected, click the **...** men
 This will create a new version of your fragment.
 
 Fragment tags remain unchanged.
-If your machines use a fragment tag, you must update the fragment tag separately to point to the new version.
 
 All machines configured with your fragment will update when they next check for configuration updates.
 
