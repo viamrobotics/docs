@@ -108,6 +108,7 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "manufacturer": "viam",
       "model": "custom",
       "fragment_id": "",
+      "hotspot_interface": "wlan0",
       "hotspot_prefix": "viam-setup",
       "hotspot_password": "viamsetup",
       "disable_captive_portal_redirect": false,
@@ -158,6 +159,12 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
 By default, when a new version of `viam-server` becomes available, it will automatically download.
 When `viam-agent` next restarts, it installs and starts using the new version of `viam-server`.
 To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window). With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
+
+{{< alert title="Tip: Check versions of viam-agent and viam-server" color="tip" >}}
+
+You can find the installed versions of viam-agent and viam-server on your machine's page in the [Viam app](https://app.viam.com). Click on the part status dropdown to the right of your machine's name on the top of the page.
+
+{{< /alert >}}
 
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
@@ -231,7 +238,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
-| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
+| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
