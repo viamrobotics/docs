@@ -355,23 +355,23 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 3. Select **Part is online** as the trigger **Type**.
 
-4. To add an alert, add an entry to the **Webhooks** or **Email** sub-panels.
+4. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
 
-   - To add an email alert:
+   To add an email notification:
 
-     1. Click **Add Email**.
-        {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email in the Viam app." class="shadow" >}}
-     1. Add the email you wish to be notified whenever this trigger is triggered.
-     1. Configure the time between notifications.
+   1. Click **Add Email**.
+      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email in the Viam app." class="shadow" >}}
+   1. Add the email you wish to be notified whenever this trigger is triggered.
+   1. Configure the time between notifications.
 
-   - To add a webhook:
+   To add a webhook notification:
 
-     1. Click **Add Webhook**.
-        {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
-     1. Add the URL of your cloud function.
-     1. Configure the time between notifications.
-     1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
-        Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
+   1. Click **Add Webhook**.
+      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
+   1. Add the URL of your cloud function.
+   1. Configure the time between notifications.
+   1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
+      Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}
