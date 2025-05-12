@@ -53,7 +53,7 @@ You can use `viam-agent` either with an existing machine's part ID and API key, 
 
 The command will be of the following form:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output=""}
 sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
@@ -61,7 +61,7 @@ sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID
 
 As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the machine cloud credentials from the Viam app into <file>/etc/viam.json</file>.
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow">}}
 
 Then run the following command to install `viam-agent`:
 
@@ -164,18 +164,6 @@ To ensure that updates only occur when your machines are ready, configure a [mai
 | ---------- | ---- | --------- | ----------- |
 | `agent` | string | **Required** | The version of Viam agent specified as either:<ul><li>a version number`"5.6.77"` or `"0.65.1-dev.7"` (indicating the seventh commit to "main" after the previous non-dev release, `0.65.0`)</li><li>a tag such as`"stable"` or `"dev"`.</li><li>a URL such as `"http://example.com/viam-agent-test-aarch64"`, `"file:///home/myuser/viam-agent-test-aarch64"`, or `"file:///C:/Users/viam/Downloads/viam-agent-v0.31.0-windows-x86_64.exe"`</li></ul> Viam agent is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Default: `"stable"`. |
 | `viam-server` | string | **Required** | The version of `viam-server` specified as `"5.6.77"`, `"stable"`, `"dev"` or by providing a URL such as `"http://example.com/viam-server-test-aarch64"`, `"file:///home/myuser/viam-server-test-aarch64"`, or `"file:///C:/Users/viam/Downloads/viam-server-v0.72.0-windows-x86_64.exe"`. `viam-server` is semantically versioned and is tested before release. When set to `"stable"`, `viam-server` will automatically upgrade when a new stable version is released. Default: `"stable"`. |
-
-{{< alert title="Important" color="note" >}}
-`viam-agent` does not update itself.
-You must [restart `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/) or reboot in order to use the new version.
-When you stop or restart `viam-agent`, the agent will stop or restart `viam-server` as well.
-
-When `viam-server` updates itself, you must restart `viam-server` in order to use the new version.
-You can restart `viam-server` from the machine's part status dropdown to the right of your machine’s name on its page in the Viam app.
-
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
-
-{{< /alert >}}
 
 For more information on managing `viam-agent` see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
