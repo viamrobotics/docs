@@ -72,6 +72,7 @@ Alternatively, if you are having issues with a module, try the **Restart module*
 
 There are a few updates that may make your machine temporarily unavailable:
 
+- [`viam-agent` updating itself](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server)
 - [`viam-agent` updating `viam-server`](/manage/reference/viam-agent/#update-or-downgrade-viam-server-with-viam-agent)
 - configuration updates
 
