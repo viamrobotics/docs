@@ -30,6 +30,9 @@ aliases:
   - "/components/sensor/bme280/"
   - "/components/sensor/ds18b20/"
   - "/components/sensor/sensirion-sht3xd/"
+  - /build/configure/processes/
+  - /configure/processes/
+  - /manage/reference/processes
   - /appendix/changelog/
 layout: "changelog"
 outputs:
@@ -40,6 +43,13 @@ date: "2024-09-18"
 ---
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
+
+{{% changelog color="removed" title="Processes" date="2025-05-06" %}}
+
+Processes were removed in `viam-server` v0.74.0.
+Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
+
+{{% /changelog %}}
 
 {{% changelog color="changed" title="Viam provisioning" date="2025-03-24" %}}
 
@@ -154,7 +164,7 @@ Backward compatibility is maintained for existing configurations.
 
 {{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
 
-[Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
+Managed Processes are now deprecated and will be removed in a future version of `viam-server`.
 Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
 
 {{% /changelog %}}
