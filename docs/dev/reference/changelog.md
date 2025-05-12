@@ -46,7 +46,7 @@ date: "2024-09-18"
 
 {{% changelog color="removed" title="Processes" date="2025-05-06" %}}
 
-Processes are no longer supported as of `viam-server` v0.74.0.
+Processes were removed in `viam-server` v0.74.0.
 Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
 
 {{% /changelog %}}
