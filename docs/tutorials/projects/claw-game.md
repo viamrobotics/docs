@@ -442,7 +442,7 @@ The list of obstacles are defined in a `WorldState` object, which is passed as a
 {{< alert title="Tip" color="tip" >}}
 If the arm is not mounted exactly perpendicular to the x/y axis of the enclosure, you can adjust the theta (_th_) of the arm within the arm component configuration by a number of degrees to compensate.
 Obstacles can then be configured as if the arm were straight in the enclosure.
-See the [frame system documentation](/operate/mobility/define-geometry/) for more information.
+See the [frame system documentation](/operate/reference/services/frame-system/) for more information.
 {{< /alert >}}
 
 ### Find the home pose within the enclosure

@@ -11,7 +11,7 @@ draft: true
 To prevent your machine from colliding with objects or surfaces in its environment, you can define obstacles and include them in calls to the [motion service API](/dev/reference/apis/services/motion/).
 The motion service will take into account the obstacles as well as the geometry of the machine itself when planning motion.
 
-Start by [defining your machine's geometry](/operate/mobility/define-geometry/) so that you can define the obstacles with respect to the machine's reference frame.
+Start by [defining your machine's geometry](/operate/reference/services/frame-system/) so that you can define the obstacles with respect to the machine's reference frame.
 
 Next, define one or more obstacles.
 Here is a Python example from the [Add constraints and transforms to a motion plan guide](/tutorials/services/constrain-motion/#modify-your-robots-working-environment):
