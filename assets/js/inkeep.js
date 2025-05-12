@@ -191,7 +191,7 @@ isShortcutKeyEnabled,
     },
     canToggleView: true,
     searchSettings: {
-      placeholder: "Search for anything...",
+      placeholder: "Search or ask AI",
       tabs: [
         "All",
         ["Docs", { isAlwaysVisible: true }],
