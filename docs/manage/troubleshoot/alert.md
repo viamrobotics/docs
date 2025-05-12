@@ -29,7 +29,7 @@ You can configure triggers that alert you when machine telemetry data syncs from
 - **Telemetry sync**: Alerts whenever certain telemetry syncs
 - **Conditional telemetry sync**: Alert only when synced telemetry satisfies a condition
 
-For example, you could configure a trigger to send you a notification when your machine's CPU usage reaches a certain threshold.
+For example, you can configure a trigger to send you a notification when your machine's CPU usage reaches a certain threshold.
 
 Additionally, you can receive continuous alerts at a specified interval indicating one of the following machine statuses:
 
@@ -136,7 +136,7 @@ You can find a list of sensors on the [`viam-telegraf-sensor`](https://github.co
 {{% tablestep  number=3 %}}
 **Test the sensor**
 
-Click **Save** to put your configuration changes into effect.
+Click **Save** to apply your configuration changes.
 
 Now, click **Test** at the bottom of the sensor configuration card to view the readings.
 You can also see readings on the **CONTROL** tab.
@@ -175,7 +175,7 @@ Set the **Frequency** to `0.05` Hz to capture readings once every 20 seconds.
 
 {{<imgproc src="/how-tos/capture-readings.png" resize="1000x" style="width:600px" class="shadow imgzoom" declaredimensions=true alt="Sensor readings capture configuration.">}}
 
-Click the **Save** button to load your configuration changes.
+Click the **Save** button to apply your configuration changes.
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
 **View synced data**
