@@ -121,6 +121,7 @@ If your machine shows as online in the Viam app, go to the **LOGS** tab and chec
 {{<gif webm_src="/fleet/log-filtering.webm" mp4_src="/fleet/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
 You can filter your logs by keyword, log levels and time.
+You can use regular expressions as your keyword.
 
 The default log level for `viam-server` and any running resources is `"Info"`.
 If you are not seeing helpful logs, you can try changing the log level to `"Debug"`.
