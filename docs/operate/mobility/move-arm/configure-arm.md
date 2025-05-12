@@ -50,17 +50,7 @@ description: "Configure an arm including its reference frame."
 1. You will need a reference frame to use your arm with the motion planning service.
    Click **+ Add Frame**.
 
-   For a project with a single arm, you can define the arm's frame as being the same as the world frame, so leave the default values.
-
-1. Save your configuration.
-
-## Configure a different reference frame
-
-For a project with multiple arms, you can define a different reference frame for each arm.
-To use a reference frame for your arm that is different from the default world frame:
-
-1. Configure the arm as above, adding a frame with the **+ Add Frame** button.
-   The default frame is this:
+   For a project with a single arm, you can define the arm's frame as being the same as the world frame, so leave the default values:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -82,11 +72,24 @@ To use a reference frame for your arm that is different from the default world f
    }
    ```
 
+1. Save your configuration.
+
+## Configure a different reference frame
+
+For a project with multiple arms, you can define a different [reference frame](/operate/reference/services/frame-system/) for each arm.
+To use a reference frame for your arm that is different from the default world frame:
+
+1. Configure the arm as above, adding a frame with the **+ Add Frame** button.
+
 1. Edit your arm's frame according to your needs.
    The frame parameters are:
 
    - `parent`: The parent frame.
-     You can use the `world` frame or a frame you have defined.
+     You can use the `world` frame, or another frame you have defined.
+
+     For example, if you have an arm mounted on a gantry, you can use the gantry's frame as the parent frame of the arm by setting `"parent": "name-of-your-gantry"`.
+     This will cause the arm's frame to be updated as the gantry moves.
+
    - `orientation`: The orientation of the frame relative to the parent frame, represented as a vector.
      If you use the default values, the frame is aligned with the parent frame.
    - `translation`: The distance between the frame and the parent frame in each direction, in millimeters.
