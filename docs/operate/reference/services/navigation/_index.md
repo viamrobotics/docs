@@ -288,7 +288,7 @@ You can choose the origin reference frame by configuring it using Viam's [frame 
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
 To read orientation, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Additionally, follow [these instructions](/operate/reference/services/frame-system/#configure-a-reference-frame) to configure the geometries of each component of your machine within the frame system.
+Additionally, follow [these instructions](/operate/reference/services/frame-system/#configuration) to configure the geometries of each component of your machine within the frame system.
 Then use the movement sensor API's [`GetOrientation()`](/dev/reference/apis/components/movement-sensor/#getorientation) method to get orientation readings.
 
 ### Angular velocity
