@@ -101,7 +101,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 
 {{%expand "Click to view example setup.sh for a Python module" %}}
 
-```sh {class="command-line" data-prompt="$"}
+```sh
 #!/bin/sh
 cd `dirname $0`
 
@@ -149,7 +149,7 @@ fi
 
 {{%expand "Click to view example build.sh for a Python module" %}}
 
-```sh { class="command-line" data-prompt="$"}
+```sh
 #!/bin/sh
 cd `dirname $0`
 
