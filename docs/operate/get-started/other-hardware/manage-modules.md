@@ -62,21 +62,21 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    ```yaml
    on:
-   push:
-     tags:
-       - "[0-9]+.[0-9]+.[0-9]+"
+     push:
+       tags:
+         - "[0-9]+.[0-9]+.[0-9]+"
 
    jobs:
-   publish:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v3
-       - uses: viamrobotics/build-action@v1
-         with:
-         version: ${{ github.ref_name }}
-         ref: ${{ github.sha }}
-         key-id: ${{ secrets.viam_key_id }}
-         key-value: ${{ secrets.viam_key_value }}
+     publish:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v3
+         - uses: viamrobotics/build-action@v1
+           with:
+           version: ${{ github.ref_name }}
+           ref: ${{ github.sha }}
+           key-id: ${{ secrets.viam_key_id }}
+           key-value: ${{ secrets.viam_key_value }}
    ```
 
 The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file.
@@ -191,25 +191,25 @@ For more details, see the [`build-action` GitHub Action documentation](https://g
 
   ```yaml {class="line-numbers linkable-line-numbers"}
   on:
-  push:
-  release:
-    types: [released]
+    push:
+      release:
+        types: [released]
 
   jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: build
-        run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
-      - uses: viamrobotics/upload-module@v1
-        # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
-        with:
-        module-path: module.tar.gz
-        platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
-        version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
-        key-id: ${{ secrets.viam_key_id }}
-        key-value: ${{ secrets.viam_key_value }}
+    publish:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: build
+          run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
+        - uses: viamrobotics/upload-module@v1
+          # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
+          with:
+          module-path: module.tar.gz
+          platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
+          version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
+          key-id: ${{ secrets.viam_key_id }}
+          key-value: ${{ secrets.viam_key_value }}
   ```
 
 Set `run` to the command you use to build and package your module, such as invoking a makefile or running a shell script.
