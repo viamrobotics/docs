@@ -157,10 +157,7 @@ For non base components, there is no inherent concept of "forward," so it is up 
 
 {{% /alert %}}
 
-For more information about determining the appropriate values for these parameters, see these two examples:
-
-- [A Reference Frame:](/operate/mobility/define-geometry/#configure-a-reference-frame) A component attached to a static surface
-- [Nested Reference Frames:](/operate/mobility/define-geometry/#configure-nested-reference-frames) A component attached to another, dynamic, component
+For an example of configuring relative frames of two arms, see [Configure a different reference frame](/operate/mobility/move-arm/configure-arm/#configure-a-different-reference-frame).
 
 ## How the frame system works
 
@@ -170,7 +167,7 @@ Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_s
 
 ![an example of a logged frame system](/services/frame-system/frame_sys_log_example.png)
 
-Consider the example of nested reference frame configuration where [two dynamic components are attached](/operate/mobility/define-geometry/#configure-nested-reference-frames): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
+Consider the example of nested reference frame configuration where two dynamic components are attached: A robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point in the `world` frame of a table.
 
 The resulting tree of reference frames looks like:
 

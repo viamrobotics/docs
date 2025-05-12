@@ -85,4 +85,4 @@ For general configuration and development info, see:
 You can also use the gantry component with the following services:
 
 - [Motion service](/operate/reference/services/motion/): To move machines or components of machines
-- [Frame system service](/operate/mobility/define-geometry/): To configure the positions of your components
+- [Frame system service](/operate/reference/services/frame-system/): To configure the positions of your components

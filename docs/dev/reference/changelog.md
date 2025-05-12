@@ -1241,7 +1241,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog date="2023-02-28" color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/operate/mobility/define-geometry/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
+When adding [frames](/operate/reference/services/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 

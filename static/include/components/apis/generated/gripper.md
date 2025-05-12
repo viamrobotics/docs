@@ -63,7 +63,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Open the gripper
 await gripper.open();
@@ -130,7 +130,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(bool)](https://pkg.go.dev/builtin#bool):  True if the gripper grabbed something with non-zero thickness.
+- [(bool)](https://pkg.go.dev/builtin#bool): True if the gripper grabbed something with non-zero thickness.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -159,7 +159,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Close the gripper to grab
 await gripper.grab();
@@ -258,11 +258,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Check if the gripper is currently moving
 const moving = await gripper.isMoving();
-console.log('Gripper is moving:', moving);
+console.log("Gripper is moving:", moving);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#ismoving).
@@ -356,7 +356,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Stop the gripper's current motion
 await gripper.stop();
@@ -388,7 +388,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the gripper in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the gripper.
+Get all the geometries associated with the gripper in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the gripper.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -461,11 +461,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Get the geometries of this component
 const geometries = await gripper.getGeometries();
-console.log('Geometries:', geometries);
+console.log("Geometries:", geometries);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getgeometries).
@@ -568,13 +568,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
-
-const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
-);
+const result = await resource.doCommand({
+  name: "myCommand",
+  args: { key: "value" },
+});
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#docommand).

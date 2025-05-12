@@ -165,7 +165,7 @@ The following attributes are available for `Navigation` services:
 
 {{% alert title="Info" color="info" %}}
 
-The [frame system service](/operate/mobility/define-geometry/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
+The [frame system service](/operate/reference/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
 
 It stores the required contextual information for Viam's services like [Motion](/operate/reference/services/motion/) and [Vision](/operate/reference/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
 
@@ -175,17 +175,16 @@ To make sure your rover base's autonomous GPS navigation with the navigation ser
 
 #### Configure
 
-Add a [nested reference frame](/operate/mobility/define-geometry/#configure-nested-reference-frames) configuration to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/):
+Add [reference frames](/operate/reference/services/frame-system/#configuration) to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/) configurations:
 
-- Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com) and select the **Frame** mode.
-- From the left-hand menu, select your base.
+- Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+- Find your base configuration card and click **+ Add Frame**.
 - Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 
   {{<imgproc src="/services/navigation/select-base-frame.png" resize="700x" style="width: 300px" alt="Frame card for a base with the default reference frame settings">}}
 
 - Keep the `parent` frame as `world`.
-  Select the **Geometry** dropdown menu.
-- Configure a **Geometry** for the base that reflects its physical dimensions.
+- Configure a `geometry` for the base that reflects its physical dimensions.
   Measure the physical dimensions of your base and use them to configure the size of your geometry.
   Units are in _mm_.
 
@@ -193,16 +192,17 @@ Add a [nested reference frame](/operate/mobility/define-geometry/#configure-nest
 
   {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="700x" style="width: 300px" alt="The frame card for the base in the Viam app config builder.">}}
 
-- Next, select your movement sensor from the left-hand menu. Click on the **Parent** menu and select your base component.
-- Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
+- Add a frame to your movement sensor configuration by clicking **+ Add Frame**.
+- Set the `parent` within the frame card to the name of your base.
+- Give the movement sensor a `translation` that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
   In other words, designate the base origin as `(0,0,0)` and measure the distance between that and the origin of the sensor to obtain the coordinates.
 
   For example, you would configure a movement sensor mounted 200mm on top of your base as follows:
 
   {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="700x" style="width: 300px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
 
-You can also adjust the **Orientation** and **Geometry** of your movement sensor or base, if necessary.
-See [the frame system service](/operate/mobility/define-geometry/) for instructions.
+You can also adjust the `orientation` and `geometry` of your movement sensor or base, if necessary.
+See [the frame system service](/operate/reference/services/frame-system/) for instructions.
 
 #### Calibrate
 
@@ -211,9 +211,9 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
 - After configuring your machine, navigate to the **CONTROL** tab and select the card matching the name of your movement sensor.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
-  - Navigate back to your machine's **CONFIGURE** tab and **Frame** subtab.
+  - Navigate back to your machine's **CONFIGURE** tab.
     Scroll to the card with the name of your movement sensor.
-    Adjust the **Orientation** of the frame to compensate for the mismatch.
+    Adjust the `orientation` of the frame to compensate for the mismatch.
   - Navigate back to the movement sensor card on your **CONTROL** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your machine to be oriented accurately within the frame system.
   - If you cannot verify this, repeat as necessary.
 
@@ -284,11 +284,11 @@ orientation, err := imuwit.Orientation(context.Background(), nil)
 
 Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/operate/reference/orientation-vector/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
-You can choose the origin reference frame by configuring it using Viam's [frame system](/operate/mobility/define-geometry/).
+You can choose the origin reference frame by configuring it using Viam's [frame system](/operate/reference/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
 To read orientation, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Additionally, follow [these instructions](/operate/mobility/define-geometry/#configure-a-reference-frame) to configure the geometries of each component of your machine within the [frame system](/operate/mobility/define-geometry/).
+Additionally, follow [these instructions](/operate/reference/services/frame-system/#configure-a-reference-frame) to configure the geometries of each component of your machine within the frame system.
 Then use the movement sensor API's [`GetOrientation()`](/dev/reference/apis/components/movement-sensor/#getorientation) method to get orientation readings.
 
 ### Angular velocity

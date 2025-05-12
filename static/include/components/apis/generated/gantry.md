@@ -64,7 +64,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gantry = new VIAM.GantryClient(machine, 'my_gantry');
+const gantry = new VIAM.GantryClient(machine, "my_gantry");
 
 // Get the current positions of the axes in millimeters
 const positions = await gantry.getPosition();
@@ -179,7 +179,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gantry = new VIAM.GantryClient(machine, 'my_gantry');
+const gantry = new VIAM.GantryClient(machine, "my_gantry");
 
 // Create positions for a 3-axis gantry
 const positions = [1, 2, 3];
@@ -281,7 +281,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gantry = new VIAM.GantryClient(machine, 'my_gantry');
+const gantry = new VIAM.GantryClient(machine, "my_gantry");
 
 // Get the lengths of the axes in millimeters
 const lengths = await gantry.getLengths();
@@ -371,12 +371,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - (Promise<boolean>): A bool representing whether the gantry has run the homing sequence
-successfully.
+  successfully.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gantry = new VIAM.GantryClient(machine, 'my_gantry');
+const gantry = new VIAM.GantryClient(machine, "my_gantry");
 
 // Run the homing sequence
 const success = await gantry.home();
@@ -408,7 +408,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the gantry in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the gantry.
+Get all the geometries associated with the gantry in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the gantry.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -451,7 +451,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gantry = new VIAM.GantryClient(machine, 'my_gantry');
+const gantry = new VIAM.GantryClient(machine, "my_gantry");
 
 // Get the geometries of this component
 const geometries = await gantry.getGeometries();
@@ -534,11 +534,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gantry = new VIAM.GantryClient(machine, 'my_gantry');
+const gantry = new VIAM.GantryClient(machine, "my_gantry");
 
 // Check if the gantry is moving
 const moving = await gantry.isMoving();
-console.log('Moving:', moving);
+console.log("Moving:", moving);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#ismoving).
@@ -632,7 +632,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gantry = new VIAM.GantryClient(machine, 'my_gantry');
+const gantry = new VIAM.GantryClient(machine, "my_gantry");
 
 // Stop all motion of the gantry
 await gantry.stop();
@@ -757,12 +757,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 
