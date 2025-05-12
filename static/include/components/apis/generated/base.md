@@ -511,7 +511,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- (viam.components.base.Base.Properties): The properties of the base.
+- ([viam.components.base.Base.Properties](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties)): The properties of the base.
 
 **Example:**
 
@@ -914,8 +914,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
-For built-in models, model-specific commands are covered with each model's documentation.
-If you are implementing your own base and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own base and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
 Supported by `viam-micro-server`.
 
 {{< tabs >}}

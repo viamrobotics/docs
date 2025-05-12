@@ -65,18 +65,3 @@
 | [`ListAuthorizations`](/dev/reference/apis/fleet/#listauthorizations) | List all authorizations (owners and operators) of a specific resource (or resources) within the organization you are currently authenticated to. |
 | [`CheckPermissions`](/dev/reference/apis/fleet/#checkpermissions) | Check if the organization, location, or robot your `ViamClient` is authenticated to is permitted to perform some action or set of actions on the resource you pass to the method. |
 | [`GetRegistryItem`](/dev/reference/apis/fleet/#getregistryitem) | Get registry item by ID. |
-| [`CreateRegistryItem`](/dev/reference/apis/fleet/#createregistryitem) | Create a registry item. |
-| [`UpdateRegistryItem`](/dev/reference/apis/fleet/#updateregistryitem) | Update a registry item. |
-| [`ListRegistryItems`](/dev/reference/apis/fleet/#listregistryitems) | List the registry items in an organization. |
-| [`DeleteRegistryItem`](/dev/reference/apis/fleet/#deleteregistryitem) | Delete a registry item. |
-| [`CreateModule`](/dev/reference/apis/fleet/#createmodule) | Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organization you are currently authenticated to. |
-| [`UpdateModule`](/dev/reference/apis/fleet/#updatemodule) | Update the documentation URL, description, models, entrypoint, and/or the visibility of a {{< glossary_tooltip term_id="module" text="module" >}}. |
-| [`UploadModuleFile`](/dev/reference/apis/fleet/#uploadmodulefile) | Upload a {{< glossary_tooltip term_id="module" text="module" >}} file. |
-| [`GetModule`](/dev/reference/apis/fleet/#getmodule) | Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID. |
-| [`ListModules`](/dev/reference/apis/fleet/#listmodules) | List the {{< glossary_tooltip term_id="module" text="modules" >}} under the organization you are currently authenticated to. |
-| [`CreateKey`](/dev/reference/apis/fleet/#createkey) | Create a new API key. |
-| [`DeleteKey`](/dev/reference/apis/fleet/#deletekey) | Delete an API key. |
-| [`RotateKey`](/dev/reference/apis/fleet/#rotatekey) | Rotate an API key. |
-| [`ListKeys`](/dev/reference/apis/fleet/#listkeys) | List all keys for the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to. |
-| [`CreateKeyFromExistingKeyAuthorizations`](/dev/reference/apis/fleet/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations. |
-| [`GetAppContent`](/dev/reference/apis/fleet/#getappcontent) | Retrieve the app content for an organization. |

@@ -1101,8 +1101,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
-For built-in service models, any model-specific commands available are covered with each model's documentation.
-If you are implementing your own motion service and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own motion service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

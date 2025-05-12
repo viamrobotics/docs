@@ -1,7 +1,7 @@
 ---
-linkTitle: "Run inference on a machine"
-title: "Run inference on a machine"
-weight: 50
+linkTitle: "Run inference in the cloud"
+title: "Run inference in the cloud"
+weight: 55
 layout: "docs"
 type: "docs"
 modulescript: true
