@@ -36,6 +36,20 @@ The motion service API allows you to plan and execute complex movements while av
 See [Configure an arm](/operate/mobility/move-arm/configure-arm/) for instructions.
 {{< /expand >}}
 
+## Connect your code to your machine
+
+1. From your machine's page in the Viam app, click the **CONNECT** tab.
+
+1. Choose your programming language.
+   The examples below are written in Python and Go, so choose one of those to follow along.
+
+1. Toggle **Include API key**.
+
+1. Copy and paste the connection code into a file on your machine, for example `move_arm.py` or `move_arm.go`.
+
+This code connects to your machine with authentication credentials, and creates a `machine` object.
+You'll now add to the code to describe the geometry of the arm's environment and move the arm.
+
 ## Define the geometry of the environment
 
 You must define the geometries of any objects around your arm that you want to avoid collisions with.
@@ -58,7 +72,7 @@ The available geometry types are:
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-box_origin = Pose(x=400, y=0, z=50+z_offset)
+box_origin = Pose(x=400, y=0, z=50)
 box_dims = Vector3(x=120.0, y=80.0, z=100.0)
 box_object = Geometry(center=box_origin,
                       box=RectangularPrism(dims_mm=box_dims))
@@ -83,7 +97,7 @@ See [spatialmath](https://pkg.go.dev/go.viam.com/rdk/spatialmath) for more infor
 {{% tablestep number=2 %}}
 
 Put the object into a reference frame, creating a `GeometriesInFrame` object.
-This example puts the object into the world reference frame, but you can put it into a different reference frame if it makes sense for your application:
+This example uses the world reference frame, but you can put your object into a different reference frame depending on your application:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -107,29 +121,77 @@ obstacles := []*referenceframe.GeometriesInFrame{geometryInFrame}
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
 
-Construct a `WorldState` object, which includes the geometries of the objects in the workspace:
+If you have passive objects that are mounted on your arm but are not configured as {{< glossary_tooltip term_id="component" text="components" >}} of the machine, represent them as _transforms_ to prevent collisions.
+For example, a marker mounted to the end of the arm can be represented as a transform:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-world_state = WorldState(obstacles=obstacles_in_frame)
+# Create a transform to represent a marker as a 160mm tall, 10mm radius capsule.
+# The center of the marker is 90mm from the end of the arm
+# (1/2 length of marker plus 10mm radius)
+marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
+                        capsule=Capsule(radius_mm=10, length_mm=160))
+transforms = [
+    # Name the reference frame "marker" and point its long axis along the z axis
+    # of the gripper
+    Transform(reference_frame="marker",
+              pose_in_observer_frame=PoseInFrame(
+                  reference_frame="arm-1",
+                  pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
+              physical_object=marker_geometry)
+]
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-myWorldState := &servicepb.WorldState{Obstacles: []*servicepb.GeometriesInFrame{obstaclesInFrame}}
+// Create a transform to represent a marker as a 160mm tall, 10mm radius capsule.
+// The center of the marker is 90mm from the end of the arm
+// (1/2 length of marker plus 10mm radius)
+marker_geometry := spatialmath.NewCapsule(
+  spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 90.0}),
+  10.0, 160.0
+)
+
+// Name the reference frame "marker" and point its long axis along the z axis
+// of the arm
+transform := referenceframe.NewTransform("marker",
+  spatialmath.NewPoseInFrame("arm-1",
+    spatialmath.NewPose(r3.Vector{X: 0, Y: 0, Z: 80},
+      spatialmath.R3VectorToOrientationVector(r3.Vector{X: 0, Y: 0, Z: 1}, 0))),
+  marker_geometry)
+transforms := []*referenceframe.Transform{transform}
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Tip" color="tip" %}}
-You can also add _transforms_ to the world state to represent objects that are connected to a machine without being components of the machine.
-See [Use a transform to represent a drinking cup](/tutorials/services/constrain-motion/#use-a-transform-to-represent-a-drinking-cup) for an example.
-{{% /alert %}}
+See [Use a transform to represent a drinking cup](/tutorials/services/constrain-motion/#use-a-transform-to-represent-a-drinking-cup) for another example.
+
+{{% /tablestep %}}
+{{% tablestep number=4 %}}
+
+Construct a `WorldState` object, which includes the static obstacles and moving transforms:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+world_state = WorldState(obstacles=obstacles_in_frame, transforms=transforms)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+worldState, err := referenceframe.NewWorldState(obstacles, transforms)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tablestep %}}
 {{% /table %}}
@@ -160,6 +222,26 @@ Follow the steps below to construct the necessary objects and pass them to `Move
    {{% /tab %}}
    {{< /tabs >}}
 
+1. Get the motion service.
+   It is built into `viam-server`, so you don't need to configure it or call it by name:
+
+   {{< tabs >}}
+   {{% tab name="Python" %}}
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   motion_service = MotionClient.from_robot(machine)
+   ```
+
+   {{% /tab %}}
+   {{% tab name="Go" %}}
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   motionService := motion.NewService(motionClient)
+   ```
+
+   {{% /tab %}}
+   {{< /tabs >}}
+
 1. Construct a destination pose for the arm.
    Specify the reference frame of the destination pose, creating a `PoseInFrame` object.
    For example:
@@ -176,7 +258,7 @@ Follow the steps below to construct the necessary objects and pass them to `Move
                           o_z=1.0,
                           theta=0.0)
    destination_pose_in_frame = PoseInFrame(
-      reference_frame=world,
+      reference_frame="world",
       pose=destination_pose)
    ```
 
@@ -283,6 +365,78 @@ The following is the full code for the example above:
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+from viam.components.generic import Generic
+from viam.services.motion import MotionClient, Constraints
+from viam.components.arm import Arm
+from viam.proto.common import GeometriesInFrame, Geometry, Pose, PoseInFrame, Vector3, RectangularPrism, Capsule, WorldState, Transform
+from viam.gen.service.motion.v1.motion_pb2 import OrientationConstraint
+
+async def connect():
+    opts = RobotClient.Options.with_api_key(
+        api_key='xxxx1234abcd1234abcd1234aaaa0000',
+        api_key_id='xxxx-1234-abcd-1234-abcd1234abcd1234'
+    )
+    return await RobotClient.at_address('demo-main.xyzefg123.viam.cloud', opts)
+
+async def main():
+    machine = await connect()
+
+    arm_resource_name = Arm.get_resource_name("my_arm")
+    motion_service = MotionClient.from_robot(machine, "builtin")
+
+    box_origin = Pose(x=400, y=0, z=50)
+    box_dims = Vector3(x=120.0, y=80.0, z=100.0)
+    box_object = Geometry(center=box_origin,
+                          box=RectangularPrism(dims_mm=box_dims))
+
+    obstacles_in_frame = [GeometriesInFrame(reference_frame="world",
+                                       geometries=[box_object])]
+
+    # Create a transform to represent a marker as a 160mm tall, 10mm radius capsule.
+    # The center of the marker is 90mm from the end of the arm
+    # (1/2 length of marker plus 10mm radius)
+    marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
+                            capsule=Capsule(radius_mm=10, length_mm=160))
+    transforms = [
+        # Name the reference frame "marker" and point its long axis along the z axis
+        # of the gripper
+        Transform(reference_frame="marker",
+                  pose_in_observer_frame=PoseInFrame(
+                      reference_frame="my_arm",
+                      pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
+                  physical_object=marker_geometry)
+    ]
+
+    world_state = WorldState(obstacles=obstacles_in_frame, transforms=transforms)
+
+    destination_pose = Pose(x=-800,
+                       y=-239,
+                       z=-100.0,
+                       o_x=0.0,
+                       o_y=0.0,
+                       o_z=1.0,
+                       theta=0.0)
+    destination_pose_in_frame = PoseInFrame(
+      reference_frame="world",
+      pose=destination_pose)
+
+    # Create constraints to maintain current orientation with a tolerance of 3 degrees
+    constraints = Constraints(orientation_constraint=[OrientationConstraint(orientation_tolerance_degs=3.0)])
+
+    await motion_service.move(component_name=arm_resource_name,
+                          destination=destination_pose_in_frame,
+                          world_state=world_state,
+                          constraints=constraints)
+
+   # Don't forget to close the machine when you're done!
+    await machine.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
 
 ```
 
