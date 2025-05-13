@@ -284,7 +284,7 @@ For more detailed instructions, see [Configure machine settings](https://docs.vi
 
 ## Agent logs
 
-These log messages include when `viam-server` is stopped and started, the status of `viam-agent`, and any errors or warnings encountered during operation.
+These log messages include `viam-server` stops and starts, the status of `viam-agent`, and any errors or warnings encountered during operation.
 
 {{< tabs >}}
 {{% tab name="App UI" %}}
