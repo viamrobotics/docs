@@ -9,9 +9,9 @@ description: "Move an arm with the motion service API."
 
 {{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}
 
-The recommended way to move an arm is with the [motion service API](/dev/reference/apis/services/motion/).
+This is the recommended way to write an application to move an arm.
 
-The motion service API allows you to plan and execute complex movements while avoiding collisions between components and obstacles.
+The [motion service API](/dev/reference/apis/services/motion/) allows you to plan and execute complex movements while avoiding collisions between components and obstacles.
 
 ## Prerequisites
 
@@ -50,6 +50,77 @@ See [Configure an arm](/operate/mobility/move-arm/configure-arm/) for instructio
 This code connects to your machine with authentication credentials, and creates a `machine` object.
 You'll now add to the code to describe the geometry of the arm's environment and move the arm.
 
+## Add imports and access the arm
+
+1. Add the following imports to your code:
+
+   {{< tabs >}}
+   {{% tab name="Python" %}}
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   from viam.services.motion import MotionClient, Constraints
+   from viam.components.arm import Arm
+   from viam.proto.common import GeometriesInFrame, Geometry, Pose, PoseInFrame, Vector3, RectangularPrism, Capsule, WorldState, Transform
+   from viam.gen.service.motion.v1.motion_pb2 import OrientationConstraint
+   ```
+
+   {{% /tab %}}
+   {{% tab name="Go" %}}
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   "go.viam.com/rdk/components/arm"
+   "github.com/golang/geo/r3"
+   "go.viam.com/rdk/motionplan"
+   "go.viam.com/rdk/referenceframe"
+   "go.viam.com/rdk/services/motion"
+   "go.viam.com/rdk/spatialmath"
+   ```
+
+   {{% /tab %}}
+   {{< /tabs >}}
+
+1. Within your main function, get the `ResourceName` (Python) or `resource.Name` (Go) of the arm you want to move.
+   Replace `"my_arm"` with the name of your arm in your machine's configuration:
+
+   {{< tabs >}}
+   {{% tab name="Python" %}}
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   arm_resource_name = Arm.get_resource_name("my_arm")
+   ```
+
+   {{% /tab %}}
+   {{% tab name="Go" %}}
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   armResourceName := arm.Named("my_arm")
+   ```
+
+   {{% /tab %}}
+   {{< /tabs >}}
+
+1. Get the motion service, which is built into `viam-server`:
+
+   {{< tabs >}}
+   {{% tab name="Python" %}}
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   motion_service = MotionClient.from_robot(machine, "builtin")
+   ```
+
+   {{% /tab %}}
+   {{% tab name="Go" %}}
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   motionService, err := motion.FromRobot(machine, "builtin")
+   if err != nil {
+     logger.Fatal(err)
+   }
+   ```
+
+   {{% /tab %}}
+   {{< /tabs >}}
+
 ## Define the geometry of the environment
 
 You must define the geometries of any objects around your arm that you want to avoid collisions with.
@@ -67,6 +138,8 @@ The available geometry types are:
 | capsule       | A cylinder with hemispherical end caps. | `radius` in mm, `length` in mm between the centers of the hemispherical end caps. |
 | sphere        | A sphere. | `radius` in mm. |
 | mesh          | A 3D model defined by a mesh. | `triangles`: a list of triangles, each defined by three vertices. |
+
+For example, to define a 120mm x 80mm x 100mm box:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -151,19 +224,16 @@ transforms = [
 // Create a transform to represent a marker as a 160mm tall, 10mm radius capsule.
 // The center of the marker is 90mm from the end of the arm
 // (1/2 length of marker plus 10mm radius)
-marker_geometry := spatialmath.NewCapsule(
-  spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 90.0}),
-  10.0, 160.0
-)
+marker_geometry, _ := spatialmath.NewCapsule(
+   spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 90.0}),
+   10.0, 160.0, "marker_1")
 
-// Name the reference frame "marker" and point its long axis along the z axis
-// of the arm
-transform := referenceframe.NewTransform("marker",
-  spatialmath.NewPoseInFrame("arm-1",
-    spatialmath.NewPose(r3.Vector{X: 0, Y: 0, Z: 80},
-      spatialmath.R3VectorToOrientationVector(r3.Vector{X: 0, Y: 0, Z: 1}, 0))),
-  marker_geometry)
-transforms := []*referenceframe.Transform{transform}
+// Name the transform "markerTransform" and point the marker's long axis along
+// the z axis of the arm
+transform := referenceframe.NewLinkInFrame("my_arm",
+   spatialmath.NewPoseFromPoint(r3.Vector{X: 0, Y: 0, Z: 80}),
+   "markerTransform", marker_geometry)
+transforms := []*referenceframe.LinkInFrame{transform}
 ```
 
 {{% /tab %}}
@@ -203,45 +273,6 @@ You will pass your `WorldState` object to the motion planning API in the next se
 To move the arm, use the motion service API's [`Move` method](/dev/reference/apis/services/motion/#move).
 Follow the steps below to construct the necessary objects and pass them to `Move`.
 
-1. Get the `ResourceName` (Python) or `resource.Name` (Go) of the arm you want to move:
-
-   {{< tabs >}}
-   {{% tab name="Python" %}}
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   arm_resource_name = Arm.get_resource_name("arm-1")
-   ```
-
-   {{% /tab %}}
-   {{% tab name="Go" %}}
-
-   ```go {class="line-numbers linkable-line-numbers"}
-   armResourceName := arm.GetResourceName("arm-1")
-   ```
-
-   {{% /tab %}}
-   {{< /tabs >}}
-
-1. Get the motion service.
-   It is built into `viam-server`, so you don't need to configure it or call it by name:
-
-   {{< tabs >}}
-   {{% tab name="Python" %}}
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   motion_service = MotionClient.from_robot(machine)
-   ```
-
-   {{% /tab %}}
-   {{% tab name="Go" %}}
-
-   ```go {class="line-numbers linkable-line-numbers"}
-   motionService := motion.NewService(motionClient)
-   ```
-
-   {{% /tab %}}
-   {{< /tabs >}}
-
 1. Construct a destination pose for the arm.
    Specify the reference frame of the destination pose, creating a `PoseInFrame` object.
    For example:
@@ -250,8 +281,8 @@ Follow the steps below to construct the necessary objects and pass them to `Move
    {{% tab name="Python" %}}
 
    ```python {class="line-numbers linkable-line-numbers"}
-   destination_pose = Pose(x=0.0,
-                          y=0.0,
+   destination_pose = Pose(x=-800.0,
+                          y=-239.0,
                           z=-100.0,
                           o_x=0.0,
                           o_y=0.0,
@@ -267,10 +298,10 @@ Follow the steps below to construct the necessary objects and pass them to `Move
 
    ```go {class="line-numbers linkable-line-numbers"}
    destinationPose := spatialmath.NewPose(
-      r3.Vector{X: 0.0, Y: 0.0, Z: -100.0},
+      r3.Vector{X: -800.0, Y: -239.0, Z: -100.0},
       &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
       )
-   destinationPoseInFrame := referenceframe.NewPoseInFrame(world, destinationPose)
+   destinationPoseInFrame := referenceframe.NewPoseInFrame("world", destinationPose)
    ```
 
    {{% /tab %}}
@@ -285,20 +316,26 @@ Follow the steps below to construct the necessary objects and pass them to `Move
    {{< tabs >}}
    {{% tab name="Linear constraint" %}}
 
-To keep the orientation the same (within a tolerance) throughout the motion, use an orientation constraint:
+To move the end of the arm in a straight line, use a linear constraint:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-constraints = Constraints(orientation_constraint=[OrientationConstraint()])
+constraints = Constraints(
+    linear_constraint=[LinearConstraint(line_tolerance_mm=0.5)])
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-myConstraints := &servicepb.Constraints{OrientationConstraint: []*servicepb.OrientationConstraint{&servicepb.OrientationConstraint{}}}
+myConstraints := &motionplan.Constraints{
+   LinearConstraint: []motionplan.LinearConstraint{motionplan.LinearConstraint{
+      LineToleranceMm:          0.5,
+      OrientationToleranceDegs: 0.9,
+   }},
+}
 ```
 
 {{% /tab %}}
@@ -307,21 +344,22 @@ myConstraints := &servicepb.Constraints{OrientationConstraint: []*servicepb.Orie
 {{% /tab %}}
 {{% tab name="Orientation constraint" %}}
 
-To move the end of the arm in a straight line, use a linear constraint:
+To keep the orientation the same (within a tolerance) throughout the motion, use an orientation constraint:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-constraints = Constraints(
-    linear_constraint=[LinearConstraint(line_tolerance_mm=0.2)])
+   constraints = Constraints(orientation_constraint=[OrientationConstraint(orientation_tolerance_degs=3.0)])
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-myConstraints := &servicepb.Constraints{LinearConstraint: []*servicepb.LinearConstraint{&servicepb.LinearConstraint{}}}
+myConstraints := &motionplan.Constraints{
+  OrientationConstraint: []motionplan.OrientationConstraint{{3.0}},
+}
 ```
 
 {{% /tab %}}
@@ -349,7 +387,7 @@ await motion_service.move(component_name=arm_resource_name,
 moved, err := motionService.Move(context.Background(), motion.MoveReq{
   ComponentName: armResourceName,
   Destination: destinationPoseInFrame,
-  WorldState: myWorldState,
+  WorldState: worldState,
   Constraints: myConstraints,
 })
 ```
@@ -368,72 +406,63 @@ The following is the full code for the example above:
 import asyncio
 
 from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
-from viam.components.generic import Generic
 from viam.services.motion import MotionClient, Constraints
 from viam.components.arm import Arm
 from viam.proto.common import GeometriesInFrame, Geometry, Pose, PoseInFrame, Vector3, RectangularPrism, Capsule, WorldState, Transform
 from viam.gen.service.motion.v1.motion_pb2 import OrientationConstraint
 
 async def connect():
-    opts = RobotClient.Options.with_api_key(
-        api_key='xxxx1234abcd1234abcd1234aaaa0000',
-        api_key_id='xxxx-1234-abcd-1234-abcd1234abcd1234'
-    )
-    return await RobotClient.at_address('demo-main.xyzefg123.viam.cloud', opts)
+   opts = RobotClient.Options.with_api_key(
+      api_key='xxxx1234abcd1234abcd1234aaaa0000',
+      api_key_id='xxxx-1234-abcd-1234-abcd1234abcd1234'
+   )
+   return await RobotClient.at_address('demo-main.xyzefg123.viam.cloud', opts)
 
 async def main():
-    machine = await connect()
+   machine = await connect()
 
-    arm_resource_name = Arm.get_resource_name("my_arm")
-    motion_service = MotionClient.from_robot(machine, "builtin")
+   arm_resource_name = Arm.get_resource_name("my_arm")
+   motion_service = MotionClient.from_robot(machine, "builtin")
 
-    box_origin = Pose(x=400, y=0, z=50)
-    box_dims = Vector3(x=120.0, y=80.0, z=100.0)
-    box_object = Geometry(center=box_origin,
-                          box=RectangularPrism(dims_mm=box_dims))
+   box_origin = Pose(x=400, y=0, z=50)
+   box_dims = Vector3(x=120.0, y=80.0, z=100.0)
+   box_object = Geometry(center=box_origin,
+                        box=RectangularPrism(dims_mm=box_dims))
 
-    obstacles_in_frame = [GeometriesInFrame(reference_frame="world",
-                                       geometries=[box_object])]
+   obstacles_in_frame = [GeometriesInFrame(reference_frame="world",
+                                    geometries=[box_object])]
 
-    # Create a transform to represent a marker as a 160mm tall, 10mm radius capsule.
-    # The center of the marker is 90mm from the end of the arm
-    # (1/2 length of marker plus 10mm radius)
-    marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
-                            capsule=Capsule(radius_mm=10, length_mm=160))
-    transforms = [
-        # Name the reference frame "marker" and point its long axis along the z axis
-        # of the gripper
-        Transform(reference_frame="marker",
-                  pose_in_observer_frame=PoseInFrame(
-                      reference_frame="my_arm",
-                      pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
-                  physical_object=marker_geometry)
-    ]
+   marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
+                           capsule=Capsule(radius_mm=10, length_mm=160))
+   transforms = [
+      Transform(reference_frame="marker",
+               pose_in_observer_frame=PoseInFrame(
+                     reference_frame="my_arm",
+                     pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
+               physical_object=marker_geometry)
+   ]
 
-    world_state = WorldState(obstacles=obstacles_in_frame, transforms=transforms)
+   world_state = WorldState(obstacles=obstacles_in_frame, transforms=transforms)
 
-    destination_pose = Pose(x=-800,
-                       y=-239,
-                       z=-100.0,
-                       o_x=0.0,
-                       o_y=0.0,
-                       o_z=1.0,
-                       theta=0.0)
-    destination_pose_in_frame = PoseInFrame(
-      reference_frame="world",
-      pose=destination_pose)
+   destination_pose = Pose(x=-800,
+                     y=-239,
+                     z=-100.0,
+                     o_x=0.0,
+                     o_y=0.0,
+                     o_z=1.0,
+                     theta=0.0)
+   destination_pose_in_frame = PoseInFrame(
+   reference_frame="world",
+   pose=destination_pose)
 
-    # Create constraints to maintain current orientation with a tolerance of 3 degrees
-    constraints = Constraints(orientation_constraint=[OrientationConstraint(orientation_tolerance_degs=3.0)])
+   constraints = Constraints(orientation_constraint=[OrientationConstraint(orientation_tolerance_degs=3.0)])
 
-    await motion_service.move(component_name=arm_resource_name,
-                          destination=destination_pose_in_frame,
-                          world_state=world_state,
-                          constraints=constraints)
+   await motion_service.move(component_name=arm_resource_name,
+                        destination=destination_pose_in_frame,
+                        world_state=world_state,
+                        constraints=constraints)
 
-   # Don't forget to close the machine when you're done!
-    await machine.close()
+   await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -444,7 +473,87 @@ if __name__ == '__main__':
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
+package main
 
+import (
+   "context"
+
+   "go.viam.com/rdk/logging"
+   "go.viam.com/rdk/robot/client"
+   "go.viam.com/utils/rpc"
+   "go.viam.com/rdk/components/arm"
+   "github.com/golang/geo/r3"
+   "go.viam.com/rdk/motionplan"
+   "go.viam.com/rdk/referenceframe"
+   "go.viam.com/rdk/services/motion"
+   "go.viam.com/rdk/spatialmath"
+)
+
+func main() {
+   logger := logging.NewDebugLogger("client")
+   machine, err := client.New(
+      context.Background(),
+      "demo-main.xyzefg123.viam.cloud",
+      logger,
+      client.WithDialOptions(rpc.WithEntityCredentials(
+         "xxxx-1234-abcd-1234-abcd1234abcd1234",
+         rpc.Credentials{
+            Type:    rpc.CredentialsTypeAPIKey,
+            Payload: "xxxx1234abcd1234abcd1234aaaa0000",
+         })),
+   )
+   if err != nil {
+      logger.Fatal(err)
+   }
+
+   defer machine.Close(context.Background())
+
+   armResourceName := arm.Named("my_arm")
+   motionService, err := motion.FromRobot(machine, "builtin")
+   if err != nil {
+      logger.Fatal(err)
+   }
+
+   boxPose := spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 0.0})
+   boxDims := r3.Vector{X: 0.2, Y: 0.2, Z: 0.2}
+   obstacle, _ := spatialmath.NewBox(boxPose, boxDims, "obstacle_1")
+
+   geometryInFrame := referenceframe.NewGeometriesInFrame("world", []spatialmath.Geometry{obstacle})
+   obstacles := []*referenceframe.GeometriesInFrame{geometryInFrame}
+
+   marker_geometry, _ := spatialmath.NewCapsule(
+      spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 90.0}),
+      10.0, 160.0, "marker_1")
+
+   transform := referenceframe.NewLinkInFrame("my_arm",
+      spatialmath.NewPoseFromPoint(r3.Vector{X: 0, Y: 0, Z: 80}),
+      "markerTransform", marker_geometry)
+   transforms := []*referenceframe.LinkInFrame{transform}
+
+   worldState, err := referenceframe.NewWorldState(obstacles, transforms)
+
+   destinationPose := spatialmath.NewPose(
+      r3.Vector{X: -800.0, Y: -239.0, Z: -100.0},
+      &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
+   )
+   destinationPoseInFrame := referenceframe.NewPoseInFrame("world", destinationPose)
+
+   myConstraints := &motionplan.Constraints{
+      OrientationConstraint: []motionplan.OrientationConstraint{{3.0}},
+   }
+
+   moved, err := motionService.Move(context.Background(), motion.MoveReq{
+      ComponentName: armResourceName,
+      Destination:   destinationPoseInFrame,
+      WorldState:    worldState,
+      Constraints:   myConstraints,
+   })
+   if err != nil {
+      logger.Fatal(err)
+   }
+   logger.Info("moved", moved)
+
+}
 ```
 
 {{% /tab %}}
