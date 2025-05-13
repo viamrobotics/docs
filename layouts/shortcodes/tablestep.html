@@ -17,13 +17,13 @@
         </svg>
       </span>
     </a>
-    {{ end }}
-    {{ with $.Inner }}
-        {{ if eq $.Page.File.Ext "md" }}
-          {{ $.Inner }}
-        {{ else }}
-          {{ $.Inner | htmlUnescape | safeHTML }}
-        {{ end }}
-    {{ end }}
+{{ end }}
+{{ with $.Inner }}
+{{ if eq $.Page.File.Ext "md" }}
+  {{ $.Inner }}
+{{ else }}
+  {{ $.Inner | htmlUnescape | safeHTML }}
+{{ end }}
+{{ end }}
   </div>
 </div>
