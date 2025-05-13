@@ -78,7 +78,7 @@ If you choose to use the captive web portal, you can optionally create a machine
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
 
 {{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
 
