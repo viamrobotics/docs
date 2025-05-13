@@ -201,11 +201,11 @@ For example, a marker mounted to the end of the arm can be represented as a tran
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Create a transform to represent a marker as a 160mm tall, 10mm radius capsule.
-# The center of the marker is 90mm from the end of the arm
+# Create a transform to represent a marker as a 160mm tall, 10mm radius
+# capsule. The center of the marker is 90mm from the end of the arm
 # (1/2 length of marker plus 10mm radius)
 marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
-                        capsule=Capsule(radius_mm=10, length_mm=160))
+                           capsule=Capsule(radius_mm=10, length_mm=160))
 transforms = [
     # Name the reference frame "marker" and point its long axis along the z axis
     # of the gripper
@@ -221,8 +221,8 @@ transforms = [
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Create a transform to represent a marker as a 160mm tall, 10mm radius capsule.
-// The center of the marker is 90mm from the end of the arm
+// Create a transform to represent a marker as a 160mm tall, 10mm radius
+// capsule. The center of the marker is 90mm from the end of the arm
 // (1/2 length of marker plus 10mm radius)
 marker_geometry, _ := spatialmath.NewCapsule(
    spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 90.0}),
@@ -350,7 +350,8 @@ To keep the orientation the same (within a tolerance) throughout the motion, use
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-   constraints = Constraints(orientation_constraint=[OrientationConstraint(orientation_tolerance_degs=3.0)])
+constraints = Constraints(orientation_constraint=[
+   OrientationConstraint(orientation_tolerance_degs=3.0)])
 ```
 
 {{% /tab %}}
@@ -408,7 +409,8 @@ import asyncio
 from viam.robot.client import RobotClient
 from viam.services.motion import MotionClient, Constraints
 from viam.components.arm import Arm
-from viam.proto.common import GeometriesInFrame, Geometry, Pose, PoseInFrame, Vector3, RectangularPrism, Capsule, WorldState, Transform
+from viam.proto.common import GeometriesInFrame, Geometry, Pose, PoseInFrame,
+   Vector3, RectangularPrism, Capsule, WorldState, Transform
 from viam.gen.service.motion.v1.motion_pb2 import OrientationConstraint
 
 async def connect():
@@ -427,45 +429,47 @@ async def main():
    box_origin = Pose(x=400, y=0, z=50)
    box_dims = Vector3(x=120.0, y=80.0, z=100.0)
    box_object = Geometry(center=box_origin,
-                        box=RectangularPrism(dims_mm=box_dims))
+                         box=RectangularPrism(dims_mm=box_dims))
 
    obstacles_in_frame = [GeometriesInFrame(reference_frame="world",
-                                    geometries=[box_object])]
+                                           geometries=[box_object])]
 
    marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
-                           capsule=Capsule(radius_mm=10, length_mm=160))
+                              capsule=Capsule(radius_mm=10, length_mm=160))
    transforms = [
       Transform(reference_frame="marker",
-               pose_in_observer_frame=PoseInFrame(
+                pose_in_observer_frame=PoseInFrame(
                      reference_frame="my_arm",
                      pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
-               physical_object=marker_geometry)
+                physical_object=marker_geometry)
    ]
 
    world_state = WorldState(obstacles=obstacles_in_frame, transforms=transforms)
 
-   destination_pose = Pose(x=-800,
-                     y=-239,
-                     z=-100.0,
-                     o_x=0.0,
-                     o_y=0.0,
-                     o_z=1.0,
-                     theta=0.0)
+   destination_pose = Pose(
+      x=-800,
+      y=-239,
+      z=-100,
+      o_x=0.0,
+      o_y=0.0,
+      o_z=1.0,
+      theta=0.0)
    destination_pose_in_frame = PoseInFrame(
-   reference_frame="world",
-   pose=destination_pose)
+      reference_frame="world",
+      pose=destination_pose)
 
    constraints = Constraints(orientation_constraint=[OrientationConstraint(orientation_tolerance_degs=3.0)])
 
-   await motion_service.move(component_name=arm_resource_name,
-                        destination=destination_pose_in_frame,
-                        world_state=world_state,
-                        constraints=constraints)
+   await motion_service.move(
+      component_name=arm_resource_name,
+      destination=destination_pose_in_frame,
+      world_state=world_state,
+      constraints=constraints)
 
    await machine.close()
 
 if __name__ == '__main__':
-    asyncio.run(main())
+   asyncio.run(main())
 
 ```
 
