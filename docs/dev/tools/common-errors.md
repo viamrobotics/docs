@@ -167,6 +167,25 @@ In **JSON** mode, it will resemble the following:
 }
 ```
 
+### Error: resource build error: unknown resource type
+
+**Full Error:**
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+error rdk.resource_manager.rdk:<RESOURCE-IDENTIFIER>   resource/graph_node.go:297   resource build error: unknown resource type: API "<API-TRIPLET>" with model "<MODEL-TRIPLET>" not registered   resource <RESOURCE-IDENTIFIER>  model <MODEL-TRIPLET>
+```
+
+**Description:** This error occurs when your configuration requests a model with an associated API and the combination of model name and API triplet is not registered with viam-server.
+
+**Solution:**
+
+- **Module Installation**: For registry-provided models, ensure that your machine's configuration includes the module.
+- **Model Triplet Verification**: Check for typos in the model triplet.
+  It must exactly match the model registered with `viam-server`.
+  For registry-provided models, you can find the correct model triplet (for example `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
+- **API Compatibility**: Ensure the selected model supports the requested API. You can find the requested APIs next to each model entry in the **Components & services** section of the registry page.
+- **API Triplet Verification**: Check for typos in the API triplet (for example `rdk:component:camera`).
+
 ### Accidental deletion of machines, locations, organizations, or accounts
 
 If you delete your machine, location, organization, or account by mistake, contact [contact@viam.com](mailto:contact@viam.com) immediately.
