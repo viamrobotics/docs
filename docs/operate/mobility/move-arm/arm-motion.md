@@ -210,10 +210,10 @@ transforms = [
    # Name the reference frame "marker" and point its long axis along the
    # z axis of the gripper
    Transform(reference_frame="marker",
-            pose_in_observer_frame=PoseInFrame(
+             pose_in_observer_frame=PoseInFrame(
                reference_frame="arm-1",
                pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
-            physical_object=marker_geometry)
+             physical_object=marker_geometry)
 ]
 ```
 
@@ -409,8 +409,9 @@ import asyncio
 from viam.robot.client import RobotClient
 from viam.services.motion import MotionClient, Constraints
 from viam.components.arm import Arm
-from viam.proto.common import GeometriesInFrame, Geometry, Pose, PoseInFrame,
-Vector3, RectangularPrism, Capsule, WorldState, Transform
+from viam.proto.common import (GeometriesInFrame, Geometry, Pose, PoseInFrame,
+                               Vector3, RectangularPrism, Capsule, WorldState,
+                               Transform)
 from viam.gen.service.motion.v1.motion_pb2 import OrientationConstraint
 
 async def connect():
