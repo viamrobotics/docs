@@ -190,6 +190,18 @@ This can happen when there is a slow internet connection, when the module is try
   You can set these environment variables when you start `viam-server`, for instance `VIAM_MODULE_STARTUP_TIMEOUT=6m30 VIAM_RESOURCE_CONFIGURATION_TIMEOUT=3m0s viam-server -config example-machine.json`.
   Pass a sequence of numbers and time units, for example "6m30s50ms" for a timeout of 6 minutes, 30 seconds, and 50 milliseconds, or "5m" for a timeout of 5 minutes.
 
+## Common Micro-RDK errors
+
+### Unable to properly process stun response IceStunEncodingError
+
+**Full Error:** `unable to properly process stun response IceStunEncodingError`
+
+**Description:** This error occurs when something sent a stun message to a server and the response was eitehr not parseable or implied a different state than the client thought it was in.
+
+**Solution:** This error may be transient and may resolve on its own.
+If it doesn't it is likely there are other related errors.
+Review the logs to see if you can find more information.
+
 ## Common warnings
 
 ### Unable to create PeerConnection with module
