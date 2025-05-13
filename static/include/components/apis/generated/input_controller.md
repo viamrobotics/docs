@@ -128,14 +128,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const controller = new VIAM.InputControllerClient(
-  machine,
-  'my_controller'
-);
+const controller = new VIAM.InputControllerClient(machine, "my_controller");
 
 // Get the most recent Event for each Control
 const recentEvents = await controller.getEvents();
-console.log('Recent events:', recentEvents);
+console.log("Recent events:", recentEvents);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/InputControllerClient.html#getevents).
@@ -213,16 +210,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const controller = new VIAM.InputControllerClient(
-  machine,
-  'my_controller'
-);
+const controller = new VIAM.InputControllerClient(machine, "my_controller");
 
 // Create a "Button is Pressed" event for the control BUTTON_START
 const buttonPressEvent = new VIAM.InputControllerEvent({
   time: { seconds: BigInt(Math.floor(Date.now() / 1000)) },
-  event: 'ButtonPress',
-  control: 'ButtonStart',
+  event: "ButtonPress",
+  control: "ButtonStart",
   value: 1.0,
 });
 // Trigger the event
@@ -236,7 +230,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetGeometries
 
-Get all the geometries associated with the input controller in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the input controller.
+Get all the geometries associated with the input controller in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the input controller.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}

@@ -70,8 +70,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
+  name: "myCommand",
+  args: { key: "value" },
 });
 ```
 
@@ -103,7 +103,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the generic component in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the generic component.
+Get all the geometries associated with the generic component in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the generic component.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -148,12 +148,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```ts {class="line-numbers linkable-line-numbers"}
 const generic = new VIAM.GenericComponentClient(
   machine,
-  'my_generic_component'
+  "my_generic_component",
 );
 
 // Get the geometries of this component
 const geometries = await generic.getGeometries();
-console.log('Geometries:', geometries);
+console.log("Geometries:", geometries);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#getgeometries).

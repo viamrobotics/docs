@@ -162,7 +162,7 @@ Refer to the [`gpio` motor](/operate/reference/components/motor/gpio/) documenta
    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png" resize="800x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Config Builder." style="min-height:550px; max-height:600px">}}
 
    - Make sure to select each of your right and left motors as **right** and **left**, as well as set the **wheel_circumference_mm** and **width_mm** of each of the wheels the motors are attached to.
-   - [Configure the frame system](/operate/mobility/define-geometry/) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
+   - [Configure the frame system](/operate/reference/services/frame-system/) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
 
      - Switch to **Frame** mode on the **CONFIGURE** tab and select your base.
        If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
@@ -342,13 +342,11 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     Refer to [the `merged` movement sensor documentation](/operate/reference/components/movement-sensor/merged/) for attribute information.
 
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
-    - [Configure the frame system](/operate/mobility/define-geometry/) for this movement sensor so that the navigation service knows where it is in relation to the base.
+    - [Configure the frame system](/operate/reference/services/frame-system/) for this movement sensor so that the navigation service knows where it is in relation to the base.
 
-      - Switch to **Frame** mode on the **CONFIGURE** tab and select your movement sensor.
-        If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1`.
-      - Select the `base` as the parent frame.
-
-        {{<imgproc src="/tutorials/navigate-with-rover-base/merged-movement-sensor-frame-system.png" resize="1100x" declaredimensions=true alt="An example configuration for a merged movement sensor in the Viam app Frame System." style="width:460px" class="shadow imgzoom" >}}
+      - On the **CONFIGURE** tab, add a frame to your movement sensor configuration by clicking **+ Add Frame**.
+        If your movement sensor is mounted on top of the rover like ours is, leave the default frame values.
+      - Set the `base` as the `parent` frame.
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

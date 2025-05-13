@@ -114,7 +114,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
-the same type that will be returned.
+  the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -125,22 +125,22 @@ the same type that will be returned.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
+const camera = new VIAM.CameraClient(machine, "my_camera");
 const image = await camera.getImage();
 
 // Convert Uint8Array to base64
 const base64Image = btoa(
   Array.from(image)
     .map((byte) => String.fromCharCode(byte))
-    .join('')
+    .join(""),
 );
 
 // Convert image to base64 and display it
-const imageElement = document.createElement('img');
+const imageElement = document.createElement("img");
 imageElement.src = `data:image/jpeg;base64,${base64Image}`;
-const imageContainer = document.getElementById('#imageContainer');
+const imageContainer = document.getElementById("#imageContainer");
 if (imageContainer) {
-  imageContainer.innerHTML = '';
+  imageContainer.innerHTML = "";
   imageContainer.appendChild(imageElement);
 }
 ```
@@ -243,7 +243,7 @@ A specific MIME type can be requested but may not necessarily be the same one re
 **Parameters:**
 
 - `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
-the same type that will be returned.
+  the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -254,8 +254,8 @@ the same type that will be returned.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
-const mimeType = 'image/jpeg';
+const camera = new VIAM.CameraClient(machine, "my_camera");
+const mimeType = "image/jpeg";
 const image = await camera.renderFrame(mimeType);
 ```
 
@@ -338,7 +338,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
+const camera = new VIAM.CameraClient(machine, "my_camera");
 const pointCloud = await camera.getPointCloud();
 ```
 
@@ -419,7 +419,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
+const camera = new VIAM.CameraClient(machine, "my_camera");
 const properties = await camera.getProperties();
 ```
 
@@ -519,8 +519,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
+  name: "myCommand",
+  args: { key: "value" },
 });
 ```
 
@@ -552,7 +552,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the camera in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the camera.
+Get all the geometries associated with the camera in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the camera.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
