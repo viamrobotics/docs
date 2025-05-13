@@ -7,7 +7,7 @@ layout: "docs"
 description: "Move an arm without code from the Viam app interface."
 ---
 
-{{<gif webm_src="/how-tos/joint_positions.webm" mp4_src="/how-tos/joint_positions.mp4" alt="The robot arm moving through joint position commands" max-width="200px" class="alignright">}}
+{{<gif webm_src="/how-tos/joint_positions.webm" mp4_src="/how-tos/joint_positions.mp4" alt="The robot arm moving through joint position commands" max-width="150px" class="alignright">}}
 
 You can move an arm without code from the Viam app interface.
 This is a good way to quickly test that your arm is working before writing code to move it.

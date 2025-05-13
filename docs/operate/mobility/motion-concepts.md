@@ -10,14 +10,12 @@ description: "Learn what you can do with Viam's motion planning tools."
 Viam's motion planning tools allow you to automate the intelligent movement of your machines.
 You can:
 
-- Move individual components
-- Move multiple components in a coordinated way
-- Avoid configured static obstacles
-- Avoid dynamic obstacles using a depth camera
-- Constrain the orientation of a component
-- Navigate a mobile robot with GPS
+- Plan coordinated motion of multiple components
+- Avoid obstacles
+- Constrain the orientation of an arm's end effector
+- Give GPS waypoints to a mobile robot
 
-For example, instead of sending individual commands to each motor of a robotic arm, you can use motion planning to move the arm smoothly to a specific position while avoiding obstacles and keeping a gripper upright.
+For example, instead of sending individual commands to each motor of a robotic arm, you can use one motion planning command to move the arm smoothly to a specific position while avoiding obstacles and keeping a gripper upright.
 
 ## Supported components
 
@@ -47,7 +45,8 @@ For example, if you command an arm to move to coordinates of `(300, 0, 0)` milli
 To give the necessary context, you define the arm's `frame` to describe its position and orientation relative to the world.
 If you also have a gripper component, you define the gripper's `frame` to describe its position and orientation relative to the arm, so that when the arm moves, the motion service knows where the gripper is as well.
 
-## Visualizing components and frames
+<!-- Not live yet
+## Visualize components and frames
 
 You can visualize your machine's components and frames in the Viam app.
 
@@ -55,3 +54,4 @@ You can visualize your machine's components and frames in the Viam app.
 1. Select the **VISUALIZE** tab.
 
    {{<imgproc src="/services/frame-system/viz-tab.png" resize="x1100" declaredimensions=true alt="Visualization of a number of objects seemingly floating in space above a grid." style="max-width:600px" class="shadow" >}}
+-->

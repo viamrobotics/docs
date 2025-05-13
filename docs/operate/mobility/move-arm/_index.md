@@ -17,7 +17,7 @@ You can move a robotic arm in three ways:
 - Use the Viam app to move the arm with a no-code interface.
   - Useful for getting started and quick testing.
 - Use the arm API to move the arm with code.
-  - Not recommended for most use cases, because it requires you to write very granular code and does not allow you to use obstacle avoidance or other features that the motion planning API provides.
+  - Not recommended for production use cases, because it does not allow you to configure obstacles or constrain orientation.
 - Use the motion planning API to move the arm with code.
   - Recommended for most use cases.
 
