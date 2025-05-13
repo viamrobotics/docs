@@ -167,6 +167,25 @@ In **JSON** mode, it will resemble the following:
 }
 ```
 
+### Error: resource build error: unknown resource type
+
+**Full Error:**
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+error rdk.resource_manager.rdk:<RESOURCE-IDENTIFIER>   resource/graph_node.go:297   resource build error: unknown resource type: API "<API-TRIPLET>" with model "<MODEL-TRIPLET>" not registered   resource <RESOURCE-IDENTIFIER>  model <MODEL-TRIPLET>
+```
+
+**Description:** This error occurs when your configuration requests a model with an associated API and the combination of model name and API triplet is not registered with viam-server.
+
+**Solution:**
+
+- **Module Installation**: For registry-provided models, ensure that your machine's configuration includes the module.
+- **Model Triplet Verification**: Check for typos in the model triplet.
+  It must exactly match the model registered with `viam-server`.
+  For registry-provided models, you can find the correct model triplet (for example `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
+- **API Compatibility**: Ensure the selected model supports the requested API. You can find the requested APIs next to each model entry in the **Components & services** section of the registry page.
+- **API Triplet Verification**: Check for typos in the API triplet (for example `rdk:component:camera`).
+
 ### Accidental deletion of machines, locations, organizations, or accounts
 
 If you delete your machine, location, organization, or account by mistake, contact [contact@viam.com](mailto:contact@viam.com) immediately.
@@ -189,6 +208,20 @@ This can happen when there is a slow internet connection, when the module is try
 - If the problem persists, try setting the `VIAM_MODULE_STARTUP_TIMEOUT` or `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` environment variables on your machine to a higher value.
   You can set these environment variables when you start `viam-server`, for instance `VIAM_MODULE_STARTUP_TIMEOUT=6m30 VIAM_RESOURCE_CONFIGURATION_TIMEOUT=3m0s viam-server -config example-machine.json`.
   Pass a sequence of numbers and time units, for example "6m30s50ms" for a timeout of 6 minutes, 30 seconds, and 50 milliseconds, or "5m" for a timeout of 5 minutes.
+
+## Common Micro-RDK errors
+
+### Unable to properly process stun response IceStunEncodingError
+
+**Full Error:** `unable to properly process stun response IceStunEncodingError`
+
+**Description:** Occurs when a client sends a STUN message to a server and receives one of the following problematic responses:
+
+- the response cannot be parsed properly
+- the response indicates a server state that conflicts with the client's understanding of the session state
+
+**Solution:** This error may resolve on its own.
+If not, look for other related errors in your logs.
 
 ## Common warnings
 
