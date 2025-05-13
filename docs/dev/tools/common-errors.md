@@ -179,12 +179,12 @@ error rdk.resource_manager.rdk:<RESOURCE-IDENTIFIER>   resource/graph_node.go:
 
 **Solution:**
 
-1. If the model is one provided by a module from the registry, make sure the module is added to your machine's configuration.
-1. Check the model triplet for typos.
-   The model triplet must match the model registered with `viam-server` exactly.
-   If the model is provided by a module from the registry, you can see the model triplet in the **Components & services** section on the registry page (for example `viam:camera:csi-pi`).
-1. Check the `"<API-TRIPLET>"` for typos and check that the model supports the API you are requesting.
-   If the model is provided by a module from the registry, you can see the API triplet in the **Components & services** section on the registry page (for example `rdk:component:camera`).
+- **Module Installation**: For registry-provided models, ensure that your machine's configuration includes the module.
+- **Model Triplet Verification**: Check for typos in the model triplet.
+   It must exactly match the model registered with `viam-server`.
+   For registry-provided models, you can find the correct model triplet (e.g., `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
+- **API Compatibility**: Ensure the selected model supports the requested API. You can find the requested APIs next to each model entry in the **Components & services** section of the registry page.
+- **API Triplet Verification**: Check for typos in the API triplet (e.g., `rdk:component:camera`).
 
 ### Accidental deletion of machines, locations, organizations, or accounts
 
