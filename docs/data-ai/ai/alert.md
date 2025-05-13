@@ -45,7 +45,7 @@ For example, if using the YOLOv8 model (named `yolo`) for hardhat detection, you
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing `filtered-camera` and select **camera / filtered-camera** from the results.
    Click **Add module**.
 
@@ -82,7 +82,7 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
    Navigate to your machine's **CONFIGURE** tab.
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Type "data" and click **data management / RDK**.
    Name your data management service `data-manager` and click **Create**.
 

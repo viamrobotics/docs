@@ -168,7 +168,7 @@ If you are not using GitHub or cloud build, see [Upload your module](/operate/ge
 1. In the [Viam app](https://app.viam.com), navigate to the machine you want to deploy your control logic to.
 1. Go to the **CONFIGURE** tab.
 1. Click the **+** button.
-1. Click **Component** and select your control logic component.
+1. Click **Component or service** and select your control logic component.
 1. Click **Add module**.
 1. Add a **Name** and click **Create**.
 1. If you added configuration attributes, configure your control logic component.

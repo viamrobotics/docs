@@ -30,7 +30,7 @@ Use the following configuration for an input controller of model `webgamepad`:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `input_controller` type, then select the `webgamepad` model.
 Enter the name `WebGamepad` and click **Create**.
 

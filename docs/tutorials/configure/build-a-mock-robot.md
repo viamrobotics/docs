@@ -61,14 +61,14 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 2. Configure a [fake board component](/operate/reference/components/board/fake/):
 
-   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
    - Select the `board` type, then select the `fake` model.
    - Enter the name `myBoard` for your board and click **Create**.
    - Leave the attribute `fail_new` set to false.
 
 3. Configure a [fake arm component](/operate/reference/components/arm/fake/):
 
-   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
    - Select the `arm` type, then select the `fake` model.
    - Enter the name `myArm` for your arm and click **Create**.
    - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by setting the attribute **arm-model** to `ur5e`.
@@ -80,7 +80,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
 4. Configure a [fake motor component](/operate/reference/components/motor/fake/):
 
-   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
    - Select the `motor` type, then select the `fake` model.
    - Enter the name `myMotor` for your motor and click **Create**.
    - Most motors are wired to a board which sends them signals.
@@ -340,7 +340,7 @@ Your sub-part will automatically be created with a name like `your-machine-name-
 
 Configure your machine's new sub-part with a fake motor:
 
-1. Click the **+** (Create) icon next to your sub-part in the left-hand menu and select **Component**.
+1. Click the **+** (Create) icon next to your sub-part in the left-hand menu and select **Component or service**.
 1. Select the `motor` type, then select the `fake` model.
 1. Enter the name `motor2` for your motor and click **Create**:
 

@@ -46,7 +46,7 @@ You can also view [trigger-sync-examples module](https://github.com/viam-labs/tr
 
 Add the [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
 
-On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 
 Select the `data management / RDK` service and click **Create**.
 You can leave the default data sync interval of `0.1` minutes to sync every 6 seconds.
@@ -130,7 +130,7 @@ You will need to follow the same steps with your module:
 **Add the sensor to your machine**
 
 On your machine's **CONFIGURE** page, click the **+** button next to your machine part in the left menu.
-Select **Component**, then search for and select the `sync-at-time:timesyncsensor` model provided by the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
+Select **Component or service**, then search for and select the `sync-at-time:timesyncsensor` model provided by the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
 
 Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
 

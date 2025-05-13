@@ -68,7 +68,7 @@ You must also install telegraf by running `brew install telegraf` in your termin
 {{% tablestep number=1 %}}
 **Add the performance metrics sensors**
 
-On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 
 Search for and add the `hwmonitor:cpu_monitor` model provided by the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor).
 
@@ -104,7 +104,7 @@ To capture or alert on the data from your configured sensor, you must add the [d
 {{% tablestep number=1 %}}
 **1. Add the data management service**
 
-On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 
 Select the `data management / RDK` service and click **Create**.
 You can leave the default data sync interval of `0.1` minutes to sync every 6 seconds.

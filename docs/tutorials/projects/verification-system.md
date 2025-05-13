@@ -72,7 +72,7 @@ Reference [these available models](/operate/reference/components/camera/#configu
 
 To configure a `webcam`:
 
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 2. Select the `camera` type, then select the `webcam` model.
 3. Enter the name `my_webcam` for your camera and click **Create**.
 4. If your machine is online and connected to the Viam app, your camera’s video path is automatically detected and configured.
@@ -95,7 +95,7 @@ For your machine to be able to detect people, you will use a Machine Learning mo
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
 
 1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
-2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+2. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 3. Select type `ML model`, then select model `TFLite CPU`.
 4. Enter `persondetect` as the name for your ML model service, then click **Create**.
 5. Select **Deploy model on machine** for the **Deployment** field.
@@ -104,7 +104,7 @@ The model can detect a variety of things which you can see in <file>[labels.txt]
 Finally, configure an `mlmodel` detector vision service to use your new `"persondetect"` ML model:
 
 1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
-2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+2. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 3. Select the `vision` type, then select the `ML model` model.
 4. Give the detector the name `people-detect` and click **Create**.
 5. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
@@ -122,7 +122,7 @@ To capture training images:
 
 1. Navigate to your machine’s page in the [Viam app](https://app.viam.com/robots).
 1. Select the **CONFIGURE** tab.
-1. In the left-hand menu, click the **+** icon next to your machine part, then select **Service** from the context menu.
+1. In the left-hand menu, click the **+** icon next to your machine part, then select **Component or service** from the context menu.
 1. Select the Viam `data management` service type.
    For the service name, use `data-manager`.
 1. Click **Create**.
@@ -139,7 +139,7 @@ To capture training images:
    Walk in front of your camera a number of times, perhaps with a friend or two, letting the camera capture many images of you.
    For best results, try a variety of angles and lighting.
 
-1. Add each training image to the `verification-system` dataset using the **Add to dataset** button marked with the camera icon.  
+1. Add each training image to the `verification-system` dataset using the **Add to dataset** button marked with the camera icon.
    To view your captured images, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
 
 1. Next, position your camera to capture a variety of images of people.
@@ -179,7 +179,7 @@ Then, train a new model using that model:
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 
 1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `vision` type, then select the `ML model` model.
 1. Give the detector the name `people-detect` and click **Create**.
 1. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
@@ -211,7 +211,7 @@ The `facial-detector` module provides a modular vision service that uses Faceboo
 To add the `facial-detector` module to your machine:
 
 1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select `vision`, then select the `detector:facial-detector` model.
    You can also search for `facial-detector` directly.
 1. Click **Add module**.
@@ -245,7 +245,7 @@ Now that you have configured both the coarser `people-detect` object detector an
 For this, add and configure the `verification-system` module from the Viam Registry following the steps below:
 
 1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select `vision`, then select the `classifier:verification-system` model.
    You can also search for `verification-system` directly.
 1. Click **Add module**.
@@ -291,7 +291,7 @@ To easily see this in action, you can add a [transform camera](/operate/referenc
 To add a transform camera to your machine:
 
 1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
-1. lick the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. lick the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select `camera`, then select the built-in `transform` model.
 1. Give the transform camera a name, like `my-transform-camera`, then click **Create**.
 1. Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the camera's attributes directly with JSON.

@@ -86,7 +86,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 1. Add the data management service to your machine:
 
    Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Choose **Data Management** as the type and either use the suggested name or specify a name for your data management service, for example `data_manager-1`.
    Click **Create**.
 
@@ -140,7 +140,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 
    Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 
-   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select **SLAM**, then select `cloudslam-wrapper`.
    You can also search for "cloudslam".
 

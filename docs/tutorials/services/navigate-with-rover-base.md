@@ -437,7 +437,7 @@ Add the navigation service so that your wheeled base can navigate between waypoi
 To add the navigation service to your robot, do the following:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `navigation` type.
 1. Enter a name or use the suggested name for your service and click **Create**.
 1. Select **JSON** mode.
