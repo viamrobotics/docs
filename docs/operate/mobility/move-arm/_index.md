@@ -29,4 +29,4 @@ To get started:
 
 1. [Move the arm with no code](/operate/mobility/move-arm/arm-no-code/).
 
-1. [Move the arm with the motion planning API](/dev/reference/apis/services/motion/).
+1. [Move the arm with the motion planning API](/operate/mobility/move-arm/arm-motion/).
