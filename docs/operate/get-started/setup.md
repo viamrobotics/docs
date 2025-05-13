@@ -134,7 +134,7 @@ We do not recommend running `viam-server` or `viam-agent` in Docker. If you need
 
 The machine setup steps displayed in the Viam app copy your machine's credentials to your machine.
 When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its configuration from the Viam app.
-Once the machine has a configuration, it caches it locally (in a file at <FILE>~/.viam/cached*cloud_config*<PART-ID>.json</FILE>) and can use the config for up to 60 days.
+Once the machine has a configuration, it caches it locally (in a file at <FILE>~/.viam/cached_cloud_config\_\<PART-ID\>.json</FILE>) and can use the config for up to 60 days.
 Since the configuration is cached locally, your machine does not need to stay connected to the Viam app after it has obtained its configuration file.
 
 If it is online, the machine checks for new configurations every 15 seconds and changes its config automatically when a new config is available.
