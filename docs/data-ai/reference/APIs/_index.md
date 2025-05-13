@@ -1,6 +1,6 @@
 ---
-linkTitle: "Train"
-title: "Train"
+linkTitle: "APIs"
+title: "APIs"
 weight: 100
 layout: "empty"
 type: "docs"

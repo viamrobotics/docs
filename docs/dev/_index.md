@@ -303,7 +303,7 @@ std::cout << "co2-monitor get_readings return value " << co2monitor_get_readings
 
 Once you have configured a physical sensor or anything else that provides measurements, you can get sensor readings using the sensor API.
 
-[Collect sensor data →](/data-ai/data/edge/capture-sync/)
+[Collect sensor data →](/data-ai/edge/capture-sync/)
 
   </div>
 </div>
@@ -546,7 +546,7 @@ tabular_data, count, last = await data_client.tabular_data_by_filter(
 
 You can query synced sensor data, images, and any other binary or timeseries data from all your machines using the data client API.
 
-[Learn about Data Management →](/data-ai/data/edge/capture-sync/)
+[Learn about Data Management →](/data-ai/edge/capture-sync/)
 
   </div>
 </div>
@@ -753,7 +753,7 @@ job_metadata = await ml_training_client.get_training_job(
 
 Build machine learning models based on your machines' data any time using the ML training client API
 
-[Train and deploy ML models →](/data-ai/ai/train/train-tflite/)
+[Train and deploy ML models →](/data-ai/train/train-tflite/)
 
   </div>
 </div>

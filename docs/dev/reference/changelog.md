@@ -262,7 +262,7 @@ The [arm interface](/dev/reference/apis/components/arm/) now includes a [MoveThr
 {{% changelog date="2024-10-16" color="added" title="Set data retention policies" %}}
 
 You can now set how long data collected by a component should remain stored in the Viam Cloud in the component's data capture configuration.
-For more information, see [Data management service](/data-ai/data/edge/capture-sync/).
+For more information, see [Data management service](/data-ai/edge/capture-sync/).
 
 {{% /changelog %}}
 
@@ -296,14 +296,14 @@ For more information, see [Configure provisioning with viam-agent](/manage/fleet
 {{% changelog date="2024-08-16" color="added" title="Data capture for vision" %}}
 
 Data capture is now possible for the vision service.
-For more information, see [Supported components and services](/data-ai/data/edge/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync).
+For more information, see [Supported components and services](/data-ai/edge/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync).
 
 {{% /changelog %}}
 
 {{% changelog date="2024-08-01" color="added" title="Create custom training scripts" %}}
 
 You can now upload custom training scripts to the Viam Registry and use them to train machine learning models.
-For more information, see [Create custom training scripts](/data-ai/ai/train/train/).
+For more information, see [Create custom training scripts](/data-ai/train/train/).
 
 {{% /changelog %}}
 
@@ -428,7 +428,7 @@ In addition to other improvements, your component, service, and other resource c
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
 Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks, expanding upon the existing support for TensorFlow Lite models.
-You can now upload your own ML model(/data-ai/ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) using any of these frameworks for use with the Vision service.
+You can now upload your own ML model(/data-ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) using any of these frameworks for use with the Vision service.
 
 {{% /changelog %}}
 
@@ -467,7 +467,7 @@ You can now use the [generic service](/operate/reference/components/generic/) to
 
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
-You can now upload [machine learning (ML) models](/data-ai/ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) to the Viam Registry, in addition to modules.
+You can now upload [machine learning (ML) models](/data-ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) to the Viam Registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
@@ -481,8 +481,8 @@ Viam has added a [sensor-controlled base](/operate/reference/components/base/sen
 
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
-You can now [visualize your data](/data-ai/data/cloud/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any data, such as sensor readings, that you have [synced](/data-ai/data/edge/capture-sync/) to the Viam app from your machine.
+You can now [visualize your data](/data-ai/cloud/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can visualize any data, such as sensor readings, that you have [synced](/data-ai/edge/capture-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -490,7 +490,7 @@ See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) f
 
 {{% changelog date="2024-01-31" color="added" title="Use triggers to trigger actions" %}}
 
-You can now configure [triggers](/data-ai/data/react/alert-data/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
+You can now configure [triggers](/data-ai/react/alert-data/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 
@@ -527,13 +527,13 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
-For more information, see [Query Data with SQL or MQL](/data-ai/data/cloud/query/).
+For more information, see [Query Data with SQL or MQL](/data-ai/cloud/query/).
 
 {{% /changelog %}}
 
 {{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data-ai/ai/train/create-dataset/).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data-ai/train/create-dataset/).
 
 {{% /changelog %}}
 
@@ -604,7 +604,7 @@ You now have the capability to use a [power sensor component](/operate/reference
 {{% /changelog %}}
 
 {{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/data-ai/data/edge/capture-sync/).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/data-ai/edge/capture-sync/).
 It equips machines to:
 
 - Remove data that is not of interest
@@ -709,7 +709,7 @@ To better control gantries with Viam, you can now:
 
 {{% changelog date="2023-06-30" color="improved" title="Optimized Viam-trained object detection models" %}}
 
-This update for TFlite object detection models [trained with the machine learning service](/data-ai/ai/train/train-tflite/) brings significant improvements, including:
+This update for TFlite object detection models [trained with the machine learning service](/data-ai/train/train-tflite/) brings significant improvements, including:
 
 - 76% faster model inference for camera streams
 - 64% quicker model training for object detection
@@ -725,7 +725,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train a TFlite object detection models](/data-ai/ai/train/train-tflite/) in addition to image classification models from within the Viam app.
+You now have the capability to directly [train a TFlite object detection models](/data-ai/train/train-tflite/) in addition to image classification models from within the Viam app.
 
 This update allows you to:
 
@@ -1142,15 +1142,15 @@ You will no longer be able to add or remove models using the SDKs.
 #### Add machine learning vision models to a vision service
 
 The way to add machine learning vision models is changing.
-You will need to first register the machine learning model file with the [ML model service](/data-ai/ai/train/deploy/) and then add that registered model to a vision service.
+You will need to first register the machine learning model file with the [ML model service](/data-ai/train/deploy/) and then add that registered model to a vision service.
 
 {{% /changelog %}}
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/data-ai/ai/train/train-tflite/) and [deploy](/data-ai/ai/train/deploy/) image classification models with the [data management service](/data-ai/data/edge/capture-sync/) and use your machine's image data directly within Viam.
-Additionally, you can upload and use existing [machine learning models](/data-ai/ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train/train-tflite/) or [another model](/data-ai/ai/train/train/).
+You can now [train](/data-ai/train/train-tflite/) and [deploy](/data-ai/train/deploy/) image classification models with the [data management service](/data-ai/edge/capture-sync/) and use your machine's image data directly within Viam.
+Additionally, you can upload and use existing [machine learning models](/data-ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) with your machines.
+For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/train/train-tflite/) or [another model](/data-ai/train/train/).
 
 {{% /changelog %}}
 

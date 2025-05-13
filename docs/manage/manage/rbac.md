@@ -102,7 +102,7 @@ Permissions for managing {{< glossary_tooltip term_id="fragment" text="fragments
 
 ## Data and machine learning
 
-Permissions for [data management](/data-ai/data/edge/capture-sync/) and [machine learning](/data-ai/ai/train/deploy/) are as follows:
+Permissions for [data management](/data-ai/edge/capture-sync/) and [machine learning](/data-ai/train/deploy/) are as follows:
 
 <!-- prettier-ignore -->
 | Permissions | Org owner | Org operator | Location owner | Location operator | Machine owner | Machine operator |

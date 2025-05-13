@@ -131,7 +131,7 @@ If the results exceed the confidence threshold, the **Run model** section shows 
 You can test both detection models and classifier models using the following resources together:
 
 - [a camera](/operate/reference/components/camera/)
-- [a `tflite_cpu` ML model](/data-ai/ai/train/deploy/) with the model you just trained
+- [a `tflite_cpu` ML model](/data-ai/train/deploy/) with the model you just trained
 - [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model
 
 ## Iterate on your ML model
@@ -149,12 +149,12 @@ To capture images of edge cases and re-train your model using those images, comp
 
 1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
 
-1. Repeat the [steps above](/data-ai/ai/train/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
+1. Repeat the [steps above](/data-ai/train/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
 
 ## Next steps
 
 Now your machine can make inferences about its environment.
-The next step is to [deploy](/data-ai/ai/train/deploy/) the ML model and then [act](/data-ai/ai/react/act/) or [alert](/data-ai/ai/react/alert/) based on these inferences.
+The next step is to [deploy](/data-ai/train/deploy/) the ML model and then [act](/data-ai/react/act/) or [alert](/data-ai/react/alert/) based on these inferences.
 
 See the following tutorials for examples of using machine learning models to make your machine do things based on its inferences about its environment:
 

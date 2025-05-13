@@ -55,12 +55,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 await mlTrainingClient.submitTrainingJob(
-  '<organization-id>',
-  '<dataset-id>',
-  '<your-model-name>',
-  '1.0.0',
+  "<organization-id>",
+  "<dataset-id>",
+  "<your-model-name>",
+  "1.0.0",
   ModelType.SINGLE_LABEL_CLASSIFICATION,
-  ['tag1', 'tag2']
+  ["tag1", "tag2"],
 );
 ```
 
@@ -72,7 +72,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### SubmitCustomTrainingJob
 
 Submit a training job from a custom training script.
-Follow the guide to [Train a Model with a Custom Python Training Script](/data-ai/ai/train/).
+Follow the guide to [Train a Model with a Custom Python Training Script](/data-ai/train/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -125,12 +125,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 await mlTrainingClient.submitCustomTrainingJob(
-  '<organization-id>',
-  '<dataset-id>',
-  'viam:classification-tflite',
-  '1.0.0',
-  '<your-model-name>',
-  '1.0.0'
+  "<organization-id>",
+  "<dataset-id>",
+  "viam:classification-tflite",
+  "1.0.0",
+  "<your-model-name>",
+  "1.0.0",
 );
 ```
 
@@ -177,7 +177,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const job = await mlTrainingClient.getTrainingJob('<training-job-id>');
+const job = await mlTrainingClient.getTrainingJob("<training-job-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#gettrainingjob).
@@ -228,8 +228,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const jobs = await mlTrainingClient.listTrainingJobs(
-  '<organization-id>',
-  TrainingStatus.RUNNING
+  "<organization-id>",
+  TrainingStatus.RUNNING,
 );
 ```
 
@@ -280,7 +280,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await mlTrainingClient.cancelTrainingJob('<training-job-id>');
+await mlTrainingClient.cancelTrainingJob("<training-job-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#canceltrainingjob).
@@ -326,7 +326,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await mlTrainingClient.deleteCompletedTrainingJob('<training-job-id>');
+await mlTrainingClient.deleteCompletedTrainingJob("<training-job-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#deletecompletedtrainingjob).

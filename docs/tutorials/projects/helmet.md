@@ -197,7 +197,7 @@ Now that the detector is configured, it's time to test it!
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/data-ai/data/edge/capture-sync/) allows you to, among other things, capture images and sync them to the cloud.
+Viam's built-in [data management service](/data-ai/edge/capture-sync/) allows you to, among other things, capture images and sync them to the cloud.
 For this project, you will capture images of people without hard hats so that you can see who wasn't wearing one, and so that you can trigger notifications when these images are captured and synced.
 Configure data capture on the `objectfilter` camera to capture images of people without hard hats:
 
@@ -251,7 +251,7 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Triggers](/data-ai/ai/react/alert/) allow you to send webhook requests or email notifications when certain events happen.
+[Triggers](/data-ai/react/alert/) allow you to send webhook requests or email notifications when certain events happen.
 
 For example, you can set up a trigger to perform an action whenever an image of someone without a hard hat is uploaded to the cloud.
 
@@ -460,10 +460,10 @@ Here are some ways you could expand on this project:
 - Change your cloud function to send a different kind of notification, or trigger some other action.
   For an example demonstrating how to configure text notifications, see the [Detect a Person and Send a Photo tutorial](/tutorials/projects/send-security-photo/).
 
-- Use a different existing model or [train your own](/data-ai/ai/train/train-tflite/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
+- Use a different existing model or [train your own](/data-ai/train/train-tflite/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
 
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/data-ai/ai/train/train-tflite/" %}}
+{{% card link="/data-ai/train/train-tflite/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

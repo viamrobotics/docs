@@ -17,7 +17,7 @@ date: "2024-12-04"
 description: "Use teleop or grafana to visualize sensor data from the Viam app."
 ---
 
-Once you have used the data management service to [capture data](/data-ai/data/edge/capture-sync/), you can visualize your data on a dashboard with the Viam app's **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
+Once you have used the data management service to [capture data](/data-ai/edge/capture-sync/), you can visualize your data on a dashboard with the Viam app's **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
 
 ## Teleop
 
@@ -80,7 +80,7 @@ Configure data query and use a third-party visualization tool like Grafana to vi
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the docs to [capture data](/data-ai/data/edge/capture-sync/) from a sensor.
+Follow the docs to [capture data](/data-ai/edge/capture-sync/) from a sensor.
 
 {{% /expand%}}
 
@@ -176,7 +176,7 @@ sensorData.readings.aggregate([
           )
 ```
 
-See the [guide on querying data](/data-ai/data/cloud/query/) for more information.
+See the [guide on querying data](/data-ai/cloud/query/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 
@@ -255,7 +255,7 @@ Some third-party visualization tools support the ability to directly query your 
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
 
 While every third-party tool is different, you would generally query your data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-See the [guide on querying data](/data-ai/data/cloud/query/) for more information.
+See the [guide on querying data](/data-ai/cloud/query/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 
@@ -266,7 +266,7 @@ See the [guide on querying data](/data-ai/data/cloud/query/) for more informatio
 
 For more detailed instructions on using Grafana, including a full step-by-step configuration walkthrough, see [visualizing data with Grafana](/tutorials/services/visualize-data-grafana/).
 
-On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/dev/reference/apis/data-client/) or [query it with the Viam app](/data-ai/data/cloud/query/).
+On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/dev/reference/apis/data-client/) or [query it with the Viam app](/data-ai/cloud/query/).
 
 To see full projects using visualization, check out these resources:
 

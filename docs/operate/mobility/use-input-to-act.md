@@ -51,9 +51,9 @@ readings = await my_sensor.get_readings()
 Other common inputs include the methods of a [board](/dev/reference/apis/components/board/) (`GetGPIO`, `GetPWM`, `PWMFrequency`, `GetDigitalInterruptValue`, and `ReadAnalogReader`), or a [power sensor](/dev/reference/apis/components/power-sensor/) (`GetVoltage`, `GetCurrent`, `GetPower`, and `GetReadings`).
 
 You can also use camera input, for example to detect objects and pick them up with an arm.
-See [Act based on inferences](/data-ai/ai/react/act/) for relevant examples.
+See [Act based on inferences](/data-ai/react/act/) for relevant examples.
 
-If you want to send alerts based on computer vision or captured data, see [Alert on inferences](/data-ai/ai/react/alert/) or [Alert on data](/data-ai/data/react/alert-data/).
+If you want to send alerts based on computer vision or captured data, see [Alert on inferences](/data-ai/react/alert/) or [Alert on data](/data-ai/react/alert-data/).
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}

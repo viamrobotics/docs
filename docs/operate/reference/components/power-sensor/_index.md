@@ -72,7 +72,7 @@ For general configuration and development info, see:
 {{< cards >}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/data-ai/data/edge/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/edge/capture-sync/" noimage="true" %}}
 {{< /cards >}}
 
-To capture data from the power sensor and sync it in the cloud, see the [data management service](/data-ai/data/edge/capture-sync/).
+To capture data from the power sensor and sync it in the cloud, see the [data management service](/data-ai/edge/capture-sync/).

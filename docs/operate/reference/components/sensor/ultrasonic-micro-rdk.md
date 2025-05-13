@@ -120,6 +120,6 @@ Check out the [sensor API](/dev/reference/apis/components/sensor/) or check out 
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}
-{{% card link="/data-ai/data/edge/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/edge/capture-sync/" noimage="true" %}}
 {{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
 {{< /cards >}}

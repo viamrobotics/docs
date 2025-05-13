@@ -7,7 +7,7 @@ type: "docs"
 description: "Use triggers to send email notifications when inferences are made."
 ---
 
-At this point, you should have already set up and tested [computer vision functionality](/data-ai/ai/infer/run-inference/).
+At this point, you should have already set up and tested [computer vision functionality](/data-ai/infer/run-inference/).
 On this page, you'll learn how to use triggers to send alerts in the form of email notifications or webhook requests when certain detections or classifications are made.
 
 You will build a system that can monitor camera feeds and detect situations that require review.
@@ -27,7 +27,7 @@ Next, you'll configure a trigger to send email notifications or webhook requests
 
 {{< expand "A configured camera and vision service. Click to see instructions." >}}
 
-Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/ai/infer/run-inference/).
+Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/infer/run-inference/).
 
 {{< /expand >}}
 
@@ -74,7 +74,7 @@ For example, if using the YOLOv8 model (named `yolo`) for hardhat detection, you
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/data-ai/data/edge/capture-sync/#configure-data-capture-and-sync-for-individual-resources) allows you to, among other things, capture images and sync them to the cloud.
+Viam's built-in [data management service](/data-ai/edge/capture-sync/#configure-data-capture-and-sync-for-individual-resources) allows you to, among other things, capture images and sync them to the cloud.
 
 Configure data capture on the `filtered-camera` camera to capture images of detections or classifications:
 
@@ -99,7 +99,7 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
 ## Set up alerts
 
-[Triggers](/data-ai/data/react/alert-data/) allow you to send webhook requests or email notifications when certain events happen.
+[Triggers](/data-ai/react/alert-data/) allow you to send webhook requests or email notifications when certain events happen.
 
 You can use the **Data has been synced to the cloud** (`part_data_ingested`) trigger to send alerts whenever an image with an anomaly detection is synced to the cloud from your object filter camera.
 

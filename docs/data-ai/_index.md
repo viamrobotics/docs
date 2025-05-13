@@ -36,24 +36,24 @@ You can also monitor your machines through teleop, power your application logic,
 
 {{< how-to-expand "Process data" "7" "INTERMEDIATE" "" "data-platform-work" >}}
 {{< cards >}}
-{{% card link="/data-ai/data/edge/capture-sync/" noimage="true" %}}
-{{% card link="/data-ai/data/edge/filter-before-sync/" noimage="true" %}}
-{{% card link="/data-ai/data/edge/conditional-sync/" noimage="true" %}}
-{{% card link="/data-ai/data/cloud/query/" noimage="true" %}}
-{{% card link="/data-ai/data/cloud/visualize/" noimage="true" %}}
-{{% card link="/data-ai/data/react/alert-data/" noimage="true" %}}
-{{% card link="/data-ai/data/cloud/export/" noimage="true" %}}
+{{% card link="/data-ai/edge/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/edge/filter-before-sync/" noimage="true" %}}
+{{% card link="/data-ai/edge/conditional-sync/" noimage="true" %}}
+{{% card link="/data-ai/cloud/query/" noimage="true" %}}
+{{% card link="/data-ai/cloud/visualize/" noimage="true" %}}
+{{% card link="/data-ai/react/alert-data/" noimage="true" %}}
+{{% card link="/data-ai/cloud/export/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
 {{< how-to-expand "Integrate AI" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
 {{< cards >}}
-{{% card link="/data-ai/ai/train/train-tflite/" noimage="true" %}}
-{{% card link="/data-ai/ai/train/train/" noimage="true" %}}
-{{% card link="/data-ai/ai/train/deploy/" noimage="true" %}}
-{{% card link="/data-ai/ai/infer/run-inference/" noimage="true" %}}
-{{% card link="/data-ai/ai/react/alert/" noimage="true" %}}
-{{% card link="/data-ai/ai/react/act/" noimage="true" %}}
+{{% card link="/data-ai/train/train-tflite/" noimage="true" %}}
+{{% card link="/data-ai/train/train/" noimage="true" %}}
+{{% card link="/data-ai/train/deploy/" noimage="true" %}}
+{{% card link="/data-ai/infer/run-inference/" noimage="true" %}}
+{{% card link="/data-ai/react/alert/" noimage="true" %}}
+{{% card link="/data-ai/react/act/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

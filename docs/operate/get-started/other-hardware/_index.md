@@ -58,7 +58,7 @@ For C++ module examples, see the [C++ examples directory on GitHub](https://gith
 {{< expand "How and where do modules run?" >}}
 Modules run on your machine, alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
 
-[`viam-server` manages](/operate/reference/viam-server/) the dependencies, start-up, reconfiguration, [data management](/data-ai/data/edge/capture-sync/), and shutdown behavior of your modular resource.
+[`viam-server` manages](/operate/reference/viam-server/) the dependencies, start-up, reconfiguration, [data management](/data-ai/edge/capture-sync/), and shutdown behavior of your modular resource.
 
 The lifecycle of a module and the resources it provides is as follows:
 

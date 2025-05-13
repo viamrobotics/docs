@@ -1,7 +1,7 @@
 ---
-linkTitle: "Apply AI models"
-title: "Apply AI models"
-weight: 300
+linkTitle: "Train AI"
+title: "Train AI"
+weight: 100
 layout: "empty"
 type: "docs"
 empty_node: true

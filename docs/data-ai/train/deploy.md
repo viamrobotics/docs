@@ -75,15 +75,15 @@ Save your config to use your specified version of the ML model.
 
 The service works with models trained inside and outside the Viam app:
 
-- You can [train TFlite](/data-ai/ai/train/train-tflite/) or [other model frameworks](/data-ai/ai/train/train/) on data from your machines.
+- You can [train TFlite](/data-ai/train/train-tflite/) or [other model frameworks](/data-ai/train/train/) on data from your machines.
 - You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [Viam Registry](https://app.viam.com/registry).
 - You can upload externally trained models from a model file on the [**MODELS** tab](https://app.viam.com/models) in the **DATA** section of the Viam app.
-- You can use a [model](/data-ai/ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) trained outside the Viam platform whose files are on your machine. See the documentation of the model of ML model service you're using (pick one that supports your model framework) for instructions on this.
+- You can use a [model](/data-ai/train/deploy/#deploy-your-ml-model-on-an-ml-model-service) trained outside the Viam platform whose files are on your machine. See the documentation of the model of ML model service you're using (pick one that supports your model framework) for instructions on this.
 
 On its own the ML model service only runs the model.
 After deploying your model, you need to configure an additional service to use the deployed model.
 For example, you can configure an [`mlmodel` vision service](/operate/reference/services/vision/) to visualize the inferences your model makes.
-Follow our docs to [run inference](/data-ai/ai/infer/run-inference/) to add an `mlmodel` vision service and see inferences.
+Follow our docs to [run inference](/data-ai/infer/run-inference/) to add an `mlmodel` vision service and see inferences.
 
 For other use cases, consider [creating custom functionality with a module](/operate/get-started/other-hardware/).
 

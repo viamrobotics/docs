@@ -26,7 +26,7 @@ To view images added to your dataset, go to the **DATA** page's [**DATASETS** ta
 {{% /tab %}}
 {{% tab name="Many images" %}}
 
-To capture a large number of images for training an ML model, [Capture and sync image data](/data-ai/data/edge/capture-sync/) using the data management service with your camera.
+To capture a large number of images for training an ML model, [Capture and sync image data](/data-ai/edge/capture-sync/) using the data management service with your camera.
 
 Viam stores the images saved by capture and sync on the [**DATA** page](https://app.viam.com/data/), but does not add the images to a dataset.
 We recommend you tag the images first and then use the CLI to [add the tagged images to a dataset](/data-ai/g//#add-tagged-images-to-a-dataset).

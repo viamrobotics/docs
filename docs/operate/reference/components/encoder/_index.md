@@ -94,6 +94,6 @@ For general configuration, development, and usage info, see:
 
 You can also use the encoder component with the following services:
 
-- [Data management service](/data-ai/data/edge/capture-sync/): To capture and sync the encoder's data
+- [Data management service](/data-ai/edge/capture-sync/): To capture and sync the encoder's data
 - [Motion service](/operate/reference/services/motion/): To move machines or components of machines
 - [Navigation service](/operate/reference/services/navigation/): To navigate with GPS

@@ -34,7 +34,7 @@ You can receive alerts for the following events involving machine performance te
 For example, you can configure a trigger to send you a notification when your machine's CPU usage reaches a certain threshold.
 
 {{< alert title="Tip" color="tip" >}}
-You can also configure alerts on any other machine data, for more information on that, see [Alert on data](/data-ai/data/react/alert-data/).
+You can also configure alerts on any other machine data, for more information on that, see [Alert on data](/data-ai/react/alert-data/).
 {{< /alert >}}
 
 ## Data meets condition
@@ -98,7 +98,7 @@ You can also see readings on the **CONTROL** tab.
 
 ### Configure data management
 
-To capture or alert on the data from your configured sensor, you must add the [data management service](/data-ai/data/edge/capture-sync/) and configure it to capture and sync the sensor data:
+To capture or alert on the data from your configured sensor, you must add the [data management service](/data-ai/edge/capture-sync/) and configure it to capture and sync the sensor data:
 
 {{< table >}}
 {{% tablestep number=1 %}}
@@ -378,7 +378,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Data synced
 
-You must [configure data capture](/data-ai/data/edge/capture-sync/) for your machine to use this trigger.
+You must [configure data capture](/data-ai/edge/capture-sync/) for your machine to use this trigger.
 
 {{< tabs >}}
 {{% tab name="Builder mode" %}}

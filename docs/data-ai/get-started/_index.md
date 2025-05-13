@@ -1,7 +1,7 @@
 ---
 linkTitle: "Get started"
 title: "Get started"
-weight: 100
+weight: 10
 layout: "empty"
 type: "docs"
 empty_node: true

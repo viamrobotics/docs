@@ -96,7 +96,7 @@ You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/
 **(Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
-If you need to trigger sync in a different way, see [Conditional cloud sync](/data-ai/data/edge/conditional-sync/) for a documented example of syncing data only at certain times of day.
+If you need to trigger sync in a different way, see [Conditional cloud sync](/data-ai/edge/conditional-sync/) for a documented example of syncing data only at certain times of day.
 
 {{% /tablestep %}}
 {{< /table >}}
