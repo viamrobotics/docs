@@ -60,7 +60,9 @@ You'll now add to the code to describe the geometry of the arm's environment and
    ```python {class="line-numbers linkable-line-numbers"}
    from viam.services.motion import MotionClient, Constraints
    from viam.components.arm import Arm
-   from viam.proto.common import GeometriesInFrame, Geometry, Pose, PoseInFrame, Vector3, RectangularPrism, Capsule, WorldState, Transform
+   from viam.proto.common import (GeometriesInFrame, Geometry, Pose, PoseInFrame,
+                                 Vector3, RectangularPrism, Capsule, WorldState,
+                                 Transform)
    from viam.gen.service.motion.v1.motion_pb2 import OrientationConstraint
    ```
 
@@ -201,17 +203,17 @@ For example, a marker mounted to the end of the arm can be represented as a tran
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Create a transform to represent a marker as a 160mm tall, 10mm radius
+# Create a geometry to represent a marker as a 160mm tall, 10mm radius
 # capsule. The center of the marker is 90mm from the end of the arm
 # (1/2 length of marker plus 10mm radius)
 marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
                            capsule=Capsule(radius_mm=10, length_mm=160))
 transforms = [
-   # Name the reference frame "marker" and point its long axis along the
-   # z axis of the gripper
-   Transform(reference_frame="marker",
+   # Create a transform called "markerTransform" and point the marker's long
+   # axis along the z axis of the arm
+   Transform(reference_frame="markerTransform",
              pose_in_observer_frame=PoseInFrame(
-               reference_frame="arm-1",
+               reference_frame="my_arm",
                pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
              physical_object=marker_geometry)
 ]
@@ -221,15 +223,15 @@ transforms = [
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Create a transform to represent a marker as a 160mm tall, 10mm radius
+// Create a geometry to represent a marker as a 160mm tall, 10mm radius
 // capsule. The center of the marker is 90mm from the end of the arm
 // (1/2 length of marker plus 10mm radius)
 marker_geometry, _ := spatialmath.NewCapsule(
    spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 90.0}),
    10.0, 160.0, "marker_1")
 
-// Name the transform "markerTransform" and point the marker's long axis along
-// the z axis of the arm
+// Create a transform called "markerTransform" and point the marker's long
+// axis along the z axis of the arm
 transform := referenceframe.NewLinkInFrame("my_arm",
    spatialmath.NewPoseFromPoint(r3.Vector{X: 0, Y: 0, Z: 80}),
    "markerTransform", marker_geometry)
@@ -438,7 +440,7 @@ async def main():
    marker_geometry = Geometry(center=Pose(x=0, y=0, z=90),
                               capsule=Capsule(radius_mm=10, length_mm=160))
    transforms = [
-      Transform(reference_frame="marker",
+      Transform(reference_frame="markerTransform",
                 pose_in_observer_frame=PoseInFrame(
                      reference_frame="my_arm",
                      pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
@@ -565,6 +567,8 @@ func main() {
 {{% /tabs %}}
 
 ## More examples
+
+The following tutorials use the motion planning service:
 
 {{< cards >}}
 {{% card link="/tutorials/services/plan-motion-with-arm-gripper/" %}}
