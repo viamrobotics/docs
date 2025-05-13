@@ -279,10 +279,28 @@ For more detailed instructions, see [Configure machine settings](https://docs.vi
 
 ## Agent logs
 
+These log messages include `viam-server` stops and starts, the status of `viam-agent`, and any errors or warnings encountered during operation.
+
+{{< tabs >}}
+{{% tab name="App UI" %}}
+
 `viam-agent` writes log messages to the [Viam app](https://app.viam.com/).
-You can find these messages on the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) of your machine's page.
 
 `viam-agent` only sends messages when your machine is online and connected to the internet.
 If your machine is offline, log messages are queued and are sent to the Viam app once your machine reconnects to the internet.
 
-These log messages include when `viam-server` is stopped and started, the status of `viam-agent`, and any errors or warnings encountered during operation.
+Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
+
+Select from the **Levels** dropdown menu to filter the logs by severity level:
+
+![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
+
+{{% /tab %}}
+{{% tab name="Command line on Linux" %}}
+
+```sh {class="command-line" data-prompt="$"}
+sudo journalctl --unit=viam-agent
+```
+
+{{% /tab %}}
+{{< /tabs >}}
