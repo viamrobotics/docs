@@ -99,68 +99,73 @@ At the end of your <file>meta.json</file>, add the build configuration:
 }
 ```
 
-{{%expand "Click to view example setup.sh for a Python module" %}}
+{{< expand "Python module example" >}}
 
-```sh {class="command-line" data-prompt="$"}
-#!/bin/bash
-set -e
-UNAME=$(uname -s)
+The following code snippet demonstrates an example `setup.sh` for a Python module:
 
-if [ "$UNAME" = "Linux" ]
-then
-    echo "Installing venv on Linux"
-    sudo apt-get install -y python3-venv
+```bash {class="line-numbers linkable-line-numbers"}
+#!/bin/sh
+cd `dirname $0`
+
+# Create a virtual environment to run our code
+VENV_NAME="venv"
+PYTHON="$VENV_NAME/bin/python"
+ENV_ERROR="This module requires Python >=3.8, pip, and virtualenv to be installed."
+
+if ! python3 -m venv $VENV_NAME >/dev/null 2>&1; then
+  echo "Failed to create virtualenv."
+  if command -v apt-get >/dev/null; then
+    echo "Detected Debian/Ubuntu, attempting to install python3-venv automatically."
+    SUDO="sudo"
+    if ! command -v $SUDO >/dev/null; then
+      SUDO=""
+    fi
+  if ! apt info python3-venv >/dev/null 2>&1; then
+    echo "Package info not found, trying apt update"
+    $SUDO apt -qq update >/dev/null
+  fi
+  $SUDO apt install -qqy python3-venv >/dev/null 2>&1
+  if ! python3 -m venv $VENV_NAME >/dev/null 2>&1; then
+    echo $ENV_ERROR >&2
+    exit 1
+  fi
+  else
+    echo $ENV_ERROR >&2
+    exit 1
+  fi
 fi
-if [ "$UNAME" = "Darwin" ]
-then
-    echo "Installing venv on Darwin"
-    brew install python3-venv
-fi
 
-python3 -m venv .venv
-. .venv/bin/activate
-pip3 install -r requirements.txt
+# remove -U if viam-sdk should not be upgraded whenever possible
+# -qq suppresses extraneous output from pip
+echo "Virtualenv found/created. Installing/upgrading Python packages..."
+if ! [ -f .installed ]; then
+  if ! $PYTHON -m pip install -r requirements.txt -Uqq; then
+    exit 1
+  else
+    touch .installed
+  fi
+fi
 ```
 
-{{% /expand%}}
+The following code snippet demonstrates an example `build.sh` for a Python module:
 
-{{%expand "Click to view example build.sh (with setup.sh) for a Python module" %}}
+```bash {class="line-numbers linkable-line-numbers"}
+#!/bin/sh
+cd `dirname $0`
 
-```sh { class="command-line" data-prompt="$"}
-#!/bin/bash
-pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
-```
+# Create a virtual environment to run our code
+VENV_NAME="venv"
+PYTHON="$VENV_NAME/bin/python"
 
-{{% /expand%}}
-
-{{%expand "Click to view example build.sh (without setup.sh) for a Python module" %}}
-
-```sh { class="command-line" data-prompt="$"}
-#!/bin/bash
-set -e
-UNAME=$(uname -s)
-
-if [ "$UNAME" = "Linux" ]
-then
-    echo "Installing venv on Linux"
-    sudo apt-get install -y python3-venv
-fi
-if [ "$UNAME" = "Darwin" ]
-then
-    echo "Installing venv on Darwin"
-    brew install python3-venv
+if ! $PYTHON -m pip install pyinstaller -Uqq; then
+    exit 1
 fi
 
-python3 -m venv .venv
-. .venv/bin/activate
-pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+$PYTHON -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz ./dist/main
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 
 You can test this build configuration by running the Viam CLI's [`build local` command](/dev/tools/cli/#using-the-build-subcommand) on your development machine:
 
