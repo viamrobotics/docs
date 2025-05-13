@@ -171,7 +171,7 @@ In **JSON** mode, it will resemble the following:
 
 **Full Error:**
 
-```
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
 error rdk.resource_manager.rdk:<RESOURCE-IDENTIFIER>   resource/graph_node.go:297   resource build error: unknown resource type: API "<API-TRIPLET>" with model "<MODEL-TRIPLET>" not registered   resource <RESOURCE-IDENTIFIER>  model <MODEL-TRIPLET>
 ```
 
