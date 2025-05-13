@@ -181,8 +181,8 @@ error rdk.resource_manager.rdk:<RESOURCE-IDENTIFIER>   resource/graph_node.go:
 
 - **Module Installation**: For registry-provided models, ensure that your machine's configuration includes the module.
 - **Model Triplet Verification**: Check for typos in the model triplet.
-   It must exactly match the model registered with `viam-server`.
-   For registry-provided models, you can find the correct model triplet (for example `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
+  It must exactly match the model registered with `viam-server`.
+  For registry-provided models, you can find the correct model triplet (for example `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
 - **API Compatibility**: Ensure the selected model supports the requested API. You can find the requested APIs next to each model entry in the **Components & services** section of the registry page.
 - **API Triplet Verification**: Check for typos in the API triplet (for example `rdk:component:camera`).
 
