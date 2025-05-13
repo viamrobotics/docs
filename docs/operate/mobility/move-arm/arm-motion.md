@@ -420,70 +420,71 @@ from viam.gen.service.motion.v1.motion_pb2 import OrientationConstraint
 
 
 async def connect():
-   opts = RobotClient.Options.with_api_key(
-      api_key='xxxx1234abcd1234abcd1234aaaa0000',
-      api_key_id='xxxx-1234-abcd-1234-abcd1234abcd1234'
-   )
-   return await RobotClient.at_address('demo-main.xyzefg123.viam.cloud', opts)
+    opts = RobotClient.Options.with_api_key(
+       api_key='xxxx1234abcd1234abcd1234aaaa0000',
+       api_key_id='xxxx-1234-abcd-1234-abcd1234abcd1234'
+    )
+    return await RobotClient.at_address('demo-main.xyzefg123.viam.cloud', opts)
 
 
 async def main():
-   machine = await connect()
+    machine = await connect()
 
-   arm_resource_name = Arm.get_resource_name("my_arm")
-   motion_service = MotionClient.from_robot(machine, "builtin")
+    arm_resource_name = Arm.get_resource_name("my_arm")
+    motion_service = MotionClient.from_robot(machine, "builtin")
 
-   box_origin = Pose(x=400, y=0, z=50)
-   box_dims = Vector3(x=120.0, y=80.0, z=100.0)
-   box_object = Geometry(
-       center=box_origin,
-       box=RectangularPrism(dims_mm=box_dims))
+    box_origin = Pose(x=400, y=0, z=50)
+    box_dims = Vector3(x=120.0, y=80.0, z=100.0)
+    box_object = Geometry(
+        center=box_origin,
+        box=RectangularPrism(dims_mm=box_dims))
 
-   obstacles_in_frame = [GeometriesInFrame(
-       reference_frame="world",
-       geometries=[box_object])]
+    obstacles_in_frame = [GeometriesInFrame(
+        reference_frame="world",
+        geometries=[box_object])]
 
-   marker_geometry = Geometry(
-       center=Pose(x=0, y=0, z=90),
-       capsule=Capsule(radius_mm=10, length_mm=160))
-   transforms = [
-       Transform(
-           reference_frame="markerTransform",
-           pose_in_observer_frame=PoseInFrame(
-               reference_frame="my_arm",
-               pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
-           physical_object=marker_geometry)
-   ]
+    marker_geometry = Geometry(
+        center=Pose(x=0, y=0, z=90),
+        capsule=Capsule(radius_mm=10, length_mm=160))
+    transforms = [
+        Transform(
+            reference_frame="markerTransform",
+            pose_in_observer_frame=PoseInFrame(
+                reference_frame="my_arm",
+                pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
+            physical_object=marker_geometry)
+    ]
 
-   world_state = WorldState(
-       obstacles=obstacles_in_frame,
-       transforms=transforms)
+    world_state = WorldState(
+        obstacles=obstacles_in_frame,
+        transforms=transforms)
 
-   destination_pose = Pose(
-       x=-800,
-       y=-239,
-       z=-100,
-       o_x=0.0,
-       o_y=0.0,
-       o_z=1.0,
-       theta=0.0)
-   destination_pose_in_frame = PoseInFrame(
-       reference_frame="world",
-       pose=destination_pose)
+    destination_pose = Pose(
+        x=-800,
+        y=-239,
+        z=-100,
+        o_x=0.0,
+        o_y=0.0,
+        o_z=1.0,
+        theta=0.0)
+    destination_pose_in_frame = PoseInFrame(
+        reference_frame="world",
+        pose=destination_pose)
 
-   constraints = Constraints(
-       orientation_constraint=[OrientationConstraint(orientation_tolerance_degs=3.0)])
+    constraints = Constraints(
+        orientation_constraint=[OrientationConstraint(
+            orientation_tolerance_degs=3.0)])
 
-   await motion_service.move(
-       component_name=arm_resource_name,
-       destination=destination_pose_in_frame,
-       world_state=world_state,
-       constraints=constraints)
+    await motion_service.move(
+        component_name=arm_resource_name,
+        destination=destination_pose_in_frame,
+        world_state=world_state,
+        constraints=constraints)
 
-   await machine.close()
+    await machine.close()
 
 if __name__ == '__main__':
-   asyncio.run(main())
+    asyncio.run(main())
 ```
 
 {{% /tab %}}
