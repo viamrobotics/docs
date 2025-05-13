@@ -198,9 +198,8 @@ This can happen when there is a slow internet connection, when the module is try
 
 **Description:** This error occurs when something sent a stun message to a server and the response was eitehr not parseable or implied a different state than the client thought it was in.
 
-**Solution:** This error may be transient and may resolve on its own.
-If it doesn't it is likely there are other related errors.
-Review the logs to see if you can find more information.
+**Solution:** This error may resolve on its own.
+If not, look for other related errors in your logs.
 
 ## Common warnings
 
