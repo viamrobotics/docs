@@ -197,6 +197,7 @@ This can happen when there is a slow internet connection, when the module is try
 **Full Error:** `unable to properly process stun response IceStunEncodingError`
 
 **Description:** Occurs when a client sends a STUN message to a server and receives one of the following problematic responses:
+
 - the response cannot be parsed properly
 - the response indicates a server state that conflicts with the client's understanding of the session state
 
