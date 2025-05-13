@@ -977,7 +977,11 @@ def write_markdown(type, names, methods):
                                                 param_description = param_description + line.replace('\n', ' ')
                                         param_description = param_description.rstrip()
                                     else:
-                                        param_description = param_data.get("param_description").strip()
+                                        try:
+                                            param_description = param_data.get("param_description").strip()
+                                        except:
+                                            param_description = ''
+                                            print(f'DEBUG: No param description for {py_method_name}.{parameter}')
 
                                     optional = param_data.get("optional")
 

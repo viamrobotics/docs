@@ -92,9 +92,10 @@ class TypeScriptParser:
 
                 param_object = {}
                 if method.find('div', class_="tsd-parameters"):
-                    parameters = method.find('div', class_="tsd-parameters").find_all('li')
+                    parameters = method.find('div', class_="tsd-parameters")
+                    parameter_list = parameters.find('ul', class_="tsd-parameter-list").children
 
-                    for param in parameters:
+                    for param in parameter_list:
                         param_name = param.find('span', class_="tsd-kind-parameter").text
                         param_description = ''
                         if param.find('div', class_="tsd-comment"):

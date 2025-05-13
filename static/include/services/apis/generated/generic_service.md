@@ -1,7 +1,7 @@
 ### DoCommand
 
 Execute model-specific commands.
-If you are implementing your own generic service and add features that have no built-in API method, you can access them with `DoCommand`.
+If you are implementing your own generic service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -69,10 +69,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericServiceClient.html#docommand).

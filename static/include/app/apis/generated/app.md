@@ -1648,8 +1648,11 @@ const robotPart = await appClient.getRobotPart('<YOUR-ROBOT-PART-ID>');
 // Get the part's address
 const address = robotPart.part.fqdn;
 // Check if machine is live (last access time less than 10 sec ago)
-if (Date.now() - Number(robotPart.part.lastAccess.seconds) * 1000 <= 10000) {
-  console.log("Machine is live");
+if (
+  Date.now() - Number(robotPart.part.lastAccess.seconds) * 1000 <=
+  10000
+) {
+  console.log('Machine is live');
 }
 ```
 
@@ -1843,6 +1846,7 @@ You can only change the name and configuration of the machine part, not the loca
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot part.
 - `robot_config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional new config represented as a dictionary to be updated on the machine part. The machine part’s config will remain as is (no change) if one isn’t passed.
+- `last_known_update` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional time of the last known update to this part’s config. If provided, this will result in a GRPCError if the upstream config has changed since this time, indicating that the local config is out of date. Omitting this parameter will result in an overwrite of the upstream config.
 
 **Returns:**
 
@@ -1850,7 +1854,7 @@ You can only change the name and configuration of the machine part, not the loca
 
 **Raises:**
 
-- (GRPCError): If either an invalid machine part ID, name, or config is passed.
+- (GRPCError): If either an invalid machine part ID, name, or config is passed, or if the upstream config has changed since last_known_update.
 
 **Example:**
 
@@ -1929,7 +1933,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>): The ID of the newly-created robot part.
+- (Promise<string>): The ID of the newly\-created robot part.
 
 **Example:**
 
@@ -2352,7 +2356,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly-modified robot object.
+- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly\-modified robot object.
 
 **Example:**
 
@@ -2742,6 +2746,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
 - `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.  Deprecated since version 0.25.0: Use visibility instead.
 - `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.FragmentVisibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
+- `last_known_update` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional time of the last known update to this fragment’s config. If provided, this will result in a GRPCError if the upstream config has changed since this time, indicating that the local config is out of date. Omitting this parameter will result in an overwrite of the upstream config.
 
 **Returns:**
 
@@ -2749,7 +2754,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 
 **Raises:**
 
-- (GRPCError): if an invalid ID, name, or config is passed.
+- (GRPCError): if an invalid ID, name, or config is passed, or if the upstream fragment config has changed since last_known_update.
 
 **Example:**
 
@@ -3276,6 +3281,7 @@ Get registry item by ID.
 **Parameters:**
 
 - `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form namespace:name. For example, Viam’s csi-cam-pi module’s item ID would be viam:csi-cam-pi. You can also use org-id:name. For example, abc01234-0123-4567-ab12-a11a00a2aa22:training-script.
+- `include_markdown_documentation` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required)
 
 **Returns:**
 
