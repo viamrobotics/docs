@@ -213,7 +213,7 @@ Now, configure your rover to:
 
 To configure your [servo](/operate/reference/components/servo/), go to your rover's **CONFIGURE** tab.
 
-- Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 - Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 - Enter the name `servo1` for your servo and click **Create**.
 
@@ -249,7 +249,7 @@ This model can detect a variety of objects, which you can find in the provided <
 To configure an ML model service:
 
 - Select the **CONFIGURE** tab.
-- Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 - Select the `ML model` type, then select the `TFLite CPU` model.
 - Enter the name `stuff_detector` for your service, click **Add module** and click **Create**.
 
@@ -261,7 +261,7 @@ Click **Select model**, then select the `viam-labs:EfficientDet-COCO` model from
 Now, create a vision service to visualize your ML model:
 
 - Select the **CONFIGURE** tab.
-- Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 - Select the `vision` type, then select the `ML model` model.
 - Enter the name `mlmodel` for your service and click **Create**.
 

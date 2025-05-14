@@ -51,8 +51,8 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
 
    {{<imgproc src="/get-started/plus-button.png" alt="Create a resource button in the Viam app." resize="600x" style="width:350px" class="imgzoom shadow">}}
 
-1. Click **Component**.
-   This opens a search menu for all existing hardware drivers in the registry.
+1. Click **Component or service**.
+   This opens a search menu for all existing hardware and software drivers.
    Search for and select a component _{{< glossary_tooltip term_id="model" text="model" >}}_ that supports your hardware.
    Search by name, model number, or manufacturer name.
    Or try searching by broader category, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.

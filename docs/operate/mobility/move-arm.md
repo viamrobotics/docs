@@ -33,7 +33,7 @@ You have two options for moving a robotic [arm](/operate/reference/components/ar
 First, physically connect the arm to your machine.
 
 Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Search for and select a model that supports your arm.
 
 Complete the arm configuration, then use the **TEST** panel in the configuration card to test that the arm is working.

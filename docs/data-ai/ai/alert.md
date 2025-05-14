@@ -37,7 +37,7 @@ Complete the following steps to configure your module:
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
-1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing `filtered-camera` and select **camera / filtered-camera** from the results.
    Click **Add module**.
 
@@ -102,8 +102,8 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
    Navigate to your machine's **CONFIGURE** tab.
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
-   Enter "data" and select **data management / RDK**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
+   Enter "data" and select **data management**.
    Name your data management service `data-manager` and click **Create**.
 
    Leave all the default data service attributes as they are and click **Save** in the top right corner of the screen to save your changes.
