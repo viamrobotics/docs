@@ -1,6 +1,6 @@
 ---
-linkTitle: "Annotate images"
-title: "Annotate images"
+linkTitle: "Annotate"
+title: "Annotate"
 weight: 40
 layout: "docs"
 type: "docs"

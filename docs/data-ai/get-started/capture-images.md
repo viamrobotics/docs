@@ -1,6 +1,6 @@
 ---
-linkTitle: "Capture images"
-title: "Capture images"
+linkTitle: "Capture"
+title: "Capture"
 weight: 20
 layout: "docs"
 type: "docs"

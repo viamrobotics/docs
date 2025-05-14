@@ -31,3 +31,9 @@ TODO flesh out
 ## Add a camera to your machine
 
 Follow the guide to configure a [webcam](/operate/reference/components/camera/webcam/) or similar [camera component](/operate/reference/components/camera/).
+
+TODO CARDS
+
+1. capture
+1. annotate
+1. train

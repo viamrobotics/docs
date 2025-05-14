@@ -154,7 +154,7 @@ To capture images of edge cases and re-train your model using those images, comp
 ## Next steps
 
 Now your machine can make inferences about its environment.
-The next step is to [deploy](/data-ai/train/deploy/) the ML model and then [act](/data-ai/react/act/) or [alert](/data-ai/react/alert/) based on these inferences.
+The next step is to [deploy](/data-ai/train/deploy/) the ML model and then [act](/data-ai/infer/act/) or [alert](/data-ai/infer/alert/) based on these inferences.
 
 See the following tutorials for examples of using machine learning models to make your machine do things based on its inferences about its environment:
 

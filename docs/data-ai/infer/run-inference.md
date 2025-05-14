@@ -1,6 +1,6 @@
 ---
-linkTitle: "Vision service"
-title: "Inference with the vision service"
+linkTitle: "Detect objects in images"
+title: "Detect objects in images"
 weight: 50
 layout: "docs"
 type: "docs"

@@ -1,7 +1,7 @@
 ---
-linkTitle: "Create a training dataset"
-title: "Create a training dataset"
-weight: 30
+linkTitle: "Train"
+title: "Train"
+weight: 70
 layout: "docs"
 type: "docs"
 description: "Create a dataset from your captured data to use for AI model training"

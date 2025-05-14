@@ -34,7 +34,7 @@ You can receive alerts for the following events involving machine performance te
 For example, you can configure a trigger to send you a notification when your machine's CPU usage reaches a certain threshold.
 
 {{< alert title="Tip" color="tip" >}}
-You can also configure alerts on any other machine data, for more information on that, see [Alert on data](/data-ai/react/alert-data/).
+You can also configure alerts on any other machine data, for more information on that, see [Alert on data](/data-ai/infer/alert-data/).
 {{< /alert >}}
 
 ## Data meets condition

@@ -490,7 +490,7 @@ See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) f
 
 {{% changelog date="2024-01-31" color="added" title="Use triggers to trigger actions" %}}
 
-You can now configure [triggers](/data-ai/react/alert-data/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
+You can now configure [triggers](/data-ai/infer/alert-data/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 
