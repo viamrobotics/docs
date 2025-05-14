@@ -178,7 +178,3 @@ Examples:
 // Disable system log forwarding (default)
 "forward_system_logs": ""
 ```
-
-{{< alert title="Note" color="note" >}}
-System log forwarding requires journald to be available on the system. This feature is only supported on Linux systems.
-{{< /alert >}}
