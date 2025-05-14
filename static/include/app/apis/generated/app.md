@@ -1645,6 +1645,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const robotPart = await appClient.getRobotPart('<YOUR-ROBOT-PART-ID>');
+// Get the part's address
+const address = robotPart.part.fqdn;
+// Check if machine is live (last access time less than 10 sec ago)
+if (
+  Date.now() - Number(robotPart.part.lastAccess.seconds) * 1000 <=
+  10000
+) {
+  console.log('Machine is live');
+}
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpart).
@@ -1893,7 +1902,7 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to create a new part for. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to create a new part for.
 - `part_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the new part.
 
 **Returns:**
@@ -1949,7 +1958,7 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to delete. See [Find part ID](#find-part-id) for instructions on retrieving this value.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to delete. Must be specified.
 
 **Returns:**
 
@@ -2312,7 +2321,7 @@ You can only change the name of the machine, not the location.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to update. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the machine.
 - `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which the machine exists. Defaults to the location ID provided at AppClient instantiation.
 
@@ -2373,7 +2382,7 @@ Delete a specified machine.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to delete. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to delete.
 
 **Returns:**
 
@@ -2888,9 +2897,9 @@ Add a role under the organization you are currently authenticated to.
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from the Viam app’s organization settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (Literal['owner'] | Literal['operator']) (required): The role to add (either `"owner"` or `"operator"`).
-- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
-- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.).
+- `role` (Literal['owner'] | Literal['operator']) (required): The role to add.
+- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource to add role to. Must match resource_id.
+- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
 
 **Returns:**
 
@@ -3272,3 +3281,831 @@ Get registry item by ID.
 **Parameters:**
 
 - `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form namespace:name. For example, Viam’s csi-cam-pi module’s item ID would be viam:csi-cam-pi. You can also use org-id:name. For example, abc01234-0123-4567-ab12-a11a00a2aa22:training-script.
+- `include_markdown_documentation` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required)
+
+**Returns:**
+
+- ([viam.proto.app.RegistryItem](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): The registry item.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+item = await cloud.get_registry_item("item-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_registry_item).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the item to get.
+
+**Returns:**
+
+- (Promise<undefined | [RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)>): The requested item.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const registryItem = await appClient.getRegistryItem(
+  '<YOUR-REGISTRY-ITEM-ID>'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getregistryitem).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateRegistryItem
+
+Create a registry item.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The organization to create the registry item under.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the registry item, which must be unique within your org.
+- `type` (viam.proto.app.packages.PackageType.ValueType) (required): The type of the item in the registry.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.packages import PackageType
+
+await cloud.create_registry_item("<YOUR-ORG-ID>", "name", PackageType.PACKAGE_TYPE_ML_MODEL)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_registry_item).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to create the registry
+item under.
+- `name` (string) (required): The name of the registry item.
+- `type` (PackageType) (required): The type of the item in the registry.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.createRegistryItem(
+  '<YOUR-ORGANIZATION-ID>',
+  'newRegistryItemName',
+  5
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createregistryitem).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateRegistryItem
+
+Update a registry item.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+- `type` (viam.proto.app.packages.PackageType.ValueType) (required): The type of the item in the registry.
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The description of the registry item.
+- `visibility` (viam.proto.app.Visibility.ValueType) (required): The visibility of the registry item.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.packages import PackageType
+from viam.proto.app import Visibility
+
+await cloud.update_registry_item(
+    "your-namespace:your-name",
+    PackageType.PACKAGE_TYPE_ML_TRAINING,
+    "description",
+    Visibility.VISIBILITY_PUBLIC
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_registry_item).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the registry item to update.
+- `type` (PackageType) (required): The PackageType to update the item to.
+- `description` (string) (required): A description of the item.
+- `visibility` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A visibility value to update to.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.updateRegistryItem(
+  '<YOUR-REGISTRY-ITEM-ID>',
+  5, // Package: ML Model
+  'new description',
+  1 // Private
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateregistryitem).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListRegistryItems
+
+List the registry items in an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to return registry items for.
+- `types` (List[viam.proto.app.packages.PackageType.ValueType]) (required): The types of registry items.
+- `visibilities` (List[viam.proto.app.Visibility.ValueType]) (required): The visibilities of registry items.
+- `platforms` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The platforms of registry items.
+- `statuses` (List[viam.proto.app.RegistryItemStatus.ValueType]) (required): The types of the items in the registry.
+- `search_term` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The search term of the registry items.
+- `page_token` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The page token of the registry items.
+
+**Returns:**
+
+- ([List[viam.proto.app.RegistryItem]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): The list of registry items.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.packages import PackageType
+from viam.proto.app import Visibility, RegistryItemStatus
+
+# List private, published ml training scripts in your organization
+registry_items = await cloud.list_registry_items(
+    organization_id="<YOUR-ORG-ID>",
+    types=[PackageType.PACKAGE_TYPE_ML_TRAINING],
+    visibilities=[Visibility.VISIBILITY_PRIVATE],
+    platforms=[""],
+    statuses=[RegistryItemStatus.REGISTRY_ITEM_STATUS_PUBLISHED]
+)
+
+# List public, published linux modules in all organizations
+registry_items = await cloud.list_registry_items(
+    organization_id="",
+    types=[PackageType.PACKAGE_TYPE_MODULE],
+    visibilities=[Visibility.VISIBILITY_PUBLIC],
+    platforms=["linux/any"],
+    statuses=[RegistryItemStatus.REGISTRY_ITEM_STATUS_PUBLISHED]
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_registry_items).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to query registry items
+for.
+- `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
+- `visibilities` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not
+filter on visibility.
+- `platforms` (string) (required): A list of platforms to query for. If empty, will not
+filter on platform.
+- `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter
+on status.
+- `searchTerm` (string) (optional): Optional search term to filter on.
+- `pageToken` (string) (optional): Optional page token for results. If not provided, will
+return all results.
+
+**Returns:**
+
+- (Promise<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)[]>): The list of registry items.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const registryItems = await appClient.listRegistryItems(
+  '<YOUR-ORGANIZATION-ID>',
+  [], // All package types
+  [1], // Private packages
+  [],
+  [1] // Active packages
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listregistryitems).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteRegistryItem
+
+Delete a registry item.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the deleted registry item, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_registry_item("your-namespace:your-name")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_registry_item).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the item to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteRegistryItem('<YOUR-REGISTRY-ITEM-ID>');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteregistryitem).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateModule
+
+Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the module under. You can obtain your organization ID from the Viam app’s organization settings page.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the module. Must be unique within your organization.
+
+**Returns:**
+
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID [0] of the new module and its URL [1].
+
+**Raises:**
+
+- (GRPCError): If an invalid name (for example, “”) is passed.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+new_module = await cloud.create_module(org_id="org-id", name="cool_new_hoverboard_module")
+print("Module ID:", new_module[0])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_module).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to create the module under.
+- `name` (string) (required): The name of the module.
+
+**Returns:**
+
+- (Promise<[CreateModuleResponse](https://ts.viam.dev/classes/appApi.CreateModuleResponse.html)>): The module ID and a URL to its detail page.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const module = await appClient.createModule(
+  '<YOUR-ORGANIZATION-ID>',
+  'newModule'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createmodule).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateModule
+
+Update the documentation URL, description, models, entrypoint, and/or the visibility of a {{< glossary_tooltip term_id="module" text="module" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+- `url` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The url to reference for documentation and code (NOT the url of the module itself).
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A short description of the module that explains its purpose.
+- `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)) (optional): list of models that are available in the module.
+- `entrypoint` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The executable to run to start the module program.
+- `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): The visibility that should be set for the module. Defaults to False (private).
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The URL of the newly updated module.
+
+**Raises:**
+
+- (GRPCError): If either an invalid module ID, URL, list of models, or organization ID is passed.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app import Model
+
+model = Model(
+    api="rdk:component:base",
+    model="my-group:cool_new_hoverboard_module:wheeled"
+)
+
+url_of_my_module = await cloud.update_module(
+    module_id="my-group:cool_new_hoverboard_module",
+    url="https://docsformymodule.viam.com",
+    models=[model],
+    description="A base to support hoverboards.",
+    entrypoint="exec"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_module).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `moduleId` (string) (required): The ID of the module to update.
+- `visibility` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): The visibility to set for the module.
+- `url` (string) (required): The url to reference for documentation, code, etc.
+- `description` (string) (required): A short description of the module.
+- `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)) (required): A list of models available in the module.
+- `entrypoint` (string) (required): The executable to run to start the module program.
+
+**Returns:**
+
+- (Promise<string>): The module URL.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const module = await appClient.updateModule(
+  '<YOUR-MODULE-ID>',
+  1,
+  'https://example.com',
+  'new description',
+  [{ model: 'namespace:group:model1', api: 'rdk:component:generic' }],
+  'entrypoint'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatemodule).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UploadModuleFile
+
+Upload a {{< glossary_tooltip term_id="module" text="module" >}} file.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_file_info` ([viam.proto.app.ModuleFileInfo](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ModuleFileInfo)) (optional): Relevant metadata.
+- `file` ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)) (required): Bytes of file to upload.
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): URL of uploaded file.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app import ModuleFileInfo
+
+module_file_info = ModuleFileInfo(
+    module_id = "sierra:cool_new_hoverboard_module",
+    version = "1.0.0",
+    platform = "darwin/arm64"
+)
+
+file_id = await cloud.upload_module_file(
+    module_file_info=module_file_info,
+    file=b"<file>"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.upload_module_file).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetModule
+
+Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being retrieved, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+
+**Returns:**
+
+- ([viam.proto.app.Module](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): The module.
+
+**Raises:**
+
+- (GRPCError): If an invalid module ID is passed.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+the_module = await cloud.get_module(module_id="my-group:my-cool-modular-base")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_module).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `moduleId` (string) (required): The ID of the module.
+
+**Returns:**
+
+- (Promise<undefined | [Module](https://ts.viam.dev/classes/appApi.Module.html)>): The requested module.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const module = await appClient.getModule('<YOUR-MODULE-ID>');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getmodule).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListModules
+
+List the {{< glossary_tooltip term_id="module" text="modules" >}} under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list modules for. You can obtain your organization ID from the Viam app’s organization settings page.
+
+**Returns:**
+
+- ([List[viam.proto.app.Module]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): The list of modules.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+modules_list = await cloud.list_modules("<YOUR-ORG-ID>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization to query.
+
+**Returns:**
+
+- (Promise<[Module](https://ts.viam.dev/classes/appApi.Module.html)[]>): The organization's modules.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const modules = await appClient.listModules('<YOUR-ORGANIZATION-ID>');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmodules).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateKey
+
+Create a new [API key](/operate/control/api-keys/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the key for. You can obtain your organization ID from the Viam app’s organization settings page.
+- `authorizations` ([List[APIKeyAuthorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (required): A list of authorizations to associate with the key.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): A name for the key. If None, defaults to the current timestamp.
+
+**Returns:**
+
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The api key and api key ID.
+
+**Raises:**
+
+- (GRPCError): If the authorizations list is empty.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.app.app_client import APIKeyAuthorization
+
+auth = APIKeyAuthorization(
+    role="owner",
+    resource_type="robot",
+    resource_id="your-machine-id123"
+)
+
+api_key, api_key_id = cloud.create_key(
+    org_id="<YOUR-ORG-ID>",
+    authorizations=[auth],
+    name="my_key"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The list of authorizations to provide for the API key.
+- `name` (string) (optional): An optional name for the key. If none is passed, defaults to
+present timestamp.
+
+**Returns:**
+
+- (Promise<[CreateKeyResponse](https://ts.viam.dev/classes/appApi.CreateKeyResponse.html)>): The new key and ID.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkey).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteKey
+
+Delete an [API key](/operate/control/api-keys/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the API key.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_key("key-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_key).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the key to delete.
+
+**Returns:**
+
+- (Promise<[DeleteKeyResponse](https://ts.viam.dev/classes/appApi.DeleteKeyResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deleteKey('<YOUR-KEY-ID>');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletekey).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RotateKey
+
+Rotate an [API key](/operate/control/api-keys/#rotate-an-api-key).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the key to be rotated.
+
+**Returns:**
+
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The API key and API key id.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+id, key = await cloud.rotate_key("key-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.rotate_key).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the key to rotate.
+
+**Returns:**
+
+- (Promise<[RotateKeyResponse](https://ts.viam.dev/classes/appApi.RotateKeyResponse.html)>): The updated key and ID.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const key = await appClient.rotateKey('<YOUR-KEY-ID>');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#rotatekey).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListKeys
+
+List all keys for the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list API keys for. You can obtain your organization ID from the Viam app’s organization settings page.
+
+**Returns:**
+
+- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): The existing API keys and authorizations.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+keys = await cloud.list_keys(org_id="<YOUR-ORG-ID>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_keys).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `orgId` (string) (required): The ID of the organization to query.
+
+**Returns:**
+
+- (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): The list of API keys.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const keys = await appClient.listKeys('<YOUR-ORGANIZATION-ID>');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listkeys).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateKeyFromExistingKeyAuthorizations
+
+Create a new API key with an existing key’s authorizations.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the API key to duplication authorizations from.
+
+**Returns:**
+
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The API key and API key id.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+api_key, api_key_id = await cloud.create_key_from_existing_key_authorizations(
+    id="INSERT YOUR API KEY ID")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key_from_existing_key_authorizations).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the key to duplicate.
+
+**Returns:**
+
+- (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>): The new key and ID.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const key =
+  await appClient.createKeyFromExistingKeyAuthorizations(
+    '<YOUR-KEY-ID>'
+  );
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkeyfromexistingkeyauthorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetAppContent
+
+Retrieve the app content for an organization.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `publicNamespace` (string) (required): The public namespace of the organization.
+- `name` (string) (required): The name of the app.
+
+**Returns:**
+
+- (Promise<[GetAppContentResponse](https://ts.viam.dev/classes/appApi.GetAppContentResponse.html)>): The blob path and entrypoint of the app content.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const appContent = await appClient.getAppContent(
+  '<YOUR-PUBLIC-NAMESPACE>',
+  '<YOUR-APP-NAME>'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappcontent).
+
+{{% /tab %}}
+{{< /tabs >}}

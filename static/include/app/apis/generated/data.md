@@ -8,13 +8,13 @@ Gets the most recent tabular data captured from the specified data source, as lo
 **Parameters:**
 
 - `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that owns the data.
-- `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data. Ex: “my-sensor”.
-- `resource_api` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The API of the requested resource that captured the data. Ex: “rdk:component:sensor”.
-- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name. Ex: “Readings”.
+- `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data. For example, “my-sensor”.
+- `resource_api` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The API of the requested resource that captured the data. For example, “rdk:component:sensor”.
+- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name. For exampe, “Readings”.
 
 **Returns:**
 
-- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of None means that one of the following is true:   this data source has not yet synced data the most recently captured data from this data source is over a year old   Otherwise, the data source has synced data in the last year, so the returned tuple contains the following:   time_captured (datetime): The time captured. time_synced (datetime): The time synced. payload (Dict[str, ValueTypes]): The latest tabular data captured from the specified data source.   .
+- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of None means that this data source has not synced data in the last year. Otherwise, the data source has synced some data in the last year, so the returned tuple contains the following:   time_captured (datetime): The time captured. time_synced (datetime): The time synced. payload (Dict[str, ValueTypes]): The latest tabular data captured from the specified data source.   .
 
 **Example:**
 
@@ -252,7 +252,7 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 - `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional, specifies tabular data to retrieve. If missing, matches all tabular data.
 - `limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
 - `sort_order` ([viam.proto.app.data.Order.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Order)) (optional): The desired sort order of the data.
-- `last` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to `TabularDataByFilter` as the last value. If provided, the server will return the next data entries after the last object identifier.
+- `last` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional string indicating the object identifier of the last-returned data. Returned by calls to TabularDataByFilter as the last value. If provided, the server returns the next data entries after the last object identifier.
 - `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return only the total count of entries.
 - `include_internal_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath for writing retrieved data.
@@ -469,7 +469,9 @@ Obtain unified tabular data and metadata, queried with MQL.
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that owns the data. To find your organization ID, visit the organization settings page in the Viam app.
 - `query` (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)] | List[Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): The MQL query to run, as a list of MongoDB aggregation pipeline stages. Each stage can be provided as either a dictionary or raw BSON bytes, but support for bytes will be removed in the future, so prefer the dictionary option.
-- `use_recent_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to query blob storage or your recent data store. Defaults to False.
+- `use_recent_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to query blob storage or your recent data store. Defaults to False.. Deprecated, use tabular_data_source_type instead.
+- `tabular_data_source_type` ([viam.proto.app.data.TabularDataSourceType.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.TabularDataSourceType)) (required): The data source to query. Defaults to TABULAR_DATA_SOURCE_TYPE_STANDARD.
+- `pipeline_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The ID of the data pipeline to query. Defaults to None. Required if tabular_data_source_type is TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK.
 
 **Returns:**
 
@@ -498,7 +500,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `organizationId` (string) (required): The ID of the organization that owns the data.
 - `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
 - `useRecentData` (boolean) (optional): Whether to query blob storage or your recent data
-store. Defaults to false.
+store. Defaults to false. Deprecated - use dataSource instead.
+- `tabularDataSource` ([TabularDataSource](https://ts.viam.dev/classes/dataApi.TabularDataSource.html)) (optional)
 
 **Returns:**
 
@@ -507,13 +510,7 @@ store. Defaults to false.
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-type JsonValue =
-  | string
-  | number
-  | boolean
-  | null
-  | JsonValue[]
-  | { [key: string]: JsonValue };
+// {@link JsonValue} is imported from @bufbuild/protobuf
 const mqlQuery: Record<string, JsonValue>[] = [
   {
     $match: {
@@ -597,7 +594,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 - `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter)) (optional): Optional, specifies tabular data to retrieve. An empty filter matches all binary data.
 - `limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
 - `sort_order` ([viam.proto.app.data.Order.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Order)) (optional): The desired sort order of the data.
-- `last` ([str](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to `BinaryDataByFilter` as the last value. If provided, the server will return the next data entries after the last object identifier.
+- `last` ([str](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter)) (optional): Optional string indicating the object identifier of the last-returned data. This object identifier is returned by calls to binary_data_by_filter() as the last value. If provided, the server will return the next data entries after the last object identifier.
 - `include_binary_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether to actually include the binary file data with each retrieved file. Defaults to true (that is, both the files’ data and metadata are returned).
 - `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return only the total count of entries.
 - `include_internal_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False.
@@ -747,7 +744,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the desired data or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Binary data ID strings specifying the desired data or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath for writing retrieved data.
 
 **Returns:**
@@ -1037,7 +1034,7 @@ Filter and delete binary data by ids.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the data to be deleted or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Binary data ID strings specifying the data to be deleted or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 
 **Returns:**
 
@@ -1143,7 +1140,7 @@ Add tags to binary data by ids.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to add to specified binary data. Must be non-empty.
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the data to be tagged or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Binary data ID strings specifying the data to be tagged or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 
 **Returns:**
 
@@ -1362,7 +1359,7 @@ Remove tags from binary by ids.
 **Parameters:**
 
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of tags to remove from specified binary data. Must be non-empty.
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Binary data ID strings specifying the data to be untagged or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Binary data ID strings specifying the data to be untagged or BinaryID objects. Must be non-empty. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 
 **Returns:**
 
@@ -2154,7 +2151,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Unique identifiers for binary data to add to the dataset. To retrieve these IDs, navigate to the DATA page, click on an image, and copy its Binary Data ID from the details tab.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Unique identifiers for binary data to add to the dataset. To retrieve these IDs, navigate to the DATA page, click on an image, and copy its Binary Data ID from the details tab.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.  To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
@@ -2168,15 +2165,15 @@ binary_metadata, count, last = await data_client.binary_data_by_filter(
     include_binary_data=False
 )
 
-my_binary_ids = []
+my_binary_data_ids = []
 
 for obj in binary_metadata:
-    my_binary_ids.append(
+    my_binary_data_ids.append(
         obj.metadata.binary_data_id
         )
 
 await data_client.add_binary_data_to_dataset_by_ids(
-    binary_ids=my_binary_ids,
+    binary_ids=my_binary_data_ids,
     dataset_id="abcd-1234xyz-8765z-123abc"
 )
 ```
@@ -2265,7 +2262,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 
 **Parameters:**
 
-- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID)) (required): Unique identifiers for the binary data to remove from the dataset. To retrieve these IDs, navigate to the DATA page, click on an image and copy its Binary Data ID from the details tab. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
+- `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Unique identifiers for the binary data to remove from the dataset. To retrieve these IDs, navigate to the DATA page, click on an image and copy its Binary Data ID from the details tab. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from. To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
@@ -2279,15 +2276,15 @@ binary_metadata, count, last = await data_client.binary_data_by_filter(
     include_binary_data=False
 )
 
-my_binary_ids = []
+my_binary_data_ids = []
 
 for obj in binary_metadata:
-    my_binary_ids.append(
+    my_binary_data_ids.append(
         obj.metadata.binary_data_id
     )
 
 await data_client.remove_binary_data_from_dataset_by_ids(
-    binary_ids=my_binary_ids,
+    binary_ids=my_binary_data_ids,
     dataset_id="abcd-1234xyz-8765z-123abc"
 )
 ```

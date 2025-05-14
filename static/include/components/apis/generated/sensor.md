@@ -221,10 +221,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#docommand).

@@ -748,7 +748,7 @@ def check_for_unused_methods(methods, type):
 
 ## write_markdown() takes the data object returned from parse(), and writes out the markdown
 ## for each method in that object:
-def write_markdown(type, names, methods):
+def write_markdown(type, apis, methods):
 
     ## Generate special version of type var that matches how we refer to it in MD filepaths.
     ## This means pluralizing components and services, and taking no action for app and robot:
@@ -790,7 +790,7 @@ def write_markdown(type, names, methods):
 
     ## Loop through each resource, such as 'arm'. run() already calls parse() in
     ## scope limited to 'type', so we don't have to loop by type:
-    for resource in names:
+    for resource in apis:
 
         ## Switch to identify the first method encountered for each resource, to help with
         ## knowing when we are at the top of the include file, or whether to double newline
@@ -953,35 +953,18 @@ def write_markdown(type, names, methods):
 
                             if 'parameters' in methods['python'][type][resource][py_method_name]:
 
-                                for parameter in methods['python'][type][resource][py_method_name]['parameters'].keys():
-
-                                    param_data = methods['python'][type][resource][py_method_name]['parameters'][parameter]
-
+                                for parameter, param_data in methods['python'][type][resource][py_method_name]['parameters'].items():
+                                    param_description = param_data.get("param_description")
+                                    if param_description is not None:
+                                        param_description = param_description.strip()
+                                    else:
+                                        param_description = ""
+                                    
                                     param_type = param_data.get("param_type")
 
-                                    param_description = ''
-                                    ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.{param_name}.md
-                                    param_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.' + parameter + '.md'
-
-                                    if args.overrides:
-                                        print(param_desc_override_file)
-
-                                    if os.path.exists(param_desc_override_file):
-                                        preserve_formatting = False
-                                        for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                                            if '<!-- preserve-formatting -->' in line:
-                                                preserve_formatting = True
-                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
-                                                param_description = param_description + line
-                                            elif '<!-- preserve-formatting -->' not in line:
-                                                param_description = param_description + line.replace('\n', ' ')
-                                        param_description = param_description.rstrip()
-                                    else:
-                                        param_description = param_data.get("param_description").strip()
+                                    output_file.write(f'- `{parameter}` ({param_type})')
 
                                     optional = param_data.get("optional")
-
-                                    output_file.write(f'- `{parameter}` ({param_type})')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -1205,35 +1188,18 @@ def write_markdown(type, names, methods):
 
                             if 'parameters' in methods['typescript'][type][resource][typescript_method_name] and methods['typescript'][type][resource][typescript_method_name]['parameters']:
 
-                                for parameter in methods['typescript'][type][resource][typescript_method_name]['parameters'].keys():
-
-                                    param_data = methods['typescript'][type][resource][typescript_method_name]['parameters'][parameter]
-
+                                for parameter, param_data in methods['typescript'][type][resource][typescript_method_name]['parameters'].items():
+                                    param_description = param_data.get("param_description")
+                                    if param_description is not None:
+                                        param_description = param_description.strip()
+                                    else:
+                                        param_description = ""
+                                    
                                     param_type = param_data.get("param_type")
 
-                                    param_description = ''
-                                    ## .../overrides/methods/{sdk}.{resource}.{typescript_method_name}.{param_name}.md
-                                    param_desc_override_file = path_to_methods_override + '/typescript.' + resource + '.' + typescript_method_name + '.' + parameter + '.md'
-
-                                    if args.overrides:
-                                        print(param_desc_override_file)
-
-                                    if os.path.exists(param_desc_override_file):
-                                        preserve_formatting = False
-                                        for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                                            if '<!-- preserve-formatting -->' in line:
-                                                preserve_formatting = True
-                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
-                                                param_description = param_description + line
-                                            elif '<!-- preserve-formatting -->' not in line:
-                                                param_description = param_description + line.replace('\n', ' ')
-                                        param_description = param_description.rstrip()
-                                    else:
-                                        param_description = param_data.get("param_description").strip()
+                                    output_file.write(f'- `{parameter}` ({param_type})')
 
                                     optional = param_data.get("optional")
-
-                                    output_file.write(f'- `{parameter}` ({param_type})')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -1362,37 +1328,19 @@ def write_markdown(type, names, methods):
                             output_file.write('**Parameters:**\n\n')
                             if 'parameters' in methods['flutter'][type][resource][flutter_method_name]:
 
-                                for parameter in methods['flutter'][type][resource][flutter_method_name]['parameters'].keys():
-
-                                    param_data = methods['flutter'][type][resource][flutter_method_name]['parameters'][parameter]
-
+                                for parameter, param_data in methods['flutter'][type][resource][flutter_method_name]['parameters'].items():
+                                    param_description = param_data.get("param_description")
+                                    if param_description is not None:
+                                        param_description = param_description.strip()
+                                    else:
+                                        param_description = ""
+                                    
                                     param_type = param_data.get("param_type")
                                     param_usage = param_data.get("param_usage")
 
-                                    param_description = ''
-                                    ## .../overrides/methods/{sdk}.{resource}.{method_name}.{param_name}.md
-                                    param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
-
-                                    if args.overrides:
-                                        print(param_desc_override_file)
-
-                                    ## Check if param description override file exists:
-                                    if os.path.exists(param_desc_override_file):
-                                        preserve_formatting = False
-                                        for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                                            if '<!-- preserve-formatting -->' in line:
-                                                preserve_formatting = True
-                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
-                                                param_description = param_description + line
-                                            elif '<!-- preserve-formatting -->' not in line:
-                                                param_description = param_description + line.replace('\n', ' ')
-                                        param_description = param_description.rstrip()
-                                    else:
-                                        param_description = param_data.get("param_description")
+                                    output_file.write(f'- `{parameter}` {param_usage}')
 
                                     optional = param_data.get("optional")
-
-                                    output_file.write(f'- `{parameter}` {param_usage}')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -1418,9 +1366,7 @@ def write_markdown(type, names, methods):
                             output_file.write('\n**Returns:**\n\n')
                             if 'return' in methods['flutter'][type][resource][flutter_method_name]:
 
-                                for return_type in methods['flutter'][type][resource][flutter_method_name]["return"].keys():
-
-                                    return_data = methods['flutter'][type][resource][flutter_method_name]["return"][return_type]
+                                for return_type, return_data in methods['flutter'][type][resource][flutter_method_name]["return"].items():
                                     return_usage = return_data.get("return_usage")
 
                                     return_description = ''

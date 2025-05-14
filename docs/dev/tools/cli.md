@@ -544,6 +544,42 @@ done
 | `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
 | `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
 
+### `infer`
+
+The `infer` command enables you to run [cloud inference](/data-ai/ai/run-cloud-inference/) on data. Cloud inference runs in the cloud, instead of on a local machine.
+
+```sh {class="command-line" data-prompt="$" data-output="2-18"}
+viam infer --binary-data-id <binary-data-id> --model-name <model-name> --model-org-id <org-id-that-owns-model> --model-version "2025-04-14T16-38-25" --org-id <org-id-that-executes-inference>
+Inference Response:
+Output Tensors:
+  Tensor Name: num_detections
+    Shape: [1]
+    Values: [1.0000]
+  Tensor Name: classes
+    Shape: [32 1]
+    Values: [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000]
+  Tensor Name: boxes
+    Shape: [32 1 4]
+    Values: [0.2983, 0.5859, 0.4430, 0.7280, 0.2682, 0.4600, 0.3760, 0.5694, 0.5184, 0.8931, 0.6210, 0.9900, 0.2462, 0.6127, 0.4744, 0.8295, 0.3522, 0.6209, 0.4444, 0.6918, 0.5056, 0.6346, 0.6059, 0.7636, 0.4439, 0.4331, 0.5407, 0.5491, 0.2939, 0.5143, 0.3866, 0.5895, 0.3036, 0.6195, 0.3946, 0.6909, 0.5059, 0.8618, 0.5990, 0.9490, 0.1119, 0.0959, 0.2080, 0.2132, 0.2407, 0.4888, 0.3239, 0.5703, 0.3704, 0.6494, 0.4694, 0.7543, 0.4342, 0.5207, 0.5416, 0.5852, 0.4176, 0.0779, 0.5144, 0.1964, 0.5075, 0.7067, 0.6042, 0.8098, 0.3347, 0.5347, 0.5338, 0.7777, 0.2326, 0.1067, 0.3259, 0.2384, 0.4669, 0.3802, 0.5529, 0.5062, 0.2606, 0.2326, 0.3559, 0.3352, 0.2709, 0.5997, 0.3749, 0.6631, 0.2328, 0.1973, 0.3289, 0.2859, 0.4607, 0.6044, 0.5605, 0.7182, 0.3306, 0.5360, 0.4196, 0.6211, 0.3565, 0.5644, 0.4417, 0.6378, 0.2572, 0.0676, 0.3466, 0.1959, 0.4770, 0.7816, 0.5982, 0.8988, 0.1260, 0.0593, 0.2303, 0.1606, 0.2742, 0.4561, 0.4526, 0.6612, 0.3194, 0.5714, 0.4067, 0.6626, 0.2973, 0.3232, 0.3971, 0.4159, 0.3584, 0.0397, 0.4503, 0.1187]
+  Tensor Name: confidence
+    Shape: [32 1]
+    Values: [0.5601, 0.4814, 0.4038, 0.3816, 0.3592, 0.3397, 0.3154, 0.2917, 0.2818, 0.2588, 0.2423, 0.2382, 0.2285, 0.2064, 0.2022, 0.2007, 0.1970, 0.1869, 0.1860, 0.1855, 0.1835, 0.1822, 0.1809, 0.1793, 0.1776, 0.1670, 0.1666, 0.1649, 0.1646, 0.1643, 0.1540, 0.1539]
+Annotations:
+Bounding Box Format: [x_min, y_min, x_max, y_max]
+  No annotations.
+```
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--binary-data-id` | The binary data ID of the image you want to run inference on.  | **Required** |
+| `--model-name` | The name of the model that you want to run in the cloud. | **Required** |
+| `--model-version` | The version of the model that you want to run in the cloud. To find the lastest version string for a model, visit the [registry page](https://app.viam.com/registry?type=ML+Model) for that model. You can find the latest version string in the **Version history** sectio, e.g. "2024-02-16T12-55-32". Pass this value as a string, using double quotes. | **Required** |
+| `--org-id` | The organization ID of the organization that will run the inference.  | **Required** |
+| `--model-org-id` | The organization ID of the organization that owns the model. | **Required** |
+
 ### `locations`
 
 The `locations` command allows you to manage the [locations](/manage/reference/organize/) that you have access to.
