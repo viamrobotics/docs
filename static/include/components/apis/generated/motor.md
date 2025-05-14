@@ -58,8 +58,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `power` (number) (required): A value between -1 and 1 where negative values indicate a
-backwards direction and positive values a forward direction.
+- `power` (number) (required): A value between \-1 and 1 where negative values indicate a
+  backwards direction and positive values a forward direction.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -262,9 +262,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `rpm` (number) (required): Speed in revolutions per minute.
 - `revolutions` (number) (required): Number of revolutions relative to the motor's starting
-position. If this value is 0, this will run the motor at the given rpm
-indefinitely. If this value is nonzero, this will block until the number
-of revolutions has been completed or another operation comes in.
+  position. If this value is 0, this will run the motor at the given rpm
+  indefinitely. If this value is nonzero, this will block until the number
+  of revolutions has been completed or another operation comes in.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -369,7 +369,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `rpm` (number) (required): Speed in revolutions per minute.
 - `positionRevolutions` (number) (required): Number of revolutions relative to the motor's
-home position.
+  home position.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

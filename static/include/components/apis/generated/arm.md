@@ -288,7 +288,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `jointPositionsList` (number) (required): List of angles (0-360) to move each joint to.
+- `jointPositionsList` (number) (required): List of angles (0\-360\) to move each joint to.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

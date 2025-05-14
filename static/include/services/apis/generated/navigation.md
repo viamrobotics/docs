@@ -66,7 +66,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 const mode = await navigation.getMode();
 ```
@@ -136,12 +136,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `mode` ([navigationApi](https://ts.viam.dev/modules/navigationApi.html)) (required): The mode for the service to operate in.
-
-  - 0: MODE_UNSPECIFIED
-  - 1: MODE_MANUAL
-  - 2: MODE_WAYPOINT
-  - 3: MODE_EXPLORE.
-
+  
+  
+  * 0: MODE\_UNSPECIFIED
+  * 1: MODE\_MANUAL
+  * 2: MODE\_WAYPOINT
+  * 3: MODE\_EXPLORE.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -152,7 +152,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 // Set the mode to 2 which corresponds to WAYPOINT
 await navigation.setMode(2);
@@ -199,7 +199,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*spatialmath.GeoPose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoPose): The current location of the robot in the navigation service, represented in a `Point` with latitude and longitude values.
+- [(*spatialmath.GeoPose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoPose): The current location of the robot in the navigation service, represented in a `Point` with latitude and longitude values.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -226,7 +226,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 const location = await navigation.getLocation();
 ```
@@ -299,7 +299,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 const waypoints = await navigation.getWayPoints();
 ```
@@ -346,7 +346,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `point` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
+- `point` [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -382,7 +382,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 const location = { latitude: 40.7128, longitude: -74.006 };
 await navigation.addWayPoint(location);
@@ -466,7 +466,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 // Remove the first waypoint
 if (waypoints.length > 0) {
@@ -518,7 +518,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]\*spatialmath.GeoGeometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoGeometry): An array comprised of each `GeoObstacle` in the service's data storage. These are objects designated for the robot to avoid when navigating.
+- [([]*spatialmath.GeoGeometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoGeometry): An array comprised of each `GeoObstacle` in the service's data storage. These are objects designated for the robot to avoid when navigating.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -545,7 +545,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 const obstacles = await navigation.getObstacles();
 ```
@@ -591,7 +591,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]\*Path)](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Path): An array of paths, each path being a user-provided destination, or [`Waypoint`](#addwaypoint), and the set of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot plans to travel through to get there.
+- [([]*Path)](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Path): An array of paths, each path being a user-provided destination, or [`Waypoint`](#addwaypoint), and the set of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot plans to travel through to get there.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -618,7 +618,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 const paths = await navigation.getPaths();
 ```
@@ -689,7 +689,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const navigation = new VIAM.NavigationClient(machine, "my_navigation");
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
 
 const properties = await navigation.getProperties();
 ```
@@ -795,12 +795,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: "value" },
-  }),
+    myCommand: { key: 'value' },
+  })
 );
 ```
 

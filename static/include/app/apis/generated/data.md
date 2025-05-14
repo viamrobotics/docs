@@ -44,9 +44,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `partId` (string) (required): The ID of the part that owns the data.
 - `resourceName` (string) (required): The name of the requested resource that captured the
-data. Ex: "my-sensor".
+  data. Ex: "my\-sensor".
 - `resourceSubtype` (string) (required): The subtype of the requested resource that captured
-the data. Ex: "rdk:component:sensor".
+  the data. Ex: "rdk:component:sensor".
 - `methodName` (string) (required): The data capture method name. Ex: "Readings".
 
 **Returns:**
@@ -154,14 +154,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `partId` (string) (required): The ID of the part that owns the data.
 - `resourceName` (string) (required): The name of the requested resource that captured the
-data.
+  data.
 - `resourceSubtype` (string) (required): The subtype of the requested resource that captured
-the data.
+  the data.
 - `methodName` (string) (required): The data capture method name.
-- `startTime` (Date) (optional): Optional start time (Date object) for requesting a
-specific range of data.
-- `endTime` (Date) (optional): Optional end time (Date object) for requesting a specific
-range of data.
+- `startTime` (Date) (optional): Optional start time (`Date` object) for requesting a
+  specific range of data.
+- `endTime` (Date) (optional): Optional end time (`Date` object) for requesting a specific
+  range of data.
 
 **Returns:**
 
@@ -285,18 +285,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying tabular data to retrieve. No
-filter implies all tabular data.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying tabular data to retrieve. No
+  `filter` implies all tabular data.
 - `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
-to 50 if unspecfied.
+  to 50 if unspecfied.
 - `sortOrder` ([Order](https://ts.viam.dev/enums/dataApi.Order.html)) (optional): The desired sort order of the data.
-- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
-provided, the server will return the next data entries after the last
-ID.
+- `last` (string) (optional): Optional string indicating the ID of the last\-returned data. If
+  provided, the server will return the next data entries after the `last`
+  ID.
 - `countOnly` (boolean) (optional): Whether to return only the total count of entries.
 - `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is
-used for Viam-specific data ingestion, like cloud SLAM. Defaults to
-false.
+  used for Viam\-specific data ingestion, like cloud SLAM. Defaults to
+  `false`.
 
 **Returns:**
 
@@ -500,7 +500,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `organizationId` (string) (required): The ID of the organization that owns the data.
 - `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
 - `useRecentData` (boolean) (optional): Whether to query blob storage or your recent data
-store. Defaults to false. Deprecated - use dataSource instead.
+  store. Defaults to false. Deprecated \- use dataSource instead.
 - `tabularDataSource` ([TabularDataSource](https://ts.viam.dev/classes/dataApi.TabularDataSource.html)) (optional)
 
 **Returns:**
@@ -649,20 +649,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to retrieve. No
-filter implies all binary data.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to retrieve. No
+  `filter` implies all binary data.
 - `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
-to 50 if unspecfied.
+  to 50 if unspecfied.
 - `sortOrder` ([Order](https://ts.viam.dev/enums/dataApi.Order.html)) (optional): The desired sort order of the data.
-- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
-provided, the server will return the next data entries after the last
-ID.
+- `last` (string) (optional): Optional string indicating the ID of the last\-returned data. If
+  provided, the server will return the next data entries after the `last`
+  ID.
 - `includeBinary` (boolean) (optional): Whether to include binary file data with each
-retrieved file.
+  retrieved file.
 - `countOnly` (boolean) (optional): Whether to return only the total count of entries.
 - `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is
-used for Viam-specific data ingestion, like cloud SLAM. Defaults to
-false.
+  used for Viam\-specific data ingestion, like cloud SLAM. Defaults to
+  `false`.
 
 **Returns:**
 
@@ -875,9 +875,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `organizationId` (string) (required): The ID of organization to delete data from.
 - `deleteOlderThanDays` (number) (required): Delete data that was captured more than this
-many days ago. For example if deleteOlderThanDays is 10, this deletes
-any data that was captured more than 10 days ago. If it is 0, all
-existing data is deleted.
+  many days ago. For example if `deleteOlderThanDays` is 10, this deletes
+  any data that was captured more than 10 days ago. If it is 0, all
+  existing data is deleted.
 
 **Returns:**
 
@@ -961,10 +961,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to delete. No
-filter implies all binary data.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to delete. No
+  `filter` implies all binary data.
 - `includeInternalData` (boolean) (optional): Whether or not to delete internal data. Default
-is true.
+  is true.
 
 **Returns:**
 
@@ -1074,7 +1074,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ids` (string) (required): The IDs of the data to be deleted. Must be non-empty.
+- `ids` (string) (required): The IDs of the data to be deleted. Must be non\-empty.
 
 **Returns:**
 
@@ -1182,8 +1182,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `tags` (string) (required): The list of tags to add to specified binary data. Must be
-non-empty.
-- `ids` (string) (required): The IDs of the data to be tagged. Must be non-empty.
+  non\-empty.
+- `ids` (string) (required): The IDs of the data to be tagged. Must be non\-empty.
 
 **Returns:**
 
@@ -1284,8 +1284,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `tags` (string) (required): The tags to add to the data.
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
-No filter implies all binary data.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to add tags to.
+  No `filter` implies all binary data.
 
 **Returns:**
 
@@ -1403,8 +1403,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `tags` (string) (required): List of tags to remove from specified binary data. Must be
-non-empty.
-- `ids` (string) (required): The IDs of the data to be edited. Must be non-empty.
+  non\-empty.
+- `ids` (string) (required): The IDs of the data to be edited. Must be non\-empty.
 
 **Returns:**
 
@@ -1505,9 +1505,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `tags` (string) (required): List of tags to remove from specified binary data. Must be
-non-empty.
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying binary data to add tags to.
-No filter implies all binary data.
+  non\-empty.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to add tags to.
+  No `filter` implies all binary data.
 
 **Returns:**
 
@@ -1604,8 +1604,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
-No filter implies all data.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying what data to get tags from.
+  No `filter` implies all data.
 
 **Returns:**
 
@@ -1710,13 +1710,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `binaryId` (string) (required): The ID of the image to add the bounding box to.
 - `label` (string) (required): A label for the bounding box.
 - `xMinNormalized` (number) (required): The min X value of the bounding box normalized from 0
-to 1.
+  to 1.
 - `yMinNormalized` (number) (required): The min Y value of the bounding box normalized from 0
-to 1.
+  to 1.
 - `xMaxNormalized` (number) (required): The max X value of the bounding box normalized from 0
-to 1.
+  to 1.
 - `yMaxNormalized` (number) (required): The max Y value of the bounding box normalized from 0
-to 1.
+  to 1.
 
 **Returns:**
 
@@ -1912,8 +1912,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional pb.Filter specifying what data to get tags from.
-No filter implies all labels.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying what data to get tags from.
+  No `filter` implies all labels.
 
 **Returns:**
 

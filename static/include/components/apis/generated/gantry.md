@@ -168,7 +168,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `positionsMm` (number) (required): The goal positions for each axis of the gantry.
 - `speedsMmPerSec` (number) (required): The desired speed for each axis to move to the
-respective position in positionsMm.
+  respective position in positionsMm.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

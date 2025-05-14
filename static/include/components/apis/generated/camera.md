@@ -114,7 +114,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
-the same type that will be returned.
+  the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -243,7 +243,7 @@ A specific MIME type can be requested but may not necessarily be the same one re
 **Parameters:**
 
 - `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
-the same type that will be returned.
+  the same type that will be returned.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

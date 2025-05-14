@@ -703,7 +703,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `cameraName` (string) (required): The name of the camera to use for classification,
-detection, and segmentation.
+  detection, and segmentation.
 - `__namedParameters` (CaptureAllOptions) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)

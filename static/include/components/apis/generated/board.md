@@ -64,7 +64,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `pin` (string) (required): The pin number.
 - `high` (boolean) (required): When true, set the given pin to high. When false, set the
-given pin to low.
+  given pin to low.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -616,7 +616,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `pin` (string) (required): The pin.
 - `frequencyHz` (number) (required): The PWM frequency, in hertz. 0 will use the board's
-default PWM frequency.
+  default PWM frequency.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

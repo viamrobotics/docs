@@ -311,8 +311,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `linear` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired linear power percentage from -1 to 1.
-- `angular` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired angular power percentage from -1 to 1.
+- `linear` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired linear power percentage from \-1 to 1\.
+- `angular` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired angular power percentage from \-1 to 1\.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -511,7 +511,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- ([viam.components.base.Base.Properties](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties)): The properties of the base.
+- (viam.components.base.Base.Properties): The properties of the base.
 
 **Example:**
 

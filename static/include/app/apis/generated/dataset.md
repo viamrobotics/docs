@@ -33,7 +33,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `name` (string) (required): The name of the new dataset.
 - `organizationId` (string) (required): The ID of the organization the dataset is being
-created in.
+  created in.
 
 **Returns:**
 
