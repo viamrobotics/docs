@@ -93,11 +93,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
 
 **Example:**
 
@@ -231,11 +231,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `image` [ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
 
 **Example:**
 
@@ -348,11 +348,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `count` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
 
 **Example:**
 
@@ -487,11 +487,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `image` [ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html) (required)
 - `count` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
 
 **Example:**
 
@@ -604,11 +604,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)\>\>
 
 **Example:**
 
@@ -703,15 +703,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `cameraName` (string) (required): The name of the camera to use for classification,
-detection, and segmentation.
+  detection, and segmentation.
 - `__namedParameters` (CaptureAllOptions) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<     {         classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];         detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];         extra: undefined         | [Struct](https://ts.viam.dev/classes/Struct.html);         image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);         objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[];     }, >): * The requested image, classifications, detections, and 3d point
-  cloud objects.
+- (Promise<    {        classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];        detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];        extra: undefined        | [Struct](https://ts.viam.dev/classes/Struct.html);        image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);        objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[];    },>): * The requested image, classifications, detections, and 3d point
+cloud objects.
 
 **Example:**
 
@@ -756,8 +756,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
-For built-in service models, any model-specific commands available are covered with each model's documentation.
-If you are implementing your own vision service and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own vision service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -825,10 +826,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#docommand).
@@ -838,11 +842,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 
@@ -954,7 +958,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<     {         classificationsSupported: boolean;         detectionsSupported: boolean;         objectPointCloudsSupported: boolean;     }, >): * The properties of the vision service.
+- (Promise<    {        classificationsSupported: boolean;        detectionsSupported: boolean;        objectPointCloudsSupported: boolean;    },>): * The properties of the vision service.
 
 **Example:**
 
@@ -970,11 +974,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[VisionProperties](https://flutter.viam.dev/viam_sdk/VisionProperties.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[VisionProperties](https://flutter.viam.dev/viam_sdk/VisionProperties.html)\>
 
 **Example:**
 

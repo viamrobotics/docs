@@ -481,6 +481,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - `pointCloudPCD` (Uint8Array) (required): The point clouds to transform. This should be in the
   [PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
+
 - `source` (string) (required): The reference frame of the point cloud.
 - `destination` (string) (required): The reference frame into which the source data should
   be transformed, if unset this defaults to the "world" reference frame. Do
@@ -571,7 +572,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)\>\>
 
 **Example:**
 
@@ -797,7 +798,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)\>
 
 **Example:**
 
@@ -952,7 +953,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)\>
 
 **Example:**
 
@@ -1046,7 +1047,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -1162,7 +1163,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
