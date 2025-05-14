@@ -78,7 +78,7 @@ If you choose to use the captive web portal, you can optionally create a machine
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
 
 {{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
 
@@ -187,6 +187,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "manufacturer": "<NAME>", # your company name
     "model": "<NAME>", # the machine's model
     "fragment_id": "<ID>", # the fragment id, required for mobile app
+    "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
     "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
     "disable_captive_portal_redirect": false, # set to true if using a mobile app
     "hotspot_password": "<PASSWORD>", # password for the hotspot
@@ -207,6 +208,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "manufacturer": "Skywalker",
     "model": "C-3PO",
     "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_interface": "wlan0",
     "hotspot_prefix": "skywalker-setup",
     "disable_captive_portal_redirect": false,
     "hotspot_password": "skywalker123",
@@ -232,7 +234,7 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
-| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
+| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
@@ -264,6 +266,7 @@ The following configuration defines the connection information and credentials f
     "manufacturer": "Skywalker",
     "model": "C-3PO",
     "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_interface": "wlan0",
     "hotspot_prefix": "skywalker-setup",
     "disable_captive_portal_redirect": false,
     "hotspot_password": "skywalker123",

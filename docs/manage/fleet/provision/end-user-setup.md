@@ -118,7 +118,7 @@ To copy your machine cloud credentials:
 
 - Navigate to your machine's page on the [Viam app](https://app.viam.com).
 - Select the part status dropdown to the right of your machine's name on the top of the page.
-  {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow" >}}
+  {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
 - Click the copy icon next to **Machine cloud credentials**.
 - Paste the credentials when prompted.
 

@@ -7,25 +7,19 @@ type: "docs"
 description: "Use triggers to send email notifications when inferences are made."
 ---
 
-At this point, you should have already set up and tested [computer vision functionality](/data-ai/ai/run-inference/).
-On this page, you'll learn how to use triggers to send alerts in the form of email notifications or webhook requests when certain detections or classifications are made.
+Triggers can send alerts in the form of email notifications or webhook requests when a service makes a specific detection or classification.
 
-You will build a system that can monitor camera feeds and detect situations that require review.
-In other words, this system performs anomaly detection.
-Whenever the system detects an anomaly, it will send an email notification.
-
-First, you'll set up data capture and sync to record images with the anomaly and upload them to the cloud.
-Next, you'll configure a trigger to send email notifications or webhook requests when the anomaly is detected.
+For example, a trigger could alert you when a camera feed detects an anomaly.
 
 ### Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to the Viam app." %}}
 
 {{% snippet "setup-both.md" %}}
 
 {{% /expand%}}
 
-{{< expand "A configured camera and vision service. Click to see instructions." >}}
+{{< expand "A configured camera and vision service." >}}
 
 Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/ai/run-inference/).
 
@@ -33,25 +27,43 @@ Follow the instructions to [configure a camera](/operate/reference/components/ca
 
 ## Configure a filtered camera
 
-Your physical camera is working and your vision service is set up.
-Now you will pull them together to filter out only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
-This camera module takes the vision service and applies it to your webcam feed, filtering the output so that later, when you configure data management, you can save only the images that contain people inferred to match the filtering criteria rather than all images the camera captures.
+You can use a camera and vision service to sync only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
+This camera module takes the vision service and applies it to your webcam feed, filtering the output.
+With this filtering, you can save only images that contain people who match your filtering criteria.
 
 Configure the camera module with classification or object labels according to the labels your ML model provides that you want to alert on.
-Follow the instructions in the [`filtered-camera` module readme](https://github.com/erh/filtered_camera).
-For example, if using the YOLOv8 model (named `yolo`) for hardhat detection, you would configure the module like the following:
 
-{{% expand "Instructions for configuring the filtered-camera module to detect people without a hardhat" %}}
+Complete the following steps to configure your module:
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing `filtered-camera` and select **camera / filtered-camera** from the results.
    Click **Add module**.
 
-3. Name your filtering camera something like `objectfilter-cam` and click **Create**.
+1. Name your filtering camera something like `objectfilter-cam` and click **Create**.
 
-4. Paste the following into the attributes field:
+1. Paste a configuration into the attributes field:
+
+   {{< tabs >}}
+   {{% tab name="Template" %}}
+
+   Replace the `<vision-service-name>` and `<confidence-threshold>` placeholders with values for your use case:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "camera": "my_webcam",
+     "vision": "<vision-service-name>",
+     "window_seconds": 3,
+     "objects": {
+       "<object-name>": <confidence-threshold>
+     }
+   }
+   ```
+
+   {{% /tab %}}
+   {{% tab name="Example: Hard hat detection" %}}
+   For example, if using the YOLOv8 model (named `yolo`) for hard hat detection as demonstrated in the [Monitor Helmet Usage tutorial](/tutorials/projects/helmet/):
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -64,34 +76,42 @@ For example, if using the YOLOv8 model (named `yolo`) for hardhat detection, you
    }
    ```
 
-   If you named your detector something other than "yolo," edit the `vision_services` value accordingly.
-   You can also edit the confidence threshold.
-   If you change it to `0.6` for example, the `filtered-camera` camera will only return labeled bounding boxes when the vision model indicates at least 60% confidence that the object is a hard hat or a person without a hard hat.
+   {{% /tab %}}
+   {{% /tabs %}}
 
-5. Click **Save** in the top right corner of the screen to save your changes.
+   The confidence threshold determines the minimum level of certainty required from the vision model to sync data.
+   For example, a confidence threshold of `0.6` syncs data only when the vision model is at least 60% sure that it has correctly identified the desired object type.
 
-{{% /expand%}}
+1. Click **Save** in the top right corner of the screen to save your changes.
+
+For more information, see the [`filtered-camera` module README](https://github.com/erh/filtered_camera).
+
+{{% alert title="Tip" color="tip" %}}
+Viam provides a way to monitor detections, classifications, and confidence levels from a live vision service.
+To view this information, navigate to the vision service card and expand the **TEST** panel.
+You can use this to verify your confidence level configuration.
+{{% /alert %}}
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources) allows you to, among other things, capture images and sync them to the cloud.
+The [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources) can capture images and sync them to the Viam cloud.
 
 Configure data capture on the `filtered-camera` camera to capture images of detections or classifications:
 
-1. First, you need to add the data management service to your machine to make it available to capture data on your camera.
+1. First, add the data management service to your machine.
 
    Navigate to your machine's **CONFIGURE** tab.
 
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
-   Type "data" and click **data management / RDK**.
+   Enter "data" and select **data management**.
    Name your data management service `data-manager` and click **Create**.
 
    Leave all the default data service attributes as they are and click **Save** in the top right corner of the screen to save your changes.
 
-2. Now you're ready to enable data capture on your detector camera.
+1. Now you're ready to enable data capture on your detector camera.
    Locate the `objectfilter-cam` panel.
 
-3. Click **Add method**.
+1. Click **Add method**.
    Click the **Type** dropdown and select **ReadImage**.
    Set the capture frequency to `0.2` images per second (equivalent to one image every 5 seconds).
    You can always change the frequency to suit your use case.
@@ -99,35 +119,47 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
 ## Set up alerts
 
-[Triggers](/data-ai/data/advanced/alert-data/) allow you to send webhook requests or email notifications when certain events happen.
+Triggers send webhook requests or email notifications when certain events happen.
 
-You can use the **Data has been synced to the cloud** (`part_data_ingested`) trigger to send alerts whenever an image with an anomaly detection is synced to the cloud from your object filter camera.
-
-Set up the trigger with a webhook or with Viam's built-in email alerts which sends a generic email letting you know that data has been synced.
+You can use the **Data has been synced to the cloud** (`part_data_ingested`) trigger type to send alerts whenever an image syncs to the cloud from your filtered camera.
+Because the filter only syncs images that contain an anomaly, this trigger sends an alert when an anomaly occurs.
 
 ### Configure a trigger on your machine
 
-Now it's time to configure a trigger so that you get an email when a person is not wearing a hard hat.
+Follow these steps to configure a trigger to alert when `filtered-camera` syncs an image:
 
-Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
-Click the **+** (Create) button in the left side menu and select **Trigger**.
+1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+   Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-Name the trigger and click **Create**.
+1. Enter a name and click **Create**.
 
-Select trigger **Type** as **Data has been synced to the cloud** and **Data Types** as **Binary (image)**.
+1. In the **Type** dropdown, select **Data has been synced to the cloud**.
 
-{{<imgproc src="/tutorials/helmet/trigger.png" resize="x300" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." class="shadow" >}}
+1. In the **Data Types** dropdown, select **Binary (image)**.
 
-To configure notifications, either
+   {{<imgproc src="/tutorials/helmet/trigger.png" resize="x300" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." class="shadow" >}}
 
-- add a webhook and enter the URL of your custom cloud function
-- add an email address to use Viam's built-in email notifications
+1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
 
-For both options also configure the time between notifications.
+   To add an email notification:
 
-Click **Save** in the top right corner of the screen to save your changes.
+   1. Click **Add Email**.
+      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" declaredimensions=true alt="The trigger configured with an example email in the Viam app." class="shadow" >}}
+   1. Add the email you wish to be notified whenever this trigger is triggered.
+   1. Configure the time between notifications.
 
-{{< readfile "/static/include/webhooks.md" >}}
+   To add a webhook notification:
+
+   1. Click **Add Webhook**.
+      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
+   1. Add the URL of your cloud function.
+   1. Configure the time between notifications.
+   1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
+      Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
+
+1. Configure the time between notifications.
+
+1. Click **Save** in the top right corner of the screen to save your configuration.
 
 ## Test the whole system
 
@@ -135,12 +167,6 @@ You've built all the pieces of the system and connected them together.
 Now it's time to test the whole thing.
 
 Make sure `viam-server` is running on your machine.
-Run your camera in front of what you're detecting and wait for an anomaly to appear.
-Wait a couple of minutes for the email to arrive in your inbox.
+Run the camera and wait for an anomaly to appear.
+Within a few minutes of the anomaly, you should see your email or webhook alert.
 Congratulations, you've successfully built your anomaly detection monitor!
-
-## Troubleshooting
-
-### Test the vision service
-
-To see the detections or classifications occurring in real time and verify if their confidence level reaches the threshold you have set, you can navigate to the vision service card and expand the **TEST** panel.
