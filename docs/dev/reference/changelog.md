@@ -48,7 +48,7 @@ date: "2024-09-18"
 
 You can now configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
 
-To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object in your machine's configuration. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
+To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object in your machine's `agent` configuration. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
 
 For more information, see [Configure operating system logging](/manage/fleet/system-settings/#forward-system-logs-to-the-cloud).
 
@@ -76,8 +76,8 @@ If you are using the old <FILE>viam-provisioning.json</FILE> you must also use t
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "manufacturer": "<n>", # your company name
-  "model": "<n>", # the machine's model
+  "manufacturer": "<NAME>", # your company name
+  "model": "<NAME>", # the machine's model
   "fragment_id": "<ID>", # the fragment id, required for mobile app
   "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
   "disable_dns_redirect": true, # disable if using a mobile app

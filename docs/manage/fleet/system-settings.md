@@ -146,7 +146,8 @@ The configured values will take precedence over operating system defaults.
 
 ### Forward system logs to the cloud
 
-You can configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
+You can configure `viam-agent` to forward system logs from journald to the cloud for additional diagnostics information.
+This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
 
 To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
 
@@ -157,6 +158,10 @@ To enable system log forwarding, add the `forward_system_logs` field to the `sys
     }
 }
 ```
+
+{{< alert title="Note" color="note" >}}
+System log forwarding requires journald to be available on the system. This feature is only supported on Linux systems.
+{{< /alert >}}
 
 #### Filtering options
 
