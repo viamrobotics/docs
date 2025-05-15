@@ -825,6 +825,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateOrganizationMetadata
 
 Updates the user-defined metadata for an organization.
+User-defined metadata is billed as data.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
@@ -2475,6 +2476,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobotMetadata
 
 Updates the user-defined metadata for a machine.
+User-defined metadata is billed as data.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
@@ -2504,6 +2506,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobotPartMetadata
 
 Updates the user-defined metadata for a machine part.
+User-defined metadata is billed as data.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
