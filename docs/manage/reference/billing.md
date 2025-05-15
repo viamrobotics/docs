@@ -42,7 +42,7 @@ To download an invoice for a month click on **Download (PDF)** next to the relev
 
 You can set alerts to receive an email notification when your monthly spend exceeds a certain threshold.
 
-- Scroll to thebottom of the **Payment & Billing** page.
+- Scroll to the bottom of the **Payment & Billing** page.
 - Click **Set amount** and enter a monthly threshold.
 
 ## Help
