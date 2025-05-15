@@ -186,7 +186,7 @@ First, add your machine as a [board component](/operate/reference/components/boa
 {{% tab name="Config Builder" %}}
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` model (e.g. `viam:raspberry-pi:pi4` for Raspberry Pi 4).
+Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` model (for example, `viam:raspberry-pi:pi4` for Raspberry Pi 4).
 Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
 
@@ -386,7 +386,7 @@ Make sure to import `time` at the top of <file>plant-watering-robot.py</file> to
 
 On your machine's **CONTROL** page in the Viam app, expand the **TEST** card for your board component. You should see a panel that allows you to control individual GPIO pins.
 
-Enter `8` as a GPIO number. Set a decimal value between 0 and 1, e.g. 0.8, to activate the motor and begin pumping water. Set a value of 0 to turn the motor off and stop pumping water.
+Enter `8` as a GPIO number. Set a decimal value between 0 and 1, (for example 0.8), to activate the motor and begin pumping water. Set a value of 0 to turn the motor off and stop pumping water.
 
 ### Test moisture sensor
 
