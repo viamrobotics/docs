@@ -38,7 +38,7 @@ For Pricing information, please see [pricing & billing explained](https://www.vi
 You can view all your monthly invoices for your organization in the **Invoices** section of the **Payment & Billing** page.
 To download an invoice for a month click on **Download (PDF)** next to the relevant month.
 
-## Set billling alerts
+## Set billing alerts
 
 You can set alerts to receive an email notification when your monthly spend exceeds a certain threshold.
 
