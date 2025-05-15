@@ -280,10 +280,12 @@ Enabling debug level logs will take precedence over all logging configuration se
 The recommended way to install `viam-server` and connect your machine to the Viam app is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
 {{% /alert %}}
 
-If you need to install `viam-server` without using the Viam app, you can run the following commands:
+If you need to install `viam-server` without using the Viam app, you can run the following commands.
 
 {{< tabs >}}
 {{% tab name="Linux (Aarch64)" %}}
+{{< tabs >}}
+{{% tab name="Install manually" %}}
 
 ```bash {class="line-numbers linkable-line-numbers"}
 curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server
@@ -296,7 +298,20 @@ chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
 {{% /tab %}}
+{{% tab name="Install using viam-agent" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
 {{% tab name="Linux (x86_64)" %}}
+
+{{< tabs >}}
+{{% tab name="Install manually" %}}
 
 ```bash {class="line-numbers linkable-line-numbers"}
 curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server
@@ -308,6 +323,15 @@ Next, to make the `viam-server` executable and install as a system service, run 
 chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
+{{% /tab %}}
+{{% tab name="Install using viam-agent" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
@@ -323,9 +347,12 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{% tab name="Windows native" %}}
 
-Manual installation is not available for native Windows; you must download the Viam Agent installer.
+Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Next steps
 
