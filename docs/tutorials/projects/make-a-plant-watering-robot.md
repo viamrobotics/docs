@@ -394,6 +394,8 @@ On your machine's **CONTROL** page in the Viam app, expand the **TEST** card for
 Test your sensor by putting it in air, water, and soils containing different amounts of moisture.
 Use these observed values to determine an appropriate `is_not_moist` value for your setup.
 
+### Save control code
+
 Save <file>plant-watering-robot.py</file> with this logic added in, and then run it on your machine with the following command:
 
 ```shell {class="command-line" data-prompt="$"}
