@@ -514,7 +514,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `email` (string) (required): The email address of the user to generate an invite for.
 - `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The authorizations to associate with the new invite.
 - `sendEmailInvite` (boolean) (optional): Bool of whether to send an email invite (true) or
-automatically add a user. Defaults to true.
+  automatically add a user. Defaults to true.
 
 **Returns:**
 
@@ -825,6 +825,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateOrganizationMetadata
 
 Updates the user-defined metadata for an organization.
+User-defined metadata is billed as data.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
@@ -887,10 +888,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the location
-under.
+  under.
 - `name` (string) (required): The name of the location to create.
 - `parentLocationId` (string) (optional): Optional name of a parent location to create the
-new location under.
+  new location under.
 
 **Returns:**
 
@@ -1015,7 +1016,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `locId` (string) (required): The ID of the location to update.
 - `name` (string) (optional): Optional string to update the location's name to.
 - `parentLocId` (string) (optional): Optional string to update the location's parent location
-to.
+  to.
 - `region` (string) (optional): Optional string to update the location's region to.
 
 **Returns:**
@@ -1264,7 +1265,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `locId` (string) (required): The ID of the location to retrieve LocationAuth from.
+- `locId` (string) (required): The ID of the location to retrieve `LocationAuth` from.
 
 **Returns:**
 
@@ -1315,7 +1316,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `locId` (string) (required): The ID of the location to create a LocationAuth for.
+- `locId` (string) (required): The ID of the location to create a `LocationAuth` for.
 
 **Returns:**
 
@@ -1370,7 +1371,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `locId` (string) (required): The ID of the location to delete the LocationAuth from.
+- `locId` (string) (required): The ID of the location to delete the `LocationAuth` from.
 - `secretId` (string) (required): The ID of the location secret to delete.
 
 **Returns:**
@@ -1621,6 +1622,8 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 my_robot_part = await cloud.get_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
 )
+# Get the part's address
+address = my_robot_part.fqdn
 # Check if machine is live (last access time less than 10 sec ago)
 if (time.time() - my_robot_part.last_access.timestamp()) <= 10000:
     print("Machine is live.")
@@ -1643,6 +1646,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const robotPart = await appClient.getRobotPart('<YOUR-ROBOT-PART-ID>');
+// Get the part's address
+const address = robotPart.part.fqdn;
+// Check if machine is live (last access time less than 10 sec ago)
+if (
+  Date.now() - Number(robotPart.part.lastAccess.seconds) * 1000 <=
+  10000
+) {
+  console.log('Machine is live');
+}
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpart).
@@ -1692,9 +1704,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `id` (string) (required): The ID of the requested robot part.
 - `filter` (string) (optional): Optional string to filter logs on.
 - `levels` (string) (optional): Optional array of log levels to return. Defaults to returning
-all log levels.
+  all log levels.
 - `pageToken` (string) (optional): Optional string indicating which page of logs to query.
-Defaults to the most recent.
+  Defaults to the most recent.
 
 **Returns:**
 
@@ -1749,8 +1761,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `id` (string) (required): The ID of the requested robot part.
 - `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level
-logs should be returned. Defaults to true.
+- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error\-level
+  logs should be returned. Defaults to true.
 
 **Returns:**
 
@@ -1835,6 +1847,7 @@ You can only change the name and configuration of the machine part, not the loca
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot part.
 - `robot_config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional new config represented as a dictionary to be updated on the machine part. The machine part’s config will remain as is (no change) if one isn’t passed.
+- `last_known_update` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional time of the last known update to this part’s config. If provided, this will result in a GRPCError if the upstream config has changed since this time, indicating that the local config is out of date. Omitting this parameter will result in an overwrite of the upstream config.
 
 **Returns:**
 
@@ -1842,7 +1855,7 @@ You can only change the name and configuration of the machine part, not the loca
 
 **Raises:**
 
-- (GRPCError): If either an invalid machine part ID, name, or config is passed.
+- (GRPCError): If either an invalid machine part ID, name, or config is passed, or if the upstream config has changed since last_known_update.
 
 **Example:**
 
@@ -2467,6 +2480,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobotMetadata
 
 Updates the user-defined metadata for a machine.
+User-defined metadata is billed as data.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
@@ -2496,6 +2510,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### UpdateRobotPartMetadata
 
 Updates the user-defined metadata for a machine part.
+User-defined metadata is billed as data.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
@@ -2554,8 +2569,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `organizationId` (string) (required): The ID of the organization to list fragments for.
 - `publicOnly` (boolean) (optional): Optional, deprecated boolean. Use fragmentVisibilities
-instead. If true then only public fragments will be listed. Defaults to
-true.
+  instead. If true then only public fragments will be listed. Defaults to
+  true.
 - `fragmentVisibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional)
 
 **Returns:**
@@ -2585,11 +2600,11 @@ Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text=
 **Parameters:**
 
 - `machineId` (string) (required): The machine ID used to filter fragments defined in a
-machine's parts. Also returns any fragments nested within the fragments
-defined in parts.
+  machine's parts. Also returns any fragments nested within the fragments
+  defined in parts.
 - `additionalFragmentIds` (string) (optional): Additional fragment IDs to append to the
-response. Useful when needing to view fragments that will be
-provisionally added to the machine alongside existing fragments.
+  response. Useful when needing to view fragments that will be
+  provisionally added to the machine alongside existing fragments.
 
 **Returns:**
 
@@ -2698,7 +2713,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the fragment
-under.
+  under.
 - `name` (string) (required): The name of the new fragment.
 - `config` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The new fragment's config.
 
@@ -2734,6 +2749,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
 - `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.  Deprecated since version 0.25.0: Use visibility instead.
 - `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.FragmentVisibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
+- `last_known_update` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional time of the last known update to this fragment’s config. If provided, this will result in a GRPCError if the upstream config has changed since this time, indicating that the local config is out of date. Omitting this parameter will result in an overwrite of the upstream config.
 
 **Returns:**
 
@@ -2741,7 +2757,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 
 **Raises:**
 
-- (GRPCError): if an invalid ID, name, or config is passed.
+- (GRPCError): if an invalid ID, name, or config is passed, or if the upstream fragment config has changed since last_known_update.
 
 **Example:**
 
@@ -2762,13 +2778,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `name` (string) (required): The name to update the fragment to.
 - `config` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The config to update the fragment to.
 - `makePublic` (boolean) (optional): Optional, deprecated boolean specifying whether the
-fragment should be public or not. If not passed, the visibility will be
-unchanged. Fragments are private by default when created.
+  fragment should be public or not. If not passed, the visibility will be
+  unchanged. Fragments are private by default when created.
 - `visibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional): Optional FragmentVisibility specifying the updated
-fragment visibility. If not passed, the visibility will be unchanged. If
-visibility is not set and makePublic is set, makePublic takes effect. If
-makePublic and visibility are set, they must not be conflicting. If
-neither is set, the fragment visibility will remain unchanged.
+  fragment visibility. If not passed, the visibility will be unchanged. If
+  visibility is not set and makePublic is set, makePublic takes effect. If
+  makePublic and visibility are set, they must not be conflicting. If
+  neither is set, the fragment visibility will remain unchanged.
 
 **Returns:**
 
@@ -2917,10 +2933,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `organizationId` (string) (required): The ID of the organization to create the role under.
 - `entityId` (string) (required): The ID of the entity the role belongs to (for example a
-user ID).
+  user ID).
 - `role` (string) (required): The role to add ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to create the role for ("robot",
-"location", or "organization").
+  "location", or "organization").
 - `resourceId` (string) (required): The ID of the resource the role is being created for.
 
 **Returns:**
@@ -2988,10 +3004,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `organizationId` (string) (required): The ID of the organization to remove the role from.
 - `entityId` (string) (required): The ID of the entity the role belongs to (for example a
-user ID).
+  user ID).
 - `role` (string) (required): The role to remove ("owner" or "operator").
 - `resourceType` (string) (required): The type of resource to remove the role from ("robot",
-"location", or "organization").
+  "location", or "organization").
 - `resourceId` (string) (required): The ID of the resource the role is being removes from.
 
 **Returns:**
@@ -3061,8 +3077,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `oldAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required)
-- `newAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required)
+- `oldAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The existing authorization.
+- `newAuthorization` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The new authorization to change to.
 
 **Returns:**
 
@@ -3137,7 +3153,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `organizationId` (string) (required): The ID of the organization to list authorizations for.
 - `resourceIds` (string) (optional): Optional list of IDs of resources to list authorizations
-for. If not provided, all resources will be included.
+  for. If not provided, all resources will be included.
 
 **Returns:**
 
@@ -3268,6 +3284,7 @@ Get registry item by ID.
 **Parameters:**
 
 - `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item. This is the namespace and name of the item in the form namespace:name. For example, Viam’s csi-cam-pi module’s item ID would be viam:csi-cam-pi. You can also use org-id:name. For example, abc01234-0123-4567-ab12-a11a00a2aa22:training-script.
+- `include_markdown_documentation` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required)
 
 **Returns:**
 
@@ -3338,7 +3355,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the registry
-item under.
+  item under.
 - `name` (string) (required): The name of the registry item.
 - `type` (PackageType) (required): The type of the item in the registry.
 
@@ -3479,17 +3496,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to query registry items
-for.
+  for.
 - `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
 - `visibilities` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not
-filter on visibility.
+  filter on visibility.
 - `platforms` (string) (required): A list of platforms to query for. If empty, will not
-filter on platform.
+  filter on platform.
 - `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter
-on status.
+  on status.
 - `searchTerm` (string) (optional): Optional search term to filter on.
 - `pageToken` (string) (optional): Optional page token for results. If not provided, will
-return all results.
+  return all results.
 
 **Returns:**
 
@@ -3871,7 +3888,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The list of authorizations to provide for the API key.
 - `name` (string) (optional): An optional name for the key. If none is passed, defaults to
-present timestamp.
+  present timestamp.
 
 **Returns:**
 

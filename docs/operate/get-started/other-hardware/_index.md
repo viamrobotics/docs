@@ -15,8 +15,9 @@ aliases:
   - /registry/advanced/iterative-development/
   - /build/program/extend/modular-resources/
   - /program/extend/modular-resources/
-  - /extend/modular-resources/
   - /extend/
+  - /extend/modular-resources/
+  - /extend/modular-resources/create/
   - /build/program/extend/modular-resources/key-concepts/
   - /modular-resources/key-concepts/
   - /modular-resources/
@@ -894,7 +895,7 @@ This module implements the [Viam sensor API](https://docs.viam.com/dev/reference
 With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com/).
-Click the **+** button, select **Component**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
+Click the **+** button, select **Component or service**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
 Click **Add module**, enter a name for your sensor, and click **Create**.
 
 ## Configure your `meteo_PM` sensor
@@ -1142,7 +1143,7 @@ You can use the following package and upload method if you opted not to enable c
 1.  To package the module as an archive, run the following command from inside the module directory:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-    tar -czf module.tar.gz run.sh setup.sh requirements.txt src
+    tar -czf module.tar.gz run.sh setup.sh requirements.txt src meta.json
     ```
 
     where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
@@ -1198,5 +1199,5 @@ Now, if you look at the [Viam Registry page](https://app.viam.com/registry) whil
 Now that your module is in the registry, you can configure the component you added on your machines just as you would configure other components and services; there's no more need for local module configuration.
 The local module configuration is primarily for testing purposes.
 
-Click the **+** button on your machine's **CONFIGURE** tab and search for your model.
+Click the **+** button on your machine's **CONFIGURE** tab, click **Component or service**, and search for your model.
 For more details, see [Configure hardware on your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).

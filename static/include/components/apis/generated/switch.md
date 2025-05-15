@@ -2,6 +2,7 @@
 
 Set the position of the switch.
 Position must be within the valid range for the switch type.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -78,6 +79,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### GetPosition
 
 Return the current position of the switch.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -164,6 +166,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### GetNumberOfPositions
 
 Return the number of valid positions for this switch.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -232,8 +235,10 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
-For built-in models, model-specific commands are covered with each model's documentation.
-If you are implementing your own switch and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own switch and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -300,10 +305,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#docommand).

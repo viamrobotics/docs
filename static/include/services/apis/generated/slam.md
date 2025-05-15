@@ -57,6 +57,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPositionResponse](https://ts.viam.dev/classes/slamApi.GetPositionResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const slam = new VIAM.SlamClient(machine, 'my_slam');
+
+// Get the current position of the robot in the SLAM map
+const position = await slam.getPosition();
+console.log('Current position:', position);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getposition).
 
 {{% /tab %}}
@@ -115,6 +125,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<Uint8Array>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const slam = new VIAM.SlamClient(machine, 'my_slam');
+
+// Get the point cloud map
+const pointCloudMap = await slam.getPointCloudMap();
+
+// Get the edited point cloud map
+const editedMap = await slam.getPointCloudMap(true);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getpointcloudmap).
 
 {{% /tab %}}
@@ -169,6 +191,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<Uint8Array>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const slam = new VIAM.SlamClient(machine, 'my_slam');
+
+// Get the internal state of the SLAM algorithm
+const internalState = await slam.getInternalState();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getinternalstate).
 
@@ -239,6 +270,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<[slamApi](https://ts.viam.dev/modules/slamApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/slamApi.GetPropertiesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const slam = new VIAM.SlamClient(machine, 'my_slam');
+
+// Get the properties of the SLAM service
+const properties = await slam.getProperties();
+console.log('SLAM properties:', properties);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getproperties).
 
@@ -316,8 +357,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
-For built-in service models, any model-specific commands available are covered with each model's documentation.
-If you are implementing your own SLAM service and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own SLAM service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -385,10 +427,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#docommand).

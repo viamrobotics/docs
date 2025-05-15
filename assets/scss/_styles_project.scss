@@ -3369,6 +3369,20 @@ div.tablestep > table td, div.tablestep table td {
   padding-left: 1rem;
 }
 
+/* ensure that, up to a reasonable 4 levels of nesting, including tablesteps, we use distinct ordered list labeling schemes */
+.tablestep ol, ol ol {
+ list-style-type: upper-alpha;
+}
+
+.tablestep ol ol, ol ol ol {
+ list-style-type: lower-roman;
+}
+
+.tablestep ol ol ol, ol ol ol ol {
+ list-style-type: lower-alpha;
+}
+/* end ordered list labeling styling */
+
 .td-content > .code-toolbar, .td-content * .code-toolbar {
   margin-top: 1rem;
 }

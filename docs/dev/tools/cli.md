@@ -293,8 +293,8 @@ viam dataset delete --dataset-id=<dataset-id>
 viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 viam dataset data add filter --dataset-id=<dataset-id> [...named args]
 viam dataset data remove filter --dataset-id=<dataset-id> [...named args]
-viam dataset data add ids --dataset-id=<dataset-id> --org-id=<org-id> --location-id=<location-id> --file-ids=<file-ids>
-viam dataset data remove ids --dataset-id=<dataset-id> --org-id=<org-id> --location-id=<location-id> --file-ids=<file-ids>
+viam dataset data add ids --dataset-id=<dataset-id>  --binary-data-ids=<binary-data-ids>
+viam dataset data remove ids --dataset-id=<dataset-id> --binary-data-ids=<binary-data-ids>
 ```
 
 Examples:
@@ -306,10 +306,10 @@ viam dataset create --org-id=123 --name=MyDataset
 # rename dataset 123 from MyDataset to MyCoolDataset
 viam dataset rename --dataset-id=123 --name=MyCoolDataset
 
-# list dataset information from the specified org
+# show dataset information for all datasets within a specified org
 viam dataset list --org-id=123
 
-# list dataset information from the specified dataset ids
+# show dataset information for the specified dataset IDs
 viam dataset list --dataset-ids=123,456
 
 # delete the specified dataset
@@ -319,16 +319,16 @@ viam dataset delete --dataset-id=123
 viam dataset export --destination=./dataset/example --dataset-id=abc
 
 # add images tagged with the "example" tag between January and October of 2023 to dataset abc
-viam dataset data add filter --dataset-id=abc --location-id=123 --org-id=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+viam dataset data add filter --dataset-id=abc --location-ids=123 --org-ids=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
 # remove images tagged with the "example" tag between January and October of 2023 to dataset abc
-viam dataset data remove filter --dataset-id=abc --location-id=123 --org-id=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+viam dataset data remove filter --dataset-id=abc --location-ids=123 --org-ids=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
-# add images with file IDs aaa and bbb in the org 123 and location 456 to dataset abc
-viam dataset data add ids --dataset-id=abc --org-id=123 --location-id=456 --file-ids=aaa,bbb
+# add images with binary data IDs aaa and bbb in the org 123 and location 456 to dataset abc
+viam dataset data add ids --dataset-id=abc --binary-data-ids=aaa,bbb
 
-# remove images with file IDs aaa and bbb in the org 123 and location 456 from dataset abc
-viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --file-ids=aaa,bbb
+# remove images with binary data IDs aaa and bbb in the org 123 and location 456 from dataset abc
+viam dataset data remove ids --dataset-id=abc --binary-data-ids=aaa,bbb
 ```
 
 #### Command options
@@ -340,8 +340,8 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 | `rename` | Rename an existing dataset. | - |
 | `list` | List dataset information from specified IDs or for an org ID. | - |
 | `delete` | Delete a dataset. | - |
-| `data add` | Add a new image to an existing dataset by its file id, add a group of images by specifying a [filter](#using-the-filter-argument). | `ids`, `filter` |
-| `data remove` | Remove a new image to an existing dataset by its file id, or remove a group of images by specifying a [filter](#using-the-filter-argument). | `ids`, `filter` |
+| `data add` | Add new images to an existing dataset by binary data ID or add images that match a specified [filter](#using-the-filter-argument). | `ids`, `filter` |
+| `data remove` | Remove images from an existing dataset by binary data ID or remove images that match a specified [filter](#using-the-filter-argument). | `ids`, `filter` |
 | `export` | Download all the data from a dataset. | - |
 | `--help` | Return help. | - |
 
@@ -351,7 +351,7 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 | Argument | Description |
 | -------- | ----------- |
 | `filter` | `add` or `remove` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
-| `ids` | `add` or `remove` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
+| `ids` | `add` or `remove` images from a dataset by specifying one or more binary data IDs as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
 | `--help` | Return help. |
 
 ##### Named arguments
@@ -363,9 +363,8 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 | `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
 | `--destination` | Output directory for downloaded data. | `export` | **Required** |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `data add`, `data remove` | Optional |
-| `--file-ids` | The file-ids of the files to perform an operation on. | `data add`, `data remove`, `export` | **Required** |
+| `--binary-data-ids` | The binary data IDs of the files to perform an operation on. | `data add`, `data remove` | **Required** |
 | `--include-jsonl` | Set to `true` to include JSON Lines files for local testing. |`export`| Optional |
-| `--location-id` | The location ID for the location in which to perform an operation (only accepts one location id). | `data add`, `data remove` | **Required** |
 | `--name` | The name of the dataset to create or rename. | `create`, `rename` | **Required** |
 | `--org-id` | Organization ID of the organization the dataset belongs to. | `create`, `data add`, `data remove`, `list` | **Required** |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 100. | `export` | Optional |
@@ -374,17 +373,17 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 
 ##### Using the `ids` argument
 
-When you use the `viam dataset data add` and `viam dataset data remove` commands, you can specify the images to add or remove using their file ids as a comma-separated list.
-For example, the following command adds three images specified by their file ids to the specified dataset:
+When you use the `viam dataset data add` and `viam dataset data remove` commands, you specify images to add or remove using their binary data IDs as a comma-separated list.
+For example, the following command adds three images specified by their binary data IDs to the specified dataset:
 
 ```sh {class="command-line" data-prompt="$"}
-viam dataset data add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
+viam dataset data add ids --binary-data-ids=abc,123 --dataset-id=abc
 ```
 
-The following command tags two images specified by their file ids in the specified organization and location with three tags:
+The following command tags two images specified by their binary data IDs with three tags:
 
 ```sh {class="command-line" data-prompt="$"}
-viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
+viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
 ```
 
 To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in the [Viam app](https://app.viam.com/).
@@ -395,10 +394,10 @@ Click **...** in the left-hand menu and click **Copy dataset ID**.
 
 To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
 
-To find the file ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
-Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
+To find the binary data ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
+The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the right.
 
-You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
+You cannot use filter arguments such as `--start` or `--end` with the `ids` argument.
 
 See [Create a dataset](/data-ai/ai/create-dataset/) for more information.
 
@@ -429,7 +428,7 @@ Navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view), 
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
 Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the data type `binary` and `tabular` subcommands and `--destination` flags, which are specific to `viam data export`.
 
-You cannot use the `--file-ids` argument when using `filter`.
+You cannot use the `--binary-data-ids` argument when using `filter`.
 
 See [Create a dataset](/data-ai/ai/create-dataset/) for more information.
 
@@ -444,8 +443,8 @@ viam data export tabular --destination=<destination> --part-id=<part-id> --resou
 viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
-viam data tag ids add --tags=<tags> --org-id=<org_id> --location-id=<location_id> --file-ids=<file_ids>
-viam data tag ids remove --tags=<tags> --org-id=<org_id> --location-id=<location_id> --file-ids=<file_ids>
+viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
+viam data tag ids remove --tags=<tags> --binary-data-ids=<binary_ids>
 viam data tag filter add --tags=<tags> [...named args from filter]
 viam data tag filter remove --tags=<tags> [...named args from filter]
 ```
@@ -469,11 +468,11 @@ viam data database configure --org-id=abc --password=my_password123
 # get the hostname to access a MongoDB Atlas Data Federation instance
 viam data database hostname --org-id=abc
 
-# add tags to all data that matches the given ids
-viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
+# add tags to all data that matches the given ids in the current organization
+viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
 
-# remove tags from all data that matches the given ids
-viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
+# remove tags from all data that matches the given ids in the current organization
+viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
 
 # add tags to all data that matches a given filter
 viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
@@ -499,7 +498,7 @@ done
 | -------------- | ----------- | -------------------- |
 | `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
 | `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
-| `tag` | Add or remove tags from data matching the ids or filter. | `ids`, `filter` |
+| `tag` | Add or remove tags from data matching the IDs or filter. | `ids`, `filter` |
 | `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
 | `delete binary` | Delete binary data from the Viam Cloud. | - |
@@ -512,7 +511,7 @@ done
 | Argument | Description |
 | -------- | ----------- |
 | `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument](#using-the-filter-argument).|
-| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
+| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more binary data IDs as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
 | `--help` | Return help |
 
 ##### Named arguments
@@ -528,12 +527,10 @@ done
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
-| `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
-| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id). |`dataset`, `tag ids` | **Required** |
+| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
-| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged (`tag ids`). | `database configure`, `database hostname`, `tag ids` | **Required** |
 | `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export binary`, `delete`, `dataset export` | Optional |
 | `--part-id` | Filter by specified part ID. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional, **Required** for `export tabular` |
@@ -645,7 +642,7 @@ viam machines part status --organization=<org id> --location=<location id> --mac
 viam machines part run --organization=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
 viam machines part shell --organization=<org id> --location=<location id> --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part cp --organization=<org id> --location=<location id> --machine=<machine id> --part=<part id> <file name> machine:/path/to/file
+viam machines part cp --part=<part id> <file name> machine:/path/to/file
 ```
 
 Examples:
@@ -841,7 +838,7 @@ viam module update --module=./meta.json
 # updating a module's metadata file based on models it provides
 viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
 
-# initiate a cloud build
+# initiate a cloud build for public GitHub repos
 viam module build start --version "0.1.2"
 
 # initiate a build locally without running a cloud build job
@@ -872,7 +869,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
-| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). Your repository must be public to use this command. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
@@ -973,6 +970,7 @@ See [Integrate other hardware](/operate/get-started/other-hardware/) and [Update
 You can use the `module build start` or `module build local` commands to build your custom module according to the build steps in your <file>meta.json</file> file:
 
 - Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
+  Your repository must be public to use the `build start` command.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
 To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) like the following:

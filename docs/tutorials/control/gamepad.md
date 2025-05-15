@@ -90,7 +90,7 @@ Go to your rover's **CONFIGURE** tab on the [Viam app](https://app.viam.com/).
 
 Configure a [gamepad](/operate/reference/components/input-controller/gamepad/):
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `input_controller` type, then select the `gamepad` model.
 Enter a name or use the suggested name for your input controller and click **Create**.
 
@@ -129,7 +129,7 @@ To link the controller's input to the base functionality, you need to configure 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `base remote control` type.
 Enter a name or use the suggested name for your service and click **Create**.
 

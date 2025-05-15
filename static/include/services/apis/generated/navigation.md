@@ -63,6 +63,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Mode](https://ts.viam.dev/enums/navigationApi.Mode.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+const mode = await navigation.getMode();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getmode).
 
 {{% /tab %}}
@@ -128,12 +136,27 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `mode` ([navigationApi](https://ts.viam.dev/modules/navigationApi.html)) (required): The mode for the service to operate in.
+  
+  
+  * 0: MODE\_UNSPECIFIED
+  * 1: MODE\_MANUAL
+  * 2: MODE\_WAYPOINT
+  * 3: MODE\_EXPLORE.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+// Set the mode to 2 which corresponds to WAYPOINT
+await navigation.setMode(2);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#setmode).
 
@@ -200,6 +223,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetLocationResponse](https://ts.viam.dev/classes/navigationApi.GetLocationResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+const location = await navigation.getLocation();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getlocation).
 
 {{% /tab %}}
@@ -264,6 +295,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Returns:**
 
 - (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Waypoint](https://ts.viam.dev/classes/navigationApi.Waypoint.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+const waypoints = await navigation.getWayPoints();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getwaypoints).
 
@@ -332,14 +371,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `location` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The current location of the robot n the navigation
-service with latitude and longitude values.
+- `location` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): A waypoint described by latitude and longitude values.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+const location = { latitude: 40.7128, longitude: -74.006 };
+await navigation.addWayPoint(location);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#addwaypoint).
 
@@ -408,13 +455,24 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `id` (string) (required): The MongoDB ObjectID of the waypoint to remove from the
-service's data storage.
+  service's data storage.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+// Remove the first waypoint
+if (waypoints.length > 0) {
+  await navigation.removeWayPoint(waypoints[0].id);
+}
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#removewaypoint).
 
@@ -484,6 +542,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[GeoGeometry](https://ts.viam.dev/classes/commonApi.GeoGeometry.html)[]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+const obstacles = await navigation.getObstacles();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getobstacles).
 
 {{% /tab %}}
@@ -549,6 +615,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[Path](https://ts.viam.dev/classes/navigationApi.Path.html)[]>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+const paths = await navigation.getPaths();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getpaths).
 
 {{% /tab %}}
@@ -612,6 +686,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[navigationApi](https://ts.viam.dev/modules/navigationApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/navigationApi.GetPropertiesResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const navigation = new VIAM.NavigationClient(machine, 'my_navigation');
+
+const properties = await navigation.getProperties();
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#getproperties).
 
 {{% /tab %}}
@@ -643,8 +725,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
-For built-in service models, any model-specific commands available are covered with each model's documentation.
-If you are implementing your own navigation service and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own navigation service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -712,10 +795,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#docommand).

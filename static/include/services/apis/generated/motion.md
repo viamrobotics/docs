@@ -100,7 +100,7 @@ worldState, err := referenceframe.NewWorldState(obstacles, transforms)
 moved, err := motionService.Move(context.Background(), motion.MoveReq{
   ComponentName: gripperName,
   Destination: destination,
-  WorldState: WorldState
+  WorldState: worldState
 })
 ```
 
@@ -112,12 +112,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination to move to, which can a pose in the
-reference frame of any frame in the robot's frame system.
+  reference frame of any frame in the robot's frame system.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
-destination.
+  destination.
 - `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Avoid obstacles by specifying their geometries in the
-world state. Augment the frame system of the robot by specifying
-additional transforms to add to it for the duration of the Move.
+  world state. Augment the frame system of the robot by specifying
+  additional transforms to add to it for the duration of the Move.
 - `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Constrain the way the robot will move.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
@@ -125,6 +125,37 @@ additional transforms to add to it for the duration of the Move.
 **Returns:**
 
 - (Promise<boolean>): Whether the move was successful (`true`) or unsuccessful (`false`).
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// Assumes a gripper configured with name "my_gripper"
+const gripperName = new VIAM.ResourceName({
+  name: 'my_gripper',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'gripper',
+});
+
+const goalPose: VIAM.Pose = {
+  x: -817,
+  y: -230,
+  z: 62,
+  oX: -1,
+  oY: 0,
+  oZ: 0,
+  theta: 90,
+};
+const goalPoseInFrame = new VIAM.PoseInFrame({
+  referenceFrame: 'world',
+  pose: goalPose,
+});
+
+// Move the gripper
+const moved = await motion.move(goalPoseInFrame, gripperName);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#move).
 
@@ -267,12 +298,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Specify a destination to, which can be any Pose with
-respect to the SLAM map's origin.
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Specify a destination to, which can be any `Pose` with
+  respect to the SLAM map's origin.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
-destination.
-- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Name of the SLAM service from which the SLAM map
-is requested.
+  destination.
+- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Name of the `SLAM` service from which the SLAM map
+  is requested.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Optional obstacles to be considered for motion planning.
 - `extra` (None) (optional)
@@ -281,6 +312,43 @@ is requested.
 **Returns:**
 
 - (Promise<string>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// Define destination pose with respect to map origin
+const myPose: VIAM.Pose = {
+  x: 0,
+  y: 10,
+  z: 0,
+  oX: 0,
+  oY: 0,
+  oZ: 0,
+  theta: 0,
+};
+
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+const slamServiceName = new VIAM.ResourceName({
+  name: 'my_slam_service',
+  namespace: 'rdk',
+  type: 'service',
+  subtype: 'slam',
+});
+
+// Move the base to Y=10 (location of 0,10,0) relative to map origin
+const executionId = await motion.moveOnMap(
+  myPose,
+  baseName,
+  slamServiceName
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonmap).
 
@@ -438,13 +506,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination for the component to move to, represented
-as a GeoPoint.
+  as a `GeoPoint`.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the component to move.
-- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the Movement Sensor used to check
-the robot's location.
+- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the `Movement Sensor` used to check
+  the robot's location.
 - `heading` (number) (optional): Compass heading, in degrees, to achieve at destination.
 - `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Obstacles to consider when planning the motion of
-the component.
+  the component.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
@@ -453,6 +521,38 @@ the component.
 **Returns:**
 
 - (Promise<string>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// Define destination at GPS coordinates [0,0]
+const destination: VIAM.GeoPoint = {
+  latitude: 40.7,
+  longitude: -73.98,
+};
+
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+const movementSensorName = new VIAM.ResourceName({
+  name: 'my_movement_sensor',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'movement_sensor',
+});
+
+// Move the base to the geographic location
+const globeExecutionId = await motion.moveOnGlobe(
+  destination,
+  baseName,
+  movementSensorName
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonglobe).
 
@@ -605,18 +705,38 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component whose Pose is being requested.
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component whose `Pose` is being requested.
 - `destinationFrame` (string) (required): The reference frame in which the component's
-Pose should be provided, if unset this defaults to the "world"
-reference frame.
-- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Pose information on any additional
-reference frames that are needed to compute the component's Pose.
+  `Pose` should be provided, if unset this defaults to the "world"
+  reference frame.
+- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): `Pose` information on any additional
+  reference frames that are needed to compute the component's `Pose`.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+const gripperName = new VIAM.ResourceName({
+  name: 'my_gripper',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'gripper',
+});
+
+// Get the gripper's pose in world coordinates
+const gripperPoseInWorld = await motion.getPose(
+  gripperName,
+  'world',
+  []
+);
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getpose).
 
@@ -699,6 +819,21 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<null>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+
+// Stop the base component which was instructed to move
+await motion.stopPlan(baseName);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopplan).
 
 {{% /tab %}}
@@ -768,13 +903,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `onlyActivePlans` (boolean) (optional): If true, the response will only return plans which
-are executing.
+  are executing.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[ListPlanStatusesResponse](https://ts.viam.dev/classes/motionApi.ListPlanStatusesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+
+// List plan statuses within the TTL
+const response = await motion.listPlanStatuses();
+```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listplanstatuses).
 
@@ -872,6 +1016,21 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - (Promise<[motionApi](https://ts.viam.dev/modules/motionApi.html).[GetPlanResponse](https://ts.viam.dev/classes/motionApi.GetPlanResponse.html)>)
 
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motion = new VIAM.MotionClient(machine, 'builtin');
+const baseName = new VIAM.ResourceName({
+  name: 'my_base',
+  namespace: 'rdk',
+  type: 'component',
+  subtype: 'base',
+});
+
+// Get the plan(s) of the base component
+const response = await motion.getPlan(baseName);
+```
+
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getplan).
 
 {{% /tab %}}
@@ -942,8 +1101,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
-For built-in service models, any model-specific commands available are covered with each model's documentation.
-If you are implementing your own motion service and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own motion service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1011,10 +1171,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#docommand).

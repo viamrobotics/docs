@@ -87,7 +87,7 @@ Configure your [webcam](/operate/reference/components/camera/webcam/) so that yo
 1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing "webcam" and select **camera / webcam**.
    Give your camera a name.
    This tutorial uses the name `my_webcam` in all example code.
@@ -109,12 +109,12 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 ### Configure the vision service
 
 Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/operate/reference/services/vision/) on your machine.
-Viam's built-in [`mlmodel` vision service](/operate/reference/services/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](https://app.viam.com/registry/) that augments Viam with YOLOv8 integration.
+Viam's built-in [`mlmodel` vision service](/operate/reference/services/vision/mlmodel/) works with TensorFlow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](https://app.viam.com/registry/) that augments Viam with YOLOv8 integration.
 The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing `yolo` and select **vision / yolov8** from the registry options.
    Click **Add module**.
 
@@ -146,7 +146,7 @@ This module also filters the output so that later, when you configure data manag
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing `objectfilter` and select **camera / objectfilter** from the results.
    Click **Add module**.
 
@@ -205,7 +205,7 @@ Configure data capture on the `objectfilter` camera to capture images of people 
 
    Navigate to your machine's **CONFIGURE** tab.
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Type "data" and click **data management / RDK**.
    Name your data management service `data-manager` and click **Create**.
 

@@ -1,5 +1,5 @@
 ---
-title: "Design your ML Models for Vision"
+title: "Design your ML models for vision"
 linkTitle: "ML model service design"
 weight: 60
 type: "docs"
@@ -15,7 +15,7 @@ aliases:
   - /operate/reference/advanced-modules/mlmodel-design/
 ---
 
-The [Machine Learning (ML) model service](/data-ai/ai/deploy/) allow you to deploy machine learning models to your smart machine.
+The [Machine Learning (ML) model service](/data-ai/ai/deploy/) allows you to deploy machine learning models to your smart machine.
 Vision services, like [an `"mlmodel"` detector](/dev/reference/apis/services/vision/#detections) or [classifier](/dev/reference/apis/services/vision/#classifications), enable your machines to identify and classify objects in images with the deployed models' predictions.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.

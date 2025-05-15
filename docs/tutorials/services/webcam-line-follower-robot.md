@@ -72,26 +72,26 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 
 1. **Add the board.**
 
-   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
    Select the type `board`, and select the `pi` model.
    Enter `local` as the name of your [board component](/operate/reference/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
-   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
    Select the type `motor`, and select the `gpio` model.
    Enter `leftm` as the name of your [motor component](/operate/reference/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
    Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
-   Click the **+** (Create) (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   Click the **+** (Create) (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
    Select the type `base`, and select the `wheeled` model.
    Enter `scuttlebase` as the name for your [base component](/operate/reference/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
-   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
    Select the type `camera`, and select the `webcam` model.
    Enter the name `my_camera`, then click create.
    Leave the **video_path** blank and the camera will use the default video path for your machine.
@@ -221,7 +221,7 @@ Next, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app]
 
 Next, add a vision service [detector](/dev/reference/apis/services/vision/#detections):
 
-Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Service**.
+Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
 Select type `vision` and model `color detector`.
 Enter `green_detector` for the name, then click **Create**.
 
@@ -236,7 +236,7 @@ We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrica
 If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/operate/reference/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
-Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
 Add a [transform camera](/operate/reference/components/camera/transform/) with type `camera` and model `transform`.
 Name it `transform_cam` and click **Create**.
 

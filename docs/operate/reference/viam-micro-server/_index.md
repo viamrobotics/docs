@@ -1,7 +1,7 @@
 ---
-title: "viam-micro-server"
+title: "The Micro-RDK and viam-micro-server"
 linkTitle: "viam-micro-server"
-weight: 90
+weight: 30
 type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
@@ -13,8 +13,14 @@ aliases:
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
-`viam-micro-server` is the lightweight version of [`viam-server`](/operate/reference/viam-server/) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
-`viam-micro-server` is built from the open-source [Micro-RDK](https://github.com/viamrobotics/micro-rdk/).
+[The Micro-RDK](https://github.com/viamrobotics/micro-rdk/) is the lightweight version of Viam's [Robot Development Kit (RDK)](https://github.com/viamrobotics/rdk/tree/main) designed for embedded systems (ESP32 microcontrollers) that do not have the resources to run the fully-featured [`viam-server`](/operate/reference/viam-server/).
+
+Microcontrollers do not have full operating systems like single-board computers and general-purpose computers.
+As a result, microcontrollers only run one program at a time.
+To change the logic that runs on a microcontroller, you must flash the microcontroller with new firmware.
+
+`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a [default set](/operate/get-started/setup-micro/#about-esp32-microcontroller-setup) of {{< glossary_tooltip term_id="module" text="modules" >}}, provided as a quick starting point.
+For most use cases, you will [build your own firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware) from the Micro-RDK instead of using `viam-micro-server`.
 
 ## Hardware requirements
 
@@ -39,10 +45,10 @@ aliases:
 
 ## Next steps
 
-To use `viam-micro-server`, follow the installation guide.
-If you want to access camera functionality, extend the functionality of `viam-micro-server`, or customize it see the development setup guide.
+To use the Micro-RDK with existing modules, follow the ESP32 setup guide.
+To create your own modules, follow the Modules for ESP32 guide.
 
 {{< cards >}}
-{{% card link="/operate/get-started/setup/" %}}
+{{% card link="/operate/get-started/setup-micro/" %}}
 {{% card link="/operate/get-started/other-hardware/micro-module/" %}}
 {{< /cards >}}

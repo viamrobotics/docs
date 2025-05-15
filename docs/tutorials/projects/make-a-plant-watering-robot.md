@@ -12,7 +12,7 @@ viamresources: ["board", "motor", "sensor", "module"]
 platformarea: ["core"]
 level: "Intermediate"
 date: "2023-03-29"
-# updated: "2024-04-19"
+# updated: "2025-05-15"
 cost: 150
 no_list: true
 # SMES: Olivia Miller, Sierra Guequierre
@@ -185,7 +185,7 @@ First, add your machine as a [board component](/operate/reference/components/boa
 {{< tabs name="Configure a Raspberry Pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` model (e.g. `viam:raspberry-pi:pi4` for Raspberry Pi 4).
 Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
@@ -230,7 +230,7 @@ You can add a module from the Viam Registry directly from your robot’s **CONFI
 To add the mcp300x-adc-sensor module to your robot, follow these steps:
 
 1. Go to your machine's **CONFIGURE** tab.
-   Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Search for `mcp300x` and select `sensor / mcp300x`.
    Click **Add module**.
 1. Give your module a name of your choice. We used the name `sensor`.

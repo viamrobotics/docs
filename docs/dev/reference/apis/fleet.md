@@ -1,6 +1,6 @@
 ---
-title: "Manage Your Fleet with Viam's Fleet Management API"
-linkTitle: "Fleet Management"
+title: "Manage your fleet with Viam's fleet management API"
+linkTitle: "Fleet management"
 weight: 20
 type: "docs"
 description: "Use the fleet management API with Viam's client SDKs to manage your machine fleet with code."

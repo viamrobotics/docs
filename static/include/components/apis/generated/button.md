@@ -1,6 +1,7 @@
 ### Push
 
 Push the button.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -68,10 +69,38 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
-For built-in models, model-specific commands are covered with each model's documentation.
-If you are implementing your own button and add features that have no built-in API method, you can access them with `DoCommand`.
+Most models do not implement `DoCommand`.
+Any available model-specific commands should be covered in the model's documentation.
+If you are implementing your own button and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_button = Button.from_robot(robot=machine, name="my_button")
+command = {"cmd": "test", "data1": 500}
+result = await my_button.do_command(command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/button/client/index.html#viam.components.button.client.ButtonClient.do_command).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -110,10 +139,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: 'myCommand',
-  args: { key: 'value' },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#docommand).
@@ -126,6 +158,26 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Safely shut down the resource and prevent further use.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_button = Button.from_robot(robot=machine, name="my_button")
+await my_button.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/button/client/index.html#viam.components.button.client.ButtonClient.close).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**

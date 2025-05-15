@@ -33,7 +33,7 @@ You have three options for moving a mobile robot [base](/operate/reference/compo
 First, connect the base's motors to your machine.
 
 Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Search for and select a model that supports your motor.
 
 Complete the motor configuration and use the **TEST** panel in the configuration card to test that the motor is working.

@@ -213,7 +213,7 @@ Use the parts dropdown menu to navigate to the `planning` sub-part.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 
 Select type `arm`, and model `viam:ufactory:xArm6`.
 Name it `myArm` and click **Create**.
@@ -817,7 +817,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your machine's location secret and host address by navigating to the **Code sample** tab in the [Viam app](https://app.viam.com).
+1. Determine your machine's location secret and host address by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com).
    Use the host address of your main machine part, as it will reference all parts of your machine.
 
    {{% snippet "show-secret.md" %}}

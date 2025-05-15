@@ -136,7 +136,7 @@ Go to the [Viam app](https://app.viam.com/) and navigate to your new machine's *
 {{% tab name="Config Builder" %}}
 
 Add a [_board component_](/operate/reference/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
-To create the new component, click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Component**.
+To create the new component, click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Component or service**.
 Select the `board` type, then select the `viam:raspberry-pi:rpi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
 If you are using a Raspberry Pi 5, use the `pi5` model.
 Enter a name or use the suggested name for your board and click **Create**.
@@ -225,7 +225,7 @@ Select **Python** or **Golang** and follow the instructions to connect to your m
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 
 On your local computer, create a file called <file>blink.py</file> or <file>blink.go</file>.
-Paste the sample code from the **Code sample** tab of the Viam app into the file in your code editor, and save the file.
+Paste the sample code from the **CONNECT** tab of the Viam app into the file in your code editor, and save the file.
 
 You can now run the code.
 Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live.

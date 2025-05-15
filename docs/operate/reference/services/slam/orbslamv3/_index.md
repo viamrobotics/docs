@@ -72,7 +72,7 @@ Now, add the `orbslamv3` service:
 Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **CONFIGURE** tab on your machine's page, and click the **+** button.
 
-Add a **Service** with type `slam`, model `orbslamv3`, and a name of your choice.
+Click **Component or service** and add a service with type `slam`, model `orbslamv3`, and a name of your choice.
 
 ![adding orbslam3 slam service](/services/slam/add-orbslam-service-ui.png)
 
@@ -181,7 +181,7 @@ If this directory structure is not present at runtime, the SLAM service creates 
 Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **CONFIGURE** tab on your machine's page, and click the **+** button.
 
-Add a **Service** with type `slam`, model `orbslamv3`, and a name of your choice:
+Click **Component or service** and add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
 ![adding orbslam3 slam service](/services/slam/add-orbslam-service-ui.png)
 

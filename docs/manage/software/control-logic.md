@@ -21,7 +21,7 @@ These are the same modules that provide functionality like drivers and integrati
 
 The following steps show you how to create modules with control logic and how to deploy them to individual machines using `viam-server`.
 
-For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/get-started/other-hardware/micro-module/#over-the-air-updates) instead.
+For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/get-started/setup-micro/#configure-over-the-air-updates) instead.
 
 ## Prerequisites
 
@@ -117,7 +117,7 @@ class ControlLogic(Generic, EasyResource):
 
         except Exception as err:
             LOGGER.error(err)
-        await asyncio.sleep(1)
+        await asyncio.sleep(10)
 
     def __del__(self):
         self.stop()
@@ -133,11 +133,11 @@ class ControlLogic(Generic, EasyResource):
         **kwargs
     ) -> Mapping[str, ValueTypes]:
         result = {key: False for key in command.keys()}
-        for name, _args in command.items():
-            if name == "start":
+        for name, args in command.items():
+            if name == "action" and args == "start":
                 self.start()
                 result[name] = True
-            if name == "stop":
+            if name == "action" and args == "stop":
                 self.stop()
                 result[name] = True
         return result
@@ -168,7 +168,7 @@ If you are not using GitHub or cloud build, see [Upload your module](/operate/ge
 1. In the [Viam app](https://app.viam.com), navigate to the machine you want to deploy your control logic to.
 1. Go to the **CONFIGURE** tab.
 1. Click the **+** button.
-1. Click **Component** and select your control logic component.
+1. Click **Component or service** and select your control logic component.
 1. Click **Add module**.
 1. Add a **Name** and click **Create**.
 1. If you added configuration attributes, configure your control logic component.
@@ -184,10 +184,10 @@ For example, in Python, you can start and stop your control logic with the follo
 
 ```python
 # Start your control logic
-await control_logic.do_command({"start": ""})
+await control_logic.do_command({"action": "start"})
 
 # Stop your control logic
-await control_logic.do_command({"stop": ""})
+await control_logic.do_command({"action": "stop"})
 ```
 
 ## Start and stop your control logic with the Viam app
@@ -200,7 +200,7 @@ You can start and stop your control logic from your machine's **CONTROL** tab in
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "start": ""
+     "action": "start"
    }
    ```
 
@@ -208,7 +208,7 @@ You can start and stop your control logic from your machine's **CONTROL** tab in
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "stop": ""
+     "action": "stop"
    }
    ```
 

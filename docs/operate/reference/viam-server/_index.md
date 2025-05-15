@@ -1,7 +1,7 @@
 ---
 title: "viam-server"
 linkTitle: "viam-server"
-weight: 80
+weight: 20
 type: "docs"
 description: "viam-server is the open-source, on-machine portion of the Viam platform."
 tags: ["server", "rdk"]
@@ -27,32 +27,30 @@ To use Viam with a machine, you create a configuration specifying which hardware
 Overall, `viam-server` manages:
 
 - [Communication](#communication)
-- [Dependency management](#dependency-management)
 - [Start-up](#start-up)
 - [Reconfiguration](#reconfiguration)
-- [Logging](#logging)
+- [Maintenance windows](#maintenance-window)
 - [Shutdown](#shutdown)
+- [Logging](#logging)
 
 ## Communication
 
 `viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting machines to the cloud or for connecting to other parts of your machine.
 
-## Dependency management
+## Lifecycle
 
+### Start-up
+
+`viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} are loaded on startup.
 `viam-server` handles [dependency](/operate/get-started/other-hardware/dependencies/) management between resources.
-
-## Start-up
-
-`viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and processes are loaded on startup.
 
 After start-up, `viam-server` manages:
 
-- the configured processes,
 - the connections to hardware,
 - the running services, and
 - the {{< glossary_tooltip term_id="module" text="modules" >}} that provide the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 
-## Reconfiguration
+### Reconfiguration
 
 When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running machine.
@@ -69,10 +67,11 @@ If you want to force a reconfiguration of a resource, you can click the **Disabl
 Alternatively, if you are having issues with a module, try the **Restart module** button in the module menu.
 {{% /hiddencontent %}}
 
-## Maintenance window
+### Maintenance window
 
 There are a few updates that may make your machine temporarily unavailable:
 
+- [`viam-agent` updating itself](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server)
 - [`viam-agent` updating `viam-server`](/manage/reference/viam-agent/#update-or-downgrade-viam-server-with-viam-agent)
 - configuration updates
 
@@ -109,6 +108,10 @@ maintenance : {
 | --------- | ---- | --------- | ----------- |
 | `sensor_name` | string | **Required** | The full name of the sensor that provides the information if it is safe to update a machine's configuration. For example `rdk:component:sensor/sensor1`. |
 | `maintenance_allowed_key` | string | **Required** | The key of the key value pair for the reading returned by the sensor. |
+
+### Shutdown
+
+During machine shutdown, `viam-server` handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
 ## Logging
 
@@ -248,9 +251,28 @@ You can enable debug level logs in two ways:
 
 Enabling debug level logs will take precedence over all logging configuration set using the `log` field on a machine or the `log_configuration` field on a resource.
 
-## Shutdown
+## Core options
 
-During machine shutdown, `viam-server` handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
+<!-- prettier-ignore -->
+| Option | Description |
+| ------ | ----------- |
+| `-allow-insecure-creds` | Allow connections to send credentials over plaintext. |
+| `-config <filename>` | The machine configuration file containing machine cloud credentials or a full configuration. |
+| `-cpuprofile string` | Write CPU profile to file. |
+| `-debug` | Enable debug level logs. |
+| `-disable-mdns` | Disable server discovery through multicast DNS. |
+| `-dump-resources <filepath>` | Dump all resource registrations as JSON to the provided file path. |
+| `-ftdc` | Enable fulltime data capture for diagnostics. Default: `true`. |
+| `-log-file <filename>` | Write logs to a file with log rotation. |
+| `-network-check` | Only runs normal network checks. |
+| `-no-tls` | Starts an insecure HTTP server without TLS certificates even if one exists. |
+| `-output-telemetry` | Print out telemetry data (metrics and spans). |
+| `-reveal-sensitive-config-diffs` | Show config diffs. |
+| `-shareddir <directory-name>` | The location of the static web assets. |
+| `-untrusted-env` | Disable processes and shell from running in an untrusted environment. |
+| `-version` | Print version. |
+| `-webprofile` | Include profiler in HTTP server. |
+| `-webrtc` | Force WebRTC connections instead of direct connections. Default: `true`. |
 
 ## Next steps
 

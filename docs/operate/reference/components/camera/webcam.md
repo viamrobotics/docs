@@ -24,7 +24,7 @@ Then, configure your camera:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `camera` type, then select the `webcam` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
@@ -258,14 +258,14 @@ sudo reboot
 {{% /expand%}}
 
 {{% expand "Images are dim on start up" %}}
-If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
+If you are capturing camera data, it can happen that the camera captures and syncs discolored or dark images upon start up.
 {{% /expand%}}
 
 {{% expand "CSI Camera not working on a Raspberry Pi" %}}
 
 If you are using a CSI camera v1.3 or v2.0, or v3.0, use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
 
-For Raspberry Pi AI cameras like the IMX500 AI camera, you can use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
+For Raspberry Pi AI cameras like the IMX500 AI camera, use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
 For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/ai/run-inference/).
 {{% /expand%}}
 

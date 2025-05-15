@@ -175,7 +175,7 @@ Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIGURE** ta
 Create a [board component](/operate/reference/components/board/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `board` type, then select the `viam:raspberry-pi:rpi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
    If you are using a Raspberry Pi 5, use the `pi5` model instead.
 

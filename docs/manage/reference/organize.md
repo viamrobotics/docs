@@ -99,3 +99,17 @@ No, it is not possible to move a location to a different organization.
 You can share a location with another organization.
 However, machines will continue to use the primary organization as a reference point.
 This means any captured data is associated with the primary organization and the machines are only able to use private ML models and registry items from the primary owner.
+
+### Can I rename my organization after its creation?
+
+Yes, you can rename your organization.
+
+1. Click the organization name in the upper-right corner of the **FLEET** page and click on **Settings and invites**.
+1. Find the **Details** section of the page.
+1. Change the organization name and click on the **Rename** button.
+
+### How do I delete an organization?
+
+1. Delete all the locations in your organization.
+1. Click the organization name in the upper-right corner of the **FLEET** page and click on **Settings and invites**.
+1. At the bottom of the page click **Delete organization**.

@@ -1,6 +1,6 @@
 ---
-title: "Manage Your Fleet with Viam's Fleet Management API"
-linkTitle: "Fleet Management API"
+title: "Manage your fleet with Viam's fleet management API"
+linkTitle: "Fleet management API"
 weight: 750
 type: "docs"
 layout: "empty"
