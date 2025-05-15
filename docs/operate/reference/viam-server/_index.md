@@ -274,6 +274,59 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-webprofile` | Include profiler in HTTP server. |
 | `-webrtc` | Force WebRTC connections instead of direct connections. Default: `true`. |
 
+## Install `viam-server` without the Viam app
+
+{{% alert title="Tip" color="tip" %}}
+The recommended way to install `viam-server` and connect your machine to the Viam app is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
+{{% /alert %}}
+
+If you need to install `viam-server` without using the Viam app, you can run the following commands:
+
+{{< tabs >}}
+{{% tab name="Linux (Aarch64)" %}}
+
+```bash {class="line-numbers linkable-line-numbers"}
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server
+```
+
+Next, to make the `viam-server` executable and install as a system service, run the following command:
+
+```bash {class="line-numbers linkable-line-numbers"}
+chmod 755 viam-server && sudo ./viam-server --aix-install
+```
+
+{{% /tab %}}
+{{% tab name="Linux (x86_64)" %}}
+
+```bash {class="line-numbers linkable-line-numbers"}
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server
+```
+
+Next, to make the `viam-server` executable and install as a system service, run the following command:
+
+```bash {class="line-numbers linkable-line-numbers"}
+chmod 755 viam-server && sudo ./viam-server --aix-install
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```bash {class="line-numbers linkable-line-numbers"}
+brew tap viamrobotics/brews && brew install viam-server
+```
+
+{{% /tab %}}
+{{% tab name="Windows Subsystem for Linux (WSL)" %}}
+
+```bash {class="line-numbers linkable-line-numbers"}
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64 -o viam-server && chmod 755 viam-server
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Manual installation is not available for native Windows; you must download the Viam Agent installer.
+
 ## Next steps
 
 {{< cards >}}
