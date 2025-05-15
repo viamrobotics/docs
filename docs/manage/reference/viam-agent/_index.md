@@ -304,3 +304,16 @@ sudo journalctl --unit=viam-agent
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Core options
+
+<!-- prettier-ignore -->
+| Option | Description |
+| ------ | ----------- |
+| `-c`, `--config` | Path to machine credentials file. Default: `/etc/viam.json`. |
+| `--defaults` | Path to manufacturer defaults file. Default: `/etc/viam-defaults.json` |
+| `-d`, `--debug` | Enable debug logging (on agent only). Can also be set with environment variable `VIAM_AGENT_DEBUG`. |
+| `-w`, `--wait` | Update versions before starting. Can also be set with environment variable `VIAM_AGENT_WAIT_FOR_UPDATE`. |
+| `-h`, `--help` | Show help message. |
+| `--install` | Install systemd service. |
+| `--dev-mode` | Allow running as non-root and non-service. Can also be set with environment variable `VIAM_AGENT_DEVMODE`. |
