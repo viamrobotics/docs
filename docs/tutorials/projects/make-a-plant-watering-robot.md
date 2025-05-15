@@ -339,7 +339,7 @@ Then, add a control loop that runs continuously, similar to the following exampl
 
 ```python
 while True:
-    # this level depends on your specific setup, replace after testing your dry setup
+    # this level depends on your specific setup, replace after testing
     is_not_moist = 600
 
     # Get the moisture sensor's readings
