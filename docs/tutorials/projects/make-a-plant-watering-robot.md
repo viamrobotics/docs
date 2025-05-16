@@ -88,7 +88,7 @@ Use this to orient the ADC to determine the location to insert your wires.
 {{% /alert %}}
 
 Insert the MCP3008 into your breadboard so that it bridges both sides of the divide.
-Now you can use the breadboard points adjacent to the MCP3008 to connect pins on the MCP3008 to your Raspberry Pi and other peripherals using jumper wires.
+Now you can use the breadboard points next to the MCP3008 to connect pins on the MCP3008 to your Raspberry Pi and other peripherals using jumper wires.
 Begin by connecting MCP3008 pins to your Raspberry Pi:
 
 <!-- prettier-ignore -->
@@ -104,18 +104,18 @@ Next, connect MCP3008 pins to the ground and power rails on the breadboard:
 <!-- prettier-ignore -->
 | MCP3008 ADC Pin | Breadboard |
 | ----------- | ---------------- |
-| VDD | any point on 5V power rail (red +) |
-| VREF | any point on 5V power rail (red +) |
-| AGND | any point on GND rail (blue -) |
-| DGND | any point on GND rail (blue -) |
+| VDD | Any point on 5V power rail (red +) |
+| VREF | Any point on 5V power rail (red +) |
+| AGND | Any point on GND rail (blue -) |
+| DGND | Any point on GND rail (blue -) |
 
 Finally, connect your breadboard rails to 5V power and ground on the Raspberry Pi:
 
 <!-- prettier-ignore -->
-| Breadboard rail | Raspberry Pi Pin |
+| Breadboard rail | Raspberry Pi pin |
 | ----------- | ---------------- |
-| any point on 5V power rail (red +) | [pin 4 (a 5 volt power pin)](https://pinout.xyz/pinout/5v_power) |
-| any point on GND rail (blue -) | [pin 34 (a ground pin)](https://pinout.xyz/pinout/ground) |
+| Any point on 5V power rail (red +) | [Pin 4 (a 5 volt power pin)](https://pinout.xyz/pinout/5v_power) |
+| Any point on GND rail (blue -) | [pin 34 (a ground pin)](https://pinout.xyz/pinout/ground) |
 
 ### Wire your resistive soil moisture sensor
 
@@ -134,8 +134,8 @@ Then, wire the rest of the pins on the module to the breadboard as follows:
 | Moisture Sensor Pin | Breadboard |
 | ----------- | ---------------- |
 | A0 (Analog Signal Output) | CH0 |
-| VCC | any point on 5V power rail (red +) |
-| GND | any point on GND rail (blue -) |
+| VCC | Any point on 5V power rail (red +) |
+| GND | Any point on GND rail (blue -) |
 
 Put the soil moisture sensor inside of the container holding your plant.
 
