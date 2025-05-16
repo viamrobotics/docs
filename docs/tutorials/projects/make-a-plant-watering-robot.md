@@ -133,9 +133,9 @@ Then, wire the rest of the pins on the module to the breadboard as follows:
 <!-- prettier-ignore -->
 | Moisture Sensor Pin | Breadboard |
 | ----------- | ---------------- |
-| A0 (Analog Signal Output) |	CH0 |
-| VCC	| any point on 5V power rail (red +) |
-| GND	| any point on GND rail (blue -) |
+| A0 (Analog Signal Output) | CH0 |
+| VCC | any point on 5V power rail (red +) |
+| GND | any point on GND rail (blue -) |
 
 Put the soil moisture sensor inside of the container holding your plant.
 
