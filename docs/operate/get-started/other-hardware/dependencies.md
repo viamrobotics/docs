@@ -50,7 +50,7 @@ Use required dependencies when your module should fail to build or reconfigure i
 
    ```python {class="line-numbers linkable-line-numbers"}
     @classmethod
-    def validate_config(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
+    def validate_config(cls, config: ComponentConfig) -> tuple[Sequence[str], Sequence[str]]:
         req_deps = []
         opt_deps = []
         fields = config.attributes.fields
@@ -188,7 +188,7 @@ If your module has optional dependencies, the steps are the same as for required
 
 ```python {class="line-numbers linkable-line-numbers"}
 @classmethod
-def validate_config(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
+def validate_config(cls, config: ComponentConfig) -> tuple[Sequence[str], Sequence[str]]:
     req_deps = []
     opt_deps = []
     fields = config.attributes.fields
@@ -207,22 +207,31 @@ Be sure to handle the case where the dependency is not configured in your API im
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If your module has optional dependencies, the steps are the same as for required dependencies, except that your `Validate` method can treat the dependency as optional by returning an empty list if the dependency is not configured, and the optional dependency list is the second returned element:
+If your module has optional dependencies, the steps are the same as for required dependencies, with two differences:
+
+- Your `Validate` method can treat the dependency as optional by returning an empty list if the dependency is not configured.
+- The optional dependency list is the second returned element:
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []string, err error) {
-  var reqDeps []string
   var optDeps []string
   if cfg.CameraName == "" {
-    logger.Info("camera_name not configured, using no camera")
     return nil, nil, nil
   }
   optDeps = append(optDeps, cfg.CameraName)
-  return reqDeps, optDeps, nil
+  return nil, optDeps, nil
 }
 ```
 
 Be sure to handle the case where the dependency is not configured in your API implementation as well.
+
+You may want to log a message when the dependency is not configured, which you can do in your constructor:
+
+```go {class="line-numbers linkable-line-numbers"}
+if cfg.CameraName == "" {
+  logger.Info("camera_name not configured, using no camera")
+}
+```
 
 {{% /tab %}}
 {{< /tabs >}}
