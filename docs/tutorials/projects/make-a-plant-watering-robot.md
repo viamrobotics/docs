@@ -339,7 +339,8 @@ Then, add a control loop that runs continuously, similar to the following exampl
 
 ```python
 while True:
-    # this level depends on your specific setup, replace after testing your dry setup
+    # this level depends on your specific setup, replace after testing
+
     is_not_moist = 600
 
     # Get the moisture sensor's readings
@@ -393,6 +394,8 @@ Enter `8` as a GPIO number. Set a decimal value between 0 and 1, (for example 0.
 On your machine's **CONTROL** page in the Viam app, expand the **TEST** card for your sensor to see a live observed value from your moisture sensor.
 Test your sensor by putting it in air, water, and soils containing different amounts of moisture.
 Use these observed values to determine an appropriate `is_not_moist` value for your setup.
+
+### Save control code
 
 Save <file>plant-watering-robot.py</file> with this logic added in, and then run it on your machine with the following command:
 
