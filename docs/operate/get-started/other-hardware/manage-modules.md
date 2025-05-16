@@ -328,9 +328,11 @@ Other registry items such as training scripts and ML models can be deleted in th
 Deleting a version of a module requires the same org owner permissions as deleting the entire module, and similarly, you cannot delete a version if any machines are using it.
 To delete just one version of a module:
 
-1. Navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry)
-2. Click **Show previous versions** under the **Latest version** heading.
-3. Hover on the architecture pill next to the version you'd like to delete and click the trash icon.
+1. Navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry).
+
+1. Click **Show previous versions** under the **Latest version** heading.
+
+1. Hover on the architecture pill next to the version you'd like to delete and click the trash icon.
 
 You cannot upload a new file with the same version number as the deleted one.
 To upload another version, you must increment the version number to a later version number.
@@ -368,8 +370,26 @@ To transfer ownership of a module from one organization to another:
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
    This ensures that the model names in the module code match the registered model names in the registry.
 
-1. Update the `model` field in the configuration of any machines that use the module to point to the new organization's namespace.
+1. Update the `model` field in the configuration of any machines that use the module to use the new organization's namespace.
 
 ## Rename a module
 
 If you need to change the name of a module, please reach out to the Viam team at [support@viam.com](mailto:support@viam.com).
+
+{{% hiddencontent %}}
+
+## Rename a model
+
+If you need to change the name of a model that a module implements, do the following:
+
+1. Update the `model` field in the `meta.json` file to the new model name.
+
+1. Update the model name in the module code to match the new model name.
+
+1. Run `viam module update` to push the changes to the registry.
+
+1. Publish a new version of the module to the registry by following either set of update steps on this page.
+
+1. Update the configuration of any machines that use the module to use the new model name.
+
+{{% /hiddencontent %}}
