@@ -393,8 +393,10 @@ rm -r ~/.viam/
 To remove the machine cloud credentials file, run:
 
 ```sh {class="command-line" data-prompt="$"}
-sudo rm /etc/viam.json
+rm ~/Downloads/viam-<your-part-name>.json
 ```
+
+For example, `rm ~/Downloads/viam-mymachine1-main.json`.
 
 {{% /tab %}}
 {{< /tabs >}}
