@@ -13,7 +13,7 @@ description: "Configure module versions and module environment variables."
 This page contains reference material.
 For quick instructions on configuring a module on your machine, see [Configure hardware on your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 
-### Modular resource configuration details
+## Modular resource configuration details
 
 The modular resource card allows you to configure attributes for the resource.
 
@@ -79,7 +79,7 @@ The following properties are available for modular resources:
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/operate/reference/components/board/). Unnecessary if you coded [implicit dependencies](/operate/get-started/other-hardware/dependencies/). |
 
-### Module configuration details
+## Module configuration details
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -195,7 +195,7 @@ The following properties are configurable for each module:
 | `name` | string | **Required** | A name for this instance of the module. |
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
 
-#### Module versioning
+### Module versioning
 
 You can configure how each module on your machine updates itself when a newer version becomes available from the Viam Registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will _never automatically update itself_.
@@ -226,7 +226,7 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
-#### Environment variables
+### Environment variables
 
 Each module has access to the following default environment variables.
 Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/#test-your-module-locally); you can manually set variables your module requires if necessary.
@@ -290,3 +290,65 @@ To set the path to a program or library on a machine, you can set a system varia
 ```
 
 {{% /expand%}}
+
+## Configure an unlisted module
+
+To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/get-started/other-hardware/manage-modules/#change-module-visibility) set to **Unlisted**, you will need to manually add the module to your configuration:
+
+1. In the Viam app, navigate to the **CONFIGURE** tab of the machine you want to configure.
+
+1. Switch to **JSON** mode.
+
+1. Add the following template to your configuration.
+   If you already have a `components` array and a `modules` array, add contents to them instead of duplicating them.
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "<components|services>": [
+     {
+       "name": "<resource-name>",
+       "api": "<model-API-namespace>:<component|service>:<model-name>",
+       "model": "<module-namespace>:<module-name>:<model-name>",
+       "attributes": {}
+     }
+   ],
+   "modules": [
+     {
+       "type": "registry",
+       "name": "<module-namespace><module-name>",
+       "module_id": "<module-namespace>:<module-name>",
+       "version": "latest"
+     }
+   ]
+   ```
+
+1. Navigate to the module's page in the Viam Registry, using the link to the module.
+
+1. Look at the list of **Components and services** supported by the module and find the model you want to use.
+   Copy the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, for example `jessamy:hello-world:hello-camera`, and paste it into the `model` field of the component or service template.
+
+1. Copy the API namespace triplet, for example `rdk:component:sensor`, and paste it into the `api` field of the component or service template.
+
+1. For the `module_id` field, use just the first two parts of the model triplet, for example `jessamy:hello-world`.
+
+1. For the `name` field, use the `module_id` value but remove the colon, for example `jessamyhello-world`.
+
+   For example:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "components": [
+     {
+       "name": "sensor-1",
+       "api": "rdk:component:sensor",
+       "model": "jessamy:hello-world:hello-camera",
+       "attributes": {}
+     }
+   ],
+   "modules": [
+     {
+       "type": "registry",
+       "name": "jessamyhello-world",
+       "module_id": "jessamy:hello-world",
+       "version": "latest"
+     }
+   ]
+   ```
