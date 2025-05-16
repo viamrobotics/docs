@@ -88,22 +88,34 @@ Use this to orient the ADC to determine the location to insert your wires.
 {{% /alert %}}
 
 Insert the MCP3008 into your breadboard so that it bridges both sides of the divide.
-Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your machine to connect the pins with wires as follows:
+Now you can use the breadboard points adjacent to the MCP3008 to connect pins on the MCP3008 to your Raspberry Pi and other peripherals using jumper wires.
+Begin by connecting MCP3008 pins to your Raspberry Pi:
 
 <!-- prettier-ignore -->
 | MCP3008 ADC Pin | Raspberry Pi Pin |
 | ----------- | ---------------- |
-| VDD | 5V |
-| VREF | 5V |
-| AGND | GND |
-| DGND | GND |
 | CLK | SCLK |
 | DOUT | MISO |
 | DIN | MOSI |
 | CS/SHDN | 24GPIO8 |
 
-Use an additional wire to wire Raspberry Pi [pin 4 (a 5 volt power pin)](https://pinout.xyz/pinout/5v_power) to the power rail of the breadboard (the red plus sign column).
-This brings the 5V power output from the Raspberry Pi to the ADC and the sensor.
+Next, connect MCP3008 pins to the ground and power rails on the breadboard:
+
+<!-- prettier-ignore -->
+| MCP3008 ADC Pin | Breadboard |
+| ----------- | ---------------- |
+| VDD | any point on 5V power rail (red +) |
+| VREF | any point on 5V power rail (red +) |
+| AGND | any point on GND rail (blue -) |
+| DGND | any point on GND rail (blue -) |
+
+Finally, connect your breadboard rails to 5V power and ground on the Raspberry Pi:
+
+<!-- prettier-ignore -->
+| Breadboard rail | Raspberry Pi Pin |
+| ----------- | ---------------- |
+| any point on 5V power rail (red +) | [pin 4 (a 5 volt power pin)](https://pinout.xyz/pinout/5v_power) |
+| any point on GND rail (blue -) | [pin 34 (a ground pin)](https://pinout.xyz/pinout/ground) |
 
 ### Wire your resistive soil moisture sensor
 
@@ -116,12 +128,14 @@ Reference this diagram of the blue module part of the sensor:
 Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram shown above is labeled "Connect with Probe."
 Be careful of the positive and negative sides, and make sure to match them correctly.
 
-Then, wire the rest of the pins on the module to the Pi and ADC as follows:
+Then, wire the rest of the pins on the module to the breadboard as follows:
 
 <!-- prettier-ignore -->
-| Pi | ADC |
-|--|--|
-|<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>5V on the power rail</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|
+| Moisture Sensor Pin | Breadboard |
+| ----------- | ---------------- |
+| A0 (Analog Signal Output) |	CH0 |
+| VCC	| any point on 5V power rail (red +) |
+| GND	| any point on GND rail (blue -) |
 
 Put the soil moisture sensor inside of the container holding your plant.
 
@@ -129,12 +143,12 @@ Put the soil moisture sensor inside of the container holding your plant.
 
 Now, wire and power your pump and relay module to complete your hardware setup:
 
-1. Use a [splicing connector](https://www.amazon.com/Splicing-Connector-Lever-Nut-Assortment-Pocket/dp/B07NKSHVF6) to connect your 5V pump motor's positive wire to a jumper wire, and connect it to the NO pin on relay module.
+1. Use a [splicing connector](https://www.amazon.com/Splicing-Connector-Lever-Nut-Assortment-Pocket/dp/B07NKSHVF6) to connect your 5V pump motor's positive wire to a jumper wire, and connect it to the NO pin on the relay module.
    NO stands for normally open, which will keep the circuit open unless the pin is triggered.
 2. Use a [splicing connector](https://www.amazon.com/Splicing-Connector-Lever-Nut-Assortment-Pocket/dp/B07NKSHVF6) to connect your 5V pump motor's negative wire to a jumper wire, and connect it to [pin 39 (ground)](https://pinout.xyz/pinout/ground) on the Raspberry Pi.
-3. Connect the COM (common) pin on the relay to [pin 1 (3.3V)](https://pinout.xyz/pinout/3v3_power) on the Pi.
-4. Connect the 5V pin on the relay to [pin 2 (5V)](https://pinout.xyz/pinout/5v_power) on the Pi.
-5. Connect the GND pin on the relay to [pin 14 (ground)](https://pinout.xyz/pinout/ground) on the Pi.
+3. Connect the COM (common) pin on the relay to [pin 2 (5V)](https://pinout.xyz/pinout/5v_power) on the Pi.
+4. Connect the DC+ pin on the relay to [pin 1 (3.3V)](https://pinout.xyz/pinout/3v3_power) on the Pi.
+5. Connect the DC- pin on the relay to [pin 14 (ground)](https://pinout.xyz/pinout/ground) on the Pi.
 6. Connect the IN pin on the relay to the [pin 8 (GPIO 14)](https://pinout.xyz/pinout/pin8_gpio14) on the Pi.
 
 {{% alert title="Tip" color="tip" %}}
