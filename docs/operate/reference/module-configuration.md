@@ -184,7 +184,8 @@ The model is configured as a component with the name `myRealsenseCamera1`.
 {{% /tab %}}
 {{< /tabs >}}
 
-The following properties are configurable for each module:
+The following properties are configurable for each module.
+You can add and edit `env` by switching from **Builder** to **JSON** mode in the **CONFIGURE** tab.
 
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
