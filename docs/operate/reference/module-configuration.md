@@ -200,7 +200,7 @@ The following properties are configurable for each module:
 You can configure how each module on your machine updates itself when a newer version becomes available from the Viam Registry.
 By default, a newly-added module is set to pin to the latest release (**Latest**) of the version you added.
 
-To allow automatic module updates when a new version of the module becomes available in the Viam Registry, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
+To change the update strategy for your module, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
 
 {{<imgproc src="registry/modular-resources/deployed-module-with-component.png" style="width: 400px" resize="500x" declaredimensions=true alt="The module card" class="shadow" >}}
 
