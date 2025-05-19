@@ -47,18 +47,15 @@ Vision services apply an ML model to a stream of images from a camera to generat
 
 {{% alert title="Tip" color="tip" %}}
 Some vision services include their own ML models, and thus do not require a deployed ML model.
-If your vision service does not include an ML model, you must [deploy an ML model to your machine](/data-ai/ai/deploy) to use that service.
+If your vision service does not include an ML model, you must [deploy an ML model to your machine](/data-ai/ai/deploy/) to use that service.
 {{% /alert %}}
 
 To use a vision service:
 
-1. Add the vision service to your machine:
-   1. Visit the **CONFIGURE** page of the Viam app.
-   1. Click the **+** icon next to your main machine part.
-   1. Select **Component or service**.
-   1. Type in the name of the service.
-   1. Select your chosen service.
-1. If your vision service does not include an ML model, [deploy an ML model to your machine](/data-ai/ai/deploy) to use that service.
+1. Visit the **CONFIGURE** page of the Viam app.
+1. Click the **+** icon next to your main machine part and select **Component or service**.
+1. Type in the name of the service and select a vision service.
+1. If your vision service does not include an ML model, [deploy an ML model to your machine](/data-ai/ai/deploy/) to use that service.
 1. Configure the service based on your use case.
 1. To view the deployed vision service, use the live detection feed in the Viam app.
    The feed shows an overlay of detected objects or classifications on top of a live camera feed.
