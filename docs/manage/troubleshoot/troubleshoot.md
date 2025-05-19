@@ -178,6 +178,11 @@ The process will dump a stack trace, visible in the `viam-server` logs, that sho
 - Where execution is blocked or deadlocked
 - Internal state information that might not appear in regular logs
 
+## Capture machine telemetry data
+
+Some issues are due to overall system health.
+To rule out machine health as the root cause of your issues, [add a machine telemetry sensor](/manage/troubleshoot/alert/#add-performance-sensor) and [capture machine telemetry data with the data management service](/manage/troubleshoot/alert/#configure-data-management).
+
 ## Remote shell on the machine
 
 To remotely access your machine from your terminal:
