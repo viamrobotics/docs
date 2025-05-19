@@ -293,7 +293,7 @@ To set the path to a program or library on a machine, you can set a system varia
 
 ## Configure an unlisted module
 
-To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/get-started/other-hardware/manage-modules/#change-module-visibility) set to **Unlisted**, you will need to manually add the module to your configuration:
+To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/get-started/other-hardware/manage-modules/#change-module-visibility) set to **Unlisted**, you need to manually add the module to your configuration:
 
 1. In the Viam app, navigate to the **CONFIGURE** tab of the machine you want to configure.
 
