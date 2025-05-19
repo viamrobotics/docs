@@ -962,7 +962,29 @@ def write_markdown(type, apis, methods):
                                     
                                     param_type = param_data.get("param_type")
 
-                                    output_file.write(f'- `{parameter}` ({param_type})')
+                                    param_description = ''
+                                    ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.{param_name}.md
+                                    param_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.' + parameter + '.md'
+
+                                    if args.overrides:
+                                        print(param_desc_override_file)
+
+                                    if os.path.exists(param_desc_override_file):
+                                        preserve_formatting = False
+                                        for line in open(param_desc_override_file, 'r', encoding='utf-8'):
+                                            if '<!-- preserve-formatting -->' in line:
+                                                preserve_formatting = True
+                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line
+                                            elif '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line.replace('\n', ' ')
+                                        param_description = param_description.rstrip()
+                                    else:
+                                        try:
+                                            param_description = param_data.get("param_description").strip()
+                                        except:
+                                            param_description = ''
+                                            print(f'DEBUG: No param description for {py_method_name}.{parameter}')
 
                                     optional = param_data.get("optional")
 

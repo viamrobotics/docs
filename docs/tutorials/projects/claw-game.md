@@ -213,7 +213,7 @@ Use the parts dropdown menu to navigate to the `planning` sub-part.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 
 Select type `arm`, and model `viam:ufactory:xArm6`.
 Name it `myArm` and click **Create**.

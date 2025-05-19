@@ -4,7 +4,6 @@ const INKEEP_INTEGRATION_ID = "cm3ogfzp4003f29brrf16r6gm";
 const INKEEP_ORGANIZATION_ID = "org_yjUXfeVC1tTVMIoY";
 
 // Get the button element
-const inkeepButtonTop = document.getElementById("chatButtonTop");
 const inkeepButtonBottom = document.getElementById("chatButton");
 
 // Create a new div element to hold the Inkeep modal and set its id and position
@@ -71,9 +70,6 @@ const config = {
 const inkeepWidgetAI = Inkeep.ModalChat(config);
 
 // Add event listener to open the Inkeep modal when the button is clicked
-inkeepButtonTop.addEventListener("click",  () => {
-  inkeepWidgetAI.update({ modalSettings: { isOpen: true } });
-});
 inkeepButtonBottom.addEventListener("click",  () => {
   inkeepWidgetAI.update({ modalSettings: { isOpen: true } });
 });
@@ -162,9 +158,40 @@ isShortcutKeyEnabled,
         return source;
       },
     },
-    canToggleView: false,
+    aiChatSettings: {
+      aiAssistantName: "Viam",
+      chatSubjectName: "Viam",
+      aiAssistantAvatar: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
+      userAvatarSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
+      introMessage: "Hi!\n\nI'm an AI assistant trained on documentation, help articles, and other content. \n\nHow can I help you today?\n\n_Please do not share sensitive information such as secrets or API keys with me._",
+      getHelpOptions: [
+        {
+          icon: { builtIn: "IoMail" },
+          name: "Email",
+          action: {
+            type: "open_link",
+            url: "mailto:support@viam.com",
+          },
+        },
+        {
+          icon: { builtIn: "FaDiscord" },
+          name: "Discord",
+          action: {
+            type: "open_link",
+            url: "https://discord.gg/viam",
+          },
+        },
+      ],
+      exampleQuestions: [
+          "How do I install Viam on a single-board computer?",
+          "How do I deploy a person detection model?",
+          "How to ingest data from machines",
+          "How can I query sensor data with third-party tools?",
+      ],
+    },
+    canToggleView: true,
     searchSettings: {
-      placeholder: "Search...",
+      placeholder: "Search or ask AI...",
       tabs: [
         "All",
         ["Docs", { isAlwaysVisible: true }],

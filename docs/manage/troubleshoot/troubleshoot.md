@@ -121,9 +121,10 @@ If your machine shows as online in the Viam app, go to the **LOGS** tab and chec
 {{<gif webm_src="/fleet/log-filtering.webm" mp4_src="/fleet/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
 You can filter your logs by keyword, log levels and time.
+You can use a regular expression as your keyword.
 
-The default log level for `viam-server` and any running resources is `"Info"`.
-If you are not seeing helpful logs, you can try changing the log level to `"Debug"`.
+The default log level for `viam-server` and any running resources is `Info`.
+If you are not seeing helpful logs, you can try changing the log level to `Debug`.
 
 You can enable debug logs for all resources on a machine by adding `"debug": true` to the machine's JSON configuration:
 
@@ -177,6 +178,11 @@ The process will dump a stack trace, visible in the `viam-server` logs, that sho
 - Where execution is blocked or deadlocked
 - Internal state information that might not appear in regular logs
 
+## Capture machine telemetry data
+
+Some issues are due to overall system health.
+To rule out machine health as the root cause of your issues, [add a machine telemetry sensor](/manage/troubleshoot/alert/#add-performance-sensor) and [capture machine telemetry data with the data management service](/manage/troubleshoot/alert/#configure-data-management).
+
 ## Remote shell on the machine
 
 To remotely access your machine from your terminal:
@@ -194,10 +200,14 @@ To remotely access your machine from your terminal:
 
 ## Restart your machine
 
-1. Navigate to the app's **CONFIGURE** tab in **Builder** mode.
-1. Click the **...** menu on the right side of the machine part's card, and select **Restart part**.
+1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Select the part status dropdown to the right of your machine's name on the top of the page.
+   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
+1. If you installed `viam-server` with `viam-agent` you will see a **Restart** button. Click it.
+   If you do not see the **Restart** button, click the **...** menu on the right side of the machine part's card, and select **Restart part**.
+   If restarting the machine part does not resolve the issue, ssh into the machine and [stop and restart viam-server manually](/operate/reference/viam-server/manage-viam-server/#run-viam-server).
 
-It takes a few minutes for the server to shut down and restart.
+It takes a few minutes for `viam-server` to shut down and restart.
 
 ## Revert to earlier configuration
 

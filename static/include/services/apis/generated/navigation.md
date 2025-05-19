@@ -136,11 +136,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `mode` ([navigationApi](https://ts.viam.dev/modules/navigationApi.html)) (required): The mode for the service to operate in.
-
-0: MODE_UNSPECIFIED
-1: MODE_MANUAL
-2: MODE_WAYPOINT
-3: MODE_EXPLORE.
+  
+  
+  * 0: MODE\_UNSPECIFIED
+  * 1: MODE\_MANUAL
+  * 2: MODE\_WAYPOINT
+  * 3: MODE\_EXPLORE.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -454,7 +455,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `id` (string) (required): The MongoDB ObjectID of the waypoint to remove from the
-service's data storage.
+  service's data storage.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

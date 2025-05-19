@@ -30,6 +30,9 @@ aliases:
   - "/components/sensor/bme280/"
   - "/components/sensor/ds18b20/"
   - "/components/sensor/sensirion-sht3xd/"
+  - /build/configure/processes/
+  - /configure/processes/
+  - /manage/reference/processes
   - /appendix/changelog/
 layout: "changelog"
 outputs:
@@ -40,6 +43,23 @@ date: "2024-09-18"
 ---
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
+
+{{% changelog color="added" title="System log forwarding" date="2025-05-14" %}}
+
+You can now configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
+
+To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object in your machine's `agent` configuration. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
+
+For more information, see [Configure operating system logging](/manage/fleet/system-settings/#forward-system-logs-to-the-cloud).
+
+{{% /changelog %}}
+
+{{% changelog color="removed" title="Processes" date="2025-05-06" %}}
+
+Processes were removed in `viam-server` v0.74.0.
+Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
+
+{{% /changelog %}}
 
 {{% changelog color="changed" title="Viam provisioning" date="2025-03-24" %}}
 
@@ -116,6 +136,10 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 
 You can store and retrieve arbitrary metadata about your organization, location, machine, and machine part with the [Fleet Management API](/dev/reference/apis/fleet/).
 
+{{% hiddencontent %}}
+It is not possible to store metadata associated with a Viam user.
+{{% /hiddencontent %}}
+
 {{% /changelog %}}
 
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
@@ -154,7 +178,7 @@ Backward compatibility is maintained for existing configurations.
 
 {{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
 
-[Managed Processes](/manage/reference/processes/) are now deprecated and will be removed in a future version of `viam-server`.
+Managed Processes are now deprecated and will be removed in a future version of `viam-server`.
 Instead [use modules for control logic](/manage/software/control-logic/#add-control-logic-to-your-module).
 
 {{% /changelog %}}

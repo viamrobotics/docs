@@ -100,8 +100,21 @@ You can share a location with another organization.
 However, machines will continue to use the primary organization as a reference point.
 This means any captured data is associated with the primary organization and the machines are only able to use private ML models and registry items from the primary owner.
 
+### Can I rename my organization after its creation?
+
+Yes, you can rename your organization if you are an organization owner.
+
+{{< alert title="Caution" color="caution" >}}
+If your organization owns modules or packages in the Viam Registry, the namespace for those modules and packages will be changed in the registry automatically.
+You will need to update any configurations that reference your modules using the old namespace.
+{{< /alert >}}
+
+1. Click the organization name in the upper-right corner of the **FLEET** page and click on **Settings and invites**.
+1. Find the **Details** section of the page.
+1. Change the organization name and click on the **Rename** button.
+
 ### How do I delete an organization?
 
 1. Delete all the locations in your organization.
-1. Click the dropdown in the upper-right corner of the **FLEET** page and click on **Settings and invites**.
+1. Click the organization name in the upper-right corner of the **FLEET** page and click on **Settings and invites**.
 1. At the bottom of the page click **Delete organization**.

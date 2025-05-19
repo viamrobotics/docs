@@ -40,9 +40,9 @@ However, if you already have a cache of data you'd like to use with Viam, you ca
 
 Add the [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
 
-On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 
-Select the `data management / RDK` service and click **Create**.
+Select the `data management` service and click **Create**.
 You can leave the default data sync interval of `0.1` minutes to sync every 6 seconds.
 
 {{< /expand >}}

@@ -53,7 +53,7 @@ You can use `viam-agent` either with an existing machine's part ID and API key, 
 
 The command will be of the following form:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output=""}
 sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
@@ -61,7 +61,7 @@ sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID
 
 As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the machine cloud credentials from the Viam app into <file>/etc/viam.json</file>.
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow">}}
 
 Then run the following command to install `viam-agent`:
 
@@ -108,6 +108,7 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "manufacturer": "viam",
       "model": "custom",
       "fragment_id": "",
+      "hotspot_interface": "wlan0",
       "hotspot_prefix": "viam-setup",
       "hotspot_password": "viamsetup",
       "disable_captive_portal_redirect": false,
@@ -144,7 +145,8 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
     "system_configuration": {
       "logging_journald_system_max_use_megabytes": 128,
       "logging_journald_runtime_max_use_megabytes": 96,
-      "os_auto_upgrade_type": "all"
+      "os_auto_upgrade_type": "all",
+      "forward_system_logs": "all,-gdm,-tailscaled"
     }
   }
 }
@@ -159,23 +161,17 @@ By default, when a new version of `viam-server` becomes available, it will autom
 When `viam-agent` next restarts, it installs and starts using the new version of `viam-server`.
 To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window). With a configured maintenance window, `viam-agent` will restart and upgrade `viam-server` only when maintenance is allowed and when `viam-server` is not currently processing config changes.
 
+{{< alert title="Tip: Check versions of viam-agent and viam-server" color="tip" >}}
+
+You can find the installed versions of viam-agent and viam-server on your machine's page in the [Viam app](https://app.viam.com). Click on the part status dropdown to the right of your machine's name on the top of the page.
+
+{{< /alert >}}
+
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
 | `agent` | string | **Required** | The version of Viam agent specified as either:<ul><li>a version number`"5.6.77"` or `"0.65.1-dev.7"` (indicating the seventh commit to "main" after the previous non-dev release, `0.65.0`)</li><li>a tag such as`"stable"` or `"dev"`.</li><li>a URL such as `"http://example.com/viam-agent-test-aarch64"`, `"file:///home/myuser/viam-agent-test-aarch64"`, or `"file:///C:/Users/viam/Downloads/viam-agent-v0.31.0-windows-x86_64.exe"`</li></ul> Viam agent is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Default: `"stable"`. |
 | `viam-server` | string | **Required** | The version of `viam-server` specified as `"5.6.77"`, `"stable"`, `"dev"` or by providing a URL such as `"http://example.com/viam-server-test-aarch64"`, `"file:///home/myuser/viam-server-test-aarch64"`, or `"file:///C:/Users/viam/Downloads/viam-server-v0.72.0-windows-x86_64.exe"`. `viam-server` is semantically versioned and is tested before release. When set to `"stable"`, `viam-server` will automatically upgrade when a new stable version is released. Default: `"stable"`. |
-
-{{< alert title="Important" color="note" >}}
-`viam-agent` does not update itself.
-You must [restart `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/) or reboot in order to use the new version.
-When you stop or restart `viam-agent`, the agent will stop or restart `viam-server` as well.
-
-When `viam-server` updates itself, you must restart `viam-server` in order to use the new version.
-You can restart `viam-server` from the machine's part status dropdown to the right of your machine’s name on its page in the Viam app.
-
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown" class="shadow">}}
-
-{{< /alert >}}
 
 For more information on managing `viam-agent` see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
@@ -231,7 +227,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
-| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
+| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
@@ -276,6 +272,7 @@ If the highest-priority network is not available (or, if `turn_on_hotspot_if_wif
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
+| `forward_system_logs` | string | Optional | Enable forwarding of system logs (journald) to the cloud. A comma-separated list of SYSLOG_IDENTIFIERs to include, optionally prefixed with "-" to exclude. "all" is a special keyword to log everything. Examples: `"kernel,tailscaled,NetworkManager"` or `"all,-gdm,-tailscaled"`. Default: `""` (disabled). |
 | `logging_journald_runtime_max_use_megabytes` | integer | Optional |Set the temporary space limit for logs. `-1` to disable. Default: `512` (512 MB). |
 | `logging_journald_system_max_use_megabytes` | integer | Optional | Sets the maximum disk space `journald` will use for persistent log storage. `-1` to disable. Default: `512` (512 MB). |
 | `os_auto_upgrade_type` | boolean | Optional | Manage OS package updates using Viam by setting this field. Installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with an automatically generated Origins-Pattern list that is generated based on that of `50unattended-upgrades`. Custom repos installed on the system at the time the setting is enabled will be included. Options: `"all"` (automatic upgrades are performed for all packages), `"security"` (automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)), `"disable"` (disable automatic upgrades), `""` (do not change system settings). Default: `""`. |
@@ -284,10 +281,41 @@ For more detailed instructions, see [Configure machine settings](https://docs.vi
 
 ## Agent logs
 
+These log messages include `viam-server` stops and starts, the status of `viam-agent`, and any errors or warnings encountered during operation.
+
+{{< tabs >}}
+{{% tab name="App UI" %}}
+
 `viam-agent` writes log messages to the [Viam app](https://app.viam.com/).
-You can find these messages on the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) of your machine's page.
 
 `viam-agent` only sends messages when your machine is online and connected to the internet.
 If your machine is offline, log messages are queued and are sent to the Viam app once your machine reconnects to the internet.
 
-These log messages include when `viam-server` is stopped and started, the status of `viam-agent`, and any errors or warnings encountered during operation.
+Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
+
+Select from the **Levels** dropdown menu to filter the logs by severity level:
+
+![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
+
+{{% /tab %}}
+{{% tab name="Command line on Linux" %}}
+
+```sh {class="command-line" data-prompt="$"}
+sudo journalctl --unit=viam-agent
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Core options
+
+<!-- prettier-ignore -->
+| Option | Description |
+| ------ | ----------- |
+| `-c`, `--config` | Path to machine credentials file. Default: `/etc/viam.json`. |
+| `--defaults` | Path to manufacturer defaults file. Default: `/etc/viam-defaults.json` |
+| `-d`, `--debug` | Enable debug logging (on agent only). Can also be set with environment variable `VIAM_AGENT_DEBUG`. |
+| `-w`, `--wait` | Update versions before starting. Can also be set with environment variable `VIAM_AGENT_WAIT_FOR_UPDATE`. |
+| `-h`, `--help` | Show help message. |
+| `--install` | Install systemd service. |
+| `--dev-mode` | Allow running as non-root and non-service. Can also be set with environment variable `VIAM_AGENT_DEVMODE`. |

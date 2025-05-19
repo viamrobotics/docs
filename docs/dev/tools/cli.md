@@ -874,7 +874,7 @@ viam module update --module=./meta.json
 # updating a module's metadata file based on models it provides
 viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
 
-# initiate a cloud build
+# initiate a cloud build for public GitHub repos
 viam module build start --version "0.1.2"
 
 # initiate a build locally without running a cloud build job
@@ -905,7 +905,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
-| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). Your repository must be public to use this command. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
@@ -1006,6 +1006,7 @@ See [Integrate other hardware](/operate/get-started/other-hardware/) and [Update
 You can use the `module build start` or `module build local` commands to build your custom module according to the build steps in your <file>meta.json</file> file:
 
 - Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
+  Your repository must be public to use the `build start` command.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
 To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) like the following:

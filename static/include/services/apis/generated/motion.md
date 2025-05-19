@@ -93,12 +93,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination to move to, which can a pose in the
-reference frame of any frame in the robot's frame system.
+  reference frame of any frame in the robot's frame system.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
-destination.
+  destination.
 - `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Avoid obstacles by specifying their geometries in the
-world state. Augment the frame system of the robot by specifying
-additional transforms to add to it for the duration of the Move.
+  world state. Augment the frame system of the robot by specifying
+  additional transforms to add to it for the duration of the Move.
 - `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Constrain the way the robot will move.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
@@ -271,12 +271,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Specify a destination to, which can be any Pose with
-respect to the SLAM map's origin.
+- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Specify a destination to, which can be any `Pose` with
+  respect to the SLAM map's origin.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Component on the robot to move to the specified
-destination.
-- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Name of the SLAM service from which the SLAM map
-is requested.
+  destination.
+- `slamServiceName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Name of the `SLAM` service from which the SLAM map
+  is requested.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Optional obstacles to be considered for motion planning.
 - `extra` (None) (optional)
@@ -471,13 +471,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination for the component to move to, represented
-as a GeoPoint.
+  as a `GeoPoint`.
 - `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the component to move.
-- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the Movement Sensor used to check
-the robot's location.
+- `movementSensorName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The name of the `Movement Sensor` used to check
+  the robot's location.
 - `heading` (number) (optional): Compass heading, in degrees, to achieve at destination.
 - `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Obstacles to consider when planning the motion of
-the component.
+  the component.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
@@ -660,12 +660,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component whose Pose is being requested.
+- `componentName` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): The component whose `Pose` is being requested.
 - `destinationFrame` (string) (required): The reference frame in which the component's
-Pose should be provided, if unset this defaults to the "world"
-reference frame.
-- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Pose information on any additional
-reference frames that are needed to compute the component's Pose.
+  `Pose` should be provided, if unset this defaults to the "world"
+  reference frame.
+- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): `Pose` information on any additional
+  reference frames that are needed to compute the component's `Pose`.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -858,7 +858,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `onlyActivePlans` (boolean) (optional): If true, the response will only return plans which
-are executing.
+  are executing.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

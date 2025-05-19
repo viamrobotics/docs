@@ -136,7 +136,7 @@ Go to the [Viam app](https://app.viam.com/) and navigate to your new machine's *
 {{% tab name="Config Builder" %}}
 
 Add a [_board component_](/operate/reference/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
-To create the new component, click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Component**.
+To create the new component, click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Component or service**.
 Select the `board` type, then select the `viam:raspberry-pi:rpi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
 If you are using a Raspberry Pi 5, use the `pi5` model.
 Enter a name or use the suggested name for your board and click **Create**.

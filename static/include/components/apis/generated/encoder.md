@@ -65,7 +65,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `positionType` ([PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)) (optional): The type of position the encoder returns (ticks or
-degrees).
+  degrees).
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 

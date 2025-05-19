@@ -64,7 +64,7 @@ Successfully enabled billing service for organization "<org-id>"
 {{% tablestep number=2 %}}
 **Get billing dashboard URL** from the billing service config:
 
-```sh {class="command-line" data-prompt="$" data-output="6-15"}
+```sh {class="command-line" data-prompt="$" data-output="2-15"}
 viam organizations billing-service get-config --org-id <org-id>
 Billing config for organization: <org-id>
 Support Email: support.person@email.com
@@ -100,8 +100,7 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 
 ## Set custom pricing
 
-To use custom billing, add a billing configuration to your machines.
-You can add the billing configuration to individual machine configurations, however, usually this is added to a fragment.
+To use custom billing, add a billing configuration the fragment you use for your machine configurations.
 
 1. Navigate to the **FLEET** page.
 1. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
