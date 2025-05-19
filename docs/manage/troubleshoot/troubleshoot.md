@@ -122,8 +122,8 @@ If your machine shows as online in the Viam app, go to the **LOGS** tab and chec
 
 You can filter your logs by keyword, log levels and time.
 
-The default log level for `viam-server` and any running resources is `"Info"`.
-If you are not seeing helpful logs, you can try changing the log level to `"Debug"`.
+The default log level for `viam-server` and any running resources is `Info`.
+If you are not seeing helpful logs, you can try changing the log level to `Debug`.
 
 You can enable debug logs for all resources on a machine by adding `"debug": true` to the machine's JSON configuration:
 
