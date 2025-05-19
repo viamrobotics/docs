@@ -7,4 +7,5 @@ aka:
 type: "page"
 ---
 
-The fully qualified domain name (FQDN) of a {{< glossary_tooltip term_id="machine" text="machine" >}} in the Viam platform, typically in the format `<machine-id>.<location-id>.viam.cloud`. This is used to uniquely identify and access a machine through the Viam cloud infrastructure.
+The fully qualified domain name (FQDN) of a {{< glossary_tooltip term_id="machine" text="machine" >}} in the Viam platform, typically in the format `<machine-id>.<location-id>.viam.cloud`.
+Used to uniquely identify and access a machine through Viam cloud infrastructure.
