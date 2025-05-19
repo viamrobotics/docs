@@ -102,7 +102,12 @@ This means any captured data is associated with the primary organization and the
 
 ### Can I rename my organization after its creation?
 
-Yes, you can rename your organization.
+Yes, you can rename your organization if you are an organization owner.
+
+{{< alert title="Caution" color="caution" >}}
+If your organization owns modules or packages in the Viam Registry, the namespace for those modules and packages will be changed in the registry automatically.
+You will need to update any configurations that reference your modules using the old namespace.
+{{< /alert >}}
 
 1. Click the organization name in the upper-right corner of the **FLEET** page and click on **Settings and invites**.
 1. Find the **Details** section of the page.
