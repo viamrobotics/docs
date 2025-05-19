@@ -185,12 +185,12 @@ To rule out machine health as the root cause of your issues, [add a machine tele
 
 ## Use `viam-server` debug endpoints
 
-You can use [`pprof`](https://pkg.go.dev/net/http/pprof) to 
+You can use [`pprof`](https://pkg.go.dev/net/http/pprof) to:
 
-- diagnosing performance bottlenecks
-- investigating memory leaks
-- understanding resource usage patterns
-- troubleshooting high CPU or memory usage
+- diagnose performance bottlenecks
+- investigate memory leaks
+- understand resource usage patterns
+- troubleshoot high CPU or memory usage
 
 To enable the pprof endpoints, set `enable_web_profile` to `true` in your machine configuration:
 
