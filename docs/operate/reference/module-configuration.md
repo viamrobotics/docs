@@ -244,6 +244,7 @@ Not all of these variables are automatically available on [local modules](/opera
 | `VIAM_API_KEY_ID` | The ID of the API key with access to the machine where this instance of the module is running. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `VIAM_MACHINE_PART_ID` | The ID of the part where this instance of the module is running. | |
 | `VIAM_MACHINE_ID` | The ID of the machine where this instance of the module is running. | |
+| `VIAM_MACHINE_FQDN` | The {{< glossary_tooltip term_id="machine-fqdn" text="fully qualified domain name" >}} of the machine where this instance of the module is running. | |
 | `VIAM_LOCATION_ID` | The ID of the {{< glossary_tooltip term_id="location" text="location" >}} that owns the machine where this instance of the module is running. | |
 | `VIAM_PRIMARY_ORG_ID` | The ID of the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the machine where this instance of the module is running. | |
 
