@@ -102,7 +102,7 @@ This means any captured data is associated with the primary organization and the
 
 ### Can I rename my organization after its creation?
 
-Yes, you can rename your organization id you are an organization owner.
+Yes, you can rename your organization if you are an organization owner.
 
 {{< alert title="Caution" color="caution" >}}
 If your organization has added modules or packages to the Viam Registry, their namespace will be changed in the Registry automatically.
