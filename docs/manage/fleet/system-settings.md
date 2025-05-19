@@ -167,7 +167,7 @@ System log forwarding requires journald to be available on the system. This feat
 
 You can control which system logs are forwarded using the following syntax:
 
-- `"all"`: Forward all system logs (except `viam-agent` logs, which are never forwarded)
+- `"all"`: Forward all system logs (in addition to`viam-agent` and `viam-server` logs which are sent directly to the cloud and always visible)
 - Comma-separated list of service identifiers: Forward only logs from the specified services
 - Prefix a service with `-` to exclude it: For example, `"all,-gdm,-tailscaled"` forwards all logs except those from `gdm` and `tailscaled`
 
