@@ -295,60 +295,64 @@ To set the path to a program or library on a machine, you can set a system varia
 
 To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/get-started/other-hardware/manage-modules/#change-module-visibility) set to **Unlisted**, you need to manually add the module to your configuration:
 
+1. Navigate to the module's page in the Viam Registry, using the link to the module.
+
+1. Find the **Unlisted module usage** section.
+
+1. Copy the module configuration JSON snippet.
+
 1. In the Viam app, navigate to the **CONFIGURE** tab of the machine you want to configure.
 
 1. Switch to **JSON** mode.
 
-1. Add the following template to your configuration.
-   If you already have a `components` array and a `modules` array, add contents to them instead of duplicating them.
+1. Paste the copied module configuration into your `modules` array.
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   "<components|services>": [
-     {
-       "name": "<resource-name>",
-       "api": "<model-API-namespace>:<component|service>:<model-name>",
-       "model": "<module-namespace>:<module-name>:<model-name>",
-       "attributes": {}
-     }
-   ],
-   "modules": [
-     {
-       "type": "registry",
-       "name": "<module-namespace><module-name>",
-       "module_id": "<module-namespace>:<module-name>",
-       "version": "latest"
-     }
-   ]
-   ```
-
-1. Navigate to the module's page in the Viam Registry, using the link to the module.
-
-1. Look at the list of **Components and services** supported by the module and find the model you want to use.
-   Copy the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, for example `jessamy:hello-world:hello-camera`, and paste it into the `model` field of the component or service template.
-
-1. Copy the API namespace triplet, for example `rdk:component:sensor`, and paste it into the `api` field of the component or service template.
-
-1. For the `module_id` field, use just the first two parts of the model triplet, for example `jessamy:hello-world`.
-
-1. For the `name` field, use the `module_id` value but remove the colon, for example `jessamyhello-world`.
-
+1. Copy the model configuration snippet for the model you want to use, and add it to your `components` or `services` array (as appropriate).
    For example:
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   "components": [
-     {
-       "name": "sensor-1",
-       "api": "rdk:component:sensor",
-       "model": "jessamy:hello-world:hello-camera",
-       "attributes": {}
-     }
-   ],
-   "modules": [
-     {
-       "type": "registry",
-       "name": "jessamyhello-world",
-       "module_id": "jessamy:hello-world",
-       "version": "latest"
-     }
-   ]
-   ```
+   {{< tabs >}}
+   {{% tab name="Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"components": [
+  {
+    "name": "sensor-1",
+    "api": "rdk:component:sensor",
+    "model": "jessamy:hello-world:hello-camera",
+    "attributes": {}
+  }
+],
+"modules": [
+  {
+    "type": "registry",
+    "name": "jessamyhello-world",
+    "module_id": "jessamy:hello-world",
+    "version": "latest"
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"<components|services>": [
+  {
+    "name": "<resource-name>",
+    "api": "<model-API-namespace>:<component|service>:<model-name>",
+    "model": "<module-namespace>:<module-name>:<model-name>",
+    "attributes": {}
+  }
+],
+"modules": [
+  {
+    "type": "registry",
+    "name": "<module-namespace><module-name>",
+    "module_id": "<module-namespace>:<module-name>",
+    "version": "latest"
+  }
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
