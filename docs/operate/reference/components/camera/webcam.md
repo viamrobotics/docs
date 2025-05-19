@@ -151,7 +151,6 @@ system_profiler SPCameraDataType
 
 The Unique ID displayed for each camera is the `video_path`.
 
-
 If you are using MacOS version 14.0.0 Sonoma or later, you will need to give viam-server permissions to access webcams.
 After running viam-server for the first time, check for a pop-up message asking for Camera permissions.
 You can then go to `System Settings` > `Privacy & Security` > `Camera` and check the toggle next to `viam-server`.
