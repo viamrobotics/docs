@@ -15,7 +15,7 @@ date: "2025-02-14"
 cost: "0"
 ---
 
-One method of operating your machine is by running control logic on another device, such as an app.
+One method of operating your machine is by [running control logic on another device, such as an app](/operate/control/headless-app/).
 However, you can also run control logic directly on the machine itself using {{< glossary_tooltip term_id="module" text="modules" >}}.
 These are the same modules that provide functionality like drivers and integrations to your machines.
 
