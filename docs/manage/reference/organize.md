@@ -105,7 +105,7 @@ This means any captured data is associated with the primary organization and the
 Yes, you can rename your organization if you are an organization owner.
 
 {{< alert title="Caution" color="caution" >}}
-If your organization has added modules or packages to the Viam Registry, their namespace will be changed in the Registry automatically.
+If your organization owns modules or packages in the Viam Registry, the namespace for those modules and packages will be changed in the registry automatically.
 You will need to update any configurations that reference your modules using the old namespace.
 {{< /alert >}}
 
