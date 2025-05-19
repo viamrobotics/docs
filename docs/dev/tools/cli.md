@@ -569,14 +569,14 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
   No annotations.
 ```
 
-##### Named arguments
+#### Named arguments
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--binary-data-id` | The binary data ID of the image you want to run inference on.  | **Required** |
 | `--model-name` | The name of the model that you want to run in the cloud. | **Required** |
-| `--model-version` | The version of the model that you want to run in the cloud. To find the lastest version string for a model, visit the [registry page](https://app.viam.com/registry?type=ML+Model) for that model. You can find the latest version string in the **Version history** sectio, e.g. "2024-02-16T12-55-32". Pass this value as a string, using double quotes. | **Required** |
+| `--model-version` | The version of the model that you want to run in the cloud. To find the latest version string for a model, visit the [registry page](https://app.viam.com/registry?type=ML+Model) for that model. You can find the latest version string in the **Version history** section, for instance "2024-02-16T12-55-32". Pass this value as a string, using double quotes. | **Required** |
 | `--org-id` | The organization ID of the organization that will run the inference.  | **Required** |
 | `--model-org-id` | The organization ID of the organization that owns the model. | **Required** |
 
