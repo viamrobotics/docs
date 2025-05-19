@@ -136,6 +136,10 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 
 You can store and retrieve arbitrary metadata about your organization, location, machine, and machine part with the [Fleet Management API](/dev/reference/apis/fleet/).
 
+{{% hiddencontent %}}
+It is not possible to store metadata associated with a Viam user.
+{{% /hiddencontent %}}
+
 {{% /changelog %}}
 
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
