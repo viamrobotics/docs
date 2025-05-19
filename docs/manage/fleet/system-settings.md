@@ -143,3 +143,43 @@ The configured values will take precedence over operating system defaults.
     }
 }
 ```
+
+### Forward system logs to the cloud
+
+You can configure `viam-agent` to forward system logs from journald to the cloud for additional diagnostics information.
+This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
+
+To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
+
+```json
+"agent": {
+    "system_configuration": {
+        "forward_system_logs": "kernel,NetworkManager,tailscaled"
+    }
+}
+```
+
+{{< alert title="Note" color="note" >}}
+System log forwarding requires journald to be available on the system. This feature is only supported on Linux systems.
+{{< /alert >}}
+
+#### Filtering options
+
+You can control which system logs are forwarded using the following syntax:
+
+- `"all"`: Forward all system logs (in addition to`viam-agent` and `viam-server` logs which are sent directly to the cloud and always visible)
+- Comma-separated list of service identifiers: Forward only logs from the specified services
+- Prefix a service with `-` to exclude it: For example, `"all,-gdm,-tailscaled"` forwards all logs except those from `gdm` and `tailscaled`
+
+Examples:
+
+```json
+// Forward only kernel, NetworkManager, and tailscaled logs
+"forward_system_logs": "kernel,NetworkManager,tailscaled"
+
+// Forward all system logs except gdm and tailscaled
+"forward_system_logs": "all,-gdm,-tailscaled"
+
+// Disable system log forwarding (default)
+"forward_system_logs": ""
+```

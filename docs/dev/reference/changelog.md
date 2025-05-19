@@ -44,6 +44,16 @@ date: "2024-09-18"
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog color="added" title="System log forwarding" date="2025-05-14" %}}
+
+You can now configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
+
+To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object in your machine's `agent` configuration. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
+
+For more information, see [Configure operating system logging](/manage/fleet/system-settings/#forward-system-logs-to-the-cloud).
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Processes" date="2025-05-06" %}}
 
 Processes were removed in `viam-server` v0.74.0.
