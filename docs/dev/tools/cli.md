@@ -107,7 +107,7 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, or an organization, location, or machine part API key.
+You can authenticate your CLI session using a personal access token, a profile, or an organization, location, or machine part API key.
 
 - To authenticate your CLI session using a personal access token:
 
@@ -132,6 +132,19 @@ You can authenticate your CLI session using either a personal access token, or a
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
 After the session expires or you log out, you must re-authenticate to use the CLI again.
+
+- To authenticate using a profile:
+
+## CLI profiles
+
+You can also authenticate your CLI session with profiles which allow you to switch between using different privileges.
+
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
+viam profiles add --profile-name=default --key-id=<api-key-id> --key=<api-key>
+```
+
+To specify a profile for a command use the `--profile` flag.
+To set a profile for a shell session, set the environment variable `VIAM_CLI_PROFILE_NAME` to your profile name.
 
 ### Create an organization API key
 
@@ -1626,8 +1639,8 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
-| `--debug` | Enable debug logging (default: false). |
-| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. |
-| `--help`, `-h` | Show help (default: false). |
+| `--debug` | Enable debug logging. Default: `false`. |
+| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. Default: `false`. |
+| `--help`, `-h` | Show help. Default: `false`. |
 | `--profile` | Specify a particular [profile](#profiles) for the current command. |
-| `--quiet`, `-q` | Suppress warnings (default: false). |
+| `--quiet`, `-q` | Suppress warnings. Default: `false` |
