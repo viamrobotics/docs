@@ -68,7 +68,7 @@ To access this endpoint, visit `https://localhost:8080/debug/graph` on the machi
 
 To view different [layouts](https://graphviz.org/docs/layouts/), use the `layout` query parameter:
 
-For example:
+The following example URL specifies the `circo` layout:
 
 ```txt
 https://localhost:8080/debug/graph?layout=circo
