@@ -70,7 +70,7 @@ To view different [layouts](https://graphviz.org/docs/layouts/), use the `layout
 
 For example:
 
-```
+```txt
 https://localhost:8080/debug/graph?layout=circo
 ```
 
