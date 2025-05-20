@@ -799,6 +799,25 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Gets the user-defined metadata for an organization.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization with which the user-defined metadata is associated. You can obtain your organization ID from the Viam app’s organization settings page.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+metadata = await cloud.get_organization_metadata(org_id="<YOUR-ORG-ID>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -828,6 +847,26 @@ Updates the user-defined metadata for an organization.
 User-defined metadata is billed as data.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required)
+- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata to upload as a Python dictionary.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.update_organization_metadata(org_id="<YOUR-ORG-ID>", metadata=)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1397,6 +1436,25 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Get the user-defined metadata for a location.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which the user-defined metadata is associated. You can obtain your location ID from the Viam app’s locations page.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+metadata = await cloud.get_location_metadata(location_id="<YOUR-LOCATION-ID>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_location_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1425,6 +1483,26 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Update the user-defined metadata for a location.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from the Viam app’s locations page.
+- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.update_location_metadata(location_id="<YOUR-LOCATION-ID>", metadata=)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2428,6 +2506,25 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Gets the user-defined metadata for a machine.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot with which the user-defined metadata is associated. You can obtain your robot ID from the Viam app’s machine page.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+metadata = await cloud.get_robot_metadata(robot_id="<YOUR-ROBOT-ID>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2454,6 +2551,25 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Gets the user-defined metadata for a machine part.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot part with which the user-defined metadata is associated. You can obtain your robot part ID from the Viam app’s machine page.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+metadata = await cloud.get_robot_part_metadata(robot_part_id="<YOUR-ROBOT-PART-ID>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2483,6 +2599,26 @@ Updates the user-defined metadata for a machine.
 User-defined metadata is billed as data.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot with which to associate the user-defined metadata. You can obtain your robot ID from the Viam app’s machine page.
+- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.update_robot_metadata(robot_id="<YOUR-ROBOT-ID>", metadata=)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2513,6 +2649,26 @@ Updates the user-defined metadata for a machine part.
 User-defined metadata is billed as data.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required)
+- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.update_robot_part_metadata(robot_part_id="<YOUR-ROBOT-PART-ID>", metadata=)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_part_metadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
