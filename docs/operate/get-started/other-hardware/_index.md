@@ -778,6 +778,7 @@ On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), cli
 Select **Local module**, then **Local module**.
 
 Enter the absolute path to the <file>run.sh</file> script, for example `/home/jessamy/my-module/run.sh` on Linux, or `/Users/jessamy/my-python-sensor-module/run.sh` on macOS.
+For modules configured this way, `viam-server` uses this path instead of the `entrypoint` field in your <file>meta.json</file> file.
 
 Click **Create**.
 
@@ -788,6 +789,7 @@ On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), cli
 Select **Local module**, then **Local module**.
 
 Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example `/home/jessamy/my-go-module/bin/mymodule` on Linux, or `/Users/jessamy/my-go-module/bin/mymodule` on macOS.
+For modules configured this way, `viam-server` uses this path instead of the `entrypoint` field in your <file>meta.json</file> file.
 
 Click **Create**.
 
@@ -828,7 +830,7 @@ For example, if you created a sensor component, check whether readings are displ
 If your component works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.
 
-Each time you make changes to your local module, you need to rebuild the module and then restart its instance on your machine.
+Each time you make changes to your local module code, you need to update its instance on your machine:
 
 {{< tabs >}}
 
@@ -843,13 +845,7 @@ viam module reload <insert relevant named args>
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
-Run the following command to rebuild your module:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module build local
-```
-
-Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+Restart the module in your machine's **CONFIGURE** tab in the Viam app.
 In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
