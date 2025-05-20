@@ -7,9 +7,9 @@ aka:
 type: "page"
 ---
 
-The **Vision Service** is a {{< glossary_tooltip term_id="service" text="service" >}} in the Viam platform that enables machines to interpret visual data captured by {{< glossary_tooltip term_id="camera" text="cameras" >}} using computer vision and {{< glossary_tooltip term_id="ml" text="machine learning" >}} techniques.
+The vision service is a {{< glossary_tooltip term_id="service" text="service" >}} in the Viam platform that enables machines to interpret visual data captured by {{< glossary_tooltip term_id="camera" text="cameras" >}} using computer vision and {{< glossary_tooltip term_id="ml" text="machine learning" >}} techniques.
 
-The Vision Service provides capabilities for:
+The vision service provides capabilities for:
 
 - **Object Detection**: Identifying and locating objects in 2D images by drawing bounding boxes around them
 - **Image Classification**: Categorizing entire images into predefined classes

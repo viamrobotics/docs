@@ -2,12 +2,13 @@
 title: API
 id: api
 full_link:
-short_description: Application Programming Interface, a set of defined rules that enable different applications to communicate with each other.
+short_description: Application programming interface, a set of defined rules that enable different applications to communicate with each other.
 aka:
 type: "page"
 ---
 
-API stands for **Application Programming Interface**. An API defines the methods and data structures that allow different software components or systems to communicate with each other.
+API stands for application programming interface.
+An API defines the methods and data structures that allow different software components or systems to communicate with each other.
 
 In the Viam platform, APIs are used extensively to:
 
