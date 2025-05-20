@@ -26,7 +26,7 @@ With Viam, you can run inference to generate the following kinds of output:
 
 You can run inference locally on a Viam machine, or remotely in the Viam cloud.
 
-## Machine
+## Machine inference
 
 You can use `viam-server` to deploy and run ML models directly on your machines.
 
@@ -35,8 +35,8 @@ You can run inference on your machine in the following ways:
 - with a vision service
 - manually in application logic with an SDK
 
-Typical machines, like Raspberry Pi 4, can run small TensorFlow Lite (TFLite) models.
-Some machines, like Jetson Xavier, or Raspberry Pi 5 equipped with an AI HAT+, can run larger models.
+Entry-level devices such as the Raspberry Pi 4 can run small ML models, such as TensorFlow Lite (TFLite).
+More powerful hardware, including the Jetson Xavier or Raspberry Pi 5 with an AI HAT+, can process larger AI models, including Tensorflow and ONNX.
 
 {{< tabs >}}
 {{% tab name="Vision service" %}}
@@ -113,7 +113,7 @@ output_tensors, err := myMLModel.Infer(context.Background(), input_tensors)
 {{% /tab %}}
 {{< /tabs >}}
 
-## Cloud
+## Cloud inference
 
 Cloud inference enables you to run machine learning models in the Viam cloud, instead of on a local machine.
 Cloud inference runs on powerful servers with more computing power than most edge devices.
