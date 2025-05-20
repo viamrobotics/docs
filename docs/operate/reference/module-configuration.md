@@ -249,11 +249,10 @@ Not all of these variables are automatically available on [local modules](/opera
 | `VIAM_LOCATION_ID` | The ID of the {{< glossary_tooltip term_id="location" text="location" >}} that owns the machine where this instance of the module is running. | |
 | `VIAM_PRIMARY_ORG_ID` | The ID of the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the machine where this instance of the module is running. | |
 
-You can also set additional environment variables.
+#### Set additional environment variables
 
-{{% expand "Example: string value" %}}
-
-Set the environment variable `MODULE_USER`:
+You can configure additional environment variables for your module, using your choice of variable name and value.
+For example, you could create a variable `MODULE_USER` with a string value:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -268,14 +267,8 @@ Set the environment variable `MODULE_USER`:
 }
 ```
 
-{{% /expand%}}
-
-Use the notation `${environment.<ENV-VAR-NAME>}` to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
-For example, you can use `${environment.HOME}` to access the `HOME` environment variable for the user running `viam-server`.
-
-{{% expand "Example: system variable" %}}
-
-To set the path to a program or library on a machine, you can set a system variable:
+To access any system environment variable that `viam-server` has access to, use the notation `${environment.<ENV-VAR-NAME>}` where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
+For example, you can use `${environment.HOME}` to access the `HOME` environment variable for the user running `viam-server`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -290,4 +283,13 @@ To set the path to a program or library on a machine, you can set a system varia
 }
 ```
 
-{{% /expand%}}
+#### Access environment variables from your module
+
+You can access the variables from within your module code in the same way you would access any other environment variables.
+For example, you could use the following Python code to access the `VIAM_HOME` variable:
+
+```python
+import os
+
+viam_home = os.environ.get("VIAM_HOME")
+```
