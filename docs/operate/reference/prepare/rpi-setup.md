@@ -23,7 +23,7 @@ date: "2022-01-01"
 We recommend using Viam on a 64-bit Linux distribution.
 Support for older Raspberry Pis running on 32-bit ARM v7 is in beta.
 
-If you already have a Linux distribution installed on your Pi, skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
+If you already have a Linux distribution installed on your {{< glossary_tooltip term_id="pi" text="Pi" >}}, skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
 
 {{% expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit or 32-bit" %}}
 

@@ -17,10 +17,10 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The vision service enables your machine to use its on-board [cameras](/operate/reference/components/camera/) to intelligently see and interpret the world around it.
+The {{< glossary_tooltip term_id="vision-service" text="vision service" >}} enables your machine to use its on-board [cameras](/operate/reference/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
-The vision service API allows you to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using.
+The vision service {{< glossary_tooltip term_id="api" text="API" >}} allows you to get detections, classifications, or point cloud objects, depending on the {{< glossary_tooltip term_id="ml" text="ML" >}} model the vision service is using.
 
 The vision service supports the following kinds of operations:
 
