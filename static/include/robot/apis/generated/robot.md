@@ -302,7 +302,7 @@ Get the configuration of the frame system of a given machine.
 
 **Parameters:**
 
-- `additional_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional)
+- `additional_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional): Any additional transforms.
 
 **Returns:**
 
@@ -373,7 +373,7 @@ Transform a given source Pose from the original reference frame to a new destina
 
 - `query` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): The pose that should be transformed.
 - `destination` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the reference frame to transform the given pose to.
-- `additional_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional)
+- `additional_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional): Any additional transforms.
 
 **Returns:**
 

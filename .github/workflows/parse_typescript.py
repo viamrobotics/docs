@@ -49,13 +49,17 @@ class TypeScriptParser:
         ]
 
         for resource in viam_resources:
+
+            ## Determine URL form for TypeScript depending on type (like 'component').
+            ## TODO: Handle resources with 0 implemented methods for this SDK better.
+
+            # Initialize TypeScript methods dictionary if it doesn't exist
+            self.typescript_methods[type][resource] = {}
+
             if resource in unsupported_resources:
                 if args.verbose:
                     print(f'DEBUG: Skipping unsupported TypeScript resource: {resource}')
                 continue
-
-            # Initialize TypeScript methods dictionary if it doesn't exist
-            self.typescript_methods[type][resource] = {}
 
             url = f"{self.scrape_url}/classes/{resource.capitalize()}Client.html"
             if resource in typescript_resource_overrides:
@@ -90,6 +94,7 @@ class TypeScriptParser:
                 if method.find('div', class_="tsd-parameters"):
                     parameters = method.find('div', class_="tsd-parameters")
                     parameter_list = parameters.find('ul', class_="tsd-parameter-list").children
+
                     for param in parameter_list:
                         param_name = param.find('span', class_="tsd-kind-parameter").text
                         param_description = ''
@@ -153,5 +158,6 @@ class TypeScriptParser:
 
                 if code_sample:
                     self.typescript_methods[type][resource][method_name]["code_sample"] = code_sample
+
 
         return self.typescript_methods

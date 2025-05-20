@@ -1903,7 +1903,7 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to create a new part for.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to create a new part for. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 - `part_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the new part.
 
 **Returns:**
@@ -1959,7 +1959,7 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to delete. Must be specified.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to delete. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Returns:**
 
@@ -2322,7 +2322,7 @@ You can only change the name of the machine, not the location.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to update.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to update. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the machine.
 - `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which the machine exists. Defaults to the location ID provided at AppClient instantiation.
 
@@ -2383,7 +2383,7 @@ Delete a specified machine.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to delete.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to delete. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 
 **Returns:**
 
@@ -2900,9 +2900,9 @@ Add a role under the organization you are currently authenticated to.
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from the Viam app’s organization settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (Literal['owner'] | Literal['operator']) (required): The role to add.
-- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource to add role to. Must match resource_id.
-- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
+- `role` (Literal['owner'] | Literal['operator']) (required): The role to add (either `"owner"` or `"operator"`).
+- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
+- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.).
 
 **Returns:**
 
