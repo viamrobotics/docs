@@ -239,7 +239,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.cancelOperation("INSERT OPERATION ID");
+await machine.cancelOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#canceloperation).
@@ -285,7 +285,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.blockForOperation("INSERT OPERATION ID");
+await machine.blockForOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockforoperation).
@@ -327,7 +327,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
+- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -410,13 +410,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
 - `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
+- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
 
 **Returns:**
 
-- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -675,7 +675,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `moduleId` (string) (optional): The id matching the module_id field of the registry
+- `moduleId` (string) (optional): The id matching the module\_id field of the registry
   module in your part configuration.
 - `moduleName` (string) (optional): The name matching the name field of the local/registry
   module in your part configuration.
@@ -687,7 +687,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.restartModule("namespace:module:model", "my_model_name");
+await machine.restartModule('namespace:module:model', 'my_model_name');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#restartmodule).

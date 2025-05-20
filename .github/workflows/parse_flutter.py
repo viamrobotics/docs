@@ -19,7 +19,9 @@ flutter_ignore_apis = [
     'noSuchMethod', # generic method
     'toString', # generic method
     'operator ==', # generic method
-    'fromRobot'
+    'fromRobot',
+    'disableDebugLogging',
+    'enableDebugLogging'
 ]
 
 ## Use these URLs for data types that are built-in to the language:

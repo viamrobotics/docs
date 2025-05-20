@@ -328,8 +328,8 @@ app,UpdateOrganizationInviteAuthorizations,,update_organization_invite_authoriza
 app,DeleteOrganizationMember,,delete_organization_member,,,deleteOrganizationMember
 app,DeleteOrganizationInvite,,delete_organization_invite,,,deleteOrganizationInvite
 app,ResendOrganizationInvite,,resend_organization_invite,,,resendOrganizationInvite
-app,GetOrganizationMetadata,,,,,getOrganizationMetadata
-app,UpdateOrganizationMetadata,,,,,updateOrganizationMetadata
+app,GetOrganizationMetadata,,get_organization_metadata,,,getOrganizationMetadata
+app,UpdateOrganizationMetadata,,update_organization_metadata,,,updateOrganizationMetadata
 app,CreateLocation,,create_location,,,createLocation
 app,GetLocation,,get_location,,,getLocation
 app,UpdateLocation,,update_location,,,updateLocation
@@ -340,8 +340,8 @@ app,UnshareLocation,,unshare_location,,,unshareLocation
 app,LocationAuth,,location_auth,,,locationAuth
 app,CreateLocationSecret,,create_location_secret,,,createLocationSecret
 app,DeleteLocationSecret,,delete_location_secret,,,deleteLocationSecret
-app,GetLocationMetadata,,,,,getLocationMetadata
-app,UpdateLocationMetadata,,,,,updateLocationMetadata
+app,GetLocationMetadata,,get_location_metadata,,,getLocationMetadata
+app,UpdateLocationMetadata,,update_location_metadata,,,updateLocationMetadata
 app,GetRobot,,get_robot,,,getRobot
 app,GetRobotAPIKeys,,get_robot_api_keys,,,getRobotAPIKeys
 ## TODO: Rover stuff is implemented in py,flutter, but internal in design. Omit at proto-level, t lang-level:
@@ -362,10 +362,10 @@ app,ListRobots,,list_robots,,,listRobots
 app,NewRobot,,new_robot,,,newRobot
 app,UpdateRobot,,update_robot,,,updateRobot
 app,DeleteRobot,,delete_robot,,,deleteRobot
-app,GetRobotMetadata,,,,,getRobotMetadata
-app,GetRobotPartMetadata,,,,,getRobotPartMetadata
-app,UpdateRobotMetadata,,,,,updateRobotMetadata
-app,UpdateRobotPartMetadata,,,,,updateRobotPartMetadata
+app,GetRobotMetadata,,get_robot_metadata,,,getRobotMetadata
+app,GetRobotPartMetadata,,get_robot_part_metadata,,,getRobotPartMetadata
+app,UpdateRobotMetadata,,update_robot_metadata,,,updateRobotMetadata
+app,UpdateRobotPartMetadata,,update_robot_part_metadata,,,updateRobotPartMetadata
 app,ListFragments,,list_fragments,,,listFragments
 app,ListMachineFragments,,,,,listMachineFragments
 app,GetFragment,,get_fragment,,,getFragment
