@@ -71,6 +71,12 @@ async def main():
         if module.visibility == 2:
             for model in module.models:
                 app_url = "https://app.viam.com/module/" + module.public_namespace + "/" + module.name + "/"
+                description = ""
+                if model.description == "" or model.description == "Provide a short (100 characters or less) description of this model here":
+                    description = module.description
+                else:
+                    description = model.description
+
                 json_m = {
                     "id": module.module_id + '-' + model.model,
                     "module_id": module.module_id,
@@ -78,11 +84,12 @@ async def main():
                     "total_robot_usage": module.total_robot_usage,
                     "url": module.url or app_url,
                     "app_url": app_url,
-                    "description": module.description,
+                    "description": description,
                     "model": model.model,
                     "api": model.api,
                     "last_updated": time_now
                 }
+
                 insert_resp = typesense_client.collections['resources'].documents.upsert(
         json_m)
                 print(insert_resp)
@@ -100,20 +107,6 @@ async def main():
             insert_resp = typesense_client.collections['resources'].documents.upsert(r)
             print("INSERTED")
             print(insert_resp)
-
-    # # Get built-in resources from services/typesense.json
-    # with open('services/typesense.json') as f:
-    #     resources = json.load(f)
-    #     for r in resources:
-    #         print("RESOURCE")
-    #         print(r)
-    #         r["last_updated"] = time_now
-    #         r["total_organization_usage"] = int(r["total_organization_usage"])
-    #         r["total_robot_usage"] = int(r["total_robot_usage"])
-    #         print(r)
-    #         insert_resp = typesense_client.collections['resources'].documents.upsert(r)
-    #         print("INSERTED")
-    #         print(insert_resp)
 
     # Create a request to list registry items and get the response from the app
     request = ListRegistryItemsRequest(organization_id=cloud._organization_id)
