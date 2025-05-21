@@ -373,7 +373,7 @@ Then, add a control loop that runs continuously, similar to the following exampl
 ```python
 # this level depends on your specific setup, replace after testing
 DRY = 600
-# amount of time to pump water to plant; increase or decrease depending on size, in seconds
+# amount of time to pump water to plant, in seconds; depends on planter size
 WATERING_TIME = 15
 # time between moisture checks, in seconds
 MOISTURE_CHECK_INTERVAL = 60
@@ -395,7 +395,7 @@ while True:
         motor_control_pin = await local.gpio_pin_by_name(name=MOTOR_CONTROL_GPIO_NUMBER)
 
         # Run the pump
-        # Set the pin to high to close the relay circuit, which connects power to the pump
+        # Set pin to high to close the relay circuit, which connects power to the pump
         await motor_control_pin.set(high=True)
 
         # Wait for water to pump
@@ -403,7 +403,7 @@ while True:
         time.sleep(WATERING_TIME)
 
         # Stop the pump
-        # Set the pin to low to open the relay circuit, which removes power from the pump
+        # Set pin to low to open the relay circuit, which removes power from the pump
         await motor_control_pin.set(high=False)
 
         # Wait an hour to let the soil soak
