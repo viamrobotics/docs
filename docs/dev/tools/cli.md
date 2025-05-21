@@ -285,8 +285,8 @@ The `dataset` command allows you to manage machine data in datasets.
 With it, you can add or remove images from a dataset, export data from a dataset, or filter a dataset by tags.
 
 ```sh {class="command-line" data-prompt="$"}
-viam dataset create --org-id=<org-id> --name=<name>
-viam dataset rename --dataset-id=<dataset-id> --name=<name>
+viam dataset create --org-id=<org-id> --name=<n>
+viam dataset rename --dataset-id=<dataset-id> --name=<n>
 viam dataset list --org-id=<org-id>
 viam dataset list --dataset-ids=<dataset-ids>
 viam dataset delete --dataset-id=<dataset-id>
@@ -982,7 +982,6 @@ See [Integrate other hardware](/operate/get-started/other-hardware/) and [Update
 You can use the `module build start` or `module build local` commands to build your custom module according to the build steps in your <file>meta.json</file> file:
 
 - Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
-  Your repository must be public to use the `build start` command.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
 To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) like the following:
