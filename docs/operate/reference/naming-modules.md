@@ -9,7 +9,7 @@ description: "Add support for a new component or service model by writing a modu
 languages: ["c++"]
 viamresources: []
 platformarea: ["registry"]
-toc_hide: true
+toc_hide: false
 ---
 
 Each modular resource has two associated triplets: an API namespace triplet to indicate which [API](/dev/reference/apis/) it implements, and a model namespace triplet to uniquely identify the modular resource {{< glossary_tooltip term_id="model" text="model" >}}.
@@ -97,41 +97,27 @@ Determine the model name you want to use based on these requirements, then proce
 
 ## Valid application identifiers
 
-If your module includes [Single Page Apps](/operate/reference/single-page-apps/), you'll need to define application names in your module's `meta.json` file. Application names have the following requirements:
+If your module includes a [Viam app](/operate/control/viam-app/), you need to define the application name in your module's `meta.json` file.
+Application names have the following requirements:
 
 - Application names must be all-lowercase.
-- Application names may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
+- Application names may only use alphanumeric (`a-z` and `0-9`) and hyphen (`-`) characters.
+- Application names may not start or end with a hyphen.
 - Application names must be unique within your organization's namespace.
 
-The application name will be used in the URL for accessing your application:
+The URL for accessing your Viam app will contain your application name:
 
-```
-https://app-name.your-public-namespace.viamapps.com
+```txt
+https://app-name_your-public-namespace.viamapps.com
 ```
 
 For example, if your organization namespace is `acme` and your application name is `dashboard`, your application will be accessible at:
 
-```
-https://dashboard.acme.viamapps.com
-```
-
-Here's an example of how to define applications in your module's `meta.json` file:
-
-```json
-{
-  "module_id": "acme:my-module",
-  "visibility": "public",
-  "applications": [
-    {
-      "name": "dashboard",
-      "type": "web",
-      "entrypoint": "dist/index.html"
-    }
-  ]
-}
+```txt
+https://dashboard_acme.viamapps.com
 ```
 
-For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
+For more information about Viam apps, see the [Viam apps documentation](/operate/control/viam-app/).
 
 ## Create a namespace for your organization
 

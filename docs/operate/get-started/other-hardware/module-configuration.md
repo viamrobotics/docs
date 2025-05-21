@@ -189,7 +189,7 @@ The model is configured as a component with the name `myRealsenseCamera1`.
 ```
 
 {{% /tab %}}
-{{< /tabs %}}
+{{% /tabs %}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -244,7 +244,7 @@ If, for example, the module provides a motor component, and the motor is running
 
 ### Module meta.json configuration
 
-When creating a module, you'll need to configure a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
+When creating a module, you'll need to create a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
 
 Here's an example of a `meta.json` file:
 
@@ -265,7 +265,7 @@ Here's an example of a `meta.json` file:
 }
 ```
 
-For modules that include [Single Page Apps](/operate/reference/single-page-apps/), you can add the `applications` field:
+For modules that include [Viam applications](/operate/control/viam-applications/), you can add the `applications` field:
 
 ```json
 {
@@ -298,11 +298,9 @@ The `applications` field is an array of application objects with the following p
 | `type`       | string | The type of application (currently only `"web"` is supported)                                     |
 | `entrypoint` | string | The path to the HTML entry point for your application                                             |
 
-For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
+For more information about Viam applications, see the [Viam applications documentation](/operate/control/viam-applications/).
 
 ### Environment variables
-
-#### Environment variables
 
 Each module has access to the following default environment variables.
 Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/create-module/#test-your-module-locally); you can manually set variables your module requires if necessary.
