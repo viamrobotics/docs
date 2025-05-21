@@ -1194,10 +1194,19 @@ Now, if you look at the [Viam Registry page](https://app.viam.com/registry) whil
 {{% /tablestep %}}
 {{< /table >}}
 
-## Add your new modular resource to your machines
+## Use your uploaded module
 
-Now that your module is in the registry, you can configure the component you added on your machines just as you would configure other components and services; there's no more need for local module configuration.
-The local module configuration is primarily for testing purposes.
+Now that your module is in the registry, you can test the registry version of your module on one machine, and then add it to more machines.
+Configure it just as you would [configure any other component or service in the registry](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine):
 
-Click the **+** button on your machine's **CONFIGURE** tab, click **Component or service**, and search for your model.
-For more details, see [Configure hardware on your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
+1. Go to your machine's **CONFIGURE** tab in the Viam app.
+
+1. Click the **+** button, select **Component or service**, and search for and select your model.
+
+1. Click **Add module**, enter a name for your resource, and click **Create**.
+
+1. Configure any required attributes.
+
+1. Save your configuration.
+
+You can delete the local module; it is no longer needed.
