@@ -13,7 +13,7 @@ description: "Configure module versions and module environment variables."
 This page contains reference material.
 For quick instructions on configuring a module on your machine, see [Configure hardware on your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 
-### Modular resource configuration details
+## Modular resource configuration details
 
 The modular resource card allows you to configure attributes for the resource.
 
@@ -79,7 +79,7 @@ The following properties are available for modular resources:
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/operate/reference/components/board/). Unnecessary if you coded [implicit dependencies](/operate/get-started/other-hardware/dependencies/). |
 
-### Module configuration details
+## Module configuration details
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -196,7 +196,7 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 | `name` | string | **Required** | A name for this instance of the module. |
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
 
-#### Module versioning
+### Module versioning
 
 You can configure how each module on your machine updates itself when a newer version becomes available from the Viam Registry.
 By default, a newly-added module is set to pin to the latest release (**Latest**) of the version you added.
@@ -227,7 +227,7 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
-#### Environment variables
+### Environment variables
 
 Each module has access to the following default environment variables.
 Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/#test-your-module-locally); you can manually set variables your module requires if necessary.
@@ -291,3 +291,70 @@ To set the path to a program or library on a machine, you can set a system varia
 ```
 
 {{% /expand%}}
+
+## Configure an unlisted module
+
+To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/get-started/other-hardware/manage-modules/#change-module-visibility) set to **Unlisted**, you need to manually add the module to your configuration:
+
+1. Navigate to the module's page in the Viam Registry, using the link to the module.
+
+1. Find the **Unlisted module usage** section.
+
+1. Copy the module configuration JSON snippet.
+
+1. In the Viam app, navigate to the **CONFIGURE** tab of the machine you want to configure.
+
+1. Switch to **JSON** mode.
+
+1. Paste the copied module configuration into your `modules` array.
+
+1. Copy the model configuration snippet for the model you want to use, and add it to your `components` or `services` array (as appropriate).
+   For example:
+
+   {{< tabs >}}
+   {{% tab name="Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"components": [
+  {
+    "name": "sensor-1",
+    "api": "rdk:component:sensor",
+    "model": "jessamy:hello-world:hello-camera",
+    "attributes": {}
+  },
+  ...
+],
+"modules": [
+  {
+    "type": "registry",
+    "name": "jessamyhello-world",
+    "module_id": "jessamy:hello-world",
+    "version": "latest"
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"<components|services>": [
+  {
+    "name": "<resource-name>",
+    "api": "<model-API-namespace>:<component|service>:<model-name>",
+    "model": "<module-namespace>:<module-name>:<model-name>",
+    "attributes": {}
+  }
+],
+"modules": [
+  {
+    "type": "registry",
+    "name": "<module-namespace><module-name>",
+    "module_id": "<module-namespace>:<module-name>",
+    "version": "latest"
+  }
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
