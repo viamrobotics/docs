@@ -320,7 +320,8 @@ To configure a module that is uploaded to the Viam Registry but has [visibility]
     "api": "rdk:component:sensor",
     "model": "jessamy:hello-world:hello-camera",
     "attributes": {}
-  }
+  },
+  ...
 ],
 "modules": [
   {
