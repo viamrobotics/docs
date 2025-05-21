@@ -285,7 +285,7 @@ For example, you can use `${environment.HOME}` to access the `HOME` environment 
 
 #### Access environment variables from your module
 
-You can access the variables from within your module code in the same way you would access any other environment variables.
+You can access environment variables from within your module code in the same way you would access any other environment variables.
 For example, you could use the following Python code to access the `VIAM_HOME` variable:
 
 ```python
