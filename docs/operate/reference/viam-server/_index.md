@@ -421,7 +421,7 @@ You can then run the server directly:
 
 ### Option 2: Use an older version of the Homebrew tap
 
-If you've already installed `viam-server` via Homebrew, you can try checking out an older version of the Viam Homebrew tap:
+If you've already installed `viam-server` with Homebrew, you can try checking out an older version of the Viam Homebrew tap:
 
 ```sh {class="command-line" data-prompt="$"}
 # Navigate to the Homebrew tap directory
