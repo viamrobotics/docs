@@ -183,6 +183,27 @@ The process will dump a stack trace, visible in the `viam-server` logs, that sho
 Some issues are due to overall system health.
 To rule out machine health as the root cause of your issues, [add a machine telemetry sensor](/manage/troubleshoot/alert/#add-performance-sensor) and [capture machine telemetry data with the data management service](/manage/troubleshoot/alert/#configure-data-management).
 
+## Use `viam-server` debug endpoints
+
+You can use [`pprof`](https://pkg.go.dev/net/http/pprof) to:
+
+- diagnose performance bottlenecks
+- investigate memory leaks
+- understand resource usage patterns
+- troubleshoot high CPU or memory usage
+
+To enable the pprof endpoints, set `enable_web_profile` to `true` in your machine configuration:
+
+```json
+{
+  "components": [...],
+  "services": [...],
+  "enable_web_profile": true
+}
+```
+
+For more information on advanced debugging endpoints, see [Advanced debug endpoints](/operate/reference/viam-server/debug-endpoints/).
+
 ## Remote shell on the machine
 
 To remotely access your machine from your terminal:

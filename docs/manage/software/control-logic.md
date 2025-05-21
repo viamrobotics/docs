@@ -15,8 +15,8 @@ date: "2025-02-14"
 cost: "0"
 ---
 
-One method of operating your machine is by running control logic on another device, such as an app.
-However, you can also run control logic directly on the machine itself using {{< glossary_tooltip term_id="module" text="modules" >}}.
+One method of operating your machine is by [running client code, such as an app](/operate/control/headless-app/), on the machine itself or on another device.
+However, to deploy code directly onto multiple machines, you can package and version the control logic as a {{< glossary_tooltip term_id="module" text="module" >}}.
 These are the same modules that provide functionality like drivers and integrations to your machines.
 
 The following steps show you how to create modules with control logic and how to deploy them to individual machines using `viam-server`.
