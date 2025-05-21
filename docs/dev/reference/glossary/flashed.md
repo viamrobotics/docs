@@ -1,10 +1,10 @@
 ---
-title: Flashed
-id: flashed
+title: Flash
+id: flash
 full_link:
 short_description: The process of writing an operating system or firmware to a device's storage medium.
-aka: 
-  - flash
+aka:
+  - flashed
   - flashing
 type: "page"
 ---
@@ -14,8 +14,6 @@ type: "page"
 In the context of robotics and the Viam platform, flashing is commonly performed when:
 
 - Setting up a new {{< glossary_tooltip term_id="pi" text="Raspberry Pi" >}} with an operating system
-- Installing firmware on microcontrollers like ESP32 or Arduino
-- Updating the bootloader or firmware on embedded devices
 - Installing the Viam Micro-RDK on supported microcontrollers
 
 The flashing process typically involves:

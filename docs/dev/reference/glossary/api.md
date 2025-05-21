@@ -17,11 +17,4 @@ In the Viam platform, APIs are used extensively to:
 - Manage machines and organizations
 - Process and analyze data
 
-Viam provides several types of APIs:
-
-- **Robot API**: For controlling individual machines and their components
-- **App API**: For managing organizations, locations, and machines
-- **Data API**: For accessing and analyzing data collected from machines
-- **ML Training API**: For training machine learning models
-
-These APIs are accessible through various {{< glossary_tooltip term_id="sdk" text="SDKs" >}} (Software Development Kits) in languages like Python, Go, and TypeScript, allowing developers to build applications that interact with Viam-enabled machines.
+These APIs are accessible through various {{< glossary_tooltip term_id="sdk" text="SDKs" >}} in languages like Python, Go, and TypeScript.
