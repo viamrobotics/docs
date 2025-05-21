@@ -179,7 +179,7 @@ The model is configured as a component with the name `myRealsenseCamera1`.
 ```
 
 {{% /tab %}}
-{{< /tabs %}}
+{{% /tabs %}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -284,8 +284,6 @@ The `applications` field is an array of application objects with the following p
 | `entrypoint` | string | The path to the HTML entry point for your application                                             |
 
 For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
-
-### Environment variables
 
 #### Environment variables
 
