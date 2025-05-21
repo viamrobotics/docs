@@ -357,6 +357,11 @@ To remove the machine cloud credentials file, run:
 sudo rm /etc/viam.json
 ```
 
+{{< alert title="Caution" color="caution" >}}
+If you remove the machine cloud credentials file you will not be able to connect to your machine.
+You can only restore this file if you have access to the machine configuration in the Viam app.
+{{< /alert >}}
+
 To remove various Viam caches and logs for the root (service) user, run:
 
 ```sh {class="command-line" data-prompt="$"}
