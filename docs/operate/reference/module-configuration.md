@@ -184,7 +184,8 @@ The model is configured as a component with the name `myRealsenseCamera1`.
 {{% /tab %}}
 {{< /tabs >}}
 
-The following properties are configurable for each module:
+The following properties are configurable for each module.
+You can add and edit `env` by switching from **Builder** to **JSON** mode in the **CONFIGURE** tab.
 
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
@@ -198,16 +199,15 @@ The following properties are configurable for each module:
 #### Module versioning
 
 You can configure how each module on your machine updates itself when a newer version becomes available from the Viam Registry.
-By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will _never automatically update itself_.
+By default, a newly-added module is set to pin to the latest release (**Latest**) of the version you added.
 
-To allow automatic module updates when a new version of the module becomes available in the Viam Registry, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
+To change the update strategy for your module, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
 
 {{<imgproc src="registry/modular-resources/deployed-module-with-component.png" style="width: 400px" resize="500x" declaredimensions=true alt="The module card" class="shadow" >}}
 
 The following update options are available:
 
 - **Patch (X.Y.Z)**: Do not update to any other version.
-  This is the default.
 - **Minor (X.Y.\*)**: Only update to newer patch releases of the same minor release branch.
   The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.2.5` but not `1.3.0` or `2.0.0`.
@@ -215,6 +215,7 @@ The following update options are available:
   The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
 - **Latest (`latest`)**: Always update to the latest version of this module available from the Viam Registry as soon as a new version becomes available.
+  This is the default.
 - **Latest with prerelease (`latest-with-prerelease`)**: Always update to the latest release or prerelease version of this module available from the Viam Registry as soon as the new version becomes available.
 
 When using the **Patch (X.Y.Z)** version type, you may select any patch version of the module from the **Version** dropdown menu, including past versions if desired.
