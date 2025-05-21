@@ -392,10 +392,12 @@ while True:
         print("plant is thirsty! watering")
 
         # Get the GPIO pin connected to the IN pin on the relay
-        motor_control_pin = await local.gpio_pin_by_name(name=MOTOR_CONTROL_GPIO_NUMBER)
+        motor_control_pin =
+            await local.gpio_pin_by_name(
+                name=MOTOR_CONTROL_GPIO_NUMBER)
 
         # Run the pump
-        # Set pin to high to close the relay circuit, which connects power to the pump
+        # Set pin to high to close the relay, connects power to the pump
         await motor_control_pin.set(high=True)
 
         # Wait for water to pump
@@ -403,7 +405,7 @@ while True:
         time.sleep(WATERING_TIME)
 
         # Stop the pump
-        # Set pin to low to open the relay circuit, which removes power from the pump
+        # Set pin to low to open the relay, removes power from the pump
         await motor_control_pin.set(high=False)
 
         # Wait an hour to let the soil soak
