@@ -53,10 +53,10 @@ aliases:
 
   This command uninstalls `viam-agent`, `viam-server`, the machine cloud credentials file (<file>/etc/viam.json</file>), and the provisioning configuration file (<file>/etc/viam-provisioning.json</file>).
 
-  {{< alert title="Caution" color="caution" >}}
-  If you remove the machine cloud credentials file you will not be able to connect to your machine without restoring it.
-  You can only restore this file if you have access to the machine in the Viam app.
-  {{< /alert >}}
+{{< alert title="Caution" color="caution" >}}
+If you remove the machine cloud credentials file you will not be able to connect to your machine.
+You can only restore this file if you have access to the machine configuration in the Viam app.
+{{< /alert >}}
 
 {{% /tab %}}
 {{% tab name="Windows native" %}}
