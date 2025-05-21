@@ -295,7 +295,7 @@ Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://ap
 
 Select from the **Levels** dropdown menu to filter the logs by severity level:
 
-![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
+{{<imgproc src="/build/program/sdks/log-level-info.png" resize="600x" declaredimensions=true alt="Filtering by log level of info in the logs tab of the Viam app." class="shadow imgzoom">}}
 
 {{% /tab %}}
 {{% tab name="Command line on Linux" %}}
