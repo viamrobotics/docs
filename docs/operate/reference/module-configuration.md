@@ -290,4 +290,4 @@ To set the path to a program or library on a machine, you can set a system varia
 }
 ```
 
-{{% /expand%}}
+{{% /expand %}}
