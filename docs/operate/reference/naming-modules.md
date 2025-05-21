@@ -95,6 +95,44 @@ More requirements:
 
 Determine the model name you want to use based on these requirements, then proceed to the next section.
 
+## Valid application identifiers
+
+If your module includes [Single Page Apps](/operate/reference/single-page-apps/), you'll need to define application names in your module's `meta.json` file. Application names have the following requirements:
+
+- Application names must be all-lowercase.
+- Application names may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
+- Application names must be unique within your organization's namespace.
+
+The application name will be used in the URL for accessing your application:
+
+```
+https://app-name.your-public-namespace.viamapps.com
+```
+
+For example, if your organization namespace is `acme` and your application name is `dashboard`, your application will be accessible at:
+
+```
+https://dashboard.acme.viamapps.com
+```
+
+Here's an example of how to define applications in your module's `meta.json` file:
+
+```json
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "applications": [
+    {
+      "name": "dashboard",
+      "type": "web",
+      "entrypoint": "dist/index.html"
+    }
+  ]
+}
+```
+
+For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
+
 ## Create a namespace for your organization
 
 When uploading modules to the Viam Registry, you must set a unique namespace for your organization to associate your module with.

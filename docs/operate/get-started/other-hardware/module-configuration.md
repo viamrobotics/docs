@@ -189,7 +189,7 @@ The model is configured as a component with the name `myRealsenseCamera1`.
 ```
 
 {{% /tab %}}
-{{% /tabs %}}
+{{< /tabs %}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -242,7 +242,67 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
+### Module meta.json configuration
+
+When creating a module, you'll need to configure a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
+
+Here's an example of a `meta.json` file:
+
+```json
+{
+  "module_id": "your-namespace:your-module",
+  "visibility": "public",
+  "url": "https://github.com/your-org/your-repo",
+  "description": "Your module description",
+  "models": [
+    {
+      "api": "rdk:component:base",
+      "model": "your-namespace:your-module:your-model"
+    }
+  ],
+  "entrypoint": "run.sh",
+  "first_run": "setup.sh"
+}
+```
+
+For modules that include [Single Page Apps](/operate/reference/single-page-apps/), you can add the `applications` field:
+
+```json
+{
+  "module_id": "your-namespace:your-module",
+  "visibility": "public",
+  "url": "https://github.com/your-org/your-repo",
+  "description": "Your module description",
+  "models": [
+    {
+      "api": "rdk:component:base",
+      "model": "your-namespace:your-module:your-model"
+    }
+  ],
+  "entrypoint": "run.sh",
+  "applications": [
+    {
+      "name": "your-app-name",
+      "type": "web",
+      "entrypoint": "dist/index.html"
+    }
+  ]
+}
+```
+
+The `applications` field is an array of application objects with the following properties:
+
+| Property     | Type   | Description                                                                                       |
+| ------------ | ------ | ------------------------------------------------------------------------------------------------- |
+| `name`       | string | The name of your application, which will be used in the URL (`name.publicnamespace.viamapps.com`) |
+| `type`       | string | The type of application (currently only `"web"` is supported)                                     |
+| `entrypoint` | string | The path to the HTML entry point for your application                                             |
+
+For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
+
 ### Environment variables
+
+#### Environment variables
 
 Each module has access to the following default environment variables.
 Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/create-module/#test-your-module-locally); you can manually set variables your module requires if necessary.
