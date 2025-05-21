@@ -53,10 +53,10 @@ Once enabled, you can access the pprof interface by navigating to `https://local
 
 The following pprof routes are available:
 
-1. `/debug/pprof/cmdline`: Command line arguments used to start the process
-2. `/debug/pprof/profile`: CPU profile data (30-second sample by default)
-3. `/debug/pprof/symbol`: Symbol lookup for program counters
-4. `/debug/pprof/trace`: Execution trace data
+- `/debug/pprof/cmdline`: Command line arguments used to start the process
+- `/debug/pprof/profile`: CPU profile data (30-second sample by default)
+- `/debug/pprof/symbol`: Symbol lookup for program counters
+- `/debug/pprof/trace`: Execution trace data
 
 ## `graph`
 
