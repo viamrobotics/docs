@@ -394,7 +394,7 @@ while True:
         # Get the GPIO pin connected to the IN pin on the relay
         motor_control_pin =
             await local.gpio_pin_by_name(
-                name=MOTOR_CONTROL_GPIO_NUMBER)
+                name=MOTOR_CONTROL_GPIO)
 
         # Run the pump
         # Set pin to high to close the relay, connects power to the pump
