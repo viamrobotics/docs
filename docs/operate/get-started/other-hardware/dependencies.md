@@ -56,7 +56,7 @@ Use required dependencies when your module should fail to build or reconfigure i
     ) -> Tuple[Sequence[str], Sequence[str]]:
         req_deps = []
         fields = config.attributes.fields
-        if not "camera_name" in fields:
+        if "camera_name" not in fields:
             raise Exception("missing required camera_name attribute")
         elif not fields["camera_name"].HasField("string_value"):
             raise Exception("camera_name must be a string")
@@ -190,10 +190,12 @@ If your module has optional dependencies, the steps are the same as for required
 
 ```python {class="line-numbers linkable-line-numbers"}
 @classmethod
-def validate_config(cls, config: ComponentConfig) -> tuple[Sequence[str], Sequence[str]]:
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
     opt_deps = []
     fields = config.attributes.fields
-    if not "camera_name" in fields:
+    if "camera_name" not in fields:
         raise Exception("missing required camera_name attribute")
     elif not fields["camera_name"].HasField("string_value"):
         raise Exception("camera_name must be a string")
