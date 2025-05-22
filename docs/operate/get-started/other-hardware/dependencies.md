@@ -179,7 +179,9 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 
 ### Optional dependencies
 
-If optional dependencies do not start, the module will continue to build and reconfigure without them.
+If an optional dependency does not start, the module will continue to build and reconfigure without it.
+`viam-server` reattempts to construct the optional dependency every 5 seconds.
+When an optional dependency constructs successfully, your modular resource reconfigures so it can access the optional dependency.
 
 Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
