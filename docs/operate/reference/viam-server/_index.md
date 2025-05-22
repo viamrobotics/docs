@@ -390,7 +390,7 @@ You can then run the server directly:
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-There are two main approaches to installing an older version of `viam-server` on macOS:
+There are two approaches to installing an older version of `viam-server` on macOS:
 
 ### Option 1: Build from source
 
