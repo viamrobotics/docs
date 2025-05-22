@@ -846,7 +846,7 @@ viam module reload <insert relevant named args>
 {{% tab name="Python: venv" %}}
 
 Since you are using <file>run.sh</file> instead of a built executable, you do not need to rebuild anything as you iterate.
-Just save your code changes, then restart the module in your machine's **CONFIGURE** tab in the Viam app.
+Just save your code changes, then restart the module in your machine's **CONFIGURE** tab in the Viam app:
 In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
