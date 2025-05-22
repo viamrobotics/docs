@@ -833,6 +833,7 @@ This includes:
 - Updating a module's metadata file based on models it provides
 - Building your module for different architectures using cloud runners
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
+- Downloading a module package from the registry
 
 See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for more information.
 
@@ -850,6 +851,7 @@ viam module build list [command options] [arguments...]
 viam module build logs --id=<id> [...named args]
 viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
+viam module download [command options]
 ```
 
 {{% alert title="Note" color="note" %}}
@@ -892,6 +894,14 @@ viam module reload --restart-only --id viam:python-example-module
 # upload a new or updated custom module to the Viam Registry:
 viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz --tags=distro:ubuntu,os_version:20.04,codename:focal,cuda:true,cuda_version:11,jetpack:5
 
+# download a module package from the registry to the current directory
+viam module download --id=acme:my-module
+
+# download a module package from the registry to a specific directory
+viam module download --id=acme:my-module --destination=/path/to/download/directory
+
+# download a specific version of a module package for a specific platform
+viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 ```
 
 #### Command options
@@ -909,6 +919,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `download` | Download a module package from the registry. | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
@@ -918,9 +929,10 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | -------- | ----------- | ------------------- | --------- |
 | `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | `update-models` | **Required** |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
+| `--destination` | Output directory for downloaded package (default: `.`) | `download` | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | `upload` | Optional |
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload` | Optional |
-| `--id` | The build ID to list or show logs for, as returned from `build start`. | `build list`, `build logs`, `reload` | Optional |
+| `--id` | The build ID to list or show logs for, as returned from `build start`. For `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `download` | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
 | `--module` | The path to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) for the custom module, if not in the current directory. | `update`, `upload`, `build` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload` | Optional |
@@ -930,9 +942,9 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--name` | The name of the custom module to be created. | `create` | **Required** |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
 | `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
-| `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs` | **Required** |
+| `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs`, `download` | **Required** for `upload` |
 | `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the raspberry pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
-| `--version` | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument). | `upload` | **Required** |
+| `--version` | The version of your module to set for this upload or download. For `download`, defaults to `latest`. See [Using the `--version` argument](#using-the---version-argument). | `upload`, `download` | **Required** for `upload` |
 | `--wait` | Wait for the build to finish before outputting any logs. | `build logs` | Optional |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
