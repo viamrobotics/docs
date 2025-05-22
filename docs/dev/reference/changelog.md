@@ -75,13 +75,17 @@ The `Validate` method signature in Python and Go modules has been updated to bet
 Old signature:
 
 ```python {class="line-numbers linkable-line-numbers"}
-def validate_config(cls, config: ComponentConfig) -> Sequence[str]
+def validate_config(
+    cls, config: ComponentConfig
+) -> Sequence[str]:
 ```
 
 New signature:
 
 ```python {class="line-numbers linkable-line-numbers"}
-def validate_config(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
 ```
 
 This is not currently a breaking change for Python modules, though the old signature is deprecated.
