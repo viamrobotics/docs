@@ -44,7 +44,7 @@ date: "2024-09-18"
 
 {{% changelog color="changed" title="Deprecated explicit dependencies" date="2025-05-05" %}}
 
-Some older modules use "explicit dependencies", which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
+Some older modules use "explicit dependencies" which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="8"}
 {
@@ -78,6 +78,8 @@ Old signature:
 def validate_config(
     cls, config: ComponentConfig
 ) -> Sequence[str]:
+    deps = []
+    return deps
 ```
 
 New signature:
@@ -86,6 +88,9 @@ New signature:
 def validate_config(
     cls, config: ComponentConfig
 ) -> Tuple[Sequence[str], Sequence[str]]:
+    req_deps = []
+    opt_deps = []
+    return req_deps, opt_deps
 ```
 
 This is not currently a breaking change for Python modules, though the old signature is deprecated.
