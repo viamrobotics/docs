@@ -119,28 +119,6 @@ sudo apt install jackd qjackctl libpulse-dev pulseaudio
 
 This error can be safely ignored if you do not intend to use audio on your machine.
 
-## Common camera errors
-
-### Frame read failed: Too many retries
-
-**Description:** This error typically occurs with IR camera modules and similar specialized cameras.
-It happens when the camera module is still initializing or calibrating itself, but `viam-server` is already attempting to read frames from it.
-This can also be caused by I2C communication issues between the board and the camera module, particularly on Raspberry Pi 5 systems.
-
-**Solution:** Try one of the following approaches:
-
-1. **Reduce the refresh rate for I2C cameras**:
-   For I2C-based cameras (like some IR modules), try setting the refresh rate to a lower value (for example, 2Hz instead of 4Hz).
-   This can help with I2C bus timing issues, especially on Raspberry Pi 5 systems.
-
-1. **Check physical connections**:
-
-   - Ensure the camera module is properly connected.
-   - For I2C cameras, verify that the SCK (clock) pin is properly connected and not shorted to ground or power.
-     If the pin has been shorted, this can permanently damage the hardware.
-
-If these steps don't resolve the issue, check your machine logs for additional error messages that might provide more specific information about the problem.
-
 ## Common Viam App Errors
 
 ### Failed to connect; retrying
