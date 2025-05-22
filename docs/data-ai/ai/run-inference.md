@@ -116,8 +116,7 @@ output_tensors, err := myMLModel.Infer(context.Background(), input_tensors)
 ## Cloud inference
 
 Cloud inference enables you to run machine learning models in the Viam cloud, instead of on a local machine.
-Cloud inference runs on powerful servers with more computing power than most edge devices.
-Because cloud inference has access to more computing power, you can benefit from:
+Cloud inference often provides more computing power than edge devices, so you can benefit from:
 
 - larger, more accurate models
 - faster inference times
