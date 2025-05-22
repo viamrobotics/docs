@@ -9,7 +9,7 @@ aka:
 type: "page"
 ---
 
-**Flashed** (or **flashing**) refers to the process of writing an operating system, firmware, or other software directly to a device's non-volatile storage medium, such as an SD card, eMMC storage, or flash memory.
+Flashed or flashing refers to the process of writing an operating system, firmware, or other software directly to a device's non-volatile storage medium, such as an SD card, eMMC storage, or flash memory.
 
 In the context of robotics and the Viam platform, flashing is commonly performed when:
 
