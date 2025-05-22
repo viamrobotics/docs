@@ -85,6 +85,37 @@ Provide at least the width and height values to start.
 
 {{% /expand%}}
 
+{{% expand "Frame read failed: Too many retries" %}}
+
+This error typically occurs with IR camera modules and similar specialized cameras. It happens when the camera module is still initializing or calibrating itself, but viam-server is already attempting to read frames from it. This can also be caused by I2C communication issues between the board and the camera module, particularly on Raspberry Pi 5 systems.
+
+Try one of the following approaches:
+
+1. **Empty the video_path in your camera configuration**
+   - In your camera component configuration, remove or empty the `video_path` parameter
+   - This can prevent viam-server from attempting to read frames before the camera is ready
+
+2. **Restart the machine**
+   - Run `sudo reboot` to restart your board
+   - This gives the camera module time to properly initialize before viam-server attempts to access it
+
+3. **Restart viam-server through the Viam cloud dashboard**
+   - Go to your machine in the Viam app
+   - Click on the part status dropdown next to the machine name
+   - Select "Restart part"
+
+4. **Reduce the refresh rate for I2C cameras**
+   - For I2C-based cameras (like some IR modules), try setting the refresh rate to a lower value (e.g., 2Hz instead of 4Hz)
+   - This can help with I2C bus timing issues, especially on Raspberry Pi 5 systems
+
+5. **Check physical connections**
+   - Ensure the camera module is properly connected
+   - For I2C cameras, verify that the SCK (clock) pin is properly connected and not shorted to ground or power
+
+For more detailed information about this error, see the [Common Errors](/dev/tools/common-errors/#frame-read-failed-too-many-retries) documentation.
+
+{{% /expand%}}
+
 ## Next steps
 
 For general configuration, development, and usage info, see:
