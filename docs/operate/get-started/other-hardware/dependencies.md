@@ -12,6 +12,7 @@ description: "Handle dependencies in your custom modular resource."
 Dependencies are other {{< glossary_tooltip term_id="resource" text="resources" >}} that your modular resource needs to access in order to function.
 
 For example, you could write a sensor component that requires a camera component, meaning that the camera is a dependency of that sensor.
+The component configuration for the sensor could look like this, with the name of the camera as an attribute:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6"}
 {
@@ -50,9 +51,10 @@ Use required dependencies when your module should fail to build or reconfigure i
 
    ```python {class="line-numbers linkable-line-numbers"}
     @classmethod
-    def validate_config(cls, config: ComponentConfig) -> tuple[Sequence[str], Sequence[str]]:
+    def validate_config(
+        cls, config: ComponentConfig
+    ) -> Tuple[Sequence[str], Sequence[str]]:
         req_deps = []
-        opt_deps = []
         fields = config.attributes.fields
         if not "camera_name" in fields:
             raise Exception("missing required camera_name attribute")
@@ -60,7 +62,7 @@ Use required dependencies when your module should fail to build or reconfigure i
             raise Exception("camera_name must be a string")
         camera_name = fields["camera_name"].string_value
         req_deps.append(camera_name)
-        return req_deps, opt_deps
+        return req_deps, []
    ```
 
 1. In your `reconfigure` method:
@@ -179,59 +181,46 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 
 If optional dependencies do not start, the module will continue to build and reconfigure without them.
 
-Example usage of optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
+Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-If your module has optional dependencies, the steps are the same as for required dependencies, except that your `validate_config` method can treat the dependency as optional by returning an empty list if the dependency is not configured, and the optional dependency list is the second element of the returned tuple:
+If your module has optional dependencies, the steps are the same as for required dependencies, except that your `validate_config` function should add the dependency to the second element of the returned tuple:
 
 ```python {class="line-numbers linkable-line-numbers"}
 @classmethod
 def validate_config(cls, config: ComponentConfig) -> tuple[Sequence[str], Sequence[str]]:
-    req_deps = []
     opt_deps = []
     fields = config.attributes.fields
-    if "camera_name" not in fields:
-        self.logger.info(
-          "camera_name not configured, using no camera")
-    else:
-        if not fields["camera_name"].HasField("string_value"):
-            raise Exception("camera_name must be a string")
-        opt_deps.append(fields["camera_name"].string_value)
-    return req_deps, opt_deps
+    if not "camera_name" in fields:
+        raise Exception("missing required camera_name attribute")
+    elif not fields["camera_name"].HasField("string_value"):
+        raise Exception("camera_name must be a string")
+    camera_name = fields["camera_name"].string_value
+    opt_deps.append(camera_name)
+    return [], opt_deps
 ```
 
-Be sure to handle the case where the dependency is not configured in your API implementation as well.
+Be sure to handle the case where the dependency is not available in your API implementation as well.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If your module has optional dependencies, the steps are the same as for required dependencies, with two differences:
-
-- Your `Validate` method can treat the dependency as optional by returning an empty list if the dependency is not configured.
-- The optional dependency list is the second returned element:
+If your module has optional dependencies, the steps are the same as for required dependencies, except that your `Validate` function should add the dependency to the second returned element:
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []string, err error) {
   var optDeps []string
   if cfg.CameraName == "" {
-    return nil, nil, nil
+    return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
   }
   optDeps = append(optDeps, cfg.CameraName)
   return nil, optDeps, nil
 }
 ```
 
-Be sure to handle the case where the dependency is not configured in your API implementation as well.
-
-You may want to log a message when the dependency is not configured, which you can do in your constructor:
-
-```go {class="line-numbers linkable-line-numbers"}
-if cfg.CameraName == "" {
-  logger.Info("camera_name not configured, using no camera")
-}
-```
+Be sure to handle the case where the dependency is not available in your API implementation as well.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -240,26 +229,6 @@ if cfg.CameraName == "" {
 There is not currently an SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
 You must access the API key module environment variables to establish the app client connection.
 {{% /hiddencontent %}}
-
-### Explicit dependencies (deprecated)
-
-Some older modules use explicit dependencies, which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "name": "mime-type-sensor",
-  "api": "rdk:component:sensor",
-  "model": "jessamy:my-module:my-sensor",
-  "attributes": {
-    "camera_name": "camera-1"
-  },
-  "depends_on": ["camera-1"]
-}
-```
-
-This is deprecated and not recommended when writing new modules.
-
-Instead, we recommend using implicit dependencies (as shown in the examples above), which do not require users to list the names of dependencies in the `depends_on` field.
 
 ## Configure your module's dependencies more easily with a discovery service
 

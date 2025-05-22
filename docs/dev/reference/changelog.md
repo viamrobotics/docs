@@ -42,6 +42,29 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Deprecated explicit dependencies" date="2025-05-05" %}}
+
+Some older modules use "explicit dependencies", which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
+
+```json {class="line-numbers linkable-line-numbers" data-line="8"}
+{
+  "name": "mime-type-sensor",
+  "api": "rdk:component:sensor",
+  "model": "jessamy:my-module:my-sensor",
+  "attributes": {
+    "camera_name": "camera-1"
+  },
+  "depends_on": ["camera-1"]
+}
+```
+
+This explicit dependency handling is deprecated and not recommended when writing new modules.
+
+We now recommend using dependencies as described in the [Module dependencies](/operate/get-started/other-hardware/dependencies/) documentation.
+The implicit way of handling dependencies does not require users to list the names of dependencies in the `depends_on` field.
+
+{{% /changelog %}}
+
 {{% changelog color="changed" title="Validate method signature for optional dependencies" date="2025-05-05" %}}
 
 The `Validate` method signature in Python and Go modules has been updated to better distinguish between required and optional dependencies:
