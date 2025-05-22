@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 layout: "docs"
 description: "Configure an arm including its reference frame."
+date: "2025-05-21"
 ---
 
 ## Prerequisites

@@ -5,6 +5,11 @@ weight: 40
 type: "docs"
 layout: "docs"
 description: "Move an arm with the motion service API."
+aliases:
+  - /how-tos/move-robot-arm/
+  - /tutorials/motion/accessing-and-moving-robot-arm/
+  - /tutorials/motion/
+date: "2025-05-21"
 ---
 
 {{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="170px">}}

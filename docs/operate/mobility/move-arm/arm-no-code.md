@@ -5,6 +5,7 @@ weight: 30
 type: "docs"
 layout: "docs"
 description: "Move an arm without code from the Viam app interface."
+date: "2025-05-21"
 ---
 
 {{<gif webm_src="/how-tos/joint_positions.webm" mp4_src="/how-tos/joint_positions.mp4" alt="The robot arm moving through joint position commands" max-width="150px" class="alignright">}}

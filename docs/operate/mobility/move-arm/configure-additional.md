@@ -11,6 +11,7 @@ aliases:
   - /services/frame-system/nested-frame-config/
   - /mobility/frame-system/nested-frame-config/
   - /operate/reference/services/frame-system/nested-frame-config/
+date: "2025-05-21"
 ---
 
 If you have a gripper, camera, or other components attached to your arm, you can configure them to move with the arm.
