@@ -94,7 +94,7 @@ To use a reference frame for your arm that is different from the default world f
      If you use the default values, the frame is aligned with the parent frame.
    - `translation`: The distance between the frame and the parent frame in each direction, in millimeters.
 
-1. Confirm the x, y, and z axes of the arm by [moving it in each direction using the Viam app control interface](/operate/mobility/move-arm/arm-no-code/#move-the-arm) and noting which way it moves in the real world.
+1. Confirm the x, y, and z axes of the arm by moving it in each direction using the **Test** tab.
 
 ### Example: Two arms mounted on a table
 

@@ -1,10 +1,12 @@
 ---
-title: "Motion planning concepts"
-linkTitle: "Motion concepts"
+title: "Motion planning basics"
+linkTitle: "Motion basics"
 weight: 8
 type: "docs"
 layout: "docs"
 description: "Learn what you can do with Viam's motion planning tools."
+date: "2025-05-21"
+# updated: ""
 ---
 
 Viam's motion planning tools allow you to automate the intelligent movement of your machines.
@@ -40,7 +42,7 @@ You can use the following components to augment motion planning and navigation:
 Viam's [frame system](/operate/reference/services/frame-system/) is a way to describe the spatial relationship between the components in your robot.
 The motion service uses the frame system to plan the motion of components.
 
-For example, if you command an arm to move to coordinates of `(300, 0, 0)` millimeters, this has no meaning unless you have defined where the origin `(0, 0, 0)` of the coordinate system is, as well as which directions correspond to the x, y, and z axes.
+For example, if you want to command an arm to move to coordinates of `(300, 0, 0)` millimeters, you first need to define the origin `(0, 0, 0)` of the coordinate system and the directions of the x, y, and z axes to give those coordinates meaning.
 
 To give the necessary context, you define the arm's `frame` to describe its position and orientation relative to the world.
 If you also have a gripper component, you define the gripper's `frame` to describe its position and orientation relative to the arm, so that when the arm moves, the motion service knows where the gripper is as well.
