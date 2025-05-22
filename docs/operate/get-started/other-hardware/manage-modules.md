@@ -93,7 +93,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
     "setup": "./setup.sh", // optional - command for one-time setup
     "build": "./build.sh", // command that will build your module's tarball
     "path" : "dist/archive.tar.gz", // optional - path to your built module tarball
-    "arch" : ["linux/amd64", "linux/arm64", "darin/arm64"], // architecture(s) to build for
+    "arch" : ["linux/amd64", "linux/arm64", "darwin/arm64"], // architecture(s) to build for
     "darwin_deps" : ["go", "x264", "nlopt-static"] // optional - Homebrew dependencies for Darwin builds. Explicitly pass `[]` for empty. Default : ["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"].
   }
 }
@@ -244,6 +244,24 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
    Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/reference/module-configuration/#module-versioning) of the module will automatically update to the new version.
 
+## Supported platforms for cloud-build
+
+When using cloud-build, you can specify which platforms you want to build your module for in the `arch` field of your `meta.json` file. The following table lists all available platforms:
+
+| Platform | Recommended | Supported in Cloud Build | Container Used by Cloud Build | Notes |
+|----------|-------------|--------------------------|------------------------------|-------|
+| `linux/amd64` | ✅ | ✅ | Ubuntu | Standard x86_64 Linux platform |
+| `linux/arm64` | ✅ | ✅ | Ubuntu | For ARM64 Linux devices like Raspberry Pi 4 |
+| `darwin/arm64` | ✅ | ✅ | macOS | For Apple Silicon Macs (M1/M2/M3) |
+| `linux/arm32v6` | ✅ | ❌ | N/A | For older ARM devices; must be built manually |
+| `linux/arm32v7` | ✅ | ❌ | N/A | For 32-bit ARM devices; must be built manually |
+| `windows/amd64` | ⚠️ | ❌ | N/A | Works for pure Go modules, but may have issues with C++ or modules using C libraries |
+| `darwin/amd64` | ❌ | ❌ | N/A | Intel Macs; not recommended as this platform is being phased out |
+
+{{% alert title="Note" color="note" %}}
+While the registry supports additional platforms like `windows/amd64`, `linux/arm32v6`, and `linux/arm32v7`, these are not currently supported by cloud-build and must be built manually using `viam module upload` if needed.
+{{% /alert %}}
+
 ### Update manually
 
 Use the [Viam CLI](/dev/tools/cli/) to manually update your module:
@@ -352,8 +370,8 @@ To transfer ownership of a module from one organization to another:
 1. Select the new organization from the dropdown menu, then click **Transfer module**.
 
 1. (Recommended) Transfer the GitHub repository containing the module code to the new owner.
-   Be sure to remove the existing secrets from the repository’s settings before transferring.
-   If the repository is using Viam’s cloud build, the secrets contain an organization API key that will be exposed to the new owner after the repository transfer.
+   Be sure to remove the existing secrets from the repository's settings before transferring.
+   If the repository is using Viam's cloud build, the secrets contain an organization API key that will be exposed to the new owner after the repository transfer.
 
 1. Update the `meta.json` file to reflect the new organization:
 
