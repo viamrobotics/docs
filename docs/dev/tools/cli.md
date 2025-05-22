@@ -544,6 +544,42 @@ done
 | `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
 | `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
 
+### `infer`
+
+The `infer` command enables you to run [cloud inference](/data-ai/ai/run-inference/#cloud-inference) on data. Cloud inference runs in the cloud, instead of on a local machine.
+
+```sh {class="command-line" data-prompt="$" data-output="2-18"}
+viam infer --binary-data-id <binary-data-id> --model-name <model-name> --model-org-id <org-id-that-owns-model> --model-version "2025-04-14T16-38-25" --org-id <org-id-that-executes-inference>
+Inference Response:
+Output Tensors:
+  Tensor Name: num_detections
+    Shape: [1]
+    Values: [1.0000]
+  Tensor Name: classes
+    Shape: [32 1]
+    Values: [...]
+  Tensor Name: boxes
+    Shape: [32 1 4]
+    Values: [...]
+  Tensor Name: confidence
+    Shape: [32 1]
+    Values: [...]
+Annotations:
+Bounding Box Format: [x_min, y_min, x_max, y_max]
+  No annotations.
+```
+
+#### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--binary-data-id` | The binary data ID of the image you want to run inference on.  | **Required** |
+| `--model-name` | The name of the model that you want to run in the cloud. | **Required** |
+| `--model-version` | The version of the model that you want to run in the cloud. To find the latest version string for a model, visit the [registry page](https://app.viam.com/registry?type=ML+Model) for that model. You can find the latest version string in the **Version history** section, for instance "2024-02-16T12-55-32". Pass this value as a string, using double quotes. | **Required** |
+| `--org-id` | The organization ID of the organization that will run the inference.  | **Required** |
+| `--model-org-id` | The organization ID of the organization that owns the model. | **Required** |
+
 ### `locations`
 
 The `locations` command allows you to manage the [locations](/manage/reference/organize/) that you have access to.
