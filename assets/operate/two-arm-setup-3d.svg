@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="500" viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arm 1 base -->
+  <ellipse cx="250" cy="350" rx="40" ry="20" fill="#00d2e0" stroke="#222" stroke-width="2"/>
+  <rect x="230" y="310" width="40" height="40" rx="8" fill="#fff" stroke="#222" stroke-width="2"/>
+  <text x="210" y="390" font-size="22" fill="#222" font-family="Arial">Arm 1</text>
+
+  <!-- Arm 2 base -->
+  <ellipse cx="550" cy="250" rx="40" ry="20" fill="#00d2e0" stroke="#222" stroke-width="2"/>
+  <rect x="530" y="210" width="40" height="40" rx="8" fill="#fff" stroke="#222" stroke-width="2"/>
+  <text x="590" y="230" font-size="22" fill="#222" font-family="Arial">Arm 2</text>
+
+  <!-- World frame axes for Arm 1 (purple) -->
+  <g stroke="#a259e6" stroke-width="3" marker-end="url(#arrow)">
+    <!-- x (down and right, matching Arm 2's y) -->
+    <line x1="250" y1="350" x2="320" y2="420"/>
+    <!-- y (toward Arm 2) -->
+    <line x1="250" y1="350" x2="350" y2="310"/>
+    <!-- z (up) -->
+    <line x1="250" y1="350" x2="250" y2="270"/>
+  </g>
+  <circle cx="250" cy="350" r="6" fill="#a259e6"/>
+  <text x="335" y="425" font-size="22" fill="#a259e6" font-family="Arial">x</text>
+  <text x="365" y="305" font-size="22" fill="#a259e6" font-family="Arial">y</text>
+  <text x="260" y="265" font-size="22" fill="#a259e6" font-family="Arial">z</text>
+
+  <!-- Arm 2 frame axes (purple, x points toward Arm 1, y down right, z up) -->
+  <g stroke="#a259e6" stroke-width="3" marker-end="url(#arrow)">
+    <!-- x' (points toward Arm 1, down left, short) -->
+    <line x1="550" y1="250" x2="470" y2="273"/>
+    <!-- y' (down right) -->
+    <line x1="550" y1="250" x2="620" y2="320"/>
+    <!-- z' (up) -->
+    <line x1="550" y1="250" x2="550" y2="170"/>
+  </g>
+  <circle cx="550" cy="250" r="6" fill="#a259e6"/>
+  <text x="440" y="270" font-size="22" fill="#a259e6" font-family="Arial">x</text>
+  <text x="640" y="335" font-size="22" fill="#a259e6" font-family="Arial">y</text>
+  <text x="560" y="165" font-size="22" fill="#a259e6" font-family="Arial">z</text>
+
+  <!-- Measurement line -->
+  <g stroke="#a259e6" stroke-width="2">
+    <line x1="250" y1="350" x2="550" y2="250" stroke-dasharray="8,6"/>
+    <text x="400" y="240" font-size="22" fill="#222" font-family="Arial" transform="rotate(-18 400 240)">200mm</text>
+  </g>
+
+  <!-- Arrowhead marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#a259e6"/>
+    </marker>
+  </defs>
+</svg>

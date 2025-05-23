@@ -75,10 +75,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Set the pin to high.
-await board.setGPIO('15', true);
+await board.setGPIO("15", true);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setgpio).
@@ -182,10 +182,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Get if it is true or false that the state of the pin is high.
-const high = await board.getGPIO('15');
+const high = await board.getGPIO("15");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getgpio).
@@ -296,10 +296,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Get the duty cycle of this pin.
-const dutyCycle = await board.getPWM('15');
+const dutyCycle = await board.getPWM("15");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getpwm).
@@ -405,11 +405,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Set the duty cycle to 0.6, meaning that this pin will be in the high state for
 // 60% of the duration of the PWM interval period.
-await board.setPWM('15', 0.6);
+await board.setPWM("15", 0.6);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setpwm).
@@ -513,10 +513,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Get the PWM frequency of this pin.
-const freq = await board.getPWMFrequency('15');
+const freq = await board.getPWMFrequency("15");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getpwmfrequency).
@@ -627,10 +627,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Set the PWM frequency of this pin to 1600 Hz.
-await board.setPWMFrequency('15', 1600);
+await board.setPWMFrequency("15", 1600);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#setpwmfrequency).
@@ -736,11 +736,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Get the number of times this DigitalInterrupt has been interrupted with a tick.
 const count = await board.getDigitalInterruptValue(
-  'my_example_digital_interrupt'
+  "my_example_digital_interrupt",
 );
 ```
 
@@ -848,13 +848,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Get the value of the analog signal "my_example_analog_reader" has most
 // recently measured.
-const reading = await board.readAnalogReader(
-  'my_example_analog_reader'
-);
+const reading = await board.readAnalogReader("my_example_analog_reader");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#readanalogreader).
@@ -959,10 +957,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Write the value 42 to "my_example_analog_writer".
-await board.writeAnalog('my_example_analog_writer', 42);
+await board.writeAnalog("my_example_analog_writer", 42);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#writeanalog).
@@ -1076,14 +1074,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Stream ticks from pins 8 and 11.
-const ticks = await board.streamTicks(['8', '11']);
+const ticks = await board.streamTicks(["8", "11"]);
 
 for await (const tick of ticks) {
   console.log(
-    `Pin ${tick.pinName} changed to ${tick.high ? 'high' : 'low'} at ${tick.time}`
+    `Pin ${tick.pinName} changed to ${tick.high ? "high" : "low"} at ${tick.time}`,
   );
 }
 ```
@@ -1159,7 +1157,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(pb.PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
-- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
+- `duration` [(\*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
 
@@ -1193,7 +1191,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const board = new VIAM.BoardClient(machine, 'my_board');
+const board = new VIAM.BoardClient(machine, "my_board");
 
 // Set the power mode of the board to OFFLINE_DEEP.
 const duration = new VIAM.Duration({ seconds: 10n });
@@ -1388,7 +1386,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetGeometries
 
-Get all the geometries associated with the board in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the board.
+Get all the geometries associated with the board in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the board.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -1515,12 +1513,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 

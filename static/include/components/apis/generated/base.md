@@ -74,7 +74,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 
 // Move forward 40mm at 90mm/s
 await base.moveStraight(40, 90);
@@ -181,7 +181,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 
 // Spin 10 degrees clockwise at 15 degrees per second
 await base.spin(10, 15);
@@ -323,30 +323,30 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 
 // Move forward at 75% power
 await base.setPower(
   { x: 0, y: 0.75, z: 0 }, // linear power
-  { x: 0, y: 0, z: 0 } // no rotation
+  { x: 0, y: 0, z: 0 }, // no rotation
 );
 
 // Move straight back at 100% power
 await base.setPower(
   { x: 0, y: -1, z: 0 }, // linear power
-  { x: 0, y: 0, z: 0 } // no rotation
+  { x: 0, y: 0, z: 0 }, // no rotation
 );
 
 // Turn counter-clockwise at 50% power
 await base.setPower(
   { x: 0, y: 0, z: 0 }, // no linear movement
-  { x: 0, y: 0, z: 0.5 } // rotate around z-axis
+  { x: 0, y: 0, z: 0.5 }, // rotate around z-axis
 );
 
 // Turn clockwise at 60% power
 await base.setPower(
   { x: 0, y: 0, z: 0 }, // no linear movement
-  { x: 0, y: 0, z: -0.6 } // rotate around z-axis
+  { x: 0, y: 0, z: -0.6 }, // rotate around z-axis
 );
 ```
 
@@ -459,12 +459,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 
 // Move forward at 50mm/s while spinning 15 degrees per second to the left
 await base.setVelocity(
   { x: 0, y: 50, z: 0 }, // linear velocity in mm/s
-  { x: 0, y: 0, z: 15 } // 15 degrees per second counter-clockwise
+  { x: 0, y: 0, z: 15 }, // 15 degrees per second counter-clockwise
 );
 ```
 
@@ -581,7 +581,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 const properties = await base.getProperties();
 ```
 
@@ -678,7 +678,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 const moving = await base.isMoving();
 ```
 
@@ -776,7 +776,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 await base.stop();
 ```
 
@@ -806,7 +806,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the base in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the base.
+Get all the geometries associated with the base in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the base.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -879,7 +879,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const base = new VIAM.BaseClient(machine, 'my_base');
+const base = new VIAM.BaseClient(machine, "my_base");
 const geometries = await base.getGeometries();
 ```
 
@@ -984,12 +984,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 

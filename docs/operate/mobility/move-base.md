@@ -42,7 +42,7 @@ Repeat this for each motor of your base.
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**figure a base component**
+**Configure a base component**
 
 The base component allows you to more easily coordinate the motion of the motors to move the robot's as a whole.
 

@@ -63,7 +63,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const pose = await arm.getEndPosition();
 ```
 
@@ -169,7 +169,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 
 // Create a pose for the arm to move to
 const pose: Pose = {
@@ -299,7 +299,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 
 // Move an arm with 6 joints (6 DoF)
 await arm.moveToJointPositions([90, 0, 0, 0, 15, 0]);
@@ -346,7 +346,7 @@ This will block until done or a new operation cancels this one.
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [([][]referenceframe.Input)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Input)
-- `options` [(*MoveOptions)](https://pkg.go.dev/go.viam.com/rdk/components/arm#MoveOptions)
+- `options` [(\*MoveOptions)](https://pkg.go.dev/go.viam.com/rdk/components/arm#MoveOptions)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -439,7 +439,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const jointPositions = await arm.getJointPositions();
 ```
 
@@ -578,7 +578,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const isMoving = await arm.isMoving();
 console.log(isMoving);
 ```
@@ -673,7 +673,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 await arm.stop();
 ```
 
@@ -703,7 +703,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the arm in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the arm.
+Get all the geometries associated with the arm in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the arm.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -776,7 +776,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const geometries = await arm.getGeometries();
 console.log(geometries);
 ```
@@ -881,12 +881,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 

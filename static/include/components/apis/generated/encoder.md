@@ -76,13 +76,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
+const encoder = new VIAM.EncoderClient(machine, "my_encoder");
 
 // Get the position of the encoder in ticks
 const [position, posType] = await encoder.getPosition(
-  EncoderPositionType.POSITION_TYPE_TICKS_COUNT
+  EncoderPositionType.POSITION_TYPE_TICKS_COUNT,
 );
-console.log('The encoder position is currently', position, posType);
+console.log("The encoder position is currently", position, posType);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getposition).
@@ -158,7 +158,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
+const encoder = new VIAM.EncoderClient(machine, "my_encoder");
 
 // Reset the zero position of the encoder
 await encoder.resetPosition();
@@ -236,7 +236,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
+const encoder = new VIAM.EncoderClient(machine, "my_encoder");
 
 // Get whether the encoder returns position in ticks or degrees
 const properties = await encoder.getProperties();
@@ -249,7 +249,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetGeometries
 
-Get all the geometries associated with the encoder in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the encoder.
+Get all the geometries associated with the encoder in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the encoder.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -376,12 +376,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 

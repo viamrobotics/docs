@@ -64,7 +64,7 @@ Before starting this tutorial, you must:
 
 ## Configure your robot
 
-Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/operate/mobility/define-geometry/) configured.
+Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/operate/reference/services/frame-system/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.

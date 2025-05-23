@@ -111,7 +111,7 @@ if __name__ == '__main__':
 
 {{% alert title="Important" color="note" %}}
 
-Before using the motion service with a gantry, you must [define your gantry's reference frame](/operate/mobility/define-geometry/).
+Before using the motion service with a gantry, you must [define your gantry's reference frame](/operate/reference/services/frame-system/).
 
 {{% /alert %}}
 
