@@ -85,7 +85,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 <!-- { {< tabs >}}
 { {% tab name="Single Build File" %}} -->
 
-```json {class="line-numbers linkable-line-numbers" data-line="5-8"}
+```json {class="line-numbers linkable-line-numbers" data-line="5-9"}
 {
   "module_id": "example-module",
   ...
@@ -98,6 +98,19 @@ At the end of your <file>meta.json</file>, add the build configuration:
   }
 }
 ```
+
+{{% expand "Cloud build configuration attributes" %}}
+
+<!-- prettier-ignore -->
+| Attribute | Inclusion | Description |
+| `"setup"` | Optional | Command to run for setting up the build environment. |
+| `"build"` | **Required** | Command to run to build the module tarball. |
+| `"path"` | Optional | Path to the build module tarball. |
+| `"arch"` | **Required** | Array of architectures to build for. Supported architectures include: `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`,  |
+| `"darwin_deps"` | Optional | TODO |
+
+
+{{% /expand%}}
 
 {{< expand "Python module example" >}}
 
