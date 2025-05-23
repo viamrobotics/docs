@@ -256,7 +256,7 @@ When using cloud-build, you can specify which platforms you want to build your m
 | `linux/arm32v6` | ✅ | ❌ | N/A | For older ARM devices; must be built manually |
 | `linux/arm32v7` | ✅ | ❌ | N/A | For 32-bit ARM devices; must be built manually |
 | `windows/amd64` | ⚠️ | ❌ | N/A | Works for pure Go modules, but may have issues with C++ or modules using C libraries |
-| `darwin/amd64` | ❌ | ❌ | N/A | Intel Macs; not recommended as this platform is being phased out |
+| `darwin/amd64` | ❌ | ❌ | N/A | Intel Macs; not recommended as Apple is phasing this platform out |
 
 {{% alert title="Note" color="note" %}}
 While the registry supports additional platforms like `windows/amd64`, `linux/arm32v6`, and `linux/arm32v7`, these are not currently supported by cloud-build and must be built manually using `viam module upload` if needed.
