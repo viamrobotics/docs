@@ -249,6 +249,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 When using cloud build, you can specify which platforms you want to build your module for in the `arch` field of your `meta.json` file.
 The following table lists all available platforms:
 
+<!-- prettier-ignore -->
 | Platform | Recommended | Supported in cloud build | Container used by cloud build | Notes |
 |----------|-------------|--------------------------|------------------------------|-------|
 | `linux/amd64` | ✅ | ✅ | Ubuntu | Standard x86_64 Linux platform, |
