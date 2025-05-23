@@ -7,8 +7,16 @@ type: docs
 description: "Create and deploy single page applications on the Viam platform."
 ---
 
+- Deploy front-end apps
+-
+
+you can have multiple HTML files
+files have to all be deployed
+
 With single page apps you can create and deploy custom web interfaces for your machines that use a single HTML page.
-Single page apps are accessible from a dedicated URL (`appname.publicnamespace.viamapps.com`) and hosting and authentication is handled for you.
+Single page apps are accessible from a dedicated URL (`appname_publicnamespace.viamapplications.com`) and hosting and authentication is handled for you.
+
+google SPA and include what exactly that means
 
 When opening an app, users log in and then select a machine they have access to.
 Then your app is rendered and ready for use.
@@ -56,7 +64,7 @@ TODO: how do you connect to the machine / how do you access the api key?
   "applications": [
     {
       "name": "your-app-name",
-      "type": "web",
+      "type": "single_machine",
       "entrypoint": "dist/index.html"
     }
   ]
@@ -75,7 +83,7 @@ TODO: how do you connect to the machine / how do you access the api key?
   "applications": [
     {
       "name": "dashboard",
-      "type": "web",
+      "type": "single_machine",
       "entrypoint": "dist/index.html"
     }
   ]
@@ -104,8 +112,8 @@ The `applications` field is an array of application objects with the following p
 <!-- prettier-ignore -->
 | Property     | Type   | Description                                                                                       |
 | ------------ | ------ | ------------------------------------------------------------------------------------------------- |
-| `name`       | string | The name of your application, which will be a part of the app's URL (`name.publicnamespace.viamapps.com`). For more information on valid names see [](/operate/reference/naming-modules). |
-| `type` | string | The type of application (currently only `"web"` is supported). |
+| `name`       | string | The name of your application, which will be a part of the app's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [](/operate/reference/naming-modules). |
+| `type` | string | The type of application (currently only `"single_machine"` is supported). |
 | `entrypoint` | string | The path to the HTML entry point for your application. The `entrypoint` field specifies the path to your application's entry point. For example: <ul><li><code>"dist/index.html"</code>: Static content rooted at the `dist` directory</li><li><code>"dist/foo.html"</code>: Static content rooted at the `dist` directory, with `foo.html` as the entry point</li><li><code>"dist/"</code>: Static content rooted at the `dist` directory (assumes `dist/index.html` exists)</li><li><code>"dist/bar/foo.html"</code>: Static content rooted at `dist/bar` with `foo.html` as the entry point</li></ul> |
 
 {{% /tablestep %}}
@@ -114,10 +122,11 @@ The `applications` field is an array of application objects with the following p
 **Package your app into a module and upload it** to the Viam Registry:
 
 TODO: first command doesn't make sense
+don't use module generate
 
 ```sh {class="command-line" data-prompt="$" data-output="3-10"}
 viam module build local
-viam module upload module.tar.gz
+viam module upload module.tar.gz --platform=any
 ```
 
 TODO: the upload command requires platform & version - is that no longer the case?
@@ -143,10 +152,10 @@ https://your-app-name.your-public-namespace.viamapps.com
 
 Users will be prompted to authenticate with their Viam credentials before accessing your application:
 
-1. User navigates to `your-app-name.your-public-namespace.viamapps.com`
+1. User navigates to `your-app-name_your-public-namespace.viamapplications.com`
 1. User authenticates with Viam credentials
 1. User selects an organization, location, and machine
-1. User is redirected to `your-app-name.your-public-namespace.viamapps.com/machine/{machine-id}`
+1. User is redirected to `your-app-name_your-public-namespace.viamapplications.com/machine/{machine-id}`
 1. Your application is rendered with access to the selected machine
 
 ## Limitations
@@ -198,3 +207,5 @@ viam module upload module.tar.gz
 ```
 
 After the module is approved, your application will be available at `https://my-app.your-public-namespace.viamapps.com`.
+
+https://github.com/bashar-515/sample-app
