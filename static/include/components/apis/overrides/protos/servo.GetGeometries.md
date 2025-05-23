@@ -1,2 +1,2 @@
-Get all the geometries associated with the servo in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the servo.
+Get all the geometries associated with the servo in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the servo.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.

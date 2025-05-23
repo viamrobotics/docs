@@ -68,7 +68,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const linearVelocity = await movementSensor.getLinearVelocity();
 ```
@@ -173,7 +173,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const angularVelocity = await movementSensor.getAngularVelocity();
 ```
@@ -204,7 +204,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetCompassHeading
 
-Report the current [compass heading](https://en.wikipedia.org/wiki/Heading_(navigation)) in degrees.
+Report the current [compass heading](<https://en.wikipedia.org/wiki/Heading_(navigation)>) in degrees.
 
 Supported by GPS models.
 Supported by `viam-micro-server`.
@@ -272,7 +272,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const compassHeading = await movementSensor.getCompassHeading();
 ```
@@ -379,7 +379,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const orientation = await movementSensor.getOrientation();
 ```
@@ -450,7 +450,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
+- [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
 - [(float64)](https://pkg.go.dev/builtin#float64): The altitude in meters.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -480,7 +480,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const position = await movementSensor.getPosition();
 ```
@@ -550,7 +550,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
+- [(\*Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -579,7 +579,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const properties = await movementSensor.getProperties();
 ```
@@ -648,7 +648,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*Accuracy)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
+- [(\*Accuracy)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
   This type contains the following fields:
 
   - `AccuracyMap` [(map[string]float32)](https://pkg.go.dev/builtin#string): A mapping of specific measurement parameters to their accuracy values.
@@ -664,6 +664,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   - `CompassDegreeError` [(float32)](https://pkg.go.dev/builtin#float32): The estimated error in compass readings, measured in degrees.
     This signifies the deviation or uncertainty in the sensor's compass measurements.
     A lower value implies a more accurate compass direction.
+
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -692,7 +693,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const accuracy = await movementSensor.getAccuracy();
 ```
@@ -794,10 +795,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
-const linearAcceleration =
-  await movementSensor.getLinearAcceleration();
+const linearAcceleration = await movementSensor.getLinearAcceleration();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getlinearacceleration).
@@ -826,7 +826,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/operate/mobility/define-geometry/) of the movement sensor.
+Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the movement sensor.
 The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
@@ -927,7 +927,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ```ts {class="line-numbers linkable-line-numbers"}
 const movementSensor = new VIAM.MovementSensorClient(
   machine,
-  'my_movement_sensor'
+  "my_movement_sensor",
 );
 const readings = await movementSensor.getReadings();
 ```
@@ -1052,12 +1052,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 
