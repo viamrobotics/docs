@@ -33,9 +33,9 @@ You can move the following components with the [motion service](/operate/referen
 You can use the following components to augment motion planning and navigation:
 
 - [Camera](/operate/reference/components/camera/)
-  - For example, a [RealSense depth camera](https://app.viam.com/module/viam/realsense)
+  - For example, you could use a [RealSense depth camera](https://app.viam.com/module/viam/realsense) to identify and avoid obstacles.
 - [Movement sensor](/operate/reference/components/movement-sensor/)
-  - For example, a [GPS](https://app.viam.com/module/viam/gps)
+  - For example, use a [GPS](https://app.viam.com/module/viam/gps) to locate a mobile robot.
 
 ## The frame system
 

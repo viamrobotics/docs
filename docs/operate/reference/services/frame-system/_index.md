@@ -171,7 +171,7 @@ Consider the example of nested reference frame configuration where two dynamic c
 
 The resulting tree of reference frames looks like:
 
-![reference frame tree](/services/frame-system/frame_tree.png)
+{{<imgproc src="/services/frame-system/frame_tree.png" resize="x1100" declaredimensions=true alt="Linear tree diagram of nested reference frames with world at the root, connected to G_origin, which connects to G, in turn connected to A_origin, connected to A." style="max-width:500px" class="imgzoom" >}}
 
 `viam-server` builds the connections in this tree by looking at the `"frame"` portion of each component in the machine's configuration and defining _two_ reference frames for each component:
 

@@ -68,17 +68,21 @@ Then, configure the camera's frame to describe its position and orientation rela
 
 1. Click **+ Add Frame**.
 
-   - If the camera is mounted on the arm:
+1. Edit the frame depending on where the camera is mounted:
 
-     1. Select the arm's frame as the parent frame.
+   {{< tabs >}}
+   {{% tab name="Camera mounted on arm" %}}
+   Set the arm's frame as the parent frame.
 
-     1. Enter the camera lens' position and orientation relative to the center of the end of the arm.
+   Enter the camera lens' position and orientation relative to the center of the end of the arm.
+   {{% /tab %}}
 
-   - If the camera is mounted separately from the arm:
+   {{% tab name="Camera mounted on a static object or wall" %}}
+   Leave the world frame as the parent frame.
 
-     1. Leave the world frame as the parent frame.
-
-     1. Enter the camera lens' position and orientation relative to the world frame.
+   Enter the camera lens' position and orientation relative to the world frame.
+   {{% /tab %}}
+   {{< /tabs >}}
 
 ## Configure a passive object
 
