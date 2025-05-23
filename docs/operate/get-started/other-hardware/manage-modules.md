@@ -274,7 +274,7 @@ The following table lists all available platforms:
 | `darwin/amd64` | ❌ | ❌ | N/A | Intel Macs; not recommended as Apple is phasing this platform out |
 
 {{% alert title="Note" color="note" %}}
-While the registry supports additional platforms like `windows/amd64`, `linux/arm32v6`, and `linux/arm32v7`, these are not currently supported by cloud-build and must be built manually using `viam module upload` if needed.
+While the registry supports additional platforms like `windows/amd64`, `linux/arm32v6`, and `linux/arm32v7`, these are not currently supported by cloud build and must be [built and uploaded manually](#update-manually).
 {{% /alert %}}
 
 ### Update manually
