@@ -42,6 +42,83 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Deprecated explicit dependencies" date="2025-05-05" %}}
+
+Some older modules use "explicit dependencies" which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
+
+```json {class="line-numbers linkable-line-numbers" data-line="8"}
+{
+  "name": "mime-type-sensor",
+  "api": "rdk:component:sensor",
+  "model": "jessamy:my-module:my-sensor",
+  "attributes": {
+    "camera_name": "camera-1"
+  },
+  "depends_on": ["camera-1"]
+}
+```
+
+This explicit dependency handling is deprecated and not recommended when writing new modules.
+
+We now recommend using dependencies as described in the [Module dependencies](/operate/get-started/other-hardware/dependencies/) documentation.
+The implicit way of handling dependencies does not require users to list the names of dependencies in the `depends_on` field.
+
+{{% /changelog %}}
+
+{{% changelog color="changed" title="Validate method signature for optional dependencies" date="2025-05-05" %}}
+
+The `Validate` method signature in Python and Go modules has been updated to better distinguish between required and optional dependencies:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Old signature:
+
+```python {class="line-numbers linkable-line-numbers"}
+def validate_config(
+    cls, config: ComponentConfig
+) -> Sequence[str]:
+    deps = []
+    return deps
+```
+
+New signature:
+
+```python {class="line-numbers linkable-line-numbers"}
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
+    req_deps = []
+    opt_deps = []
+    return req_deps, opt_deps
+```
+
+This is not currently a breaking change for Python modules, though the old signature is deprecated.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Old signature:
+
+```go {class="line-numbers linkable-line-numbers"}
+Validate(path string) ([]string, error)
+```
+
+New signature:
+
+```go {class="line-numbers linkable-line-numbers"}
+Validate(path string) (requiredDeps []string, optionalDeps []string, error)
+```
+
+This is a breaking change for Go modules.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+See [Module dependencies](/operate/get-started/other-hardware/dependencies/) for more information.
+
+{{% /changelog %}}
+
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
 {{% changelog color="added" title="System log forwarding" date="2025-05-14" %}}
@@ -505,7 +582,7 @@ Viam has added a [sensor-controlled base](/operate/reference/components/base/sen
 
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
-You can now [visualize your data](/data-ai/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can now [visualize your data](/data-ai/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google's Looker Studio, and more.
 You can visualize any data, such as sensor readings, that you have [synced](/data-ai/capture-data/capture-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
@@ -627,7 +704,7 @@ You now have the capability to use a [power sensor component](/operate/reference
 
 {{% /changelog %}}
 
-{{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
+{{% changelog date="2023-09-30" color="added" title="Filter component's data before the cloud" %}}
 Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/data-ai/capture-data/capture-sync/).
 It equips machines to:
 
