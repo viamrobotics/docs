@@ -106,7 +106,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 | `"setup"` | Optional | Command to run for setting up the build environment. |
 | `"build"` | **Required** | Command to run to build the module tarball. |
 | `"path"` | Optional | Path to the build module tarball. |
-| `"arch"` | **Required** | Array of architectures to build for. Supported architectures include: `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`, `""`,  |
+| `"arch"` | **Required** | Array of architectures to build for. Options: `"any"`, `"linux/any"`, `"darwin/any"`, `"any/amd64"`, `"any/arm64"`, `"any/arm32v6"`, `"any/arm32v7"`, `"linux/amd64"`, `"linux/arm64"`, `"linux/arm32v6"`, `"linux/arm32v7"`, `"darwin/amd64"`, `"darwin/arm64"`, `"windows/amd64"`. For more information see [Supported platforms for automatic updates](#supported-platforms-for-automatic-updates). |
 | `"darwin_deps"` | Optional | TODO |
 
 
