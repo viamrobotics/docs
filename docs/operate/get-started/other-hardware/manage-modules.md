@@ -103,6 +103,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 
 <!-- prettier-ignore -->
 | Attribute | Inclusion | Description |
+| --------- | --------- | ----------- |
 | `"setup"` | Optional | Command to run for setting up the build environment. |
 | `"build"` | **Required** | Command to run to build the module tarball. |
 | `"path"` | Optional | Path to the build module tarball. |
