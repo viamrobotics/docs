@@ -355,6 +355,90 @@ Manual installation is not available for native Windows; you must download the [
 {{% /tab %}}
 {{< /tabs >}}
 
+### Install a specific version of `viam-server`
+
+In some cases, you may need to install an older version of `viam-server`.
+
+{{< tabs name="Install specific version of viam-server" >}}
+{{% tab name="Linux" %}}
+
+For Linux systems, the recommended approach to install an older version is to build from source:
+
+```sh {class="command-line" data-prompt="$"}
+# Clone the RDK repository
+git clone https://github.com/viamrobotics/rdk.git
+
+# Change to the RDK directory
+cd rdk
+
+# Check out a specific version tag (replace v0.46.0 with your desired version)
+git checkout v0.46.0
+
+# Build the server
+make server
+
+# The binary will be available in the bin directory for your architecture
+cd bin/Linux-amd64  # or Linux-arm64 for ARM-based systems
+```
+
+You can then run the server directly:
+
+```sh {class="command-line" data-prompt="$"}
+./viam-server -config /path/to/your/config.json
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+There are two approaches to installing an older version of `viam-server` on macOS:
+
+### Option 1: Build from source
+
+The most reliable way to install a specific version of `viam-server` is to clone the RDK repository at a specific tag and build it yourself:
+
+```sh {class="command-line" data-prompt="$"}
+# Clone the RDK repository
+git clone https://github.com/viamrobotics/rdk.git
+
+# Change to the RDK directory
+cd rdk
+
+# Check out a specific version tag (replace v0.46.0 with your desired version)
+git checkout v0.46.0
+
+# Build the server
+make server
+
+# The binary will be available in the bin directory for your architecture
+cd bin/Darwin-arm64  # Use the folder matching your architecture
+```
+
+You can then run the server directly:
+
+```sh {class="command-line" data-prompt="$"}
+./viam-server -config /path/to/your/config.json
+```
+
+### Option 2: Use an older version of the Homebrew tap
+
+If you've already installed `viam-server` with Homebrew, you can try checking out an older version of the Viam Homebrew tap:
+
+```sh {class="command-line" data-prompt="$"}
+# Navigate to the Homebrew tap directory
+cd /opt/homebrew/Library/Taps/viamrobotics/homebrew-brews/
+
+# Check out an older version of the tap
+git checkout <older-commit-hash>
+
+# Reinstall viam-server
+brew reinstall viam-server
+```
+
+Note that this method may not work for versions that are too old, as Homebrew doesn't officially support installing older versions of dependencies. If the version you need is significantly older, building from source (Option 1) is recommended.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Next steps
 
 {{< cards >}}
