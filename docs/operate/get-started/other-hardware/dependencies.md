@@ -35,7 +35,7 @@ When [`viam-server` builds all the resources on a machine](/operate/get-started/
 From within a module, you cannot access resources in the same way that you would in a client application.
 For example, you cannot call `Camera.from_robot()` to get a camera resource.
 
-Instead, you must access dependencies by writing your module code with dependencies:
+To access resources from within a module, use dependencies:
 
 ### Required dependencies
 
