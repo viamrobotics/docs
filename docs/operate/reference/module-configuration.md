@@ -285,7 +285,7 @@ The `applications` field is an array of application objects with the following p
 
 For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
 
-#### Environment variables
+### Environment variables
 
 Each module has access to the following default environment variables.
 Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/#test-your-module-locally); you can manually set variables your module requires if necessary.

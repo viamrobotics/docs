@@ -1,9 +1,9 @@
 ---
 title: "Create a custom web interface"
 linkTitle: "Create a custom web interface"
-weight: 11
-no_list: true
-type: docs
+weight: 5
+layout: "docs"
+type: "docs"
 description: "Create and deploy custom web interfaces for your machines as single-page applications without managing hosting and authentication."
 ---
 
@@ -13,7 +13,7 @@ Once deployed, apps are accessible from a dedicated URL (`appname_publicnamespac
 When opening an app, users log in and then select a machine they have access to.
 Then your app is rendered and ready for use.
 
-{{<imgproc src="/operate/spa.png" resize="400x" declaredimensions=true alt="App screen asking for the org, location, and machine." class="imgzoom shadow">}}
+{{<gif webm_src="/spa.webm" mp4_src="/spa.mp4" alt="Sample web app" max-width="500px">}}
 
 ## Requirements
 
@@ -28,14 +28,14 @@ Then authenticate your CLI session with Viam using one of the following options:
 
 {{< /expand >}}
 
-## Create a single page app
+## Build a custom web interface
 
-{{< table >}}
-{{% tablestep number=1 %}}
+You can build a custom web interface to access your machines using your preferred framework like React, Vue, Angular, or others.
 
-**Build your application** using your preferred framework like React, Vue, Angular, or others.
-While you're developing use any machine's credentials.
-For deploying your app you must add code to read the machine API key from your browsers local storage:
+### Access machines from your app
+
+Viam apps provide access to a machine by placing its API key in your local storage.
+You can access the data from your browser's local storage as follows:
 
 ```ts {class="line-numbers linkable-line-numbers" data-line=""}
 import Cookies from "js-cookie";
@@ -53,8 +53,82 @@ machineId = window.location.pathname.split("/")[2];
 } = JSON.parse(Cookies.get(machineId)!));
 ```
 
-{{% /tablestep %}}
-{{% tablestep number=2 %}}
+For developing your app on localhost, add the same information to your browsers local storage.
+
+1. Navigate to [Camera Viewer](https://camera-viewer_naomi.viamapplications.com/).
+2. Log in and select the machine you'd like to use for testing.
+3. Open Developer tools and go to the console.
+4. Execute the following JavaScript to obtain the cookies you need:
+
+   ```js {class="line-numbers linkable-line-numbers" data-line=""}
+   function generateCookieSetterScript() {
+     // Get all cookies from current page
+     const currentCookies = document.cookie.split(";");
+     let cookieSetterCode = "// Cookie setter script for localhost\n";
+     cookieSetterCode +=
+       "// Copy and paste this entire script into your browser console when on localhost\n\n";
+
+     // Process each cookie
+     let cookieCount = 0;
+     currentCookies.forEach((cookie) => {
+       if (cookie.trim()) {
+         // Extract name and value from the cookie
+         const [name, value] = cookie.trim().split("=");
+
+         // Add code to set this cookie
+         cookieSetterCode += `document.cookie = "${name}=${value}; path=/";\n`;
+         cookieCount++;
+       }
+     });
+
+     // Add summary comment
+     cookieSetterCode += `\nconsole.log("Set ${cookieCount} cookies on localhost");\n`;
+
+     // Display the generated code
+     console.log(cookieSetterCode);
+
+     // Create a textarea element to make copying easier
+     const textarea = document.createElement("textarea");
+     textarea.value = cookieSetterCode;
+     textarea.style.position = "fixed";
+     textarea.style.top = "0";
+     textarea.style.left = "0";
+     textarea.style.width = "100%";
+     textarea.style.height = "250px";
+     textarea.style.zIndex = "9999";
+     document.body.appendChild(textarea);
+     textarea.focus();
+     textarea.select();
+   }
+
+   // Execute the function
+   generateCookieSetterScript();
+   ```
+
+5. Copy the resulting script. It will look like this:
+
+   ```js {class="line-numbers linkable-line-numbers" data-line=""}
+   // Cookie setter script for localhost
+   // Copy and paste this entire script into your browser console when on localhost
+
+   document.cookie = "<SECRET COOKIE INFO>; path=/";
+   document.cookie = "machinesWhoseCredentialsAreStored=<MACHINE ID>; path=/";
+
+   console.log("Set 2 cookies on localhost");
+   ```
+
+6. Open the app you are building on localhost and run the resulting script.
+7. Reload your app.
+
+### Configure routing
+
+When using your deployed application, static files will be accessible at `https://your-app-name_your-public-namespace.viamapplications.com/machine/<machine-id>/`.
+If your HTML file loads other files, use relative paths to ensure your files are accessible.
+
+## Deploy your web interface
+
+{{< table >}}
+{{% tablestep number=1 %}}
 
 **Create a <FILE>meta.json</FILE>** file using this template:
 
@@ -123,7 +197,7 @@ The `applications` field is an array of application objects with the following p
 | `entrypoint` | string | The path to the HTML entry point for your application. The `entrypoint` field specifies the path to your application's entry point. For example: <ul><li><code>"dist/index.html"</code>: Static content rooted at the `dist` directory</li><li><code>"dist/foo.html"</code>: Static content rooted at the `dist` directory, with `foo.html` as the entry point</li><li><code>"dist/"</code>: Static content rooted at the `dist` directory (assumes `dist/index.html` exists)</li><li><code>"dist/bar/foo.html"</code>: Static content rooted at `dist/bar` with `foo.html` as the entry point</li></ul> |
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep number=2 %}}
 **Register your module** with Viam:
 
 {{< tabs >}}
@@ -144,13 +218,13 @@ viam module create --name="air-quality" --public-namespace="naomi"
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep number=3 %}}
 
 **Package your static files and your <FILE>meta.json</FILE> file and upload them** to the Viam Registry:
 
 ```sh {class="command-line" data-prompt="$" data-output="3-10"}
 tar -czvf module.tar.gz <static-website-files> meta.json
-viam module upload module.tar.gz --platform=any --version=0.0.1
+viam module upload --upload=module.tar.gz --platform=any --version=0.0.1
 ```
 
 For subsequent updates run these commands again with an updated version number.
@@ -176,7 +250,8 @@ Users will be prompted to authenticate with their Viam credentials before access
 
 ## Example
 
-For an example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
+For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
+For a Reach app that shows Camera feeds for a machine, see [Viam Camera Viewer](https://github.com/viam-labs/viam-camera-viewer).
 
 ## Limitations
 
@@ -187,7 +262,7 @@ For an example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/cont
 
 ## Security Considerations
 
-- Customer apps are stored in GCS buckets that are publicly available on the internet
+- Customer apps are stored publicly available on the internet
 - Avoid uploading sensitive information in your application code or assets
 - API keys and secrets are stored in the browser's localStorage or sessionStorage
 - Single page apps authenticate users with FusionAuth

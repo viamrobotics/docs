@@ -1,6 +1,6 @@
 ---
 linkTitle: "Create a web app"
-title: "Create a web app"
+title: "Create a self-hosted web app"
 weight: 10
 layout: "docs"
 type: "docs"

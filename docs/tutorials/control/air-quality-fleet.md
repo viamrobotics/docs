@@ -726,7 +726,7 @@ viam module create --name="air-quality" --public-namespace="your-namespace"
 ```sh {class="command-line" data-prompt="$" data-output="3-10"}
 npm run build
 tar -czvf module.tar.gz static meta.json
-viam module upload module.tar.gz --platform=any --version=0.0.1
+viam module upload --upload=module.tar.gz --platform=any --version=0.0.1
 ```
 
 For subsequent updates run these commands again with an updated version number.
