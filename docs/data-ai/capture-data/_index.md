@@ -9,6 +9,7 @@ header_only: true
 aliases:
   - /data-ai/capture-data/advanced/how-sync-works/
   - /data-ai/capture-data/advanced/
+  - /data-ai/capture-data/how-sync-works/
 ---
 
 `viam-server` and `viam-micro-server` handle data sync in distinct ways:
