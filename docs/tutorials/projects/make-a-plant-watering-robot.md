@@ -410,7 +410,7 @@ while True:
         print("waiting a little bit for the water to soak in")
         time.sleep(SOAK_TIME)
 
-    # wait between checks
+    # Wait between checks
     print("waiting before we test for moisture again")
     time.sleep(MOISTURE_CHECK_INTERVAL)
 ```
