@@ -43,6 +43,10 @@ More powerful hardware, including the Jetson Xavier or Raspberry Pi 5 with an AI
 
 Vision services apply an ML model to a stream of images from a camera to generate bounding boxes or classifications.
 
+{{% alert title="Note" color="note" %}}
+The vision service can optionally depend on the [frame system](/operate/reference/services/frame-system/) for certain applications, particularly when working with 3D segmentation, spatial transformations, or when you need to relate camera coordinates to other components in your machine. For basic 2D detection and classification tasks, frame system configuration is typically not required.
+{{% /alert %}}
+
 {{<resources_svc api="rdk:service:vision" type="vision">}}
 
 {{% alert title="Tip" color="tip" %}}
