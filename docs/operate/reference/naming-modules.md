@@ -97,7 +97,7 @@ Determine the model name you want to use based on these requirements, then proce
 
 ## Valid application identifiers
 
-If your module includes a [single page app](/operate/control/single-page-apps/), you need to define the application name in your module's `meta.json` file.
+If your module includes a [Viam app](/operate/control/viam-app/), you need to define the application name in your module's `meta.json` file.
 Application names have the following requirements:
 
 - Application names must be all-lowercase.
@@ -105,7 +105,7 @@ Application names have the following requirements:
 - Application names may not start or end with a hyphen.
 - Application names must be unique within your organization's namespace.
 
-The URL for accessing your single page app will contain your application name:
+The URL for accessing your Viam app will contain your application name:
 
 ```txt
 https://app-name_your-public-namespace.viamapps.com
@@ -117,7 +117,7 @@ For example, if your organization namespace is `acme` and your application name 
 https://dashboard_acme.viamapps.com
 ```
 
-For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/control/single-page-apps/).
+For more information about Viam apps, see the [Viam apps documentation](/operate/control/viam-app/).
 
 ## Create a namespace for your organization
 
