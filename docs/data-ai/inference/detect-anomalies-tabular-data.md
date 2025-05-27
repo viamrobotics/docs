@@ -1,6 +1,6 @@
 ---
-linkTitle: "Detect anomolies in tabular data"
-title: "Detect anomolies in tabular data"
+linkTitle: "Detect anomalies in tabular data"
+title: "Detect anomalies in tabular data"
 weight: 80
 layout: "docs"
 type: "docs"
