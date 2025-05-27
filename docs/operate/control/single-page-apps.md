@@ -182,7 +182,7 @@ If your HTML file loads other files, use relative paths to ensure your files are
 | `visibility` | string | **Required** | Must be `"public"`. |
 | `description` | string | **Required** | A description of your module and what it provides. |
 | `url` | string | Optional | The URL of the GitHub repository containing the source code of the module. |
-| `applications` | array | Optional | Objects that provide information about the [single page apps](/operate/reference/single-page-apps/) associated with the module. |
+| `applications` | array | Optional | Objects that provide information about the [apps](/operate/reference/single-page-apps/) associated with the module. |
 | `models` | array | Optional | Empty unless you are shipping the app alongside models. For information on how to add models, see [Integrate other hardware](/operate/get-started/other-hardware/). |
 
 {{% /expand%}}
@@ -232,11 +232,11 @@ For subsequent updates run these commands again with an updated version number.
 {{% /tablestep %}}
 {{< /table >}}
 
-## Accessing your Single Page App
+## Access your app
 
 After uploading your module with the application configuration, your application will be available at:
 
-```
+```txt
 https://your-app-name_your-public-namespace.viamapplications.com
 ```
 
@@ -256,7 +256,7 @@ For a React app that shows Camera feeds for a machine, see [Viam Camera Viewer](
 
 ## Limitations
 
-- Single page apps currently only support single-machine applications
+- Apps currently only support single-machine applications
 - All modules with apps must have public visibility
 - There is no separate deploy step; the page will always render the latest version
 - Browsers with cookies disabled are not supported
@@ -266,4 +266,4 @@ For a React app that shows Camera feeds for a machine, see [Viam Camera Viewer](
 - Customer apps are stored publicly available on the internet
 - Avoid uploading sensitive information in your application code or assets
 - API keys and secrets are stored in the browser's localStorage or sessionStorage
-- Single page apps authenticate users with FusionAuth
+- Authenticate users with FusionAuth

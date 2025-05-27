@@ -108,13 +108,13 @@ Application names have the following requirements:
 The URL for accessing your single page app will contain your application name:
 
 ```txt
-https://app-name.your-public-namespace.viamapps.com
+https://app-name_your-public-namespace.viamapps.com
 ```
 
 For example, if your organization namespace is `acme` and your application name is `dashboard`, your application will be accessible at:
 
-```
-https://dashboard.acme.viamapps.com
+```txt
+https://dashboard_acme.viamapps.com
 ```
 
 For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).

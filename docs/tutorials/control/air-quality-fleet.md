@@ -192,7 +192,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 #### Configure the sensor
 
 1. Navigate to the **CONFIGURE** tab of the machine details page in the [Viam app](https://app.viam.com) for your first machine.
-2. Click the **+** (Create) button and click **Component** from the dropdown.
+2. Click the **+** (Create) button and click **Component or service** from the dropdown.
    Click **sensor**, then search for `sds011` and click **sds001:v1** from the results.
 3. Click **Add module**.
    This adds the {{< glossary_tooltip term_id="module" text="module" >}} that provides the sensor model that supports the specific hardware we are using for this tutorial.
@@ -240,7 +240,7 @@ Once you configure the rest of your sensing machines, you'll be able to remotely
 
 Configure data capture and sync as follows:
 
-1. Click the **+** (Create) button and click **Service** from the dropdown.
+1. Click the **+** (Create) button and click **Component or service** from the dropdown.
 2. Click **data management**.
 3. Give your data manager a name such as the auto-populated name `data_manager-1` and click **Create**.
 4. Toggle **Syncing** to the on position.
