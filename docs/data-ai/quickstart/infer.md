@@ -1,6 +1,6 @@
 ---
-linkTitle: "Infer"
-title: "Infer"
+linkTitle: "Run inference"
+title: "Run inference"
 weight: 30
 layout: "docs"
 type: "docs"

@@ -1,6 +1,6 @@
 ---
-linkTitle: "Setup"
-title: "Setup"
+linkTitle: "Set up Viam"
+title: "Set up Viam"
 weight: 10
 layout: "docs"
 type: "docs"

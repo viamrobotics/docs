@@ -115,7 +115,6 @@ When a machine loses its internet connection, it cannot resume cloud sync until 
 To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
 
 If your robot is offline and can't sync and your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
-For more information, see [Automatic data deletion details](/data-ai/capture-data/advanced/how-sync-works/)
 
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
 For more information, see [Capture directly to MongoDB](/data-ai/reference/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster).

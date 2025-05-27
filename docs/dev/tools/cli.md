@@ -546,7 +546,7 @@ done
 
 ### `infer`
 
-The `infer` command enables you to run [cloud inference](/data-ai/ai/run-inference/#cloud-inference) on data. Cloud inference runs in the cloud, instead of on a local machine.
+The `infer` command enables you to run [cloud inference](/data-ai/inference/run-inference/#cloud-inference) on data. Cloud inference runs in the cloud, instead of on a local machine.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-18"}
 viam infer --binary-data-id <binary-data-id> --model-name <model-name> --model-org-id <org-id-that-owns-model> --model-version "2025-04-14T16-38-25" --org-id <org-id-that-executes-inference>
