@@ -941,6 +941,7 @@ Add the link to that repo as the `url` in the <file>meta.json</file> file.
 **Edit the meta.json file**
 
 Make any necessary edits to the `meta.json` file.
+For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 Click below for information about the available fields.
 
 {{< expand "meta.json reference" >}}
