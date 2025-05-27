@@ -15,7 +15,6 @@ date: "2023-03-29"
 # updated: "2025-05-15"
 cost: 150
 no_list: true
-# SMES: Olivia Miller, Sierra Guequierre
 ---
 
 <!-- LEARNING GOALS:
@@ -33,9 +32,9 @@ With a Raspberry Pi and some basic hardware, you can keep your plants healthy an
 Follow this tutorial to learn how to set up an automatic plant watering system:
 
 1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
-2. [Create and connect to the machine, and configure your machine's components](#configure-the-components-of-your-robot-in-the-viam-app).
-3. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
-4. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
+1. [Create and connect to the machine, and configure your machine's components](#configure-the-components-of-your-robot-in-the-viam-app).
+1. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
+1. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/Q6UuUKJpDn0?start=877">}}
 
@@ -411,8 +410,8 @@ while True:
         print("waiting a little bit for the water to soak in")
         time.sleep(SOAK_TIME)
 
-    # wait 60 seconds between checks
-    print("waiting a little bit for the water to soak in")
+    # wait between checks
+    print("waiting before we test for moisture again")
     time.sleep(MOISTURE_CHECK_INTERVAL)
 ```
 
