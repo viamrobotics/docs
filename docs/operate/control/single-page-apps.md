@@ -182,7 +182,7 @@ If your HTML file loads other files, use relative paths to ensure your files are
 | `visibility` | string | **Required** | Must be `"public"`. |
 | `description` | string | **Required** | A description of your module and what it provides. |
 | `url` | string | Optional | The URL of the GitHub repository containing the source code of the module. |
-| `applications` | array | Optional | Objects that provide information about the [apps](/operate/reference/single-page-apps/) associated with the module. |
+| `applications` | array | Optional | Objects that provide information about the [apps](/operate/control/single-page-apps/) associated with the module. |
 | `models` | array | Optional | Empty unless you are shipping the app alongside models. For information on how to add models, see [Integrate other hardware](/operate/get-started/other-hardware/). |
 
 {{% /expand%}}

@@ -250,7 +250,7 @@ Here's an example of a `meta.json` file:
 }
 ```
 
-For modules that include [Single Page Apps](/operate/reference/single-page-apps/), you can add the `applications` field:
+For modules that include [Single Page Apps](/operate/control/single-page-apps/), you can add the `applications` field:
 
 ```json
 {
@@ -283,7 +283,7 @@ The `applications` field is an array of application objects with the following p
 | `type`       | string | The type of application (currently only `"web"` is supported)                                     |
 | `entrypoint` | string | The path to the HTML entry point for your application                                             |
 
-For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
+For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/control/single-page-apps/).
 
 ### Environment variables
 

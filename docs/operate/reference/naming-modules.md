@@ -97,7 +97,7 @@ Determine the model name you want to use based on these requirements, then proce
 
 ## Valid application identifiers
 
-If your module includes a [single page app](/operate/reference/single-page-apps/), you need to define the application name in your module's `meta.json` file.
+If your module includes a [single page app](/operate/control/single-page-apps/), you need to define the application name in your module's `meta.json` file.
 Application names have the following requirements:
 
 - Application names must be all-lowercase.
@@ -117,7 +117,7 @@ For example, if your organization namespace is `acme` and your application name 
 https://dashboard_acme.viamapps.com
 ```
 
-For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/reference/single-page-apps/).
+For more information about Single Page Apps, see the [Single Page Apps documentation](/operate/control/single-page-apps/).
 
 ## Create a namespace for your organization
 
