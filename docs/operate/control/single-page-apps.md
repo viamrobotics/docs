@@ -250,8 +250,9 @@ Users will be prompted to authenticate with their Viam credentials before access
 
 ## Example
 
-For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
-For a Reach app that shows Camera feeds for a machine, see [Viam Camera Viewer](https://github.com/viam-labs/viam-camera-viewer).
+<!-- For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/). -->
+
+For a React app that shows Camera feeds for a machine, see [Viam Camera Viewer](https://github.com/viam-labs/viam-camera-viewer).
 
 ## Limitations
 
