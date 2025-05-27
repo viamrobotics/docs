@@ -272,7 +272,7 @@ If you are using a CSI camera v1.3 or v2.0, or v3.0 with a Raspberry Pi, use the
 For CSI cameras used with Jetsons, use the `viam:camera:csi` model provided by the same module.
 
 For Raspberry Pi AI cameras like the IMX500 AI camera, use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
-For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/inference/run-inference/).
+For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/inference/).
 {{% /expand%}}
 
 {{% expand "High CPU usage" %}}

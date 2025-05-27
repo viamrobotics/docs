@@ -1,5 +1,5 @@
 ---
-linkTitle: "Export"
+linkTitle: "Export data"
 title: "Export data"
 weight: 40
 description: "Download data from the Viam app using the data client API or the Viam CLI."

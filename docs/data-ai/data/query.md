@@ -1,5 +1,5 @@
 ---
-linkTitle: "Query"
+linkTitle: "Query data"
 title: "Query data"
 weight: 20
 layout: "docs"

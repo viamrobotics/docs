@@ -23,7 +23,7 @@ For example, a trigger could alert you when a camera feed detects an anomaly.
 
 {{< expand "A configured camera and vision service." >}}
 
-Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/inference/run-inference/).
+Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/inference/).
 
 {{< /expand >}}
 

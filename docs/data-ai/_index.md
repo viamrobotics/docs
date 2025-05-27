@@ -35,7 +35,7 @@ You can also monitor your machines through teleop, power your application logic,
 
 {{< how-to-expand "Capture data" "" "" "" "data-platform-capture" >}}
 {{< cards >}}
-{{% card link="/data-ai/capture-data/how-sync-works/" noimage="true" %}}
+{{% card link="/data-ai/capture-data/" noimage="true" %}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
 {{% card link="/data-ai/capture-data/conditional-sync/" noimage="true" %}}
 {{% card link="/data-ai/capture-data/filter-before-sync/" noimage="true" %}}
@@ -53,7 +53,7 @@ You can also monitor your machines through teleop, power your application logic,
 
 {{< how-to-expand "Run inference" "" "" "" "data-platform-ai" >}}
 {{< cards >}}
-{{% card link="/data-ai/inference/run-inference/" noimage="true" %}}
+{{% card link="/data-ai/inference/" noimage="true" %}}
 {{% card link="/data-ai/inference/alert/" noimage="true" %}}
 {{% card link="/data-ai/inference/act/" noimage="true" %}}
 {{< /cards >}}

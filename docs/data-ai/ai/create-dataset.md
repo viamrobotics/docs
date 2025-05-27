@@ -1,6 +1,6 @@
 ---
-linkTitle: "Create a dataset"
-title: "Create a dataset"
+linkTitle: "Create a training dataset"
+title: "Create a training dataset"
 weight: 10
 layout: "docs"
 type: "docs"

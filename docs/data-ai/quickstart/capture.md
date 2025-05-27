@@ -1,9 +1,9 @@
 ---
-linkTitle: "Capture data"
-title: "Capture data"
+linkTitle: "Capture image data"
+title: "Quickstart: Capture image data"
 weight: 20
 layout: "docs"
 type: "docs"
-description: "Use the vision service API to act based on inferences."
+description: "Capture images on your machine to use for inference."
 next: "/data-ai/quickstart/infer/"
 ---
