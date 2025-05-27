@@ -5,6 +5,8 @@ weight: 70
 layout: "docs"
 type: "docs"
 description: "Use the vision service API to act based on inferences."
+aliases:
+  - /data-ai/ai/act/
 next: "/data-ai/ai/upload-external-data/"
 ---
 

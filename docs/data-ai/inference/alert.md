@@ -4,6 +4,8 @@ title: "Alert on inferences"
 weight: 60
 layout: "docs"
 type: "docs"
+aliases:
+  - /data-ai/ai/alert/
 description: "Use triggers to send email notifications when inferences are made."
 ---
 

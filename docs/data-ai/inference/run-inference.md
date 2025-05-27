@@ -15,6 +15,7 @@ aliases:
   - /ml/vision/segmentation/
   - /ml/vision/
   - /get-started/quickstarts/detect-people/
+  - /data-ai/ai/run-inference/
 description: "Run inference on a model with a vision service or an SDK."
 ---
 

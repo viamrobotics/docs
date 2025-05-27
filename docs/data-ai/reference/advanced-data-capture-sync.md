@@ -7,6 +7,8 @@ layout: "docs"
 type: "docs"
 platformarea: ["data"]
 description: "Advanced data capture and data sync configurations."
+aliases:
+  - /data-ai/capture-data/advanced/advanced-data-capture-sync/
 prev: /data-ai/capture-data/conditional-sync/
 date: "2025-02-10"
 ---

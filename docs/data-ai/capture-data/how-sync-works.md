@@ -8,6 +8,9 @@ type: "docs"
 platformarea: ["data"]
 description: "Data capture and sync works differently for viam-server and viam-micro-server."
 date: "2024-12-18"
+aliases:
+  - /data-ai/capture-data/advanced/how-sync-works/
+  - /data-ai/capture-data/advanced/
 prev: "/data-ai/reference/advanced-data-capture-sync/"
 ---
 
