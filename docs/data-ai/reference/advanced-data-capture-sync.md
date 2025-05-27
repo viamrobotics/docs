@@ -1,6 +1,6 @@
 ---
-linkTitle: "Advanced data capture and sync configurations"
-title: "Advanced data capture and sync configurations"
+linkTitle: "Sync configuration"
+title: "Sync configuration"
 tags: ["data management", "data", "services"]
 weight: 10
 layout: "docs"
@@ -705,9 +705,9 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
 Configure how long your synced data remains stored in the cloud:
 
 - **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
-  See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-capture-attributes).
+  See the `retention_policy` field in [data capture configuration attributes](/data-ai/reference/advanced-data-capture-sync/#click-to-view-data-capture-attributes).
 - **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
-  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-management-attributes).
+  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/reference/advanced-data-capture-sync/#click-to-view-data-management-attributes).
 
 ### Sync optimization
 

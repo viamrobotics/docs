@@ -2,13 +2,13 @@
 linkTitle: "How sync works"
 title: "How sync works"
 tags: ["data management", "data", "services"]
-weight: 12
+weight: 10
 layout: "docs"
 type: "docs"
 platformarea: ["data"]
 description: "Data capture and sync works differently for viam-server and viam-micro-server."
 date: "2024-12-18"
-prev: "/data-ai/capture-data/advanced/advanced-data-capture-sync/"
+prev: "/data-ai/reference/advanced-data-capture-sync/"
 ---
 
 Data capture and cloud sync works differently for `viam-server` and `viam-micro-server`.
@@ -115,4 +115,4 @@ If your robot is offline and can't sync and your machine's disk fills up beyond 
 For more information, see [Automatic data deletion details](/data-ai/capture-data/advanced/how-sync-works/)
 
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
-For more information, see [Capture directly to MongoDB](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster).
+For more information, see [Capture directly to MongoDB](/data-ai/reference/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster).

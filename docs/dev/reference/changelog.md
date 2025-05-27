@@ -221,7 +221,7 @@ It is not possible to store metadata associated with a Viam user.
 
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
 
-The [hot data store](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store) allows you to access recent data faster.
+The [hot data store](/data-ai/reference/advanced-data-capture-sync/#capture-to-the-hot-data-store) allows you to access recent data faster.
 
 {{% /changelog %}}
 
@@ -591,7 +591,7 @@ See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) f
 
 {{% changelog date="2024-01-31" color="added" title="Use triggers to trigger actions" %}}
 
-You can now configure [triggers](/data-ai/data/advanced/alert-data/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
+You can now configure [triggers](/data-ai/data/alert-data/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 

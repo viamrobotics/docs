@@ -846,4 +846,4 @@ You can also view your training jobs' logs with the [`viam train logs`](/dev/too
 {{< /table >}}
 
 To use your new model with machines, you must [deploy it](/data-ai/ai/deploy/) with the appropriate ML model service.
-Then you can use another service, such as the vision service, to [run inference](/data-ai/ai/run-inference/).
+Then you can use another service, such as the vision service, to [run inference](/data-ai/inference/run-inference/).

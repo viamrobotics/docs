@@ -1,7 +1,7 @@
 ---
-linkTitle: "Train an ML model"
-title: "Train an ML model"
-weight: 300
+linkTitle: "Quickstart"
+title: "Quickstart"
+weight: 1
 layout: "empty"
 type: "docs"
 empty_node: true

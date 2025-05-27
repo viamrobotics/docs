@@ -80,7 +80,7 @@ Some models do not support all options, for example webcams do not capture point
 
 {{< /expand >}}
 
-For instructions on configuring data capture and sync with JSON, go to [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/) and follow the instructions for JSON examples.
+For instructions on configuring data capture and sync with JSON, go to [Advanced data capture and sync configurations](/data-ai/reference/advanced-data-capture-sync/) and follow the instructions for JSON examples.
 
 ## View captured data
 
@@ -121,12 +121,12 @@ For instructions on configuring data capture and sync with JSON, go to [Advanced
 For other ways to control data synchronization, see:
 
 - [Conditional sync](/data-ai/capture-data/conditional-sync/)
-- [Retention policies](/data-ai/capture-data/advanced/advanced-data-capture-sync/#cloud-data-retention)
-- [Sync optimization](/data-ai/capture-data/advanced/advanced-data-capture-sync/#sync-optimization)
+- [Retention policies](/data-ai/reference/advanced-data-capture-sync/#cloud-data-retention)
+- [Sync optimization](/data-ai/reference/advanced-data-capture-sync/#sync-optimization)
 
 {{< /alert >}}
 
 ## Next steps
 
-For more information on available configuration attributes and options like capturing directly to MongoDB or conditional sync, see [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/).
+For more information on available configuration attributes and options like capturing directly to MongoDB or conditional sync, see [Advanced data capture and sync configurations](/data-ai/reference/advanced-data-capture-sync/).
 To leverage AI, you can now [create a dataset](/data-ai/ai/create-dataset/) with the data you've captured.

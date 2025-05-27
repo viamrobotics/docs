@@ -1,5 +1,5 @@
 ---
-linkTitle: "Export data"
+linkTitle: "Export"
 title: "Export data"
 weight: 40
 description: "Download data from the Viam app using the data client API or the Viam CLI."
@@ -15,7 +15,7 @@ aliases:
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "cli"]
 date: "2024-12-03"
-next: "/data-ai/data/advanced/alert-data/"
+next: "/data-ai/data/alert-data/"
 ---
 
 You can download machine data from cloud storage to your computer with the Viam CLI.

@@ -1,5 +1,5 @@
 ---
-linkTitle: "Alert on data"
+linkTitle: "Alert"
 title: "Alert on data"
 weight: 60
 layout: "docs"

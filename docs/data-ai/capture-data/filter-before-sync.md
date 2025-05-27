@@ -1,5 +1,5 @@
 ---
-linkTitle: "Filter data"
+linkTitle: "Filter captured data"
 title: "Filter data before sync"
 weight: 13
 layout: "docs"

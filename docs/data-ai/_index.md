@@ -37,7 +37,7 @@ You can also monitor your machines through teleop, power your application logic,
 {{< cards >}}
 {{% card link="/data-ai/data/query/" noimage="true" %}}
 {{% card link="/data-ai/data/visualize/" noimage="true" %}}
-{{% card link="/data-ai/data/advanced/alert-data/" noimage="true" %}}
+{{% card link="/data-ai/data/alert-data/" noimage="true" %}}
 {{% card link="/data-ai/data/export/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
@@ -48,9 +48,9 @@ You can also monitor your machines through teleop, power your application logic,
 {{% card link="/data-ai/ai/train-tflite/" noimage="true" %}}
 {{% card link="/data-ai/ai/train/" noimage="true" %}}
 {{% card link="/data-ai/ai/deploy/" noimage="true" %}}
-{{% card link="/data-ai/ai/run-inference/" noimage="true" %}}
-{{% card link="/data-ai/ai/alert/" noimage="true" %}}
-{{% card link="/data-ai/ai/act/" noimage="true" %}}
+{{% card link="/data-ai/inference/run-inference/" noimage="true" %}}
+{{% card link="/data-ai/inference/alert/" noimage="true" %}}
+{{% card link="/data-ai/inference/act/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

@@ -83,7 +83,7 @@ The service works with models trained inside and outside the Viam app:
 On its own the ML model service only runs the model.
 After deploying your model, you need to configure an additional service to use the deployed model.
 For example, you can configure an [`mlmodel` vision service](/operate/reference/services/vision/) to visualize the inferences your model makes.
-Follow our docs to [run inference](/data-ai/ai/run-inference/) to add an `mlmodel` vision service and see inferences.
+Follow our docs to [run inference](/data-ai/inference/run-inference/) to add an `mlmodel` vision service and see inferences.
 
 For other use cases, consider [creating custom functionality with a module](/operate/get-started/other-hardware/).
 

@@ -251,7 +251,7 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Triggers](/data-ai/ai/alert/) allow you to send webhook requests or email notifications when certain events happen.
+[Triggers](/data-ai/inference/alert/) allow you to send webhook requests or email notifications when certain events happen.
 
 For example, you can set up a trigger to perform an action whenever an image of someone without a hard hat is uploaded to the cloud.
 

@@ -1,6 +1,6 @@
 ---
-linkTitle: "Train an ML model"
-title: "Train an ML model"
+linkTitle: "Run inference"
+title: "Run inference"
 weight: 300
 layout: "empty"
 type: "docs"

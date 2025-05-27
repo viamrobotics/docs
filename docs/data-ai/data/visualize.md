@@ -1,5 +1,5 @@
 ---
-linkTitle: "Visualize data"
+linkTitle: "Visualize"
 title: "Visualize data"
 weight: 20
 layout: "docs"
