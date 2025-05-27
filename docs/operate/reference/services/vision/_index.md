@@ -4,5 +4,5 @@ linkTitle: "Vision Service"
 weight: 20
 type: "docs"
 layout: "empty"
-canonical: "/data-ai/inference/run-inference/"
+canonical: "/data-ai/inference/"
 ---
