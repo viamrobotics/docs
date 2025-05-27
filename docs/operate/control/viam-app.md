@@ -1,6 +1,6 @@
 ---
-title: "Create a custom web interface"
-linkTitle: "Create a custom web interface"
+title: "Create a Viam app"
+linkTitle: "Create a Viam app"
 weight: 5
 layout: "docs"
 type: "docs"
