@@ -43,13 +43,16 @@ Click **View setup instructions** on the alert to **Set up your machine part**:
 {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="shadow imgzoom">}}
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
-Follow the instructions to install `viam-server` with `viam-agent`.
+Follow the instructions to install `viam server` with `viam-agent`.
+Your machine must have `curl` available in order to install `viam-agent`.
 
-{{< alert title="Important" color="note" >}}
-If you are using Linux, your machine must have `curl` available in order to install `viam-agent`.
-{{< /alert >}}
+{{< tabs >}}
+{{% tab name="Linux" %}}
 
-You can use `viam-agent` either with an existing machine's part ID and API key, or with an existing machine credentials file at <file>/etc/viam.json</file>.
+You can use `viam-agent` either with
+
+{{< tabs >}}
+{{% tab name="environment variables" %}}
 
 The command will be of the following form:
 
@@ -57,22 +60,33 @@ The command will be of the following form:
 sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
-{{< alert title="Note" color="note" >}}
-
-As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the machine cloud credentials from the Viam app into <file>/etc/viam.json</file>.
-You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow">}}
-
-Then run the following command to install `viam-agent`:
+{{% /tab %}}
+{{% tab name="a machine credentials file" %}}
 
 ```sh {class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
-{{< /alert >}}
+The machine credentials file must be at <file>/etc/viam.json</file>.
+You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
+
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow">}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 On Linux, `viam-agent` will install itself as a systemd service named `viam-agent`.
 For information on managing the service, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
+
+{{% /tab %}}
+{{% tab name="Windows" %}}
+
+On Windows, the [`viam-agent` executable](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe) installs `viam-agent` as a service.
+Your machine credentials file must be at <file>/etc/viam.json</file>.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 {{% /tablestep %}}
 {{< /table >}}
 
@@ -305,9 +319,18 @@ sudo journalctl --unit=viam-agent
 ```
 
 {{% /tab %}}
+{{% tab name="Event Viewer on Windows" %}}
+
+Open the Windows Event Viewer (`eventvwr` from the command line).
+
+You will find the `viam-agent` logs under `Windows Logs` > `Application`.
+
+{{<imgproc src="/manage/windows-logs.png" resize="1000x" class="imgzoom" style="width:600px" declaredimensions=true alt="Windows Event Viewer showing logs">}}
+
+{{% /tab %}}
 {{< /tabs >}}
 
-## Core options
+## Core options (Linux)
 
 <!-- prettier-ignore -->
 | Option | Description |
