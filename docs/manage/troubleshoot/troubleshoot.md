@@ -190,7 +190,7 @@ To verify if a module has successfully started, check the machine logs for speci
 1. You can filter the logs by typing the module name in the search box to focus only on messages related to your specific module.
    When a module starts successfully, you'll see a sequence of log messages similar to:
 
-   ```
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    info rdk.module.manager           module/manager.go:XXX        Starting up module         module <module-name>
    info rdk.module.manager           module/manager.go:XXX        Module successfully added  module <module-name>
    info rdk.modmanager               modmanager/manager.go:xxx    Modules successfully added modules [<module-name>]
