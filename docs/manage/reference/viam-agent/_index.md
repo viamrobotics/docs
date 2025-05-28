@@ -43,7 +43,7 @@ Click **View setup instructions** on the alert to **Set up your machine part**:
 {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="shadow imgzoom">}}
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
-Follow the instructions to install `viam server` with `viam-agent`.
+Follow the instructions to install `viam-server` with `viam-agent`.
 
 {{< alert title="Important" color="note" >}}
 If you are using Linux, your machine must have `curl` available in order to install `viam-agent`.
