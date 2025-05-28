@@ -9,6 +9,10 @@ date: "2025-04-29"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% hiddencontent %}}
+`DoCommand` is styled as `do_command` in Python.
+{{% /hiddencontent %}}
+
 The `DoCommand` method is a flexible wrapper that you can use to send commands that have no corresponding built-in API method.
 `DoCommand` is part of every [component](/dev/reference/apis/#component-apis) and [service API](/dev/reference/apis/#service-apis), though most models do not implement it.
 
