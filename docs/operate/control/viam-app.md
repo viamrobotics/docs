@@ -4,10 +4,10 @@ linkTitle: "Create a Viam app"
 weight: 5
 layout: "docs"
 type: "docs"
-description: "Create and deploy custom web interfaces for your machines as single-page applications without managing hosting and authentication."
+description: "Create and deploy custom web interfaces for your machines without managing hosting and authentication."
 ---
 
-Create and deploy custom web interfaces for your machines as single-page applications without managing hosting and authentication.
+Create and deploy custom web interfaces for your machines without managing hosting and authentication.
 Once deployed, apps are accessible from a dedicated URL (`appname_publicnamespace.viamapplications.com`) and hosting and authentication is handled for you.
 
 When opening an app, users log in and then select a machine they have access to.
@@ -34,8 +34,8 @@ You can build a custom web interface to access your machines using your preferre
 
 ### Access machines from your app
 
-Viam apps provide access to a machine by placing its API key in your local storage.
-You can access the data from your browser's local storage as follows:
+Viam apps provide access to a machine by placing its API key in your cookies.
+You can access the data from your browser's cookies as follows:
 
 ```ts {class="line-numbers linkable-line-numbers" data-line=""}
 import Cookies from "js-cookie";
@@ -53,7 +53,7 @@ machineId = window.location.pathname.split("/")[2];
 } = JSON.parse(Cookies.get(machineId)!));
 ```
 
-For developing your app on localhost, add the same information to your browsers local storage.
+For developing your app on localhost, add the same information to your browser's cookies.
 
 1. Navigate to [Camera Viewer](https://camera-viewer_naomi.viamapplications.com/).
 2. Log in and select the machine you'd like to use for testing.
@@ -192,7 +192,7 @@ The `applications` field is an array of application objects with the following p
 <!-- prettier-ignore -->
 | Property     | Type   | Description |
 | ------------ | ------ | ----------- |
-| `name`       | string | The name of your application, which will be a part of the app's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [](/operate/reference/naming-modules/#valid-application-identifiers). |
+| `name`       | string | The name of your application, which will be a part of the app's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [Valid application identifiers](/operate/reference/naming-modules/#valid-application-identifiers). |
 | `type` | string | The type of application (currently only `"single_machine"` is supported). |
 | `entrypoint` | string | The path to the HTML entry point for your application. The `entrypoint` field specifies the path to your application's entry point. For example: <ul><li><code>"dist/index.html"</code>: Static content rooted at the `dist` directory</li><li><code>"dist/foo.html"</code>: Static content rooted at the `dist` directory, with `foo.html` as the entry point</li><li><code>"dist/"</code>: Static content rooted at the `dist` directory (assumes `dist/index.html` exists)</li><li><code>"dist/bar/foo.html"</code>: Static content rooted at `dist/bar` with `foo.html` as the entry point</li></ul> |
 
@@ -265,5 +265,5 @@ For a React app that shows Camera feeds for a machine, see [Viam Camera Viewer](
 
 - Customer apps are stored publicly available on the internet
 - Avoid uploading sensitive information in your application code or assets
-- API keys and secrets are stored in the browser's localStorage or sessionStorage
+- API keys and secrets are stored in the browser's cookies
 - Authenticate users with FusionAuth
