@@ -42,6 +42,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Deprecated explicit dependencies" date="2025-05-30" %}}
+
+You can now create and use Viam apps to build custom applications that interact with your Viam-powered machines through the Viam SDKs. For more information, see [Viam apps](/operate/control/viam-app/).
+
+{{% /changelog %}}
+
 {{% changelog color="changed" title="Deprecated explicit dependencies" date="2025-05-05" %}}
 
 Some older modules use "explicit dependencies" which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
