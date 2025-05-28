@@ -20,7 +20,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and upload a module](/operate/get-started/other-hardware/), you can update, delete, or change its visibility settings.
+After you [create and upload a module](/operate/get-started/other-hardware/create-module/), you can update, delete, or change its visibility settings.
 
 For information on pinning module deployments to versions, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
 
@@ -38,7 +38,7 @@ Once your module is in the [Viam Registry](https://app.viam.com/registry), there
 
 Use [GitHub Actions](https://docs.github.com/actions) to automatically build and deploy your new module version when you create a tag or release in GitHub:
 
-1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
+1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/create-module/#metajson-reference) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
    {{% alert title="Important" color="note" %}}
@@ -50,7 +50,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    {{% alert title="Tip" color="tip" %}}
 
-   If you used `viam module generate` to create your module and enabled cloud build, all you need to do to trigger a new build is create a tag and publish a release in GitHub as you did when you [first published the module](/operate/get-started/other-hardware/#upload-your-module).
+   If you used `viam module generate` to create your module and enabled cloud build, all you need to do to trigger a new build is create a tag and publish a release in GitHub as you did when you [first published the module](/operate/get-started/other-hardware/create-module/#upload-your-module).
 
    {{% /alert %}}
 
@@ -284,7 +284,7 @@ While the registry supports additional platforms like `windows/amd64`, `linux/ar
 
 Use the [Viam CLI](/dev/tools/cli/) to manually update your module:
 
-1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
+1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/create-module/#metajson-reference) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
 2. For Python modules only, package your files as an archive, for example:
@@ -329,7 +329,7 @@ To change the visibility:
      Only organization members can edit the module.
      Not listed in the registry.
 
-You can also edit the visibility by editing the [meta.json](/operate/get-started/other-hardware/#metajson-reference) file and then running the following [CLI](/dev/tools/cli/#module) command:
+You can also edit the visibility by editing the [meta.json](/operate/get-started/other-hardware/create-module/#metajson-reference) file and then running the following [CLI](/dev/tools/cli/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module update
