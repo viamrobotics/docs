@@ -41,7 +41,10 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
+   {{% alert title="Important" color="note" %}}
    Make sure the `url` field contains the URL of the GitHub repo that contains your module code.
+   This field is required for cloud build to work.
+   {{% /alert %}}
 
 1. Push your changes to your module GitHub repository.
 
@@ -270,7 +273,7 @@ The following table lists all available platforms:
 | `darwin/arm64` | ✅ | ✅ | macOS | For Apple Silicon Macs (M1/M2/M3). |
 | `linux/arm32v6` | ✅ | ❌ | N/A | For older ARM devices; must be built manually. |
 | `linux/arm32v7` | ✅ | ❌ | N/A | For 32-bit ARM devices; must be built manually. |
-| `windows/amd64` | ✅ | ⚠️ | N/A | <ul><li>Cloud builds work for Go modules but have issues linking to C libraries.</li><li>Windows support is still in development.</li></ul> |
+| `windows/amd64` | ✅ | ⚠️ | N/A | <ul><li>Cloud builds work for Go modules but have issues. linking to C libraries.</li><li>Windows support is still in development.</li></ul> |
 | `darwin/amd64` | ❌ | ❌ | N/A | Intel Macs; not recommended as Apple is phasing this platform out |
 
 {{% alert title="Note" color="note" %}}

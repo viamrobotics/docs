@@ -65,9 +65,9 @@ The lifecycle of a module and the resources it provides is as follows:
 1. `viam-server` starts, and if it is connected to the internet, it checks for configuration updates.
 1. `viam-server` starts any configured modules.
 1. When a module initializes, it registers its model or models and associated [APIs](/dev/reference/apis/) with `viam-server`, making the models available for use.
-1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the [dependencies](/operate/get-started/other-hardware/dependencies/) of the resource.
-1. If a required dependency is not already running, `viam-server` starts it before starting the resource.
-   If a required dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
+1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the dependencies of the resource.
+1. If a dependency is not already running, `viam-server` starts it before starting the resource.
+   If a dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
 1. `viam-server` calls the resource's constructor to build the resource based on its configuration.
    Typically, the constructor calls the reconfigure function.
 1. If construction or reconfiguration fails due to a validation failure or an exception thrown by the modular resource's constructor or its reconfigure method, `viam-server` attempts to construct or reconfigure the resource every 5 seconds.
@@ -929,7 +929,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Create a GitHub repo**
+**Create a GitHub repo and link to it from your `meta.json`**
 
 Create a GitHub repository with all the source code and the README for your module.
 This is required for cloud build to work.
@@ -977,8 +977,8 @@ Do not change the <code>module_id</code>.</p>
 <tr>
 <td><code>url</code></td>
 <td>string</td>
-<td>Optional</td>
-<td>The URL of the GitHub repository containing the source code of the module. Required for cloud build.</td>
+<td><strong>Required</strong> for cloud build</td>
+<td>The URL of the GitHub repository containing the source code of the module. Cloud build will fail if you do not provide this. Optional for local modules.</td>
 </tr>
 <tr>
 <td><code>description</code></td>
