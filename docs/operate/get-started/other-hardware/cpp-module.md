@@ -1627,7 +1627,7 @@ Add the module to your machine's config, then add the component or service it im
 
    - the module's executable file, such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
-     If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) within it.
+     If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/operate/get-started/other-hardware/create-module/#metajson-reference) within it.
 
 1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
 

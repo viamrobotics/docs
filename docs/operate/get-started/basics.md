@@ -77,7 +77,7 @@ Viam supports a wide variety of sensors, cameras, and other physical hardware, w
 
 These standardized APIs are implemented by {{< glossary_tooltip term_id="module" text="modules" >}} that provide drivers for specific models of hardware.
 
-Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](/operate/get-started/other-hardware/) that provides a driver for the hardware.
+Any hardware that is not already supported by a Viam module can be added into Viam's system of modular resources by [creating a new module](/operate/get-started/other-hardware/create-module/) that provides a driver for the hardware.
 
 ## How do I get started?
 
