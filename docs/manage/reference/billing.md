@@ -33,6 +33,60 @@ For Pricing information, please see [pricing & billing explained](https://www.vi
 
 ![Payment and billing overview](/billing-overview.png)
 
+## Replace credit card payment method
+
+To replace the credit card payment method for an organization, the billing person must have access to the organization's billing settings. Follow these steps:
+
+### 1. Create an account
+
+If the billing person doesn't already have a Viam account:
+
+1. Go to [app.viam.com](https://app.viam.com)
+2. Create a new account using the billing person's email address
+
+### 2. Request access to the organization
+
+The billing person needs to be granted access to the organization that requires the payment method change:
+
+1. An existing organization owner should navigate to the organization settings:
+   - Click on the organization dropdown in the top right corner
+   - Select **Settings**
+2. In the **Members** section, click **Grant access**
+3. Enter the billing person's email address
+4. Select the organization as the **Entity** to share
+5. Assign the **Owner** role (required for billing access)
+6. Click **Invite**
+
+Alternatively, the billing person can request an invite by providing their email address to an existing organization owner.
+
+### 3. Access payment and billing settings
+
+Once the billing person has organization access:
+
+1. Log in to [app.viam.com](https://app.viam.com)
+2. Click on the organization dropdown in the top right corner
+3. Select **Payment and billing**
+
+### 4. Remove existing payment method
+
+1. On the **Payment and billing** page, locate the current payment method
+2. Click **Remove payment method**
+3. Confirm the removal when prompted
+
+### 5. Add new payment method
+
+1. Click **Add payment method**
+2. Enter the new credit card information:
+   - Card number
+   - Expiration date
+   - CVV/CVC code
+   - Billing address
+3. Click **Save** or **Add payment method** to complete the process
+
+{{< alert title="Important" color="caution" >}}
+Ensure the new payment method is added immediately after removing the old one to avoid any service interruptions. Organizations without valid payment methods may experience limitations on their services.
+{{< /alert >}}
+
 ## Download an invoice
 
 You can view all your monthly invoices for your organization in the **Invoices** section of the **Payment & Billing** page.
