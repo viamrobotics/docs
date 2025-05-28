@@ -270,7 +270,7 @@ The following table lists all available platforms:
 | `darwin/arm64` | ✅ | ✅ | macOS | For Apple Silicon Macs (M1/M2/M3). |
 | `linux/arm32v6` | ✅ | ❌ | N/A | For older ARM devices; must be built manually. |
 | `linux/arm32v7` | ✅ | ❌ | N/A | For 32-bit ARM devices; must be built manually. |
-| `windows/amd64` | ✅ | ⚠️ | N/A | <ul><li>Cloud builds work for Go modules but have issues. linking to C libraries.</li><li>Windows support is still in development.</li></ul> |
+| `windows/amd64` | ✅ | ⚠️ | N/A | <ul><li>Cloud builds work for Go modules but have issues linking to C libraries.</li><li>Windows support is still in development.</li></ul> |
 | `darwin/amd64` | ❌ | ❌ | N/A | Intel Macs; not recommended as Apple is phasing this platform out |
 
 {{% alert title="Note" color="note" %}}
