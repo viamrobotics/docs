@@ -100,6 +100,9 @@ class FlutterParser:
 
                     method_name = tag.get('id')
 
+                    if method_name.endswith(".new"):
+                        continue
+
                     if not method_name in flutter_ignore_apis:
 
                         ## Look up method_name in proto_map file, and return matching proto:
