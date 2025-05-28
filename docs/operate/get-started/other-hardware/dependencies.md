@@ -26,7 +26,7 @@ The component configuration for the sensor could look like this, with the name o
 ```
 
 Dependencies are configured just like any other resource attribute.
-The difference is that dependencies represent other resources that must be built before the resource that depends on them.
+The difference is that dependencies represent other resources that are accessed by the resource that depends on them.
 
 When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/#how-and-where-do-modules-run), it builds the dependencies first.
 
@@ -41,7 +41,9 @@ To access resources from within a module, use dependencies:
 
 Use required dependencies when your module should fail to build or reconfigure if a dependency does not successfully start.
 
-`viam-server` will not build or reconfigure a module if the module has required dependencies that are not available.
+`viam-server` builds required dependencies before building the resource that depends on them.
+
+`viam-server` will not build or reconfigure a resource if the resource has required dependencies that are not available.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -182,6 +184,8 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 If an optional dependency does not start, the modular resource will continue to build and reconfigure without it.
 `viam-server` reattempts to construct the optional dependency every 5 seconds.
 When an optional dependency constructs successfully, your modular resource reconfigures so it can access the optional dependency.
+
+Optional dependencies are not necessarily built first, even if they are available.
 
 Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
