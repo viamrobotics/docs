@@ -42,6 +42,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
+
+The frame tab no longer exists in the Viam app.
+To add a frame to a component, click the **+ Add Frame** button on the component's configuration card.
+
+{{% /changelog %}}
+
 {{% changelog color="changed" title="Deprecated explicit dependencies" date="2025-05-05" %}}
 
 Some older modules use "explicit dependencies" which require users to list the names of dependencies in the `depends_on` field of the resource's configuration, for example:
