@@ -66,7 +66,7 @@ The lifecycle of a module and the resources it provides is as follows:
 1. `viam-server` starts any configured modules.
 1. When a module initializes, it registers its model or models and associated [APIs](/dev/reference/apis/) with `viam-server`, making the models available for use.
 1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the [dependencies](/operate/get-started/other-hardware/dependencies/) of the resource.
-1. If a dependency is not already running, `viam-server` starts it before starting the resource.
+1. If a required dependency is not already running, `viam-server` starts it before starting the resource.
    If a required dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
 1. `viam-server` calls the resource's constructor to build the resource based on its configuration.
    Typically, the constructor calls the reconfigure function.
