@@ -1,6 +1,6 @@
 ---
-title: "The Robot Frame System"
-linkTitle: "Frame System"
+title: "The frame system"
+linkTitle: "Frame system"
 description: "The frame system holds reference frame information for the relative position of components in space."
 type: docs
 weight: 50
@@ -37,7 +37,7 @@ It is a mostly static system for storing the "reference frame" of each component
 
 ## Configuration
 
-You can configure a reference frame within the frame system for each of your machine's components on the **Frame** subtab of the **CONFIGURE** tab or in the raw **JSON** configuration.
+You can configure a reference frame within the frame system for each of your machine's components:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 
