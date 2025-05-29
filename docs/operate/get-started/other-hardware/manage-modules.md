@@ -266,15 +266,15 @@ When using cloud build, you can specify which platforms you want to build your m
 The following table lists all available platforms:
 
 <!-- prettier-ignore -->
-| Platform | Recommended | Supported in cloud build | Container used by cloud build | Notes |
-|----------|-------------|--------------------------|------------------------------|-------|
-| `linux/amd64` | ✅ | ✅ | Ubuntu | Standard x86_64 Linux platform. |
-| `linux/arm64` | ✅ | ✅ | Ubuntu | For ARM64 Linux devices like Raspberry Pi 4. |
-| `darwin/arm64` | ✅ | ✅ | macOS | For Apple Silicon Macs (M1/M2/M3). |
-| `linux/arm32v6` | ✅ | ❌ | N/A | For older ARM devices; must be built manually. |
-| `linux/arm32v7` | ✅ | ❌ | N/A | For 32-bit ARM devices; must be built manually. |
-| `windows/amd64` | ✅ | ⚠️ | N/A | <ul><li>Cloud builds work for Go modules but have issues linking to C libraries.</li><li>Windows support is still in development.</li></ul> |
-| `darwin/amd64` | ❌ | ❌ | N/A | Intel Macs; not recommended as Apple is phasing this platform out. |
+| Platform | Supported in cloud build | Container used by cloud build | Notes |
+|----------|--------------------------|------------------------------|-------|
+| `linux/amd64` | ✅ | Ubuntu | Standard x86_64 Linux platform. |
+| `linux/arm64` | ✅ | Ubuntu | For ARM64 Linux devices like Raspberry Pi 4. |
+| `darwin/arm64` | ✅ | macOS | For Apple Silicon Macs (M1/M2/M3). |
+| `linux/arm32v6` | ❌ | N/A | For older ARM devices; must be built manually. |
+| `linux/arm32v7` | ❌ | N/A | For 32-bit ARM devices; must be built manually. |
+| `windows/amd64` | ⚠️ | N/A | <ul><li>Cloud builds work for Go modules but have issues linking to C libraries.</li><li>Windows support is still in development.</li></ul> |
+| `darwin/amd64` | ❌ | N/A | Intel Macs; must be built manually. You can choose to support it, though many modules do not since Apple is phasing out this platform. |
 
 {{% alert title="Note" color="note" %}}
 While the registry supports additional platforms like `windows/amd64`, `linux/arm32v6`, and `linux/arm32v7`, these are not currently supported by cloud build and must be [built and uploaded manually](#update-manually).
