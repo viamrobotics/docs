@@ -299,6 +299,7 @@ In the Python SDK, all references to `subtype` that refer to the {{< glossary_to
   - Backwards compatibility is maintained with aliases and deprecation warnings
 
 Who is affected:
+
 - Users with unusual Python module implementations (not using the CLI module generator or `EasyResource`)
 - All users adding [custom APIs](/operate/reference/advanced-modules/create-subtype/)
 
