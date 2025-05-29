@@ -309,7 +309,7 @@ For example, if your module contains `Vision.SUBTYPE`, change it as follows:
 # Old way
 module.add_model_from_registry(Vision.SUBTYPE, my_model.MODEL)
 
-# New way  
+# New way
 module.add_model_from_registry(Vision.API, my_model.MODEL)
 ```
 
