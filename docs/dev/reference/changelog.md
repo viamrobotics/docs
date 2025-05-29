@@ -280,6 +280,40 @@ For updated Go usage information, see [`GetImage`](/dev/reference/apis/component
 
 {{% /changelog %}}
 
+{{% changelog color="changed" title="Subtype renamed to API" date="2025-01-28" %}}
+
+In the Python SDK, all references to `subtype` that refer to the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} have been renamed to `api` to be consistent with the RDK:
+
+- The `SUBTYPE` variable in every resource is now `API`
+
+- Registry method name changes:
+  - `register_subtype()` → `register_api()`
+  - `lookup_subtype()` → `lookup_api()`
+  - `REGISTERED_SUBTYPES()` → `REGISTERED_APIS()`
+
+- Parameter name changes:
+  - Methods like `register_resource_creator()`, `lookup_api()`, `lookup_resource_creator()`, and `lookup_validator()` now use `api` instead of `subtype` parameter names
+
+- DataClient changes:
+  - References to `resource_subtype` have been changed to `resource_api`
+  - Backwards compatibility is maintained with aliases and deprecation warnings
+
+Who is affected:
+- Users with unusual Python module implementations (not using the CLI module generator or `EasyResource`)
+- All users adding [custom APIs](/operate/reference/advanced-modules/create-subtype/)
+
+For example, if your module contains `Vision.SUBTYPE`, change it as follows:
+
+```python {class="line-numbers linkable-line-numbers"}
+# Old way
+module.add_model_from_registry(Vision.SUBTYPE, my_model.MODEL)
+
+# New way  
+module.add_model_from_registry(Vision.API, my_model.MODEL)
+```
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Button API and switch API" date="2025-01-27" %}}
 
 Two new component APIs, the [button API](/dev/reference/apis/components/button/) and [switch API](/dev/reference/apis/components/switch/), have been added.
