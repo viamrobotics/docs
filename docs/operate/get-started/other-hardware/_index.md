@@ -931,7 +931,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Create a GitHub repo**
+**Create a GitHub repo and link to it from your `meta.json`**
 
 Create a GitHub repository with all the source code and the README for your module.
 This is required for cloud build to work.
