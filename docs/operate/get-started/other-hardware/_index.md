@@ -929,7 +929,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Create a GitHub repo**
+**Create a GitHub repo and link to it from your `meta.json`**```
 
 Create a GitHub repository with all the source code and the README for your module.
 This is required for cloud build to work.
@@ -977,8 +977,8 @@ Do not change the <code>module_id</code>.</p>
 <tr>
 <td><code>url</code></td>
 <td>string</td>
-<td>Optional</td>
-<td>The URL of the GitHub repository containing the source code of the module. Required for cloud build.</td>
+<td><strong>Required</strong> for cloud build</td>
+<td>The URL of the GitHub repository containing the source code of the module. Cloud build will fail if you do not provide this. Optional for local modules.</td>
 </tr>
 <tr>
 <td><code>description</code></td>
