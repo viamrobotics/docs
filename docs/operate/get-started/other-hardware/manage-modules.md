@@ -41,10 +41,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 1. Edit your module code and update the [`meta.json`](/operate/get-started/other-hardware/#metajson-reference) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
-   {{% alert title="Important" color="note" %}}
    Make sure the `url` field contains the URL of the GitHub repo that contains your module code.
-   This field is required for cloud build to work.
-   {{% /alert %}}
 
 1. Push your changes to your module GitHub repository.
 
@@ -110,7 +107,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 | `"setup"` | Optional | Command to run for setting up the build environment. |
 | `"build"` | **Required** | Command to run to build the module tarball. |
 | `"path"` | Optional | Path to the build module tarball. |
-| `"arch"` | **Required** | Array of architectures to build for. Options: `"any"`, `"linux/any"`, `"darwin/any"`, `"any/amd64"`, `"any/arm64"`, `"any/arm32v6"`, `"any/arm32v7"`, `"linux/amd64"`, `"linux/arm64"`, `"linux/arm32v6"`, `"linux/arm32v7"`, `"darwin/amd64"`, `"darwin/arm64"`, `"windows/amd64"`. For more information see [Supported platforms for automatic updates](#supported-platforms-for-automatic-updates). |
+| `"arch"` | **Required** | Array of architectures to build for. Options: `"any"`, `"linux/any"`, `"darwin/any"`, `"any/amd64"`, `"any/arm64"`, `"any/arm32v6"`, `"any/arm32v7"`, `"linux/amd64"`, `"linux/arm64"`, `"linux/arm32v6"`, `"linux/arm32v7"`, `"darwin/arm64"`, `"windows/amd64"`. For more information see [Supported platforms for automatic updates](#supported-platforms-for-automatic-updates). Note that Intel Macs (darwin/amd64) are not supported. |
 | `"darwin_deps"` | **Required** | Array of homebrew dependencies for Darwin builds. Explicitly pass `[]` for empty. Default: `["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"]` |
 
 {{% /expand %}}
@@ -268,9 +265,9 @@ The following table lists all available platforms:
 <!-- prettier-ignore -->
 | Platform | Recommended | Supported in cloud build | Container used by cloud build | Notes |
 |----------|-------------|--------------------------|------------------------------|-------|
-| `linux/amd64` | ✅ | ✅ | Ubuntu | Standard x86_64 Linux platform, |
-| `linux/arm64` | ✅ | ✅ | Ubuntu | For ARM64 Linux devices like Raspberry Pi 4, |
-| `darwin/arm64` | ✅ | ✅ | macOS | For Apple Silicon Macs (M1/M2/M3). |
+| `linux/amd64` | ✅ | ✅ | Ubuntu | Standard x86_64 Linux platform. |
+| `linux/arm64` | ✅ | ✅ | Ubuntu | For ARM64 Linux devices like Raspberry Pi 4. |
+| `darwin/arm64` | ✅ | ✅ | macOS | For Apple Silicon Macs (with M-series chips). |
 | `linux/arm32v6` | ✅ | ❌ | N/A | For older ARM devices; must be built manually. |
 | `linux/arm32v7` | ✅ | ❌ | N/A | For 32-bit ARM devices; must be built manually. |
 | `windows/amd64` | ✅ | ⚠️ | N/A | <ul><li>Cloud builds work for Go modules but have issues linking to C libraries.</li><li>Windows support is still in development.</li></ul> |

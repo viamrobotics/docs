@@ -40,6 +40,8 @@ If your physical or virtual hardware is not [already supported](/operate/get-sta
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
+You can develop modules on all major platforms, including Linux, macOS (Apple Silicon-only), and Windows.
+
 {{% hiddencontent %}}
 If you want to create a "custom module", this page provides instructions for creating one in Python and Go.
 {{% /hiddencontent %}}
@@ -929,7 +931,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Create a GitHub repo and link to it from your `meta.json`**
+**Create a GitHub repo**
 
 Create a GitHub repository with all the source code and the README for your module.
 This is required for cloud build to work.
@@ -977,8 +979,8 @@ Do not change the <code>module_id</code>.</p>
 <tr>
 <td><code>url</code></td>
 <td>string</td>
-<td><strong>Required</strong> for cloud build</td>
-<td>The URL of the GitHub repository containing the source code of the module. Cloud build will fail if you do not provide this. Optional for local modules.</td>
+<td>Optional</td>
+<td>The URL of the GitHub repository containing the source code of the module. Required for cloud build.</td>
 </tr>
 <tr>
 <td><code>description</code></td>
