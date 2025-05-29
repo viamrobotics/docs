@@ -287,11 +287,13 @@ In the Python SDK, all references to `subtype` that refer to the {{< glossary_to
 - The `SUBTYPE` variable in every resource is now `API`
 
 - Registry method name changes:
+
   - `register_subtype()` → `register_api()`
   - `lookup_subtype()` → `lookup_api()`
   - `REGISTERED_SUBTYPES()` → `REGISTERED_APIS()`
 
 - Parameter name changes:
+
   - Methods like `register_resource_creator()`, `lookup_api()`, `lookup_resource_creator()`, and `lookup_validator()` now use `api` instead of `subtype` parameter names
 
 - DataClient changes:
