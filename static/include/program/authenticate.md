@@ -102,7 +102,7 @@ Future<void> connectToViam() async {
 {{< /tabs >}}
 
 {{< alert title="Caution" color="caution" >}}
-Do not share your machine part API key or machine address publicly.
+Do not share your machine part API key publicly.
 Sharing this information could compromise your system security by allowing unauthorized access to your machine, or to the computer running your machine.
 {{< /alert >}}
 
