@@ -212,12 +212,7 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 
 ### Environment Variables for viam-server
 
-You can configure environment variables for `viam-server` using the `viam_server_env` setting in `advanced_settings`. This is useful for:
-
-- **Debugging**: Enable verbose logging for third-party libraries like pion (used for WebRTC)
-- **Network Configuration**: Configure SOCKS proxy settings for `viam-server`
-- **Development**: Test features during development without requiring API changes
-- **Module Configuration**: Pass environment variables to modules launched by `viam-server`
+You can configure environment variables for `viam-server` using the `viam_server_env` setting in `advanced_settings`.
 
 {{< alert title="Important" color="note" >}}
 When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply the changes. This restart will occur immediately if `viam-server` is in a maintenance window or not currently processing configuration changes.
