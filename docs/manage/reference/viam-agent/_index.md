@@ -103,6 +103,10 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "disable_viam_server": false,
       "disable_network_configuration": false,
       "disable_system_configuration": false
+      "viam_server_env": {
+        "MODULE_DEBUG": "1",
+        "BLUETOOTH": "FALSE"
+      }
     },
     "network_configuration": {
       "manufacturer": "viam",
@@ -202,8 +206,75 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 | `disable_network_configuration` | boolean | Optional | Disables the network and hotspot configuration, as well as the configuration of additional networks. Default: `false`. |
 | `disable_system_configuration` | boolean | Optional | Disables the system configuration. Default: `false`. |
 | `disable_viam_server` | boolean | Optional | Disable `viam-server` remotely. This option is often used by developers working on Viam agent or when manually running `viam-server`. Default: `false`. |
+| `viam_server_env` | object | Optional | A map of environment variable names to values that will be passed to `viam-server` and its child processes (including modules). Both keys and values must be strings. See [Environment Variables for viam-server](#environment-variables-for-viam-server). Default: `{}` (empty). |
 | `viam_server_start_timeout_minutes` | integer | Optional | Specify a time after which, if `viam-server` hasn't successfully started, Viam agent will kill it and restart. Default: `10`. |
 | `wait_for_update_check` | boolean | Optional | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `false`. |
+
+### Environment Variables for viam-server
+
+You can configure environment variables for `viam-server` using the `viam_server_env` setting in `advanced_settings`. This is useful for:
+
+- **Debugging**: Enable verbose logging for third-party libraries like pion (used for WebRTC)
+- **Network Configuration**: Configure SOCKS proxy settings for `viam-server`
+- **Development**: Test features during development without requiring API changes
+- **Module Configuration**: Pass environment variables to modules launched by `viam-server`
+
+{{< alert title="Important" color="note" >}}
+When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply the changes. This restart will occur immediately if `viam-server` is in a maintenance window or not currently processing configuration changes.
+{{< /alert >}}
+
+#### Example configurations
+
+**Enable debug logging for WebRTC (pion library):**
+
+```json
+{
+  "agent": {
+    "advanced_settings": {
+      "viam_server_env": {
+        "PION_LOG_TRACE": "all"
+      }
+    }
+  }
+}
+```
+
+**Configure SOCKS proxy:**
+
+```json
+{
+  "agent": {
+    "advanced_settings": {
+      "viam_server_env": {
+        "HTTPS_PROXY": "socks5://proxy.example.com:1080",
+        "HTTP_PROXY": "socks5://proxy.example.com:1080"
+      }
+    }
+  }
+}
+```
+
+**Multiple environment variables:**
+
+```json
+{
+  "agent": {
+    "advanced_settings": {
+      "viam_server_env": {
+        "MODULE_DEBUG": "1",
+        "BLUETOOTH": "FALSE",
+        "CUSTOM_SETTING": "value"
+      }
+    }
+  }
+}
+```
+
+To remove an environment variable, simply remove it from the `viam_server_env` object and save your configuration.
+
+{{< alert title="Note" color="note" >}}
+Environment variables set through `viam_server_env` are passed to `viam-server` and all child processes it launches, including modules. Existing environment variables from the agent's environment (such as `HOME`, `PWD`, `TERM`, `PATH`) are also inherited by `viam-server`.
+{{< /alert >}}
 
 ### Reduce startup time
 
