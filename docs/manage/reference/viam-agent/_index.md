@@ -104,8 +104,7 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "disable_network_configuration": false,
       "disable_system_configuration": false
       "viam_server_env": {
-        "MODULE_DEBUG": "1",
-        "BLUETOOTH": "FALSE"
+        "CUSTOM_VAR": "value"
       }
     },
     "network_configuration": {
