@@ -60,15 +60,21 @@ Organizations without valid payment methods may experience limitations on their 
 
 ## Download an invoice
 
-You can view all your monthly invoices for your organization in the **Invoices** section of the **Payment & Billing** page.
-To download an invoice for a month click on **Download (PDF)** next to the relevant month.
+You can view all your monthly invoices for your organization:
+
+1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
+   You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
+1. Find the **Invoices** section of the **Payment & Billing** page.
+1. Click on **Download (PDF)** next to the relevant month.
 
 ## Set billing alerts
 
-You can set alerts to receive an email notification when your monthly spend exceeds a certain threshold.
+You can set alerts to receive an email notification when your monthly spend exceeds a certain threshold:
 
-- Scroll to the bottom of the **Payment & Billing** page.
-- Click **Set amount** and enter a monthly threshold.
+1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
+   You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
+1. Scroll to the bottom of the **Payment & Billing** page.
+1. Click **Set amount** and enter a monthly threshold.
 
 ## Help
 
