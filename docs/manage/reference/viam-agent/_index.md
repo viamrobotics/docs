@@ -81,8 +81,8 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
-On Windows, the [`viam-agent` executable](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe) installs `viam-agent` as a service.
-Your machine credentials file must be at <file>/etc/viam.json</file>.
+On Windows, the [`viam-agent` installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe) installs `viam-agent` as a service.
+Your machine credentials file must be at <file>\etc\viam.json</file>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -323,7 +323,7 @@ sudo journalctl --unit=viam-agent
 
 Open the Windows Event Viewer (`eventvwr` from the command line).
 
-You will find the `viam-agent` logs under `Windows Logs` > `Application`.
+You will find the `viam-agent` logs under **Windows Logs > Application** on the **Details** tab
 
 {{<imgproc src="/manage/windows-logs.png" resize="1000x" class="imgzoom" style="width:600px" declaredimensions=true alt="Windows Event Viewer showing logs">}}
 
