@@ -237,7 +237,7 @@ This restart will occur immediately if `viam-server` is in a maintenance window 
 }
 ```
 
-To remove an environment variable, simply remove it from the `viam_server_env` object and save your configuration.
+To remove an environment variable, remove it from the `viam_server_env` object and save your configuration.
 
 ### Reduce startup time
 
