@@ -34,7 +34,7 @@ For Pricing information, please see [pricing & billing explained](https://www.vi
 
 ![Payment and billing overview](/billing-overview.png)
 
-## Add payment method
+## Add a payment method
 
 1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
    You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
@@ -43,7 +43,8 @@ For Pricing information, please see [pricing & billing explained](https://www.vi
 
 ## Change payment method
 
-To replace the credit card details or bank account details used for paymentpayment method for an organization, the billing person must have access to the organization's billing settings. Follow these steps:
+To replace the credit card details or bank account details used for an organization, you must have access to the organization's billing settings.
+Follow these steps:
 
 1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
    You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
@@ -52,7 +53,7 @@ To replace the credit card details or bank account details used for paymentpayme
 1. Under **Payment method**, click **Add payment method**.
 1. Fill in the form with your credit card details or a US bank account.
 
-{{< alert title="Important" color="caution" >}}
+{{< alert title="Caution" color="caution" >}}
 Ensure the new payment method is added immediately after removing the old one to avoid any service interruptions.
 Organizations without valid payment methods may experience limitations on their services.
 {{< /alert >}}
