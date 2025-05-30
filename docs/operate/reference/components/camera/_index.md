@@ -62,6 +62,17 @@ The [camera API](/dev/reference/apis/components/camera/) supports the following 
 
 {{< readfile "/static/include/components/apis/generated/camera-table.md" >}}
 
+### Camera method distinctions
+
+When working with camera components, understand these key method differences:
+
+- **GetImage**: Primary method for real-time image retrieval. Used by the Viam app interface, vision services, and SDK applications.
+- **ReadImage**: Used by the [data management service](/data-ai/capture-data/capture-sync/) for automated data capture and cloud sync.
+
+**For module development**: Implement `GetImage` for real-time functionality and `ReadImage` for data capture support.
+
+**For applications**: Use `GetImage` for immediate image access, configure data capture for automated collection.
+
 ## Troubleshooting
 
 If your camera is not working as expected, follow these steps:

@@ -285,6 +285,15 @@ You need to add some sensor-specific code to support the sensor component.
 
 {{< /expand >}}
 
+## Camera method overview
+
+When implementing camera modules, understand these key methods:
+
+- **GetImage**: Primary method for real-time image retrieval. Used by the Viam app interface, vision services, and SDK applications.
+- **ReadImage**: Used by the data management service for automated data capture and cloud sync.
+
+For most camera modules, implement both methods. `ReadImage` can often call your `GetImage` implementation.
+
 ## Implement the API methods
 
 Edit the stub files to add the logic from your test script in a way that works with the camera and sensor APIs:
