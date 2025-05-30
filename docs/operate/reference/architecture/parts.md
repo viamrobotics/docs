@@ -88,6 +88,7 @@ To rename or delete a sub-part, or to make it the main part, click the **...** m
 
 By default, all sub-parts appear in the [frame system](/operate/reference/services/frame-system/) at the world origin.
 You can specify translations for sub-parts by configuring their frames with appropriate translation values relative to their parent frame.
+You can view the `frame` of each sub-part in the `remotes` section of the debug config.
 
 ### Configure a remote part
 
