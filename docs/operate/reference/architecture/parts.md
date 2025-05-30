@@ -86,7 +86,7 @@ To rename or delete a sub-part, or to make it the main part, click the **...** m
 
 {{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="width:500px" class="shadow" >}}
 
-By default, all sub-parts are added to the [frame system](/operate/reference/services/frame-system/) at the world origin.
+By default, all sub-parts appear in the [frame system](/operate/reference/services/frame-system/) at the world origin.
 You can specify translations for sub-parts by configuring their frames with appropriate translation values relative to their parent frame.
 
 ### Configure a remote part
