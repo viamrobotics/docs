@@ -213,6 +213,8 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 ### Environment Variables for viam-server
 
 You can configure environment variables for `viam-server` using the `viam_server_env` setting in `advanced_settings`.
+Environment variables set through `viam_server_env` are passed to `viam-server` and all child processes it launches, including modules.
+`viam-server` also inherits existing environment variables from `viam-agent`, such as `HOME`, `PWD`, `TERM`, `PATH`.
 
 {{< alert title="Important" color="note" >}}
 When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply the changes.
@@ -221,45 +223,15 @@ This restart will occur immediately if `viam-server` is in a maintenance window 
 
 #### Example configurations
 
-**Enable debug logging for WebRTC (pion library):**
-
 ```json
 {
   "agent": {
     "advanced_settings": {
       "viam_server_env": {
-        "PION_LOG_TRACE": "all"
-      }
-    }
-  }
-}
-```
-
-**Configure SOCKS proxy:**
-
-```json
-{
-  "agent": {
-    "advanced_settings": {
-      "viam_server_env": {
-        "HTTPS_PROXY": "socks5://proxy.example.com:1080",
-        "HTTP_PROXY": "socks5://proxy.example.com:1080"
-      }
-    }
-  }
-}
-```
-
-**Multiple environment variables:**
-
-```json
-{
-  "agent": {
-    "advanced_settings": {
-      "viam_server_env": {
-        "MODULE_DEBUG": "1",
-        "BLUETOOTH": "FALSE",
-        "CUSTOM_SETTING": "value"
+        "PION_LOG_TRACE": "all", # Debug logging for WebRTC
+        "HTTPS_PROXY": "socks5://proxy.example.com:1080", # SOCKS proxy
+        "HTTP_PROXY": "socks5://proxy.example.com:1080",
+        "CUSTOM_VAR": "value"
       }
     }
   }
@@ -267,10 +239,6 @@ This restart will occur immediately if `viam-server` is in a maintenance window 
 ```
 
 To remove an environment variable, simply remove it from the `viam_server_env` object and save your configuration.
-
-{{< alert title="Note" color="note" >}}
-Environment variables set through `viam_server_env` are passed to `viam-server` and all child processes it launches, including modules. Existing environment variables from the agent's environment (such as `HOME`, `PWD`, `TERM`, `PATH`) are also inherited by `viam-server`.
-{{< /alert >}}
 
 ### Reduce startup time
 
