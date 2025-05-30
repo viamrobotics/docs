@@ -1208,3 +1208,10 @@ Configure it just as you would [configure any other component or service in the 
 1. Save your configuration.
 
 You can delete the local module; it is no longer needed.
+
+{{% hiddencontent %}}
+A previous version of the CLI module generator created `__init__.py` files, but now uses a different module structure.
+We recommend using what the current generator creates rather than old examples that use `__init__.py` files.
+
+The same applies for edits to `main.py`: Some older example modules define `async def main()` inside `main.py`, but you should generally use the generated `main.py` file as it is.
+{{% /hiddencontent %}}
