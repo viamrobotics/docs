@@ -215,7 +215,8 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 You can configure environment variables for `viam-server` using the `viam_server_env` setting in `advanced_settings`.
 
 {{< alert title="Important" color="note" >}}
-When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply the changes. This restart will occur immediately if `viam-server` is in a maintenance window or not currently processing configuration changes.
+When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply the changes.
+This restart will occur immediately if `viam-server` is in a maintenance window and not currently processing configuration changes.
 {{< /alert >}}
 
 #### Example configurations
