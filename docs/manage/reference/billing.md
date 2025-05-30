@@ -49,7 +49,7 @@ Follow these steps:
 1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
    You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
 1. Under **Payment method**, click **Remove payment method**.
-1. Confirm the removal when prompted. 
+1. Confirm the removal when prompted.
 1. Under **Payment method**, click **Add payment method**.
 1. Fill in the form with your credit card details or a US bank account.
 
