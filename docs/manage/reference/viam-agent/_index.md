@@ -206,7 +206,7 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 | `disable_network_configuration` | boolean | Optional | Disables the network and hotspot configuration, as well as the configuration of additional networks. Default: `false`. |
 | `disable_system_configuration` | boolean | Optional | Disables the system configuration. Default: `false`. |
 | `disable_viam_server` | boolean | Optional | Disable `viam-server` remotely. This option is often used by developers working on Viam agent or when manually running `viam-server`. Default: `false`. |
-| `viam_server_env` | object | Optional | A map of environment variable names to values that will be passed to `viam-server` and its child processes (including modules). Both keys and values must be strings. See [Environment Variables for viam-server](#environment-variables-for-viam-server). Default: `{}` (empty). |
+| `viam_server_env` | object | Optional | A map of environment variable names to values that `viam-agent` passes to `viam-server` and its child processes (including modules). Both keys and values must be strings. See [Environment Variables for viam-server](#environment-variables-for-viam-server). Default: `{}` (empty). |
 | `viam_server_start_timeout_minutes` | integer | Optional | Specify a time after which, if `viam-server` hasn't successfully started, Viam agent will kill it and restart. Default: `10`. |
 | `wait_for_update_check` | boolean | Optional | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `false`. |
 
