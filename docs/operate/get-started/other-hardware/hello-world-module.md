@@ -240,7 +240,7 @@ You need to add some sensor-specific code to support the sensor component.
 
     ```json {class="line-numbers linkable-line-numbers" data-start="8"}
     {
-      "api": "rdk:component:sensor",
+      "api": "rdk:component:camera",
       "model": "jessamy:temporary:hello-sensor",
       "short_description": "A sensor that returns a random number.",
       "markdown_link": "README.md#model-jessamyhello-worldhello-sensor"
@@ -284,6 +284,15 @@ You need to add some sensor-specific code to support the sensor component.
 1.  You can now delete the <file>temporary</file> module directory and all its contents.
 
 {{< /expand >}}
+
+## Camera method overview
+
+When implementing camera modules, understand these key methods:
+
+- **GetImage**: Primary method for real-time image retrieval. Used by the Viam app interface, vision services, and SDK applications.
+- **ReadImage**: Used by the data management service for automated data capture and cloud sync.
+
+For most camera modules, implement both methods. `ReadImage` can often call your `GetImage` implementation.
 
 ## Implement the API methods
 
