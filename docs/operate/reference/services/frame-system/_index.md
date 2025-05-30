@@ -72,24 +72,24 @@ You can configure a reference frame within the frame system for each of your mac
       "frame": {
         "parent": "<world_or_parent_component_name>",
         "translation": {
-          "y": <int>,
-          "z": <int>,
-          "x": <int>
+          "y": <float>,
+          "z": <float>,
+          "x": <float>
         },
         "orientation": {
           "type": "<type>",
           "value": {
-            "x": <int>,
-            "y": <int>,
-            "z": <int>,
-            "th": <int> // "w": <int> if "type": "quaternion"
+            "x": <float>,
+            "y": <float>,
+            "z": <float>,
+            "th": <float> // "w": <int> if "type": "quaternion"
           }
         },
         "geometry": {
           "type": "<type>",
-          "x": <int>,
-          "y": <int>,
-          "z": <int>
+          "x": <float>,
+          "y": <float>,
+          "z": <float>
         }
       }
     }
