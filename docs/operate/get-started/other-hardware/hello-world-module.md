@@ -240,7 +240,7 @@ You need to add some sensor-specific code to support the sensor component.
 
     ```json {class="line-numbers linkable-line-numbers" data-start="8"}
     {
-      "api": "rdk:component:camera",
+      "api": "rdk:component:sensor",
       "model": "jessamy:temporary:hello-sensor",
       "short_description": "A sensor that returns a random number.",
       "markdown_link": "README.md#model-jessamyhello-worldhello-sensor"
