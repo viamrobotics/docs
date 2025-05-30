@@ -216,7 +216,8 @@ Environment variables set through `viam_server_env` are passed to `viam-server` 
 `viam-server` also inherits existing environment variables from `viam-agent`, such as `HOME`, `PWD`, `TERM`, `PATH`.
 
 {{< alert title="Important" color="note" >}}
-When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply the changes.
+When you change only environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply the changes.
+If you change environment variable and other configuration options for `viam-agent`, `viam-agent` will not automatically restart `viam-server`.
 This restart will occur immediately if `viam-server` is in a maintenance window and not currently processing configuration changes.
 {{< /alert >}}
 
