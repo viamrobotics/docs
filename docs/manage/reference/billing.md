@@ -16,7 +16,7 @@ no_list: true
 {{<imgproc src="/billing-menu.png" resize="400x" declaredimensions=true alt="Payment and billing menu item" class="alignright shadow">}}
 
 To access the **Payment and billing** page, click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
-You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
+You must be an [organization owner](/manage/manage/rbac/) to see this page.
 
 The **Payment and billing** page shows you:
 
