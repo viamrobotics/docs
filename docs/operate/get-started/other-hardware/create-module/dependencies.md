@@ -5,6 +5,8 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Handle dependencies in your custom modular resource."
+aliases:
+  - /operate/get-started/other-hardware/dependencies/
 ---
 
 ## What are dependencies?
@@ -28,7 +30,7 @@ The component configuration for the sensor could look like this, with the name o
 Dependencies are configured just like any other resource attribute.
 The difference is that dependencies represent other resources that are accessed by the resource that depends on them.
 
-When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/#how-and-where-do-modules-run), it builds the dependencies first.
+When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/create-module/#how-and-where-do-modules-run), it builds the dependencies first.
 
 ## Use dependencies
 
@@ -172,7 +174,7 @@ For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/vi
 Most Go modules use `resource.AlwaysRebuild` within the `<module-name><resource-name>` struct, which means that the resource rebuilds every time the module is reconfigured.
 
 The steps above use `resource.AlwaysRebuild`.
-If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/get-started/other-hardware/#implement-the-component-api).
+If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/get-started/other-hardware/create-module/#implement-the-component-api).
 
 {{% /alert %}}
 

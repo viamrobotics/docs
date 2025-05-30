@@ -1,11 +1,13 @@
 ---
-title: "Modular resource and module configuration details"
+title: "Modular resource and module configuration"
 linkTitle: "Module configuration"
 weight: 40
 no_list: true
 type: docs
 icon: true
 description: "Configure module versions and module environment variables."
+aliases:
+  - /operate/reference/module-configuration/
 # date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
@@ -191,7 +193,7 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/reference/module-configuration/#module-versioning).</p> |
-| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam Registry](https://app.viam.com/registry) or is only available [locally](/operate/get-started/other-hardware/#test-your-module-locally) on your computer. |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam Registry](https://app.viam.com/registry) or is only available [locally](/operate/get-started/other-hardware/create-module/#test-your-module-locally) on your computer. |
 | `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. |
 | `name` | string | **Required** | A name for this instance of the module. |
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
@@ -230,7 +232,7 @@ If, for example, the module provides a motor component, and the motor is running
 ### Environment variables
 
 Each module has access to the following default environment variables.
-Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/#test-your-module-locally); you can manually set variables your module requires if necessary.
+Not all of these variables are automatically available on [local modules](/operate/get-started/other-hardware/create-module/#test-your-module-locally); you can manually set variables your module requires if necessary.
 
 <!-- prettier-ignore -->
 | Name | Description | Automatically set on local modules? |
