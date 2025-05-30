@@ -1020,7 +1020,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>applications</code></td>
 <td>array</td>
 <td>Optional</td>
-<td>Objects that provide information about the [apps](/operate/control/viam-app/) associated with the module.</td>
+<td>Objects that provide information about the [apps](/operate/control/viam-app/) provided by the module.</td>
 </tr>
 
 </table>

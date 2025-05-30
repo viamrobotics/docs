@@ -4,14 +4,14 @@ linkTitle: "Create a Viam app"
 weight: 5
 layout: "docs"
 type: "docs"
-description: "Create and deploy custom web interfaces for your machines without managing hosting and authentication."
+description: "Create and deploy a custom web interface for your machines without managing hosting and authentication."
 ---
 
-Create and deploy custom web interfaces for your machines without managing hosting and authentication.
-Once deployed, apps are accessible from a dedicated URL (`appname_publicnamespace.viamapplications.com`) and hosting and authentication is handled for you.
+Create and deploy a custom web interface for your machines without managing hosting and authentication.
+Once deployed, your app is accessible from a dedicated URL (`appname_publicnamespace.viamapplications.com`), and hosting and authentication is handled for you.
 
-When opening an app, users log in and then select a machine they have access to.
-Then your app is rendered and ready for use.
+Users log into your app and select a machine they have access to.
+The app then renders your custom interface for interacting with the user's machine.
 
 {{<gif webm_src="/spa.webm" mp4_src="/spa.mp4" alt="Sample web app" max-width="500px">}}
 
@@ -34,7 +34,7 @@ You can build a custom web interface to access your machines using your preferre
 
 ### Access machines from your app
 
-Viam apps provide access to a machine by placing its API key in your cookies.
+When logging into a Viam app and selecting a machine to use it with, the machine's API key is stored as a cookie.
 You can access the data from your browser's cookies as follows:
 
 ```ts {class="line-numbers linkable-line-numbers" data-line=""}
@@ -53,11 +53,11 @@ machineId = window.location.pathname.split("/")[2];
 } = JSON.parse(Cookies.get(machineId)!));
 ```
 
-For developing your app on localhost, add the same information to your browser's cookies.
+For developing your app on localhost, add the same information to your browser's cookies:
 
 1. Navigate to [Camera Viewer](https://camera-viewer_naomi.viamapplications.com/).
 2. Log in and select the machine you'd like to use for testing.
-3. Open Developer tools and go to the console.
+3. Open Developer Tools and go to the console.
 4. Execute the following JavaScript to obtain the cookies you need:
 
    ```js {class="line-numbers linkable-line-numbers" data-line=""}
@@ -242,28 +242,27 @@ https://your-app-name_your-public-namespace.viamapplications.com
 
 Users will be prompted to authenticate with their Viam credentials before accessing your application:
 
-1. User navigates to `your-app-name_your-public-namespace.viamapplications.com`
-1. User authenticates with Viam credentials
-1. User selects an organization, location, and machine
-1. User is redirected to `your-app-name_your-public-namespace.viamapplications.com/machine/{machine-id}`
-1. Your application is rendered with access to the selected machine
+1. User navigates to `your-app-name_your-public-namespace.viamapplications.com`.
+1. User authenticates with Viam credentials.
+1. User selects an organization, location, and machine.
+1. User is redirected to `your-app-name_your-public-namespace.viamapplications.com/machine/{machine-id}`.
+1. Your application is rendered with access to the selected machine.
 
 ## Example
 
 <!-- For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/). -->
 
-For a React app that shows Camera feeds for a machine, see [Viam Camera Viewer](https://github.com/viam-labs/viam-camera-viewer).
+For a React app that shows camera feeds for a machine, see [Viam Camera Viewer](https://github.com/viam-labs/viam-camera-viewer).
 
 ## Limitations
 
-- Apps currently only support single-machine applications
-- All modules with apps must have public visibility
-- There is no separate deploy step; the page will always render the latest version
-- Browsers with cookies disabled are not supported
+- Apps currently only support single-machine applications.
+- All modules with apps must have public visibility.
+- The page will always render the latest version.
+- Browsers with cookies disabled are not supported.
 
-## Security Considerations
+## Security considerations
 
-- Customer apps are stored publicly available on the internet
-- Avoid uploading sensitive information in your application code or assets
-- API keys and secrets are stored in the browser's cookies
-- Authenticate users with FusionAuth
+- Customer apps are stored publicly on the internet, so avoid uploading sensitive information in your application code or assets.
+- API keys and secrets are stored in the browser's cookies.
+- Users authenticate with FusionAuth.

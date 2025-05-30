@@ -229,7 +229,7 @@ If, for example, the module provides a motor component, and the motor is running
 
 ### Module meta.json configuration
 
-When creating a module, you'll need to configure a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
+When creating a module, you'll need to create a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
 
 Here's an example of a `meta.json` file:
 
