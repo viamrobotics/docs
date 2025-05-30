@@ -114,6 +114,13 @@ On Windows, you can manage `viam-agent` using the Services GUI or the command li
 {{% /tab %}}
 {{< /tabs >}}
 
+To uninstall `viam-agent`, run the following command in an administrator prompt:
+
+```sh {class="command-line" data-prompt="$"}
+sc stop viam-agent
+sc delete viam-agent
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
