@@ -1,10 +1,11 @@
 ---
 linkTitle: "Run inference"
 title: "Run inference"
-weight: 50
+weight: 300
 layout: "docs"
 type: "docs"
-modulescript: true
+open_on_desktop: true
+header_only: true
 aliases:
   - /how-tos/detect-people/
   - /get-started/detect-people/
@@ -15,6 +16,8 @@ aliases:
   - /ml/vision/segmentation/
   - /ml/vision/
   - /get-started/quickstarts/detect-people/
+  - /data-ai/ai/run-inference/
+  - /data-ai/inference/run-inference/
 description: "Run inference on a model with a vision service or an SDK."
 ---
 

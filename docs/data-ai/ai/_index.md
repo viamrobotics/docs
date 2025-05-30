@@ -1,6 +1,6 @@
 ---
-linkTitle: "Leverage AI"
-title: "Leverage AI"
+linkTitle: "Train an ML model"
+title: "Train an ML model"
 weight: 300
 layout: "empty"
 type: "docs"

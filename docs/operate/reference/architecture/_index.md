@@ -10,6 +10,7 @@ tags: ["components", "services", "communication"]
 date: "2024-08-13"
 aliases:
   - /architecture/
+  - /data-ai/reference/architecture
 # updated: ""  # When the content was last entirely checked
 ---
 

@@ -4,5 +4,7 @@ linkTitle: "ML training client API"
 weight: 40
 type: "docs"
 layout: "empty"
+aliases:
+  - /data-ai/reference/ml-training-client/
 canonical: "/dev/reference/apis/services/ml/"
 ---
