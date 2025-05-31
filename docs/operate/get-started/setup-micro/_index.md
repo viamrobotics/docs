@@ -36,7 +36,7 @@ The following microcontrollers have been tested with Viam:
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
 
 {{% hiddencontent %}}
-The Micro-RDK does not support 32-bit Linux.
+The Micro-RDK and `viam-micro-server` do not support 32-bit Linux.
 {{% /hiddencontent %}}
 
 ## About ESP32 microcontroller setup
