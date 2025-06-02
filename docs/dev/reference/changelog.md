@@ -44,11 +44,15 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Bluetooth provisioning" date="2025-07-28" %}}
+Added support for Bluetooth Low Energy (BLE) provisioning, allowing devices to be set up over Bluetooth connection.
+For an example implementation, see the [Flutter Provisioning package](https://github.com/viamrobotics/viam_flutter_provisioning/).
+{{% /changelog %}}
+
 {{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-23" %}}
 
 You can now configure annual billing alongside monthly billing options for your organizations.
 See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
-applications/).
 
 {{% /changelog %}}
 
