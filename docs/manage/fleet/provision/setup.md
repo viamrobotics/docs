@@ -528,38 +528,6 @@ The following steps show you the end user experience using the mobile app or the
 For a guide you can give to end users for setting up their machine, see [Setup machine](/manage/fleet/provision/end-user-setup/).
 
 {{< tabs >}}
-{{% tab name="Mobile app (Bluetooth)" min-height="703px" %}}
-
-When Bluetooth provisioning is enabled, mobile apps can connect directly to the machine via Bluetooth Low Energy without needing to join a WiFi hotspot.
-
-1. Open the app and follow any instructions there until the app directs you to turn on the machine.
-
-   If you are using the Viam mobile app, create a new machine or click on an existing machine that has not yet been set up and follow the instructions.
-
-1. When you power on the machine that has `viam-agent` installed, `viam-agent` starts advertising a Bluetooth service with a name beginning with `viam-setup-`.
-
-   The [`defaults` file](/manage/fleet/provision/setup/#configure-defaults) is at <file>/etc/viam-defaults.json</file> on your machine.
-
-1. The mobile app will scan for and connect to the machine's Bluetooth service automatically.
-
-   The app communicates with the machine over an encrypted Bluetooth connection to exchange credentials securely.
-
-1. In the mobile app, you will be prompted to provide the network information for the machine.
-
-   The app sends both WiFi credentials and machine credentials to the device over the encrypted Bluetooth connection.
-
-1. The machine will then attempt to connect using the provided network information.
-   If `viam-agent` cannot establish a connection using the provided network information, the machine will continue advertising via Bluetooth and allow you to retry with different network settings.
-
-1. If the connection is successful, `viam-agent` installs `viam-server`.
-
-   `viam-agent` will use the provided network if it can connect, even if that network does not have internet access.
-   Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
-   If you want `viam-agent` to require that a WiFi network be connected to the internet in order to connect to it, enable `turn_on_hotspot_if_wifi_has_no_internet`.
-
-1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
-
-{{% /tab %}}
 {{% tab name="Mobile app (WiFi)" min-height="703px" %}}
 
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}
