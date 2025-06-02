@@ -65,7 +65,7 @@ For more information, see [How sync works](/data-ai/capture-data/advanced/how-sy
 1. Select a **Method** to capture data from.
    {{< alert title="Camera capture methods" color="note" >}}
    Camera components provide two similar, but distinct capture methods:
-   - **GetImages** (recommended): Returns one image for each connected camera sensor as a JPEG (for color sensors) or point cloud (for depth sensors).
+   - **GetImages** (recommended): Returns one image for each camera sensor as a JPEG (for color sensors) or point cloud (for depth sensors).
    - **ReadImage**: Returns a single image in the specified MIME type, if the camera component supports that MIME type.
      Prefer GetImages unless your use case requires a specific MIME type other than JPEG.
      {{< /alert >}}
