@@ -125,12 +125,14 @@ For developing your app on localhost, add the same information to your browser's
 When using your deployed application, static files will be accessible at `https://your-app-name_your-public-namespace.viamapplications.com/machine/<machine-id>/`.
 If your HTML file loads other files, use relative paths to ensure your files are accessible.
 
-## Deploy your web interface
+## Deploy your web interface as a Viam app
+
+To deploy your app with Viam you must package it as a module and upload it using the Viam CLI.
 
 {{< table >}}
 {{% tablestep number=1 %}}
 
-**Create a <FILE>meta.json</FILE>** file using this template:
+**Create a <FILE>meta.json</FILE>** file for your module using this template:
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -173,7 +175,10 @@ If your HTML file loads other files, use relative paths to ensure your files are
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% expand "Click to view" %}}
+This file specifies the contents of the module.
+It is required for your module.
+
+{{% expand "Click to view more information on attributes." %}}
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
@@ -260,9 +265,33 @@ For a React app that shows camera feeds for a machine, see [Viam Camera Viewer](
 - All modules with apps must have public visibility.
 - The page will always render the latest version.
 - Browsers with cookies disabled are not supported.
+- Viam apps serve static files.
+  If you are building an app with server-side rendering or need other back-end capabilites, Viam apps is not the right choice.
 
 ## Security considerations
 
 - Customer apps are stored publicly on the internet, so avoid uploading sensitive information in your application code or assets.
 - API keys and secrets are stored in the browser's cookies.
 - Users authenticate with FusionAuth.
+
+## FAQ
+
+### Can I use a custom domain?
+
+If you want to serve your side from a domain other than `your-app-name_your-public-namespace.viamapplications.com`, you can set this up with your DNS provider.
+
+To configure an apex domain (`example.com`) and the `www` subdomain, set the following values:
+
+<!-- prettier-ignore -->
+| Domain | DNS record type | DNS record name | DNS record value |
+| ------ | --------------- | --------------- | ---------------- |
+| `example.com` | `A` | `@` | `34.8.79.17` |
+| `example.com` | `ANAME` or `ALIAS` | `@` | `your-app-name_your-public-namespace.viamapplications.com` |
+| `www.examples.com` | `CNAME` | `SUBDOMAIN.example.com` | `your-app-name_your-public-namespace.viamapplications.com` |
+
+To configure a subdomain, set the following values:
+
+<!-- prettier-ignore -->
+| Domain | DNS record type | DNS record name | DNS record value |
+| ------ | --------------- | --------------- | ---------------- |
+| Subdomain (`www.examples.com` or `app.example.com`) | `CNAME` | `SUBDOMAIN.example.com` | `your-app-name_your-public-namespace.viamapplications.com` |
