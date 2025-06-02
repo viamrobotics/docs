@@ -103,6 +103,9 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "disable_viam_server": false,
       "disable_network_configuration": false,
       "disable_system_configuration": false
+      "viam_server_env": {
+        "CUSTOM_VAR": "value"
+      }
     },
     "network_configuration": {
       "manufacturer": "viam",
@@ -202,8 +205,41 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 | `disable_network_configuration` | boolean | Optional | Disables the network and hotspot configuration, as well as the configuration of additional networks. Default: `false`. |
 | `disable_system_configuration` | boolean | Optional | Disables the system configuration. Default: `false`. |
 | `disable_viam_server` | boolean | Optional | Disable `viam-server` remotely. This option is often used by developers working on Viam agent or when manually running `viam-server`. Default: `false`. |
+| `viam_server_env` | object | Optional | A map of environment variable names to values that `viam-agent` passes to `viam-server` and its child processes (including modules). Both keys and values must be strings. See [Environment Variables for viam-server](#environment-variables-for-viam-server). Default: `{}` (empty). |
 | `viam_server_start_timeout_minutes` | integer | Optional | Specify a time after which, if `viam-server` hasn't successfully started, Viam agent will kill it and restart. Default: `10`. |
 | `wait_for_update_check` | boolean | Optional | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `false`. |
+
+### Environment Variables for viam-server
+
+You can configure environment variables for `viam-server` using the `viam_server_env` setting in `advanced_settings`.
+Environment variables set through `viam_server_env` are passed to `viam-server` and all child processes it launches, including modules.
+`viam-server` also inherits existing environment variables from `viam-agent`, such as `HOME`, `PWD`, `TERM`, `PATH`.
+
+{{< alert title="Important" color="note" >}}
+When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply these and any other changes made before saving.
+This restart will occur immediately if `viam-server` is in a maintenance window and not currently processing configuration changes.
+{{< /alert >}}
+
+Changes to `viam_server_env` are the only changes that automatically trigger a `viam-server` restart. Changing other configuration options requires a manual restart unless you've also changed `viam_server_env`.
+
+#### Example configurations
+
+```json
+{
+  "agent": {
+    "advanced_settings": {
+      "viam_server_env": {
+        "PION_LOG_TRACE": "all", # Debug logging for WebRTC
+        "HTTPS_PROXY": "socks5://proxy.example.com:1080", # SOCKS proxy
+        "HTTP_PROXY": "socks5://proxy.example.com:1080",
+        "CUSTOM_VAR": "value"
+      }
+    }
+  }
+}
+```
+
+To remove an environment variable, remove it from the `viam_server_env` object and save your configuration.
 
 ### Reduce startup time
 
