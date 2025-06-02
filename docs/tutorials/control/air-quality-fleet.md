@@ -20,7 +20,7 @@ cost: 200
 # 2. The reader can identify when to use fragments and evaluate when it is worth using fragments.
 #    The reader can create their own fragments for their projects and knows what to include and exclude from them.
 # 3. The reader recognizes how permissions enable the management of data for a business across multiple customers while providing each customer access to their own data.
-# 4. The reader can deploy custom frond ends that end users can use to operate their machines.
+# 4. The reader can deploy custom front ends that end users can use to operate their machines.
 ---
 
 In this tutorial you will learn how to set up a fleet of devices for yourself or third parties to collect air quality data.
@@ -34,7 +34,7 @@ By completing this project, you will learn to:
 - Organize your fleet using {{< glossary_tooltip term_id="location" text="locations" >}}
 - Collect and sync data from multiple machines
 - Use the Viam TypeScript SDK to query sensor data
-- Create a custom dashboard that you and third parties can use to view data for their respective machines.
+- Create a custom dashboard that you and third parties can use to view data for their respective machines
 
 {{< /alert >}}
 
@@ -45,10 +45,8 @@ By completing this project, you will learn to:
 You can create one or more machines to measure air quality.
 For each machine, you need the following hardware:
 
-For each machine, you will need the following hardware:
-
-- [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/get-started/other-hardware/create-module/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
+- One [SDS011 Nova PM sensors](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/get-started/other-hardware/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
@@ -118,19 +116,11 @@ Name the sensor `PM_sensor` and click **Create**.
 
 In the newly created **PM_sensor** card, replace the contents of the attributes box (the empty curly braces `{}`) with the following:
 
-<<<<<<< HEAD
-
-## Connect your machines to Viam
-
-=======
-
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "usb_interface": "<REPLACE WITH THE PATH YOU IDENTIFY>"
 }
 ```
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
@@ -147,19 +137,11 @@ If you have multiple devices plugged into different USB ports, you may need to c
 
 Now that you have found the identifier, put the full path to the device into your config, for example:
 
-<<<<<<< HEAD
-
-1. Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to Viam.
-   `viam-server` is the binary that runs on the single-board computer (SBC), providing functionality including sensor data collection and connection to Viam.
-   =======
-
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "usb_interface": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0"
 }
 ```
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
@@ -171,15 +153,7 @@ Save the config.
 {{% /tablestep %}}
 {{% tablestep number=5 %}}
 
-<<<<<<< HEAD
-{{% alert title="Note" color="note" %}}
-If this were a real company and you were shipping air sensing machines to customers, you would have the customer plug in power to the machine wherever they are setting it up.
-Since you already installed `viam-server`, once a customer connects the machine to power and sets up wifi, the machine will automatically re-connect to Viam and pull any configuration updates.
-{{% /alert %}}
-=======
 On your sensor configuration panel, click on the **TEST** panel to check that you are getting readings from your sensor.
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 {{<imgproc src="/tutorials/air-quality-fleet/get-readings.png" resize="1000x" declaredimensions=true alt="The sensor readings on the control tab." style="width:600px" class="imgzoom shadow">}}
 
@@ -189,76 +163,7 @@ If you do not see readings, check the **LOGS** tab for errors, double-check that
 
 {{< /table >}}
 
-<<<<<<< HEAD
-
-## Configure your air quality sensors
-
-You need to [configure](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine) your hardware so that each of your machines can communicate with its attached air quality [sensor](/operate/reference/components/sensor/).
-
-No matter how many sensing machines you use, you can configure them efficiently by using a reusable configuration block called a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
-Fragments are a way to share and manage identical machine configurations across multiple machines.
-Instead of going through all the configuration steps for each machine, you'll start by configuring just one machine and create a fragment based on that machine's configuration.
-Then, you'll add the fragment to each of your machines.
-With all your machines configured using the same fragment, if you need to update the config in the future, you can just update the fragment and all machines will automatically get the update.
-
-{{< alert title="Note" color="note" >}}
-If this was a real company, adding the fragment to each individual machine would quickly become tiring.
-We're showing you how to do this manually as a learning device.
-Once you understand how to configure machines and use fragments, you can use [Provisioning](/manage/fleet/provision/setup/) to automatically set up your devices.
-{{< /alert >}}
-
-### Configure your first machine
-
-#### Configure the sensor
-
-1. Navigate to the **CONFIGURE** tab of the machine details page for your first machine.
-2. Click the **+** (Create) button and click **Component or service** from the dropdown.
-   Click **sensor**, then search for `sds011` and click **sds001:v1** from the results.
-3. Click **Add module**.
-   This adds the {{< glossary_tooltip term_id="module" text="module" >}} that provides the sensor model that supports the specific hardware we are using for this tutorial.
-
-   ![The Add Module button that appears after you click the model name.](/tutorials/air-quality-fleet/add-sensor-module.png)
-
-4. Give the sensor a name like `PM_sensor` and click **Create**.
-5. In the newly created **PM_sensor** card, replace the contents of the attributes box (the empty curly braces `{}`) with the following:
-
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "usb_interface": "<REPLACE WITH THE PATH YOU IDENTIFY>"
-   }
-   ```
-
-6. <a name="usb-path"></a>Now you need to figure out which port your sensor is connected to on your board.
-   SSH to your board and run the following command:
-
-   ```sh{class="command-line" data-prompt="$"}
-   ls /dev/serial/by-id
-   ```
-
-   This should output a list of one or more USB devices attached to your board, for example `usb-1a86_USB_Serial-if00-port0`.
-   If the air quality sensor is the only device plugged into your board, you can be confident that the only device listed is the correct one.
-   If you have multiple devices plugged into different USB ports, you may need to choose one path and test it, or unplug something, to figure out which path to use.
-
-   Now that you have found the identifier, put the full path to the device into your config, for example:
-
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "usb_interface": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0"
-   }
-   ```
-
-7. Save the config.
-   Your machine config should now resemble the following:
-
-   ![Configure tab showing PM sensor and the sensor module configured.](/tutorials/air-quality-fleet/configured-sensor.png)
-
-#### Configure data capture and sync
-
-=======
-
 ### Configure data management
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
 Viam's [data management service](/data-ai/capture-data/capture-sync/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
@@ -272,18 +177,10 @@ Click **+** and add the **data management** service.
 
 On the data manager panel:
 
-<<<<<<< HEAD
-While you configured your machine with the builder UI, Viam generated a JSON configuration file with all your parameters.
-This is the file that tells `viam-server` what resources are available to it and how everything is connected.
-Click **JSON** in the upper-left corner of the **CONFIGURE** tab to view the generated JSON file.
-You can manually edit this file instead of using the builder UI if you are familiar with JSON.
-=======
-
 - Toggle **Syncing** to the on position.
 - Set the sync interval to `0.05` minutes (every 3 seconds).
 - In the **Tags** field, add `air-quality`.
   This tag will now automatically be applied to all data collected by this data manager which will make querying data easier.
-  > > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
@@ -300,92 +197,17 @@ You can check that your sensor data is being synced by clicking on the **...** m
 {{% /tablestep %}}
 {{< /table >}}
 
-Congratulations, if you made it this far, you now have a functional air sensing machine.
+Congratulations.
+If you made it this far, you now have a functional air sensing machine.
 Let's create a dashboard for its measurements next.
 
-<<<<<<< HEAD 3. Click **Insert fragment**.
-The module, sensor, and data manager will appear in your config. 4. Save the config. 5. Repeat these steps on the machine details page for each of your air quality sensing machines.
-
-## Test your sensors
-
-Now that all your hardware is configured, it's a good idea to make sure readings are being gathered by the sensors and sent to the cloud before proceeding with the tutorial.
-For each machine:
-
-1. Go to the machine details page and navigate to the **CONTROL** tab.
-2. Within the **Sensors** section, click **Get Readings** for the **PM_sensor**.
-   If the sensor software and hardware is working, you should see values populate the **Readings** column.
-
-   ![The sensor readings on the control tab.](/tutorials/air-quality-fleet/get-readings.png)
-
-   If you do not see readings, check the **LOGS** tab for errors, double-check that serial communication is enabled on the single board computer, and check that the `usb_interface` path is correctly specified (click below).
-
-   {{< expand "Click here for usb_interface troubleshooting help" >}}
-
-If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to modify the value on any machine for which it is different:
-
-1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
-2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment overwrite to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to your machine's config, using the following JSON template:
-
-   ```json {class="line-numbers linkable-line-numbers"}
-   "fragment_mods": [
-   {
-     "fragment_id": "<REPLACE WITH YOUR FRAGMENT ID>",
-     "mods": [
-       {
-         "$set": {
-           "components.PM_sensor.attributes.usb_interface": "<REPLACE WITH THE PATH TO THE SENSOR ON YOUR MACHINE>"
-         }
-       }
-     ]
-   }
-   ],
-   ```
-
-   Replace the values with your fragment ID and with the USB path you identify.
-   If you named your sensor something other than `PM_sensor`, change the sensor name in the template above.
-
-3. Repeat this process for each machine that needs a different `usb_interface` value.
-   If you have lots of machines with one `usb_interface` value, and lots of machines with a second one, you might consider duplicating the fragment, editing that value, and using that second fragment instead of the first one for the applicable machines, rather than using a fragment overwrite for each of the machines.
-   You have options.
-
-   {{< /expand >}}
-
-## Test data sync
-
-Next, check that data is being synced from your sensors to the cloud:
-
-1.  Open your [**DATA** page](https://app.viam.com/data).
-2.  Click the **Sensors** tab within the data page.
-3.  If you have sensor data coming from machines unrelated to this project, use the filters on the left side of the page to view data from only your air quality sensors.
-    Click the **Tags** dropdown and select the `air-quality` tag you applied to your data.
-    You can also use these filters to show the data from one of your air quality sensors at a time by typing a machine name into the **Machine name** box and clicking **Apply** in the lower-left corner.
-
-    ![The sensor readings that have synced to the DATA page.](/tutorials/air-quality-fleet/synced-data.png)
-
-Once you've confirmed that data is being collected and synced correctly, you're ready to start building a dashboard to display the data.
-If you'd like to graph your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/).
-If you'd like to create your own customizable dashboard using the Viam TypeScript, continue with this tutorial.
-
-## Code your custom TypeScript dashboard
-
-=======
-
 ## Create a dashboard
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
 For this project, you'll use it to build a page that displays air quality sensor data for a given location.
 You'll host the website on Viam Apps.
 
-<<<<<<< HEAD
-As you'll find out in the [authentication step](#authenticate-your-code-to-your-location), you can set each customer up with credentials to access the data from only their location, or you can create a dashboard showing data from all sensors in your entire organization.
-=======
 The full code is available for reference on [GitHub](https://github.com/viam-labs/air-quality-fleet/blob/main/main.ts).
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 {{< alert title="Tip" color="tip" >}}
 If you'd like to graph your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/) next.
@@ -442,15 +264,8 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
 {{% /alert %}}
 
-<<<<<<< HEAD
-
-### Authenticate your code to your location
-
-=======
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 Install the project's dependencies by running the following command in your terminal:
 
@@ -466,7 +281,7 @@ npm install
 Viam apps provide access to a machine by placing its API key in your local storage.
 You can access the data from your browser's local storage with the following code.
 
-Currently, Viam apps only provide access to single machines but in future you will be able to access entire locations or organization.
+Currently, Viam apps only provide access to single machines but in future you will be able to access entire locations or organizations.
 
 {{< table >}}
 {{% tablestep number=1 %}}
@@ -520,11 +335,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
 
-For developing your app on localhost, **add the same information to your browsers local storage**.
+For developing your app on localhost, **add the same information to your browser's local storage**.
 
 Navigate to [Camera Viewer](https://air-quality_naomi.viamapplications.com/) and log in, then select your development machine.
 
-Open Developer tools, go to the console and paste the following JavaScript to obtain the cookies you need:
+Open Developer Tools, go to the console and paste the following JavaScript to obtain the cookies you need:
 
 ```js {class="line-numbers linkable-line-numbers" data-line=""}
 function generateCookieSetterScript() {
@@ -567,14 +382,9 @@ function generateCookieSetterScript() {
   textarea.select();
 }
 
-<<<<<<< HEAD
-    Navigate to the location page for the location containing your air quality machines.
-=======
 // Execute the function
 generateCookieSetterScript();
 ```
-
-> > > > > > > e7fcdfd88 (Update Air Quality tutorial)
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
@@ -1012,6 +822,8 @@ Your dashboard should now load your data.
 
 ## Organizing devices for third-party usage
 
+The following example shows how you can use {{< glossary_tooltip term_id="organization" text="organizations" >}} and {{< glossary_tooltip term_id="location" text="locations" >}} to provide users access to the right groups of machines.
+
 Imagine you create an air quality monitoring company called Pollution Monitoring Made Simple.
 Anyone can sign up and order one of your sensing machines.
 When a new customer signs up, you assemble a new machine with a sensor, SBC, and power supply.
@@ -1070,16 +882,16 @@ Before an air sensing machine leaves your factory, you'd complete the following 
 Once a customer receives your machine, they will:
 
 1. Plug it in and turn it on.
-2. `viam-agent` will start a WiFi network
+2. `viam-agent` will start a WiFi network.
 3. The customer uses another device to connect to the machine's WiFi network and the user gives the machine the password for their WiFi network.
 4. The machine can now connect to the internet and complete setup based on the fragment it knows about.
 
 ### Create the fragment for air sensing machines
 
-In this section you will create the {{< glossary_tooltip term_id="fragment" text="fragment" >}}, that is the configuration template that all other machines will use.
+In this section you will create the {{< glossary_tooltip term_id="fragment" text="fragment" >}}: the configuration template that all other machines will use.
 
 1. Navigate to the **FLEET** page and go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
-1. Click Create fragment.
+1. Click **Create fragment**.
 1. Name the fragment `air-quality-configuration`.
 1. Add the same components that you added to the development machine when you [set up one device for development](#set-up-one-device-for-development).
 
@@ -1093,13 +905,13 @@ If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modi
 
 {{< /expand >}}
 
-1. Specify the version for the sds011 module.
+1. Specify the version for the `sds011` module.
    At the point of writing the version is `0.2.1`.
    Specifying a specific version or a specific minor or major version of a module will ensure that even if the module you use changes, your machines remain functional.
-   You can update your fragment at any point, any machines using it will update to use the new configuration.
+   You can update your fragment at any point, and any machines using it will update to use the new configuration.
 
 {{< alert title="Tip: Use the fragment on your development machine" color="tip" >}}
-To avoid differences between fragment and development machines, we recommend you remove the configured resources from the development machine and add the fragment you just created instead using the **+** button.
+To avoid differences between fragment and development machines, we recommend you remove the configured resources from the development machine, and instead use the **+** button to add the fragment you just created.
 {{< /alert >}}
 
 ### Provision your machines
@@ -1108,7 +920,7 @@ To avoid differences between fragment and development machines, we recommend you
 {{% tablestep number=1 %}}
 
 For each machine, flash the operating system to the device's SD card.
-If you are using the Raspberry PI Imager, you **must customize at least the hostname** for the next steps to work.
+If you are using the Raspberry Pi Imager, you **must customize at least the hostname** for the next steps to work.
 
 Then run the following commands to download the preinstall script and make the script executable:
 
@@ -1144,7 +956,7 @@ Navigate to one of the locations and create a machine.
 Select the part status dropdown to the right of your machine's name on the top of the page.
 
 Click the copy icon next to **Machine cloud credentials**.
-Paste the machine cloud credentials into a file on your harddrive called FILE>viam.json</FILE>.
+Paste the machine cloud credentials into a file on your hard drive called FILE>viam.json</FILE>.
 
 {{< alert title="Tip: Fleet management API" color="tip" >}}
 You can create locations and machines programmatically, with the [Fleet management API](/dev/reference/apis/fleet/).
@@ -1164,9 +976,11 @@ Follow the instructions and provide the <FILE>viam-defaults.json</FILE> file and
 {{% /tablestep %}}
 {{< /table >}}
 
-That's it! Your device is now provisioned and ready for your end user!
+That's it!
+Your device is now provisioned and ready for your end user!
 
-Having trouble? See [Provisioning](/manage/fleet/provision/setup/) for more information and troubleshooting.
+Having trouble?
+See [Provisioning](/manage/fleet/provision/setup/) for more information and troubleshooting.
 
 <div id="emailform"></div>
 
