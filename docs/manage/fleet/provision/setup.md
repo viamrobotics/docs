@@ -34,10 +34,10 @@ To parse the readings and provide tailored guidance to a ship's captain, the com
 By having the end customer set up the machine, the company:
 
 - eliminates per-device setup and individualization at the factory
-- allows for tailored configurations per customer as needed
 - allows customer to provide their own WiFi credentials
+- allows for tailored configurations per customer as needed
 
-This guide will show you how to install and configure `viam-agent`.
+This guide shows you how to install and configure `viam-agent`.
 
 ## Prerequisites
 
@@ -62,49 +62,10 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 
 ## Choose provisioning methods
 
-`viam-agent` supports two provisioning methods that can work independently or together:
+You can let your end users complete machine setup over WiFi or Bluetooth:
 
-- **WiFi Hotspot Provisioning**: Creates a WiFi hotspot that users connect to for setup via a captive web portal
-- **Bluetooth Provisioning**: Uses Bluetooth Low Energy (BLE) for setup via mobile apps
-
-You can enable both methods simultaneously for maximum flexibility, or disable one method if it's not suitable for your environment.
-
-### WiFi Hotspot Provisioning
-
-WiFi hotspot provisioning creates a temporary WiFi network that users connect to for machine setup. This method works well with both captive web portals and mobile apps.
-
-**Advantages:**
-- Works with any WiFi-enabled device
-- Supports both web portal and mobile app interfaces
-- Well-established and widely compatible
-
-**Considerations:**
-- Requires creating an open WiFi hotspot
-- May be less reliable in environments with many WiFi networks
-- Some corporate environments may block hotspot connections
-
-### Bluetooth Provisioning
-
-Bluetooth provisioning uses Bluetooth Low Energy (BLE) for machine setup, allowing mobile devices to connect directly to the machine without joining a WiFi network.
-
-**Advantages:**
-- More reliable in environments with many WiFi networks
-- No need for an open WiFi hotspot
-- Often easier for end-users on mobile devices
-- Uses encrypted communication for security
-
-**Considerations:**
-- Requires Bluetooth Low Energy support on both device and mobile app
-- Currently optimized for mobile app workflows
-- Requires compatible mobile device with BLE support
-
-{{< alert title="Note" color="note" >}}
-Bluetooth provisioning is designed primarily for mobile app workflows. While both provisioning methods can be enabled simultaneously, mobile apps will typically prefer Bluetooth when available.
-{{< /alert >}}
-
-## Decide on the user interface
-
-You can choose to let your end users complete machine setup by using a captive web portal or a mobile app.
+- **WiFi Hotspot Provisioning**: When device boots, it creates a temporary WiFi hotspot that users connect to for setup either by using a captive web portal or a mobile app. Be aware that the WiFi hotspot is open to anyone.
+- **Bluetooth Low Energy (BLE) Provisioning**: When device boots, it searches for Bluetooth connections and a user connects to it using a mobile app.
 
 If you choose to have a mobile app experience, you can use the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) or create your own custom mobile app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
 
@@ -116,99 +77,9 @@ If you do not yet have a fragment, follow the steps to [Create a configuration f
 If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
 {{< /alert >}}
 
-If you choose to use the captive web portal, you can optionally create a machine in advance and provide its machine cloud credentials file at <FILE>/etc/viam.json</FILE>.
-
-You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
-
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
-
-{{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
-
-You can use the [Fleet Management API](/dev/reference/apis/fleet/) to create machines, and obtain their machine cloud credentials:
-
-```python {class="line-numbers linkable-line-numbers"}
-import asyncio
-import requests
-
-from viam.rpc.dial import DialOptions, Credentials
-from viam.app.viam_client import ViamClient
-from viam.app.app_client import APIKeyAuthorization
-
-# Replace "<API-KEY>" (including brackets) with your API key
-API_KEY = "<API-KEY>"
-# Replace "<API-KEY-ID>" (including brackets) with your API key ID
-API_KEY_ID = "<API-KEY-ID>"
-# The id of the location to create the machine in
-LOCATION_ID = ""
-# The name for the machine to create
-MACHINE_NAME = ""
-
-
-async def connect() -> ViamClient:
-    dial_options = DialOptions(
-      credentials=Credentials(
-        type="api-key",
-        payload=API_KEY,
-      ),
-      auth_entity=API_KEY_ID
-    )
-    return await ViamClient.create_from_dial_options(dial_options)
-
-
-async def main():
-
-    # Make a ViamClient
-    viam_client = await connect()
-    # Instantiate an AppClient called "cloud"
-    # to run fleet management API methods on
-    cloud = viam_client.app_client
-    new_machine_id = await cloud.new_robot(
-        name=MACHINE_NAME, location_id=LOCATION_ID)
-    print("Machine created: " + new_machine_id)
-    list_of_parts = await cloud.get_robot_parts(
-        robot_id=new_machine_id)
-    print("Part id: " + list_of_parts[0].id)
-
-    org_list = await cloud.list_organizations()
-    print(org_list[0].id)
-
-    auth = APIKeyAuthorization(
-        role="owner",
-        resource_type="robot",
-        resource_id=new_machine_id
-    )
-    api_key, api_key_id = await cloud.create_key(
-        org_list[0].id, [auth], "test_provisioning_key")
-    print(api_key, api_key_id)
-
-    headers = {
-        'key_id': api_key_id,
-        'key': api_key
-    }
-    params = {
-        "client": 'true',
-        "id": list_of_parts[0].id
-    }
-    res = requests.get(
-        'https://app.viam.com/api/json1/config',
-        params=params,
-        headers=headers,
-        timeout=10
-    )
-    print(res.text)
-
-    with open("viam.json", "w") as text_file:
-        text_file.write(res.text)
-
-    viam_client.close()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-{{% /expand%}}
-
 ## Configure defaults
+
+The defaults file allows you to configure the provisioning experience for the users setting up their machines.
 
 {{< table >}}
 
@@ -355,6 +226,100 @@ The following configuration defines the connection information and credentials f
 
 {{% /tablestep %}}
 {{< /table >}}
+
+## (Optional) Create a machine in advance
+
+If you provision devices using a captive web portal, you can optionally create a machine in advance and provide its machine cloud credentials file at <FILE>/etc/viam.json</FILE>.
+
+You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
+
+{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
+
+{{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
+
+You can use the [Fleet Management API](/dev/reference/apis/fleet/) to create machines, and obtain their machine cloud credentials:
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import requests
+
+from viam.rpc.dial import DialOptions, Credentials
+from viam.app.viam_client import ViamClient
+from viam.app.app_client import APIKeyAuthorization
+
+# Replace "<API-KEY>" (including brackets) with your API key
+API_KEY = "<API-KEY>"
+# Replace "<API-KEY-ID>" (including brackets) with your API key ID
+API_KEY_ID = "<API-KEY-ID>"
+# The id of the location to create the machine in
+LOCATION_ID = ""
+# The name for the machine to create
+MACHINE_NAME = ""
+
+
+async def connect() -> ViamClient:
+    dial_options = DialOptions(
+      credentials=Credentials(
+        type="api-key",
+        payload=API_KEY,
+      ),
+      auth_entity=API_KEY_ID
+    )
+    return await ViamClient.create_from_dial_options(dial_options)
+
+
+async def main():
+
+    # Make a ViamClient
+    viam_client = await connect()
+    # Instantiate an AppClient called "cloud"
+    # to run fleet management API methods on
+    cloud = viam_client.app_client
+    new_machine_id = await cloud.new_robot(
+        name=MACHINE_NAME, location_id=LOCATION_ID)
+    print("Machine created: " + new_machine_id)
+    list_of_parts = await cloud.get_robot_parts(
+        robot_id=new_machine_id)
+    print("Part id: " + list_of_parts[0].id)
+
+    org_list = await cloud.list_organizations()
+    print(org_list[0].id)
+
+    auth = APIKeyAuthorization(
+        role="owner",
+        resource_type="robot",
+        resource_id=new_machine_id
+    )
+    api_key, api_key_id = await cloud.create_key(
+        org_list[0].id, [auth], "test_provisioning_key")
+    print(api_key, api_key_id)
+
+    headers = {
+        'key_id': api_key_id,
+        'key': api_key
+    }
+    params = {
+        "client": 'true',
+        "id": list_of_parts[0].id
+    }
+    res = requests.get(
+        'https://app.viam.com/api/json1/config',
+        params=params,
+        headers=headers,
+        timeout=10
+    )
+    print(res.text)
+
+    with open("viam.json", "w") as text_file:
+        text_file.write(res.text)
+
+    viam_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+{{% /expand%}}
 
 ## Install `viam-agent`
 
@@ -522,16 +487,23 @@ Some systems can't scan for WiFi networks while in hotspot mode, meaning they wo
 The `retry_connection_timeout_minutes` causes your device to exit hotspot mode, at which point your device will be able to detect newly available networks.
 If your device does not connect to your network, adjust the `retry_connection_timeout_minutes` value in the [`defaults` file](/manage/fleet/provision/setup/#configure-defaults).
 
+### WiFi provisioning not working
+
+WiFi provisioning may be less reliable in environments with many WiFi networks.
+If possible, use Bluetooth provisioning or move to an area with fewer WiFi networks in range.
+
 ### Bluetooth provisioning not working
 
 If Bluetooth provisioning is not working, check the following:
 
 1. **Bluetooth adapter availability**: Ensure your device has a working Bluetooth adapter. You can check this with:
+
    ```sh {class="command-line" data-prompt="$"}
    bluetoothctl list
    ```
 
 1. **Bluetooth service status**: Verify the Bluetooth service is running:
+
    ```sh {class="command-line" data-prompt="$"}
    sudo systemctl status bluetooth
    ```
@@ -546,19 +518,6 @@ If Bluetooth provisioning is not working, check the following:
 
 If you need to test the GRPC components of the provisioning service, there is a CLI client available.
 Get the code from the [`agent` repo](https://github.com/viamrobotics/agent/tree/main/cmd/provisioning-client) and run `go run ./cmd/provisioning-client/` for info.
-
-The provisioning client supports both WiFi hotspot and Bluetooth modes:
-
-```sh {class="command-line" data-prompt="$"}
-# Test WiFi hotspot provisioning
-go run ./cmd/provisioning-client/ --address localhost:4772 --status
-
-# Test Bluetooth provisioning
-go run ./cmd/provisioning-client/ --bluetooth --status
-
-# Scan for Bluetooth devices
-go run ./cmd/provisioning-client/ --scan
-```
 
 ## End user setup experience
 
