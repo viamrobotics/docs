@@ -218,9 +218,9 @@ Environment variables set through `viam_server_env` are passed to `viam-server` 
 {{< alert title="Important" color="note" >}}
 When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply these and any other changes made before saving.
 This restart will occur immediately if `viam-server` is in a maintenance window and not currently processing configuration changes.
+{{< /alert >}}
 
 Changes to `viam_server_env` are the only changes that automatically trigger a `viam-server` restart. Changing other configuration options requires a manual restart unless you've also changed `viam_server_env`.
-{{< /alert >}}
 
 #### Example configurations
 
