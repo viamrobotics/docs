@@ -327,13 +327,18 @@ To change the visibility:
    - **Public**: Any user inside or outside of your organization can view, use, and edit the module.
    - **Unlisted**: Any user inside or outside of your organization, with a direct link, can view and use the module.
      Only organization members can edit the module.
-     Not listed in the registry.
+     Not listed in the registry for users outside of your organization.
 
 You can also edit the visibility by editing the [meta.json](/operate/get-started/other-hardware/#metajson-reference) file and then running the following [CLI](/dev/tools/cli/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module update
 ```
+
+{{% hiddencontent %}}
+If you're not seeing a private module of yours in the registry, check that you're in the correct organization in the Viam app.
+You can check and switch organizations in the dropdown in the upper right corner of the Viam app.
+{{% /hiddencontent %}}
 
 ## Delete a module
 
