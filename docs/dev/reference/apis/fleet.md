@@ -31,12 +31,6 @@ With it you can
 - manage permissions and authorization
 - create and manage fragments
 
-{{% alert title="Support Notice" color="note" %}}
-
-Fleet management API methods are only available in the Python SDK.
-
-{{% /alert %}}
-
 The fleet management API supports the following methods:
 
 {{< readfile "/static/include/app/apis/generated/app-table.md" >}}
@@ -89,6 +83,57 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+package main
+
+import (
+    "context"
+    "log"
+
+    "go.viam.com/rdk/app"
+    "go.viam.com/rdk/logging"
+    "go.viam.com/utils"
+)
+
+func main() {
+    logger := logging.NewLogger("fleet-management")
+    
+    // Replace "<API-KEY-ID>" (including brackets) with your API key ID
+    apiKeyID := "<API-KEY-ID>"
+    // Replace "<API-KEY>" (including brackets) with your API key
+    apiKey := "<API-KEY>"
+    
+    client, err := app.NewAppClient(context.Background(), app.Config{
+        BaseURL: "https://app.viam.com:443",
+        Auth: utils.Credentials{
+            Type:    utils.CredentialsTypeAPIKey,
+            Payload: apiKey,
+        },
+        AuthEntity: &apiKeyID,
+        Logger:     logger,
+    })
+    if err != nil {
+        log.Fatalf("Failed to create app client: %v", err)
+    }
+    defer client.Close()
+    
+    // Use the client to make fleet management API calls
+    // Example: List organizations
+    ctx := context.Background()
+    orgs, err := client.ListOrganizations(ctx)
+    if err != nil {
+        log.Fatalf("Failed to list organizations: %v", err)
+    }
+    
+    for _, org := range orgs {
+        log.Printf("Organization: %s (ID: %s)", org.Name, org.Id)
+    }
+}
 ```
 
 {{% /tab %}}
