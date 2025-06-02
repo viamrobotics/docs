@@ -60,7 +60,49 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 
 {{< /alert >}}
 
-## Decide on the provisioning method
+## Choose provisioning methods
+
+`viam-agent` supports two provisioning methods that can work independently or together:
+
+- **WiFi Hotspot Provisioning**: Creates a WiFi hotspot that users connect to for setup via a captive web portal
+- **Bluetooth Provisioning**: Uses Bluetooth Low Energy (BLE) for setup via mobile apps
+
+You can enable both methods simultaneously for maximum flexibility, or disable one method if it's not suitable for your environment.
+
+### WiFi Hotspot Provisioning
+
+WiFi hotspot provisioning creates a temporary WiFi network that users connect to for machine setup. This method works well with both captive web portals and mobile apps.
+
+**Advantages:**
+- Works with any WiFi-enabled device
+- Supports both web portal and mobile app interfaces
+- Well-established and widely compatible
+
+**Considerations:**
+- Requires creating an open WiFi hotspot
+- May be less reliable in environments with many WiFi networks
+- Some corporate environments may block hotspot connections
+
+### Bluetooth Provisioning
+
+Bluetooth provisioning uses Bluetooth Low Energy (BLE) for machine setup, allowing mobile devices to connect directly to the machine without joining a WiFi network.
+
+**Advantages:**
+- More reliable in environments with many WiFi networks
+- No need for an open WiFi hotspot
+- Often easier for end-users on mobile devices
+- Uses encrypted communication for security
+
+**Considerations:**
+- Requires Bluetooth Low Energy support on both device and mobile app
+- Currently optimized for mobile app workflows
+- Requires compatible mobile device with BLE support
+
+{{< alert title="Note" color="note" >}}
+Bluetooth provisioning is designed primarily for mobile app workflows. While both provisioning methods can be enabled simultaneously, mobile apps will typically prefer Bluetooth when available.
+{{< /alert >}}
+
+## Decide on the user interface
 
 You can choose to let your end users complete machine setup by using a captive web portal or a mobile app.
 
@@ -191,6 +233,9 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
     "disable_captive_portal_redirect": false, # set to true if using a mobile app
     "hotspot_password": "<PASSWORD>", # password for the hotspot
+    "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
+    "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
+    "bluetooth_adapter_name": "", # optional: specify Bluetooth adapter for machines with multiple adapters
     "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
@@ -212,6 +257,8 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "hotspot_prefix": "skywalker-setup",
     "disable_captive_portal_redirect": false,
     "hotspot_password": "skywalker123",
+    "disable_bt_provisioning": false,
+    "disable_wifi_provisioning": false,
     "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
@@ -238,6 +285,9 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
+| `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Default: `false`. |
+| `disable_wifi_provisioning` | boolean | Optional | When set to true, disables WiFi hotspot provisioning. The machine will not create a WiFi hotspot for provisioning. Default: `false`. |
+| `bluetooth_adapter_name` | string | Optional | For machines with multiple Bluetooth adapters, specify which adapter to use for provisioning. If not specified, the first available Bluetooth adapter will be used. Example: `"hci0"`. Default: `""` (auto-detect). |
 | `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device connects to a single prioritized WiFi network (provided during provisioning) and is considered online even if the global internet is not reachable. When `turn_on_hotspot_if_wifi_has_no_internet` is true and the primary network lacks internet connectivity, the device will try all configured networks and only mark itself as online if it successfully connects to the internet. Default: `false`. |
 | `offline_before_starting_hotspot_minutes` | integer | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `2` (2 minutes). |
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
@@ -270,6 +320,8 @@ The following configuration defines the connection information and credentials f
     "hotspot_prefix": "skywalker-setup",
     "disable_captive_portal_redirect": false,
     "hotspot_password": "skywalker123",
+    "disable_bt_provisioning": false,
+    "disable_wifi_provisioning": false,
     "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
@@ -470,10 +522,43 @@ Some systems can't scan for WiFi networks while in hotspot mode, meaning they wo
 The `retry_connection_timeout_minutes` causes your device to exit hotspot mode, at which point your device will be able to detect newly available networks.
 If your device does not connect to your network, adjust the `retry_connection_timeout_minutes` value in the [`defaults` file](/manage/fleet/provision/setup/#configure-defaults).
 
+### Bluetooth provisioning not working
+
+If Bluetooth provisioning is not working, check the following:
+
+1. **Bluetooth adapter availability**: Ensure your device has a working Bluetooth adapter. You can check this with:
+   ```sh {class="command-line" data-prompt="$"}
+   bluetoothctl list
+   ```
+
+1. **Bluetooth service status**: Verify the Bluetooth service is running:
+   ```sh {class="command-line" data-prompt="$"}
+   sudo systemctl status bluetooth
+   ```
+
+1. **Multiple adapters**: If your device has multiple Bluetooth adapters, specify which one to use with the `bluetooth_adapter_name` configuration option.
+
+1. **Mobile device compatibility**: Ensure your mobile device supports Bluetooth Low Energy (BLE) and has the necessary permissions enabled for the provisioning app.
+
+1. **Configuration check**: Verify that `disable_bt_provisioning` is set to `false` in your configuration.
+
 ### Test GRPC components of the provisioning service
 
 If you need to test the GRPC components of the provisioning service, there is a CLI client available.
 Get the code from the [`agent` repo](https://github.com/viamrobotics/agent/tree/main/cmd/provisioning-client) and run `go run ./cmd/provisioning-client/` for info.
+
+The provisioning client supports both WiFi hotspot and Bluetooth modes:
+
+```sh {class="command-line" data-prompt="$"}
+# Test WiFi hotspot provisioning
+go run ./cmd/provisioning-client/ --address localhost:4772 --status
+
+# Test Bluetooth provisioning
+go run ./cmd/provisioning-client/ --bluetooth --status
+
+# Scan for Bluetooth devices
+go run ./cmd/provisioning-client/ --scan
+```
 
 ## End user setup experience
 
@@ -484,7 +569,39 @@ The following steps show you the end user experience using the mobile app or the
 For a guide you can give to end users for setting up their machine, see [Setup machine](/manage/fleet/provision/end-user-setup/).
 
 {{< tabs >}}
-{{% tab name="Mobile app" min-height="703px" %}}
+{{% tab name="Mobile app (Bluetooth)" min-height="703px" %}}
+
+When Bluetooth provisioning is enabled, mobile apps can connect directly to the machine via Bluetooth Low Energy without needing to join a WiFi hotspot.
+
+1. Open the app and follow any instructions there until the app directs you to turn on the machine.
+
+   If you are using the Viam mobile app, create a new machine or click on an existing machine that has not yet been set up and follow the instructions.
+
+1. When you power on the machine that has `viam-agent` installed, `viam-agent` starts advertising a Bluetooth service with a name beginning with `viam-setup-`.
+
+   The [`defaults` file](/manage/fleet/provision/setup/#configure-defaults) is at <file>/etc/viam-defaults.json</file> on your machine.
+
+1. The mobile app will scan for and connect to the machine's Bluetooth service automatically.
+
+   The app communicates with the machine over an encrypted Bluetooth connection to exchange credentials securely.
+
+1. In the mobile app, you will be prompted to provide the network information for the machine.
+
+   The app sends both WiFi credentials and machine credentials to the device over the encrypted Bluetooth connection.
+
+1. The machine will then attempt to connect using the provided network information.
+   If `viam-agent` cannot establish a connection using the provided network information, the machine will continue advertising via Bluetooth and allow you to retry with different network settings.
+
+1. If the connection is successful, `viam-agent` installs `viam-server`.
+
+   `viam-agent` will use the provided network if it can connect, even if that network does not have internet access.
+   Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
+   If you want `viam-agent` to require that a WiFi network be connected to the internet in order to connect to it, enable `turn_on_hotspot_if_wifi_has_no_internet`.
+
+1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
+
+{{% /tab %}}
+{{% tab name="Mobile app (WiFi)" min-height="703px" %}}
 
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}
 

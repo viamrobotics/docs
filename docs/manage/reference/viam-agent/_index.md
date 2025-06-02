@@ -103,9 +103,6 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "disable_viam_server": false,
       "disable_network_configuration": false,
       "disable_system_configuration": false
-      "viam_server_env": {
-        "CUSTOM_VAR": "value"
-      }
     },
     "network_configuration": {
       "manufacturer": "viam",
@@ -115,6 +112,9 @@ For information on managing the service, see [Manage `viam-agent`](/manage/refer
       "hotspot_prefix": "viam-setup",
       "hotspot_password": "viamsetup",
       "disable_captive_portal_redirect": false,
+      "disable_bt_provisioning": false,
+      "disable_wifi_provisioning": false,
+      "bluetooth_adapter_name": "",
       "offline_before_starting_hotspot_minutes": 2,
       "user_idle_minutes": 5,
       "retry_connection_timeout_minutes": 10,
@@ -205,41 +205,8 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 | `disable_network_configuration` | boolean | Optional | Disables the network and hotspot configuration, as well as the configuration of additional networks. Default: `false`. |
 | `disable_system_configuration` | boolean | Optional | Disables the system configuration. Default: `false`. |
 | `disable_viam_server` | boolean | Optional | Disable `viam-server` remotely. This option is often used by developers working on Viam agent or when manually running `viam-server`. Default: `false`. |
-| `viam_server_env` | object | Optional | A map of environment variable names to values that `viam-agent` passes to `viam-server` and its child processes (including modules). Both keys and values must be strings. See [Environment Variables for viam-server](#environment-variables-for-viam-server). Default: `{}` (empty). |
 | `viam_server_start_timeout_minutes` | integer | Optional | Specify a time after which, if `viam-server` hasn't successfully started, Viam agent will kill it and restart. Default: `10`. |
 | `wait_for_update_check` | boolean | Optional | If set to `true`, `viam-agent` will wait for a network connection and check for updates before starting `viam-server`. See [Reduce startup time](#reduce-startup-time). Default: `false`. |
-
-### Environment Variables for viam-server
-
-You can configure environment variables for `viam-server` using the `viam_server_env` setting in `advanced_settings`.
-Environment variables set through `viam_server_env` are passed to `viam-server` and all child processes it launches, including modules.
-`viam-server` also inherits existing environment variables from `viam-agent`, such as `HOME`, `PWD`, `TERM`, `PATH`.
-
-{{< alert title="Important" color="note" >}}
-When you change environment variables in `viam_server_env`, `viam-agent` will automatically restart `viam-server` to apply these and any other changes made before saving.
-This restart will occur immediately if `viam-server` is in a maintenance window and not currently processing configuration changes.
-{{< /alert >}}
-
-Changes to `viam_server_env` are the only changes that automatically trigger a `viam-server` restart. Changing other configuration options requires a manual restart unless you've also changed `viam_server_env`.
-
-#### Example configurations
-
-```json
-{
-  "agent": {
-    "advanced_settings": {
-      "viam_server_env": {
-        "PION_LOG_TRACE": "all", # Debug logging for WebRTC
-        "HTTPS_PROXY": "socks5://proxy.example.com:1080", # SOCKS proxy
-        "HTTP_PROXY": "socks5://proxy.example.com:1080",
-        "CUSTOM_VAR": "value"
-      }
-    }
-  }
-}
-```
-
-To remove an environment variable, remove it from the `viam_server_env` object and save your configuration.
 
 ### Reduce startup time
 
@@ -260,8 +227,11 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 <!-- prettier-ignore -->
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
+| `bluetooth_adapter_name` | string | Optional | For machines with multiple Bluetooth adapters, specify which adapter to use for Bluetooth provisioning. If not specified, the first available Bluetooth adapter will be used. Example: `"hci0"`. Default: `""` (auto-detect). |
 | `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
+| `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Both WiFi hotspot and Bluetooth provisioning can be enabled simultaneously. Default: `false`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
+| `disable_wifi_provisioning` | boolean | Optional | When set to true, disables WiFi hotspot provisioning. The machine will not create a WiFi hotspot for provisioning. Both WiFi hotspot and Bluetooth provisioning can be enabled simultaneously. Default: `false`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |

@@ -29,6 +29,13 @@ Unless you have been told to use the captive portal, we recommend you use the Vi
 
 ## Set up your machine using the Viam mobile app
 
+The Viam mobile app supports two connection methods for machine setup:
+
+- **Bluetooth provisioning**: The app connects directly to your machine via Bluetooth Low Energy (BLE) without needing to join a WiFi network
+- **WiFi hotspot provisioning**: The app connects to your machine through a temporary WiFi hotspot
+
+The app will automatically choose the best available method. If your machine supports Bluetooth provisioning, the app will prefer that method for a smoother setup experience.
+
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" max-width="300px" class="">}}
 
 {{< table >}}
@@ -55,23 +62,32 @@ If you have already created a machine, select it.
 If you have not yet created a machine, click on **Add new smart machine** and give your machine a name.
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
-**Follow the instructions in the app**
+**Turn on your machine and follow the app instructions**
 
 Turn on the smart machine you are attempting to connect to.
-Then leave the app and navigate to your mobile device's WiFi settings and connect to the WiFi hotspot your machine has created.
-You may need to wait a short time for your machine to boot and create its WiFi hotspot.
+The app will guide you through the connection process.
+
+**If using Bluetooth provisioning:**
+- Ensure Bluetooth is enabled on your mobile device
+- The app will automatically scan for and connect to your machine's Bluetooth service
+- Your machine will advertise a Bluetooth service with a name beginning with `viam-setup-`
+
+**If using WiFi hotspot provisioning:**
+- Leave the app and navigate to your mobile device's WiFi settings
+- Connect to the WiFi hotspot your machine has created
 Your machine's WiFi hotspot name will begin with `viam-setup-`.
 Unless you have been given other instructions, the WiFi password for this hotspot network is `viamsetup`.
+- Return to the Viam mobile app once connected
 
-Once you are connected to your machine's WiFi hotspot return to the Viam mobile app.
+You may need to wait a short time for your machine to boot and start its provisioning services.
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
 **Provide the network information for the machine**
 
 In the mobile app, you will be prompted to provide the network information for the machine.
 
-The machine will now disable the hotspot network and attempt to connect using the provided network information.
-If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
+The machine will now attempt to connect using the provided network information.
+If the machine cannot establish a connection using the provided network information, it will continue to be available for provisioning and prompt you to re-enter the network information until a connection is successfully established.
 {{% /tablestep %}}
 {{% tablestep number=5 %}}
 **Wait for machine to complete setup**
@@ -134,6 +150,34 @@ If the machine can successfully connect to the network it will now complete its 
 Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
 {{% /tablestep %}}
 {{< /table >}}
+
+## Troubleshooting
+
+### Bluetooth connection issues
+
+If you're having trouble with Bluetooth provisioning:
+
+1. **Check Bluetooth permissions**: Ensure the Viam mobile app has Bluetooth permissions enabled on your device.
+
+1. **Verify Bluetooth is enabled**: Make sure Bluetooth is turned on in your mobile device settings.
+
+1. **Check device compatibility**: Ensure your mobile device supports Bluetooth Low Energy (BLE).
+
+1. **Restart Bluetooth**: Try turning Bluetooth off and on again on your mobile device.
+
+1. **Try WiFi hotspot method**: If Bluetooth provisioning continues to have issues, you can fall back to connecting to your machine's WiFi hotspot and using that method instead.
+
+### WiFi connection issues
+
+If your machine cannot connect to your WiFi network:
+
+1. **Check network credentials**: Verify that the WiFi network name (SSID) and password are correct.
+
+1. **Check network compatibility**: Ensure your WiFi network is compatible with your machine's WiFi adapter.
+
+1. **Check signal strength**: Make sure your machine is within range of your WiFi router.
+
+1. **Try a different network**: If possible, try connecting to a different WiFi network to isolate the issue.
 
 ## Next Steps
 
