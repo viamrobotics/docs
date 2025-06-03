@@ -2,7 +2,7 @@
 title: "Create modules for ESP32 microcontrollers"
 linkTitle: "Modules for ESP32"
 type: "docs"
-weight: 29
+weight: 60
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["modular resources", "components", "services", "registry"]
@@ -16,9 +16,11 @@ aliases:
   - /get-started/installation/microcontrollers/development-setup/
   - /get-started/installation/viam-micro-server-dev/
   - /installation/viam-micro-server-dev/
+prev: /operate/get-started/setup-micro/
 ---
 
 If no existing modules support your hardware or software, you can create your own.
+You'll write it in Rust and then embed it in the firmware you flash onto your device.
 
 ## Create a new module for ESP32
 

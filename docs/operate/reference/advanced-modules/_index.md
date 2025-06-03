@@ -1,6 +1,6 @@
 ---
-title: "Advanced Modular Resources"
-linkTitle: "Advanced Modules"
+title: "Advanced modular resources"
+linkTitle: "Advanced modular resources"
 type: docs
 tags:
   [

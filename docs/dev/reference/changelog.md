@@ -67,7 +67,7 @@ Some older modules use "explicit dependencies" which require users to list the n
 
 This explicit dependency handling is deprecated and not recommended when writing new modules.
 
-We now recommend using dependencies as described in the [Module dependencies](/operate/get-started/other-hardware/dependencies/) documentation.
+We now recommend using dependencies as described in the [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/) documentation.
 The implicit way of handling dependencies does not require users to list the names of dependencies in the `depends_on` field.
 
 {{% /changelog %}}
@@ -122,7 +122,7 @@ This is a breaking change for Go modules.
 {{% /tab %}}
 {{< /tabs >}}
 
-See [Module dependencies](/operate/get-started/other-hardware/dependencies/) for more information.
+See [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/) for more information.
 
 {{% /changelog %}}
 
