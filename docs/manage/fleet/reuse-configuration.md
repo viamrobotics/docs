@@ -315,7 +315,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{< /expand >}}
 {{< expand "Set a module version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a module](/get-started/other-hardware/module-configuration/#module-configuration-details) named `custom-sensor` from the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a module](/operate/get-started/other-hardware/module-configuration/#module-configuration-details) named `custom-sensor` from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [

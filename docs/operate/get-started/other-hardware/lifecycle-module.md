@@ -28,7 +28,7 @@ The lifecycle of a module and the resources it provides is as follows:
    Typically, the constructor calls the reconfigure function.
 
 1. If construction or reconfiguration fails due to a validation failure or an exception thrown by the modular resource's constructor or its reconfigure method, `viam-server` attempts to construct or reconfigure the resource every 5 seconds.
-   If the module exceeds the [configured timeout limits](/get-started/other-hardware/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure), `viam-server` logs an [error](/dev/tools/common-errors/#timed-out-waiting-for-module).
+   If the module exceeds the [configured timeout limits](/operate/get-started/other-hardware/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure), `viam-server` logs an [error](/dev/tools/common-errors/#timed-out-waiting-for-module).
 
 1. Once the modular resource has started up and configured, it is available for use.
 

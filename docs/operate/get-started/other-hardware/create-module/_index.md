@@ -977,7 +977,7 @@ The `viam module generate` command already generated the `build-action` file in 
 1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
 1. In the **Choose a tag** dropdown, create a new tag such as `1.0.0`.
    _Do not prepend the tag with `v` or the GH action will not trigger._
-   For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
+   For details about versioning, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).
 
 1. Click **Publish release**.
    The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
@@ -1003,7 +1003,7 @@ viam module upload --version 1.0.0 --platform any dist/archive.tar.gz
 
 For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
+For details about versioning, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -1051,7 +1051,7 @@ You can use the following package and upload method if you opted not to enable c
 
     For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-    For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
+    For details about versioning, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -1069,7 +1069,7 @@ From within your module's directory, run the `viam module upload` CLI command to
 viam module upload --version 1.0.0 --platform <platform> .
 ```
 
-For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
+For details about versioning, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
