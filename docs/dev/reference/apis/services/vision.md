@@ -22,10 +22,6 @@ While the camera component lets you access what your machine's camera sees, the 
 
 The vision service {{< glossary_tooltip term_id="api" text="API" >}} allows you to get detections, classifications, or point cloud objects, depending on the {{< glossary_tooltip term_id="ml" text="ML" >}} model the vision service is using.
 
-{{% alert title="Note" color="note" %}}
-The vision service can optionally depend on the [frame system](/operate/reference/services/frame-system/) for certain applications, particularly when working with 3D segmentation, spatial transformations, or when you need to relate camera coordinates to other components in your machine. For basic 2D detection and classification tasks, frame system configuration is typically not required.
-{{% /alert %}}
-
 The vision service supports the following kinds of operations:
 
 - [Detections](#detections)
@@ -86,7 +82,8 @@ See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rov
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 {{% alert title="Tip" color="tip" %}}
-3D segmentation operations often require [frame system](/operate/reference/services/frame-system/) configuration to properly relate camera coordinates to your machine's spatial reference frames. This enables the vision service to provide meaningful 3D coordinates and spatial relationships.
+3D segmentation operations require [frame system](/operate/reference/services/frame-system/) configuration to properly relate camera coordinates to your machine's spatial reference frames.
+This enables the vision service to provide meaningful 3D coordinates and spatial relationships.
 {{% /alert %}}
 
 **Supported API methods:**
