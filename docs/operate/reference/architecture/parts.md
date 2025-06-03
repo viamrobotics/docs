@@ -82,9 +82,19 @@ To add a new sub-part:
 
    {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the create part dropdown open." style="width:500px" class="shadow" >}}
 
+3. Save the config.
+
+{{% hiddencontent %}}
+The sub-part will not be visible as a `remote` in the debug config until after you use the setup instructions to make the sub-part go live.
+{{% /hiddencontent %}}
+
 To rename or delete a sub-part, or to make it the main part, click the **...** menu:
 
 {{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="width:500px" class="shadow" >}}
+
+By default, all sub-parts appear in the [frame system](/operate/reference/services/frame-system/) at the world origin.
+You can specify translations for sub-parts by configuring their frames with appropriate translation values relative to their parent frame.
+You can view the `frame` of each sub-part in the `remotes` section of the debug config.
 
 ### Configure a remote part
 

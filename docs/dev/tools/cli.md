@@ -977,6 +977,8 @@ The `--platform` argument accepts one of the following architectures:
 | `darwin/arm64` | macOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
 | `windows/amd64` | Windows machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on Windows `amd64`. |
 
+For information on which of these platforms are supported for cloud build, see [Supported platforms for automatic updates](/operate/get-started/other-hardware/manage-modules/#supported-platforms-for-automatic-updates).
+
 You can use the `uname -m` command on your computer or board to determine its system architecture.
 
 The `viam module upload` command only supports one `platform` argument at a time.

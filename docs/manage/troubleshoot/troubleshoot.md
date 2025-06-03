@@ -178,6 +178,30 @@ The process will dump a stack trace, visible in the `viam-server` logs, that sho
 - Where execution is blocked or deadlocked
 - Internal state information that might not appear in regular logs
 
+{{% hiddencontent %}}
+
+### Verify module startup completion
+
+To verify if a module has successfully started, check the machine logs for specific startup messages:
+
+1. Go to your machine's **LOGS** tab in the [Viam app](https://app.viam.com).
+
+1. Look for log messages related to your module.
+1. You can filter the logs by typing the module name in the search box to focus only on messages related to your specific module.
+   When a module starts successfully, you'll see a sequence of log messages similar to:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   info rdk.module.manager           module/manager.go:XXX        Starting up module         module <module-name>
+   info rdk.module.manager           module/manager.go:XXX        Module successfully added  module <module-name>
+   info rdk.modmanager               modmanager/manager.go:xxx    Modules successfully added modules [<module-name>]
+   info rdk.resource_manager         impl/resource_manager.go:xxx Now configuring resource   resource <api-triplet>/<model-name>
+   info rdk.modmanager.<module-name> modmanager/manager.go:xxx    Adding resource to module  resource <model-name> module <module-name>
+   ```
+
+1. If you don't see a "successfully added" message or "adding resource to module," look for error messages that might indicate why the module failed to start completely.
+
+{{% /hiddencontent %}}
+
 ## Capture machine telemetry data
 
 Some issues are due to overall system health.

@@ -65,9 +65,9 @@ The lifecycle of a module and the resources it provides is as follows:
 1. `viam-server` starts, and if it is connected to the internet, it checks for configuration updates.
 1. `viam-server` starts any configured modules.
 1. When a module initializes, it registers its model or models and associated [APIs](/dev/reference/apis/) with `viam-server`, making the models available for use.
-1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the dependencies of the resource.
-1. If a dependency is not already running, `viam-server` starts it before starting the resource.
-   If a dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
+1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the [dependencies](/operate/get-started/other-hardware/dependencies/) of the resource.
+1. If a required dependency is not already running, `viam-server` starts it before starting the resource.
+   If a required dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
 1. `viam-server` calls the resource's constructor to build the resource based on its configuration.
    Typically, the constructor calls the reconfigure function.
 1. If construction or reconfiguration fails due to a validation failure or an exception thrown by the modular resource's constructor or its reconfigure method, `viam-server` attempts to construct or reconfigure the resource every 5 seconds.
@@ -929,7 +929,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Create a GitHub repo**
+**Create a GitHub repo and link to it from your `meta.json`**
 
 Create a GitHub repository with all the source code and the README for your module.
 This is required for cloud build to work.
@@ -941,6 +941,7 @@ Add the link to that repo as the `url` in the <file>meta.json</file> file.
 **Edit the meta.json file**
 
 Make any necessary edits to the `meta.json` file.
+For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 Click below for information about the available fields.
 
 {{< expand "meta.json reference" >}}
@@ -976,8 +977,8 @@ Do not change the <code>module_id</code>.</p>
 <tr>
 <td><code>url</code></td>
 <td>string</td>
-<td>Optional</td>
-<td>The URL of the GitHub repository containing the source code of the module. Required for cloud build.</td>
+<td><strong>Required</strong> for cloud build</td>
+<td>The URL of the GitHub repository containing the source code of the module. Cloud build will fail if you do not provide this. Optional for local modules.</td>
 </tr>
 <tr>
 <td><code>description</code></td>
@@ -1207,3 +1208,10 @@ Configure it just as you would [configure any other component or service in the 
 1. Save your configuration.
 
 You can delete the local module; it is no longer needed.
+
+{{% hiddencontent %}}
+A previous version of the CLI module generator created `__init__.py` files, but now uses a different module structure.
+We recommend using what the current generator creates rather than old examples that use `__init__.py` files.
+
+The same applies for edits to `main.py`: Some older example modules define `async def main()` inside `main.py`, but you should generally use the generated `main.py` file as it is.
+{{% /hiddencontent %}}

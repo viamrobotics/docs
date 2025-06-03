@@ -171,3 +171,7 @@ For an example that implements `DoCommand` in a generic API Python module, see [
 
 For additional examples, look at the GitHub repositories of [modules in the registry](https://app.viam.com/registry), especially modules that use the generic API.
 Essentially all generic models implement `DoCommand` (since it is the only method of the generic API), and various other models implement it as well.
+
+{{% hiddencontent %}}
+`DoCommand` is styled as `do_command` in Python.
+{{% /hiddencontent %}}
