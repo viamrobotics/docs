@@ -78,7 +78,7 @@ You can nest locations up to three levels deep.
 
 ## Example
 
-If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/#example).
+If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/#organizing-devices-for-third-party-usage).
 
 ## Frequently asked questions
 
