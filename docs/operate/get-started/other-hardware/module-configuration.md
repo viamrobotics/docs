@@ -109,7 +109,8 @@ Examples:
       "type": "registry",
       "name": "viam_tflite_cpu",
       "module_id": "viam:tflite_cpu",
-      "version": "latest"
+      "version": "latest",
+      "disabled": true
     },
     {
       "type": "registry",
@@ -117,6 +118,11 @@ Examples:
       "module_id": "viam:raspberry-pi",
       "version": "1.1.0"
     },
+    {
+      "type": "local",
+      "name": "local-module-1",
+      "executable_path": "/Users/jessamy/myFolderOfCode/my-control-logic/run.sh"
+    }
   ]
 ```
 
@@ -193,11 +199,13 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).</p> |
 | `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam Registry](https://app.viam.com/registry) or is only available [locally](/operate/get-started/other-hardware/create-module/#test-your-module-locally) on your computer. |
-| `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. |
 | `name` | string | **Required** | A name for this instance of the module. |
+| `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. Not applicable to local modules. |
+| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).</p> |
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
+| `executable_path` | string | Local modules only | The path to the module's executable file. Only applicable to, and required for, local modules. Registry modules use the `entrypoint` in the [<file>meta.json</file> file](/operate/get-started/other-hardware/create-module/metajson/) instead. |
+| `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
 
 ### Module versioning
 
