@@ -46,6 +46,7 @@ If you want to create a "custom module", this page provides instructions for cre
 
 This page provides instructions for creating and uploading a module in Python or Go.
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
+If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/get-started/other-hardware/micro-module/).
 
 {{< expand "How to design your module" >}}
 
