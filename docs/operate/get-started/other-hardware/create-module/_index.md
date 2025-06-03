@@ -32,6 +32,7 @@ aliases:
   - /extend/modular-resources/upload/
   - /modular-resources/upload/
   - /registry/upload/
+  - /get-started/other-hardware/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/create-module/hello-world-module/"
 ---
@@ -137,7 +138,7 @@ In the next section, you'll customize some of the generated files to support you
 
 If you have multiple modular components that are related to or even dependent upon each other, you can opt to put them all into one module.
 Note that each model can implement only one API.
-For an example of how this is done, see [Create a Hello World module](/operate/get-started/other-hardware/hello-world-module/).
+For an example of how this is done, see [Create a Hello World module](/operate/get-started/other-hardware/create-module/hello-world-module/).
 
 ### Implement the component API
 
@@ -156,7 +157,7 @@ Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary import
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return a map of any dependencies.
 
-For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
+For more information, see [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
 
 {{% /tablestep %}}
 {{< tablestep number=3 >}}
@@ -374,7 +375,7 @@ Open <file>module.go</file> and add necessary imports.
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return any dependencies.
 
-For more information, see [Module dependencies](/operate/get-started/other-hardware/dependencies/).
+For more information, see [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
 {{% /tablestep %}}
 {{< tablestep number=4 >}}
 
@@ -409,7 +410,7 @@ Make sure you return the correct type in accordance with the function's return s
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
 {{< expand "Example code for a camera module" >}}
-This example from [Hello World module](/operate/get-started/other-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
+This example from [Hello World module](/operate/get-started/other-hardware/create-module/hello-world-module/) implements only one method of the camera API by returning a static image.
 It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -976,7 +977,7 @@ The `viam module generate` command already generated the `build-action` file in 
 1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
 1. In the **Choose a tag** dropdown, create a new tag such as `1.0.0`.
    _Do not prepend the tag with `v` or the GH action will not trigger._
-   For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+   For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
 
 1. Click **Publish release**.
    The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
@@ -1002,7 +1003,7 @@ viam module upload --version 1.0.0 --platform any dist/archive.tar.gz
 
 For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -1050,7 +1051,7 @@ You can use the following package and upload method if you opted not to enable c
 
     For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-    For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+    For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -1068,7 +1069,7 @@ From within your module's directory, run the `viam module upload` CLI command to
 viam module upload --version 1.0.0 --platform <platform> .
 ```
 
-For details about versioning, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+For details about versioning, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.

@@ -19,7 +19,7 @@ The lifecycle of a module and the resources it provides is as follows:
 
 1. When a module initializes, it registers its model or models and associated [APIs](/dev/reference/apis/) with `viam-server`, making the models available for use.
 
-1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the [dependencies](/operate/get-started/other-hardware/dependencies/) of the resource.
+1. For each modular resource configured on the machine, `viam-server` uses the resource's `validate` function and the `depends_on` field in the resource configuration to determine the [dependencies](/operate/get-started/other-hardware/create-module/dependencies/) of the resource.
 
 1. If a required dependency is not already running, `viam-server` starts it before starting the resource.
    If a required dependency is not found or fails to start, `viam-server` will not start the resource that depends on it.
@@ -28,7 +28,7 @@ The lifecycle of a module and the resources it provides is as follows:
    Typically, the constructor calls the reconfigure function.
 
 1. If construction or reconfiguration fails due to a validation failure or an exception thrown by the modular resource's constructor or its reconfigure method, `viam-server` attempts to construct or reconfigure the resource every 5 seconds.
-   If the module exceeds the [configured timeout limits](/operate/reference/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure), `viam-server` logs an [error](/dev/tools/common-errors/#timed-out-waiting-for-module).
+   If the module exceeds the [configured timeout limits](/get-started/other-hardware/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure), `viam-server` logs an [error](/dev/tools/common-errors/#timed-out-waiting-for-module).
 
 1. Once the modular resource has started up and configured, it is available for use.
 

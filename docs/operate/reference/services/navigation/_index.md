@@ -282,7 +282,7 @@ An example of an `Orientation` reading:
 orientation, err := imuwit.Orientation(context.Background(), nil)
 ```
 
-Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/operate/reference/orientation-vector/).
+Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/operate/mobility/orientation-vector/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
 You can choose the origin reference frame by configuring it using Viam's [frame system](/operate/reference/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.

@@ -28,7 +28,7 @@ You will need to [recompile and flash your ESP32 yourself](/operate/get-started/
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
-For a simplified step-by-step guide, see [Create a Hello World module](/operate/get-started/other-hardware/hello-world-module/).
+For a simplified step-by-step guide, see [Create a Hello World module](/operate/get-started/other-hardware/create-module/hello-world-module/).
 {{% /alert %}}
 
 You can also watch this guide to creating a vision service module:

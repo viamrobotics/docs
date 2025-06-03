@@ -17,7 +17,7 @@ If you are developing a new {{< glossary_tooltip term_id="modular-resource" text
 
 The [motion service](/operate/reference/services/motion/) uses these intermediate reference frames when calculating movements.
 
-For example, an [arm](/operate/reference/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/operate/reference/orientation-vector/) with [`MoveToPosition()`](/dev/reference/apis/components/arm/#movetoposition).
+For example, an [arm](/operate/reference/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/operate/mobility/orientation-vector/) with [`MoveToPosition()`](/dev/reference/apis/components/arm/#movetoposition).
 
 This file can be a JSON file like [this xArm6 file](https://github.com/viam-modules/viam-ufactory-xarm/blob/main/arm/xarm6_kinematics.json), or a [<file>.URDF</file> file](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html).
 

@@ -23,7 +23,7 @@ next: /operate/get-started/other-hardware/module-configuration/
 
 After you [create and upload a module](/operate/get-started/other-hardware/create-module/), you can update, delete, or change its visibility settings.
 
-For information on pinning module deployments to versions, see [Module versioning](/operate/reference/module-configuration/#module-versioning).
+For information on pinning module deployments to versions, see [Module versioning](/get-started/other-hardware/module-configuration/#module-versioning).
 
 ## Update a module
 
@@ -259,7 +259,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
    The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
 
-   Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/reference/module-configuration/#module-versioning) of the module will automatically update to the new version.
+   Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/get-started/other-hardware/module-configuration/#module-versioning) of the module will automatically update to the new version.
 
 #### Supported platforms for automatic updates
 
