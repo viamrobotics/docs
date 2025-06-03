@@ -16,7 +16,7 @@ usage: 999999
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
 Technically, you must choose a motor model based on the motor driver, not the motor itself.
-The `gpio` model supports a small DC motor if it is wired to a motor driver that is controlled by general-purpose input/output (GPIO) pins on a {{< glossary_tooltip term_id="board" text="board" >}} component.
+The `gpio` model supports a DC or BLDC motor if it is wired to a motor driver that is controlled by general-purpose input/output (GPIO) pins on a {{< glossary_tooltip term_id="board" text="board" >}} component.
 If your motor driver uses a different communication protocol such as I2C or SPI, you should use a different motor model.
 If you have a stepper motor, use a compatible stepper-specific model such as [`gpiostepper`](/operate/reference/components/motor/gpiostepper/).
 
