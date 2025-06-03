@@ -30,7 +30,7 @@ The component configuration for the sensor could look like this, with the name o
 Dependencies are configured just like any other resource attribute.
 The difference is that dependencies represent other resources that are accessed by the resource that depends on them.
 
-When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/create-module/#how-and-where-do-modules-run), it builds the dependencies first.
+When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/lifecycle-module/), it builds the dependencies first.
 
 ## Use dependencies
 
