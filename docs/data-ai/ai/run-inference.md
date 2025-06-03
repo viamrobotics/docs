@@ -43,7 +43,6 @@ More powerful hardware, including the Jetson Xavier or Raspberry Pi 5 with an AI
 
 Vision services apply an ML model to a stream of images from a camera to generate bounding boxes or classifications.
 
-
 {{<resources_svc api="rdk:service:vision" type="vision">}}
 
 {{% alert title="Tip" color="tip" %}}
