@@ -61,7 +61,7 @@ For more information, see [How sync works](/data-ai/capture-data/advanced/how-sy
 
    {{< imgproc src="/tutorials/data-management/add-method.png" alt="Disable data capture toggle" resize="700x" class="shadow" >}}
 
-1. If you see a warning **Capture disabled on data management service**, click **Enable capture on data management service**.
+1. If you see a **Capture disabled on data management service** warning, click **Enable capture on data management service**.
 1. Select a **Method** to capture data from.
    {{< alert title="Camera capture methods" color="note" >}}
    Camera components provide two similar, but distinct capture methods:
@@ -69,7 +69,7 @@ For more information, see [How sync works](/data-ai/capture-data/advanced/how-sy
    - **ReadImage**: Returns a single image in the specified MIME type, if the camera component supports that MIME type.
      Prefer GetImages unless your use case requires a specific MIME type other than JPEG.
      {{< /alert >}}
-1. Set the capture **frequency** in hertz, for example to `0.2` with `ReadImage` on a camera to capture an image every 5 seconds.
+1. Set the capture **Frequency** in hertz, for example to `0.2` with `ReadImage` on a camera to capture an image every 5 seconds.
 1. **Save** your config.
 
 You can add multiple methods with different capture frequencies.
