@@ -41,4 +41,5 @@ The lifecycle of a module and the resources it provides is as follows:
    If any modules are still running after 90 seconds, `viam-server` kills them as well.
    This means that if four modules are running and the first three each fail to shut down within 30 seconds each, the fourth is killed immediately at the 90 second mark.
 
-For microcontrollers, you must flash a [firmware build that includes the Micro-RDK](/operate/get-started/other-hardware/micro-module/) and one or more modules onto your device.
+Microcontroller modules function differently and are embedded in the firmware you flash onto your device.
+For more information see [Modules for ESP32](/operate/get-started/other-hardware/micro-module/).

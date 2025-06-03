@@ -2,7 +2,6 @@
 title: "Modular resource and module configuration"
 linkTitle: "Module configuration"
 weight: 40
-no_list: true
 type: docs
 icon: true
 description: "Configure module versions and module environment variables."
@@ -10,6 +9,8 @@ aliases:
   - /operate/reference/module-configuration/
 # date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
+prev: /operate/get-started/other-hardware/manage-modules/
+next: /operate/get-started/other-hardware/lifecycle-module/
 ---
 
 This page contains reference material.
