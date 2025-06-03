@@ -119,6 +119,8 @@ To uninstall `viam-agent`, run the following command in an administrator prompt:
 ```sh {class="command-line" data-prompt="$"}
 sc stop viam-agent
 sc delete viam-agent
+Remove-Item \opt\viam -Recurse
+Remove-Item C:\Windows\system32\config\systemprofile\.viam -Recurse
 ```
 
 {{% /tab %}}

@@ -330,7 +330,7 @@ You will find the `viam-agent` logs under **Windows Logs > Application** on the 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Core options (Linux)
+## Core options
 
 <!-- prettier-ignore -->
 | Option | Description |
