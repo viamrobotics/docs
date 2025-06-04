@@ -32,7 +32,7 @@ aliases:
   - /extend/modular-resources/upload/
   - /modular-resources/upload/
   - /registry/upload/
-  - /get-started/other-hardware/
+  - /operate/get-started/other-hardware/
 prev: "/operate/get-started/supported-hardware/"
 next: "/operate/get-started/other-hardware/create-module/hello-world-module/"
 ---
