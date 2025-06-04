@@ -5,5 +5,5 @@ layout: "empty"
 type: "docs"
 empty_node: true
 open_on_desktop: true
-canonical: "/operate/get-started/other-hardware/create-module"
+canonical: "/operate/get-started/other-hardware/create-module/"
 ---
