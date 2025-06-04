@@ -2,7 +2,7 @@
 linkTitle: "Export data"
 title: "Export data"
 weight: 40
-description: "Download data from the Viam app using the data client API or the Viam CLI."
+description: "Download data from Viam using the data client API or the Viam CLI."
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
@@ -43,7 +43,7 @@ To export your data from the cloud using the Viam CLI:
 {{% tablestep number=1 %}}
 **Filter the data you want to download**
 
-Navigate to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
+Navigate to the [**DATA** page in Viam](https://app.viam.com/data/view).
 
 Use the filters on the left side of the page to filter only the data you wish to export.
 
@@ -66,7 +66,7 @@ Run the copied command in a terminal:
 viam data export --org-ids=<org-id> --data-type=<binary|tabular> --mime-types=<mime types> --destination=.
 ```
 
-This command uses the Viam CLI to download the data onto your computer based on the search criteria you select in the Viam app.
+This command uses the Viam CLI to download the data onto your computer based on the search criteria you select in Viam.
 
 By default, the command creates two new directories named `data` and `metadata` in the current directory and downloads the specified data into the `data` folder and metadata, like bounding box information and labels, in JSON format into the `metadata` folder.
 If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/dev/tools/cli/#named-arguments).

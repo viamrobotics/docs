@@ -24,7 +24,7 @@ This page explains how to create a dataset that meets these criteria for your tr
 
 ## Prerequisites
 
-{{% expand "a machine connected to the Viam app" %}}
+{{% expand "a machine connected to Viam" %}}
 
 {{% snippet "setup.md" %}}
 
@@ -38,12 +38,12 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 
 ## Create a dataset
 
-To create a dataset, use the Viam CLI or the Viam app:
+To create a dataset, use the Viam CLI or Viam:
 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
 
-1. Open the [**DATASETS** tab on the **DATA** page](https://app.viam.com/data/datasets) of the Viam app.
+1. Open the [**DATASETS** tab on the **DATA** page](https://app.viam.com/data/datasets) of Viam.
 
 1. Click the **+ Create dataset** button.
 
@@ -76,7 +76,7 @@ To create a dataset, use the Viam CLI or the Viam app:
 {{< tabs >}}
 {{% tab name="One image" %}}
 
-You can add images to a dataset directly from a camera or vision component feed in the **CONTROL** or **CONFIGURATION** tabs of the Viam app.
+You can add images to a dataset directly from a camera or vision component feed in the **CONTROL** or **CONFIGURATION** tabs of Viam.
 
 To add an image directly to a dataset from a visual feed, complete the following steps:
 
@@ -87,7 +87,7 @@ To add an image directly to a dataset from a visual feed, complete the following
 1. Click **Add** to add the image to the selected dataset.
 1. When you see a success notification that reads "Saved image to dataset", you have successfully added the image to the dataset.
 
-To view images added to your dataset, go to the **DATA** page's [**DATASETS** tab](https://app.viam.com/data/datasets) in the Viam app and select your dataset.
+To view images added to your dataset, go to the **DATA** page's [**DATASETS** tab](https://app.viam.com/data/datasets) in Viam and select your dataset.
 
 {{% /tab %}}
 {{% tab name="Many images" %}}
@@ -196,7 +196,7 @@ Repeat these steps for all images in the dataset.
 {{< tabs >}}
 {{% tab name="Viam app" %}}
 
-1. Open the [**DATA** page](https://app.viam.com/data/view) of the Viam app.
+1. Open the [**DATA** page](https://app.viam.com/data/view) of Viam.
 
 1. Navigate to the **ALL DATA** tab.
 

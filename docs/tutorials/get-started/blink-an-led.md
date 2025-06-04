@@ -2,7 +2,7 @@
 title: "Make an LED Blink With Buttons And With Code"
 linkTitle: "Blink an LED"
 type: "docs"
-description: "Use the Viam app and the SDKs to make an LED turn on and off with a Raspberry Pi."
+description: "Use Viam and the SDKs to make an LED turn on and off with a Raspberry Pi."
 videos:
   ["/tutorials/blink-an-led/blink.webm", "/tutorials/blink-an-led/blink.mp4"]
 videoAlt: "A blinking L.E.D. connected to a Raspberry Pi"
@@ -26,7 +26,7 @@ toc_hide: true
 ---
 
 <!-- LEARNING GOALS:
-After following this tutorial, you will understand when to use a board component and be able to configure a board component for your SBC and control it using the Viam app and the Viam SDKs.
+After following this tutorial, you will understand when to use a board component and be able to configure a board component for your SBC and control it using Viam and the Viam SDKs.
 Notes: Also point out that a reader can use fake components if they don't have real ones. -->
 
 This tutorial will show you how to use Viam to make an LED blink with a Raspberry Pi.
@@ -34,7 +34,7 @@ This is a great place to start if you have never built a robot or a circuit befo
 
 {{<gif webm_src="/tutorials/blink-an-led/image9.webm" mp4_src="/tutorials/blink-an-led/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
-First, you'll use the control interface on the [Viam app](https://app.viam.com) to turn the LED on and off.
+First, you'll use the control interface on [Viam](https://app.viam.com) to turn the LED on and off.
 Then, you'll write code to control the LED using the Viam [software development kits](/dev/reference/sdks/).
 
 ## What you'll need for this guide
@@ -127,10 +127,10 @@ Now that your circuit is wired, reconnect your Pi to power.
 
 ## Configure your robot
 
-Before proceeding, be sure that you have [connected your Pi to the Viam app](#project-setup).
+Before proceeding, be sure that you have [connected your Pi to Viam](#project-setup).
 
 Now it's time to configure your machine's components.
-Go to the [Viam app](https://app.viam.com/) and navigate to your new machine's **CONFIGURE** tab.
+Go to [Viam](https://app.viam.com/) and navigate to your new machine's **CONFIGURE** tab.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -144,7 +144,7 @@ We used the name `"local"`.
 
 Your board component panel will look like this:
 
-{{<imgproc src="/tutorials/blink-an-led/board-config.png" resize="1200x" style="width: 650px" alt="Config tab of the Viam app showing the board configuration. The board is named 'local' and no attributes are configured.">}}
+{{<imgproc src="/tutorials/blink-an-led/board-config.png" resize="1200x" style="width: 650px" alt="Config tab of Viam showing the board configuration. The board is named 'local' and no attributes are configured.">}}
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -171,21 +171,21 @@ Replace the contents of the config field with the following JSON configuration f
 
 Click the **Save** button in the top right corner of the page to save your changes.
 
-## Control your robot using the Viam app
+## Control your robot using Viam
 
-When you configure your board component, the Viam app generates a control panel for it.
+When you configure your board component, Viam generates a control panel for it.
 Click the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to view the control panels for all your machine's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.
 The first time you click **Get Pin State**, it should return "Pin: 8 is low."
 
-![Control tab of the Viam app showing the board control panel. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the 'Get Pin State' button and the output, which reads, 'Pin: 8 is low.'](/tutorials/blink-an-led/get-pin-state.png)
+![Control tab of Viam showing the board control panel. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the 'Get Pin State' button and the output, which reads, 'Pin: 8 is low.'](/tutorials/blink-an-led/get-pin-state.png)
 
 You can now use the **Set** menu to set the status of your pin to **high**.
 Once you click **Get Pin State** again, it will look like this:
 
-![Control tab of the Viam app showing the board control panel. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field.](/tutorials/blink-an-led/set-pin-state.png)
+![Control tab of Viam showing the board control panel. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field.](/tutorials/blink-an-led/set-pin-state.png)
 
 When you set your pin to **high** the LED should illuminate.
 You can set the pin back and forth between high and low, and you will see your LED turn on or off depending on whether you have the value set to **low** or **high**.
@@ -216,16 +216,16 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 ### Connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the **CONNECT** tab of your machine's page on the [Viam app](https://app.viam.com/robots) and select the **Code sample** page.
+The easiest way to get started writing an application with Viam is to navigate to the **CONNECT** tab of your machine's page on [Viam](https://app.viam.com/robots) and select the **Code sample** page.
 For this tutorial, we provide Python and Golang code snippets.
 Select **Python** or **Golang** and follow the instructions to connect to your machine.
 
 {{% snippet "show-secret.md" %}}
 
-These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
+These code snippets import all the necessary libraries and set up a connection with Viam in the cloud.
 
 On your local computer, create a file called <file>blink.py</file> or <file>blink.go</file>.
-Paste the sample code from the **CONNECT** tab of the Viam app into the file in your code editor, and save the file.
+Paste the sample code from the **CONNECT** tab of Viam into the file in your code editor, and save the file.
 
 You can now run the code.
 Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live.
@@ -241,8 +241,8 @@ Run the code by typing the following command into the terminal, with the correct
 python3 <INSERT PATH TO YOUR FILE>/blink.py
 ```
 
-If you successfully configured your machine and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
-What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in the Viam app (the board, as well as various built-in services).
+If you successfully configured your machine and it is able to connect to Viam, you should see something like the following printed to the terminal after running your program.
+What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in Viam (the board, as well as various built-in services).
 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 python3 my-project-folder/blink.py
@@ -285,8 +285,8 @@ Then, run your code:
 go run blink.go
 ```
 
-If you successfully configured your machine and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
-What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in the Viam app (the board, as well as various built-in services).
+If you successfully configured your machine and it is able to connect to Viam, you should see something like the following printed to the terminal after running your program.
+What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in Viam (the board, as well as various built-in services).
 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 go run blink.go
@@ -497,7 +497,7 @@ If you get an error, you can check your code against the complete code here:
 In this tutorial, you learned to:
 
 - Set up a circuit
-- Use the Viam app to configure and control a machine
+- Use Viam to configure and control a machine
 - Control your machine using the Viam SDK by writing a short program in either Go or Python to make an LED on your Raspberry Pi blink on and off!
 
 Now that you have completed this robotics project, check out some of our other [tutorials](/tutorials/).
