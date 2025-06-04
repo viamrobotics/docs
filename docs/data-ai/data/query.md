@@ -14,7 +14,7 @@ languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "core"]
 date: "2024-12-03"
-description: "Query sensor data that you have synced to the Viam app using the Viam app with SQL or MQL."
+description: "Query sensor data that you have synced to Viam with SQL or MQL."
 ---
 
 You can use the data management service to [capture sensor data](/data-ai/capture-data/capture-sync/) from any machine and sync that data to the cloud.
@@ -27,7 +27,7 @@ You can then run queries against that data to search for outliers or edge cases,
 
 - **MQL**: Viam also supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
 
-## Query data in the Viam app
+## Query data on Viam
 
 ### Prerequisites
 
@@ -38,7 +38,7 @@ See [capture sensor data](/data-ai/capture-data/capture-sync/) for more informat
 
 Once your data has synced, you can query your data from within the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
-You must have the [owner role](/manage/manage/rbac/) in order to query data in the Viam app.
+You must have the [owner role](/manage/manage/rbac/) in order to query data on Viam.
 
 {{< table >}}
 {{% tablestep number=1 %}}

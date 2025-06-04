@@ -103,7 +103,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
      Then set the capture frequency.
      `5 Hz` is a good starting place for most applications.
 
-     {{<imgproc src="/services/slam/rplidar-capture.png" resize="x1100" declaredimensions=true alt="An R P lidar camera configured in the Viam app config builder with next point cloud configured for capture at 5 Hz." class="shadow"  >}}
+     {{<imgproc src="/services/slam/rplidar-capture.png" resize="x1100" declaredimensions=true alt="An R P lidar camera configured with next point cloud configured for capture at 5 Hz." class="shadow"  >}}
 
    - To capture data from one or more movement sensors:
 
@@ -113,7 +113,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 For an IMU, choose the `AngularVelocity` and `LinearAcceleration` methods and set the capture frequency.
 `20 Hz` is a good starting place for most applications.
 
-{{<imgproc src="/services/slam/imu-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured in the Viam app config builder with angular velocity and linear acceleration both configured for capture at 20 Hz." class="shadow" >}}
+{{<imgproc src="/services/slam/imu-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured with angular velocity and linear acceleration both configured for capture at 20 Hz." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="Odometry only" %}}
@@ -121,7 +121,7 @@ For an IMU, choose the `AngularVelocity` and `LinearAcceleration` methods and se
 For a movement sensor that supports odometry, choose the `Position` and `Orientation` methods and set the capture frequency.
 `20 Hz` is a good starting place for most applications.
 
-{{<imgproc src="/services/slam/odometer-capture.png" resize="x1100" declaredimensions=true alt="A wheeled odometer configured in the Viam app config builder with position and orientation both configured for capture at 20 Hz." class="shadow" >}}
+{{<imgproc src="/services/slam/odometer-capture.png" resize="x1100" declaredimensions=true alt="A wheeled odometer configured with position and orientation both configured for capture at 20 Hz." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="Both (merged)" %}}
@@ -130,7 +130,7 @@ For a `merged` movement sensor, choose all four methods (`AngularVelocity`, `Lin
 `20 Hz` is a good starting place for most applications.
 You _do not_ need to configure data capture on the individual IMU and odometer.
 
-{{<imgproc src="/services/slam/merged-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured in the Viam app config builder with angular velocity, linear acceleration, position, and orientation all configured for capture at 20 Hz." class="shadow" >}}
+{{<imgproc src="/services/slam/merged-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured with angular velocity, linear acceleration, position, and orientation all configured for capture at 20 Hz." class="shadow" >}}
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -126,7 +126,7 @@ This error can be safely ignored if you do not intend to use audio on your machi
 **Description:** the [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
 When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
 
-**Solution:** Check the following to ensure your machine is accessible to the Viam app:
+**Solution:** Check the following to ensure your machine is accessible to Viam:
 
 - Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
 - Is the `ssh` service configured and running locally on the board?
@@ -255,4 +255,4 @@ None at this time.
 ### Browser plugins
 
 **Chrome plugin: Allow Right-Click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
-If you are experiencing issues with the **Create Service** pane in the Viam app, temporarily disable this plugin until you have saved your configuration in the Viam app.
+If you are experiencing issues with the **Create Service** pane on Viam, temporarily disable this plugin until you have saved your configuration on Viam.

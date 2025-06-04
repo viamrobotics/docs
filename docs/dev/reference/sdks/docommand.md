@@ -147,9 +147,9 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-## Use DoCommand from the Viam app
+## Use DoCommand in Viam
 
-You can use `DoCommand` from the Viam app:
+You can use `DoCommand` in Viam:
 
 1. Navigate to your machine's **CONTROL** tab.
 1. Find your resource and expand the **DO COMMAND** section.

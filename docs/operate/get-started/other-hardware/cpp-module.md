@@ -185,7 +185,7 @@ For more Python module examples:
 | ------ | ---------- | ----------- |
 | [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/dev/reference/apis/components/base/) to support the Agilex Limo base. |
 | [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to support several models of the SLAMTEC RPlidar. |
-| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera guide](/data-ai/capture-data/filter-before-sync/) for more information. |
+| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to Viam. See the [filtered-camera guide](/data-ai/capture-data/filter-before-sync/) for more information. |
 
 For more Go module examples:
 
@@ -1093,11 +1093,11 @@ int main(int argc, char** argv) {
 #### (Optional) Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
-Log messages sent to the Viam app appear under the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for your machine in an easily-parsable and searchable manner.
+Log messages sent to Viam appear under the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for your machine in an easily-parsable and searchable manner.
 
 Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
 
-Add the following code to your module code to enable logging to the Viam app, depending on the language you using to code your module. You can log in this fashion from the model definition file or files, the entry point (main program) file, or both, depending on your logging needs:
+Add the following code to your module code to enable logging to Viam, depending on the language you using to code your module. You can log in this fashion from the model definition file or files, the entry point (main program) file, or both, depending on your logging needs:
 
 {{% alert title="Tip" color="tip" %}}
 The example code shown above under [Write your new resource model definition](#write-your-new-resource-model-definition) includes the requisite logging code already.
@@ -1106,7 +1106,7 @@ The example code shown above under [Write your new resource model definition](#w
 {{< tabs name="Configure logging">}}
 {{% tab name="Python"%}}
 
-To enable your Python module to write resource-level log messages to the Viam app, add the following lines to your code:
+To enable your Python module to write resource-level log messages to Viam, add the following lines to your code:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Within some method, log information:
@@ -1150,7 +1150,7 @@ LOGGER.critical("critical info")
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-To enable your Go module to write log messages to the Viam app, add the following lines to your code:
+To enable your Go module to write log messages to Viam, add the following lines to your code:
 
 ```go {class="line-numbers linkable-line-numbers"}
 // In your import() block, import the logging package:
@@ -1192,7 +1192,7 @@ fn (c *component) someFunction(ctx context.Context, a int) {
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-`viam-server` automatically gathers all output sent to the standard output (`STDOUT`) in your C++ code and forwards it to the Viam app when a network connection is available.
+`viam-server` automatically gathers all output sent to the standard output (`STDOUT`) in your C++ code and forwards it to Viam when a network connection is available.
 
 We recommend that you use a C++ logging library to assist with log message format and creation, such as the [Boost trivial logger](https://www.boost.org/doc/libs/1_84_0/libs/log/doc/html/log/tutorial/trivial_filtering.html):
 
@@ -1662,9 +1662,9 @@ See [Update and manage modules you created](/operate/get-started/other-hardware/
 You have now created a module, and are ready to deploy it to a fleet of machines.
 There are two ways to deploy a module:
 
-- Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines in the Viam app](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
+- Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
   You can also choose to configure [automated uploads for new module versions](/operate/get-started/other-hardware/manage-modules/#update-automatically) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
-- As a local module (without uploading it to the Viam app), as you did in the [Test your module locally step above](#test-your-module-locally).
+- As a local module (without uploading it to Viam), as you did in the [Test your module locally step above](#test-your-module-locally).
   This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.
 
 Often, developers first test their new module by deploying it as a local module to a test machine.

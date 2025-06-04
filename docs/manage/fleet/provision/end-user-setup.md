@@ -110,7 +110,7 @@ In the captive web portal, you will then be prompted to provide the network info
 **If prompted, provide a machine cloud credentials configuration**
 
 Depending on how the machine was set up so far, the captive portal may also require you to paste machine cloud credentials.
-This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to Viam.
 
 Navigate to the [Viam app](https://app.viam.com) and create a new machine.
 

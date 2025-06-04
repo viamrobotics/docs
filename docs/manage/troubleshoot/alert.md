@@ -38,7 +38,7 @@ Additionally, you can receive continuous alerts at a specified interval indicati
 
 ### Prerequisites
 
-{{% expand "A running machine connected to the Viam app." %}}
+{{% expand "A running machine connected to Viam." %}}
 
 {{% snippet "setup.md" %}}
 

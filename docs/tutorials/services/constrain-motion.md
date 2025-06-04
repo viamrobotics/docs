@@ -343,7 +343,7 @@ await my_gripper.open()
 ## Full code
 
 The following code contains everything covered in this tutorial in addition to the `connect()` function, and the resource access code from the last tutorial that you need here as well.
-Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `ADDRESS FROM THE VIAM APP` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
+Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `MACHINE ADDRESS` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
 You can find the `<API-KEY>` and `<API-KEY-ID>` values for your machine on the **CONNECT** tab's **API keys** page.
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -368,7 +368,7 @@ async def connect():
       # ID
       api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 
 
 async def main():

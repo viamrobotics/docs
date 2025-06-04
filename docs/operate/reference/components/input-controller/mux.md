@@ -30,7 +30,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `input_controller` type, then select the `mux` model.
 Enter a name or use the suggested name for your input controller and click **Create**.
 
-![An example configuration for a multiplexed input controller component in the Viam App config builder](/components/input-controller/mux-input-controller-ui-config.png)
+![An example configuration for a multiplexed input controller component](/components/input-controller/mux-input-controller-ui-config.png)
 
 Enter the name of each source input controller in `sources`.
 

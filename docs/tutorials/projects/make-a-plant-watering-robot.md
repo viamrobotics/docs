@@ -229,7 +229,7 @@ Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` mode
 Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
 
-![Creation of a board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
+![Creation of a board.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

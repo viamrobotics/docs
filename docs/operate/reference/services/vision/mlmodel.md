@@ -146,7 +146,7 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _input tensor_ must be named `image`
   - The _output tensor_ must be named `probability`
 
-If you [trained a TFlite ML model using the Viam app](/data-ai/ai/train-tflite/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+If you [trained a TFlite ML model using Viam](/data-ai/ai/train-tflite/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 However, if you uploaded your own ML model, or are using one from the [Viam Registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 #### Remap tensor names
@@ -206,7 +206,7 @@ When done, click the **Save** button in the top right corner of the page, then p
 
 ## Test your detector or classifier
 
-You can test your detector or classifier with [existing images in the Viam app](#existing-images-in-the-cloud) or [live camera footage](#live-camera-footage).
+You can test your detector or classifier with [existing images on Viam](#existing-images-in-the-cloud) or [live camera footage](#live-camera-footage).
 You can also test detectors and classifiers with [existing images on a computer](#existing-images-on-your-machine).
 
 ### Existing images in the cloud

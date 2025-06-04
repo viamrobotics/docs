@@ -18,7 +18,7 @@ You have three options for moving a mobile robot [base](/operate/reference/compo
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam. Click to see instructions." %}}
 
 {{% snippet "setup.md" %}}
 
@@ -85,7 +85,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 
 
 async def moveInSquare(base):
@@ -141,7 +141,7 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID

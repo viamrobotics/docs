@@ -28,7 +28,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `camera` type, then select the `webcam` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
-{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" class="shadow"  >}}
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera." resize="1200x" style="width=600x" class="shadow"  >}}
 
 Edit and fill in the attributes as applicable.
 Leave the **video_path** blank and the camera will use the default video path for your machine.
@@ -173,7 +173,7 @@ Viam supports the following pixel formats:
 - YUY2 / YUYV / V422
 - Z16
 
-If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
+If your machine is connected to Viam, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
 
 On Linux, you can also manually determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
 Replace `/dev/video0` with the video path you [determined for your video device above](#using-video_path), if different:

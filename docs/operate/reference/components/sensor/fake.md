@@ -23,7 +23,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `sensor` type, then select the `fake` model.
 Enter a name or use the suggested name for your sensor and click **Create**.
 
-![An example configuration for a fake sensor in the Viam app Config Builder. Attributes are left blank.](/components/sensor/fake-sensor-ui-config.png)
+![An example configuration for a fake sensor. Attributes are left blank.](/components/sensor/fake-sensor-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

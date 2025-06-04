@@ -28,7 +28,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `gantry` type, then select the `multi-axis` model.
 Enter a name or use the suggested name for your gantry and click **Create**.
 
-![Creation of a multi-axis gantry component in the Viam app config builder.](/components/gantry/multi-axis-ui-config.png)
+![Creation of a multi-axis gantry component.](/components/gantry/multi-axis-ui-config.png)
 
 Fill in the attributes as applicable to your gantry, according to the table below.
 

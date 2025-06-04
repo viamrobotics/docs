@@ -32,7 +32,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `camera` type, then select the `ffmpeg` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
-![Configuration of a ffmpeg camera in the Viam app config builder.](/components/camera/configure-ffmpeg.png)
+![Configuration of a ffmpeg camera.](/components/camera/configure-ffmpeg.png)
 
 Edit the attributes as applicable to your camera, according to the table below.
 

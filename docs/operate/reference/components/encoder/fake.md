@@ -22,7 +22,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `encoder` type, then select the `fake` model.
 Enter a name or use the suggested name for your encoder and click **Create**.
 
-![Configuration of a fake encoder in the Viam app config builder.](/components/encoder/configure-fake.png)
+![Configuration of a fake encoder.](/components/encoder/configure-fake.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -32,7 +32,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `board` type, then select the `<board-model>` model.
 Enter a name or use the suggested name for your board and click **Create**.
 
-![An example configuration for a <board-model> board in the Viam app Config Builder.](/components/board/pi-ui-config.png)
+![An example configuration for a <board-model> board.](/components/board/pi-ui-config.png)
 
 Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit your board's attributes with JSON, according to the following table.
 

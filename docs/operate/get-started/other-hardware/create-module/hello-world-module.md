@@ -46,7 +46,7 @@ Authenticate your CLI session with Viam using one of the following options:
 {{< readfile "/static/include/how-to/auth-cli.md" >}}
 {{< /expand >}}
 
-{{% expand "Install viam-server on your computer and connect to the Viam app" %}}
+{{% expand "Install viam-server on your computer and connect to Viam" %}}
 
 {{% snippet "setup.md" %}}
 

@@ -53,9 +53,9 @@ Make sure all of your sensors are wired to your SBC before starting this tutoria
 
 ## Decide how you will organize your fleet
 
-Before you start connecting your devices to the Viam app, you'll need to decide how you want to group your devices.
+Before you start connecting your devices to Viam, you'll need to decide how you want to group your devices.
 
-In the Viam app, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_:
+On Viam, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_:
 
 - Each location can represent either a physical location or some other conceptual grouping.
 - An organization is the highest level grouping, and often contains all the locations (and machines) of an entire company.
@@ -75,7 +75,7 @@ Imagine you create an air quality monitoring company called Pollution Monitoring
 Anyone can sign up and order one of your sensing machines.
 When a new customer signs up, you assemble a new machine with a sensor, SBC, and power supply.
 
-Before shipping the sensor machine to your new client, you connect the machine to the Viam app and configure it.
+Before shipping the sensor machine to your new client, you connect the machine to Viam and configure it.
 To manage all your company's air quality sensing machines together, you create one organization called Pollution Monitoring Made Simple.
 Inside that organization, you create a location for each customer.
 You have some individual customers, for example Antonia, who have a sensor machine in their home, or perhaps one inside and one outside.
@@ -120,7 +120,7 @@ You can choose to manage your fleet of machines differently based on what makes 
 
    In the next section, you'll add machines to the locations.
 
-## Connect your machines to the Viam app
+## Connect your machines to Viam
 
 With your organizational structure in place, let's add some machines:
 
@@ -139,8 +139,8 @@ With your organizational structure in place, let's add some machines:
    Click **View setup instructions**.
    You can find these instructions later if you need them by clicking the part status indicator (which currently reads **Awaiting setup**).
 
-1. Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to the Viam app.
-   `viam-server` is the binary that runs on the single-board computer (SBC), providing functionality including sensor data collection and connection to the Viam app.
+1. Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to Viam.
+   `viam-server` is the binary that runs on the single-board computer (SBC), providing functionality including sensor data collection and connection to Viam.
 
    The setup page will indicate when the machine is successfully connected.
 
@@ -153,7 +153,7 @@ If you are following along for the RobotsRUs business from our example, create a
 
 {{% alert title="Note" color="note" %}}
 If this were a real company and you were shipping air sensing machines to customers, you would have the customer plug in power to the machine wherever they are setting it up.
-Since you already installed `viam-server`, once a customer connects the machine to power and sets up wifi, the machine will automatically re-connect to the Viam app and pull any configuration updates.
+Since you already installed `viam-server`, once a customer connects the machine to power and sets up wifi, the machine will automatically re-connect to Viam and pull any configuration updates.
 {{% /alert %}}
 
 For each sensing machine:

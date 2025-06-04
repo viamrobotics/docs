@@ -194,7 +194,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
+    return await RobotClient.at_address("MACHINE ADDRESS", opts)
 
 
 async def main():
@@ -338,7 +338,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
+    return await RobotClient.at_address("MACHINE ADDRESS", opts)
 
 
 # Get largest detection box and see if it's center is in the left, center, or

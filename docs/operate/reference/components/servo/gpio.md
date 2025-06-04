@@ -25,7 +25,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `servo` type, then select the `gpio` model.
 Enter a name or use the suggested name for your servo and click **Create**.
 
-{{< imgproc src="/components/servo/gpio-servo-ui-config.png" alt="An example configuration for a gpio servo in the Viam app Config Builder." resize="1200x" style="width:650px" class="shadow"  >}}
+{{< imgproc src="/components/servo/gpio-servo-ui-config.png" alt="An example configuration for a gpio servo." resize="1200x" style="width:650px" class="shadow"  >}}
 
 Fill in the attributes as applicable to your servo, according to the table below.
 

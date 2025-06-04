@@ -122,7 +122,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 
 
 async def moveInSquare(base):
@@ -178,7 +178,7 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
@@ -236,7 +236,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 
 int main() {
-    std::string host("ADDRESS FROM THE VIAM APP");
+    std::string host("MACHINE ADDRESS");
     DialOptions dial_opts;
     // Replace "<API-KEY-ID>" with your machine's api key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
@@ -295,7 +295,7 @@ robot_api_key = os.getenv('ROBOT_API_KEY') or ''
 robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 
-# Define the sensor and plug names from the Viam app CONFIGURE tab
+# Define the sensor and plug names on the CONFIGURE tab
 sensor_name = os.getenv("SENSOR_NAME", "")
 plug_name = os.getenv("PLUG_NAME", "")
 

@@ -135,7 +135,7 @@ Create a file using nano with the .py which is the python file extension, (name 
 nano anyname.py
 ```
 
-Paste the code you got from the **CONNECT** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
+Paste the code you got from the **CONNECT** tab on Viam. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
 ![Raspberry Pi terminal showing the connect code from the previous example.](/tutorials/single-component-tutorials-servo-mousemover/sample-code.png)
 
@@ -206,7 +206,7 @@ The attribute section will look like this:
 
 Click the **Save** button in the upper right corner of the screen to save your config.
 
-## Control the servo in the Viam app
+## Control the servo on Viam
 
 If everything went well, the servo started to move.
 
@@ -227,7 +227,7 @@ Click on the top of the servo card to open the servo controls.
 Try changing the angle to a few different settings.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the Viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servo's direction as being counterclockwise. Below this is a gif of the Raspberry Pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="Animation of the servo's angle being changed with the UI.">}}
 </div>
 
 ## Assemble the mouse mover

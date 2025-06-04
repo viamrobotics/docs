@@ -69,7 +69,7 @@ Edit the attributes as applicable to your machine, according to the table below.
 
 For example:
 
-![An example configuration for a base remote control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
+![An example configuration for a base remote control service.](/services/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

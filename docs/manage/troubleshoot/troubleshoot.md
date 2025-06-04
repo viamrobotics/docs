@@ -105,7 +105,7 @@ If not follow the steps for the standalone version.
 {{< /tabs >}}
 
 {{< alert title="Note" color="note" >}}
-Be aware that while your machine is not able to connect to the Viam app, any changes to the machine's configuration that you make in the Viam app will not reach your machine.
+Be aware that while your machine is not able to connect to Viam, any changes to the machine's configuration that you make in the Viam app will not reach your machine.
 {{< /alert >}}
 
 ### Check for errors on the CONFIGURE page

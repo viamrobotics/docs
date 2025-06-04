@@ -13,7 +13,7 @@ For example, a trigger could alert you when a camera feed detects an anomaly.
 
 ### Prerequisites
 
-{{% expand "A running machine connected to the Viam app." %}}
+{{% expand "A running machine connected to Viam." %}}
 
 {{% snippet "setup-both.md" %}}
 
@@ -144,14 +144,14 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
    To add an email notification:
 
    1. Click **Add Email**.
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" declaredimensions=true alt="The trigger configured with an example email in the Viam app." class="shadow" >}}
+      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" declaredimensions=true alt="The trigger configured with an example email." class="shadow" >}}
    1. Add the email you wish to be notified whenever this trigger is triggered.
    1. Configure the time between notifications.
 
    To add a webhook notification:
 
    1. Click **Add Webhook**.
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
+      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" declaredimensions=true alt="The trigger configured with an example URL." class="shadow" >}}
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
    1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).

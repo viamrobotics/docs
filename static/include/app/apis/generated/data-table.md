@@ -3,10 +3,10 @@
 | ----------- | ----------- |
 | [`GetLatestTabularData`](/dev/reference/apis/data-client/#getlatesttabulardata) | Gets the most recent tabular data captured from the specified data source, as long as it was synced within the last year. |
 | [`ExportTabularData`](/dev/reference/apis/data-client/#exporttabulardata) | Obtain unified tabular data and metadata from the specified data source. |
-| [`TabularDataByFilter`](/dev/reference/apis/data-client/#tabulardatabyfilter) | Retrieve optionally filtered tabular data from the Viam app. |
+| [`TabularDataByFilter`](/dev/reference/apis/data-client/#tabulardatabyfilter) | Retrieve optionally filtered tabular data from Viam. |
 | [`TabularDataBySQL`](/dev/reference/apis/data-client/#tabulardatabysql) | Obtain unified tabular data and metadata, queried with SQL. Make sure your API key has permissions at the organization level in order to use this. |
 | [`TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) | Obtain unified tabular data and metadata, queried with MQL. |
-| [`BinaryDataByFilter`](/dev/reference/apis/data-client/#binarydatabyfilter) | Retrieve optionally filtered binary data from the Viam app. |
+| [`BinaryDataByFilter`](/dev/reference/apis/data-client/#binarydatabyfilter) | Retrieve optionally filtered binary data from Viam. |
 | [`BinaryDataByIDs`](/dev/reference/apis/data-client/#binarydatabyids) | Retrieve binary data from the Viam app by `BinaryID`. |
 | [`DeleteTabularData`](/dev/reference/apis/data-client/#deletetabulardata) | Delete tabular data older than a specified number of days. |
 | [`DeleteBinaryDataByFilter`](/dev/reference/apis/data-client/#deletebinarydatabyfilter) | Filter and delete binary data. |

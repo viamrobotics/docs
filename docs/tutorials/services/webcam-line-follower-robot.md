@@ -95,7 +95,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
    Select the type `camera`, and select the `webcam` model.
    Enter the name `my_camera`, then click create.
    Leave the **video_path** blank and the camera will use the default video path for your machine.
-   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt on Viam.
 
 5. Click **Save** in the top right corner of the screen.
 
@@ -194,7 +194,7 @@ Verify that it’s connected by refreshing the page and ensuring that the part s
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.
    {{< /alert >}}
 
-   {{<gif webm_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the Viam app's CONTROL tab." class="aligncenter" max-width="600px">}}
+   {{<gif webm_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from Viam's CONTROL tab." class="aligncenter" max-width="600px">}}
 
 ## Configuring a color detector for the color of your tape line
 

@@ -12,7 +12,7 @@ aliases:
   - /services/data/upload/
   - /how-tos/upload-data/
 date: "2024-12-04"
-description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
+description: "Upload data to Viam from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
 prev: "/data-ai/ai/act/"
 ---
 
@@ -30,7 +30,7 @@ However, if you already have a cache of data you'd like to use with Viam, you ca
 
 ### Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam. Click to see instructions." %}}
 
 {{% snippet "setup-both.md" %}}
 
@@ -72,7 +72,7 @@ In the **Additional paths**, enter the full path to the directory where the data
 
 Toggle **Syncing** to on (green) if it isn't already on.
 
-{{<imgproc src="/services/data/data-sync-temp.png" resize="x1100" declaredimensions=true alt="Data service configured in the Viam app as described." class="shadow" >}}
+{{<imgproc src="/services/data/data-sync-temp.png" resize="x1100" declaredimensions=true alt="Data service configured as described." class="shadow" >}}
 
 Click **Save** in the top right corner of the page.
 
@@ -80,7 +80,7 @@ Click **Save** in the top right corner of the page.
 {{% tablestep number=3 %}}
 **Confirm that your data uploaded**
 
-Navigate to your [**DATA** page in the Viam app](https://app.viam.com/data/view) and confirm that your data appears there.
+Navigate to your [**DATA** page](https://app.viam.com/data/view) and confirm that your data appears there.
 If you don't see your files yet, wait a few moments and refresh the page.
 
 {{% /tablestep %}}
@@ -243,7 +243,7 @@ if __name__ == "__main__":
 
 Save and run your code once.
 Running your code more than once will duplicate the data.
-View your uploaded data in your [**DATA** page in the Viam app](https://app.viam.com/data/view).
+View your uploaded data in your [**DATA** page](https://app.viam.com/data/view).
 
 {{% /tablestep %}}
 {{< /table >}}

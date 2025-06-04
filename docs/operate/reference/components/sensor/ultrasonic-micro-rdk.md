@@ -26,7 +26,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `sensor` type, then select the `ultrasonic` model.
 Enter a name or use the suggested name for your sensor and click **Create**.
 
-![Creation of a ultrasonic sensor in the Viam app config builder.](/build/micro-rdk/ultrasonic/ultrasonic-sensor-ui-config.png)
+![Creation of a ultrasonic sensor.](/build/micro-rdk/ultrasonic/ultrasonic-sensor-ui-config.png)
 
 Edit and fill in the attributes as applicable to your sensor, according to the table below.
 Although `"board"` is marked as required in `viam-server`, it is not required for `viam-micro-server` usage.

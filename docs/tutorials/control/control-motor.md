@@ -71,7 +71,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
 If you are using a microcontroller, install `viam-micro-server`.
 Otherwise, install `viam-server`.
-Wait for your device to connect to the Viam app.
+Wait for your device to connect to Viam.
 
 {{< /expand >}}
 {{< expand "Step 3: Configure a board" >}}
@@ -108,7 +108,7 @@ For the `fake` model, there are no required attributes.
 {{< /expand >}}
 {{< expand "Step 5: Choose how you will control the motor" >}}
 
-You can control your motor directly from the Viam app, using the mobile app, or programmatically.
+You can control your motor directly on Viam, using the mobile app, or programmatically.
 
 ### Option 1: Control from the app
 

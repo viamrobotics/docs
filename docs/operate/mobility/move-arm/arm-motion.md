@@ -20,7 +20,7 @@ The [motion service API](/dev/reference/apis/services/motion/) allows you to pla
 
 ## Prerequisites
 
-{{< expand "A running machine connected to the Viam app." >}}
+{{< expand "A running machine connected to Viam." >}}
 
 {{% snippet "setup.md" %}}
 

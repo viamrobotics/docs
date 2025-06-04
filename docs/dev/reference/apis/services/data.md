@@ -18,7 +18,7 @@ The [data management service](/data-ai/capture-data/capture-sync/) supports the 
 
 {{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 
-The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
+The data client API supports a separate set of methods that allow you to upload and export data to and from Viam.
 For information about that API, see [Data Client API](/dev/reference/apis/data-client/).
 
 ## Establish a connection

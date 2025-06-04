@@ -25,7 +25,7 @@ The machine API supports the following methods:
 
 To interact with the machine API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the **CONNECT** tab.
+To find the API key, API key ID, and machine address, go to [Viam](https://app.viam.com/), select the machine you wish to connect to, and go to the **CONNECT** tab.
 Toggle **Include API key**, and then copy and paste the API key ID and the API key into your environment variables or directly into the code:
 
 {{< tabs >}}
@@ -47,7 +47,7 @@ async def connect() -> RobotClient:
             api_key_id='<API-KEY-ID>'
         )
     return await RobotClient.at_address(
-      address='ADDRESS FROM CONNECT TAB OF VIAM APP',
+      address='ADDRESS FROM CONNECT TAB',
       options=opts
     )
 
@@ -85,7 +85,7 @@ func main() {
   logger := logging.NewLogger("client")
   machine, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's
@@ -157,7 +157,7 @@ func main() {
   defer cancel()
   machine, err := client.New(
       timeoutContext,
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's

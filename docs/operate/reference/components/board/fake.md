@@ -24,7 +24,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `board` type, then select the `fake` model.
 Enter a name or use the suggested name for your board and click **Create**.
 
-![An example configuration for a fake board in the Viam app Config Builder.](/components/board/fake-ui-config.png)
+![An example configuration for a fake board.](/components/board/fake-ui-config.png)
 
 Edit the attributes as applicable to your board, according to the table below.
 

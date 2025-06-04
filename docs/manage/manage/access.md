@@ -86,7 +86,7 @@ You must have the **Owner** role to be able to share locations.
 
 ## Collaborate safely
 
-When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
+When you or your collaborators change the configuration of a machine or a group of machines on Viam, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
 This means everyone who has access can change a fleet's configuration, even while your machines are running.
 
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.

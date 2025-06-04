@@ -30,7 +30,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `encoder` type, then select the `incremental` model.
 Enter a name or use the suggested name for your encoder and click **Create**.
 
-![Configuration of an incremental encoder in the Viam app config builder.](/components/encoder/configure-incremental.png)
+![Configuration of an incremental encoder.](/components/encoder/configure-incremental.png)
 
 Fill in and edit the attributes as applicable.
 

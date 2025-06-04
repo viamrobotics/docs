@@ -31,7 +31,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `camera` type, then select the `fake` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
-![Configuration of a fake camera in the Viam app config builder.](/components/camera/configure-fake.png)
+![Configuration of a fake camera.](/components/camera/configure-fake.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

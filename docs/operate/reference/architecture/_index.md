@@ -42,7 +42,7 @@ When `viam-server` can connect to the cloud, it also:
 - Gets new versions of software packages
 - Uploads and syncs image and sensor data
 - Handles requests from client code you write with [SDKs](/dev/reference/sdks/)
-- Allows you to remotely monitor and control your machine from the Viam app
+- Allows you to remotely monitor and control your machine
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
 
@@ -98,7 +98,7 @@ If you have client code running on a separate computer, that code sends API requ
 If a WebRTC connection cannot be established, the request is sent directly over gRPC.
 When a built-in service communicates with a component, for example when the vision service requests an image from a camera, `viam-server` handles that request as well.
 
-When you control your machine or view its camera streams or sensor outputs from the Viam app **CONTROL** tab, those connections happen over WebRTC.
+When you control your machine or view its camera streams or sensor outputs from the **CONTROL** tab, those connections happen over WebRTC.
 The Viam app uses the same API endpoints as your SDK client code (in fact, it uses the Viam TypeScript SDK), with `viam-server` handling requests.
 
 {{% alert title="Protobuf APIs" color="info" %}}
@@ -115,7 +115,7 @@ Viam uses API keys with [role-based access control (RBAC)](/manage/manage/rbac/)
 
 ## Data management flow
 
-{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
+{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to Viam, SDKs, and MQL and SQL queries." >}}
 <br>
 
 Data is captured and synced to the Viam Cloud as follows:
@@ -128,7 +128,7 @@ Data is captured and synced to the Viam Cloud as follows:
 
 1. `viam-server` syncs data to the cloud at your specified interval, and deletes the data from the local directory.
 
-1. You can view your data from the Viam app or query it using Viam SDKs, MQL, or SQL.
+1. You can view your data on Viam or query it using Viam SDKs, MQL, or SQL.
 
 If a device has intermittent internet connectivity, data is stored locally until the machine can reconnect to the cloud.
 

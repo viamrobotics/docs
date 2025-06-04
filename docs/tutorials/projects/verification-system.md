@@ -51,7 +51,7 @@ If you wanted to take this tutorial further, you could use these state transitio
 
 ## Prerequisites
 
-{{% expand "A machine connected to the Viam app" %}}
+{{% expand "A machine connected to Viam" %}}
 
 {{% snippet "setup.md" %}}
 
@@ -75,7 +75,7 @@ To configure a `webcam`:
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 2. Select the `camera` type, then select the `webcam` model.
 3. Enter the name `my_webcam` for your camera and click **Create**.
-4. If your machine is online and connected to the Viam app, your camera’s video path is automatically detected and configured.
+4. If your machine is online and connected to Viam, your camera’s video path is automatically detected and configured.
    If your machine is not currently connected, you can manually select the video path for your camera, or bring your machine online to have this path automatically configured for you.
 
 Position your camera somewhere where it can easily see the people it will be configured to detect.
@@ -130,7 +130,7 @@ To capture training images:
 1. In the left-hand menu, click the `my_webcam` camera component.
    You should now see a live camera feed from your webcam.
 1. From the dropdown in the **TEST** panel, select the **Refresh every 5 seconds** option.
-   This should give you enough time to pose for a photo, return to the Viam app, and save the photo.
+   This should give you enough time to pose for a photo, return to Viam, and save the photo.
 1. Click the button marked with the camera icon to save the currently displayed image to a dataset:
    {{< imgproc src="/components/camera/add_image_to_dataset_button.png" alt="A button marked with the outline of a camera, emphasized in red" resize="800x" style="width:500px" class="imgzoom" >}}
 

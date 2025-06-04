@@ -36,7 +36,7 @@ You can also view [trigger-sync-examples module](https://github.com/viam-labs/tr
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam. Click to see instructions." %}}
 
 {{% snippet "setup-both.md" %}}
 

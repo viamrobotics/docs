@@ -4,20 +4,20 @@ linkTitle: "Move an arm with no code"
 weight: 30
 type: "docs"
 layout: "docs"
-description: "Move an arm without code from the Viam app interface."
+description: "Move an arm without code using the Viam interface."
 date: "2025-05-21"
 ---
 
 {{<gif webm_src="/how-tos/joint_positions.webm" mp4_src="/how-tos/joint_positions.mp4" alt="The robot arm moving through joint position commands" max-width="150px" class="alignright">}}
 
-You can move an arm without code from the Viam app interface.
+You can move an arm without code using the Viam interface.
 This is a good way to quickly test that your arm is working before writing code to move it.
 
 This is also a good way to confirm the directions of the x, y, and z axes of your arm.
 
 ## Prerequisites
 
-{{< expand "A running machine connected to the Viam app." >}}
+{{< expand "A running machine connected to Viam." >}}
 
 {{% snippet "setup.md" %}}
 

@@ -10,7 +10,7 @@ date: "2025-05-21"
 
 ## Prerequisites
 
-{{< expand "A running machine connected to the Viam app." >}}
+{{< expand "A running machine connected to Viam." >}}
 
 {{% snippet "setup.md" %}}
 

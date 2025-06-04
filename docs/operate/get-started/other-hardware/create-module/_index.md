@@ -580,7 +580,7 @@ In order to see debug logs when using your modular resource, you'll need to run 
 It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry).
 You'll configure it through the Viam app, but the configured module will consist of local files.
 
-{{% expand "Prerequisite: A running machine connected to the Viam app." %}}
+{{% expand "Prerequisite: A running machine connected to Viam." %}}
 
 You can write a module without a machine, but to test your module you'll need a [machine](/operate/get-started/setup/).
 Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.

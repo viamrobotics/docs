@@ -33,7 +33,7 @@ You will also need an API key and API key ID to authenticate your session.
 Your API key needs to have [Org owner permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the MLTraining client API.
 To get an API key (and corresponding ID), you have two options:
 
-- [Create an API key using the Viam app](/operate/control/api-keys/#add-an-api-key)
+- [Create an API key on Viam](/operate/control/api-keys/#add-an-api-key)
 - [Create an API key using the Viam CLI](/dev/tools/cli/#create-an-organization-api-key)
 
 The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates an `MLTrainingClient`:

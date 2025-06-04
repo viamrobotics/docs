@@ -34,7 +34,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `input_controller` type, then select the `webgamepad` model.
 Enter the name `WebGamepad` and click **Create**.
 
-![An example configuration for a web-based gamepad input controller component in the Viam App config builder](/components/input-controller/webgamepad-input-controller-ui-config.png)
+![An example configuration for a web-based gamepad input controller component](/components/input-controller/webgamepad-input-controller-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

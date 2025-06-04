@@ -339,7 +339,7 @@ These log messages include `viam-server` stops and starts, the status of `viam-a
 `viam-agent` writes log messages to the [Viam app](https://app.viam.com/).
 
 `viam-agent` only sends messages when your machine is online and connected to the internet.
-If your machine is offline, log messages are queued and are sent to the Viam app once your machine reconnects to the internet.
+If your machine is offline, log messages are queued and are sent to Viam once your machine reconnects to the internet.
 
 Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
 

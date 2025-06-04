@@ -20,7 +20,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `generic` type, then select the `fake` model.
 Enter a name or use the suggested name for your generic component and click **Create**.
 
-![An example configuration for a fake generic component in the Viam app Config Builder.](/components/generic/fake-generic-ui-config.png)
+![An example configuration for a fake generic component.](/components/generic/fake-generic-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

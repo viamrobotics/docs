@@ -100,7 +100,7 @@ You can view the `frame` of each sub-part in the `remotes` section of the debug 
 
 To establish a connection between a part of one machine and a part of a second machine, add one as a remote part in the other machine part's config:
 
-1. Go to the Viam app machine page of the smart machine part to which you wish to establish the remote connection.
+1. Go to the machine page of the smart machine part to which you wish to establish the remote connection.
    This is the machine part whose resources will be accessible to the other machine part.
 2. Navigate to the **CONNECT** tab.
 3. Click **Configure as a remote part** in the left-hand menu.
@@ -108,7 +108,7 @@ To establish a connection between a part of one machine and a part of a second m
 
    {{% snippet "show-secret.md" %}}
 
-5. Go to the Viam app machine page of the machine part from which you want to establish a remote connection.
+5. Go to the machine page of the machine part from which you want to establish a remote connection.
    This is the machine part that will be able to access the resources of the other machine part.
 6. Navigate to the **CONFIGURE** tab, click the **+** (Create) icon next to the machine part's name in the left side menu.
 

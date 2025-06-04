@@ -48,7 +48,7 @@ To use the Viam fleet management API, you first need to instantiate a `ViamClien
 You will also need an API key and API key ID to authenticate your session.
 To get an API key (and corresponding ID), you have two options:
 
-- [Create an API key using the Viam app](/operate/control/api-keys/#add-an-api-key)
+- [Create an API key on Viam](/operate/control/api-keys/#add-an-api-key)
 - [Create an API key using the Viam CLI](/dev/tools/cli/#create-an-organization-api-key)
 
 The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates an `AppClient`:
@@ -135,10 +135,10 @@ You can use the module environment variables `VIAM_API_KEY` and `VIAM_API_KEY_ID
 
 To copy the ID of your machine {{< glossary_tooltip term_id="part" text="part" >}}, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**:
 
-{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed in the Viam app.">}}
+{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed on Viam.">}}
 
 ## Find machine ID
 
 To copy the ID of your {{< glossary_tooltip term_id="machine" text="machine" >}}, click the **...** (Actions) button in the upper-right corner of your machine's page, then click **Copy machine ID**:
 
-{{<imgproc src="/fleet/app-usage/copy-machine-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Machine ID in the actions dropdown in the Viam app.">}}
+{{<imgproc src="/fleet/app-usage/copy-machine-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Machine ID in the actions dropdown on Viam.">}}

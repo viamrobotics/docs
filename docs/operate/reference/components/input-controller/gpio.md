@@ -25,7 +25,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `input_controller` type, then select the `gpio` model.
 Enter a name or use the suggested name for your input controller and click **Create**.
 
-![An example configuration for a GPIO input controller component in the Viam App config builder](/components/input-controller/gpio-input-controller-ui-config.png)
+![An example configuration for a GPIO input controller component](/components/input-controller/gpio-input-controller-ui-config.png)
 
 Click **{}** (Switch to advanced) to edit buttons and axes.
 Copy and paste the following attribute template into your input controller's **Attributes** box.

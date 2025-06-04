@@ -23,7 +23,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `gripper` type, then select the `fake` model.
 Enter a name or use the suggested name for your gripper and click **Create**.
 
-![An example configuration for a fake gripper in the Viam app Config Builder.](/components/gripper/fake-gripper-ui-config.png)
+![An example configuration for a fake gripper.](/components/gripper/fake-gripper-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -278,7 +278,7 @@ Enabling debug level logs will take precedence over all logging configuration se
 ## Install `viam-server` without the Viam app
 
 {{% alert title="Tip" color="tip" %}}
-The recommended way to install `viam-server` and connect your machine to the Viam app is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
+The recommended way to install `viam-server` and connect your machine to Viam is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
 {{% /alert %}}
 
 If you need to install `viam-server` without using the Viam app, you can run the following commands.

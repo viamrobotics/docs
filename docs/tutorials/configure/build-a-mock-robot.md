@@ -119,7 +119,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 The easiest way to get started writing an application with Viam's SDKs is to use the sample code on the **CONNECT** tab.
 
-Navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** page on the **CONNECT** tab, select your SDK language (this tutorial uses Python or Go), and copy the sample code.
+Navigate to your [machine's page](https://app.viam.com/robots), select the **Code sample** page on the **CONNECT** tab, select your SDK language (this tutorial uses Python or Go), and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -148,9 +148,9 @@ go run index.go
 {{% /tab %}}
 {{< /tabs >}}
 
-If you successfully configured your machine and it is able to connect to the Viam app you should see the program print a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your machine in the Viam app:
+If you successfully configured your machine and it is able to connect to Viam you should see the program print a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your machine in the Viam app:
 
-![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. The list includes the motion service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](/tutorials/build-a-mock-robot/resource-output.png)
+![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from Viam. The list includes the motion service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](/tutorials/build-a-mock-robot/resource-output.png)
 
 ### Control your mock robot
 
@@ -489,7 +489,7 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-Run this code to see your mock sub-part's motor toggling between running and idle in real time from the Viam app!
+Run this code to see your mock sub-part's motor toggling between running and idle in real time from Viam!
 
 {{<gif webm_src="/tutorials/build-a-mock-robot/go-start-demo.webm" mp4_src="/tutorials/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
 

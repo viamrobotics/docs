@@ -3,7 +3,7 @@ title: "Upload and retrieve data with Viam's data client API"
 linkTitle: "Data client"
 weight: 10
 type: "docs"
-description: "Use the data client API to upload and retrieve data directly to the Viam app."
+description: "Use the data client API to upload and retrieve data directly."
 icon: true
 images: ["/services/icons/sdk.svg"]
 tags:
@@ -49,7 +49,7 @@ To use the Viam data client API, you first need to instantiate a `ViamClient` an
 You will also need an API key and API key ID to authenticate your session.
 To get an API key (and corresponding ID), you have two options:
 
-- [Create an API key using the Viam app](/operate/control/api-keys/#add-an-api-key)
+- [Create an API key on Viam](/operate/control/api-keys/#add-an-api-key)
 - [Create an API key using the Viam CLI](/dev/tools/cli/#create-an-organization-api-key)
 
 The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `DataClient`:

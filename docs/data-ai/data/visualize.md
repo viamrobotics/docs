@@ -14,7 +14,7 @@ aliases:
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "fleet"]
 date: "2024-12-04"
-description: "Use teleop or grafana to visualize sensor data from the Viam app."
+description: "Use teleop or grafana to visualize sensor data from Viam."
 ---
 
 Once you have used the data management service to [capture data](/data-ai/capture-data/capture-sync/), you can visualize your data on a dashboard with the Viam app's **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
@@ -39,7 +39,7 @@ See [configure a machine](/operate/get-started/supported-hardware/) for more inf
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**Create a workspace in the Viam app**
+**Create a workspace on Viam**
 
 Log in to the [Viam app](https://app.viam.com/).
 
@@ -266,7 +266,7 @@ See the [guide on querying data](/data-ai/data/query/) for more information.
 
 For more detailed instructions on using Grafana, including a full step-by-step configuration walkthrough, see [visualizing data with Grafana](/tutorials/services/visualize-data-grafana/).
 
-On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/dev/reference/apis/data-client/) or [query it with the Viam app](/data-ai/data/query/).
+On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/dev/reference/apis/data-client/) or [query it on Viam](/data-ai/data/query/).
 
 To see full projects using visualization, check out these resources:
 

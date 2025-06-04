@@ -53,7 +53,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `navigation` type.
 Enter a name or use the suggested name for your service and click **Create**.
 
-{{<imgproc src="/services/navigation/navigation-ui-config.png" resize="1200x" style="width: 900px" alt="An example configuration for a navigation service in the Viam app Config Builder.">}}
+{{<imgproc src="/services/navigation/navigation-ui-config.png" resize="1200x" style="width: 900px" alt="An example configuration for a navigation service.">}}
 
 Edit the attributes as applicable to your machine, according to the table below.
 
@@ -190,7 +190,7 @@ Add [reference frames](/operate/reference/services/frame-system/#configuration) 
 
   For example, you would configure a box-shaped base with dimensions of 100mm x 100mm x 100mm (l x h x w) as follows:
 
-  {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="700x" style="width: 300px" alt="The frame card for the base in the Viam app config builder.">}}
+  {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="700x" style="width: 300px" alt="The frame card for the base.">}}
 
 - Add a frame to your movement sensor configuration by clicking **+ Add Frame**.
 - Set the `parent` within the frame card to the name of your base.
@@ -199,7 +199,7 @@ Add [reference frames](/operate/reference/services/frame-system/#configuration) 
 
   For example, you would configure a movement sensor mounted 200mm on top of your base as follows:
 
-  {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="700x" style="width: 300px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
+  {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="700x" style="width: 300px" alt="The frame card for the movement sensor.">}}
 
 You can also adjust the `orientation` and `geometry` of your movement sensor or base, if necessary.
 See [the frame system service](/operate/reference/services/frame-system/) for instructions.

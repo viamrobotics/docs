@@ -14,7 +14,7 @@ You have two options for moving a [gantry](/operate/reference/components/gantry/
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam. Click to see instructions." %}}
 
 {{% snippet "setup.md" %}}
 

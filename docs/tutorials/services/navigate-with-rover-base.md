@@ -101,7 +101,7 @@ We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jets
 
 1. Configure a board named `local` as shown below:
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/board-config-builder.png" resize="1200x" declaredimensions=true alt="Configuration of a jetson board with digital interrupts in the Viam app config builder." style="width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/board-config-builder.png" resize="1200x" declaredimensions=true alt="Configuration of a jetson board with digital interrupts." style="width:650px" class="shadow imgzoom" >}}
 
 2. Configure [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) on your board to signal precise GPIO state changes to the [encoders](/operate/reference/components/encoder/) on your rover base.
    Find your board on the **CONFIGURE** tab in **Builder** mode.
@@ -141,9 +141,9 @@ Start by configuring the [encoders](/operate/reference/components/encoder/) and 
 1. Follow the [encoder configuration instructions](/operate/reference/components/encoder/#configuration) to configure the left and right encoders of the wheeled base.
    We configured ours as [`incremental` encoders](/operate/reference/components/encoder/incremental/), as shown below:
 
-   {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="1000x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
+   {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="1000x" declaredimensions=true alt="Configuration of a right incremental encoder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
-   {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="950x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
+   {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="950x" declaredimensions=true alt="Configuration of a left incremental encoder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
    Assign the pins as the [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/operate/reference/components/encoder/incremental/) for attribute information.
@@ -151,15 +151,15 @@ Start by configuring the [encoders](/operate/reference/components/encoder/) and 
 2. Next, follow [these instructions](/operate/reference/components/motor/#configuration) to configure the left and right [motors](/operate/reference/components/motor/) of the `wheeled` base.
    We [configured ours as `gpio` motors](/operate/reference/components/motor/gpio/), as shown below:
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/right-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a right gpio motor in the Viam app config builder." style="min-height:550px; max-height:600px">}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/right-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a right gpio motor." style="min-height:550px; max-height:600px">}}
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/left-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a left gpio motor in the Viam app config builder." style="min-height:550px; max-height:600px">}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/left-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a left gpio motor." style="min-height:550px; max-height:600px">}}
 
 Wire the motors accordingly to the GPIO pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `35`, `35`, `15`, `38`, `40`, and `33` on your `local` board.
 Refer to the [`gpio` motor](/operate/reference/components/motor/gpio/) documentation for attribute information.
 
 3. Finally, configure whatever rover you have as a [`wheeled`](/operate/reference/components/base/wheeled/) model of base, bringing the motion produced by these motors together on one platform:
-   {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png" resize="800x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Config Builder." style="min-height:550px; max-height:600px">}}
+   {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png" resize="800x" declaredimensions=true alt="An example configuration for a wheeled base." style="min-height:550px; max-height:600px">}}
 
    - Make sure to select each of your right and left motors as **right** and **left**, as well as set the **wheel_circumference_mm** and **width_mm** of each of the wheels the motors are attached to.
    - [Configure the frame system](/operate/reference/services/frame-system/) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
@@ -322,21 +322,21 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
 1.  Configure a GPS movement sensor so the robot knows where it is while navigating.
     We configured ours as a `gps-nmea-rtk-serial` movement sensor:
 
-    {{<imgproc src="/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a GPS movement sensor in the Viam app Config Builder." style="width:550px" class="shadow imgzoom" >}}
+    {{<imgproc src="/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a GPS movement sensor." style="width:550px" class="shadow imgzoom" >}}
 
     We named ours `gps`.
     Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](https://github.com/viam-modules/gps/blob/main/README.md#configure-your-rtk-serial-movement_sensor) for attribute information.
 
 2.  Configure a wheeled odometry movement sensor to provide angular and linear velocity measurements from the encoded motors on our base.
 
-    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder." style="width:550px" class="shadow imgzoom" >}}
+    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a wheeled-odometry movement sensor." style="width:550px" class="shadow imgzoom" >}}
 
     We named ours `enc-linear`.
     Refer to [the `wheeled-odometry` movement sensor documentation](/operate/reference/components/movement-sensor/wheeled-odometry/) for attribute information.
 
 3.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
 
-    {{<imgproc src="/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a merged movement sensor in the Viam app Config Builder." style="width:550px" class="shadow imgzoom" >}}
+    {{<imgproc src="/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png" resize="1100x" declaredimensions=true alt="An example configuration for a merged movement sensor." style="width:550px" class="shadow imgzoom" >}}
 
     We named ours `merged`.
     Refer to [the `merged` movement sensor documentation](/operate/reference/components/movement-sensor/merged/) for attribute information.
@@ -514,12 +514,12 @@ From there, ensure that **Navigation mode** is selected as **Manual**, so your r
 Select **Waypoints** on the upper-left corner menu of the navigation card.
 Zoom in on your current location and click on the map to add a waypoint.
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/add-first-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 0 being added in the Viam app config builder on a New York City street" style="width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/add-first-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 0 being added on a New York City street" style="width:650px" class="shadow imgzoom" >}}
 
 Add as many waypoints as you desire.
 Hover over a waypoint in the left-hand menu and click the trash icon to delete a waypoint.
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/add-second-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 1 being added in the Viam app config builder, further down the street" style="width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/add-second-waypoint.png" resize="1200x" declaredimensions=true alt="Waypoint 1 being added, further down the street" style="width:650px" class="shadow imgzoom" >}}
 
 #### (Optional) Add obstacles
 
@@ -608,7 +608,7 @@ First, configure a depth [camera](/operate/reference/components/camera/) that yo
 
 We configured ours as an Intel RealSense Camera, which is available as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} [in the Viam Registry](https://app.viam.com/module/viam/realsense):
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/realsense-camera-config-builder.png" resize="1200x" declaredimensions=true alt="An example configuration for an Intel RealSense camera in the Viam app Config Builder." style="width:650px" class="shadow imgzoom" >}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/realsense-camera-config-builder.png" resize="1200x" declaredimensions=true alt="An example configuration for an Intel RealSense camera." style="width:650px" class="shadow imgzoom" >}}
 
 {{< alert title="Tip" color="tip" >}}
 

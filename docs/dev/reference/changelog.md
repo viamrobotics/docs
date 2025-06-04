@@ -44,7 +44,7 @@ date: "2024-09-18"
 
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
-The frame tab no longer exists in the Viam app.
+The frame tab no longer exists on Viam.
 To add a frame to a component, click the **+ Add Frame** button on the component's configuration card.
 
 {{% /changelog %}}
@@ -627,7 +627,7 @@ Viam has added a [sensor-controlled base](/operate/reference/components/base/sen
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/data-ai/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google's Looker Studio, and more.
-You can visualize any data, such as sensor readings, that you have [synced](/data-ai/capture-data/capture-sync/) to the Viam app from your machine.
+You can visualize any data, such as sensor readings, that you have [synced](/data-ai/capture-data/capture-sync/) to Viam from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -670,7 +670,7 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 {{% changelog date="2023-11-30" color="added" title="Queryable sensor data" %}}
 
-Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
+Once you have added the data management service and synced data, such as sensor readings, to Viam, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
 For more information, see [Query Data with SQL or MQL](/data-ai/data/query/).
 

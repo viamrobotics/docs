@@ -45,7 +45,7 @@ Submit and manage ML training jobs running on the Viam app.
 {{% /manualcard %}}
 {{% manualcard link="/dev/reference/apis/billing-client/" title="Billing Client API" %}}
 
-Retrieve billing information from the Viam app.
+Retrieve billing information from Viam.
 
 {{% /manualcard %}}
 

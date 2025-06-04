@@ -21,9 +21,9 @@ aliases:
   - /fleet/organizations/
 ---
 
-Before you start connecting your devices to the Viam app, you need to decide how you want to group your machines.
+Before you start connecting your devices to Viam, you need to decide how you want to group your machines.
 
-In the Viam app, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_:
+On Viam, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_:
 
 - Each location can represent either a physical location or some other conceptual grouping like "Production" and "Testing".
 - An organization is the highest level grouping, and often contains all the locations (and machines) of an entire company.

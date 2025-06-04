@@ -404,7 +404,7 @@ func main() {
   logger := logging.NewLogger("client")
   robot, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
