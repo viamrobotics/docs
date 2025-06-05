@@ -180,12 +180,12 @@ Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.
 The first time you click **Get Pin State**, it should return "Pin: 8 is low."
 
-![Control tab of Viam showing the board control panel. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the 'Get Pin State' button and the output, which reads, 'Pin: 8 is low.'](/tutorials/blink-an-led/get-pin-state.png)
+![Control tab showing the board control panel. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the 'Get Pin State' button and the output, which reads, 'Pin: 8 is low.'](/tutorials/blink-an-led/get-pin-state.png)
 
 You can now use the **Set** menu to set the status of your pin to **high**.
 Once you click **Get Pin State** again, it will look like this:
 
-![Control tab of Viam showing the board control panel. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field.](/tutorials/blink-an-led/set-pin-state.png)
+![Control tab showing the board control panel. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field.](/tutorials/blink-an-led/set-pin-state.png)
 
 When you set your pin to **high** the LED should illuminate.
 You can set the pin back and forth between high and low, and you will see your LED turn on or off depending on whether you have the value set to **low** or **high**.
@@ -225,7 +225,7 @@ Select **Python** or **Golang** and follow the instructions to connect to your m
 These code snippets import all the necessary libraries and set up a connection with Viam in the cloud.
 
 On your local computer, create a file called <file>blink.py</file> or <file>blink.go</file>.
-Paste the sample code from the **CONNECT** tab of Viam into the file in your code editor, and save the file.
+Paste the sample code from the **CONNECT** tab into the file in your code editor, and save the file.
 
 You can now run the code.
 Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live.
@@ -242,7 +242,7 @@ python3 <INSERT PATH TO YOUR FILE>/blink.py
 ```
 
 If you successfully configured your machine and it is able to connect to Viam, you should see something like the following printed to the terminal after running your program.
-What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in Viam (the board, as well as various built-in services).
+What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine on Viam (the board, as well as various built-in services).
 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 python3 my-project-folder/blink.py
@@ -286,7 +286,7 @@ go run blink.go
 ```
 
 If you successfully configured your machine and it is able to connect to Viam, you should see something like the following printed to the terminal after running your program.
-What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in Viam (the board, as well as various built-in services).
+What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine (the board, as well as various built-in services).
 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 go run blink.go

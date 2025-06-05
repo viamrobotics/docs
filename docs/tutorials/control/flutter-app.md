@@ -289,7 +289,7 @@ Follow the steps below to build and preview the current state of your app.
 
 Great work so far!
 Your app is successfully running, with a single screen and an inactive button.
-Next, you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}} on Viam.
+Next, you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}}.
 This new screen will be accessed from the login button.
 
 In the VS Code file explorer on the left-hand side, right click <file>lib/</file> and click **New File**, then name the new file <file>home_screen.dart</file>.

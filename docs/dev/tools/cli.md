@@ -21,7 +21,7 @@ The CLI lets you:
 - Retrieve [organization](/dev/reference/glossary/#organization) and location information
 - Manage fleet data and logs
 - Control machines by issuing component and service commands
-- Upload and manage modular resources in the [Viam Registry](https://app.viam.com/registry/)
+- Upload and manage modular resources in the [registry](https://app.viam.com/registry/)
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -158,7 +158,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
-You can change an API key's permissions on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions on the organizations page by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the organization API key to authenticate future CLI sessions or to [use the SDKs](/dev/reference/sdks/).
@@ -197,7 +197,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new location API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your location.
-You can change an API key's permissions on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions on the organizations page by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the location API key to authenticate future CLI sessions or to [connect to machines with the SDK](/dev/reference/sdks/).
@@ -827,8 +827,8 @@ This includes:
 
 - Generating stub files for a new module
 - Creating metadata for a {{< glossary_tooltip term_id="resource" text="modular resource" >}}
-- Uploading a new module to the [Viam registry](https://app.viam.com/registry)
-- Uploading a new version of your module to the [Viam registry](https://app.viam.com/registry)
+- Uploading a new module to the [registry](https://app.viam.com/registry)
+- Uploading a new version of your module to the [registry](https://app.viam.com/registry)
 - Updating an existing module in the Viam Registry
 - Updating a module's metadata file based on models it provides
 - Building your module for different architectures using cloud runners

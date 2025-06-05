@@ -27,7 +27,7 @@ For information on pinning module deployments to versions, see [Module versionin
 
 ## Update a module
 
-Once your module is in the [Viam Registry](https://app.viam.com/registry), there are two ways to update it:
+Once your module is in the [registry](https://app.viam.com/registry), there are two ways to update it:
 
 - [Update automatically](#update-automatically) using GitHub Actions: Recommended for ongoing projects with continuous integration (CI) workflows, or if you want to build for multiple platforms.
 
@@ -259,7 +259,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
    The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
 
-   Once the build is complete, the module will automatically update in the [Viam Registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/get-started/other-hardware/module-configuration/#module-versioning) of the module will automatically update to the new version.
+   Once the build is complete, the module will automatically update in the [registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/get-started/other-hardware/module-configuration/#module-versioning) of the module will automatically update to the new version.
 
 #### Supported platforms for automatic updates
 
@@ -317,7 +317,7 @@ You can change the visibility of a module from public to private if:
 
 To change the visibility:
 
-1. Navigate to your module's page in the [Viam Registry](https://app.viam.com/registry).
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
 2. Hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
 
    {{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x150" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." class="shadow" >}}
@@ -345,7 +345,7 @@ You can delete a module if:
 
 To delete a module:
 
-1. Navigate to its page in the [Viam Registry](https://app.viam.com/registry).
+1. Navigate to its page in the [registry](https://app.viam.com/registry).
 2. Click the **...** menu in the upper-right corner of the page, and click **Delete**.
 
    {{<imgproc src="/registry/upload/delete-module.png" resize="x200" declaredimensions=true alt="A module page with the ... menu open. Delete is the only option in the menu." class="shadow" >}}
@@ -365,7 +365,7 @@ Other registry items such as training scripts and ML models can be deleted in th
 Deleting a version of a module requires the same org owner permissions as deleting the entire module, and similarly, you cannot delete a version if any machines are using it.
 To delete just one version of a module:
 
-1. Navigate to its page in the [Viam Registry](https://app.viam.com/registry).
+1. Navigate to its page in the [registry](https://app.viam.com/registry).
 
 1. Click **Show previous versions** under the **Latest version** heading.
 
@@ -380,7 +380,7 @@ To transfer ownership of a module from one organization to another:
 
 1. You must be an [owner](/manage/manage/rbac/) in both the current and new organizations.
 
-1. Navigate to the module's page in the [Viam Registry](https://app.viam.com/registry).
+1. Navigate to the module's page in the [registry](https://app.viam.com/registry).
 
 1. Make sure the visibility of the module is set to **Public**.
 

@@ -489,7 +489,7 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-Run this code to see your mock sub-part's motor toggling between running and idle in real time from Viam!
+Run this code to see your mock sub-part's motor toggling between running and idle in real time!
 
 {{<gif webm_src="/tutorials/build-a-mock-robot/go-start-demo.webm" mp4_src="/tutorials/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
 

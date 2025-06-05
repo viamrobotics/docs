@@ -298,7 +298,7 @@ if __name__ == "__main__":
 
 {{< /expand >}}
 
-You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
+You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
 
 {{% /tablestep %}}
 {{< tablestep number=5 >}}
@@ -545,7 +545,7 @@ func (s *helloWorldHelloCamera) Close(context.Context) error {
 
 {{< /expand >}}
 
-You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
+You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
 {{% /tablestep %}}
 {{< tablestep number=7 >}}
 **Add logging** messages as desired.
@@ -577,7 +577,7 @@ In order to see debug logs when using your modular resource, you'll need to run 
 
 ## Test your module locally
 
-It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry).
+It's a good idea to test your module locally before uploading it to the [registry](https://app.viam.com/registry).
 You'll configure it through the Viam app, but the configured module will consist of local files.
 
 {{% expand "Prerequisite: A running machine connected to Viam." %}}
@@ -841,7 +841,7 @@ See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) f
 
 ## Upload your module
 
-Once you are done testing locally, you can upload your module to the [Viam Registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
+Once you are done testing locally, you can upload your module to the [registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
 
 {{< table >}}
 {{% tablestep number=1 %}}

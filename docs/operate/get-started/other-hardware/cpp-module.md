@@ -17,7 +17,7 @@ draft: true # Take out Go and Python, and check updatedness before un-drafting.
 ---
 
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
-If no [existing modules](/operate/get-started/supported-hardware/) support your specific use case, you can write your own custom modular {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a module, and either upload it to the [Viam Registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
+If no [existing modules](/operate/get-started/supported-hardware/) support your specific use case, you can write your own custom modular {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a module, and either upload it to the [registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/dev/reference/sdks/), and then deploy it to your machines.
 
@@ -128,7 +128,7 @@ A resource model is identified by a unique name, called the {{< glossary_tooltip
 
 - `namespace` is the [namespace of your organization](/operate/reference/naming-modules/#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
-    If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam Registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+    If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
 - `module-name` is the name of your module.
   Your `module-name` should describe the common functionality provided across the model or models provided by that module.
@@ -204,7 +204,7 @@ For more Go module examples:
 {{% /tab %}}
 {{% /tabs %}}
 
-Explore the full list of available modules in the [Viam Registry](https://app.viam.com/registry).
+Explore the full list of available modules in the [registry](https://app.viam.com/registry).
 {{< /expand >}}
 
 Follow the instructions below to define the capabilities provided by your model, for the language you are using to write your module code:

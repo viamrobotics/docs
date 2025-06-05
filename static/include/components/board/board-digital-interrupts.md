@@ -13,7 +13,7 @@ Integrate `digital_interrupts` into your machine in the `attributes` of your boa
 On your board's panel, click **Show more**, then select **Add digital interrupt**.
 Assign a name to your digital interrupt and then enter a pin number.
 
-![An example configuration for digital interrupts on Viam.](/components/board/digital-interrupts-ui-config.png)
+![An example configuration for digital interrupts.](/components/board/digital-interrupts-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

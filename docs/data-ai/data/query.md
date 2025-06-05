@@ -27,7 +27,7 @@ You can then run queries against that data to search for outliers or edge cases,
 
 - **MQL**: Viam also supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
 
-## Query data on Viam
+## Query data in the web UI
 
 ### Prerequisites
 

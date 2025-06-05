@@ -31,7 +31,7 @@ next: "/operate/get-started/other-hardware/"
 Viam has a registry of supported hardware {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for each category of hardware {{< glossary_tooltip term_id="component" text="component" >}} (for example, the camera API).
 Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/get-started/other-hardware/create-module/) that provides a driver for the hardware.
 
-The[Viam Registry](https://app.viam.com/registry?type=Module) is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
+The [registry](https://app.viam.com/registry?type=Module) is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
 
 Some components are supported by drivers built into `viam-server`, so you won't find them in the registry page.
 You can browse all built-in and modular registry components below or on your machine's configuration page in the Viam app.

@@ -147,9 +147,9 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-## Use DoCommand in Viam
+## Use DoCommand in the web UI
 
-You can use `DoCommand` in Viam:
+You can use `DoCommand` in the web UI:
 
 1. Navigate to your machine's **CONTROL** tab.
 1. Find your resource and expand the **DO COMMAND** section.
@@ -169,7 +169,7 @@ You can use `DoCommand` in Viam:
 
 For an example that implements `DoCommand` in a generic API Python module, see [Add control logic to your module](/manage/software/control-logic/#add-control-logic-to-your-module).
 
-For additional examples, look at the GitHub repositories of [modules in the registry](https://app.viam.com/registry), especially modules that use the generic API.
+For additional examples, look at the GitHub repositories of [registry](https://app.viam.com/registry), especially modules that use the generic API.
 Essentially all generic models implement `DoCommand` (since it is the only method of the generic API), and various other models implement it as well.
 
 {{% hiddencontent %}}

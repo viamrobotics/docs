@@ -251,8 +251,3 @@ None at this time.
 ### Linux applications
 
 None at this time.
-
-### Browser plugins
-
-**Chrome plugin: Allow Right-Click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
-If you are experiencing issues with the **Create Service** pane on Viam, temporarily disable this plugin until you have saved your configuration on Viam.

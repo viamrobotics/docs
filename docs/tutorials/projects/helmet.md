@@ -94,7 +94,7 @@ Configure your [webcam](/operate/reference/components/camera/webcam/) so that yo
    Click **Create**.
 
 3. Leave the **video_path** blank and the camera will use the default video path for your machine.
-   If this doesn't work when you test your camera later, you can try a different video path by following the prompt on Viam.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt on the camera's configuration panel.
 
 4. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -132,7 +132,7 @@ The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any 
 
    Your vision service config should now resemble the following:
 
-   {{<imgproc src="/tutorials/helmet/model-location.png" resize="x1100" declaredimensions=true alt="The vision service configured on Viam per the instructions." >}}
+   {{<imgproc src="/tutorials/helmet/model-location.png" resize="x1100" declaredimensions=true alt="The vision service configuration panel." >}}
 
 5. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -175,7 +175,7 @@ This module also filters the output so that later, when you configure data manag
 
    Your `objectfilter` camera configuration should now resemble the following:
 
-   {{<imgproc src="/tutorials/helmet/filtercam-config.png" resize="x1100" declaredimensions=true alt="The detector_cam config panel on Viam." >}}
+   {{<imgproc src="/tutorials/helmet/filtercam-config.png" resize="x1100" declaredimensions=true alt="The detector_cam config panel." >}}
 
 5. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -228,15 +228,15 @@ To make sure the detector camera is capturing and syncing labeled images:
 
 1. Position yourself in front of your webcam for approximately 30 seconds to let it capture a few images of a person without a hard hat on.
 
-2. Navigate to your [**DATA** page](https://app.viam.com/data/view?view=images) on Viam.
+2. Navigate to your [**DATA** page](https://app.viam.com/data/view?view=images).
    You should see some images with bounding boxes on them.
    If you do not, try refreshing the page.
 
-   {{<imgproc src="/tutorials/helmet/synced-data.png" resize="x1000" declaredimensions=true alt="The data manager page on Viam, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
+   {{<imgproc src="/tutorials/helmet/synced-data.png" resize="x1000" declaredimensions=true alt="The data tab, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
 
 3. You can also try this with a hard hat on your head.
 
-   {{<imgproc src="/tutorials/helmet/hardhat-data.png" resize="x1000" declaredimensions=true alt="The data manager page on Viam, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
+   {{<imgproc src="/tutorials/helmet/hardhat-data.png" resize="x1000" declaredimensions=true alt="The data tab, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
 
 ### Modify the detector config to sync only images without hard hats
 

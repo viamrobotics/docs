@@ -44,7 +44,7 @@ date: "2024-09-18"
 
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
-The frame tab no longer exists on Viam.
+The frame tab no longer exists.
 To add a frame to a component, click the **+ Add Frame** button on the component's configuration card.
 
 {{% /changelog %}}
@@ -726,7 +726,7 @@ This enhancement allows you to:
 
 {{% changelog date="2023-09-30" color="added" title="Modular registry" %}}
 
-The [Modular Registry](https://app.viam.com/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
+The [registry](https://app.viam.com/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
 
 You can:
 
@@ -823,7 +823,7 @@ Sessions are enabled by default, with the option to [disable sessions](/dev/refe
 
 {{% changelog date="2023-06-30" color="added" title="Connect an ODrive motor controller as a Viam module" %}}
 
-You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the Viam Registry](https://github.com/viamrobotics/odrive).
+You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the registry](https://github.com/viamrobotics/odrive).
 
 See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn how to connect and use an ODrive motor controller with Viam, and view the sample configurations.
 
@@ -1402,7 +1402,7 @@ The UR5 arm model has been improved using this new geometry type.
 
 {{% changelog date="2022-12-28" color="added" title="Modular resources" %}}
 
-You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_ in the registry](https://app.viam.com/registry/).
+You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as _modular resources_ in the [registry](https://app.viam.com/registry/).
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 

@@ -12,7 +12,7 @@ Then, integrate `analogs` into the `attributes` of your board by following the *
 On your board's panel, click **Show more**, then select **Add analog**.
 Assign a name to your analog and then fill in the required properties outlined below.
 
-![An example configuration for analogs on Viam.](/components/board/analogs-ui-config.png)
+![An example configuration for analogs.](/components/board/analogs-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

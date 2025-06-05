@@ -713,7 +713,7 @@ If not, check the **LOGS** tab for errors.
 ## Package and upload the module
 
 You now have a working local module.
-To make it available to deploy on more machines, you can package it and upload it to the [Viam Registry](https://app.viam.com/registry).
+To make it available to deploy on more machines, you can package it and upload it to the [registry](https://app.viam.com/registry).
 
 The hello world module you created is for learning purposes, not to provide any meaningful utility, so we recommend making it available only to machines within your {{< glossary_tooltip term_id="organization" text="organization" >}} instead of making it publicly available.
 

@@ -263,8 +263,8 @@ Although the resistive soil moisture sensor is not currently one of Viam's built
 A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ({{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}) or models that are not built into Viam.
 A module can be added to your machine from the Viam Registry.
 
-The [Viam Registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their projects by writing and sharing custom modules with each other.
-You can add a module from the Viam Registry directly from your machine's **CONFIGURE** tab in the Viam app, using the **+** (Create) button.
+The [registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their projects by writing and sharing custom modules with each other.
+You can add a module from the Viam Registry directly from your machine's **CONFIGURE** tab, using the **+** (Create) button.
 
 To add the [mcp300x-adc-sensor](https://github.com/viam-labs/mcp300x-adc-sensor) module to your machine, follow these steps:
 

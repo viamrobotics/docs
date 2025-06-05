@@ -205,7 +205,7 @@ scp /path/to/my-photo.jpg username@my-machine.local:/home/me/my-photo.jpg
 ```
 
 After you have copied at least one image of a person to your machine, you are ready to configure the second detection layer: the facial recognition detector.
-For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [Viam Registry](https://app.viam.com/module/viam-labs/facial-detector).
+For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [registry](https://app.viam.com/module/viam-labs/facial-detector).
 The `facial-detector` module provides a modular vision service that uses Facebook's DeepFace library to perform facial detections.
 
 To add the `facial-detector` module to your machine:

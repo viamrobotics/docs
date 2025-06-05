@@ -94,7 +94,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `input_controller` type, then select the `gamepad` model.
 Enter a name or use the suggested name for your input controller and click **Create**.
 
-![An example configuration for a linux-based gamepad input controller component on the Viam config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
+![An example configuration for a linux-based gamepad input controller component](/components/input-controller/gamepad-input-controller-ui-config.png)
 
 You can set the `auto_reconnect` attribute to `true`.
 
@@ -211,7 +211,7 @@ Here is a diagram of the gamepad.
 </table>
 
 To change the movement/direction control on the gamepad between the D-pad and the joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
-Each red color arrangement allows you to control the gamepad on Viam:
+Each red color arrangement allows you to control the gamepad:
 
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>

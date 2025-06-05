@@ -128,7 +128,7 @@ Data is captured and synced to the Viam Cloud as follows:
 
 1. `viam-server` syncs data to the cloud at your specified interval, and deletes the data from the local directory.
 
-1. You can view your data on Viam or query it using Viam SDKs, MQL, or SQL.
+1. You can view your data in the web UI or query it using Viam SDKs, MQL, or SQL.
 
 If a device has intermittent internet connectivity, data is stored locally until the machine can reconnect to the cloud.
 

@@ -18,7 +18,7 @@ Viam is a software platform for building smart applications for the physical wor
 Viam consists of:
 
 - An open-source binary called `viam-server` that runs on your machine, managing your local hardware, software, and data, and connecting your device to Viam's cloud.
-- A cloud app called [Viam](https://app.viam.com) that you can use to configure and manage your machines and data.
+- A [cloud app](https://app.viam.com) that you can use to configure and manage your machines and data.
 - Simple APIs for common types of hardware (for example, cameras, sensors, and motors), and software services (such as computer vision).
 - A registry of modules that implement the hardware and software APIs.
   This includes support for many popular hardware models.
@@ -34,7 +34,7 @@ A _machine_ is a computer (often a single-board computer like a Raspberry Pi or 
 You can think of one machine as representing one device, such as an Intel RealSense camera connected to a Raspberry Pi.
 Each machine runs an instance of `viam-server`.
 
-When you create a new machine in Viam, Viam generates a unique set of credentials for that machine that connect the physical machine to its instance in Viam.
+When you create a new machine on Viam, Viam generates a unique set of credentials for that machine that connect the physical machine to its instance in Viam.
 
 ## What platforms does Viam run on?
 
@@ -83,7 +83,7 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 
 1. To start, [set up a computer or SBC](/operate/get-started/setup/) or [set up an ESP32](/operate/get-started/setup-micro/) and connect it to Viam.
 
-1. Next, you'll configure hardware and software on your machine in Viam.
+1. Next, you'll configure hardware and software for your machine.
    You can test it with the UI in the app.
 
 1. From there, you have many options including:

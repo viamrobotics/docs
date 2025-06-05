@@ -387,7 +387,7 @@ Delete an organization.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization. You can obtain your organization ID from your organizations settings page.
 
 **Returns:**
 
@@ -432,7 +432,7 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list members of. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list members of. You can obtain your organization ID from your organizations settings page.
 
 **Returns:**
 
@@ -480,7 +480,7 @@ Create an {{< glossary_tooltip term_id="organization" text="organization" >}} in
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create an invite for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create an invite for. You can obtain your organization ID from your organizations settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email address to send the invite to.
 - `authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Specifications of the authorizations to include in the invite. If not provided, full owner permissions will be granted.
 - `send_email_invite` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether or not an email should be sent to the recipient of an invite. The user must accept the email to be added to the associated authorizations. When set to false, the user automatically receives the associated authorization on the next login of the user with the associated email address.
@@ -552,7 +552,7 @@ If an invitation has only one authorization and you want to remove it, delete th
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite is for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite is for. You can obtain your organization ID from your organizations settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Email of the user the invite was sent to.
 - `add_authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to add to the invite.
 - `remove_authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to remove from the invite.
@@ -638,7 +638,7 @@ Remove a member from the {{< glossary_tooltip term_id="organization" text="organ
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to remove the user from. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to remove the user from. You can obtain your organization ID from your organizations settings page.
 - `user_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the user to remove.
 
 **Returns:**
@@ -691,7 +691,7 @@ Delete a pending organization invite to the organization you are currently authe
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to delete was for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to delete was for. You can obtain your organization ID from your organizations settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email address the pending invite was sent to.
 
 **Returns:**
@@ -745,7 +745,7 @@ Resend a pending organization invite email.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to resend was for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to resend was for. You can obtain your organization ID from your organizations settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email address associated with the invite.
 
 **Returns:**
@@ -799,7 +799,7 @@ Gets the user-defined metadata for an organization.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization with which the user-defined metadata is associated. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization with which the user-defined metadata is associated. You can obtain your organization ID from your organizations settings page.
 
 **Returns:**
 
@@ -897,7 +897,7 @@ Optionally, put the new location under a specified parent location.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the location under. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the location under. You can obtain your organization ID from your organizations settings page.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the location.
 - `parent_location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional parent location to put the location under. Defaults to a root-level location if no location ID is provided.
 
@@ -1130,7 +1130,7 @@ Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} u
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to list locations for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to list locations for. You can obtain your organization ID from your organizations settings page.
 
 **Returns:**
 
@@ -1424,7 +1424,7 @@ Get the user-defined metadata for a location.
 
 **Parameters:**
 
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which the user-defined metadata is associated. You can obtain your location ID from Viam’s locations page.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which the user-defined metadata is associated. You can obtain your location ID from your location's page.
 
 **Returns:**
 
@@ -1469,7 +1469,7 @@ Update the user-defined metadata for a location.
 
 **Parameters:**
 
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from Viam’s locations page.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from your location's page.
 - `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
 
 **Returns:**
@@ -2476,7 +2476,7 @@ Gets the user-defined metadata for a machine.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot with which the user-defined metadata is associated. You can obtain your robot ID from Viam’s machine page.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot with which the user-defined metadata is associated. You can obtain your robot ID from your machine's page.
 
 **Returns:**
 
@@ -2521,7 +2521,7 @@ Gets the user-defined metadata for a machine part.
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot part with which the user-defined metadata is associated. You can obtain your robot part ID from Viam’s machine page.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot part with which the user-defined metadata is associated. You can obtain your robot part ID from your machine's page.
 
 **Returns:**
 
@@ -2567,7 +2567,7 @@ User-defined metadata is billed as data.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot with which to associate the user-defined metadata. You can obtain your robot ID from Viam’s machine page.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot with which to associate the user-defined metadata. You can obtain your robot ID from your machine's page.
 - `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
 
 **Returns:**
@@ -2666,7 +2666,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from your organizations settings page.
 - `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True. Deprecated since version 0.25.0: Use visibilities instead.
 - `visibilities` ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): List of FragmentVisibilities specifying which types of fragments to include in the results. If empty, by default only public fragments will be returned.
 
@@ -2803,7 +2803,7 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the fragment within. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the fragment within. You can obtain your organization ID from your organizations settings page.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the fragment.
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Can be assigned by updating the fragment.
 
@@ -3014,7 +3014,7 @@ Add a role under the organization you are currently authenticated to.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from your organizations settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
 - `role` (Literal['owner'] | Literal['operator']) (required): The role to add (either `"owner"` or `"operator"`).
 - `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
@@ -3085,7 +3085,7 @@ Remove a role under the organization you are currently authenticated to.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization the role exists in. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization the role exists in. You can obtain your organization ID from your organizations settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
 - `role` (Literal['owner'] | Literal['operator']) (required): The role to remove.
 - `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource the role is being removed from. Must match resource_id.
@@ -3697,7 +3697,7 @@ Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organ
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the module under. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the module under. You can obtain your organization ID from your organizations settings page.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the module. Must be unique within your organization.
 
 **Returns:**
@@ -3918,7 +3918,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list modules for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list modules for. You can obtain your organization ID from your organizations settings page.
 
 **Returns:**
 
@@ -3963,7 +3963,7 @@ Create a new [API key](/operate/control/api-keys/).
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the key for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the key for. You can obtain your organization ID from your organizations settings page.
 - `authorizations` ([List[APIKeyAuthorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (required): A list of authorizations to associate with the key.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): A name for the key. If None, defaults to the current timestamp.
 
@@ -4112,7 +4112,7 @@ List all keys for the {{< glossary_tooltip term_id="organization" text="organiza
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list API keys for. You can obtain your organization ID from Viam’s organization settings page.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list API keys for. You can obtain your organization ID from your organizations settings page.
 
 **Returns:**
 

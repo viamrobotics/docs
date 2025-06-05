@@ -108,7 +108,7 @@ For the `fake` model, there are no required attributes.
 {{< /expand >}}
 {{< expand "Step 5: Choose how you will control the motor" >}}
 
-You can control your motor directly on Viam, using the mobile app, or programmatically.
+You can control your motor directly using the web UI, the mobile app, or the SDKs.
 
 ### Option 1: Control from the app
 

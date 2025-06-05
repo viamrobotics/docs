@@ -135,7 +135,7 @@ Create a file using nano with the .py which is the python file extension, (name 
 nano anyname.py
 ```
 
-Paste the code you got from the **CONNECT** tab on Viam. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
+Paste the code you got from the **CONNECT** tab. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
 ![Raspberry Pi terminal showing the connect code from the previous example.](/tutorials/single-component-tutorials-servo-mousemover/sample-code.png)
 
@@ -206,7 +206,7 @@ The attribute section will look like this:
 
 Click the **Save** button in the upper right corner of the screen to save your config.
 
-## Control the servo on Viam
+## Control the servo with the web UI
 
 If everything went well, the servo started to move.
 
@@ -227,7 +227,7 @@ Click on the top of the servo card to open the servo controls.
 Try changing the angle to a few different settings.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="Animation of the servo's angle being changed with the UI.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="Animation of the servo's angle being changed with the web UI.">}}
 </div>
 
 ## Assemble the mouse mover

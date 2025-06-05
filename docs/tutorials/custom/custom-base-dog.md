@@ -42,7 +42,7 @@ This tutorial demonstrates how to add a custom base using [this robot dog kit an
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
-You will also be able to use the **CONTROL** tab on Viam to remotely drive the dog around using your keyboard while viewing the camera feed.
+You will also be able to use the machine's **CONTROL** tab to remotely drive the dog around using your keyboard while viewing the camera feed.
 You’ll learn to implement a custom component type in Viam, and you’ll be equipped to implement other sorts of custom components in the future for whatever robots you dream up.
 
 ## Code used in this tutorial
