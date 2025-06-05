@@ -21,12 +21,12 @@ Then, configure a `wheeled` base as follows:
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `base` type, then select the `wheeled` model.
 Enter a name or use the suggested name for your base and click **Create**.
 
-{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On dropdowns and the option to add a frame." resize="1200x" style="width: 900px" class="shadow" >}}
+{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base, with Attributes & Depends On dropdowns and the option to add a frame." resize="1200x" style="width: 900px" class="shadow" >}}
 
 Select the motors attached to the base as your **right** and **left** motors.
 Edit and fill in the attributes as applicable.

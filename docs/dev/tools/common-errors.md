@@ -9,7 +9,7 @@ no_list: true
 # updated: ""  # When the content was last entirely checked
 ---
 
-This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.
+This document lists common errors encountered when working with Viam, and provides steps to resolve them.
 While many common issues and their possible resolutions are presented here, this list is not comprehensive.
 
 To view logs or get a remote shell on a machine see [Troubleshoot](/manage/troubleshoot/troubleshoot/).
@@ -119,14 +119,14 @@ sudo apt install jackd qjackctl libpulse-dev pulseaudio
 
 This error can be safely ignored if you do not intend to use audio on your machine.
 
-## Common Viam App Errors
+## Common errors using the web UI
 
 ### Failed to connect; retrying
 
-**Description:** the [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
-When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
+**Description:** Viam is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
+When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the web UI.
 
-**Solution:** Check the following to ensure your machine is accessible to the Viam app:
+**Solution:** Check the following to ensure your machine is accessible to Viam:
 
 - Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
 - Is the `ssh` service configured and running locally on the board?
@@ -149,7 +149,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
 
 **Description:** A [frame](/operate/reference/services/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-**Solution:** Check the **CONFIGURE** tab for your machine in the [Viam app](https://app.viam.com) and look for a `frame` attribute, either in **Frame** or **JSON** mode.
+**Solution:** Check the **CONFIGURE** tab for your machine and look for a `frame` attribute, either in **Frame** or **JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
 In **JSON** mode, it will resemble the following:
 
@@ -251,8 +251,3 @@ None at this time.
 ### Linux applications
 
 None at this time.
-
-### Browser plugins
-
-**Chrome plugin: Allow Right-Click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
-If you are experiencing issues with the **Create Service** pane in the Viam app, temporarily disable this plugin until you have saved your configuration in the Viam app.

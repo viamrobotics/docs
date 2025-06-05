@@ -29,7 +29,7 @@ For more detailed information on using pprof, refer to the [Go pprof documentati
 
 To enable the pprof endpoints, set `enable_web_profile` to `true` in your machine configuration:
 
-1. Navigate to the **CONFIGURE** tab of your machine in the Viam app
+1. Navigate to the **CONFIGURE** tab of your machine
 1. Click on the **...** menu next to your machine part in the left-hand menu
 1. Select **Edit JSON**
 1. Add the `enable_web_profile` field at the root level of your configuration:

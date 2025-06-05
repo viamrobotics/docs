@@ -51,7 +51,7 @@ If you wanted to take this tutorial further, you could use these state transitio
 
 ## Prerequisites
 
-{{% expand "A machine connected to the Viam app" %}}
+{{% expand "A machine connected to Viam" %}}
 
 {{% snippet "setup.md" %}}
 
@@ -65,7 +65,7 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 
 ## Configure a camera
 
-Navigate to the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
 Reference [these available models](/operate/reference/components/camera/#configuration).
@@ -75,7 +75,7 @@ To configure a `webcam`:
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 2. Select the `camera` type, then select the `webcam` model.
 3. Enter the name `my_webcam` for your camera and click **Create**.
-4. If your machine is online and connected to the Viam app, your camera’s video path is automatically detected and configured.
+4. If your machine is online and connected to Viam, your camera’s video path is automatically detected and configured.
    If your machine is not currently connected, you can manually select the video path for your camera, or bring your machine online to have this path automatically configured for you.
 
 Position your camera somewhere where it can easily see the people it will be configured to detect.
@@ -94,7 +94,7 @@ The [ML model service](/data-ai/ai/deploy/) allows you to deploy a machine learn
 For your machine to be able to detect people, you will use a Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
 
-1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
+1. Navigate to your machine's **CONFIGURE** tab.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 3. Select type `ML model`, then select model `TFLite CPU`.
 4. Enter `persondetect` as the name for your ML model service, then click **Create**.
@@ -103,7 +103,7 @@ The model can detect a variety of things which you can see in <file>[labels.txt]
 
 Finally, configure an `mlmodel` detector vision service to use your new `"persondetect"` ML model:
 
-1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
+1. Navigate to your machine's **CONFIGURE** tab.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 3. Select the `vision` type, then select the `ML model` model.
 4. Give the detector the name `people-detect` and click **Create**.
@@ -120,7 +120,7 @@ To create your own model, capture images of a variety of people using your camer
 
 To capture training images:
 
-1. Navigate to your machine’s page in the [Viam app](https://app.viam.com/robots).
+1. Navigate to your machine’s page.
 1. Select the **CONFIGURE** tab.
 1. In the left-hand menu, click the **+** icon next to your machine part, then select **Component or service** from the context menu.
 1. Select the Viam `data management` service type.
@@ -130,7 +130,7 @@ To capture training images:
 1. In the left-hand menu, click the `my_webcam` camera component.
    You should now see a live camera feed from your webcam.
 1. From the dropdown in the **TEST** panel, select the **Refresh every 5 seconds** option.
-   This should give you enough time to pose for a photo, return to the Viam app, and save the photo.
+   This should give you enough time to pose for a photo, return to Viam, and save the photo.
 1. Click the button marked with the camera icon to save the currently displayed image to a dataset:
    {{< imgproc src="/components/camera/add_image_to_dataset_button.png" alt="A button marked with the outline of a camera, emphasized in red" resize="800x" style="width:500px" class="imgzoom" >}}
 
@@ -178,7 +178,7 @@ Then, train a new model using that model:
 
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 
-1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
+1. Navigate to your machine's **CONFIGURE** tab.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `vision` type, then select the `ML model` model.
 1. Give the detector the name `people-detect` and click **Create**.
@@ -205,12 +205,12 @@ scp /path/to/my-photo.jpg username@my-machine.local:/home/me/my-photo.jpg
 ```
 
 After you have copied at least one image of a person to your machine, you are ready to configure the second detection layer: the facial recognition detector.
-For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [Viam Registry](https://app.viam.com/module/viam-labs/facial-detector).
+For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [registry](https://app.viam.com/module/viam-labs/facial-detector).
 The `facial-detector` module provides a modular vision service that uses Facebook's DeepFace library to perform facial detections.
 
 To add the `facial-detector` module to your machine:
 
-1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's **CONFIGURE** page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select `vision`, then select the `detector:facial-detector` model.
    You can also search for `facial-detector` directly.
@@ -244,7 +244,7 @@ See the [`facial-detector` module documentation](https://github.com/viam-labs/fa
 Now that you have configured both the coarser `people-detect` object detector and the more fine-grained `face-detect` facial detector, you are ready to add the alarm logic that uses these detectors to either trigger an alarm or disarm, based on the detected person.
 For this, add and configure the `verification-system` module from the Viam Registry following the steps below:
 
-1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's **CONFIGURE** page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select `vision`, then select the `classifier:verification-system` model.
    You can also search for `verification-system` directly.
@@ -290,7 +290,7 @@ To easily see this in action, you can add a [transform camera](/operate/referenc
 
 To add a transform camera to your machine:
 
-1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's **CONFIGURE** page.
 1. lick the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select `camera`, then select the built-in `transform` model.
 1. Give the transform camera a name, like `my-transform-camera`, then click **Create**.
@@ -331,7 +331,7 @@ With everything configured, you are now ready to see your facial recognition mac
 
 To view your machine's transform camera overlay:
 
-1. On your machine's **CONTROL** page in the [Viam app](https://app.viam.com), select the transform camera pane, which is listed by the name you gave it in the previous session, such as `my-transform-camera`.
+1. On your machine's **CONTROL** page, select the transform camera pane, which is listed by the name you gave it in the previous session, such as `my-transform-camera`.
 2. Enable the view toggle to see a live camera feed from your camera, overlaid by the current state of the `verification-system` module, which should be `TRIGGER_1` if no people are present in-frame.
 3. Have one or more people walk in front of the camera and look directly into it.
    Watch the state change to `COUNTDOWN` and then `DISARMED` when an approved person is detected, or to `ALARM` if no approved person appears within 10 seconds!

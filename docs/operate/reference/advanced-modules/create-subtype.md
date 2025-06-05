@@ -60,7 +60,7 @@ The following steps guide you through this process in more detail:
    }
    ```
 
-   For your custom API, your API namespace triplet might be `your-org-namespace:component:gizmo` where `your-org-namespace` is your organization namespace, found in your org settings page in the Viam app.
+   For your custom API, your API namespace triplet might be `your-org-namespace:component:gizmo` where `your-org-namespace` is your organization namespace, found in your org settings page.
 
    {{< /expand >}}
 

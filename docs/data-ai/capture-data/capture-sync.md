@@ -55,7 +55,7 @@ For more information, see [How sync works](/data-ai/capture-data/advanced/how-sy
 
 ## Configure data capture and sync for individual resources
 
-1. Navigate to a configured {{< glossary_tooltip term_id="resource" text="resource" >}} in **Builder** mode in the [Viam app](https://app.viam.com).
+1. Navigate to a configured {{< glossary_tooltip term_id="resource" text="resource" >}} in **Builder** mode.
 1. Find the **Data capture** section in the resource panel.
 1. Click **+ Add method**.
 

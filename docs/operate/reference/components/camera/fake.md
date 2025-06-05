@@ -22,12 +22,12 @@ You can optionally specify a height and width.
 {{< tabs name="Configure a Fake Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `camera` type, then select the `fake` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
-![Configuration of a fake camera in the Viam app config builder.](/components/camera/configure-fake.png)
+![Configuration of a fake camera.](/components/camera/configure-fake.png)
 
 Edit the attributes as applicable to your camera, according to the table below.
 

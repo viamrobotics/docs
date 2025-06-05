@@ -37,7 +37,7 @@ After following this tutorial, you will be able to use the input controller comp
 
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/operate/reference/components/base/) on the [Viam app](https://app.viam.com/).
+- A wheeled rover, configured with a [base component](/operate/reference/components/base/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a Yahboom 4WD Smart Robot or an entirely different rover.
   - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
 - [EasySMX ESM-9101 Wireless Controller](https://www.amazon.com/Wireless-Controller-EasySMX-ESM-9101-Gamepad/dp/B07F1NLGW2?th=1) or a similar gamepad and dongle.
@@ -83,7 +83,7 @@ If you would like a stronger understanding of `bluetoothctl` and managing Blueto
 
 ## Add the controller to the rover's config
 
-Go to your rover's **CONFIGURE** tab on the [Viam app](https://app.viam.com/).
+Go to your rover's **CONFIGURE** tab.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -94,7 +94,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `input_controller` type, then select the `gamepad` model.
 Enter a name or use the suggested name for your input controller and click **Create**.
 
-![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
+![An example configuration for a linux-based gamepad input controller component](/components/input-controller/gamepad-input-controller-ui-config.png)
 
 You can set the `auto_reconnect` attribute to `true`.
 
@@ -146,7 +146,7 @@ In your base remote control service's configuration panel, copy and paste the fo
 
 For example:
 
-![An example configuration for a base remote control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
+![An example configuration for a base remote control service.](/services/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -211,7 +211,7 @@ Here is a diagram of the gamepad.
 </table>
 
 To change the movement/direction control on the gamepad between the D-pad and the joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
-Each red color arrangement allows you to control the gamepad in the Viam app:
+Each red color arrangement allows you to control the gamepad:
 
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>

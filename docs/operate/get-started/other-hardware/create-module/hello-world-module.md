@@ -46,7 +46,7 @@ Authenticate your CLI session with Viam using one of the following options:
 {{< readfile "/static/include/how-to/auth-cli.md" >}}
 {{< /expand >}}
 
-{{% expand "Install viam-server on your computer and connect to the Viam app" %}}
+{{% expand "Install viam-server on your computer and connect to Viam" %}}
 
 {{% snippet "setup.md" %}}
 
@@ -115,7 +115,7 @@ First let's generate the camera component files, and we'll add the sensor code l
     - Language: Your choice
     - Visibility: `Private`
     - Namespace/Organization ID:
-      - In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+      - Navigate to your organization settings through the menu in upper right corner of the page.
         Find the **Public namespace** (or create one if you haven't already) and copy that string.
         In the example snippets below, the namespace is `jessamy`.
     - Resource to add to the module (API): `Camera Component`.
@@ -627,12 +627,12 @@ viam module build local
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
 
-Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
+Make sure your machine's instance of `viam-server` is live and connected to Viam.
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
 
-In the Viam app, navigate to your machine's **CONFIGURE** page.
+Navigate to your machine's **CONFIGURE** page.
 
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
@@ -684,7 +684,7 @@ Replace the path with the path to your image, for example `"/Users/jessamyt/Down
 {{% tablestep number=8 %}}
 Save the config, then click the **TEST** section of the camera's configuration card.
 
-{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The Viam app configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}
+{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}
 
 You should see your image displayed.
 If not, check the **LOGS** tab for errors.
@@ -713,7 +713,7 @@ If not, check the **LOGS** tab for errors.
 ## Package and upload the module
 
 You now have a working local module.
-To make it available to deploy on more machines, you can package it and upload it to the [Viam Registry](https://app.viam.com/registry).
+To make it available to deploy on more machines, you can package it and upload it to the [registry](https://app.viam.com/registry).
 
 The hello world module you created is for learning purposes, not to provide any meaningful utility, so we recommend making it available only to machines within your {{< glossary_tooltip term_id="organization" text="organization" >}} instead of making it publicly available.
 

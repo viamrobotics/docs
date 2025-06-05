@@ -93,16 +93,16 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 
 1. Make sure your computer or SBC is powered on and connected to the internet.
 
-1. Create a [Viam app](https://app.viam.com) account.
-   The Viam app is the online hub for configuring and managing devices and data.
+1. Create a Viam account on [app.viam.com](https://app.viam.com).
+   You can configure and manage devices and data collection in the web UI.
 
 1. Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
-1. From your machine's page in the Viam app, click **View setup instructions** and follow the steps for your operating system.
+1. On your machine's page, click **View setup instructions** and follow the steps for your operating system.
    The app provides commands to install `viam-server` and connect it to the cloud with your machine's unique credentials.
 
-1. A secure connection is automatically established between your machine and the Viam app.
+1. A secure connection is automatically established between your machine and Viam.
    When you update your machine's configuration, `viam-server` automatically gets the updates.
 
    You are ready to [configure supported hardware](/operate/get-started/supported-hardware/) on your machine.
@@ -113,10 +113,10 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 
 `viam-agent` is a service manager that automatically updates `viam-server` and includes tools for [provisioning your devices](/manage/fleet/provision/setup/), networking, and configuring operating system settings.
 
-When you set up a Linux device in the Viam app, you'll see an option to install using `viam-agent`, or to manually install only `viam-server`.
-Using `viam-agent` is generally recommended when installing `viam-server` on a single-board computer.
+When you set up a Linux device with Viam, you can use `viam-agent`, or to manually install only `viam-server`.
+Using `viam-agent` is generally recommended when installing `viam-server`.
 
-When you set up a native Windows device in the Viam app, you must use the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable.msi).
+When you set up a native Windows device with Viam, you must use the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable.msi).
 
 `viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers.
 Use manual install for those systems.
@@ -133,10 +133,10 @@ If you need to use Docker reach out to [support](mailto:support@viam.com).
 
 ### How the machine gets its configuration
 
-The machine setup steps displayed in the Viam app copy your machine's credentials to your machine.
-When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its configuration from the Viam app.
+The machine setup steps copy your machine's credentials to your machine.
+When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its configuration from Viam.
 Once the machine has a configuration, it caches it locally (in a file at <FILE>~/.viam/cached_cloud_config\_\<PART-ID\>.json</FILE>) and can use the config for up to 60 days.
-Since the configuration is cached locally, your machine does not need to stay connected to the Viam app after it has obtained its configuration file.
+Since the configuration is cached locally, your machine does not need to stay connected to Viam after it has obtained its configuration file.
 
 If it is online, the machine checks for new configurations every 15 seconds and changes its config automatically when a new config is available.
 All communication happens securely over HTTPS using secret tokens that are in the machine's config.

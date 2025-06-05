@@ -6,6 +6,6 @@ ignorecase: true
 action:
   name: replace
 swap:
-  cloud app: Viam app or Viam platform
+  cloud app: Viam or web UI or Viam platform
   Scuttlebot: SCUTTLE robot
   on the app: in the app

@@ -32,9 +32,9 @@ See [configure a machine](/operate/get-started/supported-hardware/) for more inf
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**Create a workspace in the Viam app**
+**Create a workspace**
 
-Log in to the [Viam app](https://app.viam.com/).
+Log into [Viam](https://app.viam.com/).
 
 Navigate to the **FLEET** page's **TELEOP** tab.
 Create a workspace by clicking **+ Create workspace**.

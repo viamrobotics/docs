@@ -50,9 +50,9 @@ If you also have a gripper component, you define the gripper's `frame` to descri
 <!-- Not live yet
 ## Visualize components and frames
 
-You can visualize your machine's components and frames in the Viam app.
+You can visualize your machine's components and frames with the web UI.
 
-1. In the Viam app, navigate to your machine's page.
+1. Navigate to your machine's page.
 1. Select the **VISUALIZE** tab.
 
    {{<imgproc src="/services/frame-system/viz-tab.png" resize="x1100" declaredimensions=true alt="Visualization of a number of objects seemingly floating in space above a grid." style="max-width:600px" class="shadow" >}}

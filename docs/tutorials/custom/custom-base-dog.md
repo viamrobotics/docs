@@ -10,7 +10,7 @@ videos:
     "/tutorials/custom-base-dog/base-control-dog.webm",
     "/tutorials/custom-base-dog/base-control-dog.mp4",
   ]
-videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab on the Viam app open in a browser window."
+videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab"
 images: ["/tutorials/custom-base-dog/base-control-dog.gif"]
 aliases:
   - /tutorials/custom-base-dog/
@@ -31,18 +31,18 @@ After following this tutorial, you will know about Viam's modules and be able to
 Consider if can be merged with intermode rover one to create more generalized guidance.
  -->
 
-The [base component type](/operate/reference/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
+The [base component type](/operate/reference/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the machine's **CONTROL** tab.
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
-  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's control tab on the Viam app open in a browser window." max-width="400px">}}
+  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's control tab." max-width="400px">}}
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
-You will also be able to use the **CONTROL** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
+You will also be able to use the machine's **CONTROL** tab to remotely drive the dog around using your keyboard while viewing the camera feed.
 You’ll learn to implement a custom component type in Viam, and you’ll be equipped to implement other sorts of custom components in the future for whatever robots you dream up.
 
 ## Code used in this tutorial
@@ -250,7 +250,7 @@ The CLI module generator generates the files for your modular resource.
    - Language: `Python`
    - Visibility: `Private`
    - Namespace/Organization ID:
-     - In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+     - Navigate to your organization settings through the menu in upper right corner of the page.
        Find the **Public namespace** (or create one if you haven't already) and copy that string.
        In the example snippets below, the namespace is `viamlabs`.
    - Resource to add to the module (API): `Base Component`.
@@ -261,7 +261,7 @@ The CLI module generator generates the files for your modular resource.
    It's a good idea to use the same names, aside from the namespace.
    That way your code will match the example code.
 
-   You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
+   You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base.
 
 3. Hit your Enter key and the generator will generate a folder called <file>robotdog</file> containing stub files for your modular base component.
 
@@ -373,13 +373,13 @@ sudo chmod +x run.sh
 
 You need to tell your robot how to access the module you created.
 
-On the [Viam app](https://app.viam.com), go to your machine's **CONFIGURE** tab.
+Navigate to your machine's **CONFIGURE** tab.
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
 Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
 Click **Save** at the top right of the page to save your config.
 
-![Screenshot of the Viam app Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
+![Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
 
 ## Configure the components
 
@@ -436,7 +436,7 @@ That way the Freenove robot dog server will start running when the module starts
 
 {{% /alert %}}
 
-## Driving the robot from the Viam app
+## Driving the robot with Viam
 
 Navigate to the **CONTROL** tab.
 
@@ -487,7 +487,7 @@ Depending on the speed of your server connection, you may need to hold down the 
 
 ## Next steps
 
-In this tutorial you learned how to implement a custom component model and control it using the Viam app.
+In this tutorial you learned how to implement a custom component model and control it.
 You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 

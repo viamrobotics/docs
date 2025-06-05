@@ -64,7 +64,7 @@ Before starting this tutorial, you must:
 
 ## Configure your robot
 
-Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/operate/reference/services/frame-system/) configured.
+Use the same machine configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/operate/reference/services/frame-system/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
@@ -72,7 +72,7 @@ The motion service is one of the "built-in" services, so you don't need to do an
 {{% expand "Click to see what your raw JSON config should look like." %}}
 
 If you completed the previous tutorial, your robot's configuration should match the following.
-You can view your robot configuration in the [Viam app](https://app.viam.com/) under the **CONFIGURE** tab by selecting **JSON** mode in the left-hand menu.
+You can view your machine configuration on the **CONFIGURE** tab by selecting **JSON** mode in the left-hand menu.
 
 If instead you create a new machine for this tutorial, copy and paste the following configuration into the **JSON** field:
 
@@ -157,7 +157,7 @@ You will use this same code later in this tutorial.
 Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the frame system visualizer.
 This configured table won't be taken into account by the motion service, but it's useful to be able to see it.
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `generic` type, then select the `fake` model.
 Enter the name `"table"` for your movement sensor and click **Create**.
@@ -221,7 +221,7 @@ The following diagram shows this, as well as the global coordinate system.
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup
@@ -343,7 +343,7 @@ await my_gripper.open()
 ## Full code
 
 The following code contains everything covered in this tutorial in addition to the `connect()` function, and the resource access code from the last tutorial that you need here as well.
-Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `ADDRESS FROM THE VIAM APP` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
+Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `MACHINE ADDRESS` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
 You can find the `<API-KEY>` and `<API-KEY-ID>` values for your machine on the **CONNECT** tab's **API keys** page.
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -368,7 +368,7 @@ async def connect():
       # ID
       api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 
 
 async def main():

@@ -7,8 +7,8 @@ Submit a training job.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to submit the training job to. To retrieve this, expand your organization's dropdown in the top right corner of the [Viam app](https://app.viam.com/), select **Settings**, and copy **Organization ID**.
-- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to train the ML model on. To retrieve this, navigate to your dataset's page in the [Viam app](https://app.viam.com/data/datasets), click **...** in the left-hand menu, and click **Copy dataset ID**.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to submit the training job to. To retrieve this, click on the organization in the top right corner, select **Settings**, and copy **Organization ID**.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to train the ML model on. To retrieve this, navigate to your [dataset's page](https://app.viam.com/data/datasets), click **...** in the left-hand menu, and click **Copy dataset ID**.
 - `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model name.
 - `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The version of the ML model you're training. This string must be unique from any previous versions you've set.
 - `model_type` (viam.proto.app.mltraining.ModelType.ValueType) (required): The type of the ML model. Options: `ModelType.MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_MULTI_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_OBJECT_DETECTION`.
@@ -55,12 +55,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 await mlTrainingClient.submitTrainingJob(
-  '<organization-id>',
-  '<dataset-id>',
-  '<your-model-name>',
-  '1.0.0',
+  "<organization-id>",
+  "<dataset-id>",
+  "<your-model-name>",
+  "1.0.0",
   ModelType.SINGLE_LABEL_CLASSIFICATION,
-  ['tag1', 'tag2']
+  ["tag1", "tag2"],
 );
 ```
 
@@ -125,12 +125,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 await mlTrainingClient.submitCustomTrainingJob(
-  '<organization-id>',
-  '<dataset-id>',
-  'viam:classification-tflite',
-  '1.0.0',
-  '<your-model-name>',
-  '1.0.0'
+  "<organization-id>",
+  "<dataset-id>",
+  "viam:classification-tflite",
+  "1.0.0",
+  "<your-model-name>",
+  "1.0.0",
 );
 ```
 
@@ -177,7 +177,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const job = await mlTrainingClient.getTrainingJob('<training-job-id>');
+const job = await mlTrainingClient.getTrainingJob("<training-job-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#gettrainingjob).
@@ -228,8 +228,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const jobs = await mlTrainingClient.listTrainingJobs(
-  '<organization-id>',
-  TrainingStatus.RUNNING
+  "<organization-id>",
+  TrainingStatus.RUNNING,
 );
 ```
 
@@ -280,7 +280,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await mlTrainingClient.cancelTrainingJob('<training-job-id>');
+await mlTrainingClient.cancelTrainingJob("<training-job-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#canceltrainingjob).
@@ -326,7 +326,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await mlTrainingClient.deleteCompletedTrainingJob('<training-job-id>');
+await mlTrainingClient.deleteCompletedTrainingJob("<training-job-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#deletecompletedtrainingjob).

@@ -1,6 +1,6 @@
 ## Test the arm
 
-Once your arm is configured and connected, open the arm's **TEST** panel on the **CONFIGURE** or [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) tabs.
+Once your arm is configured and connected, open the arm's **TEST** panel on the **CONFIGURE** or [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) tabs.
 
 Use the buttons to move the end position or the joints and check whether it moves as expected.
 

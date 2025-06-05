@@ -3,11 +3,11 @@ The AppImage is a single, self-contained binary that runs on 64-bit Linux system
 
 To install `viam-server` on a Linux computer:
 
-1. Go to the [Viam app](https://app.viam.com). Create an account if you haven't already.
+1. Go to [Viam](https://app.viam.com). Create an account if you haven't already.
 
 1. Add a new machine by providing a name in the **New machine** field and clicking **Add machine**:
 
-   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
+   ![The 'First Location' page with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
@@ -28,6 +28,6 @@ To install `viam-server` on a Linux computer:
 
 1. Once you have followed the steps on the setup instructions, wait for confirmation that your machine has successfully connected.
 
-   On your machine's page on the [Viam app](https://app.viam.com), your machine will show that it's **Live**.
+   On your machine's page, your machine will show that it's **Live**.
 
 By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/operate/reference/viam-server/manage-viam-server/) if desired.

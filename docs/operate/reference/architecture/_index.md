@@ -38,11 +38,11 @@ This page provides an overview of how a machine is structured, including on-devi
 
 When `viam-server` can connect to the cloud, it also:
 
-- Automatically pulls configuration updates you make in the Viam app
+- Automatically pulls configuration updates you make
 - Gets new versions of software packages
 - Uploads and syncs image and sensor data
 - Handles requests from client code you write with [SDKs](/dev/reference/sdks/)
-- Allows you to remotely monitor and control your machine from the Viam app
+- Allows you to remotely monitor and control your machine
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
 
@@ -89,7 +89,7 @@ If you want to add some other high-level software functionality beyond the built
 Viam uses peer-to-peer communication, where all machines running `viam-server` or [`viam-micro-server`](/operate/reference/viam-micro-server/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
 This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/operate/reference/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
 
-On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
+On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with Viam.
 `viam-server` pulls its configuration from the app, caches it locally, and initializes all components and services based on that configuration.
 
 If [sub-parts or remote parts](#complex-machines-with-multiple-parts) are configured, communications are established between the `viam-server` instances on each of them.
@@ -98,8 +98,8 @@ If you have client code running on a separate computer, that code sends API requ
 If a WebRTC connection cannot be established, the request is sent directly over gRPC.
 When a built-in service communicates with a component, for example when the vision service requests an image from a camera, `viam-server` handles that request as well.
 
-When you control your machine or view its camera streams or sensor outputs from the Viam app **CONTROL** tab, those connections happen over WebRTC.
-The Viam app uses the same API endpoints as your SDK client code (in fact, it uses the Viam TypeScript SDK), with `viam-server` handling requests.
+When you control your machine or view its camera streams or sensor outputs from the **CONTROL** tab, those connections happen over WebRTC.
+The web UI uses the same API endpoints as your SDK client code (in fact, it uses the Viam TypeScript SDK), with `viam-server` handling requests.
 
 {{% alert title="Protobuf APIs" color="info" %}}
 All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
@@ -109,26 +109,26 @@ For more details, see [Machine-to-Machine Communication](/operate/reference/arch
 
 ### Security
 
-TLS certificates automatically provided by the Viam app ensure that all communication is authenticated and encrypted.
+TLS certificates automatically provided by Viam ensure that all communication is authenticated and encrypted.
 
 Viam uses API keys with [role-based access control (RBAC)](/manage/manage/rbac/) to control access to machines from client code.
 
 ## Data management flow
 
-{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
+{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to Viam, SDKs, and MQL and SQL queries." >}}
 <br>
 
 Data is captured and synced to the Viam Cloud as follows:
 
 1. Data collected by your resources, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
-   You control what data to capture, how often to capture it, and where to store it using the configuration in the Viam app.
+   You control what data to capture, how often to capture it, and where to store it using the configuration.
 
    - You can also sync data from other sources by putting it into folders you specify.
      <br><br>
 
 1. `viam-server` syncs data to the cloud at your specified interval, and deletes the data from the local directory.
 
-1. You can view your data from the Viam app or query it using Viam SDKs, MQL, or SQL.
+1. You can view your data in the web UI or query it using Viam SDKs, MQL, or SQL.
 
 If a device has intermittent internet connectivity, data is stored locally until the machine can reconnect to the cloud.
 
@@ -137,18 +137,18 @@ For more information, see [Data management service](/data-ai/capture-data/captur
 ## Basic machine example
 
 <p>
-{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="width:400px" >}}
+{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is temporarily stored on a local folder until it is synced to Viam." style="width:400px" >}}
 </p>
 
 Imagine you have a simple device consisting of a temperature sensor connected to the GPIO pins of a single-board computer (SBC).
 You want to capture sensor data at regular intervals, and sync it to the cloud.
 Here is how this works in Viam:
 
-- You configure your machine in the Viam app with a sensor {{< glossary_tooltip term_id="component" text="component" >}} and the data management {{< glossary_tooltip term_id="service" text="service" >}}.
+- You configure your machine in the web UI with a sensor {{< glossary_tooltip term_id="component" text="component" >}} and the data management {{< glossary_tooltip term_id="service" text="service" >}}.
 - `viam-server` runs on the SBC, managing all communications between hardware and the cloud using gRPC over {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
-  On startup, `viam-server` uses credentials stored locally to establish a connection with the Viam app and fetches its configuration.
+  On startup, `viam-server` uses credentials stored locally to establish a connection with Viam and fetches its configuration.
 - Sensor data is cached in a local folder, then synced to the cloud at a configurable interval.
-- You can use the tools in the Viam app to remotely view sensor data as well as to change your machine's configuration, to view logs, and more.
+- You can use the tools on Viam to remotely view sensor data as well as to change your machine's configuration, to view logs, and more.
 
 Now imagine you want to run code to turn on a fan when the temperature sensor reads over 100 degrees Fahrenheit:
 
@@ -163,7 +163,7 @@ Now imagine you want to run code to turn on a fan when the temperature sensor re
 Now, imagine you want to change to a different model of temperature sensor from a different brand:
 
 - You power down your device, disconnect the old sensor from your SBC and connect the new one.
-- You update your configuration in the Viam app to indicate what model you are using, and how it's connected (imagine this one uses USB instead of GPIO pins).
+- You update your configuration in the web UI to indicate what model you are using, and how it's connected (imagine this one uses USB instead of GPIO pins).
 - You turn your device back on, and `viam-server` automatically fetches the config updates.
 - You do not need to change your control code, because the API is the same for all models of sensor.
 

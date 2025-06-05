@@ -73,7 +73,7 @@ To create a [color detector vision service](/dev/reference/apis/services/vision/
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **CONFIGURE** tab.
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `vision` type, then select the `color detector` model.
 Enter `my_color_detector` as the name for your service and click **Create**.
@@ -121,7 +121,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app):
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui):
 
 The camera stream will show detections with bounding boxes around the detected colors.
 
@@ -156,9 +156,9 @@ Next, go to the **Code sample** page of the **CONNECT** tab on your [machine pag
 
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary packages and sets up a connection with the Viam app.
+This code snippet imports all the necessary packages and sets up a connection with Viam.
 
-Next, create a file named <file>main.py</file> and paste the sample code from the **Code sample** page of the Viam app into your file.
+Next, create a file named <file>main.py</file> with the sample code from the **Code sample** page of the **CONNECT** tab.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -194,7 +194,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
+    return await RobotClient.at_address("MACHINE ADDRESS", opts)
 
 
 async def main():
@@ -338,7 +338,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
+    return await RobotClient.at_address("MACHINE ADDRESS", opts)
 
 
 # Get largest detection box and see if it's center is in the left, center, or

@@ -55,7 +55,7 @@ aliases:
 
 {{< alert title="Caution" color="caution" >}}
 If you remove the machine cloud credentials file you will not be able to connect to your machine.
-You can only restore this file if you have access to the machine configuration in the Viam app.
+You can only restore this file if you have access to the machine configuration.
 {{< /alert >}}
 
 {{% /tab %}}

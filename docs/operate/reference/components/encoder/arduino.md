@@ -14,12 +14,12 @@ aliases:
 {{< tabs name="Configure an arduino Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `encoder` type, then select the `arduino` model.
 Enter a name or use the suggested name for your encoder and click **Create**.
 
-![Configuration of an Arduino encoder in the Viam app config builder.](/components/encoder/configure-arduino.png)
+![Configuration of an Arduino encoder.](/components/encoder/configure-arduino.png)
 
 Edit and fill in the attributes as applicable.
 

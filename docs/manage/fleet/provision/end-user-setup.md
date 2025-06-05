@@ -110,13 +110,13 @@ In the captive web portal, you will then be prompted to provide the network info
 **If prompted, provide a machine cloud credentials configuration**
 
 Depending on how the machine was set up so far, the captive portal may also require you to paste machine cloud credentials.
-This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to Viam.
 
-Navigate to the [Viam app](https://app.viam.com) and create a new machine.
+On [Viam](https://app.viam.com), create a new machine.
 
 To copy your machine cloud credentials:
 
-- Navigate to your machine's page on the [Viam app](https://app.viam.com).
+- Navigate to your machine's page.
 - Select the part status dropdown to the right of your machine's name on the top of the page.
   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
 - Click the copy icon next to **Machine cloud credentials**.
@@ -142,4 +142,4 @@ You can now use your machine.
 If your machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/manage/reference/viam-agent/#network_configuration).
 You can also override other configuration details in the [`viam-agent` configuration](/manage/reference/viam-agent/#configuration).
 
-To control your machine, you can navigate to its **CONTROL** tab in the [Viam app](https://app.viam.com).
+To control your machine, you can navigate to its **CONTROL** tab.

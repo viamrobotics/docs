@@ -23,12 +23,12 @@ Then, configure your camera:
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `camera` type, then select the `webcam` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
-{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" class="shadow"  >}}
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera." resize="1200x" style="width=600x" class="shadow"  >}}
 
 Edit and fill in the attributes as applicable.
 Leave the **video_path** blank and the camera will use the default video path for your machine.
@@ -99,12 +99,12 @@ The following attributes are available for `webcam` cameras:
 
 ## Using `video_path`
 
-### Find a video path using a discovery service in the Viam app
+### Find a video path using a discovery service
 
 The [`rand:find-webcams:webcam-discovery`](https://github.com/randhid/find-webcams) service helps you identify path options.
 To add and use the service:
 
-1. In the Viam app, navigate to the **CONFIGURE** tab of your machine's page.
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 1. Search for `find-webcams` and select the `discovery / find-webcams:webcam-discovery` service.
 1. Click **Add module**.
@@ -117,7 +117,7 @@ To add and use the service:
 1. Click the **Copy attributes** button for the camera you want to use.
 1. Click the **{}** icon in the upper right corner of the camera component configuration.
 
-   {{<imgproc src="/components/camera/advanced-config.png" resize="x1100" declaredimensions=true alt="The switch to advanced button in the Viam app." style="width:200px" class="shadow" >}}
+   {{<imgproc src="/components/camera/advanced-config.png" resize="x1100" declaredimensions=true alt="The switch to advanced button." style="width:200px" class="shadow" >}}
 
 1. Paste the copied attributes.
 1. Click **Save**.
@@ -173,7 +173,7 @@ Viam supports the following pixel formats:
 - YUY2 / YUYV / V422
 - Z16
 
-If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
+If your machine is connected to Viam, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
 
 On Linux, you can also manually determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
 Replace `/dev/video0` with the video path you [determined for your video device above](#using-video_path), if different:

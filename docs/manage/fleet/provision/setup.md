@@ -537,11 +537,11 @@ For a guide you can give to end users for setting up their machine, see [Setup m
 1. In the captive web portal, you will then be prompted to provide the network information for the machine.
 
    If there is no machine cloud credentials file at <file>/etc/viam.json</file>, the captive portal will also require you to paste a machine cloud credentials file.
-   This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+   This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to Viam.
 
    To copy a machine cloud credentials file:
 
-   - Navigate to your machine's page on the [Viam app](https://app.viam.com).
+   - Navigate to your machine's page.
    - Select the part status dropdown to the right of your machine's name on the top of the page.
      {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
    - Click the copy icon next to **Machine cloud credentials**.

@@ -1,6 +1,6 @@
 ## Test the movement sensor
 
-After you configure your movement sensor, open the movement sensor's **TEST** panel on the **CONFIGURE** or [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) tabs.
+After you configure your movement sensor, open the movement sensor's **TEST** panel on the **CONFIGURE** or [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) tabs.
 This panel presents the data collected by the movement sensor.
 The sections in the panel include the position, linear velocity and compass heading.
 

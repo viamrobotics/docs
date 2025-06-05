@@ -19,12 +19,12 @@ The transformations are applied in the order they are written in the `pipeline`.
 {{< tabs name="Example transform view" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `camera` type, then select the `transform` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
-![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
+![Configuration of an transform view.](/components/camera/configure-transform.png)
 
 Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 Copy and paste the following attribute template into the attributes field.

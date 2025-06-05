@@ -13,7 +13,7 @@ You can program your machine to move based on sensor readings or other inputs.
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam. Click to see instructions." %}}
 
 {{% snippet "setup.md" %}}
 

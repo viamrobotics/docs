@@ -2,7 +2,7 @@
 title: "Pet Photographer: Create a Data Filtering Module"
 linkTitle: "Pet Photographer"
 type: "docs"
-description: "Use the filter modular component in the Viam app to photograph your pet in their collar."
+description: "Use the filter modular component to photograph your pet in their collar."
 tags: ["vision", "filter", "camera", "detector", "services"]
 imageAlt: "Filtered data from the custom colorfiltercam in the DATA tab showing only photos of a dog wearing a blue collar"
 images: ["/tutorials/pet-photographer/data-capture.png"]
@@ -814,7 +814,7 @@ Note the absolute path to your module’s executable for use in the next section
 
 Whether you've downloaded the `colorfilter` module, or written your own color filtering module, the next step is to add the module to your smart machine as a local module:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com/robots).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
 
 1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/operate/get-started/other-hardware/create-module/#test-your-module-locally), then click **Create**.
@@ -880,7 +880,7 @@ If you have a different item you want to use, or want to match to a color that m
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `vision` type, then select the `color detector` model.
 1. Enter a name or use the suggested name for your color detector.
@@ -936,7 +936,7 @@ If you haven't already, add a [camera](/operate/reference/components/camera/) co
    Click **Create**.
 
 1. Leave the **video_path** blank and the camera will use the default video path for your machine.
-   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the camera's configuration panel.
 
 1. Click **Save** in the top right corner of the screen to save your changes.
 

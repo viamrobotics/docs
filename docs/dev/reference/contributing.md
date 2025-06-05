@@ -202,8 +202,8 @@ Additional we enforce the following substitutions:
 <!-- prettier-ignore -->
 | Do not say | Instead say |
 | ---------- | ----------- |
-| web app, cloud app | Viam app or Viam platform |
-| viam app, Viam App | Viam app |
+| web app, cloud app | Viam or web UI |
+| viam app, Viam App | Viam or web UI |
 | Viam-server, Viam server, Viam-Server | viam-server |
 | Config Tab, Config tab, Configure Tab | CONFIGURE tab |
 | Vision service, Vision Service | vision service |

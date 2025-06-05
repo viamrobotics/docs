@@ -19,12 +19,12 @@ Then, configure the component:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `arm` type, then select the `model1` model.
 Enter a name or use the suggested name for your arm and click **Create**.
 
-{{< imgproc src="/components/component/model1-builder.png" alt="Creation of a `model1` arm in the Viam app config builder." resize="600x" class="shadow"  >}}
+{{< imgproc src="/components/component/model1-builder.png" alt="Creation of a `model1` arm"  >}}
 
 Edit and fill in the attributes as applicable.
 

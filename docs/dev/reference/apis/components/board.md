@@ -20,7 +20,7 @@ The board component supports the following methods:
 
 ## Establish a connection
 
-To get started using Viam's SDKs to connect to and control your board and the rest of your machine, go to your machine's page on the [Viam app](https://app.viam.com),
+To get started using Viam's SDKs to connect to and control your board and the rest of your machine, go to your machine's page,
 Navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}

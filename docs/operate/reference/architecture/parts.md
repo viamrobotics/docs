@@ -37,7 +37,7 @@ There are two ways to link machine parts:
    You set up each of the single-board computers as a sub-part.
    This allows the main part to access all the camera streams and run object detection on all of them.<br><br>
    You could also set this up with each single-board computer being a remote part instead of a sub-part, but it is slightly easier to configure sub-parts because you do not need to add the address of each part to your machine's config.
-   Additionally, configuring a discrete system of parts as one multi-part machine helps keep your fleet more clearly organized in the Viam app.
+   Additionally, configuring a discrete system of parts as one multi-part machine helps keep your fleet more clearly organized.
   </details><br>
 
 - **Remote part**: To connect multiple computers that are parts of _different machines_ in the same or different organizations, [add one machine part as a remote part of the other machine or machines](#configure-a-remote-part).
@@ -64,7 +64,7 @@ To copy the ID of your machine part, select the part status dropdown to the righ
 
 For example:
 
-{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed in the Viam app.">}}
+{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed.">}}
 
 ## Configuration
 
@@ -74,13 +74,13 @@ You can make a multi-part machine by first configuring one part which is the "ma
 The main part will be able to access the resources of its sub-parts.
 Sub-parts will _not_ have access to the resources of the main part.
 
-The Viam app automatically creates the main part for you when you create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
+Viam automatically creates the main part for you when you create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 To add a new sub-part:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 2. Click the **+** (Create) icon next to the name of your main part, then click **Sub-part** from the menu:
 
-   {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the create part dropdown open." style="width:500px" class="shadow" >}}
+   {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The create part dropdown open." style="width:500px" class="shadow" >}}
 
 3. Save the config.
 
@@ -90,7 +90,7 @@ The sub-part will not be visible as a `remote` in the debug config until after y
 
 To rename or delete a sub-part, or to make it the main part, click the **...** menu:
 
-{{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="width:500px" class="shadow" >}}
+{{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="width:500px" class="shadow" >}}
 
 By default, all sub-parts appear in the [frame system](/operate/reference/services/frame-system/) at the world origin.
 You can specify translations for sub-parts by configuring their frames with appropriate translation values relative to their parent frame.
@@ -100,7 +100,7 @@ You can view the `frame` of each sub-part in the `remotes` section of the debug 
 
 To establish a connection between a part of one machine and a part of a second machine, add one as a remote part in the other machine part's config:
 
-1. Go to the Viam app machine page of the smart machine part to which you wish to establish the remote connection.
+1. Go to the machine page of the smart machine part to which you wish to establish the remote connection.
    This is the machine part whose resources will be accessible to the other machine part.
 2. Navigate to the **CONNECT** tab.
 3. Click **Configure as a remote part** in the left-hand menu.
@@ -108,7 +108,7 @@ To establish a connection between a part of one machine and a part of a second m
 
    {{% snippet "show-secret.md" %}}
 
-5. Go to the Viam app machine page of the machine part from which you want to establish a remote connection.
+5. Go to the machine page of the machine part from which you want to establish a remote connection.
    This is the machine part that will be able to access the resources of the other machine part.
 6. Navigate to the **CONFIGURE** tab, click the **+** (Create) icon next to the machine part's name in the left side menu.
 

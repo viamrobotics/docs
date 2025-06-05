@@ -42,9 +42,9 @@ Click **Choose** to confirm your selection.
 ## Rotate an API key
 
 Viam supports flexible key rotation with up to two keys in use at one time.
-If you ever need to rotate an API key you can use the [Viam app](https://app.viam.com/):
+If you ever need to rotate an API key you can use the web UI:
 
-1. In the [Viam app](https://app.viam.com/), click on the organization dropdown in the top navigation bar.
+1. On [Viam](https://app.viam.com/), click on the organization dropdown in the top navigation bar.
 1. Click on **Settings and invites**.
 1. Click the **Generate Key** button on the organization setting page to generate a new key.
 1. Update all code and integrations that use the key.

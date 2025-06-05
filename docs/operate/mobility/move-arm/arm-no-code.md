@@ -4,20 +4,20 @@ linkTitle: "Move an arm with no code"
 weight: 30
 type: "docs"
 layout: "docs"
-description: "Move an arm without code from the Viam app interface."
+description: "Move an arm without code using the web UI."
 date: "2025-05-21"
 ---
 
 {{<gif webm_src="/how-tos/joint_positions.webm" mp4_src="/how-tos/joint_positions.mp4" alt="The robot arm moving through joint position commands" max-width="150px" class="alignright">}}
 
-You can move an arm without code from the Viam app interface.
+You can move an arm without code using the web UI.
 This is a good way to quickly test that your arm is working before writing code to move it.
 
 This is also a good way to confirm the directions of the x, y, and z axes of your arm.
 
 ## Prerequisites
 
-{{< expand "A running machine connected to the Viam app." >}}
+{{< expand "A running machine connected to Viam." >}}
 
 {{% snippet "setup.md" %}}
 
@@ -41,7 +41,7 @@ See [Configure an arm](/operate/mobility/move-arm/configure-arm/) for instructio
 
 ## Move the arm
 
-1. In the Viam app, navigate to your machine's page.
+1. Navigate to your machine's page.
 
 1. On your arm component's configuration card, select the **TEST** tab.
 
@@ -63,7 +63,7 @@ Keep in mind:
 
    {{% alert title="Info" color="info" %}}
 
-The Viam app control interface uses the [arm API](/dev/reference/apis/components/arm/) to move the arm.
+The web UI uses the [arm API](/dev/reference/apis/components/arm/) to move the arm.
 You can also use the arm API to move the arm in code, though it is not recommended for complex movements because it does not take into account obstacles or allow for complex motion planning.
 
 {{% /alert %}}

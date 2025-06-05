@@ -13,11 +13,11 @@ no_list: true
 # SME: Devin Hilly
 ---
 
-Role-Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members or API keys roles that confer permissions.
+Role-Based Access Control (RBAC) is a way to enforce security by assigning organization members or API keys roles that confer permissions.
 You can assign an owner or an operator role for an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 - **Owner**: Can see and edit every tab on the machine page and perform equivalent operations from the APIs.
-- **Operator**: Can see and use only the [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) tab and perform equivalent operations from the APIs.
+- **Operator**: Can see and use only the [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) tab and perform equivalent operations from the APIs.
   Cannot see or edit the **CONFIGURE**, [**LOGS**](/manage/troubleshoot/troubleshoot/#check-logs), or **CONNECT** tabs.
 
 The following sections describe the permissions for each user role when it comes to managing machines, locations, organizations, fragments, and data.

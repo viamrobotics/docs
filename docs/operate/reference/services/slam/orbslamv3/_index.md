@@ -69,7 +69,7 @@ Now, add the `orbslamv3` service:
 {{< tabs name="Add the ORBSLAM3 Service Live">}}
 {{% tab name="Config Builder" %}}
 
-Go to your machine's page on the [Viam app](https://app.viam.com/).
+Go to your machine's page.
 Navigate to the **CONFIGURE** tab on your machine's page, and click the **+** button.
 
 Click **Component or service** and add a service with type `slam`, model `orbslamv3`, and a name of your choice.
@@ -95,8 +95,7 @@ Paste the following into the attributes field of your new service:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your machine's page on the [Viam app](https://app.viam.com/).
-Navigate to the **CONFIGURE** tab .
+Go to your machine's page and navigate to the **CONFIGURE** tab.
 Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json
@@ -178,8 +177,8 @@ If this directory structure is not present at runtime, the SLAM service creates 
 {{< tabs name="Add the ORBSLAM3 Service with Dataset">}}
 {{% tab name="Config Builder" %}}
 
-Go to your machine's page on the [Viam app](https://app.viam.com/).
-Navigate to the **CONFIGURE** tab on your machine's page, and click the **+** button.
+Go to your machine's page and navigate to the **CONFIGURE**.
+Then click the **+** button.
 
 Click **Component or service** and add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
@@ -203,8 +202,7 @@ Paste the following into the attributes field of your new service:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your machine's page on the [Viam app](https://app.viam.com/).
-Navigate to the **CONFIGURE** tab .
+Go to your machine's page and navigate to the **CONFIGURE** tab.
 Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json

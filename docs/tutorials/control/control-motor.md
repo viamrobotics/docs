@@ -60,18 +60,18 @@ Follow these steps to control your motor:
 
 {{< expand "Step 1: Create a machine" >}}
 
-Add a new machine in the [Viam app](https://app.viam.com).
+Add a new machine.
 
-![The 'My Desk' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
+![The 'My Desk' page with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
 
 {{< /expand >}}
 {{< expand "Step 2: Install viam-server or viam-micro-server" >}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
 If you are using a microcontroller, install `viam-micro-server`.
 Otherwise, install `viam-server`.
-Wait for your device to connect to the Viam app.
+Wait for your device to connect to Viam.
 
 {{< /expand >}}
 {{< expand "Step 3: Configure a board" >}}
@@ -96,7 +96,7 @@ Add a `motor` component that supports the type of motor and motor driver you're 
 Look through the [**Supported Models**](/operate/reference/components/motor/#configuration) to determine the model of component to configure.
 For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/operate/reference/components/motor/gpio/):
 
-![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)
+![The CONFIGURE tab populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)
 
 Follow the motor driver manufacturer's data sheet to wire your motor driver to your board and to your motor.
 Follow the [model's documentation](/operate/reference/components/motor/) to configure the attributes so that the computer can send signals to the motor.
@@ -108,15 +108,15 @@ For the `fake` model, there are no required attributes.
 {{< /expand >}}
 {{< expand "Step 5: Choose how you will control the motor" >}}
 
-You can control your motor directly from the Viam app, using the mobile app, or programmatically.
+You can control your motor directly using the web UI, the mobile app, or the SDKs.
 
 ### Option 1: Control from the app
 
-Navigate to your machine's **CONTROL** tab in the Viam app and click on the motor panel.
+Navigate to your machine's **CONTROL** tab and click on the motor panel.
 Then use the **Power %** slider to set the motor's speed.
 Use the **Backwards** and **Forwards** buttons to change the direction.
 
-{{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
+{{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
 
 ### Option 2: Control from the mobile app
 

@@ -19,7 +19,7 @@ async def connect():
         # ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 ```
 
 {{% /tab %}}
@@ -28,7 +28,7 @@ async def connect():
 ```go {class="line-numbers linkable-line-numbers" data-line="3,7,11"}
 robot, err := client.New(
     context.Background(),
-    "ADDRESS FROM THE VIAM APP",
+    "MACHINE ADDRESS",
     logger,
     client.WithDialOptions(rpc.WithEntityCredentials(
     // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
@@ -46,7 +46,7 @@ robot, err := client.New(
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="2,9,11"}
 // Replace with the host of your actual machine running Viam.
-const host = "ADDRESS FROM THE VIAM APP";
+const host = "MACHINE ADDRESS";
 
 const robot = await VIAM.createRobotClient({
   host,
@@ -65,7 +65,7 @@ const robot = await VIAM.createRobotClient({
 {{% tab name="C++" %}}
 
 ```cpp {class="line-numbers linkable-line-numbers" data-line="1,5,7"}
-std::string host("ADDRESS FROM THE VIAM APP");
+std::string host("MACHINE ADDRESS");
 DialOptions dial_opts;
 dial_opts.set_type("api-key");
 // Replace "<API-KEY-ID>" with your machine's API key ID
@@ -84,7 +84,7 @@ auto robot = RobotClient::at_address(host, options);
 
 ```dart {class="line-numbers linkable-line-numbers" data-line="2,4,6"}
 Future<void> connectToViam() async {
-  const host = 'ADDRESS FROM THE VIAM APP';
+  const host = 'MACHINE ADDRESS';
   // Replace '<API-KEY-ID>' (including brackets) with your API key ID
   const apiKeyID = '<API-KEY-ID>';
   // Replace '<API-KEY>' (including brackets) with your API key

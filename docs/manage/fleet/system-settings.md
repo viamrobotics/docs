@@ -49,7 +49,7 @@ This is primarily useful for a machine that moves between different networks, so
 To add networks, add or update the `additional_networks` field to the `agent` object and set `"turn_on_hotspot_if_wifi_has_no_internet": true`.
 
 {{< alert title="Note" color="note" >}}
-If you are using the Viam app to add networks to a machine’s configuration, the machine will need to be connected to the internet to retrieve the configuration information containing the network credentials before it can use them.
+If you are adding networks to a machine’s configuration, the machine will need to be connected to the internet to retrieve the configuration information containing the network credentials before it can use them.
 {{< /alert >}}
 
 The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`.
@@ -147,7 +147,7 @@ The configured values will take precedence over operating system defaults.
 ### Forward system logs to the cloud
 
 You can configure `viam-agent` to forward system logs from journald to the cloud for additional diagnostics information.
-This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
+This allows you to view system logs from your machine alongside Viam's own logs.
 
 To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
 

@@ -31,11 +31,10 @@ next: "/operate/get-started/other-hardware/"
 Viam has a registry of supported hardware {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for each category of hardware {{< glossary_tooltip term_id="component" text="component" >}} (for example, the camera API).
 Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/get-started/other-hardware/create-module/) that provides a driver for the hardware.
 
-The Viam Registry is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
-You can browse the [Viam Registry in the Viam app](https://app.viam.com/registry?type=Module).
+The [registry](https://app.viam.com/registry?type=Module) is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
 
 Some components are supported by drivers built into `viam-server`, so you won't find them in the registry page.
-You can browse all built-in and modular registry components below or on your machine's configuration page in the Viam app.
+You can browse all built-in and modular registry components below or on your machine's configuration page.
 
 There are also modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add software functionality such as a chatbot integration.
 
@@ -46,10 +45,10 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
 **Prerequisite:** A machine with [`viam-server` installed and connected to the cloud](/operate/get-started/setup/).
 
 1. Make sure your hardware is physically connected to your machine and powered on.
-1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's page.
 1. Click the **+** button on your machine's **CONFIGURE** tab.
 
-   {{<imgproc src="/get-started/plus-button.png" alt="Create a resource button in the Viam app." resize="600x" style="width:350px" class="imgzoom shadow">}}
+   {{<imgproc src="/get-started/plus-button.png" alt="Create a resource button." resize="600x" style="width:350px" class="imgzoom shadow">}}
 
 1. Click **Component or service**.
    This opens a search menu for all existing hardware and software drivers.
@@ -57,7 +56,7 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
    Search by name, model number, or manufacturer name.
    Or try searching by broader category, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
 
-   {{<imgproc src="/get-started/component-search.png" alt="Component search results in the Viam app." resize="600x" style="width:260px" class="imgzoom shadow">}}
+   {{<imgproc src="/get-started/component-search.png" alt="Component search results." resize="600x" style="width:260px" class="imgzoom shadow">}}
 
    You can also browse the components in the [Browse supported hardware by component API](#browse-supported-hardware-by-component-api) section below.
 
@@ -72,7 +71,7 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
    {{<imgproc src="/get-started/test-panel.png" alt="Sensor test panel showing readings." resize="900x" style="width:400px" class="imgzoom shadow">}}
 
    If your component is not working as expected, check the **ERROR LOGS** panel for error messages.
-   You can also [read more troubleshooting tips](/manage/troubleshoot/troubleshoot/) or click **ASK AI** in the top right corner of the Viam app to get help from Viam's AI assistant.
+   You can also [read more troubleshooting tips](/manage/troubleshoot/troubleshoot/) or get help from Viam's AI assistant by clicking on the search bar.
 
 ### How module configuration works
 

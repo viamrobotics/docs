@@ -26,7 +26,7 @@ Breaking changes are likely to occur, and occur often.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 
 The Viam SLAM service supports the integration of SLAM as a service on your machine.
-You can conduct SLAM with data collected live by a [RPlidar](https://github.com/viamrobotics/rplidar) or with LIDAR data you provide in configuration, and easily view the map you build by clicking on **View SLAM library** on your location's page in the [Viam app](https://app.viam.com):
+You can conduct SLAM with data collected live by a [RPlidar](https://github.com/viamrobotics/rplidar) or with LIDAR data you provide in configuration, and easily view the map you build by clicking on **View SLAM library** on your location's page:
 
 ![Completed SLAM maps in the SLAM library tab](/services/slam/view-map-page.png)
 

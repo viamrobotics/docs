@@ -36,7 +36,7 @@ Once you connect to the `viam-server` instance on a part, this display includes 
 {{% tablestep number=3 %}}
 **Test your machines remotely**
 
-On a machine's [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app), you can remotely operate the machine and test its resources.
+On a machine's [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui), you can remotely operate the machine and test its resources.
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px" class="shadow">}}
 

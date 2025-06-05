@@ -29,7 +29,7 @@ Notes:
 </div>
 
 Flutter is Google's user interface toolkit for building applications for mobile, web, and desktop from a single codebase.
-If you're looking to monitor and control individual machines with the same functionality you have on the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app), you can use the general-purpose [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) rather than creating your own.
+If you're looking to monitor and control individual machines with the same functionality you have on the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui), you can use the general-purpose [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) rather than creating your own.
 If you need custom functionality or a custom interface, you can use Viam's [Flutter SDK](https://flutter.viam.dev/) to build a custom app to interact with your machines that run on Viam.
 
 This tutorial guides you through creating a mobile app that shows your machines and their components.
@@ -43,7 +43,7 @@ As you work through this project you will learn the following:
 
 You do not need any hardware for this tutorial other than a computer running macOS or a 64-bit Linux operating system.
 
-This tutorial assumes you already have a machine [configured](/operate/get-started/setup/) on the [Viam app](https://app.viam.com).
+This tutorial assumes you already have a machine [configured](/operate/get-started/setup/).
 
 ## Set up your Flutter development environment
 
@@ -289,7 +289,7 @@ Follow the steps below to build and preview the current state of your app.
 
 Great work so far!
 Your app is successfully running, with a single screen and an inactive button.
-Next, you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}} in the Viam app.
+Next, you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}}.
 This new screen will be accessed from the login button.
 
 In the VS Code file explorer on the left-hand side, right click <file>lib/</file> and click **New File**, then name the new file <file>home_screen.dart</file>.
@@ -391,7 +391,7 @@ Follow the steps below to get your API key and create an environment variables f
    API_KEY="PASTE YOUR API KEY HERE"
    ```
 
-2. Go to the [Viam app](https://app.viam.com) and log in.
+2. Log into [Viam](https://app.viam.com).
 
 3. Click the organization dropdown menu on the right side of the top banner.
    If you're not already in the organization you want to connect to, click the correct organization name to navigate to it.

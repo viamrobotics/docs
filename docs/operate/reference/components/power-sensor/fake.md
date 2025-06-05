@@ -18,12 +18,12 @@ Configure a `fake` power sensor to test implementing a power sensor component on
 {{< tabs name="Configure a Fake Power Sensor" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `power_sensor` type, then select the `fake` model.
 Enter a name or use the suggested name for your power sensor and click **Create**.
 
-![Fake power sensor configuration panel in the Viam app. No attributes are configured.](/components/power-sensor/fake-config-builder.png)
+![Fake power sensor configuration panel. No attributes are configured.](/components/power-sensor/fake-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

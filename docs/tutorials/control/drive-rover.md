@@ -57,7 +57,7 @@ You only need the following:
 
 ## Instructions
 
-Follow these steps to get your rover ready inside the Viam app and write code to control it:
+Follow these steps to get your rover ready and write code to control it:
 
 {{< tabs >}}
 {{% tab name="Borrowed Try Viam Rover" %}}
@@ -156,7 +156,7 @@ python3 square.py
 ```
 
 The program prints an array of resources.
-These are the components and services that the machine is configured with in the Viam app.
+These are the components and services that the machine is configured with on Viam.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-75"}
 python3 square.py
@@ -183,7 +183,7 @@ go run square.go
 ```
 
 The program prints an array of resources.
-These are the components and services that the machine is configured with in the Viam app.
+These are the components and services that the machine is configured with on Viam.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 go run square.go
@@ -257,8 +257,7 @@ Add the following markup:
         We recommend you open the developer tools in your browser to see logs.
       </p>
       <p>
-        Also open a second window with the
-        <a href="https://app.viam.com">Viam app</a> and navigate to your rover's
+        Also open a second window with the your rover's
         <b>CONTROL</b> tab, which allows you to interact with your rover's
         resources. Click on one of the camera panels and toggle the camera
         stream on so you can observe the rover's movements.
@@ -282,8 +281,8 @@ npm start
 Open a web browser and visit `localhost:8000`.
 You should see a disabled button that says `Click me to drive rover in square`.
 Open the developer console to see the console output.
-If you successfully configured your machine and it is able to connect to the Viam app, you will see some output including the names of your rover's resources.
-These are the components and services that the machine is configured with in the Viam app.
+If you successfully configured your machine and it is able to connect to Viam, you will see some output including the names of your rover's resources.
+These are the components and services that the machine is configured with on Viam.
 
 {{< /tab >}}
 {{% tab name="Flutter" %}}
@@ -310,7 +309,7 @@ ninja all
 ```
 
 The program prints an array of resources.
-These are the components and services that the machine is configured with in the Viam app.
+These are the components and services that the machine is configured with on Viam.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-20"}
 ./src/viam/examples/camera/example_camera
@@ -427,7 +426,7 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
               /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
@@ -765,7 +764,7 @@ If you have a different base name, update the name in your code.
 
 ```cpp {class="line-numbers linkable-line-numbers" data-line="19-31"}
 int main() {
-    std::string host("ADDRESS FROM THE VIAM APP");
+    std::string host("MACHINE ADDRESS");
     DialOptions dial_opts;
     // Replace "<API-KEY-ID>" with your machine's api key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
@@ -842,7 +841,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 
 
 async def moveInSquare(base):
@@ -898,7 +897,7 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
@@ -967,8 +966,7 @@ func main() {
         We recommend you open the developer tools in your browser to see logs.
       </p>
       <p>
-        Also open a second window with the
-        <a href="https://app.viam.com">Viam app</a> and navigate to your rover's
+        Also open a second window and navigate to your rover's
         <b>CONTROL</b> tab, which allows you to interact with your rover's
         resources. Click on one of the camera panels and toggle the camera
         stream on so you can observe the rover's movements.
@@ -1220,7 +1218,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 
 int main() {
-    std::string host("ADDRESS FROM THE VIAM APP");
+    std::string host("MACHINE ADDRESS");
     DialOptions dial_opts;
     // Replace "<API-KEY-ID>" with your machine's api key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
