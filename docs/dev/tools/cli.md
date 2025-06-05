@@ -911,12 +911,12 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | -------------- | ----------- | -------------------- |
 | `generate` | Auto-generate stub files for a new module by following prompts. | - |
 | `create` | Generate new metadata for a custom module on your local filesystem and register the metadata with the Viam registry. Uploading the code that powers the module is a separate step. | - |
-| `update` | Update your module's metadata and documentation in the Viam registry based on changes to the [<file>meta.json</file>](/operate/get-started/other-hardware/#metajson-reference) and <file>README.md</file>. Note that `upload` automatically performs this update step. | - |
+| `update` | Update your module's metadata and documentation in the Viam registry based on changes to the [<file>meta.json</file>](/operate/get-started/other-hardware/create-module/metajson/) and <file>README.md</file>. Note that `upload` automatically performs this update step. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
-| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). Your repository must be public to use this command. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
-| `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/). Your repository must be public to use this command. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `download` | Download a module package from the registry. | - |
@@ -934,7 +934,7 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start`. For `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `download` | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
-| `--module` | The path to the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) for the custom module, if not in the current directory. | `update`, `upload`, `build` | Optional |
+| `--module` | The path to the [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) for the custom module, if not in the current directory. | `update`, `upload`, `build` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload` | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
@@ -1000,7 +1000,7 @@ You set an initial version for your custom module with your first `viam module u
 Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam Registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
-When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) is associated with the specific `--version` for that `upload`.
+When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) is associated with the specific `--version` for that `upload`.
 Therefore, you are able to change the `entrypoint` file from version to version, if desired.
 
 ##### Upload validation
@@ -1009,11 +1009,11 @@ When you `upload` a module, the command performs basic validation of your module
 The following criteria are checked for every `upload`:
 
 - The module must exist on the filesystem at the path provided to the `upload` command.
-- The entry point file specified in the [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) must exist on the filesystem at the path specified.
+- The entry point file specified in the [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
 
-See [Integrate other hardware](/operate/get-started/other-hardware/) and [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
+See [Create a module](/operate/get-started/other-hardware/create-module/) and [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
 ##### Using the `build` subcommand
 
@@ -1023,7 +1023,7 @@ You can use the `module build start` or `module build local` commands to build y
   Your repository must be public to use the `build start` command.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
-To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/#metajson-reference) like the following:
+To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) like the following:
 
 <!-- Developers can either have a single build file for all platforms, or platform specific files: -->
 
