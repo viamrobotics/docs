@@ -158,7 +158,7 @@ Next, go to the **Code sample** page of the **CONNECT** tab on your [machine pag
 
 This code snippet imports all the necessary packages and sets up a connection with the Viam app.
 
-Next, create a file named <file>main.py</file> and paste the sample code from the **Code sample** page of the Viam app into your file.
+Next, create a file named <file>main.py</file> with the sample code from the **Code sample** page of the **CONNECT** tab.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.

@@ -74,7 +74,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
    - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by setting the attribute **arm-model** to `ur5e`.
      The config panel should look like this:
 
-     {{< imgproc src="/tutorials/build-a-mock-robot/create-arm.png" alt="A fake arm being configured in Builder mode in the Viam app CONFIGURE tab." resize="600x" >}}
+     {{< imgproc src="/tutorials/build-a-mock-robot/create-arm.png" alt="A fake arm being configured in Builder mode on the CONFIGURE tab." resize="600x" >}}
 
    - Click **Save** in the top right of the window to save your config.
 
@@ -91,9 +91,9 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
 You will need to reference the component names later when you connect to your mock robot with code.
 
-## Control your mock robot using the Viam app
+## Control your mock robot using the web UI
 
-When you add components to your machine, the Viam app automatically generates a UI for them under the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app):
+When you add components to your machine, Viam automatically generates a UI for them under the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app):
 
 {{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="600x" >}}
 
@@ -123,7 +123,7 @@ Navigate to your [machine's page](https://app.viam.com/robots), select the **Cod
 
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary libraries, is pre-populated with your machine cloud credentials, and sets up a connection with the Viam app in the cloud.
+This code snippet imports all the necessary libraries, is pre-populated with your machine cloud credentials, and sets up a connection with Viam in the cloud.
 Next, paste that sample code into a file named <file>index.py</file> or <file>index.go</file> in your code editor, and save your file locally.
 
 You can now run the code.

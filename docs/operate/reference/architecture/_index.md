@@ -99,7 +99,7 @@ If a WebRTC connection cannot be established, the request is sent directly over 
 When a built-in service communicates with a component, for example when the vision service requests an image from a camera, `viam-server` handles that request as well.
 
 When you control your machine or view its camera streams or sensor outputs from the **CONTROL** tab, those connections happen over WebRTC.
-The Viam app uses the same API endpoints as your SDK client code (in fact, it uses the Viam TypeScript SDK), with `viam-server` handling requests.
+The web UI uses the same API endpoints as your SDK client code (in fact, it uses the Viam TypeScript SDK), with `viam-server` handling requests.
 
 {{% alert title="Protobuf APIs" color="info" %}}
 All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
@@ -109,7 +109,7 @@ For more details, see [Machine-to-Machine Communication](/operate/reference/arch
 
 ### Security
 
-TLS certificates automatically provided by the Viam app ensure that all communication is authenticated and encrypted.
+TLS certificates automatically provided by Viam ensure that all communication is authenticated and encrypted.
 
 Viam uses API keys with [role-based access control (RBAC)](/manage/manage/rbac/) to control access to machines from client code.
 
@@ -137,18 +137,18 @@ For more information, see [Data management service](/data-ai/capture-data/captur
 ## Basic machine example
 
 <p>
-{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="width:400px" >}}
+{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is temporarily stored on a local folder until it is synced to Viam." style="width:400px" >}}
 </p>
 
 Imagine you have a simple device consisting of a temperature sensor connected to the GPIO pins of a single-board computer (SBC).
 You want to capture sensor data at regular intervals, and sync it to the cloud.
 Here is how this works in Viam:
 
-- You configure your machine in the Viam app with a sensor {{< glossary_tooltip term_id="component" text="component" >}} and the data management {{< glossary_tooltip term_id="service" text="service" >}}.
+- You configure your machine in the web UI with a sensor {{< glossary_tooltip term_id="component" text="component" >}} and the data management {{< glossary_tooltip term_id="service" text="service" >}}.
 - `viam-server` runs on the SBC, managing all communications between hardware and the cloud using gRPC over {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
-  On startup, `viam-server` uses credentials stored locally to establish a connection with the Viam app and fetches its configuration.
+  On startup, `viam-server` uses credentials stored locally to establish a connection with Viam and fetches its configuration.
 - Sensor data is cached in a local folder, then synced to the cloud at a configurable interval.
-- You can use the tools in the Viam app to remotely view sensor data as well as to change your machine's configuration, to view logs, and more.
+- You can use the tools on Viam to remotely view sensor data as well as to change your machine's configuration, to view logs, and more.
 
 Now imagine you want to run code to turn on a fan when the temperature sensor reads over 100 degrees Fahrenheit:
 
@@ -163,7 +163,7 @@ Now imagine you want to run code to turn on a fan when the temperature sensor re
 Now, imagine you want to change to a different model of temperature sensor from a different brand:
 
 - You power down your device, disconnect the old sensor from your SBC and connect the new one.
-- You update your configuration in the Viam app to indicate what model you are using, and how it's connected (imagine this one uses USB instead of GPIO pins).
+- You update your configuration in the web UI to indicate what model you are using, and how it's connected (imagine this one uses USB instead of GPIO pins).
 - You turn your device back on, and `viam-server` automatically fetches the config updates.
 - You do not need to change your control code, because the API is the same for all models of sensor.
 

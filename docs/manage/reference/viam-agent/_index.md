@@ -311,7 +311,7 @@ It's primarily useful for a machine that moves between different networks, so th
 To add additional networks add them using the JSON editor for your device's config in the Viam app.
 
 {{< alert title="Important" color="note" >}}
-Note that if you are using the Viam app to add networks to a machine's configuration, the machine will need to be connected to the internet to retrieve the configuration information containing the network credentials before it can use them.
+Note that if you are adding networks to a machine's configuration, the machine will need to be connected to the internet to retrieve the configuration information containing the network credentials before it can use them.
 {{< /alert >}}
 
 During provisioning, `viam-agent` will try to connect to each specified network in order of `priority` from highest to lowest.

@@ -389,10 +389,10 @@ viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123
 To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in the [Viam app](https://app.viam.com/).
 Find **Organization ID** and click the copy icon.
 
-To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
+To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) and copy the **Location ID**.
 
 To find the binary data ID of a given image, navigate to the [**DATA** tab](https://app.viam.com/data/view) and select your image.
 The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the right.
@@ -416,10 +416,10 @@ The following command adds `"new_tag_1"` and `"new_tag_2"` to all images of type
 viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
 ```
 
-To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab on the Viam app and select a dataset.
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
+To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) and copy from **Location ID**.
 
 ###### Copy `export` command
 
@@ -1472,7 +1472,7 @@ viam train list --org-id=123 --job-status=completed
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
 | `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |

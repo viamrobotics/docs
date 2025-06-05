@@ -71,7 +71,7 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
    {{<imgproc src="/get-started/test-panel.png" alt="Sensor test panel showing readings." resize="900x" style="width:400px" class="imgzoom shadow">}}
 
    If your component is not working as expected, check the **ERROR LOGS** panel for error messages.
-   You can also [read more troubleshooting tips](/manage/troubleshoot/troubleshoot/) or click **ASK AI** in the top right corner of the Viam app to get help from Viam's AI assistant.
+   You can also [read more troubleshooting tips](/manage/troubleshoot/troubleshoot/) or get help from Viam's AI assistant by clicking on the search bar.
 
 ### How module configuration works
 

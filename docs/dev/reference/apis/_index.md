@@ -40,7 +40,7 @@ Manage your machines: connect to your machine, retrieve status information, and 
 {{% /manualcard %}}
 {{% manualcard link="/dev/reference/apis/ml-training-client/" title="ML Training Client API" %}}
 
-Submit and manage ML training jobs running on the Viam app.
+Submit and manage ML training jobs running on Viam.
 
 {{% /manualcard %}}
 {{% manualcard link="/dev/reference/apis/billing-client/" title="Billing Client API" %}}

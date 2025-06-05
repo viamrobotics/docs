@@ -779,7 +779,7 @@ After uploading the training script, you can run it by submitting a training job
 **Create the training job**
 
 {{< tabs >}}
-{{% tab name="Viam app" min-height="150px" %}}
+{{% tab name="web UI" min-height="150px" %}}
 Navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train a model on.
 
 Click **Train model** and select **Train on a custom training script**, then follow the prompts.

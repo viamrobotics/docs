@@ -157,7 +157,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 {{% /tab %}}
 {{< /tabs >}}
 
-### Control your rover on the Viam app
+### Control your rover on Viam
 
 If you followed the instructions in the [Jetson installation guide](/operate/reference/prepare/jetson-nano-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 

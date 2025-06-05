@@ -684,7 +684,7 @@ Replace the path with the path to your image, for example `"/Users/jessamyt/Down
 {{% tablestep number=8 %}}
 Save the config, then click the **TEST** section of the camera's configuration card.
 
-{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The Viam app configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}
+{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}
 
 You should see your image displayed.
 If not, check the **LOGS** tab for errors.

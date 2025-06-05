@@ -24,7 +24,7 @@ toc_hide: true
 ---
 
 <!-- LEARNING GOALS
-After following this tutorial, you will know when to use a motor component and be able to configure a servo component and control it using the Viam app the Viam SDKs.
+After following this tutorial, you will know when to use a motor component and be able to configure a servo component and control it using Viam the Viam SDKs.
 
 Notes: Also point out that a reader can use fake components if they don't have real ones.-->
 
@@ -37,11 +37,11 @@ This tutorial will show you how to build a mouse mover using Viam, a Raspberry P
 This machine will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse.
 This will keep your computer from falling asleep.
 
-This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/operate/reference/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
+This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/operate/reference/components/servo/) with Viam and Viam's [Python SDK](https://python.viam.dev/).
 
 <div style="display:flex;" class="aligncenter">
 <div style="border:1px solid gray;">
-{{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle." max-width="600px" class="alignleft">}}
+{{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.mp4" alt="A computer mouse moving erratically" max-width="600px" class="alignleft">}}
 </div>
 <div style="width: 250px;">
 {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" alt="The servo mouse mover in action." class="alignright">}}
@@ -166,7 +166,7 @@ Once you have the wires connected, attach the wheel/arm to servo and turn on the
 
 ## Configure your robot
 
-The servo is now physically connected to the Raspberry Pi, but the Viam app hasn't been told the details of which components/services it's using yet, so it's not able to control the servo.
+The servo is now physically connected to the Raspberry Pi, but Viam is not yet configured with the components to use it, so it's not able to control the servo.
 
 Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIGURE** tab.
 
@@ -202,7 +202,7 @@ This is where you tell Viam which hardware pin to use to control the servo.
 
 The attribute section will look like this:
 
-{{<imgproc src="/tutorials/single-component-tutorials-servo-mousemover/servo-config.png" resize="1200x" style="width: 400px" declaredimensions=true alt="This is a screenshot of the Viam app on the Config page. This shows the options that populate when you create a servo with the pi Model. It shows attributes. 'Pin' is filled in with '12' and 'Board' is filled in with 'local'. Pin and board are required fields.">}}
+{{<imgproc src="/tutorials/single-component-tutorials-servo-mousemover/servo-config.png" resize="1200x" style="width: 400px" declaredimensions=true alt="The servo configuration panel It shows attributes. 'Pin' is filled in with '12' and 'Board' is filled in with 'local'. Pin and board are required fields.">}}
 
 Click the **Save** button in the upper right corner of the screen to save your config.
 
@@ -211,7 +211,7 @@ Click the **Save** button in the upper right corner of the screen to save your c
 If everything went well, the servo started to move.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.mp4" alt="Small square .gif of black and white frankenstein clip with man with brown hair in lab coat frantically looking around and yelling while text that says \"IT'S ALIVE! IT'S ALIVE!\" is on screen. There's a very tall man with something on his head on a table behind him and another man sitting on a chair behind the table." max-width="400px">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.mp4" alt="Black and white frankenstein clip with man with brown hair in lab coat frantically looking around and yelling while text that says \"IT'S ALIVE! IT'S ALIVE!\" is on screen. There's a very tall man with something on his head on a table behind him and another man sitting on a chair behind the table." max-width="400px">}}
 </div>
 
 Navigate to the **CONTROL** tab and press the **STOP** button on the servo card (matching what you named the servo) to stop the servo.

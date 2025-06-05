@@ -119,7 +119,7 @@ sudo apt install jackd qjackctl libpulse-dev pulseaudio
 
 This error can be safely ignored if you do not intend to use audio on your machine.
 
-## Common Viam App Errors
+## Common errors using the web UI
 
 ### Failed to connect; retrying
 

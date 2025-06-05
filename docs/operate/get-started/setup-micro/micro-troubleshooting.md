@@ -55,7 +55,7 @@ espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa
 
 Try the connection command again.
 The baud rate on your device may not have been fast enough to connect.
-If successful, the Viam app will show that your machine part's status is **Live**.
+If successful, Viam will show that your machine part's status is **Live**.
 
 You can also try disconnecting and reconnecting the ESP32 to the USB port, then retrying the flash command.
 

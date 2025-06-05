@@ -105,7 +105,7 @@ If not follow the steps for the standalone version.
 {{< /tabs >}}
 
 {{< alert title="Note" color="note" >}}
-Be aware that while your machine is not able to connect to Viam, any changes to the machine's configuration that you make in the Viam app will not reach your machine.
+Be aware that while your machine is not able to connect to Viam, any changes to the machine's configuration that you make in the web UI will not reach your machine.
 {{< /alert >}}
 
 ### Check for errors on the CONFIGURE page
@@ -256,7 +256,7 @@ It takes a few minutes for `viam-server` to shut down and restart.
 
 ## Revert to earlier configuration
 
-The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
+Viam keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
 To see the history of the configuration of a machine part, click on **History** on the **CONFIGURE** tab.
 
 {{<imgproc src="build/configure/history.png" resize="800x" declaredimensions=true alt="Configuration history for a machine part" class="shadow">}}

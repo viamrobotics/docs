@@ -264,7 +264,7 @@ If you are only using one air quality sensing machine for this tutorial, you do 
 You can skip to [Test your sensors](#test-your-sensors).
 {{% /alert %}}
 
-While you configured your machine with the builder UI, the Viam app generated a JSON configuration file with all your parameters.
+While you configured your machine with the builder UI, Viam generated a JSON configuration file with all your parameters.
 This is the file that tells `viam-server` what resources are available to it and how everything is connected.
 Click **JSON** in the upper-left corner of the **CONFIGURE** tab to view the generated JSON file.
 You can manually edit this file instead of using the builder UI if you are familiar with JSON.
@@ -413,7 +413,7 @@ The `--format=esm` flag in the `"start"` script is important because the ECMAScr
 If you don't know what the proceeding sentence means, don't worry about it; just copy-paste the JSON above and it'll work.
 {{% /alert %}}
 
-### Authenticate your code to your Viam app location
+### Authenticate your code to your location
 
 Your TypeScript code requires an API key to establish a connection to your machines.
 You can set up credentials to access data from all the sensor machines in your organization, or from just one location.

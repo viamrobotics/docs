@@ -63,7 +63,7 @@ Keep in mind:
 
    {{% alert title="Info" color="info" %}}
 
-The Viam app control interface uses the [arm API](/dev/reference/apis/components/arm/) to move the arm.
+The web UI uses the [arm API](/dev/reference/apis/components/arm/) to move the arm.
 You can also use the arm API to move the arm in code, though it is not recommended for complex movements because it does not take into account obstacles or allow for complex motion planning.
 
 {{% /alert %}}

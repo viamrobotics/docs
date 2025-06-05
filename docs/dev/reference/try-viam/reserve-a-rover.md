@@ -35,7 +35,7 @@ Once your reservation starts and the system has configured your rover, click **T
 
 {{<gif webm_src="/appendix/try-viam/rover-reservation.webm" mp4_src="/appendix/try-viam/rover-reservation.mp4" alt="Rover reservation management page" max-width="1000px">}}
 
-{{<imgproc src="appendix/try-viam/navigation-bar.png" resize="800x" alt="Navigation bar of the Viam app with the Viam Rover time remaining indicator.">}}
+{{<imgproc src="appendix/try-viam/navigation-bar.png" resize="800x" alt="Navigation bar with the Viam Rover time remaining indicator.">}}
 
 ### Limitations
 

@@ -433,7 +433,7 @@ You and your collaborators can edit a fragment at any time.
 Viam automatically creates new versions of your fragment as you make changes.
 Fragments can only be deleted if no machines are using them.
 
-If you've already deployed the fragment to one or more machines, the Viam app updates the configuration on each deployed machine that uses that fragment.
+If you've already deployed the fragment to one or more machines, Viam updates the configuration on each deployed machine that uses that fragment.
 You can see the number of machines using your fragment from the [fragments page](https://app.viam.com/fragments).
 
 {{< alert title="Test updates first" color="caution" >}}

@@ -563,7 +563,7 @@ In addition to the existing returned metadata, the [`GetCloudMetadata`](/dev/ref
 
 {{% /changelog %}}
 
-{{% changelog date="2024-04-16" color="improved" title="Viam app interface" %}}
+{{% changelog date="2024-04-16" color="improved" title="Viam web UI" %}}
 
 the [Viam app](https://app.viam.com) machine page UI has been updated significantly.
 In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
@@ -807,7 +807,7 @@ Arm models now support the [`GetKinematics` method](/dev/reference/apis/componen
 
 {{% changelog date="2023-06-30" color="added" title="View sensor data within Viam" %}}
 
-You can now [view your sensor data](https://app.viam.com/data/view?view=sensors) directly in the Viam app to verify data creation and accuracy.
+You can now [view your sensor data](https://app.viam.com/data/view?view=sensors) directly in the web UI to verify data creation and accuracy.
 If you depend on sensor data to plan and control machine operations, this feature increases access to data and supports a more efficient workflow.
 
 {{% /changelog %}}
@@ -1347,13 +1347,6 @@ You now have the option to reuse a machine config from a previous Try Viam sessi
 
 {{% /changelog %}}
 
-{{% changelog date="2023-02-28" color="added" title="Dynamic code samples" %}}
-
-The Viam app **Code sample** tab now dynamically updates as you add resources to your machine's config.
-The code samples instantiate each resource and include examples of how to call a `Get` method on it.
-
-{{% /changelog %}}
-
 {{% changelog date="2023-02-28" color="added" title="TypeScript SDK" %}}
 
 Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
@@ -1482,7 +1475,7 @@ A new [servo model called `gpio`](/operate/reference/components/servo/gpio/) sup
 
 {{% changelog date="2022-11-15" color="added" title="RTT indicator in the app" %}}
 
-A badge in the Viam app now displays RTT (round trip time) of a request from your client to the machine.
+A badge in the web UI now displays RTT (round trip time) of a request from your client to the machine.
 Find this indicator of the time to complete one request/response cycle on your machine's **CONTROL** tab, in the **Operations & Sessions** card.
 
 {{% /changelog %}}

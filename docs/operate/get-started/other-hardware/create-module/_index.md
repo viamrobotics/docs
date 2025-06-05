@@ -127,7 +127,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [How to design your module](./#how-to-design-your-module) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
-| Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the Viam app registry page; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
+| Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the registry; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
 
 {{< /expand >}}
 
@@ -709,7 +709,7 @@ For more information, run the command with the `-h` flag or see the [CLI documen
 
 `Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
 
-- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page in the Viam app and clicking **Part ID**.
+- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page and clicking **Part ID**.
 
 `Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
 

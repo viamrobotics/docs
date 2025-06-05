@@ -10,7 +10,7 @@ videos:
     "/tutorials/custom-base-dog/base-control-dog.webm",
     "/tutorials/custom-base-dog/base-control-dog.mp4",
   ]
-videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab on the Viam app open in a browser window."
+videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab"
 images: ["/tutorials/custom-base-dog/base-control-dog.gif"]
 aliases:
   - /tutorials/custom-base-dog/
@@ -38,7 +38,7 @@ Viam natively supports a wheeled base model, but if you have a quadruped or othe
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
-  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's control tab on the Viam app open in a browser window." max-width="400px">}}
+  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's control tab." max-width="400px">}}
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
@@ -379,7 +379,7 @@ Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
 Click **Save** at the top right of the page to save your config.
 
-![Screenshot of the Viam app Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
+![Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
 
 ## Configure the components
 

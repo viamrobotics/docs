@@ -4,7 +4,7 @@ linkTitle: "Default interface"
 titleMustBeLong: true
 weight: 30
 type: "docs"
-description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
+description: "Use the control tab or the Viam mobile app to monitor and remotely operate your machines."
 tags: ["teleop", "fleet management", "control", "app"]
 languages: []
 viamresources: ["sensor", "camera", "movement sensor"]

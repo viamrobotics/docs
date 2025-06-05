@@ -27,7 +27,7 @@ The following image shows an example of a configured modular resource, specifica
 This modular component is made available by the `ultrasonic` module.
 See [module configuration](#module-configuration-details).
 
-{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example in the Viam app builder UI." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -90,7 +90,7 @@ The following properties are available for modular resources:
 The following image shows an example of a configured module in a machine's config.
 This ultrasonic sensor in the previous section is provided by the [`ultrasonic` module](https://app.viam.com/module/viam/ultrasonic) shown here.
 
-{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example in the Viam app builder UI." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

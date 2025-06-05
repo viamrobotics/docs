@@ -36,7 +36,7 @@ See [capture sensor data](/data-ai/capture-data/capture-sync/) for more informat
 
 ### Query from the app
 
-Once your data has synced, you can query your data from within the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Once your data has synced, you can query your data from within web UI using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
 You must have the [owner role](/manage/manage/rbac/) in order to query data on Viam.
 

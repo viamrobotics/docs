@@ -61,13 +61,13 @@ Viam provides installers to flash an ESP32 from macOS or Linux running on the x8
 
 To get started quickly with the pre-built `viam-micro-server` binary, follow these steps:
 
-1. Create a [Viam app](https://app.viam.com) account.
-   The Viam app is the online hub for configuring and managing devices as well as viewing data.
+1. Create a Viam account on [app.viam.com](https://app.viam.com).
+   You can configure and manage devices and data collection in the web UI.
 
 1. Add a new _{{< glossary_tooltip term_id="machine" text="machine" >}}_ using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
-1. From your machine's page in the Viam app, click **View setup instructions** and follow the steps for your operating system.
+1. On your machine's page, click **View setup instructions** and follow the steps for your operating system.
    The app provides commands to install `viam-micro-server` and connect it to the cloud with your machine's unique credentials.
 
 1. A secure connection is automatically established between your machine and the Viam app.
@@ -381,7 +381,7 @@ To deploy the firmware:
    The assets include the full and OTA firmware images.
    Copy the URL of the OTA firmware image.
 
-1. Navigate to your machine's **CONFIGURE** tab in the Viam app and [configure the OTA service](#configure-over-the-air-updates) with the URL of the firmware image you just copied.
+1. Navigate to your machine's **CONFIGURE** tab and [configure the OTA service](#configure-over-the-air-updates) with the URL of the firmware image you just copied.
 
 {{% /tab %}}
 {{% tab name="Build locally and host manually" %}}

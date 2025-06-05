@@ -57,7 +57,7 @@ You only need the following:
 
 ## Instructions
 
-Follow these steps to get your rover ready inside the Viam app and write code to control it:
+Follow these steps to get your rover ready and write code to control it:
 
 {{< tabs >}}
 {{% tab name="Borrowed Try Viam Rover" %}}

@@ -74,13 +74,13 @@ You can make a multi-part machine by first configuring one part which is the "ma
 The main part will be able to access the resources of its sub-parts.
 Sub-parts will _not_ have access to the resources of the main part.
 
-The Viam app automatically creates the main part for you when you create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
+Viam automatically creates the main part for you when you create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 To add a new sub-part:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 2. Click the **+** (Create) icon next to the name of your main part, then click **Sub-part** from the menu:
 
-   {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the create part dropdown open." style="width:500px" class="shadow" >}}
+   {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The create part dropdown open." style="width:500px" class="shadow" >}}
 
 3. Save the config.
 
@@ -90,7 +90,7 @@ The sub-part will not be visible as a `remote` in the debug config until after y
 
 To rename or delete a sub-part, or to make it the main part, click the **...** menu:
 
-{{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The Viam app interface with the part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="width:500px" class="shadow" >}}
+{{<imgproc src="/build/configure/parts/part-mgmt.png" resize="x1100" declaredimensions=true alt="The part actions dropdown open. Options include rename, restart part, make main part, view setup instructions, view history, and delete part." style="width:500px" class="shadow" >}}
 
 By default, all sub-parts appear in the [frame system](/operate/reference/services/frame-system/) at the world origin.
 You can specify translations for sub-parts by configuring their frames with appropriate translation values relative to their parent frame.
