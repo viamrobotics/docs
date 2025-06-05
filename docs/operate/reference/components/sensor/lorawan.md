@@ -408,6 +408,14 @@ await node.doCommand({ set_interval: 300 });
 
 #### Calibrate the Dragino-WQS-LB water quality sensor
 
+{{% alert title="Info" color="info" %}}
+
+This example only works with the Dragino-WQS-LB sensor.
+
+{{% /alert %}}
+
+The following example shows how to send calibration commands to the Dragino-WQS-LB sensor:
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
