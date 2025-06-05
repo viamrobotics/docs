@@ -174,7 +174,7 @@ Click the **Save** button in the top right corner of the page to save your chang
 ## Control your robot using Viam
 
 When you configure your board component, Viam generates a control panel for it.
-Click the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to view the control panels for all your machine's components (in this case, just the board).
+Click the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui) to view the control panels for all your machine's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.

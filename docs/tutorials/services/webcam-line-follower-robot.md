@@ -181,7 +181,7 @@ Click **Save** in the top right corner of the screen.
 
 ## Test your components
 
-Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to test your components.
+Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that the part status dropdown (in the top banner) says, "Live."
 
 1. Go to the **CONTROL** tab, click on the base panel, and toggle the camera to on.
@@ -366,7 +366,7 @@ Click **Save** in the top right corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to test the transform camera.
+Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 

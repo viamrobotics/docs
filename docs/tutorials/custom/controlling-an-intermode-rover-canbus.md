@@ -318,7 +318,7 @@ For more information on modules and how they work, see the [Create a module](/op
 
 ### Control the rover
 
-After you configured the base, go to the [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) tab and expand the base component to view the controls to enable keyboard or discrete control over your machine's movement.
+After you configured the base, go to the [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) tab and expand the base component to view the controls to enable keyboard or discrete control over your machine's movement.
 
 {{< alert title="Caution" color="caution" >}}
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure your rover has sufficient space to drive around without hitting anyone or anything.

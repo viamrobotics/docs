@@ -93,7 +93,7 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the web UI
 
-When you add components to your machine, Viam automatically generates a UI for them under the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app):
+When you add components to your machine, Viam automatically generates a UI for them under the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui):
 
 {{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="600x" >}}
 

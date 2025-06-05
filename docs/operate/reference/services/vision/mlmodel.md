@@ -230,7 +230,7 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-You can test your detector or classifier from the [**Control tab**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) or with code using a camera that is part of your machine.
+You can test your detector or classifier from the [**Control tab**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) or with code using a camera that is part of your machine.
 
 #### Test your vision service
 

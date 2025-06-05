@@ -32,7 +32,7 @@ With a Raspberry Pi and some basic hardware, you can keep your plants healthy an
 Follow this tutorial to learn how to set up an automatic plant watering system:
 
 1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
-1. [Create and connect to the machine, and configure your machine's components](#configure-the-components-of-your-robot-in-the-viam-app).
+1. [Create and connect to the machine, and configure your machine's components](#configure-the-components-of-your-robot).
 1. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
 1. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 

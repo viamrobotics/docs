@@ -46,7 +46,7 @@ See <a href="/dev/reference/try-viam/reserve-a-rover//">detailed instructions</a
   <tr>
     <td>{{<imgproc src="/appendix/try-viam/try-viam-3.svg" class="fill alignright" style="width: 300px" declaredimensions=true alt="ALT">}}
       <b>3. Get started with Viam</b>
-      <p>Try a Viam Rover in our robotics lab. <a href="/manage/troubleshoot/teleoperate/default-interface/#viam-app">Drive</a> or <a href="/tutorials/control/drive-rover/">program</a> the rover to see how you can build a machine with Viam.</a></p>
+      <p>Try a Viam Rover in our robotics lab. <a href="/manage/troubleshoot/teleoperate/default-interface/#web-ui">Drive</a> or <a href="/tutorials/control/drive-rover/">program</a> the rover to see how you can build a machine with Viam.</a></p>
     </td>
   </tr>
 </table>

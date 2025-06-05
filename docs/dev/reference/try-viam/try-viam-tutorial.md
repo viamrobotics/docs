@@ -61,7 +61,7 @@ We recommend enabling both cameras so you can have a better sense of what's happ
 
 ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](appendix/try-viam/try-viam/enable-both-cameras.png)
 
-You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
+You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/manage/troubleshoot/teleoperate/default-interface/#web-ui).
 
 #### Movement control
 

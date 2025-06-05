@@ -91,7 +91,7 @@ You, as the organization owner, will be able to manage any necessary configurati
 ### Organize your fleet
 
 For this tutorial, we will walk through how to set up your fleet based on the example above.
-You can choose to manage your fleet of machines differently based on what makes sense for your use case; if you're only configuring one or two sensors for personal use, feel free to add all your machines to one location and skip to the [next section](#connect-your-machines-to-the-viam-app).
+You can choose to manage your fleet of machines differently based on what makes sense for your use case; if you're only configuring one or two sensors for personal use, feel free to add all your machines to one location and skip to the [next section](#connect-your-machines-to-viam).
 
 1. Create a Viam account and log into [Viam](https://app.viam.com).
 1. Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization for your air quality machine company.
@@ -364,7 +364,7 @@ The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web i
 For this project, you'll use it to build a page that displays air quality sensor data for a given location.
 You'll host the website locally on your personal computer, and view the interface in a web browser on that computer.
 
-As you'll find out in the [authentication step](#authenticate-your-code-to-your-viam-app-location), you can set each customer up with credentials to access the data from only their location, or you can create a dashboard showing data from all sensors in your entire organization.
+As you'll find out in the [authentication step](#authenticate-your-code-to-your-location), you can set each customer up with credentials to access the data from only their location, or you can create a dashboard showing data from all sensors in your entire organization.
 
 ![The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality.](/tutorials/air-quality-fleet/two-sensors.png)
 
