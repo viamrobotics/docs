@@ -24,7 +24,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `arm` type, then select the `model1` model.
 Enter a name or use the suggested name for your arm and click **Create**.
 
-{{< imgproc src="/components/component/model1-builder.png" alt="Creation of a `model1` arm  >}}
+{{< imgproc src="/components/component/model1-builder.png" alt="Creation of a `model1` arm"  >}}
 
 Edit and fill in the attributes as applicable.
 
