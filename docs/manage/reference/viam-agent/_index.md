@@ -19,7 +19,7 @@ Among other things, `viam-agent`:
 - Installs, runs, and monitors `viam-server` or a custom build of `viam-server`.
 - Provides tooling for device provisioning and network management.
 - Provides automatic updates for `viam-server` and the agent itself.
-- Allows control of deployed software versions through the Viam app.
+- Allows control of deployed software versions.
 - Provides various operating system settings.
 
 {{< alert title="Support notice" color="note" >}}
@@ -336,7 +336,7 @@ These log messages include `viam-server` stops and starts, the status of `viam-a
 {{< tabs >}}
 {{% tab name="App UI" %}}
 
-`viam-agent` writes log messages to the [Viam app](https://app.viam.com/).
+`viam-agent` writes log messages to Viam.
 
 `viam-agent` only sends messages when your machine is online and connected to the internet.
 If your machine is offline, log messages are queued and are sent to Viam once your machine reconnects to the internet.
@@ -345,7 +345,7 @@ Navigate to the **LOGS** tab of your machine's page.
 
 Select from the **Levels** dropdown menu to filter the logs by severity level:
 
-{{<imgproc src="/build/program/sdks/log-level-info.png" resize="600x" declaredimensions=true alt="Filtering by log level of info in the logs tab of the Viam app." class="shadow imgzoom">}}
+{{<imgproc src="/build/program/sdks/log-level-info.png" resize="600x" declaredimensions=true alt="Filtering by log level of info in the logs tab." class="shadow imgzoom">}}
 
 {{% /tab %}}
 {{% tab name="Command line on Linux" %}}

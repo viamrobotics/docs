@@ -409,7 +409,7 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
 
 1. Download the [robot line follower code](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).
 
-1. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **CONNECT** tab's **Code sample** page and select **Python**.
+1. From your robot’s page, go to the **CONNECT** tab's **Code sample** page and select **Python**.
 
    {{% snippet "show-secret.md" %}}
 

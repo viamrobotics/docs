@@ -30,7 +30,7 @@ The data client API allows you to upload and retrieve data to and from the Viam 
 
 The data client API supports the following methods:
 
-Methods to upload data like images or sensor readings directly to the [Viam app](https://app.viam.com):
+Methods to upload data like images or sensor readings directly to Viam:
 
 {{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
 

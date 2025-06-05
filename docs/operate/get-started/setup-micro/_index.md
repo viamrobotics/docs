@@ -70,7 +70,7 @@ To get started quickly with the pre-built `viam-micro-server` binary, follow the
 1. On your machine's page, click **View setup instructions** and follow the steps for your operating system.
    The app provides commands to install `viam-micro-server` and connect it to the cloud with your machine's unique credentials.
 
-1. A secure connection is automatically established between your machine and the Viam app.
+1. A secure connection is automatically established between your machine and Viam.
    When you update your machine's configuration, `viam-micro-server` automatically gets the updates.
 
    You are ready to [configure](#configure-and-test-your-machine) any of the components listed above on your machine.
@@ -142,14 +142,14 @@ Create firmware that integrates an existing module with the Micro-RDK:
 
 1. Create a new machine and obtain its credentials:
 
-   Navigate to the [Viam app](https://app.viam.com) and add a new machine.
+   Add a new machine on [Viam](https://app.viam.com).
    Click on the name of the machine to go to the machine's page, then select the **CONFIGURE** tab.
 
    Then select the part status dropdown to the right of your machine's name on the top of the page and copy the **Machine cloud credentials**:
 
    {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}
 
-   The Micro-RDK needs these credentials, which contain your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+   The Micro-RDK needs these credentials, which contain your machine part secret key and cloud app address, to connect to Viam.
 
 1. Generate a new project skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project):
 
@@ -237,7 +237,7 @@ Upload the generated firmware to your ESP32:
    If the flash is successful, you will retain a serial connection to the board until you press `Ctrl-C`.
    While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-1. Navigate to your new machine's page on the [Viam app](https://app.viam.com).
+1. Navigate to your new machine's page.
    If successful, the status indicator should turn green and show the **Live** status.
 
 ### Configure and test your machine

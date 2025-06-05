@@ -257,8 +257,7 @@ Add the following markup:
         We recommend you open the developer tools in your browser to see logs.
       </p>
       <p>
-        Also open a second window with the
-        <a href="https://app.viam.com">Viam app</a> and navigate to your rover's
+        Also open a second window with the your rover's
         <b>CONTROL</b> tab, which allows you to interact with your rover's
         resources. Click on one of the camera panels and toggle the camera
         stream on so you can observe the rover's movements.
@@ -967,8 +966,7 @@ func main() {
         We recommend you open the developer tools in your browser to see logs.
       </p>
       <p>
-        Also open a second window with the
-        <a href="https://app.viam.com">Viam app</a> and navigate to your rover's
+        Also open a second window and navigate to your rover's
         <b>CONTROL</b> tab, which allows you to interact with your rover's
         resources. Click on one of the camera panels and toggle the camera
         stream on so you can observe the rover's movements.

@@ -21,7 +21,7 @@ You can configure triggers to alert in the following scenarios:
 {{< tabs >}}
 {{% tab name="Builder mode" %}}
 
-1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
    {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow" >}}

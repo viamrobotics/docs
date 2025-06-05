@@ -123,8 +123,8 @@ This error can be safely ignored if you do not intend to use audio on your machi
 
 ### Failed to connect; retrying
 
-**Description:** the [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
-When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
+**Description:** Viam is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
+When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the web UI.
 
 **Solution:** Check the following to ensure your machine is accessible to Viam:
 

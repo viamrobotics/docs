@@ -64,7 +64,7 @@ Before starting this tutorial, you must:
 
 ## Configure your robot
 
-Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/operate/reference/services/frame-system/) configured.
+Use the same machine configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/operate/reference/components/arm/) and [gripper](/operate/reference/components/gripper/) components with [frames](/operate/reference/services/frame-system/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
@@ -72,7 +72,7 @@ The motion service is one of the "built-in" services, so you don't need to do an
 {{% expand "Click to see what your raw JSON config should look like." %}}
 
 If you completed the previous tutorial, your robot's configuration should match the following.
-You can view your robot configuration in the [Viam app](https://app.viam.com/) under the **CONFIGURE** tab by selecting **JSON** mode in the left-hand menu.
+You can view your machine configuration on the **CONFIGURE** tab by selecting **JSON** mode in the left-hand menu.
 
 If instead you create a new machine for this tutorial, copy and paste the following configuration into the **JSON** field:
 
@@ -221,7 +221,7 @@ The following diagram shows this, as well as the global coordinate system.
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup

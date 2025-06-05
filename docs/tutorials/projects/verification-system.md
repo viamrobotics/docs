@@ -94,7 +94,7 @@ The [ML model service](/data-ai/ai/deploy/) allows you to deploy a machine learn
 For your machine to be able to detect people, you will use a Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
 
-1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
+1. Navigate to your machine's **CONFIGURE** tab.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 3. Select type `ML model`, then select model `TFLite CPU`.
 4. Enter `persondetect` as the name for your ML model service, then click **Create**.
@@ -103,7 +103,7 @@ The model can detect a variety of things which you can see in <file>[labels.txt]
 
 Finally, configure an `mlmodel` detector vision service to use your new `"persondetect"` ML model:
 
-1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
+1. Navigate to your machine's **CONFIGURE** tab.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 3. Select the `vision` type, then select the `ML model` model.
 4. Give the detector the name `people-detect` and click **Create**.
@@ -120,7 +120,7 @@ To create your own model, capture images of a variety of people using your camer
 
 To capture training images:
 
-1. Navigate to your machine’s page in the [Viam app](https://app.viam.com/robots).
+1. Navigate to your machine’s page.
 1. Select the **CONFIGURE** tab.
 1. In the left-hand menu, click the **+** icon next to your machine part, then select **Component or service** from the context menu.
 1. Select the Viam `data management` service type.
@@ -178,7 +178,7 @@ Then, train a new model using that model:
 
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 
-1. Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/Machines).
+1. Navigate to your machine's **CONFIGURE** tab.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `vision` type, then select the `ML model` model.
 1. Give the detector the name `people-detect` and click **Create**.

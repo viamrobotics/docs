@@ -89,7 +89,7 @@ If you want to add some other high-level software functionality beyond the built
 Viam uses peer-to-peer communication, where all machines running `viam-server` or [`viam-micro-server`](/operate/reference/viam-micro-server/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
 This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/operate/reference/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
 
-On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
+On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with Viam.
 `viam-server` pulls its configuration from the app, caches it locally, and initializes all components and services based on that configuration.
 
 If [sub-parts or remote parts](#complex-machines-with-multiple-parts) are configured, communications are established between the `viam-server` instances on each of them.

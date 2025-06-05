@@ -190,7 +190,7 @@ await control_logic.do_command({"action": "start"})
 await control_logic.do_command({"action": "stop"})
 ```
 
-## Start and stop your control logic with the Viam app
+## Start and stop your control logic from the web UI
 
 You can start and stop your control logic from your machine's **CONTROL** tab:
 

@@ -147,7 +147,7 @@ This is the approach this tutorial follows: you'll run the [motion planning serv
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
 {{< /alert >}}
 
-Use the parts dropdown menu in the top banner of your machine’s page on the [Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
+Use the parts dropdown menu in the top banner of your machine’s page to add a new sub-part called `planning`:
 
 <p>
 {{<imgproc src="/tutorials/claw-game/app-planning.png" resize="500x" declaredimensions=true alt="UI for adding a sub part named planning." class="aligncenter">}}
@@ -926,7 +926,7 @@ async function grab(boardClient: BoardClient) {
 In this tutorial, you learned how to:
 
 - Make your own claw machine.
-- Test, configure, and control a robot arm using Viam’s [motion service](/operate/reference/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and the [Viam app](https://app.viam.com).
+- Test, configure, and control a robot arm using Viam’s [motion service](/operate/reference/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and the [web UI](https://app.viam.com).
 - Design your own custom interface using the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 For some next steps, you could:

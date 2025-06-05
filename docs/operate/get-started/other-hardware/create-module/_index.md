@@ -578,7 +578,7 @@ In order to see debug logs when using your modular resource, you'll need to run 
 ## Test your module locally
 
 It's a good idea to test your module locally before uploading it to the [registry](https://app.viam.com/registry).
-You'll configure it through the Viam app, but the configured module will consist of local files.
+You can configure it in the web UI using the local files on your machine.
 
 {{% expand "Prerequisite: A running machine connected to Viam." %}}
 
@@ -857,7 +857,7 @@ It's quite helpful to create a README to document what your module does and how 
 This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `jessamy:weather:meteo_PM` model.
 With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** button, select **Component or service**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
 Click **Add module**, enter a name for your sensor, and click **Create**.
 

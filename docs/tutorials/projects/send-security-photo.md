@@ -49,7 +49,7 @@ You will use the following software in this tutorial:
 - A Gmail account to send emails.
   You can use an existing account, or create a new one.
 
-## Configure your machine on the Viam app
+## Configure your machine
 
 ### Install `viam-server` and connect to your machine
 
@@ -60,7 +60,7 @@ You will use the following software in this tutorial:
 Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from your camera:
 
 1. Navigate to your machine's page.
-   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
+   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.
 
 2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing "webcam" and select **camera / webcam**.
@@ -257,11 +257,11 @@ If a person is detected, your robot will print `sending a message`, take a photo
 
 Then it will create a `yagmail.SMTP` instance to send the email and send the email.
 
-### Connect the code to the robot
+### Connect the code to the machine
 
 You need to tell the code how to access your specific machine (which in this case represents your computer and its webcam).
 
-Navigate to the **CONNECT** tab on the Viam app.
+Navigate to the machine's **CONNECT** tab.
 Make sure Python is selected in the Language selector.
 Get the machine address from the top of the **Code Sample** page and an API key and API key ID from the **API keys** page and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
 

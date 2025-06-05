@@ -73,7 +73,7 @@ To create a [color detector vision service](/dev/reference/apis/services/vision/
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **CONFIGURE** tab.
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `vision` type, then select the `color detector` model.
 Enter `my_color_detector` as the name for your service and click **Create**.
@@ -156,7 +156,7 @@ Next, go to the **Code sample** page of the **CONNECT** tab on your [machine pag
 
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary packages and sets up a connection with the Viam app.
+This code snippet imports all the necessary packages and sets up a connection with Viam.
 
 Next, create a file named <file>main.py</file> with the sample code from the **Code sample** page of the **CONNECT** tab.
 Then, save your file.

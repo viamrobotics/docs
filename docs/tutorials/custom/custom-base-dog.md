@@ -31,7 +31,7 @@ After following this tutorial, you will know about Viam's modules and be able to
 Consider if can be merged with intermode rover one to create more generalized guidance.
  -->
 
-The [base component type](/operate/reference/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
+The [base component type](/operate/reference/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the machine's **CONTROL** tab.
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 
@@ -261,7 +261,7 @@ The CLI module generator generates the files for your modular resource.
    It's a good idea to use the same names, aside from the namespace.
    That way your code will match the example code.
 
-   You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
+   You can use a different model name, module namespace, and module name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base.
 
 3. Hit your Enter key and the generator will generate a folder called <file>robotdog</file> containing stub files for your modular base component.
 
@@ -487,7 +487,7 @@ Depending on the speed of your server connection, you may need to hold down the 
 
 ## Next steps
 
-In this tutorial you learned how to implement a custom component model and control it using the Viam app.
+In this tutorial you learned how to implement a custom component model and control it.
 You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 

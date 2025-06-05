@@ -199,7 +199,7 @@ Use **Builder mode** to create a trigger:
 {{< table >}}
 {{< tablestep number=1 >}}
 
-Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+Go to the **CONFIGURE** tab of your machine.
 Click the **+** (Create) button in the left side menu and select **Trigger**.
 
 {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options.">}}
@@ -346,7 +346,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 {{< tabs >}}
 {{% tab name="Builder mode" %}}
 
-1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
    {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
@@ -406,7 +406,7 @@ For more information about triggers, see [Trigger configuration](/data-ai/refere
 {{< tabs >}}
 {{% tab name="Builder mode" %}}
 
-1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
    {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}

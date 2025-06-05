@@ -93,8 +93,7 @@ You, as the organization owner, will be able to manage any necessary configurati
 For this tutorial, we will walk through how to set up your fleet based on the example above.
 You can choose to manage your fleet of machines differently based on what makes sense for your use case; if you're only configuring one or two sensors for personal use, feel free to add all your machines to one location and skip to the [next section](#connect-your-machines-to-the-viam-app).
 
-1. Navigate to the [Viam app](https://app.viam.com) in a web browser.
-   Create an account and log in.
+1. Create a Viam account and log into [Viam](https://app.viam.com).
 1. Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization for your air quality machine company.
    Name the organization and click **Create**.
 1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
@@ -302,7 +301,7 @@ Add the fragment you just created to each of your machines including the first o
 Now that all your hardware is configured, it's a good idea to make sure readings are being gathered by the sensors and sent to the cloud before proceeding with the tutorial.
 For each machine:
 
-1. Go to the machine details page in the [Viam app](https://app.viam.com.) and navigate to the **CONTROL** tab.
+1. Go to the machine details page and navigate to the **CONTROL** tab.
 2. Within the **Sensors** section, click **Get Readings** for the **PM_sensor**.
    If the sensor software and hardware is working, you should see values populate the **Readings** column.
 

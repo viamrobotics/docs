@@ -627,7 +627,7 @@ viam module build local
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
 
-Make sure your machine's instance of `viam-server` is live and connected to the [Viam app](https://app.viam.com).
+Make sure your machine's instance of `viam-server` is live and connected to Viam.
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}

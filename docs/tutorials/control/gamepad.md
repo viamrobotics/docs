@@ -37,7 +37,7 @@ After following this tutorial, you will be able to use the input controller comp
 
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/operate/reference/components/base/) on the [Viam app](https://app.viam.com/).
+- A wheeled rover, configured with a [base component](/operate/reference/components/base/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a Yahboom 4WD Smart Robot or an entirely different rover.
   - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
 - [EasySMX ESM-9101 Wireless Controller](https://www.amazon.com/Wireless-Controller-EasySMX-ESM-9101-Gamepad/dp/B07F1NLGW2?th=1) or a similar gamepad and dongle.
@@ -83,7 +83,7 @@ If you would like a stronger understanding of `bluetoothctl` and managing Blueto
 
 ## Add the controller to the rover's config
 
-Go to your rover's **CONFIGURE** tab on the [Viam app](https://app.viam.com/).
+Go to your rover's **CONFIGURE** tab.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

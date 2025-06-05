@@ -96,14 +96,14 @@ To verify and get the version of the package, you can run the command:
 pip3 --version
 ```
 
-The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate robots using Viam.
+The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate machines using Viam.
 To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install viam-sdk
 ```
 
-## Test the SDK with your robot
+## Test the SDK with your machine
 
 On your machine's page, select the **CONNECT** tab, then select **Python** as your language.
 
@@ -147,7 +147,7 @@ python3 anyname.py
 
 ![The output of the code showing a list of the resources.](/tutorials/single-component-tutorials-servo-mousemover/resources-printed.png)
 
-There are no errors in the resources above, so we have confirmed a good software connection between the Python SDK and your Viam robot!
+There are no errors in the resources above, so we have confirmed a good software connection between the Python SDK and your machine!
 
 ## Connect the servo
 
@@ -164,7 +164,7 @@ Now, follow this schematic diagram to attach jumper wires to the servo and Raspb
 
 Once you have the wires connected, attach the wheel/arm to servo and turn on the Raspberry Pi.
 
-## Configure your robot
+## Configure your machine
 
 The servo is now physically connected to the Raspberry Pi, but Viam is not yet configured with the components to use it, so it's not able to control the servo.
 
@@ -280,11 +280,11 @@ Add "baby gates" or rails to keep the mouse from wandering off if it catches som
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.mp4" alt="This is sped up gif showing a person plugging in the power cable to the raspberry pi through the power hole made earlier, then pushing the rocker switch to turn it on. When the Raspberry Pi is turned on, the circle turns for a millisecond. Then they draw a swirl design on the circle. Then they make the circle spin and put a mouse on it and it falls off immediately. The next thing they do is they put cardboard on two sides of the box and at the end, they place the mouse on top.">}}
 </div>
 
-### Control your robot with code
+### Control your machine with code
 
 Copy the code from the [mousemover GitHub repository](https://github.com/viam-labs/tutorial-mousemover) into your nano file, save it, and run it.
 
-The code uses the Python SDK to securely connect to your robot through Viam app.
+The code uses the Python SDK to securely connect to your machine.
 Then, it enters a for loop in which **position** tells us the servo to move to positions (angles) between 80 and 93 degrees as specified in the **sequence** list.
 The code uses **pause_time** to wait for a random amount of time between 5 and 20 seconds to stay at that position.
 
@@ -294,7 +294,7 @@ Experiment and have fun.
 
 ## Next steps
 
-If you want to build more robots, take a look at our other [tutorials](/tutorials/).
+If you want to build more machines, take a look at our other [tutorials](/tutorials/).
 And if you didn't like this tutorial and would like to speak to my manager, their name is
 {{<imgproc src="/tutorials/single-component-tutorials-servo-mousemover/censor.jpg" resize="70x" style="width:50px;" declaredimensions=true alt="Fuzzy box meant to censor text.">}} (Update: apparently that's a big no no.)
 

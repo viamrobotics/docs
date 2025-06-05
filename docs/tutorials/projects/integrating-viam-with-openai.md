@@ -365,7 +365,7 @@ Save your config by selecting the **Save** button in the top-right corner of the
 {{% tab name="JSON Template" %}}
 
 Select **JSON** mode.
-Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from [the Viam app's Modular Registry](https://app.viam.com/registry):
+Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from the [registry](https://app.viam.com/registry):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

@@ -613,7 +613,7 @@ You can now use the [generic service](/operate/reference/components/generic/) to
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
 You can now upload [machine learning (ML) models](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) to the Viam Registry, in addition to modules.
-You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
+You may upload models you have trained yourself using Viam, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
 {{% /changelog %}}
@@ -870,7 +870,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train a TFlite object detection models](/data-ai/ai/train-tflite/) in addition to image classification models from within the Viam app.
+You now have the capability to directly [train a TFlite object detection models](/data-ai/ai/train-tflite/).
 
 This update allows you to:
 
@@ -1368,7 +1368,7 @@ Find more information in the [`viam-micro-server` docs](/operate/reference/viam-
 
 {{% changelog date="2023-01-31" color="added" title="Remote control power input" %}}
 
-On your machine's **CONTROL** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/operate/reference/components/base/).
+On your machine's **CONTROL** tab, you can now set the power of a [base](/operate/reference/components/base/).
 The base control UI previously always sent 100% power to the base's motors.
 
 {{% /changelog %}}
@@ -1399,7 +1399,7 @@ You can now implement your own custom {{< glossary_tooltip term_id="resource" te
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
-All users need to update to the latest version of the RDK (V3.0.0) to access machines using the Viam app.
+All users need to update to the latest version of the RDK (V3.0.0) to access machines using the web UI.
 
 {{% /alert %}}
 

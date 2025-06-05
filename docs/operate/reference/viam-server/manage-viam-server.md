@@ -175,7 +175,7 @@ Follow the manual steps to update the standalone version.
 {{% tab name="Installed with viam-agent" %}}
 
 By default, `viam-agent` automatically upgrades to the latest stable version of `viam-server`.
-You can change this behavior in the [`version_control` settings of your machine](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/).
+You can change this behavior in the [`version_control` settings of your machine](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server).
 For example, the following `version_control` configuration will always update to the latest stable release of `viam-agent` and the latest development release of `viam-server`:
 
 ```json {class="line-numbers linkable-line-numbers" data-line=""}
@@ -235,7 +235,7 @@ We recommend running `brew upgrade viam-server` on a regular basis.
 {{< tabs >}}
 {{% tab name="Installed with viam-agent" %}}
 
-To disable automatic updates, configure the [`version_control` settings of your machine](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) in the [Viam app](https://app.viam.com/) to a specific version number.
+To disable automatic updates, configure the [`version_control` settings of your machine](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server) to a specific version number.
 For example, the following `version_control` configuration pins `viam-server` to version `0.52.1`, preventing `viam-server` from updating to a more recent version:
 
 ```json {class="line-numbers linkable-line-numbers" data-line=""}
@@ -281,7 +281,7 @@ To resume automatic update checking, delete the leading `#` character in <file>/
 Use the following commands to view these log messages locally on your system.
 
 {{< alert title="Tip" color="tip" >}}
-If your system is able to connect with the Viam app, you can also view logs in the **LOGS** tab on the [Viam app](https://app.viam.com/).
+If your system is able to connect to Viam, you can also view logs in the **LOGS** tab.
 {{< /alert >}}
 
 Select the tab below for your platform:

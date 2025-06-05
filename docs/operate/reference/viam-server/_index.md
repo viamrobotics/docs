@@ -275,13 +275,13 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-webprofile` | Include profiler in HTTP server. |
 | `-webrtc` | Force WebRTC connections instead of direct connections. Default: `true`. |
 
-## Install `viam-server` without the Viam app
+## Install `viam-server` without the web UI
 
 {{% alert title="Tip" color="tip" %}}
 The recommended way to install `viam-server` and connect your machine to Viam is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
 {{% /alert %}}
 
-If you need to install `viam-server` without using the Viam app, you can run the following commands.
+If you need to install `viam-server` without the web UI, you can run the following commands.
 
 {{< tabs >}}
 {{% tab name="Linux (Aarch64)" %}}

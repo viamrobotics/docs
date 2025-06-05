@@ -43,7 +43,7 @@ As you work through this project you will learn the following:
 
 You do not need any hardware for this tutorial other than a computer running macOS or a 64-bit Linux operating system.
 
-This tutorial assumes you already have a machine [configured](/operate/get-started/setup/) on the [Viam app](https://app.viam.com).
+This tutorial assumes you already have a machine [configured](/operate/get-started/setup/).
 
 ## Set up your Flutter development environment
 
@@ -391,7 +391,7 @@ Follow the steps below to get your API key and create an environment variables f
    API_KEY="PASTE YOUR API KEY HERE"
    ```
 
-2. Go to the [Viam app](https://app.viam.com) and log in.
+2. Log into [Viam](https://app.viam.com).
 
 3. Click the organization dropdown menu on the right side of the top banner.
    If you're not already in the organization you want to connect to, click the correct organization name to navigate to it.

@@ -13,7 +13,7 @@ date: "2024-09-16"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com).
+The ML training API allows you to get information about and cancel ML training jobs running on Viam.
 
 {{% alert title="Support Notice" color="note" %}}
 

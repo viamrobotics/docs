@@ -69,7 +69,7 @@ If you get the error `viam.json not found` try the following to manually add you
    {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}
 
 1. Click the copy icon underneath **Machine cloud credentials**.
-   The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+   The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to Viam.
 1. Navigate to the directory of the project you just created.
 1. Create a new <file>viam.json</file> file and paste the machine cloud credentials in.
 1. Save the file.

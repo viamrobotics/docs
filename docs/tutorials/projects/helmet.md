@@ -85,7 +85,7 @@ Then, make sure your computer (whether it's a personal computer or an SBC) is co
 Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from the camera:
 
 1. Navigate to your machine's page.
-   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
+   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.
 
 2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing "webcam" and select **camera / webcam**.
@@ -330,7 +330,7 @@ The following code is adapted from that example.
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
         <a href="https://app.viam.com/data/view?view=images">\
-        the DATA tab</a of the Viam app>.'
+        the DATA tab</a>.'
     )
 
        # Get a JSON-ready representation of the Mail object
@@ -383,7 +383,7 @@ def email(request):
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
         <a href="https://app.viam.com/data/view?view=images">\
-        the DATA tab</a of the Viam app>.'
+        the DATA tab</a>.'
     )
 
     # Get a JSON-ready representation of the Mail object
@@ -422,7 +422,7 @@ Now you can test the script:
 Now it's time to configure a trigger so that you get an email when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the trigger to trigger each time an image is synced to the cloud will produce the desired result.
 
-Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+Go to the **CONFIGURE** tab of your machine.
 Click the **+** (Create) button in the left side menu and select **Trigger**.
 
 Name the trigger and click **Create**.
