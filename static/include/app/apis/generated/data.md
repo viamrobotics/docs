@@ -241,7 +241,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### TabularDataByFilter
 
-Retrieve optionally filtered tabular data from the [Viam app](https://app.viam.com).
+Retrieve optionally filtered tabular data from the Viam.
 You can also find your tabular data under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
@@ -583,7 +583,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### BinaryDataByFilter
 
-Retrieve optionally filtered binary data from the [Viam app](https://app.viam.com).
+Retrieve optionally filtered binary data from the Viam.
 You can also find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
 
 {{< tabs >}}

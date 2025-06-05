@@ -52,7 +52,7 @@ After start-up, `viam-server` manages:
 
 ### Reconfiguration
 
-When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
+When you or your collaborators change the configuration of a machine, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running machine.
 
 Reconfiguration of individual resources happens concurrently if there are no configured dependencies for any resources.

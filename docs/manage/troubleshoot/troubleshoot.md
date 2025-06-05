@@ -21,7 +21,7 @@ For common errors see [Common Errors](/dev/tools/common-errors/).
 
 ### Machine shows as offline
 
-If your machine shows as offline in the Viam app, restart `viam-server` by running the command to start `viam-server` and adding the `-debug` option.
+If your machine shows as offline on Viam, restart `viam-server` by running the command to start `viam-server` and adding the `-debug` option.
 
 To do this, you will need to know if you installed `viam-server` with `viam-agent` (most common) or manually.
 You can check this by seeing if `viam-agent` is running.
@@ -96,7 +96,7 @@ If not follow the steps for the standalone version.
    viam-server -config ~/Downloads/viam.json -debug
    ```
 
-   You can check the exact command by consulting the setup instructions for your machine in the Viam app.
+   You can check the exact command by consulting the setup instructions for your machine.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -116,7 +116,7 @@ The expanded panel shows you errors produced by that resource.
 
 ### Check logs on the LOGS tab
 
-If your machine shows as online in the Viam app, go to the **LOGS** tab and check for errors or other information relevant to the issue.
+If your machine shows as online, go to the **LOGS** tab and check for errors or other information relevant to the issue.
 
 {{<gif webm_src="/fleet/log-filtering.webm" mp4_src="/fleet/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
@@ -184,7 +184,7 @@ The process will dump a stack trace, visible in the `viam-server` logs, that sho
 
 To verify if a module has successfully started, check the machine logs for specific startup messages:
 
-1. Go to your machine's **LOGS** tab in the [Viam app](https://app.viam.com).
+1. Go to your machine's **LOGS** tab.
 
 1. Look for log messages related to your module.
 1. You can filter the logs by typing the module name in the search box to focus only on messages related to your specific module.
@@ -245,7 +245,7 @@ To remotely access your machine from your terminal:
 
 ## Restart your machine
 
-1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's page.
 1. Select the part status dropdown to the right of your machine's name on the top of the page.
    {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
 1. If you installed `viam-server` with `viam-agent` you will see a **Restart** button. Click it.

@@ -63,7 +63,7 @@ You can also try disconnecting and reconnecting the ESP32 to the USB port, then 
 
 If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
 
-1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+1. Navigate to your machine's page and select the **CONFIGURE** tab.
 1. Select the part status dropdown to the right of your machine's name on the top of the page:
 
    {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}

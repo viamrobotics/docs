@@ -157,7 +157,7 @@ Follow the instructions on the **Setup** tab to install `viam-server` on your de
 
 For more information about parts, see [Machine Architecture: Parts](/operate/reference/architecture/parts/).
 
-Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
+Now you are ready to configure the individual components.
 Navigate to the **Config** tab of your machine's page and select your main part from the parts dropdown.
 
 ### Configure the board
@@ -447,7 +447,7 @@ See the [frame system documentation](/operate/reference/services/frame-system/) 
 
 ### Find the home pose within the enclosure
 
-By moving the arm through the **Control** tab in the [Viam app](https://app.viam.com), you can determine the arm's ideal home pose, which is the position the arm starts each game and the one it returns to after making a grab.
+By moving the arm through the **Control** tab, you can determine the arm's ideal home pose, which is the position the arm starts each game and the one it returns to after making a grab.
 
 You can also determine the desired distance between the lateral plane and the pick up level, which is how you determine how far to drop the grabber.
 
@@ -817,7 +817,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your machine's location secret and host address by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com).
+1. Determine your machine's location secret and host address by navigating to the **CONNECT** tab.
    Use the host address of your main machine part, as it will reference all parts of your machine.
 
    {{% snippet "show-secret.md" %}}

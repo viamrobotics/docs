@@ -38,7 +38,7 @@ This page provides an overview of how a machine is structured, including on-devi
 
 When `viam-server` can connect to the cloud, it also:
 
-- Automatically pulls configuration updates you make in the Viam app
+- Automatically pulls configuration updates you make
 - Gets new versions of software packages
 - Uploads and syncs image and sensor data
 - Handles requests from client code you write with [SDKs](/dev/reference/sdks/)
@@ -121,7 +121,7 @@ Viam uses API keys with [role-based access control (RBAC)](/manage/manage/rbac/)
 Data is captured and synced to the Viam Cloud as follows:
 
 1. Data collected by your resources, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
-   You control what data to capture, how often to capture it, and where to store it using the configuration in the Viam app.
+   You control what data to capture, how often to capture it, and where to store it using the configuration.
 
    - You can also sync data from other sources by putting it into folders you specify.
      <br><br>

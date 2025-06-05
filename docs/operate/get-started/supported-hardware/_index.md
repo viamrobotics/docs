@@ -34,7 +34,7 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 The [registry](https://app.viam.com/registry?type=Module) is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
 
 Some components are supported by drivers built into `viam-server`, so you won't find them in the registry page.
-You can browse all built-in and modular registry components below or on your machine's configuration page in the Viam app.
+You can browse all built-in and modular registry components below or on your machine's configuration page.
 
 There are also modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add software functionality such as a chatbot integration.
 
@@ -45,10 +45,10 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
 **Prerequisite:** A machine with [`viam-server` installed and connected to the cloud](/operate/get-started/setup/).
 
 1. Make sure your hardware is physically connected to your machine and powered on.
-1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's page.
 1. Click the **+** button on your machine's **CONFIGURE** tab.
 
-   {{<imgproc src="/get-started/plus-button.png" alt="Create a resource button in the Viam app." resize="600x" style="width:350px" class="imgzoom shadow">}}
+   {{<imgproc src="/get-started/plus-button.png" alt="Create a resource button." resize="600x" style="width:350px" class="imgzoom shadow">}}
 
 1. Click **Component or service**.
    This opens a search menu for all existing hardware and software drivers.
@@ -56,7 +56,7 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
    Search by name, model number, or manufacturer name.
    Or try searching by broader category, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
 
-   {{<imgproc src="/get-started/component-search.png" alt="Component search results in the Viam app." resize="600x" style="width:260px" class="imgzoom shadow">}}
+   {{<imgproc src="/get-started/component-search.png" alt="Component search results." resize="600x" style="width:260px" class="imgzoom shadow">}}
 
    You can also browse the components in the [Browse supported hardware by component API](#browse-supported-hardware-by-component-api) section below.
 

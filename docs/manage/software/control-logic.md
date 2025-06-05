@@ -41,7 +41,7 @@ Then, [configure any hardware and software resources](/operate/get-started/suppo
    - Module name: Your choice, for example `my-control-logic`
    - Language: Your choice
    - Visibility: `Private`
-   - Namespace/Organization ID: In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+   - Namespace/Organization ID: Navigate to your organization settings through the menu in upper right corner of the page.
      Find the **Public namespace** and copy that string.
      In the example snippets below, the namespace is `naomi`.
    - Resource to be added to the module: `Generic Component`.
@@ -165,7 +165,7 @@ If you are not using GitHub or cloud build, see [Upload your module](/operate/ge
 
 ## Deploy your control logic
 
-1. In the [Viam app](https://app.viam.com), navigate to the machine you want to deploy your control logic to.
+1. Navigate to the machine you want to deploy your control logic to.
 1. Go to the **CONFIGURE** tab.
 1. Click the **+** button.
 1. Click **Component or service** and select your control logic component.
@@ -192,7 +192,7 @@ await control_logic.do_command({"action": "stop"})
 
 ## Start and stop your control logic with the Viam app
 
-You can start and stop your control logic from your machine's **CONTROL** tab in the Viam app:
+You can start and stop your control logic from your machine's **CONTROL** tab:
 
 {{<imgproc src="/components/generic/generic-control.png" alt="The generic component in the test panel." resize="900x" style="width:500px" class="imgzoom shadow">}}<br>
 

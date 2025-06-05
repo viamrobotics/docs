@@ -37,7 +37,7 @@ There are two ways to link machine parts:
    You set up each of the single-board computers as a sub-part.
    This allows the main part to access all the camera streams and run object detection on all of them.<br><br>
    You could also set this up with each single-board computer being a remote part instead of a sub-part, but it is slightly easier to configure sub-parts because you do not need to add the address of each part to your machine's config.
-   Additionally, configuring a discrete system of parts as one multi-part machine helps keep your fleet more clearly organized in the Viam app.
+   Additionally, configuring a discrete system of parts as one multi-part machine helps keep your fleet more clearly organized.
   </details><br>
 
 - **Remote part**: To connect multiple computers that are parts of _different machines_ in the same or different organizations, [add one machine part as a remote part of the other machine or machines](#configure-a-remote-part).
@@ -64,7 +64,7 @@ To copy the ID of your machine part, select the part status dropdown to the righ
 
 For example:
 
-{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed in the Viam app.">}}
+{{<imgproc src="/build/program/data-client/grab-part-id.png" resize="1000x" class="shadow imgzoom" style="width: 500px" declaredimensions=true alt="Part ID displayed.">}}
 
 ## Configuration
 
@@ -77,7 +77,7 @@ Sub-parts will _not_ have access to the resources of the main part.
 Viam automatically creates the main part for you when you create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 To add a new sub-part:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 2. Click the **+** (Create) icon next to the name of your main part, then click **Sub-part** from the menu:
 
    {{<imgproc src="/build/configure/parts/sub-part-config.png" resize="x1100" declaredimensions=true alt="The create part dropdown open." style="width:500px" class="shadow" >}}

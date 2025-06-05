@@ -48,7 +48,7 @@ Then, configure the service:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `navigation` type.
 Enter a name or use the suggested name for your service and click **Create**.
@@ -177,7 +177,7 @@ To make sure your rover base's autonomous GPS navigation with the navigation ser
 
 Add [reference frames](/operate/reference/services/frame-system/#configuration) to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/) configurations:
 
-- Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+- Navigate to the **CONFIGURE** tab of your machine's page.
 - Find your base configuration card and click **+ Add Frame**.
 - Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 
@@ -225,11 +225,11 @@ The [navigation service API](/dev/reference/apis/services/navigation/) supports 
 
 ## Control tab usage
 
-After configuring the navigation service for your machine, navigate to the **CONTROL** tab of the machine's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
+After configuring the navigation service for your machine, navigate to the **CONTROL** tab of the machine's page and expand the card matching the name of your service to use an interface for rover navigation.
 
 Here, you can add waypoints and obstacles and view the position of your rover base on a map:
 
-{{<imgproc src="/services/navigation/navigation-control-card.png" resize="900x" style="width: 700px" alt="An example control interface for a navigation service in the Viam app Control Tab.">}}
+{{<imgproc src="/services/navigation/navigation-control-card.png" resize="900x" style="width: 700px" alt="An example control interface for a navigation service in the  Control Tab.">}}
 
 ## Navigation concepts
 

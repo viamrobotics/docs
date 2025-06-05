@@ -68,7 +68,7 @@ To build your own line follower robot, you need the following hardware:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 
 1. **Add the board.**
 
@@ -215,7 +215,7 @@ Now, let's configure the color detector so your rover can detect the line:
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Next, navigate to the **CONFIGURE** tab of your machine's page.
 
 1. **Add a vision service.**
 

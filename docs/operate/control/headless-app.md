@@ -88,7 +88,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 ## Authenticate
 
-You can find sample connection code on each [machine's](/operate/get-started/setup/) **CONNECT** tab in the [Viam app](https://app.viam.com).
+You can find sample connection code on each [machine's](/operate/get-started/setup/) **CONNECT** tab.
 Select your preferred **Language** to display a code snippet, with connection code as well as some calls to the APIs of the resources you've configured on your machine.
 
 You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.
@@ -384,11 +384,11 @@ Read and filter a machine's logs to view updates from your machine's `viam-serve
 {{< tabs >}}
 {{% tab name="App UI" %}}
 
-Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **LOGS** tab of your machine's page.
 
 Select from the **Levels** dropdown menu to filter the logs by severity level:
 
-![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
+![Filtering by log level of info in the logs tab.](/build/program/sdks/log-level-info.png)
 
 {{% /tab %}}
 {{% tab name="Command line" %}}

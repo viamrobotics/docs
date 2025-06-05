@@ -105,7 +105,7 @@ pip install viam-sdk
 
 ## Test the SDK with your robot
 
-On the [Viam app](https://app.viam.com), select the **CONNECT** tab, then select **Python** as your language.
+On your machine's page, select the **CONNECT** tab, then select **Python** as your language.
 
 ![The word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](/tutorials/single-component-tutorials-servo-mousemover/choose-python.png)
 
@@ -168,13 +168,13 @@ Once you have the wires connected, attach the wheel/arm to servo and turn on the
 
 The servo is now physically connected to the Raspberry Pi, but Viam is not yet configured with the components to use it, so it's not able to control the servo.
 
-Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIGURE** tab.
+Navigate to the **CONFIGURE** tab.
 
 ### Board component
 
 Create a [board component](/operate/reference/components/board/):
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `board` type, then select the `viam:raspberry-pi:rpi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
    If you are using a Raspberry Pi 5, use the `pi5` model instead.
@@ -189,7 +189,7 @@ You can name the board whatever you want, but if you change the name you must up
 
 Create a [servo component](/operate/reference/components/servo/):
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 1. Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 1. Enter the name `fs90f` for your servo and click **Create**.

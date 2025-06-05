@@ -30,7 +30,7 @@ Follow the appropriate instructions for the model of rover and board you have:
 {{< tabs >}}
 {{% tab name="Viam Rover 2 (RPi 5)" %}}
 
-Navigate to your machine in the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's page.
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -61,7 +61,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (RPi 4)" %}}
 
-Navigate to your machine in the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's page.
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -92,7 +92,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 1 (RPi 4)" %}}
 
-Navigate to your machine in the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's page.
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -130,7 +130,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (Jetson Nano)" %}}
 
-Navigate to your machine in the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's page.
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.
@@ -161,7 +161,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (Jetson Orin Nano)" %}}
 
-Navigate to your machine in the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's page.
 In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
 
 Select **Insert fragment**.

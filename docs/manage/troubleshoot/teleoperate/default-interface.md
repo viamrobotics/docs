@@ -22,7 +22,7 @@ aliases:
 
 You can remotely control, test, and operate any configured machine using the default control interface
 
-## Viam app
+## Web UI
 
 The **CONTROL** tab provides a control interface for each component and service that you have configured for your machine.
 

@@ -58,7 +58,7 @@ If you don't already have a Viam account, sign up for one on the [Viam app](http
 If you were using physical hardware, this process would provide `viam-server` with information about what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 2. Configure a [fake board component](/operate/reference/components/board/fake/):
 
    - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
@@ -148,7 +148,7 @@ go run index.go
 {{% /tab %}}
 {{< /tabs >}}
 
-If you successfully configured your machine and it is able to connect to Viam you should see the program print a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your machine in the Viam app:
+If you successfully configured your machine and it is able to connect to Viam you should see the program print a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your machine:
 
 ![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from Viam. The list includes the motion service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](/tutorials/build-a-mock-robot/resource-output.png)
 
@@ -329,7 +329,7 @@ By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expan
 - You can access any sub-part either directly, or through any part above it in the tree.
 - Each part runs a single `viam-server` instance.
 
-### Add a new sub-part in the Viam app
+### Add a new sub-part
 
 Navigate to the **CONFIGURE** tab of your machine's page on the Viam app.
 

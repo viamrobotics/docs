@@ -80,7 +80,7 @@ If you are using different hardware, the navigation setup process will be mostly
 
 {{% /alert %}}
 
-Before you start, make sure to create a machine in the [Viam app](https://app.viam.com) and [install `viam-server`](/operate/get-started/setup/) on your robot.
+Before you start, make sure to create a machine on [Viam](https://app.viam.com) and [install `viam-server`](/operate/get-started/setup/) on your robot.
 Also, make sure to physically connect your components together to your machine's computer and power it on.
 
 ## Configure the components you need
@@ -434,7 +434,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
 Add the navigation service so that your wheeled base can navigate between waypoints and avoid obstacles.
 To add the navigation service to your robot, do the following:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `navigation` type.
 1. Enter a name or use the suggested name for your service and click **Create**.
@@ -505,7 +505,7 @@ You can add waypoints from the [**CONTROL** tab](#control-tab-method) or [progra
 
 ### Control tab method
 
-Go to the **CONTROL** tab of your robot in the [Viam app](https://app.viam.com), and open the navigation service card.
+Go to the **CONTROL** tab of your machine, and open the navigation service card.
 
 From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
 

@@ -11,7 +11,7 @@ aliases:
 toc_hide: true
 ---
 
-When building a smart machine application in the [Viam app](https://app.viam.com), a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.
+When building a smart machine application in, a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.
 Next they will test that it is wired up properly using the Viam app's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their machine using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the machine or a separate computer dedicated to running the business logic for the machine.

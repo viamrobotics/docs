@@ -214,7 +214,7 @@ Configure your board as a [`customlinux`](https://github.com/viam-modules/custom
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `board` type, then select the `customlinux` model.
 Enter a name or use the suggested name for your `customlinux` board and click **Create**.

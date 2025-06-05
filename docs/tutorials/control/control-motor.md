@@ -60,14 +60,14 @@ Follow these steps to control your motor:
 
 {{< expand "Step 1: Create a machine" >}}
 
-Add a new machine in the [Viam app](https://app.viam.com).
+Add a new machine.
 
 ![The 'My Desk' page with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
 
 {{< /expand >}}
 {{< expand "Step 2: Install viam-server or viam-micro-server" >}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
 If you are using a microcontroller, install `viam-micro-server`.
 Otherwise, install `viam-server`.

@@ -126,7 +126,7 @@ You can authenticate your CLI session using either a personal access token, or a
   ```
 
   {{< alert title="Note" color="note" >}}
-  To use an organization, location, or machine part API key to authenticate, you can create one from the organization's settings page in the [Viam app](https://app.viam.com) or authenticate with a personal access token and then [create an organization API key](#create-an-organization-api-key), a [location](#create-a-location-api-key), or a [machine part API key](#create-a-machine-part-api-key).
+  To use an organization, location, or machine part API key to authenticate, you can create one from the organization's settings page or authenticate with a personal access token and then [create an organization API key](#create-an-organization-api-key), a [location](#create-a-location-api-key), or a [machine part API key](#create-a-machine-part-api-key).
   {{< /alert >}}
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
@@ -136,7 +136,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 ### Create an organization API key
 
 To use an API key to authenticate your CLI session, you must create one.
-You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
+You can do this from the organization's settings page or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
 
@@ -169,7 +169,7 @@ An organization can have multiple API keys.
 ### Create a location API key
 
 To use an location API key to authenticate your CLI session, you must first create one:
-You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
+You can do this from the organization's settings page or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [machine part API key](#create-a-machine-part-api-key).
@@ -183,7 +183,7 @@ You can do this from the organization's settings page in the [Viam app](https://
    Where:
 
    - `location-id` is your location ID.
-     You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app.
+     You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots).
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/).
      If only one organization owns the location, you can omit the parameter.
@@ -208,7 +208,7 @@ A location can have multiple API keys.
 ### Create a machine part API key
 
 To use a machine part API key to authenticate your CLI session, you must first create one:
-You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
+You can do this from the organization's settings page or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a machine part API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
@@ -222,9 +222,9 @@ You can do this from the organization's settings page in the [Viam app](https://
    Where:
 
    - `machine-id` is your machine's ID.
-     You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page in the [Viam app](https://app.viam.com), and selecting **Copy machine ID**.
+     You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page, and selecting **Copy machine ID**.
    - `org-id` is an optional organization ID to attach the key to.
-     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the Viam app.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page.
      If only one organization owns the robot, you can omit the parameter.
      If multiple organizations own the robot, you must specify the `org-id` explicitly.
    - `key-name` is an optional name for your API key.
@@ -359,8 +359,8 @@ viam dataset data remove ids --dataset-id=abc --binary-data-ids=aaa,bbb
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
-| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
+| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page, click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
+| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page, click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
 | `--destination` | Output directory for downloaded data. | `export` | **Required** |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `data add`, `data remove` | Optional |
 | `--binary-data-ids` | The binary data IDs of the files to perform an operation on. | `data add`, `data remove` | **Required** |

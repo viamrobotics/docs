@@ -157,7 +157,7 @@ You will use this same code later in this tutorial.
 Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the frame system visualizer.
 This configured table won't be taken into account by the motion service, but it's useful to be able to see it.
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `generic` type, then select the `fake` model.
 Enter the name `"table"` for your movement sensor and click **Create**.

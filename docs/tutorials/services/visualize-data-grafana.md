@@ -40,7 +40,7 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 
 Before following this tutorial, ensure you have:
 
-- Added a new machine in the [Viam app](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to Viam.
+- Added a new machine on [Viam](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to Viam.
 - A configured [sensor component](/operate/reference/components/sensor/), such as the [`bme280`](https://github.com/viam-modules/bosch/) sensor, that reports data.
   If it's a physical sensor, make sure to connect it to your machine's computer.
 
@@ -63,7 +63,7 @@ You can manage how your machine captures and syncs data to the cloud using the d
 
 First, add the data management service to your machine to be able capture and sync data:
 
-1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's **CONFIGURE** tab.
 1. Click the **+** button in the left-hand menu and select **Component or service** from the dropdown.
 1. Select **data management**.
 1. Give the service a name, like `viam-data-manager`, then click **Create**.
@@ -83,7 +83,7 @@ Only sensor readings or other time-series data can be visualized in this manner.
 
 To enable data capture for a sensor component:
 
-1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's **CONFIGURE** tab.
 
 1. In the configuration pane for your [configured sensor component](#prerequisites), find the **Data capture** section, and click the **Add method** button to enable data capture for this camera.
 

@@ -43,7 +43,7 @@ See [Configure an arm](/operate/mobility/move-arm/configure-arm/) for instructio
 
 ## Connect your code to your machine
 
-1. From your machine's page in the Viam app, click the **CONNECT** tab.
+1. From your machine's page, click the **CONNECT** tab.
 
 1. Choose your programming language.
    The examples below are written in Python and Go, so choose one of those to follow along.

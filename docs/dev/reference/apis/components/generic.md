@@ -26,8 +26,7 @@ The generic component supports the following method:
 
 ## Establish a connection
 
-To get started using Viam's SDKs to connect to and control your generic component and the rest of your machine, go to your machine's page on the [Viam app](https://app.viam.com),
-Navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
+To get started using Viam's SDKs to connect to and control your generic component and the rest of your machine, go to your machine's page, navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 

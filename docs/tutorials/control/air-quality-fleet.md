@@ -191,7 +191,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 
 #### Configure the sensor
 
-1. Navigate to the **CONFIGURE** tab of the machine details page in the [Viam app](https://app.viam.com) for your first machine.
+1. Navigate to the **CONFIGURE** tab of the machine details page for your first machine.
 2. Click the **+** (Create) button and click **Component or service** from the dropdown.
    Click **sensor**, then search for `sds011` and click **sds001:v1** from the results.
 3. Click **Add module**.
@@ -465,7 +465,7 @@ The following instructions describe how to set up an API key for one location.
 
 1.  Now you need to get the API key and the {{< glossary_tooltip term_id="organization" text="organization" >}} and {{< glossary_tooltip term_id="location" text="location" >}} IDs to replace the placeholder strings in the code you just pasted.
 
-    In the [Viam app](https://app.viam.com), navigate to the location page for the location containing your air quality machines.
+    Navigate to the location page for the location containing your air quality machines.
 
     ![The location secret with a Copy button next to it.](/tutorials/air-quality-fleet/loc-secret-button.png)
 

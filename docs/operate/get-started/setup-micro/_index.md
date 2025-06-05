@@ -244,7 +244,7 @@ Upload the generated firmware to your ESP32:
 
 You can now configure the models you included in your firmware and test them:
 
-1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's page.
 
 1. From the **CONFIGURE** tab, click **JSON** mode.
    Micro-RDK components and services must be configured in JSON.
@@ -288,7 +288,7 @@ The firmware hosting endpoint must use HTTP/2.
 
 To configure OTA updates:
 
-1. On your microcontroller's page in the [Viam app](https://app.viam.com), go to the **CONFIGURE** tab and select **JSON** mode.
+1. On your machine's page, go to the **CONFIGURE** tab and select **JSON** mode.
 
 1. Paste in the template below, then configure the URL from which to fetch new firmware, and a version name of your choice.
    The value of the `version` field is not directly used by the OTA service, so you can use any string.

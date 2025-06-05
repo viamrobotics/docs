@@ -159,7 +159,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 ### Control your rover on Viam
 
-If you followed the instructions in the [Jetson installation guide](/operate/reference/prepare/jetson-nano-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
+If you followed the instructions in the [Jetson installation guide](/operate/reference/prepare/jetson-nano-setup/), you should have already made a Viam account, installed `viam-server` on the board, and added a new machine.
 
 To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/dev/reference/try-viam/rover-resources/rover-tutorial-fragments/).
 

@@ -128,7 +128,7 @@ Because the filter only syncs images that contain an anomaly, this trigger sends
 
 Follow these steps to configure a trigger to alert when `filtered-camera` syncs an image:
 
-1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
 1. Enter a name and click **Create**.

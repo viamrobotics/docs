@@ -41,7 +41,7 @@ See [Configure an arm](/operate/mobility/move-arm/configure-arm/) for instructio
 
 ## Move the arm
 
-1. In the Viam app, navigate to your machine's page.
+1. Navigate to your machine's page.
 
 1. On your arm component's configuration card, select the **TEST** tab.
 

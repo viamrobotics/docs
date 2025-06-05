@@ -9,7 +9,7 @@ no_list: true
 # updated: ""  # When the content was last entirely checked
 ---
 
-This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.
+This document lists common errors encountered when working with Viam, and provides steps to resolve them.
 While many common issues and their possible resolutions are presented here, this list is not comprehensive.
 
 To view logs or get a remote shell on a machine see [Troubleshoot](/manage/troubleshoot/troubleshoot/).
@@ -149,7 +149,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
 
 **Description:** A [frame](/operate/reference/services/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-**Solution:** Check the **CONFIGURE** tab for your machine in the [Viam app](https://app.viam.com) and look for a `frame` attribute, either in **Frame** or **JSON** mode.
+**Solution:** Check the **CONFIGURE** tab for your machine and look for a `frame` attribute, either in **Frame** or **JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
 In **JSON** mode, it will resemble the following:
 

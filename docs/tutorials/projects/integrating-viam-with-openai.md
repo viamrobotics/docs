@@ -79,7 +79,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/dev/reference/try-viam/rover-resources/rover-tutorial/).
 
-If you are not using a Viam Rover, add a new machine in the [Viam app](https://app.viam.com).
+If you are not using a Viam Rover, add a new machine.
 Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to Viam.
 Wait until your machine has successfully connected.
 Then configure your machine with the {{< glossary_tooltip term_id="component" text="hardware components" >}}.
@@ -180,7 +180,7 @@ Finally, you will need both Viam robot credentials and OpenAI API credentials in
 
 {{% snippet "show-secret.md" %}}
 
-You can find API key and API key ID values for your robot by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com) and selecting the **API keys** page.
+You can find API key and API key ID values for your robot by navigating to the **CONNECT** tab and selecting the **API keys** page.
 
 To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
@@ -331,7 +331,7 @@ Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).
 
 ### Configuration
 
-Navigate to the **CONFIGURE** page of your rover robot in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** page of your rover robot.
 
 {{< tabs name="Configure the speech module" >}}
 {{% tab name="Builder" %}}

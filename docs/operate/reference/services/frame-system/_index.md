@@ -39,7 +39,7 @@ It is a mostly static system for storing the "reference frame" of each component
 
 You can configure a reference frame within the frame system for each of your machine's components:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 
 1. Select **Builder** mode and [configure your arm](/operate/reference/components/arm/#configuration).
    If you don't have a physical arm, you can use a `fake` model.

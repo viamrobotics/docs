@@ -130,7 +130,7 @@ See [Module dependencies](/operate/get-started/other-hardware/create-module/depe
 
 {{% changelog color="added" title="System log forwarding" date="2025-05-14" %}}
 
-You can now configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
+You can now configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs.
 
 To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object in your machine's `agent` configuration. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
 
@@ -208,7 +208,7 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `offline_timeout` | boolean | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `"2m"` (2 minutes). |
 | `user_timeout` | boolean | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `"5m"` (5 minutes). |
 | `fallback_timeout` | boolean | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `"10m"` (10 minutes). |
-| `networks` | array | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config in the Viam app, if networks aren't needed until after initial provisioning. Default: `[]`. |
+| `networks` | array | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config, if networks aren't needed until after initial provisioning. Default: `[]`. |
 | `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager.  |
 | `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
 
@@ -565,7 +565,7 @@ In addition to the existing returned metadata, the [`GetCloudMetadata`](/dev/ref
 
 {{% changelog date="2024-04-16" color="improved" title="Viam web UI" %}}
 
-the [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+The machine page UI has been updated significantly.
 In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
 
 {{% /changelog %}}
@@ -895,9 +895,9 @@ For more information about assigning permissions and collaborating with others o
 
 {{% changelog date="2023-05-31" color="improved" title="Control RoboClaw motor controllers with the driver" %}}
 
-When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within Viam or through the motor API.
+When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within the web UI or through the motor API.
 
-For example, in the Viam app, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
+For example, in the web UI, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
 
 {{% /changelog %}}
 
@@ -912,7 +912,7 @@ The latest updates enable you to:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-31" color="improved" title="Additions to code samples in the Viam app" %}}
+{{% changelog date="2023-05-31" color="improved" title="Additions to code samples" %}}
 
 The updated code samples now includes:
 
@@ -923,7 +923,7 @@ Access these samples in the **Code sample** tab on your machine's page to connec
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-31" color="improved" title="Delete data in bulk in the Viam app" %}}
+{{% changelog date="2023-05-31" color="improved" title="Delete data in bulk" %}}
 
 You can manage the data synced to Viam's cloud with the new capability for bulk data deletion on the **Data** tab.
 
@@ -1355,7 +1355,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog date="2023-02-28" color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/operate/reference/services/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
+When adding [frames](/operate/reference/services/frame-system/) to your machine's config, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 

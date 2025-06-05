@@ -20,7 +20,7 @@ You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/manag
 
 You must have the **Owner** role to be able to grant permissions.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On Viam, click on the organization dropdown in the top navigation bar.
 2. Click on **Settings**.
 3. Find the **Members** section of the organization settings page.
 4. Click on **Grant access**.
@@ -44,7 +44,7 @@ You must have the **Owner** role to be able to grant permissions.
 
 You must have the **Owner** role to be able to share locations.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On Viam, click on the organization dropdown in the top navigation bar.
 2. Select the organization that contains the location you want to share.
 3. Navigate to the location you want to share.
 4. Find the **Sharing** section of the location page.
@@ -62,7 +62,7 @@ Once you share a _nested_ location (sub-location), its parent location cannot be
 
 You must have the **Owner** role to be able to limit permissions.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On Viam, click on the organization dropdown in the top navigation bar.
 2. Click on **Settings**.
 3. Find the **Members** section of the organization settings page.
 4. Click on the user to open the access settings for the user.
@@ -77,7 +77,7 @@ You must have the **Owner** role to be able to limit permissions.
 
 You must have the **Owner** role to be able to share locations.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On [Viam](https://app.viam.com), click on the organization dropdown in the top navigation bar.
 2. Select the organization that contains the location you want to share.
 3. Navigate to the location you want to share.
 4. Find the **Sharing** section of the location page.

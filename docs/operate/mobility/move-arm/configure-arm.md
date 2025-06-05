@@ -28,7 +28,7 @@ date: "2025-05-21"
 
 ## Configure the arm
 
-1. In the [Viam app](https://app.viam.com), navigate to your machine's page.
+1. Navigate to your machine's page.
 
 1. Select the **CONFIGURE** tab.
 

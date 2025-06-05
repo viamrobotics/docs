@@ -250,7 +250,7 @@ The CLI module generator generates the files for your modular resource.
    - Language: `Python`
    - Visibility: `Private`
    - Namespace/Organization ID:
-     - In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+     - Navigate to your organization settings through the menu in upper right corner of the page.
        Find the **Public namespace** (or create one if you haven't already) and copy that string.
        In the example snippets below, the namespace is `viamlabs`.
    - Resource to add to the module (API): `Base Component`.
@@ -373,7 +373,7 @@ sudo chmod +x run.sh
 
 You need to tell your robot how to access the module you created.
 
-On the [Viam app](https://app.viam.com), go to your machine's **CONFIGURE** tab.
+Navigate to your machine's **CONFIGURE** tab.
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
 Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.

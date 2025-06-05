@@ -28,7 +28,7 @@ You have two options for moving a [gantry](/operate/reference/components/gantry/
 
 First, connect the gantry's motors to your machine.
 
-Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Then, navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Search for and select a model that supports your motor.
 
@@ -48,7 +48,7 @@ If you have a multi-axis gantry, [configure a single-axis gantry](/operate/refer
 {{% tablestep number=3 %}}
 **Connect code to your gantry**
 
-Go to your machine's **CONNECT** tab in the Viam app.
+Go to your machine's **CONNECT** tab.
 Select your preferred programming language and copy the code snippet.
 
 See [Create a web app](/operate/control/web-app/), [Create a mobile app](/operate/control/mobile-app/), or [Create a headless app](/operate/control/headless-app/) for more information, depending on your use case.

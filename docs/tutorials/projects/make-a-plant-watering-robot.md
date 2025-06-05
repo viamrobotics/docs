@@ -213,7 +213,7 @@ Run the following command to reboot your machine and load your changes:
 sudo reboot
 ```
 
-### Configure the components of your robot in the Viam app
+### Configure the components of your robot
 
 {{% snippet "setup.md" %}}
 
@@ -335,7 +335,7 @@ pip3 install viam-sdk
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your machine's page in the [Viam app](https://app.viam.com), and click on the **CONNECT** tab and the **Code sample** page.
+1. Navigate to your machine's page, and click on the **CONNECT** tab and the **Code sample** page.
 1. Select **Python** as the language.
 1. Follow the instructions shown under step 1 on that page to install the SDK.
 1. Then, under step 2 on that page, click the copy icon to copy the generated code sample, which establishes a connection with your robot when run.
@@ -421,7 +421,7 @@ You must import `time` at the top of <file>plant-watering-robot.py</file> to be 
 
 ### Test motor
 
-On your machine's **CONTROL** page in the Viam app, expand the **TEST** panel for your board component. You should see a panel that allows you to control individual GPIO pins:
+On your machine's **CONTROL** page, expand the **TEST** panel for your board component. You should see a panel that allows you to control individual GPIO pins:
 
 {{<imgproc src="/tutorials/plant-watering-pi/test-motor.png" resize="x400" declaredimensions=true alt="The test panel" class="imgzoom fill shadow" >}}
 
@@ -432,7 +432,7 @@ To turn off the motor and stop pumping water, use the **State** control to selec
 
 ### Test moisture sensor
 
-On your machine's **CONTROL** page in the Viam app, expand the **TEST** card for your `mcp300x` sensor module to see a live observed value from your moisture sensor.
+On your machine's **CONTROL** page, expand the **TEST** card for your `mcp300x` sensor module to see a live observed value from your moisture sensor.
 Test your sensor by putting it in air, water, and soils containing different amounts of moisture.
 Use these values to determine an appropriate value for the `DRY` variable in your setup.
 

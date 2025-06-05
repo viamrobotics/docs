@@ -343,7 +343,7 @@ Enter a name or use the suggested name for your camera and click **Create**.
 {{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera." resize="1200x" style="width=600x" >}}
 
 Leave the **video_path** blank and the camera will use the default video path for your machine.
-If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
+If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the camera's configuration panel.
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

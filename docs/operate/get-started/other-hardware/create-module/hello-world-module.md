@@ -115,7 +115,7 @@ First let's generate the camera component files, and we'll add the sensor code l
     - Language: Your choice
     - Visibility: `Private`
     - Namespace/Organization ID:
-      - In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+      - Navigate to your organization settings through the menu in upper right corner of the page.
         Find the **Public namespace** (or create one if you haven't already) and copy that string.
         In the example snippets below, the namespace is `jessamy`.
     - Resource to add to the module (API): `Camera Component`.
@@ -632,7 +632,7 @@ Make sure your machine's instance of `viam-server` is live and connected to the 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
 
-In the Viam app, navigate to your machine's **CONFIGURE** page.
+Navigate to your machine's **CONFIGURE** page.
 
 {{% /tablestep %}}
 {{% tablestep number=4 %}}

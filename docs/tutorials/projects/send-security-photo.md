@@ -59,7 +59,7 @@ You will use the following software in this tutorial:
 
 Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from your camera:
 
-1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
+1. Navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
 
 2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
@@ -69,7 +69,7 @@ Configure your [webcam](/operate/reference/components/camera/webcam/) so that yo
    Click **Create**.
 
 3. Leave the **video_path** blank and the camera will use the default video path for your machine.
-   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the camera's configuration panel.
 
 4. Click **Save** in the top right corner of the screen to save your changes.
 

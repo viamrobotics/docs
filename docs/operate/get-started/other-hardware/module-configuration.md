@@ -315,7 +315,7 @@ To configure a module that is uploaded to the Viam Registry but has [visibility]
 
 1. Copy the module configuration JSON snippet.
 
-1. In the Viam app, navigate to the **CONFIGURE** tab of the machine you want to configure.
+1. Navigate to the **CONFIGURE** tab of the machine you want to configure.
 
 1. Switch to **JSON** mode.
 
