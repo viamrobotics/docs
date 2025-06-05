@@ -975,8 +975,8 @@ The `viam module generate` command already generated the `build-action` file in 
    - `VIAM_KEY_VALUE` with the string from `Key Value:` in your terminal
 
 1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
-1. In the **Choose a tag** dropdown, create a new tag such as `1.0.0`.
-   _Do not prepend the tag with `v` or the GH action will not trigger._
+1. In the **Choose a tag** dropdown, create a new tag that is exactly three numbers separated by periods (`[0-9]+.[0-9]+.[0-9]+`), such as `1.0.0`.
+   Tags like `0.1` or `v1.0.0` will not trigger the GitHub action.
    For details about versioning, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).
 
 1. Click **Publish release**.
