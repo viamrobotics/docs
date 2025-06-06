@@ -289,7 +289,7 @@ When you specify an `fport` value for a node, gateways use that value as the fra
 
 You can use [DoCommand](/dev/reference/sdks/docommand/) to configure, control, and calibrate your LoRaWAN nodes. The `lorawan` module supports the following commands:
 
-#### Restart node
+### Restart node
 
 The following example shows how to restart a node from an SDK:
 
@@ -327,7 +327,7 @@ await node.doCommand({ restart_sensor: {} });
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Send a downlink message to a node
+### Send a downlink message to a node
 
 The following example shows how to send downlink messages to a node from an SDK:
 
@@ -367,7 +367,7 @@ await node.doCommand({ send_downlink: "48656C6C6F" });
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Configure the transmission interval
+### Configure the transmission interval
 
 The transmission interval controls how often a node communicates with the gateway.
 The following example shows how to change the transmission interval of a node from an SDK:
@@ -406,7 +406,7 @@ await node.doCommand({ set_interval: 300 });
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Calibrate the Dragino-WQS-LB water quality sensor
+### Calibrate the Dragino-WQS-LB water quality sensor
 
 {{% alert title="Info" color="info" %}}
 
@@ -472,6 +472,8 @@ await node.doCommand({ calibrate_orp: {} });
 
 You can query captured data in the Viam app from the **DATA** page.
 To build a dashboard to monitor your captured data using charts and graphs, configure widgets on the **TELEOP** page.
+
+For more information, see [Visualize data](/data-ai/data/visualize/).
 
 ## Troubleshooting
 
