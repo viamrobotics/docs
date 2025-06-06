@@ -52,7 +52,7 @@ The lorawan module supports the following varieties of gateway hardware:
 
 If you choose the RAK7391:
 
-1. Complete the [quickstart](https://docs.rakwireless.com/product-categories/wisgate/rak7391/quickstart/) to flash your RAK7391 with an operating system and connect it to the network.
+1. Complete the [RAKPiOS quickstart](https://docs.rakwireless.com/product-categories/software-apis-and-libraries/rakpios/quickstart/) to flash your RAK7391 with an operating system and connect it to the network.
 1. [Install viam-server](https://docs.viam.com/operate/get-started/setup/).
 
 If you choose a peripheral built on the SX1302 chip:
@@ -139,6 +139,7 @@ The following attributes are available for SX1302-based LoRaWAN gateways:
 | `region_code` | string | Optional | Frequency region of your gateway. <br> Options: `US915`, `EU868` <br> Default: `US915` |
 | `reset_pin` | integer | **Required** | GPIO pin used for SX1302 reset. <br> Not configurable for `sx1302-waveshare-hat`. |
 | `power_en_pin` | integer | Optional | GPIO pin used for SX1302 power enable. <br> Not configurable for `sx1302-waveshare-hat`. |
+| `path` | string | Optional | Serial path that the peripheral is mounted at, if connected through USB. <br> Not configurable for `sx1302-waveshare-hat`. |
 
 The following attributes are available for RAK7391 gateways:
 
@@ -147,7 +148,7 @@ The following attributes are available for RAK7391 gateways:
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | Name of the [board component](/operate/reference/components/board/) that represents the Raspberry Pi Compute Module inside the RAK7391. Used for GPIO pin control. |
 | `region_code` | string | Optional | Frequency region of your gateway. <br> Options: `US915`, `EU868` <br> Default: `US915` |
-| `pcie1` | object | optional | PCIe configuration for a concentrator: <br> <ul><li>`spi_bus` (integer) (Optional): Serial bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> Not configurable for `sx1302-waveshare-hat`. |
+| `pcie1` | object | optional | PCIe configuration for concentrator connected to PCIe slot 1: <br> <ul><li>`spi_bus` (integer) (Optional): SPI bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> |
 | `pcie2` | object | Optional | PCIe configuration for a second concentrator: <br> <ul><li>`spi_bus` (integer) (Optional): Serial bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> Not configurable for `sx1302-waveshare-hat`. |
 
 ## Add a node
@@ -217,7 +218,7 @@ Choose an appropriate node model from the following options:
 - `viam:lorawan:node`: Any LoRaWAN sensor that is:
   - Class A
   - supports either the `US915` or `EU868` frequency band
-  - uses LoRaWAN MAC specification version 1.0.3 or later
+  - uses LoRaWAN MAC specification version 1.0.3
 
 Configure attributes based on the tables below:
 
@@ -236,7 +237,7 @@ The following attributes are available for nodes:
 | `app_s_key` | string | Optional | 128-bit hexadecimal **application session key** used to decrypt uplink messages. Required for ABP activation protocol. Found in the device datasheet or in device packaging. <br> On `milesight-ct101` and `milesight-em310-tilt`, defaults to `5572404C696E6B4C6F52613230313823`. |
 | `network_s_key` | string | Optional | 128-bit hexadecimal **network session key** used to decrypt uplink messages. Required for ABP activation protocol. Found in the device datasheet or in device packaging. <br> On `milesight-ct101` and `milesight-em310-tilt`, defaults to `5572404C696E6B4C6F52613230313823`. |
 | `gateways` | string[] | **Required** | Name of the [gateway component](#add-a-gateway) in your Viam configuration. |
-| `uplink_interval_mins` | decimal | **Required** | Interval between uplink messages sent from the node, in minutes. Found in the device datasheet, but can be modified. <br> On `milesight-ct101`, defaults to `10`. On `milesight-em310-tilt`, defaults to `1080`. |
+| `uplink_interval_mins` | decimal | **Required** | Interval between uplink messages sent from the node, in minutes. Found in the device datasheet, but can be modified. Configured by downlink after initial connection. <br> On `milesight-ct101`, defaults to `10`. On `milesight-em310-tilt`, defaults to `1080`. |
 | `decoder_path` | string | **Required** | Path to a Javascript **decoder script** used to interpret data transmitted from the node. You can use a local path on your device or an HTTP(S) URL that points to a file on a remote server. If the decoder script provides multiple implementations, uses the Chirpstack version. Not compatible with The Things Network decoders. <br> On supported Milesight and Dragino models, defaults to the latest decoder published by the manufacturer on GitHub. |
 | `fport` | string | Optional | 8-bit hexadecimal **frame port** used to send downlinks to the device. Found in the device datasheet. <br> On supported Milesight models, defaults to `"55"` (equivalent to `0x55`). <br> On supported Dragino models, defaults to `"01"` (equivalent to `0x01`). |
 
@@ -257,7 +258,6 @@ LoRaWAN networks can use any of the following protocols for communication:
 | Activation By Personalization | `ABP` | Static | Static unless manually rotated | <ul><li> `dev_addr` </li><li> `network_s_key` </li><li> `app_s_key` </li></ul> |
 
 To specify an activation protocol for your network, use the `join_type` field.
-You must specify this field for both gateways and nodes.
 
 ### Decoder script
 
@@ -483,7 +483,7 @@ For more information, see [Visualize data](/data-ai/data/visualize/).
 
   - If using a HAT, ensure your HAT is properly seated on the SBC's GPIO header.
   - Check that the antenna is securely connected to your gateway.
-  - Check the power, transmit, and receive LEDs for activity. Most SX1302 gateways have three LEDs:
+  - On the Waveshare SX1302 LoRaWAN Gateway HAT, check the status LEDs for activity:
     - **Power LED (red, solid)**: gateway receiving power
     - **TX LED (red, blinking)**: gateway transmitting data
     - **RX LED (red, blinking)**: gateway receiving data
@@ -496,6 +496,9 @@ For more information, see [Visualize data](/data-ai/data/visualize/).
 
 ### Sensor fails to join network
 
+- **Wait 10-15 minutes**:
+  - Nodes can take up to 10-15 minutes to join the network.
+  - If a node doesn't join the network within 30 minutes, try restarting the node.
 - **Verify device identifiers**:
 
   - Check that `dev_eui` in your node configuration matches the value of your device.
