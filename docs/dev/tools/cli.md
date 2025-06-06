@@ -997,6 +997,11 @@ If you are using the `build logs` command, the `--platform` argument instead res
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
 
+{{% alert title="Important" color="note" %}}
+You cannot upload two files for the same architecture with the same version number.
+You must increment to a new version number, even if you delete a previous version.
+{{% /alert %}}
+
 Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam Registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
