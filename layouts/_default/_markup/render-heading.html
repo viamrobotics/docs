@@ -1,0 +1,9 @@
+<h{{ .Level }}
+    id="{{ .Anchor }}" 
+    onclick="navigator.clipboard.writeText(location.href.split('#')[0] + '#{{ .Anchor }}')" 
+    role="button"
+    aria-label="Copy link to {{ .Text }} heading"
+    class="permalink-icon"
+>
+    {{ .Text }}
+</h{{ .Level }}>
