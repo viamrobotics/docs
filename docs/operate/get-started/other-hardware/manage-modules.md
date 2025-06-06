@@ -336,8 +336,7 @@ viam module update
 ```
 
 {{% hiddencontent %}}
-If you're not seeing a private module of yours in the registry, check that you're in the correct organization in the Viam app.
-You can check and switch organizations in the dropdown in the upper right corner of the Viam app.
+If you don't see a private module of yours in the registry, make sure that you have the correct organization selected in the upper right corner of the page.
 {{% /hiddencontent %}}
 
 ## Delete a module
