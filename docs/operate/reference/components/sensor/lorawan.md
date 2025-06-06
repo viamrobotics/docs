@@ -47,7 +47,7 @@ With Viam's `lorawan` module, your gateway also acts as a network server.
 To start your network, you need a gateway.
 The lorawan module supports the following varieties of gateway hardware:
 
-- peripherals built on the SX1302 chip such as the [Waveshare SX1302 Gateway HAT](https://www.waveshare.com/wiki/SX1302_LoRaWAN_Gateway_HAT), which you can connect to an SBC
+- SBC peripherals built on the SX1302 or SX1303 chips, such as the [Waveshare SX1302 Gateway HAT](https://www.waveshare.com/wiki/SX1302_LoRaWAN_Gateway_HAT)
 - dedicated machines such as the Raspberry Pi CM4-based [RAK7391 WisGate Connect](https://docs.rakwireless.com/product-categories/wisgate/rak7391/overview/)
 
 If you choose the RAK7391:
@@ -55,7 +55,7 @@ If you choose the RAK7391:
 1. Complete the [RAKPiOS quickstart](https://docs.rakwireless.com/product-categories/software-apis-and-libraries/rakpios/quickstart/) to flash your RAK7391 with an operating system and connect it to the network.
 1. [Install viam-server](https://docs.viam.com/operate/get-started/setup/).
 
-If you choose a peripheral built on the SX1302 chip:
+If you choose a peripheral:
 
 1. Follow our guide to [set up an SBC](/operate/get-started/setup/).
 1. Enable SPI on your machine:
@@ -65,7 +65,7 @@ If you choose a peripheral built on the SX1302 chip:
    ```
 
 1. Follow the instructions provided by your peripheral manufacturer (for example, the [Waveshare SX1302 LoRaWAN Gateway HAT instructions](https://www.waveshare.com/wiki/SX1302_LoRaWAN_Gateway_HAT)) to physically connect your peripheral to your SBC.
-   For supported models, there is no need to configure drivers and software; viam-server handles software configuration for you.
+   For supported models, there is no need to configure drivers and software; `viam-server` handles software configuration for you.
 
 After setting up your gateway hardware, complete the following steps to configure your gateway:
 
@@ -78,7 +78,7 @@ First, add a `board` component:
 
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `board` type, then select the model that matches your machine.
-   For instance, if you have a Waveshare SX1302 LoRaWAN Gateway HAT connected to a Raspberry Pi 5, choose `raspberry-pi:rpi5`.
+   For instance, if you connected a peripheral gateway to a Raspberry Pi 5, choose `raspberry-pi:rpi5`.
    If you have a RAK7391, choose `raspberry-pi:rpi` to represent the internal Raspberry Pi Compute Module 4.
 1. Click **Add module**, and enter a name for your board.
 1. Click **Create** to add the module to your machine.
@@ -87,7 +87,7 @@ Next, add a `lorawan` gateway component:
 
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select the `sensor` type, then select the `lorawan` model that matches the name of your gateway.
-   If you chose a peripheral built on the SX1302 chip other than the Waveshare SX1302, choose `lorawan:sx1302-hat-generic`.
+   If your SX1302- or SX1303-based peripheral lacks a dedicated model, choose `lorawan:sx1302-hat-generic`.
 1. Click **Add module**, and enter a name for your gateway.
 1. Click **Create** to add the module to your machine.
 1. Click **Save** in the top right to apply your changes and load your new module.
@@ -121,7 +121,7 @@ Choose an appropriate board model based from the [board components registry](/op
 Choose an appropriate gateway model from the following options:
 
 - `viam:lorawan:sx1302-waveshare-hat`: Waveshare LoRaWAN SX1302 Gateway HAT
-- `viam:lorawan:sx1302-hat-generic`: generic model for all other peripherals built using the SX1302 chip
+- `viam:lorawan:sx1302-hat-generic`: generic model for all other peripherals built using the SX1302 or SX1303 chips
 - `viam:lorawan:rak7391`: RAK7391 WisGate Connect
 
 Configure attributes based on the tables below:
@@ -137,8 +137,8 @@ The following attributes are available for SX1302-based LoRaWAN gateways:
 | `board` | string | **Required** | Name of the [board component](/operate/reference/components/board/) that the peripheral is connected to. Used for GPIO pin control. |
 | `spi_bus` | integer | Optional | SPI bus number used to connect the gateway peripheral. <br> Options: `0`, `1` |
 | `region_code` | string | Optional | Frequency region of your gateway. <br> Options: `US915`, `EU868` <br> Default: `US915` |
-| `reset_pin` | integer | **Required** | GPIO pin used for SX1302 reset. <br> Not configurable for `sx1302-waveshare-hat`. |
-| `power_en_pin` | integer | Optional | GPIO pin used for SX1302 power enable. <br> Not configurable for `sx1302-waveshare-hat`. |
+| `reset_pin` | integer | **Required** | GPIO pin used for peripheral reset. <br> Not configurable for `sx1302-waveshare-hat`. |
+| `power_en_pin` | integer | Optional | GPIO pin used for peripheral power enable. <br> Not configurable for `sx1302-waveshare-hat`. |
 | `path` | string | Optional | Serial path that the peripheral is mounted at, if connected through USB. <br> Not configurable for `sx1302-waveshare-hat`. |
 
 The following attributes are available for RAK7391 gateways:
