@@ -11,12 +11,13 @@ images: ["/icons/components/sensor.svg"]
 
 [LoRaWAN (Long Range Wide Area Network)](https://lora-alliance.org/) enables sensor communication spanning kilometers with minimal power usage.
 
-To collect LoRaWAN sensor data with Viam, use the [`lorawan`](https://app.viam.com/module/viam/lorawan) {{< glossary_tooltip term_id="module" text="module" >}}. You can find the module's source code in the [lorawan GitHub repository](https://github.com/viam-modules/lorawan).
+To collect LoRaWAN sensor data with Viam, use the [`lorawan`](https://app.viam.com/module/viam/lorawan) {{< glossary_tooltip term_id="module" text="module" >}}.
+You can find the module's source code in the [lorawan GitHub repository](https://github.com/viam-modules/lorawan).
 
 ## Hardware requirements
 
-- a [supported LoRaWAN gateway](https://github.com/viam-modules/lorawan?tab=readme-ov-file#lorawan-gateway-models-provided)
-- a [supported LoRaWAN node](https://github.com/viam-modules/lorawan?tab=readme-ov-file#lorawan-sensor-models-provided)
+- A [supported LoRaWAN gateway](https://github.com/viam-modules/lorawan?tab=readme-ov-file#lorawan-gateway-models-provided)
+- A [supported LoRaWAN node](https://github.com/viam-modules/lorawan?tab=readme-ov-file#lorawan-sensor-models-provided)
 
 ## Architecture
 
@@ -28,12 +29,12 @@ In a LoRaWAN network, information flows in two directions:
 
 ![A LoRaWAN network consisting of a single gateway and multiple nodes](/components/sensor/lorawan.png)
 
-### Node
+### Nodes
 
 Nodes measure data like any other sensor.
 Instead of physically connecting to a machine over GPIO pins or USB, nodes communicate with your machine using the wireless LoRaWAN protocol.
-Because LoRaWAN supports communication over distances of up to 10 kilometers, you can distribute nodes over an area of over 300 km<sup>2</sup>.
-Nodes typically run off of battery power, with battery life from a single coin cell battery measured in weeks or months.
+LoRaWAN supports communication over distances of up to 10 kilometers.
+Nodes typically run off of battery power; a single coin cell battery can power a node for weeks or months.
 
 ### Gateway
 
@@ -47,13 +48,13 @@ With Viam's `lorawan` module, your gateway also acts as a network server.
 To start your network, you need a gateway.
 The lorawan module supports the following varieties of gateway hardware:
 
-- SBC peripherals built on the SX1302 or SX1303 chips, such as the [Waveshare SX1302 Gateway HAT](https://www.waveshare.com/wiki/SX1302_LoRaWAN_Gateway_HAT)
-- dedicated machines such as the Raspberry Pi CM4-based [RAK7391 WisGate Connect](https://docs.rakwireless.com/product-categories/wisgate/rak7391/overview/)
+- peripheral built on the SX1302 or SX1303 chips connected to an SBC, such as the [Waveshare SX1302 Gateway HAT](https://www.waveshare.com/wiki/SX1302_LoRaWAN_Gateway_HAT)
+- Dedicated machines such as the Raspberry Pi CM4-based [RAK7391 WisGate Connect](https://docs.rakwireless.com/product-categories/wisgate/rak7391/overview/)
 
 If you choose the RAK7391:
 
-1. Complete the [RAKPiOS quickstart](https://docs.rakwireless.com/product-categories/software-apis-and-libraries/rakpios/quickstart/) to flash your RAK7391 with an operating system and connect it to the network.
-1. [Install viam-server](https://docs.viam.com/operate/get-started/setup/).
+1. Complete the [RAKPiOS quickstart](https://docs.rakwireless.com/product-categories/software-apis-and-libraries/rakpios/quickstart/) to flash your RAK7391 with an operating system and connect it to the Internet.
+1. [Install viam-server](/operate/get-started/setup/).
 
 If you choose a peripheral:
 
@@ -72,7 +73,7 @@ After setting up your gateway hardware, complete the following steps to configur
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Open your machine's page in the [Viam app](https://app.viam.com) and navigate to the **CONFIGURE** tab.
+Open your machine's page in [Viam](https://app.viam.com) and navigate to the **CONFIGURE** tab.
 
 First, add a `board` component:
 
@@ -81,7 +82,7 @@ First, add a `board` component:
    For instance, if you connected a peripheral gateway to a Raspberry Pi 5, choose `raspberry-pi:rpi5`.
    If you have a RAK7391, choose `raspberry-pi:rpi` to represent the internal Raspberry Pi Compute Module 4.
 1. Click **Add module**, and enter a name for your board.
-1. Click **Create** to add the module to your machine.
+1. Click **Create** to add the module and board component to your machine.
 
 Next, add a `lorawan` gateway component:
 
@@ -89,8 +90,8 @@ Next, add a `lorawan` gateway component:
 1. Select the `sensor` type, then select the `lorawan` model that matches the name of your gateway.
    If your SX1302- or SX1303-based peripheral lacks a dedicated model, choose `lorawan:sx1302-hat-generic`.
 1. Click **Add module**, and enter a name for your gateway.
-1. Click **Create** to add the module to your machine.
-1. Click **Save** in the top right to apply your changes and load your new module.
+1. Click **Create**.
+1. Click **Save** in the top right to apply your changes.
 
 {{% /tab %}}
 {{% tab name="JSON Configuration" %}}
@@ -116,7 +117,7 @@ In the `components` section of your machine configuration, add the following obj
 }
 ```
 
-Choose an appropriate board model based from the [board components registry](/operate/reference/components/board/).
+Choose an appropriate board model from the [board components registry](/operate/reference/components/board/).
 
 Choose an appropriate gateway model from the following options:
 
@@ -160,11 +161,11 @@ Complete the following steps to configure your node:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-1. Select the `sensor` type, then select the `lorawan` model that matches the name of your node.
+1. Select the `sensor` type, type `lorawan`, then select the `lorawan` model that matches the name of your node.
    If the name of your node does not appear in the list, choose the generic `lorawan:node` option.
 1. Click **Add module**, and enter a name for your node.
 1. Click **Create** to add the module to your machine.
-1. Click **Save** in the top right to apply your changes and load your new module.
+1. Click **Save** in the top right to apply your changes.
 
 {{% /tab %}}
 {{% tab name="JSON Configuration" %}}
