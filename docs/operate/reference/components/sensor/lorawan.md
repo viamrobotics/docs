@@ -149,7 +149,7 @@ The following attributes are available for RAK7391 gateways:
 | `board` | string | **Required** | Name of the [board component](/operate/reference/components/board/) that represents the Raspberry Pi Compute Module inside the RAK7391. Used for GPIO pin control. |
 | `region_code` | string | Optional | Frequency region of your gateway. <br> Options: `US915`, `EU868` <br> Default: `US915` |
 | `pcie1` | object | optional | PCIe configuration for concentrator connected to PCIe slot 1: <br> <ul><li>`spi_bus` (integer) (Optional): SPI bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> |
-| `pcie2` | object | Optional | PCIe configuration for a second concentrator: <br> <ul><li>`spi_bus` (integer) (Optional): Serial bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> Not configurable for `sx1302-waveshare-hat`. |
+| `pcie2` | object | Optional | PCIe configuration for concentrator connected to PCIe slot 2: <br> <ul><li>`spi_bus` (integer) (Optional): SPI bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> |
 
 ## Add a node
 
