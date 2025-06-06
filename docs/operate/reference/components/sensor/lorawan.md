@@ -220,6 +220,8 @@ Choose an appropriate node model from the following options:
   - supports either the `US915` or `EU868` frequency band
   - uses LoRaWAN MAC specification version 1.0.3
 
+Device-specific models for Dragino and Milesight sensors provide default values for `app_key`, `network_s_key`, and `app_s_key`, so you can omit those fields from your configuration.
+
 Configure attributes based on the tables below:
 
 {{% /tab %}}
@@ -258,6 +260,7 @@ LoRaWAN networks can use any of the following protocols for communication:
 | Activation By Personalization | `ABP` | Static | Static unless manually rotated | <ul><li> `dev_addr` </li><li> `network_s_key` </li><li> `app_s_key` </li></ul> |
 
 To specify an activation protocol for your network, use the `join_type` field.
+Many nodes use the OTAA protocol by default.
 
 ### Decoder script
 
