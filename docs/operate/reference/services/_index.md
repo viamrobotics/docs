@@ -7,5 +7,4 @@ layout: "empty"
 canonical: "/dev/reference/apis/#service-apis"
 no_component: true
 empty_node: true
-toc_hide: true
 ---
