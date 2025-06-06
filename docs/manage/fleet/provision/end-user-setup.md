@@ -55,15 +55,18 @@ If you have already created a machine, select it.
 If you have not yet created a machine, click on **Add new smart machine** and give your machine a name.
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
-**Follow the instructions in the app**
+**Turn on your machine and follow the app instructions**
 
 Turn on the smart machine you are attempting to connect to.
 Then leave the app and navigate to your mobile device's WiFi settings and connect to the WiFi hotspot your machine has created.
 You may need to wait a short time for your machine to boot and create its WiFi hotspot.
+
 Your machine's WiFi hotspot name will begin with `viam-setup-`.
 Unless you have been given other instructions, the WiFi password for this hotspot network is `viamsetup`.
 
-Once you are connected to your machine's WiFi hotspot return to the Viam mobile app.
+Return to the Viam mobile app once connected
+
+You may need to wait a short time for your machine to boot and start its provisioning services.
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
 **Provide the network information for the machine**
@@ -72,6 +75,7 @@ In the mobile app, you will be prompted to provide the network information for t
 
 The machine will now disable the hotspot network and attempt to connect using the provided network information.
 If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
+
 {{% /tablestep %}}
 {{% tablestep number=5 %}}
 **Wait for machine to complete setup**
@@ -134,6 +138,59 @@ If the machine can successfully connect to the network it will now complete its 
 Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
 {{% /tablestep %}}
 {{< /table >}}
+
+## Set up your machine using a custom Flutter app
+
+The [Flutter Provisioning package](https://github.com/viamrobotics/viam_flutter_provisioning/) shows an example for Bluetooth provisioning.
+
+When developing your own application, if you support both Bluetooth and WiFi Hotspot provisioning, make the app choose the best available method.
+We recommend using Bluetooth by default for a smoother setup experience.
+
+### App Development Considerations
+
+When developing mobile apps with Bluetooth provisioning, ensure your app requests appropriate Bluetooth permissions.
+
+## Troubleshooting
+
+### Bluetooth connection issues
+
+If you're having trouble with Bluetooth provisioning:
+
+1. Verify the device supports Bluetooth Low Energy (BLE)
+
+1. **Check Bluetooth permissions**: Ensure the Viam mobile app has Bluetooth permissions enabled on your device.
+
+1. **Verify Bluetooth is enabled**: Make sure Bluetooth is turned on in your mobile device settings.
+
+1. **Check device compatibility**: Ensure your mobile device supports Bluetooth Low Energy (BLE).
+
+1. **Restart Bluetooth**: Try turning Bluetooth off and on again on your mobile device.
+
+If you can open a terminal on the machine:
+
+1. Check if Bluetooth is available:
+
+   ```sh {class="command-line" data-prompt="$"}
+   bluetoothctl list
+   ```
+
+1. Verify Bluetooth service status:
+
+   ```sh {class="command-line" data-prompt="$"}
+   sudo systemctl status bluetooth
+   ```
+
+### WiFi connection issues
+
+If your machine cannot connect to your WiFi network:
+
+1. **Check network credentials**: Verify that the WiFi network name (SSID) and password are correct.
+
+1. **Check network compatibility**: Ensure your WiFi network is compatible with your machine's WiFi adapter.
+
+1. **Check signal strength**: Make sure your machine is within range of your WiFi router.
+
+1. **Try a different network**: If possible, try connecting to a different WiFi network to isolate the issue.
 
 ## Next Steps
 
