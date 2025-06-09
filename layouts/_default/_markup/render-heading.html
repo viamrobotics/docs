@@ -1,5 +1,5 @@
 <h{{ .Level }} id="{{ .Anchor }}" onclick="handleAnchorClick('{{ .Anchor }}')" class="main-content-heading">
-    {{ .Text }}
+    {{ .Text | safeHTML }}
     <div class="checkmark-icon" id="checkmark-{{ .Anchor }}" aria-hidden="true">
       {{ partial "checkmark-icon.html" . }}
     </div>
