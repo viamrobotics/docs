@@ -35,7 +35,13 @@
                     {{ $term_identifier := (printf "term-%s" .Params.id) }}
                         <div>
                             <div>
-                                <h4 id="{{ printf "%s" $term_identifier }}" class="glossary-anchor">{{ .Title }}</h4>
+                                <h4
+                                  onclick="navigator.clipboard.writeText(location.href.split('#')[0] + '#{{ $term_identifier }}')" 
+                                  role="button"
+                                  aria-label="Copy link to {{ .Title }} heading"
+                                  class="permalink-icon"
+                                  id="{{ $term_identifier }}" class="glossary-anchor">{{ .Title }}
+                                </h4>
                             </div>
                             <div id="{{ .Params.id }}">
                                 {{ .Content | strings.TrimPrefix .Summary | safeHTML }}

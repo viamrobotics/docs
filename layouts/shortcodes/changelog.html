@@ -1,6 +1,7 @@
 {{ $color := .Get "color" }}
 {{ $title := .Get "title" }}
 {{ $date := .Get "date" }}
+{{ $anchor := anchorize $title }}
 <div class="filterable changelog-{{ $color }}">
   <div class="changelog changelog-outer">
     <div class="box-fit">
@@ -8,7 +9,12 @@
         <span class="colorbox">{{ $color }}</span>
       </div>
       <div>
-        <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
+        <h3 
+          onclick="navigator.clipboard.writeText(location.href.split('#')[0] + '#{{ $anchor }}')" 
+          role="button"
+          aria-label="Copy link to {{ $title }} heading"
+          class="permalink-icon"
+          id="{{ $anchor }}">{{ $title }}</h3>
       </div>
     </div>
       <div class="date-fit">
