@@ -1,9 +1,6 @@
-<h{{ .Level }}
-    id="{{ .Anchor }}" 
-    onclick="navigator.clipboard.writeText(location.href.split('#')[0] + '#{{ .Anchor }}')" 
-    role="button"
-    aria-label="Copy link to {{ .Text }} heading"
-    class="permalink-icon"
->
+<h{{ .Level }} id="{{ .Anchor }}" onclick="handleAnchorClick('{{ .Anchor }}')" class="main-content-heading">
     {{ .Text }}
+    <div class="checkmark-icon" id="checkmark-{{ .Anchor }}" aria-hidden="true">
+      {{ partial "checkmark-icon.html" . }}
+    </div>
 </h{{ .Level }}>

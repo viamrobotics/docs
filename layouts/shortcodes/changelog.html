@@ -9,12 +9,12 @@
         <span class="colorbox">{{ $color }}</span>
       </div>
       <div>
-        <h3 
-          onclick="navigator.clipboard.writeText(location.href.split('#')[0] + '#{{ $anchor }}')" 
-          role="button"
-          aria-label="Copy link to {{ $title }} heading"
-          class="permalink-icon"
-          id="{{ $anchor }}">{{ $title }}</h3>
+        <h3 id="{{ $anchor }}" onclick="handleAnchorClick('{{ $anchor }}')">
+          {{ $title }}
+          <div class="checkmark-icon" id="checkmark-{{ $anchor }}" aria-hidden="true">
+           {{ partial "checkmark-icon.html" . }}
+          </div>
+        </h3>
       </div>
     </div>
       <div class="date-fit">

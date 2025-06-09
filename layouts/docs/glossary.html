@@ -33,20 +33,19 @@
                 {{ $glossary_terms := sort . "Title" "asc" }}
                     {{ range $glossary_terms }}
                     {{ $term_identifier := (printf "term-%s" .Params.id) }}
+                      <div>
                         <div>
-                            <div>
-                                <h4
-                                  onclick="navigator.clipboard.writeText(location.href.split('#')[0] + '#{{ $term_identifier }}')" 
-                                  role="button"
-                                  aria-label="Copy link to {{ .Title }} heading"
-                                  class="permalink-icon"
-                                  id="{{ $term_identifier }}" class="glossary-anchor">{{ .Title }}
-                                </h4>
+                          <h4 id="{{ $term_identifier }}" onclick="handleAnchorClick('{{ $term_identifier }}')" class="glossary-anchor">
+                            {{ .Title }}
+                            <div class="checkmark-icon" id="checkmark-{{ $term_identifier }}" aria-hidden="true">
+                             {{ partial "checkmark-icon.html" . }}
                             </div>
-                            <div id="{{ .Params.id }}">
-                                {{ .Content | strings.TrimPrefix .Summary | safeHTML }}
-                            </div>
+                          </h4>
                         </div>
+                        <div id="{{ .Params.id }}">
+                            {{ .Content | strings.TrimPrefix .Summary | safeHTML }}
+                        </div>
+                      </div>
                     {{ end }}
                 {{ end }}
             </div>
