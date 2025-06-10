@@ -675,7 +675,7 @@ viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=
 viam machines part list --machine=<machine id>
 viam machines part logs --machine=<machine id> --part=<part id> [...named args]
 viam machines part status --machine=<machine id>
-viam machines part run --machine=<machine id> [--stream] --data <meth>
+viam machines part run --machine=<machine id> [--stream] --data <method>
 viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
@@ -775,7 +775,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `--part` | Part ID for which the command is being issued. | `part` | **Required** |
 | `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs` | **Required** |
 | `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
-| `--org` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--organization` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
 | `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
