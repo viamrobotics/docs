@@ -318,6 +318,8 @@ Follow the steps below to construct the necessary objects and pass them to `Move
 
    {{% alert title="Tip" color="tip" %}}
    To get a better intuition for poses and where you want the arm to move, try [driving the arm manually with the control interface](/operate/mobility/move-arm/arm-no-code/) and notice how the pose indicated in the control interface corresponds to the arm's position in the real world.
+
+   You can also [use the **VISUALIZE** tab](/operate/reference/services/frame-system/#visualize-components-and-frames) to see a representation of your arm's geometry and reference frames.
    {{% /alert %}}
 
 1. If you want to specify any [constraints](/operate/reference/services/motion/constraints/) for the motion, add them to a `Constraints` object:

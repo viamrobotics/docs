@@ -72,3 +72,5 @@ You can also use the arm API to move the arm in code, though it is not recommend
 
 1. To confirm the directions of the x, y, and z axes of your arm, move the arm in each direction and note which way the arm moves in the real world.
    It can be useful to label the axes on your workspace, for example with tape or markers.
+
+1. You can also use the **VISUALIZE** tab to see a representation of your arm's geometry and reference frames.
