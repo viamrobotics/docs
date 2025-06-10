@@ -671,7 +671,7 @@ This includes:
 viam machines list
 viam machines status --organization=<org id> --location=<location id> --machine=<machine id or name>
 viam machines logs --organization=<org id> --location=<location id> --machine=<machine id or name> [...named args]
-viam machines api-key create --machine-id=<machine id> --org-id=<org-id> --name=<key-name>
+viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=<key name>
 viam machines part list --machine=<machine id>
 viam machines part logs --machine=<machine id> --part=<part id> [...named args]
 viam machines part status --organization=<org id> --location=<location id> --machine=<machine id or name>
