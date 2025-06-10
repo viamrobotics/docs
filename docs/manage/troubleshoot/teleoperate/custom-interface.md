@@ -52,10 +52,10 @@ Repeat as many times as necessary.
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
-**Select a machine**
+**Select a location and a machine**
 
-Now, select a machine with which to make your teleop workspace come to life.
-Click **Select machine** and select your configured machine.
+Now, select a location and a machine.
+This will make your teleop workspace come to life.
 
 Your dashboard now shows the configured widgets for the data from your machine:
 
