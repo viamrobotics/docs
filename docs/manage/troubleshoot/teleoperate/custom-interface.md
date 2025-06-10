@@ -55,7 +55,7 @@ Repeat as many times as necessary.
 **Select a location and a machine**
 
 Now, select a location and a machine.
-This will make your teleop workspace come to life.
+This will make your widgets connect to your machine.
 
 Your dashboard now shows the configured widgets for the data from your machine:
 
