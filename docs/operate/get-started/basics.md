@@ -15,7 +15,7 @@ carouselscript: true
 
 Viam is a software platform for building smart applications for the physical world.
 
-Viam consists of:
+The Viam platform consists of:
 
 - An open-source binary called `viam-server` that runs on your machine, managing your local hardware, software, and data, and connecting your device to Viam's cloud.
 - A [cloud app](https://app.viam.com) that you can use to configure and manage your machines and data.
