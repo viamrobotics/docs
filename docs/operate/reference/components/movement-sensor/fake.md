@@ -20,12 +20,12 @@ Note that this model does not get any actual readings, so it supports these meth
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `movement-sensor` type, then select the `fake` model.
 Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/fake-builder.png" alt="Creation of an `fake` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" class="shadow"  >}}
+{{< imgproc src="/components/movement-sensor/fake-builder.png" alt="Creation of an `fake` movement sensor." resize="1200x" style="width:650px" class="shadow"  >}}
 
 Edit and fill in the attributes as applicable.
 

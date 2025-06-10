@@ -96,7 +96,7 @@ To create a new map, follow the instructions below.
 
 2. Set up the `cartographer` module on your machine:
 
-   Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+   Navigate to the **CONFIGURE** tab of your machine's page.
 
    Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
    Select **SLAM**, then select `cartographer`.
@@ -121,7 +121,7 @@ To create a new map, follow the instructions below.
 
    To save your changes, click the **Save** button in the top right corner of the page.
 
-   Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+   Check the **LOGS** tab of your machine to make sure your RPlidar has connected and no errors are being raised.
 
 3. (Optional) Configure cartographer to use cloudSLAM:
 

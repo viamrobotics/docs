@@ -77,11 +77,11 @@ Turn off data capture on your original camera if you haven't already, so that yo
 **Save to start capturing**
 
 Save the config.
-With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
+With cloud sync enabled, captured data is automatically uploaded to Viam after a short delay.
 
 {{% /tablestep %}}
 {{% tablestep number=7 %}}
-**View filtered data in the Viam app**
+**View filtered data on Viam**
 
 Once you save your configuration, place something that is part of your trained ML model within view of your camera.
 

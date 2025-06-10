@@ -163,7 +163,7 @@ This is the recommended order to assemble your rover:
 2. [Unscrew the top of the rover and screw the Pi to the base.](#attach-the-raspberry-pi-to-the-rover)
 3. [Connect the components.](#connect-the-wires)
 4. [Screw the top of the rover back on and turn the rover on.](#turn-the-rover-on)
-5. [Install `viam-server` and connect to the Viam app.](#connect-to-the-viam-app)
+5. [Install `viam-server` and connect to Viam.](#connect-to-viam)
 
 ### Install Raspberry Pi OS
 
@@ -242,9 +242,9 @@ Once you have wired up all the components, reattach the top of the rover and fas
 Insert the batteries and turn the rover on.
 If the Pi has power, the lights on the Raspberry Pi will light up.
 
-### Connect to the Viam app
+### Connect to Viam
 
-While the Pi boots, go to the [Viam app](https://app.viam.com/robots) and add a new machine.
+While the Pi boots, go to the [Viam](https://app.viam.com/robots) and add a new machine.
 Navigate to the **CONFIGURE** tab and find your machine's card.
 An alert will be present directing you to **Set up your machine part**.
 Click **View setup instructions** to open the setup instructions.

@@ -1,6 +1,6 @@
 ## Test the gantry
 
-Once your gantry is configured and connected, open the gantry's **TEST** panel on the **CONFIGURE** or [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) tabs.
+Once your gantry is configured and connected, open the gantry's **TEST** panel on the **CONFIGURE** or [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) tabs.
 
 Use the panel to adjust the position of the actuator on the axis and check whether it moves as expected.
 

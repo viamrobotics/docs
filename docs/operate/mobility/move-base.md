@@ -18,7 +18,7 @@ You have three options for moving a mobile robot [base](/operate/reference/compo
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam. Click to see instructions." %}}
 
 {{% snippet "setup.md" %}}
 
@@ -32,7 +32,7 @@ You have three options for moving a mobile robot [base](/operate/reference/compo
 
 First, connect the base's motors to your machine.
 
-Then, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Then, navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Search for and select a model that supports your motor.
 
@@ -53,7 +53,7 @@ The `wheeled-base` model supports robotic bases with motors on both sides for di
 {{% tablestep number=3 %}}
 **Connect code to your base**
 
-Go to your machine's **CONNECT** tab in the Viam app.
+Go to your machine's **CONNECT** tab.
 Select your preferred programming language and copy the code snippet.
 
 See [Create a web app](/operate/control/web-app/), [Create a mobile app](/operate/control/mobile-app/), or [Create a headless app](/operate/control/headless-app/) for more information, depending on your use case.
@@ -85,7 +85,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 
 
 async def moveInSquare(base):
@@ -141,7 +141,7 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID

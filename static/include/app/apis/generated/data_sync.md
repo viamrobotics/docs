@@ -1,6 +1,6 @@
 ### BinaryDataCaptureUpload
 
-Upload binary data collected on your machine through a specific component and the relevant metadata to the [Viam app](https://app.viam.com).
+Upload binary data collected on your machine through a specific component and the relevant metadata to Viam.
 Uploaded binary data can be found under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you upload.
 
 {{< tabs >}}
@@ -77,12 +77,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```ts {class="line-numbers linkable-line-numbers"}
 const binaryDataId = await dataClient.binaryDataCaptureUpload(
   binaryData,
-  '123abc45-1234-5678-90ab-cdef12345678',
-  'rdk:component:camera',
-  'my-camera',
-  'ReadImage',
-  '.jpg',
-  [new Date('2025-03-19'), new Date('2025-03-19')]
+  "123abc45-1234-5678-90ab-cdef12345678",
+  "rdk:component:camera",
+  "my-camera",
+  "ReadImage",
+  ".jpg",
+  [new Date("2025-03-19"), new Date("2025-03-19")],
 );
 ```
 
@@ -146,7 +146,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### TabularDataCaptureUpload
 
-Upload tabular data collected on your machine through a specific {{< glossary_tooltip term_id="component" text="component" >}} to the [Viam app](https://app.viam.com).
+Upload tabular data collected on your machine through a specific {{< glossary_tooltip term_id="component" text="component" >}} to Viam.
 Uploaded tabular data can be found under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
@@ -227,20 +227,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 const fileId = await dataClient.tabularDataCaptureUpload(
   [
     {
-      timestamp: '2025-03-26T10:00:00Z',
+      timestamp: "2025-03-26T10:00:00Z",
       value: 10,
     },
   ],
-  '123abc45-1234-5678-90ab-cdef12345678',
-  'rdk:component:sensor',
-  'my-sensor',
-  'Readings',
-  [
-    [
-      new Date('2025-03-26T10:00:00Z'),
-      new Date('2025-03-26T10:00:00Z'),
-    ],
-  ]
+  "123abc45-1234-5678-90ab-cdef12345678",
+  "rdk:component:sensor",
+  "my-sensor",
+  "Readings",
+  [[new Date("2025-03-26T10:00:00Z"), new Date("2025-03-26T10:00:00Z")]],
 );
 ```
 
@@ -311,7 +306,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### FileUpload
 
-Upload arbitrary files stored on your machine to the [Viam app](https://app.viam.com) by file name.
+Upload arbitrary files stored on your machine to Viam by file name.
 If uploaded with a file extension of <file>.jpeg/.jpg/.png</file>, uploaded files can be found in the **Images** subtab of the app's [**Data** tab](https://app.viam.com/data).
 If <file>.pcd</file>, the uploaded files can be found in the **Point clouds** subtab.
 All other types of uploaded files can be found under the **Files** subtab of the app's [**Data** tab](https://app.viam.com/data).
@@ -425,7 +420,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### FileUploadFromPath
 
-Upload files stored on your machine to the [Viam app](https://app.viam.com) by filepath.
+Upload files stored on your machine to Viam by filepath.
 Uploaded files can be found under the **Files** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
@@ -467,7 +462,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### StreamingDataCaptureUpload
 
-Upload the contents of streaming binary data and the relevant metadata to the [Viam app](https://app.viam.com).
+Upload the contents of streaming binary data and the relevant metadata to Viam.
 Uploaded streaming data can be found under the [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}

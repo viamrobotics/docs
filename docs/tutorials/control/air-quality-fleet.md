@@ -53,9 +53,9 @@ Make sure all of your sensors are wired to your SBC before starting this tutoria
 
 ## Decide how you will organize your fleet
 
-Before you start connecting your devices to the Viam app, you'll need to decide how you want to group your devices.
+Before you start connecting your devices to Viam, you'll need to decide how you want to group your devices.
 
-In the Viam app, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_:
+On Viam, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_:
 
 - Each location can represent either a physical location or some other conceptual grouping.
 - An organization is the highest level grouping, and often contains all the locations (and machines) of an entire company.
@@ -75,7 +75,7 @@ Imagine you create an air quality monitoring company called Pollution Monitoring
 Anyone can sign up and order one of your sensing machines.
 When a new customer signs up, you assemble a new machine with a sensor, SBC, and power supply.
 
-Before shipping the sensor machine to your new client, you connect the machine to the Viam app and configure it.
+Before shipping the sensor machine to your new client, you connect the machine to Viam and configure it.
 To manage all your company's air quality sensing machines together, you create one organization called Pollution Monitoring Made Simple.
 Inside that organization, you create a location for each customer.
 You have some individual customers, for example Antonia, who have a sensor machine in their home, or perhaps one inside and one outside.
@@ -91,10 +91,9 @@ You, as the organization owner, will be able to manage any necessary configurati
 ### Organize your fleet
 
 For this tutorial, we will walk through how to set up your fleet based on the example above.
-You can choose to manage your fleet of machines differently based on what makes sense for your use case; if you're only configuring one or two sensors for personal use, feel free to add all your machines to one location and skip to the [next section](#connect-your-machines-to-the-viam-app).
+You can choose to manage your fleet of machines differently based on what makes sense for your use case; if you're only configuring one or two sensors for personal use, feel free to add all your machines to one location and skip to the [next section](#connect-your-machines-to-viam).
 
-1. Navigate to the [Viam app](https://app.viam.com) in a web browser.
-   Create an account and log in.
+1. Create a Viam account and log into [Viam](https://app.viam.com).
 1. Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization for your air quality machine company.
    Name the organization and click **Create**.
 1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
@@ -120,7 +119,7 @@ You can choose to manage your fleet of machines differently based on what makes 
 
    In the next section, you'll add machines to the locations.
 
-## Connect your machines to the Viam app
+## Connect your machines to Viam
 
 With your organizational structure in place, let's add some machines:
 
@@ -139,8 +138,8 @@ With your organizational structure in place, let's add some machines:
    Click **View setup instructions**.
    You can find these instructions later if you need them by clicking the part status indicator (which currently reads **Awaiting setup**).
 
-1. Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to the Viam app.
-   `viam-server` is the binary that runs on the single-board computer (SBC), providing functionality including sensor data collection and connection to the Viam app.
+1. Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to Viam.
+   `viam-server` is the binary that runs on the single-board computer (SBC), providing functionality including sensor data collection and connection to Viam.
 
    The setup page will indicate when the machine is successfully connected.
 
@@ -153,7 +152,7 @@ If you are following along for the RobotsRUs business from our example, create a
 
 {{% alert title="Note" color="note" %}}
 If this were a real company and you were shipping air sensing machines to customers, you would have the customer plug in power to the machine wherever they are setting it up.
-Since you already installed `viam-server`, once a customer connects the machine to power and sets up wifi, the machine will automatically re-connect to the Viam app and pull any configuration updates.
+Since you already installed `viam-server`, once a customer connects the machine to power and sets up wifi, the machine will automatically re-connect to Viam and pull any configuration updates.
 {{% /alert %}}
 
 For each sensing machine:
@@ -191,7 +190,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 
 #### Configure the sensor
 
-1. Navigate to the **CONFIGURE** tab of the machine details page in the [Viam app](https://app.viam.com) for your first machine.
+1. Navigate to the **CONFIGURE** tab of the machine details page for your first machine.
 2. Click the **+** (Create) button and click **Component or service** from the dropdown.
    Click **sensor**, then search for `sds011` and click **sds001:v1** from the results.
 3. Click **Add module**.
@@ -264,7 +263,7 @@ If you are only using one air quality sensing machine for this tutorial, you do 
 You can skip to [Test your sensors](#test-your-sensors).
 {{% /alert %}}
 
-While you configured your machine with the builder UI, the Viam app generated a JSON configuration file with all your parameters.
+While you configured your machine with the builder UI, Viam generated a JSON configuration file with all your parameters.
 This is the file that tells `viam-server` what resources are available to it and how everything is connected.
 Click **JSON** in the upper-left corner of the **CONFIGURE** tab to view the generated JSON file.
 You can manually edit this file instead of using the builder UI if you are familiar with JSON.
@@ -302,7 +301,7 @@ Add the fragment you just created to each of your machines including the first o
 Now that all your hardware is configured, it's a good idea to make sure readings are being gathered by the sensors and sent to the cloud before proceeding with the tutorial.
 For each machine:
 
-1. Go to the machine details page in the [Viam app](https://app.viam.com.) and navigate to the **CONTROL** tab.
+1. Go to the machine details page and navigate to the **CONTROL** tab.
 2. Within the **Sensors** section, click **Get Readings** for the **PM_sensor**.
    If the sensor software and hardware is working, you should see values populate the **Readings** column.
 
@@ -365,7 +364,7 @@ The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web i
 For this project, you'll use it to build a page that displays air quality sensor data for a given location.
 You'll host the website locally on your personal computer, and view the interface in a web browser on that computer.
 
-As you'll find out in the [authentication step](#authenticate-your-code-to-your-viam-app-location), you can set each customer up with credentials to access the data from only their location, or you can create a dashboard showing data from all sensors in your entire organization.
+As you'll find out in the [authentication step](#authenticate-your-code-to-your-location), you can set each customer up with credentials to access the data from only their location, or you can create a dashboard showing data from all sensors in your entire organization.
 
 ![The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality.](/tutorials/air-quality-fleet/two-sensors.png)
 
@@ -413,7 +412,7 @@ The `--format=esm` flag in the `"start"` script is important because the ECMAScr
 If you don't know what the proceeding sentence means, don't worry about it; just copy-paste the JSON above and it'll work.
 {{% /alert %}}
 
-### Authenticate your code to your Viam app location
+### Authenticate your code to your location
 
 Your TypeScript code requires an API key to establish a connection to your machines.
 You can set up credentials to access data from all the sensor machines in your organization, or from just one location.
@@ -465,7 +464,7 @@ The following instructions describe how to set up an API key for one location.
 
 1.  Now you need to get the API key and the {{< glossary_tooltip term_id="organization" text="organization" >}} and {{< glossary_tooltip term_id="location" text="location" >}} IDs to replace the placeholder strings in the code you just pasted.
 
-    In the [Viam app](https://app.viam.com), navigate to the location page for the location containing your air quality machines.
+    Navigate to the location page for the location containing your air quality machines.
 
     ![The location secret with a Copy button next to it.](/tutorials/air-quality-fleet/loc-secret-button.png)
 

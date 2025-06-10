@@ -22,12 +22,12 @@ Then, configure the servo:
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `servo` type, then select the `gpio` model.
 Enter a name or use the suggested name for your servo and click **Create**.
 
-![An example configuration for a gpio servo in the Viam app Config Builder.](/components/servo/gpio-servo-ui-config.png)
+![An example configuration for a gpio servo.](/components/servo/gpio-servo-ui-config.png)
 
 Copy and paste the following attribute template into your servo's attributes field.
 Then remove and fill in the attributes as applicable to your servo, according to the table below.

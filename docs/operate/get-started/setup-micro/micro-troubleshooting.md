@@ -55,7 +55,7 @@ espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa
 
 Try the connection command again.
 The baud rate on your device may not have been fast enough to connect.
-If successful, the Viam app will show that your machine part's status is **Live**.
+If successful, Viam will show that your machine part's status is **Live**.
 
 You can also try disconnecting and reconnecting the ESP32 to the USB port, then retrying the flash command.
 
@@ -63,15 +63,15 @@ You can also try disconnecting and reconnecting the ESP32 to the USB port, then 
 
 If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
 
-1. Navigate to your machine's page on the [Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+1. Navigate to your machine's page and select the **CONFIGURE** tab.
 1. Select the part status dropdown to the right of your machine's name on the top of the page:
 
    {{<imgproc src="/get-started/micro-credentials.png" resize="450x" declaredimensions=true alt="Machine part info menu accessed by Live status indicator, with machine cloud credentials button highlighted." class="shadow" >}}
 
 1. Click the copy icon underneath **Machine cloud credentials**.
-   The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+   The Micro-RDK needs this JSON object, which contains your machine part secret key and cloud app address, to connect to Viam.
 1. Navigate to the directory of the project you just created.
-1. Create a new <file>viam.json</file> file and paste the machine cloud credentials from the Viam app in.
+1. Create a new <file>viam.json</file> file and paste the machine cloud credentials in.
 1. Save the file.
 
 ### Error: failed to run custom build command for `esp32-explorer (/host)`

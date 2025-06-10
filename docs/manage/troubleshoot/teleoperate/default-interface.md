@@ -4,7 +4,7 @@ linkTitle: "Default interface"
 titleMustBeLong: true
 weight: 30
 type: "docs"
-description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
+description: "Use the control tab or the Viam mobile app to monitor and remotely operate your machines."
 tags: ["teleop", "fleet management", "control", "app"]
 languages: []
 viamresources: ["sensor", "camera", "movement sensor"]
@@ -22,7 +22,7 @@ aliases:
 
 You can remotely control, test, and operate any configured machine using the default control interface
 
-## Viam app
+## Web UI
 
 The **CONTROL** tab provides a control interface for each component and service that you have configured for your machine.
 
@@ -37,7 +37,7 @@ You can also switch between different machine parts directly from the **CONTROL*
 
 {{<gif webm_src="/fleet/mobile-app-control.webm" mp4_src="/fleet/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" class="alignright" max-width="300px">}}
 
-In addition to the Viam app, the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) also allows you to test, monitor and remotely operate machines in your fleet.
+Like the web UI, the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) also allows you to test, monitor and remotely operate machines in your fleet.
 
 For example, you can view live camera feeds, adjust components' runtime parameters, and switch between controllable components.
 

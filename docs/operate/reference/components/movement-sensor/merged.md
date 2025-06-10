@@ -27,17 +27,17 @@ Reference the `name` you configure for each individual component in the `merged`
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `merged` model.
 Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" class="shadow"  >}}
+{{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor." resize="1200x" style="width:650px" class="shadow"  >}}
 
 Fill in the attributes as applicable to your movement sensor, according to the table below.
 For example:
 
-{{< imgproc src="/components/movement-sensor/merged-config-builder-attributes.png" alt="Creation of an `merged` movement sensor with attributes filled in in the Viam app config builder." resize="1200x" style="width:650px" >}}
+{{< imgproc src="/components/movement-sensor/merged-config-builder-attributes.png" alt="Creation of an `merged` movement sensor with attributes filled in." resize="1200x" style="width:650px" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

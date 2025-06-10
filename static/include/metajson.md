@@ -61,7 +61,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>markdown_link</code></td>
 <td>string</td>
 <td>Optional</td>
-<td>Link to the documentation (README) for this module. The Viam app uses this to render your README on your module's page in the <a href="https://app.viam.com/registry">registry</a>. Similar to the <code>markdown_link</code> within the <code>models</code> object (described above), which allows the app to render info for a specific model in the configuration panel.</td>
+<td>Link to the documentation (README) for this module. Viam uses this to render your README on your module's page in the <a href="https://app.viam.com/registry">registry</a>. Similar to the <code>markdown_link</code> within the <code>models</code> object (described above), which allows the app to render info for a specific model in the configuration panel.</td>
 </tr>
 <tr>
 <td><code>$schema</code></td>

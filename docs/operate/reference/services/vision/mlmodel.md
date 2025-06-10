@@ -48,7 +48,7 @@ Once you have deployed your ML model, configure your `mlmodel` detector or class
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `vision` type, then select the `ML model` model.
 Enter a name or use the suggested name for your service and click **Create**.
@@ -146,8 +146,8 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _input tensor_ must be named `image`
   - The _output tensor_ must be named `probability`
 
-If you [trained a TFlite ML model using the Viam app](/data-ai/ai/train-tflite/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
-However, if you uploaded your own ML model, or are using one from the [Viam Registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
+If you [trained a TFlite ML model using Viam](/data-ai/ai/train-tflite/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+However, if you uploaded your own ML model, or are using one from the [registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 #### Remap tensor names
 
@@ -206,7 +206,7 @@ When done, click the **Save** button in the top right corner of the page, then p
 
 ## Test your detector or classifier
 
-You can test your detector or classifier with [existing images in the Viam app](#existing-images-in-the-cloud) or [live camera footage](#live-camera-footage).
+You can test your detector or classifier with [existing images in the cloud](#existing-images-in-the-cloud) or [live camera footage](#live-camera-footage).
 You can also test detectors and classifiers with [existing images on a computer](#existing-images-on-your-machine).
 
 ### Existing images in the cloud
@@ -219,7 +219,7 @@ The feature is only available for classifiers that were uploaded after September
 
 {{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
 
-If you have images stored in the [Viam Cloud](/data-ai/capture-data/capture-sync/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
+If you have images stored in the [Viam Cloud](/data-ai/capture-data/capture-sync/), you can run your classifier against your images.
 
 1. Navigate to the [Data tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 2. Click on an image to open the side menu, and select the **Actions** tab under the **Data** tab.
@@ -230,7 +230,7 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-You can test your detector or classifier from the [**Control tab**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) or with code using a camera that is part of your machine.
+You can test your detector or classifier from the [**Control tab**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) or with code using a camera that is part of your machine.
 
 #### Test your vision service
 

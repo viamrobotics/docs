@@ -17,7 +17,7 @@ no_list: true
 # SMEs: Data team, Natalia Jacobowitz
 ---
 
-<!-- After following this tutorial, you will be able to use the data management service to capture and sync sensor data from your machine to the Viam app, from which you can then configure a visualization dashboard such as Grafana to view and optionally query your sensor readings. -->
+<!-- After following this tutorial, you will be able to use the data management service to capture and sync sensor data from your machine to Viam, from which you can then configure a visualization dashboard such as Grafana to view and optionally query your sensor readings. -->
 
 Once you have [configured data query](/data-ai/data/query/#query-data-using-third-party-tools) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
 
@@ -27,7 +27,7 @@ Only components that capture [sensor](/operate/reference/components/sensor/) rea
 
 You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and tags.
 
-Follow the steps in this tutorial to learn how to collect data from your machine, sync that data to the Viam app, enable third-party access to that data, and present that data visually and flexibly in Grafana.
+Follow the steps in this tutorial to learn how to collect data from your machine, sync that data to Viam, enable third-party access to that data, and present that data visually and flexibly in Grafana.
 
 {{% alert title="Info" color="info" %}}
 This tutorial focuses on using Grafana to visualize your captured data.
@@ -40,14 +40,14 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 
 Before following this tutorial, ensure you have:
 
-- Added a new machine in the [Viam app](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
+- Added a new machine on [Viam](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to Viam.
 - A configured [sensor component](/operate/reference/components/sensor/), such as the [`bme280`](https://github.com/viam-modules/bosch/) sensor, that reports data.
   If it's a physical sensor, make sure to connect it to your machine's computer.
 
   - This tutorial uses a dataset of plant moisture measurements, originally captured for our [Plant watering tutorial](/tutorials/projects/make-a-plant-watering-robot/) using an analog resistive soil moisture sensor connected to an analog-to-digital-converter (ADC).
-    The ADC functionality was provided by the [`mcp300x-adc-sensor` module](https://app.viam.com/module/hazalmestci/mcp300x-adc-sensor) from the [Viam Registry](https://app.viam.com/registry).
+    The ADC functionality was provided by the [`mcp300x-adc-sensor` module](https://app.viam.com/module/hazalmestci/mcp300x-adc-sensor) from the [registry](https://app.viam.com/registry).
 
-  - If you already have data synced to the Viam app that you want to use, you can skip this requirement, and can skip directly to the [Configure data query](#configure-data-query) portion of this tutorial.
+  - If you already have data synced to Viam that you want to use, you can skip this requirement, and can skip directly to the [Configure data query](#configure-data-query) portion of this tutorial.
 
 - A Grafana instance.
 
@@ -63,12 +63,12 @@ You can manage how your machine captures and syncs data to the cloud using the d
 
 First, add the data management service to your machine to be able capture and sync data:
 
-1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's **CONFIGURE** tab.
 1. Click the **+** button in the left-hand menu and select **Component or service** from the dropdown.
 1. Select **data management**.
 1. Give the service a name, like `viam-data-manager`, then click **Create**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
-   By default, the data management service captures data locally to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
+   By default, the data management service captures data locally to the <file>~/.viam/capture</file> directory, and syncs captured data files to Viam every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save** in the upper-right corner of the screen to save your changes.
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
@@ -83,7 +83,7 @@ Only sensor readings or other time-series data can be visualized in this manner.
 
 To enable data capture for a sensor component:
 
-1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's **CONFIGURE** tab.
 
 1. In the configuration pane for your [configured sensor component](#prerequisites), find the **Data capture** section, and click the **Add method** button to enable data capture for this camera.
 
@@ -95,7 +95,7 @@ To enable data capture for a sensor component:
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-After a short while, your sensor will begin capturing live readings, and syncing those readings to the Viam app.
+After a short while, your sensor will begin capturing live readings, and syncing those readings to Viam.
 You can check that data is being captured and synced by clicking on the menu icon on the sensor configuration pane. and selecting **View captured data**.
 
 For more information see [data management service configuration](/data-ai/capture-data/capture-sync/).
@@ -104,11 +104,11 @@ For more information see [data management service configuration](/data-ai/captur
 
 Next, enable the ability to query your synced data.
 When you sync captured data to Viam, that data is stored in the Viam organization’s [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
-Configuring data query allows you to directly [query your data](/data-ai/data/query/#query-data-in-the-viam-app) using the Viam app or a compatible client (such as `mongosh`), but also allows Grafana to access that data and visualize it.
+Configuring data query allows you to directly [query your data](/data-ai/data/query/#query-data-in-the-web-ui) using a compatible client (such as `mongosh`) or Grafana to access that data and visualize it.
 
 To enable data query:
 
-1. Follow the steps to [configure data query](/data-ai/data/query/#query-data-in-the-viam-app).
+1. Follow the steps to [configure data query](/data-ai/data/query/#query-data-in-the-web-ui).
 
 1. Note the username and hostname returned from these steps, in addition to the password you chose for that user.
    You will use this information in the next section.
@@ -222,7 +222,7 @@ See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/
 
 In this tutorial, you learned:
 
-- how to use the [data management service](/data-ai/capture-data/capture-sync/) to capture data from your machine and sync it to the Viam app
+- how to use the [data management service](/data-ai/capture-data/capture-sync/) to capture data from your machine and sync it to Viam
 - how to [enable data query access](/data-ai/data/query/#configure-data-query) to your synced data
 - how to connect Grafana to your data
 - how to build a dashboard visualizing that data

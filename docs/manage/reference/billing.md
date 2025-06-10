@@ -83,6 +83,6 @@ You can expect a response within 1–3 business days.
 
 ## Access billing information programmatically
 
-The [billing client API](/dev/reference/apis/billing-client/) supports the following methods to retrieve billing information from the [Viam app](https://app.viam.com):
+The [billing client API](/dev/reference/apis/billing-client/) supports the following methods to retrieve billing information from [Viam](https://app.viam.com):
 
 {{< readfile "/static/include/services/apis/billing-client.md" >}}
