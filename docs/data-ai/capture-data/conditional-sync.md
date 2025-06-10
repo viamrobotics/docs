@@ -1,5 +1,5 @@
 ---
-title: "Conditional cloud sync"
+title: "Conditional sync"
 linkTitle: "Conditional sync"
 description: "Trigger cloud sync to sync captured data when custom conditions are met."
 type: "docs"
@@ -15,7 +15,7 @@ aliases:
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
-next: /data-ai/capture-data/advanced/advanced-data-capture-sync/
+next: /data-ai/reference/advanced-data-capture-sync/
 date: "2024-12-04"
 ---
 

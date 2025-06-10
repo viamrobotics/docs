@@ -11,9 +11,11 @@ aliases:
   - /data/upload/
   - /services/data/upload/
   - /how-tos/upload-data/
+  - /data-ai/ai/advanced/upload-external-data/
+  - /data-ai/ai/advanced/
 date: "2024-12-04"
 description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
-prev: "/data-ai/ai/act/"
+prev: "/data-ai/inference/act/"
 ---
 
 When you configure the data management service, Viam automatically uploads data from the default directory `~/.viam/capture` and any directory you configured.

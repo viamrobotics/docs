@@ -4,6 +4,8 @@ title: "Alert on inferences"
 weight: 60
 layout: "docs"
 type: "docs"
+aliases:
+  - /data-ai/ai/alert/
 description: "Use triggers to send email notifications when inferences are made."
 ---
 
@@ -21,7 +23,7 @@ For example, a trigger could alert you when a camera feed detects an anomaly.
 
 {{< expand "A configured camera and vision service." >}}
 
-Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/ai/run-inference/).
+Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/inference/).
 
 {{< /expand >}}
 
