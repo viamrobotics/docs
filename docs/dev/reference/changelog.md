@@ -42,6 +42,21 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Move machines between locations" date="2025-06-10" %}}
+
+Organization owners and location owners can now move machines between locations within their organization using the web UI.
+
+**Important considerations when moving machines:**
+
+- Machine network address changes require updating code references
+- Access permissions are updated based on the new location
+- Historical data access is preserved based on location permissions at the time of capture
+- Users in the new location cannot access historical data from when the machine was in the previous location
+
+For more information, see [Move machines between locations](/manage/fleet/move-machines/).
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
 The frame tab no longer exists.
