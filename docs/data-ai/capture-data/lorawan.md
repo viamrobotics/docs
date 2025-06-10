@@ -1,6 +1,6 @@
 ---
-title: "Configure a LoRaWAN network"
-linkTitle: "LoRaWAN"
+title: "Create a LoRaWAN network"
+linkTitle: "Create a LoRaWAN network"
 weight: 60
 type: "docs"
 description: "Configure a gateway and nodes to communicate over the LoRaWAN protocol."
@@ -24,8 +24,8 @@ You can find the module's source code in the [lorawan GitHub repository](https:/
 You can use Viam to create LoRaWAN networks containing one gateway and multiple nodes.
 In a LoRaWAN network, information flows in two directions:
 
-- **uplink** transmits from nodes to gateways
-- **downlink** transmits from gateways to nodes
+- **uplinks** transmit from nodes to gateways
+- **downlinks** transmit from gateways to nodes
 
 ![A LoRaWAN network consisting of a single gateway and multiple nodes](/components/sensor/lorawan.png)
 
@@ -130,27 +130,22 @@ Configure attributes based on the tables below:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for SX1302-based LoRaWAN gateways:
+You must configure the following attributes for SX1302 and SX1303-based LoRaWAN gateways:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | Name of the [board component](/operate/reference/components/board/) that the peripheral is connected to. Used for GPIO pin control. |
-| `spi_bus` | integer | Optional | SPI bus number used to connect the gateway peripheral. <br> Options: `0`, `1` |
-| `region_code` | string | Optional | Frequency region of your gateway. <br> Options: `US915`, `EU868` <br> Default: `US915` |
 | `reset_pin` | integer | **Required** | GPIO pin used for peripheral reset. <br> Not configurable for `sx1302-waveshare-hat`. |
-| `power_en_pin` | integer | Optional | GPIO pin used for peripheral power enable. <br> Not configurable for `sx1302-waveshare-hat`. |
-| `path` | string | Optional | Serial path that the peripheral is mounted at, if connected through USB. <br> Not configurable for `sx1302-waveshare-hat`. |
 
-The following attributes are available for RAK7391 gateways:
+You must configure the following attributes for RAK7391 gateways:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | Name of the [board component](/operate/reference/components/board/) that represents the Raspberry Pi Compute Module inside the RAK7391. Used for GPIO pin control. |
-| `region_code` | string | Optional | Frequency region of your gateway. <br> Options: `US915`, `EU868` <br> Default: `US915` |
-| `pcie1` | object | optional | PCIe configuration for concentrator connected to PCIe slot 1: <br> <ul><li>`spi_bus` (integer) (Optional): SPI bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> |
-| `pcie2` | object | Optional | PCIe configuration for concentrator connected to PCIe slot 2: <br> <ul><li>`spi_bus` (integer) (Optional): SPI bus that the concentrator is connected to, if connected through SPI. </li><li>`serial_path` (string) (Optional): Serial path that the concentrator is mounted at, if connected through USB. </li></ul> |
+
+For generic gateways, you must also configure `spi_bus`, `power_en_pin`, and `path`. For a full list of attributes, see the [module README](https://github.com/viam-modules/lorawan?tab=readme-ov-file#configuration-for-lorawan-gateways).
 
 ## Add a node
 
@@ -181,7 +176,6 @@ In the `components` section of your machine configuration, add the following obj
   "api": "rdk:component:sensor",
   "model": "viam:lorawan:<node-name>",
   "attributes": {
-    "join_type": "OTAA",
     "dev_eui": <device-eui>,
     "app_key": <application-key>,
     "gateways": [<gateway-name>]
@@ -228,21 +222,29 @@ Configure attributes based on the tables below:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for nodes:
+You must configure the following attributes for OTAA nodes:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `dev_eui` | string | **Required** | The **device EUI (Extended Unique Identifier)**, a unique 64-bit identifier for the LoRaWAN device in hexadecimal format (16 characters). Found on your device or in device packaging. |
-| `join_type` | string | Optional | The [activation protocol](#activation-protocols) used to secure this network. <br> Default: "OTAA". <br> Options: "OTAA", "ABP" |
-| `app_key` | string | Optional | The 128-bit hexadecimal AES **application key** used for device authentication and session key derivation. Required for OTAA activation protocol. Found in the device datasheet. <br> On `milesight-ct101` and `milesight-em310-tilt`, defaults to `5572404C696E6B4C6F52613230313823`. |
 | `dev_addr` | string | Optional | 32-bit hexadecimal **device address** used to identify this device in uplink messages. Required for ABP activation protocol. Found in the device datasheet or in device packaging. |
 | `app_s_key` | string | Optional | 128-bit hexadecimal **application session key** used to decrypt uplink messages. Required for ABP activation protocol. Found in the device datasheet or in device packaging. <br> On `milesight-ct101` and `milesight-em310-tilt`, defaults to `5572404C696E6B4C6F52613230313823`. |
 | `network_s_key` | string | Optional | 128-bit hexadecimal **network session key** used to decrypt uplink messages. Required for ABP activation protocol. Found in the device datasheet or in device packaging. <br> On `milesight-ct101` and `milesight-em310-tilt`, defaults to `5572404C696E6B4C6F52613230313823`. |
 | `gateways` | string[] | **Required** | Name of the [gateway component](#add-a-gateway) in your Viam configuration. |
-| `uplink_interval_mins` | decimal | **Required** | Interval between uplink messages sent from the node, in minutes. Found in the device datasheet, but can be modified. Configured by downlink after initial connection. <br> On `milesight-ct101`, defaults to `10`. On `milesight-em310-tilt`, defaults to `1080`. |
-| `decoder_path` | string | **Required** | Path to a Javascript **decoder script** used to interpret data transmitted from the node. You can use a local path on your device or an HTTP(S) URL that points to a file on a remote server. If the decoder script provides multiple implementations, uses the Chirpstack version. Not compatible with The Things Network decoders. <br> On supported Milesight and Dragino models, defaults to the latest decoder published by the manufacturer on GitHub. |
-| `fport` | string | Optional | 8-bit hexadecimal **frame port** used to send downlinks to the device. Found in the device datasheet. <br> On supported Milesight models, defaults to `"55"` (equivalent to `0x55`). <br> On supported Dragino models, defaults to `"01"` (equivalent to `0x01`). |
+
+You must configure the following attributes for ABP nodes:
+
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `join_type` | string | Optional | The [activation protocol](#activation-protocols) used to secure this network. <br> Default: "OTAA". <br> Options: "OTAA", "ABP" |
+| `dev_eui` | string | **Required** | The **device EUI (Extended Unique Identifier)**, a unique 64-bit identifier for the LoRaWAN device in hexadecimal format (16 characters). Found on your device or in device packaging. |
+| `app_key` | string | Optional | The 128-bit hexadecimal AES **application key** used for device authentication and session key derivation. Required for OTAA activation protocol. Found in the device datasheet. <br> On `milesight-ct101` and `milesight-em310-tilt`, defaults to `5572404C696E6B4C6F52613230313823`. |
+| `gateways` | string[] | **Required** | Name of the [gateway component](#add-a-gateway) in your Viam configuration. |
+
+For generic nodes, you must also configure a [`decoder_path`](#decoder-script).
+
+For a full list of attributes, see the [module README](https://github.com/viam-modules/lorawan?tab=readme-ov-file#configuration-for-lorawan-nodes).
 
 {{% alert title="Info" color="info" %}}
 
