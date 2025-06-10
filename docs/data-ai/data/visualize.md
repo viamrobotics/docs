@@ -14,10 +14,10 @@ aliases:
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "fleet"]
 date: "2024-12-04"
-description: "Use teleop or grafana to visualize sensor data."
+description: "Use teleop or Grafana to visualize sensor data."
 ---
 
-Once you have used the data management service to [capture data](/data-ai/capture-data/capture-sync/), you can visualize your data on a dashboard with the **TELEOP** page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
+Once you have used the data management service to [capture data](/data-ai/capture-data/capture-sync/), you can visualize your data on a dashboard on the [TELEOP](https://app.viam.com/teleop) page or a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
 
 ## Teleop
 

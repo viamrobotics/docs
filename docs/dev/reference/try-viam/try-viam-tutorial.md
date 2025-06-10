@@ -140,7 +140,7 @@ The [web gamepad component](/components/input-controller/webgamepad/) is disable
 
 ## Learn about machine configuration
 
-on Viam, navigate to the **Components** subtab, under **CONFIGURE**.
+On your machine's page, navigate to the **CONFIGURE** tab.
 There you can view the configuration for each component in the machine: attributes, component dependencies, pin assignments, and more.
 
 ![The CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](appendix/try-viam/try-viam/config-builder.png)

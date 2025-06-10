@@ -47,7 +47,7 @@ async def connect() -> RobotClient:
             api_key_id='<API-KEY-ID>'
         )
     return await RobotClient.at_address(
-      address='ADDRESS FROM CONNECT TAB',
+      address='MACHINE ADDRESS',
       options=opts
     )
 

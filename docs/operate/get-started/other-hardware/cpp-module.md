@@ -1092,8 +1092,8 @@ int main(int argc, char** argv) {
 
 #### (Optional) Configure logging
 
-If desired, you can configure your module to output log messages to Viam.
-Log messages sent to Viam appear on the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for your machine in an easily-parsable and searchable manner.
+If desired, you can configure your module to output log messages.
+Log messages appear on the [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs) for your machine in an easily-parsable and searchable manner.
 
 Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
 
@@ -1491,7 +1491,7 @@ _Add instructions here for any requirements._
 
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
-Navigate to the **CONFIGURE** tab of your [machine](https://docs.viam.com/fleet/machines/).
+Navigate to your machine's **CONFIGURE** tab.
 [Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:

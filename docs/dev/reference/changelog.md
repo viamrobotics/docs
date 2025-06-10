@@ -613,7 +613,7 @@ You can now use the [generic service](/operate/reference/components/generic/) to
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
 You can now upload [machine learning (ML) models](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) to the Viam Registry, in addition to modules.
-You may upload models you have trained yourself using Viam, or models you have trained outside of the App.
+You may upload models you have trained yourself using Viam, or models you have trained outside of Viam.
 When uploading, you have the option to make your model available to the general public for reuse.
 
 {{% /changelog %}}

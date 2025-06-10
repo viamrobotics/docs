@@ -36,7 +36,7 @@ To configure an `esp32` board, navigate to the **CONFIGURE** tab of your machine
 
 {{< alert title="Info" color="info" >}}
 
-The`esp32` [board](/operate/reference/components/board/) model is not currently available as when configuring your machine using **Builder** mode.
+The`esp32` [board](/operate/reference/components/board/) model is not currently available when configuring your machine using **Builder** mode.
 
 {{< /alert >}}
 

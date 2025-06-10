@@ -772,14 +772,14 @@ You can view uploaded training scripts by navigating to the [registry's **Traini
 
 ## Submit a training job
 
-After uploading the training script, you can run it by submitting a training job using the web UI, the CLI or the [ML Training client API](/dev/reference/apis/ml-training-client/#submittrainingjob).
+After uploading the training script, you can run it by submitting a training job using the web UI, the CLI or the [ML training client API](/dev/reference/apis/ml-training-client/#submittrainingjob).
 
 {{< table >}}
 {{% tablestep number=1 %}}
 **Create the training job**
 
 {{< tabs >}}
-{{% tab name="web UI" min-height="150px" %}}
+{{% tab name="Web UI" min-height="150px" %}}
 Navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train a model on.
 
 Click **Train model** and select **Train on a custom training script**, then follow the prompts.

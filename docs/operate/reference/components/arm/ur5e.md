@@ -24,7 +24,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `arm` type, then select the `ur5e` model.
 Enter a name or use the suggested name for your arm and click **Create**.
 
-{{<imgproc src="/components/arm/ur5e-ui-config.png" resize="x1100" declaredimensions=true alt="web UI configuration panel for an arm of model ur5e, with Attributes & Depends On dropdowns and the option to add a frame." style="width:600px" class="imgzoom shadow" >}}
+{{<imgproc src="/components/arm/ur5e-ui-config.png" resize="x1100" declaredimensions=true alt="Web UI configuration panel for an arm of model ur5e, with Attributes & Depends On dropdowns and the option to add a frame." style="width:600px" class="imgzoom shadow" >}}
 
 Edit and fill in the attributes as applicable.
 

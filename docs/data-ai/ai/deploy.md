@@ -32,7 +32,7 @@ After training or uploading a machine learning model, use a machine learning (ML
 
 ## Deploy your ML model on an ML model service
 
-1. Navigate to the **CONFIGURE** tab of one of your machine.
+1. Navigate to the **CONFIGURE** tab of one of your machines.
 2. Add an ML model service that supports the ML model you want to use.
    - For example, use the `ML model / TFLite CPU` service for TFlite ML models that you trained with Viam's built-in training.
 

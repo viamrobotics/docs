@@ -24,7 +24,7 @@ date: "2024-09-20"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The fleet management API allows you to manage your machine fleet with code.
+The fleet management API allows you to manage your machine fleet with code the same way you can do in the [web UI](https://app.viam.com/).
 With it you can
 
 - create and manage organizations, locations, and individual machines

@@ -41,7 +41,7 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 To create a dataset, use the CLI or the web UI:
 
 {{< tabs >}}
-{{% tab name="web UI" %}}
+{{% tab name="Web UI" %}}
 
 1. Open the [**DATASETS** tab on the **DATA** page](https://app.viam.com/data/datasets).
 
@@ -194,7 +194,7 @@ Repeat these steps for all images in the dataset.
 ## Add tagged images to a dataset
 
 {{< tabs >}}
-{{% tab name="web UI" %}}
+{{% tab name="Web UI" %}}
 
 1. Open the [**DATA** page](https://app.viam.com/data/view).
 
