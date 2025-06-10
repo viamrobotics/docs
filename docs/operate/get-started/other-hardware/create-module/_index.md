@@ -1094,6 +1094,7 @@ Configure it just as you would [configure any other component or service in the 
 1. Go to your machine's **CONFIGURE** tab in the Viam app.
 
 1. Click the **+** button, select **Component or service**, and search for and select your model.
+   If you cannot find your new module, check that you are in the same organization you uploaded your module for.
 
 1. Click **Add module**, enter a name for your resource, and click **Create**.
 
