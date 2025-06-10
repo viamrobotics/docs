@@ -669,14 +669,14 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
-viam machines status --organization=<org id> --location=<location id> --machine=<machine id or name>
-viam machines logs --organization=<org id> --location=<location id> --machine=<machine id or name> [...named args]
+viam machines status --machine=<machine id>
+viam machines logs --machine=<machine id> [...named args]
 viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=<key name>
 viam machines part list --machine=<machine id>
 viam machines part logs --machine=<machine id> --part=<part id> [...named args]
-viam machines part status --organization=<org id> --location=<location id> --machine=<machine id or name>
-viam machines part run --organization=<org id> --location=<location id> --machine=<machine id or name> [--stream] --data <meth>
-viam machines part shell --organization=<org id> --location=<location id> --machine=<machine id or name> --part=<part id>
+viam machines part status --machine=<machine id>
+viam machines part run --machine=<machine id> [--stream] --data <meth>
+viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
 ```
@@ -691,7 +691,7 @@ viam machines list
 viam machines status  --machine=123
 
 # create an api key for a machine
-viam machines api-key create --machine-id=123 --org-id=456 --name=MyKey
+viam machines api-key create --machine-id=123 --name=MyKey
 
 # stream logs from a machine
 viam machines logs --machine=123
@@ -773,7 +773,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--part` | Part ID for which the command is being issued. | `part` | **Required** |
-| `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs` | **Required** |
+| `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs` | **Required** |
 | `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
 | `--org` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
 | `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
