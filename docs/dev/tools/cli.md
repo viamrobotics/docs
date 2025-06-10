@@ -672,12 +672,12 @@ viam machines list
 viam machines status --organization=<org id> --location=<location id> --machine=<machine id or name>
 viam machines logs --organization=<org id> --location=<location id> --machine=<machine id or name> [...named args]
 viam machines api-key create --machine-id=<machine id> --org-id=<org-id> --name=<key-name>
-viam machines part list --machine=<machine id or name>
-viam machines part logs --machine=<machine id or name> --part=<part id> [...named args]
+viam machines part list --machine=<machine id>
+viam machines part logs --machine=<machine id> --part=<part id> [...named args]
 viam machines part status --organization=<org id> --location=<location id> --machine=<machine id or name>
 viam machines part run --organization=<org id> --location=<location id> --machine=<machine id or name> [--stream] --data <meth>
 viam machines part shell --organization=<org id> --location=<location id> --machine=<machine id or name> --part=<part id>
-viam machines part restart --machine=<machine id or name> --part=<part id>
+viam machines part restart --machine=<machine id> --part=<part id>
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
 ```
 
@@ -787,7 +787,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `--output` | The path to the output file to store logs in. | `logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)). | `part run` | **Required** |
-| `--machine-id` | The ID or name of the machine to create an API key for. | `api-key` | **Required** |
+| `--machine-id` | The ID of the machine to create an API key for. | `api-key` | **Required** |
 | `--name` | The optional name of the API key. | `api-key` | Optional |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | `part cp` | Optional |
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
