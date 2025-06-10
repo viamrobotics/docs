@@ -285,11 +285,11 @@ To run the modular resource, first copy the module binary to your Raspberry Pi.
 
 ### Configure the Intermode base resource
 
-You will now configure your base in the [Viam app](https://app.viam.com).
+You will now configure your base.
 Go to the [machine you added during setup](#machine-setup).
 To make your module accessible to `viam-server`, you must add it as a local module:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
 1. Enter a **Name** for this instance of your modular resource, for example `my-custom-base-module`.
 1. Enter the module's [executable path](/operate/get-started/other-hardware/create-module/#test-your-module-locally).
@@ -299,7 +299,7 @@ To make your module accessible to `viam-server`, you must add it as a local modu
 
 Now that `viam-server` can find the module, you can add the base component it provides for your Intermode base:
 
-1. On the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com):
+1. On the **CONFIGURE** tab of your machine's page:
 
    - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**.
    - Then, select **Local component**.
@@ -318,7 +318,7 @@ For more information on modules and how they work, see the [Create a module](/op
 
 ### Control the rover
 
-After you configured the base, go to the [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#viam-app) tab and expand the base component to view the controls to enable keyboard or discrete control over your machine's movement.
+After you configured the base, go to the [**CONTROL**](/manage/troubleshoot/teleoperate/default-interface/#web-ui) tab and expand the base component to view the controls to enable keyboard or discrete control over your machine's movement.
 
 {{< alert title="Caution" color="caution" >}}
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure your rover has sufficient space to drive around without hitting anyone or anything.

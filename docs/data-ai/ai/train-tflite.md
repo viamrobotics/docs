@@ -31,7 +31,7 @@ Follow this guide to use your image data to train an ML model, so that your mach
 
 ## Prerequisites
 
-{{% expand "a machine connected to the Viam app" %}}
+{{% expand "a machine connected to Viam" %}}
 
 {{% snippet "setup.md" %}}
 
@@ -51,7 +51,7 @@ Now that you have a dataset that contains your labeled images, you are ready to 
 {{% tablestep number=1 %}}
 **Find your training dataset**
 
-In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
+Navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}

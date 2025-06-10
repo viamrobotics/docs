@@ -32,7 +32,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
+    return await RobotClient.at_address("MACHINE ADDRESS", opts)
 
 
 # Get largest detection box and see if it's center is in the left, center, or
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
 {{% /expand%}}
 
-If you configured the color detector to detect red in the Viam app, your rover should detect and navigate towards any red objects that come into view of its camera.
+If you configured the color detector to detect red, your rover should detect and navigate towards any red objects that come into view of its camera.
 Use something like a red sports ball or book cover as a target to follow to test your rover:
 
 <div class="aligncenter">

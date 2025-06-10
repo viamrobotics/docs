@@ -25,7 +25,7 @@ For microcontrollers, see [Over-the-air firmware updates](/operate/get-started/s
 ## Prerequisites
 
 Start by [setting up one machine](/operate/get-started/setup/).
-Once your machine is connected to the Viam app, return to this page.
+Once your machine is connected to Viam, return to this page.
 
 ## Create a fragment
 

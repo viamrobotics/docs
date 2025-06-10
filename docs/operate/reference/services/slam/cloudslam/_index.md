@@ -85,7 +85,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
 1. Add the data management service to your machine:
 
-   Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+   Navigate to the **CONFIGURE** tab of your machine's page.
    Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Choose **Data Management** as the type and either use the suggested name or specify a name for your data management service, for example `data_manager-1`.
    Click **Create**.
@@ -103,7 +103,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
      Then set the capture frequency.
      `5 Hz` is a good starting place for most applications.
 
-     {{<imgproc src="/services/slam/rplidar-capture.png" resize="x1100" declaredimensions=true alt="An R P lidar camera configured in the Viam app config builder with next point cloud configured for capture at 5 Hz." class="shadow"  >}}
+     {{<imgproc src="/services/slam/rplidar-capture.png" resize="x1100" declaredimensions=true alt="An R P lidar camera configured with next point cloud configured for capture at 5 Hz." class="shadow"  >}}
 
    - To capture data from one or more movement sensors:
 
@@ -113,7 +113,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 For an IMU, choose the `AngularVelocity` and `LinearAcceleration` methods and set the capture frequency.
 `20 Hz` is a good starting place for most applications.
 
-{{<imgproc src="/services/slam/imu-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured in the Viam app config builder with angular velocity and linear acceleration both configured for capture at 20 Hz." class="shadow" >}}
+{{<imgproc src="/services/slam/imu-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured with angular velocity and linear acceleration both configured for capture at 20 Hz." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="Odometry only" %}}
@@ -121,7 +121,7 @@ For an IMU, choose the `AngularVelocity` and `LinearAcceleration` methods and se
 For a movement sensor that supports odometry, choose the `Position` and `Orientation` methods and set the capture frequency.
 `20 Hz` is a good starting place for most applications.
 
-{{<imgproc src="/services/slam/odometer-capture.png" resize="x1100" declaredimensions=true alt="A wheeled odometer configured in the Viam app config builder with position and orientation both configured for capture at 20 Hz." class="shadow" >}}
+{{<imgproc src="/services/slam/odometer-capture.png" resize="x1100" declaredimensions=true alt="A wheeled odometer configured with position and orientation both configured for capture at 20 Hz." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="Both (merged)" %}}
@@ -130,7 +130,7 @@ For a `merged` movement sensor, choose all four methods (`AngularVelocity`, `Lin
 `20 Hz` is a good starting place for most applications.
 You _do not_ need to configure data capture on the individual IMU and odometer.
 
-{{<imgproc src="/services/slam/merged-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured in the Viam app config builder with angular velocity, linear acceleration, position, and orientation all configured for capture at 20 Hz." class="shadow" >}}
+{{<imgproc src="/services/slam/merged-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured with angular velocity, linear acceleration, position, and orientation all configured for capture at 20 Hz." class="shadow" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -138,7 +138,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 
 3. Set up the `cloudslam-wrapper` module on your machine:
 
-   Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+   Navigate to the **CONFIGURE** tab of your machine's page.
 
    Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
    Select **SLAM**, then select `cloudslam-wrapper`.

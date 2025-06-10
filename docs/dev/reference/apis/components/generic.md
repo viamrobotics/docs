@@ -16,7 +16,7 @@ The generic API allows you to give commands to your [generic components](/operat
 
 {{% alert title="Example usage" color="tip" %}}
 
-See [Deploy control logic](/manage/software/control-logic/) for an example of how to use the generic component API, including how to call `DoCommand()` from the Viam SDKs or from the Viam app.
+See [Deploy control logic](/manage/software/control-logic/) for an example of how to use the generic component API, including how to call `DoCommand()` from the SDKs or the web UI.
 
 {{% /alert %}}
 
@@ -26,8 +26,7 @@ The generic component supports the following method:
 
 ## Establish a connection
 
-To get started using Viam's SDKs to connect to and control your generic component and the rest of your machine, go to your machine's page on the [Viam app](https://app.viam.com),
-Navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
+To get started using Viam's SDKs to connect to and control your generic component and the rest of your machine, go to your machine's page, navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 

@@ -33,7 +33,7 @@ The motion service can:
 You need to configure frames for your machine's components with the [frame system](/operate/reference/services/frame-system/).
 This defines the spatial context within which the motion service operates.
 
-The motion service itself is enabled on the machine by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
+The motion service itself is enabled on the machine by default, so you do not need to add any extra configuration to enable it.
 
 ## API
 

@@ -7,8 +7,8 @@ action:
   name: replace
 swap:
   in the website: on the website
-  web app: Viam app or Viam platform
-  cloud app: Viam app or Viam platform
+  web app: Viam or web UI or Viam platform
+  cloud app: Viam or web UI or Viam platform
   user of an org: member of an org
   compute parts: Computer
   microprocessor: Raspberry Pi or Jetson or another specific term

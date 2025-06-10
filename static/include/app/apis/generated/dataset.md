@@ -8,7 +8,7 @@ Create a new dataset.
 **Parameters:**
 
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the dataset being created.
-- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization where the dataset is being created. To find your organization ID, visit the organization settings page in the Viam app.
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization where the dataset is being created. To find your organization ID, visit the organization settings page on Viam.
 
 **Returns:**
 
@@ -43,8 +43,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const datasetId = await dataClient.createDataset(
-  'my-new-dataset',
-  '123abc45-1234-5678-90ab-cdef12345678'
+  "my-new-dataset",
+  "123abc45-1234-5678-90ab-cdef12345678",
 );
 ```
 
@@ -97,7 +97,7 @@ Delete a dataset.
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. To retrieve the dataset ID: Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
 
@@ -127,7 +127,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await dataClient.deleteDataset('12ab3de4f56a7bcd89ef0ab1');
+await dataClient.deleteDataset("12ab3de4f56a7bcd89ef0ab1");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletedataset).
@@ -178,7 +178,7 @@ Rename a dataset specified by the dataset ID.
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset. To retrieve the dataset ID: Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The new name of the dataset.
 
 **Returns:**
@@ -211,10 +211,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await dataClient.renameDataset(
-  '12ab3de4f56a7bcd89ef0ab1',
-  'my-new-dataset'
-);
+await dataClient.renameDataset("12ab3de4f56a7bcd89ef0ab1", "my-new-dataset");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#renamedataset).
@@ -266,7 +263,7 @@ Get the datasets in an organization.
 
 **Parameters:**
 
-- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization you’d like to retrieve datasets from. To find your organization ID, visit the organization settings page in the Viam app.
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization you’d like to retrieve datasets from. To find your organization ID, visit the organization settings page on Viam.
 
 **Returns:**
 
@@ -298,7 +295,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const datasets = await dataClient.listDatasetsByOrganizationID(
-  '123abc45-1234-5678-90ab-cdef12345678'
+  "123abc45-1234-5678-90ab-cdef12345678",
 );
 ```
 
@@ -350,7 +347,7 @@ Get a list of datasets using their IDs.
 
 **Parameters:**
 
-- `ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The IDs of the datasets that you would like to retrieve information about. To retrieve a dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
+- `ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The IDs of the datasets that you would like to retrieve information about. To retrieve a dataset ID: Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
 
@@ -382,7 +379,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const datasets = await dataClient.listDatasetsByIds([
-  '12ab3de4f56a7bcd89ef0ab1',
+  "12ab3de4f56a7bcd89ef0ab1",
 ]);
 ```
 

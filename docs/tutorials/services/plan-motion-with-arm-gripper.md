@@ -308,7 +308,7 @@ This is possible because the motion service considers other components of the ro
 
 We need to do several things to prepare a new gripper component for motion.
 
-1. Go back to your robot configuration in the [Viam app](https://app.viam.com).
+1. Go back to your machine configuration on [Viam](https://app.viam.com).
 2. Navigate to the **Components** tab and click **Create component** in the lower-left corner to add a new gripper component to your robot:
    - Select `gripper` for the type and `fake` for the model.
    - Enter `myGripper` for the name of your gripper component.

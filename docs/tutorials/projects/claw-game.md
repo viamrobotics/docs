@@ -147,7 +147,7 @@ This is the approach this tutorial follows: you'll run the [motion planning serv
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
 {{< /alert >}}
 
-Use the parts dropdown menu in the top banner of your machine’s page on the [Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
+Use the parts dropdown menu in the top banner of your machine’s page to add a new sub-part called `planning`:
 
 <p>
 {{<imgproc src="/tutorials/claw-game/app-planning.png" resize="500x" declaredimensions=true alt="UI for adding a sub part named planning." class="aligncenter">}}
@@ -157,7 +157,7 @@ Follow the instructions on the **Setup** tab to install `viam-server` on your de
 
 For more information about parts, see [Machine Architecture: Parts](/operate/reference/architecture/parts/).
 
-Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
+Now you are ready to configure the individual components.
 Navigate to the **Config** tab of your machine's page and select your main part from the parts dropdown.
 
 ### Configure the board
@@ -447,7 +447,7 @@ See the [frame system documentation](/operate/reference/services/frame-system/) 
 
 ### Find the home pose within the enclosure
 
-By moving the arm through the **Control** tab in the [Viam app](https://app.viam.com), you can determine the arm's ideal home pose, which is the position the arm starts each game and the one it returns to after making a grab.
+By moving the arm through the **Control** tab, you can determine the arm's ideal home pose, which is the position the arm starts each game and the one it returns to after making a grab.
 
 You can also determine the desired distance between the lateral plane and the pick up level, which is how you determine how far to drop the grabber.
 
@@ -817,7 +817,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your machine's location secret and host address by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com).
+1. Determine your machine's location secret and host address by navigating to the **CONNECT** tab.
    Use the host address of your main machine part, as it will reference all parts of your machine.
 
    {{% snippet "show-secret.md" %}}
@@ -926,7 +926,7 @@ async function grab(boardClient: BoardClient) {
 In this tutorial, you learned how to:
 
 - Make your own claw machine.
-- Test, configure, and control a robot arm using Viam’s [motion service](/operate/reference/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and the [Viam app](https://app.viam.com).
+- Test, configure, and control a robot arm using Viam’s [motion service](/operate/reference/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and the [web UI](https://app.viam.com).
 - Design your own custom interface using the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 For some next steps, you could:

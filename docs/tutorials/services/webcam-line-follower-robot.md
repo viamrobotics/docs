@@ -68,7 +68,7 @@ To build your own line follower robot, you need the following hardware:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 
 1. **Add the board.**
 
@@ -95,7 +95,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
    Select the type `camera`, and select the `webcam` model.
    Enter the name `my_camera`, then click create.
    Leave the **video_path** blank and the camera will use the default video path for your machine.
-   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt on the camera's configuration panel.
 
 5. Click **Save** in the top right corner of the screen.
 
@@ -181,7 +181,7 @@ Click **Save** in the top right corner of the screen.
 
 ## Test your components
 
-Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to test your components.
+Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that the part status dropdown (in the top banner) says, "Live."
 
 1. Go to the **CONTROL** tab, click on the base panel, and toggle the camera to on.
@@ -194,7 +194,7 @@ Verify that it’s connected by refreshing the page and ensuring that the part s
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.
    {{< /alert >}}
 
-   {{<gif webm_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the Viam app's CONTROL tab." class="aligncenter" max-width="600px">}}
+   {{<gif webm_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the control tab." class="aligncenter" max-width="600px">}}
 
 ## Configuring a color detector for the color of your tape line
 
@@ -215,7 +215,7 @@ Now, let's configure the color detector so your rover can detect the line:
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Next, navigate to the **CONFIGURE** tab of your machine's page.
 
 1. **Add a vision service.**
 
@@ -366,7 +366,7 @@ Click **Save** in the top right corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app) to test the transform camera.
+Navigate to your [machine's **CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
@@ -409,7 +409,7 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
 
 1. Download the [robot line follower code](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).
 
-1. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **CONNECT** tab's **Code sample** page and select **Python**.
+1. From your robot’s page, go to the **CONNECT** tab's **Code sample** page and select **Python**.
 
    {{% snippet "show-secret.md" %}}
 

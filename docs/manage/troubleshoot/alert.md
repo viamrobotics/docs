@@ -38,7 +38,7 @@ Additionally, you can receive continuous alerts at a specified interval indicati
 
 ### Prerequisites
 
-{{% expand "A running machine connected to the Viam app." %}}
+{{% expand "A running machine connected to Viam." %}}
 
 {{% snippet "setup.md" %}}
 
@@ -199,7 +199,7 @@ Use **Builder mode** to create a trigger:
 {{< table >}}
 {{< tablestep number=1 >}}
 
-Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+Go to the **CONFIGURE** tab of your machine.
 Click the **+** (Create) button in the left side menu and select **Trigger**.
 
 {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options.">}}
@@ -246,14 +246,14 @@ To add a notification method, add an entry to the **Webhooks** or **Email** sub-
 To add an email notification:
 
 1.  Click **Add Email**.
-    {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email in the Viam app." class="shadow" >}}
+    {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email." class="shadow" >}}
 1.  Add the email you wish to be notified whenever this trigger is triggered.
 1.  Configure the time between notifications.
 
 To add a webhook notification:
 
 1.  Click **Add Webhook**.
-    {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
+    {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL." class="shadow" >}}
 1.  Add the URL of your cloud function.
 1.  Configure the time between notifications.
 1.  Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
@@ -346,7 +346,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 {{< tabs >}}
 {{% tab name="Builder mode" %}}
 
-1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
    {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
@@ -360,14 +360,14 @@ Click the **Save** button in the top right corner of the page to save your confi
    To add an email notification:
 
    1. Click **Add Email**.
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email in the Viam app." class="shadow" >}}
+      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email." class="shadow" >}}
    1. Add the email you wish to be notified whenever this trigger is triggered.
    1. Configure the time between notifications.
 
    To add a webhook notification:
 
    1. Click **Add Webhook**.
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL in the Viam app." class="shadow" >}}
+      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL." class="shadow" >}}
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
    1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
@@ -406,7 +406,7 @@ For more information about triggers, see [Trigger configuration](/data-ai/refere
 {{< tabs >}}
 {{% tab name="Builder mode" %}}
 
-1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
    {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}

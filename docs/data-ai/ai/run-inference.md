@@ -52,12 +52,12 @@ If your vision service does not include an ML model, you must [deploy an ML mode
 
 To use a vision service:
 
-1. Visit the **CONFIGURE** page of the Viam app.
+1. Visit your machine's **CONFIGURE** page.
 1. Click the **+** icon next to your main machine part and select **Component or service**.
 1. Type in the name of the service and select a vision service.
 1. If your vision service does not include an ML model, [deploy an ML model to your machine](/data-ai/ai/deploy/) to use that service.
 1. Configure the service based on your use case.
-1. To view the deployed vision service, use the live detection feed in the Viam app.
+1. To view the deployed vision service, use the live detection feed.
    The feed shows an overlay of detected objects or classifications on top of a live camera feed.
    On the **CONFIGURE** or **CONTROL** pages for your machine, expand the **Test** area of the service panel to view the feed.
 
