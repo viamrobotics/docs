@@ -63,7 +63,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, "my_gripper");
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
 
 // Open the gripper
 await gripper.open();
@@ -76,11 +76,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -130,7 +130,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(bool)](https://pkg.go.dev/builtin#bool): True if the gripper grabbed something with non-zero thickness.
+- [(bool)](https://pkg.go.dev/builtin#bool):  True if the gripper grabbed something with non-zero thickness.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -159,7 +159,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, "my_gripper");
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
 
 // Close the gripper to grab
 await gripper.grab();
@@ -172,11 +172,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -258,11 +258,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, "my_gripper");
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
 
 // Check if the gripper is currently moving
 const moving = await gripper.isMoving();
-console.log("Gripper is moving:", moving);
+console.log('Gripper is moving:', moving);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#ismoving).
@@ -276,7 +276,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
 
 **Example:**
 
@@ -356,7 +356,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, "my_gripper");
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
 
 // Stop the gripper's current motion
 await gripper.stop();
@@ -369,11 +369,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -461,14 +461,54 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, "my_gripper");
+const gripper = new VIAM.GripperClient(machine, 'my_gripper');
 
 // Get the geometries of this component
 const geometries = await gripper.getGeometries();
-console.log("Geometries:", geometries);
+console.log('Geometries:', geometries);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getgeometries).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetKinematics
+
+{{% alert title="Note" color="note" %}}
+This method is not yet available with the Viam Go SDK.
+{{% /alert %}}
+
+Get the kinematics information associated with the gripper as the format and byte contents of the [kinematics file](/operate/reference/kinematic-chain-config/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[viam.components.gripper.KinematicsFileFormat.ValueType, [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF) or Viam’s kinematic parameter format (spatial vector algebra) (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA), and the second [1] value represents the byte contents of the file.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
+
+# Get the kinematics information associated with the gripper.
+kinematics = await my_gripper.get_kinematics()
+
+# Get the format of the kinematics file.
+k_file = kinematics[0]
+
+# Get the byte contents of the file.
+k_bytes = kinematics[1]
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_kinematics).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -568,10 +608,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const result = await resource.doCommand({
-  name: "myCommand",
-  args: { key: "value" },
-});
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({
+    myCommand: { key: 'value' },
+  })
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#docommand).
@@ -581,11 +624,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
