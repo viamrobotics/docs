@@ -88,7 +88,7 @@ Yes, organization owners and location owners can move machines between locations
 To move a machine:
 
 1. Navigate to your machine's page.
-1. Click the **...** (Actions) button in the upper-right corner.
+1. Click the **...** button in the upper-right corner.
 1. Select **Move to a new location**.
 1. Choose the destination location from the organization tree.
 1. Confirm the move.
