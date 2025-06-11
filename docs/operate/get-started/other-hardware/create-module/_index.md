@@ -381,11 +381,16 @@ For more information, see [Module dependencies](/operate/get-started/other-hardw
 
 **(Optional) Create and edit a `Reconfigure` function**:
 
-In most cases, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
-This will cause `viam-server` to fully rebuild the resource each time the user changes the configuration.
+`Reconfigure` allows `viam-server` to update the configuration without rebuilding the resource from scratch.
+You must implement `Reconfigure` if:
 
-If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you should implement this function so that `viam-server` updates the configuration without rebuilding the resource from scratch.
-In this case, your `Reconfigure` function should do the following:
+- your module uses [optional dependencies](/operate/get-started/other-hardware/create-module/dependencies/#optional-dependencies), or
+- you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running.
+
+If you use no dependencies or only required dependencies, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
+If you omit `Reconfigure`, `viam-server` fully rebuilds the resource each time the user changes the configuration.
+
+The `Reconfigure` function should do the following:
 
 - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
 - Assign default values as necessary to any optional attributes if the user hasn't configured them.

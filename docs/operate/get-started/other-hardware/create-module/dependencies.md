@@ -191,6 +191,9 @@ Optional dependencies are not necessarily built first, even if they are availabl
 
 Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
+Note that optional dependencies require your modular resource to implement a `reconfigure` method.
+If your resource does not have a `reconfigure` method, `viam-server` will fail to update optional dependencies and log an error message indicating that the resource cannot reconfigure and must rebuild.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
