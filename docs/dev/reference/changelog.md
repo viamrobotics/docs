@@ -44,7 +44,7 @@ date: "2024-09-18"
 
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
-The frame tab no longer exists in the Viam app.
+The frame tab no longer exists.
 To add a frame to a component, click the **+ Add Frame** button on the component's configuration card.
 
 {{% /changelog %}}
@@ -130,7 +130,7 @@ See [Module dependencies](/operate/get-started/other-hardware/create-module/depe
 
 {{% changelog color="added" title="System log forwarding" date="2025-05-14" %}}
 
-You can now configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs in the Viam app.
+You can now configure `viam-agent` to forward system logs from journald to the cloud. This allows you to view system logs from your machine alongside Viam's own logs.
 
 To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object in your machine's `agent` configuration. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
 
@@ -208,7 +208,7 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `offline_timeout` | boolean | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `"2m"` (2 minutes). |
 | `user_timeout` | boolean | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `"5m"` (5 minutes). |
 | `fallback_timeout` | boolean | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `"10m"` (10 minutes). |
-| `networks` | array | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config in the Viam app, if networks aren't needed until after initial provisioning. Default: `[]`. |
+| `networks` | array | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config, if networks aren't needed until after initial provisioning. Default: `[]`. |
 | `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager.  |
 | `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
 
@@ -563,9 +563,9 @@ In addition to the existing returned metadata, the [`GetCloudMetadata`](/dev/ref
 
 {{% /changelog %}}
 
-{{% changelog date="2024-04-16" color="improved" title="Viam app interface" %}}
+{{% changelog date="2024-04-16" color="improved" title="Viam web UI" %}}
 
-the [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+The machine page UI has been updated significantly.
 In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
 
 {{% /changelog %}}
@@ -613,7 +613,7 @@ You can now use the [generic service](/operate/reference/components/generic/) to
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
 You can now upload [machine learning (ML) models](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) to the Viam Registry, in addition to modules.
-You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
+You may upload models you have trained yourself using Viam, or models you have trained outside of Viam.
 When uploading, you have the option to make your model available to the general public for reuse.
 
 {{% /changelog %}}
@@ -627,7 +627,7 @@ Viam has added a [sensor-controlled base](/operate/reference/components/base/sen
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/data-ai/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google's Looker Studio, and more.
-You can visualize any data, such as sensor readings, that you have [synced](/data-ai/capture-data/capture-sync/) to the Viam app from your machine.
+You can visualize any data, such as sensor readings, that you have [synced](/data-ai/capture-data/capture-sync/) to Viam from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -670,7 +670,7 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 {{% changelog date="2023-11-30" color="added" title="Queryable sensor data" %}}
 
-Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
+Once you have added the data management service and synced data, such as sensor readings, to Viam, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
 For more information, see [Query Data with SQL or MQL](/data-ai/data/query/).
 
@@ -726,7 +726,7 @@ This enhancement allows you to:
 
 {{% changelog date="2023-09-30" color="added" title="Modular registry" %}}
 
-The [Modular Registry](https://app.viam.com/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
+The [registry](https://app.viam.com/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
 
 You can:
 
@@ -807,7 +807,7 @@ Arm models now support the [`GetKinematics` method](/dev/reference/apis/componen
 
 {{% changelog date="2023-06-30" color="added" title="View sensor data within Viam" %}}
 
-You can now [view your sensor data](https://app.viam.com/data/view?view=sensors) directly in the Viam app to verify data creation and accuracy.
+You can now [view your sensor data](https://app.viam.com/data/view?view=sensors) directly in the web UI to verify data creation and accuracy.
 If you depend on sensor data to plan and control machine operations, this feature increases access to data and supports a more efficient workflow.
 
 {{% /changelog %}}
@@ -823,7 +823,7 @@ Sessions are enabled by default, with the option to [disable sessions](/dev/refe
 
 {{% changelog date="2023-06-30" color="added" title="Connect an ODrive motor controller as a Viam module" %}}
 
-You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the Viam Registry](https://github.com/viamrobotics/odrive).
+You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the registry](https://github.com/viamrobotics/odrive).
 
 See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn how to connect and use an ODrive motor controller with Viam, and view the sample configurations.
 
@@ -870,7 +870,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train a TFlite object detection models](/data-ai/ai/train-tflite/) in addition to image classification models from within the Viam app.
+You now have the capability to directly [train a TFlite object detection models](/data-ai/ai/train-tflite/).
 
 This update allows you to:
 
@@ -895,9 +895,9 @@ For more information about assigning permissions and collaborating with others o
 
 {{% changelog date="2023-05-31" color="improved" title="Control RoboClaw motor controllers with the driver" %}}
 
-When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within Viam or through the motor API.
+When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within the web UI or through the motor API.
 
-For example, in the Viam app, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
+For example, in the web UI, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
 
 {{% /changelog %}}
 
@@ -912,7 +912,7 @@ The latest updates enable you to:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-31" color="improved" title="Additions to code samples in the Viam app" %}}
+{{% changelog date="2023-05-31" color="improved" title="Additions to code samples" %}}
 
 The updated code samples now includes:
 
@@ -923,7 +923,7 @@ Access these samples in the **Code sample** tab on your machine's page to connec
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-31" color="improved" title="Delete data in bulk in the Viam app" %}}
+{{% changelog date="2023-05-31" color="improved" title="Delete data in bulk" %}}
 
 You can manage the data synced to Viam's cloud with the new capability for bulk data deletion on the **Data** tab.
 
@@ -1347,13 +1347,6 @@ You now have the option to reuse a machine config from a previous Try Viam sessi
 
 {{% /changelog %}}
 
-{{% changelog date="2023-02-28" color="added" title="Dynamic code samples" %}}
-
-The Viam app **Code sample** tab now dynamically updates as you add resources to your machine's config.
-The code samples instantiate each resource and include examples of how to call a `Get` method on it.
-
-{{% /changelog %}}
-
 {{% changelog date="2023-02-28" color="added" title="TypeScript SDK" %}}
 
 Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
@@ -1362,7 +1355,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog date="2023-02-28" color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/operate/reference/services/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
+When adding [frames](/operate/reference/services/frame-system/) to your machine's config, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 
@@ -1375,7 +1368,7 @@ Find more information in the [`viam-micro-server` docs](/operate/reference/viam-
 
 {{% changelog date="2023-01-31" color="added" title="Remote control power input" %}}
 
-On your machine's **CONTROL** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/operate/reference/components/base/).
+On your machine's **CONTROL** tab, you can now set the power of a [base](/operate/reference/components/base/).
 The base control UI previously always sent 100% power to the base's motors.
 
 {{% /changelog %}}
@@ -1402,11 +1395,11 @@ The UR5 arm model has been improved using this new geometry type.
 
 {{% changelog date="2022-12-28" color="added" title="Modular resources" %}}
 
-You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_ in the registry](https://app.viam.com/registry/).
+You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as _modular resources_ in the [registry](https://app.viam.com/registry/).
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
-All users need to update to the latest version of the RDK (V3.0.0) to access machines using the Viam app.
+All users need to update to the latest version of the RDK (V3.0.0) to access machines using the web UI.
 
 {{% /alert %}}
 
@@ -1482,7 +1475,7 @@ A new [servo model called `gpio`](/operate/reference/components/servo/gpio/) sup
 
 {{% changelog date="2022-11-15" color="added" title="RTT indicator in the app" %}}
 
-A badge in the Viam app now displays RTT (round trip time) of a request from your client to the machine.
+A badge in the web UI now displays RTT (round trip time) of a request from your client to the machine.
 Find this indicator of the time to complete one request/response cycle on your machine's **CONTROL** tab, in the **Operations & Sessions** card.
 
 {{% /changelog %}}

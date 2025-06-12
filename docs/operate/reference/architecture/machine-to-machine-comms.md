@@ -11,8 +11,8 @@ aliases:
 toc_hide: true
 ---
 
-When building a smart machine application in the [Viam app](https://app.viam.com), a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.
-Next they will test that it is wired up properly using the Viam app's Control page.
+When building a smart machine application in, a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.
+Next they will test that it is wired up properly using the Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their machine using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the machine or a separate computer dedicated to running the business logic for the machine.
 
@@ -114,5 +114,5 @@ That means if there are two arms in a machine configuration, there is only one A
 
 In addition to gRPC, the RDK uses [WebRTC](https://webrtcforthecurious.com/) video and audio streams and data channels to enable peer to peer (P2P) communication between machine parts as well as SDKs and the Remote Control interface.
 
-An outline of how WebRTC is used lives on [Go.dev](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on the Viam app ([app.viam.com](https://app.viam.com)) to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
-Once a connection is made, the Viam app is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.
+An outline of how WebRTC is used lives on [Go.dev](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on [app.viam.com](https://app.viam.com) to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
+Once a connection is made, [app.viam.com](https://app.viam.com) is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.

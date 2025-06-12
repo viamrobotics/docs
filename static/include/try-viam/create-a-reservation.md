@@ -1,4 +1,4 @@
-1. **Click on the "TRY VIAM" button in the Viam app.**
+1. **Click on the "TRY VIAM" button.**
 
    Log in to Viam and click on the **[TRY VIAM](https://app.viam.com/try)** button in the top navigation bar.
    If you don't have an account, it only takes a minute to sign up.

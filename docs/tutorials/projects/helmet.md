@@ -84,8 +84,8 @@ Then, make sure your computer (whether it's a personal computer or an SBC) is co
 
 Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from the camera:
 
-1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
-   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
+1. Navigate to your machine's page.
+   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.
 
 2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing "webcam" and select **camera / webcam**.
@@ -94,7 +94,7 @@ Configure your [webcam](/operate/reference/components/camera/webcam/) so that yo
    Click **Create**.
 
 3. Leave the **video_path** blank and the camera will use the default video path for your machine.
-   If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the Viam app.
+   If this doesn't work when you test your camera later, you can try a different video path by following the prompt on the camera's configuration panel.
 
 4. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -132,7 +132,7 @@ The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any 
 
    Your vision service config should now resemble the following:
 
-   {{<imgproc src="/tutorials/helmet/model-location.png" resize="x1100" declaredimensions=true alt="The vision service configured in the Viam app per the instructions." >}}
+   {{<imgproc src="/tutorials/helmet/model-location.png" resize="x1100" declaredimensions=true alt="The vision service configuration panel." >}}
 
 5. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -175,7 +175,7 @@ This module also filters the output so that later, when you configure data manag
 
    Your `objectfilter` camera configuration should now resemble the following:
 
-   {{<imgproc src="/tutorials/helmet/filtercam-config.png" resize="x1100" declaredimensions=true alt="The detector_cam config panel in the Viam app." >}}
+   {{<imgproc src="/tutorials/helmet/filtercam-config.png" resize="x1100" declaredimensions=true alt="The detector_cam config panel." >}}
 
 5. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -228,15 +228,15 @@ To make sure the detector camera is capturing and syncing labeled images:
 
 1. Position yourself in front of your webcam for approximately 30 seconds to let it capture a few images of a person without a hard hat on.
 
-2. Navigate to your [**DATA** page](https://app.viam.com/data/view?view=images) in the Viam app.
+2. Navigate to your [**DATA** page](https://app.viam.com/data/view?view=images).
    You should see some images with bounding boxes on them.
    If you do not, try refreshing the page.
 
-   {{<imgproc src="/tutorials/helmet/synced-data.png" resize="x1000" declaredimensions=true alt="The data manager page in the Viam app, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
+   {{<imgproc src="/tutorials/helmet/synced-data.png" resize="x1000" declaredimensions=true alt="The data tab, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
 
 3. You can also try this with a hard hat on your head.
 
-   {{<imgproc src="/tutorials/helmet/hardhat-data.png" resize="x1000" declaredimensions=true alt="The data manager page in the Viam app, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
+   {{<imgproc src="/tutorials/helmet/hardhat-data.png" resize="x1000" declaredimensions=true alt="The data tab, displaying three images of a person with a bounding box labeled NO-Hardhat around her face." >}}
 
 ### Modify the detector config to sync only images without hard hats
 
@@ -330,7 +330,7 @@ The following code is adapted from that example.
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
         <a href="https://app.viam.com/data/view?view=images">\
-        the DATA tab</a of the Viam app>.'
+        the DATA tab</a>.'
     )
 
        # Get a JSON-ready representation of the Mail object
@@ -383,7 +383,7 @@ def email(request):
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
         <a href="https://app.viam.com/data/view?view=images">\
-        the DATA tab</a of the Viam app>.'
+        the DATA tab</a>.'
     )
 
     # Get a JSON-ready representation of the Mail object
@@ -422,7 +422,7 @@ Now you can test the script:
 Now it's time to configure a trigger so that you get an email when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the trigger to trigger each time an image is synced to the cloud will produce the desired result.
 
-Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
+Go to the **CONFIGURE** tab of your machine.
 Click the **+** (Create) button in the left side menu and select **Trigger**.
 
 Name the trigger and click **Create**.

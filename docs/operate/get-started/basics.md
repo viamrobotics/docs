@@ -15,16 +15,16 @@ carouselscript: true
 
 Viam is a software platform for building smart applications for the physical world.
 
-Viam consists of:
+The Viam platform consists of:
 
 - An open-source binary called `viam-server` that runs on your machine, managing your local hardware, software, and data, and connecting your device to Viam's cloud.
-- A cloud app called the [Viam app](https://app.viam.com) that you can use to configure and manage your machines and data.
+- A [cloud app](https://app.viam.com) that you can use to configure and manage your machines and data.
 - Simple APIs for common types of hardware (for example, cameras, sensors, and motors), and software services (such as computer vision).
 - A registry of modules that implement the hardware and software APIs.
   This includes support for many popular hardware models.
 - SDKs for many programming languages that you can use to interact with your machines.
 
-`viam-server` connects your machine to the Viam app and to SDK clients.
+`viam-server` connects your machine to Viam and to SDK clients.
 
 See [Viam architecture](/operate/reference/architecture/) for details on how Viam works.
 
@@ -34,7 +34,7 @@ A _machine_ is a computer (often a single-board computer like a Raspberry Pi or 
 You can think of one machine as representing one device, such as an Intel RealSense camera connected to a Raspberry Pi.
 Each machine runs an instance of `viam-server`.
 
-When you create a new machine in the Viam app, Viam generates a unique set of credentials for that machine that connect the physical machine to its instance in the Viam app.
+When you create a new machine on Viam, Viam generates a unique set of credentials for that machine that connect the physical machine to its instance in Viam.
 
 ## What platforms does Viam run on?
 
@@ -81,9 +81,9 @@ Any hardware that is not already supported by a Viam module can be added into Vi
 
 ## How do I get started?
 
-1. To start, [set up a computer or SBC](/operate/get-started/setup/) or [set up an ESP32](/operate/get-started/setup-micro/) and connect it to the Viam app.
+1. To start, [set up a computer or SBC](/operate/get-started/setup/) or [set up an ESP32](/operate/get-started/setup-micro/) and connect it to Viam.
 
-1. Next, you'll configure hardware and software on your machine in the Viam app.
+1. Next, you'll configure hardware and software for your machine.
    You can test it with the UI in the app.
 
 1. From there, you have many options including:

@@ -19,7 +19,7 @@ Among other things, `viam-agent`:
 - Installs, runs, and monitors `viam-server` or a custom build of `viam-server`.
 - Provides tooling for device provisioning and network management.
 - Provides automatic updates for `viam-server` and the agent itself.
-- Allows control of deployed software versions through the Viam app.
+- Allows control of deployed software versions.
 - Provides various operating system settings.
 
 {{< alert title="Support notice" color="note" >}}
@@ -32,7 +32,7 @@ To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet
 
 {{< table >}}
 {{% tablestep number=1 %}}
-Add a new machine in the [Viam app](https://app.viam.com).
+Add a new machine.
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
 Navigate to the machine's **CONFIGURE** tab.
@@ -95,7 +95,7 @@ Your machine credentials file must be at <file>\etc\viam.json</file>.
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. Navigate to your machine's page in the [Viam app](https://app.viam.com).
+1. Navigate to your machine's page.
 1. Navigate to the **CONFIGURE** tab.
 1. Click on **machine settings**.
 1. Edit and fill in the attributes as applicable.
@@ -180,7 +180,7 @@ To ensure that updates only occur when your machines are ready, configure a [mai
 
 {{< alert title="Tip: Check versions of viam-agent and viam-server" color="tip" >}}
 
-You can find the installed versions of viam-agent and viam-server on your machine's page in the [Viam app](https://app.viam.com). Click on the part status dropdown to the right of your machine's name on the top of the page.
+You can find the installed versions of viam-agent and viam-server on your machine's page. Click on the part status dropdown to the right of your machine's name on the top of the page.
 
 {{< /alert >}}
 
@@ -195,7 +195,7 @@ For more information on managing `viam-agent` see [Manage `viam-agent`](/manage/
 ### Update or downgrade `viam-server` with `viam-agent`
 
 {{< alert title="Tip" color="tip" >}}
-The current version of `viam-server` is displayed in the machine's part status dropdown to the right of your machine’s name on its page in the Viam app.
+The current version of `viam-server` is displayed in the machine's part status dropdown to the right of your machine’s name on its page.
 {{< /alert >}}
 
 {{% hiddencontent %}}
@@ -292,7 +292,7 @@ For more detailed instructions on what these settings do, see [Provisioning](/ma
 
 ## `additional_networks`
 
-For an already-online device, you can configure new WiFi or wired networks in the machine's [`viam-agent` configuration](/manage/reference/viam-agent/#configuration) in the Viam app.
+For an already-online device, you can configure new WiFi or wired networks in the machine's [`viam-agent` configuration](/manage/reference/viam-agent/#configuration).
 It's primarily useful for a machine that moves between different networks, so the machine can automatically connect when moved between locations.
 
 <!-- prettier-ignore -->
@@ -308,10 +308,10 @@ It's primarily useful for a machine that moves between different networks, so th
 | `ssid` | string | Optional | The WiFi network's SSID. Only needed for WiFi networks. Default: `""`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `type` | string | Optional | The type of the network. Required if a network is provided. Options: `"wifi"`, `"wired"`. | |
 
-To add additional networks add them using the JSON editor for your device's config in the Viam app.
+To add additional networks add them using the JSON editor for your device's config.
 
 {{< alert title="Important" color="note" >}}
-Note that if you are using the Viam app to add networks to a machine's configuration, the machine will need to be connected to the internet to retrieve the configuration information containing the network credentials before it can use them.
+Note that if you are adding networks to a machine's configuration, the machine will need to be connected to the internet to retrieve the configuration information containing the network credentials before it can use them.
 {{< /alert >}}
 
 During provisioning, `viam-agent` will try to connect to each specified network in order of `priority` from highest to lowest.
@@ -336,16 +336,16 @@ These log messages include `viam-server` stops and starts, the status of `viam-a
 {{< tabs >}}
 {{% tab name="App UI" %}}
 
-`viam-agent` writes log messages to the [Viam app](https://app.viam.com/).
+`viam-agent` writes log messages to Viam.
 
 `viam-agent` only sends messages when your machine is online and connected to the internet.
-If your machine is offline, log messages are queued and are sent to the Viam app once your machine reconnects to the internet.
+If your machine is offline, log messages are queued and are sent to Viam once your machine reconnects to the internet.
 
-Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **LOGS** tab of your machine's page.
 
 Select from the **Levels** dropdown menu to filter the logs by severity level:
 
-{{<imgproc src="/build/program/sdks/log-level-info.png" resize="600x" declaredimensions=true alt="Filtering by log level of info in the logs tab of the Viam app." class="shadow imgzoom">}}
+{{<imgproc src="/build/program/sdks/log-level-info.png" resize="600x" declaredimensions=true alt="Filtering by log level of info in the logs tab." class="shadow imgzoom">}}
 
 {{% /tab %}}
 {{% tab name="Command line on Linux" %}}

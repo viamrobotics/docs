@@ -88,7 +88,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 ## Authenticate
 
-You can find sample connection code on each [machine's](/operate/get-started/setup/) **CONNECT** tab in the [Viam app](https://app.viam.com).
+You can find sample connection code on each [machine's](/operate/get-started/setup/) **CONNECT** tab.
 Select your preferred **Language** to display a code snippet, with connection code as well as some calls to the APIs of the resources you've configured on your machine.
 
 You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.
@@ -122,7 +122,7 @@ async def connect():
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+    return await RobotClient.at_address('MACHINE ADDRESS', opts)
 
 
 async def moveInSquare(base):
@@ -178,7 +178,7 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "ADDRESS FROM THE VIAM APP",
+      "MACHINE ADDRESS",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
@@ -236,7 +236,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 
 int main() {
-    std::string host("ADDRESS FROM THE VIAM APP");
+    std::string host("MACHINE ADDRESS");
     DialOptions dial_opts;
     // Replace "<API-KEY-ID>" with your machine's api key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
@@ -295,7 +295,7 @@ robot_api_key = os.getenv('ROBOT_API_KEY') or ''
 robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 
-# Define the sensor and plug names from the Viam app CONFIGURE tab
+# Define the sensor and plug names on the CONFIGURE tab
 sensor_name = os.getenv("SENSOR_NAME", "")
 plug_name = os.getenv("PLUG_NAME", "")
 
@@ -384,11 +384,11 @@ Read and filter a machine's logs to view updates from your machine's `viam-serve
 {{< tabs >}}
 {{% tab name="App UI" %}}
 
-Navigate to the **LOGS** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **LOGS** tab of your machine's page.
 
 Select from the **Levels** dropdown menu to filter the logs by severity level:
 
-![Filtering by log level of info in the logs tab of the Viam app.](/build/program/sdks/log-level-info.png)
+![Filtering by log level of info in the logs tab.](/build/program/sdks/log-level-info.png)
 
 {{% /tab %}}
 {{% tab name="Command line" %}}

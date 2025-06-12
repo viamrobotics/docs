@@ -29,7 +29,7 @@ Control mode is determined by the configuration attribute `"control_mode"`, for 
 4. `"joystickControl"`: One joystick controls speed and angle
 5. `"droneControl"`: Two joysticks control speed and angle
 
-You can monitor the input from these controls in the **CONTROL** tab of the [Viam app](https://app.viam.com).
+You can monitor the input from these controls in the **CONTROL** tab.
 
 ## Used with
 
@@ -51,7 +51,7 @@ Then, configure the service:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `base remote control` type.
 Enter a name or use the suggested name for your service and click **Create**.
@@ -69,7 +69,7 @@ Edit the attributes as applicable to your machine, according to the table below.
 
 For example:
 
-![An example configuration for a base remote control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
+![An example configuration for a base remote control service.](/services/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -125,7 +125,7 @@ The base remote control service supports the following methods:
 
 The following code examples assume that you have a machine configured with a [base](/operate/reference/components/base/) named `"my_base"`, [input controller](/operate/reference/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
 Make sure to add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for sample code to connect to your machine.
+Go to your machine's **CONNECT** tab and select the **Code sample** page for sample code to connect to your machine.
 
 {{% /alert %}}
 

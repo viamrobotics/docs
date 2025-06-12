@@ -27,7 +27,7 @@ The following image shows an example of a configured modular resource, specifica
 This modular component is made available by the `ultrasonic` module.
 See [module configuration](#module-configuration-details).
 
-{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example in the Viam app builder UI." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -80,7 +80,7 @@ The following properties are available for modular resources:
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `api` | string | **Required** | The {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/operate/reference/components/board/). Unnecessary if you coded [implicit dependencies](/operate/get-started/other-hardware/create-module/dependencies/). |
+| `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/get-started/other-hardware/create-module/dependencies/). |
 
 ## Module configuration details
 
@@ -90,7 +90,7 @@ The following properties are available for modular resources:
 The following image shows an example of a configured module in a machine's config.
 This ultrasonic sensor in the previous section is provided by the [`ultrasonic` module](https://app.viam.com/module/viam/ultrasonic) shown here.
 
-{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example in the Viam app builder UI." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -199,7 +199,7 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [Viam Registry](https://app.viam.com/registry) or is only available [locally](/operate/get-started/other-hardware/create-module/#test-your-module-locally) on your computer. |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is only available [locally](/operate/get-started/other-hardware/create-module/#test-your-module-locally) on your computer. |
 | `name` | string | **Required** | A name for this instance of the module. |
 | `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. Not applicable to local modules. |
 | `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/get-started/other-hardware/module-configuration/#module-versioning).</p> |
@@ -315,7 +315,7 @@ To configure a module that is uploaded to the Viam Registry but has [visibility]
 
 1. Copy the module configuration JSON snippet.
 
-1. In the Viam app, navigate to the **CONFIGURE** tab of the machine you want to configure.
+1. Navigate to the **CONFIGURE** tab of the machine you want to configure.
 
 1. Switch to **JSON** mode.
 

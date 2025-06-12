@@ -79,8 +79,8 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/dev/reference/try-viam/rover-resources/rover-tutorial/).
 
-If you are not using a Viam Rover, add a new machine in the [Viam app](https://app.viam.com).
-Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
+If you are not using a Viam Rover, add a new machine.
+Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to Viam.
 Wait until your machine has successfully connected.
 Then configure your machine with the {{< glossary_tooltip term_id="component" text="hardware components" >}}.
 If you are using a different rover, the [Configure a Rover like Yahboom or SCUTTLE](/tutorials/configure/configure-rover/) may help you configure your rover.
@@ -180,7 +180,7 @@ Finally, you will need both Viam robot credentials and OpenAI API credentials in
 
 {{% snippet "show-secret.md" %}}
 
-You can find API key and API key ID values for your robot by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com) and selecting the **API keys** page.
+You can find API key and API key ID values for your robot by navigating to the **CONNECT** tab and selecting the **API keys** page.
 
 To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
@@ -219,7 +219,7 @@ To configure your [servo](/operate/reference/components/servo/), go to your rove
 
 Now, in the panel for `servo1`, add the following attribute configuration:
 
-{{< imgproc src="/tutorials/ai-integration/servo_pane.png" alt="An example configuration for a pi servo with GPIO 8 and board 'local' in the Viam app Config Builder." resize="1200x" style="width:450px" >}}
+{{< imgproc src="/tutorials/ai-integration/servo_pane.png" alt="An example configuration for a pi servo with GPIO 8 and board 'local'." resize="1200x" style="width:450px" >}}
 
 - Enter `8` for `pin`.
 - Select the name of your [board](/operate/reference/components/board/) for the `board` attribute: in this case, `local`.
@@ -326,12 +326,12 @@ This opens up some really interesting possibilities, like having your robot talk
 
 ## Alternative option: configure Viam Labs speech module
 
-As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular {{< glossary_tooltip term_id="service" text="service" >}} providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
+As an alternate option for adding an AI speech integration to your robot, the [registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular {{< glossary_tooltip term_id="service" text="service" >}} providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
 Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).
 
 ### Configuration
 
-Navigate to the **CONFIGURE** page of your rover robot in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** page of your rover robot.
 
 {{< tabs name="Configure the speech module" >}}
 {{% tab name="Builder" %}}
@@ -365,7 +365,7 @@ Save your config by selecting the **Save** button in the top-right corner of the
 {{% tab name="JSON Template" %}}
 
 Select **JSON** mode.
-Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from [the Viam app's Modular Registry](https://app.viam.com/registry):
+Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from the [registry](https://app.viam.com/registry):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
