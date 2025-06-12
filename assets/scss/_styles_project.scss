@@ -3453,17 +3453,24 @@ footer {
   margin-right: auto !important;
 }
 
-.checkmark-icon {
+.copied {
   display: inline-block;
-  margin-left: 8px;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  font-size: 1em;
+  margin-left: 2rem;
   vertical-align: middle;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.25rem;
+  transition: opacity 0.05s ease-in-out;
   position: absolute;
-  padding-left: 1.5rem !important;
 }
 
-.checkmark-icon.visible {
+.copied-notification {
+  float: left;
+  font-size: 70%;
+  font-style: italic;
+  padding: 0.2em 0.4em;
+}
+
+.copied.visible {
   opacity: 1;
 }

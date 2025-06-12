@@ -1,6 +1,6 @@
-<h{{ .Level }} id="{{ .Anchor }}" onclick="handleAnchorClick('{{ .Anchor }}')" class="main-content-heading">
+<h{{ .Level }} id="{{ .Anchor }}" class="main-content-heading">
     {{ .Text | safeHTML }}
-    <div class="checkmark-icon" id="checkmark-{{ .Anchor }}" aria-hidden="true">
-      {{ partial "checkmark-icon.html" . }}
+    <div class="copied" id="copied-{{ .Anchor }}" aria-hidden="true">
+     <div class="copied-notification" id="copied-{{ .Anchor }}-text"></div>
     </div>
 </h{{ .Level }}>

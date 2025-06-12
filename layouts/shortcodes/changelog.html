@@ -9,10 +9,11 @@
         <span class="colorbox">{{ $color }}</span>
       </div>
       <div>
-        <h3 id="{{ $anchor }}" onclick="handleAnchorClick('{{ $anchor }}')">
+        <h3 id="{{ $anchor }}">
           {{ $title }}
-          <div class="checkmark-icon" id="checkmark-{{ $anchor }}" aria-hidden="true">
-           {{ partial "checkmark-icon.html" . }}
+          <div class="copied" id="copied-{{ $anchor }}" aria-hidden="true">
+           <div class="copied-notification" id="copied-{{ $anchor }}-text">
+           </div>
           </div>
         </h3>
       </div>

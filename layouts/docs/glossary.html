@@ -37,8 +37,9 @@
                         <div>
                           <h4 id="{{ $term_identifier }}" onclick="handleAnchorClick('{{ $term_identifier }}')" class="glossary-anchor">
                             {{ .Title }}
-                            <div class="checkmark-icon" id="checkmark-{{ $term_identifier }}" aria-hidden="true">
-                             {{ partial "checkmark-icon.html" . }}
+                            <div class="copied" id="copied-{{ $term_identifier }}" aria-hidden="true">
+                             <div class="copied-notification" id="copied-{{ $term_identifier }}-text">
+                             </div>
                             </div>
                           </h4>
                         </div>
