@@ -310,7 +310,7 @@ The following example shows how to restart a node from an SDK:
 node = await robot.get_component(Sensor.get_resource_name("<your_node_name>"))
 
 # restart node
-await node.do_command({ "restart_sensor": {} })
+await node.do_command({"restart_sensor": {}})
 ```
 
 {{% /tab %}}
@@ -365,7 +365,7 @@ The following example shows how to send downlink messages to a node from an SDK:
 node = await robot.get_component(Sensor.get_resource_name("<your_node_name>"))
 
 # send downlink message in hexadecimal
-await node.do_command({ "downlink": "48656C6C6F" })
+await node.do_command({"downlink": "48656C6C6F"})
 ```
 
 {{% /tab %}}
@@ -422,7 +422,7 @@ The following example shows how to change the transmission interval of a node fr
 node = await robot.get_component(Sensor.get_resource_name("<your_node_name>"))
 
 # set data transmission interval in seconds
-await node.do_command({ "set_interval": 300.0 })
+await node.do_command({"set_interval": 300.0})
 ```
 
 {{% /tab %}}
@@ -484,7 +484,7 @@ The following example shows how to send calibration commands to the Dragino WQS-
 ```python
 node = await robot.get_component(Sensor.get_resource_name("<your_node_name>"))
 
-await node.do_command({"<command>": <value>})
+await node.do_command({"<command>": "<value>"})
 ```
 
 {{% /tab %}}
@@ -493,7 +493,7 @@ await node.do_command({"<command>": <value>})
 ```dart
 final node = Sensor.fromRobot(robot, '<your_node_name>');
 
-await node.doCommand({'<command>': <value> });
+await node.doCommand({'<command>': '<value>' });
 ```
 
 {{% /tab %}}
