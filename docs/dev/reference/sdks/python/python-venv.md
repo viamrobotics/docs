@@ -14,7 +14,7 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-To manage Python packages for your Viam application, it is recommended that you use a virtual environment, or `venv`.
+To manage Python packages for your code, it is recommended that you use a virtual environment, or `venv`.
 By using a `venv`, you can install Python packages like Viam's client SDK within a virtual environment, avoiding conflicts with other projects or your system.
 
 Follow this guide to set up a fresh virtual environment on your working computer and install the Python SDK as a requirement for your Viam client application.

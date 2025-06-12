@@ -11,13 +11,13 @@ aliases:
   - /cloud/account/
 ---
 
-The [Viam app](https://app.viam.com/) is a web UI for managing and building machines.
-To use the app, you need a free account.
+Viam has a [web UI](https://app.viam.com/) for managing and building machines.
+To use Viam, you need a free account.
 Accounts can have [different permissions](/manage/manage/rbac/) to different groups of machines.
 
 ## Create account and log in
 
-To get started on the Viam app, you must log in as an authorized user.
+To get started, you must log in with a Viam account.
 Viam supports sign-up using Google, GitHub, Apple, and email.
 
 Navigate to [the main page](https://app.viam.com/).
@@ -34,7 +34,7 @@ Once you have logged in, get started by [creating a machine](/operate/get-starte
 
 ## Sign out
 
-To log out of the [Viam app](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
+To log out of [Viam](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
 Click **Sign out** to sign out of accessing all organizations, locations, and machines your credentials manage.
 
 ## Delete account

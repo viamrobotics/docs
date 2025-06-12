@@ -32,7 +32,7 @@ With a Raspberry Pi and some basic hardware, you can keep your plants healthy an
 Follow this tutorial to learn how to set up an automatic plant watering system:
 
 1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
-1. [Create and connect to the machine, and configure your machine's components](#configure-the-components-of-your-robot-in-the-viam-app).
+1. [Create and connect to the machine, and configure your machine's components](#configure-the-components-of-your-robot).
 1. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
 1. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
@@ -213,7 +213,7 @@ Run the following command to reboot your machine and load your changes:
 sudo reboot
 ```
 
-### Configure the components of your robot in the Viam app
+### Configure the components of your robot
 
 {{% snippet "setup.md" %}}
 
@@ -229,7 +229,7 @@ Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` mode
 Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
 
-![Creation of a board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
+![Creation of a board.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -263,8 +263,8 @@ Although the resistive soil moisture sensor is not currently one of Viam's built
 A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ({{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}) or models that are not built into Viam.
 A module can be added to your machine from the Viam Registry.
 
-The [Viam Registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their projects by writing and sharing custom modules with each other.
-You can add a module from the Viam Registry directly from your machine's **CONFIGURE** tab in the Viam app, using the **+** (Create) button.
+The [registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their projects by writing and sharing custom modules with each other.
+You can add a module from the Viam Registry directly from your machine's **CONFIGURE** tab, using the **+** (Create) button.
 
 To add the [mcp300x-adc-sensor](https://github.com/viam-labs/mcp300x-adc-sensor) module to your machine, follow these steps:
 
@@ -335,7 +335,7 @@ pip3 install viam-sdk
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your machine's page in the [Viam app](https://app.viam.com), and click on the **CONNECT** tab and the **Code sample** page.
+1. Navigate to your machine's page, and click on the **CONNECT** tab and the **Code sample** page.
 1. Select **Python** as the language.
 1. Follow the instructions shown under step 1 on that page to install the SDK.
 1. Then, under step 2 on that page, click the copy icon to copy the generated code sample, which establishes a connection with your robot when run.
@@ -421,7 +421,7 @@ You must import `time` at the top of <file>plant-watering-robot.py</file> to be 
 
 ### Test motor
 
-On your machine's **CONTROL** page in the Viam app, expand the **TEST** panel for your board component. You should see a panel that allows you to control individual GPIO pins:
+On your machine's **CONTROL** page, expand the **TEST** panel for your board component. You should see a panel that allows you to control individual GPIO pins:
 
 {{<imgproc src="/tutorials/plant-watering-pi/test-motor.png" resize="x400" declaredimensions=true alt="The test panel" class="imgzoom fill shadow" >}}
 
@@ -432,7 +432,7 @@ To turn off the motor and stop pumping water, use the **State** control to selec
 
 ### Test moisture sensor
 
-On your machine's **CONTROL** page in the Viam app, expand the **TEST** card for your `mcp300x` sensor module to see a live observed value from your moisture sensor.
+On your machine's **CONTROL** page, expand the **TEST** card for your `mcp300x` sensor module to see a live observed value from your moisture sensor.
 Test your sensor by putting it in air, water, and soils containing different amounts of moisture.
 Use these values to determine an appropriate value for the `DRY` variable in your setup.
 

@@ -61,7 +61,7 @@ We recommend enabling both cameras so you can have a better sense of what's happ
 
 ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](appendix/try-viam/try-viam/enable-both-cameras.png)
 
-You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
+You can also view and control the camera streams from the individual camera components on the [**CONTROL** page](/manage/troubleshoot/teleoperate/default-interface/#web-ui).
 
 #### Movement control
 
@@ -140,7 +140,7 @@ The [web gamepad component](/components/input-controller/webgamepad/) is disable
 
 ## Learn about machine configuration
 
-On the Viam app, navigate to the **Components** subtab, under **CONFIGURE**.
+On your machine's page, navigate to the **CONFIGURE** tab.
 There you can view the configuration for each component in the machine: attributes, component dependencies, pin assignments, and more.
 
 ![The CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](appendix/try-viam/try-viam/config-builder.png)
@@ -217,7 +217,7 @@ The names for **base** and **input_controller** correspond to the naming scheme 
 ### Raw JSON
 
 The 'Builder' configuration mode provides a user-friendly, guided experience for you.
-In the background, the Viam app translates the Viam machine configuration into JSON.
+In the background, Viam translates the Viam machine configuration into JSON.
 You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **CONFIGURE** tab.
 
 ![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](appendix/try-viam/try-viam/raw-json.png)

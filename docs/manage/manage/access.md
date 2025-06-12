@@ -12,7 +12,7 @@ aliases:
 ---
 
 To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations.
-You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) to grant or revoke organization owner or operator access to users or API keys.
+You can use the [web UI](https://app.viam.com) or the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) to grant or revoke organization owner or operator access to users or API keys.
 
 ## Grant access
 
@@ -20,7 +20,7 @@ You can use the [Viam app](https://app.viam.com) or the [Viam mobile app](/manag
 
 You must have the **Owner** role to be able to grant permissions.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On Viam, click on the organization dropdown in the top navigation bar.
 2. Click on **Settings**.
 3. Find the **Members** section of the organization settings page.
 4. Click on **Grant access**.
@@ -44,7 +44,7 @@ You must have the **Owner** role to be able to grant permissions.
 
 You must have the **Owner** role to be able to share locations.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On Viam, click on the organization dropdown in the top navigation bar.
 2. Select the organization that contains the location you want to share.
 3. Navigate to the location you want to share.
 4. Find the **Sharing** section of the location page.
@@ -62,7 +62,7 @@ Once you share a _nested_ location (sub-location), its parent location cannot be
 
 You must have the **Owner** role to be able to limit permissions.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On Viam, click on the organization dropdown in the top navigation bar.
 2. Click on **Settings**.
 3. Find the **Members** section of the organization settings page.
 4. Click on the user to open the access settings for the user.
@@ -77,7 +77,7 @@ You must have the **Owner** role to be able to limit permissions.
 
 You must have the **Owner** role to be able to share locations.
 
-1. In the [Viam app](https://app.viam.com), click on the organization dropdown in the top navigation bar.
+1. On [Viam](https://app.viam.com), click on the organization dropdown in the top navigation bar.
 2. Select the organization that contains the location you want to share.
 3. Navigate to the location you want to share.
 4. Find the **Sharing** section of the location page.
@@ -86,7 +86,7 @@ You must have the **Owner** role to be able to share locations.
 
 ## Collaborate safely
 
-When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
+When you or your collaborators change the configuration of a machine or a group of machines, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
 This means everyone who has access can change a fleet's configuration, even while your machines are running.
 
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.

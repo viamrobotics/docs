@@ -36,7 +36,7 @@ You can also view [trigger-sync-examples module](https://github.com/viam-labs/tr
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam. Click to see instructions." %}}
 
 {{% snippet "setup-both.md" %}}
 
@@ -294,7 +294,7 @@ To test your setup, [configure a webcam](/operate/reference/components/camera/we
 Make sure to physically connect any hardware parts to the computer controlling your machine.
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
-Go to the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#viam-app).
+Go to the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui).
 You should see the sensor.
 Click on `GetReadings`.
 

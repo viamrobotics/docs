@@ -32,9 +32,9 @@ See [configure a machine](/operate/get-started/supported-hardware/) for more inf
 
 {{< table >}}
 {{% tablestep number=1 %}}
-**Create a workspace in the Viam app**
+**Create a workspace**
 
-Log in to the [Viam app](https://app.viam.com/).
+Log into [Viam](https://app.viam.com/).
 
 Navigate to the **FLEET** page's **TELEOP** tab.
 Create a workspace by clicking **+ Create workspace**.
@@ -52,10 +52,10 @@ Repeat as many times as necessary.
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
-**Select a machine**
+**Select a location and a machine**
 
-Now, select a machine with which to make your teleop workspace come to life.
-Click **Select machine** and select your configured machine.
+Now, select a location and a machine.
+This will make your widgets connect to your machine.
 
 Your dashboard now shows the configured widgets for the data from your machine:
 

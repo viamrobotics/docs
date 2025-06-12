@@ -32,11 +32,11 @@ Your microcontroller should have at least the following resources available to w
 
 To test your board as you configure it, power it on.
 If you plan to connect hardware to the board's pins, connect the hardware while it's powered off.
-To configure an `esp32` board, navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com) and select **JSON** mode.
+To configure an `esp32` board, navigate to the **CONFIGURE** tab of your machine's page and select **JSON** mode.
 
 {{< alert title="Info" color="info" >}}
 
-The`esp32` [board](/operate/reference/components/board/) model is not currently available as a built-in option in the [Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+The`esp32` [board](/operate/reference/components/board/) model is not currently available when configuring your machine using **Builder** mode.
 
 {{< /alert >}}
 

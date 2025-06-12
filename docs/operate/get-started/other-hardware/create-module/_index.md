@@ -123,11 +123,11 @@ Authenticate your CLI session with Viam using one of the following options:
 | Module name | The module name describes the module or the family of devices it supports. It is generally the same as the name of the GitHub repo where you will put your module code. |
 | Language | The language for the module. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
-| Namespace/Organization ID | In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
+| Namespace/Organization ID | Navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
 | Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [How to design your module](./#how-to-design-your-module) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
-| Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the Viam app registry page; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
+| Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the registry; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
 
 {{< /expand >}}
 
@@ -298,7 +298,7 @@ if __name__ == "__main__":
 
 {{< /expand >}}
 
-You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
+You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
 
 {{% /tablestep %}}
 {{< tablestep number=5 >}}
@@ -545,7 +545,7 @@ func (s *helloWorldHelloCamera) Close(context.Context) error {
 
 {{< /expand >}}
 
-You can find more examples by looking at the source code GitHub repos linked from each module in the [Viam Registry](https://app.viam.com/registry).
+You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
 {{% /tablestep %}}
 {{< tablestep number=7 >}}
 **Add logging** messages as desired.
@@ -577,10 +577,10 @@ In order to see debug logs when using your modular resource, you'll need to run 
 
 ## Test your module locally
 
-It's a good idea to test your module locally before uploading it to the [Viam Registry](https://app.viam.com/registry).
-You'll configure it through the Viam app, but the configured module will consist of local files.
+It's a good idea to test your module locally before uploading it to the [registry](https://app.viam.com/registry).
+You can configure it in the web UI using the local files on your machine.
 
-{{% expand "Prerequisite: A running machine connected to the Viam app." %}}
+{{% expand "Prerequisite: A running machine connected to Viam." %}}
 
 You can write a module without a machine, but to test your module you'll need a [machine](/operate/get-started/setup/).
 Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
@@ -709,7 +709,7 @@ For more information, run the command with the `-h` flag or see the [CLI documen
 
 `Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
 
-- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page in the Viam app and clicking **Part ID**.
+- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page and clicking **Part ID**.
 
 `Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
 
@@ -728,7 +728,7 @@ Run the following command to rebuild your module:
 viam module build local
 ```
 
-Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+Then restart it in your machine's **CONFIGURE** tab.
 In upper right corner of the module's card, click the **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
@@ -740,7 +740,7 @@ When you run `viam module reload`, the module will be added to your device autom
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
-On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+On your machine's **CONFIGURE** tab, click the **+** (create) icon in the left-hand menu.
 Select **Local module**, then **Local module**.
 
 Enter the absolute path to the <file>run.sh</file> script, for example `/home/jessamy/my-module/run.sh` on Linux, or `/Users/jessamy/my-python-sensor-module/run.sh` on macOS.
@@ -751,7 +751,7 @@ Click **Create**.
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+On your machine's **CONFIGURE** tab, click the **+** (create) icon in the left-hand menu.
 Select **Local module**, then **Local module**.
 
 Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example `/home/jessamy/my-go-module/bin/mymodule` on Linux, or `/Users/jessamy/my-go-module/bin/mymodule` on macOS.
@@ -812,7 +812,7 @@ viam module reload <insert relevant named args>
 {{% tab name="Python: venv" %}}
 
 Since you are using <file>run.sh</file> instead of a built executable, you do not need to rebuild anything as you iterate.
-Just save your code changes, then restart the module in your machine's **CONFIGURE** tab in the Viam app:
+Just save your code changes, then restart the module in your machine's **CONFIGURE** tab:
 In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
@@ -826,7 +826,7 @@ Run the following command to rebuild your module:
 viam module build local
 ```
 
-Then restart it in your machine's **CONFIGURE** tab in the Viam app.
+Then restart it in your machine's **CONFIGURE** tab.
 In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
@@ -841,7 +841,7 @@ See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) f
 
 ## Upload your module
 
-Once you are done testing locally, you can upload your module to the [Viam Registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
+Once you are done testing locally, you can upload your module to the [registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
 
 {{< table >}}
 {{% tablestep number=1 %}}
@@ -857,7 +857,7 @@ It's quite helpful to create a README to document what your module does and how 
 This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `jessamy:weather:meteo_PM` model.
 With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** button, select **Component or service**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
 Click **Add module**, enter a name for your sensor, and click **Create**.
 
@@ -1091,9 +1091,10 @@ Now, if you look at the [Viam Registry page](https://app.viam.com/registry) whil
 Now that your module is in the registry, you can test the registry version of your module on one machine, and then add it to more machines.
 Configure it just as you would [configure any other component or service in the registry](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine):
 
-1. Go to your machine's **CONFIGURE** tab in the Viam app.
+1. Go to your machine's **CONFIGURE** tab.
 
 1. Click the **+** button, select **Component or service**, and search for and select your model.
+   If you cannot find your new module, check that you are in an organization that can [access the module](/operate/get-started/other-hardware/manage-modules/#change-module-visibility).
 
 1. Click **Add module**, enter a name for your resource, and click **Create**.
 

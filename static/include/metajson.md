@@ -49,7 +49,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>entrypoint</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
+<td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.<br><br>If you have a local module, the local module uses its configured <a href="/operate/get-started/other-hardware/module-configuration/#module-configuration-details"><code>executable_path</code></a> instead of <code>entrypoint</code>.</td>
 </tr>
 <tr>
 <td><code>build</code></td>
@@ -61,7 +61,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>markdown_link</code></td>
 <td>string</td>
 <td>Optional</td>
-<td>Link to the documentation (README) for this module. The Viam app uses this to render your README on your module's page in the <a href="https://app.viam.com/registry">registry</a>. Similar to the <code>markdown_link</code> within the <code>models</code> object (described above), which allows the app to render info for a specific model in the configuration panel.</td>
+<td>Link to the documentation (README) for this module. Viam uses this to render your README on your module's page in the <a href="https://app.viam.com/registry">registry</a>. Similar to the <code>markdown_link</code> within the <code>models</code> object (described above), which allows the app to render info for a specific model in the configuration panel.</td>
 </tr>
 <tr>
 <td><code>$schema</code></td>

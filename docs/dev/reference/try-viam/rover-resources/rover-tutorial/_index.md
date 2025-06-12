@@ -369,11 +369,11 @@ Screw the top plate back on with the biggest Allen key and use the power switch 
 Wait a second for the low voltage cutoff relay to trip and provide power to the rover motherboard.
 If the Pi has power, the lights on the Raspberry Pi will light up.
 
-### Control your rover on the Viam app
+### Control your rover on Viam
 
-If you followed the instructions in the [Pi installation guide](/operate/reference/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
+If you followed the instructions in the [Pi installation guide](/operate/reference/prepare/rpi-setup/), you should have already made a Viam account, installed `viam-server` on the board, and added a new machine.
 
-If not, add a new machine in the [Viam app](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} until your machine is connected.
+If not, add a new machine and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} until your machine is connected.
 
 To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/dev/reference/try-viam/rover-resources/rover-tutorial-fragments/).
 

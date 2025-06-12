@@ -52,7 +52,7 @@ After start-up, `viam-server` manages:
 
 ### Reconfiguration
 
-When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
+When you or your collaborators change the configuration of a machine, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running machine.
 
 Reconfiguration of individual resources happens concurrently if there are no configured dependencies for any resources.
@@ -275,13 +275,13 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-webprofile` | Include profiler in HTTP server. |
 | `-webrtc` | Force WebRTC connections instead of direct connections. Default: `true`. |
 
-## Install `viam-server` without the Viam app
+## Install `viam-server` without the web UI
 
 {{% alert title="Tip" color="tip" %}}
-The recommended way to install `viam-server` and connect your machine to the Viam app is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
+The recommended way to install `viam-server` and connect your machine to Viam is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
 {{% /alert %}}
 
-If you need to install `viam-server` without using the Viam app, you can run the following commands.
+If you need to install `viam-server` without the web UI, you can run the following commands.
 
 {{< tabs >}}
 {{% tab name="Linux (Aarch64)" %}}

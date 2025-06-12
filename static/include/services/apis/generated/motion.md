@@ -678,7 +678,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Insert code to connect to your machine.
-// (see CONNECT tab of your machine's page in the Viam app)
+// (see CONNECT tab of your machine's page)
 
 // Assumes a gripper configured with name "my_gripper" on the machine
 gripperName := gripper.Named("my_gripper")
