@@ -290,7 +290,7 @@ You can use [DoCommand](/dev/reference/sdks/docommand/) to configure, control, a
 {{< tabs >}}
 {{% tab name="Viam web app" %}}
 
-To restart a node from the Viam web app, send the following DoCommand input in the **CONTROL** tab of your machine page:
+To restart a node from the Viam web UI, send the following DoCommand input in the **CONTROL** tab of your machine page:
 
 ```json
 {
@@ -345,7 +345,7 @@ await node.doCommand({ restart_sensor: {} });
 {{< tabs >}}
 {{% tab name="Viam web app" %}}
 
-To restart a node from the Viam web app, specify a hexadecimal string in the following DoCommand input in the **CONTROL** tab of your machine page:
+To restart a node from the Viam web UI, specify a hexadecimal string in the following DoCommand input in the **CONTROL** tab of your machine page:
 
 ```json
 {
@@ -402,7 +402,7 @@ The transmission interval controls how often a node communicates with the gatewa
 {{< tabs >}}
 {{% tab name="Viam web app" %}}
 
-To change the transmission interval of a node from the Viam web app, send the following DoCommand input in the **CONTROL** tab of your machine page:
+To change the transmission interval of a node from the Viam web UI, send the following DoCommand input in the **CONTROL** tab of your machine page:
 
 ```json
 {
