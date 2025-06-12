@@ -230,8 +230,8 @@ For the generic `viam:lorawan:node` model, you must also configure `decoder_path
 
 {{% alert title="Tip" color="tip" %}}
 
-Device-specific models, including those for Milesight and Dragino sensors, provide default values for `app_key`, `network_s_key`, `app_s_key`, `fport`, `decoder_path`, and `uplink_interval_mins`.
-If you use a device-specific model, omit these fields from your configuration.
+Device-specific models for Milesight nodes provide default values for `app_key`, `network_s_key`, `app_s_key`, `fport`, `decoder_path`, and `uplink_interval_mins`.
+If you use a Milesight node, omit these fields from your configuration.
 
 {{% /alert %}}
 
