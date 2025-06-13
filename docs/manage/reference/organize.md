@@ -30,7 +30,6 @@ On Viam, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped 
 
 These groupings allow you to manage permissions; you can grant a user access to an individual machine, to all the machines in a location, or to everything in an entire organization.
 You choose how to group your machines.
-You cannot move machines to other locations once created.
 
 <p>
 {{<imgproc src="/fleet/fleet.svg" class="fill aligncenter" resize="800x" style="width: 600px" declaredimensions=true alt="Two locations within an organization">}}
@@ -84,13 +83,30 @@ If you'd like to look at an example, see [Monitor Air Quality with a Fleet of Se
 
 ### Can I move a machine to a different location?
 
-No, it is not possible to move a machine to a different location.
+Yes, organization owners and location owners can move machines between locations within their organization.
 
-{{% hiddencontent %}}
-It is also not possible to change the location of a robot with an SDK.
-{{% /hiddencontent %}}
+To move a machine:
 
-If you want to have the machine in a different location, you will need to create a new machine and copy the old machine's configuration to the new machine.
+1. Navigate to your machine's page.
+1. Click the **...** button in the upper-right corner.
+1. Select **Move to a new location**.
+1. Choose the destination location from the organization tree.
+1. Confirm the move.
+
+{{< alert title="Important considerations" color="caution" >}}
+Moving a machine has several important implications:
+
+- **Machine address changes**: The machine's network address will change to `<machine-main-part-name>.<new-location-id>.viam.cloud`. You'll need to update any code that references the old address.
+- **Permission changes**: Access permissions will be updated. Users with access to the current location lose access, and users with access to the new location gain access to the machine.
+- **Data access**: Users in the new location cannot access historical data from when the machine was in the previous location.
+
+{{< /alert >}}
+
+**Requirements for moving machines:**
+
+- You must be an organization owner, or an owner of both the current and destination locations
+- The destination location must be within the same organization
+- No other machine in the destination location can have the same name
 
 ### Can I move a location to a different organization?
 
