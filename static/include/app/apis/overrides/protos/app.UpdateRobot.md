@@ -12,6 +12,10 @@ You can change:
 - The destination location must be within the same organization
 - No other machine in the destination location can have the same name
 
-**Important:** Changing a machine's location updates its network address to `<machine-main-part-name>.<new-location-id>.viam.cloud`.
-You'll need to update any code that references the old address.
-Access permissions will change based on the new location.
+{{< alert title="Important" color="note" >}}
+Moving a machine has several important implications:
+
+- **Machine address changes**: The machine's network address will change to `<machine-main-part-name>.<new-location-id>.viam.cloud`. You'll need to update any code that references the old address.
+- **Permission changes**: Access permissions will be updated. Users with access to the current location lose access, and users with access to the new location gain access to the machine.
+- **Data access**: Users in the new location cannot access historical data from when the machine was in the previous location.
+{{< /alert >}}
