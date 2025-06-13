@@ -58,7 +58,11 @@ aliases:
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="max-page gray-container">
-<h2 id="platform">The Viam platform</h2>
+<h2 id="platform">The Viam platform
+  <div class="copied" id="copied-platform" aria-hidden="true">
+    <div class="copied-notification" id="copied-platform-text"></div>
+  </div>
+</h2>
 <p> Viam allows you to control and program any sensor, actuator or other hardware that is connected to a device. The Viam platform offers builtin capabilities to capture data from devices to the cloud, to build and deploy machine learning models, to alert on problems, and much more. With the connection to the cloud, you can configure, control, and manage your devices from anywhere.</p>
 <br>
 <div class="imgcontcenter">

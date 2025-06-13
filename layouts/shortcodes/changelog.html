@@ -1,6 +1,7 @@
 {{ $color := .Get "color" }}
 {{ $title := .Get "title" }}
 {{ $date := .Get "date" }}
+{{ $anchor := anchorize $title }}
 <div class="filterable changelog-{{ $color }}">
   <div class="changelog changelog-outer">
     <div class="box-fit">
@@ -8,7 +9,13 @@
         <span class="colorbox">{{ $color }}</span>
       </div>
       <div>
-        <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
+        <h3 id="{{ $anchor }}">
+          {{ $title }}
+          <div class="copied" id="copied-{{ $anchor }}" aria-hidden="true">
+           <div class="copied-notification" id="copied-{{ $anchor }}-text">
+           </div>
+          </div>
+        </h3>
       </div>
     </div>
       <div class="date-fit">

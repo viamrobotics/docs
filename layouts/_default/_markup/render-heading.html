@@ -1,0 +1,6 @@
+<h{{ .Level }} id="{{ .Anchor }}" class="main-content-heading">
+    {{ .Text | safeHTML }}
+    <div class="copied" id="copied-{{ .Anchor }}" aria-hidden="true">
+     <div class="copied-notification" id="copied-{{ .Anchor }}-text"></div>
+    </div>
+</h{{ .Level }}>
