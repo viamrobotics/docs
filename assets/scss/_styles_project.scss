@@ -3475,3 +3475,7 @@ footer {
 .copied.visible {
   opacity: 1;
 }
+
+.force-visible {
+ visibility: visible !important;
+}
