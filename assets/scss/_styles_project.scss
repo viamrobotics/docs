@@ -3465,7 +3465,8 @@ footer {
 }
 
 .copied-notification {
-  float: left;
+  display: inline;
+  vertical-align: top;
   font-size: 70%;
   font-style: italic;
   padding: 0.2em 0.4em;
