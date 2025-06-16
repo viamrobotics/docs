@@ -214,17 +214,17 @@ Configure attributes based on the tables below:
 
 You must configure the following attributes for OTAA nodes:
 
-- `dev_addr`: The 32-bit hexadecimal **device address** used to identify this device in uplink messages. Found in the device datasheet or in device packaging.
-- `app_s_key`: The 128-bit hexadecimal **application session key** used to decrypt uplink messages. Found in the device datasheet or in device packaging.
-- `network_s_key`: The 128-bit hexadecimal **network session key** used to decrypt uplink messages. Found in the device datasheet or in device packaging.
-- `gateways`: The name of the [gateway component](#add-a-gateway) in your Viam configuration.
-
-You must configure the following attributes for ABP nodes:
-
 - `join_type`: The [activation protocol](#activation-protocols) used to secure this network. Default: "OTAA". Options: "OTAA", "ABP".
 - `dev_eui`: The **device EUI (Extended Unique Identifier)**, a unique 64-bit identifier for the LoRaWAN device in hexadecimal format (16 characters). Found on your device or in device packaging.
 - `app_key`: The 128-bit hexadecimal AES **application key** used for device authentication and session key derivation. Found in the device datasheet.
 - `gateways`: Name of the [gateway component](#add-a-gateway) in your Viam configuration.
+
+You must configure the following attributes for ABP nodes:
+
+- `dev_addr`: The 32-bit hexadecimal **device address** used to identify this device in uplink messages. Found in the device datasheet or in device packaging.
+- `app_s_key`: The 128-bit hexadecimal **application session key** used to decrypt uplink messages. Found in the device datasheet or in device packaging.
+- `network_s_key`: The 128-bit hexadecimal **network session key** used to decrypt uplink messages. Found in the device datasheet or in device packaging.
+- `gateways`: The name of the [gateway component](#add-a-gateway) in your Viam configuration.
 
 For the generic `viam:lorawan:node` model, you must also configure `decoder_path` for the [decoder script](#decoder-script).
 
