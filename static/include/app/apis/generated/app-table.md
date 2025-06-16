@@ -46,7 +46,7 @@
 | [`DeleteRobotPartSecret`](/dev/reference/apis/fleet/#deleterobotpartsecret) | Delete a machine part secret. |
 | [`ListRobots`](/dev/reference/apis/fleet/#listrobots) | Get a list of all machines in a specified location. |
 | [`NewRobot`](/dev/reference/apis/fleet/#newrobot) | Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}. |
-| [`UpdateRobot`](/dev/reference/apis/fleet/#updaterobot) | Change the name of an existing machine. |
+| [`UpdateRobot`](/dev/reference/apis/fleet/#updaterobot) | Update an existing machine's name and/or location. |
 | [`DeleteRobot`](/dev/reference/apis/fleet/#deleterobot) | Delete a specified machine. |
 | [`GetRobotMetadata`](/dev/reference/apis/fleet/#getrobotmetadata) | Gets the user-defined metadata for a machine. |
 | [`GetRobotPartMetadata`](/dev/reference/apis/fleet/#getrobotpartmetadata) | Gets the user-defined metadata for a machine part. |
