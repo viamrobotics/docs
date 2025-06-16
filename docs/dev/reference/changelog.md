@@ -42,6 +42,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Move machines between locations" date="2025-06-10" %}}
+
+Organization owners and location owners can now move machines between locations within their organization using the web UI.
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
 The frame tab no longer exists.
