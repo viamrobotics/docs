@@ -91,9 +91,9 @@ h1, .h1 {
 h2, .h2 {
   font-family: Public sans, sans-serif;
   font-size: 1.25rem !important; // 20px
-  line-height: 1.25rem;
   font-weight: 500;
   clear: both;
+  display: block;
 }
 
 html {
@@ -114,6 +114,7 @@ h3, .h3 {
   font-size: 1.1667rem !important; // 20pt
   font-weight: 400;
   clear: both;
+  display: block;
 }
 
 h4, .h4 {
@@ -121,18 +122,21 @@ h4, .h4 {
   font-size: 1.0rem !important; // 16pt
   line-height: 1.4375em;
   clear: both;
+  display: block;
 }
 
 h5, .h5 {
   font-family: space grotesk, sans-serif;
   font-size: 0.933rem !important; // 14pt
   clear: both;
+  display: block;
 }
 
 h6, .h6 {
   font-size: 0.933rem !important;
   line-height: 1.0625rem; // 12pt
   clear: both;
+  display: block;
 }
 
 h7, .h7 {
@@ -141,6 +145,7 @@ h7, .h7 {
   font-weight: 400;
   font-style: italic;
   clear: both;
+  display: block;
 }
 
 .td-content > h3 {
@@ -3445,4 +3450,32 @@ footer {
 .frontpage .col.hover-card {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.copied {
+  display: inline-block;
+  margin-left: 2rem;
+  vertical-align: middle;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.25rem;
+  transition: opacity 0.2s ease-in-out;
+  padding: 0.2em 0.4em;
+  position: absolute;
+}
+
+.copied-notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-size: 70%;
+}
+
+.copied.visible {
+  opacity: 1;
+}
+
+.force-visible {
+ visibility: visible !important;
 }
