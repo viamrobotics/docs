@@ -91,7 +91,6 @@ h1, .h1 {
 h2, .h2 {
   font-family: Public sans, sans-serif;
   font-size: 1.25rem !important; // 20px
-  line-height: 1.25rem;
   font-weight: 500;
   clear: both;
   display: block;
@@ -3460,16 +3459,17 @@ footer {
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 0.25rem;
-  transition: opacity 0.05s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  padding: 0.2em 0.4em;
   position: absolute;
 }
 
 .copied-notification {
-  display: inline;
-  vertical-align: top;
-  font-size: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-style: italic;
-  padding: 0.2em 0.4em;
+  font-size: 70%;
 }
 
 .copied.visible {
