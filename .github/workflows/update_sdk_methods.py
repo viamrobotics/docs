@@ -610,6 +610,8 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             return_string += f"- [({param_type})]({param_type_link}): The command response."
         elif go_method_name == "Geometries" and param_type == "[]spatialmath.Geometry":
             return_string += f"- [({param_type})]({param_type_link}): The geometries associated with this resource, in any order."
+        elif go_method_name == "Kinematics" and param_type == "referenceframe.Model":
+            return_string += f"- [({param_type})]({param_type_link}): The kinematics model of the resource."
         elif go_method_name == "IsMoving" and param_type == "bool":
             return_string += f"- [({param_type})]({param_type_link}): Whether this resource is moving (`true`) or not (`false`)."
         elif go_method_name == "Readings" and param_type == "map[string]interface{}":

@@ -6,8 +6,8 @@ arm,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPositio
 arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJointPositions,moveToJointPositions
 arm,MoveThroughJointPositions,,,MoveThroughJointPositions,,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
-arm,GetKinematics,,get_kinematics,,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
+arm,GetKinematics,,get_kinematics,Kinematics,,
 arm,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 arm,Stop,,stop,Stop,stop,stop
 arm,GetGeometries,,get_geometries,Geometries,,getGeometries
@@ -117,6 +117,7 @@ gripper,Grab,,grab,Grab,grab,grab
 gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gripper,Stop,,stop,Stop,stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
+gripper,GetKinematics,,get_kinematics,Kinematics,,
 gripper,Reconfigure,,,Reconfigure,,
 gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gripper,GetResourceName,,get_resource_name,,getResourceName,
