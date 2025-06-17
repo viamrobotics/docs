@@ -44,19 +44,19 @@ Viam can sync the data from the gateway and the LoRaWAN nodes to Viam, where you
 ## Add a gateway
 
 To start your network, you need a gateway.
-The lorawan module supports the following varieties of gateway hardware:
+The `lorawan` module supports the following varieties of gateway hardware:
 
-- peripheral built on the SX1302 or SX1303 chips connected to an SBC, such as the [Waveshare SX1302 Gateway HAT](https://www.waveshare.com/wiki/SX1302_LoRaWAN_Gateway_HAT)
+- Peripherals built on the SX1302 or SX1303 chips connected to an SBC, such as the [Waveshare SX1302 Gateway HAT](https://www.waveshare.com/wiki/SX1302_LoRaWAN_Gateway_HAT)
 - Dedicated machines such as the Raspberry Pi CM4-based [RAK7391 WisGate Connect](https://docs.rakwireless.com/product-categories/wisgate/rak7391/overview/)
 
 If you choose the RAK7391:
 
 1. Complete the [RAKPiOS quickstart](https://docs.rakwireless.com/product-categories/software-apis-and-libraries/rakpios/quickstart/) to flash your RAK7391 with an operating system and connect it to the Internet.
-1. [Install viam-server](/operate/get-started/setup/).
+1. [Install `viam-server`](/operate/get-started/setup/).
 
 If you choose a peripheral:
 
-1. Follow our guide to [set up an SBC](/operate/get-started/setup/).
+1. Follow our guide to [install `viam-server` on your SBC](/operate/get-started/setup/).
 1. Enable SPI on your machine:
 
    ```console
@@ -128,7 +128,7 @@ Configure attributes based on the tables below:
 {{% /tab %}}
 {{< /tabs >}}
 
-You must configure the following attributes for SX1302 and SX1303-based LoRaWAN gateways:
+You must configure the following attributes for SX1302- and SX1303-based LoRaWAN gateways:
 
 - `board`: The name of the [board component](/operate/reference/components/board/) that the peripheral is connected to. Used for GPIO pin control.
 - `reset_pin`: GPIO pin used for peripheral reset. Not configurable for `sx1302-waveshare-hat`.
@@ -151,7 +151,8 @@ Complete the following steps to configure your node:
 1. Select the `sensor` type, type `lorawan`, then select the `lorawan` model that matches the name of your node.
    If the name of your node does not appear in the list, choose the generic `lorawan:node` option.
 1. Click **Add module**, and enter a name for your node.
-1. Click **Create** to add the module to your machine.
+1. Click **Create** to add the model and module to your machine.
+1. Configure the model attributes as follows, according to the node type:
 1. Click **Save** in the top right to apply your changes.
 
 {{% /tab %}}
@@ -207,7 +208,7 @@ Choose an appropriate node model from the following options:
   - supports either the `US915` or `EU868` frequency band
   - uses LoRaWAN MAC specification version 1.0.3
 
-Configure attributes based on the tables below:
+Configure attributes based on the descriptions below:
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -257,7 +258,7 @@ Decoder scripts convert this binary data into structured, human-readable formats
 Each manufacturer uses different encoding schemes depending on the data transmitted by a device.
 For example:
 
-- A temperature sensor might encode 23.5°C as a hexadecimal value like `0x00EB`
+- A temperature sensor might encode 23.5°C as a hexadecimal value like `0x00EB`.
 - A GPS tracker might pack latitude and longitude into 8 bytes.
 
 Without a decoder script, your application receives meaningless byte sequences like `0x00EB1337` instead of useful data like `{"temperature": 23.5, "humidity": 42.0 }`.
@@ -283,7 +284,8 @@ When you specify an `fport` value for a node, gateways use that value as the fra
 
 ## Control nodes
 
-You can use [DoCommand](/dev/reference/sdks/docommand/) to configure, control, and calibrate your LoRaWAN nodes. The `lorawan` module supports the following commands:
+You can use [DoCommand](/dev/reference/sdks/docommand/) to configure, control, and calibrate your LoRaWAN nodes.
+The `lorawan` module supports the following commands:
 
 ### Restart node
 
@@ -454,7 +456,8 @@ await node.doCommand({ set_interval: 300.0 });
 
 ### Calibrate the Dragino WQS-LB water quality sensor
 
-Before using the Dragino WQS-LB, you must calibrate the sensor.
+To use a Dragino WQS-LB, you must calibrate the sensor.
+For other sensors, see the manufacturer's instructions.
 
 {{% alert title="Info" color="info" %}}
 
@@ -523,7 +526,7 @@ Use the calibration processes below to calibrate your sensor with these commands
 
 #### Calibrate the pH probe
 
-The pH probe uses a thre-point calibration process:
+The pH probe uses a three-point calibration process:
 
 1. Wash the electrode with distilled water
 1. Place the electrode in a 9.18 standard buffer solution.
