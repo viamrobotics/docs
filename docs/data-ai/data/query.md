@@ -207,7 +207,7 @@ WHERE component_name = 'PM_sensor' AND location_id = 'ab1cd23e4f'
 **Review results**
 
 Click **Run query** when ready to perform your query and get matching results.
-Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
+You can view your query results in a table or as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
 
 {{% /tablestep %}}
 {{< /table >}}
