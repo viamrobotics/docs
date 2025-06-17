@@ -34,6 +34,8 @@ The lifecycle of a module and the resources it provides is as follows:
 
 1. If at any point the user changes the configuration of the machine, `viam-server` reconfigures the affected resources within 15 seconds.
 
+1. If an optional dependency becomes available, `viam-server` reconfigures the resource to use it.
+
 1. If `viam-server` attempts to shut down an individual module (for example due to a user disabling a module) and the module does not shut down within 30 seconds, `viam-server` kills the module.
 
 1. When `viam-server` shuts down, it first attempts to shut down each module sequentially in no particular order.

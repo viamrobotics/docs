@@ -174,7 +174,7 @@ For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/vi
 Most Go modules use `resource.AlwaysRebuild` within the `<module-name><resource-name>` struct, which means that the resource rebuilds every time the module is reconfigured.
 
 The steps above use `resource.AlwaysRebuild`.
-If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/get-started/other-hardware/create-module/#implement-the-component-api).
+If you need to maintain the state of your resource, or if you are using optional dependencies, see [(Optional) Create and edit a `Reconfigure` function](/operate/get-started/other-hardware/create-module/#implement-the-component-api).
 
 {{% /alert %}}
 
@@ -220,7 +220,9 @@ Be sure to handle the case where the dependency is not available in your API imp
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If your module has optional dependencies, the steps are the same as for required dependencies, except that your `Validate` function should add the dependency to the second returned element:
+If your module has optional dependencies, the steps are similar to those for required dependencies, except that your `Validate` function must add the dependency to optional dependencies element, and you must implement `reconfigure`.
+
+Create a `Validate` function that adds the dependency to the second returned element:
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []string, err error) {
@@ -230,6 +232,19 @@ func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []
   }
   optDeps = append(optDeps, cfg.CameraName)
   return nil, optDeps, nil
+}
+```
+
+Implement a `reconfigure` function so that your module can reconfigure to use the optional dependency when it becomes available:
+
+```go {class="line-numbers linkable-line-numbers"}
+func (s *myModuleMySensor) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
+  camera, err := camera.FromDependencies(deps, s.cfg.CameraName)
+  if err != nil {
+    return errors.New("failed to get camera dependency")
+  }
+  s.camera = camera
+  return nil
 }
 ```
 
