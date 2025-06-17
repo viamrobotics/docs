@@ -475,10 +475,6 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetKinematics
 
-{{% alert title="Note" color="note" %}}
-This method is not yet available with the Viam Go SDK.
-{{% /alert %}}
-
 Get the kinematics information associated with the gripper as the format and byte contents of the [kinematics file](/operate/reference/kinematic-chain-config/).
 
 {{< tabs >}}
@@ -509,6 +505,21 @@ k_bytes = kinematics[1]
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_kinematics).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(referenceframe.Model)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Model)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled).
 
 {{% /tab %}}
 {{< /tabs >}}
