@@ -510,7 +510,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(referenceframe.Model)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Model)
+- [(referenceframe.Model)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Model): The kinematics model of the resource.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled).
