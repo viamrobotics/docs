@@ -152,7 +152,7 @@ Complete the following steps to configure your node:
    If the name of your node does not appear in the list, choose the generic `lorawan:node` option.
 1. Click **Add module**, and enter a name for your node.
 1. Click **Create** to add the model and module to your machine.
-1. Configure the model attributes as follows, according to the node type:
+1. Configure the model attributes as described below, according to the node type.
 1. Click **Save** in the top right to apply your changes.
 
 {{% /tab %}}
