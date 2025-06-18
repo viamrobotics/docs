@@ -345,7 +345,7 @@ On top of querying sensor data with third-party tools, you can also [query it wi
 
 ### MQL
 
-Viam supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
+Viam supports the [MongoDB Query Language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
 
 ### SQL
 
