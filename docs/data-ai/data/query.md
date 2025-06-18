@@ -22,17 +22,15 @@ Then, you can follow the steps on this page to query it using {{< glossary_toolt
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
-- **SQL:** For querying captured data, Viam supports the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/query-with-asql-statements/), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
-  For more information, see the [MongoDB Atlas SQL language reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/).
-
-- **MQL**: Viam also supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
-
 ## Query data in the web UI
 
 ### Prerequisites
 
-You must have captured sensor data.
-See [capture sensor data](/data-ai/capture-data/capture-sync/) for more information.
+{{% expand "Captured sensor data" %}}
+
+Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
+
+{{% /expand%}}
 
 ### Query from the app
 
@@ -216,13 +214,13 @@ You can view your query results in a table or as a [JSON array](https://json-sch
 
 ### Prerequisites
 
-{{% expand "Captured sensor data. Click to see instructions." %}}
+{{% expand "Captured sensor data" %}}
 
 Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 
-{{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
+{{% expand "Viam CLI" %}}
 
 You must have the Viam CLI installed to configure querying with third-party tools.
 
@@ -230,7 +228,7 @@ You must have the Viam CLI installed to configure querying with third-party tool
 
 {{% /expand%}}
 
-{{% expand "mongosh or another third-party tool for querying data. Click to see instructions." %}}
+{{% expand "A third-party tool for querying data, such as mongosh" %}}
 
 [Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source to follow along.
 See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
@@ -302,18 +300,6 @@ db.aggregate(
 [ { '': { numStanding: 215 } } ]
 ```
 
-{{< alert title="Tip" color="tip" >}}
-If you use a data field that is named the same as a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words), such as `value` or `position`, you must escape that field name in your query using backticks ( <file>\`</file> ).
-For example, to query against a field named `value` which is a subfield of the `data` field in the `readings` collection, you would use:
-
-```mongodb {class="command-line" data-prompt=">"}
-select data.`value` from readings
-```
-
-See the [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations) for more information.
-
-{{< /alert >}}
-
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -354,3 +340,24 @@ db.readings.aggregate(
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/data-ai/reference/data-client/) or [visualize it](/data-ai/data/visualize/).
+
+## Supported query languages
+
+### MQL
+
+Viam supports the [MongoDB Query Language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
+
+### SQL
+
+You can query data with SQL queries using the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
+
+SQL queries are subject to the following limitations:
+
+- If a database, table, or column identifier meets any of the following criteria, you must surround the identifier with backticks (`` ` ``) or double quotes (`"`):
+  - begins with a digit (for example `1`)
+  - begins with a [reserved character](https://www.postgresql.org/docs/current/functions-matching.html) (for example `%`)
+  - conflicts with a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words) (for example `select`)
+- To include a single quote character in a string literal, use two single quotes (use `o''clock` to represent the literal `o'clock`).
+- The `date` data type is not supported. Use `timestamp` instead.
+
+For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations).
