@@ -343,11 +343,11 @@ On top of querying sensor data with third-party tools, you can also [query it wi
 
 ## Supported query languages
 
-## MQL
+### MQL
 
 Viam supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
 
-## SQL
+### SQL
 
 You can query data with SQL queries using the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
 
