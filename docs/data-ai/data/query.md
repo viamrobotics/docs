@@ -44,6 +44,19 @@ You must have the [owner role](/manage/manage/rbac/) in order to query data on V
 {{% tablestep number=1 %}}
 **Query with SQL or MQL**
 
+{{< alert title="Tip" color="tip" >}}
+SQL queries are subject to the same limitations as the [MongoDB Atlas SQL Interface](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), including:
+
+- If a database, table, or column identifier meets any of the following criteria, you must surround the identifier with backticks (`` ` ``) or double quotes (`"`):
+  - begins with a digit (for example `1`)
+  - begins with a [reserved character](https://www.postgresql.org/docs/current/functions-matching.html) (for example `%`)
+  - conflicts with a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words) (for example `select`)
+- To include a single quote character in a string literal, use two single quotes (use `o''clock` to represent the literal `o'clock`).
+- The `date` data type is not supported. Use `timestamp` instead.
+
+For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations).
+{{< /alert >}}
+
 Navigate to the [**Query** page](https://app.viam.com/data/query).
 Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
 
@@ -301,18 +314,6 @@ db.aggregate(
 ] )
 [ { '': { numStanding: 215 } } ]
 ```
-
-{{< alert title="Tip" color="tip" >}}
-If you use a data field that is named the same as a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words), such as `value` or `position`, you must escape that field name in your query using backticks ( <file>\`</file> ).
-For example, to query against a field named `value` which is a subfield of the `data` field in the `readings` collection, you would use:
-
-```mongodb {class="command-line" data-prompt=">"}
-select data.`value` from readings
-```
-
-See the [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations) for more information.
-
-{{< /alert >}}
 
 {{% /tab %}}
 {{< /tabs >}}
