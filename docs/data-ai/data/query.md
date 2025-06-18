@@ -22,25 +22,6 @@ Then, you can follow the steps on this page to query it using {{< glossary_toolt
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
-## SQL
-
-You can query data with SQL queries using the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
-
-SQL queries are subject to the following limitations:
-
-- If a database, table, or column identifier meets any of the following criteria, you must surround the identifier with backticks (`` ` ``) or double quotes (`"`):
-  - begins with a digit (for example `1`)
-  - begins with a [reserved character](https://www.postgresql.org/docs/current/functions-matching.html) (for example `%`)
-  - conflicts with a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words) (for example `select`)
-- To include a single quote character in a string literal, use two single quotes (use `o''clock` to represent the literal `o'clock`).
-- The `date` data type is not supported. Use `timestamp` instead.
-
-For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations).
-
-## MQL
-
-Viam supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
-
 ## Query data in the web UI
 
 ### Prerequisites
@@ -247,7 +228,7 @@ You must have the Viam CLI installed to configure querying with third-party tool
 
 {{% /expand%}}
 
-{{% expand "mongosh or another third-party tool for querying data. Click to see instructions." %}}
+{{% expand "A third-party tool for querying data, such as mongosh" %}}
 
 [Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source to follow along.
 See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
