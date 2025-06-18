@@ -22,26 +22,11 @@ Then, you can follow the steps on this page to query it using {{< glossary_toolt
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
-- **SQL:** For querying captured data, Viam supports the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/query-with-asql-statements/), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
-  For more information, see the [MongoDB Atlas SQL language reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/).
+## SQL
 
-- **MQL**: Viam also supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
+You can query data with SQL queries using the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
 
-## Query data in the web UI
-
-### Prerequisites
-
-You must have captured sensor data.
-See [capture sensor data](/data-ai/capture-data/capture-sync/) for more information.
-
-### Query from the app
-
-Once your data has synced, you can query your data from within web UI using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-
-You must have the [owner role](/manage/manage/rbac/) in order to query data on Viam.
-
-{{< alert title="Tip" color="tip" >}}
-SQL queries are subject to the same limitations as the [MongoDB Atlas SQL Interface](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), including:
+SQL queries are subject to the following limitations:
 
 - If a database, table, or column identifier meets any of the following criteria, you must surround the identifier with backticks (`` ` ``) or double quotes (`"`):
   - begins with a digit (for example `1`)
@@ -51,7 +36,26 @@ SQL queries are subject to the same limitations as the [MongoDB Atlas SQL Interf
 - The `date` data type is not supported. Use `timestamp` instead.
 
 For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations).
-{{< /alert >}}
+
+## MQL
+
+Viam supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
+
+## Query data in the web UI
+
+### Prerequisites
+
+{{% expand "Captured sensor data" %}}
+
+Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
+
+{{% /expand%}}
+
+### Query from the app
+
+Once your data has synced, you can query your data from within web UI using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+
+You must have the [owner role](/manage/manage/rbac/) in order to query data on Viam.
 
 {{< table >}}
 {{% tablestep number=1 %}}
@@ -229,13 +233,13 @@ You can view your query results in a table or as a [JSON array](https://json-sch
 
 ### Prerequisites
 
-{{% expand "Captured sensor data. Click to see instructions." %}}
+{{% expand "Captured sensor data" %}}
 
 Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 
-{{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
+{{% expand "Viam CLI" %}}
 
 You must have the Viam CLI installed to configure querying with third-party tools.
 
