@@ -40,10 +40,6 @@ Once your data has synced, you can query your data from within web UI using {{< 
 
 You must have the [owner role](/manage/manage/rbac/) in order to query data on Viam.
 
-{{< table >}}
-{{% tablestep number=1 %}}
-**Query with SQL or MQL**
-
 {{< alert title="Tip" color="tip" >}}
 SQL queries are subject to the same limitations as the [MongoDB Atlas SQL Interface](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), including:
 
@@ -56,6 +52,10 @@ SQL queries are subject to the same limitations as the [MongoDB Atlas SQL Interf
 
 For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations).
 {{< /alert >}}
+
+{{< table >}}
+{{% tablestep number=1 %}}
+**Query with SQL or MQL**
 
 Navigate to the [**Query** page](https://app.viam.com/data/query).
 Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
