@@ -81,6 +81,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
              ref: ${{ github.sha }}
              key-id: ${{ secrets.viam_key_id }}
              key-value: ${{ secrets.viam_key_value }}
+             token: ${{ github.token }} # only required for private git repos
    ```
 
 The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file.
