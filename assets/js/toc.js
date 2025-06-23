@@ -9,11 +9,10 @@ tocbot.init({
   // Which headings to grab inside of the contentSelector element.
   headingSelector: '.td-content > h2, .td-content > h3',
   // For headings inside relative or absolute positioned containers within content.
-  hasInnerContainers: false,
-  scrollSmooth: true,
+  hasInnerContainers: true,
   orderedList: false,
   scrollSmoothOffset: -32,
-  headingsOffset: 40
+  headingsOffset: 120
 });
 
 // TOC highlighting
