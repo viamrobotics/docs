@@ -297,7 +297,7 @@ The following configuration defines the connection information and credentials f
 | ---------- | ------ | ----------- |
 | `type`     | string | The type of the network. Options: `"wifi"`|
 | `ssid`     | string | The network's SSID. |
-| `psk`      | string | The network pass key. |
+| `psk`      | string | The network password. |
 | `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
 
 {{% /tablestep %}}
