@@ -270,10 +270,10 @@ The following configuration defines the connection information and credentials f
     "hotspot_prefix": "skywalker-setup",
     "disable_captive_portal_redirect": false,
     "hotspot_password": "skywalker123",
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
     "retry_connection_timeout_minutes": "15m",
+    "turn_on_hotspot_if_wifi_has_no_internet": true
   },
   "additional_networks": {
     "testNet1": {
