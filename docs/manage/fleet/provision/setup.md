@@ -258,7 +258,7 @@ If you know in advance which other networks a machine should be able to connect 
 If that is not possible, you can add networks with the `additional_networks` field.
 `viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
 
-The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
+The following configuration defines the connection information and credentials for two WiFi networks named `otherNetworkOne` and `otherNetworkTwo`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -270,7 +270,6 @@ The following configuration defines the connection information and credentials f
     "hotspot_prefix": "skywalker-setup",
     "disable_captive_portal_redirect": false,
     "hotspot_password": "skywalker123",
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
     "retry_connection_timeout_minutes": "15m",
@@ -298,7 +297,7 @@ The following configuration defines the connection information and credentials f
 | ---------- | ------ | ----------- |
 | `type`     | string | The type of the network. Options: `"wifi"`|
 | `ssid`     | string | The network's SSID. |
-| `psk`      | string | The network pass key. |
+| `psk`      | string | The network password. |
 | `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
 
 {{% /tablestep %}}

@@ -132,7 +132,7 @@ Your machine credentials file must be at <file>\etc\viam.json</file>.
       "offline_before_starting_hotspot_minutes": 2,
       "user_idle_minutes": 5,
       "retry_connection_timeout_minutes": 10,
-      "turn_on_hotspot_if_wifi_has_no_internet": false,
+      "turn_on_hotspot_if_wifi_has_no_internet": true,
       "wifi_power_save": null
     },
     "additional_networks": {
@@ -282,9 +282,9 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
-| `offline_before_starting_hotspot_minutes` | integer | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the WiFi/router may take longer to be available. Default: `2` (2 minutes). |
-| `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10` (10 minutes). |
-| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device will only attempt to connect to a single WiFi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. WiFi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and `turn_on_hotspot_if_wifi_has_no_internet` is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
+| `offline_before_starting_hotspot_minutes` | integer | Optional | Amount of time the device will spend offline, in minutes, before the machine begins broadcasting a wireless hotspot. Default: `2`. |
+| `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time (in minutes), to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10`. |
+| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | When enabled, Wi-Fi connections without Internet access are considered offline. After `offline_before_starting_hotspot_minutes` minutes offline, your device will begin broadcasting a hotspot. This setting must be enabled for your device to attempt connecting to `additional_networks`. Default: `false`. |
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
 
