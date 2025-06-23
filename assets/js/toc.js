@@ -12,7 +12,8 @@ tocbot.init({
   hasInnerContainers: false,
   scrollSmooth: true,
   orderedList: false,
-  scrollSmoothOffset: -32
+  scrollSmoothOffset: -32,
+  headingsOffset: 40
 });
 
 // TOC highlighting
