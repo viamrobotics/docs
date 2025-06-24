@@ -142,7 +142,7 @@ The available geometry types are:
 | Geometry type | Description | Dimensions to define |
 | ------------- | ----------- | ------------------ |
 | box           | A rectangular prism. | `x`, `y`, `z`: length in each direction in mm. |
-| capsule       | A cylinder with hemispherical end caps. | `radius` in mm, `length` in mm between the centers of the hemispherical end caps. |
+| capsule       | A cylinder with hemispherical end caps. | `radius` in mm, overall `length` in mm. |
 | sphere        | A sphere. | `radius` in mm. |
 | mesh          | A 3D model defined by a mesh. | `triangles`: a list of triangles, each defined by three vertices. |
 
