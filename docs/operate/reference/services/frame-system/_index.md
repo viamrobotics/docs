@@ -158,8 +158,6 @@ For non base components, there is no inherent concept of "forward," so it is up 
 
 {{% /alert %}}
 
-For an example of configuring relative frames of two arms, see [Configure a different reference frame](/operate/mobility/move-arm/configure-arm/#configure-a-different-reference-frame).
-
 ## How the frame system works
 
 `viam-server` builds a tree of reference frames for your machine with the `world` as the root node and regenerates this tree following reconfiguration.
