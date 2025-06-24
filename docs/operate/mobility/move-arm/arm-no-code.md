@@ -1,7 +1,7 @@
 ---
 title: "Move an arm without code"
 linkTitle: "Move an arm with no code"
-weight: 30
+weight: 35
 type: "docs"
 layout: "docs"
 description: "Move an arm without code using the web UI."
