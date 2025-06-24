@@ -2,7 +2,7 @@
 title: "Configure components attached to your arm"
 linkTitle: "Configure additional components"
 description: "Configure additional components such as grippers, cameras, and other sensors attached to your arm."
-weight: 20
+weight: 30
 type: "docs"
 layout: "docs"
 aliases:
@@ -18,17 +18,28 @@ If you have a gripper, camera, or other components attached to your arm, you can
 
 You can also take into account passive objects attached to the arm such as a camera mount to avoid collisions.
 
-## Configure a gripper
+## Prerequisites
+
+See [Configure a gripper](/operate/reference/components/gripper/) for instructions on configuring the gripper itself.
+
+## Configure a gripper's frame
 
 If you have a gripper, you can configure it to move with the arm.
-See [Configure a gripper](/operate/reference/components/gripper/) for instructions on configuring the gripper itself.
-Then, configure the gripper's frame to describe its position and orientation relative to the arm:
+Configure the gripper's frame to describe its position and orientation relative to the arm:
 
 1. In the **CONFIGURE** tab, find the gripper's configuration card.
 
-1. Click **+ Add Frame**.
+1. Click **+ Add frame**.
 
 1. Select the arm's frame as the parent frame.
+
+   Some grippers have kinematics files that describe the gripper's end effector position and orientation relative to the gripper's base.
+   You can check whether your gripper has a kinematics file by looking in its module source code, or by using the [`GetKinematics` method](/dev/reference/apis/components/gripper/).
+
+   If you have a kinematics file, you do not need to add a translation or any geometries to the gripper's frame.
+   You can skip the remaining steps, assuming the gripper appears as expected in the **VISUALIZE** tab.
+
+   If you do not have a kinematics file, continue to the next step.
 
 1. Enter the gripper origin's position and orientation relative to the center of the end of the arm.
    It is up to you to decide what part of the gripper you want to use as the origin of the frame.
@@ -66,7 +77,7 @@ Then, configure the camera's frame to describe its position and orientation rela
 
 1. In the **CONFIGURE** tab, find the camera's configuration card.
 
-1. Click **+ Add Frame**.
+1. Click **+ Add frame**.
 
 1. Edit the frame depending on where the camera is mounted:
 
