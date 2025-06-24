@@ -30,3 +30,4 @@ jobs:
           # This part is also where you can pass other options, for example:
           prettier_options: --check docs/**/*.md
           only_changed: True
+          prettier_version: "3.2.5"
