@@ -37,16 +37,17 @@ It is a mostly static system for storing the "reference frame" of each component
 
 ## Configuration
 
+For a full how-to guide, see [Configure your frame system](/operate/mobility/move-arm/frame-how-to/).
+
 You can configure a reference frame within the frame system for each of your machine's components:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 
-1. Select **Builder** mode and [configure your arm](/operate/reference/components/arm/#configuration).
-   If you don't have a physical arm, you can use a `fake` model.
+1. Find the configuration card for the component you want to add a frame to.
 
-1. Click **+ Add Frame**.
+1. Click **+ Add frame**.
 
-1. Edit the frame configuration.
+1. Leave the default values, or edit the frame configuration.
    The frame configuration is a JSON object with the following parameters:
 
 <!-- prettier-ignore -->
