@@ -13,4 +13,4 @@ Every component that has a kinematics chain has an origin frame and an end effec
 If you parent a gripper to the arm's `my_arm` frame, the frame system will know the gripper is at the end of the arm.
 If you mistakenly parent the gripper to the arm's `my_arm_origin` frame, the frame system will think the gripper is at the base of the arm, and the gripper will not move when you move the arm.
 
-For more information, see [How the frame system works](/operate/reference/services/frame-system/#how-the-frame-system-works/).
+For more information, see [How the frame system works](/operate/reference/services/frame-system/#how-the-frame-system-works).
