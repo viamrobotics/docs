@@ -148,6 +148,8 @@ If you have a passive object attached to the arm such as a camera mount, you wil
      }
    ```
 
+   {{<imgproc src="/operate/mobility/capsule.png" resize="x1100" declaredimensions=true alt="A capsule with its length and radius labeled." style="max-width:250px" class="shadow imgzoom aligncenter" >}}
+
    {{% /tab %}}
    {{% tab name="Sphere" %}}
 
