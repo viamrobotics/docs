@@ -238,8 +238,8 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
-| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device connects to a single prioritized WiFi network (provided during provisioning) and is considered online even if the global internet is not reachable. When `turn_on_hotspot_if_wifi_has_no_internet` is true and the primary network lacks internet connectivity, the device will try all configured networks and only mark itself as online if it successfully connects to the internet. Default: `false`. |
-| `offline_before_starting_hotspot_minutes` | integer | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `2` (2 minutes). |
+| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | When enabled, Wi-Fi connections without Internet access are considered offline. After `offline_before_starting_hotspot_minutes` minutes offline, your device will begin broadcasting a hotspot. This setting must be enabled for your device to attempt connecting to `additional_networks`. Default: `false`. |
+| `offline_before_starting_hotspot_minutes` | integer | Optional | Amount of time the device will spend offline, in minutes, before the machine begins broadcasting a wireless hotspot. Default: `2`. |
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10` (10 minutes). |
 | `wifi_power_save` | boolean | Optional | Boolean, which, if set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `NULL`.  |
@@ -258,7 +258,7 @@ If you know in advance which other networks a machine should be able to connect 
 If that is not possible, you can add networks with the `additional_networks` field.
 `viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
 
-The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
+The following configuration defines the connection information and credentials for two WiFi networks named `otherNetworkOne` and `otherNetworkTwo`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -270,7 +270,6 @@ The following configuration defines the connection information and credentials f
     "hotspot_prefix": "skywalker-setup",
     "disable_captive_portal_redirect": false,
     "hotspot_password": "skywalker123",
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
     "retry_connection_timeout_minutes": "15m",
@@ -298,7 +297,7 @@ The following configuration defines the connection information and credentials f
 | ---------- | ------ | ----------- |
 | `type`     | string | The type of the network. Options: `"wifi"`|
 | `ssid`     | string | The network's SSID. |
-| `psk`      | string | The network pass key. |
+| `psk`      | string | The network password. |
 | `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
 
 {{% /tablestep %}}
