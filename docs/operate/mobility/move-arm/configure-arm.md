@@ -8,7 +8,7 @@ description: "Configure an arm component to use your robotic arm with Viam."
 date: "2025-05-21"
 ---
 
-Configure an [arm component](/operate/reference/components/arm) to use your robotic arm with Viam.
+Configure an [arm component](/operate/reference/components/arm/) to use your robotic arm with Viam.
 
 ## Prerequisites
 

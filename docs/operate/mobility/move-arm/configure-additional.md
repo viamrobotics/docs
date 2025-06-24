@@ -61,7 +61,7 @@ Configure the gripper's frame to describe its position and orientation relative 
 
 1. Check whether your gripper has a kinematics file.
 
-   Some grippers have [kinematics files](/operate/reference/kinematic-chain-config/) that describe the position and orientation of the jaws fo the gripper as they move, relative to the gripper's base.
+   Some grippers have [kinematics files](/operate/reference/kinematic-chain-config/) that describe the position and orientation of the jaws of the gripper as they move, relative to the gripper's base.
    This file typically also contains geometries to represent the gripper's volume and avoid collisions between the gripper and its environment.
    You can check whether your gripper has a kinematics file by looking in its module source code, or by using the [`GetKinematics` method](/dev/reference/apis/components/gripper/).
 

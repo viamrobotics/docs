@@ -79,7 +79,7 @@ If you want to define the world frame as the corner of the table, you can now ed
 1. Measure the X and Y distance from your designated table corner to the center of the arm's base.
 1. Edit the arm's frame configuration to set the `translation` field accordingly.
    For example, if the arm's base is 100mm in the X direction and 200mm in the Y direction from the table corner, set the `translation` field to `"x"=100, "y"=200, "z"=0`.
-   If you chose not to align the arm's axes with the world axes, be sure to use the X, Y, and Z directions of the world frame to set the `translation` field.
+   If you chose not to align the arm's axes with the world axes, be sure to use the X, Y, and Z directions of the _world_ frame to set the `translation` field.
 1. Click **Save**.
 
    The arm's frame is now offset from the world frame by the distance from the table corner to the arm's base.
