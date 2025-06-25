@@ -24,10 +24,9 @@ jobs:
           fetch-depth: 0
 
       - name: Check for prettified code
-        uses: creyD/prettier_action@v4.3
+        uses: creyD/prettier_action@v4.6
         with:
           dry: True
           # This part is also where you can pass other options, for example:
           prettier_options: --check docs/**/*.md
           only_changed: True
-          prettier_version: "3.2.5"
