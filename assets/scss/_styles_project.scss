@@ -91,7 +91,6 @@ h1, .h1 {
 h2, .h2 {
   font-family: Public sans, sans-serif;
   font-size: 1.25rem !important; // 20px
-  line-height: 1.25rem;
   font-weight: 500;
   clear: both;
 }
@@ -3445,4 +3444,32 @@ footer {
 .frontpage .col.hover-card {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.copied {
+  display: inline-block;
+  margin-left: 2rem;
+  vertical-align: middle;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.25rem;
+  transition: opacity 0.2s ease-in-out;
+  padding: 0.2em 0.4em;
+  position: absolute;
+}
+
+.copied-notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-size: 70%;
+}
+
+.copied.visible {
+  opacity: 1;
+}
+
+.force-visible {
+ visibility: visible !important;
 }
