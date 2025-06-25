@@ -4,7 +4,7 @@ title: "Capture images for training"
 weight: 20
 layout: "docs"
 type: "docs"
-description: "Capture images to train a machine learning model."
+description: "Capture images that you can use to train a machine learning model."
 ---
 
 ## Prerequisites
