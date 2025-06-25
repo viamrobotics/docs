@@ -2,7 +2,7 @@
 linkTitle: "Upload external data"
 title: "Upload external data for training"
 images: ["/services/icons/data-folder.svg"]
-weight: 20
+weight: 60
 layout: "docs"
 type: "docs"
 languages: ["python"]
@@ -11,6 +11,7 @@ aliases:
   - /data/upload/
   - /services/data/upload/
   - /how-tos/upload-data/
+  - /data-ai/ai/advanced/upload-external-data/
 date: "2024-12-04"
 description: "Upload data to Viam from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
 prev: "/data-ai/ai/act/"
@@ -135,9 +136,7 @@ Create a Python script and use the `file_upload_from_path` method to upload your
 {{< tabs >}}
 {{< tab name="Upload a single file" >}}
 
-To upload just one file, make a call to [`file_upload_from_path`](/dev/reference/apis/data-client/#fileuploadfrompath).
-
-{{< expand "Click this to see example code" >}}
+To upload just one file, make a call to [`file_upload_from_path`](/dev/reference/apis/data-client/#fileuploadfrompath):
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -180,14 +179,10 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-{{< /expand >}}
-
 {{% /tab %}}
 {{< tab name="Upload all files in a directory" >}}
 
 To upload all the files in a directory, you can use the [`file_upload_from_path`](/dev/reference/apis/data-client/#fileuploadfrompath) method inside a `for` loop.
-
-{{< expand "Click this to see example code" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -231,8 +226,6 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-
-{{< /expand >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -296,5 +289,5 @@ However, the uploaded images will not be associated with a component or method.
 
 ## Next steps
 
-Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/ai/train-tflite/) on it.
-Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/ai/create-dataset/).
+Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/train/train-tflite/) on it.
+Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/train/create-dataset/).

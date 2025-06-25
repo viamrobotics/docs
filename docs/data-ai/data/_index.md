@@ -1,7 +1,7 @@
 ---
 linkTitle: "Work with data"
 title: "Work with data"
-weight: 200
+weight: 150
 layout: "empty"
 type: "docs"
 empty_node: true
