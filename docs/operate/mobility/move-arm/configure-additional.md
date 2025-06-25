@@ -31,9 +31,11 @@ Configure the gripper's frame to describe its position and orientation relative 
 
 1. Select the arm's frame as the parent frame.
 
-1. Enter the gripper origin's position and orientation relative to the center of the end of the arm.
-   It is up to you to decide what part of the gripper you want to use as the origin of the frame.
-   It is common to use a central point near the base of the gripper jaws as the origin.
+1. Enter the gripper frame's position and orientation relative to the center of the end of the arm.
+   It is up to you to decide what part of the gripper you want to use as the gripper frame.
+   It can be convenient to use a point near the center of the gripper jaws as the gripper frame.
+
+   When you make a call to the motion service to move the gripper to a location, the point you specify in this step is the part of the gripper that will move to that location.
 
    {{<imgproc src="/tutorials/constrain-motion/gripper-diagram.png" resize="x1100" declaredimensions=true alt="A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y." style="max-width:500px" class="imgzoom" >}}
 
