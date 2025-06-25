@@ -78,7 +78,8 @@ detections = result.detections
 
 tags = ["tag1", "tag2"]
 
-my_filter = create_filter(component_name="camera-1", organization_ids=["<org-id>"])
+my_filter =
+    create_filter(component_name="camera-1", organization_ids=["<org-id>"])
 binary_metadata, count, last = await data_client.binary_data_by_filter(
     filter=my_filter,
     limit=20,

@@ -199,14 +199,20 @@ from viam.logging import getLogger
 MACHINE_PART_ID = "your-machine-part-id-here"
 
 class DataCollector:
-    def __init__(self, component_name: str, dataset_id: str, api_key_id: str, api_key: str):
+    def __init__(self,
+            component_name: str, dataset_id: str,
+            api_key_id: str, api_key: str):
+
         self.logger = getLogger(__name__)
         self.component_name = component_name
         self.dataset_id = dataset_id
         self.api_key_id = api_key_id
         self.api_key = api_key
 
-    async def capture_and_store_image(self, processed_image: Image.Image, classification: str) -> None:
+    async def capture_and_store_image(self,
+            processed_image: Image.Image,
+            classification: str) -> None:
+
         if not MACHINE_PART_ID:
             raise ValueError("machine part ID not configured")
 
@@ -273,7 +279,10 @@ class DataCollector:
         img.save(buffer, format='PNG', optimize=True)
         return buffer.getvalue()
 
-def create_data_collector(component_name: str, dataset_id: str, api_key_id: str, api_key: str) -> DataCollector:
+def create_data_collector(component_name: str,
+        dataset_id: str, api_key_id: str,
+        api_key: str) -> DataCollector:
+
     if not component_name:
         raise ValueError("component name is required")
     if not dataset_id:

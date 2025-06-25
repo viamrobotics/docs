@@ -58,15 +58,15 @@ data_client = viam_client.data_client
 print("Creating dataset...")
 
 try:
-   dataset_id = await data_client.create_dataset(
-       name="<dataset_name>",
-       organization_id="<org_id>",
-   )
-   print(f"Created dataset: {dataset_id}")
+    dataset_id = await data_client.create_dataset(
+        name="<dataset_name>",
+        organization_id="<org_id>",
+    )
+    print(f"Created dataset: {dataset_id}")
 except Exception as e:
-   print("Error creating dataset. It may already exist.")
-   print(f"Exception: {e}")
-   return 1
+    print("Error creating dataset. It may already exist.")
+    print(f"Exception: {e}")
+    return 1
 ```
 
 {{% /tab %}}
