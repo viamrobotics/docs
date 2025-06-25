@@ -112,15 +112,15 @@ const dataClient = client.dataClient;
 console.log("Creating dataset...");
 
 try {
-    const datasetId = await dataClient.createDataset({
-        name: "<dataset_name>",
-        organizationId: "<org_id>",
-    });
-    console.log(`Created dataset: ${datasetId}`);
+  const datasetId = await dataClient.createDataset({
+    name: "<dataset_name>",
+    organizationId: "<org_id>",
+  });
+  console.log(`Created dataset: ${datasetId}`);
 } catch (error) {
-    console.log("Error creating dataset. It may already exist.");
-    console.log(`Exception: ${error}`);
-    process.exit(1);
+  console.log("Error creating dataset. It may already exist.");
+  console.log(`Exception: ${error}`);
+  process.exit(1);
 }
 ```
 

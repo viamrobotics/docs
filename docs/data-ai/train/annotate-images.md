@@ -165,33 +165,30 @@ const myDetector = new VisionClient(client, "<detector_name>");
 const dataClient = client.dataClient;
 
 // Get the captured data for a camera
-const result = await myDetector.captureAllFromCamera(
-    "<camera_name>",
-    {
-        returnImage: true,
-        returnDetections: true,
-    }
-);
+const result = await myDetector.captureAllFromCamera("<camera_name>", {
+  returnImage: true,
+  returnDetections: true,
+});
 const image = result.image;
 const detections = result.detections;
 
 const tags = ["tag1", "tag2"];
 
 const myFilter = createFilter({
-    componentName: "camera-1",
-    organizationIds: ["<org-id>"]
+  componentName: "camera-1",
+  organizationIds: ["<org-id>"],
 });
 
 const binaryResult = await dataClient.binaryDataByFilter({
-    filter: myFilter,
-    limit: 20,
-    includeBinaryData: false
+  filter: myFilter,
+  limit: 20,
+  includeBinaryData: false,
 });
 
 const myIds: string[] = [];
 
 for (const obj of binaryResult.binaryMetadata) {
-    myIds.push(obj.metadata.binaryDataId);
+  myIds.push(obj.metadata.binaryDataId);
 }
 
 await dataClient.addTagsToBinaryDataByIds(tags, myIds);
@@ -375,7 +372,7 @@ for _, detection := range detections {
         BinaryID:        "<YOUR-BINARY-DATA-ID>",
         Label:           detection.Label,
         XMinNormalized:  detection.BoundingBox.Min.X,
-        YMinNormalized:  detection.BoundingBox.Min.Y,  
+        YMinNormalized:  detection.BoundingBox.Min.Y,
         XMaxNormalized:  detection.BoundingBox.Max.X,
         YMaxNormalized:  detection.BoundingBox.Max.Y,
     })
@@ -393,28 +390,27 @@ const myDetector = new VisionClient(client, "<detector_name>");
 const dataClient = client.dataClient;
 
 // Get the captured data for a camera
-const result = await myDetector.captureAllFromCamera(
-    "<camera_name>",
-    {
-        returnImage: true,
-        returnDetections: true,
-    }
-);
+const result = await myDetector.captureAllFromCamera("<camera_name>", {
+  returnImage: true,
+  returnDetections: true,
+});
 const image = result.image;
 const detections = result.detections;
 
 // Process each detection and add bounding boxes
 for (const detection of detections) {
-    const bboxId = await dataClient.addBoundingBoxToImageById({
-        binaryId: "<YOUR-BINARY-DATA-ID>",
-        label: detection.className,
-        xMinNormalized: detection.boundingBox.xMin,
-        yMinNormalized: detection.boundingBox.yMin,
-        xMaxNormalized: detection.boundingBox.xMax,
-        yMaxNormalized: detection.boundingBox.yMax
-    });
+  const bboxId = await dataClient.addBoundingBoxToImageById({
+    binaryId: "<YOUR-BINARY-DATA-ID>",
+    label: detection.className,
+    xMinNormalized: detection.boundingBox.xMin,
+    yMinNormalized: detection.boundingBox.yMin,
+    xMaxNormalized: detection.boundingBox.xMax,
+    yMaxNormalized: detection.boundingBox.yMax,
+  });
 
-    console.log(`Added bounding box ID: ${bboxId} for detection: ${detection.className}`);
+  console.log(
+    `Added bounding box ID: ${bboxId} for detection: ${detection.className}`,
+  );
 }
 ```
 

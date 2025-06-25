@@ -109,22 +109,22 @@ fmt.Println("Image added to dataset successfully")
 ```typescript
 // Connect to Viam client
 const client: ViamClient = await createViamClient({
-    credential: {
-        type: 'api-key',
-        payload: API_KEY,
-    },
-    authEntity: API_KEY_ID,
+  credential: {
+    type: "api-key",
+    payload: API_KEY,
+  },
+  authEntity: API_KEY_ID,
 });
 
 const dataClient = client.dataClient;
 
 // Add image to dataset
 await dataClient.addBinaryDataToDatasetByIds({
-    binaryIds: [EXISTING_IMAGE_ID],
-    datasetId: EXISTING_DATASET_ID,
+  binaryIds: [EXISTING_IMAGE_ID],
+  datasetId: EXISTING_DATASET_ID,
 });
 
-console.log('Image added to dataset successfully');
+console.log("Image added to dataset successfully");
 client.disconnect();
 ```
 
@@ -183,6 +183,7 @@ Re-train your ML model on the improved dataset to improve the ML model.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
+
 ```python
 import asyncio
 import os
@@ -303,6 +304,7 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -376,7 +378,7 @@ func (dc *DataCollector) CaptureAndStoreImage(ctx context.Context, processedImag
         return fmt.Errorf("failed to add image to dataset: %w", err)
     }
 
-    dc.logger.Infof("successfully added %s image to dataset %s (file ID: %s, machine: %s)", 
+    dc.logger.Infof("successfully added %s image to dataset %s (file ID: %s, machine: %s)",
         classification, dc.datasetID, fileID, MachinePartID)
 
     return nil
@@ -426,15 +428,16 @@ func NewDataCollector(logger logging.Logger, componentName, datasetID, apiKeyID,
     }, nil
 }
 ```
+
 {{% /tab %}}
 {{% tab name="Typescript" %}}
 
 ```typescript
-import { createRobotClient, RobotClient } from '@viamrobotics/sdk';
-import { AppClient, DataClient } from '@viamrobotics/app-client';
-import { Logger } from '@viamrobotics/utils';
+import { createRobotClient, RobotClient } from "@viamrobotics/sdk";
+import { AppClient, DataClient } from "@viamrobotics/app-client";
+import { Logger } from "@viamrobotics/utils";
 
-const MACHINE_PART_ID: string = 'your-machine-part-id-here';
+const MACHINE_PART_ID: string = "your-machine-part-id-here";
 
 interface FileUploadOptions {
   componentType?: string;
@@ -455,7 +458,7 @@ export class DataCollector {
     componentName: string,
     datasetId: string,
     apiKeyId: string,
-    apiKey: string
+    apiKey: string,
   ) {
     this.logger = logger;
     this.componentName = componentName;
@@ -466,10 +469,10 @@ export class DataCollector {
 
   async captureAndStoreImage(
     processedImage: ArrayBuffer,
-    classification: string
+    classification: string,
   ): Promise<void> {
     if (!MACHINE_PART_ID) {
-      throw new Error('Machine part ID not configured');
+      throw new Error("Machine part ID not configured");
     }
 
     let dataClient: DataClient | null = null;
@@ -481,8 +484,8 @@ export class DataCollector {
       const timestamp = Math.floor(Date.now() / 1000);
       const filename = `${classification}-sample-${timestamp}.png`;
 
-      const componentType = 'rdk:component:camera';
-      const fileExtension = 'png';
+      const componentType = "rdk:component:camera";
+      const fileExtension = "png";
 
       const uploadOptions: FileUploadOptions = {
         componentType,
@@ -494,19 +497,15 @@ export class DataCollector {
       const fileId = await dataClient.fileUploadFromBytes(
         MACHINE_PART_ID,
         new Uint8Array(imageData),
-        uploadOptions
+        uploadOptions,
       );
 
-      await dataClient.addBinaryDataToDatasetByIds(
-        [fileId],
-        this.datasetId
-      );
+      await dataClient.addBinaryDataToDatasetByIds([fileId], this.datasetId);
 
       this.logger.info(
         `Successfully added ${classification} image to dataset ${this.datasetId} ` +
-        `(file ID: ${fileId}, machine: ${MACHINE_PART_ID})`
+          `(file ID: ${fileId}, machine: ${MACHINE_PART_ID})`,
       );
-
     } catch (error) {
       this.logger.error(`File upload failed for ${classification}: ${error}`);
       throw new Error(`Failed to upload image: ${error}`);
@@ -519,7 +518,7 @@ export class DataCollector {
 
   private async createDataClient(): Promise<DataClient> {
     if (!this.apiKeyId || !this.apiKey) {
-      throw new Error('API credentials not configured');
+      throw new Error("API credentials not configured");
     }
 
     const appClient = new AppClient({
@@ -546,19 +545,19 @@ export class DataCollector {
     componentName: string,
     datasetId: string,
     apiKeyId: string,
-    apiKey: string
+    apiKey: string,
   ): DataCollector {
     if (!logger) {
-      throw new Error('Logger is required');
+      throw new Error("Logger is required");
     }
     if (!componentName) {
-      throw new Error('Component name is required');
+      throw new Error("Component name is required");
     }
     if (!datasetId) {
-      throw new Error('Dataset ID is required');
+      throw new Error("Dataset ID is required");
     }
     if (!apiKeyId || !apiKey) {
-      throw new Error('API credentials are required');
+      throw new Error("API credentials are required");
     }
 
     return new DataCollector(
@@ -566,7 +565,7 @@ export class DataCollector {
       componentName,
       datasetId,
       apiKeyId,
-      apiKey
+      apiKey,
     );
   }
 }

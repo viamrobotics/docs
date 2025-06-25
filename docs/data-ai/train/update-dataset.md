@@ -222,13 +222,13 @@ func main() {
 {{% tab name="TypeScript" %}}
 
 ```typescript
-import { createAppClient } from '@viamrobotics/app-client';
-import { promises as fs } from 'fs';
+import { createAppClient } from "@viamrobotics/app-client";
+import { promises as fs } from "fs";
 
-const MACHINE_PART_ID = 'your-machine-part-id-here';
-const DATASET_ID = 'your-dataset-id-here';
-const API_KEY_ID = 'your-api-key-id';
-const API_KEY = 'your-api-key';
+const MACHINE_PART_ID = "your-machine-part-id-here";
+const DATASET_ID = "your-dataset-id-here";
+const API_KEY_ID = "your-api-key-id";
+const API_KEY = "your-api-key";
 
 async function addImageToDataset(): Promise<void> {
   // Create app client
@@ -242,7 +242,7 @@ async function addImageToDataset(): Promise<void> {
     const dataClient = appClient.dataClient();
 
     // Read image file
-    const imagePath = 'sample_image.jpg';
+    const imagePath = "sample_image.jpg";
     const imageBuffer = await fs.readFile(imagePath);
     const imageData = new Uint8Array(imageBuffer);
 
@@ -250,10 +250,10 @@ async function addImageToDataset(): Promise<void> {
     const uploadResponse = await dataClient.fileUploadFromBytes({
       partId: MACHINE_PART_ID,
       data: imageData,
-      componentType: 'camera',
-      componentName: 'camera-1',
+      componentType: "camera",
+      componentName: "camera-1",
       fileName: `training_sample_${Date.now()}.jpg`,
-      fileExtension: 'jpg',
+      fileExtension: "jpg",
     });
 
     const fileId = uploadResponse.fileId;
@@ -266,7 +266,6 @@ async function addImageToDataset(): Promise<void> {
     });
 
     console.log(`Image added to dataset ${DATASET_ID} successfully`);
-
   } catch (error) {
     console.error(`Operation failed: ${error}`);
     throw error;
@@ -277,10 +276,9 @@ async function addImageToDataset(): Promise<void> {
 
 // Execute function
 addImageToDataset().catch((error) => {
-  console.error('Failed to add image to dataset:', error);
+  console.error("Failed to add image to dataset:", error);
   process.exit(1);
 });
-
 ```
 
 {{% /tab %}}
@@ -361,7 +359,6 @@ void main() async {
 
 {{% /tab %}}
 {{< /tabs >}}
-
 
 ## Add all images captured by a specific machine to a dataset
 
@@ -461,6 +458,7 @@ async def main() -> int:
 if __name__ == "__main__":
    asyncio.run(main())
 ```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -589,15 +587,15 @@ func main() {
 {{% tab name="Typescript" %}}
 
 ```typescript
-import { ViamClient, createViamClient } from '@viamrobotics/sdk';
-import { DataServiceClient } from '@viamrobotics/sdk/dist/gen/app/data/v1/data_pb_service';
-import { 
-    BinaryDataByFilterRequest, 
-    CreateDatasetRequest,
-    AddBinaryDataToDatasetByIdsRequest,
-    Filter,
-    DataRequest
-} from '@viamrobotics/sdk/dist/gen/app/data/v1/data_pb';
+import { ViamClient, createViamClient } from "@viamrobotics/sdk";
+import { DataServiceClient } from "@viamrobotics/sdk/dist/gen/app/data/v1/data_pb_service";
+import {
+  BinaryDataByFilterRequest,
+  CreateDatasetRequest,
+  AddBinaryDataToDatasetByIdsRequest,
+  Filter,
+  DataRequest,
+} from "@viamrobotics/sdk/dist/gen/app/data/v1/data_pb";
 
 // Configuration constants - replace with your actual values
 const DATASET_NAME = ""; // a unique, new name for the dataset you want to create
@@ -608,96 +606,101 @@ const API_KEY_ID = ""; // API key ID, find or create in your organization settin
 const MAX_MATCHES = 500;
 
 async function connect(): Promise<ViamClient> {
-    return await createViamClient({
-        credential: {
-            type: 'api-key',
-            authEntity: API_KEY_ID,
-            payload: API_KEY,
-        },
-    });
+  return await createViamClient({
+    credential: {
+      type: "api-key",
+      authEntity: API_KEY_ID,
+      payload: API_KEY,
+    },
+  });
 }
 
-async function fetchBinaryDataIds(dataClient: DataServiceClient, partId: string): Promise<any[]> {
-    const filter = new Filter();
-    filter.setPartId(partId);
+async function fetchBinaryDataIds(
+  dataClient: DataServiceClient,
+  partId: string,
+): Promise<any[]> {
+  const filter = new Filter();
+  filter.setPartId(partId);
 
-    const allMatches: any[] = [];
-    let last = "";
+  const allMatches: any[] = [];
+  let last = "";
 
-    console.log("Getting data for part...");
+  console.log("Getting data for part...");
 
-    while (allMatches.length < MAX_MATCHES) {
-        console.log("Fetching more data...");
+  while (allMatches.length < MAX_MATCHES) {
+    console.log("Fetching more data...");
 
-        const dataRequest = new DataRequest();
-        dataRequest.setFilter(filter);
-        dataRequest.setLimit(50);
-        dataRequest.setLast(last);
-        dataRequest.setIncludeBinaryData(false);
+    const dataRequest = new DataRequest();
+    dataRequest.setFilter(filter);
+    dataRequest.setLimit(50);
+    dataRequest.setLast(last);
+    dataRequest.setIncludeBinaryData(false);
 
-        const request = new BinaryDataByFilterRequest();
-        request.setDataRequest(dataRequest);
+    const request = new BinaryDataByFilterRequest();
+    request.setDataRequest(dataRequest);
 
-        const response = await dataClient.binaryDataByFilter(request);
-        const data = response.getDataList();
+    const response = await dataClient.binaryDataByFilter(request);
+    const data = response.getDataList();
 
-        if (data.length === 0) {
-            break;
-        }
-
-        allMatches.push(...data);
-        last = response.getLast();
+    if (data.length === 0) {
+      break;
     }
 
-    return allMatches;
+    allMatches.push(...data);
+    last = response.getLast();
+  }
+
+  return allMatches;
 }
 
 async function main(): Promise<number> {
-    const viamClient = await connect();
-    const dataClient = viamClient.dataClient;
+  const viamClient = await connect();
+  const dataClient = viamClient.dataClient;
 
-    const matchingData = await fetchBinaryDataIds(dataClient, PART_ID);
+  const matchingData = await fetchBinaryDataIds(dataClient, PART_ID);
 
-    console.log("Creating dataset...");
+  console.log("Creating dataset...");
 
-    try {
-        const createRequest = new CreateDatasetRequest();
-        createRequest.setName(DATASET_NAME);
-        createRequest.setOrganizationId(ORG_ID);
+  try {
+    const createRequest = new CreateDatasetRequest();
+    createRequest.setName(DATASET_NAME);
+    createRequest.setOrganizationId(ORG_ID);
 
-        const datasetResponse = await dataClient.createDataset(createRequest);
-        const datasetId = datasetResponse.getId();
-        console.log(`Created dataset: ${datasetId}`);
+    const datasetResponse = await dataClient.createDataset(createRequest);
+    const datasetId = datasetResponse.getId();
+    console.log(`Created dataset: ${datasetId}`);
 
-        console.log("Adding data to dataset...");
+    console.log("Adding data to dataset...");
 
-        const binaryIds = matchingData.map(obj => obj.getMetadata()?.getId() || "");
+    const binaryIds = matchingData.map(
+      (obj) => obj.getMetadata()?.getId() || "",
+    );
 
-        const addRequest = new AddBinaryDataToDatasetByIdsRequest();
-        addRequest.setBinaryIdsList(binaryIds);
-        addRequest.setDatasetId(datasetId);
+    const addRequest = new AddBinaryDataToDatasetByIdsRequest();
+    addRequest.setBinaryIdsList(binaryIds);
+    addRequest.setDatasetId(datasetId);
 
-        await dataClient.addBinaryDataToDatasetByIds(addRequest);
+    await dataClient.addBinaryDataToDatasetByIds(addRequest);
 
-        console.log("Added files to dataset.");
-        console.log(`See dataset: https://app.viam.com/data/datasets?id=${datasetId}`);
+    console.log("Added files to dataset.");
+    console.log(
+      `See dataset: https://app.viam.com/data/datasets?id=${datasetId}`,
+    );
 
-        viamClient.disconnect();
-        return 0;
-
-    } catch (error) {
-        console.log("Error creating dataset. It may already exist.");
-        console.log("See: https://app.viam.com/data/datasets");
-        console.log(`Exception: ${error}`);
-        viamClient.disconnect();
-        return 1;
-    }
+    viamClient.disconnect();
+    return 0;
+  } catch (error) {
+    console.log("Error creating dataset. It may already exist.");
+    console.log("See: https://app.viam.com/data/datasets");
+    console.log(`Exception: ${error}`);
+    viamClient.disconnect();
+    return 1;
+  }
 }
 
 if (require.main === module) {
-    main().then(code => process.exit(code));
+  main().then((code) => process.exit(code));
 }
-
 ```
 
 {{% /tab %}}
