@@ -66,10 +66,10 @@ from PIL import Image
 from viam.app.app_client import AppClient
 from viam.app.data_client import DataClient
 
-MACHINE_PART_ID = "your-machine-part-id-here"
 DATASET_ID = "your-dataset-id-here"
 API_KEY_ID = "your-api-key-id"
 API_KEY = "your-api-key"
+
 
 async def add_image_to_dataset():
     """Add image to Viam dataset using Python SDK"""
@@ -117,9 +117,47 @@ async def add_image_to_dataset():
     finally:
         app_client.close()
 
-# Execute function
+
+async def main() -> int:
+    """Main execution function."""
+    viam_client = await connect()
+    data_client = viam_client.data_client
+
+    matching_data = await fetch_binary_data_ids(data_client, PART_ID)
+
+    print("Creating dataset...")
+
+    try:
+        dataset_id = await data_client.create_dataset(
+            name=DATASET_NAME,
+            organization_id=ORG_ID,
+        )
+        print(f"Created dataset: {dataset_id}")
+    except Exception as e:
+        print("Error creating dataset. It may already exist.")
+        print("See: https://app.viam.com/data/datasets")
+        print(f"Exception: {e}")
+        return 1
+
+    print("Adding data to dataset...")
+
+    await data_client.add_binary_data_to_dataset_by_ids(
+        binary_ids=[
+            obj.metadata.binary_data_id for obj in matching_data
+        ],
+        dataset_id=dataset_id
+    )
+
+    print("Added files to dataset.")
+    print(
+        f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}"
+    )
+
+    viam_client.close()
+    return 0
+
 if __name__ == "__main__":
-    asyncio.run(add_image_to_dataset())
+    asyncio.run(main())
 ```
 
 {{% /tab %}}
@@ -443,18 +481,22 @@ async def main() -> int:
     print("Adding data to dataset...")
 
     await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=[obj.metadata.binary_data_id for obj in matching_data],
+        binary_ids=[
+            obj.metadata.binary_data_id for obj in matching_data
+        ],
         dataset_id=dataset_id
     )
 
     print("Added files to dataset.")
-    print(f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}")
+    print(
+        f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}"
+    )
 
     viam_client.close()
     return 0
 
 if __name__ == "__main__":
-   asyncio.run(main())
+    asyncio.run(main())
 ```
 
 {{% /tab %}}

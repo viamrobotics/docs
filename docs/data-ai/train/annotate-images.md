@@ -10,7 +10,7 @@ description: "Annotate images to train a machine learning model."
 Use the interface on the [**DATA** page](https://app.viam.com/data/view) to annotate your images.
 When you label your dataset, include:
 
-- images with and _without_ the categories you’re looking to identify
+- images with and _without_ the categories you're looking to identify
 - a roughly equal number of images for each category
 - images from your production environment, including lighting and camera quality
 - examples from every angle and distance that you expect the model to handle
@@ -78,8 +78,9 @@ detections = result.detections
 
 tags = ["tag1", "tag2"]
 
-my_filter =
-    create_filter(component_name="camera-1", organization_ids=["<org-id>"])
+my_filter = create_filter(
+    component_name="camera-1", organization_ids=["<org-id>"]
+)
 binary_metadata, count, last = await data_client.binary_data_by_filter(
     filter=my_filter,
     limit=20,

@@ -66,7 +66,7 @@ try:
 except Exception as e:
     print("Error creating dataset. It may already exist.")
     print(f"Exception: {e}")
-    return 1
+    raise
 ```
 
 {{% /tab %}}

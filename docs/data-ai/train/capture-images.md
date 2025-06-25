@@ -200,8 +200,8 @@ MACHINE_PART_ID = "your-machine-part-id-here"
 
 class DataCollector:
     def __init__(self,
-            component_name: str, dataset_id: str,
-            api_key_id: str, api_key: str):
+                 component_name: str, dataset_id: str,
+                 api_key_id: str, api_key: str):
 
         self.logger = getLogger(__name__)
         self.component_name = component_name
@@ -210,8 +210,8 @@ class DataCollector:
         self.api_key = api_key
 
     async def capture_and_store_image(self,
-            processed_image: Image.Image,
-            classification: str) -> None:
+                                     processed_image: Image.Image,
+                                     classification: str) -> None:
 
         if not MACHINE_PART_ID:
             raise ValueError("machine part ID not configured")
@@ -247,8 +247,9 @@ class DataCollector:
                 )
 
                 self.logger.info(
-                    f"successfully added {classification} image to dataset {self.dataset_id} "
-                    f"(file ID: {file_id}, machine: {MACHINE_PART_ID})"
+                    f"successfully added {classification} image to dataset "
+                    f"{self.dataset_id} (file ID: {file_id}, "
+                    f"machine: {MACHINE_PART_ID})"
                 )
 
             except Exception as e:
@@ -279,10 +280,12 @@ class DataCollector:
         img.save(buffer, format='PNG', optimize=True)
         return buffer.getvalue()
 
-def create_data_collector(component_name: str,
-        dataset_id: str, api_key_id: str,
-        api_key: str) -> DataCollector:
-
+def create_data_collector(
+        component_name: str,
+        dataset_id: str,
+        api_key_id: str,
+        api_key: str
+    ) -> DataCollector:
     if not component_name:
         raise ValueError("component name is required")
     if not dataset_id:
