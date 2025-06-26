@@ -8,6 +8,7 @@ tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/single/"
 component_description: "A single pin 'pulse output' encoder which returns its relative position but no direction."
+toc_hide: true
 # SMEs: Rand
 ---
 

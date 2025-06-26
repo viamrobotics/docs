@@ -743,14 +743,14 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
-viam machines status --organization=<org id> --location=<location id> --machine=<machine id>
-viam machines logs --organization=<org id> --location=<location id> --machine=<machine id> [...named args]
-viam machines api-key create --machine=<machine id> [...named args]
-viam machines part list --machine=<machine-id>
+viam machines status --machine=<machine id>
+viam machines logs --machine=<machine id> [...named args]
+viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=<key name>
+viam machines part list --machine=<machine id>
 viam machines part logs --machine=<machine id> --part=<part id> [...named args]
-viam machines part status --organization=<org id> --location=<location id> --machine=<machine id>
-viam machines part run --organization=<org id> --location=<location id> --machine=<machine id> [--stream] --data <meth>
-viam machines part shell --organization=<org id> --location=<location id> --machine=<machine id> --part=<part id>
+viam machines part status --machine=<machine id>
+viam machines part run --machine=<machine id> [--stream] --data <method>
+viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
 ```
@@ -765,7 +765,7 @@ viam machines list
 viam machines status  --machine=123
 
 # create an api key for a machine
-viam machines api-key create --machine=123 --name=MyKey
+viam machines api-key create --machine-id=123 --name=MyKey
 
 # stream logs from a machine
 viam machines logs --machine=123
@@ -847,9 +847,9 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--part` | Part ID for which the command is being issued. | `part` | **Required** |
-| `--machine` | Machine ID for which the command is being issued. If machine name is used instead of ID, `--org` and `--location` are required. | `status`, `logs` | **Required** |
+| `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs` | **Required** |
 | `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
-| `--org` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--organization` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
 | `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
@@ -947,11 +947,14 @@ viam module create --name=my-module --org-id=abc
 # update an existing module
 viam module update --module=./meta.json
 
-# updating a module's metadata file based on models it provides
+# update a module's metadata file based on models it provides
 viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
 
-# initiate a cloud build for public GitHub repos
+# initiate a cloud build for a public GitHub repo
 viam module build start --version "0.1.2"
+
+# initiate a cloud build for a private GitHub repo
+viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnopqrstuvwxyzABCD
 
 # initiate a build locally without running a cloud build job
 viam module build local
@@ -989,7 +992,7 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
-| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/). Your repository must be public to use this command. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
@@ -1017,8 +1020,12 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
 | `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs`, `download` | **Required** for `upload` |
+| `--platforms` | List of platforms to cloud build for. Default: `build.arch` in <file>meta.json</file>. | `build start` | Optional |
+| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. | `build start` | Optional |
 | `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the Raspberry Pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
+| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | `build start` | Optional |
 | `--version` | The version of your module to set for this upload or download. For `download`, defaults to `latest`. See [Using the `--version` argument](#using-the---version-argument). | `upload`, `download` | **Required** for `upload` |
+| `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.` | `build start` | Optional |
 | `--wait` | Wait for the build to finish before outputting any logs. | `build logs` | Optional |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
@@ -1099,7 +1106,6 @@ See [Create a module](/operate/get-started/other-hardware/create-module/) and [U
 You can use the `module build start` or `module build local` commands to build your custom module according to the build steps in your <file>meta.json</file> file:
 
 - Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
-  Your repository must be public to use the `build start` command.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
 To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) like the following:

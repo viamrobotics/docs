@@ -10,6 +10,7 @@ aliases:
 no_list: true
 component_description: "Supports standard brushed or brushless DC motors."
 usage: 999999
+toc_hide: true
 # SMEs: Rand, James
 ---
 

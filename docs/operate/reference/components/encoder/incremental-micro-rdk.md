@@ -11,6 +11,7 @@ aliases:
   - /build/micro-rdk/encoder/incremental/
   - /components/encoder/incremental-micro-rdk/
 micrordk_component: true
+toc_hide: true
 # SMEs: Rand
 ---
 

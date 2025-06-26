@@ -12,6 +12,7 @@ aliases:
   - /build/micro-rdk/servo/gpio/
   - /components/servo/gpio-micro-rdk/
 micrordk_component: true
+toc_hide: true
 # SME: Gautham
 ---
 

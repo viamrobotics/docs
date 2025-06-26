@@ -10,6 +10,7 @@ aliases:
   - "/components/gantry/multiaxis/"
   - "/components/gantry/multi-axis/"
 component_description: "Supports a gantry with multiple linear rails. Composed of multiple single-axis gantries."
+toc_hide: true
 # SME: Rand, Martha
 ---
 

@@ -9,6 +9,7 @@ tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/gpio/"
 component_description: "Customizable GPIO/ADC based device using a board component."
+toc_hide: true
 # SMEs: James
 ---
 

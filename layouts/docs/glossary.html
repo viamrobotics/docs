@@ -33,14 +33,20 @@
                 {{ $glossary_terms := sort . "Title" "asc" }}
                     {{ range $glossary_terms }}
                     {{ $term_identifier := (printf "term-%s" .Params.id) }}
+                      <div>
                         <div>
-                            <div>
-                                <h4 id="{{ printf "%s" $term_identifier }}" class="glossary-anchor">{{ .Title }}</h4>
+                          <h4 id="{{ $term_identifier }}" onclick="handleAnchorClick('{{ $term_identifier }}')" class="glossary-anchor">
+                            {{ .Title }}
+                            <div class="copied" id="copied-{{ $term_identifier }}" aria-hidden="true">
+                             <div class="copied-notification" id="copied-{{ $term_identifier }}-text">
+                             </div>
                             </div>
-                            <div id="{{ .Params.id }}">
-                                {{ .Content | strings.TrimPrefix .Summary | safeHTML }}
-                            </div>
+                          </h4>
                         </div>
+                        <div id="{{ .Params.id }}">
+                            {{ .Content | strings.TrimPrefix .Summary | safeHTML }}
+                        </div>
+                      </div>
                     {{ end }}
                 {{ end }}
             </div>

@@ -9,6 +9,7 @@ tags: ["base", "components"]
 aliases:
   - "/components/base/sensor-controlled/"
 component_description: "Wrap other base models and add feedback control using a movement sensor."
+toc_hide: true
 # SMEs: Rand H., Martha J.
 ---
 

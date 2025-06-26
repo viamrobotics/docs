@@ -8,6 +8,7 @@ images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/fake/"
 component_description: "A model for testing, with no physical hardware."
+toc_hide: true
 # SMEs: Rand, James
 ---
 

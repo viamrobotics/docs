@@ -10,6 +10,7 @@ images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/gpio/"
 component_description: "Supports hobby servos wired to any model of board besides pi."
+toc_hide: true
 # SME: Rand
 ---
 

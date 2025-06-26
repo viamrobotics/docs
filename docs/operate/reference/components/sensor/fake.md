@@ -10,6 +10,7 @@ images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/fake/"
 component_description: "A model used for testing, with no physical hardware."
+toc_hide: true
 # SME: #team-bucket
 ---
 

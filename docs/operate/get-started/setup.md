@@ -66,6 +66,10 @@ If your SBC or other computer already has a supported operating system installed
 bash -c '[[ "$(uname -s)" == "Darwin" && ("$(uname -m)" == "x86_64" || "$(uname -m)" == "arm64") ]] && echo "✅ Your system can run viam-server" || echo "❌ Your system cannot run viam-server"'
 ```
 
+{{% alert title="Note for Intel Mac users" color="note" %}}
+`viam-server` can run on Macs with Intel processors, but not all {{< glossary_tooltip term_id="module" text="modules" >}} support Intel Macs.
+{{% /alert %}}
+
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
@@ -96,7 +100,7 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 1. Create a Viam account on [app.viam.com](https://app.viam.com).
    You can configure and manage devices and data collection in the web UI.
 
-1. Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the button in the top right corner of the **LOCATIONS** tab in the app.
+1. Create a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the **Add machine** button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
 1. On your machine's page, click **View setup instructions** and follow the steps for your operating system.

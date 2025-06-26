@@ -9,6 +9,7 @@ tags: ["arm", "components"]
 aliases:
   - "/components/arm/ur5e/"
 component_description: "Supports Universal Robots UR5e."
+toc_hide: true
 ---
 
 Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine.

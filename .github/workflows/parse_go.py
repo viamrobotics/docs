@@ -277,7 +277,7 @@ class GoParser:
                             if '\tresource.Shaped' in resource_interface.text:
                                 self.go_methods[type][resource]['Geometries'] = {'proto': 'GetGeometries', \
                                     'description': 'Geometries returns the list of geometries associated with the resource, in any order. The poses of the geometries reflect their current location relative to the frame of the resource.', \
-                                    'usage': 'Geometries(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) ([]<a href="/go.viam.com/rdk/spatialmath">spatialmath</a>.<a href="/go.viam.com/rdk/spatialmath#Geometry">Geometry</a>, <a href="/builtin#error">error</a>)', \
+                                    'usage': 'Geometries(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (<a href="/go.viam.com/rdk/spatialmath#Geometry">[]spatialmath.Geometry</a>, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Shaped'}
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Geometries example:" in code_sample_tag.text)
                                 if code_sample:
@@ -293,6 +293,17 @@ class GoParser:
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Readings example:" in code_sample_tag.text)
                                 if code_sample:
                                     self.go_methods[type][resource]['Readings']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+
+                            ## Similarly, if the resource being considered inherits from framesystem.InputEnabled (Arm, for example),
+                            ## then add the one inherited method manually: Kinematics():
+                            if '\tframesystem.InputEnabled' in resource_interface.text:
+                                self.go_methods[type][resource]['Kinematics'] = {'proto': 'GetKinematics', \
+                                    'description': 'Kinematics returns the kinematics model of the resource.', \
+                                    'usage': 'Kinematics(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (<a href="/go.viam.com/rdk/referenceframe#Model">referenceframe.Model</a>, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Kinematics example:" in code_sample_tag.text)
+                                if code_sample:
+                                    self.go_methods[type][resource]['Kinematics']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
 
                 ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
                 if resource == 'slam':
