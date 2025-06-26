@@ -9,6 +9,7 @@ aliases:
   - "/components/motor/gpiostepper/"
 component_description: "Supports stepper motors driven by basic GPIO-controlled stepper driver chips."
 usage: 900000
+toc_hide: true
 # SMEs: Rand, James
 ---
 

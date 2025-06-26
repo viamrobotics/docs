@@ -7,5 +7,5 @@ layout: "empty"
 canonical: "/operate/get-started/supported-hardware/"
 no_component: true
 empty_node: true
-toc_hide: true
+toc_hide: false
 ---

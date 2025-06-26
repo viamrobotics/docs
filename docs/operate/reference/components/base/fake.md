@@ -9,6 +9,7 @@ tags: ["base", "components"]
 aliases:
   - "/components/base/fake/"
 component_description: "A model used for testing, with no physical hardware."
+toc_hide: true
 # SMEs: Steve B
 ---
 

@@ -8,6 +8,7 @@ tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/incremental/"
 component_description: "Supports a two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point."
+toc_hide: true
 # SMEs: Rand
 ---
 

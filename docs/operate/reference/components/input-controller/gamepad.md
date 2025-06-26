@@ -9,6 +9,7 @@ tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/gamepad/"
 component_description: "Supports X-box, Playstation, and similar controllers with Linux support."
+toc_hide: true
 # SMEs: James
 ---
 

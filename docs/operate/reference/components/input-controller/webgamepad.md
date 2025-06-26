@@ -9,6 +9,7 @@ tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/webgamepad/"
 component_description: "Supports a remote, web based gamepad."
+toc_hide: true
 # SMEs: James
 ---
 

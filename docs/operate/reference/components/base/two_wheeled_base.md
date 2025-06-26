@@ -12,6 +12,7 @@ aliases:
   - /build/micro-rdk/base/two_wheeled_base/
   - /components/base/two_wheeled_base/
 micrordk_component: true
+toc_hide: true
 # SMEs: Gautham V.
 ---
 

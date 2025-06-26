@@ -12,6 +12,7 @@ aliases:
   - /build/micro-rdk/board/esp32/
   - /components/board/esp32/
 micrordk_component: true
+toc_hide: true
 # SMEs: Gautham, Nico, Andrew
 ---
 

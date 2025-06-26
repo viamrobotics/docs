@@ -8,6 +8,7 @@ images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpio/encoded-motor/"
 component_description: "Standard brushed or brushless DC motor with an encoder."
+toc_hide: true
 # SMEs: Rand, James
 ---
 
@@ -32,7 +33,7 @@ Then, configure the motor:
 
 Here’s an example configuration:
 
-![An encoded motor config in the Viam app UI.](/components/motor/encoded-config-ui.png)
+![An encoded motor config.](/components/motor/encoded-config-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
