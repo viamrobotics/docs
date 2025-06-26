@@ -142,7 +142,6 @@ client.disconnect();
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
