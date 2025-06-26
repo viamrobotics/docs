@@ -272,7 +272,7 @@ Once you've captured [enough images for training](/data-ai/train/train-tflite/),
 To capture a large number of images for training an ML model, use the data management service to [capture and sync image data](/data-ai/capture-data/capture-sync/) from your camera.
 
 When you sync with data management, Viam stores the images saved by capture and sync on the [**DATA** page](https://app.viam.com/data/), but does not add the images to a dataset.
-To use your captured images for training, [annotate the images](data-ai/train/annotate-images/), then [add the images to a dataset](/data-ai/train/update-dataset/).
+To use your captured images for training, [annotate the images](/data-ai/train/annotate-images/), then [add the images to a dataset](/data-ai/train/update-dataset/).
 
 {{< alert title="Tip" color="tip" >}}
 
