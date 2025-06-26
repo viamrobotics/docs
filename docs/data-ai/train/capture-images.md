@@ -40,13 +40,10 @@ To add an image directly to a dataset from a visual feed, complete the following
 To view images added to your dataset, go to the **DATA** page, open the [**DATASETS** tab](https://app.viam.com/data/datasets), then select your dataset.
 
 {{% /tab %}}
-{{% tab name="SDK" %}}
+{{% tab name="Python" %}}
 
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
-Each SDK provides a method to add an image to a dataset using those IDs:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
+Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 ```python
 # Connect to Viam client
@@ -74,24 +71,21 @@ viam_client.close()
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go
-// Connect to Viam client
-client, err := app.NewViamClient(
-    context.Background()
-)
-if err != nil {
-    return fmt.Errorf("failed to create client: %w", err)
-}
-defer client.Close()
+To add an image to a dataset, find the binary data ID for the image and the dataset ID.
+Pass both IDs to [`DataClient.AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-// Authenticate
-err = client.LoginWithAPIKey(context.Background(), APIKeyID, APIKey)
+```go
+ctx := context.Background()
+viamClient, err := client.New(ctx, "<machine_address>", logger)
 if err != nil {
-    return fmt.Errorf("failed to authenticate: %w", err)
+    log.Fatal(err)
 }
+defer viamClient.Close(ctx)
+
+dataClient := viamClient.DataClient()
 
 // Add image to dataset
-err = client.AddBinaryDataToDatasetByIDs(
+err = dataClient.AddBinaryDataToDatasetByIDs(
     context.Background(),
     []string{ExistingImageID},
     ExistingDatasetID,
@@ -106,7 +100,11 @@ fmt.Println("Image added to dataset successfully")
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
+To add an image to a dataset, find the binary data ID for the image and the dataset ID.
+Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+
 ```typescript
+
 // Connect to Viam client
 const client: ViamClient = await createViamClient({
   credential: {
@@ -131,16 +129,20 @@ client.disconnect();
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
+
+To add an image to a dataset, find the binary data ID for the image and the dataset ID.
+Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+
 ```dart
-  // Connect to Viam client
-  final client = await ViamClient.withApiKey(
+// Connect to Viam client
+final client = await ViamClient.withApiKey(
     apiKeyId: apiKeyId,
     apiKey: apiKey,
-  );
+);
 
-  final dataClient = client.dataClient;
+final dataClient = client.dataClient;
 
-  try {
+try {
     // Add image to dataset
     await dataClient.addBinaryDataToDatasetByIds(
       binaryIds: [existingImageId],
@@ -148,13 +150,10 @@ client.disconnect();
     );
 
     print('Image added to dataset successfully');
-  } finally {
+} finally {
     await client.close();
-  }
+}
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}

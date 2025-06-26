@@ -56,13 +56,10 @@ To tag an image:
 Repeat these steps for all images in the dataset.
 
 {{% /tab %}}
-{{% tab name="SDK" %}}
-
-Use an ML model to generate tags for an image.
-The following code shows how to add tags to an image in Viam:
-
-{{< tabs >}}
 {{% tab name="Python" %}}
+
+Use an ML model to generate tags for an image or set of images.
+Then, pass the tags and image IDs to [`data_client.add_tags_to_binary_data_by_ids`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
 
 ```python
 detector = VisionClient.from_robot(machine, "<detector_name>")
@@ -99,6 +96,9 @@ binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
+Use an ML model to generate tags for an image or set of images.
+Then, pass the tags and image IDs to [`DataClient.AddTagsToBinaryDataByIDs`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
 
 ```go
 ctx := context.Background()
@@ -161,6 +161,9 @@ if err != nil {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
+Use an ML model to generate tags for an image or set of images.
+Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
+
 ```typescript
 const client = await createViamClient();
 const myDetector = new VisionClient(client, "<detector_name>");
@@ -199,44 +202,44 @@ await dataClient.addTagsToBinaryDataByIds(tags, myIds);
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-```dart
-  final viamClient = await ViamClient.connect();
-  final myDetector = VisionClient.fromRobot(viamClient, "<detector_name>");
-  final dataClient = viamClient.dataClient;
+Use an ML model to generate tags for an image or set of images.
+Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
 
-  // Get the captured data for a camera
-  final result = await myDetector.captureAllFromCamera(
+```dart
+final viamClient = await ViamClient.connect();
+final myDetector = VisionClient.fromRobot(viamClient, "<detector_name>");
+final dataClient = viamClient.dataClient;
+
+// Get the captured data for a camera
+final result = await myDetector.captureAllFromCamera(
     "<camera_name>",
     returnImage: true,
     returnDetections: true,
-  );
-  final image = result.image;
-  final detections = result.detections;
+);
+final image = result.image;
+final detections = result.detections;
 
-  final tags = ["tag1", "tag2"];
+final tags = ["tag1", "tag2"];
 
-  final myFilter = createFilter(
+final myFilter = createFilter(
     componentName: "camera-1",
     organizationIds: ["<org-id>"],
-  );
+);
 
-  final binaryResult = await dataClient.binaryDataByFilter(
+final binaryResult = await dataClient.binaryDataByFilter(
     filter: myFilter,
     limit: 20,
     includeBinaryData: false,
-  );
+);
 
-  final myIds = <String>[];
+final myIds = <String>[];
 
-  for (final obj in binaryResult.binaryMetadata) {
+for (final obj in binaryResult.binaryMetadata) {
     myIds.add(obj.metadata.binaryDataId);
-  }
+}
 
-  await dataClient.addTagsToBinaryDataByIds(tags, myIds);
+await dataClient.addTagsToBinaryDataByIds(tags, myIds);
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -273,13 +276,10 @@ Once created, you can move, resize, or delete the bounding box.
 Repeat these steps for all images in the dataset.
 
 {{% /tab %}}
-{{% tab name="SDK" %}}
+{{% tab name="Python" %}}
 
 Use an ML model to generate bounding boxes for an image.
-The following code shows how to add bounding boxes to an image in Viam:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
+Then, separately pass each bounding box and the image ID to [`data_client.add_bounding_box_to_image_by_id`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
 
 ```python
 detector = VisionClient.from_robot(machine, "<detector_name>")
@@ -341,6 +341,9 @@ for detection in detections:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+Use an ML model to generate bounding boxes for an image.
+Then, separately pass each bounding box and the image ID to [`DataClient.AddBoundingBoxToImageByID`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
+
 ```go
 ctx := context.Background()
 
@@ -386,6 +389,9 @@ for _, detection := range detections {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
+Use an ML model to generate bounding boxes for an image.
+Then, separately pass each bounding box and the image ID to [`dataClient.addBoundingBoxToImageById`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
+
 ```typescript
 const client = await createViamClient();
 const myDetector = new VisionClient(client, "<detector_name>");
@@ -419,6 +425,9 @@ for (const detection of detections) {
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
+Use an ML model to generate bounding boxes for an image.
+Then, separately pass each bounding box and the image ID to [`dataClient.addBoundingBoxToImageById`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
+
 ```dart
 final viamClient = await ViamClient.connect();
 final myDetector = VisionClient.fromRobot(viamClient, "<detector_name>");
@@ -426,30 +435,27 @@ final dataClient = viamClient.dataClient;
 
 // Get the captured data for a camera
 final result = await myDetector.captureAllFromCamera(
-  "<camera_name>",
-  returnImage: true,
-  returnDetections: true,
+    "<camera_name>",
+    returnImage: true,
+    returnDetections: true,
 );
 final image = result.image;
 final detections = result.detections;
 
 // Process each detection and add bounding boxes
 for (final detection in detections) {
-  final bboxId = await dataClient.addBoundingBoxToImageById(
-    binaryId: "<YOUR-BINARY-DATA-ID>",
-    label: detection.className,
-    xMinNormalized: detection.boundingBox.xMin,
-    yMinNormalized: detection.boundingBox.yMin,
-    xMaxNormalized: detection.boundingBox.xMax,
-    yMaxNormalized: detection.boundingBox.yMax,
-  );
+    final bboxId = await dataClient.addBoundingBoxToImageById(
+      binaryId: "<YOUR-BINARY-DATA-ID>",
+      label: detection.className,
+      xMinNormalized: detection.boundingBox.xMin,
+      yMinNormalized: detection.boundingBox.yMin,
+      xMaxNormalized: detection.boundingBox.xMax,
+      yMaxNormalized: detection.boundingBox.yMax,
+    );
 
-  print('Added bounding box ID: $bboxId for detection: ${detection.className}');
+    print('Added bounding box ID: $bboxId for detection: ${detection.className}');
 }
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}

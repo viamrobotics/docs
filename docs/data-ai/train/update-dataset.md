@@ -32,7 +32,7 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 
 1. Use the checkbox in the upper left of each image to select labeled images.
 
-1. Click the **Add to dataset** button, select a dataset, and click the **Add `<N>` images** button to add the selected images to the dataset.
+1. Click the **Add to dataset** button, select a dataset, and click the **Add \<n\> images** button to add the selected images to the dataset.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
@@ -55,10 +55,9 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
    ```
 
 {{% /tab %}}
-{{% tab name="SDK" %}}
-
-{{< tabs >}}
 {{% tab name="Python" %}}
+
+To add an image to a dataset, use [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 ```python
 import asyncio
@@ -163,6 +162,8 @@ if __name__ == "__main__":
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+To add an image to a dataset, use [`dataClient.AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+
 ```go
 package main
 
@@ -258,6 +259,9 @@ func main() {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
+To add an image to a dataset, use [`dataClient.addBinaryDataToDatasetByIds`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+
+
 ```typescript
 import { createAppClient } from "@viamrobotics/app-client";
 import { promises as fs } from "fs";
@@ -320,6 +324,8 @@ addImageToDataset().catch((error) => {
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
+
+To add an image to a dataset, use [`dataClient.addBinaryDataToDatasetByIds`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 ```dart
 import 'dart:io';
@@ -394,15 +400,12 @@ void main() async {
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /tab %}}
-{{< /tabs >}}
-
 ## Add all images captured by a specific machine to a dataset
 
 The following script adds all images captured from a certain machine to a new dataset:
 
 {{< tabs >}}
-{{% tab name="Python" %}}
+{{% tab name="Python SDK" %}}
 
 ```python
 import asyncio
@@ -500,7 +503,7 @@ if __name__ == "__main__":
 ```
 
 {{% /tab %}}
-{{% tab name="Go" %}}
+{{% tab name="Go SDK" %}}
 
 ```go
 package main

@@ -17,8 +17,7 @@ To train a machine learning model, you will need a dataset.
 
 You can create a dataset using the web UI, the CLI, or one of the SDKs:
 
-{{< tabs >}}
-{{% tab name="Web UI" %}}
+## Web UI
 
 1. Navigate to the **DATA** page and open the [**DATASETS** tab](https://app.viam.com/data/datasets).
 
@@ -30,8 +29,9 @@ You can create a dataset using the web UI, the CLI, or one of the SDKs:
 
 1. Click **Create dataset** to create the dataset.
 
-{{% /tab %}}
-{{% tab name="CLI" %}}
+Once you create a dataset, [capture](/data-ai/train/capture-images/) images, [add](/data-ai/train/update-dataset/) the images to your dataset, and [annotate](/data-ai/train/annotate-images/) the images with training metadata to train your own ML model.
+
+## CLI
 
 1. First, install the Viam CLI and authenticate:
 
@@ -45,8 +45,9 @@ You can create a dataset using the web UI, the CLI, or one of the SDKs:
    viam dataset create --org-id=<org-id> --name=<name>
    ```
 
-{{% /tab %}}
-{{% tab name="SDK" %}}
+Once you create a dataset, [capture](/data-ai/train/capture-images/) images, [add](/data-ai/train/update-dataset/) the images to your dataset, and [annotate](/data-ai/train/annotate-images/) the images with training metadata to train your own ML model.
+
+## SDK
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -74,7 +75,7 @@ except Exception as e:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to `dataClient.CreateDataset`:
+To create a dataset, pass a unique dataset name and organization ID to `DataClient.CreateDataset`:
 
 ```go
 ctx := context.Background()
@@ -149,9 +150,6 @@ final datasetId = await dataClient.createDataset(
     return;
 }
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
