@@ -165,19 +165,19 @@ To capture an image and add it to your **DATA** page, fetch an image from your c
 Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
 ```typescript
-const CAMERA_NAME = '<camera-name>';
-const MACHINE_ADDRESS = '<machine-address.viam.cloud>';
-const API_KEY = '<api-key>';
-const API_KEY_ID = '<api-key-id>';
-const PART_ID = '<part-id>';
+const CAMERA_NAME = "<camera-name>";
+const MACHINE_ADDRESS = "<machine-address.viam.cloud>";
+const API_KEY = "<api-key>";
+const API_KEY_ID = "<api-key-id>";
+const PART_ID = "<part-id>";
 
 const machine = await Viam.createRobotClient({
-    host: MACHINE_ADDRESS,
-    credential: {
-        type: 'api-key',
-        payload: API_KEY,
-    },
-    authEntity: API_KEY_ID,
+  host: MACHINE_ADDRESS,
+  credential: {
+    type: "api-key",
+    payload: API_KEY,
+  },
+  authEntity: API_KEY_ID,
 });
 
 const client: ViamClient = await createViamClient({
@@ -198,13 +198,13 @@ const imageFrame = await camera.getImage();
 // Upload binary data
 const now = new Date();
 const fileId = await dataClient.binaryDataCaptureUpload({
-    partId: PART_ID,
-    componentType: 'camera',
-    componentName: CAMERA_NAME,
-    methodName: 'GetImages',
-    dataRequestTimes: [now, now],
-    fileExtension: '.jpg',
-    binaryData: imageFrame,
+  partId: PART_ID,
+  componentType: "camera",
+  componentName: CAMERA_NAME,
+  methodName: "GetImages",
+  dataRequestTimes: [now, now],
+  fileExtension: ".jpg",
+  binaryData: imageFrame,
 });
 
 // Cleanup
