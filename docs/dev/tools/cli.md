@@ -452,7 +452,7 @@ viam datapipeline delete --id=abc123
 | -------- | ----------- | ------------------- | --------- |
 | `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
 | `--name` | Name of the data pipeline. | `create`, `update` | **Required** |
-| `--schedule` | Cron schedule that expresses when the pipeline should run, for example "0 9 * * *" for daily at 9 AM. | `create`, `update` | **Required** |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** |
 | `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. | `create`, `update` | **Required** |
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. | `create`, `update` | Optional |
 | `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
