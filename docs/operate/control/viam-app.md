@@ -45,13 +45,13 @@ let apiKeySecret = "";
 let hostname = "";
 let machineId = "";
 
-machineId = window.location.pathname.split("/")[2];
+machineCookie = window.location.pathname.split("/")[2];
 ({
   id: apiKeyId,
   key: apiKeySecret,
   hostname: hostname,
-} = JSON.parse(Cookies.get(machineId)!));
-```
+  machineId: machineId
+} = JSON.parse(Cookies.get(machineCookie)!));
 
 For developing your app on localhost, add the same information to your browser's cookies:
 
