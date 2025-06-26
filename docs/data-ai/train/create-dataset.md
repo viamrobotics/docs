@@ -17,7 +17,8 @@ To train a machine learning model, you will need a dataset.
 
 You can create a dataset using the web UI, the CLI, or one of the SDKs:
 
-## Web UI
+{{< tabs >}}
+{{% tab name="Web UI" %}}
 
 1. Navigate to the **DATA** page and open the [**DATASETS** tab](https://app.viam.com/data/datasets).
 
@@ -29,27 +30,16 @@ You can create a dataset using the web UI, the CLI, or one of the SDKs:
 
 1. Click **Create dataset** to create the dataset.
 
-Once you create a dataset, [capture](/data-ai/train/capture-images/) images, [add](/data-ai/train/update-dataset/) the images to your dataset, and [annotate](/data-ai/train/annotate-images/) the images with training metadata to train your own ML model.
+{{% /tab %}}
+{{% tab name="CLI" %}}
 
-## CLI
+Run the following [Viam CLI](/dev/tools/cli/) command to create a dataset, replacing the `<org-id>` and `<name>` placeholders with your organization ID and a unique name for the dataset:
 
-1. First, install the Viam CLI and authenticate:
+```sh {class="command-line" data-prompt="$"}
+viam dataset create --org-id=<org-id> --name=<name>
+```
 
-   {{< readfile "/static/include/how-to/install-cli.md" >}}
-
-1. [Log in to the CLI](/dev/tools/cli/#authenticate).
-
-1. Run the following command to create a dataset, replacing the `<org-id>` and `<name>` placeholders with your organization ID and a unique name for the dataset:
-
-   ```sh {class="command-line" data-prompt="$"}
-   viam dataset create --org-id=<org-id> --name=<name>
-   ```
-
-Once you create a dataset, [capture](/data-ai/train/capture-images/) images, [add](/data-ai/train/update-dataset/) the images to your dataset, and [annotate](/data-ai/train/annotate-images/) the images with training metadata to train your own ML model.
-
-## SDK
-
-{{< tabs >}}
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 To create a dataset, pass a unique dataset name and organization ID to [`data_client.create_dataset`](/dev/reference/apis/data-client/#createdataset):
@@ -155,3 +145,9 @@ try {
 {{< /tabs >}}
 
 Once you create a dataset, [capture](/data-ai/train/capture-images/) images, [add](/data-ai/train/update-dataset/) the images to your dataset, and [annotate](/data-ai/train/annotate-images/) the images with training metadata to train your own ML model.
+
+{{< cards >}}
+{{% card link="/data-ai/train/capture-images/" noimage="true" %}}
+{{% card link="/data-ai/train/update-dataset/" noimage="true" %}}
+{{% card link="/data-ai/train/annotate-images/" noimage="true" %}}
+{{< /cards >}}

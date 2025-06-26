@@ -42,11 +42,19 @@ You can also monitor your machines through teleop, power your application logic,
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Leverage AI" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
+{{< how-to-expand "Train an ML model" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
 {{< cards >}}
 {{% card link="/data-ai/train/create-dataset/" noimage="true" %}}
+{{% card link="/data-ai/train/capture-images/" noimage="true" %}}
+{{% card link="/data-ai/train/update-dataset/" noimage="true" %}}
+{{% card link="/data-ai/train/annotate-images/" noimage="true" %}}
 {{% card link="/data-ai/train/train-tflite/" noimage="true" %}}
 {{% card link="/data-ai/train/train/" noimage="true" %}}
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+{{< how-to-expand "Infer with ML models" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
+{{< cards >}}
 {{% card link="/data-ai/ai/deploy/" noimage="true" %}}
 {{% card link="/data-ai/ai/run-inference/" noimage="true" %}}
 {{% card link="/data-ai/ai/alert/" noimage="true" %}}
