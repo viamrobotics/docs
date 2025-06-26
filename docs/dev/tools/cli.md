@@ -185,7 +185,7 @@ You can do this from the organization's settings page in [Viam](https://app.viam
    - `location-id` is your location ID.
      You can find your location ID by running `viam locations list` or by visiting your [fleet page in Viam](https://app.viam.com/robots).
    - `org-id` is an optional organization ID to attach the key to.
-     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/).
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [Viam](https://app.viam.com/).
      If only one organization owns the location, you can omit the parameter.
      If multiple organizations own the location, you must specify the `org-id` explicitly.
    - `key-name` is an optional name for your API key.
@@ -572,7 +572,7 @@ The following command tags two images specified by their binary data IDs with th
 viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
 ```
 
-To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in the [Viam app](https://app.viam.com/).
+To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in [Viam](https://app.viam.com/).
 Find **Organization ID** and click the copy icon.
 
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab in Viam and select a dataset.
@@ -1558,8 +1558,8 @@ viam train list --org-id=123 --job-status=completed
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab in Viam and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
-| `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
-| `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
+| `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [Viam](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
+| `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [Viam](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-type` | Type of model to train. Can be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
