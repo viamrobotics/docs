@@ -52,7 +52,7 @@ Once you create a dataset, [capture](/data-ai/train/capture-images/) images, [ad
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to `data_client.create_dataset`:
+To create a dataset, pass a unique dataset name and organization ID to [`data_client.create_dataset`](/dev/reference/apis/data-client/#createdataset):
 
 ```python
 viam_client = await connect()
@@ -75,7 +75,7 @@ except Exception as e:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to `DataClient.CreateDataset`:
+To create a dataset, pass a unique dataset name and organization ID to [`DataClient.CreateDataset`](/dev/reference/apis/data-client/#createdataset):
 
 ```go
 ctx := context.Background()
@@ -106,7 +106,7 @@ fmt.Printf("Created dataset: %s\n", datasetID)
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to `dataClient.createDataset`:
+To create a dataset, pass a unique dataset name and organization ID to [`dataClient.createDataset`](/dev/reference/apis/data-client/#createdataset):
 
 ```typescript
 const client = await createViamClient();
@@ -130,7 +130,7 @@ try {
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to `dataClient.createDataset`:
+To create a dataset, pass a unique dataset name and organization ID to [`dataClient.createDataset`](/dev/reference/apis/data-client/#createdataset):
 
 ```dart
 final viamClient = await ViamClient.connect();
