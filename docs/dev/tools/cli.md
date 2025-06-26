@@ -158,7 +158,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
-You can change an API key's permissions on the [Viam organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
+To change an API key's permissions on the Viam organizations page, click the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the organization API key to authenticate future CLI sessions or to [use the SDKs](/dev/reference/sdks/).
