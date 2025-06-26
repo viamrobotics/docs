@@ -9,7 +9,7 @@ Gets the most recent tabular data captured from the specified data source, as lo
 
 - `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that owns the data.
 - `resource_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the requested resource that captured the data. For example, “my-sensor”.
-- `resource_api` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The API of the requested resource that captured the data. For example, “rdk:component:sensor”.
+- `resource_subtype` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The subtype of the requested resource that captured the data. For example, “rdk:component:sensor”.
 - `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The data capture method name. For exampe, “Readings”.
 
 **Returns:**
@@ -22,7 +22,7 @@ Gets the most recent tabular data captured from the specified data source, as lo
 tabular_data = await data_client.get_latest_tabular_data(
     part_id="77ae3145-7b91-123a-a234-e567cdca8910",
     resource_name="camera-1",
-    resource_api="rdk:component:camera",
+    resource_subtype="rdk:component:camera",
     method_name="GetImage"
 )
 
