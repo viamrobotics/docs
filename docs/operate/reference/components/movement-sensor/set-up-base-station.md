@@ -9,6 +9,7 @@ no_component: true
 date: "2024-01-01"
 aliases:
   - /components/movement-sensor/set-up-base-station/
+toc_hide: true
 # updated: ""  # When the content was last entirely checked
 # SMEs: Susmita
 ---

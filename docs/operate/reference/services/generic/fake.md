@@ -9,6 +9,7 @@ tags: ["generic", "services"]
 aliases:
   - /registry/advanced/generic/fake/
   - /services/generic/fake/
+toc_hide: true
 ---
 
 Configure a `fake` generic service to test implementing a generic service on your machine:

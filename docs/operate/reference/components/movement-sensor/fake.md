@@ -9,6 +9,7 @@ toc_hide: true
 aliases:
   - "/components/movement-sensor/fake/"
 component_description: "A model for testing, with no physical hardware."
+toc_hide: true
 # SMEs: Rand
 ---
 

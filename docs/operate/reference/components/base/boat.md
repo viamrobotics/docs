@@ -9,6 +9,7 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/boat/"
+toc_hide: true
 # SMEs: Eliot
 ---
 

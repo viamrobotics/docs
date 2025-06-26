@@ -10,6 +10,7 @@ aliases:
   - /build/micro-rdk/encoder/single/
   - /components/encoder/single-micro-rdk/
 micrordk_component: true
+toc_hide: true
 # SMEs: Rand
 ---
 

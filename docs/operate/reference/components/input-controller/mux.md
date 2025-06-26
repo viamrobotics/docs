@@ -9,6 +9,7 @@ tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/mux/"
 component_description: "Supports multiplexed controllers, combining multiple sources of input."
+toc_hide: true
 # SMEs: James
 ---
 

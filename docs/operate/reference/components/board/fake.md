@@ -9,6 +9,7 @@ tags: ["board", "components"]
 aliases:
   - "/components/board/fake/"
 component_description: "A model used for testing, with no physical hardware."
+toc_hide: true
 # SMEs: Gautham, Rand
 ---
 

@@ -9,6 +9,7 @@ aliases:
   - /micro-rdk/motor/gpio/
   - /components/motor/gpio-micro-rdk/
 micrordk_component: true
+toc_hide: true
 # SMEs: Rand, James
 ---
 

@@ -8,6 +8,7 @@ tags: ["encoder", "components"]
 draft: true
 aliases:
   - /components/encoder/arduino/
+toc_hide: true
 # SMEs: Rand
 ---
 

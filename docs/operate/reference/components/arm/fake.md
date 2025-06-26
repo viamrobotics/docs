@@ -9,6 +9,7 @@ tags: ["arm", "components"]
 aliases:
   - "/components/arm/fake/"
 component_description: "A model used for testing, with no physical hardware."
+toc_hide: true
 # SMEs: Bucket, Motion
 ---
 

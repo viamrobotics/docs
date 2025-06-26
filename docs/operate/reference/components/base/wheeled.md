@@ -9,6 +9,7 @@ tags: ["base", "components"]
 aliases:
   - "/components/base/wheeled/"
 component_description: "Supports mobile wheeled robotic bases with motors on both sides for differential steering."
+toc_hide: true
 # SMEs: Steve B
 ---
 
