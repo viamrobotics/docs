@@ -139,10 +139,10 @@ final dataClient = viamClient.dataClient;
 print("Creating dataset...");
 
 try {
-final datasetId = await dataClient.createDataset(
-  name: "<dataset_name>",
-  organizationId: "<org_id>",
-);
+    final datasetId = await dataClient.createDataset(
+        name: "<dataset_name>",
+        organizationId: "<org_id>",
+    );
     print("Created dataset: $datasetId");
 } catch (e) {
     print("Error creating dataset. It may already exist.");

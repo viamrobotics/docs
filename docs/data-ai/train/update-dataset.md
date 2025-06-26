@@ -57,343 +57,113 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-To add an image to a dataset, use [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+To add an image to a dataset, find the binary data ID for the image and the dataset ID.
+Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 ```python
-import asyncio
-from PIL import Image
-from viam.app.app_client import AppClient
-from viam.app.data_client import DataClient
+# Connect to Viam client
+dial_options = DialOptions(
+    credentials=Credentials(
+        type="api-key",
+        payload=API_KEY,
+    ),
+    auth_entity=API_KEY_ID,
+)
 
-DATASET_ID = "your-dataset-id-here"
-API_KEY_ID = "your-api-key-id"
-API_KEY = "your-api-key"
+viam_client = await ViamClient.create_from_dial_options(dial_options)
+data_client = viam_client.data_client
 
+# Add image to dataset
+await data_client.add_binary_data_to_dataset_by_ids(
+    binary_ids=[EXISTING_IMAGE_ID],
+    dataset_id=EXISTING_DATASET_ID
+)
 
-async def add_image_to_dataset():
-    """Add image to Viam dataset using Python SDK"""
-
-    # Initialize app client
-    app_client = AppClient.create_from_api_key(
-        api_key_id=API_KEY_ID,
-        api_key=API_KEY
-    )
-
-    try:
-        # Get data client
-        data_client = app_client.data_client
-
-        # Load image file
-        image_path = "sample_image.jpg"
-        with open(image_path, "rb") as image_file:
-            image_data = image_file.read()
-
-        # Upload image to Viam cloud
-        file_upload_metadata = await data_client.file_upload_from_bytes(
-            part_id=MACHINE_PART_ID,
-            data=image_data,
-            component_type="camera",
-            component_name="camera-1",
-            file_name="training_sample.jpg",
-            file_extension="jpg"
-        )
-
-        file_id = file_upload_metadata.file_id
-        print(f"Image uploaded successfully. File ID: {file_id}")
-
-        # Add uploaded file to dataset
-        await data_client.add_binary_data_to_dataset_by_ids(
-            binary_ids=[file_id],
-            dataset_id=DATASET_ID
-        )
-
-        print(f"Image added to dataset {DATASET_ID} successfully")
-
-    except Exception as error:
-        print(f"Operation failed: {error}")
-        raise
-
-    finally:
-        app_client.close()
-
-
-async def main() -> int:
-    """Main execution function."""
-    viam_client = await connect()
-    data_client = viam_client.data_client
-
-    matching_data = await fetch_binary_data_ids(data_client, PART_ID)
-
-    print("Creating dataset...")
-
-    try:
-        dataset_id = await data_client.create_dataset(
-            name=DATASET_NAME,
-            organization_id=ORG_ID,
-        )
-        print(f"Created dataset: {dataset_id}")
-    except Exception as e:
-        print("Error creating dataset. It may already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        print(f"Exception: {e}")
-        return 1
-
-    print("Adding data to dataset...")
-
-    await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=[
-            obj.metadata.binary_data_id for obj in matching_data
-        ],
-        dataset_id=dataset_id
-    )
-
-    print("Added files to dataset.")
-    print(
-        f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}"
-    )
-
-    viam_client.close()
-    return 0
-
-if __name__ == "__main__":
-    asyncio.run(main())
+print("Image added to dataset successfully")
+viam_client.close()
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-To add an image to a dataset, use [`dataClient.AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+To add an image to a dataset, find the binary data ID for the image and the dataset ID.
+Pass both IDs to [`DataClient.AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 ```go
-package main
+ctx := context.Background()
+viamClient, err := client.New(ctx, "<machine_address>", logger)
+if err != nil {
+    log.Fatal(err)
+}
+defer viamClient.Close(ctx)
 
-import (
-    "context"
-    "fmt"
-    "os"
-    "time"
+dataClient := viamClient.DataClient()
 
-    "go.viam.com/rdk/app/appclient"
-    "go.viam.com/rdk/services/datamanager/app"
+// Add image to dataset
+err = dataClient.AddBinaryDataToDatasetByIDs(
+    context.Background(),
+    []string{ExistingImageID},
+    ExistingDatasetID,
 )
-
-const (
-    MachinePartID = "your-machine-part-id-here"
-    DatasetID     = "your-dataset-id-here"
-    APIKeyID      = "your-api-key-id"
-    APIKey        = "your-api-key"
-)
-
-func addImageToDataset() error {
-    ctx := context.Background()
-
-    // Create app client
-    client, err := appclient.New(ctx, appclient.Config{
-        KeyID: APIKeyID,
-        Key:   APIKey,
-    })
-    if err != nil {
-        return fmt.Errorf("failed to create app client: %w", err)
-    }
-    defer client.Close()
-
-    // Get data client
-    dataClient := client.DataClient
-
-    // Read image file
-    imagePath := "sample_image.jpg"
-    imageData, err := os.ReadFile(imagePath)
-    if err != nil {
-        return fmt.Errorf("failed to read image file: %w", err)
-    }
-
-    // Prepare upload options
-    componentType := "camera"
-    componentName := "camera-1"
-    fileName := fmt.Sprintf("training_sample_%d.jpg", time.Now().Unix())
-    fileExtension := "jpg"
-
-    uploadOptions := app.FileUploadOptions{
-        ComponentType: &componentType,
-        ComponentName: &componentName,
-        FileName:      &fileName,
-        FileExtension: &fileExtension,
-    }
-
-    // Upload image
-    fileID, err := dataClient.FileUploadFromBytes(
-        ctx,
-        MachinePartID,
-        imageData,
-        &uploadOptions,
-    )
-    if err != nil {
-        return fmt.Errorf("failed to upload image: %w", err)
-    }
-
-    fmt.Printf("Image uploaded successfully. File ID: %s\n", fileID)
-
-    // Add file to dataset
-    err = dataClient.AddBinaryDataToDatasetByIDs(
-        ctx,
-        []string{fileID},
-        DatasetID,
-    )
-    if err != nil {
-        return fmt.Errorf("failed to add image to dataset: %w", err)
-    }
-
-    fmt.Printf("Image added to dataset %s successfully\n", DatasetID)
-    return nil
+if err != nil {
+    return fmt.Errorf("failed to add image to dataset: %w", err)
 }
 
-func main() {
-    if err := addImageToDataset(); err != nil {
-        fmt.Printf("Operation failed: %v\n", err)
-        os.Exit(1)
-    }
-}
-
+fmt.Println("Image added to dataset successfully")
 ```
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-To add an image to a dataset, use [`dataClient.addBinaryDataToDatasetByIds`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
-
+To add an image to a dataset, find the binary data ID for the image and the dataset ID.
+Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 ```typescript
-import { createAppClient } from "@viamrobotics/app-client";
-import { promises as fs } from "fs";
-
-const MACHINE_PART_ID = "your-machine-part-id-here";
-const DATASET_ID = "your-dataset-id-here";
-const API_KEY_ID = "your-api-key-id";
-const API_KEY = "your-api-key";
-
-async function addImageToDataset(): Promise<void> {
-  // Create app client
-  const appClient = createAppClient({
-    apiKeyId: API_KEY_ID,
-    apiKey: API_KEY,
-  });
-
-  try {
-    // Get data client
-    const dataClient = appClient.dataClient();
-
-    // Read image file
-    const imagePath = "sample_image.jpg";
-    const imageBuffer = await fs.readFile(imagePath);
-    const imageData = new Uint8Array(imageBuffer);
-
-    // Upload image
-    const uploadResponse = await dataClient.fileUploadFromBytes({
-      partId: MACHINE_PART_ID,
-      data: imageData,
-      componentType: "camera",
-      componentName: "camera-1",
-      fileName: `training_sample_${Date.now()}.jpg`,
-      fileExtension: "jpg",
-    });
-
-    const fileId = uploadResponse.fileId;
-    console.log(`Image uploaded successfully. File ID: ${fileId}`);
-
-    // Add file to dataset
-    await dataClient.addBinaryDataToDatasetByIds({
-      binaryIds: [fileId],
-      datasetId: DATASET_ID,
-    });
-
-    console.log(`Image added to dataset ${DATASET_ID} successfully`);
-  } catch (error) {
-    console.error(`Operation failed: ${error}`);
-    throw error;
-  } finally {
-    await appClient.close();
-  }
-}
-
-// Execute function
-addImageToDataset().catch((error) => {
-  console.error("Failed to add image to dataset:", error);
-  process.exit(1);
+const client: ViamClient = await createViamClient({
+  credential: {
+    type: "api-key",
+    payload: API_KEY,
+  },
+  authEntity: API_KEY_ID,
 });
+
+const dataClient = client.dataClient;
+
+// Add image to dataset
+await dataClient.addBinaryDataToDatasetByIds({
+  binaryIds: [EXISTING_IMAGE_ID],
+  datasetId: EXISTING_DATASET_ID,
+});
+
+console.log("Image added to dataset successfully");
+client.disconnect();
 ```
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-To add an image to a dataset, use [`dataClient.addBinaryDataToDatasetByIds`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+
+To add an image to a dataset, find the binary data ID for the image and the dataset ID.
+Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 ```dart
-import 'dart:io';
-import 'dart:typed_data';
-import 'package:viam_sdk/viam_sdk.dart';
+final client = await ViamClient.withApiKey(
+    apiKeyId: apiKeyId,
+    apiKey: apiKey,
+);
 
-const String machinePartId = 'your-machine-part-id-here';
-const String datasetId = 'your-dataset-id-here';
-const String apiKeyId = 'your-api-key-id';
-const String apiKey = 'your-api-key';
+final dataClient = client.dataClient;
 
-Future<void> addImageToDataset() async {
-  AppClient? appClient;
-
-  try {
-    // Create app client
-    appClient = await AppClient.withApiKey(
-      apiKeyId: apiKeyId,
-      apiKey: apiKey,
-    );
-
-    // Get data client
-    final dataClient = appClient.dataClient;
-
-    // Read image file
-    const imagePath = 'sample_image.jpg';
-    final imageFile = File(imagePath);
-    final imageBytes = await imageFile.readAsBytes();
-
-    // Upload image
-    final uploadOptions = FileUploadOptions(
-      componentType: 'camera',
-      componentName: 'camera-1',
-      fileName: 'training_sample_${DateTime.now().millisecondsSinceEpoch}.jpg',
-      fileExtension: 'jpg',
-    );
-
-    final fileId = await dataClient.fileUploadFromBytes(
-      machinePartId,
-      imageBytes,
-      uploadOptions,
-    );
-
-    print('Image uploaded successfully. File ID: $fileId');
-
-    // Add file to dataset
+try {
+    // Add image to dataset
     await dataClient.addBinaryDataToDatasetByIds(
-      [fileId],
-      datasetId,
+      binaryIds: [existingImageId],
+      datasetId: existingDatasetId,
     );
 
-    print('Image added to dataset $datasetId successfully');
-
-  } catch (error) {
-    print('Operation failed: $error');
-    rethrow;
-  } finally {
-    await appClient?.close();
-  }
-}
-
-void main() async {
-  try {
-    await addImageToDataset();
-  } catch (error) {
-    print('Failed to add image to dataset: $error');
-    exit(1);
-  }
+    print('Image added to dataset successfully');
+} finally {
+    await client.close();
 }
 ```
 
@@ -418,12 +188,13 @@ from viam.utils import create_filter
 # Configuration constants – replace with your actual values
 DATASET_NAME = ""  # a unique, new name for the dataset you want to create
 ORG_ID = ""  # your organization ID, find in your organization settings
-PART_ID = ""  # ID of machine that captured target images, find in machine config
+PART_ID = ""  # ID of machine that captured images, find in machine config
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
 
 # Adjust the maximum number of images to add to the dataset
 MAX_MATCHES = 500
+
 
 async def connect() -> ViamClient:
     """Establish a connection to the Viam client using API credentials."""
@@ -537,7 +308,10 @@ func connect(ctx context.Context) (*app.ViamClient, error) {
     return client, nil
 }
 
-func fetchBinaryDataIDs(ctx context.Context, dataClient data.DataServiceClient, partID string) ([]*data.BinaryData, error) {
+func fetchBinaryDataIDs(
+                ctx context.Context,
+                dataClient data.DataServiceClient,
+                partID string) ([]*data.BinaryData, error) {
     filter := &data.Filter{
         PartId: partID,
     }
@@ -834,6 +608,548 @@ Future<int> main() async {
     print("Exception: $error");
     viamClient.close();
     return 1;
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Capture, annotate, and add images to a dataset
+
+The following example demonstrates how you can capture an image, use an ML model to generate annotations, and then add the image to a dataset.
+You can use this logic to expand and improve your datasets continuously over time as your application runs.
+Re-train your ML model on the improved dataset to improve the ML model.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+import asyncio
+import os
+import time
+from typing import Optional
+from io import BytesIO
+
+from PIL import Image
+from viam.app.app_client import AppClient
+from viam.logging import getLogger
+
+# Global machine configuration
+MACHINE_PART_ID = "your-machine-part-id-here"
+
+
+class DataCollector:
+    def __init__(self,
+                 component_name: str, dataset_id: str,
+                 api_key_id: str, api_key: str):
+
+        self.logger = getLogger(__name__)
+        self.component_name = component_name
+        self.dataset_id = dataset_id
+        self.api_key_id = api_key_id
+        self.api_key = api_key
+
+    async def capture_and_store_image(self,
+                                      processed_image: Image.Image,
+                                      classification: str) -> None:
+
+        if not MACHINE_PART_ID:
+            raise ValueError("machine part ID not configured")
+
+        # Create fresh data client connection
+        async with await self._create_data_client() as data_client:
+            image_data = self._encode_image_to_png(processed_image)
+
+            # Generate unique filename with timestamp
+            timestamp = int(time.time())
+            filename = f"{classification}-sample-{timestamp}.png"
+
+            component_type = "rdk:component:camera"
+
+            upload_metadata = {
+                "component_type": component_type,
+                "component_name": self.component_name,
+                "file_name": filename,
+                "file_extension": "png"
+            }
+
+            try:
+                file_id = await data_client.file_upload_from_bytes(
+                    part_id=MACHINE_PART_ID,
+                    data=image_data,
+                    **upload_metadata
+                )
+
+                # Associate file with dataset immediately
+                await data_client.add_binary_data_to_dataset_by_ids(
+                    binary_ids=[file_id],
+                    dataset_id=self.dataset_id
+                )
+
+                self.logger.info(
+                    f"successfully added {classification} image to dataset "
+                    f"{self.dataset_id} (file ID: {file_id}, "
+                    f"machine: {MACHINE_PART_ID})"
+                )
+
+            except Exception as e:
+                self.logger.error(f"failed to upload and associate image: {e}")
+                raise
+
+    async def _create_data_client(self) -> AppClient:
+        if not self.api_key_id or not self.api_key:
+            raise ValueError("API credentials not configured")
+
+        try:
+            client = AppClient.create_from_dial_options(
+                dial_options={
+                    "auth_entity": self.api_key_id,
+                    "credentials": {
+                        "type": "api-key",
+                        "payload": self.api_key
+                    }
+                }
+            )
+            return client
+
+        except Exception as e:
+            raise ValueError(f"failed to create app client: {e}")
+
+    def _encode_image_to_png(self, img: Image.Image) -> bytes:
+        buffer = BytesIO()
+        img.save(buffer, format='PNG', optimize=True)
+        return buffer.getvalue()
+
+
+def create_data_collector(
+                    component_name: str,
+                    dataset_id: str,
+                    api_key_id: str,
+                    api_key: str
+                ) -> DataCollector:
+    if not component_name:
+        raise ValueError("component name is required")
+    if not dataset_id:
+        raise ValueError("dataset ID is required")
+    if not api_key_id or not api_key:
+        raise ValueError("API credentials are required")
+
+    return DataCollector(
+        component_name=component_name,
+        dataset_id=dataset_id,
+        api_key_id=api_key_id,
+        api_key=api_key
+    )
+
+
+# Example usage
+async def main():
+    collector = create_data_collector(
+        component_name="main_camera",
+        dataset_id="your-dataset-id",
+        api_key_id="your-api-key-id",
+        api_key="your-api-key"
+    )
+
+    # Example with PIL Image
+    sample_image = Image.new('RGB', (640, 480), color='red')
+    await collector.capture_and_store_image(sample_image, "positive_sample")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+package datasetcreation
+
+import (
+    "context"
+    "fmt"
+    "image"
+    "time"
+
+    "go.viam.com/rdk/logging"
+    "go.viam.com/rdk/services/datamanager/app"
+    "go.viam.com/rdk/app/appclient"
+)
+
+var MachinePartID string = "your-machine-part-id-here"
+
+type DataCollector struct {
+    logger         logging.Logger
+    componentName  string
+    datasetID      string
+    apiKeyID       string
+    apiKey         string
+}
+
+func (dc *DataCollector) CaptureAndStoreImage(ctx context.Context, processedImage image.Image, classification string) error {
+    if MachinePartID == "" {
+        return fmt.Errorf("machine part ID not configured")
+    }
+
+    // Create fresh data client connection
+    dataClient, err := dc.createDataClient(ctx)
+    if err != nil {
+        dc.logger.Errorf("failed to create data client: %v", err)
+        return fmt.Errorf("data client initialization failed: %w", err)
+    }
+    defer dataClient.Close()
+
+    imageData, err := dc.encodeImageToPNG(processedImage)
+    if err != nil {
+        dc.logger.Errorf("image encoding failed: %v", err)
+        return fmt.Errorf("failed to encode image: %w", err)
+    }
+
+    // Generate unique filename with timestamp
+    timestamp := time.Now().Unix()
+    filename := fmt.Sprintf("%s-sample-%d.png", classification, timestamp)
+
+    componentType := "rdk:component:camera"
+    fileExtension := "png"
+
+    uploadOptions := app.FileUploadOptions{
+        ComponentType: &componentType,
+        ComponentName: &dc.componentName,
+        FileName:      &filename,
+        FileExtension: &fileExtension,
+    }
+
+    fileID, err := dataClient.FileUploadFromBytes(ctx, MachinePartID, imageData, &uploadOptions)
+    if err != nil {
+        dc.logger.Errorf("file upload failed for %s: %v", filename, err)
+        return fmt.Errorf("failed to upload image: %w", err)
+    }
+
+    // Associate file with dataset immediately
+    err = dataClient.AddBinaryDataToDatasetByIDs(ctx, []string{fileID}, dc.datasetID)
+    if err != nil {
+        dc.logger.Errorf("dataset association failed for file %s: %v", fileID, err)
+        return fmt.Errorf("failed to add image to dataset: %w", err)
+    }
+
+    dc.logger.Infof("successfully added %s image to dataset %s (file ID: %s, machine: %s)",
+        classification, dc.datasetID, fileID, MachinePartID)
+
+    return nil
+}
+
+func (dc *DataCollector) createDataClient(ctx context.Context) (app.AppServiceClient, error) {
+    if dc.apiKeyID == "" || dc.apiKey == "" {
+        return nil, fmt.Errorf("API credentials not configured")
+    }
+
+    client, err := appclient.New(ctx, appclient.Config{
+        KeyID: dc.apiKeyID,
+        Key:   dc.apiKey,
+    })
+    if err != nil {
+        return nil, fmt.Errorf("failed to create app client: %w", err)
+    }
+
+    return client.DataClient, nil
+}
+
+func (dc *DataCollector) encodeImageToPNG(img image.Image) ([]byte, error) {
+    // PNG encoding implementation
+    return nil, nil // Placeholder
+}
+
+func NewDataCollector(logger logging.Logger, componentName, datasetID, apiKeyID, apiKey string) (*DataCollector, error) {
+    if logger == nil {
+        return nil, fmt.Errorf("logger is required")
+    }
+    if componentName == "" {
+        return nil, fmt.Errorf("component name is required")
+    }
+    if datasetID == "" {
+        return nil, fmt.Errorf("dataset ID is required")
+    }
+    if apiKeyID == "" || apiKey == "" {
+        return nil, fmt.Errorf("API credentials are required")
+    }
+
+    return &DataCollector{
+        logger:        logger,
+        componentName: componentName,
+        datasetID:     datasetID,
+        apiKeyID:      apiKeyID,
+        apiKey:        apiKey,
+    }, nil
+}
+```
+
+{{% /tab %}}
+{{% tab name="Typescript" %}}
+
+```typescript
+import { createRobotClient, RobotClient } from "@viamrobotics/sdk";
+import { AppClient, DataClient } from "@viamrobotics/app-client";
+import { Logger } from "@viamrobotics/utils";
+
+const MACHINE_PART_ID: string = "your-machine-part-id-here";
+
+interface FileUploadOptions {
+  componentType?: string;
+  componentName?: string;
+  fileName?: string;
+  fileExtension?: string;
+}
+
+export class DataCollector {
+  private logger: Logger;
+  private componentName: string;
+  private datasetId: string;
+  private apiKeyId: string;
+  private apiKey: string;
+
+  constructor(
+    logger: Logger,
+    componentName: string,
+    datasetId: string,
+    apiKeyId: string,
+    apiKey: string,
+  ) {
+    this.logger = logger;
+    this.componentName = componentName;
+    this.datasetId = datasetId;
+    this.apiKeyId = apiKeyId;
+    this.apiKey = apiKey;
+  }
+
+  async captureAndStoreImage(
+    processedImage: ArrayBuffer,
+    classification: string,
+  ): Promise<void> {
+    if (!MACHINE_PART_ID) {
+      throw new Error("Machine part ID not configured");
+    }
+
+    let dataClient: DataClient | null = null;
+
+    try {
+      dataClient = await this.createDataClient();
+
+      const imageData = await this.encodeImageToPng(processedImage);
+      const timestamp = Math.floor(Date.now() / 1000);
+      const filename = `${classification}-sample-${timestamp}.png`;
+
+      const componentType = "rdk:component:camera";
+      const fileExtension = "png";
+
+      const uploadOptions: FileUploadOptions = {
+        componentType,
+        componentName: this.componentName,
+        fileName: filename,
+        fileExtension,
+      };
+
+      const fileId = await dataClient.fileUploadFromBytes(
+        MACHINE_PART_ID,
+        new Uint8Array(imageData),
+        uploadOptions,
+      );
+
+      await dataClient.addBinaryDataToDatasetByIds([fileId], this.datasetId);
+
+      this.logger.info(
+        `Successfully added ${classification} image to dataset ${this.datasetId} ` +
+          `(file ID: ${fileId}, machine: ${MACHINE_PART_ID})`,
+      );
+    } catch (error) {
+      this.logger.error(`File upload failed for ${classification}: ${error}`);
+      throw new Error(`Failed to upload image: ${error}`);
+    } finally {
+      if (dataClient) {
+        await dataClient.close();
+      }
+    }
+  }
+
+  private async createDataClient(): Promise<DataClient> {
+    if (!this.apiKeyId || !this.apiKey) {
+      throw new Error("API credentials not configured");
+    }
+
+    const appClient = new AppClient({
+      apiKeyId: this.apiKeyId,
+      apiKey: this.apiKey,
+    });
+
+    return appClient.dataClient();
+  }
+
+  private async encodeImageToPng(image: ArrayBuffer): Promise<ArrayBuffer> {
+    try {
+      // PNG encoding implementation would depend on your image processing library
+      // This is a placeholder - you would use a library like 'pngjs' or 'canvas'
+      return image; // Assuming image is already PNG encoded
+    } catch (error) {
+      this.logger.error(`Image encoding failed: ${error}`);
+      throw new Error(`Failed to encode image: ${error}`);
+    }
+  }
+
+  static create(
+    logger: Logger,
+    componentName: string,
+    datasetId: string,
+    apiKeyId: string,
+    apiKey: string,
+  ): DataCollector {
+    if (!logger) {
+      throw new Error("Logger is required");
+    }
+    if (!componentName) {
+      throw new Error("Component name is required");
+    }
+    if (!datasetId) {
+      throw new Error("Dataset ID is required");
+    }
+    if (!apiKeyId || !apiKey) {
+      throw new Error("API credentials are required");
+    }
+
+    return new DataCollector(
+      logger,
+      componentName,
+      datasetId,
+      apiKeyId,
+      apiKey,
+    );
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart
+import 'dart:typed_data';
+import 'dart:io';
+import 'package:viam_sdk/viam_sdk.dart';
+import 'package:viam_sdk/src/app/app_client.dart';
+import 'package:viam_sdk/src/app/data_client.dart';
+import 'package:image/image.dart' as img;
+
+const String machinePartId = 'your-machine-part-id-here';
+
+class DataCollector {
+  final Logging logger;
+  final String componentName;
+  final String datasetId;
+  final String apiKeyId;
+  final String apiKey;
+
+  DataCollector({
+    required this.logger,
+    required this.componentName,
+    required this.datasetId,
+    required this.apiKeyId,
+    required this.apiKey,
+  });
+
+  Future<void> captureAndStoreImage(
+    Image processedImage,
+    String classification,
+  ) async {
+    if (machinePartId.isEmpty) {
+      throw Exception('Machine part ID not configured');
+    }
+
+    DataClient? dataClient;
+    try {
+      dataClient = await _createDataClient();
+
+      final imageData = await _encodeImageToPng(processedImage);
+      final timestamp = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      final filename = '$classification-sample-$timestamp.png';
+
+      const componentType = 'rdk:component:camera';
+      const fileExtension = 'png';
+
+      final uploadOptions = FileUploadOptions(
+        componentType: componentType,
+        componentName: componentName,
+        fileName: filename,
+        fileExtension: fileExtension,
+      );
+
+      final fileId = await dataClient.fileUploadFromBytes(
+        machinePartId,
+        imageData,
+        uploadOptions,
+      );
+
+      await dataClient.addBinaryDataToDatasetByIds(
+        [fileId],
+        datasetId,
+      );
+
+      logger.info(
+        'Successfully added $classification image to dataset $datasetId '
+        '(file ID: $fileId, machine: $machinePartId)',
+      );
+    } catch (error) {
+      logger.error('File upload failed for $classification: $error');
+      rethrow;
+    } finally {
+      await dataClient?.close();
+    }
+  }
+
+  Future<DataClient> _createDataClient() async {
+    if (apiKeyId.isEmpty || apiKey.isEmpty) {
+      throw Exception('API credentials not configured');
+    }
+
+    final appClient = await AppClient.withApiKey(
+      apiKeyId: apiKeyId,
+      apiKey: apiKey,
+    );
+
+    return appClient.dataClient;
+  }
+
+  Future<Uint8List> _encodeImageToPng(Image image) async {
+    try {
+      final pngBytes = img.encodePng(image);
+      return Uint8List.fromList(pngBytes);
+    } catch (error) {
+      logger.error('Image encoding failed: $error');
+      throw Exception('Failed to encode image: $error');
+    }
+  }
+
+  static DataCollector create({
+    required Logging logger,
+    required String componentName,
+    required String datasetId,
+    required String apiKeyId,
+    required String apiKey,
+  }) {
+    if (componentName.isEmpty) {
+      throw ArgumentError('Component name is required');
+    }
+    if (datasetId.isEmpty) {
+      throw ArgumentError('Dataset ID is required');
+    }
+    if (apiKeyId.isEmpty || apiKey.isEmpty) {
+      throw ArgumentError('API credentials are required');
+    }
+
+    return DataCollector(
+      logger: logger,
+      componentName: componentName,
+      datasetId: datasetId,
+      apiKeyId: apiKeyId,
+      apiKey: apiKey,
+    );
   }
 }
 ```
