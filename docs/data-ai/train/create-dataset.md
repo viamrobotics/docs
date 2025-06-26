@@ -1,6 +1,6 @@
 ---
-linkTitle: "Create training dataset"
-title: "Create training dataset"
+linkTitle: "Create a training dataset"
+title: "Create a training dataset"
 weight: 10
 layout: "docs"
 type: "docs"
@@ -13,7 +13,9 @@ aliases:
   - /data-ai/ai/create-dataset/
 ---
 
-To create a dataset:
+To train a machine learning model, you will need a dataset.
+
+You can create a dataset using the web UI, the CLI, or one of the SDKs:
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}

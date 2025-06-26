@@ -32,7 +32,7 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 
 1. Use the checkbox in the upper left of each image to select labeled images.
 
-1. Click the **Add to dataset** button, select a dataset, and click the **Add ... images** button to add the selected images to the dataset.
+1. Click the **Add to dataset** button, select a dataset, and click the **Add `<N>` images** button to add the selected images to the dataset.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}

@@ -163,7 +163,7 @@ Once you've captured enough images for training, you must [annotate](/data-ai/tr
 
 ## Capture images over time
 
-To capture a large number of images for training an ML model, [Capture and sync image data](/data-ai/capture-data/capture-sync/) using the data management service with your camera.
+To capture a large number of images for training an ML model, [capture and sync image data](/data-ai/capture-data/capture-sync/) using the data management service with your camera.
 
 Viam stores the images saved by capture and sync on the [**DATA** page](https://app.viam.com/data/), but does not add the images to a dataset.
 We recommend you tag the images first and then use the CLI to [add the tagged images to a dataset](/data-ai/train/create-dataset/#add-tagged-images-to-a-dataset).
@@ -178,7 +178,8 @@ Once you've captured enough images for training, you must [annotate](/data-ai/tr
 
 ## Capture, annotate, and add images to a dataset
 
-The following example demonstrates how you can capture an image, use an ML model to generate annotations, then add the image to a dataset. You can use this logic to expand and improve your datasets continuously over time as your application runs.
+The following example demonstrates how you can capture an image, use an ML model to generate annotations, and then add the image to a dataset.
+You can use this logic to expand and improve your datasets continuously over time as your application runs.
 Re-train your ML model on the improved dataset to improve the ML model.
 
 {{< tabs >}}

@@ -38,13 +38,13 @@ Follow this guide to use your image data to train an ML model, so that your mach
 
 {{% /expand %}}
 
-{{% expand "a dataset that meets training requirements" %}}
+{{% expand "A dataset that meets training requirements" %}}
 
-To train a model, your dataset must meet the following criteria:
+To train a model, your dataset must contain the following:
 
-- at least 15 images
-- at least 80% of the images have labels
-- for each training label, at least 10 bounding boxes
+- At least 15 images
+- At least 80% of the images have labels
+- For each training label, at least 10 bounding boxes
 
 Follow the guide to [create a dataset](/data-ai/train/create-dataset/).
 
