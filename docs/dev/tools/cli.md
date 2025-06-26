@@ -21,7 +21,7 @@ The CLI lets you:
 - Retrieve [organization](/dev/reference/glossary/#organization) and location information
 - Manage fleet data and logs
 - Control machines by issuing component and service commands
-- Upload and manage modular resources in the [Viam Registry](https://app.viam.com/registry/)
+- Upload and manage modular resources in the [registry](https://app.viam.com/registry/)
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -126,7 +126,7 @@ You can authenticate your CLI session using either a personal access token, or a
   ```
 
   {{< alert title="Note" color="note" >}}
-  To use an organization, location, or machine part API key to authenticate, you can create one from the organization's settings page in the [Viam app](https://app.viam.com) or authenticate with a personal access token and then [create an organization API key](#create-an-organization-api-key), a [location](#create-a-location-api-key), or a [machine part API key](#create-a-machine-part-api-key).
+  To use an organization, location, or machine part API key to authenticate, you can create one from the organization's settings page in [Viam](https://app.viam.com) or authenticate with a personal access token and then [create an organization API key](#create-an-organization-api-key), a [location](#create-a-location-api-key), or a [machine part API key](#create-a-machine-part-api-key).
   {{< /alert >}}
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
@@ -136,7 +136,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 ### Create an organization API key
 
 To use an API key to authenticate your CLI session, you must create one.
-You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
+You can do this from the organization's settings page in [Viam](https://app.viam.com) or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
 
@@ -158,7 +158,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
-You can change an API key's permissions from the Viam app on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions on the [Viam organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the organization API key to authenticate future CLI sessions or to [use the SDKs](/dev/reference/sdks/).
@@ -169,7 +169,7 @@ An organization can have multiple API keys.
 ### Create a location API key
 
 To use an location API key to authenticate your CLI session, you must first create one:
-You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
+You can do this from the organization's settings page in [Viam](https://app.viam.com) or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [machine part API key](#create-a-machine-part-api-key).
@@ -183,7 +183,7 @@ You can do this from the organization's settings page in the [Viam app](https://
    Where:
 
    - `location-id` is your location ID.
-     You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app.
+     You can find your location ID by running `viam locations list` or by visiting your [fleet page in Viam](https://app.viam.com/robots).
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/).
      If only one organization owns the location, you can omit the parameter.
@@ -197,7 +197,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new location API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your location.
-You can change an API key's permissions from the Viam app on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions from Viam on the [organizations page](/manage/reference/organize/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the location API key to authenticate future CLI sessions or to [connect to machines with the SDK](/dev/reference/sdks/).
@@ -208,7 +208,7 @@ A location can have multiple API keys.
 ### Create a machine part API key
 
 To use a machine part API key to authenticate your CLI session, you must first create one:
-You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
+You can do this from the organization's settings page in [Viam](https://app.viam.com) or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a machine part API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
@@ -222,9 +222,9 @@ You can do this from the organization's settings page in the [Viam app](https://
    Where:
 
    - `machine-id` is your machine's ID.
-     You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page in the [Viam app](https://app.viam.com), and selecting **Copy machine ID**.
+     You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page in [Viam](https://app.viam.com), and selecting **Copy machine ID**.
    - `org-id` is an optional organization ID to attach the key to.
-     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the Viam app.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in Viam.
      If only one organization owns the robot, you can omit the parameter.
      If multiple organizations own the robot, you must specify the `org-id` explicitly.
    - `key-name` is an optional name for your API key.
@@ -393,8 +393,7 @@ done
 
 ### `datapipeline`
 
-The `datapipeline` command allows you to manage data pipelines for processing and transforming your machine data.
-With it, you can create, update, list, describe, and delete data pipelines that run {{< glossary_tooltip term_id="mql" text="MQL" >}} queries on your synced data.
+The `datapipeline` command provides access to data pipelines for processing machine data with {{< glossary_tooltip term_id="mql" text="MQL" >}} queries.
 
 ```sh {class="command-line" data-prompt="$"}
 viam datapipeline create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
@@ -412,6 +411,12 @@ viam datapipeline create --org-id=123 --name="Daily Sensor Summary" --schedule="
 
 # create a data pipeline with hot storage data source type for faster access
 viam datapipeline create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --mql='[{"$match": {"component_name": "camera1"}}]' --data-source-type=hotstorage
+
+# disable a pipeline
+viam datapipeline disable --id=abc123
+
+# enable a pipeline
+viam datapipeline enable --id=abc123
 
 # update an existing data pipeline with a new schedule and data source type
 viam datapipeline update --id=abc123 --name="Updated Pipeline" --schedule="0 */6 * * *" --mql='[{"$match": {"location_id": "loc123"}}]' --data-source-type=standard
@@ -432,10 +437,12 @@ viam datapipeline delete --id=abc123
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `create` | Create a new data pipeline. | - |
-| `update` | Update an existing data pipeline. | - |
-| `list` | List all data pipelines in an organization. | - |
 | `describe` | Get detailed information about a specific data pipeline. | - |
 | `delete` | Delete a data pipeline. | - |
+| `disable` | Stop executing a data pipeline without deleting it. | - |
+| `enable` | Resume executing a disabled data pipeline. | - |
+| `list` | List all data pipelines in an organization. | - |
+| `update` | Update an existing data pipeline. | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
@@ -443,22 +450,20 @@ viam datapipeline delete --id=abc123
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--org-id` | Organization ID where the data pipeline belongs. | `create`, `list` | **Required** |
+| `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
 | `--name` | Name of the data pipeline. | `create`, `update` | **Required** |
-| `--schedule` | Cron schedule for when the pipeline should run, for example "0 9 * * *" for daily at 9 AM. | `create`, `update` | **Required** |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example "0 9 * * *" for daily at 9 AM. | `create`, `update` | **Required** |
 | `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. | `create`, `update` | **Required** |
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. | `create`, `update` | Optional |
-| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. Standard provides cost-effective storage for regular analytics, while hotstorage offers faster access for real-time processing. | `create`, `update` | Optional |
-| `--id` | ID of the data pipeline to update, describe, or delete. | `update`, `describe`, `delete` | **Required** |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
+| `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
 
 #### Data source types
 
 Data pipelines support different data source types to optimize performance and cost for different use cases:
 
-- **`standard`** (default): Cost-effective storage optimized for regular batch processing and analytics workloads.
-- **`hotstorage`**: High-performance storage optimized for real-time processing and frequent data access with lower latency.
-
-Choose the data source type based on your pipeline's performance requirements and access patterns. You can specify the data source type when creating a pipeline, and update it later if your requirements change.
+- **`standard`** (default): Storage optimized for batch processing and analytics workloads.
+- **`hotstorage`**: Storage optimized for real-time processing and frequent data access with lower latency.
 
 ### `dataset`
 
@@ -540,8 +545,8 @@ viam dataset data remove ids --dataset-id=abc --binary-data-ids=aaa,bbb
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
-| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
+| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page in [Viam](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
+| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in [Viam](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
 | `--destination` | Output directory for downloaded data. | `export` | **Required** |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `data add`, `data remove` | Optional |
 | `--binary-data-ids` | The binary data IDs of the files to perform an operation on. | `data add`, `data remove` | **Required** |
@@ -570,12 +575,12 @@ viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123
 To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in the [Viam app](https://app.viam.com/).
 Find **Organization ID** and click the copy icon.
 
-To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab in Viam and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
+To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in Viam and copy from **Location ID**.
 
-To find the binary data ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
+To find the binary data ID of a given image, navigate to the [**DATA** tab in Viam](https://app.viam.com/data/view) and select your image.
 The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments such as `--start` or `--end` with the `ids` argument.
@@ -597,15 +602,15 @@ The following command adds `"new_tag_1"` and `"new_tag_2"` to all images of type
 viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
 ```
 
-To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab on the Viam app and select a dataset.
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab in Viam and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
+To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in Viam and copy from **Location ID**.
 
 ###### Copy `export` command
 
 You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
-Navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+Navigate to the [**DATA** tab in Viam](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as machine name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
 Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the data type `binary` and `tabular` subcommands and `--destination` flags, which are specific to `viam data export`.
 
@@ -896,8 +901,8 @@ This includes:
 
 - Generating stub files for a new module
 - Creating metadata for a {{< glossary_tooltip term_id="resource" text="modular resource" >}}
-- Uploading a new module to the [Viam registry](https://app.viam.com/registry)
-- Uploading a new version of your module to the [Viam registry](https://app.viam.com/registry)
+- Uploading a new module to the [registry](https://app.viam.com/registry)
+- Uploading a new version of your module to the [registry](https://app.viam.com/registry)
 - Updating an existing module in the Viam Registry
 - Updating a module's metadata file based on models it provides
 - Building your module for different architectures using cloud runners
@@ -1546,7 +1551,7 @@ viam train list --org-id=123 --job-status=completed
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab in Viam and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
 | `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
