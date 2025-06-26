@@ -32,13 +32,13 @@ However, if you already have a cache of data you'd like to use with Viam, you ca
 
 ### Prerequisites
 
-{{% expand "A running machine connected to Viam. Click to see instructions." %}}
+{{% expand "A running machine connected to Viam" %}}
 
 {{% snippet "setup-both.md" %}}
 
 {{% /expand%}}
 
-{{< expand "Enable data capture and sync on your machine." >}}
+{{< expand "Enable data capture and sync on your machine" >}}
 
 Add the [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources):
 

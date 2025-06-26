@@ -7,15 +7,7 @@ type: "docs"
 description: "Annotate images to train a machine learning model."
 ---
 
-Use the interface on the [**DATA** page](https://app.viam.com/data/view) to annotate your images.
-When you label your dataset, include:
-
-- images with and _without_ the categories you're looking to identify
-- a roughly equal number of images for each category
-- images from your production environment, including lighting and camera quality
-- examples from every angle and distance that you expect the model to handle
-
-Viam enables you to annotate images for use with the following machine learning methods.
+You can either manually add annotations through the Viam web UI, or add annotations with an existing ML model.
 
 ## Prerequisites
 
@@ -34,17 +26,25 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 ## Classify images with tags
 
 Classification determines a descriptive tag or set of tags for an image.
-For example, classification could help you identify:
+For example, you could use classification to answer the following questions:
 
-- whether an image of a food display appears `full`, `empty`, or `average`
-- the quality of manufacturing output: `good` or `bad`
-- what combination of toppings exists on a pizza: `pepperoni`, `sausage` and `pepper`, or `pineapple` and `ham` and `mushroom`
+- does an image of a food display appear `full`, `empty`, or `average`?
+- the quality of manufacturing output `good` or `bad`?
+- what combination of toppings exists on a pizza: `pepperoni`, `sausage`, and `pepper`? or `pineapple`, `ham`, and `mushroom`?
 
 Viam supports single and multiple label classification.
-To create a training set for classification, annotate tags to describe your images.
+To create a training dataset for classification, annotate tags to describe your images.
+
+{{< alert title="Tip" color="tip" >}}
+
+Unless you already have an ML model that can generate tags for your dataset, use the Web UI to annotate.
+
+{{< /alert >}}
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}
+
+The [**DATA** page](https://app.viam.com/data/view) provides an interface for annotating images.
 
 To tag an image:
 
@@ -257,8 +257,16 @@ For example, object detection could help you identify:
 
 To create a training set for object detection, annotate bounding boxes to teach your model to identify objects that you want to detect in future images.
 
+{{< alert title="Tip" color="tip" >}}
+
+Unless you already have an ML model that can generate tags for your dataset, use the Web UI to annotate.
+
+{{< /alert >}}
+
 {{< tabs >}}
 {{% tab name="Web UI" %}}
+
+The [**DATA** page](https://app.viam.com/data/view) provides an interface for annotating images.
 
 To label an object with a bounding box:
 
@@ -271,6 +279,7 @@ To label an object with a bounding box:
 {{< alert title="Tip" color="tip" >}}
 
 Once created, you can move, resize, or delete the bounding box.
+
 {{< /alert >}}
 
 Repeat these steps for all images in the dataset.

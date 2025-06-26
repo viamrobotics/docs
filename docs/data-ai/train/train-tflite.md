@@ -32,7 +32,7 @@ Follow this guide to use your image data to train an ML model, so that your mach
 
 ## Prerequisites
 
-{{% expand "a machine connected to Viam" %}}
+{{% expand "A machine connected to Viam" %}}
 
 {{% snippet "setup.md" %}}
 
@@ -46,9 +46,16 @@ To train a model, your dataset must contain the following:
 - At least 80% of the images have labels
 - For each training label, at least 10 bounding boxes
 
+When you label your dataset, include:
+
+- images with and _without_ the categories you're looking to identify
+- a roughly equal number of images for each category
+- images from your production environment, including lighting and camera quality
+- examples from every angle and distance that you expect the model to handle
+
 Follow the guide to [create a dataset](/data-ai/train/create-dataset/).
 
-{{% /expand%}}
+{{% /expand %}}
 
 ## Train a machine learning model
 

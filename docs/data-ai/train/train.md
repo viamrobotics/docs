@@ -26,7 +26,7 @@ If you wish to do this, skip to [Submit a training job](#submit-a-training-job).
 
 ## Prerequisites
 
-{{% expand "A dataset with data you can train an ML model on. Click to see instructions." %}}
+{{% expand "A dataset that contains training data" %}}
 
 For images, follow the instructions to [Create a dataset](/data-ai/train/create-dataset/) to create a dataset and label data.
 
@@ -34,7 +34,7 @@ For other data, use the [Data Client API](/dev/reference/apis/data-client/) from
 
 {{% /expand%}}
 
-{{% expand "The Viam CLI. Click to see instructions." %}}
+{{% expand "The Viam CLI" %}}
 
 You must have the Viam CLI installed to upload training scripts to the registry.
 
