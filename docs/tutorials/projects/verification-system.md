@@ -172,7 +172,7 @@ Then, train a new model using that model:
    {{<gif webm_src="/services/data/label-magnemite.webm" mp4_src="/services/data/label-magnemite.mp4" alt="Add a bounding box around the magnemite pokemon in an image">}}
 
 1. When you have created bounding boxes for all `person` objects in the image, click the right arrow key to navigate to the next image. Repeat the process for each image in your dataset, drawing bounding boxes for every person in every image.
-1. [Train a TFlite model on your dataset](/data-ai/ai/train-tflite/).
+1. [Train a TFlite model on your dataset](/data-ai/train/train-tflite/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
 1. [Deploy the model](/data-ai/ai/deploy/) to your machine so it can be used by other services, such as the vision service.
 

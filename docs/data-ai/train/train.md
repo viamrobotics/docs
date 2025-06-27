@@ -2,7 +2,7 @@
 linkTitle: "Train other models"
 title: "Train other models"
 tags: ["data management", "ml", "model training"]
-weight: 30
+weight: 51
 layout: "docs"
 type: "docs"
 aliases:
@@ -10,6 +10,7 @@ aliases:
   - /how-tos/create-custom-training-scripts/
   - /services/ml/training-scripts/
   - /registry/training-scripts/
+  - /data-ai/ai/train/
 languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
@@ -25,15 +26,15 @@ If you wish to do this, skip to [Submit a training job](#submit-a-training-job).
 
 ## Prerequisites
 
-{{% expand "A dataset with data you can train an ML model on. Click to see instructions." %}}
+{{% expand "A dataset that contains training data" %}}
 
-For images, follow the instructions to [Create a dataset](/data-ai/ai/create-dataset/) to create a dataset and label data.
+For images, follow the instructions to [Create a dataset](/data-ai/train/create-dataset/) to create a dataset and label data.
 
 For other data, use the [Data Client API](/dev/reference/apis/data-client/) from within the training script to store data in the Viam Cloud.
 
 {{% /expand%}}
 
-{{% expand "The Viam CLI. Click to see instructions." %}}
+{{% expand "The Viam CLI" %}}
 
 You must have the Viam CLI installed to upload training scripts to the registry.
 
