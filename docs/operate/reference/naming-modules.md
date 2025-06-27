@@ -118,6 +118,6 @@ Notes:
 
 - The old namespace is permanently reserved for backwards compatibility and cannot be reused.
 - Existing machine configurations will continue to work without any changes required.
-- Model names for public modules will need to be changed after a namespace change.
+- You need to change model names for public modules after a namespace change.
 - Organizations are limited to 5 namespaces total to prevent abuse.
 - When adding modules to new machines, the machine builder will use the new namespace.
