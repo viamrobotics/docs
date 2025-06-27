@@ -279,7 +279,6 @@ viam organizations --help
 
 ## Commands
 
-
 ### `data`
 
 The `data` command allows you to manage machine data.
