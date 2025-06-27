@@ -459,12 +459,6 @@ viam datapipelines delete --id=abc123
 | `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
 | `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
 
-#### Data source types
-
-Data pipelines support different data source types to optimize performance and cost for different use cases:
-
-- **`standard`** (default): Storage optimized for batch processing and analytics workloads.
-- **`hotstorage`**: Storage optimized for real-time processing and frequent data access with lower latency.
 
 ### `dataset`
 
