@@ -394,6 +394,7 @@ done
 ### `datapipelines`
 
 The `datapipelines` command provides access to data pipelines for processing machine data with {{< glossary_tooltip term_id="mql" text="MQL" >}} queries.
+Data pipelines help you optimize query performance for frequently accessed complex data transformations.
 
 ```sh {class="command-line" data-prompt="$"}
 viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
