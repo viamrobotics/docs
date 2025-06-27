@@ -336,7 +336,6 @@ To delete more data iterate over the data with a shell script:
 for i in {00..59}; do
   viam data delete binary --org-ids=<org-id> --mime-types=image/jpeg,image/png --start=2024-05-13T11:00:00.000Z --end=2024-05-13T11:${i}:00.000Z
 done
-```
 #### Command options
 
 <!-- prettier-ignore -->
@@ -457,7 +456,6 @@ viam datapipelines delete --id=abc123
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
 | `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
 | `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
-
 
 ### `dataset`
 
