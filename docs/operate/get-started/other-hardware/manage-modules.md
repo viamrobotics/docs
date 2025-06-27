@@ -416,9 +416,21 @@ To transfer ownership of a module from one organization to another:
 
 ## Rename a module
 
-If you need to change the name of a module, please reach out to the Viam team at [support@viam.com](mailto:support@viam.com).
+You can rename a module that you own through the Viam web interface.
+To rename a module:
 
-{{% hiddencontent %}}
+1. Navigate to your module page at `app.viam.com/module/<namespace>/<module-name>`.
+1. Click the **...** menu in the top right corner of the module page.
+1. Select **Rename** from the dropdown menu.
+1. Enter the new module name in the modal that appears.
+1. Click **Rename** to confirm the change.
+
+Notes: 
+
+- The old module name is permanently reserved for backwards compatibility and cannot be reused.
+- Existing machine configurations will continue to work without any changes required.
+- When adding the module to new machines, the machine builder will use the new module name.
+- You can only rename modules that your organization owns.
 
 ## Rename a model
 

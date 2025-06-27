@@ -102,3 +102,22 @@ When uploading modules to the Viam Registry, you must set a unique namespace for
 To create a new namespace for your organization, click on the org's **Settings** in the top right of the navigation bar, then click the **Set a public namespace** button.
 Enter a name or use the suggested name for your namespace, and then click **Set namespace**.
 A namespace may only contain letters, numbers, and the dash (`-`) character.
+
+## Update a namespace for your organization
+
+If your organization already has a namespace and you need to change it, you can rename it through the organization settings page.
+
+To rename your organization's namespace:
+
+1. Navigate to your organization settings at `app.viam.com/organization/<org-id>/settings`.
+1. Click the **Rename** button next to your current namespace.
+1. Enter the new namespace name in the modal that appears.
+1. Click **Set namespace** to confirm the change.
+
+Notes:
+
+- The old namespace is permanently reserved for backwards compatibility and cannot be reused.
+- Existing machine configurations will continue to work without any changes required.
+- Model names for public modules will need to be changed after a namespace change.
+- Organizations are limited to 5 namespaces total to prevent abuse.
+- When adding modules to new machines, the machine builder will use the new namespace.
