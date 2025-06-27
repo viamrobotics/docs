@@ -35,42 +35,152 @@ See [configure a machine](/operate/get-started/supported-hardware/) for more inf
 
 {{% /expand%}}
 
-### Configure a workplace with a sensor widget
+### Create a workspace
 
-{{< table >}}
-{{% tablestep number=1 %}}
-**Create a workspace on Viam**
+1. Navigate to the **FLEET** page's [**TELEOP** tab](https://app.viam.com/teleop).
+   Click **+ Create workspace**.
+   Enter a unique name for your workspace in the top left of the page, replacing the placeholder `example-workplace` text.
 
-Log in to [Viam](https://app.viam.com/).
+   {{<imgproc src="/services/data/visualize-choose-workspace.png" resize="800x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="On the TELEOP page, you can choose an existing workspace or create a new workspace.">}}
 
-Navigate to the **FLEET** page's **TELEOP** tab.
-Create a workspace by clicking **+ Create workspace**.
-Give it a name.
+1. From the **Select location** dropdown, select the location that contains the machine that you would like to visualize data from.
 
-{{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="Blank teleop page.">}}
+   {{<imgproc src="/services/data/visualize-choose-location.png" resize="800x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Choosing a location for your workspace.">}}
 
-{{% /tablestep %}}
-{{% tablestep number=2 %}}
-**Add widgets**
+1. From the **Select machine** dropdown, select the machine that you would like to visualize data from.
 
-Click **Add widget** and add a **GPS** widget for any position-reporting sensor, a **stat** widget for current readings from a sensor, or a **time series** widget to graph data for any component that supports capturing numeric data.
-Use the widget header to configure the panel.
-Repeat as many times as necessary.
+   {{<imgproc src="/services/data/visualize-choose-machine.png" resize="800x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Choosing a machine for your workspace.">}}
 
-{{% /tablestep %}}
-{{% tablestep number=3 %}}
-**Select a machine**
+### Add a widget
 
-Now, select a machine with which to make your teleop workspace come to life.
-Click **Select machine** and select your configured machine.
+1. Click **Add widget** and select a widget type to create a new widget of that type on your workspace:
 
-Your dashboard now shows the configured widget for the data from your machine.
-For example, a time series graph measuring noise over time for a sensor component:
+   {{<imgproc src="/services/data/visualize-add-widget.png" resize="800x" style="width: 300px" class="fill imgzoom shadow" declaredimensions=true alt="Choosing a widget type from the widget menu.">}}
 
-{{< imgproc src="/services/data/time-series.png" alt="Time series widget measuring noise over time." style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
+1. To configure the widget, click the pencil icon in the top right of your widget:
 
-{{% /tablestep %}}
-{{< /table >}}
+   {{<imgproc src="/services/data/visualize-widget-configure.png" alt="Click the pencil icon to configure your widget." style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
+
+   {{% alert title="Tip" color="tip" %}}
+   Select a location and machine for your workspace to populate the widget configuration dropdowns using sensor names and data from that machine.
+   {{% /alert %}}
+
+
+1. To arrange widgets on your workspace, click and drag the grid icon in the top left of your widget:
+
+   {{<imgproc src="/services/data/visualize-widget-move.png" alt="Click the grid icon to move a widget." style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
+
+For example, the following image shows a time series graph measuring noise over time for a sensor component:
+
+{{<imgproc src="/services/data/visualize-widget-time-series.png" alt="Time series widget measuring noise over time." style="width:700px" resize="1200x" class="imgzoom fill shadow" >}}
+
+You can mix and match multiple widgets to visualize many kinds of data collected by your machine:
+
+{{<imgproc src="/services/data/visualize-workspace.png" resize="1000x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Workspace containing.">}}
+
+### Widget types
+
+Viam provides the following types of widgets that you can customize to visualize data synced from your machines:
+
+#### Camera stream
+
+The **camera stream** widget displays a live feed of the most recent image captured by a camera component:
+
+{{<imgproc src="/services/data/visualize-widget-camera.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A camera widget displaying a live camera feed.">}}
+
+#### GPS
+
+The **GPS** widget displays the current GPS location of any sensor that reports a position:
+
+{{<imgproc src="/services/data/visualize-widget-gps.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A GPS widget displaying a live location.">}}
+
+#### Stat
+
+The **stat** widget displays the most recent reading recorded by any sensor that produces tabular data:
+
+{{<imgproc src="/services/data/visualize-widget-stat.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A stat widget displaying a live sensor reading.">}}
+
+To configure the stat widget, choose a sensor from the **Sensor name** dropdown. Then, select the reading you would like to display from the **Path** dropdown. Finally, assign a title, a unit suffix, and a refresh rate.
+
+{{<imgproc src="/services/data/visualize-widget-stat-configure.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="Configuring the stat widget.">}}
+
+#### Time series
+
+The **time series** widget creates a graph of tabular data. You can add multiple lines to the time series widget to compare multiple readings over the same time period:
+
+{{<imgproc src="/services/data/visualize-widget-time-series.png" resize="1000x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A time series widget displaying a live graph of sensor data over time.">}}
+
+To configure the time series widget, define the following attributes for each line in the time series:
+
+- from the **Resource name** dropdown, choose a sensor you would like to visualize
+- from the **Capture method** dropdown, choose a method of data capture (for example **Readings**)
+- from the **Path** dropdown, choose the field of data that this line should visualize
+
+Use the other fields to customize the title, unit, duration, and other aspects of your visualization.
+
+The **window method** allows you to aggregate sensor readings over specified time intervals instead of displaying raw data points.
+Select a window method from the following options:
+
+- **None**: shows raw data with the path specified with no aggregation
+- **Count**: shows the number of readings within the window
+- **Average**: calculates the average value throughout the window
+- **Minimum**: shows the minimum value within the window
+- **Maximum**: shows the maximum value within the window
+- **Custom**: shows the result of a custom MQL aggregation pipeline that you define
+
+{{<imgproc src="/services/data/visualize-widget-time-series-configure.png" resize="1000x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Configuring the time series widget.">}}
+
+#### Table
+
+The **table** widget displays a grid of historic tabular data values. You can display multiple fields simultaneously in a single table. Each row in the table represents a separate historic reading; each column represents a field.
+
+{{<imgproc src="/services/data/visualize-widget-table.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A table widget displaying a grid of sensor readings.">}}
+
+To configure the table widget, define the following attributes:
+
+- from the **Resource name** dropdown, choose a sensor you would like to visualize
+- from the **Capture method** dropdown, choose a method of data capture (for example **Readings**)
+- from the **Path** dropdown, choose the data that this table should visualize
+
+Use a custom MQL aggregation pipeline stage (or series of stages) to transform your sensor data into a flat object where each field corresponds to a column in the table. Consider the following sensor data, which contains information about air quality in a field named `readings`:
+
+```json
+"data" {
+ "readings": {
+  "gas_resistance": 114978.66606781945,
+  "temperature": 22.96,
+  "pressure": 1016.18,
+  "humidity": 48.318
+}
+```
+
+To visualize this data in a table with columns titled "gas_resistance", "temperature", "pressure", and "humidity", use the following custom MQL stage:
+
+```mql
+{
+  "$project": {
+    "data": 1
+  }
+}
+```
+
+Alternatively, specify individual fields in your `$project` stage to customize the titles of your columns:
+
+```mql
+{
+  "$project": {
+    "Air Quality": "$data.readings.gas_resistance",
+    "Humidity": "$data.readings.humidity",
+    "Temperature": "$data.readings.temperature"
+  }
+}
+```
+
+This produces a table similar to the following:
+
+{{<imgproc src="/services/data/visualize-widget-table-configure.png" resize="800x" style="width: 600px" class="fill imgzoom shadow" declaredimensions=true alt="Configuring the table widget.">}}
+
+For more information about MQL aggregation operators, see the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/operator/aggregation/).
 
 ## Third party tools
 
