@@ -425,12 +425,14 @@ To rename a module:
 1. Enter the new module name in the modal that appears.
 1. Click **Rename** to confirm the change.
 
-Notes: 
+Notes:
 
 - The old module name is permanently reserved for backwards compatibility and cannot be reused.
 - Existing machine configurations will continue to work without any changes required.
 - When adding the module to new machines, the machine builder will use the new module name.
 - You can only rename modules that your organization owns.
+
+{{% hiddencontent %}}
 
 ## Rename a model
 
