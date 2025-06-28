@@ -6,4 +6,5 @@ layout: "empty"
 type: "docs"
 empty_node: true
 header_only: true
+canonical: "/manage/reference/viam-agent/"
 ---
