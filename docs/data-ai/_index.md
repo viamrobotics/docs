@@ -42,7 +42,7 @@ You can also monitor your machines through teleop, power your application logic,
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Train an ML model" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
+{{< how-to-expand "Train an ML model" "6" "INTERMEDIATE" "" "data-platform-ai" >}}
 {{< cards >}}
 {{% card link="/data-ai/train/create-dataset/" noimage="true" %}}
 {{% card link="/data-ai/train/capture-images/" noimage="true" %}}
