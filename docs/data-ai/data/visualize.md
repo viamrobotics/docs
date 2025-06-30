@@ -27,7 +27,11 @@ Create a dashboard visualizing numeric data from components with the **TELEOP** 
 
 {{% expand "A machine with at least one sensor, camera, or other component that captures data" %}}
 
-Make sure your machine has at least one configured sensor component.
+Make sure your machine is configured with at least one component that can capture data, for example:
+
+- [Sensor](/operate/reference/components/sensor/)
+- [Movement sensor](/operate/reference/components/movement-sensor/)
+- [Camera](/operate/reference/components/camera/)
 
 For a full list of supported sensors, see [sensor components](/operate/reference/components/sensor/).
 
@@ -39,13 +43,14 @@ For a full list of supported sensors, see [sensor components](/operate/reference
    Click **+ Create workspace**.
    Enter a unique name for your workspace in the top left of the page, replacing the placeholder `example-workplace` text.
 
-1. From the **Select location** dropdown, select the location that contains the machine that you would like to visualize data from.
+1. Use the **Select location** dropdown to select the location that contains the machine that you would like to visualize data from.
 
-1. From the **Select machine** dropdown, select the machine that you would like to visualize data from.
+1. Use the **Select machine** dropdown to select the machine that you would like to visualize data from.
 
 ### Add a widget
 
-1. Click **Add widget** and select a widget type to create a new widget of that type on your workspace:
+1. Click **Add widget** and select a widget type to create a new widget on your workspace.
+   See [widget types](#widget-types) for more information about each type.
 
 1. To configure the widget, click the pencil icon in the top right of your widget:
 
@@ -89,7 +94,11 @@ The stat widget displays the most recent reading recorded by any sensor that pro
 
 {{<imgproc src="/services/data/visualize-widget-stat.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A stat widget displaying a live sensor reading.">}}
 
-To configure the stat widget, choose a sensor from the **Sensor name** dropdown. Then, select the reading you would like to display from the **Path** dropdown. Finally, assign a title, a unit suffix, and a refresh rate.
+To configure the stat widget:
+
+1. Choose a sensor from the **Sensor name** dropdown.
+1. Select the reading you would like to display from the **Path** dropdown.
+1. Assign a title, a unit suffix, and a refresh rate.
 
 #### Time series
 
@@ -99,9 +108,9 @@ The time series widget creates a graph of tabular data. You can add multiple lin
 
 To configure the time series widget, define the following attributes for each line in the time series:
 
-- from the **Resource name** dropdown, choose a sensor you would like to visualize
-- from the **Capture method** dropdown, choose a method of data capture (for example **Readings**)
-- from the **Path** dropdown, choose the field of data that this line should visualize
+1. From the **Resource name** dropdown, choose a sensor you would like to visualize.
+1. From the **Capture method** dropdown, choose a method of data capture (for example **Readings**).
+1. From the **Path** dropdown, choose the field of data that this line should visualize.
 
 Use the other fields to customize the title, unit, duration, and other aspects of your visualization.
 
@@ -123,9 +132,9 @@ The table widget displays a grid of historic tabular data values. You can displa
 
 To configure the table widget, define the following attributes:
 
-- from the **Resource name** dropdown, choose a sensor you would like to visualize
-- from the **Capture method** dropdown, choose a method of data capture (for example **Readings**)
-- from the **Path** dropdown, choose the data that this table should visualize
+1. From the **Resource name** dropdown, choose a sensor you would like to visualize.
+1. From the **Capture method** dropdown, choose a method of data capture (for example **Readings**).
+1. From the **Path** dropdown, choose the data that this table should visualize.
 
 Use a custom MQL aggregation pipeline stage (or series of stages) to transform your sensor data into a flat object where each field corresponds to a column in the table. Consider the following sensor data, which contains information about air quality in a field named `readings`:
 
