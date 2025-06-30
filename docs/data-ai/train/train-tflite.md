@@ -44,7 +44,7 @@ To train a model, your dataset must contain the following:
 
 - At least 15 images
 - At least 80% of the images have labels
-- For each training label, at least 10 bounding boxes
+- For each training label, at least 10 examples
 
 When you label your dataset, include:
 
@@ -159,7 +159,7 @@ Using this approach, each subsequent model version becomes more accurate than th
 
 To capture images of edge cases and re-train your model using those images, complete the following steps:
 
-1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/train/capture-images/).
+1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/train/capture-annotate-images/).
 
 1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
 
