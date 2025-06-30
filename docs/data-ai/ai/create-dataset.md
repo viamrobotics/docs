@@ -103,6 +103,37 @@ Once you have enough images, consider disabling data capture to [avoid incurring
 
 {{< /alert >}}
 {{% /tab %}}
+{{% tab name="Programmatic upload" %}}
+
+You can also upload images directly to datasets programmatically using the data manager service's `UploadImageToDataset` method. This is useful for automated workflows where you want to capture and upload images to datasets without manual intervention.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.services.data_manager import DataManagerClient
+
+# Get the data manager service
+data_manager = DataManagerClient.from_robot(robot, "builtin")
+
+# Read image file
+with open("path/to/image.jpg", "rb") as f:
+    image_data = f.read()
+
+# Upload to datasets with tags
+await data_manager.upload_image_to_dataset(
+    image=image_data,
+    dataset_ids=["dataset_1", "dataset_2"],
+    tags=["training", "outdoor", "robot_vision"]
+)
+```
+
+This method allows you to:
+- Upload images directly from your robot's code
+- Target multiple datasets simultaneously
+- Apply tags for organization and filtering
+- Integrate with automated data collection workflows
+
+For more details, see the [data manager service API documentation](/dev/reference/apis/services/data/#uploadimagetodataset).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 Once you've captured enough images for training, you must annotate them to train a model.
