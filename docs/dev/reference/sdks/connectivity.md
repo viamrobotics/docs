@@ -110,7 +110,7 @@ When a machine loses its connection to LAN or WAN, all client sessions will time
 
 ### Client session timeout and end
 
-When your client cannot connect to your machine's `viam-server` instance, `viam-server` will end any current client [_sessions_](/dev/reference/apis/sessions/) on this machine and all client operations will [timeout automatically](/dev/reference/apis/sessions/) and halt: any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the machine until the connection is restored.
+When your client cannot connect to your machine's `viam-server` instance, `viam-server` will end any current client [_sessions_](/dev/reference/apis/sessions/) on this machine and all client operations will [time out automatically](/dev/reference/apis/sessions/) and halt: any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the machine until the connection is restored.
 
 To disable the default behavior and manage resource timeout and reconfiguration over a networking session yourself, you can [disable the default behavior](/dev/reference/apis/sessions/#disable-default-session-management) of session management, then use [Viam's SDKs](/dev/reference/sdks/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
 
@@ -125,4 +125,4 @@ There are a couple of exceptions to the general timeout behavior:
 
 ### Configure a connection timeout
 
-When connecting to a machine using the [robot API](/dev/reference/apis/robot/) from a supported [Viam SDK](/dev/reference/apis/), you can configure an [optional timeout](/dev/reference/apis/robot/#configure-a-timeout) to account for intermittent or delayed network connectivity.
+When connecting to a machine using the [robot API](/dev/reference/apis/robot/) from a supported [Viam SDK](/dev/reference/apis/), you can configure an [optional timeout](/dev/reference/apis/sessions/#change-the-session-timeout) to account for intermittent or delayed network connectivity.
