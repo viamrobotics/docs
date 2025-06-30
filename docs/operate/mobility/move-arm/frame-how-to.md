@@ -18,12 +18,15 @@ For reference information, see [the frame system](/operate/reference/services/fr
 
 The world reference frame is the fixed coordinate system that serves as the reference point for the other frames in your robotic system.
 
-You define the world frame, in whatever way is convenient for your application.
+You choose the world frame, in whatever way is convenient for your application.
 It generally makes sense to define the world frame's location as a point in your space that does not move and is easy to measure from.
 
 For example, if you are using a robot arm mounted to a table, it can be convenient to define the arm's base frame as equal to the world frame, or you can define the world frame as one corner of the table that the arm is mounted to.
 
-### Add the default frame
+You do not explicitly configure the world frame.
+You define it implicitly by configuring the frame of a component relative to world.
+
+### Add a frame to your arm
 
 1. Mount the arm in a fixed location.
 1. On your arm's configuration card, click **+ Add frame**.
