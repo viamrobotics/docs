@@ -55,7 +55,6 @@ For a full list of supported sensors, see [sensor components](/operate/reference
    Select a location and machine for your workspace to populate the widget configuration dropdowns using sensor names and data from that machine.
    {{% /alert %}}
 
-
 1. To arrange widgets on your workspace, click and drag the grid icon in the top left of your widget:
 
    {{<imgproc src="/services/data/visualize-widget-move.png" alt="Click the grid icon to move a widget." style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
