@@ -931,6 +931,7 @@ If you are writing your module using Python, you must have Python version 3.11 o
 The `viam module generate` command can generate code for the following resource types:
 
 Components:
+
 - Arm component
 - Audio input component  
 - Base component
@@ -949,6 +950,7 @@ Components:
 - Servo component
 
 Services:
+
 - Generic service
 - MLModel service
 - Motion service
