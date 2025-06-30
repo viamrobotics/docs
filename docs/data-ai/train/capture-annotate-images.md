@@ -282,7 +282,6 @@ Once you have enough images, consider disabling data capture to [avoid incurring
 
 {{< /alert >}}
 
-
 You can either manually add annotations through the Viam web UI, or add annotations with an existing ML model.
 
 ## Annotate images
@@ -735,4 +734,3 @@ for (final detection in detections) {
 {{< /tabs >}}
 
 Once you've annotated your dataset, you can [train](/data-ai/train/train-tflite/) an ML model to make inferences.
-
