@@ -146,7 +146,7 @@ Use a custom MQL aggregation pipeline stage (or series of stages) to transform y
 }
 ```
 
-To visualize this data in a table with columns titled "gas_resistance", "temperature", "pressure", and "humidity", use the following custom MQL stage:
+To visualize this data in a table with columns titled "gas_resistance," "temperature," "pressure," and "humidity," use the following custom MQL stage:
 
 ```mql
 {
