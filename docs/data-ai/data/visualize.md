@@ -124,7 +124,8 @@ Select a window method from the following options:
 
 #### Table
 
-The table widget displays a grid of historic tabular data values. You can display multiple fields simultaneously in a single table. Each row in the table represents a separate historic reading; each column represents a field.
+The table widget displays a grid of historic tabular data values. You can display multiple fields simultaneously in a single table.
+Each row in the table represents a separate historic reading; each column represents a field.
 
 {{<imgproc src="/services/data/visualize-widget-table.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A table widget displaying a grid of sensor readings.">}}
 
