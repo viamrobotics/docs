@@ -4,7 +4,7 @@ linkTitle: "Module dependencies"
 weight: 25
 layout: "docs"
 type: "docs"
-description: "Handle dependencies in your custom modular resource."
+description: "Write your validate and reconfigure functions to handle dependencies in your custom modular resource."
 aliases:
   - /operate/get-started/other-hardware/dependencies/
 ---
