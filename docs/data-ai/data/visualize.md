@@ -33,8 +33,6 @@ Make sure your machine is configured with at least one component that can captur
 - [Movement sensor](/operate/reference/components/movement-sensor/)
 - [Camera](/operate/reference/components/camera/)
 
-For a full list of supported sensors, see [sensor components](/operate/reference/components/sensor/).
-
 {{% /expand%}}
 
 ### Create a workspace
