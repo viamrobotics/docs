@@ -38,7 +38,7 @@ For more information, see [Client Sessions and Machine Network Connectivity](/de
 If you want to manage operations differently, you can manage your machine's client sessions yourself.
 The Session Management API provides functionality for:
 
-- clients to notify to the machine that the client is actively authenticated and connected
+- clients to notify the machine that the client is actively authenticated and connected
 - the machine to stop moving components when a session ends
 
 ### The `SessionsClient`
