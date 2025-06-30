@@ -160,7 +160,7 @@ To use custom billing, add a billing configuration the fragment you use for your
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-month-attributes). Default: `{}` (all machines cost `0`). |
-| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-year-attributes). Default: `{}` (all machines cost `0`). |
+| `cost_per_year` | object | Optional | See [cost per year attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-year-attributes). Default: `{}` (all machines cost `0`). |
 | `tier_name` | string | **Required** | The name of the billing tier. |
 | `description` |  | Optional | Description for the billing tier. Default: `""`. |
 | `tier_credit` | number | Optional | Credit that should be applied to final total for the org. Default: `0`. |
