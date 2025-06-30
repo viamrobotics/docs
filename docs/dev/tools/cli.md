@@ -279,6 +279,371 @@ viam organizations --help
 
 ## Commands
 
+<<<<<<< HEAD
+### `data`
+
+The `data` command allows you to manage machine data.
+With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+
+```sh {class="command-line" data-prompt="$"}
+viam data export binary filter --destination=<output path> [...named args]
+viam data export binary ids --destination=<output path> [...named args]
+viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
+viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
+viam data database configure --org-id=<org-id> --password=<db-user-password>
+viam data database hostname --org-id=<org-id>
+viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
+viam data tag ids remove --tags=<tags> --binary-data-ids=<binary_ids>
+viam data tag filter add --tags=<tags> [...named args from filter]
+viam data tag filter remove --tags=<tags> [...named args from filter]
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# export binary data from the specified org with mime types image/jpeg and image/png to /home/robot/data
+viam data export binary filter --mime-types=image/jpeg,image/png --org-ids=12345678-eb33-123a-88ec-12a345b123a1 --destination=/home/robot/data
+
+# export tabular data to /home/robot/data for specified part id with resource name my_movement_sensor, subtype movement_sensor and method Readings
+viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resource-name=my_movement_sensor --resource-subtype=rdk:component:movement_sensor --method=Readings --destination=/home/robot/data
+
+# delete binary data of mime type image/jpeg in an organization between a specified timestamp
+viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
+
+# configure a database user for the Viam organization's MongoDB Atlas Data
+# Federation instance, in order to query tabular data
+viam data database configure --org-id=abc --password=my_password123
+
+# get the hostname to access a MongoDB Atlas Data Federation instance
+viam data database hostname --org-id=abc
+
+# add tags to all data that matches the given ids in the current organization
+viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
+
+# remove tags from all data that matches the given ids in the current organization
+viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
+
+# add tags to all data that matches a given filter
+viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+
+# remove tags from all data that matches a given filter
+viam data tag filter remove --tags=new_tag_1 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+```
+
+Viam currently only supports deleting approximately 500 files at a time.
+To delete more data iterate over the data with a shell script:
+
+```sh {class="command-line" data-prompt="$"}
+# deleting one hour of image data
+for i in {00..59}; do
+  viam data delete binary --org-ids=<org-id> --mime-types=image/jpeg,image/png --start=2024-05-13T11:00:00.000Z --end=2024-05-13T11:${i}:00.000Z
+done
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
+| `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | `ids`, `filter` |
+| `tag` | Add or remove tags from data matching the IDs or filter. | `ids`, `filter` |
+| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
+| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
+| `delete binary` | Delete binary data from the Viam Cloud. | - |
+| `delete tabular` | Delete tabular data from the Viam Cloud. | - |
+| `--help` | Return help | - |
+
+##### Positional arguments: `tag`
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument](#using-the-filter-argument).|
+| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more binary data IDs as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
+| `--help` | Return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--destination` | Output directory for downloaded data. | `export tabular`, `export binary` | **Required** |
+| `--component-name` | Filter by specified component name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--component-type` | Filter by specified component type. | `export binary`, `delete`, `tag filter` | Optional |
+| `--component-model` | Filter by specified component model. | `export`, `delete`| Optional |
+| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
+| `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
+| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `tag ids` | **Required** |
+| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
+| `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export binary`, `delete`, `dataset export` | Optional |
+| `--part-id` | Filter by specified part ID. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional, **Required** for `export tabular` |
+| `--part-name` | Filter by specified part name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--machine-id` | Filter by specified machine ID. | `export binary`, `delete`, `tag filter` | Optional |
+| `--machine-name` | Filter by specified machine name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export binary`, `delete`, `tag ids`, `tag filter` | Optional |
+| `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
+| `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
+| `--password` | Password for the database user being configured. | `database configure` | **Required** |
+| `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
+| `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
+
+### `datapipelines`
+
+The `datapipelines` command provides access to data pipelines for processing machine data with {{< glossary_tooltip term_id="mql" text="MQL" >}} queries.
+Data pipelines help you optimize query performance for frequently accessed complex data transformations.
+
+```sh {class="command-line" data-prompt="$"}
+viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
+viam datapipelines update --id=<pipeline-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
+viam datapipelines list --org-id=<org-id>
+viam datapipelines describe --id=<pipeline-id>
+viam datapipelines delete --id=<pipeline-id>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# create a new data pipeline with standard data source type (default)
+viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --mql='[{"$match": {"component_name": "sensor1"}}]'
+
+# create a data pipeline with hot storage data source type for faster access
+viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --mql='[{"$match": {"component_name": "camera1"}}]' --data-source-type=hotstorage
+
+# disable a pipeline
+viam datapipelines disable --id=abc123
+
+# enable a pipeline
+viam datapipelines enable --id=abc123
+
+# update an existing data pipeline with a new schedule and data source type
+viam datapipelines update --id=abc123 --name="Updated Pipeline" --schedule="0 */6 * * *" --mql='[{"$match": {"location_id": "loc123"}}]' --data-source-type=standard
+
+# list all data pipelines in an organization
+viam datapipelines list --org-id=123
+
+# get detailed information about a specific data pipeline
+viam datapipelines describe --id=abc123
+
+# delete a data pipeline
+viam datapipelines delete --id=abc123
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `create` | Create a new data pipeline. | - |
+| `describe` | Get detailed information about a specific data pipeline. | - |
+| `delete` | Delete a data pipeline. | - |
+| `disable` | Stop executing a data pipeline without deleting it. | - |
+| `enable` | Resume executing a disabled data pipeline. | - |
+| `list` | List all data pipelines in an organization. | - |
+| `update` | Update an existing data pipeline. | - |
+| `--help` | Return help. | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
+| `--name` | Name of the data pipeline. | `create`, `update` | **Required** |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** |
+| `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
+| `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
+| `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
+
+||||||| merged common ancestors
+=======
+### `data`
+
+The `data` command allows you to manage machine data.
+With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+
+```sh {class="command-line" data-prompt="$"}
+viam data export binary --destination=<output path> [...named args]
+viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
+viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
+viam data database configure --org-id=<org-id> --password=<db-user-password>
+viam data database hostname --org-id=<org-id>
+viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
+viam data tag ids remove --tags=<tags> --binary-data-ids=<binary_ids>
+viam data tag filter add --tags=<tags> [...named args from filter]
+viam data tag filter remove --tags=<tags> [...named args from filter]
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# export binary data from the specified org with mime types image/jpeg and image/png to /home/robot/data
+viam data export binary --mime-types=image/jpeg,image/png --org-ids=12345678-eb33-123a-88ec-12a345b123a1 --destination=/home/robot/data
+
+# export tabular data to /home/robot/data for specified part id with resource name my_movement_sensor, subtype movement_sensor and method Readings
+viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resource-name=my_movement_sensor --resource-subtype=rdk:component:movement_sensor --method=Readings --destination=/home/robot/data
+
+# delete binary data of mime type image/jpeg in an organization between a specified timestamp
+viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
+
+# configure a database user for the Viam organization's MongoDB Atlas Data
+# Federation instance, in order to query tabular data
+viam data database configure --org-id=abc --password=my_password123
+
+# get the hostname to access a MongoDB Atlas Data Federation instance
+viam data database hostname --org-id=abc
+
+# add tags to all data that matches the given ids in the current organization
+viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
+
+# remove tags from all data that matches the given ids in the current organization
+viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
+
+# add tags to all data that matches a given filter
+viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+
+# remove tags from all data that matches a given filter
+viam data tag filter remove --tags=new_tag_1 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+```
+
+Viam currently only supports deleting approximately 500 files at a time.
+To delete more data iterate over the data with a shell script:
+
+```sh {class="command-line" data-prompt="$"}
+# deleting one hour of image data
+for i in {00..59}; do
+  viam data delete binary --org-ids=<org-id> --mime-types=image/jpeg,image/png --start=2024-05-13T11:00:00.000Z --end=2024-05-13T11:${i}:00.000Z
+done
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
+| `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
+| `tag` | Add or remove tags from data matching the IDs or filter. | `ids`, `filter` |
+| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
+| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
+| `delete binary` | Delete binary data from the Viam Cloud. | - |
+| `delete tabular` | Delete tabular data from the Viam Cloud. | - |
+| `--help` | Return help | - |
+
+##### Positional arguments: `tag`
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument](#using-the-filter-argument).|
+| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more binary data IDs as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
+| `--help` | Return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--destination` | Output directory for downloaded data. | `export tabular`, `export binary` | **Required** |
+| `--component-name` | Filter by specified component name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--component-type` | Filter by specified component type. | `export binary`, `delete`, `tag filter` | Optional |
+| `--component-model` | Filter by specified component model. | `export`, `delete`| Optional |
+| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
+| `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
+| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `tag ids` | **Required** |
+| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
+| `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export binary`, `delete`, `dataset export` | Optional |
+| `--part-id` | Filter by specified part ID. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional, **Required** for `export tabular` |
+| `--part-name` | Filter by specified part name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--machine-id` | Filter by specified machine ID. | `export binary`, `delete`, `tag filter` | Optional |
+| `--machine-name` | Filter by specified machine name. | `export binary`, `delete`, `tag filter`| Optional |
+| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export binary`, `delete`, `tag ids`, `tag filter` | Optional |
+| `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
+| `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
+| `--password` | Password for the database user being configured. | `database configure` | **Required** |
+| `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
+| `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
+
+### `datapipelines`
+
+The `datapipelines` command provides access to data pipelines for processing machine data with {{< glossary_tooltip term_id="mql" text="MQL" >}} queries.
+Data pipelines help you optimize query performance for frequently accessed complex data transformations.
+
+```sh {class="command-line" data-prompt="$"}
+viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
+viam datapipelines update --id=<pipeline-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
+viam datapipelines list --org-id=<org-id>
+viam datapipelines describe --id=<pipeline-id>
+viam datapipelines delete --id=<pipeline-id>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# create a new data pipeline with standard data source type (default)
+viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --mql='[{"$match": {"component_name": "sensor1"}}]'
+
+# create a data pipeline with hot storage data source type for faster access
+viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --mql='[{"$match": {"component_name": "camera1"}}]' --data-source-type=hotstorage
+
+# disable a pipeline
+viam datapipelines disable --id=abc123
+
+# enable a pipeline
+viam datapipelines enable --id=abc123
+
+# update an existing data pipeline with a new schedule and data source type
+viam datapipelines update --id=abc123 --name="Updated Pipeline" --schedule="0 */6 * * *" --mql='[{"$match": {"location_id": "loc123"}}]' --data-source-type=standard
+
+# list all data pipelines in an organization
+viam datapipelines list --org-id=123
+
+# get detailed information about a specific data pipeline
+viam datapipelines describe --id=abc123
+
+# delete a data pipeline
+viam datapipelines delete --id=abc123
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `create` | Create a new data pipeline. | - |
+| `describe` | Get detailed information about a specific data pipeline. | - |
+| `delete` | Delete a data pipeline. | - |
+| `disable` | Stop executing a data pipeline without deleting it. | - |
+| `enable` | Resume executing a disabled data pipeline. | - |
+| `list` | List all data pipelines in an organization. | - |
+| `update` | Update an existing data pipeline. | - |
+| `--help` | Return help. | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
+| `--name` | Name of the data pipeline. | `create`, `update` | **Required** |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** |
+| `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
+| `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
+| `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
+
+>>>>>>> origin/main
 ### `dataset`
 
 The `dataset` command allows you to manage machine data in datasets.
@@ -431,118 +796,6 @@ Removing the `viam data export` string, you can use the same filter parameters (
 You cannot use the `--binary-data-ids` argument when using `filter`.
 
 See [Create a dataset](/data-ai/ai/create-dataset/) for more information.
-
-### `data`
-
-The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
-
-```sh {class="command-line" data-prompt="$"}
-viam data export binary --destination=<output path> [...named args]
-viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
-viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
-viam data database configure --org-id=<org-id> --password=<db-user-password>
-viam data database hostname --org-id=<org-id>
-viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
-viam data tag ids remove --tags=<tags> --binary-data-ids=<binary_ids>
-viam data tag filter add --tags=<tags> [...named args from filter]
-viam data tag filter remove --tags=<tags> [...named args from filter]
-```
-
-Examples:
-
-```sh {class="command-line" data-prompt="$"}
-# export binary data from the specified org with mime types image/jpeg and image/png to /home/robot/data
-viam data export binary --mime-types=image/jpeg,image/png --org-ids=12345678-eb33-123a-88ec-12a345b123a1 --destination=/home/robot/data
-
-# export tabular data to /home/robot/data for specified part id with resource name my_movement_sensor, subtype movement_sensor and method Readings
-viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resource-name=my_movement_sensor --resource-subtype=rdk:component:movement_sensor --method=Readings --destination=/home/robot/data
-
-# delete binary data of mime type image/jpeg in an organization between a specified timestamp
-viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
-
-# configure a database user for the Viam organization's MongoDB Atlas Data
-# Federation instance, in order to query tabular data
-viam data database configure --org-id=abc --password=my_password123
-
-# get the hostname to access a MongoDB Atlas Data Federation instance
-viam data database hostname --org-id=abc
-
-# add tags to all data that matches the given ids in the current organization
-viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
-
-# remove tags from all data that matches the given ids in the current organization
-viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=123,456
-
-# add tags to all data that matches a given filter
-viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
-
-# remove tags from all data that matches a given filter
-viam data tag filter remove --tags=new_tag_1 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
-```
-
-Viam currently only supports deleting approximately 500 files at a time.
-To delete more data iterate over the data with a shell script:
-
-```sh {class="command-line" data-prompt="$"}
-# deleting one hour of image data
-for i in {00..59}; do
-  viam data delete binary --org-ids=<org-id> --mime-types=image/jpeg,image/png --start=2024-05-13T11:00:00.000Z --end=2024-05-13T11:${i}:00.000Z
-done
-```
-
-#### Command options
-
-<!-- prettier-ignore -->
-| Command option | Description | Positional arguments |
-| -------------- | ----------- | -------------------- |
-| `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
-| `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
-| `tag` | Add or remove tags from data matching the IDs or filter. | `ids`, `filter` |
-| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
-| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
-| `delete binary` | Delete binary data from the Viam Cloud. | - |
-| `delete tabular` | Delete tabular data from the Viam Cloud. | - |
-| `--help` | Return help | - |
-
-##### Positional arguments: `tag`
-
-<!-- prettier-ignore -->
-| Argument | Description |
-| -------- | ----------- |
-| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument](#using-the-filter-argument).|
-| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more binary data IDs as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
-| `--help` | Return help |
-
-##### Named arguments
-
-<!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required? |
-| -------- | ----------- | ------------------- | --------- |
-| `--destination` | Output directory for downloaded data. | `export tabular`, `export binary` | **Required** |
-| `--component-name` | Filter by specified component name. | `export binary`, `delete`, `tag filter`| Optional |
-| `--component-type` | Filter by specified component type. | `export binary`, `delete`, `tag filter` | Optional |
-| `--component-model` | Filter by specified component model. | `export`, `delete`| Optional |
-| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
-| `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
-| `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
-| `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
-| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `tag ids` | **Required** |
-| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
-| `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
-| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
-| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export binary`, `delete`, `dataset export` | Optional |
-| `--part-id` | Filter by specified part ID. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional, **Required** for `export tabular` |
-| `--part-name` | Filter by specified part name. | `export binary`, `delete`, `tag filter`| Optional |
-| `--machine-id` | Filter by specified machine ID. | `export binary`, `delete`, `tag filter` | Optional |
-| `--machine-name` | Filter by specified machine name. | `export binary`, `delete`, `tag filter`| Optional |
-| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export binary`, `delete`, `tag ids`, `tag filter` | Optional |
-| `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
-| `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
-| `--password` | Password for the database user being configured. | `database configure` | **Required** |
-| `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
-| `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
 
 ### `infer`
 
