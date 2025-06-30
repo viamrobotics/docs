@@ -28,7 +28,7 @@ When you connect to a machine using an SDK, the SDK connects to the machine's `v
 The period of time during which a client is connected to a machine is called a _session_.
 
 _Session management_ is a safety precaution that allows you to manage the clients that are authenticated and communicating with a machine's `viam-server` instance.
-The default session management configuration checks for presence to ensures that a machine only moves when a client is actively connected and stops any components that remain running when a client disconnects.
+The default session management configuration checks for presence to ensure that a machine only moves when a client is actively connected and stops any components that remain running when a client disconnects.
 This is especially important for machines that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/dev/reference/apis/components/base/#setpower) command as the last input from a client before the connection to the machine is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the machine to continue driving forever and potentially colliding with objects and people.
