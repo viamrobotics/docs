@@ -285,7 +285,8 @@ The `data` command allows you to manage machine data.
 With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam data export binary --destination=<output path> [...named args]
+viam data export binary filter --destination=<output path> [...named args]
+viam data export binary ids --destination=<output path> [...named args]
 viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
 viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
@@ -300,7 +301,7 @@ Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # export binary data from the specified org with mime types image/jpeg and image/png to /home/robot/data
-viam data export binary --mime-types=image/jpeg,image/png --org-ids=12345678-eb33-123a-88ec-12a345b123a1 --destination=/home/robot/data
+viam data export binary filter --mime-types=image/jpeg,image/png --org-ids=12345678-eb33-123a-88ec-12a345b123a1 --destination=/home/robot/data
 
 # export tabular data to /home/robot/data for specified part id with resource name my_movement_sensor, subtype movement_sensor and method Readings
 viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resource-name=my_movement_sensor --resource-subtype=rdk:component:movement_sensor --method=Readings --destination=/home/robot/data
@@ -344,7 +345,7 @@ done
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
-| `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
+| `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | `ids`, `filter` |
 | `tag` | Add or remove tags from data matching the IDs or filter. | `ids`, `filter` |
 | `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data-ai/data/query/#configure-data-query). | - |
