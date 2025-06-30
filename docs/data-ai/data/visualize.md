@@ -58,10 +58,6 @@ Make sure your machine is configured with at least one component that can captur
    Select a location and machine for your workspace to populate the widget configuration dropdowns using sensor names and data from that machine.
    {{% /alert %}}
 
-For example, the following image shows a time series graph measuring noise over time for a sensor component:
-
-{{<imgproc src="/services/data/visualize-widget-time-series.png" alt="Time series widget measuring noise over time." style="width:700px" resize="1200x" class="imgzoom fill shadow" >}}
-
 You can mix and match multiple widgets to visualize many kinds of data collected by your machine:
 
 {{<imgproc src="/services/data/visualize-workspace.png" resize="1000x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Workspace containing.">}}
