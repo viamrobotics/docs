@@ -135,7 +135,8 @@ To configure the table widget, define the following attributes:
 1. From the **Capture method** dropdown, choose a method of data capture (for example **Readings**).
 1. From the **Path** dropdown, choose the data that this table should visualize.
 
-Use a custom MQL aggregation pipeline stage (or series of stages) to transform your sensor data into a flat object where each field corresponds to a column in the table. Consider the following sensor data, which contains information about air quality in a field named `readings`:
+Use a custom MQL aggregation pipeline stage (or series of stages) to transform your sensor data into a flat object where each field corresponds to a column in the table.
+Consider the following sensor data, which contains information about air quality in a field named `readings`:
 
 ```json
 "data" {
