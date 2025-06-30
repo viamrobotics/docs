@@ -25,7 +25,7 @@ Create a dashboard visualizing numeric data from components with the **TELEOP** 
 
 ### Prerequisites
 
-{{% expand "A machine with at least one sensor" %}}
+{{% expand "A machine with at least one sensor, camera, or other component that captures data" %}}
 
 Make sure your machine has at least one configured sensor component.
 
