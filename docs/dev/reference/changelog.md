@@ -42,6 +42,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="UploadImageToDataset method in data manager service" date="2025-06-26" %}}
+
+Added new `UploadImageToDataset` method to the data manager service API that allows programmatic upload of images directly to datasets. This method accepts image data as bytes along with dataset IDs and tags, enabling automated dataset population for machine learning workflows.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Move machines between locations" date="2025-06-10" %}}
 
 Organization owners and location owners can now move machines between locations within their organization using the web UI.
