@@ -933,7 +933,7 @@ The `viam module generate` command can generate code for the following resource 
 Components:
 
 - Arm component
-- Audio input component  
+- Audio input component
 - Base component
 - Board component
 - Camera component
