@@ -44,6 +44,16 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Machine job scheduling" date="2025-08-19" %}}
+
+Added support for scheduling automated jobs on machines that run at specified intervals.
+Jobs can target any configured component or service and execute methods according to unix-cron expressions or Golang duration strings.
+This enables automation of routine tasks such as data collection, sensor readings, maintenance operations, and system checks.
+
+See [Schedule automated jobs](/manage/software/scheduled-jobs/) for configuration details and examples.
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Deprecated: AddTagsToBinaryDataByFilter and RemoveTagsFromBinaryDataByFilter" date="2025-08-07" %}}
 
 The methods `AddTagsToBinaryDataByFilter` and `RemoveTagsFromBinaryDataByFilter` are deprecated.
