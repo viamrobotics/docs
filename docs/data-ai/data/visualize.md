@@ -25,13 +25,11 @@ Create a dashboard visualizing numeric data from components with the **TELEOP** 
 
 ### Prerequisites
 
-{{% expand "A configured machine with sensor components" %}}
+{{% expand "A machine with at least one sensor" %}}
 
-Make sure your machine has at least one of the following:
+Make sure your machine has at least one configured sensor component.
 
-- A movement sensor or sensor
-
-See [configure a machine](/operate/get-started/supported-hardware/) for more information.
+For a full list of supported sensors, see [sensor components](/operate/reference/components/sensor/).
 
 {{% /expand%}}
 
@@ -41,21 +39,13 @@ See [configure a machine](/operate/get-started/supported-hardware/) for more inf
    Click **+ Create workspace**.
    Enter a unique name for your workspace in the top left of the page, replacing the placeholder `example-workplace` text.
 
-   {{<imgproc src="/services/data/visualize-choose-workspace.png" resize="800x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="On the TELEOP page, you can choose an existing workspace or create a new workspace.">}}
-
 1. From the **Select location** dropdown, select the location that contains the machine that you would like to visualize data from.
 
-   {{<imgproc src="/services/data/visualize-choose-location.png" resize="800x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Choosing a location for your workspace.">}}
-
 1. From the **Select machine** dropdown, select the machine that you would like to visualize data from.
-
-   {{<imgproc src="/services/data/visualize-choose-machine.png" resize="800x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Choosing a machine for your workspace.">}}
 
 ### Add a widget
 
 1. Click **Add widget** and select a widget type to create a new widget of that type on your workspace:
-
-   {{<imgproc src="/services/data/visualize-add-widget.png" resize="800x" style="width: 300px" class="fill imgzoom shadow" declaredimensions=true alt="Choosing a widget type from the widget menu.">}}
 
 1. To configure the widget, click the pencil icon in the top right of your widget:
 
@@ -84,29 +74,27 @@ Viam provides the following types of widgets that you can customize to visualize
 
 #### Camera stream
 
-The **camera stream** widget displays a live feed of the most recent image captured by a camera component:
+The camera stream widget displays a live feed of the most recent image captured by a camera component:
 
 {{<imgproc src="/services/data/visualize-widget-camera.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A camera widget displaying a live camera feed.">}}
 
 #### GPS
 
-The **GPS** widget displays the current GPS location of any sensor that reports a position:
+The GPS widget displays the current GPS location of any sensor that reports a position:
 
 {{<imgproc src="/services/data/visualize-widget-gps.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A GPS widget displaying a live location.">}}
 
 #### Stat
 
-The **stat** widget displays the most recent reading recorded by any sensor that produces tabular data:
+The stat widget displays the most recent reading recorded by any sensor that produces tabular data:
 
 {{<imgproc src="/services/data/visualize-widget-stat.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A stat widget displaying a live sensor reading.">}}
 
 To configure the stat widget, choose a sensor from the **Sensor name** dropdown. Then, select the reading you would like to display from the **Path** dropdown. Finally, assign a title, a unit suffix, and a refresh rate.
 
-{{<imgproc src="/services/data/visualize-widget-stat-configure.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="Configuring the stat widget.">}}
-
 #### Time series
 
-The **time series** widget creates a graph of tabular data. You can add multiple lines to the time series widget to compare multiple readings over the same time period:
+The time series widget creates a graph of tabular data. You can add multiple lines to the time series widget to compare multiple readings over the same time period:
 
 {{<imgproc src="/services/data/visualize-widget-time-series.png" resize="1000x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A time series widget displaying a live graph of sensor data over time.">}}
 
@@ -128,11 +116,9 @@ Select a window method from the following options:
 - **Maximum**: shows the maximum value within the window
 - **Custom**: shows the result of a custom MQL aggregation pipeline that you define
 
-{{<imgproc src="/services/data/visualize-widget-time-series-configure.png" resize="1000x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Configuring the time series widget.">}}
-
 #### Table
 
-The **table** widget displays a grid of historic tabular data values. You can display multiple fields simultaneously in a single table. Each row in the table represents a separate historic reading; each column represents a field.
+The table widget displays a grid of historic tabular data values. You can display multiple fields simultaneously in a single table. Each row in the table represents a separate historic reading; each column represents a field.
 
 {{<imgproc src="/services/data/visualize-widget-table.png" resize="800x" style="width: 500px" class="fill imgzoom shadow" declaredimensions=true alt="A table widget displaying a grid of sensor readings.">}}
 
@@ -175,10 +161,6 @@ Alternatively, specify individual fields in your `$project` stage to customize t
   }
 }
 ```
-
-This produces a table similar to the following:
-
-{{<imgproc src="/services/data/visualize-widget-table-configure.png" resize="800x" style="width: 600px" class="fill imgzoom shadow" declaredimensions=true alt="Configuring the table widget.">}}
 
 For more information about MQL aggregation operators, see the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/operator/aggregation/).
 
