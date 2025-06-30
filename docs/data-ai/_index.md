@@ -53,7 +53,7 @@ You can also monitor your machines through teleop, power your application logic,
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Infer with ML models" "8" "INTERMEDIATE" "" "data-platform-ai" >}}
+{{< how-to-expand "Infer with ML models" "4" "INTERMEDIATE" "" "data-platform-ai" >}}
 {{< cards >}}
 {{% card link="/data-ai/ai/deploy/" noimage="true" %}}
 {{% card link="/data-ai/ai/run-inference/" noimage="true" %}}
