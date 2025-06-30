@@ -42,6 +42,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Data regions for organizations" date="2025-06-30" %}}
+
+Organizations can now specify continent-level [data regions](/manage/manage/data-regions/) (North America or Europe) to control where data is geographically stored. You can only change this region in organizations that have not yet synced any data.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Threshold selection for dataset inference" date="2025-06-24" %}}
 
 You can now configure confidence thresholds when running ML model inference on datasets. The new threshold selection modal allows you to set a confidence threshold between 0.0 and 1.0 to filter inference results, helping reduce false positives and focus on high-confidence predictions.
