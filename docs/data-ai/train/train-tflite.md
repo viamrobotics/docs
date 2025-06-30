@@ -1,5 +1,5 @@
 ---
-linkTitle: "Train TFlite model"
+linkTitle: "Train TFLite model"
 title: "Train a TFlite model"
 weight: 50
 type: "docs"

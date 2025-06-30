@@ -28,7 +28,7 @@ You can create a dataset using the web UI, the CLI, or one of the SDKs:
 
 1. Enter a unique name for the dataset.
 
-1. Click **Create dataset** to create the dataset.
+1. Click **Create dataset**.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
@@ -144,7 +144,8 @@ try {
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you create a dataset, [capture](/data-ai/train/capture-images/) images, [add](/data-ai/train/update-dataset/) the images to your dataset, and [annotate](/data-ai/train/annotate-images/) the images with training metadata to train your own ML model.
+Finish creating a dataset by adding annotated images to it.
+You can capture new images or add existing images:
 
 {{< cards >}}
 {{% card link="/data-ai/train/capture-images/" noimage="true" %}}

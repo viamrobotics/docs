@@ -1,10 +1,10 @@
 ---
 linkTitle: "Add to a training dataset"
-title: "Add to a training dataset"
+title: "Add images to a training dataset"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Update a dataset used to train a machine learning model."
+description: "Update a dataset with more images to train a machine learning model."
 ---
 
 ## Prerequisites
@@ -174,7 +174,7 @@ try {
 The following script adds all images captured from a certain machine to a new dataset:
 
 {{< tabs >}}
-{{% tab name="Python SDK" %}}
+{{% tab name="Python" %}}
 
 ```python
 import asyncio
@@ -273,7 +273,7 @@ if __name__ == "__main__":
 ```
 
 {{% /tab %}}
-{{% tab name="Go SDK" %}}
+{{% tab name="Go" %}}
 
 ```go
 package main
@@ -400,7 +400,7 @@ func main() {
 ```
 
 {{% /tab %}}
-{{% tab name="Typescript" %}}
+{{% tab name="TypeScript" %}}
 
 ```typescript
 import { ViamClient, createViamClient } from "@viamrobotics/sdk";
@@ -884,7 +884,7 @@ func NewDataCollector(logger logging.Logger, componentName, datasetID, apiKeyID,
 ```
 
 {{% /tab %}}
-{{% tab name="Typescript" %}}
+{{% tab name="TypeScript" %}}
 
 ```typescript
 import { createRobotClient, RobotClient } from "@viamrobotics/sdk";

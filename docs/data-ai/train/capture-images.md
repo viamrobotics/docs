@@ -82,7 +82,7 @@ file_id = await data_client.binary_data_capture_upload(
     part_id=PART_ID,
     component_type="camera",
     component_name=CAMERA_NAME,
-    method_name="GetImages",
+    method_name="GetImage",
     data_request_times=[datetime.utcnow(), datetime.utcnow()],
     file_extension=".jpg",
     binary_data=image_frame
@@ -151,7 +151,7 @@ fileID, err := dataClient.BinaryDataCaptureUpload(ctx, app.BinaryDataCaptureUplo
     PartID:            PART_ID,
     ComponentType:     "camera",
     ComponentName:     CAMERA_NAME,
-    MethodName:        "GetImages",
+    MethodName:        "GetImage",
     DataRequestTimes:  []time.Time{now, now},
     FileExtension:     ".jpg",
     BinaryData:        img,
@@ -201,7 +201,7 @@ const fileId = await dataClient.binaryDataCaptureUpload({
   partId: PART_ID,
   componentType: "camera",
   componentName: CAMERA_NAME,
-  methodName: "GetImages",
+  methodName: "GetImage",
   dataRequestTimes: [now, now],
   fileExtension: ".jpg",
   binaryData: imageFrame,
@@ -251,7 +251,7 @@ final fileId = await dataClient.binaryDataCaptureUpload(
     partId: PART_ID,
     componentType: 'camera',
     componentName: CAMERA_NAME,
-    methodName: 'GetImages',
+    methodName: 'GetImage',
     dataRequestTimes: [now, now],
     fileExtension: '.jpg',
     binaryData: imageFrame,
@@ -272,12 +272,10 @@ Once you've captured [enough images for training](/data-ai/train/train-tflite/),
 To capture a large number of images for training an ML model, use the data management service to [capture and sync image data](/data-ai/capture-data/capture-sync/) from your camera.
 
 When you sync with data management, Viam stores the images saved by capture and sync on the [**DATA** page](https://app.viam.com/data/), but does not add the images to a dataset.
-To use your captured images for training, [annotate the images](/data-ai/train/annotate-images/), then [add the images to a dataset](/data-ai/train/update-dataset/).
+To use your captured images for training, [add the images to a dataset](/data-ai/train/update-dataset/) and [annotate them](/data-ai/train/annotate-images/), so you can use them to train a model.
 
 {{< alert title="Tip" color="tip" >}}
 
 Once you have enough images, consider disabling data capture to [avoid incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of training data.
 
 {{< /alert >}}
-
-Once you've captured [enough images for training](/data-ai/train/train-tflite/), you must [annotate](/data-ai/train/annotate-images/) the images before you can use them to train a model.
