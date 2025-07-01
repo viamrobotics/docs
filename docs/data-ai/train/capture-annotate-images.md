@@ -300,7 +300,7 @@ To create a training dataset for classification, annotate tags to describe your 
 
 {{< alert title="Tip" color="tip" >}}
 
-Unless you already have an ML model that can generate tags for your dataset, use the Web UI to annotate.
+If you have an ML model, use code to speed up annoating your data, otherwise use the Web UI.
 
 {{< /alert >}}
 
