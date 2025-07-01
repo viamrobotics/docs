@@ -522,8 +522,7 @@ To create a training set for object detection, annotate bounding boxes to teach 
 
 {{< alert title="Tip" color="tip" >}}
 
-To start a new dataset with no preexisting data or model, use the Web UI to annotate tags.
-If you have an ML model that can generate tags for your dataset, consider using the model in an SDK to speed up annotation.
+If you have an ML model, use code to speed up annotating your data, otherwise use the Web UI.
 
 {{< /alert >}}
 
