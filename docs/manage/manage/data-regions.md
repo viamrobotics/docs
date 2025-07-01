@@ -81,21 +81,21 @@ You can check your organization's data region using [`GetOrganization`](/dev/ref
 ```go
 ctx := context.Background()
 
-dataClient, err := app.NewDataClient(ctx, app.Config{
+appClient, err := app.NewAppClient(ctx, app.Config{
     Auth: app.Credentials{
         Type:    "api-key",
         Payload: "your-api-key",
     },
-}, logging.NewLogger("dataclient"))
+}, logging.NewLogger("client"))
 if err != nil {
     log.Fatal(err)
 }
-defer dataClient.Close()
+defer appClient.Close()
 
 organizationId := "your-org-id"
 
 // Check organization region
-org, err := dataClient.GetOrganization(ctx, organizationId)
+org, err := appClient.GetOrganization(ctx, organizationId)
 if err != nil {
     log.Fatal(err)
 }
@@ -108,7 +108,7 @@ updateOptions := &app.UpdateOrganizationOptions{
 }
 
 // Update organization region
-updatedOrg, err := dataClient.UpdateOrganization(ctx, organizationId, updateOptions)
+updatedOrg, err := appClient.UpdateOrganization(ctx, organizationId, updateOptions)
 if err != nil {
     log.Fatal(err)
 }
