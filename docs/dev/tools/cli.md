@@ -927,6 +927,40 @@ viam module download [command options]
 If you are writing your module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
 {{% /alert %}}
 
+{{% hiddencontent %}}
+
+The `viam module generate` command can generate code for the following resource types:
+
+Components:
+
+- Arm component
+- Audio input component
+- Base component
+- Board component
+- Camera component
+- Encoder component
+- Gantry component
+- Generic component
+- Gripper component
+- Input component
+- Motor component
+- Movement sensor component
+- Pose tracker component
+- Power sensor component
+- Sensor component
+- Servo component
+
+Services:
+
+- Generic service
+- MLModel service
+- Motion service
+- Navigation service
+- SLAM service
+- Vision service
+
+{{% /hiddencontent %}}
+
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
