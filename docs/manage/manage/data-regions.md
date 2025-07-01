@@ -7,9 +7,6 @@ type: "docs"
 tags: ["data region", "region", "data continent", "compliance", "performance"]
 ---
 
-You can specify the geographical location where Viam stores your data.
-
-## Introduction
 
 When you specify a data region, Viam stores all of your data, including tabular data, binary data, and even the [hot data store](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store), in that region.
 By default, new organizations store data in North America.
