@@ -47,7 +47,7 @@ Once you sync data in an organization, you cannot change the data region.
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-You can check your organization's data region using [get_organization](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [UpdateOrganization](/dev/reference/apis/fleet/#updateorganization):
+You can check your organization's data region using [`get_organization`](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [`update_organization`](/dev/reference/apis/fleet/#updateorganization):
 
 ```python
 viam_client = ViamClient.create_from_dial_options(
@@ -75,7 +75,7 @@ viam_client.close()
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-You can check your organization's data region using [GetOrganization](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [UpdateOrganization](/dev/reference/apis/fleet/#updateorganization):
+You can check your organization's data region using [`GetOrganization`](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [`UpdateOrganization`](/dev/reference/apis/fleet/#updateorganization):
 
 
 ```go
@@ -119,7 +119,7 @@ fmt.Printf("Organization region updated to: %s\n", updatedOrg.DefaultRegion)
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-You can check your organization's data region using [getOrganization](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [UpdateOrganization](/dev/reference/apis/fleet/#updateorganization):
+You can check your organization's data region using [`getOrganization`](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [`UpdateOrganization`](/dev/reference/apis/fleet/#updateorganization):
 
 ```typescript
 const client = await createViamClient({
