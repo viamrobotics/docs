@@ -735,7 +735,6 @@ for (final detection in detections) {
 
 Once you've annotated your dataset, you can [train](/data-ai/train/train-tflite/) an ML model to make inferences.
 
-
 ## Combine these steps: capture, annotate, and add images to a dataset in a single script
 
 The following example demonstrates how you can capture an image, use an ML model to generate annotations, and then add the image to a dataset.
