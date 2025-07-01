@@ -64,7 +64,7 @@
 | [`ChangeRole`](/dev/reference/apis/fleet/#changerole) | Changes an existing role to a new role. |
 | [`ListAuthorizations`](/dev/reference/apis/fleet/#listauthorizations) | List all authorizations (owners and operators) of a specific resource (or resources) within the organization you are currently authenticated to. |
 | [`CheckPermissions`](/dev/reference/apis/fleet/#checkpermissions) | Check if the organization, location, or robot your `ViamClient` is authenticated to is permitted to perform some action or set of actions on the resource you pass to the method. |
-| [`GetRegistryItem`](/dev/reference/apis/fleet/#getregistryitem) | Get registry item by ID. |
+| [`GetRegistryItem`](/dev/reference/apis/fleet/#getregistryitem) | Get metadata about a registry item (a module, training script, or ML model) by registry item ID. |
 | [`CreateRegistryItem`](/dev/reference/apis/fleet/#createregistryitem) | Create a registry item. |
 | [`UpdateRegistryItem`](/dev/reference/apis/fleet/#updateregistryitem) | Update a registry item. |
 | [`ListRegistryItems`](/dev/reference/apis/fleet/#listregistryitems) | List the registry items in an organization. |
