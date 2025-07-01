@@ -3,6 +3,10 @@ EnforceHTTPS: true
 IgnoreEmptyHref: true
 IgnoreInternalEmptyHash: true
 IgnoreDirectoryMissingTrailingSlash: false
+# rate limiting settings
+MaxConcurrency: 1
+RequestDelay: 1000ms
+Timeout: 30s
 IgnoreURLs:
   - "example.com"
   - "^/misc/js/script.js$"
@@ -44,6 +48,7 @@ IgnoreURLs:
   - "docs.github.com"
   - "bugs.launchpad.net"
   - "grpc.io"
+  - "odroid.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
