@@ -32,7 +32,7 @@ Viam supports the following data regions:
 
 ## Set organization data region
 
-{{< alert title="Cannot change region for organizations with synced data" color="warning" >}}
+{{< alert title="Caution: You cannot change region if you have already synced data" color="caution" >}}
 
 You must set the region before syncing data.
 Once you sync data in an organization, you cannot change the data region.
