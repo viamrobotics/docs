@@ -51,6 +51,7 @@ You choose how to group your machines.
    A new location called `First Location` is automatically generated for you.
 
    Use the **...** menu to edit the location name to what it represents for your use case.
+
 1. Click **Save**.
 
 1. To create additional locationsm, click the **Add location** button on the **LOCATIONS** page.

@@ -20,6 +20,7 @@ Locations shared across multiple organizations store data in the primary organiz
 Viam supports the following data regions:
 
 - **North America** (`us-central`):
+
   - GCS: `us-central1`
   - Azure: `eastus2`
   - MongoDB Atlas: `US_EAST_2`
@@ -117,22 +118,22 @@ fmt.Printf("Organization region updated to: %s\n", updatedOrg.Region)
 ```typescript
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    authEntity: 'your-api-key-id',
-    payload: 'your-api-key',
+    type: "api-key",
+    authEntity: "your-api-key-id",
+    payload: "your-api-key",
   },
 });
 
 // Check organization region
 const org = await client.appClient.getOrganization({
-  organizationId: 'your-org-id',
+  organizationId: "your-org-id",
 });
 console.log(`Current region: ${org.defaultRegion}`);
 
 // Update organization region
 const updatedOrg = await client.appClient.updateOrganization({
-  organizationId: 'your-org-id',
-  region: 'eu-west', // or 'us-central'
+  organizationId: "your-org-id",
+  region: "eu-west", // or 'us-central'
 });
 
 console.log(`Organization region updated to: ${updatedOrg.region}`);
