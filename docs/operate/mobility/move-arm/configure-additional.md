@@ -37,7 +37,7 @@ Configure the gripper's frame to describe its position and orientation relative 
 
    When you make a call to the motion service to move the gripper to a location, the point you specify in this step is the part of the gripper that will move to that location.
 
-   {{<imgproc src="/tutorials/constrain-motion/gripper-diagram.png" resize="x1100" declaredimensions=true alt="A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y." style="max-width:500px" class="imgzoom" >}}
+   {{<imgproc src="/operate/mobility/gripper-frame.png" resize="x1100" declaredimensions=true alt="A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y." style="width:600px" class="imgzoom" >}}
 
    The gripper in the image above has a translation of 110 millimeters in the z-direction, and it is oriented along the same z-axis as the end of the arm but is rotated 90 degrees around the z-axis, so its frame configuration is:
 
