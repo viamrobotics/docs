@@ -307,8 +307,6 @@ try {
 {{< /tabs >}}
 
 ## Add all images captured by a specific machine to a dataset
-
-
 {{< tabs >}}
 {{% tab name="Web UI" %}}
 
