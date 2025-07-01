@@ -105,11 +105,9 @@ A namespace may only contain letters, numbers, and the dash (`-`) character.
 
 ## Update a namespace for your organization
 
-If your organization already has a namespace and you need to change it, you can rename it through the organization settings page.
+You can change your organization's namespace on your organization settings page:
 
-To rename your organization's namespace:
-
-1. Navigate to your organization settings at `app.viam.com/organization/<org-id>/settings`.
+1. Navigate to your organization settings page using the dropdown in the upper right corner of the web UI.
 1. Click the **Rename** button next to your current namespace.
 1. Enter the new namespace name in the modal that appears.
 1. Click **Set namespace** to confirm the change.
