@@ -44,9 +44,9 @@ You configure your machine's frames once, and Viam keeps track of the frames as 
 This means you can send motion service commands using a consistent coordinate system, regardless of where the components are at a given time.
 
 You must configure frames before you can use the motion service.
-For example, if you want to command an arm to move to coordinates of `(300, 0, 0)` millimeters, you first need to define the origin `(0, 0, 0)` and the directions of the x, y, and z axes of the {{< glossary_tooltip term_id="world-frame" text="world" >}} coordinate system to give your coordinates meaning.
+For example, if you want to command an arm to move to coordinates of `(300, 0, 0)` millimeters, you first need to decide on the origin `(0, 0, 0)` and the directions of the x, y, and z axes of the {{< glossary_tooltip term_id="world-frame" text="world" >}} coordinate system to give your coordinates meaning.
 
-You then define the arm's `frame` to describe its position and orientation relative to the world.
+You then define the arm's `frame` to describe its position and orientation relative to the world frame.
 If you also have a gripper component, you define the gripper's `frame` to describe its position and orientation relative to the arm, so that when the arm moves, the motion service knows where the gripper is as well.
 
 ### Visualize components and frames
