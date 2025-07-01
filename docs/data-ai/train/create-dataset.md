@@ -308,7 +308,6 @@ try {
 
 ## Add all images captured by a specific machine to a dataset
 
-The following script adds all images captured from a certain machine to a new dataset:
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}
@@ -331,6 +330,8 @@ This will select both images as well as the entire range of images between those
 
 {{% /tab %}}
 {{% tab name="Python" %}}
+
+The following script adds all images captured from a certain machine to a new dataset:
 
 ```python
 import asyncio
@@ -430,6 +431,8 @@ if __name__ == "__main__":
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
+The following script adds all images captured from a certain machine to a new dataset:
 
 ```go
 package main
@@ -558,6 +561,8 @@ func main() {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
+The following script adds all images captured from a certain machine to a new dataset:
+
 ```typescript
 import { ViamClient, createViamClient } from "@viamrobotics/sdk";
 import { DataServiceClient } from "@viamrobotics/sdk/dist/gen/app/data/v1/data_pb_service";
@@ -678,6 +683,8 @@ if (require.main === module) {
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
+The following script adds all images captured from a certain machine to a new dataset:
+
 ```dart
 import 'package:viam_sdk/viam_sdk.dart';
 
@@ -773,8 +780,8 @@ Future<int> main() async {
 ## Capture, annotate, and add images to a dataset
 
 The following example demonstrates how you can capture an image, use an ML model to generate annotations, and then add the image to a dataset.
-You can use this logic to expand and improve your datasets continuously over time as your application runs.
-Re-train your ML model on the improved dataset to improve the ML model.
+You can use this logic to expand and improve your datasets continuously over time.
+Check the annotation accuracy in the **DATA** tab, then re-train your ML model on the improved dataset to improve the ML model.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
