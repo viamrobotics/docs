@@ -7,7 +7,6 @@ type: "docs"
 tags: ["data region", "region", "data continent", "compliance", "performance"]
 ---
 
-
 When you specify a data region, Viam stores all of your data, including tabular data, binary data, and even the [hot data store](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store), in that region.
 By default, new organizations store data in North America.
 Locations shared across multiple organizations store data in the primary organization region.
@@ -76,7 +75,6 @@ viam_client.close()
 {{% tab name="Go" %}}
 
 You can check your organization's data region using [`GetOrganization`](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [`UpdateOrganization`](/dev/reference/apis/fleet/#updateorganization):
-
 
 ```go
 ctx := context.Background()
