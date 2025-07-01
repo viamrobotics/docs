@@ -295,7 +295,7 @@ For example, you could use classification to answer the following questions:
 - the quality of manufacturing output `good` or `bad`?
 - what combination of toppings exists on a pizza: `pepperoni`, `sausage`, and `pepper`? or `pineapple`, `ham`, and `mushroom`?
 
-Viam supports single and multiple label classification.
+Viam supports single and multiple classification.
 To create a training dataset for classification, annotate tags to describe your images.
 
 {{< alert title="Tip" color="tip" >}}
