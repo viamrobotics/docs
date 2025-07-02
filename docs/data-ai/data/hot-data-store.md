@@ -57,7 +57,6 @@ Set the value of the `stored_hours` field to the number of hours of recent data 
 Queries typically execute on blog storage.
 To query data from hot data store instead of blob storage, specify hot storage as your data source in your query.
 
-
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -120,14 +119,14 @@ for _, doc := range resp.Data {
 Use [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) with `dataSource` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` to query your hot data store:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
@@ -135,16 +134,16 @@ const dataClient = client.dataClient;
 const query = [
   BSON.serialize({ $match: { location_id: "warehouse-1" } }),
   BSON.serialize({ $sort: { _id: -1 } }),
-  BSON.serialize({ $limit: 100 })
+  BSON.serialize({ $limit: 100 }),
 ];
 
 const response = await dataClient.tabularDataByMQL({
   organizationId: "<org-id>",
   mqlBinary: query,
-  dataSource: TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE
+  dataSource: TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE,
 });
 
-response.data.forEach(doc => {
+response.data.forEach((doc) => {
   console.log(BSON.deserialize(doc));
 });
 ```

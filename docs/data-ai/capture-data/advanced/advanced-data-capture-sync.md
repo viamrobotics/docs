@@ -32,7 +32,6 @@ Higher values may improve throughput on more powerful hardware, but raising it t
 **Wait time before syncing arbitrary files:** If you choose to sync arbitrary files (beyond those captured by the data management service), the `file_last_modified_millis` configuration attribute specifies how long a file must remain unmodified before the data manager considers it for syncing.
 The default is 10 seconds.
 
-
 ## Advanced data management service configuration
 
 To configure the data manager in JSON, see the following example configurations:

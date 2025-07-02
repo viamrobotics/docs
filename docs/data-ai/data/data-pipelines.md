@@ -115,14 +115,14 @@ resp, err := dataClient.CreateDataPipeline(context.Background(), &datapb.CreateD
 Use [`dataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline) to define a new pipeline:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
@@ -133,16 +133,16 @@ const pipeline = [
     $group: {
       _id: "$location_id",
       avg_temp: { $avg: "$data.readings.temperature" },
-      count: { $sum: 1 }
-    }
-  })
+      count: { $sum: 1 },
+    },
+  }),
 ];
 
 const response = await dataClient.createDataPipeline({
   organizationId: "<org-id>",
   name: "hourly-temp-average",
   mqlBinary: pipeline,
-  schedule: "0 * * * *" // Run hourly
+  schedule: "0 * * * *", // Run hourly
 });
 ```
 
@@ -157,11 +157,11 @@ To create a schedule for your pipeline, specify a [cron expression](https://en.w
 The schedule determines both execution frequency and input time window.
 The following table contains some common schedules, which correspond to the listed execution frequencies and input time windows:
 
-| Schedule            | Frequency        | Time Window         |
-|---------------------|------------------|---------------------|
-| `0 * * * *`         | Hourly           | Previous hour       |
-| `0 0 * * *`         | Daily            | Previous day        |
-| `*/15 * * * *`      | Every 15 minutes | Previous 15 minutes |
+| Schedule       | Frequency        | Time Window         |
+| -------------- | ---------------- | ------------------- |
+| `0 * * * *`    | Hourly           | Previous hour       |
+| `0 0 * * *`    | Daily            | Previous day        |
+| `*/15 * * * *` | Every 15 minutes | Previous 15 minutes |
 
 ### List pipelines
 
@@ -224,23 +224,23 @@ for _, pipeline := range resp.DataPipelines {
 Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a summary of all pipelines in an organization:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
 
 const response = await dataClient.listDataPipelines({
-  organizationId: "<org-id>"
+  organizationId: "<org-id>",
 });
 
-response.dataPipelines.forEach(pipeline => {
+response.dataPipelines.forEach((pipeline) => {
   console.log(`${pipeline.name} (id: ${pipeline.id})`);
   console.log(`Schedule: ${pipeline.schedule}`);
   console.log(`Enabled: ${pipeline.enabled}`);
@@ -327,14 +327,14 @@ _, err := dataClient.UpdateDataPipeline(context.Background(), &datapb.UpdateData
 Use [`dataClient.UpdateDataPipeline`](/dev/reference/apis/data-client/#updatedatapipeline) to alter an existing data pipeline:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
@@ -344,16 +344,16 @@ const pipeline = [
   BSON.serialize({
     $group: {
       _id: "$part_id",
-      total: { $sum: 1 }
-    }
-  })
+      total: { $sum: 1 },
+    },
+  }),
 ];
 
 await dataClient.updateDataPipeline({
   id: "<pipeline-id>",
   name: "updated-name",
   mqlBinary: pipeline,
-  schedule: "0 0 * * *" // Change to daily
+  schedule: "0 0 * * *", // Change to daily
 });
 ```
 
@@ -482,14 +482,14 @@ _, err := dataClient.DisableDataPipeline(context.Background(), &datapb.DisableDa
 Use [`dataClient.DisableDataPipeline`](/dev/reference/apis/data-client/#disabledatapipeline) to disable a data pipeline:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
@@ -550,14 +550,14 @@ _, err := dataClient.DeleteDataPipeline(context.Background(), &datapb.DeleteData
 Use [`dataClient.DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) to delete a data pipeline:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
@@ -631,24 +631,24 @@ for _, run := range resp.Executions {
 Use [`dataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view the statuses of past executions of a pipeline:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
 
 const response = await dataClient.listDataPipelineRuns({
   id: "<pipeline-id>",
-  pageSize: 10
+  pageSize: 10,
 });
 
-response.executions.forEach(run => {
+response.executions.forEach((run) => {
   console.log(`Run ${run.id}: ${run.status}`);
   console.log(`Data window: ${run.dataStartTime} to ${run.dataEndTime}`);
   console.log(`Started: ${run.started}, Ended: ${run.ended}`);
@@ -724,32 +724,30 @@ for _, doc := range resp.Data {
 Use [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) to query the results of your data pipeline:
 
 ```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
 
 const client = await createViamClient({
   credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
 });
 
 const dataClient = client.dataClient;
 
-const query = [
-  BSON.serialize({}),
-];
+const query = [BSON.serialize({})];
 
 const response = await dataClient.tabularDataByMQL({
   organizationId: "<org-id>",
   mqlBinary: query,
   dataSource: {
     type: TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
-    pipelineId: "<pipeline-id>"
-  }
+    pipelineId: "<pipeline-id>",
+  },
 });
 
-response.data.forEach(doc => {
+response.data.forEach((doc) => {
   console.log(BSON.deserialize(doc));
 });
 ```
