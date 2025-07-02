@@ -152,7 +152,7 @@ response.data.forEach(doc => {
 {{% /tab %}}
 {{< /tabs >}}
 
-All queries that omit `use_recent_data` or explicitly set the value to `false` continue to use blob storage.
+All queries that omit `DataSource` will continue to use blob storage.
 
 ### Query limitations
 
