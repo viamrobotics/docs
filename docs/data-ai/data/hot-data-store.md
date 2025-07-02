@@ -10,8 +10,6 @@ images: ["/services/icons/data-capture.svg"]
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "cli"]
 date: "2024-12-03"
-aliases:
-  - /data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store
 ---
 
 The hot data store enables faster queries on recent sensor data.
