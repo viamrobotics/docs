@@ -1385,14 +1385,14 @@ The `packages` command allows you to upload packages to the Viam Cloud or export
 For example, you can use this command to download ML models or modules from the registry.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz>
+viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz> --model-framework=<framework>
 viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=./the_package.tar.gz
+viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=./the_package.tar.gz --model-framework=tensorflow
 viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_model --destination=.
 ```
 
@@ -1414,6 +1414,7 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
 | `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
+| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | **Required** |
 | `--destination` | The output directory for downloaded package. | `export` | **Required** |
 
 ### `profiles`
