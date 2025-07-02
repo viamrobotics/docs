@@ -15,7 +15,25 @@ Some data use cases require advanced configuration beyond the attributes accessi
 You can use raw JSON to configure additional attributes for both data management and data capture.
 You can also configure data capture for remote parts.
 
-### Advanced data management service configurations
+## Cloud data retention
+
+Configure how long your synced data remains stored in the cloud:
+
+- **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
+  See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-capture-attributes).
+- **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
+  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-management-attributes).
+
+## Sync optimization
+
+**Configurable sync threads:** You can control how many concurrent sync operations occur by adjusting the `maximum_num_sync_threads` setting.
+Higher values may improve throughput on more powerful hardware, but raising it too high may introduce instability on resource-constrained devices.
+
+**Wait time before syncing arbitrary files:** If you choose to sync arbitrary files (beyond those captured by the data management service), the `file_last_modified_millis` configuration attribute specifies how long a file must remain unmodified before the data manager considers it for syncing.
+The default is 10 seconds.
+
+
+## Advanced data management service configuration
 
 To configure the data manager in JSON, see the following example configurations:
 
@@ -96,7 +114,7 @@ The following attributes are available for the data management service:
 
 You can edit the JSON directly by switching to **JSON** mode in the UI.
 
-### Advanced data capture configurations
+## Advanced data capture configuration
 
 {{< alert title="Caution" color="caution" >}}
 
@@ -531,55 +549,7 @@ The following attributes are available for data capture configuration:
 
 You can edit the JSON directly by switching to **JSON** mode in the UI.
 
-### Capture to the hot data store
-
-If you want faster access to your most recent sensor readings, you can configure hot data storage.
-The hot data store keeps a rolling window of hot data for faster queries.
-All historical data remains in your default storage.
-
-To configure the hot data store:
-
-1. Use the `recent_data_store` attribute on each capture method in your data manager service.
-2. Configure your queries' data source to the hot data store by passing the `use_recent_data` boolean argument to [tabularDataByMQL](/dev/reference/apis/data-client/#tabulardatabymql).
-
-{{% expand "Click to view a sample configuration" %}}
-
-The following sample configuration captures data from a sensor at 0.5 Hz.
-`viam-server` stores the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage:
-
-```json {class="line-numbers linkable-line-numbers" data-line="17-19"}
-{
-  "components": [
-    {
-      "name": "sensor-1",
-      "api": "rdk:component:sensor",
-      "model": "rdk:builtin:fake",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Readings",
-                "capture_frequency_hz": 0.5,
-                "additional_params": {},
-                "recent_data_store": {
-                  "stored_hours": 24
-                }
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-{{% /expand%}}
-
-### Capture directly to your own MongoDB cluster
+## Capture directly to your own MongoDB cluster
 
 You can configure direct capture of tabular data to a MongoDB instance alongside disk storage on your edge device.
 This can be useful for powering real-time dashboards before data is synced from the edge to the cloud.
@@ -699,20 +669,3 @@ Failing to write to MongoDB doesn't affect capturing and syncing data to cloud s
   If your use case needs to support very high capture rates, this feature may not be appropriate.
 
 {{< /alert >}}
-
-### Cloud data retention
-
-Configure how long your synced data remains stored in the cloud:
-
-- **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
-  See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-capture-attributes).
-- **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
-  See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-management-attributes).
-
-### Sync optimization
-
-**Configurable sync threads:** You can control how many concurrent sync operations occur by adjusting the `maximum_num_sync_threads` setting.
-Higher values may improve throughput on more powerful hardware, but raising it too high may introduce instability on resource-constrained devices.
-
-**Wait time before syncing arbitrary files:** If you choose to sync arbitrary files (beyond those captured by the data management service), the `file_last_modified_millis` configuration attribute specifies how long a file must remain unmodified before the data manager considers it for syncing.
-The default is 10 seconds.

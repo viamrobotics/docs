@@ -1,7 +1,7 @@
 ---
 linkTitle: "Query data"
 title: "Query data"
-weight: 20
+weight: 30
 layout: "docs"
 type: "docs"
 aliases:

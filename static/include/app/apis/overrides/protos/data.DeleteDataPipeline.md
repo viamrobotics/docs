@@ -1,0 +1,1 @@
+Delete a data pipeline.

@@ -1,0 +1,1 @@
+Get the configuration for multiple data pipelines.

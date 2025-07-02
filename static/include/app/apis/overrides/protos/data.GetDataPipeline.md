@@ -1,0 +1,1 @@
+Get the configuration of a data pipeline.
