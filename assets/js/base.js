@@ -1,3 +1,5 @@
+$('[data-toggle="tooltip"]').tooltip()
+
 function handleAnchorClick(event, anchor) {
    // write the full anchor URL to the clipboard
    navigator.clipboard.writeText(location.href.split('#')[0] + '#' + anchor ); 
