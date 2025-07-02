@@ -111,11 +111,8 @@ You can change your organization's namespace on your organization settings page:
 1. Click the **Rename** button next to your current namespace.
 1. Enter the new namespace name in the modal that appears.
 1. Click **Set namespace** to confirm the change.
+1. For each module your organization owns, update the module code and <file>meta.json</file> to reflect the new namespace.
 
-Notes:
+When you rename a namespace, Viam reserves the old namespace for backwards compatibility and you cannot reuse it.
 
-- The old namespace is permanently reserved for backwards compatibility and cannot be reused.
-- Existing machine configurations will continue to work without any changes required.
-- You need to change model names for public modules after a namespace change.
-- Organizations are limited to 5 namespaces total to prevent abuse.
-- When adding modules to new machines, the machine builder will use the new namespace.
+Machine configurations that reference the old namespace will continue to work.

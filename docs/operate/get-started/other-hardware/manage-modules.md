@@ -425,7 +425,7 @@ To rename a module:
 1. Enter the new module name in the modal that appears.
 1. Click **Rename** to confirm the change.
 
-When you rename a module, the old module name is reserved for backwards compatibility cannot be reused.
+When you rename a module, Viam reserves the old module name for backwards compatibility and you cannot reuse it.
 
 Existing machine configurations containing the old module name will continue to work.
 
