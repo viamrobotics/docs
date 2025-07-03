@@ -42,12 +42,6 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
-{{% changelog color="note" title="Tabular data size limit documentation" date="2025-07-03" %}}
-
-Added documentation clarifying that Viam enforces a maximum size of 4MB for any single reading for tabular data. This limit applies to all tabular data capture and sync operations.
-
-{{% /changelog %}}
-
 {{% changelog color="added" title="Data regions for organizations" date="2025-06-30" %}}
 
 Organizations can now specify continent-level [data regions](/manage/manage/data-regions/) (North America or Europe) to control where data is geographically stored. You can only change this region in organizations that have not yet synced any data.
