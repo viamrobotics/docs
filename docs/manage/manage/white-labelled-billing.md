@@ -102,6 +102,12 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 
 To use custom billing, add a billing configuration the fragment you use for your machine configurations.
 
+You can configure monthly billing, annual billing, or both depending on your pricing model:
+
+- **Monthly billing**: Charges customers every month in arrears (after usage)
+- **Annual billing**: Charges customers every 12 months, with optional upfront payment
+- **Combined billing**: Offer both monthly and annual options to give customers flexibility
+
 1. Navigate to the **FLEET** page.
 1. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
 1. Select the fragment you use for your machines.
@@ -110,7 +116,7 @@ To use custom billing, add a billing configuration the fragment you use for your
 1. Save the fragment.
 
 {{< tabs >}}
-{{% tab name="Example" %}}
+{{% tab name="Monthly Billing Example" %}}
 
 ```json { class="line-numbers linkable-line-numbers" }
 {
@@ -120,7 +126,45 @@ To use custom billing, add a billing configuration the fragment you use for your
     "cost_per_month": {
       "per_machine": 10
     },
-    "tier_name": "not-free"
+    "tier_name": "monthly-tier",
+    "in_arrears": true
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Annual Billing Example" %}}
+
+```json { class="line-numbers linkable-line-numbers" }
+{
+  "components": { ... },
+  "services" : { ... },
+  "billing": {
+    "cost_per_year": {
+      "per_machine": 100
+    },
+    "tier_name": "annual-tier",
+    "in_arrears": false
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Combined Billing Example" %}}
+
+```json { class="line-numbers linkable-line-numbers" }
+{
+  "components": { ... },
+  "services" : { ... },
+  "billing": {
+    "cost_per_month": {
+      "per_machine": 10
+    },
+    "cost_per_year": {
+      "per_machine": 100
+    },
+    "tier_name": "flexible-tier",
+    "in_arrears": true
   }
 }
 ```
@@ -144,9 +188,13 @@ To use custom billing, add a billing configuration the fragment you use for your
       "logs_data_upload_bytes": 0.0,
       "logs_data_egress_bytes": 0.0
     },
+    "cost_per_year": {
+      "per_machine": 0
+    },
     "tier_name": "example-tier",
     "description": "",
-    "tier_credit": 0.0
+    "tier_credit": 0.0,
+    "in_arrears": true
   }
 }
 ```
@@ -162,8 +210,9 @@ To use custom billing, add a billing configuration the fragment you use for your
 | `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-month-attributes). Default: `{}` (all machines cost `0`). |
 | `cost_per_year` | object | Optional | See [cost per year attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-year-attributes). Default: `{}` (all machines cost `0`). |
 | `tier_name` | string | **Required** | The name of the billing tier. |
-| `description` |  | Optional | Description for the billing tier. Default: `""`. |
+| `description` | string | Optional | Description for the billing tier. Default: `""`. |
 | `tier_credit` | number | Optional | Credit that should be applied to final total for the org. Default: `0`. |
+| `in_arrears` | boolean | Optional | Whether billing is charged in arrears (after usage) or upfront. Set to `true` for monthly billing in arrears, `false` for upfront annual billing. Default: `true`. |
 
 {{% /expand%}}
 
@@ -204,3 +253,11 @@ Payments for white-labeled billing go directly to Viam. To arrange reimbursement
 ### Can I customize the billing page further?
 
 If you need further customization, please [contact us](mailto:support@viam.com).
+
+### How do I implement annual billing?
+
+For detailed information about annual billing configuration, billing cycles, and implementation considerations, see the [Annual Billing guide](/manage/manage/annual-billing/).
+
+### Can I offer both monthly and annual billing options?
+
+Yes, you can configure billing fragments with both `cost_per_month` and `cost_per_year` to give customers flexibility in choosing their preferred billing cycle. See the [Combined Billing Example](#set-custom-pricing) above.

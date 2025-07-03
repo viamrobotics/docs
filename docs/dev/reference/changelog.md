@@ -42,6 +42,19 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-03" %}}
+
+Organizations can now configure annual billing alongside monthly billing options. This includes:
+
+- **Annual pricing**: Configure `cost_per_year` in billing fragments for 12-month billing cycles
+- **Upfront billing**: Set `in_arrears: false` to charge customers upfront instead of in arrears
+- **Flexible billing models**: Offer monthly, annual, or combined billing options to customers
+- **Enhanced billing workflows**: Support for annual invoices and billing cycle management
+
+This feature improves allows you to configure annual subscription options. See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Data regions for organizations" date="2025-06-30" %}}
 
 Organizations can now specify continent-level [data regions](/manage/manage/data-regions/) (North America or Europe) to control where data is geographically stored. You can only change this region in organizations that have not yet synced any data.
