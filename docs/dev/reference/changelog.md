@@ -44,14 +44,8 @@ date: "2024-09-18"
 
 {{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-03" %}}
 
-Organizations can now configure annual billing alongside monthly billing options. This includes:
-
-- **Annual pricing**: Configure `cost_per_year` in billing fragments for 12-month billing cycles
-- **Upfront billing**: Set `in_arrears: false` to charge customers upfront instead of in arrears
-- **Flexible billing models**: Offer monthly, annual, or combined billing options to customers
-- **Enhanced billing workflows**: Support for annual invoices and billing cycle management
-
-This feature improves allows you to configure annual subscription options. See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+You can now configure annual billing alongside monthly billing options for your organizations.
+See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
 
 {{% /changelog %}}
 

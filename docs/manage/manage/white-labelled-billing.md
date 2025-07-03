@@ -100,13 +100,7 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 
 ## Set custom pricing
 
-To use custom billing, add a billing configuration the fragment you use for your machine configurations.
-
-You can configure monthly billing, annual billing, or both depending on your pricing model:
-
-- **Monthly billing**: Charges customers every month in arrears (after usage)
-- **Annual billing**: Charges customers every 12 months, with optional upfront payment
-- **Combined billing**: Offer both monthly and annual options to give customers flexibility
+To use custom billing, add a billing configuration to a fragment.
 
 1. Navigate to the **FLEET** page.
 1. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
@@ -114,62 +108,9 @@ You can configure monthly billing, annual billing, or both depending on your pri
 1. Click **+** and add **Billing**
 1. Adjust attributes as needed.
 1. Save the fragment.
+1. Add the fragment to the machines that you want to bill for.
 
 {{< tabs >}}
-{{% tab name="Monthly Billing Example" %}}
-
-```json { class="line-numbers linkable-line-numbers" }
-{
-  "components": { ... },
-  "services" : { ... },
-  "billing": {
-    "cost_per_month": {
-      "per_machine": 10
-    },
-    "tier_name": "monthly-tier",
-    "in_arrears": true
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="Annual Billing Example" %}}
-
-```json { class="line-numbers linkable-line-numbers" }
-{
-  "components": { ... },
-  "services" : { ... },
-  "billing": {
-    "cost_per_year": {
-      "per_machine": 100
-    },
-    "tier_name": "annual-tier",
-    "in_arrears": false
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="Combined Billing Example" %}}
-
-```json { class="line-numbers linkable-line-numbers" }
-{
-  "components": { ... },
-  "services" : { ... },
-  "billing": {
-    "cost_per_month": {
-      "per_machine": 10
-    },
-    "cost_per_year": {
-      "per_machine": 100
-    },
-    "tier_name": "flexible-tier",
-    "in_arrears": true
-  }
-}
-```
-
-{{% /tab %}}
 {{% tab name="Full Template" %}}
 
 ```json
@@ -194,6 +135,60 @@ You can configure monthly billing, annual billing, or both depending on your pri
     "tier_name": "example-tier",
     "description": "",
     "tier_credit": 0.0,
+    "in_arrears": true
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Monthly Billing Example" %}}
+
+This configuration charges customers every month in arrears, which means after usage:
+
+```json { class="line-numbers linkable-line-numbers" }
+{
+  "billing": {
+    "cost_per_month": {
+      "per_machine": 10
+    },
+    "tier_name": "monthly-tier",
+    "in_arrears": true
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Annual Billing Example" %}}
+
+This configuration charges customers every 12 months, with upfront payment:
+
+```json { class="line-numbers linkable-line-numbers" }
+{
+  "billing": {
+    "cost_per_year": {
+      "per_machine": 100
+    },
+    "tier_name": "annual-tier",
+    "in_arrears": false
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Combined Billing Example" %}}
+
+This configuration charges customers both a monthly and an annual fee in arrears, which means after usage:
+
+```json { class="line-numbers linkable-line-numbers" }
+{
+  "billing": {
+    "cost_per_month": {
+      "per_machine": 10
+    },
+    "cost_per_year": {
+      "per_machine": 100
+    },
+    "tier_name": "flexible-tier",
     "in_arrears": true
   }
 }
@@ -254,10 +249,21 @@ Payments for white-labeled billing go directly to Viam. To arrange reimbursement
 
 If you need further customization, please [contact us](mailto:support@viam.com).
 
-### How do I implement annual billing?
+### How does renewal work?
 
-For detailed information about annual billing configuration, billing cycles, and implementation considerations, see the [Annual Billing guide](/manage/manage/annual-billing/).
+Renewal is automatic for both monthly and annual billing.
 
-### Can I offer both monthly and annual billing options?
+### When are invoices generated?
 
-Yes, you can configure billing fragments with both `cost_per_month` and `cost_per_year` to give customers flexibility in choosing their preferred billing cycle. See the [Combined Billing Example](#set-custom-pricing) above.
+- **Monthly billing (`in_arrears: true`)**: Invoiced are generated and customers are charged at the end of each month for usage during that month.
+  The 1-month period starts from the initial subscription date.
+- **Annual billing (`in_arrears: false`)**: Invoiced are generated and customers are charged upfront at the beginning of each 12-month period.
+  The 12-month period starts from the initial subscription date.
+
+### Can customers switch from monthly to annual?
+
+Yes. We recommend that you wait until the end of the current billing cycle to remove the old billing fragment and assign the new billing fragment.
+
+### Can customers switch from annual to monthly?
+
+This is not currently possible.
