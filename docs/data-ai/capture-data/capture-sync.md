@@ -51,10 +51,6 @@ The data management service writes data from your configured Viam resources to l
 - The data management service syncs data to the Viam cloud at a configured sync interval using encrypted gRPC calls and deletes it from the disk once synced.
 - You can capture and sync data independently; one can run without the other.
 
-{{< alert title="Tabular data size limit" color="note" >}}
-Viam enforces a maximum size of 4MB for any single reading for tabular data. If your sensor or component generates readings larger than 4MB, the data capture will fail for those readings.
-{{< /alert >}}
-
 For more information, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/).
 
 ## Configure data capture and sync for individual resources
