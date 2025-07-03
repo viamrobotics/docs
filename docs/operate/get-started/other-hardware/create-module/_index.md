@@ -373,7 +373,6 @@ except ModuleNotFoundError:
 
 if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
-
 ```
 
 A previous version of the CLI module generator created `__init__.py` files, but now uses a different module structure.
