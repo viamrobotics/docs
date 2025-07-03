@@ -65,6 +65,9 @@ If not follow the steps for the standalone version.
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
+By default, logs are not stored on the machine in an accessible file.
+You therefore, have to stop the running `viam-server` instance, and restart it with the `-logfile` option.
+
 1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
    ```sh {class="command-line" data-prompt="$" data-output="2"}
@@ -88,6 +91,9 @@ If not follow the steps for the standalone version.
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
+
+Logs are not stored on the machine in an accessible file.
+You therefore, have to stop the running `viam-server` instance, and restart it with the `-debug` option which will sent the logs to STDOUT.
 
 1. Kill the running `viam-server` instance.
 2. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
