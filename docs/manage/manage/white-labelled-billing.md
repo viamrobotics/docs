@@ -111,7 +111,7 @@ To use custom billing, add a billing configuration to a fragment.
 1. Add the fragment to the machines that you want to bill for.
 
 {{< tabs >}}
-{{% tab name="Full Template" %}}
+{{% tab name="Full Template (monthly)" %}}
 
 ```json
 {
@@ -129,6 +129,20 @@ To use custom billing, add a billing configuration to a fragment.
       "logs_data_upload_bytes": 0.0,
       "logs_data_egress_bytes": 0.0
     },
+    "tier_name": "example-tier",
+    "description": "",
+    "tier_credit": 0.0,
+    "in_arrears": true
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Full Template (yearly)" %}}
+
+```json
+{
+  "billing": {
     "cost_per_year": {
       "per_machine": 0
     },
@@ -141,7 +155,7 @@ To use custom billing, add a billing configuration to a fragment.
 ```
 
 {{% /tab %}}
-{{% tab name="Monthly Billing Example" %}}
+{{% tab name="Example (monthly)" %}}
 
 This configuration charges customers every month in arrears, which means after usage:
 
@@ -149,7 +163,8 @@ This configuration charges customers every month in arrears, which means after u
 {
   "billing": {
     "cost_per_month": {
-      "per_machine": 10
+      "per_machine": 10,
+      "binary_data_upload_bytes": 0.01
     },
     "tier_name": "monthly-tier",
     "in_arrears": true
@@ -157,8 +172,12 @@ This configuration charges customers every month in arrears, which means after u
 }
 ```
 
+By setting `"in_arrears": false` you can change the configuration to charge customers upfront.
+
+If you want to charge customer
+
 {{% /tab %}}
-{{% tab name="Annual Billing Example" %}}
+{{% tab name="Example (yearly)" %}}
 
 This configuration charges customers every 12 months, with upfront payment:
 
@@ -175,26 +194,6 @@ This configuration charges customers every 12 months, with upfront payment:
 ```
 
 {{% /tab %}}
-{{% tab name="Combined Billing Example" %}}
-
-This configuration charges customers both a monthly and an annual fee in arrears, which means after usage:
-
-```json { class="line-numbers linkable-line-numbers" }
-{
-  "billing": {
-    "cost_per_month": {
-      "per_machine": 10
-    },
-    "cost_per_year": {
-      "per_machine": 100
-    },
-    "tier_name": "flexible-tier",
-    "in_arrears": true
-  }
-}
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 {{% expand "Click to view billing attributes" %}}
@@ -202,12 +201,12 @@ This configuration charges customers both a monthly and an annual fee in arrears
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-month-attributes). Default: `{}` (all machines cost `0`). |
-| `cost_per_year` | object | Optional | See [cost per year attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-year-attributes). Default: `{}` (all machines cost `0`). |
+| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-month-attributes). If specified, you cannot also specify `cost_per_year`. Default: `{}` (all machines cost `0`). |
+| `cost_per_year` | object | Optional | See [cost per year attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-year-attributes). If specified, you cannot also specify `cost_per_month`. Default: `{}` (all machines cost `0`). |
 | `tier_name` | string | **Required** | The name of the billing tier. |
 | `description` | string | Optional | Description for the billing tier. Default: `""`. |
 | `tier_credit` | number | Optional | Credit that should be applied to final total for the org. Default: `0`. |
-| `in_arrears` | boolean | Optional | Whether billing is charged in arrears (after usage) or upfront. Set to `true` for monthly billing in arrears, `false` for upfront annual billing. Default: `true`. |
+| `in_arrears` | boolean | Optional | Whether billing is charged in arrears (after usage) or upfront. For monthly billing, set to `true` for billing after usage and `false` for upfront billing. If set to `false` you can only set the `per_machine` attribute in `cost_per_month`. For annual billing, `in_arrears` must be set to `false`. Default: `false`. |
 
 {{% /expand%}}
 
@@ -255,10 +254,15 @@ Renewal is automatic for both monthly and annual billing.
 
 ### When are invoices generated?
 
-- **Monthly billing (`in_arrears: true`)**: Invoiced are generated and customers are charged at the end of each month for usage during that month.
-  The 1-month period starts from the initial subscription date.
-- **Annual billing (`in_arrears: false`)**: Invoiced are generated and customers are charged upfront at the beginning of each 12-month period.
+- **Monthly billing (`in_arrears: true`)**: Invoiced are generated and customers are charged at the end of each month for the per machine cost and usage during that month.
+  The first 1-month period starts from the subscription date.
+  Afterwards each new month starts on the next day after the previous usage month's end.
+- **Monthly billing (`in_arrears: false`)**: Invoiced are generated and customers are charged at the beginning of each new month of usage for the per machine cost.
+  The first 1-month period starts from the subscription date.
+  Afterwards each new month starts on the next day after the previous usage month's end.
+- **Annual billing (`in_arrears: false`)**: Invoiced are generated and customers are charged upfront at the beginning of each 12-month period for the per machine cost.
   The 12-month period starts from the initial subscription date.
+  Each new 12-month period starts on the next day after the pervious 12-month period's end.
 
 ### Can customers switch from monthly to annual?
 
