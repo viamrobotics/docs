@@ -262,7 +262,7 @@ Renewal is automatic for both monthly and annual billing.
   Afterwards each new month starts on the next day after the previous usage month's end.
 - **Annual billing (`in_arrears: false`)**: Invoiced are generated and customers are charged upfront at the beginning of each 12-month period for the per machine cost.
   The 12-month period starts from the initial subscription date.
-  Each new 12-month period starts on the next day after the pervious 12-month period's end.
+  Each new 12-month period starts on the next day after the previous 12-month period's end.
 
 ### Can customers switch from monthly to annual?
 
