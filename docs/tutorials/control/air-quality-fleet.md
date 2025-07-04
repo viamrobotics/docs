@@ -24,7 +24,7 @@ cost: 200
 ---
 
 In this tutorial you will learn how to set up a fleet of devices for yourself or third parties to collect air quality data.
-You will then create a web app that shows the most recent reading for any device a user has access to.
+You will then create a web application that shows the most recent reading for any device a user has access to.
 
 {{< alert title="Learning Goals" color="info" >}}
 
@@ -59,20 +59,20 @@ In this section we'll set up one air sensing machine as our development device.
 {{< table >}}
 {{% tablestep number=1 %}}
 
-Navigate to the [Viam app](https://app.viam.com) in a web browser.
+Navigate to [Viam](https://app.viam.com) in a web browser.
 Create an account and log in.
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
 
-Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization for your air quality machine company.
+Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new {{< glossary_tooltip term_id="organization" text="organization" >}} for your air quality machine company.
 Name the organization and click **Create**.
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
 
 Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
-A new location called `First Location` is automatically generated for you.
+A new {{< glossary_tooltip term_id="location" text="location" >}} called `First Location` is automatically generated for you.
 Use the **...** menu next to edit the location name to `Development`, then click **Save**.
 
 {{% /tablestep %}}
@@ -90,8 +90,8 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 {{% /tablestep %}}
 {{% tablestep number=5 %}}
 
-Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the button in the top right corner of the **LOCATIONS** tab in the app.
-Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to the Viam app.
+Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the button in the top right corner of the **LOCATIONS** tab.
+Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to Viam.
 
 When your machine shows as connected, continue to the next step.
 
@@ -205,7 +205,7 @@ Let's create a dashboard for its measurements next.
 
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
 For this project, you'll use it to build a page that displays air quality sensor data for a given location.
-You'll host the website on Viam Apps.
+You'll host the website as a Viam Application.
 
 The full code is available for reference on [GitHub](https://github.com/viam-labs/air-quality-fleet/blob/main/main.ts).
 
@@ -276,12 +276,12 @@ npm install
 {{% /tablestep %}}
 {{< /table >}}
 
-### Access machines from your app
+### Access machines from your application
 
-Viam apps provide access to a machine by placing its API key in your local storage.
+Viam applications provide access to a machine by placing its API key in your local storage.
 You can access the data from your browser's local storage with the following code.
 
-Currently, Viam apps only provide access to single machines but in future you will be able to access entire locations or organizations.
+Currently, Viam applications only provide access to single machines but in future you will be able to access entire locations or organizations.
 
 {{< table >}}
 {{% tablestep number=1 %}}
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
 
-For developing your app on localhost, **add the same information to your browser's local storage**.
+For developing your application on localhost, **add the same information to your browser's local storage**.
 
 Navigate to [Camera Viewer](https://air-quality_naomi.viamapplications.com/) and log in, then select your development machine.
 
@@ -404,13 +404,13 @@ console.log("Set 2 cookies on localhost");
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
 
-Run the following command to serve the app you are building:
+Run the following command to serve the application you are building:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 npm run start
 ```
 
-Open the app in your browser at `http://127.0.0.1:8000/`.
+Open the application in your browser at `http://127.0.0.1:8000/`.
 
 Then, open developer tools, go to the console and paste the copied JavaScript code to set your cookies.
 
@@ -424,7 +424,8 @@ Now that you have the connection code, you are ready to add code that establishe
 {{< table >}}
 {{% tablestep number=1 %}}
 
-You'll first create a client to obtain the organization and location ID. Then you'll get a `dataClient` instance which accesses all the data in your location, and then query this data to get only the data tagged with the `air-quality` tag you applied with your data service configuration.
+You'll first create a client to obtain the organization and location ID.
+Then you'll get a `dataClient` instance which accesses all the data in your location, and then query this data to get only the data tagged with the `air-quality` tag you applied with your data service configuration.
 The following code also queries the data for a list of the machines that have collected air quality data so that later, depending on the API key used with the code, your dashboard can show the data from any number of machines.
 
 Paste the following code into the main function of your <file>main.ts</file> script, directly after the `locationID` line, in place of `// <Insert data client and query code here in later steps>`:
@@ -753,9 +754,9 @@ You can find all the code in the [GitHub repo for this tutorial](https://github.
 Great work.
 You've learned how to configure a machine and you can view its data in a custom TypeScript dashboard.
 
-### Deploy the app to Viam apps
+### Deploy the application as a Viam application
 
-Let's deploy this dashboard so you don't have to run it locally.
+Let's deploy this dashboard as a Viam-hosted application so you don't have to run it locally.
 This will also allow others to use the dashboard.
 
 {{< table >}}
@@ -779,7 +780,7 @@ This will also allow others to use the dashboard.
 }
 ```
 
-In the [Viam app](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
+In [Viam](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
 Find the **Public namespace** and copy that string.
 Replace `<your-namespace>` with your public namespace.
 
@@ -808,7 +809,7 @@ For subsequent updates run these commands again with an updated version number.
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
 
-**Try your app** by navigating to:
+**Try your application** by navigating to:
 
 ```txt
 https://air-quality_your-public-namespace.viamapplications.com
@@ -875,9 +876,9 @@ In other words, you want to provision devices.
 
 Before an air sensing machine leaves your factory, you'd complete the following steps:
 
-1. You'd flash the single-board computer with an operating system
-2. You'd install `viam-agent`
-3. You'd provide a machine configuration template, a fragment.
+1. You'd flash the single-board computer with an operating system.
+2. You'd install `viam-agent`.
+3. You'd provide a machine configuration template: a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
 
 Once a customer receives your machine, they will:
 
