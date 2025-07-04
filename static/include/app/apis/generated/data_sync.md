@@ -149,6 +149,10 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Upload tabular data collected on your machine through a specific {{< glossary_tooltip term_id="component" text="component" >}} to Viam.
 Uploaded tabular data can be found under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
+{{< alert title="Size limit" color="note" >}}
+Viam enforces a maximum size of 4MB for any single reading for tabular data.
+{{< /alert >}}
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
