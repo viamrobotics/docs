@@ -13,9 +13,9 @@ The TypeScript SDK includes:
 - Implementation of the standard component and service APIs to control your hardware and software
 - Authentication tools so users can log in securely
 
-{{< alert title="Tip: Host your app on Viam" color="tip" >}}
-You can host most apps by [deploying them as Viam apps](/operate/control/viam-app/).
-If your app requires server-side rendering or other back-end functionality, self-host your app instead.
+{{< alert title="Tip: Host your application on Viam" color="tip" >}}
+You can host most apps by [deploying them as Viam applications](/operate/control/viam-applications/).
+If your application requires server-side rendering or other back-end functionality, self-host your application instead.
 {{< /alert >}}
 
 ## Install the TypeScript SDK

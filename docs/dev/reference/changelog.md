@@ -44,8 +44,8 @@ date: "2024-09-18"
 
 {{% changelog color="changed" title="Deprecated explicit dependencies" date="2025-05-30" %}}
 
-You can now create and use Viam apps to build custom applications that interact with your Viam-powered machines through the Viam SDKs.
-For more information, see [Viam apps](/operate/control/viam-app/).
+You can now create and use Viam applications to build custom applications that interact with your Viam-powered machines through the Viam SDKs.
+For more information, see [Viam applications](/operate/control/viam-applications/).
 
 {{% /changelog %}}
 

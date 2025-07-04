@@ -250,7 +250,7 @@ Here's an example of a `meta.json` file:
 }
 ```
 
-For modules that include [Viam apps](/operate/control/viam-app/), you can add the `applications` field:
+For modules that include [Viam applications](/operate/control/viam-applications/), you can add the `applications` field:
 
 ```json
 {
@@ -283,7 +283,7 @@ The `applications` field is an array of application objects with the following p
 | `type`       | string | The type of application (currently only `"web"` is supported)                                     |
 | `entrypoint` | string | The path to the HTML entry point for your application                                             |
 
-For more information about Viam apps, see the [Viam apps documentation](/operate/control/viam-app/).
+For more information about Viam applications, see the [Viam applications documentation](/operate/control/viam-applications/).
 
 ### Environment variables
 
