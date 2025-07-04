@@ -1,6 +1,7 @@
 ### GetCurrentMonthUsage
 
-Access data usage information for the current month for a given organization.
+Access data usage information for the current billing period for a given organization.
+For organizations with monthly billing, this returns current month usage. For organizations with annual billing, this returns usage within the current annual billing cycle.
 You can also find your usage data on the [**Payment and billing** page](/manage/reference/billing/).
 
 {{< tabs >}}
@@ -96,7 +97,8 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetInvoicesSummary
 
-Access total outstanding balance plus invoice summaries for a given org.
+Access total outstanding balance plus invoice summaries for a given organization.
+This includes both monthly and annual invoices depending on the organization's billing configuration.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

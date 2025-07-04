@@ -42,6 +42,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-03" %}}
+
+You can now configure annual billing alongside monthly billing options for your organizations.
+See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Data regions for organizations" date="2025-06-30" %}}
 
 Organizations can now specify continent-level [data regions](/manage/manage/data-regions/) (North America or Europe) to control where data is geographically stored. You can only change this region in organizations that have not yet synced any data.
