@@ -16,6 +16,7 @@ date: "2025-02-20"
 
 The switch component provides an API for reading the state of a physical switch on a machine that has multiple discrete positions.
 A simple switch has two positions, and a knob could have any number of positions.
+Switch components can provide human-readable labels for each position, making it easier to work with meaningful position names rather than just numeric indices.
 
 ## Configuration
 
