@@ -832,7 +832,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `logs` | Get logs for the specified machine or machine part. |
 | `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. |
 | `restart` | Restart a machine part. |
-| `cp` | Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the linux `scp` command |
+| `cp` | Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command. |
 | `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/manage/fleet/system-settings/#configure-network-settings-for-tunneling). |
 | `--help` | Return help. |
 
