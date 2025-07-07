@@ -281,6 +281,24 @@ The more CPU resources a device has, the more camera streams you can run simulta
 If your device doesn't have enough CPU resources to support your use case, try lowering the image resolution to decrease the CPU load of the camera streams.
 {{% /expand%}}
 
+{{% expand "macOS camera permissions issues" %}}
+On macOS, if you're having trouble accessing your webcam, you may need to reset camera permissions or check which application has camera access.
+
+**Resetting camera permissions:**
+
+If `viam-server` is not prompting for camera permissions or you need to re-grant permissions, you can reset the camera permissions using the following command:
+
+```sh {class="command-line" data-prompt="$"}
+tccutil reset Camera
+```
+
+After running this command, restart `viam-server` and it should prompt for camera permissions again.
+
+**Checking camera permissions:**
+
+To verify camera permissions, go to **System Settings** > **Privacy & Security** > **Camera**. Note that you may see your terminal application (such as Warp, iTerm, or Terminal) listed instead of `viam-server` directly, since `viam-server` runs within the terminal environment. Ensure that your terminal application has camera access enabled.
+{{% /expand%}}
+
 ## Next steps
 
 For more configuration and usage info, see:
