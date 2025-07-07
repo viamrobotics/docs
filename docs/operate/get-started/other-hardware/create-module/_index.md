@@ -354,6 +354,32 @@ Depending on your use case, you may not need to add anything here beyond <code>v
 {{% /tablestep %}}
 {{< /table >}}
 
+For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/get-started/other-hardware/create-module/hello-world-module/).
+
+{{% hiddencontent %}}
+
+You may see examples in registry modules that use a different pattern from what the generator creates.
+For example, some older example modules define `async def main()` inside <file>main.py</file>.
+We recommend using the pattern the generator follows:
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+from viam.module.module import Module
+try:
+    from models.hello_camera import MyCamera
+except ModuleNotFoundError:
+    # when running as local module with run.sh
+    from .models.hello_camera import MyCamera
+
+if __name__ == '__main__':
+    asyncio.run(Module.run_from_registry())
+```
+
+A previous version of the CLI module generator created `__init__.py` files, but now uses a different module structure.
+We recommend using what the current generator creates rather than old examples that use `__init__.py` files.
+
+{{% /hiddencontent %}}
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -1103,10 +1129,3 @@ Configure it just as you would [configure any other component or service in the 
 1. Save your configuration.
 
 You can delete the local module; it is no longer needed.
-
-{{% hiddencontent %}}Add commentMore actions
-A previous version of the CLI module generator created `__init__.py` files, but now uses a different module structure.
-We recommend using what the current generator creates rather than old examples that use `__init__.py` files.
-
-The same applies for edits to `main.py`: Some older example modules define `async def main()` inside `main.py`, but you should generally use the generated `main.py` file as it is.
-{{% /hiddencontent %}}

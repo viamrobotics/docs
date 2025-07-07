@@ -352,12 +352,13 @@ async def get_image(
     timeout: Optional[float] = None,
     **kwargs
 ) -> ViamImage:
+    self.logger.error("`get_image` is not implemented")
     raise NotImplementedError()
 ```
 
 You need to replace `raise NotImplementedError()` with code to actually implement the method:
 
-```python {class="line-numbers linkable-line-numbers" data-start="79" }
+```python {class="line-numbers linkable-line-numbers" data-start="79" data-line="9-10" }
 async def get_image(
     self,
     mime_type: str = "",
