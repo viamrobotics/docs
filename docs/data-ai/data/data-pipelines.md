@@ -42,16 +42,16 @@ viam datapipelines create \
   --name=sensor-counts \
   --schedule="0 * * * *" \
   --data-source-type="standard" \
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg": {"$avg": "$data.readings.value"}}}]'
+  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"location": "$location_id", "avg": {"$avg": "$data.readings.value"}}}]'
 ```
 
-To pass your query from a file instead of from inline MQL, pass the `--mql-path` flag instead of `--mql`.
+To pass your query as a file instead of specifying it as inline MQL, pass the `--mql-path` flag instead of `--mql`.
 To query data from the [hot data store](/data-ai/data/hot-data-store/), specify `--data-source-type hotstorage`.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-Use [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline) to define a new pipeline:
+To define a new pipeline, call [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline).
 
 ```python
 data_client = DataClient.from_api_key(
@@ -66,7 +66,7 @@ request = data_client.create_data_pipeline(
         bson.encode({"$match": {"component_name": "temperature-sensor"}}),
         bson.encode({
             "$group": {
-                "_id": "$location_id",
+                "location": "$location_id",
                 "avg_temp": {"$avg": "$data.readings.temperature"},
                 "count": {"$sum": 1}
             }
@@ -76,10 +76,12 @@ request = data_client.create_data_pipeline(
 )
 ```
 
+To query your hot data store, set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Use [`DataClient.CreateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateDataPipeline) to define a new pipeline:
+To define a new pipeline, call [`DataClient.CreateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateDataPipeline):
 
 ```go
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
@@ -94,7 +96,7 @@ pipeline := [][]byte{
     bson.Marshal(bson.M{"$match": bson.M{"component_name": "temperature-sensor"}}),
     bson.Marshal(bson.M{
         "$group": bson.M{
-            "_id": "$location_id",
+            "location": "$location_id",
             "avg_temp": bson.M{"$avg": "$data.readings.temperature"},
             "count": bson.M{"$sum": 1},
         },
@@ -109,10 +111,12 @@ resp, err := dataClient.CreateDataPipeline(context.Background(), &datapb.CreateD
 })
 ```
 
+To query your hot data store, set your query's `data_source` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Use [`dataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline) to define a new pipeline:
+To define a new pipeline, call [`dataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
 ```typescript
 const apiKey = "<api-key>";
@@ -131,7 +135,7 @@ const pipeline = [
   BSON.serialize({ $match: { component_name: "temperature-sensor" } }),
   BSON.serialize({
     $group: {
-      _id: "$location_id",
+      location: "$location_id",
       avg_temp: { $avg: "$data.readings.temperature" },
       count: { $sum: 1 },
     },
@@ -146,29 +150,148 @@ const response = await dataClient.createDataPipeline({
 });
 ```
 
+To query your hot data store, set your query's `dataSource` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+
 {{% /tab %}}
 {{< /tabs >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), specify a `dataSourceType` in your pipeline configuration.
 
+{{< alert title="Caution" color="caution" >}}
+
+Avoid specifying an `_id` value in your pipeline's final group stage unless you can guarantee its uniqueness across all pipeline runs.
+Non-unique IDs will trigger duplicate key errors, preventing the pipeline from saving subsequent results.
+
+{{< /alert >}}
+
 #### Schedule format
 
 To create a schedule for your pipeline, specify a [cron expression](https://en.wikipedia.org/wiki/Cron) in UTC.
-The schedule determines both execution frequency and input time window.
-The following table contains some common schedules, which correspond to the listed execution frequencies and input time windows:
+The schedule determines both execution frequency and the range of time queried by each execution.
+The following table contains some common schedules, which correspond to the listed execution frequencies and query time range:
 
-| Schedule       | Frequency        | Time Window         |
+| Schedule       | Frequency        | Query Time Range    |
 | -------------- | ---------------- | ------------------- |
 | `0 * * * *`    | Hourly           | Previous hour       |
 | `0 0 * * *`    | Daily            | Previous day        |
 | `*/15 * * * *` | Every 15 minutes | Previous 15 minutes |
+
+### Query pipeline results
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+To query the results of your data pipeline, call [`DataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
+Configure the `data_source` argument with the following fields:
+
+- a `type` of `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
+- a `pipeline_id` of your pipeline's ID
+
+```python
+data_client = DataClient.from_api_key(
+    api_key="<api-key>",
+    api_key_id="<api-key-id>"
+)
+
+results = data_client.tabular_data_by_mql(
+    organization_id="<org-id>",
+    mql_binary=[
+        bson.encode({}),
+    ],
+    data_source=TabularDataSource(
+        type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
+        pipeline_id="<pipeline-id>"
+    )
+)
+
+for document in results:
+    print(document)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+To query the results of your data pipeline, call [`DataClient.TabularDataByMQL`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByMQL).
+Configure the `DataSource` argument with the following fields:
+
+- a `Type` of `datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
+- a `PipelineId` of your pipeline's ID
+
+```go
+client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
+if err != nil {
+    panic(err)
+}
+defer client.Close()
+
+dataClient := client.DataClient()
+
+query := [][]byte{
+    bson.Marshal(bson.M{}),
+}
+
+resp, err := dataClient.TabularDataByMQL(context.Background(), &datapb.TabularDataByMQLRequest{
+    OrganizationId: "<org-id>",
+    MqlBinary: query,
+    DataSource: &datapb.TabularDataSource{
+        Type: datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
+        PipelineId: proto.String("<pipeline-id>"),
+    },
+})
+
+for _, doc := range resp.Data {
+    fmt.Println(doc)
+}
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+To query the results of your data pipeline, call [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
+Configure the `data_source` argument with the following fields:
+
+- a `type` of `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
+- a `pipelineId` of your pipeline's ID
+
+```typescript
+const apiKey = "<api-key>";
+const apiKeyID = "<api-key-id>";
+
+const client = await createViamClient({
+  credential: {
+    type: "api-key",
+    payload: { key: apiKey, keyId: apiKeyID },
+  },
+});
+
+const dataClient = client.dataClient;
+
+const query = [BSON.serialize({})];
+
+const response = await dataClient.tabularDataByMQL({
+  organizationId: "<org-id>",
+  mqlBinary: query,
+  dataSource: {
+    type: TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
+    pipelineId: "<pipeline-id>",
+  },
+});
+
+response.data.forEach((doc) => {
+  console.log(BSON.deserialize(doc));
+});
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 
 ### List pipelines
 
 {{< tabs >}}
 {{% tab name="CLI" %}}
 
-Use [`datapipelines list`](/dev/tools/cli/#datapipelines) to see a summary of all pipelines in an organization:
+Use [`datapipelines list`](/dev/tools/cli/#datapipelines) to fetch a list of pipeline configurations in an organization:
 
 ```sh {class="command-line" data-prompt="$" class="command-line"}
 viam datapipelines list --org-id=<org-id>
@@ -177,7 +300,7 @@ viam datapipelines list --org-id=<org-id>
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-Use [`DataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a summary of all pipelines in an organization:
+Use [`DataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
 ```python
 data_client = DataClient.from_api_key(
@@ -196,7 +319,7 @@ for pipeline in pipelines:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Use [`DataClient.ListDataPipelines`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelines) to fetch a summary of all pipelines in an organization:
+Use [`DataClient.ListDataPipelines`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelines) to fetch a list of pipeline configurations in an organization:
 
 ```go
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
@@ -221,7 +344,7 @@ for _, pipeline := range resp.DataPipelines {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a summary of all pipelines in an organization:
+Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
 ```typescript
 const apiKey = "<api-key>";
@@ -252,6 +375,13 @@ response.dataPipelines.forEach((pipeline) => {
 
 ### Update a pipeline
 
+{{< alert title="Caution" color="caution" >}}
+
+Use caution when updating the query or schedule of a data pipeline.
+Changing either value can lead to inconsistent pipeline output history.
+
+{{< /alert >}}
+
 {{< tabs >}}
 {{% tab name="CLI" %}}
 
@@ -262,6 +392,7 @@ viam datapipelines update \
   --org-id=<org-id> \
   --id=<pipeline-id> \
   --schedule="0 * * * *" \
+  --name="updated-name"
   --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg": {"$avg": "$data.readings.value"}}}]'
 ```
 
@@ -433,6 +564,9 @@ await dataClient.enableDataPipeline({ id: "<pipeline-id>" });
 ### Disable a pipeline
 
 Disabling a data pipeline lets you pause data pipeline execution without fully deleting the pipeline configuration from your organization.
+The pipeline immediately stops aggregating data.
+You can re-enable the pipeline at any time to resume execution.
+Viam won't backfill missed time windows from the period of time when a pipeline was disabled.
 
 {{< tabs >}}
 {{% tab name="CLI" %}}
@@ -505,7 +639,7 @@ await dataClient.disableDataPipeline({ id: "<pipeline-id>" });
 {{< tabs >}}
 {{% tab name="CLI" %}}
 
-Use [`datapipelines delete`](/dev/tools/cli/#datapipelines) to delete a data pipeline:
+Use [`datapipelines delete`](/dev/tools/cli/#datapipelines) to delete a data pipeline, its execution history, and all output generated by that pipeline:
 
 ```sh {class="command-line" data-prompt="$"}
 viam datapipelines delete --id=<pipeline-id>
@@ -580,7 +714,7 @@ Data pipeline executions may have any of the following statuses:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Use [`DataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view the statuses of past executions of a pipeline:
+Use [`DataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past executions of a pipeline:
 
 ```python
 data_client = DataClient.from_api_key(
@@ -602,7 +736,7 @@ for run in runs:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Use [`DataClient.ListDataPipelineRuns`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelineRuns) to view the statuses of past executions of a pipeline:
+Use [`DataClient.ListDataPipelineRuns`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelineRuns) to view information about past executions of a pipeline:
 
 ```go
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
@@ -628,7 +762,7 @@ for _, run := range resp.Executions {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Use [`dataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view the statuses of past executions of a pipeline:
+Use [`dataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past executions of a pipeline:
 
 ```typescript
 const apiKey = "<api-key>";
@@ -652,103 +786,6 @@ response.executions.forEach((run) => {
   console.log(`Run ${run.id}: ${run.status}`);
   console.log(`Data window: ${run.dataStartTime} to ${run.dataEndTime}`);
   console.log(`Started: ${run.started}, Ended: ${run.ended}`);
-});
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Query pipeline results
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-Use [`DataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) to query the results of your data pipeline:
-
-```python
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-results = data_client.tabular_data_by_mql(
-    organization_id="<org-id>",
-    mql_binary=[
-        bson.encode({}),
-    ],
-    data_source=TabularDataSource(
-        type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
-        pipeline_id="<pipeline-id>"
-    )
-)
-
-for document in results:
-    print(document)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Use [`DataClient.TabularDataByMQL`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByMQL) to query the results of your data pipeline:
-
-```go
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-query := [][]byte{
-    bson.Marshal(bson.M{}),
-}
-
-resp, err := dataClient.TabularDataByMQL(context.Background(), &datapb.TabularDataByMQLRequest{
-    OrganizationId: "<org-id>",
-    MqlBinary: query,
-    DataSource: &datapb.TabularDataSource{
-        Type: datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
-        PipelineId: proto.String("<pipeline-id>"),
-    },
-})
-
-for _, doc := range resp.Data {
-    fmt.Println(doc)
-}
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-Use [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) to query the results of your data pipeline:
-
-```typescript
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-const query = [BSON.serialize({})];
-
-const response = await dataClient.tabularDataByMQL({
-  organizationId: "<org-id>",
-  mqlBinary: query,
-  dataSource: {
-    type: TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
-    pipelineId: "<pipeline-id>",
-  },
-});
-
-response.data.forEach((doc) => {
-  console.log(BSON.deserialize(doc));
 });
 ```
 

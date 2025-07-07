@@ -52,7 +52,7 @@ Set the value of the `stored_hours` field to the number of hours of recent data 
 
 ## Query
 
-Queries typically execute on blog storage.
+Queries typically execute on blob storage.
 To query data from hot data store instead of blob storage, specify hot storage as your data source in your query.
 
 {{< tabs >}}
@@ -153,7 +153,31 @@ All queries that omit `DataSource` will continue to use blob storage.
 
 ### Query limitations
 
-You cannot use the following MongoDB aggregation operators when querying your hot data store:
+Queries to the hot data store support the following MongoDB aggregation operators:
 
-- `$lookup`
-- `$unionWith`
+<!--
+see whitelistStages in https://github.com/viamrobotics/app/blob/e706a2e3ea57a252f102b37e0ab2b9d6eeed51e0/datamanagement/tabular_data_by_query.go#L64
+-->
+
+- `$addFields`
+- `$bucket`
+- `$bucketAuto`
+- `$count`
+- `$densify`
+- `$fill`
+- `$geoNear`
+- `$group`
+- `$limit`
+- `$match`
+- `$project`
+- `$redact`
+- `$replaceRoot`
+- `$replaceWith`
+- `$sample`
+- `$set`
+- `$setWindowFields`
+- `$skip`
+- `$sort`
+- `$sortByCount`
+- `$unset`
+- `$unwind`

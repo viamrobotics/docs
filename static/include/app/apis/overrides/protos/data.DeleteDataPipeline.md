@@ -1,1 +1,1 @@
-Delete a data pipeline.
+Delete a data pipeline and all of its output data.

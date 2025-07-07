@@ -1,1 +1,1 @@
-List the statuses of individual executions of a data pipeline.
+Get information about individual executions of a data pipeline.

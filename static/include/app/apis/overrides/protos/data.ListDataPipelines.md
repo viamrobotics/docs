@@ -1,1 +1,1 @@
-Get the configuration for multiple data pipelines.
+Get configurations for all data pipelines in an organization.
