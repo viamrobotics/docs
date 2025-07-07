@@ -453,9 +453,9 @@ For example, you may want to create a tag for `stable` and `beta`.
    You can change this later.
 1. Type in a name for your tag.
 
-### Pin to a version or tag for a fragment
+### Pin to a fragment version or tag
 
-When you add a fragment to a machine you can choose to pin the version to use:
+When you add a fragment to a machine you can choose to pin the fragment version to use:
 
 - the **latest version**: Always update to the latest version of this fragment as soon as a new version becomes available.
   This is the default.

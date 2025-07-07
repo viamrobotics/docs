@@ -3451,7 +3451,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetRegistryItem
 
-Get registry item by ID.
+Get metadata about a registry item (a module, training script, or ML model) by registry item ID.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

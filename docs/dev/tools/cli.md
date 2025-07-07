@@ -810,7 +810,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
-| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
+| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. |
 | `--help` | Return help. | - |
 
 ##### Positional arguments: `api-key`
@@ -830,10 +830,10 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `status` | Retrieve machine status for a specified machine part. |
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
 | `logs` | Get logs for the specified machine or machine part. |
-| `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
+| `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. |
 | `restart` | Restart a machine part. |
-| `cp` | Copy files to and from a machine part. |
-| `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/manage/fleet/system-settings/#configure-networking-settings-for-tunneling). |
+| `cp` | Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command. |
+| `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/manage/fleet/system-settings/#configure-network-settings-for-tunneling). |
 | `--help` | Return help. |
 
 ##### Named arguments
@@ -1385,14 +1385,14 @@ The `packages` command allows you to upload packages to the Viam Cloud or export
 For example, you can use this command to download ML models or modules from the registry.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz>
+viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz> --model-framework=<framework>
 viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=./the_package.tar.gz
+viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=./the_package.tar.gz --model-framework=tensorflow
 viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_model --destination=.
 ```
 
@@ -1414,6 +1414,7 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
 | `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
+| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | **Required** |
 | `--destination` | The output directory for downloaded package. | `export` | **Required** |
 
 ### `profiles`
