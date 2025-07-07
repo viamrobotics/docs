@@ -76,7 +76,7 @@ request = data_client.create_data_pipeline(
 )
 ```
 
-To query your hot data store, set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+To query your [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
