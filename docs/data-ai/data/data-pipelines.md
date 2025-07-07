@@ -398,28 +398,6 @@ viam datapipelines update \
 To pass your query from a file instead of from inline MQL, pass the `--mql-path` flag instead of `--mql`.
 
 {{% /tab %}}
-{{% tab name="Python" %}}
-
-Use [`DataClient.UpdateDataPipeline`](/dev/reference/apis/data-client/#updatedatapipeline) to alter an existing data pipeline:
-
-```python
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-data_client.update_data_pipeline(
-    id="<pipeline-id>",
-    name="updated-name",
-    mql_binary=[
-        bson.encode({"$match": {"component_name": "sensor"}}),
-        bson.encode({"$group": {"_id": "$part_id", "total": {"$sum": 1}}})
-    ],
-    schedule="0 * * * *"
-)
-```
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 Use [`DataClient.UpdateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.UpdateDataPipeline) to alter an existing data pipeline:
@@ -452,42 +430,6 @@ _, err := dataClient.UpdateDataPipeline(context.Background(), &datapb.UpdateData
 ```
 
 {{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-Use [`dataClient.UpdateDataPipeline`](/dev/reference/apis/data-client/#updatedatapipeline) to alter an existing data pipeline:
-
-```typescript
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-const pipeline = [
-  BSON.serialize({ $match: { component_name: "sensor" } }),
-  BSON.serialize({
-    $group: {
-      _id: "$part_id",
-      total: { $sum: 1 },
-    },
-  }),
-];
-
-await dataClient.updateDataPipeline({
-  id: "<pipeline-id>",
-  name: "updated-name",
-  mqlBinary: pipeline,
-  schedule: "0 0 * * *", // Change to daily
-});
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ### Enable a pipeline
@@ -499,20 +441,6 @@ Use [`datapipelines enable`](/dev/tools/cli/#datapipelines) to enable a disabled
 
 ```sh {class="command-line" data-prompt="$"}
 viam datapipelines enable --id=<pipeline-id>
-```
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-Use [`DataClient.EnableDataPipeline`](/dev/reference/apis/data-client/#enabledatapipeline) to enable a disabled data pipeline:
-
-```python
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-data_client.enable_data_pipeline(id="<pipeline-id>")
 ```
 
 {{% /tab %}}
@@ -535,29 +463,6 @@ _, err := dataClient.EnableDataPipeline(context.Background(), &datapb.EnableData
 ```
 
 {{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-Use [`dataClient.EnableDataPipeline`](/dev/reference/apis/data-client/#enabledatapipeline) to enable a disabled data pipeline:
-
-```typescript
-const apiKey = '<api-key>';
-const apiKeyID = '<api-key-id>';
-
-const client = await createViamClient({
-  credential: {
-    type: 'api-key',
-    payload: { key: apiKey, keyId: apiKeyID }
-  }
-});
-
-const dataClient = client.dataClient;
-
-const pipeline = [
-
-await dataClient.enableDataPipeline({ id: "<pipeline-id>" });
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ### Disable a pipeline
@@ -577,20 +482,6 @@ viam datapipelines disable --id=<pipeline-id>
 ```
 
 {{% /tab %}}
-{{% tab name="Python" %}}
-
-Use [`DataClient.DisableDataPipeline`](/dev/reference/apis/data-client/#disabledatapipeline) to disable a data pipeline:
-
-```python
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-data_client.disable_data_pipeline(id="<pipeline-id>")
-```
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 Use [`DataClient.DisableDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DisableDataPipeline) to disable a data pipeline:
@@ -607,27 +498,6 @@ dataClient := client.DataClient()
 _, err := dataClient.DisableDataPipeline(context.Background(), &datapb.DisableDataPipelineRequest{
     Id: "<pipeline-id>",
 })
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-Use [`dataClient.DisableDataPipeline`](/dev/reference/apis/data-client/#disabledatapipeline) to disable a data pipeline:
-
-```typescript
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-await dataClient.disableDataPipeline({ id: "<pipeline-id>" });
 ```
 
 {{% /tab %}}
