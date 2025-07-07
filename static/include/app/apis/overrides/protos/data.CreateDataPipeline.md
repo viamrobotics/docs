@@ -1,1 +1,1 @@
-Create a [data pipeline](data-ai/data/data-pipelines/).
+Create a [data pipeline](/data-ai/data/data-pipelines/).

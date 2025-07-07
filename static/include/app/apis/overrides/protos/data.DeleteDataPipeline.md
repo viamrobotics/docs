@@ -1,1 +1,1 @@
-Delete a [data pipeline](data-ai/data/data-pipelines/), its execution history, and all of its output data.
+Delete a [data pipeline](/data-ai/data/data-pipelines/), its execution history, and all of its output data.

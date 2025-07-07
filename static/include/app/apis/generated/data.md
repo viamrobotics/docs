@@ -2363,7 +2363,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDataPipeline
 
-Get the configuration for a [data pipeline](data-ai/data/data-pipelines/).
+Get the configuration for a [data pipeline](/data-ai/data/data-pipelines/).
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2409,7 +2409,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### ListDataPipelines
 
-Get configurations for all [data pipeline](data-ai/data/data-pipelines/) in an organization.
+Get configurations for all [data pipeline](/data-ai/data/data-pipelines/) in an organization.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2455,7 +2455,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### CreateDataPipeline
 
-Create a [data pipeline](data-ai/data/data-pipelines/).
+Create a [data pipeline](/data-ai/data/data-pipelines/).
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2530,7 +2530,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### DeleteDataPipeline
 
-Delete a [data pipeline](data-ai/data/data-pipelines/), its execution history, and all of its output data.
+Delete a [data pipeline](/data-ai/data/data-pipelines/), its execution history, and all of its output data.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2576,7 +2576,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### ListDataPipelineRuns
 
-Get information about individual executions of a [data pipeline](data-ai/data/data-pipelines/).
+Get information about individual executions of a [data pipeline](/data-ai/data/data-pipelines/).
 {{< tabs >}}
 {{% tab name="Python" %}}
 

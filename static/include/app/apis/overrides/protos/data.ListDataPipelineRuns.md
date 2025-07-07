@@ -1,1 +1,1 @@
-Get information about individual executions of a [data pipeline](data-ai/data/data-pipelines/).
+Get information about individual executions of a [data pipeline](/data-ai/data/data-pipelines/).
