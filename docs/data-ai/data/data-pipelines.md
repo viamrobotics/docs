@@ -581,7 +581,7 @@ Data pipeline executions may have any of the following statuses:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Use [`DataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past executions of a pipeline:
+Use [`DataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past and in-progress executions of a pipeline:
 
 ```python
 data_client = DataClient.from_api_key(
