@@ -25,6 +25,38 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
+## Establish a connection
+
+To get started using Viam's SDKs to connect to and control your movement sensor and the rest of your machine, go to your machine's page, navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
+
+{{% snippet "show-secret.md" %}}
+
+When executed, this sample code creates a connection to your machine as a client.
+
+The following examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your machine.
+If your movement sensor has a different name, change the `name` in the code.
+
+Import the movement sensor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.movement_sensor import MovementSensor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/movementsensor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## API
 
 {{< readfile "/static/include/components/apis/generated/movement_sensor.md" >}}
