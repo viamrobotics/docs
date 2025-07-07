@@ -60,6 +60,13 @@ Organization owners and location owners can now move machines between locations 
 
 {{% /changelog %}}
 
+{{% changelog color="added" title="Module and namespace renaming" date="2025-06-09" %}}
+
+You can now rename modules and organization namespaces through the web UI.
+For more information, see [Rename a module](/operate/get-started/other-hardware/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/reference/naming-modules/#update-a-namespace-for-your-organization).
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
 The frame tab no longer exists.
