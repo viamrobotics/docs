@@ -240,19 +240,25 @@ Be sure to handle the case where the dependency is not available in your API imp
 For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def get_image(
+async def get_readings(
     self,
-    mime_type: str = "",
     *,
-    extra: Optional[Dict[str, Any]] = None,
+    extra: Optional[Mapping[str, Any]] = None,
     timeout: Optional[float] = None,
     **kwargs
-) -> ViamImage:
-    if self.has_camera:
+) -> Mapping[str, SensorReading]:
+    if self.has_camera and self.the_camera is not None:
+        # Use the camera
         img = await self.the_camera.get_image()
-        return img
+        mimetype = img.mime_type
+        return {
+            "readings": {
+                "mimetype": mimetype
+            }
+        }
     else:
-        raise Exception("No camera available")
+        # Work without camera
+        return {"readings": "no_camera_available"}
 ```
 
 {{% /tab %}}
