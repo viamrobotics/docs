@@ -42,7 +42,8 @@ viam datapipelines create \
   --name=sensor-counts \
   --schedule="0 * * * *" \
   --data-source-type="standard" \
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"location": "$location_id", "avg": {"$avg": "$data.readings.value"}}}]'
+  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, ,
+                "count": {"$sum": 1}}, {"$project": {"location": "$_id", "avg": 1}}]'
 ```
 
 To pass your query as a file instead of specifying it as inline MQL, pass the `--mql-path` flag instead of `--mql`.
@@ -66,9 +67,16 @@ request = data_client.create_data_pipeline(
         bson.encode({"$match": {"component_name": "temperature-sensor"}}),
         bson.encode({
             "$group": {
-                "location": "$location_id",
+                "_id": "$location_id",
                 "avg_temp": {"$avg": "$data.readings.temperature"},
                 "count": {"$sum": 1}
+            }
+        }),
+        bson.encode({
+            "$project": {
+                "location": "$_id",
+                "avg_temp": 1,
+                "count": 1
             }
         })
     ],
@@ -96,9 +104,16 @@ pipeline := [][]byte{
     bson.Marshal(bson.M{"$match": bson.M{"component_name": "temperature-sensor"}}),
     bson.Marshal(bson.M{
         "$group": bson.M{
-            "location": "$location_id",
+            "_id": "$location_id",
             "avg_temp": bson.M{"$avg": "$data.readings.temperature"},
             "count": bson.M{"$sum": 1},
+        },
+    }),
+    bson.Marshal(bson.M{
+        "$group": bson.M{
+            "location": "$_id",
+            "avg_temp": 1,
+            "count": 1,
         },
     }),
 }
@@ -135,9 +150,16 @@ const pipeline = [
   BSON.serialize({ $match: { component_name: "temperature-sensor" } }),
   BSON.serialize({
     $group: {
-      location: "$location_id",
+      _id: "$location_id",
       avg_temp: { $avg: "$data.readings.temperature" },
       count: { $sum: 1 },
+    },
+  }),
+  BSON.serialize({
+    $project: {
+      location: "$_id",
+      avg_temp: 1,
+      count: 1,
     },
   }),
 ];
@@ -159,6 +181,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 Avoid specifying an `_id` value in your pipeline's final group stage unless you can guarantee its uniqueness across all pipeline runs.
 Non-unique IDs will trigger duplicate key errors, preventing the pipeline from saving subsequent results.
+Because the `$group` stage requires an `_id` value, follow any final `$group` stage with a `$project` stage that renames the `_id` field to a different name.
 
 {{< /alert >}}
 
