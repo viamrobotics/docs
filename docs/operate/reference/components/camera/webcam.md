@@ -296,7 +296,9 @@ After running this command, restart `viam-server` and it should prompt for camer
 
 **Checking camera permissions:**
 
-To verify camera permissions, go to **System Settings** > **Privacy & Security** > **Camera**. Note that you may see your terminal application (such as Warp, iTerm, or Terminal) listed instead of `viam-server` directly, since `viam-server` runs within the terminal environment. Ensure that your terminal application has camera access enabled.
+To verify camera permissions, go to **System Settings** > **Privacy & Security** > **Camera**.
+Find the application `viam-server` is running in (such as iTerm or Terminal).
+Ensure that your terminal application has camera access enabled.
 {{% /expand%}}
 
 ## Next steps
