@@ -250,7 +250,9 @@ If you need further customization, please [contact us](mailto:support@viam.com).
 
 ### How does renewal work?
 
-Renewal is automatic for both monthly and annual billing.
+Renewal is automatic for upfront annual billing and for upfront monthly billing.
+For monthly billing after usage, if there is no usage, there is no charge.
+If the `per_machine` field is set, then a machine existing, is considered usage.
 
 ### When are invoices generated?
 
