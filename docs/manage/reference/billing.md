@@ -73,16 +73,12 @@ Invoices may be generated monthly or annually depending on your billing configur
 
 ## Set billing alerts
 
-You can set alerts to receive an email notification when your spend exceeds a certain threshold:
+You can set alerts to receive an email notification when your monthly spend exceeds a certain threshold:
 
 1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
    You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
 1. Scroll to the bottom of the **Payment & Billing** page.
-1. Click **Set amount** and enter a threshold amount.
-
-{{< alert title="Note" color="note" >}}
-For organizations with annual billing, alerts are based on cumulative spending within the annual billing cycle rather than monthly spending.
-{{< /alert >}}
+1. Click **Set amount** and enter a monthly threshold amount.
 
 ## Help
 
