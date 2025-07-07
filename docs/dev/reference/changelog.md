@@ -42,16 +42,28 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
-{{% changelog color="added" title="Module and namespace renaming" date="2025-06-09" %}}
+{{% changelog color="added" title="Data regions for organizations" date="2025-06-30" %}}
 
-You can now rename modules and organization namespaces through the web UI.
-For more information, see [Rename a module](/operate/get-started/other-hardware/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/reference/naming-modules/#update-a-namespace-for-your-organization).
+Organizations can now specify continent-level [data regions](/manage/manage/data-regions/) (North America or Europe) to control where data is geographically stored. You can only change this region in organizations that have not yet synced any data.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Threshold selection for dataset inference" date="2025-06-24" %}}
+
+You can now configure confidence thresholds when running ML model inference on datasets. The new threshold selection modal allows you to set a confidence threshold between 0.0 and 1.0 to filter inference results, helping reduce false positives and focus on high-confidence predictions.
 
 {{% /changelog %}}
 
 {{% changelog color="added" title="Move machines between locations" date="2025-06-10" %}}
 
 Organization owners and location owners can now move machines between locations within their organization using the web UI.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Module and namespace renaming" date="2025-06-09" %}}
+
+You can now rename modules and organization namespaces through the web UI.
+For more information, see [Rename a module](/operate/get-started/other-hardware/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/reference/naming-modules/#update-a-namespace-for-your-organization).
 
 {{% /changelog %}}
 
@@ -461,7 +473,7 @@ For more information, see [Supported components and services](/data-ai/capture-d
 {{% changelog date="2024-08-01" color="added" title="Create custom training scripts" %}}
 
 You can now upload custom training scripts to the Viam Registry and use them to train machine learning models.
-For more information, see [Create custom training scripts](/data-ai/ai/train/).
+For more information, see [Create custom training scripts](/data-ai/train/train/).
 
 {{% /changelog %}}
 
@@ -691,7 +703,7 @@ For more information, see [Query Data with SQL or MQL](/data-ai/data/query/).
 
 {{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data-ai/ai/create-dataset/).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data-ai/train/create-dataset/).
 
 {{% /changelog %}}
 
@@ -867,7 +879,7 @@ To better control gantries with Viam, you can now:
 
 {{% changelog date="2023-06-30" color="improved" title="Optimized Viam-trained object detection models" %}}
 
-This update for TFlite object detection models [trained with the machine learning service](/data-ai/ai/train-tflite/) brings significant improvements, including:
+This update for TFlite object detection models [trained with the machine learning service](/data-ai/train/train-tflite/) brings significant improvements, including:
 
 - 76% faster model inference for camera streams
 - 64% quicker model training for object detection
@@ -883,7 +895,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train a TFlite object detection models](/data-ai/ai/train-tflite/).
+You now have the capability to directly [train a TFlite object detection models](/data-ai/train/train-tflite/).
 
 This update allows you to:
 
@@ -1306,9 +1318,9 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/data-ai/ai/train-tflite/) and [deploy](/data-ai/ai/deploy/) image classification models with the [data management service](/data-ai/capture-data/capture-sync/) and use your machine's image data directly within Viam.
+You can now [train](/data-ai/train/train-tflite/) and [deploy](/data-ai/ai/deploy/) image classification models with the [data management service](/data-ai/capture-data/capture-sync/) and use your machine's image data directly within Viam.
 Additionally, you can upload and use existing [machine learning models](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/ai/train-tflite/) or [another model](/data-ai/ai/train/).
+For more information on using data synced to the cloud to train machine learning models, read [train a TFlite](/data-ai/train/train-tflite/) or [another model](/data-ai/train/train/).
 
 {{% /changelog %}}
 

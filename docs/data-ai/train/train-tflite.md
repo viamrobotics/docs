@@ -1,7 +1,7 @@
 ---
-linkTitle: "Train TFlite model"
+linkTitle: "Train TFLite model"
 title: "Train a TFlite model"
-weight: 20
+weight: 50
 type: "docs"
 tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
@@ -19,6 +19,7 @@ aliases:
   - /extend/modular-resources/examples/tflite-module/
   - /modular-resources/examples/tflite-module/
   - /registry/examples/tflite-module/
+  - /data-ai/ai/train-tflite/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 platformarea: ["ml"]
@@ -31,17 +32,30 @@ Follow this guide to use your image data to train an ML model, so that your mach
 
 ## Prerequisites
 
-{{% expand "a machine connected to Viam" %}}
+{{% expand "A machine connected to Viam" %}}
 
 {{% snippet "setup.md" %}}
 
 {{% /expand %}}
 
-{{% expand "a dataset with labels" %}}
+{{% expand "A dataset that meets training requirements" %}}
 
-Follow the guide to [create a dataset](/data-ai/ai/create-dataset/).
+To train a model, your dataset must contain the following:
 
-{{% /expand%}}
+- At least 15 images
+- At least 80% of the images have labels
+- For each training label, at least 10 examples
+
+When you label your dataset, include:
+
+- images with and _without_ the categories you're looking to identify
+- a roughly equal number of images for each category
+- images from your production environment, including lighting and camera quality
+- examples from every angle and distance that you expect the model to handle
+
+Follow the guide to [create a dataset](/data-ai/train/create-dataset/).
+
+{{% /expand %}}
 
 ## Train a machine learning model
 
@@ -145,11 +159,11 @@ Using this approach, each subsequent model version becomes more accurate than th
 
 To capture images of edge cases and re-train your model using those images, complete the following steps:
 
-1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/ai/create-dataset/#capture-images).
+1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/train/capture-annotate-images/).
 
 1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
 
-1. Repeat the [steps above](/data-ai/ai/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
+1. Repeat the [steps above](/data-ai/train/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
 
 ## Next steps
 

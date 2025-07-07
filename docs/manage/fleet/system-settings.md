@@ -79,29 +79,39 @@ Configuring multiple WiFi networks for the Micro-RDK is similar but the only sup
 
 For complete reference information, see [viam-agent](/manage/reference/viam-agent/#network_configuration).
 
-## Configure networking settings for tunneling
+## Configure network settings for tunneling
 
 To tunnel to a machine part you must first explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config.
 The following configuration allows you to tunnel to ports `5900` and `5901`:
 
 ```json {class="line-numbers linkable-line-numbers"}
-  "network": {
-    "traffic_tunnel_endpoints": [
-      {
-        "port": 5900
-      },
-      {
-        "port": 5901,
-        "connection_timeout": "5s"
-      }
-    ]
-  }
+"network": {
+  "traffic_tunnel_endpoints": [
+    {
+      "port": 5900
+    },
+    {
+      "port": 5901,
+      "connection_timeout": "5s"
+    }
+  ]
+}
 ```
 
 Then you can use the [`viam machine part tunnel`](https://docs.viam.com/dev/tools/cli/#machines-alias-robots) command:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam machine part tunnel --part=123 --destination-port=1111 --local-port 5900
+```
+
+## Configure network settings to disable TLS
+
+To configure your machine to disable TLS on the hosted HTTP server, you must specify `"no_tls": true` in your machine's configuration:
+
+```json {class="line-numbers linkable-line-numbers"}
+"network": {
+  "no_tls": true
+}
 ```
 
 ## Configure operating system logging

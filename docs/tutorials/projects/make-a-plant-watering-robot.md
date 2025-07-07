@@ -5,7 +5,7 @@ type: "docs"
 description: "Create a plant watering machine with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
 imageAlt: "Picture of the plant watering machine"
-images: ["/tutorials/plant-watering-pi/preview.png"]
+images: ["/tutorials/plant-watering-pi/plant-watering-robot.jpg"]
 authors: ["Sierra Guequierre"]
 languages: ["python"]
 viamresources: ["board", "motor", "sensor", "module"]
@@ -24,7 +24,7 @@ Notes:
 possibly extend or point to data management tutorial next? To Jessamy's in particular? and the grafana tutorial
 -->
 
-![Picture of the plant watering machine on a desk.](/tutorials/plant-watering-pi/plant-watering-robot.png)
+![Picture of the plant watering machine on a desk.](/tutorials/plant-watering-pi/plant-watering-robot.jpg)
 
 Building a useful machine doesn't have to require complicated code or expensive equipment.
 With a Raspberry Pi and some basic hardware, you can keep your plants healthy and happy from anywhere in the world!

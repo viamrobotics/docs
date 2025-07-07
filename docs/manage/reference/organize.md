@@ -35,32 +35,28 @@ You choose how to group your machines.
 {{<imgproc src="/fleet/fleet.svg" class="fill aligncenter" resize="800x" style="width: 600px" declaredimensions=true alt="Two locations within an organization">}}
 </p>
 
-## Create organizations and locations
-
-{{< table >}}
-{{% tablestep number=1 %}}
-**Create organizations**
+## Create organization
 
 1. Log into [Viam](https://app.viam.com) in a web browser.
 1. Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization.
-   Name the organization and click **Create**.
-1. Create additional organizations as needed.
+1. Name the organization.
+1. From the **Data region** dropdown, choose the [geographic location](/manage/manage/data-regions/) where Viam should store your application data.
+1. Click **Create**.
+1. To create additional organizations, open the organization dropdown in the top right of Viam, next to your initials.
+   Click the **+** symbol next to **OTHER ORGANIZATIONS**.
 
-{{% /tablestep %}}
-{{% tablestep number=2 %}}
-**Create locations**
+## Create location
 
 1. Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
    A new location called `First Location` is automatically generated for you.
 
    Use the **...** menu to edit the location name to what it represents for your use case.
-   Then click **Save**.
 
-1. Create additional locations as needed using the **Add location** button, on the left of the **LOCATIONS** page.
+1. Click **Save**.
 
-{{% /tablestep %}}
-{{% tablestep number=3 %}}
-**Create sub-locations**
+1. To create additional locationsm, click the **Add location** button on the **LOCATIONS** page.
+
+## Create sub-locations
 
 If needed, you can add further sub-locations to, for example, differentiate groups of machines within an office.
 
@@ -71,9 +67,6 @@ To add a sub-location:
    Click **Change**.
 
 You can nest locations up to three levels deep.
-
-{{% /tablestep %}}
-{{< /table >}}
 
 ## Example
 

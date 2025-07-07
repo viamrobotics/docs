@@ -1,6 +1,6 @@
 ---
-linkTitle: "Leverage AI"
-title: "Leverage AI"
+linkTitle: "Infer with ML models"
+title: "Infer with ML models"
 weight: 300
 layout: "empty"
 type: "docs"
