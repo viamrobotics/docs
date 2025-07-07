@@ -1,1 +1,1 @@
-Get configurations for all data pipelines in an organization.
+Get configurations for all [data pipeline](data-ai/data/data-pipelines/) in an organization.

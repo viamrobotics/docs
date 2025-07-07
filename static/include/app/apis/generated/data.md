@@ -734,7 +734,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### BinaryDataByIDs
 
-Retrieve binary data from the Viam by `BinaryID`.
+Retrieve binary data from Viam by `BinaryID`.
 You can also find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
 
 {{< tabs >}}
@@ -2363,7 +2363,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDataPipeline
 
-Get the configuration of a data pipeline.
+Get the configuration for a [data pipeline](data-ai/data/data-pipelines/).
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2409,7 +2409,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### ListDataPipelines
 
-Get the configuration for multiple data pipelines.
+Get configurations for all [data pipeline](data-ai/data/data-pipelines/) in an organization.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2455,7 +2455,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### CreateDataPipeline
 
-Create a data pipeline.
+Create a [data pipeline](data-ai/data/data-pipelines/).
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2530,7 +2530,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### DeleteDataPipeline
 
-Delete a data pipeline.
+Delete a [data pipeline](data-ai/data/data-pipelines/), its execution history, and all of its output data.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -2576,7 +2576,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### ListDataPipelineRuns
 
-List the statuses of individual executions of a data pipeline.
+Get information about individual executions of a [data pipeline](data-ai/data/data-pipelines/).
 {{< tabs >}}
 {{% tab name="Python" %}}
 

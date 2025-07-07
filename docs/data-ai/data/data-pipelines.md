@@ -16,7 +16,7 @@ Data pipelines automatically transform raw sensor readings into summaries and in
 Viam stores the output of these pipelines in a cache so that you can access complex aggregation results more efficiently.
 When late-arriving data syncs to Viam, pipelines automatically re-run to keep summaries accurate.
 
-For example, you could use a data pipeline to pre-calculate results like "average temperature per hour".
+For example, you could use a data pipeline to pre-calculate the average temperature across multiple sensors for each hour of the day.
 If you query that information frequently, this can save significant computational resources.
 
 ## Prerequisites

@@ -7,7 +7,7 @@
 | [`TabularDataBySQL`](/dev/reference/apis/data-client/#tabulardatabysql) | Obtain unified tabular data and metadata, queried with SQL. Make sure your API key has permissions at the organization level in order to use this. |
 | [`TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) | Obtain unified tabular data and metadata, queried with MQL. |
 | [`BinaryDataByFilter`](/dev/reference/apis/data-client/#binarydatabyfilter) | Retrieve optionally filtered binary data from Viam. |
-| [`BinaryDataByIDs`](/dev/reference/apis/data-client/#binarydatabyids) | Retrieve binary data from the Viam by `BinaryID`. |
+| [`BinaryDataByIDs`](/dev/reference/apis/data-client/#binarydatabyids) | Retrieve binary data from Viam by `BinaryID`. |
 | [`DeleteTabularData`](/dev/reference/apis/data-client/#deletetabulardata) | Delete tabular data older than a specified number of days. |
 | [`DeleteBinaryDataByFilter`](/dev/reference/apis/data-client/#deletebinarydatabyfilter) | Filter and delete binary data. |
 | [`DeleteBinaryDataByIDs`](/dev/reference/apis/data-client/#deletebinarydatabyids) | Filter and delete binary data by ids. |
@@ -23,8 +23,8 @@
 | [`ConfigureDatabaseUser`](/dev/reference/apis/data-client/#configuredatabaseuser) | Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. |
 | [`AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids) | Add the `BinaryData` to the provided dataset. |
 | [`RemoveBinaryDataFromDatasetByIDs`](/dev/reference/apis/data-client/#removebinarydatafromdatasetbyids) | Remove the BinaryData from the provided dataset. |
-| [`GetDataPipeline`](/dev/reference/apis/data-client/#getdatapipeline) | Get the configuration of a data pipeline. |
-| [`ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) | Get the configuration for multiple data pipelines. |
+| [`GetDataPipeline`](/dev/reference/apis/data-client/#getdatapipeline) | Get the configuration for a data pipeline. |
+| [`ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) | Get configurations for all data pipeline in an organization. |
 | [`CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline) | Create a data pipeline. |
-| [`DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) | Delete a data pipeline. |
-| [`ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) | List the statuses of individual executions of a data pipeline. |
+| [`DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) | Delete a data pipeline, its execution history, and all of its output data. |
+| [`ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) | Get information about individual executions of a data pipeline. |
