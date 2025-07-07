@@ -46,7 +46,7 @@ viam datapipelines create \
 ```
 
 To pass your query as a file instead of specifying it as inline MQL, pass the `--mql-path` flag instead of `--mql`.
-To query data from the [hot data store](/data-ai/data/hot-data-store/), specify `--data-source-type hotstorage`.
+To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), specify `--data-source-type hotstorage`.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
@@ -76,7 +76,7 @@ request = data_client.create_data_pipeline(
 )
 ```
 
-To query your [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -111,7 +111,7 @@ resp, err := dataClient.CreateDataPipeline(context.Background(), &datapb.CreateD
 })
 ```
 
-To query your hot data store, set your query's `data_source` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -150,12 +150,10 @@ const response = await dataClient.createDataPipeline({
 });
 ```
 
-To query your hot data store, set your query's `dataSource` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `dataSource` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), specify a `dataSourceType` in your pipeline configuration.
 
 {{< alert title="Caution" color="caution" >}}
 
