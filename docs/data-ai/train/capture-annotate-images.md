@@ -286,17 +286,14 @@ You can either manually add annotations through the Viam web UI, or add annotati
 
 ## Annotate images
 
-### Classify images with tags
+Images must be annotated in order to train an ML model on them. Viam supports two ways to annotate an image:
 
-Classification determines a descriptive tag or set of tags for an image.
-For example, you could use classification to answer the following questions:
+- Adding tags to images (classifier)
+- Labeling objects within images (object detector)
 
-- does an image of a food display appear `full`, `empty`, or `average`?
-- the quality of manufacturing output `good` or `bad`?
-- what combination of toppings exists on a pizza: `pepperoni`, `sausage`, and `pepper`? or `pineapple`, `ham`, and `mushroom`?
+### Add tags to an image
 
-Viam supports single and multiple classification.
-To create a training dataset for classification, annotate tags to describe your images.
+Use tags to add metadata about an entire image, for example if the quality of a manufacturing output is `good` or `bad`.
 
 {{< alert title="Tip" color="tip" >}}
 
@@ -509,16 +506,9 @@ await dataClient.addTagsToBinaryDataByIds(tags, myIds);
 
 Once you've annotated your dataset, you can [train](/data-ai/train/train-tflite/) an ML model to make inferences.
 
-### Detect objects with bounding boxes
+### Label objects within an image
 
-Object detection identifies and determines the location of certain objects in an image.
-For example, object detection could help you identify:
-
-- how many `pizza` objects appear on a counter
-- the number of `bicycle` and `pedestrian` objects on a greenway
-- which `plant` objects are popular with `deer` in your garden
-
-To create a training set for object detection, annotate bounding boxes to teach your model to identify objects that you want to detect in future images.
+Use labels to add metadata about objects within an image, for example the number of bicycles in a street scene.
 
 {{< alert title="Tip" color="tip" >}}
 
