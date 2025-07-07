@@ -412,11 +412,23 @@ To transfer ownership of a module from one organization to another:
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
    This ensures that the model names in the module code match the registered model names in the registry.
 
-1. Update the `model` field in the configuration of any machines that use the module to use the new organization's namespace.
+1. (Recommended) Update the `model` field in the configuration of any machines that use the module to use the new organization's namespace.
+   Viam maintains backwards compatibility with the old namespace, but you should update the configuration to use the new namespace to avoid confusion.
 
 ## Rename a module
 
-If you need to change the name of a module, please reach out to the Viam team at [support@viam.com](mailto:support@viam.com).
+You can rename a module that your organization owns through the Viam web interface.
+To rename a module:
+
+1. Navigate to your module page at `app.viam.com/module/<namespace>/<module-name>`.
+1. Click the **...** menu in the top right corner of the module page.
+1. Select **Rename** from the dropdown menu.
+1. Enter the new module name in the modal that appears.
+1. Click **Rename** to confirm the change.
+
+When you rename a module, Viam reserves the old module name for backwards compatibility and you cannot reuse it.
+
+Existing machine configurations containing the old module name will continue to work.
 
 {{% hiddencontent %}}
 
@@ -432,6 +444,7 @@ If you need to change the name of a model that a module implements, do the follo
 
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
 
-1. Update the configuration of any machines that use the module to use the new model name.
+1. (Recommended) Update the configuration of any machines that use the module to use the new model name.
+   Viam maintains backwards compatibility with the old model name, but updating the configuration is recommended to avoid confusion.
 
 {{% /hiddencontent %}}
