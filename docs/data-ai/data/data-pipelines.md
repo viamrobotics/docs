@@ -13,7 +13,7 @@ date: "2025-07-02"
 ---
 
 Data pipelines automatically transform raw sensor readings into summaries and insights at a schedule that you choose.
-Viam stores the output of these pipelines in a cache so that you can access complex aggregation results more efficiently.
+Viam stores the output of these pipelines in a separate, queryable database.
 When late-arriving data syncs to Viam, pipelines automatically re-run to keep summaries accurate.
 
 For example, you could use a data pipeline to pre-calculate the average temperature across multiple sensors for each hour of the day.
