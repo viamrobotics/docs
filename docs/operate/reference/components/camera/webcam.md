@@ -282,14 +282,22 @@ If your device doesn't have enough CPU resources to support your use case, try l
 {{% /expand%}}
 
 {{% expand "macOS camera permissions issues" %}}
-On macOS, if you're having trouble accessing your webcam, you may need to reset camera permissions or check which application has camera access.
+On macOS, if you're having trouble accessing your webcam, you may need to grant camera permissions for the application that you use to run `viam-server`.
 
 **Resetting camera permissions:**
 
-If `viam-server` is not prompting for camera permissions or you need to re-grant permissions, you can reset the camera permissions using the following command:
+If `viam-server` is not prompting for camera permissions or you need to re-grant permissions, you can reset the camera permissions for all applications using the following command:
 
 ```sh {class="command-line" data-prompt="$"}
 tccutil reset Camera
+```
+
+If you know the macOS bundle ID of the application that you use to run `viam-server`, you can pass the bundle ID to limit the camera permissions reset to only that application.
+For instance, you can reset camera permissions for the built-in Terminal app with `tccutil reset Camera com.apple.Terminal`.
+If the command was successful, you should see output similar to the following:
+
+```
+Successfully reset Camera approval status for com.apple.Terminal
 ```
 
 After running this command, restart `viam-server` and it should prompt for camera permissions again.
@@ -297,7 +305,7 @@ After running this command, restart `viam-server` and it should prompt for camer
 **Checking camera permissions:**
 
 To verify camera permissions, go to **System Settings** > **Privacy & Security** > **Camera**.
-Find the application `viam-server` is running in (such as iTerm or Terminal).
+Find the application `viam-server` is running in (such as Terminal or VS Code).
 Ensure that your terminal application has camera access enabled.
 {{% /expand%}}
 
