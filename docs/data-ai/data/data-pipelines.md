@@ -285,7 +285,6 @@ response.data.forEach((doc) => {
 {{% /tab %}}
 {{< /tabs >}}
 
-
 ### List pipelines
 
 {{< tabs >}}
