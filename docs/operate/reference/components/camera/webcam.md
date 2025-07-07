@@ -296,7 +296,7 @@ If you know the macOS bundle ID of the application that you use to run `viam-ser
 For instance, you can reset camera permissions for the built-in Terminal app with `tccutil reset Camera com.apple.Terminal`.
 If the command was successful, you should see output similar to the following:
 
-```
+```sh {class="command-line" data-prompt="$"}
 Successfully reset Camera approval status for com.apple.Terminal
 ```
 
