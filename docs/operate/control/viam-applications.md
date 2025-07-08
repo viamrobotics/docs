@@ -37,7 +37,7 @@ You can build a custom web interface to access your machines using your preferre
 When logging into a Viam application and selecting a machine to use it with, the machine's API key is stored as a cookie.
 You can access the data from your browser's cookies as follows:
 
-````ts {class="line-numbers linkable-line-numbers" data-line=""}
+```ts {class="line-numbers linkable-line-numbers" data-line=""}
 import Cookies from "js-cookie";
 
 let apiKeyId = "";
@@ -52,6 +52,7 @@ machineCookie = window.location.pathname.split("/")[2];
   hostname: hostname,
   machineId: machineId
 } = JSON.parse(Cookies.get(machineCookie)!));
+```
 
 For developing your application on localhost, add the same information to your browser's cookies:
 
@@ -103,7 +104,7 @@ For developing your application on localhost, add the same information to your b
 
    // Execute the function
    generateCookieSetterScript();
-````
+   ```
 
 5. Copy the resulting script. It will look like this:
 
