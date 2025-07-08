@@ -407,8 +407,6 @@ To transfer ownership of a module from one organization to another:
 
    - Throughout your module implementation code, change the model names in your component or service classes to match the changes you made to the `meta.json` file.
 
-1. Run `viam module update` to push the changes to the registry.
-
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
    This ensures that the model names in the module code match the registered model names in the registry.
 
@@ -439,8 +437,6 @@ If you need to change the name of a model that a module implements, do the follo
 1. Update the `model` field in the `meta.json` file to the new model name.
 
 1. Update the model name in the module code to match the new model name.
-
-1. Run `viam module update` to push the changes to the registry.
 
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
 
