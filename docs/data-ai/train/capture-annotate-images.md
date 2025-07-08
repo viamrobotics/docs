@@ -286,10 +286,11 @@ You can either manually add annotations through the Viam web UI, or add annotati
 
 ## Annotate images
 
-Images must be annotated in order to train an ML model on them. Viam supports two ways to annotate an image:
+You must annotate images in order to train an ML model on them.
+Viam supports two ways to annotate an image:
 
-- Adding tags to images (classifier)
-- Labeling objects within images (object detector)
+- Add tags to whole images (classification)
+- Label bounding boxes around objects within images (object detection)
 
 ### Add tags to an image
 
@@ -508,7 +509,7 @@ Once you've annotated your dataset, you can [train](/data-ai/train/train-tflite/
 
 ### Label objects within an image
 
-Use labels to add metadata about objects within an image, for example the number of bicycles in a street scene.
+Use labels to add metadata about objects within an image, for example by drawing bounding boxes around each bicycle in a street scene and adding the bicycle label.
 
 {{< alert title="Tip" color="tip" >}}
 
