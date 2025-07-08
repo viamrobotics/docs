@@ -148,6 +148,7 @@ response.data.forEach((doc) => {
 
 {{% /tab %}}
 {{< /tabs >}}
+
 ### Query limitations
 
 Queries to the hot data store support the following MongoDB aggregation operators:
