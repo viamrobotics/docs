@@ -2,7 +2,7 @@
 linkTitle: "Cache recent data"
 title: "Cache recent data"
 weight: 25
-description: "Make processed automatically available for faster, simpler queries."
+description: "Store the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage."
 type: "docs"
 tags: ["hot data store", "aggregation", "materialized views"]
 icon: true
@@ -12,11 +12,11 @@ platformarea: ["data", "cli"]
 date: "2024-12-03"
 ---
 
-The hot data store enables faster queries on recent sensor data.
+The hot data store caches the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage.
 
 ## Configure
 
-To configure a rolling window of recent data, add the `recent_data_store` configuration to your component's data capture settings:
+To configure a rolling window of recent data to be available for faster queries, add the `recent_data_store` configuration to your component's data capture settings:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="17-19"}
 {
@@ -52,8 +52,8 @@ Set the value of the `stored_hours` field to the number of hours of recent data 
 
 ## Query
 
-Queries typically execute on blob storage.
-To query data from hot data store instead of blob storage, specify hot storage as your data source in your query.
+Queries execute on blob storage by default which is slower than queries to a hot data store.
+If you have configured a hot data store, you must specify it in any queries as the data source to be used for the query. 
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -149,7 +149,6 @@ response.data.forEach((doc) => {
 {{% /tab %}}
 {{< /tabs >}}
 
-All queries that omit `DataSource` will continue to use blob storage.
 
 ### Query limitations
 

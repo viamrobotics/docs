@@ -2,7 +2,7 @@
 linkTitle: "Aggregate data automatically"
 title: "Aggregate data automatically"
 weight: 25
-description: "Make processed data automatically available for faster, simpler queries."
+description: "Create scheduled data pipelines that automatically aggregate and process data."
 type: "docs"
 tags: ["data pipelines", "aggregation", "materialized views"]
 icon: true
@@ -14,10 +14,10 @@ date: "2025-07-02"
 
 Data pipelines automatically transform raw sensor readings into summaries and insights at a schedule that you choose.
 Viam stores the output of these pipelines in a separate, queryable database.
-When late-arriving data syncs to Viam, pipelines automatically re-run to keep summaries accurate.
+When data syncs to Viam significantly after data collection (for instance, when a sensor is temporarily offline), pipelines automatically re-run to keep summaries accurate.
 
-For example, you could use a data pipeline to pre-calculate the average temperature across multiple sensors for each hour of the day.
-If you query that information frequently, this can save significant computational resources.
+For example, you may often query the average temperature across multiple sensors for each hour of the day.
+To make these queries faster, you can use a data pipeline to pre-calculate the results, this can save significant computational resources.
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-To define a new pipeline, call [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline).
+To define a new pipeline, call [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
 ```python
 data_client = DataClient.from_api_key(
@@ -491,7 +491,7 @@ _, err := dataClient.EnableDataPipeline(context.Background(), &datapb.EnableData
 Disabling a data pipeline lets you pause data pipeline execution without fully deleting the pipeline configuration from your organization.
 The pipeline immediately stops aggregating data.
 You can re-enable the pipeline at any time to resume execution.
-Viam won't backfill missed time windows from the period of time when a pipeline was disabled.
+When a pipeline is re-enabled, Viam will not backfill missed time windows from the period of time when a pipeline was disabled.
 
 {{< tabs >}}
 {{% tab name="CLI" %}}
