@@ -53,7 +53,7 @@ Set the value of the `stored_hours` field to the number of hours of recent data 
 ## Query
 
 Queries execute on blob storage by default which is slower than queries to a hot data store.
-If you have configured a hot data store, you must specify it in any queries as the data source to be used for the query. 
+If you have configured a hot data store, you must specify it in any queries as the data source to be used for the query.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -148,8 +148,6 @@ response.data.forEach((doc) => {
 
 {{% /tab %}}
 {{< /tabs >}}
-
-
 ### Query limitations
 
 Queries to the hot data store support the following MongoDB aggregation operators:
