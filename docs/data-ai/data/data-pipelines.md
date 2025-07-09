@@ -14,10 +14,18 @@ date: "2025-07-02"
 
 Data pipelines automatically transform raw sensor readings into summaries and insights at a schedule that you choose.
 Viam stores the output of these pipelines in a separate, queryable database.
-When data syncs to Viam significantly after data collection (for instance, when a sensor is temporarily offline), pipelines automatically re-run to keep summaries accurate.
 
 For example, you may often query the average temperature across multiple sensors for each hour of the day.
-To make these queries faster, you can use a data pipeline to pre-calculate the results, this can save significant computational resources.
+To make these queries faster, you can use a data pipeline to pre-calculate the results, saving significant computational resources.
+
+{{< alert title="Tip" color="tip" >}}
+
+When a machine goes offline, data collection continues but sync pauses.
+`viam-server` stores the data locally and syncs later, when your machine reconnects to Viam.
+
+Once the machine reconnects and syncs this stored data, Viam automatically re-runs affected pipelines to include the new data.
+
+{{< /alert >}}
 
 ## Prerequisites
 
@@ -42,8 +50,7 @@ viam datapipelines create \
   --name=sensor-counts \
   --schedule="0 * * * *" \
   --data-source-type="standard" \
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, ,
-                "count": {"$sum": 1}}, {"$project": {"location": "$_id", "avg_temp": 1, "count": 1}}]'
+  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, "count": {"$sum": 1}}, {"$project": {"location": "$_id", "avg_temp": 1, "count": 1}}]'
 ```
 
 To pass your query as a file instead of specifying it as inline MQL, pass the `--mql-path` flag instead of `--mql`.

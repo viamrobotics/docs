@@ -12,11 +12,12 @@ platformarea: ["data", "cli"]
 date: "2024-12-03"
 ---
 
-The hot data store caches the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage.
+The hot data store caches a rolling window of recent data while continuing to write all data to blob storage.
+Queries to data stored in this cache execute significantly faster than queries to blob storage.
 
 ## Configure
 
-To configure a rolling window of recent data to be available for faster queries, add the `recent_data_store` configuration to your component's data capture settings:
+To configure the hot data store, add the `recent_data_store` configuration to your component's data capture settings:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="17-19"}
 {
