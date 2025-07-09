@@ -197,6 +197,11 @@ The following table contains some common schedules, which correspond to the list
 | `0 0 * * *`    | Daily            | Previous day        |
 | `*/15 * * * *` | Every 15 minutes | Previous 15 minutes |
 
+#### Query limitations
+
+Data pipeline queries only support a subset of MQL aggregation operators.
+For more information, see [Supported aggregation operators](/data-ai/data/query/#supported-aggregation-operators).
+
 ### Query pipeline results
 
 {{< tabs >}}

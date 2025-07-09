@@ -151,31 +151,5 @@ response.data.forEach((doc) => {
 
 ### Query limitations
 
-Queries to the hot data store support the following MongoDB aggregation operators:
-
-<!--
-see whitelistStages in https://github.com/viamrobotics/app/blob/e706a2e3ea57a252f102b37e0ab2b9d6eeed51e0/datamanagement/tabular_data_by_query.go#L64
--->
-
-- `$addFields`
-- `$bucket`
-- `$bucketAuto`
-- `$count`
-- `$densify`
-- `$fill`
-- `$geoNear`
-- `$group`
-- `$limit`
-- `$match`
-- `$project`
-- `$redact`
-- `$replaceRoot`
-- `$replaceWith`
-- `$sample`
-- `$set`
-- `$setWindowFields`
-- `$skip`
-- `$sort`
-- `$sortByCount`
-- `$unset`
-- `$unwind`
+Hot data store queries only support a subset of MQL aggregation operators.
+For more information, see [Supported aggregation operators](/data-ai/data/query/#supported-aggregation-operators).
