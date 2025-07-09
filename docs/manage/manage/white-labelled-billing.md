@@ -175,7 +175,6 @@ This configuration charges customers every month in arrears, which means after u
 
 By setting `"in_arrears": false` you can change the configuration to charge customers upfront.
 
-If you want to charge customer
 
 {{% /tab %}}
 {{% tab name="Example (yearly)" %}}
