@@ -150,6 +150,14 @@ response.data.forEach((doc) => {
 {{% /tab %}}
 {{< /tabs >}}
 
+{{< alert title="Caution" color="caution" >}}
+
+Queries to the hot data store _only_ return data from the hot data store, which only contains data from the time window you specified in your configuration.
+For example, if you queried a hot data store with 24 hours of rolling storage for temperature data above 25C, and no temperature above 25C was recorded in the last 24 hours, your query would return zero results.
+To query the entire history of your data, use blob storage.
+
+{{< /alert >}}
+
 ### Query limitations
 
 Hot data store queries only support a subset of MQL aggregation operators.
