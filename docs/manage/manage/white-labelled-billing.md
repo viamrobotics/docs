@@ -256,13 +256,13 @@ If the `per_machine` field is set, then a machine existing, is considered usage.
 
 ### When are invoices generated?
 
-- **Monthly billing (`in_arrears: true`)**: Invoiced are generated and customers are charged at the end of each month for the per machine cost and usage during that month.
+- **Monthly billing (`in_arrears: true`)**: Invoices are generated and customers are charged at the end of each month for the per machine cost and usage during that month.
   The first 1-month period starts from the subscription date.
   Afterwards each new month starts on the next day after the previous usage month's end.
-- **Monthly billing (`in_arrears: false`)**: Invoiced are generated and customers are charged at the beginning of each new month of usage for the per machine cost.
+- **Monthly billing (`in_arrears: false`)**: Invoices are generated and customers are charged at the beginning of each new month of usage for the per machine cost.
   The first 1-month period starts from the subscription date.
   Afterwards each new month starts on the next day after the previous usage month's end.
-- **Annual billing (`in_arrears: false`)**: Invoiced are generated and customers are charged upfront at the beginning of each 12-month period for the per machine cost.
+- **Annual billing (`in_arrears: false`)**: Invoices are generated and customers are charged upfront at the beginning of each 12-month period for the per machine cost.
   The 12-month period starts from the initial subscription date.
   Each new 12-month period starts on the next day after the previous 12-month period's end.
 
