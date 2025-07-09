@@ -2,7 +2,7 @@
 linkTitle: "Cache recent data"
 title: "Cache recent data"
 weight: 25
-description: "Store the last 24 hours of data in a shared recent-data database, while continuing to write all data to blob storage."
+description: "Cache recent data while continuing to write all data to blob storage."
 type: "docs"
 tags: ["hot data store", "aggregation", "materialized views"]
 icon: true

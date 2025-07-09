@@ -29,7 +29,7 @@ Once the machine reconnects and syncs this stored data, Viam automatically re-ru
 
 ## Prerequisites
 
-Before creating a data pipeline, you must enable data capture from at least one component and begin syncing data with Viam.
+While not a requirement, it is easier to test data pipelines if you have already enabled data capture from at least one component and begun syncing data with Viam before setting up a pipeline.
 
 Only users with organization owner permissions can create a data pipeline.
 
