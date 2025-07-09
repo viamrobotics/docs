@@ -43,7 +43,7 @@ viam datapipelines create \
   --schedule="0 * * * *" \
   --data-source-type="standard" \
   --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, ,
-                "count": {"$sum": 1}}, {"$project": {"location": "$_id", "avg": 1}}]'
+                "count": {"$sum": 1}}, {"$project": {"location": "$_id", "avg_temp": 1, "count": 1}}]'
 ```
 
 To pass your query as a file instead of specifying it as inline MQL, pass the `--mql-path` flag instead of `--mql`.
@@ -210,8 +210,8 @@ For more information, see [Supported aggregation operators](/data-ai/data/query/
 To query the results of your data pipeline, call [`DataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
 Configure the `data_source` argument with the following fields:
 
-- a `type` of `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
-- a `pipeline_id` of your pipeline's ID
+- `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
+- `pipeline_id`: your pipeline ID
 
 ```python
 data_client = DataClient.from_api_key(
@@ -240,8 +240,8 @@ for document in results:
 To query the results of your data pipeline, call [`DataClient.TabularDataByMQL`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByMQL).
 Configure the `DataSource` argument with the following fields:
 
-- a `Type` of `datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
-- a `PipelineId` of your pipeline's ID
+- `Type`: `datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
+- `PipelineId`: your pipeline's ID
 
 ```go
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
@@ -276,8 +276,8 @@ for _, doc := range resp.Data {
 To query the results of your data pipeline, call [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
 Configure the `data_source` argument with the following fields:
 
-- a `type` of `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
-- a `pipelineId` of your pipeline's ID
+- `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
+- `pipelineId`: your pipeline's ID
 
 ```typescript
 const apiKey = "<api-key>";
@@ -417,8 +417,8 @@ viam datapipelines update \
   --org-id=<org-id> \
   --id=<pipeline-id> \
   --schedule="0 * * * *" \
-  --name="updated-name"
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg": {"$avg": "$data.readings.value"}}}]'
+  --name="updated-name" \
+  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$part_id", "total": {"$sum": "$1"}}, {"$project": {"part": "$_id", "avg_temp": 1, "count": 1}}]'
 ```
 
 To pass your query from a file instead of from inline MQL, pass the `--mql-path` flag instead of `--mql`.
@@ -444,6 +444,12 @@ pipeline := [][]byte{
             "_id": "$part_id",
             "total": bson.M{"$sum": 1},
         },
+    bson.Marshal(bson.M{
+        "$group": bson.M{
+            "part": "$_id",
+            "total": 1,
+        },
+    }),
     }),
 }
 
