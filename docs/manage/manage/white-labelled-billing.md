@@ -107,6 +107,7 @@ To use custom billing, add a billing configuration to a fragment.
 1. Select the fragment you use for your machines.
 1. Click **+** and add **Billing**
 1. Adjust attributes as needed.
+1. Mark the fragment as public or unlisted.
 1. Save the fragment.
 1. Add the fragment to the machines that you want to bill for.
 
