@@ -61,7 +61,7 @@ function tdPersistActiveTab(activeTabKey) {
 
 function tdGetAndActivatePersistedTabs(tabs) {
   // Only switch tabs for programming languages, web ui, and cli
-  var keyOfTabsInThisPage = ["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter"];
+  var keyOfTabsInThisPage = ["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter", "Python: venv", "Python: Hot reloading (recommended)", "Python: PyInstaller (recommended)"];
 
   // Create a list of active tabs with their age:
   let key_ageList = keyOfTabsInThisPage
