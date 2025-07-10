@@ -84,8 +84,17 @@ If you want to plan your module before you write it, you can use the following s
 3. **Decide on configuration attributes and dependencies**
 
    Make a list of required and optional attributes for users to configure when adding your module to a machine.
-   For example, you can require users to configure a path from which to access data, or a pin to which a device is wired, and you could allow them to optionally change a frequency from some default.
-   You'll need to add these attributes to the `Validate` and `Reconfigure` functions when you write the module.
+   Some examples of attributes:
+
+   - A filepath from which to access data
+   - A pin to which a device is wired
+   - An optional signal frequency to override a default value
+
+   You can also add dependencies to other resources that your module needs to use.
+   For example, if your module needs to access a camera, code your module to get a camera resource as a dependency.
+   This will allow you to access the camera with the camera API methods from within your module.
+
+   You'll add these attributes and dependencies to the `Validate` and `Reconfigure` functions when you write the module.
 
 {{< /expand >}}
 
@@ -155,7 +164,7 @@ Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary import
 **Edit the `validate_config` function** to do the following:
 
 - Check that the user has configured required attributes and return errors if they are missing.
-- Return a map of any dependencies.
+- Return a map of any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs to use).
 
 For more information, see [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
 
@@ -167,7 +176,7 @@ This function should do the following:
 
 - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
 - Assign default values as necessary to any optional attributes if the user hasn't configured them.
-- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as in [this <file>ackermann.py</file> example](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py).
+- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
   {{% /tablestep %}}
   {{< tablestep number=4 >}}
 
