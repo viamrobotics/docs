@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/gpio/"
-component_description: "Supports hobby servos wired to any model of board besides pi."
+component_description: "Supports a hobby servo wired to a board that supports PWM, for example Raspberry Pi 5, Orange Pi, Jetson, or PCAXXXX."
 toc_hide: true
 # SME: Rand
 ---
