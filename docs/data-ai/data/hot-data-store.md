@@ -1,8 +1,8 @@
 ---
-linkTitle: "Cache recent data"
-title: "Cache recent data"
+linkTitle: "Speed up queries to recent data"
+title: "Speed up queries to recent data"
 weight: 25
-description: "Cache recent data while continuing to write all data to blob storage."
+description: "Store a rolling window of recent data for fast queries while continuing to write all data to blob storage."
 type: "docs"
 tags: ["hot data store", "aggregation", "materialized views"]
 icon: true
@@ -12,8 +12,8 @@ platformarea: ["data", "cli"]
 date: "2024-12-03"
 ---
 
-The hot data store caches a rolling window of recent data while continuing to write all data to blob storage.
-Queries to data stored in this cache execute significantly faster than queries to blob storage.
+The hot data store stores a rolling window of recent data while continuing to write all data to blob storage.
+Queries to the hot data store execute significantly faster than queries to blob storage.
 
 ## Configure
 
@@ -49,7 +49,7 @@ To configure the hot data store, add the `recent_data_store` configuration to yo
 }
 ```
 
-Set the value of the `stored_hours` field to the number of hours of recent data you would like to cache in the hot data store.
+Set the value of the `stored_hours` field to the number of hours of recent data you would like to store.
 
 ## Query
 
