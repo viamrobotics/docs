@@ -81,7 +81,7 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
    sudo systemctl stop viam-server
    ```
 
-1. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
+1. Then run `viam-server` with the `-debug` and `-log-file` options and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
@@ -103,7 +103,7 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
    ```
 
 1. Kill the running `viam-server` instance.
-1. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
+1. Then run `viam-server` with the `-debug` and `-log-file` options and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    viam-server -config ~/Downloads/viam.json -debug -log-file logs.txt
