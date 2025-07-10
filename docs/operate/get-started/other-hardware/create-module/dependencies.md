@@ -1,5 +1,5 @@
 ---
-title: "Module dependencies"
+title: "Access other resources from within a module"
 linkTitle: "Module dependencies"
 weight: 25
 layout: "docs"
@@ -13,7 +13,9 @@ aliases:
 
 Dependencies are other {{< glossary_tooltip term_id="resource" text="resources" >}} that your modular resource needs to access in order to function.
 
-For example, you could write a sensor component that requires a camera component, meaning that the camera is a dependency of that sensor.
+For example, you could write a sensor component that has a camera component as a dependency.
+This allows the sensor module to access data from the camera by using the camera API methods on the camera client from within the sensor module.
+
 The component configuration for the sensor could look like this, with the name of the camera as an attribute:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6"}
@@ -28,11 +30,11 @@ The component configuration for the sensor could look like this, with the name o
 ```
 
 Dependencies are configured just like any other resource attribute.
-The difference is that dependencies represent other resources that are accessed by the resource that depends on them.
+The difference is that dependencies represent other resources, and they are treated specially in the `validate_config` and `reconfigure` functions.
 
 When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/lifecycle-module/), it builds the dependencies first.
 
-## Use dependencies
+## Write dependencies into your module
 
 From within a module, you cannot access resources in the same way that you would in a client application.
 For example, you cannot call `Camera.from_robot()` to get a camera resource.
@@ -191,6 +193,8 @@ When an optional dependency constructs successfully, your modular resource recon
 
 Optional dependencies are not necessarily built first, even if they are available.
 
+Use optional dependencies for intermittently available resources.
+
 Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
 {{< tabs >}}
@@ -286,6 +290,119 @@ Be sure to handle the case where the dependency is not available in your API imp
 There is not currently an SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
 You must access the API key module environment variables to establish the app client connection.
 {{% /hiddencontent %}}
+
+## Use SDK methods on dependencies
+
+Once you have added a dependency to your module, you can use SDK methods on the resource client.
+For example:
+
+{{< tabs >}}
+{{% tab name="Component" %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{% tab name="Appclient" %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+img = await self.the_camera.get_image()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+img, imgMetadata, err := s.camera.Image(ctx, utils.MimeTypeJPEG, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{% tab name="Motion service" %}}
+
+The motion service is available by default as part of `viam-server`.
+This default motion service is available using the resource name `builtin` even though it does not appear in your machine config.
+You do not need to add it to your `Validate` function because it is always enabled.
+
+If you are accessing a different motion service, use the resource name you configured, and add it to your `Validate` function.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# Return the motion service as a dependency
+@classmethod
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
+    req_deps = []
+    req_deps.append("builtin")
+    return req_deps, []
+
+# Add the motion service as an instance variable
+def reconfigure(
+    self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+):
+    motion_resource = dependencies[Motion.get_resource_name("builtin")]
+    self.motion_service = cast(MotionClient, motion_resource)
+
+    return super().reconfigure(config, dependencies)
+
+# Use the motion service
+def move_around_in_some_way(self):
+    moved = await self.motion_service.move(gripper_name, destination, world_state)
+    return moved
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Return the motion service as a dependency
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
+  deps := []string{motion.Named("builtin").String()}
+  return deps, nil, nil
+}
+
+// Then use the motion service, for example:
+func (c *Component) MoveAroundInSomeWay() error {
+  c.Motion, err = motion.FromDependencies(deps, "builtin")
+  if err != nil {
+    return nil, err
+  }
+  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
+    ComponentName: gripperName,
+    Destination: destination,
+    WorldState: worldState
+  })
+  return moved, err
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Configure your module's dependencies more easily with a discovery service
 
