@@ -85,7 +85,7 @@ function tdGetAndActivatePersistedTabs(tabs) {
 
 function tdRegisterTabClickHandler(tabs) {
   tabs.forEach((tab) => {
-    if (["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter"].includes(tab.text)) {
+    if (["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter", "Python: venv", "Python: Hot reloading (recommended)", "Python: PyInstaller (recommended)"].includes(tab.text)) {
       tab.addEventListener('click', (event) => {
         const activeTabKey = tab.getAttribute("data-td-tp-persist");
         tdPersistActiveTab(activeTabKey);
