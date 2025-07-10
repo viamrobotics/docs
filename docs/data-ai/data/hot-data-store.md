@@ -17,7 +17,9 @@ Queries to the hot data store execute significantly faster than queries to blob 
 
 ## Configure
 
-To configure the hot data store, add the `recent_data_store` configuration to your component's data capture settings:
+To configure the hot data store, add the `recent_data_store` configuration to your component's data capture settings.
+Set the value of the `stored_hours` field to the number of hours of recent data you would like to store.
+For example, the following configuration stores 24 hours of data in the hot data store:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="17-19"}
 {
@@ -48,8 +50,6 @@ To configure the hot data store, add the `recent_data_store` configuration to yo
   ]
 }
 ```
-
-Set the value of the `stored_hours` field to the number of hours of recent data you would like to store.
 
 ## Query
 
