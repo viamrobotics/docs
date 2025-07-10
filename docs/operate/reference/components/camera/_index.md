@@ -35,8 +35,6 @@ The following list shows the available camera models.
 The configuration of your camera component depends on your camera model.
 For additional configuration information, click on the model name:
 
-You can also add notes to your camera configuration to document its purpose, location, or other important details. In the camera configuration card, look for the **Notes** section at the bottom and click **Add notes** to add descriptive information.
-
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 

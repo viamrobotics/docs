@@ -44,7 +44,8 @@ date: "2024-09-18"
 
 {{% changelog color="added" title="Notes section for resource configuration cards" date="2025-07-10" %}}
 
-You can now add descriptive notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules. The Notes section appears at the bottom of each resource configuration card in both machine builder and fragment builder. Notes are stored as a first-order property in your configuration and help document the purpose, configuration details, or other important information about your resources.
+You can now add descriptive notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules.
+The Notes section appears at the bottom of each resource configuration card in both machine builder and fragment builder.
 
 {{% /changelog %}}
 

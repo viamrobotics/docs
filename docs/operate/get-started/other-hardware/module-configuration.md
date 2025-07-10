@@ -82,6 +82,7 @@ The following properties are available for modular resources:
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/get-started/other-hardware/create-module/dependencies/). |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
+| `log_configuration` | object | Optional | Set  the log levels for individual resources. See [Logging](/operate/reference/viam-server/#logging). |
 
 ## Module configuration details
 

@@ -35,8 +35,6 @@ This defines the spatial context within which the motion service operates.
 
 The motion service itself is enabled on the machine by default, so you do not need to add any extra configuration to enable it.
 
-You can add notes to your motion service configuration to document any specific settings, constraints, or important information about how motion planning is configured for your machine. In the motion service configuration card, look for the **Notes** section at the bottom and click **Add notes** to add descriptive information.
-
 ## API
 
 The [motion service API](/dev/reference/apis/services/motion/) supports the following methods:
