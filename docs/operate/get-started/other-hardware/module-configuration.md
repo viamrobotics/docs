@@ -81,6 +81,7 @@ The following properties are available for modular resources:
 | `api` | string | **Required** | The {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/get-started/other-hardware/create-module/dependencies/). |
+| `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
 
 ## Module configuration details
 
@@ -206,6 +207,7 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
 | `executable_path` | string | Local modules only | The path to the module's executable file. Only applicable to, and required for, local modules. Registry modules use the `entrypoint` in the [<file>meta.json</file> file](/operate/get-started/other-hardware/create-module/metajson/) instead. |
 | `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
+| `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this module. |
 
 ### Module versioning
 

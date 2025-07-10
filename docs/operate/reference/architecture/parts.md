@@ -119,6 +119,8 @@ To establish a connection between a part of one machine and a part of a second m
    Alternatively, click **Add empty remote** and then scroll to the newly-created remote part configuration card.
    Click on **{}** (Switch to advanced) and replace the JSON object with the remote config you copied in step 4.
 
+   You can also add notes to your remote part configuration to document its purpose, connection details, or other important information. In the remote part configuration card, look for the **Notes** section at the bottom and click **Add notes** to add descriptive information.
+
    {{<imgproc src="/build/configure/parts/remote-config.png" resize="x1100" declaredimensions=true alt="The configured remote." style="width:700px" class="shadow" >}}
 
 9. Click **Save** in the upper right corner of the page to save your config.

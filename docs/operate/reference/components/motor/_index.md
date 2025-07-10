@@ -33,6 +33,8 @@ Go to your machine's **CONFIGURE** page, and add a model that supports your moto
 The following list shows the available motor models.
 For additional configuration information, click on the model name:
 
+You can also add notes to your motor configuration to document its purpose, specifications, or other important details. In the motor configuration card, look for the **Notes** section at the bottom and click **Add notes** to add descriptive information.
+
 {{< tabs >}}
 {{% tab name="viam-server" %}}
 

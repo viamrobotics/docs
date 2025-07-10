@@ -42,6 +42,8 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 Fragments support all available resources except [triggers](/data-ai/reference/triggers-configuration/).
 You can even add other fragments inside a fragment.
 
+You can also add notes to any resource in your fragment to document its purpose, configuration details, or other important information. The Notes section appears at the bottom of each resource configuration card and allows you to add descriptive text that will be included when the fragment is used on machines.
+
 {{< alert title="Tip" color="tip" >}}
 If you already created a machine to test your configuration, you can **Switch to JSON**, copy its JSON configuration and paste it into the fragment.
 
