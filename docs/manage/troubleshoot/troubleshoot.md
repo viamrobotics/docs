@@ -75,34 +75,41 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
    root       865  1.6  0.2  11612  2428 ?        Ssl  11:42   0:56 /usr/local/bin/viam-server -config /etc/viam.json
    ```
 
-2. Stop the system service running `viam-server`:
+1. Stop the system service running `viam-server`:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    sudo systemctl stop viam-server
    ```
 
-3. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
+1. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
    ```
 
-4. Then check the logs file <FILE>logs.txt</FILE>.
+1. Then check the logs file <FILE>logs.txt</FILE>.
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-`viam-server` does not store logs in a file on your machine.
-To view logs, stop the running `viam-server` instance, and restart it which will send the logs to STDOUT in the current terminal window.
+By default, `viam-server` writes logs to STDOUT and does not store them in a file on your machine.
+If you want to store your logs in a file, stop the running `viam-server` instance, and restart it with the `-logfile` option.
 
-1. Kill the running `viam-server` instance.
-2. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
+1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
-   ```sh {class="command-line" data-prompt="$" data-output=""}
-   viam-server -config ~/Downloads/viam.json -debug
+   ```sh {class="command-line" data-prompt="$" data-output="2"}
+   ps aux | grep viam-server
+   naomi             8738   1.1  0.3 412233296  50720 s000  S+    5:24pm   0:00.40 viam-server -config /Users/naomi/Downloads/viam-mac-main.json
    ```
 
-   You can check the exact command by consulting the setup instructions for your machine.
+1. Kill the running `viam-server` instance.
+1. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
+
+   ```sh {class="command-line" data-prompt="$" data-output=""}
+   viam-server -config ~/Downloads/viam.json -debug -log-file logs.txt
+   ```
+
+1. Then check the logs file <FILE>logs.txt</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
