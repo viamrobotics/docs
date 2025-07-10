@@ -60,8 +60,8 @@ function tdPersistActiveTab(activeTabKey) {
 // Handlers
 
 function tdGetAndActivatePersistedTabs(tabs) {
-  // Only switch tabs for programming languages
-  var keyOfTabsInThisPage = ["Python", "Go", "C++", "TypeScript", "Flutter"];
+  // Only switch tabs for programming languages, web ui, and cli
+  var keyOfTabsInThisPage = ["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter"];
 
   // Create a list of active tabs with their age:
   let key_ageList = keyOfTabsInThisPage
@@ -85,7 +85,7 @@ function tdGetAndActivatePersistedTabs(tabs) {
 
 function tdRegisterTabClickHandler(tabs) {
   tabs.forEach((tab) => {
-    if (["Python", "Go", "C++", "TypeScript", "Flutter"].includes(tab.text)) {
+    if (["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter"].includes(tab.text)) {
       tab.addEventListener('click', (event) => {
         const activeTabKey = tab.getAttribute("data-td-tp-persist");
         tdPersistActiveTab(activeTabKey);
