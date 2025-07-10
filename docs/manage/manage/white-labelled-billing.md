@@ -265,10 +265,8 @@ If the `per_machine` field is set, then a machine existing, is considered usage.
   The 12-month period starts from the initial subscription date.
   Each new 12-month period starts on the next day after the previous 12-month period's end.
 
-### Can customers switch from monthly to annual?
+### Can customers switch between monthly and annual billing?
 
-Yes. We recommend that you wait until the end of the current billing cycle to remove the old billing fragment and assign the new billing fragment.
-
-### Can customers switch from annual to monthly?
-
-This is not currently possible.
+Yes. However, switching billing fragments will result in the new charge immediately taking effect.
+We recommend that you wait until the end of the current billing cycle to remove the old billing
+fragment and assign the new billing fragment.
