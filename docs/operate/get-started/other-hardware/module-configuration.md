@@ -27,7 +27,7 @@ The following image shows an example of a configured modular resource, specifica
 This modular component is made available by the `ultrasonic` module.
 See [module configuration](#module-configuration-details).
 
-{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example." class="shadow imgzoom" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -91,7 +91,7 @@ The following properties are available for modular resources:
 The following image shows an example of a configured module in a machine's config.
 This ultrasonic sensor in the previous section is provided by the [`ultrasonic` module](https://app.viam.com/module/viam/ultrasonic) shown here.
 
-{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow imgzoom" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -217,7 +217,7 @@ By default, a newly-added module is set to pin to the latest release (**Latest**
 
 To change the update strategy for your module, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
 
-{{<imgproc src="registry/modular-resources/deployed-module-with-component.png" style="width: 400px" resize="500x" declaredimensions=true alt="The module card" class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow imgzoom" >}}
 
 The following update options are available:
 
