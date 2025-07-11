@@ -38,6 +38,14 @@ If not follow the steps for the standalone version.
 {{< tabs >}}
 {{% tab name="Installed with viam-agent" %}}
 
+On Linux, you can query your logs with `journalctl`:
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+sudo journalctl --unit=viam-agent
+```
+
+Alternatively you can restart `viam-server` manually and write logs to a log file:
+
 1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
    ```sh {class="command-line" data-prompt="$" data-output="2"}
@@ -65,8 +73,13 @@ If not follow the steps for the standalone version.
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-By default, `viam-server` writes logs to STDOUT and does not store them in a file on your machine.
-If you want to store your logs in a file, stop the running `viam-server` instance, and restart it with the `-logfile` option.
+On Linux, you can query your logs with `journalctl`:
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+sudo journalctl --unit=viam-server
+```
+
+Alternatively you can restart `viam-server` and write logs to a log file by stopping the running `viam-server` instance, and restarting it with the `-logfile` option:
 
 1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
