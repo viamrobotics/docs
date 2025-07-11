@@ -257,11 +257,11 @@ If the `per_machine` field is set, then a machine existing, is considered usage.
 
 - **Monthly billing (`in_arrears: true`)**: Invoices are generated on the first day of the month and customers are charged at the end of each month for the per machine cost and usage during that month.
   For example, if you set up a machine on June 20, you'll get an invoice on July 1 for 10 days of usage. Then you'll get the next invoice on August 1 for the usage in July.
-- **Monthly billing (`in_arrears: false`)**: Invoices are generated within 30 to 90 minutes after the billing fragment is added to the machine and customers are charged at the beginning of each new month of usage for the per machine cost.
-  For example, if you set up a monthly upfront machine on June 20, you'll get an invoice within an hour or two.
+- **Monthly billing (`in_arrears: false`)**: Invoices are generated shortly after the billing fragment is added to the machine and customers are charged at the beginning of each new month of usage for the per machine cost.
+  For example, if you set up a monthly upfront machine on June 20, you'll get an invoice shortly after on the same day.
   Then you'll get the next invoice on July 20, then August 20, and so on.
-- **Annual billing (`in_arrears: false`)**: Invoices are generated within 30 to 90 minutes after the billing fragment is added to the machine and customers are charged at the beginning of each new year of usage for the per machine cost.
-  For example, if you set up an annual upfront machine on June 20, you'll get an invoice within an hour or two.
+- **Annual billing (`in_arrears: false`)**: Invoices are generated shortly after the billing fragment is added to the machine and customers are charged at the beginning of each new year of usage for the per machine cost.
+  For example, if you set up an annual upfront machine on June 20, you'll get an invoice shortly after on the same day.
   Then you'll get the next invoice on June 20 the following year.
 
 ### Can customers switch between monthly and annual billing?
