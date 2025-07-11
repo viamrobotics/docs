@@ -378,7 +378,7 @@ async def create_appclient_from_module():
 
     if not api_key or not api_key_id:
         raise Exception("VIAM_API_KEY and VIAM_API_KEY_ID " +
-        "environment variables are required")
+                        "environment variables are required")
 
     # Create dial options with API key authentication
     dial_options = DialOptions(
@@ -425,7 +425,8 @@ async def create_robotclient():
 
     if not api_key or not api_key_id or not machine_fqdn:
         raise Exception("VIAM_API_KEY, VIAM_API_KEY_ID, and " +
-        "VIAM_MACHINE_FQDN environment variables are required")
+                        "VIAM_MACHINE_FQDN " +
+                        "environment variables are required")
 
     # Create robot client options with API key authentication
     opts = RobotClient.Options.with_api_key(
@@ -524,17 +525,19 @@ def validate_config(
 
 # Add the motion service as an instance variable
 def reconfigure(
-    self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    self, config: ComponentConfig, dependencies: Mapping[
+      ResourceName, ResourceBase]
 ):
     motion_resource = dependencies[Motion.get_resource_name("builtin")]
     self.motion_service = cast(MotionClient, motion_resource)
 
     return super().reconfigure(config, dependencies)
 
+
 # Use the motion service
 def move_around_in_some_way(self):
-    moved = await self.motion_service.move(gripper_name,
-    destination, world_state)
+    moved = await self.motion_service.move(
+        gripper_name, destination, world_state)
     return moved
 ```
 
