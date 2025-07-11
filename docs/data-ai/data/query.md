@@ -1,7 +1,7 @@
 ---
 linkTitle: "Query data"
 title: "Query data"
-weight: 20
+weight: 30
 layout: "docs"
 type: "docs"
 aliases:
@@ -346,6 +346,37 @@ On top of querying sensor data with third-party tools, you can also [query it wi
 ### MQL
 
 Viam supports the [MongoDB Query Language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
+
+#### Supported aggregation operators
+
+Viam supports the following MongoDB aggregation operators:
+
+<!--
+see whitelistStages in https://github.com/viamrobotics/app/blob/e706a2e3ea57a252f102b37e0ab2b9d6eeed51e0/datamanagement/tabular_data_by_query.go#L64
+-->
+
+- `$addFields`
+- `$bucket`
+- `$bucketAuto`
+- `$count`
+- `$densify`
+- `$fill`
+- `$geoNear`
+- `$group`
+- `$limit`
+- `$match`
+- `$project`
+- `$redact`
+- `$replaceRoot`
+- `$replaceWith`
+- `$sample`
+- `$set`
+- `$setWindowFields`
+- `$skip`
+- `$sort`
+- `$sortByCount`
+- `$unset`
+- `$unwind`
 
 ### SQL
 

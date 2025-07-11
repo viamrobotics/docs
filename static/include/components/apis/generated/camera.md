@@ -125,22 +125,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, "my_camera");
+const camera = new VIAM.CameraClient(machine, 'my_camera');
 const image = await camera.getImage();
 
 // Convert Uint8Array to base64
 const base64Image = btoa(
   Array.from(image)
     .map((byte) => String.fromCharCode(byte))
-    .join(""),
+    .join('')
 );
 
 // Convert image to base64 and display it
-const imageElement = document.createElement("img");
+const imageElement = document.createElement('img');
 imageElement.src = `data:image/jpeg;base64,${base64Image}`;
-const imageContainer = document.getElementById("#imageContainer");
+const imageContainer = document.getElementById('#imageContainer');
 if (imageContainer) {
-  imageContainer.innerHTML = "";
+  imageContainer.innerHTML = '';
   imageContainer.appendChild(imageElement);
 }
 ```
@@ -153,11 +153,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `mimeType` [MimeType](https://flutter.viam.dev/viam_sdk/MimeType-class.html)? (optional)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
 
 **Example:**
 
@@ -254,8 +254,8 @@ A specific MIME type can be requested but may not necessarily be the same one re
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, "my_camera");
-const mimeType = "image/jpeg";
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const mimeType = 'image/jpeg';
 const image = await camera.renderFrame(mimeType);
 ```
 
@@ -338,7 +338,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, "my_camera");
+const camera = new VIAM.CameraClient(machine, 'my_camera');
 const pointCloud = await camera.getPointCloud();
 ```
 
@@ -349,11 +349,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
 
 **Example:**
 
@@ -419,7 +419,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, "my_camera");
+const camera = new VIAM.CameraClient(machine, 'my_camera');
 const properties = await camera.getProperties();
 ```
 
@@ -434,7 +434,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)>
 
 **Example:**
 
@@ -519,12 +519,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: "value" },
-  }),
+    myCommand: { key: 'value' },
+  })
 );
 ```
 
@@ -535,11 +535,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 

@@ -201,6 +201,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(uint32)](https://pkg.go.dev/builtin#uint32)
+- [([]string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
@@ -215,7 +216,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number>)
+- (Promise<[number, string[]]>)
 
 **Example:**
 

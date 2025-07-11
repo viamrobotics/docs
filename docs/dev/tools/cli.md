@@ -398,7 +398,7 @@ The `datapipelines` command provides access to data pipelines for processing mac
 Data pipelines help you optimize query performance for frequently accessed complex data transformations.
 
 ```sh {class="command-line" data-prompt="$"}
-viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
+viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> --data-source-type=<type>
 viam datapipelines update --id=<pipeline-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
 viam datapipelines list --org-id=<org-id>
 viam datapipelines describe --id=<pipeline-id>
@@ -409,10 +409,10 @@ Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # create a new data pipeline with standard data source type (default)
-viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --mql='[{"$match": {"component_name": "sensor1"}}]'
+viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --data-source-type=standard --mql='[{"$match": {"component_name": "sensor1"}}]'
 
 # create a data pipeline with hot storage data source type for faster access
-viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --mql='[{"$match": {"component_name": "camera1"}}]' --data-source-type=hotstorage
+viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hotstorage --mql='[{"$match": {"component_name": "camera1"}}]'
 
 # disable a pipeline
 viam datapipelines disable --id=abc123
@@ -453,11 +453,11 @@ viam datapipelines delete --id=abc123
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
-| `--name` | Name of the data pipeline. | `create`, `update` | **Required** |
-| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** |
+| `--name` | Name of the data pipeline. | `create`, `update` | **Required** for `create` |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** for `create` |
 | `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
-| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | **Required** for `create` |
 | `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
 
 ### `dataset`
