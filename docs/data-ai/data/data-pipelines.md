@@ -302,12 +302,13 @@ const dataClient = client.dataClient;
 const query = [BSON.serialize({})];
 
 const response = await dataClient.tabularDataByMQL({
-  organizationId: "<org-id>",
-  mqlBinary: query,
-  dataSource: {
-    type: TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
+  "<org-id>",
+  query,
+  false,
+  new TabularDataSource({
+    type: TabularDataSourceType.PIPELINE_SINK,
     pipelineId: "<pipeline-id>",
-  },
+  }),
 });
 
 response.data.forEach((doc) => {
