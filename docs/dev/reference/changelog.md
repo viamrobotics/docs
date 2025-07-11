@@ -42,6 +42,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-10" %}}
+
+You can now configure annual billing alongside monthly billing options for your organizations.
+See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+{{% /changelog %}}
+
 {{% changelog color="added" title="Notes section for resource configuration cards" date="2025-07-10" %}}
 
 You can now add descriptive notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules.
