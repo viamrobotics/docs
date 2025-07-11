@@ -370,13 +370,15 @@ import os
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
+
 async def create_appclient_from_module():
     # Get API credentials from module environment variables
     api_key = os.environ.get("VIAM_API_KEY")
     api_key_id = os.environ.get("VIAM_API_KEY_ID")
 
     if not api_key or not api_key_id:
-        raise Exception("VIAM_API_KEY and VIAM_API_KEY_ID environment variables are required")
+        raise Exception("VIAM_API_KEY and VIAM_API_KEY_ID " +
+        "environment variables are required")
 
     # Create dial options with API key authentication
     dial_options = DialOptions(
@@ -392,6 +394,7 @@ async def create_appclient_from_module():
     app_client = viam_client.app_client
 
     return app_client
+
 
 # Use the appclient in your module
 async def some_module_function(self):
@@ -421,7 +424,8 @@ async def create_robotclient():
     machine_fqdn = os.environ.get("VIAM_MACHINE_FQDN")
 
     if not api_key or not api_key_id or not machine_fqdn:
-        raise Exception("VIAM_API_KEY, VIAM_API_KEY_ID, and VIAM_MACHINE_FQDN environment variables are required")
+        raise Exception("VIAM_API_KEY, VIAM_API_KEY_ID, and " +
+        "VIAM_MACHINE_FQDN environment variables are required")
 
     # Create robot client options with API key authentication
     opts = RobotClient.Options.with_api_key(
@@ -433,6 +437,7 @@ async def create_robotclient():
     robot_client = await RobotClient.at_address(machine_fqdn, opts)
 
     return robot_client
+
 
 # Use the robot client
 async def some_module_function(self):
@@ -453,7 +458,8 @@ func createRobotClientFromModule(ctx context.Context) (client.RobotClient, error
     machineFQDN := os.Getenv("VIAM_MACHINE_FQDN")
 
     if apiKey == "" || apiKeyID == "" || machineFQDN == "" {
-        return nil, fmt.Errorf("VIAM_API_KEY, VIAM_API_KEY_ID, and VIAM_MACHINE_FQDN environment variables are required")
+        return nil, fmt.Errorf("VIAM_API_KEY, VIAM_API_KEY_ID, and " +
+            "VIAM_MACHINE_FQDN environment variables are required")
     }
 
     logger := logging.NewLogger("client")
@@ -515,6 +521,7 @@ def validate_config(
     req_deps.append("builtin")
     return req_deps, []
 
+
 # Add the motion service as an instance variable
 def reconfigure(
     self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
@@ -526,7 +533,8 @@ def reconfigure(
 
 # Use the motion service
 def move_around_in_some_way(self):
-    moved = await self.motion_service.move(gripper_name, destination, world_state)
+    moved = await self.motion_service.move(gripper_name,
+    destination, world_state)
     return moved
 ```
 
