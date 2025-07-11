@@ -40,7 +40,7 @@ If not follow the steps for the standalone version.
 
 On Linux, you can query your logs with `journalctl`:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
 sudo journalctl --unit=viam-agent
 ```
 
@@ -75,7 +75,7 @@ Alternatively you can restart `viam-server` manually and write logs to a log fil
 
 On Linux, you can query your logs with `journalctl`:
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
 sudo journalctl --unit=viam-server
 ```
 
@@ -134,13 +134,15 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
 Be aware that while your machine is not able to connect to Viam, any changes to the machine's configuration that you make in the web UI will not reach your machine.
 {{< /alert >}}
 
-### Check for errors on the CONFIGURE page
+### Machine shows as online
+
+#### Check for errors on the CONFIGURE page
 
 Go to your machine's **CONFIGURE** page and check whether any configured components have a red exclamation symbol on their configuration card.
 If so click on the symbol or expand the **ERROR LOGS** panel.
 The expanded panel shows you errors produced by that resource.
 
-### Check logs on the LOGS tab
+#### Check logs on the LOGS tab
 
 If your machine shows as online, go to the **LOGS** tab and check for errors or other information relevant to the issue.
 
