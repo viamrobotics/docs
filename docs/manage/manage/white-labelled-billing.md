@@ -150,7 +150,7 @@ To use custom billing, add a billing configuration to a fragment.
     "tier_name": "example-tier",
     "description": "",
     "tier_credit": 0.0,
-    "in_arrears": true
+    "in_arrears": false
   }
 }
 ```
