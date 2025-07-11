@@ -209,6 +209,17 @@ This can happen when there is a slow internet connection, when the module is try
   You can set these environment variables when you start `viam-server`, for instance `VIAM_MODULE_STARTUP_TIMEOUT=6m30 VIAM_RESOURCE_CONFIGURATION_TIMEOUT=3m0s viam-server -config example-machine.json`.
   Pass a sequence of numbers and time units, for example "6m30s50ms" for a timeout of 6 minutes, 30 seconds, and 50 milliseconds, or "5m" for a timeout of 5 minutes.
 
+### Stream limit hit
+
+**Full Error:** `error rdk.networking   rpc/wrtc_server_channel.go:110   stream limit hit`
+
+**Description**: This indicates an issue where Viam could not connect to the robot. You may also run into this log when a module is reloading, in this case it is an expected transient error.
+
+**Solution**:
+
+- Check that your machine is connected to the internet.
+- Check that your machine is running.
+
 ## Common Micro-RDK errors
 
 ### Unable to properly process stun response IceStunEncodingError
