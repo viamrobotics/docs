@@ -102,3 +102,17 @@ When uploading modules to the Viam Registry, you must set a unique namespace for
 To create a new namespace for your organization, click on the org's **Settings** in the top right of the navigation bar, then click the **Set a public namespace** button.
 Enter a name or use the suggested name for your namespace, and then click **Set namespace**.
 A namespace may only contain letters, numbers, and the dash (`-`) character.
+
+## Update a namespace for your organization
+
+You can change your organization's namespace on your organization settings page:
+
+1. Navigate to your organization settings page using the dropdown in the upper right corner of the web UI.
+1. Click the **Rename** button next to your current namespace.
+1. Enter the new namespace name in the modal that appears.
+1. Click **Set namespace** to confirm the change.
+1. For each module your organization owns, update the module code and <file>meta.json</file> to reflect the new namespace.
+1. (Recommended) Update the `model` field in the configuration of any machines that use the module to use the new organization's namespace.
+   Machine configurations that reference the old namespace will continue to work, but we recommend updating them to use the new namespace to avoid confusion.
+
+When you rename a namespace, Viam reserves the old namespace for backwards compatibility and you cannot reuse it.

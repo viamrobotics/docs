@@ -312,8 +312,7 @@ from PIL import Image
 {{% /tablestep %}}
 {{< tablestep number=2 >}}
 
-In the test script you hard-coded the path to the image.
-For the module, let's make the path a configurable attribute so you or other users of the module can set the path from which to get the image.
+Let's make the path a configurable attribute so you or other users of the module can set the path from which to get the image.
 Add the following lines to the camera's `reconfigure()` function definition.
 These lines set the `image_path` based on the configuration when the resource is configured or reconfigured.
 
@@ -352,12 +351,13 @@ async def get_image(
     timeout: Optional[float] = None,
     **kwargs
 ) -> ViamImage:
+    self.logger.error("`get_image` is not implemented")
     raise NotImplementedError()
 ```
 
 You need to replace `raise NotImplementedError()` with code to actually implement the method:
 
-```python {class="line-numbers linkable-line-numbers" data-start="79" }
+```python {class="line-numbers linkable-line-numbers" data-start="79" data-line="9-10" }
 async def get_image(
     self,
     mime_type: str = "",

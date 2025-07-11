@@ -42,10 +42,16 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
-{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-03" %}}
+{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-10" %}}
 
 You can now configure annual billing alongside monthly billing options for your organizations.
 See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+{{% /changelog %}}
+
+{{% changelog color="added" title="Notes section for resource configuration cards" date="2025-07-10" %}}
+
+You can now add descriptive notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules.
+The Notes section appears at the bottom of each resource configuration card in both machine builder and fragment builder.
 
 {{% /changelog %}}
 
@@ -64,6 +70,13 @@ You can now configure confidence thresholds when running ML model inference on d
 {{% changelog color="added" title="Move machines between locations" date="2025-06-10" %}}
 
 Organization owners and location owners can now move machines between locations within their organization using the web UI.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Module and namespace renaming" date="2025-06-09" %}}
+
+You can now rename modules and organization namespaces through the web UI.
+For more information, see [Rename a module](/operate/get-started/other-hardware/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/reference/naming-modules/#update-a-namespace-for-your-organization).
 
 {{% /changelog %}}
 

@@ -65,6 +65,8 @@ Use required dependencies when your module should fail to build or reconfigure i
         elif not fields["camera_name"].HasField("string_value"):
             raise Exception("camera_name must be a string")
         camera_name = fields["camera_name"].string_value
+        if not camera_name:
+            raise ValueError("camera_name cannot be empty")
         req_deps.append(camera_name)
         return req_deps, []
    ```
@@ -194,7 +196,8 @@ Example use case for optional dependencies: If your module depends on multiple c
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-If your module has optional dependencies, the steps are the same as for required dependencies, except that your `validate_config` function should add the dependency to the second element of the returned tuple:
+1. If your module has optional dependencies, your `validate_config` function should add the dependency to the second element of the returned tuple.
+   For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
 @classmethod
@@ -212,7 +215,51 @@ def validate_config(
     return [], opt_deps
 ```
 
+1. In your `reconfigure` method, allow for the dependency to be unavailable.
+   For example:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   def reconfigure(self, config, dependencies):
+    camera_name = config.attributes.fields["camera_name"].string_value
+
+    # For optional dependencies, use .get() and handle None
+    camera_resource = dependencies.get(Camera.get_resource_name(camera_name))
+    if camera_resource is not None:
+        self.the_camera = cast(Camera, camera_resource)
+        self.camera_name = camera_name
+        self.has_camera = True
+    else:
+        self.the_camera = None
+        self.camera_name = camera_name
+        self.has_camera = False
+
+    return super().reconfigure(config, dependencies)
+   ```
+
 Be sure to handle the case where the dependency is not available in your API implementation as well.
+For example:
+
+```python {class="line-numbers linkable-line-numbers"}
+async def get_readings(
+    self,
+    *,
+    extra: Optional[Mapping[str, Any]] = None,
+    timeout: Optional[float] = None,
+    **kwargs
+) -> Mapping[str, SensorReading]:
+    if self.has_camera and self.the_camera is not None:
+        # Use the camera
+        img = await self.the_camera.get_image()
+        mimetype = img.mime_type
+        return {
+            "readings": {
+                "mimetype": mimetype
+            }
+        }
+    else:
+        # Work without camera
+        return {"readings": "no_camera_available"}
+```
 
 {{% /tab %}}
 {{% tab name="Go" %}}

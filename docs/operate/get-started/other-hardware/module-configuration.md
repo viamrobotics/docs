@@ -27,7 +27,7 @@ The following image shows an example of a configured modular resource, specifica
 This modular component is made available by the `ultrasonic` module.
 See [module configuration](#module-configuration-details).
 
-{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example." class="shadow imgzoom" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -81,6 +81,7 @@ The following properties are available for modular resources:
 | `api` | string | **Required** | The {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/get-started/other-hardware/create-module/dependencies/). |
+| `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
 
 ## Module configuration details
 
@@ -90,7 +91,7 @@ The following properties are available for modular resources:
 The following image shows an example of a configured module in a machine's config.
 This ultrasonic sensor in the previous section is provided by the [`ultrasonic` module](https://app.viam.com/module/viam/ultrasonic) shown here.
 
-{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow imgzoom" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -206,6 +207,8 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
 | `executable_path` | string | Local modules only | The path to the module's executable file. Only applicable to, and required for, local modules. Registry modules use the `entrypoint` in the [<file>meta.json</file> file](/operate/get-started/other-hardware/create-module/metajson/) instead. |
 | `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
+| `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this module. |
+| `log_level` | object | Optional | Set the log level for the module. See [Logging](/operate/reference/viam-server/#logging). |
 
 ### Module versioning
 
@@ -214,7 +217,7 @@ By default, a newly-added module is set to pin to the latest release (**Latest**
 
 To change the update strategy for your module, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
 
-{{<imgproc src="registry/modular-resources/deployed-module-with-component.png" style="width: 400px" resize="500x" declaredimensions=true alt="The module card" class="shadow" >}}
+{{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow imgzoom" >}}
 
 The following update options are available:
 
