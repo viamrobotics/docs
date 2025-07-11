@@ -393,22 +393,9 @@ Select from the **Levels** dropdown menu to filter the logs by severity level:
 {{% /tab %}}
 {{% tab name="Command line" %}}
 
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
 ```sh {class="command-line" data-prompt="$"}
-sudo journalctl --unit=viam-server
+viam machines part logs --part=<part-id> --tail=true
 ```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {class="command-line" data-prompt="$"}
-cat $(brew --prefix)/var/log/viam.log
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
