@@ -32,6 +32,11 @@ Accounts created from separate authentication sources are unique to each other.
 
 Once you have logged in, get started by [creating a machine](/operate/get-started/setup/).
 
+{{% hiddencontent %}}
+You cannot change email address within the app.
+If you must change your email address, please reach out to Viam Support at [contact@viam.com](mailto:contact@viam.com).
+{{% /hiddencontent %}}
+
 ## Sign out
 
 To log out of [Viam](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
