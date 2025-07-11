@@ -408,7 +408,7 @@ Open <file>module.go</file> and add necessary imports.
 **Edit the `Validate` function** to do the following:
 
 - Check that the user has configured required attributes and return errors if they are missing.
-- Return any dependencies.
+- Return any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs to use).
 
 For more information, see [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
 {{% /tablestep %}}
