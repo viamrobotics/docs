@@ -298,12 +298,16 @@ Next, to make the `viam-server` executable and install as a system service, run 
 chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
+The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
+
 {{% /tab %}}
 {{% tab name="Install using viam-agent" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
+
+The `viam-server` binary is installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -324,12 +328,16 @@ Next, to make the `viam-server` executable and install as a system service, run 
 chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
+The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
+
 {{% /tab %}}
 {{% tab name="Install using viam-agent" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
+
+The `viam-server` binary is installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -340,6 +348,8 @@ sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/a
 brew tap viamrobotics/brews && brew install viam-server
 ```
 
+The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
+
 {{% /tab %}}
 {{% tab name="Windows Subsystem for Linux (WSL)" %}}
 
@@ -347,10 +357,14 @@ brew tap viamrobotics/brews && brew install viam-server
 curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64 -o viam-server && chmod 755 viam-server
 ```
 
+TODO
+
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
 Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe).
+
+TODO
 
 {{% /tab %}}
 {{< /tabs >}}
