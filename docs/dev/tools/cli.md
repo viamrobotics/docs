@@ -133,8 +133,6 @@ An authenticated session is valid for 24 hours, unless you explicitly [log out](
 
 After the session expires or you log out, you must re-authenticate to use the CLI again.
 
-- To authenticate using a profile:
-
 ## CLI profiles
 
 You can also authenticate your CLI session with profiles which allow you to switch between using different privileges.
