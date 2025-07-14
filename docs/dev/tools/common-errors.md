@@ -235,7 +235,7 @@ If not, look for other related errors in your logs.
 
 1. Verify your machine's internet connection is stable and working properly.
 1. If you are using API keys to connect, ensure you are using the correct credentials for the machine.
-1. If you have multiple tavbs open with your machine's page, close all but one.
+1. If you have multiple tabs open with your machine's page, close all but one.
    Having too many connections can cause instability on some machines.
 
 ### Unable to create PeerConnection with module
