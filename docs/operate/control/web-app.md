@@ -59,7 +59,7 @@ let machine: VIAM.RobotClient;
 const main = async () => {
   const host = "demo-main.abcdefg1234.viam.cloud";
 
-  const machine = await VIAM.createRobotClient({
+  machine = await VIAM.createRobotClient({
     host,
     credentials: {
       type: "api-key",
