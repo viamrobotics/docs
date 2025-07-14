@@ -1,6 +1,6 @@
 ---
-linkTitle: "Speed up queries to recent data"
-title: "Speed up queries to recent data"
+linkTitle: "Speed up recent data queries"
+title: "Speed up recent data queries"
 weight: 25
 description: "Store a rolling window of recent data for fast queries while continuing to write all data to blob storage."
 type: "docs"

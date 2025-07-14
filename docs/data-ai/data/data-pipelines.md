@@ -62,6 +62,9 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 To define a new pipeline, call [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
 ```python
+from viam import DataClient
+import bson
+
 data_client = DataClient.from_api_key(
     api_key="<api-key>",
     api_key_id="<api-key-id>"
@@ -99,6 +102,14 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 To define a new pipeline, call [`DataClient.CreateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateDataPipeline):
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+    datapb "go.viam.com/rdk/app/data/v1"
+    "go.viam.com/rdk/app/data/v1/bson"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -141,6 +152,10 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 To define a new pipeline, call [`dataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
 ```typescript
+import { createViamClient } from '@viamrobotics/sdk';
+import { TabularDataSource, TabularDataSourceType } from '@viamrobotics/sdk/dist/gen/app/data/v1/data_pb';
+import { BSON } from 'bson';
+
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
 
@@ -221,6 +236,10 @@ Configure the `data_source` argument with the following fields:
 - `pipeline_id`: your pipeline ID
 
 ```python
+from viam import DataClient
+from viam.app.data.v1.data_pb import TabularDataSource, TabularDataSourceType
+import bson
+
 data_client = DataClient.from_api_key(
     api_key="<api-key>",
     api_key_id="<api-key-id>"
@@ -251,6 +270,14 @@ Configure the `DataSource` argument with the following fields:
 - `PipelineId`: your pipeline's ID
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+    datapb "go.viam.com/rdk/app/data/v1"
+    "go.viam.com/rdk/app/data/v1/bson"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -287,6 +314,10 @@ Configure the `data_source` argument with the following fields:
 - `pipelineId`: your pipeline's ID
 
 ```typescript
+import { createViamClient } from '@viamrobotics/sdk';
+import { TabularDataSource, TabularDataSourceType } from '@viamrobotics/sdk/dist/gen/app/data/v1/data_pb';
+import { BSON } from 'bson';
+
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
 
@@ -336,6 +367,9 @@ viam datapipelines list --org-id=<org-id>
 Use [`DataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
 ```python
+from viam import DataClient
+import bson
+
 data_client = DataClient.from_api_key(
     api_key="<api-key>",
     api_key_id="<api-key-id>"
@@ -355,6 +389,12 @@ for pipeline in pipelines:
 Use [`DataClient.ListDataPipelines`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelines) to fetch a list of pipeline configurations in an organization:
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -380,6 +420,9 @@ for _, pipeline := range resp.DataPipelines {
 Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
 ```typescript
+import { createViamClient } from '@viamrobotics/sdk';
+import { BSON } from 'bson';
+
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
 
@@ -437,6 +480,13 @@ To pass your query from a file instead of from inline MQL, pass the `--mql-path`
 Use [`DataClient.UpdateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.UpdateDataPipeline) to alter an existing data pipeline:
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+    "go.viam.com/rdk/app/data/v1/bson"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -489,6 +539,12 @@ viam datapipelines enable --id=<pipeline-id>
 Use [`DataClient.EnableDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.EnableDataPipeline) to enable a disabled data pipeline:
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -527,6 +583,12 @@ viam datapipelines disable --id=<pipeline-id>
 Use [`DataClient.DisableDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DisableDataPipeline) to disable a data pipeline:
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -560,6 +622,8 @@ viam datapipelines delete --id=<pipeline-id>
 Use [`DataClient.DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) to delete a data pipeline:
 
 ```python
+from viam import DataClient
+
 data_client = DataClient.from_api_key(
     api_key="<api-key>",
     api_key_id="<api-key-id>"
@@ -574,6 +638,12 @@ data_client.delete_data_pipeline(id="<pipeline-id>")
 Use [`DataClient.DeleteDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteDataPipeline) to delete a data pipeline:
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -593,6 +663,8 @@ _, err := dataClient.DeleteDataPipeline(context.Background(), &datapb.DeleteData
 Use [`dataClient.DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) to delete a data pipeline:
 
 ```typescript
+import { createViamClient } from '@viamrobotics/sdk';
+
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
 
@@ -626,6 +698,8 @@ Data pipeline executions may have any of the following statuses:
 Use [`DataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past and in-progress executions of a pipeline:
 
 ```python
+from viam import DataClient
+
 data_client = DataClient.from_api_key(
     api_key="<api-key>",
     api_key_id="<api-key-id>"
@@ -648,6 +722,12 @@ for run in runs:
 Use [`DataClient.ListDataPipelineRuns`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelineRuns) to view information about past executions of a pipeline:
 
 ```go
+import (
+    "context"
+    "fmt"
+    "go.viam.com/rdk/app/utils"
+)
+
 client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
 if err != nil {
     panic(err)
@@ -674,6 +754,8 @@ for _, run := range resp.Executions {
 Use [`dataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past executions of a pipeline:
 
 ```typescript
+import { createViamClient } from '@viamrobotics/sdk';
+
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
 
