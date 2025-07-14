@@ -48,7 +48,7 @@ The following files create an example TypeScript web app that connects to a mach
 ```ts {class="line-numbers linkable-line-numbers"}
 // This code must be run in a browser environment.
 import * as VIAM from "@viamrobotics/sdk";
-import { CameraClient, SensorClient } from "@viamrobotics/sdk";
+import { CameraClient, SensorClient, StreamClient } from "@viamrobotics/sdk";
 
 let isStreaming = false;
 let camera: CameraClient;
@@ -59,7 +59,7 @@ let machine: VIAM.RobotClient;
 const main = async () => {
   const host = "demo-main.abcdefg1234.viam.cloud";
 
-  const machine = await VIAM.createRobotClient({
+  machine = await VIAM.createRobotClient({
     host,
     credentials: {
       type: "api-key",
