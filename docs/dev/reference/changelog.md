@@ -260,7 +260,7 @@ It is not possible to store metadata associated with a Viam user.
 
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
 
-The [hot data store](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store) allows you to access recent data faster.
+The [hot data store](/data-ai/data/hot-data-store/) allows you to access recent data faster.
 
 {{% /changelog %}}
 

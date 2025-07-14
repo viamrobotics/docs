@@ -425,6 +425,11 @@ data,GetDatabaseConnection,,get_database_connection,,getDatabaseConnection,getDa
 data,ConfigureDatabaseUser,,configure_database_user,,configureDatabaseUser,configureDatabaseUser
 data,AddBinaryDataToDatasetByIDs,,add_binary_data_to_dataset_by_ids,,addBinaryDataToDatasetByIds,addBinaryDataToDatasetByIds
 data,RemoveBinaryDataFromDatasetByIDs,,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIds,removeBinaryDataFromDatasetByIds
+data,GetDataPipeline,,get_data_pipeline,,,getDataPipeline
+data,ListDataPipelines,,list_data_pipelines,,,listDataPipelines
+data,CreateDataPipeline,,create_data_pipeline,,,createDataPipeline
+data,DeleteDataPipeline,,delete_data_pipeline,,,deleteDataPipeline
+data,ListDataPipelineRuns,,list_data_pipeline_runs,,,listDataPipelineRuns
 
 ## Dataset
 dataset,CreateDataset,,create_dataset,,createDataset,createDataset
