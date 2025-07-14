@@ -136,13 +136,15 @@ After the session expires or you log out, you must re-authenticate to use the CL
 ## CLI profiles
 
 You can also authenticate your CLI session with profiles which allow you to switch between using different privileges.
+To create a profile, run the following command:
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
+```sh {class="command-line" data-prompt="$"}
 viam profiles add --profile-name=default --key-id=<api-key-id> --key=<api-key>
 ```
 
-To specify a profile for a command use the `--profile` flag.
-To set a profile for a shell session, set the environment variable `VIAM_CLI_PROFILE_NAME` to your profile name.
+To use a profile to authenticate a command, pass the `--profile` flag.
+By default, the Viam CLI does not use a profile.
+To use a specific profile by default, set the environment variable `VIAM_CLI_PROFILE_NAME` to the profile name.
 
 ### Create an organization API key
 
