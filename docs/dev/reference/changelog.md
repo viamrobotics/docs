@@ -42,6 +42,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Start modules with a TCP connection" date="2025-07-14" %}}
+
+You can now configure to start modules with a TCP connection. See [Module Configuration](/operate/get-started/other-hardware/module-configuration/) for more information.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Notes section for resource configuration cards" date="2025-07-10" %}}
 
 You can now add descriptive notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules.
@@ -927,7 +933,7 @@ For more information about assigning permissions and collaborating with others o
 
 {{% changelog date="2023-05-31" color="improved" title="Control RoboClaw motor controllers with the driver" %}}
 
-When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within the web UI or through the motor API.
+When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw's functionality within the web UI or through the motor API.
 
 For example, in the web UI, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
 
