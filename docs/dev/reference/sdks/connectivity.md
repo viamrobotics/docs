@@ -97,6 +97,17 @@ auto machine = RobotClient::at_address(host, options);
 {{% /tab %}}
 {{< /tabs >}}
 
+### WebRTC video streaming without internet access
+
+Viam's architecture uses WebRTC for peer-to-peer communication between machines, but it relies on the Viam cloud as the signaling server to establish the initial connections. The Viam app listens for connection requests, sends connection details, and then lets the two peers communicate directly.
+
+For completely offline WebRTC video streaming without internet access, you would need to either:
+
+- Use a different WebRTC signaling server implementation
+- Set up your own signaling infrastructure
+
+If you need to maintain connectivity in areas with poor/no internet, Viam does support caching data locally and syncing afterwards.
+
 ## Connectivity Issues
 
 When a machine loses its connection to the internet but is still connected to a LAN or WAN:
