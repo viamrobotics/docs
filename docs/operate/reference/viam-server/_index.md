@@ -396,7 +396,7 @@ cd bin/Linux-amd64  # or Linux-arm64 for ARM-based systems
 You can then run the server directly:
 
 ```sh {class="command-line" data-prompt="$"}
-./viam-server -config /path/to/your/config.json
+sudo ./viam-server -config /path/to/your/config.json
 ```
 
 {{% /tab %}}
@@ -428,7 +428,7 @@ cd bin/Darwin-arm64  # Use the folder matching your architecture
 You can then run the server directly:
 
 ```sh {class="command-line" data-prompt="$"}
-./viam-server -config /path/to/your/config.json
+sudo ./viam-server -config /path/to/your/config.json
 ```
 
 ### Option 2: Use an older version of the Homebrew tap

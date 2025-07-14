@@ -97,7 +97,7 @@ Alternatively you can restart `viam-server` and write logs to a log file by stop
 1. Then run `viam-server` with the `-debug` and `-log-file` options and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
-   /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
+   sudo /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
    ```
 
 1. Then check the logs file <FILE>logs.txt</FILE>.
@@ -119,7 +119,7 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
 1. Then run `viam-server` with the `-debug` and `-log-file` options and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
-   viam-server -config ~/Downloads/viam.json -debug -log-file logs.txt
+   sudo viam-server -config ~/Downloads/viam.json -debug -log-file logs.txt
    ```
 
 1. Then check the logs file <FILE>logs.txt</FILE>.
