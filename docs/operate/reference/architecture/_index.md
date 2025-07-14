@@ -96,6 +96,9 @@ If [sub-parts or remote parts](#complex-machines-with-multiple-parts) are config
 
 If you have client code running on a separate computer, that code sends API requests to `viam-server` using gRPC over WebRTC.
 If a WebRTC connection cannot be established, the request is sent directly over gRPC.
+The Viam cloud works as the signaling server for connections where possible.
+If you are connecting to a machine over local network or in offline mode, `viam-server` functions as the signaling server instead.
+
 When a built-in service communicates with a component, for example when the vision service requests an image from a camera, `viam-server` handles that request as well.
 
 When you control your machine or view its camera streams or sensor outputs from the **CONTROL** tab, those connections happen over WebRTC.
