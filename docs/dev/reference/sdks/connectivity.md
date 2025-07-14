@@ -57,7 +57,51 @@ machine, err := client.New(
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
-The TypeScript SDK currently does not support mDNS which means you cannot use it to connect to your machine over a local network.
+
+{{< alert title="Caution" color="caution" >}}
+Using the Typescript SDK over local network or offline requires disabling TLS verification.
+{{< /alert >}}
+
+{{< tabs >}}
+{{% tab name="Command-line" %}}
+
+Restart `viam-server` the `-no-tls` flag.
+
+{{% /tab %}}
+{{% tab name="Configuration" %}}
+
+1. Add `"no_tls": true` to the `"network"` section of your machine's JSON configuration:
+
+   ```json {class="line-numbers linkable-line-numbers" data-line="5"}
+   "network": {
+   "no_tls": true
+   }
+   ```
+
+1. Restart your machine.
+   You can restart your machine by clicking on the machine status indicator in Viam and clicking **Restart**.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Update your connection code by adding `.local` to your host address:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="1,12"}
+const host = "mymachine-main.0a1bcdefgi.local.viam.cloud";
+
+const machine = await VIAM.createRobotClient({
+  host,
+  credentials: {
+    type: "api-key",
+    /* Replace "<API-KEY>" (including brackets) with your machine's API key */ payload:
+      "<API-KEY>",
+    authEntity: "<API-KEY-ID>",
+    /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
+  },
+  signalingAddress: `http://${host}:8080`,
+});
+```
+
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
