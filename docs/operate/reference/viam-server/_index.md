@@ -307,7 +307,7 @@ The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
-The `viam-server` binary is installed at <FILE>/opt/viam/bin/viam-server</FILE>.
+The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -337,7 +337,7 @@ The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
-The `viam-server` binary is installed at <FILE>/opt/viam/bin/viam-server</FILE>.
+The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -364,7 +364,7 @@ TODO
 
 Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe).
 
-TODO
+The `viam-agent` and `viam-server` binaries are installed at <FILE>C:\opt\viam\cache</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
