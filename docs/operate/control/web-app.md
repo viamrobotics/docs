@@ -48,7 +48,7 @@ The following files create an example TypeScript web app that connects to a mach
 ```ts {class="line-numbers linkable-line-numbers"}
 // This code must be run in a browser environment.
 import * as VIAM from "@viamrobotics/sdk";
-import { CameraClient, SensorClient } from "@viamrobotics/sdk";
+import { CameraClient, SensorClient, StreamClient } from "@viamrobotics/sdk";
 
 let isStreaming = false;
 let camera: CameraClient;
