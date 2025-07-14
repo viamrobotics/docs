@@ -782,7 +782,7 @@ viam machines part restart --part=123
 # tunnel connections to the specified port on a machine part
 viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
 
-# Copy and a single file to a machine and change the file's name:
+# Copy a single file to a machine:
 viam machine part cp --part=123 my_file machine:/home/user/
 
 # Recursively copy a directory to a machine:
@@ -810,7 +810,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
-| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. |
+| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. |
 | `--help` | Return help. | - |
 
 ##### Positional arguments: `api-key`
@@ -830,7 +830,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `status` | Retrieve machine status for a specified machine part. |
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
 | `logs` | Get logs for the specified machine or machine part. |
-| `shell` | Access a machine part securely using a secure shell to execute commands. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. |
+| `shell` | Access a machine part securely using a secure shell to execute commands. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. |
 | `restart` | Restart a machine part. |
 | `cp` | Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command to copy files to and from machines. |
 | `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/manage/fleet/system-settings/#configure-network-settings-for-tunneling). |
