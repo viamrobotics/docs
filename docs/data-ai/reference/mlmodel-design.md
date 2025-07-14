@@ -1,7 +1,7 @@
 ---
 title: "Design your ML models for vision"
 linkTitle: "ML model service design"
-weight: 60
+weight: 10
 type: "docs"
 tags: ["data management", "ml", "model training", "vision"]
 description: "Design your ML Model service to work with Viam's vision services."

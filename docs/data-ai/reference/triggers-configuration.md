@@ -1,7 +1,7 @@
 ---
 title: "Trigger configuration"
 linkTitle: "Trigger configuration"
-weight: 60
+weight: 20
 type: "docs"
 tags: ["data management", "trigger", "webhook"]
 description: "Detailed information about how to configure triggers and webhooks."

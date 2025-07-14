@@ -219,46 +219,46 @@ Next, navigate to the **CONFIGURE** tab of your machine's page.
 
 1. **Add a vision service.**
 
-Next, add a vision service [detector](/dev/reference/apis/services/vision/#detections):
+   Next, add a vision service [detector](/dev/reference/apis/services/vision/#detections):
 
-Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
-Select type `vision` and model `color detector`.
-Enter `green_detector` for the name, then click **Create**.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
+   Select type `vision` and model `color detector`.
+   Enter `green_detector` for the name, then click **Create**.
 
-In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
-Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
-We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+   In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
+   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
+   We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
-2. Click **Save** in the top right corner of the screen.
+1. Click **Save** in the top right corner of the screen.
 
-3. (optional) **Add a `transform` camera as a visualizer**
+1. (optional) **Add a `transform` camera as a visualizer**
 
-If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/operate/reference/components/camera/transform/).
-This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
+   If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/operate/reference/components/camera/transform/).
+   This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
-Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
-Add a [transform camera](/operate/reference/components/camera/transform/) with type `camera` and model `transform`.
-Name it `transform_cam` and click **Create**.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
+   Add a [transform camera](/operate/reference/components/camera/transform/) with type `camera` and model `transform`.
+   Name it `transform_cam` and click **Create**.
 
-Click **{}** (Switch to advanced) in the top right of the camera's configuration panel to switch to advanced mode.
-Replace the attributes JSON object (`{}`) with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
+   Click **{}** (Switch to advanced) in the top right of the camera's configuration panel to switch to advanced mode.
+   Replace the attributes JSON object (`{}`) with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
-```json
-{
-  "source": "my_camera",
-  "pipeline": [
-    {
-      "type": "detections",
-      "attributes": {
-        "detector_name": "green_detector",
-        "confidence_threshold": 0.6
-      }
-    }
-  ]
-}
-```
+   ```json
+   {
+     "source": "my_camera",
+     "pipeline": [
+       {
+         "type": "detections",
+         "attributes": {
+           "detector_name": "green_detector",
+           "confidence_threshold": 0.6
+         }
+       }
+     ]
+   }
+   ```
 
-4. Click **Save** in the top right corner of the screen.
+1. Click **Save** in the top right corner of the screen.
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -393,7 +393,7 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
    python3 --version
    ```
 
-2. Install the [Viam Python SDK](https://python.viam.dev/) by running
+1. Install the [Viam Python SDK](https://python.viam.dev/) by running
 
    ```sh {class="command-line" data-prompt="$"}
    pip install viam-sdk
@@ -429,7 +429,7 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
 
    1. In your Pi terminal, navigate to the directory where you’d like to save your code.
       Run, <file>nano rgb_follower.py</file> (or replace <file>rgb_follower</file> with the your desired filename).
-   2. Paste all your code into this file.
+   1. Paste all your code into this file.
       Press **CTRL + X** to close the file.
       Type **Y** to confirm file modification, then press enter to finish.
 
@@ -520,11 +520,11 @@ The code you are using has several functions:
 The `main` function connects to the robot and initializes each component, then performs the following tasks:
 
 1. If the color of the line is detected in the top center of the camera frame, the rover drives forward.
-2. If the color is not detected in the top center, it checks the left side of the camera frame for the color.
+1. If the color is not detected in the top center, it checks the left side of the camera frame for the color.
    If it detects the color on the left, the robot turns left.
    If it doesn’t detect the color on the left, it checks the right side of the camera frame, and turns right if it detects the color.
-3. Once the line is back in the center front of the camera frame, the rover continues forward.
-4. When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
+1. Once the line is back in the center front of the camera frame, the rover continues forward.
+1. When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
@@ -577,7 +577,7 @@ async def main():
 To run the program:
 
 1. Position the rover so that its camera can see the colored line.
-2. If you have saved the code on your Pi, SSH into it by running:
+1. If you have saved the code on your Pi, SSH into it by running:
 
    ```sh {class="command-line" data-prompt="$"}
    ssh <your_username>@<your_pi’s_name>.local
@@ -604,8 +604,8 @@ Along the way, you have learned how to configure a wheeled base, camera, and col
 If you are wondering what to do next, why not try one of the following ideas:
 
 1. Automatically detect what color line the robot is on and follow that.
-2. Use two differently colored lines that intersect and make the robot switch from one line to the other.
-3. Put two rovers on intersecting lines and write code to keep them from crashing into each other.
+1. Use two differently colored lines that intersect and make the robot switch from one line to the other.
+1. Put two rovers on intersecting lines and write code to keep them from crashing into each other.
 
 ## Troubleshooting
 
