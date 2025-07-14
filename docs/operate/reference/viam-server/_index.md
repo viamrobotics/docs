@@ -357,8 +357,6 @@ The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FI
 curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64 -o viam-server && chmod 755 viam-server
 ```
 
-TODO
-
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
