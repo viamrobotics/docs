@@ -152,9 +152,12 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 To define a new pipeline, call [`dataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
 ```typescript
-import { createViamClient } from '@viamrobotics/sdk';
-import { TabularDataSource, TabularDataSourceType } from '@viamrobotics/sdk/dist/gen/app/data/v1/data_pb';
-import { BSON } from 'bson';
+import { createViamClient } from "@viamrobotics/sdk";
+import {
+  TabularDataSource,
+  TabularDataSourceType,
+} from "@viamrobotics/sdk/dist/gen/app/data/v1/data_pb";
+import { BSON } from "bson";
 
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
@@ -420,8 +423,8 @@ for _, pipeline := range resp.DataPipelines {
 Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
 ```typescript
-import { createViamClient } from '@viamrobotics/sdk';
-import { BSON } from 'bson';
+import { createViamClient } from "@viamrobotics/sdk";
+import { BSON } from "bson";
 
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
@@ -663,7 +666,7 @@ _, err := dataClient.DeleteDataPipeline(context.Background(), &datapb.DeleteData
 Use [`dataClient.DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) to delete a data pipeline:
 
 ```typescript
-import { createViamClient } from '@viamrobotics/sdk';
+import { createViamClient } from "@viamrobotics/sdk";
 
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
@@ -754,7 +757,7 @@ for _, run := range resp.Executions {
 Use [`dataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past executions of a pipeline:
 
 ```typescript
-import { createViamClient } from '@viamrobotics/sdk';
+import { createViamClient } from "@viamrobotics/sdk";
 
 const apiKey = "<api-key>";
 const apiKeyID = "<api-key-id>";
