@@ -17,55 +17,14 @@ When connecting to a machine using the connection code from the [**CONNECT** tab
 
 ## Connect over local network or offline
 
-To connect directly to the local machine, change the end of the machine address URI from `.viam.cloud` to `.local.viam.cloud` in your machine's connection code.
-The default machine address (URI) from the **CONNECT** tab is of the form `mymachine-main.0a1bcdefgi.viam.cloud`, so `mymachine-main.0a1bcdefgi.local.viam.cloud`.
+To connect directly to your local machine, you can use the connection code from the **CONNECT** tab if you are using the Python SDK, Go SDK, Flutter SDK, or C++ SDK.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers" data-line="10"}
-async def connect():
-    opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
-        api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's
-        # API key ID
-        api_key_id='<API-KEY-ID>'
-    )
-    return await RobotClient.at_address(
-        'mymachine-main.0a1bcdefgi.local.viam.cloud', opts)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers" data-line="3"}
-machine, err := client.New(
-  context.Background(),
-  "mymachine-main.0a1bcdefgi.local.viam.cloud",
-  logger,
-  client.WithDialOptions(rpc.WithEntityCredentials(
-          /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
-    "<API-KEY-ID>",
-    rpc.Credentials{
-      Type:    rpc.CredentialsTypeAPIKey,
-              /* Replace "<API-KEY>" (including brackets) with your machine's API key */
-      Payload: "<API-KEY>",
-    })),
-)
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-{{< alert title="Caution" color="caution" >}}
-Using the Typescript SDK over local network or offline requires disabling TLS verification.
-{{< /alert >}}
+For the TypeScript SDK, you must disable TLS verification for your `viam-server` and change the sinaling address for the connection code:
 
 {{< tabs >}}
 {{% tab name="Command-line" %}}
 
-Restart `viam-server` the `-no-tls` flag.
+Restart `viam-server` with the `-no-tls` flag.
 
 {{% /tab %}}
 {{% tab name="Configuration" %}}
@@ -84,10 +43,10 @@ Restart `viam-server` the `-no-tls` flag.
 {{% /tab %}}
 {{< /tabs >}}
 
-Update your connection code by adding `.local` to your host address:
+Update the signaling address in your connection code:
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="1,12"}
-const host = "mymachine-main.0a1bcdefgi.local.viam.cloud";
+const host = "mymachine-main.0a1bcdefgi.viam.cloud";
 
 const machine = await VIAM.createRobotClient({
   host,
@@ -98,48 +57,9 @@ const machine = await VIAM.createRobotClient({
     authEntity: "<API-KEY-ID>",
     /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
   },
-  signalingAddress: `http://${host}:8080`,
+  signalingAddress: `http://${host}.local:8080`,
 });
 ```
-
-{{% /tab %}}
-{{% tab name="Flutter" %}}
-
-```dart {class="line-numbers linkable-line-numbers" data-line="2"}
-Future<void> connectToViam() async {
-  const host = 'mymachine-main.0a1bcdefgi.local.viam.cloud';
-  /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
-  const apiKeyID = '<API-KEY-ID>';
-  /* Replace "<API-KEY>" (including brackets) with your machine's API key */
-  const apiKey = '<API-KEY>';
-
-  final machine = await RobotClient.atAddress(
-    host,
-    RobotClientOptions.withApiKey(apiKeyID, apiKey),
-  );
-  print(machine.resourceNames);
-}
-```
-
-{{% /tab %}}
-{{% tab name="C++" %}}
-
-```cpp {class="line-numbers linkable-line-numbers" data-line="1"}
-std::string host("mymachine-main.0a1bcdefgi.local.viam.cloud");
-DialOptions dial_opts;
-dial_opts.set_entity(std::string("<API-KEY-ID>"));
-/* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
-Credentials credentials("api-key", "<API-KEY>");
-/* Replace "<API-KEY>" (including brackets) with your machine's API key */
-dial_opts.set_credentials(credentials);
-boost::optional<DialOptions> opts(dial_opts);
-Options options(0, opts);
-
-auto machine = RobotClient::at_address(host, options);
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## Connectivity Issues
 
