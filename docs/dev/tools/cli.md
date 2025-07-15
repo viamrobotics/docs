@@ -735,6 +735,8 @@ This includes:
 - Retrieving machine and machine part logs
 - Controlling a machine by issuing component and service commands
 - Accessing your machine with a secure shell (when this feature is enabled)
+- Copy files from and to machines
+- Enter an interactive terminal on your machines
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
@@ -780,25 +782,25 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 viam machines part restart --part=123
 
 # tunnel connections to the specified port on a machine part
-viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
+viam machines part tunnel --part=123 --destination-port=1111 --local-port 2222
 
 # Copy a single file to a machine:
-viam machine part cp --part=123 my_file machine:/home/user/
+viam machines part cp --part=123 my_file machine:/home/user/
 
 # Recursively copy a directory to a machine:
-viam machine part cp --part=123 -r my_dir machine:/home/user/
+viam machines part cp --part=123 -r my_dir machine:/home/user/
 
 # Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
-viam machine part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
+viam machines part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
 # Copy a single file from a machine to a local destination:
-viam machine part cp --part=123 machine:my_file ~/Downloads/
+viam machines part cp --part=123 machine:my_file ~/Downloads/
 
 # Recursively copy a directory from a machine to a local destination:
-viam machine part cp --part=123 -r machine:my_dir ~/Downloads/
+viam machines part cp --part=123 -r machine:my_dir ~/Downloads/
 
 # Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
-viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
+viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
 #### Command options
