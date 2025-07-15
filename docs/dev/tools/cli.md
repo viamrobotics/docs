@@ -724,7 +724,7 @@ The `logout` command ends an authenticated CLI session.
 viam logout
 ```
 
-### `machines` (alias `robots`)
+### `machines` (alias `robots` and `machine`)
 
 The `machines` command allows you to manage your machine fleet.
 This includes:
