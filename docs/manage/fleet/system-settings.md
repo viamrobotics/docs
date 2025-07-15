@@ -98,7 +98,7 @@ The following configuration allows you to tunnel to ports `5900` and `5901`:
 }
 ```
 
-Then you can use the [`viam machine part tunnel`](https://docs.viam.com/dev/tools/cli/#machines-alias-robots) command:
+Then you can use the [`viam machine part tunnel`](https://docs.viam.com/dev/tools/cli/#machines-alias-robots-and-machine) command:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam machine part tunnel --part=123 --destination-port=1111 --local-port 5900
