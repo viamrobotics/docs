@@ -239,8 +239,21 @@ If not, look for other related errors in your logs.
    1. Verify your machine's internet connection is stable and working properly.
    1. Ensure network checks on viam-server succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting:
 
-      ```go {class="line-numbers linkable-line-numbers" data-line="5"}
-      
+      ```go {class="line-numbers linkable-line-numbers" data-line="13"}
+      machine, err := client.New(
+        context.Background(),
+        "mac-main.vw3iu72d8n.viam.cloud",
+		logger,
+		client.WithDialOptions(rpc.WithEntityCredentials( 
+          /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
+		  "<API-KEY-ID>",
+		  rpc.Credentials{
+            Type:    rpc.CredentialsTypeAPIKey, 
+            /* Replace "<API-KEY>" (including brackets) with your machine's API key */
+			Payload: "<API-KEY>",
+		  })),
+          client.WithNetworkStats(),
+      )      
       ```
 
    1. Check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`:
@@ -255,20 +268,6 @@ If not, look for other related errors in your logs.
    1. Check if UDP traffic is restricted in any way.
 
       ```sh {class="command-line" data-prompt="$" data-output="13"}
-      machine, err := client.New(
-        context.Background(),
-        "mac-main.vw3iu72d8n.viam.cloud",
-		logger,
-		client.WithDialOptions(rpc.WithEntityCredentials( 
-          /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
-		  "<API-KEY-ID>",
-		  rpc.Credentials{
-            Type:    rpc.CredentialsTypeAPIKey, 
-            /* Replace "<API-KEY>" (including brackets) with your machine's API key */
-			Payload: "<API-KEY>",
-		  })),
-          client.WithNetworkStats(),
-      )
       ```
 
 1. Check your SDK connection:
