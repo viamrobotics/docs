@@ -242,7 +242,10 @@ If not, look for other related errors in your logs.
       ```
    1. Check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`
       ```sh {class="command-line" data-prompt="$" data-output="1-10"}
-
+nc -zv turn.viam.com 443
+Connection to turn.viam.com port 443 [tcp/https] succeeded!
+nc -zv global.turn.twilio.com 3478
+Connection to global.turn.twilio.com port 3478 [tcp/nat-stun-port] succeeded!
       ```
    1. Check if UDP traffic is restricted in any way.
       ```sh {class="command-line" data-prompt="$" data-output="1-10"}
