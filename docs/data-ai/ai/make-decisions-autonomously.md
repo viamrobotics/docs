@@ -10,11 +10,11 @@ aliases:
   - /data-ai/ai/act/
 ---
 
-Combine the [vision service API](/dev/reference/apis/services/vision/) and [component APIs](/dev/reference/apis/#component-apis) to interpret, then react to inferences.
+Use the [vision service API](/dev/reference/apis/services/vision/) to make inferences, then use [component APIs](/dev/reference/apis/#component-apis) to react to inferences with a machine.
 
 ## Follow a line
 
-You can use a vision service and a motor to program a machine to follow a line.
+This module uses a vision service and a motor to program a machine to follow a line.
 
 ### Prerequisites
 
@@ -201,7 +201,7 @@ async def stop_robot(base: Base):
 
 # Implement your custom control logic module
 class LineFollowerModule(Module, LineFollowerAPI):
-    MODEL = Model("acme", "control", "line_follower_module")
+    MODEL = Model("example-namespace", "example-module", "line_follower_module")
 
     def __init__(self, name: str):
         super().__init__(name)
@@ -322,7 +322,7 @@ if __name__ == "__main__":
 
 ## Follow a colored object
 
-You can use a vision service and a motor to program a machine to follow an object.
+This module uses a vision service and a motor to program a machine to follow an object.
 
 ### Prerequisites
 
@@ -484,7 +484,7 @@ def leftOrRight(detections: List[Detection], midpoint: float) -> Literal[0, 1, 2
 
 # Implement your custom control logic module
 class ObjectTrackingBaseModule(Module, ObjectTrackingBaseAPI):
-    MODEL = Model("acme", "control", "object_tracking_base_module")
+    MODEL = Model("example-namespace", "example-module", "object_tracking_base_module")
 
     def __init__(self, name: str):
         super().__init__(name)
@@ -602,6 +602,245 @@ Registry.register_resource_creator(
     ObjectTrackingBaseAPI.SUBTYPE,
     ObjectTrackingBaseModule.MODEL,
     ResourceCreatorRegistration(ObjectTrackingBaseModule.new_resource, ObjectTrackingBaseModule.validate_config)
+)
+
+async def main():
+    """
+    Main entry point for the Viam module.
+    """
+    await Module.serve()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+    print("Done.")
+```
+
+### Notify when a certain object appears in a video feed
+
+This module uses a vision service to program a machine to send a notification when a certain object appears in a video feed.
+
+### Prerequisites
+
+- An SBC, for example a Raspberry Pi 4
+- A webcam
+
+### Configure your machine
+
+Follow the [setup guide](/operate/get-started/setup/) to create a new machine.
+
+Connect your SCUTTLE base to your SBC.
+Add the following `components` configuration:
+
+```json
+
+```
+
+Connect your webcam to your SBC.
+Add the following `components` configuration for your webcam:
+
+```json
+{
+  "name": "my_camera",
+  "model": "webcam",
+  "api": "rdk:component:camera",
+  "attributes": {
+    "video_path": ""
+  }
+}
+```
+
+
+### Code
+
+
+```python
+import asyncio
+import os
+from typing import List, Literal, Mapping, Any
+
+from viam.robot.client import RobotClient
+from viam.components.camera import Camera
+from viam.services.vision import VisionClient
+from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+from viam.module.module import Module
+from viam.resource.types import Model, Subtype
+from viam.resource.base import ResourceBase
+from viam.resource.registry import Registry, ResourceCreatorRegistration
+from viam.proto.app.v1 import ComponentConfig
+from viam.services.vision import Detection
+from viam.services.generic import Generic
+import smtplib
+from email.mime.text import MIMEText
+
+class EmailNotifierModule(Module, Generic):
+    MODEL = Model("example-namespace", "example-module", "email_notifier_generic")
+
+    def __init__(self, name: str):
+        super().__init__(name)
+        self.camera: Camera = None
+        self.detector: VisionClient = None
+        self.camera_name: str = "my_camera" # Default camera name, adjust in config if needed
+        self.detector_name: str = "my_object_detector" # Default vision service name
+        self.target_object_name: str = "person" # The object to detect for notification
+
+        # Email configuration (sensitive info should ideally be managed securely, e.g., environment variables)
+        self.sender_email: str = os.getenv("SENDER_EMAIL", "your_email@example.com")
+        self.sender_password: str = os.getenv("SENDER_PASSWORD", "your_email_password")
+        self.receiver_email: str = os.getenv("RECEIVER_EMAIL", "recipient_email@example.com")
+        self.smtp_server: str = os.getenv("SMTP_SERVER", "smtp.example.com")
+        self.smtp_port: int = int(os.getenv("SMTP_PORT", 587)) # Typically 587 for TLS
+
+        self._running_loop = False
+        self._loop_task = None
+        self._notification_sent = False
+
+    @classmethod
+    def new_resource(cls, config: ComponentConfig):
+        # Parse attributes from the config here to make them configurable
+        module = cls(config.name)
+        if "camera_name" in config.attributes.fields:
+            module.camera_name = config.attributes.fields["camera_name"].string_value
+        if "detector_name" in config.attributes.fields:
+            module.detector_name = config.attributes.fields["detector_name"].string_value
+        if "target_object_name" in config.attributes.fields:
+            module.target_object_name = config.attributes.fields["target_object_name"].string_value
+
+        # Email configuration can also be set via config, but environment variables are often preferred for secrets
+        if "sender_email" in config.attributes.fields:
+            module.sender_email = config.attributes.fields["sender_email"].string_value
+        if "sender_password" in config.attributes.fields:
+            module.sender_password = config.attributes.fields["sender_password"].string_value
+        if "receiver_email" in config.attributes.fields:
+            module.receiver_email = config.attributes.fields["receiver_email"].string_value
+        if "smtp_server" in config.attributes.fields:
+            module.smtp_server = config.attributes.fields["smtp_server"].string_value
+        if "smtp_port" in config.attributes.fields:
+            module.smtp_port = int(config.attributes.fields["smtp_port"].number_value)
+
+        return module
+
+    async def start(self):
+        """
+        Called when the module starts. Get references to components.
+        """
+        print(f"EmailNotifierModule '{self.name}' starting...")
+        self.camera = await Camera.from_robot(self.robot, self.camera_name)
+        self.detector = await VisionClient.from_robot(self.robot, self.detector_name)
+        print(f"EmailNotifierModule '{self.name}' started. Monitoring for '{self.target_object_name}'.")
+
+    async def close(self):
+        """
+        Called when the module is shutting down. Clean up tasks.
+        """
+        print(f"EmailNotifierModule '{self.name}' closing...")
+        await self._stop_detection_monitoring_internal() # Call internal stop method
+        print(f"EmailNotifierModule '{self.name}' closed.")
+
+    def _send_email(self, subject: str, body: str):
+        """
+        Helper function to send an email.
+        """
+        try:
+            msg = MIMEText(body)
+            msg['Subject'] = subject
+            msg['From'] = self.sender_email
+            msg['To'] = self.receiver_email
+
+            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                server.starttls() # Secure the connection
+                server.login(self.sender_email, self.sender_password)
+                server.send_message(msg)
+            print(f"Email sent successfully to {self.receiver_email}: '{subject}'")
+            self._notification_sent = True # Mark that notification has been sent
+        except Exception as e:
+            print(f"Failed to send email: {e}")
+            self._notification_sent = False # Reset if sending failed
+
+    async def _detection_monitoring_loop(self):
+        """
+        The core object detection monitoring and email notification logic loop.
+        """
+        print("Detection monitoring loop started.")
+
+        while self._running_loop:
+            try:
+                detections = await self.detector.get_detections_from_camera(self.camera_name)
+
+                object_detected = False
+                for d in detections:
+                    if d.class_name == self.target_object_name:
+                        object_detected = True
+                        break
+
+                if object_detected and not self._notification_sent:
+                    subject = f"Viam Module Alert: {self.target_object_name} Detected!"
+                    body = f"A {self.target_object_name} was detected by the vision service '{self.detector_name}' on camera '{self.camera_name}'."
+                    print(f"Detected '{self.target_object_name}'. Sending email notification...")
+                    self._send_email(subject, body)
+                elif not object_detected and self._notification_sent:
+                    # Reset notification status if the object is no longer detected,
+                    # allowing another notification if it reappears.
+                    print(f"'{self.target_object_name}' no longer detected. Resetting notification status.")
+                    self._notification_sent = False
+                elif object_detected and self._notification_sent:
+                    print(f"'{self.target_object_name}' still detected, but notification already sent.")
+                else: # not object_detected and not self._notification_sent
+                    print(f"'{self.target_object_name}' not detected.")
+
+            except Exception as e:
+                print(f"Error in detection monitoring loop: {e}")
+
+            await asyncio.sleep(5) # Check every 5 seconds
+
+        print("Detection monitoring loop finished or stopped.")
+        self._notification_sent = False # Reset state when loop stops
+
+    async def _start_detection_monitoring_internal(self):
+        """
+        Internal method to start the background loop.
+        """
+        if not self._running_loop:
+            self._running_loop = True
+            self._loop_task = asyncio.create_task(self._detection_monitoring_loop())
+            print("Requested to start detection monitoring loop.")
+            return {"status": "started"}
+        else:
+            print("Detection monitoring loop is already running.")
+            return {"status": "already_running"}
+
+    async def _stop_detection_monitoring_internal(self):
+        """
+        Internal method to stop the background loop.
+        """
+        if self._running_loop:
+            self._running_loop = False
+            if self._loop_task:
+                await self._loop_task # Wait for the task to complete its current iteration and exit
+                self._loop_task = None
+            print("Requested to stop detection monitoring loop.")
+            return {"status": "stopped"}
+        else:
+            print("Detection monitoring loop is not running.")
+            return {"status": "not_running"}
+
+    async def do_command(self, command: Mapping[str, Any], *, timeout: float | None = None, **kwargs) -> Mapping[str, Any]:
+        """
+        Implement the do_command method to expose custom functionality.
+        """
+        if "start_monitoring" in command:
+            print("Received 'start_monitoring' command via do_command.")
+            return await self._start_detection_monitoring_internal()
+        elif "stop_monitoring" in command:
+            print("Received 'stop_monitoring' command via do_command.")
+            return await self._stop_detection_monitoring_internal()
+        else:
+            raise NotImplementedError(f"Command '{command}' not recognized.")
+
+# Register your module
+Registry.register_resource_creator(
+    Generic.SUBTYPE, # Register as a Generic service
+    EmailNotifierModule.MODEL,
+    ResourceCreatorRegistration(EmailNotifierModule.new_resource, EmailNotifierModule.validate_config)
 )
 
 async def main():
