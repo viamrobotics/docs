@@ -233,8 +233,24 @@ If not, look for other related errors in your logs.
 
 **Solution:**
 
-1. Verify your machine's internet connection is stable and working properly.
-1. If you are using API keys to connect, ensure you are using the correct credentials for the machine.
+1. Check networking:
+   1. Check if your machine is showing as online on Viam.
+   1. Verify your machine's internet connection is stable and working properly.
+   1. Ensure network checks on viam-server succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting:
+      ```go {class="line-numbers linkable-line-numbers" data-line="5"}
+
+      ```
+   1. Check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`
+      ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+
+      ```
+   1. Check if UDP traffic is restricted in any way.
+      ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+
+      ```
+1. Check your SDK connection:
+   1. If you are using API keys to connect, ensure you are using the correct credentials for the machine.
+   1. Try connecting with a different SDK to check whether the issue may be SDK-specific or a code issue.
 1. If you have multiple tabs open with your machine's page, close all but one.
    Having too many connections can cause instability on some machines.
 
