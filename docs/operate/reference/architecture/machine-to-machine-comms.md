@@ -99,6 +99,7 @@ RDK Part 2 will be unaware of the actual plan and instead will only receive dist
 
 <li>RDK Part 1 returns an acknowledgement of the Motion Move request to the SDK application.</li>
 </ol>
+<br>
 
 ## Low-level inter-robot/SDK communication
 
@@ -116,3 +117,13 @@ In addition to gRPC, the RDK uses [WebRTC](https://webrtcforthecurious.com/) vid
 
 An outline of how WebRTC is used lives on [Go.dev](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on [app.viam.com](https://app.viam.com) to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
 Once a connection is made, [app.viam.com](https://app.viam.com) is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.
+
+### Security implications
+
+Generally you do not need to open any ports or change your network configuration, if:
+
+- machines are on the internet and can successfully talk with `app.viam.com` and WebRTC works or
+- machines are on the same local network and mDNS and WebRTC are working
+
+If WebRTC is not available, you can communicate with `viam-server` over a gRPC connection.
+The default port is 8080 but you can configure another port in the [network settings]().
