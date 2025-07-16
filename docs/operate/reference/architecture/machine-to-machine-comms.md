@@ -126,4 +126,4 @@ Generally you do not need to open any ports or change your network configuration
 - machines are on the same local network and mDNS and WebRTC are working
 
 If WebRTC is not available, you can communicate with `viam-server` over a gRPC connection.
-The default port is 8080 but you can configure another port in the [network settings]().
+The default port is 8080 but you can configure another port in the [network settings](/manage/fleet/system-settings/#configure-bind-address-and-port).
