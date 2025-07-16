@@ -237,7 +237,7 @@ If not, look for other related errors in your logs.
 
    1. Check if your machine is showing as online on Viam.
    1. Verify your machine's internet connection is stable and working properly.
-   1. Ensure network checks on viam-server succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting:
+   1. Ensure network checks on `viam-server` succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting:
 
       ```go {class="line-numbers linkable-line-numbers" data-line="13"}
       machine, err := client.New(
