@@ -236,6 +236,10 @@ If not, look for other related errors in your logs.
 1. Check networking:
 
    1. Check if your machine is showing as online on Viam and [check its logs](/manage/troubleshoot/troubleshoot/#check-logs).
+   When `viam-server` starts it runs a set of network checks which you can view in the logs.
+   
+   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+  
    1. Verify your machine's internet connection is stable and working properly.
    1. Ensure network checks on `viam-server` succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting:
 
