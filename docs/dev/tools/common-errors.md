@@ -266,9 +266,7 @@ If not, look for other related errors in your logs.
       ```
 
    1. Check if UDP traffic is restricted in any way.
-
-      ```sh {class="command-line" data-prompt="$" data-output="13"}
-      ```
+   You can do this by checking your router settings and talking to your IT department, if applicable.
 
 1. Check your SDK connection:
 
