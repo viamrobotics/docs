@@ -76,6 +76,11 @@ You can set alerts to receive an email notification when your monthly spend exce
 1. Scroll to the bottom of the **Payment & Billing** page.
 1. Click **Set amount** and enter a monthly threshold.
 
+## Receive billing emails at a different email or and email alias
+
+Unfortunately, you cannot currently specify an additional email address to receive billing emails at.
+You can, however, create an account for the email address and make it part of your organization.
+
 ## Help
 
 For questions about your bill, email [billing@viam.com](mailto:billing@viam.com).
