@@ -236,14 +236,14 @@ If not, look for other related errors in your logs.
 1. Check networking:
 
    1. Check if your machine is showing as online on Viam and [check its logs](/manage/troubleshoot/troubleshoot/#check-logs).
-   When `viam-server` starts it runs a set of network checks which you can view in the logs.
-   
-   ```sh {class="command-line"}
-   2025-07-16T16:50:57.727Z	INFO	rdk.network-checks	networkcheck/network-check.go:28	Starting network checks
-   2025-07-16T16:50:57.744Z	INFO	rdk	config/platform.go:181	platform tags	{"tags":"os_version:15"}
-   2025-07-16T16:50:58.239Z	INFO	rdk.network-checks.udp	networkcheck/network-check-types.go:110	7/7 udp STUN tests succeeded	{"udp_tests":"[{stun_server_url: global.stun.twilio.com:3478, stun_server_addr: 18.156.18.181:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 19},{stun_server_url: turn.viam.com:443, stun_server_addr: 34.123.161.254:443, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 127},{stun_server_url: turn.viam.com:3478, stun_server_addr: 34.123.161.254:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 129},{stun_server_url: stun.l.google.com:3478, stun_server_addr: 74.125.250.129:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 16},{stun_server_url: stun.l.google.com:19302, stun_server_addr: 74.125.250.129:19302, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 17},{stun_server_url: stun.sipgate.net:3478, stun_server_addr: 15.197.250.192:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 21},{stun_server_url: stun.sipgate.net:3479, stun_server_addr: 15.197.250.192:3479, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 20}]","udp_source_address":"[::]:54092"}
+      When `viam-server` starts it runs a set of network checks which you can view in the logs.
+
+   ```sh {class="command-line" data-prompt="$"}
+   2025-07-16T16:50:57.727Z    INFO    rdk.network-checks    networkcheck/network-check.go:28    Starting network checks
+   2025-07-16T16:50:57.744Z    INFO    rdk    config/platform.go:181    platform tags    {"tags":"os_version:15"}
+   2025-07-16T16:50:58.239Z    INFO    rdk.network-checks.udp    networkcheck/network-check-types.go:110    7/7 udp STUN tests succeeded    {"udp_tests":"[{stun_server_url: global.stun.twilio.com:3478, stun_server_addr: 18.156.18.181:3478, ... }]","udp_source_address":"[::]:54092"}
    ```
-  
+
    1. Verify your machine's internet connection is stable and working properly.
    1. Check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`:
 
@@ -255,7 +255,7 @@ If not, look for other related errors in your logs.
       ```
 
    1. Check if UDP traffic is restricted in any way.
-   You can do this by checking your router settings and talking to your IT department, if applicable.
+      You can do this by checking your router settings and talking to your IT department, if applicable.
 
 1. Check your SDK connection:
 
@@ -266,18 +266,19 @@ If not, look for other related errors in your logs.
       machine, err := client.New(
         context.Background(),
         "mac-main.vw3iu72d8n.viam.cloud",
-		logger,
-		client.WithDialOptions(rpc.WithEntityCredentials( 
+      logger,
+      client.WithDialOptions(rpc.WithEntityCredentials(
           /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
-		  "<API-KEY-ID>",
-		  rpc.Credentials{
-            Type:    rpc.CredentialsTypeAPIKey, 
+        "<API-KEY-ID>",
+        rpc.Credentials{
+            Type:    rpc.CredentialsTypeAPIKey,
             /* Replace "<API-KEY>" (including brackets) with your machine's API key */
-			Payload: "<API-KEY>",
-		  })),
+          Payload: "<API-KEY>",
+        })),
           client.WithNetworkStats(),
-      )      
+      )
       ```
+
    1. Try connecting with a different SDK to check whether the issue may be SDK-specific or a code issue.
 
 1. If you have multiple tabs open with your machine's page, close all but one.
