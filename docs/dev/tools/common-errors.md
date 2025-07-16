@@ -238,10 +238,29 @@ If not, look for other related errors in your logs.
    1. Check if your machine is showing as online on Viam and [check its logs](/manage/troubleshoot/troubleshoot/#check-logs).
    When `viam-server` starts it runs a set of network checks which you can view in the logs.
    
-   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+   ```sh {class="command-line"}
+   2025-07-16T16:50:57.727Z	INFO	rdk.network-checks	networkcheck/network-check.go:28	Starting network checks
+   2025-07-16T16:50:57.744Z	INFO	rdk	config/platform.go:181	platform tags	{"tags":"os_version:15"}
+   2025-07-16T16:50:58.239Z	INFO	rdk.network-checks.udp	networkcheck/network-check-types.go:110	7/7 udp STUN tests succeeded	{"udp_tests":"[{stun_server_url: global.stun.twilio.com:3478, stun_server_addr: 18.156.18.181:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 19},{stun_server_url: turn.viam.com:443, stun_server_addr: 34.123.161.254:443, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 127},{stun_server_url: turn.viam.com:3478, stun_server_addr: 34.123.161.254:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 129},{stun_server_url: stun.l.google.com:3478, stun_server_addr: 74.125.250.129:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 16},{stun_server_url: stun.l.google.com:19302, stun_server_addr: 74.125.250.129:19302, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 17},{stun_server_url: stun.sipgate.net:3478, stun_server_addr: 15.197.250.192:3478, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 21},{stun_server_url: stun.sipgate.net:3479, stun_server_addr: 15.197.250.192:3479, bind_response_addr: 83.84.178.211:54092, time_to_bind_response_ms: 20}]","udp_source_address":"[::]:54092"}
+   ```
   
    1. Verify your machine's internet connection is stable and working properly.
-   1. Ensure network checks on `viam-server` succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting:
+   1. Check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`:
+
+      ```sh {class="command-line" data-prompt="$" data-output="2,4"}
+      nc -zv turn.viam.com 443
+      Connection to turn.viam.com port 443 [tcp/https] succeeded!
+      nc -zv global.turn.twilio.com 3478
+      Connection to global.turn.twilio.com port 3478 [tcp/nat-stun-port] succeeded!
+      ```
+
+   1. Check if UDP traffic is restricted in any way.
+   You can do this by checking your router settings and talking to your IT department, if applicable.
+
+1. Check your SDK connection:
+
+   1. If you are using API keys to connect, ensure you are using the correct credentials for the machine.
+   1. Ensure network checks on `viam-server` succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting and then checking the logs when executing the code:
 
       ```go {class="line-numbers linkable-line-numbers" data-line="13"}
       machine, err := client.New(
@@ -259,22 +278,6 @@ If not, look for other related errors in your logs.
           client.WithNetworkStats(),
       )      
       ```
-
-   1. Check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`:
-
-      ```sh {class="command-line" data-prompt="$" data-output="2,4"}
-      nc -zv turn.viam.com 443
-      Connection to turn.viam.com port 443 [tcp/https] succeeded!
-      nc -zv global.turn.twilio.com 3478
-      Connection to global.turn.twilio.com port 3478 [tcp/nat-stun-port] succeeded!
-      ```
-
-   1. Check if UDP traffic is restricted in any way.
-   You can do this by checking your router settings and talking to your IT department, if applicable.
-
-1. Check your SDK connection:
-
-   1. If you are using API keys to connect, ensure you are using the correct credentials for the machine.
    1. Try connecting with a different SDK to check whether the issue may be SDK-specific or a code issue.
 
 1. If you have multiple tabs open with your machine's page, close all but one.
