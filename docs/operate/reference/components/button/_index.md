@@ -52,8 +52,9 @@ The [button API](/dev/reference/apis/components/button/) supports the following 
 If your button is not working as expected, follow these steps:
 
 1. Check your machine logs on the **LOGS** tab to check for errors.
-2. Review your button model's documentation to ensure you have configured all required attributes.
-3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the button there.
+1. Review your button model's documentation to ensure you have configured all required attributes.
+1. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the button there.
+1. Disconnect and reconnect your button.
 
 If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
