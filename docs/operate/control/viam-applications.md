@@ -45,12 +45,13 @@ let apiKeySecret = "";
 let host = "";
 let machineId = "";
 
-const machineCookie = window.location.pathname.split("/")[2];
+// Extract the machine identifier from the URL
+const machineCookieKey = window.location.pathname.split("/")[2];
 ({
   apiKey: { id: apiKeyId, key: apiKeySecret },
   machineId: machineId,
   hostname: host,
-} = JSON.parse(Cookies.get(machineCookie)!));
+} = JSON.parse(Cookies.get(machineCookieKey)!));
 ```
 
 For developing your application on localhost, run the following command which will proxy your local app to a machine for testing:
