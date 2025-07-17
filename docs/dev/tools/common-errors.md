@@ -119,7 +119,7 @@ sudo apt install jackd qjackctl libpulse-dev pulseaudio
 
 This error can be safely ignored if you do not intend to use audio on your machine.
 
-## Common errors using the web UI
+## Common errors between `viam-server` and Viam
 
 ### Failed to connect; retrying
 
@@ -142,6 +142,21 @@ When a machine is disconnected, it will continue to run with its locally-cached 
     ```sh {class="command-line" data-prompt="$"}
     grep 'viam-server' /var/log/syslog | tail -50
     ```
+
+### Error: error connecting to peer, error not connected
+
+**Full Error:** `error connecting to peer   error not connected`
+
+**Description:** This error indicates a networking or connection issue.
+
+**Solution:**
+
+1. Verify your machine's internet connection is stable and working properly.
+1. Ensure your machine is using the correct machine cloud credentials.
+   You can obtain your machine cloud credentials from the machine's status in the part status dropdown to the right of your machine’s name on the top of the page.
+1. If you are using API keys to connect, ensure you are using the correct credentials for the machine.
+1. If you have multiple tabs open with your machine's page, close all but one.
+   Having too many connections can cause instability on some machines.
 
 ### Error: cannot parse config: JSON: cannot unmarshal string into Go struct
 
@@ -171,20 +186,32 @@ In **JSON** mode, it will resemble the following:
 
 **Full Error:**
 
+Generalized example::
+
 ```sh {class="command-line" data-prompt="$" data-output="1-10"}
-error rdk.resource_manager.rdk:<RESOURCE-IDENTIFIER>   resource/graph_node.go:297   resource build error: unknown resource type: API "<API-TRIPLET>" with model "<MODEL-TRIPLET>" not registered   resource <RESOURCE-IDENTIFIER>  model <MODEL-TRIPLET>
+resource build error: unknown resource type: API "<API-TRIPLET>" with model "<MODEL-TRIPLET>" not registered
+```
+
+Camera example:
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+resource build error: unknown resource type: API "rdk:component:camera" with model "viam:orbbec:astra2" not registered.
 ```
 
 **Description:** This error occurs when your configuration requests a model with an associated API and the combination of model name and API triplet is not registered with viam-server.
 
 **Solution:**
 
-- **Module Installation**: For registry-provided models, ensure that your machine's configuration includes the module.
-- **Model Triplet Verification**: Check for typos in the model triplet.
-  It must exactly match the model registered with `viam-server`.
-  For registry-provided models, you can find the correct model triplet (for example `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
-- **API Compatibility**: Ensure the selected model supports the requested API. You can find the requested APIs next to each model entry in the **Components & services** section of the registry page.
-- **API Triplet Verification**: Check for typos in the API triplet (for example `rdk:component:camera`).
+1. If you are using a registry-provided models, ensure that your machine's configuration includes the module that provides the model.
+   On your machine page, find the module and navigate to it's module page in the registry.
+   You can find the correct model triplet (for example `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
+1. Check for typos in the model triplet.
+   It must exactly match the model registered with `viam-server`.
+1. Ensure the model supports the requested API.
+   You can find the requested APIs next to each model entry in the **Components & services** section of the registry page.
+1. Check for typos in the API triplet (for example `rdk:component:camera`).
+1. Check the logs for other errors.
+   It may be that the instantiation of the model is failing, for other reasons such as the hardware being disconnected.
 
 ### Accidental deletion of machines, locations, organizations, or accounts
 
