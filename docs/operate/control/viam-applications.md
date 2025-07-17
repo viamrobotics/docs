@@ -206,6 +206,7 @@ Users will be prompted to authenticate with their Viam credentials before access
 1. User selects an organization, location, and machine.
 1. User is redirected to `your-app-name_your-public-namespace.viamapplications.com/machine/{machine-id}`.
 1. Your application is rendered with access to the selected machine.
+   The credentials for that one machine are provided in the cookies.
 
 ## Example
 
