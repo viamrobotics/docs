@@ -42,15 +42,14 @@ import Cookies from "js-cookie";
 
 let apiKeyId = "";
 let apiKeySecret = "";
-let hostname = "";
+let host = "";
 let machineId = "";
 
-machineCookie = window.location.pathname.split("/")[2];
+const machineCookie = window.location.pathname.split("/")[2];
 ({
-  id: apiKeyId,
-  key: apiKeySecret,
-  hostname: hostname,
+  apiKey: { id: apiKeyId, key: apiKeySecret },
   machineId: machineId,
+  hostname: host,
 } = JSON.parse(Cookies.get(machineCookie)!));
 ```
 
@@ -59,15 +58,14 @@ For developing your application on localhost, run the following command which wi
 {{< tabs >}}
 {{% tab name="Template" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
-viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID> --machine-api-key
-<MACHINE-API-KEY> --machine-api-key-id <MACHINE-API-KEY-ID>
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
+viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID> --machine-api-key <MACHINE-API-KEY> --machine-api-key-id <MACHINE-API-KEY-ID>
 ```
 
 {{% /tab %}}
 {{% tab name="Example" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam module local-app-testing --app-url http://localhost:3000 --machine-id a1b2c3d4-e5f6-7890-abcd-ef1234567890 --machine-api-key 1abc2de3fg4hi5jk6lm7no8pq9rs0tu --machine-api-key-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
@@ -220,7 +218,7 @@ For a React application that shows camera feeds for a machine, see [Viam Camera 
 - The page will always render the latest version.
 - Browsers with cookies disabled are not supported.
 - Viam applications serve static files.
-  If you are building an application with server-side rendering or need other back-end capabilites, Viam applications is not the right choice.
+  If you are building an application with server-side rendering or need other back-end capabilities, Viam applications is not the right choice.
 
 ## Security considerations
 
