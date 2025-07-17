@@ -67,7 +67,8 @@ viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MA
 {{% tab name="Example" %}}
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam module local-app-testing --app-url http://localhost:3000 --machine-id a1b2c3d4-e5f6-7890-abcd-ef1234567890 --machine-api-key 1abc2de3fg4hi5jk6lm7no8pq9rs0tu --machine-api-key-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
+viam login
+viam module local-app-testing --app-url http://localhost:3000 --machine-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
 {{% /tab %}}
