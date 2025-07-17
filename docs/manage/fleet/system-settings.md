@@ -114,6 +114,16 @@ To configure your machine to disable TLS on the hosted HTTP server, you must spe
 }
 ```
 
+## Configure bind address and port
+
+To configure your machine to bind to a different port, set the `bind_address` in your machine settings:
+
+```json {class="line-numbers linkable-line-numbers"}
+"network": {
+  "bind_address": "localhost:8081"
+}
+```
+
 ## Configure operating system logging
 
 By default, the maximum disk space `journald` will use for `viam-server` logs is 512MB.
