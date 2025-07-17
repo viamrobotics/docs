@@ -60,7 +60,8 @@ For developing your application on localhost, run the following command which wi
 {{% tab name="Template" %}}
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID> --machine-api-key <MACHINE-API-KEY> --machine-api-key-id <MACHINE-API-KEY-ID>
+viam login
+viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID>
 ```
 
 {{% /tab %}}
