@@ -54,7 +54,8 @@ const machineCookieKey = window.location.pathname.split("/")[2];
 } = JSON.parse(Cookies.get(machineCookieKey)!));
 ```
 
-For developing your application on localhost, run the following command which will proxy your local app to a machine for testing:
+For developing your application on localhost, run the following command which will proxy your local app.
+The command will open a browser window and navigate to `http://localhost:8000/machine/<machineHostname>` for the machine provided with --machine-id.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -77,7 +78,7 @@ viam module local-app-testing --app-url http://localhost:3000 --machine-id a1b2c
 
 ### Configure routing
 
-When using your deployed application, static files will be accessible at `https://your-app-name_your-public-namespace.viamapplications.com/machine/<machine-id>/`.
+When using your deployed application, static files will be accessible at `https://your-app-name_your-public-namespace.viamapplications.com/machine/<machineHostname>/`.
 If your HTML file loads other files, use relative paths to ensure your files are accessible.
 
 ## Deploy your web interface as a Viam application
@@ -205,7 +206,7 @@ Users will be prompted to authenticate with their Viam credentials before access
 1. User navigates to `your-app-name_your-public-namespace.viamapplications.com`.
 1. User authenticates with Viam credentials.
 1. User selects an organization, location, and machine.
-1. User is redirected to `your-app-name_your-public-namespace.viamapplications.com/machine/{machine-id}`.
+1. User is redirected to `your-app-name_your-public-namespace.viamapplications.com/machine/<machineHostname>`.
 1. Your application is rendered with access to the selected machine.
    The credentials for that one machine are provided in the cookies.
 
@@ -234,8 +235,8 @@ For a React application that shows camera feeds for a machine, see [Viam Camera 
 
 ### Can I use a custom domain?
 
-Viam does not currently support using custom domains (`www.mycustomdomain.com[/machine/machine-id]`) to serve your Viam application.
-You can, however, redirect from your domain to your Viam application (`www.mycustomdomain.com[/machine/machine-id]` -> `your-app-name_your-public-namespace.viamapplications.com[/machine/machine-id]`).
+Viam does not currently support using custom domains (for example: `www.mycustomdomain.com/machine/<machineHostname>`) to serve your Viam application.
+You can, however, redirect from your domain to your Viam application (`www.mycustomdomain.com/machine/<machineHostname>` -> `your-app-name_your-public-namespace.viamapplications.com/machine/<machineHostname>`).
 You can set forwarding up with your DNS provider.
 
 To configure an apex domain (`example.com`) and the `www` subdomain, set the following values:
