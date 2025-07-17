@@ -50,76 +50,29 @@ machineCookie = window.location.pathname.split("/")[2];
   id: apiKeyId,
   key: apiKeySecret,
   hostname: hostname,
-  machineId: machineId
+  machineId: machineId,
 } = JSON.parse(Cookies.get(machineCookie)!));
 ```
 
-For developing your application on localhost, add the same information to your browser's cookies:
+For developing your application on localhost, run the following command which will proxy your local app to a machine for testing:
 
-1. Navigate to [Camera Viewer](https://camera-viewer_naomi.viamapplications.com/).
-2. Log in and select the machine you'd like to use for testing.
-3. Open Developer Tools and go to the console.
-4. Execute the following JavaScript to obtain the cookies you need:
+{{< tabs >}}
+{{% tab name="Template" %}}
 
-   ```js {class="line-numbers linkable-line-numbers" data-line=""}
-   function generateCookieSetterScript() {
-     // Get all cookies from current page
-     const currentCookies = document.cookie.split(";");
-     let cookieSetterCode = "// Cookie setter script for localhost\n";
-     cookieSetterCode +=
-       "// Copy and paste this entire script into your browser console when on localhost\n\n";
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID> --machine-api-key
+<MACHINE-API-KEY> --machine-api-key-id <MACHINE-API-KEY-ID>
+```
 
-     // Process each cookie
-     let cookieCount = 0;
-     currentCookies.forEach((cookie) => {
-       if (cookie.trim()) {
-         // Extract name and value from the cookie
-         const [name, value] = cookie.trim().split("=");
+{{% /tab %}}
+{{% tab name="Example" %}}
 
-         // Add code to set this cookie
-         cookieSetterCode += `document.cookie = "${name}=${value}; path=/";\n`;
-         cookieCount++;
-       }
-     });
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+viam module local-app-testing --app-url http://localhost:3000 --machine-id a1b2c3d4-e5f6-7890-abcd-ef1234567890 --machine-api-key 1abc2de3fg4hi5jk6lm7no8pq9rs0tu --machine-api-key-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
+```
 
-     // Add summary comment
-     cookieSetterCode += `\nconsole.log("Set ${cookieCount} cookies on localhost");\n`;
-
-     // Display the generated code
-     console.log(cookieSetterCode);
-
-     // Create a textarea element to make copying easier
-     const textarea = document.createElement("textarea");
-     textarea.value = cookieSetterCode;
-     textarea.style.position = "fixed";
-     textarea.style.top = "0";
-     textarea.style.left = "0";
-     textarea.style.width = "100%";
-     textarea.style.height = "250px";
-     textarea.style.zIndex = "9999";
-     document.body.appendChild(textarea);
-     textarea.focus();
-     textarea.select();
-   }
-
-   // Execute the function
-   generateCookieSetterScript();
-   ```
-
-5. Copy the resulting script. It will look like this:
-
-   ```js {class="line-numbers linkable-line-numbers" data-line=""}
-   // Cookie setter script for localhost
-   // Copy and paste this entire script into your browser console when on localhost
-
-   document.cookie = "<SECRET COOKIE INFO>; path=/";
-   document.cookie = "machinesWhoseCredentialsAreStored=<MACHINE ID>; path=/";
-
-   console.log("Set 2 cookies on localhost");
-   ```
-
-6. Open the application you are building on localhost and run the resulting script.
-7. Reload your application.
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Configure routing
 
