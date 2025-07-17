@@ -9,7 +9,7 @@ description: "Add support for a new component or service model by writing a modu
 languages: ["c++"]
 viamresources: []
 platformarea: ["registry"]
-toc_hide: true
+toc_hide: false
 ---
 
 Each modular resource has two associated triplets: an API namespace triplet to indicate which [API](/dev/reference/apis/) it implements, and a model namespace triplet to uniquely identify the modular resource {{< glossary_tooltip term_id="model" text="model" >}}.
@@ -94,6 +94,30 @@ More requirements:
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
 Determine the model name you want to use based on these requirements, then proceed to the next section.
+
+## Valid application identifiers
+
+If your module includes a [Viam app](/operate/control/viam-applications/), you need to define the application name in your module's `meta.json` file.
+Application names have the following requirements:
+
+- Application names must be all-lowercase.
+- Application names may only use alphanumeric (`a-z` and `0-9`) and hyphen (`-`) characters.
+- Application names may not start or end with a hyphen.
+- Application names must be unique within your organization's namespace.
+
+The URL for accessing your Viam app will contain your application name:
+
+```txt
+https://app-name_your-public-namespace.viamapps.com
+```
+
+For example, if your organization namespace is `acme` and your application name is `dashboard`, your application will be accessible at:
+
+```txt
+https://dashboard_acme.viamapps.com
+```
+
+For more information about Viam apps, see the [Viam apps documentation](/operate/control/viam-applications/).
 
 ## Create a namespace for your organization
 

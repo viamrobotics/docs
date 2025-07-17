@@ -40,16 +40,16 @@ Do not change the <code>module_id</code>.</p>
 </tr>
 <tr>
 <td><code>models</code></td>
-<td>object</td>
-<td><strong>Required</strong></td>
-<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p>
+<td>array</td>
+<td>Optional</td>
+<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model in the models array or one application in the applications array. A model consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/reference/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p>
 <p>You are strongly encouraged to include a <code>markdown_link</code> to the section of the README containing configuration information about each model, so that the section will be displayed alongside the configuration panel when configuring the model. For example, <code>"README.md#configure-your-meteo_pm-sensor"</code>. Please also include a <code>short_description</code> describing what hardware the model supports.</p></td>
 </tr>
 <tr>
 <td><code>entrypoint</code></td>
 <td>string</td>
-<td><strong>Required</strong></td>
-<td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.<br><br>If you have a local module, the local module uses its configured <a href="/operate/get-started/other-hardware/module-configuration/#module-configuration-details"><code>executable_path</code></a> instead of <code>entrypoint</code>.</td>
+<td>Optional</td>
+<td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory. Required if you are shipping a model.</td>
 </tr>
 <tr>
 <td><code>build</code></td>
@@ -68,6 +68,12 @@ Do not change the <code>module_id</code>.</p>
 <td>string</td>
 <td>Optional</td>
 <td>Enables VS Code hover and autocomplete as you edit your module code. Gets auto-generated when you run <code>viam module generate</code> or <code>viam module create</code>. Has no impact on the module's function.</td>
+</tr>
+<tr>
+<td><code>applications</code></td>
+<td>array</td>
+<td>Optional</td>
+<td>Objects that provide information about the [applications](/operate/control/viam-applications/) provided by the module.</td>
 </tr>
 
 </table>

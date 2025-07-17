@@ -42,6 +42,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Build custom Viam applications" date="2025-07-17" %}}
+
+You can now create and use Viam applications to build custom applications that interact with your Viam-powered machines through the Viam SDKs.
+For more information, see [Viam applications](/operate/control/viam-applications/).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Start modules with a TCP connection" date="2025-07-14" %}}
 
 You can now configure to start modules with a TCP connection. See [Module Configuration](/operate/get-started/other-hardware/module-configuration/) for more information.
