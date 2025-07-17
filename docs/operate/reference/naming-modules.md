@@ -97,7 +97,7 @@ Determine the model name you want to use based on these requirements, then proce
 
 ## Valid application identifiers
 
-If your module includes a [Viam app](/operate/control/viam-app/), you need to define the application name in your module's `meta.json` file.
+If your module includes a [Viam app](/operate/control/viam-applications/), you need to define the application name in your module's `meta.json` file.
 Application names have the following requirements:
 
 - Application names must be all-lowercase.
@@ -117,7 +117,7 @@ For example, if your organization namespace is `acme` and your application name 
 https://dashboard_acme.viamapps.com
 ```
 
-For more information about Viam apps, see the [Viam apps documentation](/operate/control/viam-app/).
+For more information about Viam apps, see the [Viam apps documentation](/operate/control/viam-applications/).
 
 ## Create a namespace for your organization
 
