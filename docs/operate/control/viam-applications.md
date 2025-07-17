@@ -241,7 +241,7 @@ For a React application that shows camera feeds for a machine, see [Viam Camera 
 ### Can I use a custom domain?
 
 Viam does not currently support using custom domains (for example: `www.mycustomdomain.com/machine/<machineHostname>`) to serve your Viam application.
-You can, however, redirect from your domain to your Viam application (`www.mycustomdomain.com/machine/<machineHostname>` -> `your-app-name_your-public-namespace.viamapplications.com/machine/<machineHostname>`).
+You can, however, redirect from your domain to your Viam application (`www.mycustomdomain.com` -> `your-app-name_your-public-namespace.viamapplications.com`).
 You can set forwarding up with your DNS provider.
 
 To configure an apex domain (`example.com`) and the `www` subdomain, set the following values:
