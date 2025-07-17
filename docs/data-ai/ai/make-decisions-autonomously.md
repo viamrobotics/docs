@@ -115,93 +115,23 @@ Finally, add the following `services` configuration for your vision service, rep
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-from typing import Literal
+from typing import Any, Mapping, Sequence, Tuple
+from typing_extensions import Self
 
-from viam.media.video import CameraMimeType
-from viam.robot.client import RobotClient
-from viam.components.base import Base, Vector3
 from viam.components.camera import Camera
-from viam.services.vision import VisionClient
-from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+from viam.logging import getLogger
 from viam.module.module import Module
-from viam.resource.types import Model, Subtype
+from viam.resource.types import Model, ModelFamily
 from viam.resource.base import ResourceBase
 from viam.resource.registry import Registry, ResourceCreatorRegistration
-from viam.proto.app.v1 import ComponentConfig
+from viam.proto.app.robot import ComponentConfig
+from viam.proto.common import ResourceName
+from viam.services.vision import VisionClient
+from viam.components.base import Base, Vector3
 
-class LineFollowerAPI(ResourceBase):
-    """
-    LineFollowerAPI represents a custom API for controlling a base based on vision.
-    """
-    SUBTYPE = Subtype("example-namespace", "example-module", "line_follower")
-
-    async def start_line_following(self):
-        raise NotImplementedError
-
-    async def stop_line_following(self):
-        raise NotImplementedError
-
-async def is_color_in_front(camera: Camera, detector: VisionClient):
-    """
-    Returns whether the appropriate path color is detected in front of the center of the robot.
-    """
-    frame = viam_to_pil_image(await camera.get_image(mime_type=CameraMimeType.JPEG))
-
-    x, y = frame.size[0], frame.size[1]
-
-    # Crop the image to get only the middle fifth of the top third of the original image
-    cropped_frame = frame.crop((x / 2.5, 0, x / 1.25, y / 3))
-
-    detections = await detector.get_detections(
-        pil_to_viam_image(cropped_frame, CameraMimeType.JPEG)
-    )
-
-    if detections: # Check if the list is not empty
-        return True
-    return False
-
-
-async def is_color_there(
-    camera: Camera, detector: VisionClient, location: Literal["left", "right"]
-):
-    """
-    Returns whether the appropriate path color is detected to the left/right of the robot's front.
-    """
-    frame = viam_to_pil_image(await camera.get_image(mime_type=CameraMimeType.JPEG))
-    x, y = frame.size[0], frame.size[1]
-
-    if location == "left":
-        # Crop image to get only the left two fifths of the original image
-        cropped_frame = frame.crop((0, 0, x / 2.5, y))
-
-        detections = await detector.get_detections(
-            pil_to_viam_image(cropped_frame, CameraMimeType.JPEG)
-        )
-
-    elif location == "right":
-        # Crop image to get only the right two fifths of the original image
-        cropped_frame = frame.crop((x / 1.25, 0, x, y))
-
-        detections = await detector.get_detections(
-            pil_to_viam_image(cropped_frame, CameraMimeType.JPEG)
-        )
-    else:
-        detections = [] # Ensure detections is defined if location is neither 'left' nor 'right'
-
-    if detections: # Check if the list is not empty
-        return True
-    return False
-
-
-async def stop_robot(base: Base):
-    """
-    Stop the robot's motion.
-    """
-    await base.stop()
-
-# Implement your custom control logic module
-class LineFollowerModule(Module, LineFollowerAPI):
-    MODEL = Model("example-namespace", "example-module", "line_follower_module")
+class ColorFollowerModule(Module, ResourceBase):
+    MODEL = Model(ModelFamily("example", "color-follower"), "color-follower-module")
+    LOGGER = getLogger(__name__)
 
     def __init__(self, name: str):
         super().__init__(name)
@@ -210,103 +140,121 @@ class LineFollowerModule(Module, LineFollowerAPI):
         self.detector: VisionClient = None
         self._running_loop = False
         self._loop_task = None
-
-        # Speed parameters (can be configured via module config if desired)
         self.linear_power = 0.35
         self.angular_power = 0.3
 
     @classmethod
-    def new_resource(cls, config: ComponentConfig):
-        return cls(config.name)
+    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+        instance = cls(config.name)
+        instance.reconfigure(config, dependencies)
+        return instance
+
+    @classmethod
+    def validate(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
+        required_attributes = []
+        optional_attributes = [
+            "camera_name",
+            "detector_name",
+        ]
+
+        camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else "my_camera"
+        detector_name = config.attributes.fields["detector_name"].string_value if "detector_name" in config.attributes.fields else "my_detector"
+
+        dependencies = [camera_name, detector_name]
+        return dependencies, []
+
+    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
+        self.camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else "my_camera"
+        self.detector_name = config.attributes.fields["detector_name"].string_value if "detector_name" in config.attributes.fields else "my_detector"
+
+        for dependency_name, dependency in dependencies.items():
+            if dependency_name.subtype == "camera" and dependency_name.name == self.camera_name:
+                self.camera = dependency
+            elif dependency_name.subtype == "vision" and dependency_name.name == self.detector_name:
+                self.detector = dependency
+
+        if not self.camera:
+            raise ValueError(f"Camera '{self.camera_name}' dependency not found.")
+        if not self.detector:
+            raise ValueError(f"Vision service '{self.detector_name}' dependency not found.")
+
+        ColorFollowerModule.LOGGER.info("Reconfigured.")
 
     async def start(self):
-        """
-        Called when the module starts. Get references to components.
-        """
-        print(f"LineFollowerModule '{self.name}' starting...")
-        # Access components directly from the robot object provided by the module framework
-        self.camera = await Camera.from_robot(self.robot, "my_camera")
-        self.base = await Base.from_robot(self.robot, "scuttlebase")
-        # Replace "green_detector" with your actual vision service name
-        self.detector = await VisionClient.from_robot(self.robot, "my_line_detector")
-        print(f"LineFollowerModule '{self.name}' started.")
+        ColorFollowerModule.LOGGER.info("Starting color following...")
+        await self._start_color_following_internal()
 
     async def close(self):
-        """
-        Called when the module is shutting down. Clean up tasks.
-        """
-        print(f"LineFollowerModule '{self.name}' closing...")
-        await self.stop_line_following()
-        print(f"LineFollowerModule '{self.name}' closed.")
+        ColorFollowerModule.LOGGER.info("Stopping color following...")
+        await self._stop_color_following_internal()
+        ColorFollowerModule.LOGGER.info("Stopped.")
 
-    async def _line_follower_loop(self):
-        """
-        The core line following control logic loop.
-        """
-        print("Line follower control loop started.")
-        counter = 0 # counter to increase robustness
+    async def _color_following_loop(self):
+        ColorFollowerModule.LOGGER.info("Color following loop started.")
 
-        while self._running_loop and counter <= 3:
+        while self._running_loop:
             try:
-                if await is_color_in_front(self.camera, self.detector):
-                    print("going straight")
-                    # Moves the base slowly forward in a straight line
+                # Check for color in front
+                if await self._is_color_in_front():
+                    ColorFollowerModule.LOGGER.info("Moving forward.")
                     await self.base.set_power(Vector3(y=self.linear_power), Vector3())
-                    counter = 0
-                # If there is green to the left, turns the base left at a continuous, slow speed
-                elif await is_color_there(self.camera, self.detector, "left"):
-                    print("going left")
+                # Check for color to the left
+                elif await self._is_color_there("left"):
+                    ColorFollowerModule.LOGGER.info("Turning left.")
                     await self.base.set_power(Vector3(), Vector3(z=self.angular_power))
-                    counter = 0
-                # If there is green to the right, turns the base right at a continuous, slow speed
-                elif await is_color_there(self.camera, self.detector, "right"):
-                    print("going right")
+                # Check for color to the right
+                elif await self._is_color_there("right"):
+                    ColorFollowerModule.LOGGER.info("Turning right.")
                     await self.base.set_power(Vector3(), Vector3(z=-self.angular_power))
-                    counter = 0
                 else:
-                    print(f"No color detected, counter: {counter}")
-                    counter += 1
-                    # Optionally, stop or slow down if no color is detected
+                    ColorFollowerModule.LOGGER.info("No color detected. Stopping.")
                     await self.base.stop()
 
             except Exception as e:
-                print(f"Error in line follower loop: {e}")
+                ColorFollowerModule.LOGGER.error(f"Error in color following loop: {e}")
 
-            await asyncio.sleep(0.05) # Adjust sleep time for desired loop frequency
+            await asyncio.sleep(0.05)
 
-        print("The path is behind us and forward is only open wasteland.")
-        await stop_robot(self.base) # Stop the robot when the loop finishes
-        self._running_loop = False # Ensure loop state is reset
+        ColorFollowerModule.LOGGER.info("Color following loop finished.")
+        await self.base.stop()
 
-    async def start_line_following(self):
-        """
-        Starts the background loop for line following.
-        """
+    async def _start_color_following_internal(self):
         if not self._running_loop:
             self._running_loop = True
-            self._loop_task = asyncio.create_task(self._line_follower_loop())
-            print("Requested to start line following loop.")
+            self._loop_task = asyncio.create_task(self._color_following_loop())
+            ColorFollowerModule.LOGGER.info("Requested to start color following loop.")
         else:
-            print("Line following loop is already running.")
+            ColorFollowerModule.LOGGER.info("Color following loop is already running.")
 
-    async def stop_line_following(self):
-        """
-        Stops the background loop for line following.
-        """
+    async def _stop_color_following_internal(self):
         if self._running_loop:
             self._running_loop = False
             if self._loop_task:
-                await self._loop_task # Wait for the task to complete its current iteration and exit
+                await self._loop_task
                 self._loop_task = None
-            print("Requested to stop line following loop.")
-        else:
-            print("Line following loop is not running.")
+            ColorFollowerModule.LOGGER.info("Requested to stop color following loop.")
+
+    async def _is_color_in_front(self) -> bool:
+        frame = await self.camera.get_image()
+        detections = await self.detector.get_detections(frame)
+        return any(detection.class_name == "target_color" for detection in detections)
+
+    async def _is_color_there(self, location: str) -> bool:
+        frame = await self.camera.get_image()
+        if location == "left":
+            # Crop logic for left side
+            pass
+        elif location == "right":
+            # Crop logic for right side
+            pass
+        # Implement detection logic here
+        detections = await self.detector.get_detections(frame)
+        return any(detection.class_name == "target_color" for detection in detections)
 
 # Register your module
 Registry.register_resource_creator(
-    LineFollowerAPI.SUBTYPE,
-    LineFollowerModule.MODEL,
-    ResourceCreatorRegistration(LineFollowerModule.new_resource, LineFollowerModule.validate_config)
+    ColorFollowerModule.MODEL,
+    ResourceCreatorRegistration(ColorFollowerModule.new, ColorFollowerModule.validate)
 )
 
 async def main():
@@ -317,7 +265,7 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    print("Done.")
+    ColorFollowerModule.LOGGER.info("Done.")
 ```
 
 ## Follow a colored object
@@ -423,9 +371,9 @@ Add the following `services` configuration, replacing the `detect_color` value w
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-from typing import List, Literal
+from typing import Any, Mapping, List, Literal, Sequence, Tuple
+from typing_extensions import Self
 
-from viam.robot.client import RobotClient
 from viam.components.base import Base
 from viam.components.camera import Camera
 from viam.services.vision import VisionClient
@@ -437,53 +385,7 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.proto.app.v1 import ComponentConfig
 from viam.services.vision import Detection
 
-class ObjectTrackingBaseAPI(ResourceBase):
-    """
-    ObjectTrackingBaseAPI represents a custom API for controlling a base based on object tracking.
-    """
-    SUBTYPE = Subtype("example-namespace", "example-module", "object_tracking_base")
-
-    async def start_object_tracking(self):
-        raise NotImplementedError
-
-    async def stop_object_tracking(self):
-        raise NotImplementedError
-
-def leftOrRight(detections: List[Detection], midpoint: float) -> Literal[0, 1, 2, -1]:
-    """
-    Get largest detection box and see if its center is in the left, center, or right third.
-    Returns 0 for left, 1 for center, 2 for right, -1 if nothing detected.
-    """
-    largest_area = 0
-    largest_detection: Detection = None # Initialize with None or a default Detection object
-
-    if not detections:
-        print("nothing detected :(")
-        return -1
-
-    for d in detections:
-        # Calculate area using x_max, x_min, y_max, y_min
-        area = (d.x_max - d.x_min) * (d.y_max - d.y_min)
-        if area > largest_area:
-            largest_area = area
-            largest_detection = d
-
-    if largest_detection is None: # Should not happen if detections is not empty, but for safety
-        return -1
-
-    # Calculate center X of the largest detection
-    centerX = largest_detection.x_min + (largest_detection.x_max - largest_detection.x_min) / 2
-
-    # Determine if center is left, center, or right
-    if centerX < midpoint - midpoint / 6:
-        return 0  # on the left
-    elif centerX > midpoint + midpoint / 6:
-        return 2  # on the right
-    else:
-        return 1  # basically centered
-
-# Implement your custom control logic module
-class ObjectTrackingBaseModule(Module, ObjectTrackingBaseAPI):
+class ObjectTrackingBaseModule(Module):
     MODEL = Model("example-namespace", "example-module", "object_tracking_base_module")
 
     def __init__(self, name: str):
@@ -491,33 +393,51 @@ class ObjectTrackingBaseModule(Module, ObjectTrackingBaseAPI):
         self.base: Base = None
         self.camera: Camera = None
         self.detector: VisionClient = None
-        self.camera_name: str = "my_camera" # Default camera name, adjust in config if needed
+        self.camera_name: str = "my_camera"
 
         self._running_loop = False
         self._loop_task = None
 
-        # Control parameters (can be configured via module config if desired)
-        self.spin_num = 10         # when turning, spin the motor this much
-        self.straight_num = 300    # when going straight, spin motor this much
-        self.vel = 500             # go this fast when moving motor
-        self.num_cycles = 200      # run the loop X times (module will run indefinitely if _running_loop is True)
+        self.spin_num = 10
+        self.straight_num = 300
+        self.vel = 500
+        self.num_cycles = 200
 
     @classmethod
-    def new_resource(cls, config: ComponentConfig):
-        # You can parse attributes from the config here if you want to make
-        # camera_name, spin_num, etc. configurable from the Viam app.
-        # For simplicity, using defaults/hardcoded names for now.
-        return cls(config.name)
+    def new(cls, config: ComponentConfig, dependencies: Mapping[str, ResourceBase]) -> Self:
+        instance = cls(config.name)
+        instance.reconfigure(config, dependencies)
+        return instance
+
+    @classmethod
+    def validate(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
+        required_attributes = []
+        optional_attributes = ["camera_name"]
+
+        camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else "my_camera"
+
+        dependencies = [camera_name]
+        return dependencies, []
+
+    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[str, ResourceBase]):
+        self.camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else self.camera_name
+
+        for dependency_name, dependency in dependencies.items():
+            if dependency_name.subtype == "camera" and dependency_name.name == self.camera_name:
+                self.camera = dependency
+            elif dependency_name.subtype == "base":
+                self.base = dependency
+
+        if not self.camera:
+            raise ValueError(f"Camera '{self.camera_name}' dependency not found.")
+        if not self.base:
+            raise ValueError("Base dependency not found.")
 
     async def start(self):
         """
         Called when the module starts. Get references to components.
         """
         print(f"ObjectTrackingBaseModule '{self.name}' starting...")
-        # Access components directly from the robot object provided by the module framework
-        self.base = await Base.from_robot(self.robot, "my_base")
-        self.camera = await Camera.from_robot(self.robot, self.camera_name)
-        # Replace "my_color_detector" with your actual vision service name
         self.detector = await VisionClient.from_robot(self.robot, "my_object_detector")
         print(f"ObjectTrackingBaseModule '{self.name}' started.")
 
@@ -529,14 +449,41 @@ class ObjectTrackingBaseModule(Module, ObjectTrackingBaseAPI):
         await self.stop_object_tracking()
         print(f"ObjectTrackingBaseModule '{self.name}' closed.")
 
+    def left_or_right(self, detections: List[Detection], midpoint: float) -> Literal[0, 1, 2, -1]:
+        """
+        Get largest detection box and see if its center is in the left, center, or right third.
+        Returns 0 for left, 1 for center, 2 for right, -1 if nothing detected.
+        """
+        largest_area = 0
+        largest_detection: Detection = None
+
+        if not detections:
+            return -1
+
+        for d in detections:
+            area = (d.x_max - d.x_min) * (d.y_max - d.y_min)
+            if area > largest_area:
+                largest_area = area
+                largest_detection = d
+
+        if largest_detection is None:
+            return -1
+
+        centerX = largest_detection.x_min + (largest_detection.x_max - largest_detection.x_min) / 2
+
+        if centerX < midpoint - midpoint / 6:
+            return 0  # on the left
+        elif centerX > midpoint + midpoint / 6:
+            return 2  # on the right
+        else:
+            return 1  # basically centered
+
     async def _object_tracking_loop(self):
         """
         The core object tracking and base control logic loop.
         """
         print("Object tracking control loop started.")
 
-        # Get initial frame to determine midpoint for detection logic
-        # This assumes the camera resolution doesn't change during operation
         initial_frame = await self.camera.get_image(mime_type="image/jpeg")
         pil_initial_frame = viam_to_pil_image(initial_frame)
         midpoint = pil_initial_frame.size[0] / 2
@@ -546,32 +493,32 @@ class ObjectTrackingBaseModule(Module, ObjectTrackingBaseAPI):
             try:
                 detections = await self.detector.get_detections_from_camera(self.camera_name)
 
-                answer = leftOrRight(detections, midpoint)
+                answer = self.left_or_right(detections, midpoint)
 
                 if answer == 0:
                     print("Detected object on left, spinning left.")
-                    await self.base.spin(self.spin_num, self.vel)     # CCW is positive
+                    await self.base.spin(self.spin_num, self.vel)
                     await self.base.move_straight(self.straight_num, self.vel)
                 elif answer == 1:
                     print("Detected object in center, moving straight.")
                     await self.base.move_straight(self.straight_num, self.vel)
                 elif answer == 2:
                     print("Detected object on right, spinning right.")
-                    await self.base.spin(-self.spin_num, self.vel) # CW is negative
+                    await self.base.spin(-self.spin_num, self.vel)
                     await self.base.move_straight(self.straight_num, self.vel)
-                else: # answer == -1 (nothing detected)
+                else:
                     print("No object detected, stopping base.")
-                    await self.base.stop() # Stop if nothing is detected
+                    await self.base.stop()
 
             except Exception as e:
                 print(f"Error in object tracking loop: {e}")
 
             cycle_count += 1
-            await asyncio.sleep(0.1) # Small delay to prevent busy-waiting
+            await asyncio.sleep(0.1)
 
         print("Object tracking loop finished or stopped.")
-        await self.base.stop() # Ensure base stops when loop ends
-        self._running_loop = False # Reset state
+        await self.base.stop()
+        self._running_loop = False
 
     async def start_object_tracking(self):
         """
@@ -591,7 +538,7 @@ class ObjectTrackingBaseModule(Module, ObjectTrackingBaseAPI):
         if self._running_loop:
             self._running_loop = False
             if self._loop_task:
-                await self._loop_task # Wait for the task to complete its current iteration and exit
+                await self._loop_task  # Wait for the task to complete its current iteration and exit
                 self._loop_task = None
             print("Requested to stop object tracking loop.")
         else:
@@ -599,9 +546,8 @@ class ObjectTrackingBaseModule(Module, ObjectTrackingBaseAPI):
 
 # Register your module
 Registry.register_resource_creator(
-    ObjectTrackingBaseAPI.SUBTYPE,
     ObjectTrackingBaseModule.MODEL,
-    ResourceCreatorRegistration(ObjectTrackingBaseModule.new_resource, ObjectTrackingBaseModule.validate_config)
+    ResourceCreatorRegistration(ObjectTrackingBaseModule.new, ObjectTrackingBaseModule.validate)
 )
 
 async def main():
