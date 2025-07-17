@@ -67,9 +67,10 @@ The [camera API](/dev/reference/apis/components/camera/) supports the following 
 If your camera is not working as expected, follow these steps:
 
 1. Check your machine logs on the **LOGS** tab to check for errors.
-
-2. Review your camera model's documentation to ensure you have configured all required attributes.
-3. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the camera there.
+1. Review your camera model's documentation to ensure you have configured all required attributes.
+1. Click on the **TEST** panel on the **CONFIGURE** or **CONTROL** tab and test if you can use the camera there.
+1. Disconnect and reconnect your camera.
+1. If you are connecting using SDK code, double check your API key.
 
 If none of these steps work, reach out to us on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
