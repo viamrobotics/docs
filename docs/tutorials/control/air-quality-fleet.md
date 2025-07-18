@@ -283,9 +283,6 @@ You can access the data from your browser's local storage with the following cod
 
 Currently, Viam applications only provide access to single machines but in future you will be able to access entire locations or organizations.
 
-{{< table >}}
-{{% tablestep number=1 %}}
-
 Create another file inside the <file>aqi-dashboard</file> folder and name it <file>main.ts</file>.
 Paste the following code into <file>main.ts</file>:
 
@@ -298,7 +295,7 @@ import Cookies from "js-cookie";
 
 let apiKeyId = "";
 let apiKeySecret = "";
-let hostname = "";
+let host = "";
 let machineId = "";
 
 async function main() {
@@ -319,103 +316,39 @@ async function main() {
 // <Insert getLastFewAv function definition here in later steps>
 
 document.addEventListener("DOMContentLoaded", async () => {
-  machineId = window.location.pathname.split("/")[2];
+  // Extract the machine identifier from the URL
+  let machineCookieKey = window.location.pathname.split("/")[2];
   ({
-    id: apiKeyId,
-    key: apiKeySecret,
-    hostname: hostname,
-  } = JSON.parse(Cookies.get(machineId)!));
-
+    apiKey: { id: apiKeyId, key: apiKeySecret },
+    machineId: machineId,
+    hostname: host,
+  } = JSON.parse(Cookies.get(machineCookieKey)!));
   main().catch((error) => {
     console.error("encountered an error:", error);
   });
+  console.log(apiKeyId, apiKeySecret, host, machineId);
 });
 ```
 
-{{% /tablestep %}}
-{{% tablestep number=2 %}}
+### Local development
 
-For developing your application on localhost, **add the same information to your browser's local storage**.
+For developing your application on localhost:
 
-Navigate to [Camera Viewer](https://air-quality_naomi.viamapplications.com/) and log in, then select your development machine.
+1. Run the following command to serve the application you are building:
 
-Open Developer Tools, go to the console and paste the following JavaScript to obtain the cookies you need:
+   ```sh {class="command-line" data-prompt="$" data-output="2-10"}
+   npm run start
+   ```
 
-```js {class="line-numbers linkable-line-numbers" data-line=""}
-function generateCookieSetterScript() {
-  // Get all cookies from current page
-  const currentCookies = document.cookie.split(";");
-  let cookieSetterCode = "// Cookie setter script for localhost\n";
-  cookieSetterCode +=
-    "// Copy and paste this entire script into your browser console when on localhost\n\n";
+   Open the application in your browser at `http://localhost:8000/`.
 
-  // Process each cookie
-  let cookieCount = 0;
-  currentCookies.forEach((cookie) => {
-    if (cookie.trim()) {
-      // Extract name and value from the cookie
-      const [name, value] = cookie.trim().split("=");
+1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
+   The command will proxy your local app and open a browser window and navigate to `http://localhost:8000/machine/<machineHostname>` for the machine provided with --machine-id.
 
-      // Add code to set this cookie
-      cookieSetterCode += `document.cookie = "${name}=${value}; path=/";\n`;
-      cookieCount++;
-    }
-  });
-
-  // Add summary comment
-  cookieSetterCode += `\nconsole.log("Set ${cookieCount} cookies on localhost");\n`;
-
-  // Display the generated code
-  console.log(cookieSetterCode);
-
-  // Create a textarea element to make copying easier
-  const textarea = document.createElement("textarea");
-  textarea.value = cookieSetterCode;
-  textarea.style.position = "fixed";
-  textarea.style.top = "0";
-  textarea.style.left = "0";
-  textarea.style.width = "100%";
-  textarea.style.height = "250px";
-  textarea.style.zIndex = "9999";
-  document.body.appendChild(textarea);
-  textarea.focus();
-  textarea.select();
-}
-
-// Execute the function
-generateCookieSetterScript();
-```
-
-{{% /tablestep %}}
-{{% tablestep number=3 %}}
-
-Copy the resulting script. It will look like this:
-
-```js {class="line-numbers linkable-line-numbers" data-line=""}
-// Cookie setter script for localhost
-// Copy and paste this entire script into your browser console when on localhost
-
-document.cookie = "<SECRET COOKIE INFO>; path=/";
-document.cookie = "machinesWhoseCredentialsAreStored=<MACHINE ID>; path=/";
-
-console.log("Set 2 cookies on localhost");
-```
-
-{{% /tablestep %}}
-{{% tablestep number=4 %}}
-
-Run the following command to serve the application you are building:
-
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
-npm run start
-```
-
-Open the application in your browser at `http://127.0.0.1:8000/`.
-
-Then, open developer tools, go to the console and paste the copied JavaScript code to set your cookies.
-
-{{% /tablestep %}}
-{{< /table >}}
+   ```sh {class="command-line" data-prompt="$" data-output="3-10"}
+   viam login
+   viam module local-app-testing --app-url http://localhost:8000 --machine-id <MACHINE-ID>
+   ```
 
 ### Add functionality to your code
 
@@ -742,7 +675,7 @@ You can find all the code in the [GitHub repo for this tutorial](https://github.
    npm start
    ```
 
-   {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:500px">}}
+   {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:800px">}}
 
 1. The terminal should output a line such as `Local:  http://127.0.0.1:8000/`.
    Copy the URL the terminal displays and paste it into the address bar in your web browser.
@@ -871,7 +804,7 @@ Repeat to add the New York office: Add a new location called `New York Office`, 
 
 ## Getting machines ready for third parties
 
-Continuing with our fictitious company, let's assume you want to ship air sensing machines to customers as ready-to-go as possible.
+Let's continue with our fictitious company and assume you want to ship air sensing machines out to customers from your factory.
 In other words, you want to provision devices.
 
 Before an air sensing machine leaves your factory, you'd complete the following steps:
@@ -885,7 +818,7 @@ Once a customer receives your machine, they will:
 1. Plug it in and turn it on.
 2. `viam-agent` will start a WiFi network.
 3. The customer uses another device to connect to the machine's WiFi network and the user gives the machine the password for their WiFi network.
-4. The machine can now connect to the internet and complete setup based on the fragment it knows about.
+4. The machine can now connect to the internet and complete setup based on the specified fragment in the configuration template.
 
 ### Create the fragment for air sensing machines
 
