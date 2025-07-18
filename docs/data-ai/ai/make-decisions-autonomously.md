@@ -96,9 +96,9 @@ Finally, add the following `services` configuration for your vision service, rep
 
 ```json
 {
-  "name": "green_detector",
+  "name": "my_line_detector",
   "api": "rdk:service:vision",
-  "model": "my_line_detector",
+  "model": "color_detector",
   "attributes": {
     "segment_size_px": 100,
     "detect_color": "#19FFD9", // replace with the color of your line
@@ -184,6 +184,7 @@ import asyncio
 from typing import Any, Mapping, Sequence, Tuple
 from typing_extensions import Self
 
+from viam.components.base import Base
 from viam.components.camera import Camera
 from viam.logging import getLogger
 from viam.module.module import Module
@@ -217,32 +218,32 @@ class LineFollower(Module, ResourceBase):
 
     @classmethod
     def validate(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
-        required_attributes = []
-        optional_attributes = [
-            "camera_name",
-            "detector_name",
-        ]
+        camera_name = config.attributes.fields["camera_name"].string_value
+        detector_name = config.attributes.fields["detector_name"].string_value
+        base_name = config.attributes.fields["base_name"].string_value
 
-        camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else "my_camera"
-        detector_name = config.attributes.fields["detector_name"].string_value if "detector_name" in config.attributes.fields else "my_detector"
-
-        dependencies = [camera_name, detector_name]
+        dependencies = [camera_name, detector_name, base_name]
         return dependencies, []
 
     def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
-        self.camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else "my_camera"
-        self.detector_name = config.attributes.fields["detector_name"].string_value if "detector_name" in config.attributes.fields else "my_detector"
+        self.camera_name = config.attributes.fields["camera_name"].string_value
+        self.detector_name = config.attributes.fields["detector_name"].string_value
+        self.detector_name = config.attributes.fields["base_name"].string_value
 
         for dependency_name, dependency in dependencies.items():
             if dependency_name.subtype == "camera" and dependency_name.name == self.camera_name:
                 self.camera = dependency
             elif dependency_name.subtype == "vision" and dependency_name.name == self.detector_name:
                 self.detector = dependency
+            elif dependency_name.subtype == "base" and dependency_name.name == self.base_name:
+                self.base = dependency
 
         if not self.camera:
             raise ValueError(f"Camera '{self.camera_name}' dependency not found.")
         if not self.detector:
             raise ValueError(f"Vision service '{self.detector_name}' dependency not found.")
+        if not self.base:
+            raise ValueError(f"Base '{self.base_name}' dependency not found.")
 
         LineFollower.LOGGER.info("Reconfigured.")
 
@@ -342,6 +343,22 @@ To deploy your module on your machine, run the following command, replacing `<yo
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id <your-part-id>
 ```
+
+Add the following `services` configuration for your new module:
+
+```json
+{
+  "name": "generic-1",
+  "api": "rdk:service:generic",
+  "model": "<example-namespace>:autonomous_example_module:line_follower",
+  "attributes": {
+    "detector_name": "my_object_detector",
+    "camera_name": "my_camera"
+  }
+}
+```
+
+Give your machine a few moments to load the new configuration, and you can begin testing your module.
 
 ## Follow a colored object
 
@@ -534,7 +551,6 @@ class ObjectFollower(Module):
         self.base: Base = None
         self.camera: Camera = None
         self.detector: VisionClient = None
-        self.camera_name: str = "my_camera"
 
         self._running_loop = False
         self._loop_task = None
@@ -552,43 +568,50 @@ class ObjectFollower(Module):
 
     @classmethod
     def validate(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
-        required_attributes = []
-        optional_attributes = ["camera_name"]
+        camera_name = config.attributes.fields["camera_name"].string_value
+        detector_name = config.attributes.fields["detector_name"].string_value
+        base_name = config.attributes.fields["base_name"].string_value
 
-        camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else "my_camera"
-
-        dependencies = [camera_name]
+        dependencies = [camera_name, detector_name, base_name]
         return dependencies, []
 
-    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[str, ResourceBase]):
-        self.camera_name = config.attributes.fields["camera_name"].string_value if "camera_name" in config.attributes.fields else self.camera_name
+    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
+        self.camera_name = config.attributes.fields["camera_name"].string_value
+        self.detector_name = config.attributes.fields["detector_name"].string_value
+        self.detector_name = config.attributes.fields["base_name"].string_value
 
         for dependency_name, dependency in dependencies.items():
             if dependency_name.subtype == "camera" and dependency_name.name == self.camera_name:
                 self.camera = dependency
-            elif dependency_name.subtype == "base":
+            elif dependency_name.subtype == "vision" and dependency_name.name == self.detector_name:
+                self.detector = dependency
+            elif dependency_name.subtype == "base" and dependency_name.name == self.base_name:
                 self.base = dependency
 
         if not self.camera:
             raise ValueError(f"Camera '{self.camera_name}' dependency not found.")
+        if not self.detector:
+            raise ValueError(f"Vision service '{self.detector_name}' dependency not found.")
         if not self.base:
-            raise ValueError("Base dependency not found.")
+            raise ValueError(f"Base '{self.base_name}' dependency not found.")
+
+        LineFollower.LOGGER.info("Reconfigured.")
 
     async def start(self):
         """
         Called when the module starts. Get references to components.
         """
-        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' starting...")
-        self.detector = await VisionClient.from_robot(self.robot, "my_object_detector")
-        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' started.")
+        ObjectFollower.LOGGER.info(f"'{self.name}' starting...")
+        await self.start_object_tracking()
+        ObjectFollower.LOGGER.info(f"'{self.name}' started.")
 
     async def close(self):
         """
         Called when the module is shutting down. Clean up tasks.
         """
-        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' closing...")
+        ObjectFollower.LOGGER.info(f"'{self.name}' closing...")
         await self.stop_object_tracking()
-        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' closed.")
+        ObjectFollower.LOGGER.info(f"'{self.name}' closed.")
 
     def left_or_right(self, detections: List[Detection], midpoint: float) -> Literal[0, 1, 2, -1]:
         """
@@ -710,6 +733,21 @@ To deploy your module on your machine, run the following command, replacing `<yo
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id <your-part-id>
 ```
+
+Add the following `services` configuration for your new model:
+
+```json
+{
+  "name": "generic-1",
+  "api": "rdk:service:generic",
+  "model": "<example-namespace>:autonomous_example_module:line_follower",
+  "attributes": {
+    "camera_name": "my_camera"
+  }
+}
+```
+
+Give your machine a few moments to load the new configuration, and you can begin testing your module.
 
 ## Notify when a certain object appears in a video feed
 
@@ -1001,3 +1039,19 @@ To deploy your module on your machine, run the following command, replacing `<yo
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id <your-part-id>
 ```
+
+Add the following `services` configuration for your new model:
+
+```json
+{
+  "name": "generic-1",
+  "api": "rdk:service:generic",
+  "model": "<example-namespace>:autonomous_example_module:email_notifier",
+  "attributes": {
+    "detector_name": "my-object-detector",
+    "camera_name": "my_camera"
+  }
+}
+```
+
+Give your machine a few moments to load the new configuration, and you can begin testing your module.
