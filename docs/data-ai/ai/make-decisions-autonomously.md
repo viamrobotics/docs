@@ -14,7 +14,7 @@ Use the [vision service API](/dev/reference/apis/services/vision/) to make infer
 
 ## Follow a line
 
-This module uses a vision service and a motor to program a machine to follow a line.
+This module uses a vision service and a motor to program a machine to follow a line of a configurable color.
 
 ### Prerequisites
 
@@ -35,8 +35,7 @@ Add the following `components` configuration to create board, base, and motor co
   "name": "my-board",
   "model": "pi",
   "api": "rdk:component:board",
-  "attributes": {},
-  "depends_on": []
+  "attributes": {}
 },
 {
   "name": "leftm",
@@ -49,8 +48,7 @@ Add the following `components` configuration to create board, base, and motor co
     },
     "board": "my-board",
     "max_rpm": 200
-  },
-  "depends_on": ["my-board"]
+  }
 },
 {
   "name": "rightm",
@@ -65,8 +63,7 @@ Add the following `components` configuration to create board, base, and motor co
     },
     "board": "my-board",
     "max_rpm": 200
-  },
-  "depends_on": ["my-board"]
+  }
 },
 {
   "name": "scuttlebase",
@@ -77,8 +74,7 @@ Add the following `components` configuration to create board, base, and motor co
     "wheel_circumference_mm": 258,
     "left": ["leftm"],
     "right": ["rightm"]
-  },
-  "depends_on": ["leftm", "rightm"]
+  }
 }
 ```
 
@@ -111,7 +107,77 @@ Finally, add the following `services` configuration for your vision service, rep
 }
 ```
 
+### Create your module
+
+In a terminal, run the following command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate
+```
+
+Enter the following configuration for your new module:
+
+- **module name**: "autonomous_example_module"
+- **language**: Python
+- **visibility**: private
+- **organization ID**: your organization ID, found on the Viam organization settings page
+- **resource to be added to the module**: Generic Service
+- **model name**: "line_follower"
+- **Enable cloud build**: yes
+- **Register module**: yes
+
+Create a file called <file>reload.sh</file> in the root directory of your newly-generated module.
+Copy and paste the following code into <file>reload.sh</file>:
+
+```bash
+#!/usr/bin/env bash
+
+# bash safe mode. look at `set --help` to see what these are doing
+set -euxo pipefail
+
+cd $(dirname $0)
+MODULE_DIR=$(dirname $0)
+VIRTUAL_ENV=$MODULE_DIR/venv
+PYTHON=$VIRTUAL_ENV/bin/python
+./setup.sh
+
+# Be sure to use `exec` so that termination signals reach the python process,
+# or handle forwarding termination signals manually
+exec $PYTHON src/main.py $@
+```
+
+In a terminal, run the following command to make <file>reload.sh</file> executable:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+chmod +x reload.sh
+```
+
+Create a virtual Python environment with the necessary packages by running the module setup script from within the module directory:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+```
+
+Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
+
+```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
+ "entrypoint": "reload.sh",
+ "first_run": "",
+ "build": {
+   "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py src/models/*.py meta.json setup.sh reload.sh",
+   "setup": "./setup.sh",
+   "path": "module.tar.gz",
+   "arch": [
+     "linux/amd64",
+     "linux/arm64"
+   ]
+ }
+```
+
 ### Code
+
+Replace the contents of <file>src/models/line_follower.py</file> with the following code.
+Replace the `<example-namespace>` placeholder with your organization namespace.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -129,8 +195,8 @@ from viam.proto.common import ResourceName
 from viam.services.vision import VisionClient
 from viam.components.base import Base, Vector3
 
-class ColorFollowerModule(Module, ResourceBase):
-    MODEL = Model(ModelFamily("example", "color-follower"), "color-follower-module")
+class LineFollower(Module, ResourceBase):
+    MODEL = Model(ModelFamily("<example-namespace>", "autonomous_example_module"), "line-follower")
     LOGGER = getLogger(__name__)
 
     def __init__(self, name: str):
@@ -144,7 +210,7 @@ class ColorFollowerModule(Module, ResourceBase):
         self.angular_power = 0.3
 
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new_resource(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
         instance = cls(config.name)
         instance.reconfigure(config, dependencies)
         return instance
@@ -178,53 +244,53 @@ class ColorFollowerModule(Module, ResourceBase):
         if not self.detector:
             raise ValueError(f"Vision service '{self.detector_name}' dependency not found.")
 
-        ColorFollowerModule.LOGGER.info("Reconfigured.")
+        LineFollower.LOGGER.info("Reconfigured.")
 
     async def start(self):
-        ColorFollowerModule.LOGGER.info("Starting color following...")
+        LineFollower.LOGGER.info("Starting color following...")
         await self._start_color_following_internal()
 
     async def close(self):
-        ColorFollowerModule.LOGGER.info("Stopping color following...")
+        LineFollower.LOGGER.info("Stopping color following...")
         await self._stop_color_following_internal()
-        ColorFollowerModule.LOGGER.info("Stopped.")
+        LineFollower.LOGGER.info("Stopped.")
 
     async def _color_following_loop(self):
-        ColorFollowerModule.LOGGER.info("Color following loop started.")
+        LineFollower.LOGGER.info("Color following loop started.")
 
         while self._running_loop:
             try:
                 # Check for color in front
                 if await self._is_color_in_front():
-                    ColorFollowerModule.LOGGER.info("Moving forward.")
+                    LineFollower.LOGGER.info("Moving forward.")
                     await self.base.set_power(Vector3(y=self.linear_power), Vector3())
                 # Check for color to the left
                 elif await self._is_color_there("left"):
-                    ColorFollowerModule.LOGGER.info("Turning left.")
+                    LineFollower.LOGGER.info("Turning left.")
                     await self.base.set_power(Vector3(), Vector3(z=self.angular_power))
                 # Check for color to the right
                 elif await self._is_color_there("right"):
-                    ColorFollowerModule.LOGGER.info("Turning right.")
+                    LineFollower.LOGGER.info("Turning right.")
                     await self.base.set_power(Vector3(), Vector3(z=-self.angular_power))
                 else:
-                    ColorFollowerModule.LOGGER.info("No color detected. Stopping.")
+                    LineFollower.LOGGER.info("No color detected. Stopping.")
                     await self.base.stop()
 
             except Exception as e:
-                ColorFollowerModule.LOGGER.error(f"Error in color following loop: {e}")
+                LineFollower.LOGGER.error(f"Error in color following loop: {e}")
 
             await asyncio.sleep(0.05)
 
-        ColorFollowerModule.LOGGER.info("Color following loop finished.")
+        LineFollower.LOGGER.info("Color following loop finished.")
         await self.base.stop()
 
     async def _start_color_following_internal(self):
         if not self._running_loop:
             self._running_loop = True
             self._loop_task = asyncio.create_task(self._color_following_loop())
-            ColorFollowerModule.LOGGER.info("Requested to start color following loop.")
+            LineFollower.LOGGER.info("Requested to start color following loop.")
         else:
-            ColorFollowerModule.LOGGER.info("Color following loop is already running.")
+            LineFollower.LOGGER.info("Color following loop is already running.")
 
     async def _stop_color_following_internal(self):
         if self._running_loop:
@@ -232,7 +298,7 @@ class ColorFollowerModule(Module, ResourceBase):
             if self._loop_task:
                 await self._loop_task
                 self._loop_task = None
-            ColorFollowerModule.LOGGER.info("Requested to stop color following loop.")
+            LineFollower.LOGGER.info("Requested to stop color following loop.")
 
     async def _is_color_in_front(self) -> bool:
         frame = await self.camera.get_image()
@@ -253,8 +319,8 @@ class ColorFollowerModule(Module, ResourceBase):
 
 # Register your module
 Registry.register_resource_creator(
-    ColorFollowerModule.MODEL,
-    ResourceCreatorRegistration(ColorFollowerModule.new, ColorFollowerModule.validate)
+    LineFollower.MODEL,
+    ResourceCreatorRegistration(LineFollower.new_resource, LineFollower.validate)
 )
 
 async def main():
@@ -265,12 +331,21 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    ColorFollowerModule.LOGGER.info("Done.")
+    LineFollower.LOGGER.info("Done.")
+```
+
+### Run your module
+
+Find the [Part ID](/dev/reference/apis/fleet/#find-part-id) for your machine.
+To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID: 
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id <your-part-id>
 ```
 
 ## Follow a colored object
 
-This module uses a vision service and a motor to program a machine to follow an object.
+This module uses a vision service and a motor to program a machine to follow an object of a configurable color.
 
 ### Prerequisites
 
@@ -291,8 +366,7 @@ Add the following `components` configuration to create board, base, and motor co
   "name": "my-board",
   "model": "pi",
   "api": "rdk:component:board",
-  "attributes": {},
-  "depends_on": []
+  "attributes": {}
 },
 {
   "name": "leftm",
@@ -305,8 +379,7 @@ Add the following `components` configuration to create board, base, and motor co
     },
     "board": "my-board",
     "max_rpm": 200
-  },
-  "depends_on": ["my-board"]
+  }
 },
 {
   "name": "rightm",
@@ -321,8 +394,7 @@ Add the following `components` configuration to create board, base, and motor co
     },
     "board": "my-board",
     "max_rpm": 200
-  },
-  "depends_on": ["my-board"]
+  }
 },
 {
   "name": "my_base",
@@ -333,8 +405,7 @@ Add the following `components` configuration to create board, base, and motor co
     "wheel_circumference_mm": 258,
     "left": ["leftm"],
     "right": ["rightm"]
-  },
-  "depends_on": ["leftm", "rightm"]
+  }
 }
 ```
 
@@ -364,10 +435,80 @@ Add the following `services` configuration, replacing the `detect_color` value w
       "detect_color": "#a13b4c", // replace with the color of your object
       "hue_tolerance_pct": 0.06
    }
-},
+}
+```
+
+### Create your module
+
+In a terminal, run the following command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate
+```
+
+Enter the following configuration for your new module:
+
+- **module name**: "autonomous_example_module"
+- **language**: Python
+- **visibility**: private
+- **organization ID**: your organization ID, found on the Viam organization settings page
+- **resource to be added to the module**: Generic Service
+- **model name**: "object_follower"
+- **Enable cloud build**: yes
+- **Register module**: yes
+
+Create a file called <file>reload.sh</file> in the root directory of your newly-generated module.
+Copy and paste the following code into <file>reload.sh</file>:
+
+```bash
+#!/usr/bin/env bash
+
+# bash safe mode. look at `set --help` to see what these are doing
+set -euxo pipefail
+
+cd $(dirname $0)
+MODULE_DIR=$(dirname $0)
+VIRTUAL_ENV=$MODULE_DIR/venv
+PYTHON=$VIRTUAL_ENV/bin/python
+./setup.sh
+
+# Be sure to use `exec` so that termination signals reach the python process,
+# or handle forwarding termination signals manually
+exec $PYTHON src/main.py $@
+```
+
+In a terminal, run the following command to make <file>reload.sh</file> executable:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+chmod +x reload.sh
+```
+
+Create a virtual Python environment with the necessary packages by running the module setup script from within the module directory:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+```
+
+Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
+
+```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
+ "entrypoint": "reload.sh",
+ "first_run": "",
+ "build": {
+   "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py src/models/*.py meta.json setup.sh reload.sh",
+   "setup": "./setup.sh",
+   "path": "module.tar.gz",
+   "arch": [
+     "linux/amd64",
+     "linux/arm64"
+   ]
+ }
 ```
 
 ### Code
+
+Replace the contents of <file>src/models/object_follower.py</file> with the following code.
+Replace the `<example-namespace>` placeholder with your organization namespace.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -385,8 +526,8 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.proto.app.v1 import ComponentConfig
 from viam.services.vision import Detection
 
-class ObjectTrackingBaseModule(Module):
-    MODEL = Model("example-namespace", "example-module", "object_tracking_base_module")
+class ObjectFollower(Module):
+    MODEL = Model("<example-namespace>", "autonomous_example_module", "object_follower")
 
     def __init__(self, name: str):
         super().__init__(name)
@@ -404,7 +545,7 @@ class ObjectTrackingBaseModule(Module):
         self.num_cycles = 200
 
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[str, ResourceBase]) -> Self:
+    def new_resource(cls, config: ComponentConfig, dependencies: Mapping[str, ResourceBase]) -> Self:
         instance = cls(config.name)
         instance.reconfigure(config, dependencies)
         return instance
@@ -437,17 +578,17 @@ class ObjectTrackingBaseModule(Module):
         """
         Called when the module starts. Get references to components.
         """
-        print(f"ObjectTrackingBaseModule '{self.name}' starting...")
+        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' starting...")
         self.detector = await VisionClient.from_robot(self.robot, "my_object_detector")
-        print(f"ObjectTrackingBaseModule '{self.name}' started.")
+        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' started.")
 
     async def close(self):
         """
         Called when the module is shutting down. Clean up tasks.
         """
-        print(f"ObjectTrackingBaseModule '{self.name}' closing...")
+        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' closing...")
         await self.stop_object_tracking()
-        print(f"ObjectTrackingBaseModule '{self.name}' closed.")
+        ObjectFollower.LOGGER.info(f"ObjectFollower '{self.name}' closed.")
 
     def left_or_right(self, detections: List[Detection], midpoint: float) -> Literal[0, 1, 2, -1]:
         """
@@ -482,7 +623,7 @@ class ObjectTrackingBaseModule(Module):
         """
         The core object tracking and base control logic loop.
         """
-        print("Object tracking control loop started.")
+        ObjectFollower.LOGGER.info("Object tracking control loop started.")
 
         initial_frame = await self.camera.get_image(mime_type="image/jpeg")
         pil_initial_frame = viam_to_pil_image(initial_frame)
@@ -496,27 +637,27 @@ class ObjectTrackingBaseModule(Module):
                 answer = self.left_or_right(detections, midpoint)
 
                 if answer == 0:
-                    print("Detected object on left, spinning left.")
+                    ObjectFollower.LOGGER.info("Detected object on left, spinning left.")
                     await self.base.spin(self.spin_num, self.vel)
                     await self.base.move_straight(self.straight_num, self.vel)
                 elif answer == 1:
-                    print("Detected object in center, moving straight.")
+                    ObjectFollower.LOGGER.info("Detected object in center, moving straight.")
                     await self.base.move_straight(self.straight_num, self.vel)
                 elif answer == 2:
-                    print("Detected object on right, spinning right.")
+                    ObjectFollower.LOGGER.info("Detected object on right, spinning right.")
                     await self.base.spin(-self.spin_num, self.vel)
                     await self.base.move_straight(self.straight_num, self.vel)
                 else:
-                    print("No object detected, stopping base.")
+                    ObjectFollower.LOGGER.info("No object detected, stopping base.")
                     await self.base.stop()
 
             except Exception as e:
-                print(f"Error in object tracking loop: {e}")
+                ObjectFollower.LOGGER.info(f"Error in object tracking loop: {e}")
 
             cycle_count += 1
             await asyncio.sleep(0.1)
 
-        print("Object tracking loop finished or stopped.")
+        ObjectFollower.LOGGER.info("Object tracking loop finished or stopped.")
         await self.base.stop()
         self._running_loop = False
 
@@ -527,9 +668,9 @@ class ObjectTrackingBaseModule(Module):
         if not self._running_loop:
             self._running_loop = True
             self._loop_task = asyncio.create_task(self._object_tracking_loop())
-            print("Requested to start object tracking loop.")
+            ObjectFollower.LOGGER.info("Requested to start object tracking loop.")
         else:
-            print("Object tracking loop is already running.")
+            ObjectFollower.LOGGER.info("Object tracking loop is already running.")
 
     async def stop_object_tracking(self):
         """
@@ -540,14 +681,14 @@ class ObjectTrackingBaseModule(Module):
             if self._loop_task:
                 await self._loop_task  # Wait for the task to complete its current iteration and exit
                 self._loop_task = None
-            print("Requested to stop object tracking loop.")
+            ObjectFollower.LOGGER.info("Requested to stop object tracking loop.")
         else:
-            print("Object tracking loop is not running.")
+            ObjectFollower.LOGGER.info("Object tracking loop is not running.")
 
 # Register your module
 Registry.register_resource_creator(
-    ObjectTrackingBaseModule.MODEL,
-    ResourceCreatorRegistration(ObjectTrackingBaseModule.new, ObjectTrackingBaseModule.validate)
+    ObjectFollower.MODEL,
+    ResourceCreatorRegistration(ObjectFollower.new_resource, ObjectFollower.validate)
 )
 
 async def main():
@@ -558,100 +699,184 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    print("Done.")
+    ObjectFollower.LOGGER.info("Done.")
 ```
 
-### Notify when a certain object appears in a video feed
+### Run your module
+
+Find the [Part ID](/dev/reference/apis/fleet/#find-part-id) for your machine.
+To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID: 
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id <your-part-id>
+```
+
+## Notify when a certain object appears in a video feed
 
 This module uses a vision service to program a machine to send a notification when a certain object appears in a video feed.
+This example detects people with an IR camera, but you can use a different camera, ML model, or vision service to detect any object with the same logic.
 
 ### Prerequisites
 
 - An SBC, for example a Raspberry Pi 4
-- A webcam
+- An IR camera, for example a [Raspberry Pi Camera Module 2 NoIR](https://www.raspberrypi.com/products/pi-noir-camera-v2/)
 
 ### Configure your machine
 
 Follow the [setup guide](/operate/get-started/setup/) to create a new machine.
 
-Connect your SCUTTLE base to your SBC.
-Add the following `components` configuration:
-
-```json
-
-```
-
-Connect your webcam to your SBC.
-Add the following `components` configuration for your webcam:
+Connect your camera to your SBC.
+Add the following `components` configuration for your camera:
 
 ```json
 {
   "name": "my_camera",
-  "model": "webcam",
-  "api": "rdk:component:camera",
+  "model": "viam:camera:csi",
   "attributes": {
-    "video_path": ""
+    "width_px": 1920,
+    "height_px": 1080,
+    "frame_rate": 30
+  },
+  "depends_on": [],
+  "namespace": "rdk",
+  "type": "camera"
+}
+```
+
+Add the following `services` configuration:
+
+```json
+{
+  "name": "ir-person-mlmodel",
+  "type": "mlmodel",
+  "namespace": "rdk",
+  "model": "viam-labs:mlmodel:near-ir-person",
+  "attributes": {}
+},
+{
+  "name": "my-object-detector",
+  "type": "vision",
+  "model": "mlmodel",
+  "attributes": {
+    "mlmodel_name": "ir-person-mlmodel"
   }
 }
 ```
 
+### Create your module
+
+In a terminal, run the following command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate
+```
+
+Enter the following configuration for your new module:
+
+- **module name**: "autonomous_example_module"
+- **language**: Python
+- **visibility**: private
+- **organization ID**: your organization ID, found on the Viam organization settings page
+- **resource to be added to the module**: Generic Service
+- **model name**: "email_notifier"
+- **Enable cloud build**: yes
+- **Register module**: yes
+
+Create a file called <file>reload.sh</file> in the root directory of your newly-generated module.
+Copy and paste the following code into <file>reload.sh</file>:
+
+```bash
+#!/usr/bin/env bash
+
+# bash safe mode. look at `set --help` to see what these are doing
+set -euxo pipefail
+
+cd $(dirname $0)
+MODULE_DIR=$(dirname $0)
+VIRTUAL_ENV=$MODULE_DIR/venv
+PYTHON=$VIRTUAL_ENV/bin/python
+./setup.sh
+
+# Be sure to use `exec` so that termination signals reach the python process,
+# or handle forwarding termination signals manually
+exec $PYTHON src/main.py $@
+```
+
+In a terminal, run the following command to make <file>reload.sh</file> executable:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+chmod +x reload.sh
+```
+
+Create a virtual Python environment with the necessary packages by running the module setup script from within the module directory:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sh setup.sh
+```
+
+Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
+
+```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
+ "entrypoint": "reload.sh",
+ "first_run": "",
+ "build": {
+   "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py src/models/*.py meta.json setup.sh reload.sh",
+   "setup": "./setup.sh",
+   "path": "module.tar.gz",
+   "arch": [
+     "linux/amd64",
+     "linux/arm64"
+   ]
+ }
+```
 
 ### Code
 
+Replace the contents of <file>src/models/email_notifier.py</file> with the following code.
+Replace the `<example-namespace>` placeholder with your organization namespace.
 
 ```python
 import asyncio
 import os
-from typing import List, Literal, Mapping, Any
+from typing import List, Mapping, Any
 
 from viam.robot.client import RobotClient
 from viam.components.camera import Camera
 from viam.services.vision import VisionClient
-from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 from viam.module.module import Module
-from viam.resource.types import Model, Subtype
-from viam.resource.base import ResourceBase
+from viam.resource.types import Model
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.proto.app.v1 import ComponentConfig
-from viam.services.vision import Detection
 from viam.services.generic import Generic
 import smtplib
 from email.mime.text import MIMEText
 
-class EmailNotifierModule(Module, Generic):
-    MODEL = Model("example-namespace", "example-module", "email_notifier_generic")
+class EmailNotifier(Module, Generic):
+    MODEL = Model("<example-namespace>", "autonomous_example_module", "email_notifier")
 
     def __init__(self, name: str):
         super().__init__(name)
         self.camera: Camera = None
         self.detector: VisionClient = None
-        self.camera_name: str = "my_camera" # Default camera name, adjust in config if needed
-        self.detector_name: str = "my_object_detector" # Default vision service name
-        self.target_object_name: str = "person" # The object to detect for notification
+        self.notification_sent: bool = False
 
-        # Email configuration (sensitive info should ideally be managed securely, e.g., environment variables)
+        # Email configuration
         self.sender_email: str = os.getenv("SENDER_EMAIL", "your_email@example.com")
         self.sender_password: str = os.getenv("SENDER_PASSWORD", "your_email_password")
         self.receiver_email: str = os.getenv("RECEIVER_EMAIL", "recipient_email@example.com")
         self.smtp_server: str = os.getenv("SMTP_SERVER", "smtp.example.com")
-        self.smtp_port: int = int(os.getenv("SMTP_PORT", 587)) # Typically 587 for TLS
+        self.smtp_port: int = int(os.getenv("SMTP_PORT", 587))
 
         self._running_loop = False
         self._loop_task = None
-        self._notification_sent = False
 
     @classmethod
     def new_resource(cls, config: ComponentConfig):
-        # Parse attributes from the config here to make them configurable
         module = cls(config.name)
         if "camera_name" in config.attributes.fields:
             module.camera_name = config.attributes.fields["camera_name"].string_value
         if "detector_name" in config.attributes.fields:
-            module.detector_name = config.attributes.fields["detector_name"].string_value
-        if "target_object_name" in config.attributes.fields:
-            module.target_object_name = config.attributes.fields["target_object_name"].string_value
-
-        # Email configuration can also be set via config, but environment variables are often preferred for secrets
+            module.camera_name = config.attributes.fields["detector_name"].string_value
         if "sender_email" in config.attributes.fields:
             module.sender_email = config.attributes.fields["sender_email"].string_value
         if "sender_password" in config.attributes.fields:
@@ -666,26 +891,17 @@ class EmailNotifierModule(Module, Generic):
         return module
 
     async def start(self):
-        """
-        Called when the module starts. Get references to components.
-        """
-        print(f"EmailNotifierModule '{self.name}' starting...")
+        EmailNotifier.LOGGER.info(f"'{self.name}' starting...")
         self.camera = await Camera.from_robot(self.robot, self.camera_name)
         self.detector = await VisionClient.from_robot(self.robot, self.detector_name)
-        print(f"EmailNotifierModule '{self.name}' started. Monitoring for '{self.target_object_name}'.")
+        EmailNotifier.LOGGER.info(f"'{self.name}' started. Monitoring for detections.")
 
     async def close(self):
-        """
-        Called when the module is shutting down. Clean up tasks.
-        """
-        print(f"EmailNotifierModule '{self.name}' closing...")
-        await self._stop_detection_monitoring_internal() # Call internal stop method
-        print(f"EmailNotifierModule '{self.name}' closed.")
+        EmailNotifier.LOGGER.info(f"'{self.name}' closing...")
+        await self._stop_detection_monitoring_internal()
+        EmailNotifier.LOGGER.info(f"'{self.name}' closed.")
 
     def _send_email(self, subject: str, body: str):
-        """
-        Helper function to send an email.
-        """
         try:
             msg = MIMEText(body)
             msg['Subject'] = subject
@@ -693,109 +909,95 @@ class EmailNotifierModule(Module, Generic):
             msg['To'] = self.receiver_email
 
             with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
-                server.starttls() # Secure the connection
+                server.starttls()
                 server.login(self.sender_email, self.sender_password)
                 server.send_message(msg)
-            print(f"Email sent successfully to {self.receiver_email}: '{subject}'")
-            self._notification_sent = True # Mark that notification has been sent
+            EmailNotifier.LOGGER.info(f"Email sent successfully to {self.receiver_email}: '{subject}'")
+            self.notification_sent = True
         except Exception as e:
-            print(f"Failed to send email: {e}")
-            self._notification_sent = False # Reset if sending failed
+            EmailNotifier.LOGGER.info(f"Failed to send email: {e}")
+            self.notification_sent = False
 
     async def _detection_monitoring_loop(self):
-        """
-        The core object detection monitoring and email notification logic loop.
-        """
-        print("Detection monitoring loop started.")
+        EmailNotifier.LOGGER.info("Detection monitoring loop started.")
 
         while self._running_loop:
             try:
                 detections = await self.detector.get_detections_from_camera(self.camera_name)
 
-                object_detected = False
-                for d in detections:
-                    if d.class_name == self.target_object_name:
-                        object_detected = True
-                        break
-
-                if object_detected and not self._notification_sent:
-                    subject = f"Viam Module Alert: {self.target_object_name} Detected!"
-                    body = f"A {self.target_object_name} was detected by the vision service '{self.detector_name}' on camera '{self.camera_name}'."
-                    print(f"Detected '{self.target_object_name}'. Sending email notification...")
+                if detections and not self.notification_sent:
+                    subject = "Viam Module Alert: Detection Found!"
+                    body = "A detection was found by the vision service."
+                    EmailNotifier.LOGGER.info("Detection found. Sending email notification...")
                     self._send_email(subject, body)
-                elif not object_detected and self._notification_sent:
-                    # Reset notification status if the object is no longer detected,
-                    # allowing another notification if it reappears.
-                    print(f"'{self.target_object_name}' no longer detected. Resetting notification status.")
-                    self._notification_sent = False
-                elif object_detected and self._notification_sent:
-                    print(f"'{self.target_object_name}' still detected, but notification already sent.")
-                else: # not object_detected and not self._notification_sent
-                    print(f"'{self.target_object_name}' not detected.")
+                elif not detections and self.notification_sent:
+                    EmailNotifier.LOGGER.info("No detections found. Resetting notification status.")
+                    self.notification_sent = False
+                elif detections and self.notification_sent:
+                    EmailNotifier.LOGGER.info("Detection still present, but notification already sent.")
+                else:
+                    EmailNotifier.LOGGER.info("No detections.")
 
             except Exception as e:
-                print(f"Error in detection monitoring loop: {e}")
+                EmailNotifier.LOGGER.info(f"Error in detection monitoring loop: {e}")
 
-            await asyncio.sleep(5) # Check every 5 seconds
+            await asyncio.sleep(5)
 
-        print("Detection monitoring loop finished or stopped.")
-        self._notification_sent = False # Reset state when loop stops
+        EmailNotifier.LOGGER.info("Detection monitoring loop finished or stopped.")
+        self.notification_sent = False
 
     async def _start_detection_monitoring_internal(self):
-        """
-        Internal method to start the background loop.
-        """
         if not self._running_loop:
             self._running_loop = True
             self._loop_task = asyncio.create_task(self._detection_monitoring_loop())
-            print("Requested to start detection monitoring loop.")
+            EmailNotifier.LOGGER.info("Requested to start detection monitoring loop.")
             return {"status": "started"}
         else:
-            print("Detection monitoring loop is already running.")
+            EmailNotifier.LOGGER.info("Detection monitoring loop is already running.")
             return {"status": "already_running"}
 
     async def _stop_detection_monitoring_internal(self):
-        """
-        Internal method to stop the background loop.
-        """
         if self._running_loop:
             self._running_loop = False
             if self._loop_task:
-                await self._loop_task # Wait for the task to complete its current iteration and exit
+                await self._loop_task
                 self._loop_task = None
-            print("Requested to stop detection monitoring loop.")
+            EmailNotifier.LOGGER.info("Requested to stop detection monitoring loop.")
             return {"status": "stopped"}
         else:
-            print("Detection monitoring loop is not running.")
+            EmailNotifier.LOGGER.info("Detection monitoring loop is not running.")
             return {"status": "not_running"}
 
     async def do_command(self, command: Mapping[str, Any], *, timeout: float | None = None, **kwargs) -> Mapping[str, Any]:
-        """
-        Implement the do_command method to expose custom functionality.
-        """
         if "start_monitoring" in command:
-            print("Received 'start_monitoring' command via do_command.")
+            EmailNotifier.LOGGER.info("Received 'start_monitoring' command via do_command.")
             return await self._start_detection_monitoring_internal()
         elif "stop_monitoring" in command:
-            print("Received 'stop_monitoring' command via do_command.")
+            EmailNotifier.LOGGER.info("Received 'stop_monitoring' command via do_command.")
             return await self._stop_detection_monitoring_internal()
         else:
             raise NotImplementedError(f"Command '{command}' not recognized.")
 
 # Register your module
 Registry.register_resource_creator(
-    Generic.SUBTYPE, # Register as a Generic service
-    EmailNotifierModule.MODEL,
-    ResourceCreatorRegistration(EmailNotifierModule.new_resource, EmailNotifierModule.validate_config)
+    Generic.SUBTYPE,
+    EmailNotifier.MODEL,
+    ResourceCreatorRegistration(EmailNotifier.new_resource, EmailNotifier.validate_config)
 )
 
 async def main():
-    """
-    Main entry point for the Viam module.
-    """
     await Module.serve()
 
 if __name__ == "__main__":
     asyncio.run(main())
-    print("Done.")
+    EmailNotifier.LOGGER.info("Done.")
+```
+
+### Run your module
+
+Find the [Part ID](/dev/reference/apis/fleet/#find-part-id) for your machine.
+To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID: 
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id <your-part-id>
 ```
