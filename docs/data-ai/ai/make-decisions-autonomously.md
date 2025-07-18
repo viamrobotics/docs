@@ -338,7 +338,7 @@ if __name__ == "__main__":
 ### Run your module
 
 Find the [Part ID](/dev/reference/apis/fleet/#find-part-id) for your machine.
-To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID: 
+To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id <your-part-id>
@@ -444,14 +444,14 @@ Add the following `services` configuration, replacing the `detect_color` value w
 
 ```json
 {
-   "name": "my_color_detector",
-   "api": "rdk:service:vision",
-   "model": "my_object_detector",
-   "attributes": {
-      "segment_size_px": 100,
-      "detect_color": "#a13b4c", // replace with the color of your object
-      "hue_tolerance_pct": 0.06
-   }
+  "name": "my_color_detector",
+  "api": "rdk:service:vision",
+  "model": "my_object_detector",
+  "attributes": {
+    "segment_size_px": 100,
+    "detect_color": "#a13b4c", // replace with the color of your object
+    "hue_tolerance_pct": 0.06
+  }
 }
 ```
 
@@ -728,7 +728,7 @@ if __name__ == "__main__":
 ### Run your module
 
 Find the [Part ID](/dev/reference/apis/fleet/#find-part-id) for your machine.
-To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID: 
+To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id <your-part-id>
@@ -1034,7 +1034,7 @@ if __name__ == "__main__":
 ### Run your module
 
 Find the [Part ID](/dev/reference/apis/fleet/#find-part-id) for your machine.
-To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID: 
+To deploy your module on your machine, run the following command, replacing `<your-part-id>` with your Part ID:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id <your-part-id>
