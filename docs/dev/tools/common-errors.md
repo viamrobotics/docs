@@ -283,7 +283,7 @@ If not, look for other related errors in your logs.
 
    1. Check if UDP traffic is restricted in any way.
       You can do this by checking your router settings and talking to your IT department, if applicable.
-   1. Restart your machine. 
+   1. Restart your machine.
 
 1. Check your SDK connection:
 
