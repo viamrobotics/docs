@@ -469,6 +469,11 @@ Some systems can't scan for WiFi networks while in hotspot mode, meaning they wo
 The `retry_connection_timeout_minutes` causes your device to exit hotspot mode, at which point your device will be able to detect newly available networks.
 If your device does not connect to your network, adjust the `retry_connection_timeout_minutes` value in the [`defaults` file](/manage/fleet/provision/setup/#configure-defaults).
 
+### Device not connecting or showing as offline
+
+Check if other devices on the netowrk can connect to the internet without problems.
+If other devices are fine, try restarting your device and [check for other logs](/manage/troubleshoot/troubleshoot/#check-logs).
+
 ### Test GRPC components of the provisioning service
 
 If you need to test the GRPC components of the provisioning service, there is a CLI client available.
