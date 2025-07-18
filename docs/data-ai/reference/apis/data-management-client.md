@@ -1,6 +1,6 @@
 ---
 title: "Data management API"
-linkTitle: "Data management API"
+linkTitle: "Data management"
 weight: 30
 type: "docs"
 layout: "empty"

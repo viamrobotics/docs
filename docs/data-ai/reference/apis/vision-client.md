@@ -1,6 +1,6 @@
 ---
 title: "Vision service API"
-linkTitle: "Vision service API"
+linkTitle: "Vision service"
 weight: 30
 type: "docs"
 layout: "empty"

@@ -58,7 +58,7 @@ You can also monitor your machines through teleop, power your application logic,
 {{% card link="/data-ai/ai/deploy/" noimage="true" %}}
 {{% card link="/data-ai/ai/run-inference/" noimage="true" %}}
 {{% card link="/data-ai/ai/alert/" noimage="true" %}}
-{{% card link="/data-ai/ai/act/" noimage="true" %}}
+{{% card link="/data-ai/ai/make-decisions-autonomously/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
