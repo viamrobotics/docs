@@ -471,7 +471,7 @@ If your device does not connect to your network, adjust the `retry_connection_ti
 
 ### Device not connecting or showing as offline
 
-Check if other devices on the netowrk can connect to the internet without problems.
+Check if other devices on the network can connect to the internet without problems.
 If other devices are fine, try restarting your device and [check for other logs](/manage/troubleshoot/troubleshoot/#check-logs).
 
 ### Test GRPC components of the provisioning service
