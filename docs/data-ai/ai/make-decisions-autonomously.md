@@ -178,21 +178,20 @@ import asyncio
 from typing import Any, Mapping, Sequence, Tuple
 from typing_extensions import Self
 
-from viam.components.base import Base
+from viam.components.base import Base, ResourceBase, Vector3
 from viam.components.camera import Camera
 from viam.logging import getLogger
 from viam.module.module import Module
 from viam.resource.types import Model, ModelFamily
-from viam.resource.base import ResourceBase
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
 from viam.services.vision import VisionClient
-from viam.components.base import Base, Vector3
 
 class LineFollower(Module, ResourceBase):
     MODEL = Model(ModelFamily("<example-namespace>", "autonomous_example_module"), "line-follower")
     LOGGER = getLogger(__name__)
+
 
     def __init__(self, name: str):
         super().__init__(name)
@@ -520,19 +519,19 @@ import asyncio
 from typing import Any, Mapping, List, Literal, Sequence, Tuple
 from typing_extensions import Self
 
-from viam.components.base import Base
+from viam.components.base import Base, ResourceBase
 from viam.components.camera import Camera
 from viam.services.vision import VisionClient
 from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 from viam.module.module import Module
 from viam.resource.types import Model, Subtype
-from viam.resource.base import ResourceBase
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.proto.app.v1 import ComponentConfig
 from viam.services.vision import Detection
 
 class ObjectFollower(Module):
     MODEL = Model("<example-namespace>", "autonomous_example_module", "object_follower")
+
 
     def __init__(self, name: str):
         super().__init__(name)
@@ -731,7 +730,8 @@ Add the following `services` configuration for your new model:
   "model": "<example-namespace>:autonomous_example_module:line_follower",
   "attributes": {
     "camera_name": "my_camera",
-    "detector_name": "my_object_detector"
+    "detector_name": "my_object_detector",
+    "base_name": "my_base"
   }
 }
 ```
@@ -863,6 +863,7 @@ from email.mime.text import MIMEText
 
 class EmailNotifier(Module, Generic):
     MODEL = Model("<example-namespace>", "autonomous_example_module", "email_notifier")
+
 
     def __init__(self, name: str):
         super().__init__(name)
