@@ -265,18 +265,15 @@ class LineFollower(Module, ResourceBase):
                 # Check for color in front
                 if await self._is_color_in_front():
                     LineFollower.LOGGER.info("Moving forward.")
-                    await self.base.set_power(
-                        Vector3(y=self.linear_power), Vector3())
+                    await self.base.set_power(Vector3(y=self.linear_power), Vector3())
                 # Check for color to the left
                 elif await self._is_color_there("left"):
                     LineFollower.LOGGER.info("Turning left.")
-                    await self.base.set_power(
-                        Vector3(), Vector3(z=self.angular_power))
+                    await self.base.set_power(Vector3(), Vector3(z=self.angular_power))
                 # Check for color to the right
                 elif await self._is_color_there("right"):
                     LineFollower.LOGGER.info("Turning right.")
-                    await self.base.set_power(
-                        Vector3(), Vector3(z=-self.angular_power))
+                    await self.base.set_power(Vector3(), Vector3(z=-self.angular_power))
                 else:
                     LineFollower.LOGGER.info("No color detected. Stopping.")
                     await self.base.stop()
@@ -292,8 +289,7 @@ class LineFollower(Module, ResourceBase):
     async def _start_color_following_internal(self):
         if not self._running_loop:
             self._running_loop = True
-            self._loop_task =
-                asyncio.create_task(self._color_following_loop())
+            self._loop_task = asyncio.create_task(self._color_following_loop())
             LineFollower.LOGGER.info("Requested to start color following loop.")
         else:
             LineFollower.LOGGER.info("Color following loop is already running.")
@@ -571,12 +567,9 @@ class ObjectFollower(Module):
     @classmethod
     def validate(cls,
                 config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
-        camera_name =
-            config.attributes.fields["camera_name"].string_value
-        detector_name =
-            config.attributes.fields["detector_name"].string_value
-        base_name =
-            config.attributes.fields["base_name"].string_value
+        camera_name = config.attributes.fields["camera_name"].string_value
+        detector_name = config.attributes.fields["detector_name"].string_value
+        base_name = config.attributes.fields["base_name"].string_value
 
         dependencies = [camera_name, detector_name, base_name]
         return dependencies, []
@@ -584,12 +577,9 @@ class ObjectFollower(Module):
     def reconfigure(self,
                     config: ComponentConfig,
                     dependencies: Mapping[ResourceName, ResourceBase]):
-        self.camera_name =
-            config.attributes.fields["camera_name"].string_value
-        self.detector_name =
-            config.attributes.fields["detector_name"].string_value
-        self.detector_name =
-            config.attributes.fields["base_name"].string_value
+        self.camera_name = config.attributes.fields["camera_name"].string_value
+        self.detector_name = config.attributes.fields["detector_name"].string_value
+        self.detector_name = config.attributes.fields["base_name"].string_value
 
         for dependency_name, dependency in dependencies.items():
             if (dependency_name.subtype == "camera"
@@ -662,8 +652,7 @@ class ObjectFollower(Module):
         """
         The core object tracking and base control logic loop.
         """
-        ObjectFollower.LOGGER.info(
-            "Object tracking control loop started.")
+        ObjectFollower.LOGGER.info("Object tracking control loop started.")
 
         initial_frame =
             await self.camera.get_image(mime_type="image/jpeg")
@@ -680,31 +669,22 @@ class ObjectFollower(Module):
                 answer = self.left_or_right(detections, midpoint)
 
                 if answer == 0:
-                    ObjectFollower.LOGGER.info(
-                        "Detected object on left, spinning left.")
-                    await self.base.spin(
-                        self.spin_num, self.vel)
-                    await self.base.move_straight(
-                        self.straight_num, self.vel)
+                    ObjectFollower.LOGGER.info("Detected object on left, spinning left.")
+                    await self.base.spin(self.spin_num, self.vel)
+                    await self.base.move_straight(self.straight_num, self.vel)
                 elif answer == 1:
-                    ObjectFollower.LOGGER.info(
-                        "Detected object in center, moving straight.")
-                    await self.base.move_straight(
-                        self.straight_num, self.vel)
+                    ObjectFollower.LOGGER.info("Detected object in center, moving straight.")
+                    await self.base.move_straight(self.straight_num, self.vel)
                 elif answer == 2:
-                    ObjectFollower.LOGGER.info(
-                        "Detected object on right, spinning right.")
+                    ObjectFollower.LOGGER.info("Detected object on right, spinning right.")
                     await self.base.spin(-self.spin_num, self.vel)
-                    await self.base.move_straight(
-                        self.straight_num, self.vel)
+                    await self.base.move_straight(self.straight_num, self.vel)
                 else:
-                    ObjectFollower.LOGGER.info(
-                        "No object detected, stopping base.")
+                    ObjectFollower.LOGGER.info("No object detected, stopping base.")
                     await self.base.stop()
 
             except Exception as e:
-                ObjectFollower.LOGGER.info(
-                    f"Error in object tracking loop: {e}")
+                ObjectFollower.LOGGER.info(f"Error in object tracking loop: {e}")
 
             cycle_count += 1
             await asyncio.sleep(0.1)
@@ -722,11 +702,9 @@ class ObjectFollower(Module):
             self._running_loop = True
             self._loop_task =
                 asyncio.create_task(self._object_tracking_loop())
-            ObjectFollower.LOGGER.info(
-                "Requested to start object tracking loop.")
+            ObjectFollower.LOGGER.info("Requested to start object tracking loop.")
         else:
-            ObjectFollower.LOGGER.info(
-                "Object tracking loop is already running.")
+            ObjectFollower.LOGGER.info("Object tracking loop is already running.")
 
     async def stop_object_tracking(self):
         """
@@ -737,11 +715,9 @@ class ObjectFollower(Module):
             if self._loop_task:
                 await self._loop_task  # complete current iteration, exit
                 self._loop_task = None
-            ObjectFollower.LOGGER.info(
-                "Requested to stop object tracking loop.")
+            ObjectFollower.LOGGER.info("Requested to stop object tracking loop.")
         else:
-            ObjectFollower.LOGGER.info(
-                "Object tracking loop is not running.")
+            ObjectFollower.LOGGER.info("Object tracking loop is not running.")
 
 # Register your module
 Registry.register_resource_creator(
@@ -923,16 +899,11 @@ class EmailNotifier(Module, Generic):
         self.notification_sent: bool = False
 
         # Email configuration
-        self.sender_email: str =
-            os.getenv("SENDER_EMAIL", "your_email@example.com")
-        self.sender_password: str =
-            os.getenv("SENDER_PASSWORD", "your_email_password")
-        self.receiver_email: str =
-            os.getenv("RECEIVER_EMAIL", "recipient_email@example.com")
-        self.smtp_server: str =
-            os.getenv("SMTP_SERVER", "smtp.example.com")
-        self.smtp_port: int =
-            int(os.getenv("SMTP_PORT", 587))
+        self.sender_email: str = os.getenv("SENDER_EMAIL", "your_email@example.com")
+        self.sender_password: str = os.getenv("SENDER_PASSWORD", "your_email_password")
+        self.receiver_email: str = os.getenv("RECEIVER_EMAIL", "recipient_email@example.com")
+        self.smtp_server: str = os.getenv("SMTP_SERVER", "smtp.example.com")
+        self.smtp_port: int = int(os.getenv("SMTP_PORT", 587))
 
         self._running_loop = False
         self._loop_task = None
@@ -941,26 +912,19 @@ class EmailNotifier(Module, Generic):
     def new_resource(cls, config: ComponentConfig):
         module = cls(config.name)
         if "camera_name" in config.attributes.fields:
-            module.camera_name =
-                config.attributes.fields["camera_name"].string_value
+            module.camera_name = config.attributes.fields["camera_name"].string_value
         if "detector_name" in config.attributes.fields:
-            module.camera_name =
-                config.attributes.fields["detector_name"].string_value
+            module.camera_name = config.attributes.fields["detector_name"].string_value
         if "sender_email" in config.attributes.fields:
-            module.sender_email =
-                config.attributes.fields["sender_email"].string_value
+            module.sender_email = config.attributes.fields["sender_email"].string_value
         if "sender_password" in config.attributes.fields:
-            module.sender_password =
-                config.attributes.fields["sender_password"].string_value
+            module.sender_password = config.attributes.fields["sender_password"].string_value
         if "receiver_email" in config.attributes.fields:
-            module.receiver_email =
-                config.attributes.fields["receiver_email"].string_value
+            module.receiver_email = config.attributes.fields["receiver_email"].string_value
         if "smtp_server" in config.attributes.fields:
-            module.smtp_server =
-                config.attributes.fields["smtp_server"].string_value
+            module.smtp_server = config.attributes.fields["smtp_server"].string_value
         if "smtp_port" in config.attributes.fields:
-            module.smtp_port =
-                int(config.attributes.fields["smtp_port"].number_value)
+            module.smtp_port = int(config.attributes.fields["smtp_port"].number_value)
 
         return module
 
@@ -1005,28 +969,22 @@ class EmailNotifier(Module, Generic):
                 if detections and not self.notification_sent:
                     subject = "Viam Module Alert: Detection Found!"
                     body = "A detection was found by the vision service."
-                    EmailNotifier.LOGGER.info(
-                        "Detection found. Sending email notification...")
+                    EmailNotifier.LOGGER.info("Detection found. Sending email notification...")
                     self._send_email(subject, body)
                 elif not detections and self.notification_sent:
-                    EmailNotifier.LOGGER.info(
-                        "No detections found. Resetting notification status.")
+                    EmailNotifier.LOGGER.info("No detections found. Resetting notification status.")
                     self.notification_sent = False
                 elif detections and self.notification_sent:
-                    EmailNotifier.LOGGER.info(
-                        "Detection still present, but notification already sent.")
+                    EmailNotifier.LOGGER.info("Detection still present, but notification already sent.")
                 else:
-                    EmailNotifier.LOGGER.info(
-                        "No detections.")
+                    EmailNotifier.LOGGER.info("No detections.")
 
             except Exception as e:
-                EmailNotifier.LOGGER.info(
-                    f"Error in detection monitoring loop: {e}")
+                EmailNotifier.LOGGER.info(f"Error in detection monitoring loop: {e}")
 
             await asyncio.sleep(5)
 
-        EmailNotifier.LOGGER.info(
-            "Detection monitoring loop finished or stopped.")
+        EmailNotifier.LOGGER.info("Detection monitoring loop finished or stopped.")
         self.notification_sent = False
 
     async def _start_detection_monitoring_internal(self):
@@ -1034,12 +992,10 @@ class EmailNotifier(Module, Generic):
             self._running_loop = True
             self._loop_task =
                 asyncio.create_task(self._detection_monitoring_loop())
-            EmailNotifier.LOGGER.info(
-                "Requested to start detection monitoring loop.")
+            EmailNotifier.LOGGER.info("Requested to start detection monitoring loop.")
             return {"status": "started"}
         else:
-            EmailNotifier.LOGGER.info(
-                "Detection monitoring loop is already running.")
+            EmailNotifier.LOGGER.info("Detection monitoring loop is already running.")
             return {"status": "already_running"}
 
     async def _stop_detection_monitoring_internal(self):
@@ -1048,24 +1004,20 @@ class EmailNotifier(Module, Generic):
             if self._loop_task:
                 await self._loop_task
                 self._loop_task = None
-            EmailNotifier.LOGGER.info(
-                "Requested to stop detection monitoring loop.")
+            EmailNotifier.LOGGER.info("Requested to stop detection monitoring loop.")
             return {"status": "stopped"}
         else:
-            EmailNotifier.LOGGER.info(
-                "Detection monitoring loop is not running.")
+            EmailNotifier.LOGGER.info("Detection monitoring loop is not running.")
             return {"status": "not_running"}
 
     async def do_command(self,
                         command: Mapping[str, Any], *,
                         timeout: float | None = None, **kwargs) -> Mapping[str, Any]:
         if "start_monitoring" in command:
-            EmailNotifier.LOGGER.info(
-                "Received 'start_monitoring' command via do_command.")
+            EmailNotifier.LOGGER.info("Received 'start_monitoring' command via do_command.")
             return await self._start_detection_monitoring_internal()
         elif "stop_monitoring" in command:
-            EmailNotifier.LOGGER.info(
-                "Received 'stop_monitoring' command via do_command.")
+            EmailNotifier.LOGGER.info("Received 'stop_monitoring' command via do_command.")
             return await self._stop_detection_monitoring_internal()
         else:
             raise NotImplementedError(f"Command '{command}' not recognized.")
