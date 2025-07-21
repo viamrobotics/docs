@@ -5,4 +5,6 @@ weight: 40
 type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/services/ml/"
+aliases:
+  - /data-ai/reference/ml-training-client/
 ---

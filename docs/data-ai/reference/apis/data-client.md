@@ -5,4 +5,6 @@ weight: 30
 type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/data-client/"
+aliases:
+  - /data-ai/reference/data-client/
 ---
