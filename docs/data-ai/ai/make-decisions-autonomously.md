@@ -561,31 +561,45 @@ class ObjectFollower(Module):
         self.num_cycles = 200
 
     @classmethod
-    def new_resource(cls, config: ComponentConfig, dependencies: Mapping[str, ResourceBase]) -> Self:
+    def new_resource(cls,
+                    config: ComponentConfig,
+                    dependencies: Mapping[str, ResourceBase]) -> Self:
         instance = cls(config.name)
         instance.reconfigure(config, dependencies)
         return instance
 
     @classmethod
-    def validate(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
-        camera_name = config.attributes.fields["camera_name"].string_value
-        detector_name = config.attributes.fields["detector_name"].string_value
-        base_name = config.attributes.fields["base_name"].string_value
+    def validate(cls,
+                config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
+        camera_name =
+            config.attributes.fields["camera_name"].string_value
+        detector_name =
+            config.attributes.fields["detector_name"].string_value
+        base_name =
+            config.attributes.fields["base_name"].string_value
 
         dependencies = [camera_name, detector_name, base_name]
         return dependencies, []
 
-    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
-        self.camera_name = config.attributes.fields["camera_name"].string_value
-        self.detector_name = config.attributes.fields["detector_name"].string_value
-        self.detector_name = config.attributes.fields["base_name"].string_value
+    def reconfigure(self,
+                    config: ComponentConfig,
+                    dependencies: Mapping[ResourceName, ResourceBase]):
+        self.camera_name =
+            config.attributes.fields["camera_name"].string_value
+        self.detector_name =
+            config.attributes.fields["detector_name"].string_value
+        self.detector_name =
+            config.attributes.fields["base_name"].string_value
 
         for dependency_name, dependency in dependencies.items():
-            if dependency_name.subtype == "camera" and dependency_name.name == self.camera_name:
+            if (dependency_name.subtype == "camera"
+                    and dependency_name.name == self.camera_name):
                 self.camera = dependency
-            elif dependency_name.subtype == "vision" and dependency_name.name == self.detector_name:
+            elif (dependency_name.subtype == "vision"
+                and dependency_name.name == self.detector_name):
                 self.detector = dependency
-            elif dependency_name.subtype == "base" and dependency_name.name == self.base_name:
+            elif (dependency_name.subtype == "base"
+                and dependency_name.name == self.base_name):
                 self.base = dependency
 
         if not self.camera:
@@ -613,7 +627,9 @@ class ObjectFollower(Module):
         await self.stop_object_tracking()
         ObjectFollower.LOGGER.info(f"'{self.name}' closed.")
 
-    def left_or_right(self, detections: List[Detection], midpoint: float) -> Literal[0, 1, 2, -1]:
+    def left_or_right(self,
+                    detections: List[Detection],
+                     midpoint: float) -> Literal[0, 1, 2, -1]:
         """
         Get largest detection box and see if its center is in the left, center, or right third.
         Returns 0 for left, 1 for center, 2 for right, -1 if nothing detected.
@@ -646,41 +662,55 @@ class ObjectFollower(Module):
         """
         The core object tracking and base control logic loop.
         """
-        ObjectFollower.LOGGER.info("Object tracking control loop started.")
+        ObjectFollower.LOGGER.info(
+            "Object tracking control loop started.")
 
-        initial_frame = await self.camera.get_image(mime_type="image/jpeg")
+        initial_frame =
+            await self.camera.get_image(mime_type="image/jpeg")
         pil_initial_frame = viam_to_pil_image(initial_frame)
         midpoint = pil_initial_frame.size[0] / 2
 
         cycle_count = 0
-        while self._running_loop and (self.num_cycles == 0 or cycle_count < self.num_cycles):
+        while (self._running_loop
+                and (self.num_cycles == 0 or cycle_count < self.num_cycles)):
             try:
-                detections = await self.detector.get_detections_from_camera(self.camera_name)
+                detections =
+                    await self.detector.get_detections_from_camera(self.camera_name)
 
                 answer = self.left_or_right(detections, midpoint)
 
                 if answer == 0:
-                    ObjectFollower.LOGGER.info("Detected object on left, spinning left.")
-                    await self.base.spin(self.spin_num, self.vel)
-                    await self.base.move_straight(self.straight_num, self.vel)
+                    ObjectFollower.LOGGER.info(
+                        "Detected object on left, spinning left.")
+                    await self.base.spin(
+                        self.spin_num, self.vel)
+                    await self.base.move_straight(
+                        self.straight_num, self.vel)
                 elif answer == 1:
-                    ObjectFollower.LOGGER.info("Detected object in center, moving straight.")
-                    await self.base.move_straight(self.straight_num, self.vel)
+                    ObjectFollower.LOGGER.info(
+                        "Detected object in center, moving straight.")
+                    await self.base.move_straight(
+                        self.straight_num, self.vel)
                 elif answer == 2:
-                    ObjectFollower.LOGGER.info("Detected object on right, spinning right.")
+                    ObjectFollower.LOGGER.info(
+                        "Detected object on right, spinning right.")
                     await self.base.spin(-self.spin_num, self.vel)
-                    await self.base.move_straight(self.straight_num, self.vel)
+                    await self.base.move_straight(
+                        self.straight_num, self.vel)
                 else:
-                    ObjectFollower.LOGGER.info("No object detected, stopping base.")
+                    ObjectFollower.LOGGER.info(
+                        "No object detected, stopping base.")
                     await self.base.stop()
 
             except Exception as e:
-                ObjectFollower.LOGGER.info(f"Error in object tracking loop: {e}")
+                ObjectFollower.LOGGER.info(
+                    f"Error in object tracking loop: {e}")
 
             cycle_count += 1
             await asyncio.sleep(0.1)
 
-        ObjectFollower.LOGGER.info("Object tracking loop finished or stopped.")
+        ObjectFollower.LOGGER.info(
+            "Object tracking loop finished or stopped.")
         await self.base.stop()
         self._running_loop = False
 
@@ -690,10 +720,13 @@ class ObjectFollower(Module):
         """
         if not self._running_loop:
             self._running_loop = True
-            self._loop_task = asyncio.create_task(self._object_tracking_loop())
-            ObjectFollower.LOGGER.info("Requested to start object tracking loop.")
+            self._loop_task =
+                asyncio.create_task(self._object_tracking_loop())
+            ObjectFollower.LOGGER.info(
+                "Requested to start object tracking loop.")
         else:
-            ObjectFollower.LOGGER.info("Object tracking loop is already running.")
+            ObjectFollower.LOGGER.info(
+                "Object tracking loop is already running.")
 
     async def stop_object_tracking(self):
         """
@@ -702,17 +735,21 @@ class ObjectFollower(Module):
         if self._running_loop:
             self._running_loop = False
             if self._loop_task:
-                await self._loop_task  # Wait for the task to complete its current iteration and exit
+                await self._loop_task  # complete current iteration, exit
                 self._loop_task = None
-            ObjectFollower.LOGGER.info("Requested to stop object tracking loop.")
+            ObjectFollower.LOGGER.info(
+                "Requested to stop object tracking loop.")
         else:
-            ObjectFollower.LOGGER.info("Object tracking loop is not running.")
+            ObjectFollower.LOGGER.info(
+                "Object tracking loop is not running.")
 
 # Register your module
 Registry.register_resource_creator(
     ObjectFollower.MODEL,
-    ResourceCreatorRegistration(ObjectFollower.new_resource, ObjectFollower.validate)
+    ResourceCreatorRegistration(
+        ObjectFollower.new_resource, ObjectFollower.validate)
 )
+
 
 async def main():
     """
@@ -968,32 +1005,41 @@ class EmailNotifier(Module, Generic):
                 if detections and not self.notification_sent:
                     subject = "Viam Module Alert: Detection Found!"
                     body = "A detection was found by the vision service."
-                    EmailNotifier.LOGGER.info("Detection found. Sending email notification...")
+                    EmailNotifier.LOGGER.info(
+                        "Detection found. Sending email notification...")
                     self._send_email(subject, body)
                 elif not detections and self.notification_sent:
-                    EmailNotifier.LOGGER.info("No detections found. Resetting notification status.")
+                    EmailNotifier.LOGGER.info(
+                        "No detections found. Resetting notification status.")
                     self.notification_sent = False
                 elif detections and self.notification_sent:
-                    EmailNotifier.LOGGER.info("Detection still present, but notification already sent.")
+                    EmailNotifier.LOGGER.info(
+                        "Detection still present, but notification already sent.")
                 else:
-                    EmailNotifier.LOGGER.info("No detections.")
+                    EmailNotifier.LOGGER.info(
+                        "No detections.")
 
             except Exception as e:
-                EmailNotifier.LOGGER.info(f"Error in detection monitoring loop: {e}")
+                EmailNotifier.LOGGER.info(
+                    f"Error in detection monitoring loop: {e}")
 
             await asyncio.sleep(5)
 
-        EmailNotifier.LOGGER.info("Detection monitoring loop finished or stopped.")
+        EmailNotifier.LOGGER.info(
+            "Detection monitoring loop finished or stopped.")
         self.notification_sent = False
 
     async def _start_detection_monitoring_internal(self):
         if not self._running_loop:
             self._running_loop = True
-            self._loop_task = asyncio.create_task(self._detection_monitoring_loop())
-            EmailNotifier.LOGGER.info("Requested to start detection monitoring loop.")
+            self._loop_task =
+                asyncio.create_task(self._detection_monitoring_loop())
+            EmailNotifier.LOGGER.info(
+                "Requested to start detection monitoring loop.")
             return {"status": "started"}
         else:
-            EmailNotifier.LOGGER.info("Detection monitoring loop is already running.")
+            EmailNotifier.LOGGER.info(
+                "Detection monitoring loop is already running.")
             return {"status": "already_running"}
 
     async def _stop_detection_monitoring_internal(self):
@@ -1002,20 +1048,24 @@ class EmailNotifier(Module, Generic):
             if self._loop_task:
                 await self._loop_task
                 self._loop_task = None
-            EmailNotifier.LOGGER.info("Requested to stop detection monitoring loop.")
+            EmailNotifier.LOGGER.info(
+                "Requested to stop detection monitoring loop.")
             return {"status": "stopped"}
         else:
-            EmailNotifier.LOGGER.info("Detection monitoring loop is not running.")
+            EmailNotifier.LOGGER.info(
+                "Detection monitoring loop is not running.")
             return {"status": "not_running"}
 
     async def do_command(self,
                         command: Mapping[str, Any], *,
                         timeout: float | None = None, **kwargs) -> Mapping[str, Any]:
         if "start_monitoring" in command:
-            EmailNotifier.LOGGER.info("Received 'start_monitoring' command via do_command.")
+            EmailNotifier.LOGGER.info(
+                "Received 'start_monitoring' command via do_command.")
             return await self._start_detection_monitoring_internal()
         elif "stop_monitoring" in command:
-            EmailNotifier.LOGGER.info("Received 'stop_monitoring' command via do_command.")
+            EmailNotifier.LOGGER.info(
+                "Received 'stop_monitoring' command via do_command.")
             return await self._stop_detection_monitoring_internal()
         else:
             raise NotImplementedError(f"Command '{command}' not recognized.")
