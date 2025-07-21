@@ -586,10 +586,10 @@ class ObjectFollower(Module):
                     and dependency_name.name == self.camera_name):
                 self.camera = dependency
             elif (dependency_name.subtype == "vision"
-                and dependency_name.name == self.detector_name):
+                    and dependency_name.name == self.detector_name):
                 self.detector = dependency
             elif (dependency_name.subtype == "base"
-                and dependency_name.name == self.base_name):
+                    and dependency_name.name == self.base_name):
                 self.base = dependency
 
         if not self.camera:
@@ -654,8 +654,7 @@ class ObjectFollower(Module):
         """
         ObjectFollower.LOGGER.info("Object tracking control loop started.")
 
-        initial_frame =
-            await self.camera.get_image(mime_type="image/jpeg")
+        initial_frame = await self.camera.get_image(mime_type="image/jpeg")
         pil_initial_frame = viam_to_pil_image(initial_frame)
         midpoint = pil_initial_frame.size[0] / 2
 
@@ -663,8 +662,7 @@ class ObjectFollower(Module):
         while (self._running_loop
                 and (self.num_cycles == 0 or cycle_count < self.num_cycles)):
             try:
-                detections =
-                    await self.detector.get_detections_from_camera(self.camera_name)
+                detections = await self.detector.get_detections_from_camera(self.camera_name)
 
                 answer = self.left_or_right(detections, midpoint)
 
@@ -700,8 +698,7 @@ class ObjectFollower(Module):
         """
         if not self._running_loop:
             self._running_loop = True
-            self._loop_task =
-                asyncio.create_task(self._object_tracking_loop())
+            self._loop_task = asyncio.create_task(self._object_tracking_loop())
             ObjectFollower.LOGGER.info("Requested to start object tracking loop.")
         else:
             ObjectFollower.LOGGER.info("Object tracking loop is already running.")
@@ -930,10 +927,8 @@ class EmailNotifier(Module, Generic):
 
     async def start(self):
         EmailNotifier.LOGGER.info(f"'{self.name}' starting...")
-        self.camera =
-            await Camera.from_robot(self.robot, self.camera_name)
-        self.detector =
-            await VisionClient.from_robot(self.robot, self.detector_name)
+        self.camera = await Camera.from_robot(self.robot, self.camera_name)
+        self.detector = await VisionClient.from_robot(self.robot, self.detector_name)
         EmailNotifier.LOGGER.info(f"'{self.name}' started. Monitoring for detections.")
 
     async def close(self):
@@ -990,8 +985,7 @@ class EmailNotifier(Module, Generic):
     async def _start_detection_monitoring_internal(self):
         if not self._running_loop:
             self._running_loop = True
-            self._loop_task =
-                asyncio.create_task(self._detection_monitoring_loop())
+            self._loop_task = asyncio.create_task(self._detection_monitoring_loop())
             EmailNotifier.LOGGER.info("Requested to start detection monitoring loop.")
             return {"status": "started"}
         else:
