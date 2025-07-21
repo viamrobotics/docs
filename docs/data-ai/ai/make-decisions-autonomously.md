@@ -152,12 +152,6 @@ In a terminal, run the following command to make <file>reload.sh</file> executab
 chmod +x reload.sh
 ```
 
-Create a virtual Python environment with the necessary packages by running the module setup script from within the module directory:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
-```
-
 Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
 
 ```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
@@ -352,7 +346,7 @@ Add the following `services` configuration for your new module:
   "api": "rdk:service:generic",
   "model": "<example-namespace>:autonomous_example_module:line_follower",
   "attributes": {
-    "detector_name": "my_object_detector",
+    "detector_name": "my_line_detector",
     "camera_name": "my_camera"
   }
 }
@@ -444,7 +438,7 @@ Add the following `services` configuration, replacing the `detect_color` value w
 
 ```json
 {
-  "name": "my_color_detector",
+  "name": "my_object_detector",
   "api": "rdk:service:vision",
   "model": "my_object_detector",
   "attributes": {
@@ -498,12 +492,6 @@ In a terminal, run the following command to make <file>reload.sh</file> executab
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 chmod +x reload.sh
-```
-
-Create a virtual Python environment with the necessary packages by running the module setup script from within the module directory:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
 ```
 
 Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
@@ -742,7 +730,8 @@ Add the following `services` configuration for your new model:
   "api": "rdk:service:generic",
   "model": "<example-namespace>:autonomous_example_module:line_follower",
   "attributes": {
-    "camera_name": "my_camera"
+    "camera_name": "my_camera",
+    "detector_name": "my_object_detector"
   }
 }
 ```
@@ -751,13 +740,13 @@ Give your machine a few moments to load the new configuration, and you can begin
 
 ## Notify when a certain object appears in a video feed
 
-This module uses a vision service to program a machine to send a notification when a certain object appears in a video feed.
-This example detects people with an IR camera, but you can use a different camera, ML model, or vision service to detect any object with the same logic.
+This module uses a vision service to program a machine to send a notification when a vision service detects an object.
+This example detects people wearing hard hats, but you can use a different ML model or vision service to detect any object with the same logic.
 
 ### Prerequisites
 
 - An SBC, for example a Raspberry Pi 4
-- An IR camera, for example a [Raspberry Pi Camera Module 2 NoIR](https://www.raspberrypi.com/products/pi-noir-camera-v2/)
+- An webcam
 
 ### Configure your machine
 
@@ -769,15 +758,11 @@ Add the following `components` configuration for your camera:
 ```json
 {
   "name": "my_camera",
-  "model": "viam:camera:csi",
+  "model": "webcam",
+  "api": "rdk:component:camera",
   "attributes": {
-    "width_px": 1920,
-    "height_px": 1080,
-    "frame_rate": 30
-  },
-  "depends_on": [],
-  "namespace": "rdk",
-  "type": "camera"
+    "video_path": ""
+  }
 }
 ```
 
@@ -785,18 +770,11 @@ Add the following `services` configuration:
 
 ```json
 {
-  "name": "ir-person-mlmodel",
-  "type": "mlmodel",
-  "namespace": "rdk",
-  "model": "viam-labs:mlmodel:near-ir-person",
-  "attributes": {}
-},
-{
-  "name": "my-object-detector",
-  "type": "vision",
-  "model": "mlmodel",
+  "name": "hard_hat_detector_vision_service",
+  "api": "rdk:service:vision",
+  "model": "viam-labs:vision:yolov8",
   "attributes": {
-    "mlmodel_name": "ir-person-mlmodel"
+    "model_location": "keremberke/yolov8n-hard-hat-detection"
   }
 }
 ```
@@ -844,12 +822,6 @@ In a terminal, run the following command to make <file>reload.sh</file> executab
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 chmod +x reload.sh
-```
-
-Create a virtual Python environment with the necessary packages by running the module setup script from within the module directory:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
 ```
 
 Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
@@ -1048,7 +1020,7 @@ Add the following `services` configuration for your new model:
   "api": "rdk:service:generic",
   "model": "<example-namespace>:autonomous_example_module:email_notifier",
   "attributes": {
-    "detector_name": "my-object-detector",
+    "detector_name": "hard_hat_detector_vision_service",
     "camera_name": "my_camera"
   }
 }
