@@ -229,14 +229,14 @@ class LineFollower(Module, ResourceBase):
         self.detector_name = config.attributes.fields["base_name"].string_value
 
         for dependency_name, dependency in dependencies.items():
-            if dependency_name.subtype == "camera" and
-                    dependency_name.name == self.camera_name:
+            if (dependency_name.subtype == "camera"
+                    and dependency_name.name == self.camera_name):
                 self.camera = dependency
-            elif dependency_name.subtype == "vision" and
-                    dependency_name.name == self.detector_name:
+            elif (dependency_name.subtype == "vision"
+                    and dependency_name.name == self.detector_name):
                 self.detector = dependency
-            elif dependency_name.subtype == "base" and
-                    dependency_name.name == self.base_name:
+            elif (dependency_name.subtype == "base"
+                    and dependency_name.name == self.base_name):
                 self.base = dependency
 
         if not self.camera:
@@ -542,7 +542,8 @@ from viam.proto.app.v1 import ComponentConfig
 from viam.services.vision import Detection
 
 class ObjectFollower(Module):
-    MODEL = Model("<example-namespace>", "autonomous_example_module", "object_follower")
+    MODEL = Model(
+        ModelFamily("<example-namespace>", "autonomous_example_module"), "object_follower")
 
 
     def __init__(self, name: str):
@@ -874,7 +875,8 @@ import smtplib
 from email.mime.text import MIMEText
 
 class EmailNotifier(Module, Generic):
-    MODEL = Model("<example-namespace>", "autonomous_example_module", "email_notifier")
+    MODEL = Model(
+        ModelFamily("<example-namespace>", "autonomous_example_module"), "email_notifier")
 
 
     def __init__(self, name: str):
@@ -884,11 +886,16 @@ class EmailNotifier(Module, Generic):
         self.notification_sent: bool = False
 
         # Email configuration
-        self.sender_email: str = os.getenv("SENDER_EMAIL", "your_email@example.com")
-        self.sender_password: str = os.getenv("SENDER_PASSWORD", "your_email_password")
-        self.receiver_email: str = os.getenv("RECEIVER_EMAIL", "recipient_email@example.com")
-        self.smtp_server: str = os.getenv("SMTP_SERVER", "smtp.example.com")
-        self.smtp_port: int = int(os.getenv("SMTP_PORT", 587))
+        self.sender_email: str =
+            os.getenv("SENDER_EMAIL", "your_email@example.com")
+        self.sender_password: str =
+            os.getenv("SENDER_PASSWORD", "your_email_password")
+        self.receiver_email: str =
+            os.getenv("RECEIVER_EMAIL", "recipient_email@example.com")
+        self.smtp_server: str =
+            os.getenv("SMTP_SERVER", "smtp.example.com")
+        self.smtp_port: int =
+            int(os.getenv("SMTP_PORT", 587))
 
         self._running_loop = False
         self._loop_task = None
@@ -897,26 +904,35 @@ class EmailNotifier(Module, Generic):
     def new_resource(cls, config: ComponentConfig):
         module = cls(config.name)
         if "camera_name" in config.attributes.fields:
-            module.camera_name = config.attributes.fields["camera_name"].string_value
+            module.camera_name =
+                config.attributes.fields["camera_name"].string_value
         if "detector_name" in config.attributes.fields:
-            module.camera_name = config.attributes.fields["detector_name"].string_value
+            module.camera_name =
+                config.attributes.fields["detector_name"].string_value
         if "sender_email" in config.attributes.fields:
-            module.sender_email = config.attributes.fields["sender_email"].string_value
+            module.sender_email =
+                config.attributes.fields["sender_email"].string_value
         if "sender_password" in config.attributes.fields:
-            module.sender_password = config.attributes.fields["sender_password"].string_value
+            module.sender_password =
+                config.attributes.fields["sender_password"].string_value
         if "receiver_email" in config.attributes.fields:
-            module.receiver_email = config.attributes.fields["receiver_email"].string_value
+            module.receiver_email =
+                config.attributes.fields["receiver_email"].string_value
         if "smtp_server" in config.attributes.fields:
-            module.smtp_server = config.attributes.fields["smtp_server"].string_value
+            module.smtp_server =
+                config.attributes.fields["smtp_server"].string_value
         if "smtp_port" in config.attributes.fields:
-            module.smtp_port = int(config.attributes.fields["smtp_port"].number_value)
+            module.smtp_port =
+                int(config.attributes.fields["smtp_port"].number_value)
 
         return module
 
     async def start(self):
         EmailNotifier.LOGGER.info(f"'{self.name}' starting...")
-        self.camera = await Camera.from_robot(self.robot, self.camera_name)
-        self.detector = await VisionClient.from_robot(self.robot, self.detector_name)
+        self.camera =
+            await Camera.from_robot(self.robot, self.camera_name)
+        self.detector =
+            await VisionClient.from_robot(self.robot, self.detector_name)
         EmailNotifier.LOGGER.info(f"'{self.name}' started. Monitoring for detections.")
 
     async def close(self):
@@ -946,7 +962,8 @@ class EmailNotifier(Module, Generic):
 
         while self._running_loop:
             try:
-                detections = await self.detector.get_detections_from_camera(self.camera_name)
+                detections =
+                    await self.detector.get_detections_from_camera(self.camera_name)
 
                 if detections and not self.notification_sent:
                     subject = "Viam Module Alert: Detection Found!"
@@ -991,7 +1008,9 @@ class EmailNotifier(Module, Generic):
             EmailNotifier.LOGGER.info("Detection monitoring loop is not running.")
             return {"status": "not_running"}
 
-    async def do_command(self, command: Mapping[str, Any], *, timeout: float | None = None, **kwargs) -> Mapping[str, Any]:
+    async def do_command(self,
+                        command: Mapping[str, Any], *,
+                        timeout: float | None = None, **kwargs) -> Mapping[str, Any]:
         if "start_monitoring" in command:
             EmailNotifier.LOGGER.info("Received 'start_monitoring' command via do_command.")
             return await self._start_detection_monitoring_internal()
