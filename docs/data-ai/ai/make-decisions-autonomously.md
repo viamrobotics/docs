@@ -189,7 +189,8 @@ from viam.proto.common import ResourceName
 from viam.services.vision import VisionClient
 
 class LineFollower(Module, ResourceBase):
-    MODEL = Model(ModelFamily("<example-namespace>", "autonomous_example_module"), "line-follower")
+    MODEL = Model(
+        ModelFamily("<example-namespace>", "autonomous_example_module"), "line-follower")
     LOGGER = getLogger(__name__)
 
 
@@ -204,7 +205,9 @@ class LineFollower(Module, ResourceBase):
         self.angular_power = 0.3
 
     @classmethod
-    def new_resource(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new_resource(cls,
+                    config: ComponentConfig,
+                    dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
         instance = cls(config.name)
         instance.reconfigure(config, dependencies)
         return instance
@@ -218,17 +221,22 @@ class LineFollower(Module, ResourceBase):
         dependencies = [camera_name, detector_name, base_name]
         return dependencies, []
 
-    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
+    def reconfigure(self,
+                    config: ComponentConfig,
+                    dependencies: Mapping[ResourceName, ResourceBase]):
         self.camera_name = config.attributes.fields["camera_name"].string_value
         self.detector_name = config.attributes.fields["detector_name"].string_value
         self.detector_name = config.attributes.fields["base_name"].string_value
 
         for dependency_name, dependency in dependencies.items():
-            if dependency_name.subtype == "camera" and dependency_name.name == self.camera_name:
+            if dependency_name.subtype == "camera" and
+                    dependency_name.name == self.camera_name:
                 self.camera = dependency
-            elif dependency_name.subtype == "vision" and dependency_name.name == self.detector_name:
+            elif dependency_name.subtype == "vision" and
+                    dependency_name.name == self.detector_name:
                 self.detector = dependency
-            elif dependency_name.subtype == "base" and dependency_name.name == self.base_name:
+            elif dependency_name.subtype == "base" and
+                    dependency_name.name == self.base_name:
                 self.base = dependency
 
         if not self.camera:
@@ -257,15 +265,18 @@ class LineFollower(Module, ResourceBase):
                 # Check for color in front
                 if await self._is_color_in_front():
                     LineFollower.LOGGER.info("Moving forward.")
-                    await self.base.set_power(Vector3(y=self.linear_power), Vector3())
+                    await self.base.set_power(
+                        Vector3(y=self.linear_power), Vector3())
                 # Check for color to the left
                 elif await self._is_color_there("left"):
                     LineFollower.LOGGER.info("Turning left.")
-                    await self.base.set_power(Vector3(), Vector3(z=self.angular_power))
+                    await self.base.set_power(
+                        Vector3(), Vector3(z=self.angular_power))
                 # Check for color to the right
                 elif await self._is_color_there("right"):
                     LineFollower.LOGGER.info("Turning right.")
-                    await self.base.set_power(Vector3(), Vector3(z=-self.angular_power))
+                    await self.base.set_power(
+                        Vector3(), Vector3(z=-self.angular_power))
                 else:
                     LineFollower.LOGGER.info("No color detected. Stopping.")
                     await self.base.stop()
@@ -281,7 +292,8 @@ class LineFollower(Module, ResourceBase):
     async def _start_color_following_internal(self):
         if not self._running_loop:
             self._running_loop = True
-            self._loop_task = asyncio.create_task(self._color_following_loop())
+            self._loop_task =
+                asyncio.create_task(self._color_following_loop())
             LineFollower.LOGGER.info("Requested to start color following loop.")
         else:
             LineFollower.LOGGER.info("Color following loop is already running.")
@@ -1026,5 +1038,7 @@ Add the following `services` configuration for your new model:
   }
 }
 ```
+
+Define the `sender_email`, `sender_password`, `receiver_email`, `smtp_server`, and `smtp_port` variables in the model attributes or using environment variables on your machine.
 
 Give your machine a few moments to load the new configuration, and you can begin testing your module.
