@@ -42,7 +42,7 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
-{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-10" %}}
+{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-23" %}}
 
 You can now configure annual billing alongside monthly billing options for your organizations.
 See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
