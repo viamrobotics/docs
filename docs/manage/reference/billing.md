@@ -20,11 +20,11 @@ You must be an [organization owner](/manage/manage/rbac/) to see this page.
 
 The **Payment and billing** page shows you:
 
-- your usage for the current month
+- your usage for the current billing period
 - the date for your next invoice
 - the payment method on the account
 - a cost breakdown for cloud storage, cloud data upload, cloud data egress, remote control, and standard compute costs
-- all your monthly invoices
+- all your invoices (monthly or annual depending on your billing configuration)
 
 {{< alert title="Note" color="note" >}}
 
@@ -60,12 +60,16 @@ Organizations without valid payment methods may experience limitations on their 
 
 ## Download an invoice
 
-You can view all your monthly invoices for your organization:
+You can view all your invoices for your organization:
 
 1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
    You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
 1. Find the **Invoices** section of the **Payment & Billing** page.
-1. Click on **Download (PDF)** next to the relevant month.
+1. Click on **Download (PDF)** next to the relevant billing period.
+
+{{< alert title="Note" color="note" >}}
+Invoices may be generated monthly or annually depending on your billing configuration. Organizations using annual billing will receive invoices every 12 months instead of monthly.
+{{< /alert >}}
 
 ## Set billing alerts
 
@@ -74,7 +78,7 @@ You can set alerts to receive an email notification when your monthly spend exce
 1. Click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
    You must be an [organization owner](https://docs.viam.com/manage/manage/rbac/) to see this page.
 1. Scroll to the bottom of the **Payment & Billing** page.
-1. Click **Set amount** and enter a monthly threshold.
+1. Click **Set amount** and enter a monthly threshold amount.
 
 ## Receive billing emails at a different email or and email alias
 

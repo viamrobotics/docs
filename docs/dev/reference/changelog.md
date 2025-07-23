@@ -42,6 +42,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-23" %}}
+
+You can now configure annual billing alongside monthly billing options for your organizations.
+See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+applications/).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Build custom Viam applications" date="2025-07-17" %}}
 
 You can now create and use Viam applications to build custom applications that interact with your Viam-powered machines through the Viam SDKs.
