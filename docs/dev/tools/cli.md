@@ -107,7 +107,7 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, or an organization, location, or machine part API key.
+You can authenticate your CLI session using a personal access token, a profile, or an organization, location, or machine part API key.
 
 - To authenticate your CLI session using a personal access token:
 
@@ -132,6 +132,19 @@ You can authenticate your CLI session using either a personal access token, or a
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
 After the session expires or you log out, you must re-authenticate to use the CLI again.
+
+## CLI profiles
+
+You can also authenticate your CLI session with profiles which allow you to switch between using different privileges.
+To create a profile, run the following command:
+
+```sh {class="command-line" data-prompt="$"}
+viam profiles add --profile-name=default --key-id=<api-key-id> --key=<api-key>
+```
+
+To use a profile to authenticate a command, pass the `--profile` flag.
+By default, the Viam CLI does not use a profile.
+To use a specific profile by default, set the environment variable `VIAM_CLI_PROFILE_NAME` to the profile name.
 
 ### Create an organization API key
 
@@ -398,7 +411,7 @@ The `datapipelines` command provides access to data pipelines for processing mac
 Data pipelines help you optimize query performance for frequently accessed complex data transformations.
 
 ```sh {class="command-line" data-prompt="$"}
-viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
+viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> --data-source-type=<type>
 viam datapipelines update --id=<pipeline-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
 viam datapipelines list --org-id=<org-id>
 viam datapipelines describe --id=<pipeline-id>
@@ -409,10 +422,10 @@ Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # create a new data pipeline with standard data source type (default)
-viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --mql='[{"$match": {"component_name": "sensor1"}}]'
+viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --data-source-type=standard --mql='[{"$match": {"component_name": "sensor1"}}]'
 
 # create a data pipeline with hot storage data source type for faster access
-viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --mql='[{"$match": {"component_name": "camera1"}}]' --data-source-type=hotstorage
+viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hotstorage --mql='[{"$match": {"component_name": "camera1"}}]'
 
 # disable a pipeline
 viam datapipelines disable --id=abc123
@@ -453,11 +466,11 @@ viam datapipelines delete --id=abc123
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
-| `--name` | Name of the data pipeline. | `create`, `update` | **Required** |
-| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** |
+| `--name` | Name of the data pipeline. | `create`, `update` | **Required** for `create` |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** for `create` |
 | `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
-| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | Optional |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | **Required** for `create` |
 | `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
 
 ### `dataset`
@@ -724,7 +737,7 @@ The `logout` command ends an authenticated CLI session.
 viam logout
 ```
 
-### `machines` (alias `robots`)
+### `machines` (alias `robots` and `machine`)
 
 The `machines` command allows you to manage your machine fleet.
 This includes:
@@ -735,6 +748,8 @@ This includes:
 - Retrieving machine and machine part logs
 - Controlling a machine by issuing component and service commands
 - Accessing your machine with a secure shell (when this feature is enabled)
+- Copy files from and to machines
+- Enter an interactive terminal on your machines
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
@@ -780,25 +795,25 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 viam machines part restart --part=123
 
 # tunnel connections to the specified port on a machine part
-viam machine part tunnel --part=123 --destination-port=1111 --local-port 2222
+viam machines part tunnel --part=123 --destination-port=1111 --local-port 2222
 
-# Copy and a single file to a machine and change the file's name:
-viam machine part cp --part=123 my_file machine:/home/user/
+# Copy a single file to a machine:
+viam machines part cp --part=123 my_file machine:/home/user/
 
 # Recursively copy a directory to a machine:
-viam machine part cp --part=123 -r my_dir machine:/home/user/
+viam machines part cp --part=123 -r my_dir machine:/home/user/
 
 # Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
-viam machine part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
+viam machines part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
 # Copy a single file from a machine to a local destination:
-viam machine part cp --part=123 machine:my_file ~/Downloads/
+viam machines part cp --part=123 machine:my_file ~/Downloads/
 
 # Recursively copy a directory from a machine to a local destination:
-viam machine part cp --part=123 -r machine:my_dir ~/Downloads/
+viam machines part cp --part=123 -r machine:my_dir ~/Downloads/
 
 # Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
-viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
+viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
 #### Command options
@@ -810,7 +825,7 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
-| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. |
+| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. |
 | `--help` | Return help. | - |
 
 ##### Positional arguments: `api-key`
@@ -830,9 +845,9 @@ viam machine part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exis
 | `status` | Retrieve machine status for a specified machine part. |
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
 | `logs` | Get logs for the specified machine or machine part. |
-| `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. |
+| `shell` | Access a machine part securely using a secure shell to execute commands. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. |
 | `restart` | Restart a machine part. |
-| `cp` | Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command. |
+| `cp` | Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command to copy files to and from machines. |
 | `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/manage/fleet/system-settings/#configure-network-settings-for-tunneling). |
 | `--help` | Return help. |
 
@@ -1626,8 +1641,8 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
-| `--debug` | Enable debug logging (default: false). |
-| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. |
-| `--help`, `-h` | Show help (default: false). |
+| `--debug` | Enable debug logging. Default: `false`. |
+| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. Default: `false`. |
+| `--help`, `-h` | Show help. Default: `false`. |
 | `--profile` | Specify a particular [profile](#profiles) for the current command. |
-| `--quiet`, `-q` | Suppress warnings (default: false). |
+| `--quiet`, `-q` | Suppress warnings. Default: `false` |

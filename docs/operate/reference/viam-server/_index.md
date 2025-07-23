@@ -298,12 +298,16 @@ Next, to make the `viam-server` executable and install as a system service, run 
 chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
+The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
+
 {{% /tab %}}
 {{% tab name="Install using viam-agent" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
+
+The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -324,12 +328,16 @@ Next, to make the `viam-server` executable and install as a system service, run 
 chmod 755 viam-server && sudo ./viam-server --aix-install
 ```
 
+The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
+
 {{% /tab %}}
 {{% tab name="Install using viam-agent" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
+
+The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -339,6 +347,8 @@ sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/a
 ```bash {class="line-numbers linkable-line-numbers"}
 brew tap viamrobotics/brews && brew install viam-server
 ```
+
+The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
 
 {{% /tab %}}
 {{% tab name="Windows Subsystem for Linux (WSL)" %}}
@@ -351,6 +361,8 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 {{% tab name="Windows native" %}}
 
 Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe).
+
+The `viam-agent` and `viam-server` binaries are installed at <FILE>C:\opt\viam\cache</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -384,7 +396,7 @@ cd bin/Linux-amd64  # or Linux-arm64 for ARM-based systems
 You can then run the server directly:
 
 ```sh {class="command-line" data-prompt="$"}
-./viam-server -config /path/to/your/config.json
+sudo ./viam-server -config /path/to/your/config.json
 ```
 
 {{% /tab %}}
@@ -416,7 +428,7 @@ cd bin/Darwin-arm64  # Use the folder matching your architecture
 You can then run the server directly:
 
 ```sh {class="command-line" data-prompt="$"}
-./viam-server -config /path/to/your/config.json
+sudo ./viam-server -config /path/to/your/config.json
 ```
 
 ### Option 2: Use an older version of the Homebrew tap

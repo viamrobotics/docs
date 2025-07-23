@@ -46,6 +46,21 @@ date: "2024-09-18"
 
 You can now configure annual billing alongside monthly billing options for your organizations.
 See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+applications/).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Build custom Viam applications" date="2025-07-17" %}}
+
+You can now create and use Viam applications to build custom applications that interact with your Viam-powered machines through the Viam SDKs.
+For more information, see [Viam applications](/operate/control/viam-applications/).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Start modules with a TCP connection" date="2025-07-14" %}}
+
+You can now configure to start modules with a TCP connection. See [Module Configuration](/operate/get-started/other-hardware/module-configuration/) for more information.
+
 {{% /changelog %}}
 
 {{% changelog color="added" title="Notes section for resource configuration cards" date="2025-07-10" %}}
@@ -266,7 +281,7 @@ It is not possible to store metadata associated with a Viam user.
 
 {{% changelog color="added" title="Hot Data Store" date="2025-03-11" %}}
 
-The [hot data store](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-to-the-hot-data-store) allows you to access recent data faster.
+The [hot data store](/data-ai/data/hot-data-store/) allows you to access recent data faster.
 
 {{% /changelog %}}
 
@@ -933,7 +948,7 @@ For more information about assigning permissions and collaborating with others o
 
 {{% changelog date="2023-05-31" color="improved" title="Control RoboClaw motor controllers with the driver" %}}
 
-When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within the web UI or through the motor API.
+When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw's functionality within the web UI or through the motor API.
 
 For example, in the web UI, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
 

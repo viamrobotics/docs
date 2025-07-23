@@ -60,11 +60,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, "my_slam");
+const slam = new VIAM.SlamClient(machine, 'my_slam');
 
 // Get the current position of the robot in the SLAM map
 const position = await slam.getPosition();
-console.log("Current position:", position);
+console.log('Current position:', position);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getposition).
@@ -128,7 +128,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, "my_slam");
+const slam = new VIAM.SlamClient(machine, 'my_slam');
 
 // Get the point cloud map
 const pointCloudMap = await slam.getPointCloudMap();
@@ -195,7 +195,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, "my_slam");
+const slam = new VIAM.SlamClient(machine, 'my_slam');
 
 // Get the internal state of the SLAM algorithm
 const internalState = await slam.getInternalState();
@@ -241,9 +241,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties):
-  Information about the current SLAM session.
-  An object containing four fields:
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): 
+Information about the current SLAM session.
+An object containing four fields:
 
 - `SensorInfo` [(SensorInfo[])](https://pkg.go.dev/go.viam.com/api/service/slam/v1#SensorInfo): Information about the sensors (camera and movement sensor) configured for your SLAM service, including the name and type of sensor.
 - `CloudSlam` [(bool)](https://pkg.go.dev/builtin#bool): A boolean which indicates whether the session is being run in the cloud.
@@ -274,11 +274,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, "my_slam");
+const slam = new VIAM.SlamClient(machine, 'my_slam');
 
 // Get the properties of the SLAM service
 const properties = await slam.getProperties();
-console.log("SLAM properties:", properties);
+console.log('SLAM properties:', properties);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getproperties).
@@ -427,12 +427,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: "value" },
-  }),
+    myCommand: { key: 'value' },
+  })
 );
 ```
 

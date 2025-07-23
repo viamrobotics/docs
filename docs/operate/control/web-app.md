@@ -13,6 +13,11 @@ The TypeScript SDK includes:
 - Implementation of the standard component and service APIs to control your hardware and software
 - Authentication tools so users can log in securely
 
+{{< alert title="Tip: Host your application on Viam" color="tip" >}}
+You can host most apps by [deploying them as Viam applications](/operate/control/viam-applications/).
+If your application requires server-side rendering or other back-end functionality, self-host your application instead.
+{{< /alert >}}
+
 ## Install the TypeScript SDK
 
 Run the following command in your terminal to install the Viam TypeScript SDK:
@@ -48,7 +53,7 @@ The following files create an example TypeScript web app that connects to a mach
 ```ts {class="line-numbers linkable-line-numbers"}
 // This code must be run in a browser environment.
 import * as VIAM from "@viamrobotics/sdk";
-import { CameraClient, SensorClient } from "@viamrobotics/sdk";
+import { CameraClient, SensorClient, StreamClient } from "@viamrobotics/sdk";
 
 let isStreaming = false;
 let camera: CameraClient;
@@ -59,7 +64,7 @@ let machine: VIAM.RobotClient;
 const main = async () => {
   const host = "demo-main.abcdefg1234.viam.cloud";
 
-  const machine = await VIAM.createRobotClient({
+  machine = await VIAM.createRobotClient({
     host,
     credentials: {
       type: "api-key",

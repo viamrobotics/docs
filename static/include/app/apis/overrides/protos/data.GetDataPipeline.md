@@ -1,0 +1,1 @@
+Get the configuration for a [data pipeline](/data-ai/data/data-pipelines/).

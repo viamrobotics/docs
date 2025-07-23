@@ -38,6 +38,14 @@ If not follow the steps for the standalone version.
 {{< tabs >}}
 {{% tab name="Installed with viam-agent" %}}
 
+On Linux, you can query your logs with `journalctl`:
+
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
+sudo journalctl --unit=viam-agent
+```
+
+Alternatively you can restart `viam-server` manually and write logs to a log file:
+
 1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
    ```sh {class="command-line" data-prompt="$" data-output="2"}
@@ -65,8 +73,13 @@ If not follow the steps for the standalone version.
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-By default, `viam-server` writes logs to STDOUT and does not store them in a file on your machine.
-If you want to store your logs in a file, stop the running `viam-server` instance, and restart it with the `-logfile` option.
+On Linux, you can query your logs with `journalctl`:
+
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
+sudo journalctl --unit=viam-server
+```
+
+Alternatively you can restart `viam-server` and write logs to a log file by stopping the running `viam-server` instance, and restarting it with the `-logfile` option:
 
 1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
@@ -75,34 +88,41 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
    root       865  1.6  0.2  11612  2428 ?        Ssl  11:42   0:56 /usr/local/bin/viam-server -config /etc/viam.json
    ```
 
-2. Stop the system service running `viam-server`:
+1. Stop the system service running `viam-server`:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
    sudo systemctl stop viam-server
    ```
 
-3. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
+1. Then run `viam-server` with the `-debug` and `-log-file` options and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
-   /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
+   sudo /usr/local/bin/viam-server -debug -config /etc/viam.json -log-file logs.txt
    ```
 
-4. Then check the logs file <FILE>logs.txt</FILE>.
+1. Then check the logs file <FILE>logs.txt</FILE>.
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-`viam-server` does not store logs in a file on your machine.
-To view logs, stop the running `viam-server` instance, and restart it which will send the logs to STDOUT in the current terminal window.
+By default, `viam-server` writes logs to STDOUT and does not store them in a file on your machine.
+If you want to store your logs in a file, stop the running `viam-server` instance, and restart it with the `-logfile` option.
 
-1. Kill the running `viam-server` instance.
-2. Then run `viam-server` with the `-debug` option and pass in your machine cloud credentials file:
+1. First check where the `viam-server` binary is and where the machine cloud credentials file for your machine is:
 
-   ```sh {class="command-line" data-prompt="$" data-output=""}
-   viam-server -config ~/Downloads/viam.json -debug
+   ```sh {class="command-line" data-prompt="$" data-output="2-3"}
+   ps aux | grep viam-server
+   naomi             8738   1.1  0.3 412233296  50720 s000  S+    5:24pm   0:00.40 viam-server -config /Users/naomi/Downloads/viam-mac-main.json
    ```
 
-   You can check the exact command by consulting the setup instructions for your machine.
+1. Kill the running `viam-server` instance.
+1. Then run `viam-server` with the `-debug` and `-log-file` options and pass in your machine cloud credentials file:
+
+   ```sh {class="command-line" data-prompt="$" data-output=""}
+   sudo viam-server -config ~/Downloads/viam.json -debug -log-file logs.txt
+   ```
+
+1. Then check the logs file <FILE>logs.txt</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -114,13 +134,15 @@ To view logs, stop the running `viam-server` instance, and restart it which will
 Be aware that while your machine is not able to connect to Viam, any changes to the machine's configuration that you make in the web UI will not reach your machine.
 {{< /alert >}}
 
-### Check for errors on the CONFIGURE page
+### Machine shows as online
+
+#### Check for errors on the CONFIGURE page
 
 Go to your machine's **CONFIGURE** page and check whether any configured components have a red exclamation symbol on their configuration card.
 If so click on the symbol or expand the **ERROR LOGS** panel.
 The expanded panel shows you errors produced by that resource.
 
-### Check logs on the LOGS tab
+#### Check logs on the LOGS tab
 
 If your machine shows as online, go to the **LOGS** tab and check for errors or other information relevant to the issue.
 
@@ -167,7 +189,7 @@ You may also find that not all logs you are expecting are displayed.
 By default, `viam-server` deduplicates log messages that are deemed noisy.
 To disable this behavior, see [Disable log deduplication](/operate/reference/viam-server/).
 
-To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#machines-alias-robots) on the command line or the [Machines API](/dev/reference/apis/robot/).
+To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#machines-alias-robots-and-machine) on the command line or the [Machines API](/dev/reference/apis/robot/).
 
 ### Advanced debugging for Go modules
 
@@ -247,7 +269,7 @@ To remotely access your machine from your terminal:
 
 1. You can [access the local log file](/operate/reference/viam-server/manage-viam-server/#view-viam-server-logs) on your machine if needed.
 
-1. If you need to copy files from your machine, use the [`viam machine part cp`](/dev/tools/cli/#machines-alias-robots) command.
+1. If you need to copy files from your machine, use the [`viam machine part cp`](/dev/tools/cli/#machines-alias-robots-and-machine) command.
 
 ## Restart your machine
 

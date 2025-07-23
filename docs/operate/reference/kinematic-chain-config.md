@@ -39,7 +39,7 @@ If your resource is an [arm component](/operate/reference/components/arm/), you 
 
 {{% /alert %}}
 
-This is an example configuration that is used by the [`ur5e` arm model](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json):
+This is an example configuration that is used by the [`ur5e` arm model](https://github.com/viam-modules/universal-robots/blob/main/src/kinematics/ur5e.json):
 
 {{< tabs name="Kinematic Parameter Types" >}}
 {{% tab name="SVA" %}}

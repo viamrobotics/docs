@@ -98,7 +98,7 @@ The following configuration allows you to tunnel to ports `5900` and `5901`:
 }
 ```
 
-Then you can use the [`viam machine part tunnel`](https://docs.viam.com/dev/tools/cli/#machines-alias-robots) command:
+Then you can use the [`viam machine part tunnel`](https://docs.viam.com/dev/tools/cli/#machines-alias-robots-and-machine) command:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam machine part tunnel --part=123 --destination-port=1111 --local-port 5900
@@ -111,6 +111,16 @@ To configure your machine to disable TLS on the hosted HTTP server, you must spe
 ```json {class="line-numbers linkable-line-numbers"}
 "network": {
   "no_tls": true
+}
+```
+
+## Configure bind address and port
+
+To configure your machine to bind to a different port, set the `bind_address` in your machine settings:
+
+```json {class="line-numbers linkable-line-numbers"}
+"network": {
+  "bind_address": "localhost:8081"
 }
 ```
 

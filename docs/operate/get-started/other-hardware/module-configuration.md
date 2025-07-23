@@ -209,6 +209,7 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 | `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this module. |
 | `log_level` | object | Optional | Set the log level for the module. See [Logging](/operate/reference/viam-server/#logging). |
+| `tcp_mode` | boolean | Optional | Whether to start the module with a TCP connection. Regardless of the value set here, if the environment variable `VIAM_TCP_SOCKETS` is set to true, `viam-server` will start the module with a TCP connection.<br>TCP mode is currently only supported for Python and C++ modules.<br>Default: `false`.  |
 
 ### Module versioning
 
@@ -240,6 +241,64 @@ The current deployed version of your module and the latest version of that modul
 For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
+
+### Module meta.json configuration
+
+When creating a module, you'll need to create a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
+
+Here's an example of a `meta.json` file:
+
+```json
+{
+  "module_id": "your-namespace:your-module",
+  "visibility": "public",
+  "url": "https://github.com/your-org/your-repo",
+  "description": "Your module description",
+  "models": [
+    {
+      "api": "rdk:component:base",
+      "model": "your-namespace:your-module:your-model"
+    }
+  ],
+  "entrypoint": "run.sh",
+  "first_run": "setup.sh"
+}
+```
+
+For modules that include [Viam applications](/operate/control/viam-applications/), you can add the `applications` field:
+
+```json
+{
+  "module_id": "your-namespace:your-module",
+  "visibility": "public",
+  "url": "https://github.com/your-org/your-repo",
+  "description": "Your module description",
+  "models": [
+    {
+      "api": "rdk:component:base",
+      "model": "your-namespace:your-module:your-model"
+    }
+  ],
+  "entrypoint": "run.sh",
+  "applications": [
+    {
+      "name": "your-app-name",
+      "type": "web",
+      "entrypoint": "dist/index.html"
+    }
+  ]
+}
+```
+
+The `applications` field is an array of application objects with the following properties:
+
+| Property     | Type   | Description                                                                                       |
+| ------------ | ------ | ------------------------------------------------------------------------------------------------- |
+| `name`       | string | The name of your application, which will be used in the URL (`name.publicnamespace.viamapps.com`) |
+| `type`       | string | The type of application (currently only `"web"` is supported)                                     |
+| `entrypoint` | string | The path to the HTML entry point for your application                                             |
+
+For more information about Viam applications, see the [Viam applications documentation](/operate/control/viam-applications/).
 
 ### Environment variables
 
