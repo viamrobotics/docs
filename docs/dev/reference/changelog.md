@@ -7,6 +7,8 @@ type: "docs"
 description: "A log of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
+  - "/components/arm/ur5e/"
+  - "/operate/reference/components/arm/ur5e/"
   - "/components/camera/single-stream/"
   - "/components/camera/dual-stream/"
   - "/components/camera/align-color-depth-extrinsics/"
@@ -412,6 +414,7 @@ The following resource models have moved to modules.
 | arm | [`lite6`](https://github.com/viam-modules/viam-ufactory-xarm) |
 | arm | [`xArm6`](https://github.com/viam-modules/viam-ufactory-xarm) |
 | arm | [`xArm7`](https://github.com/viam-modules/viam-ufactory-xarm) |
+| arm | [`ur5e`](https://github.com/viam-modules/universal-robots) |
 | board | [`customlinux`](https://github.com/viam-modules/customlinux/) |
 | board | [`jetson`](https://github.com/viam-modules/nvidia) |
 | board | [`pca9685`](https://github.com/viam-modules/pca/tree/main) |
