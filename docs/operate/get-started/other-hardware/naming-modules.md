@@ -11,7 +11,7 @@ viamresources: []
 platformarea: ["registry"]
 toc_hide: false
 aliases:
-  - /operate/reference/modular-resources/naming-modules/
+  - /operate/reference/naming-modules/
 ---
 
 Each modular resource has two associated triplets: an API namespace triplet to indicate which [API](/dev/reference/apis/) it implements, and a model namespace triplet to uniquely identify the modular resource {{< glossary_tooltip term_id="model" text="model" >}}.
