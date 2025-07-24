@@ -73,7 +73,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>applications</code></td>
 <td>array</td>
 <td>Optional</td>
-<td>Objects that provide information about the [applications](/operate/control/viam-applications/) provided by the module.</td>
+<td>Objects that provide information about the <a href="/operate/control/viam-applications/">applications</a> provided by the module.</td>
 </tr>
 
 </table>
