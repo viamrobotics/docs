@@ -242,7 +242,7 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
-If a module appears in both a {{< glossary_tooltip term_id="fragment" text="fragment" >}} and the part configuration, Viam will import the most recent configured version of the module.
+If a module appears in both a {{< glossary_tooltip term_id="fragment" text="fragment" >}} and the part configuration, or in multiple fragments, Viam will import the newest of the configured versions.
 
 ### Module meta.json configuration
 
