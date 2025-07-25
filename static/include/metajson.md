@@ -9,7 +9,7 @@
 <td><code>module_id</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>The module ID, which includes either the module <a href="/operate/getting-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization">namespace</a> or organization ID, followed by its name.
+<td>The module ID, which includes either the module <a href="/operate/get-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization">namespace</a> or organization ID, followed by its name.
 <div class="alert alert-caution" role="alert">
 <h4 class="alert-heading">Caution</h4>
 
@@ -42,7 +42,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>models</code></td>
 <td>array</td>
 <td>Optional</td>
-<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model in the models array or one application in the applications array. A model consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/getting-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p>
+<td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model in the models array or one application in the applications array. A model consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/operate/get-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p>
 <p>You are strongly encouraged to include a <code>markdown_link</code> to the section of the README containing configuration information about each model, so that the section will be displayed alongside the configuration panel when configuring the model. For example, <code>"README.md#configure-your-meteo_pm-sensor"</code>. Please also include a <code>short_description</code> describing what hardware the model supports.</p></td>
 </tr>
 <tr>

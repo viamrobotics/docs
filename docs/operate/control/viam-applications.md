@@ -158,7 +158,7 @@ The `applications` field is an array of application objects with the following p
 <!-- prettier-ignore -->
 | Property     | Type   | Description |
 | ------------ | ------ | ----------- |
-| `name`       | string | The name of your application, which will be a part of the application's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [Valid application identifiers](/operate/getting-started/other-hardware/naming-modules/#valid-application-identifiers). |
+| `name`       | string | The name of your application, which will be a part of the application's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [Valid application identifiers](/operate/get-started/other-hardware/naming-modules/#valid-application-identifiers). |
 | `type` | string | The type of application (currently only `"single_machine"` is supported). |
 | `entrypoint` | string | The path to the HTML entry point for your application. The `entrypoint` field specifies the path to your application's entry point. For example: <ul><li><code>"dist/index.html"</code>: Static content rooted at the `dist` directory</li><li><code>"dist/foo.html"</code>: Static content rooted at the `dist` directory, with `foo.html` as the entry point</li><li><code>"dist/"</code>: Static content rooted at the `dist` directory (assumes `dist/index.html` exists)</li><li><code>"dist/bar/foo.html"</code>: Static content rooted at `dist/bar` with `foo.html` as the entry point</li></ul> |
 
