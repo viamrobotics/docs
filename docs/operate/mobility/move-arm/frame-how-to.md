@@ -59,11 +59,11 @@ You define it implicitly by configuring the frame of a component relative to wor
 
 1. Click **Save**.
 
-   By configuring your arm's frame like this, you have now defined the world frame as the same as the arm's base frame.
+   By configuring your arm's frame like this, you have now defined the world frame as the same as the arm's origin frame.
 
 ### Figure out which way the arm's axes point
 
-The arm's base frame is now the world frame, but you do not know which way the x, y, and z axes of the arm frame point, unless you happen to be familiar with the arm's [kinematics file](/operate/reference/kinematic-chain-config/).
+The arm's origin frame is now the world frame, but you do not know which way the x, y, and z axes of the arm frame point, unless you happen to be familiar with the arm's [kinematics file](/operate/reference/kinematic-chain-config/).
 
 1. On your arm's configuration card, click the **TEST** section (or use the **CONTROL** tab).
 
@@ -77,15 +77,15 @@ The arm's base frame is now the world frame, but you do not know which way the x
 
 ### Add a frame offset
 
-If you want to define the world frame as the corner of the table, you can now edit the arm's frame to be offset from the world frame by the distance from the table corner to the arm's base:
+If you want to define the world frame as the corner of the table, you can now edit the arm's frame to be offset from the world frame by the distance from the table corner to the arm's origin:
 
-1. Measure the X and Y distance from your designated table corner to the center of the arm's base.
+1. Measure the X and Y distance from your designated table corner to the center of the arm's origin.
 1. Edit the arm's frame configuration to set the `translation` field accordingly.
-   For example, if the arm's base is 100mm in the X direction and 200mm in the Y direction from the table corner, set the `translation` field to `"x"=100, "y"=200, "z"=0`.
+   For example, if the arm's origin is 100mm in the X direction and 200mm in the Y direction from the table corner, set the `translation` field to `"x"=100, "y"=200, "z"=0`.
    If you chose not to align the arm's axes with the world axes, be sure to use the X, Y, and Z directions of the _world_ frame to set the `translation` field.
 1. Click **Save**.
 
-   The arm's frame is now offset from the world frame by the distance from the table corner to the arm's base.
+   The arm's origin frame is now offset from the world frame by the distance from the table corner to the arm's origin frame.
 
 ## The world frame for mobile robots
 
