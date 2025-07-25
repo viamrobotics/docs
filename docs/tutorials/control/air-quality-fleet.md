@@ -217,7 +217,7 @@ If you'd like to graph your data using a Grafana dashboard, try our [Visualize D
 ### Set up your TypeScript project
 
 Complete the following steps on your laptop or desktop.
-You don't need to install or edit anything else on your machine's single-board computer (aside from `viam-server` which you already did); you'll be developing your TypeScript app from your personal computer and deploying it to Viam.
+You don't need to install or edit anything else on your machine's single-board computer (aside from `viam-server` which you already did); you'll be developing your TypeScript app from your personal computer and hosting it with Viam.
 
 {{< table >}}
 {{% tablestep number=1 %}}
