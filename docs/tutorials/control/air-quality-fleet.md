@@ -346,7 +346,6 @@ For developing your application on localhost:
    npm run start
    ```
 
-
 1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
    The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
 
