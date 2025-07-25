@@ -11,7 +11,7 @@ icon: true
 images: ["/icons/components/arm.svg"]
 modulescript: true
 aliases:
-  - "/components/arm/"
+  - /components/arm/
 hide_children: true
 outputs:
   - html
