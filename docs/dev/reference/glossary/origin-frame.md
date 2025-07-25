@@ -5,7 +5,7 @@ full_link:
 short_description: The origin frame is the frame at the base of an arm or other component that has a complex kinematics chain.
 ---
 
-The origin frame is the frame at the base of an arm, gantry, or other component that has a complex kinematics chain.
+The origin frame is the frame at the base of an arm, gantry, or other component.
 This is typically the point at the center of where the component is mounted to a table or stand.
 
 Every component that has a kinematics chain has an origin frame and an end effector frame, for example `my_arm_origin` and `my_arm`.

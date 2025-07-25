@@ -11,4 +11,4 @@ It provides a consistent basis for describing the position and orientation of ro
 All other coordinate frames (such as machine frames and component frames) are defined relative to this world frame, either directly or through a chain of transformations.
 
 The user chooses the world frame, and defines it implicitly.
-For example, if you have a robot arm mounted on a table and you define the arm's base frame as the world frame, then the arm's base frame is the origin of the world frame.
+For example, if you have a robot arm mounted on a table and you define the arm's origin frame as having no translation or orientation relative to the world frame, then the arm's origin frame is the origin of the world frame.

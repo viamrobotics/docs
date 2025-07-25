@@ -21,9 +21,9 @@ You can also take into account passive objects attached to the arm such as a cam
 ## Configure a gripper's frame
 
 If you have a gripper, you can configure it to move with the arm.
-Configure the gripper's frame to describe its position and orientation relative to the arm:
+If you haven't already configured your gripper, see [Configure a gripper].
 
-1. See [Configure a gripper](/operate/reference/components/gripper/) for instructions on configuring the gripper itself.
+Configure the gripper's frame to describe its position and orientation relative to the arm:
 
 1. In the **CONFIGURE** tab, find the gripper's configuration card.
 
@@ -33,7 +33,7 @@ Configure the gripper's frame to describe its position and orientation relative 
 
 1. Enter the gripper frame's position and orientation relative to the center of the end of the arm.
    It is up to you to decide what part of the gripper you want to use as the gripper frame.
-   It can be convenient to use a point near the center of the gripper jaws as the gripper frame.
+   It is generally convenient to use a point near the center of the gripper jaws as the gripper frame.
 
    When you make a call to the motion service to move the gripper to a location, the point you specify in this step is the part of the gripper that will move to that location.
 

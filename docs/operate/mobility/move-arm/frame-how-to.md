@@ -21,7 +21,7 @@ The world reference frame is the fixed coordinate system that serves as the refe
 You choose the world frame, in whatever way is convenient for your application.
 It generally makes sense to define the world frame's location as a point in your space that does not move and is easy to measure from.
 
-For example, if you are using a robot arm mounted to a table, it can be convenient to decide that the world frame origin is at the base of the arm, or you can define the world frame origin as one corner of the table that the arm is mounted to.
+For example, if you are using a robot arm mounted to a table, it can be convenient to decide that the world frame origin is at the base of the arm, or you can decide that the world frame origin is at one corner of the table that the arm is mounted to.
 
 You do not explicitly configure the world frame.
 You define it implicitly by configuring the frame of a component relative to world.
@@ -87,7 +87,7 @@ If you want to define the world frame as the corner of the table, you can now ed
 
    The arm's frame is now offset from the world frame by the distance from the table corner to the arm's base.
 
-## Other ways to define the world frame
+## The world frame for mobile robots
 
 If none of your components are fixed in place, it might make sense to define the world frame as the frame of the first component you add to your robot, for example, the mobile base.
 
