@@ -66,7 +66,11 @@ Create an account and log in.
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
 
-Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new {{< glossary_tooltip term_id="organization" text="organization" >}} for your air quality machine company.
+Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new {{< glossary_tooltip term_id="organization" text="organization" >}}.
+
+ This tutorial walks you through how to set up your fleet as though you were creating a company selling air quality machines.
+ The organization represents this company.
+ If you already have a different suitable organization, you can use that instead.
 Name the organization and click **Create**.
 
 {{% /tablestep %}}
