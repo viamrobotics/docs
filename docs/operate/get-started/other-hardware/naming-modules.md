@@ -2,7 +2,7 @@
 title: "Valid module identifiers"
 linkTitle: "Module naming"
 type: "docs"
-weight: 25
+weight: 35
 images: ["/registry/module-puzzle-piece.svg"]
 tags: ["modular resources", "components", "services", "registry"]
 description: "Add support for a new component or service model by writing a module in C++."
@@ -10,6 +10,8 @@ languages: ["c++"]
 viamresources: []
 platformarea: ["registry"]
 toc_hide: false
+aliases:
+  - /operate/reference/naming-modules/
 ---
 
 Each modular resource has two associated triplets: an API namespace triplet to indicate which [API](/dev/reference/apis/) it implements, and a model namespace triplet to uniquely identify the modular resource {{< glossary_tooltip term_id="model" text="model" >}}.
@@ -97,7 +99,7 @@ Determine the model name you want to use based on these requirements, then proce
 
 ## Valid application identifiers
 
-If your module includes a [Viam app](/operate/control/viam-applications/), you need to define the application name in your module's `meta.json` file.
+If your module includes a [Viam app](/operate/control/viam-applications/), you need to define the application name in your module's [`meta.json`](/operate/get-started/other-hardware/create-module/metajson/) file.
 Application names have the following requirements:
 
 - Application names must be all-lowercase.

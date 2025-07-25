@@ -1076,7 +1076,7 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-- Use the `--public-namespace` argument to supply the [namespace of your organization](/operate/reference/naming-modules/#create-a-namespace-for-your-organization).
+- Use the `--public-namespace` argument to supply the [namespace of your organization](/operate/get-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization).
   This will upload your module to the Viam Registry and share it with other users.
 - Use the `--org-id` to provide your organization ID instead, This will upload your module privately within your organization.
 
@@ -1362,7 +1362,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all organizations (name, ID, and [namespace](/operate/reference/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
+| `list` | List all organizations (name, ID, and [namespace](/operate/get-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
 | `api-key create` | Create a new organization API key. | - |
 | `support-email get` | Get the support email for an organization. | - |
 | `support-email set` | Set the support email for an organization. | - |
