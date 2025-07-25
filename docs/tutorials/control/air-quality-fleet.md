@@ -45,14 +45,15 @@ By completing this project, you will learn to:
 You can create one or more machines to measure air quality.
 For each machine, you need the following hardware:
 
-- One [SDS011 Nova PM sensors](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
+- A [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
   - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/get-started/other-hardware/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
-- A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
+- A single-board computer (SBC) [capable of running `viam-server`](/operate/get-started/setup/)
 - An appropriate power supply
 
 ## Set up one device for development
 
 In this section we'll set up one air sensing machine as our development device.
+Later in this tutorial, you will learn to provision multiple devices using {{< glossary_tooltip term_id="fragment" text="fragments" >}}.
 
 ### Create your machine
 
@@ -81,7 +82,7 @@ Use the **...** menu next to edit the location name to `Development`, then click
 Connect a PM sensor to a USB port on the machine's SBC.
 Then connect your device to power.
 
-If the computer does not already have a Viam-compatible operating system installed, follow the [operating system setup section of the Quickstart guide](/operate/get-started/setup/) to install a compatible operating system.
+If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide]/operate/get-started/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) to install a compatible operating system.
 You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 Enable serial communication so that the SBC can communicate with the air quality sensor.
@@ -278,10 +279,10 @@ npm install
 
 ### Access machines from your application
 
-Viam applications provide access to a machine by placing its API key in your local storage.
+Viam applications provide access to a machine by placing its API key into your local storage.
 You can access the data from your browser's local storage with the following code.
 
-Currently, Viam applications only provide access to single machines but in future you will be able to access entire locations or organizations.
+Currently, Viam applications only provide access to single machines but in the future you will be able to access entire locations or organizations.
 
 Create another file inside the <file>aqi-dashboard</file> folder and name it <file>main.ts</file>.
 Paste the following code into <file>main.ts</file>:
@@ -754,7 +755,7 @@ Your dashboard should now load your data.
 {{% /tablestep %}}
 {{< /table >}}
 
-## Organizing devices for third-party usage
+## Organize devices for third-party usage
 
 The following example shows how you can use {{< glossary_tooltip term_id="organization" text="organizations" >}} and {{< glossary_tooltip term_id="location" text="locations" >}} to provide users access to the right groups of machines.
 
@@ -802,7 +803,7 @@ Repeat to add the New York office: Add a new location called `New York Office`, 
 
 {{<imgproc class="imgzoom" src="/tutorials/air-quality-fleet/locations-done.png" resize="x900" declaredimensions=true alt="The New York Office fleet page. The left Locations navigation panel lists Antonia's Home and RobotsRUs, with New York Office and Oregon Office nested inside RobotsRUs." style="width:600px"  >}}
 
-## Getting machines ready for third parties
+## Get machines ready for third parties
 
 Let's continue with our fictitious company and assume you want to ship air sensing machines out to customers from your factory.
 In other words, you want to provision devices.
@@ -880,7 +881,7 @@ Create a file called <FILE>viam-defaults.json</FILE> with the following configur
 }
 ```
 
-Replace `"<FRAGMENT-ID>"` with the fragment ID from your fragment.
+Replace `<FRAGMENT-ID>` with the fragment ID from your fragment.
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
@@ -890,7 +891,7 @@ Navigate to one of the locations and create a machine.
 Select the part status dropdown to the right of your machine's name on the top of the page.
 
 Click the copy icon next to **Machine cloud credentials**.
-Paste the machine cloud credentials into a file on your hard drive called FILE>viam.json</FILE>.
+Paste the machine cloud credentials into a file on your hard drive called <FILE>viam.json</FILE>.
 
 {{< alert title="Tip: Fleet management API" color="tip" >}}
 You can create locations and machines programmatically, with the [Fleet management API](/dev/reference/apis/fleet/).
@@ -921,7 +922,7 @@ See [Provisioning](/manage/fleet/provision/setup/) for more information and trou
 ## Next steps
 
 You can now set up one or more air quality sensors for yourself or others and access them with your dashboard.
-If you are selling your air quality sensing machines, they can also use your dashboard to view _their_ data.
+If you are selling your air quality sensing machines, users can use your dashboard to view _their_ data.
 
 If you're wondering what to do next, why not set up a text or email alert when your air quality passes a certain threshold?
 For instructions on setting up an email alert, see the [Monitor Helmet Usage tutorial](/tutorials/projects/helmet/) as an example.
