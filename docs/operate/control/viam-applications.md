@@ -60,7 +60,7 @@ For developing your application on localhost:
 
 1. Run your web server.
 1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
-   The command will proxy your local app and open a browser window and navigate to `http://localhost:8000/machine/<machineHostname>` for the machine provided with --machine-id.
+   The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
 
    {{< tabs >}}
    {{% tab name="Template" %}}
@@ -217,7 +217,7 @@ Users will be prompted to authenticate with their Viam credentials before access
 
 ## Example
 
-<!-- For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/). -->
+For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
 
 For a React application that shows camera feeds for a machine, see [Viam Camera Viewer](https://github.com/viam-labs/viam-camera-viewer).
 
