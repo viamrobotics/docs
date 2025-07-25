@@ -206,7 +206,7 @@ Let's create a dashboard for its measurements next.
 
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
 For this project, you'll use it to build a page that displays air quality sensor data for a given location.
-You'll host the website as a Viam Application.
+You'll host the website with Viam as a Viam Application.
 
 The full code is available for reference on [GitHub](https://github.com/viam-labs/air-quality-fleet/blob/main/main.ts).
 
