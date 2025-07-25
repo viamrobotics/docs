@@ -23,7 +23,8 @@ cost: 200
 # 4. The reader can deploy custom front ends that end users can use to operate their machines.
 ---
 
-In this tutorial you will learn how to set up a fleet of devices for yourself or third parties to collect air quality data.
+This tutorial walks you through how to set up a fleet or air quality monitoring machines as though you were creating a company selling air quality machines.
+You will learn how to set up a fleet of devices for yourself or third parties to collect air quality data.
 You will then create a web application that shows the most recent reading for any device a user has access to.
 
 {{< alert title="Learning Goals" color="info" >}}
@@ -68,9 +69,9 @@ Create an account and log in.
 
 Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
- This tutorial walks you through how to set up your fleet as though you were creating a company selling air quality machines.
- The organization represents this company.
- If you already have a different suitable organization, you can use that instead.
+This tutorial walks you through how to set up your fleet as though you were creating a company selling air quality machines.
+The organization represents this company.
+If you already have a different suitable organization, you can use that instead.
 Name the organization and click **Create**.
 
 {{% /tablestep %}}
