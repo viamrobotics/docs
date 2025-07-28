@@ -119,7 +119,7 @@ sudo apt install jackd qjackctl libpulse-dev pulseaudio
 
 This error can be safely ignored if you do not intend to use audio on your machine.
 
-## Common errors between `viam-server` and Viam
+## Common connection errors
 
 ### Failed to connect; retrying
 
@@ -212,6 +212,18 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 1. Check for typos in the API triplet (for example `rdk:component:camera`).
 1. Check the logs for other errors.
    It may be that the instantiation of the model is failing, for other reasons such as the hardware being disconnected.
+
+### Could not connect to machine part
+
+**Full Error:** `Could not connect to machine part: error updating resources: rpc error: code = ResourceExhausted desc = too many in-flight requests`
+
+**Description:** This error occurs when there are more than 256 concurrent requests to a machine or more than 100 to a resource.
+These connections can come from modules or other scripts and apps.
+
+**Solution:** Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops.
+To adjust the per-resource limit, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` to a positive integer higher than the default, 100.
+
+## Other common errors
 
 ### Accidental deletion of machines, locations, organizations, or accounts
 
