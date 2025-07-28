@@ -64,10 +64,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(
-  machine,
-  'my_power_sensor'
-);
+const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
 const [voltage, isAc] = await powerSensor.getVoltage();
 ```
 
@@ -78,11 +75,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Voltage](https://flutter.viam.dev/viam_sdk/Voltage.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Voltage](https://flutter.viam.dev/viam_sdk/Voltage.html)\>
 
 **Example:**
 
@@ -163,10 +160,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(
-  machine,
-  'my_power_sensor'
-);
+const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
 const [current, isAc] = await powerSensor.getCurrent();
 ```
 
@@ -177,11 +171,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Current](https://flutter.viam.dev/viam_sdk/Current.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Current](https://flutter.viam.dev/viam_sdk/Current.html)\>
 
 **Example:**
 
@@ -261,10 +255,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(
-  machine,
-  'my_power_sensor'
-);
+const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
 const power = await powerSensor.getPower();
 ```
 
@@ -275,11 +266,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>
 
 **Example:**
 
@@ -307,7 +298,7 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]):  The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is_ac (bool), and power in watts (float).   .
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is_ac (bool), and power in watts (float).
 
 **Example:**
 
@@ -357,10 +348,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(
-  machine,
-  'my_power_sensor'
-);
+const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
 const readings = await powerSensor.getReadings();
 ```
 
@@ -371,11 +359,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 
@@ -483,12 +471,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 
@@ -499,11 +487,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

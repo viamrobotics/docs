@@ -70,7 +70,7 @@ camera,GetPointCloud,,get_point_cloud,NextPointCloud,pointCloud,getPointCloud
 camera,GetProperties,,get_properties,Properties,properties,getProperties
 ## TED: Camera in Go SDK doesn't appear to implement (inherit) these:
 camera,DoCommand,,do_command,DoCommand,doCommand,doCommand
-camera,GetGeometries,,get_geometries,,,getGeometries
+camera,GetGeometries,,get_geometries,Geometries,,getGeometries
 ## HACK:  proto for close, manually mapping:
 camera,GetResourceName,,get_resource_name,,getResourceName,
 camera,Close,,close,Close,,
@@ -98,6 +98,7 @@ gantry,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gantry,Stop,,stop,Stop,stop,stop
 gantry,Reconfigure,,,Reconfigure,,
 gantry,DoCommand,,do_command,DoCommand,doCommand,doCommand
+gantry,GetKinematics,,,Kinematics,,
 gantry,GetResourceName,,get_resource_name,,getResourceName,
 gantry,Close,,close,Close,,
 
@@ -115,11 +116,13 @@ gripper,Open,,open,Open,open,open
 gripper,Grab,,grab,Grab,grab,grab
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
+gripper,IsHoldingSomething,,is_holding_something,IsHoldingSomething,isHoldingSomething,
 gripper,Stop,,stop,Stop,stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
-gripper,GetKinematics,,get_kinematics,Kinematics,,
+gripper,GetKinematics,,get_kinematics,,,
 gripper,Reconfigure,,,Reconfigure,,
 gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
+gripper,GetKinematics,,,Kinematics,getKinematics,
 gripper,GetResourceName,,get_resource_name,,getResourceName,
 gripper,Close,,close,Close,,
 
@@ -350,6 +353,7 @@ app,GetRoverRentalRobots,,,,,
 app,GetRobotParts,,get_robot_parts,,,getRobotParts
 app,GetRobotPart,,get_robot_part,,,getRobotPart
 app,GetRobotPartLogs,,get_robot_part_logs,,,getRobotPartLogs
+app,GetRobotPartByNameAndLocation,,,,,getRobotPartByNameAndLocation
 app,TailRobotPartLogs,,tail_robot_part_logs,,,tailRobotPartLogs
 app,GetRobotPartHistory,,get_robot_part_history,,,getRobotPartHistory
 app,UpdateRobotPart,,update_robot_part,,,updateRobotPart
@@ -369,6 +373,7 @@ app,UpdateRobotMetadata,,update_robot_metadata,,,updateRobotMetadata
 app,UpdateRobotPartMetadata,,update_robot_part_metadata,,,updateRobotPartMetadata
 app,ListFragments,,list_fragments,,,listFragments
 app,ListMachineFragments,,,,,listMachineFragments
+app,ListMachineSummaries,,,,,listMachineSummaries
 app,GetFragment,,get_fragment,,,getFragment
 app,CreateFragment,,create_fragment,,,createFragment
 app,UpdateFragment,,update_fragment,,,updateFragment
@@ -395,6 +400,7 @@ app,RotateKey,,rotate_key,,,rotateKey
 app,ListKeys,,list_keys,,,listKeys
 app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,,createKeyFromExistingKeyAuthorizations
 app,GetAppContent,,,,,getAppContent
+app,GetAppBranding,,,,,getAppBranding
 
 ## Billing
 billing,GetCurrentMonthUsage,,get_current_month_usage,,,getCurrentMonthUsage
@@ -465,20 +471,20 @@ mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,,,deleteCom
 ## Omitting some Flutter methods from w until we can determine what they do
 ## ( counterpart description text in other SDKs, as other SDKs implement these)
 robot,GetOperations,,get_operations,,,getOperations
-robot,GetMachineStatus,,get_machine_status,MachineStatus,,getMachineStatus
+robot,GetMachineStatus,,get_machine_status,MachineStatus,getMachineStatus,getMachineStatus
 robot,GetSessions,,,,,getSessions
 robot,ResourceNames,,,ResourceNames,,resourceNames
 robot,ResourceRPCSubtypes,,,,,resourceRPCSubtypes
 robot,CancelOperation,,cancel_operation,,,cancelOperation
 robot,BlockForOperation,,block_for_operation,,,blockForOperation
-robot,FrameSystemConfig,,get_frame_system_config,FrameSystemConfig,,frameSystemConfig
-robot,TransformPose,,transform_pose,TransformPose,,transformPose
-robot,TransformPCD,,,TransformPointCloud,,transformPCD
+robot,FrameSystemConfig,,get_frame_system_config,,,frameSystemConfig
+robot,TransformPose,,transform_pose,,,transformPose
+robot,TransformPCD,,,,,transformPCD
 robot,StreamStatus,,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
 robot,GetModelsFromModules,,get_models_from_modules,GetModelsFromModules,getModelsFromModules,getModelsFromModules
 robot,StopAll,,stop_all,StopAll,,stopAll
-robot,RestartModule,,,RestartModule,,restartModule
+robot,RestartModule,,restart_module,RestartModule,,restartModule
 robot,StartSession,,,,,
 robot,SendSessionHeartbeat,,,,,
 robot,Log,,log,,,

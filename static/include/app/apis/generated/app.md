@@ -1440,7 +1440,7 @@ Get the user-defined metadata for a location.
 
 **Parameters:**
 
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which the user-defined metadata is associated. You can obtain your location ID from the location's page.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which the user-defined metadata is associated. You can obtain your location ID from the location’s page.
 
 **Returns:**
 
@@ -1487,7 +1487,7 @@ Update the user-defined metadata for a location.
 
 **Parameters:**
 
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from the location's page.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from the location’s page.
 - `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
 
 **Returns:**
@@ -1804,6 +1804,36 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetRobotPartByNameAndLocation
+
+Query a specific robot part by name and location id.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `name` (string) (required): The name of the requested robot part.
+- `locationId` (string) (required): The ID of the location of the requested robot part.
+
+**Returns:**
+
+- (Promise<[GetRobotPartByNameAndLocationResponse](https://ts.viam.dev/classes/appApi.GetRobotPartByNameAndLocationResponse.html)>): The robot part.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPart = await appClient.getRobotPartByNameAndLocation(
+  '<YOUR-ROBOT-PART-NAME>',
+  '<YOUR-LOCATION-ID>'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartbynameandlocation).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### TailRobotPartLogs
 
 Get an asynchronous iterator that receives live machine part logs.
@@ -1839,7 +1869,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `id` (string) (required): The ID of the requested robot part.
 - `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level
+- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error\-level
   logs should be returned. Defaults to true.
 
 **Returns:**
@@ -2012,7 +2042,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>): The ID of the newly-created robot part.
+- (Promise<string>): The ID of the newly\-created robot part.
 
 **Example:**
 
@@ -2454,7 +2484,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly-modified robot object.
+- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly\-modified robot object.
 
 **Example:**
 
@@ -2795,6 +2825,40 @@ const fragments = await appClient.listMachineFragments(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinefragments).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListMachineSummaries
+
+Lists machine summaries for an organization, optionally filtered by fragment IDs, location IDs, and limit.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+- `fragmentIds` (string) (optional): Optional list of fragment IDs to filter machines.
+- `locationIds` (string) (optional): Optional list of location IDs to filter machines.
+- `limit` (number) (optional): Optional max number of machines to return.
+
+**Returns:**
+
+- (Promise<[LocationSummary](https://ts.viam.dev/classes/appApi.LocationSummary.html)[]>): The list of location summaries.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const summaries = await appClient.listMachineSummaries(
+  'orgId',
+  ['frag1'],
+  ['loc1'],
+  10
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinesummaries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4284,6 +4348,36 @@ const appContent = await appClient.getAppContent(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappcontent).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetAppBranding
+
+Retrieves the app branding for an organization or app.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `publicNamespace` (string) (required): The public namespace of the organization.
+- `name` (string) (required): The name of the app.
+
+**Returns:**
+
+- (Promise<[GetAppBrandingResponse](https://ts.viam.dev/classes/appApi.GetAppBrandingResponse.html)>): The branding information for the app.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const branding = await appClient.getAppBranding(
+  '<YOUR-PUBLIC-NAMESPACE>',
+  '<YOUR-APP-NAME>'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappbranding).
 
 {{% /tab %}}
 {{< /tabs >}}
