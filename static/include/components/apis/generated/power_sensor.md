@@ -64,7 +64,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
 const [voltage, isAc] = await powerSensor.getVoltage();
 ```
 
@@ -160,7 +163,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
 const [current, isAc] = await powerSensor.getCurrent();
 ```
 
@@ -255,7 +261,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
 const power = await powerSensor.getPower();
 ```
 
@@ -348,7 +357,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const powerSensor = new VIAM.PowerSensorClient(machine, "my_power_sensor");
+const powerSensor = new VIAM.PowerSensorClient(
+  machine,
+  'my_power_sensor'
+);
 const readings = await powerSensor.getReadings();
 ```
 
@@ -471,12 +483,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: "value" },
-  }),
+    myCommand: { key: 'value' },
+  })
 );
 ```
 

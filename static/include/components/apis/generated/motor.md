@@ -70,7 +70,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Set the power to 40% forwards
 await motor.setPower(0.4);
@@ -168,7 +168,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Spin the motor at 75 RPM
 await motor.setRPM(75);
@@ -275,7 +275,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Turn the motor 7.2 revolutions at 60 RPM
 await motor.goFor(60, 7.2);
@@ -380,7 +380,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Turn the motor to 8.3 revolutions from home at 75 RPM
 await motor.goTo(75, 8.3);
@@ -479,7 +479,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Set the current position as the new home position with no offset
 await motor.resetZeroPosition(0.0);
@@ -582,11 +582,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Get the current position of the motor
 const position = await motor.getPosition();
-console.log("Position:", position);
+console.log('Position:', position);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getposition).
@@ -687,12 +687,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Report a dictionary mapping optional properties to whether it is supported by
 // this motor
 const properties = await motor.getProperties();
-console.log("Properties:", properties);
+console.log('Properties:', properties);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getproperties).
@@ -793,12 +793,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Check whether the motor is currently running
 const [isPowered, powerPct] = await motor.isPowered();
-console.log("Powered:", isPowered);
-console.log("Power percentage:", powerPct);
+console.log('Powered:', isPowered);
+console.log('Power percentage:', powerPct);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#ispowered).
@@ -899,11 +899,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Check whether the motor is currently moving
 const moving = await motor.isMoving();
-console.log("Moving:", moving);
+console.log('Moving:', moving);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#ismoving).
@@ -998,7 +998,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const motor = new VIAM.MotorClient(machine, "my_motor");
+const motor = new VIAM.MotorClient(machine, 'my_motor');
 
 // Stop the motor
 await motor.stop();
@@ -1124,12 +1124,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: "value" },
-  }),
+    myCommand: { key: 'value' },
+  })
 );
 ```
 

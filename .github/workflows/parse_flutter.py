@@ -1,6 +1,7 @@
 from parser_utils import make_soup
 from markdownify import markdownify as md
 
+
 ## Language-specific resource name overrides:
 flutter_resource_overrides = {
     "generic_component": "Generic",
