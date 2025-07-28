@@ -35,8 +35,9 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "" "build-platform-apps" >}}
+{{< how-to-expand "Build apps" "4" "BEGINNER-FRIENDLY" "" "build-platform-apps" >}}
 {{< cards >}}
+{{% card link="/operate/control/viam-applications/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/operate/control/mobile-app/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
