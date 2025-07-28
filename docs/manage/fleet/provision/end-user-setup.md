@@ -146,6 +146,9 @@ The [Flutter Provisioning package](https://github.com/viamrobotics/viam_flutter_
 When developing your own application, if you support both Bluetooth and WiFi Hotspot provisioning, make the app choose the best available method.
 We recommend using Bluetooth by default for a smoother setup experience.
 
+The Flutter Provisioning package supports bluetooth tethering, that is sharing your mobile devices's internet connection with the machine that will be provisioned.
+Bluetooth tethering is slow and we recommend you use WiFi where possible.
+
 ### App Development Considerations
 
 When developing mobile apps with Bluetooth provisioning, ensure your app requests appropriate Bluetooth permissions.

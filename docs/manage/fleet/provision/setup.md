@@ -106,6 +106,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "hotspot_password": "<PASSWORD>", # password for the hotspot
     "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
     "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
+    "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests for tethering without prompt
     "bluetooth_adapter_name": "", # optional: specify Bluetooth adapter for machines with multiple adapters
     "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
@@ -130,6 +131,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "hotspot_password": "skywalker123",
     "disable_bt_provisioning": false,
     "disable_wifi_provisioning": false,
+    "bluetooth_trust_all": false,
     "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
