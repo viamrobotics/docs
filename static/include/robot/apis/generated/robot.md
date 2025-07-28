@@ -103,6 +103,25 @@ const machineStatus = await machine.getMachineStatus();
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmachinestatus).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[GetMachineStatusResponse](https://flutter.viam.dev/viam_protos.robot.robot/GetMachineStatusResponse-class.html)\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var machineStatus = await machine.getMachineStatus();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/getMachineStatus.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetSessions
@@ -571,7 +590,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)\>\>
 
 **Example:**
 
@@ -656,6 +675,30 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Reload a module as if its config changed.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The id matching the module_id field of the registry module in your part configuration.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The name matching the name field of the local/registry module in your part configuration.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- (GRPCError): If a module can’t be found matching the provided ID or name.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await machine.restart_module(id="namespace:module:model", name="my_model")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.restart_module).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -797,7 +840,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)\>
 
 **Example:**
 
@@ -952,7 +995,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)\>
 
 **Example:**
 
@@ -1046,7 +1089,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -1162,7 +1205,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 

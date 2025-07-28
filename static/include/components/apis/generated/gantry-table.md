@@ -10,5 +10,6 @@
 | [`Stop`](/dev/reference/apis/components/gantry/#stop) | Stop all motion of the gantry. |
 | [`Reconfigure`](/dev/reference/apis/components/gantry/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/dev/reference/apis/components/gantry/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`GetKinematics`](/dev/reference/apis/components/gantry/#getkinematics) | Get the kinematics information associated with the gantry. |
 | [`GetResourceName`](/dev/reference/apis/components/gantry/#getresourcename) | Get the `ResourceName` for this gantry with the given name. |
 | [`Close`](/dev/reference/apis/components/gantry/#close) | Safely shut down the resource and prevent further use. |
