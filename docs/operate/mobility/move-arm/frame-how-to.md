@@ -7,7 +7,6 @@ layout: "docs"
 description: "Decide on and configure the frames of your arm, its workspace, and other components."
 ---
 
-Frames can be confusing.
 This guide will help you decide on a coordinate system for your workspace, and then determine how the frames of your arm and other components relate to that workspace.
 
 Once you have configured frames for all your components, Viam will keep track of the positions and orientations as your robot moves, so you can plan motion in terms of a consistent coordinate system.
@@ -73,7 +72,7 @@ The arm's origin frame is now the world frame, but you do not know which way the
 1. If the directions do not match your intended world frame, you can edit the arm's `orientation` field to rotate the arm frame to match your intended world frame.
    For example, if the arm's x-axis points to the right, but you want it to point to the left, you can set the `orientation` field to `"x"=0, "y"=0, "z"=1, "th"=180`.
 
-1. For your reference, mark the X, Y, and Z axes of the world frame on your workspace with tape or a marker.
+1. For your reference, we recommend you mark the X, Y, and Z axes of the world frame on your workspace with tape or a marker.
 
 ### Add a frame offset
 
