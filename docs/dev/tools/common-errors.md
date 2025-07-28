@@ -221,7 +221,7 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 These connections can come from modules or other scripts and apps.
 
 **Solution:** Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops.
-To adjust the per-resource limit, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` to a positive integer higher than the default, 100.
+To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` environment variable on your machine to a positive integer higher than the default, 100.
 
 ## Other common errors
 
