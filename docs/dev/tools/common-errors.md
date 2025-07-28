@@ -215,9 +215,9 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 
 ### Could not connect to machine part
 
-**Full Error:** `Could not connect to machine part: error updating resources: rpc error: code = ResourceExhausted desc = too many in-flight requests`
+**Full Error:** `Could not connect to machine part: error updating resources: rpc error: code = ResourceExhausted desc = exceeded request limit 100 on resource viam.robot.v1.RobotService`
 
-**Description:** This error occurs when there are more than 256 concurrent requests to a machine or more than 100 to a resource.
+**Description:** This error occurs when there are more than 100 concurrent requests to a resource.
 These connections can come from modules or other scripts and apps.
 
 **Solution:** Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops.
