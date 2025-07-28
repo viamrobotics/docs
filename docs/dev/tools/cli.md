@@ -904,6 +904,31 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
 
+### `metadata`
+
+The `metadata` command allows you to read organization, location, machine, and machine part metadata.
+
+```sh {class="command-line" data-prompt="$"}
+viam metadata read --part-id=<part-id>
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `read` | Read organization, location, machine, and machine part metadata. | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--location-id` | The ID of the location to read metadata from. | `read` | Optional |
+| `--machine-id` | The ID of the machine to read metadata from. | `read` | Optional |
+| `--org-id` | The ID of the org to read metadata from. | `read` | Optional |
+| `--part-id` | The ID of the part to read metadata from. | `read` | Optional |
+
 ### `module`
 
 The `module` command allows to you to work with {{< glossary_tooltip term_id="module" text="modules" >}}.
