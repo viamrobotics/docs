@@ -101,4 +101,5 @@ jobs:
         env:
           TYPESENSE_API_KEY_R: ${{ secrets.TYPESENSE_API_KEY_R }}
           VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+          VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
           TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
