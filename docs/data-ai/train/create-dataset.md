@@ -46,23 +46,7 @@ viam dataset create --org-id=<org-id> --name=<name>
 
 To create a dataset, pass a unique dataset name and organization ID to [`data_client.create_dataset`](/dev/reference/apis/data-client/#createdataset):
 
-```python
-viam_client = await connect()
-data_client = viam_client.data_client
-
-print("Creating dataset...")
-
-try:
-    dataset_id = await data_client.create_dataset(
-        name="<dataset_name>",
-        organization_id="<org_id>",
-    )
-    print(f"Created dataset: {dataset_id}")
-except Exception as e:
-    print("Error creating dataset. It may already exist.")
-    print(f"Exception: {e}")
-    raise
-```
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="32-35" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

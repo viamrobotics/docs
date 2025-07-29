@@ -1,0 +1,156 @@
+name: Test Code Samples
+
+concurrency:
+  group: pullrequest-untrusted-code-snippets-python-${{ github.event.number }}
+  cancel-in-progress: true
+
+on:
+  push:
+    paths:
+      - 'static/include/examples/**'
+      - '.github/workflows/test-code-samples.yml'
+  pull_request_target:
+    paths:
+      - 'static/include/examples/**'
+      - '.github/workflows/test-code-samples.yml'
+  schedule:
+    # Run every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  test-code-samples:
+    runs-on: ubuntu-latest
+    # Allow trusted PRs and other events
+    if: github.repository_owner == 'viamrobotics'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install viam-sdk
+        pip install asyncio
+        pip install pytest
+        pip install pytest-asyncio
+
+    - name: Find and list Python files
+      run: |
+        echo "Found Python files in examples directory:"
+        find static/include/examples -name "*.py" -type f | sort
+
+    - name: Debug environment variables
+      run: |
+        echo "VIAM_API_KEY: ${#VIAM_API_KEY}"
+        echo "VIAM_API_KEY_ID: ${#VIAM_API_KEY_ID}"
+        echo "TEST_ORG_ID: ${#TEST_ORG_ID}"
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+
+    - name: Check if PR is from trusted source
+      id: check-trusted
+      run: |
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          # Check if the PR is from the same repository (not a fork)
+          if [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]]; then
+            echo "trusted=true" >> $GITHUB_OUTPUT
+          else
+            echo "trusted=false" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "trusted=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Test Python code samples
+      # Only run tests when we have access to secrets
+      if: github.repository_owner == 'viamrobotics' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name == github.repository))
+      run: |
+
+        echo "TEST_ORG_ID: $TEST_ORG_ID"
+
+        # Find all Python files in the examples directory
+        python_files=($(find static/include/examples -name "*.py" -type f | xargs))
+
+        # Initialize counters
+        total_files=0
+        passed_files=0
+        failed_files=0
+
+        echo "Starting to test Python code samples..."
+        echo "========================================"
+
+        for file in "${python_files[@]}"; do
+          echo "Testing: $file"
+          total_files=$((total_files + 1))
+
+          # Run the test with environment variables explicitly passed
+          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" python "$file"; then
+            passed_files=$((passed_files + 1))
+            echo "✅ PASSED: $file"
+          else
+            failed_files=$((failed_files + 1))
+            echo "❌ FAILED: $file"
+          fi
+
+          echo "----------------------------------------"
+        done
+
+        # Summary
+        echo "========================================"
+        echo "TEST SUMMARY:"
+        echo "Total files tested: $total_files"
+        echo "Passed: $passed_files"
+        echo "Failed: $failed_files"
+        echo "Skipped: $((total_files - passed_files - failed_files))"
+
+        # Save results for later use
+        echo "total=$total_files" >> $GITHUB_OUTPUT
+        echo "passed=$passed_files" >> $GITHUB_OUTPUT
+        echo "failed=$failed_files" >> $GITHUB_OUTPUT
+
+        # Exit with failure if any tests failed
+        if [ $failed_files -gt 0 ]; then
+          exit 1
+        fi
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+    - name: Create Jira ticket
+      if: failure() && github.event_name == 'schedule'
+      id: create
+      uses: atlassian/gajira-create@v3
+      env:
+        GITHUB_RUN_ID: ${{ github.run_id }}
+      with:
+        project: DOCS
+        issuetype: Task
+        summary: Code Sample Tests Failed - Scheduled Run
+        description: |
+          Code sample tests failed during scheduled run.
+
+          **Run Details:**
+          - Run ID: ${{ github.run_id }}
+          - Repository: ${{ github.repository }}
+          - Branch: ${{ github.ref }}
+          - Commit: ${{ github.sha }}
+          - Triggered by: Scheduled run
+
+          **Test Results:**
+          - Total files tested: ${{ steps.test-code-samples.outputs.total }}
+          - Passed: ${{ steps.test-code-samples.outputs.passed }}
+          - Failed: ${{ steps.test-code-samples.outputs.failed }}
+
+          For more details, see: https://github.com/viamrobotics/docs/actions/runs/${{ github.run_id }}
+    - name: Log created Jira issue
+      if: failure() && github.event_name == 'schedule'
+      run: echo "Issue ${{ steps.create.outputs.issue }} was created for scheduled run failure"
