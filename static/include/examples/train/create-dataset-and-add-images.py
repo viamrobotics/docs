@@ -11,10 +11,9 @@ from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
 # Configuration constants – replace with your actual values
-DATASET_NAME = ""  # a unique, new name for the dataset you want to create
-ORG_ID = ""  # your organization ID, find in your organization settings
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
+ORG_ID = ""  # your organization ID, find in your organization settings
 PART_ID = ""  # the part ID of the binary data you want to add to the dataset
 DATASET_ID = ""  # the ID of the dataset you want to add the image to
 MAX_MATCHES = 50  # the maximum number of binary data objects to fetch
@@ -25,15 +24,6 @@ ORG_ID = os.environ["TEST_ORG_ID"]
 API_KEY = os.environ["VIAM_API_KEY"]
 API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
 PART_ID = "824b6570-7b1d-4622-a19d-37c472dba467"
-
-if not ORG_ID or not API_KEY or not API_KEY_ID:
-    print("Environment variables not set")
-    if ORG_ID:
-        print("ORG_ID is set")
-        print(ORG_ID)
-    exit(1)
-else:
-    print(ORG_ID)
 # :remove-end:
 
 async def connect() -> ViamClient:
