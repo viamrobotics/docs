@@ -71,3 +71,32 @@ serve-dev-future: setup
 
 prettierfix: setup
 	./node_modules/prettier/bin/prettier.cjs --check docs/**/*.md --fix --write
+
+test-code-snippets:
+	bluehawk snip -o static/include/examples-generated/ static/include/examples/
+	@echo "Starting to test Python code samples..."
+	@echo "========================================"
+	@total_files=0; \
+	passed_files=0; \
+	failed_files=0; \
+	for file in static/include/examples/**/*.py; do \
+		if [ -f "$$file" ]; then \
+			echo "Testing: $$file"; \
+			total_files=$$((total_files + 1)); \
+			if VIAM_API_KEY="$$VIAM_API_KEY" VIAM_API_KEY_ID="$$VIAM_API_KEY_ID" TEST_ORG_ID="$$TEST_ORG_ID" python "$$file"; then \
+				passed_files=$$((passed_files + 1)); \
+				echo "✅ PASSED: $$file"; \
+			else \
+				failed_files=$$((failed_files + 1)); \
+				echo "❌ FAILED: $$file"; \
+			fi; \
+			echo "----------------------------------------"; \
+		fi; \
+	done; \
+	echo "========================================"; \
+	echo "TEST SUMMARY:"; \
+	echo "Total files tested: $$total_files"; \
+	echo "Passed: $$passed_files"; \
+	echo "Failed: $$failed_files"; \
+	echo "Skipped: $$((total_files - passed_files - failed_files))"
+

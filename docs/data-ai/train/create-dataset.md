@@ -181,28 +181,7 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-```python
-# Connect to Viam client
-dial_options = DialOptions(
-    credentials=Credentials(
-        type="api-key",
-        payload=API_KEY,
-    ),
-    auth_entity=API_KEY_ID,
-)
-
-viam_client = await ViamClient.create_from_dial_options(dial_options)
-data_client = viam_client.data_client
-
-# Add image to dataset
-await data_client.add_binary_data_to_dataset_by_ids(
-    binary_ids=[EXISTING_IMAGE_ID],
-    dataset_id=EXISTING_DATASET_ID
-)
-
-print("Image added to dataset successfully")
-viam_client.close()
-```
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-image.snippet.create-dataset-and-add-image.py" lang="python" class="line-numbers linkable-line-numbers" data-line="45-48" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -316,7 +295,7 @@ This will select both images as well as the entire range of images between those
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="32-35" >}}
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="70-75" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
