@@ -21,6 +21,8 @@ on:
 jobs:
   test-code-samples:
     runs-on: ubuntu-latest
+    # Add this condition to only run when secrets are available
+    if: github.repository_owner == 'viamrobotics' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
 
     steps:
     - name: Checkout repository
@@ -55,7 +57,8 @@ jobs:
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
 
     - name: Test Python code samples
-      if: github.repository_owner == 'viamrobotics'
+      # Only run tests when we have access to secrets
+      if: github.repository_owner == 'viamrobotics' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
       run: |
 
         echo "TEST_ORG_ID: $TEST_ORG_ID"
