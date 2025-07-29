@@ -44,11 +44,19 @@ jobs:
         echo "Found Python files in examples directory:"
         find static/include/examples -name "*.py" -type f | sort
 
+    - name: Debug environment variables
+      run: |
+        echo "VIAM_API_KEY: ${#VIAM_API_KEY}"
+        echo "VIAM_API_KEY_ID: ${#VIAM_API_KEY_ID}"
+        echo "TEST_ORG_ID: ${#TEST_ORG_ID}"
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+
     - name: Test Python code samples
       if: github.repository_owner == 'viamrobotics'
       run: |
-        # Create a temporary directory for test results
-        mkdir -p test-results
 
         echo "TEST_ORG_ID: $TEST_ORG_ID"
 
