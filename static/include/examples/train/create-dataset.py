@@ -15,10 +15,19 @@ API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
 
 # :remove-start:
-DATASET_NAME = "test-" + time.strftime("%Y%m%d%H%M%S")  # a unique, new name for the dataset you want to create
-ORG_ID = os.environ["TEST_ORG_ID"]  # your organization ID, find in your organization settings
-API_KEY = os.environ["VIAM_API_KEY"]  # API key, find or create in your organization settings
-API_KEY_ID = os.environ["VIAM_API_KEY_ID"]  # API key ID, find or create in your organization settings
+DATASET_NAME = "test-" + time.strftime("%Y%m%d%H%M%S")
+ORG_ID = os.environ["TEST_ORG_ID"]
+API_KEY = os.environ["VIAM_API_KEY"]
+API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
+
+if not ORG_ID or not API_KEY or not API_KEY_ID:
+    print("Environment variables not set")
+    if ORG_ID:
+        print("ORG_ID is set")
+        print(ORG_ID)
+    exit(1)
+else:
+    print(ORG_ID)
 # :remove-end:
 
 async def connect() -> ViamClient:

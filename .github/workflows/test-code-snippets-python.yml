@@ -96,7 +96,7 @@ jobs:
       env:
         VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
-        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+        TEST_ORG_ID: "83da9642-3785-4db3-9d60-a3662a03bb04"
     - name: Create Jira ticket
       if: failure() && github.event_name == 'schedule'
       id: create
