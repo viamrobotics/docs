@@ -119,10 +119,9 @@ gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gripper,IsHoldingSomething,,is_holding_something,IsHoldingSomething,isHoldingSomething,
 gripper,Stop,,stop,Stop,stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
-gripper,GetKinematics,,get_kinematics,,,
 gripper,Reconfigure,,,Reconfigure,,
 gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
-gripper,GetKinematics,,,Kinematics,getKinematics,
+gripper,GetKinematics,,get_kinematics,Kinematics,getKinematics,
 gripper,GetResourceName,,get_resource_name,,getResourceName,
 gripper,Close,,close,Close,,
 
