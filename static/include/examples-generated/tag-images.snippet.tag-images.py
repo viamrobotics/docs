@@ -1,17 +1,19 @@
 import asyncio
 
-from datetime import datetime
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
-from viam.components.camera import Camera
+from viam.media.video import ViamImage
 from viam.robot.client import RobotClient
+from viam.services.vision import VisionClient
+from grpclib.exceptions import GRPCError
 
 # Configuration constants – replace with your actual values
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
 MACHINE_ADDRESS = ""  # the address of the machine you want to capture images from
-CAMERA_NAME = ""  # the name of the camera you want to capture images from
-PART_ID = ""  # the part ID of the binary data you want to add to the dataset
+CLASSIFIER_NAME = ""  # the name of the classifier you want to use
+BINARY_DATA_ID = ""  # the ID of the image you want to label
+
 
 async def connect() -> ViamClient:
     """Establish a connection to the Viam client using API credentials."""
@@ -36,27 +38,33 @@ async def main() -> int:
     """Main execution function."""
     viam_client = await connect()
     data_client = viam_client.data_client
-    machine_client = await connect_machine()
+    machine = await connect_machine()
 
-    camera = Camera.from_robot(machine_client, CAMERA_NAME)
+    classifier = VisionClient.from_robot(machine, CLASSIFIER_NAME)
 
-    # Capture image
-    image_frame = await camera.get_image()
+    # Get image from data in Viam
+    data = await data_client.binary_data_by_ids([BINARY_DATA_ID])
+    binary_data = data[0]
 
-    # Upload data
-    file_id = await data_client.binary_data_capture_upload(
-        part_id=PART_ID,
-        component_type="camera",
-        component_name=CAMERA_NAME,
-        method_name="GetImage",
-        data_request_times=[datetime.utcnow(), datetime.utcnow()],
-        file_extension=".jpg",
-        binary_data=image_frame.data
-    )
-    print(f"Uploaded image: {file_id}")
+    # Convert binary data to ViamImage
+    image = ViamImage(binary_data.binary, binary_data.metadata.capture_metadata.mime_type)
+
+    # Get tags using the image
+    tags = await classifier.get_classifications(image=image, image_format=binary_data.metadata.capture_metadata.mime_type, count=2)
+
+    if not len(tags):
+        print("No tags found")
+        return 1
+    else:
+        for tag in tags:
+            await data_client.add_tags_to_binary_data_by_ids(
+                tags=[tag.class_name],
+                binary_ids=[BINARY_DATA_ID]
+            )
+            print(f"Added tag to image: {tag}")
 
     viam_client.close()
-    await machine_client.close()
+    await machine.close()
 
     return 0
 

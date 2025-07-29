@@ -6,10 +6,9 @@ from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
 # Configuration constants – replace with your actual values
-DATASET_NAME = ""  # a unique, new name for the dataset you want to create
-ORG_ID = ""  # your organization ID, find in your organization settings
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
+ORG_ID = ""  # your organization ID, find in your organization settings
 PART_ID = ""  # the part ID of the binary data you want to add to the dataset
 DATASET_ID = ""  # the ID of the dataset you want to add the image to
 MAX_MATCHES = 50  # the maximum number of binary data objects to fetch

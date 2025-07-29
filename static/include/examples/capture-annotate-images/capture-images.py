@@ -14,26 +14,15 @@ from viam.robot.client import RobotClient
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
 MACHINE_ADDRESS = ""  # the address of the machine you want to capture images from
-PART_ID = ""  # the part ID of the binary data you want to add to the dataset
 CAMERA_NAME = ""  # the name of the camera you want to capture images from
-
+PART_ID = ""  # the part ID of the binary data you want to add to the dataset
 # :remove-start:
 ORG_ID = os.environ["TEST_ORG_ID"]
 API_KEY = os.environ["VIAM_API_KEY"]
 API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
 MACHINE_ADDRESS = "auto-machine-main.pg5q3j3h95.viam.cloud"
-PART_ID = "deb8782c-7b48-4d35-812d-2caa94b61f77"
 CAMERA_NAME = "camera-1"
-
-if not ORG_ID or not API_KEY or not API_KEY_ID:
-    print("Environment variables not set")
-    if ORG_ID:
-        print("ORG_ID is set")
-        print(ORG_ID)
-    exit(1)
-else:
-    print(ORG_ID)
-
+PART_ID = "824b6570-7b1d-4622-a19d-37c472dba467"
 # :remove-end:
 
 async def connect() -> ViamClient:

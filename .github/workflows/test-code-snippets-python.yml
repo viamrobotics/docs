@@ -1,9 +1,5 @@
 name: Test Code Samples
 
-concurrency:
-  group: pullrequest-untrusted-code-snippets-python-${{ github.event.number }}
-  cancel-in-progress: true
-
 on:
   push:
     branches:
