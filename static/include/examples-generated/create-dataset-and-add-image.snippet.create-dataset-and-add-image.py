@@ -8,6 +8,7 @@ DATASET_NAME = ""  # a unique, new name for the dataset you want to create
 ORG_ID = ""  # your organization ID, find in your organization settings
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
+DATASET_ID = ""  # the ID of the dataset you want to add the image to
 BINARY_DATA_ID = ""  # the ID of the image you want to add to the dataset
 
 
@@ -28,23 +29,11 @@ async def main() -> int:
     viam_client = await connect()
     data_client = viam_client.data_client
 
-    print("Creating dataset...")
-    try:
-        dataset_id = await data_client.create_dataset(
-            name=DATASET_NAME,
-            organization_id=ORG_ID,
-        )
-        print(f"Created dataset: {dataset_id}")
-    except Exception as e:
-        print("Error creating dataset. It may already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        print(f"Exception: {e}")
-        return 1
 
     print("Adding image to dataset...")
     await data_client.add_binary_data_to_dataset_by_ids(
         binary_ids=[BINARY_DATA_ID],
-        dataset_id=dataset_id
+        dataset_id=DATASET_ID
     )
 
     viam_client.close()

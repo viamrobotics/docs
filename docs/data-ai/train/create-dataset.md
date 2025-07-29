@@ -181,7 +181,7 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-image.snippet.create-dataset-and-add-image.py" lang="python" class="line-numbers linkable-line-numbers" data-line="45-48" >}}
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-image.snippet.create-dataset-and-add-image.py" lang="python" class="line-numbers linkable-line-numbers" data-line="34-37" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -295,7 +295,7 @@ This will select both images as well as the entire range of images between those
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="70-75" >}}
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="58-63" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

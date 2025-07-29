@@ -73,6 +73,7 @@ prettierfix: setup
 	./node_modules/prettier/bin/prettier.cjs --check docs/**/*.md --fix --write
 
 test-code-snippets:
+	rm -rf static/include/examples/**/.DS_Store
 	bluehawk snip -o static/include/examples-generated/ static/include/examples/
 	@echo "Starting to test Python code samples..."
 	@echo "========================================"

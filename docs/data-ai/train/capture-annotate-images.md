@@ -53,47 +53,7 @@ To view images added to your dataset, go to the **DATA** page, open the [**DATAS
 To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`data_client.binary_data_capture_upload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-```python
-CAMERA_NAME = "<camera-name>"
-MACHINE_ADDRESS = "<machine-address.viam.cloud>"
-
-dial_options = DialOptions(
-    credentials=Credentials(
-        type="api-key",
-        payload=API_KEY,
-    ),
-    auth_entity=API_KEY_ID,
-)
-
-robot_opts = RobotClient.Options.with_api_key(
-    api_key=API_KEY,
-    api_key_id=API_KEY_ID
-)
-
-viam_client = await ViamClient.create_from_dial_options(dial_options)
-data_client = viam_client.data_client
-
-robot_client = await RobotClient.at_address(ROBOT_ADDRESS, robot_opts)
-camera = Camera.from_robot(robot_client, CAMERA_NAME)
-
-# Capture image
-image_frame = await camera.get_image()
-
-# Upload data
-file_id = await data_client.binary_data_capture_upload(
-    part_id=PART_ID,
-    component_type="camera",
-    component_name=CAMERA_NAME,
-    method_name="GetImage",
-    data_request_times=[datetime.utcnow(), datetime.utcnow()],
-    file_extension=".jpg",
-    binary_data=image_frame
-)
-
-# Cleanup
-await robot_client.close()
-viam_client.close()
-```
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="44-56" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

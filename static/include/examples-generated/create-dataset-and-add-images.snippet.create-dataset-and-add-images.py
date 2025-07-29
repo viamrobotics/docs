@@ -11,6 +11,7 @@ ORG_ID = ""  # your organization ID, find in your organization settings
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
 PART_ID = ""  # the part ID of the binary data you want to add to the dataset
+DATASET_ID = ""  # the ID of the dataset you want to add the image to
 MAX_MATCHES = 50  # the maximum number of binary data objects to fetch
 
 
@@ -54,30 +55,15 @@ async def main() -> int:
 
     matching_data = await fetch_binary_data_ids(data_client, PART_ID)
 
-    print("Creating dataset...")
-    try:
-        dataset_id = await data_client.create_dataset(
-            name=DATASET_NAME,
-            organization_id=ORG_ID,
-        )
-        print(f"Created dataset: {dataset_id}")
-    except Exception as e:
-        print("Error creating dataset. It may already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        print(f"Exception: {e}")
-        return 1
-
     await data_client.add_binary_data_to_dataset_by_ids(
         binary_ids=[
             obj.metadata.binary_data_id for obj in matching_data
         ],
-        dataset_id=dataset_id
+        dataset_id=DATASET_ID
     )
 
-    print("Added files to dataset.")
-    print(
-        f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}"
-    )
+    print("Added files to dataset:")
+    print(f"https://app.viam.com/data/datasets?id={DATASET_ID}")
 
     viam_client.close()
     return 0
