@@ -21,9 +21,9 @@ CAMERA_NAME = ""  # the name of the camera you want to capture images from
 ORG_ID = os.environ["TEST_ORG_ID"]
 API_KEY = os.environ["VIAM_API_KEY"]
 API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
-MACHINE_ADDRESS = "red-brook-main.cj53ft1jy1.viam.cloud"
-PART_ID = "824b6570-7b1d-4622-a19d-37c472dba467"
-CAMERA_NAME = "cam"
+MACHINE_ADDRESS = "auto-machine-main.pg5q3j3h95.viam.cloud"
+PART_ID = "deb8782c-7b48-4d35-812d-2caa94b61f77"
+CAMERA_NAME = "camera-1"
 
 if not ORG_ID or not API_KEY or not API_KEY_ID:
     print("Environment variables not set")
