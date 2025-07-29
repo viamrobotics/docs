@@ -97,13 +97,6 @@ jobs:
         VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
-    - name: Upload test results
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results-3.9
-        path: test-results/
-        retention-days: 7
     - name: Create Jira ticket
       if: failure() && github.event_name == 'schedule'
       id: create
