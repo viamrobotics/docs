@@ -31,8 +31,8 @@ jobs:
 
         # Start viam-server in background and save PID
         sudo curl -H "key_id:1030f25a-f4f2-4872-9762-e33fa1e0444d" -H "key:$TEST_MACHINE_KEY" "https://app.viam.com/api/json1/config?id=deb8782c-7b48-4d35-812d-2caa94b61f77&client=true" -o /etc/viam.json
-        cat /etc/viam.json
-        curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --debug &
+        uname -m
+        curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --aix-install --debug &
         VIAM_PID=$!
         echo "VIAM_PID=$VIAM_PID" >> $GITHUB_ENV
         echo "Started viam-server with PID: $VIAM_PID"
