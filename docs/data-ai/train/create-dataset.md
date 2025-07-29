@@ -181,28 +181,7 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-```python
-# Connect to Viam client
-dial_options = DialOptions(
-    credentials=Credentials(
-        type="api-key",
-        payload=API_KEY,
-    ),
-    auth_entity=API_KEY_ID,
-)
-
-viam_client = await ViamClient.create_from_dial_options(dial_options)
-data_client = viam_client.data_client
-
-# Add image to dataset
-await data_client.add_binary_data_to_dataset_by_ids(
-    binary_ids=[EXISTING_IMAGE_ID],
-    dataset_id=EXISTING_DATASET_ID
-)
-
-print("Image added to dataset successfully")
-viam_client.close()
-```
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-image.snippet.create-dataset-and-add-image.py" lang="python" class="line-numbers linkable-line-numbers" data-line="34-37" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -316,101 +295,7 @@ This will select both images as well as the entire range of images between those
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-```python
-import asyncio
-from typing import List, Optional
-
-from viam.rpc.dial import DialOptions, Credentials
-from viam.app.viam_client import ViamClient
-from viam.utils import create_filter
-
-# Configuration constants – replace with your actual values
-DATASET_NAME = ""  # a unique, new name for the dataset you want to create
-ORG_ID = ""  # your organization ID, find in your organization settings
-PART_ID = ""  # ID of machine that captured images, find in machine config
-API_KEY = ""  # API key, find or create in your organization settings
-API_KEY_ID = ""  # API key ID, find or create in your organization settings
-
-# Adjust the maximum number of images to add to the dataset
-MAX_MATCHES = 500
-
-
-async def connect() -> ViamClient:
-    """Establish a connection to the Viam client using API credentials."""
-    dial_options = DialOptions(
-        credentials=Credentials(
-            type="api-key",
-            payload=API_KEY,
-        ),
-        auth_entity=API_KEY_ID,
-    )
-    return await ViamClient.create_from_dial_options(dial_options)
-
-
-async def fetch_binary_data_ids(data_client, part_id: str) -> List[str]:
-    """Fetch binary data metadata and return a list of BinaryData objects."""
-    data_filter = create_filter(part_id=part_id)
-    all_matches = []
-    last: Optional[str] = None
-
-    print("Getting data for part...")
-
-    while len(all_matches) < MAX_MATCHES:
-        print("Fetching more data...")
-        data, _, last = await data_client.binary_data_by_filter(
-            data_filter,
-            limit=50,
-            last=last,
-            include_binary_data=False,
-        )
-        if not data:
-            break
-        all_matches.extend(data)
-
-    return all_matches
-
-
-async def main() -> int:
-    """Main execution function."""
-    viam_client = await connect()
-    data_client = viam_client.data_client
-
-    matching_data = await fetch_binary_data_ids(data_client, PART_ID)
-
-    print("Creating dataset...")
-
-    try:
-        dataset_id = await data_client.create_dataset(
-            name=DATASET_NAME,
-            organization_id=ORG_ID,
-        )
-        print(f"Created dataset: {dataset_id}")
-    except Exception as e:
-        print("Error creating dataset. It may already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        print(f"Exception: {e}")
-        return 1
-
-    print("Adding data to dataset...")
-
-    await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=[
-            obj.metadata.binary_data_id for obj in matching_data
-        ],
-        dataset_id=dataset_id
-    )
-
-    print("Added files to dataset.")
-    print(
-        f"See dataset: https://app.viam.com/data/datasets?id={dataset_id}"
-    )
-
-    viam_client.close()
-    return 0
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="58-63" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

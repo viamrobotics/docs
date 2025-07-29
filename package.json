@@ -24,6 +24,7 @@
     "prettier": "^3.2.5"
   },
   "dependencies": {
+    "bluehawk": "^1.6.0",
     "hugo": "^0.0.3"
   }
 }
