@@ -9,7 +9,7 @@ on:
     paths:
       - 'static/include/examples/**'
       - '.github/workflows/test-code-samples.yml'
-  pull_request:
+  pull_request_target:
     paths:
       - 'static/include/examples/**'
       - '.github/workflows/test-code-samples.yml'
@@ -21,8 +21,8 @@ on:
 jobs:
   test-code-samples:
     runs-on: ubuntu-latest
-    # Add this condition to only run when secrets are available
-    if: github.repository_owner == 'viamrobotics' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    # Allow trusted PRs and other events
+    if: github.repository_owner == 'viamrobotics'
 
     steps:
     - name: Checkout repository
@@ -56,9 +56,23 @@ jobs:
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
 
+    - name: Check if PR is from trusted source
+      id: check-trusted
+      run: |
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          # Check if the PR is from the same repository (not a fork)
+          if [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]]; then
+            echo "trusted=true" >> $GITHUB_OUTPUT
+          else
+            echo "trusted=false" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "trusted=true" >> $GITHUB_OUTPUT
+        fi
+
     - name: Test Python code samples
       # Only run tests when we have access to secrets
-      if: github.repository_owner == 'viamrobotics' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+      if: github.repository_owner == 'viamrobotics' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name == github.repository))
       run: |
 
         echo "TEST_ORG_ID: $TEST_ORG_ID"
