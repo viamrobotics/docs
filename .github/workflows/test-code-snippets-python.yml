@@ -28,6 +28,10 @@ jobs:
 
     - name: Start viam-server in background
       run: |
+        # Fix permissions for /opt/viam directory
+        sudo mkdir -p /opt/viam
+        sudo chmod 0755 /opt/viam
+
         # Start viam-server in background and save PID
         sudo /bin/sh -c "VIAM_API_KEY_ID=$VIAM_API_KEY_ID VIAM_API_KEY=$VIAM_API_KEY VIAM_PART_ID=$VIAM_PART_ID; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)" &
         VIAM_PID=$!
