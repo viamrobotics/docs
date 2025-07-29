@@ -295,7 +295,7 @@ This will select both images as well as the entire range of images between those
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="58-63" >}}
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="57-62" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
