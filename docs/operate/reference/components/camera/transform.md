@@ -150,7 +150,9 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 ### Crop
 
-The Crop transform trims an image to a rectangular area specified by two points: the top left (`(x_min, y_min)`) and the bottom right (`(x_max, y_max)`). You can provide these points as integer pixel values or as decimal proportions of the image's width and height. The origin (`(0, 0)`) occupies the top left pixel of the image; X values increase as you move right, Y values increase as you move down.
+The Crop transform trims an image to a rectangular area specified by two points: the top left (`(x_min, y_min)`) and the bottom right (`(x_max, y_max)`).
+You can provide these points as integer pixel values or as decimal proportions of the image's width and height.
+The origin (`(0, 0)`) occupies the top left pixel of the image; X values increase as you move right, Y values increase as you move down.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -163,9 +165,9 @@ The Crop transform trims an image to a rectangular area specified by two points:
       "type": "crop",
       "attributes": {
         "x_min_px": <int|float>,
-        "y_min_px": <int> or <float>,
-        "x_max_px": <int> or <float>,
-        "y_max_px": <int> or <float>,
+        "y_min_px": <int|float>,
+        "x_max_px": <int|float>,
+        "y_max_px": <int|float>,
         "overlay_crop_box": <bool>
       }
     }
