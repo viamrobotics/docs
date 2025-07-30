@@ -147,13 +147,25 @@ jobs:
           echo "Testing: $file"
           total_files_go=$((total_files_go + 1))
 
-          # Run the test with environment variables explicitly passed
-          if (cd "$$file_dir" && VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$$(basename "$$file")"); then
-            passed_files_go=$((passed_files_go + 1))
-            echo "✅ PASSED: $file"
+          # Get the directory and filename more safely
+          file_dir=$(dirname "$file")
+          file_name=$(basename "$file")
+
+          echo "File directory: $file_dir"
+          echo "File name: $file_name"
+
+          # Check if directory exists before changing to it
+          if [ -d "$file_dir" ]; then
+            if (cd "$file_dir" && VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$file_name"); then
+              passed_files_go=$((passed_files_go + 1))
+              echo "✅ PASSED: $file"
+            else
+              failed_files_go=$((failed_files_go + 1))
+              echo "❌ FAILED: $file"
+            fi
           else
             failed_files_go=$((failed_files_go + 1))
-            echo "❌ FAILED: $file"
+            echo "❌ FAILED: Directory does not exist: $file_dir"
           fi
 
           echo "----------------------------------------"
