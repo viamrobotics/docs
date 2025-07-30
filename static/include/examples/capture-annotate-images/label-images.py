@@ -19,13 +19,11 @@ DETECTOR_NAME = ""  # the name of the detector you want to use
 BINARY_DATA_ID = ""  # the ID of the image you want to label
 
 # :remove-start:
-ORG_ID = os.environ["TEST_ORG_ID"]
 API_KEY = os.environ["VIAM_API_KEY"]
 API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
 MACHINE_ADDRESS = "auto-machine-main.pg5q3j3h95.viam.cloud"
 DETECTOR_NAME = "detector-1"
 BINARY_DATA_ID = "83da9642-3785-4db3-9d60-a3662a03bb04/cj53ft1jy1/fJFzEoxrv459YUxbH3gC9YNzgm8SfEjyLt70aNJbL1GxOovyU7gf69vQSCcMNNV5"
-PART_ID = "824b6570-7b1d-4622-a19d-37c472dba467"
 # :remove-end:
 
 async def connect() -> ViamClient:

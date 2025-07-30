@@ -55,7 +55,7 @@ async def main() -> int:
     # Capture image
     image_frame = await camera.get_image()
 
-    # Upload data
+    # Upload image
     file_id = await data_client.binary_data_capture_upload(
         part_id=PART_ID,
         component_type="camera",

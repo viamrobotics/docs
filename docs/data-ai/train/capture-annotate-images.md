@@ -61,64 +61,7 @@ Pass that image and an appropriate set of metadata to [`data_client.binary_data_
 To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-```go
-const (
-    CAMERA_NAME      = "<camera-name>"
-    MACHINE_ADDRESS  = "<machine-address.viam.cloud>"
-    API_KEY          = "<api-key>"
-    API_KEY_ID       = "<api-key-id>"
-    PART_ID          = "<part-id>"
-)
-
-ctx := context.Background()
-machine, err := client.New(
-    ctx,
-    MACHINE_ADDRESS,
-    logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
-        API_KEY_ID,
-        rpc.Credentials{
-            Type:    rpc.CredentialsTypeAPIKey,
-            Payload: API_KEY,
-        },
-    )),
-)
-if err != nil {
-    return "", err
-}
-defer machine.Close(ctx)
-
-viamClient, err := client.New(ctx, MACHINE_ADDRESS, logger)
-if err != nil {
-    log.Fatal(err)
-}
-defer viamClient.Close(ctx)
-
-dataClient := viamClient.DataClient()
-
-camera, err := camera.FromRobot(machine, CAMERA_NAME)
-if err != nil {
-    return "", err
-}
-
-// Capture image
-img, _, err := camera.GetImage(ctx)
-if err != nil {
-    return "", err
-}
-
-// Upload binary data
-now := time.Now().UTC()
-fileID, err := dataClient.BinaryDataCaptureUpload(ctx, app.BinaryDataCaptureUploadOptions{
-    PartID:            PART_ID,
-    ComponentType:     "camera",
-    ComponentName:     CAMERA_NAME,
-    MethodName:        "GetImage",
-    DataRequestTimes:  []time.Time{now, now},
-    FileExtension:     ".jpg",
-    BinaryData:        img,
-})
-```
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="55-73" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -290,63 +233,7 @@ Then, pass the tags and image IDs to [`data_client.add_tags_to_binary_data_by_id
 Use an ML model to generate tags for an image or set of images.
 Then, pass the tags and image IDs to [`DataClient.AddTagsToBinaryDataByIDs`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
 
-```go
-ctx := context.Background()
-
-viamClient, err := client.New(ctx, "<machine_address>", logger)
-if err != nil {
-    log.Fatal(err)
-}
-defer viamClient.Close(ctx)
-
-myDetector, err := vision.FromRobot(viamClient, "<detector_name>")
-if err != nil {
-    log.Fatal(err)
-}
-
-dataClient := viamClient.DataClient()
-
-// Get the captured data for a camera
-result, err := myDetector.CaptureAllFromCamera(ctx, "<camera_name>", &vision.CaptureAllFromCameraRequest{
-    ReturnImage:      true,
-    ReturnDetections: true,
-})
-if err != nil {
-    log.Fatal(err)
-}
-
-image := result.Image
-detections := result.Detections
-
-tags := []string{"tag1", "tag2"}
-
-myFilter := &datamanager.Filter{
-    ComponentName:   "camera-1",
-    OrganizationIDs: []string{"<org-id>"},
-}
-
-binaryResult, err := dataClient.BinaryDataByFilter(ctx, &datamanager.BinaryDataByFilterRequest{
-    Filter:            myFilter,
-    Limit:             20,
-    IncludeBinaryData: false,
-})
-if err != nil {
-    log.Fatal(err)
-}
-
-var myIDs []string
-for _, obj := range binaryResult.BinaryMetadata {
-    myIDs = append(myIDs, obj.Metadata.BinaryDataID)
-}
-
-_, err = dataClient.AddTagsToBinaryDataByIDs(ctx, &datamanager.AddTagsRequest{
-    Tags:          tags,
-    BinaryDataIDs: myIDs,
-})
-if err != nil {
-    log.Fatal(err)
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/tag-images.snippet.tag-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -481,47 +368,7 @@ Then, separately pass each bounding box and the image ID to [`data_client.add_bo
 Use an ML model to generate bounding boxes for an image.
 Then, separately pass each bounding box and the image ID to [`DataClient.AddBoundingBoxToImageByID`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
 
-```go
-ctx := context.Background()
-
-viamClient, err := client.New(ctx, "<machine_address>", logger)
-if err != nil {
-    log.Fatal(err)
-}
-defer viamClient.Close(ctx)
-
-myDetector, err := vision.FromRobot(viamClient, "<detector_name>")
-if err != nil {
-    log.Fatal(err)
-}
-
-dataClient := viamClient.DataClient()
-
-// Get the captured data for a camera
-result, err := myDetector.CaptureAllFromCamera(ctx, "<camera_name>", &vision.CaptureAllFromCameraRequest{
-    ReturnImage:      true,
-    ReturnDetections: true,
-})
-if err != nil {
-    log.Fatal(err)
-}
-
-image := result.Image
-detections := result.Detections
-
-for _, detection := range detections {
-    bboxID, err := dataClient.AddBoundingBoxToImageByID(ctx, &datamanager.AddBoundingBoxRequest{
-        BinaryID:        "<YOUR-BINARY-DATA-ID>",
-        Label:           detection.Label,
-        XMinNormalized:  detection.BoundingBox.Min.X,
-        YMinNormalized:  detection.BoundingBox.Min.Y,
-        XMaxNormalized:  detection.BoundingBox.Max.X,
-        YMaxNormalized:  detection.BoundingBox.Max.Y,
-    })
-
-    fmt.Printf("Added bounding box ID: %s for detection: %s\n", bboxID, detection.ClassName)
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/label-images.snippet.label-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -609,6 +456,11 @@ Check the annotation accuracy in the **DATA** tab, then re-train your ML model o
 {{% tab name="Python" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/capture-annotate-dataset.snippet.capture-annotate-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="" >}}
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/capture-annotate-dataset.snippet.capture-annotate-dataset.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
