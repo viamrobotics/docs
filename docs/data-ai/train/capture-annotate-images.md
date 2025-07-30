@@ -61,7 +61,7 @@ Pass that image and an appropriate set of metadata to [`data_client.binary_data_
 To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="55-73" >}}
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="56-75" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
