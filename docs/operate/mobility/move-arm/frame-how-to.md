@@ -66,6 +66,11 @@ The arm's origin frame is now the world frame, but you do not know which way the
 
 1. On your arm's configuration card, click the **TEST** section (or use the **CONTROL** tab).
 
+   {{% alert title="Caution" color="caution" %}}
+Moving the arm with the **TEST** or **CONTROL** panel sends commands using the arm API, which does not take obstacles or other components into account.
+Be careful not to hit people or objects with the arm.
+{{% /alert %}}
+
 1. Move the arm in each direction and note which way the arm moves.
    For example, under the **MoveToPosition** section, move the arm in the positive Z direction.
    If it moves upwards, then you know that the z-axis of the arm frame points upwards.
