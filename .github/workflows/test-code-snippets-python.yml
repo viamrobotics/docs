@@ -67,42 +67,30 @@ jobs:
         echo "Found Python files in examples directory:"
         find static/include/examples -name "*.py" -type f | sort
 
-    - name: Debug environment variables
-      run: |
-        echo "VIAM_API_KEY: ${#VIAM_API_KEY}"
-        echo "VIAM_API_KEY_ID: ${#VIAM_API_KEY_ID}"
-        echo "TEST_ORG_ID: ${#TEST_ORG_ID}"
-      env:
-        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
-        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
-        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
-
     - name: Test Python code samples
       if: github.repository_owner == 'viamrobotics'
       run: |
-        echo "TEST_ORG_ID: $TEST_ORG_ID"
-
         # Find all Python files in the examples directory
         python_files=($(find static/include/examples -name "*.py" -type f | xargs))
 
         # Initialize counters
-        total_files=0
-        passed_files=0
-        failed_files=0
+        total_files_py=0
+        passed_files_py=0
+        failed_files_py=0
 
         echo "Starting to test Python code samples..."
         echo "========================================"
 
         for file in "${python_files[@]}"; do
           echo "Testing: $file"
-          total_files=$((total_files + 1))
+          total_files_py=$((total_files_py + 1))
 
           # Run the test with environment variables explicitly passed
           if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" python "$file"; then
-            passed_files=$((passed_files + 1))
+            passed_files_py=$((passed_files_py + 1))
             echo "✅ PASSED: $file"
           else
-            failed_files=$((failed_files + 1))
+            failed_files_py=$((failed_files_py + 1))
             echo "❌ FAILED: $file"
           fi
 
@@ -112,18 +100,80 @@ jobs:
         # Summary
         echo "========================================"
         echo "TEST SUMMARY:"
-        echo "Total files tested: $total_files"
-        echo "Passed: $passed_files"
-        echo "Failed: $failed_files"
-        echo "Skipped: $((total_files - passed_files - failed_files))"
+        echo "Total files tested: $total_files_py"
+        echo "Passed: $passed_files_py"
+        echo "Failed: $failed_files_py"
+        echo "Skipped: $((total_files_py - passed_files_py - failed_files_py))"
 
         # Save results for later use
-        echo "total=$total_files" >> $GITHUB_OUTPUT
-        echo "passed=$passed_files" >> $GITHUB_OUTPUT
-        echo "failed=$failed_files" >> $GITHUB_OUTPUT
+        echo "total=$total_files_py" >> $GITHUB_OUTPUT
+        echo "passed=$passed_files_py" >> $GITHUB_OUTPUT
+        echo "failed=$failed_files_py" >> $GITHUB_OUTPUT
 
         # Exit with failure if any tests failed
-        if [ $failed_files -gt 0 ]; then
+        if [ $failed_files_py -gt 0 ]; then
+          exit 1
+        fi
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: static/include/examples/go.mod
+
+    - name: Find and list Go files
+      run: |
+        echo "Found Go files in examples directory:"
+        find static/include/examples -name "*.go" -type f | sort
+
+    - name: Test Go code samples
+      if: github.repository_owner == 'viamrobotics'
+      run: |
+        # Find all Go files in the examples directory
+        go_files=($(find static/include/examples -name "*.go" -type f | xargs))
+
+        # Initialize counters
+        total_files_go=0
+        passed_files_go=0
+        failed_files_go=0
+
+        echo "Starting to test Go code samples..."
+        echo "========================================"
+
+        for file in "${go_files[@]}"; do
+          echo "Testing: $file"
+          total_files_go=$((total_files_go + 1))
+
+          # Run the test with environment variables explicitly passed
+          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$file"; then
+            passed_files_go=$((passed_files_go + 1))
+            echo "✅ PASSED: $file"
+          else
+            failed_files_go=$((failed_files_go + 1))
+            echo "❌ FAILED: $file"
+          fi
+
+          echo "----------------------------------------"
+        done
+
+        # Summary
+        echo "========================================"
+        echo "TEST SUMMARY:"
+        echo "Total files tested: $total_files_go"
+        echo "Passed: $passed_files_go"
+        echo "Failed: $failed_files_go"
+        echo "Skipped: $((total_files_go - passed_files_go - failed_files_go))"
+
+        # Save results for later use
+        echo "total=$total_files_go" >> $GITHUB_OUTPUT
+        echo "passed=$passed_files_go" >> $GITHUB_OUTPUT
+        echo "failed=$failed_files_go" >> $GITHUB_OUTPUT
+
+        # Exit with failure if any tests failed
+        if [ $failed_files_go -gt 0 ]; then
           exit 1
         fi
       env:

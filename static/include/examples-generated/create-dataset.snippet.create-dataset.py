@@ -6,8 +6,8 @@ from viam.app.viam_client import ViamClient
 # Configuration constants – replace with your actual values
 API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
-DATASET_NAME = ""  # a unique, new name for the dataset you want to create
 ORG_ID = ""  # your organization ID, find in your organization settings
+DATASET_NAME = ""  # a unique, new name for the dataset you want to create
 
 
 async def connect() -> ViamClient:

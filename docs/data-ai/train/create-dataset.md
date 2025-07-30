@@ -53,31 +53,7 @@ To create a dataset, pass a unique dataset name and organization ID to [`data_cl
 
 To create a dataset, pass a unique dataset name and organization ID to [`DataClient.CreateDataset`](/dev/reference/apis/data-client/#createdataset):
 
-```go
-ctx := context.Background()
-viamClient, err := client.New(ctx, "<machine_address>", logger)
-if err != nil {
-    log.Fatal(err)
-}
-defer viamClient.Close(ctx)
-
-dataClient := viamClient.DataClient()
-
-fmt.Println("Creating dataset...")
-
-datasetID, err := dataClient.CreateDataset(ctx, &datamanager.CreateDatasetRequest{
-    Name:           "<dataset_name>",
-    OrganizationID: "<org_id>",
-})
-
-if err != nil {
-    fmt.Println("Error creating dataset. It may already exist.")
-    fmt.Printf("Exception: %v\n", err)
-    return
-}
-
-fmt.Printf("Created dataset: %s\n", datasetID)
-```
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.go" lang="go" class="line-numbers linkable-line-numbers" data-line="30" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -181,7 +157,7 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-image.snippet.create-dataset-and-add-image.py" lang="python" class="line-numbers linkable-line-numbers" data-line="32-35" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="32-35" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -189,28 +165,7 @@ Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/referenc
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`DataClient.AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-```go
-ctx := context.Background()
-viamClient, err := client.New(ctx, "<machine_address>", logger)
-if err != nil {
-    log.Fatal(err)
-}
-defer viamClient.Close(ctx)
-
-dataClient := viamClient.DataClient()
-
-// Add image to dataset
-err = dataClient.AddBinaryDataToDatasetByIDs(
-    context.Background(),
-    []string{ExistingImageID},
-    ExistingDatasetID,
-)
-if err != nil {
-    return fmt.Errorf("failed to add image to dataset: %w", err)
-}
-
-fmt.Println("Image added to dataset successfully")
-```
+{{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.go" lang="go" class="line-numbers linkable-line-numbers" data-line="30-34" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -295,136 +250,14 @@ This will select both images as well as the entire range of images between those
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-{{< read-code-snippet file="/static/include/examples-generated/create-dataset-and-add-images.snippet.create-dataset-and-add-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="57-62" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-machine-images-to-dataset.snippet.add-machine-images-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="57-62" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "log"
-
-    "go.viam.com/rdk/rpc"
-    "go.viam.com/utils"
-    "go.viam.com/rdk/app"
-    "go.viam.com/rdk/app/data"
-)
-
-// Configuration constants - replace with your actual values
-const (
-    DATASET_NAME = "" // a unique, new name for the dataset you want to create
-    ORG_ID       = "" // your organization ID, find in your organization settings
-    PART_ID      = "" // ID of machine that captured target images, find in machine config
-    API_KEY      = "" // API key, find or create in your organization settings
-    API_KEY_ID   = "" // API key ID, find or create in your organization settings
-    MAX_MATCHES  = 500
-)
-
-func connect(ctx context.Context) (*app.ViamClient, error) {
-    client, err := app.NewViamClientWithAPIKey(ctx, API_KEY, API_KEY_ID)
-    if err != nil {
-        return nil, fmt.Errorf("failed to create client: %w", err)
-    }
-    return client, nil
-}
-
-func fetchBinaryDataIDs(
-                ctx context.Context,
-                dataClient data.DataServiceClient,
-                partID string) ([]*data.BinaryData, error) {
-    filter := &data.Filter{
-        PartId: partID,
-    }
-
-    var allMatches []*data.BinaryData
-    var last string
-
-    fmt.Println("Getting data for part...")
-
-    for len(allMatches) < MAX_MATCHES {
-        fmt.Println("Fetching more data...")
-
-        resp, err := dataClient.BinaryDataByFilter(ctx, &data.BinaryDataByFilterRequest{
-            DataRequest: &data.DataRequest{
-                Filter:            filter,
-                Limit:             50,
-                Last:              last,
-                IncludeBinaryData: false,
-            },
-        })
-        if err != nil {
-            return nil, fmt.Errorf("failed to fetch binary data: %w", err)
-        }
-
-        if len(resp.Data) == 0 {
-            break
-        }
-
-        allMatches = append(allMatches, resp.Data...)
-        last = resp.Last
-    }
-
-    return allMatches, nil
-}
-
-func main() {
-    ctx := context.Background()
-
-    viamClient, err := connect(ctx)
-    if err != nil {
-        log.Fatalf("Connection failed: %v", err)
-    }
-    defer viamClient.Close()
-
-    dataClient := viamClient.DataClient
-
-    matchingData, err := fetchBinaryDataIDs(ctx, dataClient, PART_ID)
-    if err != nil {
-        log.Fatalf("Failed to fetch binary data: %v", err)
-    }
-
-    fmt.Println("Creating dataset...")
-
-    datasetResp, err := dataClient.CreateDataset(ctx, &data.CreateDatasetRequest{
-        Name:           DATASET_NAME,
-        OrganizationId: ORG_ID,
-    })
-    if err != nil {
-        fmt.Println("Error creating dataset. It may already exist.")
-        fmt.Println("See: https://app.viam.com/data/datasets")
-        fmt.Printf("Exception: %v\n", err)
-        return
-    }
-
-    datasetID := datasetResp.Id
-    fmt.Printf("Created dataset: %s\n", datasetID)
-
-    fmt.Println("Adding data to dataset...")
-
-    var binaryIDs []string
-    for _, obj := range matchingData {
-        binaryIDs = append(binaryIDs, obj.Metadata.Id)
-    }
-
-    _, err = dataClient.AddBinaryDataToDatasetByIds(ctx, &data.AddBinaryDataToDatasetByIdsRequest{
-        BinaryIds: binaryIDs,
-        DatasetId: datasetID,
-    })
-    if err != nil {
-        log.Fatalf("Failed to add binary data to dataset: %v", err)
-    }
-
-    fmt.Println("Added files to dataset.")
-    fmt.Printf("See dataset: https://app.viam.com/data/datasets?id=%s\n", datasetID)
-}
-
-```
+{{< read-code-snippet file="/static/include/examples-generated/add-machine-images-to-dataset.snippet.add-machine-images-to-dataset.go" lang="go" class="line-numbers linkable-line-numbers" data-line="88-92" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
