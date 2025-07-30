@@ -148,7 +148,7 @@ jobs:
           total_files_go=$((total_files_go + 1))
 
           # Run the test with environment variables explicitly passed
-          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$file"; then
+          if (cd "$$file_dir" && VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$$(basename "$$file")"); then
             passed_files_go=$((passed_files_go + 1))
             echo "✅ PASSED: $file"
           else
