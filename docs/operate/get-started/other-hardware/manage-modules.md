@@ -117,7 +117,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 
 {{% /expand %}}
 
-{{< expand "Python module example" >}}
+{{< expand "Python module script examples" >}}
 
 The following code snippet demonstrates an example `setup.sh` for a Python module:
 
