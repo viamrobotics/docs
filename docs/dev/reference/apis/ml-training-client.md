@@ -15,12 +15,6 @@ date: "2024-09-16"
 
 The ML training API allows you to get information about and cancel ML training jobs running on Viam.
 
-{{% alert title="Support Notice" color="note" %}}
-
-ML training client API methods are only available in the Python SDK.
-
-{{% /alert %}}
-
 The ML training client API supports the following methods:
 
 {{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
