@@ -34,7 +34,6 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    """Main execution function."""
     viam_client = await connect()
     data_client = viam_client.data_client
 

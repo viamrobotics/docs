@@ -60,7 +60,6 @@ async def fetch_binary_data_ids(data_client, part_id: str) -> List[str]:
     return all_matches
 
 async def main() -> int:
-    """Main execution function."""
     viam_client = await connect()
     data_client = viam_client.data_client
 

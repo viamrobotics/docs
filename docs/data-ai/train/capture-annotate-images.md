@@ -192,8 +192,8 @@ You can either manually add annotations through the Viam web UI, or add annotati
 You must annotate images in order to train an ML model on them.
 Viam supports two ways to annotate an image:
 
-- Add tags to whole images (classification)
-- Label bounding boxes around objects within images (object detection)
+- [Add tags to whole images (classification)](#add-tags-to-an-image)
+- [Label bounding boxes around objects within images (object detection)](#label-objects-within-an-image)
 
 ### Add tags to an image
 
