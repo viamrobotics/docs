@@ -31,12 +31,6 @@ With it you can
 - manage permissions and authorization
 - create and manage fragments
 
-{{% alert title="Support Notice" color="note" %}}
-
-Fleet management API methods are only available in the Python SDK.
-
-{{% /alert %}}
-
 The fleet management API supports the following methods:
 
 {{< readfile "/static/include/app/apis/generated/app-table.md" >}}
