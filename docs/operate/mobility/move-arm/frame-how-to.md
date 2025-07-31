@@ -96,7 +96,7 @@ If you want to define the world frame as the corner of the table, you can now ed
 If none of your components are fixed in place, the world frame is less meaningful.
 The motion service will not automatically keep track of the relationship between the robot and its environment in this case.
 The relative location of the robot is tracked by the SLAM service or the navigation service, depending on which method you use.
-	
+
 You can set the origin frame of one of your components (such as a {{< glossary_tooltip term_id="base" text="base" >}}) to `0, 0, 0` with respect to world, and parent other component frames to that component so that the motion service can prevent collisions between components.
 The SLAM and navigation services keep track of objects parented to the base, but they do not take into account objects parented to world (other than the base itself).
 
