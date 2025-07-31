@@ -100,7 +100,7 @@ For more information, see [Rename a module](/operate/get-started/other-hardware/
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
 The frame tab no longer exists.
-To add a frame to a component, click the **+ Add Frame** button on the component's configuration card.
+To add a frame to a component, click the **+ Add frame** button on the component's configuration card.
 
 {{% /changelog %}}
 
