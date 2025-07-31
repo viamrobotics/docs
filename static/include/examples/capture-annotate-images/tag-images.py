@@ -48,7 +48,6 @@ async def connect_machine() -> RobotClient:
     return await RobotClient.at_address(MACHINE_ADDRESS, machine_opts)
 
 async def main() -> int:
-    """Main execution function."""
     viam_client = await connect()
     data_client = viam_client.data_client
     machine = await connect_machine()

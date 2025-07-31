@@ -13,7 +13,9 @@ aliases:
   - /data-ai/ai/create-dataset/
 ---
 
-To train a machine learning model, you will need a dataset.
+To train a machine learning model, you will need a dataset that meets the following conditions:
+
+{{< readfile "/static/include/data/dataset-requirements.md" >}}
 
 ## Create a dataset
 
@@ -46,7 +48,7 @@ viam dataset create --org-id=<org-id> --name=<name>
 
 To create a dataset, pass a unique dataset name and organization ID to [`data_client.create_dataset`](/dev/reference/apis/data-client/#createdataset):
 
-{{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="32-35" >}}
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="31-34" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -106,8 +108,7 @@ try {
 {{% /tab %}}
 {{< /tabs >}}
 
-Finish creating a dataset by adding annotated images to it.
-You can capture new images or add existing images:
+You can now add images to your dataset.
 
 ## Add to a dataset
 
@@ -157,7 +158,7 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-{{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="32-35" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="31-34" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -250,7 +251,7 @@ This will select both images as well as the entire range of images between those
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-{{< read-code-snippet file="/static/include/examples-generated/add-machine-images-to-dataset.snippet.add-machine-images-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="57-62" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-machine-images-to-dataset.snippet.add-machine-images-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="56-61" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -477,3 +478,23 @@ Future<int> main() async {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Use an existing dataset
+
+If you have used the `viam dataset export` command to export a dataset or if you've been given a dataset from someone else you can use the following script to import the dataset.
+If you have a dataset that was not exported with Viam, you will need to make changes to this script.
+
+{{% read-code-snippet file="/static/include/examples-generated/use-existing-dataset.snippet.use-existing-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line=" " %}}
+
+{{% expand "Looking for test datasets?" %}}
+We have two datasets you can use for testing, one with shapes and the other with a wooden figure:
+
+{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="width:400px" alt="The shapes dataset." class="imgzoom fill aligncenter shadow" >}}
+
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" style="width:400px" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" class="imgzoom fill aligncenter" resize="1400x" >}}
+
+1. [Download the shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip) or [download the wooden figure dataset](https://storage.googleapis.com/docs-blog/dataset-figure.zip).
+1. Unzip the download.
+1. Use the above script.
+
+{{% /expand%}}
