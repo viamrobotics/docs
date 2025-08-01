@@ -4,10 +4,11 @@ title: "Alert on inferences"
 weight: 60
 layout: "docs"
 type: "docs"
-description: "Use triggers to send email notifications when inferences are made."
+description: "Use machine learning and send alerts when an inference meets certain critera."
 ---
 
-Triggers can send alerts in the form of email notifications or webhook requests when a service makes a specific detection or classification.
+Triggers can send alerts in the form of email notifications or webhook requests when a new data is synced to the cloud.
+If you then configure a filtered camera or another modular resource that uploads data only when a specific detection or classification is made, you get a notification.
 
 For example, a trigger could alert you when a camera feed detects an anomaly.
 
