@@ -59,13 +59,13 @@ const machineCookieKey = window.location.pathname.split("/")[2];
 For developing your application on localhost:
 
 1. Run your web server.
-1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
+1. Run the following commands specifying the address where your app is running on localhost and a machine to test on.
    The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
 
    {{< tabs >}}
    {{% tab name="Template" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
+```sh {class="command-line" data-prompt="$" data-output="3-10"}
 viam login
 viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID>
 ```
@@ -73,7 +73,7 @@ viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MA
 {{% /tab %}}
 {{% tab name="Example" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
+```sh {class="command-line" data-prompt="$" data-output="3-10"}
 viam login
 viam module local-app-testing --app-url http://localhost:3000 --machine-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
@@ -110,10 +110,12 @@ To deploy your application with Viam you must package it as a module and upload 
       "type": "single_machine",
       "entrypoint": "dist/index.html",
       "fragmentIds": [],
-      "logoPath": "/static/logo.png",
+      "logoPath": "static/logo.png",
       "customizations": {
-        "heading": "Heading to display on branded authentication page",
-        "subheading": "Subheading to display on branded authentication page"
+        "machinePicker": {
+          "heading": "Heading to display on branded authentication page",
+          "subheading": "Subheading to display on branded authentication page"
+        }
       }
     }
   ]
@@ -135,10 +137,12 @@ To deploy your application with Viam you must package it as a module and upload 
       "type": "single_machine",
       "entrypoint": "dist/index.html",
       "fragmentIds": [],
-      "logoPath": "/static/logo.png",
+      "logoPath": "static/logo.png",
       "customizations": {
-        "heading": "Air monitoring dashboard",
-        "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        "machinePicker": {
+          "heading": "Air monitoring dashboard",
+          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        }
       }
     }
   ]
@@ -230,7 +234,7 @@ Users will be prompted to authenticate with their Viam credentials before access
 1. Your application is rendered with access to the selected machine.
    The credentials for that one machine are provided in the cookies.
 
-## Example
+## Examples
 
 For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
 

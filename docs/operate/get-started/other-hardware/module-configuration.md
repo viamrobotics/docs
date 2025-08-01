@@ -288,10 +288,12 @@ For modules that include [Viam applications](/operate/control/viam-applications/
       "type": "web",
       "entrypoint": "dist/index.html",
       "fragmentIds": [],
-      "logoPath": "/static/logo.png",
+      "logoPath": "static/logo.png",
       "customizations": {
-        "heading": "Air monitoring dashboard",
-        "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        "machinePicker": {
+          "heading": "Air monitoring dashboard",
+          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        }
       }
     }
   ]
