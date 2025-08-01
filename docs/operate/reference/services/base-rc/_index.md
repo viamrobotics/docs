@@ -77,7 +77,8 @@ For example:
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-base-remote-control-service>",
-  "type": "base_remote_control",
+  "api": "rdk:service:base_remote_control",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "base": "<your-base-name>",
     "input_controller": "<your-controller-name>"
@@ -90,8 +91,9 @@ For example:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "my-base-remote-control-service",
-  "type": "base_remote_control",
+  "name": "gamepad_service",
+  "api": "rdk:service:base_remote_control",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "base": "my-base",
     "input_controller": "my-input-controller",
