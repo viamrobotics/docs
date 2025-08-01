@@ -28,7 +28,7 @@ Follow the instructions to [configure a camera](/operate/reference/components/ca
 
 ## Configure a filtered camera
 
-You can use a camera and vision service to sync only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
+You can use a camera and vision service to sync only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/viam/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
 This camera module takes the vision service and applies it to your webcam feed, filtering the output.
 With this filtering, you can save only images that contain people who match your filtering criteria.
 
