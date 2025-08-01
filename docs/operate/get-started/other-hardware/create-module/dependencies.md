@@ -293,7 +293,7 @@ You must access the API key module environment variables to establish the app cl
 
 ## Use SDK methods on dependencies
 
-Once you have added a dependency to your module, you can use SDK methods on the resource client.
+Once you have added a dependency to your modular resource, you can use SDK methods on the resource client.
 For example:
 
 {{< tabs >}}

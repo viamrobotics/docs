@@ -164,7 +164,7 @@ Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary import
 **Edit the `validate_config` function** to do the following:
 
 - Check that the user has configured required attributes and return errors if they are missing.
-- Return a map of any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs to use).
+- Return a map of any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs).
 
 For more information, see [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
 
