@@ -84,7 +84,7 @@ Note that for microcontrollers, in order to add a module successfully to the mac
 
 {{< alert title="Tip: Organize resources into folders" color="tip" >}}
 
-If you have many components and services on one machine, you can add one or more folders to your fragment and use them to organize your resources.
+If you have many components and services on one machine, you can add one or more folders to your fragment and use them to organize the resources.
 
 {{< /alert >}}
 
