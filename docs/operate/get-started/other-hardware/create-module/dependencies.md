@@ -347,6 +347,76 @@ detections, err := s.myDetector.GetDetectionsFromCamera(ctx, "my_camera")
 Note that because the module code in this example is calling the vision service API, the vision service must be a dependency.
 Meanwhile, because the module code is not calling the camera API, the camera does not need to be a dependency.
 
+### Special case: The motion service
+
+The motion service is available by default as part of `viam-server`.
+This default motion service is available using the resource name `builtin` even though it does not appear in your machine config.
+You do not need to check for it being configured in your `Validate` function because it is always enabled.
+
+If you are accessing a different motion service, use the resource name you configured, and add it to your `Validate` function.
+
+This example shows how to access the default motion service:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# Return the motion service as a dependency
+@classmethod
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
+    req_deps = []
+    req_deps.append("builtin")
+    return req_deps, []
+
+
+# Add the motion service as an instance variable
+def reconfigure(
+    self, config: ComponentConfig, dependencies: Mapping[
+      ResourceName, ResourceBase]
+):
+    motion_resource = dependencies[Motion.get_resource_name("builtin")]
+    self.motion_service = cast(MotionClient, motion_resource)
+
+    return super().reconfigure(config, dependencies)
+
+
+# Use the motion service
+def move_around_in_some_way(self):
+    moved = await self.motion_service.move(
+        gripper_name, destination, world_state)
+    return moved
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Return the motion service as a dependency
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
+  deps := []string{motion.Named("builtin").String()}
+  return deps, nil, nil
+}
+
+// Then use the motion service, for example:
+func (c *Component) MoveAroundInSomeWay() error {
+  c.Motion, err = motion.FromDependencies(deps, "builtin")
+  if err != nil {
+    return nil, err
+  }
+  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
+    ComponentName: gripperName,
+    Destination: destination,
+    WorldState: worldState
+  })
+  return moved, err
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 {{% /tab %}}
 {{% tab name="Platform clients" %}}
 
@@ -497,78 +567,6 @@ func (c *Component) SomeModuleFunction(ctx context.Context) error {
 
 {{% /tab %}}
 {{% /tabs %}}
-{{% /tab %}}
-
-{{% tab name="Motion service" %}}
-
-The motion service is available by default as part of `viam-server`.
-This default motion service is available using the resource name `builtin` even though it does not appear in your machine config.
-You do not need to check for it being configured in your `Validate` function because it is always enabled.
-
-If you are accessing a different motion service, use the resource name you configured, and add it to your `Validate` function.
-
-This example shows how to access the default motion service:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-# Return the motion service as a dependency
-@classmethod
-def validate_config(
-    cls, config: ComponentConfig
-) -> Tuple[Sequence[str], Sequence[str]]:
-    req_deps = []
-    req_deps.append("builtin")
-    return req_deps, []
-
-
-# Add the motion service as an instance variable
-def reconfigure(
-    self, config: ComponentConfig, dependencies: Mapping[
-      ResourceName, ResourceBase]
-):
-    motion_resource = dependencies[Motion.get_resource_name("builtin")]
-    self.motion_service = cast(MotionClient, motion_resource)
-
-    return super().reconfigure(config, dependencies)
-
-
-# Use the motion service
-def move_around_in_some_way(self):
-    moved = await self.motion_service.move(
-        gripper_name, destination, world_state)
-    return moved
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-// Return the motion service as a dependency
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
-  deps := []string{motion.Named("builtin").String()}
-  return deps, nil, nil
-}
-
-// Then use the motion service, for example:
-func (c *Component) MoveAroundInSomeWay() error {
-  c.Motion, err = motion.FromDependencies(deps, "builtin")
-  if err != nil {
-    return nil, err
-  }
-  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
-    ComponentName: gripperName,
-    Destination: destination,
-    WorldState: worldState
-  })
-  return moved, err
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 {{% /tab %}}
 {{< /tabs >}}
 
