@@ -44,11 +44,16 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Use folders to organize resources" date="2025-08-01" %}}
+
+You can now use folders on machines and in fragments to organize resources.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-23" %}}
 
 You can now configure annual billing alongside monthly billing options for your organizations.
 See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
-applications/).
 
 {{% /changelog %}}
 
