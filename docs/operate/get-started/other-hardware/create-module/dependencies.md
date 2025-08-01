@@ -358,7 +358,7 @@ The following APIs do not require a dependency, but you must authenticate using 
 - [ML training (`ml_training_client`)](/dev/reference/apis/ml-training-client/)
 - [Billing (`billing_client`)](/dev/reference/apis/billing-client/)
 
-You can use module environment variables to access the API keys.
+You can use [module environment variables](/operate/get-started/other-hardware/module-configuration/) to access the API keys.
 Then, get the client you need from the ViamClient.
 For example:
 
