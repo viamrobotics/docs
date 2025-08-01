@@ -343,8 +343,10 @@ For developing your application on localhost:
 1. Run the following command to serve the application you are building:
 
    ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-   npm run start
+   npm start
    ```
+
+   {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:800px">}}
 
 1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
    The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
@@ -670,29 +672,37 @@ h2 {
 
 You can find all the code in the [GitHub repo for this tutorial](https://github.com/viam-labs/air-quality-fleet).
 
+### Style the authentication screen
+
+You can optionally add a logo for your company by placing it into the <FILE>static</FILE> folder.
+If your logo's is not called <FILE>logo.png</FILE>, change it to that or update the `logoPath` in your <FILE>meta.json</FILE>.
+
 ### Run the code
 
-1. In a command prompt terminal, navigate to your <file>aqi-dashboard</file> directory.
-   Run the following command to start up your air quality dashboard:
+1. Run the following command to serve the application you are building:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$" data-output="2-10"}
    npm start
    ```
 
    {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:800px">}}
 
-1. The terminal should output a line such as `Local:  http://127.0.0.1:8000/`.
-   Copy the URL the terminal displays and paste it into the address bar in your web browser.
-   The data may take up to approximately 5 seconds to load, then you should see air quality data from all of your sensors.
+1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
+   The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
+
+   ```sh {class="command-line" data-prompt="$" data-output="3-10"}
+   viam login
+   viam module local-app-testing --app-url http://localhost:8000 --machine-id <MACHINE-ID>
+   ```
+
+1. The data may take up to approximately 5 seconds to load, then you should see air quality data from all of your sensors.
    If the dashboard does not appear, right-click the page, select **Inspect**, and check for errors in the console.
 
    ![Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed.](/tutorials/air-quality-fleet/three-sensor-dash.png)
 
-Great work.
-You've learned how to configure a machine and you can view its data in a custom TypeScript dashboard.
-
 ### Deploy the application as a Viam application
 
+You've learned how to configure a machine and you can view its data in a custom TypeScript dashboard.
 Let's deploy this dashboard as a Viam-hosted application so you don't have to run it locally.
 This will also allow others to use the dashboard.
 
@@ -711,7 +721,15 @@ This will also allow others to use the dashboard.
     {
       "name": "air-quality",
       "type": "single_machine",
-      "entrypoint": "static/index.html"
+      "entrypoint": "static/index.html",
+      "fragmentIds": [],
+      "logoPath": "static/logo.png",
+      "customizations": {
+        "machinePicker": {
+          "heading": "Air monitoring dashboard",
+          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        }
+      }
     }
   ]
 }
@@ -720,6 +738,13 @@ This will also allow others to use the dashboard.
 In [Viam](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
 Find the **Public namespace** and copy that string.
 Replace `<your-namespace>` with your public namespace.
+
+{{< alert title="Tip" color="tip" >}}
+For the deployed Viam application, you can require that a machine must have one or more fragments in its configuration to be able to use it.
+This avoids users selecting a machine that does not work with your application.
+Later in this tutorial, you'll [create a fragment](/tutorials/control/air-quality-fleet/#get-machines-ready-for-third-parties) for your machines.
+Once you do that you can update the value for `fragmentIds`.
+{{< /alert >}}
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
