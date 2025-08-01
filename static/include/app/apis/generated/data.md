@@ -2488,6 +2488,7 @@ data_pipeline_id = await data_client.create_data_pipeline(
     name="<YOUR-PIPELINE-NAME>",
     mql_binary=[<YOUR-MQL-PIPELINE-AGGREGATION>],
     schedule="<YOUR-SCHEDULE>",
+    enable_backfill=False,
     data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD,
 )
 ```
