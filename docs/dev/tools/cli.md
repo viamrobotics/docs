@@ -453,11 +453,11 @@ viam datapipelines delete --id=abc123
 | -------------- | ----------- | -------------------- |
 | `create` | Create a new data pipeline. | - |
 | `describe` | Get detailed information about a specific data pipeline. | - |
-| `delete` | Delete a data pipeline. | - |
-| `disable` | Stop executing a data pipeline without deleting it. | - |
-| `enable` | Resume executing a disabled data pipeline. | - |
-| `list` | List all data pipelines in an organization. | - |
 | `update` | Update an existing data pipeline. | - |
+| `delete` | Delete a data pipeline. | - |
+| `enable` | Resume executing a disabled data pipeline. | - |
+| `disable` | Stop executing a data pipeline without deleting it. | - |
+| `list` | List all data pipelines in an organization. | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
